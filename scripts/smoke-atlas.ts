@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { chromium, expect as baseExpect, type CDPSession, type Page } from '@playwright/test';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import sharp from 'sharp';
 import { pool } from '../server/db.js';
 
 const base = 'http://localhost:3000';
@@ -132,7 +133,7 @@ async function ready(target: Page) {
   await expect(scene).toHaveAttribute('data-renderer', 'canvas2d');
   await expect(scene.locator('.kingdom-map__ground')).toBeVisible();
   await expect(scene.locator('.kingdom-map__clouds')).toHaveCount(0);
-  await expect(scene.locator('.kingdom-map__edge-mist')).toBeVisible();
+  await expect(scene.locator('.kingdom-map__edge-mist')).toHaveCount(0);
   expect(
     await scene
       .locator('.kingdom-map__ground')
@@ -188,7 +189,7 @@ function pinDelta(before: PinPosition[], after: PinPosition[]) {
 async function settleCamera(target: Page) {
   if (await target.locator('.world-map').count()) return settleWorldMap(target);
   const stable = await target.locator('.kingdom-map').evaluate(async (host) => {
-    const fields = ['panX', 'panY', 'zoom', 'direction'];
+    const fields = ['panX', 'panY', 'zoom', 'angle'];
     let previous: number[] | undefined;
     let stableFrames = 0;
     const deadline = performance.now() + 10000;
@@ -1444,10 +1445,10 @@ async function runTerrainOnly() {
       const y = Number(data.panY);
       const { width, height } = host.getBoundingClientRect();
       return {
-        left: width / 2 + (-7500 - x) * scale,
-        right: width / 2 + (7500 - x) * scale,
-        top: height * 0.57 + (-7500 - y) * scale * 0.58,
-        bottom: height * 0.57 + (7500 - y) * scale * 0.58,
+        left: width / 2 + (-Number(data.mapWidth) / 2 - x) * scale,
+        right: width / 2 + (Number(data.mapWidth) / 2 - x) * scale,
+        top: height * 0.57 + (-Number(data.mapHeight) / 2 - y) * scale * 0.58,
+        bottom: height * 0.57 + (Number(data.mapHeight) / 2 - y) * scale * 0.58,
         width,
         height,
       };
@@ -1502,102 +1503,16 @@ async function runTerrainOnly() {
   const easternEdges = await terrainEdges();
   expect(easternEdges.right).toBeCloseTo(easternEdges.width, 0);
   await page.screenshot({ path: 'test-results/kingdom-terrain-edge.png', fullPage: true });
-  const edgeVariation = await scene.locator('.kingdom-map__edge-mist').evaluate((element) => {
-    const canvas = element as HTMLCanvasElement;
-    const context = canvas.getContext('2d')!;
-    const depth = Number(canvas.closest('.kingdom-map')!.getAttribute('data-edge-mist-depth'));
-    const ratio = canvas.width / canvas.clientWidth;
-    const x = Math.round(canvas.width - depth * ratio * 0.55);
-    const alphas: number[] = [];
-    for (let y = Math.round(canvas.height * 0.2); y < canvas.height * 0.8; y += 12)
-      alphas.push(context.getImageData(x, y, 1, 1).data[3]);
-    return { variation: Math.max(...alphas) - Math.min(...alphas), strongest: Math.max(...alphas) };
-  });
-  expect(
-    edgeVariation.variation,
-    'A névoa deve ter invasão irregular, sem faixa uniforme.',
-  ).toBeGreaterThan(25);
-  expect(edgeVariation.strongest, 'A névoa dentro do mapa deve ser translúcida.').toBeLessThan(145);
+  await expect(scene.locator('.kingdom-map__edge-mist')).toHaveCount(0);
   const groundFrame = await scene
     .locator('.kingdom-map__ground')
     .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  const mistFrame = await scene
-    .locator('.kingdom-map__edge-mist')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  const mistMotionBefore = await scene.locator('.kingdom-map__edge-mist').evaluate((element) => {
-    const canvas = element as HTMLCanvasElement;
-    const depth = Number(canvas.closest('.kingdom-map')!.getAttribute('data-edge-mist-depth'));
-    const ratio = canvas.width / canvas.clientWidth;
-    const x = Math.round(canvas.width - depth * ratio * 0.55);
-    const pixels = canvas.getContext('2d')!.getImageData(x, 0, 1, canvas.height).data;
-    return Array.from({ length: canvas.height }, (_, y) => pixels[y * 4 + 3]);
-  });
-  await page.waitForTimeout(600);
-  const nextGroundFrame = await scene
-    .locator('.kingdom-map__ground')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  const nextMistFrame = await scene
-    .locator('.kingdom-map__edge-mist')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  const mistMotionAfter = await scene.locator('.kingdom-map__edge-mist').evaluate((element) => {
-    const canvas = element as HTMLCanvasElement;
-    const depth = Number(canvas.closest('.kingdom-map')!.getAttribute('data-edge-mist-depth'));
-    const ratio = canvas.width / canvas.clientWidth;
-    const x = Math.round(canvas.width - depth * ratio * 0.55);
-    const pixels = canvas.getContext('2d')!.getImageData(x, 0, 1, canvas.height).data;
-    return Array.from({ length: canvas.height }, (_, y) => pixels[y * 4 + 3]);
-  });
-  expect(nextGroundFrame, 'O terreno deve permanecer estático.').toBe(groundFrame);
-  expect(nextMistFrame, 'A névoa das bordas deve se mover.').not.toBe(mistFrame);
-  const mistMotion = mistMotionBefore.reduce(
-    (sum, alpha, index) => sum + Math.abs(alpha - mistMotionAfter[index]),
-    0,
-  );
+  await page.waitForTimeout(300);
   expect(
-    mistMotion / mistMotionBefore.length,
-    'O movimento da névoa deve ser perceptível.',
-  ).toBeGreaterThan(1.5);
-  const mistBounds = await scene.locator('.kingdom-map__edge-mist').evaluate((element) => {
-    const canvas = element as HTMLCanvasElement;
-    const context = canvas.getContext('2d')!;
-    const depth = Number(canvas.closest('.kingdom-map')!.getAttribute('data-edge-mist-depth'));
-    const scale = canvas.width / canvas.clientWidth;
-    const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
-    let hasVisibleMist = false;
-    for (let index = 3; index < pixels.length; index += 4) {
-      if (pixels[index] > 0) {
-        hasVisibleMist = true;
-        break;
-      }
-    }
-    return {
-      depth,
-      hasVisibleMist,
-      center: context.getImageData(
-        Math.round((canvas.clientWidth * scale) / 2),
-        Math.round((canvas.clientHeight * scale) / 2),
-        1,
-        1,
-      ).data[3],
-      beyondTop: context.getImageData(
-        Math.round((canvas.clientWidth * scale) / 2),
-        Math.round((depth + 10) * scale),
-        1,
-        1,
-      ).data[3],
-      beyondLeft: context.getImageData(
-        Math.round((depth + 10) * scale),
-        Math.round((canvas.clientHeight * scale) / 2),
-        1,
-        1,
-      ).data[3],
-    };
-  });
-  expect(mistBounds.depth).toBeLessThanOrEqual(96);
-  expect(mistBounds.hasVisibleMist, 'A névoa deve aparecer ao alcançar o perímetro do mapa.').toBe(
-    true,
-  );
-  expect([mistBounds.center, mistBounds.beyondTop, mistBounds.beyondLeft]).toEqual([0, 0, 0]);
+    await scene
+      .locator('.kingdom-map__ground')
+      .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL()),
+  ).toBe(groundFrame);
   await resetCamera(page);
   await maximumZoom(page);
   for (let i = 0; i < 12; i++) await dragAcross(page, 'right');
@@ -1626,36 +1541,6 @@ async function runTerrainOnly() {
   await page.waitForTimeout(80);
   const stretchedEast = await terrainEdges();
   expect(stretchedEast.right).toBeLessThan(stretchedEast.width - 2);
-  const outsideFog = await scene.locator('.kingdom-map__edge-mist').evaluate((element) => {
-    const canvas = element as HTMLCanvasElement;
-    const pixel = canvas
-      .getContext('2d')!
-      .getImageData(canvas.width - 3, Math.floor(canvas.height / 2), 1, 1).data;
-    return [...pixel];
-  });
-  expect(outsideFog[3], 'Além do terreno deve haver névoa opaca.').toBe(255);
-  expect(outsideFog[0]).toBeGreaterThan(190);
-  const seam = await scene.locator('.kingdom-map__edge-mist').evaluate((element, edgeX) => {
-    const canvas = element as HTMLCanvasElement;
-    const context = canvas.getContext('2d')!;
-    const ratio = canvas.width / canvas.clientWidth;
-    const x = Math.round(edgeX * ratio);
-    const y = Math.floor(canvas.height / 2);
-    return {
-      samples: [6, 2, -2, -6, -12, -20, -32].map((offset) => [
-        ...context.getImageData(x + Math.round(offset * ratio), y, 1, 1).data,
-      ]),
-    };
-  }, stretchedEast.right);
-  const seamAlphas = seam.samples.map((sample) => sample[3]);
-  expect(seamAlphas[0]).toBe(255);
-  expect(seamAlphas[1]).toBe(255);
-  expect(seamAlphas[2]).toBeGreaterThan(205);
-  for (let index = 1; index < seamAlphas.length; index++) {
-    expect(seamAlphas[index]).toBeLessThanOrEqual(seamAlphas[index - 1] + 8);
-    expect(seamAlphas[index - 1] - seamAlphas[index]).toBeLessThan(70);
-  }
-  expect(Math.abs(seam.samples[1][0] - seam.samples[2][0])).toBeLessThan(18);
   await page.screenshot({ path: 'test-results/kingdom-terrain-overdrag.png', fullPage: true });
   await page.mouse.up();
   await settleCamera(page);
@@ -1679,7 +1564,7 @@ async function runTerrainOnly() {
   }
   expect(errors).toEqual([]);
   console.log(
-    'Terreno OK: quatro bordas acessíveis, chão livre de objetos e nuvens, névoa externa opaca com transição irregular; desktop/celular.',
+    'Terreno OK: quatro bordas acessíveis, chão livre de objetos e névoa; desktop/celular.',
   );
 }
 
@@ -1694,8 +1579,8 @@ async function runKingdomEditor() {
   const bounds = (await scene.boundingBox())!;
   await page.mouse.click(bounds.x + bounds.width * 0.42, bounds.y + bounds.height * 0.48);
   await expect(editor).toContainText('1 itens');
-  await editor.getByRole('button', { name: 'Aumentar item' }).click();
-  await editor.getByRole('button', { name: 'Girar item para a direita' }).click();
+  await editor.getByRole('button', { name: 'Aumentar seleção' }).click();
+  await editor.getByRole('button', { name: 'Girar seleção para a direita' }).click();
   await editor.getByRole('button', { name: 'Salvar rascunho' }).click();
   await expect(editor).toContainText('Rascunho salvo');
   const saved = await page.request.get(`${base}/api/kingdom/editor-draft`);
@@ -1728,9 +1613,11 @@ async function runKingdomEditor() {
     };
   }, layout.items[0]);
   await page.mouse.move(handle.x, handle.y);
+  await page.keyboard.down('Control');
   await page.mouse.down();
   await page.mouse.move(handle.x + 45, handle.y + 12, { steps: 5 });
   await page.mouse.up();
+  await page.keyboard.up('Control');
   const movedSave = page.waitForResponse(
     (response) =>
       response.url().includes('/api/kingdom/editor-draft') &&
@@ -1758,8 +1645,106 @@ async function runKingdomEditor() {
     data: { revision: 0, items: [] },
   });
   expect(stale.status()).toBe(409);
+  await reopened.getByRole('button', { name: 'Pinheiro', exact: true }).click();
+  const groupBounds = (await scene.boundingBox())!;
+  await page.mouse.click(
+    groupBounds.x + groupBounds.width * 0.3,
+    groupBounds.y + groupBounds.height * 0.5,
+  );
+  await expect(reopened).toContainText('2 itens');
+  await page.keyboard.down('Control');
+  await page.mouse.move(
+    groupBounds.x + groupBounds.width * 0.08,
+    groupBounds.y + groupBounds.height * 0.22,
+  );
+  await page.mouse.down();
+  await page.mouse.move(
+    groupBounds.x + groupBounds.width * 0.62,
+    groupBounds.y + groupBounds.height * 0.7,
+    { steps: 8 },
+  );
+  await expect(scene.locator('.kingdom-map__selection-box')).toBeVisible();
+  await page.mouse.up();
+  await page.keyboard.up('Control');
+  await expect(reopened).toContainText('2 itens selecionados');
+  await resetCamera(page);
+  await maximumZoom(page);
+  const panBefore = await camera(page);
+  await page.mouse.move(
+    groupBounds.x + groupBounds.width * 0.25,
+    groupBounds.y + groupBounds.height * 0.22,
+  );
+  await page.mouse.down();
+  await page.mouse.move(
+    groupBounds.x + groupBounds.width * 0.08,
+    groupBounds.y + groupBounds.height * 0.25,
+    { steps: 5 },
+  );
+  await page.mouse.up();
+  await settleCamera(page);
+  expect((await camera(page)).x).not.toBe(panBefore.x);
+  await reopened.getByRole('button', { name: 'Selecionar todos' }).click();
+  await expect(reopened).toContainText('2 itens selecionados');
+  const beforeGroup = await (await page.request.get(`${base}/api/kingdom/editor-draft`)).json();
+  const groupHandle = await scene.evaluate((host, item) => {
+    const data = (host as HTMLElement).dataset;
+    const rect = host.getBoundingClientRect();
+    const scale = Number(data.baseScale) * Number(data.zoom);
+    return {
+      x: rect.left + rect.width / 2 + (item.x - Number(data.panX)) * scale,
+      y:
+        rect.top +
+        rect.height * 0.57 +
+        (item.y - Number(data.panY)) * scale * 0.58 -
+        item.height * scale * 0.45,
+    };
+  }, moved.items[0]);
+  await page.keyboard.down('Control');
+  await page.mouse.move(groupHandle.x, groupHandle.y);
+  await page.mouse.down();
+  await page.mouse.move(groupHandle.x + 35, groupHandle.y + 18, { steps: 6 });
+  await page.mouse.up();
+  await page.keyboard.up('Control');
+  await reopened.getByRole('button', { name: 'Aumentar seleção' }).click();
+  await reopened.getByRole('button', { name: 'Girar seleção para a direita' }).click();
+  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
+  await expect(reopened).toContainText('Rascunho salvo');
+  const grouped = await (await page.request.get(`${base}/api/kingdom/editor-draft`)).json();
+  expect(grouped.items).toHaveLength(2);
+  expect(grouped.items[0].x).toBeGreaterThan(beforeGroup.items[0].x);
+  expect(grouped.items[0].height).toBeGreaterThan(beforeGroup.items[0].height);
+  expect(grouped.items[1].height).toBeGreaterThan(520);
+  await reopened.getByRole('button', { name: 'Excluir 2 itens' }).click();
+  await expect(reopened).toContainText('0 itens');
+  await reopened.getByRole('button', { name: 'Desfazer' }).click();
+  await expect(reopened).toContainText('2 itens');
+  const backgroundFile = await sharp({
+    create: {
+      width: 8192,
+      height: 4096,
+      channels: 3,
+      background: '#6d6952',
+    },
+  })
+    .png()
+    .toBuffer();
+  await reopened.locator('input[type=file]').setInputFiles({
+    name: 'mapa-8k.png',
+    mimeType: 'image/png',
+    buffer: backgroundFile,
+  });
+  await expect(scene).toHaveAttribute('data-image-width', '8192', { timeout: 120000 });
+  await expect(scene).toHaveAttribute('data-image-height', '4096');
+  await expect(scene).toHaveAttribute('data-assets', 'ready', { timeout: 120000 });
+  expect(Number(await scene.getAttribute('data-map-width'))).toBe(40000);
+  expect(Number(await scene.getAttribute('data-map-height'))).toBe(20000);
+  for (let i = 0; i < 5; i++) await dragAcross(page, 'left');
+  expect((await camera(page)).x, 'O background 8K deve permitir navegar além do limite original.').toBeGreaterThan(7500);
+  await reopened.getByRole('button', { name: 'Restaurar original' }).click();
+  await expect(scene).toHaveAttribute('data-image-width', '3072', { timeout: 30000 });
+  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
   expect(errors).toEqual([]);
-  console.log('Editor OK: catálogo, posicionamento, escala, orientação, salvamento e recarga.');
+  console.log('Editor OK: catálogo, grupo, upload 8K, dimensões, salvamento e recarga.');
 }
 
 watchErrors(page);

@@ -5,13 +5,20 @@ import { toNodeHandler, fromNodeHeaders } from 'better-auth/node';
 import { z } from 'zod';
 import { resolve } from 'node:path';
 import { existsSync } from 'node:fs';
+import sharp from 'sharp';
 import { auth, origins } from './auth.js';
 import { pool, transaction } from './db.js';
 import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema } from './missions.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
 import { races, classes, hitDice, modifier } from '../shared/rules.js';
-import { KINGDOM_EDITOR_CATALOG } from '../shared/kingdom-editor.js';
+import {
+  KINGDOM_BACKGROUND_MAX_BYTES,
+  KINGDOM_BACKGROUND_MAX_EDGE,
+  KINGDOM_BACKGROUND_MAX_PIXELS,
+  KINGDOM_DEFAULT_PIXELS,
+  KINGDOM_EDITOR_CATALOG,
+} from '../shared/kingdom-editor.js';
 
 const uuid = z.string().uuid();
 const characterSchema = z.object({
@@ -49,8 +56,8 @@ const kingdomDraftSchema = z.object({
       z.object({
         id: uuid,
         kind: z.enum(kingdomEditorKinds),
-        x: z.number().finite().min(-7500).max(7500),
-        y: z.number().finite().min(-7500).max(7500),
+        x: z.number().finite().min(-40000).max(40000),
+        y: z.number().finite().min(-40000).max(40000),
         height: z.number().finite().min(80).max(1200),
         direction: z.number().int().min(0).max(7),
       }),
@@ -361,6 +368,102 @@ export function createApp() {
     );
     res.json(rows[0] ?? { revision: 0, items: [] });
   });
+  app.get('/api/kingdom/editor-background/meta', async (_req, res) => {
+    const {
+      rows: [background],
+    } = await pool.query(
+      'SELECT width,height,revision FROM kingdom_editor_backgrounds WHERE user_id=$1',
+      [res.locals.user.id],
+    );
+    res.json(
+      background
+        ? {
+            exists: true,
+            width: background.width,
+            height: background.height,
+            revision: background.revision,
+          }
+        : {
+            exists: false,
+            width: KINGDOM_DEFAULT_PIXELS,
+            height: KINGDOM_DEFAULT_PIXELS,
+            revision: 0,
+          },
+    );
+  });
+  app.get('/api/kingdom/editor-background/image', async (_req, res) => {
+    const {
+      rows: [background],
+    } = await pool.query(
+      'SELECT mime_type,image_data FROM kingdom_editor_backgrounds WHERE user_id=$1',
+      [res.locals.user.id],
+    );
+    if (!background) throw new AppError(404, 'Fundo do mapa não encontrado.');
+    res.type(background.mime_type).send(background.image_data);
+  });
+  app.put(
+    '/api/kingdom/editor-background',
+    express.raw({
+      type: ['image/png', 'image/jpeg', 'image/webp'],
+      limit: KINGDOM_BACKGROUND_MAX_BYTES,
+    }),
+    async (req, res) => {
+      if (!Buffer.isBuffer(req.body) || !req.body.length)
+        throw new AppError(400, 'Envie uma imagem PNG, JPEG ou WebP.');
+      let metadata: { width?: number; height?: number; format?: string };
+      try {
+        metadata = await sharp(req.body, {
+          limitInputPixels: KINGDOM_BACKGROUND_MAX_PIXELS,
+        }).metadata();
+      } catch {
+        throw new AppError(400, 'A imagem enviada é inválida ou excede o limite de pixels.');
+      }
+      const { width, height, format } = metadata;
+      const mime =
+        format === 'png'
+          ? 'image/png'
+          : format === 'jpeg'
+            ? 'image/jpeg'
+            : format === 'webp'
+              ? 'image/webp'
+              : null;
+      if (
+        !mime ||
+        !width ||
+        !height ||
+        width > KINGDOM_BACKGROUND_MAX_EDGE ||
+        height > KINGDOM_BACKGROUND_MAX_EDGE ||
+        width * height > KINGDOM_BACKGROUND_MAX_PIXELS
+      )
+        throw new AppError(
+          400,
+          'A imagem deve ter até 12.288 px por lado e 100 milhões de pixels.',
+        );
+      const {
+        rows: [background],
+      } = await pool.query(
+        `INSERT INTO kingdom_editor_backgrounds(user_id,mime_type,image_data,width,height)
+         VALUES($1,$2,$3,$4,$5)
+         ON CONFLICT (user_id) DO UPDATE SET mime_type=EXCLUDED.mime_type,
+           image_data=EXCLUDED.image_data,width=EXCLUDED.width,height=EXCLUDED.height,
+           revision=kingdom_editor_backgrounds.revision+1,updated_at=now()
+         RETURNING width,height,revision`,
+        [res.locals.user.id, mime, req.body, width, height],
+      );
+      res.json({ exists: true, ...background });
+    },
+  );
+  app.delete('/api/kingdom/editor-background', async (_req, res) => {
+    await pool.query('DELETE FROM kingdom_editor_backgrounds WHERE user_id=$1', [
+      res.locals.user.id,
+    ]);
+    res.json({
+      exists: false,
+      width: KINGDOM_DEFAULT_PIXELS,
+      height: KINGDOM_DEFAULT_PIXELS,
+      revision: 0,
+    });
+  });
   app.put('/api/kingdom/editor-draft', async (req, res) => {
     const draft = kingdomDraftSchema.parse(req.body);
     const saved = await transaction(async (client) => {
@@ -401,6 +504,15 @@ export function createApp() {
       }
       if (error instanceof AppError) {
         res.status(error.status).json({ error: error.message });
+        return;
+      }
+      if (
+        error &&
+        typeof error === 'object' &&
+        'type' in error &&
+        error.type === 'entity.too.large'
+      ) {
+        res.status(413).json({ error: 'O fundo deve ter no máximo 128 MB.' });
         return;
       }
       if (error instanceof SyntaxError && 'body' in error) {

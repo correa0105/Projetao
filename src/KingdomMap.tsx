@@ -1,20 +1,31 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Focus, Minus, Plus, RotateCcw, RotateCw, Save, Trash2, Undo2, X } from 'lucide-react';
+import {
+  Focus,
+  Minus,
+  Plus,
+  RotateCcw,
+  RotateCw,
+  Save,
+  Trash2,
+  Undo2,
+  Upload,
+  X,
+} from 'lucide-react';
 import type { AtlasMarker } from './atlas-types';
 import { api } from './api';
 import {
   KINGDOM_EDITOR_CATALOG,
+  KINGDOM_BACKGROUND_MAX_BYTES,
+  KINGDOM_UNITS_PER_PIXEL,
+  type KingdomBackgroundMeta,
   type KingdomEditorItem,
   type KingdomEditorKind,
   type KingdomEditorLayout,
 } from '../shared/kingdom-editor';
-import { createKingdomEdgeMist, kingdomEdgeMistDepth } from './kingdom-atmosphere';
 import {
   KINGDOM_CAMERA_Y,
-  KINGDOM_HEIGHT,
   KINGDOM_MAX_ZOOM,
   KINGDOM_MIN_ZOOM,
-  KINGDOM_WIDTH,
   kingdomDirection,
   frames,
   paintKingdom,
@@ -84,7 +95,7 @@ function loadIllustration(url: string, signal: AbortSignal): Promise<HTMLImageEl
     const image = new Image();
     const timeout = window.setTimeout(
       () => finish(new Error('A ilustração demorou para carregar.')),
-      20000,
+      60000,
     );
     const onAbort = () => finish(new DOMException('Carregamento interrompido', 'AbortError'));
     function finish(error?: Error) {
@@ -120,7 +131,16 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
   const [editorGroup, setEditorGroup] = useState<(typeof editorGroups)[number]>('Natureza');
   const [editorKind, setEditorKind] = useState<KingdomEditorKind>('pine');
   const [editorItems, setEditorItems] = useState<KingdomEditorItem[]>([]);
-  const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+  const [selectedItemIds, setSelectedItemIds] = useState<string[]>([]);
+  const [selectionBox, setSelectionBox] = useState<{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  } | null>(null);
+  const [background, setBackground] = useState<KingdomBackgroundMeta | null>(null);
+  const [backgroundBusy, setBackgroundBusy] = useState(false);
+  const backgroundInputRef = useRef<HTMLInputElement>(null);
   const [editorRevision, setEditorRevision] = useState(0);
   const [editorLoading, setEditorLoading] = useState(true);
   const [editorSaving, setEditorSaving] = useState(false);
@@ -134,14 +154,14 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     tool: editorTool,
     kind: editorKind,
     items: editorItems,
-    selectedItemId,
+    selectedItemIds,
   });
   useLayoutEffect(() => {
     editorRef.current.open = editorOpen;
     editorRef.current.tool = editorTool;
     editorRef.current.kind = editorKind;
-    editorRef.current.selectedItemId = selectedItemId;
-  }, [editorOpen, editorTool, editorKind, selectedItemId]);
+    editorRef.current.selectedItemIds = selectedItemIds;
+  }, [editorOpen, editorTool, editorKind, selectedItemIds]);
 
   const changeItems = (items: KingdomEditorItem[], remember = true) => {
     if (remember) {
@@ -154,12 +174,67 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     setEditorMessage('');
     controlsRef.current?.refresh();
   };
-  const selectEditorItem = (id: string | null) => {
-    editorRef.current.selectedItemId = id;
-    setSelectedItemId(id);
+  const selectEditorItems = (ids: string[]) => {
+    editorRef.current.selectedItemIds = ids;
+    setSelectedItemIds(ids);
     controlsRef.current?.refresh();
   };
-  const selectedEditorItem = editorItems.find((item) => item.id === selectedItemId);
+  const selectedEditorItem =
+    selectedItemIds.length === 1
+      ? editorItems.find((item) => item.id === selectedItemIds[0])
+      : null;
+  const selectedSet = new Set(selectedItemIds);
+
+  useEffect(() => {
+    let alive = true;
+    api<KingdomBackgroundMeta>('/kingdom/editor-background/meta')
+      .then((result) => {
+        if (alive) setBackground(result);
+      })
+      .catch((error: Error) => {
+        if (alive) {
+          setEditorMessage(error.message);
+          setStatus('error');
+        }
+      });
+    return () => {
+      alive = false;
+    };
+  }, [retry]);
+  async function uploadBackground(file: File) {
+    if (file.size > KINGDOM_BACKGROUND_MAX_BYTES) {
+      setEditorMessage('O fundo deve ter no máximo 128 MB.');
+      return;
+    }
+    setBackgroundBusy(true);
+    setEditorMessage('Enviando fundo…');
+    try {
+      const saved = await api<KingdomBackgroundMeta>('/kingdom/editor-background', {
+        method: 'PUT',
+        headers: { 'Content-Type': file.type },
+        body: file,
+      });
+      setBackground(saved);
+      setEditorMessage(`Fundo salvo: ${saved.width} × ${saved.height} px.`);
+    } catch (error) {
+      setEditorMessage((error as Error).message);
+    } finally {
+      setBackgroundBusy(false);
+    }
+  }
+  async function resetBackground() {
+    setBackgroundBusy(true);
+    try {
+      setBackground(
+        await api<KingdomBackgroundMeta>('/kingdom/editor-background', { method: 'DELETE' }),
+      );
+      setEditorMessage('Fundo original restaurado.');
+    } catch (error) {
+      setEditorMessage((error as Error).message);
+    } finally {
+      setBackgroundBusy(false);
+    }
+  }
 
   useEffect(() => {
     let alive = true;
@@ -210,31 +285,30 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
   useEffect(() => {
     const host = hostRef.current,
       canvasHost = canvasHostRef.current;
-    if (!host || !canvasHost) return;
+    if (!host || !canvasHost || !background) return;
     const canvas = document.createElement('canvas');
-    const mistCanvas = document.createElement('canvas');
     canvas.className = 'kingdom-map__ground';
-    mistCanvas.className = 'kingdom-map__edge-mist';
     canvas.setAttribute('aria-hidden', 'true');
-    mistCanvas.setAttribute('aria-hidden', 'true');
     const ctx = canvas.getContext('2d', { alpha: false });
-    const mistContext = mistCanvas.getContext('2d');
-    if (!ctx || !mistContext) {
+    if (!ctx) {
       setStatus('error');
       return;
     }
-    canvasHost.append(canvas, mistCanvas);
-    const atmosphere = createKingdomEdgeMist();
+    canvasHost.append(canvas);
     const abort = new AbortController();
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let disposed = false,
       ready = false,
       frame = 0,
-      dirty = true,
-      mistDirty = true,
-      lastMistPaint = 0;
+      dirty = true;
     let assets: KingdomAssets | null = null;
-    let viewport: KingdomViewport = { width: 1, height: 1, scale: 1 };
+    let viewport: KingdomViewport = {
+      width: 1,
+      height: 1,
+      scale: 1,
+      mapWidth: background.width * KINGDOM_UNITS_PER_PIXEL,
+      mapHeight: background.height * KINGDOM_UNITS_PER_PIXEL,
+    };
     const home = { x: 0, y: 0 };
     const view: KingdomView = { ...home, zoom: 1, angle: 0 };
     let animation: { start: number; from: KingdomView; to: KingdomView; duration: number } | null =
@@ -251,19 +325,23 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     host.dataset.homeY = String(home.y);
     host.dataset.minZoom = String(KINGDOM_MIN_ZOOM);
     host.dataset.maxZoom = String(KINGDOM_MAX_ZOOM);
+    host.dataset.mapWidth = String(viewport.mapWidth);
+    host.dataset.mapHeight = String(viewport.mapHeight);
+    host.dataset.imageWidth = String(background.width);
+    host.dataset.imageHeight = String(background.height);
     setStatus('loading');
     setZoom(1);
     setDirection(0);
 
     function sync() {
       host!.dataset.direction = String(kingdomDirection(view.angle));
+      host!.dataset.angle = view.angle.toFixed(6);
       host!.dataset.zoom = view.zoom.toFixed(4);
       host!.dataset.panX = view.x.toFixed(3);
       host!.dataset.panY = view.y.toFixed(3);
       setZoom(view.zoom);
       setDirection(kingdomDirection(view.angle));
       dirty = true;
-      mistDirty = true;
     }
     function constrained(next: KingdomView): KingdomView {
       const zero = { ...next, x: 0, y: 0 };
@@ -275,10 +353,10 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       ].map(([x, y]) => unprojectKingdom(x, y, zero, viewport));
       // The camera anchor sits below the viewport centre. Use each projected
       // side separately so every physical edge can reach its screen edge.
-      const minX = -KINGDOM_WIDTH / 2 - Math.min(...corners.map((point) => point.x));
-      const maxX = KINGDOM_WIDTH / 2 - Math.max(...corners.map((point) => point.x));
-      const minY = -KINGDOM_HEIGHT / 2 - Math.min(...corners.map((point) => point.y));
-      const maxY = KINGDOM_HEIGHT / 2 - Math.max(...corners.map((point) => point.y));
+      const minX = -viewport.mapWidth / 2 - Math.min(...corners.map((point) => point.x));
+      const maxX = viewport.mapWidth / 2 - Math.max(...corners.map((point) => point.x));
+      const minY = -viewport.mapHeight / 2 - Math.min(...corners.map((point) => point.y));
+      const maxY = viewport.mapHeight / 2 - Math.max(...corners.map((point) => point.y));
       return {
         ...next,
         x: minX <= maxX ? clamp(next.x, minX, maxX) : (minX + maxX) / 2,
@@ -328,17 +406,11 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           editorRef.current.items,
           view,
           viewport,
-          editorRef.current.open ? editorRef.current.selectedItemId : null,
+          editorRef.current.open ? editorRef.current.selectedItemIds : [],
           null,
           reduced.matches ? 0 : now / 1000,
         );
         dirty = false;
-      }
-      if (mistDirty || (!reduced.matches && now - lastMistPaint >= 1000 / 24)) {
-        const time = reduced.matches ? 0 : now / 1000;
-        atmosphere.paintEdgeMist(mistContext!, view, viewport, time);
-        mistDirty = false;
-        lastMistPaint = now;
       }
     }
     function resize() {
@@ -350,20 +422,17 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         width,
         height,
         scale: Math.min(1.05, Math.max(0.27, width / 3800)) * 0.384 * 0.85,
+        mapWidth: viewport.mapWidth,
+        mapHeight: viewport.mapHeight,
       };
       host!.dataset.baseScale = viewport.scale.toFixed(6);
       canvas.width = Math.round(width * pixelRatio);
       canvas.height = Math.round(height * pixelRatio);
-      mistCanvas.width = canvas.width;
-      mistCanvas.height = canvas.height;
       ctx!.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      mistContext!.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       ctx!.imageSmoothingEnabled = true;
       ctx!.imageSmoothingQuality = 'high';
       Object.assign(view, constrained(view));
       dirty = true;
-      mistDirty = true;
-      host!.dataset.edgeMistDepth = kingdomEdgeMistDepth(width, height).toFixed(1);
     }
     const observer = new ResizeObserver(resize);
     observer.observe(host);
@@ -373,7 +442,14 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       const rect = host!.getBoundingClientRect();
       return { x: event.clientX - rect.left, y: event.clientY - rect.top };
     };
-    let movingItem: { id: string; original: KingdomEditorItem[] } | null = null;
+    let movingItems: {
+      ids: string[];
+      hitId: string;
+      original: KingdomEditorItem[];
+      wasSelected: boolean;
+    } | null = null;
+    let marquee: { start: { x: number; y: number }; add: boolean } | null = null;
+    let pendingPlace: { at: { x: number; y: number }; kind: KingdomEditorKind } | null = null;
     function hitEditorItem(x: number, y: number) {
       const direction = kingdomDirection(view.angle);
       return [...editorRef.current.items].reverse().find((item) => {
@@ -399,43 +475,31 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       animation = null;
       const at = local(event);
       if (editorRef.current.open && event.isPrimary) {
-        if (editorRef.current.tool === 'place') {
-          const point = unprojectKingdom(at.x, at.y, view, viewport);
-          if (Math.abs(point.x) > KINGDOM_WIDTH / 2 || Math.abs(point.y) > KINGDOM_HEIGHT / 2)
-            return;
-          const definition = KINGDOM_EDITOR_CATALOG.find(
-            (entry) => entry.kind === editorRef.current.kind,
-          )!;
-          const item: KingdomEditorItem = {
-            id: crypto.randomUUID(),
-            kind: definition.kind,
-            x: Math.round(point.x),
-            y: Math.round(point.y),
-            height: definition.height,
-            direction: 0,
-          };
-          changeItems([...editorRef.current.items, item]);
-          selectEditorItem(item.id);
+        if (event.ctrlKey) {
+          const hit = hitEditorItem(at.x, at.y);
+          if (hit) {
+            const wasSelected = editorRef.current.selectedItemIds.includes(hit.id);
+            movingItems = {
+              ids: wasSelected ? [...editorRef.current.selectedItemIds] : [hit.id],
+              hitId: hit.id,
+              original: editorRef.current.items.map((item) => ({ ...item })),
+              wasSelected,
+            };
+          } else {
+            marquee = { start: at, add: event.shiftKey };
+            setSelectionBox({ x: at.x, y: at.y, width: 0, height: 0 });
+          }
+          startPointer = at;
+          startView = { ...view };
+          dragging = false;
+          hadMultiTouch = false;
+          host!.setPointerCapture(event.pointerId);
+          pointers.set(event.pointerId, at);
           event.preventDefault();
           return;
         }
-        if (editorRef.current.tool === 'select') {
-          const hit = hitEditorItem(at.x, at.y);
-          selectEditorItem(hit?.id ?? null);
-          if (hit) {
-            movingItem = {
-              id: hit.id,
-              original: editorRef.current.items.map((item) => ({ ...item })),
-            };
-            startPointer = at;
-            startView = { ...view };
-            dragging = false;
-            hadMultiTouch = false;
-            host!.setPointerCapture(event.pointerId);
-            pointers.set(event.pointerId, at);
-            event.preventDefault();
-            return;
-          }
+        if (editorRef.current.tool === 'place') {
+          pendingPlace = { at, kind: editorRef.current.kind };
         }
       }
       pointers.set(event.pointerId, at);
@@ -457,27 +521,45 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       if (!pointers.has(event.pointerId)) return;
       const at = local(event);
       pointers.set(event.pointerId, at);
-      if (movingItem && pointers.size === 1) {
+      if (marquee && pointers.size === 1) {
+        dragging = Math.hypot(at.x - startPointer.x, at.y - startPointer.y) > 3;
+        setSelectionBox({
+          x: Math.min(at.x, marquee.start.x),
+          y: Math.min(at.y, marquee.start.y),
+          width: Math.abs(at.x - marquee.start.x),
+          height: Math.abs(at.y - marquee.start.y),
+        });
+        event.preventDefault();
+        return;
+      }
+      if (movingItems && pointers.size === 1) {
+        if (Math.hypot(at.x - startPointer.x, at.y - startPointer.y) <= 3) return;
+        dragging = true;
         const from = unprojectKingdom(startPointer.x, startPointer.y, startView, viewport);
         const to = unprojectKingdom(at.x, at.y, startView, viewport);
-        const initial = movingItem.original.find((item) => item.id === movingItem!.id)!;
-        const next = editorRef.current.items.map((item) =>
-          item.id === movingItem!.id
+        const group = movingItems.original.filter((item) => movingItems!.ids.includes(item.id));
+        const dx = clamp(
+          to.x - from.x,
+          -viewport.mapWidth / 2 - Math.min(...group.map((item) => item.x)),
+          viewport.mapWidth / 2 - Math.max(...group.map((item) => item.x)),
+        );
+        const dy = clamp(
+          to.y - from.y,
+          -viewport.mapHeight / 2 - Math.min(...group.map((item) => item.y)),
+          viewport.mapHeight / 2 - Math.max(...group.map((item) => item.y)),
+        );
+        const next = movingItems.original.map((item) =>
+          movingItems!.ids.includes(item.id)
             ? {
                 ...item,
-                x: Math.round(
-                  clamp(initial.x + to.x - from.x, -KINGDOM_WIDTH / 2, KINGDOM_WIDTH / 2),
-                ),
-                y: Math.round(
-                  clamp(initial.y + to.y - from.y, -KINGDOM_HEIGHT / 2, KINGDOM_HEIGHT / 2),
-                ),
+                x: Math.round(item.x + dx),
+                y: Math.round(item.y + dy),
               }
             : item,
         );
         editorRef.current.items = next;
         setEditorItems(next);
         dirty = true;
-        if (Math.hypot(at.x - startPointer.x, at.y - startPointer.y) > 3) dragging = true;
         event.preventDefault();
         return;
       }
@@ -511,14 +593,81 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       if (!pointers.has(event.pointerId)) return;
       pointers.delete(event.pointerId);
       if (host!.hasPointerCapture(event.pointerId)) host!.releasePointerCapture(event.pointerId);
-      if (movingItem) {
+      if (pendingPlace && !dragging && !hadMultiTouch) {
+        const point = unprojectKingdom(pendingPlace.at.x, pendingPlace.at.y, view, viewport);
+        if (
+          Math.abs(point.x) <= viewport.mapWidth / 2 &&
+          Math.abs(point.y) <= viewport.mapHeight / 2
+        ) {
+          const definition = KINGDOM_EDITOR_CATALOG.find(
+            (entry) => entry.kind === pendingPlace!.kind,
+          )!;
+          const item: KingdomEditorItem = {
+            id: crypto.randomUUID(),
+            kind: definition.kind,
+            x: Math.round(point.x),
+            y: Math.round(point.y),
+            height: definition.height,
+            direction: 0,
+          };
+          changeItems([...editorRef.current.items, item]);
+          selectEditorItems([item.id]);
+        }
+        pendingPlace = null;
+        event.preventDefault();
+        return;
+      }
+      pendingPlace = null;
+      if (marquee) {
+        const at = local(event);
+        const left = Math.min(marquee.start.x, at.x),
+          right = Math.max(marquee.start.x, at.x);
+        const top = Math.min(marquee.start.y, at.y),
+          bottom = Math.max(marquee.start.y, at.y);
+        const matches = dragging
+          ? editorRef.current.items
+              .filter((item) => {
+                const point = projectKingdom(item.x, item.y, view, viewport);
+                const size = spriteSize(
+                  item,
+                  assets!,
+                  viewport.scale * view.zoom,
+                  kingdomDirection(view.angle),
+                );
+                return (
+                  point.x + size.width * 0.6 >= left &&
+                  point.x - size.width * 0.6 <= right &&
+                  point.y + 8 >= top &&
+                  point.y - size.height <= bottom
+                );
+              })
+              .map((item) => item.id)
+          : [];
+        selectEditorItems(
+          marquee.add ? [...new Set([...editorRef.current.selectedItemIds, ...matches])] : matches,
+        );
+        marquee = null;
+        setSelectionBox(null);
+        dragging = false;
+        event.preventDefault();
+        return;
+      }
+      if (movingItems) {
         if (dragging) {
-          undoRef.current.push(movingItem.original);
+          if (!movingItems.wasSelected) selectEditorItems(movingItems.ids);
+          undoRef.current.push(movingItems.original);
           setUndoCount(undoRef.current.length);
           setEditorUnsaved(true);
           setEditorMessage('');
+        } else {
+          const ids = editorRef.current.selectedItemIds;
+          selectEditorItems(
+            ids.includes(movingItems.hitId)
+              ? ids.filter((id) => id !== movingItems!.hitId)
+              : [...ids, movingItems.hitId],
+          );
         }
-        movingItem = null;
+        movingItems = null;
         dragging = false;
         host!.dataset.dragging = 'false';
         event.preventDefault();
@@ -556,6 +705,29 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     }
     function keydown(event: KeyboardEvent) {
       if (
+        editorRef.current.open &&
+        !/INPUT|TEXTAREA|SELECT/.test((event.target as HTMLElement).tagName)
+      ) {
+        const key = event.key.toLowerCase();
+        if (event.ctrlKey && key === 'a') {
+          selectEditorItems(editorRef.current.items.map((item) => item.id));
+          event.preventDefault();
+          return;
+        }
+        if ((key === 'delete' || key === 'backspace') && editorRef.current.selectedItemIds.length) {
+          const selected = new Set(editorRef.current.selectedItemIds);
+          changeItems(editorRef.current.items.filter((item) => !selected.has(item.id)));
+          selectEditorItems([]);
+          event.preventDefault();
+          return;
+        }
+        if (key === 'escape') {
+          selectEditorItems([]);
+          event.preventDefault();
+          return;
+        }
+      }
+      if (
         !ready ||
         event.altKey ||
         event.ctrlKey ||
@@ -589,7 +761,6 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     }
     function wake() {
       dirty = true;
-      mistDirty = true;
     }
     controlsRef.current = {
       zoom: (amount) => zoomAt(amount),
@@ -637,7 +808,9 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             name,
             await loadIllustration(
               name === 'ground'
-                ? '/kingdom/ground-trails.png'
+                ? background.exists
+                  ? `/api/kingdom/editor-background/image?v=${background.revision}`
+                  : '/kingdom/ground-trails.png'
                 : name === 'nature'
                   ? '/kingdom/nature.png'
                   : `/kingdom/structures/atlases/${({ town: 'town-buildings', seaport: 'harbor-buildings', craft: 'craft-buildings', frontier: 'frontier-buildings' } as Record<string, string>)[name] ?? name}.png`,
@@ -650,11 +823,17 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         if (disposed) return;
         const loaded = Object.fromEntries(entries) as unknown as KingdomAssets;
         assets = loaded;
+        viewport.mapWidth = loaded.ground.naturalWidth * KINGDOM_UNITS_PER_PIXEL;
+        viewport.mapHeight = loaded.ground.naturalHeight * KINGDOM_UNITS_PER_PIXEL;
+        host.dataset.mapWidth = String(viewport.mapWidth);
+        host.dataset.mapHeight = String(viewport.mapHeight);
+        host.dataset.imageWidth = String(loaded.ground.naturalWidth);
+        host.dataset.imageHeight = String(loaded.ground.naturalHeight);
+        Object.assign(view, constrained(view));
         setEditorAssets(loaded);
         host.dataset.groveCount = '0';
         ready = true;
         dirty = true;
-        mistDirty = true;
         host.dataset.assets = 'ready';
         setStatus('ready');
         latest.current.onReady?.();
@@ -681,14 +860,11 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       document.removeEventListener('visibilitychange', wake);
       reduced.removeEventListener('change', wake);
       canvas.remove();
-      mistCanvas.remove();
       canvas.width = 1;
       canvas.height = 1;
-      mistCanvas.width = 1;
-      mistCanvas.height = 1;
       assets = null;
     };
-  }, [retry]);
+  }, [retry, background]);
 
   useEffect(() => {
     controlsRef.current?.refresh();
@@ -700,6 +876,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       data-stage="terrain"
       data-renderer="canvas2d"
       data-status={status}
+      data-editor-open={editorOpen}
       data-direction={direction}
       tabIndex={0}
       role="region"
@@ -708,9 +885,22 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     >
       <p id="kingdom-instructions" className="sr-only">
         Arraste para explorar. Use a roda do mouse ou dois dedos para aproximar. Q e E giram o mapa
-        em oito direções; setas deslocam e Home volta ao centro do reino.
+        em oito direções; setas deslocam e Home volta ao centro do reino. No editor, Ctrl + arrastar
+        seleciona uma área.
       </p>
       <div ref={canvasHostRef} className="kingdom-map__canvas" />
+      {selectionBox && (
+        <div
+          className="kingdom-map__selection-box"
+          style={{
+            left: selectionBox.x,
+            top: selectionBox.y,
+            width: selectionBox.width,
+            height: selectionBox.height,
+          }}
+          aria-hidden="true"
+        />
+      )}
       <button
         className="kingdom-map__editor-toggle"
         type="button"
@@ -739,9 +929,48 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             </button>
           </div>
           <p className="kingdom-editor__hint">
-            Escolha um item e clique no mapa. Em Selecionar, arraste o item para ajustar a posição.
-            Navegar mantém o arraste da câmera.
+            Arraste para navegar. Ctrl + arrastar marca uma área; Ctrl + clique seleciona itens.
+            Ctrl + arrastar um item selecionado move o grupo. Ctrl + Shift + arrastar acrescenta à
+            seleção.
           </p>
+          <div className="kingdom-editor__background">
+            <strong>Fundo do mapa</strong>
+            <small>
+              {background?.exists
+                ? `${background.width} × ${background.height} px · seu rascunho`
+                : 'Fundo original do reino'}
+            </small>
+            <input
+              ref={backgroundInputRef}
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              hidden
+              onChange={(event) => {
+                const file = event.currentTarget.files?.[0];
+                if (file) void uploadBackground(file);
+                event.currentTarget.value = '';
+              }}
+            />
+            <div>
+              <button
+                type="button"
+                disabled={backgroundBusy}
+                onClick={() => backgroundInputRef.current?.click()}
+              >
+                <Upload size={15} /> {backgroundBusy ? 'Enviando…' : 'Enviar background'}
+              </button>
+              {background?.exists && (
+                <button
+                  type="button"
+                  disabled={backgroundBusy}
+                  onClick={() => void resetBackground()}
+                >
+                  Restaurar original
+                </button>
+              )}
+            </div>
+            <small>PNG, JPEG ou WebP · até 128 MB · navegação ajustada à imagem.</small>
+          </div>
           <div className="kingdom-editor__tools" role="group" aria-label="Ferramenta do editor">
             {(['pan', 'select', 'place'] as const).map((tool) => (
               <button
@@ -793,12 +1022,18 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                   <button
                     key={item.id}
                     type="button"
-                    className={selectedItemId === item.id ? 'is-active' : ''}
-                    aria-pressed={selectedItemId === item.id}
-                    onClick={() => {
-                      selectEditorItem(item.id);
+                    className={selectedSet.has(item.id) ? 'is-active' : ''}
+                    aria-pressed={selectedSet.has(item.id)}
+                    onClick={(event) => {
+                      selectEditorItems(
+                        event.ctrlKey
+                          ? selectedSet.has(item.id)
+                            ? selectedItemIds.filter((id) => id !== item.id)
+                            : [...selectedItemIds, item.id]
+                          : [item.id],
+                      );
                       setEditorTool('select');
-                      controlsRef.current?.focus(item.id);
+                      if (!event.ctrlKey) controlsRef.current?.focus(item.id);
                     }}
                   >
                     {index + 1}.{' '}
@@ -808,24 +1043,44 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
               </div>
             </div>
           )}
-          {selectedEditorItem && (
+          {editorItems.length > 0 && (
+            <div className="kingdom-editor__bulk">
+              <span>
+                {selectedItemIds.length} selecionado{selectedItemIds.length === 1 ? '' : 's'}
+              </span>
+              <button
+                type="button"
+                onClick={() => selectEditorItems(editorItems.map((item) => item.id))}
+              >
+                Selecionar todos
+              </button>
+              <button
+                type="button"
+                disabled={!selectedItemIds.length}
+                onClick={() => selectEditorItems([])}
+              >
+                Limpar
+              </button>
+            </div>
+          )}
+          {selectedItemIds.length > 0 && (
             <div className="kingdom-editor__selection">
               <strong>
-                {
-                  KINGDOM_EDITOR_CATALOG.find((item) => item.kind === selectedEditorItem.kind)
-                    ?.label
-                }
+                {selectedEditorItem
+                  ? KINGDOM_EDITOR_CATALOG.find((item) => item.kind === selectedEditorItem.kind)
+                      ?.label
+                  : `${selectedItemIds.length} itens selecionados`}
               </strong>
-              <span>Selecionado no mapa</span>
+              <span>Ctrl + arraste para mover {selectedEditorItem ? 'o item' : 'o grupo'}</span>
               <div className="kingdom-editor__adjust">
                 <span>Tamanho</span>
                 <button
                   type="button"
-                  aria-label="Diminuir item"
+                  aria-label="Diminuir seleção"
                   onClick={() =>
                     changeItems(
                       editorItems.map((item) =>
-                        item.id === selectedEditorItem.id
+                        selectedSet.has(item.id)
                           ? { ...item, height: Math.max(80, Math.round(item.height * 0.9)) }
                           : item,
                       ),
@@ -834,14 +1089,16 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                 >
                   −
                 </button>
-                <output>{Math.round(selectedEditorItem.height)}</output>
+                <output>
+                  {selectedEditorItem ? Math.round(selectedEditorItem.height) : 'grupo'}
+                </output>
                 <button
                   type="button"
-                  aria-label="Aumentar item"
+                  aria-label="Aumentar seleção"
                   onClick={() =>
                     changeItems(
                       editorItems.map((item) =>
-                        item.id === selectedEditorItem.id
+                        selectedSet.has(item.id)
                           ? { ...item, height: Math.min(1200, Math.round(item.height * 1.1)) }
                           : item,
                       ),
@@ -855,11 +1112,11 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                 <span>Orientação</span>
                 <button
                   type="button"
-                  aria-label="Girar item para a esquerda"
+                  aria-label="Girar seleção para a esquerda"
                   onClick={() =>
                     changeItems(
                       editorItems.map((item) =>
-                        item.id === selectedEditorItem.id
+                        selectedSet.has(item.id)
                           ? { ...item, direction: (item.direction + 7) % 8 }
                           : item,
                       ),
@@ -868,14 +1125,16 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                 >
                   ↶
                 </button>
-                <output>{selectedEditorItem.direction * 45}°</output>
+                <output>
+                  {selectedEditorItem ? `${selectedEditorItem.direction * 45}°` : 'grupo'}
+                </output>
                 <button
                   type="button"
-                  aria-label="Girar item para a direita"
+                  aria-label="Girar seleção para a direita"
                   onClick={() =>
                     changeItems(
                       editorItems.map((item) =>
-                        item.id === selectedEditorItem.id
+                        selectedSet.has(item.id)
                           ? { ...item, direction: (item.direction + 1) % 8 }
                           : item,
                       ),
@@ -889,11 +1148,12 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                 className="kingdom-editor__delete"
                 type="button"
                 onClick={() => {
-                  changeItems(editorItems.filter((item) => item.id !== selectedEditorItem.id));
-                  selectEditorItem(null);
+                  changeItems(editorItems.filter((item) => !selectedSet.has(item.id)));
+                  selectEditorItems([]);
                 }}
               >
-                <Trash2 size={15} /> Excluir item
+                <Trash2 size={15} /> Excluir{' '}
+                {selectedEditorItem ? 'item' : `${selectedItemIds.length} itens`}
               </button>
             </div>
           )}
@@ -911,7 +1171,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                 if (!previous) return;
                 setUndoCount(undoRef.current.length);
                 changeItems(previous, false);
-                selectEditorItem(null);
+                selectEditorItems([]);
               }}
             >
               <Undo2 size={15} /> Desfazer

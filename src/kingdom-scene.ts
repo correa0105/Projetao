@@ -11,7 +11,13 @@ export const KINGDOM_MIN_ZOOM = 1;
 export const KINGDOM_MAX_ZOOM = 1.3;
 
 export type KingdomView = { x: number; y: number; zoom: number; angle: number };
-export type KingdomViewport = { width: number; height: number; scale: number };
+export type KingdomViewport = {
+  width: number;
+  height: number;
+  scale: number;
+  mapWidth: number;
+  mapHeight: number;
+};
 export type KingdomSpriteKind =
   | 'fortress'
   | 'tower'
@@ -273,7 +279,7 @@ export function paintKingdom(
   sprites: KingdomSprite[],
   view: KingdomView,
   viewport: KingdomViewport,
-  selected: string | null,
+  selected: readonly string[],
   hovered: string | null,
   seconds: number,
 ) {
@@ -283,7 +289,7 @@ export function paintKingdom(
     sin = Math.sin(view.angle);
   const origin = projectKingdom(0, 0, view, viewport);
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = '#e1e4e5';
+  ctx.fillStyle = '#202b29';
   ctx.fillRect(0, 0, width, height);
   ctx.save();
   ctx.transform(
@@ -294,10 +300,9 @@ export function paintKingdom(
     origin.x,
     origin.y,
   );
-  // Trinta e seis regiões detalhadas foram reunidas em um terreno contínuo.
-  const left = -KINGDOM_WIDTH / 2;
-  const top = -KINGDOM_HEIGHT / 2;
-  ctx.drawImage(assets.ground, left, top, KINGDOM_WIDTH, KINGDOM_HEIGHT);
+  const left = -viewport.mapWidth / 2;
+  const top = -viewport.mapHeight / 2;
+  ctx.drawImage(assets.ground, left, top, viewport.mapWidth, viewport.mapHeight);
   ctx.restore();
 
   const ordered = sprites
@@ -316,9 +321,9 @@ export function paintKingdom(
     )
       continue;
     const active =
-      sprite.id === selected ||
+      selected.includes(sprite.id) ||
       sprite.id === hovered ||
-      sprite.marker?.id === selected ||
+      (sprite.marker?.id != null && selected.includes(sprite.marker.id)) ||
       sprite.marker?.id === hovered;
     ctx.save();
     ctx.globalCompositeOperation = 'multiply';

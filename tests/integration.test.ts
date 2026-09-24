@@ -1,6 +1,7 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
+import sharp from 'sharp';
 import type { Server } from 'node:http';
 import { createApp } from '../server/app.js';
 import { pool } from '../server/db.js';
@@ -124,6 +125,57 @@ async function verifyKingdomDraft(alice: Client, bob: Client) {
   assert.equal((await request('/api/kingdom/editor-draft')).status, 401);
 }
 
+async function verifyKingdomBackground(alice: Client, bob: Client) {
+  assert.deepEqual((await request('/api/kingdom/editor-background/meta', alice)).data, {
+    exists: false,
+    width: 3072,
+    height: 3072,
+    revision: 0,
+  });
+  const image = await sharp({
+    create: {
+      width: 8192,
+      height: 4096,
+      channels: 3,
+      background: '#726b54',
+    },
+  })
+    .png()
+    .toBuffer();
+  const uploaded = await fetch(base + '/api/kingdom/editor-background', {
+    method: 'PUT',
+    headers: { Origin: origin, Cookie: alice.cookie, 'Content-Type': 'image/png' },
+    body: new Uint8Array(image),
+  });
+  assert.equal(uploaded.status, 200);
+  assert.deepEqual(await uploaded.json(), { exists: true, width: 8192, height: 4096, revision: 1 });
+  assert.deepEqual((await request('/api/kingdom/editor-background/meta', bob)).data, {
+    exists: false,
+    width: 3072,
+    height: 3072,
+    revision: 0,
+  });
+  assert.equal((await request('/api/kingdom/editor-background/image', bob)).status, 404);
+  const fetched = await fetch(base + '/api/kingdom/editor-background/image', {
+    headers: { Cookie: alice.cookie },
+  });
+  assert.equal(fetched.status, 200);
+  assert.equal(fetched.headers.get('content-type'), 'image/png');
+  assert.deepEqual(Buffer.from(await fetched.arrayBuffer()), image);
+  const invalid = await fetch(base + '/api/kingdom/editor-background', {
+    method: 'PUT',
+    headers: { Origin: origin, Cookie: alice.cookie, 'Content-Type': 'image/png' },
+    body: new Uint8Array([1, 2, 3]),
+  });
+  assert.equal(invalid.status, 400);
+  assert.equal((await request('/api/kingdom/editor-background/meta', alice)).data.revision, 1);
+  assert.equal(
+    (await request('/api/kingdom/editor-background', alice, undefined, 'DELETE')).status,
+    200,
+  );
+  assert.equal((await request('/api/kingdom/editor-background/image', alice)).status, 404);
+}
+
 test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores', async (t) => {
   const alice = await signup();
   const bob = await signup();
@@ -132,6 +184,9 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
   const borin = await character(bob, 'Borin');
   await t.test('rascunho do editor: persistência, revisão e isolamento por usuário', async () =>
     verifyKingdomDraft(alice, bob),
+  );
+  await t.test('background 8K: upload, leitura privada, rejeição e restauração', async () =>
+    verifyKingdomBackground(alice, bob),
   );
   await t.test('sessão, múltiplos personagens, atributos e acesso isolado', async () => {
     assert.equal((await request('/api/characters')).status, 401);

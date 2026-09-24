@@ -6,7 +6,7 @@ persistido em PostgreSQL. Protótipo funcional em português, inspirado em D&D 5
 Identidade da guilda: nome escrito em Libre Baskerville na apresentação, azul de noite, pergaminho e cobre envelhecido.
 O Bastião da Alvorada é a sede em Vigília. [Direção visual, arte e prompt](docs/IDENTIDADE.md).
 
-Na visão do Reino do Norte, um solo ilustrado de grama e terra mostra somente uma rede de trilhas até as seis áreas reservadas para locais. A arte é vista de cima e recebe a perspectiva da câmera, mantendo as trilhas coerentes quando o mapa gira. Não há árvores, construções ou objetos predefinidos; o editor permite montar uma composição privada sobre o chão. A área navegável permanece em 15000 × 15000 unidades, com giro em oito direções e zoom de 100–130%. Os seis locais e suas missões continuam no SQL; o botão Missões do reino e o mural seguem disponíveis. O Mundo 3D permanece independente. Consulte [a documentação da visão do reino](docs/KINGDOM-2D.md).
+Na visão do Reino do Norte, o chão padrão ilustrado mostra trilhas até seis áreas reservadas. O editor permite montar uma composição privada, selecionar e mover grupos com Ctrl + mouse e enviar um background próprio, inclusive 8K. A área navegável cresce com as dimensões da imagem; o fundo padrão mede 15000 × 15000 unidades. A névoa regional foi retirada. Os seis locais e suas missões continuam no SQL; o Mundo 3D permanece independente. Consulte [a documentação da visão do reino](docs/KINGDOM-2D.md).
 
 O botão **Editar mapa** permite posicionar objetos ilustrados, ajustar tamanho e orientação e salvar um rascunho particular no PostgreSQL. Os rascunhos do terreno antigo foram apagados na migration 012; novos arranjos são recuperados ao voltar ao reino e podem ser incorporados à composição compartilhada depois de concluídos.
 
@@ -63,7 +63,7 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Conclusão pelo criador com resumo, XP por personagem inscrito e gancho opcional. Resumo e resultados ficam no histórico; XP é persistido uma única vez.
 - Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos da staff/admin.
 - Mundo com relevo cartográfico em Three.js, detalhe de solo/rocha, arraste elástico, zoom e nuvens em movimento, preenchendo a tela. A visão inicial usa 100%, equivalente ao antigo enquadramento de 142%; a silhueta fornecida pelo usuário define a geografia. Vinte e dois territórios têm demarcações com destaque ao passar o mouse e clique na superfície; mar contínuo ampliado, ilhotas, vulcão e tormenta complementam o cenário.
-- Reino do Norte abre uma visão regional 2D inclinada com solo texturizado livre de objetos e nuvens sobre o chão. Arraste, zoom e giro de 45° permitem explorar a área; a névoa móvel fica nas bordas. O editor permite começar uma nova composição particular. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
+- Reino do Norte abre uma visão regional 2D inclinada com solo texturizado. Arraste, zoom e giro de 45° permitem explorar a área. O editor permite compor objetos privados e enviar um background próprio. Não há névoa regional. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
 - Lore, Regras, House e Mercenários têm conteúdo inicial persistido no SQL.
 - Interface adaptável para desktop e celular, com tema exclusivamente escuro e menu retrátil com ícones medievais ilustrados.
 
