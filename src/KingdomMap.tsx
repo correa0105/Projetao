@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   Focus,
+  Copy,
   Minus,
   Plus,
   RotateCcw,
@@ -55,6 +56,8 @@ type Controls = {
   getView: () => KingdomView;
   setHome: (view: KingdomView) => void;
   setEditorMode: () => void;
+  nudgeSelection: (screenX: number, screenY: number) => void;
+  duplicateSelection: () => void;
 };
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const EDITOR_MIN_ZOOM = 0.03;
@@ -141,6 +144,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
   const [editorKind, setEditorKind] = useState<KingdomEditorKind>('pine');
   const [editorItems, setEditorItems] = useState<KingdomEditorItem[]>([]);
   const [selectedItemIds, setSelectedItemIds] = useState<string[]>([]);
+  const [nudgeStep, setNudgeStep] = useState(12);
   const [selectionBox, setSelectionBox] = useState<{
     x: number;
     y: number;
@@ -168,13 +172,15 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     kind: editorKind,
     items: editorItems,
     selectedItemIds,
+    nudgeStep,
   });
   useLayoutEffect(() => {
     editorRef.current.open = editorOpen;
     editorRef.current.tool = editorTool;
     editorRef.current.kind = editorKind;
     editorRef.current.selectedItemIds = selectedItemIds;
-  }, [editorOpen, editorTool, editorKind, selectedItemIds]);
+    editorRef.current.nudgeStep = nudgeStep;
+  }, [editorOpen, editorTool, editorKind, selectedItemIds, nudgeStep]);
 
   const changeItems = (items: KingdomEditorItem[], remember = true) => {
     if (remember) {
@@ -516,9 +522,11 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       hitId: string;
       original: KingdomEditorItem[];
       wasSelected: boolean;
+      toggleOnClick: boolean;
     } | null = null;
     let marquee: { start: { x: number; y: number }; add: boolean } | null = null;
     let pendingPlace: { at: { x: number; y: number }; kind: KingdomEditorKind } | null = null;
+    let pendingClearSelection = false;
     function hitEditorItem(x: number, y: number) {
       const direction = kingdomDirection(view.angle);
       return [...editorRef.current.items].reverse().find((item) => {
@@ -531,6 +539,43 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           y <= at.y + 8
         );
       });
+    }
+    function screenDelta(dx: number, dy: number) {
+      const x = viewport.width / 2;
+      const y = viewport.height * KINGDOM_CAMERA_Y;
+      const from = unprojectKingdom(x, y, view, viewport);
+      const to = unprojectKingdom(x + dx, y + dy, view, viewport);
+      return { x: to.x - from.x, y: to.y - from.y };
+    }
+    function movedGroup(original: KingdomEditorItem[], ids: string[], dx: number, dy: number) {
+      const group = original.filter((item) => ids.includes(item.id));
+      if (!group.length) return original;
+      const allowedX = clamp(
+        dx,
+        -viewport.mapWidth / 2 - Math.min(...group.map((item) => item.x)),
+        viewport.mapWidth / 2 - Math.max(...group.map((item) => item.x)),
+      );
+      const allowedY = clamp(
+        dy,
+        -viewport.mapHeight / 2 - Math.min(...group.map((item) => item.y)),
+        viewport.mapHeight / 2 - Math.max(...group.map((item) => item.y)),
+      );
+      return original.map((item) =>
+        ids.includes(item.id)
+          ? { ...item, x: Math.round(item.x + allowedX), y: Math.round(item.y + allowedY) }
+          : item,
+      );
+    }
+    function hoverItem(event: PointerEvent) {
+      if (!ready || !editorRef.current.open || editorRef.current.tool === 'pan') {
+        host!.dataset.hoverItem = 'false';
+        return;
+      }
+      const at = local(event);
+      host!.dataset.hoverItem = String(!!hitEditorItem(at.x, at.y));
+    }
+    function leaveItem() {
+      host!.dataset.hoverItem = 'false';
     }
     function pointerDown(event: PointerEvent) {
       if (
@@ -553,6 +598,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
               hitId: hit.id,
               original: editorRef.current.items.map((item) => ({ ...item })),
               wasSelected,
+              toggleOnClick: true,
             };
           } else {
             marquee = { start: at, add: event.shiftKey };
@@ -567,8 +613,31 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           event.preventDefault();
           return;
         }
+        if (editorRef.current.tool !== 'pan' && !event.altKey) {
+          const hit = hitEditorItem(at.x, at.y);
+          if (hit) {
+            const wasSelected = editorRef.current.selectedItemIds.includes(hit.id);
+            movingItems = {
+              ids: wasSelected ? [...editorRef.current.selectedItemIds] : [hit.id],
+              hitId: hit.id,
+              original: editorRef.current.items.map((item) => ({ ...item })),
+              wasSelected,
+              toggleOnClick: false,
+            };
+            startPointer = at;
+            startView = { ...view };
+            dragging = false;
+            hadMultiTouch = false;
+            host!.setPointerCapture(event.pointerId);
+            pointers.set(event.pointerId, at);
+            event.preventDefault();
+            return;
+          }
+        }
         if (editorRef.current.tool === 'place') {
           pendingPlace = { at, kind: editorRef.current.kind };
+        } else if (editorRef.current.tool === 'select') {
+          pendingClearSelection = true;
         }
       }
       pointers.set(event.pointerId, at);
@@ -606,29 +675,16 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         dragging = true;
         const from = unprojectKingdom(startPointer.x, startPointer.y, startView, viewport);
         const to = unprojectKingdom(at.x, at.y, startView, viewport);
-        const group = movingItems.original.filter((item) => movingItems!.ids.includes(item.id));
-        const dx = clamp(
+        const next = movedGroup(
+          movingItems.original,
+          movingItems.ids,
           to.x - from.x,
-          -viewport.mapWidth / 2 - Math.min(...group.map((item) => item.x)),
-          viewport.mapWidth / 2 - Math.max(...group.map((item) => item.x)),
-        );
-        const dy = clamp(
           to.y - from.y,
-          -viewport.mapHeight / 2 - Math.min(...group.map((item) => item.y)),
-          viewport.mapHeight / 2 - Math.max(...group.map((item) => item.y)),
-        );
-        const next = movingItems.original.map((item) =>
-          movingItems!.ids.includes(item.id)
-            ? {
-                ...item,
-                x: Math.round(item.x + dx),
-                y: Math.round(item.y + dy),
-              }
-            : item,
         );
         editorRef.current.items = next;
         setEditorItems(next);
         dirty = true;
+        host!.dataset.dragging = 'true';
         event.preventDefault();
         return;
       }
@@ -728,13 +784,15 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           setUndoCount(undoRef.current.length);
           setEditorUnsaved(true);
           setEditorMessage('');
-        } else {
+        } else if (movingItems.toggleOnClick) {
           const ids = editorRef.current.selectedItemIds;
           selectEditorItems(
             ids.includes(movingItems.hitId)
               ? ids.filter((id) => id !== movingItems!.hitId)
               : [...ids, movingItems.hitId],
           );
+        } else {
+          selectEditorItems(movingItems.ids);
         }
         movingItems = null;
         dragging = false;
@@ -742,6 +800,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         event.preventDefault();
         return;
       }
+      if (pendingClearSelection && !dragging) selectEditorItems([]);
+      pendingClearSelection = false;
       if (dragging || hadMultiTouch) lastDrag = performance.now();
       if (pointers.size === 1) {
         startPointer = [...pointers.values()][0];
@@ -792,6 +852,21 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         }
         if (key === 'escape') {
           selectEditorItems([]);
+          event.preventDefault();
+          return;
+        }
+        if (
+          editorRef.current.selectedItemIds.length &&
+          !event.ctrlKey &&
+          !event.metaKey &&
+          !event.altKey &&
+          ['arrowleft', 'arrowright', 'arrowup', 'arrowdown'].includes(key)
+        ) {
+          const step = editorRef.current.nudgeStep * (event.shiftKey ? 5 : 1);
+          controlsRef.current?.nudgeSelection(
+            key === 'arrowleft' ? -step : key === 'arrowright' ? step : 0,
+            key === 'arrowup' ? -step : key === 'arrowdown' ? step : 0,
+          );
           event.preventDefault();
           return;
         }
@@ -861,8 +936,43 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         if (!editorRef.current.open) animateTo(view, 220);
         sync();
       },
+      nudgeSelection: (screenX, screenY) => {
+        const ids = editorRef.current.selectedItemIds;
+        if (!ids.length) return;
+        const delta = screenDelta(screenX, screenY);
+        const next = movedGroup(editorRef.current.items, ids, delta.x, delta.y);
+        if (
+          next.some(
+            (item, index) =>
+              item.x !== editorRef.current.items[index].x ||
+              item.y !== editorRef.current.items[index].y,
+          )
+        )
+          changeItems(next);
+      },
+      duplicateSelection: () => {
+        const original = editorRef.current.items;
+        const ids = editorRef.current.selectedItemIds;
+        if (!ids.length) return;
+        if (original.length + ids.length > 500) {
+          setEditorMessage('O rascunho aceita no máximo 500 itens.');
+          return;
+        }
+        const delta = screenDelta(24, 24);
+        const moved = movedGroup(
+          original.filter((item) => ids.includes(item.id)),
+          ids,
+          delta.x,
+          delta.y,
+        );
+        const copies = moved.map((item) => ({ ...item, id: crypto.randomUUID() }));
+        changeItems([...original, ...copies]);
+        selectEditorItems(copies.map((item) => item.id));
+      },
     };
     host.addEventListener('pointerdown', pointerDown);
+    host.addEventListener('pointermove', hoverItem);
+    host.addEventListener('pointerleave', leaveItem);
     window.addEventListener('pointermove', pointerMove, { passive: false });
     window.addEventListener('pointerup', pointerUp);
     window.addEventListener('pointercancel', pointerUp);
@@ -932,6 +1042,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       controlsRef.current = null;
       pointers.clear();
       host.removeEventListener('pointerdown', pointerDown);
+      host.removeEventListener('pointermove', hoverItem);
+      host.removeEventListener('pointerleave', leaveItem);
       window.removeEventListener('pointermove', pointerMove);
       window.removeEventListener('pointerup', pointerUp);
       window.removeEventListener('pointercancel', pointerUp);
@@ -1014,9 +1126,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             </button>
           </div>
           <p className="kingdom-editor__hint">
-            Arraste para navegar. Ctrl + arrastar marca uma área; Ctrl + clique seleciona itens.
-            Ctrl + arrastar um item selecionado move o grupo. Ctrl + Shift + arrastar acrescenta à
-            seleção.
+            Clique no chão para adicionar. Arraste um item para movê-lo; arraste o chão para
+            navegar. Ctrl + arrastar marca uma área e Ctrl + clique alterna itens no grupo.
           </p>
           <div className="kingdom-editor__background">
             <strong>Fundo do mapa</strong>
@@ -1176,7 +1287,56 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                       ?.label
                   : `${selectedItemIds.length} itens selecionados`}
               </strong>
-              <span>Ctrl + arraste para mover {selectedEditorItem ? 'o item' : 'o grupo'}</span>
+              <span>
+                Arraste no mapa ou use as setas para mover{' '}
+                {selectedEditorItem ? 'o item' : 'o grupo'}.
+              </span>
+              <div className="kingdom-editor__move">
+                <label>
+                  Passo das setas{' '}
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value={nudgeStep}
+                    onChange={(event) =>
+                      setNudgeStep(clamp(Number(event.target.value) || 1, 1, 100))
+                    }
+                  />{' '}
+                  px
+                </label>
+                <div role="group" aria-label="Mover seleção">
+                  <button
+                    type="button"
+                    aria-label="Mover seleção para cima"
+                    onClick={() => controlsRef.current?.nudgeSelection(0, -nudgeStep)}
+                  >
+                    ↑
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Mover seleção para a esquerda"
+                    onClick={() => controlsRef.current?.nudgeSelection(-nudgeStep, 0)}
+                  >
+                    ←
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Mover seleção para baixo"
+                    onClick={() => controlsRef.current?.nudgeSelection(0, nudgeStep)}
+                  >
+                    ↓
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Mover seleção para a direita"
+                    onClick={() => controlsRef.current?.nudgeSelection(nudgeStep, 0)}
+                  >
+                    →
+                  </button>
+                </div>
+                <small>Teclado: setas; Shift + setas move cinco passos.</small>
+              </div>
               <div className="kingdom-editor__adjust">
                 <span>Tamanho</span>
                 <button
@@ -1249,6 +1409,14 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                   ↷
                 </button>
               </div>
+              <button
+                className="kingdom-editor__duplicate"
+                type="button"
+                disabled={editorItems.length + selectedItemIds.length > 500}
+                onClick={() => controlsRef.current?.duplicateSelection()}
+              >
+                <Copy size={15} /> Duplicar {selectedEditorItem ? 'item' : 'grupo'}
+              </button>
               <button
                 className="kingdom-editor__delete"
                 type="button"

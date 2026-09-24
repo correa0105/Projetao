@@ -1585,8 +1585,23 @@ async function runKingdomEditor() {
   await expect(editor).toBeVisible();
   await editor.getByRole('button', { name: 'Pinheiro' }).click();
   const bounds = (await scene.boundingBox())!;
-  await page.mouse.click(bounds.x + bounds.width * 0.42, bounds.y + bounds.height * 0.48);
+  const placeX = bounds.x + bounds.width * 0.42;
+  const placeY = bounds.y + bounds.height * 0.48;
+  const initialWorldX = await scene.evaluate((host, x) => {
+    const rect = host.getBoundingClientRect();
+    const data = (host as HTMLElement).dataset;
+    return (
+      (x - rect.left - rect.width / 2) / (Number(data.baseScale) * Number(data.zoom)) +
+      Number(data.panX)
+    );
+  }, placeX);
+  await page.mouse.click(placeX, placeY);
   await expect(editor).toContainText('1 itens');
+  await page.mouse.move(placeX, placeY - 35);
+  await expect(scene).toHaveAttribute('data-hover-item', 'true');
+  await page.mouse.down();
+  await page.mouse.move(placeX + 40, placeY - 25, { steps: 6 });
+  await page.mouse.up();
   await editor.getByRole('button', { name: 'Aumentar seleção' }).click();
   await editor.getByRole('button', { name: 'Girar seleção para a direita' }).click();
   await editor.getByRole('button', { name: 'Salvar rascunho' }).click();
@@ -1597,6 +1612,7 @@ async function runKingdomEditor() {
   expect(layout.revision).toBe(1);
   expect(layout.items).toHaveLength(1);
   expect(layout.items[0].kind).toBe('pine');
+  expect(layout.items[0].x).toBeGreaterThan(initialWorldX);
   expect(layout.items[0].height).toBeGreaterThan(520);
   expect(layout.items[0].direction).toBe(1);
   await page.screenshot({ path: 'test-results/kingdom-editor.png', fullPage: true });
@@ -1621,11 +1637,10 @@ async function runKingdomEditor() {
     };
   }, layout.items[0]);
   await page.mouse.move(handle.x, handle.y);
-  await page.keyboard.down('Control');
   await page.mouse.down();
   await page.mouse.move(handle.x + 45, handle.y + 12, { steps: 5 });
   await page.mouse.up();
-  await page.keyboard.up('Control');
+  await reopened.getByRole('button', { name: 'Mover seleção para a direita' }).click();
   const movedSave = page.waitForResponse(
     (response) =>
       response.url().includes('/api/kingdom/editor-draft') &&
@@ -1724,6 +1739,11 @@ async function runKingdomEditor() {
   expect(grouped.items[0].x).toBeGreaterThan(beforeGroup.items[0].x);
   expect(grouped.items[0].height).toBeGreaterThan(beforeGroup.items[0].height);
   expect(grouped.items[1].height).toBeGreaterThan(520);
+  await reopened.getByRole('button', { name: 'Duplicar grupo' }).click();
+  await expect(reopened).toContainText('4 itens');
+  await reopened.getByRole('button', { name: 'Desfazer' }).click();
+  await expect(reopened).toContainText('2 itens');
+  await reopened.getByRole('button', { name: 'Selecionar todos' }).click();
   await reopened.getByRole('button', { name: 'Excluir 2 itens' }).click();
   await expect(reopened).toContainText('0 itens');
   await reopened.getByRole('button', { name: 'Desfazer' }).click();
@@ -1800,7 +1820,9 @@ async function runKingdomEditor() {
   await expect(scene).toHaveAttribute('data-image-width', '3072', { timeout: 30000 });
   await expect(scene).toHaveAttribute('data-tilt', '0.58');
   expect(errors).toEqual([]);
-  console.log('Editor OK: grupo, fundo 4:3 sem distorção, upload 8K, visão 100% persistida e recarga.');
+  console.log(
+    'Editor OK: arraste direto, movimento preciso, duplicação, fundo 4:3, upload 8K e visão 100%.',
+  );
 }
 
 watchErrors(page);
