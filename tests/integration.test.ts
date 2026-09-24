@@ -176,6 +176,57 @@ async function verifyKingdomBackground(alice: Client, bob: Client) {
   assert.equal((await request('/api/kingdom/editor-background/image', alice)).status, 404);
 }
 
+async function verifyKingdomView(alice: Client, bob: Client) {
+  const initial = { exists: false, x: 0, y: 0, zoom: 1, angle: 0 };
+  assert.deepEqual((await request('/api/kingdom/editor-view', alice)).data, initial);
+  const saved = await request(
+    '/api/kingdom/editor-view',
+    alice,
+    { x: 300, y: -200, zoom: 0.4, angle: Math.PI / 2 },
+    'PUT',
+  );
+  assert.equal(saved.status, 200);
+  assert.equal(saved.data.zoom, 0.4);
+  assert.deepEqual((await request('/api/kingdom/editor-view', bob)).data, initial);
+  assert.equal(
+    (await request('/api/kingdom/editor-view', alice, { x: 0, y: 0, zoom: 100, angle: 0 }, 'PUT'))
+      .status,
+    400,
+  );
+  const picture = await sharp({
+    create: {
+      width: 1024,
+      height: 768,
+      channels: 3,
+      background: '#625f49',
+    },
+  })
+    .png()
+    .toBuffer();
+  const uploaded = await fetch(base + '/api/kingdom/editor-background', {
+    method: 'PUT',
+    headers: { Origin: origin, Cookie: alice.cookie, 'Content-Type': 'image/png' },
+    body: new Uint8Array(picture),
+  });
+  assert.equal(uploaded.status, 200);
+  assert.deepEqual((await request('/api/kingdom/editor-view', alice)).data, initial);
+  assert.equal(
+    (
+      await request(
+        '/api/kingdom/editor-view',
+        alice,
+        { x: -800, y: 900, zoom: 2, angle: 0 },
+        'PUT',
+      )
+    ).status,
+    200,
+  );
+  assert.equal((await request('/api/kingdom/editor-view', alice)).data.zoom, 2);
+  await request('/api/kingdom/editor-background', alice, undefined, 'DELETE');
+  assert.deepEqual((await request('/api/kingdom/editor-view', alice)).data, initial);
+  assert.equal((await request('/api/kingdom/editor-view', alice, undefined, 'DELETE')).status, 200);
+}
+
 test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores', async (t) => {
   const alice = await signup();
   const bob = await signup();
@@ -187,6 +238,9 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
   );
   await t.test('background 8K: upload, leitura privada, rejeição e restauração', async () =>
     verifyKingdomBackground(alice, bob),
+  );
+  await t.test('visão inicial: zoom salvo, isolamento e vínculo ao background', async () =>
+    verifyKingdomView(alice, bob),
   );
   await t.test('sessão, múltiplos personagens, atributos e acesso isolado', async () => {
     assert.equal((await request('/api/characters')).status, 401);

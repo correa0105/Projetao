@@ -67,6 +67,16 @@ const kingdomDraftSchema = z.object({
       message: 'Há itens repetidos no mapa.',
     }),
 });
+const kingdomViewSchema = z.object({
+  x: z.number().finite().min(-40000).max(40000),
+  y: z.number().finite().min(-40000).max(40000),
+  zoom: z.number().finite().min(0.03).max(32),
+  angle: z
+    .number()
+    .finite()
+    .min(0)
+    .refine((angle) => angle < 2 * Math.PI),
+});
 
 export function createApp() {
   const app = express();
@@ -463,6 +473,37 @@ export function createApp() {
       height: KINGDOM_DEFAULT_PIXELS,
       revision: 0,
     });
+  });
+  app.get('/api/kingdom/editor-view', async (_req, res) => {
+    const {
+      rows: [view],
+    } = await pool.query(
+      `SELECT v.center_x AS x,v.center_y AS y,v.zoom,v.angle
+       FROM kingdom_editor_views v
+       LEFT JOIN kingdom_editor_backgrounds b ON b.user_id=v.user_id
+       WHERE v.user_id=$1 AND v.background_updated_at IS NOT DISTINCT FROM b.updated_at`,
+      [res.locals.user.id],
+    );
+    res.json(view ? { exists: true, ...view } : { exists: false, x: 0, y: 0, zoom: 1, angle: 0 });
+  });
+  app.put('/api/kingdom/editor-view', async (req, res) => {
+    const view = kingdomViewSchema.parse(req.body);
+    const {
+      rows: [saved],
+    } = await pool.query(
+      `INSERT INTO kingdom_editor_views(user_id,background_updated_at,center_x,center_y,zoom,angle)
+       VALUES($1,(SELECT updated_at FROM kingdom_editor_backgrounds WHERE user_id=$1),$2,$3,$4,$5)
+       ON CONFLICT (user_id) DO UPDATE SET background_updated_at=EXCLUDED.background_updated_at,
+         center_x=EXCLUDED.center_x,center_y=EXCLUDED.center_y,zoom=EXCLUDED.zoom,
+         angle=EXCLUDED.angle,updated_at=now()
+       RETURNING center_x AS x,center_y AS y,zoom,angle`,
+      [res.locals.user.id, view.x, view.y, view.zoom, view.angle],
+    );
+    res.json({ exists: true, ...saved });
+  });
+  app.delete('/api/kingdom/editor-view', async (_req, res) => {
+    await pool.query('DELETE FROM kingdom_editor_views WHERE user_id=$1', [res.locals.user.id]);
+    res.json({ exists: false, x: 0, y: 0, zoom: 1, angle: 0 });
   });
   app.put('/api/kingdom/editor-draft', async (req, res) => {
     const draft = kingdomDraftSchema.parse(req.body);

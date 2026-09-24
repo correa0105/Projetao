@@ -166,6 +166,34 @@
   padding: 6px 8px;
   font-size: 10px;
 }
+.kingdom-editor__view {
+  display: grid;
+  gap: 6px;
+  padding: 9px;
+  border: 1px solid #b49a6a57;
+  border-radius: 6px;
+  background: #1a2926;
+}
+.kingdom-editor__view strong {
+  font-size: 11px;
+}
+.kingdom-editor__view small {
+  color: #c3b496;
+  font-size: 10px;
+  line-height: 1.35;
+}
+.kingdom-editor__view > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.kingdom-editor__view button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 8px;
+  font-size: 10px;
+}
 .kingdom-editor__bulk {
   display: flex;
   align-items: center;

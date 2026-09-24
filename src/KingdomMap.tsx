@@ -18,6 +18,7 @@ import {
   KINGDOM_BACKGROUND_MAX_BYTES,
   KINGDOM_UNITS_PER_PIXEL,
   type KingdomBackgroundMeta,
+  type KingdomEditorView,
   type KingdomEditorItem,
   type KingdomEditorKind,
   type KingdomEditorLayout,
@@ -26,6 +27,7 @@ import {
   KINGDOM_CAMERA_Y,
   KINGDOM_MAX_ZOOM,
   KINGDOM_MIN_ZOOM,
+  KINGDOM_TILT,
   kingdomDirection,
   frames,
   paintKingdom,
@@ -50,8 +52,14 @@ type Controls = {
   reset: () => void;
   focus: (id: string) => void;
   refresh: () => void;
+  getView: () => KingdomView;
+  setHome: (view: KingdomView) => void;
+  setEditorMode: () => void;
 };
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+const EDITOR_MIN_ZOOM = 0.03;
+const EDITOR_MAX_ZOOM = 32;
+const defaultHome: KingdomView = { x: 0, y: 0, zoom: 1, angle: 0 };
 const directions = [
   'Sul',
   'Sudoeste',
@@ -125,6 +133,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [retry, setRetry] = useState(0);
   const [zoom, setZoom] = useState(1);
+  const [homeZoom, setHomeZoom] = useState(1);
   const [direction, setDirection] = useState(0);
   const [editorOpen, setEditorOpen] = useState(false);
   const [editorTool, setEditorTool] = useState<'pan' | 'select' | 'place'>('pan');
@@ -138,8 +147,12 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     width: number;
     height: number;
   } | null>(null);
-  const [background, setBackground] = useState<KingdomBackgroundMeta | null>(null);
+  const [mapConfig, setMapConfig] = useState<{
+    background: KingdomBackgroundMeta;
+    home: KingdomView;
+  } | null>(null);
   const [backgroundBusy, setBackgroundBusy] = useState(false);
+  const [viewBusy, setViewBusy] = useState(false);
   const backgroundInputRef = useRef<HTMLInputElement>(null);
   const [editorRevision, setEditorRevision] = useState(0);
   const [editorLoading, setEditorLoading] = useState(true);
@@ -184,12 +197,16 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       ? editorItems.find((item) => item.id === selectedItemIds[0])
       : null;
   const selectedSet = new Set(selectedItemIds);
+  const background = mapConfig?.background;
 
   useEffect(() => {
     let alive = true;
-    api<KingdomBackgroundMeta>('/kingdom/editor-background/meta')
-      .then((result) => {
-        if (alive) setBackground(result);
+    Promise.all([
+      api<KingdomBackgroundMeta>('/kingdom/editor-background/meta'),
+      api<KingdomEditorView>('/kingdom/editor-view'),
+    ])
+      .then(([background, saved]) => {
+        if (alive) setMapConfig({ background, home: saved.exists ? saved : defaultHome });
       })
       .catch((error: Error) => {
         if (alive) {
@@ -214,7 +231,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         headers: { 'Content-Type': file.type },
         body: file,
       });
-      setBackground(saved);
+      setMapConfig({ background: saved, home: defaultHome });
       setEditorMessage(`Fundo salvo: ${saved.width} × ${saved.height} px.`);
     } catch (error) {
       setEditorMessage((error as Error).message);
@@ -225,14 +242,49 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
   async function resetBackground() {
     setBackgroundBusy(true);
     try {
-      setBackground(
-        await api<KingdomBackgroundMeta>('/kingdom/editor-background', { method: 'DELETE' }),
-      );
+      const restored = await api<KingdomBackgroundMeta>('/kingdom/editor-background', {
+        method: 'DELETE',
+      });
+      setMapConfig({ background: restored, home: defaultHome });
       setEditorMessage('Fundo original restaurado.');
     } catch (error) {
       setEditorMessage((error as Error).message);
     } finally {
       setBackgroundBusy(false);
+    }
+  }
+  async function saveCurrentView() {
+    const current = controlsRef.current?.getView();
+    if (!current) return;
+    setViewBusy(true);
+    setEditorMessage('Salvando visão…');
+    try {
+      const saved = await api<KingdomEditorView>('/kingdom/editor-view', {
+        method: 'PUT',
+        body: JSON.stringify({
+          ...current,
+          angle: ((current.angle % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI),
+        }),
+      });
+      controlsRef.current?.setHome(saved);
+      setEditorMessage('Visão atual salva como 100%. Ela será restaurada ao voltar ao mapa.');
+    } catch (error) {
+      setEditorMessage((error as Error).message);
+    } finally {
+      setViewBusy(false);
+    }
+  }
+  async function resetCurrentView() {
+    setViewBusy(true);
+    try {
+      await api<KingdomEditorView>('/kingdom/editor-view', { method: 'DELETE' });
+      controlsRef.current?.setHome(defaultHome);
+      controlsRef.current?.reset();
+      setEditorMessage('Enquadramento inicial restaurado.');
+    } catch (error) {
+      setEditorMessage((error as Error).message);
+    } finally {
+      setViewBusy(false);
     }
   }
 
@@ -285,7 +337,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
   useEffect(() => {
     const host = hostRef.current,
       canvasHost = canvasHostRef.current;
-    if (!host || !canvasHost || !background) return;
+    if (!host || !canvasHost || !mapConfig) return;
+    const { background } = mapConfig;
     const canvas = document.createElement('canvas');
     canvas.className = 'kingdom-map__ground';
     canvas.setAttribute('aria-hidden', 'true');
@@ -306,11 +359,12 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       width: 1,
       height: 1,
       scale: 1,
+      tilt: background.exists ? 1 : KINGDOM_TILT,
       mapWidth: background.width * KINGDOM_UNITS_PER_PIXEL,
       mapHeight: background.height * KINGDOM_UNITS_PER_PIXEL,
     };
-    const home = { x: 0, y: 0 };
-    const view: KingdomView = { ...home, zoom: 1, angle: 0 };
+    const home: KingdomView = { ...mapConfig.home };
+    const view: KingdomView = { ...home };
     let animation: { start: number; from: KingdomView; to: KingdomView; duration: number } | null =
       null;
     const pointers = new Map<number, { x: number; y: number }>();
@@ -323,20 +377,32 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     host.dataset.assets = 'loading';
     host.dataset.homeX = String(home.x);
     host.dataset.homeY = String(home.y);
-    host.dataset.minZoom = String(KINGDOM_MIN_ZOOM);
-    host.dataset.maxZoom = String(KINGDOM_MAX_ZOOM);
     host.dataset.mapWidth = String(viewport.mapWidth);
     host.dataset.mapHeight = String(viewport.mapHeight);
     host.dataset.imageWidth = String(background.width);
     host.dataset.imageHeight = String(background.height);
+    host.dataset.customBackground = String(background.exists);
+    host.dataset.tilt = String(viewport.tilt);
     setStatus('loading');
-    setZoom(1);
-    setDirection(0);
+    setZoom(view.zoom);
+    setHomeZoom(home.zoom);
+    setDirection(kingdomDirection(view.angle));
+
+    function zoomBounds() {
+      return editorRef.current.open
+        ? { min: EDITOR_MIN_ZOOM, max: EDITOR_MAX_ZOOM }
+        : { min: home.zoom * KINGDOM_MIN_ZOOM, max: home.zoom * KINGDOM_MAX_ZOOM };
+    }
 
     function sync() {
+      const bounds = zoomBounds();
       host!.dataset.direction = String(kingdomDirection(view.angle));
       host!.dataset.angle = view.angle.toFixed(6);
       host!.dataset.zoom = view.zoom.toFixed(4);
+      host!.dataset.homeZoom = home.zoom.toFixed(4);
+      host!.dataset.homeAngle = home.angle.toFixed(6);
+      host!.dataset.minZoom = bounds.min.toFixed(4);
+      host!.dataset.maxZoom = bounds.max.toFixed(4);
       host!.dataset.panX = view.x.toFixed(3);
       host!.dataset.panY = view.y.toFixed(3);
       setZoom(view.zoom);
@@ -344,7 +410,9 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       dirty = true;
     }
     function constrained(next: KingdomView): KingdomView {
-      const zero = { ...next, x: 0, y: 0 };
+      const bounds = zoomBounds();
+      const normalized = { ...next, zoom: clamp(next.zoom, bounds.min, bounds.max) };
+      const zero = { ...normalized, x: 0, y: 0 };
       const corners = [
         [0, 0],
         [viewport.width, 0],
@@ -358,10 +426,9 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       const minY = -viewport.mapHeight / 2 - Math.min(...corners.map((point) => point.y));
       const maxY = viewport.mapHeight / 2 - Math.max(...corners.map((point) => point.y));
       return {
-        ...next,
+        ...normalized,
         x: minX <= maxX ? clamp(next.x, minX, maxX) : (minX + maxX) / 2,
         y: minY <= maxY ? clamp(next.y, minY, maxY) : (minY + maxY) / 2,
-        zoom: clamp(next.zoom, KINGDOM_MIN_ZOOM, KINGDOM_MAX_ZOOM),
       };
     }
     function animateTo(next: KingdomView, duration = 350) {
@@ -380,7 +447,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     ) {
       animation = null;
       const before = unprojectKingdom(x, y, view, viewport);
-      view.zoom = clamp(view.zoom * amount, KINGDOM_MIN_ZOOM, KINGDOM_MAX_ZOOM);
+      const bounds = zoomBounds();
+      view.zoom = clamp(view.zoom * amount, bounds.min, bounds.max);
       const after = unprojectKingdom(x, y, view, viewport);
       view.x += before.x - after.x;
       view.y += before.y - after.y;
@@ -422,6 +490,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         width,
         height,
         scale: Math.min(1.05, Math.max(0.27, width / 3800)) * 0.384 * 0.85,
+        tilt: viewport.tilt,
         mapWidth: viewport.mapWidth,
         mapHeight: viewport.mapHeight,
       };
@@ -771,7 +840,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           320,
         );
       },
-      reset: () => animateTo({ ...home, zoom: 1, angle: 0 }, 450),
+      reset: () => animateTo({ ...home }, 450),
       focus: (id) => {
         if (!ready || pointers.size) return;
         const item = editorRef.current.items.find((entry) => entry.id === id);
@@ -779,6 +848,18 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       },
       refresh: () => {
         dirty = true;
+      },
+      getView: () => ({ ...constrained(view) }),
+      setHome: (next) => {
+        Object.assign(home, next);
+        host!.dataset.homeX = String(home.x);
+        host!.dataset.homeY = String(home.y);
+        setHomeZoom(home.zoom);
+        sync();
+      },
+      setEditorMode: () => {
+        if (!editorRef.current.open) animateTo(view, 220);
+        sync();
       },
     };
     host.addEventListener('pointerdown', pointerDown);
@@ -864,7 +945,11 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       canvas.height = 1;
       assets = null;
     };
-  }, [retry, background]);
+  }, [retry, mapConfig]);
+
+  useEffect(() => {
+    controlsRef.current?.setEditorMode();
+  }, [editorOpen]);
 
   useEffect(() => {
     controlsRef.current?.refresh();
@@ -970,6 +1055,26 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
               )}
             </div>
             <small>PNG, JPEG ou WebP · até 128 MB · navegação ajustada à imagem.</small>
+          </div>
+          <div className="kingdom-editor__view">
+            <strong>Enquadramento inicial</strong>
+            <small>Use o zoom, arraste e gire; depois salve a visão atual como 100%.</small>
+            <div>
+              <button
+                type="button"
+                disabled={viewBusy || status !== 'ready'}
+                onClick={() => void saveCurrentView()}
+              >
+                <Focus size={15} /> {viewBusy ? 'Salvando…' : 'Definir visão atual como 100%'}
+              </button>
+              <button
+                type="button"
+                disabled={viewBusy || status !== 'ready'}
+                onClick={() => void resetCurrentView()}
+              >
+                Restaurar visão inicial
+              </button>
+            </div>
           </div>
           <div className="kingdom-editor__tools" role="group" aria-label="Ferramenta do editor">
             {(['pan', 'select', 'place'] as const).map((tool) => (
@@ -1212,22 +1317,28 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         <div className="kingdom-map__zoom">
           <button
             aria-label="Afastar mapa"
-            disabled={status !== 'ready' || zoom <= KINGDOM_MIN_ZOOM + 0.001}
+            disabled={
+              status !== 'ready' ||
+              zoom <= (editorOpen ? EDITOR_MIN_ZOOM : homeZoom * KINGDOM_MIN_ZOOM) + 0.001
+            }
             onClick={() => controlsRef.current?.zoom(1 / 1.18)}
           >
             <Minus size={16} />
           </button>
-          <output aria-label="Aproximação do mapa">{Math.round(zoom * 100)}%</output>
+          <output aria-label="Aproximação do mapa">{Math.round((zoom / homeZoom) * 100)}%</output>
           <button
             aria-label="Aproximar mapa"
-            disabled={status !== 'ready' || zoom >= KINGDOM_MAX_ZOOM - 0.001}
+            disabled={
+              status !== 'ready' ||
+              zoom >= (editorOpen ? EDITOR_MAX_ZOOM : homeZoom * KINGDOM_MAX_ZOOM) - 0.001
+            }
             onClick={() => controlsRef.current?.zoom(1.18)}
           >
             <Plus size={16} />
           </button>
           <button
             aria-label="Centralizar mapa"
-            title="Centralizar em Vigília · Home"
+            title="Voltar à visão de 100% · Home"
             disabled={status !== 'ready'}
             onClick={() => controlsRef.current?.reset()}
           >

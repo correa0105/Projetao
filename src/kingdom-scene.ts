@@ -15,6 +15,7 @@ export type KingdomViewport = {
   width: number;
   height: number;
   scale: number;
+  tilt: number;
   mapWidth: number;
   mapHeight: number;
 };
@@ -71,7 +72,7 @@ export function projectKingdom(x: number, y: number, view: KingdomView, viewport
   const scale = view.zoom * viewport.scale;
   return {
     x: viewport.width * 0.5 + (dx * cos - dy * sin) * scale,
-    y: viewport.height * KINGDOM_CAMERA_Y + (dx * sin + dy * cos) * scale * KINGDOM_TILT,
+    y: viewport.height * KINGDOM_CAMERA_Y + (dx * sin + dy * cos) * scale * viewport.tilt,
   };
 }
 
@@ -83,7 +84,7 @@ export function unprojectKingdom(
 ) {
   const scale = view.zoom * viewport.scale;
   const dx = (x - viewport.width * 0.5) / scale;
-  const dy = (y - viewport.height * KINGDOM_CAMERA_Y) / (scale * KINGDOM_TILT);
+  const dy = (y - viewport.height * KINGDOM_CAMERA_Y) / (scale * viewport.tilt);
   const cos = Math.cos(view.angle),
     sin = Math.sin(view.angle);
   return { x: view.x + dx * cos + dy * sin, y: view.y - dx * sin + dy * cos };
@@ -294,9 +295,9 @@ export function paintKingdom(
   ctx.save();
   ctx.transform(
     cos * scale,
-    sin * scale * KINGDOM_TILT,
+    sin * scale * viewport.tilt,
     -sin * scale,
-    cos * scale * KINGDOM_TILT,
+    cos * scale * viewport.tilt,
     origin.x,
     origin.y,
   );

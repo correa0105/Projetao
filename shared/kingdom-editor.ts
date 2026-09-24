@@ -44,3 +44,10 @@ export type KingdomBackgroundMeta = {
   height: number;
   revision: number;
 };
+export type KingdomEditorView = {
+  exists: boolean;
+  x: number;
+  y: number;
+  zoom: number;
+  angle: number;
+};

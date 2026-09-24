@@ -56,7 +56,7 @@ function watchErrors(target: Page) {
   kingdomResponses.set(target, new Set());
   target.on('response', (response) => {
     const path = new URL(response.url()).pathname;
-    if (expectedKingdomAssets.includes(path)) {
+    if (expectedKingdomAssets.includes(path) || path === '/api/kingdom/editor-background/image') {
       if (response.ok() || response.status() === 304) kingdomResponses.get(target)!.add(path);
       else errors.push(`Falha no atlas 2D: ${path}: HTTP ${response.status()}`);
       return;
@@ -140,13 +140,20 @@ async function ready(target: Page) {
       .evaluate((canvas) => !!(canvas as HTMLCanvasElement).getContext('2d')),
     'A visão do reino deve renderizar em Canvas2D, sem contexto WebGL.',
   ).toBe(true);
+  const expectedGround =
+    (await scene.getAttribute('data-custom-background')) === 'true'
+      ? '/api/kingdom/editor-background/image'
+      : '/kingdom/ground-trails.png';
+  const expected = expectedKingdomAssets
+    .filter((path) => path !== '/kingdom/ground-trails.png')
+    .concat(expectedGround);
   await expect
-    .poll(() => [...(kingdomResponses.get(target) || [])].sort())
-    .toEqual(expectedKingdomAssets);
+    .poll(() => expected.every((path) => kingdomResponses.get(target)?.has(path)))
+    .toBe(true);
   const state = await camera(target);
   expect([state.x, state.y, state.homeX, state.homeY].every(Number.isFinite)).toBe(true);
-  expect(state.minZoom).toBe(1);
-  expect(state.maxZoom).toBe(1.3);
+  expect(state.minZoom).toBeCloseTo(state.homeZoom, 3);
+  expect(state.maxZoom).toBeCloseTo(state.homeZoom * 1.3, 3);
   expect(state.direction).toBeGreaterThanOrEqual(0);
   expect(state.direction).toBeLessThan(8);
   expect(webglRasterRequests, 'Nenhum mapa regional antigo deve ser solicitado.').toEqual([]);
@@ -166,6 +173,7 @@ async function camera(target: Page) {
     homeX: Number((host as HTMLElement).dataset.homeX),
     homeY: Number((host as HTMLElement).dataset.homeY),
     zoom: Number((host as HTMLElement).dataset.zoom),
+    homeZoom: Number((host as HTMLElement).dataset.homeZoom),
     direction: Number((host as HTMLElement).dataset.direction),
     minZoom: Number((host as HTMLElement).dataset.minZoom),
     maxZoom: Number((host as HTMLElement).dataset.maxZoom),
@@ -1668,7 +1676,9 @@ async function runKingdomEditor() {
   await page.keyboard.up('Control');
   await expect(reopened).toContainText('2 itens selecionados');
   await resetCamera(page);
-  await maximumZoom(page);
+  await page.getByRole('button', { name: 'Aproximar mapa' }).click();
+  await page.getByRole('button', { name: 'Aproximar mapa' }).click();
+  await settleCamera(page);
   const panBefore = await camera(page);
   await page.mouse.move(
     groupBounds.x + groupBounds.width * 0.25,
@@ -1718,6 +1728,28 @@ async function runKingdomEditor() {
   await expect(reopened).toContainText('0 itens');
   await reopened.getByRole('button', { name: 'Desfazer' }).click();
   await expect(reopened).toContainText('2 itens');
+  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
+  await expect(reopened).toContainText('Rascunho salvo');
+  const rectangularFile = await sharp({
+    create: { width: 2048, height: 1536, channels: 3, background: '#6d6952' },
+  })
+    .png()
+    .toBuffer();
+  await reopened.locator('input[type=file]').setInputFiles({
+    name: 'mapa-4x3.png',
+    mimeType: 'image/png',
+    buffer: rectangularFile,
+  });
+  await expect(scene).toHaveAttribute('data-image-width', '2048', { timeout: 30000 });
+  await expect(scene).toHaveAttribute('data-image-height', '1536');
+  await expect(scene).toHaveAttribute('data-assets', 'ready', { timeout: 30000 });
+  await expect(scene).toHaveAttribute('data-tilt', '1');
+  const screenAspect = await scene.evaluate((host) => {
+    const data = (host as HTMLElement).dataset;
+    return Number(data.mapWidth) / (Number(data.mapHeight) * Number(data.tilt));
+  });
+  expect(screenAspect).toBeCloseTo(4 / 3, 4);
+  await page.screenshot({ path: 'test-results/kingdom-background-4x3.png', fullPage: true });
   const backgroundFile = await sharp({
     create: {
       width: 8192,
@@ -1736,15 +1768,39 @@ async function runKingdomEditor() {
   await expect(scene).toHaveAttribute('data-image-width', '8192', { timeout: 120000 });
   await expect(scene).toHaveAttribute('data-image-height', '4096');
   await expect(scene).toHaveAttribute('data-assets', 'ready', { timeout: 120000 });
+  await expect(scene).toHaveAttribute('data-tilt', '1');
   expect(Number(await scene.getAttribute('data-map-width'))).toBe(40000);
   expect(Number(await scene.getAttribute('data-map-height'))).toBe(20000);
   for (let i = 0; i < 5; i++) await dragAcross(page, 'left');
-  expect((await camera(page)).x, 'O background 8K deve permitir navegar além do limite original.').toBeGreaterThan(7500);
+  expect(
+    (await camera(page)).x,
+    'O background 8K deve permitir navegar além do limite original.',
+  ).toBeGreaterThan(7500);
+  await page.getByRole('button', { name: 'Afastar mapa' }).click();
+  await page.getByRole('button', { name: 'Afastar mapa' }).click();
+  await page.getByRole('button', { name: 'Girar mapa para a direita' }).click();
+  await settleCamera(page);
+  await reopened.getByRole('button', { name: 'Definir visão atual como 100%' }).click();
+  await expect(reopened).toContainText('Visão atual salva como 100%');
+  await expect(page.getByLabel('Aproximação do mapa')).toHaveText('100%');
+  const savedCamera = await camera(page);
+  await page.reload();
+  await openNorth(page);
+  const restoredCamera = await camera(page);
+  expect(restoredCamera.x).toBeCloseTo(savedCamera.x, 0);
+  expect(restoredCamera.y).toBeCloseTo(savedCamera.y, 0);
+  expect(restoredCamera.zoom).toBeCloseTo(savedCamera.zoom, 3);
+  expect(restoredCamera.direction).toBe(savedCamera.direction);
+  await expect(page.getByLabel('Aproximação do mapa')).toHaveText('100%');
+  await scene.getByRole('button', { name: 'Editar mapa' }).click();
+  await reopened.getByRole('button', { name: 'Restaurar visão inicial' }).click();
+  await settleCamera(page);
+  expect((await camera(page)).zoom).toBeCloseTo(1, 3);
   await reopened.getByRole('button', { name: 'Restaurar original' }).click();
   await expect(scene).toHaveAttribute('data-image-width', '3072', { timeout: 30000 });
-  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
+  await expect(scene).toHaveAttribute('data-tilt', '0.58');
   expect(errors).toEqual([]);
-  console.log('Editor OK: catálogo, grupo, upload 8K, dimensões, salvamento e recarga.');
+  console.log('Editor OK: grupo, fundo 4:3 sem distorção, upload 8K, visão 100% persistida e recarga.');
 }
 
 watchErrors(page);
