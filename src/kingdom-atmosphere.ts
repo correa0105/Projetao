@@ -1,10 +1,7 @@
-// Canvas 2D counterpart of the moving FBM banks in world-clouds.ts.
-// Both layers use the terrain's map transform, never the viewport as their frame.
+// Moving mist is sampled in map coordinates so it stays attached to the border.
 import {
   KINGDOM_HEIGHT,
-  KINGDOM_TILT,
   KINGDOM_WIDTH,
-  projectKingdom,
   unprojectKingdom,
   type KingdomView,
   type KingdomViewport,
@@ -41,106 +38,15 @@ function fbm(x: number, y: number) {
   return sum;
 }
 
-function makeTexture(width: number, height: number) {
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  const context = canvas.getContext('2d')!;
-  const image = context.createImageData(width, height);
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const u = x / width,
-        v = y / height;
-      const px = u * 6,
-        py = v * 4;
-      const distortionX = fbm(px * 0.47, py * 0.47);
-      const distortionY = fbm(px * 0.47 + 9.1, py * 0.47 + 9.1);
-      const density = fbm(px + distortionX * 2.4, py + distortionY * 2.4);
-      const shade = fbm(px - 0.24, py + 0.31);
-      const shadeMix = smoothstep(0.29, 0.7, shade);
-      const silhouette = Math.max(
-        0,
-        1 - smoothstep(0.32, 1, Math.hypot((u - 0.5) * 2, (v - 0.5) * 2)),
-      );
-      const densityAlpha = smoothstep(0.21, 0.65, density);
-      const alpha = silhouette * (0.13 + densityAlpha * 0.52);
-      const index = (y * width + x) * 4;
-      image.data[index] = Math.round(173 + shadeMix * 73);
-      image.data[index + 1] = Math.round(180 + shadeMix * 69);
-      image.data[index + 2] = Math.round(185 + shadeMix * 66);
-      image.data[index + 3] = Math.round(alpha * 255);
-    }
-  }
-  context.putImageData(image, 0, 0);
-  return canvas;
-}
-
 export function kingdomEdgeMistDepth(width: number, height: number) {
   return Math.min(KINGDOM_EDGE_MIST_MAX_PX, width * 0.16, height * 0.16);
 }
 
-export function createKingdomAtmosphere() {
-  const bank = makeTexture(320, 256);
+export function createKingdomEdgeMist() {
   const fogRaster = document.createElement('canvas');
   const fogContext = fogRaster.getContext('2d')!;
   let fogPixels: ImageData | null = null;
-  const banks = [
-    [0.02, 0.12, 0.22, 0.17, 0.25],
-    [0.51, 0.03, 0.24, 0.19, 0.31],
-    [0.29, 0.34, 0.19, 0.17, 0.19],
-    [0.72, 0.4, 0.21, 0.16, 0.28],
-    [0.06, 0.69, 0.23, 0.19, 0.23],
-    [0.55, 0.79, 0.22, 0.18, 0.27],
-  ] as const;
-  function applyMapTransform(
-    context: CanvasRenderingContext2D,
-    view: KingdomView,
-    viewport: KingdomViewport,
-  ) {
-    const scale = viewport.scale * view.zoom;
-    const cos = Math.cos(view.angle),
-      sin = Math.sin(view.angle);
-    const origin = projectKingdom(0, 0, view, viewport);
-    context.transform(
-      cos * scale,
-      sin * scale * KINGDOM_TILT,
-      -sin * scale,
-      cos * scale * KINGDOM_TILT,
-      origin.x,
-      origin.y,
-    );
-  }
-  function onMap(context: CanvasRenderingContext2D, view: KingdomView, viewport: KingdomViewport) {
-    applyMapTransform(context, view, viewport);
-    const left = -KINGDOM_WIDTH / 2,
-      top = -KINGDOM_HEIGHT / 2;
-    context.beginPath();
-    context.rect(left, top, KINGDOM_WIDTH, KINGDOM_HEIGHT);
-    context.clip();
-  }
   return {
-    paintClouds(
-      context: CanvasRenderingContext2D,
-      view: KingdomView,
-      viewport: KingdomViewport,
-      time: number,
-    ) {
-      context.clearRect(0, 0, viewport.width, viewport.height);
-      context.save();
-      onMap(context, view, viewport);
-      const left = -KINGDOM_WIDTH / 2,
-        top = -KINGDOM_HEIGHT / 2;
-      for (const [u, v, wu, hv, speed] of banks) {
-        const bankWidth = KINGDOM_WIDTH * wu;
-        const bankHeight = KINGDOM_HEIGHT * hv;
-        const travel = KINGDOM_WIDTH + bankWidth;
-        const x =
-          left + ((u * KINGDOM_WIDTH + time * speed * 520 + bankWidth) % travel) - bankWidth;
-        const y = top + v * KINGDOM_HEIGHT + Math.sin(time * 0.1 + u * 8) * 45;
-        context.drawImage(bank, x, y, bankWidth, bankHeight);
-      }
-      context.restore();
-    },
     paintEdgeMist(
       context: CanvasRenderingContext2D,
       view: KingdomView,

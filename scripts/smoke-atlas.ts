@@ -17,7 +17,7 @@ const editorOnly = process.argv.includes('--editor-only');
 const skipCameraMatrix = process.argv.includes('--skip-camera-matrix');
 const useBrowserGpu = process.env.ATLAS_BROWSER_GPU === '1';
 const expectedKingdomAssets = [
-  '/kingdom/terrain-hires.png',
+  '/kingdom/ground-turf.png',
   '/kingdom/structures/atlases/structures.png',
   '/kingdom/nature.png',
   '/kingdom/structures/atlases/landmarks.png',
@@ -131,7 +131,7 @@ async function ready(target: Page) {
   await expect(scene).toHaveAttribute('data-status', 'ready', { timeout: 30000 });
   await expect(scene).toHaveAttribute('data-renderer', 'canvas2d');
   await expect(scene.locator('.kingdom-map__ground')).toBeVisible();
-  await expect(scene.locator('.kingdom-map__clouds')).toBeVisible();
+  await expect(scene.locator('.kingdom-map__clouds')).toHaveCount(0);
   await expect(scene.locator('.kingdom-map__edge-mist')).toBeVisible();
   expect(
     await scene
@@ -1432,7 +1432,7 @@ async function runTerrainOnly() {
   const scene = page.locator('.kingdom-map');
   await expect(scene).toHaveAttribute('data-stage', 'terrain');
   await expect(scene.locator('.kingdom-place, .kingdom-house')).toHaveCount(0);
-  expect(Number(await scene.getAttribute('data-grove-count'))).toBeGreaterThan(100);
+  expect(Number(await scene.getAttribute('data-grove-count'))).toBe(0);
   expect((await camera(page)).zoom).toBe(1);
   await expect(page.getByLabel('Aproximação do mapa')).toHaveText('100%');
   await expect(page.getByRole('button', { name: 'Afastar mapa', exact: true })).toBeDisabled();
@@ -1461,35 +1461,23 @@ async function runTerrainOnly() {
     fullPage: true,
     animations: 'disabled',
   });
-  const cloudVisibility = await scene.locator('.kingdom-map__clouds').evaluate((element) => {
-    const canvas = element as HTMLCanvasElement;
-    const pixels = canvas.getContext('2d')!.getImageData(0, 0, canvas.width, canvas.height).data;
-    let maxAlpha = 0;
-    let visibleSamples = 0;
-    for (let index = 3; index < pixels.length; index += 64) {
-      maxAlpha = Math.max(maxAlpha, pixels[index]);
-      if (pixels[index] >= 60) visibleSamples++;
-    }
-    return { maxAlpha, visibleSamples };
+  await page.getByRole('button', { name: 'Girar mapa para a direita' }).click();
+  await settleCamera(page);
+  expect((await camera(page)).direction).toBe(1);
+  await expect(scene.locator('.kingdom-place, .kingdom-house')).toHaveCount(0);
+  await page.screenshot({
+    path: 'test-results/kingdom-terrain-turned.png',
+    fullPage: true,
+    animations: 'disabled',
   });
-  expect(cloudVisibility.maxAlpha).toBeGreaterThan(95);
-  expect(cloudVisibility.visibleSamples).toBeGreaterThan(300);
+  await resetCamera(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.waitForTimeout(100);
   await page.getByRole('button', { name: 'Aproximar mapa', exact: true }).click();
   await page.getByRole('button', { name: 'Aproximar mapa', exact: true }).click();
   await settleCamera(page);
-  const anchoredCloudFrame = await scene
-    .locator('.kingdom-map__clouds')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
   await dragAcross(page, 'left');
   await settleCamera(page);
-  const pannedCloudFrame = await scene
-    .locator('.kingdom-map__clouds')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  expect(pannedCloudFrame, 'As nuvens devem acompanhar a geografia durante o arraste.').not.toBe(
-    anchoredCloudFrame,
-  );
   await resetCamera(page);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await maximumZoom(page);
@@ -1522,9 +1510,6 @@ async function runTerrainOnly() {
   const groundFrame = await scene
     .locator('.kingdom-map__ground')
     .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  const cloudFrame = await scene
-    .locator('.kingdom-map__clouds')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
   const mistFrame = await scene
     .locator('.kingdom-map__edge-mist')
     .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
@@ -1540,9 +1525,6 @@ async function runTerrainOnly() {
   const nextGroundFrame = await scene
     .locator('.kingdom-map__ground')
     .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  const nextCloudFrame = await scene
-    .locator('.kingdom-map__clouds')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
   const nextMistFrame = await scene
     .locator('.kingdom-map__edge-mist')
     .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
@@ -1555,7 +1537,6 @@ async function runTerrainOnly() {
     return Array.from({ length: canvas.height }, (_, y) => pixels[y * 4 + 3]);
   });
   expect(nextGroundFrame, 'O terreno deve permanecer estático.').toBe(groundFrame);
-  expect(nextCloudFrame, 'As nuvens devem se mover sobre o terreno.').not.toBe(cloudFrame);
   expect(nextMistFrame, 'A névoa das bordas deve se mover.').not.toBe(mistFrame);
   const mistMotion = mistMotionBefore.reduce(
     (sum, alpha, index) => sum + Math.abs(alpha - mistMotionAfter[index]),
@@ -1687,7 +1668,7 @@ async function runTerrainOnly() {
   }
   expect(errors).toEqual([]);
   console.log(
-    'Terreno OK: quatro bordas acessíveis, nuvens móveis e névoa externa opaca com transição irregular, sem linha na imagem; desktop/celular.',
+    'Terreno OK: quatro bordas acessíveis, chão livre de objetos e nuvens, névoa externa opaca com transição irregular; desktop/celular.',
   );
 }
 

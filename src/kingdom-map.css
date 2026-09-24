@@ -30,7 +30,6 @@
   height: 100%;
   display: block;
 }
-.kingdom-map__clouds,
 .kingdom-map__edge-mist {
   pointer-events: none;
 }

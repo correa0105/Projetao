@@ -8,18 +8,14 @@ import {
   type KingdomEditorKind,
   type KingdomEditorLayout,
 } from '../shared/kingdom-editor';
-import { createKingdomAtmosphere, kingdomEdgeMistDepth } from './kingdom-atmosphere';
+import { createKingdomEdgeMist, kingdomEdgeMistDepth } from './kingdom-atmosphere';
 import {
   KINGDOM_CAMERA_Y,
   KINGDOM_HEIGHT,
   KINGDOM_MAX_ZOOM,
   KINGDOM_MIN_ZOOM,
   KINGDOM_WIDTH,
-  kingdomBuildings,
-  kingdomDecorationsOnTerrain,
   kingdomDirection,
-  kingdomMarkerPoint,
-  kingdomTreeGrovesOnTerrain,
   frames,
   paintKingdom,
   projectKingdom,
@@ -55,8 +51,7 @@ const directions = [
   'Leste',
   'Sudeste',
 ];
-// The terrain, atmosphere and tree groves are being approved before settlements return.
-const TERRAIN_ONLY = true;
+// The regional scene starts empty; only items placed in the editor are drawn.
 const editorGroups = ['Natureza', 'Construções', 'Marcos'] as const;
 
 function ItemPreview({ kind, assets }: { kind: KingdomEditorKind; assets: KingdomAssets | null }) {
@@ -113,10 +108,7 @@ function loadIllustration(url: string, signal: AbortSignal): Promise<HTMLImageEl
 export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMapProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasHostRef = useRef<HTMLDivElement>(null);
-  const placeRefs = useRef(new Map<string, HTMLButtonElement>());
-  const houseRefs = useRef(new Map<string, HTMLSpanElement>());
   const controlsRef = useRef<Controls | null>(null);
-  const hoveredRef = useRef<string | null>(null);
   const latest = useRef({ markers, selectedId, onSelect, onReady });
   latest.current = { markers, selectedId, onSelect, onReady };
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -220,41 +212,31 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       canvasHost = canvasHostRef.current;
     if (!host || !canvasHost) return;
     const canvas = document.createElement('canvas');
-    const cloudCanvas = document.createElement('canvas');
     const mistCanvas = document.createElement('canvas');
     canvas.className = 'kingdom-map__ground';
-    cloudCanvas.className = 'kingdom-map__clouds';
     mistCanvas.className = 'kingdom-map__edge-mist';
     canvas.setAttribute('aria-hidden', 'true');
-    cloudCanvas.setAttribute('aria-hidden', 'true');
     mistCanvas.setAttribute('aria-hidden', 'true');
     const ctx = canvas.getContext('2d', { alpha: false });
-    const cloudContext = cloudCanvas.getContext('2d');
     const mistContext = mistCanvas.getContext('2d');
-    if (!ctx || !cloudContext || !mistContext) {
+    if (!ctx || !mistContext) {
       setStatus('error');
       return;
     }
-    canvasHost.append(canvas, cloudCanvas, mistCanvas);
-    const atmosphere = createKingdomAtmosphere();
+    canvasHost.append(canvas, mistCanvas);
+    const atmosphere = createKingdomEdgeMist();
     const abort = new AbortController();
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let disposed = false,
       ready = false,
       frame = 0,
       dirty = true,
-      cloudDirty = true,
-      lastPaint = 0,
-      lastCloudPaint = 0;
+      mistDirty = true,
+      lastMistPaint = 0;
     let assets: KingdomAssets | null = null;
     let viewport: KingdomViewport = { width: 1, height: 1, scale: 1 };
-    const homeMarker =
-      latest.current.markers.find((m) => m.id === 'vigilia') ?? latest.current.markers[0];
-    const homePoint = homeMarker ? kingdomMarkerPoint(homeMarker) : { x: 0, y: 0 };
-    const home = TERRAIN_ONLY ? { x: 0, y: 0 } : { ...homePoint, y: homePoint.y + 200 };
+    const home = { x: 0, y: 0 };
     const view: KingdomView = { ...home, zoom: 1, angle: 0 };
-    let buildings = TERRAIN_ONLY ? [] : kingdomBuildings(latest.current.markers);
-    let decorations: ReturnType<typeof kingdomDecorationsOnTerrain> = [];
     let animation: { start: number; from: KingdomView; to: KingdomView; duration: number } | null =
       null;
     const pointers = new Map<number, { x: number; y: number }>();
@@ -281,7 +263,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       setZoom(view.zoom);
       setDirection(kingdomDirection(view.angle));
       dirty = true;
-      cloudDirty = true;
+      mistDirty = true;
     }
     function constrained(next: KingdomView): KingdomView {
       const zero = { ...next, x: 0, y: 0 };
@@ -327,35 +309,6 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       Object.assign(view, constrained(view));
       sync();
     }
-    function positionPlaces() {
-      if (!assets) return;
-      for (const sprite of buildings) {
-        const button =
-          sprite.id === sprite.marker?.id
-            ? placeRefs.current.get(sprite.id)
-            : houseRefs.current.get(sprite.id);
-        if (!button) continue;
-        const at = projectKingdom(sprite.x, sprite.y, view, viewport);
-        const size = spriteSize(
-          sprite,
-          assets,
-          viewport.scale * view.zoom,
-          kingdomDirection(view.angle),
-        );
-        const visible =
-          at.x > size.width * 0.2 &&
-          at.x < viewport.width - size.width * 0.2 &&
-          at.y > 135 &&
-          at.y < viewport.height - 75;
-        button.style.left = `${at.x}px`;
-        button.style.top = `${at.y - size.height * 0.43}px`;
-        button.style.width = `${Math.max(42, size.width * 0.82)}px`;
-        button.style.height = `${Math.max(46, size.height * 0.8)}px`;
-        button.style.zIndex = String(Math.round(at.y + 3000));
-        button.dataset.visible = String(visible);
-        button.dataset.spriteDirection = String(kingdomDirection(view.angle));
-      }
-    }
     function tick(now: number) {
       if (disposed) return;
       frame = requestAnimationFrame(tick);
@@ -368,27 +321,24 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         if (progress >= 1) animation = null;
         sync();
       }
-      if (dirty || (!TERRAIN_ONLY && !reduced.matches && now - lastPaint >= 1000 / 30)) {
+      if (dirty) {
         paintKingdom(
           ctx!,
           assets,
-          [...decorations, ...buildings, ...editorRef.current.items],
+          editorRef.current.items,
           view,
           viewport,
-          editorRef.current.open ? editorRef.current.selectedItemId : latest.current.selectedId,
-          hoveredRef.current,
+          editorRef.current.open ? editorRef.current.selectedItemId : null,
+          null,
           reduced.matches ? 0 : now / 1000,
         );
-        positionPlaces();
         dirty = false;
-        lastPaint = now;
       }
-      if (cloudDirty || (!reduced.matches && now - lastCloudPaint >= 1000 / 24)) {
+      if (mistDirty || (!reduced.matches && now - lastMistPaint >= 1000 / 24)) {
         const time = reduced.matches ? 0 : now / 1000;
-        atmosphere.paintClouds(cloudContext!, view, viewport, time);
         atmosphere.paintEdgeMist(mistContext!, view, viewport, time);
-        cloudDirty = false;
-        lastCloudPaint = now;
+        mistDirty = false;
+        lastMistPaint = now;
       }
     }
     function resize() {
@@ -404,18 +354,15 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       host!.dataset.baseScale = viewport.scale.toFixed(6);
       canvas.width = Math.round(width * pixelRatio);
       canvas.height = Math.round(height * pixelRatio);
-      cloudCanvas.width = canvas.width;
-      cloudCanvas.height = canvas.height;
       mistCanvas.width = canvas.width;
       mistCanvas.height = canvas.height;
       ctx!.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      cloudContext!.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       mistContext!.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       ctx!.imageSmoothingEnabled = true;
       ctx!.imageSmoothingQuality = 'high';
       Object.assign(view, constrained(view));
       dirty = true;
-      cloudDirty = true;
+      mistDirty = true;
       host!.dataset.edgeMistDepth = kingdomEdgeMistDepth(width, height).toFixed(1);
     }
     const observer = new ResizeObserver(resize);
@@ -558,7 +505,6 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         sync();
       }
       host!.dataset.dragging = 'true';
-      hoveredRef.current = null;
       event.preventDefault();
     }
     function pointerUp(event: PointerEvent) {
@@ -643,7 +589,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     }
     function wake() {
       dirty = true;
-      cloudDirty = true;
+      mistDirty = true;
     }
     controlsRef.current = {
       zoom: (amount) => zoomAt(amount),
@@ -657,13 +603,10 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       reset: () => animateTo({ ...home, zoom: 1, angle: 0 }, 450),
       focus: (id) => {
         if (!ready || pointers.size) return;
-        const sprite =
-          buildings.find((s) => s.id === id) ?? editorRef.current.items.find((s) => s.id === id);
-        if (sprite && placeRefs.current.get(id)?.dataset.visible !== 'true')
-          animateTo({ ...view, x: sprite.x, y: sprite.y });
+        const item = editorRef.current.items.find((entry) => entry.id === id);
+        if (item) animateTo({ ...view, x: item.x, y: item.y });
       },
       refresh: () => {
-        buildings = TERRAIN_ONLY ? [] : kingdomBuildings(latest.current.markers);
         dirty = true;
       },
     };
@@ -694,7 +637,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             name,
             await loadIllustration(
               name === 'ground'
-                ? '/kingdom/terrain-hires.png'
+                ? '/kingdom/ground-turf.png'
                 : name === 'nature'
                   ? '/kingdom/nature.png'
                   : `/kingdom/structures/atlases/${({ town: 'town-buildings', seaport: 'harbor-buildings', craft: 'craft-buildings', frontier: 'frontier-buildings' } as Record<string, string>)[name] ?? name}.png`,
@@ -708,13 +651,10 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         const loaded = Object.fromEntries(entries) as unknown as KingdomAssets;
         assets = loaded;
         setEditorAssets(loaded);
-        decorations = TERRAIN_ONLY
-          ? kingdomTreeGrovesOnTerrain(loaded.ground)
-          : kingdomDecorationsOnTerrain(latest.current.markers, loaded);
-        host.dataset.groveCount = String(decorations.length);
+        host.dataset.groveCount = '0';
         ready = true;
         dirty = true;
-        cloudDirty = true;
+        mistDirty = true;
         host.dataset.assets = 'ready';
         setStatus('ready');
         latest.current.onReady?.();
@@ -741,12 +681,9 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       document.removeEventListener('visibilitychange', wake);
       reduced.removeEventListener('change', wake);
       canvas.remove();
-      cloudCanvas.remove();
       mistCanvas.remove();
       canvas.width = 1;
       canvas.height = 1;
-      cloudCanvas.width = 1;
-      cloudCanvas.height = 1;
       mistCanvas.width = 1;
       mistCanvas.height = 1;
       assets = null;
@@ -760,7 +697,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     <div
       ref={hostRef}
       className="kingdom-map"
-      data-stage={TERRAIN_ONLY ? 'terrain' : 'complete'}
+      data-stage="terrain"
       data-renderer="canvas2d"
       data-status={status}
       data-direction={direction}
@@ -989,69 +926,6 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             </button>
           </div>
         </aside>
-      )}
-      {!TERRAIN_ONLY && (
-        <div className="kingdom-map__places" aria-label="Locais do Reino do Norte">
-          {markers.map((marker) => (
-            <button
-              key={marker.id}
-              ref={(node) => {
-                if (node) placeRefs.current.set(marker.id, node);
-                else placeRefs.current.delete(marker.id);
-              }}
-              className={`kingdom-place ${selectedId === marker.id ? 'is-selected' : ''}`}
-              data-location-id={marker.id}
-              aria-label={marker.name}
-              aria-pressed={selectedId === marker.id}
-              disabled={status !== 'ready'}
-              onPointerEnter={() => {
-                hoveredRef.current = marker.id;
-                controlsRef.current?.refresh();
-              }}
-              onPointerLeave={() => {
-                hoveredRef.current = null;
-                controlsRef.current?.refresh();
-              }}
-              onFocus={() => {
-                hoveredRef.current = marker.id;
-                controlsRef.current?.focus(marker.id);
-                controlsRef.current?.refresh();
-              }}
-              onBlur={() => {
-                hoveredRef.current = null;
-                controlsRef.current?.refresh();
-              }}
-              onClick={() => latest.current.onSelect(marker.id)}
-            >
-              <span className="kingdom-place__name">{marker.name}</span>
-            </button>
-          ))}
-          {kingdomBuildings(markers)
-            .filter((sprite) => sprite.id !== sprite.marker?.id)
-            .map((sprite) => (
-              <span
-                key={sprite.id}
-                ref={(node) => {
-                  if (node) houseRefs.current.set(sprite.id, node);
-                  else houseRefs.current.delete(sprite.id);
-                }}
-                className="kingdom-house"
-                data-settlement-id={sprite.marker!.id}
-                aria-hidden="true"
-                onPointerEnter={() => {
-                  hoveredRef.current = sprite.marker!.id;
-                  controlsRef.current?.refresh();
-                }}
-                onPointerLeave={() => {
-                  hoveredRef.current = null;
-                  controlsRef.current?.refresh();
-                }}
-                onClick={() => {
-                  if (status === 'ready') latest.current.onSelect(sprite.marker!.id);
-                }}
-              />
-            ))}
-        </div>
       )}
       <div className="kingdom-map__controls" aria-label="Navegação pelo reino">
         <div className="kingdom-map__turns">
