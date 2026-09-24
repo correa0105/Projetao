@@ -128,8 +128,8 @@ async function verifyKingdomDraft(alice: Client, bob: Client) {
 async function verifyKingdomBackground(alice: Client, bob: Client) {
   assert.deepEqual((await request('/api/kingdom/editor-background/meta', alice)).data, {
     exists: false,
-    width: 3072,
-    height: 3072,
+    width: 4096,
+    height: 2078,
     revision: 0,
   });
   const image = await sharp({
@@ -151,8 +151,8 @@ async function verifyKingdomBackground(alice: Client, bob: Client) {
   assert.deepEqual(await uploaded.json(), { exists: true, width: 8192, height: 4096, revision: 1 });
   assert.deepEqual((await request('/api/kingdom/editor-background/meta', bob)).data, {
     exists: false,
-    width: 3072,
-    height: 3072,
+    width: 4096,
+    height: 2078,
     revision: 0,
   });
   assert.equal((await request('/api/kingdom/editor-background/image', bob)).status, 404);

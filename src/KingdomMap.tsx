@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
 import {
   Focus,
   Copy,
@@ -39,6 +40,7 @@ import {
   type KingdomView,
   type KingdomViewport,
 } from './kingdom-scene';
+import { createKingdomRelief } from './kingdom-relief';
 import './kingdom-map.css';
 
 type KingdomMapProps = {
@@ -49,6 +51,7 @@ type KingdomMapProps = {
 };
 type Controls = {
   zoom: (amount: number) => void;
+  setZoom: (absolute: number) => void;
   rotate: (amount: number) => void;
   reset: () => void;
   focus: (id: string) => void;
@@ -252,7 +255,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         method: 'DELETE',
       });
       setMapConfig({ background: restored, home: defaultHome });
-      setEditorMessage('Fundo original restaurado.');
+      setEditorMessage('Terreno costeiro 3D restaurado.');
     } catch (error) {
       setEditorMessage((error as Error).message);
     } finally {
@@ -348,12 +351,35 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     const canvas = document.createElement('canvas');
     canvas.className = 'kingdom-map__ground';
     canvas.setAttribute('aria-hidden', 'true');
-    const ctx = canvas.getContext('2d', { alpha: false });
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) {
       setStatus('error');
       return;
     }
-    canvasHost.append(canvas);
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: false,
+        powerPreference: 'low-power',
+      });
+    } catch {
+      setStatus('error');
+      return;
+    }
+    renderer.domElement.className = 'kingdom-map__terrain';
+    renderer.domElement.setAttribute('aria-hidden', 'true');
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.18;
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#253b44');
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 150);
+    camera.up.set(0, 0, 1);
+    const sun = new THREE.DirectionalLight('#fff4dc', 2.1);
+    sun.position.set(-8, 7, 18);
+    scene.add(sun, new THREE.HemisphereLight('#d7e3e7', '#344438', 1.35));
+    canvasHost.append(renderer.domElement, canvas);
     const abort = new AbortController();
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let disposed = false,
@@ -361,6 +387,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       frame = 0,
       dirty = true;
     let assets: KingdomAssets | null = null;
+    let relief: ReturnType<typeof createKingdomRelief> | null = null;
     let viewport: KingdomViewport = {
       width: 1,
       height: 1,
@@ -413,7 +440,42 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       host!.dataset.panY = view.y.toFixed(3);
       setZoom(view.zoom);
       setDirection(kingdomDirection(view.angle));
+      updateTerrainCamera();
       dirty = true;
+    }
+    function updateTerrainCamera() {
+      const scale = Math.max(0.00001, viewport.scale * view.zoom);
+      const visibleWidth = viewport.width / scale / 1000;
+      const visibleHeight = viewport.height / scale / 1000;
+      camera.left = -visibleWidth / 2;
+      camera.right = visibleWidth / 2;
+      camera.top = visibleHeight * KINGDOM_CAMERA_Y;
+      camera.bottom = -visibleHeight * (1 - KINGDOM_CAMERA_Y);
+      const elevation = Math.asin(Math.min(viewport.tilt, 0.99999));
+      const distance = 45;
+      const horizontal = Math.cos(elevation) * distance;
+      camera.position.set(
+        view.x / 1000 - Math.sin(view.angle) * horizontal,
+        -view.y / 1000 - Math.cos(view.angle) * horizontal,
+        Math.sin(elevation) * distance,
+      );
+      camera.lookAt(view.x / 1000, -view.y / 1000, 0);
+      camera.updateProjectionMatrix();
+      camera.updateMatrixWorld();
+    }
+    function projectPoint(x: number, y: number, current = view) {
+      return projectKingdom(x, y, current, viewport, relief?.heightAt(x, y) ?? 0);
+    }
+    function unprojectPoint(x: number, y: number, current = view) {
+      let point = unprojectKingdom(x, y, current, viewport);
+      if (!relief) return point;
+      const heightScale =
+        viewport.scale * current.zoom * Math.sqrt(1 - viewport.tilt * viewport.tilt);
+      for (let iteration = 0; iteration < 3; iteration++) {
+        const raisedY = y + relief.heightAt(point.x, point.y) * heightScale;
+        point = unprojectKingdom(x, raisedY, current, viewport);
+      }
+      return point;
     }
     function constrained(next: KingdomView): KingdomView {
       const bounds = zoomBounds();
@@ -452,10 +514,10 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       y = viewport.height * KINGDOM_CAMERA_Y,
     ) {
       animation = null;
-      const before = unprojectKingdom(x, y, view, viewport);
+      const before = unprojectPoint(x, y);
       const bounds = zoomBounds();
       view.zoom = clamp(view.zoom * amount, bounds.min, bounds.max);
-      const after = unprojectKingdom(x, y, view, viewport);
+      const after = unprojectPoint(x, y);
       view.x += before.x - after.x;
       view.y += before.y - after.y;
       Object.assign(view, constrained(view));
@@ -474,6 +536,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         sync();
       }
       if (dirty) {
+        renderer.render(scene, camera);
         paintKingdom(
           ctx!,
           assets,
@@ -483,6 +546,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           editorRef.current.open ? editorRef.current.selectedItemIds : [],
           null,
           reduced.matches ? 0 : now / 1000,
+          relief?.heightAt ?? (() => 0),
         );
         dirty = false;
       }
@@ -495,7 +559,11 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       viewport = {
         width,
         height,
-        scale: Math.min(1.05, Math.max(0.27, width / 3800)) * 0.384 * 0.85,
+        scale:
+          Math.min(1.05, Math.max(0.27, width / 3800)) *
+          0.384 *
+          0.85 *
+          (background.exists ? 1 : 1.75),
         tilt: viewport.tilt,
         mapWidth: viewport.mapWidth,
         mapHeight: viewport.mapHeight,
@@ -506,7 +574,10 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       ctx!.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       ctx!.imageSmoothingEnabled = true;
       ctx!.imageSmoothingQuality = 'high';
+      renderer.setPixelRatio(pixelRatio);
+      renderer.setSize(width, height, false);
       Object.assign(view, constrained(view));
+      updateTerrainCamera();
       dirty = true;
     }
     const observer = new ResizeObserver(resize);
@@ -530,7 +601,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     function hitEditorItem(x: number, y: number) {
       const direction = kingdomDirection(view.angle);
       return [...editorRef.current.items].reverse().find((item) => {
-        const at = projectKingdom(item.x, item.y, view, viewport);
+        const at = projectPoint(item.x, item.y);
         const size = spriteSize(item, assets!, viewport.scale * view.zoom, direction);
         return (
           x >= at.x - size.width * 0.6 &&
@@ -543,8 +614,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     function screenDelta(dx: number, dy: number) {
       const x = viewport.width / 2;
       const y = viewport.height * KINGDOM_CAMERA_Y;
-      const from = unprojectKingdom(x, y, view, viewport);
-      const to = unprojectKingdom(x + dx, y + dy, view, viewport);
+      const from = unprojectPoint(x, y);
+      const to = unprojectPoint(x + dx, y + dy);
       return { x: to.x - from.x, y: to.y - from.y };
     }
     function movedGroup(original: KingdomEditorItem[], ids: string[], dx: number, dy: number) {
@@ -673,8 +744,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       if (movingItems && pointers.size === 1) {
         if (Math.hypot(at.x - startPointer.x, at.y - startPointer.y) <= 3) return;
         dragging = true;
-        const from = unprojectKingdom(startPointer.x, startPointer.y, startView, viewport);
-        const to = unprojectKingdom(at.x, at.y, startView, viewport);
+        const from = unprojectPoint(startPointer.x, startPointer.y, startView);
+        const to = unprojectPoint(at.x, at.y, startView);
         const next = movedGroup(
           movingItems.original,
           movingItems.ids,
@@ -697,8 +768,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       } else {
         if (Math.hypot(at.x - startPointer.x, at.y - startPointer.y) > 5) dragging = true;
         if (!dragging) return;
-        const from = unprojectKingdom(startPointer.x, startPointer.y, startView, viewport);
-        const to = unprojectKingdom(at.x, at.y, startView, viewport);
+        const from = unprojectPoint(startPointer.x, startPointer.y, startView);
+        const to = unprojectPoint(at.x, at.y, startView);
         const proposed = {
           ...view,
           x: startView.x + from.x - to.x,
@@ -719,7 +790,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       pointers.delete(event.pointerId);
       if (host!.hasPointerCapture(event.pointerId)) host!.releasePointerCapture(event.pointerId);
       if (pendingPlace && !dragging && !hadMultiTouch) {
-        const point = unprojectKingdom(pendingPlace.at.x, pendingPlace.at.y, view, viewport);
+        const point = unprojectPoint(pendingPlace.at.x, pendingPlace.at.y);
         if (
           Math.abs(point.x) <= viewport.mapWidth / 2 &&
           Math.abs(point.y) <= viewport.mapHeight / 2
@@ -752,7 +823,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         const matches = dragging
           ? editorRef.current.items
               .filter((item) => {
-                const point = projectKingdom(item.x, item.y, view, viewport);
+                const point = projectPoint(item.x, item.y);
                 const size = spriteSize(
                   item,
                   assets!,
@@ -887,18 +958,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       else if (['arrowleft', 'arrowright', 'arrowup', 'arrowdown'].includes(key)) {
         const dx = key === 'arrowleft' ? -105 : key === 'arrowright' ? 105 : 0;
         const dy = key === 'arrowup' ? -90 : key === 'arrowdown' ? 90 : 0;
-        const from = unprojectKingdom(
-          viewport.width / 2,
-          viewport.height * KINGDOM_CAMERA_Y,
-          view,
-          viewport,
-        );
-        const to = unprojectKingdom(
-          viewport.width / 2 + dx,
-          viewport.height * KINGDOM_CAMERA_Y + dy,
-          view,
-          viewport,
-        );
+        const from = unprojectPoint(viewport.width / 2, viewport.height * KINGDOM_CAMERA_Y);
+        const to = unprojectPoint(viewport.width / 2 + dx, viewport.height * KINGDOM_CAMERA_Y + dy);
         animateTo({ ...view, x: view.x + to.x - from.x, y: view.y + to.y - from.y }, 180);
       } else return;
       event.preventDefault();
@@ -908,6 +969,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     }
     controlsRef.current = {
       zoom: (amount) => zoomAt(amount),
+      setZoom: (absolute) => zoomAt(absolute / view.zoom),
       rotate: (amount) => {
         const target = animation?.to.angle ?? view.angle;
         animateTo(
@@ -1001,7 +1063,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
               name === 'ground'
                 ? background.exists
                   ? `/api/kingdom/editor-background/image?v=${background.revision}`
-                  : '/kingdom/ground-trails.png'
+                  : '/kingdom/ground-coast.webp'
                 : name === 'nature'
                   ? '/kingdom/nature.png'
                   : `/kingdom/structures/atlases/${({ town: 'town-buildings', seaport: 'harbor-buildings', craft: 'craft-buildings', frontier: 'frontier-buildings' } as Record<string, string>)[name] ?? name}.png`,
@@ -1010,9 +1072,13 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           ] as const,
       ),
     )
-      .then((entries) => {
+      .then(async (entries) => {
         if (disposed) return;
         const loaded = Object.fromEntries(entries) as unknown as KingdomAssets;
+        const coastMask = background.exists
+          ? undefined
+          : await loadIllustration('/kingdom/coast-mask.png', abort.signal);
+        if (disposed) return;
         assets = loaded;
         viewport.mapWidth = loaded.ground.naturalWidth * KINGDOM_UNITS_PER_PIXEL;
         viewport.mapHeight = loaded.ground.naturalHeight * KINGDOM_UNITS_PER_PIXEL;
@@ -1020,7 +1086,16 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         host.dataset.mapHeight = String(viewport.mapHeight);
         host.dataset.imageWidth = String(loaded.ground.naturalWidth);
         host.dataset.imageHeight = String(loaded.ground.naturalHeight);
+        relief = createKingdomRelief(
+          loaded.ground,
+          viewport.mapWidth,
+          viewport.mapHeight,
+          coastMask,
+        );
+        scene.add(relief.group);
+        host.dataset.terrainVertices = String(relief.vertexCount);
         Object.assign(view, constrained(view));
+        updateTerrainCamera();
         setEditorAssets(loaded);
         host.dataset.groveCount = '0';
         ready = true;
@@ -1052,6 +1127,9 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       host.removeEventListener('keydown', keydown);
       document.removeEventListener('visibilitychange', wake);
       reduced.removeEventListener('change', wake);
+      relief?.dispose();
+      renderer.dispose();
+      renderer.domElement.remove();
       canvas.remove();
       canvas.width = 1;
       canvas.height = 1;
@@ -1071,13 +1149,13 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       ref={hostRef}
       className="kingdom-map"
       data-stage="terrain"
-      data-renderer="canvas2d"
+      data-renderer="webgl-canvas2d"
       data-status={status}
       data-editor-open={editorOpen}
       data-direction={direction}
       tabIndex={0}
       role="region"
-      aria-label="Mapa ilustrado do Reino do Norte"
+      aria-label="Mapa 3D do Reino do Norte"
       aria-describedby="kingdom-instructions"
     >
       <p id="kingdom-instructions" className="sr-only">
@@ -1134,7 +1212,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             <small>
               {background?.exists
                 ? `${background.width} × ${background.height} px · seu rascunho`
-                : 'Fundo original do reino'}
+                : 'Terreno costeiro 3D do reino'}
             </small>
             <input
               ref={backgroundInputRef}
@@ -1161,7 +1239,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                   disabled={backgroundBusy}
                   onClick={() => void resetBackground()}
                 >
-                  Restaurar original
+                  Restaurar terreno costeiro
                 </button>
               )}
             </div>
@@ -1169,7 +1247,27 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           </div>
           <div className="kingdom-editor__view">
             <strong>Enquadramento inicial</strong>
-            <small>Use o zoom, arraste e gire; depois salve a visão atual como 100%.</small>
+            <small>Aproxime para trabalhar; salve a visão desejada como 100%.</small>
+            <label className="kingdom-editor__zoom-range">
+              Zoom de trabalho <output>{Math.round((zoom / homeZoom) * 100)}%</output>
+              <input
+                type="range"
+                aria-label="Zoom de trabalho"
+                min="0"
+                max="1000"
+                value={Math.round(
+                  (Math.log(zoom / EDITOR_MIN_ZOOM) / Math.log(EDITOR_MAX_ZOOM / EDITOR_MIN_ZOOM)) *
+                    1000,
+                )}
+                disabled={status !== 'ready'}
+                onChange={(event) =>
+                  controlsRef.current?.setZoom(
+                    EDITOR_MIN_ZOOM *
+                      (EDITOR_MAX_ZOOM / EDITOR_MIN_ZOOM) ** (Number(event.target.value) / 1000),
+                  )
+                }
+              />
+            </label>
             <div>
               <button
                 type="button"
@@ -1518,7 +1616,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         <div className="kingdom-map__status" role={status === 'error' ? 'alert' : 'status'}>
           <span>
             {status === 'error'
-              ? 'Não foi possível abrir as ilustrações do reino.'
+              ? 'Não foi possível abrir o terreno 3D ou as ilustrações do reino.'
               : 'Desdobrando os caminhos do Norte…'}
           </span>
           {status === 'error' && (

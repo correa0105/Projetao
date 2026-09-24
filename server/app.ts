@@ -16,7 +16,8 @@ import {
   KINGDOM_BACKGROUND_MAX_BYTES,
   KINGDOM_BACKGROUND_MAX_EDGE,
   KINGDOM_BACKGROUND_MAX_PIXELS,
-  KINGDOM_DEFAULT_PIXELS,
+  KINGDOM_DEFAULT_WIDTH,
+  KINGDOM_DEFAULT_HEIGHT,
   KINGDOM_EDITOR_CATALOG,
 } from '../shared/kingdom-editor.js';
 
@@ -395,8 +396,8 @@ export function createApp() {
           }
         : {
             exists: false,
-            width: KINGDOM_DEFAULT_PIXELS,
-            height: KINGDOM_DEFAULT_PIXELS,
+            width: KINGDOM_DEFAULT_WIDTH,
+            height: KINGDOM_DEFAULT_HEIGHT,
             revision: 0,
           },
     );
@@ -469,8 +470,8 @@ export function createApp() {
     ]);
     res.json({
       exists: false,
-      width: KINGDOM_DEFAULT_PIXELS,
-      height: KINGDOM_DEFAULT_PIXELS,
+      width: KINGDOM_DEFAULT_WIDTH,
+      height: KINGDOM_DEFAULT_HEIGHT,
       revision: 0,
     });
   });

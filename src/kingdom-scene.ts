@@ -64,7 +64,13 @@ export type KingdomAssets = Record<
   HTMLImageElement
 >;
 
-export function projectKingdom(x: number, y: number, view: KingdomView, viewport: KingdomViewport) {
+export function projectKingdom(
+  x: number,
+  y: number,
+  view: KingdomView,
+  viewport: KingdomViewport,
+  groundHeight = 0,
+) {
   const cos = Math.cos(view.angle),
     sin = Math.sin(view.angle);
   const dx = x - view.x,
@@ -72,7 +78,10 @@ export function projectKingdom(x: number, y: number, view: KingdomView, viewport
   const scale = view.zoom * viewport.scale;
   return {
     x: viewport.width * 0.5 + (dx * cos - dy * sin) * scale,
-    y: viewport.height * KINGDOM_CAMERA_Y + (dx * sin + dy * cos) * scale * viewport.tilt,
+    y:
+      viewport.height * KINGDOM_CAMERA_Y +
+      (dx * sin + dy * cos) * scale * viewport.tilt -
+      groundHeight * scale * Math.sqrt(1 - viewport.tilt * viewport.tilt),
   };
 }
 
@@ -283,31 +292,17 @@ export function paintKingdom(
   selected: readonly string[],
   hovered: string | null,
   seconds: number,
+  heightAt: (x: number, y: number) => number = () => 0,
 ) {
   const { width, height } = viewport;
   const scale = viewport.scale * view.zoom;
-  const cos = Math.cos(view.angle),
-    sin = Math.sin(view.angle);
-  const origin = projectKingdom(0, 0, view, viewport);
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = '#202b29';
-  ctx.fillRect(0, 0, width, height);
-  ctx.save();
-  ctx.transform(
-    cos * scale,
-    sin * scale * viewport.tilt,
-    -sin * scale,
-    cos * scale * viewport.tilt,
-    origin.x,
-    origin.y,
-  );
-  const left = -viewport.mapWidth / 2;
-  const top = -viewport.mapHeight / 2;
-  ctx.drawImage(assets.ground, left, top, viewport.mapWidth, viewport.mapHeight);
-  ctx.restore();
 
   const ordered = sprites
-    .map((sprite) => ({ sprite, at: projectKingdom(sprite.x, sprite.y, view, viewport) }))
+    .map((sprite) => ({
+      sprite,
+      at: projectKingdom(sprite.x, sprite.y, view, viewport, heightAt(sprite.x, sprite.y)),
+    }))
     .sort((a, b) => a.at.y - b.at.y);
   const direction = kingdomDirection(view.angle);
   for (const { sprite, at } of ordered) {

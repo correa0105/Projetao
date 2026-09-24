@@ -6,7 +6,7 @@ persistido em PostgreSQL. Protótipo funcional em português, inspirado em D&D 5
 Identidade da guilda: nome escrito em Libre Baskerville na apresentação, azul de noite, pergaminho e cobre envelhecido.
 O Bastião da Alvorada é a sede em Vigília. [Direção visual, arte e prompt](docs/IDENTIDADE.md).
 
-Na visão do Reino do Norte, o chão padrão ilustrado mostra trilhas até seis áreas reservadas. O editor permite montar uma composição privada, selecionar grupos com Ctrl + mouse, arrastar itens diretamente e enviar um background próprio, inclusive 8K. Fundos enviados preservam sua proporção original; a inclinação ilustrada permanece apenas no chão padrão. O editor permite zoom amplo e salvar a câmera atual como o novo 100% particular, restaurado ao recarregar. A área navegável cresce com as dimensões da imagem; o fundo padrão mede 15000 × 15000 unidades. A névoa regional foi retirada. Os seis locais e suas missões continuam no SQL; o Mundo 3D permanece independente. Consulte [a documentação da visão do reino](docs/KINGDOM-2D.md).
+Na visão do Reino do Norte, o terreno padrão é uma malha 3D em Three.js/WebGL com costa e ondulações suaves: mar escuro à esquerda do contorno marrom e chão de grama oliva à direita, livre para receber objetos do editor. O master de textura mede 4096 × 2078 px; a máscara de costa controla a elevação e a superfície da água. A câmera gira em oito direções de 45° e os objetos do editor usam os oito quadros direcionais dos atlas, projetados sobre a altura local do terreno. O editor permite montar uma composição privada, selecionar grupos com Ctrl + mouse, arrastar itens diretamente e enviar um background próprio, inclusive 8K. Fundos enviados continuam planos e preservam sua proporção original. O editor permite zoom amplo, com controle deslizante, e salvar a câmera atual como o novo 100% particular, restaurado ao recarregar. A área navegável cresce com as dimensões da imagem. A névoa regional foi retirada. Os seis locais e suas missões continuam no SQL; o Mundo 3D permanece independente. Consulte [a documentação da visão do reino](docs/KINGDOM-2D.md).
 
 O botão **Editar mapa** permite posicionar objetos ilustrados, arrastá-los diretamente, mover a seleção com setas, duplicar, ajustar tamanho e orientação e salvar um rascunho particular no PostgreSQL. Os rascunhos do terreno antigo foram apagados na migration 012; novos arranjos são recuperados ao voltar ao reino e podem ser incorporados à composição compartilhada depois de concluídos.
 
@@ -63,13 +63,13 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Conclusão pelo criador com resumo, XP por personagem inscrito e gancho opcional. Resumo e resultados ficam no histórico; XP é persistido uma única vez.
 - Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos da staff/admin.
 - Mundo com relevo cartográfico em Three.js, detalhe de solo/rocha, arraste elástico, zoom e nuvens em movimento, preenchendo a tela. A visão inicial usa 100%, equivalente ao antigo enquadramento de 142%; a silhueta fornecida pelo usuário define a geografia. Vinte e dois territórios têm demarcações com destaque ao passar o mouse e clique na superfície; mar contínuo ampliado, ilhotas, vulcão e tormenta complementam o cenário.
-- Reino do Norte abre uma visão regional 2D inclinada com solo texturizado. Arraste, zoom e giro de 45° permitem explorar a área. O editor permite compor objetos privados e enviar um background próprio. Não há névoa regional. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
+- Reino do Norte abre uma visão regional 3D com relevo e costa. Arraste, zoom e giro de 45° permitem explorar a área. O editor permite compor sprites de oito direções e enviar um background plano próprio. Não há névoa regional. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
 - Lore, Regras, House e Mercenários têm conteúdo inicial persistido no SQL.
 - Interface adaptável para desktop e celular, com tema exclusivamente escuro e menu retrátil com ícones medievais ilustrados.
 
 ## Limites deste protótipo
 
-Mundo usa uma malha de terreno com alturas, materiais procedurais com detalhe de fotografias CC0 de solo/rocha e câmera ortográfica inclinada. A arte anterior fornece a máscara da costa e a distribuição dos biomas; não é exibida como um quadro ou aplicada como pintura sobre a malha. A escala do relevo é representativa. Implementação em [ATLAS-WORLD-RELIEF.md](docs/ATLAS-WORLD-RELIEF.md); origem da referência em [ATLAS-WORLD-V2.md](docs/ATLAS-WORLD-V2.md). O Mundo exige WebGL; a visão do reino usa Canvas 2D e sprites, sem cena 3D regional. Oito orientações significam oito desenhos do mesmo objeto, não oito dimensões. Somente Reino do Norte possui exploração interna nesta etapa. Missões antigas com locais livres permanecem no mural; somente as vinculadas a um local do atlas aparecem naquele ponto do mapa.
+Mundo usa uma malha de terreno com alturas, materiais procedurais com detalhe de fotografias CC0 de solo/rocha e câmera ortográfica inclinada. A arte anterior fornece a máscara da costa e a distribuição dos biomas; não é exibida como um quadro ou aplicada como pintura sobre a malha. A escala do relevo é representativa. Implementação em [ATLAS-WORLD-RELIEF.md](docs/ATLAS-WORLD-RELIEF.md); origem da referência em [ATLAS-WORLD-V2.md](docs/ATLAS-WORLD-V2.md). Mundo e terreno padrão do reino exigem WebGL; os sprites regionais permanecem no Canvas 2D. Oito orientações significam oito desenhos do mesmo objeto. Somente Reino do Norte possui exploração interna nesta etapa. Missões antigas com locais livres permanecem no mural; somente as vinculadas a um local do atlas aparecem naquele ponto do mapa.
 
 House e Mercenários são páginas narrativas: ainda não há propriedades, baús ou contratação.
 A ficha é simplificada; não há bônus raciais, proficiências por classe, magias, combate,
@@ -139,10 +139,11 @@ src/WorldMap.tsx       câmera mundial, arraste/zoom e seleção de territórios
 src/world-relief.ts    geometria do Mundo, biomas, rios e oceano
 src/world-clouds.ts    nuvens procedurais em movimento acima do mapa
 src/world-map.css      Mundo em tela inteira e controles sobrepostos
-src/KingdomMap.tsx     visão do reino, câmera 2D, controles e locais acessíveis
-src/kingdom-scene.ts   chão ilustrado e sprites de oito orientações em Canvas 2D
+src/KingdomMap.tsx     visão do reino, câmera ortográfica, controles e editor
+src/kingdom-relief.ts  malha 3D, costa e água do terreno regional
+src/kingdom-scene.ts   sprites de oito orientações em Canvas 2D
 src/kingdom-map.css    composição e controles da visão do reino
-public/kingdom/       pinturas regionais 2D e pranchas de sprites em oito direções
+public/kingdom/       textura/máscara da costa e pranchas de sprites em oito direções
 src/alvorada.css         identidade Alvorada Cinzenta, sobre os estilos estruturais
 public/               mapa de entrada, favicon tipográfico e paisagem da fortaleza
 shared/               regras iniciais compartilhadas

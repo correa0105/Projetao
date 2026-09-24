@@ -18,7 +18,8 @@ const editorOnly = process.argv.includes('--editor-only');
 const skipCameraMatrix = process.argv.includes('--skip-camera-matrix');
 const useBrowserGpu = process.env.ATLAS_BROWSER_GPU === '1';
 const expectedKingdomAssets = [
-  '/kingdom/ground-trails.png',
+  '/kingdom/ground-coast.webp',
+  '/kingdom/coast-mask.png',
   '/kingdom/structures/atlases/structures.png',
   '/kingdom/nature.png',
   '/kingdom/structures/atlases/landmarks.png',
@@ -130,23 +131,30 @@ async function ready(target: Page) {
   }
   const scene = target.locator('.kingdom-map');
   await expect(scene).toHaveAttribute('data-status', 'ready', { timeout: 30000 });
-  await expect(scene).toHaveAttribute('data-renderer', 'canvas2d');
+  await expect(scene).toHaveAttribute('data-renderer', 'webgl-canvas2d');
+  await expect(scene.locator('.kingdom-map__terrain')).toBeVisible();
   await expect(scene.locator('.kingdom-map__ground')).toBeVisible();
+  expect(Number(await scene.getAttribute('data-terrain-vertices'))).toBeGreaterThan(0);
   await expect(scene.locator('.kingdom-map__clouds')).toHaveCount(0);
   await expect(scene.locator('.kingdom-map__edge-mist')).toHaveCount(0);
   expect(
     await scene
       .locator('.kingdom-map__ground')
       .evaluate((canvas) => !!(canvas as HTMLCanvasElement).getContext('2d')),
-    'A visão do reino deve renderizar em Canvas2D, sem contexto WebGL.',
+    'Os objetos do reino devem continuar no Canvas2D.',
   ).toBe(true);
   const expectedGround =
     (await scene.getAttribute('data-custom-background')) === 'true'
       ? '/api/kingdom/editor-background/image'
-      : '/kingdom/ground-trails.png';
+      : '/kingdom/ground-coast.webp';
+  const customBackground = expectedGround === '/api/kingdom/editor-background/image';
   const expected = expectedKingdomAssets
-    .filter((path) => path !== '/kingdom/ground-trails.png')
-    .concat(expectedGround);
+    .filter(
+      (path) =>
+        !customBackground ||
+        (path !== '/kingdom/ground-coast.webp' && path !== '/kingdom/coast-mask.png'),
+    )
+    .concat(customBackground ? [expectedGround] : []);
   await expect
     .poll(() => expected.every((path) => kingdomResponses.get(target)?.has(path)))
     .toBe(true);
@@ -392,11 +400,7 @@ async function exerciseTerrainCamera(
       for (let direction = 0; direction < 8; direction++) {
         expect((await camera(target)).direction).toBe(direction);
         for (const pin of await pins(target)) expect(pin.direction).toBe(direction);
-        frames.add(
-          await target
-            .locator('.kingdom-map__ground')
-            .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL()),
-        );
+        frames.add((await target.locator('.kingdom-map__terrain').screenshot()).toString('base64'));
         if (!mobile || direction === 0 || direction === 4)
           await target.screenshot({
             path: `test-results/kingdom-direction-${direction}-${label}.png`,
@@ -1288,18 +1292,17 @@ async function runNavigationOnly(mobileOnly = false) {
   );
 }
 
-async function exerciseKingdomWithoutWebGL(expectedTitles: string[] = []) {
+async function exerciseKingdomWithoutWebGL() {
   const withoutWebgl = await browser.newPage({
     viewport: { width: 1280, height: 900 },
     reducedMotion: 'reduce',
     storageState: await page.context().storageState(),
   });
-  watchErrors(withoutWebgl);
   try {
     await withoutWebgl.goto(`${base}/#world`);
     await ready(withoutWebgl);
-    // The world remains WebGL. Block any newly created WebGL context after it
-    // loads: the new regional renderer must remain fully functional in Canvas2D.
+    // Block new contexts after the world loads. The regional relief now needs
+    // WebGL too, and must show an explicit error if a context cannot start.
     await withoutWebgl.evaluate(() => {
       const original = HTMLCanvasElement.prototype.getContext;
       HTMLCanvasElement.prototype.getContext = function (
@@ -1311,10 +1314,9 @@ async function exerciseKingdomWithoutWebGL(expectedTitles: string[] = []) {
         return original.call(this, type, options);
       } as typeof original;
     });
-    await openNorth(withoutWebgl);
-    const noGlDrawer = await openVigilia(withoutWebgl);
-    await noGlDrawer.getByRole('button', { name: 'Todas', exact: true }).click();
-    for (const title of expectedTitles) await expect(noGlDrawer).toContainText(title);
+    await clickMarker(withoutWebgl, 'Reino do Norte');
+    await expect(withoutWebgl.locator('.kingdom-map')).toHaveAttribute('data-status', 'error');
+    await expect(withoutWebgl.getByRole('alert')).toContainText('terreno 3D');
     await withoutWebgl.screenshot({
       path: 'test-results/kingdom-without-webgl-desktop.png',
       fullPage: true,
@@ -1352,8 +1354,9 @@ async function exerciseKingdomAssetRecovery() {
     await recovering.unroute('**/kingdom/nature.png');
     await recovering.getByRole('button', { name: 'Tentar novamente', exact: true }).click();
     await ready(recovering);
-    await expect(recovering.locator('.kingdom-map canvas')).toHaveCount(1);
-    await openVigilia(recovering);
+    await expect(recovering.locator('.kingdom-map canvas')).toHaveCount(2);
+    await recovering.getByRole('button', { name: /Missões do reino/ }).click();
+    await expect(recovering.getByRole('complementary', { name: 'Missões de Reino do Norte' })).toBeVisible();
     await recovering.screenshot({
       path: 'test-results/kingdom-assets-recovered.png',
       fullPage: true,
@@ -1512,15 +1515,7 @@ async function runTerrainOnly() {
   expect(easternEdges.right).toBeCloseTo(easternEdges.width, 0);
   await page.screenshot({ path: 'test-results/kingdom-terrain-edge.png', fullPage: true });
   await expect(scene.locator('.kingdom-map__edge-mist')).toHaveCount(0);
-  const groundFrame = await scene
-    .locator('.kingdom-map__ground')
-    .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL());
-  await page.waitForTimeout(300);
-  expect(
-    await scene
-      .locator('.kingdom-map__ground')
-      .evaluate((canvas) => (canvas as HTMLCanvasElement).toDataURL()),
-  ).toBe(groundFrame);
+  expect(Number(await scene.getAttribute('data-terrain-vertices'))).toBeGreaterThan(30000);
   await resetCamera(page);
   await maximumZoom(page);
   for (let i = 0; i < 12; i++) await dragAcross(page, 'right');
@@ -1583,10 +1578,16 @@ async function runKingdomEditor() {
   await scene.getByRole('button', { name: 'Editar mapa' }).click();
   const editor = scene.getByRole('complementary', { name: 'Editor do mapa do reino' });
   await expect(editor).toBeVisible();
+  const zoomSlider = editor.getByRole('slider', { name: 'Zoom de trabalho' });
+  await expect(zoomSlider).toBeVisible();
+  const initialZoom = (await camera(page)).zoom;
+  await zoomSlider.fill('700');
+  expect((await camera(page)).zoom).toBeGreaterThan(initialZoom);
+  await resetCamera(page);
   await editor.getByRole('button', { name: 'Pinheiro' }).click();
   const bounds = (await scene.boundingBox())!;
   const placeX = bounds.x + bounds.width * 0.42;
-  const placeY = bounds.y + bounds.height * 0.48;
+  const placeY = bounds.y + bounds.height * 0.3;
   const initialWorldX = await scene.evaluate((host, x) => {
     const rect = host.getBoundingClientRect();
     const data = (host as HTMLElement).dataset;
@@ -1816,8 +1817,9 @@ async function runKingdomEditor() {
   await reopened.getByRole('button', { name: 'Restaurar visão inicial' }).click();
   await settleCamera(page);
   expect((await camera(page)).zoom).toBeCloseTo(1, 3);
-  await reopened.getByRole('button', { name: 'Restaurar original' }).click();
-  await expect(scene).toHaveAttribute('data-image-width', '3072', { timeout: 30000 });
+  await reopened.getByRole('button', { name: 'Restaurar terreno costeiro' }).click();
+  await expect(scene).toHaveAttribute('data-image-width', '4096', { timeout: 30000 });
+  await expect(scene).toHaveAttribute('data-image-height', '2078');
   await expect(scene).toHaveAttribute('data-tilt', '0.58');
   expect(errors).toEqual([]);
   console.log(
@@ -1855,7 +1857,7 @@ try {
       await exerciseKingdomWithoutWebGL();
       await exerciseKingdomAssetRecovery();
       expect(errors).toEqual([]);
-      console.log('Reino OK: Canvas2D sem WebGL e recuperação de imagem inválida.');
+      console.log('Reino OK: erro claro sem WebGL e recuperação de imagem inválida.');
     }
   } else if (regionalEdgesOnly) {
     await page.goto(`${base}/#world`);
@@ -2072,7 +2074,7 @@ try {
       await touch.close();
     }
 
-    await exerciseKingdomWithoutWebGL([missionTitle, boardTitle]);
+    await exerciseKingdomWithoutWebGL();
     await exerciseKingdomAssetRecovery();
     expect(errors).toEqual([]);
     expect(webglRasterRequests, 'Os antigos mapas regionais não devem ser solicitados.').toEqual(

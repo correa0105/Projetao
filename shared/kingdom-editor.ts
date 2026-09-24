@@ -34,6 +34,8 @@ export type KingdomEditorItem = {
 };
 export type KingdomEditorLayout = { revision: number; items: KingdomEditorItem[] };
 export const KINGDOM_DEFAULT_PIXELS = 3072;
+export const KINGDOM_DEFAULT_WIDTH = 4096;
+export const KINGDOM_DEFAULT_HEIGHT = 2078;
 export const KINGDOM_UNITS_PER_PIXEL = 15000 / KINGDOM_DEFAULT_PIXELS;
 export const KINGDOM_BACKGROUND_MAX_BYTES = 128 * 1024 * 1024;
 export const KINGDOM_BACKGROUND_MAX_EDGE = 12288;
