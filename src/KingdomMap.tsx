@@ -637,7 +637,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             name,
             await loadIllustration(
               name === 'ground'
-                ? '/kingdom/ground-turf.png'
+                ? '/kingdom/ground-trails.png'
                 : name === 'nature'
                   ? '/kingdom/nature.png'
                   : `/kingdom/structures/atlases/${({ town: 'town-buildings', seaport: 'harbor-buildings', craft: 'craft-buildings', frontier: 'frontier-buildings' } as Record<string, string>)[name] ?? name}.png`,

@@ -17,7 +17,7 @@ const editorOnly = process.argv.includes('--editor-only');
 const skipCameraMatrix = process.argv.includes('--skip-camera-matrix');
 const useBrowserGpu = process.env.ATLAS_BROWSER_GPU === '1';
 const expectedKingdomAssets = [
-  '/kingdom/ground-turf.png',
+  '/kingdom/ground-trails.png',
   '/kingdom/structures/atlases/structures.png',
   '/kingdom/nature.png',
   '/kingdom/structures/atlases/landmarks.png',
@@ -1470,6 +1470,17 @@ async function runTerrainOnly() {
     fullPage: true,
     animations: 'disabled',
   });
+  for (let expectedDirection = 2; expectedDirection < 8; expectedDirection++) {
+    await page.getByRole('button', { name: 'Girar mapa para a direita' }).click();
+    await settleCamera(page);
+    expect((await camera(page)).direction).toBe(expectedDirection);
+    if (expectedDirection === 4)
+      await page.screenshot({
+        path: 'test-results/kingdom-terrain-opposite.png',
+        fullPage: true,
+        animations: 'disabled',
+      });
+  }
   await resetCamera(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.waitForTimeout(100);
