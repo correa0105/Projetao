@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
 import {
   Focus,
   Copy,
@@ -18,6 +17,8 @@ import { api } from './api';
 import {
   KINGDOM_EDITOR_CATALOG,
   KINGDOM_BACKGROUND_MAX_BYTES,
+  KINGDOM_DEFAULT_HEIGHT,
+  KINGDOM_DEFAULT_WIDTH,
   KINGDOM_UNITS_PER_PIXEL,
   type KingdomBackgroundMeta,
   type KingdomEditorView,
@@ -40,10 +41,10 @@ import {
   type KingdomView,
   type KingdomViewport,
 } from './kingdom-scene';
-import { createKingdomRelief } from './kingdom-relief';
 import './kingdom-map.css';
 
 type KingdomMapProps = {
+  canEdit: boolean;
   markers: AtlasMarker[];
   selectedId: string | null;
   onSelect: (id: string) => void;
@@ -130,7 +131,7 @@ function loadIllustration(url: string, signal: AbortSignal): Promise<HTMLImageEl
   });
 }
 
-export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMapProps) {
+export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: KingdomMapProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasHostRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<Controls | null>(null);
@@ -210,6 +211,21 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
 
   useEffect(() => {
     let alive = true;
+    if (!canEdit) {
+      setMapConfig({
+        background: {
+          exists: false,
+          width: KINGDOM_DEFAULT_WIDTH,
+          height: KINGDOM_DEFAULT_HEIGHT,
+          revision: 0,
+        },
+        home: defaultHome,
+      });
+      setEditorLoading(false);
+      return () => {
+        alive = false;
+      };
+    }
     Promise.all([
       api<KingdomBackgroundMeta>('/kingdom/editor-background/meta'),
       api<KingdomEditorView>('/kingdom/editor-view'),
@@ -226,7 +242,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     return () => {
       alive = false;
     };
-  }, [retry]);
+  }, [retry, canEdit]);
   async function uploadBackground(file: File) {
     if (file.size > KINGDOM_BACKGROUND_MAX_BYTES) {
       setEditorMessage('O fundo deve ter no máximo 128 MB.');
@@ -255,7 +271,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         method: 'DELETE',
       });
       setMapConfig({ background: restored, home: defaultHome });
-      setEditorMessage('Terreno costeiro 3D restaurado.');
+      setEditorMessage('Fundo removido. A área do mapa está vazia.');
     } catch (error) {
       setEditorMessage((error as Error).message);
     } finally {
@@ -298,6 +314,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
   }
 
   useEffect(() => {
+    if (!canEdit) return;
     let alive = true;
     api<KingdomEditorLayout>('/kingdom/editor-draft')
       .then((draft) => {
@@ -315,7 +332,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     return () => {
       alive = false;
     };
-  }, []);
+  }, [canEdit]);
   useEffect(() => {
     if (!editorUnsaved) return;
     const warn = (event: BeforeUnloadEvent) => {
@@ -356,30 +373,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       setStatus('error');
       return;
     }
-    let renderer: THREE.WebGLRenderer;
-    try {
-      renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: false,
-        powerPreference: 'low-power',
-      });
-    } catch {
-      setStatus('error');
-      return;
-    }
-    renderer.domElement.className = 'kingdom-map__terrain';
-    renderer.domElement.setAttribute('aria-hidden', 'true');
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.18;
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#253b44');
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 150);
-    camera.up.set(0, 0, 1);
-    const sun = new THREE.DirectionalLight('#fff4dc', 2.1);
-    sun.position.set(-8, 7, 18);
-    scene.add(sun, new THREE.HemisphereLight('#d7e3e7', '#344438', 1.35));
-    canvasHost.append(renderer.domElement, canvas);
+    canvasHost.append(canvas);
     const abort = new AbortController();
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let disposed = false,
@@ -387,7 +381,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       frame = 0,
       dirty = true;
     let assets: KingdomAssets | null = null;
-    let relief: ReturnType<typeof createKingdomRelief> | null = null;
+    let backgroundImage: HTMLImageElement | null = null;
     let viewport: KingdomViewport = {
       width: 1,
       height: 1,
@@ -440,42 +434,13 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       host!.dataset.panY = view.y.toFixed(3);
       setZoom(view.zoom);
       setDirection(kingdomDirection(view.angle));
-      updateTerrainCamera();
       dirty = true;
     }
-    function updateTerrainCamera() {
-      const scale = Math.max(0.00001, viewport.scale * view.zoom);
-      const visibleWidth = viewport.width / scale / 1000;
-      const visibleHeight = viewport.height / scale / 1000;
-      camera.left = -visibleWidth / 2;
-      camera.right = visibleWidth / 2;
-      camera.top = visibleHeight * KINGDOM_CAMERA_Y;
-      camera.bottom = -visibleHeight * (1 - KINGDOM_CAMERA_Y);
-      const elevation = Math.asin(Math.min(viewport.tilt, 0.99999));
-      const distance = 45;
-      const horizontal = Math.cos(elevation) * distance;
-      camera.position.set(
-        view.x / 1000 - Math.sin(view.angle) * horizontal,
-        -view.y / 1000 - Math.cos(view.angle) * horizontal,
-        Math.sin(elevation) * distance,
-      );
-      camera.lookAt(view.x / 1000, -view.y / 1000, 0);
-      camera.updateProjectionMatrix();
-      camera.updateMatrixWorld();
-    }
     function projectPoint(x: number, y: number, current = view) {
-      return projectKingdom(x, y, current, viewport, relief?.heightAt(x, y) ?? 0);
+      return projectKingdom(x, y, current, viewport);
     }
     function unprojectPoint(x: number, y: number, current = view) {
-      let point = unprojectKingdom(x, y, current, viewport);
-      if (!relief) return point;
-      const heightScale =
-        viewport.scale * current.zoom * Math.sqrt(1 - viewport.tilt * viewport.tilt);
-      for (let iteration = 0; iteration < 3; iteration++) {
-        const raisedY = y + relief.heightAt(point.x, point.y) * heightScale;
-        point = unprojectKingdom(x, raisedY, current, viewport);
-      }
-      return point;
+      return unprojectKingdom(x, y, current, viewport);
     }
     function constrained(next: KingdomView): KingdomView {
       const bounds = zoomBounds();
@@ -536,17 +501,16 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         sync();
       }
       if (dirty) {
-        renderer.render(scene, camera);
         paintKingdom(
           ctx!,
           assets,
+          backgroundImage,
           editorRef.current.items,
           view,
           viewport,
           editorRef.current.open ? editorRef.current.selectedItemIds : [],
           null,
           reduced.matches ? 0 : now / 1000,
-          relief?.heightAt ?? (() => 0),
         );
         dirty = false;
       }
@@ -559,11 +523,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       viewport = {
         width,
         height,
-        scale:
-          Math.min(1.05, Math.max(0.27, width / 3800)) *
-          0.384 *
-          0.85 *
-          (background.exists ? 1 : 1.75),
+        scale: Math.min(1.05, Math.max(0.27, width / 3800)) * 0.384 * 0.85,
         tilt: viewport.tilt,
         mapWidth: viewport.mapWidth,
         mapHeight: viewport.mapHeight,
@@ -574,10 +534,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       ctx!.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       ctx!.imageSmoothingEnabled = true;
       ctx!.imageSmoothingQuality = 'high';
-      renderer.setPixelRatio(pixelRatio);
-      renderer.setSize(width, height, false);
       Object.assign(view, constrained(view));
-      updateTerrainCamera();
       dirty = true;
     }
     const observer = new ResizeObserver(resize);
@@ -1045,58 +1002,34 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     reduced.addEventListener('change', wake);
     frame = requestAnimationFrame(tick);
     Promise.all(
-      [
-        'ground',
-        'structures',
-        'nature',
-        'landmarks',
-        'settlements',
-        'town',
-        'seaport',
-        'craft',
-        'frontier',
-      ].map(
-        async (name) =>
-          [
-            name,
-            await loadIllustration(
-              name === 'ground'
-                ? background.exists
-                  ? `/api/kingdom/editor-background/image?v=${background.revision}`
-                  : '/kingdom/ground-coast.webp'
-                : name === 'nature'
+      ['structures', 'nature', 'landmarks', 'settlements', 'town', 'seaport', 'craft', 'frontier']
+        .filter(() => canEdit)
+        .map(
+          async (name) =>
+            [
+              name,
+              await loadIllustration(
+                name === 'nature'
                   ? '/kingdom/nature.png'
                   : `/kingdom/structures/atlases/${({ town: 'town-buildings', seaport: 'harbor-buildings', craft: 'craft-buildings', frontier: 'frontier-buildings' } as Record<string, string>)[name] ?? name}.png`,
-              abort.signal,
-            ),
-          ] as const,
-      ),
+                abort.signal,
+              ),
+            ] as const,
+        ),
     )
       .then(async (entries) => {
         if (disposed) return;
         const loaded = Object.fromEntries(entries) as unknown as KingdomAssets;
-        const coastMask = background.exists
-          ? undefined
-          : await loadIllustration('/kingdom/coast-mask.png', abort.signal);
+        backgroundImage = background.exists
+          ? await loadIllustration(
+              `/api/kingdom/editor-background/image?v=${background.revision}`,
+              abort.signal,
+            )
+          : null;
         if (disposed) return;
         assets = loaded;
-        viewport.mapWidth = loaded.ground.naturalWidth * KINGDOM_UNITS_PER_PIXEL;
-        viewport.mapHeight = loaded.ground.naturalHeight * KINGDOM_UNITS_PER_PIXEL;
-        host.dataset.mapWidth = String(viewport.mapWidth);
-        host.dataset.mapHeight = String(viewport.mapHeight);
-        host.dataset.imageWidth = String(loaded.ground.naturalWidth);
-        host.dataset.imageHeight = String(loaded.ground.naturalHeight);
-        relief = createKingdomRelief(
-          loaded.ground,
-          viewport.mapWidth,
-          viewport.mapHeight,
-          coastMask,
-        );
-        scene.add(relief.group);
-        host.dataset.terrainVertices = String(relief.vertexCount);
         Object.assign(view, constrained(view));
-        updateTerrainCamera();
-        setEditorAssets(loaded);
+        if (canEdit) setEditorAssets(loaded);
         host.dataset.groveCount = '0';
         ready = true;
         dirty = true;
@@ -1127,15 +1060,12 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
       host.removeEventListener('keydown', keydown);
       document.removeEventListener('visibilitychange', wake);
       reduced.removeEventListener('change', wake);
-      relief?.dispose();
-      renderer.dispose();
-      renderer.domElement.remove();
       canvas.remove();
       canvas.width = 1;
       canvas.height = 1;
       assets = null;
     };
-  }, [retry, mapConfig]);
+  }, [retry, mapConfig, canEdit]);
 
   useEffect(() => {
     controlsRef.current?.setEditorMode();
@@ -1148,14 +1078,14 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
     <div
       ref={hostRef}
       className="kingdom-map"
-      data-stage="terrain"
-      data-renderer="webgl-canvas2d"
+      data-stage="builder"
+      data-renderer="canvas2d"
       data-status={status}
       data-editor-open={editorOpen}
       data-direction={direction}
       tabIndex={0}
       role="region"
-      aria-label="Mapa 3D do Reino do Norte"
+      aria-label="Mapa do Reino do Norte"
       aria-describedby="kingdom-instructions"
     >
       <p id="kingdom-instructions" className="sr-only">
@@ -1176,23 +1106,25 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
           aria-hidden="true"
         />
       )}
-      <button
-        className="kingdom-map__editor-toggle"
-        type="button"
-        disabled={editorLoading}
-        aria-expanded={editorOpen}
-        aria-controls="kingdom-editor"
-        onClick={() => {
-          setEditorOpen((open) => !open);
-          setEditorTool('pan');
-        }}
-      >
-        {editorLoading ? 'Carregando editor…' : editorOpen ? 'Fechar editor' : 'Editar mapa'}
-        {editorUnsaved && (
-          <span className="kingdom-map__unsaved-dot" aria-label="Alterações não salvas" />
-        )}
-      </button>
-      {editorOpen && (
+      {canEdit && (
+        <button
+          className="kingdom-map__editor-toggle"
+          type="button"
+          disabled={editorLoading}
+          aria-expanded={editorOpen}
+          aria-controls="kingdom-editor"
+          onClick={() => {
+            setEditorOpen((open) => !open);
+            setEditorTool('pan');
+          }}
+        >
+          {editorLoading ? 'Carregando editor…' : editorOpen ? 'Fechar editor' : 'Editar mapa'}
+          {editorUnsaved && (
+            <span className="kingdom-map__unsaved-dot" aria-label="Alterações não salvas" />
+          )}
+        </button>
+      )}
+      {canEdit && editorOpen && (
         <aside id="kingdom-editor" className="kingdom-editor" aria-label="Editor do mapa do reino">
           <div className="kingdom-editor__heading">
             <div>
@@ -1212,7 +1144,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
             <small>
               {background?.exists
                 ? `${background.width} × ${background.height} px · seu rascunho`
-                : 'Terreno costeiro 3D do reino'}
+                : 'Área vazia · 4096 × 3072 px'}
             </small>
             <input
               ref={backgroundInputRef}
@@ -1239,7 +1171,7 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
                   disabled={backgroundBusy}
                   onClick={() => void resetBackground()}
                 >
-                  Restaurar terreno costeiro
+                  Remover fundo (área vazia)
                 </button>
               )}
             </div>
@@ -1616,8 +1548,8 @@ export function KingdomMap({ markers, selectedId, onSelect, onReady }: KingdomMa
         <div className="kingdom-map__status" role={status === 'error' ? 'alert' : 'status'}>
           <span>
             {status === 'error'
-              ? 'Não foi possível abrir o terreno 3D ou as ilustrações do reino.'
-              : 'Desdobrando os caminhos do Norte…'}
+              ? 'Não foi possível abrir o mapa ou as ilustrações do reino.'
+              : 'Abrindo o mapa do Norte…'}
           </span>
           {status === 'error' && (
             <button className="button outline" onClick={() => setRetry((value) => value + 1)}>

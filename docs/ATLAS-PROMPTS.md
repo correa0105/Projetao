@@ -2,9 +2,9 @@
 
 **Estado atual:** Mundo usa relevo cartográfico em Three.js, com câmera navegável e nuvens, documentado em [ATLAS-WORLD-RELIEF.md](ATLAS-WORLD-RELIEF.md). A versão plana foi rejeitada. `public/atlas-world-v2.png` é conservado somente como fonte da máscara costeira e distribuição dos biomas, sem aplicá-lo como pintura na malha. Seu prompt e resolução nativa de 1672 × 941 px estão em [ATLAS-WORLD-V2.md](ATLAS-WORLD-V2.md).
 
-**Histórico:** os prompts abaixo geraram os dois PNGs antigos, `public/atlas-world.png` e `public/atlas-north.png`. Desde 23/09/2026, a visão do reino usa um novo cenário Canvas 2D com chão ilustrado e sprites de oito orientações, descrito em [KINGDOM-2D.md](KINGDOM-2D.md). O PNG regional antigo não é mais o fallback de uma cena WebGL. A implementação regional 3D anterior está documentada somente como histórico em [ATLAS-3D.md](ATLAS-3D.md).
+**Histórico:** os prompts abaixo geraram os dois PNGs antigos, `public/atlas-world.png` e `public/atlas-north.png`, removidos do checkout. A visão atual do reino abre como área vazia em Canvas 2D, com upload de fundo e sprites de oito orientações, descrita em [KINGDOM-2D.md](KINGDOM-2D.md). A implementação regional 3D anterior está documentada somente como histórico em [ATLAS-3D.md](ATLAS-3D.md).
 
-As duas artes antigas abaixo foram criadas com a ferramenta imagegen integrada, sem API/CLI externo. Os PNGs ficam no repositório; não dependem de arquivos temporários da máquina. Nomes e marcadores são interface HTML, não texto gravado nas imagens.
+As duas artes antigas abaixo foram criadas com a ferramenta imagegen integrada, sem API/CLI externo. Seus PNGs permanecem no histórico Git. Nomes e marcadores eram interface HTML, não texto gravado nas imagens.
 
 Dimensão real de cada imagem antiga abaixo: **1586 × 992 px**, confirmada no cabeçalho PNG. O pedido de resolução superior nesses prompts não foi atendido pelo gerador; os arquivos não foram ampliados artificialmente. Esses números não são a resolução do novo Mundo V2.
 

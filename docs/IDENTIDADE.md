@@ -18,7 +18,6 @@ Texto: Explore o desconhecido; Alvorada Cinzenta; Iniciar aventura. Sem slogans,
 - public/alvorada-contours.svg: curvas cartográficas.
 - src/alvorada.css: identidade dos componentes do jogo.
 - src/journey.css: apresentação, autenticação e navegação flutuante.
-- public/alvorada-map.png, alvorada-map-previous.png, alvorada-archipelago-previous.png e islands-map.png: versões/referência preservadas, não usadas na entrada atual.
 
 Moldura fina com quinas iluminadas; controle de pausa junto à margem inferior. Login minimalista, uma única borda e mesmas texturas dock-grain/dock-waves do menu. Clicar fora ou Escape fecha o formulário; não reintroduzir slogans, marca repetida ou botão Voltar.
 
@@ -30,9 +29,9 @@ Mundo é a visão geral com **relevo cartográfico navegável**, preenchendo tod
 
 O usuário aprovou a modelagem mundial com nove cordilheiras e costa suavizada: manter seus contornos. Refino posterior pede pedra cinza mais neutra, musgo um pouco mais escuro, detalhes fotográficos discretos de solo/rocha e ondulações muito leves nas planícies. Nuvens ligeiramente mais densas e 25% mais rápidas. A visão inicial e mínimo usam 100%, com frustum recalibrado para o antigo 142%. Bordas de arraste devem ter resistência elástica e retorno suave para dentro, preservando o oceano contínuo.
 
-Reino do Norte abre a **visão do reino em 2D**, conforme a mudança explícita de 23/09/2026. A inspiração em Don't Starve vale para a câmera inclinada e a leitura de objetos ilustrados que permanecem em pé, com oito vistas e giro de 45°; a arte é própria, medieval, com contornos expressivos, sombras desenhadas, musgo, pedra, madeira e detalhes mágicos discretos. Chão, trilhas, estradas, pontes e rios pertencem à imagem-base. Árvores, rochas, construções clicáveis e totens são objetos separados, ordenados por profundidade. A decisão anterior por geometria regional 3D foi revogada; o Mundo mantém seu relevo Three.js. Implementação vigente em [KINGDOM-2D.md](KINGDOM-2D.md).
+Reino do Norte abre uma **área regional vazia em Canvas 2D**. A inspiração em Don't Starve vale para a câmera inclinada e os objetos ilustrados que permanecem em pé, com oito vistas e giro de 45°. Não há chão, trilhas, árvores ou estruturas predefinidos: a conta autorizada compõe a cena no editor e pode enviar o fundo. O Mundo mantém seu relevo Three.js. Implementação vigente em [KINGDOM-2D.md](KINGDOM-2D.md).
 
-A visão regional usa Canvas 2D como caminho principal, sem depender de WebGL. `public/atlas-north.png` e `public/atlas-world.png` são históricos; seus prompts permanecem em [ATLAS-PROMPTS.md](ATLAS-PROMPTS.md). Usar Mundo, visão do reino e Voltar ao mundo como vocabulário de navegação. Paleta e menu principal permanecem; painel de missões sai pela direita e, no celular, ocupa a parte inferior com lista rolável. A apresentação/login continuam com seus próprios ativos, sem trocar `alvorada-map-v2.png` pela arte do Mundo.
+A visão regional usa Canvas 2D sem depender de WebGL. Os PNGs antigos do atlas regional foram removidos; seus prompts históricos permanecem em [ATLAS-PROMPTS.md](ATLAS-PROMPTS.md). Usar Mundo, visão do reino e Voltar ao mundo como vocabulário de navegação. Paleta e menu principal permanecem; painel de missões sai pela direita e, no celular, ocupa a parte inferior com lista rolável. A apresentação/login continuam com `alvorada-map-v2.png`.
 
 No Mundo, não exibir orientação de escolher território, inclusive no cabeçalho; o usuário pediu sua remoção. Sem título Mundo duplicado no cenário e sem legenda visível de arraste no rodapé. Deixar oceano atrás do cabeçalho e margem antes das terras no enquadramento inicial. Nuvens maiores, mais espalhadas e com formas amplas; evitar fileiras de pequenos bancos concentrados.
 
@@ -42,7 +41,7 @@ Manter painel compacto, círculos centralizados verticalmente, ícones a 72%, ef
 
 Ícones ilustrados em public/guild-icons-candle-helmet.png: vela em Início, capacete em Personagem, espada em Aventura, bolsa em Loja, mapa em Explorar e livro em Biblioteca. Transparência em SVG via filtro alfa específico, sem máscara circular. Prompts históricos das ilustrações em ICONES-PROMPT.md e VELA-CAPACETE-PROMPT.md.
 
-Legenda única central acima do painel, com as pontas laterais centrais exatamente no topo externo da borda do menu (top -1px e translateY(-50%)), plaqueta reduzida em aproximadamente 20%, texto DM Sans 9 px e espaçamento compacto (6 × 14 px, largura mínima de 108 px). Plaqueta escura opaca com pontas chanfradas, contorno fino de cobre e sombra discreta, entrada curta sem desfoque. O usuário rejeitou a névoa: dock-caption-fog.svg está preservado somente como histórico. Sem placas individuais sobre cada botão ou texto em arco. A névoa da apresentação continua independente.
+Legenda única central acima do painel, com as pontas laterais centrais exatamente no topo externo da borda do menu (top -1px e translateY(-50%)), plaqueta reduzida em aproximadamente 20%, texto DM Sans 9 px e espaçamento compacto (6 × 14 px, largura mínima de 108 px). Plaqueta escura opaca com pontas chanfradas, contorno fino de cobre e sombra discreta, entrada curta sem desfoque. O usuário rejeitou a névoa do menu; o antigo asset foi removido. Sem placas individuais sobre cada botão ou texto em arco. A névoa da apresentação continua independente.
 
 Submenus em balões de até 198 px próximos ao botão acionador, com ponta, animação de pop, margem lateral mínima de 16 px e rolagem se necessário. Não aumentar o painel nem centralizar todos os balões sobre ele. Mais detalhes de comportamento e tamanhos em CONTEXTO.md.
 

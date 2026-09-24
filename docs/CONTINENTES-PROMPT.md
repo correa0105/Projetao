@@ -1,6 +1,6 @@
 # Mapa continental da apresentação
 
-Modo: imagegen integrada (built-in). Ativo: `public/alvorada-map-previous.png`.
+Modo: imagegen integrada (built-in). Arte histórica removida do checkout e recuperável no histórico Git.
 
 Referência de composição: https://map.leagueoflegends.com/. Geografia original; regiões delimitadas por relevo e biomas. Este mapa substitui o arquipélago na entrada.
 

@@ -12,10 +12,12 @@ const KingdomMap = lazy(() =>
   import('./KingdomMap').then((module) => ({ default: module.KingdomMap })),
 );
 export function WorldAtlas({
+  canEditKingdom,
   posts,
   onPublish,
   renderMission,
 }: {
+  canEditKingdom: boolean;
   posts: Post[];
   onPublish: (location?: AtlasLocation) => void;
   renderMission: (post: Post) => ReactNode;
@@ -117,7 +119,12 @@ export function WorldAtlas({
               </div>
             }
           >
-            <KingdomMap markers={markers} selectedId={locationId} onSelect={select} />
+            <KingdomMap
+              canEdit={canEditKingdom}
+              markers={markers}
+              selectedId={locationId}
+              onSelect={select}
+            />
           </Suspense>
         ) : (
           <WorldMap markers={markers} onSelect={select} />

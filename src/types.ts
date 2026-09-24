@@ -1,4 +1,10 @@
-export type User = { id: string; name: string; email: string; role?: 'player' | 'staff' | 'admin' };
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  role?: 'player' | 'staff' | 'admin';
+  canEditKingdom?: boolean;
+};
 export type Character = {
   id: string;
   name: string;

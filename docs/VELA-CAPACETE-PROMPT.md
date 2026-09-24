@@ -2,7 +2,7 @@
 
 Ferramenta: imagegen integrada (built-in), edição do atlas anterior. Arquivo ativo: `public/guild-icons-candle-helmet.png`.
 
-Referências: atlas anterior `public/guild-icons-atlas.png` e vela anexada pelo usuário. A textura `public/dock-grain.svg` é procedural, escrita em SVG. O recorte das células do atlas é realizado na interface, sem máscara circular que corte a espada.
+Referências: atlas anterior, removido do checkout e recuperável no histórico Git, e vela anexada pelo usuário. A textura `public/dock-grain.svg` é procedural, escrita em SVG. O recorte das células do atlas é realizado na interface, sem máscara circular que corte a espada.
 
 ## Prompt da primeira edição
 

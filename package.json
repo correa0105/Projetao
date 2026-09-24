@@ -11,9 +11,9 @@
     "db:seed": "tsx scripts/db-seed.ts",
     "staff": "tsx scripts/staff.ts",
     "catalog:import": "tsx scripts/import-catalog.ts",
-    "sprites:extract": "tsx scripts/extract-kingdom-structures.ts",
     "test": "tsx --test --test-concurrency=1 tests/*.test.ts",
     "test:browser": "tsx scripts/smoke-browser.ts",
+    "test:editor": "tsx scripts/smoke-editor.ts",
     "test:atlas": "tsx scripts/smoke-atlas.ts",
     "setup": "node scripts/setup.mjs",
     "format": "prettier --write src server shared scripts tests vite.config.ts"

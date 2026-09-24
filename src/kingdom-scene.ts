@@ -1,8 +1,6 @@
 import type { AtlasMarker } from './atlas-types';
 
-/** All coordinates are two-dimensional. The ground is an affine painted plane;
- * upright illustrations use one of eight independently drawn viewing directions. */
-// O master quadrado é projetado sem distorção no chão do reino.
+/** The region is an empty or uploaded plane; upright objects have eight drawn views. */
 export const KINGDOM_WIDTH = 15000;
 export const KINGDOM_HEIGHT = 15000;
 export const KINGDOM_TILT = 0.58;
@@ -52,15 +50,7 @@ export type KingdomSprite = {
   marker?: AtlasMarker;
 };
 export type KingdomAssets = Record<
-  | 'ground'
-  | 'structures'
-  | 'nature'
-  | 'landmarks'
-  | 'settlements'
-  | 'town'
-  | 'seaport'
-  | 'craft'
-  | 'frontier',
+  'structures' | 'nature' | 'landmarks' | 'settlements' | 'town' | 'seaport' | 'craft' | 'frontier',
   HTMLImageElement
 >;
 
@@ -108,7 +98,7 @@ export function kingdomDirection(angle: number) {
 export const frames: Record<
   KingdomSpriteKind,
   {
-    sheet: Exclude<keyof KingdomAssets, 'ground'>;
+    sheet: keyof KingdomAssets;
     y: number;
     height: number;
     pivot: number;
@@ -286,22 +276,44 @@ export function spriteSize(
 export function paintKingdom(
   ctx: CanvasRenderingContext2D,
   assets: KingdomAssets,
+  background: HTMLImageElement | null,
   sprites: KingdomSprite[],
   view: KingdomView,
   viewport: KingdomViewport,
   selected: readonly string[],
   hovered: string | null,
   seconds: number,
-  heightAt: (x: number, y: number) => number = () => 0,
 ) {
   const { width, height } = viewport;
   const scale = viewport.scale * view.zoom;
+  const cos = Math.cos(view.angle),
+    sin = Math.sin(view.angle);
+  const origin = projectKingdom(0, 0, view, viewport);
   ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = '#171f20';
+  ctx.fillRect(0, 0, width, height);
+  ctx.save();
+  ctx.transform(
+    cos * scale,
+    sin * scale * viewport.tilt,
+    -sin * scale,
+    cos * scale * viewport.tilt,
+    origin.x,
+    origin.y,
+  );
+  const left = -viewport.mapWidth / 2;
+  const top = -viewport.mapHeight / 2;
+  if (background) ctx.drawImage(background, left, top, viewport.mapWidth, viewport.mapHeight);
+  else {
+    ctx.fillStyle = '#343a3b';
+    ctx.fillRect(left, top, viewport.mapWidth, viewport.mapHeight);
+  }
+  ctx.restore();
 
   const ordered = sprites
     .map((sprite) => ({
       sprite,
-      at: projectKingdom(sprite.x, sprite.y, view, viewport, heightAt(sprite.x, sprite.y)),
+      at: projectKingdom(sprite.x, sprite.y, view, viewport),
     }))
     .sort((a, b) => a.at.y - b.at.y);
   const direction = kingdomDirection(view.angle);

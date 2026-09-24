@@ -30,7 +30,7 @@ Os ícones usam Lucide (licença ISC).
 
 O banner atual do Início, `public/alvorada-dawn-banner.png`, é arte original criada com imagegen integrada, sem neve, com fortaleza e vale ao amanhecer. Prompt em `docs/ALVORADA-BANNER-PROMPT.md`. A paisagem anterior `public/alvorada-bastion.png` foi preservada.
 
-`public/islands-map.png`: imagem de referência fornecida pelo usuário em 16/09/2026 e incorporada a pedido dele. Autoria/licença original não informadas. O arquivo foi preservado; o efeito fosco é aplicado apenas pela interface em CSS.
+`islands-map.png` foi uma referência histórica fornecida pelo usuário em 16/09/2026. O arquivo não é usado na aplicação atual e foi retirado do checkout; continua recuperável no histórico Git. Autoria/licença original não informadas.
 
 `public/alvorada-fog.svg`: textura de nuvens procedural original, criada com filtros SVG. A referência de atmosfera é o mapa de Runeterra (https://map.leagueoflegends.com/); nenhuma imagem, áudio ou código da Riot foi incluído.
 
@@ -40,15 +40,15 @@ Os seis desenhos iniciais em src/GuildIcons.tsx eram vetores originais, desenhad
 
 ## Arquipélago da apresentação
 
-public/alvorada-archipelago-previous.png é uma nova ilustração original gerada pela ferramenta imagegen integrada para o projeto. Prompt completo: docs/ARQUIPÉLAGO-PROMPT.md. Foi usado em uma versão anterior da apresentação e do login; não usa recursos da Riot.
+O arquipélago anterior foi uma ilustração original gerada com imagegen integrada. Prompt em docs/ARQUIPÉLAGO-PROMPT.md. O arquivo foi retirado do checkout por não ser usado; pode ser recuperado no histórico Git. Não usa recursos da Riot.
 
 ## Mapa continental e relevo metálico
 
-public/alvorada-map-previous.png é uma versão anterior da apresentação/login, criada com imagegen integrada. Prompt: docs/CONTINENTES-PROMPT.md. O site https://map.leagueoflegends.com/ foi consultado como referência visual; geografia original, sem importar recursos da Riot. O arquipélago anterior está preservado. Os ícones SVG foram redesenhados com acabamento metálico em cobre, inspirados nas referências de pergaminho e bolsa fornecidas pelo usuário.
+A versão continental anterior da apresentação/login foi criada com imagegen integrada. Prompt: docs/CONTINENTES-PROMPT.md. O arquivo foi retirado do checkout e permanece no histórico Git. O site https://map.leagueoflegends.com/ foi consultado como referência visual; geografia original, sem importar recursos da Riot. Os ícones SVG foram redesenhados com acabamento metálico em cobre, inspirados nas referências de pergaminho e bolsa fornecidas pelo usuário.
 
 ## Atlas ilustrado atual
 
-public/guild-icons-atlas.png substitui os antigos desenhos SVG do menu. Gerado com imagegen integrada a partir da prancha fornecida pelo usuário, que autorizou seguir de perto a espada, o livro e o mapa. Prompt e técnica de integração em docs/ICONES-PROMPT.md. Demais controles continuam usando Lucide.
+O primeiro atlas ilustrado do menu substituiu os antigos desenhos SVG. Foi gerado com imagegen integrada a partir da prancha fornecida pelo usuário, que autorizou seguir de perto a espada, o livro e o mapa. Foi retirado do checkout após a nova versão ativa; prompt e técnica histórica em docs/ICONES-PROMPT.md. Demais controles continuam usando Lucide.
 
 ## Vela e capacete
 
@@ -57,7 +57,7 @@ public/guild-icons-candle-helmet.png é a versão ativa do atlas, editada com im
 
 ## Mapa ativo de apresentação — Alvorada Cinzenta
 
-public/alvorada-map-v2.png é o mapa da apresentação/login, com grandes regiões e relevo, criado com imagegen integrada. A captura de Runeterra fornecida pelo usuário serviu como referência de composição. Geografia original, sem texto incorporado. Prompt completo e dimensões reais: docs/ALVORADA-MAPA-V2-PROMPT.md. A versão public/alvorada-map.png foi preservada; prompt anterior em docs/ALVORADA-MAPA-PROMPT.md. Este ativo é independente da nova ilustração de Mundo.
+public/alvorada-map-v2.png é o mapa da apresentação/login, com grandes regiões e relevo, criado com imagegen integrada. A captura de Runeterra fornecida pelo usuário serviu como referência de composição. Geografia original, sem texto incorporado. Prompt completo e dimensões reais: docs/ALVORADA-MAPA-V2-PROMPT.md. A versão anterior foi retirada do checkout e permanece no histórico Git; prompt em docs/ALVORADA-MAPA-PROMPT.md. Este ativo é independente da ilustração do Mundo.
 
 ## Silhueta e relevo do Mundo
 
@@ -67,8 +67,8 @@ Mundo usa geometria de relevo, rios, oceano e nuvens procedurais em Three.js (li
 
 ## Artes anteriores e visão do reino
 
-`public/atlas-world.png` e `public/atlas-north.png` são as artes anteriores geradas com imagegen integrada para este projeto. O site de Runeterra e o mapa regional enviado pelo usuário orientaram a interação e a direção artística; nenhum asset da Riot nem recorte daquela referência foi incluído nesses dois arquivos. Ambos são históricos e não substituem o Mundo nem o novo cenário regional. Prompts, dimensões reais e técnica histórica de relevo em [ATLAS-PROMPTS.md](ATLAS-PROMPTS.md).
+`atlas-world.png` e `atlas-north.png` eram artes anteriores geradas com imagegen integrada para este projeto. Foram removidas do checkout e continuam no histórico Git. O site de Runeterra e o mapa regional enviado pelo usuário orientaram a interação e a direção artística; nenhum asset da Riot foi incluído. Prompts e técnica histórica em [ATLAS-PROMPTS.md](ATLAS-PROMPTS.md).
 
-A antiga visão do reino usava geometria procedural original, com fallback em `atlas-north.png`. Overworld Audio (https://overworldaudio.com/) foi consultado como referência de profundidade e atmosfera; não foram copiados modelos, texturas ou código desse site. Essa técnica é histórica desde 23/09/2026: [ATLAS-3D.md](ATLAS-3D.md). A visão regional atual usa chão ilustrado e sprites com oito vistas, inspirados na leitura de Don't Starve, com arte medieval própria e sem ativos extraídos do jogo. Arquitetura em [KINGDOM-2D.md](KINGDOM-2D.md); procedência e prompts dos novos ativos em [KINGDOM-ART.md](KINGDOM-ART.md).
+A antiga visão do reino usava geometria procedural original, com fallback em `atlas-north.png`. Overworld Audio (https://overworldaudio.com/) foi consultado como referência de profundidade e atmosfera; não foram copiados modelos, texturas ou código desse site. Essa técnica é histórica: [ATLAS-3D.md](ATLAS-3D.md). A visão regional atual é uma área vazia para compor com sprites de oito vistas, inspirados na leitura de Don't Starve, com arte medieval própria e sem ativos extraídos do jogo. Arquitetura em [KINGDOM-2D.md](KINGDOM-2D.md). As fontes de pinturas antigas foram retiradas do checkout e continuam no histórico Git.
 
 As superfícies 3D regionais anteriores usavam **Forest Ground 04**, **Dark Rock** e **Brown Mud**, da Poly Haven, sob CC0. São nove mapas PBR de cor, normal e rugosidade preservados em `public/atlas-materials`. Mundo continua usando `ground-color.jpg` e `rock-color.jpg` como detalhe neutro de luminância e normais, preservando suas cores de biomas. Autores, fontes individuais, licença, dimensões e integridade dos arquivos estão registrados em [ATLAS-MATERIALS.md](ATLAS-MATERIALS.md). Não são pinturas de mapas nem recursos extraídos das referências de jogos.

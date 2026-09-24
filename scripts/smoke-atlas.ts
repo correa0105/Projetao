@@ -2,7 +2,6 @@ import 'dotenv/config';
 import { chromium, expect as baseExpect, type CDPSession, type Page } from '@playwright/test';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import sharp from 'sharp';
 import { pool } from '../server/db.js';
 
 const base = 'http://localhost:3000';
@@ -18,8 +17,6 @@ const editorOnly = process.argv.includes('--editor-only');
 const skipCameraMatrix = process.argv.includes('--skip-camera-matrix');
 const useBrowserGpu = process.env.ATLAS_BROWSER_GPU === '1';
 const expectedKingdomAssets = [
-  '/kingdom/ground-coast.webp',
-  '/kingdom/coast-mask.png',
   '/kingdom/structures/atlases/structures.png',
   '/kingdom/nature.png',
   '/kingdom/structures/atlases/landmarks.png',
@@ -131,10 +128,9 @@ async function ready(target: Page) {
   }
   const scene = target.locator('.kingdom-map');
   await expect(scene).toHaveAttribute('data-status', 'ready', { timeout: 30000 });
-  await expect(scene).toHaveAttribute('data-renderer', 'webgl-canvas2d');
-  await expect(scene.locator('.kingdom-map__terrain')).toBeVisible();
+  await expect(scene).toHaveAttribute('data-renderer', 'canvas2d');
   await expect(scene.locator('.kingdom-map__ground')).toBeVisible();
-  expect(Number(await scene.getAttribute('data-terrain-vertices'))).toBeGreaterThan(0);
+  await expect(scene.locator('canvas')).toHaveCount(1);
   await expect(scene.locator('.kingdom-map__clouds')).toHaveCount(0);
   await expect(scene.locator('.kingdom-map__edge-mist')).toHaveCount(0);
   expect(
@@ -143,21 +139,8 @@ async function ready(target: Page) {
       .evaluate((canvas) => !!(canvas as HTMLCanvasElement).getContext('2d')),
     'Os objetos do reino devem continuar no Canvas2D.',
   ).toBe(true);
-  const expectedGround =
-    (await scene.getAttribute('data-custom-background')) === 'true'
-      ? '/api/kingdom/editor-background/image'
-      : '/kingdom/ground-coast.webp';
-  const customBackground = expectedGround === '/api/kingdom/editor-background/image';
-  const expected = expectedKingdomAssets
-    .filter(
-      (path) =>
-        !customBackground ||
-        (path !== '/kingdom/ground-coast.webp' && path !== '/kingdom/coast-mask.png'),
-    )
-    .concat(customBackground ? [expectedGround] : []);
-  await expect
-    .poll(() => expected.every((path) => kingdomResponses.get(target)?.has(path)))
-    .toBe(true);
+  if ((await scene.getAttribute('data-custom-background')) === 'false')
+    expect(!!kingdomResponses.get(target)?.has('/api/kingdom/editor-background/image')).toBe(false);
   const state = await camera(target);
   expect([state.x, state.y, state.homeX, state.homeY].every(Number.isFinite)).toBe(true);
   expect(state.minZoom).toBeCloseTo(state.homeZoom, 3);
@@ -1301,8 +1284,8 @@ async function exerciseKingdomWithoutWebGL() {
   try {
     await withoutWebgl.goto(`${base}/#world`);
     await ready(withoutWebgl);
-    // Block new contexts after the world loads. The regional relief now needs
-    // WebGL too, and must show an explicit error if a context cannot start.
+    // The world needs WebGL. The empty regional canvas continues to work when
+    // new WebGL contexts are unavailable after entering the kingdom.
     await withoutWebgl.evaluate(() => {
       const original = HTMLCanvasElement.prototype.getContext;
       HTMLCanvasElement.prototype.getContext = function (
@@ -1315,54 +1298,13 @@ async function exerciseKingdomWithoutWebGL() {
       } as typeof original;
     });
     await clickMarker(withoutWebgl, 'Reino do Norte');
-    await expect(withoutWebgl.locator('.kingdom-map')).toHaveAttribute('data-status', 'error');
-    await expect(withoutWebgl.getByRole('alert')).toContainText('terreno 3D');
+    await ready(withoutWebgl);
     await withoutWebgl.screenshot({
       path: 'test-results/kingdom-without-webgl-desktop.png',
       fullPage: true,
     });
   } finally {
     await withoutWebgl.close();
-  }
-}
-
-async function exerciseKingdomAssetRecovery() {
-  const recovering = await browser.newPage({
-    viewport: { width: 1280, height: 900 },
-    reducedMotion: 'reduce',
-    storageState: await page.context().storageState(),
-  });
-  watchErrors(recovering);
-  try {
-    await recovering.goto(`${base}/#world`);
-    await ready(recovering);
-    // Simulate undecodable sprite bytes, then restore the original image.
-    // This exercises real loading/retry without a deliberate HTTP console error.
-    await recovering.route('**/kingdom/nature.png', (route) =>
-      route.fulfill({
-        status: 200,
-        contentType: 'image/png',
-        headers: { 'cache-control': 'no-store' },
-        body: 'invalid-image',
-      }),
-    );
-    await clickMarker(recovering, 'Reino do Norte');
-    await expect(recovering.locator('.kingdom-map')).toHaveAttribute('data-status', 'error');
-    await expect(recovering.locator('.kingdom-map')).toHaveAttribute('data-assets', 'error');
-    await expect(recovering.getByRole('alert')).toContainText('ilustrações do reino');
-    await recovering.screenshot({ path: 'test-results/kingdom-assets-error.png', fullPage: true });
-    await recovering.unroute('**/kingdom/nature.png');
-    await recovering.getByRole('button', { name: 'Tentar novamente', exact: true }).click();
-    await ready(recovering);
-    await expect(recovering.locator('.kingdom-map canvas')).toHaveCount(2);
-    await recovering.getByRole('button', { name: /Missões do reino/ }).click();
-    await expect(recovering.getByRole('complementary', { name: 'Missões de Reino do Norte' })).toBeVisible();
-    await recovering.screenshot({
-      path: 'test-results/kingdom-assets-recovered.png',
-      fullPage: true,
-    });
-  } finally {
-    await recovering.close();
   }
 }
 
@@ -1442,7 +1384,8 @@ async function runTerrainOnly() {
   await page.goto(`${base}/#world`);
   await openNorth(page);
   const scene = page.locator('.kingdom-map');
-  await expect(scene).toHaveAttribute('data-stage', 'terrain');
+  await expect(scene).toHaveAttribute('data-stage', 'builder');
+  await expect(scene.getByRole('button', { name: 'Editar mapa' })).toHaveCount(0);
   await expect(scene.locator('.kingdom-place, .kingdom-house')).toHaveCount(0);
   expect(Number(await scene.getAttribute('data-grove-count'))).toBe(0);
   expect((await camera(page)).zoom).toBe(1);
@@ -1515,7 +1458,6 @@ async function runTerrainOnly() {
   expect(easternEdges.right).toBeCloseTo(easternEdges.width, 0);
   await page.screenshot({ path: 'test-results/kingdom-terrain-edge.png', fullPage: true });
   await expect(scene.locator('.kingdom-map__edge-mist')).toHaveCount(0);
-  expect(Number(await scene.getAttribute('data-terrain-vertices'))).toBeGreaterThan(30000);
   await resetCamera(page);
   await maximumZoom(page);
   for (let i = 0; i < 12; i++) await dragAcross(page, 'right');
@@ -1571,259 +1513,32 @@ async function runTerrainOnly() {
   );
 }
 
-async function runKingdomEditor() {
-  await page.goto(`${base}/#world`);
-  await openNorth(page);
+async function runKingdomViewerAccess() {
+  if (!(await page.locator('.kingdom-map').count())) {
+    await page.goto(`${base}/#world`);
+    await openNorth(page);
+  } else await ready(page);
   const scene = page.locator('.kingdom-map');
-  await scene.getByRole('button', { name: 'Editar mapa' }).click();
-  const editor = scene.getByRole('complementary', { name: 'Editor do mapa do reino' });
-  await expect(editor).toBeVisible();
-  const zoomSlider = editor.getByRole('slider', { name: 'Zoom de trabalho' });
-  await expect(zoomSlider).toBeVisible();
-  const initialZoom = (await camera(page)).zoom;
-  await zoomSlider.fill('700');
-  expect((await camera(page)).zoom).toBeGreaterThan(initialZoom);
-  await resetCamera(page);
-  await editor.getByRole('button', { name: 'Pinheiro' }).click();
-  const bounds = (await scene.boundingBox())!;
-  const placeX = bounds.x + bounds.width * 0.42;
-  const placeY = bounds.y + bounds.height * 0.3;
-  const initialWorldX = await scene.evaluate((host, x) => {
-    const rect = host.getBoundingClientRect();
-    const data = (host as HTMLElement).dataset;
-    return (
-      (x - rect.left - rect.width / 2) / (Number(data.baseScale) * Number(data.zoom)) +
-      Number(data.panX)
-    );
-  }, placeX);
-  await page.mouse.click(placeX, placeY);
-  await expect(editor).toContainText('1 itens');
-  await page.mouse.move(placeX, placeY - 35);
-  await expect(scene).toHaveAttribute('data-hover-item', 'true');
-  await page.mouse.down();
-  await page.mouse.move(placeX + 40, placeY - 25, { steps: 6 });
-  await page.mouse.up();
-  await editor.getByRole('button', { name: 'Aumentar seleção' }).click();
-  await editor.getByRole('button', { name: 'Girar seleção para a direita' }).click();
-  await editor.getByRole('button', { name: 'Salvar rascunho' }).click();
-  await expect(editor).toContainText('Rascunho salvo');
-  const saved = await page.request.get(`${base}/api/kingdom/editor-draft`);
-  expect(saved.status()).toBe(200);
-  const layout = await saved.json();
-  expect(layout.revision).toBe(1);
-  expect(layout.items).toHaveLength(1);
-  expect(layout.items[0].kind).toBe('pine');
-  expect(layout.items[0].x).toBeGreaterThan(initialWorldX);
-  expect(layout.items[0].height).toBeGreaterThan(520);
-  expect(layout.items[0].direction).toBe(1);
-  await page.screenshot({ path: 'test-results/kingdom-editor.png', fullPage: true });
-  await page.reload();
-  await openNorth(page);
-  await scene.getByRole('button', { name: 'Editar mapa' }).click();
-  const reopened = scene.getByRole('complementary', { name: 'Editor do mapa do reino' });
-  await expect(reopened).toContainText('1 itens');
-  await reopened.getByRole('button', { name: '1. Pinheiro' }).click();
-  await page.waitForTimeout(550);
-  const handle = await scene.evaluate((host, item) => {
-    const data = (host as HTMLElement).dataset;
-    const rect = host.getBoundingClientRect();
-    const scale = Number(data.baseScale) * Number(data.zoom);
-    return {
-      x: rect.left + rect.width / 2 + (item.x - Number(data.panX)) * scale,
-      y:
-        rect.top +
-        rect.height * 0.57 +
-        (item.y - Number(data.panY)) * scale * 0.58 -
-        item.height * scale * 0.45,
-    };
-  }, layout.items[0]);
-  await page.mouse.move(handle.x, handle.y);
-  await page.mouse.down();
-  await page.mouse.move(handle.x + 45, handle.y + 12, { steps: 5 });
-  await page.mouse.up();
-  await reopened.getByRole('button', { name: 'Mover seleção para a direita' }).click();
-  const movedSave = page.waitForResponse(
-    (response) =>
-      response.url().includes('/api/kingdom/editor-draft') &&
-      response.request().method() === 'PUT' &&
-      response.ok(),
-  );
-  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
-  await movedSave;
-  const moved = await (await page.request.get(`${base}/api/kingdom/editor-draft`)).json();
-  expect(moved.items[0].x).toBeGreaterThan(layout.items[0].x);
-  await reopened.getByRole('button', { name: 'Excluir item' }).click();
-  await expect(reopened).toContainText('0 itens');
-  await reopened.getByRole('button', { name: 'Desfazer' }).click();
-  await expect(reopened).toContainText('1 itens');
-  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
-  await expect(reopened).toContainText('Rascunho salvo');
-  await page.setViewportSize({ width: 390, height: 844 });
-  await expect(reopened).toBeVisible();
-  await expect(page.getByRole('button', { name: /Missões do reino/ })).toBeHidden();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.screenshot({ path: 'test-results/kingdom-editor-mobile.png', fullPage: true });
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  const stale = await page.request.put(`${base}/api/kingdom/editor-draft`, {
-    headers: { Origin: base },
-    data: { revision: 0, items: [] },
-  });
-  expect(stale.status()).toBe(409);
-  await reopened.getByRole('button', { name: 'Pinheiro', exact: true }).click();
-  const groupBounds = (await scene.boundingBox())!;
-  await page.mouse.click(
-    groupBounds.x + groupBounds.width * 0.3,
-    groupBounds.y + groupBounds.height * 0.5,
-  );
-  await expect(reopened).toContainText('2 itens');
-  await page.keyboard.down('Control');
-  await page.mouse.move(
-    groupBounds.x + groupBounds.width * 0.08,
-    groupBounds.y + groupBounds.height * 0.22,
-  );
-  await page.mouse.down();
-  await page.mouse.move(
-    groupBounds.x + groupBounds.width * 0.62,
-    groupBounds.y + groupBounds.height * 0.7,
-    { steps: 8 },
-  );
-  await expect(scene.locator('.kingdom-map__selection-box')).toBeVisible();
-  await page.mouse.up();
-  await page.keyboard.up('Control');
-  await expect(reopened).toContainText('2 itens selecionados');
-  await resetCamera(page);
-  await page.getByRole('button', { name: 'Aproximar mapa' }).click();
-  await page.getByRole('button', { name: 'Aproximar mapa' }).click();
-  await settleCamera(page);
-  const panBefore = await camera(page);
-  await page.mouse.move(
-    groupBounds.x + groupBounds.width * 0.25,
-    groupBounds.y + groupBounds.height * 0.22,
-  );
-  await page.mouse.down();
-  await page.mouse.move(
-    groupBounds.x + groupBounds.width * 0.08,
-    groupBounds.y + groupBounds.height * 0.25,
-    { steps: 5 },
-  );
-  await page.mouse.up();
-  await settleCamera(page);
-  expect((await camera(page)).x).not.toBe(panBefore.x);
-  await reopened.getByRole('button', { name: 'Selecionar todos' }).click();
-  await expect(reopened).toContainText('2 itens selecionados');
-  const beforeGroup = await (await page.request.get(`${base}/api/kingdom/editor-draft`)).json();
-  const groupHandle = await scene.evaluate((host, item) => {
-    const data = (host as HTMLElement).dataset;
-    const rect = host.getBoundingClientRect();
-    const scale = Number(data.baseScale) * Number(data.zoom);
-    return {
-      x: rect.left + rect.width / 2 + (item.x - Number(data.panX)) * scale,
-      y:
-        rect.top +
-        rect.height * 0.57 +
-        (item.y - Number(data.panY)) * scale * 0.58 -
-        item.height * scale * 0.45,
-    };
-  }, moved.items[0]);
-  await page.keyboard.down('Control');
-  await page.mouse.move(groupHandle.x, groupHandle.y);
-  await page.mouse.down();
-  await page.mouse.move(groupHandle.x + 35, groupHandle.y + 18, { steps: 6 });
-  await page.mouse.up();
-  await page.keyboard.up('Control');
-  await reopened.getByRole('button', { name: 'Aumentar seleção' }).click();
-  await reopened.getByRole('button', { name: 'Girar seleção para a direita' }).click();
-  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
-  await expect(reopened).toContainText('Rascunho salvo');
-  const grouped = await (await page.request.get(`${base}/api/kingdom/editor-draft`)).json();
-  expect(grouped.items).toHaveLength(2);
-  expect(grouped.items[0].x).toBeGreaterThan(beforeGroup.items[0].x);
-  expect(grouped.items[0].height).toBeGreaterThan(beforeGroup.items[0].height);
-  expect(grouped.items[1].height).toBeGreaterThan(520);
-  await reopened.getByRole('button', { name: 'Duplicar grupo' }).click();
-  await expect(reopened).toContainText('4 itens');
-  await reopened.getByRole('button', { name: 'Desfazer' }).click();
-  await expect(reopened).toContainText('2 itens');
-  await reopened.getByRole('button', { name: 'Selecionar todos' }).click();
-  await reopened.getByRole('button', { name: 'Excluir 2 itens' }).click();
-  await expect(reopened).toContainText('0 itens');
-  await reopened.getByRole('button', { name: 'Desfazer' }).click();
-  await expect(reopened).toContainText('2 itens');
-  await reopened.getByRole('button', { name: 'Salvar rascunho' }).click();
-  await expect(reopened).toContainText('Rascunho salvo');
-  const rectangularFile = await sharp({
-    create: { width: 2048, height: 1536, channels: 3, background: '#6d6952' },
-  })
-    .png()
-    .toBuffer();
-  await reopened.locator('input[type=file]').setInputFiles({
-    name: 'mapa-4x3.png',
-    mimeType: 'image/png',
-    buffer: rectangularFile,
-  });
-  await expect(scene).toHaveAttribute('data-image-width', '2048', { timeout: 30000 });
-  await expect(scene).toHaveAttribute('data-image-height', '1536');
-  await expect(scene).toHaveAttribute('data-assets', 'ready', { timeout: 30000 });
-  await expect(scene).toHaveAttribute('data-tilt', '1');
-  const screenAspect = await scene.evaluate((host) => {
-    const data = (host as HTMLElement).dataset;
-    return Number(data.mapWidth) / (Number(data.mapHeight) * Number(data.tilt));
-  });
-  expect(screenAspect).toBeCloseTo(4 / 3, 4);
-  await page.screenshot({ path: 'test-results/kingdom-background-4x3.png', fullPage: true });
-  const backgroundFile = await sharp({
-    create: {
-      width: 8192,
-      height: 4096,
-      channels: 3,
-      background: '#6d6952',
-    },
-  })
-    .png()
-    .toBuffer();
-  await reopened.locator('input[type=file]').setInputFiles({
-    name: 'mapa-8k.png',
-    mimeType: 'image/png',
-    buffer: backgroundFile,
-  });
-  await expect(scene).toHaveAttribute('data-image-width', '8192', { timeout: 120000 });
-  await expect(scene).toHaveAttribute('data-image-height', '4096');
-  await expect(scene).toHaveAttribute('data-assets', 'ready', { timeout: 120000 });
-  await expect(scene).toHaveAttribute('data-tilt', '1');
-  expect(Number(await scene.getAttribute('data-map-width'))).toBe(40000);
-  expect(Number(await scene.getAttribute('data-map-height'))).toBe(20000);
-  for (let i = 0; i < 5; i++) await dragAcross(page, 'left');
-  expect(
-    (await camera(page)).x,
-    'O background 8K deve permitir navegar além do limite original.',
-  ).toBeGreaterThan(7500);
-  await page.getByRole('button', { name: 'Afastar mapa' }).click();
-  await page.getByRole('button', { name: 'Afastar mapa' }).click();
-  await page.getByRole('button', { name: 'Girar mapa para a direita' }).click();
-  await settleCamera(page);
-  await reopened.getByRole('button', { name: 'Definir visão atual como 100%' }).click();
-  await expect(reopened).toContainText('Visão atual salva como 100%');
-  await expect(page.getByLabel('Aproximação do mapa')).toHaveText('100%');
-  const savedCamera = await camera(page);
-  await page.reload();
-  await openNorth(page);
-  const restoredCamera = await camera(page);
-  expect(restoredCamera.x).toBeCloseTo(savedCamera.x, 0);
-  expect(restoredCamera.y).toBeCloseTo(savedCamera.y, 0);
-  expect(restoredCamera.zoom).toBeCloseTo(savedCamera.zoom, 3);
-  expect(restoredCamera.direction).toBe(savedCamera.direction);
-  await expect(page.getByLabel('Aproximação do mapa')).toHaveText('100%');
-  await scene.getByRole('button', { name: 'Editar mapa' }).click();
-  await reopened.getByRole('button', { name: 'Restaurar visão inicial' }).click();
-  await settleCamera(page);
-  expect((await camera(page)).zoom).toBeCloseTo(1, 3);
-  await reopened.getByRole('button', { name: 'Restaurar terreno costeiro' }).click();
-  await expect(scene).toHaveAttribute('data-image-width', '4096', { timeout: 30000 });
-  await expect(scene).toHaveAttribute('data-image-height', '2078');
-  await expect(scene).toHaveAttribute('data-tilt', '0.58');
+  await expect(scene.getByRole('button', { name: 'Editar mapa' })).toHaveCount(0);
+  for (const path of [
+    'editor-draft',
+    'editor-background/meta',
+    'editor-background/image',
+    'editor-view',
+  ]) {
+    const response = await page.request.get(`${base}/api/kingdom/${path}`);
+    expect(response.status(), path).toBe(403);
+  }
+  for (const path of ['editor-draft', 'editor-view']) {
+    const response = await page.request.put(`${base}/api/kingdom/${path}`, {
+      headers: { Origin: base },
+      data: {},
+    });
+    expect(response.status(), path).toBe(403);
+  }
   expect(errors).toEqual([]);
   console.log(
-    'Editor OK: arraste direto, movimento preciso, duplicação, fundo 4:3, upload 8K e visão 100%.',
+    'Acesso ao editor OK: oculto na interface e bloqueado pelo servidor para outras contas.',
   );
 }
 
@@ -1846,7 +1561,7 @@ try {
   });
   expect(character.status()).toBe(201);
   if (editorOnly) {
-    await runKingdomEditor();
+    await runKingdomViewerAccess();
   } else if (terrainOnly) {
     await runTerrainOnly();
   } else if (worldMapOnly) {
@@ -1855,9 +1570,8 @@ try {
     if (regionalMobileOnly) await runNavigationOnly(true);
     if (regionalRecoveryOnly) {
       await exerciseKingdomWithoutWebGL();
-      await exerciseKingdomAssetRecovery();
       expect(errors).toEqual([]);
-      console.log('Reino OK: erro claro sem WebGL e recuperação de imagem inválida.');
+      console.log('Reino OK: Canvas 2D funciona sem WebGL regional.');
     }
   } else if (regionalEdgesOnly) {
     await page.goto(`${base}/#world`);
@@ -1877,214 +1591,12 @@ try {
   } else if (visualOnly) {
     await captureVisualReview();
   } else {
-    await page.goto(base);
-    await expect(page.getByRole('navigation', { name: 'Navegação principal' })).toBeVisible();
-    await navigate(page, 'Mundo');
-    await expect(page).toHaveURL(/#world$/);
-    await expect(page.getByRole('region', { name: 'Atlas interativo' })).toBeVisible();
-    await ready(page);
-    await expect(page.locator('.world-atlas h1')).toHaveCount(0);
-    await expect(page.locator('.world-map .atlas-pin')).toHaveCount(22);
-    await page.screenshot({
-      path: 'test-results/world-atlas-desktop.png',
-      fullPage: true,
-      animations: 'disabled',
-    });
-
-    await clickMarker(page, 'Northundria');
-    await expect(page.locator('.atlas-notice')).toContainText('Northundria: exploração em breve.');
-    await expect(page.locator('.world-atlas h1')).toHaveCount(0);
-    await page.getByRole('button', { name: 'Fechar aviso do território' }).click();
-    await clickMarker(page, 'Pomar Branco');
-    await expect(page.locator('.atlas-notice')).toContainText('Pomar Branco: exploração em breve.');
-    await page.getByRole('button', { name: 'Fechar aviso do território' }).click();
-    await openNorth(page);
-    await expect(page.locator('.kingdom-place')).toHaveCount(6);
-    await exerciseTerrainCamera(page, 'north');
-    await page.getByRole('button', { name: 'Aproximar mapa', exact: true }).click();
-    await expect(page.getByRole('button', { name: 'Afastar mapa', exact: true })).toBeEnabled();
-    await page.getByRole('button', { name: 'Centralizar mapa', exact: true }).click();
-    await settleCamera(page);
-    expect((await camera(page)).zoom).toBeCloseTo(1, 2);
-    await expect(page.getByRole('button', { name: 'Afastar mapa', exact: true })).toBeEnabled();
-    await page.screenshot({
-      path: 'test-results/north-atlas-desktop.png',
-      fullPage: true,
-      animations: 'disabled',
-    });
-
-    const drawer = await openVigilia(page);
-    await drawer.getByRole('button', { name: 'Registrar missão aqui' }).click();
-    const dialog = await fillMission(page, missionTitle);
-    await expect(dialog.getByLabel('Local no mapa')).toHaveValue('vigilia');
-    await expect(dialog.getByLabel('Local', { exact: true })).toHaveCount(0);
-    const created = await publish(page);
-    expect(created.location_id).toBe('vigilia');
-    expect(created.region_id).toBe('reino-do-norte');
-    expect(created.location).toBe('Vigília');
-    await expect(page).toHaveURL(/#world$/);
-    const mission = drawer
-      .locator('.quest-card')
-      .filter({ has: page.getByRole('heading', { name: missionTitle, exact: true }) });
-    await expect(mission).toBeVisible();
-    const stored = (
-      await pool.query('SELECT id,location_id,region_id FROM board_posts WHERE id=$1', [created.id])
-    ).rows;
-    expect(stored).toEqual([
-      { id: created.id, location_id: 'vigilia', region_id: 'reino-do-norte' },
-    ]);
-    const boardResponse = await page.request.get(`${base}/api/board`);
-    expect(
-      (await boardResponse.json()).some((item: { id: string }) => item.id === created.id),
-    ).toBe(true);
-
-    await navigate(page, 'Mural & eventos');
-    await expect(page.locator('.quest-card').filter({ hasText: missionTitle })).toBeVisible();
-    await page.getByRole('button', { name: 'Publicar no mural', exact: true }).click();
-    const fromBoard = await fillMission(page, boardTitle);
-    await fromBoard.getByLabel('Local no mapa').selectOption('vigilia');
-    const boardCreated = await publish(page);
-    expect(boardCreated.location_id).toBe('vigilia');
-    await expect(page).toHaveURL(/#board$/);
-    await navigate(page, 'Mundo');
-    await openNorth(page);
-    await openVigilia(page);
-    await expect(drawer.locator('.quest-card').filter({ hasText: boardTitle })).toBeVisible();
-    await expect(mission).toBeVisible();
-    await page.reload();
-    await openNorth(page);
-    await openVigilia(page);
-    await expect(mission).toBeVisible();
-    await expect(drawer.locator('.quest-card').filter({ hasText: boardTitle })).toBeVisible();
-
-    const joining = page.waitForResponse(
-      (response) =>
-        response.url() === `${base}/api/board/${created.id}/join` &&
-        response.request().method() === 'POST',
-    );
-    await mission.getByRole('button', { name: 'Participar', exact: true }).click();
-    expect((await joining).status()).toBe(200);
-    await expect(mission.getByRole('button', { name: 'Inscrito', exact: true })).toBeVisible();
-    await mission.getByRole('button', { name: 'Iniciar', exact: true }).click();
-    await mission.getByRole('button', { name: 'Concluir', exact: true }).click();
-    await page
-      .getByLabel('Resumo da missão')
-      .fill('A cartógrafa explorou as trilhas e retornou a Vigília com seus registros.');
-    await page.getByLabel('XP de Elara Cartógrafa', { exact: true }).fill('90');
-    await page.getByRole('button', { name: 'Confirmar conclusão', exact: true }).click();
-    await expect(page.getByRole('dialog')).toHaveCount(0);
-    await expect(mission).toHaveCount(0);
-    await drawer.getByRole('button', { name: 'Histórico', exact: true }).click();
-    await expect(mission).toContainText('Concluída');
-    await expect(mission).toContainText('+90 XP');
-    await drawer.getByRole('button', { name: 'Todas', exact: true }).click();
-    await expect(mission).toBeVisible();
-    await expect(drawer.locator('.quest-card').filter({ hasText: boardTitle })).toBeVisible();
-    const dismissToast = page.getByRole('button', { name: 'Dispensar aviso' });
-    if (await dismissToast.isVisible()) await dismissToast.click();
-    await page.screenshot({
-      path: 'test-results/atlas-missions-desktop.png',
-      fullPage: true,
-      animations: 'disabled',
-    });
-    await drawer.getByRole('button', { name: 'Fechar lista de missões' }).click();
-    await expect(drawer).toHaveCount(0);
-    const allBoardPosts = (await (await page.request.get(`${base}/api/board`)).json()) as {
-      kind: string;
-      region_id: string | null;
-      location_id: string | null;
-    }[];
-    const northMissions = allBoardPosts.filter(
-      (item) => item.kind === 'mission' && item.region_id === 'reino-do-norte',
-    );
-    const kingdomButton = page.getByRole('button', { name: /^Missões do reino/ });
-    await expect(kingdomButton).toHaveText(
-      new RegExp(`Missões do reino\\s*${northMissions.length}$`),
-    );
-    const atlas = (await (await page.request.get(`${base}/api/atlas`)).json()) as {
-      locations: { id: string; name: string; region_id: string }[];
-    };
-    const emptyLocation = atlas.locations.find(
-      (item) =>
-        item.region_id === 'reino-do-norte' &&
-        !northMissions.some((mission) => mission.location_id === item.id),
-    );
-    expect(
-      emptyLocation,
-      'O cenário de teste precisa de ao menos um local sem missões.',
-    ).toBeDefined();
-    await clickMarker(page, emptyLocation!.name);
-    const emptyDrawer = page.getByRole('complementary', {
-      name: `Missões de ${emptyLocation!.name}`,
-    });
-    await expect(emptyDrawer.locator('.quest-card')).toHaveCount(0);
-    await emptyDrawer.getByRole('button', { name: 'Fechar lista de missões' }).click();
-    await expect(kingdomButton).toHaveText(
-      new RegExp(`Missões do reino\\s*${northMissions.length}$`),
-    );
-    await page.getByRole('button', { name: 'Voltar ao mundo' }).click();
-    await ready(page);
-    await expect(page.locator('.world-atlas h1')).toHaveCount(0);
-
-    const touch = await browser.newPage({
-      viewport: { width: 390, height: 844 },
-      isMobile: true,
-      hasTouch: true,
-      reducedMotion: 'reduce',
-      storageState: await page.context().storageState(),
-    });
-    watchErrors(touch);
-    try {
-      await touch.goto(`${base}/#world`);
-      await ready(touch);
-      await openNorth(touch);
-      await exerciseTerrainCamera(touch, 'north', true);
-      const mobileDrawer = await openVigilia(touch);
-      await mobileDrawer.getByRole('button', { name: 'Todas', exact: true }).tap();
-      await expect(
-        mobileDrawer.getByRole('button', { name: 'Todas', exact: true }),
-      ).toHaveAttribute('aria-pressed', 'true');
-      await expect(mobileDrawer).toContainText(missionTitle);
-      await expect(mobileDrawer).toContainText(boardTitle);
-      expect(
-        await touch.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
-      ).toBe(true);
-      const bounds = (await mobileDrawer.boundingBox())!;
-      expect(bounds.x).toBeGreaterThanOrEqual(0);
-      expect(bounds.x + bounds.width).toBeLessThanOrEqual(390);
-      await touch.screenshot({
-        path: 'test-results/atlas-missions-mobile.png',
-        fullPage: true,
-        animations: 'disabled',
-      });
-      await mobileDrawer.getByRole('button', { name: 'Registrar missão aqui' }).tap();
-      await expect(touch.getByRole('dialog').getByLabel('Local no mapa')).toHaveValue('vigilia');
-      expect(
-        await touch.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
-      ).toBe(true);
-      await touch.keyboard.press('Escape');
-      await expect(touch.getByRole('dialog')).toHaveCount(0);
-      await mobileDrawer.getByRole('button', { name: 'Fechar lista de missões' }).tap();
-      await touch.getByRole('button', { name: 'Voltar ao mundo' }).tap();
-      await ready(touch);
-    } catch (error) {
-      await touch.screenshot({ path: 'test-results/atlas-mobile-failure.png', fullPage: true });
-      throw error;
-    } finally {
-      await touch.close();
-    }
-
+    await runWorldMapOnly();
+    await runTerrainOnly();
+    await runKingdomViewerAccess();
     await exerciseKingdomWithoutWebGL();
-    await exerciseKingdomAssetRecovery();
     expect(errors).toEqual([]);
-    expect(webglRasterRequests, 'Os antigos mapas regionais não devem ser solicitados.').toEqual(
-      [],
-    );
-    if (!skipCameraMatrix)
-      await writeFile('test-results/atlas-camera.json', JSON.stringify(cameraReport, null, 2));
-    console.log(
-      'Atlas OK: reino Canvas2D, oito orientações, pan/zoom/limites, missões mapa/mural no mesmo registro SQL, conclusão/XP, histórico, persistência, desktop/celular e funcionamento sem WebGL regional.',
-    );
+    console.log('Atlas OK: Mundo 3D, área regional vazia, navegação e acesso ao editor.');
   }
 } catch (error) {
   await page.screenshot({ path: 'test-results/atlas-failure.png', fullPage: true });

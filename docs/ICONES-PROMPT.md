@@ -1,6 +1,6 @@
 # Ícones ilustrados do menu
 
-Ferramenta: imagegen integrada (built-in). Arquivo ativo: `public/guild-icons-atlas.png`.
+Ferramenta: imagegen integrada (built-in). Primeira versão do atlas, removida do checkout; recuperável no histórico Git. Versão ativa: `public/guild-icons-candle-helmet.png`.
 
 Referência: prancha de ícones enviada pelo usuário em 16/09/2026; espada, livro e mapa orientaram as formas. Atlas único com seis células, três colunas e duas linhas. A imagem gerada conserva fundo marrom, integrado na interface com máscara radial CSS; não contém transparência alfa real.
 

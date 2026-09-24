@@ -18,6 +18,7 @@ import {
   KINGDOM_BACKGROUND_MAX_PIXELS,
   KINGDOM_DEFAULT_WIDTH,
   KINGDOM_DEFAULT_HEIGHT,
+  KINGDOM_EDITOR_EMAIL,
   KINGDOM_EDITOR_CATALOG,
 } from '../shared/kingdom-editor.js';
 
@@ -79,7 +80,8 @@ const kingdomViewSchema = z.object({
     .refine((angle) => angle < 2 * Math.PI),
 });
 
-export function createApp() {
+export function createApp(options: { kingdomEditorEmail?: string } = {}) {
+  const kingdomEditorEmail = options.kingdomEditorEmail ?? KINGDOM_EDITOR_EMAIL;
   const app = express();
   app.disable('x-powered-by');
   app.use(
@@ -131,7 +133,11 @@ export function createApp() {
     const {
       rows: [staff],
     } = await pool.query('SELECT role FROM guild_staff WHERE user_id=$1', [res.locals.user.id]);
-    res.json({ ...res.locals.user, role: staff?.role || 'player' });
+    res.json({
+      ...res.locals.user,
+      role: staff?.role || 'player',
+      canEditKingdom: res.locals.user.email?.trim().toLowerCase() === kingdomEditorEmail,
+    });
   });
   app.get('/api/characters', async (_req, res) => {
     res.json(
@@ -372,6 +378,14 @@ export function createApp() {
     ]);
     res.json({ regions: regions.rows, locations: locations.rows });
   });
+  app.use(
+    ['/api/kingdom/editor-draft', '/api/kingdom/editor-background', '/api/kingdom/editor-view'],
+    (_req, res, next) => {
+      if (res.locals.user.email?.trim().toLowerCase() !== kingdomEditorEmail)
+        throw new AppError(403, 'Somente o editor autorizado pode modificar este mapa.');
+      next();
+    },
+  );
   app.get('/api/kingdom/editor-draft', async (_req, res) => {
     const { rows } = await pool.query(
       'SELECT revision,items FROM kingdom_editor_drafts WHERE user_id=$1',

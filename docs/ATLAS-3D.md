@@ -1,6 +1,6 @@
 # Visão do reino — cenário 3D procedural
 
-**Documento histórico.** Em 23/09/2026, o usuário substituiu a cena regional 3D por um cenário Canvas 2D com sprites de oito orientações, descrito em [KINGDOM-2D.md](KINGDOM-2D.md). Os arquivos e comportamentos regionais citados abaixo pertencem à versão anterior, não devem ser restaurados. O Mundo mantém seu relevo Three.js em [ATLAS-WORLD-RELIEF.md](ATLAS-WORLD-RELIEF.md).
+**Documento histórico.** A cena regional 3D foi removida. O reino atual abre como área vazia em Canvas 2D, com upload de fundo e sprites de oito orientações no editor, descritos em [KINGDOM-2D.md](KINGDOM-2D.md). Os arquivos e comportamentos regionais citados abaixo pertencem à versão anterior. O Mundo mantém seu relevo Three.js em [ATLAS-WORLD-RELIEF.md](ATLAS-WORLD-RELIEF.md).
 
 Este documento descreve a **visão do reino**, que mantém geometria verdadeiramente tridimensional. A visão geral **Mundo** também possui relevo navegável, em um módulo separado: [ATLAS-WORLD-RELIEF.md](ATLAS-WORLD-RELIEF.md). A entrega mundial plana V2 foi rejeitada. O retorno da região é identificado como Voltar ao mundo.
 
@@ -35,7 +35,7 @@ O módulo da cena regional e suas texturas PBR são carregados ao entrar na vis�
 
 Os nove JPGs em `public/atlas-materials/` são mapas de cor sRGB, normal OpenGL e rugosidade linear, 1024 × 1024, aproximadamente 7,05 MB no total. Servidos pelo próprio app, sem dependência de CDN durante o jogo. Origem, licença CC0, autores e checksums em [ATLAS-MATERIALS.md](ATLAS-MATERIALS.md) e no manifesto ao lado dos arquivos.
 
-Se o navegador perder ou não conseguir criar um contexto WebGL na visão do reino, mostra **Mapa em 2D** e usa `public/atlas-north.png`; essa imagem não é solicitada no fluxo WebGL normal da região. A alternativa mantém navegação e missões. Mundo possui tratamento próprio para falha de WebGL, sem apresentar PNG plano como se fosse relevo. `public/atlas-world.png` permanece somente como histórico.
+Na versão descrita neste documento, a perda de WebGL acionava um fallback regional com `public/atlas-north.png`. Esse fallback e o arquivo foram removidos. A visão regional atual funciona em Canvas 2D; o Mundo possui tratamento próprio para falha de WebGL.
 
 ## Ferramentas de validação
 

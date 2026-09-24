@@ -10,6 +10,7 @@ import { seed } from '../server/seed.js';
 
 let server: Server;
 let base: string;
+const editorTestEmail = `editor-${randomUUID()}@example.test`;
 const origin = (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0];
 const users: string[] = [];
 type Client = { cookie: string; id: string; email: string; password: string };
@@ -32,8 +33,7 @@ async function request(
   });
   return { status: response.status, data: await response.json(), headers: response.headers };
 }
-async function signup(): Promise<Client> {
-  const email = `integration-${randomUUID()}@example.test`;
+async function signup(email = `integration-${randomUUID()}@example.test`): Promise<Client> {
   const password = `Test-${randomUUID()}`;
   const response = await request('/api/auth/sign-up/email', undefined, {
     name: 'Aventureiro de teste',
@@ -62,7 +62,7 @@ async function character(client: Client, name = 'Arden') {
 before(async () => {
   await migrate();
   await seed();
-  server = createApp().listen(0, '127.0.0.1');
+  server = createApp({ kingdomEditorEmail: editorTestEmail }).listen(0, '127.0.0.1');
   await new Promise<void>((resolve) => server.once('listening', resolve));
   const address = server.address();
   assert.ok(address && typeof address !== 'string');
@@ -102,10 +102,11 @@ async function verifyKingdomDraft(alice: Client, bob: Client) {
   assert.equal(saved.status, 200);
   assert.equal(saved.data.revision, 1);
   assert.deepEqual(saved.data.items, [item]);
-  assert.deepEqual((await request('/api/kingdom/editor-draft', bob)).data, {
-    revision: 0,
-    items: [],
-  });
+  assert.equal((await request('/api/kingdom/editor-draft', bob)).status, 403);
+  assert.equal(
+    (await request('/api/kingdom/editor-draft', bob, { revision: 0, items: [] }, 'PUT')).status,
+    403,
+  );
   assert.equal(
     (await request('/api/kingdom/editor-draft', alice, { revision: 0, items: [] }, 'PUT')).status,
     409,
@@ -129,7 +130,7 @@ async function verifyKingdomBackground(alice: Client, bob: Client) {
   assert.deepEqual((await request('/api/kingdom/editor-background/meta', alice)).data, {
     exists: false,
     width: 4096,
-    height: 2078,
+    height: 3072,
     revision: 0,
   });
   const image = await sharp({
@@ -149,13 +150,18 @@ async function verifyKingdomBackground(alice: Client, bob: Client) {
   });
   assert.equal(uploaded.status, 200);
   assert.deepEqual(await uploaded.json(), { exists: true, width: 8192, height: 4096, revision: 1 });
-  assert.deepEqual((await request('/api/kingdom/editor-background/meta', bob)).data, {
-    exists: false,
-    width: 4096,
-    height: 2078,
-    revision: 0,
+  assert.equal((await request('/api/kingdom/editor-background/meta', bob)).status, 403);
+  assert.equal((await request('/api/kingdom/editor-background/image', bob)).status, 403);
+  assert.equal(
+    (await request('/api/kingdom/editor-background', bob, undefined, 'DELETE')).status,
+    403,
+  );
+  const blockedUpload = await fetch(base + '/api/kingdom/editor-background', {
+    method: 'PUT',
+    headers: { Origin: origin, Cookie: bob.cookie, 'Content-Type': 'image/png' },
+    body: new Uint8Array(image),
   });
-  assert.equal((await request('/api/kingdom/editor-background/image', bob)).status, 404);
+  assert.equal(blockedUpload.status, 403);
   const fetched = await fetch(base + '/api/kingdom/editor-background/image', {
     headers: { Cookie: alice.cookie },
   });
@@ -187,7 +193,12 @@ async function verifyKingdomView(alice: Client, bob: Client) {
   );
   assert.equal(saved.status, 200);
   assert.equal(saved.data.zoom, 0.4);
-  assert.deepEqual((await request('/api/kingdom/editor-view', bob)).data, initial);
+  assert.equal((await request('/api/kingdom/editor-view', bob)).status, 403);
+  assert.equal(
+    (await request('/api/kingdom/editor-view', bob, { x: 0, y: 0, zoom: 1, angle: 0 }, 'PUT'))
+      .status,
+    403,
+  );
   assert.equal(
     (await request('/api/kingdom/editor-view', alice, { x: 0, y: 0, zoom: 100, angle: 0 }, 'PUT'))
       .status,
@@ -228,7 +239,7 @@ async function verifyKingdomView(alice: Client, bob: Client) {
 }
 
 test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores', async (t) => {
-  const alice = await signup();
+  const alice = await signup(editorTestEmail);
   const bob = await signup();
   const arden = await character(alice);
   const mira = await character(alice, 'Mira');

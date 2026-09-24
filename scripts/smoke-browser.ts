@@ -268,13 +268,15 @@ try {
     ['Conquistas', 'Conquistas.', 'achievements'],
     ['Mercenários', 'Mercenários.', 'mercenaries'],
     ['House', 'House.', 'house'],
-    ['Mundo', 'Atlas do mundo.', 'world'],
+    ['Mundo', '', 'world'],
     ['Lore', 'Crônicas & lore.', 'lore'],
     ['Regras', 'Regras da mesa.', 'rules'],
     ['Ganchos', 'Ganchos de aventura.', 'hooks'],
   ]) {
     await navigate(label);
-    await expect(page.getByRole('heading', { name: heading, exact: true })).toBeVisible();
+    if (label === 'Mundo')
+      await expect(page.getByRole('region', { name: 'Mapa do mundo com relevo 3D' })).toBeVisible();
+    else await expect(page.getByRole('heading', { name: heading, exact: true })).toBeVisible();
     await expect(page.locator('main')).not.toContainText(/Entre Mundos|Casa das Lanternas/);
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
@@ -427,7 +429,9 @@ try {
   await expect(page.locator('.item-card')).toHaveCount(1);
   for (const label of ['Perfil', 'House', 'Mundo', 'Conquistas']) {
     await navigate(label);
-    await expect(page.locator('main h1')).toBeVisible();
+    if (label === 'Mundo')
+      await expect(page.getByRole('region', { name: 'Mapa do mundo com relevo 3D' })).toBeVisible();
+    else await expect(page.locator('main h1')).toBeVisible();
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
     ).toBe(true);

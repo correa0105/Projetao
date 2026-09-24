@@ -97,6 +97,7 @@ export default function App() {
 
 function Portal({ user }: { user: User }) {
   const [role, setRole] = useState<User['role']>('player');
+  const [canEditKingdom, setCanEditKingdom] = useState(false);
   const [completingMission, setCompletingMission] = useState<Post | null>(null);
   const [now, setNow] = useState(Date.now());
   const [page, setPage] = useState<Page>(initialPage);
@@ -134,6 +135,7 @@ function Portal({ user }: { user: User }) {
     setPosts(nextPosts);
     setEntries(nextEntries);
     setRole(me.role);
+    setCanEditKingdom(me.canEditKingdom === true);
   }, []);
   useEffect(() => {
     refresh()
@@ -441,6 +443,7 @@ function Portal({ user }: { user: User }) {
       return (
         <Suspense fallback={<div className="loading-content">Desdobrando o atlas…</div>}>
           <WorldAtlas
+            canEditKingdom={canEditKingdom}
             posts={posts}
             renderMission={(item) => postCard(item)}
             onPublish={(place) => {
