@@ -1,0 +1,54 @@
+{
+  "name": "alvorada-cinzenta",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"tsx watch server/index.ts\" \"vite --host 0.0.0.0\"",
+    "build": "tsc --noEmit && vite build && tsup server/index.ts --format esm --platform node --target node24 --out-dir dist/server --external better-auth",
+    "start": "node dist/server/index.js",
+    "db:migrate": "tsx scripts/db-migrate.ts",
+    "db:seed": "tsx scripts/db-seed.ts",
+    "staff": "tsx scripts/staff.ts",
+    "catalog:import": "tsx scripts/import-catalog.ts",
+    "sprites:extract": "tsx scripts/extract-kingdom-structures.ts",
+    "test": "tsx --test --test-concurrency=1 tests/*.test.ts",
+    "test:browser": "tsx scripts/smoke-browser.ts",
+    "test:atlas": "tsx scripts/smoke-atlas.ts",
+    "setup": "node scripts/setup.mjs",
+    "format": "prettier --write src server shared scripts tests vite.config.ts"
+  },
+  "dependencies": {
+    "better-auth": "^1.7.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "lucide-react": "^1.46.0",
+    "pg": "^8.23.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "three": "^0.186.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.20.3",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^10.0.5",
+    "prettier": "^3.9.7",
+    "sharp": "^0.35.4",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  },
+  "overrides": {
+    "esbuild": "^0.28.2"
+  }
+}

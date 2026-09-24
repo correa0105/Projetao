@@ -1,0 +1,371 @@
+.world-atlas.is-world {
+  background: #102f3e;
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.world-atlas.is-world::after {
+  display: none;
+}
+.world-map {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #172e3b;
+  color: #e7dcc4;
+  isolation: isolate;
+}
+.world-map__viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  background: #071e2b;
+}
+.world-map__viewport canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.world-map .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.world-map__viewport:focus-visible {
+  outline: 1px solid #cfb784;
+  outline-offset: -4px;
+}
+.world-map__viewport[data-dragging='true'] {
+  cursor: grabbing;
+}
+.world-map__viewport[data-hovered-territory]:not([data-hovered-territory='']) {
+  cursor: pointer;
+}
+.world-map .atlas-pin[data-hovered='true'] .atlas-pin__point {
+  border-color: #ead5a2;
+  box-shadow: 0 0 20px #d0ab6660;
+}
+.world-map .atlas-pin[data-hovered='true'] .atlas-pin__caption {
+  color: #fff0ce;
+}
+.world-map[data-status='loading'] canvas,
+.world-map[data-status='loading'] .world-map__markers {
+  opacity: 0;
+}
+.world-map[data-status='ready'] canvas {
+  animation: world-map-reveal 600ms ease-out both;
+}
+.world-map__markers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.world-map .atlas-pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 7px;
+  width: max-content;
+  max-width: 190px;
+  margin: 0;
+  padding: 10px 6px;
+  transform: translate(-50%, -22px);
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  color: #f1e8d4;
+  pointer-events: auto;
+  box-shadow: none;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    filter 180ms,
+    opacity 220ms;
+  z-index: 1;
+  touch-action: none;
+}
+.world-map .atlas-pin:active {
+  transform: translate(-50%, -22px);
+}
+.world-map .atlas-pin[data-visible='false'] {
+  opacity: 0;
+  pointer-events: none;
+}
+.world-map .atlas-pin:hover,
+.world-map .atlas-pin:focus-visible {
+  z-index: 3;
+  filter: brightness(1.16);
+}
+.world-map .atlas-pin:focus-visible {
+  outline: 1px solid #edd3a2;
+  outline-offset: 3px;
+}
+.world-map .atlas-pin:disabled {
+  opacity: 0;
+}
+.world-map .atlas-pin__point {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #b99c6b;
+  background: #162733e8;
+  transform: rotate(45deg);
+  box-shadow:
+    0 0 0 4px #0c1c2640,
+    0 4px 16px #0008;
+  transition:
+    background 220ms,
+    box-shadow 220ms,
+    border-color 220ms;
+}
+.world-map .atlas-pin__point > span {
+  width: 6px;
+  height: 6px;
+  background: #e0c79a;
+  box-shadow: 0 0 9px #e4c89380;
+}
+.world-map .atlas-pin__caption {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 7px 15px;
+  background: linear-gradient(
+    90deg,
+    #0a1b2400,
+    #0c1d29e8 15%,
+    #0c1d29ee 50%,
+    #0c1d29e8 85%,
+    #0a1b2400
+  );
+  text-shadow: 0 1px 4px #000;
+}
+.world-map .atlas-pin__caption strong {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(12px, 1.15vw, 16px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.035em;
+}
+.world-map .atlas-pin__caption small {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #d6bd92;
+}
+.world-map .atlas-pin__caption {
+  padding: 5px 8px;
+  background: transparent;
+}
+.world-map .atlas-pin__caption strong {
+  font-size: clamp(10px, 0.95vw, 13px);
+}
+.world-map .atlas-pin__caption small {
+  display: none;
+}
+.world-map .atlas-pin[data-caption-visible='false'] .atlas-pin__caption {
+  visibility: hidden;
+}
+.world-map .atlas-pin:is(:hover, :focus-visible, [data-hovered='true']) .atlas-pin__caption {
+  visibility: visible;
+  background: linear-gradient(90deg, #0c1d2900, #0c1d29ed 18%, #0c1d29ed 82%, #0c1d2900);
+}
+.world-map .atlas-pin[data-hovered='true'] {
+  z-index: 4;
+}
+.world-map .atlas-pin:hover .atlas-pin__point,
+.world-map .atlas-pin:focus-visible .atlas-pin__point,
+.world-map .atlas-pin--selected .atlas-pin__point {
+  background: #34424a;
+  border-color: #efd9aa;
+  box-shadow:
+    0 0 0 6px #ccb47728,
+    0 0 24px #ccb47760;
+}
+.world-map .atlas-pin--unavailable .atlas-pin__point {
+  border-color: #a6a496;
+}
+.world-map .atlas-pin--unavailable .atlas-pin__point > span {
+  background: #b5b2a3;
+  box-shadow: none;
+}
+.world-map .atlas-pin--unavailable .atlas-pin__caption small {
+  color: #b3b5ab;
+}
+.world-map.is-entering .atlas-pin:not(.atlas-pin--selected) {
+  opacity: 0;
+}
+.world-map.is-entering .world-map__viewport {
+  cursor: progress;
+}
+.world-map__tools {
+  position: absolute;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  left: 24px;
+  right: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  z-index: 4;
+}
+.world-map__tools button {
+  display: grid;
+  place-items: center;
+  flex: 0 0 35px;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border: 1px solid #ad8e5955;
+  border-radius: 5px;
+  background: #122531;
+  color: #e0cfac;
+  box-shadow: none;
+}
+.world-map__tools button:hover:not(:disabled) {
+  background: #2b3b43;
+  border-color: #baa076;
+}
+.world-map__tools button:disabled {
+  opacity: 0.4;
+}
+.world-map__tools button:focus-visible {
+  outline: 1px solid #edcf93;
+  outline-offset: 3px;
+}
+.world-map__zoom {
+  font-size: 10px;
+  color: #d0c7b6;
+  font-variant-numeric: tabular-nums;
+  min-width: 42px;
+  margin-left: 4px;
+}
+.world-map__status {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  background: #10202bf5;
+  font-size: 12px;
+  color: #d9c9aa;
+}
+.world-map__status p {
+  margin: 0;
+}
+.world-map__status button {
+  border: 1px solid #9f885e;
+  border-radius: 5px;
+  background: #20343d;
+  color: #ecddbf;
+  padding: 10px 18px;
+}
+.world-map__loader {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #a98c4c44;
+  border-top-color: #cfb37e;
+  transform: rotate(45deg);
+  animation: world-map-load 1.6s linear infinite;
+}
+@keyframes world-map-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes world-map-load {
+  to {
+    transform: rotate(405deg);
+  }
+}
+@media (max-width: 600px) {
+  .world-map {
+    top: 0;
+  }
+  .world-map__viewport {
+    bottom: 0;
+  }
+  .world-map .atlas-pin {
+    max-width: 112px;
+    padding: 7px;
+    gap: 3px;
+    transform: translate(-50%, -14px);
+  }
+  .world-map .atlas-pin:active {
+    transform: translate(-50%, -14px);
+  }
+  .world-map .atlas-pin__point {
+    width: 14px;
+    height: 14px;
+  }
+  .world-map .atlas-pin__point > span {
+    width: 4px;
+    height: 4px;
+  }
+  .world-map .atlas-pin__caption {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 118px;
+    padding: 6px 7px;
+    gap: 3px;
+  }
+  .world-map .atlas-pin__caption strong {
+    font-size: 10px;
+    letter-spacing: 0.015em;
+  }
+  .world-map .atlas-pin__caption small {
+    font-size: 7px;
+    letter-spacing: 0.065em;
+  }
+  .world-map__tools {
+    left: 14px;
+    bottom: calc(62px + env(safe-area-inset-bottom));
+    height: auto;
+    padding: 0;
+    gap: 4px;
+  }
+  .world-map__zoom {
+    margin-left: 2px;
+    min-width: 33px;
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-map *,
+  .world-map *::before,
+  .world-map *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

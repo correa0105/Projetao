@@ -1,0 +1,177 @@
+{
+  "source": "https://github.com/5etools-mirror-3/5etools-src/tree/e5d052071b635f58cc8006e9727053eaf78ea8f9/data",
+  "imported_at": "2026-09-16T13:48:35.568Z",
+  "edition": "SRD 5.1 / 2014",
+  "items": [
+    {
+      "id": "dagger",
+      "name": "Adaga",
+      "original_name": "Dagger",
+      "category": "Armas",
+      "description": "1d4 perfurante · Acuidade, leve e arremesso (20/60 pés).",
+      "price_cp": 200,
+      "weight_lb": 1,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#dagger_phb",
+      "raw_data": {
+        "name": "Dagger",
+        "source": "PHB",
+        "srd": true,
+        "value": 200,
+        "weight": 1,
+        "type": "M",
+        "dmg1": "1d4",
+        "property": [
+          "F",
+          "L",
+          "T"
+        ]
+      }
+    },
+    {
+      "id": "leather-armor",
+      "name": "Armadura de couro",
+      "original_name": "Leather Armor",
+      "category": "Armaduras",
+      "description": "Armadura leve · CA 11 + modificador de Destreza.",
+      "price_cp": 1000,
+      "weight_lb": 10,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#leather%20armor_phb",
+      "raw_data": {
+        "name": "Leather Armor",
+        "source": "PHB",
+        "srd": true,
+        "value": 1000,
+        "weight": 10,
+        "type": "LA",
+        "ac": 11
+      }
+    },
+    {
+      "id": "longsword",
+      "name": "Espada longa",
+      "original_name": "Longsword",
+      "category": "Armas",
+      "description": "1d8 cortante · Versátil (1d10). Uma arma marcial para a linha de frente.",
+      "price_cp": 1500,
+      "weight_lb": 3,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#longsword_phb",
+      "raw_data": {
+        "name": "Longsword",
+        "source": "PHB",
+        "srd": true,
+        "value": 1500,
+        "weight": 3,
+        "type": "M",
+        "dmg1": "1d8",
+        "dmg2": "1d10",
+        "property": [
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "shield",
+      "name": "Escudo",
+      "original_name": "Shield",
+      "category": "Armaduras",
+      "description": "+2 na classe de armadura quando empunhado. Ocupa uma mão.",
+      "price_cp": 1000,
+      "weight_lb": 6,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#shield_phb",
+      "raw_data": {
+        "name": "Shield",
+        "source": "PHB",
+        "srd": true,
+        "value": 1000,
+        "weight": 6,
+        "type": "S",
+        "ac": 2
+      }
+    },
+    {
+      "id": "shortbow",
+      "name": "Arco curto",
+      "original_name": "Shortbow",
+      "category": "Armas",
+      "description": "1d6 perfurante · Duas mãos, munição e alcance de 80/320 pés.",
+      "price_cp": 2500,
+      "weight_lb": 2,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#shortbow_phb",
+      "raw_data": {
+        "name": "Shortbow",
+        "source": "PHB",
+        "srd": true,
+        "value": 2500,
+        "weight": 2,
+        "type": "R",
+        "dmg1": "1d6",
+        "property": [
+          "A",
+          "2H"
+        ]
+      }
+    },
+    {
+      "id": "backpack",
+      "name": "Mochila",
+      "original_name": "Backpack",
+      "category": "Equipamento",
+      "description": "Leve os suprimentos da próxima jornada. Capacidade: 30 libras.",
+      "price_cp": 200,
+      "weight_lb": 5,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#backpack_phb",
+      "raw_data": {
+        "name": "Backpack",
+        "source": "PHB",
+        "srd": true,
+        "value": 200,
+        "weight": 5,
+        "type": "G"
+      }
+    },
+    {
+      "id": "hempen-rope-50-feet",
+      "name": "Corda de cânhamo",
+      "original_name": "Hempen Rope (50 feet)",
+      "category": "Equipamento",
+      "description": "50 pés de corda para escaladas e travessias.",
+      "price_cp": 100,
+      "weight_lb": 10,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#hempen%20rope%20(50%20feet)_phb",
+      "raw_data": {
+        "name": "Hempen Rope (50 feet)",
+        "source": "PHB",
+        "srd": true,
+        "value": 100,
+        "weight": 10,
+        "type": "G"
+      }
+    },
+    {
+      "id": "torch",
+      "name": "Tocha",
+      "original_name": "Torch",
+      "category": "Equipamento",
+      "description": "Ilumina as trilhas e masmorras. Duração: 1 hora.",
+      "price_cp": 1,
+      "weight_lb": 1,
+      "source": "SRD 5.1 · 5etools (PHB)",
+      "source_url": "https://5e.tools/items.html#torch_phb",
+      "raw_data": {
+        "name": "Torch",
+        "source": "PHB",
+        "srd": true,
+        "value": 1,
+        "weight": 1,
+        "type": "G"
+      }
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+[
+  {
+    "name": "fortaleza",
+    "atlas": "atlases/structures.png",
+    "directions": {
+      "sul": "fortaleza/sul.png",
+      "sudoeste": "fortaleza/sudoeste.png",
+      "oeste": "fortaleza/oeste.png",
+      "noroeste": "fortaleza/noroeste.png",
+      "norte": "fortaleza/norte.png",
+      "nordeste": "fortaleza/nordeste.png",
+      "leste": "fortaleza/leste.png",
+      "sudeste": "fortaleza/sudeste.png"
+    }
+  },
+  {
+    "name": "torre",
+    "atlas": "atlases/structures.png",
+    "directions": {
+      "sul": "torre/sul.png",
+      "sudoeste": "torre/sudoeste.png",
+      "oeste": "torre/oeste.png",
+      "noroeste": "torre/noroeste.png",
+      "norte": "torre/norte.png",
+      "nordeste": "torre/nordeste.png",
+      "leste": "torre/leste.png",
+      "sudeste": "torre/sudeste.png"
+    }
+  },
+  {
+    "name": "estalagem",
+    "atlas": "atlases/structures.png",
+    "directions": {
+      "sul": "estalagem/sul.png",
+      "sudoeste": "estalagem/sudoeste.png",
+      "oeste": "estalagem/oeste.png",
+      "noroeste": "estalagem/noroeste.png",
+      "norte": "estalagem/norte.png",
+      "nordeste": "estalagem/nordeste.png",
+      "leste": "estalagem/leste.png",
+      "sudeste": "estalagem/sudeste.png"
+    }
+  },
+  {
+    "name": "capitania",
+    "atlas": "atlases/landmarks.png",
+    "directions": {
+      "sul": "capitania/sul.png",
+      "sudoeste": "capitania/sudoeste.png",
+      "oeste": "capitania/oeste.png",
+      "noroeste": "capitania/noroeste.png",
+      "norte": "capitania/norte.png",
+      "nordeste": "capitania/nordeste.png",
+      "leste": "capitania/leste.png",
+      "sudeste": "capitania/sudeste.png"
+    }
+  },
+  {
+    "name": "totem",
+    "atlas": "atlases/landmarks.png",
+    "directions": {
+      "sul": "totem/sul.png",
+      "sudoeste": "totem/sudoeste.png",
+      "oeste": "totem/oeste.png",
+      "noroeste": "totem/noroeste.png",
+      "norte": "totem/norte.png",
+      "nordeste": "totem/nordeste.png",
+      "leste": "totem/leste.png",
+      "sudeste": "totem/sudeste.png"
+    }
+  },
+  {
+    "name": "casa-simples",
+    "atlas": "atlases/settlements.png",
+    "directions": {
+      "sul": "casa-simples/sul.png",
+      "sudoeste": "casa-simples/sudoeste.png",
+      "oeste": "casa-simples/oeste.png",
+      "noroeste": "casa-simples/noroeste.png",
+      "norte": "casa-simples/norte.png",
+      "nordeste": "casa-simples/nordeste.png",
+      "leste": "casa-simples/leste.png",
+      "sudeste": "casa-simples/sudeste.png"
+    }
+  },
+  {
+    "name": "loja",
+    "atlas": "atlases/settlements.png",
+    "directions": {
+      "sul": "loja/sul.png",
+      "sudoeste": "loja/sudoeste.png",
+      "oeste": "loja/oeste.png",
+      "noroeste": "loja/noroeste.png",
+      "norte": "loja/norte.png",
+      "nordeste": "loja/nordeste.png",
+      "leste": "loja/leste.png",
+      "sudeste": "loja/sudeste.png"
+    }
+  },
+  {
+    "name": "capela",
+    "atlas": "atlases/settlements.png",
+    "directions": {
+      "sul": "capela/sul.png",
+      "sudoeste": "capela/sudoeste.png",
+      "oeste": "capela/oeste.png",
+      "noroeste": "capela/noroeste.png",
+      "norte": "capela/norte.png",
+      "nordeste": "capela/nordeste.png",
+      "leste": "capela/leste.png",
+      "sudeste": "capela/sudeste.png"
+    }
+  },
+  {
+    "name": "sobrado",
+    "atlas": "atlases/town-buildings.png",
+    "directions": {
+      "sul": "sobrado/sul.png",
+      "sudoeste": "sobrado/sudoeste.png",
+      "oeste": "sobrado/oeste.png",
+      "noroeste": "sobrado/noroeste.png",
+      "norte": "sobrado/norte.png",
+      "nordeste": "sobrado/nordeste.png",
+      "leste": "sobrado/leste.png",
+      "sudeste": "sobrado/sudeste.png"
+    }
+  },
+  {
+    "name": "estabulo",
+    "atlas": "atlases/town-buildings.png",
+    "directions": {
+      "sul": "estabulo/sul.png",
+      "sudoeste": "estabulo/sudoeste.png",
+      "oeste": "estabulo/oeste.png",
+      "noroeste": "estabulo/noroeste.png",
+      "norte": "estabulo/norte.png",
+      "nordeste": "estabulo/nordeste.png",
+      "leste": "estabulo/leste.png",
+      "sudeste": "estabulo/sudeste.png"
+    }
+  },
+  {
+    "name": "prefeitura",
+    "atlas": "atlases/town-buildings.png",
+    "directions": {
+      "sul": "prefeitura/sul.png",
+      "sudoeste": "prefeitura/sudoeste.png",
+      "oeste": "prefeitura/oeste.png",
+      "noroeste": "prefeitura/noroeste.png",
+      "norte": "prefeitura/norte.png",
+      "nordeste": "prefeitura/nordeste.png",
+      "leste": "prefeitura/leste.png",
+      "sudeste": "prefeitura/sudeste.png"
+    }
+  },
+  {
+    "name": "armazem",
+    "atlas": "atlases/harbor-buildings.png",
+    "directions": {
+      "sul": "armazem/sul.png",
+      "sudoeste": "armazem/sudoeste.png",
+      "oeste": "armazem/oeste.png",
+      "noroeste": "armazem/noroeste.png",
+      "norte": "armazem/norte.png",
+      "nordeste": "armazem/nordeste.png",
+      "leste": "armazem/leste.png",
+      "sudeste": "armazem/sudeste.png"
+    }
+  },
+  {
+    "name": "veleiro",
+    "atlas": "atlases/harbor-buildings.png",
+    "directions": {
+      "sul": "veleiro/sul.png",
+      "sudoeste": "veleiro/sudoeste.png",
+      "oeste": "veleiro/oeste.png",
+      "noroeste": "veleiro/noroeste.png",
+      "norte": "veleiro/norte.png",
+      "nordeste": "veleiro/nordeste.png",
+      "leste": "veleiro/leste.png",
+      "sudeste": "veleiro/sudeste.png"
+    }
+  },
+  {
+    "name": "forja",
+    "atlas": "atlases/craft-buildings.png",
+    "directions": {
+      "sul": "forja/sul.png",
+      "sudoeste": "forja/sudoeste.png",
+      "oeste": "forja/oeste.png",
+      "noroeste": "forja/noroeste.png",
+      "norte": "forja/norte.png",
+      "nordeste": "forja/nordeste.png",
+      "leste": "forja/leste.png",
+      "sudeste": "forja/sudeste.png"
+    }
+  },
+  {
+    "name": "celeiro",
+    "atlas": "atlases/craft-buildings.png",
+    "directions": {
+      "sul": "celeiro/sul.png",
+      "sudoeste": "celeiro/sudoeste.png",
+      "oeste": "celeiro/oeste.png",
+      "noroeste": "celeiro/noroeste.png",
+      "norte": "celeiro/norte.png",
+      "nordeste": "celeiro/nordeste.png",
+      "leste": "celeiro/leste.png",
+      "sudeste": "celeiro/sudeste.png"
+    }
+  },
+  {
+    "name": "taverna",
+    "atlas": "atlases/craft-buildings.png",
+    "directions": {
+      "sul": "taverna/sul.png",
+      "sudoeste": "taverna/sudoeste.png",
+      "oeste": "taverna/oeste.png",
+      "noroeste": "taverna/noroeste.png",
+      "norte": "taverna/norte.png",
+      "nordeste": "taverna/nordeste.png",
+      "leste": "taverna/leste.png",
+      "sudeste": "taverna/sudeste.png"
+    }
+  },
+  {
+    "name": "casa-dos-patrulheiros",
+    "atlas": "atlases/frontier-buildings.png",
+    "directions": {
+      "sul": "casa-dos-patrulheiros/sul.png",
+      "sudoeste": "casa-dos-patrulheiros/sudoeste.png",
+      "oeste": "casa-dos-patrulheiros/oeste.png",
+      "noroeste": "casa-dos-patrulheiros/noroeste.png",
+      "norte": "casa-dos-patrulheiros/norte.png",
+      "nordeste": "casa-dos-patrulheiros/nordeste.png",
+      "leste": "casa-dos-patrulheiros/leste.png",
+      "sudeste": "casa-dos-patrulheiros/sudeste.png"
+    }
+  },
+  {
+    "name": "circulo-de-pedras",
+    "atlas": "atlases/frontier-buildings.png",
+    "directions": {
+      "sul": "circulo-de-pedras/sul.png",
+      "sudoeste": "circulo-de-pedras/sudoeste.png",
+      "oeste": "circulo-de-pedras/oeste.png",
+      "noroeste": "circulo-de-pedras/noroeste.png",
+      "norte": "circulo-de-pedras/norte.png",
+      "nordeste": "circulo-de-pedras/nordeste.png",
+      "leste": "circulo-de-pedras/leste.png",
+      "sudeste": "circulo-de-pedras/sudeste.png"
+    }
+  },
+  {
+    "name": "quartel",
+    "atlas": "atlases/frontier-buildings.png",
+    "directions": {
+      "sul": "quartel/sul.png",
+      "sudoeste": "quartel/sudoeste.png",
+      "oeste": "quartel/oeste.png",
+      "noroeste": "quartel/noroeste.png",
+      "norte": "quartel/norte.png",
+      "nordeste": "quartel/nordeste.png",
+      "leste": "quartel/leste.png",
+      "sudeste": "quartel/sudeste.png"
+    }
+  }
+]

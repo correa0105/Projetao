@@ -1,0 +1,348 @@
+.world-atlas {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: max(680px, calc(100dvh - 150px));
+  max-height: 1100px;
+  overflow: hidden;
+  border: 1px solid #aa8a5155;
+  border-radius: 15px;
+  background: #090f15;
+  box-shadow: 0 20px 70px #0005;
+}
+.world-atlas::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 85px #030b10a8;
+  border-radius: inherit;
+}
+.world-atlas-heading {
+  position: absolute;
+  z-index: 5;
+  top: 28px;
+  left: 28px;
+  pointer-events: none;
+  max-width: calc(100% - 110px);
+  text-shadow: 0 2px 10px #000;
+}
+.world-atlas-heading::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  inset: -28px -80px -38px -28px;
+  background: radial-gradient(ellipse at 15% 0, #06101af2, #07111aba 40%, transparent 72%);
+  pointer-events: none;
+}
+.world-atlas-heading h1 {
+  margin: 9px 0;
+  font-family: var(--serif);
+  font-size: clamp(23px, 2.3vw, 35px);
+  line-height: 1.2;
+  color: #eee4cf;
+}
+.world-atlas-heading p {
+  font-size: 12px;
+  color: #c2c7c5;
+  margin: 0;
+}
+.atlas-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  color: #c5a771;
+  text-transform: uppercase;
+}
+.atlas-back {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  padding: 7px 0;
+  background: none;
+  color: #d5c8b1;
+  font-size: 11px;
+}
+.atlas-back:hover {
+  color: #fff1d5;
+}
+.atlas-notice {
+  position: absolute;
+  z-index: 6;
+  bottom: 78px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 40px);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid #a68a59;
+  background: #0d1927ed;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px #0007;
+  color: #e1d4bc;
+  font-size: 13px;
+}
+.atlas-notice button,
+.atlas-close {
+  border: 0;
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  color: #ddc59c;
+  background: transparent;
+}
+.atlas-regional-guide {
+  position: absolute;
+  z-index: 5;
+  bottom: 78px;
+  left: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  max-width: calc(100% - 110px);
+  background: #0a1423eb;
+  border: 1px solid #a68a594d;
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 10px 30px #0006;
+}
+.world-atlas:has(.kingdom-editor) .atlas-regional-guide {
+  display: none;
+}
+.atlas-regional-guide p {
+  font-size: 12px;
+  margin: 7px 0 0;
+  color: #aeb8c0;
+}
+.atlas-regional-guide button {
+  border: 1px solid #a68a5977;
+  border-radius: 6px;
+  background: #b79b6420;
+  color: #e5d3ae;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  font-size: 11px;
+}
+.atlas-regional-guide button span {
+  background: #b79b642a;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+.atlas-missions-drawer {
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(380px, 42%);
+  padding: 26px 22px 36px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: linear-gradient(130deg, #15202dfc, #0b1420fc);
+  border-left: 1px solid #ac8f5866;
+  box-shadow: -18px 0 55px #0007;
+  backdrop-filter: blur(20px);
+  animation: atlas-drawer-arrive 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  scrollbar-width: thin;
+  scrollbar-color: #8b7552 #121c28;
+}
+.atlas-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.atlas-missions-drawer h2 {
+  font-family: var(--serif);
+  color: #e9d6b6;
+  font-size: 24px;
+  margin: 20px 0 12px;
+}
+.atlas-place-description {
+  color: #aeb9c2;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.atlas-create {
+  width: 100%;
+  margin: 12px 0 18px;
+}
+.atlas-mission-tabs {
+  display: flex;
+  gap: 4px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #9c814d33;
+}
+.atlas-mission-tabs button {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  color: #9ca9b5;
+  font-size: 11px;
+  padding: 8px;
+}
+.atlas-mission-tabs button[aria-pressed='true'] {
+  background: #b99a6024;
+  color: #e5c995;
+}
+.atlas-mission-list {
+  display: grid;
+  gap: 14px;
+  padding-top: 18px;
+}
+.world-atlas .quest-card {
+  padding: 17px;
+  border-radius: 9px;
+  min-width: 0;
+}
+.world-atlas .quest-card h3 {
+  font-size: 17px;
+}
+.world-atlas .quest-card p {
+  font-size: 12px;
+}
+.world-atlas .quest-bottom {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.world-atlas .post-meta {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.atlas-empty {
+  text-align: center;
+  padding: 40px 10px;
+  color: #8d9caa;
+}
+.atlas-empty > svg {
+  color: #aa8d5a;
+}
+.atlas-empty h3 {
+  font-size: 16px;
+  color: #d8c7a7;
+}
+.atlas-empty p {
+  font-size: 12px;
+  line-height: 1.7;
+}
+.atlas-wait {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #ccb68e;
+}
+@keyframes atlas-drawer-arrive {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media (max-width: 760px) {
+  .world-atlas {
+    height: clamp(520px, calc(100dvh - 210px), 720px);
+    min-height: 520px;
+  }
+  .world-atlas-heading {
+    top: 20px;
+    left: 18px;
+  }
+  .world-atlas-heading p {
+    max-width: 220px;
+    line-height: 1.7;
+  }
+  .atlas-missions-drawer {
+    top: 140px;
+    width: 100%;
+    border-left: 0;
+    border-top: 1px solid #ac8f5866;
+    border-radius: 16px 16px 0 0;
+    padding: 16px 18px 26px;
+  }
+  .atlas-missions-drawer h2 {
+    margin: 10px 0 8px;
+    font-size: 22px;
+  }
+  .atlas-place-description {
+    margin: 8px 0;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+  .atlas-create {
+    margin: 8px 0 12px;
+  }
+  .atlas-mission-tabs {
+    padding-bottom: 10px;
+  }
+  .atlas-mission-list {
+    padding-top: 12px;
+  }
+  .atlas-regional-guide {
+    left: 12px;
+    bottom: 17px;
+    padding: 0;
+    max-width: calc(100% - 174px);
+    gap: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .atlas-regional-guide > div {
+    display: none;
+  }
+  .atlas-regional-guide button {
+    max-width: 100%;
+    min-height: 38px;
+    padding: 8px;
+    gap: 6px;
+    font-size: 10px;
+    line-height: 1.3;
+    text-align: left;
+    background: #101b1bed;
+    border-color: #b39b6763;
+    box-shadow: 0 4px 18px #08100d55;
+    backdrop-filter: blur(12px);
+  }
+  .atlas-regional-guide button svg,
+  .atlas-regional-guide button span {
+    flex-shrink: 0;
+  }
+  .atlas-notice {
+    bottom: 90px;
+  }
+}
+@media (max-width: 380px) {
+  .atlas-regional-guide button {
+    font-size: 9px;
+    padding: 7px;
+    gap: 4px;
+  }
+  .atlas-regional-guide button svg {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-missions-drawer {
+    animation: none;
+  }
+}

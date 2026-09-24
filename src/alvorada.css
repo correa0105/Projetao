@@ -1,0 +1,1349 @@
+/* Alvorada Cinzenta — parchment, midnight stone and aged copper. */
+:root {
+  --accent: #24384f;
+  --deep: #111e2c;
+  --gold: #b58b56;
+  --muted: #737b85;
+  --line: #e0d9cd;
+  --paper: #fffcf7;
+  --serif: 'Cinzel', Georgia, serif;
+  background: #f3efe7;
+  color: #293442;
+}
+body {
+  background: #f3efe7;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+}
+h1 {
+  font-size: 31px;
+  letter-spacing: -0.75px;
+}
+p {
+  color: #69717b;
+}
+.muted {
+  color: #737b85;
+}
+.eyebrow {
+  color: #967044;
+  font-size: 10px;
+}
+.button {
+  border-radius: 4px;
+  font-size: 12px;
+}
+.primary {
+  background: #263c55;
+  border-color: #263c55;
+  box-shadow: 0 3px 7px #14263b12;
+}
+.primary:hover:not(:disabled) {
+  background: #355371;
+}
+.cream {
+  background: #dec39a;
+  color: #26303c;
+  border-color: #dec39a;
+}
+.cream:hover:not(:disabled) {
+  background: #efd9b4;
+}
+.outline {
+  color: #344b64;
+  border-color: #d4ccbd;
+}
+.outline:hover {
+  background: #f0e8db;
+}
+.small-button {
+  background: #eee9e0;
+  border-color: #ddd4c7;
+  color: #46556a;
+}
+.small-button:hover:not(:disabled) {
+  background: #e4d8c5;
+}
+.text-button {
+  color: #846039;
+  font-size: 12px;
+}
+.icon-button:hover {
+  background: #e9e0d2;
+}
+.badge {
+  border-radius: 3px;
+  font-size: 10px;
+}
+.badge.mission {
+  background: #e8edf2;
+  color: #49627c;
+}
+.badge.event {
+  background: #f1e5d1;
+  color: #927045;
+}
+.badge.hook {
+  background: #ece6ed;
+  color: #7f647d;
+}
+.badge.neutral {
+  background: #eee8df;
+  color: #776c5b;
+}
+.count {
+  background: #e9dfd0;
+  color: #8c7354;
+}
+.sidebar {
+  background: #111e2c url('/alvorada-contours.svg') center bottom / 480px;
+  border-color: #273343;
+  padding-top: 29px;
+  width: 244px;
+}
+.brand {
+  gap: 14px;
+  color: #eddfc4;
+  padding: 0 9px;
+}
+.brand > svg {
+  width: 43px;
+  height: 57px;
+  color: #c7a679;
+  flex-shrink: 0;
+}
+.brand > .brand-wordmark {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 3px;
+}
+.brand-wordmark em {
+  display: block;
+  font-style: normal;
+  font-size: 17px;
+  letter-spacing: 1.7px;
+  margin-top: 7px;
+}
+.brand .brand-wordmark small {
+  font-size: 6px;
+  letter-spacing: 1.3px;
+  color: #8f9ba6;
+  margin-top: 12px;
+}
+.guild-select {
+  border-color: #394251;
+  border-radius: 4px;
+  background: #ffffff04;
+  color: #c6c8c9;
+  margin-top: 29px;
+  font-size: 12px;
+  padding: 12px 9px;
+}
+.guild-mark {
+  background: #b3946420;
+  color: #c7a679;
+  border: 1px solid #bc9a6840;
+  border-radius: 3px;
+}
+.guild-select small {
+  color: #798998;
+  font-size: 9px;
+}
+.sidebar nav {
+  margin-top: 20px;
+  scrollbar-color: #475669 transparent;
+}
+.nav-label {
+  color: #738393;
+  font-size: 8px;
+  letter-spacing: 1.8px;
+}
+.nav-item {
+  color: #aab4bf;
+  font-size: 12px;
+  padding: 9px 12px;
+  min-height: 35px;
+  border-radius: 3px;
+}
+.nav-item > svg {
+  color: #8595a5;
+}
+.nav-item:hover {
+  background: #223246;
+  color: #efe5d4;
+}
+.nav-item.active {
+  background: linear-gradient(90deg, #b38e5a28, #b38e5a0a);
+  color: #e6cba2;
+  box-shadow: inset 2px 0 #c4a06a;
+}
+.nav-item.active > svg {
+  color: #d0ac76;
+}
+.active-dot {
+  background: #c7a679;
+}
+.nav-count {
+  color: #c7a679;
+  border-color: #6b5a42;
+}
+.sidebar-bottom {
+  border-color: #344151;
+  padding: 17px 0;
+}
+.sidebar-bottom b {
+  font-size: 12px;
+  color: #d6dce1;
+}
+.sidebar-bottom small {
+  color: #7e90a1;
+  font-size: 9px;
+}
+.sidebar-bottom button {
+  color: #9aa8b6;
+}
+.user-avatar,
+.top-avatar {
+  color: #eedfca;
+  background: #3a4c62;
+  border-color: #c8ad8144;
+}
+.main-shell {
+  margin-left: 244px;
+  width: calc(100% - 244px);
+}
+.topbar {
+  background: #fbf8f1;
+  height: 75px;
+  border-color: #e2d9c8;
+}
+.breadcrumbs {
+  color: #9d9485;
+  font-size: 11px;
+}
+.breadcrumbs b {
+  color: #596170;
+}
+.topbar-right {
+  gap: 19px;
+}
+.edition {
+  color: #8a795e;
+  font-size: 10px;
+}
+.edition > span,
+.campaign-label > span {
+  background: #b48a52;
+}
+.character-selector {
+  color: #68778a;
+}
+.character-selector select {
+  color: #536279;
+  font-size: 11px;
+  max-width: 160px;
+}
+.main-content {
+  padding: 34px 38px 32px;
+}
+.page-title .eyebrow {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.page-title p {
+  font-size: 13px;
+}
+.title-dot {
+  color: #ae8250;
+}
+.campaign-label {
+  color: #9e7c4f;
+  border-color: #d8cbb4;
+  border-radius: 3px;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+.welcome-banner {
+  min-height: 304px;
+  border-radius: 5px;
+  background:
+    linear-gradient(90deg, #111e2ced 0%, #142337cc 29%, #12203338 67%, #101c2a0a),
+    url('/alvorada-dawn-banner.png') center 8% / cover;
+  border: 1px solid #394352;
+  box-shadow: 0 10px 25px #27334818;
+}
+.welcome-banner:after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 0;
+  pointer-events: none;
+}
+.banner-copy {
+  padding: 35px 34px;
+}
+.banner-copy .eyebrow {
+  font-size: 9px;
+  letter-spacing: 2.4px;
+  color: #d8b681;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.banner-copy .eyebrow:before {
+  content: '';
+  width: 23px;
+  height: 1px;
+  background: #c2a16b;
+}
+.banner-copy h2 {
+  font-family: var(--serif);
+  font-size: 35px;
+  letter-spacing: -1px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  font-weight: 400;
+  color: #f5ebd8;
+  text-shadow: 0 2px 10px #08132190;
+}
+.banner-copy h2 em {
+  color: #dcc299;
+}
+.banner-copy p {
+  max-width: 345px;
+  color: #bdc6d0;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 23px;
+}
+.banner-copy .button {
+  font-size: 11px;
+  min-height: 40px;
+  padding: 11px 16px;
+}
+.banner-art {
+  position: absolute;
+  width: 75px;
+  height: 100px;
+  right: 32px;
+  top: 22px;
+  color: #e6d4b1;
+  opacity: 0.75;
+}
+.banner-art > svg {
+  width: 65px;
+  height: 72px;
+  transform: none;
+  filter: none;
+}
+.banner-art .north {
+  top: -4px;
+  font-family: var(--serif);
+  font-size: 10px;
+  color: #e6d4b1;
+}
+.banner-location {
+  position: absolute;
+  bottom: 25px;
+  right: 26px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+  color: #e4d5bd;
+  text-shadow: 0 1px 5px #091320;
+}
+.summary-grid {
+  margin: 22px 0 30px;
+  gap: 16px;
+}
+.summary-card {
+  background: #fffcf7;
+  border-color: #dfd7c9;
+  border-radius: 5px;
+  padding: 20px 16px;
+}
+.summary-icon {
+  background: #e8edf1;
+  color: #617a91;
+  border-radius: 5px;
+}
+.summary-card:nth-child(2) .summary-icon {
+  background: #f0e7d8;
+  color: #a68552;
+}
+.summary-card:nth-child(3) .summary-icon {
+  background: #eee5de;
+  color: #9f7962;
+}
+.summary-label {
+  font-size: 11px;
+  color: #727986;
+}
+.summary-card strong {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 27px;
+}
+.summary-card strong small {
+  font-size: 9px;
+  color: #8b8d90;
+}
+.summary-card > svg {
+  color: #b5a990;
+}
+.section-heading h2 {
+  font-size: 18px;
+  letter-spacing: -0.4px;
+}
+.quest-card,
+.character-mini,
+.character-card,
+.paper,
+.item-card {
+  background: #fffcf7;
+  border-color: #dfd7c9;
+  border-radius: 5px;
+}
+.quest-card {
+  position: relative;
+  border-top: 2px solid #9dafa8;
+}
+.quest-card.mission {
+  border-top-color: #7f94ab;
+}
+.quest-card.event {
+  border-top-color: #c3a16c;
+}
+.quest-card.hook {
+  border-top-color: #a998aa;
+}
+.quest-card h3 {
+  font-size: 18px;
+  line-height: 1.55;
+}
+.quest-card p {
+  font-size: 13px;
+  line-height: 1.75;
+}
+.quest-top .small {
+  color: #938574;
+}
+.quest-location {
+  color: #8d8172;
+  font-size: 11px;
+}
+.quest-bottom {
+  border-color: #e6ddd0;
+}
+.quest-bottom > span {
+  color: #a27d46;
+  font-size: 11px;
+}
+.quest-bottom b {
+  font-size: 13px;
+}
+.compact {
+  padding: 21px;
+}
+.compact h3 {
+  font-size: 17px;
+}
+.compact p {
+  font-size: 12px;
+}
+.compact .badge {
+  font-size: 9px;
+}
+.compact .quest-location {
+  font-size: 10px;
+}
+.guild-note {
+  background: #ebe4d7 url('/alvorada-contours.svg') center / 350px;
+  border-color: #dbcfbc;
+  border-radius: 4px;
+}
+.note-icon,
+.guild-note .icon-button {
+  color: #a78550;
+}
+.guild-note b {
+  font-size: 12px;
+  color: #6b5c45;
+}
+.guild-note p {
+  font-size: 11px;
+  color: #928370;
+}
+.character-crest {
+  background: linear-gradient(135deg, #e7eaf0, #d4dce6);
+  color: #5f7792;
+  border-color: #f1eee7;
+  outline-color: #c9bdab;
+  border-radius: 3px 3px 35px 35px;
+}
+.character-crest > span {
+  background: #334b67;
+  border-color: #fffcf7;
+}
+.character-mini h3 {
+  font-size: 18px;
+}
+.character-mini p {
+  font-size: 12px;
+}
+.character-mini .badge {
+  font-size: 9px;
+}
+.mini-stats {
+  border-color: #e4dac9;
+}
+.mini-stats > span {
+  color: #82828b;
+  font-size: 10px;
+}
+.mini-stats svg {
+  color: #ae8a54;
+}
+.mini-stats b {
+  color: #5c687a;
+}
+.character-mini .button {
+  font-size: 11px;
+}
+.selected-label {
+  color: #657f99;
+}
+.character-card.selected {
+  border-color: #b49971;
+}
+.character-card-bottom > span {
+  color: #a1814d;
+}
+.new-character {
+  border-color: #c7bda9;
+  color: #a98b61;
+  border-radius: 5px;
+  background: url('/alvorada-contours.svg') center / cover;
+}
+.new-character p {
+  color: #8b8276;
+}
+.vitals {
+  background: #efe9df;
+}
+.vitals > div {
+  border-color: #ddd3c1;
+}
+.vitals svg {
+  color: #9c7d50;
+}
+.vitals span {
+  color: #877d6e;
+  font-size: 10px;
+}
+.attribute-grid > div {
+  border-color: #ddd4c6;
+  border-radius: 3px;
+}
+.attribute-grid span {
+  color: #7f7b75;
+  font-size: 10px;
+}
+.attribute-grid small {
+  color: #62768f;
+  background: #e8edf2;
+}
+.profile-side svg {
+  color: #a68858;
+}
+.info-note {
+  color: #7f6c50;
+  background: #eee5d6;
+  border-radius: 4px;
+}
+.inventory-summary {
+  background: #fffcf7;
+  border-color: #dfd7c9;
+}
+.inventory-summary > div {
+  color: #95805e;
+}
+.inventory-summary b {
+  color: #435975;
+}
+th {
+  background: #f3ede3;
+  color: #8d7e68;
+  font-size: 10px;
+}
+td {
+  color: #7a7c81;
+  font-size: 12px;
+}
+td b {
+  color: #3c4c61;
+}
+.quantity-badge,
+.history-icon {
+  background: #e7ecf0;
+  color: #607c97;
+}
+.achievement.unlocked {
+  border-color: #c6b189;
+  background: linear-gradient(#fffcf7, #f3eadb);
+}
+.achievement-emblem {
+  background: #eee2ce;
+  color: #a78145;
+  border-color: #d5c3a2;
+  box-shadow: 0 0 0 7px #f6f0e7;
+}
+.search-field {
+  background: #fffcf7;
+  border-color: #ddd4c4;
+  color: #a38b67;
+}
+.search-field input {
+  color: #4e6178;
+  font-size: 12px;
+}
+.tabs {
+  background: #e9e2d6;
+  border-radius: 4px;
+}
+.tabs > button {
+  color: #8b7c66;
+  font-size: 11px;
+}
+.tabs > button.active {
+  color: #455b73;
+  background: #fffcf7;
+}
+.wallet,
+.item-footer > span {
+  color: #a78959;
+}
+.wallet b,
+.item-footer b {
+  color: #8e6b37;
+}
+.item-illustration {
+  background: #e8edf1 url('/alvorada-contours.svg') center / 250px;
+  color: #70879e;
+  height: 162px;
+}
+.item-illustration.armor {
+  background: #eae1d2 url('/alvorada-contours.svg') center / 250px;
+  color: #a58a61;
+}
+.item-illustration.gear {
+  background: #eee3d9 url('/alvorada-contours.svg') center / 250px;
+  color: #a18572;
+}
+.item-illustration > svg {
+  filter: drop-shadow(5px 6px 0 #273c5720);
+}
+.item-body h3 {
+  font-size: 16px;
+}
+.item-body p {
+  font-size: 12px;
+}
+.original-name {
+  font-size: 9px;
+  color: #8d8b87;
+}
+.source-link {
+  font-size: 10px;
+  color: #917b59;
+}
+.item-footer {
+  border-color: #e6dccb;
+}
+.item-footer .button {
+  font-size: 11px;
+}
+.post-meta {
+  color: #979089;
+  font-size: 10px;
+}
+.post-meta button {
+  color: #8e6b40;
+  font-size: 11px;
+}
+.entry-icon,
+.house-grid .entry-icon {
+  color: #a17f49;
+  background: #efe5d3;
+  border-radius: 4px;
+}
+.entry-card > p:last-of-type {
+  color: #6b7480;
+}
+.entry-subtitle {
+  color: #95805d;
+}
+.house-grid .entry-card {
+  background: linear-gradient(100deg, #fffcf7, #f4ead8);
+}
+.house-grid .entry-card:before {
+  content: '';
+  display: block;
+  height: 210px;
+  background: url('/alvorada-bastion.png') center 36% / cover;
+  margin: -45px -45px 32px;
+  border-bottom: 2px solid #c7a87a;
+  border-radius: 4px 4px 0 0;
+}
+.app-footer {
+  border-color: #ddd4c4;
+  color: #a19480;
+  margin-left: 38px;
+  margin-right: 38px;
+}
+.footer-star {
+  color: #b4915b;
+}
+label {
+  color: #68758a;
+  font-size: 12px;
+}
+label > input,
+label > select,
+label > textarea {
+  background: #fffdf9;
+  border-color: #dcd1bf;
+  color: #374b63;
+  border-radius: 4px;
+  font-size: 13px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #a29b8e;
+  font-size: 12px;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline-color: #b49669;
+}
+.empty {
+  border-color: #cdc1ad;
+  border-radius: 5px;
+  background: #f9f5ee url('/alvorada-contours.svg') center / 450px;
+  color: #b2915e;
+}
+.empty h3 {
+  color: #405670;
+}
+.empty p {
+  font-size: 13px;
+}
+dialog {
+  background: #fffcf7;
+  border-color: #b79e77;
+  border-radius: 6px;
+  color: #334a64;
+  box-shadow: 0 20px 100px #0d182c6a;
+}
+dialog::backdrop {
+  background: #101d2d9c;
+}
+.dialog-head h2 {
+  font-family: var(--serif);
+  font-size: 24px;
+}
+.toast {
+  background: #1b2c40;
+  border-color: #8b7756;
+  color: #f2e7d3;
+  border-radius: 4px;
+}
+.toast > svg {
+  color: #c3a06b;
+}
+.toast > button {
+  color: #a7b2c0;
+}
+.loading-content,
+.boot {
+  color: #a88a5d;
+}
+.purchase-preview {
+  background: #eee6da;
+}
+.item-preview-icon {
+  color: #a08356;
+}
+.checkout-lines > div {
+  color: #82858a;
+}
+.checkout-lines b {
+  color: #526882;
+}
+/* The gates of the northern bastion. */
+.login-page {
+  grid-template-columns: 1.2fr 1fr;
+  background: #111e2c;
+}
+.login-art {
+  background:
+    linear-gradient(180deg, #111c2aba 0%, #13203135 27%, #111b2a20 60%, #111d2c 100%),
+    url('/alvorada-bastion.png') 61% center / cover;
+  padding: 47px 56px;
+  min-height: 760px;
+  border-right: 1px solid #c5a77935;
+}
+.login-art:after {
+  content: '';
+  position: absolute;
+  inset: 19px;
+  border: 1px solid #d6be9526;
+  pointer-events: none;
+}
+.login-art .brand {
+  justify-content: flex-start;
+  gap: 19px;
+}
+.login-art .brand > svg {
+  width: 52px;
+  height: 69px;
+}
+.login-art .brand-wordmark {
+  font-size: 30px;
+  letter-spacing: 4px;
+}
+.login-art .brand-wordmark em {
+  font-size: 21px;
+  letter-spacing: 2.6px;
+}
+.login-art .brand-wordmark small {
+  color: #c9c9c1;
+  font-size: 7px;
+}
+.login-story {
+  margin-top: auto;
+  padding-top: 230px;
+  max-width: 550px;
+}
+.login-story .eyebrow {
+  color: #d8b880;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.login-story h1 {
+  font-family: var(--serif);
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -1.1px;
+  color: #f5ead5;
+  text-shadow: 0 3px 15px #071222;
+}
+.login-story h1 em {
+  color: #d7b37e;
+}
+.login-story p {
+  font-size: 14px;
+  color: #bdc8d2;
+  max-width: 380px;
+  margin: 21px 0 26px;
+  text-shadow: 0 1px 6px #101c2a;
+}
+.login-coordinates {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #bba17c;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+  z-index: 1;
+}
+.login-coordinates span {
+  font-size: 16px;
+}
+.login-coordinates i {
+  width: 26px;
+  height: 1px;
+  background: #aa8a5777;
+}
+.login-footer {
+  padding-top: 45px;
+  margin-top: 0;
+  color: #7c8b9a;
+  font-size: 7px;
+  letter-spacing: 2px;
+}
+.login-form-wrap {
+  position: relative;
+  background: #f5efe4 url('/alvorada-contours.svg') right bottom / 560px;
+  padding: 42px 48px;
+}
+.login-form {
+  max-width: 360px;
+}
+.version {
+  color: #9c8b70;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+.version > span {
+  color: #b2925d;
+}
+.small-emblem {
+  width: 69px;
+  height: 82px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 22px;
+}
+.small-emblem svg {
+  width: 66px;
+  height: 78px;
+  color: #a6844d;
+}
+.login-form .eyebrow {
+  font-size: 9px;
+  color: #9a7b4b;
+  letter-spacing: 1.8px;
+}
+.login-form h2 {
+  font-family: var(--serif);
+  font-size: 31px;
+  color: #283c53;
+  letter-spacing: -0.7px;
+}
+.login-form > p {
+  font-size: 13px;
+  color: #888276;
+  margin-bottom: 30px;
+}
+.login-form label {
+  font-size: 12px;
+  color: #746c5f;
+}
+.login-form input {
+  background: #fffcf6;
+  border-color: #d6c9b4;
+  font-size: 14px;
+  padding: 14px;
+}
+.login-form form .button {
+  background: #263c55;
+  font-size: 12px;
+  min-height: 46px;
+}
+.auth-switch {
+  font-size: 12px !important;
+}
+.auth-switch button {
+  color: #8e6c3b;
+  font-size: 12px;
+}
+.login-note {
+  border-color: #ded2be;
+  color: #95866f;
+  font-size: 11px;
+}
+.login-note span {
+  color: #ad874e;
+}
+.login-form-wrap > footer {
+  color: #a59a87;
+  font-size: 9px;
+}
+@media (min-width: 1600px) {
+  .banner-copy h2 {
+    font-size: 41px;
+  }
+  .welcome-banner {
+    min-height: 326px;
+  }
+}
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 226px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .main-shell {
+    margin-left: 226px;
+    width: calc(100% - 226px);
+  }
+  .brand > .brand-wordmark {
+    font-size: 22px;
+  }
+  .brand-wordmark em {
+    font-size: 16px;
+  }
+  .brand > svg {
+    width: 36px;
+  }
+  .main-content {
+    padding: 28px;
+  }
+  .banner-copy h2 {
+    font-size: 30px;
+  }
+  .banner-copy {
+    padding: 33px 27px;
+  }
+  .banner-location {
+    font-size: 7px;
+    right: 22px;
+    bottom: 18px;
+  }
+  .toast {
+    left: calc(50% + 113px);
+  }
+  .login-art {
+    padding: 40px;
+  }
+  .login-story h1 {
+    font-size: 36px;
+  }
+  .login-form-wrap {
+    padding: 35px;
+  }
+}
+@media (max-width: 950px) {
+  .main-content {
+    padding: 26px 22px;
+  }
+  .banner-copy h2 {
+    font-size: 28px;
+  }
+  .banner-copy p {
+    max-width: 270px;
+  }
+  .banner-art {
+    opacity: 0.4;
+    right: 15px;
+    top: 12px;
+  }
+  .banner-location {
+    display: none;
+  }
+  .page-title h1 {
+    font-size: 27px;
+  }
+  .summary-label {
+    font-size: 10px;
+  }
+  .login-page {
+    grid-template-columns: 1fr 1fr;
+  }
+  .login-art {
+    padding: 32px;
+  }
+  .login-story {
+    padding-top: 240px;
+  }
+  .login-story h1 {
+    font-size: 32px;
+  }
+  .login-coordinates {
+    font-size: 6px;
+    gap: 7px;
+  }
+  .login-form h2 {
+    font-size: 28px;
+  }
+  .login-art .brand-wordmark {
+    font-size: 24px;
+  }
+  .login-art .brand-wordmark em {
+    font-size: 18px;
+  }
+}
+@media (max-width: 700px) {
+  .sidebar {
+    width: 244px;
+  }
+  .main-shell {
+    margin: 0;
+    width: 100%;
+  }
+  .main-content {
+    padding: 26px 18px;
+  }
+  .topbar {
+    height: 65px;
+  }
+  .breadcrumbs > span:first-of-type {
+    display: none;
+  }
+  .breadcrumbs {
+    font-size: 11px;
+  }
+  .character-selector select {
+    max-width: 135px;
+    font-size: 11px;
+  }
+  .page-title h1 {
+    font-size: 25px;
+  }
+  .page-title p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .page-title .eyebrow {
+    font-size: 8px;
+  }
+  .campaign-label {
+    display: none;
+  }
+  .welcome-banner {
+    min-height: 302px;
+    background-position:
+      center,
+      58% 40%;
+  }
+  .banner-copy {
+    padding: 30px 24px;
+  }
+  .banner-copy h2 {
+    font-size: 27px;
+    max-width: 300px;
+  }
+  .banner-copy p {
+    font-size: 12px;
+    max-width: 240px;
+  }
+  .banner-copy .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+  .banner-copy .eyebrow:before {
+    width: 14px;
+  }
+  .banner-art {
+    display: none;
+  }
+  .banner-copy .button {
+    font-size: 11px;
+    min-height: 42px;
+  }
+  .summary-grid {
+    gap: 9px;
+  }
+  .summary-card {
+    padding: 14px 10px;
+  }
+  .summary-label {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .summary-card strong {
+    font-size: 25px;
+  }
+  .summary-icon {
+    width: 31px;
+    height: 31px;
+  }
+  .overview-quests {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .compact {
+    padding: 22px;
+  }
+  .compact h3 {
+    font-size: 17px;
+  }
+  .compact p {
+    font-size: 13px;
+  }
+  .compact .quest-top .small {
+    font-size: 10px;
+  }
+  .compact .badge {
+    font-size: 10px;
+  }
+  .compact .quest-location {
+    font-size: 11px;
+  }
+  .section-heading h2 {
+    font-size: 17px;
+  }
+  .section-heading .text-button {
+    font-size: 11px;
+  }
+  .quest-bottom b {
+    font-size: 12px;
+  }
+  .guild-note b {
+    font-size: 11px;
+  }
+  .guild-note p {
+    font-size: 10px;
+  }
+  .guild-note {
+    padding: 16px;
+  }
+  .shop-grid {
+    gap: 13px;
+  }
+  .item-body {
+    padding: 16px 13px;
+  }
+  .item-body h3 {
+    font-size: 14px;
+  }
+  .item-body p {
+    font-size: 12px;
+  }
+  .original-name {
+    font-size: 9px;
+  }
+  .item-footer .button {
+    font-size: 11px;
+    min-height: 36px;
+  }
+  .source-link {
+    font-size: 10px;
+  }
+  .item-illustration {
+    height: 136px;
+  }
+  .item-category {
+    font-size: 9px;
+  }
+  .tabs > button {
+    font-size: 11px;
+    padding: 10px;
+  }
+  .item-footer {
+    gap: 10px;
+  }
+  .house-grid .entry-card:before {
+    margin: -27px -27px 28px;
+    height: 180px;
+  }
+  .attribute-grid span {
+    font-size: 10px;
+  }
+  .vitals span {
+    font-size: 9px;
+  }
+  .app-footer {
+    margin: 0 18px;
+    font-size: 7px;
+    letter-spacing: 0.5px;
+    gap: 18px;
+    line-height: 1.8;
+  }
+  .app-footer > span:last-child {
+    font-size: 8px;
+  }
+  .toast {
+    left: 50%;
+    max-width: calc(100% - 30px);
+  }
+  label > input,
+  label > select,
+  label > textarea {
+    font-size: 16px;
+  }
+  .nav-item {
+    min-height: 40px;
+  }
+  .sidebar nav {
+    margin-top: 17px;
+  }
+  .nav-group {
+    margin-top: 18px;
+  }
+  .login-page {
+    display: block;
+  }
+  .login-art {
+    min-height: 245px;
+    padding: 32px;
+    background-position:
+      center,
+      63% 30%;
+  }
+  .login-art:after {
+    inset: 12px;
+  }
+  .login-art .brand {
+    justify-content: flex-start;
+    gap: 17px;
+  }
+  .login-art .brand > svg {
+    width: 43px;
+    height: 59px;
+  }
+  .login-art .brand-wordmark {
+    font-size: 25px;
+  }
+  .login-art .brand-wordmark em {
+    font-size: 18px;
+  }
+  .login-art .brand-wordmark small {
+    font-size: 6px;
+  }
+  .login-story {
+    display: block;
+    margin-top: 27px;
+    padding-top: 0;
+  }
+  .login-story h1 {
+    font-size: 24px;
+    margin: 0;
+    line-height: 1.4;
+  }
+  .login-story h1 br {
+    display: none;
+  }
+  .login-story h1 em {
+    display: block;
+  }
+  .login-story .eyebrow,
+  .login-story p,
+  .login-coordinates,
+  .login-footer {
+    display: none;
+  }
+  .login-form-wrap {
+    padding: 27px 27px 23px;
+    min-height: calc(100dvh - 245px);
+  }
+  .version {
+    font-size: 7px;
+    text-align: center;
+  }
+  .login-form {
+    padding: 30px 0 0;
+    max-width: 380px;
+  }
+  .small-emblem {
+    display: none;
+  }
+  .login-form h2 {
+    font-size: 28px;
+  }
+  .login-form .eyebrow {
+    font-size: 8px;
+  }
+  .login-form input {
+    font-size: 16px;
+  }
+  .login-form > p {
+    font-size: 12px;
+  }
+  .login-form-wrap > footer {
+    font-size: 8px;
+    margin-top: 28px;
+  }
+}

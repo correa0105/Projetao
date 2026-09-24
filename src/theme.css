@@ -1,0 +1,280 @@
+/* Alvorada Cinzenta has one permanent dark palette, independent of browser preferences. */
+:root {
+  color-scheme: dark;
+  --page: #0c131d;
+  --surface: #141f2c;
+  --surface-raised: #182431;
+  --surface-inset: #101a26;
+  --ink: #e6dfd2;
+  --secondary-ink: #a8b2bf;
+  --theme-border: #34404d;
+  --accent: #cbb18b;
+  --muted: #a8b2bf;
+  --line: #34404d;
+  --paper: #182431;
+  background: var(--page);
+  color: var(--ink);
+}
+:root body {
+  background: var(--page);
+  color: var(--ink);
+}
+:root
+  :is(
+    h1,
+    h2,
+    h3,
+    .header-wordmark,
+    .breadcrumbs b,
+    .summary-card strong,
+    .inventory-summary b,
+    td b,
+    .mini-stats b,
+    .checkout-lines b
+  ) {
+  color: var(--ink);
+}
+:root
+  :is(
+    p,
+    .muted,
+    .summary-label,
+    .summary-card strong small,
+    .mini-stats > span,
+    .quest-top .small,
+    .quest-location,
+    .original-name,
+    .post-meta,
+    .entry-card > p:last-of-type,
+    .checkout-lines > div,
+    .vitals span,
+    .attribute-grid span,
+    label,
+    legend,
+    td,
+    .license-note,
+    .breadcrumbs
+  ) {
+  color: var(--secondary-ink);
+}
+:root
+  :is(
+    .eyebrow,
+    .title-dot,
+    .text-button,
+    .source-link,
+    .wallet,
+    .wallet b,
+    .item-footer > span,
+    .item-footer b,
+    .quest-bottom > span,
+    .entry-subtitle,
+    .character-card-bottom > span,
+    .post-meta button,
+    .selected-label,
+    .campaign-label,
+    .edition,
+    .license-note a
+  ) {
+  color: #d0ad77;
+}
+:root
+  :is(
+    .summary-card,
+    .quest-card,
+    .character-mini,
+    .character-card,
+    .paper,
+    .item-card,
+    .inventory-summary,
+    .search-field,
+    .entry-card,
+    dialog
+  ) {
+  background: var(--surface-raised);
+  border-color: var(--theme-border);
+  color: var(--ink);
+}
+:root .topbar {
+  background: #101b28;
+  border-color: var(--theme-border);
+}
+:root
+  :is(
+    .quest-bottom,
+    .item-footer,
+    .mini-stats,
+    .attribute-grid > div,
+    .vitals > div,
+    .app-footer,
+    .campaign-label,
+    .checkout-lines > div,
+    .stack fieldset,
+    .dialog-head,
+    .license-note,
+    td,
+    th
+  ) {
+  border-color: var(--theme-border);
+}
+:root .app-footer {
+  color: #99a4b3;
+}
+:root .quest-card.mission {
+  border-top-color: #748ca6;
+}
+:root .quest-card.event {
+  border-top-color: #b29460;
+}
+:root .quest-card.hook {
+  border-top-color: #96809f;
+}
+:root
+  :is(
+    .summary-icon,
+    .summary-card:nth-child(2) .summary-icon,
+    .summary-card:nth-child(3) .summary-icon,
+    .entry-icon,
+    .house-grid .entry-icon,
+    .quantity-badge,
+    .history-icon,
+    .attribute-grid small
+  ) {
+  background: #273646;
+  color: #d0b48a;
+}
+:root :is(.vitals, .tabs, th, .purchase-preview, .info-note) {
+  background: var(--surface-inset);
+  color: var(--secondary-ink);
+}
+:root .tabs > button {
+  color: #b3beca;
+}
+:root .tabs > button.active {
+  background: #34475a;
+  color: #f4e1bc;
+}
+:root :is(input, select, textarea, label > input, label > select, label > textarea) {
+  background: #101b28;
+  color: #e2e6ed;
+  border-color: #43505f;
+}
+:root :is(input, textarea)::placeholder {
+  color: #95a1b0;
+}
+:root .search-field input {
+  background: transparent;
+  color: #e2e6ed;
+}
+:root .character-selector {
+  color: #b9c6d5;
+}
+:root .character-selector select {
+  background: transparent;
+  border-color: transparent;
+  color: #d3dce6;
+}
+:root option {
+  background: #182431;
+  color: #e2e6ed;
+}
+:root .logout-button {
+  color: #b4c0cf;
+}
+:root .primary {
+  background: #375675;
+  border-color: #476584;
+  color: #f4eee3;
+}
+:root .primary:hover:not(:disabled) {
+  background: #45698c;
+}
+:root :is(.outline, .small-button) {
+  background: #213244;
+  border-color: #475568;
+  color: #d4dfea;
+}
+:root :is(.outline, .small-button, .icon-button):hover:not(:disabled) {
+  background: #30465c;
+  color: #f6e6ca;
+}
+:root .badge {
+  background: #2c3949;
+  color: #d2dcea;
+}
+:root .badge.event {
+  background: #41382a;
+  color: #e3c18b;
+}
+:root .badge.hook {
+  background: #393042;
+  color: #d6bfde;
+}
+:root :is(.item-category, .item-srd) {
+  background: #162434;
+  color: #d3dde7;
+  border-color: #536375;
+}
+:root .item-illustration {
+  background: #253749 url('/alvorada-contours.svg') center / 250px;
+  color: #adbed0;
+}
+:root .item-illustration.armor {
+  background-color: #35332e;
+  color: #d2b98f;
+}
+:root .item-illustration.gear {
+  background-color: #342f2c;
+  color: #c9ad99;
+}
+:root .guild-note {
+  background-color: #282b2d;
+  border-color: #514737;
+}
+:root .guild-note b {
+  color: #dcc399;
+}
+:root .guild-note p {
+  color: #b6ac9c;
+}
+:root :is(.new-character, .empty) {
+  background-color: #14202c;
+  border-color: #566170;
+}
+:root .new-character p {
+  color: #a8b2bf;
+}
+:root .character-crest {
+  background: linear-gradient(135deg, #35475f, #213346);
+  color: #c2d0df;
+  border-color: #41536a;
+  outline-color: #7c715e;
+}
+:root .character-crest > span {
+  border-color: #182431;
+}
+:root .character-card.selected {
+  border-color: #aa895a;
+}
+:root .achievement.unlocked {
+  background: linear-gradient(#202d39, #2e2b25);
+  border-color: #88734f;
+}
+:root .achievement-emblem {
+  background: #39342b;
+  color: #dec08b;
+  border-color: #736246;
+  box-shadow: 0 0 0 7px #d0ae7510;
+}
+:root .house-grid .entry-card {
+  background: linear-gradient(100deg, #182431, #292b2d);
+}
+:root .form-error {
+  background: #3c2529;
+  color: #f0b3a7;
+  border-color: #82514c;
+}
+:root dialog::backdrop {
+  background: #040a12c4;
+  backdrop-filter: blur(4px);
+}

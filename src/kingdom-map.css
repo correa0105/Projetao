@@ -1,0 +1,443 @@
+.kingdom-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: #e1e4e5;
+  color: #f0e4ca;
+  touch-action: none;
+  outline: none;
+  cursor: grab;
+}
+.kingdom-map[data-dragging='true'],
+.kingdom-map[data-dragging='true'] .kingdom-place {
+  cursor: grabbing;
+}
+.kingdom-map[data-dragging='true'] .kingdom-house {
+  cursor: grabbing;
+}
+.kingdom-map__canvas,
+.kingdom-map__places {
+  position: absolute;
+  inset: 0;
+}
+.kingdom-map__canvas canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.kingdom-map__clouds,
+.kingdom-map__edge-mist {
+  pointer-events: none;
+}
+.kingdom-map__editor-toggle {
+  position: absolute;
+  z-index: 4;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid #b49a6a8a;
+  border-radius: 6px;
+  background: #101b1bed;
+  color: #ead7b4;
+  font: 600 11px var(--sans, sans-serif);
+  cursor: pointer;
+}
+.kingdom-map__editor-toggle:hover,
+.kingdom-map__editor-toggle:focus-visible {
+  background: #28302b;
+  color: #fff0d2;
+}
+.kingdom-map__unsaved-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c89050;
+}
+.kingdom-editor {
+  position: absolute;
+  z-index: 5;
+  top: 68px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(342px, calc(100% - 40px));
+  max-height: calc(100% - 90px);
+  padding: 17px;
+  overflow-y: auto;
+  border: 1px solid #aa91666b;
+  border-radius: 10px;
+  background: #101b1bf2;
+  box-shadow: 0 14px 40px #07110f99;
+  color: #eaddc2;
+  cursor: default;
+  touch-action: pan-y;
+}
+.kingdom-editor button {
+  border: 1px solid #b49a6a5b;
+  border-radius: 5px;
+  background: #27312b;
+  color: #e8d6b5;
+  cursor: pointer;
+  font: inherit;
+}
+.kingdom-editor button:hover,
+.kingdom-editor button:focus-visible {
+  background: #3c4234;
+  color: #fff1d4;
+}
+.kingdom-editor button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+.kingdom-editor button.is-active {
+  border-color: #d4ad71;
+  background: #665333;
+  color: #fff1d4;
+}
+.kingdom-editor__heading,
+.kingdom-editor__footer,
+.kingdom-editor__adjust {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+}
+.kingdom-editor__heading strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 16px;
+}
+.kingdom-editor__heading small,
+.kingdom-editor__selection span {
+  display: block;
+  color: #c3b496;
+  font-size: 11px;
+}
+.kingdom-editor__heading button {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+}
+.kingdom-editor__hint,
+.kingdom-editor__message {
+  margin: 0;
+  color: #d5c4a5;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.kingdom-editor__tools,
+.kingdom-editor__groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.kingdom-editor__tools button,
+.kingdom-editor__groups button {
+  min-height: 32px;
+  padding: 5px 3px;
+  font-size: 10px;
+}
+.kingdom-editor__groups button {
+  background: #182521;
+}
+.kingdom-editor__catalog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.kingdom-editor__catalog button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 87px;
+  padding: 5px 2px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+.kingdom-editor__catalog canvas {
+  width: 60px;
+  height: 60px;
+}
+.kingdom-editor__placed {
+  display: grid;
+  gap: 6px;
+}
+.kingdom-editor__placed strong {
+  font-size: 11px;
+}
+.kingdom-editor__placed > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-height: 104px;
+  overflow-y: auto;
+}
+.kingdom-editor__placed button {
+  padding: 5px 7px;
+  font-size: 10px;
+}
+.kingdom-editor__selection {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #b49a6a57;
+  border-radius: 6px;
+  background: #1a2926;
+}
+.kingdom-editor__adjust span {
+  flex: 1;
+}
+.kingdom-editor__adjust button {
+  min-width: 28px;
+  min-height: 28px;
+}
+.kingdom-editor__adjust output {
+  min-width: 35px;
+  text-align: center;
+  font-size: 11px;
+}
+.kingdom-editor__delete,
+.kingdom-editor__footer button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 32px;
+  padding: 5px 8px;
+  font-size: 11px;
+}
+.kingdom-editor__delete {
+  justify-self: start;
+}
+.kingdom-editor__footer {
+  position: sticky;
+  bottom: -17px;
+  padding-top: 10px;
+  padding-bottom: 17px;
+  background: #101b1b;
+}
+.kingdom-editor__footer .kingdom-editor__save {
+  background: #674a2b;
+  border-color: #d1a56a;
+}
+.kingdom-map .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.kingdom-map__places {
+  z-index: 1;
+  pointer-events: none;
+}
+.kingdom-map .kingdom-place,
+.kingdom-map .kingdom-house {
+  position: absolute;
+  left: -1000px;
+  top: -1000px;
+  display: block;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+  color: #f3e7ca;
+  outline: none;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.kingdom-map .kingdom-place:hover,
+.kingdom-map .kingdom-place:focus-visible,
+.kingdom-map .kingdom-house:hover {
+  background: none;
+  box-shadow: none;
+  transform: translate(-50%, -50%);
+}
+.kingdom-place__name {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 2px);
+  transform: translate(-50%, 0);
+  padding: 7px 15px 8px;
+  width: max-content;
+  max-width: 190px;
+  font-family: var(--serif);
+  font-size: clamp(10px, 0.8vw, 12px);
+  line-height: 1.25;
+  letter-spacing: 0.025em;
+  text-align: center;
+  background: linear-gradient(90deg, #101b1500, #101b15dc 18%, #101b15eb 82%, #101b1500);
+  text-shadow: 0 2px 3px #06100a;
+  opacity: 0.8;
+  transition:
+    opacity 170ms ease,
+    color 170ms ease,
+    transform 170ms ease;
+  pointer-events: none;
+}
+.kingdom-map .kingdom-house[data-visible='false'] {
+  pointer-events: none;
+}
+.kingdom-place:hover .kingdom-place__name,
+.kingdom-place:focus-visible .kingdom-place__name,
+.kingdom-place.is-selected .kingdom-place__name {
+  opacity: 1;
+  color: #fff3d3;
+  transform: translate(-50%, 3px);
+}
+.kingdom-place:focus-visible .kingdom-place__name {
+  outline: 1px solid #dcb976;
+  outline-offset: 3px;
+}
+.kingdom-map .kingdom-place[data-visible='false'] {
+  pointer-events: none;
+}
+.kingdom-place[data-visible='false'] .kingdom-place__name {
+  opacity: 0;
+}
+.kingdom-map__controls {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  pointer-events: auto;
+  cursor: default;
+}
+.kingdom-map__turns,
+.kingdom-map__zoom {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 37px;
+  padding: 3px;
+  border: 1px solid #b39b6763;
+  border-radius: 7px;
+  background: #101b1bed;
+  box-shadow: 0 4px 18px #08100d55;
+  backdrop-filter: blur(12px);
+}
+.kingdom-map__controls button {
+  display: grid;
+  place-items: center;
+  height: 31px;
+  width: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #d6c098;
+  box-shadow: none;
+  transition:
+    color 150ms,
+    background-color 150ms;
+}
+.kingdom-map__controls button:hover {
+  background: #c7a86d1c;
+  color: #fff0ce;
+  transform: none;
+}
+.kingdom-map__controls button:focus-visible {
+  outline: 1px solid #d7b779;
+  outline-offset: 1px;
+}
+.kingdom-map__controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.kingdom-map__controls output {
+  display: block;
+  min-width: 42px;
+  text-align: center;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  color: #ddd0b6;
+}
+.kingdom-map__controls .kingdom-map__direction {
+  min-width: 64px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.kingdom-map__status {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background: radial-gradient(ellipse, #26392ded, #0c1a17);
+  text-align: center;
+  color: #d9c9a7;
+  font-size: 13px;
+}
+@media (max-width: 760px) {
+  .kingdom-map__editor-toggle {
+    top: 12px;
+    right: 12px;
+  }
+  .kingdom-editor {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 52%;
+    border-radius: 12px 12px 0 0;
+  }
+  .kingdom-map__controls {
+    right: 12px;
+    bottom: 17px;
+    gap: 5px;
+  }
+  .kingdom-map__controls::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    right: -12px;
+    bottom: -17px;
+    width: 100vw;
+    height: 110px;
+    background: linear-gradient(transparent, #0817134d 45%, #0817139e);
+    pointer-events: none;
+  }
+  .kingdom-map__controls button {
+    width: 30px;
+    height: 30px;
+  }
+  .kingdom-place__name {
+    font-size: 10px;
+    max-width: 138px;
+    padding: 6px 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kingdom-place__name,
+  .kingdom-map__controls button {
+    transition: none;
+  }
+}

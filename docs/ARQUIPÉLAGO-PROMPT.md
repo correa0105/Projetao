@@ -1,0 +1,9 @@
+# Arquipélago da apresentação
+
+Modo: ferramenta integrada imagegen (built-in), sem CLI/API externa.
+
+Arquivo final versionável: `public/alvorada-archipelago-previous.png`.
+
+Prompt final:
+
+Use case: stylized-concept. Asset type: high-resolution wide 16:9 fantasy archipelago map background for the medieval tabletop RPG website Alvorada Cinzenta. Primary request: create beautiful detailed islands with a much more sophisticated, restrained dark palette. Scene: a vast northern archipelago seen from very high overhead, a richly detailed physical relief world map, many believable irregular coastlines, several large island kingdoms and smaller rocky islets, branching fjords, dramatic weathered ridgelines, tiny snowy mountain summits in the far north, ancient dark moss forests, rivers and lakes. Composition: cinematic horizontal panorama, major land masses framing a calm dark ocean channel through the middle, balanced left and right, graceful organic geography; interesting geography across the whole image including the central crop for mobile. Style: premium hand-painted realistic fantasy cartography, beautifully sculpted terrain and delicate coast detail, matte oil-paint and engraved atlas quality, sophisticated and atmospheric rather than game-like cartoon. Colors: very low saturation, deep charcoal navy sea, slate stone, muted dark olive and moss green vegetation, peat brown valleys, sparse weathered ivory snow; dusk lighting, dark but terrain remains visible. Crisp detailed islands, subtle atmospheric depth, ocean subtly textured, not bright. Constraints: no text, no labels, no compass rose, no frame, no logo, no UI, no characters; no large baked-in clouds since separate animated fog is added by the website; no neon, no saturated emerald green, no tropical turquoise, no bright candy colors. Produce one landscape artwork only.

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="140" viewBox="0 0 400 140">
+  <defs>
+    <filter id="mist" x="-15%" y="-35%" width="130%" height="170%">
+      <feTurbulence type="fractalNoise" baseFrequency=".017 .035" numOctaves="3" seed="23" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="23" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <radialGradient id="fade">
+      <stop offset=".42" stop-color="white"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="edge"><ellipse cx="200" cy="70" rx="194" ry="69" fill="url(#fade)"/></mask>
+  </defs>
+  <g mask="url(#edge)">
+    <g filter="url(#mist)">
+      <path fill="#080f19" d="M18 74C39 49 58 70 83 46S124 50 148 31 184 44 209 37 241 21 266 44 300 35 322 53 360 42 383 70C356 93 326 77 301 99S264 85 237 109 196 96 169 107 137 86 107 101 73 85 54 96 38 83 18 74Z"/>
+      <path fill="#b1c1cf" opacity=".32" d="M36 62C84 78 90 25 149 49S218 25 263 43 319 34 367 63C308 47 292 71 253 55S192 69 146 58 83 87 36 62Z"/>
+      <path fill="#c4cbd2" opacity=".22" d="M56 93C94 63 118 103 167 84S234 100 269 80 326 80 350 90C300 79 304 105 268 95S213 115 165 99 102 110 56 93Z"/>
+    </g>
+  </g>
+</svg>
