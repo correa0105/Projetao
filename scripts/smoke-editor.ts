@@ -35,16 +35,9 @@ try {
   });
   expect(signup.status()).toBe(200);
   userId = (await signup.json()).user.id;
-  const character = await context.request.post(`${base}/api/characters`, {
-    headers: { Origin: base },
-    data: {
-      name: 'Cartógrafo',
-      race: 'Elfo',
-      class: 'Patrulheiro',
-      stats: [15, 14, 13, 12, 10, 8],
-    },
-  });
-  expect(character.status()).toBe(201);
+  await (
+    await import('../tests/character-fixtures.js')
+  ).createLegacyTestCharacter(userId!, 'Cartógrafo');
   await page.goto(`${base}/#world`);
   const north = page.getByRole('button', { name: 'Reino do Norte', exact: true });
   await expect(north).toBeVisible({ timeout: 30000 });

@@ -572,3 +572,39 @@
     transition: none;
   }
 }
+
+.kingdom-registry {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #b49a6a;
+  border-radius: 6px;
+  color: #f0e4ca;
+  background: #101b1bf0;
+  box-shadow: 0 3px 12px #0009;
+  cursor: pointer;
+  text-align: left;
+}
+.kingdom-registry small {
+  display: block;
+  font-size: 10px;
+  color: #c9b994;
+}
+.kingdom-registry:active:not(:disabled) {
+  transform: translate(-50%, -100%);
+}
+@media (max-width: 600px) {
+  .kingdom-registry,
+  .kingdom-registry:active:not(:disabled) {
+    transform: translate(0, -100%);
+  }
+}
+.kingdom-registry:hover,
+.kingdom-registry:focus-visible {
+  border-color: #f0d59e;
+  background: #29352e;
+}

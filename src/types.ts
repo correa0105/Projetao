@@ -6,6 +6,9 @@ export type User = {
   canEditKingdom?: boolean;
 };
 export type Character = {
+  portrait_revision: number;
+  art_used: number;
+  art_pending: boolean;
   id: string;
   name: string;
   race: string;

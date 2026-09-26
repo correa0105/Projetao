@@ -124,6 +124,11 @@ export function WorldAtlas({
               markers={markers}
               selectedId={locationId}
               onSelect={select}
+              onOpenRegistry={() => {
+                setLocationId(null);
+                setDrawer(true);
+                setFilter('active');
+              }}
             />
           </Suspense>
         ) : (
@@ -158,18 +163,6 @@ export function WorldAtlas({
           <span>{notice}</span>
           <button onClick={() => setNotice('')} aria-label="Fechar aviso do território">
             <X size={16} />
-          </button>
-        </div>
-      )}
-      {region && !drawer && (
-        <div className="atlas-regional-guide">
-          <button
-            onClick={() => {
-              setLocationId(null);
-              setDrawer(true);
-            }}
-          >
-            <ScrollText size={16} /> Missões do reino <span>{regionMissions.length}</span>
           </button>
         </div>
       )}

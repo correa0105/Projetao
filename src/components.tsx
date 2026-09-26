@@ -13,6 +13,8 @@ import {
 import { races, classes, statNames } from '../shared/rules';
 import { authClient, api, post } from './api';
 import type { AtlasData, AtlasLocation, Character, Post } from './types';
+import { ReferenceInput } from './CharacterCamp';
+import type { ArtState } from '../shared/character-art';
 
 export function Empty({
   title,
@@ -292,7 +294,15 @@ export function Login() {
     </div>
   );
 }
-export function CharacterForm({ done }: { done: (character: Character) => Promise<void> }) {
+export function CharacterForm({ done }: { done: () => Promise<void> }) {
+  const [reference, setReference] = useState('');
+  const [available, setAvailable] = useState(false);
+  const requestKey = useRef(crypto.randomUUID());
+  useEffect(() => {
+    void api<ArtState>('/character-art')
+      .then((state) => setAvailable(state.available))
+      .catch(() => {});
+  }, []);
   const [stats, setStats] = useState([15, 14, 13, 12, 10, 8]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -302,7 +312,12 @@ export function CharacterForm({ done }: { done: (character: Character) => Promis
     setError('');
     const form = Object.fromEntries(new FormData(event.currentTarget));
     try {
-      await done(await post<Character>('/characters', { ...form, stats }));
+      await post('/character-art', {
+        creation: { ...form, stats },
+        reference,
+        idempotency_key: requestKey.current,
+      });
+      await done();
     } catch (error) {
       setError((error as Error).message);
     } finally {
@@ -314,6 +329,15 @@ export function CharacterForm({ done }: { done: (character: Character) => Promis
       <p className="muted">
         Nível 1, 150 PO e uma história só sua. A ficha usa uma base simplificada de D&D 5e.
       </p>
+      <p className="muted small">
+        Até dois personagens por conta. Sua imagem de corpo inteiro é obrigatória; o personagem
+        chega ao acampamento quando ela estiver pronta.
+      </p>
+      {!available && (
+        <p className="form-error" role="status">
+          O ilustrador está offline. Volte quando ele estiver disponível.
+        </p>
+      )}
       <label>
         Nome do personagem
         <input
@@ -382,12 +406,13 @@ export function CharacterForm({ done }: { done: (character: Character) => Promis
           placeholder="De onde você veio? O que procura?"
         />
       </label>
+      <ReferenceInput onChange={setReference} disabled={busy} />
       {error && (
         <p className="form-error" role="alert">
           {error}
         </p>
       )}
-      <button className="button primary full" disabled={busy}>
+      <button className="button primary full" disabled={busy || !reference || !available}>
         {busy ? 'Criando personagem…' : 'Dar vida ao personagem'}
         <Sparkles size={17} />
       </button>

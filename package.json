@@ -10,6 +10,7 @@
     "db:migrate": "tsx scripts/db-migrate.ts",
     "db:seed": "tsx scripts/db-seed.ts",
     "staff": "tsx scripts/staff.ts",
+    "art:worker": "tsx scripts/character-art-worker.ts",
     "catalog:import": "tsx scripts/import-catalog.ts",
     "test": "tsx --test --test-concurrency=1 tests/*.test.ts",
     "test:browser": "tsx scripts/smoke-browser.ts",

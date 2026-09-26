@@ -1550,16 +1550,9 @@ try {
     data: { name: 'Cartógrafa de teste', email, password: `Atlas-${randomUUID()}` },
   });
   expect(signup.status()).toBe(200);
-  const character = await page.request.post(`${base}/api/characters`, {
-    headers: { Origin: base },
-    data: {
-      name: 'Elara Cartógrafa',
-      race: 'Elfo',
-      class: 'Patrulheiro',
-      stats: [15, 14, 13, 12, 10, 8],
-    },
-  });
-  expect(character.status()).toBe(201);
+  await (
+    await import('../tests/character-fixtures.js')
+  ).createLegacyTestCharacter((await signup.json()).user.id, 'Elara Cartógrafa');
   if (editorOnly) {
     await runKingdomViewerAccess();
   } else if (terrainOnly) {

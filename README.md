@@ -1,5 +1,9 @@
 # Alvorada Cinzenta
 
+## Fundo publicado do Reino do Norte
+
+A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/north-sonnenberg.png` (1154 × 866), com proporção original, zoom e arraste. Sonnenberg é o único ponto para abrir o registro de missões do reino, incluindo publicação e histórico; o botão acompanha a projeção do mapa. Nenhum local SQL foi renomeado ou removido. O editor continua privado: ao abri-lo, carrega seu próprio fundo, rascunho e câmera; ao fechá-lo, volta ao mapa publicado. As descrições de área vazia abaixo se aplicam somente ao rascunho privado sem upload.
+
 Portal de RPG de mesa: jogadores, múltiplos personagens, aventuras e uma loja com inventário
 persistido em PostgreSQL. Protótipo funcional em português, inspirado em D&D 5e (2014 / SRD 5.1).
 
@@ -53,7 +57,8 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 
 - Apresentação com mapa e efeito fosco, login centralizado e navegação flutuante inferior agrupada.
 - Cadastro, login e logout com Better Auth; sessões no PostgreSQL e cookie HttpOnly.
-- Vários personagens por usuário, nove raças e doze classes; seleção de personagem ativo.
+- Até dois personagens por usuário, nove raças e doze classes; seleção em acampamento ilustrado e arte de corpo inteiro.
+- Ilustrador local via assinatura ChatGPT do Codex, sem API key: referência obrigatória para novos personagens, duas imagens por personagem por mês. [Operação e regras](docs/CHARACTER-ART.md).
 - Ficha inicial, matriz padrão de atributos distribuível, PV e CA básica.
 - Oito equipamentos SRD importados do 5etools, com busca, categorias e links da fonte.
 - Compras transacionais: preço no servidor, desconto de ouro, empilhamento no inventário,
@@ -90,6 +95,10 @@ npm run staff -- email@exemplo.com admin
 ```
 
 Também aceita `staff` ou `remove`. O comando usa o PostgreSQL configurado no `.env` e exige as migrations aplicadas. Nenhuma conta é promovida automaticamente; permissões não podem ser escolhidas no cadastro. Atualize a página após alterar a permissão.
+
+Para gerar imagens dos personagens, mantenha `npm run art:worker` ativo no host
+com o Codex conectado via `codex login`. O worker usa a assinatura do operador e
+precisa do computador ligado; Docker sozinho não executa o ilustrador.
 
 Horários são armazenados em UTC (`timestamptz`) e apresentados no fuso local do navegador.
 Missões antigas sem horário são preservadas; novos registros exigem data e hora futuras.

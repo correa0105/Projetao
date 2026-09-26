@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   Focus,
+  ScrollText,
   Copy,
   Minus,
   Plus,
@@ -49,6 +50,7 @@ type KingdomMapProps = {
   selectedId: string | null;
   onSelect: (id: string) => void;
   onReady?: () => void;
+  onOpenRegistry?: () => void;
 };
 type Controls = {
   zoom: (amount: number) => void;
@@ -67,6 +69,10 @@ const clamp = (value: number, min: number, max: number) => Math.max(min, Math.mi
 const EDITOR_MIN_ZOOM = 0.03;
 const EDITOR_MAX_ZOOM = 32;
 const defaultHome: KingdomView = { x: 0, y: 0, zoom: 1, angle: 0 };
+const publishedConfig = {
+  background: { exists: true, width: 1154, height: 866, revision: 0 },
+  home: defaultHome,
+};
 const directions = [
   'Sul',
   'Sudoeste',
@@ -131,7 +137,15 @@ function loadIllustration(url: string, signal: AbortSignal): Promise<HTMLImageEl
   });
 }
 
-export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: KingdomMapProps) {
+export function KingdomMap({
+  canEdit,
+  markers,
+  selectedId,
+  onSelect,
+  onReady,
+  onOpenRegistry,
+}: KingdomMapProps) {
+  const registryRef = useRef<HTMLButtonElement>(null);
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasHostRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<Controls | null>(null);
@@ -363,8 +377,9 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
   useEffect(() => {
     const host = hostRef.current,
       canvasHost = canvasHostRef.current;
-    if (!host || !canvasHost || !mapConfig) return;
-    const { background } = mapConfig;
+    if (!host || !canvasHost || (editorOpen && !mapConfig)) return;
+    const activeConfig = editorOpen ? mapConfig! : publishedConfig;
+    const { background } = activeConfig;
     const canvas = document.createElement('canvas');
     canvas.className = 'kingdom-map__ground';
     canvas.setAttribute('aria-hidden', 'true');
@@ -390,7 +405,7 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
       mapWidth: background.width * KINGDOM_UNITS_PER_PIXEL,
       mapHeight: background.height * KINGDOM_UNITS_PER_PIXEL,
     };
-    const home: KingdomView = { ...mapConfig.home };
+    const home: KingdomView = { ...activeConfig.home };
     const view: KingdomView = { ...home };
     let animation: { start: number; from: KingdomView; to: KingdomView; duration: number } | null =
       null;
@@ -501,11 +516,19 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
         sync();
       }
       if (dirty) {
+        if (registryRef.current) {
+          const point = projectPoint(
+            (0.15 - 0.5) * viewport.mapWidth,
+            (0.64 - 0.5) * viewport.mapHeight,
+          );
+          registryRef.current.style.left = point.x + 'px';
+          registryRef.current.style.top = point.y + 'px';
+        }
         paintKingdom(
           ctx!,
           assets,
           backgroundImage,
-          editorRef.current.items,
+          editorOpen ? editorRef.current.items : [],
           view,
           viewport,
           editorRef.current.open ? editorRef.current.selectedItemIds : [],
@@ -523,7 +546,9 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
       viewport = {
         width,
         height,
-        scale: Math.min(1.05, Math.max(0.27, width / 3800)) * 0.384 * 0.85,
+        scale: editorOpen
+          ? Math.min(1.05, Math.max(0.27, width / 3800)) * 0.384 * 0.85
+          : Math.min(width / viewport.mapWidth, height / viewport.mapHeight),
         tilt: viewport.tilt,
         mapWidth: viewport.mapWidth,
         mapHeight: viewport.mapHeight,
@@ -610,7 +635,7 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
         !ready ||
         event.button > 0 ||
         (event.target as Element).closest(
-          '.kingdom-map__controls, .kingdom-editor, .kingdom-map__editor-toggle',
+          '.kingdom-map__controls, .kingdom-editor, .kingdom-map__editor-toggle, .kingdom-registry',
         )
       )
         return;
@@ -1022,7 +1047,9 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
         const loaded = Object.fromEntries(entries) as unknown as KingdomAssets;
         backgroundImage = background.exists
           ? await loadIllustration(
-              `/api/kingdom/editor-background/image?v=${background.revision}`,
+              editorOpen
+                ? `/api/kingdom/editor-background/image?v=${background.revision}`
+                : '/kingdom/north-sonnenberg.png',
               abort.signal,
             )
           : null;
@@ -1065,7 +1092,7 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
       canvas.height = 1;
       assets = null;
     };
-  }, [retry, mapConfig, canEdit]);
+  }, [retry, mapConfig, canEdit, editorOpen]);
 
   useEffect(() => {
     controlsRef.current?.setEditorMode();
@@ -1094,6 +1121,21 @@ export function KingdomMap({ canEdit, markers, selectedId, onSelect, onReady }: 
         seleciona uma área.
       </p>
       <div ref={canvasHostRef} className="kingdom-map__canvas" />
+      {!editorOpen && (
+        <button
+          ref={registryRef}
+          className="kingdom-registry"
+          type="button"
+          style={{ visibility: status === 'ready' ? 'visible' : 'hidden' }}
+          aria-label="Sonnenberg — abrir registro de missões"
+          onClick={onOpenRegistry}
+        >
+          <ScrollText size={20} aria-hidden="true" />
+          <span>
+            Sonnenberg<small>Registro de missões</small>
+          </span>
+        </button>
+      )}
       {selectionBox && (
         <div
           className="kingdom-map__selection-box"

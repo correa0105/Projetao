@@ -1,5 +1,9 @@
 # Reino do Norte — área editável
 
+## Fundo publicado do Reino do Norte
+
+A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/north-sonnenberg.png` (1154 × 866), com proporção original, zoom e arraste. Sonnenberg é o único ponto para abrir o registro de missões do reino, incluindo publicação e histórico; o botão acompanha a projeção do mapa. Nenhum local SQL foi renomeado ou removido. O editor continua privado: ao abri-lo, carrega seu próprio fundo, rascunho e câmera; ao fechá-lo, volta ao mapa publicado. As descrições de área vazia abaixo se aplicam somente ao rascunho privado sem upload.
+
 ## Cena
 
 O mapa regional usa Canvas 2D e começa com um retângulo vazio de 4096 × 3072 px virtuais. Não há fundo predefinido, terreno costeiro, árvores automáticas, trilhas ou névoa. Fora da área, uma cor neutra indica o limite navegável. O Mundo em Three.js/WebGL é independente.

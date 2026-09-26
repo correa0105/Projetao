@@ -33,6 +33,7 @@ import { CharacterForm, Empty, Login, Modal, PostForm } from './components';
 import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
+import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
 import type { AtlasLocation, Character, Details, Entry, Item, Page, Post, User } from './types';
 const WorldAtlas = lazy(() =>
@@ -648,102 +649,61 @@ function Portal({ user }: { user: User }) {
       );
     return (
       <>
-        <div className="page-title">
-          <div>
-            <h1>
-              {titles[page]}
-              <span className="title-dot">.</span>
-            </h1>
-            <p>
-              {page === 'shop'
-                ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.1.'
-                : page === 'characters'
-                  ? 'Diferentes rostos, infinitas histórias. Escolha quem você será hoje.'
-                  : page === 'missions'
-                    ? 'Atenda a um chamado ou reencontre as aventuras que ficaram na memória.'
-                    : page === 'board'
-                      ? 'Missões, encontros e notícias da Bastião da Alvorada.'
-                      : page === 'inventory'
-                        ? `Tudo o que ${character?.name || 'seu personagem'} leva para a próxima aventura.`
-                        : page === 'profile'
-                          ? 'Uma história em construção, um atributo de cada vez.'
-                          : page === 'hooks'
-                            ? 'Uma pista, um rumor, uma razão para seguir em frente.'
-                            : 'Pessoas, lugares e crônicas da Alvorada Cinzenta.'}
-            </p>
-          </div>
-          {page === 'characters' && (
-            <button className="button primary" onClick={() => setModal('character')}>
-              <Plus size={17} />
-              Novo personagem
-            </button>
-          )}
-          {['missions', 'board'].includes(page) && (
-            <button
-              className="button primary"
-              onClick={() => {
-                setPostLocation(undefined);
-                setPostFromAtlas(false);
-                setModal('post');
-              }}
-            >
-              <Plus size={17} />
-              Publicar no mural
-            </button>
-          )}
-        </div>
-        {page === 'characters' &&
-          (characters.length ? (
-            <div className="characters-grid">
-              {characters.map((item) => (
-                <article
-                  className={`character-card ${item.id === character?.id ? 'selected' : ''}`}
-                  key={item.id}
-                >
-                  <div className="character-card-top">
-                    <span className="badge neutral">NÍVEL {item.level}</span>
-                    {item.id === character?.id && (
-                      <span className="selected-label">
-                        <CircleCheck size={14} />
-                        Selecionado
-                      </span>
-                    )}
-                  </div>
-                  <div className="character-crest">
-                    <Shield size={35} />
-                  </div>
-                  <h2>{item.name}</h2>
-                  <p>
-                    {item.race} · {item.class}
-                  </p>
-                  <span className="muted small">{item.background}</span>
-                  <div className="character-card-bottom">
-                    <span>
-                      <Coins size={16} />
-                      {money(item.gold_cp)} PO
-                    </span>
-                    <button
-                      className="button small-button"
-                      onClick={() => {
-                        setSelectedId(item.id);
-                        go('profile');
-                      }}
-                    >
-                      Abrir ficha
-                      <ArrowRight size={15} />
-                    </button>
-                  </div>
-                </article>
-              ))}
-              <button className="new-character" onClick={() => setModal('character')}>
-                <Plus size={30} />
-                <h3>Mais uma história</h3>
-                <p>Crie um novo personagem</p>
-              </button>
+        {!['characters'].includes(page) && (
+          <div className="page-title">
+            <div>
+              <h1>
+                {titles[page]}
+                <span className="title-dot">.</span>
+              </h1>
+              <p>
+                {page === 'shop'
+                  ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.1.'
+                  : page === 'characters'
+                    ? 'Diferentes rostos, infinitas histórias. Escolha quem você será hoje.'
+                    : page === 'missions'
+                      ? 'Atenda a um chamado ou reencontre as aventuras que ficaram na memória.'
+                      : page === 'board'
+                        ? 'Missões, encontros e notícias da Bastião da Alvorada.'
+                        : page === 'inventory'
+                          ? `Tudo o que ${character?.name || 'seu personagem'} leva para a próxima aventura.`
+                          : page === 'profile'
+                            ? 'Uma história em construção, um atributo de cada vez.'
+                            : page === 'hooks'
+                              ? 'Uma pista, um rumor, uma razão para seguir em frente.'
+                              : 'Pessoas, lugares e crônicas da Alvorada Cinzenta.'}
+              </p>
             </div>
-          ) : (
-            noCharacter
-          ))}
+            {page === 'characters' && (
+              <button className="button primary" onClick={() => setModal('character')}>
+                <Plus size={17} />
+                Novo personagem
+              </button>
+            )}
+            {['missions', 'board'].includes(page) && (
+              <button
+                className="button primary"
+                onClick={() => {
+                  setPostLocation(undefined);
+                  setPostFromAtlas(false);
+                  setModal('post');
+                }}
+              >
+                <Plus size={17} />
+                Publicar no mural
+              </button>
+            )}
+          </div>
+        )}
+        {page === 'characters' && (
+          <CharacterCamp
+            characters={characters}
+            selectedId={character?.id || ''}
+            onSelect={setSelectedId}
+            onCreate={() => setModal('character')}
+            onRefresh={refresh}
+          />
+        )}
         {page === 'profile' &&
           (character ? (
             <div className="profile-layout">
@@ -1249,12 +1209,11 @@ function Portal({ user }: { user: User }) {
       {modal === 'character' && (
         <Modal title="Uma nova história" close={() => setModal(null)}>
           <CharacterForm
-            done={async (item) => {
+            done={async () => {
               await refresh();
-              setSelectedId(item.id);
               setModal(null);
-              go('profile');
-              setToast(`${item.name} chegou à guilda!`);
+              go('characters');
+              setToast('Referência enviada. Seu personagem chegará quando a arte estiver pronta.');
             }}
           />
         </Modal>

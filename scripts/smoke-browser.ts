@@ -1,8 +1,9 @@
 import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { pool } from '../server/db.js';
+import { finishTestArt, testArtImage, lockTestIllustrator } from '../tests/character-fixtures.js';
 
 const browser = await chromium.launch({
   channel: process.env.BROWSER_CHANNEL || 'msedge',
@@ -40,7 +41,36 @@ async function navigate(label: string) {
 }
 page.on('pageerror', (error) => errors.push(error.message));
 await mkdir('test-results', { recursive: true });
+let heartbeat: ReturnType<typeof setInterval> | undefined;
+let unlockIllustrator: (() => Promise<void>) | undefined;
+async function submitCharacterArt() {
+  await page
+    .getByLabel('Imagem de referência', { exact: true })
+    .setInputFiles('docs/references/character-style-v1.png');
+  const response = page.waitForResponse(
+    (r) => r.url().endsWith('/api/character-art') && r.request().method() === 'POST',
+  );
+  await page.getByRole('button', { name: 'Dar vida ao personagem' }).click();
+  const job = await (await response).json();
+  expect(job.id).toBeTruthy();
+  const image = await readFile('.local/character-art/smoke-result.png').catch(() => testArtImage());
+  const id = await finishTestArt(job.id, image);
+  await expect(page.locator(`.camp-figure img[src*="${id}"]`)).toBeVisible({ timeout: 15000 });
+  await page.locator(`.camp-figure:has(img[src*="${id}"])`).click();
+}
 try {
+  unlockIllustrator = await lockTestIllustrator();
+  heartbeat = setInterval(
+    () =>
+      void pool.query(
+        'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
+      ),
+    10000,
+  );
+  await pool.query(
+    'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
+  );
+
   // Old light preferences and a light OS must not change the permanent dark palette.
   await page.addInitScript(() => localStorage.setItem('alvorada-cinzenta-theme', 'light'));
   await page.goto('http://localhost:3000');
@@ -135,7 +165,7 @@ try {
     .fill(
       'Uma guardiã das trilhas antigas que veio aos Domínios da Alvorada em busca da sétima lanterna.',
     );
-  await page.getByRole('button', { name: 'Dar vida ao personagem' }).click();
+  await submitCharacterArt();
   await expect(page.getByRole('heading', { name: 'Elara Ventofolha', exact: true })).toBeVisible();
   await navigate('Loja');
   await expect(page.getByRole('heading', { name: 'Empório do viajante.' })).toBeVisible();
@@ -159,11 +189,21 @@ try {
   await expect(page.getByRole('switch', { name: 'Modo escuro' })).toHaveCount(0);
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await navigate('Personagens');
-  await page.getByRole('button', { name: 'Novo personagem', exact: true }).click();
+  await page.getByRole('button', { name: 'Uma nova história Criar personagem' }).click();
   await page.getByLabel('Nome do personagem').fill('Borin Pedrafirme');
   await page.getByLabel('Raça', { exact: true }).selectOption('Anão');
-  await page.getByRole('button', { name: 'Dar vida ao personagem' }).click();
+  await submitCharacterArt();
   await expect(page.getByRole('heading', { name: 'Borin Pedrafirme', exact: true })).toBeVisible();
+  await expect(page.locator('.camp-new')).toHaveCount(0);
+  await expect(page.locator('.camp-figure img')).toHaveCount(2);
+  await page.screenshot({ path: 'test-results/character-camp-desktop.png', fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('.camp-figure img').first()).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+    true,
+  );
+  await page.screenshot({ path: 'test-results/character-camp-mobile.png', fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 1000 });
   const characterPicker = page.getByRole('combobox', { name: 'Personagem ativo' });
   const pickerBounds = (await characterPicker.boundingBox())!;
   const exitBounds = (await page.getByRole('button', { name: 'Sair da conta' }).boundingBox())!;
@@ -533,6 +573,8 @@ try {
   await page.screenshot({ path: 'test-results/failure.png', fullPage: true });
   throw error;
 } finally {
+  clearInterval(heartbeat);
+  await unlockIllustrator?.();
   const { rows } = await pool.query('SELECT id FROM "user" WHERE email=$1', [email]);
   if (rows.length) {
     await pool.query('DELETE FROM board_posts WHERE author_id=$1', [rows[0].id]);

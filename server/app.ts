@@ -11,7 +11,8 @@ import { pool, transaction } from './db.js';
 import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema } from './missions.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
-import { races, classes, hitDice, modifier } from '../shared/rules.js';
+import { characterArtRouter, characterListSql } from './character-art.js';
+import { characterSchema } from '../shared/character-art.js';
 import {
   KINGDOM_BACKGROUND_MAX_BYTES,
   KINGDOM_BACKGROUND_MAX_EDGE,
@@ -23,20 +24,6 @@ import {
 } from '../shared/kingdom-editor.js';
 
 const uuid = z.string().uuid();
-const characterSchema = z.object({
-  name: z.string().trim().min(2).max(60),
-  race: z.enum(races),
-  class: z.enum(classes),
-  background: z.string().trim().min(2).max(40).default('Aventureiro'),
-  biography: z.string().trim().max(2000).default(''),
-  stats: z
-    .array(z.number().int())
-    .length(6)
-    .refine(
-      (values) => [...values].sort((a, b) => a - b).join() === '8,10,12,13,14,15',
-      'Distribua a matriz padrão sem repetir valores.',
-    ),
-});
 const postSchema = z.object({
   title: z.string().trim().min(5).max(100),
   description: z.string().trim().min(15).max(3000),
@@ -105,7 +92,9 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     },
     toNodeHandler(auth),
   );
-  app.use(express.json({ limit: '128kb' }));
+  app.use((req, res, next) =>
+    req.path === '/api/character-art' ? next() : express.json({ limit: '128kb' })(req, res, next),
+  );
   app.use(
     '/api',
     rateLimit({
@@ -129,6 +118,8 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     res.locals.user = session.user;
     next();
   });
+  app.use('/api/character-art', express.json({ limit: '12mb' }));
+  app.use('/api', characterArtRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [staff],
@@ -140,50 +131,23 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     });
   });
   app.get('/api/characters', async (_req, res) => {
-    res.json(
-      (
-        await pool.query('SELECT * FROM characters WHERE user_id=$1 ORDER BY created_at', [
-          res.locals.user.id,
-        ])
-      ).rows,
-    );
+    res.json((await pool.query(characterListSql, [res.locals.user.id])).rows);
   });
   app.post('/api/characters', async (req, res) => {
-    const data = characterSchema.parse(req.body);
-    const character = await transaction(async (client) => {
-      const {
-        rows: [character],
-      } = await client.query(
-        `INSERT INTO characters(user_id,name,race,class,background,biography,stats,hp,armor_class)
-        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
-        [
-          res.locals.user.id,
-          data.name,
-          data.race,
-          data.class,
-          data.background,
-          data.biography,
-          JSON.stringify(data.stats),
-          hitDice[data.class] + modifier(data.stats[2]),
-          10 + modifier(data.stats[1]),
-        ],
-      );
-      await client.query(
-        "INSERT INTO achievements(character_id,code) VALUES($1,'first_character')",
-        [character.id],
-      );
-      return character;
-    });
-    res.status(201).json(character);
+    characterSchema.parse(req.body);
+    throw new AppError(
+      400,
+      'Envie uma referência para o ilustrador. Novos personagens precisam de uma imagem gerada.',
+    );
   });
   app.get('/api/characters/:id/details', async (req, res) => {
     const id = uuid.parse(req.params.id);
     if (
       !(
-        await pool.query('SELECT 1 FROM characters WHERE id=$1 AND user_id=$2', [
-          id,
-          res.locals.user.id,
-        ])
+        await pool.query(
+          'SELECT 1 FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL',
+          [id, res.locals.user.id],
+        )
       ).rowCount
     )
       throw new AppError(404, 'Personagem não encontrado.');
@@ -297,10 +261,10 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
         throw new AppError(409, 'Esta missão não está aberta para inscrições.');
       if (
         !(
-          await client.query('SELECT 1 FROM characters WHERE id=$1 AND user_id=$2', [
-            character_id,
-            res.locals.user.id,
-          ])
+          await client.query(
+            'SELECT 1 FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL',
+            [character_id, res.locals.user.id],
+          )
         ).rowCount
       )
         throw new AppError(404, 'Personagem não encontrado.');
@@ -568,7 +532,12 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
         'type' in error &&
         error.type === 'entity.too.large'
       ) {
-        res.status(413).json({ error: 'O fundo deve ter no máximo 128 MB.' });
+        res.status(413).json({
+          error:
+            _req.path === '/api/character-art'
+              ? 'A referência deve ter no máximo 8 MB.'
+              : 'O arquivo excede o tamanho permitido.',
+        });
         return;
       }
       if (error instanceof SyntaxError && 'body' in error) {

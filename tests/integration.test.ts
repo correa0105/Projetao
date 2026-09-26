@@ -7,8 +7,15 @@ import { createApp } from '../server/app.js';
 import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
+import {
+  finishTestArt,
+  testArtImage,
+  createLegacyTestCharacter,
+  lockTestIllustrator,
+} from './character-fixtures.js';
 
 let server: Server;
+let unlockIllustrator: (() => Promise<void>) | undefined;
 let base: string;
 const editorTestEmail = `editor-${randomUUID()}@example.test`;
 const origin = (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0];
@@ -50,18 +57,27 @@ async function signup(email = `integration-${randomUUID()}@example.test`): Promi
   return { cookie, id: response.data.user.id, email, password };
 }
 async function character(client: Client, name = 'Arden') {
-  const response = await request('/api/characters', client, {
-    name,
-    race: 'Elfo',
-    class: 'Guerreiro',
-    stats: [15, 14, 13, 12, 10, 8],
+  const response = await request('/api/character-art', client, {
+    reference: (await testArtImage()).toString('base64'),
+    idempotency_key: randomUUID(),
+    creation: {
+      name,
+      race: 'Elfo',
+      class: 'Guerreiro',
+      stats: [15, 14, 13, 12, 10, 8],
+    },
   });
-  assert.equal(response.status, 201, JSON.stringify(response.data));
-  return response.data;
+  assert.equal(response.status, 202, JSON.stringify(response.data));
+  const id = await finishTestArt(response.data.id);
+  return (await request('/api/characters', client)).data.find((c: { id: string }) => c.id === id);
 }
 before(async () => {
   await migrate();
   await seed();
+  unlockIllustrator = await lockTestIllustrator();
+  await pool.query(
+    'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
+  );
   server = createApp({ kingdomEditorEmail: editorTestEmail }).listen(0, '127.0.0.1');
   await new Promise<void>((resolve) => server.once('listening', resolve));
   const address = server.address();
@@ -69,6 +85,7 @@ before(async () => {
   base = `http://127.0.0.1:${address.port}`;
 });
 after(async () => {
+  await unlockIllustrator?.();
   // Only remove records created by this test run, including authored posts.
   if (users.length) {
     await pool.query('DELETE FROM board_posts WHERE author_id=ANY($1::text[])', [users]);
@@ -244,6 +261,142 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
   const arden = await character(alice);
   const mira = await character(alice, 'Mira');
   const borin = await character(bob, 'Borin');
+  await t.test('ilustrador: imagem obrigatória, cotas, concorrência e privacidade', async () => {
+    const reference = (await testArtImage()).toString('base64');
+    const creation = {
+      name: 'Terceiro',
+      race: 'Elfo',
+      class: 'Mago',
+      stats: [15, 14, 13, 12, 10, 8],
+    };
+    assert.equal((await request('/api/characters', alice, creation)).status, 400);
+    assert.equal(
+      (
+        await request('/api/character-art', alice, {
+          creation,
+          reference,
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await request('/api/character-art', bob, {
+          character_id: arden.id,
+          reference,
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      404,
+    );
+    const foreign = await fetch(base + `/api/characters/${arden.id}/portrait`, {
+      headers: { Cookie: bob.cookie },
+    });
+    assert.equal(foreign.status, 404);
+    assert.equal(
+      (
+        await fetch(base + `/api/characters/${arden.id}/portrait`, {
+          headers: { Cookie: alice.cookie },
+        })
+      ).status,
+      200,
+    );
+    const order = { character_id: arden.id, reference, idempotency_key: randomUUID() };
+    const [first, replay] = await Promise.all([
+      request('/api/character-art', alice, order),
+      request('/api/character-art', alice, order),
+    ]);
+    assert.equal(first.status, 202);
+    assert.equal(first.data.id, replay.data.id);
+    assert.equal(
+      (await request('/api/character-art', alice, { ...order, idempotency_key: randomUUID() }))
+        .status,
+      409,
+    );
+    await finishTestArt(first.data.id);
+    assert.equal(
+      (await request('/api/character-art', alice, { ...order, idempotency_key: randomUUID() }))
+        .status,
+      409,
+    );
+    assert.equal(
+      (await request('/api/characters', alice)).data.find((c: { id: string }) => c.id === arden.id)
+        .art_used,
+      2,
+    );
+    // Previous calendar months do not consume the current month; client timestamps have no effect.
+    await pool.query(
+      "UPDATE character_art_jobs SET created_at=(date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC')-interval '1 second' WHERE character_id=$1",
+      [arden.id],
+    );
+    const renewed = await request('/api/character-art', alice, {
+      ...order,
+      idempotency_key: randomUUID(),
+      created_at: '2000-01-01',
+    });
+    assert.equal(renewed.status, 202);
+    await pool.query("UPDATE character_art_jobs SET status='failed',reference=NULL WHERE id=$1", [
+      renewed.data.id,
+    ]);
+    assert.equal(
+      (await request('/api/characters', alice)).data.find((c: { id: string }) => c.id === arden.id)
+        .art_used,
+      0,
+    );
+    assert.equal(
+      (
+        await request('/api/character-art', alice, {
+          ...order,
+          reference: 'aW52YWxpZA==',
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      400,
+    );
+    const state = await request('/api/character-art', bob);
+    assert.ok(state.data.jobs.every((j: { character_id: string }) => j.character_id === borin.id));
+    assert.equal((await request('/api/character-art')).status, 401);
+    const charlie = await signup();
+    const requests = await Promise.all(
+      Array.from({ length: 3 }, () =>
+        request('/api/character-art', charlie, {
+          creation,
+          reference,
+          idempotency_key: randomUUID(),
+        }),
+      ),
+    );
+    assert.deepEqual(requests.map((r) => r.status).sort(), [202, 202, 409]);
+    assert.equal((await request('/api/characters', charlie)).data.length, 0);
+    for (const result of requests.filter((r) => r.status === 202))
+      await finishTestArt(result.data.id);
+    assert.equal((await request('/api/characters', charlie)).data.length, 2);
+    await pool.query('DELETE FROM characters WHERE user_id=$1', [charlie.id]);
+    const legacy = charlie;
+    const old = await createLegacyTestCharacter(legacy.id);
+    assert.equal((await request('/api/characters', legacy)).data[0].portrait_revision, 0);
+    const repair = await request('/api/character-art', legacy, {
+      character_id: old.id,
+      reference,
+      idempotency_key: randomUUID(),
+    });
+    assert.equal(repair.status, 202);
+    await finishTestArt(repair.data.id);
+    assert.equal((await request('/api/characters', legacy)).data[0].portrait_revision, 1);
+    await pool.query('UPDATE character_art_worker SET available=false');
+    assert.equal(
+      (
+        await request('/api/character-art', legacy, {
+          character_id: old.id,
+          reference,
+          idempotency_key: randomUUID(),
+        })
+      ).status,
+      503,
+    );
+    await pool.query('UPDATE character_art_worker SET available=true,heartbeat_at=now()');
+  });
   await t.test('rascunho do editor: persistência, revisão e isolamento por usuário', async () =>
     verifyKingdomDraft(alice, bob),
   );

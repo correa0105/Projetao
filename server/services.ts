@@ -21,7 +21,7 @@ export async function purchase(
     const {
       rows: [character],
     } = await client.query(
-      'SELECT id,gold_cp FROM characters WHERE id=$1 AND user_id=$2 FOR UPDATE',
+      'SELECT id,gold_cp FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
       [characterId, userId],
     );
     if (!character) throw new AppError(404, 'Personagem não encontrado.');
