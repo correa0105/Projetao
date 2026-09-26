@@ -1,0 +1,845 @@
+{
+  "source": "https://raw.githubusercontent.com/5e-bits/5e-database/bce51b3958573819e3b842fbc0cd9524fe4bc2e1/src/2014/en/5e-SRD-Spells.json",
+  "commit": "bce51b3958573819e3b842fbc0cd9524fe4bc2e1",
+  "license": "SRD 5.1 CC-BY-4.0",
+  "spells": [
+    {
+      "id": "acid-splash",
+      "name": "Acid Splash",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "alarm",
+      "name": "Alarm",
+      "level": 1,
+      "classes": [
+        "ranger",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "animal-friendship",
+      "name": "Animal Friendship",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "bane",
+      "name": "Bane",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "bless",
+      "name": "Bless",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "burning-hands",
+      "name": "Burning Hands",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "charm-person",
+      "name": "Charm Person",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "chill-touch",
+      "name": "Chill Touch",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "color-spray",
+      "name": "Color Spray",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "command",
+      "name": "Command",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "comprehend-languages",
+      "name": "Comprehend Languages",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "create-or-destroy-water",
+      "name": "Create or Destroy Water",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "cure-wounds",
+      "name": "Cure Wounds",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "druid",
+        "paladin",
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "dancing-lights",
+      "name": "Dancing Lights",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "detect-evil-and-good",
+      "name": "Detect Evil and Good",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "detect-magic",
+      "name": "Detect Magic",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "druid",
+        "paladin",
+        "ranger",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": true
+    },
+    {
+      "id": "detect-poison-and-disease",
+      "name": "Detect Poison and Disease",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "druid",
+        "paladin",
+        "ranger"
+      ],
+      "ritual": true,
+      "concentration": true
+    },
+    {
+      "id": "disguise-self",
+      "name": "Disguise Self",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "divine-favor",
+      "name": "Divine Favor",
+      "level": 1,
+      "classes": [
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "druidcraft",
+      "name": "Druidcraft",
+      "level": 0,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "eldritch-blast",
+      "name": "Eldritch Blast",
+      "level": 0,
+      "classes": [
+        "warlock"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "entangle",
+      "name": "Entangle",
+      "level": 1,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "expeditious-retreat",
+      "name": "Expeditious Retreat",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "faerie-fire",
+      "name": "Faerie Fire",
+      "level": 1,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "false-life",
+      "name": "False Life",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "feather-fall",
+      "name": "Feather Fall",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "find-familiar",
+      "name": "Find Familiar",
+      "level": 1,
+      "classes": [
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "fire-bolt",
+      "name": "Fire Bolt",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "floating-disk",
+      "name": "Floating Disk",
+      "level": 1,
+      "classes": [
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "fog-cloud",
+      "name": "Fog Cloud",
+      "level": 1,
+      "classes": [
+        "druid",
+        "ranger",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "goodberry",
+      "name": "Goodberry",
+      "level": 1,
+      "classes": [
+        "druid",
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "grease",
+      "name": "Grease",
+      "level": 1,
+      "classes": [
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "guidance",
+      "name": "Guidance",
+      "level": 0,
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "guiding-bolt",
+      "name": "Guiding Bolt",
+      "level": 1,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "healing-word",
+      "name": "Healing Word",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "hellish-rebuke",
+      "name": "Hellish Rebuke",
+      "level": 1,
+      "classes": [
+        "warlock"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "heroism",
+      "name": "Heroism",
+      "level": 1,
+      "classes": [
+        "bard",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "hideous-laughter",
+      "name": "Hideous Laughter",
+      "level": 1,
+      "classes": [
+        "bard",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "hunters-mark",
+      "name": "Hunter's Mark",
+      "level": 1,
+      "classes": [
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "identify",
+      "name": "Identify",
+      "level": 1,
+      "classes": [
+        "bard",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "illusory-script",
+      "name": "Illusory Script",
+      "level": 1,
+      "classes": [
+        "bard",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "inflict-wounds",
+      "name": "Inflict Wounds",
+      "level": 1,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "jump",
+      "name": "Jump",
+      "level": 1,
+      "classes": [
+        "druid",
+        "ranger",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "level": 0,
+      "classes": [
+        "bard",
+        "cleric",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "longstrider",
+      "name": "Longstrider",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "ranger",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "mage-armor",
+      "name": "Mage Armor",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "mage-hand",
+      "name": "Mage Hand",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "magic-missile",
+      "name": "Magic Missile",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "mending",
+      "name": "Mending",
+      "level": 0,
+      "classes": [
+        "cleric",
+        "bard",
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "message",
+      "name": "Message",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "minor-illusion",
+      "name": "Minor Illusion",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "poison-spray",
+      "name": "Poison Spray",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "warlock",
+        "wizard",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "prestidigitation",
+      "name": "Prestidigitation",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "produce-flame",
+      "name": "Produce Flame",
+      "level": 0,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "protection-from-evil-and-good",
+      "name": "Protection from Evil and Good",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "purify-food-and-drink",
+      "name": "Purify Food and Drink",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "druid",
+        "paladin"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "ray-of-frost",
+      "name": "Ray of Frost",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "resistance",
+      "name": "Resistance",
+      "level": 0,
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "sacred-flame",
+      "name": "Sacred Flame",
+      "level": 0,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "sanctuary",
+      "name": "Sanctuary",
+      "level": 1,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "shield",
+      "name": "Shield",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "shield-of-faith",
+      "name": "Shield of Faith",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "shillelagh",
+      "name": "Shillelagh",
+      "level": 0,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "shocking-grasp",
+      "name": "Shocking Grasp",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "silent-image",
+      "name": "Silent Image",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "sleep",
+      "name": "Sleep",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "spare-the-dying",
+      "name": "Spare the Dying",
+      "level": 0,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "speak-with-animals",
+      "name": "Speak with Animals",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "ranger"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "thaumaturgy",
+      "name": "Thaumaturgy",
+      "level": 0,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "thunderwave",
+      "name": "Thunderwave",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "id": "true-strike",
+      "name": "True Strike",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true
+    },
+    {
+      "id": "unseen-servant",
+      "name": "Unseen Servant",
+      "level": 1,
+      "classes": [
+        "bard",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false
+    },
+    {
+      "id": "vicious-mockery",
+      "name": "Vicious Mockery",
+      "level": 0,
+      "classes": [
+        "bard"
+      ],
+      "ritual": false,
+      "concentration": false
+    }
+  ]
+}

@@ -318,7 +318,8 @@ body:has(.character-camp) {
   flex-direction: column;
   background:
     linear-gradient(180deg, #060c1470, transparent 40%, #060c14c9),
-    #101820 url('/character-camp-v1.png') center / cover no-repeat;
+    #101820 url('/character-camp-v2.png') center var(--camp-background-y, 50%) /
+      var(--camp-background-size, cover) no-repeat;
 }
 .app-shell:has(.character-camp) header.topbar {
   flex-shrink: 0;
@@ -378,6 +379,13 @@ body:has(.character-camp) {
 .camp-figure img.character-silhouette {
   filter: brightness(0);
 }
+.camp-character .camp-figure img {
+  transform: scale(calc(var(--stature-scale, 1) * 0.8));
+  transform-origin: center bottom;
+}
+.camp-character .camp-figure::after {
+  transform: scaleX(calc(var(--stature-scale, 1) * 0.8));
+}
 .camp-figure:hover img.character-silhouette,
 .camp-figure:focus-visible img.character-silhouette {
   filter: brightness(0) drop-shadow(1px 0 0 #e2c393) drop-shadow(-1px 0 0 #e2c393)
@@ -386,6 +394,9 @@ body:has(.character-camp) {
 .camp-character-info {
   flex-shrink: 0;
   padding: 10px 8px;
+  width: 85%;
+  justify-self: center;
+  zoom: 0.85;
 }
 .camp-character-info h2 {
   font-size: clamp(16px, 1.7vw, 23px);
@@ -544,4 +555,82 @@ body:has(.character-camp) {
   background: #712f30;
   border: 1px solid #a7625c;
   color: #ffe6dd;
+}
+.camp-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(64px, 16vw, 240px) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0;
+  max-width: 1100px;
+}
+.camp-stage > .camp-character {
+  display: grid;
+  grid-row: 1 / span 2;
+  grid-template-rows: subgrid;
+}
+.camp-stage > .camp-new {
+  grid-row: 2;
+}
+.camp-stage > :first-child {
+  grid-column: 1;
+}
+.camp-stage > :nth-child(2) {
+  grid-column: 3;
+}
+.camp-stage > .camp-character,
+.camp-stage > .camp-new {
+  width: 100%;
+}
+.camp-embers {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.camp-heading,
+.camp-stage,
+.camp-footer {
+  position: relative;
+  z-index: 1;
+}
+.camp-embers i {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffd18a;
+  box-shadow: 0 0 5px 1px #ef7e36aa;
+  opacity: 0;
+  animation: camp-ember-rise var(--duration) var(--delay) linear infinite;
+}
+@keyframes camp-ember-rise {
+  0% {
+    transform: translate(var(--start), 0) scale(0.65);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  65% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(var(--drift), calc(-1 * var(--rise))) scale(0.15);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .camp-embers {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .camp-stage {
+    grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr);
+  }
+  .camp-embers i {
+    width: 2px;
+    height: 2px;
+  }
 }

@@ -25,7 +25,7 @@ async function revealNavigation() {
 }
 async function navigate(label: string) {
   await revealNavigation();
-  const group = ['Personagens', 'Perfil', 'Inventário', 'Conquistas', 'Mercenários'].includes(label)
+  const group = ['Personagens', 'Ficha', 'Inventário', 'Conquistas', 'Mercenários'].includes(label)
     ? 'Personagem'
     : ['Missões', 'Mural & eventos', 'Ganchos'].includes(label)
       ? 'Aventura'
@@ -301,10 +301,10 @@ try {
   await expect(
     page.locator('.quest-card').filter({ hasText: 'O segredo da lanterna' }),
   ).toContainText('Originado em: A lanterna esquecida');
-  await navigate('Perfil');
-  await expect(page.locator('main')).toContainText('150 XP');
+  await navigate('Ficha');
+  await expect(page.getByRole('heading', { name: 'Ficha.', exact: true })).toBeVisible();
   for (const [label, heading, screenshot] of [
-    ['Perfil', 'Perfil do personagem.', 'profile'],
+    ['Ficha', 'Ficha.', 'profile'],
     ['Conquistas', 'Conquistas.', 'achievements'],
     ['Mercenários', 'Mercenários.', 'mercenaries'],
     ['House', 'House.', 'house'],
@@ -467,7 +467,7 @@ try {
   await page.screenshot({ path: 'test-results/shop-mobile.png', fullPage: true });
   await page.getByLabel('Buscar itens').fill('escudo');
   await expect(page.locator('.item-card')).toHaveCount(1);
-  for (const label of ['Perfil', 'House', 'Mundo', 'Conquistas']) {
+  for (const label of ['Ficha', 'House', 'Mundo', 'Conquistas']) {
     await navigate(label);
     if (label === 'Mundo')
       await expect(page.getByRole('region', { name: 'Mapa do mundo com relevo 3D' })).toBeVisible();

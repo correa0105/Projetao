@@ -12,6 +12,16 @@ do 5etools. Não há associação, patrocínio ou endosso por Wizards of the Coa
 
 ## Catálogo
 
+### Ficha e magias
+
+Regras iniciais adaptadas do SRD 5.1/2014. A lista mínima de magias de níveis 0 e 1
+em `shared/srd-spells.json` vem de `5e-bits/5e-database`, commit
+`bce51b3958573819e3b842fbc0cd9524fe4bc2e1`, arquivo `src/2014/en/5e-SRD-Spells.json`.
+Nomes traduzidos localmente; somente material SRD, sem suplementos. Fonte primária:
+https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf (CC BY 4.0).
+
+### Equipamentos da loja
+
 - Consulta: https://5e.tools/items.html
 - Dataset: https://github.com/5etools-mirror-3/5etools-src
 - Commit exato e data de importação: `data/catalog.json`.

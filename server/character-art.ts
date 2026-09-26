@@ -73,6 +73,8 @@ export async function artWorkerAvailable() {
 
 export async function enqueueArt(userId: string, input: unknown) {
   const data = requestSchema.parse(input);
+  if (data.creation && !data.creation.choices)
+    throw new AppError(400, 'Complete as escolhas da ficha antes de gerar o personagem.');
   // Normalize before taking locks; arbitrary base64 is never passed to the agent.
   if (!/^[A-Za-z0-9+/]+={0,2}$/.test(data.reference)) throw new AppError(400, 'Imagem inválida.');
   const reference = await normalizeArtImage(Buffer.from(data.reference, 'base64'));
@@ -182,6 +184,12 @@ export async function completeArt(jobId: string, output: Buffer) {
         ],
       );
       characterId = character.id;
+      if (data.choices) {
+        await client.query('INSERT INTO character_sheets(character_id,choices) VALUES($1,$2)', [
+          characterId,
+          JSON.stringify(data.choices),
+        ]);
+      }
       await client.query(
         "INSERT INTO achievements(character_id,code) VALUES($1,'first_character')",
         [characterId],

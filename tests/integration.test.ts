@@ -2,6 +2,7 @@ import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import sharp from 'sharp';
+import { defaultChoices } from '../shared/character-sheet.js';
 import type { Server } from 'node:http';
 import { createApp } from '../server/app.js';
 import { pool } from '../server/db.js';
@@ -64,6 +65,7 @@ async function character(client: Client, name = 'Arden') {
       name,
       race: 'Elfo',
       class: 'Guerreiro',
+      choices: defaultChoices('Elfo', 'Guerreiro'),
       stats: [15, 14, 13, 12, 10, 8],
     },
   });
@@ -267,6 +269,7 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
       name: 'Terceiro',
       race: 'Elfo',
       class: 'Mago',
+      choices: defaultChoices('Elfo', 'Mago'),
       stats: [15, 14, 13, 12, 10, 8],
     };
     assert.equal((await request('/api/characters', alice, creation)).status, 400);

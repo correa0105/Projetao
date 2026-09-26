@@ -1444,3 +1444,111 @@ body:has(.world-atlas.is-world) {
     flex-direction: column;
   }
 }
+/* Compact character and account controls, replacing the full-width header. */
+.app-shell .topbar.player-hud {
+  position: relative;
+  z-index: 30;
+  isolation: isolate;
+  align-self: flex-end;
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: calc(100% - 28px);
+  height: auto;
+  min-height: 76px;
+  margin: 20px max(24px, calc((100% - 1524px) / 2)) 0 auto;
+  padding: 10px 12px 10px 16px;
+  gap: 12px;
+  border: 1px solid #ad8c584d;
+  border-radius: 12px;
+  background: linear-gradient(125deg, #15202ce8, #09121ce8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px #0003;
+}
+.app-shell .player-hud::before {
+  content: none;
+}
+.player-hud-icon {
+  color: #c3a476;
+  flex-shrink: 0;
+}
+.player-hud-selection {
+  min-width: 0;
+}
+.player-hud-label {
+  display: block;
+  color: #baa78a;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.player-hud-details {
+  display: block;
+  color: #b7b7b5;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.app-shell .player-hud .character-selector {
+  width: 210px;
+}
+.app-shell .player-hud .character-selector-trigger {
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  font: 600 15px var(--serif);
+}
+.app-shell .player-hud .character-selector-trigger:hover,
+.app-shell .player-hud .character-selector-trigger[aria-expanded='true'],
+.app-shell .player-hud .character-selector-trigger:active {
+  background: transparent;
+  color: #dfd4c0;
+  box-shadow: none;
+  text-shadow: none;
+  transform: none;
+}
+.app-shell .player-hud .character-selector-trigger:focus-visible {
+  background: transparent;
+  outline: 1px solid #b3945c;
+  outline-offset: 3px;
+}
+.app-shell .player-hud .logout-button {
+  width: 36px;
+  min-height: 36px;
+  padding: 8px;
+  border-color: #b3945c30;
+}
+.app-shell:has(.character-camp) .player-hud {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.app-shell:has(.character-camp) .character-camp {
+  padding-top: 28px;
+}
+.app-shell:has(.character-camp) .camp-heading {
+  padding-right: 350px;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 700px) {
+  .app-shell .topbar.player-hud {
+    position: relative;
+    margin: 14px 14px 0 auto;
+    padding: 8px 10px;
+    min-height: 66px;
+    gap: 8px;
+  }
+  .app-shell .player-hud .character-selector {
+    width: min(210px, calc(100vw - 134px));
+  }
+  .app-shell:has(.character-camp) .camp-heading {
+    padding-right: 0;
+  }
+  .app-shell:has(.character-camp) .character-camp {
+    padding-top: 16px;
+  }
+}
+.app-shell .player-hud .topbar-right { width: auto; min-width: 0; flex: 1; }
+.app-shell .player-hud .player-hud-selection { flex: 1; min-width: 0; }
+.app-shell .player-hud .logout-button { flex: 0 0 36px; }

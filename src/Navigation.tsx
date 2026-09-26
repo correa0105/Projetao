@@ -31,7 +31,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     icon: HelmetIcon,
     items: [
       { page: 'characters', label: 'Personagens', icon: Users },
-      { page: 'profile', label: 'Perfil', icon: Shield },
+      { page: 'profile', label: 'Ficha', icon: Shield },
       { page: 'inventory', label: 'Inventário', icon: Backpack },
       { page: 'achievements', label: 'Conquistas', icon: Trophy },
       { page: 'mercenaries', label: 'Mercenários', icon: Swords },

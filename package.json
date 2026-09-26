@@ -14,6 +14,7 @@
     "catalog:import": "tsx scripts/import-catalog.ts",
     "test": "tsx --test --test-concurrency=1 tests/*.test.ts",
     "test:browser": "tsx scripts/smoke-browser.ts",
+    "test:sheet": "node scripts/test-sheet-isolated.mjs",
     "test:editor": "tsx scripts/smoke-editor.ts",
     "test:atlas": "tsx scripts/smoke-atlas.ts",
     "setup": "node scripts/setup.mjs",

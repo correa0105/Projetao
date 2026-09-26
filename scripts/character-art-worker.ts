@@ -1,7 +1,12 @@
 import 'dotenv/config';
 import { pool, transaction } from '../server/db.js';
 import { completeArt } from '../server/character-art.js';
-import { checkCodexLogin, generateCharacterArt } from '../server/codex-illustrator.js';
+import {
+  checkCodexLogin,
+  generateCharacterArt,
+  IllustratorError,
+} from '../server/codex-illustrator.js';
+import { AppError } from '../server/services.js';
 
 const lock = await pool.connect();
 const {
@@ -45,7 +50,7 @@ try {
       const {
         rows: [next],
       } = await client.query(
-        "SELECT j.*,COALESCE(c.race,j.creation->>'race') AS race,COALESCE(c.class,j.creation->>'class') AS class FROM character_art_jobs j LEFT JOIN characters c ON c.id=j.character_id WHERE j.status='queued' ORDER BY j.created_at FOR UPDATE OF j SKIP LOCKED LIMIT 1",
+        "SELECT j.*,COALESCE(c.race,j.creation->>'race') AS race,COALESCE(c.class,j.creation->>'class') AS class,COALESCE(s.choices,j.creation->'choices') AS choices FROM character_art_jobs j LEFT JOIN characters c ON c.id=j.character_id LEFT JOIN character_sheets s ON s.character_id=c.id WHERE j.status='queued' ORDER BY j.created_at FOR UPDATE OF j SKIP LOCKED LIMIT 1",
       );
       if (next)
         await client.query(
@@ -59,12 +64,22 @@ try {
         const output = await generateCharacterArt(job);
         await completeArt(job.id, output);
         console.log(`Arte concluída: ${job.id}`);
-      } catch {
+      } catch (error) {
+        const code =
+          error instanceof IllustratorError
+            ? error.code
+            : error instanceof AppError
+              ? 'image_validation'
+              : 'internal';
+        const message =
+          error instanceof IllustratorError || error instanceof AppError
+            ? error.message
+            : 'Não foi possível finalizar a arte. Tente novamente.';
         await pool.query(
-          "UPDATE character_art_jobs SET status='failed',reference=NULL,error='Não foi possível gerar a arte. Verifique a sessão ou os limites do ilustrador e tente novamente; sua cota foi preservada.' WHERE id=$1 AND status='running'",
-          [job.id],
+          "UPDATE character_art_jobs SET status='failed',reference=NULL,error=$2 WHERE id=$1 AND status='running'",
+          [job.id, `${message} Sua cota foi preservada.`],
         );
-        console.error(`Falha de geração: ${job.id}. Cota preservada.`);
+        console.error(`Falha de geração: ${job.id}. Motivo: ${code}. Cota preservada.`);
       }
     } else if (!process.argv.includes('--once'))
       await new Promise((resolve) => setTimeout(resolve, 2500));

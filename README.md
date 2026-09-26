@@ -59,7 +59,9 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Cadastro, login e logout com Better Auth; sessões no PostgreSQL e cookie HttpOnly.
 - Até dois personagens por usuário, nove raças e doze classes; seleção em acampamento ilustrado e arte de corpo inteiro.
 - Ilustrador local via assinatura ChatGPT do Codex, sem API key: referência obrigatória para novos personagens, duas imagens por personagem por mês. [Operação e regras](docs/CHARACTER-ART.md).
-- Ficha inicial, matriz padrão de atributos distribuível, PV e CA básica.
+- Ficha de nível 1 com escolhas SRD na criação, atributos por 4d6 no servidor,
+  distribuição definitiva, bônus raciais, perícias, salvaguardas, equipamentos,
+  magias e recursos de sessão. [Fluxo e limites](docs/CHARACTER-SHEET.md).
 - Oito equipamentos SRD importados do 5etools, com busca, categorias e links da fonte.
 - Compras transacionais: preço no servidor, desconto de ouro, empilhamento no inventário,
   histórico de compras e chave de idempotência.
@@ -77,8 +79,9 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 Mundo usa uma malha de terreno com alturas, materiais procedurais com detalhe de fotografias CC0 de solo/rocha e câmera ortográfica inclinada. A arte anterior fornece a máscara da costa e a distribuição dos biomas; não é exibida como um quadro ou aplicada como pintura sobre a malha. A escala do relevo é representativa. Implementação em [ATLAS-WORLD-RELIEF.md](docs/ATLAS-WORLD-RELIEF.md); origem da referência em [ATLAS-WORLD-V2.md](docs/ATLAS-WORLD-V2.md). O Mundo exige WebGL; a visão regional usa Canvas 2D. Oito orientações significam oito desenhos do mesmo objeto. Somente Reino do Norte possui exploração interna nesta etapa. Missões antigas com locais livres permanecem no mural; somente as vinculadas a um local do atlas aparecem naquele ponto do mapa.
 
 House e Mercenários são páginas narrativas: ainda não há propriedades, baús ou contratação.
-A ficha é simplificada; não há bônus raciais, proficiências por classe, magias, combate,
-progressão, equipar/vender/consumir itens ou aplicação de efeitos. As 150 PO iniciais são
+A ficha implementa a criação no nível 1 do SRD 5.1. Não há combate automático,
+progressão, equipar/vender/consumir itens ou aplicação de efeitos. Equipamentos iniciais
+ficam registrados na ficha, separados das compras do inventário. As 150 PO iniciais são
 uma regra de teste, não a regra padrão de riqueza por classe do SRD.
 
 O ouro anunciado nas missões continua informativo. Experiência é concedida na conclusão,

@@ -1,10 +1,70 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { Plus, Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
 import type { Character } from './types';
 import type { ArtJob, ArtState } from '../shared/character-art';
+import { characterHeightScale } from '../shared/character-stature';
 import './character-camp.css';
+
+function CampEmbers() {
+  const ref = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const effect = ref.current!;
+    const camp = effect.closest('.character-camp') as HTMLElement;
+    const shell = effect.closest('.main-shell') as HTMLElement;
+    const stage = camp.querySelector('.camp-stage') as HTMLElement;
+    if (!shell || !stage) return;
+    function align() {
+      const bounds = shell.getBoundingClientRect();
+      const campBounds = camp.getBoundingClientRect();
+      const figures = [...stage.querySelectorAll('.camp-figure')];
+      const floor = figures.length
+        ? Math.max(...figures.map((figure) => figure.getBoundingClientRect().bottom)) - bounds.top
+        : stage.getBoundingClientRect().bottom - bounds.top - 130;
+      // The painted fire base is at 66% of the image. Cover the viewport while
+      // aligning that base to the characters' shared ground in every layout.
+      const scale = Math.max(
+        bounds.width / 1672,
+        floor / (941 * 0.66),
+        (bounds.height - floor) / (941 * 0.34),
+      );
+      const imageHeight = 941 * scale;
+      shell.style.setProperty('--camp-background-size', `${1672 * scale}px ${imageHeight}px`);
+      shell.style.setProperty('--camp-background-y', `${floor - imageHeight * 0.66}px`);
+      effect.style.left = `${bounds.left + bounds.width / 2 - campBounds.left}px`;
+      effect.style.top = `${bounds.top + floor - imageHeight * 0.035 - campBounds.top}px`;
+    }
+    const observer = new ResizeObserver(align);
+    observer.observe(shell);
+    observer.observe(stage);
+    for (const card of stage.children) observer.observe(card);
+    align();
+    return () => {
+      observer.disconnect();
+      shell.style.removeProperty('--camp-background-size');
+      shell.style.removeProperty('--camp-background-y');
+    };
+  });
+  return (
+    <div className="camp-embers" ref={ref} aria-hidden="true">
+      {Array.from({ length: 14 }, (_, i) => (
+        <i
+          key={i}
+          style={
+            {
+              '--drift': `${((i * 37) % 87) - 43}px`,
+              '--start': `${((i * 13) % 39) - 19}px`,
+              '--rise': `${65 + ((i * 19) % 100)}px`,
+              '--duration': `${2.8 + (i % 5) * 0.5}s`,
+              '--delay': `${-i * 0.63}s`,
+            } as CSSProperties
+          }
+        />
+      ))}
+    </div>
+  );
+}
 
 export async function readArtReference(file: File) {
   if (file.size > 8 * 1024 * 1024) throw new Error('Escolha uma imagem de até 8 MB.');
@@ -142,11 +202,10 @@ export function CharacterCamp({
   const pending = state.jobs.filter((j) => ['queued', 'running'].includes(j.status));
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
+      <CampEmbers />
       <header className="camp-heading">
         <div>
-          <span className="eyebrow">À volta da fogueira</span>
           <h1>Seu acampamento</h1>
-          <p>Escolha quem parte para a próxima aventura.</p>
         </div>
         <span className="camp-capacity">
           {characters.length + state.pending_new} / 2 personagens
@@ -157,6 +216,7 @@ export function CharacterCamp({
           <article
             key={character.id}
             className={`camp-character ${selectedId === character.id ? 'is-selected' : ''}`}
+            style={{ '--stature-scale': characterHeightScale(character.race) } as CSSProperties}
           >
             <button
               className="camp-figure"
@@ -252,16 +312,6 @@ export function CharacterCamp({
           </button>
         )}
       </div>
-      <footer className="camp-footer">
-        <span
-          className={`illustrator-status ${state.available ? 'is-online' : 'is-offline'}`}
-          role="status"
-        >
-          <span className="illustrator-dot" aria-hidden="true" />
-          {state.available ? 'Ilustrador disponível' : 'Ilustrador offline'}
-        </span>
-        <span>Duas imagens por personagem a cada mês.</span>
-      </footer>
       {(loadError || (error && !editing)) && (
         <p className="form-error camp-page-error" role="alert">
           {loadError || error}
@@ -312,6 +362,13 @@ export function CharacterCamp({
             }}
           >
             <p>A imagem atual permanece até a nova ficar pronta.</p>
+            <span
+              className={`illustrator-status ${state.available ? 'is-online' : 'is-offline'}`}
+              role="status"
+            >
+              <span className="illustrator-dot" aria-hidden="true" />
+              {state.available ? 'Ilustrador disponível' : 'Ilustrador offline'}
+            </span>
             <ReferenceInput onChange={setReference} disabled={busy} />
             {error && (
               <p className="form-error" role="alert">

@@ -10,9 +10,11 @@ import {
   Eye,
   EyeOff,
 } from 'lucide-react';
-import { races, classes, statNames } from '../shared/rules';
+import { races, classes } from '../shared/rules';
 import { authClient, api, post } from './api';
 import type { AtlasData, AtlasLocation, Character, Post } from './types';
+import { SheetChoices } from './SheetChoices';
+import { defaultChoices, validateChoices } from '../shared/character-sheet';
 import { ReferenceInput } from './CharacterCamp';
 import type { ArtState } from '../shared/character-art';
 
@@ -303,7 +305,9 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
       .then((state) => setAvailable(state.available))
       .catch(() => {});
   }, []);
-  const [stats, setStats] = useState([15, 14, 13, 12, 10, 8]);
+  const [race, setRace] = useState<string>('Humano');
+  const [cls, setCls] = useState<string>('Guerreiro');
+  const [choices, setChoices] = useState(() => defaultChoices('Humano', 'Guerreiro'));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -313,7 +317,13 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
     const form = Object.fromEntries(new FormData(event.currentTarget));
     try {
       await post('/character-art', {
-        creation: { ...form, stats },
+        creation: {
+          ...form,
+          race,
+          class: cls,
+          background: choices.backgroundType,
+          choices: validateChoices(race, cls, choices),
+        },
         reference,
         idempotency_key: requestKey.current,
       });
@@ -325,9 +335,10 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
     }
   }
   return (
-    <form className="stack" onSubmit={submit}>
+    <form className="stack character-creation-form" onSubmit={submit}>
       <p className="muted">
-        Nível 1, 150 PO e uma história só sua. A ficha usa uma base simplificada de D&D 5e.
+        Escolha sua origem e treinamento. Depois da arte, abra a Ficha para rolar e distribuir os
+        seis atributos. Regras de nível 1 do SRD 5.1 (2014).
       </p>
       <p className="muted small">
         Até dois personagens por conta. Sua imagem de corpo inteiro é obrigatória; o personagem
@@ -351,7 +362,15 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
       <div className="form-grid">
         <label>
           Raça
-          <select name="race" aria-label="Raça">
+          <select
+            name="race"
+            aria-label="Raça"
+            value={race}
+            onChange={(e) => {
+              setRace(e.target.value);
+              setChoices(defaultChoices(e.target.value, cls));
+            }}
+          >
             {races.map((race) => (
               <option key={race}>{race}</option>
             ))}
@@ -359,44 +378,22 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         </label>
         <label>
           Classe
-          <select name="class" aria-label="Classe" defaultValue="Guerreiro">
+          <select
+            name="class"
+            aria-label="Classe"
+            value={cls}
+            onChange={(e) => {
+              setCls(e.target.value);
+              setChoices(defaultChoices(race, e.target.value));
+            }}
+          >
             {classes.map((item) => (
               <option key={item}>{item}</option>
             ))}
           </select>
         </label>
       </div>
-      <label>
-        Antecedente
-        <input name="background" defaultValue="Aventureiro" minLength={2} maxLength={40} required />
-      </label>
-      <fieldset>
-        <legend>Atributos · matriz padrão</legend>
-        <p className="muted small">Ao escolher um valor, os dois atributos trocam de posição.</p>
-        <div className="stats-form">
-          {statNames.map((name, index) => (
-            <label key={name}>
-              {name}
-              <select
-                aria-label={name}
-                value={stats[index]}
-                onChange={(event) => {
-                  const value = Number(event.target.value);
-                  const copy = [...stats];
-                  const previous = copy.indexOf(value);
-                  copy[previous] = copy[index];
-                  copy[index] = value;
-                  setStats(copy);
-                }}
-              >
-                {[15, 14, 13, 12, 10, 8].map((value) => (
-                  <option key={value}>{value}</option>
-                ))}
-              </select>
-            </label>
-          ))}
-        </div>
-      </fieldset>
+      <SheetChoices race={race} cls={cls} value={choices} onChange={setChoices} />
       <label>
         Sua história <span className="muted">(opcional)</span>
         <textarea

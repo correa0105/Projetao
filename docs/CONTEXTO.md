@@ -6,7 +6,43 @@ A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/
 
 ## Estado atual
 
+**Ficha** substitui Perfil. Fundo de biblioteca medieval em
+`public/character-library-v1.png`; telas Atributos, Combate, Magias e História/equipamento.
+Título e conteúdo compartilham a largura máxima de 1160 px. O modal de criação
+usa até 960 px, com três colunas de opções no desktop e largura adaptável no celular.
+Não repetir o cabeçalho de identidade dentro da ficha: o personagem ativo aparece
+no seletor superior; os dados detalhados permanecem nas seções da ficha.
+A criação coleta escolhas de nível 1 do SRD 5.1: origem, treinamento, equipamento,
+perícias, idiomas/ferramentas e magias. Novos jobs exigem escolhas válidas; o worker
+as salva após concluir a arte e recebe sub-raça/ancestralidade validadas.
+Migration 019 cria `character_sheets`. Na Ficha, rolar uma única vez seis grupos de
+4d6, descartar o menor, distribuir e confirmar. Dados gerados no servidor com
+`crypto.randomInt`, persistência e bloqueio por personagem; refresh/clique duplo
+nunca rerrolam. Bônus raciais, PV, CA, salvaguardas e perícias são derivados.
+Personagens antigos completam escolhas sem perder arte, XP, saldo ou inventário;
+atributos/PV/CA só mudam ao confirmar. Recursos de sessão, preparação e notas
+são salvos com titularidade no servidor. Escopo é ficha inicial nível 1;
+progressão e efeitos automáticos de combate continuam fora. Ver `CHARACTER-SHEET.md`.
+Validação: build, 17 testes de API em banco isolado e `npm run test:sheet` (Edge,
+criação real com arte de teste, persistência, magias/notas e quatro seções mobile).
+
+A barra superior extensa foi substituída por um painel compacto de personagem
+e conta no canto superior direito: seletor, nível/raça/classe e saída. No
+acampamento em desktop ele flutua sobre o cenário; em telas estreitas ocupa
+uma linha própria para não cobrir o título. O menu inferior mantém a navegação.
+O acampamento exibe somente o título e capacidade; o status do ilustrador aparece
+apenas dentro do modal de gerar imagem. Foram
+removidos o subtítulo da fogueira, a orientação de escolher aventureiro e a frase
+da cota mensal. O seletor do painel não acende ao abrir ou passar o mouse.
+
 A aba Personagens agora é um acampamento ilustrado com figuras de corpo inteiro.
+O cenário `public/character-camp-v2.png` tem fogueira central, personagens em
+dois lados e brasas animadas discretas (desativadas com movimento reduzido).
+O enquadramento alinha a base do fogo ao chão das figuras por tamanho de tela;
+as colunas compartilham a linha de chão mesmo quando os textos quebram linhas.
+As figuras e suas sombras usam redução global de 20% para combinar com o cenário,
+preservando a escala relativa por raça e a ancoragem dos pés no chão.
+Os painéis abaixo das figuras usam escala de 85%, incluindo textos, ações e ícones.
 Limite de dois personagens por conta; dois pedidos de imagem por personagem por
 mês civil UTC (imagem inicial incluída, falhas liberam cota). Novos personagens
 são criados somente após a arte ficar pronta; antigos sem imagem mostram silhueta.
@@ -18,12 +54,18 @@ dentro do Docker. Prompt fixo `docs/CHARACTER-ART-PROMPT-v1.md`, referência vis
 
 O acampamento alinha títulos e rodapé à largura/margens do cabeçalho superior
 (máximo 1524 px). Placeholder ilustrado em `public/character-silhouette-v2.png`.
-Não exibir contadores de imagens nem datas de renovação; apenas a regra mensal
-no rodapé e erro ao exceder. Status do ilustrador no canto esquerdo, com ponto
+Não exibir contadores de imagens nem datas de renovação; exibir erro ao exceder.
+Status do ilustrador apenas no modal de gerar imagem, com ponto
 verde online/vermelho offline (exceção de cor solicitada para esse indicador).
 O fundo cobre toda a viewport, inclusive atrás do cabeçalho. O acampamento
 distribui a altura disponível sem rolagem da página; figuras se reduzem conforme
 a tela. Silhuetas pretas com contorno cobre iluminado apenas em hover/foco.
+As figuras compartilham a mesma linha de chão e escala por estatura racial em
+`shared/character-stature.ts`: halfling 92 cm, gnomo 107, anão 137, humano/elfo/
+meio-elfo/tiefling 175, meio-orc 190 e draconato 200. São referências visuais
+compatíveis com as descrições de 2014, não alturas individuais oficiais fixas.
+O prompt exige anatomia racial adulta e enquadramento uniforme. Artes existentes
+recebem a escala imediatamente; proporções anatômicas novas dependem de nova arte.
 Cada cartão oferece Excluir personagem, confirmado pelo nome. Migration 016
 marca `deleted_at`: remove o personagem da seleção e libera a vaga, bloqueia
 compras, novas inscrições e geração de arte, mas preserva auditoria e missões
@@ -33,6 +75,15 @@ fechar no X), quando um pedido observado em andamento falha. Falhas antigas nunc
 são notificadas ao carregar a página. Não há dispensa persistida nem localStorage.
 A fila mantém o registro técnico da tentativa, sem consumir cota em falhas.
 Migration 018 remove a antiga coluna de dispensa criada pela 017.
+O worker distingue falha de sessão, limite, conexão, resultado, caminho do arquivo
+e validação da imagem. Logs guardam apenas ID e código do motivo; nunca a conversa
+do agente, referências ou credenciais. Falhas antigas com mensagem genérica não
+permitem recuperar o motivo exato. A referência continua sendo descartada após falha.
+O ilustrador usa eventos JSON do CLI para identificar a sessão exata e obter o
+PNG nativo de `generated_images/<threadId>`, mesmo se a resposta textual final
+do agente for incorreta. Só aceita um único artefato daquela sessão e mantém
+a validação de transparência/formato antes de salvar. Nunca busca a imagem mais
+recente globalmente. O UUID da sessão fica no diretório local privado do pedido.
 
 O portal usa React/TypeScript, Node.js, PostgreSQL e Docker Compose. O único território com visão regional é o Reino do Norte. O Mundo continua em Three.js/WebGL, com 22 territórios, relevo, oceano e nuvens. Preserve a silhueta em `docs/references/world-silhouette.png`, a geografia em `public/atlas-world-v2.png` e os materiais em `public/atlas-materials/`. A visão inicial do Mundo é 100%, com zoom máximo próximo de 246% e navegação elástica. Consulte `docs/ATLAS-WORLD-RELIEF.md` e `docs/ATLAS-TERRITORIES.md`.
 

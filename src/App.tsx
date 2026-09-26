@@ -33,6 +33,7 @@ import { CharacterForm, Empty, Login, Modal, PostForm } from './components';
 import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
+import { CharacterSheet } from './CharacterSheet';
 import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
 import type { AtlasLocation, Character, Details, Entry, Item, Page, Post, User } from './types';
@@ -44,7 +45,7 @@ type Icon = ComponentType<{ size?: number; className?: string }>;
 const titles: Record<Page, string> = {
   overview: 'Início',
   characters: 'Meus personagens',
-  profile: 'Perfil do personagem',
+  profile: 'Ficha',
   inventory: 'Inventário',
   achievements: 'Conquistas',
   mercenaries: 'Mercenários',
@@ -706,89 +707,12 @@ function Portal({ user }: { user: User }) {
         )}
         {page === 'profile' &&
           (character ? (
-            <div className="profile-layout">
-              <section className="paper profile-card">
-                <div className="profile-top">
-                  <div className="character-crest">
-                    <Shield size={38} />
-                  </div>
-                  <div>
-                    <span className="eyebrow">
-                      NÍVEL {character.level} · {character.experience.toLocaleString('pt-BR')} XP ·{' '}
-                      {character.background}
-                    </span>
-                    <h2>{character.name}</h2>
-                    <p>
-                      {character.race} · {character.class}
-                    </p>
-                  </div>
-                </div>
-                <div className="vitals">
-                  <div>
-                    <Heart size={19} />
-                    <strong>{character.hp}</strong>
-                    <span>Pontos de vida</span>
-                  </div>
-                  <div>
-                    <Shield size={19} />
-                    <strong>{character.armor_class}</strong>
-                    <span>CA sem armadura</span>
-                  </div>
-                  <div>
-                    <Sparkles size={19} />
-                    <strong>+2</strong>
-                    <span>Proficiência</span>
-                  </div>
-                  <div>
-                    <Coins size={19} />
-                    <strong>{money(character.gold_cp)}</strong>
-                    <span>Peças de ouro</span>
-                  </div>
-                </div>
-                <h3>Atributos</h3>
-                <div className="attribute-grid">
-                  {character.stats.map((score, index) => (
-                    <div key={index}>
-                      <span>{statNames[index]}</span>
-                      <strong>{score}</strong>
-                      <small>
-                        {modifier(score) >= 0 ? '+' : ''}
-                        {modifier(score)}
-                      </small>
-                    </div>
-                  ))}
-                </div>
-                <h3>Sua história</h3>
-                <p className="biography">
-                  {character.biography ||
-                    'Ainda há páginas em branco. Que suas aventuras preencham cada uma delas.'}
-                </p>
-                <div className="info-note">
-                  Ficha inicial simplificada. Bônus raciais, magias, efeitos de equipamentos e
-                  evolução serão adicionados nas próximas etapas.
-                </div>
-              </section>
-              <aside className="profile-side">
-                <div className="paper">
-                  <Backpack size={26} />
-                  <h3>A mochila está com você.</h3>
-                  <p>{inventoryCount} itens prontos para a próxima jornada.</p>
-                  <button className="button outline full" onClick={() => go('inventory')}>
-                    Ver inventário
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-                <div className="paper">
-                  <Trophy size={26} />
-                  <h3>Pequenos feitos, grandes histórias.</h3>
-                  <p>{details?.achievements.length || 0} de 3 conquistas desbloqueadas.</p>
-                  <button className="text-button" onClick={() => go('achievements')}>
-                    Ver conquistas
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-              </aside>
-            </div>
+            <CharacterSheet
+              key={character.id}
+              character={character}
+              details={details}
+              onRefresh={refresh}
+            />
           ) : (
             noCharacter
           ))}
@@ -1152,23 +1076,26 @@ function Portal({ user }: { user: User }) {
   }
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-page={page}>
       <div className="main-shell">
-        <header className="topbar">
-          <div className="breadcrumbs">
-            <button className="header-wordmark" onClick={() => go('overview')}>
-              Alvorada Cinzenta
-            </button>
-            <b>{titles[page]}</b>
-          </div>
+        <aside className="topbar player-hud" aria-label="Personagem e conta">
+          <Shield className="player-hud-icon" size={24} aria-hidden="true" />
           <div className="topbar-right">
-            {characters.length > 0 && (
-              <CharacterSelector
-                characters={characters}
-                selectedId={character?.id || ''}
-                onSelect={setSelectedId}
-              />
-            )}
+            <div className="player-hud-selection">
+              <span className="player-hud-label">Seu aventureiro</span>
+              {characters.length > 0 && (
+                <CharacterSelector
+                  characters={characters}
+                  selectedId={character?.id || ''}
+                  onSelect={setSelectedId}
+                />
+              )}
+              <span className="player-hud-details">
+                {character
+                  ? `Nível ${character.level} · ${character.race} · ${character.class}`
+                  : 'Nenhum personagem selecionado'}
+              </span>
+            </div>
             <button
               className="logout-button"
               aria-label="Sair da conta"
@@ -1188,10 +1115,9 @@ function Portal({ user }: { user: User }) {
               }}
             >
               <LogOut size={16} aria-hidden="true" />
-              <span>Sair</span>
             </button>
           </div>
-        </header>
+        </aside>
         <main className="main-content" id="main-content">
           {renderContent()}
         </main>

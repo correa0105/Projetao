@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
+import { defaultChoices } from '../shared/character-sheet.js';
 import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
@@ -132,7 +133,13 @@ test('excluir personagem: confirmação, titularidade, vaga livre e auditoria pr
     assert.equal(
       (
         await request('/character-art', alice.cookie, 'POST', {
-          creation: { name: 'Novo', race: 'Elfo', class: 'Mago', stats: [15, 14, 13, 12, 10, 8] },
+          creation: {
+            name: 'Novo',
+            race: 'Elfo',
+            class: 'Mago',
+            stats: [15, 14, 13, 12, 10, 8],
+            choices: defaultChoices('Elfo', 'Mago'),
+          },
           reference,
           idempotency_key: randomUUID(),
         })
