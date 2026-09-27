@@ -6,6 +6,13 @@ A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/
 
 ## Estado atual
 
+Experimento de paleta global solicitado em 27/09/2026: primeira versão rejeitada
+por excesso de marrom. Revisão com fundos carvão, painéis cinza quente,
+ocre/amarelo queimado restrito a destaques e botões principais, aplicado a todas as abas,
+menus e formulários. A ficha mantém o pergaminho aprovado; artes e dados preservados.
+Ponto de retorno local `codex/checkpoint-antes-paleta-terrosa`, commit `fb075db`.
+Aguarda avaliação do usuário; não reintroduz modo claro.
+
 **Ficha** substitui Perfil. Fundo de biblioteca medieval em
 `public/character-library-v1.png`; telas Atributos, Combate, Magias e História/equipamento.
 Experimento visual de pergaminho na ficha: a primeira versão escura foi rejeitada.
@@ -18,8 +25,17 @@ em `src/character-parchment.css`. Ponto anterior: branch local
 CSS restaura o visual anterior sem alterar dados. Textura V2 aprovada pelo usuário;
 removido o relevo de folhas empilhadas, textos escurecidos para melhorar o contraste
 e título “Ficha” sem ponto final.
-Título e conteúdo compartilham a largura máxima de 1160 px. O modal de criação
-usa até 960 px, com três colunas de opções no desktop e largura adaptável no celular.
+Cabeçalho da Ficha usa a mesma largura do acampamento: máximo de 1524 px, margens
+laterais de 24 px (14 px até 760 px). Conteúdo centralizado, mais estreito, com máximo
+de 1160 px; título e seletor mantêm o enquadramento largo.
+Cabeçalho separado do conteúdo por 80 px na ficha, ampliado a pedido do usuário.
+Legendas e notas auxiliares da ficha ficam no ícone de informação ao lado do título
+correspondente (hover, foco pelo teclado ou toque). `SheetHelp` usa popover nativo,
+fecha com Escape/clique fora e mantém o balão dentro da tela. Valores e avisos de
+confirmação definitiva permanecem visíveis.
+Cabeçalho da Ficha alinhado verticalmente ao seletor de personagem no desktop,
+com título no tamanho do acampamento e sem subtítulo. No celular, empilha como no acampamento.
+O modal de criação usa até 960 px, com três colunas de opções no desktop e largura adaptável no celular.
 Não repetir o cabeçalho de identidade dentro da ficha: o personagem ativo aparece
 no seletor superior; os dados detalhados permanecem nas seções da ficha.
 A criação coleta escolhas de nível 1 do SRD 5.1: origem, treinamento, equipamento,

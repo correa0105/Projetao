@@ -1,0 +1,52 @@
+.sheet-help {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+:root .sheet-help .sheet-help-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #ad946c;
+  cursor: help;
+}
+:root .character-sheet .sheet-panel .sheet-help-trigger {
+  color: #6b5130;
+}
+:root .sheet-help .sheet-help-trigger:hover {
+  background: #a8864930;
+}
+:root .sheet-help .sheet-help-trigger:focus-visible {
+  outline: 2px solid #a88649;
+  outline-offset: 2px;
+}
+:root .sheet-help-tooltip {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 24px));
+  padding: 12px 14px;
+  border: 1px solid #9d8152;
+  border-radius: 6px;
+  background: #25221d;
+  color: #f1e5cf;
+  box-shadow: 0 8px 24px #0005;
+  font:
+    400 13px/1.6 'DM Sans',
+    sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+  text-shadow: none;
+  white-space: normal;
+  text-align: left;
+}
+:root .character-sheet .sheet-panel .sheet-help-tooltip {
+  color: #f1e5cf;
+}

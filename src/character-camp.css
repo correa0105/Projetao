@@ -5,7 +5,7 @@
   margin: -28px -36px -40px;
   padding: 40px 0 110px;
   color: #eee1c8;
-  background: #101820 url('/character-camp-v1.png') center center/cover;
+  background: #191817 url('/character-camp-v1.png') center center/cover;
 }
 .character-camp::before {
   content: '';
@@ -14,10 +14,10 @@
   z-index: -1;
   background: linear-gradient(
     180deg,
-    rgba(6, 12, 20, 0.68),
+    rgba(14, 13, 12, 0.68),
     transparent 35%,
-    rgba(6, 12, 20, 0.16) 65%,
-    rgba(6, 12, 20, 0.9)
+    rgba(14, 13, 12, 0.16) 65%,
+    rgba(14, 13, 12, 0.9)
   );
 }
 .camp-heading {
@@ -45,7 +45,7 @@
   color: #c9c5bd;
 }
 .camp-capacity {
-  background: #101820c9;
+  background: #191817c9;
   border: 1px solid #aa87634d;
   border-radius: 30px;
   padding: 10px 18px;
@@ -112,13 +112,13 @@
   max-width: 100%;
   object-fit: contain;
   object-position: bottom;
-  filter: drop-shadow(0 0 2px #b2bfcd55) drop-shadow(0 10px 14px #0009);
+  filter: drop-shadow(0 0 2px #cdc2b255) drop-shadow(0 10px 14px #0009);
 }
 .camp-character-info {
   position: relative;
   padding: 18px 12px;
   border-top: 1px solid #b59b7255;
-  background: linear-gradient(#0e151bbb, #0e151b55);
+  background: linear-gradient(#161513bb, #16151355);
   border-radius: 0 0 12px 12px;
 }
 .is-selected .camp-character-info {
@@ -162,11 +162,11 @@
   color: #dfc39d;
   border: 1px dashed #b8a07a66;
   border-radius: 12px;
-  background: #0e151b80;
+  background: #16151380;
   cursor: pointer;
 }
 .camp-new:hover {
-  background: #192330d9;
+  background: #272522d9;
   border-color: #c5a577;
 }
 .camp-new span {
@@ -207,7 +207,7 @@
   font-size: 12px;
   text-align: left;
   color: #d8c6af;
-  background: #111925bc;
+  background: #1c1b1abc;
   padding: 10px;
   border-radius: 8px;
 }
@@ -317,8 +317,8 @@ body:has(.character-camp) {
   display: flex;
   flex-direction: column;
   background:
-    linear-gradient(180deg, #060c1470, transparent 40%, #060c14c9),
-    #101820 url('/character-camp-v2.png') center var(--camp-background-y, 50%) /
+    linear-gradient(180deg, #0e0d0c70, transparent 40%, #0e0d0cc9),
+    #191817 url('/character-camp-v2.png') center var(--camp-background-y, 50%) /
       var(--camp-background-size, cover) no-repeat;
 }
 .app-shell:has(.character-camp) header.topbar {
@@ -440,7 +440,7 @@ body:has(.character-camp) {
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  background: #101820f5;
+  background: #191817f5;
   padding: 10px 14px;
   border-radius: 8px;
 }

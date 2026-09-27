@@ -4,6 +4,13 @@ Guilda: Alvorada Cinzenta. Sede: Bastião da Alvorada, em Vigília. Região: Dom
 
 ## Direção visual
 
+Experimento vigente (27/09/2026), solicitado pelo usuário: substituir o azul da
+interface por carvão e cinza quente, com ocre/amarelo queimado nos destaques.
+A primeira versão com superfícies marrons foi rejeitada por excesso de marrom. Texto em
+bege/marfim; ficha com sua textura de pergaminho aprovada. Artes e ícones existentes
+preservados. A direção azul descrita abaixo é o ponto anterior, disponível no
+checkpoint `codex/checkpoint-antes-paleta-terrosa` (`fb075db`).
+
 Tema exclusivamente escuro, azul de noite, cinza de pedra, marfim e cobre envelhecido. Nome escrito, sem brasão; favicon AC. Libre Baskerville 700 para o nome na apresentação (menor e mais robusto), Inter 700 para Iniciar aventura, Marcellus para título do login, Cinzel para títulos internos e DM Sans para interface. Não reintroduzir modo claro. Verde-musgo dessaturado somente na paisagem.
 
 ## Apresentação

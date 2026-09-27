@@ -1,14 +1,14 @@
 /* Alvorada Cinzenta — parchment, midnight stone and aged copper. */
 :root {
-  --accent: #24384f;
-  --deep: #111e2c;
+  --accent: #3d3a36;
+  --deep: #201f1d;
   --gold: #b58b56;
-  --muted: #737b85;
+  --muted: #907f68;
   --line: #e0d9cd;
   --paper: #fffcf7;
   --serif: 'Cinzel', Georgia, serif;
   background: #f3efe7;
-  color: #293442;
+  color: #383633;
 }
 body {
   background: #f3efe7;
@@ -24,10 +24,10 @@ h1 {
   letter-spacing: -0.75px;
 }
 p {
-  color: #69717b;
+  color: #847560;
 }
 .muted {
-  color: #737b85;
+  color: #907f68;
 }
 .eyebrow {
   color: #967044;
@@ -38,23 +38,23 @@ p {
   font-size: 12px;
 }
 .primary {
-  background: #263c55;
-  border-color: #263c55;
-  box-shadow: 0 3px 7px #14263b12;
+  background: #413e3a;
+  border-color: #413e3a;
+  box-shadow: 0 3px 7px #2a282512;
 }
 .primary:hover:not(:disabled) {
-  background: #355371;
+  background: #58544e;
 }
 .cream {
   background: #dec39a;
-  color: #26303c;
+  color: #34322e;
   border-color: #dec39a;
 }
 .cream:hover:not(:disabled) {
   background: #efd9b4;
 }
 .outline {
-  color: #344b64;
+  color: #504d48;
   border-color: #d4ccbd;
 }
 .outline:hover {
@@ -63,13 +63,13 @@ p {
 .small-button {
   background: #eee9e0;
   border-color: #ddd4c7;
-  color: #46556a;
+  color: #5d5953;
 }
 .small-button:hover:not(:disabled) {
   background: #e4d8c5;
 }
 .text-button {
-  color: #846039;
+  color: #646059;
   font-size: 12px;
 }
 .icon-button:hover {
@@ -80,8 +80,8 @@ p {
   font-size: 10px;
 }
 .badge.mission {
-  background: #e8edf2;
-  color: #49627c;
+  background: #f2eee8;
+  color: #68645d;
 }
 .badge.event {
   background: #f1e5d1;
@@ -93,15 +93,15 @@ p {
 }
 .badge.neutral {
   background: #eee8df;
-  color: #776c5b;
+  color: #6f6a63;
 }
 .count {
   background: #e9dfd0;
   color: #8c7354;
 }
 .sidebar {
-  background: #111e2c url('/alvorada-contours.svg') center bottom / 480px;
-  border-color: #273343;
+  background: #201f1d url('/alvorada-contours.svg') center bottom / 480px;
+  border-color: #383632;
   padding-top: 29px;
   width: 244px;
 }
@@ -133,14 +133,14 @@ p {
 .brand .brand-wordmark small {
   font-size: 6px;
   letter-spacing: 1.3px;
-  color: #8f9ba6;
+  color: #ab9d8a;
   margin-top: 12px;
 }
 .guild-select {
-  border-color: #394251;
+  border-color: #494641;
   border-radius: 4px;
   background: #ffffff04;
-  color: #c6c8c9;
+  color: #d0c9bf;
   margin-top: 29px;
   font-size: 12px;
   padding: 12px 9px;
@@ -152,30 +152,30 @@ p {
   border-radius: 3px;
 }
 .guild-select small {
-  color: #798998;
+  color: #9b8c76;
   font-size: 9px;
 }
 .sidebar nav {
   margin-top: 20px;
-  scrollbar-color: #475669 transparent;
+  scrollbar-color: #5d5953 transparent;
 }
 .nav-label {
-  color: #738393;
+  color: #97866f;
   font-size: 8px;
   letter-spacing: 1.8px;
 }
 .nav-item {
-  color: #aab4bf;
+  color: #c0b6a9;
   font-size: 12px;
   padding: 9px 12px;
   min-height: 35px;
   border-radius: 3px;
 }
 .nav-item > svg {
-  color: #8595a5;
+  color: #a69884;
 }
 .nav-item:hover {
-  background: #223246;
+  background: #373531;
   color: #efe5d4;
 }
 .nav-item.active {
@@ -191,27 +191,27 @@ p {
 }
 .nav-count {
   color: #c7a679;
-  border-color: #6b5a42;
+  border-color: #5b5752;
 }
 .sidebar-bottom {
-  border-color: #344151;
+  border-color: #46433f;
   padding: 17px 0;
 }
 .sidebar-bottom b {
   font-size: 12px;
-  color: #d6dce1;
+  color: #e1dcd6;
 }
 .sidebar-bottom small {
-  color: #7e90a1;
+  color: #a1927e;
   font-size: 9px;
 }
 .sidebar-bottom button {
-  color: #9aa8b6;
+  color: #b6aa9a;
 }
 .user-avatar,
 .top-avatar {
   color: #eedfca;
-  background: #3a4c62;
+  background: #524f4a;
   border-color: #c8ad8144;
 }
 .main-shell {
@@ -228,7 +228,7 @@ p {
   font-size: 11px;
 }
 .breadcrumbs b {
-  color: #596170;
+  color: #6a665f;
 }
 .topbar-right {
   gap: 19px;
@@ -242,10 +242,10 @@ p {
   background: #b48a52;
 }
 .character-selector {
-  color: #68778a;
+  color: #8c7c66;
 }
 .character-selector select {
-  color: #536279;
+  color: #6c6760;
   font-size: 11px;
   max-width: 160px;
 }
@@ -273,10 +273,10 @@ p {
   min-height: 304px;
   border-radius: 5px;
   background:
-    linear-gradient(90deg, #111e2ced 0%, #142337cc 29%, #12203338 67%, #101c2a0a),
+    linear-gradient(90deg, #201f1ded 0%, #282623cc 29%, #24232138 67%, #1f1d1b0a),
     url('/alvorada-dawn-banner.png') center 8% / cover;
-  border: 1px solid #394352;
-  box-shadow: 0 10px 25px #27334818;
+  border: 1px solid #494642;
+  box-shadow: 0 10px 25px #3b383418;
 }
 .welcome-banner:after {
   content: '';
@@ -310,14 +310,14 @@ p {
   margin-bottom: 15px;
   font-weight: 400;
   color: #f5ebd8;
-  text-shadow: 0 2px 10px #08132190;
+  text-shadow: 0 2px 10px #16151390;
 }
 .banner-copy h2 em {
   color: #dcc299;
 }
 .banner-copy p {
   max-width: 345px;
-  color: #bdc6d0;
+  color: #d0c8bd;
   font-size: 12px;
   line-height: 1.7;
   margin-bottom: 23px;
@@ -358,7 +358,7 @@ p {
   font-size: 8px;
   letter-spacing: 1.7px;
   color: #e4d5bd;
-  text-shadow: 0 1px 5px #091320;
+  text-shadow: 0 1px 5px #161513;
 }
 .summary-grid {
   margin: 22px 0 30px;
@@ -371,8 +371,8 @@ p {
   padding: 20px 16px;
 }
 .summary-icon {
-  background: #e8edf1;
-  color: #617a91;
+  background: #f1ede8;
+  color: #917d61;
   border-radius: 5px;
 }
 .summary-card:nth-child(2) .summary-icon {
@@ -385,7 +385,7 @@ p {
 }
 .summary-label {
   font-size: 11px;
-  color: #727986;
+  color: #907f68;
 }
 .summary-card strong {
   font-family: var(--serif);
@@ -394,7 +394,7 @@ p {
 }
 .summary-card strong small {
   font-size: 9px;
-  color: #8b8d90;
+  color: #a0917b;
 }
 .summary-card > svg {
   color: #b5a990;
@@ -417,7 +417,7 @@ p {
   border-top: 2px solid #9dafa8;
 }
 .quest-card.mission {
-  border-top-color: #7f94ab;
+  border-top-color: #ab997f;
 }
 .quest-card.event {
   border-top-color: #c3a16c;
@@ -476,21 +476,21 @@ p {
 }
 .guild-note b {
   font-size: 12px;
-  color: #6b5c45;
+  color: #5d5953;
 }
 .guild-note p {
   font-size: 11px;
   color: #928370;
 }
 .character-crest {
-  background: linear-gradient(135deg, #e7eaf0, #d4dce6);
-  color: #5f7792;
+  background: linear-gradient(135deg, #f0ece7, #e6dfd4);
+  color: #927d5f;
   border-color: #f1eee7;
   outline-color: #c9bdab;
   border-radius: 3px 3px 35px 35px;
 }
 .character-crest > span {
-  background: #334b67;
+  background: #514e49;
   border-color: #fffcf7;
 }
 .character-mini h3 {
@@ -506,20 +506,20 @@ p {
   border-color: #e4dac9;
 }
 .mini-stats > span {
-  color: #82828b;
+  color: #9a8a73;
   font-size: 10px;
 }
 .mini-stats svg {
   color: #ae8a54;
 }
 .mini-stats b {
-  color: #5c687a;
+  color: #716c65;
 }
 .character-mini .button {
   font-size: 11px;
 }
 .selected-label {
-  color: #657f99;
+  color: #998365;
 }
 .character-card.selected {
   border-color: #b49971;
@@ -558,14 +558,14 @@ p {
   font-size: 10px;
 }
 .attribute-grid small {
-  color: #62768f;
-  background: #e8edf2;
+  color: #8f7c62;
+  background: #f2eee8;
 }
 .profile-side svg {
   color: #a68858;
 }
 .info-note {
-  color: #7f6c50;
+  color: #6d6962;
   background: #eee5d6;
   border-radius: 4px;
 }
@@ -577,7 +577,7 @@ p {
   color: #95805e;
 }
 .inventory-summary b {
-  color: #435975;
+  color: #615d57;
 }
 th {
   background: #f3ede3;
@@ -585,16 +585,16 @@ th {
   font-size: 10px;
 }
 td {
-  color: #7a7c81;
+  color: #928169;
   font-size: 12px;
 }
 td b {
-  color: #3c4c61;
+  color: #534f4a;
 }
 .quantity-badge,
 .history-icon {
-  background: #e7ecf0;
-  color: #607c97;
+  background: #f0ece7;
+  color: #978060;
 }
 .achievement.unlocked {
   border-color: #c6b189;
@@ -612,7 +612,7 @@ td b {
   color: #a38b67;
 }
 .search-field input {
-  color: #4e6178;
+  color: #68645e;
   font-size: 12px;
 }
 .tabs {
@@ -624,7 +624,7 @@ td b {
   font-size: 11px;
 }
 .tabs > button.active {
-  color: #455b73;
+  color: #615d57;
   background: #fffcf7;
 }
 .wallet,
@@ -633,11 +633,11 @@ td b {
 }
 .wallet b,
 .item-footer b {
-  color: #8e6b37;
+  color: #68645d;
 }
 .item-illustration {
-  background: #e8edf1 url('/alvorada-contours.svg') center / 250px;
-  color: #70879e;
+  background: #f1ede8 url('/alvorada-contours.svg') center / 250px;
+  color: #9e8b70;
   height: 162px;
 }
 .item-illustration.armor {
@@ -649,7 +649,7 @@ td b {
   color: #a18572;
 }
 .item-illustration > svg {
-  filter: drop-shadow(5px 6px 0 #273c5720);
+  filter: drop-shadow(5px 6px 0 #42403c20);
 }
 .item-body h3 {
   font-size: 16px;
@@ -676,7 +676,7 @@ td b {
   font-size: 10px;
 }
 .post-meta button {
-  color: #8e6b40;
+  color: #6d6861;
   font-size: 11px;
 }
 .entry-icon,
@@ -686,7 +686,7 @@ td b {
   border-radius: 4px;
 }
 .entry-card > p:last-of-type {
-  color: #6b7480;
+  color: #887963;
 }
 .entry-subtitle {
   color: #95805d;
@@ -713,7 +713,7 @@ td b {
   color: #b4915b;
 }
 label {
-  color: #68758a;
+  color: #8c7c66;
   font-size: 12px;
 }
 label > input,
@@ -721,7 +721,7 @@ label > select,
 label > textarea {
   background: #fffdf9;
   border-color: #dcd1bf;
-  color: #374b63;
+  color: #514e49;
   border-radius: 4px;
   font-size: 13px;
 }
@@ -742,7 +742,7 @@ select:focus {
   color: #b2915e;
 }
 .empty h3 {
-  color: #405670;
+  color: #5d5953;
 }
 .empty p {
   font-size: 13px;
@@ -751,18 +751,18 @@ dialog {
   background: #fffcf7;
   border-color: #b79e77;
   border-radius: 6px;
-  color: #334a64;
-  box-shadow: 0 20px 100px #0d182c6a;
+  color: #504c47;
+  box-shadow: 0 20px 100px #1e1d1b6a;
 }
 dialog::backdrop {
-  background: #101d2d9c;
+  background: #201f1d9c;
 }
 .dialog-head h2 {
   font-family: var(--serif);
   font-size: 24px;
 }
 .toast {
-  background: #1b2c40;
+  background: #302e2b;
   border-color: #8b7756;
   color: #f2e7d3;
   border-radius: 4px;
@@ -771,7 +771,7 @@ dialog::backdrop {
   color: #c3a06b;
 }
 .toast > button {
-  color: #a7b2c0;
+  color: #c0b6a7;
 }
 .loading-content,
 .boot {
@@ -784,19 +784,19 @@ dialog::backdrop {
   color: #a08356;
 }
 .checkout-lines > div {
-  color: #82858a;
+  color: #998973;
 }
 .checkout-lines b {
-  color: #526882;
+  color: #706b64;
 }
 /* The gates of the northern bastion. */
 .login-page {
   grid-template-columns: 1.2fr 1fr;
-  background: #111e2c;
+  background: #201f1d;
 }
 .login-art {
   background:
-    linear-gradient(180deg, #111c2aba 0%, #13203135 27%, #111b2a20 60%, #111d2c 100%),
+    linear-gradient(180deg, #1f1e1cba 0%, #24222035 27%, #1f1e1c20 60%, #201f1d 100%),
     url('/alvorada-bastion.png') 61% center / cover;
   padding: 47px 56px;
   min-height: 760px;
@@ -846,17 +846,17 @@ dialog::backdrop {
   line-height: 1.4;
   letter-spacing: -1.1px;
   color: #f5ead5;
-  text-shadow: 0 3px 15px #071222;
+  text-shadow: 0 3px 15px #161513;
 }
 .login-story h1 em {
   color: #d7b37e;
 }
 .login-story p {
   font-size: 14px;
-  color: #bdc8d2;
+  color: #d2c9bd;
   max-width: 380px;
   margin: 21px 0 26px;
-  text-shadow: 0 1px 6px #101c2a;
+  text-shadow: 0 1px 6px #1f1d1b;
 }
 .login-coordinates {
   display: flex;
@@ -878,7 +878,7 @@ dialog::backdrop {
 .login-footer {
   padding-top: 45px;
   margin-top: 0;
-  color: #7c8b9a;
+  color: #9e8e78;
   font-size: 7px;
   letter-spacing: 2px;
 }
@@ -919,7 +919,7 @@ dialog::backdrop {
 .login-form h2 {
   font-family: var(--serif);
   font-size: 31px;
-  color: #283c53;
+  color: #413e3a;
   letter-spacing: -0.7px;
 }
 .login-form > p {
@@ -929,7 +929,7 @@ dialog::backdrop {
 }
 .login-form label {
   font-size: 12px;
-  color: #746c5f;
+  color: #6f6b64;
 }
 .login-form input {
   background: #fffcf6;
@@ -938,7 +938,7 @@ dialog::backdrop {
   padding: 14px;
 }
 .login-form form .button {
-  background: #263c55;
+  background: #413e3a;
   font-size: 12px;
   min-height: 46px;
 }
@@ -946,7 +946,7 @@ dialog::backdrop {
   font-size: 12px !important;
 }
 .auth-switch button {
-  color: #8e6c3b;
+  color: #6a665f;
   font-size: 12px;
 }
 .login-note {

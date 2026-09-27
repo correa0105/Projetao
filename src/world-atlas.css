@@ -7,7 +7,7 @@
   overflow: hidden;
   border: 1px solid #aa8a5155;
   border-radius: 15px;
-  background: #090f15;
+  background: #100f0e;
   box-shadow: 0 20px 70px #0005;
 }
 .world-atlas::after {
@@ -16,7 +16,7 @@
   z-index: 2;
   inset: 0;
   pointer-events: none;
-  box-shadow: inset 0 0 85px #030b10a8;
+  box-shadow: inset 0 0 85px #0a0a09a8;
   border-radius: inherit;
 }
 .world-atlas-heading {
@@ -33,7 +33,7 @@
   z-index: -1;
   position: absolute;
   inset: -28px -80px -38px -28px;
-  background: radial-gradient(ellipse at 15% 0, #06101af2, #07111aba 40%, transparent 72%);
+  background: radial-gradient(ellipse at 15% 0, #11100ff2, #111110ba 40%, transparent 72%);
   pointer-events: none;
 }
 .world-atlas-heading h1 {
@@ -84,7 +84,7 @@
   align-items: center;
   padding: 16px 20px;
   border: 1px solid #a68a59;
-  background: #0d1927ed;
+  background: #1b1a19ed;
   border-radius: 10px;
   box-shadow: 0 12px 30px #0007;
   color: #e1d4bc;
@@ -109,7 +109,7 @@
   align-items: center;
   gap: 18px;
   max-width: calc(100% - 110px);
-  background: #0a1423eb;
+  background: #181715eb;
   border: 1px solid #a68a594d;
   border-radius: 10px;
   padding: 16px 20px;
@@ -121,7 +121,7 @@
 .atlas-regional-guide p {
   font-size: 12px;
   margin: 7px 0 0;
-  color: #aeb8c0;
+  color: #c3b9ab;
 }
 .atlas-regional-guide button {
   border: 1px solid #a68a5977;
@@ -149,13 +149,13 @@
   padding: 26px 22px 36px;
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: linear-gradient(130deg, #15202dfc, #0b1420fc);
+  background: linear-gradient(130deg, #23211ffc, #171614fc);
   border-left: 1px solid #ac8f5866;
   box-shadow: -18px 0 55px #0007;
   backdrop-filter: blur(20px);
   animation: atlas-drawer-arrive 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
   scrollbar-width: thin;
-  scrollbar-color: #8b7552 #121c28;
+  scrollbar-color: #8b7552 #1f1d1b;
 }
 .atlas-drawer-head {
   display: flex;
@@ -170,7 +170,7 @@
   margin: 20px 0 12px;
 }
 .atlas-place-description {
-  color: #aeb9c2;
+  color: #c3baad;
   font-size: 12px;
   line-height: 1.8;
 }
@@ -189,7 +189,7 @@
   background: transparent;
   border: 0;
   border-radius: 5px;
-  color: #9ca9b5;
+  color: #b6ab9b;
   font-size: 11px;
   padding: 8px;
 }
@@ -224,7 +224,7 @@
 .atlas-empty {
   text-align: center;
   padding: 40px 10px;
-  color: #8d9caa;
+  color: #ab9e8c;
 }
 .atlas-empty > svg {
   color: #aa8d5a;
@@ -318,7 +318,7 @@
     font-size: 10px;
     line-height: 1.3;
     text-align: left;
-    background: #101b1bed;
+    background: #171614ed;
     border-color: #b39b6763;
     box-shadow: 0 4px 18px #08100d55;
     backdrop-filter: blur(12px);

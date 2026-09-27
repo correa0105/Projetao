@@ -13,14 +13,17 @@ import {
   proficientSkills,
   type SheetChoices as Choices,
 } from '../shared/character-sheet';
+import { SheetHelp } from './SheetHelp';
 export function ChoiceList({
   label,
   options,
   value,
   count,
   onChange,
+  help,
 }: {
   label: string;
+  help?: string;
   options: string[];
   value: string[];
   count: number;
@@ -34,6 +37,7 @@ export function ChoiceList({
         <small>
           Escolha {count} · {value.length}/{count}
         </small>
+        {help && <SheetHelp label={label}>{help}</SheetHelp>}
       </legend>
       <div className="sheet-checks">
         {options.map((v) => (
@@ -89,7 +93,13 @@ export function SheetChoices({
       </div>
       <label>
         Antecedente
+        <SheetHelp label="Antecedente">
+          Acólito recebe Intuição, Religião, dois idiomas e abrigo em templos de sua fé. O
+          antecedente personalizado permite escolher duas perícias e duas ferramentas ou idiomas,
+          mantendo o abrigo e o equipamento do acólito como base SRD.
+        </SheetHelp>
         <select
+          aria-label="Antecedente"
           value={c.backgroundType}
           onChange={(e) =>
             update({
@@ -103,11 +113,6 @@ export function SheetChoices({
           <option>Personalizado</option>
         </select>
       </label>
-      <p className="muted small">
-        Acólito recebe Intuição, Religião, dois idiomas e abrigo em templos de sua fé. O antecedente
-        personalizado permite escolher duas perícias e duas ferramentas ou idiomas, mantendo o
-        abrigo e o equipamento do acólito como base SRD.
-      </p>
       <ChoiceList
         label="Perícias do antecedente"
         count={2}
@@ -174,7 +179,13 @@ export function SheetChoices({
         />
       )}
       <details open>
-        <summary>Equipamento inicial</summary>
+        <summary>
+          Equipamento inicial
+          <SheetHelp label="Equipamento inicial">
+            Itens iniciais ficam registrados na ficha. A guilda mantém a regra de teste de 150 PO;
+            não há sorteio adicional de riqueza.
+          </SheetHelp>
+        </summary>
         <div className="form-grid">
           {equipmentFields(cls).map((f) => (
             <label key={f.key}>
@@ -196,10 +207,6 @@ export function SheetChoices({
             </label>
           ))}
         </div>
-        <p className="muted small">
-          Itens iniciais ficam registrados na ficha. A guilda mantém a regra de teste de 150 PO; não
-          há sorteio adicional de riqueza.
-        </p>
       </details>
       {!!k.cantrips && (
         <ChoiceList
@@ -213,16 +220,24 @@ export function SheetChoices({
       {!!k.known && (
         <ChoiceList
           label={cls === 'Mago' ? 'Magias do grimório' : 'Magias conhecidas'}
+          help={
+            k.prepared
+              ? 'As magias preparadas serão escolhidas na ficha, após calcular seus atributos.'
+              : undefined
+          }
           count={k.known}
           value={c.spells}
           options={spellOptions(cls, 1).map((s) => s.id)}
           onChange={(v) => update({ spells: v })}
         />
       )}
-      {k.prepared && (
-        <p className="muted small">
-          As magias preparadas serão escolhidas na ficha, após calcular seus atributos.
-        </p>
+      {k.prepared && !k.known && (
+        <div>
+          Magias preparadas
+          <SheetHelp label="Magias preparadas">
+            As magias preparadas serão escolhidas na ficha, após calcular seus atributos.
+          </SheetHelp>
+        </div>
       )}
       <details>
         <summary>Aparência e personalidade</summary>

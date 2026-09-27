@@ -657,7 +657,7 @@ function Portal({ user }: { user: User }) {
                 {titles[page]}
                 {page !== 'profile' && <span className="title-dot">.</span>}
               </h1>
-              <p>
+              {page !== 'profile' && <p>
                 {page === 'shop'
                   ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.1.'
                   : page === 'characters'
@@ -668,12 +668,10 @@ function Portal({ user }: { user: User }) {
                         ? 'Missões, encontros e notícias da Bastião da Alvorada.'
                         : page === 'inventory'
                           ? `Tudo o que ${character?.name || 'seu personagem'} leva para a próxima aventura.`
-                          : page === 'profile'
-                            ? 'Uma história em construção, um atributo de cada vez.'
-                            : page === 'hooks'
+                          : page === 'hooks'
                               ? 'Uma pista, um rumor, uma razão para seguir em frente.'
                               : 'Pessoas, lugares e crônicas da Alvorada Cinzenta.'}
-              </p>
+              </p>}
             </div>
             {page === 'characters' && (
               <button className="button primary" onClick={() => setModal('character')}>

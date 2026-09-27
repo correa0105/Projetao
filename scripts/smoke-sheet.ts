@@ -87,6 +87,16 @@ try {
   ).toContain('character-library-v1.png');
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/sheet-desktop.png', fullPage: true });
+  const skillHelp = page.getByRole('button', { name: 'Informações sobre Perícias', exact: true });
+  await skillHelp.hover();
+  await expect(page.getByRole('tooltip')).toContainText('◆ Especialização');
+  await page.screenshot({ path: 'test-results/sheet-help-desktop.png' });
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('tooltip')).toHaveCount(0);
+  await skillHelp.focus();
+  await expect(page.getByRole('tooltip')).toBeVisible();
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('tooltip')).toHaveCount(0);
   await page.getByRole('tab', { name: 'Magias', exact: true }).click();
   await page
     .getByRole('group', { name: 'Magias preparadas (até o limite)' })
@@ -112,6 +122,15 @@ try {
   for (const tab of ['Atributos', 'Combate', 'Magias', 'História e equipamento']) {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.getByRole('tab', { name: tab, exact: true }).click();
+    if (tab === 'Atributos') {
+      await skillHelp.click();
+      await expect(page.getByRole('tooltip')).toBeVisible();
+      const helpBox = await page.getByRole('tooltip').boundingBox();
+      expect(helpBox!.x).toBeGreaterThanOrEqual(0);
+      expect(helpBox!.x + helpBox!.width).toBeLessThanOrEqual(390);
+      await page.screenshot({ path: 'test-results/sheet-help-mobile.png' });
+      await page.keyboard.press('Escape');
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

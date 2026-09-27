@@ -16,6 +16,7 @@ import {
   type SheetRecord,
 } from '../shared/character-sheet';
 import { SheetChoices, ChoiceList } from './SheetChoices';
+import { SheetHelp } from './SheetHelp';
 import './character-sheet.css';
 import './character-parchment.css';
 const signed = (v: number) => `${v >= 0 ? '+' : ''}${v}`;
@@ -105,6 +106,10 @@ export function CharacterSheet({
         <section className="sheet-panel">
           <h3>
             <BookOpen size={20} /> {s ? 'Suas escolhas' : 'Complete sua origem'}
+            <SheetHelp label="rolagem de atributos">
+              4d6 por atributo, descartando o menor. Uma rolagem permanente por personagem; depois
+              você distribui os seis resultados.
+            </SheetHelp>
           </h3>
           <p>
             Confira as escolhas antes de rolar. Depois da rolagem, origem e treinamento ficam
@@ -137,16 +142,17 @@ export function CharacterSheet({
               </button>
             )}
           </div>
-          <p className="muted small">
-            4d6 por atributo, descartando o menor. Uma rolagem permanente por personagem; depois
-            você distribui os seis resultados.
-          </p>
         </section>
       )}
       {rolls && !s?.finalized_at && (
         <section className="sheet-panel">
           <h3>
             <Dices size={22} /> O destino está lançado
+            <SheetHelp label="distribuição dos atributos">
+              O menor dado de cada resultado é descartado e aparece riscado. Os bônus raciais
+              são somados ao resultado escolhido. PV no nível 1 usam o máximo do dado de vida,
+              Constituição e bônus aplicáveis.
+            </SheetHelp>
           </h3>
           <p>
             Distribua os resultados. Ao confirmar, os bônus raciais e os valores da ficha serão
@@ -204,8 +210,7 @@ export function CharacterSheet({
             Confirmar distribuição e abrir ficha
           </button>
           <p className="muted small">
-            A confirmação é definitiva. PV no nível 1 usam o máximo do dado de vida, Constituição e
-            bônus aplicáveis.
+            A confirmação é definitiva.
           </p>
         </section>
       )}
@@ -258,7 +263,13 @@ export function CharacterSheet({
                 </div>
                 <div className="sheet-columns">
                   <div>
-                    <h3>Salvaguardas</h3>
+                    <h3>
+                      Salvaguardas
+                      <SheetHelp label="Salvaguardas">
+                        ○ Sem proficiência: apenas o modificador do atributo. ● Proficiência: soma
+                        também o bônus de proficiência. Os valores exibidos já incluem o bônus.
+                      </SheetHelp>
+                    </h3>
                     <ul className="sheet-values">
                       {d.saves.map((v, i) => (
                         <li key={i}>
@@ -285,7 +296,14 @@ export function CharacterSheet({
                     </ul>
                   </div>
                   <div>
-                    <h3>Perícias</h3>
+                    <h3>
+                      Perícias
+                      <SheetHelp label="Perícias">
+                        ○ Sem proficiência: apenas o modificador do atributo. ● Proficiência: soma o
+                        bônus de proficiência. ◆ Especialização: soma o dobro desse bônus. Os totais
+                        já estão calculados.
+                      </SheetHelp>
+                    </h3>
                     <ul className="sheet-values">
                       {d.skills.map((v) => (
                         <li key={v.name}>
@@ -296,7 +314,6 @@ export function CharacterSheet({
                         </li>
                       ))}
                     </ul>
-                    <small className="muted">● Proficiência · ◆ Especialização</small>
                   </div>
                 </div>
               </>
@@ -341,8 +358,12 @@ export function CharacterSheet({
                 <button className="button primary" disabled={busy} onClick={saveState}>
                   Salvar recursos
                 </button>
-                <h3>Ataques com equipamento inicial</h3>
-                <p className="muted small">{armorNote} Bônus situacionais são aplicados na mesa.</p>
+                <h3>
+                  Ataques com equipamento inicial
+                  <SheetHelp label="Ataques com equipamento inicial">
+                    {armorNote} Bônus situacionais são aplicados na mesa.
+                  </SheetHelp>
+                </h3>
                 <ul className="sheet-attacks">
                   {sheetAttacks(c.race, c.class, c.stats, choices).map((w) => (
                     <li key={w.name}>
@@ -395,7 +416,13 @@ export function CharacterSheet({
             )}
             {tab === 'Magias' && (
               <>
-                <h3>Conjuração</h3>
+                <h3>
+                  Conjuração
+                  <SheetHelp label="Conjuração">
+                    Esta ficha registra escolhas e recursos. Rolagens de ataque, efeitos e condições
+                    das magias são resolvidos na mesa.
+                  </SheetHelp>
+                </h3>
                 {d.spellDC !== null ? (
                   <p>
                     Habilidade: {statNames[d.spellAbility!]} · CD <b>{d.spellDC}</b> · Ataque{' '}
@@ -404,17 +431,21 @@ export function CharacterSheet({
                 ) : (
                   <p>A classe ainda não conjura no nível 1.</p>
                 )}
-                <h3>Truques</h3>
+                <h3>
+                  Truques
+                  {c.race === 'Elfo' && (
+                    <SheetHelp label="Truques">
+                      O truque racial usa Inteligência: CD{' '}
+                      {8 + d.proficiency + modifier(c.stats[3])} e ataque{' '}
+                      {signed(d.proficiency + modifier(c.stats[3]))}.
+                    </SheetHelp>
+                  )}
+                  {c.race === 'Tiefling' && (
+                    <SheetHelp label="Truques">Taumaturgia racial usa Carisma.</SheetHelp>
+                  )}
+                </h3>
                 <p>{d.cantrips.map(spellName).join(' · ') || 'Nenhum.'}</p>
-                {c.race === 'Elfo' && (
-                  <p className="muted small">
-                    O truque racial usa Inteligência: CD {8 + d.proficiency + modifier(c.stats[3])}{' '}
-                    e ataque {signed(d.proficiency + modifier(c.stats[3]))}.
-                  </p>
-                )}
-                {c.race === 'Tiefling' && (
-                  <p className="muted small">Taumaturgia racial usa Carisma.</p>
-                )}
+
                 {d.known.length > 0 && (
                   <>
                     <h3>{c.class === 'Mago' ? 'Grimório' : 'Magias conhecidas'}</h3>
@@ -425,6 +456,9 @@ export function CharacterSheet({
                   <>
                     <label>
                       Espaços de nível 1 gastos (total {d.slots})
+                      <SheetHelp label="Espaços de magia">
+                        Recupera em descanso {c.class === 'Bruxo' ? 'curto ou longo' : 'longo'}.
+                      </SheetHelp>
                       <input
                         type="number"
                         min={0}
@@ -433,15 +467,13 @@ export function CharacterSheet({
                         onChange={(e) => change({ slots_used: Number(e.target.value) })}
                       />
                     </label>
-                    <p className="muted small">
-                      Recupera em descanso {c.class === 'Bruxo' ? 'curto ou longo' : 'longo'}.
-                    </p>
                   </>
                 )}
                 {k.prepared && (
                   <>
                     <ChoiceList
                       label="Magias preparadas (até o limite)"
+                      help="Pode trocar após um descanso longo."
                       count={d.prepareCount}
                       options={(c.class === 'Mago'
                         ? d.known
@@ -452,7 +484,6 @@ export function CharacterSheet({
                       value={draft.prepared}
                       onChange={(v) => change({ prepared: v })}
                     />
-                    <p className="muted small">Pode trocar após um descanso longo.</p>
                   </>
                 )}
                 {c.class === 'Clérigo' && (
@@ -466,10 +497,6 @@ export function CharacterSheet({
                     Salvar magias e espaços
                   </button>
                 )}
-                <p className="muted small">
-                  Esta ficha registra escolhas e recursos. Rolagens de ataque, efeitos e condições
-                  das magias são resolvidos na mesa.
-                </p>
               </>
             )}
             {tab === 'História e equipamento' && (
@@ -505,7 +532,13 @@ export function CharacterSheet({
                     </p>
                   </div>
                   <div>
-                    <h3>Equipamento inicial</h3>
+                    <h3>
+                      Equipamento inicial
+                      <SheetHelp label="Equipamento inicial">
+                        Os itens iniciais são registros da ficha; compras permanecem no inventário.
+                        Trocas de equipamento e efeitos situacionais são resolvidos na mesa.
+                      </SheetHelp>
+                    </h3>
                     <ul>
                       {d.equipment.map((v, i) => (
                         <li key={i}>{v}</li>
@@ -522,10 +555,6 @@ export function CharacterSheet({
                     <p>
                       {money(c.gold_cp)} PO · {c.experience} XP
                     </p>
-                    <p className="muted small">
-                      Os itens iniciais são registros da ficha; compras permanecem no inventário.
-                      Trocas de equipamento e efeitos situacionais são resolvidos na mesa.
-                    </p>
                   </div>
                 </div>
                 <label>
@@ -538,9 +567,11 @@ export function CharacterSheet({
                     onChange={(e) => change({ notes: e.target.value })}
                   />
                 </label>
-                <button className="button primary" disabled={busy} onClick={saveState}>
-                  Salvar anotações
-                </button>
+                <div className="sheet-actions">
+                  <button className="button primary" disabled={busy} onClick={saveState}>
+                    Salvar anotações
+                  </button>
+                </div>
               </>
             )}
           </section>

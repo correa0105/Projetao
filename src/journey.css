@@ -3,7 +3,7 @@
   min-height: 100dvh;
   position: relative;
   isolation: isolate;
-  background: #14232e;
+  background: #23211f;
   color: #f5efdf;
 }
 .entry-atmosphere {
@@ -12,7 +12,7 @@
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: #091620;
+  background: #161513;
   filter: blur(0);
   transition: filter 0.65s ease;
 }
@@ -27,7 +27,7 @@
   filter: saturate(0.88) brightness(0.9);
 }
 .entry-mist {
-  background: radial-gradient(ellipse at 50% 44%, #09162026 5%, #09162033 40%, #07141fba 100%);
+  background: radial-gradient(ellipse at 50% 44%, #16151326 5%, #16151333 40%, #141312ba 100%);
 }
 .entry-cloud {
   position: absolute;
@@ -55,8 +55,8 @@
 }
 .entry-vignette {
   background:
-    radial-gradient(ellipse at center, transparent 23%, #05101a22 55%, #050e18d9 100%),
-    linear-gradient(0deg, #07131de8, transparent 22%, transparent 78%, #07131da6);
+    radial-gradient(ellipse at center, transparent 23%, #10100f22 55%, #0f0f0ed9 100%),
+    linear-gradient(0deg, #131211e8, transparent 22%, transparent 78%, #131211a6);
 }
 .entry-frame {
   position: fixed;
@@ -111,7 +111,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #0b1825b3;
+  background: #191817b3;
   color: #cdc3ac;
   border: 1px solid #c2a16a40;
   border-radius: 3px;
@@ -206,8 +206,8 @@
   color: #eae7d7;
   text-transform: uppercase;
   text-shadow:
-    0 3px 30px #020c18,
-    0 1px 3px #020c18;
+    0 3px 30px #0e0d0c,
+    0 1px 3px #0e0d0c;
 }
 .intro-story h1 .wordmark-line {
   display: block;
@@ -262,12 +262,12 @@
   justify-content: center;
   padding: 18px 32px;
   min-height: 58px;
-  background: #111a24f5;
+  background: #1c1b19f5;
   color: #eddbb7;
   border: 1px solid #b59a68;
   border-radius: 0;
   box-shadow:
-    0 8px 35px #020b19a0,
+    0 8px 35px #0e0e0da0,
     inset 0 0 20px #a9894910;
   text-transform: uppercase;
   font-family: 'Inter', 'DM Sans', sans-serif;
@@ -281,7 +281,7 @@
     box-shadow 0.2s;
 }
 .adventure-button:hover {
-  background: #243746;
+  background: #383632;
   color: #fff2cf;
   border-color: #edd2a1;
   box-shadow:
@@ -362,7 +362,7 @@ body:has(.world-atlas.is-world) {
   gap: 20px;
   border: 1px solid #b3945c50;
   border-radius: 16px;
-  background: linear-gradient(130deg, #142130f0, #08101bf5 50%, #142130f0);
+  background: linear-gradient(130deg, #242220f0, #121211f5 50%, #242220f0);
   box-shadow: 0 8px 28px #0003;
 }
 .app-shell .topbar::before {
@@ -422,7 +422,7 @@ body:has(.world-atlas.is-world) {
   padding: 0 14px 0 16px;
   border: 1px solid #b3945c55;
   border-radius: 10px;
-  background: #0a1320a6;
+  background: #161514a6;
   color: #dfd4c0;
   font:
     500 12px 'DM Sans',
@@ -460,11 +460,11 @@ body:has(.world-atlas.is-world) {
   padding: 6px;
   border: 1px solid #b3945c70;
   border-radius: 12px;
-  background: linear-gradient(130deg, #142130fa, #08101bfa 50%, #142130fa);
+  background: linear-gradient(130deg, #242220fa, #121211fa 50%, #242220fa);
   backdrop-filter: blur(24px);
   box-shadow: 0 14px 36px #0008;
   scrollbar-width: thin;
-  scrollbar-color: #8c7653 #101a26;
+  scrollbar-color: #8c7653 #1c1b1a;
   animation: character-options-arrive 0.18s ease-out both;
 }
 .character-option {
@@ -491,7 +491,7 @@ body:has(.world-atlas.is-world) {
 .character-option small {
   display: block;
   margin-top: 5px;
-  color: #97a4b2;
+  color: #b3a796;
   font-size: 10px;
   line-height: 1.5;
 }
@@ -531,7 +531,7 @@ body:has(.world-atlas.is-world) {
   padding: 11px 15px;
   border: 1px solid #b3945c55;
   border-radius: 10px;
-  background: #0a1320a6;
+  background: #161514a6;
   color: #dfd4c0;
   font-size: 12px;
   transition:
@@ -540,14 +540,14 @@ body:has(.world-atlas.is-world) {
 }
 .app-shell .topbar .character-selector-trigger:hover,
 .app-shell .topbar .logout-button:hover:not(:disabled) {
-  background-color: #263341;
+  background-color: #363431;
   border-color: #cbb18b9c;
 }
 .app-shell .topbar .character-selector-trigger:focus-visible,
 .app-shell .topbar .character-selector-trigger[aria-expanded='true'] {
   outline: none;
   border-color: #d4b681;
-  background-color: #263341;
+  background-color: #363431;
 }
 .app-shell .topbar button:focus-visible {
   outline: 2px solid #b3945c;
@@ -568,7 +568,7 @@ body:has(.world-atlas.is-world) {
   height: 34.2px;
   border: 1px solid #b3945c;
   border-radius: 16.2px;
-  background: linear-gradient(130deg, #142130f0, #08101bf5 50%, #142130f0);
+  background: linear-gradient(130deg, #242220f0, #121211f5 50%, #242220f0);
   backdrop-filter: blur(21.6px) saturate(0.6);
   box-shadow: 0 10.8px 36px #0007;
   transition:
@@ -648,7 +648,7 @@ body:has(.world-atlas.is-world) {
   flex-shrink: 0;
   padding: 0;
   border: 0;
-  color: #d8dfeb;
+  color: #ebe3d8;
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -666,10 +666,10 @@ body:has(.world-atlas.is-world) {
   place-items: center;
   border: 1px solid #bca7808c;
   border-radius: 50%;
-  background: linear-gradient(145deg, #203247f5, #091422fa);
+  background: linear-gradient(145deg, #363431f5, #171614fa);
   backdrop-filter: blur(14.4px);
   box-shadow:
-    0 6.3px 18px #101c3338,
+    0 6.3px 18px #23222038,
     inset 0 1px 5.4px #cdb38b0c;
   transition:
     transform 0.2s,
@@ -722,7 +722,7 @@ body:has(.world-atlas.is-world) {
     6.2px 100%,
     0 50%
   );
-  background: linear-gradient(130deg, #182432, #0b1420 55%, #152130);
+  background: linear-gradient(130deg, #272523, #171614 55%, #242321);
 }
 @keyframes dock-caption-arrive {
   from {
@@ -759,19 +759,19 @@ body:has(.world-atlas.is-world) {
 .dock-item:focus-visible .dock-orb,
 .dock-item:hover .dock-orb,
 .dock-item[aria-expanded='true'] .dock-orb {
-  background: #293c51;
+  background: #403e3a;
   color: #fff4e0;
   transform: translateY(-3.6px) scale(1.035);
   box-shadow:
-    0 9px 22.5px #101c3345,
+    0 9px 22.5px #23222045,
     0 0 16.2px #bca78025;
 }
 .dock-item.is-active .dock-orb {
   background: linear-gradient(140deg, #f0dec0, #c5a373);
-  color: #182a3e;
+  color: #2d2b29;
   border-color: #ad8650;
   box-shadow:
-    0 6.3px 18px #101c3330,
+    0 6.3px 18px #23222030,
     inset 0 1px 7.2px #fff4dc22;
 }
 /* A moving pool of warm light replaces the disclosure arrows. */
@@ -821,7 +821,7 @@ body:has(.world-atlas.is-world) {
   padding: 7.2px;
   border: 1px solid #b3945c80;
   border-radius: 12.6px;
-  background: linear-gradient(145deg, #182431fa, #0b1420fc);
+  background: linear-gradient(145deg, #272522fa, #171614fc);
   box-shadow: 0 10.8px 28.8px #0007;
   color: #ede3d3;
   transform-origin: var(--panel-tip, 50%) bottom;
@@ -845,7 +845,7 @@ body:has(.world-atlas.is-world) {
   width: 9px;
   height: 9px;
   transform: rotate(45deg);
-  background: #0b1420;
+  background: #171614;
   border-right: 1px solid #b3945c80;
   border-bottom: 1px solid #b3945c80;
 }
@@ -885,12 +885,12 @@ body:has(.world-atlas.is-world) {
   border: 0;
   border-radius: 6.3px;
   background: none;
-  color: #d0d8e2;
+  color: #e2dbd0;
   text-align: left;
   font-size: 10.8px;
 }
 .dock-destination:hover {
-  background: #304458;
+  background: #484540;
   color: white;
 }
 .dock-destination[aria-current='page'] {
@@ -1082,11 +1082,11 @@ body:has(.world-atlas.is-world) {
   filter: drop-shadow(0 3px 3px #0009) brightness(1.08);
 }
 .dock-item.is-active .dock-orb {
-  background: linear-gradient(140deg, #443b2c, #191b1d);
+  background: linear-gradient(140deg, #3b3935, #1c1b1a);
   color: #ead7b2;
   border-color: #c5a373;
   box-shadow:
-    0 7px 20px #101c3330,
+    0 7px 20px #23222030,
     inset 0 1px 8px #dec39a16;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1105,7 +1105,7 @@ body:has(.world-atlas.is-world) {
   padding: 30px 32px 24px;
   border: 1px solid #b3945c99;
   border-radius: 18px;
-  background: linear-gradient(130deg, #142130f0, #08101bf5 50%, #142130f0);
+  background: linear-gradient(130deg, #242220f0, #121211f5 50%, #242220f0);
   backdrop-filter: blur(24px) saturate(0.6);
   box-shadow: 0 28px 100px #0008;
   color: #e5ddcf;
@@ -1171,7 +1171,7 @@ body:has(.world-atlas.is-world) {
 }
 .entry-page .auth-panel .login-form label {
   font-size: 11px;
-  color: #c0c5c7;
+  color: #cdc5ba;
   gap: 8px;
 }
 .auth-input {
@@ -1206,8 +1206,8 @@ body:has(.world-atlas.is-world) {
   min-height: 50px;
   padding: 13px 14px;
   font-size: 13px;
-  background: #070f18a8;
-  border: 1px solid #65717b59;
+  background: #10100fa8;
+  border: 1px solid #82735e59;
   border-radius: 7px;
   color: #e6dfd3;
   transition:
@@ -1219,13 +1219,13 @@ body:has(.world-atlas.is-world) {
   padding-right: 44px;
 }
 .entry-page .auth-panel .login-form input:focus {
-  background: #111c28;
+  background: #1e1d1b;
   outline: none;
   box-shadow: none;
   border-color: #9e8c6b;
 }
 .entry-page .auth-panel input::placeholder {
-  color: #828d98;
+  color: #9f907b;
   font-size: 12px;
 }
 .password-visibility {
@@ -1239,7 +1239,7 @@ body:has(.world-atlas.is-world) {
   border: 0;
   border-radius: 5px;
   background: transparent;
-  color: #a9afb2;
+  color: #bbb0a0;
 }
 .password-visibility:hover {
   background: #a98b5420;
@@ -1249,7 +1249,7 @@ body:has(.world-atlas.is-world) {
   background: #c3a573;
   border: 1px solid #e6c998;
   border-radius: 7px;
-  color: #171d24;
+  color: #1f1e1c;
   box-shadow: 0 5px 22px #b38c4320;
   min-height: 49px;
   font-size: 12px;
@@ -1263,7 +1263,7 @@ body:has(.world-atlas.is-world) {
   text-align: center;
   margin: 18px 0 0;
   font-size: 11px;
-  color: #a4adb5;
+  color: #baaf9f;
 }
 .entry-page .auth-switch button {
   color: #dfbf88;
@@ -1371,7 +1371,7 @@ body:has(.world-atlas.is-world) {
   gap: 20px;
   padding: 20px;
   margin-top: 12px;
-  background: linear-gradient(130deg, #172435, #0c1521);
+  background: linear-gradient(130deg, #282624, #181715);
   border: 1px solid #b3945c60;
   border-radius: 14px;
 }
@@ -1387,7 +1387,7 @@ body:has(.world-atlas.is-world) {
   padding: 14px;
   margin: 14px 0;
   border-left: 2px solid #b3945c;
-  background: #101a28;
+  background: #1e1c1a;
   border-radius: 0 8px 8px 0;
 }
 .mission-result p {
@@ -1420,7 +1420,7 @@ body:has(.world-atlas.is-world) {
 .mission-xp-row small {
   display: block;
   margin-top: 4px;
-  color: #97a4b2;
+  color: #b3a796;
 }
 .mission-completion .mission-xp-row input {
   width: 100px;
@@ -1460,7 +1460,7 @@ body:has(.world-atlas.is-world) {
   gap: 12px;
   border: 1px solid #ad8c584d;
   border-radius: 12px;
-  background: linear-gradient(125deg, #15202ce8, #09121ce8);
+  background: linear-gradient(125deg, #22211fe8, #141311e8);
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 25px #0003;
 }

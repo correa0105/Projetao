@@ -1,25 +1,61 @@
 .app-shell[data-page='profile'] .main-shell {
   background:
-    linear-gradient(90deg, rgba(7, 13, 20, 0.6), rgba(7, 13, 20, 0.25)),
+    linear-gradient(90deg, rgba(14, 14, 13, 0.6), rgba(14, 14, 13, 0.25)),
     url('/character-library-v1.png') center/cover fixed;
   min-height: 100dvh;
   padding-bottom: calc(80px + env(safe-area-inset-bottom));
 }
 .app-shell[data-page='profile'] .main-content {
-  padding-bottom: 0;
+  width: calc(100% - 48px);
+  max-width: 1524px;
+  padding: 20px 0 0;
+}
+.app-shell[data-page='profile'] .topbar.player-hud {
+  position: absolute;
+  top: 20px;
+  right: max(24px, calc((100% - 1524px) / 2));
+  margin: 0;
 }
 .character-sheet {
+  width: 100%;
   max-width: 1160px;
   margin: 0 auto;
   color: #d8d4ca;
 }
 .character-sheet p.muted.small,
 .character-creation-form p.muted.small {
-  color: #78838d;
+  color: #96866f;
 }
 .app-shell[data-page='profile'] .page-title {
-  max-width: 1160px;
+  width: 100%;
   margin-inline: auto;
+  margin-bottom: 80px;
+  min-height: 76px;
+  padding-right: 350px;
+}
+.app-shell[data-page='profile'] .page-title h1 {
+  font-size: clamp(26px, 3vw, 40px);
+  margin: 5px 0;
+}
+@media (max-width: 760px) {
+  .app-shell[data-page='profile'] .main-content {
+    width: calc(100% - 28px);
+  }
+}
+@media (max-width: 700px) {
+  .app-shell[data-page='profile'] .topbar.player-hud {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 14px 14px 0 auto;
+  }
+  .app-shell[data-page='profile'] .main-content {
+    padding-top: 16px;
+  }
+  .app-shell[data-page='profile'] .page-title {
+    padding-right: 0;
+    min-height: auto;
+  }
 }
 dialog:has(.character-creation-form) {
   width: min(960px, calc(100vw - 48px));
@@ -37,8 +73,8 @@ dialog:has(.character-creation-form) {
   }
 }
 .sheet-panel {
-  background: rgba(10, 20, 29, 0.94);
-  border: 1px solid #78634166;
+  background: rgba(21, 20, 18, 0.94);
+  border: 1px solid #625e5766;
   padding: clamp(18px, 3vw, 32px);
   border-radius: 8px;
   box-shadow: 0 18px 60px #0005;
@@ -58,7 +94,7 @@ dialog:has(.character-creation-form) {
   line-height: 1.65;
 }
 .sheet-creation details {
-  border: 1px solid #78634155;
+  border: 1px solid #625e5755;
   padding: 12px;
   border-radius: 6px;
 }
@@ -134,8 +170,8 @@ dialog:has(.character-creation-form) {
   align-items: center;
   text-align: center;
   gap: 8px;
-  background: #14222e;
-  border: 1px solid #78634166;
+  background: #23211f;
+  border: 1px solid #625e5766;
   border-radius: 6px;
   padding: 16px 8px;
   min-width: 0;
@@ -152,7 +188,7 @@ dialog:has(.character-creation-form) {
 }
 .sheet-rolls i {
   font-style: normal;
-  background: #2d3a46;
+  background: #3d3a36;
   border-radius: 3px;
   padding: 3px 5px;
 }
@@ -180,8 +216,8 @@ dialog:has(.character-creation-form) {
   grid-template-columns: auto 1fr;
   column-gap: 12px;
   align-items: center;
-  border: 1px solid #78634166;
-  background: #0b1722e8;
+  border: 1px solid #625e5766;
+  background: #181715e8;
   border-radius: 6px;
   padding: 18px 22px;
 }
@@ -203,15 +239,15 @@ dialog:has(.character-creation-form) {
   margin: 0 0 12px;
 }
 .sheet-tabs button {
-  background: #101e2be8;
+  background: #1f1e1ce8;
   color: #bab8b1;
-  border: 1px solid #78634155;
+  border: 1px solid #625e5755;
   border-radius: 5px;
   padding: 12px 18px;
 }
 .sheet-tabs button[aria-selected='true'] {
   color: #efdbb3;
-  background: #273543;
+  background: #383632;
   border-color: #a0875b;
 }
 .sheet-columns {
