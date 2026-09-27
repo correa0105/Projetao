@@ -17,6 +17,7 @@ import {
 } from '../shared/character-sheet';
 import { SheetChoices, ChoiceList } from './SheetChoices';
 import './character-sheet.css';
+import './character-parchment.css';
 const signed = (v: number) => `${v >= 0 ? '+' : ''}${v}`;
 const spellName = (id: string) => spells.find((s) => s.id === id)?.label || id;
 export function CharacterSheet({

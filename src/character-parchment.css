@@ -1,0 +1,111 @@
+/* Parchment is a local material within the permanent dark application theme. */
+:root .character-sheet {
+  --ink: #35291e;
+  --secondary-ink: #433424;
+  --muted: #60503b;
+  --theme-border: #8d75504d;
+  color: var(--ink);
+}
+:root .character-sheet .sheet-panel,
+:root .character-sheet .sheet-vitals > div {
+  background: url('/character-parchment-v2.png') center / 760px auto repeat;
+  background-color: #d9c9a9;
+  border: 1px solid #a28a64;
+  border-radius: 3px 7px 4px 6px / 7px 3px 8px 4px;
+  box-shadow: inset 0 0 18px #75543020, 0 12px 30px #0006;
+}
+:root .character-sheet .sheet-panel {
+  position: relative;
+  isolation: isolate;
+}
+:root .character-sheet .sheet-panel::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid #8b6e402b;
+  border-radius: 2px 5px 3px 6px;
+  background: radial-gradient(ellipse at 0 0, #79512b18, transparent 45%), radial-gradient(ellipse at 100% 100%, #79512b18, transparent 40%);
+}
+:root .character-sheet .sheet-panel :is(h3, h4, summary, strong, b),
+:root .character-sheet .sheet-vitals strong {
+  color: #35271c;
+}
+:root .character-sheet .sheet-panel :is(p, li, label, legend, span),
+:root .character-sheet .sheet-vitals span {
+  color: #433424;
+}
+:root .character-sheet .sheet-panel :is(.muted, p.muted.small, legend small, .sheet-attributes small) {
+  color: #60503b;
+}
+:root .character-sheet .sheet-panel :is(input:not([type='checkbox']), select, textarea) {
+  color-scheme: light;
+  background: #f8ecd357;
+  color: #3b2c1e;
+  border: 1px solid #8e724c70;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 4px #72553414;
+}
+:root .character-sheet .sheet-panel option {
+  background: #e7d9bd;
+  color: #3b2c1e;
+}
+:root .character-sheet .sheet-panel :is(input, textarea)::placeholder {
+  color: #68543d;
+}
+:root .character-sheet .sheet-panel :is(input, select, textarea):focus-visible {
+  outline: 2px solid #86613d;
+  outline-offset: 2px;
+}
+:root .character-sheet .sheet-panel input[type='checkbox'] {
+  color-scheme: light;
+  accent-color: #795332;
+}
+:root .character-sheet .sheet-creation details,
+:root .character-sheet .sheet-attributes > div,
+:root .character-sheet .sheet-attributes > label,
+:root .character-sheet .sheet-rolls > div {
+  background: #f2e5c631;
+  border-color: #8d704e55;
+  border-radius: 3px;
+  box-shadow: inset 0 0 12px #80603909;
+}
+:root .character-sheet .sheet-rolls i {
+  background: #ba9e7555;
+  color: #483321;
+}
+:root .character-sheet :is(.sheet-values li, .sheet-attacks li) {
+  border-color: #8c6e4333;
+}
+:root .character-sheet .sheet-vitals svg {
+  color: #795332;
+}
+:root .character-sheet .sheet-tabs button {
+  background: #493726;
+  color: #e0cfb0;
+  border-color: #99815c;
+  border-radius: 4px 4px 0 0;
+}
+:root .character-sheet .sheet-tabs button:hover,
+:root .character-sheet .sheet-tabs button[aria-selected='true'] {
+  background: url('/character-parchment-v2.png') center / 760px auto;
+  color: #3b2c1e;
+  border-color: #b79b6b;
+}
+:root .character-sheet .sheet-panel .button {
+  background: #64482f;
+  color: #f3e6cf;
+  border-color: #765736;
+  box-shadow: inset 0 1px 0 #f1d3a12b, 0 2px 4px #4e321722;
+}
+:root .character-sheet .sheet-panel .button:hover:not(:disabled) {
+  background: #7c5837;
+  color: #fff2db;
+}
+:root .character-sheet .sheet-panel .button.outline {
+  background: #a5845340;
+  color: #45301e;
+}
+:root .character-sheet > .sheet-saved { color: #dec9a0; }
+:root .character-sheet > .form-error { color: #edb0a0; }

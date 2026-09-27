@@ -655,7 +655,7 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                <span className="title-dot">.</span>
+                {page !== 'profile' && <span className="title-dot">.</span>}
               </h1>
               <p>
                 {page === 'shop'

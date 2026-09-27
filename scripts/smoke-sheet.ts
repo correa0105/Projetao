@@ -68,8 +68,11 @@ try {
   const id = await finishTestArt((await response.json()).id);
   await expect(page.locator(`.camp-figure img[src*="${id}"]`)).toBeVisible({ timeout: 15000 });
   await page.getByRole('link', { name: 'Abrir ficha' }).click();
-  await expect(page.getByRole('heading', { name: 'Ficha.', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ficha', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Rolar os seis atributos' })).toBeVisible();
+  await mkdir('test-results', { recursive: true });
+  await page.locator('.sheet-panel details').first().evaluate((el) => el.setAttribute('open', ''));
+  await page.screenshot({ path: 'test-results/sheet-choices.png', fullPage: true });
   await page.getByRole('button', { name: 'Rolar os seis atributos' }).click();
   await expect(page.locator('.sheet-rolls>div')).toHaveCount(6);
   const before = await page.locator('.sheet-rolls').innerText();

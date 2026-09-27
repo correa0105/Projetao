@@ -8,6 +8,16 @@ A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/
 
 **Ficha** substitui Perfil. Fundo de biblioteca medieval em
 `public/character-library-v1.png`; telas Atributos, Combate, Magias e História/equipamento.
+Experimento visual de pergaminho na ficha: a primeira versão escura foi rejeitada.
+A V2 usa papel claro envelhecido em `public/character-parchment-v2.png`, tinta marrom,
+controles translúcidos e cores locais que corrigem a interferência azul do tema.
+Prompt em `docs/PERGAMINHO-PROMPT.md`; biblioteca e tema geral permanecem escuros.
+Estilos isolados
+em `src/character-parchment.css`. Ponto anterior: branch local
+`codex/checkpoint-ficha-antes-pergaminho`, commit `bc96894`; remover o import desse
+CSS restaura o visual anterior sem alterar dados. Textura V2 aprovada pelo usuário;
+removido o relevo de folhas empilhadas, textos escurecidos para melhorar o contraste
+e título “Ficha” sem ponto final.
 Título e conteúdo compartilham a largura máxima de 1160 px. O modal de criação
 usa até 960 px, com três colunas de opções no desktop e largura adaptável no celular.
 Não repetir o cabeçalho de identidade dentro da ficha: o personagem ativo aparece
