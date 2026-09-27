@@ -109,3 +109,46 @@
 }
 :root .character-sheet > .sheet-saved { color: #dec9a0; }
 :root .character-sheet > .form-error { color: #edb0a0; }
+/* Blocos de consulta: tinta e cobre sobre o mesmo pergaminho. */
+.character-sheet .sheet-save-cards,
+.character-sheet .sheet-skill-cards,
+.character-sheet .sheet-equipment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0; list-style: none; }
+:root .character-sheet .sheet-values li {
+  display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center;
+  gap: 7px; padding: 10px; border: 1px solid #80623d38; border-radius: 4px;
+  background: #fff6dd30; font-size: 12px;
+}
+:root .character-sheet .sheet-values li.is-trained { border-color: #88603b80; background: #a9804530; }
+:root .character-sheet .sheet-values li.is-expert { border-color: #694621; box-shadow: inset 3px 0 #694621; background: #a9804540; }
+:root .character-sheet .sheet-values b { display: grid; place-items: center; min-width: 30px; min-height: 30px; border-radius: 4px; background: #63452b; color: #fff0cf; font-size: 17px; font-variant-numeric: tabular-nums; }
+.sheet-training { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; color: #79684e; }
+.sheet-training.is-trained, .sheet-training.is-expert { border: 1px solid #76502d; border-radius: 50%; color: #523519; }
+.sheet-exploration { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+.sheet-exploration > div { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 14px 4px; border: 1px solid #80623d38; border-radius: 4px; background: #fff6dd30; text-align: center; }
+:root .character-sheet .sheet-exploration b { font: 600 19px var(--serif); color: #45301f; }
+.sheet-exploration span { font-size: 10px; }
+.sheet-language-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.sheet-language-tags > span { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border: 1px solid #80623d40; border-radius: 4px; background: #9c794220; font-size: 12px; }
+.sheet-training-cards { list-style: none; padding: 0; display: grid; gap: 7px; }
+.sheet-training-cards li { display: flex; align-items: center; gap: 10px; padding: 9px 11px; background: #9c794218; border-left: 2px solid #88603b80; font-size: 12px; }
+.sheet-training-cards svg { flex-shrink: 0; }
+.sheet-equipment-card { display: flex; align-items: center; gap: 10px; padding: 12px 10px; border: 1px solid #80623d50; background: #fff6dd38; border-radius: 4px; font-size: 12px; line-height: 1.4; }
+.sheet-equipment-icon { display: grid; place-items: center; width: 34px; height: 38px; flex-shrink: 0; color: #76502d; border-right: 1px solid #80623d40; padding-right: 8px; }
+.sheet-equipment-quantity { margin-left: auto; white-space: nowrap; }
+@media (min-width: 751px) and (max-width: 1050px), (max-width: 420px) {
+  .character-sheet .sheet-skill-cards, .character-sheet .sheet-equipment-grid { grid-template-columns: 1fr; }
+}
+.character-sheet .sheet-attack-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+:root .character-sheet .sheet-attack-cards li { display: flex; flex-direction: column; gap: 16px; padding: 16px; border: 1px solid #80623d55; border-radius: 5px; background: #fff6dd38; }
+.sheet-attack-cards header { display: flex; gap: 10px; align-items: center; }
+.sheet-attack-cards header svg { color: #76502d; flex-shrink: 0; }
+.sheet-attack-numbers { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; }
+.sheet-attack-numbers > div { display: flex; flex-direction: column; gap: 6px; padding: 10px; background: #8e693025; border-radius: 3px; }
+.sheet-attack-numbers span { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+:root .character-sheet .sheet-attack-numbers b { font-size: 22px; color: #4c321e; }
+.sheet-attack-cards footer { display: flex; justify-content: space-between; gap: 8px; margin-top: auto; font-size: 11px; }
+.character-sheet .sheet-features { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; padding: 0; list-style: none; }
+.character-sheet .sheet-features li { display: flex; align-items: flex-start; gap: 10px; padding: 14px; margin: 0; border: 1px solid #80623d38; border-left: 3px solid #927044; border-radius: 3px; background: #fff6dd28; font-size: 13px; }
+.sheet-features li > svg { flex-shrink: 0; margin-top: 3px; color: #76502d; }
+:root .character-sheet .sheet-features p { margin: 6px 0 0; font-size: 12px; line-height: 1.65; }
+@media (max-width: 750px) { .character-sheet .sheet-attack-cards, .character-sheet .sheet-features { grid-template-columns: 1fr; } }

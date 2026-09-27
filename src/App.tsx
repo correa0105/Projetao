@@ -33,6 +33,7 @@ import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
 import { CharacterSheet } from './CharacterSheet';
+import { Achievements } from './Achievements';
 import { Inventory } from './Inventory';
 import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
@@ -64,11 +65,6 @@ const statusLabel = {
   active: 'Em andamento',
   completed: 'Concluída',
   closed: 'Encerrada',
-};
-const achievementInfo: Record<string, [string, string, Icon]> = {
-  first_character: ['O primeiro capítulo', 'Dê vida a um personagem.', Feather],
-  first_purchase: ['Pronto para a estrada', 'Faça sua primeira compra no empório.', Backpack],
-  first_mission: ['Atenda ao chamado', 'Inscreva-se em uma missão da guilda.', Compass],
 };
 const initialPage = (): Page => {
   const key = location.hash.slice(1);
@@ -655,9 +651,9 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                {!['profile', 'inventory'].includes(page) && <span className="title-dot">.</span>}
+                {!['profile', 'inventory', 'achievements'].includes(page) && <span className="title-dot">.</span>}
               </h1>
-              {!['profile', 'inventory'].includes(page) && (
+              {!['profile', 'inventory', 'achievements'].includes(page) && (
                 <p>
                   {page === 'shop'
                     ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.1.'
@@ -845,33 +841,7 @@ function Portal({ user }: { user: User }) {
               }
             />
           ))}
-        {page === 'achievements' &&
-          (character ? (
-            <div className="achievements-grid">
-              {Object.entries(achievementInfo).map(([code, [title, description, Icon]]) => {
-                const unlocked = details?.achievements.find((item) => item.code === code);
-                return (
-                  <article className={`paper achievement ${unlocked ? 'unlocked' : ''}`} key={code}>
-                    <div className="achievement-emblem">
-                      <Icon size={32} />
-                    </div>
-                    <span className="eyebrow">
-                      {unlocked ? 'CONQUISTA DESBLOQUEADA' : 'UM NOVO OBJETIVO'}
-                    </span>
-                    <h2>{title}</h2>
-                    <p>{description}</p>
-                    <span className="badge neutral">
-                      {unlocked
-                        ? new Date(unlocked.unlocked_at).toLocaleDateString('pt-BR')
-                        : 'A conquistar'}
-                    </span>
-                  </article>
-                );
-              })}
-            </div>
-          ) : (
-            noCharacter
-          ))}
+        {page === 'achievements' && (character ? <Achievements key={character.id} characterId={character.id} /> : noCharacter)}
         {['missions', 'board', 'hooks'].includes(page) && (
           <>
             <div className="board-toolbar">

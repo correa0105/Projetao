@@ -89,7 +89,7 @@ try {
   await page.screenshot({ path: 'test-results/sheet-desktop.png', fullPage: true });
   const skillHelp = page.getByRole('button', { name: 'Informações sobre Perícias', exact: true });
   await skillHelp.hover();
-  await expect(page.getByRole('tooltip')).toContainText('◆ Especialização');
+  await expect(page.getByRole('tooltip')).toContainText('Setas duplas: especialização');
   await page.screenshot({ path: 'test-results/sheet-help-desktop.png' });
   await page.keyboard.press('Escape');
   await expect(page.getByRole('tooltip')).toHaveCount(0);

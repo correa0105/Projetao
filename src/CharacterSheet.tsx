@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BookOpen, Dices, Shield, Heart, Sparkles } from 'lucide-react';
+import { BookOpen, Dices, Shield, Heart, Sparkles, Check, ChevronsUp, Eye, Footprints, Ruler, Languages, Package, Sword, Backpack, Hand } from 'lucide-react';
 import { api, post } from './api';
 import type { Character, Details } from './types';
 import { statNames, modifier, money } from '../shared/rules';
@@ -21,6 +21,26 @@ import './character-sheet.css';
 import './character-parchment.css';
 const signed = (v: number) => `${v >= 0 ? '+' : ''}${v}`;
 const spellName = (id: string) => spells.find((s) => s.id === id)?.label || id;
+function FeatureCard({ text }: { text: string }) {
+  const separator = text.indexOf(':');
+  return <li><Sparkles size={17} aria-hidden="true" /><div>
+    <strong>{separator < 0 ? text : text.slice(0, separator)}</strong>
+    {separator >= 0 && <p>{text.slice(separator + 1).trim()}</p>}
+  </div></li>;
+}
+function TrainingMark({ trained, expert = false }: { trained: boolean; expert?: boolean }) {
+  const label = expert ? 'Especialização' : trained ? 'Proficiência' : 'Sem proficiência';
+  return <span className={'sheet-training ' + (expert ? 'is-expert' : trained ? 'is-trained' : '')} role="img" aria-label={label} title={label}>
+    {expert ? <ChevronsUp size={13} /> : trained ? <Check size={12} /> : <span aria-hidden="true">—</span>}
+  </span>;
+}
+function EquipmentCard({ name, quantity }: { name: string; quantity?: number }) {
+  const Icon = /espada|arco|flecha|adaga|machado|lança|martelo|besta/i.test(name) ? Sword
+    : /armadura|cota|escudo|couro/i.test(name) ? Shield
+    : /livro|orações/i.test(name) ? BookOpen : /pacote|mochila/i.test(name) ? Backpack : Package;
+  return <li className="sheet-equipment-card"><span className="sheet-equipment-icon"><Icon size={23} aria-hidden="true" /></span>
+    <span>{name}</span>{quantity !== undefined && <b className="sheet-equipment-quantity">×{quantity}</b>}</li>;
+}
 export function CharacterSheet({
   character: c,
   details,
@@ -266,51 +286,45 @@ export function CharacterSheet({
                     <h3>
                       Salvaguardas
                       <SheetHelp label="Salvaguardas">
-                        ○ Sem proficiência: apenas o modificador do atributo. ● Proficiência: soma
+                        Traço: sem proficiência, usa apenas o modificador do atributo. Marca de confirmação: proficiência, soma
                         também o bônus de proficiência. Os valores exibidos já incluem o bônus.
                       </SheetHelp>
                     </h3>
-                    <ul className="sheet-values">
+                    <ul className="sheet-values sheet-save-cards">
                       {d.saves.map((v, i) => (
-                        <li key={i}>
-                          <span>
-                            {k.saves.includes(i) ? '●' : '○'} {statNames[i]}
-                          </span>
-                          <b>{signed(v)}</b>
+                        <li key={i} className={k.saves.includes(i) ? 'is-trained' : ''}>
+                          <TrainingMark trained={k.saves.includes(i)} />
+                          <span>{statNames[i]}</span><b>{signed(v)}</b>
                         </li>
                       ))}
                     </ul>
                     <h3>Sentidos e movimento</h3>
-                    <p>
-                      Percepção passiva <b>{d.passivePerception}</b>
-                      <br />
-                      Deslocamento <b>{d.speed} m</b> · Tamanho <b>{d.size}</b>
-                    </p>
+                    <div className="sheet-exploration">
+                      <div><Eye size={20} aria-hidden="true" /><b>{d.passivePerception}</b><span>Percepção passiva</span></div>
+                      <div><Footprints size={20} aria-hidden="true" /><b>{d.speed} m</b><span>Deslocamento</span></div>
+                      <div><Ruler size={20} aria-hidden="true" /><b>{d.size}</b><span>Tamanho</span></div>
+                    </div>
                     <h3>Idiomas</h3>
-                    <p>{d.languages.join(' · ')}</p>
+                    <div className="sheet-language-tags">{d.languages.map((language) => <span key={language}><Languages size={14} aria-hidden="true" />{language}</span>)}</div>
                     <h3>Proficiências</h3>
-                    <ul>
-                      {d.proficiencies.map((v, i) => (
-                        <li key={i}>{v}</li>
-                      ))}
+                    <ul className="sheet-training-cards">
+                      {d.proficiencies.map((v, i) => <li key={i}><Shield size={17} aria-hidden="true" /><span>{v}</span></li>)}
                     </ul>
                   </div>
                   <div>
                     <h3>
                       Perícias
                       <SheetHelp label="Perícias">
-                        ○ Sem proficiência: apenas o modificador do atributo. ● Proficiência: soma o
-                        bônus de proficiência. ◆ Especialização: soma o dobro desse bônus. Os totais
+                        Traço: sem proficiência. Marca de confirmação: proficiência, soma o
+                        bônus de proficiência. Setas duplas: especialização, soma o dobro desse bônus. Os totais
                         já estão calculados.
                       </SheetHelp>
                     </h3>
-                    <ul className="sheet-values">
+                    <ul className="sheet-values sheet-skill-cards">
                       {d.skills.map((v) => (
-                        <li key={v.name}>
-                          <span>
-                            {v.expert ? '◆' : v.trained ? '●' : '○'} {v.name}
-                          </span>
-                          <b>{signed(v.value)}</b>
+                        <li key={v.name} className={v.expert ? 'is-expert' : v.trained ? 'is-trained' : ''}>
+                          <TrainingMark trained={v.trained} expert={v.expert} />
+                          <span>{v.name}</span><b>{signed(v.value)}</b>
                         </li>
                       ))}
                     </ul>
@@ -364,33 +378,26 @@ export function CharacterSheet({
                     {armorNote} Bônus situacionais são aplicados na mesa.
                   </SheetHelp>
                 </h3>
-                <ul className="sheet-attacks">
+                <ul className="sheet-attacks sheet-attack-cards">
                   {sheetAttacks(c.race, c.class, c.stats, choices).map((w) => (
                     <li key={w.name}>
-                      <strong>{w.name}</strong>
-                      <span>Ataque {signed(w.attack)}</span>
-                      <span>
-                        {w.dice}
-                        {w.dice === '—' ? '' : ' ' + signed(w.ability)} · {w.type}
-                      </span>
-                      {!w.trained && <small>Sem proficiência</small>}
+                      <header><Sword size={22} aria-hidden="true" /><strong>{w.name}</strong></header>
+                      <div className="sheet-attack-numbers">
+                        <div><span>Acerto</span><b>{signed(w.attack)}</b></div>
+                        <div><span>Dano</span><b>{w.dice}{w.dice === '—' ? '' : ' ' + signed(w.ability)}</b></div>
+                      </div>
+                      <footer><span>{w.type}</span>{!w.trained && <small>Sem proficiência</small>}</footer>
                     </li>
                   ))}
                   <li>
-                    <strong>Desarmado</strong>
-                    <span>
-                      Ataque{' '}
-                      {signed(
-                        modifier(c.stats[c.class === 'Monge' && c.stats[1] > c.stats[0] ? 1 : 0]) +
-                          d.proficiency,
-                      )}
-                    </span>
-                    <span>
-                      {c.class === 'Monge'
-                        ? `1d4 ${signed(Math.max(modifier(c.stats[0]), modifier(c.stats[1])))}`
-                        : Math.max(0, 1 + modifier(c.stats[0]))}{' '}
-                      contundente
-                    </span>
+                    <header><Hand size={22} aria-hidden="true" /><strong>Desarmado</strong></header>
+                    <div className="sheet-attack-numbers">
+                      <div><span>Acerto</span><b>{signed(modifier(c.stats[c.class === 'Monge' && c.stats[1] > c.stats[0] ? 1 : 0]) + d.proficiency)}</b></div>
+                      <div><span>Dano</span><b>{c.class === 'Monge'
+                        ? '1d4 ' + signed(Math.max(modifier(c.stats[0]), modifier(c.stats[1])))
+                        : Math.max(0, 1 + modifier(c.stats[0]))}</b></div>
+                    </div>
+                    <footer><span>Contundente</span></footer>
                   </li>
                 </ul>
                 {c.race === 'Draconato' && (
@@ -404,12 +411,12 @@ export function CharacterSheet({
                 <h3>Traços e recursos</h3>
                 <ul className="sheet-features">
                   {d.features.map((v, i) => (
-                    <li key={i}>{v}</li>
+                    <FeatureCard key={i} text={v} />
                   ))}
                   {Object.entries(choices.options)
                     .filter(([key]) => ['style', 'enemy', 'terrain', 'dragon'].includes(key))
                     .map(([key, v]) => (
-                      <li key={key}>{v.join(', ')}</li>
+                      <FeatureCard key={key} text={(({ style: 'Estilo de luta', enemy: 'Inimigo favorito', terrain: 'Terreno favorito', dragon: 'Ancestralidade dracônica' } as Record<string, string>)[key]) + ': ' + v.join(', ')} />
                     ))}
                 </ul>
               </>
@@ -539,18 +546,12 @@ export function CharacterSheet({
                         Trocas de equipamento e efeitos situacionais são resolvidos na mesa.
                       </SheetHelp>
                     </h3>
-                    <ul>
-                      {d.equipment.map((v, i) => (
-                        <li key={i}>{v}</li>
-                      ))}
+                    <ul className="sheet-equipment-grid">
+                      {d.equipment.map((v, i) => <EquipmentCard key={i} name={v} />)}
                     </ul>
                     <h3>Inventário adquirido</h3>
-                    <ul>
-                      {details?.inventory.map((item) => (
-                        <li key={item.id}>
-                          {item.quantity} × {item.name}
-                        </li>
-                      ))}
+                    <ul className="sheet-equipment-grid">
+                      {details?.inventory.map((item) => <EquipmentCard key={item.id} name={item.name} quantity={item.quantity} />)}
                     </ul>
                     <p>
                       {money(c.gold_cp)} PO · {c.experience} XP

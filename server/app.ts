@@ -14,6 +14,7 @@ import { atlasId, resolvePostLocation } from './atlas.js';
 import { characterArtRouter, characterListSql } from './character-art.js';
 import { characterSchema } from '../shared/character-art.js';
 import { characterSheetRouter } from './character-sheet.js';
+import { achievementsRouter } from './achievements.js';
 import { inventoryRouter } from './inventory.js';
 import {
   KINGDOM_BACKGROUND_MAX_BYTES,
@@ -124,6 +125,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
   app.use('/api', inventoryRouter());
+  app.use('/api', achievementsRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [staff],
