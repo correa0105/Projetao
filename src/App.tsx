@@ -11,7 +11,6 @@ import {
   Compass,
   ExternalLink,
   Feather,
-  Gem,
   Heart,
   House,
   LogOut,
@@ -34,6 +33,7 @@ import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
 import { CharacterSheet } from './CharacterSheet';
+import { Inventory } from './Inventory';
 import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
 import type { AtlasLocation, Character, Details, Entry, Item, Page, Post, User } from './types';
@@ -655,23 +655,23 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                {page !== 'profile' && <span className="title-dot">.</span>}
+                {!['profile', 'inventory'].includes(page) && <span className="title-dot">.</span>}
               </h1>
-              {page !== 'profile' && <p>
-                {page === 'shop'
-                  ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.1.'
-                  : page === 'characters'
-                    ? 'Diferentes rostos, infinitas histórias. Escolha quem você será hoje.'
-                    : page === 'missions'
-                      ? 'Atenda a um chamado ou reencontre as aventuras que ficaram na memória.'
-                      : page === 'board'
-                        ? 'Missões, encontros e notícias da Bastião da Alvorada.'
-                        : page === 'inventory'
-                          ? `Tudo o que ${character?.name || 'seu personagem'} leva para a próxima aventura.`
+              {!['profile', 'inventory'].includes(page) && (
+                <p>
+                  {page === 'shop'
+                    ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.1.'
+                    : page === 'characters'
+                      ? 'Diferentes rostos, infinitas histórias. Escolha quem você será hoje.'
+                      : page === 'missions'
+                        ? 'Atenda a um chamado ou reencontre as aventuras que ficaram na memória.'
+                        : page === 'board'
+                          ? 'Missões, encontros e notícias da Bastião da Alvorada.'
                           : page === 'hooks'
-                              ? 'Uma pista, um rumor, uma razão para seguir em frente.'
-                              : 'Pessoas, lugares e crônicas da Alvorada Cinzenta.'}
-              </p>}
+                            ? 'Uma pista, um rumor, uma razão para seguir em frente.'
+                            : 'Pessoas, lugares e crônicas da Alvorada Cinzenta.'}
+                </p>
+              )}
             </div>
             {page === 'characters' && (
               <button className="button primary" onClick={() => setModal('character')}>
@@ -835,106 +835,15 @@ function Portal({ user }: { user: User }) {
           ) : !details ? (
             <p>Consultando a mochila…</p>
           ) : (
-            <>
-              <div className="inventory-summary">
-                <div>
-                  <Backpack size={24} />
-                  <span>
-                    <b>{inventoryCount}</b> itens na mochila
-                  </span>
-                </div>
-                <div>
-                  <Gem size={22} />
-                  <span>
-                    <b>
-                      {new Intl.NumberFormat('pt-BR').format(
-                        details.inventory.reduce(
-                          (sum, item) => sum + Number(item.weight_lb) * (item.quantity || 0),
-                          0,
-                        ),
-                      )}
-                    </b>{' '}
-                    lb de equipamento
-                  </span>
-                </div>
-                <div>
-                  <Coins size={23} />
-                  <span>
-                    <b>{money(character.gold_cp)}</b> PO disponíveis
-                  </span>
-                </div>
-              </div>
-              {details.inventory.length ? (
-                <div className="paper table-wrap">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Item</th>
-                        <th>Categoria</th>
-                        <th>Quantidade</th>
-                        <th>Peso total</th>
-                        <th>Valor unitário</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {details.inventory.map((item) => (
-                        <tr key={item.id}>
-                          <td>
-                            <b>{item.name}</b>
-                            <small>{item.original_name}</small>
-                          </td>
-                          <td>{item.category}</td>
-                          <td>
-                            <span className="quantity-badge">{item.quantity}</span>
-                          </td>
-                          <td>{Number(item.weight_lb) * (item.quantity || 0)} lb</td>
-                          <td>{money(item.price_cp)} PO</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <Empty
-                  title="Sua mochila ainda está leve."
-                  action={
-                    <button className="button primary" onClick={() => go('shop')}>
-                      Visitar o empório
-                      <ArrowRight size={16} />
-                    </button>
-                  }
-                >
-                  Encontre seu primeiro equipamento na loja da guilda.
-                </Empty>
-              )}
-              {details.history.length > 0 && (
-                <section className="purchase-history">
-                  <div className="section-heading">
-                    <h2>Últimas compras</h2>
-                    <button className="text-button" onClick={() => go('shop')}>
-                      Voltar à loja
-                      <ArrowUpRight size={16} />
-                    </button>
-                  </div>
-                  <div className="paper">
-                    {details.history.map((order) => (
-                      <div className="history-row" key={order.id}>
-                        <span className="history-icon">
-                          <Check size={15} />
-                        </span>
-                        <div>
-                          <b>
-                            {order.quantity} × {order.name}
-                          </b>
-                          <small>{new Date(order.created_at).toLocaleString('pt-BR')}</small>
-                        </div>
-                        <span>−{money(order.total_cp)} PO</span>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              )}
-            </>
+            <Inventory
+              key={character.id}
+              character={character}
+              details={details}
+              onShop={() => go('shop')}
+              onInventoryChange={(inventory) =>
+                setDetails((current) => (current ? { ...current, inventory } : current))
+              }
+            />
           ))}
         {page === 'achievements' &&
           (character ? (

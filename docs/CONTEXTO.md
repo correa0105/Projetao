@@ -6,6 +6,33 @@ A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/
 
 ## Estado atual
 
+Inventário compactado: mochila menor, 24 slots iniciais na mochila (quatro fileiras no desktop), largura máxima de 1160 px igual à ficha e base do painel alinhada à coluna da mochila, slots menores também no cofre. Mais itens expandem a grade sem limite artificial. Descrições e transferência por botão ficam em balões ao passar o mouse, focar ou tocar no item; arraste preservado. Inventários vazios mostram apenas os slots, sem mensagens explicativas.
+
+Inventário redesenhado com cenário de espólios `public/inventory-loot-v1.png`, mochila
+ilustrada `public/inventory-backpack-v1.png` e slots selecionáveis em `src/Inventory.tsx`.
+Resumo de PO, peso em lb e quantidade fica acima da mochila, na coluna esquerda,
+alinhado ao topo dos slots, com textura de pergaminho escurecido e ícones ilustrados
+em `public/inventory-stat-icons-v1.png` (moedas, peso de pedra e suprimentos).
+Mochila reduzida para até 280 px e afastada 54 px abaixo do resumo no desktop.
+Painel de slots e histórico usam a mesma textura de pergaminho escurecido dos indicadores.
+Seleção mostra descrição,
+quantidade, peso total e valor unitário. Espaços vazios são decorativos, sem limite
+novo de capacidade. Histórico de compras preservado e recolhido. Equipamento inicial
+permanece na ficha, separado das compras.
+Cofre compartilhado entre personagens da mesma conta, abaixo da mochila individual,
+com a mesma textura. Migration 020 cria `account_vault` e auditoria `inventory_transfers`.
+GET `/api/characters/:id/storage` retorna mochila e cofre; POST `/api/inventory/transfers`
+move quantidades em transação, conferindo sessão, titularidade e personagem não excluído.
+Locks na conta e no personagem serializam cofre, compras e exclusão. Chave idempotente
+por conta impede repetir transferências. Movimentações não alteram PO nem histórico de compras.
+Arraste ou botão abre seleção de quantidade; alternativa funciona com teclado e celular.
+O resumo mostra somente peso/itens da mochila. O cofre guarda os itens que ficam em casa;
+não há snapshot automático de equipamento de missão nesta etapa.
+Validação: 18 testes de API em PostgreSQL isolado; `npm run test:inventory` verifica arraste,
+transferência parcial, persistência, troca de personagem e celular em banco descartável.
+Cabeçalho segue acampamento/ficha, sem subtítulo. Checkpoint anterior local:
+`codex/checkpoint-antes-inventario`, commit `d2e1ef0`. Prompts em `docs/INVENTARIO-PROMPTS.md`.
+
 Experimento de paleta global solicitado em 27/09/2026: primeira versão rejeitada
 por excesso de marrom. Revisão com fundos carvão, painéis cinza quente,
 ocre/amarelo queimado restrito a destaques e botões principais, aplicado a todas as abas,

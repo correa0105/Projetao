@@ -48,6 +48,10 @@ Abra **http://localhost:8081**. O painel Pgweb conecta automaticamente ao banco 
 usando a configuração privada do Compose, sem precisar digitar a senha. Clique em uma
 tabela na lateral para consultar seus registros e estrutura; `board_posts` contém o mural,
 `characters` os personagens e `inventory` os inventários.
+O cofre compartilhado da conta fica em `account_vault`; `inventory_transfers` registra
+as movimentações entre ele e as mochilas individuais. Na aba Inventário, arraste um
+item entre os painéis ou use Guardar no cofre / Levar para a mochila e escolha a quantidade.
+`npm run test:inventory` valida esse fluxo em um PostgreSQL local descartável.
 
 O serviço é opcional (profile `tools`), acessível somente na máquina local e configurado
 em modo de consulta (`--readonly`). Para parar: `docker compose stop pgweb`.

@@ -181,9 +181,9 @@ try {
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: 'test-results/shop-desktop.png', fullPage: true });
   await navigate('Inventário');
-  await expect(page.locator('tbody tr')).toHaveCount(1);
-  await expect(page.locator('tbody tr')).toContainText('Espada longa');
-  await expect(page.locator('.quantity-badge')).toHaveText('2');
+  await expect(page.locator('button.loot-slot')).toHaveCount(1);
+  await expect(page.locator('button.loot-slot')).toContainText('Espada longa');
+  await expect(page.locator('.loot-quantity')).toHaveText('2');
   await page.reload();
   await expect(page.locator('.quantity-badge')).toHaveText('2');
   await expect(page.getByRole('switch', { name: 'Modo escuro' })).toHaveCount(0);
