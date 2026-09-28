@@ -20,11 +20,11 @@ test('ficha: escolhas válidas, bônus raciais e regras de nível 1', () => {
   const d = deriveSheet({ race: 'Halfling', class: 'Ladino', stats, level: 1 }, c);
   assert.equal(d.hp, 10);
   assert.equal(d.armorClass, 14);
-  assert.equal(d.speed, 7.5);
+  assert.equal(d.speed, 9);
   assert.equal(d.size, 'Pequeno');
-  assert.deepEqual(racialBonuses('Halfling', c), [0, 2, 0, 0, 0, 1]);
-  const elf = defaultChoices('Meio-elfo', 'Mago');
-  assert.deepEqual(racialBonuses('Meio-elfo', elf), [1, 1, 0, 0, 0, 2]);
+  assert.deepEqual(racialBonuses('Halfling', c), [0, 0, 0, 2, 1, 0]);
+  const elf = defaultChoices('Elfo', 'Mago');
+  assert.deepEqual(racialBonuses('Elfo', elf), [0, 0, 0, 2, 1, 0]);
   assert.throws(() =>
     validateChoices('Halfling', 'Ladino', {
       ...c,
@@ -157,6 +157,21 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
       (await req(path + '/finalize', alice.cookie, { assignment: [0, 1, 2, 3, 4, 5] })).status,
       409,
     );
+    const rest = {
+      ...choices,
+      options: { ...choices.options, mastery: ['Alabarda', 'Glaive', 'Adaga'] },
+    };
+    assert.equal((await req(path + '/rest-choices', bob.cookie, rest)).status, 404);
+    assert.equal(
+      (
+        await req(path + '/rest-choices', alice.cookie, {
+          ...rest,
+          abilityBoosts: [0, 0, 0, 1, 1, 1],
+        })
+      ).status,
+      400,
+    );
+    assert.equal((await req(path + '/rest-choices', alice.cookie, rest)).status, 200);
     const state = {
       prepared: [],
       notes: 'Anotação preservada',
@@ -176,6 +191,38 @@ test('ficha API: titularidade, rolagem única concorrente, distribuição defini
     const reload = await req(path, alice.cookie);
     assert.equal(reload.data.sheet.notes, state.notes);
     assert.deepEqual(reload.data.sheet.rolls, rolls);
+    // Reconciliation uses the old dice and does not grant wealth again.
+    await pool.query(
+      "UPDATE character_sheets SET choices=NULL,finalized_at=NULL,rules_version='5.1' WHERE character_id=$1",
+      [character.id],
+    );
+    const converted = defaultChoices('Orc', character.class, 'Soldado');
+    assert.equal((await req(path + '/roll', alice.cookie, {})).status, 409);
+    const conversion = await req(path + '/choices', alice.cookie, converted);
+    assert.equal(conversion.status, 200);
+    assert.deepEqual(conversion.data.sheet.rolls, rolls);
+    assert.equal(conversion.data.sheet.notes, state.notes);
+    assert.equal((await req(path + '/finalize', alice.cookie, { assignment })).status, 200);
+    assert.equal(
+      (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [character.id])).rows[0]
+        .gold_cp,
+      character.gold_cp,
+    );
+    const fresh = await createLegacyTestCharacter(alice.id, 'Nova riqueza');
+    await pool.query('UPDATE characters SET gold_cp=0,starting_wealth_granted=false WHERE id=$1', [
+      fresh.id,
+    ]);
+    const freshPath = '/characters/' + fresh.id + '/sheet';
+    await req(freshPath + '/choices', alice.cookie, defaultChoices(fresh.race, fresh.class));
+    await req(freshPath + '/roll', alice.cookie, {});
+    const confirmations = await Promise.all(
+      Array.from({ length: 4 }, () => req(freshPath + '/finalize', alice.cookie, { assignment })),
+    );
+    assert.ok(confirmations.every((r) => r.status === 200));
+    assert.equal(
+      (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [fresh.id])).rows[0].gold_cp,
+      1200,
+    );
     await pool.query('UPDATE characters SET deleted_at=now() WHERE id=$1', [character.id]);
     assert.equal((await req(path, alice.cookie)).status, 404);
   } finally {

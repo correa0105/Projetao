@@ -101,6 +101,9 @@ dialog:has(.character-creation-form) {
 .sheet-creation summary {
   cursor: pointer;
   color: #d6c49e;
+  margin: 0;
+}
+.sheet-creation details[open] > summary {
   margin-bottom: 12px;
 }
 .sheet-creation .sheet-choice,

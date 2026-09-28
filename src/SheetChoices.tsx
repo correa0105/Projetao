@@ -6,13 +6,18 @@ import {
   raceRules,
   skills,
   languages,
-  tools,
   spells,
   spellOptions,
   racialSkills,
   proficientSkills,
+  backgroundRules,
+  defaultChoices,
+  normalizeOptions,
+  startingEquipment,
+  startingGold,
   type SheetChoices as Choices,
 } from '../shared/character-sheet';
+import { statNames, money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
 export function ChoiceList({
   label,
@@ -69,13 +74,14 @@ export function SheetChoices({
   onChange: (v: Choices) => void;
 }) {
   const k = classRules[cls],
-    update = (v: Partial<Choices>) => onChange({ ...c, ...v });
-  const used = racialSkills(race, c);
+    b = backgroundRules[c.backgroundType],
+    used = racialSkills(race, c);
+  const update = (v: Partial<Choices>) => onChange(normalizeOptions(race, cls, { ...c, ...v }));
   return (
     <div className="sheet-creation stack">
       <div className="form-grid">
         <label>
-          Sub-raça (SRD 5.1)
+          Linhagem (SRD 5.2.1)
           <select value={c.subrace} onChange={(e) => update({ subrace: e.target.value })}>
             {raceRules[race].variants.map((v) => (
               <option key={v}>{v}</option>
@@ -94,49 +100,78 @@ export function SheetChoices({
       <label>
         Antecedente
         <SheetHelp label="Antecedente">
-          Acólito recebe Intuição, Religião, dois idiomas e abrigo em templos de sua fé. O
-          antecedente personalizado permite escolher duas perícias e duas ferramentas ou idiomas,
-          mantendo o abrigo e o equipamento do acólito como base SRD.
+          O antecedente concede bônus de atributos, duas perícias, uma ferramenta e um talento de
+          origem. Opções do SRD 5.2.1.
         </SheetHelp>
         <select
           aria-label="Antecedente"
           value={c.backgroundType}
-          onChange={(e) =>
-            update({
-              backgroundType: e.target.value as Choices['backgroundType'],
-              backgroundSkills: ['Intuição', 'Religião'],
-              backgroundExtras: [],
-            })
-          }
+          onChange={(e) => {
+            const next = defaultChoices(race, cls, e.target.value);
+            onChange({
+              ...c,
+              ...next,
+              alignment: c.alignment,
+              personality: c.personality,
+              ideals: c.ideals,
+              bonds: c.bonds,
+              flaws: c.flaws,
+              appearance: c.appearance,
+              age: c.age,
+              height: c.height,
+              weight: c.weight,
+            });
+          }}
         >
-          <option>Acólito</option>
-          <option>Personalizado</option>
+          {Object.keys(backgroundRules).map((v) => (
+            <option key={v}>{v}</option>
+          ))}
         </select>
       </label>
+      <p className="muted small">
+        {b.skills.join(' · ')} · {b.tool} · {b.feat}
+      </p>
+      <fieldset className="sheet-choice">
+        <legend>
+          Bônus do antecedente
+          <SheetHelp label="Bônus do antecedente">
+            Escolha +2 em um atributo e +1 em outro, ou +1 nos três. Nenhum atributo pode
+            ultrapassar 20.
+          </SheetHelp>
+        </legend>
+        <div className="form-grid">
+          {b.abilities.map((i) => (
+            <label key={i}>
+              {statNames[i]}
+              <select
+                aria-label={'Bônus em ' + statNames[i]}
+                value={c.abilityBoosts[i]}
+                onChange={(e) =>
+                  update({
+                    abilityBoosts: c.abilityBoosts.map((v, j) =>
+                      j === i ? Number(e.target.value) : v,
+                    ),
+                  })
+                }
+              >
+                {[0, 1, 2].map((v) => (
+                  <option key={v} value={v}>
+                    +{v}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <ChoiceList
-        label="Perícias do antecedente"
-        count={2}
-        value={c.backgroundSkills}
-        options={
-          c.backgroundType === 'Acólito' && !used.some((v) => ['Intuição', 'Religião'].includes(v))
-            ? ['Intuição', 'Religião']
-            : skills.filter((v) => !used.includes(v))
-        }
-        onChange={(v) => update({ backgroundSkills: v, classSkills: [], expertise: [] })}
-      />
-      <ChoiceList
-        label="Idiomas e ferramentas do antecedente"
+        label="Idiomas iniciais (além de Comum)"
         count={2}
         value={c.backgroundExtras}
-        options={(c.backgroundType === 'Acólito' ? languages : [...languages, ...tools]).filter(
-          (v) =>
-            !raceRules[race].languages.includes(v) &&
-            !c.options.racialLanguage?.includes(v) &&
-            !(cls === 'Feiticeiro' && v === 'Dracônico'),
-        )}
+        options={languages.filter((v) => v !== 'Comum')}
         onChange={(v) => update({ backgroundExtras: v })}
       />
-      {choiceFields(race, cls).map((f) =>
+      {choiceFields(race, cls, c).map((f) =>
         f.count === 1 ? (
           <label key={f.key}>
             {f.label}
@@ -156,57 +191,62 @@ export function SheetChoices({
             key={f.key}
             label={f.label}
             count={f.count}
-            options={f.options}
             value={c.options[f.key] || []}
-            onChange={(v) => update({ options: { ...c.options, [f.key]: v } })}
+            options={f.options}
+            onChange={(v) => onChange({ ...c, options: { ...c.options, [f.key]: v } })}
           />
         ),
       )}
       <ChoiceList
-        label={`Perícias de ${cls}`}
+        label={'Perícias de ' + cls}
         count={k.count}
         value={c.classSkills}
-        options={k.skills.filter((v) => !c.backgroundSkills.includes(v) && !used.includes(v))}
-        onChange={(v) => update({ classSkills: v, expertise: [] })}
+        options={k.skills.filter(
+          (v) =>
+            !c.backgroundSkills.includes(v) &&
+            !used.includes(v) &&
+            !Object.entries(c.options)
+              .filter(([key]) => key.startsWith('skilled'))
+              .flatMap(([, v]) => v)
+              .includes(v),
+        )}
+        onChange={(v) => onChange({ ...c, classSkills: v, expertise: [] })}
       />
       {cls === 'Ladino' && (
         <ChoiceList
           label="Especialização"
           count={2}
           value={c.expertise}
-          options={[...proficientSkills(race, c), 'Ferramentas de ladrão']}
-          onChange={(v) => update({ expertise: v })}
+          options={proficientSkills(race, c)}
+          onChange={(v) => onChange({ ...c, expertise: v })}
         />
       )}
       <details open>
-        <summary>
-          Equipamento inicial
-          <SheetHelp label="Equipamento inicial">
-            Itens iniciais ficam registrados na ficha. A guilda mantém a regra de teste de 150 PO;
-            não há sorteio adicional de riqueza.
-          </SheetHelp>
-        </summary>
+        <summary>Equipamento inicial</summary>
         <div className="form-grid">
           {equipmentFields(cls).map((f) => (
             <label key={f.key}>
               {f.label}
               <select
-                value={c.equipment[f.key]?.[0] || ''}
+                value={c.equipment[f.key]?.[0]}
                 onChange={(e) =>
                   update({ equipment: { ...c.equipment, [f.key]: [e.target.value] } })
                 }
               >
-                {f.options
-                  .filter(
-                    (v) => !(cls === 'Clérigo' && v === 'Martelo de guerra' && race !== 'Anão'),
-                  )
-                  .map((v) => (
-                    <option key={v}>{v}</option>
-                  ))}
+                {f.options.map((v) => (
+                  <option key={v}>{v}</option>
+                ))}
               </select>
             </label>
           ))}
         </div>
+        <p className="muted small">
+          {startingEquipment(cls, c).join(' · ') || 'Sem conjunto inicial de itens.'}
+        </p>
+        <p className="muted small">
+          Ouro inicial: {money(startingGold(cls, c))} PO. Creditado uma única vez ao concluir uma
+          ficha nova. Conversões preservam o saldo existente.
+        </p>
       </details>
       {!!k.cantrips && (
         <ChoiceList
@@ -214,30 +254,23 @@ export function SheetChoices({
           count={k.cantrips}
           value={c.cantrips}
           options={spellOptions(cls, 0).map((s) => s.id)}
-          onChange={(v) => update({ cantrips: v })}
+          onChange={(v) => onChange({ ...c, cantrips: v })}
         />
       )}
       {!!k.known && (
         <ChoiceList
-          label={cls === 'Mago' ? 'Magias do grimório' : 'Magias conhecidas'}
-          help={
-            k.prepared
-              ? 'As magias preparadas serão escolhidas na ficha, após calcular seus atributos.'
-              : undefined
-          }
+          label={cls === 'Mago' ? 'Magias do grimório' : 'Magias preparadas da classe'}
           count={k.known}
           value={c.spells}
           options={spellOptions(cls, 1).map((s) => s.id)}
-          onChange={(v) => update({ spells: v })}
+          onChange={(v) => onChange({ ...c, spells: v })}
         />
       )}
-      {k.prepared && !k.known && (
-        <div>
-          Magias preparadas
-          <SheetHelp label="Magias preparadas">
-            As magias preparadas serão escolhidas na ficha, após calcular seus atributos.
-          </SheetHelp>
-        </div>
+      {k.prepared && (
+        <p className="muted small">
+          Selecione até {k.prepareCount} magias preparadas na ficha. A quantidade não depende do
+          atributo de conjuração.
+        </p>
       )}
       <details>
         <summary>Aparência e personalidade</summary>

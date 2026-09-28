@@ -338,7 +338,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
     <form className="stack character-creation-form" onSubmit={submit}>
       <p className="muted">
         Escolha sua origem e treinamento. Depois da arte, abra a Ficha para rolar e distribuir os
-        seis atributos. Regras de nível 1 do SRD 5.1 (2014).
+        seis atributos. Regras de nível 1 do SRD 5.2.1 (2024).
       </p>
       <p className="muted small">
         Até dois personagens por conta. Sua imagem de corpo inteiro é obrigatória; o personagem
@@ -361,10 +361,10 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
       </label>
       <div className="form-grid">
         <label>
-          Raça
+          Espécie
           <select
             name="race"
-            aria-label="Raça"
+            aria-label="Espécie"
             value={race}
             onChange={(e) => {
               setRace(e.target.value);

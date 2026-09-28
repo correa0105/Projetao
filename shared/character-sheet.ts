@@ -1,30 +1,13 @@
 import { z } from 'zod';
-import { hitDice, modifier } from './rules.js';
-import spellData from './srd-spells.json';
-
-export const skills = [
-  'Acrobacia',
-  'Adestrar Animais',
-  'Arcanismo',
-  'Atletismo',
-  'Atuação',
-  'Enganação',
-  'Furtividade',
-  'História',
-  'Intimidação',
-  'Intuição',
-  'Investigação',
-  'Medicina',
-  'Natureza',
-  'Percepção',
-  'Persuasão',
-  'Prestidigitação',
-  'Religião',
-  'Sobrevivência',
-];
-export const skillAbilities = [1, 4, 3, 0, 5, 5, 1, 3, 5, 4, 3, 4, 3, 4, 5, 1, 3, 4];
+import { hitDice, modifier, statNames, races } from './rules.js';
+import base from './sheet-common.json';
+import spellData from './srd-2024-spells.json';
+export const RULESET = 'SRD 5.2.1 · D&D 5.5e';
+export const { skills, skillAbilities, alignments } = base;
 export const languages = [
   'Comum',
+  'Língua de sinais comum',
+  'Dracônico',
   'Anão',
   'Élfico',
   'Gigante',
@@ -32,32 +15,19 @@ export const languages = [
   'Goblin',
   'Halfling',
   'Orc',
+];
+export const rareLanguages = [
   'Abissal',
   'Celestial',
-  'Dracônico',
   'Infernal',
   'Primordial',
   'Silvestre',
   'Subcomum',
-  'Dialeto Subterrâneo',
+  'Druídico',
+  'Gíria dos ladrões',
+  'Dialeto Profundo',
 ];
-export const tools = [
-  'Ferramentas de ferreiro',
-  'Ferramentas de cervejeiro',
-  'Ferramentas de pedreiro',
-  'Ferramentas de carpinteiro',
-  'Ferramentas de cartógrafo',
-  'Ferramentas de joalheiro',
-  'Ferramentas de couro',
-  'Ferramentas de costureiro',
-  'Ferramentas de ladrão',
-  'Kit de disfarce',
-  'Kit de falsificação',
-  'Kit de herbalismo',
-  'Dados de jogo',
-  'Baralho',
-  'Veículos terrestres',
-  'Veículos aquáticos',
+const instruments = [
   'Alaúde',
   'Flauta',
   'Tambor',
@@ -65,138 +35,210 @@ export const tools = [
   'Gaita de foles',
   'Trombeta',
   'Violino',
+  'Dulcimer',
+  'Flauta de pã',
+  'Charamela',
 ];
-const instruments = tools.slice(16);
-export const alignments = [
-  'Leal e bom',
-  'Neutro e bom',
-  'Caótico e bom',
-  'Leal e neutro',
-  'Neutro',
-  'Caótico e neutro',
-  'Leal e mau',
-  'Neutro e mau',
-  'Caótico e mau',
+const artisanTools = [
+  'Ferramentas de alquimista',
+  'Ferramentas de cervejeiro',
+  'Suprimentos de caligrafia',
+  'Ferramentas de carpinteiro',
+  'Ferramentas de cartógrafo',
+  'Ferramentas de sapateiro',
+  'Ferramentas de cozinheiro',
+  'Ferramentas de vidreiro',
+  'Ferramentas de joalheiro',
+  'Ferramentas de couro',
+  'Ferramentas de pedreiro',
+  'Ferramentas de pintor',
+  'Ferramentas de oleiro',
+  'Ferramentas de ferreiro',
+  'Ferramentas de funileiro',
+  'Ferramentas de tecelão',
+  'Ferramentas de entalhador',
 ];
-type RaceRule = {
-  bonus: number[];
-  speed: number;
-  size: string;
-  languages: string[];
-  traits: string[];
-  variants: string[];
+export const tools = [
+  ...artisanTools,
+  'Ferramentas de ladrão',
+  'Ferramentas de navegador',
+  'Kit de disfarce',
+  'Kit de falsificação',
+  'Kit de herbalismo',
+  'Kit de venenos',
+  'Dados de jogo',
+  'Baralho',
+  'Xadrez de dragão',
+  'Três dragões',
+  ...instruments,
+];
+export const spells = spellData.spells;
+export const backgroundRules: Record<
+  string,
+  {
+    abilities: number[];
+    skills: string[];
+    tool: string;
+    feat: string;
+    gold: number;
+    gear: string[];
+  }
+> = {
+  Acólito: {
+    abilities: [3, 4, 5],
+    skills: ['Intuição', 'Religião'],
+    tool: 'Suprimentos de caligrafia',
+    feat: 'Iniciado em Magia: Clérigo',
+    gold: 8,
+    gear: [
+      'Suprimentos de caligrafia',
+      'Livro de orações',
+      'Símbolo sagrado',
+      '10 folhas de pergaminho',
+      'Vestes',
+    ],
+  },
+  Criminoso: {
+    abilities: [1, 2, 3],
+    skills: ['Prestidigitação', 'Furtividade'],
+    tool: 'Ferramentas de ladrão',
+    feat: 'Alerta',
+    gold: 16,
+    gear: [
+      'Duas adagas',
+      'Ferramentas de ladrão',
+      'Pé de cabra',
+      'Duas bolsas',
+      'Roupas de viajante',
+    ],
+  },
+  Sábio: {
+    abilities: [2, 3, 4],
+    skills: ['Arcanismo', 'História'],
+    tool: 'Suprimentos de caligrafia',
+    feat: 'Iniciado em Magia: Mago',
+    gold: 8,
+    gear: [
+      'Bordão',
+      'Suprimentos de caligrafia',
+      'Livro de história',
+      '8 folhas de pergaminho',
+      'Vestes',
+    ],
+  },
+  Soldado: {
+    abilities: [0, 1, 2],
+    skills: ['Atletismo', 'Intimidação'],
+    tool: 'Jogo escolhido',
+    feat: 'Atacante Selvagem',
+    gold: 14,
+    gear: [
+      'Lança',
+      'Arco curto',
+      '20 flechas',
+      'Aljava',
+      'Kit de curandeiro',
+      'Roupas de viajante',
+    ],
+  },
 };
+export const originFeats = [
+  'Alerta',
+  'Atacante Selvagem',
+  'Habilidoso',
+  'Iniciado em Magia: Clérigo',
+  'Iniciado em Magia: Druida',
+  'Iniciado em Magia: Mago',
+];
+type RaceRule = { speed: number; size: string; traits: string[]; variants: string[] };
 export const raceRules: Record<string, RaceRule> = {
   Humano: {
-    bonus: [1, 1, 1, 1, 1, 1],
     speed: 9,
     size: 'Médio',
-    languages: ['Comum'],
-    traits: ['Versatilidade humana: +1 nos seis atributos.'],
-    variants: ['Humano padrão'],
+    variants: ['Humano'],
+    traits: [
+      'Engenhosidade: recebe Inspiração Heroica após descanso longo.',
+      'Versatilidade: uma perícia e um talento de origem adicional.',
+    ],
   },
   Elfo: {
-    bonus: [0, 2, 0, 1, 0, 0],
     speed: 9,
     size: 'Médio',
-    languages: ['Comum', 'Élfico'],
+    variants: ['Alto elfo', 'Elfo da floresta', 'Drow'],
     traits: [
-      'Visão no escuro: 18 m.',
-      'Sentidos aguçados: Percepção.',
-      'Ancestralidade feérica: vantagem contra encantamento; imune a sono mágico.',
-      'Transe: medita por 4 horas.',
-      'Treinamento élfico: espadas longas e curtas, arcos longos e curtos.',
+      'Ancestralidade feérica: vantagem em salvaguardas para evitar ou encerrar Enfeitiçado.',
+      'Transe: não precisa dormir; magia não o faz dormir; descanso longo em 4 horas de meditação consciente.',
+      'Sentidos aguçados: escolha Intuição, Percepção ou Sobrevivência.',
     ],
-    variants: ['Alto elfo'],
   },
   Anão: {
-    bonus: [0, 0, 2, 0, 1, 0],
-    speed: 7.5,
+    speed: 9,
     size: 'Médio',
-    languages: ['Comum', 'Anão'],
+    variants: ['Anão'],
     traits: [
-      'Visão no escuro: 18 m.',
-      'Resiliência anã: vantagem contra veneno e resistência a dano venenoso.',
-      'Tenacidade anã: +1 PV por nível.',
-      'Conhecimento de rochas: dobro da proficiência em História sobre alvenaria.',
-      'Treinamento: machados de batalha, machadinhas, martelos leves e de guerra.',
-      'Armadura pesada não reduz seu deslocamento.',
+      'Visão no escuro: 36 m.',
+      'Resiliência anã: resistência a dano venenoso e vantagem para evitar ou encerrar Envenenado.',
+      'Tenacidade anã: +1 PV máximo por nível.',
+      'Conhecimento de rochas: ação bônus, sentido sísmico de 18 m por 10 minutos enquanto toca pedra; usos iguais à proficiência por descanso longo.',
     ],
-    variants: ['Anão da colina'],
   },
   Halfling: {
-    bonus: [0, 2, 0, 0, 0, 1],
-    speed: 7.5,
+    speed: 9,
     size: 'Pequeno',
-    languages: ['Comum', 'Halfling'],
+    variants: ['Halfling'],
     traits: [
-      'Sortudo: pode rolar novamente um 1 natural em ataque, teste de atributo ou salvaguarda.',
-      'Bravura: vantagem contra amedrontamento.',
-      'Agilidade halfling: atravessa o espaço de criaturas maiores.',
-      'Furtividade natural: pode esconder-se atrás de criatura maior.',
+      'Bravura: vantagem para evitar ou encerrar Amedrontado.',
+      'Agilidade halfling: atravessa o espaço de criaturas maiores, sem parar nele.',
+      'Sorte: ao obter 1 num teste de d20, pode repetir e deve usar o novo resultado.',
+      'Furtividade natural: pode se esconder encoberto apenas por criatura maior.',
     ],
-    variants: ['Pés-leves'],
   },
   Draconato: {
-    bonus: [2, 0, 0, 0, 0, 1],
     speed: 9,
     size: 'Médio',
-    languages: ['Comum', 'Dracônico'],
-    traits: [
-      'Ancestralidade dracônica: resistência ao tipo de dano escolhido.',
-      'Sopro: 2d6; CD 8 + Constituição + proficiência; metade no sucesso. Uma vez por descanso curto ou longo.',
-    ],
     variants: ['Draconato'],
+    traits: [
+      'Visão no escuro: 18 m.',
+      'Sopro: substitui um ataque da ação Atacar; 1d10 de dano, salvaguarda de Destreza para metade, CD 8 + Constituição + proficiência. Escolha cone de 4,5 m ou linha de 9 × 1,5 m a cada uso. Usos iguais à proficiência por descanso longo.',
+      'Ancestralidade dracônica: resistência ao dano da ancestralidade escolhida.',
+    ],
   },
   Gnomo: {
-    bonus: [0, 0, 1, 2, 0, 0],
-    speed: 7.5,
+    speed: 9,
     size: 'Pequeno',
-    languages: ['Comum', 'Gnômico'],
+    variants: ['Gnomo das rochas', 'Gnomo da floresta'],
     traits: [
       'Visão no escuro: 18 m.',
-      'Esperteza gnômica: vantagem em salvaguardas de Inteligência, Sabedoria e Carisma contra magia.',
-      'Conhecimento de artífice: dobro da proficiência em História sobre magia, alquimia e tecnologia.',
-      'Engenhoqueiro: ferramentas de funileiro; dispositivos custam 10 PO e 1 hora.',
+      'Esperteza gnômica: vantagem em salvaguardas de Inteligência, Sabedoria e Carisma.',
     ],
-    variants: ['Gnomo das rochas'],
   },
-  'Meio-elfo': {
-    bonus: [0, 0, 0, 0, 0, 2],
+  Golias: {
+    speed: 10.5,
+    size: 'Médio',
+    variants: ['Nuvem', 'Fogo', 'Gelo', 'Colina', 'Pedra', 'Tempestade'],
+    traits: [
+      'Porte poderoso: vantagem nos testes para encerrar Agarrado; conta como um tamanho maior para capacidade de carga.',
+      'Ancestralidade gigante: usos iguais à proficiência por descanso longo.',
+    ],
+  },
+  Orc: {
     speed: 9,
     size: 'Médio',
-    languages: ['Comum', 'Élfico'],
+    variants: ['Orc'],
     traits: [
-      'Visão no escuro: 18 m.',
-      'Ancestralidade feérica: vantagem contra encantamento; imune a sono mágico.',
-      'Versatilidade: duas perícias e +1 em dois atributos diferentes de Carisma.',
+      'Visão no escuro: 36 m.',
+      'Adrenalina: Disparada como ação bônus e PV temporários iguais à proficiência; usos iguais à proficiência por descanso curto ou longo.',
+      'Resistência implacável: ao chegar a 0 PV sem morrer, pode ficar com 1 PV; uma vez por descanso longo.',
     ],
-    variants: ['Meio-elfo'],
-  },
-  'Meio-orc': {
-    bonus: [2, 0, 1, 0, 0, 0],
-    speed: 9,
-    size: 'Médio',
-    languages: ['Comum', 'Orc'],
-    traits: [
-      'Visão no escuro: 18 m.',
-      'Ameaçador: Intimidação.',
-      'Resistência implacável: ao cair a 0 PV sem morrer, fica com 1 PV; uma vez por descanso longo.',
-      'Ataques selvagens: um dado de dano adicional em crítico com arma corpo a corpo.',
-    ],
-    variants: ['Meio-orc'],
   },
   Tiefling: {
-    bonus: [0, 0, 0, 1, 0, 2],
     speed: 9,
     size: 'Médio',
-    languages: ['Comum', 'Infernal'],
+    variants: ['Infernal', 'Abissal', 'Ctônico'],
     traits: [
       'Visão no escuro: 18 m.',
-      'Resistência infernal: resistência a fogo.',
-      'Legado infernal: Taumaturgia usando Carisma no nível 1.',
+      'Presença sobrenatural: conhece Taumaturgia; usa o atributo escolhido para o legado.',
     ],
-    variants: ['Tiefling'],
   },
 };
 type ClassRule = {
@@ -207,567 +249,267 @@ type ClassRule = {
   proficiencies: string[];
   features: string[];
   ability?: number;
-  cantrips?: number;
-  known?: number;
-  slots?: number;
-  prepared?: boolean;
+  cantrips: number;
+  known: number;
+  slots: number;
+  prepared: boolean;
+  prepareCount: number;
+  masteries: number;
 };
-const classRule = (
-  id: string,
-  saves: number[],
-  count: number,
-  allowed: string[],
-  proficiencies: string[],
-  features: string[],
-  magic: Partial<ClassRule> = {},
-): ClassRule => ({ id, saves, count, skills: allowed, proficiencies, features, ...magic });
-export const classRules: Record<string, ClassRule> = {
-  Bárbaro: classRule(
-    'barbarian',
-    [0, 2],
-    2,
-    ['Adestrar Animais', 'Atletismo', 'Intimidação', 'Natureza', 'Percepção', 'Sobrevivência'],
-    ['Armaduras leves e médias; escudos', 'Armas simples e marciais'],
-    [
-      'Fúria: 2/descanso longo; +2 dano em ataques corpo a corpo com Força; resistência a dano contundente, cortante e perfurante.',
-      'Defesa sem armadura: 10 + Destreza + Constituição (escudo permitido).',
-    ],
-  ),
-  Bardo: classRule(
-    'bard',
-    [1, 5],
-    3,
-    skills,
-    ['Armaduras leves', 'Armas simples, bestas de mão, espadas longas e curtas, rapieiras'],
-    [
-      'Inspiração de bardo: d6; usos iguais ao modificador de Carisma (mínimo 1), por descanso longo.',
-      'Conjuração e rituais das magias conhecidas.',
-    ],
-    { ability: 5, cantrips: 2, known: 4, slots: 2 },
-  ),
-  Bruxo: classRule(
-    'warlock',
-    [4, 5],
-    2,
-    ['Arcanismo', 'Enganação', 'História', 'Intimidação', 'Investigação', 'Natureza', 'Religião'],
-    ['Armaduras leves', 'Armas simples'],
-    [
-      'Patrono: O Corruptor (SRD).',
-      'Bênção do Obscuro: ao reduzir inimigo a 0 PV, ganha PV temporários iguais a nível + Carisma (mínimo 1).',
-      'Magia de pacto: um espaço de nível 1; recupera em descanso curto ou longo.',
-    ],
-    { ability: 5, cantrips: 2, known: 2, slots: 1 },
-  ),
-  Clérigo: classRule(
-    'cleric',
-    [4, 5],
-    2,
-    ['História', 'Intuição', 'Medicina', 'Persuasão', 'Religião'],
-    ['Armaduras leves, médias e pesadas (Vida); escudos', 'Armas simples'],
-    [
-      'Domínio da Vida (SRD).',
-      'Discípulo da Vida: cura por magia de nível 1+ recebe bônus de 2 + nível da magia.',
-      'Magias de domínio sempre preparadas: Bênção e Curar Ferimentos.',
-      'Conjuração e rituais das magias preparadas.',
-    ],
-    { ability: 4, cantrips: 3, slots: 2, prepared: true },
-  ),
-  Druida: classRule(
-    'druid',
-    [3, 4],
-    2,
-    [
-      'Arcanismo',
-      'Adestrar Animais',
-      'Intuição',
-      'Medicina',
-      'Natureza',
-      'Percepção',
-      'Religião',
-      'Sobrevivência',
-    ],
-    [
-      'Armaduras leves e médias; escudos (não usa metal)',
-      'Clavas, adagas, dardos, azagaias, maças, bordões, cimitarras, foices, fundas e lanças',
-      'Kit de herbalismo',
-    ],
-    ['Idioma secreto druídico.', 'Conjuração e rituais das magias preparadas.'],
-    { ability: 4, cantrips: 2, slots: 2, prepared: true },
-  ),
-  Feiticeiro: classRule(
-    'sorcerer',
-    [2, 5],
-    2,
-    ['Arcanismo', 'Enganação', 'Intuição', 'Intimidação', 'Persuasão', 'Religião'],
-    ['Adagas, dardos, fundas, bordões e bestas leves'],
-    [
-      'Linhagem Dracônica (SRD): idioma dracônico; dobro da proficiência em Carisma ao interagir com dragões.',
-      'Resiliência dracônica: +1 PV por nível e CA sem armadura 13 + Destreza.',
-    ],
-    { ability: 5, cantrips: 4, known: 2, slots: 2 },
-  ),
-  Guerreiro: classRule(
-    'fighter',
-    [0, 2],
-    2,
-    [
-      'Acrobacia',
-      'Adestrar Animais',
-      'Atletismo',
-      'História',
-      'Intuição',
-      'Intimidação',
-      'Percepção',
-      'Sobrevivência',
-    ],
-    ['Todas as armaduras e escudos', 'Armas simples e marciais'],
-    [
-      'Retomar o fôlego: ação bônus, recupera 1d10 + nível PV; uma vez por descanso curto ou longo.',
-      'Estilo de luta escolhido na criação.',
-    ],
-  ),
-  Ladino: classRule(
-    'rogue',
-    [1, 3],
-    4,
-    [
-      'Acrobacia',
-      'Atletismo',
-      'Atuação',
-      'Enganação',
-      'Furtividade',
-      'Intimidação',
-      'Intuição',
-      'Investigação',
-      'Percepção',
-      'Persuasão',
-      'Prestidigitação',
-    ],
-    [
-      'Armaduras leves',
-      'Armas simples, bestas de mão, espadas longas e curtas, rapieiras',
-      'Ferramentas de ladrão',
-    ],
-    [
-      'Ataque furtivo: +1d6 uma vez por turno, com arma de acuidade ou à distância, quando as condições forem atendidas.',
-      'Especialização: dobro da proficiência em duas escolhas.',
-      'Gíria dos ladrões.',
-    ],
-  ),
-  Mago: classRule(
-    'wizard',
-    [3, 4],
-    2,
-    ['Arcanismo', 'História', 'Intuição', 'Investigação', 'Medicina', 'Religião'],
-    ['Adagas, dardos, fundas, bordões e bestas leves'],
-    [
-      'Grimório: seis magias de nível 1 iniciais.',
-      'Recuperação arcana: recupera um espaço de nível 1 em descanso curto, uma vez por dia.',
-      'Rituais do grimório não precisam estar preparados.',
-    ],
-    { ability: 3, cantrips: 3, known: 6, slots: 2, prepared: true },
-  ),
-  Monge: classRule(
-    'monk',
-    [0, 1],
-    2,
-    ['Acrobacia', 'Atletismo', 'Furtividade', 'História', 'Intuição', 'Religião'],
-    ['Armas simples e espadas curtas'],
-    [
-      'Defesa sem armadura: 10 + Destreza + Sabedoria, sem escudo.',
-      'Artes marciais: d4; usa Destreza; ataque desarmado como ação bônus após ação Atacar com arma de monge/desarmado, sem armadura ou escudo.',
-    ],
-  ),
-  Paladino: classRule(
-    'paladin',
-    [4, 5],
-    2,
-    ['Atletismo', 'Intuição', 'Intimidação', 'Medicina', 'Persuasão', 'Religião'],
-    ['Todas as armaduras e escudos', 'Armas simples e marciais'],
-    [
-      'Sentido divino: 1 + modificador de Carisma usos (mínimo 1), por descanso longo.',
-      'Cura pelas mãos: reserva de 5 PV por nível, por descanso longo.',
-      'Conjuração começa no nível 2.',
-    ],
-  ),
-  Patrulheiro: classRule(
-    'ranger',
-    [0, 1],
-    3,
-    [
-      'Adestrar Animais',
-      'Atletismo',
-      'Furtividade',
-      'Intuição',
-      'Investigação',
-      'Natureza',
-      'Percepção',
-      'Sobrevivência',
-    ],
-    ['Armaduras leves e médias; escudos', 'Armas simples e marciais'],
-    [
-      'Inimigo favorito: vantagem em Sobrevivência para rastrear e Inteligência para recordar informações sobre o tipo escolhido.',
-      'Explorador natural: benefícios de viagem e proficiência dobrada nos testes proficientes de Inteligência/Sabedoria relacionados ao terreno favorito.',
-      'Conjuração começa no nível 2.',
-    ],
-  ),
+const features: Record<string, string[]> = {
+  Bárbaro: [
+    'Fúria: 2 usos; recupera um no descanso curto e todos no longo. Ação bônus, sem armadura pesada; resistência a dano contundente, cortante e perfurante; +2 no dano de ataques com Força, incluindo desarmados.',
+    'Manter Fúria: até 10 minutos, prolongando a cada turno ao atacar inimigo, forçar salvaguarda ou gastar ação bônus; termina ao vestir armadura pesada ou ficar Incapacitado.',
+    'Defesa sem armadura: 10 + Destreza + Constituição; permite escudo.',
+  ],
+  Bardo: [
+    'Inspiração de bardo: ação bônus, outra criatura a até 18 m que vê ou ouve você recebe d6 por 1 hora; pode somar após falhar num teste de d20. Usos iguais a Carisma, mínimo 1, por descanso longo.',
+  ],
+  Bruxo: [
+    'Invocação mística: escolha uma invocação sem pré-requisito de nível superior.',
+    'Magia de pacto: 1 espaço de nível 1, recuperado em descanso curto ou longo.',
+  ],
+  Clérigo: [
+    'Ordem divina: Protetor concede armas marciais e armaduras pesadas; Taumaturgo concede um truque adicional e bônus de Sabedoria (mínimo +1) em Arcanismo e Religião.',
+  ],
+  Druida: [
+    'Druídico: conhece o idioma e sempre tem Falar com Animais preparada.',
+    'Ordem primal: Guardião concede armas marciais e armaduras médias; Mago primal concede um truque adicional e bônus de Sabedoria (mínimo +1) em Arcanismo e Natureza.',
+  ],
+  Feiticeiro: [
+    'Feitiçaria inata: ação bônus, 1 minuto; +1 na CD das magias de feiticeiro e vantagem nos ataques dessas magias. Dois usos por descanso longo; bônus situacionais resolvidos na mesa.',
+  ],
+  Guerreiro: [
+    'Retomar o fôlego: ação bônus, recupera 1d10 + nível PV; 2 usos, recupera um no descanso curto e todos no longo.',
+    'Estilo de luta: um talento de estilo de luta.',
+  ],
+  Ladino: [
+    'Ataque furtivo: +1d6 uma vez por turno com arma de acuidade ou à distância, com vantagem ou aliado não incapacitado a 1,5 m do alvo e sem desvantagem.',
+    'Especialização: dobra proficiência em duas perícias proficientes.',
+    'Gíria dos ladrões: conhece a gíria e um idioma adicional.',
+  ],
+  Mago: [
+    'Grimório: seis magias de nível 1; prepara quatro.',
+    'Adepto ritual: pode realizar rituais do grimório sem prepará-los.',
+    'Recuperação arcana: após descanso curto recupera um espaço de nível 1; uma vez por descanso longo.',
+  ],
+  Monge: [
+    'Artes marciais: d6; pode usar Destreza para ataques, dano, agarrar e empurrar. Válido sem armadura/escudo, com armas simples corpo a corpo ou marciais corpo a corpo leves.',
+    'Ataque desarmado adicional: ação bônus; não exige a ação Atacar.',
+    'Defesa sem armadura: 10 + Destreza + Sabedoria, sem escudo.',
+  ],
+  Paladino: [
+    'Cura pelas mãos: ação bônus por toque; reserva de 5 PV por descanso longo. Pode gastar 5 para encerrar Envenenado em vez de curar.',
+    'Conjuração: disponível desde o nível 1.',
+  ],
+  Patrulheiro: [
+    'Inimigo favorito: Marca do Caçador sempre preparada; duas conjurações sem espaço por descanso longo. Exige concentração normalmente.',
+    'Conjuração: disponível desde o nível 1.',
+  ],
 };
-
-const spellNames = [
-  'Respingo Ácido',
-  'Alarme',
-  'Amizade Animal',
-  'Perdição',
-  'Bênção',
-  'Mãos Flamejantes',
-  'Enfeitiçar Pessoa',
-  'Toque Arrepiante',
-  'Leque Cromático',
-  'Comando',
-  'Compreender Idiomas',
-  'Criar ou Destruir Água',
-  'Curar Ferimentos',
-  'Luzes Dançantes',
-  'Detectar o Bem e o Mal',
-  'Detectar Magia',
-  'Detectar Veneno e Doença',
-  'Disfarçar-se',
-  'Favor Divino',
-  'Druidismo',
-  'Rajada Mística',
-  'Constrição',
-  'Recuo Acelerado',
-  'Fogo das Fadas',
-  'Vitalidade Falsa',
-  'Queda Suave',
-  'Encontrar Familiar',
-  'Raio de Fogo',
-  'Disco Flutuante',
-  'Névoa Obscurecente',
-  'Bom Fruto',
-  'Área Escorregadia',
-  'Orientação',
-  'Raio Guiador',
-  'Palavra Curativa',
-  'Repreensão Infernal',
-  'Heroísmo',
-  'Riso Histérico',
-  'Marca do Caçador',
-  'Identificação',
-  'Escrita Ilusória',
-  'Infligir Ferimentos',
-  'Salto',
-  'Luz',
-  'Passos Longos',
-  'Armadura Arcana',
-  'Mãos Mágicas',
-  'Mísseis Mágicos',
-  'Consertar',
-  'Mensagem',
-  'Ilusão Menor',
-  'Rajada de Veneno',
-  'Prestidigitação Arcana',
-  'Criar Chamas',
-  'Proteção contra o Bem e o Mal',
-  'Purificar Alimentos e Bebidas',
-  'Raio de Gelo',
-  'Resistência',
-  'Chama Sagrada',
-  'Santuário',
-  'Escudo Arcano',
-  'Escudo da Fé',
-  'Bordão Místico',
-  'Toque Chocante',
-  'Imagem Silenciosa',
-  'Sono',
-  'Estabilizar',
-  'Falar com Animais',
-  'Taumaturgia',
-  'Onda Trovejante',
-  'Ataque Certeiro',
-  'Servo Invisível',
-  'Zombaria Viciosa',
-];
-export const spells = spellData.spells.map((s, i) => ({ ...s, label: spellNames[i] }));
-export function spellOptions(className: string, level: number) {
-  const id = classRules[className].id;
-  return spells.filter(
-    (s) =>
-      s.level === level &&
-      (s.classes.includes(id) || (id === 'warlock' && ['burning-hands', 'command'].includes(s.id))),
+const magic: Record<string, number[]> = {
+  Bardo: [5, 2, 4, 2, 0],
+  Bruxo: [5, 2, 2, 1, 0],
+  Clérigo: [4, 3, 0, 2, 4],
+  Druida: [4, 2, 0, 2, 4],
+  Feiticeiro: [5, 4, 2, 2, 0],
+  Mago: [3, 3, 6, 2, 4],
+  Paladino: [5, 0, 0, 2, 2],
+  Patrulheiro: [4, 0, 0, 2, 2],
+};
+export const classRules: Record<string, ClassRule> = Object.fromEntries(
+  Object.entries(base.classes).map(([name, k]) => {
+    const m = magic[name];
+    const warrior = ['Bárbaro', 'Guerreiro', 'Paladino', 'Patrulheiro'].includes(name);
+    return [
+      name,
+      {
+        ...k,
+        skills:
+          name === 'Mago'
+            ? [...k.skills, 'Natureza']
+            : name === 'Guerreiro'
+              ? [...k.skills, 'Persuasão']
+              : name === 'Ladino'
+                ? k.skills.filter((v) => v !== 'Atuação')
+                : k.skills,
+        proficiencies: [
+          warrior
+            ? 'Armas simples e marciais'
+            : name === 'Ladino'
+              ? 'Armas simples e marciais de acuidade ou leves'
+              : name === 'Monge'
+                ? 'Armas simples e marciais leves'
+                : 'Armas simples',
+          ...(['Mago', 'Monge', 'Feiticeiro'].includes(name)
+            ? []
+            : [
+                ['Guerreiro', 'Paladino'].includes(name)
+                  ? 'Armaduras leves, médias, pesadas e escudos'
+                  : ['Bárbaro', 'Clérigo', 'Patrulheiro'].includes(name)
+                    ? 'Armaduras leves, médias e escudos'
+                    : name === 'Druida'
+                      ? 'Armaduras leves e escudos'
+                      : 'Armaduras leves',
+              ]),
+        ],
+        features: features[name],
+        ability: m?.[0],
+        cantrips: m?.[1] || 0,
+        known: m?.[2] || 0,
+        slots: m?.[3] || 0,
+        prepared: !!m?.[4],
+        prepareCount: m?.[4] || 0,
+        masteries:
+          name === 'Guerreiro'
+            ? 3
+            : ['Bárbaro', 'Paladino', 'Patrulheiro', 'Ladino'].includes(name)
+              ? 2
+              : 0,
+      },
+    ];
+  }),
+);
+export function spellOptions(cls: string, level: number) {
+  return spells.filter((s) => s.level === level && s.classes.includes(classRules[cls]?.id));
+}
+export const dragons: Record<string, { damage: string; shape: string; save: string }> =
+  Object.fromEntries(
+    Object.entries({
+      Negro: 'Ácido',
+      Azul: 'Elétrico',
+      Latão: 'Fogo',
+      Bronze: 'Elétrico',
+      Cobre: 'Ácido',
+      Ouro: 'Fogo',
+      Verde: 'Veneno',
+      Vermelho: 'Fogo',
+      Prata: 'Frio',
+      Branco: 'Frio',
+    }).map(([k, damage]) => [
+      k,
+      { damage, shape: 'Cone 4,5 m ou linha 9 × 1,5 m', save: 'Destreza' },
+    ]),
   );
-}
-export const dragons: Record<string, { damage: string; shape: string; save: string }> = {
-  Negro: { damage: 'Ácido', shape: 'Linha 1,5 × 9 m', save: 'Destreza' },
-  Azul: { damage: 'Elétrico', shape: 'Linha 1,5 × 9 m', save: 'Destreza' },
-  Latão: { damage: 'Fogo', shape: 'Linha 1,5 × 9 m', save: 'Destreza' },
-  Bronze: { damage: 'Elétrico', shape: 'Linha 1,5 × 9 m', save: 'Destreza' },
-  Cobre: { damage: 'Ácido', shape: 'Linha 1,5 × 9 m', save: 'Destreza' },
-  Ouro: { damage: 'Fogo', shape: 'Cone 4,5 m', save: 'Destreza' },
-  Verde: { damage: 'Veneno', shape: 'Cone 4,5 m', save: 'Constituição' },
-  Vermelho: { damage: 'Fogo', shape: 'Cone 4,5 m', save: 'Destreza' },
-  Prata: { damage: 'Frio', shape: 'Cone 4,5 m', save: 'Constituição' },
-  Branco: { damage: 'Frio', shape: 'Cone 4,5 m', save: 'Constituição' },
-};
-export type ChoiceField = { key: string; label: string; count: number; options: string[] };
-export function choiceFields(race: string, cls: string): ChoiceField[] {
-  const result: ChoiceField[] = [];
-  const add = (key: string, label: string, count: number, options: string[]) =>
-    result.push({ key, label, count, options });
-  if (['Humano', 'Elfo', 'Meio-elfo'].includes(race))
-    add(
-      'racialLanguage',
-      'Idioma adicional da raça',
-      1,
-      languages.filter((l) => !raceRules[race].languages.includes(l)),
-    );
-  if (race === 'Meio-elfo') {
-    add('racialSkills', 'Perícias do meio-elfo', 2, skills);
-    add('racialAbilities', 'Atributos raciais +1', 2, [
-      'Força',
-      'Destreza',
-      'Constituição',
-      'Inteligência',
-      'Sabedoria',
-    ]);
-  }
-  if (race === 'Anão') add('artisan', 'Ferramenta anã', 1, tools.slice(0, 3));
-  if (race === 'Elfo')
-    add(
-      'racialCantrip',
-      'Truque de alto elfo (Inteligência)',
-      1,
-      spellOptions('Mago', 0).map((s) => s.id),
-    );
-  if (race === 'Draconato' || cls === 'Feiticeiro')
-    add('dragon', 'Ancestralidade dracônica', 1, Object.keys(dragons));
-  if (cls === 'Bardo') add('instruments', 'Instrumentos musicais', 3, instruments);
-  if (cls === 'Monge')
-    add('monkTool', 'Ferramenta ou instrumento', 1, [...tools.slice(0, 8), ...instruments]);
-  if (cls === 'Guerreiro')
-    add('style', 'Estilo de luta', 1, [
-      'Arquearia',
-      'Defesa',
-      'Duelismo',
-      'Combate com armas grandes',
-      'Proteção',
-      'Combate com duas armas',
-    ]);
-  if (cls === 'Patrulheiro') {
-    add('enemy', 'Inimigo favorito', 1, [
-      'Aberrações',
-      'Bestas',
-      'Celestiais',
-      'Constructos',
-      'Dragões',
-      'Elementais',
-      'Fadas',
-      'Corruptores',
-      'Gigantes',
-      'Monstruosidades',
-      'Limos',
-      'Plantas',
-      'Mortos-vivos',
-    ]);
-    add('terrain', 'Terreno favorito', 1, [
-      'Ártico',
-      'Costa',
-      'Deserto',
-      'Floresta',
-      'Pradaria',
-      'Montanha',
-      'Pântano',
-      'Subterrâneo',
-    ]);
-    add('enemyLanguage', 'Idioma do inimigo favorito (quando aplicável à criatura)', 1, languages);
-  }
-  return result;
-}
 export const weaponData: Record<
   string,
   {
     dice: string;
     type: string;
-    ability?: 'dex' | 'finesse';
+    ability?: string;
     ranged?: boolean;
     martial?: boolean;
     two?: boolean;
   }
-> = {
-  Alabarda: { dice: '1d10', type: 'Cortante', martial: true, two: true },
-  Glaive: { dice: '1d10', type: 'Cortante', martial: true, two: true },
-  Pique: { dice: '1d10', type: 'Perfurante', martial: true, two: true },
-  'Lança de montaria': { dice: '1d12', type: 'Perfurante', martial: true },
-  'Maça estrela': { dice: '1d8', type: 'Perfurante', martial: true },
-  Mangual: { dice: '1d8', type: 'Contundente', martial: true },
-  Malho: { dice: '2d6', type: 'Contundente', martial: true, two: true },
-  'Picareta de guerra': { dice: '1d8', type: 'Perfurante', martial: true },
-  Tridente: { dice: '1d6 (1d8 com duas mãos)', type: 'Perfurante', martial: true },
-  Chicote: { dice: '1d4', type: 'Cortante', martial: true, ability: 'finesse' },
-  Zarabatana: { dice: '1', type: 'Perfurante', martial: true, ability: 'dex', ranged: true },
-  'Besta pesada': {
-    dice: '1d10',
-    type: 'Perfurante',
-    martial: true,
-    ability: 'dex',
-    ranged: true,
-    two: true,
-  },
-  Rede: {
-    dice: '—',
-    type: 'Sem dano; restringe conforme condições',
-    martial: true,
-    ability: 'dex',
-    ranged: true,
-  },
-  Adaga: { dice: '1d4', type: 'Perfurante', ability: 'finesse' },
-  Bordão: { dice: '1d6 (1d8 com duas mãos)', type: 'Contundente' },
-  Clava: { dice: '1d4', type: 'Contundente' },
-  Maça: { dice: '1d6', type: 'Contundente' },
-  Azagaia: { dice: '1d6', type: 'Perfurante' },
-  Machadinha: { dice: '1d6', type: 'Cortante' },
-  Lança: { dice: '1d6 (1d8 com duas mãos)', type: 'Perfurante' },
-  'Besta leve': { dice: '1d8', type: 'Perfurante', ability: 'dex', ranged: true, two: true },
-  'Arco curto': { dice: '1d6', type: 'Perfurante', ability: 'dex', ranged: true, two: true },
-  Dardo: { dice: '1d4', type: 'Perfurante', ability: 'finesse', ranged: true },
-  Funda: { dice: '1d4', type: 'Contundente', ability: 'dex', ranged: true },
-  Foice: { dice: '1d4', type: 'Cortante' },
-  'Martelo leve': { dice: '1d4', type: 'Contundente' },
-  Porrete: { dice: '1d8', type: 'Contundente', two: true },
-  'Espada longa': { dice: '1d8 (1d10 com duas mãos)', type: 'Cortante', martial: true },
-  'Espada curta': { dice: '1d6', type: 'Perfurante', ability: 'finesse', martial: true },
-  Rapieira: { dice: '1d8', type: 'Perfurante', ability: 'finesse', martial: true },
-  Cimitarra: { dice: '1d6', type: 'Cortante', ability: 'finesse', martial: true },
-  'Machado grande': { dice: '1d12', type: 'Cortante', martial: true, two: true },
-  'Espada grande': { dice: '2d6', type: 'Cortante', martial: true, two: true },
-  'Machado de batalha': { dice: '1d8 (1d10 com duas mãos)', type: 'Cortante', martial: true },
-  'Martelo de guerra': { dice: '1d8 (1d10 com duas mãos)', type: 'Contundente', martial: true },
-  'Arco longo': {
-    dice: '1d8',
-    type: 'Perfurante',
-    ability: 'dex',
-    ranged: true,
-    martial: true,
-    two: true,
-  },
-  'Besta de mão': { dice: '1d6', type: 'Perfurante', ability: 'dex', ranged: true, martial: true },
+> = { ...base.weaponData };
+delete weaponData.Rede;
+weaponData['Picareta de guerra'].dice = '1d8 (1d10 com duas mãos)';
+weaponData['Lança de montaria'] = { dice: '1d10', type: 'Perfurante', martial: true, two: true };
+weaponData.Tridente = { dice: '1d8 (1d10 com duas mãos)', type: 'Perfurante', martial: true };
+weaponData.Pistola = {
+  dice: '1d10',
+  type: 'Perfurante',
+  martial: true,
+  ranged: true,
+  ability: 'dex',
 };
-const simple = Object.keys(weaponData).filter((w) => !weaponData[w].martial);
-const martial = Object.keys(weaponData).filter((w) => weaponData[w].martial);
-const packs = ['Pacote de explorador', 'Pacote de aventureiro'];
-export function equipmentFields(cls: string): ChoiceField[] {
-  const f = (key: string, label: string, options: string[]): ChoiceField => ({
-    key,
-    label,
-    count: 1,
-    options,
-  });
-  switch (cls) {
-    case 'Bárbaro':
-      return [
-        f(
-          'weapon',
-          'Arma principal',
-          martial.filter((w) => !weaponData[w].ranged),
-        ),
-        f('secondary', 'Arma secundária', ['Duas machadinhas', ...simple]),
-      ];
-    case 'Bardo':
-      return [
-        f('weapon', 'Arma', ['Rapieira', 'Espada longa', ...simple]),
-        f('pack', 'Pacote', ['Pacote de diplomata', 'Pacote de artista']),
-        f('focus', 'Instrumento', instruments),
-      ];
-    case 'Bruxo':
-    case 'Feiticeiro':
-      return [
-        f('weapon', 'Arma', ['Besta leve e 20 virotes', ...simple]),
-        f('focus', 'Foco', ['Bolsa de componentes', 'Foco arcano']),
-        f(
-          'pack',
-          'Pacote',
-          cls === 'Bruxo' ? ['Pacote de estudioso', 'Pacote de aventureiro'] : packs,
-        ),
-        ...(cls === 'Bruxo' ? [f('secondary', 'Arma simples adicional', simple)] : []),
-      ];
-    case 'Clérigo':
-      return [
-        f('weapon', 'Arma', ['Maça', 'Martelo de guerra']),
-        f('armor', 'Armadura', ['Cota de escamas', 'Couro', 'Cota de malha']),
-        f('secondary', 'Outra arma', ['Besta leve e 20 virotes', ...simple]),
-        f('pack', 'Pacote', ['Pacote de sacerdote', 'Pacote de explorador']),
-      ];
-    case 'Druida':
-      return [
-        f('secondary', 'Escudo ou arma', ['Escudo de madeira', ...simple]),
-        f('weapon', 'Arma', ['Cimitarra', ...simple.filter((w) => !weaponData[w].ranged)]),
-      ];
-    case 'Guerreiro':
-      return [
-        f('armor', 'Armadura', ['Cota de malha', 'Couro, arco longo e 20 flechas']),
-        f('weapon', 'Arma marcial', martial),
-        f('secondary', 'Escudo ou segunda arma', ['Escudo', ...martial]),
-        f('ranged', 'Reserva', ['Besta leve e 20 virotes', 'Duas machadinhas']),
-        f('pack', 'Pacote', packs),
-      ];
-    case 'Ladino':
-      return [
-        f('weapon', 'Arma', ['Rapieira', 'Espada curta']),
-        f('secondary', 'Outra arma', ['Arco curto e 20 flechas', 'Espada curta']),
-        f('pack', 'Pacote', ['Pacote de assaltante', ...packs]),
-      ];
-    case 'Mago':
-      return [
-        f('weapon', 'Arma', ['Bordão', 'Adaga']),
-        f('focus', 'Foco', ['Bolsa de componentes', 'Foco arcano']),
-        f('pack', 'Pacote', ['Pacote de estudioso', 'Pacote de explorador']),
-      ];
-    case 'Monge':
-      return [f('weapon', 'Arma', ['Espada curta', ...simple]), f('pack', 'Pacote', packs)];
-    case 'Paladino':
-      return [
-        f('weapon', 'Arma marcial', martial),
-        f('secondary', 'Escudo ou segunda arma', ['Escudo', ...martial]),
-        f('ranged', 'Reserva', ['Cinco azagaias', ...simple.filter((w) => !weaponData[w].ranged)]),
-        f('pack', 'Pacote', ['Pacote de sacerdote', 'Pacote de explorador']),
-      ];
-    default:
-      return [
-        f('armor', 'Armadura', ['Cota de escamas', 'Couro']),
-        f('weapon', 'Arma corpo a corpo', [
-          'Duas espadas curtas',
-          ...simple.filter((w) => !weaponData[w].ranged),
-        ]),
-        f(
-          'secondary',
-          'Segunda arma simples (se não escolheu duas espadas curtas)',
-          simple.filter((w) => !weaponData[w].ranged),
-        ),
-        f('pack', 'Pacote', packs),
-      ];
-  }
+weaponData.Mosquete = {
+  dice: '1d12',
+  type: 'Perfurante',
+  martial: true,
+  ranged: true,
+  ability: 'dex',
+  two: true,
+};
+export const mastery: Record<string, string> = {
+  Alabarda: 'Fender',
+  Glaive: 'Raspar',
+  Pique: 'Empurrar',
+  'Lança de montaria': 'Derrubar',
+  'Maça estrela': 'Debilitar',
+  Mangual: 'Debilitar',
+  Malho: 'Derrubar',
+  'Picareta de guerra': 'Debilitar',
+  Tridente: 'Derrubar',
+  Chicote: 'Lentidão',
+  Zarabatana: 'Afligir',
+  'Besta pesada': 'Empurrar',
+  Adaga: 'Talhar',
+  Bordão: 'Derrubar',
+  Clava: 'Lentidão',
+  Maça: 'Debilitar',
+  Azagaia: 'Lentidão',
+  Machadinha: 'Afligir',
+  Lança: 'Debilitar',
+  'Besta leve': 'Lentidão',
+  'Arco curto': 'Afligir',
+  Dardo: 'Afligir',
+  Funda: 'Lentidão',
+  Foice: 'Talhar',
+  'Martelo leve': 'Talhar',
+  Porrete: 'Empurrar',
+  'Espada longa': 'Debilitar',
+  'Espada curta': 'Afligir',
+  Rapieira: 'Afligir',
+  Cimitarra: 'Talhar',
+  'Machado grande': 'Fender',
+  'Espada grande': 'Raspar',
+  'Machado de batalha': 'Derrubar',
+  'Martelo de guerra': 'Empurrar',
+  'Arco longo': 'Lentidão',
+  'Besta de mão': 'Afligir',
+  Pistola: 'Afligir',
+  Mosquete: 'Lentidão',
+};
+export const masteryDescriptions: Record<string, string> = {
+  Fender:
+    'Ao acertar ataque corpo a corpo, pode atacar outra criatura a 1,5 m do alvo e no alcance. Não some o atributo ao dano, salvo se negativo; uma vez por turno.',
+  Raspar:
+    'Ao errar, pode causar dano igual ao atributo usado no ataque; somente esse atributo pode aumentar o dano.',
+  Talhar:
+    'O ataque extra da propriedade Leve pode fazer parte da ação Atacar, em vez de ação bônus; uma vez por turno.',
+  Empurrar: 'Ao acertar criatura Grande ou menor, pode afastá-la até 3 m em linha reta.',
+  Debilitar:
+    'Ao acertar, o alvo tem desvantagem no próximo ataque antes do início do seu próximo turno.',
+  Lentidão:
+    'Ao acertar e causar dano, reduz deslocamento em 3 m até o início do seu próximo turno; não acumula.',
+  Derrubar:
+    'Ao acertar, pode forçar salvaguarda de Constituição, CD 8 + atributo do ataque + proficiência, ou alvo fica Caído.',
+  Afligir:
+    'Ao acertar e causar dano, recebe vantagem no próximo ataque contra o alvo antes do fim do seu próximo turno.',
+};
+const light = [
+  'Adaga',
+  'Clava',
+  'Machadinha',
+  'Foice',
+  'Martelo leve',
+  'Espada curta',
+  'Cimitarra',
+  'Besta de mão',
+];
+export function trainedWeapon(cls: string, w: string, c?: SheetChoices) {
+  const v = weaponData[w];
+  return (
+    !!v &&
+    (!v.martial ||
+      ['Bárbaro', 'Guerreiro', 'Paladino', 'Patrulheiro'].includes(cls) ||
+      (cls === 'Ladino' && (v.ability === 'finesse' || light.includes(w))) ||
+      (cls === 'Monge' && light.includes(w)) ||
+      (cls === 'Clérigo' && c?.options.order?.[0] === 'Protetor') ||
+      (cls === 'Druida' && c?.options.order?.[0] === 'Guardião'))
+  );
 }
-const fixedEquipment: Record<string, string[]> = {
-  Bárbaro: ['Pacote de explorador', 'Quatro azagaias'],
-  Bardo: ['Couro', 'Adaga'],
-  Bruxo: ['Couro', 'Duas adagas'],
-  Clérigo: ['Escudo', 'Símbolo sagrado'],
-  Druida: ['Couro', 'Pacote de explorador', 'Foco druídico'],
-  Feiticeiro: ['Duas adagas'],
-  Guerreiro: [],
-  Ladino: ['Couro', 'Duas adagas', 'Ferramentas de ladrão'],
-  Mago: ['Grimório'],
-  Monge: ['Dez dardos'],
-  Paladino: ['Cota de malha', 'Símbolo sagrado'],
-  Patrulheiro: ['Arco longo e 20 flechas'],
-};
+export type ChoiceField = { key: string; label: string; count: number; options: string[] };
 export const choicesSchema = z.object({
-  version: z.literal(1),
+  version: z.literal(2),
+  species: z.enum(races),
   subrace: z.string().max(40),
   alignment: z.enum(alignments as [string, ...string[]]),
-  backgroundType: z.enum(['Acólito', 'Personalizado']),
+  backgroundType: z.enum(['Acólito', 'Criminoso', 'Sábio', 'Soldado']),
   backgroundSkills: z.array(z.string()).length(2),
   backgroundExtras: z.array(z.string()).length(2),
+  abilityBoosts: z.array(z.number().int().min(0).max(2)).length(6),
   classSkills: z.array(z.string()).max(4),
   options: z.record(z.string().max(40), z.array(z.string().max(100)).max(4)),
   equipment: z.record(z.string().max(40), z.array(z.string().max(100)).max(1)),
@@ -784,37 +526,352 @@ export const choicesSchema = z.object({
   weight: z.string().trim().max(40).default(''),
 });
 export type SheetChoices = z.infer<typeof choicesSchema>;
-export function racialSkills(race: string, c: SheetChoices) {
-  return race === 'Elfo'
-    ? ['Percepção']
-    : race === 'Meio-orc'
-      ? ['Intimidação']
-      : race === 'Meio-elfo'
-        ? c.options.racialSkills || []
-        : [];
+export function feats(c: SheetChoices) {
+  return [backgroundRules[c.backgroundType].feat, ...(c.options.humanFeat || [])];
+}
+export function choiceFields(race: string, cls: string, c?: SheetChoices): ChoiceField[] {
+  const result: ChoiceField[] = [];
+  const add = (key: string, label: string, count: number, options: string[]) =>
+    result.push({ key, label, count, options });
+  if (['Humano', 'Tiefling'].includes(race)) add('size', 'Tamanho', 1, ['Médio', 'Pequeno']);
+  if (race === 'Humano') {
+    add('racialSkills', 'Perícia humana', 1, skills);
+    add(
+      'humanFeat',
+      'Talento de origem humano',
+      1,
+      originFeats.filter(
+        (f) => f === 'Habilidoso' || f !== backgroundRules[c?.backgroundType || 'Acólito'].feat,
+      ),
+    );
+  }
+  if (race === 'Elfo')
+    add('racialSkills', 'Sentidos aguçados', 1, ['Percepção', 'Intuição', 'Sobrevivência']);
+  if (['Elfo', 'Gnomo', 'Tiefling'].includes(race))
+    add('speciesAbility', 'Atributo das magias da espécie', 1, statNames.slice(3));
+  if (race === 'Elfo' && (!c || c.subrace === 'Alto elfo'))
+    add(
+      'racialCantrip',
+      'Truque de alto elfo (troca após descanso longo)',
+      1,
+      spellOptions('Mago', 0).map((s) => s.id),
+    );
+  if (race === 'Draconato') add('dragon', 'Ancestralidade dracônica', 1, Object.keys(dragons));
+  if (cls === 'Bardo') {
+    add('instruments', 'Instrumentos musicais', 3, instruments);
+    add('instrument', 'Instrumento inicial', 1, instruments);
+  }
+  if (cls === 'Monge')
+    add('monkTool', 'Ferramenta ou instrumento', 1, [...artisanTools, ...instruments]);
+  if (cls === 'Guerreiro')
+    add('style', 'Estilo de luta', 1, [
+      'Arquearia',
+      'Defesa',
+      'Combate com armas grandes',
+      'Combate com duas armas',
+    ]);
+  if (cls === 'Clérigo') add('order', 'Ordem divina', 1, ['Protetor', 'Taumaturgo']);
+  if (cls === 'Druida') add('order', 'Ordem primal', 1, ['Guardião', 'Mago primal']);
+  if (c?.options.order?.[0] === 'Taumaturgo' || c?.options.order?.[0] === 'Mago primal')
+    add(
+      'orderCantrip',
+      'Truque adicional da ordem',
+      1,
+      spellOptions(cls, 0)
+        .filter((s) => !c.cantrips.includes(s.id))
+        .map((s) => s.id),
+    );
+  if (cls === 'Ladino')
+    add(
+      'rogueLanguage',
+      'Idioma adicional do ladino',
+      1,
+      [...languages, ...rareLanguages].filter(
+        (l) => l !== 'Comum' && l !== 'Gíria dos ladrões' && !c?.backgroundExtras.includes(l),
+      ),
+    );
+  if (classRules[cls].masteries)
+    add(
+      'mastery',
+      'Maestrias de armas',
+      classRules[cls].masteries,
+      Object.keys(weaponData).filter(
+        (w) => trainedWeapon(cls, w, c) && (cls !== 'Bárbaro' || !weaponData[w].ranged),
+      ),
+    );
+  if (c?.backgroundType === 'Soldado')
+    add('game', 'Jogo do antecedente', 1, [
+      'Dados de jogo',
+      'Baralho',
+      'Xadrez de dragão',
+      'Três dragões',
+    ]);
+  if (cls === 'Bruxo') {
+    add('invocation', 'Invocação mística', 1, [
+      'Armadura de Sombras',
+      'Pacto da Lâmina',
+      'Pacto da Corrente',
+      'Pacto do Tomo',
+      'Mente Mística',
+    ]);
+    if (c?.options.invocation?.[0] === 'Pacto do Tomo') {
+      add(
+        'tomeCantrips',
+        'Truques do tomo',
+        3,
+        spells
+          .filter((s) => s.level === 0 && !nonTomeSpells(race, cls, c).includes(s.id))
+          .map((s) => s.id),
+      );
+      add(
+        'tomeRituals',
+        'Rituais do tomo',
+        2,
+        spells
+          .filter((s) => s.level === 1 && s.ritual && !nonTomeSpells(race, cls, c).includes(s.id))
+          .map((s) => s.id),
+      );
+    }
+  }
+  if (c)
+    for (const [index, feat] of feats(c).entries()) {
+      if (feat === 'Habilidoso')
+        add('skilled' + index, 'Proficiências de Habilidoso', 3, [
+          ...skills,
+          ...tools,
+          ...instruments,
+        ]);
+      if (feat.startsWith('Iniciado em Magia: ')) {
+        const cl = feat.split(': ')[1];
+        add('featAbility' + index, 'Atributo de ' + feat, 1, statNames.slice(3));
+        add(
+          'featCantrips' + index,
+          'Truques de ' + feat,
+          2,
+          spellOptions(cl, 0).map((s) => s.id),
+        );
+        add(
+          'featSpell' + index,
+          'Magia de ' + feat,
+          1,
+          spellOptions(cl, 1).map((s) => s.id),
+        );
+      }
+    }
+  return result;
+}
+const loadouts: Record<string, { gear: string[][]; gold: number[]; cash: number }> = {
+  Bárbaro: {
+    gear: [['Machado grande', 'Quatro machadinhas', 'Pacote de explorador']],
+    gold: [15],
+    cash: 75,
+  },
+  Bardo: { gear: [['Couro', 'Duas adagas', 'Pacote de artista']], gold: [19], cash: 90 },
+  Bruxo: {
+    gear: [
+      [
+        'Couro',
+        'Foice',
+        'Duas adagas',
+        'Foco arcano (orbe)',
+        'Livro de ocultismo',
+        'Pacote de estudioso',
+      ],
+    ],
+    gold: [15],
+    cash: 100,
+  },
+  Clérigo: {
+    gear: [['Camisão de malha', 'Escudo', 'Maça', 'Símbolo sagrado', 'Pacote de sacerdote']],
+    gold: [7],
+    cash: 110,
+  },
+  Druida: {
+    gear: [
+      [
+        'Couro',
+        'Escudo',
+        'Foice',
+        'Bordão',
+        'Foco druídico',
+        'Pacote de explorador',
+        'Kit de herbalismo',
+      ],
+    ],
+    gold: [9],
+    cash: 50,
+  },
+  Feiticeiro: {
+    gear: [['Lança', 'Duas adagas', 'Foco arcano (cristal)', 'Pacote de aventureiro']],
+    gold: [28],
+    cash: 50,
+  },
+  Guerreiro: {
+    gear: [
+      ['Cota de malha', 'Espada grande', 'Mangual', 'Oito azagaias', 'Pacote de aventureiro'],
+      [
+        'Couro batido',
+        'Cimitarra',
+        'Espada curta',
+        'Arco longo',
+        '20 flechas',
+        'Aljava',
+        'Pacote de aventureiro',
+      ],
+    ],
+    gold: [4, 11],
+    cash: 155,
+  },
+  Ladino: {
+    gear: [
+      [
+        'Couro',
+        'Duas adagas',
+        'Espada curta',
+        'Arco curto',
+        '20 flechas',
+        'Aljava',
+        'Ferramentas de ladrão',
+        'Pacote de assaltante',
+      ],
+    ],
+    gold: [8],
+    cash: 100,
+  },
+  Mago: {
+    gear: [['Duas adagas', 'Bordão', 'Foco arcano', 'Vestes', 'Grimório', 'Pacote de estudioso']],
+    gold: [5],
+    cash: 55,
+  },
+  Monge: { gear: [['Lança', 'Cinco adagas', 'Pacote de explorador']], gold: [11], cash: 50 },
+  Paladino: {
+    gear: [
+      [
+        'Cota de malha',
+        'Escudo',
+        'Espada longa',
+        'Seis azagaias',
+        'Símbolo sagrado',
+        'Pacote de sacerdote',
+      ],
+    ],
+    gold: [9],
+    cash: 150,
+  },
+  Patrulheiro: {
+    gear: [
+      [
+        'Couro batido',
+        'Cimitarra',
+        'Espada curta',
+        'Arco longo',
+        '20 flechas',
+        'Aljava',
+        'Foco druídico',
+        'Pacote de explorador',
+      ],
+    ],
+    gold: [7],
+    cash: 150,
+  },
+};
+export function equipmentFields(cls: string): ChoiceField[] {
+  return [
+    {
+      key: 'package',
+      label: 'Equipamento da classe',
+      count: 1,
+      options: loadouts[cls].gear.map((_, i) => 'Conjunto ' + (i + 1)).concat('Ouro da classe'),
+    },
+    {
+      key: 'background',
+      label: 'Equipamento do antecedente',
+      count: 1,
+      options: ['Conjunto do antecedente', '50 PO'],
+    },
+  ];
+}
+export function startingGold(cls: string, c: SheetChoices) {
+  const l = loadouts[cls],
+    v = c.equipment.package?.[0],
+    i = Number(v?.split(' ')[1]) - 1;
+  return (
+    ((v === 'Ouro da classe' ? l.cash : l.gold[i] || 0) +
+      (c.equipment.background?.[0] === '50 PO' ? 50 : backgroundRules[c.backgroundType].gold)) *
+    100
+  );
+}
+export function startingEquipment(cls: string, c: SheetChoices) {
+  const i = Number(c.equipment.package?.[0]?.split(' ')[1]) - 1;
+  return [
+    ...(loadouts[cls].gear[i] || []),
+    ...(i >= 0 && cls === 'Bardo' ? c.options.instrument || [] : []),
+    ...(i >= 0 && cls === 'Monge' ? c.options.monkTool || [] : []),
+    ...(c.equipment.background?.[0] === '50 PO'
+      ? []
+      : [
+          ...backgroundRules[c.backgroundType].gear,
+          ...(c.backgroundType === 'Soldado' ? c.options.game || [] : []),
+        ]),
+  ];
+}
+export function racialSkills(_race: string, c: SheetChoices) {
+  return c.options.racialSkills || [];
 }
 export function proficientSkills(race: string, c: SheetChoices) {
-  return [...new Set([...racialSkills(race, c), ...c.backgroundSkills, ...c.classSkills])];
+  return [
+    ...new Set([
+      ...racialSkills(race, c),
+      ...c.backgroundSkills,
+      ...c.classSkills,
+      ...Object.entries(c.options)
+        .filter(([k]) => k.startsWith('skilled'))
+        .flatMap(([, v]) => v)
+        .filter((v) => skills.includes(v)),
+    ]),
+  ];
 }
-export function defaultChoices(race: string, cls: string): SheetChoices {
-  const options = Object.fromEntries(
-    choiceFields(race, cls).map((f) => [f.key, f.options.slice(0, f.count)]),
-  );
-  const c: SheetChoices = {
-    version: 1,
-    subrace: raceRules[race].variants[0],
+export function racialBonuses(_race: string, c: SheetChoices) {
+  return c.abilityBoosts;
+}
+export function normalizeOptions(race: string, cls: string, c: SheetChoices) {
+  for (let pass = 0; pass < 3; pass++) {
+    const fields = choiceFields(race, cls, c);
+    c = {
+      ...c,
+      options: Object.fromEntries(
+        fields.map((f) => {
+          let v = (c.options[f.key] || []).filter((v) => f.options.includes(v));
+          v = [...new Set(v)];
+          return [f.key, v.concat(f.options.filter((x) => !v.includes(x))).slice(0, f.count)];
+        }),
+      ),
+    };
+  }
+  return c;
+}
+export function defaultChoices(race: string, cls: string, background = 'Acólito'): SheetChoices {
+  const species = (races as readonly string[]).includes(race) ? race : 'Humano',
+    b = backgroundRules[background];
+  let c: SheetChoices = {
+    version: 2,
+    species: species as SheetChoices['species'],
+    subrace: raceRules[species].variants[0],
     alignment: 'Neutro',
-    backgroundType: 'Acólito',
-    backgroundSkills: ['Intuição', 'Religião'],
-    backgroundExtras: [],
+    backgroundType: background as SheetChoices['backgroundType'],
+    backgroundSkills: [...b.skills],
+    backgroundExtras: ['Élfico', 'Anão'],
+    abilityBoosts: statNames.map((_, i) =>
+      i === b.abilities[0] ? 2 : i === b.abilities[1] ? 1 : 0,
+    ),
     classSkills: [],
-    options,
-    equipment: Object.fromEntries(equipmentFields(cls).map((f) => [f.key, [f.options[0]]])),
+    options: {},
+    equipment: { package: ['Conjunto 1'], background: ['Conjunto do antecedente'] },
     cantrips: spellOptions(cls, 0)
-      .slice(0, classRules[cls].cantrips || 0)
+      .slice(0, classRules[cls].cantrips)
       .map((s) => s.id),
     spells: spellOptions(cls, 1)
-      .slice(0, classRules[cls].known || 0)
+      .slice(0, classRules[cls].known)
       .map((s) => s.id),
     expertise: [],
     personality: '',
@@ -826,187 +883,132 @@ export function defaultChoices(race: string, cls: string): SheetChoices {
     height: '',
     weight: '',
   };
-  c.backgroundExtras = languages
-    .filter(
-      (l) =>
-        !raceRules[race].languages.includes(l) &&
-        !options.racialLanguage?.includes(l) &&
-        !(cls === 'Feiticeiro' && l === 'Dracônico'),
-    )
-    .slice(0, 2);
-  c.backgroundSkills = c.backgroundSkills.map((s) =>
-    racialSkills(race, c).includes(s)
-      ? skills.find((k) => !c.backgroundSkills.includes(k) && !racialSkills(race, c).includes(k))!
-      : s,
-  );
+  c = normalizeOptions(species, cls, c);
+  if (species === 'Elfo') c.options.racialCantrip = ['prestidigitation'];
+  if (c.options.racialSkills)
+    c.options.racialSkills = c.options.racialSkills.map((s) =>
+      b.skills.includes(s)
+        ? choiceFields(species, cls, c)
+            .find((f) => f.key === 'racialSkills')!
+            .options.find((x) => !b.skills.includes(x))!
+        : s,
+    );
+  if (c.options.skilled1)
+    c.options.skilled1 = skills
+      .filter((s) => !b.skills.includes(s) && !racialSkills(species, c).includes(s))
+      .slice(0, 3);
   c.classSkills = classRules[cls].skills
-    .filter((s) => !c.backgroundSkills.includes(s) && !racialSkills(race, c).includes(s))
+    .filter((s) => !proficientSkills(species, c).includes(s))
     .slice(0, classRules[cls].count);
-  if (cls === 'Ladino') c.expertise = proficientSkills(race, c).slice(0, 2);
+  if (cls === 'Ladino') c.expertise = proficientSkills(species, c).slice(0, 2);
   return c;
 }
 export function validateChoices(race: string, cls: string, input: unknown): SheetChoices {
   const c = choicesSchema.parse(input),
     r = raceRules[race],
-    k = classRules[cls];
-  const check = (ok: boolean, message: string) => {
-    if (!ok) throw new Error(message);
+    k = classRules[cls],
+    b = backgroundRules[c.backgroundType];
+  const check = (ok: boolean, msg: string) => {
+    if (!ok) throw new Error(msg);
   };
-  const list = (v: string[], n: number, allowed: string[], label: string) =>
+  const list = (v: string[], n: number, a: string[], label: string) =>
     check(
-      v.length === n && new Set(v).size === n && v.every((x) => allowed.includes(x)),
+      v.length === n && new Set(v).size === n && v.every((x) => a.includes(x)),
       `Confira ${label}: escolha ${n} opções distintas permitidas.`,
     );
-  check(r.variants.includes(c.subrace), 'Sub-raça inválida.');
+  check(!!r && !!k && c.species === race, 'Espécie ou classe inválida.');
+  check(r.variants.includes(c.subrace), 'Linhagem inválida.');
+  check(
+    c.abilityBoosts.reduce((a, b) => a + b, 0) === 3 &&
+      c.abilityBoosts.every((v, i) => v === 0 || b.abilities.includes(i)),
+    'Distribua +2/+1 ou +1/+1/+1 nos atributos do antecedente.',
+  );
+  list(c.backgroundSkills, 2, b.skills, 'perícias do antecedente');
+  list(
+    c.backgroundExtras,
+    2,
+    languages.filter((l) => l !== 'Comum'),
+    'idiomas iniciais',
+  );
   for (const [fields, values] of [
-    [choiceFields(race, cls), c.options],
+    [choiceFields(race, cls, c), c.options],
     [equipmentFields(cls), c.equipment],
   ] as const) {
     check(
       Object.keys(values).every((key) => fields.some((f) => f.key === key)),
-      'Opção não permitida para esta raça ou classe.',
+      'Opção não permitida.',
     );
     for (const f of fields) list(values[f.key] || [], f.count, f.options, f.label);
   }
   const racial = racialSkills(race, c);
-  list(
-    c.backgroundSkills,
-    2,
-    skills.filter((s) => !racial.includes(s)),
-    'as perícias do antecedente',
+  check(
+    !racial.some((v) => c.backgroundSkills.includes(v)),
+    'Escolha outra perícia da espécie para evitar repetição.',
   );
-  if (c.backgroundType === 'Acólito')
-    check(
-      ['Intuição', 'Religião'].every((s) => racial.includes(s) || c.backgroundSkills.includes(s)),
-      'Acólito recebe Intuição e Religião; substitua somente proficiências repetidas.',
-    );
-  const fixedLanguages = [
-    ...r.languages,
-    ...(c.options.racialLanguage || []),
-    ...(cls === 'Feiticeiro' ? ['Dracônico'] : []),
-  ];
-  list(
-    c.backgroundExtras,
-    2,
-    (c.backgroundType === 'Acólito' ? languages : [...languages, ...tools]).filter(
-      (s) => !fixedLanguages.includes(s),
-    ),
-    'os idiomas/ferramentas do antecedente',
+  const skilled = Object.entries(c.options)
+    .filter(([key]) => key.startsWith('skilled'))
+    .flatMap(([, v]) => v);
+  check(
+    new Set(skilled).size === skilled.length &&
+      !skilled.some((v) =>
+        [
+          ...racial,
+          ...c.backgroundSkills,
+          b.tool,
+          ...(cls === 'Druida' ? ['Kit de herbalismo'] : []),
+          ...(cls === 'Ladino' ? ['Ferramentas de ladrão'] : []),
+          ...(c.options.instruments || []),
+          ...(c.options.monkTool || []),
+        ].includes(v),
+      ),
+    'Não repita proficiências do talento Habilidoso.',
   );
   list(
     c.classSkills,
     k.count,
-    k.skills.filter((s) => !racial.includes(s) && !c.backgroundSkills.includes(s)),
-    'as perícias da classe',
+    k.skills.filter((v) => ![...racial, ...c.backgroundSkills, ...skilled].includes(v)),
+    'perícias da classe',
   );
   list(
     c.cantrips,
-    k.cantrips || 0,
+    k.cantrips,
     spellOptions(cls, 0).map((s) => s.id),
-    'os truques',
+    'truques',
   );
   list(
     c.spells,
-    k.known || 0,
+    k.known,
     spellOptions(cls, 1).map((s) => s.id),
-    'as magias iniciais',
+    'magias',
   );
-  list(
-    c.expertise,
-    cls === 'Ladino' ? 2 : 0,
-    [...proficientSkills(race, c), 'Ferramentas de ladrão'],
-    'as especializações',
-  );
-  if (cls === 'Clérigo' && c.equipment.weapon?.[0] === 'Martelo de guerra')
-    check(race === 'Anão', 'Martelo de guerra exige proficiência (anão).');
+  list(c.expertise, cls === 'Ladino' ? 2 : 0, proficientSkills(race, c), 'especializações');
   return c;
 }
-export function racialBonuses(race: string, c: SheetChoices) {
-  const b = [...raceRules[race].bonus];
-  if (race === 'Meio-elfo')
-    for (const s of c.options.racialAbilities || [])
-      b[['Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria'].indexOf(s)]++;
-  return b;
-}
-export function sheetAttacks(race: string, cls: string, stats: number[], choices: SheetChoices) {
-  const gear = startingEquipment(cls, choices);
-  const aliases: Record<string, string[]> = {
-    Machadinha: ['Duas machadinhas'],
-    Azagaia: ['Quatro azagaias', 'Cinco azagaias'],
-    Adaga: ['Duas adagas'],
-    Dardo: ['Dez dardos'],
-    'Espada curta': ['Duas espadas curtas'],
-    'Arco longo': ['Couro, arco longo e 20 flechas'],
-  };
-  const limited: Record<string, string[]> = {
-    Mago: ['Adaga', 'Dardo', 'Funda', 'Bordão', 'Besta leve'],
-    Feiticeiro: ['Adaga', 'Dardo', 'Funda', 'Bordão', 'Besta leve'],
-    Druida: [
-      'Clava',
-      'Adaga',
-      'Dardo',
-      'Azagaia',
-      'Maça',
-      'Bordão',
-      'Cimitarra',
-      'Foice',
-      'Funda',
-      'Lança',
-    ],
-  };
+export function sheetAttacks(race: string, cls: string, stats: number[], c: SheetChoices) {
+  const gear = startingEquipment(cls, c),
+    aliases: Record<string, string[]> = {
+      Adaga: ['Duas adagas', 'Cinco adagas'],
+      Machadinha: ['Quatro machadinhas'],
+      Azagaia: ['Oito azagaias', 'Seis azagaias'],
+    };
   return Object.entries(weaponData)
-    .filter(([name]) =>
-      gear.some((e) => e === name || e.startsWith(name + ' e ') || aliases[name]?.includes(e)),
-    )
+    .filter(([name]) => gear.includes(name) || aliases[name]?.some((n) => gear.includes(n)))
     .map(([name, w]) => {
-      const monk =
-        cls === 'Monge' && (name === 'Espada curta' || (!w.martial && !w.two && !w.ranged));
+      const monk = cls === 'Monge' && !w.ranged && (!w.martial || light.includes(name));
       const dex = w.ability === 'dex' || ((w.ability === 'finesse' || monk) && stats[1] > stats[0]);
-      const ability = modifier(stats[dex ? 1 : 0]);
-      const trained =
-        ['Bárbaro', 'Guerreiro', 'Paladino', 'Patrulheiro'].includes(cls) ||
-        (limited[cls] ? limited[cls].includes(name) : !w.martial) ||
-        (['Bardo', 'Ladino'].includes(cls) &&
-          ['Besta de mão', 'Espada longa', 'Espada curta', 'Rapieira'].includes(name)) ||
-        (cls === 'Monge' && name === 'Espada curta') ||
-        (race === 'Elfo' &&
-          ['Espada longa', 'Espada curta', 'Arco longo', 'Arco curto'].includes(name)) ||
-        (race === 'Anão' &&
-          ['Machado de batalha', 'Machadinha', 'Martelo leve', 'Martelo de guerra'].includes(name));
+      const ability = modifier(stats[dex ? 1 : 0]),
+        trained = trainedWeapon(cls, name, c);
       return {
         name,
-        dice: w.dice,
+        dice: monk && w.dice === '1d4' ? '1d6' : w.dice,
         type: w.type,
         ability,
         trained,
         attack:
-          ability +
-          (trained ? 2 : 0) +
-          (w.ranged && choices.options.style?.[0] === 'Arquearia' ? 2 : 0),
+          ability + (trained ? 2 : 0) + (w.ranged && c.options.style?.[0] === 'Arquearia' ? 2 : 0),
+        mastery: c.options.mastery?.includes(name) ? mastery[name] : null,
       };
     });
-}
-export function startingEquipment(cls: string, c: SheetChoices) {
-  return [
-    ...fixedEquipment[cls],
-    ...Object.entries(c.equipment)
-      .filter(
-        ([key]) =>
-          !(
-            cls === 'Patrulheiro' &&
-            key === 'secondary' &&
-            c.equipment.weapon[0] === 'Duas espadas curtas'
-          ),
-      )
-      .flatMap(([, v]) => v),
-    ...[
-      'Símbolo sagrado do antecedente',
-      'Livro de orações',
-      'Cinco varetas de incenso',
-      'Vestes',
-      'Roupas comuns',
-    ],
-  ];
 }
 export function deriveSheet(
   character: { race: string; class: string; stats: number[]; level: number },
@@ -1016,41 +1018,164 @@ export function deriveSheet(
     r = raceRules[race],
     k = classRules[cls],
     m = stats.map(modifier),
-    prof = 2 + Math.floor((level - 1) / 4);
-  const trained = proficientSkills(race, c),
+    prof = 2 + Math.floor((level - 1) / 4),
+    trained = proficientSkills(race, c),
     equipment = startingEquipment(cls, c);
-  const bare =
-    cls === 'Bárbaro'
-      ? 10 + m[1] + m[2]
-      : cls === 'Monge'
-        ? 10 + m[1] + m[4]
-        : cls === 'Feiticeiro'
-          ? 13 + m[1]
-          : 10 + m[1];
-  const armor = equipment.some((e) => e === 'Cota de malha')
+  const bare = 10 + m[1] + (cls === 'Bárbaro' ? m[2] : cls === 'Monge' ? m[4] : 0);
+  const armored = equipment.some((e) =>
+      ['Cota de malha', 'Camisão de malha', 'Couro', 'Couro batido'].includes(e),
+    ),
+    shield = equipment.includes('Escudo');
+  const armor = equipment.includes('Cota de malha')
     ? 16
-    : equipment.includes('Cota de escamas')
-      ? 14 + Math.min(2, m[1])
-      : equipment.some((e) => e.startsWith('Couro'))
-        ? 11 + m[1]
-        : bare;
-  const armored = equipment.some(
-    (e) => e === 'Cota de malha' || e === 'Cota de escamas' || e.startsWith('Couro'),
-  );
-  const shield = equipment.some((e) => e === 'Escudo' || e === 'Escudo de madeira');
-  const dexArmor =
-    armor + (shield ? 2 : 0) + (armored && c.options.style?.[0] === 'Defesa' ? 1 : 0);
-  const hp = hitDice[cls] + m[2] + (race === 'Anão' ? 1 : 0) + (cls === 'Feiticeiro' ? 1 : 0);
+    : equipment.includes('Camisão de malha')
+      ? 13 + Math.min(2, m[1])
+      : equipment.includes('Couro batido')
+        ? 12 + m[1]
+        : equipment.includes('Couro')
+          ? 11 + m[1]
+          : bare;
+  const speciesCantrips =
+    race === 'Elfo'
+      ? c.subrace === 'Drow'
+        ? ['dancing-lights']
+        : c.subrace === 'Elfo da floresta'
+          ? ['druidcraft']
+          : c.options.racialCantrip || []
+      : race === 'Gnomo'
+        ? c.subrace === 'Gnomo da floresta'
+          ? ['minor-illusion']
+          : ['mending', 'prestidigitation']
+        : race === 'Tiefling'
+          ? [
+              'thaumaturgy',
+              c.subrace === 'Abissal'
+                ? 'poison-spray'
+                : c.subrace === 'Ctônico'
+                  ? 'chill-touch'
+                  : 'fire-bolt',
+            ]
+          : [];
+  const spellGrants: {
+    source: string;
+    ability: number;
+    cantrips: string[];
+    spells: string[];
+    note: string;
+  }[] = [];
+  if (speciesCantrips.length)
+    spellGrants.push({
+      source: 'Espécie: ' + c.subrace,
+      ability: statNames.indexOf(c.options.speciesAbility[0]),
+      cantrips: speciesCantrips,
+      spells: race === 'Gnomo' && c.subrace === 'Gnomo da floresta' ? ['speak-with-animals'] : [],
+      note:
+        race === 'Gnomo' && c.subrace === 'Gnomo da floresta'
+          ? 'Falar com Animais: usos sem espaço iguais à proficiência por descanso longo.'
+          : '',
+    });
+  feats(c).forEach((f, i) => {
+    if (f.startsWith('Iniciado em Magia'))
+      spellGrants.push({
+        source: f,
+        ability: statNames.indexOf(c.options['featAbility' + i][0]),
+        cantrips: c.options['featCantrips' + i],
+        spells: c.options['featSpell' + i],
+        note: 'Magia de nível 1: uma conjuração sem espaço por descanso longo; também pode usar espaços.',
+      });
+  });
+  if (cls === 'Bruxo' && c.options.invocation?.[0] === 'Pacto do Tomo')
+    spellGrants.push({
+      source: 'Pacto do Tomo',
+      ability: 5,
+      cantrips: c.options.tomeCantrips,
+      spells: c.options.tomeRituals,
+      note: 'Disponíveis enquanto carrega o tomo; pode escolher novamente ao conjurá-lo após descanso curto ou longo.',
+    });
+  const order = c.options.order?.[0];
+  const features = [...r.traits, ...k.features, ...feats(c).map((f) => 'Talento de origem: ' + f)];
+  if (feats(c).includes('Alerta'))
+    features.push(
+      'Alerta: soma proficiência à iniciativa; pode trocar iniciativa com aliado disposto, desde que nenhum esteja Incapacitado.',
+    );
+  if (feats(c).includes('Atacante Selvagem'))
+    features.push(
+      'Atacante Selvagem: uma vez por turno ao acertar com arma, role os dados de dano da arma duas vezes e escolha um resultado.',
+    );
+  if (race === 'Elfo')
+    features.push('Visão no escuro: ' + (c.subrace === 'Drow' ? 36 : 18) + ' m.');
+  if (race === 'Gnomo' && c.subrace === 'Gnomo das rochas')
+    features.push(
+      'Engenhoqueiro: 10 minutos com Prestidigitação criam dispositivo minúsculo com um efeito do truque; ação bônus para ativar, até três dispositivos, duração de 8 horas.',
+    );
+  if (race === 'Tiefling')
+    features.push(
+      'Legado ' +
+        c.subrace +
+        ': resistência a ' +
+        (c.subrace === 'Abissal' ? 'veneno' : c.subrace === 'Ctônico' ? 'necrótico' : 'fogo') +
+        '.',
+    );
+  if (race === 'Golias')
+    features.push(
+      'Ancestralidade ' +
+        c.subrace +
+        ': ' +
+        {
+          Nuvem: 'ação bônus para teletransportar 9 m a um espaço visível.',
+          Fogo: 'ao acertar e causar dano, +1d10 de fogo.',
+          Gelo: 'ao acertar e causar dano, +1d6 de frio e -3 m de deslocamento até seu próximo turno.',
+          Colina: 'ao acertar e causar dano a criatura Grande ou menor, pode derrubá-la.',
+          Pedra: 'reação ao sofrer dano: reduz em 1d12 + Constituição.',
+          Tempestade: 'reação ao sofrer dano de criatura a até 18 m: causa 1d8 trovejante nela.',
+        }[c.subrace],
+    );
+  const inv = c.options.invocation?.[0];
+  if (inv)
+    features.push(
+      inv +
+        ': ' +
+        {
+          'Armadura de Sombras':
+            'Armadura Arcana em si mesmo à vontade, sem espaço. CA sob o efeito: ' +
+            (13 + m[1]) +
+            '.',
+          'Mente Mística': 'vantagem em salvaguardas de Constituição para manter concentração.',
+          'Pacto da Lâmina':
+            'ação bônus para conjurar/vincular arma corpo a corpo; proficiente, pode usar Carisma e dano normal, necrótico, psíquico ou radiante. Resolva a arma vinculada na mesa.',
+          'Pacto da Corrente':
+            'Encontrar Familiar sempre preparada; pode conjurar como ação Mágica sem espaço. Formas especiais e ataque do familiar conforme SRD.',
+          'Pacto do Tomo':
+            'três truques e dois rituais de nível 1, de qualquer lista, usando Carisma.',
+        }[inv],
+    );
+  if (c.options.style?.[0])
+    features.push(
+      'Estilo de luta: ' +
+        c.options.style[0] +
+        (c.options.style[0] === 'Combate com armas grandes'
+          ? ' — trate 1 ou 2 nos dados de dano como 3 ao usar arma corpo a corpo versátil ou de duas mãos empunhada com duas mãos.'
+          : c.options.style[0] === 'Combate com duas armas'
+            ? ' — some o atributo no ataque extra da propriedade Leve.'
+            : ''),
+    );
+  if (c.options.mastery)
+    features.push(
+      ...c.options.mastery.map(
+        (w) => 'Maestria de ' + w + ': ' + mastery[w] + ' — ' + masteryDescriptions[mastery[w]],
+      ),
+    );
   return {
     modifiers: m,
     proficiency: prof,
-    hp: Math.max(1, hp),
-    armorClass: dexArmor,
+    hp: Math.max(1, hitDice[cls] + m[2] + (race === 'Anão' ? 1 : 0)),
+    armorClass: armor + (shield ? 2 : 0) + (armored && c.options.style?.[0] === 'Defesa' ? 1 : 0),
     unarmored: bare,
-    initiative: m[1],
+    initiative: m[1] + (feats(c).includes('Alerta') ? prof : 0),
     speed:
-      r.speed - (equipment.includes('Cota de malha') && stats[0] < 13 && race !== 'Anão' ? 3 : 0),
-    size: r.size,
+      (race === 'Elfo' && c.subrace === 'Elfo da floresta' ? 10.5 : r.speed) -
+      (equipment.includes('Cota de malha') && stats[0] < 13 ? 3 : 0),
+    size: c.options.size?.[0] || r.size,
     hitDie: hitDice[cls],
     passivePerception:
       10 +
@@ -1061,66 +1186,64 @@ export function deriveSheet(
       name,
       value:
         m[skillAbilities[i]] +
-        (trained.includes(name) ? prof * (c.expertise.includes(name) ? 2 : 1) : 0),
+        (trained.includes(name) ? prof * (c.expertise.includes(name) ? 2 : 1) : 0) +
+        ((order === 'Taumaturgo' && ['Arcanismo', 'Religião'].includes(name)) ||
+        (order === 'Mago primal' && ['Arcanismo', 'Natureza'].includes(name))
+          ? Math.max(1, m[4])
+          : 0),
       trained: trained.includes(name),
       expert: c.expertise.includes(name),
     })),
     languages: [
       ...new Set([
-        ...r.languages,
-        ...(c.options.racialLanguage || []),
-        ...c.backgroundExtras.filter((x) => languages.includes(x)),
+        'Comum',
+        ...c.backgroundExtras,
         ...(cls === 'Druida'
           ? ['Druídico']
           : cls === 'Ladino'
-            ? ['Gíria dos ladrões']
-            : cls === 'Feiticeiro'
-              ? ['Dracônico']
-              : []),
-        ...(c.options.enemyLanguage || []),
+            ? ['Gíria dos ladrões', ...c.options.rogueLanguage]
+            : []),
       ]),
     ],
     equipment,
-    features: [
-      ...r.traits,
-      ...k.features,
-      'Abrigo dos fiéis: você e seus companheiros podem receber cura e cuidados gratuitos em um templo de sua fé; componentes materiais de magias devem ser fornecidos. Você recebe sustento modesto nesses templos.',
-      ...(c.options.style?.[0] === 'Duelismo'
-        ? ['Duelismo: +2 ao dano com arma corpo a corpo em uma mão, quando não empunha outra arma.']
-        : []),
-      ...(c.options.style?.[0] === 'Combate com armas grandes'
-        ? [
-            'Combate com armas grandes: role novamente 1 ou 2 no dano de arma corpo a corpo empunhada com duas mãos, com propriedade versátil ou duas mãos; use o novo resultado.',
-          ]
-        : []),
-      ...(c.options.style?.[0] === 'Proteção'
-        ? [
-            'Proteção: com escudo, use reação para impor desvantagem ao ataque de criatura que você vê contra outra pessoa a até 1,5 m de você.',
-          ]
-        : []),
-      ...(c.options.style?.[0] === 'Combate com duas armas'
-        ? ['Combate com duas armas: adiciona o modificador de atributo ao dano do segundo ataque.']
-        : []),
-    ],
+    features,
     proficiencies: [
       ...k.proficiencies,
-      ...c.backgroundExtras.filter((x) => tools.includes(x)),
-      ...(c.options.artisan || []),
+      backgroundRules[c.backgroundType].tool,
+      ...(c.options.game || []),
       ...(c.options.instruments || []),
       ...(c.options.monkTool || []),
-      ...(race === 'Gnomo' ? ['Ferramentas de funileiro'] : []),
+      ...(cls === 'Ladino'
+        ? ['Ferramentas de ladrão']
+        : cls === 'Druida'
+          ? ['Kit de herbalismo']
+          : []),
+      ...(order === 'Protetor'
+        ? ['Armas marciais e armaduras pesadas']
+        : order === 'Guardião'
+          ? ['Armas marciais e armaduras médias']
+          : []),
+      ...Object.entries(c.options)
+        .filter(([key]) => key.startsWith('skilled'))
+        .flatMap(([, v]) => v)
+        .filter((v) => !skills.includes(v)),
     ],
     spellAbility: k.ability,
     spellDC: k.ability === undefined ? null : 8 + prof + m[k.ability],
     spellAttack: k.ability === undefined ? null : prof + m[k.ability],
-    slots: k.slots || 0,
-    prepareCount: k.prepared ? Math.max(1, 1 + m[k.ability!]) : 0,
-    cantrips: [
-      ...c.cantrips,
-      ...(c.options.racialCantrip || []),
-      ...(race === 'Tiefling' ? ['thaumaturgy'] : []),
-    ],
+    slots: k.slots,
+    prepareCount: k.prepareCount,
+    cantrips: [...c.cantrips, ...(c.options.orderCantrip || [])],
     known: c.spells,
+    spellGrants,
+    alwaysPrepared:
+      cls === 'Druida'
+        ? ['speak-with-animals']
+        : cls === 'Patrulheiro'
+          ? ['hunters-mark']
+          : cls === 'Bruxo' && inv === 'Pacto da Corrente'
+            ? ['find-familiar']
+            : [],
   };
 }
 export type SheetRecord = {
@@ -1137,8 +1260,77 @@ export type SheetRecord = {
   death_failure: number;
   slots_used: number;
   hit_dice_used: number;
+  rules_version?: string;
 };
 export type SheetResponse = {
   sheet: SheetRecord | null;
   derived: ReturnType<typeof deriveSheet> | null;
 };
+
+export function restChoiceFields(race: string, cls: string, c: SheetChoices) {
+  return choiceFields(race, cls, c).filter((f) =>
+    ['mastery', 'racialCantrip', 'tomeCantrips', 'tomeRituals'].includes(f.key),
+  );
+}
+export function validateRestChoices(
+  race: string,
+  cls: string,
+  previous: SheetChoices,
+  input: unknown,
+) {
+  const next = validateChoices(race, cls, input),
+    allowed = restChoiceFields(race, cls, previous).map((f) => f.key);
+  const fixed = (c: SheetChoices) => ({
+    ...c,
+    cantrips: cls === 'Mago' ? [] : c.cantrips,
+    options: Object.fromEntries(
+      Object.entries(c.options)
+        .filter(([k]) => !allowed.includes(k))
+        .sort(([a], [b]) => a.localeCompare(b)),
+    ),
+  });
+  if (JSON.stringify(fixed(choicesSchema.parse(previous))) !== JSON.stringify(fixed(next)))
+    throw new Error('O descanso não permite alterar a origem, o treinamento ou os talentos.');
+  if (cls === 'Mago' && next.cantrips.filter((v) => !previous.cantrips.includes(v)).length > 1)
+    throw new Error('Mago pode substituir apenas um truque após descanso longo.');
+  if (
+    ['Bárbaro', 'Guerreiro'].includes(cls) &&
+    (next.options.mastery || []).filter((v) => !previous.options.mastery?.includes(v)).length > 1
+  )
+    throw new Error('Esta classe pode substituir apenas uma maestria após descanso longo.');
+  return next;
+}
+
+function nonTomeSpells(race: string, cls: string, c: SheetChoices) {
+  const racial =
+    race === 'Elfo'
+      ? c.subrace === 'Drow'
+        ? ['dancing-lights']
+        : c.subrace === 'Elfo da floresta'
+          ? ['druidcraft']
+          : c.options.racialCantrip || []
+      : race === 'Gnomo'
+        ? c.subrace === 'Gnomo da floresta'
+          ? ['minor-illusion', 'speak-with-animals']
+          : ['mending', 'prestidigitation']
+        : race === 'Tiefling'
+          ? [
+              'thaumaturgy',
+              c.subrace === 'Abissal'
+                ? 'poison-spray'
+                : c.subrace === 'Ctônico'
+                  ? 'chill-touch'
+                  : 'fire-bolt',
+            ]
+          : [];
+  return [
+    ...c.cantrips,
+    ...c.spells,
+    ...racial,
+    ...Object.entries(c.options)
+      .filter(
+        ([k]) => k.startsWith('featCantrips') || k.startsWith('featSpell') || k === 'orderCantrip',
+      )
+      .flatMap(([, v]) => v),
+  ];
+}

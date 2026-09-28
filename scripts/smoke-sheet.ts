@@ -53,7 +53,7 @@ try {
   await page.reload();
   await page.getByRole('button', { name: 'Uma nova história Criar personagem' }).click();
   await page.getByLabel('Nome do personagem').fill('Liora dos Tomos');
-  await page.getByLabel('Raça', { exact: true }).selectOption('Elfo');
+  await page.getByLabel('Espécie', { exact: true }).selectOption('Elfo');
   await page.getByLabel('Classe', { exact: true }).selectOption('Mago');
   await expect(page.getByText('Truques da classe', { exact: false }).first()).toBeVisible();
   await page

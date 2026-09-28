@@ -1,35 +1,14 @@
 # Fontes e atribuição
 
-Este trabalho inclui material do **System Reference Document 5.1 (SRD 5.1)**, de
-**Wizards of the Coast LLC**, disponível em
-https://www.dndbeyond.com/srd e https://dnd.wizards.com/resources/systems-reference-document.
-O SRD 5.1 é licenciado sob **Creative Commons Attribution 4.0 International (CC BY 4.0)**:
-https://creativecommons.org/licenses/by/4.0/legalcode.
+This work includes material from the System Reference Document 5.2.1 (“SRD 5.2.1”) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.
 
-Os nomes dos equipamentos foram traduzidos para português e as descrições foram
-resumidas/adaptadas. Preços, pesos e propriedades numéricas foram obtidos do dataset
-do 5etools. Não há associação, patrocínio ou endosso por Wizards of the Coast ou 5etools.
+Regras resumidas e nomes traduzidos localmente para português brasileiro. Fonte oficial: https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf.
 
-## Catálogo
+## Ficha, magias e equipamentos (2024)
 
-### Ficha e magias
+`shared/srd-2024-spells.json` contém as 83 magias/truques de níveis 0 e 1 das listas de classes do SRD 5.2.1, com nível, lista, ritual e concentração conferidos no PDF oficial. O SHA-256 do PDF é registrado no snapshot e em `data/catalog.json`. Nenhum suplemento foi importado. Regras de criação e espécies: páginas 19–23 e 83–88; classes: 28–82; equipamento: 89–100.
 
-Regras iniciais adaptadas do SRD 5.1/2014. A lista mínima de magias de níveis 0 e 1
-em `shared/srd-spells.json` vem de `5e-bits/5e-database`, commit
-`bce51b3958573819e3b842fbc0cd9524fe4bc2e1`, arquivo `src/2014/en/5e-SRD-Spells.json`.
-Nomes traduzidos localmente; somente material SRD, sem suplementos. Fonte primária:
-https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf (CC BY 4.0).
-
-### Equipamentos da loja
-
-- Consulta: https://5e.tools/items.html
-- Dataset: https://github.com/5etools-mirror-3/5etools-src
-- Commit exato e data de importação: `data/catalog.json`.
-- Importador: `scripts/import-catalog.ts`.
-- Restrição: oito equipamentos identificados como `srd`, com `source=PHB` (2014).
-- Snapshot conserva somente os campos necessários de cada item; não replica livros,
-  ilustrações, texto de suplementos ou o conjunto completo do 5etools.
-- O link específico de consulta é armazenado em `source_url` por item no PostgreSQL.
+O catálogo conserva os oito IDs existentes para preservar compras e inventários; as regras e o peso da corda foram atualizados. `scripts/import-catalog.ts` valida o snapshot; `db:seed` sincroniza os itens. A origem anterior do 5etools e seu commit permanecem em `previous_source` e no histórico Git. `shared/srd-spells.json` é o snapshot histórico de 2014, sem uso na aplicação.
 
 **Alvorada Cinzenta**, **Bastião da Alvorada**, localidades, personagens de demonstração,
 missões e lore desta versão são conteúdo original do protótipo. As curvas cartográficas são SVG/CSS próprio. O brasão foi removido a pedido do usuário. A paisagem `public/alvorada-bastion.png`

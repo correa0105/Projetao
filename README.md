@@ -5,7 +5,7 @@
 A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/north-sonnenberg.png` (1154 × 866), com proporção original, zoom e arraste. Sonnenberg é o único ponto para abrir o registro de missões do reino, incluindo publicação e histórico; o botão acompanha a projeção do mapa. Nenhum local SQL foi renomeado ou removido. O editor continua privado: ao abri-lo, carrega seu próprio fundo, rascunho e câmera; ao fechá-lo, volta ao mapa publicado. As descrições de área vazia abaixo se aplicam somente ao rascunho privado sem upload.
 
 Portal de RPG de mesa: jogadores, múltiplos personagens, aventuras e uma loja com inventário
-persistido em PostgreSQL. Protótipo funcional em português, inspirado em D&D 5e (2014 / SRD 5.1).
+persistido em PostgreSQL. Protótipo funcional em português, inspirado em D&D 5.5e (2024 / SRD 5.2.1).
 
 Identidade da guilda: nome escrito em Libre Baskerville na apresentação, azul de noite, pergaminho e cobre envelhecido.
 O Bastião da Alvorada é a sede em Vigília. [Direção visual, arte e prompt](docs/IDENTIDADE.md).
@@ -24,7 +24,7 @@ docker compose up -d --build
 ```
 
 Abra **http://localhost:3000** e escolha **Iniciar aventura → Criar uma conta**. Não existe senha de demonstração
-nem usuário administrador padrão. Crie um personagem; ele começa com **150 PO** para testar a loja.
+nem usuário administrador padrão. Crie um personagem; o ouro inicial vem das escolhas de classe e antecedente e é creditado ao concluir a ficha.
 O setup preserva `.env` se ele já existir. Na primeira execução gera segredos aleatórios.
 
 - Aplicação: `http://localhost:3000`
@@ -61,12 +61,12 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 
 - Apresentação com mapa e efeito fosco, login centralizado e navegação flutuante inferior agrupada.
 - Cadastro, login e logout com Better Auth; sessões no PostgreSQL e cookie HttpOnly.
-- Até dois personagens por usuário, nove raças e doze classes; seleção em acampamento ilustrado e arte de corpo inteiro.
+- Até dois personagens por usuário, nove espécies SRD e doze classes; seleção em acampamento ilustrado e arte de corpo inteiro.
 - Ilustrador local via assinatura ChatGPT do Codex, sem API key: referência obrigatória para novos personagens, duas imagens por personagem por mês. [Operação e regras](docs/CHARACTER-ART.md).
 - Ficha de nível 1 com escolhas SRD na criação, atributos por 4d6 no servidor,
-  distribuição definitiva, bônus raciais, perícias, salvaguardas, equipamentos,
+  distribuição definitiva, bônus de antecedente, perícias, salvaguardas, equipamentos,
   magias e recursos de sessão. [Fluxo e limites](docs/CHARACTER-SHEET.md).
-- Oito equipamentos SRD importados do 5etools, com busca, categorias e links da fonte.
+- Oito equipamentos conferidos no SRD 5.2.1 oficial, com busca, categorias e links da fonte.
 - Compras transacionais: preço no servidor, desconto de ouro, empilhamento no inventário,
   histórico de compras e chave de idempotência.
 - Inventário individual, soma de peso e conquistas por personagem.
@@ -75,23 +75,28 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos da staff/admin.
 - Mundo com relevo cartográfico em Three.js, detalhe de solo/rocha, arraste elástico, zoom e nuvens em movimento, preenchendo a tela. A visão inicial usa 100%, equivalente ao antigo enquadramento de 142%; a silhueta fornecida pelo usuário define a geografia. Vinte e dois territórios têm demarcações com destaque ao passar o mouse e clique na superfície; mar contínuo ampliado, ilhotas, vulcão e tormenta complementam o cenário.
 - Reino do Norte abre uma área regional vazia e navegável em Canvas 2D. A conta autorizada pode enviar um fundo e compor sprites em oito direções. Não há névoa ou terreno predefinido. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
-- Lore, Regras, House e Mercenários têm conteúdo inicial persistido no SQL.
+- Lore, Regras e House têm conteúdo inicial persistido no SQL.
 - Interface adaptável para desktop e celular, com tema exclusivamente escuro e menu retrátil com ícones medievais ilustrados.
 
 ## Limites deste protótipo
 
 Mundo usa uma malha de terreno com alturas, materiais procedurais com detalhe de fotografias CC0 de solo/rocha e câmera ortográfica inclinada. A arte anterior fornece a máscara da costa e a distribuição dos biomas; não é exibida como um quadro ou aplicada como pintura sobre a malha. A escala do relevo é representativa. Implementação em [ATLAS-WORLD-RELIEF.md](docs/ATLAS-WORLD-RELIEF.md); origem da referência em [ATLAS-WORLD-V2.md](docs/ATLAS-WORLD-V2.md). O Mundo exige WebGL; a visão regional usa Canvas 2D. Oito orientações significam oito desenhos do mesmo objeto. Somente Reino do Norte possui exploração interna nesta etapa. Missões antigas com locais livres permanecem no mural; somente as vinculadas a um local do atlas aparecem naquele ponto do mapa.
 
-House e Mercenários são páginas narrativas: ainda não há propriedades, baús ou contratação.
-A ficha implementa a criação no nível 1 do SRD 5.1. Não há combate automático,
+House é uma página narrativa; propriedades ainda não estão implementadas.
+A ficha implementa a criação no nível 1 do SRD 5.2.1. Não há combate automático,
 progressão, equipar/vender/consumir itens ou aplicação de efeitos. Equipamentos iniciais
-ficam registrados na ficha, separados das compras do inventário. As 150 PO iniciais são
-uma regra de teste, não a regra padrão de riqueza por classe do SRD.
+ficam registrados na ficha, separados das compras do inventário. Novos personagens recebem a riqueza oficial de classe e antecedente. Conversões preservam o saldo existente.
 
 O ouro anunciado nas missões continua informativo. Experiência é concedida na conclusão,
 mas a mudança de nível ainda não é automática. Há uma única guilda; campanhas privadas,
 moderação e painel de administração serão adicionados depois. Recuperação de senha,
 verificação de e-mail e OAuth dependem de configuração de provedores e ainda não estão habilitados.
+
+## Conversão para as regras de 2024
+
+A migration 025 arquiva as fichas anteriores em `character_sheet_legacy_snapshots`, preserva dados rolados, notas e bens e solicita revisão da origem. Ao abrir Ficha, escolha o antecedente, seus bônus e demais opções atuais; não há nova rolagem se ela já existia. Meio-elfo e meio-orc exigem escolher explicitamente uma espécie atual. Arte, compras, XP e conquistas permanecem.
+
+Detalhes e limites: [Revisão SRD 5.2.1](docs/SRD-2024.md).
 
 ## Desenvolvimento
 

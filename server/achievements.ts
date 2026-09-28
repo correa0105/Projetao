@@ -3,10 +3,11 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
-import { achievementCatalog, emptyShelf } from '../shared/achievements.js';
+import { achievementCatalog, emptyShelf, defaultPositions } from '../shared/achievements.js';
 const schema = z.object({
   material: z.enum(['walnut','oak','ebony']), medal_frame: z.enum(['bronze','silver','dragon']),
   slots: z.array(z.string().refine(v => achievementCatalog.some(a => a.code === v)).nullable()).length(18),
+  positions: z.array(z.number().min(0).max(90)).length(18).optional(),
 }).strict().refine(v => new Set(v.slots.filter(Boolean)).size === v.slots.filter(Boolean).length, 'Não repita conquistas.');
 export function achievementsRouter() {
   const router = Router();
@@ -19,9 +20,9 @@ export function achievementsRouter() {
       const { rows: unlocked } = await client.query('SELECT a.code,a.unlocked_at FROM achievements a JOIN characters c ON c.id=a.character_id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL',[id,res.locals.user.id]);
       if (config) {
         if (config.slots.some(code => code && !unlocked.some(a => a.code === code))) throw new AppError(400,'Escolha apenas conquistas desbloqueadas por este personagem.');
-        await client.query('INSERT INTO achievement_shelves(character_id,material,medal_frame,slots) VALUES($1,$2,$3,$4::jsonb) ON CONFLICT(character_id) DO UPDATE SET material=EXCLUDED.material,medal_frame=EXCLUDED.medal_frame,slots=EXCLUDED.slots,updated_at=now()',[id,config.material,config.medal_frame,JSON.stringify(config.slots)]);
+        await client.query('INSERT INTO achievement_shelves(character_id,material,medal_frame,slots,positions) VALUES($1,$2,$3,$4::jsonb,$5::jsonb) ON CONFLICT(character_id) DO UPDATE SET material=EXCLUDED.material,medal_frame=EXCLUDED.medal_frame,slots=EXCLUDED.slots,positions=EXCLUDED.positions,updated_at=now()',[id,config.material,config.medal_frame,JSON.stringify(config.slots),JSON.stringify(config.positions ?? defaultPositions())]);
       }
-      const { rows } = await client.query('SELECT s.material,s.medal_frame,s.slots FROM achievement_shelves s JOIN characters c ON c.id=s.character_id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL',[id,res.locals.user.id]);
+      const { rows } = await client.query('SELECT s.material,s.medal_frame,s.slots,s.positions FROM achievement_shelves s JOIN characters c ON c.id=s.character_id WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL',[id,res.locals.user.id]);
       return { unlocked, progress, shelf: rows[0] ?? emptyShelf() };
     }));
   });

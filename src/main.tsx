@@ -13,3 +13,5 @@ createRoot(document.getElementById('root')!).render(
 import './journey.css';
 
 import './theme.css';
+
+import './disclosures.css';

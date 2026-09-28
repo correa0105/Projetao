@@ -1,3 +1,9 @@
+# Ficha — regras vigentes
+
+A implementação atual usa **SRD 5.2.1 / D&D 5.5e (2024)**. Consulte [a revisão completa](SRD-2024.md) para escolhas, cálculos, conversão e limites.
+
+## Histórico de implementação em 2014
+
 # Ficha de personagem — nível 1, SRD 5.1 / 2014
 
 ## Fluxo

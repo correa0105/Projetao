@@ -1,0 +1,1 @@
+ALTER TABLE achievement_shelves ADD COLUMN positions jsonb NOT NULL DEFAULT '[0,18,36,54,72,90,0,18,36,54,72,90,0,18,36,54,72,90]'::jsonb CHECK (jsonb_typeof(positions)='array' AND jsonb_array_length(positions)=18);

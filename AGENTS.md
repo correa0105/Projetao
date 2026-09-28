@@ -4,6 +4,10 @@ Antes de editar, leia `docs/CONTEXTO.md` e `README.md`. Estes arquivos são a me
 portável do projeto. Atualize o contexto quando houver mudanças relevantes no escopo,
 nas regras, na arquitetura ou no estado de implementação.
 
+Ao retomar perguntas sobre o estado das regras, lançamento, níveis altos ou suplementos,
+leia também `docs/ROADMAP-REGRAS.md`. Diferencie o que está implementado do que está
+planejado; não apresente a migração ao SRD como implementação completa de D&D.
+
 ## Acordos de desenvolvimento
 
 - Comunicação e interface em português brasileiro.
@@ -29,7 +33,8 @@ nas regras, na arquitetura ou no estado de implementação.
 - Autenticação via Better Auth. Não implementar hashes ou sessões próprios.
 - Migrations SQL numeradas em `db/migrations/`: não alterar migrations aplicadas;
   crie novas. Seeds idempotentes não devem apagar dados de jogadores.
-- Catálogo inicial: apenas whitelist de equipamentos SRD 5.1/2014, obtidos do 5etools.
+- Catálogo inicial: apenas whitelist de equipamentos SRD 5.2.1/2024, conferidos no PDF oficial.
+  O histórico do 5etools permanece no snapshot anterior.
   Manter snapshot, commit de origem e atribuição. Não importar suplementos indiscriminadamente.
 - Não registrar senhas, tokens, cookies ou `.env` em logs/commits.
 - Não apagar volumes Docker. Não executar testes em um banco de produção.

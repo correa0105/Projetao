@@ -5,8 +5,8 @@ export const races = [
   'Halfling',
   'Draconato',
   'Gnomo',
-  'Meio-elfo',
-  'Meio-orc',
+  'Golias',
+  'Orc',
   'Tiefling',
 ] as const;
 export const classes = [

@@ -131,7 +131,7 @@ export async function generateCharacterArt(job: {
   const characterClass = z.enum(classes).parse(job.class);
   const choices = job.choices ? validateChoices(race, characterClass, job.choices) : undefined;
   const origin = choices
-    ? `Sub-raça validada: ${choices.subrace}.${race === 'Draconato' ? ` Ancestralidade dracônica validada: ${choices.options.dragon[0]}.` : ''}`
+    ? `Regras SRD 5.2.1 / 2024, nível 1 sem subclasse. Linhagem validada: ${choices.subrace}. Tamanho: ${choices.options.size?.[0] || 'padrão da espécie'}.${race === 'Draconato' ? ` Ancestralidade dracônica validada: ${choices.options.dragon[0]}.` : ''}`
     : '';
   const directory = resolve('.local/character-art', job.id);
   await mkdir(directory, { recursive: true });

@@ -15,7 +15,6 @@ import {
   Map,
   ScrollText,
   Shield,
-  Swords,
   Trophy,
   Users,
 } from 'lucide-react';
@@ -34,7 +33,6 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
       { page: 'profile', label: 'Ficha', icon: Shield },
       { page: 'inventory', label: 'Inventário', icon: Backpack },
       { page: 'achievements', label: 'Conquistas', icon: Trophy },
-      { page: 'mercenaries', label: 'Mercenários', icon: Swords },
     ],
   },
   {

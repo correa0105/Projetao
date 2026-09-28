@@ -10,7 +10,7 @@ export async function seed() {
       await client.query(
         `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data)
         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT(id) DO UPDATE SET
-        name=excluded.name,description=excluded.description,price_cp=excluded.price_cp,weight_lb=excluded.weight_lb,
+        name=excluded.name,original_name=excluded.original_name,description=excluded.description,price_cp=excluded.price_cp,weight_lb=excluded.weight_lb,
         source=excluded.source,source_url=excluded.source_url,raw_data=excluded.raw_data`,
         [
           item.id,
@@ -71,8 +71,8 @@ export async function seed() {
         'base',
         'rules',
         'A base da nossa mesa',
-        'D&D 5e · SRD 5.1 (2014)',
-        'A referência inicial é a quinta edição de 2014. A ficha do protótipo começa no nível 1 e usa a matriz 15, 14, 13, 12, 10, 8. Distribua esses valores ao criar o personagem. Bônus raciais, proficiências, magias, antecedentes mecânicos e progressão ainda serão implementados. A ficha é uma base simplificada, não um validador completo de D&D.',
+        'D&D 5.5e · SRD 5.2.1 (2024)',
+        'Base SRD 5.2.1 (regras revisadas de 2024). A criação de nível 1 inclui espécies, linhagens, antecedentes, talentos de origem, maestrias, magias e equipamento inicial. Atributos por 4d6, descartando o menor, com rolagem única no servidor. Os bônus vêm do antecedente. Subclasses começam no nível 3; progressão de níveis e resolução automática de combate não estão implementadas.',
         'Regras',
       ],
       [
@@ -80,7 +80,7 @@ export async function seed() {
         'rules',
         'Ouro, mochila e boas escolhas',
         'Regras de teste da guilda',
-        'Cada personagem começa com 150 peças de ouro, uma regra de teste desta guilda. 1 PO = 10 PP = 100 PC. O catálogo usa preços do 5etools/SRD. Comprar desconta o saldo e entrega o item imediatamente. Equipar, vender, consumir itens e aplicar seus efeitos ainda não estão disponíveis.',
+        'Novos personagens recebem o ouro da combinação de equipamento de classe e antecedente ao concluir a ficha, uma única vez. 1 PO = 10 PP = 100 PC. Conversões de fichas preservam o saldo existente. Itens iniciais são registros da ficha; compras ficam no inventário. Equipar, vender, consumir e resolver efeitos permanecem na mesa.',
         'Economia',
       ],
       [
@@ -98,22 +98,6 @@ export async function seed() {
         'Pedra contra o inverno. Abrigo para os nossos.',
         'Acima de Vigília, o Bastião da Alvorada guarda a sede da guilda Alvorada Cinzenta. Estandartes de azul profundo e cobre marcam suas torres. Entre a sala dos mapas e a grande lareira, aventureiros planejam a próxima expedição. Casas particulares, baús compartilhados e melhorias serão implementados em uma próxima etapa.',
         'Sede da guilda',
-      ],
-      [
-        'mira',
-        'mercenaries',
-        'Mira Passo-de-Cedro',
-        'Elfa · Patrulheira · Nível 3',
-        'Uma batedora experiente nas trilhas dos Domínios da Alvorada. Conhece as rotas de caravanas e os sinais deixados pelos animais da névoa. Personagem de demonstração; contratação e regras de companheiros serão implementadas depois.',
-        'Batedora',
-      ],
-      [
-        'borin',
-        'mercenaries',
-        'Borin Escudo-de-Bronze',
-        'Anão · Guerreiro · Nível 4',
-        'Veterano da guarda de Vigília. Valoriza contratos claros e companheiros que não fogem ao primeiro rugido. Personagem de demonstração; contratação e regras de companheiros serão implementadas depois.',
-        'Defensor',
       ],
     ];
     for (const entry of entries)

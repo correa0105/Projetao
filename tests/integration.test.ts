@@ -71,6 +71,8 @@ async function character(client: Client, name = 'Arden') {
   });
   assert.equal(response.status, 202, JSON.stringify(response.data));
   const id = await finishTestArt(response.data.id);
+  // Dedicated economy fixture budget; production wealth is tested in sheet tests.
+  await pool.query('UPDATE characters SET gold_cp=15000,starting_wealth_granted=true WHERE id=$1',[id]);
   return (await request('/api/characters', client)).data.find((c: { id: string }) => c.id === id);
 }
 before(async () => {

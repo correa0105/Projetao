@@ -47,7 +47,10 @@ try {
   await page.goto(origin + '/#achievements'); await page.reload();
   await page.getByRole('combobox', { name: 'Personagem ativo' }).click();
   await page.getByRole('option', { name: 'Arden', exact: true }).click();
-  await expect(page.locator('.catalog-achievement')).toHaveCount(7);
+  await expect(page.locator('.catalog-achievement')).toHaveCount(5);
+  await page.getByRole('button',{name:'Próxima',exact:true}).click();
+  await expect(page.locator('.catalog-achievement')).toHaveCount(2);
+  await expect(page.getByRole('button',{name:'Próxima',exact:true})).toBeDisabled();
   const search = page.getByRole('searchbox', { name: 'Buscar conquista por nome' });
   await search.fill('CAPITULO');
   await expect(page.locator('.catalog-achievement')).toHaveCount(1);
@@ -77,8 +80,19 @@ try {
   expect(Math.abs(plus!.x + plus!.width/2 - slot!.x - slot!.width/2)).toBeLessThan(1);
   expect(Math.abs(plus!.y + plus!.height/2 - slot!.y - slot!.height/2)).toBeLessThan(1);
   await page.getByRole('button',{name:'Exibir na estante',exact:true}).click();
+  const trophy = page.getByRole('button',{name:'Posição 1: O primeiro capítulo',exact:true});
+  const box = await trophy.boundingBox();
+  await page.mouse.move(box!.x+box!.width/2,box!.y+box!.height/2);
+  await page.mouse.down();await page.mouse.move(box!.x+box!.width/2+80,box!.y+box!.height/2,{steps:8});await page.mouse.up();
+  const shifted = await trophy.boundingBox();
+  expect(shifted!.x-box!.x).toBeGreaterThan(70);
+  expect(Math.abs(shifted!.y-box!.y)).toBeLessThan(1);
+  await trophy.focus();await page.keyboard.press('ArrowRight');
+
   await page.getByRole('button',{name:'Salvar estante',exact:true}).click();
   await expect(page.getByRole('status')).toHaveText('Estante salva.');
+  const persisted=await (await page.request.get(origin+'/api/characters/'+first.id+'/achievements')).json();
+  expect(persisted.shelf.positions[0]).toBeGreaterThan(10);
   await page.reload();
   await page.getByText('Personalizar estante', {exact:true}).click();
   await expect(page.getByLabel('Ébano',{exact:true})).toBeChecked();
@@ -94,6 +108,15 @@ try {
   for (const slots of [['first_mission',...Array(17).fill(null)],['first_character','first_character',...Array(16).fill(null)]]) {
     expect((await page.request.post(endpoint,{headers:{Origin:origin},data:{material:'walnut',medal_frame:'bronze',slots}})).status()).toBe(400);
   }
+
+  const shelf=(await (await page.request.get(endpoint)).json()).shelf;
+  for(const x of [-1,91]) {
+    const positions=Array(18).fill(x);
+    expect((await page.request.post(endpoint,{headers:{Origin:origin},data:{...shelf,positions}})).status()).toBe(400);
+  }
+  // Coincident horizontal coordinates are legal; no collision rejection.
+  expect((await page.request.post(endpoint,{headers:{Origin:origin},data:{...shelf,positions:Array(18).fill(40)}})).status()).toBe(200);
+  await page.request.post(endpoint,{headers:{Origin:origin},data:shelf});
   const other=await browser.newContext();
   const response2=await other.request.post(origin+'/api/auth/sign-up/email',{headers:{Origin:origin},data:{name:'Outro',email:'shelf-'+randomUUID()+'@example.test',password:'Test-'+randomUUID()}});
   const outsider=(await response2.json()).user.id;

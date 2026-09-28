@@ -1,0 +1,29 @@
+/* Indicador comum a todos os painéis expansíveis, com teclado nativo preservado. */
+:root details > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  cursor: pointer;
+  line-height: 1.4;
+}
+:root details:not([open]) > summary { margin-block: 0; }
+:root details.sheet-panel:not([open]) { padding: 12px 18px; }
+:root details > summary::marker { content: ''; }
+:root details > summary::-webkit-details-marker { display: none; }
+:root details > summary::after {
+  content: '';
+  display: block;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .18s ease;
+}
+:root details[open] > summary::after { transform: rotate(180deg); }
+:root details > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  :root details > summary::after { transition: none; }
+}

@@ -1,10 +1,33 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Retomada futura: níveis altos e suplementos (28/09/2026)
+
+O usuário pediu para guardar o estado real das regras e o que falta para ampliar o sistema.
+Consultar `docs/ROADMAP-REGRAS.md` ao responder "o que temos que fazer?" ou "como está o sistema?".
+A base atual cobre criação/ficha de nível 1 do SRD 5.2.1; não equivale a D&D completo.
+Progressão 1–20 e suplementos escolhidos pelo usuário são etapas futuras, ainda não implementadas.
+Nenhum suplemento específico foi aprovado nesta conversa. Esta solicitação é de documentação,
+não de iniciar a implementação dessas etapas.
+
+## Migração atual: SRD 5.2.1 / D&D 5.5e (2024)
+
+Por solicitação explícita do usuário, a referência vigente é SRD 5.2.1, substituindo 5.1/2014 em todas as regras implementadas. As seções antigas abaixo descrevem histórico. Ver `docs/SRD-2024.md` e `docs/ATTRIBUTION.md`. Criação de nível 1, nove espécies, doze classes, quatro antecedentes e talentos de origem do SRD; maestrias e conjuração revisadas, 83 magias de níveis 0/1. Subclasses não aparecem no nível 1. Progressão e combate automático continuam fora do escopo implementado.
+
+Migration 025 arquiva personagem/ficha antigos, mantém dados rolados/atribuição/notas/arte/bens e pede revisão de escolhas; não converte uma espécie legada sem escolha do jogador. Novas fichas usam choices.version=2 e rules_version=5.2.1. Riqueza oficial de classe/antecedente é creditada uma vez na finalização de novos personagens (gold_cp=0 até então); migrados conservam o saldo, sem crédito novo. Endpoint rest-choices permite somente trocas legais de maestria, truque de alto elfo, um truque de mago e magias do tomo, sem alterar atributos, origem ou ouro. Descansos e efeitos são adjudicados na mesa.
+
+Checkpoint anterior local: commit local identificado pela mensagem "Preserva ficha e conquistas antes da migracao SRD 5.2.1". Testes: matriz de espécies/classes/antecedentes/linhagens, migração SQL, ownership, concessão concorrente única de ouro e navegador desktop/mobile.
+
 ## Fundo publicado do Reino do Norte
 
 A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/north-sonnenberg.png` (1154 × 866), com proporção original, zoom e arraste. Sonnenberg é o único ponto para abrir o registro de missões do reino, incluindo publicação e histórico; o botão acompanha a projeção do mapa. Nenhum local SQL foi renomeado ou removido. O editor continua privado: ao abri-lo, carrega seu próprio fundo, rascunho e câmera; ao fechá-lo, volta ao mapa publicado. As descrições de área vazia abaixo se aplicam somente ao rascunho privado sem upload.
 
+## Conquistas: troféus e arraste horizontal (28/09/2026)
+
+Substitui a apresentação de medalhas descrita no histórico abaixo. Sete objetos ilustrados em `public/trophies/` (livro, bolsa, pergaminho, elmo, tomo com pena, baú e coroa), gerados com imagegen integrada; painéis usam `achievement-wood-v1.png`, madeira escura neutra. Acabamento selecionado tem apenas contorno, sem losango. Cada posição mantém sua prateleira e ganha coordenada horizontal contínua de 0–90%; pointer capture suporta mouse/toque e setas ajustam 1% (Shift: 5%). Sobreposições são permitidas, nomes aparecem no hover/foco e as bases acompanham os tampos da arte (34,2%, 55,6%, 76,2% da altura). Migration 026 acrescenta positions sem apagar slots antigos. Salvar persiste posições com validação de limites, titularidade e desbloqueio no servidor. Teste de navegador isolado cobre arraste, eixo vertical fixo, persistência, posições coincidentes, limites, isolamento e mobile. Prompts em `TROFEUS-PROMPTS.md`.
+
 ## Estado atual
+
+Pergaminho da ficha (28/09/2026): a pedido do usuário, restaurada a textura original com `center / 760px auto repeat`. As tentativas com `100% 100%` e depois `cover`/`fixed` foram rejeitadas. Preservar a aparência original; as emendas da repetição permanecem como antes.
 
 Conquistas V2 segue referência ilustrada do usuário: estante medieval entalhada, 18 posições em três prateleiras (seis por linha, espaçamento compacto), catálogo abaixo. Cenário de casa medieval antiga em `achievement-house-v2.png` (enquadramento amplo, mais teto e piso); estante recortada com transparência em `achievement-cabinet-v3.png`, integrada à parede com sombra de contato e escala/posição vinculadas à projeção do chão, mantendo as posições interativas e o degradê escuro aprovado. Usuário escolheu modelo E para a primeira conquista: selo de cera bordô com pena em cobre e fitas, em `achievement-first-chapter-seal-v1.png`, aplicado no catálogo e na estante. Cada conquista deve ter identidade própria; esse modelo não é um padrão para todas. As outras conquistas usam `achievement-insignias-v2.png`: primeira compra em placa octogonal de bronze com bolsa/moeda; chamado em escudo de aço com pergaminho/espada. Todas compartilham acabamento em relevo minimalista, mas têm silhuetas e contornos de medalha distintos, sem ícone de linha sobreposto e sem seletor de moldura. Acabamento ornamentado dos controles foi rejeitado e removido. Configuração e catálogo seguem o inventário: textura de pergaminho aprovada com multiply em marrom neutro bem escuro (#29261f), sem matiz avermelhado, bordas discretas, controles simples e materiais selecionados pela amostra com borda/losango (rádio acessível oculto visualmente), busca compacta de 36 px com lupa alinhada; catálogo permite pesquisar por nome sem distinção de acentos/maiúsculas, combinado aos filtros de desbloqueio. Personalização recolhível via details/summary, inicialmente fechada, com chevron à direita. Nenhuma posição selecionada inicialmente; clicar novamente desmarca e salvar limpa a seleção. Indicador + centralizado geometricamente no slot; nomes das insígnias na estante aparecem somente no hover/foco. Migration 023 amplia a grade preservando prateleira e ordem dos itens anteriores. Tipo de estante mostra a atual e alternativas desabilitadas como Em breve. Campo legado medal_frame preservado no banco por compatibilidade. Arte V2 anterior preservada. Acabamentos visuais de nogueira, carvalho e ébano usam filtros sobre a arte; cada conquista possui sua moldura integrada à arte. Migration 022 estende a tabela 021 sem apagar configurações anteriores. GET/POST `/api/characters/:id/achievements` salva por personagem, valida titularidade, desbloqueio, códigos e posições únicas. `AchievementShelf` reutilizável para futura aba. `npm run test:achievements` cobre persistência, posições, isolamento, bloqueios e mobile em banco descartável.
 
@@ -169,3 +192,9 @@ Dados de jogadores e volumes Docker não devem ser apagados. Migrations aplicada
 - Fortuna em circulação: compras acumuladas do personagem somando 100.000 PC (1.000 PO), sem contar saldo, transferências ou pedidos repetidos.
 - Honra do Norte: meta de 300 de reputação cadastrada, explicitamente Em breve. Ainda não há sistema nem regra de ganho de reputação; aguarda definição do usuário.
 - Migration 024 amplia códigos. A rota autenticada reconcilia conquistas históricas ao abrir/salvar estante, com progresso calculado no servidor, titularidade e concessão idempotente.
+
+Catálogo de conquistas paginado em cinco itens por página, com Anterior/Próxima e contador. Busca, filtro e troca de personagem retornam à primeira página; paginação é aplicada após os filtros.
+
+Controles de expandir/recolher padronizados globalmente em src/disclosures.css: sem triângulo nativo à esquerda; chevron à direita herdando a cor do painel e girando quando aberto. Aplicado à ficha, escolhas, histórico do inventário e personalização da estante; preserva details/summary e teclado nativos.
+
+Mercenários removido completamente a pedido do usuário: sem aba, navegação, tipo de página ou seed demonstrativo. Migration 027 remove somente registros de world_entries dessa seção e a exclui das seções permitidas; personagens de jogadores não são afetados.

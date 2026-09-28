@@ -1,0 +1,595 @@
+{
+  "skills": [
+    "Acrobacia",
+    "Adestrar Animais",
+    "Arcanismo",
+    "Atletismo",
+    "Atuação",
+    "Enganação",
+    "Furtividade",
+    "História",
+    "Intimidação",
+    "Intuição",
+    "Investigação",
+    "Medicina",
+    "Natureza",
+    "Percepção",
+    "Persuasão",
+    "Prestidigitação",
+    "Religião",
+    "Sobrevivência"
+  ],
+  "skillAbilities": [
+    1,
+    4,
+    3,
+    0,
+    5,
+    5,
+    1,
+    3,
+    5,
+    4,
+    3,
+    4,
+    3,
+    4,
+    5,
+    1,
+    3,
+    4
+  ],
+  "languages": [
+    "Comum",
+    "Anão",
+    "Élfico",
+    "Gigante",
+    "Gnômico",
+    "Goblin",
+    "Halfling",
+    "Orc",
+    "Abissal",
+    "Celestial",
+    "Dracônico",
+    "Infernal",
+    "Primordial",
+    "Silvestre",
+    "Subcomum",
+    "Dialeto Subterrâneo"
+  ],
+  "tools": [
+    "Ferramentas de ferreiro",
+    "Ferramentas de cervejeiro",
+    "Ferramentas de pedreiro",
+    "Ferramentas de carpinteiro",
+    "Ferramentas de cartógrafo",
+    "Ferramentas de joalheiro",
+    "Ferramentas de couro",
+    "Ferramentas de costureiro",
+    "Ferramentas de ladrão",
+    "Kit de disfarce",
+    "Kit de falsificação",
+    "Kit de herbalismo",
+    "Dados de jogo",
+    "Baralho",
+    "Veículos terrestres",
+    "Veículos aquáticos",
+    "Alaúde",
+    "Flauta",
+    "Tambor",
+    "Lira",
+    "Gaita de foles",
+    "Trombeta",
+    "Violino"
+  ],
+  "alignments": [
+    "Leal e bom",
+    "Neutro e bom",
+    "Caótico e bom",
+    "Leal e neutro",
+    "Neutro",
+    "Caótico e neutro",
+    "Leal e mau",
+    "Neutro e mau",
+    "Caótico e mau"
+  ],
+  "weaponData": {
+    "Alabarda": {
+      "dice": "1d10",
+      "type": "Cortante",
+      "martial": true,
+      "two": true
+    },
+    "Glaive": {
+      "dice": "1d10",
+      "type": "Cortante",
+      "martial": true,
+      "two": true
+    },
+    "Pique": {
+      "dice": "1d10",
+      "type": "Perfurante",
+      "martial": true,
+      "two": true
+    },
+    "Lança de montaria": {
+      "dice": "1d12",
+      "type": "Perfurante",
+      "martial": true
+    },
+    "Maça estrela": {
+      "dice": "1d8",
+      "type": "Perfurante",
+      "martial": true
+    },
+    "Mangual": {
+      "dice": "1d8",
+      "type": "Contundente",
+      "martial": true
+    },
+    "Malho": {
+      "dice": "2d6",
+      "type": "Contundente",
+      "martial": true,
+      "two": true
+    },
+    "Picareta de guerra": {
+      "dice": "1d8",
+      "type": "Perfurante",
+      "martial": true
+    },
+    "Tridente": {
+      "dice": "1d6 (1d8 com duas mãos)",
+      "type": "Perfurante",
+      "martial": true
+    },
+    "Chicote": {
+      "dice": "1d4",
+      "type": "Cortante",
+      "martial": true,
+      "ability": "finesse"
+    },
+    "Zarabatana": {
+      "dice": "1",
+      "type": "Perfurante",
+      "martial": true,
+      "ability": "dex",
+      "ranged": true
+    },
+    "Besta pesada": {
+      "dice": "1d10",
+      "type": "Perfurante",
+      "martial": true,
+      "ability": "dex",
+      "ranged": true,
+      "two": true
+    },
+    "Rede": {
+      "dice": "—",
+      "type": "Sem dano; restringe conforme condições",
+      "martial": true,
+      "ability": "dex",
+      "ranged": true
+    },
+    "Adaga": {
+      "dice": "1d4",
+      "type": "Perfurante",
+      "ability": "finesse"
+    },
+    "Bordão": {
+      "dice": "1d6 (1d8 com duas mãos)",
+      "type": "Contundente"
+    },
+    "Clava": {
+      "dice": "1d4",
+      "type": "Contundente"
+    },
+    "Maça": {
+      "dice": "1d6",
+      "type": "Contundente"
+    },
+    "Azagaia": {
+      "dice": "1d6",
+      "type": "Perfurante"
+    },
+    "Machadinha": {
+      "dice": "1d6",
+      "type": "Cortante"
+    },
+    "Lança": {
+      "dice": "1d6 (1d8 com duas mãos)",
+      "type": "Perfurante"
+    },
+    "Besta leve": {
+      "dice": "1d8",
+      "type": "Perfurante",
+      "ability": "dex",
+      "ranged": true,
+      "two": true
+    },
+    "Arco curto": {
+      "dice": "1d6",
+      "type": "Perfurante",
+      "ability": "dex",
+      "ranged": true,
+      "two": true
+    },
+    "Dardo": {
+      "dice": "1d4",
+      "type": "Perfurante",
+      "ability": "finesse",
+      "ranged": true
+    },
+    "Funda": {
+      "dice": "1d4",
+      "type": "Contundente",
+      "ability": "dex",
+      "ranged": true
+    },
+    "Foice": {
+      "dice": "1d4",
+      "type": "Cortante"
+    },
+    "Martelo leve": {
+      "dice": "1d4",
+      "type": "Contundente"
+    },
+    "Porrete": {
+      "dice": "1d8",
+      "type": "Contundente",
+      "two": true
+    },
+    "Espada longa": {
+      "dice": "1d8 (1d10 com duas mãos)",
+      "type": "Cortante",
+      "martial": true
+    },
+    "Espada curta": {
+      "dice": "1d6",
+      "type": "Perfurante",
+      "ability": "finesse",
+      "martial": true
+    },
+    "Rapieira": {
+      "dice": "1d8",
+      "type": "Perfurante",
+      "ability": "finesse",
+      "martial": true
+    },
+    "Cimitarra": {
+      "dice": "1d6",
+      "type": "Cortante",
+      "ability": "finesse",
+      "martial": true
+    },
+    "Machado grande": {
+      "dice": "1d12",
+      "type": "Cortante",
+      "martial": true,
+      "two": true
+    },
+    "Espada grande": {
+      "dice": "2d6",
+      "type": "Cortante",
+      "martial": true,
+      "two": true
+    },
+    "Machado de batalha": {
+      "dice": "1d8 (1d10 com duas mãos)",
+      "type": "Cortante",
+      "martial": true
+    },
+    "Martelo de guerra": {
+      "dice": "1d8 (1d10 com duas mãos)",
+      "type": "Contundente",
+      "martial": true
+    },
+    "Arco longo": {
+      "dice": "1d8",
+      "type": "Perfurante",
+      "ability": "dex",
+      "ranged": true,
+      "martial": true,
+      "two": true
+    },
+    "Besta de mão": {
+      "dice": "1d6",
+      "type": "Perfurante",
+      "ability": "dex",
+      "ranged": true,
+      "martial": true
+    }
+  },
+  "classes": {
+    "Bárbaro": {
+      "id": "barbarian",
+      "saves": [
+        0,
+        2
+      ],
+      "count": 2,
+      "skills": [
+        "Adestrar Animais",
+        "Atletismo",
+        "Intimidação",
+        "Natureza",
+        "Percepção",
+        "Sobrevivência"
+      ]
+    },
+    "Bardo": {
+      "id": "bard",
+      "saves": [
+        1,
+        5
+      ],
+      "count": 3,
+      "skills": [
+        "Acrobacia",
+        "Adestrar Animais",
+        "Arcanismo",
+        "Atletismo",
+        "Atuação",
+        "Enganação",
+        "Furtividade",
+        "História",
+        "Intimidação",
+        "Intuição",
+        "Investigação",
+        "Medicina",
+        "Natureza",
+        "Percepção",
+        "Persuasão",
+        "Prestidigitação",
+        "Religião",
+        "Sobrevivência"
+      ]
+    },
+    "Bruxo": {
+      "id": "warlock",
+      "saves": [
+        4,
+        5
+      ],
+      "count": 2,
+      "skills": [
+        "Arcanismo",
+        "Enganação",
+        "História",
+        "Intimidação",
+        "Investigação",
+        "Natureza",
+        "Religião"
+      ]
+    },
+    "Clérigo": {
+      "id": "cleric",
+      "saves": [
+        4,
+        5
+      ],
+      "count": 2,
+      "skills": [
+        "História",
+        "Intuição",
+        "Medicina",
+        "Persuasão",
+        "Religião"
+      ]
+    },
+    "Druida": {
+      "id": "druid",
+      "saves": [
+        3,
+        4
+      ],
+      "count": 2,
+      "skills": [
+        "Arcanismo",
+        "Adestrar Animais",
+        "Intuição",
+        "Medicina",
+        "Natureza",
+        "Percepção",
+        "Religião",
+        "Sobrevivência"
+      ]
+    },
+    "Feiticeiro": {
+      "id": "sorcerer",
+      "saves": [
+        2,
+        5
+      ],
+      "count": 2,
+      "skills": [
+        "Arcanismo",
+        "Enganação",
+        "Intuição",
+        "Intimidação",
+        "Persuasão",
+        "Religião"
+      ]
+    },
+    "Guerreiro": {
+      "id": "fighter",
+      "saves": [
+        0,
+        2
+      ],
+      "count": 2,
+      "skills": [
+        "Acrobacia",
+        "Adestrar Animais",
+        "Atletismo",
+        "História",
+        "Intuição",
+        "Intimidação",
+        "Percepção",
+        "Sobrevivência"
+      ]
+    },
+    "Ladino": {
+      "id": "rogue",
+      "saves": [
+        1,
+        3
+      ],
+      "count": 4,
+      "skills": [
+        "Acrobacia",
+        "Atletismo",
+        "Atuação",
+        "Enganação",
+        "Furtividade",
+        "Intimidação",
+        "Intuição",
+        "Investigação",
+        "Percepção",
+        "Persuasão",
+        "Prestidigitação"
+      ]
+    },
+    "Mago": {
+      "id": "wizard",
+      "saves": [
+        3,
+        4
+      ],
+      "count": 2,
+      "skills": [
+        "Arcanismo",
+        "História",
+        "Intuição",
+        "Investigação",
+        "Medicina",
+        "Religião"
+      ]
+    },
+    "Monge": {
+      "id": "monk",
+      "saves": [
+        0,
+        1
+      ],
+      "count": 2,
+      "skills": [
+        "Acrobacia",
+        "Atletismo",
+        "Furtividade",
+        "História",
+        "Intuição",
+        "Religião"
+      ]
+    },
+    "Paladino": {
+      "id": "paladin",
+      "saves": [
+        4,
+        5
+      ],
+      "count": 2,
+      "skills": [
+        "Atletismo",
+        "Intuição",
+        "Intimidação",
+        "Medicina",
+        "Persuasão",
+        "Religião"
+      ]
+    },
+    "Patrulheiro": {
+      "id": "ranger",
+      "saves": [
+        0,
+        1
+      ],
+      "count": 3,
+      "skills": [
+        "Adestrar Animais",
+        "Atletismo",
+        "Furtividade",
+        "Intuição",
+        "Investigação",
+        "Natureza",
+        "Percepção",
+        "Sobrevivência"
+      ]
+    }
+  },
+  "spellLabels": {
+    "acid-splash": "Respingo Ácido",
+    "alarm": "Alarme",
+    "animal-friendship": "Amizade Animal",
+    "bane": "Perdição",
+    "bless": "Bênção",
+    "burning-hands": "Mãos Flamejantes",
+    "charm-person": "Enfeitiçar Pessoa",
+    "chill-touch": "Toque Arrepiante",
+    "color-spray": "Leque Cromático",
+    "command": "Comando",
+    "comprehend-languages": "Compreender Idiomas",
+    "create-or-destroy-water": "Criar ou Destruir Água",
+    "cure-wounds": "Curar Ferimentos",
+    "dancing-lights": "Luzes Dançantes",
+    "detect-evil-and-good": "Detectar o Bem e o Mal",
+    "detect-magic": "Detectar Magia",
+    "detect-poison-and-disease": "Detectar Veneno e Doença",
+    "disguise-self": "Disfarçar-se",
+    "divine-favor": "Favor Divino",
+    "druidcraft": "Druidismo",
+    "eldritch-blast": "Rajada Mística",
+    "entangle": "Constrição",
+    "expeditious-retreat": "Recuo Acelerado",
+    "faerie-fire": "Fogo das Fadas",
+    "false-life": "Vitalidade Falsa",
+    "feather-fall": "Queda Suave",
+    "find-familiar": "Encontrar Familiar",
+    "fire-bolt": "Raio de Fogo",
+    "floating-disk": "Disco Flutuante",
+    "fog-cloud": "Névoa Obscurecente",
+    "goodberry": "Bom Fruto",
+    "grease": "Área Escorregadia",
+    "guidance": "Orientação",
+    "guiding-bolt": "Raio Guiador",
+    "healing-word": "Palavra Curativa",
+    "hellish-rebuke": "Repreensão Infernal",
+    "heroism": "Heroísmo",
+    "hideous-laughter": "Riso Histérico",
+    "hunters-mark": "Marca do Caçador",
+    "identify": "Identificação",
+    "illusory-script": "Escrita Ilusória",
+    "inflict-wounds": "Infligir Ferimentos",
+    "jump": "Salto",
+    "light": "Luz",
+    "longstrider": "Passos Longos",
+    "mage-armor": "Armadura Arcana",
+    "mage-hand": "Mãos Mágicas",
+    "magic-missile": "Mísseis Mágicos",
+    "mending": "Consertar",
+    "message": "Mensagem",
+    "minor-illusion": "Ilusão Menor",
+    "poison-spray": "Rajada de Veneno",
+    "prestidigitation": "Prestidigitação Arcana",
+    "produce-flame": "Criar Chamas",
+    "protection-from-evil-and-good": "Proteção contra o Bem e o Mal",
+    "purify-food-and-drink": "Purificar Alimentos e Bebidas",
+    "ray-of-frost": "Raio de Gelo",
+    "resistance": "Resistência",
+    "sacred-flame": "Chama Sagrada",
+    "sanctuary": "Santuário",
+    "shield": "Escudo Arcano",
+    "shield-of-faith": "Escudo da Fé",
+    "shillelagh": "Bordão Místico",
+    "shocking-grasp": "Toque Chocante",
+    "silent-image": "Imagem Silenciosa",
+    "sleep": "Sono",
+    "spare-the-dying": "Estabilizar",
+    "speak-with-animals": "Falar com Animais",
+    "thaumaturgy": "Taumaturgia",
+    "thunderwave": "Onda Trovejante",
+    "true-strike": "Ataque Certeiro",
+    "unseen-servant": "Servo Invisível",
+    "vicious-mockery": "Zombaria Viciosa"
+  }
+}

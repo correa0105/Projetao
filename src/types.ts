@@ -6,6 +6,7 @@ export type User = {
   canEditKingdom?: boolean;
 };
 export type Character = {
+  species_size?: string;
   portrait_revision: number;
   art_used: number;
   art_pending: boolean;
@@ -84,7 +85,6 @@ export type Page =
   | 'profile'
   | 'inventory'
   | 'achievements'
-  | 'mercenaries'
   | 'missions'
   | 'board'
   | 'hooks'

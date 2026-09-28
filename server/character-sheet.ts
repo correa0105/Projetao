@@ -8,6 +8,8 @@ import {
   validateChoices,
   deriveSheet,
   racialBonuses,
+  startingGold,
+  validateRestChoices,
   classRules,
   spellOptions,
   type SheetRecord,
@@ -57,11 +59,20 @@ export function characterSheetRouter() {
         throw new AppError(409, 'A criação da ficha está disponível para personagens de nível 1.');
       const {
         rows: [sheet],
-      } = await client.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id]);
-      if (sheet?.rolls) throw new AppError(409, 'As escolhas ficam fixas após a rolagem.');
-      const choices = validated(c.race, c.class, req.body);
+      } = await client.query('SELECT rolls,choices FROM character_sheets WHERE character_id=$1', [
+        id,
+      ]);
+      if (sheet?.rolls && sheet.choices?.version === 2)
+        throw new AppError(409, 'As escolhas ficam fixas após a rolagem.');
+      const species = sheet && !sheet.choices ? req.body.species : c.race;
+      const choices = validated(species, c.class, req.body);
+      await client.query('UPDATE characters SET race=$2,background=$3 WHERE id=$1', [
+        id,
+        choices.species,
+        choices.backgroundType,
+      ]);
       await client.query(
-        `INSERT INTO character_sheets(character_id,choices) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET choices=$2,updated_at=now()`,
+        `INSERT INTO character_sheets(character_id,choices) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET choices=$2,rules_version='5.2.1',updated_at=now()`,
         [id, JSON.stringify(choices)],
       );
     });
@@ -75,7 +86,7 @@ export function characterSheetRouter() {
       const {
         rows: [sheet],
       } = await client.query('SELECT * FROM character_sheets WHERE character_id=$1', [id]);
-      if (!sheet) throw new AppError(409, 'Complete as escolhas da ficha antes de rolar.');
+      if (!sheet?.choices) throw new AppError(409, 'Complete as escolhas da ficha antes de rolar.');
       if (sheet.rolls) return; // Retry/double click returns the same persisted dice, never a new draw.
       const rolls = Array.from({ length: 6 }, () =>
         Array.from({ length: 4 }, () => randomInt(1, 7)),
@@ -119,6 +130,11 @@ export function characterSheetRouter() {
           bonuses[i],
       );
       const d = deriveSheet({ ...c, stats }, sheet.choices);
+      if (!c.starting_wealth_granted)
+        await client.query(
+          'UPDATE characters SET gold_cp=gold_cp+$2,starting_wealth_granted=true WHERE id=$1',
+          [id, startingGold(c.class, sheet.choices)],
+        );
       await client.query(
         'UPDATE characters SET stats=$3,hp=$4,armor_class=$5 WHERE id=$1 AND user_id=$2',
         [id, user, JSON.stringify(stats), d.hp, d.armorClass],
@@ -185,6 +201,29 @@ export function characterSheetRouter() {
           body.slots_used,
           body.hit_dice_used,
         ],
+      );
+    });
+    res.json(await result(id, user));
+  });
+  router.post('/characters/:id/sheet/rest-choices', async (req, res) => {
+    const id = z.string().uuid().parse(req.params.id),
+      user = res.locals.user.id;
+    await transaction(async (client) => {
+      const c = await owned(client, id, user, true);
+      const {
+        rows: [sheet],
+      } = await client.query('SELECT * FROM character_sheets WHERE character_id=$1', [id]);
+      if (!sheet?.finalized_at || !sheet.choices)
+        throw new AppError(409, 'Conclua a ficha primeiro.');
+      let choices;
+      try {
+        choices = validateRestChoices(c.race, c.class, sheet.choices, req.body);
+      } catch (e) {
+        throw new AppError(400, (e as Error).message);
+      }
+      await client.query(
+        'UPDATE character_sheets SET choices=$2,updated_at=now() WHERE character_id=$1',
+        [id, JSON.stringify(choices)],
       );
     });
     res.json(await result(id, user));

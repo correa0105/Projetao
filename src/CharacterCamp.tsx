@@ -216,7 +216,7 @@ export function CharacterCamp({
           <article
             key={character.id}
             className={`camp-character ${selectedId === character.id ? 'is-selected' : ''}`}
-            style={{ '--stature-scale': characterHeightScale(character.race) } as CSSProperties}
+            style={{ '--stature-scale': characterHeightScale(character.race, character.species_size) } as CSSProperties}
           >
             <button
               className="camp-figure"

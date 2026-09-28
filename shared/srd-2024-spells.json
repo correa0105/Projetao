@@ -1,0 +1,1047 @@
+{
+  "source": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+  "license": "CC-BY-4.0",
+  "edition": "SRD 5.2.1",
+  "spells": [
+    {
+      "id": "acid-splash",
+      "name": "Acid Splash",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Respingo Ácido"
+    },
+    {
+      "id": "alarm",
+      "name": "Alarm",
+      "level": 1,
+      "classes": [
+        "ranger",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Alarme"
+    },
+    {
+      "id": "animal-friendship",
+      "name": "Animal Friendship",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Amizade Animal"
+    },
+    {
+      "id": "bane",
+      "name": "Bane",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "warlock"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Perdição"
+    },
+    {
+      "id": "bless",
+      "name": "Bless",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Bênção"
+    },
+    {
+      "id": "burning-hands",
+      "name": "Burning Hands",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Mãos Flamejantes"
+    },
+    {
+      "id": "charm-person",
+      "name": "Charm Person",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Enfeitiçar Pessoa"
+    },
+    {
+      "id": "chill-touch",
+      "name": "Chill Touch",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Toque Arrepiante"
+    },
+    {
+      "id": "chromatic-orb",
+      "name": "Chromatic Orb",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Orbe Cromático"
+    },
+    {
+      "id": "color-spray",
+      "name": "Color Spray",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Leque Cromático"
+    },
+    {
+      "id": "command",
+      "name": "Command",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Comando"
+    },
+    {
+      "id": "comprehend-languages",
+      "name": "Comprehend Languages",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Compreender Idiomas"
+    },
+    {
+      "id": "create-or-destroy-water",
+      "name": "Create or Destroy Water",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Criar ou Destruir Água"
+    },
+    {
+      "id": "cure-wounds",
+      "name": "Cure Wounds",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "druid",
+        "paladin",
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Curar Ferimentos"
+    },
+    {
+      "id": "dancing-lights",
+      "name": "Dancing Lights",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Luzes Dançantes"
+    },
+    {
+      "id": "detect-evil-and-good",
+      "name": "Detect Evil and Good",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Detectar o Bem e o Mal"
+    },
+    {
+      "id": "detect-magic",
+      "name": "Detect Magic",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "druid",
+        "paladin",
+        "ranger",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": true,
+      "label": "Detectar Magia"
+    },
+    {
+      "id": "detect-poison-and-disease",
+      "name": "Detect Poison and Disease",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "druid",
+        "paladin",
+        "ranger"
+      ],
+      "ritual": true,
+      "concentration": true,
+      "label": "Detectar Veneno e Doença"
+    },
+    {
+      "id": "disguise-self",
+      "name": "Disguise Self",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Disfarçar-se"
+    },
+    {
+      "id": "dissonant-whispers",
+      "name": "Dissonant Whispers",
+      "level": 1,
+      "classes": [
+        "bard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Sussurros Dissonantes"
+    },
+    {
+      "id": "divine-favor",
+      "name": "Divine Favor",
+      "level": 1,
+      "classes": [
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Favor Divino"
+    },
+    {
+      "id": "divine-smite",
+      "name": "Divine Smite",
+      "level": 1,
+      "classes": [
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Golpe Divino"
+    },
+    {
+      "id": "druidcraft",
+      "name": "Druidcraft",
+      "level": 0,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Druidismo"
+    },
+    {
+      "id": "eldritch-blast",
+      "name": "Eldritch Blast",
+      "level": 0,
+      "classes": [
+        "warlock"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Rajada Mística"
+    },
+    {
+      "id": "elementalism",
+      "name": "Elementalism",
+      "level": 0,
+      "classes": [
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Elementalismo"
+    },
+    {
+      "id": "ensnaring-strike",
+      "name": "Ensnaring Strike",
+      "level": 1,
+      "classes": [
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Golpe Constritor"
+    },
+    {
+      "id": "entangle",
+      "name": "Entangle",
+      "level": 1,
+      "classes": [
+        "druid",
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Constrição"
+    },
+    {
+      "id": "expeditious-retreat",
+      "name": "Expeditious Retreat",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Recuo Acelerado"
+    },
+    {
+      "id": "faerie-fire",
+      "name": "Faerie Fire",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Fogo das Fadas"
+    },
+    {
+      "id": "feather-fall",
+      "name": "Feather Fall",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Queda Suave"
+    },
+    {
+      "id": "find-familiar",
+      "name": "Find Familiar",
+      "level": 1,
+      "classes": [
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Encontrar Familiar"
+    },
+    {
+      "id": "fire-bolt",
+      "name": "Fire Bolt",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Raio de Fogo"
+    },
+    {
+      "id": "floating-disk",
+      "name": "Floating Disk",
+      "level": 1,
+      "classes": [
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Disco Flutuante"
+    },
+    {
+      "id": "fog-cloud",
+      "name": "Fog Cloud",
+      "level": 1,
+      "classes": [
+        "druid",
+        "ranger",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Névoa Obscurecente"
+    },
+    {
+      "id": "goodberry",
+      "name": "Goodberry",
+      "level": 1,
+      "classes": [
+        "druid",
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Bom Fruto"
+    },
+    {
+      "id": "grease",
+      "name": "Grease",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Área Escorregadia"
+    },
+    {
+      "id": "guidance",
+      "name": "Guidance",
+      "level": 0,
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Orientação"
+    },
+    {
+      "id": "guiding-bolt",
+      "name": "Guiding Bolt",
+      "level": 1,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Raio Guiador"
+    },
+    {
+      "id": "healing-word",
+      "name": "Healing Word",
+      "level": 1,
+      "classes": [
+        "bard",
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Palavra Curativa"
+    },
+    {
+      "id": "hellish-rebuke",
+      "name": "Hellish Rebuke",
+      "level": 1,
+      "classes": [
+        "warlock"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Repreensão Infernal"
+    },
+    {
+      "id": "heroism",
+      "name": "Heroism",
+      "level": 1,
+      "classes": [
+        "bard",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Heroísmo"
+    },
+    {
+      "id": "hex",
+      "name": "Hex",
+      "level": 1,
+      "classes": [
+        "warlock"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Bruxaria"
+    },
+    {
+      "id": "hideous-laughter",
+      "name": "Hideous Laughter",
+      "level": 1,
+      "classes": [
+        "bard",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Riso Histérico"
+    },
+    {
+      "id": "hunters-mark",
+      "name": "Hunter’s Mark",
+      "level": 1,
+      "classes": [
+        "ranger"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Marca do Caçador"
+    },
+    {
+      "id": "ice-knife",
+      "name": "Ice Knife",
+      "level": 1,
+      "classes": [
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Faca de Gelo"
+    },
+    {
+      "id": "identify",
+      "name": "Identify",
+      "level": 1,
+      "classes": [
+        "bard",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Identificação"
+    },
+    {
+      "id": "illusory-script",
+      "name": "Illusory Script",
+      "level": 1,
+      "classes": [
+        "bard",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Escrita Ilusória"
+    },
+    {
+      "id": "inflict-wounds",
+      "name": "Inflict Wounds",
+      "level": 1,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Infligir Ferimentos"
+    },
+    {
+      "id": "jump",
+      "name": "Jump",
+      "level": 1,
+      "classes": [
+        "druid",
+        "ranger",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Salto"
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "level": 0,
+      "classes": [
+        "bard",
+        "cleric",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Luz"
+    },
+    {
+      "id": "longstrider",
+      "name": "Longstrider",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "ranger",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Passos Longos"
+    },
+    {
+      "id": "mage-armor",
+      "name": "Mage Armor",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Armadura Arcana"
+    },
+    {
+      "id": "mage-hand",
+      "name": "Mage Hand",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Mãos Mágicas"
+    },
+    {
+      "id": "magic-missile",
+      "name": "Magic Missile",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Mísseis Mágicos"
+    },
+    {
+      "id": "mending",
+      "name": "Mending",
+      "level": 0,
+      "classes": [
+        "bard",
+        "cleric",
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Consertar"
+    },
+    {
+      "id": "message",
+      "name": "Message",
+      "level": 0,
+      "classes": [
+        "bard",
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Mensagem"
+    },
+    {
+      "id": "minor-illusion",
+      "name": "Minor Illusion",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Ilusão Menor"
+    },
+    {
+      "id": "poison-spray",
+      "name": "Poison Spray",
+      "level": 0,
+      "classes": [
+        "druid",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Rajada de Veneno"
+    },
+    {
+      "id": "prestidigitation",
+      "name": "Prestidigitation",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Prestidigitação Arcana"
+    },
+    {
+      "id": "produce-flame",
+      "name": "Produce Flame",
+      "level": 0,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Criar Chamas"
+    },
+    {
+      "id": "protection-from-evil-and-good",
+      "name": "Protection from Evil and Good",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "druid",
+        "paladin",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Proteção contra o Bem e o Mal"
+    },
+    {
+      "id": "purify-food-and-drink",
+      "name": "Purify Food and Drink",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "druid",
+        "paladin"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Purificar Alimentos e Bebidas"
+    },
+    {
+      "id": "ray-of-frost",
+      "name": "Ray of Frost",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Raio de Gelo"
+    },
+    {
+      "id": "ray-of-sickness",
+      "name": "Ray of Sickness",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Raio Adoecente"
+    },
+    {
+      "id": "resistance",
+      "name": "Resistance",
+      "level": 0,
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Resistência"
+    },
+    {
+      "id": "sacred-flame",
+      "name": "Sacred Flame",
+      "level": 0,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Chama Sagrada"
+    },
+    {
+      "id": "sanctuary",
+      "name": "Sanctuary",
+      "level": 1,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Santuário"
+    },
+    {
+      "id": "searing-smite",
+      "name": "Searing Smite",
+      "level": 1,
+      "classes": [
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Golpe Ardente"
+    },
+    {
+      "id": "shield",
+      "name": "Shield",
+      "level": 1,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Escudo Arcano"
+    },
+    {
+      "id": "shield-of-faith",
+      "name": "Shield of Faith",
+      "level": 1,
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Escudo da Fé"
+    },
+    {
+      "id": "shillelagh",
+      "name": "Shillelagh",
+      "level": 0,
+      "classes": [
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Bordão Místico"
+    },
+    {
+      "id": "shocking-grasp",
+      "name": "Shocking Grasp",
+      "level": 0,
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Toque Chocante"
+    },
+    {
+      "id": "silent-image",
+      "name": "Silent Image",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Imagem Silenciosa"
+    },
+    {
+      "id": "sleep",
+      "name": "Sleep",
+      "level": 1,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": true,
+      "label": "Sono"
+    },
+    {
+      "id": "sorcerous-burst",
+      "name": "Sorcerous Burst",
+      "level": 0,
+      "classes": [
+        "sorcerer"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Explosão Feiticeira"
+    },
+    {
+      "id": "spare-the-dying",
+      "name": "Spare the Dying",
+      "level": 0,
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Estabilizar"
+    },
+    {
+      "id": "speak-with-animals",
+      "name": "Speak with Animals",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "ranger",
+        "warlock"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Falar com Animais"
+    },
+    {
+      "id": "starry-wisp",
+      "name": "Starry Wisp",
+      "level": 0,
+      "classes": [
+        "bard",
+        "druid"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Fagulha Estelar"
+    },
+    {
+      "id": "thaumaturgy",
+      "name": "Thaumaturgy",
+      "level": 0,
+      "classes": [
+        "cleric"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Taumaturgia"
+    },
+    {
+      "id": "thunderwave",
+      "name": "Thunderwave",
+      "level": 1,
+      "classes": [
+        "bard",
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Onda Trovejante"
+    },
+    {
+      "id": "true-strike",
+      "name": "True Strike",
+      "level": 0,
+      "classes": [
+        "bard",
+        "sorcerer",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Ataque Certeiro"
+    },
+    {
+      "id": "unseen-servant",
+      "name": "Unseen Servant",
+      "level": 1,
+      "classes": [
+        "bard",
+        "warlock",
+        "wizard"
+      ],
+      "ritual": true,
+      "concentration": false,
+      "label": "Servo Invisível"
+    },
+    {
+      "id": "vicious-mockery",
+      "name": "Vicious Mockery",
+      "level": 0,
+      "classes": [
+        "bard"
+      ],
+      "ritual": false,
+      "concentration": false,
+      "label": "Zombaria Viciosa"
+    }
+  ],
+  "source_sha256": "8974902d109d6e63672d7c490bde9ccf052410503d9cfa768237154fbc5e3d87"
+}

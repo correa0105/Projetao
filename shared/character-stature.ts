@@ -1,9 +1,14 @@
 import { races } from './rules.js';
 
 type Race = (typeof races)[number];
-// Visual reference heights within the 2014 racial descriptions, not fixed rules
+// Visual reference heights within the 2024 species descriptions, not fixed rules
 // for every individual. The sheet does not yet store an individual height.
-export const characterStature: Record<Race, { heightCm: number; anatomy: string }> = {
+export const characterStature: Record<
+  Race | 'Meio-elfo' | 'Meio-orc',
+  { heightCm: number; anatomy: string }
+> = {
+  Golias: { heightCm: 230, anatomy: 'Adulto muito alto e robusto, herança de gigantes.' },
+  Orc: { heightCm: 200, anatomy: 'Adulto alto e robusto, presas e anatomia orc.' },
   Humano: { heightCm: 175, anatomy: 'Anatomia humana adulta, constituição da referência.' },
   Elfo: { heightCm: 175, anatomy: 'Adulto esguio, membros graciosos, orelhas pontudas.' },
   Anão: {
@@ -37,6 +42,7 @@ export const characterStature: Record<Race, { heightCm: number; anatomy: string 
   },
 };
 
-export function characterHeightScale(race: string) {
+export function characterHeightScale(race: string, size?: string) {
+  if (size === 'Pequeno' && ['Humano', 'Tiefling'].includes(race)) return 0.55;
   return (characterStature[race as Race]?.heightCm ?? 175) / 200;
 }

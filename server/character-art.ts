@@ -169,14 +169,14 @@ export async function completeArt(jobId: string, output: Buffer) {
       const {
         rows: [character],
       } = await client.query(
-        `INSERT INTO characters(user_id,name,race,class,background,biography,stats,hp,armor_class)
-        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING id`,
+        `INSERT INTO characters(user_id,name,race,class,background,biography,stats,hp,armor_class,gold_cp,starting_wealth_granted)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,0,false) RETURNING id`,
         [
           job.user_id,
           data.name,
           data.race,
           data.class,
-          data.background,
+          data.choices?.backgroundType || data.background,
           data.biography,
           JSON.stringify(data.stats),
           hitDice[data.class] + modifier(data.stats[2]),
@@ -279,6 +279,7 @@ export function characterArtRouter() {
 }
 
 export const characterListSql = `SELECT c.*,
+  (SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,
   (SELECT count(*)::int FROM character_art_jobs j WHERE j.character_id=c.id AND j.status <> 'failed' AND j.created_at >= ${monthStart}) AS art_used,
   EXISTS(SELECT 1 FROM character_art_jobs j WHERE j.character_id=c.id AND j.status IN ('queued','running')) AS art_pending
   FROM characters c WHERE c.user_id=$1 AND c.deleted_at IS NULL ORDER BY c.created_at`;

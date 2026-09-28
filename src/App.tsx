@@ -49,7 +49,6 @@ const titles: Record<Page, string> = {
   profile: 'Ficha',
   inventory: 'Inventário',
   achievements: 'Conquistas',
-  mercenaries: 'Mercenários',
   missions: 'Missões',
   board: 'Mural da Alvorada',
   hooks: 'Ganchos de aventura',
@@ -651,12 +650,14 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                {!['profile', 'inventory', 'achievements'].includes(page) && <span className="title-dot">.</span>}
+                {!['profile', 'inventory', 'achievements'].includes(page) && (
+                  <span className="title-dot">.</span>
+                )}
               </h1>
               {!['profile', 'inventory', 'achievements'].includes(page) && (
                 <p>
                   {page === 'shop'
-                    ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.1.'
+                    ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.2.1.'
                     : page === 'characters'
                       ? 'Diferentes rostos, infinitas histórias. Escolha quem você será hoje.'
                       : page === 'missions'
@@ -772,7 +773,7 @@ function Portal({ user }: { user: User }) {
                       >
                         <span className="item-category">{item.category}</span>
                         <ItemIcon size={62} />
-                        <span className="item-srd">SRD 5.1</span>
+                        <span className="item-srd">SRD 5.2.1</span>
                       </div>
                       <div className="item-body">
                         <h3>{item.name}</h3>
@@ -818,7 +819,7 @@ function Portal({ user }: { user: User }) {
                 `${item.name} ${item.original_name}`.toLowerCase().includes(query.toLowerCase()),
             ) && <Empty title="Nenhum item por aqui.">Tente outro nome ou outra categoria.</Empty>}
             <p className="source-note">
-              Dados importados do 5etools · Somente equipamentos SRD 5.1 · Pesos em libras ·{' '}
+              Dados conferidos no SRD oficial · Somente equipamentos SRD 5.2.1 · Pesos em libras ·{' '}
               <a href="https://www.dndbeyond.com/srd" target="_blank" rel="noreferrer">
                 Referência e licença SRD
               </a>
@@ -841,7 +842,12 @@ function Portal({ user }: { user: User }) {
               }
             />
           ))}
-        {page === 'achievements' && (character ? <Achievements key={character.id} characterId={character.id} /> : noCharacter)}
+        {page === 'achievements' &&
+          (character ? (
+            <Achievements key={character.id} characterId={character.id} />
+          ) : (
+            noCharacter
+          ))}
         {['missions', 'board', 'hooks'].includes(page) && (
           <>
             <div className="board-toolbar">
@@ -898,14 +904,14 @@ function Portal({ user }: { user: User }) {
             </p>
           </>
         )}
-        {['house', 'lore', 'rules', 'mercenaries'].includes(page) && (
+        {['house', 'lore', 'rules'].includes(page) && (
           <>
             <div className={`entries-grid ${page === 'house' ? 'house-grid' : ''}`}>
               {entries
                 .filter((entry) => entry.section === page)
                 .map((entry) => {
                   const EntryIcon =
-                    page === 'house' ? House : page === 'mercenaries' ? Swords : BookOpen;
+                    page === 'house' ? House : BookOpen;
                   return (
                     <article className="entry-card paper" key={entry.id}>
                       <div className="entry-icon">
@@ -915,7 +921,7 @@ function Portal({ user }: { user: User }) {
                       <h2>{entry.title}</h2>
                       <p className="entry-subtitle">{entry.subtitle}</p>
                       <p>{entry.body}</p>
-                      {['house', 'mercenaries'].includes(page) && (
+                      {page === 'house' && (
                         <span className="badge neutral">
                           Conteúdo de cenário · Funcionalidades em desenvolvimento
                         </span>
@@ -928,9 +934,11 @@ function Portal({ user }: { user: User }) {
               <div className="license-note">
                 <b>Referências e atribuição</b>
                 <p>
-                  Este protótipo inclui dados do System Reference Document 5.1, © 2016 Wizards of
-                  the Coast LLC, disponibilizados sob CC BY 4.0. Nomes foram traduzidos e descrições
-                  resumidas. Cenário e lore são originais.
+                  This work includes material from the System Reference Document 5.2.1 (“SRD 5.2.1”)
+                  by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD
+                  5.2.1 is licensed under the Creative Commons Attribution 4.0 International
+                  License, available at https://creativecommons.org/licenses/by/4.0/legalcode. Nomes
+                  traduzidos e regras resumidas.
                 </p>
                 <a href="https://www.dndbeyond.com/srd" target="_blank" rel="noreferrer">
                   System Reference Document
