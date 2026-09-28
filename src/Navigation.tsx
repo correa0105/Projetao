@@ -40,9 +40,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     label: 'Aventura',
     icon: SwordIcon,
     items: [
-      { page: 'missions', label: 'Missões', icon: Compass },
-      { page: 'board', label: 'Mural & eventos', icon: ScrollText },
-      { page: 'hooks', label: 'Ganchos', icon: Feather },
+      { page: 'board', label: 'Mural', icon: ScrollText },
     ],
   },
   {
@@ -68,11 +66,9 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
 export function Navigation({
   page,
   go,
-  postCount,
 }: {
   page: Page;
   go: (page: Page) => void;
-  postCount: number;
 }) {
   const [open, setOpen] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -310,7 +306,6 @@ export function Navigation({
               >
                 <ItemIcon size={16.2} />
                 <span>{label}</span>
-                {target === 'board' && <small>{postCount}</small>}
               </button>
             ))}
           </div>

@@ -1,3 +1,4 @@
+import { NoticeBoard } from './NoticeBoard';
 import { lazy, Suspense, useCallback, useEffect, useState, type ComponentType } from 'react';
 import {
   ArrowRight,
@@ -49,9 +50,9 @@ const titles: Record<Page, string> = {
   profile: 'Ficha',
   inventory: 'Inventário',
   achievements: 'Conquistas',
-  missions: 'Missões',
-  board: 'Mural da Alvorada',
-  hooks: 'Ganchos de aventura',
+  missions: 'Mural Alvorada',
+  board: 'Mural Alvorada',
+  hooks: 'Mural Alvorada',
   shop: 'Empório do viajante',
   house: 'House',
   world: 'Mundo',
@@ -117,7 +118,7 @@ function Portal({ user }: { user: User }) {
   const [toast, setToast] = useState('');
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('Todos');
-  const [boardTab, setBoardTab] = useState('Todos');
+  const [postKind, setPostKind] = useState<'mission' | 'event'>('mission');
   const character = characters.find((item) => item.id === selectedId) || characters[0];
   const refresh = useCallback(async () => {
     const [nextCharacters, nextCatalog, nextPosts, nextEntries, me] = await Promise.all([
@@ -151,7 +152,7 @@ function Portal({ user }: { user: User }) {
       setPage(initialPage());
       setQuery('');
       setCategory('Todos');
-      setBoardTab('Todos');
+      setPostKind('mission');
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
@@ -181,7 +182,7 @@ function Portal({ user }: { user: User }) {
     setPage(next);
     setQuery('');
     setCategory('Todos');
-    setBoardTab('Todos');
+    setPostKind('mission');
   }
   async function action(fn: () => Promise<unknown>, message: string) {
     setBusy(true);
@@ -650,11 +651,11 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                {!['profile', 'inventory', 'achievements'].includes(page) && (
+                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(page) && (
                   <span className="title-dot">.</span>
                 )}
               </h1>
-              {!['profile', 'inventory', 'achievements'].includes(page) && (
+              {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(page) && (
                 <p>
                   {page === 'shop'
                     ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.2.1.'
@@ -676,19 +677,7 @@ function Portal({ user }: { user: User }) {
                 Novo personagem
               </button>
             )}
-            {['missions', 'board'].includes(page) && (
-              <button
-                className="button primary"
-                onClick={() => {
-                  setPostLocation(undefined);
-                  setPostFromAtlas(false);
-                  setModal('post');
-                }}
-              >
-                <Plus size={17} />
-                Publicar no mural
-              </button>
-            )}
+
           </div>
         )}
         {page === 'characters' && (
@@ -848,62 +837,7 @@ function Portal({ user }: { user: User }) {
           ) : (
             noCharacter
           ))}
-        {['missions', 'board', 'hooks'].includes(page) && (
-          <>
-            <div className="board-toolbar">
-              <div className="tabs">
-                {(page === 'missions'
-                  ? ['Todos', 'Abertas', 'Em andamento', 'Histórico']
-                  : page === 'board'
-                    ? ['Todos', 'Missões', 'Eventos', 'Ganchos']
-                    : ['Todos']
-                ).map((tab) => (
-                  <button
-                    key={tab}
-                    className={boardTab === tab ? 'active' : ''}
-                    aria-pressed={boardTab === tab}
-                    onClick={() => setBoardTab(tab)}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-              <span className="small muted">
-                {character ? `Jogando com ${character.name}` : 'Crie um personagem para participar'}
-              </span>
-            </div>
-            <div className="quest-grid">
-              {posts
-                .filter((item) => {
-                  if (page === 'missions')
-                    return (
-                      item.kind === 'mission' &&
-                      (boardTab === 'Todos' ||
-                        (boardTab === 'Abertas' && item.status === 'open') ||
-                        (boardTab === 'Em andamento' && item.status === 'active') ||
-                        (boardTab === 'Histórico' && ['completed', 'closed'].includes(item.status)))
-                    );
-                  if (!['open', 'active'].includes(item.status)) return false;
-                  return page === 'hooks'
-                    ? item.kind === 'hook'
-                    : boardTab === 'Todos' ||
-                        item.kind ===
-                          (
-                            { Missões: 'mission', Eventos: 'event', Ganchos: 'hook' } as Record<
-                              string,
-                              string
-                            >
-                          )[boardTab];
-                })
-                .map((item) => postCard(item))}
-            </div>
-            <p className="source-note">
-              {page === 'hooks'
-                ? 'Ganchos nascem da conclusão de uma missão.'
-                : 'O criador registra o resumo e concede experiência ao concluir a missão. Eventos são publicados pela staff.'}
-            </p>
-          </>
-        )}
+        {['missions', 'board', 'hooks'].includes(page) && <NoticeBoard key={page} posts={posts} feedback={toast} renderPost={item=>postCard(item, false)} canCreateEvent={role==='staff'||role==='admin'} onPublish={kind=>{setPostKind(kind);setPostLocation(undefined);setPostFromAtlas(false);setModal('post');}} />}
         {['house', 'lore', 'rules'].includes(page) && (
           <>
             <div className={`entries-grid ${page === 'house' ? 'house-grid' : ''}`}>
@@ -1007,7 +941,7 @@ function Portal({ user }: { user: User }) {
           {renderContent()}
         </main>
       </div>
-      <Navigation page={page} go={go} postCount={activePosts.length} />
+      <Navigation page={page} go={go} />
       {toast && (
         <div className="toast" role="status">
           <Sparkles size={19} />
@@ -1032,6 +966,7 @@ function Portal({ user }: { user: User }) {
       {modal === 'post' && (
         <Modal title="Um chamado à guilda" close={() => setModal(null)}>
           <PostForm
+            initialKind={postFromAtlas ? 'mission' : postKind}
             canCreateEvent={!postFromAtlas && (role === 'staff' || role === 'admin')}
             initialLocation={postLocation}
             requireMappedLocation={postFromAtlas}

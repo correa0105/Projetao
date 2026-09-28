@@ -417,17 +417,19 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
   );
 }
 export function PostForm({
+  initialKind = 'mission',
   done,
   canCreateEvent = false,
   initialLocation,
   requireMappedLocation = false,
 }: {
   done: () => Promise<void>;
+  initialKind?: 'mission' | 'event';
   canCreateEvent?: boolean;
   initialLocation?: AtlasLocation;
   requireMappedLocation?: boolean;
 }) {
-  const [kind, setKind] = useState('mission');
+  const [kind, setKind] = useState<string>(canCreateEvent ? initialKind : 'mission');
   const [locations, setLocations] = useState<AtlasLocation[]>(
     initialLocation ? [initialLocation] : [],
   );

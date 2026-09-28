@@ -1,0 +1,151 @@
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell {background:linear-gradient(#100e0c55,#100e0cd9),url('/inventory-loot-v1.png') center top / cover fixed;min-height:100dvh;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-content {width:calc(100% - 48px);max-width:1524px;padding:20px 0 40px;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .topbar.player-hud {position:absolute;top:20px;right:max(24px,calc((100% - 1524px)/2));margin:0;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .page-title {min-height:76px;padding-right:350px;margin-bottom:38px;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .page-title h1 {font-size:clamp(26px,3vw,40px);margin:5px 0;}
+.notice-board-page {max-width:1160px;margin:auto;}
+.notice-board {position:relative;max-width:1040px;margin:0 auto 32px;aspect-ratio:3/2;filter:drop-shadow(0 18px 20px #0009);}
+.notice-board-wood {position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;}
+.notice-board-notices {position:absolute;inset:15% 10% 13%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5%;}
+:root .notice-category {display:flex;align-items:center;flex-direction:column;justify-content:center;min-width:0;padding:0;border:0;background:none;box-shadow:none;color:#dec59b;cursor:pointer;}
+.notice-engraving {font:italic 600 clamp(18px,2.5vw,34px)/1.2 'Segoe Print','Bradley Hand',cursive;transform:rotate(-3deg);text-shadow:1px 2px 2px #0009;}
+.notice-events .notice-engraving {transform:rotate(2deg);}
+.notice-category img {width:100%;height:76%;object-fit:contain;filter:drop-shadow(3px 7px 3px #0007);transition:filter .2s ease,transform .2s ease;}
+.notice-hooks img {transform:rotate(-3deg);}
+.notice-events img {transform:rotate(3deg);}
+:root .notice-category:hover,:root .notice-category:focus-visible {background:none;color:#f4dfb3;box-shadow:none;}
+.notice-category:hover img,.notice-category:focus-visible img,.notice-category[aria-expanded='true'] img {filter:brightness(1.13) drop-shadow(0 0 9px #e9b25c90);transform:translateY(-3px) rotate(0);}
+.notice-category:focus-visible {outline:2px solid #d7b77b;outline-offset:6px;border-radius:5px;}
+.notice-count {font-size:11px;color:#c7b291;}
+.notice-category-panel {padding:24px;border:1px solid #92754765;border-radius:6px;background:linear-gradient(#17130ed9,#17130ed9),url('/achievement-wood-v1.png') center/620px auto;box-shadow:0 18px 40px #0006;}
+.notice-category-panel > header {display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;}
+.notice-category-panel h2 {margin:0;font:26px var(--serif);color:#e2ceb0;}
+.notice-panel-toolbar {display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;}
+.notice-empty {padding:24px 0;text-align:center;color:#b8a78c;}
+@media(max-width:700px){
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .topbar.player-hud {position:relative;top:auto;right:auto;margin:14px 14px 0 auto;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-content {width:calc(100% - 28px);padding-top:16px;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .page-title {padding-right:0;min-height:auto;margin-bottom:26px;}
+.notice-board-notices {inset:13% 8% 12%;gap:3%;}
+.notice-engraving {font-size:clamp(15px,4vw,24px);}
+.notice-count {font-size:9px;}
+.notice-category-panel {padding:16px;}
+.notice-panel-toolbar .tabs {flex-wrap:wrap;}
+}
+@media(prefers-reduced-motion:reduce){.notice-category img {transition:none;}}
+/* As folhas acompanham as coordenadas do mural pintado na parede da vila. */
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell {--notice-scene-width:max(100vw,900px);position:relative;isolation:isolate;background:#14110e;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell::before {content:'';position:absolute;inset:0 0 auto;height:calc(var(--notice-scene-width) * .666667);z-index:-1;pointer-events:none;background:linear-gradient(to bottom,#100d091c 0%,transparent 70%,#14110e 100%),url('/notice-village-tavern-v3.png') center top / var(--notice-scene-width) auto no-repeat;}
+.notice-board {max-width:none;width:var(--notice-scene-width);height:calc(var(--notice-scene-width) * .666667);aspect-ratio:auto;left:50%;transform:translateX(-50%);margin:-134px 0 0;filter:none;pointer-events:none;}
+.notice-board-notices {inset:33% 44.5% 43% 33.5%;gap:5%;pointer-events:auto;}
+.notice-category img {height:82%;filter:brightness(.85) drop-shadow(2px 4px 2px #0009);}
+.notice-engraving {font-size:clamp(16px,1.65vw,30px);color:#c4ae84;}
+.notice-category-panel {position:relative;margin-top:-20px;margin-bottom:40px;}
+@media(max-width:700px){
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell {--notice-scene-width:max(100vw,900px);}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell::before {top:110px;}
+.notice-board {margin-top:-40px;}
+.notice-board-notices {inset:33% 44.5% 43% 33.5%;gap:5%;}
+.notice-engraving {font-size:16px;}
+.notice-category-panel {margin-top:0;}
+}
+
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell {overflow-x:clip;}
+
+/* Letras incisadas: serifas firmes e sombra curta no sulco da madeira. */
+.notice-category .notice-engraving {font:600 clamp(12px,1.1vw,21px)/1.4 'Cinzel',Georgia,serif;letter-spacing:.065em;text-transform:uppercase;color:#ac936b;text-shadow:-1px -1px 1px #100b06,0 1px 0 #e4c18c42;transform:none;}
+@media(max-width:700px){.notice-category .notice-engraving {font-size:12px;letter-spacing:.025em;}}
+/* Cena única sem rolagem; cenário e folhas compartilham o mesmo enquadramento. */
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) {height:100dvh;overflow:hidden;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell {height:100dvh;min-height:0;overflow:hidden;--notice-scene-width:max(145vw,180dvh);}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell::before {display:none;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-content {padding-bottom:0;}
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .page-title {position:relative;z-index:2;pointer-events:none;}
+.notice-board {position:fixed;left:50%;top:50%;width:var(--notice-scene-width);height:calc(var(--notice-scene-width) * .666667);margin:0;transform:translate(-44%,-47%);background:linear-gradient(#100c0610,#100c0628),url('/notice-village-tavern-v3.png') center/100% 100% no-repeat;z-index:0;}
+.notice-board-notices {inset:32% 44.5% 42% 33.5%;gap:2%;align-items:start;}
+:root .notice-category {height:86%;justify-content:flex-start;gap:5px;}
+.notice-category img {height:84%;filter:saturate(.75) brightness(.86) contrast(.92) drop-shadow(0 1px 1px #0007);}
+.notice-hooks {transform:translate(-5%,8%) rotate(-7deg);}
+.notice-missions {transform:translate(0,19%) rotate(4deg);}
+.notice-events {transform:translate(4%,-2%) rotate(-3deg);}
+.notice-category:hover img,.notice-category:focus-visible img,.notice-category[aria-expanded='true'] img {filter:saturate(.75) brightness(.94) contrast(.9) drop-shadow(0 0 3px #b99c6240);transform:translateY(-2px);}
+:root dialog.notice-dialog {position:fixed;inset:0;margin:auto;width:min(1100px,94vw);max-width:94vw;max-height:85dvh;height:fit-content;overflow:auto;padding:24px;box-sizing:border-box;color:#dfcfb3;}
+.notice-dialog::backdrop {background:#080705c9;backdrop-filter:blur(5px);}
+.notice-dialog > header {position:sticky;top:-24px;z-index:2;padding:12px 0;background:#211a12;}
+@media(max-width:700px){
+.app-shell:is([data-page='board'],[data-page='missions'],[data-page='hooks']) .main-shell {--notice-scene-width:max(900px,150dvh);}
+.notice-board {top:54%;}
+:root dialog.notice-dialog {padding:16px;}
+.notice-dialog > header {top:-16px;}
+}
+
+/* Mesmo acabamento de madeira escura do catálogo de conquistas. */
+:root dialog.notice-dialog {background:linear-gradient(#17130ece,#17130ece),url('/achievement-wood-v1.png') center/620px auto;border:1px solid #7c654466;box-shadow:0 20px 70px #0009;}
+:root dialog.notice-dialog > header {background:linear-gradient(#17130ee8,#17130ee8),url('/achievement-wood-v1.png') center/620px auto;border-bottom:1px solid #a78a5133;}
+:root dialog.notice-dialog .quest-card {background:linear-gradient(#14100de0,#14100de0),url('/achievement-wood-v1.png') center/620px auto;border-color:#a78a5140;box-shadow:inset 0 1px 8px #0003;}
+:root dialog.notice-dialog .tabs {background:#120e0b85;border:1px solid #a78a5133;}
+:root dialog.notice-dialog .tabs button.active {background:#705735;color:#f1dfb9;}
+@font-face {font-family:'IM Fell English SC';src:url('/fonts/im-fell-english-sc.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+/* Desgaste na tinta interna e luz na borda inferior do corte. */
+.notice-category .notice-engraving {
+  font-family:'IM Fell English SC',Georgia,serif;
+  font-weight:400;
+  font-size:clamp(17px,1.6vw,29px);
+  letter-spacing:.025em;
+  text-transform:none;
+  color:#806444;
+  background:repeating-linear-gradient(176deg,#a18458 0 1px,#715235 1px 2px,#997a50 2px 4px);
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:-1px -2px 1px #090502,0 -1px 0 #1b1008,1px 1px 0 #d2ad766b,0 2px 1px #ad885445;
+  filter:drop-shadow(0 -1px 1px #10090580);
+}
+@media(max-width:700px){.notice-category .notice-engraving{font-size:17px;letter-spacing:0;}}
+/* Tinta clara no corte, com profundidade discreta e leitura sobre os veios. */
+.notice-category .notice-engraving {
+  color:#d3b88b;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  text-shadow:0 -1px 1px #100905,1px 1px 1px #160b03,0 1px 0 #ecd5a65c;
+  filter:none;
+}
+.notice-dialog .notice-feedback {padding:10px 14px;border-left:2px solid #b59a6e;background:#a58a4c14;color:#ead8b7;font-size:13px;}
+.notice-dialog .quest-card p {overflow-wrap:anywhere;}
+.notice-dialog .post-meta {flex-wrap:wrap;gap:10px;}
+
+/* Cabeçalhos impressos no papel; a tinta acompanha a folha no hover. */
+.notice-paper {
+  position:relative;
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio: .69;
+  flex:none;
+  max-width:100%;
+  margin-top:clamp(24px,2.25vw,41px);
+  container-type:inline-size;
+  filter:saturate(.75) brightness(.86) contrast(.92) drop-shadow(0 1px 1px #0007);
+  transition:filter .2s ease,transform .2s ease;
+}
+.notice-category .notice-paper img {
+  display:block;width:100%;height:100%;object-fit:fill;filter:none;transform:none;
+}
+.notice-paper-title {
+  position:absolute;top:9%;left:7%;right:7%;
+  color:#332217;
+  font:400 14cqw/1 'IM Fell English SC',Georgia,serif;
+  letter-spacing:.015em;
+  text-align:center;
+  white-space:nowrap;
+  mix-blend-mode:multiply;
+  transform:rotate(-1deg);
+  pointer-events:none;
+}
+.notice-category:hover .notice-paper,
+.notice-category:focus-visible .notice-paper,
+.notice-category[aria-expanded='true'] .notice-paper {
+  filter:saturate(.75) brightness(.94) contrast(.9) drop-shadow(0 0 3px #b99c6240);
+  transform:translateY(-2px);
+}
+@media(prefers-reduced-motion:reduce){.notice-paper{transition:none;}}

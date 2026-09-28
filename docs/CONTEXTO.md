@@ -198,3 +198,25 @@ Catálogo de conquistas paginado em cinco itens por página, com Anterior/Próxi
 Controles de expandir/recolher padronizados globalmente em src/disclosures.css: sem triângulo nativo à esquerda; chevron à direita herdando a cor do painel e girando quando aberto. Aplicado à ficha, escolhas, histórico do inventário e personalização da estante; preserva details/summary e teclado nativos.
 
 Mercenários removido completamente a pedido do usuário: sem aba, navegação, tipo de página ou seed demonstrativo. Migration 027 remove somente registros de world_entries dessa seção e a exclui das seções permitidas; personagens de jogadores não são afetados.
+
+Mural visual (28/09/2026): NoticeBoard atende board/missions/hooks com três folhas PNG (Ganchos, Missões, Eventos), títulos manuscritos, hover quente/foco e painel por categoria com filtros e ações existentes. Cenário ativo notice-village-corner-v2.png: mural velho preso à parede da taverna num canto da vila, rua lateral e avisos decorativos. Usuário rejeitou o mural isolado no centro da praça; preservar integração à parede. Publicação reutiliza PostForm e board_posts; Eventos só oferece publicação a staff/admin, Ganchos continuam da conclusão. Nenhuma alteração no Mundo/atlas ou banco. test:notice-board usa banco descartável e cobre folhas, filtros básicos, formulário, permissão visual, foco e mobile. Prompts em NOTICE-BOARD-PROMPTS.md.
+
+Revisão do mural V3: usuário rejeitou cenário V2 preso à parede e fonte manuscrita. Ativo notice-village-tavern-v3.png, com mural independente de dois pés apoiados no calçamento, junto à entrada da taverna. Letras das categorias em Cinzel com sombra de entalhe, sem inclinação. Folhas reposicionadas para a área central da madeira. Preservar pés e posicionamento lateral contextualizado.
+
+Mural V3 ajustado: cenário e folhas agora compartilham um plano fixo, ampliado e centralizado no mural; página sem scroll em 100dvh. Papéis com inclinações/alturas diferentes e filtro de envelhecimento para aproximar os avisos laterais. Categorias abrem dialog nativo acima de tudo (showModal), X/Escape/clique fora fecham, foco retorna à folha; só o conteúdo do pop-up rola. Teste verifica ausência de scroll na página e publicação em dialog sobreposto.
+
+Mural aproximado novamente (escala desktop max(145vw,180dvh)); pop-up, cabeçalho e cartões usam a textura achievement-wood-v1.png com madeira escura das conquistas e especificidade que sobrepõe o tema global dos dialogs.
+
+Folhas do mural V2: novas artes hooks-v2.png, missions-v2.png e events-v2.png em public/notices, geradas tomando o cenário como referência. Papel plano, marrom sujo, manchas e bordas discretas, sem grandes dobras; sombra reduzida e tom integrado aos avisos laterais. Posições/enquadramento aprovados preservados.
+
+Menu Aventura agora contém somente Mural. Cabeçalho: Mural Alvorada (inclusive nos links antigos missions/hooks). Títulos das folhas usam IM Fell English SC local em public/fonts, fonte antiga sob OFL, com desgaste e entalhe aprofundado.
+
+Folhas V3 ativas em public/notices/*-v3.png: desenhos em tinta marrom forte, estilo xilogravura (chave/trilha, espada e lanterna), substituindo aparência de lápis rejeitada. Títulos clareados em ocre com entalhe discreto para melhorar leitura; removido preenchimento listrado/transparente e sombra profunda que se confundiam com a madeira.
+
+Folhas V4 ativas: public/notices/*-v4.png. Predomínio de escrita envelhecida, símbolos pequenos (chave, espada e lanterna) integrados ao papel, tinta mais discreta. Hover suavizado para evitar brilho excessivo. Substitui os grandes desenhos em xilogravura rejeitados.
+
+Revisão funcional do Mural: renderização dos cartões não repassa mais o índice do map como opção compacta (seta indevida nos cartões seguintes). Todos exibem inscrição, autoria, ações e histórico completos. Feedback de ações aparece dentro do dialog; abertura foca o título, fechamento restaura a folha. Textos longos e metadados ajustados para telas estreitas. test:notice-board cobre publicação real, inscrição persistida, iniciar/encerrar, filtros, ausência de cartões compactos, permissões visuais, dialogs sobrepostos, Escape, foco e mobile; testes em PostgreSQL descartável. Build e 22 testes de integração aprovados.
+
+Títulos das categorias do mural agora ficam sobre as próprias folhas, abaixo do prego, em tinta marrom-escura (notice-paper-title), substituindo o texto sobre a madeira. Papel e título compartilham hover e inclinação. Artes V4 e cenário preservados. Build e teste de navegador do mural aprovados.
+
+Ajuste dos avisos: folhas dimensionadas pela largura e proporção fixa, sem altura percentual que as alongava; títulos ampliados de 8,8 para 14cqw. Conferência visual e teste do mural aprovados.
