@@ -237,62 +237,6 @@
   padding-top: 6px;
   border-top: 1px solid #b1976030;
 }
-.shop-merchant {
-  position: absolute;
-  left: 0;
-  width: 27vw;
-  bottom: calc(var(--shop-table-height) - 22px);
-  height: 66dvh;
-  z-index: 4;
-  pointer-events: none;
-}
-.shop-merchant-art {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: bottom;
-  filter: drop-shadow(10px 10px 12px #0008);
-}
-.shop-speech {
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  bottom: 12px;
-  pointer-events: auto;
-  padding: 12px 14px;
-  background:
-    linear-gradient(#18140eed, #18140eed),
-    url('/achievement-wood-v1.png') center/620px auto;
-  border: 1px solid #a88a514d;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px #0006;
-}
-:root .shop-speech p {
-  margin: 0;
-  color: #e1d0b0;
-  font-size: clamp(11px, 0.8vw, 13px);
-  line-height: 1.45;
-}
-:root .shop-speech button {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  padding: 5px 0 0;
-  color: #c4a46f;
-  font-size: 10px;
-  background: transparent;
-  border: 0;
-}
-.shop-conversations {
-  display: grid;
-  gap: 7px;
-  border-top: 1px solid #937d4d44;
-  padding-top: 6px;
-  margin-top: 6px;
-}
 .shop-counter {
   position: absolute;
   bottom: 0;
@@ -429,6 +373,22 @@
   flex: 1;
   min-width: 0;
 }
+:root .shop-checkout-remove {
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0;
+  line-height: 1;
+}
+.shop-checkout-remove > svg {
+  display: block;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
 .shop-checkout-line small {
   display: block;
   margin: 5px 0;
@@ -456,9 +416,6 @@
     width: 67vw;
     left: 61%;
     grid-template-columns: 100px minmax(0, 1fr);
-  }
-  .shop-merchant {
-    width: 28vw;
   }
   .shop-product-list {
     grid-template-columns: 1fr;
@@ -510,18 +467,6 @@
   .shop-catalog {
     padding: 7px;
   }
-  .shop-merchant {
-    bottom: calc(var(--shop-table-height) - 25px);
-    width: 110px;
-    height: 160px;
-    z-index: 6;
-  }
-  .shop-merchant-art {
-    display: none;
-  }
-  .shop-speech {
-    display: none;
-  }
   .shop-table-surface {
     inset: 6% 3% 58px;
   }
@@ -543,33 +488,6 @@
   }
 }
 @media (max-width: 700px) {
-  .shop-merchant {
-    top: 146px;
-    bottom: auto;
-    left: 12px;
-    width: calc(100% - 24px);
-    height: 90px;
-  }
-  .shop-merchant-art {
-    display: block;
-    width: 72px;
-    height: 90px;
-    object-fit: cover;
-    object-position: top;
-  }
-  .shop-speech {
-    display: block;
-    left: 78px;
-    right: 0;
-    bottom: 0;
-    width: auto;
-    padding: 8px;
-    max-height: 90px;
-    overflow: auto;
-  }
-  :root .shop-speech p {
-    font-size: 11px;
-  }
   .shop-showcase {
     top: 244px;
     height: calc(74dvh - 251px);
@@ -585,9 +503,6 @@
   bottom: auto;
 }
 @media (min-width: 1001px) {
-  .shop-merchant {
-    width: 22vw;
-  }
 }
 @media (max-width: 700px) {
   .shop-table-toolbar {
@@ -606,146 +521,16 @@
     top: 100px;
     height: calc(68dvh - 114px);
   }
-  .shop-merchant {
-    width: 21vw;
-  }
-}
-.shop-merchant {
-  height: auto;
-  aspect-ratio: 1;
-  bottom: calc(var(--shop-table-height) - 32px);
-  z-index: 6;
-}
-:root .shop-merchant-trigger {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  pointer-events: auto;
-  cursor: pointer;
-  box-shadow: none;
-}
-.shop-merchant-trigger .shop-merchant-art {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-height: none;
-  object-fit: contain;
-  filter: drop-shadow(3px 5px 3px #0008);
-  transition: filter 180ms ease;
-}
-.shop-merchant-trigger:hover .shop-merchant-art,
-.shop-merchant-trigger:focus-visible .shop-merchant-art {
-  filter: drop-shadow(1px 0 0 #d6ba7d) drop-shadow(-1px 0 0 #d6ba7d) drop-shadow(0 -1px 0 #d6ba7d)
-    drop-shadow(0 0 5px #e1b96b75);
-}
-.shop-speech {
-  left: 74%;
-  right: auto;
-  bottom: 72%;
-  width: clamp(210px, 17vw, 270px);
-  max-height: min(320px, 48dvh);
-  overflow: visible;
-  background: #241e15f5;
-  border: 1px solid #a88a5180;
-  border-radius: 14px;
-  padding: 12px 14px;
-  box-shadow: 0 6px 18px #0008;
-}
-.shop-speech::before {
-  content: '';
-  position: absolute;
-  left: -20px;
-  bottom: 8px;
-  width: 21px;
-  height: 19px;
-  background: #241e15;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-}
-.shop-conversations {
-  max-height: 180px;
-  overflow-y: auto;
-}
-:root .shop-conversations button {
-  text-align: left;
-  padding: 7px 0;
 }
 @media (max-width: 700px) {
-  .shop-merchant {
-    top: 146px;
-    bottom: auto;
-    height: 90px;
-    aspect-ratio: auto;
-    width: calc(100% - 24px);
-  }
-  :root .shop-merchant-trigger {
-    width: 78px;
-    height: 90px;
-  }
-  .shop-speech {
-    left: 88px;
-    right: 0;
-    bottom: auto;
-    top: 3px;
-    width: auto;
-    max-height: 260px;
-    padding: 9px 10px;
-  }
-  .shop-speech::before {
-    top: 24px;
-    bottom: auto;
-    left: -16px;
-    width: 17px;
-    height: 14px;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .shop-merchant-trigger .shop-merchant-art {
-    transition: none;
-  }
 }
 /* Proporções do balcão e falas temporárias. */
 .shop-scene {
   --shop-base-size: 110.4px;
 }
 @media (min-width: 1001px) {
-  .shop-merchant {
-    width: 25vw;
-    left: -3.5vw;
-  }
-  .shop-speech {
-    left: calc(3.5vw + 16px);
-    width: calc(21vw - 32px);
-    bottom: 78%;
-  }
-}
-.shop-speech {
-  background: #241e15;
-  padding: 10px 12px;
-}
-:root .shop-speech p {
-  font-size: 10px;
-  line-height: 1.4;
-  overflow-wrap: anywhere;
-}
-.shop-speech::before {
-  clip-path: none;
-  top: auto;
-  bottom: -9px;
-  left: 52%;
-  width: 16px;
-  height: 16px;
-  transform: rotate(45deg);
-  border-right: 1px solid #a88a5180;
-  border-bottom: 1px solid #a88a5180;
-  background: #241e15;
-}
-.shop-speech[hidden] {
-  display: none;
 }
 .timed-speech {
   animation: shop-speech-fade 15s linear forwards;
@@ -776,33 +561,11 @@
   .shop-scene {
     --shop-base-size: 82.8px;
   }
-  :root .shop-merchant-trigger {
-    width: 90px;
-    height: 100px;
-  }
-  .shop-speech {
-    left: 100px;
-  }
-  .shop-speech::before {
-    left: -9px;
-    bottom: auto;
-    top: 25px;
-    transform: rotate(135deg);
-  }
-  :root .shop-speech p {
-    font-size: 10px;
-  }
   .shop-table-surface {
     bottom: 86px;
   }
 }
 @media (min-width: 1001px) {
-  .shop-speech {
-    bottom: 99%;
-  }
-}
-.shop-speech p {
-  animation: shop-speech-fade 15s linear forwards;
 }
 /* Enquadramento final: mercador entre o header e a bancada. */
 @media (min-width: 701px) {
@@ -810,102 +573,15 @@
     width: min(828px, 52.2vw);
     height: calc(61.2dvh - 102.6px);
   }
-  .shop-merchant {
-    --merchant-size: calc(100dvh - var(--shop-table-height) - 25px);
-    width: var(--merchant-size);
-    height: var(--merchant-size);
-    left: min(0px, calc(50vw - min(414px, 26.1vw) - var(--merchant-size) - 8px));
-  }
-  .shop-speech {
-    left: 68%;
-    bottom: 75%;
-    top: auto;
-    right: auto;
-    width: calc(var(--merchant-size) * 0.32 - 20px);
-  }
-}
-.shop-speech {
-  background: rgb(36 30 21 / 88%);
-}
-.shop-speech::before {
-  left: -9px;
-  bottom: 8px;
-  top: auto;
-  transform: rotate(135deg);
-  background: rgb(36 30 21 / 88%);
-}
-.shop-conversations {
-  gap: 2px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-:root .shop-conversations button {
-  padding: 5px 7px;
-  margin: 0;
-  line-height: 1.25;
-  width: 100%;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  transition:
-    background-color 120ms ease,
-    color 120ms ease,
-    border-color 120ms ease;
-}
-:root .shop-conversations button:hover,
-:root .shop-conversations button:focus-visible {
-  background: #caa25b26;
-  color: #ffe5af;
-  border-color: #b9985e80;
-  outline: none;
-}
-:root .shop-conversations button:active {
-  background: #caa25b45;
 }
 @media (max-width: 700px) {
   .shop-showcase {
     width: calc((100% - 24px) * 0.9);
     height: calc((74dvh - 251px) * 0.9);
   }
-  .shop-speech::before {
-    top: 25px;
-    bottom: auto;
-  }
 }
 /* Corpo e ponta são um único desenho, sem sobreposição de transparências. */
-.shop-speech {
-  isolation: isolate;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-}
-.shop-speech::before {
-  content: none;
-}
-.shop-speech-shape {
-  position: absolute;
-  inset: 0 0 0 -16px;
-  width: calc(100% + 16px);
-  height: 100%;
-  z-index: -1;
-  overflow: visible;
-  pointer-events: none;
-  filter: drop-shadow(0 4px 7px #0007);
-}
-.shop-speech-shape path {
-  fill: rgb(30 25 18 / 90%);
-  stroke: #b69a66;
-  stroke-width: 1;
-}
-:root .shop-speech p,
-:root .shop-conversations button {
-  font-size: 11px;
-  color: #f6e8ce;
-}
 @media (min-width: 701px) {
-  .shop-merchant {
-    bottom: calc(var(--shop-table-height) - 52px);
-  }
 }
 
 
@@ -914,16 +590,12 @@
 .shop-search-row label:focus-within { border-color: #c4a66b; box-shadow: 0 0 0 1px #c4a66b55; }
 :root .shop-search-row input:focus { outline: none; box-shadow: none; }
 
-
-:root .app-shell[data-page='shop'] .shop-speech > p { font-size: 12px; color: #f6e8ce; }
-
 @media (min-width: 701px) {
   .shop-showcase { left: 50%; }
-  .shop-speech { width: calc(var(--merchant-size) * .32 - 20px + min(62.1px, 3.915vw)); }
 }
 
 /* Topo fixo: falas longas crescem para baixo, preservando o header. */
-@media (min-width: 701px) { .shop-speech { top: 10%; bottom: auto; } }
+@media (min-width: 701px) { }
 
 /* Dimensões naturais limitadas: zoom out amplia o espaço livre, não o painel. */
 .shop-showcase {
@@ -931,12 +603,7 @@
   width: min(840px, 50vw);
   height: min(480px, calc(100dvh - var(--shop-table-height) - 140px));
 }
-:root .app-shell[data-page='shop'] .shop-speech > p {
-  text-align: left; text-align-last: auto; hyphens: none;
-  overflow-wrap: break-word; font-weight: 400; line-height: 1.5; margin: 0;
-}
 @media (min-width: 1001px) {
-  .shop-speech { max-width: calc(var(--merchant-size) * .32 + min(414px, 26.1vw) - min(420px, 25vw) - 24px); }
 }
 @media (min-width: 701px) and (max-width: 1000px) {
   .shop-showcase { width: 58vw; left: 66%; }
@@ -948,7 +615,6 @@
   }
 }
 /* Evita que o deslocamento global de :active crie overflow no último diálogo. */
-:root .shop-conversations button:not(:disabled):active { transform: none; }
 /* Rolagem compacta para preservar a área útil das prateleiras. */
 .shop-product-list, .shop-shelves {
   scrollbar-width: thin;
@@ -962,4 +628,36 @@
 }
 .shop-product-list::-webkit-scrollbar-track, .shop-shelves::-webkit-scrollbar-track {
   background: transparent;
+}
+/* Composição da referência: tampo profundo, mercador inteiro e vão de cenário. */
+@media (min-width: 1001px) {
+  .shop-scene { --shop-table-height: 37dvh; }
+  .shop-room { background-position: center center; }
+  .shop-showcase {
+    left: 55%; top: max(90px, 8.5dvh); width: min(740px, 38vw);
+    height: min(430px, 40dvh); bottom: auto;
+    grid-template-columns: 116px minmax(0, 1fr);
+  }
+  .shop-product { flex-direction: row; gap: 9px; padding: 9px; }
+  :root .shop-product-art { width: 30%; height: 120px; flex-shrink: 0; align-self: center; }
+  .shop-product-art img { height: 100%; }
+  :root .shop-product h3 { font-size: 13px; }
+  :root .shop-product p { font-size: 10px; }
+  .shop-product-list { gap: 7px; }
+}
+/* Enquadra apenas o tampo: a borda frontal fica abaixo da tela como na referência. */
+.shop-counter-art { height: 170%; top: -53%; }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .shop-scene { --shop-table-height: 34dvh; }
+  .shop-showcase { top: 105px; left: 68%; width: 59vw; height: min(420px, calc(66dvh - 140px)); }
+}
+@media (min-width: 1001px) {
+  :root .shop-shelves button { padding: 7px 5px; font-size: 10px; }
+  :root .shop-shelves h2 { margin-bottom: 10px; }
+  .shop-product-art img { height: calc(98px * var(--item-scale, 1)); }
+}
+@media (min-width: 1001px) {
+
+  .shop-showcase { grid-template-columns: 126px minmax(0, 1fr); }
+  :root .app-shell[data-page='shop'] .shop-shelves button { font-size: 10px; line-height: 1.25; padding: 6px 5px; }
 }

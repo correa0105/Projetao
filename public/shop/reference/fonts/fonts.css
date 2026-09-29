@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'Shop Reference Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-01.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Cinzel';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-02.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Cinzel';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-03.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-04.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-05.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-06.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-07.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-08.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-09.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-10.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-11.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-12.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-13.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Libre Baskerville';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-14.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shop Reference Marcellus';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/shop/reference/fonts/webfont-15.ttf) format('truetype');
+}

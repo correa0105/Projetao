@@ -337,3 +337,55 @@ Layout responsivo da loja revisto: retirada a escala .85 e a âncora inferior li
 Falas da loja: alinhamento à esquerda, sem justificação nem hifenização automática, conforme correção do usuário.
 
 Itens na mesa ampliados mais 20%: base 110,4px desktop / 82,8px celular, preservadas escalas por item e colisões correspondentes. Catálogo não alterado neste ajuste.
+
+## Composição da loja pela referência (29/09/2026)
+
+Revisadas proporções do cenário: bancada com 37% da altura em desktop, apenas tampo até a borda inferior da tela; NPC inteiro à esquerda (sem deslocamento negativo/corte), escala limitada por 35vw/64dvh e mãos sobre o tampo. Poções mantidas à direita por preferência anterior. Loja na região central (55% horizontal), largura até 38vw/740px e altura até 40dvh/430px, separada da mesa por área visível do cenário. Título sobre o catálogo evita cobrir a cabeça. Cards horizontais e categorias compactas. Tablet/mobile têm composição própria; a mesa mantém arraste, limites e tamanhos dos itens. Verificado também em 1740×852, proporção da referência, com teste de NPC sem corte lateral, tampo 37% e distância do catálogo à bancada.
+
+## Integração original da loja — pacote 20260929-115851
+
+Pedido mais recente substitui as tentativas anteriores de composição: usar os arquivos reais de Loja-Codigo-Integracao-20260929-115851. Imagens copiadas byte a byte (SHA-256 conferido) para `public/shop/reference/`: `shop-counter-v2.png` contém cenário E tampo; não existe mais uma mesa/imagem separada. NPC original `shop-merchant-v1.png` à DIREITA, como no pacote, substituindo a orientação antiga. CSS `src/shop-reference.css` preserva as regras originais de cenário (`center 35%/cover`, 65% em telas >=2:1), vendor (`right:1%;bottom:31%;width:min(44vw,68dvh)`), media queries, balão, Georgia, ponta e perguntas. Falas e footprints em `src/shop-presentation.ts` copiados da fonte; duração original max(8500ms, caracteres*65) substitui ajuste anterior de 15 segundos por pedido de copiar o comportamento original. Fontes locais e licenças arquivadas em `public/shop/reference/fonts`; famílias web prefixadas para não mudar outras páginas.
+
+Exceções expressas: catálogo central existente e header padrão do site preservados. Camadas separadas para que áreas transparentes do NPC não impeçam clicar no catálogo. No celular o catálogo cabe acima do personagem. Área interativa do tampo: 36% desktop/35% mobile; medidas dos objetos seguem `shopFootprints` e unidade 1.3 do pacote. Checkout atual autenticado/transacional preservado; não aplicar migrations de referência sobre as migrations existentes. Original possui controles administrativos de preço/endpoints próprios, que não foram importados para o servidor atual.
+
+Validado com build e teste de loja em PostgreSQL isolado, desktop 1440×900, referência 1740×852 e mobile 390×844.
+
+### Itens na mesa restaurados
+Restaurada a apresentação anterior: quantidade no canto, destaque discreto de seleção e X circular sobre o item selecionado. Removida a legenda inferior. Tamanhos anteriores e colisões correspondentes restaurados, mantendo o cenário, NPC e balões do pacote.
+
+### Enquadramento abaixo do header
+Cenário e NPC descem juntos até o topo visível da cabeça tocar o limite inferior do HUD no desktop. ResizeObserver recalcula em mudanças de viewport; se a imagem expuser o topo, sua escala proporcional aumenta preservando o deslocamento da borda do balcão. NPC deslocado à direita com parte do braço fora da tela; balão acompanha por estar dentro do mesmo elemento. Área dos itens acompanha o tampo e fica acima da transparência do NPC para permitir clicar no X.
+
+Texto do balcão restaurado: apenas com a mesa vazia, frase discreta e centralizada Escolha seus itens e coloque-os sobre o balcão. Removidos título Seu balcão e legenda no canto.
+
+Ajuste mais recente: painel desktop restaurado para min(840px,50vw), altura até 480px conforme espaço disponível, centralizado. Texto do balcão removido por completo. Cabeça do NPC com folga de 0,75cm CSS (28,35px) abaixo do header; cenário/tampo acompanham. Todas as falas e opções reduzidas em 2px, inclusive o título das perguntas.
+
+Refinamento: distância do NPC ao header reduzida para 0,50cm CSS. Painel desktop ampliado 1,5cm para baixo, preservando topo/largura. Balão, título e opções usam Inter local, entrelinha 1,3, padding compacto e gap de 4px entre opções.
+
+Balão: Inter regular 400 real via fonte variável local (o pacote só continha 600/700). Falas com padding 12px 14px; título O que deseja saber? com margem inferior extra de 4px.
+
+Ajuste fino: padding das falas 10px 12px. NPC mais à direita (right -6%, mobile -20px); balão desktop aproximado do NPC (right 58%) para liberar o painel central.
+
+Posição horizontal desktop do NPC/balão agora calculada pela borda real do catálogo e largura do balão: mantém 0,5cm CSS livres. NPC e balão movem juntos, recalculando ao abrir diálogo, trocar fala e redimensionar; mobile preserva composição própria.
+
+HUD global simplificado: removidos escudo, Seu aventureiro e linha de nível/patente/espécie/classe. Mantidos nome/seletor, notificações e sair. Seletor reduzido a 132px e altura mínima do HUD a 46px. Detalhes continuam na lista aberta de personagens.
+
+Header compacto: título reduzido a 21–26px sem margens verticais; faixa desktop de 50px, mesma altura do HUD, alinhamento central e sem sobra inferior.
+
+Balão unificado em um único path SVG responsivo: corpo e ponta usam o mesmo preenchimento translúcido e contorno contínuo, eliminando diferença de opacidade e sobreposição na junção.
+
+Título da loja sem ponto decorativo. Painel completo do catálogo reduzido proporcionalmente em 10% (escala 0,9 com origem no topo/centro), incluindo textos e controles. Alinhamento do balão usa a borda visual escalada do painel.
+
+Fontes de todo o catálogo aumentadas 10%, sem alterar escala/dimensões externas. Prateleiras desktop passam de 126px a 138,6px; área de itens recebe o restante da grade. Tablet lateral 100→110px; mobile mantém prateleiras horizontais.
+
+Prateleiras: mais 1px em título, categorias e contadores; largura lateral ampliada outros 10% (desktop 152,46px, tablet 121px), descontando da área de itens sem mudar o painel externo.
+
+Repetido a pedido: prateleiras recebem mais 1px nas fontes e mais 10% de largura (desktop 167,706px, tablet 133,1px); área dos itens absorve a redução.
+
+Tipografia das falas e opções do NPC suavizada: Inter variável de peso 400 para 350, mantendo tamanho e espaçamentos.
+
+Títulos atualizados: Ficha de Personagem no header da ficha; Mapa Alvorada no mapa-múndi, sobreposto sem bloquear navegação e alinhado ao padrão do header. Visão do reino conserva o título regional.
+
+Ações do header padronizadas: sino e sair em botões 30x30px, mesmo fundo/borda/raio/hover; ícones 14px com traço 1,75.
+
+Último ajuste do header: gap de 5px entre seletor e ações, botões de 26x26px e ícones de 12px.

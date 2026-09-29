@@ -50,7 +50,7 @@ type Icon = ComponentType<{ size?: number; className?: string }>;
 const titles: Record<Page, string> = {
   overview: 'Início',
   characters: 'Meus personagens',
-  profile: 'Ficha',
+  profile: 'Ficha de Personagem',
   inventory: 'Inventário',
   achievements: 'Conquistas',
   missions: 'Mural Alvorada',
@@ -58,7 +58,7 @@ const titles: Record<Page, string> = {
   hooks: 'Mural Alvorada',
   shop: 'Empório do viajante',
   house: 'House',
-  world: 'Mundo',
+  world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',
   rules: 'Regras da mesa',
 };
@@ -668,7 +668,7 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(
+                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks', 'shop'].includes(
                   page,
                 ) && <span className="title-dot">.</span>}
               </h1>
@@ -817,10 +817,8 @@ function Portal({ user }: { user: User }) {
     <div className="app-shell" data-page={page}>
       <div className="main-shell">
         <aside className="topbar player-hud" aria-label="Personagem e conta">
-          <Shield className="player-hud-icon" size={24} aria-hidden="true" />
           <div className="topbar-right">
             <div className="player-hud-selection">
-              <span className="player-hud-label">Seu aventureiro</span>
               {characters.length > 0 && (
                 <CharacterSelector
                   characters={characters}
@@ -828,11 +826,6 @@ function Portal({ user }: { user: User }) {
                   onSelect={setSelectedId}
                 />
               )}
-              <span className="player-hud-details">
-                {character
-                  ? `Nível ${character.level} · ${rankName(character.level)} · ${character.race} · ${character.class}`
-                  : 'Nenhum personagem selecionado'}
-              </span>
             </div>
             <Notifications
               characters={characters}

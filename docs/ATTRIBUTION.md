@@ -70,3 +70,9 @@ Mural de avisos: cenário vazio notice-village-empty-v4.png e atlas de seis pap�
 ## Loja — 29/09/2026
 
 Os 65 PNGs de itens, descrições, preços, pesos e falas foram fornecidos pelo usuário na exportação Loja-Alvorada-Exportacao-20260929-094455. As fontes e URLs por item são preservadas em `data/shop-export/loja.json`; pesos estimados em `data/shop-export/PESOS.md`. A importação não afirma auditoria oficial de regras nem automatiza efeitos mágicos. Interior, mercador e balcão em `public/shop/` foram gerados com ImageGen para esta composição, com mercador e balcão transparentes em camadas separadas.
+
+### Pacote original de integração da loja
+
+`public/shop/reference/shop-counter-v2.png`, `shop-merchant-v1.png`, fontes e licenças foram fornecidos pelo usuário no pacote Loja-Codigo-Integracao-20260929-115851. Imagens preservadas sem alteração. Regras visuais e falas extraídas de `src/shop.css`/`src/shop-presentation.ts` do pacote. As fontes proprietárias Georgia/Arial são usadas via fontes do sistema; fontes web fornecidas mantêm seus avisos em `public/shop/reference/fonts`.
+
+Inter variável (inter-variable.ttf): google/fonts, ofl/inter/Inter[opsz,wght].ttf, licença SIL OFL já incluída em public/shop/reference/fonts/inter-OFL.txt. Adicionada para renderizar o peso regular real no diálogo.

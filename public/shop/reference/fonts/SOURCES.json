@@ -1,0 +1,70 @@
+{
+  "css_source": "https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Libre+Baskerville:wght@700&family=Marcellus&family=Cormorant+Garamond:wght@400;500;600&family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;450;500;550;600;650;700&display=swap",
+  "files": [
+    {
+      "file": "public/fonts/webfont-01.ttf",
+      "source": "https://fonts.gstatic.com/s/cinzel/v26/8vIU7ww63mVu7gtR-kwKxNvkNOjw-tbnTYo.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-02.ttf",
+      "source": "https://fonts.gstatic.com/s/cinzel/v26/8vIU7ww63mVu7gtR-kwKxNvkNOjw-uTnTYo.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-03.ttf",
+      "source": "https://fonts.gstatic.com/s/cinzel/v26/8vIU7ww63mVu7gtR-kwKxNvkNOjw-gjgTYo.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-04.ttf",
+      "source": "https://fonts.gstatic.com/s/cinzel/v26/8vIU7ww63mVu7gtR-kwKxNvkNOjw-jHgTYo.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-05.ttf",
+      "source": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_v86GnM.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-06.ttf",
+      "source": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_s06GnM.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-07.ttf",
+      "source": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_iE9GnM.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-08.ttf",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhTg.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-09.ttf",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAkJxhTg.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-10.ttf",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAfJthTg.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-11.ttf",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTg.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-12.ttf",
+      "source": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-13.ttf",
+      "source": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-14.ttf",
+      "source": "https://fonts.gstatic.com/s/librebaskerville/v24/kmKUZrc3Hgbbcjq75U4uslyuy4kn0olVQ-LglH6T17ujFgkSCQ.ttf"
+    },
+    {
+      "file": "public/fonts/webfont-15.ttf",
+      "source": "https://fonts.gstatic.com/s/marcellus/v14/wEO_EBrOk8hQLDvIAF8FUQ.ttf"
+    }
+  ],
+  "system_fonts": [
+    "Georgia",
+    "Arial",
+    "Times New Roman"
+  ]
+}

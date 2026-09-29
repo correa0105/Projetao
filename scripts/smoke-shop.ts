@@ -119,12 +119,12 @@ try {
   await page.goto(origin + '/#shop');
   await page.reload();
   await expect(page.getByRole('region', { name: 'Catálogo da loja' })).toBeVisible();
-  await expect(page.locator('.shop-conversations')).toHaveCount(0);
+  await expect(page.locator('.merchant-conversation')).toHaveCount(0);
   const merchant = page.getByRole('button', { name: 'Conversar com o mercador', exact: true });
   await merchant.click();
-  await expect(page.locator('.shop-conversations')).toBeVisible();
+  await expect(page.locator('.merchant-conversation')).toBeVisible();
   await merchant.click();
-  await expect(page.locator('.shop-conversations')).toHaveCount(0);
+  await expect(page.locator('.merchant-conversation')).toHaveCount(0);
   const search = page.getByRole('textbox', { name: 'Procurar item' });
   await search.fill('Adaga');
   await page.getByRole('button', { name: 'Comprar', exact: true }).click();
@@ -133,11 +133,11 @@ try {
   ).toBeVisible();
   const comment = (await pool.query("SELECT merchant_comment FROM catalog_items WHERE id='dagger'"))
     .rows[0].merchant_comment;
-  await expect(page.locator('.shop-speech p')).toHaveText(comment);
-  await expect(page.locator('.shop-speech p')).toHaveCSS('color', 'rgb(246, 232, 206)');
-  await expect(page.locator('.shop-speech')).toBeHidden({ timeout: 16000 });
+  await expect(page.locator('.merchant-speech[role="status"] > span')).toHaveText(comment);
+  await expect(page.locator('.merchant-speech[role="status"] > span')).toHaveCSS('color', 'rgb(243, 222, 192)');
+  await expect(page.locator('.merchant-speech[role="status"]')).toBeHidden({ timeout: 16000 });
   await page.getByRole('button', { name: 'Examinar Adaga', exact: true }).click();
-  await expect(page.locator('.shop-speech p')).toHaveText(comment);
+  await expect(page.locator('.merchant-speech[role="status"] > span')).toHaveText(comment);
   await expect(page.locator('.shop-table-toolbar')).toHaveCount(0);
   const token = page.getByRole('button', { name: 'Adaga na mesa, 1 unidades', exact: true });
   const before = (await token.boundingBox())!;
@@ -147,9 +147,13 @@ try {
   expect(after.x !== before.x || after.y !== before.y).toBe(true);
   await page.getByRole('button', { name: 'Remover Adaga da mesa' }).click();
   await expect(page.locator('.shop-table-token')).toHaveCount(0);
-  await page
-    .getByRole('button', { name: 'Examinar Adaga', exact: true })
-    .dragTo(page.locator('.shop-table-surface'));
+  const sourceBox = (await page.getByRole('button', { name: 'Examinar Adaga', exact: true }).boundingBox())!;
+  const targetBox = (await page.locator('.shop-table-surface').boundingBox())!;
+  await page.mouse.move(sourceBox.x + sourceBox.width / 2, sourceBox.y + sourceBox.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(sourceBox.x + sourceBox.width / 2 + 12, sourceBox.y + sourceBox.height / 2 + 12, { steps: 4 });
+  await page.mouse.move(targetBox.x + targetBox.width / 2, targetBox.y + targetBox.height / 2, { steps: 15 });
+  await page.mouse.up();
   await expect(page.locator('.shop-table-token')).toHaveCount(1);
   await page.getByRole('button', { name: /Abrir carrinho:/ }).click();
   await page.getByRole('spinbutton', { name: 'Quantidade de Adaga' }).fill('3');
@@ -167,10 +171,23 @@ try {
   await search.fill('');
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/shop-desktop.png' });
+  await page.setViewportSize({ width: 1740, height: 852 });
+  await page.screenshot({ path: 'test-results/shop-reference-wide.png' });
+  const npcBox = (await page.locator('.merchant-vendor-toggle').boundingBox())!;
+  const deskBox = (await page.locator('.shop-counter').boundingBox())!;
+  const catalogBox = (await page.locator('.shop-showcase').boundingBox())!;
+  expect(npcBox.x).toBeGreaterThanOrEqual(0);
+  expect(catalogBox.y + catalogBox.height).toBeLessThan(deskBox.y - 50);
+  const shift = await page.locator('.shop-scene').evaluate(el => parseFloat(getComputedStyle(el).getPropertyValue('--shop-scene-shift')));
+  expect(deskBox.height).toBeCloseTo(852 * .36 - shift, 0);
+  const headerBox = (await page.locator('.topbar.player-hud').boundingBox())!;
+  expect(npcBox.y + npcBox.width * 32 / 1254).toBeCloseTo(headerBox.y + headerBox.height + 0.50 * 96 / 2.54, 0);
+  const speechBox = (await page.locator('.merchant-speech').boundingBox())!;
+  expect(speechBox.x - catalogBox.x - catalogBox.width).toBeCloseTo(0.5 * 96 / 2.54, 0);
   await page.setViewportSize({ width: 390, height: 844 });
   await search.fill('Adaga');
   await page.getByRole('button', { name: 'Comprar', exact: true }).click();
-  await expect(page.locator('.shop-speech p')).toBeVisible();
+  await expect(page.locator('.merchant-speech[role="status"] > span')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/shop-mobile.png' });
   expect(errors).toEqual([]);

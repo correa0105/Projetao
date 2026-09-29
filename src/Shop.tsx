@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Coins, Search, ShoppingCart, X, Plus } from 'lucide-react';
 import type { Character, Item } from './types';
 import { money } from '../shared/rules';
@@ -6,9 +6,32 @@ import { post } from './api';
 import { Modal } from './components';
 import content from './shop-content.json';
 import './shop.css';
+import './shop-reference.css';
+import { merchantComment, merchantConversations } from './shop-presentation';
 
 type Line = { id: string; quantity: number; x: number; y: number };
 type Point = { x: number; y: number };
+function SpeechBubbleShape() {
+  const ref = useRef<SVGSVGElement>(null);
+  const [size, setSize] = useState({ width: 200, height: 100 });
+  useLayoutEffect(() => {
+    const parent = ref.current?.parentElement;
+    if (!parent) return;
+    const update = () => setSize({ width: parent.clientWidth, height: parent.clientHeight });
+    const observer = new ResizeObserver(update);
+    observer.observe(parent);
+    update();
+    return () => observer.disconnect();
+  }, []);
+  const w = size.width;
+  const h = size.height;
+  const y = Math.max(22, Math.min(h - 22, h * 0.65));
+  return (
+    <svg ref={ref} className="merchant-speech-shape" aria-hidden="true" width={w + 21} height={h + 1}>
+      <path d={`M12 .5 H${w - 12} Q${w - .5} .5 ${w - .5} 12 V${y - 9} L${w + 19} ${y + 6} L${w - .5} ${y + 9} V${h - 12} Q${w - .5} ${h - .5} ${w - 12} ${h - .5} H12 Q.5 ${h - .5} .5 ${h - 12} V12 Q.5 .5 12 .5 Z`} />
+    </svg>
+  );
+}
 const itemScale = (item?: Item) => {
   if (!item) return 1;
   if (/sword|bow|staff|pole|spear|chest|ladder/i.test(item.id)) return 1.22;
@@ -45,9 +68,75 @@ export function Shop({
   const [speechVisible, setSpeechVisible] = useState(true);
   useEffect(() => {
     setSpeechVisible(true);
-    const timer = window.setTimeout(() => setSpeechVisible(false), 15000);
+    const timer = window.setTimeout(
+      () => setSpeechVisible(false),
+      Math.max(8500, speech.length * 65),
+    );
     return () => window.clearTimeout(timer);
-  }, [speechKey]);
+  }, [speechKey, speech]);
+  const vendorRef = useRef<HTMLElement>(null);
+  const sceneRef = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const scene = sceneRef.current;
+    const vendor = vendorRef.current;
+    const showcase = scene?.querySelector<HTMLElement>('.shop-showcase');
+    const bubble = vendor?.querySelector<HTMLElement>('.merchant-speech');
+    if (!scene || !vendor || !showcase) return;
+    const alignHorizontal = () => {
+      if (scene.clientWidth <= 1100) {
+        vendor.style.removeProperty('--shop-vendor-right');
+        return;
+      }
+      if (!bubble) return;
+      const gap = 0.5 * 96 / 2.54;
+      const delta = bubble.getBoundingClientRect().left - showcase.getBoundingClientRect().right - gap;
+      const right = parseFloat(getComputedStyle(vendor).right);
+      if (Math.abs(delta) > 0.1) vendor.style.setProperty('--shop-vendor-right', `${right + delta}px`);
+    };
+    const observer = new ResizeObserver(alignHorizontal);
+    observer.observe(scene);
+    observer.observe(showcase);
+    observer.observe(vendor);
+    if (bubble) observer.observe(bubble);
+    alignHorizontal();
+    return () => observer.disconnect();
+  }, [speechKey, speechVisible, talk]);
+  useEffect(() => {
+    const scene = sceneRef.current;
+    const vendor = vendorRef.current;
+    const header = document.querySelector<HTMLElement>('.topbar.player-hud');
+    if (!scene || !vendor || !header) return;
+    const alignScene = () => {
+      const width = scene.clientWidth;
+      const height = scene.clientHeight;
+      const headTop = height * 0.69 - vendor.offsetHeight + vendor.offsetWidth * (32 / 1254);
+      const headerGap = 0.50 * 96 / 2.54;
+      const shift = width > 900 ? Math.max(0, header.getBoundingClientRect().bottom + headerGap - headTop) : 0;
+      scene.style.setProperty('--shop-scene-shift', `${shift}px`);
+      const originalHeight = Math.max(height, (width * 941) / 1672);
+      const alignment = width <= 760 ? 1 : width / height >= 2 ? 0.65 : 0.35;
+      const originalTop = (height - originalHeight) * alignment;
+      // Preserve the counter's vertical displacement; enlarge only when the top would be exposed.
+      const counterEdge = originalTop + originalHeight * 0.632 + shift;
+      const imageHeight = Math.max(originalHeight, counterEdge / 0.632);
+      scene.style.setProperty('--shop-scene-image-height', `${imageHeight}px`);
+      scene.style.setProperty('--shop-scene-image-top', `${counterEdge - imageHeight * 0.632}px`);
+    };
+    const observer = new ResizeObserver(alignScene);
+    observer.observe(scene);
+    observer.observe(vendor);
+    observer.observe(header);
+    alignScene();
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!talk) return;
+    const close = (event: globalThis.PointerEvent) => {
+      if (!vendorRef.current?.contains(event.target as Node)) setTalk(false);
+    };
+    document.addEventListener('pointerdown', close);
+    return () => document.removeEventListener('pointerdown', close);
+  }, [talk]);
   const keys = useRef<Record<string, string>>({});
   const surface = useRef<HTMLDivElement>(null);
   const dragging = useRef<{
@@ -72,7 +161,7 @@ export function Shop({
   );
   function say(item: Item) {
     setTalk(false);
-    setSpeech(item.merchant_comment || item.description);
+    setSpeech(merchantComment(item));
     setSpeechKey((v) => v + 1);
   }
   function update(next: Line[], changed = true) {
@@ -191,56 +280,70 @@ export function Shop({
     }
   }
   return (
-    <div className="shop-scene">
-      <div className="shop-room" aria-hidden="true" />
-      <aside className="shop-merchant" aria-label="Vendedor da loja">
+    <div className="shop-scene merchant-shop" ref={sceneRef}>
+      <aside
+        className="merchant-vendor"
+        aria-label="Vendedor da loja"
+        ref={vendorRef}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') {
+            setTalk(false);
+            vendorRef.current?.querySelector('button')?.focus();
+          }
+        }}
+      >
         <button
-          className="shop-merchant-trigger"
+          className="merchant-vendor-toggle"
           aria-label="Conversar com o mercador"
           aria-expanded={talk}
-          aria-controls="shop-merchant-conversations"
-          onClick={() => setTalk(!talk)}
+          aria-controls={talk ? 'merchant-conversation' : undefined}
+          onClick={() => {
+            setTalk(!talk);
+            setSpeechVisible(false);
+          }}
         >
           <img
-            className="shop-merchant-art"
-            src="/shop/merchant-v2.png"
-            alt="Mercador de expressão séria, com os antebraços apoiados no balcão"
+            src="/shop/reference/shop-merchant-v1.png"
+            alt="Vendedor de cabelos grisalhos e colete de couro, com os braços apoiados no balcão"
+            draggable={false}
           />
         </button>
-        <div
-          className={`shop-speech${talk ? ' conversation-open' : ' timed-speech'}`}
-          key={speechKey}
-          hidden={!speechVisible && !talk}
-        >
-          <svg
-            className="shop-speech-shape"
-            viewBox="0 0 200 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
+        {talk ? (
+          <div
+            id="merchant-conversation"
+            className="merchant-speech merchant-conversation"
+            role="group"
+            aria-label="Perguntas ao vendedor"
           >
-            <path
-              d="M28 1H187Q199 1 199 13V87Q199 99 187 99H28Q16 99 16 87V84L1 94L16 66V13Q16 1 28 1Z"
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
-          {speechVisible && !talk && <p aria-live="polite">{speech}</p>}
-          {talk && (
-            <div className="shop-conversations" id="shop-merchant-conversations">
-              {content.merchant.conversations.map((c) => (
-                <button
-                  key={c.question}
-                  onClick={() => {
-                    setSpeech(c.answer);
-                    setSpeechKey((v) => v + 1);
-                    setTalk(false);
-                  }}
-                >
-                  {c.question}
-                </button>
-              ))}
+            <SpeechBubbleShape />
+            <span>O que deseja saber?</span>
+            {merchantConversations.map((c) => (
+              <button
+                key={c.question}
+                onClick={() => {
+                  setTalk(false);
+                  setSpeech(c.answer);
+                  setSpeechKey((v) => v + 1);
+                  vendorRef.current?.querySelector('button')?.focus();
+                }}
+              >
+                {c.question}
+              </button>
+            ))}
+          </div>
+        ) : (
+          speechVisible && (
+            <div
+              key={speechKey}
+              className="merchant-speech"
+              role="status"
+              aria-label="Comentário do vendedor"
+            >
+              <SpeechBubbleShape />
+              <span>{speech}</span>
             </div>
-          )}
-        </div>
+          )
+        )}
       </aside>
       <section className="shop-showcase" aria-label="Catálogo da loja">
         <nav className="shop-shelves shop-stone" aria-label="Categorias da loja">
@@ -339,8 +442,7 @@ export function Shop({
           </div>
         </div>
       </section>
-      <section className="shop-counter" aria-label="Balcão de compras">
-        <img src="/shop/counter.png" className="shop-counter-art" alt="" draggable={false} />
+      <section className="shop-counter merchant-countertop" aria-label="Balcão de compras">
         <div
           className="shop-table-surface"
           ref={surface}
@@ -440,9 +542,6 @@ export function Shop({
               </div>
             );
           })}
-          {!lines.length && (
-            <p className="shop-table-hint">Escolha seus itens e coloque-os sobre o balcão.</p>
-          )}
         </div>
       </section>
       {error && !checkout && (
@@ -495,6 +594,7 @@ export function Shop({
                     </label>
                   </div>
                   <button
+                    className="shop-checkout-remove"
                     disabled={busy}
                     aria-label={`Remover ${item.name} do carrinho`}
                     onClick={() => remove(line.id)}
