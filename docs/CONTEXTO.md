@@ -401,3 +401,5 @@ Lista de personagens: escala corrigida de 0,6 para 0,84 (+40% sobre o tamanho an
 Fonte dos balões e opções restaurada para Georgia regular, original do pacote de importação; preservados tamanhos, padding, contorno e posições ajustados. Lista de personagens abre alinhada à esquerda do seletor com origem superior esquerda.
 
 Corrigido header de Personagens: removida a disposição antiga em coluna que centralizava título/contador. Título segue a faixa e margens compartilhadas do header, topo 20px, contador ao lado em vez de abaixo.
+
+Contador de personagens movido para uma linha própria abaixo de Seu acampamento, fora do header e alinhado à esquerda do título.

@@ -207,10 +207,12 @@ export function CharacterCamp({
         <div>
           <h1>Seu acampamento</h1>
         </div>
+      </header>
+      <div className="camp-capacity-row">
         <span className="camp-capacity">
           {characters.length + state.pending_new} / 2 personagens
         </span>
-      </header>
+      </div>
       <div className="camp-stage">
         {characters.map((character) => (
           <article

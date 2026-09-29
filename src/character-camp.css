@@ -634,3 +634,12 @@ body:has(.character-camp) {
     height: 2px;
   }
 }
+/* Contador fora da faixa compartilhada do header. */
+.camp-capacity-row {
+  flex-shrink: 0;
+  width: calc(100% - 2 * var(--page-header-edge));
+  margin-inline: auto;
+  display: flex;
+  justify-content: flex-start;
+}
+.camp-capacity-row .camp-capacity { display: inline-block; }
