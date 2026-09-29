@@ -30,10 +30,13 @@ import {
 } from 'lucide-react';
 import { authClient, api, post } from './api';
 import { CharacterForm, Empty, Login, Modal, PostForm } from './components';
+import { rankName, progressionLabel, testEligible } from '../shared/progression';
 import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
 import { CharacterSheet } from './CharacterSheet';
+import { Notifications } from './Notifications';
+import { Shop } from './Shop';
 import { Achievements } from './Achievements';
 import { Inventory } from './Inventory';
 import { CharacterCamp } from './CharacterCamp';
@@ -110,10 +113,6 @@ function Portal({ user }: { user: User }) {
   const [modal, setModal] = useState<'character' | 'post' | null>(null);
   const [postLocation, setPostLocation] = useState<AtlasLocation | undefined>();
   const [postFromAtlas, setPostFromAtlas] = useState(false);
-  const [purchaseItem, setPurchaseItem] = useState<Item | null>(null);
-  const [purchaseKey, setPurchaseKey] = useState('');
-  const [quantity, setQuantity] = useState(1);
-  const [buyError, setBuyError] = useState('');
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState('');
   const [query, setQuery] = useState('');
@@ -196,26 +195,6 @@ function Portal({ user }: { user: User }) {
       setBusy(false);
     }
   }
-  async function buy() {
-    if (!character || !purchaseItem) return;
-    setBusy(true);
-    setBuyError('');
-    try {
-      await post('/purchases', {
-        character_id: character.id,
-        item_id: purchaseItem.id,
-        quantity,
-        idempotency_key: purchaseKey,
-      });
-      setPurchaseItem(null);
-      await refresh();
-      setToast(`${quantity} × ${purchaseItem.name} adicionado ao inventário de ${character.name}.`);
-    } catch (error) {
-      setBuyError((error as Error).message);
-    } finally {
-      setBusy(false);
-    }
-  }
   const activePosts = posts.filter((post) => ['open', 'active'].includes(post.status));
   const missions = posts.filter((post) => post.kind === 'mission');
   const upcoming = missions
@@ -247,12 +226,21 @@ function Portal({ user }: { user: User }) {
   const postCard = (item: Post, compact = false) => (
     <article className={`quest-card ${item.kind} ${compact ? 'compact' : ''}`} key={item.id}>
       <div className="quest-top">
-        <span className={`badge ${item.kind}`}>{kindLabel[item.kind]}</span>
+        <span className={`badge ${item.kind}`}>
+          {item.rank_test_level
+            ? `Teste de patente · ${rankName(item.rank_test_level + 1)}`
+            : kindLabel[item.kind]}
+        </span>
         <span className="small muted">
           {item.status === 'open' ? item.difficulty : statusLabel[item.status]}
         </span>
       </div>
       <h3>{item.title}</h3>
+      {item.kind === 'mission' && (
+        <p className="mission-rank-label">
+          <Shield size={15} aria-hidden="true" /> Patente {item.mission_rank}
+        </p>
+      )}
       <p>{item.description}</p>
       {item.starts_at && (
         <p className="mission-schedule">
@@ -271,7 +259,10 @@ function Portal({ user }: { user: User }) {
           <p>{item.completion_summary}</p>
           {item.rewards.map((reward, index) => (
             <span key={index}>
-              {reward.name}: +{reward.experience.toLocaleString('pt-BR')} XP
+              {reward.name}:{' '}
+              {reward.progression_credit === null
+                ? `${reward.experience.toLocaleString('pt-BR')} XP (histórico)`
+                : `${money(reward.gold_cp)} PO · ${reward.rank_promoted ? `promovido ao nível ${reward.level_after}` : reward.progression_credit ? '+1 missão válida' : 'sem avanço na progressão'}`}
             </span>
           ))}
         </div>
@@ -308,6 +299,13 @@ function Portal({ user }: { user: User }) {
             disabled={
               busy ||
               !character ||
+              rankName(character.level) !== item.mission_rank ||
+              (!!item.rank_test_level &&
+                !testEligible(
+                  character.level,
+                  character.progression_missions,
+                  item.rank_test_level,
+                )) ||
               item.status !== 'open' ||
               item.my_characters.includes(character.id)
             }
@@ -327,6 +325,15 @@ function Portal({ user }: { user: User }) {
               statusLabel[item.status]
             ) : !character ? (
               'Crie um personagem'
+            ) : rankName(character.level) !== item.mission_rank ? (
+              `Exclusiva para ${item.mission_rank}`
+            ) : item.rank_test_level &&
+              !testEligible(
+                character.level,
+                character.progression_missions,
+                item.rank_test_level,
+              ) ? (
+              'Teste ainda indisponível'
             ) : (
               'Participar'
             )}
@@ -338,6 +345,15 @@ function Portal({ user }: { user: User }) {
           <span className="small muted">{statusLabel[item.status]}</span>
         )}
       </div>
+      {item.kind === 'mission' &&
+        character &&
+        item.status === 'open' &&
+        rankName(character.level) !== item.mission_rank && (
+          <p className="small muted">
+            Esta missão não é da sua patente. Seu personagem é {rankName(character.level)}; a missão
+            exige {item.mission_rank}.
+          </p>
+        )}
       {!compact && (
         <div className="post-meta">
           <span>
@@ -608,7 +624,8 @@ function Portal({ user }: { user: User }) {
                     {character.race} · {character.class}
                   </p>
                   <span className="badge neutral">
-                    NÍVEL {character.level} · {character.experience.toLocaleString('pt-BR')} XP
+                    NÍVEL {character.level} · {rankName(character.level)} ·{' '}
+                    {progressionLabel(character.level, character.progression_missions)}
                   </span>
                   <div className="mini-stats">
                     <span>
@@ -651,11 +668,13 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(page) && (
-                  <span className="title-dot">.</span>
-                )}
+                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(
+                  page,
+                ) && <span className="title-dot">.</span>}
               </h1>
-              {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(page) && (
+              {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(
+                page,
+              ) && (
                 <p>
                   {page === 'shop'
                     ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.2.1.'
@@ -677,7 +696,6 @@ function Portal({ user }: { user: User }) {
                 Novo personagem
               </button>
             )}
-
           </div>
         )}
         {page === 'characters' && (
@@ -700,121 +718,7 @@ function Portal({ user }: { user: User }) {
           ) : (
             noCharacter
           ))}
-        {page === 'shop' && (
-          <>
-            <div className="shop-bar">
-              <div className="search-field">
-                <Search size={17} />
-                <input
-                  aria-label="Buscar itens"
-                  placeholder="Buscar no empório…"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                />
-              </div>
-              <div className="tabs">
-                {['Todos', 'Armas', 'Armaduras', 'Equipamento'].map((item) => (
-                  <button
-                    key={item}
-                    className={category === item ? 'active' : ''}
-                    onClick={() => setCategory(item)}
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-              <span className="wallet">
-                <Coins size={18} />
-                {character ? (
-                  <>
-                    <b>{money(character.gold_cp)}</b> PO
-                  </>
-                ) : (
-                  'Sem personagem'
-                )}
-              </span>
-            </div>
-            {!character && (
-              <div className="info-note">
-                Você pode consultar o catálogo. Crie um personagem para comprar e receber os itens.
-              </div>
-            )}
-            <div className="shop-grid">
-              {catalog
-                .filter(
-                  (item) =>
-                    (category === 'Todos' || item.category === category) &&
-                    `${item.name} ${item.original_name}`
-                      .toLowerCase()
-                      .includes(query.toLowerCase()),
-                )
-                .map((item) => {
-                  const ItemIcon =
-                    item.category === 'Armas'
-                      ? Sword
-                      : item.category === 'Armaduras'
-                        ? Shield
-                        : Backpack;
-                  return (
-                    <article className="item-card" key={item.id}>
-                      <div
-                        className={`item-illustration ${item.category === 'Armas' ? 'weapon' : item.category === 'Armaduras' ? 'armor' : 'gear'}`}
-                      >
-                        <span className="item-category">{item.category}</span>
-                        <ItemIcon size={62} />
-                        <span className="item-srd">SRD 5.2.1</span>
-                      </div>
-                      <div className="item-body">
-                        <h3>{item.name}</h3>
-                        <span className="original-name">
-                          {item.original_name} · {item.weight_lb} lb
-                        </span>
-                        <p>{item.description}</p>
-                        <a
-                          href={item.source_url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="source-link"
-                        >
-                          Consultar no 5etools
-                          <ExternalLink size={12} />
-                        </a>
-                        <div className="item-footer">
-                          <span>
-                            <b>{money(item.price_cp)}</b> PO
-                          </span>
-                          <button
-                            className="button small-button"
-                            disabled={!character}
-                            onClick={() => {
-                              setPurchaseItem(item);
-                              setQuantity(1);
-                              setPurchaseKey(crypto.randomUUID());
-                              setBuyError('');
-                            }}
-                          >
-                            Comprar
-                            <Plus size={14} />
-                          </button>
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
-            </div>
-            {!catalog.some(
-              (item) =>
-                (category === 'Todos' || item.category === category) &&
-                `${item.name} ${item.original_name}`.toLowerCase().includes(query.toLowerCase()),
-            ) && <Empty title="Nenhum item por aqui.">Tente outro nome ou outra categoria.</Empty>}
-            <p className="source-note">
-              Dados conferidos no SRD oficial · Somente equipamentos SRD 5.2.1 · Pesos em libras ·{' '}
-              <a href="https://www.dndbeyond.com/srd" target="_blank" rel="noreferrer">
-                Referência e licença SRD
-              </a>
-            </p>
-          </>
-        )}
+        {page === 'shop' && <Shop catalog={catalog} character={character} onPurchased={refresh} />}
         {page === 'inventory' &&
           (!character ? (
             noCharacter
@@ -837,15 +741,30 @@ function Portal({ user }: { user: User }) {
           ) : (
             noCharacter
           ))}
-        {['missions', 'board', 'hooks'].includes(page) && <NoticeBoard key={page} posts={posts} feedback={toast} renderPost={item=>postCard(item, false)} canCreateEvent={role==='staff'||role==='admin'} onPublish={kind=>{setPostKind(kind);setPostLocation(undefined);setPostFromAtlas(false);setModal('post');}} />}
+        {['missions', 'board', 'hooks'].includes(page) && (
+          <NoticeBoard
+            key={page}
+            posts={posts}
+            userId={user.id}
+            onPaperChange={refresh}
+            feedback={toast}
+            renderPost={(item) => postCard(item, false)}
+            canCreateEvent={role === 'staff' || role === 'admin'}
+            onPublish={(kind) => {
+              setPostKind(kind);
+              setPostLocation(undefined);
+              setPostFromAtlas(false);
+              setModal('post');
+            }}
+          />
+        )}
         {['house', 'lore', 'rules'].includes(page) && (
           <>
             <div className={`entries-grid ${page === 'house' ? 'house-grid' : ''}`}>
               {entries
                 .filter((entry) => entry.section === page)
                 .map((entry) => {
-                  const EntryIcon =
-                    page === 'house' ? House : BookOpen;
+                  const EntryIcon = page === 'house' ? House : BookOpen;
                   return (
                     <article className="entry-card paper" key={entry.id}>
                       <div className="entry-icon">
@@ -911,10 +830,18 @@ function Portal({ user }: { user: User }) {
               )}
               <span className="player-hud-details">
                 {character
-                  ? `Nível ${character.level} · ${character.race} · ${character.class}`
+                  ? `Nível ${character.level} · ${rankName(character.level)} · ${character.race} · ${character.class}`
                   : 'Nenhum personagem selecionado'}
               </span>
             </div>
+            <Notifications
+              characters={characters}
+              page={page}
+              onNavigate={(id, target) => {
+                setSelectedId(id);
+                go(target);
+              }}
+            />
             <button
               className="logout-button"
               aria-label="Sair da conta"
@@ -952,7 +879,7 @@ function Portal({ user }: { user: User }) {
         </div>
       )}
       {modal === 'character' && (
-        <Modal title="Uma nova história" close={() => setModal(null)}>
+        <Modal title="Uma nova história" parchment close={() => setModal(null)}>
           <CharacterForm
             done={async () => {
               await refresh();
@@ -993,78 +920,6 @@ function Portal({ user }: { user: User }) {
             setToast('Missão concluída. Resumo e experiência registrados no histórico.');
           }}
         />
-      )}
-      {purchaseItem && character && (
-        <Modal
-          title="Preparar a mochila"
-          close={() => {
-            if (!busy) setPurchaseItem(null);
-          }}
-        >
-          <div className="purchase-preview">
-            <span className="item-preview-icon">
-              <Backpack size={35} />
-            </span>
-            <div>
-              <h3>{purchaseItem.name}</h3>
-              <p>{money(purchaseItem.price_cp)} PO por unidade</p>
-            </div>
-          </div>
-          <p className="muted">
-            O item será entregue a <b>{character.name}</b>.
-          </p>
-          <label className="quantity-input">
-            Quantidade
-            <input
-              type="number"
-              value={quantity}
-              min={1}
-              max={99}
-              disabled={busy}
-              onChange={(event) => {
-                setQuantity(Number(event.target.value));
-                setPurchaseKey(crypto.randomUUID());
-                setBuyError('');
-              }}
-            />
-          </label>
-          <div className="checkout-lines">
-            <div>
-              <span>Saldo atual</span>
-              <b>{money(character.gold_cp)} PO</b>
-            </div>
-            <div>
-              <span>Total da compra</span>
-              <b>{money(purchaseItem.price_cp * quantity)} PO</b>
-            </div>
-            <div>
-              <span>Saldo após a compra</span>
-              <b>{money(character.gold_cp - purchaseItem.price_cp * quantity)} PO</b>
-            </div>
-          </div>
-          {purchaseItem.price_cp * quantity > character.gold_cp && (
-            <p className="form-error">Ouro insuficiente. Escolha uma quantidade menor.</p>
-          )}
-          {buyError && (
-            <p className="form-error" role="alert">
-              {buyError}
-            </p>
-          )}
-          <button
-            className="button primary full"
-            disabled={
-              busy ||
-              !Number.isInteger(quantity) ||
-              quantity < 1 ||
-              quantity > 99 ||
-              purchaseItem.price_cp * quantity > character.gold_cp
-            }
-            onClick={() => void buy()}
-          >
-            {busy ? 'Confirmando compra…' : 'Confirmar compra'}
-            <Coins size={18} />
-          </button>
-        </Modal>
       )}
     </div>
   );

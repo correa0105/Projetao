@@ -16,6 +16,10 @@ import { characterSchema } from '../shared/character-art.js';
 import { characterSheetRouter } from './character-sheet.js';
 import { achievementsRouter } from './achievements.js';
 import { inventoryRouter } from './inventory.js';
+import { notificationsRouter } from './notifications.js';
+import { shopRouter } from './shop.js';
+import { PAPER_STYLES } from '../shared/notice-board.js';
+import { testEligible, rankName, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
 import {
   KINGDOM_BACKGROUND_MAX_BYTES,
   KINGDOM_BACKGROUND_MAX_EDGE,
@@ -28,9 +32,16 @@ import {
 
 const uuid = z.string().uuid();
 const postSchema = z.object({
+  paper_style: z.enum(PAPER_STYLES).default('parchment'),
+  paper_summary: z.string().trim().max(180).default(''),
   title: z.string().trim().min(5).max(100),
   description: z.string().trim().min(15).max(3000),
   kind: z.enum(['mission', 'event']),
+  mission_rank: z.enum(RANKS).default('Ferro'),
+  rank_test_level: z
+    .union([z.literal(4), z.literal(8), z.literal(12), z.literal(16)])
+    .nullable()
+    .default(null),
   starts_at: z.string().datetime({ offset: true }).optional(),
   location: z.string().trim().min(2).max(100).optional(),
   location_id: atlasId.optional(),
@@ -125,6 +136,8 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
   app.use('/api', inventoryRouter());
+  app.use('/api', notificationsRouter());
+  app.use('/api', shopRouter());
   app.use('/api', achievementsRouter());
   app.get('/api/me', async (_req, res) => {
     const {
@@ -177,7 +190,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     res.json(
       (
         await pool.query(
-          'SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url FROM catalog_items WHERE active=true ORDER BY category,name',
+          'SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url,image_path,merchant_comment,weight_estimated FROM catalog_items WHERE active=true ORDER BY category,name',
         )
       ).rows,
     ),
@@ -212,7 +225,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
       (SELECT count(*)::int FROM mission_participants p WHERE p.post_id=b.id) AS participants,
       COALESCE((SELECT json_agg(p.character_id) FROM mission_participants p JOIN characters c ON c.id=p.character_id WHERE p.post_id=b.id AND c.user_id=$1),'[]') AS my_characters,
       (SELECT title FROM board_posts source WHERE source.id=b.source_mission_id) AS source_mission_title,
-      COALESCE((SELECT json_agg(json_build_object('name',c.name,'experience',r.experience)) FROM mission_rewards r JOIN characters c ON c.id=r.character_id WHERE r.post_id=b.id AND (c.user_id=$1 OR b.author_id=$1)),'[]') AS rewards
+      COALESCE((SELECT json_agg(json_build_object('name',c.name,'experience',r.experience,'gold_cp',r.gold_cp,'progression_credit',r.progression_credit,'level_after',r.level_after,'rank_promoted',r.rank_promoted)) FROM mission_rewards r JOIN characters c ON c.id=r.character_id WHERE r.post_id=b.id AND (c.user_id=$1 OR b.author_id=$1)),'[]') AS rewards
       FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id
       WHERE ($2::text IS NULL OR b.region_id=$2) AND ($3::text IS NULL OR b.location_id=$3)
       ORDER BY b.created_at DESC`,
@@ -222,6 +235,10 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   });
   app.post('/api/board', async (req, res) => {
     const data = postSchema.parse(req.body);
+    if (data.rank_test_level !== null && rankName(data.rank_test_level) !== data.mission_rank)
+      throw new AppError(400, 'O teste deve pertencer à patente de origem da promoção.');
+    if (data.rank_test_level !== null && data.kind !== 'mission')
+      throw new AppError(400, 'Teste de patente deve ser uma missão.');
     if (
       data.kind === 'event' &&
       !(await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [res.locals.user.id]))
@@ -237,8 +254,8 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
       const {
         rows: [created],
       } = await client.query(
-        `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,reward_cp,starts_at,region_id,location_id)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+        `INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,reward_cp,starts_at,region_id,location_id,paper_style,paper_summary,rank_test_level,mission_rank)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *`,
         [
           res.locals.user.id,
           data.kind,
@@ -246,15 +263,37 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
           data.description,
           location.location,
           data.difficulty,
-          data.reward_cp,
+          data.kind === 'mission' ? RANK_REWARD_CP[data.mission_rank] : data.reward_cp,
           data.starts_at || null,
           location.region_id,
           location.location_id,
+          data.paper_style,
+          data.paper_summary,
+          data.rank_test_level,
+          data.mission_rank,
         ],
       );
       return created;
     });
     res.status(201).json(post);
+  });
+  app.patch('/api/board/:id/paper', async (req, res) => {
+    const id = uuid.parse(req.params.id);
+    const data = z
+      .object({
+        paper_x: z.number().finite().min(0).max(1),
+        paper_y: z.number().finite().min(0).max(1),
+        paper_style: z.enum(PAPER_STYLES),
+      })
+      .strict()
+      .parse(req.body);
+    const result = await pool.query(
+      `UPDATE board_posts SET paper_x=$3,paper_y=$4,paper_style=$5
+       WHERE id=$1 AND author_id=$2 RETURNING id,paper_x,paper_y,paper_style`,
+      [id, res.locals.user.id, data.paper_x, data.paper_y, data.paper_style],
+    );
+    if (!result.rowCount) throw new AppError(403, 'Somente o autor pode alterar este papel.');
+    res.json(result.rows[0]);
   });
   app.post('/api/board/:id/join', async (req, res) => {
     const id = uuid.parse(req.params.id);
@@ -265,15 +304,23 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
       } = await client.query('SELECT * FROM board_posts WHERE id=$1 FOR UPDATE', [id]);
       if (!post || post.kind !== 'mission' || post.status !== 'open')
         throw new AppError(409, 'Esta missão não está aberta para inscrições.');
+      const {
+        rows: [character],
+      } = await client.query(
+        'SELECT level,progression_missions FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
+        [character_id, res.locals.user.id],
+      );
+      if (!character) throw new AppError(404, 'Personagem não encontrado.');
+      if (rankName(character.level) !== post.mission_rank)
+        throw new AppError(
+          409,
+          `Esta missão é exclusiva da patente ${post.mission_rank}. Seu personagem é ${rankName(character.level)}; não pode se inscrever em patentes superiores ou inferiores.`,
+        );
       if (
-        !(
-          await client.query(
-            'SELECT 1 FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL',
-            [character_id, res.locals.user.id],
-          )
-        ).rowCount
+        post.rank_test_level !== null &&
+        !testEligible(character.level, character.progression_missions, post.rank_test_level)
       )
-        throw new AppError(404, 'Personagem não encontrado.');
+        throw new AppError(409, 'Este personagem ainda não está apto a este teste de patente.');
       await client.query(
         'INSERT INTO mission_participants(post_id,character_id) VALUES($1,$2) ON CONFLICT DO NOTHING',
         [id, character_id],
@@ -299,7 +346,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     res.json(
       (
         await pool.query(
-          'SELECT c.id,c.name,c.race,c.class FROM mission_participants p JOIN characters c ON c.id=p.character_id WHERE p.post_id=$1 ORDER BY c.name',
+          'SELECT c.id,c.name,c.race,c.class,c.level,c.progression_missions FROM mission_participants p JOIN characters c ON c.id=p.character_id WHERE p.post_id=$1 ORDER BY c.name',
           [id],
         )
       ).rows,

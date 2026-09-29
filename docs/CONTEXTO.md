@@ -1,17 +1,62 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Loja ilustrada — exportação de 29/09/2026
+
+Por pedido explícito do usuário, o catálogo ativo foi substituído pelos **65 itens** da pasta fornecida Loja-Alvorada-Exportacao-20260929-094455. Fonte portátil em `data/shop-export/loja.json`, pesos em `PESOS.md`, imagens originais em `public/shop/items` (hashes conferidos). Dez categorias preservadas. Esta decisão substitui a antiga whitelist de oito itens; não representa implementação de suplementos ou dos efeitos mágicos descritos.
+
+- `src/Shop.tsx` e `src/shop.css`: interior ilustrado, poções à direita, mercador à esquerda, catálogo central em pedra como a mochila e balcão em camada independente. Falas específicas por item e conversas vêm da exportação.
+- Comprar/arrastar adiciona ao carrinho e à mesa; não debita ouro. Arraste limitado ao tampo, sem sobreposição; seleção mostra X para remover. Uma imagem por tipo e quantidade 1–99. Carrinho de cada personagem separado enquanto a loja está aberta; rascunho descartado ao sair/recarregar.
+- Checkout `POST /api/shop/checkout` autentica titularidade, bloqueia personagem FOR UPDATE, lê preços ativos no servidor e debita todas as linhas em uma transação. Chave idempotente protege repetição. Migration 032 registra pedido e vincula cada compra ao pedido. Inventário e conquista de primeira compra atualizados na mesma transação.
+- Itens antigos fora da exportação ficam inativos na venda; bens e histórico dos jogadores são preservados. Snapshot anterior `data/catalog.json` preservado; o seed agora usa a exportação.
+- Orbe do dragão veio com preço nulo: pode ser examinado, mas bloqueia checkout até ser removido. Não inventar preço. Pesos estimados são identificados na loja; consulte PESOS.md.
+- Testes: `npm run test:shop` usa banco descartável e Edge, cobre concorrência/idempotência, preço no servidor, saldo, validação, compra com múltiplos itens, mesa, remoção, quantidade e mobile. Suíte npm test (29 testes) passou em banco isolado.
+
+
+Navegação: o botão principal antes chamado Aventura agora é **Mural**, com acesso
+direto a `board`, sem submenu intermediário. Ícone simplificado de folha e pena,
+`public/guild-icon-notice-board-v3.png`, substitui a espada. Quadros detalhados V1/V2 rejeitados. Transparência nativa,
+mesma classe SVG/escala/hover dos outros ícones; atlas dos demais preservado.
+
+## Patentes por missões (28/09/2026)
+
+Missões agora exigem patente exata, sem acesso acima ou abaixo. Formulário seleciona
+patente e mostra ouro fixo: Ferro 150, Bronze 230, Adamantium 300, Ametista 390,
+Obsidiana 500 PO por inscrito. Servidor deriva o pagamento pela tabela e valida inscrição
+e conclusão. Testes pertencem à patente de origem. Migration 030 converte missões antigas
+normais para Ferro, preservando histórico de pagamentos. Ver `docs/PATENTES.md`.
+
+Implementada progressão própria da guilda de nível 1 a 20: consultar `docs/PATENTES.md`.
+Ferro, Bronze, Adamantium, Ametista e Obsidiana. **Correção expressa do usuário:**
+nível 4 com 14 missões ainda conta missões normalmente; somente ao alcançar 22 libera
+o teste para Bronze e congela a contagem até concluir o teste. Demais portões:
+nível 8/53, 12/80, 16/102. Teste promove sem incrementar o contador.
+No bloqueio e no nível 20, missões normais concedem somente ouro.
+Migration 029 preserva o histórico; conclusão credita ouro persistido por participante
+uma vez, sem XP novo. Testes de patente usam `board_posts`.
+Mecânicas completas de classes nos níveis altos permanecem pendentes.
+Apresentação da patente na ficha: painel independente de madeira escura acima do
+pergaminho, com espaçamento, nível destacado e barra de progresso. Não usar outro
+bloco de papel para esse resumo. Explicações no ícone de ajuda; composição empilhada no celular.
+
 ## Retomada futura: níveis altos e suplementos (28/09/2026)
 
 O usuário pediu para guardar o estado real das regras e o que falta para ampliar o sistema.
 Consultar `docs/ROADMAP-REGRAS.md` ao responder "o que temos que fazer?" ou "como está o sistema?".
 A base atual cobre criação/ficha de nível 1 do SRD 5.2.1; não equivale a D&D completo.
-Progressão 1–20 e suplementos escolhidos pelo usuário são etapas futuras, ainda não implementadas.
-Nenhum suplemento específico foi aprovado nesta conversa. Esta solicitação é de documentação,
-não de iniciar a implementação dessas etapas.
+O nível e a patente agora evoluem por missões; recursos de classe de níveis altos e suplementos
+continuam como etapas futuras. Nenhum suplemento específico foi aprovado nesta conversa.
 
 ## Migração atual: SRD 5.2.1 / D&D 5.5e (2024)
 
-Por solicitação explícita do usuário, a referência vigente é SRD 5.2.1, substituindo 5.1/2014 em todas as regras implementadas. As seções antigas abaixo descrevem histórico. Ver `docs/SRD-2024.md` e `docs/ATTRIBUTION.md`. Criação de nível 1, nove espécies, doze classes, quatro antecedentes e talentos de origem do SRD; maestrias e conjuração revisadas, 83 magias de níveis 0/1. Subclasses não aparecem no nível 1. Progressão e combate automático continuam fora do escopo implementado.
+Revisão da magia inicial: Acólito (padrão inicial do formulário) concede Iniciado em
+Magia: Clérigo a qualquer classe, inclusive Bárbaro. Formulário agora explica origem,
+2 truques + 1 magia de nível 1 e atributo escolhido. Bárbaro não pode conjurar/manter
+concentração em Fúria; aviso incluído. Mago nível 1: 3 truques, 6 magias no grimório,
+4 preparadas e 2 espaços de nível 1; explicação distingue esses números. Conferido nas
+regras oficiais de 2024, páginas Character Origins, Feats e Character Classes do D&D Beyond.
+Isso revisa magia de criação, não certifica todas as mecânicas ou níveis altos.
+
+Por solicitação explícita do usuário, a referência vigente é SRD 5.2.1, substituindo 5.1/2014 em todas as regras implementadas. As seções antigas abaixo descrevem histórico. Ver `docs/SRD-2024.md` e `docs/ATTRIBUTION.md`. Criação de nível 1, nove espécies, doze classes, quatro antecedentes e talentos de origem do SRD; maestrias e conjuração revisadas, 83 magias de níveis 0/1. Subclasses não aparecem no nível 1. Evolução completa dos recursos de classe e combate automático continuam fora do escopo implementado.
 
 Migration 025 arquiva personagem/ficha antigos, mantém dados rolados/atribuição/notas/arte/bens e pede revisão de escolhas; não converte uma espécie legada sem escolha do jogador. Novas fichas usam choices.version=2 e rules_version=5.2.1. Riqueza oficial de classe/antecedente é creditada uma vez na finalização de novos personagens (gold_cp=0 até então); migrados conservam o saldo, sem crédito novo. Endpoint rest-choices permite somente trocas legais de maestria, truque de alto elfo, um truque de mago e magias do tomo, sem alterar atributos, origem ou ouro. Descansos e efeitos são adjudicados na mesa.
 
@@ -27,7 +72,7 @@ Substitui a apresentação de medalhas descrita no histórico abaixo. Sete objet
 
 ## Estado atual
 
-Pergaminho da ficha (28/09/2026): a pedido do usuário, restaurada a textura original com `center / 760px auto repeat`. As tentativas com `100% 100%` e depois `cover`/`fixed` foram rejeitadas. Preservar a aparência original; as emendas da repetição permanecem como antes.
+Pergaminho da ficha (28/09/2026): emendas corrigidas por repetição espelhada nos dois eixos, solicitada pelo usuário. `character-parchment-mirrored.svg` compõe quatro cópias da textura original, sem alterar pixels; o bloco mede 1520px e cada cópia mantém a escala anterior de 760px. Gerador: `node scripts/build-parchment-tile.mjs`. Origem fixa no canto superior, sem mudar com a altura do formulário. Preservar nitidez: não usar `100% 100%`, `cover` ou esticar o papel para preencher o painel; tentativas anteriores foram rejeitadas.
 
 Conquistas V2 segue referência ilustrada do usuário: estante medieval entalhada, 18 posições em três prateleiras (seis por linha, espaçamento compacto), catálogo abaixo. Cenário de casa medieval antiga em `achievement-house-v2.png` (enquadramento amplo, mais teto e piso); estante recortada com transparência em `achievement-cabinet-v3.png`, integrada à parede com sombra de contato e escala/posição vinculadas à projeção do chão, mantendo as posições interativas e o degradê escuro aprovado. Usuário escolheu modelo E para a primeira conquista: selo de cera bordô com pena em cobre e fitas, em `achievement-first-chapter-seal-v1.png`, aplicado no catálogo e na estante. Cada conquista deve ter identidade própria; esse modelo não é um padrão para todas. As outras conquistas usam `achievement-insignias-v2.png`: primeira compra em placa octogonal de bronze com bolsa/moeda; chamado em escudo de aço com pergaminho/espada. Todas compartilham acabamento em relevo minimalista, mas têm silhuetas e contornos de medalha distintos, sem ícone de linha sobreposto e sem seletor de moldura. Acabamento ornamentado dos controles foi rejeitado e removido. Configuração e catálogo seguem o inventário: textura de pergaminho aprovada com multiply em marrom neutro bem escuro (#29261f), sem matiz avermelhado, bordas discretas, controles simples e materiais selecionados pela amostra com borda/losango (rádio acessível oculto visualmente), busca compacta de 36 px com lupa alinhada; catálogo permite pesquisar por nome sem distinção de acentos/maiúsculas, combinado aos filtros de desbloqueio. Personalização recolhível via details/summary, inicialmente fechada, com chevron à direita. Nenhuma posição selecionada inicialmente; clicar novamente desmarca e salvar limpa a seleção. Indicador + centralizado geometricamente no slot; nomes das insígnias na estante aparecem somente no hover/foco. Migration 023 amplia a grade preservando prateleira e ordem dos itens anteriores. Tipo de estante mostra a atual e alternativas desabilitadas como Em breve. Campo legado medal_frame preservado no banco por compatibilidade. Arte V2 anterior preservada. Acabamentos visuais de nogueira, carvalho e ébano usam filtros sobre a arte; cada conquista possui sua moldura integrada à arte. Migration 022 estende a tabela 021 sem apagar configurações anteriores. GET/POST `/api/characters/:id/achievements` salva por personagem, valida titularidade, desbloqueio, códigos e posições únicas. `AchievementShelf` reutilizável para futura aba. `npm run test:achievements` cobre persistência, posições, isolamento, bloqueios e mobile em banco descartável.
 
@@ -220,3 +265,75 @@ Revisão funcional do Mural: renderização dos cartões não repassa mais o ín
 Títulos das categorias do mural agora ficam sobre as próprias folhas, abaixo do prego, em tinta marrom-escura (notice-paper-title), substituindo o texto sobre a madeira. Papel e título compartilham hover e inclinação. Artes V4 e cenário preservados. Build e teste de navegador do mural aprovados.
 
 Ajuste dos avisos: folhas dimensionadas pela largura e proporção fixa, sem altura percentual que as alongava; títulos ampliados de 8,8 para 14cqw. Conferência visual e teste do mural aprovados.
+
+## Mural com avisos reais — 28/09/2026
+- As três folhas fixas foram removidas. Cada board_post aberto/em andamento aparece como papel clicável; concluidos/encerrados ficam no histórico das listas. Não foram criadas tabelas paralelas nem alteradas regras de publicação de eventos/ganchos.
+- Cenário ativo: public/notice-village-empty-v4.png, sem nenhum papel decorativo pintado. Enquadramento afastado para max(130vw,145dvh); superfície útil acompanha a imagem (left 28,3%, top 29,5%, width 31,7%, height 27,2%). No celular há placas inferiores para acessar listas.
+- Migration 028_board_papers acrescenta paper_style (seis modelos), paper_summary opcional (180 caracteres), paper_x e paper_y em board_posts. Coordenadas 0–1 representam o espaço de deslocamento disponível: o papel inteiro permanece na madeira. Posições iniciais são persistidas; sobreposição é permitida.
+- PATCH /api/board/:id/paper valida coordenadas/modelo e atualiza somente WHERE author_id = usuário da sessão. Não aceita troca de autor. O navegador restringe arraste e setas ao autor, mas a segurança é aplicada também no servidor.
+- Publicação reutiliza PostForm, com seis prévias de papéis e resumo curto. O autor também pode trocar o papel em Aparência do papel, dentro do aviso aberto. Ganchos continuam sendo criados exclusivamente ao concluir uma missão.
+- Placas de madeira: Missões, Ganchos e Eventos; listas com pesquisa por nome sem diferença de acentos, filtros Atuais/Todos/Histórico, seis registros por página e Localizar no mural (traz o aviso ao foco, sem mudar a posição salva).
+- Testes: build aprovado; 23 testes PostgreSQL aprovados em banco descartável, incluindo autoria, limites e persistência dos papéis; test:notice-board cobre arraste até as bordas, recarga, clique no papel, escolha de modelo, publicação, ciclo básico, pesquisa/paginação com mais de 30 avisos, localização, foco e mobile.
+
+Placas do mural presas à travessa inferior: menu passou a ser filho do plano do cenário, em left 27% / top 57,2% / width 34%, com arte transparente public/notices/wood-plaque-v1.png (madeira gasta e dois pregos). Enquadramento afastado mais 8%: max(120vw,135dvh); mobile max(100vw,102dvh). Build e teste do mural aprovados.
+
+Placas reposicionadas na lateral direita da moldura, com inclinações -5°, +4° e -3°, projetando-se para fora. Enquadramento reduzido para max(114vw,125dvh), mobile max(100vw,85dvh). Removida a publicação no cenário: Registrar missão aparece no topo das três listas (Missões, Eventos, Ganchos) e abre sempre formulário de missão. Staff conserva Registrar evento na lista de eventos; ganchos continuam exclusivos da conclusão. Teste de navegador confirma os três acessos.
+
+Placas do mural agora menores e suspensas por dois conjuntos de elos na travessa inferior (left 30,5%, top 63%, width 27%). Hover/foco aplica balanço amortecido de 1,4 s; prefers-reduced-motion desativa o movimento. Cabeçalhos dos pop-ups sem faixa própria: fundo transparente, sem borda e sem sticky, preservando a madeira contínua do painel. Build e teste do mural aprovados.
+
+Placas V2: substituídos elos SVG e tábua repetida por três ilustrações com correntes, parafusos e desgaste próprios (public/notices/hanging-{mission,hook,event}-v2.png). Âncoras alinhadas no centro da travessa em top 58,15%; primeira em altura intermediária, segunda mais baixa/larga, terceira mais alta/estreita. Balanço preservado com pivô nas ferragens superiores. Cenário desktop afastado para max(100vw,150dvh), centralizado sem bordas vazias; mobile 78dvh. Build e fluxo de navegador aprovados.
+
+Textos das placas centralizados em caixas correspondentes à madeira de cada sprite (sem contar correntes). Terceira placa escurecida via filtro somente na imagem, preservando legibilidade do texto. Build e teste do mural aprovados.
+
+Centralização horizontal do mural: cenário desktop deslocado para translateX(-44,15%), alinhando o centro da superfície de madeira ao centro da tela, sem mudar escala nem posições relativas de papéis/placas.
+
+Correção do deslocamento excessivo: translateX desktop ajustado para -46%. Faixa descoberta à esquerda preenchida com continuidade espelhada da borda do próprio cenário, sem ampliar o mural. Conferência visual em navegador, build e teste do mural aprovados.
+
+Correção definitiva do cenário do mural: ativo public/notice-village-complete-v5.png, arte completa com continuação original da taverna à esquerda. Removido o preenchimento espelhado rejeitado. Superfície recalibrada para left 35,9%, width 31,7%; placas left 38,1% (mobile 36,6%). Centro do painel em 51,75% da arte, alinhado ao centro da viewport; desktop max(104vw,150dvh) garante cobertura total. Conferência visual e teste de navegador aprovados.
+
+Ajustes finos: enquadramento deslocado ligeiramente à esquerda (-52%, cobertura mínima 104,25vw). Ferragens de Ganchos e Eventos subidas respectivamente 0,12cqw e 0,3cqw para alinhar os pontos de fixação aos da primeira placa sobre a travessa.
+
+Ficha: espaçamentos entre campos e parágrafos compactados, rótulos de 14 px e títulos de 15–17 px acima das opções de 13 px. Bônus do antecedente agora usa um seletor único com sete distribuições válidas (+2/+1 em atributos diferentes ou +1 nos três), impedindo combinações inválidas durante a edição. Validação do servidor preservada; fluxo de navegador verifica as sete opções e a troca entre distribuições.
+
+
+Criação de personagem padronizada com a ficha: dialog usa character-sheet/sheet-panel, mesma textura espelhada de pergaminho, largura máxima de 1160 px, tipografia, seletores compactos e grade de escolhas em duas colunas. Formulário reutiliza sheet-form-reset; não manter um tema genérico separado para a criação.
+
+
+Rolagem de atributos: AttributeDice mostra seis resultados em sequência por clique; cada lançamento exibe quatro dados com seis faces CSS 3D, queda/giro/quique em dialog sobre toda a interface e descarte do menor. Distribuição aparece após seis revelações. Servidor continua gerando e persistindo os 24 dados uma única vez; animação não sorteia valores. Recarga recupera os resultados e Rever rolagens em 3D apenas repete a apresentação. Movimento reduzido respeitado. test:sheet verifica as seis revelações contra os valores SQL, recarga, conclusão e telas desktop/mobile. Em 28/09, a pedido do usuário, reset pontual de rolls/assignment somente onde finalized_at IS NULL para testar a animação; fichas confirmadas preservadas.
+
+
+Escolhas após descanso longo movidas para dentro do papel da ficha, recolhidas ao final da seção correspondente: maestrias em Combate e opções de conjuração em Magias. Removido o painel solto acima dos indicadores de PV/CA.
+
+
+Cabeçalhos padronizados em src/page-header.css: título até 32 px e HUD de personagem/conta reduzido cerca de 20%, margens laterais independentes do conteúdo (até 95 px, aproximadamente 2,5 cm CSS). Desktop alinha os dois lados da viewport; telas até 900 px mantêm HUD e título em linhas separadas. Ícone Mural V3: folha de pergaminho e pena simples, PNG alfa, mesma renderização SVG do menu.
+
+
+## Pendências e notificações — 29/09/2026
+Sino junto ao seletor de personagem, contador e painel de madeira com avisos de todos os personagens ativos da conta. GET /api/notifications consulta somente personagens do usuário autenticado e deriva etapas exclusivas: origem/revisão, rolagem, distribuição/finalização. Teste de patente aparece somente ao atingir o requisito (22/53/80/102); some após promoção. Aviso de nível alcançado usa notification_level_read (migration 031) e leitura persistente pelo endpoint de titularidade /characters/:id/notifications/level-read. Não confundir marcar nível como lido com executar evolução de classe: recursos de nível alto seguem pendentes de desenvolvimento, não são uma tarefa delegada ao mestre. O usuário decidiu implementar essa evolução depois. Pendências não podem ser dispensadas sem resolução. Atalhos selecionam o personagem correto antes de navegar; atualização ao abrir, trocar página, recuperar foco e refresh de 60 s. Painel fecha ao clicar fora/Escape, com retorno do foco. Build, 29 testes em PostgreSQL descartável e navegador desktop/mobile aprovados.
+
+
+### Ajuste do mercador (29/09/2026)
+
+NPC sério em `public/shop/merchant-v2.png`, apoiado com os antebraços sobre o balcão e renderizado acima do tampo. Clique no próprio NPC abre as perguntas; contorno no hover/foco indica interação. Falas em balão próximo à boca, sem botão Conversar permanente. Loja central ampliada proporcionalmente. Arte/prompt em `docs/SHOP-ART.md`.
+
+### Escala e falas da loja
+
+NPC ampliado em aproximadamente 19% no desktop, mantendo apoio no balcão. Falas em texto menor, contidas à esquerda do catálogo, com ponta contornada; duração total de quatro segundos e saída por opacidade, reiniciando em cada interação. Perguntas permanecem abertas até escolha/novo clique, separadas do temporizador da fala. Itens com base visual 15% maior; escala adicional moderada por tipo (poções/anéis base, armas +12%, armaduras +18%, espadas/arcos/cajados/baús +22%). Limites e colisões da mesa consideram o tamanho de cada item. Carrinho único no topo; acesso inferior removido.
+
+### Enquadramento revisado do mercador
+
+Altura do NPC no desktop acompanha a distância entre header e bancada, com cabeça próxima ao header e mãos no tampo. Catálogo reduzido em 10% em largura e altura. Balão na diagonal acima/à direita, fundo com 88% de opacidade. Conversa exibe somente as três perguntas, espaçamento compacto, sem divisória superior; hover/foco e estado pressionado destacam a opção.
+
+Balão revisado: corpo e ponta usam um único path SVG com preenchimento semitransparente e contorno contínuo, evitando emenda entre elementos. Texto de fala/opções em 11px, pergaminho claro para maior contraste. NPC deslocado 20px para baixo para que os antebraços avancem sobre o tampo, mantendo escala.
+
+Último ajuste da loja: NPC ampliado mais 35px mantendo a posição dos braços sobre o tampo, cabeça mais próxima ao header; catálogo estendido verticalmente até 10px antes da bancada. Instrução “Arraste para a mesa ou clique em Comprar...” removida do rodapé do catálogo.
+
+Duração vigente dos balões da loja: 15 segundos por fala, reiniciada em cada interação, com fade no final (substitui os quatro segundos anteriores).
+
+Composição vigente: catálogo reduzido proporcionalmente em 15%, ancorado no topo/centro, afastando-o do tampo. Balão ampliado horizontalmente; topo fixado na lateral superior direita do NPC, abaixo do header, para crescer somente para baixo. Cor das falas igual às opções de diálogo (#f6e8ce), mantendo 12px e duração de 15s; substitui o branco puro anterior.
+
+Layout responsivo da loja revisto: retirada a escala .85 e a âncora inferior ligada à bancada. Catálogo usa largura natural responsiva (até 840px) e altura limitada a 480px/área disponível; ao reduzir zoom, não se estica até a mesa. Regras próprias para tablet/celular. Falas justificadas, última linha à esquerda, peso normal, entrelinha 1.5 e hifenização.
+
+Falas da loja: alinhamento à esquerda, sem justificação nem hifenização automática, conforme correção do usuário.
+
+Itens na mesa ampliados mais 20%: base 110,4px desktop / 82,8px celular, preservadas escalas por item e colisões correspondentes. Catálogo não alterado neste ajuste.

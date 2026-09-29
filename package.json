@@ -21,7 +21,8 @@
     "setup": "node scripts/setup.mjs",
     "format": "prettier --write src server shared scripts tests vite.config.ts",
     "test:achievements": "node scripts/test-achievements-isolated.mjs",
-    "test:notice-board": "node scripts/test-notice-board-isolated.mjs"
+    "test:notice-board": "node scripts/test-notice-board-isolated.mjs",
+    "test:shop": "node scripts/test-shop-isolated.mjs"
   },
   "dependencies": {
     "better-auth": "^1.7.5",

@@ -2,6 +2,7 @@ import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import sharp from 'sharp';
+import { rankName, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
 import { defaultChoices } from '../shared/character-sheet.js';
 import type { Server } from 'node:http';
 import { createApp } from '../server/app.js';
@@ -72,7 +73,9 @@ async function character(client: Client, name = 'Arden') {
   assert.equal(response.status, 202, JSON.stringify(response.data));
   const id = await finishTestArt(response.data.id);
   // Dedicated economy fixture budget; production wealth is tested in sheet tests.
-  await pool.query('UPDATE characters SET gold_cp=15000,starting_wealth_granted=true WHERE id=$1',[id]);
+  await pool.query('UPDATE characters SET gold_cp=15000,starting_wealth_granted=true WHERE id=$1', [
+    id,
+  ]);
   return (await request('/api/characters', client)).data.find((c: { id: string }) => c.id === id);
 }
 before(async () => {
@@ -259,9 +262,38 @@ async function verifyKingdomView(alice: Client, bob: Client) {
   assert.equal((await request('/api/kingdom/editor-view', alice, undefined, 'DELETE')).status, 200);
 }
 
+async function notificationsTest(owner: Client, other: Client) {
+  const c = await createLegacyTestCharacter(owner.id);
+  const list = async () => (await request('/api/notifications', owner)).data as {kind:string;characterId:string;level?:number}[];
+  assert.equal((await request('/api/notifications')).status, 401);
+  assert.deepEqual((await list()).map(n => n.kind), ['origin']);
+  assert.deepEqual((await request('/api/notifications', other)).data, []);
+  await pool.query(`INSERT INTO character_sheets(character_id,choices,rules_version) VALUES($1,$2,'5.2.1')`, [c.id, JSON.stringify(defaultChoices('Elfo','Guerreiro'))]);
+  assert.deepEqual((await list()).map(n => n.kind), ['roll']);
+  await pool.query('UPDATE character_sheets SET rolls=$2 WHERE character_id=$1', [c.id,JSON.stringify(Array.from({length:6},()=>[3,4,5,6]))]);
+  assert.deepEqual((await list()).map(n => n.kind), ['assignment']);
+  await pool.query('UPDATE character_sheets SET assignment=$2,finalized_at=now() WHERE character_id=$1', [c.id,JSON.stringify([0,1,2,3,4,5])]);
+  assert.deepEqual(await list(), []);
+  await pool.query('UPDATE characters SET level=4,progression_missions=21 WHERE id=$1', [c.id]);
+  assert.deepEqual((await list()).map(n => n.kind), ['level']);
+  await pool.query('UPDATE characters SET progression_missions=22 WHERE id=$1', [c.id]);
+  assert.deepEqual((await list()).map(n => n.kind), ['rank','level']);
+  const path = `/api/characters/${c.id}/notifications/level-read`;
+  assert.equal((await request(path, other, {level:4})).status, 404);
+  assert.equal((await request(path, owner, {level:5})).status, 404);
+  assert.equal((await request(path, owner, {level:4})).status, 200);
+  assert.deepEqual((await list()).map(n => n.kind), ['rank']);
+  await pool.query('UPDATE characters SET level=5 WHERE id=$1', [c.id]);
+  assert.deepEqual((await list()).map(n => n.kind), ['level']);
+  assert.equal((await list())[0].level, 5);
+  await pool.query('UPDATE characters SET deleted_at=now() WHERE id=$1', [c.id]);
+  assert.deepEqual(await list(), []);
+}
+
 test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores', async (t) => {
   const alice = await signup(editorTestEmail);
   const bob = await signup();
+  await t.test('notificações: ficha, patente, leitura e isolamento', () => notificationsTest(alice, bob));
   const arden = await character(alice);
   const mira = await character(alice, 'Mira');
   const borin = await character(bob, 'Borin');
@@ -643,7 +675,7 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
     assert.equal(
       (await pool.query('SELECT experience FROM characters WHERE id=$1', [arden.id])).rows[0]
         .experience,
-      125,
+      0,
     );
     assert.equal(
       (await pool.query('SELECT count(*)::int AS n FROM mission_rewards WHERE post_id=$1', [id]))
@@ -664,7 +696,9 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
     assert.equal(stored.status, 'completed');
     assert.equal(stored.participants, 1);
     assert.equal(stored.completion_summary, completion.summary);
-    assert.equal(stored.rewards[0].experience, 125);
+    assert.equal(stored.rewards[0].experience, 0);
+    assert.equal(stored.rewards[0].progression_credit, 1);
+    assert.equal(stored.rewards[0].gold_cp, 15000);
     assert.equal(
       (await pool.query('SELECT count(*)::int AS total FROM board_posts WHERE id=$1', [id])).rows[0]
         .total,
@@ -672,8 +706,8 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
     );
     assert.equal(
       (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [arden.id])).rows[0].gold_cp,
-      11800,
-    ); // No fabricated reward.
+      26800,
+    ); // Ouro anunciado creditado uma única vez, pelo servidor.
   });
   await t.test(
     'agendamento obrigatório, eventos restritos à staff e ganchos somente na conclusão',
@@ -722,12 +756,21 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
       assert.equal(
         (await pool.query('SELECT experience FROM characters WHERE id=$1', [borin.id])).rows[0]
           .experience,
-        250,
+        0,
       );
       const bobBoard = (await request('/api/board', bob)).data.find(
         (p: { id: string }) => p.id === id,
       );
-      assert.deepEqual(bobBoard.rewards, [{ name: 'Borin', experience: 250 }]);
+      assert.deepEqual(bobBoard.rewards, [
+        {
+          name: 'Borin',
+          experience: 0,
+          gold_cp: 15000,
+          progression_credit: 1,
+          level_after: 1,
+          rank_promoted: false,
+        },
+      ]);
       assert.equal(
         (
           await pool.query(
@@ -748,6 +791,235 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
         ).status,
         409,
       );
+    },
+  );
+  await t.test(
+    'patentes: limite, ouro, promoção, autoria, elegibilidade e concorrência',
+    async () => {
+      const hero = await createLegacyTestCharacter(alice.id, 'Teste das patentes');
+      async function create(rank: number | null = null) {
+        const current = (await pool.query('SELECT level FROM characters WHERE id=$1', [hero.id]))
+          .rows[0];
+        const response = await request('/api/board', alice, {
+          title: 'Jornada das patentes',
+          description: 'Uma aventura para validar a evolução da guilda.',
+          kind: 'mission',
+          difficulty: 'Moderada',
+          location: 'Vigília',
+          reward_cp: 700,
+          starts_at: new Date(Date.now() + 3600000).toISOString(),
+          rank_test_level: rank,
+          mission_rank: rankName(rank ?? current.level),
+        });
+        assert.equal(response.status, 201);
+        return response.data.id;
+      }
+      async function start(id: string) {
+        assert.equal(
+          (await request(`/api/board/${id}/join`, alice, { character_id: hero.id })).status,
+          200,
+        );
+        assert.equal(
+          (await request(`/api/board/${id}`, alice, { status: 'active' }, 'PATCH')).status,
+          200,
+        );
+      }
+      const payload = {
+        summary: 'A jornada terminou e os aventureiros retornaram.',
+        rewards: [{ character_id: hero.id, experience: 1000000 }],
+        gold_cp: 9999999,
+        level: 20,
+      };
+      async function state() {
+        return (
+          await pool.query(
+            'SELECT level,progression_missions,gold_cp,experience FROM characters WHERE id=$1',
+            [hero.id],
+          )
+        ).rows[0];
+      }
+      await pool.query(
+        'UPDATE characters SET level=4,progression_missions=14,gold_cp=0 WHERE id=$1',
+        [hero.id],
+      );
+      const exam = await create(4);
+      assert.equal(
+        (await request(`/api/board/${exam}/join`, bob, { character_id: hero.id })).status,
+        404,
+      );
+      assert.equal(
+        (await request(`/api/board/${exam}/join`, alice, { character_id: hero.id })).status,
+        409,
+      );
+      const normal = await create();
+      await start(normal);
+      assert.equal((await request(`/api/board/${normal}/complete`, alice, payload)).status, 200);
+      assert.deepEqual(await state(), {
+        level: 4,
+        progression_missions: 15,
+        gold_cp: 15000,
+        experience: 0,
+      });
+      await pool.query('UPDATE characters SET progression_missions=21 WHERE id=$1', [hero.id]);
+      const finals = [await create(), await create()];
+      for (const id of finals) await start(id);
+      const completions = await Promise.all(
+        finals.map((id) => request(`/api/board/${id}/complete`, alice, payload)),
+      );
+      assert.ok(completions.every((r) => r.status === 200));
+      assert.deepEqual(await state(), {
+        level: 4,
+        progression_missions: 22,
+        gold_cp: 45000,
+        experience: 0,
+      });
+      assert.equal(
+        (
+          await pool.query(
+            'SELECT sum(progression_credit)::int AS n FROM mission_rewards WHERE character_id=$1',
+            [hero.id],
+          )
+        ).rows[0].n,
+        2,
+      );
+      await start(exam);
+      const otherExam = await create(4);
+      await start(otherExam);
+      assert.equal((await request(`/api/board/${exam}/complete`, bob, payload)).status, 403);
+      const promotes = await Promise.all(
+        [exam, otherExam].map((id) => request(`/api/board/${id}/complete`, alice, payload)),
+      );
+      assert.deepEqual(promotes.map((r) => r.status).sort(), [200, 409]);
+      assert.deepEqual(await state(), {
+        level: 5,
+        progression_missions: 22,
+        gold_cp: 60000,
+        experience: 0,
+      });
+      const next = await create();
+      await start(next);
+      const repeated = await Promise.all(
+        [1, 2, 3].map(() => request(`/api/board/${next}/complete`, alice, payload)),
+      );
+      assert.deepEqual(repeated.map((r) => r.status).sort(), [200, 409, 409]);
+      assert.deepEqual(await state(), {
+        level: 5,
+        progression_missions: 23,
+        gold_cp: 83000,
+        experience: 0,
+      });
+      for (const rank of [8, 12, 16]) {
+        const required = { 8: 53, 12: 80, 16: 102 }[rank]!;
+        await pool.query('UPDATE characters SET level=$2,progression_missions=$3 WHERE id=$1', [
+          hero.id,
+          rank,
+          required,
+        ]);
+        const id = await create(rank);
+        await start(id);
+        assert.equal((await request(`/api/board/${id}/complete`, alice, payload)).status, 200);
+        assert.equal((await state()).level, rank + 1);
+        assert.equal((await state()).progression_missions, required);
+      }
+      await pool.query('UPDATE characters SET level=20,progression_missions=114 WHERE id=$1', [
+        hero.id,
+      ]);
+      const last = await create();
+      await start(last);
+      assert.equal((await request(`/api/board/${last}/complete`, alice, payload)).status, 200);
+      assert.equal((await state()).level, 20);
+      assert.equal((await state()).progression_missions, 114);
+      const overflow = await create();
+      await start(overflow);
+      await pool.query('UPDATE characters SET gold_cp=2147483647 WHERE id=$1', [hero.id]);
+      assert.equal((await request(`/api/board/${overflow}/complete`, alice, payload)).status, 409);
+      assert.equal(
+        (await pool.query('SELECT status FROM board_posts WHERE id=$1', [overflow])).rows[0].status,
+        'active',
+      );
+      assert.equal(
+        (await pool.query('SELECT 1 FROM mission_rewards WHERE post_id=$1', [overflow])).rowCount,
+        0,
+      );
+    },
+  );
+  await t.test(
+    'missões exigem patente exata e calculam os cinco pagamentos no servidor',
+    async () => {
+      // Nova instância para esta matriz; preserva o limite real de requisições.
+      await new Promise<void>(resolve => server.close(() => resolve()));
+      server = createApp({kingdomEditorEmail:editorTestEmail}).listen(0,'127.0.0.1');
+      await new Promise<void>(resolve => server.once('listening',resolve));
+      const address = server.address();
+      assert.ok(address && typeof address !== 'string');
+      base = `http://127.0.0.1:${address.port}`;
+      const hero = await createLegacyTestCharacter(alice.id, 'Fiscal das patentes');
+      const basePost = {
+        title: 'Contrato da patente',
+        description: 'Uma missão exclusiva de uma patente da guilda.',
+        kind: 'mission',
+        difficulty: 'Tranquila',
+        location: 'Vigília',
+        starts_at: new Date(Date.now() + 3600000).toISOString(),
+        reward_cp: 1,
+      };
+      assert.equal(
+        (await request('/api/board', alice, { ...basePost, mission_rank: 'Diamante' })).status,
+        400,
+      );
+      assert.equal(
+        (
+          await request('/api/board', alice, {
+            ...basePost,
+            mission_rank: 'Bronze',
+            rank_test_level: 4,
+          })
+        ).status,
+        400,
+      );
+      for (let i = 0; i < RANKS.length; i++) {
+        const rank = RANKS[i];
+        const created = await request('/api/board', alice, { ...basePost, mission_rank: rank });
+        assert.equal(created.status, 201);
+        assert.equal(created.data.reward_cp, RANK_REWARD_CP[rank]);
+        const id = created.data.id;
+        for (let other = 0; other < RANKS.length; other++) {
+          if (other === i) continue;
+          await pool.query('UPDATE characters SET level=$2 WHERE id=$1', [hero.id, other * 4 + 1]);
+          const rejected = await request(`/api/board/${id}/join`, alice, {
+            character_id: hero.id,
+            mission_rank: rank,
+            level: i * 4 + 1,
+          });
+          assert.equal(rejected.status, 409);
+        }
+        await pool.query(
+          'UPDATE characters SET level=$2,progression_missions=$3,gold_cp=0 WHERE id=$1',
+          [hero.id, i * 4 + 1, [0, 22, 53, 80, 102][i]],
+        );
+        assert.equal(
+          (await request(`/api/board/${id}/join`, alice, { character_id: hero.id })).status,
+          200,
+        );
+        assert.equal(
+          (await request(`/api/board/${id}`, alice, { status: 'active' }, 'PATCH')).status,
+          200,
+        );
+        const body = {
+          summary: 'A missão foi concluída pelos aventureiros.',
+          rewards: [{ character_id: hero.id }],
+          reward_cp: 999999,
+        };
+        const results = await Promise.all(
+          [1, 2].map(() => request(`/api/board/${id}/complete`, alice, body)),
+        );
+        assert.deepEqual(results.map((r) => r.status).sort(), [200, 409]);
+        assert.equal(
+          (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0]
+            .gold_cp,
+          RANK_REWARD_CP[rank],
+        );
+      }
     },
   );
   await t.test(
@@ -956,6 +1228,52 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
       assert.ok(history.some((p: { id: string }) => p.id === hook.id));
     },
   );
+  await t.test('papéis do mural: autoria, limites, modelos e persistência', async () => {
+    const owner = alice;
+    const other = bob;
+    const created = await request('/api/board', owner, {
+      kind: 'mission',
+      title: 'Aviso de papel editável',
+      description: 'Uma missão para validar os papéis do mural.',
+      location: 'Vigília',
+      difficulty: 'Tranquila',
+      starts_at: new Date(Date.now() + 86400000).toISOString(),
+      paper_style: 'seal',
+      paper_summary: 'Um chamado importante.',
+    });
+    assert.equal(created.status, 201);
+    assert.equal(created.data.paper_style, 'seal');
+    assert.equal(created.data.paper_summary, 'Um chamado importante.');
+    const path = `/api/board/${created.data.id}/paper`;
+    const position = { paper_x: 0.8, paper_y: 0.2, paper_style: 'letter' };
+    assert.equal((await request(path, undefined, position, 'PATCH')).status, 401);
+    assert.equal((await request(path, other, position, 'PATCH')).status, 403);
+    assert.equal((await request(path, owner, { ...position, paper_x: 1.01 }, 'PATCH')).status, 400);
+    assert.equal(
+      (await request(path, owner, { ...position, paper_y: -0.01 }, 'PATCH')).status,
+      400,
+    );
+    assert.equal(
+      (await request(path, owner, { ...position, paper_style: 'unknown' }, 'PATCH')).status,
+      400,
+    );
+    assert.equal(
+      (await request(path, other, { ...position, author_id: other.id }, 'PATCH')).status,
+      400,
+    );
+    assert.equal((await request(path, owner, position, 'PATCH')).status, 200);
+    const saved = (await request('/api/board', other)).data.find(
+      (p: { id: string }) => p.id === created.data.id,
+    );
+    assert.equal(saved.paper_x, 0.8);
+    assert.equal(saved.paper_y, 0.2);
+    assert.equal(saved.paper_style, 'letter');
+    assert.equal(saved.author_id, owner.id);
+    assert.equal(
+      (await request(path, owner, { ...position, paper_x: 0, paper_y: 1 }, 'PATCH')).status,
+      200,
+    );
+  });
   await t.test('login com senha e logout invalidam a sessão no servidor', async () => {
     const login = await request('/api/auth/sign-in/email', undefined, {
       email: alice.email,

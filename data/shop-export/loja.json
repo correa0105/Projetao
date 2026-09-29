@@ -1,0 +1,2254 @@
+{
+  "schema_version": "1.0",
+  "language": "pt-BR",
+  "exported_at": "2026-09-29T12:45:38.017Z",
+  "title": "O balcão do viajante",
+  "instructions_for_import": {
+    "image_paths": "Caminhos relativos à pasta deste JSON. Relacione sempre pelo id do item; não pela ordem dos arquivos.",
+    "item_speech": "Ao puxar, examinar ou mover um item no balcão, exibir o merchant_comment daquele item. Repetir inclusive quando o mesmo item for puxado novamente. Não alternar com frases genéricas.",
+    "currency": "price_cp em peças de cobre; 100 PC = 1 PO. null significa preço a definir.",
+    "weight": "weight_lb em libras; weight_estimated identifica estimativas do projeto.",
+    "quantity": "Permitir quantidade de 1 a 99, exibindo somente uma imagem por tipo no balcão.",
+    "scope": "Catálogo do projeto, sem contas, dados de jogadores, inventários ou compras. Não inclui a implementação do sistema."
+  },
+  "sources": {
+    "edition": "SRD 5.2.1 / 2024",
+    "srd": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+    "attribution": "This work includes material from the System Reference Document 5.2.1 (“SRD 5.2.1”) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode."
+  },
+  "categories": [
+    "Itens mundanos",
+    "Armas",
+    "Armaduras",
+    "Poções",
+    "Mágicos comuns",
+    "Mágicos incomuns",
+    "Mágicos raros",
+    "Mágicos muito raros",
+    "Mágicos lendários",
+    "Artefatos"
+  ],
+  "merchant": {
+    "greeting": "Boas-vindas à loja! Entre, fique à vontade. Se veio perseguido por um dragão, feche a porta devagar.",
+    "purchase_thanks": "Obrigado pela compra! Que seus dados rolem alto e seus inimigos tropecem. Volte sempre — de preferência inteiro!",
+    "conversations": [
+      {
+        "question": "Quem é você?",
+        "answer": "Já fui um nome temido nas estradas. Perdi companheiros, um reino… e quase todo o cabelo para os impostos. Hoje sou só o velho atrás do balcão. A tragédia continua, mas agora em horário comercial."
+      },
+      {
+        "question": "Como você conseguiu todos esses itens?",
+        "answer": "Herança de uma tia. Muito aventureira. Tinha três metros, soltava fogo e dormia em cima de ouro. Os documentos? Queimaram. Terrível acidente de família."
+      },
+      {
+        "question": "Faz um desconto?",
+        "answer": "Claro! Desconto a ousadia da pergunta e finjo que não ouvi. O preço continua igual, mas essa conversa maravilhosa saiu de graça. Um negócio e tanto, não acha?"
+      }
+    ]
+  },
+  "interface": {
+    "texts": [
+      {
+        "kind": "rotulo",
+        "text": "Vendedor da loja"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Conversar com o vendedor"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Vendedor de cabelos grisalhos e colete de couro, com os braços apoiados no balcão"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Perguntas ao vendedor"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Comentário do vendedor"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Categorias da loja"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Procure um item…"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Procurar item"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Itens da loja, role para ver mais"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Arraste ou dê dois cliques para examinar no balcão"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Definir preço"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Seu balcão"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Fechar aviso"
+      },
+      {
+        "kind": "rotulo",
+        "text": "Conferir itens do balcão"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Promise"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "MERCADORIA DA ESTRADA"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "O balcão do viajante"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Escolha, examine no balcão e compre quando estiver pronto."
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "O que deseja saber?"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": ":speech&&"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "PRATELEIRAS"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "VALOR"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Nenhum item encontrado."
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Role para explorar ↓"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Seu balcão"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Remover"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Comprar seleção"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Confira todos os itens para a mochila de"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "."
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Quantidade"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Remover item"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Sua seleção está vazia. Feche esta janela para escolher outros itens."
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Total da seleção"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Defina o preço dos itens sem valor no catálogo antes de confirmar."
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "(character?.gold_cp??0)&&"
+      },
+      {
+        "kind": "texto_visivel",
+        "text": "Ouro insuficiente para esta seleção."
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Itens mundanos"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Poções"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Mágicos comuns"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Mágicos incomuns"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Mágicos raros"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Mágicos muito raros"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Mágicos lendários"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Boas-vindas à loja! Entre, fique à vontade. Se veio perseguido por um dragão, feche a porta devagar."
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "); setCheckoutError("
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Compra concluída. Os itens estão na mochila."
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Obrigado pela compra! Que seus dados rolem alto e seus inimigos tropecem. Volte sempre — de preferência inteiro!"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Compra concluída. Recarregue para atualizar o saldo."
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "} onClick={()=>setSection(entry)}>{entry}<small>{entry==="
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Ilustração de "
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "PESO (EST.)"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Não indicado"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": " lb"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Sem preço"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": " PO"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Consultar "
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": " no SRD oficial"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Preço"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "No balcão"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": " drag-over"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Abrindo sua seleção…"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Arraste para organizar · clique para selecionar"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Arraste os itens para experimentar antes de comprar"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": " selected"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Ajustar "
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": " × "
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "}{item.name}</span><button onClick={()=>void remove(item.id)} aria-label={"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Defina os preços"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Quantidade de "
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Remover "
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": " da seleção"
+      },
+      {
+        "kind": "texto_ou_fragmento_dinamico",
+        "text": "Confirmar compra de todos os itens"
+      }
+    ],
+    "note": "Os textos com kind texto_ou_fragmento_dinamico podem ser combinados com nomes, quantidades e valores. As falas individuais completas estão em items[].merchant_comment."
+  },
+  "item_count": 65,
+  "items": [
+    {
+      "id": "dagger",
+      "name": "Adaga",
+      "original_name": "Dagger",
+      "category": "Armas",
+      "description": "1d4 perfurante · Acuidade, leve e arremesso (20/60 pés). Maestria: Talhar (Nick).",
+      "price_cp": 200,
+      "weight_lb": 1,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Dagger",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 200,
+        "weight": 1,
+        "type": "M",
+        "dmg1": "1d4",
+        "property": [
+          "F",
+          "L",
+          "T"
+        ]
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/dagger.png",
+        "mime_type": "image/png",
+        "width": 456,
+        "height": 504,
+        "transparent": true,
+        "sha256": "528bef9dd7c4097f5c037e22f214ddc908bf838e64992b147cb5a34ce95a9605",
+        "alt": "Ilustração de Adaga"
+      },
+      "merchant_comment": "Pequena e prática. Não precisa parecer grande para ser útil.",
+      "display": {
+        "footprint_cm": 28,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "manacles",
+      "name": "Algemas",
+      "original_name": "Manacles",
+      "category": "Itens mundanos",
+      "description": "Algemas de ferro para prender pulsos.",
+      "price_cp": 200,
+      "weight_lb": 6,
+      "art": "manacles",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/manacles.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 259,
+        "transparent": true,
+        "sha256": "ed063a1c3004caf6b583069f5245e8f74d366f20611a17e6bc3b1f80e5479166",
+        "alt": "Ilustração de Algemas"
+      },
+      "merchant_comment": "Algemas resistentes. A chave acompanha, porque da última vez esqueceram de perguntar e o reencontro foi constrangedor.",
+      "display": {
+        "footprint_cm": 38,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "ring-of-invisibility",
+      "name": "Anel de invisibilidade",
+      "original_name": "Ring of Invisibility",
+      "category": "Mágicos lendários",
+      "description": "Exige sintonização; permite assumir a condição Invisível.",
+      "price_cp": 20000000,
+      "weight_lb": 0.05,
+      "art": "orb",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/ring-of-invisibility.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 497,
+        "transparent": true,
+        "sha256": "bb6ceafe89f5c4c5670284e5096b97b4bb3332eda6298b489502615137ad4f18",
+        "alt": "Ilustração de Anel de invisibilidade"
+      },
+      "merchant_comment": "Se sumir com o anel, ainda vou lembrar da conta.",
+      "display": {
+        "footprint_cm": 18,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "ring-of-protection",
+      "name": "Anel de proteção",
+      "original_name": "Ring of Protection",
+      "category": "Mágicos raros",
+      "description": "Exige sintonização; +1 à CA e aos testes de resistência.",
+      "price_cp": 400000,
+      "weight_lb": 0.05,
+      "art": "orb",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/ring-of-protection.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 498,
+        "transparent": true,
+        "sha256": "bd06176e1d9d99cf66f3b058400525fedd2863842e02a6725d60d788db8856e8",
+        "alt": "Ilustração de Anel de proteção"
+      },
+      "merchant_comment": "Pequeno o bastante para perder. Valioso demais para isso.",
+      "display": {
+        "footprint_cm": 18,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "ring-of-regeneration",
+      "name": "Anel de regeneração",
+      "original_name": "Ring of Regeneration",
+      "category": "Mágicos muito raros",
+      "description": "Exige sintonização; recupera pontos de vida periodicamente.",
+      "price_cp": 4000000,
+      "weight_lb": 0.05,
+      "art": "orb",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/ring-of-regeneration.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 474,
+        "transparent": true,
+        "sha256": "4c4fb80f938d67e1686990e62d244fbcf2eee0a774fa5d0621526b0e798f2df3",
+        "alt": "Ilustração de Anel de regeneração"
+      },
+      "merchant_comment": "Uma joia dessas merece uma mão cuidadosa.",
+      "display": {
+        "footprint_cm": 18,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "antitoxin",
+      "name": "Antitoxina",
+      "original_name": "Antitoxin",
+      "category": "Itens mundanos",
+      "description": "Preparado para auxiliar contra envenenamento.",
+      "price_cp": 5000,
+      "weight_lb": 0.2,
+      "art": "antitoxin",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/antitoxin.png",
+        "mime_type": "image/png",
+        "width": 318,
+        "height": 504,
+        "transparent": true,
+        "sha256": "5b3525736b951a16252137b646cb2d55ffdfb39aca8b9c5af61f18e4750967e3",
+        "alt": "Ilustração de Antitoxina"
+      },
+      "merchant_comment": "Antitoxina. O acompanhamento ideal para aquele jantar oferecido pelo seu maior rival.",
+      "display": {
+        "footprint_cm": 23,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "shortbow",
+      "name": "Arco curto",
+      "original_name": "Shortbow",
+      "category": "Armas",
+      "description": "1d6 perfurante · Duas mãos, munição e alcance de 80/320 pés. Maestria: Afligir (Vex).",
+      "price_cp": 2500,
+      "weight_lb": 2,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Shortbow",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 2500,
+        "weight": 2,
+        "type": "R",
+        "dmg1": "1d6",
+        "property": [
+          "A",
+          "2H"
+        ]
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/shortbow.png",
+        "mime_type": "image/png",
+        "width": 350,
+        "height": 504,
+        "transparent": true,
+        "sha256": "15f112d3e023016eade9be926d2cc7f96d0de7c754dab33e71b8244d85cf20bc",
+        "alt": "Ilustração de Arco curto"
+      },
+      "merchant_comment": "Compacto para a estrada. A mira, infelizmente, não vem incluída.",
+      "display": {
+        "footprint_cm": 108,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "longbow",
+      "name": "Arco longo",
+      "original_name": "Longbow",
+      "category": "Armas",
+      "description": "1d8 perfurante · Munição (150/600 pés), pesada, duas mãos.",
+      "price_cp": 5000,
+      "weight_lb": 2,
+      "art": "longbow",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/longbow.png",
+        "mime_type": "image/png",
+        "width": 348,
+        "height": 504,
+        "transparent": true,
+        "sha256": "73ea179eb60684ed57e177a6612e6e496546b69172ed2268f4d4d27b6c361d7e",
+        "alt": "Ilustração de Arco longo"
+      },
+      "merchant_comment": "Observe o comprimento. Esse arco não foi feito para um corredor apertado.",
+      "display": {
+        "footprint_cm": 170,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "hunting-trap",
+      "name": "Armadilha de caça",
+      "original_name": "Hunting Trap",
+      "category": "Itens mundanos",
+      "description": "Armadilha mecânica de ferro para caça.",
+      "price_cp": 500,
+      "weight_lb": 25,
+      "art": "hunting-trap",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/hunting-trap.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 332,
+        "transparent": true,
+        "sha256": "5c63088ddf5f0cf95549488237ab990e977e77e5d80454ce417c5468eae29473",
+        "alt": "Ilustração de Armadilha de caça"
+      },
+      "merchant_comment": "Armadilha de caça. Arme longe da cama; acordar já é desagradável o suficiente.",
+      "display": {
+        "footprint_cm": 65,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "leather-armor",
+      "name": "Armadura de couro",
+      "original_name": "Leather Armor",
+      "category": "Armaduras",
+      "description": "Armadura leve · CA 11 + modificador de Destreza.",
+      "price_cp": 1000,
+      "weight_lb": 10,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Leather Armor",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 1000,
+        "weight": 10,
+        "type": "LA",
+        "ac": 11
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/leather-armor.png",
+        "mime_type": "image/png",
+        "width": 368,
+        "height": 504,
+        "transparent": true,
+        "sha256": "b8c46e30de1caa2185d18e13dbdc9850360c8ed5904aa994542a24973b5064c0",
+        "alt": "Ilustração de Armadura de couro"
+      },
+      "merchant_comment": "Couro bem curtido. Não evita toda pancada, mas você apanha com elegância.",
+      "display": {
+        "footprint_cm": 60,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "plate-armor",
+      "name": "Armadura de placas",
+      "original_name": "Plate Armor",
+      "category": "Armaduras",
+      "description": "Armadura pesada · CA 18 · Força 15.",
+      "price_cp": 150000,
+      "weight_lb": 65,
+      "art": "plate",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/plate-armor.png",
+        "mime_type": "image/png",
+        "width": 442,
+        "height": 504,
+        "transparent": true,
+        "sha256": "9d2fc55f447227b6c129ec8aeb30b4934b0973c0bbd36250519c91ec5d430f40",
+        "alt": "Ilustração de Armadura de placas"
+      },
+      "merchant_comment": "Belo trabalho de forja. Seu escudeiro vai conhecer bem esse peso.",
+      "display": {
+        "footprint_cm": 67,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "bucket",
+      "name": "Balde",
+      "original_name": "Bucket",
+      "category": "Itens mundanos",
+      "description": "Balde para transportar água e materiais.",
+      "price_cp": 5,
+      "weight_lb": 2,
+      "art": "bucket",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/bucket.png",
+        "mime_type": "image/png",
+        "width": 403,
+        "height": 504,
+        "transparent": true,
+        "sha256": "32e6ca4bd60abc8edac7faf399df2d91a6e0078a7f84c35319eda2a1801d2bf9",
+        "alt": "Ilustração de Balde"
+      },
+      "merchant_comment": "Riram do aventureiro que levou um balde. Depois o barco começou a afundar e ele virou o líder.",
+      "display": {
+        "footprint_cm": 44,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "tent",
+      "name": "Barraca",
+      "original_name": "Tent",
+      "category": "Itens mundanos",
+      "description": "Abrigo de lona para dois viajantes.",
+      "price_cp": 200,
+      "weight_lb": 20,
+      "art": "tent",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/tent.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 430,
+        "transparent": true,
+        "sha256": "d7fcb06c18009802b4048785f2fc35b7d0dd1967411866df249f86590aeaa5c1",
+        "alt": "Ilustração de Barraca"
+      },
+      "merchant_comment": "Está dobrada para viagem. Não tente armá-la aqui dentro.",
+      "display": {
+        "footprint_cm": 82,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "immovable-rod",
+      "name": "Bastão imóvel",
+      "original_name": "Immovable Rod",
+      "category": "Mágicos incomuns",
+      "description": "Um botão fixa o bastão no espaço; suporta até 8.000 lb. Preço por raridade do SRD.",
+      "price_cp": 40000,
+      "weight_lb": 2,
+      "art": "immovable-rod",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/immovable-rod.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 280,
+        "transparent": true,
+        "sha256": "af4e71c1b50f0cd468d9f037ab14e5e64f4da6ad2b72628a08e04c052423a039",
+        "alt": "Ilustração de Bastão imóvel"
+      },
+      "merchant_comment": "Mais teimoso que eu. E olha que eu cobro preço cheio há décadas.",
+      "display": {
+        "footprint_cm": 52,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "chest",
+      "name": "Baú",
+      "original_name": "Chest",
+      "category": "Itens mundanos",
+      "description": "Baú de madeira para guardar equipamento.",
+      "price_cp": 500,
+      "weight_lb": 25,
+      "art": "chest",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/chest.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 337,
+        "transparent": true,
+        "sha256": "1ef4bd61bd9350a9d310973ac2605d57c12fcf482a2964b8b9bba6bff6850e28",
+        "alt": "Ilustração de Baú"
+      },
+      "merchant_comment": "O baú vai vazio. Se rosnar no caminho, volte aqui: entreguei o modelo errado.",
+      "display": {
+        "footprint_cm": 80,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "crystal-ball",
+      "name": "Bola de cristal",
+      "original_name": "Crystal Ball",
+      "category": "Mágicos muito raros",
+      "description": "Exige sintonização; permite lançar Vidência (CD 17).",
+      "price_cp": 4000000,
+      "weight_lb": 3,
+      "art": "orb",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/crystal-ball.png",
+        "mime_type": "image/png",
+        "width": 397,
+        "height": 504,
+        "transparent": true,
+        "sha256": "2e6f6db54f2bf88b1b560167e33d32abb04c80759035c6d60cd98d5187b68f59",
+        "alt": "Ilustração de Bola de cristal"
+      },
+      "merchant_comment": "Manuseie com as duas mãos. Vidro e pressa não são amigos.",
+      "display": {
+        "footprint_cm": 27,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "component-pouch",
+      "name": "Bolsa de componentes",
+      "original_name": "Component Pouch",
+      "category": "Itens mundanos",
+      "description": "Bolsa com compartimentos para componentes de magia sem custo.",
+      "price_cp": 2500,
+      "weight_lb": 2,
+      "art": "component-pouch",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/component-pouch.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 339,
+        "transparent": true,
+        "sha256": "4b2abdcea5773603ee5b9a4dfc4d73ba3d1f688ff00cb0c4526b3bda383bcd44",
+        "alt": "Ilustração de Bolsa de componentes"
+      },
+      "merchant_comment": "Não cheire a bolsa de componentes. Magos fazem coisas maravilhosas com ingredientes que eu não serviria nem ao meu sogro.",
+      "display": {
+        "footprint_cm": 32,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "bag-of-holding",
+      "name": "Bolsa de contenção",
+      "original_name": "Bag of Holding",
+      "category": "Mágicos incomuns",
+      "description": "Bolsa extradimensional; comporta até 500 lb e pesa sempre 5 lb.",
+      "price_cp": 40000,
+      "weight_lb": 5,
+      "art": "satchel",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/bag-of-holding.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 491,
+        "transparent": true,
+        "sha256": "485a60f7e3558984d094640f6066c7425bd2b5e37b23b59d7d0488568843087c",
+        "alt": "Ilustração de Bolsa de contenção"
+      },
+      "merchant_comment": "Por fora, discreta. Por dentro… bem, examine com respeito.",
+      "display": {
+        "footprint_cm": 43,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "quarterstaff",
+      "name": "Bordão",
+      "original_name": "Quarterstaff",
+      "category": "Armas",
+      "description": "1d6 contundente · Versátil (1d8) · Maestria: Derrubar.",
+      "price_cp": 20,
+      "weight_lb": 4,
+      "art": "staff",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/quarterstaff.png",
+        "mime_type": "image/png",
+        "width": 485,
+        "height": 504,
+        "transparent": true,
+        "sha256": "2daa7c0579d9550227b74de923ef05704b4bf580446902889bf5b93daa403abe",
+        "alt": "Ilustração de Bordão"
+      },
+      "merchant_comment": "Madeira firme, sem floreios. Às vezes, o simples basta.",
+      "display": {
+        "footprint_cm": 130,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "boots-of-elvenkind",
+      "name": "Botas élficas",
+      "original_name": "Boots of Elvenkind",
+      "category": "Mágicos incomuns",
+      "description": "Passos silenciosos e vantagem em testes de Destreza (Furtividade). Preço por raridade do SRD.",
+      "price_cp": 40000,
+      "weight_lb": 2,
+      "art": "boots-of-elvenkind",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/boots-of-elvenkind.png",
+        "mime_type": "image/png",
+        "width": 432,
+        "height": 504,
+        "transparent": true,
+        "sha256": "34326b03593bd3987d313fa8e6b5d52b7bdf7376d78ec4618842ea747c644cb1",
+        "alt": "Ilustração de Botas élficas"
+      },
+      "merchant_comment": "Passos silenciosos. Infelizmente, não silenciam o bardo do grupo.",
+      "display": {
+        "footprint_cm": 45,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "lock",
+      "name": "Cadeado",
+      "original_name": "Lock",
+      "category": "Itens mundanos",
+      "description": "Cadeado e chave para proteger pertences.",
+      "price_cp": 1000,
+      "weight_lb": 1,
+      "art": "lock",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/lock.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 470,
+        "transparent": true,
+        "sha256": "66d065bbe0904ededa98b7cf170b82750d159f2fb9477e1a3468d07a16c365f5",
+        "alt": "Ilustração de Cadeado"
+      },
+      "merchant_comment": "Esse cadeado afasta os curiosos. Contra um ladino talentoso, pelo menos rende alguns segundos de suspense.",
+      "display": {
+        "footprint_cm": 24,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "tinderbox",
+      "name": "Caixa de fogo",
+      "original_name": "Tinderbox",
+      "category": "Itens mundanos",
+      "description": "Sílex, aço e material combustível para iniciar uma fogueira.",
+      "price_cp": 50,
+      "weight_lb": 1,
+      "art": "tinderbox",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/tinderbox.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 453,
+        "transparent": true,
+        "sha256": "80c0162105d1b0bf935272adcb087db48c819156a4e2dbe5ba3fc898b19d65e2",
+        "alt": "Ilustração de Caixa de fogo"
+      },
+      "merchant_comment": "Pederneira, aço e mecha. Para acender a fogueira sem gastar magia nem implorar ao dragão.",
+      "display": {
+        "footprint_cm": 28,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "staff-of-the-magi",
+      "name": "Cajado dos magos",
+      "original_name": "Staff of the Magi",
+      "category": "Mágicos lendários",
+      "description": "Exige sintonização por conjurador; cajado mágico com 50 cargas.",
+      "price_cp": 20000000,
+      "weight_lb": 4,
+      "art": "sword",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/staff-of-the-magi.png",
+        "mime_type": "image/png",
+        "width": 113,
+        "height": 504,
+        "transparent": true,
+        "sha256": "a41267129c0fe99fae97bb5de0e362ad16837753384d7af3f0aa55340cc55a3c",
+        "alt": "Ilustração de Cajado dos magos"
+      },
+      "merchant_comment": "Não bata a ponta no chão. Certas mercadorias exigem respeito.",
+      "display": {
+        "footprint_cm": 134,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "waterskin",
+      "name": "Cantil de couro",
+      "original_name": "Waterskin",
+      "category": "Itens mundanos",
+      "description": "Recipiente de couro para água. O peso indicado corresponde ao cantil cheio.",
+      "price_cp": 20,
+      "weight_lb": 5,
+      "art": "waterskin",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/waterskin.png",
+        "mime_type": "image/png",
+        "width": 454,
+        "height": 504,
+        "transparent": true,
+        "sha256": "71b28306c92dfbb31735241b5d4be06c1bdb300d0fbd92251b6dd996bf22018f",
+        "alt": "Ilustração de Cantil de couro"
+      },
+      "merchant_comment": "Água para a viagem. Se colocar vinho, não me culpe pelas escolhas heroicas.",
+      "display": {
+        "footprint_cm": 34,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "basket",
+      "name": "Cesto",
+      "original_name": "Basket",
+      "category": "Itens mundanos",
+      "description": "Cesto trançado para transportar provisões e objetos.",
+      "price_cp": 40,
+      "weight_lb": 2,
+      "art": "basket",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/basket.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 472,
+        "transparent": true,
+        "sha256": "4389ba84eedb7f2e98340326e23bbaa36301a0b30d6bf24c875a73043c46edef",
+        "alt": "Ilustração de Cesto"
+      },
+      "merchant_comment": "Esse cesto já carregou maçãs, cogumelos e um familiar mal-humorado. Recomendo começar pelas maçãs.",
+      "display": {
+        "footprint_cm": 44,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "blanket",
+      "name": "Cobertor",
+      "original_name": "Blanket",
+      "category": "Itens mundanos",
+      "description": "Cobertor de lã para noites frias.",
+      "price_cp": 50,
+      "weight_lb": 3,
+      "art": "blanket",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/blanket.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 324,
+        "transparent": true,
+        "sha256": "6df4d65292c1a69f6cab70e549a4080e0d46acd6b0ab4d95d425ad1dddfa9a37",
+        "alt": "Ilustração de Cobertor"
+      },
+      "merchant_comment": "Um cobertor quentinho. Derrotar o mal é importante, mas ninguém merece fazê-lo espirrando.",
+      "display": {
+        "footprint_cm": 55,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "hempen-rope-50-feet",
+      "name": "Corda",
+      "original_name": "Rope",
+      "category": "Itens mundanos",
+      "description": "15 m de corda. Ação Utilizar para dar nó; regras de amarração do SRD 5.2.1.",
+      "price_cp": 100,
+      "weight_lb": 5,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Hempen Rope (50 feet)",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 100,
+        "weight": 5,
+        "type": "G"
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/hempen-rope-50-feet.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 403,
+        "transparent": true,
+        "sha256": "ea74d6ea66a122e044673df24dd3b06af90b43c4d2e44c38edbdc41092816c01",
+        "alt": "Ilustração de Corda"
+      },
+      "merchant_comment": "Leve corda. Todo aventureiro se lembra dela quando já está pendurado.",
+      "display": {
+        "footprint_cm": 34,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "chain",
+      "name": "Corrente",
+      "original_name": "Chain",
+      "category": "Itens mundanos",
+      "description": "Corrente de ferro para prender ou sustentar objetos.",
+      "price_cp": 500,
+      "weight_lb": 10,
+      "art": "chain",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/chain.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 389,
+        "transparent": true,
+        "sha256": "775b09ba22a673ebd71ea1661e6ed41048e9205a32cbb936ea5db7c8ede4c798",
+        "alt": "Ilustração de Corrente"
+      },
+      "merchant_comment": "Uma corrente robusta. Para prender monstros, verifique primeiro se eles concordam com o tamanho dos elos.",
+      "display": {
+        "footprint_cm": 45,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "chain-mail",
+      "name": "Cota de malha",
+      "original_name": "Chain Mail",
+      "category": "Armaduras",
+      "description": "Armadura pesada · CA 16 · Força 13.",
+      "price_cp": 7500,
+      "weight_lb": 55,
+      "art": "chain",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/chain-mail.png",
+        "mime_type": "image/png",
+        "width": 375,
+        "height": 504,
+        "transparent": true,
+        "sha256": "61b348822e8ffd354ac67b62ab2ee4e7c900e63e256f7e90a7516363917c482c",
+        "alt": "Ilustração de Cota de malha"
+      },
+      "merchant_comment": "Ouça os elos. Malha boa não precisa de uma história enfeitada.",
+      "display": {
+        "footprint_cm": 62,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "studded-leather",
+      "name": "Couro batido",
+      "original_name": "Studded Leather Armor",
+      "category": "Armaduras",
+      "description": "Armadura leve · CA 12 + modificador de Destreza.",
+      "price_cp": 4500,
+      "weight_lb": 13,
+      "art": "studded",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/studded-leather.png",
+        "mime_type": "image/png",
+        "width": 355,
+        "height": 504,
+        "transparent": true,
+        "sha256": "c843a681a33e19bf47382107594f08896275d511d81ba5b4a8dd6ddc80713c51",
+        "alt": "Ilustração de Couro batido"
+      },
+      "merchant_comment": "Rebites firmes, costuras reforçadas. Pode examinar de perto.",
+      "display": {
+        "footprint_cm": 60,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "shield",
+      "name": "Escudo",
+      "original_name": "Shield",
+      "category": "Armaduras",
+      "description": "+2 na classe de armadura quando empunhado. Ocupa uma mão.",
+      "price_cp": 1000,
+      "weight_lb": 6,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Shield",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 1000,
+        "weight": 6,
+        "type": "S",
+        "ac": 2
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/shield.png",
+        "mime_type": "image/png",
+        "width": 378,
+        "height": 504,
+        "transparent": true,
+        "sha256": "45e6c45035a7a2f8e446e390d92c99bf0d6a5b11886df245d74da5e03320fc8c",
+        "alt": "Ilustração de Escudo"
+      },
+      "merchant_comment": "Um escudo confiável costuma voltar com mais histórias que a espada.",
+      "display": {
+        "footprint_cm": 76,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "ball-bearings",
+      "name": "Esferas de metal",
+      "original_name": "Ball Bearings",
+      "category": "Itens mundanos",
+      "description": "Pequenas esferas de ferro transportadas em uma bolsa.",
+      "price_cp": 100,
+      "weight_lb": 2,
+      "art": "ball-bearings",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/ball-bearings.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 357,
+        "transparent": true,
+        "sha256": "386055ba57b56bd5800c1fb95ac8fa5af98a5888ff0770fdd98b5c744739c66c",
+        "alt": "Ilustração de Esferas de metal"
+      },
+      "merchant_comment": "Mil bolinhas de metal. Espalhe no chão e até um cavaleiro respeitado aprende a dançar.",
+      "display": {
+        "footprint_cm": 30,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "greatsword",
+      "name": "Espada grande",
+      "original_name": "Greatsword",
+      "category": "Armas",
+      "description": "2d6 cortante · Pesada, duas mãos · Maestria: Raspar.",
+      "price_cp": 5000,
+      "weight_lb": 6,
+      "art": "greatsword",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/greatsword.png",
+        "mime_type": "image/png",
+        "width": 490,
+        "height": 504,
+        "transparent": true,
+        "sha256": "25f08d33677057d18e331ae84ba97e7644422201cb84e33ffaf4b500b086b76f",
+        "alt": "Ilustração de Espada grande"
+      },
+      "merchant_comment": "Essa pede espaço. E distância das minhas prateleiras.",
+      "display": {
+        "footprint_cm": 113,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "longsword",
+      "name": "Espada longa",
+      "original_name": "Longsword",
+      "category": "Armas",
+      "description": "1d8 cortante · Versátil (1d10). Uma arma marcial para a linha de frente. Maestria: Debilitar (Sap).",
+      "price_cp": 1500,
+      "weight_lb": 3,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Longsword",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 1500,
+        "weight": 3,
+        "type": "M",
+        "dmg1": "1d8",
+        "dmg2": "1d10",
+        "property": [
+          "V"
+        ]
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/longsword.png",
+        "mime_type": "image/png",
+        "width": 494,
+        "height": 504,
+        "transparent": true,
+        "sha256": "c3726365e855c9a92c5320c55be172397903ba67ecbfc8c3758793e7e41f04eb",
+        "alt": "Ilustração de Espada longa"
+      },
+      "merchant_comment": "Fio bem cuidado. Só não teste na minha madeira.",
+      "display": {
+        "footprint_cm": 84,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "caltrops",
+      "name": "Estrepes",
+      "original_name": "Caltrops",
+      "category": "Itens mundanos",
+      "description": "Pontas de ferro para dificultar a passagem.",
+      "price_cp": 100,
+      "weight_lb": 2,
+      "art": "caltrops",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/caltrops.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 348,
+        "transparent": true,
+        "sha256": "172d49c6a748a00728ac8e8b8fc4d11c7c52207ad8095e635cfb8d72c1556497",
+        "alt": "Ilustração de Estrepes"
+      },
+      "merchant_comment": "Estrepes: quatro pontas e nenhuma simpatia. Marque onde espalhou, ou a emboscada vira uma surpresa para todos.",
+      "display": {
+        "footprint_cm": 30,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "alchemists-fire",
+      "name": "Fogo alquímico",
+      "original_name": "Alchemist's Fire",
+      "category": "Itens mundanos",
+      "description": "Mistura alquímica inflamável em frasco lacrado.",
+      "price_cp": 5000,
+      "weight_lb": 1,
+      "art": "alchemists-fire",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/alchemists-fire.png",
+        "mime_type": "image/png",
+        "width": 350,
+        "height": 504,
+        "transparent": true,
+        "sha256": "fc76da89b3cc3005a667e971c758da0719c4362f32389c759065103ea56abb8b",
+        "alt": "Ilustração de Fogo alquímico"
+      },
+      "merchant_comment": "O fogo alquímico insiste em continuar queimando. Uma qualidade admirável, até você derrubar o frasco.",
+      "display": {
+        "footprint_cm": 27,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "acid",
+      "name": "Frasco de ácido",
+      "original_name": "Acid",
+      "category": "Itens mundanos",
+      "description": "Frasco de substância corrosiva para uso em aventuras.",
+      "price_cp": 2500,
+      "weight_lb": 1,
+      "art": "acid",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/acid.png",
+        "mime_type": "image/png",
+        "width": 250,
+        "height": 504,
+        "transparent": true,
+        "sha256": "99fa80b9e2772cc857426a49fc140a82d6dd246ed31f01ddf70c2eeef4e08ab5",
+        "alt": "Ilustração de Frasco de ácido"
+      },
+      "merchant_comment": "O último cliente perguntou se esse ácido tirava manchas. Tirou a mancha, a camisa e metade da mesa.",
+      "display": {
+        "footprint_cm": 25,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "grappling-hook",
+      "name": "Gancho de escalada",
+      "original_name": "Grappling Hook",
+      "category": "Itens mundanos",
+      "description": "Gancho de ferro para uso com uma corda.",
+      "price_cp": 200,
+      "weight_lb": 4,
+      "art": "hook",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/grappling-hook.png",
+        "mime_type": "image/png",
+        "width": 458,
+        "height": 504,
+        "transparent": true,
+        "sha256": "86f68efb2e1fb67904121d12b547d31d76a0302e3273032dd0c430d117c042c9",
+        "alt": "Ilustração de Gancho de escalada"
+      },
+      "merchant_comment": "Ferro firme. Confira onde vai prender antes de confiar o pescoço.",
+      "display": {
+        "footprint_cm": 31,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "glass-bottle",
+      "name": "Garrafa de vidro",
+      "original_name": "Bottle, Glass",
+      "category": "Itens mundanos",
+      "description": "Garrafa de vidro para líquidos.",
+      "price_cp": 200,
+      "weight_lb": 2,
+      "art": "glass-bottle",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/glass-bottle.png",
+        "mime_type": "image/png",
+        "width": 267,
+        "height": 504,
+        "transparent": true,
+        "sha256": "d93a47a25b545f2f966dd8a49eff025bb0adb61012ad99a0869ba198ba3eca21",
+        "alt": "Ilustração de Garrafa de vidro"
+      },
+      "merchant_comment": "A garrafa está vazia. Vendo esperança engarrafada também, mas aí cobro pelo conteúdo.",
+      "display": {
+        "footprint_cm": 30,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "healers-kit",
+      "name": "Kit de curandeiro",
+      "original_name": "Healer's Kit",
+      "category": "Itens mundanos",
+      "description": "Suprimentos para primeiros socorros, com dez usos.",
+      "price_cp": 500,
+      "weight_lb": 3,
+      "art": "healer",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/healers-kit.png",
+        "mime_type": "image/png",
+        "width": 484,
+        "height": 504,
+        "transparent": true,
+        "sha256": "753c308b3852430ce9535fd859178fc2efbfe94bbbc6caf865e70c4c6373721f",
+        "alt": "Ilustração de Kit de curandeiro"
+      },
+      "merchant_comment": "Bandagens limpas. Melhor ter e não precisar.",
+      "display": {
+        "footprint_cm": 28,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "climbers-kit",
+      "name": "Kit de escalada",
+      "original_name": "Climber's Kit",
+      "category": "Itens mundanos",
+      "description": "Conjunto de segurança para escalada.",
+      "price_cp": 2500,
+      "weight_lb": 12,
+      "art": "climbers-kit",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/climbers-kit.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 432,
+        "transparent": true,
+        "sha256": "7f9897d6ec6635fdee7a6a9a8107a7c08c71ad977b2af373475082bc91ad4954",
+        "alt": "Ilustração de Kit de escalada"
+      },
+      "merchant_comment": "O kit de escalada inclui os equipamentos. A conversa com seus deuses, lá no alto, fica por sua conta.",
+      "display": {
+        "footprint_cm": 50,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "hooded-lantern",
+      "name": "Lanterna com capuz",
+      "original_name": "Lantern, Hooded",
+      "category": "Itens mundanos",
+      "description": "Lanterna ajustável para iluminar uma exploração.",
+      "price_cp": 500,
+      "weight_lb": 2,
+      "art": "lantern",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/hooded-lantern.png",
+        "mime_type": "image/png",
+        "width": 300,
+        "height": 504,
+        "transparent": true,
+        "sha256": "5058f944723724a75b1de8493356c8b3bcac5de7d1293f8769341aa71fb6281c",
+        "alt": "Ilustração de Lanterna com capuz"
+      },
+      "merchant_comment": "A luz fica protegida. A chama também merece algum conforto.",
+      "display": {
+        "footprint_cm": 34,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "book",
+      "name": "Livro",
+      "original_name": "Book",
+      "category": "Itens mundanos",
+      "description": "Volume encadernado de ficção ou conhecimento.",
+      "price_cp": 2500,
+      "weight_lb": 5,
+      "art": "book",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/book.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 495,
+        "transparent": true,
+        "sha256": "5205c92d308059fdc2eb4a34f74407d4a448bb46cf7616411228dd8ec8bdf353",
+        "alt": "Ilustração de Livro"
+      },
+      "merchant_comment": "Um livro de verdade: não precisa de encantamento para abrir. Entender o que está escrito já é outra aventura.",
+      "display": {
+        "footprint_cm": 42,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "cloak-of-displacement",
+      "name": "Manto de deslocamento",
+      "original_name": "Cloak of Displacement",
+      "category": "Mágicos raros",
+      "description": "Exige sintonização; cria uma ilusão que dificulta ataques contra você.",
+      "price_cp": 400000,
+      "weight_lb": 3,
+      "art": "satchel",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/cloak-of-displacement.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 462,
+        "transparent": true,
+        "sha256": "ad7328f85df20a742ef72c1c6d95a693cd706389b25ad4416ab97e91a19d5270",
+        "alt": "Ilustração de Manto de deslocamento"
+      },
+      "merchant_comment": "O tecido prega peças nos olhos. Não é defeito.",
+      "display": {
+        "footprint_cm": 48,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "cloak-of-protection",
+      "name": "Manto de proteção",
+      "original_name": "Cloak of Protection",
+      "category": "Mágicos incomuns",
+      "description": "Exige sintonização; +1 à CA e aos testes de resistência.",
+      "price_cp": 40000,
+      "weight_lb": 3,
+      "art": "satchel",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/cloak-of-protection.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 417,
+        "transparent": true,
+        "sha256": "fdff3f9f6406ba77ea6ca429710cf5be69c8bca6a02ac3b4b15edbe59d40c6fe",
+        "alt": "Ilustração de Manto de proteção"
+      },
+      "merchant_comment": "Discreto e bem acabado. Pode sentir o tecido.",
+      "display": {
+        "footprint_cm": 48,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "backpack",
+      "name": "Mochila",
+      "original_name": "Backpack",
+      "category": "Itens mundanos",
+      "description": "Leve os suprimentos da próxima jornada. Capacidade: 30 libras.",
+      "price_cp": 200,
+      "weight_lb": 5,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Backpack",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 200,
+        "weight": 5,
+        "type": "G"
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/backpack.png",
+        "mime_type": "image/png",
+        "width": 477,
+        "height": 504,
+        "transparent": true,
+        "sha256": "6a46a308d615f44a2c656a9d2cf87c0f6ed0a19e620160073e21bbd8642f562e",
+        "alt": "Ilustração de Mochila"
+      },
+      "merchant_comment": "Cabe o necessário. Para levar a loja inteira, cobro o frete à parte.",
+      "display": {
+        "footprint_cm": 58,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "goggles-of-night",
+      "name": "Óculos da noite",
+      "original_name": "Goggles of Night",
+      "category": "Mágicos incomuns",
+      "description": "Concedem visão no escuro de 60 pés, ou ampliam a existente em 60 pés. Preço por raridade do SRD.",
+      "price_cp": 40000,
+      "weight_lb": 0.5,
+      "art": "goggles-of-night",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/goggles-of-night.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 290,
+        "transparent": true,
+        "sha256": "b436a28677d9f2b159d7e54a8eb0d5e9857172224ce3b261f8206d67f531a8da",
+        "alt": "Ilustração de Óculos da noite"
+      },
+      "merchant_comment": "Para enxergar no escuro. O que estiver olhando de volta é problema seu.",
+      "display": {
+        "footprint_cm": 27,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "oil",
+      "name": "Óleo de lamparina",
+      "original_name": "Oil",
+      "category": "Itens mundanos",
+      "description": "Frasco de óleo para abastecer lâmpadas e lanternas.",
+      "price_cp": 10,
+      "weight_lb": 1,
+      "art": "oil",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/oil.png",
+        "mime_type": "image/png",
+        "width": 363,
+        "height": 504,
+        "transparent": true,
+        "sha256": "1c8f765a55b6d851fb9d289d30c30eab6210836d89f3c2ba60d7d31bc35895e0",
+        "alt": "Ilustração de Óleo de lamparina"
+      },
+      "merchant_comment": "Óleo de lamparina. Não é tempero, mesmo que a ração esteja triste.",
+      "display": {
+        "footprint_cm": 27,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "dragon-orb",
+      "name": "Orbe do dragão",
+      "original_name": "Dragon Orb",
+      "category": "Artefatos",
+      "description": "Artefato único de poder imensurável. O SRD o considera sem preço; defina um valor para esta campanha se desejar negociá-lo.",
+      "price_cp": null,
+      "weight_lb": 8,
+      "art": "orb",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/dragon-orb.png",
+        "mime_type": "image/png",
+        "width": 470,
+        "height": 504,
+        "transparent": true,
+        "sha256": "818a5adc6af45ba125efbddf763fac2cd1be26d1c25ccbd746d54679f6995d7c",
+        "alt": "Ilustração de Orbe do dragão"
+      },
+      "merchant_comment": "Esse não é um enfeite. Até eu escolho as palavras perto dele.",
+      "display": {
+        "footprint_cm": 36,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "shovel",
+      "name": "Pá",
+      "original_name": "Shovel",
+      "category": "Itens mundanos",
+      "description": "Ferramenta para escavar terra e materiais semelhantes.",
+      "price_cp": 200,
+      "weight_lb": 5,
+      "art": "shovel",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/shovel.png",
+        "mime_type": "image/png",
+        "width": 336,
+        "height": 504,
+        "transparent": true,
+        "sha256": "d64d9f1d275f9ba60028a13c54c66b9a10b798c68ee75b7c1633adfd9ba30fb5",
+        "alt": "Ilustração de Pá"
+      },
+      "merchant_comment": "Serve para cavar tesouros. Espero que esse seja o seu plano.",
+      "display": {
+        "footprint_cm": 100,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "crowbar",
+      "name": "Pé de cabra",
+      "original_name": "Crowbar",
+      "category": "Itens mundanos",
+      "description": "Alavanca de ferro; concede vantagem em testes de Força quando sua alavancagem se aplica.",
+      "price_cp": 200,
+      "weight_lb": 5,
+      "art": "crowbar",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/crowbar.png",
+        "mime_type": "image/png",
+        "width": 476,
+        "height": 504,
+        "transparent": true,
+        "sha256": "8f0bafb9bc9da62ac9eb39bff1d68e27e2224eff7622a187af9430b39cab64d4",
+        "alt": "Ilustração de Pé de cabra"
+      },
+      "merchant_comment": "Para portas que não entendem um pedido educado. Nem todo problema exige magia.",
+      "display": {
+        "footprint_cm": 62,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "breastplate",
+      "name": "Peitoral",
+      "original_name": "Breastplate",
+      "category": "Armaduras",
+      "description": "Armadura média · CA 14 + Destreza (máx. 2).",
+      "price_cp": 40000,
+      "weight_lb": 20,
+      "art": "breastplate",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/breastplate.png",
+        "mime_type": "image/png",
+        "width": 378,
+        "height": 504,
+        "transparent": true,
+        "sha256": "5faea9a66110cab00064eb2b0f0115f1313095f86cc26fd89baa7fb4543d0f9e",
+        "alt": "Ilustração de Peitoral"
+      },
+      "merchant_comment": "Um bom peitoral. Só não confunda coragem com invulnerabilidade.",
+      "display": {
+        "footprint_cm": 56,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "spell-scroll-cantrip",
+      "name": "Pergaminho de truque",
+      "original_name": "Spell Scroll (Cantrip)",
+      "category": "Mágicos comuns",
+      "description": "Pergaminho de truque. Preço listado na tabela de equipamento do SRD.",
+      "price_cp": 3000,
+      "weight_lb": 0.1,
+      "art": "satchel",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/spell-scroll-cantrip.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 439,
+        "transparent": true,
+        "sha256": "bc7e056491ea1f9f17485b0537929f7903e9182a0096dcd9694f4eac9088f932",
+        "alt": "Ilustração de Pergaminho de truque"
+      },
+      "merchant_comment": "Cuidado com os dedos. A tinta custou mais que o pergaminho.",
+      "display": {
+        "footprint_cm": 48,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "potion-of-growth",
+      "name": "Poção de crescimento",
+      "original_name": "Potion of Growth",
+      "category": "Poções",
+      "description": "Poção incomum; concede o efeito de ampliar por 10 minutos. Valor por raridade para consumíveis.",
+      "price_cp": 20000,
+      "weight_lb": 0.5,
+      "art": "potion",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/potion-of-growth.png",
+        "mime_type": "image/png",
+        "width": 262,
+        "height": 504,
+        "transparent": true,
+        "sha256": "eea570f0cee2d6fc1d1b7fd404db1e539fd80d9e143b0b3ec221a823307e50f8",
+        "alt": "Ilustração de Poção de crescimento"
+      },
+      "merchant_comment": "Guarde para um lugar espaçoso. Meu teto é baixo.",
+      "display": {
+        "footprint_cm": 34,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "potion-of-healing",
+      "name": "Poção de cura",
+      "original_name": "Potion of Healing",
+      "category": "Poções",
+      "description": "Recupera 2d4 + 2 pontos de vida. Valor e peso expressos no equipamento do SRD.",
+      "price_cp": 5000,
+      "weight_lb": 0.5,
+      "art": "potion",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/potion-of-healing.png",
+        "mime_type": "image/png",
+        "width": 350,
+        "height": 504,
+        "transparent": true,
+        "sha256": "e495eb53e8839193b888c8a42de81b98301380d85276e933c45852a167038d61",
+        "alt": "Ilustração de Poção de cura"
+      },
+      "merchant_comment": "Para quando o plano “confia em mim” dá errado. Costumo vender aos pares.",
+      "display": {
+        "footprint_cm": 28,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "potion-of-climbing",
+      "name": "Poção de escalada",
+      "original_name": "Potion of Climbing",
+      "category": "Poções",
+      "description": "Poção comum; concede deslocamento de escalada por 1 hora. Valor por raridade para consumíveis.",
+      "price_cp": 5000,
+      "weight_lb": 0.5,
+      "art": "potion",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/potion-of-climbing.png",
+        "mime_type": "image/png",
+        "width": 458,
+        "height": 504,
+        "transparent": true,
+        "sha256": "f048854e2d741cb4daddfcd9b76223d50692e3aaa6e82b1d1e347c373253b436",
+        "alt": "Ilustração de Poção de escalada"
+      },
+      "merchant_comment": "Para quem prefere subir a dar a volta.",
+      "display": {
+        "footprint_cm": 26,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "potion-of-heroism",
+      "name": "Poção de heroísmo",
+      "original_name": "Potion of Heroism",
+      "category": "Poções",
+      "description": "Poção rara; concede pontos de vida temporários e bênção por 1 hora.",
+      "price_cp": 200000,
+      "weight_lb": 0.5,
+      "art": "potion",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/potion-of-heroism.png",
+        "mime_type": "image/png",
+        "width": 297,
+        "height": 504,
+        "transparent": true,
+        "sha256": "b31c9515913e9248f58a958fb769cfd9d939294cc779373560d90fbaba0fc226",
+        "alt": "Ilustração de Poção de heroísmo"
+      },
+      "merchant_comment": "Coragem engarrafada. Bom senso ainda é por sua conta.",
+      "display": {
+        "footprint_cm": 30,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "potion-of-flying",
+      "name": "Poção de voo",
+      "original_name": "Potion of Flying",
+      "category": "Poções",
+      "description": "Poção muito rara; concede deslocamento de voo por 1 hora.",
+      "price_cp": 2000000,
+      "weight_lb": 0.5,
+      "art": "potion",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/potion-of-flying.png",
+        "mime_type": "image/png",
+        "width": 266,
+        "height": 504,
+        "transparent": true,
+        "sha256": "956121bdbcd4116a382ac47ad39c891804b35526b1d082d7d7ac55a4c94c57e2",
+        "alt": "Ilustração de Poção de voo"
+      },
+      "merchant_comment": "Leve com cuidado. Eu prefiro manter meus pés no chão.",
+      "display": {
+        "footprint_cm": 32,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "rations",
+      "name": "Rações",
+      "original_name": "Rations",
+      "category": "Itens mundanos",
+      "description": "Alimento seco para um dia de viagem.",
+      "price_cp": 50,
+      "weight_lb": 2,
+      "art": "rations",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/rations.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 387,
+        "transparent": true,
+        "sha256": "1f4d0878f24f783e4b1e5e060c60bf326e888b47258400a01d8347e3e7c808fe",
+        "alt": "Ilustração de Rações"
+      },
+      "merchant_comment": "Não é um banquete. Mas é melhor que negociar com o estômago vazio.",
+      "display": {
+        "footprint_cm": 23,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "rapier",
+      "name": "Rapieira",
+      "original_name": "Rapier",
+      "category": "Armas",
+      "description": "1d8 perfurante · Acuidade · Maestria: Afligir.",
+      "price_cp": 2500,
+      "weight_lb": 2,
+      "art": "rapier",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/rapier.png",
+        "mime_type": "image/png",
+        "width": 487,
+        "height": 504,
+        "transparent": true,
+        "sha256": "d6543459feb58625e92a9807cf6c86f1e4c81166bf3e4f9aec8baa915f96b8c6",
+        "alt": "Ilustração de Rapieira"
+      },
+      "merchant_comment": "Uma lâmina elegante. Pede uma mão firme, não pressa.",
+      "display": {
+        "footprint_cm": 87,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "bedroll",
+      "name": "Saco de dormir",
+      "original_name": "Bedroll",
+      "category": "Itens mundanos",
+      "description": "Leito portátil para noites na estrada.",
+      "price_cp": 100,
+      "weight_lb": 7,
+      "art": "bedroll",
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/bedroll.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 352,
+        "transparent": true,
+        "sha256": "9785117e24c6903307f3eae8b016706f96975a854ae53d832ddca9c9e3dac8ab",
+        "alt": "Ilustração de Saco de dormir"
+      },
+      "merchant_comment": "Depois de uma noite nas pedras, isso parece um palácio.",
+      "display": {
+        "footprint_cm": 61,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "slippers-of-spider-climbing",
+      "name": "Sapatos de escalada de aranha",
+      "original_name": "Slippers of Spider Climbing",
+      "category": "Mágicos incomuns",
+      "description": "Exigem sintonização; permitem escalar paredes e tetos com as mãos livres, exceto superfícies escorregadias. Preço por raridade do SRD.",
+      "price_cp": 40000,
+      "weight_lb": 1,
+      "art": "slippers-of-spider-climbing",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/slippers-of-spider-climbing.png",
+        "mime_type": "image/png",
+        "width": 504,
+        "height": 365,
+        "transparent": true,
+        "sha256": "fc1698e4175a39f9b8ff6be4807b2cc81088c6ff84cf1085cf033d595794f4b9",
+        "alt": "Ilustração de Sapatos de escalada de aranha"
+      },
+      "merchant_comment": "Pode subir pelas paredes. Só não use meu teto como provador.",
+      "display": {
+        "footprint_cm": 38,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "bell",
+      "name": "Sino",
+      "original_name": "Bell",
+      "category": "Itens mundanos",
+      "description": "Pequeno sino para sinalização sonora.",
+      "price_cp": 100,
+      "weight_lb": 0.2,
+      "art": "bell",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/bell.png",
+        "mime_type": "image/png",
+        "width": 260,
+        "height": 504,
+        "transparent": true,
+        "sha256": "4e5c098f49ab1e7e862c4fd6b51f032378496666ec1fe4bbafd22d59ebf2224f",
+        "alt": "Ilustração de Sino"
+      },
+      "merchant_comment": "Toque esse sino se precisar de ajuda. Dentro de uma masmorra, porém, não garanto quem vai atender.",
+      "display": {
+        "footprint_cm": 22,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "torch",
+      "name": "Tocha",
+      "original_name": "Torch",
+      "category": "Itens mundanos",
+      "description": "Ilumina as trilhas e masmorras. Duração: 1 hora.",
+      "price_cp": 1,
+      "weight_lb": 1,
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "raw_data": {
+        "name": "Torch",
+        "source": "SRD 5.2.1",
+        "srd": true,
+        "value": 1,
+        "weight": 1,
+        "type": "G"
+      },
+      "weight_estimated": false,
+      "image": {
+        "path": "assets/itens/torch.png",
+        "mime_type": "image/png",
+        "width": 276,
+        "height": 504,
+        "transparent": true,
+        "sha256": "56917fed92d839d076311a7c3ca10118a95c02bca240e101a878e77ffccf8f3e",
+        "alt": "Ilustração de Tocha"
+      },
+      "merchant_comment": "Para quando a escuridão não aceita negociação.",
+      "display": {
+        "footprint_cm": 38,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    },
+    {
+      "id": "candle",
+      "name": "Vela",
+      "original_name": "Candle",
+      "category": "Itens mundanos",
+      "description": "Vela de cera para iluminação.",
+      "price_cp": 1,
+      "weight_lb": 0.1,
+      "art": "candle",
+      "raw_data": {
+        "weight_estimated": true,
+        "official_weight_lb": null
+      },
+      "source": "SRD 5.2.1",
+      "source_url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "weight_estimated": true,
+      "image": {
+        "path": "assets/itens/candle.png",
+        "mime_type": "image/png",
+        "width": 272,
+        "height": 504,
+        "transparent": true,
+        "sha256": "79c00e5e38f0235b998e332c7aa7fb2695db8a702ae325c28fa05b672efa124f",
+        "alt": "Ilustração de Vela"
+      },
+      "merchant_comment": "A vela dura pouco, mas ilumina bastante. Meu aprendiz é exatamente o contrário.",
+      "display": {
+        "footprint_cm": 26,
+        "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
+      }
+    }
+  ]
+}

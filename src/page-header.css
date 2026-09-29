@@ -1,0 +1,58 @@
+/* Shared header scale and viewport margins, independent of the content width. */
+:root .app-shell {
+  --page-header-edge: clamp(24px, 6.6vw, 95px);
+}
+:root .app-shell .topbar.player-hud {
+  min-height: 61px;
+  padding: 8px 10px 8px 13px;
+  gap: 10px;
+  border-radius: 10px;
+}
+:root .app-shell .player-hud .character-selector { width: 168px; }
+:root .app-shell .player-hud .character-selector-trigger { height: 24px; font-size: 12px; }
+:root .app-shell .player-hud-label { font-size: 8px; letter-spacing: 1.2px; }
+:root .app-shell .player-hud-details { font-size: 9px; }
+:root .app-shell .player-hud-icon { width: 20px; height: 20px; }
+:root .app-shell .player-hud .logout-button {
+  flex: 0 0 30px;
+  width: 30px;
+  min-height: 30px;
+  padding: 6px;
+}
+:root .app-shell .player-hud .logout-button svg { width: 16px; height: 16px; }
+:root .app-shell :is(.page-title, .camp-heading) h1 {
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.25;
+  margin-block: 8px;
+}
+@media (min-width: 901px) {
+  :root .app-shell .main-shell { position: relative; }
+  :root .app-shell .topbar.player-hud {
+    position: absolute;
+    top: 20px;
+    right: var(--page-header-edge);
+    margin: 0;
+  }
+  :root .app-shell .main-content:has(> .page-title) { padding-top: 20px; }
+  :root .app-shell :is(.page-title, .camp-heading) {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 2 * var(--page-header-edge));
+    max-width: none;
+    margin-inline: 0;
+    padding-right: 310px;
+    min-height: 61px;
+  }
+}
+@media (max-width: 900px) {
+  :root .app-shell .topbar.player-hud {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 14px 18px 0 auto;
+    max-width: calc(100% - 36px);
+  }
+  :root .app-shell :is(.page-title, .camp-heading) { padding-right: 0; min-height: auto; }
+  :root .app-shell .player-hud .character-selector { width: min(168px, calc(100vw - 138px)); }
+}

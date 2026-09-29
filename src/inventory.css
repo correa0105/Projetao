@@ -439,3 +439,5 @@
   .loot-layout > .loot-storage > .loot-slots { grid-auto-rows: 70px; }
   .loot-layout .loot-slot { min-height: 70px; }
 }
+
+.loot-slot .loot-item-art { width: 48px; height: 48px; object-fit: contain; }

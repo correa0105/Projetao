@@ -72,7 +72,7 @@ function InventorySlot({ item, place, busy, onDrag, onTransfer }: {
         event.dataTransfer.effectAllowed = 'move';
         onDrag({ id: item.id, from: place });
       }} onDragEnd={() => onDrag(null)}>
-      <Icon size={23} aria-hidden="true" />
+      {item.image_path ? <img className="loot-item-art" src={item.image_path} alt="" /> : <Icon size={23} aria-hidden="true" />}
       <span className="loot-slot-name">{item.name}</span>
       <span className="loot-quantity">{item.quantity ?? 0}</span>
     </button>
@@ -85,7 +85,7 @@ function InventorySlot({ item, place, busy, onDrag, onTransfer }: {
       <dl>
         <div><dt>Quantidade</dt><dd>{item.quantity ?? 0}</dd></div>
         <div><dt>Peso total</dt><dd>{number(Number(item.weight_lb) * (item.quantity ?? 0))} lb</dd></div>
-        <div><dt>Valor unitário</dt><dd>{money(item.price_cp)} PO</dd></div>
+        <div><dt>Valor unitário</dt><dd>{item.price_cp === null ? 'Preço a definir' : money(item.price_cp) + ' PO'}</dd></div>
       </dl>
       <button className="button outline loot-transfer-button" disabled={busy}
         onClick={() => { hide(); onTransfer(item.id, place); }}>

@@ -1,14 +1,73 @@
 /* Parchment is a local material within the permanent dark application theme. */
+/* Compact, consistent typography for the whole paper sheet. */
+:root .character-sheet .sheet-panel p { font-size: 13px; line-height: 1.45; margin-block: 8px; }
+:root .character-sheet .sheet-panel :is(label, legend) { font-size: 14px; font-weight: 600; line-height: 1.4; }
+:root .character-sheet .sheet-panel :is(.sheet-checks label, .sheet-inspiration) { font-size: 13px; font-weight: 400; }
+:root .character-sheet .sheet-panel :is(h3, summary) { font-size: 17px; line-height: 1.35; }
+:root .character-sheet .sheet-panel h4 { font-size: 15px; line-height: 1.35; }
+:root .character-sheet .sheet-panel :is(input:not([type='checkbox']), select, textarea) { font-size: 13px; font-weight: 400; line-height: 1.4; }
+:root .character-sheet .sheet-panel :is(select, input:not([type='checkbox']):not([type='radio']):not([type='file'])) { width: 100%; min-width: 0; min-height: 34px; padding: 6px 10px; }
+:root .character-sheet .sheet-panel select option { font-weight: 400; }
+:root .character-sheet .sheet-form-reset,
+:root .character-sheet .sheet-creation { gap: 14px; }
+:root .character-sheet .sheet-creation .form-grid { gap: 12px 16px; }
+:root .character-sheet .sheet-field-group { gap: 6px; }
+.character-sheet .sheet-spell-controls { margin-block: 14px; }
+:root .character-sheet .sheet-field-description { gap: 4px; }
+:root .character-sheet .sheet-field-description p,
+:root .character-sheet .sheet-creation > p,
+:root .character-sheet .sheet-form-reset > p { margin: 0; font-size: 12px; line-height: 1.4; }
+:root .character-sheet .sheet-choice > legend { margin-bottom: 6px; }
+:root .character-sheet .sheet-panel legend small { font-size: 11px; font-weight: 400; }
+:root .character-sheet .sheet-panel .sheet-features p { line-height: 1.45; }
+.character-sheet .sheet-rest-choices {
+  margin-top: 24px;
+  padding: 10px 12px;
+  border: 1px solid #8e724c70;
+  border-radius: 3px;
+  background: #f8ecd357;
+  box-shadow: inset 0 1px 4px #72553414;
+}
+.character-sheet .sheet-rest-choices > fieldset {
+  margin-block: 14px;
+}
+:root dialog.character-creation-dialog {
+  margin: auto;
+  padding: 0;
+  background: #d9c9a9;
+  border: 0;
+}
+:root .character-creation-dialog .dialog-inner.sheet-panel {
+  padding: clamp(18px, 3vw, 32px);
+}
+:root .character-creation-dialog .dialog-head {
+  border-color: #8d75504d;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+:root .character-creation-dialog .dialog-head :is(h2, button) {
+  color: #291f16;
+}
+:root .character-sheet .sheet-panel .form-error {
+  color: #672d23;
+  background: #b763431a;
+  border-color: #994b3b66;
+}
+:root .character-sheet .sheet-form-reset > .form-grid {
+  align-items: start;
+  gap: 12px 16px;
+}
 :root .character-sheet {
-  --ink: #35291e;
-  --secondary-ink: #433424;
-  --muted: #60503b;
+  --ink: #291f16;
+  --secondary-ink: #35281c;
+  --muted: #4c3c29;
   --theme-border: #8d75504d;
   color: var(--ink);
 }
 :root .character-sheet .sheet-panel,
 :root .character-sheet .sheet-vitals > div {
-  background: url('/character-parchment-v2.png') center / 760px auto repeat;
+  /* Four mirrored copies: each retains the original 760px display scale. */
+  background: url('/character-parchment-mirrored.svg') left top / 1520px 1520px repeat;
   background-color: #d9c9a9;
   border: 1px solid #a28a64;
   border-radius: 3px 7px 4px 6px / 7px 3px 8px 4px;
@@ -30,22 +89,36 @@
 }
 :root .character-sheet .sheet-panel :is(h3, h4, summary, strong, b),
 :root .character-sheet .sheet-vitals strong {
-  color: #35271c;
+  color: #291e14;
 }
 :root .character-sheet .sheet-panel :is(p, li, label, legend, span),
 :root .character-sheet .sheet-vitals span {
-  color: #433424;
+  color: #35281c;
 }
 :root .character-sheet .sheet-panel :is(.muted, p.muted.small, legend small, .sheet-attributes small) {
-  color: #60503b;
+  color: #4c3c29;
 }
 :root .character-sheet .sheet-panel :is(input:not([type='checkbox']), select, textarea) {
   color-scheme: light;
   background: #f8ecd357;
-  color: #3b2c1e;
+  color: #2e2116;
   border: 1px solid #8e724c70;
   border-radius: 3px;
   box-shadow: inset 0 1px 4px #72553414;
+}
+:root .character-sheet .sheet-panel select:not([multiple]) {
+  appearance: none;
+  padding-right: 42px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2335281c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px 16px;
+}
+@media (forced-colors: active) {
+  :root .character-sheet .sheet-panel select:not([multiple]) {
+    appearance: auto;
+    background-image: none;
+  }
 }
 :root .character-sheet .sheet-panel option {
   background: #e7d9bd;

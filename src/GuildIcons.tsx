@@ -34,6 +34,19 @@ function GuildIcon({ column, row }: { column: number; row: number; size?: number
   );
 }
 type IconProps = { size?: number };
+export function NoticeBoardIcon(_: IconProps) {
+  return (
+    <svg
+      className="guild-engraving"
+      viewBox="0 0 1254 1254"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <image href="/guild-icon-notice-board-v3.png" width="1254" height="1254" />
+    </svg>
+  );
+}
 export function CandleIcon({ size }: IconProps) {
   return <GuildIcon column={0} row={0} size={size} />;
 }

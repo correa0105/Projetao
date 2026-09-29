@@ -18,7 +18,14 @@ import {
   Trophy,
   Users,
 } from 'lucide-react';
-import { CandleIcon, HelmetIcon, SwordIcon, PouchIcon, MapIcon, BookIcon } from './GuildIcons';
+import {
+  CandleIcon,
+  HelmetIcon,
+  NoticeBoardIcon,
+  PouchIcon,
+  MapIcon,
+  BookIcon,
+} from './GuildIcons';
 import type { Page } from './types';
 
 type Destination = { page: Page; label: string; icon: ComponentType<{ size?: number }> };
@@ -36,12 +43,10 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     ],
   },
   {
-    id: 'adventure',
-    label: 'Aventura',
-    icon: SwordIcon,
-    items: [
-      { page: 'board', label: 'Mural', icon: ScrollText },
-    ],
+    id: 'board',
+    label: 'Mural',
+    icon: NoticeBoardIcon,
+    items: [{ page: 'board', label: 'Mural', icon: ScrollText }],
   },
   {
     id: 'explore',
@@ -63,13 +68,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
   },
 ];
 
-export function Navigation({
-  page,
-  go,
-}: {
-  page: Page;
-  go: (page: Page) => void;
-}) {
+export function Navigation({ page, go }: { page: Page; go: (page: Page) => void }) {
   const [open, setOpen] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [caption, setCaption] = useState<string | null>(null);
@@ -159,9 +158,14 @@ export function Navigation({
           id={`dock-${item.id}`}
           aria-label={item.label}
           className={`dock-item ${active ? 'is-active' : ''}`}
-          aria-expanded={open === item.id}
-          aria-controls={`dock-panel-${item.id}`}
-          onClick={() => setOpen(open === item.id ? null : item.id)}
+          aria-expanded={item.items.length > 1 ? open === item.id : undefined}
+          aria-controls={item.items.length > 1 ? `dock-panel-${item.id}` : undefined}
+          aria-current={item.items.length === 1 && active ? 'page' : undefined}
+          onClick={() =>
+            item.items.length === 1
+              ? navigate(item.items[0].page)
+              : setOpen(open === item.id ? null : item.id)
+          }
         >
           <span className="dock-orb">
             <Icon size={44} />

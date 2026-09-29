@@ -2,8 +2,17 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { api, post } from './api';
 import { Modal } from './components';
 import type { Post } from './types';
+import { progressionLabel, rankName } from '../shared/progression';
+import { money } from '../shared/rules';
 
-type Participant = { id: string; name: string; race: string; class: string };
+type Participant = {
+  id: string;
+  name: string;
+  race: string;
+  class: string;
+  level: number;
+  progression_missions: number;
+};
 export function MissionCompletion({
   mission,
   close,
@@ -41,7 +50,6 @@ export function MissionCompletion({
         summary: form.get('summary'),
         rewards: participants.map((p) => ({
           character_id: p.id,
-          experience: Number(form.get(`xp-${p.id}`)),
         })),
         ...(hook
           ? { hook: { title: form.get('hook-title'), description: form.get('hook-description') } }
@@ -75,9 +83,12 @@ export function MissionCompletion({
           />
         </label>
         <fieldset disabled={busy || participants === null}>
-          <legend>Experiência dos participantes</legend>
+          <legend>Recompensas dos participantes</legend>
           <p className="small muted">
-            Informe o XP de cada personagem. Use 0 para concluir sem conceder experiência.
+            Cada inscrito receberá {money(mission.reward_cp)} PO.{' '}
+            {mission.rank_test_level
+              ? 'Este teste promove os personagens aptos para a próxima patente, sem somar uma missão à progressão.'
+              : 'A missão conta para a progressão, exceto quando há um teste de patente pendente ou o personagem já atingiu o nível 20.'}
           </p>
           {participants === null ? (
             <p>Carregando participantes…</p>
@@ -85,24 +96,15 @@ export function MissionCompletion({
             <p className="muted">Nenhum personagem se inscreveu nesta missão.</p>
           ) : (
             participants.map((p) => (
-              <label className="mission-xp-row" key={p.id}>
+              <div className="mission-xp-row" key={p.id}>
                 <span>
                   <strong>{p.name}</strong>
                   <small>
-                    {p.race} · {p.class}
+                    {rankName(p.level)} · Nível {p.level} · {p.race} · {p.class}
                   </small>
                 </span>
-                <input
-                  aria-label={`XP de ${p.name}`}
-                  name={`xp-${p.id}`}
-                  type="number"
-                  min={0}
-                  max={1000000}
-                  step={1}
-                  defaultValue={0}
-                  required
-                />
-              </label>
+                <small>{progressionLabel(p.level, p.progression_missions)}</small>
+              </div>
             ))
           )}
         </fieldset>

@@ -15,7 +15,9 @@ Separar implementação, conteúdo apenas descritivo e planos futuros.
   escolhas de origem, atributos, equipamentos, maestrias e conjuração inicial.
 - Catálogo de 83 magias de níveis 0/1; não é o catálogo completo de magias de D&D.
 - Dados e escolhas persistidos no PostgreSQL, validação no servidor e preservação de fichas legadas.
-- XP de missões existe, mas isso não significa que a evolução mecânica completa esteja implementada.
+- Nível e patente evoluem por missões concluídas, com quatro testes obrigatórios de promoção;
+  ver `PATENTES.md`. XP antigo é preservado no histórico, sem concessões novas.
+  Isso não significa que a evolução mecânica completa das classes esteja implementada.
 - Efeitos, ataques, condições e descansos continuam dependendo da resolução na mesa;
   registrar escolhas ou recursos não significa simular automaticamente todas as regras.
 
@@ -23,7 +25,7 @@ Detalhes técnicos, limites e testes da migração: `SRD-2024.md`.
 
 ## O que falta
 
-1. **Progressão do nível 1 ao 20:** fluxo de evolução, pré-requisitos e escolhas por nível,
+1. **Recursos da ficha do nível 1 ao 20:** fluxo de escolhas por nível,
    PV, bônus de proficiência, recursos de classe, talentos/aumentos de atributos e validação no servidor.
 2. **Subclasses:** seleção no nível apropriado e implementação dos recursos adquiridos ao evoluir.
 3. **Conjuração nos níveis superiores:** catálogo, preparação/aprendizado, espaços e progressão,
@@ -65,8 +67,9 @@ guerreira etc. Ser clériga não elimina asas; características da espécie e da
    continuar exigindo programação além de cadastrar nomes e descrições.
 
 Não é necessário incluir todos os livros para lançar. O escopo de níveis e livros disponível
-no lançamento deve ser explícito. O usuário pediu agora apenas guardar este planejamento;
-não iniciar progressão ou importação de suplementos sem uma nova solicitação.
+no lançamento deve ser explícito. Posteriormente o usuário autorizou a progressão por
+missões e patentes, agora implementada. Recursos de classe de níveis altos e importação
+de suplementos continuam dependendo de etapas próprias.
 
 ## Referências
 
@@ -74,3 +77,6 @@ não iniciar progressão ou importação de suplementos sem uma nova solicitaç�
 - Livro do Jogador 2024: https://www.dndbeyond.com/sources/dnd/phb-2024
 - Monsters of the Multiverse: https://www.dndbeyond.com/sources/dnd/motm
 - Atribuição e fontes do projeto: `ATTRIBUTION.md`.
+
+## Decisão de 29/09/2026
+O fluxo de evolução de PV, habilidades, subclasses e magias será implementado posteriormente. Não apresentar essa lacuna como obrigação de conferir com o mestre. O aviso de nível comunica o nível registrado e a implementação pendente.

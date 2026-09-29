@@ -1,0 +1,32 @@
+{
+  "categories": [
+    "Itens mundanos",
+    "Armas",
+    "Armaduras",
+    "Poções",
+    "Mágicos comuns",
+    "Mágicos incomuns",
+    "Mágicos raros",
+    "Mágicos muito raros",
+    "Mágicos lendários",
+    "Artefatos"
+  ],
+  "merchant": {
+    "greeting": "Boas-vindas à loja! Entre, fique à vontade. Se veio perseguido por um dragão, feche a porta devagar.",
+    "purchase_thanks": "Obrigado pela compra! Que seus dados rolem alto e seus inimigos tropecem. Volte sempre — de preferência inteiro!",
+    "conversations": [
+      {
+        "question": "Quem é você?",
+        "answer": "Já fui um nome temido nas estradas. Perdi companheiros, um reino… e quase todo o cabelo para os impostos. Hoje sou só o velho atrás do balcão. A tragédia continua, mas agora em horário comercial."
+      },
+      {
+        "question": "Como você conseguiu todos esses itens?",
+        "answer": "Herança de uma tia. Muito aventureira. Tinha três metros, soltava fogo e dormia em cima de ouro. Os documentos? Queimaram. Terrível acidente de família."
+      },
+      {
+        "question": "Faz um desconto?",
+        "answer": "Claro! Desconto a ousadia da pergunta e finjo que não ouvi. O preço continua igual, mas essa conversa maravilhosa saiu de graça. Um negócio e tanto, não acha?"
+      }
+    ]
+  }
+}

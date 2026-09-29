@@ -15,6 +15,7 @@ import {
   normalizeOptions,
   startingEquipment,
   startingGold,
+  feats,
   type SheetChoices as Choices,
 } from '../shared/character-sheet';
 import { statNames, money } from '../shared/rules';
@@ -77,6 +78,28 @@ export function SheetChoices({
     b = backgroundRules[c.backgroundType],
     used = racialSkills(race, c);
   const update = (v: Partial<Choices>) => onChange(normalizeOptions(race, cls, { ...c, ...v }));
+  const boostDistributions = [
+    ...b.abilities.flatMap((primary) =>
+      b.abilities
+        .filter((secondary) => secondary !== primary)
+        .map((secondary) => ({
+          values: statNames.map((_, index) =>
+            index === primary ? 2 : index === secondary ? 1 : 0,
+          ),
+          label: `+2 ${statNames[primary]} e +1 ${statNames[secondary]}`,
+        })),
+    ),
+    {
+      values: statNames.map((_, index) => (b.abilities.includes(index) ? 1 : 0)),
+      label: `+1 em ${b.abilities.map((index) => statNames[index]).join(', ')}`,
+    },
+  ];
+  const spellFeatHelp = (key: string) => {
+    const match = /^feat(?:Ability|Cantrips|Spell)(\d+)$/.exec(key);
+    if (!match) return undefined;
+    const index = Number(match[1]);
+    return `${feats(c)[index]} — origem: ${index === 0 ? `antecedente ${c.backgroundType}` : 'talento adicional de Humano'}. Concede 2 truques e 1 magia de nível 1 sempre preparada, sem mudar sua classe. Escolha Inteligência, Sabedoria ou Carisma para essas magias. A magia de nível 1 pode ser usada uma vez sem espaço por descanso longo; também pode usar espaços, se você os tiver.${cls === 'Bárbaro' ? ' Durante a Fúria, você não pode conjurar magias nem manter concentração.' : ''}`;
+  };
   return (
     <div className="sheet-creation stack">
       <div className="form-grid">
@@ -97,40 +120,52 @@ export function SheetChoices({
           </select>
         </label>
       </div>
-      <label>
-        Antecedente
-        <SheetHelp label="Antecedente">
-          O antecedente concede bônus de atributos, duas perícias, uma ferramenta e um talento de
-          origem. Opções do SRD 5.2.1.
-        </SheetHelp>
-        <select
-          aria-label="Antecedente"
-          value={c.backgroundType}
-          onChange={(e) => {
-            const next = defaultChoices(race, cls, e.target.value);
-            onChange({
-              ...c,
-              ...next,
-              alignment: c.alignment,
-              personality: c.personality,
-              ideals: c.ideals,
-              bonds: c.bonds,
-              flaws: c.flaws,
-              appearance: c.appearance,
-              age: c.age,
-              height: c.height,
-              weight: c.weight,
-            });
-          }}
-        >
-          {Object.keys(backgroundRules).map((v) => (
-            <option key={v}>{v}</option>
-          ))}
-        </select>
-      </label>
-      <p className="muted small">
-        {b.skills.join(' · ')} · {b.tool} · {b.feat}
-      </p>
+      <div className="sheet-field-group">
+        <label>
+          Antecedente
+          <SheetHelp label="Antecedente">
+            O antecedente concede bônus de atributos, duas perícias, uma ferramenta e um talento de
+            origem. Opções do SRD 5.2.1.
+          </SheetHelp>
+          <select
+            aria-label="Antecedente"
+            value={c.backgroundType}
+            onChange={(e) => {
+              const next = defaultChoices(race, cls, e.target.value);
+              onChange({
+                ...c,
+                ...next,
+                alignment: c.alignment,
+                personality: c.personality,
+                ideals: c.ideals,
+                bonds: c.bonds,
+                flaws: c.flaws,
+                appearance: c.appearance,
+                age: c.age,
+                height: c.height,
+                weight: c.weight,
+              });
+            }}
+          >
+            {Object.keys(backgroundRules).map((v) => (
+              <option key={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+        <div className="sheet-field-description">
+          <p className="muted small">
+            {b.skills.join(' · ')} · {b.tool} · {b.feat}
+          </p>
+          {b.feat.startsWith('Iniciado em Magia') && (
+            <p className="muted small">
+              O antecedente {c.backgroundType} concede {b.feat}: 2 truques e 1 magia de nível 1,
+              mesmo para {cls}. Essas escolhas vêm do antecedente e são adicionais às da classe.
+              {cls === 'Bárbaro' &&
+                ' Durante a Fúria, não é possível conjurar nem manter concentração.'}
+            </p>
+          )}
+        </div>
+      </div>
       <fieldset className="sheet-choice">
         <legend>
           Bônus do antecedente
@@ -139,30 +174,29 @@ export function SheetChoices({
             ultrapassar 20.
           </SheetHelp>
         </legend>
-        <div className="form-grid">
-          {b.abilities.map((i) => (
-            <label key={i}>
-              {statNames[i]}
-              <select
-                aria-label={'Bônus em ' + statNames[i]}
-                value={c.abilityBoosts[i]}
-                onChange={(e) =>
-                  update({
-                    abilityBoosts: c.abilityBoosts.map((v, j) =>
-                      j === i ? Number(e.target.value) : v,
-                    ),
-                  })
-                }
-              >
-                {[0, 1, 2].map((v) => (
-                  <option key={v} value={v}>
-                    +{v}
-                  </option>
-                ))}
-              </select>
-            </label>
+        <select
+          aria-label="Distribuição dos bônus do antecedente"
+          value={c.abilityBoosts.join(',')}
+          onChange={(event) => {
+            const selected = boostDistributions.find(
+              (option) => option.values.join(',') === event.target.value,
+            );
+            if (selected) update({ abilityBoosts: selected.values });
+          }}
+        >
+          {!boostDistributions.some(
+            (option) => option.values.join(',') === c.abilityBoosts.join(','),
+          ) && (
+            <option value={c.abilityBoosts.join(',')} disabled>
+              Escolha uma distribuição válida
+            </option>
+          )}
+          {boostDistributions.map((option) => (
+            <option key={option.values.join(',')} value={option.values.join(',')}>
+              {option.label}
+            </option>
           ))}
-        </div>
+        </select>
       </fieldset>
       <ChoiceList
         label="Idiomas iniciais (além de Comum)"
@@ -175,6 +209,7 @@ export function SheetChoices({
         f.count === 1 ? (
           <label key={f.key}>
             {f.label}
+            {spellFeatHelp(f.key) && <SheetHelp label={f.label}>{spellFeatHelp(f.key)}</SheetHelp>}
             <select
               value={c.options[f.key]?.[0] || ''}
               onChange={(e) => update({ options: { ...c.options, [f.key]: [e.target.value] } })}
@@ -190,6 +225,7 @@ export function SheetChoices({
           <ChoiceList
             key={f.key}
             label={f.label}
+            help={spellFeatHelp(f.key)}
             count={f.count}
             value={c.options[f.key] || []}
             options={f.options}
@@ -260,6 +296,11 @@ export function SheetChoices({
       {!!k.known && (
         <ChoiceList
           label={cls === 'Mago' ? 'Magias do grimório' : 'Magias preparadas da classe'}
+          help={
+            cls === 'Mago'
+              ? 'No nível 1, registre 6 magias de nível 1 no grimório. Depois, na aba Magias da ficha, prepare 4 delas. Seus 3 truques são escolhidos separadamente. Os 2 espaços de magia de nível 1 determinam quantas conjurações com espaços você pode fazer entre descansos longos; não são o tamanho do grimório.'
+              : undefined
+          }
           count={k.known}
           value={c.spells}
           options={spellOptions(cls, 1).map((s) => s.id)}
@@ -268,8 +309,9 @@ export function SheetChoices({
       )}
       {k.prepared && (
         <p className="muted small">
-          Selecione até {k.prepareCount} magias preparadas na ficha. A quantidade não depende do
-          atributo de conjuração.
+          {cls === 'Mago'
+            ? 'O grimório começa com 6 magias de nível 1. Depois de concluir a criação, prepare 4 delas na aba Magias. Truques e magias concedidas por talentos são separados dessa conta.'
+            : `Selecione até ${k.prepareCount} magias preparadas na ficha. A quantidade não depende do atributo de conjuração.`}
         </p>
       )}
       <details>

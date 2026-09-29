@@ -258,6 +258,7 @@ type ClassRule = {
 };
 const features: Record<string, string[]> = {
   Bárbaro: [
+    'Fúria e magia: enquanto estiver em Fúria, não pode conjurar magias nem manter concentração.',
     'Fúria: 2 usos; recupera um no descanso curto e todos no longo. Ação bônus, sem armadura pesada; resistência a dano contundente, cortante e perfurante; +2 no dano de ataques com Força, incluindo desarmados.',
     'Manter Fúria: até 10 minutos, prolongando a cada turno ao atacar inimigo, forçar salvaguarda ou gastar ação bônus; termina ao vestir armadura pesada ou ficar Incapacitado.',
     'Defesa sem armadura: 10 + Destreza + Constituição; permite escudo.',

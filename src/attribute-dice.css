@@ -1,0 +1,196 @@
+/* Six solid CSS faces, with the persisted result always on the face toward the viewer. */
+:root dialog.attribute-dice-overlay {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(860px, 100vw);
+  max-width: 100vw;
+  max-height: 100dvh;
+  padding: 36px 16px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #ead9b5;
+  text-align: center;
+  overflow-x: clip;
+}
+.attribute-dice-overlay::backdrop {
+  background: radial-gradient(ellipse at center, #14100bd9, #080908f2);
+  backdrop-filter: blur(5px);
+}
+:root .attribute-dice-overlay header > span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c4a878;
+}
+:root .attribute-dice-overlay h2 {
+  color: #f0dfbe;
+  font: 400 clamp(23px, 4vw, 34px)/1.4 var(--serif);
+  margin: 12px 0;
+}
+:root .attribute-dice-overlay p {
+  color: #c6b393;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.attribute-dice-stage {
+  --die-size: clamp(44px, 11vw, 82px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(23px, 6vw, 70px);
+  height: clamp(220px, 35vh, 330px);
+  perspective: 1000px;
+}
+.attribute-die-drop {
+  position: relative;
+  width: var(--die-size);
+  height: var(--die-size);
+  transform-style: preserve-3d;
+  animation: attribute-die-fall 1.9s both;
+  animation-delay: calc(var(--die-index) * 90ms);
+}
+.attribute-die {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(-16deg) rotateY(19deg) rotateZ(-7deg);
+  animation: attribute-die-tumble 1.9s both;
+  animation-delay: calc(var(--die-index) * 90ms);
+}
+.attribute-die-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 9%;
+  padding: 17%;
+  border: 2px solid #98734a;
+  border-radius: 12%;
+  background: radial-gradient(ellipse at 20% 15%, #f8ebc8, #c7aa76 80%);
+  box-shadow:
+    inset 0 0 0 2px #ffefc44d,
+    inset 0 0 12px #70421b55;
+  backface-visibility: hidden;
+}
+.attribute-die-face .pip {
+  border-radius: 50%;
+  background: #3c2519;
+  box-shadow:
+    inset 1px 2px 2px #150c08,
+    0 1px 0 #fff3d8;
+}
+.face-0 {
+  transform: translateZ(calc(var(--die-size) / 2));
+}
+.face-1 {
+  transform: rotateY(180deg) translateZ(calc(var(--die-size) / 2));
+}
+.face-2 {
+  transform: rotateY(90deg) translateZ(calc(var(--die-size) / 2));
+}
+.face-3 {
+  transform: rotateY(-90deg) translateZ(calc(var(--die-size) / 2));
+}
+.face-4 {
+  transform: rotateX(90deg) translateZ(calc(var(--die-size) / 2));
+}
+.face-5 {
+  transform: rotateX(-90deg) translateZ(calc(var(--die-size) / 2));
+}
+.attribute-die-shadow {
+  position: absolute;
+  inset: 80% -24% -40%;
+  background: #000b;
+  filter: blur(9px);
+  border-radius: 50%;
+  transform: translateZ(-60px);
+}
+:root .attribute-die-drop > small {
+  position: absolute;
+  top: calc(100% + 30px);
+  left: -20px;
+  right: -20px;
+  color: #e2cba2;
+  font-size: 12px;
+  opacity: 0;
+}
+.is-settled .attribute-die-drop,
+.is-settled .attribute-die {
+  animation: none;
+}
+.is-settled .attribute-die-drop > small {
+  opacity: 1;
+}
+.is-settled .attribute-die-drop.is-discarded .attribute-die-face {
+  background: linear-gradient(135deg, #9b8b6b, #655540);
+  border-color: #64503b;
+}
+:root .is-settled .attribute-die-drop.is-discarded > small {
+  color: #ba9980;
+}
+.attribute-dice-outcome {
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+:root .attribute-dice-outcome strong {
+  font: 400 52px/1 var(--serif);
+  color: #f3ddab;
+}
+:root .attribute-dice-outcome p {
+  margin: 12px 0;
+}
+:root .attribute-dice-overlay .button {
+  color: #f6e8cc;
+  background: #62472b;
+  border: 1px solid #a58553;
+}
+.attribute-roll-action {
+  margin-bottom: 12px;
+}
+.sheet-rolls .roll-unrevealed {
+  border-style: dashed;
+}
+@keyframes attribute-die-fall {
+  0% {
+    transform: translate3d(-60px, -65vh, 180px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  44% {
+    transform: translate3d(14px, 14px, 0);
+  }
+  59% {
+    transform: translate3d(-8px, -65px, 40px);
+  }
+  73% {
+    transform: translate3d(4px, 9px, 0);
+  }
+  84% {
+    transform: translate3d(0, -20px, 12px);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes attribute-die-tumble {
+  from {
+    transform: rotateX(704deg) rotateY(739deg) rotateZ(173deg);
+  }
+  to {
+    transform: rotateX(-16deg) rotateY(19deg) rotateZ(-7deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .attribute-die-drop,
+  .attribute-die {
+    animation: none;
+  }
+}

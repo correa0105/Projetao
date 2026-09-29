@@ -17,6 +17,12 @@ import {
   Hand,
 } from 'lucide-react';
 import { api, post } from './api';
+import {
+  rankName,
+  progressionLabel,
+  MISSION_THRESHOLDS,
+  testEligible,
+} from '../shared/progression';
 import type { Character, Details } from './types';
 import { statNames, modifier, money, races } from '../shared/rules';
 import {
@@ -35,6 +41,7 @@ import {
 } from '../shared/character-sheet';
 import { SheetChoices, ChoiceList } from './SheetChoices';
 import { SheetHelp } from './SheetHelp';
+import { AttributeDice } from './AttributeDice';
 import './character-sheet.css';
 import './character-parchment.css';
 const signed = (v: number) => `${v >= 0 ? '+' : ''}${v}`;
@@ -108,6 +115,7 @@ export function CharacterSheet({
     [tab, setTab] = useState('Atributos');
   const [restChoices, setRestChoices] = useState<Choices>(() => defaultChoices(c.race, c.class));
   const [draft, setDraft] = useState<SheetRecord | null>(null);
+  const [revealedRolls, setRevealedRolls] = useState(6);
   function receive(r: SheetResponse) {
     setData(r);
     setDraft(r.sheet);
@@ -119,6 +127,7 @@ export function CharacterSheet({
   }
   useEffect(() => {
     let active = true;
+    setRevealedRolls(6);
     api<SheetResponse>(`/characters/${c.id}/sheet`)
       .then((r) => {
         if (active) receive(r);
@@ -140,6 +149,7 @@ export function CharacterSheet({
     setError('');
     try {
       const r = await post<SheetResponse>(`/characters/${c.id}/sheet/${path}`, body);
+      if (path === 'roll') setRevealedRolls(0);
       receive(r);
       if (refresh) await onRefresh();
       setSaved(true);
@@ -152,6 +162,9 @@ export function CharacterSheet({
   const s = data?.sheet,
     d = data?.derived,
     k = classRules[c.class];
+  const visibleRestFields = restChoiceFields(c.race, c.class, restChoices).filter((field) =>
+    field.key === 'mastery' ? tab === 'Combate' : tab === 'Magias',
+  );
   const bonuses = racialBonuses(c.race, choices);
   const rolls = s?.rolls?.map((v) => v.reduce((a, b) => a + b, 0) - Math.min(...v));
   const change = (v: Partial<SheetRecord>) =>
@@ -162,8 +175,73 @@ export function CharacterSheet({
   const armorNote = d?.equipment.some((x) => x === 'Escudo' || x === 'Escudo de madeira')
     ? 'CA com escudo; armas de duas mãos exigem guardá-lo.'
     : 'CA com o equipamento inicial.';
+  const rankReady = testEligible(c.level, c.progression_missions);
+  const rankStart = MISSION_THRESHOLDS[c.level - 1];
+  const rankTarget = MISSION_THRESHOLDS[Math.min(c.level, 19)];
+  const rankProgress =
+    c.level === 20
+      ? 100
+      : Math.min(
+          100,
+          Math.max(0, ((c.progression_missions - rankStart) / (rankTarget - rankStart)) * 100),
+        );
   return (
     <div className="character-sheet">
+      <section
+        className={`sheet-rank-banner${rankReady ? ' is-ready' : ''}`}
+        aria-label="Patente e progressão"
+      >
+        <div className="sheet-rank-identity">
+          <div className="sheet-rank-level" aria-label={`Nível ${c.level}`}>
+            <small>Nível</small>
+            <strong>{c.level}</strong>
+          </div>
+          <div>
+            <span className="sheet-rank-eyebrow">Patente da guilda</span>
+            <h3>
+              {rankName(c.level)}
+              <SheetHelp label="progressão de patente">
+                Missões concluídas contam até o requisito da próxima patente. Nesse limite, missões
+                normais concedem apenas ouro; conclua o teste para ser promovido.
+                {c.level > 1 &&
+                  ' Os recursos de classe e PV dos níveis superiores ainda precisam ser conferidos na mesa.'}
+              </SheetHelp>
+            </h3>
+          </div>
+        </div>
+        <div className="sheet-rank-journey">
+          <div className="sheet-rank-progress-heading">
+            <span>
+              {rankReady
+                ? 'Teste de patente disponível'
+                : c.level === 20
+                  ? 'Jornada completa'
+                  : 'Próximo marco'}
+            </span>
+            <span>
+              {rankReady ? (
+                <Check size={16} aria-hidden="true" />
+              ) : c.level === 20 ? (
+                '20 / 20'
+              ) : (
+                `Nível ${c.level + 1}`
+              )}
+            </span>
+          </div>
+          <div
+            className="sheet-rank-track"
+            role="progressbar"
+            aria-label="Progresso até o próximo marco"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(rankProgress)}
+            aria-valuetext={progressionLabel(c.level, c.progression_missions)}
+          >
+            <span style={{ width: `${rankProgress}%` }} />
+          </div>
+          <p>{progressionLabel(c.level, c.progression_missions)}</p>
+        </div>
+      </section>
       {error && (
         <p className="form-error" role="alert">
           {error}
@@ -252,106 +330,61 @@ export function CharacterSheet({
             </SheetHelp>
           </h3>
           <p>
-            Distribua os resultados. Ao confirmar, os bônus do antecedente e os valores da ficha
-            serão calculados.
+            {revealedRolls < 6
+              ? 'Lance uma rolagem por vez. Em cada uma, quatro dados caem e o menor é descartado.'
+              : 'Distribua os resultados. Ao confirmar, os bônus do antecedente e os valores da ficha serão calculados.'}
           </p>
-          <div className="sheet-rolls">
-            {s!.rolls!.map((dice, i) => (
-              <div key={i}>
-                <small>Resultado {i + 1}</small>
-                <strong>{rolls[i]}</strong>
-                <span>
-                  {dice.map((v, j) => (
-                    <i className={j === dice.indexOf(Math.min(...dice)) ? 'discarded' : ''} key={j}>
-                      {v}
-                    </i>
-                  ))}
-                </span>
+          <AttributeDice
+            key={c.id}
+            rolls={s!.rolls!}
+            revealed={revealedRolls}
+            onReveal={setRevealedRolls}
+          />
+          {revealedRolls === 6 && (
+            <>
+              <div className="sheet-attributes">
+                {statNames.map((name, i) => (
+                  <label key={name}>
+                    {name}
+                    <select
+                      aria-label={`Resultado para ${name}`}
+                      value={assignment[i]}
+                      onChange={(e) => {
+                        const next = [...assignment],
+                          v = Number(e.target.value),
+                          old = next.indexOf(v);
+                        next[old] = next[i];
+                        next[i] = v;
+                        setAssignment(next);
+                      }}
+                    >
+                      {rolls.map((v, j) => (
+                        <option key={j} value={j}>
+                          Resultado {j + 1}: {v}
+                        </option>
+                      ))}
+                    </select>
+                    <small>
+                      {rolls[assignment[i]]} + {bonuses[i]} do antecedente
+                    </small>
+                    <strong>{rolls[assignment[i]] + bonuses[i]}</strong>
+                  </label>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="sheet-attributes">
-            {statNames.map((name, i) => (
-              <label key={name}>
-                {name}
-                <select
-                  aria-label={`Resultado para ${name}`}
-                  value={assignment[i]}
-                  onChange={(e) => {
-                    const next = [...assignment],
-                      v = Number(e.target.value),
-                      old = next.indexOf(v);
-                    next[old] = next[i];
-                    next[i] = v;
-                    setAssignment(next);
-                  }}
-                >
-                  {rolls.map((v, j) => (
-                    <option key={j} value={j}>
-                      Resultado {j + 1}: {v}
-                    </option>
-                  ))}
-                </select>
-                <small>
-                  {rolls[assignment[i]]} + {bonuses[i]} do antecedente
-                </small>
-                <strong>{rolls[assignment[i]] + bonuses[i]}</strong>
-              </label>
-            ))}
-          </div>
-          <button
-            className="button primary"
-            disabled={busy}
-            onClick={() => void action('finalize', { assignment }, true)}
-          >
-            Confirmar distribuição e abrir ficha
-          </button>
-          <p className="muted small">A confirmação é definitiva.</p>
+              <button
+                className="button primary"
+                disabled={busy}
+                onClick={() => void action('finalize', { assignment }, true)}
+              >
+                Confirmar distribuição e abrir ficha
+              </button>
+              <p className="muted small">A confirmação é definitiva.</p>
+            </>
+          )}
         </section>
       )}
       {d && s?.finalized_at && draft && (
         <>
-          {(restChoiceFields(c.race, c.class, choices).length > 0 || c.class === 'Mago') && (
-            <details className="sheet-panel">
-              <summary>Escolhas após descanso longo</summary>
-              <p className="muted small">
-                Registre as trocas permitidas depois do descanso realizado na mesa. Mago pode
-                substituir um truque; maestrias e truque do alto elfo podem ser revistos. O tomo do
-                bruxo também pode ser reconjurado após descanso curto.
-              </p>
-              {restChoiceFields(c.race, c.class, restChoices).map((f) => (
-                <ChoiceList
-                  key={f.key}
-                  label={f.label}
-                  count={f.count}
-                  options={f.options}
-                  value={restChoices.options[f.key] || []}
-                  onChange={(v) =>
-                    setRestChoices({
-                      ...restChoices,
-                      options: { ...restChoices.options, [f.key]: v },
-                    })
-                  }
-                />
-              ))}
-              {c.class === 'Mago' && (
-                <ChoiceList
-                  label="Truques do mago após descanso"
-                  count={k.cantrips}
-                  options={spellOptions(c.class, 0).map((s) => s.id)}
-                  value={restChoices.cantrips}
-                  onChange={(v) => setRestChoices({ ...restChoices, cantrips: v })}
-                />
-              )}
-              <button
-                className="button outline"
-                disabled={busy}
-                onClick={() => void action('rest-choices', restChoices)}
-              >
-                Salvar trocas do descanso
-              </button>
-            </details>
-          )}
           <div className="sheet-vitals">
             {[
               [Heart, c.hp, 'PV máximos'],
@@ -644,40 +677,44 @@ export function CharacterSheet({
                     <p>{d.known.map(spellName).join(' · ')}</p>
                   </>
                 )}
-                {!!d.slots && (
-                  <>
-                    <label>
-                      Espaços de nível 1 gastos (total {d.slots})
-                      <SheetHelp label="Espaços de magia">
-                        Recupera em descanso {c.class === 'Bruxo' ? 'curto ou longo' : 'longo'}.
-                      </SheetHelp>
-                      <input
-                        type="number"
-                        min={0}
-                        max={d.slots}
-                        value={draft.slots_used}
-                        onChange={(e) => change({ slots_used: Number(e.target.value) })}
-                      />
-                    </label>
-                  </>
-                )}
-                {k.prepared && (
-                  <>
-                    <ChoiceList
-                      label="Magias preparadas (até o limite)"
-                      help={
-                        ['Paladino', 'Patrulheiro'].includes(c.class)
-                          ? 'Após descanso longo pode substituir uma magia preparada. Registre aqui a escolha acordada na mesa.'
-                          : 'Pode trocar após um descanso longo.'
-                      }
-                      count={d.prepareCount}
-                      options={
-                        c.class === 'Mago' ? d.known : spellOptions(c.class, 1).map((v) => v.id)
-                      }
-                      value={draft.prepared}
-                      onChange={(v) => change({ prepared: v })}
-                    />
-                  </>
+                {(d.slots > 0 || k.prepared) && (
+                  <div className="sheet-form-reset sheet-spell-controls">
+                    {!!d.slots && (
+                      <>
+                        <label>
+                          Espaços de nível 1 gastos (total {d.slots})
+                          <SheetHelp label="Espaços de magia">
+                            Recupera em descanso {c.class === 'Bruxo' ? 'curto ou longo' : 'longo'}.
+                          </SheetHelp>
+                          <input
+                            type="number"
+                            min={0}
+                            max={d.slots}
+                            value={draft.slots_used}
+                            onChange={(e) => change({ slots_used: Number(e.target.value) })}
+                          />
+                        </label>
+                      </>
+                    )}
+                    {k.prepared && (
+                      <>
+                        <ChoiceList
+                          label="Magias preparadas (até o limite)"
+                          help={
+                            ['Paladino', 'Patrulheiro'].includes(c.class)
+                              ? 'Após descanso longo pode substituir uma magia preparada. Registre aqui a escolha acordada na mesa.'
+                              : 'Pode trocar após um descanso longo.'
+                          }
+                          count={d.prepareCount}
+                          options={
+                            c.class === 'Mago' ? d.known : spellOptions(c.class, 1).map((v) => v.id)
+                          }
+                          value={draft.prepared}
+                          onChange={(v) => change({ prepared: v })}
+                        />
+                      </>
+                    )}
+                  </div>
                 )}
                 {!!d.alwaysPrepared.length && (
                   <p>Sempre preparadas: {d.alwaysPrepared.map(spellName).join(' · ')}.</p>
@@ -693,11 +730,6 @@ export function CharacterSheet({
                     <p className="muted small">{g.note}</p>
                   </div>
                 ))}
-                {(d.slots > 0 || k.prepared) && (
-                  <button className="button primary" disabled={busy} onClick={saveState}>
-                    Salvar magias e espaços
-                  </button>
-                )}
               </>
             )}
             {tab === 'História e equipamento' && (
@@ -752,7 +784,9 @@ export function CharacterSheet({
                       ))}
                     </ul>
                     <p>
-                      {money(c.gold_cp)} PO · {c.experience} XP
+                      {money(c.gold_cp)} PO · {rankName(c.level)} · Nível {c.level}
+                      <br />
+                      {progressionLabel(c.level, c.progression_missions)}
                     </p>
                   </div>
                 </div>
@@ -772,6 +806,53 @@ export function CharacterSheet({
                   </button>
                 </div>
               </>
+            )}
+            {(visibleRestFields.length > 0 || (tab === 'Magias' && c.class === 'Mago')) && (
+              <details className="sheet-rest-choices">
+                <summary>Escolhas após descanso longo</summary>
+                <p className="muted small">
+                  Registre aqui as trocas permitidas depois de descansar na mesa. Estas escolhas
+                  atualizam os recursos do personagem, sem refazer sua origem ou seus atributos.
+                </p>
+                {visibleRestFields.map((f) => (
+                  <ChoiceList
+                    key={f.key}
+                    label={f.label}
+                    count={f.count}
+                    options={f.options}
+                    value={restChoices.options[f.key] || []}
+                    onChange={(v) =>
+                      setRestChoices({
+                        ...restChoices,
+                        options: { ...restChoices.options, [f.key]: v },
+                      })
+                    }
+                  />
+                ))}
+                {tab === 'Magias' && c.class === 'Mago' && (
+                  <ChoiceList
+                    label="Truques do mago após descanso"
+                    count={k.cantrips}
+                    options={spellOptions(c.class, 0).map((s) => s.id)}
+                    value={restChoices.cantrips}
+                    onChange={(v) => setRestChoices({ ...restChoices, cantrips: v })}
+                  />
+                )}
+                <button
+                  className="button outline"
+                  disabled={busy}
+                  onClick={() => void action('rest-choices', restChoices)}
+                >
+                  Salvar trocas do descanso
+                </button>
+              </details>
+            )}
+            {tab === 'Magias' && (d.slots > 0 || k.prepared) && (
+              <div className="sheet-actions">
+                <button className="button primary" disabled={busy} onClick={saveState}>
+                  Salvar magias e espaços
+                </button>
+              </div>
             )}
           </section>
         </>

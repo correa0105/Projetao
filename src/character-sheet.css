@@ -22,6 +22,122 @@
   margin: 0 auto;
   color: #d8d4ca;
 }
+/* Independent wooden header, separated from the parchment below. */
+.character-sheet .sheet-rank-banner {
+  display: grid;
+  grid-template-columns: minmax(210px, 1fr) minmax(240px, 1.25fr);
+  align-items: center;
+  gap: 32px;
+  padding: 20px 28px;
+  margin-bottom: 28px;
+  border: 1px solid #8a745348;
+  border-radius: 5px;
+  background:
+    linear-gradient(100deg, #171511ed, #171511d9),
+    url('/achievement-wood-v1.png') center / 620px auto;
+  box-shadow:
+    inset 0 1px #d9be8720,
+    0 8px 24px #0004;
+  color: #e5dccb;
+}
+.sheet-rank-identity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.sheet-rank-level {
+  width: 60px;
+  height: 64px;
+  flex: 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #a38b5c75;
+  border-radius: 4px 4px 16px 16px;
+  background: linear-gradient(145deg, #79746733, #181817a6);
+  box-shadow:
+    inset 0 0 0 3px #171612,
+    inset 0 0 0 4px #b8a98422;
+}
+.sheet-rank-level small {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #c1b297;
+}
+.sheet-rank-level strong {
+  font: 400 28px/1.2 var(--serif);
+  color: #f0e4cd;
+}
+.sheet-rank-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: #b6a485;
+}
+:root .character-sheet .sheet-rank-banner .sheet-rank-identity h3 {
+  display: flex;
+  align-items: center;
+  margin: 4px 0 0;
+  font-size: 24px;
+  color: #eee2c9;
+}
+.sheet-rank-journey {
+  min-width: 0;
+  padding-left: 30px;
+  border-left: 1px solid #b09a6c30;
+}
+.sheet-rank-progress-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #cfbea0;
+}
+.sheet-rank-progress-heading > span:last-child {
+  color: #e6d4ad;
+  white-space: nowrap;
+}
+.sheet-rank-track {
+  height: 6px;
+  margin: 10px 0 8px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #0c0c0b;
+  box-shadow:
+    0 1px #c2a57026,
+    inset 0 1px 3px #0008;
+}
+.sheet-rank-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #78623d, #b69860);
+}
+:root .character-sheet .sheet-rank-banner .sheet-rank-journey p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #bdb29f;
+}
+.sheet-rank-banner.is-ready {
+  border-color: #b6986080;
+}
+@media (max-width: 600px) {
+  .character-sheet .sheet-rank-banner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .sheet-rank-journey {
+    padding: 16px 0 0;
+    border-left: 0;
+    border-top: 1px solid #b09a6c30;
+  }
+}
 .character-sheet p.muted.small,
 .character-creation-form p.muted.small {
   color: #96866f;
@@ -58,13 +174,8 @@
   }
 }
 dialog:has(.character-creation-form) {
-  width: min(960px, calc(100vw - 48px));
+  width: min(1160px, calc(100vw - 48px));
   max-width: calc(100vw - 48px);
-}
-@media (min-width: 800px) {
-  .character-creation-form .sheet-checks {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 @media (max-width: 600px) {
   dialog:has(.character-creation-form) {
@@ -151,6 +262,46 @@ dialog:has(.character-creation-form) {
   padding: 0;
   margin: 0;
   min-width: 0;
+  display: grid;
+  gap: 20px;
+}
+.character-sheet .sheet-form-reset > p {
+  margin: 0;
+}
+.character-sheet .sheet-creation {
+  gap: 20px;
+}
+.character-sheet .sheet-field-group {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.character-sheet .sheet-field-description {
+  display: grid;
+  gap: 6px;
+}
+.character-sheet .sheet-field-description p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.character-sheet .sheet-form-reset > label,
+.character-sheet .sheet-creation > label,
+.character-sheet .sheet-field-group > label,
+.character-sheet .sheet-creation .form-grid > label {
+  line-height: 24px;
+  min-width: 0;
+}
+.character-sheet .sheet-creation .form-grid {
+  align-items: start;
+  gap: 18px 16px;
+}
+.character-sheet .sheet-form-reset label > :is(select, textarea, input:not([type='checkbox'])) {
+  margin-top: 6px;
+}
+.character-sheet .sheet-choice > legend {
+  line-height: 24px;
+  margin-bottom: 10px;
 }
 .sheet-actions {
   display: flex;

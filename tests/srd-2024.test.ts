@@ -17,6 +17,38 @@ import {
 } from '../shared/character-sheet.js';
 import { pool } from '../server/db.js';
 
+test('magia inicial: Bárbaro Acólito e seis magias no grimório do Mago', () => {
+  const acolyte = defaultChoices('Orc', 'Bárbaro', 'Acólito');
+  assert.doesNotThrow(() => validateChoices('Orc', 'Bárbaro', acolyte));
+  const barbarian = deriveSheet(
+    { race: 'Orc', class: 'Bárbaro', stats: [16, 14, 14, 10, 12, 8], level: 1 },
+    acolyte,
+  );
+  assert.equal(barbarian.slots, 0);
+  assert.equal(barbarian.spellGrants[0].cantrips.length, 2);
+  assert.equal(barbarian.spellGrants[0].spells.length, 1);
+  const soldier = defaultChoices('Orc', 'Bárbaro', 'Soldado');
+  assert.equal(
+    deriveSheet(
+      { race: 'Orc', class: 'Bárbaro', stats: [16, 14, 14, 10, 12, 8], level: 1 },
+      soldier,
+    ).spellGrants.length,
+    0,
+  );
+  const wizard = defaultChoices('Orc', 'Mago', 'Soldado');
+  const sheet = deriveSheet(
+    { race: 'Orc', class: 'Mago', stats: [8, 14, 12, 16, 10, 10], level: 1 },
+    wizard,
+  );
+  assert.equal(wizard.cantrips.length, 3);
+  assert.equal(wizard.spells.length, 6);
+  assert.equal(sheet.prepareCount, 4);
+  assert.equal(sheet.slots, 2);
+  assert.throws(() =>
+    validateChoices('Orc', 'Mago', { ...wizard, spells: wizard.spells.slice(0, 4) }),
+  );
+});
+
 test('SRD 5.2.1: espécies, classes, antecedentes e linhagens válidos', () => {
   for (const race of races)
     for (const cls of classes)

@@ -42,6 +42,7 @@ export async function purchase(
       itemId,
     ]);
     if (!item) throw new AppError(404, 'Item indisponível.');
+    if (item.price_cp === null) throw new AppError(409, 'Este item ainda não tem preço definido.');
     const total = item.price_cp * quantity;
     if (character.gold_cp < total) throw new AppError(409, 'Ouro insuficiente para esta compra.');
     const {

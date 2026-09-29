@@ -75,6 +75,29 @@ try {
   await page.screenshot({ path: 'test-results/sheet-choices.png', fullPage: true });
   await page.getByRole('button', { name: 'Rolar os seis atributos' }).click();
   await expect(page.locator('.sheet-rolls>div')).toHaveCount(6);
+  await expect(page.getByLabel('Resultado para Inteligência')).toHaveCount(0);
+  const persistedRolls = (await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])).rows[0].rolls as number[][];
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  for (let i = 0; i < 6; i++) {
+    await page.getByRole('button', { name: `Lançar dados · resultado ${i + 1}` }).click();
+    const diceDialog = page.getByRole('dialog', { name: `Rolagem ${i + 1} de 6` });
+    await expect(diceDialog).toBeVisible();
+    await expect(diceDialog.locator('.attribute-die')).toHaveCount(4);
+    await expect(diceDialog.getByRole('button', { name: 'Guardar resultado' })).toBeVisible();
+    const dice = persistedRolls[i];
+    await expect(diceDialog.locator('.attribute-dice-outcome strong')).toHaveText(String(dice.reduce((a,b) => a+b, 0) - Math.min(...dice)));
+    if (i === 0) await page.screenshot({ path: 'test-results/sheet-dice-desktop.png' });
+    if (i === 1) {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.screenshot({ path: 'test-results/sheet-dice-mobile.png' });
+    }
+    await diceDialog.getByRole('button', { name: 'Guardar resultado' }).click();
+    await expect(diceDialog).toHaveCount(0);
+    if (i === 1) await page.setViewportSize({ width: 1440, height: 1000 });
+  }
+  await expect(page.getByLabel('Resultado para Inteligência')).toBeVisible();
+  expect((await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])).rows[0].rolls).toEqual(persistedRolls);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   const before = await page.locator('.sheet-rolls').innerText();
   await page.reload();
   await expect(page.locator('.sheet-rolls')).toHaveText(before, { useInnerText: true });

@@ -3,15 +3,20 @@ import { resolve } from 'node:path';
 import { transaction } from './db.js';
 
 export async function seed() {
-  const catalog = JSON.parse(await readFile(resolve('data/catalog.json'), 'utf8'));
+  const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
   await transaction(async (client) => {
     await client.query('SELECT pg_advisory_xact_lock(74261924)');
+    await client.query('UPDATE catalog_items SET active=false WHERE NOT(id=ANY($1::text[]))', [
+      catalog.items.map((item: { id: string }) => item.id),
+    ]);
     for (const item of catalog.items) {
       await client.query(
-        `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data)
-        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT(id) DO UPDATE SET
+        `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,image_path,merchant_comment,weight_estimated)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) ON CONFLICT(id) DO UPDATE SET
         name=excluded.name,original_name=excluded.original_name,description=excluded.description,price_cp=excluded.price_cp,weight_lb=excluded.weight_lb,
-        source=excluded.source,source_url=excluded.source_url,raw_data=excluded.raw_data`,
+        source=excluded.source,source_url=excluded.source_url,raw_data=excluded.raw_data,
+        category=excluded.category,active=true,image_path=excluded.image_path,
+        merchant_comment=excluded.merchant_comment,weight_estimated=excluded.weight_estimated`,
         [
           item.id,
           item.name,
@@ -22,7 +27,14 @@ export async function seed() {
           item.weight_lb,
           item.source,
           item.source_url,
-          item.raw_data,
+          {
+            ...(item.raw_data || {}),
+            weight_estimated: item.weight_estimated,
+            display: item.display,
+          },
+          `/shop/items/${item.id}.png`,
+          item.merchant_comment,
+          item.weight_estimated,
         ],
       );
     }
@@ -72,7 +84,7 @@ export async function seed() {
         'rules',
         'A base da nossa mesa',
         'D&D 5.5e · SRD 5.2.1 (2024)',
-        'Base SRD 5.2.1 (regras revisadas de 2024). A criação de nível 1 inclui espécies, linhagens, antecedentes, talentos de origem, maestrias, magias e equipamento inicial. Atributos por 4d6, descartando o menor, com rolagem única no servidor. Os bônus vêm do antecedente. Subclasses começam no nível 3; progressão de níveis e resolução automática de combate não estão implementadas.',
+        'Base SRD 5.2.1 (regras revisadas de 2024). A criação de nível 1 inclui espécies, linhagens, antecedentes, talentos de origem, maestrias, magias e equipamento inicial. Atributos por 4d6, descartando o menor, com rolagem única no servidor. Os bônus vêm do antecedente. Subclasses começam no nível 3; níveis e patentes evoluem por missões, mas recursos completos de classe nos níveis superiores e combate automático ainda não estão implementados.',
         'Regras',
       ],
       [
@@ -88,7 +100,7 @@ export async function seed() {
         'rules',
         'Do mural à aventura',
         'Um registro, toda a história',
-        'Missões são agendadas com data e hora e aceitam inscrições enquanto abertas. Nas próximas 24 horas aparecem no Início, com aviso para o criador mestrar. Só o criador inicia ou conclui a missão; na conclusão registra o resumo, concede XP por participante e pode criar um gancho. Ganchos são apenas consultados. Só a staff publica eventos. Ouro anunciado não é pago automaticamente; o XP não altera o nível automaticamente. Missões concluídas permanecem no histórico.',
+        'Missões são agendadas com data e hora e aceitam inscrições enquanto abertas. Nas próximas 24 horas aparecem no Início, com aviso para o criador mestrar. Só o criador inicia ou conclui a missão; na conclusão registra o resumo, credita o ouro por inscrito, calcula a progressão e pode criar um gancho. Ganchos são apenas consultados. Só a staff publica eventos. Patentes: Ferro, Bronze, Adamantium, Ametista e Obsidiana. Testes liberados com nível 4/22 missões, 8/53, 12/80 e 16/102. Nesses limites missões normais dão apenas ouro; o teste promove sem aumentar a contagem. Missões concluídas permanecem no histórico.',
         'Aventuras',
       ],
       [
@@ -113,7 +125,7 @@ export async function seed() {
         'O sino da torre de vigia silenciou. A cartógrafa Elara procura aventureiros para subir o passo, investigar o observatório e encontrar a expedição desaparecida. Uma primeira jornada para um grupo de nível 1.',
         'Passo da Geada',
         'Moderada',
-        7500,
+        15000,
         'passo-da-geada',
       ],
       [
@@ -123,7 +135,7 @@ export async function seed() {
         'Suprimentos para o inverno não chegaram a Vigília. Siga os marcos de pedra pela Estrada do Ferro, encontre a caravana e descubra o que assustou os cavalos. O mercador Tomas aguarda no portão sul.',
         'Estrada do Ferro',
         'Tranquila',
-        5000,
+        15000,
         'estrada-do-ferro',
       ],
       [

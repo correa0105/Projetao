@@ -64,3 +64,9 @@ As superfícies 3D regionais anteriores usavam **Forest Ground 04**, **Dark Rock
 
 ## Fonte do mural
 IM Fell English SC, distribuída pelo Google Fonts sob SIL Open Font License. Arquivo e licença em public/fonts/im-fell-english-sc.ttf e im-fell-english-sc-OFL.txt. Origem: https://github.com/google/fonts/tree/main/ofl/imfellenglishsc .
+
+Mural de avisos: cenário vazio notice-village-empty-v4.png e atlas de seis papéis paper-atlas-v1.png gerados com image_gen para o projeto. Os textos dos avisos são renderizados pela aplicação sobre os sprites com alfa. Prompts em NOTICE-BOARD-PROMPTS.md.
+
+## Loja — 29/09/2026
+
+Os 65 PNGs de itens, descrições, preços, pesos e falas foram fornecidos pelo usuário na exportação Loja-Alvorada-Exportacao-20260929-094455. As fontes e URLs por item são preservadas em `data/shop-export/loja.json`; pesos estimados em `data/shop-export/PESOS.md`. A importação não afirma auditoria oficial de regras nem automatiza efeitos mágicos. Interior, mercador e balcão em `public/shop/` foram gerados com ImageGen para esta composição, com mercador e balcão transparentes em camadas separadas.

@@ -11,7 +11,17 @@ import {
   EyeOff,
 } from 'lucide-react';
 import { races, classes } from '../shared/rules';
+import {
+  RANKS,
+  RANK_REWARD_CP,
+  RANK_TEST_LEVELS,
+  MISSION_THRESHOLDS,
+  rankName,
+  type Rank,
+} from '../shared/progression';
 import { authClient, api, post } from './api';
+import { PaperPicker } from './NoticePaper';
+import type { PaperStyle } from '../shared/notice-board';
 import type { AtlasData, AtlasLocation, Character, Post } from './types';
 import { SheetChoices } from './SheetChoices';
 import { defaultChoices, validateChoices } from '../shared/character-sheet';
@@ -40,10 +50,12 @@ export function Modal({
   title,
   close,
   children,
+  parchment = false,
 }: {
   title: string;
   close: () => void;
   children: ReactNode;
+  parchment?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -51,6 +63,7 @@ export function Modal({
   }, []);
   return (
     <dialog
+      className={parchment ? 'character-sheet character-creation-dialog' : undefined}
       ref={ref}
       onCancel={(event) => {
         event.preventDefault();
@@ -61,7 +74,7 @@ export function Modal({
       }}
       aria-labelledby="dialog-title"
     >
-      <div className="dialog-inner">
+      <div className={parchment ? 'dialog-inner sheet-panel' : 'dialog-inner'}>
         <div className="dialog-head">
           <h2 id="dialog-title">{title}</h2>
           <button className="icon-button" onClick={close} aria-label="Fechar">
@@ -335,7 +348,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
     }
   }
   return (
-    <form className="stack character-creation-form" onSubmit={submit}>
+    <form className="sheet-form-reset character-creation-form" onSubmit={submit}>
       <p className="muted">
         Escolha sua origem e treinamento. Depois da arte, abra a Ficha para rolar e distribuir os
         seis atributos. Regras de nível 1 do SRD 5.2.1 (2024).
@@ -430,6 +443,9 @@ export function PostForm({
   requireMappedLocation?: boolean;
 }) {
   const [kind, setKind] = useState<string>(canCreateEvent ? initialKind : 'mission');
+  const [missionRank, setMissionRank] = useState<Rank>('Ferro');
+  const [rankTest, setRankTest] = useState('');
+  const [paperStyle, setPaperStyle] = useState<PaperStyle>('parchment');
   const [locations, setLocations] = useState<AtlasLocation[]>(
     initialLocation ? [initialLocation] : [],
   );
@@ -465,6 +481,10 @@ export function PostForm({
       await post<Post>('/board', {
         ...form,
         kind,
+        mission_rank: missionRank,
+        rank_test_level:
+          kind === 'mission' && form.rank_test_level ? Number(form.rank_test_level) : null,
+        paper_style: paperStyle,
         location_id: locationId || undefined,
         starts_at: form.starts_at ? new Date(String(form.starts_at)).toISOString() : undefined,
         reward_cp: Math.round(Number(form.reward) * 100),
@@ -477,7 +497,7 @@ export function PostForm({
     }
   }
   return (
-    <form className="stack" onSubmit={submit}>
+    <form className="stack board-post-form" onSubmit={submit}>
       <label>
         Título
         <input
@@ -510,6 +530,46 @@ export function PostForm({
           </select>
         </label>
       </div>
+      {kind === 'mission' && (
+        <label>
+          Patente da missão
+          <select
+            aria-label="Patente da missão"
+            value={missionRank}
+            onChange={(event) => {
+              setMissionRank(event.target.value as Rank);
+              setRankTest('');
+            }}
+          >
+            {RANKS.map((rank) => (
+              <option key={rank} value={rank}>
+                {rank} · {RANK_REWARD_CP[rank] / 100} PO
+              </option>
+            ))}
+          </select>
+          <small className="muted">
+            Somente personagens desta patente podem se inscrever, inclusive nos testes.
+          </small>
+        </label>
+      )}
+      {kind === 'mission' && (
+        <label>
+          Categoria da missão
+          <select
+            name="rank_test_level"
+            value={rankTest}
+            onChange={(event) => setRankTest(event.target.value)}
+          >
+            <option value="">Missão normal</option>
+            {RANK_TEST_LEVELS.filter((level) => rankName(level) === missionRank).map((level) => (
+              <option key={level} value={level}>
+                Teste de patente · {missionRank} → {rankName(level + 1)} (
+                {MISSION_THRESHOLDS[level]} missões)
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
       <label>
         Data e hora de início
         <input name="starts_at" type="datetime-local" required={kind === 'mission'} />
@@ -557,19 +617,45 @@ export function PostForm({
         <textarea name="description" minLength={15} maxLength={3000} rows={4} required />
       </label>
       <label>
-        Recompensa anunciada (PO)
-        <input
-          name="reward"
-          type="number"
-          min={0}
-          max={100000}
-          step="0.01"
-          defaultValue={0}
-          required
+        Resumo no papel (opcional)
+        <textarea
+          name="paper_summary"
+          maxLength={180}
+          rows={2}
+          placeholder="Um convite curto para a aventura"
         />
+        <small className="muted">Sem resumo, usamos o início da descrição.</small>
+      </label>
+      <PaperPicker value={paperStyle} onChange={setPaperStyle} disabled={busy} />
+      <label>
+        Recompensa por participante (PO)
+        {kind === 'mission' ? (
+          <input
+            name="reward"
+            type="number"
+            value={RANK_REWARD_CP[missionRank] / 100}
+            readOnly
+            aria-label="Recompensa por participante (PO)"
+          />
+        ) : (
+          <input
+            name="reward"
+            type="number"
+            min={0}
+            max={100000}
+            step="0.01"
+            defaultValue={0}
+            required
+          />
+        )}
+        {kind === 'mission' && (
+          <small className="muted">Valor fixo da patente, pago a cada inscrito na conclusão.</small>
+        )}
       </label>
       <p className="muted small">
-        Ouro é uma recompensa anunciada. O XP é concedido pelo criador ao concluir a missão.
+        {kind === 'mission'
+          ? 'Ao concluir, cada inscrito recebe o ouro e a progressão é calculada automaticamente. Missões normais deixam de contar enquanto o teste de patente está pendente.'
+          : 'Eventos não concedem progressão nem pagamento automático.'}
       </p>
       {error && (
         <p className="form-error" role="alert">

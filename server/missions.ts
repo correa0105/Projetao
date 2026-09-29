@@ -1,6 +1,13 @@
 import { z } from 'zod';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
+import {
+  progressMission,
+  testEligible,
+  rankName,
+  RANK_REWARD_CP,
+  type Rank,
+} from '../shared/progression.js';
 
 export const completionSchema = z.object({
   summary: z.string().trim().min(10).max(5000),
@@ -8,7 +15,7 @@ export const completionSchema = z.object({
     .array(
       z.object({
         character_id: z.string().uuid(),
-        experience: z.number().int().min(0).max(1000000),
+        experience: z.number().int().min(0).max(1000000).optional(), // Compatibilidade: XP recebido não concede progressão.
       }),
     )
     .max(200),
@@ -38,7 +45,7 @@ export async function completeMission(
       'SELECT character_id FROM mission_participants WHERE post_id=$1 ORDER BY character_id',
       [id],
     );
-    const rewards = new Map(data.rewards.map((reward) => [reward.character_id, reward.experience]));
+    const rewards = new Set(data.rewards.map((reward) => reward.character_id));
     if (
       rewards.size !== data.rewards.length ||
       rewards.size !== participants.length ||
@@ -46,20 +53,49 @@ export async function completeMission(
     )
       throw new AppError(
         400,
-        'Informe a experiência de cada personagem inscrito, sem adicionar outros personagens.',
+        'Confirme todos os personagens inscritos, sem adicionar ou repetir personagens.',
       );
     // Stable character order prevents deadlocks between two missions with shared participants.
+    const gold = RANK_REWARD_CP[mission.mission_rank as Rank];
     for (const participant of participants) {
-      const xp = rewards.get(participant.character_id)!;
-      const result = await client.query(
-        'UPDATE characters SET experience=experience+$1 WHERE id=$2 AND experience::bigint+$1 <= 2147483647 RETURNING id',
-        [xp, participant.character_id],
+      const {
+        rows: [character],
+      } = await client.query('SELECT * FROM characters WHERE id=$1 FOR UPDATE', [
+        participant.character_id,
+      ]);
+      if (rankName(character.level) !== mission.mission_rank)
+        throw new AppError(
+          409,
+          `${character.name} não pertence mais à patente ${mission.mission_rank} desta missão.`,
+        );
+      if (
+        mission.rank_test_level !== null &&
+        !testEligible(character.level, character.progression_missions, mission.rank_test_level)
+      )
+        throw new AppError(409, `${character.name} não está mais apto a este teste de patente.`);
+      const progress = progressMission(
+        character.level,
+        character.progression_missions,
+        mission.rank_test_level,
       );
-      if (!result.rowCount)
-        throw new AppError(409, 'O limite de experiência do personagem foi atingido.');
+      const result = await client.query(
+        'UPDATE characters SET level=$1,progression_missions=$2,gold_cp=gold_cp+$3 WHERE id=$4 AND gold_cp::bigint+$3 <= 2147483647 RETURNING id',
+        [progress.level, progress.missions, gold, participant.character_id],
+      );
+      if (!result.rowCount) throw new AppError(409, 'O limite de ouro do personagem foi atingido.');
       await client.query(
-        'INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by) VALUES($1,$2,$3,$4)',
-        [id, participant.character_id, xp, userId],
+        `INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by,gold_cp,progression_credit,level_before,level_after,rank_promoted)
+         VALUES($1,$2,0,$3,$4,$5,$6,$7,$8)`,
+        [
+          id,
+          participant.character_id,
+          userId,
+          gold,
+          progress.credited,
+          character.level,
+          progress.level,
+          progress.promoted,
+        ],
       );
     }
     const {

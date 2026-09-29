@@ -55,8 +55,8 @@ export function characterSheetRouter() {
       user = res.locals.user.id;
     await transaction(async (client) => {
       const c = await owned(client, id, user, true);
-      if (c.level !== 1)
-        throw new AppError(409, 'A criação da ficha está disponível para personagens de nível 1.');
+      // A patente pode evoluir antes da revisão da origem legada. A rolagem existente,
+      // não o nível atual, impede reescolher a origem de uma ficha já confirmada.
       const {
         rows: [sheet],
       } = await client.query('SELECT rolls,choices FROM character_sheets WHERE character_id=$1', [

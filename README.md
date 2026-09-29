@@ -1,5 +1,18 @@
 # Alvorada Cinzenta
 
+## Patentes e níveis
+
+Cada missão é exclusiva de uma patente, selecionada na criação. Não é possível se
+inscrever acima ou abaixo da sua patente. Ouro automático por participante: Ferro
+150 PO, Bronze 230 PO, Adamantium 300 PO, Ametista 390 PO e Obsidiana 500 PO.
+
+Personagens evoluem por missões concluídas: Ferro, Bronze, Adamantium, Ametista e
+Obsidiana. Nos totais 22, 53, 80 e 102, precisam concluir um teste de patente para
+ultrapassar respectivamente os níveis 4, 8, 12 e 16. Enquanto aguardam, missões normais
+concedem somente ouro. A categoria do teste pode ser escolhida ao registrar uma missão.
+Tabela completa e regras em [Patentes](docs/PATENTES.md). Recursos de classe de níveis
+altos continuam pendentes, conforme [Roadmap de regras](docs/ROADMAP-REGRAS.md).
+
 ## Fundo publicado do Reino do Norte
 
 A visão pública agora usa a imagem fornecida pelo usuário em `public/kingdom/north-sonnenberg.png` (1154 × 866), com proporção original, zoom e arraste. Sonnenberg é o único ponto para abrir o registro de missões do reino, incluindo publicação e histórico; o botão acompanha a projeção do mapa. Nenhum local SQL foi renomeado ou removido. O editor continua privado: ao abri-lo, carrega seu próprio fundo, rascunho e câmera; ao fechá-lo, volta ao mapa publicado. As descrições de área vazia abaixo se aplicam somente ao rascunho privado sem upload.
@@ -66,12 +79,12 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Ficha de nível 1 com escolhas SRD na criação, atributos por 4d6 no servidor,
   distribuição definitiva, bônus de antecedente, perícias, salvaguardas, equipamentos,
   magias e recursos de sessão. [Fluxo e limites](docs/CHARACTER-SHEET.md).
-- Oito equipamentos conferidos no SRD 5.2.1 oficial, com busca, categorias e links da fonte.
+- Loja ilustrada com os 65 itens da exportação fornecida pelo usuário: dez categorias, falas do mercador, mesa interativa e carrinho transacional ligado à mochila. Orbe do dragão sem preço disponível apenas para exame.
 - Compras transacionais: preço no servidor, desconto de ouro, empilhamento no inventário,
   histórico de compras e chave de idempotência.
 - Inventário individual, soma de peso e conquistas por personagem.
 - Mural: missões com data/hora e inscrições; próximas mesas aparecem no Início nas 24 horas anteriores, com aviso para o criador mestrar.
-- Conclusão pelo criador com resumo, XP por personagem inscrito e gancho opcional. Resumo e resultados ficam no histórico; XP é persistido uma única vez.
+- Conclusão pelo criador com resumo, progresso por missões, ouro por inscrito e gancho opcional. Recompensas e promoções são registradas uma única vez.
 - Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos da staff/admin.
 - Mundo com relevo cartográfico em Three.js, detalhe de solo/rocha, arraste elástico, zoom e nuvens em movimento, preenchendo a tela. A visão inicial usa 100%, equivalente ao antigo enquadramento de 142%; a silhueta fornecida pelo usuário define a geografia. Vinte e dois territórios têm demarcações com destaque ao passar o mouse e clique na superfície; mar contínuo ampliado, ilhotas, vulcão e tormenta complementam o cenário.
 - Reino do Norte abre uma área regional vazia e navegável em Canvas 2D. A conta autorizada pode enviar um fundo e compor sprites em oito direções. Não há névoa ou terreno predefinido. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
@@ -84,11 +97,11 @@ Mundo usa uma malha de terreno com alturas, materiais procedurais com detalhe de
 
 House é uma página narrativa; propriedades ainda não estão implementadas.
 A ficha implementa a criação no nível 1 do SRD 5.2.1. Não há combate automático,
-progressão, equipar/vender/consumir itens ou aplicação de efeitos. Equipamentos iniciais
+evolução completa dos recursos de classe, equipar/vender/consumir itens ou aplicação de efeitos. Equipamentos iniciais
 ficam registrados na ficha, separados das compras do inventário. Novos personagens recebem a riqueza oficial de classe e antecedente. Conversões preservam o saldo existente.
 
-O ouro anunciado nas missões continua informativo. Experiência é concedida na conclusão,
-mas a mudança de nível ainda não é automática. Há uma única guilda; campanhas privadas,
+Missões concluídas creditam o ouro anunciado e a progressão por patentes no servidor.
+XP antigo permanece no histórico. Há uma única guilda; campanhas privadas,
 moderação e painel de administração serão adicionados depois. Recuperação de senha,
 verificação de e-mail e OAuth dependem de configuração de provedores e ainda não estão habilitados.
 
@@ -136,7 +149,7 @@ npm run test:editor  # Builder autorizado, upload, zoom e restauração vazia
 npm run test:atlas   # Mundo, visão do reino, missões compartilhadas e celular
 npm run db:migrate   # Aplica migrations pendentes
 npm run db:seed      # Atualiza catálogo e cria conteúdo inicial ausente
-npm run catalog:import # Busca snapshot SRD do 5etools; revise diff e rode db:seed
+npm run test:shop    # Loja e checkout em PostgreSQL descartável + navegador
 ```
 
 O teste de navegador usa Microsoft Edge instalado. Para Chrome, configure `BROWSER_CHANNEL=chrome`.
@@ -174,7 +187,8 @@ server/services.ts    transação de compra e idempotência
 server/atlas.ts       regiões/locais SQL e validação do local da publicação
 server/db.ts          pool e helper de transação
 db/migrations/        schema SQL versionado
-data/catalog.json     snapshot SRD com commit da fonte
+data/catalog.json     snapshot anterior preservado
+data/shop-export/     catálogo ativo fornecido pelo usuário, pesos e falas
 scripts/              setup, catálogo, comandos SQL e teste de navegador
 tests/                integração com PostgreSQL real
 docs/CONTEXTO.md       memória de produto e desenvolvimento
@@ -212,3 +226,7 @@ docker compose up -d --build app
 - [5etools — itens](https://5e.tools/items.html); snapshot exato e commit em `data/catalog.json`.
 - [SRD oficial](https://www.dndbeyond.com/srd) e [atribuição local](docs/ATTRIBUTION.md).
 - [Contexto do projeto](docs/CONTEXTO.md), a primeira leitura para continuar o desenvolvimento.
+
+## Mural de avisos
+
+Missões, eventos e ganchos ativos aparecem como papéis clicáveis no mural da vila. Ao publicar, escolha entre seis modelos de papel e informe um resumo opcional. Apenas o autor pode arrastar seu aviso dentro da madeira ou mover com as setas do teclado; a posição fica salva no PostgreSQL. As placas laterais abrem listas com busca, filtros e paginação, incluindo o histórico e a opção de localizar um papel encoberto. Eventos continuam restritos à staff; ganchos nascem da conclusão de missões. `npm run test:notice-board` valida o fluxo em um banco descartável.

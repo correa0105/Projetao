@@ -18,6 +18,7 @@ export type Character = {
   biography: string;
   level: number;
   experience: number;
+  progression_missions: number;
   hp: number;
   armor_class: number;
   gold_cp: number;
@@ -29,7 +30,10 @@ export type Item = {
   original_name: string;
   category: string;
   description: string;
-  price_cp: number;
+  price_cp: number | null;
+  image_path?: string | null;
+  merchant_comment?: string;
+  weight_estimated?: boolean;
   weight_lb: string;
   source: string;
   source_url: string;
@@ -41,10 +45,16 @@ export type Details = {
   history: { id: string; name: string; quantity: number; total_cp: number; created_at: string }[];
 };
 export type Post = {
+  paper_style: import('../shared/notice-board').PaperStyle;
+  paper_summary: string;
+  paper_x: number;
+  paper_y: number;
   id: string;
   author_id: string | null;
   author_name: string | null;
   kind: 'mission' | 'event' | 'hook';
+  rank_test_level: number | null;
+  mission_rank: import('../shared/progression').Rank;
   status: 'open' | 'active' | 'completed' | 'closed';
   title: string;
   description: string;
@@ -59,7 +69,14 @@ export type Post = {
   completion_summary: string | null;
   source_mission_id: string | null;
   source_mission_title: string | null;
-  rewards: { name: string; experience: number }[];
+  rewards: {
+    name: string;
+    experience: number;
+    gold_cp: number;
+    progression_credit: number | null;
+    level_after: number | null;
+    rank_promoted: boolean;
+  }[];
 };
 export type AtlasRegion = { id: string; name: string; description: string; available: boolean };
 export type AtlasLocation = {
