@@ -1,7 +1,7 @@
 /* Shared header scale and viewport margins, independent of the content width. */
 :root .app-shell {
   --page-header-edge: clamp(24px, 6.6vw, 95px);
-  --page-header-height: 50px;
+  --page-header-height: 42px;
 }
 :root .app-shell .topbar.player-hud {
   min-height: var(--page-header-height);
@@ -134,4 +134,55 @@
 :root .app-shell .player-hud :is(.notifications-trigger, .logout-button) > svg {
   width: 12px;
   height: 12px;
+}
+/* HUD mais justo, com nível e classe abaixo do nome. */
+:root .app-shell .topbar.player-hud {
+  padding: 4px 6px 4px 11px;
+}
+:root .app-shell .player-hud .player-hud-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+:root .app-shell .player-hud .character-selector-trigger { height: 16px; font-size: 11px; line-height: 1.2; }
+:root .app-shell .player-hud .player-hud-details {
+  display: block;
+  margin: 0;
+  font-size: 8px;
+  line-height: 1.2;
+  text-align: left;
+}
+/* Seta centralizada em relação às duas linhas do personagem. */
+:root .app-shell .player-hud .player-hud-selection {
+  position: relative;
+  padding-right: 22px;
+}
+:root .app-shell .player-hud .character-selector,
+:root .app-shell .player-hud .character-selector-trigger { position: static; }
+:root .app-shell .player-hud .character-selector-trigger > svg {
+  position: absolute;
+  top: calc(50% - 7px);
+  right: 0;
+  width: 14px;
+  height: 14px;
+}
+/* Lista compacta: 40% maior que a escala anterior de 0,6. */
+:root .app-shell .player-hud .character-options {
+  left: 0;
+  right: auto;
+  scale: 0.84;
+  transform-origin: top left;
+  padding: 3px;
+  top: calc(100% + 5px);
+}
+:root .app-shell .player-hud .character-option {
+  min-height: 0;
+  padding: 6px 8px;
+  gap: 6px;
+}
+:root .app-shell .player-hud .character-option small {
+  margin-top: 2px;
+  line-height: 1.3;
 }

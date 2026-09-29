@@ -389,3 +389,13 @@ Títulos atualizados: Ficha de Personagem no header da ficha; Mapa Alvorada no m
 Ações do header padronizadas: sino e sair em botões 30x30px, mesmo fundo/borda/raio/hover; ícones 14px com traço 1,75.
 
 Último ajuste do header: gap de 5px entre seletor e ações, botões de 26x26px e ícones de 12px.
+
+HUD: padding reduzido em todos os lados para 4px 6px; restaurada abaixo do nome somente a linha Nível X · Classe. Sem patente, espécie, escudo ou rótulo Seu aventureiro.
+
+HUD refinado: nome 11px com linha de 16px; nível/classe 8px, gap zero, linhas alinhadas à esquerda e conjunto centralizado verticalmente. Padding atual 4px 6px 4px 11px.
+
+Seta do seletor centralizada nas duas linhas; lista aberta de personagens reduzida integralmente em 40% com origem no canto superior direito.
+
+Lista de personagens: escala corrigida de 0,6 para 0,84 (+40% sobre o tamanho anterior). Compactação feita nos espaços: padding externo 3px, opções 6px 8px sem altura mínima de 60px, gap de 6px e distância do seletor 5px.
+
+Fonte dos balões e opções restaurada para Georgia regular, original do pacote de importação; preservados tamanhos, padding, contorno e posições ajustados. Lista de personagens abre alinhada à esquerda do seletor com origem superior esquerda.

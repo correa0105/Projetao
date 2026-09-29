@@ -826,6 +826,11 @@ function Portal({ user }: { user: User }) {
                   onSelect={setSelectedId}
                 />
               )}
+              {character && (
+                <span className="player-hud-details">
+                  Nível {character.level} · {character.class}
+                </span>
+              )}
             </div>
             <Notifications
               characters={characters}
