@@ -190,6 +190,16 @@ try {
   await expect(page.locator('.merchant-speech[role="status"] > span')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/shop-mobile.png' });
+  await page.setViewportSize({ width: 1740, height: 852 });
+  await page.evaluate(() => { location.hash = 'characters'; });
+  await expect(page.getByRole('heading', { name: 'Seu acampamento', exact: true })).toBeVisible();
+  const campHeading = (await page.locator('.camp-heading').boundingBox())!;
+  const campHud = (await page.locator('.topbar.player-hud').boundingBox())!;
+  const campTitle = (await page.locator('.camp-heading h1').boundingBox())!;
+  expect(campHeading.x).toBeCloseTo(95, 0);
+  expect(campTitle.x).toBeCloseTo(campHeading.x, 0);
+  expect(campHeading.y + campHeading.height / 2).toBeCloseTo(campHud.y + campHud.height / 2, 0);
+  await page.screenshot({ path: 'test-results/character-camp-header.png' });
   expect(errors).toEqual([]);
   console.log(
     'Loja: catálogo de 65 itens, checkout atômico, repetição concorrente, preços, saldo, validação, imagens, mesa, arraste, carrinho e mobile OK.',

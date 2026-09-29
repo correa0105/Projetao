@@ -399,3 +399,5 @@ Seta do seletor centralizada nas duas linhas; lista aberta de personagens reduzi
 Lista de personagens: escala corrigida de 0,6 para 0,84 (+40% sobre o tamanho anterior). Compactação feita nos espaços: padding externo 3px, opções 6px 8px sem altura mínima de 60px, gap de 6px e distância do seletor 5px.
 
 Fonte dos balões e opções restaurada para Georgia regular, original do pacote de importação; preservados tamanhos, padding, contorno e posições ajustados. Lista de personagens abre alinhada à esquerda do seletor com origem superior esquerda.
+
+Corrigido header de Personagens: removida a disposição antiga em coluna que centralizava título/contador. Título segue a faixa e margens compartilhadas do header, topo 20px, contador ao lado em vez de abaixo.

@@ -1524,12 +1524,12 @@ body:has(.world-atlas.is-world) {
   right: 0;
 }
 .app-shell:has(.character-camp) .character-camp {
-  padding-top: 28px;
+  padding-top: 20px;
 }
 .app-shell:has(.character-camp) .camp-heading {
-  padding-right: 350px;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 16px;
 }
 @media (max-width: 700px) {
   .app-shell .topbar.player-hud {
