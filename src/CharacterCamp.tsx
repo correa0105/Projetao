@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
-import { Plus, Sparkles, Trash2, X } from 'lucide-react';
+import { Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
 import type { Character } from './types';
@@ -307,11 +307,12 @@ export function CharacterCamp({
             </article>
           ))}
         {characters.length + state.pending_new < 2 && (
-          <button className="camp-new" onClick={onCreate}>
-            <Plus size={25} />
-            <span>Uma nova história</span>
-            <small>Criar personagem</small>
-          </button>
+          <article className="camp-character camp-create-slot">
+            <button className="camp-new camp-figure" onClick={onCreate} aria-label="Criar personagem" title="Criar personagem">
+              <CharacterSilhouette />
+            </button>
+            <div aria-hidden="true" />
+          </article>
         )}
       </div>
       {(loadError || (error && !editing)) && (

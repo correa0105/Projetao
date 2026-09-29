@@ -189,7 +189,7 @@ try {
   await expect(page.getByRole('switch', { name: 'Modo escuro' })).toHaveCount(0);
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await navigate('Personagens');
-  await page.getByRole('button', { name: 'Uma nova história Criar personagem' }).click();
+  await page.getByRole('button', { name: 'Criar personagem' }).click();
   await page.getByLabel('Nome do personagem').fill('Borin Pedrafirme');
   await page.getByLabel('Raça', { exact: true }).selectOption('Anão');
   await submitCharacterArt();

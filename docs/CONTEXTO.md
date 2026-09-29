@@ -403,3 +403,9 @@ Fonte dos balões e opções restaurada para Georgia regular, original do pacote
 Corrigido header de Personagens: removida a disposição antiga em coluna que centralizava título/contador. Título segue a faixa e margens compartilhadas do header, topo 20px, contador ao lado em vez de abaixo.
 
 Contador de personagens movido para uma linha própria abaixo de Seu acampamento, fora do header e alinhado à esquerda do título.
+
+Vaga de criação no acampamento agora usa CharacterSilhouette com + central e contorno/brilho ao hover/foco. Removido cartão Uma nova história; botão mantém nome acessível Criar personagem e fluxo de criação existente.
+
+Silhueta de criação refinada: removido o +; escala reduzida de 0,8 para 0,7 e deslocamento 18px para baixo, mantendo clique e brilho de hover/foco.
+
+Silhueta de criação deslocada mais 12px para a esquerda, preservando escala e altura aprovadas.

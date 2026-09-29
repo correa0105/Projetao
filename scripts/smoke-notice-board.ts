@@ -267,7 +267,7 @@ try {
   await expect(notificationPanel).toHaveCount(0);
   await expect(page.getByRole('button', { name: /^Pendências e notificações/ })).toBeFocused();
   await page.goto(origin + '/#characters');
-  await page.getByRole('button', { name: 'Uma nova história Criar personagem' }).click();
+  await page.getByRole('button', { name: 'Criar personagem' }).click();
   await expect(page.getByRole('dialog', { name: 'Uma nova história' })).toBeVisible();
   await page.screenshot({ path: 'test-results/sheet-creation-mobile.png' });
   await page.setViewportSize({ width: 1440, height: 900 });

@@ -51,7 +51,7 @@ try {
   userId = (await signup.json()).user.id;
   await page.goto(origin + '/#characters');
   await page.reload();
-  await page.getByRole('button', { name: 'Uma nova história Criar personagem' }).click();
+  await page.getByRole('button', { name: 'Criar personagem' }).click();
   await page.getByLabel('Nome do personagem').fill('Liora dos Tomos');
   await page.getByLabel('Espécie', { exact: true }).selectOption('Elfo');
   await page.getByLabel('Classe', { exact: true }).selectOption('Mago');
