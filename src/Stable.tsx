@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
-import { stableGear, tackFit } from '../shared/stable-gear';
+import { stableGear } from '../shared/stable-gear';
 import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
@@ -20,7 +20,6 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
   const saddle = equipment.find(id => id === 'saddle-riding' || id === 'saddle-military');
   const armor = equipment.find(id => id.startsWith('barding-'));
   const saddleImage = saddle ? `/stable/saddled/${mount.id}-${coat}-${saddle.replace('saddle-','')}.png` : '';
-  const saddleFit = saddle ? tackFit[mount.id][saddle] : undefined;
   const image = armor
     ? `/stable/barded/${mount.id}-${coat}-${armor.replace('barding-','')}.png`
     : saddleImage || `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
@@ -28,7 +27,10 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
   const total = mount.price_cp + chosenGear.reduce((sum,g) => sum + g.price_cp,0);
   function toggleGear(id: string) {
     const item = stableGear.find(g => g.id === id)!;
-    setEquipment(current => current.includes(id) ? current.filter(x => x !== id) : [...current.filter(x => stableGear.find(g => g.id === x)?.slot !== item.slot),id].sort());
+    setEquipment(current => current.includes(id) ? current.filter(x => x !== id) : [...current.filter(x => {
+      const slot = stableGear.find(g => g.id === x)?.slot;
+      return item.slot === 'feed' ? slot !== 'feed' : slot === 'feed';
+    }),id].sort());
     setSpeech(item.description);
   }
   const [confirm, setConfirm] = useState(false);
@@ -99,7 +101,6 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
           <div className="stable-animal-art">
           <img className="stable-cast-shadow" src={image} alt="" aria-hidden="true"/>
           <img className="stable-animal-base" key={image} src={image} alt={`${mount.name} de corpo inteiro no campo`} />
-          {saddle && armor && saddleFit && <img className="stable-equipped stable-saddle-on-barding" src={`/stable/gear/${saddle}.png`} alt="Sela sobre a barda" style={{left:`${saddleFit.x}%`,top:`${saddleFit.y}%`,width:`${saddleFit.width}%`,height:`${saddleFit.height}%`,transform:`rotate(${saddleFit.angle}deg)`}}/>}
           </div>
         </div>
         {equipment.includes("feed") && <img className="stable-feed" src="/stable/gear/feed.png" alt="Ração ao lado da montaria"/>}

@@ -129,12 +129,13 @@ try {
     await page.locator('.stable-coats button').nth(1).click();
     await page.getByRole('button',{name:'Experimentar Barda de couro',exact:true}).click();
     await page.getByRole('button',{name:'Experimentar Sela militar',exact:true}).click();
-    await expect(page.locator('.stable-equipped-armor')).toHaveCount(0);
-    await expect(page.locator('.stable-animal-base')).toHaveAttribute('src',new RegExp('barded/.+-alternate-leather.png'));
-    await expect(page.locator('.stable-saddle-on-barding')).toHaveAttribute('src','/stable/gear/saddle-military.png');
-    await page.screenshot({path:`test-results/tack-combination-${animal}.png`});
+    await expect(page.locator('.stable-equipped')).toHaveCount(0);
+    await expect(page.locator('.stable-animal-base')).toHaveAttribute('src',new RegExp('saddled/.+-alternate-military.png'));
+    await expect(page.getByRole('button',{name:'Experimentar Barda de couro',exact:true})).toHaveAttribute('aria-pressed','false');
     await page.getByRole('button',{name:'Experimentar Barda de couro',exact:true}).click();
-    await page.getByRole('button',{name:'Experimentar Sela militar',exact:true}).click();
+    await expect(page.locator('.stable-animal-base')).toHaveAttribute('src',new RegExp('barded/.+-alternate-leather.png'));
+    await expect(page.getByRole('button',{name:'Experimentar Sela militar',exact:true})).toHaveAttribute('aria-pressed','false');
+    await page.getByRole('button',{name:'Experimentar Barda de couro',exact:true}).click();
   }
   for (const [animal,id] of [['Cavalo de montaria','riding-horse'],['Cavalo de guerra','warhorse'],['Pônei','pony'],['Mula','mule']]) {
     await page.getByRole('button',{name:`Ver ${animal}`,exact:true}).click();
