@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createWorldOcean } from './world-ocean';
 import {
   landTerritory,
@@ -494,7 +493,7 @@ function loadSurfaceTexture(path: string, repeat = true): Promise<THREE.Texture 
   });
 }
 
-/** Geography drives real relief, procedural materials and instanced forest crowns. */
+/** Geography drives relief and continuous natural woodland materials. */
 export async function createWorldRelief(): Promise<{
   group: THREE.Group;
   sampleHeight: (u: number, v: number) => number;
@@ -532,6 +531,7 @@ export async function createWorldRelief(): Promise<{
   );
   const heightField = new Float32Array(GRID_COUNT);
   const terrainColors = new Float32Array(GRID_COUNT * 3);
+  const woodlandCover = new Float32Array(GRID_COUNT);
   const ridgePaths = RIDGES.map((ridge) => ({
     ...ridge,
     lines: segments(ridge.path.map(toWorld)),
@@ -552,7 +552,7 @@ export async function createWorldRelief(): Promise<{
     lines: segments(river.points.filter((_, i) => i % 5 === 0).map((p) => [p.x, p.y] as Point)),
   }));
   const meadow = new THREE.Color('#818563');
-  const forest = new THREE.Color('#354735');
+  const forest = new THREE.Color('#425744');
   const sand = new THREE.Color('#d7b76e');
   const dune = new THREE.Color('#c3a05e');
   const stone = new THREE.Color('#96999d');
@@ -609,8 +609,17 @@ export async function createWorldRelief(): Promise<{
       const duneWind = wx * 4.1 + wy * 1.2 + (fbm(wx * 0.8, wy * 0.8) - 0.5) * 6;
       elevation += desertAmount * edge * (0.018 + Math.pow(0.5 + 0.5 * Math.sin(duneWind), 3) * 0.055);
       elevation -= channel * Math.min(0.07, elevation * 0.25);
+      // A continuous canopy follows biome, hills and river valleys. Large glades
+      // interrupt the woodland gradually, without separate scattered tree props.
+      const glades = smooth(fbm(wx * 0.65 + 13.2, wy * 0.65 - 7.8), 0.26, 0.47);
+      const woods = smooth(forestAmount, 0.18, 0.72) * glades
+        * (1 - desertAmount) * (1 - snowAmount)
+        * (1 - smooth(mountain, 0.18, 0.65)) * edge
+        * smooth(riverDistance, 0.045, 0.2);
+      woodlandCover[i] = woods;
+      elevation += woods * (0.012 + fbm(wx * 7.1, wy * 7.1) * 0.018);
       heightField[i] = clamp(elevation, 0, 1.7);
-      color.copy(meadow).lerp(forest, clamp(forestAmount * (0.95 + broad * 0.18), 0, 1));
+      color.copy(meadow).lerp(forest, woods * 0.92);
       color.lerp(dune, desertAmount).lerp(sand, desertAmount * broad * 0.52);
       const rocky = smooth(mountain, 0.34, 0.93);
       color.lerp(stone, rocky * 0.92);
@@ -670,6 +679,7 @@ export async function createWorldRelief(): Promise<{
   const terrainGeometry = trackGeometry(new THREE.PlaneGeometry(WORLD_WIDTH, WORLD_HEIGHT, NX, NY));
   for (let i = 0; i < GRID_COUNT; i++) terrainGeometry.attributes.position.setZ(i, heightField[i]);
   terrainGeometry.setAttribute('color', new THREE.BufferAttribute(terrainColors, 3));
+  terrainGeometry.setAttribute('woodlandCover', new THREE.BufferAttribute(woodlandCover, 1));
   terrainGeometry.computeVertexNormals();
   // Exposed slopes show neutral gray rock even below the summit; calm plains retain
   // their biome colour. This uses actual geometry, not painted elevation cues.
@@ -700,15 +710,16 @@ export async function createWorldRelief(): Promise<{
       value: new THREE.Vector2(groundPhoto ? 1 : 0, rockPhoto ? 1 : 0),
     };
     shader.vertexShader =
-      'varying vec3 vWorldRelief;\nvarying vec3 vWorldReliefNormal;\n' + shader.vertexShader;
+      'attribute float woodlandCover;\nvarying float vWoodlandCover;\nvarying vec3 vWorldRelief;\nvarying vec3 vWorldReliefNormal;\n' + shader.vertexShader;
     shader.vertexShader = shader.vertexShader.replace(
       '#include <worldpos_vertex>',
-      '#include <worldpos_vertex>\nvWorldRelief = (modelMatrix * vec4(transformed, 1.0)).xyz;\nvWorldReliefNormal = normalize(mat3(modelMatrix) * objectNormal);',
+      '#include <worldpos_vertex>\nvWoodlandCover = woodlandCover;\nvWorldRelief = (modelMatrix * vec4(transformed, 1.0)).xyz;\nvWorldReliefNormal = normalize(mat3(modelMatrix) * objectNormal);',
     );
     shader.fragmentShader =
       /* glsl */ `
       varying vec3 vWorldRelief;
       varying vec3 vWorldReliefNormal;
+      varying float vWoodlandCover;
       uniform sampler2D worldReliefNoise;
       uniform sampler2D worldGroundPhoto;
       uniform sampler2D worldRockPhoto;
@@ -754,6 +765,15 @@ export async function createWorldRelief(): Promise<{
       float worldRockFinish = mix(1.0, clamp(0.58 + worldRockGrain * 1.7, 0.68, 1.38), worldPhotoAvailable.y);
       diffuseColor.rgb *= (0.88 + worldGrain * 0.15 + worldMacro * 0.10)
         * mix(worldGroundFinish, worldRockFinish, worldRockDetail);
+      float woodland = vWoodlandCover * (1.0 - smoothstep(0.18, 0.48, worldSlope));
+      vec2 canopyWarp = vec2(terrainNoise(vWorldRelief.xy * 2.7),
+        terrainNoise(vWorldRelief.xy * 2.4 + 17.3));
+      float canopy = terrainNoise(vWorldRelief.xy * 9.0 + canopyWarp * 3.0) * 0.68
+        + terrainNoise(vWorldRelief.xy * 24.0 + canopyWarp * 5.0) * 0.32;
+      // Muted foliage light and shadow merge into a continuous aerial canopy.
+      vec3 woodlandFinish = diffuseColor.rgb * (0.78 + canopy * 0.43);
+      woodlandFinish = mix(woodlandFinish, woodlandFinish * vec3(0.90, 1.08, 0.97), canopy * 0.35);
+      diffuseColor.rgb = mix(diffuseColor.rgb, woodlandFinish, woodland);
       // Mineral layers, fissures and wind ripples are computed in world space.
       // They follow the surface and lighting, with no painted atlas shading.
       float strataWarp = terrainNoise(vWorldRelief.xy * 3.1);
@@ -789,12 +809,13 @@ export async function createWorldRelief(): Promise<{
         + worldPhotoHeight * mix(0.012, 0.025, worldRockDetail);
       worldDetailHeight += (strata * 0.003 - fractures * 0.005) * worldRockDetail
         + (duneRipples * 0.002 + sandGrain * 0.001) * sandAmount;
+      worldDetailHeight += canopy * woodland * 0.006;
       vec3 worldGradient = sign(worldDet) * (dFdx(worldDetailHeight) * worldBx + dFdy(worldDetailHeight) * worldBy);
       normal = normalize(abs(worldDet) * normal - worldGradient);
     `,
     );
   };
-  terrainMaterial.customProgramCacheKey = () => 'world-real-relief-v9-sand-finish';
+  terrainMaterial.customProgramCacheKey = () => 'world-real-relief-v10-continuous-woodland';
   const terrain = new THREE.Mesh(terrainGeometry, terrainMaterial);
   terrain.name = 'world-land-geometry';
   terrain.castShadow = terrain.receiveShadow = true;
@@ -825,132 +846,6 @@ export async function createWorldRelief(): Promise<{
   borderOverlay.renderOrder = 25;
   borderOverlay.raycast = () => {};
   group.add(borderOverlay);
-
-  // Individual crowns occupy real 3D space. Two instanced meshes keep draw calls
-  // bounded; deterministic placement avoids changing forests on every visit.
-  const forestCrowns: { x: number; y: number; z: number; size: number; conifer: boolean; seed: number }[] = [];
-  const spacing = 0.085;
-  for (let row = 0; row < WORLD_HEIGHT / spacing; row++) {
-    for (let col = 0; col < WORLD_WIDTH / spacing; col++) {
-      const seed = hash(col + 73, row + 137);
-      const wx = -WORLD_WIDTH / 2 + (col + 0.15 + seed * 0.7) * spacing;
-      const wy = -WORLD_HEIGHT / 2 + (row + 0.15 + hash(row + 51, col + 19) * 0.7) * spacing;
-      const u = wx / WORLD_WIDTH + 0.5, v = 0.5 - wy / WORLD_HEIGHT;
-      const i = Math.round(v * NY) * STRIDE + Math.round(u * NX);
-      if (shore[i] < 0.15 || snowWeight[i] > 0.08) continue;
-      const density = forestWeight[i] / Math.max(0.05, landWeight[i]);
-      if (density < 0.32 || seed > density * 0.74) continue;
-      const z = sampleHeight(u, v);
-      const slope = Math.hypot(sampleHeight(u + 0.001, v) - z,
-        sampleHeight(u, v + 0.001) - z);
-      if (z > 0.73 || slope > 0.045) continue;
-      // Open glades and organic clusters, without a regular planting grid.
-      if (noise(wx * 2.4 + 5, wy * 2.4 - 17) < 0.23) continue;
-      forestCrowns.push({ x: wx, y: wy, z, size: 0.035 + seed * 0.019,
-        conifer: v < 0.29 || z > 0.35, seed });
-    }
-  }
-  // Pull existing trees into small groves; keep the exact instance count. Reject
-  // shifts onto shore, snow or steep terrain rather than adding replacement trees.
-  for (const crown of forestCrowns) {
-    const groveSize = 0.48;
-    const gx = Math.floor(crown.x / groveSize), gy = Math.floor(crown.y / groveSize);
-    const centerX = (gx + 0.25 + hash(gx + 213, gy + 53) * 0.5) * groveSize;
-    const centerY = (gy + 0.25 + hash(gx + 97, gy + 157) * 0.5) * groveSize;
-    const x = THREE.MathUtils.lerp(crown.x, centerX, 0.42);
-    const y = THREE.MathUtils.lerp(crown.y, centerY, 0.42);
-    const u = x / WORLD_WIDTH + 0.5, v = 0.5 - y / WORLD_HEIGHT;
-    const i = Math.round(v * NY) * STRIDE + Math.round(u * NX);
-    const z = sampleHeight(u, v);
-    const slope = Math.hypot(sampleHeight(u + 0.001, v) - z, sampleHeight(u, v + 0.001) - z);
-    if (shore[i] > 0.15 && snowWeight[i] < 0.08 && forestWeight[i] > 0.2 && z < 0.73 && slope < 0.045) {
-      crown.x = x; crown.y = y; crown.z = z;
-    }
-  }
-  for (const conifer of [false, true]) {
-    const crowns = forestCrowns.filter((crown) => crown.conifer === conifer);
-    // Overlapping branch clusters produce a broken leafy silhouette, instead of
-    // one smooth ball or a rotationally symmetric cone. Shared per forest type.
-    const clusters: THREE.BufferGeometry[] = [];
-    const lobes = conifer ? 9 : 7;
-    for (let lobe = 0; lobe < lobes; lobe++) {
-      const angle = lobe * 2.39996;
-      const tier = conifer ? lobe / (lobes - 1) : 0.5;
-      const spread = conifer ? 0.58 * (1 - tier) : (lobe === 0 ? 0 : 0.43);
-      const radius = conifer ? 0.7 * (1 - tier * 0.7) : 0.63;
-      const cluster = new THREE.IcosahedronGeometry(1, 1);
-      const positions = cluster.attributes.position;
-      for (let index = 0; index < positions.count; index++) {
-        const x = positions.getX(index), y = positions.getY(index), z = positions.getZ(index);
-        const irregularity = 0.77 + noise(x * 4.7 + lobe * 3, y * 4.7 + z * 2) * 0.46;
-        positions.setXYZ(index, x * irregularity, y * irregularity, z * irregularity);
-      }
-      cluster.scale(radius, radius * 0.83, conifer ? radius * 0.62 : 0.68);
-      cluster.translate(Math.cos(angle) * spread, Math.sin(angle) * spread,
-        conifer ? 0.55 + tier * 1.95 : 0.95 + Math.sin(angle * 1.7) * 0.32);
-      clusters.push(cluster);
-    }
-    const trunk = new THREE.CylinderGeometry(0.07, 0.13, 0.85, 5)
-      .rotateX(Math.PI / 2).translate(0, 0, 0.425).toNonIndexed();
-    clusters.push(trunk);
-    const geometry = trackGeometry(mergeGeometries(clusters)!);
-    clusters.forEach((cluster) => cluster.dispose());
-    const material = trackMaterial(new THREE.MeshStandardMaterial({
-      color: '#ffffff', roughness: 0.94, metalness: 0,
-    }));
-    material.onBeforeCompile = (shader) => {
-      shader.vertexShader = 'varying vec3 crownPosition;\n' + shader.vertexShader;
-      shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>',
-        '#include <begin_vertex>\ncrownPosition=position;');
-      shader.fragmentShader = `varying vec3 crownPosition;
-        float leafHash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
-        float leafNoise(vec3 p){
-          vec3 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);
-          return mix(mix(mix(leafHash(i),leafHash(i+vec3(1,0,0)),f.x),
-            mix(leafHash(i+vec3(0,1,0)),leafHash(i+vec3(1,1,0)),f.x),f.y),
-            mix(mix(leafHash(i+vec3(0,0,1)),leafHash(i+vec3(1,0,1)),f.x),
-            mix(leafHash(i+vec3(0,1,1)),leafHash(i+vec3(1,1,1)),f.x),f.y),f.z);
-        }
-        ` + shader.fragmentShader;
-      shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `
-        #include <color_fragment>
-        float leafClusters=leafNoise(crownPosition*7.0)*0.65+leafNoise(crownPosition*19.0)*0.35;
-        diffuseColor.rgb*=0.69+leafClusters*0.66;
-        diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(1.06,1.1,0.94),leafClusters*0.45);
-        // Sparse leaf facets catch light independently from the branch volumes.
-      `);
-      shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', `
-        #include <normal_fragment_maps>
-        vec3 leafDx=dFdx(-vViewPosition),leafDy=dFdy(-vViewPosition);
-        vec3 leafBx=cross(leafDy,normal),leafBy=cross(normal,leafDx);
-        float leafDet=dot(leafDx,leafBx);
-        float leafDetail=leafClusters*0.0009;
-        normal=normalize(abs(leafDet)*normal-sign(leafDet)*
-          (dFdx(leafDetail)*leafBx+dFdy(leafDetail)*leafBy));
-      `);
-    };
-    material.customProgramCacheKey = () => 'world-foliage-branch-clusters-v2';
-    const trees = new THREE.InstancedMesh(geometry, material, crowns.length);
-    trees.name = conifer ? 'world-conifer-crowns' : 'world-broadleaf-crowns';
-    const transform = new THREE.Object3D();
-    const foliage = new THREE.Color();
-    crowns.forEach((crown, index) => {
-      transform.position.set(crown.x, crown.y, crown.z + 0.005);
-      transform.rotation.z = crown.seed * Math.PI * 2;
-      transform.scale.set(crown.size * 1.28 * (0.85 + crown.seed * 0.3),
-        crown.size * 1.28 * (0.72 + hash(index + 17, 83) * 0.5), crown.size * (0.86 + crown.seed * 0.4));
-      transform.updateMatrix();
-      trees.setMatrixAt(index, transform.matrix);
-      foliage.set(conifer ? '#485e48' : '#60714d').multiplyScalar(0.86 + crown.seed * 0.32);
-      trees.setColorAt(index, foliage);
-    });
-    trees.receiveShadow = true;
-    trees.castShadow = true;
-    trees.computeBoundingSphere();
-    // Picking continues to use the terrain; foliage never intercepts territories.
-    trees.raycast = () => {};
-    group.add(trees);
-  }
 
   const ocean = createWorldOcean(shore, NX, NY, timeUniform);
   group.add(ocean.mesh);
