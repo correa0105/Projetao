@@ -19,7 +19,7 @@ export function createWorldOcean(
     ),
   ];
   const material = new THREE.MeshStandardMaterial({
-    roughness: 0.48,
+    roughness: 0.38,
     metalness: 0,
     dithering: true,
   });
@@ -86,11 +86,12 @@ export function createWorldOcean(
       diffuseColor.rgb=mix(diffuseColor.rgb,oceanShallow,shallows*(0.48+seabed*0.24));
       diffuseColor.rgb *= 0.97+seaFbm(oceanPosition*0.23)*0.06;
       float seconds=oceanTime*0.001;
-      vec2 drift=vec2(seconds*0.045,seconds*0.023);
+      vec2 drift=vec2(seconds*0.065,seconds*0.032);
       vec2 swellWarp=vec2(seaFbm(oceanPosition*0.51-drift),seaFbm(oceanPosition*0.43+7.1-drift));
       float swell=seaFbm(oceanPosition*1.45+swellWarp*2.8-drift);
       float ripples=seaFbm(oceanPosition*5.2+swellWarp*3.4-drift*1.6);
-      float waterHeight=swell*0.023+ ripples*0.003;
+      float capillary=seaFbm(oceanPosition*12.0+swellWarp*4.0-drift*2.2);
+      float waterHeight=swell*0.034+ ripples*0.005+capillary*0.0015;
       float breakers=seaFbm(oceanPosition*14.0+swellWarp*4.0-drift*2.0);
       float foam=smoothstep(0.49,0.73,breakers)*exp(-offshore/0.075)
         *smoothstep(0.24,0.68,ripples);
@@ -98,11 +99,21 @@ export function createWorldOcean(
       // contours in white. Only small broken patches remain at the waterline.
       float windSwell=sin(dot(oceanPosition,vec2(2.8,1.1))-seconds*0.65+swellWarp.x*1.8);
       float crossingSwell=sin(dot(oceanPosition,vec2(-1.3,3.4))-seconds*0.43+swellWarp.y*1.4);
-      waterHeight+=(windSwell*0.007+crossingSwell*0.004)
+      waterHeight+=(windSwell*0.011+crossingSwell*0.003)
         *(0.35+0.65*smoothstep(0.02,0.32,offshore));
+      // Soft moving turquoise light on shallow water; it follows surface flow,
+      // never the continent outline. Fine normals carry the small reflections.
+      float movingLight=smoothstep(0.45,0.67,ripples)*smoothstep(0.36,0.64,capillary);
+      diffuseColor.rgb*=0.96+swell*0.07;
+      diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(1.03,1.16,1.18),
+        movingLight*(0.18+shelf*0.36));
       foam*=0.16*smoothstep(0.0,0.016,offshore);
       diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.38,0.62,0.64),foam);
     `,
+    );
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <roughnessmap_fragment>',
+      '#include <roughnessmap_fragment>\nroughnessFactor=clamp(roughnessFactor+(ripples-0.45)*0.14,0.29,0.49);',
     );
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <normal_fragment_maps>',
@@ -116,7 +127,7 @@ export function createWorldOcean(
     `,
     );
   };
-  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v5-wind-swells';
+  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v6-flowing-light';
   // All detail is shaded continuously; a single plane cannot expose colored mesh cells.
   const geometry = new THREE.PlaneGeometry(240, 200);
   const mesh = new THREE.Mesh(geometry, material);

@@ -24,3 +24,7 @@ Validação do refino: build Docker/TypeScript aprovado; smoke mundial completo 
 Usuário rejeitou as faixas brancas das ondas e o acabamento das árvores. Oceano deixa de usar frentes baseadas em distância costeira; ondas de vento em duas direções e ruído animado modificam a normal da água. Espuma restrita a manchas discretas no encontro com a costa. Copas refeitas com sete grupos de folhagem nas árvores largas e nove nas coníferas, tronco, proporções variáveis e detalhes de normal no material. Mantida densidade reduzida e fronteiras em hover acima das copas. Não restaurar os contornos brancos nem os modelos simples de esfera/cone.
 
 Validação desta correção: build Docker/TypeScript e smoke mundial completo com GPU aprovados em desktop e celular, sem erros de shader/console. Captura aproximada revisada para confirmar ausência de faixas brancas e a nova silhueta das copas.
+
+## Água e bosques mais cheios (30/09/2026)
+
+Copas 28% mais largas, altura ligeiramente menor e árvores aproximadas em pequenos bosques determinísticos. Mantida exatamente a quantidade de instâncias: redistribuição aproxima cada árvore do centro local e rejeita movimentos para costa, neve ou encosta íngreme. Oceano ganha ondulações finas, movimento de luz turquesa nas águas rasas e rugosidade variável para reflexos; sem reintroduzir contornos brancos. Fronteiras no hover permanecem acima da vegetação.

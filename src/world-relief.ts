@@ -850,6 +850,23 @@ export async function createWorldRelief(): Promise<{
         conifer: v < 0.29 || z > 0.35, seed });
     }
   }
+  // Pull existing trees into small groves; keep the exact instance count. Reject
+  // shifts onto shore, snow or steep terrain rather than adding replacement trees.
+  for (const crown of forestCrowns) {
+    const groveSize = 0.48;
+    const gx = Math.floor(crown.x / groveSize), gy = Math.floor(crown.y / groveSize);
+    const centerX = (gx + 0.25 + hash(gx + 213, gy + 53) * 0.5) * groveSize;
+    const centerY = (gy + 0.25 + hash(gx + 97, gy + 157) * 0.5) * groveSize;
+    const x = THREE.MathUtils.lerp(crown.x, centerX, 0.42);
+    const y = THREE.MathUtils.lerp(crown.y, centerY, 0.42);
+    const u = x / WORLD_WIDTH + 0.5, v = 0.5 - y / WORLD_HEIGHT;
+    const i = Math.round(v * NY) * STRIDE + Math.round(u * NX);
+    const z = sampleHeight(u, v);
+    const slope = Math.hypot(sampleHeight(u + 0.001, v) - z, sampleHeight(u, v + 0.001) - z);
+    if (shore[i] > 0.15 && snowWeight[i] < 0.08 && forestWeight[i] > 0.2 && z < 0.73 && slope < 0.045) {
+      crown.x = x; crown.y = y; crown.z = z;
+    }
+  }
   for (const conifer of [false, true]) {
     const crowns = forestCrowns.filter((crown) => crown.conifer === conifer);
     // Overlapping branch clusters produce a broken leafy silhouette, instead of
@@ -920,8 +937,8 @@ export async function createWorldRelief(): Promise<{
     crowns.forEach((crown, index) => {
       transform.position.set(crown.x, crown.y, crown.z + 0.005);
       transform.rotation.z = crown.seed * Math.PI * 2;
-      transform.scale.set(crown.size * (0.85 + crown.seed * 0.3),
-        crown.size * (0.72 + hash(index + 17, 83) * 0.5), crown.size * (0.9 + crown.seed * 0.45));
+      transform.scale.set(crown.size * 1.28 * (0.85 + crown.seed * 0.3),
+        crown.size * 1.28 * (0.72 + hash(index + 17, 83) * 0.5), crown.size * (0.86 + crown.seed * 0.4));
       transform.updateMatrix();
       trees.setMatrixAt(index, transform.matrix);
       foliage.set(conifer ? '#485e48' : '#60714d').multiplyScalar(0.86 + crown.seed * 0.32);
