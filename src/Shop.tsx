@@ -7,28 +7,66 @@ import { Modal } from './components';
 import content from './shop-content.json';
 import './shop.css';
 import './shop-reference.css';
+import './shop-responsive.css';
 import { merchantComment, merchantConversations } from './shop-presentation';
 
 type Line = { id: string; quantity: number; x: number; y: number };
 type Point = { x: number; y: number };
 function SpeechBubbleShape() {
   const ref = useRef<SVGSVGElement>(null);
-  const [size, setSize] = useState({ width: 200, height: 100 });
+  const [shape, setShape] = useState({ width: 200, height: 100, x: 100, y: 140 });
   useLayoutEffect(() => {
-    const parent = ref.current?.parentElement;
-    if (!parent) return;
-    const update = () => setSize({ width: parent.clientWidth, height: parent.clientHeight });
+    const bubble = ref.current?.parentElement;
+    const vendor = bubble?.closest('.merchant-vendor')?.querySelector('img');
+    if (!bubble || !vendor) return;
+    const update = () => {
+      const face = vendor.getBoundingClientRect();
+      const scene = bubble.closest('.shop-scene')!;
+      const room = scene.getBoundingClientRect();
+      const catalog = scene.querySelector('.shop-showcase')!.getBoundingClientRect();
+      const stacked = room.width <= 1100;
+      const leftLimit = stacked ? room.left + 14 : catalog.right + 16;
+      // The empty area beside the head can hold the bubble without covering the face.
+      const rightLimit = face.left + face.width * .28 - 24;
+      const available = rightLimit - leftLimit;
+      const side = available >= (stacked ? 160 : 220);
+      const width = side ? Math.min(320, available) : Math.min(380, face.width, room.width - 28);
+      bubble.style.width = `${width}px`;
+      bubble.style.maxWidth = 'none';
+      bubble.style.right = 'auto';
+      bubble.style.transform = 'none';
+      const height = bubble.offsetHeight;
+      const header = document.querySelector('.topbar.player-hud')?.getBoundingClientRect();
+      const topLimit = stacked ? catalog.bottom + 12 : (header?.bottom ?? room.top) + 12;
+      const left = side ? rightLimit - width : Math.min(room.right - width - 14, face.left + (face.width - width) / 2);
+      const top = side ? Math.max(topLimit, face.top + face.height * .18) : Math.max(topLimit, face.top - height - 22);
+      bubble.style.left = `${left - face.left}px`;
+      bubble.style.top = `${top - face.top}px`;
+      bubble.dataset.placement = side ? 'side' : 'above';
+      const box = bubble.getBoundingClientRect();
+      setShape({ width: bubble.clientWidth, height: bubble.clientHeight,
+        x: face.left + face.width * .54 - box.left,
+        y: face.top + face.height * .28 - box.top });
+    };
     const observer = new ResizeObserver(update);
-    observer.observe(parent);
+    observer.observe(bubble);
+    observer.observe(vendor);
+    window.addEventListener('resize', update);
     update();
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); window.removeEventListener('resize', update); };
   }, []);
-  const w = size.width;
-  const h = size.height;
-  const y = Math.max(22, Math.min(h - 22, h * 0.65));
+  const { width: w, height: h, x: targetX, y: targetY } = shape;
+  const bottom = targetY > h && targetX < w + 30;
+  const x = Math.max(22, Math.min(w - 22, targetX));
+  const y = Math.max(22, Math.min(h - 22, targetY));
+  const tipX = bottom ? x + Math.max(-12, Math.min(12, (targetX - x) * .2)) : w + 19;
+  const tipY = bottom ? h + 19 : y + Math.max(-12, Math.min(12, (targetY - y) * .2));
+  const rightEdge = bottom ? `V${h - 12}` : `V${y - 9} L${tipX} ${tipY} L${w - .5} ${y + 9} V${h - 12}`;
+  const bottomEdge = bottom ? `H${x + 9} L${tipX} ${tipY} L${x - 9} ${h - .5} H12` : 'H12';
   return (
-    <svg ref={ref} className="merchant-speech-shape" aria-hidden="true" width={w + 21} height={h + 1}>
-      <path d={`M12 .5 H${w - 12} Q${w - .5} .5 ${w - .5} 12 V${y - 9} L${w + 19} ${y + 6} L${w - .5} ${y + 9} V${h - 12} Q${w - .5} ${h - .5} ${w - 12} ${h - .5} H12 Q.5 ${h - .5} .5 ${h - 12} V12 Q.5 .5 12 .5 Z`} />
+    <svg ref={ref} className="merchant-speech-shape" aria-hidden="true"
+      data-tail-side={bottom ? 'bottom' : 'right'} width={w + 21} height={h + 21}>
+      <path d={`M12 .5 H${w - 12} Q${w - .5} .5 ${w - .5} 12 ${rightEdge} Q${w - .5} ${h - .5} ${w - 12} ${h - .5} ${bottomEdge} Q.5 ${h - .5} .5 ${h - 12} V12 Q.5 .5 12 .5 Z`} />
     </svg>
   );
 }
@@ -78,55 +116,21 @@ export function Shop({
   const sceneRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const scene = sceneRef.current;
-    const vendor = vendorRef.current;
-    const showcase = scene?.querySelector<HTMLElement>('.shop-showcase');
-    const bubble = vendor?.querySelector<HTMLElement>('.merchant-speech');
-    if (!scene || !vendor || !showcase) return;
-    const alignHorizontal = () => {
-      if (scene.clientWidth <= 1100) {
-        vendor.style.removeProperty('--shop-vendor-right');
-        return;
-      }
-      if (!bubble) return;
-      const gap = 0.5 * 96 / 2.54;
-      const delta = bubble.getBoundingClientRect().left - showcase.getBoundingClientRect().right - gap;
-      const right = parseFloat(getComputedStyle(vendor).right);
-      if (Math.abs(delta) > 0.1) vendor.style.setProperty('--shop-vendor-right', `${right + delta}px`);
-    };
-    const observer = new ResizeObserver(alignHorizontal);
-    observer.observe(scene);
-    observer.observe(showcase);
-    observer.observe(vendor);
-    if (bubble) observer.observe(bubble);
-    alignHorizontal();
-    return () => observer.disconnect();
-  }, [speechKey, speechVisible, talk]);
-  useEffect(() => {
-    const scene = sceneRef.current;
-    const vendor = vendorRef.current;
-    const header = document.querySelector<HTMLElement>('.topbar.player-hud');
-    if (!scene || !vendor || !header) return;
-    const alignScene = () => {
-      const width = scene.clientWidth;
-      const height = scene.clientHeight;
-      const headTop = height * 0.69 - vendor.offsetHeight + vendor.offsetWidth * (32 / 1254);
-      const headerGap = 0.50 * 96 / 2.54;
-      const shift = width > 900 ? Math.max(0, header.getBoundingClientRect().bottom + headerGap - headTop) : 0;
-      scene.style.setProperty('--shop-scene-shift', `${shift}px`);
-      const originalHeight = Math.max(height, (width * 941) / 1672);
-      const alignment = width <= 760 ? 1 : width / height >= 2 ? 0.65 : 0.35;
-      const originalTop = (height - originalHeight) * alignment;
-      // Preserve the counter's vertical displacement; enlarge only when the top would be exposed.
-      const counterEdge = originalTop + originalHeight * 0.632 + shift;
-      const imageHeight = Math.max(originalHeight, counterEdge / 0.632);
+    if (!scene) return;
+    const alignBackground = () => {
+      const counter = scene.querySelector<HTMLElement>('.shop-counter');
+      if (!counter) return;
+      // The painted counter begins at 63.2% of the source image.
+      // Anchor it to the interactive tabletop, regardless of viewport aspect ratio.
+      const edge = counter.offsetTop;
+      const imageHeight = Math.max(scene.clientWidth * 941 / 1672,
+        edge / .632, (scene.clientHeight - edge) / .368);
       scene.style.setProperty('--shop-scene-image-height', `${imageHeight}px`);
-      scene.style.setProperty('--shop-scene-image-top', `${counterEdge - imageHeight * 0.632}px`);
+      scene.style.setProperty('--shop-scene-image-top', `${edge - imageHeight * .632}px`);
     };
-    const observer = new ResizeObserver(alignScene);
+    const observer = new ResizeObserver(alignBackground);
     observer.observe(scene);
-    observer.observe(vendor);
-    observer.observe(header);
-    alignScene();
+    alignBackground();
     return () => observer.disconnect();
   }, []);
   useEffect(() => {

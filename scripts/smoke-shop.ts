@@ -173,17 +173,41 @@ try {
   await page.screenshot({ path: 'test-results/shop-desktop.png' });
   await page.setViewportSize({ width: 1740, height: 852 });
   await page.screenshot({ path: 'test-results/shop-reference-wide.png' });
-  const npcBox = (await page.locator('.merchant-vendor-toggle').boundingBox())!;
-  const deskBox = (await page.locator('.shop-counter').boundingBox())!;
-  const catalogBox = (await page.locator('.shop-showcase').boundingBox())!;
-  expect(npcBox.x).toBeGreaterThanOrEqual(0);
-  expect(catalogBox.y + catalogBox.height).toBeLessThan(deskBox.y - 50);
-  const shift = await page.locator('.shop-scene').evaluate(el => parseFloat(getComputedStyle(el).getPropertyValue('--shop-scene-shift')));
-  expect(deskBox.height).toBeCloseTo(852 * .36 - shift, 0);
-  const headerBox = (await page.locator('.topbar.player-hud').boundingBox())!;
-  expect(npcBox.y + npcBox.width * 32 / 1254).toBeCloseTo(headerBox.y + headerBox.height + 0.50 * 96 / 2.54, 0);
-  const speechBox = (await page.locator('.merchant-speech').boundingBox())!;
-  expect(speechBox.x - catalogBox.x - catalogBox.width).toBeCloseTo(0.5 * 96 / 2.54, 0);
+  for (const viewport of [{width:1440,height:900}, {width:1920,height:1080}, {width:1740,height:852}, {width:2560,height:1440},
+    {width:1280,height:720}, {width:1110,height:800}, {width:320,height:740}, {width:1024,height:768}, {width:768,height:1024},
+    {width:390,height:844}, {width:844,height:390}]) {
+    await page.setViewportSize(viewport);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(100);
+    await page.getByRole('button', { name: 'Examinar Armadura de couro', exact: true }).click();
+    const bubble = page.locator('.merchant-speech');
+    await expect(bubble.locator('svg')).toHaveAttribute('data-tail-side', (await bubble.getAttribute('data-placement')) === 'above' ? 'bottom' : 'right');
+    expect(await bubble.locator('span').first().evaluate(el => el.scrollHeight <= el.clientHeight + 1)).toBe(true);
+    const overflowingCards = await page.locator('.shop-product').evaluateAll(cards => cards.flatMap(card => {
+      const box = card.getBoundingClientRect();
+      return Array.from(card.querySelectorAll('h3, p, small, .shop-weight, footer, footer button, footer strong')).filter(el => {
+        const r = el.getBoundingClientRect();
+        return r.left < box.left - 1 || r.right > box.right + 1 || r.top < box.top - 1 || r.bottom > box.bottom + 1;
+      }).map(el => el.textContent);
+    }));
+    expect(overflowingCards, `Card overflow at ${viewport.width}px`).toEqual([]);
+    const bubbleBox = (await bubble.boundingBox())!;
+    expect(bubbleBox.y).toBeGreaterThanOrEqual(0);
+    expect(bubbleBox.x).toBeGreaterThanOrEqual(0);
+    const npc = (await merchant.boundingBox())!;
+    const desk = (await page.locator('.shop-counter').boundingBox())!;
+    const catalog = (await page.locator('.shop-showcase').boundingBox())!;
+    expect(catalog.width).toBeGreaterThan(viewport.width * .5);
+    expect(catalog.height).toBeGreaterThan(400);
+    expect(catalog.y + catalog.height).toBeLessThan(desk.y);
+    expect(npc.x).toBeGreaterThanOrEqual(0);
+    expect(npc.x + npc.width).toBeLessThanOrEqual(viewport.width + 1);
+    expect(npc.y + npc.height).toBeLessThan(desk.y + npc.width * .16);
+    expect(npc.x >= catalog.x + catalog.width || npc.y >= catalog.y + catalog.height - 30).toBe(true);
+    expect(desk.height).toBeGreaterThanOrEqual(145);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.screenshot({path: `test-results/shop-${viewport.width}x${viewport.height}.png`, fullPage:true});
+  }
   await page.setViewportSize({ width: 390, height: 844 });
   await search.fill('Adaga');
   await page.getByRole('button', { name: 'Comprar', exact: true }).click();

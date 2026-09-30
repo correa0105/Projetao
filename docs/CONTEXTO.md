@@ -409,3 +409,15 @@ Vaga de criação no acampamento agora usa CharacterSilhouette com + central e c
 Silhueta de criação refinada: removido o +; escala reduzida de 0,8 para 0,7 e deslocamento 18px para baixo, mantendo clique e brilho de hover/foco.
 
 Silhueta de criação deslocada mais 12px para a esquerda, preservando escala e altura aprovadas.
+
+## Enquadramento responsivo da loja (30/09/2026)
+
+shop-responsive.css concentra o layout atual: catálogo sem escala, margens do cabeçalho, vendedor ao lado e balcão ancorado à mesma coordenada do fundo (63,2% da imagem original). Removidos deslocamentos em centímetros e ajuste recursivo baseado no balão. Até 1100px, catálogo fica acima do vendedor; no celular categorias rolam horizontalmente e os itens usam uma coluna. Telas baixas permitem rolagem vertical. Smoke isolado verifica sete viewports de 390 a 2560px e mantém a cobertura de compras e arraste.
+
+Ajuste posterior: profundidade do tampo varia de 145 a 300px com a largura da janela. Sua textura usa camada independente do interior para não ampliar com a altura da página. Vendedor avança 14% da própria largura sobre o tampo para apoiar os braços; itens acompanham a escala disponível.
+
+Vendedor ampliado em desktops (até 32vw/51% da altura da cena), categorias com mais largura em 1440px. Ponta do balão calculada pela posição real do vendedor: inferior quando acima, lateral quando ao lado. Teste inclui 1440x900 e 1920x1080 e verifica direção da ponta e enquadramento.
+
+Balões medem o espaço livre entre catálogo e rosto: priorizam posição lateral quando há largura útil; caso contrário ficam acima. Texto completo sem max-height ou rolagem interna, incluindo respostas longas.
+
+Cartões do catálogo agora usam grade com altura pelo conteúdo, detalhes em fluxo normal e quebra de textos/botões. Catálogo com menos de 620px úteis muda para uma coluna. Smoke verifica os limites de texto, preço e botão dos 65 itens em onze resoluções, inclusive 320px e 1110px.

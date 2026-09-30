@@ -52,3 +52,6 @@ Não são necessários subagentes para alterações rotineiras; nenhum fluxo de 
 
 
 
+
+## Fluxo Git autorizado pelo usuário (30/09/2026)
+Neste checkout, trabalhar na branch Welson e enviar para origin/Welson as alterações solicitadas pelo usuário após validação. Autorização contínua dada nesta conversa. Não enviar para main. Preservar alterações de outras pessoas e backups locais.
