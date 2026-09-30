@@ -427,3 +427,6 @@ Menu Loja abre Empório e Estábulo (#stable). Stable.tsx/stable.css exibem camp
 
 
 Refinamento do estábulo: removido o painel Seu estábulo e a ficha lateral permanente. Botão ? sobre o animal abre ficha/compra em modal; nome da espécie centralizado no alto. Animal e tratadora ampliados, com composição vertical em celulares. Duas pelagens ilustradas por espécie, selecionáveis no campo e persistidas pela migration 034; idempotência também verifica a pelagem. Smoke isolado cobre seleção, persistência da cor, modal e seis viewports (320 a 1920px). Prompts em docs/STABLE-COATS-ART.md.
+
+
+Estábulo: pelagens e botão ? reunidos no menu de montarias, sem link de retorno ao Empório. Layout refeito para 100dvh, removendo o padding inferior global de 155px nesta página. Em celulares o menu fica compacto acima do campo; a cena não exige rolagem vertical. Balão ancorado ao centro da tratadora, cores das figuras harmonizadas com o entardecer e sombras de contato. Smoke valida ausência de rolagem, acesso aos controles e compra em seis resoluções.

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { ArrowLeft, Coins, Check, Footprints } from 'lucide-react';
+import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
 import type { Character } from './types';
 import { post } from './api';
@@ -48,7 +48,6 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
     <header className="stable-selected-title"><span>COMPANHEIRO DE ESTRADA</span><h2>{mount.name}</h2></header>
     <div className="stable-layout">
       <aside className="stable-choices stable-panel" aria-label="Montarias disponíveis">
-        <a href="#shop" className="stable-back"><ArrowLeft size={15}/> Empório</a>
         <h2>Companheiros de estrada</h2>
         <p>Escolha quem seguirá ao seu lado.</p>
         <div className="stable-portraits">{mounts.map(m => <button key={m.id} aria-pressed={m.id === selected} aria-label={`Ver ${m.name}`} disabled={busy}
@@ -56,13 +55,15 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
           <span className="stable-head" style={{ '--head-position': m.head } as CSSProperties}><img src={`/stable/${m.id}.png`} alt="" /></span>
           <span>{m.name}</span><small>{money(m.price_cp)} PO</small>
         </button>)}</div>
+        <div className="stable-selection-tools">
+        <fieldset className="stable-coats"><legend>Pelagem</legend>{coats.map(c => <button key={c.id} type="button" aria-pressed={coat === c.id} onClick={() => setCoat(c.id)}><i style={{background:c.color}} />{c.label}</button>)}</fieldset>
+          <button className="stable-inspect" aria-label="Ver especificações da montaria" aria-haspopup="dialog" onClick={() => setDetails(true)}>?</button>
+        </div>
       </aside>
       <div className="stable-field" aria-label={`No campo: ${mount.name}`}>
         <div className="stable-animal" style={{ '--animal-scale': mount.scale } as CSSProperties}>
           <img key={image} src={image} alt={`${mount.name} de corpo inteiro no campo`} />
-          <button className="stable-inspect" aria-label="Ver especificações da montaria" aria-haspopup="dialog" onClick={() => setDetails(true)}>?</button>
         </div>
-        <fieldset className="stable-coats"><legend>Pelagem</legend>{coats.map(c => <button key={c.id} type="button" aria-pressed={coat === c.id} onClick={() => setCoat(c.id)}><i style={{background:c.color}} />{c.label}</button>)}</fieldset>
         <div className="stable-keeper">
           <div className="stable-speech" role="status"><strong>Brida · tratadora</strong><p>{speech}</p></div>
           <img src="/stable/keeper.png" alt="Brida, dona do estábulo" />

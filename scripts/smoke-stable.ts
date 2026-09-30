@@ -82,7 +82,11 @@ try {
     await page.getByRole('button',{name:'Fechar',exact:true}).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     const keeper = (await page.locator('.stable-keeper > img').boundingBox())!;
-    expect(keeper.height).toBeGreaterThanOrEqual(380);
+    expect(keeper.height).toBeGreaterThan(160);
+    expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1)).toBe(true);
+    expect(keeper.y + keeper.height).toBeLessThanOrEqual(viewport.height);
+    await expect(page.locator(".stable-choices .stable-inspect")).toBeVisible();
+    await expect(page.locator(".stable-choices .stable-coats")).toBeVisible();
     const animal = (await page.locator('.stable-animal img').boundingBox())!;
     expect(animal.x).toBeGreaterThanOrEqual(0);
     expect(animal.x+animal.width).toBeLessThanOrEqual(viewport.width);
