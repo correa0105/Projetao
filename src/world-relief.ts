@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createWorldOcean } from './world-ocean';
 import {
   landTerritory,
@@ -851,22 +852,32 @@ export async function createWorldRelief(): Promise<{
   }
   for (const conifer of [false, true]) {
     const crowns = forestCrowns.filter((crown) => crown.conifer === conifer);
-    const geometry = trackGeometry(conifer
-      ? new THREE.LatheGeometry([
-        new THREE.Vector2(0.12, 0), new THREE.Vector2(0.86, 0.3),
-        new THREE.Vector2(0.48, 0.8), new THREE.Vector2(0.74, 0.85),
-        new THREE.Vector2(0.34, 1.35), new THREE.Vector2(0.55, 1.4),
-        new THREE.Vector2(0.19, 1.93), new THREE.Vector2(0.32, 1.95),
-        new THREE.Vector2(0, 2.75),
-      ], 9).rotateX(Math.PI / 2)
-      : new THREE.IcosahedronGeometry(1, 2).translate(0, 0, 0.85));
-    const crownPositions = geometry.attributes.position;
-    for (let index = 0; index < crownPositions.count; index++) {
-      const x = crownPositions.getX(index), y = crownPositions.getY(index);
-      const irregularity = 0.88 + noise(x * 4.7 + 11, y * 4.7 - 3) * 0.24;
-      crownPositions.setXYZ(index, x * irregularity, y * irregularity,
-        crownPositions.getZ(index) * (0.95 + noise(x * 3 - 7, y * 3 + 9) * 0.1));
+    // Overlapping branch clusters produce a broken leafy silhouette, instead of
+    // one smooth ball or a rotationally symmetric cone. Shared per forest type.
+    const clusters: THREE.BufferGeometry[] = [];
+    const lobes = conifer ? 9 : 7;
+    for (let lobe = 0; lobe < lobes; lobe++) {
+      const angle = lobe * 2.39996;
+      const tier = conifer ? lobe / (lobes - 1) : 0.5;
+      const spread = conifer ? 0.58 * (1 - tier) : (lobe === 0 ? 0 : 0.43);
+      const radius = conifer ? 0.7 * (1 - tier * 0.7) : 0.63;
+      const cluster = new THREE.IcosahedronGeometry(1, 1);
+      const positions = cluster.attributes.position;
+      for (let index = 0; index < positions.count; index++) {
+        const x = positions.getX(index), y = positions.getY(index), z = positions.getZ(index);
+        const irregularity = 0.77 + noise(x * 4.7 + lobe * 3, y * 4.7 + z * 2) * 0.46;
+        positions.setXYZ(index, x * irregularity, y * irregularity, z * irregularity);
+      }
+      cluster.scale(radius, radius * 0.83, conifer ? radius * 0.62 : 0.68);
+      cluster.translate(Math.cos(angle) * spread, Math.sin(angle) * spread,
+        conifer ? 0.55 + tier * 1.95 : 0.95 + Math.sin(angle * 1.7) * 0.32);
+      clusters.push(cluster);
     }
+    const trunk = new THREE.CylinderGeometry(0.07, 0.13, 0.85, 5)
+      .rotateX(Math.PI / 2).translate(0, 0, 0.425).toNonIndexed();
+    clusters.push(trunk);
+    const geometry = trackGeometry(mergeGeometries(clusters)!);
+    clusters.forEach((cluster) => cluster.dispose());
     const material = trackMaterial(new THREE.MeshStandardMaterial({
       color: '#ffffff', roughness: 0.94, metalness: 0,
     }));
@@ -887,11 +898,21 @@ export async function createWorldRelief(): Promise<{
       shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `
         #include <color_fragment>
         float leafClusters=leafNoise(crownPosition*7.0)*0.65+leafNoise(crownPosition*19.0)*0.35;
-        diffuseColor.rgb*=0.78+leafClusters*0.48;
-        diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(1.09,1.04,0.85),leafClusters*0.35);
+        diffuseColor.rgb*=0.69+leafClusters*0.66;
+        diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(1.06,1.1,0.94),leafClusters*0.45);
+        // Sparse leaf facets catch light independently from the branch volumes.
+      `);
+      shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', `
+        #include <normal_fragment_maps>
+        vec3 leafDx=dFdx(-vViewPosition),leafDy=dFdy(-vViewPosition);
+        vec3 leafBx=cross(leafDy,normal),leafBy=cross(normal,leafDx);
+        float leafDet=dot(leafDx,leafBx);
+        float leafDetail=leafClusters*0.0009;
+        normal=normalize(abs(leafDet)*normal-sign(leafDet)*
+          (dFdx(leafDetail)*leafBx+dFdy(leafDetail)*leafBy));
       `);
     };
-    material.customProgramCacheKey = () => 'world-foliage-clusters-v1';
+    material.customProgramCacheKey = () => 'world-foliage-branch-clusters-v2';
     const trees = new THREE.InstancedMesh(geometry, material, crowns.length);
     trees.name = conifer ? 'world-conifer-crowns' : 'world-broadleaf-crowns';
     const transform = new THREE.Object3D();
@@ -899,10 +920,11 @@ export async function createWorldRelief(): Promise<{
     crowns.forEach((crown, index) => {
       transform.position.set(crown.x, crown.y, crown.z + 0.005);
       transform.rotation.z = crown.seed * Math.PI * 2;
-      transform.scale.set(crown.size, crown.size * (0.8 + crown.seed * 0.3), crown.size * 1.15);
+      transform.scale.set(crown.size * (0.85 + crown.seed * 0.3),
+        crown.size * (0.72 + hash(index + 17, 83) * 0.5), crown.size * (0.9 + crown.seed * 0.45));
       transform.updateMatrix();
       trees.setMatrixAt(index, transform.matrix);
-      foliage.set(conifer ? '#3e5037' : '#56603b').multiplyScalar(0.82 + crown.seed * 0.4);
+      foliage.set(conifer ? '#485e48' : '#60714d').multiplyScalar(0.86 + crown.seed * 0.32);
       trees.setColorAt(index, foliage);
     });
     trees.receiveShadow = true;

@@ -19,3 +19,8 @@ Ondas costeiras agora têm cristas móveis acompanhando a costa, variação org�
 
 Validação do refino: build Docker/TypeScript aprovado; smoke mundial completo em Edge com GPU aprovado em 1440 × 900 e 390 × 844, sem erros de shader/console. Capturas de hover, detalhe e celular revisadas. Navegação e retorno do reino preservados.
 
+## Correção de ondas e copas (30/09/2026)
+
+Usuário rejeitou as faixas brancas das ondas e o acabamento das árvores. Oceano deixa de usar frentes baseadas em distância costeira; ondas de vento em duas direções e ruído animado modificam a normal da água. Espuma restrita a manchas discretas no encontro com a costa. Copas refeitas com sete grupos de folhagem nas árvores largas e nove nas coníferas, tronco, proporções variáveis e detalhes de normal no material. Mantida densidade reduzida e fronteiras em hover acima das copas. Não restaurar os contornos brancos nem os modelos simples de esfera/cone.
+
+Validação desta correção: build Docker/TypeScript e smoke mundial completo com GPU aprovados em desktop e celular, sem erros de shader/console. Captura aproximada revisada para confirmar ausência de faixas brancas e a nova silhueta das copas.

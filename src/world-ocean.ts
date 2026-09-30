@@ -94,17 +94,14 @@ export function createWorldOcean(
       float breakers=seaFbm(oceanPosition*14.0+swellWarp*4.0-drift*2.0);
       float foam=smoothstep(0.49,0.73,breakers)*exp(-offshore/0.075)
         *smoothstep(0.24,0.68,ripples);
-      // Travelling fronts follow the shoreline, with warped, broken crests rather
-      // than static contour rings. Derivatives keep the thin foam antialiased.
-      float surfPhase=offshore*16.0+seconds*1.35+seabed*2.5+swellWarp.x*1.7;
-      float crest=sin(surfPhase);
-      float crestAA=max(fwidth(crest),0.025);
-      float surf=smoothstep(0.83-crestAA,0.97+crestAA,crest)
-        *exp(-offshore/0.23)*smoothstep(0.0,0.035,offshore)
-        *smoothstep(0.30,0.65,breakers);
-      foam=max(foam*0.42,surf*0.50);
-      diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.63,0.79,0.77),foam);
-      waterHeight+=crest*exp(-offshore/0.18)*0.0004;
+      // Wind-driven swells alter the lit water normal, without drawing coastline
+      // contours in white. Only small broken patches remain at the waterline.
+      float windSwell=sin(dot(oceanPosition,vec2(2.8,1.1))-seconds*0.65+swellWarp.x*1.8);
+      float crossingSwell=sin(dot(oceanPosition,vec2(-1.3,3.4))-seconds*0.43+swellWarp.y*1.4);
+      waterHeight+=(windSwell*0.007+crossingSwell*0.004)
+        *(0.35+0.65*smoothstep(0.02,0.32,offshore));
+      foam*=0.16*smoothstep(0.0,0.016,offshore);
+      diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.38,0.62,0.64),foam);
     `,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
@@ -119,7 +116,7 @@ export function createWorldOcean(
     `,
     );
   };
-  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v4-travelling-surf';
+  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v5-wind-swells';
   // All detail is shaded continuously; a single plane cannot expose colored mesh cells.
   const geometry = new THREE.PlaneGeometry(240, 200);
   const mesh = new THREE.Mesh(geometry, material);
