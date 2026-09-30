@@ -1,0 +1,117 @@
+{
+  "tool": "imagegen integrado",
+  "variants": [
+    {
+      "animal": "riding-horse",
+      "coat": "original",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/riding-horse-original-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "original",
+      "saddle": "military",
+      "asset": "public/stable/saddled/riding-horse-original-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "alternate",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/riding-horse-alternate-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "alternate",
+      "saddle": "military",
+      "asset": "public/stable/saddled/riding-horse-alternate-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "warhorse",
+      "coat": "original",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/warhorse-original-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "warhorse",
+      "coat": "original",
+      "saddle": "military",
+      "asset": "public/stable/saddled/warhorse-original-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "warhorse",
+      "coat": "alternate",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/warhorse-alternate-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "warhorse",
+      "coat": "alternate",
+      "saddle": "military",
+      "asset": "public/stable/saddled/warhorse-alternate-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "pony",
+      "coat": "original",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/pony-original-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "pony",
+      "coat": "original",
+      "saddle": "military",
+      "asset": "public/stable/saddled/pony-original-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "pony",
+      "coat": "alternate",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/pony-alternate-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "pony",
+      "coat": "alternate",
+      "saddle": "military",
+      "asset": "public/stable/saddled/pony-alternate-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "mule",
+      "coat": "original",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/mule-original-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "mule",
+      "coat": "original",
+      "saddle": "military",
+      "asset": "public/stable/saddled/mule-original-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "mule",
+      "coat": "alternate",
+      "saddle": "riding",
+      "asset": "public/stable/saddled/mule-alternate-riding.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted simple dark brown medieval riding saddle with a cream wool pad: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    },
+    {
+      "animal": "mule",
+      "coat": "alternate",
+      "saddle": "military",
+      "asset": "public/stable/saddled/mule-alternate-military.png",
+      "prompt": "Edit this EXACT animal into a complete saddled animal sprite. Preserve its species, coat color and markings, anatomy, standing pose, camera angle, body scale, head, legs and hoof positions, entire tail and framing exactly. Add a properly fitted reinforced russet medieval military saddle with high pommel and cantle and a dark olive blanket: saddle sits naturally immediately behind the withers, girth wraps snugly underneath the belly, stirrups hang on each side, anatomically correct leather bridle and reins on head. Realistic integrated contact shadows and perspective, straps follow body curves. No rider, no armor, no extra equipment. Whole animal and saddle form ONE coherent realistic fantasy painting. Transparent background, no colored halo, no floor, no scenery, no text. Keep landscape 3:2 canvas, every hoof and ear inside frame, same composition as reference."
+    }
+  ]
+}

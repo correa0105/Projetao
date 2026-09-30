@@ -235,3 +235,5 @@ Missões, eventos e ganchos ativos aparecem como papéis clicáveis no mural da 
 Em Menu → Loja → Estábulo, escolha entre quatro montarias e duas pelagens por espécie. O botão ? no menu de montarias abre sua ficha SRD. Nome e compra ficam diretamente na cena. Ouro, animal e pelagem são persistidos no personagem. A página prioriza o campo, sem painel de montarias adquiridas; pelagens ficam no menu e a cena acompanha a altura da janela, com controles compactos acima do campo nos celulares. npm run test:stable verifica o fluxo em banco descartável.
 
 A selaria abaixo das montarias permite experimentar duas selas, três bardas e ração. O campo de nome e a compra ficam sob o título. A compra do conjunto salva animal, pelagem e acessórios; regras de combate são consultivas. Veja `docs/STABLE-TACK-ART.md` para arte e fonte SRD.
+
+O nome agora fica acima das montarias, na coluna esquerda; a compra fica abaixo da selaria. As duas selas têm artes completas para cada espécie e pelagem (16 combinações), documentadas em [STABLE-SADDLED-ART.json](docs/STABLE-SADDLED-ART.json).

@@ -172,3 +172,30 @@
  .stable-feed { bottom:9%; }
 }
 .stable-background { background-image:linear-gradient(#11190e33,transparent 45%,#1c220e22),url('/stable/paddock-eye-level.png'); }
+/* Name and checkout belong to the left column, on either side of its catalog. */
+.stable-name { flex:none; display:flex; align-items:center; gap:8px; padding:10px; }
+.stable-name label { color:#dfc9a3; font-size:11px; flex:none; }
+.stable-name input { min-width:0; width:100%; color:#f0dfbf; background:#111810; border:1px solid #a28a5e77; border-radius:4px; padding:8px; font-size:11px; }
+.stable-sidebar .stable-order { margin:0; width:100%; display:flex; flex-direction:column; align-items:stretch; padding:10px; gap:6px; }
+.stable-sidebar .stable-order .stable-price { display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; }
+.stable-sidebar .stable-order .button { max-width:none; width:100%; }
+.stable-sidebar .stable-mobile-total { display:none; }
+.stable-sidebar .stable-order > p { display:block; }
+.stable-saddle-foreground { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; clip-path:polygon(40% 22%,48% 22%,51% 29%,64% 26%,73% 23%,76% 34%,73% 50%,65% 54%,64% 70%,57% 70%,55% 55%,46% 54%,43% 65%,39% 65%,41% 48%,37% 44%); }
+@media(max-width:600px) {
+ .stable-name { padding:5px; }
+ .stable-name input { padding:5px; }
+ .stable-name label { font-size:10px; }
+ .stable-sidebar .stable-order { padding:5px; display:grid; grid-template-columns:1fr 1fr; align-items:center; }
+ .stable-sidebar .stable-order .stable-price { display:block; }
+ .stable-sidebar .stable-order .stable-price strong { font-size:15px; }
+ .stable-sidebar .stable-order .stable-price span { font-size:8px; }
+ .stable-sidebar .stable-order > p { grid-column:1/-1; font-size:9px; }
+}
+@media(max-width:600px) {
+ .stable-tack-items img { height:24px; }
+ :root .stable-tack-items button { padding:3px; gap:1px; line-height:1.1; }
+ .stable-tack-items small { margin-top:1px; }
+ .stable-name { padding:4px; }
+ .stable-speech { width:min(280px,calc(100vw - 28px)); bottom:calc(100% - 2px); }
+}

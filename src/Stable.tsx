@@ -16,8 +16,11 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
   const [details, setDetails] = useState(false);
   const [coat, setCoat] = useState('original');
   const coats = mountCoats[mount.id];
-  const image = `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
   const [equipment, setEquipment] = useState<string[]>([]);
+  const saddle = equipment.find(id => id === 'saddle-riding' || id === 'saddle-military');
+  const image = saddle
+    ? `/stable/saddled/${mount.id}-${coat}-${saddle.replace('saddle-','')}.png`
+    : `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
   const chosenGear = stableGear.filter(g => equipment.includes(g.id));
   const total = mount.price_cp + chosenGear.reduce((sum,g) => sum + g.price_cp,0);
   function toggleGear(id: string) {
@@ -55,16 +58,14 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
   return <section className="stable-page" aria-label="Estábulo">
     <div className="stable-background" aria-hidden="true" />
     <header className="stable-selected-title"><h2>{mount.name}</h2></header>
-        <form className="stable-order" onSubmit={e => { e.preventDefault(); setError(''); setConfirm(true); }}>
-          <label htmlFor="mount-name">Como vai se chamar?</label>
-          <input id="mount-name" value={name} maxLength={40} pattern="[\p{L}\p{M}\p{N} '\-]+" placeholder="Dê um nome à sua montaria" disabled={busy}
-            onChange={e => setName(e.target.value)} />
-          <div className="stable-price"><strong>{money(total)} PO</strong><span><Coins size={15}/> {money(character?.gold_cp || 0)} PO disponíveis</span></div>
-          <button aria-label="Comprar conjunto" className="button primary" disabled={!character || busy || (character.gold_cp < total)}><Footprints size={17}/> Comprar conjunto <span className="stable-mobile-total">· {money(total)} PO</span></button>
-          {!character ? <p>Selecione um personagem para comprar.</p> : character.gold_cp < total && <p>Faltam {money(total - character.gold_cp)} PO.</p>}
-        </form>
+
     <div className="stable-layout">
       <div className="stable-sidebar">
+        <div className="stable-name stable-panel">
+          <label htmlFor="mount-name">Como vai se chamar?</label>
+          <input id="mount-name" form="stable-checkout" value={name} maxLength={40} pattern="[\p{L}\p{M}\p{N} '\-]+" placeholder="Dê um nome à sua montaria" disabled={busy}
+            onChange={e => setName(e.target.value)} />
+        </div>
       <aside className="stable-choices stable-panel" aria-label="Montarias disponíveis">
         <h2>Companheiros de estrada</h2>
         <p>Escolha quem seguirá ao seu lado.</p>
@@ -84,17 +85,23 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
           <img src={`/stable/gear/${g.id}.png`} alt=""/><span>{g.name}<small>{money(g.price_cp)} PO · {g.weight} lb</small></span>
         </button>)}</div>
       </section>
+        <form id="stable-checkout" className="stable-order" onSubmit={e => { e.preventDefault(); setError(''); setConfirm(true); }}>
+          <div className="stable-price"><strong>{money(total)} PO</strong><span><Coins size={15}/> {money(character?.gold_cp || 0)} PO disponíveis</span></div>
+          <button aria-label="Comprar conjunto" className="button primary" disabled={!character || busy || (character.gold_cp < total)}><Footprints size={17}/> Comprar conjunto <span className="stable-mobile-total">· {money(total)} PO</span></button>
+          {!character ? <p>Selecione um personagem para comprar.</p> : character.gold_cp < total && <p>Faltam {money(total - character.gold_cp)} PO.</p>}
+        </form>
       </div>
       <div className="stable-field" aria-label={`No campo: ${mount.name}`}>
         <div className="stable-animal" style={{ '--animal-scale': mount.scale } as CSSProperties}>
           <div className="stable-animal-art">
           <img className="stable-cast-shadow" src={image} alt="" aria-hidden="true"/>
           <img className="stable-animal-base" key={image} src={image} alt={`${mount.name} de corpo inteiro no campo`} />
-          {chosenGear.filter(g => g.slot !== 'feed').sort((a,b) => (a.slot === 'armor' ? -1 : 1) - (b.slot === 'armor' ? -1 : 1)).map(g => {
+          {chosenGear.filter(g => g.slot === 'armor').sort((a,b) => (a.slot === 'armor' ? -1 : 1) - (b.slot === 'armor' ? -1 : 1)).map(g => {
             const {x,y,width:w,height:h,angle} = tackFit[mount.id][g.id];
             return <img key={g.id} className={`stable-equipped stable-equipped-${g.slot}`} src={`/stable/gear/${g.id}.png`} alt={`${g.name} em ${mount.name}`} style={{left:`${x}%`,top:`${y}%`,width:`${w}%`,height:`${h}%`,transform:`rotate(${angle}deg)`}}/>;
           })}
-          {chosenGear.some(g => g.slot !== "feed") && <img className="stable-neck-foreground" src={image} alt="" aria-hidden="true" style={{clipPath:mountNeckMask[mount.id]}}/>}
+          {chosenGear.some(g => g.slot === "armor") && <img className="stable-neck-foreground" src={image} alt="" aria-hidden="true" style={{clipPath:mountNeckMask[mount.id]}}/>}
+          {saddle && chosenGear.some(g => g.slot === 'armor') && <img className="stable-saddle-foreground" src={image} alt="" aria-hidden="true"/>}
           </div>
         </div>
         {equipment.includes("feed") && <img className="stable-feed" src="/stable/gear/feed.png" alt="Ração ao lado da montaria"/>}
