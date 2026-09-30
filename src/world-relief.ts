@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createWorldOcean } from './world-ocean';
 import {
   landTerritory,
@@ -846,6 +847,114 @@ export async function createWorldRelief(): Promise<{
   borderOverlay.renderOrder = 25;
   borderOverlay.raycast = () => {};
   group.add(borderOverlay);
+
+  // Individual crowns occupy real 3D space. Two instanced meshes keep draw calls
+  // bounded; deterministic placement avoids changing forests on every visit.
+  const forestCrowns: { x: number; y: number; z: number; size: number; conifer: boolean; seed: number }[] = [];
+  const spacing = 0.09;
+  for (let row = 0; row < WORLD_HEIGHT / spacing; row++) {
+    for (let col = 0; col < WORLD_WIDTH / spacing; col++) {
+      const seed = hash(col + 73, row + 137);
+      const wx = -WORLD_WIDTH / 2 + (col + 0.15 + seed * 0.7) * spacing;
+      const wy = -WORLD_HEIGHT / 2 + (row + 0.15 + hash(row + 51, col + 19) * 0.7) * spacing;
+      const u = wx / WORLD_WIDTH + 0.5, v = 0.5 - wy / WORLD_HEIGHT;
+      const i = Math.round(v * NY) * STRIDE + Math.round(u * NX);
+      if (shore[i] < 0.15 || snowWeight[i] > 0.08) continue;
+      const density = woodlandCover[i];
+      if (density < 0.22 || seed > density * 0.9) continue;
+      const z = sampleHeight(u, v);
+      const slope = Math.hypot(sampleHeight(u + 0.001, v) - z,
+        sampleHeight(u, v + 0.001) - z);
+      if (z > 0.73 || slope > 0.045) continue;
+      forestCrowns.push({ x: wx, y: wy, z, size: 0.045 + seed * 0.025,
+        conifer: v < 0.29 || z > 0.35, seed });
+    }
+  }
+  for (let variant = 0; variant < 4; variant++) {
+    const conifer = variant >= 2;
+    const crowns = forestCrowns.filter((crown) => crown.conifer === conifer && Math.floor(crown.seed * 100) % 2 === variant % 2);
+    // Overlapping branch clusters produce a broken leafy silhouette, instead of
+    // one smooth ball or a rotationally symmetric cone. Shared per forest type.
+    const clusters: THREE.BufferGeometry[] = [];
+    const lobes = conifer ? 9 + variant % 2 : 7 + variant % 2;
+    for (let lobe = 0; lobe < lobes; lobe++) {
+      const angle = lobe * 2.39996 + variant * 1.4;
+      const tier = conifer ? lobe / (lobes - 1) : 0.5;
+      const spread = conifer ? 0.58 * (1 - tier) : (lobe === 0 ? 0 : 0.43);
+      const radius = conifer ? 0.7 * (1 - tier * 0.7) : 0.63;
+      const cluster = new THREE.IcosahedronGeometry(1, 1);
+      const positions = cluster.attributes.position;
+      for (let index = 0; index < positions.count; index++) {
+        const x = positions.getX(index), y = positions.getY(index), z = positions.getZ(index);
+        const irregularity = 0.77 + noise(x * 4.7 + lobe * 3, y * 4.7 + z * 2) * 0.46;
+        positions.setXYZ(index, x * irregularity, y * irregularity, z * irregularity);
+      }
+      cluster.scale(radius, radius * 0.83, conifer ? radius * 0.62 : 0.68);
+      cluster.translate(Math.cos(angle) * spread, Math.sin(angle) * spread,
+        conifer ? 0.55 + tier * 1.95 : 0.95 + Math.sin(angle * 1.7) * 0.32);
+      clusters.push(cluster);
+    }
+    const trunk = new THREE.CylinderGeometry(0.07, 0.13, 0.85, 5)
+      .rotateX(Math.PI / 2).translate(0, 0, 0.425).toNonIndexed();
+    clusters.push(trunk);
+    const geometry = trackGeometry(mergeGeometries(clusters)!);
+    clusters.forEach((cluster) => cluster.dispose());
+    const material = trackMaterial(new THREE.MeshStandardMaterial({
+      color: '#ffffff', roughness: 0.94, metalness: 0,
+    }));
+    material.onBeforeCompile = (shader) => {
+      shader.vertexShader = 'varying vec3 crownPosition;\n' + shader.vertexShader;
+      shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>',
+        '#include <begin_vertex>\ncrownPosition=position;');
+      shader.fragmentShader = `varying vec3 crownPosition;
+        float leafHash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
+        float leafNoise(vec3 p){
+          vec3 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);
+          return mix(mix(mix(leafHash(i),leafHash(i+vec3(1,0,0)),f.x),
+            mix(leafHash(i+vec3(0,1,0)),leafHash(i+vec3(1,1,0)),f.x),f.y),
+            mix(mix(leafHash(i+vec3(0,0,1)),leafHash(i+vec3(1,0,1)),f.x),
+            mix(leafHash(i+vec3(0,1,1)),leafHash(i+vec3(1,1,1)),f.x),f.y),f.z);
+        }
+        ` + shader.fragmentShader;
+      shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `
+        #include <color_fragment>
+        float leafClusters=leafNoise(crownPosition*7.0)*0.65+leafNoise(crownPosition*19.0)*0.35;
+        diffuseColor.rgb*=0.69+leafClusters*0.66;
+        diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(1.06,1.1,0.94),leafClusters*0.45);
+        // Sparse leaf facets catch light independently from the branch volumes.
+      `);
+      shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', `
+        #include <normal_fragment_maps>
+        vec3 leafDx=dFdx(-vViewPosition),leafDy=dFdy(-vViewPosition);
+        vec3 leafBx=cross(leafDy,normal),leafBy=cross(normal,leafDx);
+        float leafDet=dot(leafDx,leafBx);
+        float leafDetail=leafClusters*0.0009;
+        normal=normalize(abs(leafDet)*normal-sign(leafDet)*
+          (dFdx(leafDetail)*leafBx+dFdy(leafDetail)*leafBy));
+      `);
+    };
+    material.customProgramCacheKey = () => 'world-natural-forest-variants-v3';
+    const trees = new THREE.InstancedMesh(geometry, material, crowns.length);
+    trees.name = conifer ? 'world-conifer-crowns' : 'world-broadleaf-crowns';
+    const transform = new THREE.Object3D();
+    const foliage = new THREE.Color();
+    crowns.forEach((crown, index) => {
+      transform.position.set(crown.x, crown.y, crown.z + 0.005);
+      transform.rotation.z = crown.seed * Math.PI * 2;
+      transform.scale.set(crown.size * (0.85 + crown.seed * 0.3),
+        crown.size * (0.72 + hash(index + 17, 83) * 0.5), crown.size * (0.9 + crown.seed * 0.45));
+      transform.updateMatrix();
+      trees.setMatrixAt(index, transform.matrix);
+      foliage.set(conifer ? '#485e48' : '#60714d').multiplyScalar(0.86 + crown.seed * 0.32);
+      trees.setColorAt(index, foliage);
+    });
+    trees.receiveShadow = true;
+    trees.castShadow = true;
+    trees.computeBoundingSphere();
+    // Picking continues to use the terrain; foliage never intercepts territories.
+    trees.raycast = () => {};
+    group.add(trees);
+  }
 
   const ocean = createWorldOcean(shore, NX, NY, timeUniform);
   group.add(ocean.mesh);
