@@ -16,3 +16,5 @@ import './theme.css';
 
 import './disclosures.css';
 import './page-header.css';
+import './npc-speech.css';
+import './profile-menu.css';

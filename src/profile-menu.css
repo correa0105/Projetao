@@ -1,0 +1,190 @@
+/* O retrato fica ancorado à direita; somente o painel cresce para a esquerda. */
+:root .app-shell .page-header > .profile-menu.profile-menu {
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  gap: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  isolation: auto;
+  overflow: visible;
+  align-self: center;
+}
+:root .app-shell .profile-menu .profile-avatar {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 2px;
+  border: 1px solid #ad8c586b;
+  border-radius: 50%;
+  background: #171b16;
+  color: #d9bd87;
+  cursor: pointer;
+}
+.profile-face {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: radial-gradient(circle, #494739, #171b16);
+}
+.profile-face img {
+  position: absolute;
+  width: 330%;
+  max-width: none;
+  height: auto;
+  left: 50%;
+  top: -8%;
+  transform: translateX(-50%);
+}
+.profile-face svg {
+  width: 26px;
+  height: 26px;
+}
+.profile-menu-controls {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translate(0, -50%);
+  clip-path: inset(0 0 0 100%);
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--page-header-edge) - 24px);
+  min-height: 48px;
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ad8c584d;
+  border-radius: 9px 0 0 9px;
+  background: linear-gradient(125deg, #22211ff5, #141311f5);
+  box-shadow: 0 8px 25px #0003;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    clip-path 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 320ms ease,
+    visibility 480ms;
+}
+.profile-menu:is(:hover, :focus-within, [data-pinned='true']):not(:has(.profile-avatar:disabled))
+  .profile-menu-controls,
+.profile-menu:has(
+    .character-selector-trigger[aria-expanded='true'],
+    .notifications-trigger[aria-expanded='true']
+  )
+  .profile-menu-controls {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(0, -50%);
+  clip-path: none;
+  animation: profile-controls-emerge 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes profile-controls-emerge {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+:root .app-shell .profile-menu .topbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+:root .app-shell .profile-menu .player-hud-selection {
+  display: none;
+}
+:root .app-shell .profile-menu .character-selector-trigger {
+  font-size: 12.65px;
+  height: 19px;
+}
+:root .app-shell .profile-menu .character-selector-trigger > svg {
+  display: none;
+}
+:root .app-shell .profile-menu .player-hud-selection {
+  padding-right: 0;
+}
+:root .app-shell .profile-menu .player-hud-details {
+  font-size: 9.2px;
+}
+:root .app-shell .profile-menu :is(.notifications-trigger, .logout-button) {
+  width: 30px;
+  height: 30px;
+  min-height: 30px;
+  flex-basis: 30px;
+}
+:root .app-shell .profile-menu .player-notifications {
+  flex-basis: 30px;
+}
+:root .app-shell .profile-menu :is(.notifications-trigger, .logout-button) > svg {
+  width: 14px;
+  height: 14px;
+}
+:root .app-shell .profile-menu .character-options {
+  top: calc(100% + 12px);
+  right: 0;
+  left: auto;
+  width: 270px;
+  max-width: calc(100vw - 36px);
+  scale: 1;
+  padding: 7.2px;
+  border: 1px solid #b3945c80;
+  border-radius: 12.6px;
+  background: linear-gradient(145deg, #272522fa, #171614fc);
+  box-shadow: 0 10.8px 28.8px #0007;
+  transform-origin: calc(100% - 24px) top;
+  overflow: visible;
+  animation: profile-balloon-arrive 200ms ease-out both;
+}
+.profile-character-balloon::before {
+  content: '';
+  position: absolute;
+  top: -5.4px;
+  right: 19px;
+  width: 9px;
+  height: 9px;
+  transform: rotate(45deg);
+  background: #272522;
+  border-top: 1px solid #b3945c80;
+  border-left: 1px solid #b3945c80;
+}
+.profile-characters-heading {
+  padding: 4px 8px 9px;
+  margin-bottom: 4px;
+  font: 12.6px var(--serif);
+  color: #ede3d3;
+}
+@keyframes profile-balloon-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+:root .app-shell .profile-menu .notifications-panel {
+  right: -24px;
+}
+@media (max-width: 900px) {
+  .profile-menu-controls {
+    max-width: calc(100vw - 60px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-menu-controls {
+    transition: none;
+    animation: none !important;
+  }
+}

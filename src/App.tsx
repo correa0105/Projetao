@@ -1,3 +1,5 @@
+import { PageHeader } from './PageHeader';
+import { ProfileMenu } from './ProfileMenu';
 import { NoticeBoard } from './NoticeBoard';
 import { lazy, Suspense, useCallback, useEffect, useState, type ComponentType } from 'react';
 import {
@@ -106,6 +108,7 @@ function Portal({ user }: { user: User }) {
   const [page, setPage] = useState<Page>(initialPage);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [selectedId, setSelectedId] = useState('');
+  const [characterMenuOpen, setCharacterMenuOpen] = useState(false);
   const [catalog, setCatalog] = useState<Item[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -473,14 +476,7 @@ function Portal({ user }: { user: User }) {
     if (page === 'overview')
       return (
         <>
-          <div className="page-title">
-            <div>
-              <h1>
-                Boas-vindas, {user.name.split(' ')[0]}
-                <span className="title-dot">.</span>
-              </h1>
-            </div>
-          </div>
+          <div className="page-header-spacer" aria-hidden="true" />
           <section className="welcome-banner">
             <div className="banner-copy">
               <h2>
@@ -665,41 +661,7 @@ function Portal({ user }: { user: User }) {
       );
     return (
       <>
-        {!['characters'].includes(page) && (
-          <div className="page-title">
-            <div>
-              <h1>
-                {titles[page]}
-                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks', 'shop', 'stable'].includes(
-                  page,
-                ) && <span className="title-dot">.</span>}
-              </h1>
-              {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks', 'stable'].includes(
-                page,
-              ) && (
-                <p>
-                  {page === 'shop'
-                    ? 'Bons equipamentos. Novos caminhos. Preços do compêndio SRD 5.2.1.'
-                    : page === 'characters'
-                      ? 'Diferentes rostos, infinitas histórias. Escolha quem você será hoje.'
-                      : page === 'missions'
-                        ? 'Atenda a um chamado ou reencontre as aventuras que ficaram na memória.'
-                        : page === 'board'
-                          ? 'Missões, encontros e notícias da Bastião da Alvorada.'
-                          : page === 'hooks'
-                            ? 'Uma pista, um rumor, uma razão para seguir em frente.'
-                            : 'Pessoas, lugares e crônicas da Alvorada Cinzenta.'}
-                </p>
-              )}
-            </div>
-            {page === 'characters' && (
-              <button className="button primary" onClick={() => setModal('character')}>
-                <Plus size={17} />
-                Novo personagem
-              </button>
-            )}
-          </div>
-        )}
+        {page !== 'characters' && <div className="page-header-spacer" aria-hidden="true" />}
         {page === 'characters' && (
           <CharacterCamp
             characters={characters}
@@ -720,7 +682,9 @@ function Portal({ user }: { user: User }) {
           ) : (
             noCharacter
           ))}
-        {page === 'stable' && <Stable key={character?.id || 'guest'} character={character} onPurchased={refresh} />}
+        {page === 'stable' && (
+          <Stable key={character?.id || 'guest'} character={character} onPurchased={refresh} />
+        )}
         {page === 'shop' && <Shop catalog={catalog} character={character} onPurchased={refresh} />}
         {page === 'inventory' &&
           (!character ? (
@@ -819,52 +783,64 @@ function Portal({ user }: { user: User }) {
   return (
     <div className="app-shell" data-page={page}>
       <div className="main-shell">
-        <aside className="topbar player-hud" aria-label="Personagem e conta">
-          <div className="topbar-right">
-            <div className="player-hud-selection">
-              {characters.length > 0 && (
-                <CharacterSelector
-                  characters={characters}
-                  selectedId={character?.id || ''}
-                  onSelect={setSelectedId}
-                />
-              )}
-              {character && (
-                <span className="player-hud-details">
-                  Nível {character.level} · {character.class}
-                </span>
-              )}
+        <PageHeader
+          title={
+            page === 'characters'
+              ? 'Seu acampamento'
+              : page === 'overview'
+                ? `Boas-vindas, ${user.name.split(' ')[0]}`
+                : titles[page]
+          }
+        >
+          <ProfileMenu
+            character={character}
+            open={characterMenuOpen}
+            onOpenChange={setCharacterMenuOpen}
+          >
+            <div className="topbar-right">
+              <div className="player-hud-selection">
+                {characters.length > 0 && (
+                  <CharacterSelector
+                    characters={characters}
+                    selectedId={character?.id || ''}
+                    onSelect={setSelectedId}
+                    open={characterMenuOpen}
+                    onOpenChange={setCharacterMenuOpen}
+                    hideTrigger
+                  />
+                )}
+              </div>
+              <Notifications
+                characters={characters}
+                page={page}
+                onNavigate={(id, target) => {
+                  setSelectedId(id);
+                  go(target);
+                }}
+              />
+              <button
+                className="logout-button"
+                aria-label="Sair da conta"
+                title="Sair da conta"
+                disabled={busy}
+                onClick={async () => {
+                  setBusy(true);
+                  try {
+                    const result = await authClient.signOut();
+                    if (result.error) throw new Error('Não foi possível sair. Tente novamente.');
+                    location.hash = '';
+                  } catch (error) {
+                    setToast((error as Error).message);
+                  } finally {
+                    setBusy(false);
+                  }
+                }}
+              >
+                <LogOut size={16} aria-hidden="true" />
+              </button>
             </div>
-            <Notifications
-              characters={characters}
-              page={page}
-              onNavigate={(id, target) => {
-                setSelectedId(id);
-                go(target);
-              }}
-            />
-            <button
-              className="logout-button"
-              aria-label="Sair da conta"
-              title="Sair da conta"
-              disabled={busy}
-              onClick={async () => {
-                setBusy(true);
-                try {
-                  const result = await authClient.signOut();
-                  if (result.error) throw new Error('Não foi possível sair. Tente novamente.');
-                  location.hash = '';
-                } catch (error) {
-                  setToast((error as Error).message);
-                } finally {
-                  setBusy(false);
-                }
-              }}
-            >
-              <LogOut size={16} aria-hidden="true" />
-            </button>
-          </div>
-        </aside>
+          </ProfileMenu>
+        </PageHeader>
         <main className="main-content" id="main-content">
           {renderContent()}
         </main>

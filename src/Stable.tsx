@@ -105,7 +105,7 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
         </div>
         {equipment.includes("feed") && <img className="stable-feed" src="/stable/gear/feed.png" alt="Ração ao lado da montaria"/>}
         <div className="stable-keeper">
-          <div className="stable-speech" role="status"><strong>Brida · tratadora</strong><p>{speech}</p></div>
+          <div className="stable-speech npc-speech" role="status"><strong className="npc-speaker">Brida</strong><p>{speech}</p></div>
           <img src="/stable/keeper.png" alt="Brida, dona do estábulo" />
         </div>
       </div>

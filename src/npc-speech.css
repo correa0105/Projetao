@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'NPC Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/shop/reference/fonts/inter-variable.ttf') format('truetype');
+}
+
+/* O mesmo acabamento para as falas e perguntas dos dois vendedores. */
+:root .app-shell .npc-speech.npc-speech {
+  font-family: 'NPC Inter', Inter, sans-serif;
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: #f1e4ce;
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+:root .app-shell .npc-speech.npc-speech :is(p, span, button) {
+  font-family: 'NPC Inter', Inter, sans-serif;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #f1e4ce;
+  text-align: left;
+}
+:root .app-shell .npc-speech.npc-speech .npc-speaker {
+  display: block;
+  margin-bottom: 6px;
+  font: 400 10px/1.4 'NPC Inter', Inter, sans-serif;
+  color: #d3b17e;
+}
+:root .app-shell .npc-speech.npc-speech p { margin: 0; }
+:root .app-shell .merchant-conversation.npc-speech .npc-speaker {
+  margin-bottom: 2px;
+}
+:root .app-shell .merchant-conversation.npc-speech :is(span, button) {
+  font-size: clamp(11px, 0.85vw, 13px);
+  line-height: 1.4;
+}
+:root .app-shell .merchant-conversation.npc-speech > span {
+  margin-bottom: 5px;
+}
+:root .app-shell .merchant-conversation.npc-speech button {
+  background: #1c2119;
+  border-color: #68705b;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+:root .app-shell .merchant-conversation.npc-speech button:is(:hover, :focus-visible) {
+  background: #343b2d;
+  border-color: #a5ad94;
+  outline: none;
+  box-shadow: none;
+}
+:root .app-shell .merchant-conversation.npc-speech button:active {
+  background: #3d4535;
+  border-color: #c3c9b4;
+}
+:root .app-shell .npc-speech.npc-speech .merchant-speech-shape path {
+  fill: #25291ff5;
+  stroke: #b59a6d;
+}
+:root .app-shell .stable-speech {
+  background: #25291ff5;
+  border-color: #b59a6d;
+}
+/* Mantém a fala abaixo da selaria nas telas compactas do estábulo. */
+@media (max-width: 600px) {
+  :root .app-shell[data-page='stable'] .npc-speech.npc-speech {
+    font-size: 10px;
+    line-height: 1.35;
+    padding: 8px 10px;
+  }
+}

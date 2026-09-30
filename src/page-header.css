@@ -1,69 +1,64 @@
-/* Shared header scale and viewport margins, independent of the content width. */
+/* Header unico para todas as paginas, independente do conteudo. */
 :root .app-shell {
   --page-header-edge: clamp(24px, 6.6vw, 95px);
   --page-header-height: 42px;
 }
-:root .app-shell .topbar.player-hud {
-  min-height: var(--page-header-height);
+:root .app-shell .main-shell {
+  position: relative;
+}
+:root .app-shell > .main-shell > .page-header {
+  position: absolute;
+  top: 20px;
+  left: var(--page-header-edge);
+  right: var(--page-header-edge);
+  z-index: 30;
+  display: flex;
   align-items: center;
-  padding: 7px 9px;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--page-header-height);
+  pointer-events: none;
+}
+:root .app-shell .page-header > .page-title {
+  position: static;
+  left: auto;
+  transform: none;
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  max-width: none;
+  height: var(--page-header-height);
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+:root .app-shell .page-header h1 {
+  font: 500 clamp(21px, 2vw, 26px)/1.2 var(--serif);
+  letter-spacing: -0.75px;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  text-shadow: 0 2px 5px #000b;
+}
+:root .app-shell .page-header > .topbar.player-hud {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  margin: 0;
+  flex: 0 0 auto;
+  height: var(--page-header-height);
+  min-height: var(--page-header-height);
+  max-width: 100%;
+  align-items: center;
   gap: 10px;
   border-radius: 10px;
+  pointer-events: auto;
 }
-:root .app-shell .player-hud .character-selector { width: 132px; }
-:root .app-shell .player-hud .character-selector-trigger { height: 24px; font-size: 12px; }
-:root .app-shell .player-hud-label { font-size: 8px; letter-spacing: 1.2px; }
-:root .app-shell .player-hud-details { font-size: 9px; }
-:root .app-shell .player-hud-icon { width: 20px; height: 20px; }
-:root .app-shell .player-hud .logout-button {
-  flex: 0 0 30px;
-  width: 30px;
-  min-height: 30px;
-  padding: 6px;
-}
-:root .app-shell .player-hud .logout-button svg { width: 16px; height: 16px; }
-:root .app-shell :is(.page-title, .camp-heading) h1 {
-  font-size: clamp(21px, 2vw, 26px);
-  line-height: 1.2;
-  margin-block: 0;
-}
-@media (min-width: 901px) {
-  :root .app-shell .main-shell { position: relative; }
-  :root .app-shell .topbar.player-hud {
-    position: absolute;
-    top: 20px;
-    right: var(--page-header-edge);
-    margin: 0;
-  }
-  :root .app-shell .main-content:has(> .page-title) { padding-top: 20px; }
-  :root .app-shell :is(.page-title, .camp-heading) {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100vw - 2 * var(--page-header-edge));
-    max-width: none;
-    margin-inline: 0;
-    padding-right: 310px;
-    min-height: var(--page-header-height);
-    height: var(--page-header-height);
-    align-items: center;
-    box-sizing: border-box;
-    padding-block: 0;
-  }
-}
-@media (max-width: 900px) {
-  :root .app-shell .topbar.player-hud {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin: 14px 18px 0 auto;
-    max-width: calc(100% - 36px);
-  }
-  :root .app-shell :is(.page-title, .camp-heading) { padding-right: 0; min-height: auto; }
-  :root .app-shell .player-hud .character-selector { width: min(132px, calc(100vw - 138px)); }
-}
-/* Nome com recuo confortável e seta próxima, sem largura vazia fixa. */
-:root .app-shell .topbar.player-hud { padding-left: 15px; }
 :root .app-shell .player-hud .character-selector {
   width: max-content;
   max-width: min(168px, calc(100vw - 138px));
@@ -74,29 +69,71 @@
   justify-content: flex-start;
   gap: 8px;
 }
-/* Título sobre o mapa, alinhado ao header comum sem ocupar a área navegável. */
-:root .app-shell .page-title.world-map-title {
-  position: absolute;
-  z-index: 5;
-  top: 20px;
-  left: var(--page-header-edge);
-  transform: none;
-  width: auto;
-  max-width: calc(100% - 2 * var(--page-header-edge));
+:root .app-shell .main-content:has(> .page-header-spacer) {
+  padding-top: 20px;
+}
+.page-header-spacer {
   height: var(--page-header-height);
-  min-height: 0;
-  margin: 0;
+  min-height: var(--page-header-height);
+  flex: 0 0 auto;
+  margin-bottom: 27px;
+}
+.app-shell[data-page='profile'] .page-header-spacer {
+  margin-bottom: 80px;
+}
+.app-shell[data-page='inventory'] .page-header-spacer {
+  margin-bottom: 60px;
+}
+.app-shell[data-page='stable'] .page-header-spacer,
+.character-camp .page-header-spacer {
+  margin-bottom: 0;
+}
+:root .app-shell[data-page='characters'] .main-content {
+  width: 100%;
+  max-width: none;
   padding: 0;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-  text-shadow: 0 2px 5px #000b;
+}
+:root .app-shell[data-page='characters'] .character-camp {
+  margin: 0;
+  padding-top: 20px;
 }
 @media (max-width: 900px) {
-  :root .app-shell .page-title.world-map-title { top: 80px; }
+  :root .app-shell > .main-shell > .page-header {
+    top: 14px;
+    left: 18px;
+    right: 18px;
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  :root .app-shell .page-header > .topbar.player-hud {
+    grid-row: 1;
+    justify-self: end;
+  }
+  :root .app-shell .page-header > .page-title {
+    grid-row: 2;
+  }
+  .page-header-spacer {
+    height: calc(2 * var(--page-header-height) + 14px);
+    min-height: calc(2 * var(--page-header-height) + 14px);
+  }
+}
+@media (max-width: 700px) {
+  :root .app-shell .main-content:has(> .page-header-spacer) {
+    padding-top: 16px;
+  }
+  :root .app-shell[data-page='characters'] .character-camp {
+    padding-top: 16px;
+  }
+  .app-shell[data-page='inventory'] .page-header-spacer {
+    margin-bottom: 30px;
+  }
 }
 /* Ações do header com a mesma geometria e acabamento. */
-:root .app-shell .player-hud .player-notifications { flex: 0 0 30px; }
+:root .app-shell .player-hud .player-notifications {
+  flex: 0 0 30px;
+}
 :root .app-shell .player-hud :is(.notifications-trigger, .logout-button) {
   display: grid;
   place-items: center;
@@ -123,8 +160,12 @@
   color: #f0d9b0;
 }
 /* Ações menores e agrupadas junto ao seletor. */
-:root .app-shell .player-hud .topbar-right { gap: 5px; }
-:root .app-shell .player-hud .player-notifications { flex-basis: 26px; }
+:root .app-shell .player-hud .topbar-right {
+  gap: 5px;
+}
+:root .app-shell .player-hud .player-notifications {
+  flex-basis: 26px;
+}
 :root .app-shell .player-hud :is(.notifications-trigger, .logout-button) {
   flex-basis: 26px;
   width: 26px;
@@ -146,7 +187,11 @@
   justify-content: center;
   gap: 0;
 }
-:root .app-shell .player-hud .character-selector-trigger { height: 16px; font-size: 11px; line-height: 1.2; }
+:root .app-shell .player-hud .character-selector-trigger {
+  height: 16px;
+  font-size: 11px;
+  line-height: 1.2;
+}
 :root .app-shell .player-hud .player-hud-details {
   display: block;
   margin: 0;
@@ -160,7 +205,9 @@
   padding-right: 22px;
 }
 :root .app-shell .player-hud .character-selector,
-:root .app-shell .player-hud .character-selector-trigger { position: static; }
+:root .app-shell .player-hud .character-selector-trigger {
+  position: static;
+}
 :root .app-shell .player-hud .character-selector-trigger > svg {
   position: absolute;
   top: calc(50% - 7px);

@@ -1,4 +1,11 @@
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent,
+} from 'react';
 import { Coins, Search, ShoppingCart, X, Plus } from 'lucide-react';
 import type { Character, Item } from './types';
 import { money } from '../shared/rules';
@@ -14,23 +21,25 @@ type Line = { id: string; quantity: number; x: number; y: number };
 type Point = { x: number; y: number };
 function SpeechBubbleShape() {
   const ref = useRef<SVGSVGElement>(null);
-  const [shape, setShape] = useState({ width: 200, height: 100, x: 100, y: 140 });
+  const [shape, setShape] = useState({ width: 200, height: 100, x: 100, y: 140, bottom: true });
   useLayoutEffect(() => {
     const bubble = ref.current?.parentElement;
     const vendor = bubble?.closest('.merchant-vendor')?.querySelector('img');
     if (!bubble || !vendor) return;
     const update = () => {
       const face = vendor.getBoundingClientRect();
+      const anchor = bubble.closest('.merchant-vendor')!.getBoundingClientRect();
       const scene = bubble.closest('.shop-scene')!;
-      const room = scene.getBoundingClientRect();
+      const room = scene.querySelector('.shop-layout')!.getBoundingClientRect();
       const catalog = scene.querySelector('.shop-showcase')!.getBoundingClientRect();
-      const stacked = room.width <= 1100;
+      const stacked = scene.clientWidth <= 1100;
       const leftLimit = stacked ? room.left + 14 : catalog.right + 16;
       // The empty area beside the head can hold the bubble without covering the face.
-      const rightLimit = face.left + face.width * .28 - 24;
+      const rightLimit = face.left + face.width * 0.54 - (stacked ? 32 : 56);
       const available = rightLimit - leftLimit;
-      const side = available >= (stacked ? 160 : 220);
-      const width = side ? Math.min(320, available) : Math.min(380, face.width, room.width - 28);
+      const side = available >= 160;
+      const originalWidth = side ? Math.min(320, available) : Math.min(380, face.width, room.width - 28);
+      const width = side ? Math.max(160, originalWidth * 0.8) : originalWidth;
       bubble.style.width = `${width}px`;
       bubble.style.maxWidth = 'none';
       bubble.style.right = 'auto';
@@ -38,35 +47,55 @@ function SpeechBubbleShape() {
       const height = bubble.offsetHeight;
       const header = document.querySelector('.topbar.player-hud')?.getBoundingClientRect();
       const topLimit = stacked ? catalog.bottom + 12 : (header?.bottom ?? room.top) + 12;
-      const left = side ? rightLimit - width : Math.min(room.right - width - 14, face.left + (face.width - width) / 2);
-      const top = side ? Math.max(topLimit, face.top + face.height * .18) : Math.max(topLimit, face.top - height - 22);
-      bubble.style.left = `${left - face.left}px`;
-      bubble.style.top = `${top - face.top}px`;
+      const left = side
+        ? rightLimit - originalWidth
+        : Math.min(room.right - width - 14, face.left + (face.width - width) / 2);
+      const top = side
+        ? Math.max(topLimit, face.top + face.height * 0.18)
+        : Math.max(topLimit, face.top - height - 22);
+      bubble.style.left = `${left - anchor.left}px`;
+      bubble.style.top = `${top - anchor.top}px`;
       bubble.dataset.placement = side ? 'side' : 'above';
       const box = bubble.getBoundingClientRect();
-      setShape({ width: bubble.clientWidth, height: bubble.clientHeight,
-        x: face.left + face.width * .54 - box.left,
-        y: face.top + face.height * .28 - box.top });
+      setShape({
+        width: bubble.clientWidth,
+        height: bubble.clientHeight,
+        x: face.left + face.width * 0.54 - box.left,
+        y: face.top + face.height * 0.28 - box.top,
+        bottom: !side,
+      });
     };
     const observer = new ResizeObserver(update);
     observer.observe(bubble);
     observer.observe(vendor);
     window.addEventListener('resize', update);
     update();
-    return () => { observer.disconnect(); window.removeEventListener('resize', update); };
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', update);
+    };
   }, []);
-  const { width: w, height: h, x: targetX, y: targetY } = shape;
-  const bottom = targetY > h && targetX < w + 30;
+  const { width: w, height: h, x: targetX, y: targetY, bottom } = shape;
   const x = Math.max(22, Math.min(w - 22, targetX));
   const y = Math.max(22, Math.min(h - 22, targetY));
-  const tipX = bottom ? x + Math.max(-12, Math.min(12, (targetX - x) * .2)) : w + 19;
-  const tipY = bottom ? h + 19 : y + Math.max(-12, Math.min(12, (targetY - y) * .2));
-  const rightEdge = bottom ? `V${h - 12}` : `V${y - 9} L${tipX} ${tipY} L${w - .5} ${y + 9} V${h - 12}`;
-  const bottomEdge = bottom ? `H${x + 9} L${tipX} ${tipY} L${x - 9} ${h - .5} H12` : 'H12';
+  const tipX = bottom ? x : w + 10;
+  const tipY = bottom ? h + 10 : y;
+  const rightEdge = bottom
+    ? `V${h - 12}`
+    : `V${y - 9} L${tipX} ${tipY} L${w - 0.5} ${y + 9} V${h - 12}`;
+  const bottomEdge = bottom ? `H${x + 9} L${tipX} ${tipY} L${x - 9} ${h - 0.5} H12` : 'H12';
   return (
-    <svg ref={ref} className="merchant-speech-shape" aria-hidden="true"
-      data-tail-side={bottom ? 'bottom' : 'right'} width={w + 21} height={h + 21}>
-      <path d={`M12 .5 H${w - 12} Q${w - .5} .5 ${w - .5} 12 ${rightEdge} Q${w - .5} ${h - .5} ${w - 12} ${h - .5} ${bottomEdge} Q.5 ${h - .5} .5 ${h - 12} V12 Q.5 .5 12 .5 Z`} />
+    <svg
+      ref={ref}
+      className="merchant-speech-shape"
+      aria-hidden="true"
+      data-tail-side={bottom ? 'bottom' : 'right'}
+      width={w + 12}
+      height={h + 12}
+    >
+      <path
+        d={`M12 .5 H${w - 12} Q${w - 0.5} .5 ${w - 0.5} 12 ${rightEdge} Q${w - 0.5} ${h - 0.5} ${w - 12} ${h - 0.5} ${bottomEdge} Q.5 ${h - 0.5} .5 ${h - 12} V12 Q.5 .5 12 .5 Z`}
+      />
     </svg>
   );
 }
@@ -123,10 +152,13 @@ export function Shop({
       // The painted counter begins at 63.2% of the source image.
       // Anchor it to the interactive tabletop, regardless of viewport aspect ratio.
       const edge = counter.offsetTop;
-      const imageHeight = Math.max(scene.clientWidth * 941 / 1672,
-        edge / .632, (scene.clientHeight - edge) / .368);
+      const imageHeight = Math.max(
+        (scene.clientWidth * 941) / 1672,
+        edge / 0.632,
+        (scene.clientHeight - edge) / 0.368,
+      );
       scene.style.setProperty('--shop-scene-image-height', `${imageHeight}px`);
-      scene.style.setProperty('--shop-scene-image-top', `${edge - imageHeight * .632}px`);
+      scene.style.setProperty('--shop-scene-image-top', `${edge - imageHeight * 0.632}px`);
     };
     const observer = new ResizeObserver(alignBackground);
     observer.observe(scene);
@@ -285,167 +317,171 @@ export function Shop({
   }
   return (
     <div className="shop-scene merchant-shop" ref={sceneRef}>
-      <aside
-        className="merchant-vendor"
-        aria-label="Vendedor da loja"
-        ref={vendorRef}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') {
-            setTalk(false);
-            vendorRef.current?.querySelector('button')?.focus();
-          }
-        }}
-      >
-        <button
-          className="merchant-vendor-toggle"
-          aria-label="Conversar com o mercador"
-          aria-expanded={talk}
-          aria-controls={talk ? 'merchant-conversation' : undefined}
-          onClick={() => {
-            setTalk(!talk);
-            setSpeechVisible(false);
+      <div className="shop-layout">
+        <aside
+          className="merchant-vendor"
+          aria-label="Vendedor da loja"
+          ref={vendorRef}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') {
+              setTalk(false);
+              vendorRef.current?.querySelector('button')?.focus();
+            }
           }}
         >
-          <img
-            src="/shop/reference/shop-merchant-v1.png"
-            alt="Vendedor de cabelos grisalhos e colete de couro, com os braços apoiados no balcão"
-            draggable={false}
-          />
-        </button>
-        {talk ? (
-          <div
-            id="merchant-conversation"
-            className="merchant-speech merchant-conversation"
-            role="group"
-            aria-label="Perguntas ao vendedor"
+          <button
+            className="merchant-vendor-toggle"
+            aria-label="Conversar com o mercador"
+            aria-expanded={talk}
+            aria-controls={talk ? 'merchant-conversation' : undefined}
+            onClick={() => {
+              setTalk(!talk);
+              setSpeechVisible(false);
+            }}
           >
-            <SpeechBubbleShape />
-            <span>O que deseja saber?</span>
-            {merchantConversations.map((c) => (
-              <button
-                key={c.question}
-                onClick={() => {
-                  setTalk(false);
-                  setSpeech(c.answer);
-                  setSpeechKey((v) => v + 1);
-                  vendorRef.current?.querySelector('button')?.focus();
-                }}
-              >
-                {c.question}
-              </button>
-            ))}
-          </div>
-        ) : (
-          speechVisible && (
+            <img
+              src="/shop/reference/shop-merchant-v1.png"
+              alt="Vendedor de cabelos grisalhos e colete de couro, com os braços apoiados no balcão"
+              draggable={false}
+            />
+          </button>
+          {talk ? (
             <div
-              key={speechKey}
-              className="merchant-speech"
-              role="status"
-              aria-label="Comentário do vendedor"
+              id="merchant-conversation"
+              className="merchant-speech merchant-conversation npc-speech"
+              role="group"
+              aria-label="Perguntas ao vendedor"
             >
               <SpeechBubbleShape />
-              <span>{speech}</span>
-            </div>
-          )
-        )}
-      </aside>
-      <section className="shop-showcase" aria-label="Catálogo da loja">
-        <nav className="shop-shelves shop-stone" aria-label="Categorias da loja">
-          <h2>Prateleiras</h2>
-          {['Todos', ...content.categories].map((name) => (
-            <button
-              key={name}
-              className={category === name ? 'active' : ''}
-              aria-pressed={category === name}
-              onClick={() => setCategory(name)}
-            >
-              {name}
-              <span>
-                {name === 'Todos'
-                  ? catalog.length
-                  : catalog.filter((i) => i.category === name).length}
-              </span>
-            </button>
-          ))}
-        </nav>
-        <div className="shop-catalog shop-stone">
-          <div className="shop-search-row">
-            <label>
-              <Search size={16} />
-              <input
-                aria-label="Procurar item"
-                placeholder="Procure um item…"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </label>
-            <span>
-              <Coins size={15} />
-              {money(character?.gold_cp || 0)} PO
-            </span>
-            <button
-              className="shop-cart-toggle"
-              onClick={() => {
-                setError('');
-                setCheckout(true);
-              }}
-              aria-label={`Abrir carrinho: ${lines.length} itens`}
-            >
-              <ShoppingCart size={18} />
-              <b>{lines.reduce((s, l) => s + l.quantity, 0)}</b>
-            </button>
-          </div>
-          <div className="shop-product-list" tabIndex={0} aria-label="Itens da loja">
-            {filtered.map((item) => (
-              <article
-                key={item.id}
-                className={`shop-product${examined?.id === item.id ? ' is-examined' : ''}`}
-                style={{ '--item-scale': itemScale(item) } as CSSProperties}
-              >
+              <strong className="npc-speaker">Desconhecido</strong>
+              <span>O que deseja saber?</span>
+              {merchantConversations.map((c) => (
                 <button
-                  className="shop-product-art"
-                  aria-label={`Examinar ${item.name}`}
-                  draggable={!busy}
-                  onDragStart={(event) => {
-                    event.dataTransfer.setData('application/x-alvorada-shop', item.id);
-                    event.dataTransfer.effectAllowed = 'copy';
-                    say(item);
-                  }}
+                  key={c.question}
                   onClick={() => {
-                    setExamined(item);
-                    say(item);
+                    setTalk(false);
+                    setSpeech(c.answer);
+                    setSpeechKey((v) => v + 1);
+                    vendorRef.current?.querySelector('button')?.focus();
                   }}
                 >
-                  <img
-                    src={item.image_path || ''}
-                    alt={item.name}
-                    draggable={false}
-                    loading="lazy"
-                  />
+                  {c.question}
                 </button>
-                <div>
-                  <small>{item.category}</small>
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                  <span className="shop-weight">
-                    {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
-                    {Number(item.weight_lb).toLocaleString('pt-BR')} lb
-                  </span>
-                  <footer>
-                    <strong>
-                      {item.price_cp === null ? 'Preço a definir' : `${money(item.price_cp)} PO`}
-                    </strong>
-                    <button disabled={busy} onClick={() => add(item)}>
-                      {item.price_cp === null ? 'Examinar na mesa' : 'Comprar'} <Plus size={13} />
-                    </button>
-                  </footer>
-                </div>
-              </article>
+              ))}
+            </div>
+          ) : (
+            speechVisible && (
+              <div
+                key={speechKey}
+                className="merchant-speech npc-speech"
+                role="status"
+                aria-label="Comentário do vendedor"
+              >
+                <SpeechBubbleShape />
+                <strong className="npc-speaker">Desconhecido</strong>
+                <span>{speech}</span>
+              </div>
+            )
+          )}
+        </aside>
+        <section className="shop-showcase" aria-label="Catálogo da loja">
+          <nav className="shop-shelves shop-stone" aria-label="Categorias da loja">
+            <h2>Prateleiras</h2>
+            {['Todos', ...content.categories].map((name) => (
+              <button
+                key={name}
+                className={category === name ? 'active' : ''}
+                aria-pressed={category === name}
+                onClick={() => setCategory(name)}
+              >
+                {name}
+                <span>
+                  {name === 'Todos'
+                    ? catalog.length
+                    : catalog.filter((i) => i.category === name).length}
+                </span>
+              </button>
             ))}
-            {!filtered.length && <p className="shop-no-results">Nenhum item encontrado.</p>}
+          </nav>
+          <div className="shop-catalog shop-stone">
+            <div className="shop-search-row">
+              <label>
+                <Search size={16} />
+                <input
+                  aria-label="Procurar item"
+                  placeholder="Procure um item…"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </label>
+              <span>
+                <Coins size={15} />
+                {money(character?.gold_cp || 0)} PO
+              </span>
+              <button
+                className="shop-cart-toggle"
+                onClick={() => {
+                  setError('');
+                  setCheckout(true);
+                }}
+                aria-label={`Abrir carrinho: ${lines.length} itens`}
+              >
+                <ShoppingCart size={18} />
+                <b>{lines.reduce((s, l) => s + l.quantity, 0)}</b>
+              </button>
+            </div>
+            <div className="shop-product-list" tabIndex={0} aria-label="Itens da loja">
+              {filtered.map((item) => (
+                <article
+                  key={item.id}
+                  className={`shop-product${examined?.id === item.id ? ' is-examined' : ''}`}
+                  style={{ '--item-scale': itemScale(item) } as CSSProperties}
+                >
+                  <button
+                    className="shop-product-art"
+                    aria-label={`Examinar ${item.name}`}
+                    draggable={!busy}
+                    onDragStart={(event) => {
+                      event.dataTransfer.setData('application/x-alvorada-shop', item.id);
+                      event.dataTransfer.effectAllowed = 'copy';
+                      say(item);
+                    }}
+                    onClick={() => {
+                      setExamined(item);
+                      say(item);
+                    }}
+                  >
+                    <img
+                      src={item.image_path || ''}
+                      alt={item.name}
+                      draggable={false}
+                      loading="lazy"
+                    />
+                  </button>
+                  <div>
+                    <small>{item.category}</small>
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                    <span className="shop-weight">
+                      {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
+                      {Number(item.weight_lb).toLocaleString('pt-BR')} lb
+                    </span>
+                    <footer>
+                      <strong>
+                        {item.price_cp === null ? 'Preço a definir' : `${money(item.price_cp)} PO`}
+                      </strong>
+                      <button disabled={busy} onClick={() => add(item)}>
+                        {item.price_cp === null ? 'Examinar na mesa' : 'Comprar'} <Plus size={13} />
+                      </button>
+                    </footer>
+                  </div>
+                </article>
+              ))}
+              {!filtered.length && <p className="shop-no-results">Nenhum item encontrado.</p>}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
       <section className="shop-counter merchant-countertop" aria-label="Balcão de compras">
         <div
           className="shop-table-surface"

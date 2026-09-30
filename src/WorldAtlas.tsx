@@ -134,11 +134,6 @@ export function WorldAtlas({
         ) : (
           <WorldMap markers={markers} onSelect={select} />
         ))}
-      {!regionId && (
-        <header className="page-title world-map-title">
-          <h1>Mapa Alvorada</h1>
-        </header>
-      )}
       {region && (
         <header className="world-atlas-heading">
           <span className="atlas-eyebrow">

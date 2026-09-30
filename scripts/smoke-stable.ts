@@ -69,6 +69,8 @@ try {
   await page.getByRole('button',{name:'Experimentar Ração · 1 dia'}).click();
   await page.getByLabel('Como vai se chamar?').fill('Pé de Pano');
   await expect(page.locator('.stable-speech')).toContainText('Pé de Pano');
+  await expect(page.locator('.stable-speech .npc-speaker')).toHaveText('Brida');
+  expect(await page.locator('.stable-speech p').evaluate(el => getComputedStyle(el).fontFamily)).toContain('NPC Inter');
   await page.getByRole('button',{name:'Comprar conjunto',exact:true}).click();
   await page.getByRole('button',{name:'Confirmar compra',exact:true}).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);

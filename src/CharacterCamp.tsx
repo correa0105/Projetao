@@ -203,11 +203,7 @@ export function CharacterCamp({
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
       <CampEmbers />
-      <header className="camp-heading">
-        <div>
-          <h1>Seu acampamento</h1>
-        </div>
-      </header>
+      <div className="page-header-spacer" aria-hidden="true" />
       <div className="camp-capacity-row">
         <span className="camp-capacity">
           {characters.length + state.pending_new} / 2 personagens
