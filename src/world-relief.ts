@@ -457,7 +457,7 @@ function detailNoise() {
 }
 
 /** Optional CC0 surface detail: timeout/failure keeps the procedural material. */
-function loadSurfaceTexture(path: string): Promise<THREE.Texture | null> {
+function loadSurfaceTexture(path: string, repeat = true): Promise<THREE.Texture | null> {
   return new Promise((resolve) => {
     let settled = false;
     const timer = window.setTimeout(() => {
@@ -475,7 +475,7 @@ function loadSurfaceTexture(path: string): Promise<THREE.Texture | null> {
         settled = true;
         clearTimeout(timer);
         loaded.colorSpace = THREE.SRGBColorSpace;
-        loaded.wrapS = loaded.wrapT = THREE.RepeatWrapping;
+        loaded.wrapS = loaded.wrapT = repeat ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping;
         loaded.minFilter = THREE.LinearMipmapLinearFilter;
         loaded.magFilter = THREE.LinearFilter;
         loaded.anisotropy = 4;
@@ -493,7 +493,7 @@ function loadSurfaceTexture(path: string): Promise<THREE.Texture | null> {
   });
 }
 
-/** Actual geometry; the reference PNG is decoded for a land mask/biomes, never uploaded as map. */
+/** Original geography drives relief; the illustrated finish follows its UV coordinates. */
 export async function createWorldRelief(): Promise<{
   group: THREE.Group;
   sampleHeight: (u: number, v: number) => number;
@@ -504,11 +504,12 @@ export async function createWorldRelief(): Promise<{
   vertexCount: number;
 }> {
   const { land, biome } = await readGeography();
-  // Reuse the regional CC0 photographs, not the illustration. Loading overlaps
-  // terrain generation; the returned scene is ready for its first complete frame.
+  // Loading overlaps terrain generation. Original geography stays independent of
+  // the artistic finish, so territory picking and coastlines retain their shape.
   const surfaceTextures = Promise.all([
     loadSurfaceTexture('/atlas-materials/ground-color.jpg'),
     loadSurfaceTexture('/atlas-materials/rock-color.jpg'),
+    loadSurfaceTexture('/atlas-world-inkarnate-v1.webp', false),
   ]);
   const inland = coastlineDistance(land, true);
   const offshore = coastlineDistance(land, false);
@@ -644,7 +645,7 @@ export async function createWorldRelief(): Promise<{
   const geometries: THREE.BufferGeometry[] = [];
   const materials: THREE.Material[] = [];
   const noiseTexture = detailNoise();
-  const [groundPhoto, rockPhoto] = await surfaceTextures;
+  const [groundPhoto, rockPhoto, illustratedAtlas] = await surfaceTextures;
   const timeUniform = { value: 0 };
   const hoveredTerritory = { value: 0 };
   function territoryAt(u: number, v: number) {
@@ -680,7 +681,8 @@ export async function createWorldRelief(): Promise<{
   const terrainMaterial = trackMaterial(
     new THREE.MeshStandardMaterial({
       color: '#ffffff',
-      vertexColors: true,
+      map: illustratedAtlas,
+      vertexColors: !illustratedAtlas,
       roughness: 0.96,
       metalness: 0,
       flatShading: false,
@@ -849,6 +851,7 @@ export async function createWorldRelief(): Promise<{
       noiseTexture.dispose();
       groundPhoto?.dispose();
       rockPhoto?.dispose();
+      illustratedAtlas?.dispose();
       group.clear();
     },
   };

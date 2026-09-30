@@ -440,3 +440,9 @@ Selas integradas (30/09/2026): 16 novas artes completas, quatro espécies × dua
 Bardas integradas (30/09/2026): couro, cota de malha e placas agora usam artes completas por espécie e pelagem, 24 combinações em public/stable/barded. Não há mais barda avulsa sobreposta à silhueta. Sela selecionada junto da barda continua em primeiro plano. Manifesto e prompts do imagegen integrado: docs/STABLE-BARDED-ART.json. Smoke valida as 24 imagens e os conjuntos com sela.
 
 Seleção da selaria: sela e barda são alternativas na interface. O último clique substitui a seleção anterior e troca a arte inteira; removida a camada de sela sobre a barda. Preço/compra acompanham somente a seleção atual, ração independente. Teste cobre as duas direções de troca nas quatro espécies.
+
+
+## Acabamento inspirado no Inkarnate (30/09/2026)
+
+Mundo agora aplica public/atlas-world-inkarnate-v1.webp sobre a malha navegável, com montanhas e florestas ilustradas em detalhe. A geografia V2 continua responsável pelas alturas, biomas, costas e seleção. Esta revisão substitui a restrição anterior de não aplicar pintura ao material; preserva relevo, navegação e oceano procedural. Fonte, prompt e limites em docs/ATLAS-INKARNATE.md.
+

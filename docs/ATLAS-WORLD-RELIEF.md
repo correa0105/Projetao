@@ -39,3 +39,9 @@ Refino visual: nuvens mundiais levemente mais transparentes (alpha máximo 0,51)
 ### Acabamento mundial vigente — 17/09/2026
 
 Base de câmera reduzida pelo fator 1,42: 100% mantém o enquadramento aprovado; limite máximo 3,5/1,42 preserva a aproximação física anterior. Verde e ocre mais vivos, montanhas cinza neutro, fotografias CC0 de solo/rocha em duas escalas com contraste e relevo de superfície reforçados. Nuvens deslocam-se cerca de 75% mais rápido e deformam-se continuamente; a espiral da tormenta gira mais rapidamente, com ruído também em rotação. Movimento reduzido continua respeitado. Fulkushima usa uma única malha contínua de cratera, encostas, baixadas e costa irregular (raio 2,9), com nove rochedos/ilhotas adjacentes, textura fotográfica e lava rebaixada dentro da cratera; área clicável acompanha a ilha ampliada, sem contorno circular. Build Docker/TypeScript e teste mundial desktop/celular aprovados; sem mudanças de SQL ou regras.
+
+
+## Acabamento inspirado no Inkarnate (30/09/2026)
+
+Mundo agora aplica public/atlas-world-inkarnate-v1.webp sobre a malha navegável, com montanhas e florestas ilustradas em detalhe. A geografia V2 continua responsável pelas alturas, biomas, costas e seleção. Esta revisão substitui a restrição anterior de não aplicar pintura ao material; preserva relevo, navegação e oceano procedural. Fonte, prompt e limites em docs/ATLAS-INKARNATE.md.
+

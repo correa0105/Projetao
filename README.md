@@ -239,3 +239,9 @@ A selaria abaixo das montarias permite experimentar duas selas, três bardas e r
 O nome agora fica acima das montarias, na coluna esquerda; a compra fica abaixo da selaria. As duas selas têm artes completas para cada espécie e pelagem (16 combinações), documentadas em [STABLE-SADDLED-ART.json](docs/STABLE-SADDLED-ART.json).
 
 As três bardas também possuem artes completas para todas as espécies e pelagens (24 combinações). Arquivos e prompts em docs/STABLE-BARDED-ART.json.
+
+
+## Acabamento inspirado no Inkarnate (30/09/2026)
+
+Mundo agora aplica public/atlas-world-inkarnate-v1.webp sobre a malha navegável, com montanhas e florestas ilustradas em detalhe. A geografia V2 continua responsável pelas alturas, biomas, costas e seleção. Esta revisão substitui a restrição anterior de não aplicar pintura ao material; preserva relevo, navegação e oceano procedural. Fonte, prompt e limites em docs/ATLAS-INKARNATE.md.
+

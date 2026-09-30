@@ -55,3 +55,9 @@ Não são necessários subagentes para alterações rotineiras; nenhum fluxo de 
 
 ## Fluxo Git autorizado pelo usuário (30/09/2026)
 Neste checkout, trabalhar na branch Welson e enviar para origin/Welson as alterações solicitadas pelo usuário após validação. Autorização contínua dada nesta conversa. Não enviar para main. Preservar alterações de outras pessoas e backups locais.
+
+
+## Acabamento inspirado no Inkarnate (30/09/2026)
+
+Mundo agora aplica public/atlas-world-inkarnate-v1.webp sobre a malha navegável, com montanhas e florestas ilustradas em detalhe. A geografia V2 continua responsável pelas alturas, biomas, costas e seleção. Esta revisão substitui a restrição anterior de não aplicar pintura ao material; preserva relevo, navegação e oceano procedural. Fonte, prompt e limites em docs/ATLAS-INKARNATE.md.
+
