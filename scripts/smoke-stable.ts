@@ -113,11 +113,11 @@ try {
     await page.getByRole('button',{name:`Ver ${animal}`,exact:true}).click();
     for (const item of ['Sela de montaria','Sela militar','Barda de couro','Barda de cota de malha','Barda de placas','Ração · 1 dia']) {
       await page.getByRole('button',{name:`Experimentar ${item}`,exact:true}).click();
-      const art = item.startsWith('Sela') ? page.locator('.stable-animal-base') : item.startsWith('Ração') ? page.locator('.stable-feed') : page.getByAltText(`${item} em ${animal}`,{exact:true});
+      const art = item.startsWith('Ração') ? page.locator('.stable-feed') : page.locator('.stable-animal-base');
       await expect(art).toBeVisible();
       if (item.startsWith('Barda')) {
-        expect(await art.evaluate(el => getComputedStyle(el).objectFit)).toBe('contain');
-        await expect(page.locator('.stable-neck-foreground')).toBeVisible();
+        await expect(art).toHaveAttribute('src', /\/stable\/barded\//);
+        await expect(page.locator('.stable-equipped-armor')).toHaveCount(0);
       }
       await expect.poll(()=>art.evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBe(true);
       await page.screenshot({path:`test-results/tack-${animal}-${item.replaceAll(' · ','-')}.png`});
@@ -129,8 +129,9 @@ try {
     await page.locator('.stable-coats button').nth(1).click();
     await page.getByRole('button',{name:'Experimentar Barda de couro',exact:true}).click();
     await page.getByRole('button',{name:'Experimentar Sela militar',exact:true}).click();
-    await expect(page.locator('.stable-equipped')).toHaveCount(1);
-    await expect(page.locator('.stable-animal-base')).toHaveAttribute('src',new RegExp('saddled/.+-alternate-military.png'));
+    await expect(page.locator('.stable-equipped-armor')).toHaveCount(0);
+    await expect(page.locator('.stable-animal-base')).toHaveAttribute('src',new RegExp('barded/.+-alternate-leather.png'));
+    await expect(page.locator('.stable-saddle-on-barding')).toHaveAttribute('src','/stable/gear/saddle-military.png');
     await page.screenshot({path:`test-results/tack-combination-${animal}.png`});
     await page.getByRole('button',{name:'Experimentar Barda de couro',exact:true}).click();
     await page.getByRole('button',{name:'Experimentar Sela militar',exact:true}).click();
@@ -139,6 +140,13 @@ try {
     await page.getByRole('button',{name:`Ver ${animal}`,exact:true}).click();
     for (const [coatIndex,coat] of [[0,'original'],[1,'alternate']] as const) {
       await page.locator('.stable-coats button').nth(coatIndex).click();
+      for(const [label,key] of [['Barda de couro','leather'],['Barda de cota de malha','chain'],['Barda de placas','plate']]) {
+        await page.getByRole('button',{name:`Experimentar ${label}`,exact:true}).click();
+        await expect(page.locator('.stable-animal-base')).toHaveAttribute('src',`/stable/barded/${id}-${coat}-${key}.png`);
+        await expect.poll(()=>page.locator('.stable-animal-base').evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBe(true);
+        await page.screenshot({path:`test-results/barded-${id}-${coat}-${key}.png`});
+        await page.getByRole('button',{name:`Experimentar ${label}`,exact:true}).click();
+      }
       for (const [label,key] of [['Sela de montaria','riding'],['Sela militar','military']]) {
         await page.getByRole('button',{name:`Experimentar ${label}`,exact:true}).click();
         await expect(page.locator('.stable-animal-base')).toHaveAttribute('src',`/stable/saddled/${id}-${coat}-${key}.png`);

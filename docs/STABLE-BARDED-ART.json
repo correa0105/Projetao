@@ -1,0 +1,173 @@
+{
+  "tool": "imagegen integrado",
+  "variants": [
+    {
+      "animal": "riding-horse",
+      "coat": "original",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact riding-horse in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/riding-horse-original-leather.png"
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "original",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact riding-horse in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/riding-horse-original-chain.png"
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "original",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact riding-horse in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/riding-horse-original-plate.png"
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "alternate",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact riding-horse in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/riding-horse-alternate-leather.png"
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "alternate",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact riding-horse in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/riding-horse-alternate-chain.png"
+    },
+    {
+      "animal": "riding-horse",
+      "coat": "alternate",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact riding-horse in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/riding-horse-alternate-plate.png"
+    },
+    {
+      "animal": "warhorse",
+      "coat": "original",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact warhorse in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/warhorse-original-leather.png"
+    },
+    {
+      "animal": "warhorse",
+      "coat": "original",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact warhorse in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/warhorse-original-chain.png"
+    },
+    {
+      "animal": "warhorse",
+      "coat": "original",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact warhorse in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/warhorse-original-plate.png"
+    },
+    {
+      "animal": "warhorse",
+      "coat": "alternate",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact warhorse in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/warhorse-alternate-leather.png"
+    },
+    {
+      "animal": "warhorse",
+      "coat": "alternate",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact warhorse in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/warhorse-alternate-chain.png"
+    },
+    {
+      "animal": "warhorse",
+      "coat": "alternate",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact warhorse in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/warhorse-alternate-plate.png"
+    },
+    {
+      "animal": "pony",
+      "coat": "original",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact pony in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/pony-original-leather.png"
+    },
+    {
+      "animal": "pony",
+      "coat": "original",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact pony in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/pony-original-chain.png"
+    },
+    {
+      "animal": "pony",
+      "coat": "original",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact pony in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/pony-original-plate.png"
+    },
+    {
+      "animal": "pony",
+      "coat": "alternate",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact pony in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/pony-alternate-leather.png"
+    },
+    {
+      "animal": "pony",
+      "coat": "alternate",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact pony in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/pony-alternate-chain.png"
+    },
+    {
+      "animal": "pony",
+      "coat": "alternate",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact pony in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/pony-alternate-plate.png"
+    },
+    {
+      "animal": "mule",
+      "coat": "original",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact mule in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/mule-original-leather.png"
+    },
+    {
+      "animal": "mule",
+      "coat": "original",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact mule in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/mule-original-chain.png"
+    },
+    {
+      "animal": "mule",
+      "coat": "original",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact mule in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/mule-original-plate.png"
+    },
+    {
+      "animal": "mule",
+      "coat": "alternate",
+      "armor": "leather",
+      "prompt": "Precise object edit: dress this exact mule in fitted dark brown boiled leather barding, riveted leather chest and flank protection. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/mule-alternate-leather.png"
+    },
+    {
+      "animal": "mule",
+      "coat": "alternate",
+      "armor": "chain",
+      "prompt": "Precise object edit: dress this exact mule in fine interlocking steel chainmail barding draping naturally over chest, neck and flanks. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/mule-alternate-chain.png"
+    },
+    {
+      "animal": "mule",
+      "coat": "alternate",
+      "armor": "plate",
+      "prompt": "Precise object edit: dress this exact mule in articulated burnished steel plate barding, fitted chest plate, segmented neck armor and protective flank plates. Preserve exact animal species, coat markings, anatomy, stance, camera angle, proportions and framing. Armor follows the body with believable straps and integrated contact shadows. Keep ears, muzzle, mane, lower legs, hooves and tail recognizable. Back at withers remains ready for a saddle, but NO saddle or rider. One complete coherent realistic fantasy animal painting, warm evening light matching reference. Entire animal visible in same 3:2 landscape composition. True transparent background, no ground, no halo, no scenery, no text.",
+      "asset": "public/stable/barded/mule-alternate-plate.png"
+    }
+  ]
+}

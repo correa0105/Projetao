@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
-import { stableGear, tackFit, mountNeckMask } from '../shared/stable-gear';
+import { stableGear, tackFit } from '../shared/stable-gear';
 import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
@@ -18,9 +18,12 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
   const coats = mountCoats[mount.id];
   const [equipment, setEquipment] = useState<string[]>([]);
   const saddle = equipment.find(id => id === 'saddle-riding' || id === 'saddle-military');
-  const image = saddle
-    ? `/stable/saddled/${mount.id}-${coat}-${saddle.replace('saddle-','')}.png`
-    : `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
+  const armor = equipment.find(id => id.startsWith('barding-'));
+  const saddleImage = saddle ? `/stable/saddled/${mount.id}-${coat}-${saddle.replace('saddle-','')}.png` : '';
+  const saddleFit = saddle ? tackFit[mount.id][saddle] : undefined;
+  const image = armor
+    ? `/stable/barded/${mount.id}-${coat}-${armor.replace('barding-','')}.png`
+    : saddleImage || `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
   const chosenGear = stableGear.filter(g => equipment.includes(g.id));
   const total = mount.price_cp + chosenGear.reduce((sum,g) => sum + g.price_cp,0);
   function toggleGear(id: string) {
@@ -96,12 +99,7 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
           <div className="stable-animal-art">
           <img className="stable-cast-shadow" src={image} alt="" aria-hidden="true"/>
           <img className="stable-animal-base" key={image} src={image} alt={`${mount.name} de corpo inteiro no campo`} />
-          {chosenGear.filter(g => g.slot === 'armor').sort((a,b) => (a.slot === 'armor' ? -1 : 1) - (b.slot === 'armor' ? -1 : 1)).map(g => {
-            const {x,y,width:w,height:h,angle} = tackFit[mount.id][g.id];
-            return <img key={g.id} className={`stable-equipped stable-equipped-${g.slot}`} src={`/stable/gear/${g.id}.png`} alt={`${g.name} em ${mount.name}`} style={{left:`${x}%`,top:`${y}%`,width:`${w}%`,height:`${h}%`,transform:`rotate(${angle}deg)`}}/>;
-          })}
-          {chosenGear.some(g => g.slot === "armor") && <img className="stable-neck-foreground" src={image} alt="" aria-hidden="true" style={{clipPath:mountNeckMask[mount.id]}}/>}
-          {saddle && chosenGear.some(g => g.slot === 'armor') && <img className="stable-saddle-foreground" src={image} alt="" aria-hidden="true"/>}
+          {saddle && armor && saddleFit && <img className="stable-equipped stable-saddle-on-barding" src={`/stable/gear/${saddle}.png`} alt="Sela sobre a barda" style={{left:`${saddleFit.x}%`,top:`${saddleFit.y}%`,width:`${saddleFit.width}%`,height:`${saddleFit.height}%`,transform:`rotate(${saddleFit.angle}deg)`}}/>}
           </div>
         </div>
         {equipment.includes("feed") && <img className="stable-feed" src="/stable/gear/feed.png" alt="Ração ao lado da montaria"/>}

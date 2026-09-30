@@ -237,3 +237,5 @@ Em Menu → Loja → Estábulo, escolha entre quatro montarias e duas pelagens p
 A selaria abaixo das montarias permite experimentar duas selas, três bardas e ração. O campo de nome e a compra ficam sob o título. A compra do conjunto salva animal, pelagem e acessórios; regras de combate são consultivas. Veja `docs/STABLE-TACK-ART.md` para arte e fonte SRD.
 
 O nome agora fica acima das montarias, na coluna esquerda; a compra fica abaixo da selaria. As duas selas têm artes completas para cada espécie e pelagem (16 combinações), documentadas em [STABLE-SADDLED-ART.json](docs/STABLE-SADDLED-ART.json).
+
+As três bardas também possuem artes completas para todas as espécies e pelagens (24 combinações). Arquivos e prompts em docs/STABLE-BARDED-ART.json.
