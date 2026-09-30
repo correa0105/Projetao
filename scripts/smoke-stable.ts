@@ -45,6 +45,9 @@ try {
   expect((await send({...order,name:'Outro'})).status()).toBe(409);
   expect((await send({...order,idempotency_key:randomUUID(),name:''})).status()).toBe(400);
   expect((await send({...order,coat:'alternate'})).status()).toBe(409);
+  expect((await send({...order,equipment:['feed']})).status()).toBe(409);
+  expect((await send({...order,idempotency_key:randomUUID(),equipment:['unknown']})).status()).toBe(400);
+  expect((await send({...order,idempotency_key:randomUUID(),equipment:['saddle-riding','saddle-military']})).status()).toBe(400);
   expect((await send({...order,idempotency_key:randomUUID(),coat:'invalid'})).status()).toBe(400);
   expect((await send({...order,idempotency_key:randomUUID(),mount_id:'dragon'})).status()).toBe(400);
   await pool.query('UPDATE characters SET gold_cp=0 WHERE id=$1',[hero.id]);
@@ -61,39 +64,52 @@ try {
   }
   await page.getByRole('button',{name:'Ver Pônei',exact:true}).click();
   await page.getByRole('button',{name:'Pampa',exact:true}).click();
-  await expect(page.locator('.stable-animal img')).toHaveAttribute('src','/stable/pony-alternate.png');
-  await page.getByRole('button',{name:'Ver especificações da montaria'}).click();
+  await expect(page.locator('.stable-animal-base')).toHaveAttribute('src','/stable/pony-alternate.png');
+  await page.getByRole('button',{name:'Experimentar Sela de montaria'}).click();
+  await page.getByRole('button',{name:'Experimentar Ração · 1 dia'}).click();
   await page.getByLabel('Como vai se chamar?').fill('Pé de Pano');
   await expect(page.locator('.stable-speech')).toContainText('Pé de Pano');
-  await page.getByRole('button',{name:'Comprar montaria',exact:true}).click();
+  await page.getByRole('button',{name:'Comprar conjunto',exact:true}).click();
   await page.getByRole('button',{name:'Confirmar compra',exact:true}).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);
   expect((await (await page.request.get(origin + '/api/stable/' + hero.id)).json()).some((m: {name:string;coat:string}) => m.name === 'Pé de Pano' && m.coat === 'alternate')).toBe(true);
   await page.reload();
   expect((await (await page.request.get(origin + '/api/stable/' + hero.id)).json()).some((m: {name:string;coat:string}) => m.name === 'Pé de Pano' && m.coat === 'alternate')).toBe(true);
-  expect((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[hero.id])).rows[0].gold_cp).toBe(96200);
+  expect((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[hero.id])).rows[0].gold_cp).toBe(95195);
+  expect((await pool.query("SELECT equipment,equipment_price_cp FROM character_mounts WHERE character_id=$1 AND name='Pé de Pano'",[hero.id])).rows[0]).toEqual({equipment:['feed','saddle-riding'],equipment_price_cp:1005});
   expect((await pool.query('SELECT * FROM character_mounts WHERE character_id=$1',[hero.id])).rowCount).toBe(2);
   await mkdir('test-results',{recursive:true});
   for (const viewport of [{width:1920,height:1080},{width:1440,height:900},{width:1024,height:768},{width:768,height:1024},{width:390,height:844},{width:320,height:740}]) {
     await page.setViewportSize(viewport);
-    await page.getByRole('button',{name:'Ver especificações da montaria'}).click();
     await page.getByLabel('Como vai se chamar?').fill('Sir Cenoura da Estrada Longa');
     await expect(page.locator('.stable-speech')).toContainText('Sir Cenoura');
+    await page.getByRole('button',{name:'Ver especificações da montaria'}).click();
     await page.getByRole('button',{name:'Fechar',exact:true}).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     const keeper = (await page.locator('.stable-keeper > img').boundingBox())!;
-    expect(keeper.height).toBeGreaterThan(160);
+    expect(keeper.height).toBeGreaterThan(110);
     expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1)).toBe(true);
     expect(keeper.y + keeper.height).toBeLessThanOrEqual(viewport.height);
     await expect(page.locator(".stable-choices .stable-inspect")).toBeVisible();
     await expect(page.locator(".stable-choices .stable-coats")).toBeVisible();
-    const animal = (await page.locator('.stable-animal img').boundingBox())!;
+    const animal = (await page.locator('.stable-animal-base').boundingBox())!;
     expect(animal.x).toBeGreaterThanOrEqual(0);
     expect(animal.x+animal.width).toBeLessThanOrEqual(viewport.width);
     expect(await page.locator('.stable-speech').evaluate(el => el.querySelector('p')!.getBoundingClientRect().bottom <= el.getBoundingClientRect().bottom)).toBe(true);
     await page.screenshot({path:`test-results/stable-${viewport.width}.png`,fullPage:true});
   }
   await page.setViewportSize({width:1440,height:900});
+  for (const animal of ['Cavalo de montaria','Cavalo de guerra','Pônei','Mula']) {
+    await page.getByRole('button',{name:`Ver ${animal}`,exact:true}).click();
+    for (const item of ['Sela de montaria','Sela militar','Barda de couro','Barda de cota de malha','Barda de placas','Ração · 1 dia']) {
+      await page.getByRole('button',{name:`Experimentar ${item}`,exact:true}).click();
+      const art = item.startsWith('Ração') ? page.locator('.stable-feed') : page.getByAltText(`${item} em ${animal}`,{exact:true});
+      await expect(art).toBeVisible();
+      expect(await art.evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBe(true);
+      await page.screenshot({path:`test-results/tack-${animal}-${item.replaceAll(' · ','-')}.png`});
+      await page.getByRole('button',{name:`Experimentar ${item}`,exact:true}).click();
+    }
+  }
   await page.getByRole('button',{name:'Abrir navegação',exact:true}).click();
   await page.getByRole('button',{name:'Loja',exact:true}).click();
   await page.getByRole('button',{name:'Empório',exact:true}).click();

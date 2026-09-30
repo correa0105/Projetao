@@ -14,7 +14,7 @@ export const mounts = [
     comment: 'Teimosa? Eu prefiro “consultora de caminhos”. Se ela não quiser atravessar uma ponte, eu escutaria a consultora.', head: '22% 22%' },
 ] as const;
 export type Mount = typeof mounts[number];
-export type OwnedMount = { id: string; mount_id: string; coat: string; name: string; price_cp: number; created_at: string };
+export type OwnedMount = { id: string; mount_id: string; coat: string; name: string; price_cp: number; equipment: string[]; equipment_price_cp: number; created_at: string };
 export function mountNameComment(name: string) {
   const clean = name.trim();
   if (!clean) return 'Um nome vem com o tempo. Aqui ninguém atende por “ei, você”... exceto meu ajudante.';
