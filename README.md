@@ -244,3 +244,5 @@ As três bardas também possuem artes completas para todas as espécies e pelage
 ## Acabamento inspirado no Inkarnate (30/09/2026)
 
 Direção vigente: acabamento construído diretamente no 3D. A imagem Inkarnate foi retirada do material e permanece somente como referência histórica (docs/ATLAS-INKARNATE.md). src/world-relief.ts usa cores por bioma, fotografias CC0 de solo/rocha projetadas em três eixos, fissuras e estratos calculados no shader, erosão nos vértices e copas de árvores em duas malhas instanciadas com sombras reais. src/world-ocean.ts calcula espuma costeira irregular animada. Preservar geografia, territórios e navegação; não reaplicar a imagem completa sobre o terreno. Detalhes e validação em docs/ATLAS-3D-MATERIALS.md.
+
+Refino do Mundo em 30/09/2026: ondas costeiras móveis, árvores menos densas com folhagem procedural, destaque das fronteiras acima das copas e detalhe de dunas/areia. Vulcão e ilhotas cônicas ao sul retirados; 21 marcadores visíveis, registros SQL preservados. Detalhes em docs/ATLAS-3D-MATERIALS.md.

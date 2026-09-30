@@ -1,6 +1,5 @@
 import * as THREE from 'three';
-import { WORLD_ISLETS, FULKUSHIMA_ROCKS } from './world-offshore';
-import { WORLD_TERRITORIES } from './world-territories';
+import { WORLD_ISLETS } from './world-offshore';
 
 /** Continuous per-fragment bathymetry: no vertex-color grid or crossed wave lattice. */
 export function createWorldOcean(
@@ -14,16 +13,9 @@ export function createWorldOcean(
   coast.minFilter = coast.magFilter = THREE.LinearFilter;
   coast.generateMipmaps = false;
   coast.needsUpdate = true;
-  const volcano = WORLD_TERRITORIES.find((t) => t.id === 'fulkushima')!;
-  const vx = (volcano.x - 0.5) * 36,
-    vy = (0.5 - volcano.y) * 20.25;
   const islands = [
     ...WORLD_ISLETS.map(
       ([x, y, r, h]) => new THREE.Vector3(x, y, r * (1 - (0.06 / h) ** (1 / 1.7))),
-    ),
-    new THREE.Vector3(vx, vy, 2.9 * 0.96),
-    ...FULKUSHIMA_ROCKS.map(
-      ([x, y, r, h]) => new THREE.Vector3(vx + x, vy + y, r * (1 - (0.06 / h) ** (1 / 1.7))),
     ),
   ];
   const material = new THREE.MeshStandardMaterial({
@@ -102,7 +94,17 @@ export function createWorldOcean(
       float breakers=seaFbm(oceanPosition*14.0+swellWarp*4.0-drift*2.0);
       float foam=smoothstep(0.49,0.73,breakers)*exp(-offshore/0.075)
         *smoothstep(0.24,0.68,ripples);
-      diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.56,0.73,0.72),foam*0.38);
+      // Travelling fronts follow the shoreline, with warped, broken crests rather
+      // than static contour rings. Derivatives keep the thin foam antialiased.
+      float surfPhase=offshore*16.0+seconds*1.35+seabed*2.5+swellWarp.x*1.7;
+      float crest=sin(surfPhase);
+      float crestAA=max(fwidth(crest),0.025);
+      float surf=smoothstep(0.83-crestAA,0.97+crestAA,crest)
+        *exp(-offshore/0.23)*smoothstep(0.0,0.035,offshore)
+        *smoothstep(0.30,0.65,breakers);
+      foam=max(foam*0.42,surf*0.50);
+      diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.63,0.79,0.77),foam);
+      waterHeight+=crest*exp(-offshore/0.18)*0.0004;
     `,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
@@ -117,7 +119,7 @@ export function createWorldOcean(
     `,
     );
   };
-  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v3-breakers';
+  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v4-travelling-surf';
   // All detail is shaded continuously; a single plane cannot expose colored mesh cells.
   const geometry = new THREE.PlaneGeometry(240, 200);
   const mesh = new THREE.Mesh(geometry, material);

@@ -12,3 +12,10 @@ A escala continua cartográfica e representativa. Copas usam geometria econômic
 ## Validação
 
 Build TypeScript/Vite/servidor aprovado via Docker Compose. `ATLAS_BROWSER_GPU=1 node node_modules/tsx/dist/cli.mjs scripts/smoke-atlas.ts --world-map-only` verifica desktop e celular, câmera, zoom, pan elástico, territórios e entrada/retorno do reino. O smoke também rejeita qualquer solicitação da imagem Inkarnate. Conferir `test-results/world-relief-home-desktop.png`, `world-relief-detail-desktop.png` e `world-relief-home-mobile.png` para a qualidade visual.
+
+## Refino de costa, árvores e deserto (30/09/2026)
+
+Ondas costeiras agora têm cristas móveis acompanhando a costa, variação orgânica e espuma com antialias. Árvores menos densas (espaçamento 0,085 e probabilidade menor), copas menores e textura procedural de folhagem. Fronteiras do território em hover ficam mais largas e recebem passe transparente acima das copas, sem interceptar cliques. Deserto tem dunas assimétricas na geometria, grãos e ondulações no material. Por pedido explícito, o vulcão Fulkushima, lava, rochedos associados, águas rasas e marcador foram retirados do Mundo; as duas ilhotas cônicas no extremo sul também foram removidas. Os registros SQL e a tag mapa-3d-2026-09-30 são preservados. São 21 marcadores visíveis; a lista histórica continua com 22 IDs. Esta decisão substitui a antiga exigência de preservar o vulcão na cena.
+
+Validação do refino: build Docker/TypeScript aprovado; smoke mundial completo em Edge com GPU aprovado em 1440 × 900 e 390 × 844, sem erros de shader/console. Capturas de hover, detalhe e celular revisadas. Navegação e retorno do reino preservados.
+

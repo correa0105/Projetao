@@ -51,14 +51,6 @@ export function inStormWaters(u: number, v: number) {
 
 export function seaTerritory(u: number, v: number) {
   if (inStormWaters(u, v)) return 'olho-da-tormenta';
-  for (const t of WORLD_TERRITORIES) {
-    if (t.land || t.id === 'olho-da-tormenta') continue;
-    const dx = (u - t.x) * 36,
-      dy = (v - t.y) * 20.25;
-    const a = Math.atan2(-dy / 0.8, dx);
-    const coast = 3.15 * (1 + 0.13 * Math.sin(a * 3 + 19.44) + 0.06 * Math.sin(a * 7 - 5.8725));
-    if (Math.hypot(dx, dy / 0.8) < coast) return t.id;
-  }
   return null;
 }
 
@@ -84,9 +76,10 @@ vec3 worldDivision(vec2 uv) {
     .join('\n')}
   float boundaryDistance = (second - first) / max(2.0 * length(secondPoint - firstPoint), 0.001);
   float pixelWidth = max(length(fwidth(p)), 0.0001);
-  float border = 1.0 - smoothstep(pixelWidth * 0.25, pixelWidth * 0.8, boundaryDistance);
   float firstSelected = (1.0 - step(0.5, abs(id - worldHovered))) * step(0.5, worldHovered);
   float secondSelected = (1.0 - step(0.5, abs(secondId - worldHovered))) * step(0.5, worldHovered);
+  float borderScale = mix(1.0, 2.8, max(firstSelected, secondSelected));
+  float border = 1.0 - smoothstep(pixelWidth * 0.25 * borderScale, pixelWidth * 0.8 * borderScale, boundaryDistance);
   float selected = mix(secondSelected, firstSelected, smoothstep(-pixelWidth * 0.6, pixelWidth * 0.6, boundaryDistance));
   vec2 storm = (uv - vec2(0.156, 0.673)) * vec2(36.0 / 3.8, 20.25 / 2.8);
   float stormDistance = length(storm);

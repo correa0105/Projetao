@@ -607,7 +607,7 @@ async function readyWorldRelief(target: Page) {
   return state;
 }
 function worldPinDistance(state: WorldMapState) {
-  expect(state.pins).toHaveLength(22);
+  expect(state.pins).toHaveLength(21);
   return Math.hypot(state.pins[0].x - state.pins[1].x, state.pins[0].y - state.pins[1].y);
 }
 async function resetWorldMap(target: Page, baseline?: WorldMapState) {
@@ -910,7 +910,6 @@ async function exerciseWorldRelief(target: Page, mobile: boolean) {
     'Ermos de Sálvia',
     'Escarpas de Cinábrio',
     'Falésias de Sal',
-    'Fulkushima',
     'Marchas do Poente',
     'Northundria',
     'Olho da Tormenta',
@@ -969,7 +968,6 @@ async function exerciseWorldRelief(target: Page, mobile: boolean) {
     );
     await target.getByRole('button', { name: 'Fechar aviso do território' }).click();
     for (const name of [
-      'Fulkushima',
       'Olho da Tormenta',
       'Valdrakken',
       'Skelliege',
@@ -995,23 +993,6 @@ async function exerciseWorldRelief(target: Page, mobile: boolean) {
           'coroa-da-geada',
         );
         await target.screenshot({ path: 'test-results/world-subdivision-hover.png' });
-      }
-      if (name === 'Fulkushima') {
-        const volcanoPin = target.getByRole('button', { name, exact: true });
-        await volcanoPin.focus();
-        await settleWorldMap(target);
-        // Remove keyboard focus before comparing the island's normal/hover finishes.
-        await target.getByRole('button', { name: 'Centralizar mapa', exact: true }).focus();
-        await target.mouse.move(2, 2);
-        await target.screenshot({ path: 'test-results/fulkushima-idle.png' });
-        const box = (await volcanoPin.boundingBox())!;
-        // Test the land beside the pin, not just the HTML marker.
-        await target.mouse.move(box.x + box.width / 2 - 28, box.y - 8);
-        await expect(target.locator('.world-map__viewport')).toHaveAttribute(
-          'data-hovered-territory',
-          'fulkushima',
-        );
-        await target.screenshot({ path: 'test-results/fulkushima-hover.png' });
       }
       await target.getByRole('button', { name, exact: true }).click();
       await expect(target.locator('.atlas-notice')).toContainText(name + ': exploração em breve.');

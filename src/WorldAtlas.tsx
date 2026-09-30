@@ -41,7 +41,7 @@ export function WorldAtlas({
           ? atlas.locations
               .filter((l) => l.region_id === regionId)
               .map((l) => ({ id: l.id, name: l.name, x: Number(l.map_x), y: Number(l.map_y) }))
-          : atlas.regions.map((r) => ({
+          : atlas.regions.filter((r) => r.id !== 'fulkushima').map((r) => ({
               id: r.id,
               name: r.name,
               available: r.available,

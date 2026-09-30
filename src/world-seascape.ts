@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { WORLD_TERRITORIES } from './world-territories';
-import { WORLD_ISLETS, FULKUSHIMA_ROCKS } from './world-offshore';
+import { WORLD_ISLETS } from './world-offshore';
 
 /** Small offshore landforms and the two maritime destinations, all real geometry/shaders. */
 export function createWorldSeascape() {
@@ -139,25 +139,6 @@ export function createWorldSeascape() {
     group.add(mesh);
   }
   WORLD_ISLETS.forEach(([x, y, r, h]) => island(x, y, r, h));
-  const volcano = WORLD_TERRITORIES.find((t) => t.id === 'fulkushima')!;
-  const vx = (volcano.x - 0.5) * 36,
-    vy = (0.5 - volcano.y) * 20.25;
-  island(vx, vy, 2.9, 1.55, true);
-  // Broken coastal shelves and sea stacks, without a decorative ring around the island.
-  FULKUSHIMA_ROCKS.forEach(([x, y, r, h]) => island(vx + x, vy + y, r, h, false, true));
-  const lavaMaterial = new THREE.MeshStandardMaterial({
-    color: '#d85914',
-    emissive: '#e7470d',
-    emissiveIntensity: 0.75,
-    roughness: 0.55,
-  });
-  materials.push(lavaMaterial);
-  const lavaGeometry = new THREE.CircleGeometry(0.24, 64);
-  geometries.push(lavaGeometry);
-  const lava = new THREE.Mesh(lavaGeometry, lavaMaterial);
-  lava.position.set(vx, vy, 1.065);
-  group.add(lava);
-
   const storm = WORLD_TERRITORIES.find((t) => t.id === 'olho-da-tormenta')!;
   const stormMaterial = new THREE.ShaderMaterial({
     transparent: true,
@@ -201,7 +182,6 @@ export function createWorldSeascape() {
     },
     update(seconds: number) {
       time.value = seconds;
-      lavaMaterial.emissiveIntensity = 0.72 + Math.sin(seconds * 0.8) * 0.1 + hover.value * 0.5;
     },
     dispose() {
       disposed = true;
