@@ -1,5 +1,7 @@
 # Acabamento do Mundo — 30/09/2026
 
+**Histórico, substituído:** o usuário rejeitou aplicar esta arte como textura do mapa. A versão vigente constrói detalhes diretamente na geometria e nos materiais, conforme [ATLAS-3D-MATERIALS.md](ATLAS-3D-MATERIALS.md). O asset abaixo é preservado como referência visual e não é carregado pelo Mundo.
+
 Pedido: transformar o mapa visto de cima em cartografia realista inspirada no Inkarnate. Arte criada com imagegen integrado, usando `public/atlas-world-v2.png` como alvo de edição. Saída nativa 1672 × 941, conservada sem ampliação e codificada como `public/atlas-world-inkarnate-v1.webp`.
 
 A nova arte é aplicada às coordenadas UV da malha de relevo existente. Máscara, biomas e alturas continuam derivados da fonte V2: a arte não redefine territórios ou costa. Permanecem oceano procedural, nuvens, arraste, zoom e seleção dos 22 territórios. O carregamento usa limite de oito segundos e conserva cores procedurais se a textura falhar; a textura é liberada no descarte.

@@ -493,7 +493,7 @@ function loadSurfaceTexture(path: string, repeat = true): Promise<THREE.Texture 
   });
 }
 
-/** Original geography drives relief; the illustrated finish follows its UV coordinates. */
+/** Geography drives real relief, procedural materials and instanced forest crowns. */
 export async function createWorldRelief(): Promise<{
   group: THREE.Group;
   sampleHeight: (u: number, v: number) => number;
@@ -509,7 +509,6 @@ export async function createWorldRelief(): Promise<{
   const surfaceTextures = Promise.all([
     loadSurfaceTexture('/atlas-materials/ground-color.jpg'),
     loadSurfaceTexture('/atlas-materials/rock-color.jpg'),
-    loadSurfaceTexture('/atlas-world-inkarnate-v1.webp', false),
   ]);
   const inland = coastlineDistance(land, true);
   const offshore = coastlineDistance(land, false);
@@ -551,8 +550,8 @@ export async function createWorldRelief(): Promise<{
     width: river.width,
     lines: segments(river.points.filter((_, i) => i % 5 === 0).map((p) => [p.x, p.y] as Point)),
   }));
-  const meadow = new THREE.Color('#7c8d50').multiplyScalar(0.94);
-  const forest = new THREE.Color('#3f663d').multiplyScalar(0.94);
+  const meadow = new THREE.Color('#818563');
+  const forest = new THREE.Color('#354735');
   const sand = new THREE.Color('#d7b76e');
   const dune = new THREE.Color('#c3a05e');
   const stone = new THREE.Color('#96999d');
@@ -603,10 +602,13 @@ export async function createWorldRelief(): Promise<{
         (1 - smooth(mountain, 0.025, 0.2));
       const undulation = (fbm(wx * 0.72 + 28.6, wy * 0.72 - 19.3) - 0.5) * 0.11;
       elevation += undulation * calmPlain;
+      // Small eroded spurs are actual displaced vertices and cast real shadows.
+      const crags = 1 - Math.abs(noise(wx * 8.2 + 3, wy * 8.2 - 9) * 2 - 1);
+      elevation += (crags - 0.55) * 0.13 * smooth(mountain, 0.18, 0.8) * edge;
       elevation += desertAmount * edge * (0.025 * Math.sin(wx * 3.6 + Math.sin(wy * 2)) + 0.025);
       elevation -= channel * Math.min(0.07, elevation * 0.25);
       heightField[i] = clamp(elevation, 0, 1.7);
-      color.copy(meadow).lerp(forest, forestAmount * (0.75 + broad * 0.2));
+      color.copy(meadow).lerp(forest, clamp(forestAmount * (0.95 + broad * 0.18), 0, 1));
       color.lerp(dune, desertAmount).lerp(sand, desertAmount * broad * 0.52);
       const rocky = smooth(mountain, 0.34, 0.93);
       color.lerp(stone, rocky * 0.92);
@@ -645,7 +647,7 @@ export async function createWorldRelief(): Promise<{
   const geometries: THREE.BufferGeometry[] = [];
   const materials: THREE.Material[] = [];
   const noiseTexture = detailNoise();
-  const [groundPhoto, rockPhoto, illustratedAtlas] = await surfaceTextures;
+  const [groundPhoto, rockPhoto] = await surfaceTextures;
   const timeUniform = { value: 0 };
   const hoveredTerritory = { value: 0 };
   function territoryAt(u: number, v: number) {
@@ -681,8 +683,7 @@ export async function createWorldRelief(): Promise<{
   const terrainMaterial = trackMaterial(
     new THREE.MeshStandardMaterial({
       color: '#ffffff',
-      map: illustratedAtlas,
-      vertexColors: !illustratedAtlas,
+      vertexColors: true,
       roughness: 0.96,
       metalness: 0,
       flatShading: false,
@@ -718,6 +719,15 @@ export async function createWorldRelief(): Promise<{
           + texture2D(photograph, position.xy).rgb * weights.z;
         return dot(surface, vec3(0.2126, 0.7152, 0.0722));
       }
+      float terrainHash(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+      }
+      float terrainNoise(vec2 p) {
+        vec2 i = floor(p), f = fract(p);
+        f = f * f * (3.0 - 2.0 * f);
+        return mix(mix(terrainHash(i), terrainHash(i + vec2(1, 0)), f.x),
+          mix(terrainHash(i + vec2(0, 1)), terrainHash(i + vec2(1, 1)), f.x), f.y);
+      }
       ` + shader.fragmentShader;
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <color_fragment>',
@@ -742,6 +752,18 @@ export async function createWorldRelief(): Promise<{
       float worldRockFinish = mix(1.0, clamp(0.58 + worldRockGrain * 1.7, 0.68, 1.38), worldPhotoAvailable.y);
       diffuseColor.rgb *= (0.88 + worldGrain * 0.15 + worldMacro * 0.10)
         * mix(worldGroundFinish, worldRockFinish, worldRockDetail);
+      // Mineral layers, fissures and wind ripples are computed in world space.
+      // They follow the surface and lighting, with no painted atlas shading.
+      float strataWarp = terrainNoise(vWorldRelief.xy * 3.1);
+      float strata = terrainNoise(vec2(vWorldRelief.x * 8.0 + strataWarp * 2.0,
+        vWorldRelief.z * 35.0 + vWorldRelief.y * 3.0)) * 2.0 - 1.0;
+      float fractures = smoothstep(0.72, 0.91, terrainNoise(vWorldRelief.xy * 17.0 + strataWarp));
+      float rockFinish = (0.97 + strata * 0.08) * (1.0 - fractures * 0.12);
+      diffuseColor.rgb *= mix(1.0, rockFinish, worldRockDetail);
+      float sandAmount = smoothstep(1.08, 1.38, diffuseColor.r / max(diffuseColor.g, 0.001))
+        * (1.0 - worldRockDetail);
+      float duneRipples = sin(vWorldRelief.x * 55.0 + vWorldRelief.y * 16.0 + strataWarp * 8.0);
+      diffuseColor.rgb *= 1.0 + duneRipples * sandAmount * 0.045;
       vec2 territoryUv = vec2(vWorldRelief.x / 36.0 + 0.5, 0.5 - vWorldRelief.y / 20.25);
       vec3 division = worldDivision(territoryUv);
       diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.65, 0.48, 0.23), division.y * 0.4);
@@ -758,17 +780,85 @@ export async function createWorldRelief(): Promise<{
       float worldPhotoHeight = mix(worldGroundGrain * worldPhotoAvailable.x,
         worldRockGrain * worldPhotoAvailable.y, worldRockDetail);
       float worldDetailHeight = worldGrain * mix(0.002, 0.006, worldRockDetail)
-        + worldPhotoHeight * mix(0.016, 0.042, worldRockDetail);
+        + worldPhotoHeight * mix(0.012, 0.025, worldRockDetail);
+      worldDetailHeight += (strata * 0.003 - fractures * 0.005) * worldRockDetail
+        + duneRipples * sandAmount * 0.0015;
       vec3 worldGradient = sign(worldDet) * (dFdx(worldDetailHeight) * worldBx + dFdy(worldDetailHeight) * worldBy);
       normal = normalize(abs(worldDet) * normal - worldGradient);
     `,
     );
   };
-  terrainMaterial.customProgramCacheKey = () => 'world-real-relief-v7-surface-detail';
+  terrainMaterial.customProgramCacheKey = () => 'world-real-relief-v8-eroded-materials';
   const terrain = new THREE.Mesh(terrainGeometry, terrainMaterial);
   terrain.name = 'world-land-geometry';
   terrain.castShadow = terrain.receiveShadow = true;
   group.add(terrain);
+
+  // Individual crowns occupy real 3D space. Two instanced meshes keep draw calls
+  // bounded; deterministic placement avoids changing forests on every visit.
+  const forestCrowns: { x: number; y: number; z: number; size: number; conifer: boolean; seed: number }[] = [];
+  const spacing = 0.06;
+  for (let row = 0; row < WORLD_HEIGHT / spacing; row++) {
+    for (let col = 0; col < WORLD_WIDTH / spacing; col++) {
+      const seed = hash(col + 73, row + 137);
+      const wx = -WORLD_WIDTH / 2 + (col + 0.15 + seed * 0.7) * spacing;
+      const wy = -WORLD_HEIGHT / 2 + (row + 0.15 + hash(row + 51, col + 19) * 0.7) * spacing;
+      const u = wx / WORLD_WIDTH + 0.5, v = 0.5 - wy / WORLD_HEIGHT;
+      const i = Math.round(v * NY) * STRIDE + Math.round(u * NX);
+      if (shore[i] < 0.15 || snowWeight[i] > 0.08) continue;
+      const density = forestWeight[i] / Math.max(0.05, landWeight[i]);
+      if (density < 0.32 || seed > density * 0.94) continue;
+      const z = sampleHeight(u, v);
+      const slope = Math.hypot(sampleHeight(u + 0.001, v) - z,
+        sampleHeight(u, v + 0.001) - z);
+      if (z > 0.73 || slope > 0.045) continue;
+      // Open glades and organic clusters, without a regular planting grid.
+      if (noise(wx * 2.4 + 5, wy * 2.4 - 17) < 0.23) continue;
+      forestCrowns.push({ x: wx, y: wy, z, size: 0.043 + seed * 0.022,
+        conifer: v < 0.29 || z > 0.35, seed });
+    }
+  }
+  for (const conifer of [false, true]) {
+    const crowns = forestCrowns.filter((crown) => crown.conifer === conifer);
+    const geometry = trackGeometry(conifer
+      ? new THREE.LatheGeometry([
+        new THREE.Vector2(0.12, 0), new THREE.Vector2(0.86, 0.3),
+        new THREE.Vector2(0.48, 0.8), new THREE.Vector2(0.74, 0.85),
+        new THREE.Vector2(0.34, 1.35), new THREE.Vector2(0.55, 1.4),
+        new THREE.Vector2(0.19, 1.93), new THREE.Vector2(0.32, 1.95),
+        new THREE.Vector2(0, 2.75),
+      ], 9).rotateX(Math.PI / 2)
+      : new THREE.IcosahedronGeometry(1, 2).translate(0, 0, 0.85));
+    const crownPositions = geometry.attributes.position;
+    for (let index = 0; index < crownPositions.count; index++) {
+      const x = crownPositions.getX(index), y = crownPositions.getY(index);
+      const irregularity = 0.88 + noise(x * 4.7 + 11, y * 4.7 - 3) * 0.24;
+      crownPositions.setXYZ(index, x * irregularity, y * irregularity,
+        crownPositions.getZ(index) * (0.95 + noise(x * 3 - 7, y * 3 + 9) * 0.1));
+    }
+    const material = trackMaterial(new THREE.MeshStandardMaterial({
+      color: '#ffffff', roughness: 0.94, metalness: 0,
+    }));
+    const trees = new THREE.InstancedMesh(geometry, material, crowns.length);
+    trees.name = conifer ? 'world-conifer-crowns' : 'world-broadleaf-crowns';
+    const transform = new THREE.Object3D();
+    const foliage = new THREE.Color();
+    crowns.forEach((crown, index) => {
+      transform.position.set(crown.x, crown.y, crown.z + 0.005);
+      transform.rotation.z = crown.seed * Math.PI * 2;
+      transform.scale.set(crown.size, crown.size * (0.8 + crown.seed * 0.3), crown.size * 1.15);
+      transform.updateMatrix();
+      trees.setMatrixAt(index, transform.matrix);
+      foliage.set(conifer ? '#3e5037' : '#56603b').multiplyScalar(0.82 + crown.seed * 0.4);
+      trees.setColorAt(index, foliage);
+    });
+    trees.receiveShadow = true;
+    trees.castShadow = true;
+    trees.computeBoundingSphere();
+    // Picking continues to use the terrain; foliage never intercepts territories.
+    trees.raycast = () => {};
+    group.add(trees);
+  }
 
   const ocean = createWorldOcean(shore, NX, NY, timeUniform);
   group.add(ocean.mesh);
@@ -851,7 +941,9 @@ export async function createWorldRelief(): Promise<{
       noiseTexture.dispose();
       groundPhoto?.dispose();
       rockPhoto?.dispose();
-      illustratedAtlas?.dispose();
+      group.traverse((object) => {
+        if (object instanceof THREE.InstancedMesh) object.dispose();
+      });
       group.clear();
     },
   };

@@ -94,7 +94,8 @@ function watchErrors(target: Page) {
   });
   target.on('request', (request) => {
     const path = new URL(request.url()).pathname;
-    if (/\/atlas-(?:world|north)\.png$/.test(path)) webglRasterRequests.push(path);
+    if (/\/atlas-(?:(?:world|north)\.png|world-inkarnate-v1\.webp)$/.test(path))
+      webglRasterRequests.push(path);
   });
   target.on('request', (request) => {
     if (new URL(request.url()).pathname === '/kingdom/cloud-bank.png')

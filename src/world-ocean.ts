@@ -37,7 +37,7 @@ export function createWorldOcean(
     shader.uniforms.oceanIslands = { value: islands };
     shader.uniforms.oceanDeep = { value: new THREE.Color('#082b45') };
     shader.uniforms.oceanShelf = { value: new THREE.Color('#195e79') };
-    shader.uniforms.oceanShallow = { value: new THREE.Color('#4a939f') };
+    shader.uniforms.oceanShallow = { value: new THREE.Color('#398f96') };
     shader.vertexShader = 'varying vec2 oceanPosition;\n' + shader.vertexShader;
     shader.vertexShader = shader.vertexShader.replace(
       '#include <begin_vertex>',
@@ -99,6 +99,10 @@ export function createWorldOcean(
       float swell=seaFbm(oceanPosition*1.45+swellWarp*2.8-drift);
       float ripples=seaFbm(oceanPosition*5.2+swellWarp*3.4-drift*1.6);
       float waterHeight=swell*0.023+ ripples*0.003;
+      float breakers=seaFbm(oceanPosition*14.0+swellWarp*4.0-drift*2.0);
+      float foam=smoothstep(0.49,0.73,breakers)*exp(-offshore/0.075)
+        *smoothstep(0.24,0.68,ripples);
+      diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.56,0.73,0.72),foam*0.38);
     `,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
@@ -113,7 +117,7 @@ export function createWorldOcean(
     `,
     );
   };
-  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v2';
+  material.customProgramCacheKey = () => 'world-ocean-bathymetry-v3-breakers';
   // All detail is shaded continuously; a single plane cannot expose colored mesh cells.
   const geometry = new THREE.PlaneGeometry(240, 200);
   const mesh = new THREE.Mesh(geometry, material);
