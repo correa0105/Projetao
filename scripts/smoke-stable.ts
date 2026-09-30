@@ -105,10 +105,24 @@ try {
       await page.getByRole('button',{name:`Experimentar ${item}`,exact:true}).click();
       const art = item.startsWith('Ração') ? page.locator('.stable-feed') : page.getByAltText(`${item} em ${animal}`,{exact:true});
       await expect(art).toBeVisible();
+      if (!item.startsWith('Ração')) {
+        expect(await art.evaluate(el => getComputedStyle(el).objectFit)).toBe('contain');
+        await expect(page.locator('.stable-neck-foreground')).toBeVisible();
+      }
       expect(await art.evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBe(true);
       await page.screenshot({path:`test-results/tack-${animal}-${item.replaceAll(' · ','-')}.png`});
       await page.getByRole('button',{name:`Experimentar ${item}`,exact:true}).click();
     }
+  }
+  for (const animal of ['Cavalo de montaria','Cavalo de guerra','Pônei','Mula']) {
+    await page.getByRole('button',{name:`Ver ${animal}`,exact:true}).click();
+    await page.locator('.stable-coats button').nth(1).click();
+    await page.getByRole('button',{name:'Experimentar Barda de couro',exact:true}).click();
+    await page.getByRole('button',{name:'Experimentar Sela militar',exact:true}).click();
+    await expect(page.locator('.stable-equipped')).toHaveCount(2);
+    await page.screenshot({path:`test-results/tack-combination-${animal}.png`});
+    await page.getByRole('button',{name:'Experimentar Barda de couro',exact:true}).click();
+    await page.getByRole('button',{name:'Experimentar Sela militar',exact:true}).click();
   }
   await page.getByRole('button',{name:'Abrir navegação',exact:true}).click();
   await page.getByRole('button',{name:'Loja',exact:true}).click();

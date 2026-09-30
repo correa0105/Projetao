@@ -8,10 +8,31 @@ export const stableGear = [
   { id:'feed', name:'Ração · 1 dia', slot:'feed', price_cp:5, weight:10, description:'Uma porção diária de alimento para a montaria. Exibida ao lado do animal.' },
 ] as const;
 export type StableGearId = typeof stableGear[number]['id'];
-// Anchors in the actual 3:2 animal image, independent of viewport and coat.
-export const tackFit: Record<string,{saddle:number[];armor:number[]}> = {
- 'riding-horse':{saddle:[39,26,30,38],armor:[31,28,49,42]},
- 'warhorse':{saddle:[39,27,31,38],armor:[30,28,52,44]},
- 'pony':{saddle:[39,28,31,40],armor:[30,30,53,43]},
- 'mule':{saddle:[40,30,29,38],armor:[32,32,48,40]},
+// Fits are measured against each animal's 1536×1024 artwork. Keep the
+// equipment aspect ratio; the neck/mane occlusion is rendered above the tack.
+export type TackPlacement = { x:number; y:number; width:number; height:number; angle:number };
+const fit = (x:number,y:number,width:number,height:number,angle=0):TackPlacement => ({x,y,width,height,angle});
+export const tackFit: Record<string,Record<string,TackPlacement>> = {
+ 'riding-horse':{
+  'saddle-riding':fit(40,23,30,43,-3), 'saddle-military':fit(40,22,31,43,-3),
+  'barding-leather':fit(25,17,57,52,-2), 'barding-chain':fit(25,18,57,52,-2), 'barding-plate':fit(25,16,58,53,-2),
+ },
+ 'warhorse':{
+  'saddle-riding':fit(40,25,31,44,-3), 'saddle-military':fit(40,24,32,44,-3),
+  'barding-leather':fit(24,18,59,54,-2), 'barding-chain':fit(24,19,59,54,-2), 'barding-plate':fit(24,17,60,55,-2),
+ },
+ 'pony':{
+  'saddle-riding':fit(41,26,31,45,-4), 'saddle-military':fit(41,25,32,45,-4),
+  'barding-leather':fit(26,22,59,54,-3), 'barding-chain':fit(26,23,59,54,-3), 'barding-plate':fit(26,21,60,55,-3),
+ },
+ 'mule':{
+  'saddle-riding':fit(42,27,29,43,-3), 'saddle-military':fit(42,26,30,43,-3),
+  'barding-leather':fit(27,22,56,50,-2), 'barding-chain':fit(27,23,56,50,-2), 'barding-plate':fit(27,21,57,51,-2),
+ },
+};
+export const mountNeckMask: Record<string,string> = {
+ 'riding-horse':'polygon(0 0, 50% 0, 50% 23%, 42% 29%, 36% 38%, 29% 48%, 0 48%)',
+ 'warhorse':'polygon(0 0, 52% 0, 52% 25%, 43% 31%, 36% 41%, 29% 50%, 0 50%)',
+ 'pony':'polygon(0 0, 50% 0, 50% 28%, 44% 35%, 38% 43%, 30% 51%, 0 51%)',
+ 'mule':'polygon(0 0, 51% 0, 51% 26%, 43% 31%, 36% 42%, 30% 50%, 0 50%)',
 };

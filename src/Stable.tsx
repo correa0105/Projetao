@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
-import { stableGear, tackFit } from '../shared/stable-gear';
+import { stableGear, tackFit, mountNeckMask } from '../shared/stable-gear';
 import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
@@ -88,11 +88,13 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
       <div className="stable-field" aria-label={`No campo: ${mount.name}`}>
         <div className="stable-animal" style={{ '--animal-scale': mount.scale } as CSSProperties}>
           <div className="stable-animal-art">
+          <img className="stable-cast-shadow" src={image} alt="" aria-hidden="true"/>
           <img className="stable-animal-base" key={image} src={image} alt={`${mount.name} de corpo inteiro no campo`} />
           {chosenGear.filter(g => g.slot !== 'feed').sort((a,b) => (a.slot === 'armor' ? -1 : 1) - (b.slot === 'armor' ? -1 : 1)).map(g => {
-            const [x,y,w,h] = tackFit[mount.id][g.slot as 'saddle'|'armor'];
-            return <img key={g.id} className={`stable-equipped stable-equipped-${g.slot}`} src={`/stable/gear/${g.id}.png`} alt={`${g.name} em ${mount.name}`} style={{left:`${x}%`,top:`${y}%`,width:`${w}%`,height:`${h}%`}}/>;
+            const {x,y,width:w,height:h,angle} = tackFit[mount.id][g.id];
+            return <img key={g.id} className={`stable-equipped stable-equipped-${g.slot}`} src={`/stable/gear/${g.id}.png`} alt={`${g.name} em ${mount.name}`} style={{left:`${x}%`,top:`${y}%`,width:`${w}%`,height:`${h}%`,transform:`rotate(${angle}deg)`}}/>;
           })}
+          {chosenGear.some(g => g.slot !== "feed") && <img className="stable-neck-foreground" src={image} alt="" aria-hidden="true" style={{clipPath:mountNeckMask[mount.id]}}/>}
           </div>
         </div>
         {equipment.includes("feed") && <img className="stable-feed" src="/stable/gear/feed.png" alt="Ração ao lado da montaria"/>}

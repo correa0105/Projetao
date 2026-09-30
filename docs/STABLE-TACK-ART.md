@@ -40,3 +40,10 @@ As artes de equipamentos são camadas sobre a imagem 3:2 de cada animal. `shared
 Catálogo inicial: seis itens equipáveis/suprimentos. Não inclui veículos, serviços de hospedagem nem sela exótica (destinada a animais aquáticos ou voadores). Dados de preço/peso: [SRD 5.2.1](https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf), páginas 91 e 100. Bardas custam quatro vezes e pesam duas vezes a armadura correspondente. CA, testes e consumo são informações para a sessão, sem automação de combate.
 
 Compra conjunta salva IDs e valor dos equipamentos em `character_mounts` (migration 035). `price_cp` permanece sendo o preço do animal; `equipment_price_cp` registra os acessórios. Débito total atômico com preço do servidor e idempotência incluindo equipamentos.
+
+## Correção de encaixe e perspectiva
+Encaixes agora são por equipamento e espécie (posição, limites e rotação), com `object-fit: contain` para preservar a proporção. Uma camada do pescoço/crina fica à frente da borda distante das bardas. Sombra projetada da própria silhueta e ajuste do plano dos cascos integram o animal ao solo. Smoke inclui sela + barda nas quatro pelagens alternativas além das 24 prévias individuais e seis viewports.
+
+Novo asset: `public/stable/paddock-eye-level.png`, criado com imagegen integrado a partir de `paddock-earth.png`. Prompt final:
+
+Edit this medieval stable environment for perspective compatibility with life-size horses seen at eye level in 3/4 side view. Camera at standing human eye height 1.5m with level optical axis, 50mm lens. LOWER the apparent viewpoint: distant flat ground horizon around 45 percent height, NOT overhead looking down on ground. Keep exact same visual world: left rustic timber stable, mountain valley, distant right castle, amber sunset light from upper left. Large empty flat packed dirt foreground for animals, softer finer dirt texture in midground, grass fringe only outside sides. No steep foreground slope. No horses people equipment text. Wide 16:9 realistic fantasy painting. Preserve architecture character, palette, weather. Natural ambient warm light, no harsh studio glow.
