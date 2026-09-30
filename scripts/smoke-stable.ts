@@ -44,35 +44,45 @@ try {
   expect((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[hero.id])).rows[0].gold_cp).toBe(99200);
   expect((await send({...order,name:'Outro'})).status()).toBe(409);
   expect((await send({...order,idempotency_key:randomUUID(),name:''})).status()).toBe(400);
+  expect((await send({...order,coat:'alternate'})).status()).toBe(409);
+  expect((await send({...order,idempotency_key:randomUUID(),coat:'invalid'})).status()).toBe(400);
   expect((await send({...order,idempotency_key:randomUUID(),mount_id:'dragon'})).status()).toBe(400);
   await pool.query('UPDATE characters SET gold_cp=0 WHERE id=$1',[hero.id]);
   expect((await send({...order,idempotency_key:randomUUID()})).status()).toBe(409);
   await pool.query('UPDATE characters SET gold_cp=99200 WHERE id=$1',[hero.id]);
   await page.goto(origin + '/#stable'); await page.reload();
   await expect(page.getByRole('heading',{name:'Estábulo da Alvorada',exact:true})).toBeVisible();
-  await expect(page.getByRole('region',{name:'Minhas montarias'})).toContainText('Passo Firme');
+  await expect(page.locator('.stable-owned')).toHaveCount(0);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
   for (const name of ['Cavalo de montaria','Cavalo de guerra','Pônei','Mula']) {
     await page.getByRole('button',{name:`Ver ${name}`,exact:true}).click();
     await expect(page.getByAltText(`${name} de corpo inteiro no campo`)).toBeVisible();
     expect(await page.getByAltText(`${name} de corpo inteiro no campo`).evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   }
   await page.getByRole('button',{name:'Ver Pônei',exact:true}).click();
+  await page.getByRole('button',{name:'Pampa',exact:true}).click();
+  await expect(page.locator('.stable-animal img')).toHaveAttribute('src','/stable/pony-alternate.png');
+  await page.getByRole('button',{name:'Ver especificações da montaria'}).click();
   await page.getByLabel('Como vai se chamar?').fill('Pé de Pano');
   await expect(page.locator('.stable-speech')).toContainText('Pé de Pano');
   await page.getByRole('button',{name:'Comprar montaria',exact:true}).click();
   await page.getByRole('button',{name:'Confirmar compra',exact:true}).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);
-  await expect(page.getByRole('region',{name:'Minhas montarias'})).toContainText('Pé de Pano');
+  expect((await (await page.request.get(origin + '/api/stable/' + hero.id)).json()).some((m: {name:string;coat:string}) => m.name === 'Pé de Pano' && m.coat === 'alternate')).toBe(true);
   await page.reload();
-  await expect(page.getByRole('region',{name:'Minhas montarias'})).toContainText('Pé de Pano');
+  expect((await (await page.request.get(origin + '/api/stable/' + hero.id)).json()).some((m: {name:string;coat:string}) => m.name === 'Pé de Pano' && m.coat === 'alternate')).toBe(true);
   expect((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[hero.id])).rows[0].gold_cp).toBe(96200);
   expect((await pool.query('SELECT * FROM character_mounts WHERE character_id=$1',[hero.id])).rowCount).toBe(2);
   await mkdir('test-results',{recursive:true});
   for (const viewport of [{width:1920,height:1080},{width:1440,height:900},{width:1024,height:768},{width:768,height:1024},{width:390,height:844},{width:320,height:740}]) {
     await page.setViewportSize(viewport);
+    await page.getByRole('button',{name:'Ver especificações da montaria'}).click();
     await page.getByLabel('Como vai se chamar?').fill('Sir Cenoura da Estrada Longa');
     await expect(page.locator('.stable-speech')).toContainText('Sir Cenoura');
+    await page.getByRole('button',{name:'Fechar',exact:true}).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const keeper = (await page.locator('.stable-keeper > img').boundingBox())!;
+    expect(keeper.height).toBeGreaterThanOrEqual(380);
     const animal = (await page.locator('.stable-animal img').boundingBox())!;
     expect(animal.x).toBeGreaterThanOrEqual(0);
     expect(animal.x+animal.width).toBeLessThanOrEqual(viewport.width);

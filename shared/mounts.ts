@@ -14,7 +14,7 @@ export const mounts = [
     comment: 'Teimosa? Eu prefiro “consultora de caminhos”. Se ela não quiser atravessar uma ponte, eu escutaria a consultora.', head: '22% 22%' },
 ] as const;
 export type Mount = typeof mounts[number];
-export type OwnedMount = { id: string; mount_id: string; name: string; price_cp: number; created_at: string };
+export type OwnedMount = { id: string; mount_id: string; coat: string; name: string; price_cp: number; created_at: string };
 export function mountNameComment(name: string) {
   const clean = name.trim();
   if (!clean) return 'Um nome vem com o tempo. Aqui ninguém atende por “ei, você”... exceto meu ajudante.';
@@ -27,3 +27,10 @@ export function mountNameComment(name: string) {
   ];
   return lines[Array.from(clean).reduce((n, c) => n + c.codePointAt(0)!, 0) % lines.length];
 }
+
+export const mountCoats: Record<string, {id: string; label: string; color: string}[]> = {
+  'riding-horse': [{id:'original',label:'Alazão',color:'#8c4b29'},{id:'alternate',label:'Tordilho',color:'#cccfc9'}],
+  'warhorse': [{id:'original',label:'Tordilho escuro',color:'#656769'},{id:'alternate',label:'Castanho',color:'#573323'}],
+  'pony': [{id:'original',label:'Palomino',color:'#cdab6a'},{id:'alternate',label:'Pampa',color:'linear-gradient(45deg,#ede7db 50%,#302f2e 50%)'}],
+  'mule': [{id:'original',label:'Castanha',color:'#81563d'},{id:'alternate',label:'Cinza',color:'#a3a39b'}],
+};
