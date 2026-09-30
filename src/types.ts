@@ -106,6 +106,7 @@ export type Page =
   | 'board'
   | 'hooks'
   | 'shop'
+  | 'stable'
   | 'house'
   | 'world'
   | 'lore'

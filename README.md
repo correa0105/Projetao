@@ -230,3 +230,6 @@ docker compose up -d --build app
 ## Mural de avisos
 
 Missões, eventos e ganchos ativos aparecem como papéis clicáveis no mural da vila. Ao publicar, escolha entre seis modelos de papel e informe um resumo opcional. Apenas o autor pode arrastar seu aviso dentro da madeira ou mover com as setas do teclado; a posição fica salva no PostgreSQL. As placas laterais abrem listas com busca, filtros e paginação, incluindo o histórico e a opção de localizar um papel encoberto. Eventos continuam restritos à staff; ganchos nascem da conclusão de missões. `npm run test:notice-board` valida o fluxo em um banco descartável.
+
+### Estábulo
+Em Menu → Loja → Estábulo, escolha entre quatro montarias, consulte sua ficha SRD e dê um nome antes de comprar. Ouro e animal são persistidos no personagem; consulte Seu estábulo na mesma página. npm run test:stable verifica o fluxo em banco descartável.

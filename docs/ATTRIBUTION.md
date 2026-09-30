@@ -76,3 +76,6 @@ Os 65 PNGs de itens, descrições, preços, pesos e falas foram fornecidos pelo 
 `public/shop/reference/shop-counter-v2.png`, `shop-merchant-v1.png`, fontes e licenças foram fornecidos pelo usuário no pacote Loja-Codigo-Integracao-20260929-115851. Imagens preservadas sem alteração. Regras visuais e falas extraídas de `src/shop.css`/`src/shop-presentation.ts` do pacote. As fontes proprietárias Georgia/Arial são usadas via fontes do sistema; fontes web fornecidas mantêm seus avisos em `public/shop/reference/fonts`.
 
 Inter variável (inter-variable.ttf): google/fonts, ofl/inter/Inter[opsz,wght].ttf, licença SIL OFL já incluída em public/shop/reference/fonts/inter-OFL.txt. Adicionada para renderizar o peso regular real no diálogo.
+
+## Montarias
+shared/mounts.ts resume SRD 5.2.1: preço e carga (p.100), mula (p.357), pônei (p.359), cavalo de montaria (p.360), cavalo de guerra (p.364). Tradução local; falas de Brida e descrições narrativas são originais. Imagens originais geradas pela ferramenta integrada imagegen: public/stable, prompts em docs/STABLE-ART.md.

@@ -49,6 +49,13 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     items: [{ page: 'board', label: 'Mural', icon: ScrollText }],
   },
   {
+    id: 'shop', label: 'Loja', icon: PouchIcon,
+    items: [
+      { page: 'shop', label: 'Empório', icon: Backpack },
+      { page: 'stable', label: 'Estábulo', icon: House },
+    ],
+  },
+  {
     id: 'explore',
     label: 'Explorar',
     icon: MapIcon,
@@ -273,16 +280,6 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
             </span>
           </button>
           {packages.slice(0, 2).map(packageButton)}
-          <button
-            className={`dock-item ${page === 'shop' ? 'is-active' : ''}`}
-            aria-label="Loja"
-            aria-current={page === 'shop' ? 'page' : undefined}
-            onClick={() => navigate('shop')}
-          >
-            <span className="dock-orb">
-              <PouchIcon size={44} />
-            </span>
-          </button>
           {packages.slice(2).map(packageButton)}
         </div>
       </div>

@@ -17,6 +17,7 @@ import { characterSheetRouter } from './character-sheet.js';
 import { achievementsRouter } from './achievements.js';
 import { inventoryRouter } from './inventory.js';
 import { notificationsRouter } from './notifications.js';
+import { stableRouter } from './stable.js';
 import { shopRouter } from './shop.js';
 import { PAPER_STYLES } from '../shared/notice-board.js';
 import { testEligible, rankName, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
@@ -138,6 +139,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   app.use('/api', inventoryRouter());
   app.use('/api', notificationsRouter());
   app.use('/api', shopRouter());
+  app.use('/api', stableRouter());
   app.use('/api', achievementsRouter());
   app.get('/api/me', async (_req, res) => {
     const {

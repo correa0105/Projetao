@@ -22,6 +22,7 @@
     "format": "prettier --write src server shared scripts tests vite.config.ts",
     "test:achievements": "node scripts/test-achievements-isolated.mjs",
     "test:notice-board": "node scripts/test-notice-board-isolated.mjs",
+    "test:stable": "node scripts/test-stable-isolated.mjs",
     "test:shop": "node scripts/test-shop-isolated.mjs"
   },
   "dependencies": {

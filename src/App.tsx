@@ -36,6 +36,7 @@ import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
 import { CharacterSheet } from './CharacterSheet';
 import { Notifications } from './Notifications';
+import { Stable } from './Stable';
 import { Shop } from './Shop';
 import { Achievements } from './Achievements';
 import { Inventory } from './Inventory';
@@ -57,6 +58,7 @@ const titles: Record<Page, string> = {
   board: 'Mural Alvorada',
   hooks: 'Mural Alvorada',
   shop: 'Empório do viajante',
+  stable: 'Estábulo da Alvorada',
   house: 'House',
   world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',
@@ -668,11 +670,11 @@ function Portal({ user }: { user: User }) {
             <div>
               <h1>
                 {titles[page]}
-                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks', 'shop'].includes(
+                {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks', 'shop', 'stable'].includes(
                   page,
                 ) && <span className="title-dot">.</span>}
               </h1>
-              {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks'].includes(
+              {!['profile', 'inventory', 'achievements', 'missions', 'board', 'hooks', 'stable'].includes(
                 page,
               ) && (
                 <p>
@@ -718,6 +720,7 @@ function Portal({ user }: { user: User }) {
           ) : (
             noCharacter
           ))}
+        {page === 'stable' && <Stable key={character?.id || 'guest'} character={character} onPurchased={refresh} />}
         {page === 'shop' && <Shop catalog={catalog} character={character} onPurchased={refresh} />}
         {page === 'inventory' &&
           (!character ? (
@@ -741,7 +744,7 @@ function Portal({ user }: { user: User }) {
           ) : (
             noCharacter
           ))}
-        {['missions', 'board', 'hooks'].includes(page) && (
+        {['missions', 'board', 'hooks', 'stable'].includes(page) && (
           <NoticeBoard
             key={page}
             posts={posts}
