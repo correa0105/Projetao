@@ -258,6 +258,9 @@ export function CharacterCamp({
               <p>
                 {character.race} · {character.class}
               </p>
+              {character.art_unlimited && (
+                <p className="muted small">Geração de imagens sem limite</p>
+              )}
               <div className="camp-actions">
                 <a
                   className="button small-button"
@@ -270,7 +273,7 @@ export function CharacterCamp({
                   className="button outline small-button"
                   disabled={character.art_pending || !state.available}
                   onClick={() => {
-                    if (character.art_used >= 2) {
+                    if (!character.art_unlimited && character.art_used >= 2) {
                       setError(
                         'Este personagem já usou as duas imagens deste mês. Tente novamente no próximo mês.',
                       );

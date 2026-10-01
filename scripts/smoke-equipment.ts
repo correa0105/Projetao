@@ -42,6 +42,16 @@ try {
   expect(response.ok()).toBe(true);
   userId = (await response.json()).user.id;
   const character = await createLegacyTestCharacter(userId, 'Arden');
+  if (process.argv.includes('--unlimited')) {
+    await pool.query('INSERT INTO character_art_allowances(user_id,unlimited) VALUES($1,true)', [
+      userId,
+    ]);
+    for (let i = 0; i < 3; i++)
+      await pool.query(
+        "INSERT INTO character_art_jobs(user_id,character_id,idempotency_key,status) VALUES($1,$2,$3,'completed')",
+        [userId, character.id, randomUUID()],
+      );
+  }
   for (const id of ['plate-armor', 'longsword', 'ring-of-protection', 'backpack'])
     await pool.query('INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,1)', [
       character.id,
@@ -78,6 +88,8 @@ try {
   await page.screenshot({ path: 'test-results/equipment-mobile.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(origin + '/#characters');
+  if (process.argv.includes('--unlimited'))
+    await expect(page.getByText('Geração de imagens sem limite', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Gerar imagem', exact: true }).click();
   const modal = page.getByRole('dialog');
   await expect(modal.locator('.art-equipment-choice')).toHaveCount(4);

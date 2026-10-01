@@ -17,7 +17,12 @@ try {
         .map((file) => 'tests/' + file)
     : ['tests/equipment.test.ts', 'tests/equipment-illustrator.test.ts'];
   const args = process.argv.includes('--browser')
-    ? ['--import', 'tsx', 'scripts/smoke-equipment.ts']
+    ? [
+        '--import',
+        'tsx',
+        'scripts/smoke-equipment.ts',
+        ...(process.argv.includes('--unlimited') ? ['--unlimited'] : []),
+      ]
     : ['--import', 'tsx', '--test', '--test-concurrency=1', ...files];
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(process.execPath, args, {

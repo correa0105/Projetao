@@ -9,6 +9,7 @@ export type Character = {
   species_size?: string;
   portrait_revision: number;
   art_used: number;
+  art_unlimited?: boolean;
   art_pending: boolean;
   id: string;
   name: string;

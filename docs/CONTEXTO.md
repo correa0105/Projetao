@@ -1,5 +1,14 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Liberação de imagens por conta (01/10/2026)
+
+Por solicitação explícita, a conta Pai do Cris possui gerações sem limite mensal
+do jogo. Migration 037 cria `character_art_allowances`, configurada diretamente
+no banco para contas autorizadas; nenhuma rota pública concede a permissão.
+Servidor e Personagem respeitam `art_unlimited` para todos os personagens da conta.
+Demais contas mantêm duas imagens por personagem/mês. Limites do provedor, posse,
+idempotência e uma geração em andamento por personagem continuam valendo.
+
 ## Equipamentos e referências da arte (01/10/2026)
 
 Mochila agora possui 12 posições persistidas em `character_equipment` (migration 036).

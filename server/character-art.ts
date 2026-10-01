@@ -92,7 +92,12 @@ export async function enqueueArt(userId: string, input: unknown) {
   if (!/^[A-Za-z0-9+/]+={0,2}$/.test(data.reference)) throw new AppError(400, 'Imagem inválida.');
   const reference = await normalizeArtImage(Buffer.from(data.reference, 'base64'));
   return transaction(async (client) => {
-    await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [userId]);
+    const {
+      rows: [account],
+    } = await client.query(
+      'SELECT u.id,COALESCE((SELECT unlimited FROM character_art_allowances a WHERE a.user_id=u.id),false) AS art_unlimited FROM "user" u WHERE u.id=$1 FOR UPDATE',
+      [userId],
+    );
     const previous = await client.query(
       'SELECT id,status,character_id FROM character_art_jobs WHERE user_id=$1 AND idempotency_key=$2',
       [userId, data.idempotency_key],
@@ -122,7 +127,7 @@ export async function enqueueArt(userId: string, input: unknown) {
         `SELECT count(*)::int AS used FROM character_art_jobs WHERE character_id=$1 AND status <> 'failed' AND created_at >= ${monthStart}`,
         [data.character_id],
       );
-      if (count.rows[0].used >= ART_MONTHLY_LIMIT)
+      if (!account?.art_unlimited && count.rows[0].used >= ART_MONTHLY_LIMIT)
         throw new AppError(409, 'Este personagem já usou as duas imagens deste mês.');
     } else {
       const {
@@ -325,6 +330,7 @@ export function characterArtRouter() {
 }
 
 export const characterListSql = `SELECT c.*,
+  EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited) AS art_unlimited,
   (SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,
   (SELECT count(*)::int FROM character_art_jobs j WHERE j.character_id=c.id AND j.status <> 'failed' AND j.created_at >= ${monthStart}) AS art_used,
   EXISTS(SELECT 1 FROM character_art_jobs j WHERE j.character_id=c.id AND j.status IN ('queued','running')) AS art_pending
