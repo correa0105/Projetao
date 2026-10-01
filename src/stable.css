@@ -13,7 +13,7 @@
 .stable-details form > button { width: 100%; white-space: normal; }
 .stable-source { font-size: 10px; color: #b5ae9b; display: block; margin-top: 18px; }
 .app-shell[data-page='stable'] .main-shell { position:relative; isolation:isolate; height:100dvh; min-height:0; overflow:hidden; background:#283123; }
-.app-shell[data-page='stable'] .main-content { max-width:none; height:100%; min-height:0; padding:16px 24px 64px; display:flex; flex-direction:column; }
+.app-shell[data-page='stable'] .main-content { max-width:none; height:100%; min-height:0; padding:16px var(--page-header-edge) 64px; display:flex; flex-direction:column; }
 .app-shell[data-page='stable'] .page-title { flex:none; margin:0; height:48px; position:relative; z-index:2; }
 .app-shell[data-page='stable'] .page-title p { display:none; }
 .stable-page { flex:1; min-height:0; display:flex; flex-direction:column; }
@@ -22,7 +22,7 @@
 .stable-selected-title span { font-size:9px; letter-spacing:2px; }
 :root .stable-selected-title h2 { font:clamp(22px,2.4vw,36px)/1.2 var(--serif); margin:4px 0 12px; }
 .stable-layout { display:grid; grid-template-columns:clamp(240px,22vw,310px) minmax(0,1fr); gap:20px; flex:1; min-height:0; }
-.stable-panel { color:#eee1c9; border:1px solid #ad916355; background:linear-gradient(135deg,#24271ff0,#141a17e6); padding:14px; border-radius:6px; min-width:0; }
+.stable-panel { color:#eee1c9; border:1px solid #7c654466; background:linear-gradient(#17130ece,#17130ece),url('/achievement-wood-v1.png') center/620px auto; padding:14px; border-radius:6px; min-width:0; }
 .stable-choices { align-self:start; max-height:100%; overflow:auto; }
 :root .stable-choices h2 { font:18px var(--serif); margin:0 0 4px; }
 :root .stable-choices > p { font-size:11px; color:#cdc5b5; margin:0 0 12px; }
@@ -106,7 +106,7 @@
 :root .stable-tack-items button[aria-pressed='true'] { border-color:#e3bc76; background:#6b573b66; }
 .stable-tack-items img { width:100%; height:66px; object-fit:contain; }
 .stable-tack-items small { display:block; color:#c9aa73; margin-top:3px; font-size:10px; }
-.stable-order { display:flex; align-items:center; justify-content:center; gap:10px; flex:none; margin:0 auto 12px; padding:8px 12px; background:#1c231de8; border:1px solid #9c885455; border-radius:5px; max-width:100%; }
+.stable-order { display:flex; align-items:center; justify-content:center; gap:10px; flex:none; margin:0 auto 12px; padding:8px 12px; background:linear-gradient(#17130ece,#17130ece),url('/achievement-wood-v1.png') center/620px auto; border:1px solid #7c654466; border-radius:5px; max-width:100%; }
 .stable-order label { font-size:11px; color:#dfc9a3; }
 .stable-order input { min-width:0; width:180px; color:#f0dfbf; background:#111810; border:1px solid #a28a5e77; border-radius:4px; padding:8px; }
 .stable-order .stable-price { margin:0; gap:6px; flex-direction:column; }
@@ -198,4 +198,10 @@
  .stable-tack-items small { margin-top:1px; }
  .stable-name { padding:4px; }
  .stable-speech { width:min(280px,calc(100vw - 28px)); bottom:calc(100% - 2px); }
+}
+/* Conteúdo acompanha os mesmos limites laterais do header; cenário ocupa a tela. */
+.stable-speech { left:auto; right:0; transform:none; }
+.stable-speech::after { left:auto; right:clamp(45px,8vw,135px); }
+@media(max-width:900px) {
+ .app-shell[data-page='stable'] .main-content { padding-left:18px; padding-right:18px; }
 }
