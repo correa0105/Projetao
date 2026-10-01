@@ -1,4 +1,4 @@
-import { Shield, Package, Sword } from 'lucide-react';
+import { EquipmentIcon } from './EquipmentIcon';
 import { useState } from 'react';
 import { INVENTORY_DRAG_TYPE, type InventoryDrag } from './inventory-drag';
 import {
@@ -53,11 +53,6 @@ export function EquipmentPanel({
             draggedItem &&
             compatibleSlots(draggedItem).includes(slot) &&
             !blocked;
-          const Icon = slot.includes('hand')
-            ? Sword
-            : slot === 'armor' || slot === 'head'
-              ? Shield
-              : Package;
           return (
             <div
               className={`equipment-slot ${current ? 'is-equipped' : ''} ${dragged && over === slot ? (compatible ? 'is-drag-over' : 'is-drag-incompatible') : ''}`}
@@ -95,7 +90,7 @@ export function EquipmentPanel({
                 {current?.image_path ? (
                   <img src={current.image_path} alt={current.name} draggable={false} />
                 ) : (
-                  <Icon aria-hidden="true" size={32} />
+                  <EquipmentIcon slot={slot} />
                 )}
               </div>
               <label className="sr-only" htmlFor={`equipment-${slot}`}>

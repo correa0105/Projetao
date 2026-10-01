@@ -1,5 +1,10 @@
 # Memória do projeto — Alvorada Cinzenta
 
+Espaços de equipamento agora usam o mesmo tom escuro e sombra interna dos
+quadrados vazios da mochila. Ícones SVG específicos por posição (capacete,
+armadura, espada, escudo, anéis, colar, capa, luvas, botas, mochila e bolsa)
+substituem caixas e símbolos genéricos (01/10/2026).
+
 Equipamentos usam o mesmo fundo da mochila/cofre e aceitam arrastar itens livres
 da mochila para posições compatíveis. Categoria errada mostra aviso por 5 segundos
 e não altera o inventário; itens do cofre exigem transferência prévia. As listas
