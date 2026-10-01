@@ -57,7 +57,9 @@ try {
   const vault = page.getByRole('region', { name: 'Itens do cofre', exact: true });
   await expect(bag.locator('.loot-quantity')).toHaveText('3');
   await expect(vault.locator('.loot-slot-empty')).toHaveCount(36);
-  await expect(bag.locator('.loot-slot')).toHaveCount(34);
+  await expect(bag.locator('.loot-slot')).toHaveCount(35);
+  const slotBox = (await bag.locator('.loot-slot-empty').first().boundingBox())!;
+  expect(Math.abs(slotBox.width - slotBox.height)).toBeLessThan(1);
   await bag.locator('button.loot-slot').hover();
   await expect(page.getByRole('dialog', { name: 'Detalhes de Espada longa' })).toBeVisible();
   await page.keyboard.press('Escape');

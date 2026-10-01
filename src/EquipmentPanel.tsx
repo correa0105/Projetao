@@ -10,6 +10,7 @@ import {
 } from '../shared/equipment';
 import type { Character, StorageState } from './types';
 import './equipment.css';
+import { CharacterArtButton } from './CharacterArtButton';
 
 export function EquipmentPanel({
   storage,
@@ -18,7 +19,9 @@ export function EquipmentPanel({
   dragged,
   onDropItem,
   character,
+  onRefresh,
 }: {
+  onRefresh: () => Promise<void>;
   character: Character;
   storage: StorageState;
   busy: boolean;
@@ -207,10 +210,7 @@ export function EquipmentPanel({
           );
         })}
       </div>
-      <p className="equipment-note">
-        Itens equipados podem aparecer na próxima imagem do personagem. Bônus e efeitos mágicos não
-        são aplicados automaticamente.
-      </p>
+      <CharacterArtButton character={character} onRefresh={onRefresh} />
     </section>
   );
 }

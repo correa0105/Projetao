@@ -272,7 +272,7 @@ function StoragePanel({
             length:
               (isVault
                 ? Math.max(36, Math.ceil(items.length / 12) * 12)
-                : Math.max(34, Math.ceil(items.length / 7) * 7)) - items.length,
+                : Math.max(35, Math.ceil(items.length / 7) * 7)) - items.length,
           },
           (_, i) => (
             <div key={i} className="loot-slot loot-slot-empty" aria-hidden="true">
@@ -290,7 +290,9 @@ export function Inventory({
   details,
   onShop,
   onInventoryChange,
+  onRefresh,
 }: {
+  onRefresh: () => Promise<void>;
   character: Character;
   details: Details;
   onShop: () => void;
@@ -444,14 +446,6 @@ export function Inventory({
           {error}
         </p>
       )}
-      <EquipmentPanel
-        character={character}
-        storage={storage}
-        busy={busy}
-        onEquip={equip}
-        dragged={dragged}
-        onDropItem={dropEquipment}
-      />
       <div className="loot-layout">
         <div className="loot-pack-column">
           <section className="loot-summary" aria-label="Resumo da mochila">
@@ -483,13 +477,15 @@ export function Inventory({
               </span>
             </div>
           </section>
-          <figure className="loot-backpack">
-            <img
-              src="/inventory-backpack-v1.png"
-              alt="Mochila de couro de aventureiro com corda, cantil e cobertor"
-            />
-            <figcaption>Seus pertences</figcaption>
-          </figure>
+          <EquipmentPanel
+            character={character}
+            storage={storage}
+            busy={busy}
+            onEquip={equip}
+            dragged={dragged}
+            onDropItem={dropEquipment}
+            onRefresh={onRefresh}
+          />
         </div>
         <StoragePanel
           place="backpack"

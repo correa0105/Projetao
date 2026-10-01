@@ -693,6 +693,7 @@ function Portal({ user }: { user: User }) {
             <p>Consultando a mochila…</p>
           ) : (
             <Inventory
+              onRefresh={refresh}
               key={character.id}
               character={character}
               details={details}

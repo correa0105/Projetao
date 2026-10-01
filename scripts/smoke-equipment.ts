@@ -77,6 +77,9 @@ try {
   await page.reload();
   const equipment = page.getByRole('region', { name: 'Itens equipados', exact: true });
   await expect(equipment).toBeVisible();
+  expect(await equipment.evaluate(el => Boolean(el.closest('.loot-pack-column')))).toBe(true);
+  await expect(page.locator('.loot-backpack')).toHaveCount(0);
+  await expect(equipment.locator('.equipment-note')).toHaveCount(0);
   const bag = page.getByRole('region', { name: 'Itens da mochila', exact: true });
   expect(await equipment.evaluate((el) => getComputedStyle(el).background)).toBe(
     await bag.evaluate((el) => getComputedStyle(el).background),
@@ -126,9 +129,7 @@ try {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/equipment-mobile.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto(origin + '/#characters');
-  if (process.argv.includes('--unlimited'))
-    await expect(page.getByText('Geração de imagens sem limite', { exact: true })).toBeVisible();
+  await expect(equipment.getByRole('button', { name: 'Gerar imagem', exact: true })).toBeEnabled();
   await page.getByRole('button', { name: 'Gerar imagem', exact: true }).click();
   const modal = page.getByRole('dialog');
   await expect(modal.locator('.art-equipment-choice')).toHaveCount(4);
