@@ -272,7 +272,7 @@ function StoragePanel({
             length:
               (isVault
                 ? Math.max(36, Math.ceil(items.length / 12) * 12)
-                : Math.max(35, Math.ceil(items.length / 7) * 7)) - items.length,
+                : Math.max(42, Math.ceil(items.length / 7) * 7)) - items.length,
           },
           (_, i) => (
             <div key={i} className="loot-slot loot-slot-empty" aria-hidden="true">
