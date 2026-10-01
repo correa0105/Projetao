@@ -29,6 +29,10 @@ const page = await browser.newPage({
 });
 const errors: string[] = [];
 page.on('pageerror', (e) => errors.push(e.message));
+page.on('console', (message) => {
+  if (message.type() === 'error' && /THREE|WebGL|shader|GL_INVALID/i.test(message.text()))
+    errors.push(message.text());
+});
 try {
   await mkdir('test-results', { recursive: true });
   await page.goto(origin);

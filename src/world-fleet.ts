@@ -19,12 +19,47 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
   }
   const wood = material('#513421'),
     deck = material('#8e6842'),
-    trim = material('#bd9b65'),
+    trim = material('#ad8750', { metalness: 0.55, roughness: 0.46 }),
     canvas = material('#c9b992', { side: THREE.DoubleSide }),
     dark = material('#252c2c'),
     rope = material('#473c2b'),
-    skin = material('#3f6960'),
-    suckers = material('#988c70');
+    skin = material('#34574f', { roughness: 0.43, metalness: 0.08 }),
+    suckers = material('#b4a08a', { roughness: 0.65 });
+  // Surface detail follows the model, with no image pasted over the scene.
+  for (const [m, kind] of [
+    [wood, 'wood'],
+    [deck, 'deck'],
+    [canvas, 'cloth'],
+    [skin, 'skin'],
+  ] as const) {
+    m.onBeforeCompile = (shader) => {
+      shader.vertexShader = shader.vertexShader
+        .replace('#include <common>', '#include <common>\nvarying vec3 vFleetSurface;')
+        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvFleetSurface = position;');
+      shader.fragmentShader = shader.fragmentShader
+        .replace('#include <common>', '#include <common>\nvarying vec3 vFleetSurface;')
+        .replace(
+          '#include <color_fragment>',
+          `#include <color_fragment>
+          vec3 p = vFleetSurface;
+          ${
+            kind === 'skin'
+              ? `float mottles = sin(p.x*47.0 + sin(p.z*29.0))*sin(p.y*39.0);
+          diffuseColor.rgb *= 0.94 + mottles*0.13;
+          diffuseColor.rgb += vec3(0.02,0.045,0.025)*sin(p.z*15.0);`
+              : kind === 'cloth'
+                ? `float weave = sin(p.x*900.0)*sin(p.z*900.0);
+          float weather = sin(p.x*33.0+p.z*17.0)*sin(p.z*49.0);
+          diffuseColor.rgb *= 0.96 + weave*0.025 + weather*0.05;`
+                : `float grain = sin(p.y*240.0 + sin(p.x*95.0)*2.0);
+          float seam = smoothstep(0.94,0.99,fract(p.x*${kind === 'deck' ? '26.0' : '20.0'}));
+          diffuseColor.rgb *= 0.97 + grain*0.08 - seam*0.2;`
+          }
+        `,
+        );
+    };
+    m.customProgramCacheKey = () => 'fleet-detail-' + kind;
+  }
   const foam = new THREE.MeshBasicMaterial({
     color: '#8cacaa',
     transparent: true,
@@ -60,16 +95,16 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     return obj;
   }
   function sail(parent: THREE.Object3D, y: number, z: number, width: number, height: number) {
-    const g = new THREE.PlaneGeometry(width, height, 8, 6),
+    const g = new THREE.PlaneGeometry(width, height, 12, 10),
       p = g.getAttribute('position');
     for (let i = 0; i < p.count; i++) {
       const x = p.getX(i),
         v = (p.getY(i) + height / 2) / height;
       p.setXYZ(
         i,
-        x,
+        x * (0.86 + v * 0.14),
         Math.sin((x / width + 0.5) * Math.PI) * Math.sin(v * Math.PI) * 0.085,
-        p.getY(i),
+        p.getY(i) + (1 - v) * Math.cos((x / width) * Math.PI) * 0.025,
       );
     }
     g.computeVertexNormals();
@@ -95,7 +130,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         bevelEnabled: true,
         bevelSize: 0.025,
         bevelThickness: 0.025,
-        bevelSegments: 1,
+        bevelSegments: 3,
         steps: 1,
       }),
       wood,
@@ -105,6 +140,14 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       -0.075,
     );
     hull.name = 'wooden-hull';
+    mesh(
+      new THREE.ExtrudeGeometry(shape, { depth: 0.024, bevelEnabled: false }),
+      dark,
+      obj,
+      0,
+      0,
+      0.008,
+    ).scale.set(1.025, 1.025, 1);
     mesh(new THREE.ShapeGeometry(shape), deck, obj, 0, 0, 0.1);
     for (const side of [-1, 1])
       spar(
@@ -115,6 +158,23 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         trim,
       );
     mesh(new THREE.BoxGeometry(0.2, 0.16, 0.09), wood, obj, 0, -0.3, 0.145);
+    for (const x of [-0.065, 0, 0.065]) {
+      mesh(new THREE.BoxGeometry(0.035, 0.007, 0.035), dark, obj, x, -0.215, 0.158);
+      mesh(new THREE.BoxGeometry(0.038, 0.009, 0.005), trim, obj, x, -0.213, 0.178);
+    }
+    mesh(new THREE.BoxGeometry(0.23, 0.17, 0.012), trim, obj, 0, -0.3, 0.197);
+    for (const side of [-1, 1]) {
+      for (const y of [-0.2, -0.055, 0.09]) {
+        mesh(new THREE.BoxGeometry(0.009, 0.045, 0.027), dark, obj, side * 0.157, y, 0.073);
+        spar(
+          obj,
+          new THREE.Vector3(side * 0.14, y, 0.071),
+          new THREE.Vector3(side * 0.205, y, 0.071),
+          0.008,
+          dark,
+        );
+      }
+    }
     const masts: THREE.Group[] = [];
     for (const [y, h, w] of [
       [-0.12, 0.68, 0.38],
@@ -238,22 +298,47 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
   kraken.name = 'sea-kraken';
   kraken.visible = false;
   group.add(kraken);
-  const head = mesh(new THREE.SphereGeometry(0.19, 12, 8), skin, kraken, 0, 0.14, -0.15);
-  head.scale.set(0.85, 1.2, 0.8);
-  for (const x of [-0.09, 0.09])
-    mesh(new THREE.SphereGeometry(0.022, 6, 4), material('#c8a057'), kraken, x, 0.0, 0.015);
-  // Reuse geometry for the joints and cups; update transforms, never rebuild meshes per frame.
-  const jointGeo = new THREE.CylinderGeometry(1, 1, 1, 7),
-    cupGeo = new THREE.SphereGeometry(1, 6, 4);
-  geometries.push(jointGeo, cupGeo);
+  // Continuous tapered tubes replace visible cylinder joints; geometry is reused.
+  const cupGeo = new THREE.TorusGeometry(1, 0.28, 6, 10),
+    dropletGeo = new THREE.SphereGeometry(1, 6, 4);
+  geometries.push(cupGeo, dropletGeo);
+  const tubeSegments = 26,
+    tubeSides = 10;
   const tentacles = Array.from({ length: 6 }, (_, i) => {
     const parts = Array.from({ length: 13 }, (_, j) => {
-      const m = new THREE.Mesh(jointGeo, skin);
+      const m = new THREE.Object3D();
       m.name = `kraken-arm-${i}-joint-${j}`;
       kraken.add(m);
       return m;
     });
-    const cups = Array.from({ length: 6 }, () => {
+    const tubeGeometry = new THREE.BufferGeometry();
+    tubeGeometry.setAttribute(
+      'position',
+      new THREE.BufferAttribute(
+        new Float32Array((tubeSegments + 1) * (tubeSides + 1) * 3),
+        3,
+      ).setUsage(THREE.DynamicDrawUsage),
+    );
+    tubeGeometry.setAttribute(
+      'normal',
+      new THREE.BufferAttribute(
+        new Float32Array((tubeSegments + 1) * (tubeSides + 1) * 3),
+        3,
+      ).setUsage(THREE.DynamicDrawUsage),
+    );
+    const indices: number[] = [];
+    for (let row = 0; row < tubeSegments; row++)
+      for (let side = 0; side < tubeSides; side++) {
+        const n = row * (tubeSides + 1) + side;
+        indices.push(n, n + 1, n + tubeSides + 1, n + 1, n + tubeSides + 2, n + tubeSides + 1);
+      }
+    tubeGeometry.setIndex(indices);
+    geometries.push(tubeGeometry);
+    const tube = new THREE.Mesh(tubeGeometry, skin);
+    tube.name = `kraken-tentacle-${i}`;
+    tube.frustumCulled = false;
+    kraken.add(tube);
+    const cups = Array.from({ length: 16 }, () => {
       const m = new THREE.Mesh(cupGeo, suckers);
       kraken.add(m);
       return m;
@@ -261,12 +346,12 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     return {
       angle: [0.12, 1.3, 2.04, 3.32, 4.13, 5.44][i],
       parts,
+      tube,
       cups,
       tip: new THREE.Vector3(),
       splashAge: -1,
     };
   });
-  const ripple = mesh(new THREE.RingGeometry(0.45, 0.49, 48), foam, kraken, 0, 0, 0.015);
   const wreckage = new THREE.Group();
   wreckage.name = 'ship-wreckage';
   kraken.add(wreckage);
@@ -279,7 +364,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     plank.visible = false;
     return plank;
   });
-  const splash = new THREE.InstancedMesh(cupGeo, foam, 18);
+  const splash = new THREE.InstancedMesh(dropletGeo, foam, 18);
   splash.name = 'kraken-impact-splash';
   splash.frustumCulled = false;
   splash.visible = false;
@@ -292,6 +377,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
   const up = new THREE.Vector3(0, 1, 0),
     a = new THREE.Vector3(),
     b = new THREE.Vector3(),
+    normal = new THREE.Vector3(),
+    binormal = new THREE.Vector3(),
     direction = new THREE.Vector3();
   let clock = 0,
     previous: number | undefined,
@@ -446,7 +533,6 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         s.masts[0].rotation.set(damage * 0.65, -damage * 1.05, damage * 0.18);
         s.masts[1].rotation.set(-smooth((t - 4.7) / 0.55) * 0.85, damage * 0.45, 0);
         kraken.position.z = -sink * 0.22 - withdraw * 0.22;
-        head.position.z = -0.15 + emerge * 0.17;
         for (const [i, tentacle] of tentacles.entries()) {
           // Independent, uneven blows in each arm's fixed lane.
           const hit = armStrikeTimes[i],
@@ -467,20 +553,38 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             m.scale.set(r, a.distanceTo(b) + 0.008, r);
             m.quaternion.setFromUnitVectors(up, direction.copy(b).sub(a).normalize());
           }
+          const positions = tentacle.tube.geometry.getAttribute('position'),
+            normals = tentacle.tube.geometry.getAttribute('normal');
+          for (let row = 0; row <= tubeSegments; row++) {
+            const u = row / tubeSegments;
+            tentaclePoint(tentacle.angle, u, armGrip, emerge, a, strike, thrash, phase);
+            tentaclePoint(tentacle.angle, u + 0.002, armGrip, emerge, b, strike, thrash, phase);
+            direction.copy(b).sub(a).normalize();
+            normal.set(0, 0, 1).cross(direction);
+            if (normal.lengthSq() < 0.001) normal.set(0, 1, 0).cross(direction);
+            normal.normalize();
+            binormal.crossVectors(direction, normal).normalize();
+            const radius = 0.064 * Math.pow(1 - u, 0.8) + 0.003;
+            for (let side = 0; side <= tubeSides; side++) {
+              const theta = (side / tubeSides) * Math.PI * 2,
+                nx = normal.x * Math.cos(theta) + binormal.x * Math.sin(theta),
+                ny = normal.y * Math.cos(theta) + binormal.y * Math.sin(theta),
+                nz = normal.z * Math.cos(theta) + binormal.z * Math.sin(theta),
+                index = row * (tubeSides + 1) + side;
+              positions.setXYZ(index, a.x + nx * radius, a.y + ny * radius, a.z + nz * radius);
+              normals.setXYZ(index, nx, ny, nz);
+            }
+          }
+          positions.needsUpdate = normals.needsUpdate = true;
           for (let j = 0; j < tentacle.cups.length; j++) {
             const m = tentacle.cups[j];
-            tentaclePoint(
-              tentacle.angle,
-              (j + 3) / 13,
-              armGrip,
-              emerge,
-              m.position,
-              strike,
-              thrash,
-              phase,
-            );
-            m.position.z -= 0.018;
-            m.scale.setScalar(0.018 * (1 - j / 9));
+            const u = 0.2 + Math.floor(j / 2) * 0.09;
+            tentaclePoint(tentacle.angle, u, armGrip, emerge, m.position, strike, thrash, phase);
+            const radius = 0.064 * Math.pow(1 - u, 0.8) + 0.003;
+            m.position.x += Math.cos(tentacle.angle) * (j % 2 ? 1 : -1) * radius * 0.45;
+            m.position.y += Math.sin(tentacle.angle) * (j % 2 ? 1 : -1) * radius * 0.45;
+            m.position.z -= radius * 0.82;
+            m.scale.setScalar(0.021 * (1 - u * 0.75));
           }
           tentaclePoint(tentacle.angle, 1, armGrip, emerge, tentacle.tip, strike, thrash, phase);
         }
@@ -542,9 +646,6 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           }
           splash.instanceMatrix.needsUpdate = true;
         }
-        ripple.scale.setScalar(1 + t * 0.11);
-        ripple.position.z = 0.015 - kraken.position.z;
-        ripple.visible = t < 8.9;
         if (t >= ATTACK_DURATION) {
           kraken.visible = false;
           reset(s);

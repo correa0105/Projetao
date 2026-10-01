@@ -1,5 +1,17 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Acabamento da frota e kraken sem cabeça (01/10/2026)
+
+Removidas cabeça, olhos e onda circular do ataque; kraken aparece somente por
+seis tentáculos. Superfícies contínuas, afiladas e animadas substituem os cilindros
+visíveis; ventosas em duas fileiras e pele com manchas discretas e brilho úmido.
+Barcos recebem madeira com veios/juntas, velas com trama e forma mais trabalhada,
+metal envelhecido, linha d'água escura, janelas de popa e canhões laterais. Detalhes
+calculados no material e modelados no 3D; nenhum sprite ou imagem sobreposta.
+Mantidos tamanho dos barcos, rotas, golpes sem giro, mastros quebrando, destroços,
+afundamento e respingos locais dos golpes. Recursos reutilizados e descartados
+ao sair do mapa. Testes verificam remoção da cabeça/onda e ciclo da animação.
+
 ## Oclusão natural e integridade dos objetos (01/10/2026)
 
 Anéis e acessórios selecionados podem ficar totalmente invisíveis quando

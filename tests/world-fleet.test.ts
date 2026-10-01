@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createSeaRoutes } from '../src/world-sea-routes.js';
 import { createWorldFleet } from '../src/world-fleet.js';
 import { WORLD_ISLETS } from '../src/world-offshore.js';
+import * as THREE from 'three';
 const coast = (u: number, _v: number) => (u * 36 - 18 > 2 ? 0.3 : -0.18);
 test('rotas marítimas ficam na água e terminam junto à costa', () => {
   const routes = createSeaRoutes(coast);
@@ -74,6 +75,21 @@ test('oito barcos lentos, kraken a cada 30 s, afundamento e movimento reduzido',
     assert.equal(fleet.state.attacks, 1);
     assert.equal(fleet.state.attacking, true);
     assert.equal(fleet.group.getObjectByName('sea-kraken')!.visible, true);
+    const krakenMeshes = fleet.group
+      .getObjectByName('sea-kraken')!
+      .children.filter(
+        (part) => part instanceof THREE.Mesh && !(part instanceof THREE.InstancedMesh),
+      ) as THREE.Mesh[];
+    assert.ok(
+      krakenMeshes.every(
+        (part) =>
+          !(part.geometry instanceof THREE.SphereGeometry) &&
+          !(part.geometry instanceof THREE.RingGeometry),
+      ),
+      'sem cabeça, olhos ou onda circular',
+    );
+    const tube = fleet.group.getObjectByName('kraken-tentacle-0') as THREE.Mesh;
+    assert.ok(tube.geometry.getAttribute('position').count > 250, 'tentáculo contínuo e detalhado');
     const boat = fleet.group.getObjectByName('pirate-ship-0')!;
     assert.equal(boat.scale.x, 0.75);
     advance(30.3, 32.3);
