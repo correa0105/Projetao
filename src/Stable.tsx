@@ -18,6 +18,7 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
   const coats = mountCoats[mount.id];
   const [equipment, setEquipment] = useState<string[]>([]);
   const saddle = equipment.find(id => id === 'saddle-riding' || id === 'saddle-military');
+  const selectedSaddle = stableGear.find(g => g.id === saddle);
   const armor = equipment.find(id => id.startsWith('barding-'));
   const saddleImage = saddle ? `/stable/saddled/${mount.id}-${coat}-${saddle.replace('saddle-','')}.png` : '';
   const image = armor
@@ -81,7 +82,6 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
         </button>)}</div>
         <div className="stable-selection-tools">
         <fieldset className="stable-coats"><legend>Pelagem</legend>{coats.map(c => <button key={c.id} type="button" aria-pressed={coat === c.id} onClick={() => setCoat(c.id)}><i style={{background:c.color}} />{c.label}</button>)}</fieldset>
-          <button className="stable-inspect" aria-label="Ver especificações da montaria" aria-haspopup="dialog" onClick={() => setDetails(true)}>?</button>
         </div>
       </aside>
       <section className="stable-tack-shop stable-panel" aria-label="Loja de equipamentos de montaria">
@@ -92,7 +92,10 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
       </section>
         <form id="stable-checkout" className="stable-order" onSubmit={e => { e.preventDefault(); setError(''); setConfirm(true); }}>
           <div className="stable-price"><strong>{money(total)} PO</strong><span><Coins size={15}/> {money(character?.gold_cp || 0)} PO disponíveis</span></div>
-          <button aria-label="Comprar conjunto" className="button primary" disabled={!character || busy || (character.gold_cp < total)}><Footprints size={17}/> Comprar conjunto <span className="stable-mobile-total">· {money(total)} PO</span></button>
+          <div className="stable-order-actions">
+            <button type="button" className="button stable-view-details" aria-haspopup="dialog" onClick={() => setDetails(true)}>Ver detalhes</button>
+            <button aria-label="Comprar conjunto" className="button primary" disabled={!character || busy || (character.gold_cp < total)}><Footprints size={17}/> Comprar conjunto <span className="stable-mobile-total">· {money(total)} PO</span></button>
+          </div>
           {!character ? <p>Selecione um personagem para comprar.</p> : character.gold_cp < total && <p>Faltam {money(total - character.gold_cp)} PO.</p>}
         </form>
       </div>
@@ -114,7 +117,13 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
     {details && !confirm && <Modal title="Especificações da montaria" close={() => setDetails(false)}>
       <aside className="stable-details stable-panel" aria-label="Ficha da montaria">
         <span className="stable-kicker">BESTA · {mount.size.toUpperCase()}</span>
+        <h3>{mount.name}</h3>
         <p>{mount.description}</p>
+        {selectedSaddle && <section className="stable-saddle-description" aria-label="Sela selecionada">
+          <h3>{selectedSaddle.name}</h3>
+          <p>{selectedSaddle.description}</p>
+          <p>{money(selectedSaddle.price_cp)} PO · {selectedSaddle.weight} lb</p>
+        </section>}
         <dl>{[['Deslocamento', `${mount.speed} pés (${mount.speed * .3} m)`], ['Capacidade de carga', `${mount.capacity} lb`], ['Classe de armadura', mount.ac], ['Pontos de vida', mount.hp]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
         <p className="stable-rule-note">Equipamentos selecionados são cobrados à parte no conjunto. A montaria precisa ser maior que o cavaleiro. Dados para consulta durante a sessão.</p>
 

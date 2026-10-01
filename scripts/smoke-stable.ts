@@ -66,6 +66,10 @@ try {
   await page.getByRole('button',{name:'Pampa',exact:true}).click();
   await expect(page.locator('.stable-animal-base')).toHaveAttribute('src','/stable/pony-alternate.png');
   await page.getByRole('button',{name:'Experimentar Sela de montaria'}).click();
+  await page.getByRole('button',{name:'Ver detalhes',exact:true}).click();
+  await expect(page.getByRole('region',{name:'Sela selecionada'})).toContainText('Sela de montaria');
+  await expect(page.getByRole('region',{name:'Sela selecionada'})).toContainText('Inclui freio');
+  await page.getByRole('button',{name:'Fechar',exact:true}).click();
   await page.getByRole('button',{name:'Experimentar Ração · 1 dia'}).click();
   await page.getByLabel('Como vai se chamar?').fill('Pé de Pano');
   await expect(page.locator('.stable-speech')).toContainText('Pé de Pano');
@@ -85,7 +89,7 @@ try {
     await page.setViewportSize(viewport);
     await page.getByLabel('Como vai se chamar?').fill('Sir Cenoura da Estrada Longa');
     await expect(page.locator('.stable-speech')).toContainText('Sir Cenoura');
-    await page.getByRole('button',{name:'Ver especificações da montaria'}).click();
+    await page.getByRole('button',{name:'Ver detalhes'}).click();
     await page.getByRole('button',{name:'Fechar',exact:true}).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     const nameBox = (await page.locator('.stable-name').boundingBox())!;
@@ -102,7 +106,8 @@ try {
     expect(keeper.height).toBeGreaterThan(110);
     expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1)).toBe(true);
     expect(keeper.y + keeper.height).toBeLessThanOrEqual(viewport.height);
-    await expect(page.locator(".stable-choices .stable-inspect")).toBeVisible();
+    await expect(page.locator(".stable-choices .stable-inspect")).toHaveCount(0);
+    await expect(page.getByRole('button',{name:'Ver detalhes',exact:true})).toBeVisible();
     await expect(page.locator(".stable-choices .stable-coats")).toBeVisible();
     const animal = (await page.locator('.stable-animal-base').boundingBox())!;
     expect(animal.x).toBeGreaterThanOrEqual(0);
