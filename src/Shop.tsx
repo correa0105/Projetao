@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import {
   useEffect,
   useLayoutEffect,
@@ -586,9 +587,9 @@ export function Shop({
         </div>
       </section>
       {error && !checkout && (
-        <p className="shop-feedback" role="status">
+        <FlashMessage kind="info">
           {error}
-        </p>
+        </FlashMessage>
       )}
       {checkout && (
         <Modal
@@ -655,9 +656,9 @@ export function Shop({
               </p>
             )}
             {character && total > character.gold_cp && (
-              <p role="status">Saldo insuficiente para este carrinho.</p>
+              <FlashMessage>Saldo insuficiente para este carrinho.</FlashMessage>
             )}
-            {error && <p role="alert">{error}</p>}
+            {error && <FlashMessage>{error}</FlashMessage>}
             <button
               className="button primary full"
               disabled={

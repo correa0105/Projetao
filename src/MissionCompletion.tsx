@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useState, type FormEvent } from 'react';
 import { api, post } from './api';
 import { Modal } from './components';
@@ -129,9 +130,9 @@ export function MissionCompletion({
           </>
         )}
         {error && (
-          <p className="form-error" role="alert">
+          <FlashMessage>
             {error}
-          </p>
+          </FlashMessage>
         )}
         <button className="button primary" disabled={busy || participants === null}>
           {busy ? 'Concluindo…' : 'Confirmar conclusão'}

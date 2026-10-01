@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState, type ReactNode, type PointerEvent } from 'react';
 import { Plus, Search, X } from 'lucide-react';
 import type { Post } from './types';
@@ -259,9 +260,7 @@ export function NoticeBoard({
         </nav>
       </div>
       {(error || saving) && !isOpen && (
-        <p className="board-save-status" role={error ? 'alert' : 'status'}>
-          {error || 'Salvando posição…'}
-        </p>
+        <FlashMessage kind={error ? 'error' : 'info'}>{error || 'Salvando posição…'}</FlashMessage>
       )}
       {isOpen && (
         <dialog
@@ -340,14 +339,14 @@ export function NoticeBoard({
             </>
           )}
           {error && (
-            <p className="notice-feedback" role="alert">
+            <FlashMessage>
               {error}
-            </p>
+            </FlashMessage>
           )}
           {feedback && (
-            <p className="notice-feedback" role="status">
+            <FlashMessage kind="info">
               {feedback}
-            </p>
+            </FlashMessage>
           )}
           <div className={'quest-grid' + (selected ? ' notice-single' : '')}>
             {selected

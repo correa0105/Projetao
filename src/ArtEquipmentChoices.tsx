@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useState } from 'react';
 import { api } from './api';
 import type { StorageState } from './types';
@@ -59,9 +60,9 @@ export function ArtEquipmentChoices({
       </p>
       {error ? (
         <>
-          <p className="form-error" role="alert">
+          <FlashMessage>
             {error}
-          </p>
+          </FlashMessage>
           <button
             type="button"
             className="button outline"

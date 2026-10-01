@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useId, useRef, useState, type DragEvent } from 'react';
 import { Sword, Shield, Package, ArrowUpRight, ArrowDownUp, Archive } from 'lucide-react';
 import type { Character, Details, Item, StorageState } from './types';
@@ -421,7 +422,7 @@ export function Inventory({
   if (!storage)
     return (
       <section className="loot-storage">
-        <p role={error ? 'alert' : 'status'}>{error || 'Abrindo mochila e cofre…'}</p>
+        {error ? <FlashMessage>{error}</FlashMessage> : <p role="status">Abrindo mochila e cofre…</p>}
         {error && (
           <button className="button outline" onClick={reload}>
             Tentar novamente
@@ -437,14 +438,14 @@ export function Inventory({
   return (
     <div className="loot-inventory">
       {notice && (
-        <p className="loot-notice" role="status">
+        <FlashMessage kind="info">
           {notice}
-        </p>
+        </FlashMessage>
       )}
       {error && !transfer && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {error}
-        </p>
+        </FlashMessage>
       )}
       <div className="loot-layout">
         <div className="loot-pack-column">
@@ -565,9 +566,9 @@ export function Inventory({
               />
             </label>
             {error && (
-              <p className="form-error" role="alert">
+              <FlashMessage>
                 {error}
-              </p>
+              </FlashMessage>
             )}
             <div className="sheet-actions">
               <button className="button primary" disabled={busy} type="submit">

@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   Focus,
@@ -1503,9 +1504,9 @@ export function KingdomMap({
             </div>
           )}
           {editorMessage && (
-            <p className="kingdom-editor__message" role="status">
+            <FlashMessage kind="info">
               {editorMessage}
-            </p>
+            </FlashMessage>
           )}
           <div className="kingdom-editor__footer">
             <button

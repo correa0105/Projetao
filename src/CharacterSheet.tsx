@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useState } from 'react';
 import {
   BookOpen,
@@ -243,14 +244,14 @@ export function CharacterSheet({
         </div>
       </section>
       {error && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {error}
-        </p>
+        </FlashMessage>
       )}
       {saved && (
-        <p className="sheet-saved" role="status">
+        <FlashMessage kind="info">
           Salvo.
-        </p>
+        </FlashMessage>
       )}
       {!data && !error && <p role="status">Abrindo o tomo…</p>}
       {data && (!s?.rolls || !s?.choices) && (

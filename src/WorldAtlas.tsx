@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, Compass, MapPin, Plus, ScrollText, X } from 'lucide-react';
 import { api } from './api';
@@ -149,8 +150,8 @@ export function WorldAtlas({
         </header>
       )}
       {!atlas && (
-        <div className="atlas-wait" role={error ? 'alert' : 'status'}>
-          {error || 'Desdobrando o atlas…'}
+        <div className="atlas-wait">
+          {error ? <FlashMessage>{error}</FlashMessage> : <p role="status">Desdobrando o atlas…</p>}
           {error && (
             <button className="button outline" onClick={() => setRetry((n) => n + 1)}>
               Tentar novamente
@@ -158,14 +159,7 @@ export function WorldAtlas({
           )}
         </div>
       )}
-      {notice && (
-        <div className="atlas-notice" role="status">
-          <span>{notice}</span>
-          <button onClick={() => setNotice('')} aria-label="Fechar aviso do território">
-            <X size={16} />
-          </button>
-        </div>
-      )}
+      {notice && <FlashMessage kind="info">{notice}</FlashMessage>}
       {drawer && region && (
         <aside
           className="atlas-missions-drawer"

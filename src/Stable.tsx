@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
@@ -112,7 +113,7 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
         </div>
       </div>
     </div>
-    {notice && <p className="stable-purchase-notice" role="status"><Check size={16}/>{notice}</p>}
+    {notice && <FlashMessage kind="success"><Check size={16}/>{notice}</FlashMessage>}
     {details && !confirm && <Modal title="Especificações da montaria" close={() => setDetails(false)}>
       <aside className="stable-details stable-panel" aria-label="Ficha da montaria">
         <span className="stable-kicker">BESTA · {mount.size.toUpperCase()}</span>
@@ -126,14 +127,14 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
         <dl>{[['Deslocamento', `${mount.speed} pés (${mount.speed * .3} m)`], ['Capacidade de carga', `${mount.capacity} lb`], ['Classe de armadura', mount.ac], ['Pontos de vida', mount.hp]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
         <p className="stable-rule-note">Equipamentos selecionados são cobrados à parte no conjunto. A montaria precisa ser maior que o cavaleiro. Dados para consulta durante a sessão.</p>
 
-        {error && !confirm && <p role="alert">{error}</p>}
+        {error && !confirm && <FlashMessage>{error}</FlashMessage>}
         <a className="stable-source" href="https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=100" target="_blank" rel="noreferrer">Regras: SRD 5.2.1 · CC BY 4.0</a>
       </aside>
     </Modal>}
     {confirm && <Modal title="Levar um novo companheiro" close={() => { if (!busy) setConfirm(false); }}>
       <p>Comprar <strong>{name.trim() || mount.name}</strong> ({mount.name}) por <strong>{money(total)} PO</strong> para {character?.name}?</p>
       <ul>{chosenGear.map(g => <li key={g.id}>{g.name} — {money(g.price_cp)} PO</li>)}</ul><p>A montaria, a pelagem e os equipamentos ficarão salvos no seu personagem.</p>
-      {error && <p role="alert">{error}</p>}
+      {error && <FlashMessage>{error}</FlashMessage>}
       <button className="button primary" disabled={busy} onClick={buy}>{busy ? 'Registrando…' : 'Confirmar compra'}</button>
     </Modal>}
   </section>;

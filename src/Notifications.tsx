@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState } from 'react';
 import { Bell, BookOpen, Dices, Shield, TrendingUp, X, Check } from 'lucide-react';
 import { api, post } from './api';
@@ -103,9 +104,9 @@ export function Notifications({
             Seus personagens · {items.length} {items.length === 1 ? 'aviso' : 'avisos'}
           </p>
           {error && (
-            <p role="alert">
+            <FlashMessage>
               {error} <button onClick={() => setRevision((v) => v + 1)}>Tentar novamente</button>
-            </p>
+            </FlashMessage>
           )}
           {loading ? (
             <p role="status">Consultando pendências…</p>

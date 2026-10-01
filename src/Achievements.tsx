@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useState, useRef } from 'react';
 import { Lock, Plus, Check, Search } from 'lucide-react';
 import { api, post } from './api';
@@ -53,14 +54,14 @@ export function Achievements({ characterId }: { characterId: string }) {
     change({...config,slots});
   }
   async function save() { setBusy(true);setError('');try {const r=await post<AchievementState>(`/characters/${characterId}/achievements`,config);setData(r);setConfig(r.shelf);setSelected(null);setSaved(true);} catch(e){setError((e as Error).message);}finally{setBusy(false);} }
-  if(!data) return <div className="achievement-content">{error ? <><p role="alert">{error}</p><button onClick={()=>setRetry(v=>v+1)}>Tentar novamente</button></> : <p role="status">Abrindo as conquistas…</p>}</div>;
+  if(!data) return <div className="achievement-content">{error ? <><FlashMessage>{error}</FlashMessage><button onClick={()=>setRetry(v=>v+1)}>Tentar novamente</button></> : <p role="status">Abrindo as conquistas…</p>}</div>;
   return <div className="achievement-content">
     <div className="cabinet-room-stage"><AchievementShelf config={config} selected={selected} onMove={busy ? undefined : (index,x) => {const positions=[...(config.positions ?? defaultPositions())];positions[index]=x;change({...config,positions});}} onSelect={busy ? undefined : (index) => setSelected(current => current === index ? null : index)} /></div>
     <details className="cabinet-personalization"><summary><span>Personalizar estante</span></summary><div className="cabinet-customization">
       <fieldset disabled={busy}><legend>Acabamento da estante</legend><div className="material-options">{Object.entries(materials).map(([key,label])=><label key={key}><input type="radio" name="material" checked={config.material===key} onChange={()=>change({...config,material:key as ShelfConfig['material']})}/><span className={'wood-swatch material-'+key}/>{label}</label>)}</div></fieldset>
       <label className="cabinet-type">Tipo de estante<select aria-label="Tipo de estante" value="classic" disabled={busy} onChange={() => {}}><option value="classic">Estante entalhada</option><option value="arcane" disabled>Estante arcana — Em breve</option><option value="stone" disabled>Estante de pedra — Em breve</option></select></label>
-      <div className="cabinet-actions"><span>{selected === null ? 'Selecione uma posição na estante' : `Posição ${selected+1} selecionada`}</span><button className="text-button" disabled={busy || selected === null || !config.slots[selected]} onClick={()=>place(null)}>Esvaziar posição</button><button className="button primary" disabled={busy || JSON.stringify(config)===JSON.stringify(data.shelf)} onClick={()=>void save()}>{busy?'Salvando…':'Salvar estante'}</button>{saved && <span role="status">Estante salva.</span>}</div>
-      {error && <p className="form-error" role="alert">{error}</p>}
+      <div className="cabinet-actions"><span>{selected === null ? 'Selecione uma posição na estante' : `Posição ${selected+1} selecionada`}</span><button className="text-button" disabled={busy || selected === null || !config.slots[selected]} onClick={()=>place(null)}>Esvaziar posição</button><button className="button primary" disabled={busy || JSON.stringify(config)===JSON.stringify(data.shelf)} onClick={()=>void save()}>{busy?'Salvando…':'Salvar estante'}</button>{saved && <FlashMessage kind="success">Estante salva.</FlashMessage>}</div>
+      {error && <FlashMessage>{error}</FlashMessage>}
     </div></details>
     <section className="fantasy-catalog" aria-labelledby="catalog-title"><header><h2 id="catalog-title">Catálogo de conquistas</h2><p>Escolha uma conquista para a estante. Arraste os troféus na horizontal ou use as setas para ajustar; você pode sobrepor as peças.</p></header>
       <label className="achievement-search"><Search size={18} aria-hidden="true" /><input type="search" aria-label="Buscar conquista por nome" placeholder="Buscar conquista por nome…" value={query} onChange={e => setQuery(e.target.value)} /></label>

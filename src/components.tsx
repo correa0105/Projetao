@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
   X,
@@ -248,9 +249,9 @@ export function Login() {
                   </span>
                 </label>
                 {error && (
-                  <p className="form-error" role="alert">
+                  <FlashMessage>
                     {error}
-                  </p>
+                  </FlashMessage>
                 )}
                 <button className="button primary full" disabled={busy}>
                   {busy ? (
@@ -358,9 +359,9 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         chega ao acampamento quando ela estiver pronta.
       </p>
       {!available && (
-        <p className="form-error" role="status">
+        <FlashMessage>
           O ilustrador está offline. Volte quando ele estiver disponível.
-        </p>
+        </FlashMessage>
       )}
       <label>
         Nome do personagem
@@ -418,9 +419,9 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
       </label>
       <ReferenceInput onChange={setReference} disabled={busy} />
       {error && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {error}
-        </p>
+        </FlashMessage>
       )}
       <button className="button primary full" disabled={busy || !reference || !available}>
         {busy ? 'Criando personagem…' : 'Dar vida ao personagem'}
@@ -596,9 +597,9 @@ export function PostForm({
         </select>
       </label>
       {placesError && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {placesError}
-        </p>
+        </FlashMessage>
       )}
       {!locationId && !requireMappedLocation && (
         <label>
@@ -658,9 +659,9 @@ export function PostForm({
           : 'Eventos não concedem progressão nem pagamento automático.'}
       </p>
       {error && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {error}
-        </p>
+        </FlashMessage>
       )}
       <button className="button primary" disabled={busy}>
         {busy ? 'Publicando…' : 'Publicar no mural'}

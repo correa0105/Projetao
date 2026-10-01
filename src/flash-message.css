@@ -1,0 +1,36 @@
+.flash-messages {
+  position: fixed;
+  inset: 20px 20px auto auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: min(380px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  overflow: visible;
+  background: transparent;
+  color: #eadfcb;
+  pointer-events: none;
+}
+.flash-messages:popover-open { display: flex; flex-direction: column; gap: 10px; }
+.flash-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #8f7959;
+  border-radius: 8px;
+  background: #252623f5;
+  box-shadow: 0 8px 28px #0007;
+  font: 13px/1.45 'Inter', sans-serif;
+  overflow-wrap: anywhere;
+  pointer-events: auto;
+  animation: flash-enter 280ms ease-out both, flash-leave 300ms ease-in 4700ms forwards;
+}
+.flash-message--error { background: #352326f5; border-color: #a16d70; }
+.flash-message--success { border-color: #a18b60; }
+.flash-message > span { flex: 1; min-width: 0; }
+.flash-message > button { display: grid; place-items: center; flex: none; padding: 3px; border: 0; background: none; color: inherit; cursor: pointer; }
+@keyframes flash-enter { from { opacity: 0; transform: translateX(calc(100% + 24px)); } to { opacity: 1; transform: translateX(0); } }
+@keyframes flash-leave { to { opacity: 0; transform: translateX(calc(100% + 24px)); } }
+@media(max-width: 600px) { .flash-messages { inset: 16px 16px auto auto; } }
+@media(prefers-reduced-motion: reduce) { .flash-message { animation: none; } }

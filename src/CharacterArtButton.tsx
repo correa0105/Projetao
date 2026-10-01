@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import { api, post } from './api';
@@ -98,14 +99,14 @@ export function CharacterArtButton({
         </p>
       )}
       {!pending && !open && latestJob?.status === 'failed' && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {latestJob.error || 'A imagem não foi gerada. Tente novamente; sua cota foi preservada.'}
-        </p>
+        </FlashMessage>
       )}
       {error && !open && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {error}
-        </p>
+        </FlashMessage>
       )}
       {open && (
         <Modal
@@ -156,9 +157,9 @@ export function CharacterArtButton({
               onHelmetModeChange={setHelmetMode}
             />
             {error && (
-              <p className="form-error" role="alert">
+              <FlashMessage>
                 {error}
-              </p>
+              </FlashMessage>
             )}
             <button className="button primary" disabled={busy || !reference || !equipmentReady}>
               {busy ? 'Enviando…' : 'Gerar imagem'}

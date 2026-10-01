@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
@@ -120,9 +121,9 @@ export function ReferenceInput({
       </p>
       {preview && <img className="reference-preview" src={preview} alt="Referência selecionada" />}
       {error && (
-        <p className="form-error" role="alert">
+        <FlashMessage>
           {error}
-        </p>
+        </FlashMessage>
       )}
     </div>
   );
@@ -336,26 +337,11 @@ export function CharacterCamp({
         )}
       </div>
       {(loadError || (error && !editing)) && (
-        <p className="form-error camp-page-error" role="alert">
+        <FlashMessage>
           {loadError || error}
-        </p>
+        </FlashMessage>
       )}
-      {(notice ? [notice] : []).map((job) => (
-        <div className="camp-notice" role="status" key={job.id}>
-          <span>
-            {job.name}: {job.error}
-          </span>
-          <button
-            type="button"
-            className="camp-notice-dismiss"
-            aria-label={`Dispensar aviso de ${job.name}`}
-            title="Dispensar aviso"
-            onClick={() => setNotice(null)}
-          >
-            <X size={18} />
-          </button>
-        </div>
-      ))}
+      {notice && <FlashMessage key={notice.id}>{notice.name}: {notice.error}</FlashMessage>}
       {editing && (
         <Modal
           title={`Imagem de ${editing.name}`}
@@ -405,9 +391,9 @@ export function CharacterCamp({
               onHelmetModeChange={setHelmetMode}
             />
             {error && (
-              <p className="form-error" role="alert">
+              <FlashMessage>
                 {error}
-              </p>
+              </FlashMessage>
             )}
             <button className="button primary" disabled={busy || !reference || !equipmentReady}>
               {busy ? 'Enviando…' : 'Gerar imagem'}
@@ -465,9 +451,9 @@ export function CharacterCamp({
               />
             </label>
             {deleteError && (
-              <p className="form-error" role="alert">
+              <FlashMessage>
                 {deleteError}
-              </p>
+              </FlashMessage>
             )}
             <div className="camp-delete-actions">
               <button

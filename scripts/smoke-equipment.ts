@@ -81,9 +81,8 @@ try {
   await expect(page.locator('.loot-backpack')).toHaveCount(0);
   await expect(equipment.locator('.equipment-note')).toHaveCount(0);
   const bag = page.getByRole('region', { name: 'Itens da mochila', exact: true });
-  expect(await equipment.evaluate((el) => getComputedStyle(el).background)).toBe(
-    await bag.evaluate((el) => getComputedStyle(el).background),
-  );
+  expect(await equipment.evaluate((el) => getComputedStyle(el).backgroundImage)).toContain('character-parchment-v2.png');
+  expect(await equipment.evaluate((el) => getComputedStyle(el).backgroundBlendMode)).toContain('luminosity');
   await dragEquipment(
     bag.getByRole('button', { name: 'Espada longa, quantidade 1', exact: true }),
     equipment.locator('[data-equipment-slot="armor"] .equipment-art'),
@@ -171,9 +170,14 @@ try {
   await pool.query("UPDATE character_art_jobs SET status='failed',error=$2 WHERE id=$1", [
     job.id, 'Falha de geração simulada. Sua cota foi preservada.',
   ]);
-  await expect(equipment.getByRole('alert').filter({ hasText: 'Falha de geração simulada' })).toBeVisible({ timeout: 10000 });
+  await expect(page.getByRole('alert').filter({ hasText: 'Falha de geração simulada' })).toBeVisible({ timeout: 10000 });
+  const flash = page.getByRole('alert').filter({ hasText: 'Falha de geração simulada' });
+  const bounds = await flash.boundingBox();
+  expect(bounds!.y).toBeLessThan(80);
+  expect(bounds!.x).toBeGreaterThan(0);
+  await expect(flash).toBeHidden({ timeout: 6500 });
   await page.reload();
-  await expect(equipment.getByRole('alert').filter({ hasText: 'Falha de geração simulada' })).toBeVisible();
+  await expect(page.getByRole('alert').filter({ hasText: 'Falha de geração simulada' })).toBeVisible();
   expect(errors).toEqual([]);
   console.log(
     'Equipamento: persistência, imagens, escolha antes de gerar e desktop/mobile aprovados.',

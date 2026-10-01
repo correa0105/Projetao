@@ -1,3 +1,4 @@
+import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
 import { ProfileMenu } from './ProfileMenu';
 import { NoticeBoard } from './NoticeBoard';
@@ -856,15 +857,7 @@ function Portal({ user }: { user: User }) {
         </main>
       </div>
       <Navigation page={page} go={go} />
-      {toast && (
-        <div className="toast" role="status">
-          <Sparkles size={19} />
-          <span>{toast}</span>
-          <button onClick={() => setToast('')} aria-label="Dispensar aviso">
-            <X size={16} />
-          </button>
-        </div>
-      )}
+      {toast && <FlashMessage kind="info">{toast}</FlashMessage>}
       {modal === 'character' && (
         <Modal title="Uma nova história" parchment close={() => setModal(null)}>
           <CharacterForm

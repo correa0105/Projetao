@@ -963,7 +963,7 @@ async function exerciseWorldRelief(target: Page, mobile: boolean) {
     expect(hit, 'Uma área terrestre fora do pin deve responder ao cursor.').toBeDefined();
     await target.screenshot({ path: 'test-results/world-territory-hover.png' });
     await target.mouse.click(hit!.x, hit!.y);
-    await expect(target.locator('.atlas-notice')).toContainText(
+    await expect(target.locator('.flash-message')).toContainText(
       'Dunas de Auren: exploração em breve.',
     );
     await target.getByRole('button', { name: 'Fechar aviso do território' }).click();
@@ -995,7 +995,7 @@ async function exerciseWorldRelief(target: Page, mobile: boolean) {
         await target.screenshot({ path: 'test-results/world-subdivision-hover.png' });
       }
       await target.getByRole('button', { name, exact: true }).click();
-      await expect(target.locator('.atlas-notice')).toContainText(name + ': exploração em breve.');
+      await expect(target.locator('.flash-message')).toContainText(name + ': exploração em breve.');
       await target.getByRole('button', { name: 'Fechar aviso do território' }).click();
     }
     await resetWorldMap(target, baseline);
@@ -1060,7 +1060,7 @@ async function exerciseWorldRelief(target: Page, mobile: boolean) {
       await target.getByRole('button', { name, exact: true }).focus();
       await settleWorldMap(target);
       await target.getByRole('button', { name, exact: true }).click();
-      await expect(target.locator('.atlas-notice')).toContainText(name + ': exploração em breve.');
+      await expect(target.locator('.flash-message')).toContainText(name + ': exploração em breve.');
       await target.getByRole('button', { name: 'Fechar aviso do território' }).click();
     }
     if (!mobile) {
