@@ -801,9 +801,10 @@ function Portal({ user }: { user: User }) {
               {character && (
                 <span
                   className="profile-character-summary"
-                  title={`Nível ${character.level} · ${character.class}`}
+                  title={`${rankName(character.level)} · ${character.class}`}
                 >
-                  Nível {character.level} · {character.class}
+                  <span>{rankName(character.level)}</span>
+                  <small>{character.class}</small>
                 </span>
               )}
               <div className="player-hud-selection">

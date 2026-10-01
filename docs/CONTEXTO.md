@@ -708,3 +708,5 @@ Perfil (01/10/2026): barra expansível reduzida para 38px de altura, retrato man
 Conquistas (01/10/2026): altura do palco da estante recalibrada para o espaçador do header compartilhado (42px + 27px), corrigindo o deslocamento vertical criado pela substituição do header antigo. Base desce 35px no desktop e 29px no celular, com sombra de contato menor e mais concentrada junto aos pés.
 
 Detalhes e falas do estábulo (01/10/2026): Ver detalhes inclui todos os equipamentos selecionados (sela, barda e ração), com descrição técnica, peso e preço. Brida usa comentários narrativos bem-humorados próprios por item em stableGearComments, em vez de recitar a descrição técnica; ao retirar um item, comenta sua remoção. Smoke cobre a descrição de placas, a troca por sela e a distinção entre fala narrativa e regras.
+
+Perfil (01/10/2026): patente substitui o nível na barra expansível, calculada por rankName; classe aparece abaixo em 9px. Botões de notificações e saída reduzidos de 30px para 24px, com ícones de 12px. Mantidos alinhamento vertical, barra de 38px e retrato de 48px.

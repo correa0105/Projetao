@@ -105,6 +105,10 @@
   display: none;
 }
 .profile-character-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
   font: 11px/1.3 var(--sans);
   color: #dfcfb3;
   max-width: 140px;
@@ -113,6 +117,15 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-right: 3px;
+}
+.profile-character-summary > :is(span, small) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+.profile-character-summary small {
+  font-size: 9px;
+  color: #bfb39e;
 }
 :root .app-shell .profile-menu .character-selector-trigger {
   font-size: 12.65px;
@@ -128,17 +141,17 @@
   font-size: 9.2px;
 }
 :root .app-shell .profile-menu :is(.notifications-trigger, .logout-button) {
-  width: 30px;
-  height: 30px;
-  min-height: 30px;
-  flex-basis: 30px;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  flex-basis: 24px;
 }
 :root .app-shell .profile-menu .player-notifications {
-  flex-basis: 30px;
+  flex-basis: 24px;
 }
 :root .app-shell .profile-menu :is(.notifications-trigger, .logout-button) > svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 }
 :root .app-shell .profile-menu .character-options {
   top: calc(100% + 12px);
