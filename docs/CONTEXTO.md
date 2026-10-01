@@ -710,3 +710,5 @@ Conquistas (01/10/2026): altura do palco da estante recalibrada para o espaçado
 Detalhes e falas do estábulo (01/10/2026): Ver detalhes inclui todos os equipamentos selecionados (sela, barda e ração), com descrição técnica, peso e preço. Brida usa comentários narrativos bem-humorados próprios por item em stableGearComments, em vez de recitar a descrição técnica; ao retirar um item, comenta sua remoção. Smoke cobre a descrição de placas, a troca por sela e a distinção entre fala narrativa e regras.
 
 Perfil (01/10/2026): patente substitui o nível na barra expansível, calculada por rankName; classe aparece abaixo em 9px. Botões de notificações e saída reduzidos de 30px para 24px, com ícones de 12px. Mantidos alinhamento vertical, barra de 38px e retrato de 48px.
+
+Perfil (01/10/2026): patente refinada para 10px e classe para 8px, diferença exata de 2px. O painel expansível usa flex com align-items:center para centralizar o conjunto de texto e botões na altura disponível de 38px.
