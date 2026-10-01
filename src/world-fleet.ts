@@ -258,7 +258,13 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       kraken.add(m);
       return m;
     });
-    return { angle: (i / 6) * Math.PI * 2, parts, cups, tip: new THREE.Vector3(), splashAge: -1 };
+    return {
+      angle: [0.12, 1.3, 2.04, 3.32, 4.13, 5.44][i],
+      parts,
+      cups,
+      tip: new THREE.Vector3(),
+      splashAge: -1,
+    };
   });
   const ripple = mesh(new THREE.RingGeometry(0.45, 0.49, 48), foam, kraken, 0, 0, 0.015);
   const wreckage = new THREE.Group();
@@ -280,6 +286,9 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
   kraken.add(splash);
   const droplet = new THREE.Object3D();
   const strikeTimes = [2.25, 3.55, 4.7];
+  const armStrikeTimes = [2.25, 3.88, 2.83, 4.7, 3.55, 4.16];
+  const armFrequencies = [1.21, 1.69, 0.97, 1.43, 1.09, 1.83];
+  const armPhases = [0.12, 0.68, 0.31, 0.91, 0.47, 0.03];
   const up = new THREE.Vector3(0, 1, 0),
     a = new THREE.Vector3(),
     b = new THREE.Vector3(),
@@ -323,10 +332,11 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     phase = 0,
   ) {
     const reach = 0.7 * (1 - t) + (0.12 + 0.12 * Math.sin(t * 8)) * t * grip;
-    const curl = angle + Math.sin(t * Math.PI) * grip * 1.25;
+    // Fixed radial lanes: bend sideways locally, never coil around the ship.
+    const side = Math.sin(t * Math.PI) * Math.sin(angle * 3 + 1) * grip * 0.075;
     out.set(
-      Math.cos(curl) * reach,
-      Math.sin(curl) * reach,
+      Math.cos(angle) * reach - Math.sin(angle) * side,
+      Math.sin(angle) * reach + Math.cos(angle) * side,
       -0.13 +
         emerge * (Math.sin(t * Math.PI) * (0.35 + grip * 0.27) + t * 0.1) +
         strike * Math.pow(t, 1.5),
@@ -336,8 +346,9 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       wave = phase - (1 - t) * 1.4,
       cycle = ((wave % 1) + 1) % 1,
       lift = cycle < 0.7 ? Math.sin(Math.PI * smooth(cycle / 0.7)) : -0.08;
-    out.x += bend * (Math.cos(angle) * 0.26 + Math.sin(wave * Math.PI * 2) * 0.18);
-    out.y += bend * (Math.sin(angle) * 0.26 + Math.cos(wave * Math.PI * 2.3) * 0.16);
+    const lateral = Math.sin(wave * Math.PI * 2) * 0.055;
+    out.x += bend * (Math.cos(angle) * 0.26 - Math.sin(angle) * lateral);
+    out.y += bend * (Math.sin(angle) * 0.26 + Math.cos(angle) * lateral);
     out.z += bend * (0.26 + lift * 0.72);
   }
   return {
@@ -420,7 +431,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           thrash = smooth((t - 5.6) / 0.8) * (1 - smooth((t - 8.5) / 0.5)),
           s = ships[target];
         let impact = 0;
-        for (const [i, hit] of strikeTimes.entries()) {
+        for (const [i, hit] of armStrikeTimes.entries()) {
           const elapsed = t - hit;
           if (elapsed >= 0)
             impact += (i % 2 ? -1 : 1) * Math.exp(-elapsed * 2.4) * Math.cos(elapsed * 8);
@@ -437,13 +448,13 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         kraken.position.z = -sink * 0.22 - withdraw * 0.22;
         head.position.z = -0.15 + emerge * 0.17;
         for (const [i, tentacle] of tentacles.entries()) {
-          // Alternate raised arms and fast downward blows, followed by a recoil.
-          const hit = strikeTimes[i % 3],
+          // Independent, uneven blows in each arm's fixed lane.
+          const hit = armStrikeTimes[i],
             lift = smooth((t - hit + 0.8) / 0.55) * (1 - smooth((t - hit + 0.16) / 0.16)),
             slam = t >= hit ? -0.18 * Math.exp(-(t - hit) * 3.5) : 0,
             strike = lift * (i < 3 ? 0.7 : 0.45) + slam,
-            frequency = 1.05 + i * 0.13,
-            phase = (t - 5.6) * frequency + i * 0.37,
+            frequency = armFrequencies[i],
+            phase = (t - 5.6) * frequency + armPhases[i],
             cycle = ((phase % 1) + 1) % 1,
             armGrip = grip * (1 - thrash * (0.35 + 0.12 * Math.sin(phase * 4)));
           tentacle.splashAge = cycle >= 0.7 ? (cycle - 0.7) / frequency : -1;
@@ -491,8 +502,11 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           );
           plank.scale.setScalar(1 - smooth((t - 7.5) / 1));
         }
-        const lastHit = strikeTimes.findLast((hit) => t >= hit),
-          splashAge = lastHit === undefined ? -1 : t - lastHit;
+        const lastHit = armStrikeTimes.reduce(
+            (latest, hit) => (t >= hit ? Math.max(latest, hit) : latest),
+            -1,
+          ),
+          splashAge = lastHit < 0 ? -1 : t - lastHit;
         const surfaceSlaps = thrash > 0.2;
         splash.visible = surfaceSlaps || (splashAge >= 0 && splashAge < 0.85);
         if (splash.visible) {

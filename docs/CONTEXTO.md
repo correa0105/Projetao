@@ -1,5 +1,14 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Ataque desordenado sem giro (01/10/2026)
+
+Removida a curva angular comum que dava aos seis braços aparência de hélice.
+Cada tentáculo agora dobra em uma faixa radial fixa, com balanço lateral curto,
+ângulo inicial irregular e golpe em instante próprio, sem sequência circular.
+Frequências e fases da agitação final também são independentes. Casco continua
+inclinando com os impactos, mastros cedem, madeira salta e barco afunda como antes.
+Teste acompanha as dobras durante toda a sequência e impede órbita dos braços.
+
 ## Correção da geração com muitos equipamentos (01/10/2026)
 
 Reprodução real identificou recusa de dez referências pela ferramenta nativa,

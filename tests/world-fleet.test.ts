@@ -26,6 +26,34 @@ test('rotas marítimas ficam na água e terminam junto à costa', () => {
         );
   }
 });
+
+test('tentáculos golpeiam em faixas próprias sem girar em torno do barco', () => {
+  const fleet = createWorldFleet(coast);
+  const kraken = fleet.group.getObjectByName('sea-kraken')!;
+  const initialAngles: number[] = [];
+  let heading: number | undefined;
+  try {
+    for (let t = 0; t <= 39; t += 0.05) {
+      fleet.update(t);
+      if (!fleet.state.attacking) continue;
+      heading ??= kraken.rotation.z;
+      assert.equal(kraken.rotation.z, heading);
+      for (let i = 0; i < 6; i++) {
+        const joint = kraken.getObjectByName(`kraken-arm-${i}-joint-6`)!;
+        const angle = Math.atan2(joint.position.y, joint.position.x);
+        initialAngles[i] ??= angle;
+        const delta = Math.atan2(
+          Math.sin(angle - initialAngles[i]),
+          Math.cos(angle - initialAngles[i]),
+        );
+        assert.ok(Math.abs(delta) < 0.3, 'a dobra lateral não deve virar uma órbita');
+      }
+    }
+    assert.equal(initialAngles.length, 6);
+  } finally {
+    fleet.dispose();
+  }
+});
 test('oito barcos lentos, kraken a cada 30 s, afundamento e movimento reduzido', () => {
   const fleet = createWorldFleet(coast);
   try {
