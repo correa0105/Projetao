@@ -27,7 +27,7 @@ const wearing: Record<EquipmentSlot, string> = {
     'Vestir um anel proporcional em um dedo da mão direita. Se a mão ou o dedo estiver oculto por escudo, luva ou outro objeto, o anel pode ficar totalmente invisível. Não forçar sua exibição nem mudar a pose ou danificar o objeto que o encobre.',
   neck: 'Vestir o colar/amuleto em torno do pescoço, com pingente apoiado naturalmente no peito.',
   cloak:
-    'Vestir a capa presa junto ao pescoço, com queda natural. A capa passa POR CIMA da ombreira e do braço, encobrindo as partes sob o tecido MESMO que ombreira ou equipamento do braço estejam selecionados. A camada superior prevalece; não trazer a ombreira ou o braço para a frente da capa para exibi-los. Não atravessar o metal, recortar a capa nem duplicar partes ocultas.',
+    'Vestir a capa DESDOBRADA como manto largo preso junto ao pescoço. A capa passa POR CIMA da ombreira e do braço: cobre a parte EXTERNA/SUPERIOR das duas ombreiras e cai solta por gravidade sobre os braços superiores, encobrindo o metal MESMO que ombreiras estejam selecionadas. Nunca enrolar em braço, cotovelo, antebraço ou pulso, nem formar faixa, manga, laço ou corda em torno do braço. Mãos e braçadeiras podem aparecer abaixo da borda livre. A referência dobrada mostra somente material, cor, bordado e fecho; não copiar a apresentação enrolada para o corpo. Não mostrar ombreira por cima da capa, atravessar metal, recortar tecido ou duplicar partes ocultas.',
   back: 'Vestir a mochila nas costas, presa por alças. Somente esta posição autoriza mochila nas costas.',
   belt: 'Vestir o cinto/bolsa na cintura, preso ao corpo.',
 };

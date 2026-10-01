@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, writeFile, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, delimiter } from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
-import { generateCharacterArt } from '../server/codex-illustrator.js';
+import { generateCharacterArt, IllustratorError } from '../server/codex-illustrator.js';
 import { describeArtEquipment } from '../server/equipment-art.js';
 import { equipmentReferenceSheet } from '../server/equipment-reference.js';
 import sharp from 'sharp';
@@ -25,6 +25,10 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     let prompt = ''; process.stdin.on('data', c => prompt += c);
     process.stdin.on('end', () => {
       if (images.length > 5) process.exit(1);
+      if (JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1], 'utf8')).properties.approved) {
+        fs.writeFileSync(args[args.indexOf('--output-last-message')+1], JSON.stringify({approved:true,issues:[]}));
+        return;
+      }
       const directory = args[args.indexOf('--cd')+1], output = path.join(directory, 'output.png');
       fs.copyFileSync(images[1], output);
       fs.writeFileSync(${JSON.stringify(capture)}, JSON.stringify({ prompt, images: images.map(p => ({ path: p, hash: crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex') })) }));
@@ -219,5 +223,75 @@ test('prancha mantém as quinze posições em painéis distintos, sem cortar as 
       [...data.subarray((y * info.width + x) * 3, (y * info.width + x) * 3 + 3)],
       [30 + i * 10, 80, 120],
     );
+  }
+});
+
+test('revisão visual corrige resultado reprovado e rejeita arte que continua errada', async () => {
+  const temp = await mkdtemp(join(tmpdir(), 'composition-cli-'));
+  const entry = join(temp, 'node_modules/@openai/codex/bin');
+  await mkdir(entry, { recursive: true });
+  const statePath = join(temp, 'state.json');
+  await writeFile(
+    join(entry, 'codex.js'),
+    `
+    const fs=require('node:fs'),path=require('node:path');
+    const args=process.argv.slice(2), directory=args[args.indexOf('--cd')+1];
+    const images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]);
+    if(images.length>5)process.exit(1);
+    const statePath=${JSON.stringify(statePath)};
+    const state=fs.existsSync(statePath)?JSON.parse(fs.readFileSync(statePath)): {renders:0,reviews:0};
+    let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
+      const result=args[args.indexOf('--output-last-message')+1];
+      const review=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved;
+      if(review){
+        state.reviews++; const approved=state.reviews>1 && !state.alwaysReject;
+        fs.writeFileSync(result,JSON.stringify({approved,issues:approved?[]:['A capa está enrolada no braço; soltar o manto sobre as ombreiras.']}));
+      }else{
+        state.renders++;state.prompt=prompt;state.images=images;
+        const output=path.join(directory,'output.png');fs.copyFileSync(images.length===1?images[0]:images[1],output);
+        fs.writeFileSync(result,JSON.stringify({image_path:output,error:''}));
+      }
+      fs.writeFileSync(statePath,JSON.stringify(state));
+    });
+  `,
+  );
+  const originalPath = process.env.PATH,
+    originalBin = process.env.CODEX_BIN;
+  try {
+    process.env.PATH = temp + delimiter + (originalPath || '');
+    delete process.env.CODEX_BIN;
+    const reference = await readFile('docs/references/character-style-v1.png');
+    const job = {
+      id: randomUUID(),
+      race: 'Humano',
+      class: 'Guerreiro',
+      reference,
+      equipment: [
+        { slot: 'cloak' as const, item_id: 'cosmetic-cape', name: 'Capa', image: reference },
+      ],
+    };
+    assert.deepEqual(await generateCharacterArt(job), reference);
+    const repaired = JSON.parse(await readFile(statePath, 'utf8'));
+    assert.equal(repaired.renders, 2);
+    assert.equal(repaired.reviews, 2);
+    assert.match(repaired.prompt, /CORREÇÃO OBRIGATÓRIA/);
+    assert.match(repaired.prompt, /A capa está enrolada no braço/);
+    assert.equal(repaired.images.length, 1);
+    await assert.rejects(readFile(repaired.images.at(-1)), { code: 'ENOENT' });
+    await writeFile(statePath, JSON.stringify({ renders: 0, reviews: 0, alwaysReject: true }));
+    await assert.rejects(
+      generateCharacterArt({ ...job, id: randomUUID() }),
+      (error: unknown) =>
+        error instanceof IllustratorError && error.code === 'composition_rejected',
+    );
+    const rejected = JSON.parse(await readFile(statePath, 'utf8'));
+    assert.equal(rejected.renders, 3);
+    assert.equal(rejected.reviews, 3);
+  } finally {
+    if (originalPath === undefined) delete process.env.PATH;
+    else process.env.PATH = originalPath;
+    if (originalBin === undefined) delete process.env.CODEX_BIN;
+    else process.env.CODEX_BIN = originalBin;
+    await rm(temp, { recursive: true, force: true });
   }
 });

@@ -1,5 +1,24 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Capa solta e revisão visual antes de salvar (01/10/2026)
+
+Direção obrigatória para capa: manto DESDOBRADO sobre a face externa/superior
+das duas ombreiras e caindo solto sobre os braços superiores. Nunca tecido
+enrolado em braço/cotovelo/antebraço/pulso, faixa, manga ou laço. Referência de
+inventário dobrada fornece material/bordado/fecho, não caimento; referência de
+aparência fornece identidade, não roupa ou ordem de camadas.
+
+Todas as novas gerações passam por revisão visual separada via Codex antes de
+`completeArt`. Verifica sobreposição, objetos cortados/duplicados, mãos extras
+e, se há capa selecionada, cobertura das ombreiras e ausência de tecido enrolado.
+Resultado reprovado é a única referência de uma edição localizada junto às falhas;
+máximo de duas correções (três imagens no total). Sem aprovação, o job falha,
+preserva cota e retrato anterior. Avaliação continua probabilística. Até três itens
+podem seguir individuais; mais itens usam prancha sem ultrapassar cinco referências.
+A correção preserva a figura e altera somente as regiões incorretas, sem reenviar
+referências de vestimenta que induziram o defeito. Arquivos temporários
+e resultado da revisão são descartados. Worker precisa reiniciar após atualização.
+
 ## Camada superior prevalece — direção vigente (01/10/2026)
 
 Usuário revisou explicitamente a ordem da capa: passa POR CIMA da ombreira e
@@ -64,7 +83,7 @@ Teste acompanha as dobras durante toda a sequência e impede órbita dos braços
 
 Reprodução real identificou recusa de dez referências pela ferramenta nativa,
 que informou limite de cinco caminhos. Estilo e aparência usam duas posições.
-Até três equipamentos seguem em imagens individuais; acima disso, o worker
+Até dois equipamentos seguem em imagens individuais; acima disso, o worker
 monta uma única prancha de todos os itens, numerada e sem cortar os modelos.
 Descrições usam `reference_image: 3` e `reference_panel` para associar cada
 posição ao painel. A prancha serve apenas de referência; saída continua uma
@@ -128,7 +147,7 @@ do peitoral nem desenhar peças soltas atrás da figura. O prompt geral foi corr
 para não contradizer a cobertura do capacete. As instruções devem ser passadas
 ao prompt da ferramenta de geração; CLI simulado verifica todas as referências
 do conjunto. O worker fornece os caminhos locais de estilo, aparência e equipamentos
-(em prancha numerada quando há mais de três peças) e exige `referenced_image_paths`
+(em prancha numerada quando há mais de duas peças) e exige `referenced_image_paths`
 na ferramenta. A geração continua probabilística e não há verificação automática
 semântica do resultado. Artes concluídas anteriormente não são regeneradas.
 
