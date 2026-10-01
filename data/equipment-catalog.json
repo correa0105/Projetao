@@ -66,8 +66,8 @@
     "price_cp": 500,
     "weight_lb": 0.2,
     "active": true,
-    "image_path": "/shop/equipment/cosmetic-necklace.png",
-    "description": "Colar de metal dourado envelhecido com um pequeno pingente azul. Acessório cosmético, sem efeitos mágicos."
+    "image_path": "/shop/equipment/cosmetic-necklace-v2.png",
+    "description": "Colar delicado de prata com um pequeno pingente azul. Acessório cosmético independente, sem efeitos mágicos."
   },
   {
     "id": "cosmetic-tiara",
@@ -76,8 +76,8 @@
     "price_cp": 1000,
     "weight_lb": 0.2,
     "active": true,
-    "image_path": "/shop/equipment/cosmetic-tiara.png",
-    "description": "Tiara delicada de metal dourado com uma gema azul central. Acessório cosmético para a cabeça, sem efeitos mágicos."
+    "image_path": "/shop/equipment/cosmetic-tiara-v2.png",
+    "description": "Tiara delicada de prata com uma gema azul central. Acessório cosmético para a cabeça, sem efeitos mágicos."
   },
   {
     "id": "cosmetic-gloves",
@@ -86,7 +86,7 @@
     "price_cp": 200,
     "weight_lb": 0.5,
     "active": true,
-    "image_path": "/shop/equipment/cosmetic-gloves.png",
+    "image_path": "/shop/equipment/cosmetic-gloves-v2.png",
     "description": "Par de luvas de couro castanho para compor a aparência do personagem. Não substitui bônus ou efeitos de armadura."
   },
   {
@@ -106,7 +106,7 @@
     "price_cp": 10,
     "weight_lb": 0.01,
     "active": true,
-    "image_path": "/shop/equipment/cigar.png",
+    "image_path": "/shop/equipment/cigar-v2.png",
     "description": "Charuto enrolado à mão, acessório de taverna. Pode ser segurado na mão principal ou secundária e aparecer na arte do personagem."
   }
 ]

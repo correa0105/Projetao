@@ -1,11 +1,35 @@
 # Artes de equipamentos — 01/10/2026
 
+## Acessórios independentes — versão vigente
+
+Luvas cosméticas, colar, tiara e charuto foram refeitos por pedido do usuário,
+com a ferramenta integrada ImageGen e sem imagens de referência. Esses objetos
+não pertencem à identidade visual da full plate. Arquivos transparentes em
+`public/shop/equipment/`; o catálogo aponta para as versões v2, evitando cache
+das imagens antigas. IDs dos itens, compras e equipamentos já possuídos permanecem.
+
+| Arquivo vigente | Subject usado no prompt |
+| --- | --- |
+| cosmetic-gloves-v2.png | a matched pair of ordinary soft dark brown leather adventurer gloves, supple leather fingers, hand sewn stitching and modest leather cuffs with simple leather fastening, entirely leather, practical everyday clothing |
+| cosmetic-necklace-v2.png | a delicate silver necklace with a small oval blue gemstone pendant in a simple polished silver setting on a fine silver chain, elegant civilian jewelry |
+| cosmetic-tiara-v2.png | a slim delicate silver tiara with a small central blue gemstone, airy understated civilian jewelry with thin curved silver wire, no heavy ornamental crown |
+| cigar-v2.png | a single natural hand rolled tobacco cigar, rich brown tobacco leaf wrapper with visible organic veins, a tiny ember at one tip and a wispy curl of smoke, plain tobacco throughout without any band, casing or decoration |
+
+Prompt completo por arquivo, substituindo `{subject}` pela coluna acima:
+
+> Create an independent medieval fantasy RPG inventory cutout asset of {subject}. Semirealistic painterly item illustration, finely rendered natural materials, three-quarter view, clearly readable silhouette at thumbnail size. Draw only the item or matched pair, centered and occupying approximately 80 percent of a square canvas, on a truly transparent alpha background. This is an ordinary standalone accessory, with its own design. No armor, armored metal plates, military design, gold brass edging, gold rivets, fleur-de-lis motifs or matching suit emblems. No person, mannequin, hands holding the object, extra objects, text, logo, frame, scenery or ground shadow.
+
+## Peças de placas e histórico da primeira versão
+
 Geradas com a ferramenta integrada ImageGen, usando `public/shop/items/plate-armor.png`
 como referência visual. Nove PNGs 1254 × 1254 com alfa real, inspecionados sobre fundo
 escuro. Arquivos em `public/shop/equipment/`; nenhuma chave/API externa foi utilizada.
 Não são sobrepostos à imagem do personagem: o gerador recebe cada peça selecionada
 como referência para desenhá-la no personagem. Capa e botas cosméticas reutilizam
 as artes existentes da loja; seus registros novos não possuem efeitos mágicos.
+
+As cinco peças de placas abaixo continuam vigentes. Os quatro acessórios sem
+`-v2` são somente versões históricas, substituídas pelas artes independentes acima.
 
 | Arquivo | Subject usado no prompt |
 | --- | --- |

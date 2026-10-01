@@ -27,7 +27,9 @@ valores definidos para o projeto. Tocha, lanterna, corda, gancho, charuto e outr
 objetos portáteis podem ocupar uma das mãos. Uma unidade não ocupa as duas mãos;
 uma arma de duas mãos continua bloqueando a mão secundária.
 
-As novas artes seguem a armadura original da loja, com fundo transparente.
+As peças de placas seguem a armadura original da loja. Luvas cosméticas, colar,
+tiara e charuto têm arte independente, sem os adornos do conjunto de placas.
+Todos possuem fundo transparente.
 Referência, arquivos e prompts: [EQUIPMENT-ART.md](EQUIPMENT-ART.md).
 
 Os equipamentos iniciais da ficha SRD continuam registrados separadamente.

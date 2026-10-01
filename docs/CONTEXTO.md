@@ -1,5 +1,12 @@
 # Memória do projeto — Alvorada Cinzenta
 
+Correção visual de 01/10/2026: somente as peças de full plate seguem a arte da
+armadura. Luvas cosméticas de couro, colar de prata, tiara de prata e charuto de
+tabaco têm designs independentes, gerados sem referência à armadura, sem bordas
+douradas, rebites ou flores-de-lis. Novos arquivos `*-v2.png` em
+`public/shop/equipment`, com referências atualizadas no catálogo; versões antigas
+preservadas. Prompts em [EQUIPMENT-ART.md](EQUIPMENT-ART.md).
+
 ## Conjunto de placas, cosméticos e objetos nas mãos (01/10/2026)
 
 Mochila possui 15 posições: acrescentadas ombreiras, braçadeiras e calça/pernas.
