@@ -1,5 +1,10 @@
 # Memória do projeto — Alvorada Cinzenta
 
+Equipamentos usam o mesmo fundo da mochila/cofre e aceitam arrastar itens livres
+da mochila para posições compatíveis. Categoria errada mostra aviso por 5 segundos
+e não altera o inventário; itens do cofre exigem transferência prévia. As listas
+continuam disponíveis no celular e teclado (01/10/2026).
+
 Avisos de erro fora do formulário na aba Personagem, incluindo cota mensal,
 desaparecem automaticamente após 5 segundos (01/10/2026). Erros dentro do
 formulário continuam disponíveis para corrigir o envio.

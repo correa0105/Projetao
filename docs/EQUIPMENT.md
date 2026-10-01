@@ -4,6 +4,10 @@ Na Mochila, **Itens equipados** oferece cabeça/capacete, armadura, arma princip
 mão secundária/escudo, dois anéis, pescoço, capa, luvas, botas, mochila/costas e
 cinto/bolsa. Cada posição mostra a imagem original do item e permite equipar ou
 desequipar unidades realmente presentes no inventário do personagem selecionado.
+O painel usa o mesmo fundo de pergaminho da mochila/cofre. Itens livres da mochila
+podem ser arrastados para uma posição: categoria incompatível exibe um aviso por
+5 segundos, sem equipar nem consumir o item. Itens do cofre devem primeiro ser
+transferidos à mochila. A lista continua disponível para teclado e celular.
 O catálogo atual não contém capacetes: a posição existe, mas fica indisponível
 enquanto não houver item compatível. Não são concedidos novos itens.
 

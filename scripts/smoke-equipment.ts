@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { chromium, expect } from '@playwright/test';
+import { chromium, expect, type Locator } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 import sharp from 'sharp';
@@ -29,6 +29,19 @@ const page = await browser.newPage({
 const errors: string[] = [];
 page.on('pageerror', (error) => errors.push(error.message));
 let userId = '';
+async function dragEquipment(source: Locator, target: Locator) {
+  await source.scrollIntoViewIfNeeded();
+  await source.hover();
+  const start = (await source.boundingBox())!;
+  await page.mouse.move(start.x + start.width / 2, start.y + start.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(start.x + start.width / 2 + 15, start.y + start.height / 2, { steps: 5 });
+  await target.scrollIntoViewIfNeeded();
+  const end = (await target.boundingBox())!;
+  await page.mouse.move(end.x + end.width / 2, end.y + end.height / 2, { steps: 8 });
+  await page.mouse.move(end.x + end.width / 2 + 1, end.y + end.height / 2, { steps: 2 });
+  await page.mouse.up();
+}
 try {
   await page.goto(origin);
   const response = await page.request.post(origin + '/api/auth/sign-up/email', {
@@ -64,13 +77,32 @@ try {
   await page.reload();
   const equipment = page.getByRole('region', { name: 'Itens equipados', exact: true });
   await expect(equipment).toBeVisible();
+  const bag = page.getByRole('region', { name: 'Itens da mochila', exact: true });
+  expect(await equipment.evaluate((el) => getComputedStyle(el).background)).toBe(
+    await bag.evaluate((el) => getComputedStyle(el).background),
+  );
+  await dragEquipment(
+    bag.getByRole('button', { name: 'Espada longa, quantidade 1', exact: true }),
+    equipment.locator('[data-equipment-slot="armor"] .equipment-art'),
+  );
+  const warning = page.getByRole('status').filter({ hasText: 'não pertence à categoria Armadura' });
+  await expect(warning).toBeVisible();
+  await expect(equipment.locator('#equipment-armor')).toHaveValue('');
+  await expect(bag.locator('button.loot-slot')).toHaveCount(4);
+  await expect(warning).not.toBeVisible({ timeout: 6500 });
   for (const [slot, id] of [
     ['armor', 'plate-armor'],
     ['main_hand', 'longsword'],
     ['ring_left', 'ring-of-protection'],
     ['back', 'backpack'],
   ]) {
-    await equipment.locator(`#equipment-${slot}`).selectOption(id);
+    if (slot === 'armor' || slot === 'main_hand') {
+      const itemName = slot === 'armor' ? 'Armadura de placas' : 'Espada longa';
+      await dragEquipment(
+        bag.getByRole('button', { name: `${itemName}, quantidade 1`, exact: true }),
+        equipment.locator(`[data-equipment-slot="${slot}"] .equipment-art`),
+      );
+    } else await equipment.locator(`#equipment-${slot}`).selectOption(id);
     await expect(equipment.locator(`#equipment-${slot}`)).toBeEnabled();
     await expect(equipment.locator(`#equipment-${slot}`)).toHaveValue(id);
   }
@@ -132,6 +164,10 @@ try {
   console.log(
     'Equipamento: persistência, imagens, escolha antes de gerar e desktop/mobile aprovados.',
   );
+} catch (error) {
+  await mkdir('test-results', { recursive: true });
+  await page.screenshot({ path: 'test-results/equipment-failure.png', fullPage: true });
+  throw error;
 } finally {
   await browser.close();
   if (userId) await pool.query('DELETE FROM "user" WHERE id=$1', [userId]);

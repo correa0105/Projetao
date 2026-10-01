@@ -1,4 +1,6 @@
 import { Shield, Package, Sword } from 'lucide-react';
+import { useState } from 'react';
+import { INVENTORY_DRAG_TYPE, type InventoryDrag } from './inventory-drag';
 import {
   EQUIPMENT_SLOTS,
   EQUIPMENT_LABELS,
@@ -13,18 +15,24 @@ export function EquipmentPanel({
   storage,
   busy,
   onEquip,
+  dragged,
+  onDropItem,
 }: {
   storage: StorageState;
   busy: boolean;
   onEquip: (slot: EquipmentSlot, id: string | null) => void;
+  dragged: InventoryDrag | null;
+  onDropItem: (slot: EquipmentSlot, id: string, from: InventoryDrag['from']) => void;
 }) {
+  const [over, setOver] = useState<EquipmentSlot | null>(null);
   const main = storage.equipped.find((item) => item.slot === 'main_hand');
   return (
-    <section className="equipment-panel" aria-label="Itens equipados" aria-busy={busy}>
+    <section className="equipment-panel loot-storage" aria-label="Itens equipados" aria-busy={busy}>
       <header>
         <h2>Itens equipados</h2>
         <p>
-          Escolha o que seu personagem veste e carrega. Os itens continuam contando no peso total.
+          Arraste um item da mochila para sua categoria ou use a lista. Os itens continuam contando
+          no peso total.
         </p>
       </header>
       <div className="equipment-grid">
@@ -39,17 +47,53 @@ export function EquipmentPanel({
                 ).length,
           );
           const blocked = slot === 'off_hand' && main && twoHanded(main);
+          const draggedItem = dragged && storage.inventory.find((item) => item.id === dragged.id);
+          const compatible =
+            dragged?.from === 'backpack' &&
+            draggedItem &&
+            compatibleSlots(draggedItem).includes(slot) &&
+            !blocked;
           const Icon = slot.includes('hand')
             ? Sword
             : slot === 'armor' || slot === 'head'
               ? Shield
               : Package;
           return (
-            <div className={`equipment-slot ${current ? 'is-equipped' : ''}`} key={slot}>
+            <div
+              className={`equipment-slot ${current ? 'is-equipped' : ''} ${dragged && over === slot ? (compatible ? 'is-drag-over' : 'is-drag-incompatible') : ''}`}
+              key={slot}
+              role="group"
+              aria-label={`Equipar em ${EQUIPMENT_LABELS[slot]}`}
+              data-equipment-slot={slot}
+              onDragOver={(event) => {
+                if (busy || !dragged || !event.dataTransfer.types.includes(INVENTORY_DRAG_TYPE))
+                  return;
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'move';
+                setOver(slot);
+              }}
+              onDragLeave={(event) => {
+                if (
+                  event.relatedTarget instanceof Node &&
+                  event.currentTarget.contains(event.relatedTarget)
+                )
+                  return;
+                setOver(null);
+              }}
+              onDrop={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                setOver(null);
+                if (busy || !dragged || !event.dataTransfer.types.includes(INVENTORY_DRAG_TYPE))
+                  return;
+                const id = event.dataTransfer.getData(INVENTORY_DRAG_TYPE);
+                if (id === dragged.id) onDropItem(slot, id, dragged.from);
+              }}
+            >
               <span className="equipment-position">{EQUIPMENT_LABELS[slot]}</span>
               <div className="equipment-art">
                 {current?.image_path ? (
-                  <img src={current.image_path} alt={current.name} />
+                  <img src={current.image_path} alt={current.name} draggable={false} />
                 ) : (
                   <Icon aria-hidden="true" size={32} />
                 )}

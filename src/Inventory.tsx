@@ -1,7 +1,13 @@
 import { useEffect, useId, useRef, useState, type DragEvent } from 'react';
 import { Sword, Shield, Package, ArrowUpRight, ArrowDownUp, Archive } from 'lucide-react';
 import type { Character, Details, Item, StorageState } from './types';
-import type { EquipmentSlot } from '../shared/equipment';
+import {
+  compatibleSlots,
+  EQUIPMENT_LABELS,
+  twoHanded,
+  type EquipmentSlot,
+} from '../shared/equipment';
+import { INVENTORY_DRAG_TYPE as dragType } from './inventory-drag';
 import { EquipmentPanel } from './EquipmentPanel';
 import { money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
@@ -16,7 +22,6 @@ const itemIcon = (item: Item) =>
 type Place = 'backpack' | 'vault';
 type Storage = StorageState;
 type Transfer = { item: Item; from: Place; quantity: number; key: string };
-const dragType = 'application/x-alvorada-inventory';
 function availableInventory(storage: Storage) {
   return storage.inventory
     .map((item) => ({
@@ -334,6 +339,29 @@ export function Inventory({
       setTransfer({ item, from, quantity: item.quantity ?? 1, key: crypto.randomUUID() });
     }
   }
+  function dropEquipment(slot: EquipmentSlot, id: string, from: Place) {
+    setDragged(null);
+    if (!storage || inFlight.current) return;
+    if (from !== 'backpack') {
+      setNotice('Leve o item do cofre para a mochila antes de equipá-lo.');
+      return;
+    }
+    const item = availableInventory(storage).find((item) => item.id === id);
+    if (!item) {
+      setNotice('Este item não está disponível na mochila.');
+      return;
+    }
+    if (!compatibleSlots(item).includes(slot)) {
+      setNotice(`O item ${item.name} não pertence à categoria ${EQUIPMENT_LABELS[slot]}.`);
+      return;
+    }
+    const main = storage.equipped.find((item) => item.slot === 'main_hand');
+    if (slot === 'off_hand' && main && twoHanded(main)) {
+      setNotice('A arma principal ocupa as duas mãos. Desequipe-a antes de usar a mão secundária.');
+      return;
+    }
+    void equip(slot, id);
+  }
   async function equip(slot: EquipmentSlot, itemId: string | null) {
     if (inFlight.current) return;
     inFlight.current = true;
@@ -411,7 +439,13 @@ export function Inventory({
           {error}
         </p>
       )}
-      <EquipmentPanel storage={storage} busy={busy} onEquip={equip} />
+      <EquipmentPanel
+        storage={storage}
+        busy={busy}
+        onEquip={equip}
+        dragged={dragged}
+        onDropItem={dropEquipment}
+      />
       <div className="loot-layout">
         <div className="loot-pack-column">
           <section className="loot-summary" aria-label="Resumo da mochila">
