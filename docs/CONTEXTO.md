@@ -1,5 +1,14 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Camada superior prevalece — direção vigente (01/10/2026)
+
+Usuário revisou explicitamente a ordem da capa: passa POR CIMA da ombreira e
+do braço, ocultando as partes cobertas pelo tecido. Todo item que sobrepõe outro
+prevalece, mesmo quando a peça encoberta está marcada na seleção da geração.
+Não trazer peças de baixo à frente para exibi-las, atravessar camadas, recortar
+ou duplicar objetos. Regra sincronizada no prompt fixo, worker e descrição da
+capa. Substitui a orientação anterior de capa sob as ombreiras.
+
 ## Roupa básica na geração inicial (01/10/2026)
 
 Prompt fixo substitui vestimenta coerente com a classe por túnica/camisa simples,
@@ -14,7 +23,7 @@ Cosmético Capa de viajante apontava para `cloak-of-invisibility.png`, inexisten
 Catálogo corrigido para a arte existente `cloak-of-protection.png`; preservados
 ID, preço, peso e caráter cosmético sem efeitos mágicos. Seed atualiza loja e
 inventário sem alterar compras. Smoke verifica carregamento das cinco artes de
-Cosméticos. Na geração, capa passa por baixo das ombreiras e cai atrás do corpo;
+Cosméticos. A ordem da capa foi revista na seção "Camada superior prevalece";
 objetos encobertos permanecem por baixo sem atravessar camadas, trazer acessórios
 à frente, recortar o objeto superior ou interpenetrar volumes. Instruções no
 prompt fixo, no worker e na descrição da capa; vale para novas gerações.

@@ -137,14 +137,16 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.match(captured.prompt, /Escudo único e íntegro/);
     assert.match(captured.prompt, /Nunca corte, divida, abra buracos, remova partes ou duplique/);
     assert.match(captured.prompt, /sem cortes na borda da imagem/);
-    assert.match(captured.prompt, /capa POR BAIXO das ombreiras/);
+    assert.match(captured.prompt, /Capa POR CIMA da ombreira e do braço/);
+    assert.match(captured.prompt, /MESMO que a peça encoberta esteja marcada/);
+    assert.doesNotMatch(captured.prompt, /capa (passa )?POR BAIXO/i);
     assert.match(captured.prompt, /nunca atravessa ou aparece através da camada superior/);
     assert.match(
       describeArtEquipment(
         { slot: 'cloak', item_id: 'cosmetic-cape', name: 'Capa', image: itemImage },
         0,
       ).wearing,
-      /POR BAIXO das ombreiras/,
+      /POR CIMA da ombreira e do braço/,
     );
     for (const slot of ['ring_left', 'ring_right'] as const) {
       const ring = describeArtEquipment(
