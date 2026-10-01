@@ -120,7 +120,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.match(captured.prompt, /"reference_image":3/);
     assert.match(captured.prompt, /Espada longa/);
     assert.match(captured.prompt, /SOMENTE os equipamentos listados/);
-    assert.match(captured.prompt, /roupa medieval de pano simples/);
+    assert.match(captured.prompt, /trapos velhos de tecido: camisa branca e calça cinza/);
     assert.match(captured.prompt, /humano não recebe asas/);
     assert.match(captured.prompt, /draconato não recebe orelhas élficas/);
     assert.match(captured.prompt, /segunda imagem fornece somente características físicas/);

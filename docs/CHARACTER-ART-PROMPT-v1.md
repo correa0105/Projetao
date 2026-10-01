@@ -12,7 +12,7 @@ Gere uma única ilustração usando a ferramenta nativa de imagem do Codex e a s
 ## Personagem e equipamentos
 
 - Respeitar tamanho e proporções da raça conforme a ficha SRD 5.2.1/2024. As alturas fornecidas são referências visuais, não medidas fixas. Raças pequenas mantêm anatomia adulta quando a aparência for adulta. A classe orienta postura e presença, sem inventar roupa especial, armas, armadura ou efeitos mágicos.
-- Sem armadura selecionada, usar roupa medieval de pano simples: camisa ou túnica, calça e calçados básicos. Equipamentos selecionados complementam ou substituem essa roupa apenas nas respectivas posições. SOMENTE os equipamentos listados podem aparecer.
+- Sem armadura selecionada, vestir trapos velhos de tecido: camisa branca e calça cinza, folgadas, gastas e muito simples, como um pijama rudimentar, sem bordados, adornos ou acabamento elegante. Equipamentos selecionados complementam ou substituem essa roupa apenas nas respectivas posições. SOMENTE os equipamentos listados podem aparecer.
 - Vestir ou segurar cada peça na posição indicada. Respeitar a opção de viseira aberta ou fechada. Pares têm uma peça de cada lado; nenhum item fica solto, flutuando ou duplicado.
 - Manter camadas e oclusão naturais: acessórios encobertos podem ficar invisíveis. Não deformar escudos, tecido ou corpo para revelar um item. Capa é um manto sem mangas, solto sobre os ombros. Integrar os itens à pintura; não cole as imagens sobre o personagem.
 

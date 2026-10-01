@@ -223,7 +223,7 @@ export async function generateCharacterArt(job: {
     ? `Equipamentos selecionados: ${JSON.stringify(describedEquipment)}.
 ${useSheet ? 'Imagem 3: prancha numerada de equipamentos; reference_panel identifica cada painel, da esquerda para a direita e de cima para baixo. NÃO reproduza sua grade, etiquetas ou peças isoladas.' : 'Imagens 3 em diante: modelos dos equipamentos, na ordem listada.'}
 Transcreva as posições e opções ao prompt da ferramenta de imagem.`
-    : 'Nenhum equipamento selecionado: usar apenas roupa de pano simples.';
+    : 'Nenhum equipamento selecionado: usar apenas trapos velhos, camisa branca e calça cinza, como um pijama rudimentar.';
   await writeFile(
     schema,
     JSON.stringify({
