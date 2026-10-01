@@ -5,6 +5,8 @@ import { tmpdir } from 'node:os';
 import { join, delimiter } from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
 import { generateCharacterArt } from '../server/codex-illustrator.js';
+import { describeArtEquipment } from '../server/equipment-art.js';
+import type { ArtEquipment } from '../shared/equipment.js';
 
 test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem indicada', async () => {
   const temp = await mkdtemp(join(tmpdir(), 'equipment-cli-'));
@@ -30,6 +32,45 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     originalBin = process.env.CODEX_BIN;
   const reference = await readFile('docs/references/character-style-v1.png');
   const itemImage = await readFile('public/shop/items/longsword.png');
+  const equipment: ArtEquipment[] = [
+    { slot: 'main_hand', item_id: 'longsword', name: 'Espada longa', image: itemImage },
+    {
+      slot: 'head',
+      item_id: 'plate-helmet',
+      name: 'Capacete de placas',
+      image: await readFile('public/shop/equipment/plate-helmet.png'),
+    },
+    {
+      slot: 'armor',
+      item_id: 'plate-armor',
+      name: 'Peitoral de placas',
+      image: await readFile('public/shop/items/plate-armor.png'),
+    },
+    {
+      slot: 'shoulders',
+      item_id: 'plate-pauldrons',
+      name: 'Ombreiras de placas',
+      image: await readFile('public/shop/equipment/plate-pauldrons.png'),
+    },
+    {
+      slot: 'bracers',
+      item_id: 'plate-bracers',
+      name: 'Braçadeiras de placas com luvas',
+      image: await readFile('public/shop/equipment/plate-bracers.png'),
+    },
+    {
+      slot: 'legs',
+      item_id: 'plate-leggings',
+      name: 'Calça de placas',
+      image: await readFile('public/shop/equipment/plate-leggings.png'),
+    },
+    {
+      slot: 'feet',
+      item_id: 'plate-boots',
+      name: 'Botas de placas',
+      image: await readFile('public/shop/equipment/plate-boots.png'),
+    },
+  ];
   try {
     process.env.PATH = temp + delimiter + (originalPath || '');
     delete process.env.CODEX_BIN;
@@ -39,18 +80,40 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
       class: 'Guerreiro',
       character_id: randomUUID(),
       reference,
-      equipment: [
-        { slot: 'main_hand', item_id: 'longsword', name: 'Espada longa', image: itemImage },
-      ],
+      equipment,
     });
     assert.deepEqual(output, reference);
     const captured = JSON.parse(await readFile(capture, 'utf8'));
-    assert.equal(captured.images.length, 3);
+    assert.equal(captured.images.length, 9);
+    for (const [index, item] of equipment.entries())
+      assert.equal(
+        captured.images[index + 2].hash,
+        createHash('sha256').update(item.image).digest('hex'),
+      );
     assert.equal(captured.images[2].hash, createHash('sha256').update(itemImage).digest('hex'));
     assert.match(captured.prompt, /"reference_image":3/);
     assert.match(captured.prompt, /Espada longa/);
     assert.match(captured.prompt, /SOMENTE os equipamentos listados/);
     assert.match(captured.prompt, /não cole as imagens/);
+    assert.match(captured.prompt, /CAPACETE OBRIGATÓRIO/);
+    assert.match(captured.prompt, /viseira fechada/);
+    assert.match(captured.prompt, /exatamente UM PAR de ombreiras/);
+    assert.match(captured.prompt, /ignore essas ombreiras/);
+    assert.match(captured.prompt, /Transcreva essas exigências para o prompt enviado à ferramenta/);
+    assert.match(captured.prompt, /"slot":"head"/);
+    assert.match(captured.prompt, /"reference_image":9/);
+    assert.ok(
+      captured.prompt.includes(
+        JSON.stringify(captured.images.map((image: { path: string }) => image.path)),
+      ),
+    );
+    assert.match(captured.prompt, /use referenced_image_paths com TODOS esses caminhos/);
+    assert.match(captured.prompt, /Não use num_last_images_to_include/);
+    const tiara = describeArtEquipment(
+      { slot: 'head', item_id: 'cosmetic-tiara', name: 'Tiara com gema azul', image: itemImage },
+      0,
+    );
+    assert.doesNotMatch(tiara.wearing, /CAPACETE OBRIGATÓRIO|viseira/);
     await assert.rejects(readFile(captured.images[2].path), { code: 'ENOENT' });
   } finally {
     if (originalPath === undefined) delete process.env.PATH;

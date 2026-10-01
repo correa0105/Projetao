@@ -86,6 +86,11 @@ try {
   await page.goto(origin + '/#inventory');
   const equipment = page.getByRole('region', { name: 'Itens equipados', exact: true });
   await expect(equipment.locator('.equipment-slot')).toHaveCount(15);
+  const legsBox = (await equipment.locator('[data-equipment-slot="legs"]').boundingBox())!;
+  const bootsBox = (await equipment.locator('[data-equipment-slot="feet"]').boundingBox())!;
+  expect(bootsBox.y).toBeCloseTo(legsBox.y, 0);
+  expect(bootsBox.x).toBeGreaterThan(legsBox.x);
+  expect(bootsBox.x - legsBox.x).toBeLessThan(legsBox.width + 20);
   for (const [slot, id] of [
     ['armor', 'plate-armor'],
     ['head', 'plate-helmet'],

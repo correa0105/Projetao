@@ -1,5 +1,18 @@
 # Memória do projeto — Alvorada Cinzenta
 
+Correção de montagem da arte (01/10/2026): botas ficam imediatamente ao lado da
+calça na grade de equipamento. A seleção de capacete prevalece sobre manter
+rosto/cabelo visíveis; full plate usa viseira fechada conforme seu modelo.
+`server/equipment-art.ts` descreve encaixe corporal por posição: um par de
+ombreiras ajustado aos ombros, sem repetir as ombreiras presentes na referência
+do peitoral nem desenhar peças soltas atrás da figura. O prompt geral foi corrigido
+para não contradizer a cobertura do capacete. As instruções devem ser passadas
+ao prompt da ferramenta de geração; CLI simulado verifica todas as referências
+do conjunto. O worker fornece todos os caminhos locais e exige `referenced_image_paths`
+na ferramenta, evitando o limite de imagens recentes de `num_last_images_to_include`,
+que pode deixar capacete/peças anteriores de fora. A geração continua probabilística e não há verificação automática
+semântica do resultado. Artes concluídas anteriormente não são regeneradas.
+
 Correção visual de 01/10/2026: somente as peças de full plate seguem a arte da
 armadura. Luvas cosméticas de couro, colar de prata, tiara de prata e charuto de
 tabaco têm designs independentes, gerados sem referência à armadura, sem bordas

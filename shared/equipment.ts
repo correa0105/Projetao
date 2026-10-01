@@ -4,6 +4,7 @@ export const EQUIPMENT_SLOTS = [
   'shoulders',
   'bracers',
   'legs',
+  'feet',
   'main_hand',
   'off_hand',
   'ring_left',
@@ -11,7 +12,6 @@ export const EQUIPMENT_SLOTS = [
   'neck',
   'cloak',
   'hands',
-  'feet',
   'back',
   'belt',
 ] as const;

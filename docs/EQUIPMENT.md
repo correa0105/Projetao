@@ -64,7 +64,11 @@ do catálogo, normaliza a imagem e salva uma cópia no pedido, mantendo-a estáv
 os itens forem trocados enquanto a geração aguarda. O worker anexa estilo, aparência
 e imagens dos equipamentos nesta ordem, com correspondência explícita de posição.
 O prompt pede os mesmos materiais, cores, adornos e modelos, pintados diretamente
-no personagem. A fidelidade final depende da geração; a interface não sobrepõe imagens.
+no personagem. `server/equipment-art.ts` define como vestir/segurar cada posição:
+capacete selecionado é obrigatório na cabeça, mesmo encobrindo o rosto; ombreiras
+formam um único par sobre os ombros, sem repetir peças da imagem do peitoral nem
+apresentar componentes soltos atrás do corpo. As botas ficam ao lado da calça na grade.
+A fidelidade final depende da geração; a interface não sobrepõe imagens.
 
 ## Verificação
 
