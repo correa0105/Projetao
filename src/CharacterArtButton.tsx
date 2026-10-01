@@ -91,6 +91,11 @@ export function CharacterArtButton({
             ? 'Nova imagem'
             : 'Gerar imagem'}
       </button>
+      {!pending && !state.available && (
+        <p className="muted" role="status">
+          Ilustrador offline. A geração ficará disponível quando ele for iniciado.
+        </p>
+      )}
       {error && !open && (
         <p className="form-error" role="alert">
           {error}
