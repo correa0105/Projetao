@@ -168,6 +168,12 @@ try {
   expect(snapshots.rows.every((row) => row.image.length > 100)).toBe(true);
   await finishTestArt(job.id);
   await expect(modal).not.toBeVisible();
+  await pool.query("UPDATE character_art_jobs SET status='failed',error=$2 WHERE id=$1", [
+    job.id, 'Falha de geração simulada. Sua cota foi preservada.',
+  ]);
+  await expect(equipment.getByRole('alert').filter({ hasText: 'Falha de geração simulada' })).toBeVisible({ timeout: 10000 });
+  await page.reload();
+  await expect(equipment.getByRole('alert').filter({ hasText: 'Falha de geração simulada' })).toBeVisible();
   expect(errors).toEqual([]);
   console.log(
     'Equipamento: persistência, imagens, escolha antes de gerar e desktop/mobile aprovados.',

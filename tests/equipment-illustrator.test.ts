@@ -11,6 +11,55 @@ import sharp from 'sharp';
 import { EQUIPMENT_SLOTS } from '../shared/equipment.js';
 import type { ArtEquipment } from '../shared/equipment.js';
 
+test('recupera último arquivo da sessão e corrige fundo opaco sem confiar no JSON final', async () => {
+  const temp = await mkdtemp(join(tmpdir(), 'native-art-'));
+  const cli = join(temp, 'cli.cjs');
+  const transparent = await sharp({ create: { width: 512, height: 768, channels: 4, background: '#00000000' } }).png().toBuffer();
+  const opaque = await sharp({ create: { width: 512, height: 768, channels: 3, background: '#112233' } }).png().toBuffer();
+  await writeFile(join(temp, 'transparent.png'), transparent);
+  await writeFile(join(temp, 'opaque.png'), opaque);
+  const statePath = join(temp, 'state.json');
+  await writeFile(cli, `
+    const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+    const args=process.argv.slice(2), result=args[args.indexOf('--output-last-message')+1];
+    let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
+      if(JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1])).properties.approved){
+        fs.writeFileSync(result,JSON.stringify({approved:true,issues:[]}));return;
+      }
+      const statePath=${JSON.stringify(statePath)};
+      const state=fs.existsSync(statePath)?JSON.parse(fs.readFileSync(statePath)):{renders:0};
+      state.renders++;state.prompt=prompt;fs.writeFileSync(statePath,JSON.stringify(state));
+      const id=crypto.randomUUID(), root=path.join(process.env.CODEX_HOME,'generated_images',id);
+      fs.mkdirSync(root,{recursive:true});
+      fs.copyFileSync(${JSON.stringify(join(temp, 'opaque.png'))},path.join(root,'exec-old.png'));
+      fs.utimesSync(path.join(root,'exec-old.png'),new Date(0),new Date(0));
+      fs.copyFileSync(${JSON.stringify(temp)} + (state.renders===1?'/opaque.png':'/transparent.png'),path.join(root,'exec-final.png'));
+      console.log(JSON.stringify({type:'thread.started',thread_id:id}));
+      fs.writeFileSync(result,JSON.stringify({image_path:'',error:'Não consegui devolver o caminho.'}));
+    });
+  `);
+  const originalBin = process.env.CODEX_BIN, originalHome = process.env.CODEX_HOME;
+  // A fake CLI uses Node as its executable through the standard npm entry point.
+  const originalPath = process.env.PATH;
+  const entry = join(temp, 'node_modules/@openai/codex/bin');
+  await mkdir(entry, { recursive: true });
+  await writeFile(join(entry, 'codex.js'), await readFile(cli));
+  try {
+    delete process.env.CODEX_BIN;
+    process.env.PATH = temp + delimiter + (originalPath || '');
+    process.env.CODEX_HOME = temp;
+    assert.deepEqual(await generateCharacterArt({ id: randomUUID(), race: 'Humano', class: 'Guerreiro', reference: transparent }), transparent);
+    const state = JSON.parse(await readFile(statePath, 'utf8'));
+    assert.equal(state.renders, 2);
+    assert.match(state.prompt, /Remover completamente o fundo/);
+  } finally {
+    for (const [name, value] of [['CODEX_BIN', originalBin], ['CODEX_HOME', originalHome], ['PATH', originalPath]]) {
+      if (value === undefined) delete process.env[name!]; else process.env[name!] = value;
+    }
+    await rm(temp, { recursive: true, force: true });
+  }
+});
+
 test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem indicada', async () => {
   const temp = await mkdtemp(join(tmpdir(), 'equipment-cli-'));
   const entry = join(temp, 'node_modules/@openai/codex/bin');
@@ -38,7 +87,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
   );
   const originalPath = process.env.PATH,
     originalBin = process.env.CODEX_BIN;
-  const reference = await readFile('docs/references/character-style-v1.png');
+  const reference = await sharp(await readFile('docs/references/character-style-v1.png')).removeAlpha().ensureAlpha(0.5).png().toBuffer();
   const itemImage = await readFile('public/shop/items/longsword.png');
   const equipment: ArtEquipment[] = [
     { slot: 'main_hand', item_id: 'longsword', name: 'Espada longa', image: itemImage },
@@ -105,7 +154,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.deepEqual(output, reference);
     const captured = JSON.parse(await readFile(capture, 'utf8'));
     assert.equal(captured.images.length, 3);
-    assert.equal(captured.images[0].hash, createHash('sha256').update(reference).digest('hex'));
+    assert.equal(captured.images[0].hash, createHash('sha256').update(await readFile('docs/references/character-style-v1.png')).digest('hex'));
     assert.equal(captured.images[1].hash, createHash('sha256').update(reference).digest('hex'));
     assert.equal(
       captured.images[2].hash,
@@ -246,7 +295,7 @@ test('revisão visual corrige resultado reprovado e rejeita arte que continua er
   try {
     process.env.PATH = temp + delimiter + (originalPath || '');
     delete process.env.CODEX_BIN;
-    const reference = await readFile('docs/references/character-style-v1.png');
+    const reference = await sharp(await readFile('docs/references/character-style-v1.png')).removeAlpha().ensureAlpha(0.5).png().toBuffer();
     const job = {
       id: randomUUID(),
       race: 'Humano',

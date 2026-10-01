@@ -63,6 +63,7 @@ export function CharacterArtButton({
     state.jobs.some(
       (job) => job.character_id === character.id && ['queued', 'running'].includes(job.status),
     );
+  const latestJob = state.jobs.find((job) => job.character_id === character.id);
   return (
     <div className="equipment-generate">
       <button
@@ -94,6 +95,11 @@ export function CharacterArtButton({
       {!pending && !state.available && (
         <p className="muted" role="status">
           Ilustrador offline. A geração ficará disponível quando ele for iniciado.
+        </p>
+      )}
+      {!pending && !open && latestJob?.status === 'failed' && (
+        <p className="form-error" role="alert">
+          {latestJob.error || 'A imagem não foi gerada. Tente novamente; sua cota foi preservada.'}
         </p>
       )}
       {error && !open && (

@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { mkdir, readFile, writeFile, realpath, unlink, readdir } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, realpath, unlink, readdir, stat } from 'node:fs/promises';
+import sharp from 'sharp';
 import { delimiter, isAbsolute, join, relative, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { z } from 'zod';
@@ -291,8 +292,15 @@ Use referenced_image_paths com TODOS esses caminhos. Não use num_last_images_to
           const files = (await readdir(sessionRoot, { withFileTypes: true })).filter(
             (entry) => entry.isFile() && /^exec-.*\.png$/i.test(entry.name),
           );
-          if (files.length === 1) {
-            const nativeFile = await realpath(join(sessionRoot, files[0].name));
+          if (files.length) {
+            // A single execution may render and then correct an image. Select its
+            // final artifact only within this exact session, never another job.
+            const candidates = await Promise.all(files.map(async (entry) => ({
+              name: entry.name,
+              modified: (await stat(join(sessionRoot, entry.name))).mtimeMs,
+            })));
+            candidates.sort((a, b) => b.modified - a.modified || a.name.localeCompare(b.name));
+            const nativeFile = await realpath(join(sessionRoot, candidates[0].name));
             const part = relative(await realpath(sessionRoot), nativeFile);
             if (part && !part.startsWith('..') && !isAbsolute(part))
               return await readFile(nativeFile);
@@ -385,12 +393,15 @@ Use referenced_image_paths com TODOS esses caminhos. Não use num_last_images_to
         directory,
         (job.equipment || []).some((item) => item.slot === 'cloak'),
       );
+      const meta = await sharp(bytes).metadata();
+      if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)
+        review.issues.push('Remover completamente o fundo e entregar PNG com canal alfa realmente transparente, usando transparent_background=true.');
       if (review.approved && review.issues.length === 0) return bytes;
       repair = `CORREÇÃO OBRIGATÓRIA: a única imagem anexada é o resultado REPROVADO. Edite os defeitos visuais identificados: ${JSON.stringify(review.issues)}. Preserve a identidade e os modelos dos itens. Corrija a composição nas regiões afetadas; não repita o defeito anterior.`;
     }
     throw new IllustratorError(
       'composition_rejected',
-      'A arte não respeitou a sobreposição dos equipamentos após as correções e não foi salva.',
+      'A arte não passou pela verificação de composição ou fundo transparente após as correções e não foi salva.',
     );
   } finally {
     await unlink(reference).catch(() => {});
