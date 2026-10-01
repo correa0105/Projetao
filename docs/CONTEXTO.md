@@ -1,5 +1,10 @@
 # Memória do projeto — Alvorada Cinzenta
 
+Placas do mural: fixações superiores ficam estáticas; a arte é renderizada em
+camadas recortadas de pinos, correntes e placa. O balanço inclina as correntes
+a partir da fixação e desloca placa/texto juntos, sem mover os pinos nem deformar
+a madeira. Preservado reduced-motion (01/10/2026).
+
 Espaços de equipamento agora usam o mesmo tom escuro e sombra interna dos
 quadrados vazios da mochila. Ícones SVG específicos por posição (capacete,
 armadura, espada, escudo, anéis, colar, capa, luvas, botas, mochila e bolsa)

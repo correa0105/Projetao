@@ -48,6 +48,19 @@ try {
   await page.goto(origin + '/#board');
   await page.reload();
   await expect(page.getByRole('button', { name: 'Abrir Missões', exact: true })).toBeVisible();
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  for (const sign of await page.locator('.notice-hanging-sign').all()) {
+    const pins = sign.locator('.notice-sign-fixed-pins');
+    const before = await pins.boundingBox();
+    await sign.hover();
+    await page.waitForTimeout(250);
+    expect(await pins.boundingBox()).toEqual(before);
+    expect(await sign.evaluate((el) => getComputedStyle(el).transform)).toBe('none');
+    expect(await sign.locator('.notice-sign-moving-chains').evaluate((el) => getComputedStyle(el).transform)).not.toBe('none');
+    expect(await sign.locator('.notice-sign-moving-board').evaluate((el) => getComputedStyle(el).transform)).not.toBe('none');
+    await page.mouse.move(0, 0);
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   const paper = page.getByRole('button', { name: 'Abrir aviso: Missão de revisão A', exact: true });
   await expect(paper).toBeVisible();
   await paper.focus();
@@ -255,6 +268,7 @@ try {
   await page.screenshot({path:'test-results/sheet-rank-desktop.png'});
   await page.setViewportSize({width:390,height:844});
   await page.screenshot({path:'test-results/sheet-rank-mobile.png'});
+  await page.getByRole('button', { name: /^Abrir menu de/ }).click();
   await page.getByRole('button', { name: /^Pendências e notificações/ }).click();
   const notificationPanel = page.getByRole('region', { name: 'Pendências e notificações' });
   await expect(notificationPanel.getByText('Nível 5 alcançado')).toBeVisible();

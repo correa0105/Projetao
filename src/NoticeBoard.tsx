@@ -247,7 +247,9 @@ export function NoticeBoard({
               onClick={(e) => openCategory(c.kind, e.currentTarget)}
               aria-label={'Abrir ' + c.title}
             >
-              <img src={`/notices/hanging-${c.kind}-v2.png`} alt="" draggable={false} />
+              <img className="notice-sign-fixed-pins" src={`/notices/hanging-${c.kind}-v2.png`} alt="" draggable={false} />
+              <img className="notice-sign-moving-chains" src={`/notices/hanging-${c.kind}-v2.png`} alt="" draggable={false} />
+              <img className="notice-sign-moving-board" src={`/notices/hanging-${c.kind}-v2.png`} alt="" draggable={false} />
               <span>{c.title}</span>
             </button>
           ))}
