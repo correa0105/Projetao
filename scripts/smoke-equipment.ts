@@ -104,7 +104,12 @@ try {
         bag.getByRole('button', { name: `${itemName}, quantidade 1`, exact: true }),
         equipment.locator(`[data-equipment-slot="${slot}"] .equipment-art`),
       );
-    } else await equipment.locator(`#equipment-${slot}`).selectOption(id);
+    } else {
+      await equipment.locator(`[data-equipment-slot="${slot}"] .equipment-slot-trigger`).click();
+      await expect(equipment.locator(`#equipment-picker-${slot}`)).toBeVisible();
+      await equipment.locator(`#equipment-${slot}`).selectOption(id);
+      await expect(equipment.locator(`#equipment-picker-${slot}`)).toBeHidden();
+    }
     await expect(equipment.locator(`#equipment-${slot}`)).toBeEnabled();
     await expect(equipment.locator(`#equipment-${slot}`)).toHaveValue(id);
   }

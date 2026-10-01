@@ -712,3 +712,9 @@ Detalhes e falas do estábulo (01/10/2026): Ver detalhes inclui todos os equipam
 Perfil (01/10/2026): patente substitui o nível na barra expansível, calculada por rankName; classe aparece abaixo em 9px. Botões de notificações e saída reduzidos de 30px para 24px, com ícones de 12px. Mantidos alinhamento vertical, barra de 38px e retrato de 48px.
 
 Perfil (01/10/2026): patente refinada para 10px e classe para 8px, diferença exata de 2px. O painel expansível usa flex com align-items:center para centralizar o conjunto de texto e botões na altura disponível de 38px.
+
+Mochila (01/10/2026): dez espaços visuais adicionais, mínimo de 34 em vez de 24, sem alterar capacidade real de itens ou dimensões externas do painel. Grade desktop passa de seis para sete colunas e até 1000px passa de quatro para cinco; mantém altura disponível anterior e reduz os slots para acomodar as novas linhas. Cofre preservado.
+
+Cofre (01/10/2026): mínimo visual ampliado de 24 para 36 espaços, adicionando uma linha de doze no desktop; mantém adaptação existente para tablet/celular e expansão para acomodar mais itens.
+
+Equipamentos (01/10/2026): painel compacto com a arte privada do personagem no centro (silhueta existente quando não há arte) e quinze slots em colunas laterais. Ícones e miniaturas substituem categorias e selects permanentemente visíveis. Clique abre popover nativo com categoria, itens compatíveis e desequipar; Escape/clique externo fecham, e o arraste da mochila mantém validações do servidor. Layout adaptado ao celular. Teste de equipamento cobre equipar por popover, arraste, persistência e geração com referências.

@@ -268,7 +268,12 @@ function StoragePanel({
           />
         ))}
         {Array.from(
-          { length: Math.max(24, Math.ceil(items.length / 6) * 6) - items.length },
+          {
+            length:
+              (isVault
+                ? Math.max(36, Math.ceil(items.length / 12) * 12)
+                : Math.max(34, Math.ceil(items.length / 7) * 7)) - items.length,
+          },
           (_, i) => (
             <div key={i} className="loot-slot loot-slot-empty" aria-hidden="true">
               <span>＋</span>
@@ -440,6 +445,7 @@ export function Inventory({
         </p>
       )}
       <EquipmentPanel
+        character={character}
         storage={storage}
         busy={busy}
         onEquip={equip}
