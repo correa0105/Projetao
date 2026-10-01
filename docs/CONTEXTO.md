@@ -1,5 +1,17 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Golpes do kraken e barcos menores (01/10/2026)
+
+Barcos reduzidos de escala 0,85 para 0,75 (aproximadamente 12%). O kraken levanta
+os braços e desfere três golpes alternados, sincronizados com inclinação e recuo
+do casco, respingos e doze fragmentos de madeira. Os mastros têm pivôs próprios
+e cedem após os golpes; o barco mantém o tamanho enquanto afunda fisicamente.
+Madeira flutua brevemente antes de desaparecer. Mantidos oito barcos, rotas
+costeiras lentas, intervalo de 30 segundos e sequência de nove segundos.
+Mastros e esteiras são restaurados quando o barco retorna. Geometrias reutilizadas,
+partes agrupadas por material e respingos instanciados, sem criação de malhas
+durante a animação. Testes cobrem impacto, destroços, mastros e recuperação.
+
 ## Viseira e navegação marítima (01/10/2026)
 
 Personagem → geração oferece capacete fechado (viseira abaixada) ou aberto

@@ -4,7 +4,8 @@ import { createSeaRoutes, type SeaPoint } from './world-sea-routes';
 
 const ATTACK_INTERVAL = 30,
   ATTACK_DURATION = 9,
-  SPEED = 0.035;
+  SPEED = 0.035,
+  SHIP_SCALE = 0.75;
 /** Real 3D sailing ships and an articulated kraken, sharing the atlas water plane. */
 export function createWorldFleet(sampleHeight: (u: number, v: number) => number) {
   const group = new THREE.Group();
@@ -114,41 +115,47 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         trim,
       );
     mesh(new THREE.BoxGeometry(0.2, 0.16, 0.09), wood, obj, 0, -0.3, 0.145);
+    const masts: THREE.Group[] = [];
     for (const [y, h, w] of [
       [-0.12, 0.68, 0.38],
       [0.18, 0.56, 0.31],
     ]) {
-      spar(obj, new THREE.Vector3(0, y, 0.1), new THREE.Vector3(0, y, h));
-      sail(obj, y, h - 0.14, w, 0.24);
-      sail(obj, y, h - 0.37, w * 0.88, 0.18);
+      const mast = new THREE.Group();
+      mast.name = 'breakable-mast';
+      mast.position.set(0, y, 0.1);
+      obj.add(mast);
+      masts.push(mast);
+      spar(mast, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, h - 0.1));
+      sail(mast, 0, h - 0.24, w, 0.24);
+      sail(mast, 0, h - 0.47, w * 0.88, 0.18);
       for (const x of [-0.13, 0.13])
         spar(
-          obj,
-          new THREE.Vector3(x, y - 0.14, 0.12),
-          new THREE.Vector3(0, y, h - 0.12),
+          mast,
+          new THREE.Vector3(x, -0.14, 0.02),
+          new THREE.Vector3(0, 0, h - 0.22),
           0.004,
           rope,
         );
     }
     spar(obj, new THREE.Vector3(0, 0.28, 0.12), new THREE.Vector3(0, 0.62, 0.23), 0.01);
-    const flag = mesh(new THREE.PlaneGeometry(0.14, 0.09, 3, 1), dark, obj, 0.06, -0.12, 0.69);
+    const flag = mesh(new THREE.PlaneGeometry(0.14, 0.09, 3, 1), dark, masts[0], 0.06, 0, 0.59);
     flag.rotation.x = Math.PI / 2;
     // Small crossed bones and skull, modelled rather than a raster overlay.
     spar(
-      obj,
-      new THREE.Vector3(0.02, -0.123, 0.67),
-      new THREE.Vector3(0.1, -0.123, 0.71),
+      masts[0],
+      new THREE.Vector3(0.02, -0.003, 0.57),
+      new THREE.Vector3(0.1, -0.003, 0.61),
       0.004,
       trim,
     );
     spar(
-      obj,
-      new THREE.Vector3(0.02, -0.124, 0.71),
-      new THREE.Vector3(0.1, -0.124, 0.67),
+      masts[0],
+      new THREE.Vector3(0.02, -0.004, 0.61),
+      new THREE.Vector3(0.1, -0.004, 0.57),
       0.004,
       trim,
     );
-    mesh(new THREE.SphereGeometry(0.016, 6, 4), trim, obj, 0.06, -0.13, 0.71);
+    mesh(new THREE.SphereGeometry(0.016, 6, 4), trim, masts[0], 0.06, -0.01, 0.61);
     const trail = new THREE.Shape();
     trail.moveTo(-0.045, -0.37);
     trail.bezierCurveTo(-0.06, -0.5, -0.16, -0.66, -0.22, -0.85);
@@ -160,32 +167,39 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     otherWake.scale.x = -1;
     wake.name = 'ship-wake';
     // Batch static ship parts by material; flags and wake remain independent.
-    const batches = new Map<THREE.Material, THREE.BufferGeometry[]>();
-    for (const child of [...obj.children])
-      if (child instanceof THREE.Mesh && child !== flag && child !== wake && child !== otherWake) {
-        child.updateMatrix();
-        const g = (
-          child.geometry.index ? child.geometry.toNonIndexed() : child.geometry.clone()
-        ).applyMatrix4(child.matrix);
-        const m = child.material as THREE.Material;
-        const list = batches.get(m) || [];
-        list.push(g);
-        batches.set(m, list);
-        obj.remove(child);
-      }
-    for (const [m, list] of batches) {
-      const merged = mergeGeometries(list);
-      list.forEach((g) => g.dispose());
-      if (merged) {
-        geometries.push(merged);
-        const batch = new THREE.Mesh(merged, m);
-        if (m === wood) batch.name = 'ship-woodwork';
-        obj.add(batch);
+    for (const parent of [obj, ...masts]) {
+      const batches = new Map<THREE.Material, THREE.BufferGeometry[]>();
+      for (const child of [...parent.children])
+        if (
+          child instanceof THREE.Mesh &&
+          child !== flag &&
+          child !== wake &&
+          child !== otherWake
+        ) {
+          child.updateMatrix();
+          const g = (
+            child.geometry.index ? child.geometry.toNonIndexed() : child.geometry.clone()
+          ).applyMatrix4(child.matrix);
+          const m = child.material as THREE.Material;
+          const list = batches.get(m) || [];
+          list.push(g);
+          batches.set(m, list);
+          parent.remove(child);
+        }
+      for (const [m, list] of batches) {
+        const merged = mergeGeometries(list);
+        list.forEach((g) => g.dispose());
+        if (merged) {
+          geometries.push(merged);
+          const batch = new THREE.Mesh(merged, m);
+          if (m === wood) batch.name = 'ship-woodwork';
+          parent.add(batch);
+        }
       }
     }
-    obj.scale.setScalar(0.85);
+    obj.scale.setScalar(SHIP_SCALE);
     group.add(obj);
-    return { obj, flag, wake };
+    return { obj, flag, wake, otherWake, masts };
   }
   const routes = createSeaRoutes(sampleHeight);
   let routeSeed = 1;
@@ -246,6 +260,25 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     return { angle: (i / 6) * Math.PI * 2, parts, cups };
   });
   const ripple = mesh(new THREE.RingGeometry(0.45, 0.49, 48), foam, kraken, 0, 0, 0.015);
+  const wreckage = new THREE.Group();
+  wreckage.name = 'ship-wreckage';
+  kraken.add(wreckage);
+  const debris = Array.from({ length: 12 }, (_, i) => {
+    const plank = mesh(
+      new THREE.BoxGeometry(0.035, 0.14 + (i % 3) * 0.035, 0.018),
+      i % 3 ? wood : deck,
+      wreckage,
+    );
+    plank.visible = false;
+    return plank;
+  });
+  const splash = new THREE.InstancedMesh(cupGeo, foam, 18);
+  splash.name = 'kraken-impact-splash';
+  splash.frustumCulled = false;
+  splash.visible = false;
+  kraken.add(splash);
+  const droplet = new THREE.Object3D();
+  const strikeTimes = [2.25, 3.55, 4.7];
   const up = new THREE.Vector3(0, 1, 0),
     a = new THREE.Vector3(),
     b = new THREE.Vector3(),
@@ -271,6 +304,10 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     s.segment = 0;
     s.progress = 0;
     s.fade = 0;
+    s.obj.scale.setScalar(0);
+    s.obj.rotation.set(0, 0, s.heading);
+    s.masts.forEach((mast) => mast.rotation.set(0, 0, 0));
+    s.wake.visible = s.otherWake.visible = true;
     s.obj.visible = s.route.length > 1;
     if (s.route.length) s.obj.position.set(s.route[0].x, s.route[0].y, 0.04);
   }
@@ -280,13 +317,16 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     grip: number,
     emerge: number,
     out: THREE.Vector3,
+    strike = 0,
   ) {
     const reach = 0.7 * (1 - t) + (0.12 + 0.12 * Math.sin(t * 8)) * t * grip;
     const curl = angle + Math.sin(t * Math.PI) * grip * 1.25;
     out.set(
       Math.cos(curl) * reach,
       Math.sin(curl) * reach,
-      -0.13 + emerge * (Math.sin(t * Math.PI) * (0.35 + grip * 0.27) + t * 0.1),
+      -0.13 +
+        emerge * (Math.sin(t * Math.PI) * (0.35 + grip * 0.27) + t * 0.1) +
+        strike * Math.pow(t, 1.5),
     );
   }
   return {
@@ -314,6 +354,10 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         nextAttack += ATTACK_INTERVAL;
         attacks++;
         kraken.position.set(ships[target].obj.position.x, ships[target].obj.position.y, 0);
+        kraken.rotation.z = ships[target].heading;
+        debris.forEach((plank) => {
+          plank.visible = false;
+        });
         kraken.visible = true;
       }
       for (const [i, s] of ships.entries()) {
@@ -353,26 +397,41 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           s.heading,
         );
         s.fade = Math.min(1, s.fade + dt * 0.4);
-        s.obj.scale.setScalar(0.85 * s.fade);
+        s.obj.scale.setScalar(SHIP_SCALE * s.fade);
         s.flag.rotation.z = Math.sin(clock * 0.55 + i) * 0.12;
       }
       if (target >= 0) {
         const t = clock - attackStart,
           emerge = smooth(t / 2) * (1 - smooth((t - 7) / 2)),
           grip = smooth((t - 1.8) / 2),
-          sink = smooth((t - 3.2) / 3.8),
+          sink = smooth((t - 4.2) / 2.8),
           s = ships[target];
-        s.obj.position.z = 0.035 - sink * 1.05;
-        s.obj.rotation.x = sink * 0.9;
-        s.obj.rotation.y = Math.sin(t * 2) * 0.05 + sink * 0.25;
-        s.obj.scale.setScalar(0.85 * (1 - smooth((t - 5.5) / 1.5)));
+        let impact = 0;
+        for (const [i, hit] of strikeTimes.entries()) {
+          const elapsed = t - hit;
+          if (elapsed >= 0)
+            impact += (i % 2 ? -1 : 1) * Math.exp(-elapsed * 2.4) * Math.cos(elapsed * 8);
+        }
+        const damage = smooth((t - 3.55) / 0.65);
+        s.obj.position.z = 0.035 - sink * 1.05 - Math.abs(impact) * 0.055;
+        s.obj.rotation.x = sink * 0.65 + impact * 0.22;
+        s.obj.rotation.y = impact * 0.62 + damage * 0.28 + sink * 0.5;
+        s.obj.scale.setScalar(SHIP_SCALE);
         s.obj.visible = t < 7;
+        s.wake.visible = s.otherWake.visible = false;
+        s.masts[0].rotation.set(damage * 0.65, -damage * 1.05, damage * 0.18);
+        s.masts[1].rotation.set(-smooth((t - 4.7) / 0.55) * 0.85, damage * 0.45, 0);
         kraken.position.z = -sink * 0.22;
         head.position.z = -0.15 + emerge * 0.17;
-        for (const tentacle of tentacles) {
+        for (const [i, tentacle] of tentacles.entries()) {
+          // Alternate raised arms and fast downward blows, followed by a recoil.
+          const hit = strikeTimes[i % 3],
+            lift = smooth((t - hit + 0.8) / 0.55) * (1 - smooth((t - hit + 0.16) / 0.16)),
+            slam = t >= hit ? -0.18 * Math.exp(-(t - hit) * 3.5) : 0,
+            strike = lift * (i < 3 ? 0.7 : 0.45) + slam;
           for (let j = 0; j < tentacle.parts.length; j++) {
-            tentaclePoint(tentacle.angle, j / 13, grip, emerge, a);
-            tentaclePoint(tentacle.angle, (j + 1) / 13, grip, emerge, b);
+            tentaclePoint(tentacle.angle, j / 13, grip, emerge, a, strike);
+            tentaclePoint(tentacle.angle, (j + 1) / 13, grip, emerge, b, strike);
             const m = tentacle.parts[j],
               r = 0.05 * (1 - j / 15);
             m.position.copy(a).add(b).multiplyScalar(0.5);
@@ -381,10 +440,48 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           }
           for (let j = 0; j < tentacle.cups.length; j++) {
             const m = tentacle.cups[j];
-            tentaclePoint(tentacle.angle, (j + 3) / 13, grip, emerge, m.position);
+            tentaclePoint(tentacle.angle, (j + 3) / 13, grip, emerge, m.position, strike);
             m.position.z -= 0.018;
             m.scale.setScalar(0.018 * (1 - j / 9));
           }
+        }
+        for (const [i, plank] of debris.entries()) {
+          const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);
+          plank.visible = age >= 0 && t < 8.5;
+          if (!plank.visible) continue;
+          const angle = i * 2.399,
+            distance = 0.14 + Math.min(age, 1.6) * (0.18 + (i % 3) * 0.08);
+          plank.position.set(
+            Math.cos(angle) * distance,
+            Math.sin(angle) * distance,
+            Math.max(0.028 + sink * 0.22, 0.17 + age * 0.65 - age * age * 0.8),
+          );
+          plank.rotation.set(
+            age < 1 ? age * (i % 2 ? 4 : -3) : 0.08 * Math.sin(t * 3 + i),
+            age < 1 ? age * 2 : 0,
+            angle + age * 0.3,
+          );
+          plank.scale.setScalar(1 - smooth((t - 7.5) / 1));
+        }
+        const lastHit = strikeTimes.findLast((hit) => t >= hit),
+          splashAge = lastHit === undefined ? -1 : t - lastHit;
+        splash.visible = splashAge >= 0 && splashAge < 0.85;
+        if (splash.visible) {
+          for (let i = 0; i < 18; i++) {
+            const angle = i * 2.399,
+              spread = 0.13 + splashAge * (0.3 + (i % 4) * 0.12);
+            droplet.position.set(
+              Math.cos(angle) * spread,
+              Math.sin(angle) * spread,
+              0.04 +
+                sink * 0.22 +
+                Math.max(0, splashAge * (0.8 + (i % 3) * 0.2) - 1.5 * splashAge * splashAge),
+            );
+            droplet.scale.set(0.012, 0.012, 0.035 * (1 - splashAge / 0.85));
+            droplet.updateMatrix();
+            splash.setMatrixAt(i, droplet.matrix);
+          }
+          splash.instanceMatrix.needsUpdate = true;
         }
         ripple.scale.setScalar(1 + t * 0.11);
         ripple.visible = t < 8;
@@ -396,6 +493,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       }
     },
     dispose() {
+      splash.dispose();
       geometries.forEach((g) => g.dispose());
       materials.forEach((m) => m.dispose());
       group.clear();

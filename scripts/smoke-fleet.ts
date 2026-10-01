@@ -50,8 +50,10 @@ try {
   await page.screenshot({ path: 'test-results/fleet-overview.png' });
   // Keep a view of the complete sea until the first real-time attack begins.
   await expect(map).toHaveAttribute('data-kraken-active', 'true', { timeout: 50000 });
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(2400);
   await page.screenshot({ path: 'test-results/fleet-kraken.png' });
+  await page.waitForTimeout(1900);
+  await page.screenshot({ path: 'test-results/fleet-wreckage.png' });
   await expect(map).toHaveAttribute('data-kraken-active', 'false', { timeout: 12000 });
   const attacks = await map.getAttribute('data-kraken-attacks');
   await page.emulateMedia({ reducedMotion: 'reduce' });

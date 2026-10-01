@@ -46,11 +46,24 @@ test('oito barcos lentos, kraken a cada 30 s, afundamento e movimento reduzido',
     assert.equal(fleet.state.attacks, 1);
     assert.equal(fleet.state.attacking, true);
     assert.equal(fleet.group.getObjectByName('sea-kraken')!.visible, true);
-    advance(30.3, 36);
+    const boat = fleet.group.getObjectByName('pirate-ship-0')!;
+    assert.equal(boat.scale.x, 0.75);
+    advance(30.3, 32.3);
+    assert.ok(Math.abs(boat.rotation.y) > 0.3, 'o golpe deve inclinar o casco');
+    assert.ok(fleet.group.getObjectByName('ship-wreckage')!.children.some((part) => part.visible));
+    assert.equal(fleet.group.getObjectByName('kraken-impact-splash')!.visible, true);
+    advance(32.4, 34.3);
+    assert.ok(
+      Math.abs(boat.getObjectByName('breakable-mast')!.rotation.y) > 0.8,
+      'o mastro deve ceder após os golpes',
+    );
+    advance(34.4, 36);
     assert.ok(fleet.group.getObjectByName('pirate-ship-0')!.position.z < -0.5);
     advance(36.1, 39.3);
     assert.equal(fleet.state.attacking, false);
     assert.equal(fleet.group.getObjectByName('sea-kraken')!.visible, false);
+    assert.equal(boat.getObjectByName('breakable-mast')!.rotation.y, 0);
+    assert.equal(boat.getObjectByName('ship-wake')!.visible, true);
     advance(39.4, 60.3);
     assert.equal(fleet.state.attacks, 2);
     const frozen = fleet.state;
