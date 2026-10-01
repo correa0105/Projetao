@@ -1,5 +1,9 @@
 # Memória do projeto — Alvorada Cinzenta
 
+Avisos de erro fora do formulário na aba Personagem, incluindo cota mensal,
+desaparecem automaticamente após 5 segundos (01/10/2026). Erros dentro do
+formulário continuam disponíveis para corrigir o envio.
+
 ## Liberação de imagens por conta (01/10/2026)
 
 Por solicitação explícita, a conta Pai do Cris possui gerações sem limite mensal

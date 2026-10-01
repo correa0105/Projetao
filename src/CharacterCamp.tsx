@@ -168,6 +168,11 @@ export function CharacterCamp({
   const previousJobs = useRef(new Map<string, string>());
   const [notice, setNotice] = useState<ArtJob | null>(null);
   useEffect(() => {
+    if (!error || editing) return;
+    const timer = setTimeout(() => setError(''), 5000);
+    return () => clearTimeout(timer);
+  }, [error, editing]);
+  useEffect(() => {
     if (!notice) return;
     const timer = setTimeout(() => setNotice(null), 5000);
     return () => clearTimeout(timer);
