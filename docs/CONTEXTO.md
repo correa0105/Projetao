@@ -1,5 +1,16 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Oclusão natural e integridade dos objetos (01/10/2026)
+
+Anéis e acessórios selecionados podem ficar totalmente invisíveis quando
+encobertos por escudo, luva, arma, roupa ou corpo. Seleção não obriga mostrar
+cada detalhe; não forçar pose, deslocar anel, ampliar acessórios ou criar dedos.
+Escudos e objetos segurados devem ser únicos e íntegros, sem recortes, buracos,
+fragmentos separados ou duplicações para revelar o acessório atrás deles.
+Enquadramento reserva margem para não cortar objetos. Regra presente no prompt
+fixo, nas instruções do worker e nas descrições de mãos/anéis; vale para novas
+gerações. Teste de integração verifica envio com escudo e anel selecionados.
+
 ## Ataque desordenado sem giro (01/10/2026)
 
 Removida a curva angular comum que dava aos seis braços aparência de hélice.

@@ -18,11 +18,13 @@ const wearing: Record<EquipmentSlot, string> = {
   feet: 'Calçar um par de botas: uma em cada pé, com grevas sobre as canelas quando presentes na referência.',
   hands: 'Vestir um par de luvas nas duas mãos, sem peças soltas.',
   main_hand:
-    'Segurar uma unidade na mão principal, com dedos e empunhadura naturais. Arma de duas mãos deve ser segurada pelas duas mãos.',
+    'Segurar uma unidade na mão principal, com dedos e empunhadura naturais. Arma de duas mãos deve ser segurada pelas duas mãos. Objeto íntegro, sem recortes artificiais, partes faltantes ou cópias adicionais para mostrar acessórios ocultos.',
   off_hand:
-    'Segurar uma unidade na mão secundária, com pegada natural; escudo fica preso/segurado por esse braço.',
-  ring_left: 'Vestir um anel proporcional em um dedo da mão esquerda.',
-  ring_right: 'Vestir um anel proporcional em um dedo da mão direita.',
+    'Segurar uma unidade na mão secundária, com pegada natural; escudo fica preso/segurado por esse braço. Escudo único e íntegro, com contorno contínuo, sem cortar, abrir buracos, remover partes ou duplicar o escudo para revelar a mão ou o anel atrás dele.',
+  ring_left:
+    'Vestir um anel proporcional em um dedo da mão esquerda. Se a mão ou o dedo estiver oculto por escudo, luva ou outro objeto, o anel pode ficar totalmente invisível. Não forçar sua exibição nem mudar a pose ou danificar o objeto que o encobre.',
+  ring_right:
+    'Vestir um anel proporcional em um dedo da mão direita. Se a mão ou o dedo estiver oculto por escudo, luva ou outro objeto, o anel pode ficar totalmente invisível. Não forçar sua exibição nem mudar a pose ou danificar o objeto que o encobre.',
   neck: 'Vestir o colar/amuleto em torno do pescoço, com pingente apoiado naturalmente no peito.',
   cloak: 'Vestir a capa presa aos ombros, com tecido caindo naturalmente pelas costas.',
   back: 'Vestir a mochila nas costas, presa por alças. Somente esta posição autoriza mochila nas costas.',

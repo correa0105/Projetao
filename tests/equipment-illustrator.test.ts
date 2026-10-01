@@ -74,6 +74,18 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
       name: 'Botas de placas',
       image: await readFile('public/shop/equipment/plate-boots.png'),
     },
+    {
+      slot: 'off_hand',
+      item_id: 'shield',
+      name: 'Escudo',
+      image: await readFile('public/shop/items/shield.png'),
+    },
+    {
+      slot: 'ring_left',
+      item_id: 'ring-of-protection',
+      name: 'Anel de proteção',
+      image: await readFile('public/shop/items/ring-of-protection.png'),
+    },
   ];
   try {
     process.env.PATH = temp + delimiter + (originalPath || '');
@@ -120,6 +132,18 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     );
     assert.match(captured.prompt, /use referenced_image_paths com TODOS esses caminhos/);
     assert.match(captured.prompt, /Não use num_last_images_to_include/);
+    assert.match(captured.prompt, /isso NÃO obriga todos a ficarem visíveis/);
+    assert.match(captured.prompt, /anel pode ficar totalmente invisível/);
+    assert.match(captured.prompt, /Escudo único e íntegro/);
+    assert.match(captured.prompt, /Nunca corte, divida, abra buracos, remova partes ou duplique/);
+    assert.match(captured.prompt, /sem cortes na borda da imagem/);
+    for (const slot of ['ring_left', 'ring_right'] as const) {
+      const ring = describeArtEquipment(
+        { slot, item_id: 'ring-of-protection', name: 'Anel', image: itemImage },
+        0,
+      );
+      assert.match(ring.wearing, /anel pode ficar totalmente invisível/);
+    }
     const tiara = describeArtEquipment(
       { slot: 'head', item_id: 'cosmetic-tiara', name: 'Tiara com gema azul', image: itemImage },
       0,
