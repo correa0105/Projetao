@@ -120,50 +120,36 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.match(captured.prompt, /"reference_image":3/);
     assert.match(captured.prompt, /Espada longa/);
     assert.match(captured.prompt, /SOMENTE os equipamentos listados/);
-    assert.match(captured.prompt, /não cole as imagens/);
-    assert.match(captured.prompt, /CAPACETE OBRIGATÓRIO/);
+    assert.match(captured.prompt, /roupa medieval de pano simples/);
+    assert.match(captured.prompt, /humano não recebe asas/);
+    assert.match(captured.prompt, /draconato não recebe orelhas élficas/);
+    assert.match(captured.prompt, /segunda imagem fornece somente características físicas/);
+    assert.match(captured.prompt, /Tamanho: Médio/);
+    assert.match(captured.prompt, /fundo transparente real/);
     assert.match(captured.prompt, /viseira fechada/);
-    assert.match(captured.prompt, /exatamente UM PAR de ombreiras/);
-    assert.match(captured.prompt, /ignore essas ombreiras/);
-    assert.match(captured.prompt, /Transcreva essas exigências para o prompt enviado à ferramenta/);
+    assert.match(captured.prompt, /ombreiras vêm exclusivamente do slot shoulders/);
     assert.match(captured.prompt, /"slot":"head"/);
     assert.doesNotMatch(captured.prompt, /"reference_image":9/);
     assert.match(captured.prompt, /NÃO reproduza sua grade/);
-    assert.ok(
-      captured.prompt.includes(
-        JSON.stringify(captured.images.map((image: { path: string }) => image.path)),
-      ),
-    );
-    assert.match(captured.prompt, /use referenced_image_paths com TODOS esses caminhos/);
+    assert.ok(captured.prompt.includes(JSON.stringify(captured.images.map((image: { path: string }) => image.path))));
+    assert.match(captured.prompt, /Use referenced_image_paths com TODOS esses caminhos/);
     assert.match(captured.prompt, /Não use num_last_images_to_include/);
-    assert.match(captured.prompt, /isso NÃO obriga todos a ficarem visíveis/);
-    assert.match(captured.prompt, /anel pode ficar totalmente invisível/);
-    assert.match(captured.prompt, /Escudo único e íntegro/);
-    assert.match(captured.prompt, /Nunca corte, divida, abra buracos, remova partes ou duplique/);
-    assert.match(captured.prompt, /sem cortes na borda da imagem/);
-    assert.match(captured.prompt, /Capa POR CIMA da ombreira e do braço/);
-    assert.match(captured.prompt, /MESMO que a peça encoberta esteja marcada/);
-    assert.doesNotMatch(captured.prompt, /capa (passa )?POR BAIXO/i);
-    assert.match(captured.prompt, /nunca atravessa ou aparece através da camada superior/);
+    assert.match(captured.prompt, /acessórios encobertos podem ficar invisíveis/);
+    assert.match(captured.prompt, /escudo preso ou segurado pelo braço, único e íntegro/);
+    assert.match(captured.prompt, /Capa é um manto sem mangas/);
     assert.match(
-      describeArtEquipment(
-        { slot: 'cloak', item_id: 'cosmetic-cape', name: 'Capa', image: itemImage },
-        0,
-      ).wearing,
-      /POR CIMA da ombreira e do braço/,
+      describeArtEquipment({ slot: 'cloak', item_id: 'cosmetic-cape', name: 'Capa', image: itemImage }, 0).wearing,
+      /capa desdobrada, como manto sem mangas/,
     );
+    assert.ok(captured.prompt.length < 8500, 'Prompt completo deve permanecer compacto mesmo com vários equipamentos.');
     for (const slot of ['ring_left', 'ring_right'] as const) {
-      const ring = describeArtEquipment(
-        { slot, item_id: 'ring-of-protection', name: 'Anel', image: itemImage },
-        0,
-      );
-      assert.match(ring.wearing, /anel pode ficar totalmente invisível/);
+      assert.match(describeArtEquipment({ slot, item_id: 'ring-of-protection', name: 'Anel', image: itemImage }, 0).wearing, /pode ficar oculto/);
     }
     const tiara = describeArtEquipment(
       { slot: 'head', item_id: 'cosmetic-tiara', name: 'Tiara com gema azul', image: itemImage },
       0,
     );
-    assert.doesNotMatch(tiara.wearing, /CAPACETE OBRIGATÓRIO|viseira/);
+    assert.doesNotMatch(tiara.wearing, /Capacete|viseira/);
     const helmet = equipment.find((item) => item.slot === 'head')!;
     assert.match(describeArtEquipment(helmet, 0, 'open').wearing, /viseira levantada/);
     await generateCharacterArt({
@@ -178,7 +164,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     const opened = JSON.parse(await readFile(capture, 'utf8'));
     assert.equal(opened.images.length, 3);
     assert.equal(opened.images[2].hash, createHash('sha256').update(helmet.image).digest('hex'));
-    assert.match(opened.prompt, /CAPACETE OBRIGATÓRIO ABERTO/);
+    assert.match(opened.prompt, /Capacete vestido na cabeça, viseira levantada/);
     assert.doesNotMatch(opened.prompt, /Este capacete de placas é fechado/);
     await assert.rejects(readFile(captured.images[2].path), { code: 'ENOENT' });
   } finally {
