@@ -1,5 +1,13 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Roupa básica na geração inicial (01/10/2026)
+
+Prompt fixo substitui vestimenta coerente com a classe por túnica/camisa simples,
+calça e calçados simples. Classe não fornece armas, armaduras, capacetes ou
+acessórios visuais; referências de estilo/aparência também não acrescentam
+equipamentos. Somente itens explicitamente selecionados do inventário entram
+nas gerações posteriores. Worker lê o prompt do disco a cada novo pedido.
+
 ## Imagem da capa e ordem física das camadas (01/10/2026)
 
 Cosmético Capa de viajante apontava para `cloak-of-invisibility.png`, inexistente.
