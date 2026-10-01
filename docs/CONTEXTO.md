@@ -1,5 +1,16 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Imagem da capa e ordem física das camadas (01/10/2026)
+
+Cosmético Capa de viajante apontava para `cloak-of-invisibility.png`, inexistente.
+Catálogo corrigido para a arte existente `cloak-of-protection.png`; preservados
+ID, preço, peso e caráter cosmético sem efeitos mágicos. Seed atualiza loja e
+inventário sem alterar compras. Smoke verifica carregamento das cinco artes de
+Cosméticos. Na geração, capa passa por baixo das ombreiras e cai atrás do corpo;
+objetos encobertos permanecem por baixo sem atravessar camadas, trazer acessórios
+à frente, recortar o objeto superior ou interpenetrar volumes. Instruções no
+prompt fixo, no worker e na descrição da capa; vale para novas gerações.
+
 ## Acabamento da frota e kraken sem cabeça (01/10/2026)
 
 Removidas cabeça, olhos e onda circular do ataque; kraken aparece somente por

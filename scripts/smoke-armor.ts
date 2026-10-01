@@ -45,6 +45,19 @@ try {
   await page.reload();
   await page.getByRole('button', { name: /^Cosméticos/ }).click();
   await expect(page.locator('.shop-product')).toHaveCount(5);
+  await expect(page.locator('.shop-product img')).toHaveCount(5);
+  await expect
+    .poll(() =>
+      page
+        .locator('.shop-product img')
+        .evaluateAll((images) =>
+          images.every(
+            (image) =>
+              (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0,
+          ),
+        ),
+    )
+    .toBe(true);
   for (const name of [
     'Capa de viajante',
     'Colar com gema azul',

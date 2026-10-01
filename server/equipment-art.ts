@@ -26,7 +26,8 @@ const wearing: Record<EquipmentSlot, string> = {
   ring_right:
     'Vestir um anel proporcional em um dedo da mão direita. Se a mão ou o dedo estiver oculto por escudo, luva ou outro objeto, o anel pode ficar totalmente invisível. Não forçar sua exibição nem mudar a pose ou danificar o objeto que o encobre.',
   neck: 'Vestir o colar/amuleto em torno do pescoço, com pingente apoiado naturalmente no peito.',
-  cloak: 'Vestir a capa presa aos ombros, com tecido caindo naturalmente pelas costas.',
+  cloak:
+    'Vestir a capa presa junto ao pescoço, com tecido caindo naturalmente pelas costas. Quando houver ombreiras, a capa passa POR BAIXO das ombreiras, que permanecem à frente e encobrem o tecido. Não atravessar o metal, recortar as ombreiras nem trazer o tecido oculto para a frente para exibi-lo.',
   back: 'Vestir a mochila nas costas, presa por alças. Somente esta posição autoriza mochila nas costas.',
   belt: 'Vestir o cinto/bolsa na cintura, preso ao corpo.',
 };
