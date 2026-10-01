@@ -125,6 +125,14 @@ test('equipamento: proprietário, unidades, mãos, cofre, persistência e refer�
       idempotency_key: randomUUID(),
     };
     assert.equal(
+      (await req('/character-art', alice.cookie, { ...art, helmet_mode: 'invalid' })).status,
+      400,
+    );
+    assert.equal(
+      (await req('/character-art', alice.cookie, { ...art, helmet_mode: 'open' })).status,
+      400,
+    );
+    assert.equal(
       (await req('/character-art', alice.cookie, { ...art, equipment_slots: ['head'] })).status,
       409,
     );

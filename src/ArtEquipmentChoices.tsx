@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { api } from './api';
 import type { StorageState } from './types';
-import { EQUIPMENT_LABELS, type EquipmentSlot } from '../shared/equipment';
+import {
+  EQUIPMENT_LABELS,
+  isHelmet,
+  type EquipmentSlot,
+  type HelmetMode,
+} from '../shared/equipment';
 import './equipment.css';
 
 export function ArtEquipmentChoices({
@@ -10,12 +15,16 @@ export function ArtEquipmentChoices({
   onChange,
   onReady,
   disabled,
+  helmetMode,
+  onHelmetModeChange,
 }: {
   characterId: string;
   selected: EquipmentSlot[];
   onChange: (slots: EquipmentSlot[]) => void;
   onReady: (ready: boolean) => void;
   disabled: boolean;
+  helmetMode: HelmetMode;
+  onHelmetModeChange: (mode: HelmetMode) => void;
 }) {
   const [storage, setStorage] = useState<StorageState | null>(null);
   const [error, setError] = useState('');
@@ -29,6 +38,8 @@ export function ArtEquipmentChoices({
       .then((value) => {
         if (!alive) return;
         setStorage(value);
+        if (!value.equipped.some((item) => item.slot === 'head' && isHelmet(item)))
+          onHelmetModeChange('closed');
         onChange(value.equipped.filter((item) => item.image_path).map((item) => item.slot));
         onReady(true);
       })
@@ -38,7 +49,7 @@ export function ArtEquipmentChoices({
     return () => {
       alive = false;
     };
-  }, [characterId, retry, onChange, onReady]);
+  }, [characterId, retry, onChange, onReady, onHelmetModeChange]);
   return (
     <fieldset disabled={disabled} className="stack">
       <legend>Equipamentos na imagem</legend>
@@ -91,6 +102,20 @@ export function ArtEquipmentChoices({
           ))}
         </div>
       )}
+      {selected.includes('head') &&
+        storage?.equipped.some((item) => item.slot === 'head' && isHelmet(item)) && (
+          <label>
+            Como usar o capacete
+            <select
+              aria-label="Como usar o capacete"
+              value={helmetMode}
+              onChange={(event) => onHelmetModeChange(event.target.value as HelmetMode)}
+            >
+              <option value="closed">Capacete fechado · viseira abaixada</option>
+              <option value="open">Capacete aberto · viseira levantada</option>
+            </select>
+          </label>
+        )}
     </fieldset>
   );
 }

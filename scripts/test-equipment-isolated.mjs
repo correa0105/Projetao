@@ -19,13 +19,17 @@ try {
       ? ['tests/armor-bundles.test.ts']
       : ['tests/equipment.test.ts', 'tests/equipment-illustrator.test.ts'];
   const args =
-    process.argv.includes('--browser') || process.argv.includes('--armor')
+    process.argv.includes('--browser') ||
+    process.argv.includes('--armor') ||
+    process.argv.includes('--fleet')
       ? [
           '--import',
           'tsx',
-          process.argv.includes('--armor')
-            ? 'scripts/smoke-armor.ts'
-            : 'scripts/smoke-equipment.ts',
+          process.argv.includes('--fleet')
+            ? 'scripts/smoke-fleet.ts'
+            : process.argv.includes('--armor')
+              ? 'scripts/smoke-armor.ts'
+              : 'scripts/smoke-equipment.ts',
           ...(process.argv.includes('--unlimited') ? ['--unlimited'] : []),
         ]
       : ['--import', 'tsx', '--test', '--test-concurrency=1', ...files];

@@ -85,12 +85,14 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Inventário individual, soma de peso e conquistas por personagem.
 - Mochila com 15 posições de equipamento persistidas, incluindo ombreiras, braçadeiras e pernas. Full plate entrega seis peças; demais armaduras entregam somente o peitoral. Objetos portáteis também podem ser segurados nas mãos. Antes de gerar uma nova arte,
   escolha quais itens equipados aparecem usando suas imagens como referência.
+  Capacetes podem aparecer com viseira aberta ou fechada.
   [Equipamentos e geração](docs/EQUIPMENT.md).
 - Mural: missões com data/hora e inscrições; próximas mesas aparecem no Início nas 24 horas anteriores, com aviso para o criador mestrar.
 - Conclusão pelo criador com resumo, progresso por missões, ouro por inscrito e gancho opcional. Recompensas e promoções são registradas uma única vez.
 - Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos da staff/admin.
 - Mundo com relevo cartográfico em Three.js, detalhe de solo/rocha, arraste elástico, zoom e nuvens em movimento, preenchendo a tela. A visão inicial usa 100%, equivalente ao antigo enquadramento de 142%; a silhueta fornecida pelo usuário define a geografia. Vinte e dois territórios têm demarcações com destaque ao passar o mouse e clique na superfície; mar contínuo ampliado, ilhotas, vulcão e tormenta complementam o cenário.
 - Reino do Norte abre uma área regional vazia e navegável em Canvas 2D. A conta autorizada pode enviar um fundo e compor sprites em oito direções. Não há névoa ou terreno predefinido. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
+- Barcos piratas em 3D percorrem o mar lentamente em direção às costas; a cada 30 segundos de animação visível, um kraken envolve e afunda um barco. Movimento reduzido pausa a navegação e os ataques.
 - Lore, Regras e House têm conteúdo inicial persistido no SQL.
 - Interface adaptável para desktop e celular, com tema exclusivamente escuro e menu retrátil com ícones medievais ilustrados.
 

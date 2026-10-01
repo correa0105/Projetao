@@ -1,4 +1,10 @@
-import { EQUIPMENT_LABELS, type ArtEquipment, type EquipmentSlot } from '../shared/equipment.js';
+import {
+  EQUIPMENT_LABELS,
+  isHelmet,
+  type ArtEquipment,
+  type EquipmentSlot,
+  type HelmetMode,
+} from '../shared/equipment.js';
 
 const wearing: Record<EquipmentSlot, string> = {
   head: 'Vestir na cabeça, na posição natural deste acessório.',
@@ -23,20 +29,26 @@ const wearing: Record<EquipmentSlot, string> = {
   belt: 'Vestir o cinto/bolsa na cintura, preso ao corpo.',
 };
 
-export function describeArtEquipment(item: ArtEquipment, index: number) {
-  const helmet =
-    item.slot === 'head' && /helmet|capacete|elmo/i.test(`${item.item_id} ${item.name}`);
+export function describeArtEquipment(
+  item: ArtEquipment,
+  index: number,
+  helmetMode: HelmetMode = 'closed',
+) {
+  const helmet = item.slot === 'head' && isHelmet(item);
   return {
     slot: item.slot,
     item_id: item.item_id,
     position: EQUIPMENT_LABELS[item.slot],
     item: item.name,
     reference_image: index + 3,
-    wearing: helmet
-      ? 'CAPACETE OBRIGATÓRIO: vestir o modelo selecionado na cabeça. A seleção do capacete tem prioridade sobre mostrar rosto/cabelo. Nunca omitir, carregar na mão ou pendurar nas costas. Respeitar cobertura e viseira da referência, mesmo se ocultar o rosto.' +
-        (item.item_id === 'plate-helmet'
-          ? ' Este capacete de placas é fechado: viseira fechada, cobrindo o rosto conforme a referência.'
-          : '')
-      : wearing[item.slot],
+    wearing:
+      helmet && helmetMode === 'open'
+        ? 'CAPACETE OBRIGATÓRIO ABERTO: vestir o mesmo casco selecionado na cabeça, com a viseira levantada/articulada para cima, deixando o rosto visível. A abertura tem prioridade sobre a viseira fechada da referência. Não remover o capacete, não carregar na mão nem nas costas; preservar materiais e formato do casco.'
+        : helmet
+          ? 'CAPACETE OBRIGATÓRIO: vestir o modelo selecionado na cabeça. A seleção do capacete tem prioridade sobre mostrar rosto/cabelo. Nunca omitir, carregar na mão ou pendurar nas costas. Respeitar cobertura e viseira da referência, mesmo se ocultar o rosto.' +
+            (item.item_id === 'plate-helmet'
+              ? ' Este capacete de placas é fechado: viseira fechada, cobrindo o rosto conforme a referência.'
+              : '')
+          : wearing[item.slot],
   };
 }

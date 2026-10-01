@@ -135,6 +135,8 @@ try {
   await page.getByRole('button', { name: 'Gerar imagem', exact: true }).click();
   const modal = page.getByRole('dialog');
   await expect(modal.locator('.art-equipment-choice')).toHaveCount(8);
+  await expect(modal.getByRole('combobox', { name: 'Como usar o capacete' })).toHaveValue('closed');
+  await modal.getByRole('combobox', { name: 'Como usar o capacete' }).selectOption('open');
   const reference = await sharp({
     create: { width: 32, height: 48, channels: 4, background: '#778899' },
   })
@@ -150,6 +152,11 @@ try {
   const jobResponse = await posted;
   expect(jobResponse.status()).toBe(202);
   const job = await jobResponse.json();
+  expect(jobResponse.request().postDataJSON().helmet_mode).toBe('open');
+  expect(
+    (await pool.query('SELECT helmet_mode FROM character_art_jobs WHERE id=$1', [job.id])).rows[0]
+      .helmet_mode,
+  ).toBe('open');
   const snapshots = await pool.query(
     'SELECT slot,image FROM character_art_equipment WHERE job_id=$1 ORDER BY slot',
     [job.id],

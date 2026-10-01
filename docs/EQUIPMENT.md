@@ -55,6 +55,10 @@ e vault. Compras, saldos e histórico permanecem no fluxo transacional existente
 Na aba Personagem, **Gerar imagem** / **Nova imagem** carrega os equipamentos e
 pré-seleciona aqueles com referência visual. Desmarque os itens que não devem
 aparecer. Nenhuma seleção gera roupa simples, sem inventar armadura ou armas.
+Ao selecionar um capacete, escolha **Capacete fechado** ou **Capacete aberto**.
+Aberto levanta a viseira e mostra o rosto mantendo o casco vestido; fechado
+abaixa a viseira conforme o modelo. A escolha fica salva em `helmet_mode`
+(migration 039), é validada no servidor e acompanha a fila até o gerador.
 Pedidos para criar personagens novos seguem o fluxo anterior: não possuem itens
 comprados para selecionar antes de sua criação.
 
@@ -78,4 +82,4 @@ seleção de referências, envio e desktop/celular. O teste do ilustrador usa um
 simulado para verificar anexos e instruções, sem gastar geração ou cota real.
 `npm run test:inventory` verifica o fluxo de transferências existente.
 `npm run test:equipment -- --armor` valida compra da full plate e cosméticos,
-os 15 espaços, as imagens dos itens, objetos nas mãos e referências na geração.
+os 15 espaços, as imagens dos itens, objetos nas mãos, referências e viseira aberta na geração.

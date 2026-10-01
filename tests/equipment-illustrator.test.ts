@@ -114,6 +114,20 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
       0,
     );
     assert.doesNotMatch(tiara.wearing, /CAPACETE OBRIGATÓRIO|viseira/);
+    const helmet = equipment.find((item) => item.slot === 'head')!;
+    assert.match(describeArtEquipment(helmet, 0, 'open').wearing, /viseira levantada/);
+    await generateCharacterArt({
+      id: randomUUID(),
+      reference,
+      race: 'Elfo',
+      class: 'Guerreiro',
+      character_id: randomUUID(),
+      equipment: [helmet],
+      helmet_mode: 'open',
+    });
+    const opened = JSON.parse(await readFile(capture, 'utf8'));
+    assert.match(opened.prompt, /CAPACETE OBRIGATÓRIO ABERTO/);
+    assert.doesNotMatch(opened.prompt, /Este capacete de placas é fechado/);
     await assert.rejects(readFile(captured.images[2].path), { code: 'ENOENT' });
   } finally {
     if (originalPath === undefined) delete process.env.PATH;

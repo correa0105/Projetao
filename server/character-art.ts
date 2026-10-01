@@ -3,7 +3,7 @@ import { z } from 'zod';
 import sharp from 'sharp';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { EQUIPMENT_SLOTS } from '../shared/equipment.js';
+import { EQUIPMENT_SLOTS, isHelmet } from '../shared/equipment.js';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import {
@@ -24,6 +24,7 @@ const requestSchema = z
       .min(1)
       .max(Math.ceil((ART_MAX_BYTES * 4) / 3) + 4),
     idempotency_key: uuid,
+    helmet_mode: z.enum(['open', 'closed']).default('closed'),
     equipment_slots: z
       .array(z.enum(EQUIPMENT_SLOTS))
       .max(EQUIPMENT_SLOTS.length)
@@ -172,17 +173,23 @@ export async function enqueueArt(userId: string, input: unknown) {
         equipment.push({ ...item, image: await normalizeArtImage(bytes) });
       }
     }
+    if (
+      data.helmet_mode === 'open' &&
+      !equipment.some((item) => item.slot === 'head' && isHelmet(item))
+    )
+      throw new AppError(400, 'Selecione um capacete equipado para escolher a viseira aberta.');
     const {
       rows: [job],
     } = await client.query(
-      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key)
-      VALUES($1,$2,$3,$4,$5) RETURNING id,status,character_id`,
+      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode)
+      VALUES($1,$2,$3,$4,$5,$6) RETURNING id,status,character_id`,
       [
         userId,
         data.character_id || null,
         data.creation ? JSON.stringify(data.creation) : null,
         reference,
         data.idempotency_key,
+        data.helmet_mode,
       ],
     );
     for (const item of equipment)

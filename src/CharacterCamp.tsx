@@ -161,6 +161,7 @@ export function CharacterCamp({
   const [deleteError, setDeleteError] = useState('');
   const [reference, setReference] = useState('');
   const [equipmentSlots, setEquipmentSlots] = useState<EquipmentSlot[]>([]);
+  const [helmetMode, setHelmetMode] = useState<'open' | 'closed'>('closed');
   const [equipmentReady, setEquipmentReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const key = useRef(crypto.randomUUID());
@@ -374,6 +375,7 @@ export function CharacterCamp({
                   reference,
                   idempotency_key: key.current,
                   equipment_slots: equipmentSlots,
+                  helmet_mode: equipmentSlots.includes('head') ? helmetMode : 'closed',
                 });
                 await onRefresh();
                 setEditing(null);
@@ -399,6 +401,8 @@ export function CharacterCamp({
               onChange={setEquipmentSlots}
               onReady={setEquipmentReady}
               disabled={busy}
+              helmetMode={helmetMode}
+              onHelmetModeChange={setHelmetMode}
             />
             {error && (
               <p className="form-error" role="alert">

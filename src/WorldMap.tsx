@@ -5,6 +5,7 @@ import type { AtlasMarker } from './atlas-types';
 import { createWorldRelief, WORLD_WIDTH, WORLD_HEIGHT } from './world-relief';
 import { createWorldClouds } from './world-clouds';
 import { createWorldSeascape } from './world-seascape';
+import { createWorldFleet } from './world-fleet';
 import './world-map.css';
 
 type View = { zoom: number; x: number; y: number };
@@ -73,6 +74,7 @@ export function WorldMap({
     let relief: Awaited<ReturnType<typeof createWorldRelief>> | undefined;
     let clouds: ReturnType<typeof createWorldClouds> | undefined;
     let seascape: ReturnType<typeof createWorldSeascape> | undefined;
+    let fleet: ReturnType<typeof createWorldFleet> | undefined;
     let hoveredId: string | null = null;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const pointers = new Map<number, { x: number; y: number }>();
@@ -311,6 +313,13 @@ export function WorldMap({
         relief?.update(reducedMotion.matches ? 0 : time);
         clouds?.update(reducedMotion.matches ? 0 : time / 1000);
         seascape?.update(reducedMotion.matches ? 0 : time / 1000);
+        fleet?.update(time / 1000, reducedMotion.matches);
+        if (fleet && viewport) {
+          const fleetState = fleet.state;
+          viewport.dataset.shipCount = String(fleetState.ships);
+          viewport.dataset.krakenAttacks = String(fleetState.attacks);
+          viewport.dataset.krakenActive = String(fleetState.attacking);
+        }
         renderer.render(scene, camera);
         lastDraw = time;
       }
@@ -721,6 +730,8 @@ export function WorldMap({
         scene.add(clouds.group);
         seascape = createWorldSeascape();
         scene.add(seascape.group);
+        fleet = createWorldFleet(result.sampleHeight);
+        scene.add(fleet.group);
         viewport.dataset.terrainVertices = String(result.vertexCount);
         renderer.shadowMap.needsUpdate = true;
         ready = true;
@@ -761,6 +772,7 @@ export function WorldMap({
       pointers.clear();
       clouds?.dispose();
       seascape?.dispose();
+      fleet?.dispose();
       relief?.dispose();
       light.shadow.dispose();
       scene.clear();

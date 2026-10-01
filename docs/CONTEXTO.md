@@ -1,8 +1,30 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Viseira e navegação marítima (01/10/2026)
+
+Personagem → geração oferece capacete fechado (viseira abaixada) ou aberto
+(viseira levantada, casco mantido na cabeça) quando um capacete está selecionado.
+Tiaras não mostram esse controle. `helmet_mode` é validado e persistido no pedido
+pela migration 039 e segue até o prompt do worker. Padrão fechado para pedidos
+antigos; modo aberto exige capacete selecionado. Não muda o item do inventário.
+
+Mundo possui oito pequenos barcos piratas modelados em Three.js, com casco,
+mastros, velas, cordame, bandeira e esteira discreta. `world-sea-routes.ts` usa
+o relevo real e as ilhotas para calcular água navegável com folga do casco e
+percursos até a costa, simplificados sem cortar terra. `world-fleet.ts` move os
+barcos a 0,035 unidade/s, com balanço lento e aproximação suave das rotas.
+A cada 30 segundos visíveis, um kraken emerge, envolve um barco com seis
+tentáculos articulados e o afunda em uma sequência de nove segundos; o barco
+retorna depois em outra rota com entrada gradual. Tempo pausa fora da visão e
+com movimento reduzido. Modelos não interferem nos cliques dos territórios.
+Partes estáticas dos barcos são agrupadas por material; geometrias/materiais
+são descartados ao sair do Mundo. Não há sprites ou imagem sobreposta ao mapa.
+Testes isolados: `npm run test:equipment -- --all`, `--armor` e `--fleet`
+(para GPU real, `ATLAS_BROWSER_GPU=1`).
+
 Correção de montagem da arte (01/10/2026): botas ficam imediatamente ao lado da
 calça na grade de equipamento. A seleção de capacete prevalece sobre manter
-rosto/cabelo visíveis; full plate usa viseira fechada conforme seu modelo.
+rosto/cabelo visíveis; full plate respeita a escolha de viseira aberta/fechada.
 `server/equipment-art.ts` descreve encaixe corporal por posição: um par de
 ombreiras ajustado aos ombros, sem repetir as ombreiras presentes na referência
 do peitoral nem desenhar peças soltas atrás da figura. O prompt geral foi corrigido
