@@ -9,6 +9,7 @@ import {
 import { Coins, Search, ShoppingCart, X, Plus } from 'lucide-react';
 import type { Character, Item } from './types';
 import { money } from '../shared/rules';
+import { shopWeight } from '../shared/armor-bundles';
 import { post } from './api';
 import { Modal } from './components';
 import content from './shop-content.json';
@@ -464,7 +465,7 @@ export function Shop({
                     <p>{item.description}</p>
                     <span className="shop-weight">
                       {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
-                      {Number(item.weight_lb).toLocaleString('pt-BR')} lb
+                      {shopWeight(item).toLocaleString('pt-BR')} lb
                     </span>
                     <footer>
                       <strong>

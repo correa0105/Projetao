@@ -3,6 +3,20 @@ import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
+import {
+  EQUIPMENT_SLOTS,
+  compatibleSlots,
+  twoHanded,
+  equipmentBlockMessage,
+} from '../shared/equipment.js';
+
+const equipSchema = z
+  .object({
+    character_id: z.string().uuid(),
+    slot: z.enum(EQUIPMENT_SLOTS),
+    item_id: z.string().min(1).max(100).nullable(),
+  })
+  .strict();
 
 const uuid = z.string().uuid();
 const transferSchema = z
@@ -27,21 +41,81 @@ async function lockStorage(client: PoolClient, userId: string, characterId: stri
 
 async function storageState(client: PoolClient, userId: string, characterId: string) {
   const inventory = await client.query(
-    `SELECT c.*,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
+    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
      JOIN characters p ON p.id=i.character_id
      WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY c.name`,
     [characterId, userId],
   );
   const vault = await client.query(
-    `SELECT c.*,v.quantity FROM account_vault v JOIN catalog_items c ON c.id=v.item_id
+    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,v.quantity FROM account_vault v JOIN catalog_items c ON c.id=v.item_id
      WHERE v.user_id=$1 ORDER BY c.name`,
     [userId],
   );
-  return { inventory: inventory.rows, vault: vault.rows };
+  const equipped = await client.query(
+    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id
+     JOIN characters p ON p.id=e.character_id WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY e.slot`,
+    [characterId, userId],
+  );
+  return { inventory: inventory.rows, vault: vault.rows, equipped: equipped.rows };
 }
 
 export function inventoryRouter() {
   const router = Router();
+  router.post('/inventory/equipment', async (req, res) => {
+    const data = equipSchema.parse(req.body),
+      userId = res.locals.user.id;
+    res.json(
+      await transaction(async (client) => {
+        await lockStorage(client, userId, data.character_id);
+        if (data.item_id === null) {
+          await client.query('DELETE FROM character_equipment WHERE character_id=$1 AND slot=$2', [
+            data.character_id,
+            data.slot,
+          ]);
+          return storageState(client, userId, data.character_id);
+        }
+        const {
+          rows: [item],
+        } = await client.query(
+          'SELECT c.*,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND i.item_id=$2 FOR UPDATE OF i',
+          [data.character_id, data.item_id],
+        );
+        if (!item) throw new AppError(409, 'Este item não está na mochila deste personagem.');
+        if (!compatibleSlots(item).includes(data.slot))
+          throw new AppError(400, 'Este item não pode ser equipado nessa posição.');
+        const {
+          rows: [used],
+        } = await client.query(
+          'SELECT count(*)::int AS total FROM character_equipment WHERE character_id=$1 AND item_id=$2 AND slot<>$3',
+          [data.character_id, data.item_id, data.slot],
+        );
+        if (used.total >= item.quantity)
+          throw new AppError(409, 'Todas as unidades deste item já estão equipadas.');
+        const { rows: equipped } = await client.query(
+          'SELECT c.*,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id WHERE e.character_id=$1',
+          [data.character_id],
+        );
+        const blocked = equipmentBlockMessage(data.slot, equipped);
+        if (blocked) throw new AppError(409, blocked);
+        if (data.slot === 'bracers' && item.id === 'plate-bracers')
+          await client.query('DELETE FROM character_equipment WHERE character_id=$1 AND slot=$2', [
+            data.character_id,
+            'hands',
+          ]);
+        if (data.slot === 'main_hand' && twoHanded(item))
+          await client.query('DELETE FROM character_equipment WHERE character_id=$1 AND slot=$2', [
+            data.character_id,
+            'off_hand',
+          ]);
+        await client.query(
+          `INSERT INTO character_equipment(character_id,slot,item_id) VALUES($1,$2,$3)
+        ON CONFLICT(character_id,slot) DO UPDATE SET item_id=excluded.item_id,equipped_at=now()`,
+          [data.character_id, data.slot, data.item_id],
+        );
+        return storageState(client, userId, data.character_id);
+      }),
+    );
+  });
   router.get('/characters/:id/storage', async (req, res) => {
     const id = uuid.parse(req.params.id),
       userId = res.locals.user.id;
@@ -88,6 +162,16 @@ export function inventoryRouter() {
           409,
           'Quantidade indisponível. Atualize o inventário e tente novamente.',
         );
+      if (data.direction === 'to_vault') {
+        const {
+          rows: [used],
+        } = await client.query(
+          'SELECT count(*)::int AS total FROM character_equipment WHERE character_id=$1 AND item_id=$2',
+          [data.character_id, data.item_id],
+        );
+        if (stock.quantity - used.total < data.quantity)
+          throw new AppError(409, 'Desequipe o item antes de guardá-lo no cofre.');
+      }
       const {
         rows: [destination],
       } = await client.query(

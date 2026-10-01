@@ -1,4 +1,5 @@
 import { transaction } from './db.js';
+import { grantPurchaseItems } from './purchase-grants.js';
 
 export class AppError extends Error {
   constructor(
@@ -51,17 +52,13 @@ export async function purchase(
       'UPDATE characters SET gold_cp=gold_cp-$1 WHERE id=$2 RETURNING gold_cp',
       [total, characterId],
     );
-    await client.query(
-      `INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,$3)
-      ON CONFLICT(character_id,item_id) DO UPDATE SET quantity=inventory.quantity+excluded.quantity`,
-      [characterId, itemId, quantity],
-    );
     const {
       rows: [order],
     } = await client.query(
       'INSERT INTO purchases(character_id,item_id,quantity,total_cp,idempotency_key) VALUES($1,$2,$3,$4,$5) RETURNING *',
       [characterId, itemId, quantity, total, key],
     );
+    await grantPurchaseItems(client, characterId, itemId, quantity, order.id);
     await client.query(
       "INSERT INTO achievements(character_id,code) VALUES($1,'first_purchase') ON CONFLICT DO NOTHING",
       [characterId],

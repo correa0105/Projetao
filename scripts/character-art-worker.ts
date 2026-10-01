@@ -61,6 +61,11 @@ try {
     });
     if (job) {
       try {
+        const { rows: equipment } = await pool.query(
+          'SELECT slot,item_id,name,image FROM character_art_equipment WHERE job_id=$1 ORDER BY slot',
+          [job.id],
+        );
+        job.equipment = equipment;
         const output = await generateCharacterArt(job);
         await completeArt(job.id, output);
         console.log(`Arte concluída: ${job.id}`);

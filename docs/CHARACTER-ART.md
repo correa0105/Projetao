@@ -10,6 +10,11 @@ com a geração nativa do Codex. Não há editor de aparência.
 - Até **dois personagens por conta**, contando criações em fila. Contas antigas
   com mais personagens mantêm todos os registros; não podem criar outros.
 - Até **duas imagens por personagem por mês civil UTC**, renovadas no dia 1.
+  Contas com liberação explícita em `character_art_allowances` não possuem esse
+  limite mensal; a interface informa **Geração de imagens sem limite**. Essa
+  liberação vale para todos os personagens da conta e é conferida no servidor.
+  Não altera os limites do provedor de geração nem permite duas imagens
+  simultâneas para o mesmo personagem.
   A imagem inicial também conta. Uma solicitação aceita reserva a cota; falhas
   liberam a tentativa. A data vem do PostgreSQL, nunca do navegador.
 - Cada envio de referência corresponde a uma geração. A referência é obrigatória
@@ -28,11 +33,16 @@ com a geração nativa do Codex. Não há editor de aparência.
 ## Agente e padrão visual
 
 O worker carrega sempre [CHARACTER-ART-PROMPT-v1.md](CHARACTER-ART-PROMPT-v1.md)
-e anexa duas referências em ordem: `docs/references/character-style-v1.png`
+e anexa as referências em ordem: `docs/references/character-style-v1.png`
 (estilo fornecido pelo usuário) e a referência privada do jogador (aparência).
 O estilo do mago não impõe seu cabelo ou rosto a outros personagens. A raça e a
 classe vêm da ficha validada. O agente recebe somente esses campos enumerados,
 não nome, biografia, IDs de usuário, conexão com banco ou credenciais.
+Em pedidos de personagens existentes, cada item marcado em **Equipamentos na imagem**
+acrescenta sua imagem do catálogo, acompanhada do nome e da posição. As referências
+são copiadas ao aceitar o pedido; trocar equipamentos depois não muda a fila.
+Os modelos dos itens devem seguir essas imagens, integrados à pintura do personagem
+com o estilo fixo da primeira referência. Consulte [EQUIPMENT.md](EQUIPMENT.md).
 
 O agente solicita PNG transparente, corpo inteiro sem cortes, ilustração
 semirrealista medieval. A padronização é feita pelas instruções e pela referência

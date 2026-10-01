@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import sharp from 'sharp';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { EQUIPMENT_SLOTS, isHelmet } from '../shared/equipment.js';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import {
@@ -21,6 +24,15 @@ const requestSchema = z
       .min(1)
       .max(Math.ceil((ART_MAX_BYTES * 4) / 3) + 4),
     idempotency_key: uuid,
+    helmet_mode: z.enum(['open', 'closed']).default('closed'),
+    equipment_slots: z
+      .array(z.enum(EQUIPMENT_SLOTS))
+      .max(EQUIPMENT_SLOTS.length)
+      .default([])
+      .refine(
+        (slots) => new Set(slots).size === slots.length,
+        'Não repita posições de equipamento.',
+      ),
   })
   .refine((data) => Boolean(data.character_id) !== Boolean(data.creation));
 const monthStart = "date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'";
@@ -75,11 +87,18 @@ export async function enqueueArt(userId: string, input: unknown) {
   const data = requestSchema.parse(input);
   if (data.creation && !data.creation.choices)
     throw new AppError(400, 'Complete as escolhas da ficha antes de gerar o personagem.');
+  if (data.creation && data.equipment_slots.length)
+    throw new AppError(400, 'Equipe os itens após criar o personagem.');
   // Normalize before taking locks; arbitrary base64 is never passed to the agent.
   if (!/^[A-Za-z0-9+/]+={0,2}$/.test(data.reference)) throw new AppError(400, 'Imagem inválida.');
   const reference = await normalizeArtImage(Buffer.from(data.reference, 'base64'));
   return transaction(async (client) => {
-    await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [userId]);
+    const {
+      rows: [account],
+    } = await client.query(
+      'SELECT u.id,COALESCE((SELECT unlimited FROM character_art_allowances a WHERE a.user_id=u.id),false) AS art_unlimited FROM "user" u WHERE u.id=$1 FOR UPDATE',
+      [userId],
+    );
     const previous = await client.query(
       'SELECT id,status,character_id FROM character_art_jobs WHERE user_id=$1 AND idempotency_key=$2',
       [userId, data.idempotency_key],
@@ -109,7 +128,7 @@ export async function enqueueArt(userId: string, input: unknown) {
         `SELECT count(*)::int AS used FROM character_art_jobs WHERE character_id=$1 AND status <> 'failed' AND created_at >= ${monthStart}`,
         [data.character_id],
       );
-      if (count.rows[0].used >= ART_MONTHLY_LIMIT)
+      if (!account?.art_unlimited && count.rows[0].used >= ART_MONTHLY_LIMIT)
         throw new AppError(409, 'Este personagem já usou as duas imagens deste mês.');
     } else {
       const {
@@ -126,19 +145,58 @@ export async function enqueueArt(userId: string, input: unknown) {
           'Cada conta pode ter até dois personagens, incluindo os que estão em preparação.',
         );
     }
+    const equipment: { slot: string; item_id: string; name: string; image: Buffer }[] = [];
+    if (data.character_id && data.equipment_slots.length) {
+      const { rows } = await client.query(
+        `SELECT e.slot,c.id AS item_id,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,c.image_path FROM character_equipment e
+        JOIN inventory i ON i.character_id=e.character_id AND i.item_id=e.item_id JOIN catalog_items c ON c.id=e.item_id
+        WHERE e.character_id=$1 AND e.slot=ANY($2::text[])`,
+        [data.character_id, data.equipment_slots],
+      );
+      if (rows.length !== data.equipment_slots.length)
+        throw new AppError(409, 'O equipamento mudou. Atualize as opções antes de gerar.');
+      for (const item of rows) {
+        // Catalog-owned local assets only. No remote URLs or client paths reach the worker.
+        if (!/^\/[a-zA-Z0-9/_-]+\.(png|webp|jpg|jpeg)$/.test(item.image_path || ''))
+          throw new AppError(400, `O item ${item.name} ainda não possui imagem de referência.`);
+        const path = item.image_path.slice(1);
+        let bytes: Buffer;
+        try {
+          bytes = await readFile(resolve('public', path));
+        } catch {
+          try {
+            bytes = await readFile(resolve('dist/client', path));
+          } catch {
+            throw new AppError(400, `A imagem de ${item.name} não está disponível.`);
+          }
+        }
+        equipment.push({ ...item, image: await normalizeArtImage(bytes) });
+      }
+    }
+    if (
+      data.helmet_mode === 'open' &&
+      !equipment.some((item) => item.slot === 'head' && isHelmet(item))
+    )
+      throw new AppError(400, 'Selecione um capacete equipado para escolher a viseira aberta.');
     const {
       rows: [job],
     } = await client.query(
-      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key)
-      VALUES($1,$2,$3,$4,$5) RETURNING id,status,character_id`,
+      `INSERT INTO character_art_jobs(user_id,character_id,creation,reference,idempotency_key,helmet_mode)
+      VALUES($1,$2,$3,$4,$5,$6) RETURNING id,status,character_id`,
       [
         userId,
         data.character_id || null,
         data.creation ? JSON.stringify(data.creation) : null,
         reference,
         data.idempotency_key,
+        data.helmet_mode,
       ],
     );
+    for (const item of equipment)
+      await client.query(
+        'INSERT INTO character_art_equipment(job_id,slot,item_id,name,image) VALUES($1,$2,$3,$4,$5)',
+        [job.id, item.slot, item.item_id, item.name, item.image],
+      );
     return job;
   });
 }
@@ -279,6 +337,7 @@ export function characterArtRouter() {
 }
 
 export const characterListSql = `SELECT c.*,
+  EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited) AS art_unlimited,
   (SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,
   (SELECT count(*)::int FROM character_art_jobs j WHERE j.character_id=c.id AND j.status <> 'failed' AND j.created_at >= ${monthStart}) AS art_used,
   EXISTS(SELECT 1 FROM character_art_jobs j WHERE j.character_id=c.id AND j.status IN ('queued','running')) AS art_pending

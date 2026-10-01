@@ -1,5 +1,224 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Capa solta e revisão visual antes de salvar (01/10/2026)
+
+Direção obrigatória para capa: manto DESDOBRADO sobre a face externa/superior
+das duas ombreiras e caindo solto sobre os braços superiores. Nunca tecido
+enrolado em braço/cotovelo/antebraço/pulso, faixa, manga ou laço. Referência de
+inventário dobrada fornece material/bordado/fecho, não caimento; referência de
+aparência fornece identidade, não roupa ou ordem de camadas.
+
+Todas as novas gerações passam por revisão visual separada via Codex antes de
+`completeArt`. Verifica sobreposição, objetos cortados/duplicados, mãos extras
+e, se há capa selecionada, cobertura das ombreiras e ausência de tecido enrolado.
+Resultado reprovado é a única referência de uma edição localizada junto às falhas;
+máximo de duas correções (três imagens no total). Sem aprovação, o job falha,
+preserva cota e retrato anterior. Avaliação continua probabilística. Até três itens
+podem seguir individuais; mais itens usam prancha sem ultrapassar cinco referências.
+A correção preserva a figura e altera somente as regiões incorretas, sem reenviar
+referências de vestimenta que induziram o defeito. Arquivos temporários
+e resultado da revisão são descartados. Worker precisa reiniciar após atualização.
+
+## Camada superior prevalece — direção vigente (01/10/2026)
+
+Usuário revisou explicitamente a ordem da capa: passa POR CIMA da ombreira e
+do braço, ocultando as partes cobertas pelo tecido. Todo item que sobrepõe outro
+prevalece, mesmo quando a peça encoberta está marcada na seleção da geração.
+Não trazer peças de baixo à frente para exibi-las, atravessar camadas, recortar
+ou duplicar objetos. Regra sincronizada no prompt fixo, worker e descrição da
+capa. Substitui a orientação anterior de capa sob as ombreiras.
+
+## Roupa básica na geração inicial (01/10/2026)
+
+Prompt fixo substitui vestimenta coerente com a classe por túnica/camisa simples,
+calça e calçados simples. Classe não fornece armas, armaduras, capacetes ou
+acessórios visuais; referências de estilo/aparência também não acrescentam
+equipamentos. Somente itens explicitamente selecionados do inventário entram
+nas gerações posteriores. Worker lê o prompt do disco a cada novo pedido.
+
+## Imagem da capa e ordem física das camadas (01/10/2026)
+
+Cosmético Capa de viajante apontava para `cloak-of-invisibility.png`, inexistente.
+Catálogo corrigido para a arte existente `cloak-of-protection.png`; preservados
+ID, preço, peso e caráter cosmético sem efeitos mágicos. Seed atualiza loja e
+inventário sem alterar compras. Smoke verifica carregamento das cinco artes de
+Cosméticos. A ordem da capa foi revista na seção "Camada superior prevalece";
+objetos encobertos permanecem por baixo sem atravessar camadas, trazer acessórios
+à frente, recortar o objeto superior ou interpenetrar volumes. Instruções no
+prompt fixo, no worker e na descrição da capa; vale para novas gerações.
+
+## Acabamento da frota e kraken sem cabeça (01/10/2026)
+
+Removidas cabeça, olhos e onda circular do ataque; kraken aparece somente por
+seis tentáculos. Superfícies contínuas, afiladas e animadas substituem os cilindros
+visíveis; ventosas em duas fileiras e pele com manchas discretas e brilho úmido.
+Barcos recebem madeira com veios/juntas, velas com trama e forma mais trabalhada,
+metal envelhecido, linha d'água escura, janelas de popa e canhões laterais. Detalhes
+calculados no material e modelados no 3D; nenhum sprite ou imagem sobreposta.
+Mantidos tamanho dos barcos, rotas, golpes sem giro, mastros quebrando, destroços,
+afundamento e respingos locais dos golpes. Recursos reutilizados e descartados
+ao sair do mapa. Testes verificam remoção da cabeça/onda e ciclo da animação.
+
+## Oclusão natural e integridade dos objetos (01/10/2026)
+
+Anéis e acessórios selecionados podem ficar totalmente invisíveis quando
+encobertos por escudo, luva, arma, roupa ou corpo. Seleção não obriga mostrar
+cada detalhe; não forçar pose, deslocar anel, ampliar acessórios ou criar dedos.
+Escudos e objetos segurados devem ser únicos e íntegros, sem recortes, buracos,
+fragmentos separados ou duplicações para revelar o acessório atrás deles.
+Enquadramento reserva margem para não cortar objetos. Regra presente no prompt
+fixo, nas instruções do worker e nas descrições de mãos/anéis; vale para novas
+gerações. Teste de integração verifica envio com escudo e anel selecionados.
+
+## Ataque desordenado sem giro (01/10/2026)
+
+Removida a curva angular comum que dava aos seis braços aparência de hélice.
+Cada tentáculo agora dobra em uma faixa radial fixa, com balanço lateral curto,
+ângulo inicial irregular e golpe em instante próprio, sem sequência circular.
+Frequências e fases da agitação final também são independentes. Casco continua
+inclinando com os impactos, mastros cedem, madeira salta e barco afunda como antes.
+Teste acompanha as dobras durante toda a sequência e impede órbita dos braços.
+
+## Correção da geração com muitos equipamentos (01/10/2026)
+
+Reprodução real identificou recusa de dez referências pela ferramenta nativa,
+que informou limite de cinco caminhos. Estilo e aparência usam duas posições.
+Até dois equipamentos seguem em imagens individuais; acima disso, o worker
+monta uma única prancha de todos os itens, numerada e sem cortar os modelos.
+Descrições usam `reference_image: 3` e `reference_panel` para associar cada
+posição ao painel. A prancha serve apenas de referência; saída continua uma
+figura vestida, sem grade, etiquetas ou peças soltas. Mantidas escolhas de
+capacete, imagem do inventário, cota preservada em falhas e descarte de arquivos
+de referência após execução. Testes impõem máximo de cinco anexos e verificam
+as quinze posições na prancha. Reiniciar o worker no host após atualizar código.
+Validação: 36 testes isolados aprovados e geração nativa real concluída com os
+oito equipamentos do pedido que falhou; PNG vertical 1024 × 1536 validado pelo
+mesmo processamento do servidor. Worker local reiniciado com a correção.
+
+## Descida agitada do kraken (01/10/2026)
+
+Final do ataque mantém os tentáculos ativos: soltam o casco, abrem lateralmente
+e recebem dobras que percorrem cada braço com frequências e fases diferentes.
+Pontas levantam e batem na superfície durante a submersão, com respingos locais.
+Corpo desce gradualmente e braços recolhem nos últimos instantes; ondas e
+madeira flutuante permanecem na altura da água. Mantidos golpes iniciais,
+tamanho dos barcos, duração de nove segundos e pausa por movimento reduzido.
+
+## Golpes do kraken e barcos menores (01/10/2026)
+
+Barcos reduzidos de escala 0,85 para 0,75 (aproximadamente 12%). O kraken levanta
+os braços e desfere três golpes alternados, sincronizados com inclinação e recuo
+do casco, respingos e doze fragmentos de madeira. Os mastros têm pivôs próprios
+e cedem após os golpes; o barco mantém o tamanho enquanto afunda fisicamente.
+Madeira flutua brevemente antes de desaparecer. Mantidos oito barcos, rotas
+costeiras lentas, intervalo de 30 segundos e sequência de nove segundos.
+Mastros e esteiras são restaurados quando o barco retorna. Geometrias reutilizadas,
+partes agrupadas por material e respingos instanciados, sem criação de malhas
+durante a animação. Testes cobrem impacto, destroços, mastros e recuperação.
+
+## Viseira e navegação marítima (01/10/2026)
+
+Personagem → geração oferece capacete fechado (viseira abaixada) ou aberto
+(viseira levantada, casco mantido na cabeça) quando um capacete está selecionado.
+Tiaras não mostram esse controle. `helmet_mode` é validado e persistido no pedido
+pela migration 039 e segue até o prompt do worker. Padrão fechado para pedidos
+antigos; modo aberto exige capacete selecionado. Não muda o item do inventário.
+
+Mundo possui oito pequenos barcos piratas modelados em Three.js, com casco,
+mastros, velas, cordame, bandeira e esteira discreta. `world-sea-routes.ts` usa
+o relevo real e as ilhotas para calcular água navegável com folga do casco e
+percursos até a costa, simplificados sem cortar terra. `world-fleet.ts` move os
+barcos a 0,035 unidade/s, com balanço lento e aproximação suave das rotas.
+A cada 30 segundos visíveis, um kraken emerge, envolve um barco com seis
+tentáculos articulados e o afunda em uma sequência de nove segundos; o barco
+retorna depois em outra rota com entrada gradual. Tempo pausa fora da visão e
+com movimento reduzido. Modelos não interferem nos cliques dos territórios.
+Partes estáticas dos barcos são agrupadas por material; geometrias/materiais
+são descartados ao sair do Mundo. Não há sprites ou imagem sobreposta ao mapa.
+Testes isolados: `npm run test:equipment -- --all`, `--armor` e `--fleet`
+(para GPU real, `ATLAS_BROWSER_GPU=1`).
+
+Correção de montagem da arte (01/10/2026): botas ficam imediatamente ao lado da
+calça na grade de equipamento. A seleção de capacete prevalece sobre manter
+rosto/cabelo visíveis; full plate respeita a escolha de viseira aberta/fechada.
+`server/equipment-art.ts` descreve encaixe corporal por posição: um par de
+ombreiras ajustado aos ombros, sem repetir as ombreiras presentes na referência
+do peitoral nem desenhar peças soltas atrás da figura. O prompt geral foi corrigido
+para não contradizer a cobertura do capacete. As instruções devem ser passadas
+ao prompt da ferramenta de geração; CLI simulado verifica todas as referências
+do conjunto. O worker fornece os caminhos locais de estilo, aparência e equipamentos
+(em prancha numerada quando há mais de duas peças) e exige `referenced_image_paths`
+na ferramenta. A geração continua probabilística e não há verificação automática
+semântica do resultado. Artes concluídas anteriormente não são regeneradas.
+
+Correção visual de 01/10/2026: somente as peças de full plate seguem a arte da
+armadura. Luvas cosméticas de couro, colar de prata, tiara de prata e charuto de
+tabaco têm designs independentes, gerados sem referência à armadura, sem bordas
+douradas, rebites ou flores-de-lis. Novos arquivos `*-v2.png` em
+`public/shop/equipment`, com referências atualizadas no catálogo; versões antigas
+preservadas. Prompts em [EQUIPMENT-ART.md](EQUIPMENT-ART.md).
+
+## Conjunto de placas, cosméticos e objetos nas mãos (01/10/2026)
+
+Mochila possui 15 posições: acrescentadas ombreiras, braçadeiras e calça/pernas.
+Full plate comprada entrega seis itens independentes: peitoral, capacete,
+braçadeiras com luvas, calça, botas e ombreiras. Demais armaduras não entregam
+peças extras. Preço do conjunto permanece 1.500 PO; peso de 65 lb é distribuído
+nas peças. Migration 038 captura armaduras antigas de mochila/cofre e seed entrega
+suas peças uma única vez. `purchase_item_grants` audita novas entregas nas mesmas
+transações de checkout e compra individual, preservando idempotência e saldo.
+
+Catálogo soma aos 65 originais cinco cosméticos sem magia (capa, colar, tiara,
+luvas, botas) e charuto, totalizando 71 registros ativos. Cinco peças de placas
+ficam inativas para compra avulsa, mas podem ser equipadas/transferidas. Extensão
+portátil em `data/equipment-catalog.json`, artes transparentes em
+`public/shop/equipment` e prompts em [EQUIPMENT-ART.md](EQUIPMENT-ART.md).
+Tocha, lanterna, corda, gancho, charuto e outros objetos portáteis podem ocupar
+as mãos. Braçadeiras de placas já cobrem as luvas e impedem outro par. Equipar
+continua sem aplicar CA/bônus. As novas posições entram na seleção de referências
+da arte. Build, 33 testes isolados e smoke de placas/cosméticos desktop/mobile
+aprovados. Comandos e contratos em [EQUIPMENT.md](EQUIPMENT.md).
+
+Placas do mural: fixações superiores ficam estáticas; a arte é renderizada em
+camadas recortadas de pinos, correntes e placa. O balanço inclina as correntes
+a partir da fixação e desloca placa/texto juntos, sem mover os pinos nem deformar
+a madeira. Preservado reduced-motion (01/10/2026).
+
+Espaços de equipamento agora usam o mesmo tom escuro e sombra interna dos
+quadrados vazios da mochila. Ícones SVG específicos por posição (capacete,
+armadura, espada, escudo, anéis, colar, capa, luvas, botas, mochila e bolsa)
+substituem caixas e símbolos genéricos (01/10/2026).
+
+Equipamentos usam o mesmo fundo da mochila/cofre e aceitam arrastar itens livres
+da mochila para posições compatíveis. Categoria errada mostra aviso por 5 segundos
+e não altera o inventário; itens do cofre exigem transferência prévia. As listas
+continuam disponíveis no celular e teclado (01/10/2026).
+
+Avisos de erro fora do formulário na aba Personagem, incluindo cota mensal,
+desaparecem automaticamente após 5 segundos (01/10/2026). Erros dentro do
+formulário continuam disponíveis para corrigir o envio.
+
+## Liberação de imagens por conta (01/10/2026)
+
+Por solicitação explícita, a conta Pai do Cris possui gerações sem limite mensal
+do jogo. Migration 037 cria `character_art_allowances`, configurada diretamente
+no banco para contas autorizadas; nenhuma rota pública concede a permissão.
+Servidor e Personagem respeitam `art_unlimited` para todos os personagens da conta.
+Demais contas mantêm duas imagens por personagem/mês. Limites do provedor, posse,
+idempotência e uma geração em andamento por personagem continuam valendo.
+
+## Equipamentos e referências da arte (01/10/2026)
+
+Mochila possui 15 posições persistidas em `character_equipment` (migrations 036/038).
+Equipar reserva unidades do inventário; a grade mostra unidades livres, o peso total
+continua incluindo as equipadas e o cofre exige desequipar essas unidades antes de
+transferir. Personagem permite marcar equipamentos antes de gerar arte; o servidor
+salva as imagens reais do catálogo em `character_art_equipment`, e o worker anexa
+essas referências com a posição de cada item, preservando o padrão visual fixo.
+Não aplicar bônus mágicos/CA automaticamente nem conceder equipamento inicial de
+ficha como compra. Capacetes de placas são entregues com a full plate; tiaras estão em Cosméticos. Detalhes e testes em
+[EQUIPMENT.md](EQUIPMENT.md).
+
 ## Loja ilustrada — exportação de 29/09/2026
 
 Por pedido explícito do usuário, o catálogo ativo foi substituído pelos **65 itens** da pasta fornecida Loja-Alvorada-Exportacao-20260929-094455. Fonte portátil em `data/shop-export/loja.json`, pesos em `PESOS.md`, imagens originais em `public/shop/items` (hashes conferidos). Dez categorias preservadas. Esta decisão substitui a antiga whitelist de oito itens; não representa implementação de suplementos ou dos efeitos mágicos descritos.

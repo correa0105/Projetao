@@ -609,3 +609,32 @@
  .notice-wood-menu{left:36.6%;}
 }
 .mission-rank-label { display: flex; align-items: center; gap: 7px; color: #d8bd87; font-size: 12px; }
+
+/* As fixações não participam do balanço. Duas correntes sustentam a placa horizontal. */
+.notice-sign-mission { --sign-pin-cut:17%; --sign-board-cut:58%; --sign-chain-length:3.28cqw; }
+.notice-sign-hook { --sign-pin-cut:14%; --sign-board-cut:67%; --sign-chain-length:5.618cqw; }
+.notice-sign-event { --sign-pin-cut:23%; --sign-board-cut:52%; --sign-chain-length:1.943cqw; }
+:root .notice-wood-menu button.notice-hanging-sign { animation:none; transform:none; }
+.notice-sign-fixed-pins { clip-path:inset(0 0 calc(100% - var(--sign-pin-cut)) 0); }
+.notice-sign-moving-chains {
+  clip-path:inset(var(--sign-pin-cut) 0 calc(100% - var(--sign-board-cut)) 0);
+  transform-origin:50% var(--sign-pin-cut);
+}
+.notice-sign-moving-board { clip-path:inset(var(--sign-board-cut) 0 0 0); }
+.notice-hanging-sign:is(:hover,:focus-visible)>.notice-sign-moving-chains { animation:notice-chain-swing 1.4s ease-out; }
+.notice-hanging-sign:is(:hover,:focus-visible)>.notice-sign-moving-board,
+.notice-hanging-sign:is(:hover,:focus-visible)>span { animation:notice-board-swing 1.4s ease-out; }
+@keyframes notice-chain-swing {
+  0%,100% { transform:skewX(0); } 18% { transform:skewX(4deg); }
+  38% { transform:skewX(-3deg); } 58% { transform:skewX(2deg); } 78% { transform:skewX(-1deg); }
+}
+@keyframes notice-board-swing {
+  0%,100% { transform:translateX(0); } 18% { transform:translateX(calc(var(--sign-chain-length) * .06993)); }
+  38% { transform:translateX(calc(var(--sign-chain-length) * -.05241)); }
+  58% { transform:translateX(calc(var(--sign-chain-length) * .03492)); }
+  78% { transform:translateX(calc(var(--sign-chain-length) * -.01746)); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .notice-hanging-sign:is(:hover,:focus-visible)>img,
+  .notice-hanging-sign:is(:hover,:focus-visible)>span { animation:none; }
+}
