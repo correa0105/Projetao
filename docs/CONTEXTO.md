@@ -1,5 +1,14 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Descida agitada do kraken (01/10/2026)
+
+Final do ataque mantém os tentáculos ativos: soltam o casco, abrem lateralmente
+e recebem dobras que percorrem cada braço com frequências e fases diferentes.
+Pontas levantam e batem na superfície durante a submersão, com respingos locais.
+Corpo desce gradualmente e braços recolhem nos últimos instantes; ondas e
+madeira flutuante permanecem na altura da água. Mantidos golpes iniciais,
+tamanho dos barcos, duração de nove segundos e pausa por movimento reduzido.
+
 ## Golpes do kraken e barcos menores (01/10/2026)
 
 Barcos reduzidos de escala 0,85 para 0,75 (aproximadamente 12%). O kraken levanta

@@ -54,6 +54,8 @@ try {
   await page.screenshot({ path: 'test-results/fleet-kraken.png' });
   await page.waitForTimeout(1900);
   await page.screenshot({ path: 'test-results/fleet-wreckage.png' });
+  await page.waitForTimeout(1100);
+  await page.screenshot({ path: 'test-results/fleet-kraken-descent.png' });
   await expect(map).toHaveAttribute('data-kraken-active', 'false', { timeout: 12000 });
   const attacks = await map.getAttribute('data-kraken-attacks');
   await page.emulateMedia({ reducedMotion: 'reduce' });

@@ -59,7 +59,23 @@ test('oito barcos lentos, kraken a cada 30 s, afundamento e movimento reduzido',
     );
     advance(34.4, 36);
     assert.ok(fleet.group.getObjectByName('pirate-ship-0')!.position.z < -0.5);
-    advance(36.1, 39.3);
+    advance(36.1, 37.2);
+    const kraken = fleet.group.getObjectByName('sea-kraken')!;
+    const tips = Array.from({ length: 6 }, (_, i) =>
+      kraken.getObjectByName(`kraken-arm-${i}-joint-12`)!,
+    );
+    const previousTips = tips.map((tip) => tip.position.clone());
+    assert.equal(fleet.group.getObjectByName('kraken-impact-splash')!.visible, true);
+    advance(37.3, 37.5);
+    assert.ok(
+      tips.some((tip, i) => tip.position.distanceTo(previousTips[i]) > 0.1),
+      'braços devem se dobrar durante a descida, sem translação rígida',
+    );
+    assert.ok(
+      tips.some((tip) => tip.position.z + kraken.position.z > 0.1),
+      'pontas ainda se levantam acima da água',
+    );
+    advance(37.6, 39.3);
     assert.equal(fleet.state.attacking, false);
     assert.equal(fleet.group.getObjectByName('sea-kraken')!.visible, false);
     assert.equal(boat.getObjectByName('breakable-mast')!.rotation.y, 0);
