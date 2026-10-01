@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
-import { stableGear } from '../shared/stable-gear';
+import { stableGear, stableGearComments } from '../shared/stable-gear';
 import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
@@ -18,7 +18,6 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
   const coats = mountCoats[mount.id];
   const [equipment, setEquipment] = useState<string[]>([]);
   const saddle = equipment.find(id => id === 'saddle-riding' || id === 'saddle-military');
-  const selectedSaddle = stableGear.find(g => g.id === saddle);
   const armor = equipment.find(id => id.startsWith('barding-'));
   const saddleImage = saddle ? `/stable/saddled/${mount.id}-${coat}-${saddle.replace('saddle-','')}.png` : '';
   const image = armor
@@ -32,7 +31,7 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
       const slot = stableGear.find(g => g.id === x)?.slot;
       return item.slot === 'feed' ? slot !== 'feed' : slot === 'feed';
     }),id].sort());
-    setSpeech(item.description);
+    setSpeech(equipment.includes(id) ? 'Sem esse, então. O cavalo agradece o peso a menos; eu vou guardar de volta.' : stableGearComments[item.id]);
   }
   const [confirm, setConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -119,11 +118,11 @@ export function Stable({ character, onPurchased }: { character?: Character; onPu
         <span className="stable-kicker">BESTA · {mount.size.toUpperCase()}</span>
         <h3>{mount.name}</h3>
         <p>{mount.description}</p>
-        {selectedSaddle && <section className="stable-saddle-description" aria-label="Sela selecionada">
-          <h3>{selectedSaddle.name}</h3>
-          <p>{selectedSaddle.description}</p>
-          <p>{money(selectedSaddle.price_cp)} PO · {selectedSaddle.weight} lb</p>
-        </section>}
+        {chosenGear.map(g => <section key={g.id} className="stable-saddle-description" aria-label={g.slot === 'saddle' ? 'Sela selecionada' : g.slot === 'armor' ? 'Barda selecionada' : 'Ração selecionada'}>
+          <h3>{g.name}</h3>
+          <p>{g.description}</p>
+          <p>{money(g.price_cp)} PO · {g.weight} lb</p>
+        </section>)}
         <dl>{[['Deslocamento', `${mount.speed} pés (${mount.speed * .3} m)`], ['Capacidade de carga', `${mount.capacity} lb`], ['Classe de armadura', mount.ac], ['Pontos de vida', mount.hp]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
         <p className="stable-rule-note">Equipamentos selecionados são cobrados à parte no conjunto. A montaria precisa ser maior que o cavaleiro. Dados para consulta durante a sessão.</p>
 

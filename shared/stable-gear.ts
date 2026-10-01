@@ -8,6 +8,14 @@ export const stableGear = [
   { id:'feed', name:'Ração · 1 dia', slot:'feed', price_cp:5, weight:10, description:'Uma porção diária de alimento para a montaria. Exibida ao lado do animal.' },
 ] as const;
 export type StableGearId = typeof stableGear[number]['id'];
+export const stableGearComments: Record<StableGearId, string> = {
+  'saddle-riding': 'Couro bem curtido. Seu traseiro vai agradecer antes de você chegar à primeira taverna.',
+  'saddle-military': 'Feita para segurar o cavaleiro. O orgulho, quando você cair, ainda não consegui prender.',
+  'barding-leather': 'Couro macio e resistente. Só não diga ao cavalo de onde veio; ele faz perguntas demais.',
+  'barding-chain': 'Com essa malha, ele chega fazendo música. Emboscada discreta vai ter que esperar.',
+  'barding-plate': 'Todo esse aço! Falta só uma bandeira para o cavalo se declarar uma fortaleza.',
+  'feed': 'Aveia da boa. Se ele começar a seguir você por amor, confira se não é o cheiro do saco.',
+};
 // Fits are measured against each animal's 1536×1024 artwork. Keep the
 // equipment aspect ratio; the neck/mane occlusion is rendered above the tack.
 export type TackPlacement = { x:number; y:number; width:number; height:number; angle:number };
