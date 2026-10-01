@@ -44,6 +44,8 @@ export type Details = {
   achievements: { code: string; unlocked_at: string }[];
   history: { id: string; name: string; quantity: number; total_cp: number; created_at: string }[];
 };
+export type EquippedItem = Item & { slot: import('../shared/equipment').EquipmentSlot };
+export type StorageState = { inventory: Item[]; vault: Item[]; equipped: EquippedItem[] };
 export type Post = {
   paper_style: import('../shared/notice-board').PaperStyle;
   paper_summary: string;

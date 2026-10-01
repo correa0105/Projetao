@@ -16,6 +16,7 @@
     "test:browser": "tsx scripts/smoke-browser.ts",
     "test:sheet": "node scripts/test-sheet-isolated.mjs",
     "test:inventory": "node scripts/test-inventory-isolated.mjs",
+    "test:equipment": "node scripts/test-equipment-isolated.mjs",
     "test:editor": "tsx scripts/smoke-editor.ts",
     "test:atlas": "tsx scripts/smoke-atlas.ts",
     "setup": "node scripts/setup.mjs",

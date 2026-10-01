@@ -1,6 +1,8 @@
 import { useEffect, useId, useRef, useState, type DragEvent } from 'react';
 import { Sword, Shield, Package, ArrowUpRight, ArrowDownUp, Archive } from 'lucide-react';
-import type { Character, Details, Item } from './types';
+import type { Character, Details, Item, StorageState } from './types';
+import type { EquipmentSlot } from '../shared/equipment';
+import { EquipmentPanel } from './EquipmentPanel';
 import { money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
 import { Modal } from './components';
@@ -12,12 +14,30 @@ const number = (value: number) =>
 const itemIcon = (item: Item) =>
   item.category === 'Armas' ? Sword : item.category === 'Armaduras' ? Shield : Package;
 type Place = 'backpack' | 'vault';
-type Storage = { inventory: Item[]; vault: Item[] };
+type Storage = StorageState;
 type Transfer = { item: Item; from: Place; quantity: number; key: string };
 const dragType = 'application/x-alvorada-inventory';
+function availableInventory(storage: Storage) {
+  return storage.inventory
+    .map((item) => ({
+      ...item,
+      quantity:
+        (item.quantity || 0) -
+        storage.equipped.filter((equipped) => equipped.id === item.id).length,
+    }))
+    .filter((item) => item.quantity > 0);
+}
 
-function InventorySlot({ item, place, busy, onDrag, onTransfer }: {
-  item: Item; place: Place; busy: boolean;
+function InventorySlot({
+  item,
+  place,
+  busy,
+  onDrag,
+  onTransfer,
+}: {
+  item: Item;
+  place: Place;
+  busy: boolean;
   onDrag: (value: { id: string; from: Place } | null) => void;
   onTransfer: (id: string, from: Place) => void;
 }) {
@@ -27,24 +47,37 @@ function InventorySlot({ item, place, busy, onDrag, onTransfer }: {
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const changingPopover = useRef(false);
   const Icon = itemIcon(item);
-  function cancelHide() { clearTimeout(timer.current); }
+  function cancelHide() {
+    clearTimeout(timer.current);
+  }
   function hide() {
     cancelHide();
     if (changingPopover.current) return;
     changingPopover.current = true;
-    try { balloon.current?.hidePopover(); } finally { changingPopover.current = false; }
+    try {
+      balloon.current?.hidePopover();
+    } finally {
+      changingPopover.current = false;
+    }
   }
   function show() {
     cancelHide();
-    const node = balloon.current, button = trigger.current;
+    const node = balloon.current,
+      button = trigger.current;
     if (!node || !button || busy || changingPopover.current) return;
     changingPopover.current = true;
-    try { if (!node.matches(':popover-open')) node.showPopover(); }
-    finally { changingPopover.current = false; }
+    try {
+      if (!node.matches(':popover-open')) node.showPopover();
+    } finally {
+      changingPopover.current = false;
+    }
     const rect = button.getBoundingClientRect();
-    node.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - node.offsetWidth - 12)) + 'px';
-    node.style.top = (rect.bottom + 8 + node.offsetHeight <= window.innerHeight - 12
-      ? rect.bottom + 8 : Math.max(12, rect.top - node.offsetHeight - 8)) + 'px';
+    node.style.left =
+      Math.max(12, Math.min(rect.left, window.innerWidth - node.offsetWidth - 12)) + 'px';
+    node.style.top =
+      (rect.bottom + 8 + node.offsetHeight <= window.innerHeight - 12
+        ? rect.bottom + 8
+        : Math.max(12, rect.top - node.offsetHeight - 8)) + 'px';
   }
   function scheduleHide() {
     cancelHide();
@@ -53,46 +86,96 @@ function InventorySlot({ item, place, busy, onDrag, onTransfer }: {
     }, 180);
   }
   useEffect(() => {
-    window.addEventListener('scroll', hide, true);
+    const scroll = (event: Event) => {
+      // Keep the details open when scrolling their contents to reach the transfer button.
+      if (event.target instanceof Node && balloon.current?.contains(event.target)) return;
+      hide();
+    };
+    window.addEventListener('scroll', scroll, true);
     window.addEventListener('resize', hide);
     return () => {
       clearTimeout(timer.current);
-      window.removeEventListener('scroll', hide, true);
+      window.removeEventListener('scroll', scroll, true);
       window.removeEventListener('resize', hide);
     };
   }, []);
-  return <div className="loot-slot-wrap" onMouseEnter={show} onMouseLeave={scheduleHide}
-    onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) hide(); }}>
-    <button ref={trigger} className="loot-slot" aria-label={item.name + ', quantidade ' + (item.quantity ?? 0)}
-      aria-controls={id} aria-haspopup="dialog" draggable={!busy} disabled={busy}
-      onFocus={show} onClick={show}
-      onDragStart={(event) => {
-        hide();
-        event.dataTransfer.setData(dragType, item.id);
-        event.dataTransfer.effectAllowed = 'move';
-        onDrag({ id: item.id, from: place });
-      }} onDragEnd={() => onDrag(null)}>
-      {item.image_path ? <img className="loot-item-art" src={item.image_path} alt="" /> : <Icon size={23} aria-hidden="true" />}
-      <span className="loot-slot-name">{item.name}</span>
-      <span className="loot-quantity">{item.quantity ?? 0}</span>
-    </button>
-    <div ref={balloon} id={id} popover="auto" role="dialog" aria-label={'Detalhes de ' + item.name}
-      className="loot-item-detail loot-item-balloon" onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
-      <span className="loot-category">{item.category}</span>
-      <h3>{item.name}</h3>
-      <p className="loot-original">{item.original_name}</p>
-      <p>{item.description}</p>
-      <dl>
-        <div><dt>Quantidade</dt><dd>{item.quantity ?? 0}</dd></div>
-        <div><dt>Peso total</dt><dd>{number(Number(item.weight_lb) * (item.quantity ?? 0))} lb</dd></div>
-        <div><dt>Valor unitário</dt><dd>{item.price_cp === null ? 'Preço a definir' : money(item.price_cp) + ' PO'}</dd></div>
-      </dl>
-      <button className="button outline loot-transfer-button" disabled={busy}
-        onClick={() => { hide(); onTransfer(item.id, place); }}>
-        <ArrowDownUp size={15} />{place === 'vault' ? 'Levar para a mochila' : 'Guardar no cofre'}
+  return (
+    <div
+      className="loot-slot-wrap"
+      onMouseEnter={show}
+      onMouseLeave={scheduleHide}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) hide();
+      }}
+    >
+      <button
+        ref={trigger}
+        className="loot-slot"
+        aria-label={item.name + ', quantidade ' + (item.quantity ?? 0)}
+        aria-controls={id}
+        aria-haspopup="dialog"
+        draggable={!busy}
+        disabled={busy}
+        onFocus={show}
+        onClick={show}
+        onDragStart={(event) => {
+          hide();
+          event.dataTransfer.setData(dragType, item.id);
+          event.dataTransfer.effectAllowed = 'move';
+          onDrag({ id: item.id, from: place });
+        }}
+        onDragEnd={() => onDrag(null)}
+      >
+        {item.image_path ? (
+          <img className="loot-item-art" src={item.image_path} alt="" />
+        ) : (
+          <Icon size={23} aria-hidden="true" />
+        )}
+        <span className="loot-slot-name">{item.name}</span>
+        <span className="loot-quantity">{item.quantity ?? 0}</span>
       </button>
+      <div
+        ref={balloon}
+        id={id}
+        popover="auto"
+        role="dialog"
+        aria-label={'Detalhes de ' + item.name}
+        className="loot-item-detail loot-item-balloon"
+        onMouseEnter={cancelHide}
+        onMouseLeave={scheduleHide}
+      >
+        <span className="loot-category">{item.category}</span>
+        <h3>{item.name}</h3>
+        <p className="loot-original">{item.original_name}</p>
+        <p>{item.description}</p>
+        <dl>
+          <div>
+            <dt>Quantidade</dt>
+            <dd>{item.quantity ?? 0}</dd>
+          </div>
+          <div>
+            <dt>Peso total</dt>
+            <dd>{number(Number(item.weight_lb) * (item.quantity ?? 0))} lb</dd>
+          </div>
+          <div>
+            <dt>Valor unitário</dt>
+            <dd>{item.price_cp === null ? 'Preço a definir' : money(item.price_cp) + ' PO'}</dd>
+          </div>
+        </dl>
+        <button
+          className="button outline loot-transfer-button"
+          disabled={busy}
+          onClick={() => {
+            hide();
+            onTransfer(item.id, place);
+          }}
+        >
+          <ArrowDownUp size={15} />
+          {place === 'vault' ? 'Levar para a mochila' : 'Guardar no cofre'}
+        </button>
+      </div>
     </div>
-  </div>;
+  );
 }
 
 function StoragePanel({
@@ -169,8 +252,16 @@ function StoragePanel({
         )}
       </header>
       <div className="loot-slots" aria-label={isVault ? 'Espaços do cofre' : 'Espaços da mochila'}>
-        {items.map((item) => <InventorySlot key={item.id} item={item} place={place}
-          busy={busy} onDrag={onDrag} onTransfer={onTransfer} />)}
+        {items.map((item) => (
+          <InventorySlot
+            key={item.id}
+            item={item}
+            place={place}
+            busy={busy}
+            onDrag={onDrag}
+            onTransfer={onTransfer}
+          />
+        ))}
         {Array.from(
           { length: Math.max(24, Math.ceil(items.length / 6) * 6) - items.length },
           (_, i) => (
@@ -180,7 +271,6 @@ function StoragePanel({
           ),
         )}
       </div>
-
     </section>
   );
 }
@@ -236,12 +326,35 @@ export function Inventory({
   }
   function requestTransfer(id: string, from: Place) {
     if (!storage || inFlight.current) return;
-    const item = (from === 'backpack' ? storage.inventory : storage.vault).find(
+    const item = (from === 'backpack' ? availableInventory(storage) : storage.vault).find(
       (item) => item.id === id,
     );
     if (item) {
       setError('');
       setTransfer({ item, from, quantity: item.quantity ?? 1, key: crypto.randomUUID() });
+    }
+  }
+  async function equip(slot: EquipmentSlot, itemId: string | null) {
+    if (inFlight.current) return;
+    inFlight.current = true;
+    setBusy(true);
+    setError('');
+    try {
+      const value = await post<Storage>('/inventory/equipment', {
+        character_id: character.id,
+        slot,
+        item_id: itemId,
+      });
+      if (mounted.current) {
+        setStorage(value);
+        onInventoryChange(value.inventory);
+        setNotice(itemId ? 'Item equipado.' : 'Item desequipado.');
+      }
+    } catch (error) {
+      if (mounted.current) setError((error as Error).message);
+    } finally {
+      inFlight.current = false;
+      if (mounted.current) setBusy(false);
     }
   }
   async function submitTransfer() {
@@ -298,6 +411,7 @@ export function Inventory({
           {error}
         </p>
       )}
+      <EquipmentPanel storage={storage} busy={busy} onEquip={equip} />
       <div className="loot-layout">
         <div className="loot-pack-column">
           <section className="loot-summary" aria-label="Resumo da mochila">
@@ -339,7 +453,7 @@ export function Inventory({
         </div>
         <StoragePanel
           place="backpack"
-          items={storage.inventory}
+          items={availableInventory(storage)}
           busy={busy}
           dragged={dragged}
           onDrag={setDragged}

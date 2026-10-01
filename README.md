@@ -83,6 +83,9 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Compras transacionais: preço no servidor, desconto de ouro, empilhamento no inventário,
   histórico de compras e chave de idempotência.
 - Inventário individual, soma de peso e conquistas por personagem.
+- Mochila com 12 posições de equipamento persistidas; antes de gerar uma nova arte,
+  escolha quais itens equipados aparecem usando suas imagens como referência.
+  [Equipamentos e geração](docs/EQUIPMENT.md).
 - Mural: missões com data/hora e inscrições; próximas mesas aparecem no Início nas 24 horas anteriores, com aviso para o criador mestrar.
 - Conclusão pelo criador com resumo, progresso por missões, ouro por inscrito e gancho opcional. Recompensas e promoções são registradas uma única vez.
 - Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos da staff/admin.

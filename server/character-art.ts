@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import sharp from 'sharp';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { EQUIPMENT_SLOTS } from '../shared/equipment.js';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import {
@@ -21,6 +24,14 @@ const requestSchema = z
       .min(1)
       .max(Math.ceil((ART_MAX_BYTES * 4) / 3) + 4),
     idempotency_key: uuid,
+    equipment_slots: z
+      .array(z.enum(EQUIPMENT_SLOTS))
+      .max(EQUIPMENT_SLOTS.length)
+      .default([])
+      .refine(
+        (slots) => new Set(slots).size === slots.length,
+        'Não repita posições de equipamento.',
+      ),
   })
   .refine((data) => Boolean(data.character_id) !== Boolean(data.creation));
 const monthStart = "date_trunc('month',now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'";
@@ -75,6 +86,8 @@ export async function enqueueArt(userId: string, input: unknown) {
   const data = requestSchema.parse(input);
   if (data.creation && !data.creation.choices)
     throw new AppError(400, 'Complete as escolhas da ficha antes de gerar o personagem.');
+  if (data.creation && data.equipment_slots.length)
+    throw new AppError(400, 'Equipe os itens após criar o personagem.');
   // Normalize before taking locks; arbitrary base64 is never passed to the agent.
   if (!/^[A-Za-z0-9+/]+={0,2}$/.test(data.reference)) throw new AppError(400, 'Imagem inválida.');
   const reference = await normalizeArtImage(Buffer.from(data.reference, 'base64'));
@@ -126,6 +139,34 @@ export async function enqueueArt(userId: string, input: unknown) {
           'Cada conta pode ter até dois personagens, incluindo os que estão em preparação.',
         );
     }
+    const equipment: { slot: string; item_id: string; name: string; image: Buffer }[] = [];
+    if (data.character_id && data.equipment_slots.length) {
+      const { rows } = await client.query(
+        `SELECT e.slot,c.id AS item_id,c.name,c.image_path FROM character_equipment e
+        JOIN inventory i ON i.character_id=e.character_id AND i.item_id=e.item_id JOIN catalog_items c ON c.id=e.item_id
+        WHERE e.character_id=$1 AND e.slot=ANY($2::text[])`,
+        [data.character_id, data.equipment_slots],
+      );
+      if (rows.length !== data.equipment_slots.length)
+        throw new AppError(409, 'O equipamento mudou. Atualize as opções antes de gerar.');
+      for (const item of rows) {
+        // Catalog-owned local assets only. No remote URLs or client paths reach the worker.
+        if (!/^\/[a-zA-Z0-9/_-]+\.(png|webp|jpg|jpeg)$/.test(item.image_path || ''))
+          throw new AppError(400, `O item ${item.name} ainda não possui imagem de referência.`);
+        const path = item.image_path.slice(1);
+        let bytes: Buffer;
+        try {
+          bytes = await readFile(resolve('public', path));
+        } catch {
+          try {
+            bytes = await readFile(resolve('dist/client', path));
+          } catch {
+            throw new AppError(400, `A imagem de ${item.name} não está disponível.`);
+          }
+        }
+        equipment.push({ ...item, image: await normalizeArtImage(bytes) });
+      }
+    }
     const {
       rows: [job],
     } = await client.query(
@@ -139,6 +180,11 @@ export async function enqueueArt(userId: string, input: unknown) {
         data.idempotency_key,
       ],
     );
+    for (const item of equipment)
+      await client.query(
+        'INSERT INTO character_art_equipment(job_id,slot,item_id,name,image) VALUES($1,$2,$3,$4,$5)',
+        [job.id, item.slot, item.item_id, item.name, item.image],
+      );
     return job;
   });
 }

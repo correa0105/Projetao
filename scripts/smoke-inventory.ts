@@ -51,8 +51,7 @@ try {
   ]);
   await page.goto(origin + '/#inventory');
   await page.reload();
-  const selector = page.getByRole('combobox', { name: 'Personagem ativo' });
-  await selector.click();
+  await page.getByRole('button', { name: /^Abrir menu de/ }).click();
   await page.getByRole('option', { name: 'Arden', exact: true }).click();
   const bag = page.getByRole('region', { name: 'Itens da mochila', exact: true });
   const vault = page.getByRole('region', { name: 'Itens do cofre', exact: true });
@@ -89,12 +88,14 @@ try {
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await page.reload();
   await expect(vault.locator('.loot-quantity')).toHaveText('2');
-  await selector.click();
+  await page.getByRole('button', { name: /^Abrir menu de/ }).click();
   await page.getByRole('option', { name: 'Mira', exact: true }).click();
   await expect(bag.locator('button.loot-slot')).toHaveCount(0);
   await expect(vault.locator('.loot-quantity')).toHaveText('2');
+  await vault.locator('button.loot-slot').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(150);
   await vault.locator('button.loot-slot').click();
-  await vault.getByRole('button', { name: 'Levar para a mochila', exact: true }).click();
+  await page.getByRole('button', { name: 'Levar para a mochila', exact: true }).click();
   await page.getByRole('spinbutton', { name: 'Quantidade', exact: true }).fill('1');
   await page.getByRole('button', { name: 'Transferir', exact: true }).click();
   await expect(page.getByRole('dialog')).not.toBeVisible();
@@ -108,6 +109,8 @@ try {
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/vault-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
+  await bag.locator('button.loot-slot').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(150);
   await bag.locator('button.loot-slot').click();
   await bag.getByRole('button', { name: 'Guardar no cofre', exact: true }).click();
   await page.getByRole('button', { name: 'Transferir', exact: true }).click();
@@ -129,4 +132,3 @@ try {
   await new Promise<void>((r) => server.close(() => r()));
   await pool.end();
 }
-

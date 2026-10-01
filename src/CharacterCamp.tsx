@@ -4,6 +4,8 @@ import { api, post } from './api';
 import { Modal } from './components';
 import type { Character } from './types';
 import type { ArtJob, ArtState } from '../shared/character-art';
+import type { EquipmentSlot } from '../shared/equipment';
+import { ArtEquipmentChoices } from './ArtEquipmentChoices';
 import { characterHeightScale } from '../shared/character-stature';
 import './character-camp.css';
 
@@ -158,6 +160,8 @@ export function CharacterCamp({
   const [deleteName, setDeleteName] = useState('');
   const [deleteError, setDeleteError] = useState('');
   const [reference, setReference] = useState('');
+  const [equipmentSlots, setEquipmentSlots] = useState<EquipmentSlot[]>([]);
+  const [equipmentReady, setEquipmentReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const key = useRef(crypto.randomUUID());
   const snapshot = useRef('');
@@ -214,7 +218,11 @@ export function CharacterCamp({
           <article
             key={character.id}
             className={`camp-character ${selectedId === character.id ? 'is-selected' : ''}`}
-            style={{ '--stature-scale': characterHeightScale(character.race, character.species_size) } as CSSProperties}
+            style={
+              {
+                '--stature-scale': characterHeightScale(character.race, character.species_size),
+              } as CSSProperties
+            }
           >
             <button
               className="camp-figure"
@@ -269,6 +277,8 @@ export function CharacterCamp({
                       return;
                     }
                     setEditing(character);
+                    setEquipmentReady(false);
+                    setEquipmentSlots([]);
                     setReference('');
                     setError('');
                     key.current = crypto.randomUUID();
@@ -304,7 +314,12 @@ export function CharacterCamp({
           ))}
         {characters.length + state.pending_new < 2 && (
           <article className="camp-character camp-create-slot">
-            <button className="camp-new camp-figure" onClick={onCreate} aria-label="Criar personagem" title="Criar personagem">
+            <button
+              className="camp-new camp-figure"
+              onClick={onCreate}
+              aria-label="Criar personagem"
+              title="Criar personagem"
+            >
               <CharacterSilhouette />
             </button>
             <div aria-hidden="true" />
@@ -350,6 +365,7 @@ export function CharacterCamp({
                   character_id: editing.id,
                   reference,
                   idempotency_key: key.current,
+                  equipment_slots: equipmentSlots,
                 });
                 await onRefresh();
                 setEditing(null);
@@ -369,12 +385,19 @@ export function CharacterCamp({
               {state.available ? 'Ilustrador disponível' : 'Ilustrador offline'}
             </span>
             <ReferenceInput onChange={setReference} disabled={busy} />
+            <ArtEquipmentChoices
+              characterId={editing.id}
+              selected={equipmentSlots}
+              onChange={setEquipmentSlots}
+              onReady={setEquipmentReady}
+              disabled={busy}
+            />
             {error && (
               <p className="form-error" role="alert">
                 {error}
               </p>
             )}
-            <button className="button primary" disabled={busy || !reference}>
+            <button className="button primary" disabled={busy || !reference || !equipmentReady}>
               {busy ? 'Enviando…' : 'Gerar imagem'}
             </button>
           </form>

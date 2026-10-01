@@ -1,5 +1,17 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Equipamentos e referências da arte (01/10/2026)
+
+Mochila agora possui 12 posições persistidas em `character_equipment` (migration 036).
+Equipar reserva unidades do inventário; a grade mostra unidades livres, o peso total
+continua incluindo as equipadas e o cofre exige desequipar essas unidades antes de
+transferir. Personagem permite marcar equipamentos antes de gerar arte; o servidor
+salva as imagens reais do catálogo em `character_art_equipment`, e o worker anexa
+essas referências com a posição de cada item, preservando o padrão visual fixo.
+Não aplicar bônus mágicos/CA automaticamente nem conceder equipamento inicial de
+ficha como compra. O catálogo ainda não possui capacetes. Detalhes e testes em
+[EQUIPMENT.md](EQUIPMENT.md).
+
 ## Loja ilustrada — exportação de 29/09/2026
 
 Por pedido explícito do usuário, o catálogo ativo foi substituído pelos **65 itens** da pasta fornecida Loja-Alvorada-Exportacao-20260929-094455. Fonte portátil em `data/shop-export/loja.json`, pesos em `PESOS.md`, imagens originais em `public/shop/items` (hashes conferidos). Dez categorias preservadas. Esta decisão substitui a antiga whitelist de oito itens; não representa implementação de suplementos ou dos efeitos mágicos descritos.

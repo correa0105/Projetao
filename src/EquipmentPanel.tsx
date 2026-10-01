@@ -1,0 +1,99 @@
+import { Shield, Package, Sword } from 'lucide-react';
+import {
+  EQUIPMENT_SLOTS,
+  EQUIPMENT_LABELS,
+  compatibleSlots,
+  twoHanded,
+  type EquipmentSlot,
+} from '../shared/equipment';
+import type { StorageState } from './types';
+import './equipment.css';
+
+export function EquipmentPanel({
+  storage,
+  busy,
+  onEquip,
+}: {
+  storage: StorageState;
+  busy: boolean;
+  onEquip: (slot: EquipmentSlot, id: string | null) => void;
+}) {
+  const main = storage.equipped.find((item) => item.slot === 'main_hand');
+  return (
+    <section className="equipment-panel" aria-label="Itens equipados" aria-busy={busy}>
+      <header>
+        <h2>Itens equipados</h2>
+        <p>
+          Escolha o que seu personagem veste e carrega. Os itens continuam contando no peso total.
+        </p>
+      </header>
+      <div className="equipment-grid">
+        {EQUIPMENT_SLOTS.map((slot) => {
+          const current = storage.equipped.find((item) => item.slot === slot);
+          const candidates = storage.inventory.filter(
+            (item) =>
+              compatibleSlots(item).includes(slot) &&
+              (item.quantity || 0) >
+                storage.equipped.filter(
+                  (equipped) => equipped.slot !== slot && equipped.id === item.id,
+                ).length,
+          );
+          const blocked = slot === 'off_hand' && main && twoHanded(main);
+          const Icon = slot.includes('hand')
+            ? Sword
+            : slot === 'armor' || slot === 'head'
+              ? Shield
+              : Package;
+          return (
+            <div className={`equipment-slot ${current ? 'is-equipped' : ''}`} key={slot}>
+              <span className="equipment-position">{EQUIPMENT_LABELS[slot]}</span>
+              <div className="equipment-art">
+                {current?.image_path ? (
+                  <img src={current.image_path} alt={current.name} />
+                ) : (
+                  <Icon aria-hidden="true" size={32} />
+                )}
+              </div>
+              <label className="sr-only" htmlFor={`equipment-${slot}`}>
+                {EQUIPMENT_LABELS[slot]}
+              </label>
+              <select
+                id={`equipment-${slot}`}
+                value={current?.id || ''}
+                disabled={busy || Boolean(blocked) || (!candidates.length && !current)}
+                onChange={(event) => onEquip(slot, event.target.value || null)}
+              >
+                <option value="">
+                  {blocked
+                    ? 'Duas mãos ocupadas'
+                    : candidates.length
+                      ? 'Não equipado'
+                      : 'Nenhum item compatível'}
+                </option>
+                {candidates.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+              {current && (
+                <button
+                  className="text-button"
+                  disabled={busy}
+                  onClick={() => onEquip(slot, null)}
+                  aria-label={`Desequipar ${current.name} de ${EQUIPMENT_LABELS[slot]}`}
+                >
+                  Desequipar
+                </button>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <p className="equipment-note">
+        Itens equipados podem aparecer na próxima imagem do personagem. Bônus e efeitos mágicos não
+        são aplicados automaticamente.
+      </p>
+    </section>
+  );
+}
