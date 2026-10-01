@@ -1,5 +1,26 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Conjunto de placas, cosméticos e objetos nas mãos (01/10/2026)
+
+Mochila possui 15 posições: acrescentadas ombreiras, braçadeiras e calça/pernas.
+Full plate comprada entrega seis itens independentes: peitoral, capacete,
+braçadeiras com luvas, calça, botas e ombreiras. Demais armaduras não entregam
+peças extras. Preço do conjunto permanece 1.500 PO; peso de 65 lb é distribuído
+nas peças. Migration 038 captura armaduras antigas de mochila/cofre e seed entrega
+suas peças uma única vez. `purchase_item_grants` audita novas entregas nas mesmas
+transações de checkout e compra individual, preservando idempotência e saldo.
+
+Catálogo soma aos 65 originais cinco cosméticos sem magia (capa, colar, tiara,
+luvas, botas) e charuto, totalizando 71 registros ativos. Cinco peças de placas
+ficam inativas para compra avulsa, mas podem ser equipadas/transferidas. Extensão
+portátil em `data/equipment-catalog.json`, artes transparentes em
+`public/shop/equipment` e prompts em [EQUIPMENT-ART.md](EQUIPMENT-ART.md).
+Tocha, lanterna, corda, gancho, charuto e outros objetos portáteis podem ocupar
+as mãos. Braçadeiras de placas já cobrem as luvas e impedem outro par. Equipar
+continua sem aplicar CA/bônus. As novas posições entram na seleção de referências
+da arte. Build, 33 testes isolados e smoke de placas/cosméticos desktop/mobile
+aprovados. Comandos e contratos em [EQUIPMENT.md](EQUIPMENT.md).
+
 Placas do mural: fixações superiores ficam estáticas; a arte é renderizada em
 camadas recortadas de pinos, correntes e placa. O balanço inclina as correntes
 a partir da fixação e desloca placa/texto juntos, sem mover os pinos nem deformar
@@ -30,14 +51,14 @@ idempotência e uma geração em andamento por personagem continuam valendo.
 
 ## Equipamentos e referências da arte (01/10/2026)
 
-Mochila agora possui 12 posições persistidas em `character_equipment` (migration 036).
+Mochila possui 15 posições persistidas em `character_equipment` (migrations 036/038).
 Equipar reserva unidades do inventário; a grade mostra unidades livres, o peso total
 continua incluindo as equipadas e o cofre exige desequipar essas unidades antes de
 transferir. Personagem permite marcar equipamentos antes de gerar arte; o servidor
 salva as imagens reais do catálogo em `character_art_equipment`, e o worker anexa
 essas referências com a posição de cada item, preservando o padrão visual fixo.
 Não aplicar bônus mágicos/CA automaticamente nem conceder equipamento inicial de
-ficha como compra. O catálogo ainda não possui capacetes. Detalhes e testes em
+ficha como compra. Capacetes de placas são entregues com a full plate; tiaras estão em Cosméticos. Detalhes e testes em
 [EQUIPMENT.md](EQUIPMENT.md).
 
 ## Loja ilustrada — exportação de 29/09/2026

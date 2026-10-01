@@ -1,0 +1,112 @@
+[
+  {
+    "id": "plate-helmet",
+    "name": "Capacete de placas",
+    "category": "Peças de armadura",
+    "price_cp": null,
+    "weight_lb": 8,
+    "active": false,
+    "image_path": "/shop/equipment/plate-helmet.png",
+    "description": "Capacete com viseira do conjunto completo de placas. Aço envelhecido com bordas e adornos dourados. Incluído na compra da armadura completa."
+  },
+  {
+    "id": "plate-bracers",
+    "name": "Braçadeiras de placas com luvas",
+    "category": "Peças de armadura",
+    "price_cp": null,
+    "weight_lb": 6,
+    "active": false,
+    "image_path": "/shop/equipment/plate-bracers.png",
+    "description": "Par de braçadeiras com luvas articuladas de placas. Ocupa as braçadeiras e cobre as mãos, impedindo outro par de luvas. Incluído na armadura completa."
+  },
+  {
+    "id": "plate-leggings",
+    "name": "Calça de placas",
+    "category": "Peças de armadura",
+    "price_cp": null,
+    "weight_lb": 12,
+    "active": false,
+    "image_path": "/shop/equipment/plate-leggings.png",
+    "description": "Proteções articuladas das coxas e joelhos do conjunto completo de placas. Incluídas na armadura completa."
+  },
+  {
+    "id": "plate-boots",
+    "name": "Botas de placas",
+    "category": "Peças de armadura",
+    "price_cp": null,
+    "weight_lb": 8,
+    "active": false,
+    "image_path": "/shop/equipment/plate-boots.png",
+    "description": "Par de botas com grevas de placas e proteção articulada dos pés. Incluído na armadura completa."
+  },
+  {
+    "id": "plate-pauldrons",
+    "name": "Ombreiras de placas",
+    "category": "Peças de armadura",
+    "price_cp": null,
+    "weight_lb": 4,
+    "active": false,
+    "image_path": "/shop/equipment/plate-pauldrons.png",
+    "description": "Par de ombreiras do conjunto de placas, com lâminas sobrepostas e acabamento dourado. Incluído na armadura completa."
+  },
+  {
+    "id": "cosmetic-cape",
+    "name": "Capa de viajante",
+    "category": "Cosméticos",
+    "price_cp": 500,
+    "weight_lb": 3,
+    "active": true,
+    "image_path": "/shop/items/cloak-of-invisibility.png",
+    "description": "Capa ornamental sem efeitos mágicos, para vestir e personalizar a aparência do personagem."
+  },
+  {
+    "id": "cosmetic-necklace",
+    "name": "Colar com gema azul",
+    "category": "Cosméticos",
+    "price_cp": 500,
+    "weight_lb": 0.2,
+    "active": true,
+    "image_path": "/shop/equipment/cosmetic-necklace.png",
+    "description": "Colar de metal dourado envelhecido com um pequeno pingente azul. Acessório cosmético, sem efeitos mágicos."
+  },
+  {
+    "id": "cosmetic-tiara",
+    "name": "Tiara com gema azul",
+    "category": "Cosméticos",
+    "price_cp": 1000,
+    "weight_lb": 0.2,
+    "active": true,
+    "image_path": "/shop/equipment/cosmetic-tiara.png",
+    "description": "Tiara delicada de metal dourado com uma gema azul central. Acessório cosmético para a cabeça, sem efeitos mágicos."
+  },
+  {
+    "id": "cosmetic-gloves",
+    "name": "Luvas de couro",
+    "category": "Cosméticos",
+    "price_cp": 200,
+    "weight_lb": 0.5,
+    "active": true,
+    "image_path": "/shop/equipment/cosmetic-gloves.png",
+    "description": "Par de luvas de couro castanho para compor a aparência do personagem. Não substitui bônus ou efeitos de armadura."
+  },
+  {
+    "id": "cosmetic-boots",
+    "name": "Botas de viagem",
+    "category": "Cosméticos",
+    "price_cp": 300,
+    "weight_lb": 2,
+    "active": true,
+    "image_path": "/shop/items/boots-of-elvenkind.png",
+    "description": "Par de botas ornamentais de viagem, sem efeitos mágicos. Pode ser equipado nos pés e usado como referência na arte."
+  },
+  {
+    "id": "cigar",
+    "name": "Charuto",
+    "category": "Itens mundanos",
+    "price_cp": 10,
+    "weight_lb": 0.01,
+    "active": true,
+    "image_path": "/shop/equipment/cigar.png",
+    "description": "Charuto enrolado à mão, acessório de taverna. Pode ser segurado na mão principal ou secundária e aparecer na arte do personagem."
+  }
+]

@@ -147,7 +147,7 @@ export async function enqueueArt(userId: string, input: unknown) {
     const equipment: { slot: string; item_id: string; name: string; image: Buffer }[] = [];
     if (data.character_id && data.equipment_slots.length) {
       const { rows } = await client.query(
-        `SELECT e.slot,c.id AS item_id,c.name,c.image_path FROM character_equipment e
+        `SELECT e.slot,c.id AS item_id,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,c.image_path FROM character_equipment e
         JOIN inventory i ON i.character_id=e.character_id AND i.item_id=e.item_id JOIN catalog_items c ON c.id=e.item_id
         WHERE e.character_id=$1 AND e.slot=ANY($2::text[])`,
         [data.character_id, data.equipment_slots],

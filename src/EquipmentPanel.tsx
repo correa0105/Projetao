@@ -5,7 +5,7 @@ import {
   EQUIPMENT_SLOTS,
   EQUIPMENT_LABELS,
   compatibleSlots,
-  twoHanded,
+  equipmentBlockMessage,
   type EquipmentSlot,
 } from '../shared/equipment';
 import type { StorageState } from './types';
@@ -25,7 +25,6 @@ export function EquipmentPanel({
   onDropItem: (slot: EquipmentSlot, id: string, from: InventoryDrag['from']) => void;
 }) {
   const [over, setOver] = useState<EquipmentSlot | null>(null);
-  const main = storage.equipped.find((item) => item.slot === 'main_hand');
   return (
     <section className="equipment-panel loot-storage" aria-label="Itens equipados" aria-busy={busy}>
       <header>
@@ -46,7 +45,7 @@ export function EquipmentPanel({
                   (equipped) => equipped.slot !== slot && equipped.id === item.id,
                 ).length,
           );
-          const blocked = slot === 'off_hand' && main && twoHanded(main);
+          const blocked = equipmentBlockMessage(slot, storage.equipped);
           const draggedItem = dragged && storage.inventory.find((item) => item.id === dragged.id);
           const compatible =
             dragged?.from === 'backpack' &&
@@ -104,7 +103,9 @@ export function EquipmentPanel({
               >
                 <option value="">
                   {blocked
-                    ? 'Duas mãos ocupadas'
+                    ? slot === 'hands'
+                      ? 'Luvas das braçadeiras'
+                      : 'Duas mãos ocupadas'
                     : candidates.length
                       ? 'Não equipado'
                       : 'Nenhum item compatível'}
@@ -125,6 +126,7 @@ export function EquipmentPanel({
                   Desequipar
                 </button>
               )}
+              {current?.id === 'plate-bracers' && <small>Inclui as luvas de placas</small>}
             </div>
           );
         })}

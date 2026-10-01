@@ -85,7 +85,9 @@ try {
     bag.getByRole('button', { name: 'Espada longa, quantidade 1', exact: true }),
     equipment.locator('[data-equipment-slot="armor"] .equipment-art'),
   );
-  const warning = page.getByRole('status').filter({ hasText: 'não pertence à categoria Armadura' });
+  const warning = page
+    .getByRole('status')
+    .filter({ hasText: 'não pertence à categoria Peitoral / armadura' });
   await expect(warning).toBeVisible();
   await expect(equipment.locator('#equipment-armor')).toHaveValue('');
   await expect(bag.locator('button.loot-slot')).toHaveCount(4);
@@ -97,7 +99,7 @@ try {
     ['back', 'backpack'],
   ]) {
     if (slot === 'armor' || slot === 'main_hand') {
-      const itemName = slot === 'armor' ? 'Armadura de placas' : 'Espada longa';
+      const itemName = slot === 'armor' ? 'Peitoral de placas' : 'Espada longa';
       await dragEquipment(
         bag.getByRole('button', { name: `${itemName}, quantidade 1`, exact: true }),
         equipment.locator(`[data-equipment-slot="${slot}"] .equipment-art`),

@@ -3,7 +3,12 @@ import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
-import { EQUIPMENT_SLOTS, compatibleSlots, twoHanded } from '../shared/equipment.js';
+import {
+  EQUIPMENT_SLOTS,
+  compatibleSlots,
+  twoHanded,
+  equipmentBlockMessage,
+} from '../shared/equipment.js';
 
 const equipSchema = z
   .object({
@@ -36,18 +41,18 @@ async function lockStorage(client: PoolClient, userId: string, characterId: stri
 
 async function storageState(client: PoolClient, userId: string, characterId: string) {
   const inventory = await client.query(
-    `SELECT c.*,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
+    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
      JOIN characters p ON p.id=i.character_id
      WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY c.name`,
     [characterId, userId],
   );
   const vault = await client.query(
-    `SELECT c.*,v.quantity FROM account_vault v JOIN catalog_items c ON c.id=v.item_id
+    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,v.quantity FROM account_vault v JOIN catalog_items c ON c.id=v.item_id
      WHERE v.user_id=$1 ORDER BY c.name`,
     [userId],
   );
   const equipped = await client.query(
-    `SELECT c.*,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id
+    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id
      JOIN characters p ON p.id=e.character_id WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY e.slot`,
     [characterId, userId],
   );
@@ -86,16 +91,17 @@ export function inventoryRouter() {
         );
         if (used.total >= item.quantity)
           throw new AppError(409, 'Todas as unidades deste item já estão equipadas.');
-        if (data.slot === 'off_hand') {
-          const {
-            rows: [main],
-          } = await client.query(
-            'SELECT c.* FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id WHERE e.character_id=$1 AND e.slot=$2',
-            [data.character_id, 'main_hand'],
-          );
-          if (main && twoHanded(main))
-            throw new AppError(409, 'A arma principal ocupa as duas mãos.');
-        }
+        const { rows: equipped } = await client.query(
+          'SELECT c.*,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id WHERE e.character_id=$1',
+          [data.character_id],
+        );
+        const blocked = equipmentBlockMessage(data.slot, equipped);
+        if (blocked) throw new AppError(409, blocked);
+        if (data.slot === 'bracers' && item.id === 'plate-bracers')
+          await client.query('DELETE FROM character_equipment WHERE character_id=$1 AND slot=$2', [
+            data.character_id,
+            'hands',
+          ]);
         if (data.slot === 'main_hand' && twoHanded(item))
           await client.query('DELETE FROM character_equipment WHERE character_id=$1 AND slot=$2', [
             data.character_id,

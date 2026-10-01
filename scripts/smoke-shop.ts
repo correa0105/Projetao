@@ -76,7 +76,7 @@ try {
     ],
   };
   const active = (await pool.query('SELECT id FROM catalog_items WHERE active=true')).rows;
-  expect(active).toHaveLength(65);
+  expect(active).toHaveLength(71);
   // Resolve the rope ID from the provided catalog rather than assuming an old identifier.
   const rope = (
     await pool.query(
@@ -312,7 +312,7 @@ try {
   }
   expect(errors).toEqual([]);
   console.log(
-    'Loja: catálogo de 65 itens, checkout atômico, repetição concorrente, preços, saldo, validação, imagens, mesa, arraste, carrinho e mobile OK.',
+    'Loja: catálogo de 71 itens, checkout atômico, repetição concorrente, preços, saldo, validação, imagens, mesa, arraste, carrinho e mobile OK.',
   );
 } catch (e) {
   await mkdir('test-results', { recursive: true });

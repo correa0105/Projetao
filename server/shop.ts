@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
+import { grantPurchaseItems } from './purchase-grants.js';
 
 export function shopRouter() {
   const router = Router();
@@ -19,7 +20,7 @@ export function shopRouter() {
             }),
           )
           .min(1)
-          .max(65)
+          .max(100)
           .refine(
             (items) => new Set(items.map((i) => i.item_id)).size === items.length,
             'Item repetido no carrinho.',
@@ -83,12 +84,10 @@ export function shopRouter() {
         total,
       ]);
       for (const line of lines) {
-        await client.query(
-          'INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,$3) ON CONFLICT(character_id,item_id) DO UPDATE SET quantity=inventory.quantity+excluded.quantity',
-          [character.id, line.item_id, line.quantity],
-        );
-        await client.query(
-          'INSERT INTO purchases(character_id,item_id,quantity,total_cp,idempotency_key,checkout_id) VALUES($1,$2,$3,$4,$5,$6)',
+        const {
+          rows: [purchase],
+        } = await client.query(
+          'INSERT INTO purchases(character_id,item_id,quantity,total_cp,idempotency_key,checkout_id) VALUES($1,$2,$3,$4,$5,$6) RETURNING id',
           [
             character.id,
             line.item_id,
@@ -98,6 +97,7 @@ export function shopRouter() {
             order.id,
           ],
         );
+        await grantPurchaseItems(client, character.id, line.item_id, line.quantity, purchase.id);
       }
       await client.query(
         "INSERT INTO achievements(character_id,code) VALUES($1,'first_purchase') ON CONFLICT DO NOTHING",

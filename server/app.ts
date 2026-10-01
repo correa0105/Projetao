@@ -174,7 +174,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
       throw new AppError(404, 'Personagem não encontrado.');
     const [inventory, achievements, history] = await Promise.all([
       pool.query(
-        'SELECT i.quantity,c.* FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 ORDER BY c.name',
+        "SELECT i.quantity,c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 ORDER BY c.name",
         [id],
       ),
       pool.query(

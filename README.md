@@ -79,11 +79,11 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Ficha de nível 1 com escolhas SRD na criação, atributos por 4d6 no servidor,
   distribuição definitiva, bônus de antecedente, perícias, salvaguardas, equipamentos,
   magias e recursos de sessão. [Fluxo e limites](docs/CHARACTER-SHEET.md).
-- Loja ilustrada com os 65 itens da exportação fornecida pelo usuário: dez categorias, falas do mercador, mesa interativa e carrinho transacional ligado à mochila. Orbe do dragão sem preço disponível apenas para exame.
+- Loja ilustrada com os 65 itens da exportação fornecida pelo usuário, cinco cosméticos e charuto: onze categorias, falas do mercador, mesa interativa e carrinho transacional ligado à mochila. Orbe do dragão sem preço disponível apenas para exame.
 - Compras transacionais: preço no servidor, desconto de ouro, empilhamento no inventário,
   histórico de compras e chave de idempotência.
 - Inventário individual, soma de peso e conquistas por personagem.
-- Mochila com 12 posições de equipamento persistidas; antes de gerar uma nova arte,
+- Mochila com 15 posições de equipamento persistidas, incluindo ombreiras, braçadeiras e pernas. Full plate entrega seis peças; demais armaduras entregam somente o peitoral. Objetos portáteis também podem ser segurados nas mãos. Antes de gerar uma nova arte,
   escolha quais itens equipados aparecem usando suas imagens como referência.
   [Equipamentos e geração](docs/EQUIPMENT.md).
 - Mural: missões com data/hora e inscrições; próximas mesas aparecem no Início nas 24 horas anteriores, com aviso para o criador mestrar.
@@ -100,7 +100,7 @@ Mundo usa uma malha de terreno com alturas, materiais procedurais com detalhe de
 
 House é uma página narrativa; propriedades ainda não estão implementadas.
 A ficha implementa a criação no nível 1 do SRD 5.2.1. Não há combate automático,
-evolução completa dos recursos de classe, equipar/vender/consumir itens ou aplicação de efeitos. Equipamentos iniciais
+evolução completa dos recursos de classe, vender/consumir itens ou aplicação automática de efeitos. Equipamentos iniciais
 ficam registrados na ficha, separados das compras do inventário. Novos personagens recebem a riqueza oficial de classe e antecedente. Conversões preservam o saldo existente.
 
 Missões concluídas creditam o ouro anunciado e a progressão por patentes no servidor.

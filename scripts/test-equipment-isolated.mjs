@@ -15,15 +15,20 @@ try {
     ? (await readdir('tests'))
         .filter((file) => file.endsWith('.test.ts'))
         .map((file) => 'tests/' + file)
-    : ['tests/equipment.test.ts', 'tests/equipment-illustrator.test.ts'];
-  const args = process.argv.includes('--browser')
-    ? [
-        '--import',
-        'tsx',
-        'scripts/smoke-equipment.ts',
-        ...(process.argv.includes('--unlimited') ? ['--unlimited'] : []),
-      ]
-    : ['--import', 'tsx', '--test', '--test-concurrency=1', ...files];
+    : process.argv.includes('--armor-tests')
+      ? ['tests/armor-bundles.test.ts']
+      : ['tests/equipment.test.ts', 'tests/equipment-illustrator.test.ts'];
+  const args =
+    process.argv.includes('--browser') || process.argv.includes('--armor')
+      ? [
+          '--import',
+          'tsx',
+          process.argv.includes('--armor')
+            ? 'scripts/smoke-armor.ts'
+            : 'scripts/smoke-equipment.ts',
+          ...(process.argv.includes('--unlimited') ? ['--unlimited'] : []),
+        ]
+      : ['--import', 'tsx', '--test', '--test-concurrency=1', ...files];
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(process.execPath, args, {
       env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },

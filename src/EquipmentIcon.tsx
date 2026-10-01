@@ -3,6 +3,9 @@ import type { EquipmentSlot } from '../shared/equipment';
 const paths: Record<EquipmentSlot, string> = {
   head: 'M5 13v-3a7 7 0 0 1 14 0v3M4 13h16M5 13v5l5 3v-8m9 0v5l-5 3v-8M12 3v5',
   armor: 'M8 3h8l2 3 4 2-2 5-3-1v6l-5 3-5-3v-6l-3 1-2-5 4-2 2-3ZM8 3l4 5 4-5M12 8v13',
+  shoulders: 'M3 16V9c0-5 8-6 9-1 1-5 9-4 9 1v7M3 10l7 2m-7 2 7 2M21 10l-7 2m7 2-7 2M5 18h4m6 0h4',
+  bracers: 'M6 3h12l-2 18H8L6 3ZM7 7h10M8 17h8M12 7v10',
+  legs: 'M6 3h12l2 18h-6l-2-12-2 12H4L6 3ZM6 6h12M12 3v6',
   main_hand: 'm14 4 6-1-1 6-9 9-4-4 8-10Zm-9 9 6 6M8 17l-4 4-1-1 4-4',
   off_hand: 'M12 3 4 6v6c0 4 4 7 8 9 4-2 8-5 8-9V6l-8-3ZM12 7v10M8 12h8',
   ring_left: 'm9 3 3-1 3 1 1 3-4 4-4-4 1-3ZM8 8a7 7 0 1 0 8 0M8 12a4 4 0 1 0 8 0',

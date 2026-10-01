@@ -4,7 +4,7 @@ import type { Character, Details, Item, StorageState } from './types';
 import {
   compatibleSlots,
   EQUIPMENT_LABELS,
-  twoHanded,
+  equipmentBlockMessage,
   type EquipmentSlot,
 } from '../shared/equipment';
 import { INVENTORY_DRAG_TYPE as dragType } from './inventory-drag';
@@ -355,9 +355,9 @@ export function Inventory({
       setNotice(`O item ${item.name} não pertence à categoria ${EQUIPMENT_LABELS[slot]}.`);
       return;
     }
-    const main = storage.equipped.find((item) => item.slot === 'main_hand');
-    if (slot === 'off_hand' && main && twoHanded(main)) {
-      setNotice('A arma principal ocupa as duas mãos. Desequipe-a antes de usar a mão secundária.');
+    const blocked = equipmentBlockMessage(slot, storage.equipped);
+    if (blocked) {
+      setNotice(blocked);
       return;
     }
     void equip(slot, id);

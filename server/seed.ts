@@ -1,13 +1,17 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { transaction } from './db.js';
+import { PLATE_PIECES } from '../shared/armor-bundles.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
+  const equipmentCatalog = JSON.parse(
+    await readFile(resolve('data/equipment-catalog.json'), 'utf8'),
+  );
   await transaction(async (client) => {
     await client.query('SELECT pg_advisory_xact_lock(74261924)');
     await client.query('UPDATE catalog_items SET active=false WHERE NOT(id=ANY($1::text[]))', [
-      catalog.items.map((item: { id: string }) => item.id),
+      [...catalog.items, ...equipmentCatalog].map((item: { id: string }) => item.id),
     ]);
     for (const item of catalog.items) {
       await client.query(
@@ -22,9 +26,12 @@ export async function seed() {
           item.name,
           item.original_name,
           item.category,
-          item.description,
+          item.id === 'plate-armor'
+            ? item.description +
+              ' Conjunto completo: entrega peitoral, capacete, braçadeiras com luvas, calça, botas e ombreiras.'
+            : item.description,
           item.price_cp,
-          item.weight_lb,
+          item.id === 'plate-armor' ? 27 : item.weight_lb,
           item.source,
           item.source_url,
           {
@@ -37,6 +44,47 @@ export async function seed() {
           item.weight_estimated,
         ],
       );
+    }
+    for (const item of equipmentCatalog) {
+      await client.query(
+        `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,active,image_path,merchant_comment,weight_estimated)
+        VALUES($1,$2,$2,$3,$4,$5,$6,'Conteúdo do projeto','', $7,$8,$9,$10,true)
+        ON CONFLICT(id) DO UPDATE SET name=excluded.name,category=excluded.category,description=excluded.description,price_cp=excluded.price_cp,weight_lb=excluded.weight_lb,active=excluded.active,image_path=excluded.image_path,merchant_comment=excluded.merchant_comment,weight_estimated=true`,
+        [
+          item.id,
+          item.name,
+          item.category,
+          item.description,
+          item.price_cp,
+          item.weight_lb,
+          { equipment_extension: true },
+          item.active,
+          item.image_path,
+          item.active
+            ? 'Um detalhe bem escolhido também conta uma história. Não possui efeitos mágicos.'
+            : 'Peça incluída no conjunto completo de placas.',
+        ],
+      );
+    }
+    // Migration 038 captured only pre-update suits. Applying each snapshot once avoids
+    // duplicating pieces on subsequent seeds or on purchases through the new checkout.
+    const { rows: backfills } = await client.query(
+      'SELECT * FROM armor_piece_backfills WHERE applied_at IS NULL ORDER BY id FOR UPDATE',
+    );
+    for (const row of backfills) {
+      for (const itemId of PLATE_PIECES) {
+        if (row.character_id)
+          await client.query(
+            'INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,$3) ON CONFLICT(character_id,item_id) DO UPDATE SET quantity=inventory.quantity+excluded.quantity',
+            [row.character_id, itemId, row.quantity],
+          );
+        else
+          await client.query(
+            'INSERT INTO account_vault(user_id,item_id,quantity) VALUES($1,$2,$3) ON CONFLICT(user_id,item_id) DO UPDATE SET quantity=account_vault.quantity+excluded.quantity',
+            [row.user_id, itemId, row.quantity],
+          );
+      }
+      await client.query('UPDATE armor_piece_backfills SET applied_at=now() WHERE id=$1', [row.id]);
     }
     const entries = [
       [
