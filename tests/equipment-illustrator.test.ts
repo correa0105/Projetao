@@ -6,6 +6,9 @@ import { join, delimiter } from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
 import { generateCharacterArt } from '../server/codex-illustrator.js';
 import { describeArtEquipment } from '../server/equipment-art.js';
+import { equipmentReferenceSheet } from '../server/equipment-reference.js';
+import sharp from 'sharp';
+import { EQUIPMENT_SLOTS } from '../shared/equipment.js';
 import type { ArtEquipment } from '../shared/equipment.js';
 
 test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem indicada', async () => {
@@ -21,6 +24,7 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     const args = process.argv.slice(2), images = args.flatMap((v,i) => v === '--image' ? [args[i+1]] : []);
     let prompt = ''; process.stdin.on('data', c => prompt += c);
     process.stdin.on('end', () => {
+      if (images.length > 5) process.exit(1);
       const directory = args[args.indexOf('--cd')+1], output = path.join(directory, 'output.png');
       fs.copyFileSync(images[1], output);
       fs.writeFileSync(${JSON.stringify(capture)}, JSON.stringify({ prompt, images: images.map(p => ({ path: p, hash: crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex') })) }));
@@ -84,13 +88,19 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     });
     assert.deepEqual(output, reference);
     const captured = JSON.parse(await readFile(capture, 'utf8'));
-    assert.equal(captured.images.length, 9);
-    for (const [index, item] of equipment.entries())
-      assert.equal(
-        captured.images[index + 2].hash,
-        createHash('sha256').update(item.image).digest('hex'),
-      );
-    assert.equal(captured.images[2].hash, createHash('sha256').update(itemImage).digest('hex'));
+    assert.equal(captured.images.length, 3);
+    assert.equal(captured.images[0].hash, createHash('sha256').update(reference).digest('hex'));
+    assert.equal(captured.images[1].hash, createHash('sha256').update(reference).digest('hex'));
+    assert.equal(
+      captured.images[2].hash,
+      createHash('sha256')
+        .update(await equipmentReferenceSheet(equipment))
+        .digest('hex'),
+    );
+    for (const [index, item] of equipment.entries()) {
+      assert.ok(captured.prompt.includes(`"reference_panel":${index + 1}`));
+      assert.ok(captured.prompt.includes(item.item_id));
+    }
     assert.match(captured.prompt, /"reference_image":3/);
     assert.match(captured.prompt, /Espada longa/);
     assert.match(captured.prompt, /SOMENTE os equipamentos listados/);
@@ -101,7 +111,8 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     assert.match(captured.prompt, /ignore essas ombreiras/);
     assert.match(captured.prompt, /Transcreva essas exigências para o prompt enviado à ferramenta/);
     assert.match(captured.prompt, /"slot":"head"/);
-    assert.match(captured.prompt, /"reference_image":9/);
+    assert.doesNotMatch(captured.prompt, /"reference_image":9/);
+    assert.match(captured.prompt, /NÃO reproduza sua grade/);
     assert.ok(
       captured.prompt.includes(
         JSON.stringify(captured.images.map((image: { path: string }) => image.path)),
@@ -126,6 +137,8 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
       helmet_mode: 'open',
     });
     const opened = JSON.parse(await readFile(capture, 'utf8'));
+    assert.equal(opened.images.length, 3);
+    assert.equal(opened.images[2].hash, createHash('sha256').update(helmet.image).digest('hex'));
     assert.match(opened.prompt, /CAPACETE OBRIGATÓRIO ABERTO/);
     assert.doesNotMatch(opened.prompt, /Este capacete de placas é fechado/);
     await assert.rejects(readFile(captured.images[2].path), { code: 'ENOENT' });
@@ -135,5 +148,41 @@ test('ilustrador envia estilo, aparência e imagens reais dos itens na ordem ind
     if (originalBin === undefined) delete process.env.CODEX_BIN;
     else process.env.CODEX_BIN = originalBin;
     await rm(temp, { recursive: true, force: true });
+  }
+});
+
+test('prancha mantém as quinze posições em painéis distintos, sem cortar as referências', async () => {
+  const items: ArtEquipment[] = [];
+  for (const [i, slot] of EQUIPMENT_SLOTS.entries()) {
+    items.push({
+      slot,
+      item_id: slot,
+      name: slot,
+      image: await sharp({
+        create: {
+          width: i % 2 ? 20 : 80,
+          height: i % 2 ? 80 : 20,
+          channels: 3,
+          background: { r: 30 + i * 10, g: 80, b: 120 },
+        },
+      })
+        .png()
+        .toBuffer(),
+    });
+  }
+  const sheet = await equipmentReferenceSheet(items);
+  const { data, info } = await sharp(sheet)
+    .removeAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  assert.equal(info.width, 1536);
+  assert.equal(info.height, 2112);
+  for (let i = 0; i < items.length; i++) {
+    const x = (i % 4) * 384 + 192,
+      y = Math.floor(i / 4) * 528 + 288;
+    assert.deepEqual(
+      [...data.subarray((y * info.width + x) * 3, (y * info.width + x) * 3 + 3)],
+      [30 + i * 10, 80, 120],
+    );
   }
 });

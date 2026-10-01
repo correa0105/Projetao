@@ -1,5 +1,21 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Correção da geração com muitos equipamentos (01/10/2026)
+
+Reprodução real identificou recusa de dez referências pela ferramenta nativa,
+que informou limite de cinco caminhos. Estilo e aparência usam duas posições.
+Até três equipamentos seguem em imagens individuais; acima disso, o worker
+monta uma única prancha de todos os itens, numerada e sem cortar os modelos.
+Descrições usam `reference_image: 3` e `reference_panel` para associar cada
+posição ao painel. A prancha serve apenas de referência; saída continua uma
+figura vestida, sem grade, etiquetas ou peças soltas. Mantidas escolhas de
+capacete, imagem do inventário, cota preservada em falhas e descarte de arquivos
+de referência após execução. Testes impõem máximo de cinco anexos e verificam
+as quinze posições na prancha. Reiniciar o worker no host após atualizar código.
+Validação: 36 testes isolados aprovados e geração nativa real concluída com os
+oito equipamentos do pedido que falhou; PNG vertical 1024 × 1536 validado pelo
+mesmo processamento do servidor. Worker local reiniciado com a correção.
+
 ## Descida agitada do kraken (01/10/2026)
 
 Final do ataque mantém os tentáculos ativos: soltam o casco, abrem lateralmente
@@ -51,9 +67,9 @@ ombreiras ajustado aos ombros, sem repetir as ombreiras presentes na referência
 do peitoral nem desenhar peças soltas atrás da figura. O prompt geral foi corrigido
 para não contradizer a cobertura do capacete. As instruções devem ser passadas
 ao prompt da ferramenta de geração; CLI simulado verifica todas as referências
-do conjunto. O worker fornece todos os caminhos locais e exige `referenced_image_paths`
-na ferramenta, evitando o limite de imagens recentes de `num_last_images_to_include`,
-que pode deixar capacete/peças anteriores de fora. A geração continua probabilística e não há verificação automática
+do conjunto. O worker fornece os caminhos locais de estilo, aparência e equipamentos
+(em prancha numerada quando há mais de três peças) e exige `referenced_image_paths`
+na ferramenta. A geração continua probabilística e não há verificação automática
 semântica do resultado. Artes concluídas anteriormente não são regeneradas.
 
 Correção visual de 01/10/2026: somente as peças de full plate seguem a arte da
