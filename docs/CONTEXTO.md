@@ -734,3 +734,5 @@ Correção da geração com capa (01/10/2026): dois pedidos produziram múltiplo
 Inventário (01/10/2026): resumo de ouro/peso/itens e painel de equipamentos usam fundo cinza neutro com a textura existente, dessaturada pelo blend luminosity e sobreposição escura; conteúdo e miniaturas mantêm suas cores.
 
 Mensagens globais (01/10/2026): FlashMessage/FlashMessages substituem erros e feedback de ações inline das páginas e modais. Notificações no topo direito entram pela direita e somem após 5 segundos, com botão de dispensar, empilhamento e deduplicação. Host usa popover manual no top layer, sem roubar foco, para aparecer sobre dialogs; respeita movimento reduzido e viewport mobile. Estados de carregamento e texto narrativo permanecem nos componentes. Teste de equipamentos verifica posição e desaparecimento do erro global.
+
+Correção do cinza do inventário (01/10/2026): removido viés azul dos fundos de resumo/equipamentos; sobreposição e base usam canais RGB iguais (#262626 e #383838), mantendo a textura dessaturada.
