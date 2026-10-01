@@ -86,13 +86,13 @@
   background-position:center top;
   background-size:100% 100%,var(--room-width) auto;
 }
-.cabinet-room-stage {position:relative;height:calc(var(--room-width) * .42 - 124px);margin-bottom:65px;}
+.cabinet-room-stage {position:relative;height:calc(var(--room-width) * .42 - 20px - var(--page-header-height) - 27px);margin-bottom:65px;}
 .cabinet-room-stage .fantasy-cabinet {position:absolute;width:calc(var(--room-width) * .48);bottom:0;left:50%;transform:translateX(-50%);}
-.cabinet-room-stage .fantasy-cabinet::after {content:'';position:absolute;z-index:-1;left:5%;right:5%;bottom:3%;height:5%;border-radius:50%;background:#090604b3;filter:blur(6px);}
+.cabinet-room-stage .fantasy-cabinet::after {content:'';position:absolute;z-index:-1;left:7%;right:7%;bottom:2.5%;height:2%;border-radius:50%;background:#090604d9;filter:blur(3px);}
 @media(max-width:700px) {
   .app-shell[data-page='achievements'] .main-shell {--room-width:100vw;}
   .app-shell[data-page='achievements'] .main-shell::before {top:125px;height:calc(100vw * .666667);}
-  .cabinet-room-stage {height:calc(100vw * .42 - 45px);min-height:115px;margin-bottom:50px;}
+  .cabinet-room-stage {height:calc(100vw * .42 - 16px);min-height:115px;margin-bottom:50px;}
   .cabinet-room-stage .fantasy-cabinet {width:72vw;}
 }
 @media(max-width:700px) { .cabinet-room-stage .fantasy-cabinet {width:48vw;} }

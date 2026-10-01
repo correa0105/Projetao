@@ -45,7 +45,7 @@ try {
 
   await pool.query("INSERT INTO achievements(character_id,code) VALUES($1,'first_character')", [first.id]);
   await page.goto(origin + '/#achievements'); await page.reload();
-  await page.getByRole('combobox', { name: 'Personagem ativo' }).click();
+  await page.locator('.profile-avatar').click();
   await page.getByRole('option', { name: 'Arden', exact: true }).click();
   await expect(page.locator('.catalog-achievement')).toHaveCount(5);
   await page.getByRole('button',{name:'Próxima',exact:true}).click();
@@ -131,7 +131,7 @@ try {
   await expect(page.getByRole('status')).toHaveText('Estante salva.');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.screenshot({path:'test-results/cabinet-mobile.png',fullPage:true});
-  await page.getByRole('combobox',{name:'Personagem ativo'}).click();
+  await page.locator('.profile-avatar').click();
   await page.getByRole('option',{name:'Mira',exact:true}).click();
   await expect(page.getByLabel('Nogueira',{exact:true})).toBeChecked();
   await expect(page.locator('.cabinet-slot .fantasy-medal')).toHaveCount(0);

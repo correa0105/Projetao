@@ -59,8 +59,8 @@
   clip-path: inset(0 0 0 100%);
   width: max-content;
   max-width: calc(100vw - 2 * var(--page-header-edge) - 24px);
-  min-height: 48px;
-  padding: 8px 30px 8px 10px;
+  min-height: 38px;
+  padding: 3px 30px 3px 10px;
   border: 1px solid #ad8c584d;
   border-radius: 9px 0 0 9px;
   background: linear-gradient(125deg, #22211ff5, #141311f5);
@@ -103,6 +103,16 @@
 }
 :root .app-shell .profile-menu .player-hud-selection {
   display: none;
+}
+.profile-character-summary {
+  font: 11px/1.3 var(--sans);
+  color: #dfcfb3;
+  max-width: 140px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 3px;
 }
 :root .app-shell .profile-menu .character-selector-trigger {
   font-size: 12.65px;

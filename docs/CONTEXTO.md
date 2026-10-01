@@ -700,3 +700,9 @@ Refino do perfil (01/10/2026): expansão mostra somente notificações e sair, c
 Estábulo (01/10/2026): conteúdo usa o mesmo recuo lateral do header (page-header-edge no desktop e 18px até 900px), preservando cenário em tela inteira e quebras responsivas existentes. Balão da Brida ancorado à direita do campo para não ultrapassar o limite. Painéis de nome, catálogo, selaria e checkout usam achievement-wood-v1.png com a mesma sobreposição escura do menu do mural.
 
 Refino do estábulo (01/10/2026): balão lateral à esquerda de Brida, com ponta alinhada à boca usando as dimensões reais da arte contida; acompanha os tamanhos responsivos. Removida a interrogação junto à pelagem. Botão Ver detalhes junto a Comprar conjunto abre a descrição e ficha da montaria e inclui nome, descrição, preço e peso da sela selecionada, quando houver.
+
+Correção explícita do balão da Brida (01/10/2026): manter a posição anterior acima da cabeça, ancorado à direita do campo; não colocar ao lado nem grudar na boca. Ponta curta inclinada para a boca, deslocada de acordo com o rosto da arte, preservando a distância visual entre balão e NPC.
+
+Perfil (01/10/2026): barra expansível reduzida para 38px de altura, retrato mantém 48px. Exibe Nível e classe em uma linha, sem o nome, junto às notificações e saída; todos centralizados verticalmente.
+
+Conquistas (01/10/2026): altura do palco da estante recalibrada para o espaçador do header compartilhado (42px + 27px), corrigindo o deslocamento vertical criado pela substituição do header antigo. Base desce 35px no desktop e 29px no celular, com sombra de contato menor e mais concentrada junto aos pés.

@@ -798,6 +798,14 @@ function Portal({ user }: { user: User }) {
             onOpenChange={setCharacterMenuOpen}
           >
             <div className="topbar-right">
+              {character && (
+                <span
+                  className="profile-character-summary"
+                  title={`Nível ${character.level} · ${character.class}`}
+                >
+                  Nível {character.level} · {character.class}
+                </span>
+              )}
               <div className="player-hud-selection">
                 {characters.length > 0 && (
                   <CharacterSelector
