@@ -49,6 +49,13 @@
   padding: 10px 6px;
   text-align: center;
 }
+:root .loot-pack-column :is(.loot-summary, .equipment-panel) {
+  background:
+    linear-gradient(#252628cc, #252628cc),
+    url('/character-parchment-v2.png') center / 760px auto,
+    #36383b;
+  background-blend-mode: normal, luminosity;
+}
 .loot-summary > div + div {
   border-left: 1px solid #a78a5133;
 }

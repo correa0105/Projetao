@@ -730,3 +730,5 @@ Prompt de arte simplificado (01/10/2026): ficha/raça/linhagem/tamanho prevalece
 Roupa básica da arte (01/10/2026): usuário especificou trapos velhos, camisa branca e calça cinza, folgados e gastos como pijama rudimentar, sem adornos ou acabamento elegante; substitui a descrição genérica de roupa medieval simples.
 
 Correção da geração com capa (01/10/2026): dois pedidos produziram múltiplos arquivos na mesma sessão Codex e terminaram com JSON de erro, ignorando arte nativa; saída também tinha fundo opaco. Recuperação passa a selecionar o último artefato apenas da sessão exata do pedido. Transparência real é verificada antes de aceitar e falha entra nas até três tentativas existentes de correção. Inventário exibe erro do pedido mais recente mesmo após recarregar; tentativas falhas preservam cota. Regressão simula múltiplos arquivos, JSON de erro e correção de alfa, sem geração paga.
+
+Inventário (01/10/2026): resumo de ouro/peso/itens e painel de equipamentos usam fundo cinza neutro com a textura existente, dessaturada pelo blend luminosity e sobreposição escura; conteúdo e miniaturas mantêm suas cores.
