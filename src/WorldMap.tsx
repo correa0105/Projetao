@@ -326,6 +326,8 @@ export function WorldMap({
           viewport.dataset.shipCount = String(fleetState.ships);
           viewport.dataset.krakenAttacks = String(fleetState.attacks);
           viewport.dataset.krakenActive = String(fleetState.attacking);
+          viewport.dataset.krakenPhase = fleetState.attackPhase;
+          viewport.dataset.krakenDepth = String(fleetState.krakenDepth);
         }
         renderer.render(scene, camera);
         lastDraw = time;

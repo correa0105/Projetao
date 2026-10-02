@@ -1,9 +1,10 @@
 import * as THREE from 'three';
+import { detailAtlasMaterial } from './world-model-material';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createSeaRoutes, type SeaPoint } from './world-sea-routes';
 
 const ATTACK_INTERVAL = 30,
-  ATTACK_DURATION = 9,
+  ATTACK_DURATION = 13,
   SPEED = 0.035,
   SHIP_SCALE = 0.75;
 /** Real 3D sailing ships and an articulated kraken, sharing the atlas water plane. */
@@ -23,7 +24,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     canvas = material('#c9b992', { side: THREE.DoubleSide }),
     dark = material('#252c2c'),
     rope = material('#473c2b'),
-    skin = material('#34574f', { roughness: 0.43, metalness: 0.08 }),
+    skin = material('#465a50', { roughness: 0.36, metalness: 0 }),
     suckers = material('#b4a08a', { roughness: 0.65 });
   // Surface detail follows the model, with no image pasted over the scene.
   for (const [m, kind] of [
@@ -32,33 +33,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     [canvas, 'cloth'],
     [skin, 'skin'],
   ] as const) {
-    m.onBeforeCompile = (shader) => {
-      shader.vertexShader = shader.vertexShader
-        .replace('#include <common>', '#include <common>\nvarying vec3 vFleetSurface;')
-        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvFleetSurface = position;');
-      shader.fragmentShader = shader.fragmentShader
-        .replace('#include <common>', '#include <common>\nvarying vec3 vFleetSurface;')
-        .replace(
-          '#include <color_fragment>',
-          `#include <color_fragment>
-          vec3 p = vFleetSurface;
-          ${
-            kind === 'skin'
-              ? `float mottles = sin(p.x*47.0 + sin(p.z*29.0))*sin(p.y*39.0);
-          diffuseColor.rgb *= 0.94 + mottles*0.13;
-          diffuseColor.rgb += vec3(0.02,0.045,0.025)*sin(p.z*15.0);`
-              : kind === 'cloth'
-                ? `float weave = sin(p.x*900.0)*sin(p.z*900.0);
-          float weather = sin(p.x*33.0+p.z*17.0)*sin(p.z*49.0);
-          diffuseColor.rgb *= 0.96 + weave*0.025 + weather*0.05;`
-                : `float grain = sin(p.y*240.0 + sin(p.x*95.0)*2.0);
-          float seam = smoothstep(0.94,0.99,fract(p.x*${kind === 'deck' ? '26.0' : '20.0'}));
-          diffuseColor.rgb *= 0.97 + grain*0.08 - seam*0.2;`
-          }
-        `,
-        );
-    };
-    m.customProgramCacheKey = () => 'fleet-detail-' + kind;
+    detailAtlasMaterial(m, kind);
   }
   const foam = new THREE.MeshBasicMaterial({
     color: '#8cacaa',
@@ -89,7 +64,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     r = 0.014,
     m: THREE.Material = wood,
   ) {
-    const obj = mesh(new THREE.CylinderGeometry(r, r, b.distanceTo(a), 6), m, parent);
+    const obj = mesh(new THREE.CylinderGeometry(r, r, b.distanceTo(a), 10), m, parent);
     obj.position.copy(a).add(b).multiplyScalar(0.5);
     obj.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize());
     return obj;
@@ -157,6 +132,16 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         0.012,
         trim,
       );
+    for (const side of [-1, 1])
+      for (const y of [-0.28, -0.16, -0.04, 0.08, 0.2]) {
+        spar(
+          obj,
+          new THREE.Vector3(side * 0.14, y, 0.1),
+          new THREE.Vector3(side * 0.14, y, 0.16),
+          0.004,
+          wood,
+        );
+      }
     mesh(new THREE.BoxGeometry(0.2, 0.16, 0.09), wood, obj, 0, -0.3, 0.145);
     for (const x of [-0.065, 0, 0.065]) {
       mesh(new THREE.BoxGeometry(0.035, 0.007, 0.035), dark, obj, x, -0.215, 0.158);
@@ -196,6 +181,22 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           0.004,
           rope,
         );
+    }
+    for (const side of [-1, 1]) {
+      spar(
+        obj,
+        new THREE.Vector3(side * 0.13, -0.3, 0.14),
+        new THREE.Vector3(0, -0.12, 0.68),
+        0.0025,
+        rope,
+      );
+      spar(
+        obj,
+        new THREE.Vector3(side * 0.11, 0.25, 0.14),
+        new THREE.Vector3(0, 0.18, 0.56),
+        0.0025,
+        rope,
+      );
     }
     spar(obj, new THREE.Vector3(0, 0.28, 0.12), new THREE.Vector3(0, 0.62, 0.23), 0.01);
     const flag = mesh(new THREE.PlaneGeometry(0.14, 0.09, 3, 1), dark, masts[0], 0.06, 0, 0.59);
@@ -298,12 +299,18 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
   kraken.name = 'sea-kraken';
   kraken.visible = false;
   group.add(kraken);
+  const mantle = mesh(new THREE.SphereGeometry(1, 28, 20), skin, kraken, 0, 0, -0.16);
+  mantle.scale.set(0.2, 0.25, 0.17);
+  for (const side of [-1, 1]) {
+    const eye = mesh(new THREE.SphereGeometry(1, 16, 12), dark, kraken, side * 0.15, 0.12, -0.045);
+    eye.scale.set(0.025, 0.038, 0.018);
+  }
   // Continuous tapered tubes replace visible cylinder joints; geometry is reused.
   const cupGeo = new THREE.TorusGeometry(1, 0.28, 6, 10),
     dropletGeo = new THREE.SphereGeometry(1, 6, 4);
   geometries.push(cupGeo, dropletGeo);
-  const tubeSegments = 26,
-    tubeSides = 10;
+  const tubeSegments = 40,
+    tubeSides = 16;
   const tentacles = Array.from({ length: 6 }, (_, i) => {
     const parts = Array.from({ length: 13 }, (_, j) => {
       const m = new THREE.Object3D();
@@ -369,6 +376,16 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
   splash.frustumCulled = false;
   splash.visible = false;
   kraken.add(splash);
+  const rippleGeometry = new THREE.RingGeometry(0.82, 1, 40);
+  geometries.push(rippleGeometry);
+  const ripples = tentacles.map(() => {
+    const mat = foam.clone();
+    mat.opacity = 0;
+    materials.push(mat);
+    const ring = new THREE.Mesh(rippleGeometry, mat);
+    kraken.add(ring);
+    return ring;
+  });
   const droplet = new THREE.Object3D();
   const strikeTimes = [2.25, 3.55, 4.7];
   const armStrikeTimes = [2.25, 3.88, 2.83, 4.7, 3.55, 4.16];
@@ -433,10 +450,10 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       wave = phase - (1 - t) * 1.4,
       cycle = ((wave % 1) + 1) % 1,
       lift = cycle < 0.7 ? Math.sin(Math.PI * smooth(cycle / 0.7)) : -0.08;
-    const lateral = Math.sin(wave * Math.PI * 2) * 0.055;
+    const lateral = (Math.sin(wave * Math.PI * 2) + 0.45 * Math.sin(wave * 10.7 + angle)) * 0.095;
     out.x += bend * (Math.cos(angle) * 0.26 - Math.sin(angle) * lateral);
     out.y += bend * (Math.sin(angle) * 0.26 + Math.cos(angle) * lateral);
-    out.z += bend * (0.26 + lift * 0.72);
+    out.z += bend * (0.22 + lift * (0.62 + 0.15 * Math.sin(angle * 4 + phase)));
   }
   return {
     group,
@@ -446,6 +463,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         seconds: clock,
         attacks,
         attacking: target >= 0,
+        attackPhase: target < 0 ? 'idle' : clock - attackStart < 7 ? 'attack' : 'submerging',
+        krakenDepth: kraken.position.z,
         positions: ships.map((s) => ({ x: s.obj.position.x, y: s.obj.position.y })),
       };
     },
@@ -511,11 +530,11 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       }
       if (target >= 0) {
         const t = clock - attackStart,
-          emerge = smooth(t / 2) * (1 - smooth((t - 7) / 2)),
+          emerge = smooth(t / 2) * (1 - smooth((t - 7) / 6)),
           grip = smooth((t - 1.8) / 2),
           sink = smooth((t - 4.2) / 2.8),
-          withdraw = smooth((t - 7.8) / 1.2),
-          thrash = smooth((t - 5.6) / 0.8) * (1 - smooth((t - 8.5) / 0.5)),
+          withdraw = smooth((t - 7) / 6),
+          thrash = smooth((t - 6.3) / 0.7) * (1 - smooth((t - 10.5) / 2.5)),
           s = ships[target];
         let impact = 0;
         for (const [i, hit] of armStrikeTimes.entries()) {
@@ -532,7 +551,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         s.wake.visible = s.otherWake.visible = false;
         s.masts[0].rotation.set(damage * 0.65, -damage * 1.05, damage * 0.18);
         s.masts[1].rotation.set(-smooth((t - 4.7) / 0.55) * 0.85, damage * 0.45, 0);
-        kraken.position.z = -sink * 0.22 - withdraw * 0.22;
+        kraken.position.z = -sink * 0.12 - withdraw * 0.8;
         for (const [i, tentacle] of tentacles.entries()) {
           // Independent, uneven blows in each arm's fixed lane.
           const hit = armStrikeTimes[i],
@@ -540,13 +559,31 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             slam = t >= hit ? -0.18 * Math.exp(-(t - hit) * 3.5) : 0,
             strike = lift * (i < 3 ? 0.7 : 0.45) + slam,
             frequency = armFrequencies[i],
-            phase = (t - 5.6) * frequency + armPhases[i],
+            phase = (t - 6.3) * frequency + 0.1 * Math.sin(t * 0.73 + i * 1.8) + armPhases[i],
             cycle = ((phase % 1) + 1) % 1,
             armGrip = grip * (1 - thrash * (0.35 + 0.12 * Math.sin(phase * 4)));
           tentacle.splashAge = cycle >= 0.7 ? (cycle - 0.7) / frequency : -1;
           for (let j = 0; j < tentacle.parts.length; j++) {
-            tentaclePoint(tentacle.angle, j / 13, armGrip, emerge, a, strike, thrash, phase);
-            tentaclePoint(tentacle.angle, (j + 1) / 13, armGrip, emerge, b, strike, thrash, phase);
+            tentaclePoint(
+              tentacle.angle,
+              j / 13,
+              armGrip,
+              emerge,
+              a,
+              strike,
+              thrash * (1 - withdraw * 0.55),
+              phase,
+            );
+            tentaclePoint(
+              tentacle.angle,
+              (j + 1) / 13,
+              armGrip,
+              emerge,
+              b,
+              strike,
+              thrash * (1 - withdraw * 0.55),
+              phase,
+            );
             const m = tentacle.parts[j],
               r = 0.05 * (1 - j / 15);
             m.position.copy(a).add(b).multiplyScalar(0.5);
@@ -557,8 +594,26 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             normals = tentacle.tube.geometry.getAttribute('normal');
           for (let row = 0; row <= tubeSegments; row++) {
             const u = row / tubeSegments;
-            tentaclePoint(tentacle.angle, u, armGrip, emerge, a, strike, thrash, phase);
-            tentaclePoint(tentacle.angle, u + 0.002, armGrip, emerge, b, strike, thrash, phase);
+            tentaclePoint(
+              tentacle.angle,
+              u,
+              armGrip,
+              emerge,
+              a,
+              strike,
+              thrash * (1 - withdraw * 0.55),
+              phase,
+            );
+            tentaclePoint(
+              tentacle.angle,
+              u + 0.002,
+              armGrip,
+              emerge,
+              b,
+              strike,
+              thrash * (1 - withdraw * 0.55),
+              phase,
+            );
             direction.copy(b).sub(a).normalize();
             normal.set(0, 0, 1).cross(direction);
             if (normal.lengthSq() < 0.001) normal.set(0, 1, 0).cross(direction);
@@ -579,18 +634,36 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           for (let j = 0; j < tentacle.cups.length; j++) {
             const m = tentacle.cups[j];
             const u = 0.2 + Math.floor(j / 2) * 0.09;
-            tentaclePoint(tentacle.angle, u, armGrip, emerge, m.position, strike, thrash, phase);
+            tentaclePoint(
+              tentacle.angle,
+              u,
+              armGrip,
+              emerge,
+              m.position,
+              strike,
+              thrash * (1 - withdraw * 0.55),
+              phase,
+            );
             const radius = 0.064 * Math.pow(1 - u, 0.8) + 0.003;
             m.position.x += Math.cos(tentacle.angle) * (j % 2 ? 1 : -1) * radius * 0.45;
             m.position.y += Math.sin(tentacle.angle) * (j % 2 ? 1 : -1) * radius * 0.45;
             m.position.z -= radius * 0.82;
             m.scale.setScalar(0.021 * (1 - u * 0.75));
           }
-          tentaclePoint(tentacle.angle, 1, armGrip, emerge, tentacle.tip, strike, thrash, phase);
+          tentaclePoint(
+            tentacle.angle,
+            1,
+            armGrip,
+            emerge,
+            tentacle.tip,
+            strike,
+            thrash * (1 - withdraw * 0.55),
+            phase,
+          );
         }
         for (const [i, plank] of debris.entries()) {
           const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);
-          plank.visible = age >= 0 && t < 8.5;
+          plank.visible = age >= 0 && t < 12;
           if (!plank.visible) continue;
           const angle = i * 2.399,
             distance = 0.14 + Math.min(age, 1.6) * (0.18 + (i % 3) * 0.08);
@@ -604,14 +677,25 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             age < 1 ? age * 2 : 0,
             angle + age * 0.3,
           );
-          plank.scale.setScalar(1 - smooth((t - 7.5) / 1));
+          plank.scale.setScalar(1 - smooth((t - 10) / 2));
         }
         const lastHit = armStrikeTimes.reduce(
             (latest, hit) => (t >= hit ? Math.max(latest, hit) : latest),
             -1,
           ),
           splashAge = lastHit < 0 ? -1 : t - lastHit;
-        const surfaceSlaps = thrash > 0.2;
+        for (const [i, ring] of ripples.entries()) {
+          const arm = tentacles[i],
+            age = arm.splashAge;
+          const active = thrash > 0.15 && withdraw < 0.8 && age >= 0 && age < 0.38;
+          ring.visible = active;
+          if (active) {
+            ring.position.set(arm.tip.x, arm.tip.y, 0.012 - kraken.position.z);
+            ring.scale.setScalar(0.045 + age * 0.65);
+            (ring.material as THREE.MeshBasicMaterial).opacity = 0.26 * (1 - age / 0.38) * thrash;
+          }
+        }
+        const surfaceSlaps = thrash > 0.2 && withdraw < 0.8;
         splash.visible = surfaceSlaps || (splashAge >= 0 && splashAge < 0.85);
         if (splash.visible) {
           for (let i = 0; i < 18; i++) {

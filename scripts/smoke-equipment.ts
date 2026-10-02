@@ -81,8 +81,10 @@ try {
   await expect(page.locator('.loot-backpack')).toHaveCount(0);
   await expect(equipment.locator('.equipment-note')).toHaveCount(0);
   const bag = page.getByRole('region', { name: 'Itens da mochila', exact: true });
-  expect(await equipment.evaluate((el) => getComputedStyle(el).backgroundImage)).toContain('character-parchment-v2.png');
-  expect(await equipment.evaluate((el) => getComputedStyle(el).backgroundBlendMode)).toContain('luminosity');
+  const panelBackground = await equipment.evaluate((el) => getComputedStyle(el).backgroundImage);
+  expect(panelBackground).toContain('rgba(23, 25, 26');
+  expect(panelBackground).toContain('rgba(16, 18, 19');
+  await page.screenshot({ path: 'test-results/inventory-dark-panel.png' });
   await dragEquipment(
     bag.getByRole('button', { name: 'Espada longa, quantidade 1', exact: true }),
     equipment.locator('[data-equipment-slot="armor"] .equipment-art'),
