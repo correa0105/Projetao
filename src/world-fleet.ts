@@ -502,6 +502,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         attackPhase:
           target < 0 ? 'idle' : clock - attackStart < SHIP_DESTROYED_AT ? 'attack' : 'submerging',
         krakenDepth: kraken.position.z,
+        krakenArmDepth:
+          kraken.position.z + tentacles.reduce((sum, arm) => sum + arm.tip.z, 0) / tentacles.length,
         positions: ships.map((s) => ({ x: s.obj.position.x, y: s.obj.position.y })),
       };
     },
@@ -567,7 +569,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       }
       if (target >= 0) {
         const t = clock - attackStart,
-          emerge = smooth(t / 2) * (1 - smooth((t - SHIP_DESTROYED_AT) / AFTERMATH_DURATION)),
+          emerge = smooth(t / 2),
           grip = smooth((t - 1.8) / 2),
           sink = smooth((t - 4.2) / 2.8),
           withdraw = smooth((t - SHIP_DESTROYED_AT) / AFTERMATH_DURATION),
@@ -588,8 +590,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         s.wake.visible = s.otherWake.visible = false;
         s.masts[0].rotation.set(damage * 0.65, -damage * 1.05, damage * 0.18);
         s.masts[1].rotation.set(-smooth((t - 4.7) / 0.55) * 0.85, damage * 0.45, 0);
-        // Arms collect and fold first; the body follows only at the end of their dive.
-        kraken.position.z = -sink * 0.12 - smooth((t - SHIP_DESTROYED_AT - 2.3) / 0.6) * 0.8;
+        // Never translate the arms as a rigid group: each centerline performs its own dive.
+        kraken.position.z = -sink * 0.12;
         // Loose boards drift first. Three arms reach the existing pieces before gripping them.
         for (const [i, plank] of debris.entries()) {
           const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);
@@ -633,7 +635,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
               THREE.MathUtils.lerp(board.position.z, tip.z + 0.035, liftBoard),
               reach,
             );
-            // A hooked end folds around the timber; the travelling bend remains active.
+            ending.curl = { center: tip.clone(), amount: smooth((after - catchAt + 0.35) / 0.55) };
+            // The wrist approaches the timber while the narrow tip wraps around it.
             ending.points[3].lerp(
               new THREE.Vector3(
                 tip.x + 0.075 * Math.cos(tentacle.angle),
@@ -689,11 +692,16 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           tentaclePoint(tentacle.angle, 1, armGrip, emerge, tentacle.tip, strike, thrash, ending);
           if (gathersBoard && after >= catchAt) {
             const board = debris[i];
-            board.position.copy(tentacle.tip);
-            board.position.z += 0.012;
-            sampleKrakenEnding(ending, 0.96, a);
-            direction.copy(tentacle.tip).sub(a).normalize();
-            board.quaternion.setFromUnitVectors(up, direction);
+            board.position.copy(ending.curl!.center);
+            const hold = smooth((after - catchAt) / 0.5);
+            const carrying = new THREE.Quaternion().setFromEuler(
+              new THREE.Euler(
+                0.18 * Math.sin(after * 2 + i),
+                -0.25 * hold,
+                i * 2.399 + 0.25 * Math.sin(after + i),
+              ),
+            );
+            board.quaternion.slerp(carrying, hold);
           }
         }
         const lastHit = armStrikeTimes.reduce(

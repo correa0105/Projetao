@@ -73,6 +73,7 @@ try {
   });
   await page.screenshot({ path: 'test-results/world-models-slap.png' });
   for (const [end, file] of [
+    [38.25, 'world-models-grasp'],
     [39.2, 'world-models-retreat'],
     [39.7, 'world-models-submerged'],
   ]) {

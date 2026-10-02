@@ -339,6 +339,7 @@ export function WorldMap({
           viewport.dataset.krakenActive = String(fleetState.attacking);
           viewport.dataset.krakenPhase = fleetState.attackPhase;
           viewport.dataset.krakenDepth = String(fleetState.krakenDepth);
+          viewport.dataset.krakenArmDepth = String(fleetState.krakenArmDepth);
         }
         renderer.render(scene, camera);
         lastDraw = time;

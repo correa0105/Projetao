@@ -24,7 +24,20 @@ test('tentáculos recolhem tábuas e levam a madeira sob a água sem encolher', 
       for (let side = 0; side < 16; side++)
         tip.add(new THREE.Vector3().fromBufferAttribute(positions, 40 * 17 + side));
       tip.divideScalar(16);
-      assert.ok(board.position.distanceTo(tip) < 0.025, 'madeira presa à ponta do braço');
+      assert.ok(board.position.distanceTo(tip) < 0.075, 'madeira dentro da ponta enrolada');
+      const curlPoints = [34, 36, 38, 40].map((row) => {
+        const point = new THREE.Vector3();
+        for (let side = 0; side < 16; side++)
+          point.add(new THREE.Vector3().fromBufferAttribute(positions, row * 17 + side));
+        return point.divideScalar(16);
+      });
+      const bends = curlPoints
+        .slice(1)
+        .map((point, n) => point.clone().sub(curlPoints[n]).normalize());
+      assert.ok(
+        bends[0].angleTo(bends[2]) > 1,
+        'a ponta se enrola na madeira em vez de segurá-la como uma haste',
+      );
       assert.equal(board.visible, true);
       assert.equal(board.scale.x, 1);
       return board;

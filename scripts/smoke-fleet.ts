@@ -59,9 +59,9 @@ try {
   await page.waitForTimeout(1900);
   await page.screenshot({ path: 'test-results/fleet-wreckage.png' });
   await expect(map).toHaveAttribute('data-kraken-phase', 'submerging', { timeout: 6000 });
-  const depth = Number(await map.getAttribute('data-kraken-depth'));
+  const depth = Number(await map.getAttribute('data-kraken-arm-depth'));
   await page.waitForTimeout(1700);
-  expect(Number(await map.getAttribute('data-kraken-depth'))).toBeLessThan(depth);
+  expect(Number(await map.getAttribute('data-kraken-arm-depth'))).toBeLessThan(depth);
   await page.screenshot({ path: 'test-results/fleet-kraken-descent.png' });
   await expect(map).toHaveAttribute('data-kraken-active', 'false', { timeout: 3000 });
   const attacks = await map.getAttribute('data-kraken-attacks');
