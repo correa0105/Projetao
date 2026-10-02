@@ -1549,6 +1549,33 @@ body:has(.world-atlas.is-world) {
     padding-top: 16px;
   }
 }
-.app-shell .player-hud .topbar-right { width: auto; min-width: 0; flex: 1; }
-.app-shell .player-hud .player-hud-selection { flex: 1; min-width: 0; }
-.app-shell .player-hud .logout-button { flex: 0 0 36px; }
+.app-shell .player-hud .topbar-right {
+  width: auto;
+  min-width: 0;
+  flex: 1;
+}
+.app-shell .player-hud .player-hud-selection {
+  flex: 1;
+  min-width: 0;
+}
+.app-shell .player-hud .logout-button {
+  flex: 0 0 36px;
+}
+
+/* Login shares the actual 3D world, with no navigation over the form. */
+.entry-map--world {
+  background: url('/atlas-world-v2.png') center / cover no-repeat;
+  filter: none;
+}
+.entry-map--world .world-map__viewport {
+  cursor: default;
+}
+.entry-map--world .world-map__status {
+  display: none;
+}
+.entry-map--world .world-map {
+  background: transparent;
+}
+.entry-page--auth .entry-atmosphere {
+  filter: none;
+}

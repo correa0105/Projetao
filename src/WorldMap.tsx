@@ -30,17 +30,21 @@ export function WorldMap({
   onSelect,
   selectedId = null,
   onReady,
+  paused = false,
+  decorative = false,
 }: {
   markers: AtlasMarker[];
   onSelect: (id: string) => void;
   selectedId?: string | null;
   onReady?: () => void;
+  paused?: boolean;
+  decorative?: boolean;
 }) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const markerRefs = useRef(new Map<string, HTMLButtonElement>());
   const controls = useRef<Controls | null>(null);
-  const latest = useRef({ markers, onSelect, onReady });
-  latest.current = { markers, onSelect, onReady };
+  const latest = useRef({ markers, onSelect, onReady, paused });
+  latest.current = { markers, onSelect, onReady, paused };
   const ignoreClickUntil = useRef(0);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [retry, setRetry] = useState(0);
@@ -58,6 +62,8 @@ export function WorldMap({
     let width = Math.max(1, viewport.clientWidth),
       height = Math.max(1, viewport.clientHeight);
     let frame = 0,
+      sceneTime = 0,
+      previousSceneTick = 0,
       lastDraw = 0,
       loadExpired = false,
       visible = !document.hidden;
@@ -290,6 +296,10 @@ export function WorldMap({
     function tick(time: number) {
       frame = 0;
       if (disposed || contextLost || !visible) return;
+      if (!latest.current.paused)
+        sceneTime += previousSceneTick ? Math.min(time - previousSceneTick, 100) : 0;
+      previousSceneTick = time;
+      const animationTime = decorative ? sceneTime : time;
       let done: (() => void) | undefined;
       if (animation) {
         const t = reducedMotion.matches
@@ -312,11 +322,12 @@ export function WorldMap({
         updateCamera();
       }
       if (ready && (time - lastDraw >= 32 || reducedMotion.matches || done)) {
-        relief?.update(reducedMotion.matches ? 0 : time);
-        clouds?.update(reducedMotion.matches ? 0 : time / 1000);
-        seascape?.update(reducedMotion.matches ? 0 : time / 1000);
-        fleet?.update(time / 1000, reducedMotion.matches);
-        dragon?.update(time / 1000, reducedMotion.matches);
+        relief?.update(reducedMotion.matches ? 0 : animationTime);
+        clouds?.update(reducedMotion.matches ? 0 : animationTime / 1000);
+        seascape?.update(reducedMotion.matches ? 0 : animationTime / 1000);
+        fleet?.update(animationTime / 1000, reducedMotion.matches || latest.current.paused);
+        dragon?.update(animationTime / 1000, reducedMotion.matches || latest.current.paused);
+        if (viewport) viewport.dataset.animationSeconds = String(animationTime / 1000);
         if (dragon && viewport) {
           viewport.dataset.dragonX = String(dragon.state.x);
           viewport.dataset.dragonFlapping = String(dragon.state.flapping);
@@ -333,7 +344,7 @@ export function WorldMap({
         lastDraw = time;
       }
       done?.();
-      if (animation || (ready && !reducedMotion.matches)) requestDraw();
+      if (animation || (ready && !reducedMotion.matches && !latest.current.paused)) requestDraw();
     }
     function stopAnimation() {
       animation = null;
@@ -797,6 +808,10 @@ export function WorldMap({
     controls.current?.refresh();
   }, [markers]);
 
+  useEffect(() => {
+    controls.current?.refresh();
+  }, [paused]);
+
   return (
     <div
       className={`world-map${entering ? ' is-entering' : ''}`}
@@ -812,7 +827,7 @@ export function WorldMap({
         role="region"
         aria-label="Mapa do mundo com relevo 3D"
         aria-describedby={hintId}
-        tabIndex={0}
+        tabIndex={decorative ? -1 : 0}
       >
         <div className="world-map__markers" aria-label="Territórios do mundo">
           {markers.map((marker) => (
@@ -849,33 +864,35 @@ export function WorldMap({
           ))}
         </div>
       </div>
-      <div className="world-map__tools" aria-label="Controles do mapa">
-        <button
-          aria-label="Aproximar mapa"
-          title="Aproximar mapa"
-          disabled={status !== 'ready' || zoom >= MAX_ZOOM - 0.001 || !!entering}
-          onClick={() => controls.current?.zoom(1.3)}
-        >
-          <Plus size={16} />
-        </button>
-        <button
-          aria-label="Afastar mapa"
-          title="Afastar mapa"
-          disabled={status !== 'ready' || zoom <= 1.001 || !!entering}
-          onClick={() => controls.current?.zoom(1 / 1.3)}
-        >
-          <Minus size={16} />
-        </button>
-        <button
-          aria-label="Centralizar mapa"
-          title="Centralizar mapa"
-          disabled={status !== 'ready' || !!entering}
-          onClick={() => controls.current?.reset()}
-        >
-          <Focus size={16} />
-        </button>
-        <span className="world-map__zoom">{Math.round(zoom * 100)}%</span>
-      </div>
+      {!decorative && (
+        <div className="world-map__tools" aria-label="Controles do mapa">
+          <button
+            aria-label="Aproximar mapa"
+            title="Aproximar mapa"
+            disabled={status !== 'ready' || zoom >= MAX_ZOOM - 0.001 || !!entering}
+            onClick={() => controls.current?.zoom(1.3)}
+          >
+            <Plus size={16} />
+          </button>
+          <button
+            aria-label="Afastar mapa"
+            title="Afastar mapa"
+            disabled={status !== 'ready' || zoom <= 1.001 || !!entering}
+            onClick={() => controls.current?.zoom(1 / 1.3)}
+          >
+            <Minus size={16} />
+          </button>
+          <button
+            aria-label="Centralizar mapa"
+            title="Centralizar mapa"
+            disabled={status !== 'ready' || !!entering}
+            onClick={() => controls.current?.reset()}
+          >
+            <Focus size={16} />
+          </button>
+          <span className="world-map__zoom">{Math.round(zoom * 100)}%</span>
+        </div>
+      )}
       <p id={hintId} className="sr-only">
         Arraste para explorar. Use o scroll ou dois dedos para aproximar. Pelo teclado, use as setas
         para mover, mais e menos para ampliar e Home para centralizar.

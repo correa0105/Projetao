@@ -571,7 +571,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           grip = smooth((t - 1.8) / 2),
           sink = smooth((t - 4.2) / 2.8),
           withdraw = smooth((t - SHIP_DESTROYED_AT) / AFTERMATH_DURATION),
-          thrash = smooth((t - SHIP_DESTROYED_AT + 0.35) / 0.35),
+          thrash = smooth((t - SHIP_DESTROYED_AT) / 0.65),
           s = ships[target];
         let impact = 0;
         for (const [i, hit] of armStrikeTimes.entries()) {
@@ -588,7 +588,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         s.wake.visible = s.otherWake.visible = false;
         s.masts[0].rotation.set(damage * 0.65, -damage * 1.05, damage * 0.18);
         s.masts[1].rotation.set(-smooth((t - 4.7) / 0.55) * 0.85, damage * 0.45, 0);
-        kraken.position.z = -sink * 0.12 - withdraw * 0.8;
+        // Arms collect and fold first; the body follows only at the end of their dive.
+        kraken.position.z = -sink * 0.12 - smooth((t - SHIP_DESTROYED_AT - 2.3) / 0.6) * 0.8;
         // Loose boards drift first. Three arms reach the existing pieces before gripping them.
         for (const [i, plank] of debris.entries()) {
           const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);
@@ -618,8 +619,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             ending = krakenEndingPose(after, i, tentacle.angle, -kraken.position.z),
             armGrip = grip * (1 - thrash * 0.45);
           const gathersBoard = true,
-            catchAt = 0.55 + i * 0.1,
-            reach = gathersBoard ? smooth((after - catchAt + 0.45) / 0.45) : 0;
+            catchAt = 0.85 + i * 0.08,
+            reach = gathersBoard ? smooth((after - catchAt + 0.7) / 0.7) : 0;
           if (reach > 0) {
             const board = debris[i],
               tip = ending.points[4],

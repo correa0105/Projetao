@@ -29,13 +29,16 @@ test('tentáculos recolhem tábuas e levam a madeira sob a água sem encolher', 
       assert.equal(board.scale.x, 1);
       return board;
     });
-    const before = boards.map((b) => b.position.clone());
+    const before = boards.map((b) => b.getWorldPosition(new THREE.Vector3()));
     advance(39.8);
     boards.forEach((board, i) => {
       assert.equal(board.visible, true, 'madeira não desaparece antes do mergulho');
       assert.equal(board.scale.x, 1, 'não reduzir a madeira para simular afundamento');
       assert.ok(board.position.z + kraken.position.z < -0.25, 'madeira levada sob a água');
-      assert.ok(board.position.distanceTo(before[i]) > 0.2, 'acompanha a retirada');
+      assert.ok(
+        board.getWorldPosition(new THREE.Vector3()).distanceTo(before[i]) > 0.2,
+        'acompanha a retirada',
+      );
     });
     advance(40.1);
     assert.equal(kraken.visible, false);
@@ -51,6 +54,11 @@ test('retirada não bate na água e termina em até três segundos', () => {
     for (let t = 0.05; t <= 39.85; t += 0.05) {
       fleet.update(t);
       if (t > 37.1) {
+        if (t < 38.2)
+          assert.ok(
+            Math.abs(fleet.group.getObjectByName('sea-kraken')!.position.z + 0.12) < 0.001,
+            'corpo permanece na superfície enquanto braços recolhem a madeira',
+          );
         const splash = fleet.group.getObjectByName('kraken-impact-splash') as THREE.InstancedMesh;
         const matrix = new THREE.Matrix4();
         if (splash.visible)

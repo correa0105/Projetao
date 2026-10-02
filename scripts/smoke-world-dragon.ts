@@ -24,6 +24,21 @@ const errors: string[] = [];
 page.on('pageerror', (e) => errors.push(e.message));
 try {
   await page.goto(origin);
+  const loginMap = page.locator('.entry-map--world .world-map__viewport');
+  await expect(loginMap).toHaveAttribute('data-status', 'ready', { timeout: 40000 });
+  await expect(page.locator('.entry-map--world canvas')).toHaveCount(1);
+  await expect(page.getByRole('button', { name: 'Aproximar mapa', exact: true })).toHaveCount(0);
+  await expect
+    .poll(async () => Number(await loginMap.getAttribute('data-animation-seconds')))
+    .toBeGreaterThan(0.1);
+  await page.getByRole('button', { name: 'Pausar animação', exact: true }).click();
+  const pausedTime = await loginMap.getAttribute('data-animation-seconds');
+  await page.waitForTimeout(500);
+  expect(await loginMap.getAttribute('data-animation-seconds')).toBe(pausedTime);
+  await page.getByRole('button', { name: 'Retomar animação', exact: true }).click();
+  await expect
+    .poll(async () => Number(await loginMap.getAttribute('data-animation-seconds')))
+    .toBeGreaterThan(Number(pausedTime));
   const music = page.locator('audio[data-site-music]');
   await expect(page.locator('.entry-music')).toBeVisible();
   await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
@@ -43,6 +58,7 @@ try {
   expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0.23);
   await page.getByRole('button', { name: 'Iniciar aventura', exact: true }).click();
   await expect(page.locator('.login-form')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Pausar animação', exact: true })).toBeVisible();
   await expect
     .poll(() => music.evaluate((a: HTMLAudioElement) => !a.paused && a.currentTime > 0))
     .toBe(true);
@@ -53,6 +69,7 @@ try {
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/login-music-mobile.png' });
   await page.setViewportSize({ width: 1440, height: 900 });
+  await expect(loginMap).toHaveAttribute('data-status', 'ready', { timeout: 40000 });
   await page.screenshot({ path: 'test-results/login-music-desktop.png' });
   const signup = await page.request.post(origin + '/api/auth/sign-up/email', {
     headers: { Origin: origin },

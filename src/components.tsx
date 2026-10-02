@@ -1,6 +1,6 @@
 import { MusicControls } from './SiteMusic';
 import { FlashMessage } from './FlashMessage';
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
   X,
   LoaderCircle,
@@ -29,6 +29,11 @@ import { SheetChoices } from './SheetChoices';
 import { defaultChoices, validateChoices } from '../shared/character-sheet';
 import { ReferenceInput } from './CharacterCamp';
 import type { ArtState } from '../shared/character-art';
+const LoginWorldMap = lazy(() =>
+  import('./WorldMap').then((module) => ({ default: module.WorldMap })),
+);
+const loginMarkers: [] = [];
+const ignoreLoginSelection = () => {};
 
 export function Empty({
   title,
@@ -158,16 +163,15 @@ export function Login() {
       data-transition={transition}
     >
       <div className="entry-atmosphere" aria-hidden="true">
-        <div className="entry-map" />
-        <div className="entry-mist" />
-        <div className="entry-cloud-current">
-          {[0, 1].map((copy) => (
-            <div className="entry-cloud-field" key={copy}>
-              <div className="entry-cloud entry-cloud--west" />
-              <div className="entry-cloud entry-cloud--east" />
-              <div className="entry-cloud entry-cloud--near" />
-            </div>
-          ))}
+        <div className="entry-map entry-map--world">
+          <Suspense fallback={null}>
+            <LoginWorldMap
+              markers={loginMarkers}
+              onSelect={ignoreLoginSelection}
+              paused={atmospherePaused}
+              decorative
+            />
+          </Suspense>
         </div>
         <div className="entry-vignette" />
       </div>
@@ -295,16 +299,14 @@ export function Login() {
           </section>
         )}
       </main>
-      {!started && (
-        <button
-          className="atmosphere-toggle"
-          aria-pressed={atmospherePaused}
-          onClick={() => setAtmospherePaused(!atmospherePaused)}
-        >
-          {atmospherePaused ? <Play size={13} /> : <Pause size={13} />}
-          {atmospherePaused ? 'Retomar atmosfera' : 'Pausar atmosfera'}
-        </button>
-      )}
+      <button
+        className="atmosphere-toggle"
+        aria-pressed={atmospherePaused}
+        onClick={() => setAtmospherePaused(!atmospherePaused)}
+      >
+        {atmospherePaused ? <Play size={13} /> : <Pause size={13} />}
+        {atmospherePaused ? 'Retomar animação' : 'Pausar animação'}
+      </button>
     </div>
   );
 }

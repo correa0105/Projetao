@@ -14,14 +14,18 @@ export function krakenEndingPose(
   water: number,
 ): KrakenEndingPose {
   const fold = smooth((age + 0.1) / 0.8);
-  const dive = smooth((age - 1.05 - index * 0.1) / (1.8 - index * 0.1));
-  const radii = [0.72, 0.61 - fold * 0.05, 0.4 - fold * 0.04, 0.17, 0.055];
+  const retract = (delay: number) =>
+    smooth((age - delay - index * 0.08) / (2.85 - delay - index * 0.08));
+  const shoulder = retract(1.35),
+    middle = retract(1.12),
+    end = retract(0.95);
+  const radii = [0.72, 0.61 - shoulder * 0.15, 0.4 - middle * 0.13, 0.17, 0.055];
   const heights = [
     -0.18,
-    water + 0.08 + fold * 0.12 - dive * 0.85,
-    water + 0.28 - fold * 0.06 - dive * 0.92,
-    water + 0.12 - fold * 0.04 - dive * 0.96,
-    water + 0.04 - dive,
+    water + 0.43 - fold * 0.12 - shoulder * 0.95,
+    water + 0.56 - fold * 0.16 - middle * 1.05,
+    water + 0.16 - fold * 0.04 - end * 0.96,
+    water + 0.04 - end,
   ];
   const points = radii.map(
     (r, i) => new THREE.Vector3(Math.cos(angle) * r, Math.sin(angle) * r, heights[i]),
