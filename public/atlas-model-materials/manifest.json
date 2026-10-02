@@ -1,0 +1,10 @@
+{
+  "created": "2026-10-02",
+  "source": "Generated with built-in imagegen for Alvorada Cinzenta",
+  "format": "1024x1024 WebP, quality 92, mipmapped at runtime",
+  "assets": [
+    { "file": "oak-v1.webp", "use": "Ship hull, deck, masts and wreckage", "description": "Seamless photographic weathered grey-brown oak planks, vertical natural grain, diffuse lighting." },
+    { "file": "kraken-skin-v1.webp", "use": "Kraken mantle and tentacles", "description": "Seamless realistic cephalopod skin, russet-brown chromatophores, irregular pores and papillae, no scales." },
+    { "file": "dragon-scales-v1.webp", "use": "Dragon body and limbs", "description": "Seamless irregular reptilian scales, muted grey-olive-brown, natural worn edges and small pores." }
+  ]
+}

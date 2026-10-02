@@ -18,14 +18,14 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     materials.push(m);
     return m;
   }
-  const wood = material('#513421'),
-    deck = material('#8e6842'),
-    trim = material('#ad8750', { metalness: 0.55, roughness: 0.46 }),
-    canvas = material('#c9b992', { side: THREE.DoubleSide }),
+  const wood = material('#473629'),
+    deck = material('#82705a'),
+    trim = material('#777061', { metalness: 0.45, roughness: 0.62 }),
+    canvas = material('#b9b5a5', { side: THREE.DoubleSide }),
     dark = material('#252c2c'),
     rope = material('#473c2b'),
-    skin = material('#465a50', { roughness: 0.36, metalness: 0 }),
-    suckers = material('#b4a08a', { roughness: 0.65 });
+    skin = material('#6b5148', { roughness: 0.48, metalness: 0 }),
+    suckers = material('#ad9884', { roughness: 0.58 });
   // Surface detail follows the model, with no image pasted over the scene.
   for (const [m, kind] of [
     [wood, 'wood'],
@@ -333,6 +333,10 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         3,
       ).setUsage(THREE.DynamicDrawUsage),
     );
+    const uv = [];
+    for (let row = 0; row <= tubeSegments; row++)
+      for (let side = 0; side <= tubeSides; side++) uv.push(side / tubeSides, row / tubeSegments);
+    tubeGeometry.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
     const indices: number[] = [];
     for (let row = 0; row < tubeSegments; row++)
       for (let side = 0; side < tubeSides; side++) {
@@ -436,25 +440,30 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
     phase = 0,
   ) {
     const reach = 0.7 * (1 - t) + (0.12 + 0.12 * Math.sin(t * 8)) * t * grip;
-    // Fixed radial lanes: bend sideways locally, never coil around the ship.
     const side = Math.sin(t * Math.PI) * Math.sin(angle * 3 + 1) * grip * 0.075;
-    out.set(
-      Math.cos(angle) * reach - Math.sin(angle) * side,
-      Math.sin(angle) * reach + Math.cos(angle) * side,
+    const attackZ =
       -0.13 +
-        emerge * (Math.sin(t * Math.PI) * (0.35 + grip * 0.27) + t * 0.1) +
-        strike * Math.pow(t, 1.5),
+      emerge * (Math.sin(t * Math.PI) * (0.35 + grip * 0.27) + t * 0.1) +
+      strike * Math.pow(t, 1.5);
+    // Unfold the whole arm radially. No phase travelling around the arm's axis.
+    const cycle = ((phase % 1) + 1) % 1;
+    const lift = cycle < 0.57 ? smooth(cycle / 0.57) : 1 - smooth((cycle - 0.57) / 0.15);
+    const extension = 0.16 + t * (1.22 + 0.14 * Math.sin(angle * 5));
+    const outwardReach = THREE.MathUtils.lerp(reach, extension, thrash);
+    const outwardSide = side * (1 - thrash);
+    // The middle and tip rise together; the downward stroke reaches the water.
+    const water = -kraken.position.z;
+    const armWeight = Math.sin(t * Math.PI * 0.5);
+    const slapZ =
+      THREE.MathUtils.lerp(-0.13, water - 0.055, smooth(t / 0.3)) +
+      armWeight * lift * (0.62 + 0.18 * Math.sin(angle * 3 + phase * 0.17));
+    out.set(
+      Math.cos(angle) * outwardReach - Math.sin(angle) * outwardSide,
+      Math.sin(angle) * outwardReach + Math.cos(angle) * outwardSide,
+      THREE.MathUtils.lerp(attackZ, slapZ, thrash),
     );
-    // A travelling bend, rather than translating a rigid arm into the sea.
-    const bend = t * t * thrash,
-      wave = phase - (1 - t) * 1.4,
-      cycle = ((wave % 1) + 1) % 1,
-      lift = cycle < 0.7 ? Math.sin(Math.PI * smooth(cycle / 0.7)) : -0.08;
-    const lateral = (Math.sin(wave * Math.PI * 2) + 0.45 * Math.sin(wave * 10.7 + angle)) * 0.095;
-    out.x += bend * (Math.cos(angle) * 0.26 - Math.sin(angle) * lateral);
-    out.y += bend * (Math.sin(angle) * 0.26 + Math.cos(angle) * lateral);
-    out.z += bend * (0.22 + lift * (0.62 + 0.15 * Math.sin(angle * 4 + phase)));
   }
+
   return {
     group,
     get state() {
@@ -562,28 +571,10 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             phase = (t - 6.3) * frequency + 0.1 * Math.sin(t * 0.73 + i * 1.8) + armPhases[i],
             cycle = ((phase % 1) + 1) % 1,
             armGrip = grip * (1 - thrash * (0.35 + 0.12 * Math.sin(phase * 4)));
-          tentacle.splashAge = cycle >= 0.7 ? (cycle - 0.7) / frequency : -1;
+          tentacle.splashAge = cycle >= 0.72 ? (cycle - 0.72) / frequency : -1;
           for (let j = 0; j < tentacle.parts.length; j++) {
-            tentaclePoint(
-              tentacle.angle,
-              j / 13,
-              armGrip,
-              emerge,
-              a,
-              strike,
-              thrash * (1 - withdraw * 0.55),
-              phase,
-            );
-            tentaclePoint(
-              tentacle.angle,
-              (j + 1) / 13,
-              armGrip,
-              emerge,
-              b,
-              strike,
-              thrash * (1 - withdraw * 0.55),
-              phase,
-            );
+            tentaclePoint(tentacle.angle, j / 13, armGrip, emerge, a, strike, thrash, phase);
+            tentaclePoint(tentacle.angle, (j + 1) / 13, armGrip, emerge, b, strike, thrash, phase);
             const m = tentacle.parts[j],
               r = 0.05 * (1 - j / 15);
             m.position.copy(a).add(b).multiplyScalar(0.5);
@@ -594,26 +585,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             normals = tentacle.tube.geometry.getAttribute('normal');
           for (let row = 0; row <= tubeSegments; row++) {
             const u = row / tubeSegments;
-            tentaclePoint(
-              tentacle.angle,
-              u,
-              armGrip,
-              emerge,
-              a,
-              strike,
-              thrash * (1 - withdraw * 0.55),
-              phase,
-            );
-            tentaclePoint(
-              tentacle.angle,
-              u + 0.002,
-              armGrip,
-              emerge,
-              b,
-              strike,
-              thrash * (1 - withdraw * 0.55),
-              phase,
-            );
+            tentaclePoint(tentacle.angle, u, armGrip, emerge, a, strike, thrash, phase);
+            tentaclePoint(tentacle.angle, u + 0.002, armGrip, emerge, b, strike, thrash, phase);
             direction.copy(b).sub(a).normalize();
             normal.set(0, 0, 1).cross(direction);
             if (normal.lengthSq() < 0.001) normal.set(0, 1, 0).cross(direction);
@@ -634,32 +607,14 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
           for (let j = 0; j < tentacle.cups.length; j++) {
             const m = tentacle.cups[j];
             const u = 0.2 + Math.floor(j / 2) * 0.09;
-            tentaclePoint(
-              tentacle.angle,
-              u,
-              armGrip,
-              emerge,
-              m.position,
-              strike,
-              thrash * (1 - withdraw * 0.55),
-              phase,
-            );
+            tentaclePoint(tentacle.angle, u, armGrip, emerge, m.position, strike, thrash, phase);
             const radius = 0.064 * Math.pow(1 - u, 0.8) + 0.003;
             m.position.x += Math.cos(tentacle.angle) * (j % 2 ? 1 : -1) * radius * 0.45;
             m.position.y += Math.sin(tentacle.angle) * (j % 2 ? 1 : -1) * radius * 0.45;
             m.position.z -= radius * 0.82;
             m.scale.setScalar(0.021 * (1 - u * 0.75));
           }
-          tentaclePoint(
-            tentacle.angle,
-            1,
-            armGrip,
-            emerge,
-            tentacle.tip,
-            strike,
-            thrash * (1 - withdraw * 0.55),
-            phase,
-          );
+          tentaclePoint(tentacle.angle, 1, armGrip, emerge, tentacle.tip, strike, thrash, phase);
         }
         for (const [i, plank] of debris.entries()) {
           const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);

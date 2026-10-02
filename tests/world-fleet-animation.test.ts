@@ -29,8 +29,34 @@ test('kraken continua batendo braços independentes enquanto submerge após o ba
         const vertices = arm.geometry.getAttribute('position');
         return vertices.getZ(vertices.count - 1);
       });
+    const armCenters = () =>
+      Array.from({ length: 6 }, (_, i) => {
+        const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
+        const vertices = arm.geometry.getAttribute('position');
+        return [10, 20, 30, 40].map((row) => {
+          const center = new THREE.Vector3();
+          for (let side = 0; side < 16; side++)
+            center.add(new THREE.Vector3().fromBufferAttribute(vertices, row * 17 + side));
+          return center.divideScalar(16);
+        });
+      });
+    const centers = armCenters();
+    for (const points of centers) {
+      for (let i = 1; i < points.length; i++)
+        assert.ok(
+          Math.hypot(points[i].x, points[i].y) >
+            Math.hypot(points[i - 1].x, points[i - 1].y) + 0.15,
+          'braço se estende para fora, sem enrolar no próprio eixo',
+        );
+      assert.ok(Math.hypot(points[3].x, points[3].y) > 1.2, 'tentáculo completamente estendido');
+    }
     const before = tips();
     advance(0.3);
+    const midDeltas = armCenters().map((points, i) => points[1].z - centers[i][1].z);
+    assert.ok(
+      midDeltas.filter((d) => Math.abs(d) > 0.04).length >= 3,
+      'movimento amplo também no meio dos braços',
+    );
     const deltas = tips().map((tip, i) => tip - before[i]);
     assert.ok(
       deltas.some((d) => d > 0.01),

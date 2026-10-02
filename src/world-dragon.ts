@@ -10,11 +10,11 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
   group.add(dragon);
   const geometries: THREE.BufferGeometry[] = [];
   const materials: THREE.Material[] = [];
-  const skin = new THREE.MeshStandardMaterial({ color: 0x3a443c, roughness: 0.67, metalness: 0 });
-  const belly = new THREE.MeshStandardMaterial({ color: 0xab9270, roughness: 0.9 });
-  const horn = new THREE.MeshStandardMaterial({ color: 0xc2af8a, roughness: 0.65 });
+  const skin = new THREE.MeshStandardMaterial({ color: 0x4c5042, roughness: 0.67, metalness: 0 });
+  const belly = new THREE.MeshStandardMaterial({ color: 0x93806b, roughness: 0.9 });
+  const horn = new THREE.MeshStandardMaterial({ color: 0xada28c, roughness: 0.65 });
   const membrane = new THREE.MeshStandardMaterial({
-    color: 0x665348,
+    color: 0x796557,
     roughness: 0.78,
     side: THREE.DoubleSide,
   });
@@ -111,30 +111,32 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
       v(s * 0.25, -0.53, -0.02),
     ];
     for (const tip of tips) bone(wing, wrist, tip, 0.02, skin, 0.005);
-    const positions: number[] = [];
-    // Scalloped trailing edges and gently curved membrane panels.
-    for (let i = 0; i < tips.length - 1; i++) {
-      const a = tips[i],
-        b = tips[i + 1];
-      const edge = a.clone().add(b).multiplyScalar(0.5).lerp(wrist, 0.15);
-      edge.z -= 0.055;
-      const center = wrist
-        .clone()
-        .add(a)
-        .add(b)
-        .multiplyScalar(1 / 3);
-      center.z -= 0.025;
-      const ring = [wrist, a, edge, b];
-      for (let j = 0; j < ring.length; j++)
-        positions.push(
-          ...center.toArray(),
-          ...ring[j].toArray(),
-          ...ring[(j + 1) % ring.length].toArray(),
-        );
+    const positions: number[] = [],
+      indices: number[] = [];
+    // Subdivided curved membranes replace the flat triangular facets.
+    const steps = 10;
+    for (let panel = 0; panel < tips.length - 1; panel++) {
+      const start = positions.length / 3;
+      for (let row = 0; row <= steps; row++)
+        for (let col = 0; col <= steps; col++) {
+          const radius = row / steps,
+            along = col / steps;
+          const edge = tips[panel].clone().lerp(tips[panel + 1], along);
+          edge.lerp(wrist, Math.sin(along * Math.PI) * 0.13);
+          const point = wrist.clone().lerp(edge, radius);
+          point.z -= Math.sin(radius * Math.PI) * Math.sin(along * Math.PI) * 0.09;
+          positions.push(...point.toArray());
+        }
+      for (let row = 0; row < steps; row++)
+        for (let col = 0; col < steps; col++) {
+          const n = start + row * (steps + 1) + col;
+          if (row > 0) indices.push(n, n + 1, n + steps + 1);
+          indices.push(n + 1, n + steps + 2, n + steps + 1);
+        }
     }
-    positions.push(...v(0, 0, 0).toArray(), ...wrist.toArray(), ...tips[4].toArray());
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geo.setIndex(indices);
     geo.computeVertexNormals();
     geometries.push(geo);
     wing.add(new THREE.Mesh(geo, membrane));
