@@ -3,7 +3,21 @@
   width: calc(100% - 64px);
 }
 .home-journal {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100dvh - 140px);
+  padding-inline: clamp(16px, 3vw, 44px);
   padding-bottom: 72px;
+}
+.home-journal::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(#120b0666, #120b0673),
+    url('/home-open-parchment.webp') center / 100% 100% no-repeat;
 }
 .journal-masthead {
   display: flex;
@@ -26,7 +40,7 @@
   color: #eadfcb;
 }
 .journal-masthead p {
-  color: #a79f93;
+  color: #d3c4ae;
   font-size: 13px;
   margin: 10px 0 0;
 }
@@ -231,7 +245,7 @@
   margin: 10px 0;
 }
 .journal-agenda > p {
-  color: #9f978b;
+  color: #d3c4ae;
   font-size: 13px;
 }
 .journal-agenda-entry {

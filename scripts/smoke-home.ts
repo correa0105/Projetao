@@ -80,6 +80,12 @@ try {
   ).toBe(400);
   await page.goto(origin + '/#overview');
   await expect(page.getByRole('heading', { name: 'O Diário da Alvorada' })).toBeVisible();
+  await expect(page.locator('.journal-card')).toHaveCount(0);
+  expect(
+    await page
+      .locator('.home-journal')
+      .evaluate((element) => getComputedStyle(element, '::before').backgroundImage),
+  ).toContain('home-open-parchment');
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/home-journal-default.png', fullPage: true });
   await page.getByRole('button', { name: 'Nova publicação', exact: true }).click();

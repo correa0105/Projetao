@@ -37,48 +37,6 @@ const blank: HomeUpdateInput = {
   text_size: 'normal',
   position: 0,
 };
-const introductions: HomeUpdate[] = [
-  {
-    ...blank,
-    id: 'intro-world',
-    author_id: '',
-    author_name: 'Alvorada Cinzenta',
-    can_edit: false,
-    created_at: '',
-    revision: 1,
-    title: 'O mundo espera por uma nova história.',
-    body: 'Entre montanhas, reinos e caminhos esquecidos, há sempre uma próxima aventura. Explore as terras da Alvorada e descubra onde a sua jornada continua.',
-    link: '#world',
-  },
-  {
-    ...blank,
-    id: 'intro-camp',
-    author_id: '',
-    author_name: 'Alvorada Cinzenta',
-    can_edit: false,
-    created_at: '',
-    revision: 1,
-    title: 'Quem seguirá a próxima trilha?',
-    body: 'Reúna seus personagens. Toda grande história começa com bons companheiros.',
-    layout: 'landscape',
-    image_path: homeImages[1].path,
-    link: '#characters',
-  },
-  {
-    ...blank,
-    id: 'intro-board',
-    author_id: '',
-    author_name: 'Alvorada Cinzenta',
-    can_edit: false,
-    created_at: '',
-    revision: 1,
-    title: 'Um chamado na taverna.',
-    body: 'Veja as missões publicadas pela guilda e encontre a sua próxima mesa.',
-    layout: 'portrait',
-    image_path: homeImages[2].path,
-    link: '#board',
-  },
-];
 // Plain text with a small, safe formatting vocabulary. Never render submitted HTML.
 function inline(text: string): ReactNode[] {
   return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
@@ -345,7 +303,6 @@ export function HomeJournal({ upcoming }: { upcoming: Post[] }) {
       setBusy(false);
     }
   };
-  const shown = items.length ? items : introductions;
   return (
     <section className="home-journal">
       <div className="page-header-spacer" aria-hidden="true" />
@@ -369,7 +326,7 @@ export function HomeJournal({ upcoming }: { upcoming: Post[] }) {
         </div>
       )}
       <div className="journal-grid">
-        {shown.map((item) => (
+        {items.map((item) => (
           <JournalCard key={item.id} item={item} onEdit={open} />
         ))}
       </div>
