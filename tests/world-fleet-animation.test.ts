@@ -84,7 +84,29 @@ test('kraken continua batendo braços independentes enquanto submerge após o ba
       'outro bate na água simultaneamente',
     );
     assert.ok(fleet.state.krakenDepth < depth, 'corpo afunda progressivamente');
-    advance(2.2);
+    const armTops = () =>
+      Array.from({ length: 6 }, (_, i) => {
+        const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
+        const vertices = arm.geometry.getAttribute('position');
+        let top = -Infinity;
+        for (let j = 0; j < vertices.count; j++)
+          top = Math.max(top, vertices.getZ(j) + kraken.position.z);
+        return top;
+      });
+    advance(1.3);
+    const retiring = armTops();
+    assert.ok(
+      retiring.some((z) => z < 0) && retiring.some((z) => z > 0),
+      'braços afundam em momentos diferentes',
+    );
+    assert.equal(fleet.group.getObjectByName('kraken-retreat-wash')!.visible, true);
+    advance(0.6);
+    assert.ok(
+      armTops().every((z) => z < 0),
+      'todos ficam sob a água antes de esconder o modelo',
+    );
+    assert.equal(kraken.visible, true);
+    advance(0.3);
     assert.equal(fleet.state.attacking, false);
     assert.equal(kraken.visible, false);
     assert.ok(

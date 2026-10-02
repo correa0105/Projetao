@@ -52,6 +52,7 @@ try {
     kraken.position.x = 0;
     kraken.position.y = 0;
     scene.add(kraken);
+    scene.add(fleet.group.getObjectByName('kraken-retreat-wash'));
     const dragon = createWorldDragon(() => 0);
     dragon.update(4);
     const body = dragon.group.children[0];
@@ -71,6 +72,19 @@ try {
     p.renderer.render(p.scene, p.camera);
   });
   await page.screenshot({ path: 'test-results/world-models-slap.png' });
+  for (const [end, file] of [
+    [39.2, 'world-models-retreat'],
+    [39.7, 'world-models-submerged'],
+  ]) {
+    await page.evaluate((end) => {
+      const p = window.modelPreview;
+      const start = p.time + 0.35;
+      for (let time = start + 0.05; time <= end + 0.001; time += 0.05) p.fleet.update(time);
+      p.time = end - 0.35;
+      p.renderer.render(p.scene, p.camera);
+    }, end);
+    await page.screenshot({ path: 'test-results/' + file + '.png' });
+  }
   expect(errors).toEqual([]);
   console.log('Materiais e modelos: renderização próxima sem erros WebGL/shader.');
 } finally {
