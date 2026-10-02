@@ -264,3 +264,5 @@ No Início, **Nova publicação** abre o editor de artigos, imagens e reuniões.
 A música começa a 40%, após a primeira interação quando necessário. Os controles no login e junto ao retrato superior direito permitem mutar e ajustar de 0% a 100%; ambas as preferências persistem no navegador. A loja usa a faixa Medieval Market enviada pelo usuário e toca um sino metálico curto uma vez ao entrar. As demais páginas mantêm Medieval Travelers Journey, com continuidade entre rotas que usam a mesma faixa. `siteSoundtracks` (`src/SiteMusic.tsx`) define as faixas por página; o sino também respeita volume e mute.
 
 Verificação isolada do Início e da sombra da estante: `node scripts/test-home-isolated.mjs`. A verificação do dragão também valida reprodução, mute persistido, volume e continuidade de áudio: `node scripts/test-world-dragon-isolated.mjs`. Não executar os testes em produção.
+
+O estábulo usa uma nova vista do vale do acampamento, com montanhas, ponte e cidade coerentes com a tela Personagens. Sombras junto aos cascos são calculadas para cada pelagem e equipamento. Arte e prompt em `docs/STABLE-ART.md`; validação isolada em `node scripts/test-stable-isolated.mjs`.

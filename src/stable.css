@@ -171,7 +171,7 @@
  .stable-keeper { bottom:9%; height:67%; }
  .stable-feed { bottom:9%; }
 }
-.stable-background { background-image:linear-gradient(#11190e33,transparent 45%,#1c220e22),url('/stable/paddock-eye-level.png'); }
+.stable-background { background-image:linear-gradient(#10172026,transparent 50%,#13120f14),url('/stable/paddock-camp-v2.webp'); }
 /* Name and checkout belong to the left column, on either side of its catalog. */
 .stable-name { flex:none; display:flex; align-items:center; gap:8px; padding:10px; }
 .stable-name label { color:#dfc9a3; font-size:11px; flex:none; }
@@ -234,4 +234,33 @@
  .stable-speech { bottom:calc(100% - 2px); }
  .stable-order-actions { grid-column:2; grid-row:1; grid-template-columns:1fr 1.4fr; gap:4px; }
  :root .stable-order-actions .button { padding:5px 3px; font-size:9px; }
+}
+
+/* Contact follows opaque hoof pixels for every coat/saddle/barding, not the PNG box. */
+.stable-animal-art { filter:none; }
+.stable-animal-base {
+  filter:saturate(.88) brightness(.89) contrast(.98);
+}
+.stable-cast-shadow {
+  transform-origin:50% 96%;
+  transform:skewX(34deg) scaleY(.14);
+  filter:brightness(0) blur(4px);
+  opacity:.23;
+  mix-blend-mode:multiply;
+}
+.stable-hoof-contact {
+  position:absolute;
+  height:2.2%;
+  transform:translate(-50%,-35%);
+  background:radial-gradient(ellipse at center,#17100dde 0%,#21170ca3 24%,#251b1252 48%,transparent 73%);
+  mix-blend-mode:multiply;
+  pointer-events:none;
+}
+.stable-animal-art::before {
+  content:'';
+  position:absolute;
+  left:24%; right:15%; bottom:2.5%; height:6%;
+  background:radial-gradient(ellipse,#17100d4d,transparent 72%);
+  mix-blend-mode:multiply;
+  pointer-events:none;
 }
