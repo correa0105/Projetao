@@ -51,9 +51,9 @@
 }
 :root .loot-pack-column :is(.loot-summary, .equipment-panel) {
   background:
-    linear-gradient(#262626cc, #262626cc),
+    linear-gradient(#34213dcc, #24172ecc),
     url('/character-parchment-v2.png') center / 760px auto,
-    #383838;
+    #543562;
   background-blend-mode: normal, luminosity;
 }
 .loot-summary > div + div {

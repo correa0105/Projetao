@@ -6,6 +6,7 @@ import { createWorldRelief, WORLD_WIDTH, WORLD_HEIGHT } from './world-relief';
 import { createWorldClouds } from './world-clouds';
 import { createWorldSeascape } from './world-seascape';
 import { createWorldFleet } from './world-fleet';
+import { createWorldDragon } from './world-dragon';
 import './world-map.css';
 
 type View = { zoom: number; x: number; y: number };
@@ -75,6 +76,7 @@ export function WorldMap({
     let clouds: ReturnType<typeof createWorldClouds> | undefined;
     let seascape: ReturnType<typeof createWorldSeascape> | undefined;
     let fleet: ReturnType<typeof createWorldFleet> | undefined;
+    let dragon: ReturnType<typeof createWorldDragon> | undefined;
     let hoveredId: string | null = null;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const pointers = new Map<number, { x: number; y: number }>();
@@ -314,6 +316,11 @@ export function WorldMap({
         clouds?.update(reducedMotion.matches ? 0 : time / 1000);
         seascape?.update(reducedMotion.matches ? 0 : time / 1000);
         fleet?.update(time / 1000, reducedMotion.matches);
+        dragon?.update(time / 1000, reducedMotion.matches);
+        if (dragon && viewport) {
+          viewport.dataset.dragonX = String(dragon.state.x);
+          viewport.dataset.dragonFlapping = String(dragon.state.flapping);
+        }
         if (fleet && viewport) {
           const fleetState = fleet.state;
           viewport.dataset.shipCount = String(fleetState.ships);
@@ -732,6 +739,8 @@ export function WorldMap({
         scene.add(seascape.group);
         fleet = createWorldFleet(result.sampleHeight);
         scene.add(fleet.group);
+        dragon = createWorldDragon(result.sampleHeight);
+        scene.add(dragon.group);
         viewport.dataset.terrainVertices = String(result.vertexCount);
         renderer.shadowMap.needsUpdate = true;
         ready = true;
@@ -773,6 +782,7 @@ export function WorldMap({
       clouds?.dispose();
       seascape?.dispose();
       fleet?.dispose();
+      dragon?.dispose();
       relief?.dispose();
       light.shadow.dispose();
       scene.clear();
