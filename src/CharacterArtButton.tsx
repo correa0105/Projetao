@@ -87,11 +87,7 @@ export function CharacterArtButton({
         }}
       >
         <Sparkles size={15} />
-        {pending
-          ? 'Preparando arte…'
-          : character.portrait_revision
-            ? 'Nova imagem'
-            : 'Gerar imagem'}
+        {pending ? 'Vestindo...' : 'Vestir'}
       </button>
       {!pending && !state.available && (
         <p className="muted" role="status">
@@ -162,7 +158,7 @@ export function CharacterArtButton({
               </FlashMessage>
             )}
             <button className="button primary" disabled={busy || !reference || !equipmentReady}>
-              {busy ? 'Enviando…' : 'Gerar imagem'}
+              {busy ? 'Vestindo...' : 'Vestir'}
             </button>
           </form>
         </Modal>
