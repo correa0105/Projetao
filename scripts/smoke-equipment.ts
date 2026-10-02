@@ -128,8 +128,8 @@ try {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/equipment-mobile.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await expect(equipment.getByRole('button', { name: 'Gerar imagem', exact: true })).toBeEnabled();
-  await page.getByRole('button', { name: 'Gerar imagem', exact: true }).click();
+  await expect(equipment.getByRole('button', { name: 'Vestir', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: 'Vestir', exact: true }).click();
   const modal = page.getByRole('dialog');
   await expect(modal.locator('.art-equipment-choice')).toHaveCount(4);
   const sword = modal.locator('.art-equipment-choice').filter({ hasText: 'Espada longa' });
@@ -142,7 +142,7 @@ try {
   await modal
     .getByLabel('Imagem de referência', { exact: true })
     .setInputFiles({ name: 'reference.png', mimeType: 'image/png', buffer: reference });
-  await expect(modal.getByRole('button', { name: 'Gerar imagem', exact: true })).toBeEnabled();
+  await expect(modal.getByRole('button', { name: 'Vestir', exact: true })).toBeEnabled();
   await page.screenshot({ path: 'test-results/equipment-generation.png', fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -150,7 +150,7 @@ try {
   const posted = page.waitForResponse(
     (res) => res.url().endsWith('/api/character-art') && res.request().method() === 'POST',
   );
-  await modal.getByRole('button', { name: 'Gerar imagem', exact: true }).click();
+  await modal.getByRole('button', { name: 'Vestir', exact: true }).click();
   const jobResponse = await posted;
   expect(jobResponse.status()).toBe(202);
   expect(jobResponse.request().postDataJSON().equipment_slots.sort()).toEqual([
@@ -165,6 +165,11 @@ try {
   );
   expect(snapshots.rows.map((row) => row.slot)).toEqual(['armor', 'back', 'ring_left']);
   expect(snapshots.rows.every((row) => row.image.length > 100)).toBe(true);
+  await expect(equipment.getByRole('button', {name:'Vestindo...',exact:true})).toBeVisible();
+  await equipment.evaluate(el => { (window as any).__stableEquipment = el; });
+  await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [job.id]);
+  await page.waitForTimeout(4500);
+  expect(await equipment.evaluate(el => el === (window as any).__stableEquipment)).toBe(true);
   await finishTestArt(job.id);
   await expect(modal).not.toBeVisible();
   await pool.query("UPDATE character_art_jobs SET status='failed',error=$2 WHERE id=$1", [
@@ -176,6 +181,9 @@ try {
   expect(bounds!.y).toBeLessThan(80);
   expect(bounds!.x).toBeGreaterThan(0);
   await expect(flash).toBeHidden({ timeout: 6500 });
+  await page.waitForTimeout(5000);
+  await expect(flash).toBeHidden();
+  expect(await equipment.evaluate(el => el === (window as any).__stableEquipment)).toBe(true);
   await page.reload();
   await expect(page.getByRole('alert').filter({ hasText: 'Falha de geração simulada' })).toBeVisible();
   expect(errors).toEqual([]);

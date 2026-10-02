@@ -245,11 +245,11 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
       const prompt = previousImage
         ? `EDITE a única imagem anexada com a ferramenta nativa de imagem. Ela é a composição a corrigir. Preserve rosto, identidade, pose, enquadramento, estilo, cores e modelos dos equipamentos. Altere somente as regiões com os defeitos descritos abaixo, incluindo o tecido necessário para corrigir seu caimento.
 ${repair}
-Respeite camadas naturais: capa sem mangas, solta por cima dos ombros; acessórios encobertos permanecem ocultos. Não cortar nem duplicar objetos.
+Respeite camadas naturais: capa sem mangas, solta por cima dos ombros; acessórios encobertos permanecem ocultos. Não cortar nem duplicar objetos. Se houver corte na borda, afaste a câmera e amplie o enquadramento até caber a silhueta inteira, incluindo capa e armas, com margem transparente de 8% em todos os lados.
 Use referenced_image_paths com ${JSON.stringify(activeReferences)}, transparent_background=true. Não use num_last_images_to_include. Devolva o caminho da imagem editada no JSON solicitado.`
         : `${instructions}\n\nRaça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy} ${gearInstructions}
 Referências locais completas, na mesma ordem das imagens anexadas: ${JSON.stringify(activeReferences)}.
-Use referenced_image_paths com TODOS esses caminhos. Não use num_last_images_to_include. Gere agora com a ferramenta nativa.`;
+Use referenced_image_paths com TODOS esses caminhos e transparent_background=true. Não use num_last_images_to_include. Enquadre a silhueta inteira, incluindo capa, armas e pés, com margem transparente de 8% em todos os lados; afaste a câmera se necessário. Gere agora com a ferramenta nativa.`;
       const execution = await runCodex(
         [
           'exec',

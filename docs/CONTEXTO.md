@@ -738,3 +738,5 @@ Mensagens globais (01/10/2026): FlashMessage/FlashMessages substituem erros e fe
 Correção do cinza do inventário (01/10/2026): removido viés azul dos fundos de resumo/equipamentos; sobreposição e base usam canais RGB iguais (#262626 e #383838), mantendo a textura dessaturada.
 
 Transferência mochila/cofre (02/10/2026): arraste ou botão transferem imediatamente toda a pilha disponível; Shift transfere uma unidade em ambas as direções. Equipados continuam excluídos da quantidade disponível. Modal de quantidade aparece apenas para corrigir/repetir uma falha. Teste isolado cobre pilha inteira, Shift no arraste e clique, persistência e mobile.
+
+Geração sem piscar (02/10/2026): App mantém Details durante atualizações do mesmo personagem; inventário só desmonta ao trocar de personagem. Poll do ilustrador atualiza estado antes do refresh e recarrega dados apenas ao terminar, evitando ciclo de remount/avisos repetidos. Regressão verifica identidade do painel durante queued/running/completed/failed e aviso sem reaparecer. Prompt exige margem de 8% para capa/armas e correção pode afastar câmera. Última falha real foi composition_rejected; cota preservada.

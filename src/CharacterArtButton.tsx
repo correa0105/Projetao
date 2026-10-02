@@ -42,10 +42,11 @@ export function CharacterArtButton({
             .filter((job) => job.character_id === character.id)
             .map((job) => [job.id, job.status]),
         );
-        if (previous && previous !== signature) await refresh.current();
-        if (!alive) return;
+        const changed = previous && previous !== signature;
         previous = signature;
         setState(result);
+        if (changed && !result.jobs.some(job => job.character_id === character.id && ['queued', 'running'].includes(job.status)))
+          await refresh.current();
       } catch {
         if (alive) setState((current) => ({ ...current, available: false }));
       } finally {

@@ -2,7 +2,7 @@ import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
 import { ProfileMenu } from './ProfileMenu';
 import { NoticeBoard } from './NoticeBoard';
-import { lazy, Suspense, useCallback, useEffect, useState, type ComponentType } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ComponentType } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -167,9 +167,13 @@ function Portal({ user }: { user: User }) {
     const timer = setTimeout(() => setToast(''), 5000);
     return () => clearTimeout(timer);
   }, [toast]);
+  const detailsCharacter = useRef<string | undefined>(undefined);
   useEffect(() => {
     let alive = true;
-    setDetails(null);
+    if (detailsCharacter.current !== character?.id) {
+      detailsCharacter.current = character?.id;
+      setDetails(null);
+    }
     if (character)
       api<Details>(`/characters/${character.id}/details`)
         .then((data) => {
