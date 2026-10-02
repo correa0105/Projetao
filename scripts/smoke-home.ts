@@ -85,7 +85,7 @@ try {
     await page
       .locator('.home-journal')
       .evaluate((element) => getComputedStyle(element, '::before').backgroundImage),
-  ).toContain('home-open-parchment');
+  ).toContain('home-guild-hall');
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/home-journal-default.png', fullPage: true });
   await page.getByRole('button', { name: 'Nova publicação', exact: true }).click();

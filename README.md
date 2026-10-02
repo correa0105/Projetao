@@ -255,7 +255,7 @@ Refino do Mundo em 30/09/2026: ondas costeiras móveis, árvores menos densas co
 
 ## Diário da Alvorada e música geral
 
-A página Início tem fundo de pergaminho aberto e exibe somente publicações reais. Os exemplos fixos sem edição foram removidos. Arte e prompt em `docs/HOME-ART.md`.
+A página Início tem fundo de salão da guilda com madeira escura e luz de velas nas laterais, e exibe somente publicações reais. Os exemplos fixos sem edição foram removidos. Arte e prompt em `docs/HOME-ART.md`. O próprio ícone de som abre uma barra vertical de volume logo abaixo; o botão de mutar fica no mesmo controle.
 
 No Início, **Nova publicação** abre o editor de artigos, imagens e reuniões. Escolha destaque lateral, cartão em paisagem/retrato ou nota; envie uma imagem, formate o texto e defina um link interno (como `#world`) ou http/https. **Visualizar** mostra a composição antes de publicar. Autores podem editar/remover suas publicações; a staff existente pode moderar. Os conteúdos e imagens são persistidos no PostgreSQL pela migration 040. Encontros podem ser adicionados ao calendário; missões das próximas 24 horas continuam na agenda.
 

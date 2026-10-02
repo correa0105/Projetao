@@ -1,5 +1,15 @@
 # Fundo do Início
 
+## Salão da guilda — arte vigente
+
+Asset: `public/home-guild-hall.webp`. Gerado em 02/10/2026 com imagegen integrado; PNG convertido para WebP, qualidade 92. Substitui o pergaminho por pedido do usuário. CSS mantém proporção com `cover` e escurece discretamente para leitura. A arte anterior permanece somente como arquivo histórico.
+
+Prompt final:
+
+> Create a high quality realistic painterly dark medieval fantasy background for an RPG guild news home page. Landscape 3:2. Interior of an old guild hall at night, aged dark oak paneling and stone, warm candle sconces on far left and right edges, an understated bookcase and rolled maps near left edge, timber columns, subtle cool blue twilight through a narrow distant window at far right. Front facing calm balanced composition, no desk in foreground. Large central 70 percent area is mostly plain deeply shadowed charcoal oak and stone with restrained fine texture, intentional quiet dark space for cream white website news text and article cards. Warm copper light confined to side edges, cinematic realistic material quality, soft physical shadows, atmospheric sophistication, low contrast details. No parchment background or giant scroll, no people, no writing, no signage, no symbols, no text, no UI panels, no logos. Natural realistic furnishings only at edges so the center remains spacious and readable.
+
+## Pergaminho — histórico
+
 Asset: `public/home-open-parchment.webp`. Gerado em 02/10/2026 com a ferramenta imagegen integrada; convertido de PNG para WebP com qualidade 92, sem alteração da composição. Uso exclusivo da página Início, com escurecimento em CSS para leitura. Sem texto embutido.
 
 Prompt final:

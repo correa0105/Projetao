@@ -16,8 +16,8 @@
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(#120b0666, #120b0673),
-    url('/home-open-parchment.webp') center / 100% 100% no-repeat;
+    linear-gradient(#0b11174a, #090e17b3),
+    url('/home-guild-hall.webp') center / cover no-repeat;
 }
 .journal-masthead {
   display: flex;

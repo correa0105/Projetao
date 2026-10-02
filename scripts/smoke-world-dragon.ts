@@ -28,6 +28,9 @@ try {
   await expect(page.locator('.entry-music')).toBeVisible();
   await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
   const volume = page.getByRole('slider', { name: 'Volume da música', exact: true });
+  await expect(volume).toHaveAttribute('aria-orientation', 'vertical');
+  const sliderBox = (await volume.boundingBox())!;
+  expect(sliderBox.height).toBeGreaterThan(sliderBox.width * 3);
   await expect(volume).toHaveValue('40');
   await volume.fill('0');
   expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0);
@@ -88,6 +91,7 @@ try {
   await page.reload();
   expect(await music.evaluate((a: HTMLAudioElement) => a.muted)).toBe(true);
   await page.getByRole('button', { name: 'Abrir menu de personagem e conta', exact: true }).click();
+  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
   await page.getByRole('button', { name: 'Ativar música', exact: true }).click();
   expect(await music.evaluate((a: HTMLAudioElement) => a.muted)).toBe(false);
   await expect

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { SlidersHorizontal, Volume2, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 // Add a route key here when an area receives its own soundtrack.
 export const siteSoundtracks: Record<string, string> = {
@@ -172,7 +172,6 @@ export function MusicControls({ login = false }: { login?: boolean }) {
         }
       }}
     >
-      <MusicToggle />
       <button
         type="button"
         className="music-settings-trigger"
@@ -180,28 +179,24 @@ export function MusicControls({ login = false }: { login?: boolean }) {
         aria-expanded={open}
         onClick={() => setOpen(!open)}
       >
-        <SlidersHorizontal size={14} />
-        {login && <span>Música</span>}
+        {muted || volume === 0 ? <VolumeX size={14} /> : <Volume2 size={14} />}
       </button>
       {open && (
         <div className="music-volume-panel">
-          <div>
-            <span>Volume da música</span>
-            <output>{Math.round(volume * 100)}%</output>
-          </div>
+          <output>{Math.round(volume * 100)}%</output>
+          <span className="music-volume-limit">100%</span>
           <input
             aria-label="Volume da música"
             type="range"
             min="0"
             max="100"
             step="1"
+            aria-orientation="vertical"
             value={Math.round(volume * 100)}
             onChange={(e) => setVolume(Number(e.target.value) / 100)}
           />
-          <div className="music-volume-limits">
-            <span>0%</span>
-            <span>{muted ? 'Música mutada' : '100%'}</span>
-          </div>
+          <span className="music-volume-limit">0%</span>
+          <MusicToggle />
         </div>
       )}
     </div>
