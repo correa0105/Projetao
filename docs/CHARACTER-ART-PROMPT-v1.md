@@ -15,6 +15,7 @@ Gere uma única ilustração usando a ferramenta nativa de imagem do Codex e a s
 - Sem armadura selecionada, vestir trapos velhos de tecido: camisa branca e calça cinza, folgadas, gastas e muito simples, como um pijama rudimentar, sem bordados, adornos ou acabamento elegante. Equipamentos selecionados complementam ou substituem essa roupa apenas nas respectivas posições. SOMENTE os equipamentos listados podem aparecer.
 - Vestir ou segurar cada peça na posição indicada. Respeitar a opção de viseira aberta ou fechada. Pares têm uma peça de cada lado; nenhum item fica solto, flutuando ou duplicado.
 - Manter camadas e oclusão naturais: acessórios encobertos podem ficar invisíveis. Não deformar escudos, tecido ou corpo para revelar um item. Capa é um manto sem mangas, solto sobre os ombros. Integrar os itens à pintura; não cole as imagens sobre o personagem.
+- A sobreposição física prevalece sobre a lista de equipamentos: capa por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive as luvas integradas às braçadeiras. Ombreiras jamais aparecem sobre a capa; anéis jamais aparecem sobre as luvas. Colares, cintos, bolsas e outros acessórios ficam atrás da roupa, armadura, tecido ou objeto que naturalmente os encobrir. Mostrar apenas as partes expostas na pose; uma peça completamente oculta continua equipada e não precisa aparecer. Não abrir, deslocar, tornar transparente ou atravessar outra peça para exibi-la.
 
 ## Imagem final
 
