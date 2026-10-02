@@ -4,7 +4,9 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createSeaRoutes, type SeaPoint } from './world-sea-routes';
 
 const ATTACK_INTERVAL = 30,
-  ATTACK_DURATION = 13,
+  SHIP_DESTROYED_AT = 7,
+  AFTERMATH_DURATION = 3,
+  ATTACK_DURATION = SHIP_DESTROYED_AT + AFTERMATH_DURATION,
   SPEED = 0.035,
   SHIP_SCALE = 0.75;
 /** Real 3D sailing ships and an articulated kraken, sharing the atlas water plane. */
@@ -445,21 +447,25 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       -0.13 +
       emerge * (Math.sin(t * Math.PI) * (0.35 + grip * 0.27) + t * 0.1) +
       strike * Math.pow(t, 1.5);
-    // Unfold the whole arm radially. No phase travelling around the arm's axis.
+    // A flexible arch unfolds from the outer root toward the wreck's center.
+    // Each stroke bends the entire arm in its radial plane, without axial twisting.
     const cycle = ((phase % 1) + 1) % 1;
     const lift = cycle < 0.57 ? smooth(cycle / 0.57) : 1 - smooth((cycle - 0.57) / 0.15);
-    const extension = 0.16 + t * (1.22 + 0.14 * Math.sin(angle * 5));
-    const outwardReach = THREE.MathUtils.lerp(reach, extension, thrash);
-    const outwardSide = side * (1 - thrash);
-    // The middle and tip rise together; the downward stroke reaches the water.
+    const arch = Math.sin(t * Math.PI);
+    const centerReach =
+      0.7 * (1 - t) + (0.065 + 0.025 * Math.sin(angle * 3)) * t + arch * 0.1 * lift;
+    const centerSide = arch * (0.09 + 0.025 * Math.sin(angle * 2)) * lift;
     const water = -kraken.position.z;
-    const armWeight = Math.sin(t * Math.PI * 0.5);
+    const unfolding = arch * 0.13 * Math.sin(phase * Math.PI * 2 - t * 2.2) * lift;
     const slapZ =
-      THREE.MathUtils.lerp(-0.13, water - 0.055, smooth(t / 0.3)) +
-      armWeight * lift * (0.62 + 0.18 * Math.sin(angle * 3 + phase * 0.17));
+      THREE.MathUtils.lerp(-0.13, water - 0.045, smooth(t / 0.3)) +
+      lift * (arch * 0.65 + Math.pow(t, 0.7) * 0.32) +
+      unfolding;
+    const radial = THREE.MathUtils.lerp(reach, centerReach, thrash);
+    const lateral = THREE.MathUtils.lerp(side, centerSide, thrash);
     out.set(
-      Math.cos(angle) * outwardReach - Math.sin(angle) * outwardSide,
-      Math.sin(angle) * outwardReach + Math.cos(angle) * outwardSide,
+      Math.cos(angle) * radial - Math.sin(angle) * lateral,
+      Math.sin(angle) * radial + Math.cos(angle) * lateral,
       THREE.MathUtils.lerp(attackZ, slapZ, thrash),
     );
   }
@@ -472,7 +478,8 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         seconds: clock,
         attacks,
         attacking: target >= 0,
-        attackPhase: target < 0 ? 'idle' : clock - attackStart < 7 ? 'attack' : 'submerging',
+        attackPhase:
+          target < 0 ? 'idle' : clock - attackStart < SHIP_DESTROYED_AT ? 'attack' : 'submerging',
         krakenDepth: kraken.position.z,
         positions: ships.map((s) => ({ x: s.obj.position.x, y: s.obj.position.y })),
       };
@@ -539,11 +546,11 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       }
       if (target >= 0) {
         const t = clock - attackStart,
-          emerge = smooth(t / 2) * (1 - smooth((t - 7) / 6)),
+          emerge = smooth(t / 2) * (1 - smooth((t - SHIP_DESTROYED_AT) / AFTERMATH_DURATION)),
           grip = smooth((t - 1.8) / 2),
           sink = smooth((t - 4.2) / 2.8),
-          withdraw = smooth((t - 7) / 6),
-          thrash = smooth((t - 6.3) / 0.7) * (1 - smooth((t - 10.5) / 2.5)),
+          withdraw = smooth((t - SHIP_DESTROYED_AT) / AFTERMATH_DURATION),
+          thrash = smooth((t - SHIP_DESTROYED_AT) / 0.15) * (1 - smooth((t - 9.4) / 0.6)),
           s = ships[target];
         let impact = 0;
         for (const [i, hit] of armStrikeTimes.entries()) {
@@ -556,7 +563,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         s.obj.rotation.x = sink * 0.65 + impact * 0.22;
         s.obj.rotation.y = impact * 0.62 + damage * 0.28 + sink * 0.5;
         s.obj.scale.setScalar(SHIP_SCALE);
-        s.obj.visible = t < 7;
+        s.obj.visible = t < SHIP_DESTROYED_AT;
         s.wake.visible = s.otherWake.visible = false;
         s.masts[0].rotation.set(damage * 0.65, -damage * 1.05, damage * 0.18);
         s.masts[1].rotation.set(-smooth((t - 4.7) / 0.55) * 0.85, damage * 0.45, 0);
@@ -568,7 +575,10 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             slam = t >= hit ? -0.18 * Math.exp(-(t - hit) * 3.5) : 0,
             strike = lift * (i < 3 ? 0.7 : 0.45) + slam,
             frequency = armFrequencies[i],
-            phase = (t - 6.3) * frequency + 0.1 * Math.sin(t * 0.73 + i * 1.8) + armPhases[i],
+            phase =
+              (t - SHIP_DESTROYED_AT) * frequency +
+              0.1 * Math.sin(t * 0.73 + i * 1.8) +
+              armPhases[i],
             cycle = ((phase % 1) + 1) % 1,
             armGrip = grip * (1 - thrash * (0.35 + 0.12 * Math.sin(phase * 4)));
           tentacle.splashAge = cycle >= 0.72 ? (cycle - 0.72) / frequency : -1;
@@ -618,7 +628,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         }
         for (const [i, plank] of debris.entries()) {
           const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);
-          plank.visible = age >= 0 && t < 12;
+          plank.visible = age >= 0 && t < ATTACK_DURATION;
           if (!plank.visible) continue;
           const angle = i * 2.399,
             distance = 0.14 + Math.min(age, 1.6) * (0.18 + (i % 3) * 0.08);
@@ -632,7 +642,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             age < 1 ? age * 2 : 0,
             angle + age * 0.3,
           );
-          plank.scale.setScalar(1 - smooth((t - 10) / 2));
+          plank.scale.setScalar(1 - smooth((t - 9) / 1));
         }
         const lastHit = armStrikeTimes.reduce(
             (latest, hit) => (t >= hit ? Math.max(latest, hit) : latest),

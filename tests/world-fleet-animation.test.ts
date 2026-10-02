@@ -6,11 +6,20 @@ import { createWorldFleet } from '../src/world-fleet';
 test('kraken continua batendo braços independentes enquanto submerge após o barco sumir', () => {
   const fleet = createWorldFleet(() => 0);
   let time = 0;
+  let destroyedAt: number | undefined, endedAt: number | undefined;
   const advance = (seconds: number) => {
     const end = time + seconds;
     while (time < end - 0.0001) {
       time += 0.05;
+      const wasAttacking = fleet.state.attacking;
       fleet.update(time);
+      if (
+        fleet.state.attacking &&
+        !fleet.group.getObjectByName('pirate-ship-0')!.visible &&
+        destroyedAt === undefined
+      )
+        destroyedAt = fleet.state.seconds;
+      if (wasAttacking && !fleet.state.attacking) endedAt = fleet.state.seconds;
     }
   };
   try {
@@ -44,12 +53,20 @@ test('kraken continua batendo braços independentes enquanto submerge após o ba
     for (const points of centers) {
       for (let i = 1; i < points.length; i++)
         assert.ok(
-          Math.hypot(points[i].x, points[i].y) >
-            Math.hypot(points[i - 1].x, points[i - 1].y) + 0.15,
-          'braço se estende para fora, sem enrolar no próprio eixo',
+          Math.hypot(points[i].x, points[i].y) < Math.hypot(points[i - 1].x, points[i - 1].y),
+          'o braço avança para o centro do barco',
         );
-      assert.ok(Math.hypot(points[3].x, points[3].y) > 1.2, 'tentáculo completamente estendido');
+      assert.ok(
+        Math.hypot(points[3].x, points[3].y) < 0.12,
+        'pontas batem na área central do naufrágio',
+      );
     }
+    assert.ok(
+      centers.some(
+        (points) => points[1].distanceTo(points[0].clone().lerp(points[3], 1 / 3)) > 0.12,
+      ),
+      'os braços erguidos formam arcos flexíveis',
+    );
     const before = tips();
     advance(0.3);
     const midDeltas = armCenters().map((points, i) => points[1].z - centers[i][1].z);
@@ -67,9 +84,13 @@ test('kraken continua batendo braços independentes enquanto submerge após o ba
       'outro bate na água simultaneamente',
     );
     assert.ok(fleet.state.krakenDepth < depth, 'corpo afunda progressivamente');
-    advance(5.3);
+    advance(2.2);
     assert.equal(fleet.state.attacking, false);
     assert.equal(kraken.visible, false);
+    assert.ok(
+      destroyedAt !== undefined && endedAt !== undefined && endedAt - destroyedAt <= 3.05,
+      'sequência termina em até 3s após a destruição, com tolerância de um frame do teste',
+    );
   } finally {
     fleet.dispose();
   }
