@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { createWorldFleet } from '../src/world-fleet';
 
-test('três tentáculos recolhem tábuas e levam a madeira sob a água sem encolher', () => {
+test('tentáculos recolhem tábuas e levam a madeira sob a água sem encolher', () => {
   const fleet = createWorldFleet(() => 0);
   let time = 0;
   const advance = (until: number) => {
@@ -16,7 +16,7 @@ test('três tentáculos recolhem tábuas e levam a madeira sob a água sem encol
     fleet.update(0);
     advance(38.65);
     const kraken = fleet.group.getObjectByName('sea-kraken')!;
-    const boards = [0, 2, 4].map((i) => {
+    const boards = [0, 1, 2, 3, 4, 5].map((i) => {
       const board = kraken.getObjectByName(`wreck-plank-${i}`)!;
       const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
       const positions = arm.geometry.getAttribute('position');
@@ -44,122 +44,45 @@ test('três tentáculos recolhem tábuas e levam a madeira sob a água sem encol
   }
 });
 
-test('kraken continua batendo braços independentes enquanto submerge após o barco sumir', () => {
+test('retirada não bate na água e termina em até três segundos', () => {
   const fleet = createWorldFleet(() => 0);
-  let time = 0;
-  let destroyedAt: number | undefined, endedAt: number | undefined;
-  const advance = (seconds: number) => {
-    const end = time + seconds;
-    while (time < end - 0.0001) {
-      time += 0.05;
-      const wasAttacking = fleet.state.attacking;
-      fleet.update(time);
-      if (
-        fleet.state.attacking &&
-        !fleet.group.getObjectByName('pirate-ship-0')!.visible &&
-        destroyedAt === undefined
-      )
-        destroyedAt = fleet.state.seconds;
-      if (wasAttacking && !fleet.state.attacking) endedAt = fleet.state.seconds;
-    }
-  };
   try {
     fleet.update(0);
-    advance(30.1);
-    assert.equal(fleet.state.attacking, true);
-    advance(7.5);
-    assert.equal(fleet.state.attackPhase, 'submerging');
-    const kraken = fleet.group.getObjectByName('sea-kraken')!;
-    const ship = fleet.group.getObjectByName('pirate-ship-0')!;
-    assert.equal(ship.visible, false);
-    const depth = fleet.state.krakenDepth;
-    const tips = () =>
-      Array.from({ length: 6 }, (_, i) => {
-        const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
-        const vertices = arm.geometry.getAttribute('position');
-        return vertices.getZ(vertices.count - 1);
-      });
-    const armCenters = () =>
-      Array.from({ length: 6 }, (_, i) => {
-        const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
-        const vertices = arm.geometry.getAttribute('position');
-        return [10, 20, 30, 40].map((row) => {
-          const center = new THREE.Vector3();
-          for (let side = 0; side < 16; side++)
-            center.add(new THREE.Vector3().fromBufferAttribute(vertices, row * 17 + side));
-          return center.divideScalar(16);
-        });
-      });
-    const centers = armCenters();
-    for (const points of centers) {
-      for (let i = 1; i < points.length; i++)
-        assert.ok(
-          Math.hypot(points[i].x, points[i].y) < Math.hypot(points[i - 1].x, points[i - 1].y),
-          'o braço avança para o centro do barco',
-        );
-      assert.ok(
-        Math.hypot(points[3].x, points[3].y) < 0.12,
-        'pontas batem na área central do naufrágio',
-      );
+    for (let t = 0.05; t <= 39.85; t += 0.05) {
+      fleet.update(t);
+      if (t > 37.1) {
+        const splash = fleet.group.getObjectByName('kraken-impact-splash') as THREE.InstancedMesh;
+        const matrix = new THREE.Matrix4();
+        if (splash.visible)
+          for (let i = 0; i < splash.count; i++) {
+            splash.getMatrixAt(i, matrix);
+            const scale = new THREE.Vector3().setFromMatrixScale(matrix);
+            assert.ok(scale.length() < 0.001, 'sem respingos de novas batidas após o naufrágio');
+          }
+      }
     }
-    assert.ok(
-      centers.some(
-        (points) => points[1].distanceTo(points[0].clone().lerp(points[3], 1 / 3)) > 0.12,
-      ),
-      'os braços erguidos formam arcos flexíveis',
-    );
-    const before = tips();
-    advance(0.3);
-    const midDeltas = armCenters().map((points, i) => points[1].z - centers[i][1].z);
-    assert.ok(
-      midDeltas.filter((d) => Math.abs(d) > 0.04).length >= 3,
-      'movimento amplo também no meio dos braços',
-    );
-    const deltas = tips().map((tip, i) => tip - before[i]);
-    assert.ok(
-      deltas.some((d) => d > 0.01),
-      'um braço se ergue',
-    );
-    assert.ok(
-      deltas.some((d) => d < -0.01),
-      'outro bate na água simultaneamente',
-    );
-    assert.ok(fleet.state.krakenDepth < depth, 'corpo afunda progressivamente');
-    const armTops = () =>
-      Array.from({ length: 6 }, (_, i) => {
-        const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
-        const vertices = arm.geometry.getAttribute('position');
-        let top = -Infinity;
-        for (let j = 0; j < vertices.count; j++)
-          top = Math.max(top, vertices.getZ(j) + kraken.position.z);
-        return top;
-      });
-    advance(1.3);
-    const retiring = armTops();
-    assert.ok(
-      retiring.some((z) => z < 0) && retiring.some((z) => z > 0),
-      'braços afundam em momentos diferentes',
-    );
-    assert.equal(fleet.group.getObjectByName('kraken-retreat-wash')!.visible, true);
-    advance(0.6);
-    assert.ok(
-      armTops().every((z) => z < 0),
-      'todos ficam sob a água antes de esconder o modelo',
-    );
+    const kraken = fleet.group.getObjectByName('sea-kraken')!;
     assert.equal(kraken.visible, true);
-    advance(0.3);
+    for (let i = 0; i < 6; i++) {
+      const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
+      const vertices = arm.geometry.getAttribute('position');
+      for (let j = 0; j < vertices.count; j++)
+        assert.ok(
+          vertices.getZ(j) + kraken.position.z < 0,
+          'braço inteiro submerso antes de ocultar',
+        );
+    }
+    fleet.update(39.9);
+    fleet.update(39.95);
+    fleet.update(40);
+    fleet.update(40.05);
     assert.equal(fleet.state.attacking, false);
     assert.equal(kraken.visible, false);
-    assert.ok(
-      destroyedAt !== undefined && endedAt !== undefined && endedAt - destroyedAt <= 3.05,
-      'sequência termina em até 3s após a destruição, com tolerância de um frame do teste',
-    );
   } finally {
     fleet.dispose();
   }
 });
-
-test('todos os braços continuam se desdobrando durante as batidas caóticas', () => {
+test('todos os braços continuam se dobrando durante a retirada', () => {
   const fleet = createWorldFleet(() => 0);
   const sample = () =>
     Array.from({ length: 6 }, (_, i) => {

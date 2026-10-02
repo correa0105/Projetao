@@ -606,7 +606,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             age < 1 ? age * 2 : 0,
             angle + age * 0.3,
           );
-          plank.scale.setScalar(i === 0 || i === 2 || i === 4 ? 1 : 1 - smooth((t - 9) / 1));
+          plank.scale.setScalar(i < 6 ? 1 : 1 - smooth((t - 9) / 1));
         }
         for (const [i, tentacle] of tentacles.entries()) {
           // Independent, uneven blows in each arm's fixed lane.
@@ -617,15 +617,16 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             after = t - SHIP_DESTROYED_AT,
             ending = krakenEndingPose(after, i, tentacle.angle, -kraken.position.z),
             armGrip = grip * (1 - thrash * 0.45);
-          const gathersBoard = i === 0 || i === 2 || i === 4,
-            catchAt = 1.3 + i * 0.07,
+          const gathersBoard = true,
+            catchAt = 0.55 + i * 0.1,
             reach = gathersBoard ? smooth((after - catchAt + 0.45) / 0.45) : 0;
           if (reach > 0) {
             const board = debris[i],
               tip = ending.points[4],
-              liftBoard = smooth((after - catchAt) / 0.2);
-            tip.x = THREE.MathUtils.lerp(tip.x, board.position.x, reach);
-            tip.y = THREE.MathUtils.lerp(tip.y, board.position.y, reach);
+              liftBoard = smooth((after - catchAt) / 0.2),
+              pull = smooth((after - catchAt) / 1.5);
+            tip.x = THREE.MathUtils.lerp(tip.x, board.position.x * (1 - pull * 0.8), reach);
+            tip.y = THREE.MathUtils.lerp(tip.y, board.position.y * (1 - pull * 0.8), reach);
             tip.z = THREE.MathUtils.lerp(
               tip.z,
               THREE.MathUtils.lerp(board.position.z, tip.z + 0.035, liftBoard),
