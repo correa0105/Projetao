@@ -1,3 +1,4 @@
+import { MusicControls } from './SiteMusic';
 import { FlashMessage } from './FlashMessage';
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
@@ -171,6 +172,7 @@ export function Login() {
         <div className="entry-vignette" />
       </div>
       <div className="entry-frame" aria-hidden="true" />
+      <MusicControls login />
       <main
         className={started ? 'entry-content entry-auth' : 'entry-content entry-intro'}
         onClick={(event) => {
@@ -248,11 +250,7 @@ export function Login() {
                     </button>
                   </span>
                 </label>
-                {error && (
-                  <FlashMessage>
-                    {error}
-                  </FlashMessage>
-                )}
+                {error && <FlashMessage>{error}</FlashMessage>}
                 <button className="button primary full" disabled={busy}>
                   {busy ? (
                     <LoaderCircle className="spin" size={18} />
@@ -359,9 +357,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         chega ao acampamento quando ela estiver pronta.
       </p>
       {!available && (
-        <FlashMessage>
-          O ilustrador está offline. Volte quando ele estiver disponível.
-        </FlashMessage>
+        <FlashMessage>O ilustrador está offline. Volte quando ele estiver disponível.</FlashMessage>
       )}
       <label>
         Nome do personagem
@@ -418,11 +414,7 @@ export function CharacterForm({ done }: { done: () => Promise<void> }) {
         />
       </label>
       <ReferenceInput onChange={setReference} disabled={busy} />
-      {error && (
-        <FlashMessage>
-          {error}
-        </FlashMessage>
-      )}
+      {error && <FlashMessage>{error}</FlashMessage>}
       <button className="button primary full" disabled={busy || !reference || !available}>
         {busy ? 'Criando personagem…' : 'Dar vida ao personagem'}
         <Sparkles size={17} />
@@ -596,11 +588,7 @@ export function PostForm({
           ))}
         </select>
       </label>
-      {placesError && (
-        <FlashMessage>
-          {placesError}
-        </FlashMessage>
-      )}
+      {placesError && <FlashMessage>{placesError}</FlashMessage>}
       {!locationId && !requireMappedLocation && (
         <label>
           Local
@@ -658,11 +646,7 @@ export function PostForm({
           ? 'Ao concluir, cada inscrito recebe o ouro e a progressão é calculada automaticamente. Missões normais deixam de contar enquanto o teste de patente está pendente.'
           : 'Eventos não concedem progressão nem pagamento automático.'}
       </p>
-      {error && (
-        <FlashMessage>
-          {error}
-        </FlashMessage>
-      )}
+      {error && <FlashMessage>{error}</FlashMessage>}
       <button className="button primary" disabled={busy}>
         {busy ? 'Publicando…' : 'Publicar no mural'}
       </button>

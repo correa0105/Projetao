@@ -117,3 +117,39 @@ test('kraken continua batendo braços independentes enquanto submerge após o ba
     fleet.dispose();
   }
 });
+
+test('todos os braços continuam se desdobrando durante as batidas caóticas', () => {
+  const fleet = createWorldFleet(() => 0);
+  const sample = () =>
+    Array.from({ length: 6 }, (_, i) => {
+      const mesh = fleet.group.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
+      const p = mesh.geometry.getAttribute('position');
+      return [16, 28].map((row) => {
+        const point = new THREE.Vector3();
+        for (let side = 0; side < 16; side++)
+          point.add(new THREE.Vector3().fromBufferAttribute(p, row * 17 + side));
+        point.divideScalar(16);
+        point.z += mesh.parent!.position.z;
+        return point;
+      });
+    });
+  try {
+    fleet.update(0);
+    for (let t = 0.05; t <= 37.01; t += 0.05) fleet.update(t);
+    let before = sample();
+    for (let frame = 0; frame < 18; frame++) {
+      const start = 37 + frame * 0.1;
+      fleet.update(start + 0.05);
+      fleet.update(start + 0.1);
+      const after = sample();
+      for (let arm = 0; arm < 6; arm++)
+        assert.ok(
+          Math.max(...after[arm].map((p, j) => p.distanceTo(before[arm][j]))) > 0.003,
+          `braço ${arm + 1} permanece em movimento no intervalo ${frame}`,
+        );
+      before = after;
+    }
+  } finally {
+    fleet.dispose();
+  }
+});

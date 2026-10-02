@@ -1,17 +1,34 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { SlidersHorizontal, Volume2, VolumeX } from 'lucide-react';
 
 // Add a route key here when an area receives its own soundtrack.
 export const siteSoundtracks: Record<string, string> = {
   default: '/audio/medieval-travelers-journey.ogg',
+  shop: '/audio/medieval-market.ogg',
 };
 const trackForPage = () => siteSoundtracks[location.hash.slice(1)] || siteSoundtracks.default;
-const MusicContext = createContext({ muted: false, toggle: () => {} });
+const MusicContext = createContext({
+  muted: false,
+  volume: 0.4,
+  toggle: () => {},
+  setVolume: (_value: number) => {},
+});
 const preference = 'alvorada-music-muted';
 
 export function SiteMusicProvider({ children }: { children: ReactNode }) {
   const audio = useRef<HTMLAudioElement>(null);
+  const bell = useRef<HTMLAudioElement>(null);
+  const bellPending = useRef(location.hash === '#shop');
   const [track, setTrack] = useState(trackForPage);
+  const [volume, setVolume] = useState(() => {
+    try {
+      const saved = localStorage.getItem('alvorada-music-volume');
+      const value = saved === null ? 0.4 : Number(saved);
+      return Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : 0.4;
+    } catch {
+      return 0.4;
+    }
+  });
   const [muted, setMuted] = useState(() => {
     try {
       return localStorage.getItem(preference) === 'true';
@@ -21,12 +38,32 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   });
   useEffect(() => {
     const player = audio.current!;
-    player.volume = 0.4;
+    player.volume = volume;
+    bell.current!.volume = volume * 0.8;
+    const playBell = () => {
+      if (!bellPending.current || document.hidden) return;
+      bellPending.current = false;
+      bell.current!.currentTime = 0;
+      void bell.current!.play().catch(() => {
+        bellPending.current = location.hash === '#shop';
+      });
+    };
     const play = () => {
+      playBell();
       if (player.paused && !document.hidden) void player.play().catch(() => {});
     };
-    const visibility = () => (document.hidden ? player.pause() : play());
-    const route = () => setTrack(trackForPage());
+    const visibility = () => {
+      if (document.hidden) {
+        player.pause();
+        bell.current!.pause();
+      } else play();
+    };
+    const route = () => {
+      setTrack(trackForPage());
+      bellPending.current = location.hash === '#shop';
+      if (bellPending.current) playBell();
+      else bell.current!.pause();
+    };
     play();
     // Browsers requiring a gesture start on the first interaction.
     document.addEventListener('pointerdown', play);
@@ -35,6 +72,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     window.addEventListener('hashchange', route);
     return () => {
       player.pause();
+      bell.current!.pause();
       document.removeEventListener('pointerdown', play);
       document.removeEventListener('keydown', play);
       document.removeEventListener('visibilitychange', visibility);
@@ -42,7 +80,15 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     };
   }, []);
   useEffect(() => {
+    audio.current!.volume = volume;
+    bell.current!.volume = volume * 0.8;
+    try {
+      localStorage.setItem('alvorada-music-volume', String(volume));
+    } catch {}
+  }, [volume]);
+  useEffect(() => {
     audio.current!.muted = muted;
+    bell.current!.muted = muted;
     try {
       localStorage.setItem(preference, String(muted));
     } catch {}
@@ -51,7 +97,17 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     void audio.current!.play().catch(() => {});
   }, [track]);
   return (
-    <MusicContext.Provider value={{ muted, toggle: () => setMuted((value) => !value) }}>
+    <MusicContext.Provider
+      value={{
+        muted,
+        volume,
+        setVolume: (value) => {
+          setVolume(Math.max(0, Math.min(1, value)));
+          if (value > 0) setMuted(false);
+        },
+        toggle: () => setMuted((value) => !value),
+      }}
+    >
       <audio
         ref={audio}
         src={track}
@@ -59,6 +115,14 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
         preload="metadata"
         muted={muted}
         data-site-music
+        aria-hidden="true"
+      />
+      <audio
+        ref={bell}
+        src="/audio/shop-door-bell.wav"
+        preload="auto"
+        muted={muted}
+        data-shop-door-bell
         aria-hidden="true"
       />
       {children}
@@ -80,5 +144,65 @@ export function MusicToggle() {
     >
       {muted ? <VolumeX size={12} aria-hidden="true" /> : <Volume2 size={12} aria-hidden="true" />}
     </button>
+  );
+}
+
+export function MusicControls({ login = false }: { login?: boolean }) {
+  const { volume, muted, setVolume } = useContext(MusicContext);
+  const [open, setOpen] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const outside = (event: PointerEvent) => {
+      if (!root.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener('pointerdown', outside);
+    return () => document.removeEventListener('pointerdown', outside);
+  }, [open]);
+  return (
+    <div
+      ref={root}
+      className={'music-controls' + (login ? ' entry-music' : '')}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          e.stopPropagation();
+          setOpen(false);
+          root.current?.querySelector<HTMLButtonElement>('.music-settings-trigger')?.focus();
+        }
+      }}
+    >
+      <MusicToggle />
+      <button
+        type="button"
+        className="music-settings-trigger"
+        aria-label="Ajustar volume da música"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        <SlidersHorizontal size={14} />
+        {login && <span>Música</span>}
+      </button>
+      {open && (
+        <div className="music-volume-panel">
+          <div>
+            <span>Volume da música</span>
+            <output>{Math.round(volume * 100)}%</output>
+          </div>
+          <input
+            aria-label="Volume da música"
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value={Math.round(volume * 100)}
+            onChange={(e) => setVolume(Number(e.target.value) / 100)}
+          />
+          <div className="music-volume-limits">
+            <span>0%</span>
+            <span>{muted ? 'Música mutada' : '100%'}</span>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

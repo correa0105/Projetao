@@ -4,5 +4,16 @@
   "origin": "Faixa fornecida pelo usuário para uso no site. Não há licença CC0 declarada.",
   "encoding": "Ogg/Opus, faixa completa, duração aproximada de 1h33m24s, metadados removidos",
   "defaultVolume": 0.4,
-  "routes": "Todas as páginas nesta etapa; siteSoundtracks em src/SiteMusic.tsx permite configurar faixas por página."
+  "routes": "Login e todas as páginas, exceto loja (#shop). siteSoundtracks em src/SiteMusic.tsx configura faixas por página.",
+  "shop": {
+    "track": "medieval-market.ogg",
+    "source": "Medieval Fantasy Music – Medieval Market  Folk, Traditional, Instrumental  Fantasy Music World #2.mp3",
+    "origin": "Faixa fornecida pelo usuário para uso na loja. Não há licença CC0 declarada.",
+    "encoding": "Ogg/Opus, faixa completa, 64 kbps VBR, metadados removidos"
+  },
+  "doorBell": {
+    "file": "shop-door-bell.wav",
+    "origin": "Síntese original de sino metálico por sobreposição de parciais com decaimento, três impactos e duração de 1,65 s.",
+    "playback": "Uma vez por entrada na loja, sem loop; respeita mute e 80% do volume selecionado para a música."
+  }
 }

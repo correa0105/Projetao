@@ -23,6 +23,34 @@ const page = await browser.newPage({
 const errors: string[] = [];
 page.on('pageerror', (e) => errors.push(e.message));
 try {
+  await page.goto(origin);
+  const music = page.locator('audio[data-site-music]');
+  await expect(page.locator('.entry-music')).toBeVisible();
+  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
+  const volume = page.getByRole('slider', { name: 'Volume da música', exact: true });
+  await expect(volume).toHaveValue('40');
+  await volume.fill('0');
+  expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0);
+  await volume.fill('100');
+  expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(1);
+  await volume.fill('23');
+  await page.reload();
+  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
+  await expect(volume).toHaveValue('23');
+  expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0.23);
+  await page.getByRole('button', { name: 'Iniciar aventura', exact: true }).click();
+  await expect(page.locator('.login-form')).toBeVisible();
+  await expect
+    .poll(() => music.evaluate((a: HTMLAudioElement) => !a.paused && a.currentTime > 0))
+    .toBe(true);
+  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
+  await volume.fill('40');
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await mkdir('test-results', { recursive: true });
+  await page.screenshot({ path: 'test-results/login-music-mobile.png' });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.screenshot({ path: 'test-results/login-music-desktop.png' });
   const signup = await page.request.post(origin + '/api/auth/sign-up/email', {
     headers: { Origin: origin },
     data: {
@@ -33,13 +61,23 @@ try {
   });
   expect(signup.ok()).toBe(true);
   await page.goto(origin + '/#world');
-  const music = page.locator('audio[data-site-music]');
+  await page.reload();
+
   await expect(music).toHaveCount(1);
   expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0.4);
   await page.getByRole('button', { name: 'Abrir menu de personagem e conta', exact: true }).click();
   await expect
     .poll(() => music.evaluate((a: HTMLAudioElement) => !a.paused && a.currentTime > 0))
     .toBe(true);
+  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
+  await volume.fill('65');
+  expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0.65);
+  await page.screenshot({ path: 'test-results/profile-music-volume.png' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({ path: 'test-results/profile-music-volume-mobile.png' });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await volume.fill('40');
+  await page.setViewportSize({ width: 1440, height: 900 });
   const range = await page.request.get(origin + '/audio/medieval-travelers-journey.ogg', {
     headers: { Range: 'bytes=0-1023' },
   });
@@ -66,8 +104,27 @@ try {
   await page.evaluate(() => {
     location.hash = 'world';
   });
+  await page.evaluate(() => {
+    location.hash = 'shop';
+  });
+  await expect(music).toHaveAttribute('src', '/audio/medieval-market.ogg');
+  const bell = page.locator('audio[data-shop-door-bell]');
+  await expect.poll(() => bell.evaluate((a: HTMLAudioElement) => a.currentTime)).toBeGreaterThan(0);
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.loop)).toBe(false);
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.volume)).toBeCloseTo(0.32, 2);
+  await expect
+    .poll(() => music.evaluate((a: HTMLAudioElement) => !a.paused && a.currentTime > 0))
+    .toBe(true);
+  await expect.poll(() => bell.evaluate((a: HTMLAudioElement) => a.ended)).toBe(true);
+  // Interacting inside the store must not replay the entry bell.
+  await page.locator('body').click({ position: { x: 10, y: 10 } });
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.ended)).toBe(true);
+  await page.evaluate(() => {
+    location.hash = 'world';
+  });
+  await expect(music).toHaveAttribute('src', '/audio/medieval-travelers-journey.ogg');
   console.log(
-    'Música: faixa servida em partes, 40%, reprodução, mute persistido e continuidade entre páginas OK.',
+    'Música: faixa servida em partes, login, ajuste 0–100%, volume persistido, reprodução, mute persistido, faixa exclusiva da loja, sino único por entrada e continuidade entre páginas OK.',
   );
   const viewport = page.locator('.world-map__viewport');
   await expect(viewport).toHaveAttribute('data-dragon-x', /.+/, { timeout: 45000 });

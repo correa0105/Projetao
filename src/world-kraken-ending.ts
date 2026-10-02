@@ -1,33 +1,45 @@
 import * as THREE from 'three';
 
-const strikes = [0.28, 0.63, 0.42, 1.05, 0.83, 1.22];
-const dives = [1.35, 1.7, 1.45, 1.9, 1.8, 2];
+// Uneven rhythms deliberately overlap: there is no idle pose between strokes.
+const strikes = [0.18, 0.47, 0.31, 0.67, 0.39, 0.58];
+const periods = [0.46, 0.59, 0.53, 0.71, 0.49, 0.64];
+const dives = [1.65, 1.85, 1.75, 2, 1.9, 2.1];
 const smooth = (value: number) => {
   const t = THREE.MathUtils.clamp(value, 0, 1);
   return t * t * (3 - 2 * t);
 };
+const cycle = (phase: number) => {
+  const p = ((phase % 1) + 1) % 1;
+  // Slow lift and fast slap, without a flat plateau at the waterline.
+  return Math.sin(Math.PI * 0.5 * (p < 0.72 ? p / 0.72 : (1 - p) / 0.28)) ** 1.35;
+};
 export type KrakenEndingPose = { points: THREE.Vector3[]; impactAge: number };
 
-/** One inward stroke, with the bend travelling through the whole arm, then a dive. */
+/** Repeated chaotic inward strokes with a travelling bend, continuing into the dive. */
 export function krakenEndingPose(
   age: number,
   index: number,
   angle: number,
   water: number,
 ): KrakenEndingPose {
-  const hit = strikes[index],
-    lift = smooth((age - hit + 0.46) / 0.3) * (1 - smooth((age - hit + 0.12) / 0.12));
-  // The middle follows the tip with a short delay instead of moving as one rigid arch.
-  const follow = smooth((age - hit + 0.35) / 0.25) * (1 - smooth((age - hit - 0.05) / 0.18));
+  const first = strikes[index],
+    period = periods[index],
+    phase = (age - first) / period;
   const dive = smooth((age - dives[index]) / (2.85 - dives[index]));
-  const radii = [0.72, 0.63 + 0.07 * follow, 0.38 + 0.12 * lift, 0.13 + 0.04 * lift, 0.055];
-  const sides = [0, -0.045, 0.1, -0.065, 0.012 * Math.sin(index * 2)];
+  const activity = 1 - dive;
+  const lift = cycle(phase) * activity;
+  const follow = cycle(phase - 0.16) * activity;
+  const wriggle = Math.sin(age * (8.1 + index * 0.71) + index * 1.9) * activity;
+  const secondary = Math.sin(age * (13.2 - index * 0.6) + index * 0.7) * activity;
+  const radii = [0.72, 0.6 + 0.075 * follow, 0.37 + 0.1 * lift, 0.14 + 0.025 * follow, 0.055];
+  // Flex in the fixed radial lane; the ends remain over the wreck, never fling outward.
+  const sides = [0, 0.08 * wriggle, 0.11 * secondary, 0.065 * wriggle, 0.012 * secondary];
   const heights = [
     -0.18,
-    water - 0.12 + follow * 0.32 - dive * 0.55,
-    water + 0.28 + follow * 0.45 - dive * 0.65,
-    water + 0.12 + lift * 0.43 - dive * 0.75,
-    water - 0.035 + lift * 0.7 - dive * 0.95,
+    water - 0.1 + follow * 0.36 + 0.055 * secondary - dive * 0.65,
+    water + 0.22 + follow * 0.44 + 0.07 * wriggle - dive * 0.75,
+    water + 0.07 + lift * 0.48 + 0.045 * secondary - dive * 0.8,
+    water - 0.04 + lift * (0.65 + 0.08 * Math.sin(age * 3.3 + index)) - dive * 0.95,
   ];
   const points = radii.map(
     (r, i) =>
@@ -37,10 +49,12 @@ export function krakenEndingPose(
         heights[i],
       ),
   );
-  return { points, impactAge: age >= hit && age < hit + 0.38 ? age - hit : -1 };
+  const lastHit = first + Math.floor((age - first) / period) * period;
+  const elapsed = age - lastHit;
+  return { points, impactAge: age >= first && elapsed < 0.28 && dive < 0.55 ? elapsed : -1 };
 }
 
-/** Quartic Bézier skin centerline: smooth curvature, no rotation around its own axis. */
+/** Smooth centerline, not a rigid arm spinning around its own axis. */
 export function sampleKrakenEnding(pose: KrakenEndingPose, u: number, out: THREE.Vector3) {
   const t = THREE.MathUtils.clamp(u, 0, 1.01),
     v = 1 - t;
