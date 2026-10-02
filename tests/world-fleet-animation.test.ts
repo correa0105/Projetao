@@ -3,6 +3,47 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { createWorldFleet } from '../src/world-fleet';
 
+test('três tentáculos recolhem tábuas e levam a madeira sob a água sem encolher', () => {
+  const fleet = createWorldFleet(() => 0);
+  let time = 0;
+  const advance = (until: number) => {
+    while (time < until - 0.0001) {
+      time += 0.05;
+      fleet.update(time);
+    }
+  };
+  try {
+    fleet.update(0);
+    advance(38.65);
+    const kraken = fleet.group.getObjectByName('sea-kraken')!;
+    const boards = [0, 2, 4].map((i) => {
+      const board = kraken.getObjectByName(`wreck-plank-${i}`)!;
+      const arm = kraken.getObjectByName(`kraken-tentacle-${i}`) as THREE.Mesh;
+      const positions = arm.geometry.getAttribute('position');
+      const tip = new THREE.Vector3();
+      for (let side = 0; side < 16; side++)
+        tip.add(new THREE.Vector3().fromBufferAttribute(positions, 40 * 17 + side));
+      tip.divideScalar(16);
+      assert.ok(board.position.distanceTo(tip) < 0.025, 'madeira presa à ponta do braço');
+      assert.equal(board.visible, true);
+      assert.equal(board.scale.x, 1);
+      return board;
+    });
+    const before = boards.map((b) => b.position.clone());
+    advance(39.8);
+    boards.forEach((board, i) => {
+      assert.equal(board.visible, true, 'madeira não desaparece antes do mergulho');
+      assert.equal(board.scale.x, 1, 'não reduzir a madeira para simular afundamento');
+      assert.ok(board.position.z + kraken.position.z < -0.25, 'madeira levada sob a água');
+      assert.ok(board.position.distanceTo(before[i]) > 0.2, 'acompanha a retirada');
+    });
+    advance(40.1);
+    assert.equal(kraken.visible, false);
+  } finally {
+    fleet.dispose();
+  }
+});
+
 test('kraken continua batendo braços independentes enquanto submerge após o barco sumir', () => {
   const fleet = createWorldFleet(() => 0);
   let time = 0;

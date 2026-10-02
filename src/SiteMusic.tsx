@@ -38,13 +38,14 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   });
   useEffect(() => {
     const player = audio.current!;
+    const doorBell = bell.current!;
     player.volume = volume;
-    bell.current!.volume = volume * 0.8;
+    doorBell.volume = volume * 0.8;
     const playBell = () => {
       if (!bellPending.current || document.hidden) return;
       bellPending.current = false;
-      bell.current!.currentTime = 0;
-      void bell.current!.play().catch(() => {
+      doorBell.currentTime = 0;
+      void doorBell.play().catch(() => {
         bellPending.current = location.hash === '#shop';
       });
     };
@@ -55,14 +56,14 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     const visibility = () => {
       if (document.hidden) {
         player.pause();
-        bell.current!.pause();
+        doorBell.pause();
       } else play();
     };
     const route = () => {
       setTrack(trackForPage());
       bellPending.current = location.hash === '#shop';
       if (bellPending.current) playBell();
-      else bell.current!.pause();
+      else doorBell.pause();
     };
     play();
     // Browsers requiring a gesture start on the first interaction.
@@ -72,7 +73,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     window.addEventListener('hashchange', route);
     return () => {
       player.pause();
-      bell.current!.pause();
+      doorBell.pause();
       document.removeEventListener('pointerdown', play);
       document.removeEventListener('keydown', play);
       document.removeEventListener('visibilitychange', visibility);

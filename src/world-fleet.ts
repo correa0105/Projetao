@@ -375,6 +375,7 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
       i % 3 ? wood : deck,
       wreckage,
     );
+    plank.name = `wreck-plank-${i}`;
     plank.visible = false;
     return plank;
   });
@@ -588,6 +589,25 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
         s.masts[0].rotation.set(damage * 0.65, -damage * 1.05, damage * 0.18);
         s.masts[1].rotation.set(-smooth((t - 4.7) / 0.55) * 0.85, damage * 0.45, 0);
         kraken.position.z = -sink * 0.12 - withdraw * 0.8;
+        // Loose boards drift first. Three arms reach the existing pieces before gripping them.
+        for (const [i, plank] of debris.entries()) {
+          const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);
+          plank.visible = age >= 0 && t < ATTACK_DURATION;
+          if (!plank.visible) continue;
+          const angle = i * 2.399,
+            distance = 0.14 + Math.min(age, 1.6) * (0.18 + (i % 3) * 0.08);
+          plank.position.set(
+            Math.cos(angle) * distance,
+            Math.sin(angle) * distance,
+            Math.max(0.028 - kraken.position.z, 0.17 + age * 0.65 - age * age * 0.8),
+          );
+          plank.rotation.set(
+            age < 1 ? age * (i % 2 ? 4 : -3) : 0.08 * Math.sin(t * 3 + i),
+            age < 1 ? age * 2 : 0,
+            angle + age * 0.3,
+          );
+          plank.scale.setScalar(i === 0 || i === 2 || i === 4 ? 1 : 1 - smooth((t - 9) / 1));
+        }
         for (const [i, tentacle] of tentacles.entries()) {
           // Independent, uneven blows in each arm's fixed lane.
           const hit = armStrikeTimes[i],
@@ -597,7 +617,31 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             after = t - SHIP_DESTROYED_AT,
             ending = krakenEndingPose(after, i, tentacle.angle, -kraken.position.z),
             armGrip = grip * (1 - thrash * 0.45);
-          tentacle.splashAge = ending.impactAge;
+          const gathersBoard = i === 0 || i === 2 || i === 4,
+            catchAt = 1.3 + i * 0.07,
+            reach = gathersBoard ? smooth((after - catchAt + 0.45) / 0.45) : 0;
+          if (reach > 0) {
+            const board = debris[i],
+              tip = ending.points[4],
+              liftBoard = smooth((after - catchAt) / 0.2);
+            tip.x = THREE.MathUtils.lerp(tip.x, board.position.x, reach);
+            tip.y = THREE.MathUtils.lerp(tip.y, board.position.y, reach);
+            tip.z = THREE.MathUtils.lerp(
+              tip.z,
+              THREE.MathUtils.lerp(board.position.z, tip.z + 0.035, liftBoard),
+              reach,
+            );
+            // A hooked end folds around the timber; the travelling bend remains active.
+            ending.points[3].lerp(
+              new THREE.Vector3(
+                tip.x + 0.075 * Math.cos(tentacle.angle),
+                tip.y + 0.075 * Math.sin(tentacle.angle),
+                tip.z - 0.075,
+              ),
+              reach * 0.85,
+            );
+          }
+          tentacle.splashAge = gathersBoard && after >= catchAt ? -1 : ending.impactAge;
           for (let j = 0; j < tentacle.parts.length; j++) {
             tentaclePoint(tentacle.angle, j / 13, armGrip, emerge, a, strike, thrash, ending);
             tentaclePoint(tentacle.angle, (j + 1) / 13, armGrip, emerge, b, strike, thrash, ending);
@@ -641,24 +685,14 @@ export function createWorldFleet(sampleHeight: (u: number, v: number) => number)
             m.scale.setScalar(0.021 * (1 - u * 0.75));
           }
           tentaclePoint(tentacle.angle, 1, armGrip, emerge, tentacle.tip, strike, thrash, ending);
-        }
-        for (const [i, plank] of debris.entries()) {
-          const age = t - (i < 4 ? strikeTimes[0] : i < 8 ? strikeTimes[1] : strikeTimes[2]);
-          plank.visible = age >= 0 && t < ATTACK_DURATION;
-          if (!plank.visible) continue;
-          const angle = i * 2.399,
-            distance = 0.14 + Math.min(age, 1.6) * (0.18 + (i % 3) * 0.08);
-          plank.position.set(
-            Math.cos(angle) * distance,
-            Math.sin(angle) * distance,
-            Math.max(0.028 - kraken.position.z, 0.17 + age * 0.65 - age * age * 0.8),
-          );
-          plank.rotation.set(
-            age < 1 ? age * (i % 2 ? 4 : -3) : 0.08 * Math.sin(t * 3 + i),
-            age < 1 ? age * 2 : 0,
-            angle + age * 0.3,
-          );
-          plank.scale.setScalar(1 - smooth((t - 9) / 1));
+          if (gathersBoard && after >= catchAt) {
+            const board = debris[i];
+            board.position.copy(tentacle.tip);
+            board.position.z += 0.012;
+            sampleKrakenEnding(ending, 0.96, a);
+            direction.copy(tentacle.tip).sub(a).normalize();
+            board.quaternion.setFromUnitVectors(up, direction);
+          }
         }
         const lastHit = armStrikeTimes.reduce(
             (latest, hit) => (t >= hit ? Math.max(latest, hit) : latest),
