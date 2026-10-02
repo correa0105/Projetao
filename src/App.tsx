@@ -1,8 +1,17 @@
+import { HomeJournal } from './HomeJournal';
 import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
 import { ProfileMenu } from './ProfileMenu';
 import { NoticeBoard } from './NoticeBoard';
-import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ComponentType } from 'react';
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ComponentType,
+} from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -478,192 +487,7 @@ function Portal({ user }: { user: User }) {
           />
         </Suspense>
       );
-    if (page === 'overview')
-      return (
-        <>
-          <div className="page-header-spacer" aria-hidden="true" />
-          <section className="welcome-banner">
-            <div className="banner-copy">
-              <h2>
-                Além das montanhas,
-                <br />
-                <em>a sua próxima lenda.</em>
-              </h2>
-              <p>
-                {character
-                  ? 'Reúna seus aliados. Há caminhos que só os bravos conhecem.'
-                  : 'Escolha seu nome. Prepare a mochila. Sua jornada começa ao amanhecer.'}
-              </p>
-              <button
-                className="button cream"
-                onClick={() => (character ? go('missions') : setModal('character'))}
-              >
-                {character ? 'Encontrar uma aventura' : 'Criar meu primeiro personagem'}
-                <ArrowRight size={17} />
-              </button>
-            </div>
-          </section>
-          <div className="summary-grid">
-            {[
-              [
-                Users,
-                'Seus personagens',
-                String(characters.length),
-                'Novas histórias para viver',
-                'characters',
-              ],
-              [
-                Compass,
-                'Missões abertas',
-                String(missions.filter((p) => p.status === 'open').length),
-                'Um chamado para a aventura',
-                'missions',
-              ],
-              [
-                Backpack,
-                'Na sua mochila',
-                String(inventoryCount),
-                character ? `Itens de ${character.name}` : 'Prepare-se para a jornada',
-                'inventory',
-              ],
-            ].map(([IconValue, label, value, description, target]) => {
-              const Icon = IconValue as Icon;
-              return (
-                <button
-                  className="summary-card"
-                  key={String(label)}
-                  onClick={() => go(target as Page)}
-                >
-                  <span className="summary-icon">
-                    <Icon size={22} />
-                  </span>
-                  <span>
-                    <span className="summary-label">{String(label)}</span>
-                    <strong>
-                      {String(value)} <small>{String(description)}</small>
-                    </strong>
-                  </span>
-                  <ChevronRight size={16} />
-                </button>
-              );
-            })}
-          </div>
-          {upcoming.length > 0 && (
-            <section className="upcoming-missions" aria-label="Mesas nas próximas 24 horas">
-              <div className="section-heading">
-                <h2>Mesas chegando</h2>
-                <span className="small muted">Próximas 24 horas · horário local</span>
-              </div>
-              {upcoming.map((item) => (
-                <div className="upcoming-mission" key={item.id}>
-                  <div>
-                    <span className="badge neutral">
-                      {item.author_id === user.id
-                        ? 'Você tem uma mesa para mestrar'
-                        : item.my_characters.length
-                          ? 'Você está inscrito'
-                          : 'Mesa aberta'}
-                    </span>
-                    <h3>{item.title}</h3>
-                    <time dateTime={item.starts_at!}>{formatSchedule(item.starts_at!)}</time>
-                  </div>
-                  <button className="button outline" onClick={() => go('missions')}>
-                    Ver missão
-                  </button>
-                </div>
-              ))}
-            </section>
-          )}
-          <div className="dashboard-columns">
-            <section>
-              <div className="section-heading">
-                <h2>
-                  Chamados da Alvorada <span className="count">{activePosts.length}</span>
-                </h2>
-                <button className="text-button" onClick={() => go('board')}>
-                  Ver mural
-                  <ArrowUpRight size={16} />
-                </button>
-              </div>
-              <div className="quest-grid overview-quests">
-                {activePosts.slice(0, 2).map((item) => postCard(item, true))}
-              </div>
-              <div className="guild-note">
-                <span className="note-icon">
-                  <Feather size={20} />
-                </span>
-                <div>
-                  <b>O próximo rumor pode virar uma grande história.</b>
-                  <p>Descubra pistas e ideias nos ganchos de aventura.</p>
-                </div>
-                <button
-                  className="icon-button"
-                  aria-label="Explorar ganchos"
-                  onClick={() => go('hooks')}
-                >
-                  <ArrowRight size={19} />
-                </button>
-              </div>
-            </section>
-            <section>
-              <div className="section-heading">
-                <h2>Seu aventureiro</h2>
-                <button
-                  className="text-button"
-                  onClick={() => go('characters')}
-                  aria-label="Ver personagens"
-                >
-                  <ArrowUpRight size={18} />
-                </button>
-              </div>
-              {character ? (
-                <div className="character-mini">
-                  <div className="character-crest">
-                    <Shield size={34} />
-                    <span>{character.level}</span>
-                  </div>
-                  <h3>{character.name}</h3>
-                  <p>
-                    {character.race} · {character.class}
-                  </p>
-                  <span className="badge neutral">
-                    NÍVEL {character.level} · {rankName(character.level)} ·{' '}
-                    {progressionLabel(character.level, character.progression_missions)}
-                  </span>
-                  <div className="mini-stats">
-                    <span>
-                      <Heart size={16} />
-                      <b>{character.hp}</b> PV
-                    </span>
-                    <span>
-                      <Shield size={16} />
-                      <b>{character.armor_class}</b> CA
-                    </span>
-                    <span>
-                      <Coins size={16} />
-                      <b>{money(character.gold_cp)}</b> PO
-                    </span>
-                  </div>
-                  <button className="button outline full" onClick={() => go('profile')}>
-                    Abrir ficha
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-              ) : (
-                <div className="character-mini empty-mini">
-                  <Shield size={38} />
-                  <h3>Uma lenda em branco</h3>
-                  <p>Todo herói começa com um nome e uma boa história.</p>
-                  <button className="button outline" onClick={() => setModal('character')}>
-                    <Plus size={16} />
-                    Criar personagem
-                  </button>
-                </div>
-              )}
-            </section>
-          </div>
-        </>
-      );
+    if (page === 'overview') return <HomeJournal upcoming={upcoming} />;
     return (
       <>
         {page !== 'characters' && <div className="page-header-spacer" aria-hidden="true" />}
@@ -794,7 +618,7 @@ function Portal({ user }: { user: User }) {
             page === 'characters'
               ? 'Seu acampamento'
               : page === 'overview'
-                ? `Boas-vindas, ${user.name.split(' ')[0]}`
+                ? 'Início'
                 : titles[page]
           }
         >

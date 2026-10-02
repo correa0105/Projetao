@@ -15,17 +15,7 @@ export function detailAtlasMaterial(
       : kind === 'cloth'
         ? `return atlasNoise(p*20.0)*0.55 + atlasNoise(p*65.0)*0.12;`
         : kind === 'scales'
-          ? `vec2 cell=p.xy*42.0; cell.x += floor(cell.y)*0.5;
-           vec2 base=floor(cell), local=fract(cell);
-           float nearest=2.0;
-           for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) {
-             vec2 offset=vec2(float(x),float(y));
-             vec2 center=offset+vec2(0.5)+(vec2(atlasHash(vec3(base+offset,1.0)),atlasHash(vec3(base+offset,2.0)))-0.5)*0.22;
-             nearest=min(nearest,length((local-center)*vec2(1.0,1.25)));
-           }
-           float detailVisibility=clamp(1.0-length(fwidth(cell))*0.85,0.0,1.0);
-           float scale=mix(0.5,1.0-smoothstep(0.3,0.53,nearest),detailVisibility);
-           return scale*0.55+atlasNoise(p*10.0)*0.45;`
+          ? `return atlasNoise(p*18.0)*0.6 + atlasNoise(p*110.0)*0.2;`
           : kind === 'membrane'
             ? `return atlasNoise(p*9.0)*0.7 + atlasNoise(p*32.0)*0.16;`
             : `return atlasNoise(p*9.0)*0.65 + atlasNoise(p*29.0)*0.25 + atlasNoise(p*75.0)*0.10;`;
@@ -35,8 +25,32 @@ export function detailAtlasMaterial(
       : kind === 'skin'
         ? 'kraken-skin-v1.webp'
         : kind === 'scales'
-          ? 'dragon-scales-v1.webp'
-          : undefined;
+          ? 'dragon-hide-v2.webp'
+          : kind === 'membrane'
+            ? 'dragon-wing-v2.webp'
+            : undefined;
+  if ((kind === 'scales' || kind === 'membrane') && typeof document !== 'undefined') {
+    const loader = new THREE.TextureLoader();
+    const albedo = loader.load('/atlas-model-materials/' + asset);
+    albedo.colorSpace = THREE.SRGBColorSpace;
+    const maps = [albedo];
+    material.map = albedo;
+    if (kind === 'scales') {
+      const normal = loader.load('/atlas-model-materials/dragon-hide-normal-v2.png');
+      const rough = loader.load('/atlas-model-materials/dragon-hide-roughness-v2.webp');
+      material.normalMap = normal;
+      material.normalScale.set(0.7, 0.7);
+      material.roughnessMap = rough;
+      maps.push(normal, rough);
+    }
+    for (const map of maps) {
+      map.wrapS = map.wrapT = THREE.RepeatWrapping;
+      map.anisotropy = 8;
+      if (kind === 'scales') map.repeat.set(1, 2);
+    }
+    material.addEventListener('dispose', () => maps.forEach((map) => map.dispose()));
+    return;
+  }
   const ready = { value: 0 };
   const texture =
     asset && typeof document !== 'undefined'
@@ -93,7 +107,7 @@ export function detailAtlasMaterial(
         vec3 scanned=texture2D(atlasAlbedo,coords.yz).rgb*weights.x
           +texture2D(atlasAlbedo,coords.xz).rgb*weights.y
           +texture2D(atlasAlbedo,coords.xy).rgb*weights.z;
-        ${kind === 'skin' ? 'scanned=texture2D(atlasAlbedo,vAtlasUV*vec2(1.0,2.2)).rgb;' : ''}
+        ${kind === 'skin' ? 'scanned=texture2D(atlasAlbedo,vAtlasUV*vec2(1.0,2.2)).rgb;' : kind === 'scales' ? 'scanned=texture2D(atlasAlbedo,vAtlasUV*vec2(1.0,2.0)).rgb;' : kind === 'membrane' ? 'scanned=texture2D(atlasAlbedo,vAtlasUV).rgb;' : ''}
         diffuseColor.rgb=mix(diffuseColor.rgb,scanned,atlasTextureReady*0.88);`
             : ''
         }`,
@@ -109,10 +123,10 @@ export function detailAtlasMaterial(
         vec3 q0=dFdx(-vViewPosition), q1=dFdy(-vViewPosition);
         vec3 s=cross(q1,normal), t=cross(normal,q0);
         float determinant=dot(q0,s);
-        float height=(atlasSurface(vAtlasSurface)${texture ? '+dot(scanned,vec3(0.2126,0.7152,0.0722))*atlasTextureReady*0.6' : ''})*${kind === 'skin' ? '0.00065' : '0.00018'};
+        float height=(atlasSurface(vAtlasSurface)${texture ? '+dot(scanned,vec3(0.2126,0.7152,0.0722))*atlasTextureReady*0.6' : ''})*${kind === 'skin' ? '0.00065' : kind === 'scales' ? '0.0025' : '0.00018'};
         vec3 gradient=sign(determinant)*(dFdx(height)*s+dFdy(height)*t);
         if(abs(determinant)>1e-10) normal=normalize(abs(determinant)*normal-gradient);`,
       );
   };
-  material.customProgramCacheKey = () => 'atlas-textured-v4-' + kind;
+  material.customProgramCacheKey = () => 'atlas-textured-v5-' + kind;
 }

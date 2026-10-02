@@ -10,11 +10,17 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
   group.add(dragon);
   const geometries: THREE.BufferGeometry[] = [];
   const materials: THREE.Material[] = [];
-  const skin = new THREE.MeshStandardMaterial({ color: 0x4c5042, roughness: 0.67, metalness: 0 });
+  const skin = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    roughness: 0.72,
+    metalness: 0,
+    clearcoat: 0.08,
+    clearcoatRoughness: 0.8,
+  });
   const belly = new THREE.MeshStandardMaterial({ color: 0x93806b, roughness: 0.9 });
   const horn = new THREE.MeshStandardMaterial({ color: 0xada28c, roughness: 0.65 });
   const membrane = new THREE.MeshStandardMaterial({
-    color: 0x796557,
+    color: 0xffffff,
     roughness: 0.78,
     side: THREE.DoubleSide,
   });
@@ -39,7 +45,7 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
     sy: number,
     sz: number,
   ) {
-    const geo = new THREE.SphereGeometry(1, 24, 16);
+    const geo = new THREE.SphereGeometry(1, 64, 48);
     geometries.push(geo);
     const mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(x, y, z);
@@ -52,48 +58,170 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
     from: THREE.Vector3,
     to: THREE.Vector3,
     r: number,
-    mat = skin,
+    mat: THREE.Material = skin,
     tip = r * 0.72,
   ) {
-    const geo = new THREE.CylinderGeometry(tip, r, from.distanceTo(to), 12);
+    const middle = from.clone().lerp(to, 0.52);
+    middle.z += Math.min(0.03, from.distanceTo(to) * 0.08);
+    return sweep(parent, [from, middle, to], [r, r * 0.86, tip], mat, 36, 20);
+  }
+  // Anatomical surfaces with smooth longitudinal profiles and stable skin UVs.
+  function sweep(
+    parent: THREE.Group,
+    points: THREE.Vector3[],
+    radii: number[],
+    mat: THREE.Material = skin,
+    rows = 72,
+    sides = 40,
+    flatten = 1,
+  ) {
+    const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal');
+    const frames = curve.computeFrenetFrames(rows, false);
+    const positions: number[] = [],
+      uv: number[] = [],
+      indices: number[] = [];
+    for (let row = 0; row <= rows; row++) {
+      const t = row / rows,
+        center = curve.getPointAt(t),
+        f = t * (radii.length - 1);
+      const k = Math.min(radii.length - 2, Math.floor(f)),
+        blend = f - k;
+      const eased = blend * blend * (3 - 2 * blend);
+      const r = THREE.MathUtils.lerp(radii[k], radii[k + 1], eased);
+      for (let side = 0; side <= sides; side++) {
+        const angle = (side / sides) * Math.PI * 2;
+        const point = center
+          .clone()
+          .addScaledVector(frames.normals[row], Math.cos(angle) * r)
+          .addScaledVector(frames.binormals[row], Math.sin(angle) * r * flatten);
+        positions.push(point.x, point.y, point.z);
+        uv.push(side / sides, t);
+      }
+    }
+    for (let row = 0; row < rows; row++)
+      for (let side = 0; side < sides; side++) {
+        const n = row * (sides + 1) + side;
+        indices.push(n, n + 1, n + sides + 1, n + 1, n + sides + 2, n + sides + 1);
+      }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geo.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+    geo.setIndex(indices);
+    geo.computeVertexNormals();
     geometries.push(geo);
     const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.copy(from).add(to).multiplyScalar(0.5);
-    mesh.quaternion.setFromUnitVectors(
-      new THREE.Vector3(0, 1, 0),
-      to.clone().sub(from).normalize(),
-    );
     parent.add(mesh);
     return mesh;
   }
   const v = (x: number, y: number, z: number) => new THREE.Vector3(x, y, z);
-  ellipsoid(rigid, skin, 0, 0, 0, 0.19, 0.44, 0.18);
-  ellipsoid(rigid, belly, 0, 0.02, -0.08, 0.14, 0.36, 0.1);
-  bone(rigid, v(0, 0.25, 0.04), v(0, 0.67, 0.16), 0.115);
-  ellipsoid(rigid, skin, 0, 0.7, 0.16, 0.13, 0.2, 0.12);
-  ellipsoid(rigid, skin, 0, 0.84, 0.13, 0.1, 0.15, 0.075);
-  ellipsoid(rigid, belly, 0, 0.82, 0.08, 0.088, 0.14, 0.025);
+  sweep(
+    rigid,
+    [
+      v(0, -0.5, 0.015),
+      v(0, -0.34, 0.02),
+      v(0, -0.12, 0.035),
+      v(0, 0.13, 0.05),
+      v(0, 0.32, 0.1),
+      v(0, 0.46, 0.13),
+    ],
+    [0.005, 0.145, 0.19, 0.225, 0.18, 0.105],
+    skin,
+    112,
+    56,
+    0.84,
+  );
+  ellipsoid(rigid, belly, 0, 0.02, -0.075, 0.135, 0.37, 0.08);
+  sweep(
+    rigid,
+    [v(0, 0.35, 0.14), v(0, 0.52, 0.23), v(0, 0.72, 0.28), v(0, 0.91, 0.19)],
+    [0.115, 0.105, 0.075, 0.095],
+    skin,
+    96,
+    48,
+  );
+  ellipsoid(rigid, skin, 0, 0.91, 0.19, 0.105, 0.145, 0.088);
+  sweep(
+    rigid,
+    [v(0, 0.97, 0.17), v(0, 1.06, 0.16), v(0, 1.17, 0.15), v(0, 1.195, 0.145)],
+    [0.085, 0.078, 0.055, 0.012],
+    skin,
+    72,
+    40,
+    0.55,
+  );
+  ellipsoid(rigid, belly, 0, 1.015, 0.111, 0.071, 0.135, 0.023);
+  const dark = new THREE.MeshStandardMaterial({ color: 0x100e09, roughness: 0.7 });
+  materials.push(dark);
   for (const s of [-1, 1]) {
-    ellipsoid(rigid, eye, s * 0.105, 0.75, 0.21, 0.025, 0.04, 0.022);
-    bone(rigid, v(s * 0.085, 0.62, 0.23), v(s * 0.15, 0.42, 0.36), 0.034, horn, 0.002);
-    // Tucked legs and three talons keep the flying silhouette readable.
-    for (const y of [-0.25, 0.18]) {
-      bone(rigid, v(s * 0.14, y, -0.04), v(s * 0.22, y - 0.15, -0.16), 0.055);
-      bone(rigid, v(s * 0.22, y - 0.15, -0.16), v(s * 0.14, y - 0.27, -0.22), 0.032);
+    ellipsoid(rigid, eye, s * 0.084, 0.948, 0.214, 0.012, 0.025, 0.012);
+    ellipsoid(rigid, dark, s * 0.091, 0.951, 0.221, 0.003, 0.014, 0.007);
+    ellipsoid(rigid, skin, s * 0.079, 0.926, 0.235, 0.025, 0.055, 0.012);
+    ellipsoid(rigid, dark, s * 0.044, 1.125, 0.183, 0.01, 0.015, 0.004);
+    sweep(
+      rigid,
+      [
+        v(s * 0.074, 0.87, 0.252),
+        v(s * 0.108, 0.76, 0.31),
+        v(s * 0.13, 0.67, 0.34),
+        v(s * 0.12, 0.62, 0.365),
+      ],
+      [0.03, 0.025, 0.014, 0.001],
+      horn,
+      48,
+      24,
+    );
+    for (let tooth = 0; tooth < 5; tooth++)
+      bone(
+        rigid,
+        v(s * 0.072, 1.02 + tooth * 0.023, 0.128),
+        v(s * 0.064, 1.023 + tooth * 0.023, 0.109),
+        0.004,
+        horn,
+        0.0005,
+      );
+    for (const y of [-0.26, 0.2]) {
+      const rear = y < 0;
+      ellipsoid(rigid, skin, s * 0.15, y, -0.01, rear ? 0.095 : 0.068, 0.13, 0.1);
+      sweep(
+        rigid,
+        [
+          v(s * 0.16, y, -0.02),
+          v(s * 0.24, y - 0.08, -0.1),
+          v(s * 0.23, y - 0.17, -0.17),
+          v(s * 0.14, y - 0.28, -0.2),
+        ],
+        [rear ? 0.085 : 0.06, 0.061, 0.035, 0.02],
+        skin,
+        64,
+        32,
+      );
+      ellipsoid(rigid, skin, s * 0.14, y - 0.28, -0.2, 0.038, 0.05, 0.025);
       for (let i = 0; i < 3; i++)
-        bone(
+        sweep(
           rigid,
-          v(s * 0.14 + (i - 1) * 0.026, y - 0.26, -0.22),
-          v(s * 0.14 + (i - 1) * 0.035, y - 0.32, -0.255),
-          0.012,
+          [
+            v(s * 0.14 + (i - 1) * 0.025, y - 0.28, -0.2),
+            v(s * 0.14 + (i - 1) * 0.03, y - 0.33, -0.22),
+            v(s * 0.14 + (i - 1) * 0.028, y - 0.36, -0.25),
+          ],
+          [0.011, 0.009, 0.0005],
           horn,
-          0.001,
+          24,
+          16,
         );
     }
   }
-  for (let i = 0; i < 8; i++) {
-    const y = 0.54 - i * 0.13;
-    bone(rigid, v(0, y, 0.16), v(0, y - 0.05, 0.27 - (i > 4 ? 0.04 : 0)), 0.034, horn, 0.001);
+  for (let i = 0; i < 13; i++) {
+    const y = 0.76 - i * 0.095,
+      z = y > 0.4 ? 0.25 : 0.205;
+    sweep(
+      rigid,
+      [v(0, y, z), v(0, y - 0.032, z + 0.075), v(0, y - 0.07, z + 0.115)],
+      [0.022, 0.014, 0.001],
+      horn,
+      24,
+      16,
+    );
   }
   const wings: THREE.Group[] = [];
   for (const s of [-1, 1]) {
@@ -102,19 +230,36 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
     dragon.add(wing);
     wings.push(wing);
     const wrist = v(s * 0.46, 0.2, 0.035);
-    bone(wing, v(0, 0, 0), wrist, 0.045);
+    sweep(wing, [v(0, 0, 0), v(s * 0.22, 0.04, 0.09), wrist], [0.07, 0.048, 0.033], skin, 64, 32);
     const tips = [
       v(s * 1.13, 0.45, 0.025),
       v(s * 1.27, 0.04, 0.0),
       v(s * 1.03, -0.35, -0.02),
       v(s * 0.69, -0.6, -0.035),
       v(s * 0.25, -0.53, -0.02),
+      v(0, -0.38, -0.025),
     ];
-    for (const tip of tips) bone(wing, wrist, tip, 0.02, skin, 0.005);
+    for (const tip of tips)
+      sweep(
+        wing,
+        [
+          wrist,
+          wrist
+            .clone()
+            .lerp(tip, 0.45)
+            .add(v(0, 0.018, 0.045)),
+          tip,
+        ],
+        [0.022, 0.014, 0.0025],
+        skin,
+        56,
+        20,
+      );
     const positions: number[] = [],
-      indices: number[] = [];
+      indices: number[] = [],
+      uvs: number[] = [];
     // Subdivided curved membranes replace the flat triangular facets.
-    const steps = 10;
+    const steps = 32;
     for (let panel = 0; panel < tips.length - 1; panel++) {
       const start = positions.length / 3;
       for (let row = 0; row <= steps; row++)
@@ -126,6 +271,7 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
           const point = wrist.clone().lerp(edge, radius);
           point.z -= Math.sin(radius * Math.PI) * Math.sin(along * Math.PI) * 0.09;
           positions.push(...point.toArray());
+          uvs.push(Math.abs(point.x) / 1.4, (point.y + 0.65) / 1.2);
         }
       for (let row = 0; row < steps; row++)
         for (let col = 0; col < steps; col++) {
@@ -136,6 +282,7 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geo.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
     geo.setIndex(indices);
     geo.computeVertexNormals();
     geometries.push(geo);
@@ -149,7 +296,14 @@ export function createWorldDragon(sampleHeight: (u: number, v: number) => number
     segment.position.set(0, i === 0 ? -0.34 : -0.17, 0);
     parent.add(segment);
     tail.push(segment);
-    bone(segment, v(0, 0, 0), v(0, -0.18, -0.015), 0.085 * (1 - i / 8), skin, 0.065 * (1 - i / 8));
+    sweep(
+      segment,
+      [v(0, 0, 0), v(0, -0.09, -0.008), v(0, -0.18, -0.015)],
+      [0.085 * (1 - i / 8), 0.074 * (1 - i / 8), i === 6 ? 0.003 : 0.065 * (1 - i / 8)],
+      skin,
+      40,
+      32,
+    );
     if (i % 2 === 0) bone(segment, v(0, -0.08, 0.04), v(0, -0.15, 0.11), 0.025, horn, 0.001);
     parent = segment;
   }

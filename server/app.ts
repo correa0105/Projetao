@@ -1,3 +1,4 @@
+import { homeUpdatesRouter } from './home-updates.js';
 import express from 'express';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
@@ -141,6 +142,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   app.use('/api', shopRouter());
   app.use('/api', stableRouter());
   app.use('/api', achievementsRouter());
+  app.use('/api', homeUpdatesRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [staff],

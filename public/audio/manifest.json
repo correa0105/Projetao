@@ -1,0 +1,8 @@
+{
+  "track": "medieval-travelers-journey.ogg",
+  "source": "Medieval Travelers Journey  Medieval Music for Relaxation & Adventure.mp3",
+  "origin": "Faixa fornecida pelo usuário para uso no site. Não há licença CC0 declarada.",
+  "encoding": "Ogg/Opus, faixa completa, duração aproximada de 1h33m24s, metadados removidos",
+  "defaultVolume": 0.4,
+  "routes": "Todas as páginas nesta etapa; siteSoundtracks em src/SiteMusic.tsx permite configurar faixas por página."
+}

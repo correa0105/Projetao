@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { MusicToggle } from './SiteMusic';
 import { UserRound } from 'lucide-react';
 import type { Character } from './types';
 
@@ -35,6 +36,7 @@ export function ProfileMenu({
     >
       <div className="profile-menu-controls" id="profile-menu-controls">
         {children}
+        <MusicToggle />
       </div>
       <button
         type="button"

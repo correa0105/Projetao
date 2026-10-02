@@ -85,6 +85,18 @@ try {
     }, end);
     await page.screenshot({ path: 'test-results/' + file + '.png' });
   }
+  await page.evaluate(() => {
+    const p = window.modelPreview;
+    p.camera.position.set(3, -2, 2.3);
+    p.camera.lookAt(2.3, 0.25, 0.8);
+    p.camera.left = -1.25;
+    p.camera.right = 1.25;
+    p.camera.top = 0.7;
+    p.camera.bottom = -0.7;
+    p.camera.updateProjectionMatrix();
+    p.renderer.render(p.scene, p.camera);
+  });
+  await page.screenshot({ path: 'test-results/world-dragon-detail.png' });
   expect(errors).toEqual([]);
   console.log('Materiais e modelos: renderização próxima sem erros WebGL/shader.');
 } finally {

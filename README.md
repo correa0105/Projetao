@@ -251,3 +251,12 @@ As três bardas também possuem artes completas para todas as espécies e pelage
 Direção vigente: acabamento construído diretamente no 3D. A imagem Inkarnate foi retirada do material e permanece somente como referência histórica (docs/ATLAS-INKARNATE.md). src/world-relief.ts usa cores por bioma, fotografias CC0 de solo/rocha projetadas em três eixos, fissuras e estratos calculados no shader, erosão nos vértices e copas de árvores em duas malhas instanciadas com sombras reais. src/world-ocean.ts calcula espuma costeira irregular animada. Preservar geografia, territórios e navegação; não reaplicar a imagem completa sobre o terreno. Detalhes e validação em docs/ATLAS-3D-MATERIALS.md.
 
 Refino do Mundo em 30/09/2026: ondas costeiras móveis, árvores menos densas com folhagem procedural, destaque das fronteiras acima das copas e detalhe de dunas/areia. Vulcão e ilhotas cônicas ao sul retirados; 21 marcadores visíveis, registros SQL preservados. Detalhes em docs/ATLAS-3D-MATERIALS.md.
+
+
+## Diário da Alvorada e música geral
+
+No Início, **Nova publicação** abre o editor de artigos, imagens e reuniões. Escolha destaque lateral, cartão em paisagem/retrato ou nota; envie uma imagem, formate o texto e defina um link interno (como `#world`) ou http/https. **Visualizar** mostra a composição antes de publicar. Autores podem editar/remover suas publicações; a staff existente pode moderar. Os conteúdos e imagens são persistidos no PostgreSQL pela migration 040. Encontros podem ser adicionados ao calendário; missões das próximas 24 horas continuam na agenda.
+
+A faixa enviada pelo usuário toca em todas as páginas a 40%, após a primeira interação quando necessário. No menu do retrato superior direito, o ícone de volume ativa/muta a música. A preferência persiste no navegador. Faixas específicas por área poderão ser cadastradas em `siteSoundtracks` (`src/SiteMusic.tsx`); nenhuma outra faixa está configurada ainda.
+
+Verificação isolada do Início e da sombra da estante: `node scripts/test-home-isolated.mjs`. A verificação do dragão também valida reprodução, mute persistido, volume e continuidade de áudio: `node scripts/test-world-dragon-isolated.mjs`. Não executar os testes em produção.
