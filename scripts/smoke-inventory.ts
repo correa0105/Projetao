@@ -66,12 +66,10 @@ try {
   await bag
     .getByRole('button', { name: 'Espada longa, quantidade 3', exact: true })
     .dragTo(vault.locator('.loot-slot-empty').first());
-  await expect(page.getByRole('dialog')).toBeVisible();
-  await page.getByRole('spinbutton', { name: 'Quantidade', exact: true }).fill('2');
-  await page.getByRole('button', { name: 'Transferir', exact: true }).click();
+
   await expect(page.getByRole('dialog')).not.toBeVisible();
-  await expect(bag.locator('.loot-quantity')).toHaveText('1');
-  await expect(vault.locator('.loot-quantity')).toHaveText('2');
+  await expect(bag.locator('button.loot-slot')).toHaveCount(0);
+  await expect(vault.locator('.loot-quantity')).toHaveText('3');
   // Keep a native drag active while scrolling from the lower chest back to the bag.
   await page.setViewportSize({ width: 1440, height: 1000 });
   const source = vault.locator('button.loot-slot').first();
@@ -79,14 +77,16 @@ try {
   await source.scrollIntoViewIfNeeded();
   await source.hover();
   const sourceBox = (await source.boundingBox())!;
+  await page.keyboard.down('Shift');
   await page.mouse.down();
   await page.mouse.move(sourceBox.x + sourceBox.width / 2 + 15, sourceBox.y + sourceBox.height / 2, { steps: 5 });
   await target.scrollIntoViewIfNeeded();
   const targetBox = (await target.boundingBox())!;
   await page.mouse.move(targetBox.x + targetBox.width / 2, targetBox.y + targetBox.height / 2, { steps: 8 });
   await page.mouse.up();
-  await expect(page.getByRole('dialog')).toBeVisible();
-  await page.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await page.keyboard.up('Shift');
+  await expect(bag.locator('.loot-quantity')).toHaveText('1');
+  await expect(vault.locator('.loot-quantity')).toHaveText('2');
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await page.reload();
   await expect(vault.locator('.loot-quantity')).toHaveText('2');
@@ -97,9 +97,7 @@ try {
   await vault.locator('button.loot-slot').scrollIntoViewIfNeeded();
   await page.waitForTimeout(150);
   await vault.locator('button.loot-slot').click();
-  await page.getByRole('button', { name: 'Levar para a mochila', exact: true }).click();
-  await page.getByRole('spinbutton', { name: 'Quantidade', exact: true }).fill('1');
-  await page.getByRole('button', { name: 'Transferir', exact: true }).click();
+  await page.getByRole('button', { name: 'Levar para a mochila', exact: true }).click({modifiers:['Shift']});
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await expect(bag.locator('.loot-quantity')).toHaveText('1');
   await expect(vault.locator('.loot-quantity')).toHaveText('1');
@@ -115,7 +113,6 @@ try {
   await page.waitForTimeout(150);
   await bag.locator('button.loot-slot').click();
   await bag.getByRole('button', { name: 'Guardar no cofre', exact: true }).click();
-  await page.getByRole('button', { name: 'Transferir', exact: true }).click();
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await expect(vault.locator('.loot-quantity')).toHaveText('2');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

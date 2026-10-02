@@ -45,7 +45,7 @@ function InventorySlot({
   place: Place;
   busy: boolean;
   onDrag: (value: { id: string; from: Place } | null) => void;
-  onTransfer: (id: string, from: Place) => void;
+  onTransfer: (id: string, from: Place, single: boolean) => void;
 }) {
   const id = useId();
   const trigger = useRef<HTMLButtonElement>(null);
@@ -171,9 +171,9 @@ function InventorySlot({
         <button
           className="button outline loot-transfer-button"
           disabled={busy}
-          onClick={() => {
+          onClick={(event) => {
             hide();
-            onTransfer(item.id, place);
+            onTransfer(item.id, place, event.shiftKey);
           }}
         >
           <ArrowDownUp size={15} />
@@ -198,7 +198,7 @@ function StoragePanel({
   busy: boolean;
   dragged: { id: string; from: Place } | null;
   onDrag: (value: { id: string; from: Place } | null) => void;
-  onTransfer: (id: string, from: Place) => void;
+  onTransfer: (id: string, from: Place, single: boolean) => void;
   onShop?: () => void;
 }) {
   const [over, setOver] = useState(false);
@@ -209,7 +209,7 @@ function StoragePanel({
     event.preventDefault();
     setOver(false);
     if (canDrop && event.dataTransfer.types.includes(dragType))
-      onTransfer(dragged.id, dragged.from);
+      onTransfer(dragged.id, dragged.from, event.shiftKey);
     onDrag(null);
   }
   return (
@@ -237,8 +237,7 @@ function StoragePanel({
               {isVault
                 ? 'Compartilhado somente entre os personagens da sua conta. Estes itens ficam guardados e não fazem parte da mochila levada à missão.'
                 : 'Exclusiva deste personagem. Estes são os itens levados à missão. O peso considera todas as unidades em libras; equipamentos iniciais registrados na ficha permanecem em História e equipamento.'}{' '}
-              Arraste um item para o outro inventário ou use o botão de transferência. Para pilhas,
-              escolha a quantidade. Espaços vazios não limitam a capacidade.
+              Arraste um item para o outro inventário ou use o botão de transferência. Sem Shift, transfere a pilha inteira; com Shift, apenas uma unidade. Espaços vazios não limitam a capacidade.
             </SheetHelp>
           </h2>
           <p className="loot-storage-caption">
@@ -337,14 +336,16 @@ export function Inventory({
       if (mounted.current) setError((e as Error).message);
     }
   }
-  function requestTransfer(id: string, from: Place) {
+  function requestTransfer(id: string, from: Place, single: boolean) {
     if (!storage || inFlight.current) return;
     const item = (from === 'backpack' ? availableInventory(storage) : storage.vault).find(
       (item) => item.id === id,
     );
     if (item) {
       setError('');
-      setTransfer({ item, from, quantity: item.quantity ?? 1, key: crypto.randomUUID() });
+      const order = { item, from, quantity: single ? 1 : item.quantity ?? 1, key: crypto.randomUUID() };
+      setTransfer(order);
+      void submitTransfer(order);
     }
   }
   function dropEquipment(slot: EquipmentSlot, id: string, from: Place) {
@@ -393,18 +394,18 @@ export function Inventory({
       if (mounted.current) setBusy(false);
     }
   }
-  async function submitTransfer() {
-    if (!transfer || inFlight.current) return;
+  async function submitTransfer(order = transfer) {
+    if (!order || inFlight.current) return;
     inFlight.current = true;
     setBusy(true);
     setError('');
     try {
       const value = await post<Storage>('/inventory/transfers', {
         character_id: character.id,
-        item_id: transfer.item.id,
-        direction: transfer.from === 'backpack' ? 'to_vault' : 'to_backpack',
-        quantity: transfer.quantity,
-        idempotency_key: transfer.key,
+        item_id: order.item.id,
+        direction: order.from === 'backpack' ? 'to_vault' : 'to_backpack',
+        quantity: order.quantity,
+        idempotency_key: order.key,
       });
       if (mounted.current) {
         setStorage(value);
@@ -526,7 +527,7 @@ export function Inventory({
           </ul>
         </details>
       )}
-      {transfer && (
+      {transfer && error && (
         <Modal
           title={transfer.from === 'backpack' ? 'Guardar no cofre' : 'Levar para a mochila'}
           close={() => {
