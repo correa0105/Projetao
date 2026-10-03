@@ -620,6 +620,19 @@
   border-top: 1px solid var(--lore-line);
   border-bottom: 1px solid var(--lore-line);
 }
+.lore-text--quote.lore-align--left,
+.lore-text--quote.lore-align--right {
+  width: min(100%, max(48%, 280px));
+  aspect-ratio: 1;
+  border: 1px solid var(--lore-line);
+  background: #1b1e1940;
+}
+.lore-text--quote.lore-align--left {
+  margin-right: auto;
+}
+.lore-text--quote.lore-align--right {
+  margin-left: auto;
+}
 .lore-text--quote::before {
   content: '“';
   display: block;

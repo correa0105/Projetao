@@ -1,5 +1,15 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Citação / lenda como caixa lateral (03/10/2026)
+
+Usuário apontou que o alinhamento apenas mudava o texto, deixando a citação
+de ponta a ponta. Esquerda/direita agora posicionam a própria caixa junto à
+margem escolhida, com cerca de meia largura e proporção quadrada para textos
+curtos; conteúdo longo amplia a altura. Centro mantém toda a largura do
+conteúdo. Largura mínima legível se adapta ao espaço disponível no celular.
+CSS compartilhado corrige prévia, leitura e páginas existentes sem alterar
+os valores de alinhamento ou textos salvos.
+
 ## Acabamento em aquarela somente na lore (03/10/2026)
 
 Por referência e confirmação do usuário, todas as imagens dos blocos da lore

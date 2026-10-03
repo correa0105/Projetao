@@ -72,7 +72,12 @@ automaticamente ao carregar, editar ou salvar a página.
 - Blocos de texto oferecem texto livre, caixa de pergaminho escuro, inscrição
   e citação. Todos possuem título e alinhamento; parágrafos são texto simples,
   nunca HTML executável. Imagem lateral pode acompanhar o texto no desktop;
-  caixas voltam à largura inteira no celular.
+  caixas de pergaminho e inscrição voltam à largura inteira no celular.
+  Em **Citação / lenda**, esquerda e direita posicionam uma caixa quadrada de
+  aproximadamente meia largura junto à margem escolhida. O centro ocupa toda
+  a largura do conteúdo. A caixa lateral cresce quando o texto exigir mais
+  altura e se adapta à tela pequena para preservar a leitura. Prévia e leitura
+  usam o mesmo layout, inclusive para citações já salvas.
 - Blocos podem ser removidos e reordenados pelas setas. Desfazer guarda as
   últimas 40 alterações da edição aberta. Prévia mostra o mesmo renderizador
   usado para a crônica publicada.
