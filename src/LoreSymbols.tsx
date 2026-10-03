@@ -39,6 +39,12 @@ function EngravedPaper({ id }: { id: string }) {
 
 // Sample four different cubic trails into filled ribbons, narrowing smoothly at the tips.
 type Point = [number, number];
+const magicOrigins: Point[] = [
+  [35, 62],
+  [72, 71],
+  [56, 38],
+  [46, 89],
+];
 const magicCurves: number[][][] = [
   [
     [48, 60, 20, 82, 14, 68],
@@ -65,8 +71,9 @@ const magicCurves: number[][][] = [
     [15, 61, 13, 60, 10, 50],
   ],
 ];
-const magicTrails = magicCurves.map((curves) => {
-  let start: Point = [54, 64];
+const magicTrails = magicCurves.map((curves, index) => {
+  const origin = magicOrigins[index];
+  let start: Point = origin;
   const points: Point[] = [start];
   for (const [x1, y1, x2, y2, x3, y3] of curves) {
     for (let step = 1; step <= 22; step++) {
@@ -90,7 +97,8 @@ const magicTrails = magicCurves.map((curves) => {
       return `${(x - ((side * dy) / length) * width).toFixed(2)},${(y + ((side * dx) / length) * width).toFixed(2)}`;
     });
   return {
-    line: `M54 64 ${curves.map((curve) => `C${curve.join(' ')}`).join(' ')}`,
+    origin,
+    line: `M${origin.join(' ')} ${curves.map((curve) => `C${curve.join(' ')}`).join(' ')}`,
     ribbon: `M${edge(1).join('L')}L${edge(-1).reverse().join('L')}Z`,
   };
 });
@@ -101,14 +109,14 @@ function LoreMagicWisps() {
     <g className="lore-magic-wisps">
       <defs>
         <radialGradient id={`${id}-light`}>
-          <stop stopColor="#eaffff" />
-          <stop offset=".35" stopColor="#74ecff" stopOpacity=".8" />
+          <stop stopColor="#c4e3e8" stopOpacity=".75" />
+          <stop offset=".35" stopColor="#6fbacb" stopOpacity=".45" />
           <stop offset="1" stopColor="#2db4ff" stopOpacity="0" />
         </radialGradient>
         <linearGradient id={`${id}-thread`} x1=".5" y1="1" x2=".4" y2="0">
-          <stop stopColor="#dcffff" />
-          <stop offset=".45" stopColor="#98f4ff" />
-          <stop offset="1" stopColor="#55baff" stopOpacity=".35" />
+          <stop stopColor="#b8dede" />
+          <stop offset=".45" stopColor="#6fc7d8" />
+          <stop offset="1" stopColor="#458aa6" stopOpacity=".35" />
         </linearGradient>
         {magicTrails.map((trail, i) => (
           <mask
@@ -138,7 +146,17 @@ function LoreMagicWisps() {
           </mask>
         ))}
       </defs>
-      <circle className="lore-magic-source" cx="54" cy="64" r="8" fill={`url(#${id}-light)`} />
+      {magicTrails.map((trail, i) => (
+        <circle
+          key={i}
+          className="lore-magic-source"
+          cx={trail.origin[0]}
+          cy={trail.origin[1]}
+          r="5"
+          fill={`url(#${id}-light)`}
+          style={{ animationDelay: `${-i * 0.65}s` }}
+        />
+      ))}
       {magicTrails.map((trail, i) => (
         <g
           key={i}
@@ -148,6 +166,7 @@ function LoreMagicWisps() {
               '--wisp-duration': `${3.4 + i * 0.65}s`,
               '--wisp-delay': `${-i * 0.9}s`,
               '--wisp-drift': `${(i % 2 ? 1 : -1) * 4}px`,
+              transformOrigin: `${trail.origin[0]}px ${trail.origin[1]}px`,
             } as CSSProperties
           }
         >
@@ -159,6 +178,11 @@ function LoreMagicWisps() {
           />
         </g>
       ))}
+      <g className="lore-magic-stars" fill="#e8ffff">
+        <path d="m54 32 2 7 6 3-6 2-2 8-2-8-6-2 6-3Z" />
+        <path d="M13 44l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5Z" />
+        <path d="m94 57 1 3 3 1-3 1-1 4-1-4-3-1 3-1Z" />
+      </g>
     </g>
   );
 }

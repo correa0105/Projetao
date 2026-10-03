@@ -883,7 +883,7 @@
 }
 .lore-scroll-magic {
   opacity: 0;
-  filter: drop-shadow(0 0 1px #56e7ff) drop-shadow(0 0 4px #329fdc99);
+  filter: drop-shadow(0 0 1px #508a9e88) drop-shadow(0 0 2px #329fdc55);
 }
 .lore-scroll-symbol.is-open .lore-scroll-magic {
   opacity: 1;
@@ -899,7 +899,11 @@
   animation: lore-wisp-uncoil var(--wisp-duration) var(--wisp-delay) linear infinite;
 }
 .lore-wisp-ribbon {
-  filter: drop-shadow(0 0 1.4px #77eaff);
+  filter: drop-shadow(0 0 0.75px #77eaff77);
+}
+.lore-magic-stars {
+  opacity: 0.9;
+  filter: drop-shadow(0 0 1.5px #8cdeec);
 }
 .lore-magic-source {
   animation: lore-magic-breathe 3.6s ease-in-out infinite;

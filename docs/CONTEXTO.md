@@ -1,5 +1,13 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Magia mais fosca com estrelas (03/10/2026)
+
+Refino pedido pelo usuário: fios agora nascem em quatro pontos distribuídos
+na superfície do papel, com brilho menos intenso e cores azuladas mais foscas.
+Retornam as três estrelas de quatro pontas da primeira versão (centro superior
+e laterais). Permanecem as curvas afiladas, o vaso interativo e o pergaminho
+caído sem repetir a queda. Substitui a origem única no centro descrita abaixo.
+
 ## Magia em fios e vaso interativo (03/10/2026)
 
 Magia do pergaminho aberto refeita: quatro trajetos cúbicos partem do centro,

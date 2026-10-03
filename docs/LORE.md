@@ -14,9 +14,10 @@ da abertura: a borda traseira fica atrás dos rolos e a parede frontal cobre sua
 pontas. Os três ícones possuem volume, papel envelhecido, detalhes de metal/lacre
 e tamanho ampliado. Cada crônica recebe um pergaminho fechado antes do título
 no arquivo e aberto durante a leitura. Luz azul clara e partículas saem do papel
-aberto. Quatro fios de luz partem do centro do papel e se desenrolam em curvas
+aberto. Quatro fios de luz partem de pontos distribuídos no papel e se desenrolam em curvas
 diferentes ao redor dele. São fitas preenchidas que afinam até a ponta, com
 revelação e deriva independentes; sem contorno fixo ou giro conjunto.
+Brilho mais fosco e discreto, com as três estrelas de quatro pontas preservadas.
 Os traços luminosos permanecem visíveis mesmo com movimento reduzido.
 
 Passar o mouse sobre uma pasta chacoalha o vaso, movimenta os rolos e faz um
