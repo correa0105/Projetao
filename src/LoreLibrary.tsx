@@ -22,7 +22,7 @@ import {
 import { api, post } from './api';
 import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
-import { LoreVaseIcon, LoreScrollIcon } from './LoreSymbols';
+import { LoreScrollHolderIcon, LoreScrollIcon } from './LoreSymbols';
 import { useLoreScrollSound } from './SiteMusic';
 import {
   loreDescendants,
@@ -186,7 +186,7 @@ function LoreFolderButton({
         onSelect(folder.id);
       }}
     >
-      <LoreVaseIcon rummaging={rummaging} />
+      <LoreScrollHolderIcon rummaging={rummaging} />
       <span>{folder.name}</span>
       <small>{count.toString().padStart(2, '0')}</small>
     </button>
@@ -402,7 +402,7 @@ export function LoreLibrary() {
               onEdit={index.can_manage_folders ? setEditingFolder : undefined}
             />
             <button className="lore-folder-add" onClick={() => setDialog('folder')}>
-              <LoreVaseIcon /> Nova pasta / subpasta
+              <LoreScrollHolderIcon /> Nova pasta / subpasta
             </button>
             {index.can_manage_folders && (
               <button
@@ -584,7 +584,7 @@ export function LoreLibrary() {
             {!trash.length && <p>Nenhuma pasta excluída.</p>}
             {trash.map((item) => (
               <div key={item.id}>
-                <LoreVaseIcon />
+                <LoreScrollHolderIcon />
                 <span>
                   <b>{item.name}</b>
                   <small>

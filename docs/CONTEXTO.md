@@ -1,5 +1,17 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Porta-pergaminhos e queda pela abertura (03/10/2026)
+
+Usuário rejeitou o formato de panela e o rolo atravessando sua parede. Pastas
+agora usam `LoreScrollHolderIcon`: recipiente alto de couro costurado, aros de
+madeira, tira/fivela e seis rolos. Sem alças de panela. Frente continua ocultando
+as pontas dentro do recipiente. Queda de 1,65 s em três etapas: levantar inteiro
+acima da borda, deslocar para fora pela direita, girar/descer só na lateral.
+Trajeto mantém folga da parede durante todo o tombamento. Posição final com
+brilho/estrelas permanece até clique/saída; movimento reduzido mantém pose final.
+Smoke confere folga acima da abertura e ao lado em fases sucessivas da queda.
+Substitui o vaso de cobre e o trajeto anteriores descritos abaixo.
+
 ## Magia mais fosca com estrelas (03/10/2026)
 
 Refino pedido pelo usuário: fios agora nascem em quatro pontos distribuídos

@@ -774,39 +774,43 @@
     transform: scale(1.09) translateY(-8px);
   }
 }
-.lore-vase-icon {
-  width: 36px;
-  height: 48px;
+.lore-scroll-holder-icon {
+  width: 44px;
+  height: 55px;
   flex-shrink: 0;
   overflow: visible;
   filter: drop-shadow(0 2px 2px #0007);
   transition: filter 0.35s;
 }
-.lore-vase-body {
+.lore-scroll-holder-body {
   transform-box: view-box;
-  transform-origin: 54px 114px;
+  transform-origin: 55px 124px;
 }
-.lore-vase-rolls {
+.lore-scroll-holder-rolls {
   transform-box: view-box;
-  transform-origin: 54px 62px;
+  transform-origin: 55px 55px;
 }
-.lore-vase-escaping-scroll {
+.lore-scroll-holder-escaping-scroll {
   transform-box: view-box;
-  transform-origin: 49px 70px;
+  transform-origin: 55px 63px;
 }
-.lore-vase-icon.is-rummaging .lore-vase-body {
-  animation: lore-vase-shake 0.8s ease-out both;
+.lore-scroll-holder-icon.is-rummaging .lore-scroll-holder-body {
+  animation: lore-scroll-holder-shake 0.8s ease-out both;
 }
-.lore-vase-icon.is-rummaging .lore-vase-rolls {
-  animation: lore-vase-paper-sway 1s ease-out both;
+.lore-scroll-holder-icon.is-rummaging .lore-scroll-holder-rolls {
+  animation: lore-scroll-holder-paper-sway 1s ease-out both;
 }
-.lore-vase-icon.is-rummaging .lore-vase-escaping-scroll {
-  animation: lore-vase-scroll-fall 1.45s linear both;
+.lore-scroll-holder-icon.is-rummaging .lore-scroll-holder-escaping-scroll {
+  animation: lore-scroll-holder-scroll-fall 1.65s linear both;
 }
-.lore-vase-grounded-glow {
+.lore-scroll-holder-grounded-glow {
   opacity: 0;
   filter: drop-shadow(0 0 4px #62e9ff) drop-shadow(0 0 9px #249adf);
-  animation: lore-vase-glow-ignite 0.3s 1.2s ease-out both;
+  animation: lore-scroll-holder-glow-ignite 0.3s 1.35s ease-out both;
+}
+.lore-scroll-holder-floor-shadow {
+  opacity: 0;
+  animation: lore-scroll-holder-glow-ignite 0.15s 1.35s ease-out both;
 }
 .lore-folder-row {
   display: flex;
@@ -832,8 +836,8 @@
 .lore-folder-tree .lore-folder-delete:hover {
   color: #d29172;
 }
-.lore-folder-row button:hover .lore-vase-icon,
-.lore-folder-row button.is-active .lore-vase-icon {
+.lore-folder-row button:hover .lore-scroll-holder-icon,
+.lore-folder-row button.is-active .lore-scroll-holder-icon {
   filter: drop-shadow(0 0 6px #cda44c55);
 }
 .lore-folder-trash {
@@ -1052,7 +1056,7 @@
     transform: translate(var(--wisp-drift), -8px) scale(1.06);
   }
 }
-@keyframes lore-vase-shake {
+@keyframes lore-scroll-holder-shake {
   0%,
   100% {
     transform: rotate(0deg);
@@ -1073,7 +1077,7 @@
     transform: rotate(-1deg);
   }
 }
-@keyframes lore-vase-paper-sway {
+@keyframes lore-scroll-holder-paper-sway {
   0%,
   100% {
     transform: rotate(0deg) translateY(0);
@@ -1091,31 +1095,31 @@
     transform: rotate(-2deg);
   }
 }
-@keyframes lore-vase-scroll-fall {
+@keyframes lore-scroll-holder-scroll-fall {
   0%,
-  18% {
+  12% {
     transform: translate(0, 0) rotate(0deg);
   }
-  30% {
-    transform: translate(3px, -8px) rotate(12deg);
+  38% {
+    transform: translate(0, -56px) rotate(0deg);
   }
-  48% {
-    transform: translate(17px, -29px) rotate(30deg);
+  55% {
+    transform: translate(66px, -56px) rotate(0deg);
   }
-  65% {
-    transform: translate(38px, -2px) rotate(58deg);
+  68% {
+    transform: translate(66px, -28px) rotate(32deg);
   }
-  82% {
-    transform: translate(28px, 59px) rotate(94deg);
+  84% {
+    transform: translate(66px, 62px) rotate(94deg);
   }
-  91% {
-    transform: translate(28px, 52px) rotate(85deg);
+  92% {
+    transform: translate(66px, 57px) rotate(87deg);
   }
   100% {
-    transform: translate(28px, 59px) rotate(90deg);
+    transform: translate(66px, 62px) rotate(90deg);
   }
 }
-@keyframes lore-vase-glow-ignite {
+@keyframes lore-scroll-holder-glow-ignite {
   from {
     opacity: 0;
   }
@@ -1286,10 +1290,11 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .lore-vase-icon.is-rummaging .lore-vase-escaping-scroll {
-    transform: translate(28px, 59px) rotate(90deg);
+  .lore-scroll-holder-icon.is-rummaging .lore-scroll-holder-escaping-scroll {
+    transform: translate(66px, 62px) rotate(90deg);
   }
-  .lore-vase-grounded-glow {
+  .lore-scroll-holder-grounded-glow,
+  .lore-scroll-holder-floor-shadow {
     opacity: 1;
   }
   .lore-scroll-embers {

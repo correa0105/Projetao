@@ -9,20 +9,23 @@ O fundo da lore ocupa toda a largura da tela, sem as faixas laterais do layout
 anterior. O cabeçalho mantém somente o título; a frase e o botão de abrir os
 arquivos e a legenda “I · O MUNDO” foram removidos a pedido do usuário.
 
-Pastas usam um vaso de cobre ornamentado com seis pergaminhos encaixados dentro
-da abertura: a borda traseira fica atrás dos rolos e a parede frontal cobre suas
-pontas. Os três ícones possuem volume, papel envelhecido, detalhes de metal/lacre
-e tamanho ampliado. Cada crônica recebe um pergaminho fechado antes do título
+Pastas usam um porta-pergaminhos alto de couro costurado, com aros de madeira,
+tira com fivela e seis rolos encaixados na abertura. A borda traseira fica atrás
+dos rolos e a parede frontal cobre suas pontas. Os três ícones possuem volume,
+papel envelhecido, detalhes de material/lacre e tamanho ampliado.
+Cada crônica recebe um pergaminho fechado antes do título
 no arquivo e aberto durante a leitura. Luz azul clara e partículas saem do papel
-aberto. Quatro fios de luz partem de pontos distribuídos no papel e se desenrolam em curvas
-diferentes ao redor dele. São fitas preenchidas que afinam até a ponta, com
+aberto. Quatro fios de luz partem de pontos distribuídos no papel e se desenrolam
+em curvas diferentes ao redor dele. São fitas preenchidas que afinam até a ponta, com
 revelação e deriva independentes; sem contorno fixo ou giro conjunto.
 Brilho mais fosco e discreto, com as três estrelas de quatro pontas preservadas.
 Os traços luminosos permanecem visíveis mesmo com movimento reduzido.
 
-Passar o mouse sobre uma pasta chacoalha o vaso, movimenta os rolos e faz um
-pergaminho com lacre cair no chão. A sequência de 1,45 segundo acontece uma
-única vez por entrada do ponteiro. O rolo caído fica imóvel emitindo magia até
+Passar o mouse sobre uma pasta chacoalha o porta-pergaminhos, movimenta os rolos
+e faz um pergaminho com lacre cair no chão. Primeiro ele sobe inteiro acima da
+borda, depois sai pela lateral e só então gira e cai ao lado, sem atravessar
+a parede. A sequência de 1,65 segundo acontece uma única vez por entrada do
+ponteiro. O rolo caído fica imóvel emitindo magia até
 clicar na pasta ou sair de cima dela. Clique/sair cancela também uma sequência
 incompleta; a próxima passagem começa do início. Foco por teclado também ativa
 o efeito. Toque apenas abre a pasta. Com movimento reduzido, mostra a posição
@@ -112,9 +115,11 @@ Confere ainda ícones fechado/aberto, largura completa em 1890 px, edição,
 exclusão com preservação de conteúdo e restauração pela interface.
 Valida edição de crônica inicial, pastas em outra região, remoção da legenda,
 efeito azul visível com movimento reduzido e reprodução/repetição do som.
-Confere ainda a queda, permanência no chão sem reiniciar enquanto o mouse fica
-na pasta, reset por clique/saída e alternativa sem movimento. Capturas:
-`test-results/lore-vase-fallen.png` e `test-results/lore-scroll-wisps.png`.
+Confere ainda folga acima da abertura antes de tombar, descida pela lateral,
+permanência no chão sem reiniciar enquanto o mouse fica na pasta, reset por
+clique/saída e alternativa sem movimento. Capturas:
+`test-results/lore-holder-raised.png`, `test-results/lore-holder-falling.png`,
+`test-results/lore-scroll-holder-fallen.png` e `test-results/lore-scroll-wisps.png`.
 
 A suíte geral executada nesta entrega passou 41 de 43 testes. As duas falhas
 são anteriores à alteração e pertencem a `tests/world-fleet.test.ts`

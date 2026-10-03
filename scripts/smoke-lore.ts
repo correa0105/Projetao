@@ -55,20 +55,52 @@ try {
   expect(page.url()).toBe(origin + '/#lore');
   await expect(page.getByRole('region', { name: 'Biblioteca de lore' })).toBeVisible();
   await expect(page.locator('.lore-page-link [data-scroll-state="closed"]')).toHaveCount(2);
-  await expect(page.locator('.lore-vase-icon').first()).toBeVisible();
+  await expect(page.locator('.lore-scroll-holder-icon').first()).toBeVisible();
   await page.setViewportSize({ width: 1890, height: 1000 });
   const heroBounds = await page.locator('.lore-hero').boundingBox();
   expect(heroBounds!.x).toBe(0);
   expect(heroBounds!.width).toBe(1890);
   await page.screenshot({ path: 'test-results/lore-library-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  // One shake/drop per hover; retain the fallen scroll, reset on exit or click.
+  // Clear the opening before moving sideways; descend entirely outside the holder.
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   const folderChoice = page.locator('[data-folder-choice]').first();
-  const vase = folderChoice.locator('.lore-vase-icon');
-  const fallingScroll = vase.locator('.lore-vase-escaping-scroll');
+  const vase = folderChoice.locator('.lore-scroll-holder-icon');
+  const fallingScroll = vase.locator('.lore-scroll-holder-escaping-scroll');
   await folderChoice.hover();
-  await expect(vase).toHaveAttribute('data-vase-state', 'hovered');
+  await expect(vase).toHaveAttribute('data-holder-state', 'hovered');
+  await fallingScroll.evaluate(async (element) => {
+    const animation = element.getAnimations()[0];
+    await animation.ready;
+    animation.pause();
+    animation.currentTime = 1650 * 0.38;
+    for (const sibling of element
+      .closest('svg')!
+      .querySelectorAll('.lore-scroll-holder-body, .lore-scroll-holder-rolls')) {
+      for (const motion of sibling.getAnimations()) motion.finish();
+    }
+  });
+  const rim = vase.locator('[data-holder-rim]');
+  const rimBounds = (await rim.boundingBox())!;
+  const raisedBounds = (await fallingScroll.boundingBox())!;
+  expect(raisedBounds.y + raisedBounds.height).toBeLessThan(rimBounds.y);
+  await folderChoice.screenshot({ path: 'test-results/lore-holder-raised.png' });
+  for (const progress of [0.55, 0.62, 0.7, 0.78, 0.84, 0.92, 1]) {
+    await fallingScroll.evaluate((element, progress) => {
+      element.getAnimations()[0].currentTime = 1650 * progress;
+    }, progress);
+    const outsideBounds = (await fallingScroll.boundingBox())!;
+    expect(outsideBounds.x).toBeGreaterThan(rimBounds.x + rimBounds.width);
+    if (progress === 0.7) {
+      await folderChoice.screenshot({ path: 'test-results/lore-holder-falling.png' });
+    }
+  }
+  await fallingScroll.evaluate((element) => {
+    const animation = element.getAnimations()[0];
+    animation.currentTime = 0;
+    animation.play();
+  });
+  // One shake/drop per hover; retain the fallen scroll, reset on exit or click.
   await expect
     .poll(() =>
       fallingScroll.evaluate((element) =>
@@ -89,11 +121,11 @@ try {
   await expect
     .poll(() =>
       vase
-        .locator('.lore-vase-grounded-glow')
+        .locator('.lore-scroll-holder-grounded-glow')
         .evaluate((element) => getComputedStyle(element).opacity),
     )
     .toBe('1');
-  await folderChoice.screenshot({ path: 'test-results/lore-vase-fallen.png' });
+  await folderChoice.screenshot({ path: 'test-results/lore-scroll-holder-fallen.png' });
   const choiceBounds = (await folderChoice.boundingBox())!;
   await page.mouse.move(
     choiceBounds.x + choiceBounds.width * 0.7,
@@ -107,15 +139,15 @@ try {
     fallStarted,
   );
   await page.mouse.move(1400, 50);
-  await expect(vase).toHaveAttribute('data-vase-state', 'idle');
+  await expect(vase).toHaveAttribute('data-holder-state', 'idle');
   expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
     'none',
   );
-  await expect(vase.locator('.lore-vase-grounded-glow')).toHaveCount(0);
+  await expect(vase.locator('.lore-scroll-holder-grounded-glow')).toHaveCount(0);
   await folderChoice.hover();
-  await expect(vase).toHaveAttribute('data-vase-state', 'hovered');
+  await expect(vase).toHaveAttribute('data-holder-state', 'hovered');
   await folderChoice.click();
-  await expect(vase).toHaveAttribute('data-vase-state', 'idle');
+  await expect(vase).toHaveAttribute('data-holder-state', 'idle');
   await page.getByRole('button', { name: /Todas as crônicas/ }).click();
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await folderChoice.hover();
@@ -125,7 +157,7 @@ try {
   );
   expect(
     await vase
-      .locator('.lore-vase-grounded-glow')
+      .locator('.lore-scroll-holder-grounded-glow')
       .evaluate((element) => getComputedStyle(element).opacity),
   ).toBe('1');
   await page.mouse.move(1400, 50);
@@ -331,7 +363,7 @@ try {
   await noOverflow();
   expect(errors).toEqual([]);
   console.log(
-    'Lore desktop/celular: magia em fios, vaso com queda única, permanência e reset, som, edição de pastas/crônicas e persistência aprovados.',
+    'Lore desktop/celular: porta-pergaminhos, queda sem atravessar a borda, permanência e reset, magia, som, edição e persistência aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/lore-failure.png', fullPage: true });
