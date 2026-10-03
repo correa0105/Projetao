@@ -132,7 +132,7 @@ try {
   const bell = page.locator('audio[data-shop-door-bell]');
   await expect.poll(() => bell.evaluate((a: HTMLAudioElement) => a.currentTime)).toBeGreaterThan(0);
   expect(await bell.evaluate((a: HTMLAudioElement) => a.loop)).toBe(false);
-  expect(await bell.evaluate((a: HTMLAudioElement) => a.volume)).toBeCloseTo(0.32, 2);
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.volume)).toBeCloseTo(0.5, 2);
   await expect
     .poll(() => music.evaluate((a: HTMLAudioElement) => !a.paused && a.currentTime > 0))
     .toBe(true);

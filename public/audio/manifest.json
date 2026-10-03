@@ -13,9 +13,9 @@
   },
   "doorBell": {
     "file": "shop-door-bell.wav",
-    "origin": "Gravação de sineta de entrada de comércio, Shop doorbell chime #3588, Joseph SARDIN / BigSoundBank. Licença CC0. Substitui as versões sintetizadas.",
-    "source": "https://bigsoundbank.com/carillon-commercant-s3588.html",
+    "origin": "Shop door bell.wav, 775noise / Freesound #494565, CC0. Gravação do sino acionado ao abrir porta de comércio; primeiros dois toques recortados, segundo suavizado, pico normalizado em 96%, duração 2,65s.",
+    "source": "https://freesound.org/people/775noise/sounds/494565/",
     "license": "CC0",
-    "playback": "Uma vez por entrada na loja, sem loop; respeita mute e 80% do volume selecionado para a música."
+    "playback": "Uma vez por entrada na loja, sem loop; respeita mute e 125% do volume selecionado para a música, limitado a 100%."
   }
 }

@@ -40,7 +40,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     const player = audio.current!;
     const doorBell = bell.current!;
     player.volume = volume;
-    doorBell.volume = volume * 0.8;
+    doorBell.volume = Math.min(1, volume * 1.25);
     const playBell = () => {
       if (!bellPending.current || document.hidden) return;
       bellPending.current = false;
@@ -82,7 +82,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   }, []);
   useEffect(() => {
     audio.current!.volume = volume;
-    bell.current!.volume = volume * 0.8;
+    bell.current!.volume = Math.min(1, volume * 1.25);
     try {
       localStorage.setItem('alvorada-music-volume', String(volume));
     } catch {}
@@ -120,7 +120,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       />
       <audio
         ref={bell}
-        src="/audio/shop-door-bell.wav?v=recorded-shop-4"
+        src="/audio/shop-door-bell.wav?v=old-shop-door-5"
         preload="auto"
         muted={muted}
         data-shop-door-bell
