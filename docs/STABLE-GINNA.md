@@ -17,18 +17,31 @@ as perguntas e mostra apenas a resposta. Clicar novamente ou Escape fecha.
 Sem rótulo/botão Conversar visível nas duas formas; o próprio corpo é clicável
 e brilha no hover/foco (dourado como o mercador, suave e frio na visão).
 Balão SVG com um único preenchimento no corpo/ponta e tipografia compartilhada.
+Sua posição é medida no retrato contido, descontando as margens vazias da
+caixa clicável. A ponta fica junto à lateral do rosto, na altura da boca;
+recalcula com texto, opções, carregamento da arte e tamanho da cena, nas duas
+formas. Usa coordenadas locais para acompanhar o tremor sem saltar.
 Não abre janela central nem escurece a página para a conversa normal. Balão
 adaptado ao espaço do celular; textos longos rolam dentro dele. A seleção de
 cada espécie alterna três comentários carinhosos; comentários de nomes e
 equipamentos continuam disponíveis.
 
 A quinta pergunta sobre maus-tratos, na mesma visita ao estábulo, abre uma visão
-persistente. Fechar e reabrir a conversa não zera a insistência. A visão ocupa
+persistente. A pergunta inicial é “E se eu fizer mal a ele?”. O balão permanece
+aberto, exibindo cada advertência e a próxima desculpa: discipliná-lo, falta de
+obediência, ensinar uma lição e ninguém ficar sabendo. Não exige clicar de novo
+na personagem entre as cinco etapas. Fechar e reabrir a conversa não zera a
+insistência; a pergunta retoma a próxima desculpa. A visão ocupa
 a tela com o mesmo cenário destruído, névoa escura, Ginna menor em fumaça sem
-chapéu e tremor irregular contínuo. Onze olhos pequenos distribuídos entre o
-meio e o fundo do terreno, em diferentes tamanhos/distâncias, piscam em ritmos
-diferentes. Dessaturação, escurecimento e transparência integram suas cores ao
-chão; sem grandes olhos junto à câmera. Não utiliza a criatura com bocas da
+chapéu e tremor irregular contínuo. Trinta e quatro olhos atravessam o terreno:
+27 no chão, seis nas encostas distantes e um enorme substituindo o pico central.
+O fundo foi editado para retirar o pico, preservando o restante da composição.
+Arte nova tem globo saltado, pálpebras grossas, terra rachada e sombras de contato;
+os olhos emergem em tempos diferentes e piscam com transição entre aberto e
+fechado. Removida a transformação que achatava o atlas anterior. Olhos e fundo
+usam o mesmo plano cover, mantendo a posição sobre a terra ao recortar a cena
+no celular. Dessaturação, escurecimento e névoa integram as cores ao chão;
+sem olhos grandes junto à câmera. Não utiliza a criatura com bocas da
 primeira proposta. O animal fica oculto com sua seleção/equipamentos mantidos.
 
 “Pague para ver o que acontece…” aparece em balão junto à forma escura. A cena
@@ -50,8 +63,8 @@ disponível dentro da cena. Nenhum iframe externo.
 | --- | --- |
 | `public/stable/ginna.webp` | Ginna jovem, sem chapéu, 768 × 1152, alfa |
 | `public/stable/ginna-shadow.webp` | Forma escura sem chapéu, 768 × 1152, alfa |
-| `public/stable/paddock-ruined.webp` | Cenário arruinado, 1672 × 941 |
-| `public/stable/ginna-ground-eyes.webp` | Atlas vertical aberto/fechado, 768 × 1024, alfa |
+| `public/stable/paddock-ruined-eye-mountain.webp` | Cenário arruinado com o pico removido, 1672 × 941 |
+| `public/stable/ginna-raised-eyes.webp` | Olho saltado, atlas vertical aberto/fechado, 768 × 1536, alfa |
 | `public/audio/ginna-lullaby-of-woe.mp3` | Trilha temporária fornecida pelo usuário |
 | `docs/references/ginna-reference.jpg` | Referência da aparência enviada pelo usuário |
 | `docs/references/ginna-shadow-reference.png` | Referência da forma escura enviada pelo usuário |
@@ -61,6 +74,9 @@ Conversão dos resultados selecionados para WebP com Sharp, qualidade 92 e alfa
 100, sem retirar transparência. Originais gerados permanecem na biblioteca local
 de imagegen; os arquivos consumidos pelo site estão integralmente no projeto.
 As referências têm autoria/licença original não informadas.
+Prompts completos das duas novas artes e modo integrado registrados em
+`docs/STABLE-GINNA-EYES.json`. `paddock-ruined.webp` e `ginna-ground-eyes.webp`
+permanecem como versões anteriores; o site usa os novos arquivos.
 
 Áudio: cópia integral e sem conversão de “Lullaby of Woe - Ashley Serena
 (LYRICS).mp3”, presente na pasta Downloads do usuário. Link indicado:
@@ -89,9 +105,11 @@ https://www.youtube.com/watch?v=ohNpf4VnlP8 . Não é atribuído a CC0.
 `node scripts/test-stable-isolated.mjs` usa PostgreSQL descartável e Microsoft
 Edge. Cobre saudação alegre sem nome e revelação pela pergunta, retirada do
 rótulo Conversar, brilho em hover/foco, fluxo de perguntas/respostas como a
-loja, balão sem modal
-central, cinco insistências com fechamento/reabertura, ocultação/retorno da
-montaria, distribuição e tamanho dos olhos, piscar aberto/fechado, tremor,
+loja, distância da ponta até o rosto nas duas formas e seis viewports,
+balão sem modal central, quatro desculpas sucessivas com balão mantido,
+cinco insistências com fechamento/reabertura, ocultação/retorno da
+montaria, distribuição/proporções dos 34 olhos e olho no pico, piscar
+aberto/fechado, relevo não achatado, tremor,
 permanência além do antigo timeout, clique real na cena em movimento,
 promessa obrigatória, loop/mute/pausa/retomada da trilha, encerramento do áudio
 temporário, foco, celular/movimento reduzido e os fluxos anteriores de compra,

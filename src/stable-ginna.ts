@@ -14,14 +14,22 @@ export const ginnaQuestions = [
     answer:
       'Consegui? Que palavra curiosa… Os animais vêm até mim. Às vezes atravessam a estrada; às vezes, caminhos que você não saberia encontrar. Eles sabem onde serão acolhidos. Eu apenas deixo a porteira aberta.',
   },
-  { id: 'warning', question: 'E se alguém maltratar os animais?', answer: '' },
+  { id: 'warning', question: 'E se eu fizer mal a ele?', answer: '' },
 ] as const;
 export type GinnaTopic = (typeof ginnaQuestions)[number]['id'];
 
+export const ginnaExcuses = [
+  ginnaQuestions[2].question,
+  'E se eu precisar discipliná-lo?',
+  'Mas e se ele não me obedecer?',
+  'Seria só para ensinar uma lição…',
+  'E se ninguém ficar sabendo?',
+] as const;
+
 export const ginnaWarnings = [
-  'Não maltrate nenhum deles. Enquanto estiverem sob meus cuidados, ninguém os machuca. E eu não esqueço quem tenta.',
-  'Você ouviu a resposta. Eles confiam em mim. Eu não permito que essa confiança seja ferida.',
-  'Está insistindo por curiosidade… ou para descobrir quanto vale a minha paciência? Escolha bem o que faz a seguir.',
+  'Se você fizer mal a um deles, terá de responder a mim. Eles confiam em minhas mãos. Não vou deixar que as suas os machuquem.',
+  'Disciplina não é uma desculpa para crueldade. Você ensina com paciência e cuidado. Dor só ensina um animal a ter medo de você.',
+  'Talvez ele esteja assustado. Talvez você ainda não saiba escutá-lo. Minha paciência está acabando; não transforme a confiança dele em medo.',
   'Esta é a última vez que digo: deixe os animais em paz. Há coisas debaixo desta terra que não são tão gentis quanto eu.',
 ] as const;
 

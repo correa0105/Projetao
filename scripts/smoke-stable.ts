@@ -103,11 +103,38 @@ try {
   ).toBeVisible();
   await expect(page.locator('.stable-owned')).toHaveCount(0);
   await expect(page.getByRole('dialog')).toHaveCount(0);
+  const assertBalloonAttached = async (selector: string, dark = false) => {
+    await expect
+      .poll(() =>
+        page.locator(selector).evaluate((balloon, dark) => {
+          const portrait = balloon.parentElement!.querySelector<HTMLImageElement>(
+            dark ? '.ginna-vision-figure' : '.stable-keeper-trigger img',
+          )!;
+          if (!portrait.naturalWidth) return Infinity;
+          const box = portrait.getBoundingClientRect();
+          const scale = Math.min(
+            box.width / portrait.naturalWidth,
+            box.height / portrait.naturalHeight,
+          );
+          const artWidth = portrait.naturalWidth * scale;
+          const artHeight = portrait.naturalHeight * scale;
+          const faceX = box.x + (box.width - artWidth) / 2 + artWidth * 0.37;
+          const mouthY = box.bottom - artHeight + artHeight * (dark ? 0.19 : 0.125);
+          const shape = balloon.querySelector<SVGSVGElement>('.ginna-balloon-shape')!;
+          const shapeBox = shape.getBoundingClientRect();
+          const tipX = shapeBox.x + Number(shape.getAttribute('width')) - 2;
+          const tipY = shapeBox.y + Number(shape.dataset.tailY);
+          return Math.hypot(tipX - faceX, tipY - mouthY);
+        }, dark),
+      )
+      .toBeLessThan(14);
+  };
   await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('Olha só, visita!');
   await expect(page.locator('.stable-field > .ginna-balloon')).not.toContainText('Ginna');
   await mkdir('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/ginna-welcome.png' });
   await page.setViewportSize({ width: 390, height: 844 });
+  await assertBalloonAttached('.stable-field > .ginna-balloon');
   await page.screenshot({ path: 'test-results/ginna-welcome-mobile.png' });
   const welcomeBox = (await page.locator('.stable-field > .ginna-balloon').boundingBox())!;
   expect(welcomeBox.y).toBeGreaterThanOrEqual(0);
@@ -144,14 +171,14 @@ try {
   await expect(conversation).not.toContainText('Ginna');
   await expect(conversation.locator('.ginna-questions button')).toHaveCount(3);
   await expect(conversation.locator('svg.ginna-balloon-shape path')).toHaveCount(1);
-  const balloonBox = (await conversation.boundingBox())!;
-  const keeperBox = (await keeper.boundingBox())!;
-  expect(balloonBox.x + balloonBox.width).toBeLessThanOrEqual(keeperBox.x + 25);
-  expect(balloonBox.y + balloonBox.height).toBeGreaterThan(keeperBox.y);
+  await assertBalloonAttached('.stable-field > .ginna-balloon');
+  await expect(conversation.locator('[data-ginna-question="warning"]')).toHaveText(
+    'E se eu fizer mal a ele?',
+  );
   const askQuestion = async (topic: string) => {
     if (!(await conversation.isVisible())) await keeper.click();
     await conversation.locator('[data-ginna-question="' + topic + '"]').click();
-    await expect(conversation).toHaveCount(0);
+    if (topic !== 'warning') await expect(conversation).toHaveCount(0);
   };
   await askQuestion('identity');
   await expect(normalBalloon.locator('[role="status"]')).toContainText('Pode me chamar de Ginna');
@@ -159,15 +186,26 @@ try {
   await expect(keeper).toBeFocused();
   await askQuestion('animals');
   await expect(normalBalloon.locator('[role="status"]')).toContainText('Os animais vêm até mim');
+  const excuses = [
+    'E se eu precisar discipliná-lo?',
+    'Mas e se ele não me obedecer?',
+    'Seria só para ensinar uma lição…',
+    'E se ninguém ficar sabendo?',
+  ];
   for (let warning = 0; warning < 4; warning++) {
     await askQuestion('warning');
+    await expect(conversation).toBeVisible();
+    await expect(conversation.locator('.ginna-questions button')).toHaveCount(1);
+    await expect(conversation.locator('[data-ginna-question="warning"]')).toHaveText(
+      excuses[warning],
+    );
+    await assertBalloonAttached('.stable-field > .ginna-balloon');
     await expect(page.locator('.ginna-vision')).toHaveCount(0);
   }
   await expect(normalBalloon.locator('[role="status"]')).toContainText('Esta é a última vez');
-  await keeper.click();
   await page.screenshot({ path: 'test-results/ginna-conversation.png' });
   // Closing the balloon does not erase the warnings on this visit.
-  await conversation.locator('[data-ginna-question="identity"]').press('Escape');
+  await conversation.locator('[data-ginna-question="warning"]').press('Escape');
   await expect(conversation).toHaveCount(0);
   await expect(keeper).toBeFocused();
   await keeper.click();
@@ -207,7 +245,9 @@ try {
     'src',
     '/stable/ginna-shadow.webp',
   );
-  await expect(vision.locator('.ginna-earth-eye')).toHaveCount(11);
+  await expect(vision.locator('.ginna-earth-eye')).toHaveCount(34);
+  await expect(vision.locator('[data-depth="mountain"]')).toHaveCount(1);
+  await assertBalloonAttached('.ginna-vision .ginna-balloon', true);
   await expect
     .poll(() =>
       vision
@@ -215,14 +255,22 @@ try {
         .last()
         .evaluate((element) => Number(getComputedStyle(element).opacity)),
     )
-    .toBe(0.8);
+    .toBe(0.9);
   const eyeBoxes = await vision
-    .locator('.ginna-earth-eye')
+    .locator('.ginna-earth-eye[data-depth="ground"]')
     .evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().toJSON()));
   expect(Math.max(...eyeBoxes.map((box) => box.width))).toBeLessThan(115);
   expect(
     Math.max(...eyeBoxes.map((box) => box.y)) - Math.min(...eyeBoxes.map((box) => box.y)),
   ).toBeGreaterThan(160);
+  const mountain = (await vision.locator('[data-depth="mountain"]').boundingBox())!;
+  expect(mountain.width).toBeGreaterThan(200);
+  expect(mountain.y).toBeLessThan(250);
+  expect(mountain.height / mountain.width).toBeGreaterThan(0.95);
+  const mound = vision.locator('.ginna-eye-mound').last();
+  expect(await mound.evaluate((element) => getComputedStyle(element).transform)).toBe(
+    'matrix(1, 0, 0, 1, 0, 0)',
+  );
   const blinkingEye = vision.locator('.ginna-eye-blink').first();
   await blinkingEye.evaluate((element) => {
     const animation = element.getAnimations()[0];
@@ -230,17 +278,14 @@ try {
     const timing = animation.effect!.getTiming();
     animation.currentTime = (timing.delay || 0) + Number(timing.duration) * 0.47;
   });
-  expect(
-    await blinkingEye.evaluate((element) => getComputedStyle(element).backgroundPosition),
-  ).toBe('50% 100%');
+  expect(await blinkingEye.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
   await blinkingEye.evaluate((element) => {
     const animation = element.getAnimations()[0];
     const timing = animation.effect!.getTiming();
-    animation.currentTime = (timing.delay || 0) + Number(timing.duration) * 0.53;
+    animation.currentTime = (timing.delay || 0) + Number(timing.duration) * 0.55;
   });
-  expect(
-    await blinkingEye.evaluate((element) => getComputedStyle(element).backgroundPosition),
-  ).toBe('50% 0%');
+  expect(await blinkingEye.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
+  await blinkingEye.evaluate((element) => element.getAnimations()[0].play());
   const shakes = await vision.locator('.ginna-nightmare-scene').evaluate((element) => {
     const animation = element.getAnimations()[0];
     animation.pause();
@@ -266,6 +311,7 @@ try {
   await clickShaking(vision.getByRole('button', { name: 'Conversar com a cuidadora na visão' }));
   const promise = vision.getByRole('button', { name: 'Não vou machucá-los!', exact: true });
   await expect(promise).toBeVisible();
+  await assertBalloonAttached('.ginna-vision .ginna-balloon', true);
   await promise.press('Escape');
   await expect(vision).toBeVisible();
   await clickShaking(promise);
@@ -284,6 +330,7 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await keeper.click();
+  await assertBalloonAttached('.stable-field > .ginna-balloon');
   const mobileBalloon = (await conversation.boundingBox())!;
   expect(mobileBalloon.x).toBeGreaterThanOrEqual(0);
   expect(mobileBalloon.x + mobileBalloon.width).toBeLessThanOrEqual(390);
@@ -299,6 +346,10 @@ try {
       .evaluate((element) => getComputedStyle(element).animationName),
   ).toBe('none');
   await vision.getByRole('button', { name: 'Conversar com a cuidadora na visão' }).click();
+  await assertBalloonAttached('.ginna-vision .ginna-balloon', true);
+  const darkMobileBalloon = (await vision.locator('.ginna-balloon').boundingBox())!;
+  expect(darkMobileBalloon.x).toBeGreaterThanOrEqual(6);
+  expect(darkMobileBalloon.x + darkMobileBalloon.width).toBeLessThanOrEqual(390);
   await page.screenshot({ path: 'test-results/ginna-vision-mobile.png' });
   await promise.click();
   await expect(vision).toHaveCount(0);
@@ -399,10 +450,7 @@ try {
       expect(speechBox.y).toBeGreaterThanOrEqual(checkoutBox.y + checkoutBox.height);
     }
     const keeper = (await page.locator('.stable-keeper-trigger img').boundingBox())!;
-    if (viewport.width <= 600) {
-      const speechBox = (await page.locator('.stable-field > .ginna-balloon').boundingBox())!;
-      expect(speechBox.x + speechBox.width).toBeLessThanOrEqual(keeper.x + 25);
-    }
+    await assertBalloonAttached('.stable-field > .ginna-balloon');
     expect(keeper.height).toBeGreaterThan(80);
     expect(
       await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1),

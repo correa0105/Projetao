@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-03",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "path": "public/stable/ginna-raised-eyes.webp",
+      "width": 768,
+      "height": 1536,
+      "alpha": true,
+      "prompt": "Use case: stylized-concept. Asset type: production TWO-FRAME transparent sprite atlas for a realistic dark medieval horror game. Exactly two equal square frames stacked VERTICALLY; full sheet 1:2, top frame OPEN eye, bottom frame CLOSED eye. The SAME eye, SAME raised mound, SAME camera position and footprint in both frames. Single bizarre charcoal-black organic eye BULGING UP from cracked muddy earth: the eyeball protrudes distinctly above the soil, fleshy thick stone-like lids rise as a rounded irregular mound, the earth lifted into radial cracks and jagged little clods. Strong three-dimensional relief with shadow beneath the mound and dim wet reflections on the black and gray iris. Camera shallow ground-level angle, tilted about 25 degrees down onto the emerging eye; oblong horizontal eyelid opening but distinctly raised globe, never a flat sticker. Bottom frame: the identical eye with lids shut smoothly over the globe, a closed crease; raised volume and all dirt unchanged. Rich realistic dark fantasy painting, photographic earth/rock surface detail, muted black charcoal gray, very dark brown only. Dim moonlight from upper left, ambient darkness, no white sclera, no bright colors or glow, no white edges, no monster head, mouths, teeth or other eyes. Same generous transparent margins in both frames so it can be animated in place. Real transparent alpha outside soil rim, no canvas background, no text, no labels. Keep identical size and exact alignment between the two frames."
+    },
+    {
+      "path": "public/stable/paddock-ruined-eye-mountain.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "editTarget": "public/stable/paddock-ruined.webp",
+      "prompt": "Use case: precise-object-edit. Asset type: dark medieval stable landscape background for a web game with an independently animated eye replacing the mountain summit. Input image is the EDIT TARGET. Change ONLY the prominent sharp mountain peak near horizontal 47% and vertical 20% of this image: remove its entire pointed snowy triangle and replace it with a LOWER rounded irregular black rocky crater/base, whose highest rim sits near vertical 26%. Empty dark rounded summit plateau, suitable for seating an enormous separately animated eye at horizontal 47%, vertical 22%. No pointed peak remaining behind it. Reconstruct the stormy clouds where the pointed tip was removed; retain the distant mountain chain to left and right. Keep the entire rest of the original scene as closely identical as possible: same viewpoint and 16:9 composition, destroyed stable to left, broken fence, distant ruined castle to right, bridge, low fog, cracked earth and foreground texture. Same detailed realistic medieval fantasy painting, black charcoal earthy palette, dim moonlight. No people, animals, eyes yet, faces, glowing elements, text or interface. No cropping, no new structures, preserve the exact layout."
+    }
+  ],
+  "conversion": "Sharp WebP quality 92, alphaQuality 100. Original generated images retained in the imagegen library."
+}

@@ -13,6 +13,7 @@ import {
   ginnaGreeting,
   ginnaMountLines,
   ginnaQuestions,
+  ginnaExcuses,
   ginnaWarnings,
   type GinnaTopic,
 } from './stable-ginna';
@@ -91,7 +92,7 @@ export function Stable({
   const mount = mounts.find((m) => m.id === selected)!;
   const [name, setName] = useState('');
   const [speech, setSpeech] = useState(ginnaGreeting);
-  const [talk, setTalk] = useState(false);
+  const [talk, setTalk] = useState<'questions' | 'warning' | null>(null);
   const [known, setKnown] = useState(false);
   const [vision, setVision] = useState(false);
   const warnings = useRef(0);
@@ -99,8 +100,8 @@ export function Stable({
   const mountVisits = useRef<Record<string, number>>({});
   function askGinna(next: GinnaTopic) {
     if (next === 'identity') setKnown(true);
-    setTalk(false);
     if (next !== 'warning') {
+      setTalk(null);
       setSpeech(ginnaQuestions.find((question) => question.id === next)!.answer);
       window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
       return;
@@ -108,15 +109,15 @@ export function Stable({
     if (warnings.current >= 5) return;
     warnings.current += 1;
     if (warnings.current === 5) {
-      setTalk(false);
+      setTalk(null);
       setVision(true);
       return;
     }
     setSpeech(ginnaWarnings[warnings.current - 1]);
-    window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
+    setTalk('warning');
   }
   function closeConversation() {
-    setTalk(false);
+    setTalk(null);
     window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
   }
   function finishVision() {
@@ -128,8 +129,8 @@ export function Stable({
   useEffect(() => {
     for (const path of [
       '/stable/ginna-shadow.webp',
-      '/stable/paddock-ruined.webp',
-      '/stable/ginna-ground-eyes.webp',
+      '/stable/paddock-ruined-eye-mountain.webp',
+      '/stable/ginna-raised-eyes.webp',
     ]) {
       const image = new Image();
       image.src = path;
@@ -150,7 +151,7 @@ export function Stable({
   const chosenGear = stableGear.filter((g) => equipment.includes(g.id));
   const total = mount.price_cp + chosenGear.reduce((sum, g) => sum + g.price_cp, 0);
   function toggleGear(id: string) {
-    setTalk(false);
+    setTalk(null);
     const item = stableGear.find((g) => g.id === id)!;
     setEquipment((current) =>
       current.includes(id)
@@ -247,7 +248,7 @@ export function Stable({
                   aria-label={`Ver ${m.name}`}
                   disabled={busy}
                   onClick={() => {
-                    setTalk(false);
+                    setTalk(null);
                     setSelected(m.id);
                     setCoat('original');
                     const lines = ginnaMountLines[m.id];
@@ -370,13 +371,13 @@ export function Stable({
               className="stable-keeper-trigger"
               type="button"
               aria-label={known ? 'Conversar com Ginna' : 'Conversar com a cuidadora'}
-              aria-expanded={talk}
+              aria-expanded={Boolean(talk)}
               onClick={() => {
                 if (talk) {
                   closeConversation();
                   return;
                 }
-                setTalk(true);
+                setTalk('questions');
               }}
             >
               <img src="/stable/ginna.webp" alt="Jovem cuidadora dos animais, sem chapéu" />
@@ -384,11 +385,20 @@ export function Stable({
           </div>
           <GinnaBalloon
             speaker={known ? 'Ginna' : 'Cuidadora'}
-            text={talk ? 'O que deseja saber?' : speech}
+            text={talk === 'questions' ? 'O que deseja saber?' : speech}
             label={talk ? 'Perguntas à cuidadora' : undefined}
             close={closeConversation}
           >
-            {talk &&
+            {talk === 'warning' ? (
+              <button
+                type="button"
+                data-ginna-question="warning"
+                onClick={() => askGinna('warning')}
+              >
+                {ginnaExcuses[warnings.current]}
+              </button>
+            ) : (
+              talk === 'questions' &&
               ginnaQuestions.map((question) => (
                 <button
                   key={question.id}
@@ -396,9 +406,10 @@ export function Stable({
                   data-ginna-question={question.id}
                   onClick={() => askGinna(question.id)}
                 >
-                  {question.question}
+                  {question.id === 'warning' ? ginnaExcuses[warnings.current] : question.question}
                 </button>
-              ))}
+              ))
+            )}
           </GinnaBalloon>
         </div>
       </div>
