@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { transaction } from './db.js';
 import { PLATE_PIECES } from '../shared/armor-bundles.js';
+import { seedLore } from './lore.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -205,5 +206,6 @@ export async function seed() {
         post,
       );
   });
+  await seedLore();
   console.log('Catálogo e cenário inicial disponíveis.');
 }

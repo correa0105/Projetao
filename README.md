@@ -93,7 +93,11 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 - Mundo com relevo cartográfico em Three.js, detalhe de solo/rocha, arraste elástico, zoom e nuvens em movimento, preenchendo a tela. A visão inicial usa 100%, equivalente ao antigo enquadramento de 142%; a silhueta fornecida pelo usuário define a geografia. Vinte e dois territórios têm demarcações com destaque ao passar o mouse e clique na superfície; mar contínuo ampliado, ilhotas, vulcão e tormenta complementam o cenário.
 - Reino do Norte abre uma área regional vazia e navegável em Canvas 2D. A conta autorizada pode enviar um fundo e compor sprites em oito direções. Não há névoa ou terreno predefinido. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
 - Barcos piratas em 3D percorrem o mar lentamente em direção às costas; a cada 30 segundos de animação visível, um kraken envolve e afunda um barco. Movimento reduzido pausa a navegação e os ataques.
-- Lore, Regras e House têm conteúdo inicial persistido no SQL.
+- Lore possui arquivos por região do mapa, pastas/subpastas e editor medieval
+  de texto e imagens: retrato, paisagem inteira ou meia paisagem, posição,
+  efeitos, caixas de texto e prévia. Rascunhos particulares e publicação para
+  a guilda; conteúdo e uploads persistidos no SQL. [Biblioteca de lore](docs/LORE.md).
+- Regras e House têm conteúdo inicial persistido no SQL.
 - Interface adaptável para desktop e celular, com tema exclusivamente escuro e menu retrátil com ícones medievais ilustrados.
 
 ## Limites deste protótipo

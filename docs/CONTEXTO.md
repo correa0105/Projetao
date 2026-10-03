@@ -1,5 +1,26 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Biblioteca regional de lore e editor medieval (03/10/2026)
+
+Página de lore refeita com apresentação editorial inspirada em Overworld Audio:
+arte ampla do projeto, granulação discreta, névoa e movimento suave nas imagens,
+com respeito a movimento reduzido. `src/LoreLibrary.tsx` / `src/lore.css`.
+As 22 regiões SQL organizam pastas Cidades, Capital, Religião, Lendas, Criaturas
+e História; criação de pastas/subpastas até quatro níveis. Editor por blocos
+com upload, retrato esquerda/centro/direita, paisagem inteira, meia paisagem
+esquerda/direita, legenda, enquadramento completo e efeito opcional. Textos
+livres, pergaminho escuro, inscrição e citação, com título/alinhamento; setas
+reordenam, Desfazer recupera edição local e Prévia usa o renderizador publicado.
+
+Migration 041 cria páginas, pastas, imagens e versões. Seed copia as duas
+crônicas atuais uma única vez para História do Reino do Norte, sem apagar ou
+sobrescrever texto. Rascunhos privados, leitura publicada para contas autenticadas,
+edição pelo autor/staff; uploads seguem a visibilidade da página e são persistidos
+no PostgreSQL, sem imagens de outras páginas. Transação/revisão protege contra
+sobrescrita concorrente. Testes API e interface desktop/celular em banco descartável
+com `npm run test:lore` / `-- --browser`. Detalhes e limites em `docs/LORE.md`.
+Suíte geral: 41/43 aprovados; duas falhas preexistentes em world-fleet, não alterado.
+
 ## Capa solta e revisão visual antes de salvar (01/10/2026)
 
 Direção obrigatória para capa: manto DESDOBRADO sobre a face externa/superior

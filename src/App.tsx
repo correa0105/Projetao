@@ -1,4 +1,5 @@
 import { HomeJournal } from './HomeJournal';
+import { LoreLibrary } from './LoreLibrary';
 import { FlashMessage } from './FlashMessage';
 import { PageHeader } from './PageHeader';
 import { ProfileMenu } from './ProfileMenu';
@@ -557,7 +558,8 @@ function Portal({ user }: { user: User }) {
             }}
           />
         )}
-        {['house', 'lore', 'rules'].includes(page) && (
+        {page === 'lore' && <LoreLibrary />}
+        {['house', 'rules'].includes(page) && (
           <>
             <div className={`entries-grid ${page === 'house' ? 'house-grid' : ''}`}>
               {entries
