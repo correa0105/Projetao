@@ -1,5 +1,28 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Ícones ilustrados, som e edição de toda a lore (03/10/2026)
+
+Usuário ampliou explicitamente a permissão de Pai do Cris para editar textos e
+imagens de qualquer crônica, em qualquer região, inclusive páginas iniciais sem
+autor e conteúdo de outras contas. `lore_folder_managers` autoriza também leitura
+e edição de rascunhos na lore; autoria e versões permanecem preservadas. Não muda
+staff nem permissões fora da lore. Substitui a limitação anterior da gestão apenas
+a nomes/organização de pastas. Testes confirmam edição nas 22 regiões, upload e
+edição de páginas alheias, mantendo privacidade para contas comuns.
+
+Os três SVGs de `LoreSymbols.tsx` foram refeitos com volumes, papel envelhecido,
+lacre e vaso de cobre ornamentado. Pergaminhos realmente atravessam a abertura,
+com a parede/borda frontal por cima das pontas. Ícones maiores. O pergaminho
+aberto emite luz azul clara e partículas; movimento reduzido mantém os traços
+luminosos estáticos. Removida também a legenda I · O MUNDO.
+
+Cada clique/teclado para abrir uma crônica toca o som original de papel
+desenrolando `public/audio/lore-scroll-open.wav` (1,24 s), reiniciado sem
+sobreposição, com volume/mute gerais. Geração reproduzível em
+`scripts/generate-lore-scroll-sound.mjs`. `SiteMusicProvider` mantém a instância
+de áudio e pausa em outra rota/aba oculta. Testes no Edge conferem reprodução,
+reabertura, edição das crônicas iniciais, outra região e desktop/celular.
+
 ## Gestão de pastas e acabamento da lore (03/10/2026)
 
 A conta Pai do Cris (`limawelsn@gmail.com`) pode renomear, reorganizar e excluir

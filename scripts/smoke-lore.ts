@@ -48,6 +48,7 @@ try {
   await expect(page.getByRole('heading', { name: 'Crônicas & lore.' })).toBeVisible();
   await expect(page.locator('.lore-page-link')).toHaveCount(2);
   await expect(page.getByRole('button', { name: 'Abrir os arquivos' })).toHaveCount(0);
+  await expect(page.locator('.lore-hero-number')).toHaveCount(0);
   await expect(page.getByText('Terras, crenças e histórias que atravessam as eras.')).toHaveCount(
     0,
   );
@@ -61,6 +62,31 @@ try {
   expect(heroBounds!.width).toBe(1890);
   await page.screenshot({ path: 'test-results/lore-library-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
+  const sound = page.locator('audio[data-lore-scroll-sound]');
+  await expect(sound).toHaveAttribute('src', '/audio/lore-scroll-open.wav');
+  await page.locator('.lore-page-link').first().click();
+  await expect
+    .poll(() => sound.evaluate((audio: HTMLAudioElement) => !audio.paused && audio.currentTime > 0))
+    .toBe(true);
+  expect(await sound.evaluate((audio: HTMLAudioElement) => audio.loop)).toBe(false);
+  expect(await sound.evaluate((audio: HTMLAudioElement) => audio.volume)).toBeCloseTo(0.58, 2);
+  await expect(page.getByRole('button', { name: 'Editar crônica', exact: true })).toBeVisible();
+  const magic = page.locator('.lore-reader-title .lore-scroll-magic');
+  expect(await magic.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
+  await page.getByRole('button', { name: 'Editar crônica', exact: true }).click();
+  await expect(page.getByRole('region', { name: 'Editor de crônica' })).toBeVisible();
+  await page.getByRole('button', { name: 'Fechar edição', exact: true }).click();
+  await expect.poll(() => sound.evaluate((audio: HTMLAudioElement) => audio.ended)).toBe(true);
+  await page.getByRole('button', { name: 'Voltar ao arquivo' }).click();
+  await page.locator('.lore-page-link').first().click();
+  await expect
+    .poll(() =>
+      sound.evaluate(
+        (audio: HTMLAudioElement) => !audio.paused && !audio.ended && audio.currentTime > 0,
+      ),
+    )
+    .toBe(true);
+  await page.getByRole('button', { name: 'Voltar ao arquivo' }).click();
   await page.getByRole('button', { name: 'Editar pasta Lendas', exact: true }).click();
   const editFolder = page.getByRole('dialog');
   await editFolder.getByLabel('Nome da pasta').fill('Lendas antigas');
@@ -190,6 +216,14 @@ try {
   await page.getByRole('button', { name: 'Voltar ao arquivo' }).click();
   await page.getByLabel('Região').selectOption('coroa-da-geada');
   await expect(page.getByRole('heading', { name: 'Um capítulo por escrever' })).toBeVisible();
+  await page.getByRole('button', { name: 'Editar pasta Lendas', exact: true }).click();
+  const distantEdit = page.getByRole('dialog');
+  await distantEdit.getByLabel('Nome da pasta').fill('Lendas da geada');
+  await distantEdit.getByRole('button', { name: 'Salvar pasta', exact: true }).click();
+  await expect(distantEdit).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Editar pasta Lendas da geada', exact: true }),
+  ).toBeVisible();
   await noOverflow();
   await page.screenshot({ path: 'test-results/lore-empty-mobile.png', fullPage: true });
   await page.getByLabel('Região').selectOption('reino-do-norte');
@@ -217,7 +251,7 @@ try {
   await noOverflow();
   expect(errors).toEqual([]);
   console.log(
-    'Lore desktop/celular: largura completa, ícones, edição/exclusão/restauração de pastas, editor, publicação e persistência aprovados.',
+    'Lore desktop/celular: ícones e efeito azul, som/reabertura, edição em outras regiões e crônicas iniciais, pastas, editor e persistência aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/lore-failure.png', fullPage: true });

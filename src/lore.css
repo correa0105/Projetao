@@ -108,17 +108,9 @@
 .lore-hero h1 span {
   color: var(--lore-gold);
 }
-.lore-hero-number {
-  position: absolute;
-  bottom: 38px;
-  right: 6%;
-  font-size: 10px;
-  color: #beaf91;
-  letter-spacing: 0.23em;
-}
 .lore-archive {
   display: grid;
-  grid-template-columns: 242px minmax(0, 1fr);
+  grid-template-columns: 266px minmax(0, 1fr);
   gap: 55px;
   width: 100%;
   margin: 0 auto;
@@ -783,8 +775,8 @@
   }
 }
 .lore-vase-icon {
-  width: 27px;
-  height: 32px;
+  width: 36px;
+  height: 44px;
   flex-shrink: 0;
   filter: drop-shadow(0 2px 2px #0007);
   transition: filter 0.35s;
@@ -799,13 +791,13 @@
 }
 .lore-folder-tree .lore-folder-edit,
 .lore-folder-tree .lore-folder-delete {
-  width: 22px;
-  flex: 0 0 22px;
-  height: 30px;
+  width: 26px;
+  flex: 0 0 26px;
+  height: 36px;
   padding: 0;
   justify-content: center;
   border: 0;
-  color: #958264;
+  color: #c5a16a;
 }
 .lore-folder-tree .lore-folder-edit:hover {
   color: #e5c783;
@@ -830,11 +822,11 @@
 .lore-scroll-symbol {
   position: relative;
   display: inline-flex;
-  width: 46px;
-  height: 57px;
+  width: 60px;
+  height: 74px;
   align-items: center;
   justify-content: center;
-  flex: 0 0 46px;
+  flex: 0 0 60px;
   pointer-events: none;
   filter: drop-shadow(0 3px 4px #0008);
   transition: filter 0.35s;
@@ -858,10 +850,24 @@
 .lore-scroll-symbol.is-open .lore-scroll-closed {
   opacity: 0;
 }
-.lore-scroll-symbol.is-open,
 .lore-page-link:hover .lore-scroll-symbol,
 .lore-page-link:focus-visible .lore-scroll-symbol {
   filter: drop-shadow(0 0 9px #e5a44866) drop-shadow(0 3px 4px #0007);
+}
+.lore-scroll-magic {
+  opacity: 0;
+  filter: drop-shadow(0 0 3px #56e7ff) drop-shadow(0 0 8px #329fdc);
+}
+.lore-scroll-symbol.is-open .lore-scroll-magic {
+  opacity: 1;
+  animation: lore-magic-breathe 3.6s ease-in-out infinite;
+}
+.lore-magic-trail {
+  stroke-dasharray: 23 5 10 4;
+  animation: lore-magic-flow 3s linear infinite;
+}
+.lore-scroll-symbol.is-open {
+  filter: drop-shadow(0 3px 4px #0008);
 }
 .lore-reader-title {
   display: flex;
@@ -870,9 +876,9 @@
   gap: 16px;
 }
 .lore-reader-title .lore-scroll-symbol {
-  width: 62px;
-  height: 75px;
-  flex-basis: 62px;
+  width: 82px;
+  height: 98px;
+  flex-basis: 82px;
 }
 .lore-reader-title h2 {
   min-width: 0;
@@ -882,7 +888,7 @@
   width: 0;
   height: 0;
   left: 50%;
-  bottom: 7px;
+  bottom: 40%;
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -893,11 +899,13 @@
 }
 .lore-scroll-embers i {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-  background: #ffd18a;
-  box-shadow: 0 0 5px 1px #ef7e36aa;
+  background: #e1ffff;
+  box-shadow:
+    0 0 5px 2px #61edffe6,
+    0 0 13px 3px #319cdb99;
   opacity: 0;
   animation: lore-ember-rise var(--duration) var(--delay) linear infinite;
 }
@@ -964,14 +972,28 @@
     opacity: 0;
   }
   15% {
-    opacity: 0.8;
+    opacity: 1;
   }
   65% {
-    opacity: 0.45;
+    opacity: 0.85;
   }
   100% {
     transform: translate(var(--drift), calc(-1 * var(--rise))) scale(0.15);
     opacity: 0;
+  }
+}
+@keyframes lore-magic-flow {
+  to {
+    stroke-dashoffset: -84;
+  }
+}
+@keyframes lore-magic-breathe {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
   }
 }
 @media (min-width: 1600px) {
@@ -981,7 +1003,7 @@
 }
 @media (max-width: 1000px) {
   .lore-archive {
-    grid-template-columns: 200px minmax(0, 1fr);
+    grid-template-columns: 220px minmax(0, 1fr);
     gap: 30px;
     padding: 40px 30px;
   }
@@ -1001,9 +1023,9 @@
     gap: 9px;
   }
   .lore-reader-title .lore-scroll-symbol {
-    width: 38px;
-    height: 50px;
-    flex-basis: 38px;
+    width: 58px;
+    height: 72px;
+    flex-basis: 58px;
   }
   .lore-hero {
     min-height: 440px;
@@ -1015,10 +1037,6 @@
   }
   .lore-hero h1 {
     font-size: 38px;
-  }
-  .lore-hero-number {
-    font-size: 8px;
-    bottom: 24px;
   }
   .lore-archive {
     grid-template-columns: 1fr;
@@ -1039,7 +1057,7 @@
   }
   .lore-sidebar > .lore-folder-tree {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0 10px;
   }
   .lore-all {

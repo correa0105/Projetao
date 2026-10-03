@@ -244,6 +244,83 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     assert.equal((await req('/lore/folder-trash', bob.cookie)).status, 403);
     await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [alice.id]);
     assert.equal((await req('/lore', alice.cookie)).data.can_manage_folders, true);
+    // The authorized account manages every region and edits lore without gaining guild staff.
+    assert.equal(
+      (await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [alice.id])).rowCount,
+      0,
+    );
+    for (const region of initial.regions) {
+      const capital = initial.folders.find(
+        (folder: LoreFolder) => folder.region_id === region.id && folder.name === 'Capital',
+      );
+      assert.equal(
+        (
+          await req(`/lore/folders/${capital.id}`, alice.cookie, 'PUT', {
+            name: capital.name,
+            parent_id: null,
+            revision: capital.revision,
+          })
+        ).status,
+        200,
+      );
+    }
+    const legacy = (await req(`/lore/pages/${initial.pages[0].id}`, alice.cookie)).data;
+    assert.equal(legacy.can_edit, true);
+    assert.equal(
+      (
+        await req(`/lore/pages/${legacy.id}`, alice.cookie, 'PUT', {
+          title: legacy.title,
+          subtitle: legacy.subtitle,
+          region_id: legacy.region_id,
+          folder_id: legacy.folder_id,
+          published: legacy.published,
+          blocks: legacy.blocks,
+          revision: legacy.revision,
+        })
+      ).status,
+      200,
+    );
+    const charlie = await signup();
+    assert.equal((await req(`/lore/pages/${legacy.id}`, charlie.cookie)).data.can_edit, false);
+    const distantFolder = initial.folders.find(
+      (folder: LoreFolder) => folder.region_id === 'coroa-da-geada' && folder.name === 'Capital',
+    );
+    const privatePage = await req('/lore/pages', charlie.cookie, 'POST', {
+      ...data,
+      region_id: distantFolder.region_id,
+      folder_id: distantFolder.id,
+    });
+    assert.equal(privatePage.status, 201);
+    const sharedDraft = (await req(`/lore/pages/${privatePage.data.id}`, alice.cookie)).data;
+    assert.equal(sharedDraft.can_edit, true);
+    const sharedImage = await req(
+      `/lore/pages/${sharedDraft.id}/images`,
+      alice.cookie,
+      'POST',
+      png,
+      'image/png',
+    );
+    assert.equal(sharedImage.status, 201);
+    assert.equal(
+      (
+        await req(`/lore/pages/${sharedDraft.id}`, alice.cookie, 'PUT', {
+          ...data,
+          region_id: distantFolder.region_id,
+          folder_id: distantFolder.id,
+          title: 'Crônica revisada pela gestão da lore',
+          revision: sharedDraft.revision,
+          blocks: [block, { ...imageBlock, asset_id: sharedImage.data.id }],
+        })
+      ).status,
+      200,
+    );
+    assert.equal(
+      (await pool.query('SELECT author_id FROM lore_pages WHERE id=$1', [sharedDraft.id])).rows[0]
+        .author_id,
+      charlie.id,
+    );
+    assert.equal((await req(`/lore/pages/${id}`, charlie.cookie)).status, 404);
+    assert.equal((await req(`/lore/images/${image.data.id}`, charlie.cookie)).status, 404);
     const history = initial.folders.find(
       (folder: LoreFolder) => folder.region_id === root.region_id && folder.name === 'História',
     );

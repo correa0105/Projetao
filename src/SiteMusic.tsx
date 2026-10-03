@@ -12,12 +12,18 @@ const MusicContext = createContext({
   volume: 0.4,
   toggle: () => {},
   setVolume: (_value: number) => {},
+  playScroll: () => {},
 });
 const preference = 'alvorada-music-muted';
+
+export function useLoreScrollSound() {
+  return useContext(MusicContext).playScroll;
+}
 
 export function SiteMusicProvider({ children }: { children: ReactNode }) {
   const audio = useRef<HTMLAudioElement>(null);
   const bell = useRef<HTMLAudioElement>(null);
+  const scroll = useRef<HTMLAudioElement>(null);
   const bellPending = useRef(location.hash === '#shop');
   const [track, setTrack] = useState(trackForPage);
   const [volume, setVolume] = useState(() => {
@@ -58,11 +64,13 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       if (document.hidden) {
         player.pause();
         doorBell.pause();
+        scroll.current?.pause();
       } else play();
     };
     const route = () => {
       if (currentRoute === location.hash) return;
       currentRoute = location.hash;
+      if (currentRoute !== '#lore') scroll.current?.pause();
       const nextTrack = trackForPage();
       // Set and play synchronously; waiting for a React effect can lose activation.
       if (player.getAttribute('src') !== nextTrack) player.src = nextTrack;
@@ -81,6 +89,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     return () => {
       player.pause();
       doorBell.pause();
+      scroll.current?.pause();
       document.removeEventListener('pointerdown', play);
       document.removeEventListener('keydown', play);
       document.removeEventListener('visibilitychange', visibility);
@@ -91,6 +100,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     audio.current!.volume = volume;
     bell.current!.volume = Math.min(1, volume * 1.25);
+    scroll.current!.volume = Math.min(1, volume * 1.45);
     try {
       localStorage.setItem('alvorada-music-volume', String(volume));
     } catch {}
@@ -98,6 +108,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     audio.current!.muted = muted;
     bell.current!.muted = muted;
+    scroll.current!.muted = muted;
     try {
       localStorage.setItem(preference, String(muted));
     } catch {}
@@ -115,6 +126,12 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
           if (value > 0) setMuted(false);
         },
         toggle: () => setMuted((value) => !value),
+        playScroll: () => {
+          const sound = scroll.current;
+          if (!sound || muted || volume === 0) return;
+          sound.currentTime = 0;
+          void sound.play().catch(() => {});
+        },
       }}
     >
       <audio
@@ -135,6 +152,14 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
         aria-hidden="true"
       />
       {children}
+      <audio
+        ref={scroll}
+        src="/audio/lore-scroll-open.wav"
+        preload="auto"
+        muted={muted}
+        data-lore-scroll-sound
+        aria-hidden="true"
+      />
     </MusicContext.Provider>
   );
 }

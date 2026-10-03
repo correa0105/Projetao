@@ -13,8 +13,9 @@ async function requireFolderManager(userId: string) {
   if (!(await pool.query('SELECT 1 FROM lore_folder_managers WHERE user_id=$1', [userId])).rowCount)
     throw new AppError(403, 'Esta conta não pode editar, excluir ou restaurar pastas da lore.');
 }
-const visible = `(p.published OR p.author_id=$1 OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1))`;
-const editable = `(COALESCE(p.author_id=$1,false) OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1))`;
+const loreManager = `EXISTS(SELECT 1 FROM lore_folder_managers WHERE user_id=$1)`;
+const editable = `(COALESCE(p.author_id=$1,false) OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1) OR ${loreManager})`;
+const visible = `(p.published OR ${editable})`;
 const summary = `p.id,p.region_id,p.folder_id,p.title,p.subtitle,p.published,p.revision,
   ${editable} AS can_edit,
   (SELECT '/api/lore/images/' || (b->>'asset_id') FROM jsonb_array_elements(p.blocks) b

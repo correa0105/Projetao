@@ -97,7 +97,8 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
   de texto e imagens: retrato, paisagem inteira ou meia paisagem, posição,
   efeitos, caixas de texto e prévia. Rascunhos particulares e publicação para
   a guilda; conteúdo e uploads persistidos no SQL. A conta autorizada pode
-  renomear, reorganizar, excluir e restaurar pastas existentes.
+  renomear, reorganizar, excluir e restaurar pastas existentes e editar todas
+  as crônicas. Pergaminhos ilustrados com efeito azul e som ao abrir.
   [Biblioteca de lore](docs/LORE.md).
 - Regras e House têm conteúdo inicial persistido no SQL.
 - Interface adaptável para desktop e celular, com tema exclusivamente escuro e menu retrátil com ícones medievais ilustrados.

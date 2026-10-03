@@ -1,51 +1,141 @@
 import { useId, type CSSProperties } from 'react';
 
+function EngravedPaper({ id }: { id: string }) {
+  return (
+    <defs>
+      <linearGradient id={`${id}-paper`} x1="0" y1="0" x2="1" y2=".15">
+        <stop stopColor="#704929" />
+        <stop offset=".17" stopColor="#c69a58" />
+        <stop offset=".4" stopColor="#f8e5b3" />
+        <stop offset=".65" stopColor="#d6b17a" />
+        <stop offset="1" stopColor="#87603a" />
+      </linearGradient>
+      <linearGradient id={`${id}-sheet`} x1="0" y1="0" x2=".8" y2="1">
+        <stop stopColor="#b58a51" />
+        <stop offset=".18" stopColor="#f3dfad" />
+        <stop offset=".58" stopColor="#e5c78f" />
+        <stop offset="1" stopColor="#a57842" />
+      </linearGradient>
+      <radialGradient id={`${id}-seal`} cx=".32" cy=".25" r=".85">
+        <stop stopColor="#db6946" />
+        <stop offset=".45" stopColor="#a93625" />
+        <stop offset="1" stopColor="#4e1718" />
+      </radialGradient>
+      <filter id={`${id}-grain`} x="0" y="0" width="100%" height="100%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency=".68"
+          numOctaves="3"
+          seed="19"
+          result="grain"
+        />
+        <feColorMatrix in="grain" type="saturate" values="0" />
+        <feComposite in2="SourceGraphic" operator="in" />
+        <feBlend in="SourceGraphic" mode="soft-light" />
+      </filter>
+    </defs>
+  );
+}
+
 export function LoreVaseIcon() {
   const id = useId().replaceAll(':', '');
   return (
-    <svg className="lore-vase-icon" viewBox="0 0 64 72" aria-hidden="true" focusable="false">
+    <svg className="lore-vase-icon" viewBox="0 0 108 128" aria-hidden="true" focusable="false">
+      <EngravedPaper id={id} />
       <defs>
-        <linearGradient id={`${id}-pot`} x1="0" x2="1">
-          <stop stopColor="#49301e" />
-          <stop offset=".4" stopColor="#b38a50" />
-          <stop offset=".7" stopColor="#745333" />
-          <stop offset="1" stopColor="#3d2a1c" />
+        <linearGradient id={`${id}-bronze`} x1="0" x2="1" y2=".1">
+          <stop stopColor="#241b16" />
+          <stop offset=".16" stopColor="#775033" />
+          <stop offset=".35" stopColor="#d6ab62" />
+          <stop offset=".53" stopColor="#9b6c3d" />
+          <stop offset=".8" stopColor="#5d3924" />
+          <stop offset="1" stopColor="#231a16" />
         </linearGradient>
-        <linearGradient id={`${id}-paper`} x1="0" x2="1">
-          <stop stopColor="#987648" />
-          <stop offset=".45" stopColor="#e2c68b" />
-          <stop offset="1" stopColor="#b6945d" />
-        </linearGradient>
+        <radialGradient id={`${id}-mouth`} cx=".5" cy=".28" r=".8">
+          <stop stopColor="#765038" />
+          <stop offset=".45" stopColor="#2e211a" />
+          <stop offset="1" stopColor="#0d0d0b" />
+        </radialGradient>
+        <g id={`${id}-roll`} stroke="#765032" strokeWidth="1.3">
+          <path d="M-7 0h14l-1 68H-6Z" fill={`url(#${id}-paper)`} />
+          <path d="M-4 6v53M-1 10v31" stroke="#ffedc0" opacity=".6" />
+          <path d="M4 4 3 52M-6 30l5-1M3 41l4 1" opacity=".45" />
+          <ellipse cy="0" rx="7" ry="4.8" fill="#eacb90" />
+          <ellipse cy="0" rx="4.7" ry="3.1" fill="#513923" />
+          <path d="M-3-1c6-3 8 3 3 3-3 0-3-3 0-3" fill="none" stroke="#eacb90" strokeWidth="1.2" />
+          <path d="M-7 44h14v5H-7Z" fill="#593a2b" />
+          <path d="M-7 46h14" stroke="#d0a565" />
+        </g>
       </defs>
-      <g fill={`url(#${id}-paper)`} stroke="#5b4328" strokeWidth="1.4">
-        <path d="m12 38-6-27 9-2 8 28Z" />
-        <ellipse cx="10" cy="10" rx="5" ry="3" transform="rotate(-12 10 10)" />
-        <path d="m27 37-4-33 10-1 3 34Z" />
-        <ellipse cx="28" cy="4" rx="5" ry="3" />
-        <path d="m38 38 5-30 9 2-5 30Z" />
-        <ellipse cx="48" cy="9" rx="5" ry="3" transform="rotate(12 48 9)" />
-        <path d="m22 41-4-23 9-2 5 25Z" />
-        <ellipse cx="22" cy="17" rx="5" ry="3" />
-        <path d="m34 40 1-20 9 1-2 21Z" />
-        <ellipse cx="40" cy="21" rx="5" ry="3" />
+      <ellipse cx="54" cy="120" rx="37" ry="5" fill="#050504" opacity=".65" />
+      {/* Rear rim and cavity behind the rolls; the front wall conceals their lower ends. */}
+      <path
+        d="M23 62c-9-2-16 5-14 16 1 9 9 14 17 11l2-6c-6 2-12-2-12-7 0-6 3-8 9-7Zm62 0c9-2 16 5 14 16-1 9-9 14-17 11l-2-6c6 2 12-2 12-7 0-6-3-8-9-7Z"
+        fill={`url(#${id}-bronze)`}
+        stroke="#c09458"
+        strokeWidth="1.8"
+      />
+      <ellipse
+        cx="54"
+        cy="58"
+        rx="34"
+        ry="12"
+        fill={`url(#${id}-bronze)`}
+        stroke="#e0ba7b"
+        strokeWidth="2"
+      />
+      <ellipse cx="54" cy="59" rx="29" ry="8.6" fill={`url(#${id}-mouth)`} />
+      <g>
+        <use href={`#${id}-roll`} transform="translate(33 17) rotate(-12)" />
+        <use href={`#${id}-roll`} transform="translate(53 8) rotate(3)" />
+        <use href={`#${id}-roll`} transform="translate(81 18) rotate(16)" />
+        <use href={`#${id}-roll`} transform="translate(30 37) rotate(-7) scale(.9)" />
+        <use href={`#${id}-roll`} transform="translate(66 29) rotate(8) scale(1.03)" />
+        <use href={`#${id}-roll`} transform="translate(48 38) rotate(-4) scale(.86)" />
       </g>
       <path
-        d="M16 34c-5 10-6 18-2 27 3 6 12 8 18 8s15-2 18-8c4-9 3-17-2-27Z"
-        fill={`url(#${id}-pot)`}
-        stroke="#cfab70"
-        strokeWidth="1.4"
+        d="M21 60c0 8 2 12 0 20-3 16 3 31 14 37 8 4 30 4 38 0 11-6 17-21 14-37-2-8 0-12 0-20-9 10-55 10-66 0Z"
+        fill={`url(#${id}-bronze)`}
+        stroke="#d1a66b"
+        strokeWidth="1.8"
       />
-      <ellipse cx="32" cy="34" rx="18" ry="5" fill="#2c251c" stroke="#c7a064" strokeWidth="2" />
-      <path d="M17 34c4 3 10 4 15 4s11-1 15-4" fill="none" stroke="#e0bf80" />
       <path
-        d="M14 48c9 5 27 5 36 0M17 62c8 4 22 4 30 0"
+        d="M21 59c9 10 57 11 66 0l-1 7c-12 9-51 9-64-1Z"
+        fill={`url(#${id}-bronze)`}
+        stroke="#edcb8c"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M23 74c15 6 45 6 61 0M26 108c16 8 40 8 56 0M33 117c11 3 32 3 42-1"
         fill="none"
-        stroke="#d0a96b"
+        stroke="#e0b86e"
         strokeWidth="1.5"
+      />
+      <path
+        d="M27 79c-3 10 0 23 6 29M34 80c-2 5-2 11-1 16"
+        fill="none"
+        stroke="#f4d593"
+        strokeWidth="2.2"
+        opacity=".45"
+      />
+      <path d="M79 77c5 13 0 27-5 31" fill="none" stroke="#241912" strokeWidth="4" opacity=".6" />
+      <g fill="none" stroke="#d8b374" strokeWidth="1.2" opacity=".85">
+        <path d="m54 80 11 15-11 15-11-15Z" />
+        <path d="m54 85 6 10-6 10-6-10Z" />
+        <path d="M42 95c-9-10-13-2-8 2 6 5 9-1 5-4M66 95c9-10 13-2 8 2-6 5-9-1-5-4" />
+        <path d="M30 78v5m8-3v3m32-3v3m8-5v5" />
+      </g>
+      <g fill="#f2ce8b" stroke="#775234" strokeWidth=".8">
+        {[27, 39, 54, 69, 81].map((x) => (
+          <circle key={x} cx={x} cy={x === 27 || x === 81 ? 67 : 70} r="1.7" />
+        ))}
+      </g>
+      <path
+        d="m37 91 2 1m31 10 3-1m-29 10 3 1m15-29 2 1"
+        stroke="#3a2c21"
+        strokeWidth="1.6"
         opacity=".65"
       />
-      <path d="m32 44 6 8-6 8-6-8Z" fill="none" stroke="#d4b377" />
-      <path d="M20 42c-3 8-2 14 0 17" fill="none" stroke="#e0bf87" opacity=".35" strokeWidth="2" />
     </svg>
   );
 }
@@ -58,57 +148,111 @@ export function LoreScrollIcon({ open = false }: { open?: boolean }) {
       data-scroll-state={open ? 'open' : 'closed'}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 68 74" focusable="false">
-        <defs>
-          <linearGradient id={`${id}-scroll`} x1="0" y1="0" x2="1" y2=".7">
-            <stop stopColor="#f0d9a3" />
-            <stop offset=".4" stopColor="#cba36a" />
-            <stop offset="1" stopColor="#8b653d" />
-          </linearGradient>
-          <linearGradient id={`${id}-sheet`} x2="0" y2="1">
-            <stop stopColor="#bd935d" />
-            <stop offset=".25" stopColor="#e6cc94" />
-            <stop offset=".8" stopColor="#d2b17a" />
-            <stop offset="1" stopColor="#a17b4a" />
-          </linearGradient>
-        </defs>
+      <svg viewBox="0 0 108 128" focusable="false">
+        <EngravedPaper id={id} />
         <g
           className="lore-scroll-closed"
-          transform="rotate(-24 34 37)"
-          stroke="#77512e"
+          transform="rotate(-22 54 64)"
+          stroke="#704729"
           strokeWidth="1.4"
         >
-          <path d="M24 10h20v54H24Z" fill={`url(#${id}-scroll)`} />
-          <ellipse cx="34" cy="10" rx="10" ry="5" fill="#dfbd83" />
-          <ellipse cx="34" cy="64" rx="10" ry="5" fill="#b48a53" />
-          <ellipse cx="34" cy="10" rx="5" ry="2" fill="#725235" />
-          <path d="M30 15v43" stroke="#f2dba4" opacity=".65" />
-          <path d="M24 35h20v7H24Z" fill="#773b27" stroke="#aa6441" />
-          <circle cx="34" cy="38.5" r="5.5" fill="#a95032" stroke="#d49255" />
-          <path d="m34 35 2 3-2 3-2-3Z" fill="#deb278" />
+          <path d="M34 22c3-6 33-7 39 0l-3 87c-9 5-25 5-34-1Z" fill={`url(#${id}-paper)`} />
+          <path
+            d="M40 29 42 98M45 33v22"
+            fill="none"
+            stroke="#ffedbf"
+            strokeWidth="2"
+            opacity=".62"
+          />
+          <path d="M65 27 63 97M58 30l1 22m-20 30 7-2m14 18 9-1" fill="none" opacity=".48" />
+          <path d="M34 21c0-8 39-10 40 0s-38 10-40 0Z" fill="#efd19b" />
+          <ellipse cx="54" cy="21" rx="13" ry="5" fill="#533622" />
+          <path
+            d="M44 20c9-7 23 1 15 4-8 3-18-3-11-5 5-2 10 1 5 2"
+            fill="none"
+            stroke="#d3b27b"
+            strokeWidth="1.8"
+          />
+          <path d="M36 108c0-7 34-8 35 0s-34 8-35 0Z" fill="#b68b52" />
+          <path d="M38 105c7 5 24 4 31 0" stroke="#f1cd8d" fill="none" />
+          <path d="m35 61 36-3-1 15-35 3Z" fill="#5a2d24" stroke="#ad7050" />
+          <path d="m35 63 35-3m-34 13 33-3" stroke="#d09e64" strokeWidth="1" />
+          <path
+            d="m53 71-10 21 8-3 5 5 3-22m4-3 10 19-7-2-3 4-7-19"
+            fill="#8e3d2c"
+            stroke="#b36142"
+          />
+          <path
+            d="m53 55 6 2 6-1 4 5 1 7-4 6-7 3-7-2-5-5-1-7 3-5Z"
+            fill={`url(#${id}-seal)`}
+            stroke="#e29860"
+          />
+          <circle cx="58" cy="66" r="7.2" fill="none" stroke="#e48b55" strokeWidth="1" />
+          <path d="m58 60 4 6-4 6-4-6Zm0 3v6" fill="none" stroke="#f0b77b" strokeWidth="1.4" />
+          <path d="M38 44h2m24-5 3-1m-25 56 3-1m-5 7 2 1" stroke="#916537" opacity=".6" />
         </g>
-        <g className="lore-scroll-open" stroke="#8a6539" strokeWidth="1.2">
-          <path d="M15 13h37v48H14c5-5 5-11 4-17L15 13Z" fill={`url(#${id}-sheet)`} />
-          <path d="M12 10h42c6 0 6 9 0 9H12c-6 0-6-9 0-9Z" fill={`url(#${id}-scroll)`} />
-          <ellipse cx="12" cy="14.5" rx="4" ry="4.5" fill="#edcf93" />
-          <ellipse cx="12" cy="14.5" rx="1.7" ry="2" fill="#8e673b" />
-          <path d="M14 57h40c6 0 6 9 0 9H14c-6 0-6-9 0-9Z" fill={`url(#${id}-scroll)`} />
-          <ellipse cx="54" cy="61.5" rx="4" ry="4.5" fill="#ad824d" />
-          <path d="M25 29h18M24 35h21M24 41h19M26 47h15" opacity=".65" stroke="#89693b" />
-          <path d="m32 23 3 3-3 3-3-3Z" fill="#997443" stroke="none" />
+        <g className="lore-scroll-open" stroke="#886139" strokeWidth="1.4">
+          <path
+            d="M20 22h68l-4 27 3 14-4 22 5 21H20l3-25-4-16 4-19Z"
+            fill={`url(#${id}-sheet)`}
+            filter={`url(#${id}-grain)`}
+          />
+          <path
+            d="M25 24c5 22-4 55 1 77M81 27c-4 17 2 49-1 72"
+            fill="none"
+            stroke="#ffe9b5"
+            opacity=".65"
+          />
+          <path d="M28 26h49v70H28Z" fill="none" stroke="#997449" opacity=".5" />
+          <path d="m29 32 5-5m39 0 5 5m-49 57 5 6m39 0 5-6" stroke="#a47d46" fill="none" />
+          <g fill="none" stroke="#80603c" opacity=".82" strokeWidth="1.25">
+            <path d="m54 35 6 7-6 7-6-7Zm0 3v8M35 55h37M36 61h31M35 67h38M37 73h29M36 79h33M42 85h19" />
+            <path d="m33 52 2 3-2 3m42 10-3 3 3 3" />
+          </g>
+          <path d="M18 15h73c10 0 11 14 0 14H18c-10 0-11-14 0-14Z" fill={`url(#${id}-paper)`} />
+          <ellipse cx="18" cy="22" rx="6" ry="7" fill="#efcf91" />
+          <ellipse cx="18" cy="22" rx="3.5" ry="4" fill="#5a3a23" />
+          <path d="M17 19c5-1 5 6 1 5-2-1-2-4 0-3" fill="none" stroke="#d6ad6b" strokeWidth="1.1" />
+          <path d="M27 17h56" stroke="#ffedc3" strokeWidth="1.8" opacity=".68" />
+          <path d="M20 101h72c10 0 10 14 0 14H20c-10 0-10-14 0-14Z" fill={`url(#${id}-paper)`} />
+          <ellipse cx="92" cy="108" rx="6" ry="7" fill="#a47742" />
+          <ellipse cx="92" cy="108" rx="3" ry="4" fill="#604126" />
+          <path d="M23 104h59" stroke="#f9dba1" strokeWidth="1.7" opacity=".68" />
+          <path d="M19 42l5 3m59 42-4 4m-48 6 3-2m40-60 3 2" stroke="#9a723d" opacity=".5" />
+        </g>
+        <g className="lore-scroll-magic" strokeLinecap="round">
+          <path
+            className="lore-magic-trail"
+            d="M28 73C8 62 36 45 16 32S8 11 24 5M78 77c22-17-5-21 13-38s13-24 6-30"
+            fill="none"
+            stroke="#7eeeff"
+            strokeWidth="2.3"
+          />
+          <path
+            d="M31 70C13 62 39 43 20 30M76 75c18-14 0-22 16-36"
+            fill="none"
+            stroke="#edffff"
+            strokeWidth="1"
+          />
+          <path
+            d="m54 32 2 7 6 3-6 2-2 8-2-8-6-2 6-3ZM13 44l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5Zm81 13 1 3 3 1-3 1-1 4-1-4-3-1 3-1Z"
+            fill="#e8ffff"
+          />
+          <circle cx="26" cy="13" r="1.8" fill="#bafcff" />
+          <circle cx="86" cy="24" r="1.4" fill="#bafcff" />
         </g>
       </svg>
       <span className="lore-scroll-embers">
-        {Array.from({ length: 7 }, (_, i) => (
+        {Array.from({ length: 10 }, (_, i) => (
           <i
             key={i}
             style={
               {
-                '--start': `${i * 5 - 15}px`,
-                '--drift': `${((i * 13) % 38) - 19}px`,
-                '--rise': `${28 + ((i * 11) % 42)}px`,
-                '--duration': `${2.6 + (i % 4) * 0.4}s`,
-                '--delay': `${-i * 0.51}s`,
+                '--start': `${(i % 5) * 8 - 16}px`,
+                '--drift': `${((i * 17) % 68) - 34}px`,
+                '--rise': `${52 + ((i * 13) % 52)}px`,
+                '--duration': `${2.8 + (i % 4) * 0.45}s`,
+                '--delay': `${-i * 0.43}s`,
               } as CSSProperties
             }
           />

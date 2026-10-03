@@ -7,11 +7,20 @@ com o ponteiro. As imagens e a identidade pertencem ao próprio projeto.
 Movimento reduzido desliga animações e deslocamentos.
 O fundo da lore ocupa toda a largura da tela, sem as faixas laterais do layout
 anterior. O cabeçalho mantém somente o título; a frase e o botão de abrir os
-arquivos foram removidos a pedido do usuário.
+arquivos e a legenda “I · O MUNDO” foram removidos a pedido do usuário.
 
-Pastas usam um vaso de cobre cheio de pergaminhos. Cada crônica recebe um
-pergaminho fechado antes do título no arquivo e aberto durante a leitura,
-com brilho quente e pequenas brasas inspiradas na fogueira dos personagens.
+Pastas usam um vaso de cobre ornamentado com seis pergaminhos encaixados dentro
+da abertura: a borda traseira fica atrás dos rolos e a parede frontal cobre suas
+pontas. Os três ícones possuem volume, papel envelhecido, detalhes de metal/lacre
+e tamanho ampliado. Cada crônica recebe um pergaminho fechado antes do título
+no arquivo e aberto durante a leitura. Luz azul clara e partículas saem do papel
+aberto; os traços luminosos permanecem visíveis mesmo com movimento reduzido.
+
+Abrir uma crônica pelo clique ou teclado toca `public/audio/lore-scroll-open.wav`,
+um efeito original de papel desenrolando de 1,24 segundo, gerado por
+`scripts/generate-lore-scroll-sound.mjs`. Cada abertura reinicia o efeito sem
+sobrepor cópias. O volume/mute geral do site controla também esse som; não toca
+automaticamente ao carregar, editar ou salvar a página.
 
 ## Organização e edição
 
@@ -34,8 +43,12 @@ com brilho quente e pequenas brasas inspiradas na fogueira dos personagens.
   usado para a crônica publicada.
 - **Salvar rascunho** deixa a página privada; **Publicar** compartilha a leitura
   com usuários autenticados. Publicação e edição não criam mensagens externas.
-- Só o autor e a staff podem editar ou enviar imagens para uma página.
-  Crônicas iniciais sem autor continuam editáveis apenas pela staff.
+- O autor, a staff e a conta gestora da lore podem editar ou enviar imagens
+  para uma página. Por pedido explícito, **Pai do Cris** pode editar textos e
+  imagens de qualquer crônica, inclusive as iniciais sem autor, de outras
+  contas e em outras regiões. A autoria original e os snapshots são preservados.
+  Rascunhos permanecem privados para leitores comuns; autor, staff e gestão
+  da lore têm acesso para edição.
 - A conta **Pai do Cris** pode editar todas as pastas existentes pelo lápis:
   renomear e escolher outra pasta superior na mesma região. O servidor impede
   ciclos, nomes duplicados e mais de quatro níveis, inclusive nas subpastas.
@@ -46,9 +59,8 @@ com brilho quente e pequenas brasas inspiradas na fogueira dos personagens.
   posteriores à exclusão também voltam ao local original; as já revisadas
   permanecem onde foram guardadas. Restaure primeiro uma pasta superior
   excluída e mantenha o limite de quatro níveis.
-- A gestão de pastas é uma permissão própria, conferida no servidor em cada
-  operação. Não altera a staff nem dá acesso a rascunhos ou à edição de textos
-  de outros autores.
+- A gestão da lore é uma permissão própria, conferida no servidor em cada
+  operação. Não altera a staff nem concede permissões em outras áreas do jogo.
 
 ## Persistência e validação
 
@@ -64,7 +76,7 @@ de pastas e movimentações de páginas usam a mesma trava transacional.
 Uploads PNG/JPEG/WebP estáticos, até 12 MB e 40 megapixels, são decodificados,
 orientados e normalizados para WebP de até 2560 px. Binários ficam no PostgreSQL
 e não dependem de arquivos locais ou serviços externos. Rotas de imagens
-conferem a mesma visibilidade da página; não expõem imagens de rascunhos.
+conferem a mesma visibilidade da página; não expõem imagens de rascunhos a leitores comuns.
 Só imagens pertencentes à própria página podem ser associadas aos blocos.
 
 Salvamento usa transação, revisão otimista e snapshot da versão anterior.
@@ -86,6 +98,8 @@ upload real, formatos e posições, caixas, prévia, reordenação, publicação
 recarga, responsividade e movimento reduzido. Capturas em `test-results/lore-*`.
 Confere ainda ícones fechado/aberto, largura completa em 1890 px, edição,
 exclusão com preservação de conteúdo e restauração pela interface.
+Valida edição de crônica inicial, pastas em outra região, remoção da legenda,
+efeito azul visível com movimento reduzido e reprodução/repetição do som.
 
 A suíte geral executada nesta entrega passou 41 de 43 testes. As duas falhas
 são anteriores à alteração e pertencem a `tests/world-fleet.test.ts`

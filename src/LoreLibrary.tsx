@@ -23,6 +23,7 @@ import { api, post } from './api';
 import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
 import { LoreVaseIcon, LoreScrollIcon } from './LoreSymbols';
+import { useLoreScrollSound } from './SiteMusic';
 import {
   loreDescendants,
   loreFolderPath,
@@ -196,6 +197,7 @@ function FolderTree({
                     className="lore-folder-edit"
                     type="button"
                     aria-label={`Editar pasta ${folder.name}`}
+                    title={`Editar pasta ${folder.name}`}
                     onClick={() => onEdit(folder)}
                   >
                     <Pencil size={13} />
@@ -230,6 +232,7 @@ function FolderTree({
 }
 
 export function LoreLibrary() {
+  const playScroll = useLoreScrollSound();
   const [index, setIndex] = useState<LoreIndex | null>(null);
   const [regionId, setRegionId] = useState('reino-do-norte');
   const [folderId, setFolderId] = useState<string | null>(null);
@@ -253,6 +256,7 @@ export function LoreLibrary() {
     void refresh().catch((error) => setMessage(error.message));
   }, []);
   async function openPage(id: string) {
+    playScroll();
     const token = ++request.current;
     setBusy(true);
     try {
@@ -316,9 +320,6 @@ export function LoreLibrary() {
             Crônicas &amp; lore<span>.</span>
           </h1>
         </div>
-        <span className="lore-hero-number" aria-hidden="true">
-          I · O MUNDO
-        </span>
       </header>
       {editing && page ? (
         <LoreEditor
@@ -457,7 +458,7 @@ export function LoreLibrary() {
                       <span className="lore-page-copy">
                         <small>
                           {loreFolderPath(item.folder_id, folders)}
-                          {!item.published && ' · Seu rascunho'}
+                          {!item.published && ' · Rascunho'}
                         </small>
                         <strong>{item.title}</strong>
                         <span>{item.subtitle}</span>
