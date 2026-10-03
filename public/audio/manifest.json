@@ -13,7 +13,7 @@
   },
   "doorBell": {
     "file": "shop-door-bell.wav",
-    "origin": "Síntese original de sino de latão: trililin em três batidas rápidas, segundo balanço mais suave e cauda que se apaga. Duração de 3,2 s; gerador em scripts/generate-shop-bell.mjs.",
+    "origin": "Síntese original refeita do zero: sineta de porta próxima e seca, modos metálicos inarmônicos, contato do badalo e segundo balanço mais fraco. Sem eco ou reverberação, duração de 2,25 s; gerador em scripts/generate-shop-bell.mjs.",
     "playback": "Uma vez por entrada na loja, sem loop; respeita mute e 80% do volume selecionado para a música."
   }
 }
