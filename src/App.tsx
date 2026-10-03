@@ -197,6 +197,8 @@ function Portal({ user }: { user: User }) {
   }, [character]);
   function go(next: Page) {
     location.hash = next;
+    // Start page audio while the navigation gesture is still active.
+    window.dispatchEvent(new Event('alvorada:navigate'));
     setPage(next);
     setQuery('');
     setCategory('Todos');

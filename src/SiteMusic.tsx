@@ -39,6 +39,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const player = audio.current!;
     const doorBell = bell.current!;
+    let currentRoute = location.hash;
     player.volume = volume;
     doorBell.volume = Math.min(1, volume * 1.25);
     const playBell = () => {
@@ -60,10 +61,15 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       } else play();
     };
     const route = () => {
-      setTrack(trackForPage());
+      if (currentRoute === location.hash) return;
+      currentRoute = location.hash;
+      const nextTrack = trackForPage();
+      // Set and play synchronously; waiting for a React effect can lose activation.
+      if (player.getAttribute('src') !== nextTrack) player.src = nextTrack;
+      setTrack(nextTrack);
       bellPending.current = location.hash === '#shop';
-      if (bellPending.current) playBell();
-      else doorBell.pause();
+      if (!bellPending.current) doorBell.pause();
+      play();
     };
     play();
     // Browsers requiring a gesture start on the first interaction.
@@ -71,6 +77,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     document.addEventListener('keydown', play);
     document.addEventListener('visibilitychange', visibility);
     window.addEventListener('hashchange', route);
+    window.addEventListener('alvorada:navigate', route);
     return () => {
       player.pause();
       doorBell.pause();
@@ -78,6 +85,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       document.removeEventListener('keydown', play);
       document.removeEventListener('visibilitychange', visibility);
       window.removeEventListener('hashchange', route);
+      window.removeEventListener('alvorada:navigate', route);
     };
   }, []);
   useEffect(() => {
@@ -113,7 +121,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
         ref={audio}
         src={track}
         loop
-        preload="metadata"
+        preload="auto"
         muted={muted}
         data-site-music
         aria-hidden="true"
