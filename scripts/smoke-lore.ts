@@ -28,6 +28,31 @@ page.on('pageerror', (error) => errors.push(error.message));
 async function noOverflow() {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 }
+async function watercolorImage() {
+  const paint = page.locator('.lore-image-paint');
+  await paint.evaluate((element) => element.scrollIntoView({ block: 'center' }));
+  await expect
+    .poll(() => paint.locator('img').evaluate((image) => (image as HTMLImageElement).naturalWidth))
+    .toBeGreaterThan(0);
+  expect(await paint.evaluate((element) => getComputedStyle(element).maskImage)).toContain(
+    '/lore-watercolor-mask.svg',
+  );
+  await expect(paint.locator('.lore-image-paper')).toHaveCount(1);
+  if ((await page.locator('.lore-image-frame').getAttribute('data-fit')) === 'contain') {
+    await expect
+      .poll(() =>
+        paint.evaluate((element) => {
+          const image = element.querySelector('img')!;
+          const rect = element.getBoundingClientRect();
+          return Math.abs(rect.width / rect.height - image.naturalWidth / image.naturalHeight);
+        }),
+      )
+      .toBeLessThan(0.02);
+    expect(await paint.locator('img').evaluate((image) => getComputedStyle(image).transform)).toBe(
+      'none',
+    );
+  }
+}
 try {
   await mkdir('test-results', { recursive: true });
   await page.goto(origin);
@@ -295,8 +320,20 @@ try {
     await imageBlock.getByLabel('Posição').selectOption(alignment);
     await editor.getByRole('button', { name: 'Prévia', exact: true }).click();
     await expect(editor.locator(`.lore-block--portrait.lore-align--${alignment}`)).toBeVisible();
+    await watercolorImage();
     await editor.getByRole('button', { name: 'Voltar à edição', exact: true }).click();
   }
+  await imageBlock.getByLabel('Enquadramento').selectOption('cover');
+  await imageBlock.getByLabel('Efeito').selectOption('still');
+  await editor.getByRole('button', { name: 'Prévia', exact: true }).click();
+  await watercolorImage();
+  await expect(page.locator('.lore-image-mist')).toHaveCount(0);
+  await page
+    .locator('.lore-image')
+    .screenshot({ path: 'test-results/lore-watercolor-portrait.png' });
+  await editor.getByRole('button', { name: 'Voltar à edição', exact: true }).click();
+  await imageBlock.getByLabel('Enquadramento').selectOption('contain');
+  await imageBlock.getByLabel('Efeito').selectOption('cinematic');
   await imageBlock.getByLabel('Formato').selectOption('half-landscape');
   expect(await imageBlock.getByLabel('Posição').locator('option').allTextContents()).toEqual([
     'Esquerda',
@@ -312,6 +349,10 @@ try {
     .fill('Honre a palavra. Partilhe o abrigo. Deixe uma marca para quem vier depois.');
   await editor.getByRole('button', { name: 'Prévia', exact: true }).click();
   await expect(editor.locator('.lore-block--half-landscape.lore-align--left')).toBeVisible();
+  await watercolorImage();
+  await page
+    .locator('.lore-image')
+    .screenshot({ path: 'test-results/lore-watercolor-half-landscape.png' });
   await expect(editor.locator('.lore-text--parchment')).toBeVisible();
   await noOverflow();
   await page.screenshot({ path: 'test-results/lore-editor-preview.png', fullPage: true });
@@ -342,6 +383,10 @@ try {
     .selectOption('cover');
   await updatedEditor.getByRole('button', { name: 'Prévia', exact: true }).click();
   await expect(page.locator('.lore-block--landscape')).toBeVisible();
+  await watercolorImage();
+  await page
+    .locator('.lore-image')
+    .screenshot({ path: 'test-results/lore-watercolor-landscape.png' });
   await updatedEditor.getByRole('button', { name: 'Voltar à edição', exact: true }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
@@ -379,6 +424,7 @@ try {
       .evaluate((element) => getComputedStyle(element).animationName),
   ).toBe('lore-mist');
   await page.emulateMedia({ reducedMotion: 'reduce' });
+  await watercolorImage();
   expect(
     await page
       .locator('.lore-image-mist')
@@ -422,7 +468,7 @@ try {
   await noOverflow();
   expect(errors).toEqual([]);
   console.log(
-    'Lore desktop/celular: raposa perseguindo rato sem parar no esbarrão, queda, permanência e reset, magia, som, edição e persistência aprovados.',
+    'Lore desktop/celular: aquarela nos três formatos, proporção natural, movimento opcional, mascote, som, edição e persistência aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/lore-failure.png', fullPage: true });

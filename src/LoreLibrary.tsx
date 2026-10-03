@@ -61,6 +61,15 @@ const textBlock = (): LoreBlock => ({
 
 export function LoreImage({ block }: { block: Extract<LoreBlock, { type: 'image' }> }) {
   const frame = useRef<HTMLDivElement>(null);
+  const [imageRatio, setImageRatio] = useState<number | null>(null);
+  const frameRatio = block.format === 'portrait' ? 3 / 4 : block.format === 'landscape' ? 2 : 3 / 2;
+  const paintSize =
+    block.fit === 'contain' && imageRatio
+      ? {
+          width: `${Math.min(1, imageRatio / frameRatio) * 100}%`,
+          height: `${Math.min(1, frameRatio / imageRatio) * 100}%`,
+        }
+      : undefined;
   return (
     <figure className={`lore-image lore-image--${block.format} lore-align--${block.alignment}`}>
       <div
@@ -90,13 +99,21 @@ export function LoreImage({ block }: { block: Extract<LoreBlock, { type: 'image'
           frame.current?.style.setProperty('--image-y', '0px');
         }}
       >
-        <img
-          src={loreImageUrl(block.asset_id)}
-          alt={block.alt || block.caption || 'Ilustração da crônica'}
-          loading="lazy"
-          style={{ objectFit: block.fit }}
-        />
-        {block.effect === 'cinematic' && <span className="lore-image-mist" aria-hidden="true" />}
+        <div className="lore-image-paint" style={paintSize}>
+          <img
+            src={loreImageUrl(block.asset_id)}
+            alt={block.alt || block.caption || 'Ilustração da crônica'}
+            loading="lazy"
+            style={{ objectFit: block.fit }}
+            onLoad={(event) => {
+              const image = event.currentTarget;
+              if (image.naturalWidth && image.naturalHeight)
+                setImageRatio(image.naturalWidth / image.naturalHeight);
+            }}
+          />
+          <span className="lore-image-paper" aria-hidden="true" />
+          {block.effect === 'cinematic' && <span className="lore-image-mist" aria-hidden="true" />}
+        </div>
       </div>
       {block.caption && <figcaption>{block.caption}</figcaption>}
     </figure>
@@ -1245,8 +1262,8 @@ function LoreEditor({
                               )
                             }
                           >
-                            <option value="cinematic">Névoa, grão e movimento suave</option>
-                            <option value="still">Imagem sem efeito</option>
+                            <option value="cinematic">Aquarela, névoa e movimento suave</option>
+                            <option value="still">Aquarela sem movimento</option>
                           </select>
                         </label>
                       </div>

@@ -1,5 +1,18 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Acabamento em aquarela somente na lore (03/10/2026)
+
+Por referência e confirmação do usuário, todas as imagens dos blocos da lore
+recebem bordas irregulares de pigmento dissolvido, pinceladas secas e granulação
+de papel. Centro preservado. Máscara SVG com ruído/deslocamento e textura SVG
+compartilhadas por leitura e prévia, em retratos, paisagens e meias paisagens,
+incluindo páginas anteriores. Só os blocos da lore; banner e outras abas não
+recebem esse efeito. Arquivos originais no SQL preservados. Imagem inteira usa
+dimensões naturais para evitar aplicar máscara às faixas vazias; sem zoom.
+Opções passam a “Aquarela sem movimento” / “Aquarela, névoa e movimento suave”,
+mantendo os valores persistidos still/cinematic. Movimento reduzido mantém o
+acabamento estático. Detalhes e validação visual em docs/LORE.md.
+
 ## Perseguição sem parar no esbarrão (03/10/2026)
 
 Mascote agora corre atrás de um rato de campo ilustrado em SVG, com volume,

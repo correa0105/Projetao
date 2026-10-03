@@ -9,6 +9,21 @@ O fundo da lore ocupa toda a largura da tela, sem as faixas laterais do layout
 anterior. O cabeçalho mantém somente o título; a frase e o botão de abrir os
 arquivos e a legenda “I · O MUNDO” foram removidos a pedido do usuário.
 
+Todos os blocos de imagem da lore usam o acabamento em aquarela fornecido pelo
+usuário: bordas orgânicas com sangramento de pigmento, pinceladas secas e
+granulação discreta, mantendo o centro legível. O efeito está no renderizador
+compartilhado da leitura e da prévia, inclusive para crônicas já existentes.
+`public/lore-watercolor-mask.svg` recorta a imagem por transparência com ruído
+em várias escalas; `public/lore-watercolor-paper.svg` acrescenta textura de papel.
+Não altera o upload salvo no SQL nem aplica o acabamento a outras abas ou ao
+banner da lore. Em “Mostrar imagem inteira”, a máscara acompanha a proporção
+natural da imagem, sem preencher as faixas vazias ou ampliar o conteúdo.
+Retratos, paisagens inteiras e meias paisagens recebem o mesmo acabamento.
+“Aquarela sem movimento” conserva a textura sem névoa/paralaxe; a alternativa
+com movimento acrescenta os efeitos anteriores. Movimento reduzido preserva
+a aquarela estática. Os valores persistidos de efeito continuam `still` e
+`cinematic`, compatíveis com páginas existentes.
+
 Pastas usam uma tigela rasa de bronze ornamentado com seis rolos encaixados
 na abertura. A borda traseira fica atrás dos rolos e a parede frontal cobre
 suas pontas. Os três ícones possuem volume,
@@ -52,7 +67,7 @@ automaticamente ao carregar, editar ou salvar a página.
   O autor pode alterar título, subtítulo, região e pasta no editor.
 - Blocos de imagem aceitam retrato à esquerda, centro ou direita; paisagem
   inteira; e meia paisagem à esquerda ou direita. Também possuem legenda,
-  descrição acessível, enquadramento completo ou preenchido e efeito opcional.
+  descrição acessível, enquadramento completo ou preenchido e movimento opcional.
   Mostrar imagem inteira não amplia nem corta a referência.
 - Blocos de texto oferecem texto livre, caixa de pergaminho escuro, inscrição
   e citação. Todos possuem título e alinhamento; parágrafos são texto simples,
@@ -116,6 +131,9 @@ preservação de edições posteriores à exclusão.
 `npm run test:lore -- --browser` verifica no Edge criação de subpasta/crônica,
 upload real, formatos e posições, caixas, prévia, reordenação, publicação,
 recarga, responsividade e movimento reduzido. Capturas em `test-results/lore-*`.
+Confere a máscara/textura nos três formatos, aquarela sem movimento e proporção
+natural com imagem inteira. Capturas próximas em `lore-watercolor-portrait.png`,
+`lore-watercolor-half-landscape.png` e `lore-watercolor-landscape.png`.
 Confere ainda ícones fechado/aberto, largura completa em 1890 px, edição,
 exclusão com preservação de conteúdo e restauração pela interface.
 Valida edição de crônica inicial, pastas em outra região, remoção da legenda,
