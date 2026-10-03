@@ -152,6 +152,47 @@ export function LoreBlocks({ blocks }: { blocks: LoreBlock[] }) {
   );
 }
 
+function LoreFolderButton({
+  folder,
+  active,
+  depth,
+  count,
+  onSelect,
+}: {
+  folder: LoreFolder;
+  active: boolean;
+  depth: number;
+  count: number;
+  onSelect: (id: string) => void;
+}) {
+  const [rummaging, setRummaging] = useState(false);
+  return (
+    <button
+      type="button"
+      className={active ? 'is-active' : ''}
+      style={{ '--folder-depth': depth } as CSSProperties}
+      aria-pressed={active}
+      data-folder-choice={folder.id}
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse') setRummaging(true);
+      }}
+      onPointerLeave={() => setRummaging(false)}
+      onFocus={(event) => {
+        if (event.currentTarget.matches(':focus-visible')) setRummaging(true);
+      }}
+      onBlur={() => setRummaging(false)}
+      onClick={() => {
+        setRummaging(false);
+        onSelect(folder.id);
+      }}
+    >
+      <LoreVaseIcon rummaging={rummaging} />
+      <span>{folder.name}</span>
+      <small>{count.toString().padStart(2, '0')}</small>
+    </button>
+  );
+}
+
 function FolderTree({
   folders,
   parent = null,
@@ -181,17 +222,13 @@ function FolderTree({
           return (
             <li key={folder.id}>
               <div className="lore-folder-row">
-                <button
-                  type="button"
-                  className={active === folder.id ? 'is-active' : ''}
-                  style={{ '--folder-depth': depth } as CSSProperties}
-                  onClick={() => onSelect(folder.id)}
-                  aria-pressed={active === folder.id}
-                >
-                  <LoreVaseIcon />
-                  <span>{folder.name}</span>
-                  <small>{count.toString().padStart(2, '0')}</small>
-                </button>
+                <LoreFolderButton
+                  folder={folder}
+                  active={active === folder.id}
+                  depth={depth}
+                  count={count}
+                  onSelect={onSelect}
+                />
                 {onEdit && (
                   <button
                     className="lore-folder-edit"

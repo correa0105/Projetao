@@ -776,10 +776,37 @@
 }
 .lore-vase-icon {
   width: 36px;
-  height: 44px;
+  height: 48px;
   flex-shrink: 0;
+  overflow: visible;
   filter: drop-shadow(0 2px 2px #0007);
   transition: filter 0.35s;
+}
+.lore-vase-body {
+  transform-box: view-box;
+  transform-origin: 54px 114px;
+}
+.lore-vase-rolls {
+  transform-box: view-box;
+  transform-origin: 54px 62px;
+}
+.lore-vase-escaping-scroll {
+  transform-box: view-box;
+  transform-origin: 49px 70px;
+}
+.lore-vase-icon.is-rummaging .lore-vase-body {
+  animation: lore-vase-shake 0.8s ease-out both;
+}
+.lore-vase-icon.is-rummaging .lore-vase-rolls {
+  animation: lore-vase-paper-sway 1s ease-out both;
+}
+.lore-vase-icon.is-rummaging .lore-vase-escaping-scroll {
+  animation: lore-vase-scroll-fall 1.45s linear both;
+}
+.lore-vase-grounded-glow {
+  opacity: 0;
+  filter: drop-shadow(0 0 4px #62e9ff) drop-shadow(0 0 9px #249adf);
+  animation: lore-vase-glow-ignite 0.3s 1.2s ease-out both;
 }
 .lore-folder-row {
   display: flex;
@@ -856,15 +883,26 @@
 }
 .lore-scroll-magic {
   opacity: 0;
-  filter: drop-shadow(0 0 3px #56e7ff) drop-shadow(0 0 8px #329fdc);
+  filter: drop-shadow(0 0 1px #56e7ff) drop-shadow(0 0 4px #329fdc99);
 }
 .lore-scroll-symbol.is-open .lore-scroll-magic {
   opacity: 1;
-  animation: lore-magic-breathe 3.6s ease-in-out infinite;
 }
-.lore-magic-trail {
-  stroke-dasharray: 23 5 10 4;
-  animation: lore-magic-flow 3s linear infinite;
+.lore-magic-wisp {
+  transform-box: view-box;
+  transform-origin: 54px 64px;
+  animation: lore-wisp-drift var(--wisp-duration) var(--wisp-delay) ease-out infinite;
+}
+.lore-wisp-reveal {
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 0;
+  animation: lore-wisp-uncoil var(--wisp-duration) var(--wisp-delay) linear infinite;
+}
+.lore-wisp-ribbon {
+  filter: drop-shadow(0 0 1.4px #77eaff);
+}
+.lore-magic-source {
+  animation: lore-magic-breathe 3.6s ease-in-out infinite;
 }
 .lore-scroll-symbol.is-open {
   filter: drop-shadow(0 3px 4px #0008);
@@ -888,7 +926,7 @@
   width: 0;
   height: 0;
   left: 50%;
-  bottom: 40%;
+  bottom: 50%;
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -899,8 +937,8 @@
 }
 .lore-scroll-embers i {
   position: absolute;
-  width: 3px;
-  height: 3px;
+  width: 2px;
+  height: 2px;
   border-radius: 50%;
   background: #e1ffff;
   box-shadow:
@@ -982,9 +1020,103 @@
     opacity: 0;
   }
 }
-@keyframes lore-magic-flow {
+@keyframes lore-wisp-uncoil {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  62%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes lore-wisp-drift {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  14% {
+    opacity: 0.9;
+  }
+  54% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--wisp-drift), -8px) scale(1.06);
+  }
+}
+@keyframes lore-vase-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-7deg);
+  }
+  32% {
+    transform: rotate(6deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  69% {
+    transform: rotate(3deg);
+  }
+  84% {
+    transform: rotate(-1deg);
+  }
+}
+@keyframes lore-vase-paper-sway {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  20% {
+    transform: rotate(6deg) translateY(-2px);
+  }
+  39% {
+    transform: rotate(-7deg) translateY(-4px);
+  }
+  60% {
+    transform: rotate(4deg) translateY(-1px);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes lore-vase-scroll-fall {
+  0%,
+  18% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate(3px, -8px) rotate(12deg);
+  }
+  48% {
+    transform: translate(17px, -29px) rotate(30deg);
+  }
+  65% {
+    transform: translate(38px, -2px) rotate(58deg);
+  }
+  82% {
+    transform: translate(28px, 59px) rotate(94deg);
+  }
+  91% {
+    transform: translate(28px, 52px) rotate(85deg);
+  }
+  100% {
+    transform: translate(28px, 59px) rotate(90deg);
+  }
+}
+@keyframes lore-vase-glow-ignite {
+  from {
+    opacity: 0;
+  }
   to {
-    stroke-dashoffset: -84;
+    opacity: 1;
   }
 }
 @keyframes lore-magic-breathe {
@@ -1150,6 +1282,12 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .lore-vase-icon.is-rummaging .lore-vase-escaping-scroll {
+    transform: translate(28px, 59px) rotate(90deg);
+  }
+  .lore-vase-grounded-glow {
+    opacity: 1;
+  }
   .lore-scroll-embers {
     display: none;
   }

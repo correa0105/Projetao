@@ -37,10 +37,142 @@ function EngravedPaper({ id }: { id: string }) {
   );
 }
 
-export function LoreVaseIcon() {
+// Sample four different cubic trails into filled ribbons, narrowing smoothly at the tips.
+type Point = [number, number];
+const magicCurves: number[][][] = [
+  [
+    [48, 60, 20, 82, 14, 68],
+    [8, 52, 43, 42, 33, 30],
+    [17, 17, -2, 44, 7, 21],
+    [15, 2, 29, 7, 27, 1],
+  ],
+  [
+    [67, 74, 89, 78, 94, 62],
+    [106, 46, 64, 50, 74, 27],
+    [84, 3, 112, 25, 93, 8],
+    [83, -5, 68, 2, 71, -4],
+  ],
+  [
+    [57, 44, 22, 40, 28, 57],
+    [34, 70, 71, 41, 61, 27],
+    [51, 13, 45, 17, 53, 7],
+    [60, -1, 66, 13, 67, 3],
+  ],
+  [
+    [74, 54, 82, 103, 55, 100],
+    [25, 97, 28, 72, 20, 82],
+    [7, 105, -2, 90, 6, 76],
+    [15, 61, 13, 60, 10, 50],
+  ],
+];
+const magicTrails = magicCurves.map((curves) => {
+  let start: Point = [54, 64];
+  const points: Point[] = [start];
+  for (const [x1, y1, x2, y2, x3, y3] of curves) {
+    for (let step = 1; step <= 22; step++) {
+      const t = step / 22,
+        s = 1 - t;
+      points.push([
+        s ** 3 * start[0] + 3 * s * s * t * x1 + 3 * s * t * t * x2 + t ** 3 * x3,
+        s ** 3 * start[1] + 3 * s * s * t * y1 + 3 * s * t * t * y2 + t ** 3 * y3,
+      ]);
+    }
+    start = [x3, y3];
+  }
+  const edge = (side: number) =>
+    points.map(([x, y], i) => {
+      const before = points[Math.max(0, i - 1)],
+        after = points[Math.min(points.length - 1, i + 1)];
+      const dx = after[0] - before[0],
+        dy = after[1] - before[1],
+        length = Math.hypot(dx, dy) || 1;
+      const width = 2.1 * (1 - i / (points.length - 1)) ** 1.45;
+      return `${(x - ((side * dy) / length) * width).toFixed(2)},${(y + ((side * dx) / length) * width).toFixed(2)}`;
+    });
+  return {
+    line: `M54 64 ${curves.map((curve) => `C${curve.join(' ')}`).join(' ')}`,
+    ribbon: `M${edge(1).join('L')}L${edge(-1).reverse().join('L')}Z`,
+  };
+});
+
+function LoreMagicWisps() {
   const id = useId().replaceAll(':', '');
   return (
-    <svg className="lore-vase-icon" viewBox="0 0 108 128" aria-hidden="true" focusable="false">
+    <g className="lore-magic-wisps">
+      <defs>
+        <radialGradient id={`${id}-light`}>
+          <stop stopColor="#eaffff" />
+          <stop offset=".35" stopColor="#74ecff" stopOpacity=".8" />
+          <stop offset="1" stopColor="#2db4ff" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id={`${id}-thread`} x1=".5" y1="1" x2=".4" y2="0">
+          <stop stopColor="#dcffff" />
+          <stop offset=".45" stopColor="#98f4ff" />
+          <stop offset="1" stopColor="#55baff" stopOpacity=".35" />
+        </linearGradient>
+        {magicTrails.map((trail, i) => (
+          <mask
+            key={i}
+            id={`${id}-reveal-${i}`}
+            maskUnits="userSpaceOnUse"
+            x="-20"
+            y="-25"
+            width="155"
+            height="175"
+          >
+            <path
+              className="lore-wisp-reveal"
+              d={trail.line}
+              pathLength="100"
+              fill="none"
+              stroke="white"
+              strokeWidth="12"
+              strokeLinecap="round"
+              style={
+                {
+                  '--wisp-duration': `${3.4 + i * 0.65}s`,
+                  '--wisp-delay': `${-i * 0.9}s`,
+                } as CSSProperties
+              }
+            />
+          </mask>
+        ))}
+      </defs>
+      <circle className="lore-magic-source" cx="54" cy="64" r="8" fill={`url(#${id}-light)`} />
+      {magicTrails.map((trail, i) => (
+        <g
+          key={i}
+          className="lore-magic-wisp"
+          style={
+            {
+              '--wisp-duration': `${3.4 + i * 0.65}s`,
+              '--wisp-delay': `${-i * 0.9}s`,
+              '--wisp-drift': `${(i % 2 ? 1 : -1) * 4}px`,
+            } as CSSProperties
+          }
+        >
+          <path
+            className="lore-wisp-ribbon"
+            d={trail.ribbon}
+            fill={`url(#${id}-thread)`}
+            mask={`url(#${id}-reveal-${i})`}
+          />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+export function LoreVaseIcon({ rummaging = false }: { rummaging?: boolean }) {
+  const id = useId().replaceAll(':', '');
+  return (
+    <svg
+      className={`lore-vase-icon ${rummaging ? 'is-rummaging' : ''}`}
+      data-vase-state={rummaging ? 'hovered' : 'idle'}
+      viewBox="0 0 108 144"
+      aria-hidden="true"
+      focusable="false"
+    >
       <EngravedPaper id={id} />
       <defs>
         <linearGradient id={`${id}-bronze`} x1="0" x2="1" y2=".1">
@@ -69,73 +201,86 @@ export function LoreVaseIcon() {
       </defs>
       <ellipse cx="54" cy="120" rx="37" ry="5" fill="#050504" opacity=".65" />
       {/* Rear rim and cavity behind the rolls; the front wall conceals their lower ends. */}
-      <path
-        d="M23 62c-9-2-16 5-14 16 1 9 9 14 17 11l2-6c-6 2-12-2-12-7 0-6 3-8 9-7Zm62 0c9-2 16 5 14 16-1 9-9 14-17 11l-2-6c6 2 12-2 12-7 0-6-3-8-9-7Z"
-        fill={`url(#${id}-bronze)`}
-        stroke="#c09458"
-        strokeWidth="1.8"
-      />
-      <ellipse
-        cx="54"
-        cy="58"
-        rx="34"
-        ry="12"
-        fill={`url(#${id}-bronze)`}
-        stroke="#e0ba7b"
-        strokeWidth="2"
-      />
-      <ellipse cx="54" cy="59" rx="29" ry="8.6" fill={`url(#${id}-mouth)`} />
-      <g>
-        <use href={`#${id}-roll`} transform="translate(33 17) rotate(-12)" />
-        <use href={`#${id}-roll`} transform="translate(53 8) rotate(3)" />
-        <use href={`#${id}-roll`} transform="translate(81 18) rotate(16)" />
-        <use href={`#${id}-roll`} transform="translate(30 37) rotate(-7) scale(.9)" />
-        <use href={`#${id}-roll`} transform="translate(66 29) rotate(8) scale(1.03)" />
-        <use href={`#${id}-roll`} transform="translate(48 38) rotate(-4) scale(.86)" />
+      <g className="lore-vase-body">
+        <path
+          d="M23 62c-9-2-16 5-14 16 1 9 9 14 17 11l2-6c-6 2-12-2-12-7 0-6 3-8 9-7Zm62 0c9-2 16 5 14 16-1 9-9 14-17 11l-2-6c6 2 12-2 12-7 0-6-3-8-9-7Z"
+          fill={`url(#${id}-bronze)`}
+          stroke="#c09458"
+          strokeWidth="1.8"
+        />
+        <ellipse
+          cx="54"
+          cy="58"
+          rx="34"
+          ry="12"
+          fill={`url(#${id}-bronze)`}
+          stroke="#e0ba7b"
+          strokeWidth="2"
+        />
+        <ellipse cx="54" cy="59" rx="29" ry="8.6" fill={`url(#${id}-mouth)`} />
+        <g className="lore-vase-rolls">
+          <use href={`#${id}-roll`} transform="translate(33 17) rotate(-12)" />
+          <use href={`#${id}-roll`} transform="translate(53 8) rotate(3)" />
+          <use href={`#${id}-roll`} transform="translate(81 18) rotate(16)" />
+          <use href={`#${id}-roll`} transform="translate(30 37) rotate(-7) scale(.9)" />
+          <use href={`#${id}-roll`} transform="translate(66 29) rotate(8) scale(1.03)" />
+        </g>
+        <g className="lore-vase-escaping-scroll">
+          <use href={`#${id}-roll`} transform="translate(48 38) rotate(-4) scale(.86)" />
+          <g transform="translate(48 38) rotate(-4) scale(.86)">
+            <circle cy="46" r="4.3" fill={`url(#${id}-seal)`} stroke="#d4905f" strokeWidth="1" />
+            <path d="m0 43 2 3-2 3-2-3Z" fill="#e8bd82" />
+          </g>
+        </g>
+        <path
+          d="M21 60c0 8 2 12 0 20-3 16 3 31 14 37 8 4 30 4 38 0 11-6 17-21 14-37-2-8 0-12 0-20-9 10-55 10-66 0Z"
+          fill={`url(#${id}-bronze)`}
+          stroke="#d1a66b"
+          strokeWidth="1.8"
+        />
+        <path
+          d="M21 59c9 10 57 11 66 0l-1 7c-12 9-51 9-64-1Z"
+          fill={`url(#${id}-bronze)`}
+          stroke="#edcb8c"
+          strokeWidth="1.8"
+        />
+        <path
+          d="M23 74c15 6 45 6 61 0M26 108c16 8 40 8 56 0M33 117c11 3 32 3 42-1"
+          fill="none"
+          stroke="#e0b86e"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M27 79c-3 10 0 23 6 29M34 80c-2 5-2 11-1 16"
+          fill="none"
+          stroke="#f4d593"
+          strokeWidth="2.2"
+          opacity=".45"
+        />
+        <path d="M79 77c5 13 0 27-5 31" fill="none" stroke="#241912" strokeWidth="4" opacity=".6" />
+        <g fill="none" stroke="#d8b374" strokeWidth="1.2" opacity=".85">
+          <path d="m54 80 11 15-11 15-11-15Z" />
+          <path d="m54 85 6 10-6 10-6-10Z" />
+          <path d="M42 95c-9-10-13-2-8 2 6 5 9-1 5-4M66 95c9-10 13-2 8 2-6 5-9-1-5-4" />
+          <path d="M30 78v5m8-3v3m32-3v3m8-5v5" />
+        </g>
+        <g fill="#f2ce8b" stroke="#775234" strokeWidth=".8">
+          {[27, 39, 54, 69, 81].map((x) => (
+            <circle key={x} cx={x} cy={x === 27 || x === 81 ? 67 : 70} r="1.7" />
+          ))}
+        </g>
+        <path
+          d="m37 91 2 1m31 10 3-1m-29 10 3 1m15-29 2 1"
+          stroke="#3a2c21"
+          strokeWidth="1.6"
+          opacity=".65"
+        />
       </g>
-      <path
-        d="M21 60c0 8 2 12 0 20-3 16 3 31 14 37 8 4 30 4 38 0 11-6 17-21 14-37-2-8 0-12 0-20-9 10-55 10-66 0Z"
-        fill={`url(#${id}-bronze)`}
-        stroke="#d1a66b"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M21 59c9 10 57 11 66 0l-1 7c-12 9-51 9-64-1Z"
-        fill={`url(#${id}-bronze)`}
-        stroke="#edcb8c"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M23 74c15 6 45 6 61 0M26 108c16 8 40 8 56 0M33 117c11 3 32 3 42-1"
-        fill="none"
-        stroke="#e0b86e"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M27 79c-3 10 0 23 6 29M34 80c-2 5-2 11-1 16"
-        fill="none"
-        stroke="#f4d593"
-        strokeWidth="2.2"
-        opacity=".45"
-      />
-      <path d="M79 77c5 13 0 27-5 31" fill="none" stroke="#241912" strokeWidth="4" opacity=".6" />
-      <g fill="none" stroke="#d8b374" strokeWidth="1.2" opacity=".85">
-        <path d="m54 80 11 15-11 15-11-15Z" />
-        <path d="m54 85 6 10-6 10-6-10Z" />
-        <path d="M42 95c-9-10-13-2-8 2 6 5 9-1 5-4M66 95c9-10 13-2 8 2-6 5-9-1-5-4" />
-        <path d="M30 78v5m8-3v3m32-3v3m8-5v5" />
-      </g>
-      <g fill="#f2ce8b" stroke="#775234" strokeWidth=".8">
-        {[27, 39, 54, 69, 81].map((x) => (
-          <circle key={x} cx={x} cy={x === 27 || x === 81 ? 67 : 70} r="1.7" />
-        ))}
-      </g>
-      <path
-        d="m37 91 2 1m31 10 3-1m-29 10 3 1m15-29 2 1"
-        stroke="#3a2c21"
-        strokeWidth="1.6"
-        opacity=".65"
-      />
+      {rummaging && (
+        <g className="lore-vase-grounded-glow" transform="translate(57 108) scale(.35)">
+          <LoreMagicWisps />
+        </g>
+      )}
     </svg>
   );
 }
@@ -220,27 +365,11 @@ export function LoreScrollIcon({ open = false }: { open?: boolean }) {
           <path d="M23 104h59" stroke="#f9dba1" strokeWidth="1.7" opacity=".68" />
           <path d="M19 42l5 3m59 42-4 4m-48 6 3-2m40-60 3 2" stroke="#9a723d" opacity=".5" />
         </g>
-        <g className="lore-scroll-magic" strokeLinecap="round">
-          <path
-            className="lore-magic-trail"
-            d="M28 73C8 62 36 45 16 32S8 11 24 5M78 77c22-17-5-21 13-38s13-24 6-30"
-            fill="none"
-            stroke="#7eeeff"
-            strokeWidth="2.3"
-          />
-          <path
-            d="M31 70C13 62 39 43 20 30M76 75c18-14 0-22 16-36"
-            fill="none"
-            stroke="#edffff"
-            strokeWidth="1"
-          />
-          <path
-            d="m54 32 2 7 6 3-6 2-2 8-2-8-6-2 6-3ZM13 44l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5Zm81 13 1 3 3 1-3 1-1 4-1-4-3-1 3-1Z"
-            fill="#e8ffff"
-          />
-          <circle cx="26" cy="13" r="1.8" fill="#bafcff" />
-          <circle cx="86" cy="24" r="1.4" fill="#bafcff" />
-        </g>
+        {open && (
+          <g className="lore-scroll-magic">
+            <LoreMagicWisps />
+          </g>
+        )}
       </svg>
       <span className="lore-scroll-embers">
         {Array.from({ length: 10 }, (_, i) => (

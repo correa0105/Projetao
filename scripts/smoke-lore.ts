@@ -62,6 +62,73 @@ try {
   expect(heroBounds!.width).toBe(1890);
   await page.screenshot({ path: 'test-results/lore-library-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
+  // One shake/drop per hover; retain the fallen scroll, reset on exit or click.
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  const folderChoice = page.locator('[data-folder-choice]').first();
+  const vase = folderChoice.locator('.lore-vase-icon');
+  const fallingScroll = vase.locator('.lore-vase-escaping-scroll');
+  await folderChoice.hover();
+  await expect(vase).toHaveAttribute('data-vase-state', 'hovered');
+  await expect
+    .poll(() =>
+      fallingScroll.evaluate((element) =>
+        element.getAnimations().map((animation) => animation.playState),
+      ),
+    )
+    .toEqual(['finished']);
+  const heldTransform = await fallingScroll.evaluate(
+    (element) => getComputedStyle(element).transform,
+  );
+  const fallStarted = await fallingScroll.evaluate(
+    (element) => element.getAnimations()[0].startTime,
+  );
+  expect(heldTransform).not.toBe('none');
+  const vaseBounds = (await vase.boundingBox())!,
+    floorBounds = (await fallingScroll.boundingBox())!;
+  expect(floorBounds.y).toBeGreaterThan(vaseBounds.y + vaseBounds.height * 0.7);
+  await expect
+    .poll(() =>
+      vase
+        .locator('.lore-vase-grounded-glow')
+        .evaluate((element) => getComputedStyle(element).opacity),
+    )
+    .toBe('1');
+  await folderChoice.screenshot({ path: 'test-results/lore-vase-fallen.png' });
+  const choiceBounds = (await folderChoice.boundingBox())!;
+  await page.mouse.move(
+    choiceBounds.x + choiceBounds.width * 0.7,
+    choiceBounds.y + choiceBounds.height * 0.5,
+  );
+  await page.waitForTimeout(900);
+  expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
+    heldTransform,
+  );
+  expect(await fallingScroll.evaluate((element) => element.getAnimations()[0].startTime)).toBe(
+    fallStarted,
+  );
+  await page.mouse.move(1400, 50);
+  await expect(vase).toHaveAttribute('data-vase-state', 'idle');
+  expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
+    'none',
+  );
+  await expect(vase.locator('.lore-vase-grounded-glow')).toHaveCount(0);
+  await folderChoice.hover();
+  await expect(vase).toHaveAttribute('data-vase-state', 'hovered');
+  await folderChoice.click();
+  await expect(vase).toHaveAttribute('data-vase-state', 'idle');
+  await page.getByRole('button', { name: /Todas as crônicas/ }).click();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await folderChoice.hover();
+  expect(await fallingScroll.evaluate((element) => element.getAnimations().length)).toBe(0);
+  expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
+    heldTransform,
+  );
+  expect(
+    await vase
+      .locator('.lore-vase-grounded-glow')
+      .evaluate((element) => getComputedStyle(element).opacity),
+  ).toBe('1');
+  await page.mouse.move(1400, 50);
   const sound = page.locator('audio[data-lore-scroll-sound]');
   await expect(sound).toHaveAttribute('src', '/audio/lore-scroll-open.wav');
   await page.locator('.lore-page-link').first().click();
@@ -73,6 +140,7 @@ try {
   await expect(page.getByRole('button', { name: 'Editar crônica', exact: true })).toBeVisible();
   const magic = page.locator('.lore-reader-title .lore-scroll-magic');
   expect(await magic.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
+  await expect(magic.locator('.lore-wisp-ribbon')).toHaveCount(4);
   await page.getByRole('button', { name: 'Editar crônica', exact: true }).click();
   await expect(page.getByRole('region', { name: 'Editor de crônica' })).toBeVisible();
   await page.getByRole('button', { name: 'Fechar edição', exact: true }).click();
@@ -194,6 +262,18 @@ try {
   await page.screenshot({ path: 'test-results/lore-reader-mobile.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.locator('.lore-reader-title').scrollIntoViewIfNeeded();
+  await expect
+    .poll(() =>
+      page
+        .locator('.lore-reader-title .lore-magic-wisp')
+        .first()
+        .evaluate((element) => getComputedStyle(element).transform),
+    )
+    .not.toBe('none');
+  await page
+    .locator('.lore-reader-title')
+    .screenshot({ path: 'test-results/lore-scroll-wisps.png' });
   const movingFrame = page.locator('.lore-image-frame--cinematic');
   await movingFrame.scrollIntoViewIfNeeded();
   const bounds = await movingFrame.boundingBox();
@@ -251,7 +331,7 @@ try {
   await noOverflow();
   expect(errors).toEqual([]);
   console.log(
-    'Lore desktop/celular: ícones e efeito azul, som/reabertura, edição em outras regiões e crônicas iniciais, pastas, editor e persistência aprovados.',
+    'Lore desktop/celular: magia em fios, vaso com queda única, permanência e reset, som, edição de pastas/crônicas e persistência aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/lore-failure.png', fullPage: true });

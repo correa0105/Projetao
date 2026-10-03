@@ -1,5 +1,21 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Magia em fios e vaso interativo (03/10/2026)
+
+Magia do pergaminho aberto refeita: quatro trajetos cúbicos partem do centro,
+com fitas preenchidas que se afinam até a ponta e dão voltas diferentes.
+Máscaras revelam cada fio do centro para fora; deriva, duração e fase variam,
+sem moldura fixa nem giro do conjunto. Arte continua em SVG/CSS no projeto.
+
+Cada botão de pasta tem estado de hover local em `LoreFolderButton`. Entrada do
+mouse chacoalha o vaso, balança os rolos e faz um pergaminho cair com pequeno
+rebote. Animação finita de 1,45 s mantém a posição final; só a magia continua.
+Não repetir a queda enquanto o ponteiro permanecer na pasta. Clique ou saída
+reseta imediatamente, inclusive antes de terminar. Foco por teclado tem a mesma
+interação; toque não mantém hover. Movimento reduzido exibe posição final e
+brilho estáticos. Teste Edge verifica queda/posição, ausência de reinício,
+reset por clique/saída, magia com quatro fios e desktop/celular.
+
 ## Ícones ilustrados, som e edição de toda a lore (03/10/2026)
 
 Usuário ampliou explicitamente a permissão de Pai do Cris para editar textos e

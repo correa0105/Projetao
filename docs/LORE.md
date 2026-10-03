@@ -14,7 +14,18 @@ da abertura: a borda traseira fica atrás dos rolos e a parede frontal cobre sua
 pontas. Os três ícones possuem volume, papel envelhecido, detalhes de metal/lacre
 e tamanho ampliado. Cada crônica recebe um pergaminho fechado antes do título
 no arquivo e aberto durante a leitura. Luz azul clara e partículas saem do papel
-aberto; os traços luminosos permanecem visíveis mesmo com movimento reduzido.
+aberto. Quatro fios de luz partem do centro do papel e se desenrolam em curvas
+diferentes ao redor dele. São fitas preenchidas que afinam até a ponta, com
+revelação e deriva independentes; sem contorno fixo ou giro conjunto.
+Os traços luminosos permanecem visíveis mesmo com movimento reduzido.
+
+Passar o mouse sobre uma pasta chacoalha o vaso, movimenta os rolos e faz um
+pergaminho com lacre cair no chão. A sequência de 1,45 segundo acontece uma
+única vez por entrada do ponteiro. O rolo caído fica imóvel emitindo magia até
+clicar na pasta ou sair de cima dela. Clique/sair cancela também uma sequência
+incompleta; a próxima passagem começa do início. Foco por teclado também ativa
+o efeito. Toque apenas abre a pasta. Com movimento reduzido, mostra a posição
+final e a luz estática, sem chacoalhada ou queda animadas.
 
 Abrir uma crônica pelo clique ou teclado toca `public/audio/lore-scroll-open.wav`,
 um efeito original de papel desenrolando de 1,24 segundo, gerado por
@@ -100,6 +111,9 @@ Confere ainda ícones fechado/aberto, largura completa em 1890 px, edição,
 exclusão com preservação de conteúdo e restauração pela interface.
 Valida edição de crônica inicial, pastas em outra região, remoção da legenda,
 efeito azul visível com movimento reduzido e reprodução/repetição do som.
+Confere ainda a queda, permanência no chão sem reiniciar enquanto o mouse fica
+na pasta, reset por clique/saída e alternativa sem movimento. Capturas:
+`test-results/lore-vase-fallen.png` e `test-results/lore-scroll-wisps.png`.
 
 A suíte geral executada nesta entrega passou 41 de 43 testes. As duas falhas
 são anteriores à alteração e pertencem a `tests/world-fleet.test.ts`
