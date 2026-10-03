@@ -224,6 +224,178 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     assert.ok(loreDescendants(root.id, folders).has(child.data.id));
     await pool.query('INSERT INTO guild_staff(user_id,role) VALUES($1,$2)', [bob.id, 'staff']);
     assert.equal((await req(`/lore/pages/${id}`, bob.cookie)).data.can_edit, true);
+    // Folder management is a separate permission, including for existing staff.
+    assert.equal((await req('/lore', alice.cookie)).data.can_manage_folders, false);
+    assert.equal(
+      (await req(`/lore/folders/${root.id}`, bob.cookie, 'DELETE', { destination_id: null }))
+        .status,
+      403,
+    );
+    assert.equal(
+      (
+        await req(`/lore/folders/${root.id}`, alice.cookie, 'PUT', {
+          name: 'Renomeada',
+          parent_id: null,
+          revision: 0,
+        })
+      ).status,
+      403,
+    );
+    assert.equal((await req('/lore/folder-trash', bob.cookie)).status, 403);
+    await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [alice.id]);
+    assert.equal((await req('/lore', alice.cookie)).data.can_manage_folders, true);
+    const history = initial.folders.find(
+      (folder: LoreFolder) => folder.region_id === root.region_id && folder.name === 'História',
+    );
+    assert.equal(
+      (
+        await req(`/lore/folders/${history.id}`, alice.cookie, 'PUT', {
+          name: 'Crônicas antigas',
+          parent_id: null,
+          revision: 0,
+        })
+      ).status,
+      200,
+    );
+    assert.equal(
+      (
+        await req(`/lore/folders/${history.id}`, alice.cookie, 'PUT', {
+          name: 'Outro nome',
+          parent_id: null,
+          revision: 0,
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await req(`/lore/folders/${root.id}`, alice.cookie, 'PUT', {
+          name: 'Cidades',
+          parent_id: child.data.id,
+          revision: 0,
+        })
+      ).status,
+      400,
+    );
+    const nested = await req('/lore/folders', alice.cookie, 'POST', {
+      name: 'Faróis',
+      region_id: root.region_id,
+      parent_id: child.data.id,
+    });
+    assert.equal(nested.status, 201);
+    assert.equal(
+      (
+        await req(`/lore/folders/${child.data.id}`, alice.cookie, 'DELETE', {
+          destination_id: null,
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await req(`/lore/folders/${child.data.id}`, alice.cookie, 'DELETE', {
+          destination_id: nested.data.id,
+        })
+      ).status,
+      400,
+    );
+    const deletion = await req(`/lore/folders/${child.data.id}`, alice.cookie, 'DELETE', {
+      destination_id: history.id,
+    });
+    assert.equal(deletion.status, 200);
+    const deletedIndex = (await req('/lore', alice.cookie)).data;
+    assert.ok(
+      !deletedIndex.folders.some(
+        (folder: LoreFolder) => folder.id === child.data.id || folder.id === nested.data.id,
+      ),
+    );
+    const moved = (await req(`/lore/pages/${id}`, alice.cookie)).data;
+    assert.equal(moved.folder_id, history.id);
+    assert.equal(moved.published, false);
+    assert.equal((await req(`/lore/images/${image.data.id}`, bob.cookie)).status, 200); // Staff access remains unchanged.
+    assert.equal((await req('/lore/pages', alice.cookie, 'POST', data)).status, 400);
+    await seed();
+    assert.ok(
+      !(await req('/lore', alice.cookie)).data.folders.some(
+        (folder: LoreFolder) => folder.id === child.data.id,
+      ),
+    );
+    assert.equal((await req('/lore/folder-trash', alice.cookie)).data.length, 1);
+    assert.equal(
+      (await req(`/lore/folder-trash/${deletion.data.deletion_id}/restore`, bob.cookie, 'POST', {}))
+        .status,
+      403,
+    );
+    assert.equal(
+      (
+        await req(
+          `/lore/folder-trash/${deletion.data.deletion_id}/restore`,
+          alice.cookie,
+          'POST',
+          {},
+        )
+      ).status,
+      200,
+    );
+    assert.equal((await req(`/lore/pages/${id}`, alice.cookie)).data.folder_id, child.data.id);
+    assert.ok(
+      (await req('/lore', alice.cookie)).data.folders.some(
+        (folder: LoreFolder) => folder.id === nested.data.id,
+      ),
+    );
+    assert.equal((await req('/lore/folder-trash', alice.cookie)).data.length, 0);
+    // Moving an existing parent must also preserve the depth limit when restoring its trash.
+    const religion = initial.folders.find(
+      (folder: LoreFolder) => folder.region_id === root.region_id && folder.name === 'Religião',
+    );
+    const newParent = await req('/lore/folders', alice.cookie, 'POST', {
+      name: 'Arquivo dos cultos',
+      region_id: root.region_id,
+      parent_id: religion.id,
+    });
+    const secondDeletion = await req(`/lore/folders/${child.data.id}`, alice.cookie, 'DELETE', {
+      destination_id: history.id,
+    });
+    assert.equal(secondDeletion.status, 200);
+    assert.equal(
+      (
+        await req(`/lore/folders/${root.id}`, alice.cookie, 'PUT', {
+          name: root.name,
+          parent_id: newParent.data.id,
+          revision: 0,
+        })
+      ).status,
+      200,
+    );
+    const secondRestore = `/lore/folder-trash/${secondDeletion.data.deletion_id}/restore`;
+    assert.equal((await req(secondRestore, alice.cookie, 'POST', {})).status, 409);
+    assert.equal(
+      (
+        await req(`/lore/folders/${root.id}`, alice.cookie, 'PUT', {
+          name: root.name,
+          parent_id: null,
+          revision: 1,
+        })
+      ).status,
+      200,
+    );
+    const movedAgain = (await req(`/lore/pages/${id}`, alice.cookie)).data;
+    assert.equal(
+      (
+        await req(`/lore/pages/${id}`, alice.cookie, 'PUT', {
+          ...data,
+          folder_id: history.id,
+          title: 'Crônica revisada após a exclusão',
+          blocks: movedAgain.blocks,
+          revision: movedAgain.revision,
+        })
+      ).status,
+      200,
+    );
+    assert.equal((await req(secondRestore, alice.cookie, 'POST', {})).status, 200);
+    const revised = (await req(`/lore/pages/${id}`, alice.cookie)).data;
+    assert.equal(revised.title, 'Crônica revisada após a exclusão');
+    assert.equal(revised.folder_id, history.id);
   } finally {
     await new Promise<void>((resolve, reject) =>
       server.close((error) => (error ? reject(error) : resolve())),

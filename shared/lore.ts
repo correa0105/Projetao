@@ -55,7 +55,13 @@ export const lorePageInput = z
   .strict();
 export type LoreBlock = z.infer<typeof loreBlockSchema>;
 export type LorePageInput = z.infer<typeof lorePageInput>;
-export type LoreFolder = { id: string; region_id: string; parent_id: string | null; name: string };
+export type LoreFolder = {
+  id: string;
+  region_id: string;
+  parent_id: string | null;
+  name: string;
+  revision: number;
+};
 export type LoreRegion = { id: string; name: string; description: string };
 export type LorePageSummary = {
   id: string;
@@ -69,7 +75,13 @@ export type LorePageSummary = {
   thumbnail: string | null;
 };
 export type LorePage = LorePageSummary & { blocks: LoreBlock[] };
-export type LoreIndex = { regions: LoreRegion[]; folders: LoreFolder[]; pages: LorePageSummary[] };
+export type LoreIndex = {
+  regions: LoreRegion[];
+  folders: LoreFolder[];
+  pages: LorePageSummary[];
+  can_manage_folders: boolean;
+};
+export type LoreDeletedFolder = { id: string; name: string; region_id: string; deleted_at: string };
 export const loreImageUrl = (id: string) => `/api/lore/images/${id}`;
 
 export function loreFolderPath(folderId: string, folders: LoreFolder[]): string {

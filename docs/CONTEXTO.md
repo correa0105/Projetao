@@ -1,5 +1,24 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Gestão de pastas e acabamento da lore (03/10/2026)
+
+A conta Pai do Cris (`limawelsn@gmail.com`) pode renomear, reorganizar e excluir
+pastas já existentes. Migration 042 concede essa permissão separada em
+`lore_folder_managers`, sem alterar staff ou permitir edição de textos alheios.
+Botões de lápis/lixeira ao lado das pastas; servidor valida revisão, região,
+nomes, ciclos e máximo de quatro níveis. Exclusão inclui subpastas e exige uma
+pasta de destino se houver crônicas, preservando autoria, publicação e imagens.
+Lixeira recupera a estrutura e a localização das páginas não editadas desde a
+exclusão. Trava transacional comum às escritas impede corridas nas movimentações.
+
+Ícones em `src/LoreSymbols.tsx`: vaso com pergaminhos para pastas, pergaminho
+fechado nas crônicas e aberto durante leitura, brilho quente/brasas como a
+fogueira dos personagens, com movimento reduzido respeitado. Removidos a frase
+do cabeçalho e o botão Abrir os arquivos. Lore ocupa toda a largura, sem limite
+de 1600 px no contêiner nem faixas laterais. Testes dedicados API/interface em
+banco descartável cobrem gestão, persistência, desktop de 1890 px e celular.
+Detalhes em `docs/LORE.md`.
+
 ## Biblioteca regional de lore e editor medieval (03/10/2026)
 
 Página de lore refeita com apresentação editorial inspirada em Overworld Audio:

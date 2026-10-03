@@ -9,10 +9,9 @@ import {
   ChevronRight,
   Eye,
   Feather,
-  Folder,
-  FolderPlus,
   ImagePlus,
   Plus,
+  Pencil,
   Save,
   Search,
   ScrollText,
@@ -23,6 +22,7 @@ import {
 import { api, post } from './api';
 import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
+import { LoreVaseIcon, LoreScrollIcon } from './LoreSymbols';
 import {
   loreDescendants,
   loreFolderPath,
@@ -33,6 +33,7 @@ import {
   type LoreIndex,
   type LorePage,
   type LorePageSummary,
+  type LoreDeletedFolder,
 } from '../shared/lore';
 import './lore.css';
 
@@ -157,6 +158,8 @@ function FolderTree({
   onSelect,
   pages,
   depth = 0,
+  onDelete,
+  onEdit,
 }: {
   folders: LoreFolder[];
   parent?: string | null;
@@ -164,6 +167,8 @@ function FolderTree({
   onSelect: (id: string) => void;
   pages: LorePageSummary[];
   depth?: number;
+  onDelete?: (folder: LoreFolder) => void;
+  onEdit?: (folder: LoreFolder) => void;
 }) {
   return (
     <ul className="lore-folder-tree">
@@ -174,17 +179,39 @@ function FolderTree({
           const count = pages.filter((page) => descendants.has(page.folder_id)).length;
           return (
             <li key={folder.id}>
-              <button
-                type="button"
-                className={active === folder.id ? 'is-active' : ''}
-                style={{ '--folder-depth': depth } as CSSProperties}
-                onClick={() => onSelect(folder.id)}
-                aria-pressed={active === folder.id}
-              >
-                <Folder size={15} />
-                <span>{folder.name}</span>
-                <small>{count.toString().padStart(2, '0')}</small>
-              </button>
+              <div className="lore-folder-row">
+                <button
+                  type="button"
+                  className={active === folder.id ? 'is-active' : ''}
+                  style={{ '--folder-depth': depth } as CSSProperties}
+                  onClick={() => onSelect(folder.id)}
+                  aria-pressed={active === folder.id}
+                >
+                  <LoreVaseIcon />
+                  <span>{folder.name}</span>
+                  <small>{count.toString().padStart(2, '0')}</small>
+                </button>
+                {onEdit && (
+                  <button
+                    className="lore-folder-edit"
+                    type="button"
+                    aria-label={`Editar pasta ${folder.name}`}
+                    onClick={() => onEdit(folder)}
+                  >
+                    <Pencil size={13} />
+                  </button>
+                )}
+                {onDelete && (
+                  <button
+                    className="lore-folder-delete"
+                    type="button"
+                    aria-label={`Excluir pasta ${folder.name}`}
+                    onClick={() => onDelete(folder)}
+                  >
+                    <Trash2 size={13} />
+                  </button>
+                )}
+              </div>
               <FolderTree
                 folders={folders}
                 parent={folder.id}
@@ -192,6 +219,8 @@ function FolderTree({
                 onSelect={onSelect}
                 pages={pages}
                 depth={depth + 1}
+                onDelete={onDelete}
+                onEdit={onEdit}
               />
             </li>
           );
@@ -210,6 +239,10 @@ export function LoreLibrary() {
   const [query, setQuery] = useState('');
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
+  const [deletingFolder, setDeletingFolder] = useState<LoreFolder | null>(null);
+  const [editingFolder, setEditingFolder] = useState<LoreFolder | null>(null);
+  const [trash, setTrash] = useState<LoreDeletedFolder[] | null>(null);
+  const [trashError, setTrashError] = useState('');
   const request = useRef(0);
   async function refresh() {
     const data = await api<LoreIndex>('/lore');
@@ -282,21 +315,6 @@ export function LoreLibrary() {
           <h1>
             Crônicas &amp; lore<span>.</span>
           </h1>
-          <p>Terras, crenças e histórias que atravessam as eras.</p>
-          <button
-            type="button"
-            className="lore-hero-link"
-            onClick={() =>
-              document.getElementById('lore-archive')?.scrollIntoView({
-                behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
-                  ? 'instant'
-                  : 'smooth',
-                block: 'start',
-              })
-            }
-          >
-            <ScrollText size={16} /> Abrir os arquivos <ArrowDown size={15} />
-          </button>
         </div>
         <span className="lore-hero-number" aria-hidden="true">
           I · O MUNDO
@@ -342,10 +360,27 @@ export function LoreLibrary() {
               active={folderId}
               onSelect={(id) => navigate(region.id, id)}
               pages={regionPages}
+              onDelete={index.can_manage_folders ? setDeletingFolder : undefined}
+              onEdit={index.can_manage_folders ? setEditingFolder : undefined}
             />
             <button className="lore-folder-add" onClick={() => setDialog('folder')}>
-              <FolderPlus size={15} /> Nova pasta / subpasta
+              <LoreVaseIcon /> Nova pasta / subpasta
             </button>
+            {index.can_manage_folders && (
+              <button
+                className="lore-folder-trash"
+                onClick={() =>
+                  void api<LoreDeletedFolder[]>('/lore/folder-trash')
+                    .then((entries) => {
+                      setTrashError('');
+                      setTrash(entries);
+                    })
+                    .catch((error) => setMessage(error.message))
+                }
+              >
+                <Trash2 size={14} /> Pastas excluídas
+              </button>
+            )}
             <div className="lore-sidebar-seal">
               <Castle size={24} />
               <p>
@@ -385,7 +420,10 @@ export function LoreLibrary() {
                     {loreFolderPath(page.folder_id, folders)}
                     {!page.published && ' · RASCUNHO'}
                   </span>
-                  <h2>{page.title}</h2>
+                  <div className="lore-reader-title">
+                    <LoreScrollIcon open />
+                    <h2>{page.title}</h2>
+                  </div>
                   {page.subtitle && <p>{page.subtitle}</p>}
                   <div className="lore-rule" aria-hidden="true">
                     ✦
@@ -409,15 +447,13 @@ export function LoreLibrary() {
                   />
                 </label>
                 <div className="lore-page-list">
-                  {pages.map((item, position) => (
+                  {pages.map((item) => (
                     <button
                       key={item.id}
                       className="lore-page-link"
                       onClick={() => void openPage(item.id)}
                     >
-                      <span className="lore-page-number">
-                        {(position + 1).toString().padStart(2, '0')}
-                      </span>
+                      <LoreScrollIcon />
                       <span className="lore-page-copy">
                         <small>
                           {loreFolderPath(item.folder_id, folders)}
@@ -478,7 +514,210 @@ export function LoreLibrary() {
           }}
         />
       )}
+      {deletingFolder && (
+        <LoreDeleteFolderDialog
+          folder={deletingFolder}
+          folders={folders}
+          onClose={() => setDeletingFolder(null)}
+          onDeleted={async () => {
+            await refresh();
+            setDeletingFolder(null);
+            navigate(region.id, null);
+            setMessage('Pasta excluída. As crônicas foram preservadas.');
+          }}
+        />
+      )}
+      {editingFolder && (
+        <LoreEditFolderDialog
+          folder={editingFolder}
+          folders={folders}
+          onClose={() => setEditingFolder(null)}
+          onSaved={async () => {
+            await refresh();
+            setEditingFolder(null);
+            setMessage('Pasta atualizada.');
+          }}
+        />
+      )}
+      {trash && (
+        <Modal title="Pastas excluídas" close={() => setTrash(null)}>
+          <div className="lore-trash-list">
+            {trashError && <p role="alert">{trashError}</p>}
+            {!trash.length && <p>Nenhuma pasta excluída.</p>}
+            {trash.map((item) => (
+              <div key={item.id}>
+                <LoreVaseIcon />
+                <span>
+                  <b>{item.name}</b>
+                  <small>
+                    {index.regions.find((region) => region.id === item.region_id)?.name}
+                  </small>
+                </span>
+                <button
+                  className="button"
+                  disabled={busy}
+                  onClick={async () => {
+                    setBusy(true);
+                    setTrashError('');
+                    try {
+                      await post(`/lore/folder-trash/${item.id}/restore`, {});
+                      await refresh();
+                      setTrash((current) => current?.filter((entry) => entry.id !== item.id) || []);
+                      setMessage('Pasta restaurada.');
+                    } catch (error) {
+                      setTrashError((error as Error).message);
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                >
+                  <Undo2 size={14} />
+                  Restaurar
+                </button>
+              </div>
+            ))}
+          </div>
+        </Modal>
+      )}
     </section>
+  );
+}
+
+function LoreDeleteFolderDialog({
+  folder,
+  folders,
+  onClose,
+  onDeleted,
+}: {
+  folder: LoreFolder;
+  folders: LoreFolder[];
+  onClose: () => void;
+  onDeleted: () => Promise<void>;
+}) {
+  const removed = loreDescendants(folder.id, folders);
+  const destinations = folders.filter((item) => !removed.has(item.id));
+  const [destination, setDestination] = useState(destinations[0]?.id || '');
+  const [error, setError] = useState(''),
+    [busy, setBusy] = useState(false);
+  return (
+    <Modal title={`Excluir pasta ${folder.name}`} close={onClose}>
+      <form
+        className="lore-delete-form"
+        onSubmit={async (event) => {
+          event.preventDefault();
+          setBusy(true);
+          setError('');
+          try {
+            await api(`/lore/folders/${folder.id}`, {
+              method: 'DELETE',
+              body: JSON.stringify({ destination_id: destination || null }),
+            });
+            await onDeleted();
+          } catch (issue) {
+            setError((issue as Error).message);
+          } finally {
+            setBusy(false);
+          }
+        }}
+      >
+        <p>
+          A pasta e suas subpastas sairão do arquivo. As crônicas serão preservadas na pasta de
+          destino escolhida.
+        </p>
+        <label>
+          Guardar crônicas em
+          <select value={destination} onChange={(event) => setDestination(event.target.value)}>
+            <option value="">Excluir somente se estiver vazia</option>
+            {destinations.map((item) => (
+              <option key={item.id} value={item.id}>
+                {loreFolderPath(item.id, folders)}
+              </option>
+            ))}
+          </select>
+        </label>
+        <p className="lore-delete-note">Você pode restaurar a pasta em Pastas excluídas.</p>
+        {error && <p role="alert">{error}</p>}
+        <div>
+          <button className="button" type="button" disabled={busy} onClick={onClose}>
+            Cancelar
+          </button>
+          <button className="button danger" disabled={busy}>
+            <Trash2 size={15} />
+            {busy ? 'Excluindo…' : 'Excluir pasta'}
+          </button>
+        </div>
+      </form>
+    </Modal>
+  );
+}
+
+function LoreEditFolderDialog({
+  folder,
+  folders,
+  onClose,
+  onSaved,
+}: {
+  folder: LoreFolder;
+  folders: LoreFolder[];
+  onClose: () => void;
+  onSaved: () => Promise<void>;
+}) {
+  const excluded = loreDescendants(folder.id, folders);
+  const [name, setName] = useState(folder.name),
+    [parent, setParent] = useState(folder.parent_id || '');
+  const [error, setError] = useState(''),
+    [busy, setBusy] = useState(false);
+  return (
+    <Modal title="Editar pasta" close={onClose}>
+      <form
+        className="lore-create-form"
+        onSubmit={async (event) => {
+          event.preventDefault();
+          setBusy(true);
+          setError('');
+          try {
+            await api(`/lore/folders/${folder.id}`, {
+              method: 'PUT',
+              body: JSON.stringify({ name, parent_id: parent || null, revision: folder.revision }),
+            });
+            await onSaved();
+          } catch (issue) {
+            setError((issue as Error).message);
+          } finally {
+            setBusy(false);
+          }
+        }}
+      >
+        <label>
+          Nome da pasta
+          <input
+            autoFocus
+            required
+            minLength={2}
+            maxLength={80}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
+        <label>
+          Dentro da pasta
+          <select value={parent} onChange={(event) => setParent(event.target.value)}>
+            <option value="">Raiz da região</option>
+            {folders
+              .filter((item) => !excluded.has(item.id))
+              .map((item) => (
+                <option key={item.id} value={item.id}>
+                  {loreFolderPath(item.id, folders)}
+                </option>
+              ))}
+          </select>
+        </label>
+        {error && <p role="alert">{error}</p>}
+        <button className="button primary" disabled={busy}>
+          {busy ? 'Salvando…' : 'Salvar pasta'}
+        </button>
+      </form>
+    </Modal>
   );
 }
 

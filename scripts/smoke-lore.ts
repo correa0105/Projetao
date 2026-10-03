@@ -40,15 +40,35 @@ try {
     },
   });
   expect(signup.ok()).toBe(true);
+  const testUser = (await signup.json()).user;
+  await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [testUser.id]);
   await page.goto(origin + '/#lore');
   await page.reload();
   await expect(page.getByRole('region', { name: 'Biblioteca de lore' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Crônicas & lore.' })).toBeVisible();
   await expect(page.locator('.lore-page-link')).toHaveCount(2);
-  await page.getByRole('button', { name: 'Abrir os arquivos' }).click();
+  await expect(page.getByRole('button', { name: 'Abrir os arquivos' })).toHaveCount(0);
+  await expect(page.getByText('Terras, crenças e histórias que atravessam as eras.')).toHaveCount(
+    0,
+  );
   expect(page.url()).toBe(origin + '/#lore');
   await expect(page.getByRole('region', { name: 'Biblioteca de lore' })).toBeVisible();
+  await expect(page.locator('.lore-page-link [data-scroll-state="closed"]')).toHaveCount(2);
+  await expect(page.locator('.lore-vase-icon').first()).toBeVisible();
+  await page.setViewportSize({ width: 1890, height: 1000 });
+  const heroBounds = await page.locator('.lore-hero').boundingBox();
+  expect(heroBounds!.x).toBe(0);
+  expect(heroBounds!.width).toBe(1890);
   await page.screenshot({ path: 'test-results/lore-library-desktop.png', fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.getByRole('button', { name: 'Editar pasta Lendas', exact: true }).click();
+  const editFolder = page.getByRole('dialog');
+  await editFolder.getByLabel('Nome da pasta').fill('Lendas antigas');
+  await editFolder.getByRole('button', { name: 'Salvar pasta' }).click();
+  await expect(editFolder).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Editar pasta Lendas antigas', exact: true }),
+  ).toBeVisible();
   await page.getByRole('button', { name: 'Nova pasta / subpasta' }).click();
   const folderDialog = page.getByRole('dialog');
   await folderDialog.getByLabel('Nome da pasta').fill('Portos antigos');
@@ -123,6 +143,7 @@ try {
   await page.getByRole('button').filter({ hasText: 'As muralhas de Vigília' }).click();
   await expect(page.locator('.lore-text--quote')).toContainText('Honre a palavra');
   await expect(page.locator('.lore-image-frame--cinematic')).toBeVisible();
+  await expect(page.locator('.lore-reader-title [data-scroll-state="open"]')).toBeVisible();
   await page.screenshot({ path: 'test-results/lore-reader-desktop.png', fullPage: true });
   await page.getByRole('button', { name: 'Editar crônica', exact: true }).click();
   const updatedEditor = page.getByRole('region', { name: 'Editor de crônica' });
@@ -171,9 +192,32 @@ try {
   await expect(page.getByRole('heading', { name: 'Um capítulo por escrever' })).toBeVisible();
   await noOverflow();
   await page.screenshot({ path: 'test-results/lore-empty-mobile.png', fullPage: true });
+  await page.getByLabel('Região').selectOption('reino-do-norte');
+  await page.getByRole('button', { name: 'Excluir pasta Portos antigos', exact: true }).click();
+  const removeFolder = page.getByRole('dialog');
+  await removeFolder.getByLabel('Guardar crônicas em').selectOption(cities.id);
+  await page.screenshot({ path: 'test-results/lore-delete-folder-desktop.png', fullPage: true });
+  await removeFolder.getByRole('button', { name: 'Excluir pasta', exact: true }).click();
+  await expect(removeFolder).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Editar pasta Portos antigos', exact: true }),
+  ).toHaveCount(0);
+  await page.getByRole('button').filter({ hasText: 'As muralhas de Vigília' }).click();
+  await expect(page.locator('.lore-reader-title [data-scroll-state="open"]')).toBeVisible();
+  await expect(page.locator('.lore-text--quote')).toContainText('Honre a palavra');
+  await page.getByRole('button', { name: 'Voltar ao arquivo' }).click();
+  await page.getByRole('button', { name: 'Pastas excluídas', exact: true }).click();
+  const trash = page.getByRole('dialog');
+  await trash.getByRole('button', { name: 'Restaurar', exact: true }).click();
+  await expect(trash).toContainText('Nenhuma pasta excluída.');
+  await trash.getByRole('button', { name: 'Fechar' }).click();
+  await expect(
+    page.getByRole('button', { name: 'Editar pasta Portos antigos', exact: true }),
+  ).toBeVisible();
+  await noOverflow();
   expect(errors).toEqual([]);
   console.log(
-    'Lore desktop/celular: subpastas, criação, upload, formatos, posições, caixas de texto, prévia, publicação e persistência aprovados.',
+    'Lore desktop/celular: largura completa, ícones, edição/exclusão/restauração de pastas, editor, publicação e persistência aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/lore-failure.png', fullPage: true });
