@@ -1,18 +1,19 @@
 import { writeFileSync } from 'node:fs';
 
-// Dry, close door-mounted brass bell. Inharmonic shell modes and clapper contact;
-// no reverberation, chorus or echo. The return swing loses energy and slows down.
+// Lively double door chime: bright alternating bells in two quick fluttering bursts.
+// A softer return flutter settles into the natural ringing of the metal.
 const rate = 44100;
-const duration = 2.25;
+const duration = 2.1;
 const samples = new Float64Array(Math.round(rate * duration));
 const strikes = [
-  [0.005, 1, 1], [0.095, 0.90, 1.002], [0.205, 0.72, 0.999],
-  [0.55, 0.49, 1], [0.68, 0.34, 1.001], [0.85, 0.18, 0.998],
+  [0.005, 0.85, 1], [0.075, 1, 1.25], [0.145, 0.88, 1],
+  [0.22, 0.92, 1.25], [0.30, 0.65, 1], [0.39, 0.62, 1.25],
+  [0.64, 0.48, 1], [0.725, 0.43, 1.25], [0.825, 0.32, 1],
+  [0.94, 0.25, 1.25], [1.075, 0.13, 1],
 ];
 const partials = [
-  [830, 0.42, 0.18], [1370, 1, 0.24], [1925, 0.68, 0.19],
-  [2860, 0.44, 0.13], [3810, 0.26, 0.085], [5240, 0.12, 0.045],
-  [6970, 0.055, 0.025],
+  [1760, 1, 0.28], [3528, 0.28, 0.15], [4740, 0.12, 0.09],
+  [6500, 0.045, 0.045], [930, 0.08, 0.055],
 ];
 let randomState = 1937;
 const noise = () => {
@@ -24,7 +25,7 @@ for (const [start, strength, tuning] of strikes) {
     const t = i / rate - start;
     const attack = 1 - Math.exp(-t / 0.00035);
     // Audible clapper contact makes each strike feel physically close.
-    samples[i] += strength * 0.32 * noise() * attack * Math.exp(-t / 0.003);
+    samples[i] += strength * 0.07 * noise() * attack * Math.exp(-t / 0.002);
     for (const [frequency, weight, decay] of partials) {
       const tone = Math.sin(2 * Math.PI * frequency * tuning * t);
       samples[i] += strength * weight * attack * Math.exp(-t / decay) * tone;
@@ -48,7 +49,7 @@ wav.writeUInt32LE(samples.length * 2, 40);
 for (let i = 0; i < samples.length; i++) {
   const fade = Math.min(1, (samples.length - 1 - i) / (rate * 0.15));
   // Gentle saturation lifts the body of the bell without digital clipping.
-  const sample = Math.tanh(samples[i] / peak * 1.6) / Math.tanh(1.6);
+  const sample = Math.tanh(samples[i] / peak * 1.15) / Math.tanh(1.15);
   wav.writeInt16LE(Math.round(sample * 0.92 * fade * 32767), 44 + i * 2);
 }
 writeFileSync(new URL('../public/audio/shop-door-bell.wav', import.meta.url), wav);

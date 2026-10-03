@@ -13,7 +13,7 @@
   },
   "doorBell": {
     "file": "shop-door-bell.wav",
-    "origin": "Síntese original refeita do zero: sineta de porta próxima e seca, modos metálicos inarmônicos, contato do badalo e segundo balanço mais fraco. Sem eco ou reverberação, duração de 2,25 s; gerador em scripts/generate-shop-bell.mjs.",
+    "origin": "Síntese original de sineta dupla animada: dois timbres agudos alternados em um trililin rápido, seguido de outro mais suave que desacelera. Duração de 2,1 s; gerador em scripts/generate-shop-bell.mjs.",
     "playback": "Uma vez por entrada na loja, sem loop; respeita mute e 80% do volume selecionado para a música."
   }
 }

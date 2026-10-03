@@ -783,3 +783,5 @@ Estábulo no mesmo vale do acampamento (02/10/2026): novo fundo paddock-camp-v2.
 Sino da loja (03/10/2026): som refeito como trililin de três batidas rápidas, seguido de um segundo balanço mais suave, com intervalos crescentes e ressonância que se apaga. WAV original de 3,2s, reproduzível com node scripts/generate-shop-bell.mjs. Mantidos toque único por entrada, volume e mute existentes.
 
 Sino refeito do zero (03/10/2026): usuário rejeitou timbre distante. Nova sineta de porta seca e próxima usa modos inarmônicos, contato curto do badalo, ressonância curta e segundo balanço mais fraco. Sem chorus/eco/reverb; duração 2,25s. Fonte versionada para evitar o WAV anterior no cache. Substitui o som de 3,2s.
+
+Sino animado (03/10/2026): substituído por sineta dupla de timbres agudos alternados, seis batidas rápidas no primeiro trililin e cinco progressivamente suaves no retorno. Menos ruído de impacto e brilho mais musical; 2,1s. Fonte lively-3 evita cache anterior. Atende ao pedido de um sino mais animado.

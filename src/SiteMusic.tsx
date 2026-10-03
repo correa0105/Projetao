@@ -120,7 +120,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       />
       <audio
         ref={bell}
-        src="/audio/shop-door-bell.wav?v=door-close-2"
+        src="/audio/shop-door-bell.wav?v=lively-3"
         preload="auto"
         muted={muted}
         data-shop-door-bell
