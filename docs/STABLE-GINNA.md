@@ -39,28 +39,44 @@ na personagem entre as cinco etapas. A quarta advertência é enfática, com
 Fechar e reabrir a conversa não zera a
 insistência; a pergunta retoma a próxima desculpa. A visão ocupa
 a tela com o mesmo cenário destruído, névoa escura, Ginna menor em fumaça sem
-chapéu e tremor irregular contínuo. Trinta e quatro olhos atravessam o terreno:
-27 no chão, seis nas encostas distantes e um enorme substituindo o pico central.
+chapéu e tremor irregular contínuo. Vinte e três olhos compõem a visão:
+22 no chão e um grande substituindo o pico central. Os seis pequenos do fundo
+foram removidos, assim como cinco próximos à esquerda da cuidadora.
 O fundo foi editado para retirar o pico, preservando o restante da composição.
 Arte nova tem globo saltado, pálpebras grossas, terra rachada e sombras de contato;
 os olhos emergem em tempos diferentes e piscam com transição entre aberto e
 fechado. A perspectiva do chão varia com a profundidade: mais rasante no fundo,
-mais aberta perto da câmera; a base permanece apoiada na terra. Encostas têm
-inclinação própria. Os seis olhos distantes ficam em faces rochosas expostas,
-acima da floresta e no penhasco; os do primeiro plano evitam arbustos e galhos.
+mais aberta perto da câmera; a base permanece apoiada na terra. O olho da
+montanha é menor e mais alto, com a parte inferior esmaecida acima da floresta,
+mantendo a íris dentro da face rochosa. Uma máscara SVG acompanha a silhueta
+real da crista e recorta a terra acima dela, sem invadir o céu. Os olhos no
+chão alternam tamanhos também na mesma faixa de profundidade: alguns discretos,
+outros maiores, com largura entre 1,8% e 8,2% do plano do cenário.
+Os do primeiro plano evitam arbustos,
+galhos e a faixa imediatamente à esquerda da cuidadora.
 Mantida a arte com relevo, sem o achatamento duplicado do atlas antigo. Olhos e fundo
 usam o mesmo plano cover, mantendo a posição sobre a terra ao recortar a cena
 no celular. Dessaturação, escurecimento e névoa integram as cores ao chão;
-sem olhos grandes junto à câmera. Não utiliza a criatura com bocas da
+sem dominar o primeiro plano. Não utiliza a criatura com bocas da
 primeira proposta. O animal fica oculto com sua seleção/equipamentos mantidos.
 
 “Pague para ver o que acontece…” aparece em balão junto à forma escura. A cena
 não tem tempo de retorno automático: clicar nela abre a opção Não vou
-machucá-los!, que encerra a visão e devolve o foco à cuidadora. Escape revela
+machucá-los!, que inicia o retorno ao dia. Duas pálpebras curvas fecham a visão
+do visitante em 420 ms; com a tela completamente preta, o cenário escuro é
+retirado. Após uma pausa de 380 ms, os olhos reabrem em 720 ms sobre o estábulo
+normal, com a montaria/equipamentos preservados, e o foco volta à cuidadora.
+Uma gravação real e curta de respiração ofegante acompanha o gesto e continua
+por cerca de 4,27 segundos no total, sem loop. Respeita mute/volume geral
+(125%, limitado a 100%) e para ao ocultar a aba ou sair do estábulo.
+Escape revela
 a resposta e não encerra a cena. Ocultar a aba pausa a música, mantendo a
 visão, e voltar retoma a faixa. O contador reinicia após a promessa e Ginna
 responde “Assim é melhor…”. Movimento reduzido mantém olhos, névoa e cenário
-estáticos, preservando a interação e a permanência até a escolha.
+estáticos, preservando a interação e a permanência até a escolha; o retorno
+usa um fade curto de 120/220 ms com a mesma pausa preta, em vez de pálpebras
+em movimento. Escape não interrompe a transição; animações/timer são cancelados
+ao desmontar a página.
 
 A música principal é pausada, preservando sua posição. A trilha temporária
 usa o MP3 fornecido pelo usuário em loop, respeita volume/mute e para ao
@@ -75,15 +91,21 @@ disponível dentro da cena. Nenhum iframe externo.
 | `public/stable/ginna-shadow.webp` | Forma escura sem chapéu, 768 × 1152, alfa |
 | `public/stable/paddock-ruined-eye-mountain.webp` | Cenário arruinado com o pico removido, 1672 × 941 |
 | `public/stable/ginna-raised-eyes.webp` | Olho saltado, atlas vertical aberto/fechado, 768 × 1536, alfa |
+| `public/stable/ginna-mountain-mask.svg` | Recorte da terra do olho pela crista da montanha |
 | `public/audio/ginna-lullaby-of-woe.mp3` | Trilha temporária fornecida pelo usuário |
+| `public/audio/ginna-panting.mp3` | Heavy Breathing, Under7dude / Freesound #163383, CC0, prévia MP3 pública |
 | `docs/references/ginna-reference.jpg` | Referência da aparência enviada pelo usuário |
 | `docs/references/ginna-shadow-reference.png` | Referência da forma escura enviada pelo usuário |
 
-Todas as artes foram criadas/editadas no **modo integrado (built-in image_gen)**.
+Todas as artes raster foram criadas/editadas no **modo integrado (built-in image_gen)**.
 Conversão dos resultados selecionados para WebP com Sharp, qualidade 92 e alfa
 100, sem retirar transparência. Originais gerados permanecem na biblioteca local
 de imagegen; os arquivos consumidos pelo site estão integralmente no projeto.
 As referências têm autoria/licença original não informadas.
+Fonte/licença da respiração: [Heavy Breathing, Under7dude](https://freesound.org/people/Under7dude/sounds/163383/),
+[CC0](https://creativecommons.org/publicdomain/zero/1.0/). Proveniência e reprodução
+registradas em `public/audio/manifest.json`. O arquivo é servido pelo próprio
+site, sem player/iframe externo.
 Prompts completos das duas novas artes e modo integrado registrados em
 `docs/STABLE-GINNA-EYES.json`. `paddock-ruined.webp` e `ginna-ground-eyes.webp`
 permanecem como versões anteriores; o site usa os novos arquivos.
@@ -118,14 +140,18 @@ rótulo Conversar, brilho em hover/foco, fluxo de perguntas/respostas como a
 loja, distância da ponta até o rosto nas duas formas e seis viewports,
 balão sem modal central, quatro desculpas sucessivas com balão mantido,
 cinco insistências com fechamento/reabertura, ocultação/retorno da
-montaria, distribuição/proporções dos 34 olhos e olho no pico, piscar
+montaria, distribuição/proporções dos 23 olhos, ausência dos olhos de encosta,
+olho no pico, piscar
 aberto/fechado, relevo não achatado, tremor,
 permanência além do antigo timeout, clique real na cena em movimento,
-promessa obrigatória, loop/mute/pausa/retomada da trilha, encerramento do áudio
+promessa obrigatória, fechar/abrir das pálpebras, pixels totalmente pretos na
+troca do cenário, retorno ao dia com seleção mantida, reprodução/duração/volume
+da respiração e mute no celular, loop/mute/pausa/retomada da trilha, encerramento do áudio
 temporário, foco, celular/movimento reduzido e os fluxos anteriores de compra,
 ownership, idempotência, saldo, persistência e seis viewports.
 
 Capturas locais em `test-results/ginna-conversation.png`,
 `ginna-welcome.png`, `ginna-welcome-mobile.png`,
 `ginna-vision-desktop.png`, `ginna-balloon-mobile.png`,
-`ginna-vision-mobile.png` e `stable-*.png`.
+`ginna-vision-mobile.png`, `ginna-return-closed.png`, `ginna-return-day.png`
+e `stable-*.png`.

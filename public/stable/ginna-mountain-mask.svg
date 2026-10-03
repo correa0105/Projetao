@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <!-- The ridge of paddock-ruined-eye-mountain.webp, in the summit eye's local coordinates. -->
+  <defs><filter id="edge" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="0.6"/></filter></defs>
+  <path fill="white" filter="url(#edge)" d="M0 45 L10 40 L20 35 L28 31 L33 36 L37 35 L42 38 L51 39 L65 40 L75 39 L84 36 L92 34 L100 38 V100 H0 Z"/>
+</svg>

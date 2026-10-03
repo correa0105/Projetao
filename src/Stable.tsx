@@ -1,5 +1,5 @@
 import { FlashMessage } from './FlashMessage';
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
 import { stableGear, stableGearComments } from '../shared/stable-gear';
@@ -8,7 +8,9 @@ import { post } from './api';
 import { money } from '../shared/rules';
 import { Modal } from './components';
 import { GinnaVision } from './GinnaVision';
+import { GinnaReturn } from './GinnaReturn';
 import { GinnaBalloon } from './GinnaBalloon';
+import { useMusicInterlude } from './SiteMusic';
 import {
   ginnaGreeting,
   ginnaMountLines,
@@ -96,6 +98,9 @@ export function Stable({
   const [talk, setTalk] = useState<'questions' | 'warning' | null>(null);
   const [known, setKnown] = useState(false);
   const [vision, setVision] = useState(false);
+  const [returning, setReturning] = useState(false);
+  const breathing = useRef<HTMLAudioElement>(null);
+  const { muted, volume } = useMusicInterlude();
   const warnings = useRef(0);
   const keeperTrigger = useRef<HTMLButtonElement>(null);
   const mountVisits = useRef<Record<string, number>>({});
@@ -125,12 +130,42 @@ export function Stable({
     setTalk(null);
     window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
   }
-  function finishVision() {
+  const finishVision = useCallback(() => {
     setVision(false);
     setSpeech('Assim é melhor. Eles só precisam de cuidado e gentileza. Agora podemos continuar.');
     warnings.current = 0;
+  }, []);
+  const finishReturn = useCallback(() => {
+    setReturning(false);
     window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
+  }, []);
+  function beginReturn() {
+    if (returning) return;
+    const player = breathing.current;
+    if (player) {
+      player.currentTime = 0;
+      void player.play().catch(() => {});
+    }
+    setReturning(true);
   }
+  useEffect(() => {
+    const player = breathing.current;
+    if (player) {
+      player.muted = muted;
+      player.volume = Math.min(1, volume * 1.25);
+    }
+  }, [muted, volume]);
+  useEffect(() => {
+    const player = breathing.current;
+    const pauseWhenHidden = () => {
+      if (document.hidden) player?.pause();
+    };
+    document.addEventListener('visibilitychange', pauseWhenHidden);
+    return () => {
+      document.removeEventListener('visibilitychange', pauseWhenHidden);
+      player?.pause();
+    };
+  }, []);
   useEffect(() => {
     for (const path of [
       '/stable/ginna-shadow.webp',
@@ -420,7 +455,16 @@ export function Stable({
           )}
         </div>
       </div>
-      {vision && <GinnaVision known={known} onFinished={finishVision} />}
+      {vision && <GinnaVision known={known} onFinished={beginReturn} />}
+      {returning && <GinnaReturn onCovered={finishVision} onFinished={finishReturn} />}
+      <audio
+        ref={breathing}
+        src="/audio/ginna-panting.mp3"
+        preload="auto"
+        muted={muted}
+        data-ginna-breathing
+        aria-hidden="true"
+      />
       {notice && (
         <FlashMessage kind="success">
           <Check size={16} />

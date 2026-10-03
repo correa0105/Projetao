@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
+import sharp from 'sharp';
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw new Error('Banco isolado obrigatório.');
 const origin = 'http://localhost:3002';
@@ -248,7 +249,8 @@ try {
     'src',
     '/stable/ginna-shadow.webp',
   );
-  await expect(vision.locator('.ginna-earth-eye')).toHaveCount(34);
+  await expect(vision.locator('.ginna-earth-eye')).toHaveCount(23);
+  await expect(vision.locator('[data-depth="ridge"]')).toHaveCount(0);
   await expect(vision.locator('[data-depth="mountain"]')).toHaveCount(1);
   await assertBalloonAttached('.ginna-vision .ginna-balloon', true);
   await expect
@@ -262,7 +264,9 @@ try {
   const eyeBoxes = await vision
     .locator('.ginna-earth-eye[data-depth="ground"]')
     .evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().toJSON()));
-  expect(Math.max(...eyeBoxes.map((box) => box.width))).toBeLessThan(115);
+  const groundSizes = eyeBoxes.map((box) => box.width);
+  expect(Math.max(...groundSizes)).toBeLessThan(155);
+  expect(Math.max(...groundSizes) / Math.min(...groundSizes)).toBeGreaterThan(4);
   expect(
     Math.max(...eyeBoxes.map((box) => box.y)) - Math.min(...eyeBoxes.map((box) => box.y)),
   ).toBeGreaterThan(160);
@@ -325,8 +329,36 @@ try {
   await promise.press('Escape');
   await expect(vision).toBeVisible();
   await clickShaking(promise);
+  const recovery = page.locator('.ginna-return');
+  const breath = page.locator('[data-ginna-breathing]');
+  await expect(recovery).toBeVisible();
+  await expect(recovery).toHaveAttribute('data-motion', 'full');
+  await expect
+    .poll(() =>
+      breath.evaluate(
+        (element: HTMLAudioElement) =>
+          !element.paused &&
+          element.currentTime > 0 &&
+          element.duration > 4 &&
+          element.duration < 5,
+      ),
+    )
+    .toBe(true);
+  expect(await breath.evaluate((element: HTMLAudioElement) => element.loop)).toBe(false);
+  expect(await breath.evaluate((element: HTMLAudioElement) => element.volume)).toBe(
+    Math.min(1, musicBefore.volume * 1.25),
+  );
+  await page.waitForFunction(
+    () => document.querySelector('.ginna-return')?.getAttribute('data-phase') === 'closed',
+  );
+  const closedFrame = await page.screenshot({ path: 'test-results/ginna-return-closed.png' });
+  const closedColors = await sharp(closedFrame).removeAlpha().stats();
+  expect(closedColors.channels.every((channel) => channel.max < 2)).toBe(true);
   await expect(vision).toHaveCount(0);
   expect(await visionPlayer!.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
+  await expect(recovery).toHaveCount(0);
+  await page.screenshot({ path: 'test-results/ginna-return-day.png' });
+  expect(await breath.evaluate((element: HTMLAudioElement) => element.paused)).toBe(false);
   await expect(page.locator('.stable-animal-base')).toHaveAttribute('src', normalImage!);
   await expect(keeper).toBeFocused();
   await expect
@@ -361,9 +393,16 @@ try {
   expect(darkMobileBalloon.x).toBeGreaterThanOrEqual(6);
   expect(darkMobileBalloon.x + darkMobileBalloon.width).toBeLessThanOrEqual(390);
   await page.screenshot({ path: 'test-results/ginna-vision-mobile.png' });
+  await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
+  await vision.getByRole('button', { name: 'Mutar música', exact: true }).click();
   await promise.click();
+  await expect(recovery).toBeVisible();
+  await expect(recovery).toHaveAttribute('data-motion', 'reduced');
+  expect(await breath.evaluate((element: HTMLAudioElement) => element.muted)).toBe(true);
   await expect(vision).toHaveCount(0);
+  await expect(recovery).toHaveCount(0);
   await expect(page.locator('.stable-animal')).toBeVisible();
+  await expect(keeper).toBeFocused();
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.getByRole('button', { name: 'Ver Pônei', exact: true }).click();
   await page.getByRole('button', { name: 'Pampa', exact: true }).click();

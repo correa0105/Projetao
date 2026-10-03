@@ -18,6 +18,16 @@
     "origin": "MP3 fornecido pelo usuário na pasta Downloads, copiado sem conversão; licença CC0 não declarada.",
     "playback": "Em loop durante a visão da quinta insistência com Ginna, até clicar nela e escolher Não vou machucá-los! Volume/mute gerais, áudio pausado em aba oculta. Pausa a música principal e retoma sua posição ao terminar."
   },
+  "ginnaReturn": {
+    "file": "ginna-panting.mp3",
+    "title": "Heavy Breathing",
+    "author": "Under7dude",
+    "source": "https://freesound.org/people/Under7dude/sounds/163383/",
+    "preview": "https://cdn.freesound.org/previews/163/163383_2943714-lq.mp3",
+    "license": "CC0",
+    "origin": "Gravação real de respiração ofegante, prévia MP3 pública disponibilizada pelo Freesound, cerca de 4,27 segundos, sem edição.",
+    "playback": "Uma vez ao escolher Não vou machucá-los!, acompanhando o fechar/abrir dos olhos e o retorno ao dia. Sem loop; respeita mute e 125% do volume geral, limitado a 100%. Pausa ao ocultar a aba ou sair do estábulo."
+  },
   "doorBell": {
     "file": "shop-door-bell.wav",
     "origin": "Shop door bell.wav, 775noise / Freesound #494565, CC0. Gravação do sino acionado ao abrir porta de comércio; primeiros dois toques recortados, segundo suavizado, pico normalizado em 96%, duração 2,65s.",
