@@ -30,7 +30,7 @@ export const ginnaWarnings = [
   'Se você fizer mal a um deles, terá de responder a mim. Eles confiam em minhas mãos. Não vou deixar que as suas os machuquem.',
   'Disciplina não é uma desculpa para crueldade. Você ensina com paciência e cuidado. Dor só ensina um animal a ter medo de você.',
   'Talvez ele esteja assustado. Talvez você ainda não saiba escutá-lo. Minha paciência está acabando; não transforme a confiança dele em medo.',
-  'Esta é a última vez que digo: deixe os animais em paz. Há coisas debaixo desta terra que não são tão gentis quanto eu.',
+  'Esta é a ÚLTIMA VEZ que vou dizer: NÃO MALTRATE NENHUM DELES, EM HIPÓTESE ALGUMA! Não importa a desculpa. Não encoste neles para ferir, assustar ou castigar. VOCÊ ENTENDEU?',
 ] as const;
 
 export const ginnaMountLines: Record<string, readonly string[]> = {

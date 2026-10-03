@@ -139,6 +139,9 @@ try {
   const welcomeBox = (await page.locator('.stable-field > .ginna-balloon').boundingBox())!;
   expect(welcomeBox.y).toBeGreaterThanOrEqual(0);
   expect(welcomeBox.x + welcomeBox.width).toBeLessThanOrEqual(390);
+  // The arrival greeting expires, while the keeper remains available to converse.
+  await expect(page.locator('.stable-field > .ginna-balloon')).toHaveCount(0, { timeout: 7500 });
+  await expect(page.locator('.stable-keeper-trigger')).toBeVisible();
   await page.setViewportSize({ width: 1440, height: 900 });
   for (const name of ['Cavalo de montaria', 'Cavalo de guerra', 'Pônei', 'Mula']) {
     await page.getByRole('button', { name: `Ver ${name}`, exact: true }).click();
@@ -202,7 +205,7 @@ try {
     await assertBalloonAttached('.stable-field > .ginna-balloon');
     await expect(page.locator('.ginna-vision')).toHaveCount(0);
   }
-  await expect(normalBalloon.locator('[role="status"]')).toContainText('Esta é a última vez');
+  await expect(normalBalloon.locator('[role="status"]')).toContainText('ÚLTIMA VEZ');
   await page.screenshot({ path: 'test-results/ginna-conversation.png' });
   // Closing the balloon does not erase the warnings on this visit.
   await conversation.locator('[data-ginna-question="warning"]').press('Escape');
@@ -267,10 +270,17 @@ try {
   expect(mountain.width).toBeGreaterThan(200);
   expect(mountain.y).toBeLessThan(250);
   expect(mountain.height / mountain.width).toBeGreaterThan(0.95);
-  const mound = vision.locator('.ginna-eye-mound').last();
-  expect(await mound.evaluate((element) => getComputedStyle(element).transform)).toBe(
-    'matrix(1, 0, 0, 1, 0, 0)',
-  );
+  const projectedEyes = await vision
+    .locator('[data-depth="ground"] .ginna-eye-mound')
+    .evaluateAll((elements) =>
+      elements.map((element) => {
+        const box = element.getBoundingClientRect();
+        return { ratio: box.height / box.width, transform: getComputedStyle(element).transform };
+      }),
+    );
+  expect(Math.min(...projectedEyes.map((eye) => eye.ratio))).toBeGreaterThan(0.35);
+  expect(Math.max(...projectedEyes.map((eye) => eye.ratio))).toBeLessThan(0.92);
+  expect(projectedEyes.every((eye) => eye.transform.startsWith('matrix3d('))).toBe(true);
   const blinkingEye = vision.locator('.ginna-eye-blink').first();
   await blinkingEye.evaluate((element) => {
     const animation = element.getAnimations()[0];

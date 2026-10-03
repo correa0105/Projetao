@@ -10,6 +10,9 @@ aparentar 1,50 m junto às montarias e à cerca. Ao entrar, a fala alegre é
 considere um abraço de boas-vindas. Vem conhecer meus queridinhos — só cuidado
 com o seu lanche, hihi!” A identificação é Cuidadora e o nome só aparece
 depois de escolher Quem é você?
+O balão inicial de boas-vindas desaparece após 7 segundos a cada entrada no
+estábulo. Clicar na personagem continua abrindo a conversa; o prazo da saudação
+não interrompe perguntas, respostas ou a sequência de advertências.
 Clique nela ou use Enter para abrir um balão ancorado à personagem, com três
 perguntas sobre identidade, origem dos animais e consequências de maltratá-los.
 Fluxo como na loja: O que deseja saber? abre as opções; selecionar uma fecha
@@ -30,7 +33,10 @@ A quinta pergunta sobre maus-tratos, na mesma visita ao estábulo, abre uma vis�
 persistente. A pergunta inicial é “E se eu fizer mal a ele?”. O balão permanece
 aberto, exibindo cada advertência e a próxima desculpa: discipliná-lo, falta de
 obediência, ensinar uma lição e ninguém ficar sabendo. Não exige clicar de novo
-na personagem entre as cinco etapas. Fechar e reabrir a conversa não zera a
+na personagem entre as cinco etapas. A quarta advertência é enfática, com
+“ÚLTIMA VEZ”, “NÃO MALTRATE NENHUM DELES, EM HIPÓTESE ALGUMA!” e
+“VOCÊ ENTENDEU?”, sem mencionar a terra.
+Fechar e reabrir a conversa não zera a
 insistência; a pergunta retoma a próxima desculpa. A visão ocupa
 a tela com o mesmo cenário destruído, névoa escura, Ginna menor em fumaça sem
 chapéu e tremor irregular contínuo. Trinta e quatro olhos atravessam o terreno:
@@ -38,7 +44,11 @@ chapéu e tremor irregular contínuo. Trinta e quatro olhos atravessam o terreno
 O fundo foi editado para retirar o pico, preservando o restante da composição.
 Arte nova tem globo saltado, pálpebras grossas, terra rachada e sombras de contato;
 os olhos emergem em tempos diferentes e piscam com transição entre aberto e
-fechado. Removida a transformação que achatava o atlas anterior. Olhos e fundo
+fechado. A perspectiva do chão varia com a profundidade: mais rasante no fundo,
+mais aberta perto da câmera; a base permanece apoiada na terra. Encostas têm
+inclinação própria. Os seis olhos distantes ficam em faces rochosas expostas,
+acima da floresta e no penhasco; os do primeiro plano evitam arbustos e galhos.
+Mantida a arte com relevo, sem o achatamento duplicado do atlas antigo. Olhos e fundo
 usam o mesmo plano cover, mantendo a posição sobre a terra ao recortar a cena
 no celular. Dessaturação, escurecimento e névoa integram as cores ao chão;
 sem olhos grandes junto à câmera. Não utiliza a criatura com bocas da

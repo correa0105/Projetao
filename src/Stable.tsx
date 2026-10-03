@@ -92,12 +92,17 @@ export function Stable({
   const mount = mounts.find((m) => m.id === selected)!;
   const [name, setName] = useState('');
   const [speech, setSpeech] = useState(ginnaGreeting);
+  const [greetingVisible, setGreetingVisible] = useState(true);
   const [talk, setTalk] = useState<'questions' | 'warning' | null>(null);
   const [known, setKnown] = useState(false);
   const [vision, setVision] = useState(false);
   const warnings = useRef(0);
   const keeperTrigger = useRef<HTMLButtonElement>(null);
   const mountVisits = useRef<Record<string, number>>({});
+  useEffect(() => {
+    const timer = window.setTimeout(() => setGreetingVisible(false), 7000);
+    return () => window.clearTimeout(timer);
+  }, []);
   function askGinna(next: GinnaTopic) {
     if (next === 'identity') setKnown(true);
     if (next !== 'warning') {
@@ -383,34 +388,36 @@ export function Stable({
               <img src="/stable/ginna.webp" alt="Jovem cuidadora dos animais, sem chapéu" />
             </button>
           </div>
-          <GinnaBalloon
-            speaker={known ? 'Ginna' : 'Cuidadora'}
-            text={talk === 'questions' ? 'O que deseja saber?' : speech}
-            label={talk ? 'Perguntas à cuidadora' : undefined}
-            close={closeConversation}
-          >
-            {talk === 'warning' ? (
-              <button
-                type="button"
-                data-ginna-question="warning"
-                onClick={() => askGinna('warning')}
-              >
-                {ginnaExcuses[warnings.current]}
-              </button>
-            ) : (
-              talk === 'questions' &&
-              ginnaQuestions.map((question) => (
+          {(talk || speech !== ginnaGreeting || greetingVisible) && (
+            <GinnaBalloon
+              speaker={known ? 'Ginna' : 'Cuidadora'}
+              text={talk === 'questions' ? 'O que deseja saber?' : speech}
+              label={talk ? 'Perguntas à cuidadora' : undefined}
+              close={closeConversation}
+            >
+              {talk === 'warning' ? (
                 <button
-                  key={question.id}
                   type="button"
-                  data-ginna-question={question.id}
-                  onClick={() => askGinna(question.id)}
+                  data-ginna-question="warning"
+                  onClick={() => askGinna('warning')}
                 >
-                  {question.id === 'warning' ? ginnaExcuses[warnings.current] : question.question}
+                  {ginnaExcuses[warnings.current]}
                 </button>
-              ))
-            )}
-          </GinnaBalloon>
+              ) : (
+                talk === 'questions' &&
+                ginnaQuestions.map((question) => (
+                  <button
+                    key={question.id}
+                    type="button"
+                    data-ginna-question={question.id}
+                    onClick={() => askGinna(question.id)}
+                  >
+                    {question.id === 'warning' ? ginnaExcuses[warnings.current] : question.question}
+                  </button>
+                ))
+              )}
+            </GinnaBalloon>
+          )}
         </div>
       </div>
       {vision && <GinnaVision known={known} onFinished={finishVision} />}

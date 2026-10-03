@@ -435,7 +435,8 @@ dialog.ginna-vision {
   width: var(--eye-width);
   aspect-ratio: 1;
   filter: grayscale(1) brightness(.55) contrast(.9);
-  transform: translate(-50%, -65%) rotate(var(--eye-angle));
+  transform: translate(-50%, -82%) rotate(var(--eye-angle));
+  transform-origin: center 82%;
   opacity: .9;
   animation: ginna-eye-emerge .85s var(--eye-delay) ease-out both;
 }
@@ -464,7 +465,8 @@ dialog.ginna-vision {
   width: 100%;
   height: 100%;
   background: url('/stable/ginna-raised-eyes.webp') center top / 100% 200% no-repeat;
-  transform-origin: center 80%;
+  transform-origin: center 82%;
+  transform: perspective(800px) rotateX(var(--eye-tilt));
   animation: ginna-eye-rise .85s var(--eye-delay) cubic-bezier(.2,.7,.3,1) both;
 }
 .ginna-eye-blink {
@@ -509,8 +511,8 @@ dialog.ginna-vision {
   to { opacity: .9; }
 }
 @keyframes ginna-eye-rise {
-  from { transform: translateY(15%) scaleY(.55); }
-  to { transform: translateY(0) scaleY(1); }
+  from { transform: perspective(800px) rotateX(var(--eye-tilt)) translateY(15%) scaleY(.55); }
+  to { transform: perspective(800px) rotateX(var(--eye-tilt)); }
 }
 @keyframes ginna-eye-blink {
   0%, 44%, 54%, 100% { opacity: 0; }
