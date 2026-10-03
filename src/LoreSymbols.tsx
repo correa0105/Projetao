@@ -193,36 +193,32 @@ export function LoreScrollHolderIcon({ rummaging = false }: { rummaging?: boolea
     <svg
       className={`lore-scroll-holder-icon ${rummaging ? 'is-rummaging' : ''}`}
       data-holder-state={rummaging ? 'hovered' : 'idle'}
-      viewBox="0 0 128 160"
+      viewBox="0 0 180 160"
       aria-hidden="true"
       focusable="false"
     >
       <EngravedPaper id={id} />
       <defs>
-        <linearGradient id={`${id}-leather`} x1="0" x2="1" y2=".1">
-          <stop stopColor="#261a14" />
-          <stop offset=".18" stopColor="#795237" />
-          <stop offset=".38" stopColor="#a87a4c" />
-          <stop offset=".65" stopColor="#70432c" />
-          <stop offset="1" stopColor="#2b1b15" />
+        <linearGradient id={`${id}-bronze`} x1="0" x2="1" y2=".15">
+          <stop stopColor="#302118" />
+          <stop offset=".18" stopColor="#987044" />
+          <stop offset=".38" stopColor="#d7b87e" />
+          <stop offset=".62" stopColor="#a37b4b" />
+          <stop offset="1" stopColor="#493021" />
         </linearGradient>
-        <linearGradient id={`${id}-wood`} x1="0" x2="1" y2=".15">
-          <stop stopColor="#30251a" />
-          <stop offset=".22" stopColor="#9c7444" />
-          <stop offset=".42" stopColor="#d3af72" />
-          <stop offset=".68" stopColor="#80603a" />
-          <stop offset="1" stopColor="#3c281b" />
+        <linearGradient id={`${id}-rim`} x1="0" y1="0" x2="0" y2="1">
+          <stop stopColor="#f2d397" />
+          <stop offset=".45" stopColor="#aa8050" />
+          <stop offset="1" stopColor="#543820" />
         </linearGradient>
-        <linearGradient id={`${id}-strap`} x1="0" y1="0" x2="1" y2="0">
-          <stop stopColor="#3e271b" />
-          <stop offset=".4" stopColor="#805736" />
-          <stop offset="1" stopColor="#4a2d1e" />
-        </linearGradient>
-        <radialGradient id={`${id}-mouth`} cx=".5" cy=".28" r=".8">
-          <stop stopColor="#765038" />
-          <stop offset=".45" stopColor="#2e211a" />
-          <stop offset="1" stopColor="#0d0d0b" />
+        <radialGradient id={`${id}-mouth`} cx=".5" cy=".3" r=".8">
+          <stop stopColor="#876441" />
+          <stop offset=".45" stopColor="#4e3725" />
+          <stop offset="1" stopColor="#16120f" />
         </radialGradient>
+        <clipPath id={`${id}-mascot-stage`}>
+          <rect x="-92" width="272" height="160" />
+        </clipPath>
         <g id={`${id}-roll`} stroke="#765032" strokeWidth="1.3">
           <path d="M-7 0h14l-1 68H-6Z" fill={`url(#${id}-paper)`} />
           <path d="M-4 6v53M-1 10v31" stroke="#ffedc0" opacity=".6" />
@@ -234,129 +230,108 @@ export function LoreScrollHolderIcon({ rummaging = false }: { rummaging?: boolea
           <path d="M-7 46h14" stroke="#d0a565" />
         </g>
       </defs>
-      <ellipse cx="55" cy="127" rx="33" ry="4" fill="#050504" opacity=".65" />
+      <ellipse cx="68" cy="143" rx="37" ry="4" fill="#050504" opacity=".65" />
       {rummaging && (
         <ellipse
           className="lore-scroll-holder-floor-shadow"
-          cx="121"
-          cy="133"
-          rx="29"
+          cx="144"
+          cy="150"
+          rx="25"
           ry="3"
           fill="#050504"
         />
       )}
-      {/* The front leather wall conceals the rolls until they rise completely above the wooden rim. */}
+      <g clipPath={`url(#${id}-mascot-stage)`} pointerEvents="none" data-site-mascot="crystal-fox">
+        <g className="lore-mascot-traveler">
+          <foreignObject x="0" y="36" width="116" height="116">
+            <div className="lore-mascot-run-sprite" />
+          </foreignObject>
+        </g>
+      </g>
+      {/* The shallow rim is the pivot: the impact tips one roll out instead of lifting it. */}
       <g className="lore-scroll-holder-body">
         <ellipse
           data-holder-rim=""
-          cx="55"
-          cy="55"
-          rx="31"
-          ry="10"
-          fill={`url(#${id}-wood)`}
-          stroke="#cba871"
+          cx="68"
+          cy="106"
+          rx="43"
+          ry="11"
+          fill={`url(#${id}-rim)`}
+          stroke="#dcbb80"
           strokeWidth="2"
         />
-        <ellipse cx="55" cy="55" rx="26" ry="7" fill={`url(#${id}-mouth)`} />
+        <ellipse cx="68" cy="106" rx="37.5" ry="7.6" fill={`url(#${id}-mouth)`} />
         <g className="lore-scroll-holder-rolls">
-          <use href={`#${id}-roll`} transform="translate(35 15) rotate(-9)" />
-          <use href={`#${id}-roll`} transform="translate(53 8) rotate(2)" />
-          <use href={`#${id}-roll`} transform="translate(77 18) rotate(12)" />
-          <use href={`#${id}-roll`} transform="translate(34 34) rotate(-5) scale(.9)" />
-          <use href={`#${id}-roll`} transform="translate(68 29) rotate(7) scale(.95)" />
+          <use href={`#${id}-roll`} transform="translate(37 77) rotate(-17) scale(.76)" />
+          <use href={`#${id}-roll`} transform="translate(54 66) rotate(-5) scale(.9)" />
+          <use href={`#${id}-roll`} transform="translate(72 71) rotate(6) scale(.84)" />
+          <use href={`#${id}-roll`} transform="translate(48 91) rotate(-9) scale(.65)" />
+          <use href={`#${id}-roll`} transform="translate(83 85) rotate(8) scale(.65)" />
         </g>
         <g className="lore-scroll-holder-escaping-scroll">
-          <use href={`#${id}-roll`} transform="translate(55 36) scale(.8)" />
-          <g transform="translate(55 36) scale(.8)">
+          <use href={`#${id}-roll`} transform="translate(100 60) scale(.7)" />
+          <g transform="translate(100 60) scale(.7)">
             <circle cy="46" r="4.3" fill={`url(#${id}-seal)`} stroke="#d4905f" strokeWidth="1" />
             <path d="m0 43 2 3-2 3-2-3Z" fill="#e8bd82" />
           </g>
         </g>
-        <path
-          d="M24 56 29 117c1 11 51 11 52 0l5-61c-11 10-51 10-62 0Z"
-          fill={`url(#${id}-leather)`}
-          stroke="#b98d59"
-          strokeWidth="1.8"
-          filter={`url(#${id}-grain)`}
-        />
-        <path d="M27 67 31 115M80 67 77 115" stroke="#24170f" strokeWidth="3" opacity=".65" />
-        <path
-          d="M31 69 35 115M76 69 73 115"
-          fill="none"
-          stroke="#dfbb80"
-          strokeWidth="1.3"
-          strokeDasharray="2 3"
-        />
-        <path d="M39 64h13v58c-4 1-8 0-12-1Z" fill={`url(#${id}-strap)`} stroke="#c39962" />
-        <path
-          d="M42 67v51M49 67v51"
-          fill="none"
-          stroke="#d8b77d"
-          strokeWidth="1"
-          strokeDasharray="1.5 3"
-        />
-        <rect
-          x="38"
-          y="83"
-          width="15"
-          height="16"
-          rx="2.3"
-          fill="#2c2118"
-          stroke="#bd985c"
-          strokeWidth="2.3"
-        />
-        <rect
-          x="41"
-          y="86"
-          width="9"
-          height="10"
-          rx="1"
-          fill={`url(#${id}-strap)`}
-          stroke="#624927"
-        />
-        <path d="M38 91h9l2-2M41 84h9" fill="none" stroke="#ead095" strokeWidth="1.4" />
-        <circle cx="45.5" cy="106" r="1.2" fill="#291b13" />
-        <circle cx="45.5" cy="113" r="1.2" fill="#291b13" />
-        <g fill="none" stroke="#d2a46a" strokeWidth="1.15" opacity=".65">
-          <path d="M58 73h14v38H58Z" />
-          <path d="m65 78 4 7-4 7-4-7Zm0 17v9m-4-6 4 6 4-6" />
-          <path d="m58 73 3 3m11-3-3 3m-11 35 3-3m11 3-3-3" />
-        </g>
-        <path
-          d="M34 76 35 95m22-27 1 11m17 23-2 10m-37-4 1 7M60 113l7-1"
-          fill="none"
-          stroke="#e1b880"
-          strokeWidth="1"
-          opacity=".42"
-        />
-        <path
-          d="M29 114c13 7 39 7 52 0l-1 8c-13 7-37 7-50 0Z"
-          fill={`url(#${id}-wood)`}
-          stroke="#ba935d"
+        <ellipse
+          cx="68"
+          cy="139"
+          rx="18"
+          ry="5"
+          fill={`url(#${id}-bronze)`}
+          stroke="#b99159"
           strokeWidth="1.5"
         />
         <path
-          d="M30 117c14 7 36 7 49 0M31 121c13 6 33 6 47 0"
-          fill="none"
-          stroke="#493320"
-          strokeWidth="1"
+          d="M25 106c4 22 18 34 43 34s39-12 43-34c-17 12-69 12-86 0Z"
+          fill={`url(#${id}-bronze)`}
+          stroke="#b88d54"
+          strokeWidth="1.7"
         />
         <path
-          d="M24 55c9 10 53 10 62 0l-1 7c-12 9-48 9-60 0Z"
-          fill={`url(#${id}-wood)`}
-          stroke="#d6b57b"
+          d="M32 117c17 8 55 8 72 0M43 132c14 6 36 6 50 0"
+          fill="none"
+          stroke="#e4c58d"
+          strokeWidth="1.3"
+        />
+        <path
+          d="M32 115c3 10 9 16 18 18M37 119l4 6"
+          fill="none"
+          stroke="#f4dba5"
+          strokeWidth="2.3"
+          opacity=".55"
+        />
+        <path
+          d="M102 117c-4 10-11 15-21 17"
+          fill="none"
+          stroke="#49301e"
+          strokeWidth="3"
+          opacity=".65"
+        />
+        <g fill="none" stroke="#eccf93" strokeWidth="1.35">
+          <path d="m68 118 6 7-6 7-6-7Z" />
+          <path d="M57 125c-8-10-15-5-11 0 3 4 9 3 8-1m25 1c8-10 15-5 11 0-3 4-9 3-8-1" />
+          <path d="m43 119 3 5m47-5-3 5M58 134l3 2m17-2-3 2" />
+        </g>
+        <path d="m68 120 4 5-4 5-4-5Z" fill="#476f87" stroke="#f0d399" strokeWidth="1.2" />
+        <path d="m68 121-2 4 2-1 2 1Z" fill="#9bc9d8" />
+        <path
+          d="M25 105c10 12 76 12 86 0l-1 6c-15 12-69 12-84 0Z"
+          fill={`url(#${id}-rim)`}
+          stroke="#e7c78c"
           strokeWidth="1.8"
         />
-        <path d="M28 61c14 6 40 6 54 0" fill="none" stroke="#493320" strokeWidth="1.3" />
-        <g fill="#d6b878" stroke="#6b4c2b" strokeWidth=".7">
-          <circle cx="31" cy="65" r="1.5" />
-          <circle cx="77" cy="65" r="1.5" />
-          <circle cx="33" cy="121" r="1.5" />
-          <circle cx="76" cy="121" r="1.5" />
+        <path d="M29 112c16 8 62 8 78 0" fill="none" stroke="#533820" strokeWidth="1.2" />
+        <g fill="#ead09b" stroke="#755131" strokeWidth=".65">
+          {[35, 46, 57, 68, 79, 90, 101].map((x) => (
+            <circle key={x} cx={x} cy={116 - Math.abs(68 - x) * 0.08} r="1.3" />
+          ))}
         </g>
       </g>
       {rummaging && (
-        <g className="lore-scroll-holder-grounded-glow" transform="translate(102 103) scale(.35)">
+        <g className="lore-scroll-holder-grounded-glow" transform="translate(127 123) scale(.32)">
           <LoreMagicWisps />
         </g>
       )}

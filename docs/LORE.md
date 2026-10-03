@@ -9,9 +9,9 @@ O fundo da lore ocupa toda a largura da tela, sem as faixas laterais do layout
 anterior. O cabeçalho mantém somente o título; a frase e o botão de abrir os
 arquivos e a legenda “I · O MUNDO” foram removidos a pedido do usuário.
 
-Pastas usam um porta-pergaminhos alto de couro costurado, com aros de madeira,
-tira com fivela e seis rolos encaixados na abertura. A borda traseira fica atrás
-dos rolos e a parede frontal cobre suas pontas. Os três ícones possuem volume,
+Pastas usam uma tigela rasa de bronze ornamentado com seis rolos encaixados
+na abertura. A borda traseira fica atrás dos rolos e a parede frontal cobre
+suas pontas. Os três ícones possuem volume,
 papel envelhecido, detalhes de material/lacre e tamanho ampliado.
 Cada crônica recebe um pergaminho fechado antes do título
 no arquivo e aberto durante a leitura. Luz azul clara e partículas saem do papel
@@ -21,15 +21,19 @@ revelação e deriva independentes; sem contorno fixo ou giro conjunto.
 Brilho mais fosco e discreto, com as três estrelas de quatro pontas preservadas.
 Os traços luminosos permanecem visíveis mesmo com movimento reduzido.
 
-Passar o mouse sobre uma pasta chacoalha o porta-pergaminhos, movimenta os rolos
-e faz um pergaminho com lacre cair no chão. Primeiro ele sobe inteiro acima da
-borda, depois sai pela lateral e só então gira e cai ao lado, sem atravessar
-a parede. A sequência de 1,65 segundo acontece uma única vez por entrada do
-ponteiro. O rolo caído fica imóvel emitindo magia até
+Passar o mouse sobre uma pasta faz a raposa de cristal correr apressada,
+esbarrar na tigela e seguir adiante. O contato inclina o recipiente, balança
+os papéis e faz um rolo tombar sobre a borda, deslizar para fora e cair ao lado.
+O trajeto sobe apenas 3 unidades do SVG e mantém folga da parede na descida.
+A sequência de 2,1 segundos acontece uma única vez por entrada do ponteiro.
+O rolo caído fica imóvel emitindo magia até
 clicar na pasta ou sair de cima dela. Clique/sair cancela também uma sequência
 incompleta; a próxima passagem começa do início. Foco por teclado também ativa
 o efeito. Toque apenas abre a pasta. Com movimento reduzido, mostra a posição
-final e a luz estática, sem chacoalhada ou queda animadas.
+final e a luz estática, sem corrida, chacoalhada ou queda animadas.
+A raposa segue as três referências fornecidas: cauda alongada e afunilada,
+olhos em roxo sem borda branca, orelhas e cristais preservados.
+Arte, prompt e montagem do atlas em [MASCOT.md](MASCOT.md).
 
 Abrir uma crônica pelo clique ou teclado toca `public/audio/lore-scroll-open.wav`,
 um efeito original de papel desenrolando de 1,24 segundo, gerado por
@@ -115,10 +119,12 @@ Confere ainda ícones fechado/aberto, largura completa em 1890 px, edição,
 exclusão com preservação de conteúdo e restauração pela interface.
 Valida edição de crônica inicial, pastas em outra região, remoção da legenda,
 efeito azul visível com movimento reduzido e reprodução/repetição do som.
-Confere ainda folga acima da abertura antes de tombar, descida pela lateral,
+Confere ainda o contato da raposa antes da inclinação, tombamento sem subida
+exagerada, descida pela lateral, saída do mascote,
 permanência no chão sem reiniciar enquanto o mouse fica na pasta, reset por
 clique/saída e alternativa sem movimento. Capturas:
-`test-results/lore-holder-raised.png`, `test-results/lore-holder-falling.png`,
+`test-results/lore-mascot-approach.png`, `test-results/lore-mascot-bump.png`,
+`test-results/lore-mascot-falling.png`,
 `test-results/lore-scroll-holder-fallen.png` e `test-results/lore-scroll-wisps.png`.
 
 A suíte geral executada nesta entrega passou 41 de 43 testes. As duas falhas

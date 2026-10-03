@@ -62,43 +62,75 @@ try {
   expect(heroBounds!.width).toBe(1890);
   await page.screenshot({ path: 'test-results/lore-library-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  // Clear the opening before moving sideways; descend entirely outside the holder.
+  // A hurried mascot bumps the bowl; the scroll tips over its rim without a high lift.
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   const folderChoice = page.locator('[data-folder-choice]').first();
   const vase = folderChoice.locator('.lore-scroll-holder-icon');
   const fallingScroll = vase.locator('.lore-scroll-holder-escaping-scroll');
+  const idleTransform = await fallingScroll.evaluate(
+    (element) => getComputedStyle(element).transform,
+  );
+  const mascot = vase.locator('.lore-mascot-traveler');
+  expect((await page.request.get(origin + '/mascot/crystal-fox-run.webp')).ok()).toBe(true);
   await folderChoice.hover();
   await expect(vase).toHaveAttribute('data-holder-state', 'hovered');
-  await fallingScroll.evaluate(async (element) => {
-    const animation = element.getAnimations()[0];
-    await animation.ready;
-    animation.pause();
-    animation.currentTime = 1650 * 0.38;
-    for (const sibling of element
-      .closest('svg')!
-      .querySelectorAll('.lore-scroll-holder-body, .lore-scroll-holder-rolls')) {
-      for (const motion of sibling.getAnimations()) motion.finish();
-    }
-  });
-  const rim = vase.locator('[data-holder-rim]');
-  const rimBounds = (await rim.boundingBox())!;
-  const raisedBounds = (await fallingScroll.boundingBox())!;
-  expect(raisedBounds.y + raisedBounds.height).toBeLessThan(rimBounds.y);
-  await folderChoice.screenshot({ path: 'test-results/lore-holder-raised.png' });
-  for (const progress of [0.55, 0.62, 0.7, 0.78, 0.84, 0.92, 1]) {
-    await fallingScroll.evaluate((element, progress) => {
-      element.getAnimations()[0].currentTime = 1650 * progress;
+  const setSceneProgress = async (progress: number) => {
+    await vase.evaluate(async (element, progress) => {
+      for (const part of element.querySelectorAll(
+        '.lore-scroll-holder-body, .lore-scroll-holder-rolls, .lore-scroll-holder-escaping-scroll, .lore-mascot-traveler, .lore-mascot-run-sprite',
+      )) {
+        for (const animation of part.getAnimations()) {
+          await animation.ready;
+          animation.pause();
+          animation.currentTime = 2100 * progress;
+        }
+      }
     }, progress);
+  };
+  await setSceneProgress(0.28);
+  const initialScrollBounds = (await fallingScroll.boundingBox())!;
+  expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
+    idleTransform,
+  );
+  const body = vase.locator('.lore-scroll-holder-body');
+  const beforeImpact = await body.evaluate((element) => getComputedStyle(element).transform);
+  const impactChoiceBounds = (await folderChoice.boundingBox())!;
+  const sceneClip = {
+    x: Math.max(0, impactChoiceBounds.x - 42),
+    y: impactChoiceBounds.y,
+    width: impactChoiceBounds.width + 42,
+    height: impactChoiceBounds.height,
+  };
+  await page.screenshot({ path: 'test-results/lore-mascot-approach.png', clip: sceneClip });
+  await setSceneProgress(0.44);
+  expect(await body.evaluate((element) => getComputedStyle(element).transform)).not.toBe(
+    beforeImpact,
+  );
+  expect(await mascot.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
+  await page.screenshot({ path: 'test-results/lore-mascot-bump.png', clip: sceneClip });
+  const rim = vase.locator('[data-holder-rim]');
+  for (const progress of [0.45, 0.6, 0.72, 0.78, 0.85, 0.93, 1]) {
+    await setSceneProgress(progress);
     const outsideBounds = (await fallingScroll.boundingBox())!;
-    expect(outsideBounds.x).toBeGreaterThan(rimBounds.x + rimBounds.width);
-    if (progress === 0.7) {
-      await folderChoice.screenshot({ path: 'test-results/lore-holder-falling.png' });
+    expect(outsideBounds.y).toBeGreaterThan(initialScrollBounds.y - 3);
+    if (progress >= 0.72) {
+      const rimBounds = (await rim.boundingBox())!;
+      expect(outsideBounds.x).toBeGreaterThan(rimBounds.x + rimBounds.width);
+    }
+    if (progress === 0.78) {
+      await page.screenshot({ path: 'test-results/lore-mascot-falling.png', clip: sceneClip });
     }
   }
-  await fallingScroll.evaluate((element) => {
-    const animation = element.getAnimations()[0];
-    animation.currentTime = 0;
-    animation.play();
+  expect(await mascot.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
+  await vase.evaluate((element) => {
+    for (const part of element.querySelectorAll(
+      '.lore-scroll-holder-body, .lore-scroll-holder-rolls, .lore-scroll-holder-escaping-scroll, .lore-mascot-traveler, .lore-mascot-run-sprite',
+    )) {
+      for (const animation of part.getAnimations()) {
+        animation.currentTime = 0;
+        animation.play();
+      }
+    }
   });
   // One shake/drop per hover; retain the fallen scroll, reset on exit or click.
   await expect
@@ -141,7 +173,7 @@ try {
   await page.mouse.move(1400, 50);
   await expect(vase).toHaveAttribute('data-holder-state', 'idle');
   expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
-    'none',
+    idleTransform,
   );
   await expect(vase.locator('.lore-scroll-holder-grounded-glow')).toHaveCount(0);
   await folderChoice.hover();
@@ -152,6 +184,7 @@ try {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await folderChoice.hover();
   expect(await fallingScroll.evaluate((element) => element.getAnimations().length)).toBe(0);
+  expect(await mascot.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
   expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
     heldTransform,
   );
@@ -363,7 +396,7 @@ try {
   await noOverflow();
   expect(errors).toEqual([]);
   console.log(
-    'Lore desktop/celular: porta-pergaminhos, queda sem atravessar a borda, permanência e reset, magia, som, edição e persistência aprovados.',
+    'Lore desktop/celular: raposa esbarrando na tigela, queda sem subida exagerada, permanência e reset, magia, som, edição e persistência aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/lore-failure.png', fullPage: true });

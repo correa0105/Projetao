@@ -1,5 +1,26 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Tigela e mascote de cristal (03/10/2026)
+
+Usuário rejeitou o porta-pergaminhos alto e sua extração vertical. Pastas agora
+usam tigela rasa de bronze ornamentado, com seis rolos e frente ocultando as
+pontas. Ao hover, a raposa de cristal fornecida pelo usuário corre, esbarra na
+tigela e segue adiante. Contato em 32% da sequência de 2,1 s dispara inclinação,
+balanço dos papéis e tombamento de um rolo sobre a borda. Pequeno deslocamento
+vertical de 3 unidades, sem lançamento alto; descida ocorre fora da parede.
+Só o rolo brilhando permanece após a raposa sair. Clique/saída reseta tudo;
+movimento reduzido exibe rolo/efeito estáticos e esconde a corrida.
+
+Arte do mascote criada com imagegen integrado a partir de três referências do
+usuário. Correções obrigatórias: cauda alongada, afunilada e pontuda; olhos
+inteiramente em roxo sem esclera ou borda branca (reflexo pontual permitido).
+Atlas de quatro poses com transparência e linha do chão alinhada em
+`public/mascot/crystal-fox-run.webp`; origem, referências e prompt em
+`docs/MASCOT.md`. Script portátil recompõe o atlas a partir do PNG salvo.
+Smoke Edge desktop/celular verifica contato, altura baixa, folga do metal,
+saída da raposa, permanência/reset do rolo, movimento reduzido e fluxos da lore.
+Substitui a direção do recipiente/queda descrita abaixo.
+
 ## Porta-pergaminhos e queda pela abertura (03/10/2026)
 
 Usuário rejeitou o formato de panela e o rolo atravessando sua parede. Pastas
