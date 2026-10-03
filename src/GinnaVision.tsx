@@ -1,34 +1,39 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
-import { useMusicInterlude } from './SiteMusic';
-import { GINNA_VISION_MS } from './stable-ginna';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { MusicControls, useMusicInterlude } from './SiteMusic';
+import { GinnaBalloon } from './GinnaBalloon';
 
+// Small eyes at different depths across the soil, away from the camera edge.
 const eyes = [
-  { x: 7, y: 8, width: 20, delay: 180, blink: 2.3, angle: -8 },
-  { x: 28, y: 22, width: 15, delay: 420, blink: 3.1, angle: 5 },
-  { x: 44, y: 3, width: 24, delay: 260, blink: 2.7, angle: -4 },
-  { x: 62, y: 20, width: 13, delay: 610, blink: 1.9, angle: 8 },
-  { x: 79, y: 7, width: 19, delay: 350, blink: 3.4, angle: 2 },
+  { x: 11, y: 62, width: 2.4, delay: 180, blink: 2.3, angle: -8 },
+  { x: 29, y: 60, width: 2, delay: 420, blink: 3.1, angle: 5 },
+  { x: 47, y: 65, width: 3.2, delay: 260, blink: 2.7, angle: -4 },
+  { x: 76, y: 62, width: 2.2, delay: 610, blink: 1.9, angle: 8 },
+  { x: 87, y: 72, width: 3.8, delay: 350, blink: 3.4, angle: 2 },
+  { x: 18, y: 72, width: 4.3, delay: 730, blink: 2.8, angle: -12 },
+  { x: 36, y: 80, width: 5.4, delay: 550, blink: 3.7, angle: 10 },
+  { x: 59, y: 76, width: 4.6, delay: 800, blink: 2.5, angle: -6 },
+  { x: 72, y: 84, width: 6.2, delay: 950, blink: 3.3, angle: 7 },
+  { x: 10, y: 85, width: 6.8, delay: 680, blink: 2.9, angle: -3 },
+  { x: 48, y: 87, width: 7.2, delay: 1100, blink: 4.1, angle: 4 },
 ];
 
-export function GinnaVision({ onFinished }: { onFinished: () => void }) {
+export function GinnaVision({ known, onFinished }: { known: boolean; onFinished: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const music = useRef<HTMLAudioElement>(null);
-  const finished = useRef(onFinished);
+  const [responding, setResponding] = useState(false);
   const { muted, volume, beginInterlude } = useMusicInterlude();
-  finished.current = onFinished;
 
   useEffect(() => {
     dialog.current?.showModal();
     const player = music.current;
     const resume = beginInterlude();
-    const timer = window.setTimeout(() => finished.current(), GINNA_VISION_MS);
     const visibility = () => {
-      if (document.hidden) finished.current();
+      if (document.hidden) player?.pause();
+      else void player?.play().catch(() => {});
     };
     document.addEventListener('visibilitychange', visibility);
-    void player?.play().catch(() => {});
+    visibility();
     return () => {
-      window.clearTimeout(timer);
       document.removeEventListener('visibilitychange', visibility);
       player?.pause();
       resume();
@@ -46,50 +51,72 @@ export function GinnaVision({ onFinished }: { onFinished: () => void }) {
     <dialog
       ref={dialog}
       className="ginna-vision"
-      aria-labelledby="ginna-vision-title"
+      aria-label="Visão sombria do estábulo"
       onCancel={(event) => {
         event.preventDefault();
-        finished.current();
+        setResponding(true);
       }}
     >
-      <div className="ginna-vision-ruins" aria-hidden="true" />
-      <div className="ginna-vision-fog" aria-hidden="true" />
-      <img
-        className="ginna-vision-figure"
-        src="/stable/ginna-shadow.webp"
-        alt="Ginna envolta em fumaça escura, sem chapéu, com olhos brancos"
-      />
-      <div className="ginna-vision-eyes" aria-hidden="true">
-        {eyes.map((eye, index) => (
-          <span
-            key={index}
-            className="ginna-earth-eye"
-            style={
-              {
-                left: eye.x + '%',
-                bottom: eye.y + '%',
-                width: eye.width + '%',
-                '--eye-delay': eye.delay + 'ms',
-                '--blink-duration': eye.blink + 's',
-                '--eye-angle': eye.angle + 'deg',
-              } as CSSProperties
-            }
+      <div className="ginna-nightmare-scene">
+        <div className="ginna-vision-ruins" aria-hidden="true" />
+        <div className="ginna-vision-fog" aria-hidden="true" />
+        <div className="ginna-vision-keeper">
+          <button
+            className="stable-keeper-trigger"
+            type="button"
+            aria-label="Conversar com a cuidadora na visão"
+            aria-expanded={responding}
+            onClick={() => setResponding(true)}
           >
-            <span className="ginna-eye-blink" />
-          </span>
-        ))}
+            <img
+              className="ginna-vision-figure"
+              src="/stable/ginna-shadow.webp"
+              alt="Cuidadora envolta em fumaça escura, sem chapéu, com olhos brancos"
+            />
+          </button>
+        </div>
+        <div className="ginna-vision-eyes" aria-hidden="true">
+          {eyes.map((eye, index) => (
+            <span
+              key={index}
+              className="ginna-earth-eye"
+              style={
+                {
+                  left: eye.x + '%',
+                  top: eye.y + '%',
+                  '--eye-width': eye.width + '%',
+                  '--eye-delay': eye.delay + 'ms',
+                  '--blink-duration': eye.blink + 's',
+                  '--eye-angle': eye.angle + 'deg',
+                } as CSSProperties
+              }
+            >
+              <span className="ginna-eye-blink" />
+            </span>
+          ))}
+        </div>
+        <GinnaBalloon
+          speaker={known ? 'Ginna' : 'Cuidadora'}
+          text="Pague para ver o que acontece…"
+          dark
+          label={responding ? 'Resposta à cuidadora' : undefined}
+        >
+          {responding && (
+            <button type="button" onClick={onFinished}>
+              Não vou machucá-los!
+            </button>
+          )}
+        </GinnaBalloon>
       </div>
-      <p className="ginna-vision-line" id="ginna-vision-title">
-        <span>Ginna</span>Pague para ver o que acontece…
-      </p>
-      <button className="ginna-vision-return" type="button" onClick={() => finished.current()}>
-        Voltar ao estábulo
-      </button>
+      <div className="ginna-vision-volume">
+        <MusicControls />
+      </div>
       <div className="ginna-vision-shutter" aria-hidden="true" />
       <audio
         ref={music}
         src="/audio/ginna-lullaby-of-woe.mp3"
         preload="auto"
+        loop
         muted={muted}
         data-ginna-music
         aria-hidden="true"

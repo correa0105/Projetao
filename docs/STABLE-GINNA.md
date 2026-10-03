@@ -1,29 +1,48 @@
-# Ginna — estábulo e visão breve
+# Ginna — estábulo, balões e visão persistente
 
 Implementado em 03/10/2026. Substitui Brida na interface do estábulo.
 
 ## Interação
 
-Ginna tem aparência jovem, pintura realista e nenhum chapéu. Clique nela ou use
-Enter para conversar. As três perguntas cobrem identidade, origem dos animais
-e consequências de maltratá-los. A seleção de cada espécie alterna entre três
-comentários carinhosos; comentários de nomes e equipamentos continuam disponíveis.
+Ginna tem aparência jovem, pintura realista, nenhum chapéu e escala reduzida para
+aparentar 1,50 m junto às montarias e à cerca. Ao entrar, a fala alegre é
+“Olha só, visita! Seja muito bem-vindo! Entre, entre! Se ganhar uma lambida,
+considere um abraço de boas-vindas. Vem conhecer meus queridinhos — só cuidado
+com o seu lanche, hihi!” A identificação é Cuidadora e o nome só aparece
+depois de escolher Quem é você?
+Clique nela ou use Enter para abrir um balão ancorado à personagem, com três
+perguntas sobre identidade, origem dos animais e consequências de maltratá-los.
+Fluxo como na loja: O que deseja saber? abre as opções; selecionar uma fecha
+as perguntas e mostra apenas a resposta. Clicar novamente ou Escape fecha.
+Sem rótulo/botão Conversar visível nas duas formas; o próprio corpo é clicável
+e brilha no hover/foco (dourado como o mercador, suave e frio na visão).
+Balão SVG com um único preenchimento no corpo/ponta e tipografia compartilhada.
+Não abre janela central nem escurece a página para a conversa normal. Balão
+adaptado ao espaço do celular; textos longos rolam dentro dele. A seleção de
+cada espécie alterna três comentários carinhosos; comentários de nomes e
+equipamentos continuam disponíveis.
 
 A quinta pergunta sobre maus-tratos, na mesma visita ao estábulo, abre uma visão
-de 4,8 segundos. Fechar e reabrir o diálogo não zera a insistência. A visão ocupa
-a tela com o mesmo cenário destruído, névoa escura, Ginna em fumaça sem chapéu e
-cinco olhos baixos na perspectiva do chão, piscando em ritmos diferentes.
-Não utiliza a criatura com bocas da primeira proposta. O animal selecionado
-fica oculto; sua seleção e os equipamentos são mantidos.
+persistente. Fechar e reabrir a conversa não zera a insistência. A visão ocupa
+a tela com o mesmo cenário destruído, névoa escura, Ginna menor em fumaça sem
+chapéu e tremor irregular contínuo. Onze olhos pequenos distribuídos entre o
+meio e o fundo do terreno, em diferentes tamanhos/distâncias, piscam em ritmos
+diferentes. Dessaturação, escurecimento e transparência integram suas cores ao
+chão; sem grandes olhos junto à câmera. Não utiliza a criatura com bocas da
+primeira proposta. O animal fica oculto com sua seleção/equipamentos mantidos.
 
-“Pague para ver o que acontece…” aparece durante a visão. Retorno automático,
-Escape e Voltar ao estábulo encerram a cena e devolvem o foco a Ginna. Ocultar
-a aba também encerra a visão. O contador reinicia depois da cena. Movimento
-reduzido mantém olhos e névoa estáticos, sem mudar a duração ou o diálogo.
+“Pague para ver o que acontece…” aparece em balão junto à forma escura. A cena
+não tem tempo de retorno automático: clicar nela abre a opção Não vou
+machucá-los!, que encerra a visão e devolve o foco à cuidadora. Escape revela
+a resposta e não encerra a cena. Ocultar a aba pausa a música, mantendo a
+visão, e voltar retoma a faixa. O contador reinicia após a promessa e Ginna
+responde “Assim é melhor…”. Movimento reduzido mantém olhos, névoa e cenário
+estáticos, preservando a interação e a permanência até a escolha.
 
 A música principal é pausada, preservando sua posição. A trilha temporária
-usa o MP3 fornecido pelo usuário, respeita volume/mute e para ao encerrar a
-visão; a música principal retoma do ponto anterior. Nenhum iframe externo.
+usa o MP3 fornecido pelo usuário em loop, respeita volume/mute e para ao
+encerrar a visão; a música principal retoma do ponto anterior. Controle de som
+disponível dentro da cena. Nenhum iframe externo.
 
 ## Arquivos finais
 
@@ -68,12 +87,17 @@ https://www.youtube.com/watch?v=ohNpf4VnlP8 . Não é atribuído a CC0.
 ## Validação
 
 `node scripts/test-stable-isolated.mjs` usa PostgreSQL descartável e Microsoft
-Edge. Cobre as três perguntas, cinco insistências com fechamento/reabertura,
-ocultação/retorno da montaria, piscar aberto/fechado, pausa/retomada da trilha,
-encerramento do áudio temporário, retorno de foco, celular com movimento
-reduzido e os fluxos anteriores de compra, ownership, idempotência, saldo,
-persistência e seis viewports.
+Edge. Cobre saudação alegre sem nome e revelação pela pergunta, retirada do
+rótulo Conversar, brilho em hover/foco, fluxo de perguntas/respostas como a
+loja, balão sem modal
+central, cinco insistências com fechamento/reabertura, ocultação/retorno da
+montaria, distribuição e tamanho dos olhos, piscar aberto/fechado, tremor,
+permanência além do antigo timeout, clique real na cena em movimento,
+promessa obrigatória, loop/mute/pausa/retomada da trilha, encerramento do áudio
+temporário, foco, celular/movimento reduzido e os fluxos anteriores de compra,
+ownership, idempotência, saldo, persistência e seis viewports.
 
 Capturas locais em `test-results/ginna-conversation.png`,
-`ginna-vision-desktop.png`, `ginna-vision-mobile.png` e `stable-*.png`.
-
+`ginna-welcome.png`, `ginna-welcome-mobile.png`,
+`ginna-vision-desktop.png`, `ginna-balloon-mobile.png`,
+`ginna-vision-mobile.png` e `stable-*.png`.

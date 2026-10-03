@@ -277,37 +277,71 @@
   cursor: pointer;
 }
 :root .stable-keeper-trigger:focus-visible {
-  outline: 2px solid #dec18c;
-  outline-offset: 4px;
+  outline: none;
 }
-.stable-keeper-hint {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 4px 12px;
-  border: 1px solid #b69a6466;
-  border-radius: 3px;
-  background: #191810b8;
-  color: #eadbbf;
-  font: 11px 'NPC Inter', Inter, sans-serif;
+:root .stable-keeper-trigger:is(:hover, :focus-visible, [aria-expanded='true']) > img {
+  filter: saturate(.88) brightness(.96)
+    drop-shadow(2px 0 0 #e3b56b) drop-shadow(-2px 0 0 #e3b56b)
+    drop-shadow(0 2px 0 #e3b56b) drop-shadow(0 -2px 0 #e3b56b)
+    drop-shadow(0 0 7px #dca45b77);
 }
 .stable-page[data-ginna-vision='true'] :is(.stable-animal, .stable-feed) {
   visibility: hidden;
 }
-.ginna-conversation {
-  max-width: 560px;
+/* Scale both forms as a short keeper, about 1.50 m against the mounts/fence. */
+.stable-keeper {
+  height: 49%;
+  width: 25%;
+  right: 2%;
 }
-.ginna-conversation > p {
-  min-height: 95px;
+.ginna-balloon {
+  position: absolute;
+  z-index: 5;
+  right: 27%;
+  bottom: 14%;
+  width: min(320px, 46%);
+  max-height: calc(100cqh - 12px);
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #f1e4ce;
+  border-radius: 12px;
+  isolation: isolate;
+}
+.ginna-balloon[data-mode='response'] { bottom: 42%; }
+.ginna-balloon::before,
+.ginna-balloon::after {
+  content: none;
+}
+.ginna-balloon-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: -1;
+  filter: drop-shadow(0 5px 9px #0008);
+}
+.ginna-balloon-shape path {
+  fill: #25291ff5;
+  stroke: #b59a6d;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.ginna-balloon-copy {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .ginna-questions {
   display: grid;
-  gap: 10px;
-  margin-top: 22px;
+  flex: none;
+  gap: 6px;
+  margin-top: 10px;
 }
 :root .ginna-questions button {
-  padding: 12px 16px;
+  padding: 8px 10px;
   text-align: left;
   white-space: normal;
   border: 1px solid #80704c;
@@ -323,7 +357,7 @@
   border-color: #c7ac70;
 }
 
-/* A single brief vision; the underlying selection and purchases remain intact. */
+/* The vision persists until the player speaks to her and promises kindness. */
 dialog.ginna-vision {
   position: fixed;
   inset: 0;
@@ -343,12 +377,18 @@ dialog.ginna-vision {
 .ginna-vision::backdrop {
   background: #000;
 }
+.ginna-nightmare-scene {
+  position: absolute;
+  inset: -10px;
+  isolation: isolate;
+  animation: ginna-quake 1.3s linear infinite;
+}
 .ginna-vision-ruins {
   position: absolute;
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(#0009, #0003 55%, #0005),
+    linear-gradient(#000a, #0005 55%, #0008),
     url('/stable/paddock-ruined.webp') center/cover;
 }
 .ginna-vision-fog {
@@ -361,28 +401,34 @@ dialog.ginna-vision {
     url('/alvorada-fog.svg') center bottom/130% 75% no-repeat;
   opacity: 0.32;
   filter: grayscale(1) brightness(0.6);
-  animation: ginna-fog-drift 4.8s ease-out both;
+  animation: ginna-fog-drift 16s ease-in-out infinite alternate;
 }
-.ginna-vision-figure {
+.ginna-vision-keeper {
   position: absolute;
-  right: 6%;
-  bottom: 3%;
-  height: 80%;
-  width: 42%;
-  object-fit: contain;
-  object-position: center bottom;
-  filter: drop-shadow(0 0 35px #000);
+  z-index: 4;
+  right: 12%;
+  bottom: 12%;
+  height: 39%;
+  width: 25%;
+}
+:root .ginna-vision .ginna-vision-figure {
+  filter: brightness(.78) drop-shadow(0 0 20px #000);
+}
+:root .ginna-vision .stable-keeper-trigger:is(:hover, :focus-visible, [aria-expanded='true']) > img {
+  filter: brightness(.9) drop-shadow(0 0 6px #64717f66);
 }
 .ginna-vision-eyes {
   position: absolute;
-  inset: 48% 0 0;
+  inset: 0;
   z-index: 3;
   pointer-events: none;
 }
 .ginna-earth-eye {
   position: absolute;
+  width: clamp(12px, var(--eye-width), 110px);
   aspect-ratio: 3/2;
-  transform: perspective(650px) rotateX(52deg) rotateZ(var(--eye-angle));
+  filter: grayscale(1) brightness(.48) contrast(.85);
+  transform: perspective(650px) rotateX(58deg) rotateZ(var(--eye-angle));
   transform-origin: center 80%;
   animation: ginna-eye-emerge 0.65s var(--eye-delay) ease-out both;
 }
@@ -393,34 +439,30 @@ dialog.ginna-vision {
   background: url('/stable/ginna-ground-eyes.webp') center top/100% 200% no-repeat;
   animation: ginna-eye-blink var(--blink-duration) var(--eye-delay) steps(1, end) infinite;
 }
-.ginna-vision-line {
-  position: absolute;
-  z-index: 4;
-  top: 10%;
-  left: 6%;
-  margin: 0;
-  max-width: 42%;
-  font: clamp(24px, 3.2vw, 46px)/1.35 var(--serif);
-  text-shadow: 0 3px 15px #000;
+.ginna-balloon-shadow {
+  right: 36%;
+  bottom: 43%;
+  width: min(350px, 38%);
+  max-height: 50%;
 }
-.ginna-vision-line > span {
-  display: block;
-  font: 12px 'NPC Inter', Inter, sans-serif;
-  letter-spacing: 4px;
-  color: #acaaa8;
-  margin-bottom: 14px;
+.ginna-balloon-shadow[data-mode='response'] { bottom: 43%; }
+:root .app-shell .ginna-balloon.ginna-balloon-shadow.npc-speech .ginna-balloon-shape path {
+  fill: #090909ed;
+  stroke: #534f4a;
 }
-:root .ginna-vision-return {
+:root .ginna-balloon-shadow .ginna-questions button {
+  background: #111;
+  border-color: #655d52;
+}
+:root .ginna-balloon-shadow .ginna-questions button:is(:hover, :focus-visible) {
+  background: #25221f;
+  border-color: #b39f7d;
+}
+.ginna-vision-volume {
   position: absolute;
   z-index: 6;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 8px 16px;
-  background: #080808c9;
-  border: 1px solid #79706a;
-  color: #d1c6b8;
-  font: 12px 'NPC Inter', Inter, sans-serif;
+  top: 18px;
+  right: 18px;
 }
 .ginna-vision-shutter {
   position: absolute;
@@ -428,90 +470,73 @@ dialog.ginna-vision {
   z-index: 8;
   background: #000;
   pointer-events: none;
-  animation: ginna-vision-shutter 4.8s ease-in-out both;
+  animation: ginna-vision-reveal .6s ease-out both;
 }
 @keyframes ginna-eye-emerge {
   from {
     opacity: 0;
-    transform: perspective(650px) rotateX(52deg) rotateZ(var(--eye-angle)) translateY(12%) scaleY(0.4);
+    transform: perspective(650px) rotateX(58deg) rotateZ(var(--eye-angle)) scaleY(0.4);
   }
   to {
-    opacity: 1;
-    transform: perspective(650px) rotateX(52deg) rotateZ(var(--eye-angle));
+    opacity: .8;
+    transform: perspective(650px) rotateX(58deg) rotateZ(var(--eye-angle));
   }
 }
 @keyframes ginna-eye-blink {
-  0%,
-  44%,
-  52%,
-  100% {
-    background-position: center top;
-  }
-  46%,
-  50% {
-    background-position: center bottom;
-  }
+  0%, 44%, 52%, 100% { background-position: center top; }
+  46%, 50% { background-position: center bottom; }
 }
 @keyframes ginna-fog-drift {
-  from {
-    transform: translateX(-3%) scale(1.04);
-  }
-  to {
-    transform: translateX(3%) scale(1.08);
-  }
+  from { transform: translateX(-3%) scale(1.04); }
+  to { transform: translateX(3%) scale(1.08); }
 }
-@keyframes ginna-vision-shutter {
-  0% {
-    opacity: 1;
-  }
-  10%,
-  82% {
-    opacity: 0;
-  }
-  95%,
-  100% {
-    opacity: 1;
-  }
+@keyframes ginna-vision-reveal {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes ginna-quake {
+  0%, 100% { transform: translate(0, 0); }
+  8% { transform: translate(3px, -1px) rotate(.1deg); }
+  17% { transform: translate(-2px, 2px) rotate(-.08deg); }
+  29% { transform: translate(4px, 1px) rotate(.12deg); }
+  43% { transform: translate(-3px, -2px) rotate(-.1deg); }
+  58% { transform: translate(1px, 3px); }
+  71% { transform: translate(-4px, 1px) rotate(-.12deg); }
+  83% { transform: translate(2px, -3px) rotate(.08deg); }
+  92% { transform: translate(-1px, 2px); }
+}
+@media (max-width: 900px) and (min-width: 601px) {
+  .stable-keeper { width: 30%; }
+  .ginna-balloon { right: 31%; width: 66%; bottom: 10%; }
 }
 @media (max-width: 600px) {
-  .stable-keeper {
-    height: 54%;
-    bottom: 0;
+  .stable-keeper { height: 41%; width: 36%; right: 0; bottom: 0; }
+  .stable-speech { bottom: calc(100% + 20px); }
+  .ginna-balloon {
+    right: 30%;
+    bottom: 6%;
+    width: calc(70% - 10px);
   }
-  .stable-speech {
-    bottom: calc(100% + 20px);
+  .ginna-balloon[data-mode='response'] { bottom: 22%; }
+  .ginna-vision-keeper {
+    height: 34%;
+    width: 35%;
+    right: 8%;
+    bottom: 18%;
   }
-  .ginna-vision-figure {
-    height: 66%;
-    width: 74%;
-    right: -3%;
-    bottom: 5%;
+  .ginna-balloon-shadow {
+    right: 43%;
+    bottom: 45%;
+    width: 53%;
+    max-height: 40%;
   }
-  .ginna-vision-line {
-    top: 24px;
-    right: 18px;
-    left: 18px;
-    max-width: none;
-    font-size: 24px;
-  }
-  .ginna-vision-line > span {
-    margin-bottom: 8px;
-  }
-
-  .ginna-vision-eyes {
-    top: 65%;
-  }
-  .ginna-earth-eye {
-    min-width: 82px;
-  }
+  .ginna-balloon-shadow[data-mode='response'] { bottom: 45%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ginna-earth-eye,
   .ginna-eye-blink,
-  .ginna-vision-fog {
-    animation: none;
-  }
-  .ginna-vision-shutter {
-    display: none;
-  }
+  .ginna-vision-fog,
+  .ginna-nightmare-scene { animation: none; }
+  .ginna-earth-eye { opacity: .8; }
+  .ginna-vision-shutter { display: none; }
 }

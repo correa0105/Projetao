@@ -103,6 +103,16 @@ try {
   ).toBeVisible();
   await expect(page.locator('.stable-owned')).toHaveCount(0);
   await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('Olha só, visita!');
+  await expect(page.locator('.stable-field > .ginna-balloon')).not.toContainText('Ginna');
+  await mkdir('test-results', { recursive: true });
+  await page.screenshot({ path: 'test-results/ginna-welcome.png' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({ path: 'test-results/ginna-welcome-mobile.png' });
+  const welcomeBox = (await page.locator('.stable-field > .ginna-balloon').boundingBox())!;
+  expect(welcomeBox.y).toBeGreaterThanOrEqual(0);
+  expect(welcomeBox.x + welcomeBox.width).toBeLessThanOrEqual(390);
+  await page.setViewportSize({ width: 1440, height: 900 });
   for (const name of ['Cavalo de montaria', 'Cavalo de guerra', 'Pônei', 'Mula']) {
     await page.getByRole('button', { name: `Ver ${name}`, exact: true }).click();
     await expect(page.getByAltText(`${name} de corpo inteiro no campo`)).toBeVisible();
@@ -113,24 +123,53 @@ try {
     ).toBe(true);
   }
   await mkdir('test-results', { recursive: true });
-  const keeper = page.getByRole('button', { name: 'Conversar com Ginna', exact: true });
+  const keeper = page.locator('.stable-keeper .stable-keeper-trigger');
+  const normalBalloon = page.locator('.stable-field > .ginna-balloon');
   await expect(keeper.locator('img')).toHaveAttribute('src', '/stable/ginna.webp');
+  await expect(page.locator('.stable-keeper-hint')).toHaveCount(0);
+  await expect(normalBalloon).not.toContainText('Ginna');
+  const normalFilter = await keeper
+    .locator('img')
+    .evaluate((element) => getComputedStyle(element).filter);
+  await keeper.hover();
+  await expect
+    .poll(() => keeper.locator('img').evaluate((element) => getComputedStyle(element).filter))
+    .not.toBe(normalFilter);
   await keeper.focus();
   await keeper.press('Enter');
-  const conversation = page.getByRole('dialog', { name: 'Conversar com Ginna', exact: true });
+  const conversation = page.getByRole('group', { name: 'Perguntas à cuidadora', exact: true });
   await expect(conversation).toBeVisible();
-  await expect(conversation.locator('[role="status"]')).toContainText('Pode me chamar de Ginna');
+  await expect(page.locator('dialog')).toHaveCount(0);
+  await expect(conversation.locator('[role="status"]')).toContainText('O que deseja saber?');
+  await expect(conversation).not.toContainText('Ginna');
   await expect(conversation.locator('.ginna-questions button')).toHaveCount(3);
-  await conversation.getByRole('button', { name: 'Como você conseguiu esses animais?' }).click();
-  await expect(conversation.locator('[role="status"]')).toContainText('Os animais vêm até mim');
+  await expect(conversation.locator('svg.ginna-balloon-shape path')).toHaveCount(1);
+  const balloonBox = (await conversation.boundingBox())!;
+  const keeperBox = (await keeper.boundingBox())!;
+  expect(balloonBox.x + balloonBox.width).toBeLessThanOrEqual(keeperBox.x + 25);
+  expect(balloonBox.y + balloonBox.height).toBeGreaterThan(keeperBox.y);
+  const askQuestion = async (topic: string) => {
+    if (!(await conversation.isVisible())) await keeper.click();
+    await conversation.locator('[data-ginna-question="' + topic + '"]').click();
+    await expect(conversation).toHaveCount(0);
+  };
+  await askQuestion('identity');
+  await expect(normalBalloon.locator('[role="status"]')).toContainText('Pode me chamar de Ginna');
+  await expect(normalBalloon.locator('.npc-speaker')).toHaveText('Ginna');
+  await expect(keeper).toBeFocused();
+  await askQuestion('animals');
+  await expect(normalBalloon.locator('[role="status"]')).toContainText('Os animais vêm até mim');
   for (let warning = 0; warning < 4; warning++) {
-    await conversation.locator('[data-ginna-question="warning"]').click();
+    await askQuestion('warning');
     await expect(page.locator('.ginna-vision')).toHaveCount(0);
   }
-  await expect(conversation.locator('[role="status"]')).toContainText('Esta é a última vez');
+  await expect(normalBalloon.locator('[role="status"]')).toContainText('Esta é a última vez');
+  await keeper.click();
   await page.screenshot({ path: 'test-results/ginna-conversation.png' });
-  // Closing the dialogue does not erase the warnings on this visit.
-  await conversation.getByRole('button', { name: 'Fechar', exact: true }).click();
+  // Closing the balloon does not erase the warnings on this visit.
+  await conversation.locator('[data-ginna-question="identity"]').press('Escape');
+  await expect(conversation).toHaveCount(0);
+  await expect(keeper).toBeFocused();
   await keeper.click();
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   const normalImage = await page.locator('.stable-animal-base').getAttribute('src');
@@ -140,8 +179,13 @@ try {
     time: element.currentTime,
     volume: element.volume,
   }));
-  await conversation.locator('[data-ginna-question="warning"]').click();
+  await askQuestion('warning');
   const vision = page.locator('.ginna-vision');
+  // The scene deliberately keeps moving; click the live target with the mouse.
+  const clickShaking = async (button: ReturnType<typeof page.locator>) => {
+    const box = (await button.boundingBox())!;
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+  };
   await expect(vision).toBeVisible();
   await expect(vision).toContainText('Pague para ver o que acontece');
   await expect(page.locator('.stable-animal')).toBeHidden();
@@ -158,11 +202,12 @@ try {
   expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.volume)).toBe(
     musicBefore.volume,
   );
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.loop)).toBe(true);
   await expect(vision.locator('.ginna-vision-figure')).toHaveAttribute(
     'src',
     '/stable/ginna-shadow.webp',
   );
-  await expect(vision.locator('.ginna-earth-eye')).toHaveCount(5);
+  await expect(vision.locator('.ginna-earth-eye')).toHaveCount(11);
   await expect
     .poll(() =>
       vision
@@ -170,7 +215,14 @@ try {
         .last()
         .evaluate((element) => Number(getComputedStyle(element).opacity)),
     )
-    .toBe(1);
+    .toBe(0.8);
+  const eyeBoxes = await vision
+    .locator('.ginna-earth-eye')
+    .evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().toJSON()));
+  expect(Math.max(...eyeBoxes.map((box) => box.width))).toBeLessThan(115);
+  expect(
+    Math.max(...eyeBoxes.map((box) => box.y)) - Math.min(...eyeBoxes.map((box) => box.y)),
+  ).toBeGreaterThan(160);
   const blinkingEye = vision.locator('.ginna-eye-blink').first();
   await blinkingEye.evaluate((element) => {
     const animation = element.getAnimations()[0];
@@ -189,13 +241,35 @@ try {
   expect(
     await blinkingEye.evaluate((element) => getComputedStyle(element).backgroundPosition),
   ).toBe('50% 0%');
-  await vision.locator('.ginna-vision-shutter').evaluate((element) => {
+  const shakes = await vision.locator('.ginna-nightmare-scene').evaluate((element) => {
     const animation = element.getAnimations()[0];
     animation.pause();
-    animation.currentTime = 1500;
+    animation.currentTime = 100;
+    const first = getComputedStyle(element).transform;
+    animation.currentTime = 500;
+    const second = getComputedStyle(element).transform;
+    animation.play();
+    return [first, second];
   });
+  expect(shakes[0]).not.toBe(shakes[1]);
+  await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
+  await vision.getByRole('button', { name: 'Mutar música', exact: true }).click();
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.muted)).toBe(true);
+  await vision.getByRole('button', { name: 'Ativar música', exact: true }).click();
+  await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
   await page.screenshot({ path: 'test-results/ginna-vision-desktop.png' });
-  await expect(vision).toHaveCount(0, { timeout: 6500 });
+  // It must persist beyond the former automatic timeout, keeping the music.
+  await page.waitForTimeout(6100);
+  await expect(vision).toBeVisible();
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.paused)).toBe(false);
+  await expect(vision.getByRole('button', { name: 'Não vou machucá-los!' })).toHaveCount(0);
+  await clickShaking(vision.getByRole('button', { name: 'Conversar com a cuidadora na visão' }));
+  const promise = vision.getByRole('button', { name: 'Não vou machucá-los!', exact: true });
+  await expect(promise).toBeVisible();
+  await promise.press('Escape');
+  await expect(vision).toBeVisible();
+  await clickShaking(promise);
+  await expect(vision).toHaveCount(0);
   expect(await visionPlayer!.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
   await expect(page.locator('.stable-animal-base')).toHaveAttribute('src', normalImage!);
   await expect(keeper).toBeFocused();
@@ -206,18 +280,27 @@ try {
   expect(
     await normalMusic.evaluate((element: HTMLAudioElement) => element.currentTime),
   ).toBeGreaterThanOrEqual(musicBefore.time);
-  // Reduced motion keeps the story and quick return, with static eyes/fog.
+  // Reduced motion keeps the persistent scene, without shaking, drifting or blinking.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await keeper.click();
-  for (let warning = 0; warning < 5; warning++)
-    await conversation.locator('[data-ginna-question="warning"]').click();
+  const mobileBalloon = (await conversation.boundingBox())!;
+  expect(mobileBalloon.x).toBeGreaterThanOrEqual(0);
+  expect(mobileBalloon.x + mobileBalloon.width).toBeLessThanOrEqual(390);
+  await page.screenshot({ path: 'test-results/ginna-balloon-mobile.png' });
+  for (let warning = 0; warning < 5; warning++) await askQuestion('warning');
   await expect(vision).toBeVisible();
   expect(await blinkingEye.evaluate((element) => getComputedStyle(element).animationName)).toBe(
     'none',
   );
+  expect(
+    await vision
+      .locator('.ginna-nightmare-scene')
+      .evaluate((element) => getComputedStyle(element).animationName),
+  ).toBe('none');
+  await vision.getByRole('button', { name: 'Conversar com a cuidadora na visão' }).click();
   await page.screenshot({ path: 'test-results/ginna-vision-mobile.png' });
-  await vision.getByRole('button', { name: 'Voltar ao estábulo' }).click();
+  await promise.click();
   await expect(vision).toHaveCount(0);
   await expect(page.locator('.stable-animal')).toBeVisible();
   await page.setViewportSize({ width: 1440, height: 900 });
@@ -228,8 +311,8 @@ try {
     '/stable/pony-alternate.png',
   );
   await page.getByRole('button', { name: 'Experimentar Barda de placas' }).click();
-  await expect(page.locator('.stable-speech')).toContainText('fortaleza');
-  await expect(page.locator('.stable-speech')).not.toContainText('CA 18');
+  await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('fortaleza');
+  await expect(page.locator('.stable-field > .ginna-balloon')).not.toContainText('CA 18');
   await page.getByRole('button', { name: 'Ver detalhes', exact: true }).click();
   await expect(page.getByRole('region', { name: 'Barda selecionada' })).toContainText(
     'Barda de placas',
@@ -237,7 +320,7 @@ try {
   await expect(page.getByRole('region', { name: 'Barda selecionada' })).toContainText('CA 18');
   await page.getByRole('button', { name: 'Fechar', exact: true }).click();
   await page.getByRole('button', { name: 'Experimentar Sela de montaria' }).click();
-  await expect(page.locator('.stable-speech')).toContainText('primeira taverna');
+  await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('primeira taverna');
   await page.getByRole('button', { name: 'Ver detalhes', exact: true }).click();
   await expect(page.getByRole('region', { name: 'Sela selecionada' })).toContainText(
     'Sela de montaria',
@@ -249,10 +332,12 @@ try {
   await page.getByRole('button', { name: 'Fechar', exact: true }).click();
   await page.getByRole('button', { name: 'Experimentar Ração · 1 dia' }).click();
   await page.getByLabel('Como vai se chamar?').fill('Pé de Pano');
-  await expect(page.locator('.stable-speech')).toContainText('Pé de Pano');
-  await expect(page.locator('.stable-speech .npc-speaker')).toHaveText('Ginna');
+  await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('Pé de Pano');
+  await expect(page.locator('.stable-field > .ginna-balloon .npc-speaker')).toHaveText('Ginna');
   expect(
-    await page.locator('.stable-speech p').evaluate((el) => getComputedStyle(el).fontFamily),
+    await page
+      .locator('.stable-field > .ginna-balloon p')
+      .evaluate((el) => getComputedStyle(el).fontFamily),
   ).toContain('NPC Inter');
   await page.getByRole('button', { name: 'Comprar conjunto', exact: true }).click();
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
@@ -297,7 +382,7 @@ try {
   ]) {
     await page.setViewportSize(viewport);
     await page.getByLabel('Como vai se chamar?').fill('Sir Cenoura da Estrada Longa');
-    await expect(page.locator('.stable-speech')).toContainText('Sir Cenoura');
+    await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('Sir Cenoura');
     await page.getByRole('button', { name: 'Ver detalhes' }).click();
     await page.getByRole('button', { name: 'Fechar', exact: true }).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
@@ -310,15 +395,15 @@ try {
     expect(nameBox.y + nameBox.height).toBeLessThanOrEqual(choicesBox.y + 1);
     expect(checkoutBox.y).toBeGreaterThanOrEqual(shopBox.y + shopBox.height - 1);
     if (viewport.width <= 600) {
-      const speechBox = (await page.locator('.stable-speech').boundingBox())!;
+      const speechBox = (await page.locator('.stable-field > .ginna-balloon').boundingBox())!;
       expect(speechBox.y).toBeGreaterThanOrEqual(checkoutBox.y + checkoutBox.height);
     }
     const keeper = (await page.locator('.stable-keeper-trigger img').boundingBox())!;
     if (viewport.width <= 600) {
-      const speechBox = (await page.locator('.stable-speech').boundingBox())!;
-      expect(speechBox.y + speechBox.height + 20).toBeLessThanOrEqual(keeper.y + 1);
+      const speechBox = (await page.locator('.stable-field > .ginna-balloon').boundingBox())!;
+      expect(speechBox.x + speechBox.width).toBeLessThanOrEqual(keeper.x + 25);
     }
-    expect(keeper.height).toBeGreaterThan(110);
+    expect(keeper.height).toBeGreaterThan(80);
     expect(
       await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1),
     ).toBe(true);
@@ -331,7 +416,7 @@ try {
     expect(animal.x + animal.width).toBeLessThanOrEqual(viewport.width);
     expect(
       await page
-        .locator('.stable-speech')
+        .locator('.stable-field > .ginna-balloon')
         .evaluate(
           (el) =>
             el.querySelector('p')!.getBoundingClientRect().bottom <=

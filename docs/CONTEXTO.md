@@ -3,17 +3,31 @@
 ## Ginna e visão do estábulo (03/10/2026)
 
 Brida foi substituída por Ginna, moça jovem em arte realista sem chapéu.
-Clique abre três perguntas: identidade, origem enigmática dos animais e
-maus-tratos. A quinta insistência na mesma visita dispara visão de 4,8 s:
-cenário destruído, névoa negra, forma escura também sem chapéu e cinco olhos
-baixos no chão piscando. Não usar a criatura com bocas descartada. Animal
-fica oculto durante a cena e retorna com seleção/equipamentos preservados.
-Escape, botão e troca de aba encerram; foco retorna à Ginna e contador zera.
-Movimento reduzido exibe a visão estática. Trilha local fornecida pelo usuário
-substitui a música temporariamente, respeitando volume/mute; retoma a música
-anterior sem reiniciá-la. Sem mudanças SQL. Artes, prompts integrados e
-validação em docs/STABLE-GINNA.md. Aplicação local exige rebuild/restart do
-serviço Docker app; enviar ao GitHub sozinho não atualiza o container.
+Refino vigente: escala reduzida para aparentar 1,50 m nas duas formas.
+Ao entrar, recebe a visita com fala alegre/sapeca sobre lambidas e lanches,
+com identificação Cuidadora. Nome revelado
+somente ao escolher Quem é você? Clique abre balão junto à personagem, com
+três perguntas; não abrir menu/modal central. Clicar nela novamente ou Escape
+fecha as perguntas e devolve foco, mantendo contador da visita. Retirado o rótulo
+Conversar nas duas formas: corpo recebe brilho no hover/foco como na loja;
+na visão o brilho é suave para preservar o preto. Conversa segue o mercador:
+clicar no corpo abre O que deseja saber? com três opções, selecionar fecha
+as opções e mostra só a resposta. Balão em SVG com corpo/ponta unidos e
+tipografia compartilhada com a loja. Clicar no corpo novamente ou Escape fecha.
+
+Quinta insistência dispara cenário destruído, névoa negra, Ginna em fumaça
+sem chapéu e tremor irregular contínuo da cena. Onze olhos pequenos em
+diferentes profundidades do terreno, dessaturados/escurecidos para se integrar
+ao chão, piscam em ritmos independentes. Não usar criatura com bocas nem olhos
+gigantes junto à câmera. Animal fica oculto com seleção/equipamentos intactos.
+Não há mais tempo de retorno automático. Só clicar na forma escura e escolher
+Não vou machucá-los! encerra, restaura foco/animal/música e reinicia contador.
+Escape abre a resposta e não encerra a visão. Ocultar a aba pausa seu áudio,
+preservando a cena, e voltar retoma. Música local em loop, volume/mute gerais
+e controle de som acessível na visão. Movimento reduzido mantém a cena
+persistente estática. Sem mudanças SQL. Artes, prompts e validação em
+docs/STABLE-GINNA.md. Rebuild/restart do serviço Docker app é necessário para
+atualizar o site local; enviar ao GitHub sozinho não atualiza o container.
 
 ## Citação / lenda como caixa lateral (03/10/2026)
 

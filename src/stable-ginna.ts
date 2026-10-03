@@ -1,5 +1,5 @@
 export const ginnaGreeting =
-  'Pode me chamar de Ginna. Estes são meus companheiros; adoro cada um deles. Venha conhecer quem vai seguir ao seu lado.';
+  'Olha só, visita! Seja muito bem-vindo! Entre, entre! Se ganhar uma lambida, considere um abraço de boas-vindas. Vem conhecer meus queridinhos — só cuidado com o seu lanche, hihi!';
 
 export const ginnaQuestions = [
   {
@@ -47,5 +47,3 @@ export const ginnaMountLines: Record<string, readonly string[]> = {
     'Minha companheira de passos tranquilos. Divida o peso, dê descanso e ela estará com você até o fim da estrada.',
   ],
 };
-
-export const GINNA_VISION_MS = 4800;

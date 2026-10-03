@@ -8,6 +8,7 @@ import { post } from './api';
 import { money } from '../shared/rules';
 import { Modal } from './components';
 import { GinnaVision } from './GinnaVision';
+import { GinnaBalloon } from './GinnaBalloon';
 import {
   ginnaGreeting,
   ginnaMountLines,
@@ -91,16 +92,17 @@ export function Stable({
   const [name, setName] = useState('');
   const [speech, setSpeech] = useState(ginnaGreeting);
   const [talk, setTalk] = useState(false);
-  const [answer, setAnswer] = useState(ginnaQuestions[0].answer as string);
-  const [topic, setTopic] = useState<GinnaTopic>('identity');
+  const [known, setKnown] = useState(false);
   const [vision, setVision] = useState(false);
   const warnings = useRef(0);
   const keeperTrigger = useRef<HTMLButtonElement>(null);
   const mountVisits = useRef<Record<string, number>>({});
   function askGinna(next: GinnaTopic) {
-    setTopic(next);
+    if (next === 'identity') setKnown(true);
+    setTalk(false);
     if (next !== 'warning') {
-      setAnswer(ginnaQuestions.find((question) => question.id === next)!.answer);
+      setSpeech(ginnaQuestions.find((question) => question.id === next)!.answer);
+      window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
       return;
     }
     if (warnings.current >= 5) return;
@@ -110,10 +112,16 @@ export function Stable({
       setVision(true);
       return;
     }
-    setAnswer(ginnaWarnings[warnings.current - 1]);
+    setSpeech(ginnaWarnings[warnings.current - 1]);
+    window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
+  }
+  function closeConversation() {
+    setTalk(false);
+    window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
   }
   function finishVision() {
     setVision(false);
+    setSpeech('Assim é melhor. Eles só precisam de cuidado e gentileza. Agora podemos continuar.');
     warnings.current = 0;
     window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
   }
@@ -142,6 +150,7 @@ export function Stable({
   const chosenGear = stableGear.filter((g) => equipment.includes(g.id));
   const total = mount.price_cp + chosenGear.reduce((sum, g) => sum + g.price_cp, 0);
   function toggleGear(id: string) {
+    setTalk(false);
     const item = stableGear.find((g) => g.id === id)!;
     setEquipment((current) =>
       current.includes(id)
@@ -238,6 +247,7 @@ export function Stable({
                   aria-label={`Ver ${m.name}`}
                   disabled={busy}
                   onClick={() => {
+                    setTalk(false);
                     setSelected(m.id);
                     setCoat('original');
                     const lines = ginnaMountLines[m.id];
@@ -355,51 +365,44 @@ export function Stable({
             />
           )}
           <div className="stable-keeper">
-            <div className="stable-speech npc-speech" role="status">
-              <strong className="npc-speaker">Ginna</strong>
-              <p>{speech}</p>
-            </div>
             <button
               ref={keeperTrigger}
               className="stable-keeper-trigger"
               type="button"
-              aria-label="Conversar com Ginna"
-              aria-haspopup="dialog"
+              aria-label={known ? 'Conversar com Ginna' : 'Conversar com a cuidadora'}
               aria-expanded={talk}
               onClick={() => {
-                setTopic('identity');
-                setAnswer(ginnaQuestions[0].answer);
+                if (talk) {
+                  closeConversation();
+                  return;
+                }
                 setTalk(true);
               }}
             >
-              <img src="/stable/ginna.webp" alt="Ginna, jovem cuidadora dos animais, sem chapéu" />
-              <span className="stable-keeper-hint">Conversar</span>
+              <img src="/stable/ginna.webp" alt="Jovem cuidadora dos animais, sem chapéu" />
             </button>
           </div>
-        </div>
-      </div>
-      {talk && (
-        <Modal title="Conversar com Ginna" close={() => setTalk(false)}>
-          <div className="ginna-conversation npc-speech">
-            <strong className="npc-speaker">Ginna</strong>
-            <p role="status">{answer}</p>
-            <div className="ginna-questions" aria-label="Perguntas para Ginna">
-              {ginnaQuestions.map((question) => (
+          <GinnaBalloon
+            speaker={known ? 'Ginna' : 'Cuidadora'}
+            text={talk ? 'O que deseja saber?' : speech}
+            label={talk ? 'Perguntas à cuidadora' : undefined}
+            close={closeConversation}
+          >
+            {talk &&
+              ginnaQuestions.map((question) => (
                 <button
                   key={question.id}
                   type="button"
-                  aria-pressed={topic === question.id}
                   data-ginna-question={question.id}
                   onClick={() => askGinna(question.id)}
                 >
                   {question.question}
                 </button>
               ))}
-            </div>
-          </div>
-        </Modal>
-      )}
-      {vision && <GinnaVision onFinished={finishVision} />}
+          </GinnaBalloon>
+        </div>
+      </div>
+      {vision && <GinnaVision known={known} onFinished={finishVision} />}
       {notice && (
         <FlashMessage kind="success">
           <Check size={16} />
