@@ -1,4 +1,12 @@
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 // Add a route key here when an area receives its own soundtrack.
@@ -13,6 +21,7 @@ const MusicContext = createContext({
   toggle: () => {},
   setVolume: (_value: number) => {},
   playScroll: () => {},
+  beginInterlude: (): (() => void) => () => {},
 });
 const preference = 'alvorada-music-muted';
 
@@ -20,10 +29,27 @@ export function useLoreScrollSound() {
   return useContext(MusicContext).playScroll;
 }
 
+export function useMusicInterlude() {
+  return useContext(MusicContext);
+}
+
 export function SiteMusicProvider({ children }: { children: ReactNode }) {
   const audio = useRef<HTMLAudioElement>(null);
   const bell = useRef<HTMLAudioElement>(null);
   const scroll = useRef<HTMLAudioElement>(null);
+  const interlude = useRef<symbol | null>(null);
+  const beginInterlude = useCallback(() => {
+    const token = Symbol('music-interlude');
+    interlude.current = token;
+    audio.current?.pause();
+    bell.current?.pause();
+    scroll.current?.pause();
+    return () => {
+      if (interlude.current !== token) return;
+      interlude.current = null;
+      if (!document.hidden) void audio.current?.play().catch(() => {});
+    };
+  }, []);
   const bellPending = useRef(location.hash === '#shop');
   const [track, setTrack] = useState(trackForPage);
   const [volume, setVolume] = useState(() => {
@@ -57,6 +83,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       });
     };
     const play = () => {
+      if (interlude.current) return;
       playBell();
       if (player.paused && !document.hidden) void player.play().catch(() => {});
     };
@@ -114,13 +141,14 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     } catch {}
   }, [muted]);
   useEffect(() => {
-    void audio.current!.play().catch(() => {});
+    if (!interlude.current) void audio.current!.play().catch(() => {});
   }, [track]);
   return (
     <MusicContext.Provider
       value={{
         muted,
         volume,
+        beginInterlude,
         setVolume: (value) => {
           setVolume(Math.max(0, Math.min(1, value)));
           if (value > 0) setMuted(false);

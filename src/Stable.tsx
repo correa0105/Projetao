@@ -7,6 +7,14 @@ import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
 import { Modal } from './components';
+import { GinnaVision } from './GinnaVision';
+import {
+  ginnaGreeting,
+  ginnaMountLines,
+  ginnaQuestions,
+  ginnaWarnings,
+  type GinnaTopic,
+} from './stable-ginna';
 import './stable.css';
 
 type Hoof = { x: number; y: number; width: number };
@@ -81,9 +89,44 @@ export function Stable({
   const [selected, setSelected] = useState<string>(mounts[0].id);
   const mount = mounts.find((m) => m.id === selected)!;
   const [name, setName] = useState('');
-  const [speech, setSpeech] = useState(
-    'Bem-vindo ao campo! Sou Brida. Escolha um companheiro de estrada; prometo que nenhum deles cobra pedágio.',
-  );
+  const [speech, setSpeech] = useState(ginnaGreeting);
+  const [talk, setTalk] = useState(false);
+  const [answer, setAnswer] = useState(ginnaQuestions[0].answer as string);
+  const [topic, setTopic] = useState<GinnaTopic>('identity');
+  const [vision, setVision] = useState(false);
+  const warnings = useRef(0);
+  const keeperTrigger = useRef<HTMLButtonElement>(null);
+  const mountVisits = useRef<Record<string, number>>({});
+  function askGinna(next: GinnaTopic) {
+    setTopic(next);
+    if (next !== 'warning') {
+      setAnswer(ginnaQuestions.find((question) => question.id === next)!.answer);
+      return;
+    }
+    if (warnings.current >= 5) return;
+    warnings.current += 1;
+    if (warnings.current === 5) {
+      setTalk(false);
+      setVision(true);
+      return;
+    }
+    setAnswer(ginnaWarnings[warnings.current - 1]);
+  }
+  function finishVision() {
+    setVision(false);
+    warnings.current = 0;
+    window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
+  }
+  useEffect(() => {
+    for (const path of [
+      '/stable/ginna-shadow.webp',
+      '/stable/paddock-ruined.webp',
+      '/stable/ginna-ground-eyes.webp',
+    ]) {
+      const image = new Image();
+      image.src = path;
+    }
+  }, []);
   const [details, setDetails] = useState(false);
   const [coat, setCoat] = useState('original');
   const coats = mountCoats[mount.id];
@@ -163,7 +206,7 @@ export function Stable({
     }
   }
   return (
-    <section className="stable-page" aria-label="Estábulo">
+    <section className="stable-page" aria-label="Estábulo" data-ginna-vision={vision || undefined}>
       <div className="stable-background" aria-hidden="true" />
       <header className="stable-selected-title">
         <h2>{mount.name}</h2>
@@ -197,7 +240,10 @@ export function Stable({
                   onClick={() => {
                     setSelected(m.id);
                     setCoat('original');
-                    setSpeech(m.comment);
+                    const lines = ginnaMountLines[m.id];
+                    const visit = mountVisits.current[m.id] || 0;
+                    setSpeech(lines[visit % lines.length]);
+                    mountVisits.current[m.id] = visit + 1;
                     setNotice('');
                     setError('');
                   }}
@@ -310,13 +356,50 @@ export function Stable({
           )}
           <div className="stable-keeper">
             <div className="stable-speech npc-speech" role="status">
-              <strong className="npc-speaker">Brida</strong>
+              <strong className="npc-speaker">Ginna</strong>
               <p>{speech}</p>
             </div>
-            <img src="/stable/keeper.png" alt="Brida, dona do estábulo" />
+            <button
+              ref={keeperTrigger}
+              className="stable-keeper-trigger"
+              type="button"
+              aria-label="Conversar com Ginna"
+              aria-haspopup="dialog"
+              aria-expanded={talk}
+              onClick={() => {
+                setTopic('identity');
+                setAnswer(ginnaQuestions[0].answer);
+                setTalk(true);
+              }}
+            >
+              <img src="/stable/ginna.webp" alt="Ginna, jovem cuidadora dos animais, sem chapéu" />
+              <span className="stable-keeper-hint">Conversar</span>
+            </button>
           </div>
         </div>
       </div>
+      {talk && (
+        <Modal title="Conversar com Ginna" close={() => setTalk(false)}>
+          <div className="ginna-conversation npc-speech">
+            <strong className="npc-speaker">Ginna</strong>
+            <p role="status">{answer}</p>
+            <div className="ginna-questions" aria-label="Perguntas para Ginna">
+              {ginnaQuestions.map((question) => (
+                <button
+                  key={question.id}
+                  type="button"
+                  aria-pressed={topic === question.id}
+                  data-ginna-question={question.id}
+                  onClick={() => askGinna(question.id)}
+                >
+                  {question.question}
+                </button>
+              ))}
+            </div>
+          </div>
+        </Modal>
+      )}
+      {vision && <GinnaVision onFinished={finishVision} />}
       {notice && (
         <FlashMessage kind="success">
           <Check size={16} />

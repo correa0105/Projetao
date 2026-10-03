@@ -112,6 +112,115 @@ try {
         .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
     ).toBe(true);
   }
+  await mkdir('test-results', { recursive: true });
+  const keeper = page.getByRole('button', { name: 'Conversar com Ginna', exact: true });
+  await expect(keeper.locator('img')).toHaveAttribute('src', '/stable/ginna.webp');
+  await keeper.focus();
+  await keeper.press('Enter');
+  const conversation = page.getByRole('dialog', { name: 'Conversar com Ginna', exact: true });
+  await expect(conversation).toBeVisible();
+  await expect(conversation.locator('[role="status"]')).toContainText('Pode me chamar de Ginna');
+  await expect(conversation.locator('.ginna-questions button')).toHaveCount(3);
+  await conversation.getByRole('button', { name: 'Como você conseguiu esses animais?' }).click();
+  await expect(conversation.locator('[role="status"]')).toContainText('Os animais vêm até mim');
+  for (let warning = 0; warning < 4; warning++) {
+    await conversation.locator('[data-ginna-question="warning"]').click();
+    await expect(page.locator('.ginna-vision')).toHaveCount(0);
+  }
+  await expect(conversation.locator('[role="status"]')).toContainText('Esta é a última vez');
+  await page.screenshot({ path: 'test-results/ginna-conversation.png' });
+  // Closing the dialogue does not erase the warnings on this visit.
+  await conversation.getByRole('button', { name: 'Fechar', exact: true }).click();
+  await keeper.click();
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  const normalImage = await page.locator('.stable-animal-base').getAttribute('src');
+  const normalMusic = page.locator('[data-site-music]');
+  const musicBefore = await normalMusic.evaluate((element: HTMLAudioElement) => ({
+    src: element.getAttribute('src'),
+    time: element.currentTime,
+    volume: element.volume,
+  }));
+  await conversation.locator('[data-ginna-question="warning"]').click();
+  const vision = page.locator('.ginna-vision');
+  await expect(vision).toBeVisible();
+  await expect(vision).toContainText('Pague para ver o que acontece');
+  await expect(page.locator('.stable-animal')).toBeHidden();
+  expect(await normalMusic.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
+  const visionMusic = page.locator('[data-ginna-music]');
+  const visionPlayer = await visionMusic.elementHandle();
+  await expect
+    .poll(() =>
+      visionMusic.evaluate(
+        (element: HTMLAudioElement) => !element.paused && element.currentTime > 0,
+      ),
+    )
+    .toBe(true);
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.volume)).toBe(
+    musicBefore.volume,
+  );
+  await expect(vision.locator('.ginna-vision-figure')).toHaveAttribute(
+    'src',
+    '/stable/ginna-shadow.webp',
+  );
+  await expect(vision.locator('.ginna-earth-eye')).toHaveCount(5);
+  await expect
+    .poll(() =>
+      vision
+        .locator('.ginna-earth-eye')
+        .last()
+        .evaluate((element) => Number(getComputedStyle(element).opacity)),
+    )
+    .toBe(1);
+  const blinkingEye = vision.locator('.ginna-eye-blink').first();
+  await blinkingEye.evaluate((element) => {
+    const animation = element.getAnimations()[0];
+    animation.pause();
+    const timing = animation.effect!.getTiming();
+    animation.currentTime = (timing.delay || 0) + Number(timing.duration) * 0.47;
+  });
+  expect(
+    await blinkingEye.evaluate((element) => getComputedStyle(element).backgroundPosition),
+  ).toBe('50% 100%');
+  await blinkingEye.evaluate((element) => {
+    const animation = element.getAnimations()[0];
+    const timing = animation.effect!.getTiming();
+    animation.currentTime = (timing.delay || 0) + Number(timing.duration) * 0.53;
+  });
+  expect(
+    await blinkingEye.evaluate((element) => getComputedStyle(element).backgroundPosition),
+  ).toBe('50% 0%');
+  await vision.locator('.ginna-vision-shutter').evaluate((element) => {
+    const animation = element.getAnimations()[0];
+    animation.pause();
+    animation.currentTime = 1500;
+  });
+  await page.screenshot({ path: 'test-results/ginna-vision-desktop.png' });
+  await expect(vision).toHaveCount(0, { timeout: 6500 });
+  expect(await visionPlayer!.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
+  await expect(page.locator('.stable-animal-base')).toHaveAttribute('src', normalImage!);
+  await expect(keeper).toBeFocused();
+  await expect
+    .poll(() => normalMusic.evaluate((element: HTMLAudioElement) => element.paused))
+    .toBe(false);
+  expect(await normalMusic.getAttribute('src')).toBe(musicBefore.src);
+  expect(
+    await normalMusic.evaluate((element: HTMLAudioElement) => element.currentTime),
+  ).toBeGreaterThanOrEqual(musicBefore.time);
+  // Reduced motion keeps the story and quick return, with static eyes/fog.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await keeper.click();
+  for (let warning = 0; warning < 5; warning++)
+    await conversation.locator('[data-ginna-question="warning"]').click();
+  await expect(vision).toBeVisible();
+  expect(await blinkingEye.evaluate((element) => getComputedStyle(element).animationName)).toBe(
+    'none',
+  );
+  await page.screenshot({ path: 'test-results/ginna-vision-mobile.png' });
+  await vision.getByRole('button', { name: 'Voltar ao estábulo' }).click();
+  await expect(vision).toHaveCount(0);
+  await expect(page.locator('.stable-animal')).toBeVisible();
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.getByRole('button', { name: 'Ver Pônei', exact: true }).click();
   await page.getByRole('button', { name: 'Pampa', exact: true }).click();
   await expect(page.locator('.stable-animal-base')).toHaveAttribute(
@@ -141,7 +250,7 @@ try {
   await page.getByRole('button', { name: 'Experimentar Ração · 1 dia' }).click();
   await page.getByLabel('Como vai se chamar?').fill('Pé de Pano');
   await expect(page.locator('.stable-speech')).toContainText('Pé de Pano');
-  await expect(page.locator('.stable-speech .npc-speaker')).toHaveText('Brida');
+  await expect(page.locator('.stable-speech .npc-speaker')).toHaveText('Ginna');
   expect(
     await page.locator('.stable-speech p').evaluate((el) => getComputedStyle(el).fontFamily),
   ).toContain('NPC Inter');
@@ -204,7 +313,11 @@ try {
       const speechBox = (await page.locator('.stable-speech').boundingBox())!;
       expect(speechBox.y).toBeGreaterThanOrEqual(checkoutBox.y + checkoutBox.height);
     }
-    const keeper = (await page.locator('.stable-keeper > img').boundingBox())!;
+    const keeper = (await page.locator('.stable-keeper-trigger img').boundingBox())!;
+    if (viewport.width <= 600) {
+      const speechBox = (await page.locator('.stable-speech').boundingBox())!;
+      expect(speechBox.y + speechBox.height + 20).toBeLessThanOrEqual(keeper.y + 1);
+    }
     expect(keeper.height).toBeGreaterThan(110);
     expect(
       await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1),

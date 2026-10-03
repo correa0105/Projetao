@@ -79,3 +79,11 @@ Inter variável (inter-variable.ttf): google/fonts, ofl/inter/Inter[opsz,wght].t
 
 ## Montarias
 shared/mounts.ts resume SRD 5.2.1: preço e carga (p.100), mula (p.357), pônei (p.359), cavalo de montaria (p.360), cavalo de guerra (p.364). Tradução local; falas de Brida e descrições narrativas são originais. Imagens originais geradas pela ferramenta integrada imagegen: public/stable, prompts em docs/STABLE-ART.md.
+
+Ginna substitui Brida na interface. Artes realistas de Ginna jovem, sua forma
+escura sem chapéu, cenário destruído e atlas de olhos piscando foram criadas
+com imagegen integrado; prompts e referências em docs/STABLE-GINNA.md. Duas
+referências fornecidas pelo usuário em docs/references, autoria/licença original
+não informadas. Diálogos são originais. Música temporária em
+public/audio/ginna-lullaby-of-woe.mp3: arquivo fornecido pelo usuário, com fonte
+registrada em public/audio/manifest.json; não atribuído a CC0.

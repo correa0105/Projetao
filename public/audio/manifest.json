@@ -11,6 +11,13 @@
     "origin": "Faixa fornecida pelo usuário para uso na loja. Não há licença CC0 declarada.",
     "encoding": "Ogg/Opus, faixa completa, 64 kbps VBR, metadados removidos"
   },
+  "ginnaVision": {
+    "file": "ginna-lullaby-of-woe.mp3",
+    "sourceFile": "Lullaby of Woe - Ashley Serena (LYRICS).mp3",
+    "source": "https://www.youtube.com/watch?v=ohNpf4VnlP8",
+    "origin": "MP3 fornecido pelo usuário na pasta Downloads, copiado sem conversão; licença CC0 não declarada.",
+    "playback": "Somente durante a visão da quinta insistência com Ginna, por até 4,8 s; volume/mute gerais. Pausa a música principal e retoma sua posição ao terminar."
+  },
   "doorBell": {
     "file": "shop-door-bell.wav",
     "origin": "Shop door bell.wav, 775noise / Freesound #494565, CC0. Gravação do sino acionado ao abrir porta de comércio; primeiros dois toques recortados, segundo suavizado, pico normalizado em 96%, duração 2,65s.",

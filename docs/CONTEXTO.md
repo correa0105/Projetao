@@ -1,5 +1,20 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Ginna e visão do estábulo (03/10/2026)
+
+Brida foi substituída por Ginna, moça jovem em arte realista sem chapéu.
+Clique abre três perguntas: identidade, origem enigmática dos animais e
+maus-tratos. A quinta insistência na mesma visita dispara visão de 4,8 s:
+cenário destruído, névoa negra, forma escura também sem chapéu e cinco olhos
+baixos no chão piscando. Não usar a criatura com bocas descartada. Animal
+fica oculto durante a cena e retorna com seleção/equipamentos preservados.
+Escape, botão e troca de aba encerram; foco retorna à Ginna e contador zera.
+Movimento reduzido exibe a visão estática. Trilha local fornecida pelo usuário
+substitui a música temporariamente, respeitando volume/mute; retoma a música
+anterior sem reiniciá-la. Sem mudanças SQL. Artes, prompts integrados e
+validação em docs/STABLE-GINNA.md. Aplicação local exige rebuild/restart do
+serviço Docker app; enviar ao GitHub sozinho não atualiza o container.
+
 ## Citação / lenda como caixa lateral (03/10/2026)
 
 Usuário apontou que o alinhamento apenas mudava o texto, deixando a citação
