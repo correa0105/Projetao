@@ -21,8 +21,9 @@ revelação e deriva independentes; sem contorno fixo ou giro conjunto.
 Brilho mais fosco e discreto, com as três estrelas de quatro pontas preservadas.
 Os traços luminosos permanecem visíveis mesmo com movimento reduzido.
 
-Passar o mouse sobre uma pasta faz a raposa de cristal correr apressada,
-esbarrar na tigela e seguir adiante. O contato inclina o recipiente, balança
+Passar o mouse sobre uma pasta faz a raposa de cristal perseguir um rato de
+campo que corre à sua frente. Ela esbarra na tigela de passagem, mantendo a
+corrida sem parar ou voltar para trás. O contato inclina o recipiente, balança
 os papéis e faz um rolo tombar sobre a borda, deslizar para fora e cair ao lado.
 O trajeto sobe apenas 3 unidades do SVG e mantém folga da parede na descida.
 A sequência de 2,1 segundos acontece uma única vez por entrada do ponteiro.
@@ -119,7 +120,8 @@ Confere ainda ícones fechado/aberto, largura completa em 1890 px, edição,
 exclusão com preservação de conteúdo e restauração pela interface.
 Valida edição de crônica inicial, pastas em outra região, remoção da legenda,
 efeito azul visível com movimento reduzido e reprodução/repetição do som.
-Confere ainda o contato da raposa antes da inclinação, tombamento sem subida
+Confere ainda rato à frente, corrida contínua durante o esbarrão, saída dos
+dois animais, contato da raposa antes da inclinação, tombamento sem subida
 exagerada, descida pela lateral, saída do mascote,
 permanência no chão sem reiniciar enquanto o mouse fica na pasta, reset por
 clique/saída e alternativa sem movimento. Capturas:

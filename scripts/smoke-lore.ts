@@ -62,7 +62,7 @@ try {
   expect(heroBounds!.width).toBe(1890);
   await page.screenshot({ path: 'test-results/lore-library-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  // A hurried mascot bumps the bowl; the scroll tips over its rim without a high lift.
+  // The mascot keeps running after a mouse while an incidental bump tips the scroll.
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   const folderChoice = page.locator('[data-folder-choice]').first();
   const vase = folderChoice.locator('.lore-scroll-holder-icon');
@@ -71,13 +71,14 @@ try {
     (element) => getComputedStyle(element).transform,
   );
   const mascot = vase.locator('.lore-mascot-traveler');
+  const mouse = vase.locator('.lore-mouse-traveler');
   expect((await page.request.get(origin + '/mascot/crystal-fox-run.webp')).ok()).toBe(true);
   await folderChoice.hover();
   await expect(vase).toHaveAttribute('data-holder-state', 'hovered');
   const setSceneProgress = async (progress: number) => {
     await vase.evaluate(async (element, progress) => {
       for (const part of element.querySelectorAll(
-        '.lore-scroll-holder-body, .lore-scroll-holder-rolls, .lore-scroll-holder-escaping-scroll, .lore-mascot-traveler, .lore-mascot-run-sprite',
+        '.lore-scroll-holder-body, .lore-scroll-holder-rolls, .lore-scroll-holder-escaping-scroll, .lore-mascot-traveler, .lore-mascot-run-sprite, .lore-mouse-motion',
       )) {
         for (const animation of part.getAnimations()) {
           await animation.ready;
@@ -102,6 +103,29 @@ try {
     height: impactChoiceBounds.height,
   };
   await page.screenshot({ path: 'test-results/lore-mascot-approach.png', clip: sceneClip });
+  const chaseSamples: { progress: number; x: number }[] = [];
+  for (const progress of [0.28, 0.32, 0.38, 0.44, 0.5]) {
+    await setSceneProgress(progress);
+    chaseSamples.push({
+      progress,
+      x: await mascot.evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).m41),
+    });
+    expect(await mouse.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
+    const mouseBounds = (await mouse.locator('[data-mouse-body]').boundingBox())!;
+    const foxBounds = (await mascot.boundingBox())!;
+    expect(mouseBounds.x + mouseBounds.width / 2).toBeGreaterThan(foxBounds.x + foxBounds.width);
+  }
+  const chaseSpeeds = chaseSamples
+    .slice(1)
+    .map(
+      (sample, i) => (sample.x - chaseSamples[i].x) / (sample.progress - chaseSamples[i].progress),
+    );
+  const averageSpeed = chaseSpeeds.reduce((sum, speed) => sum + speed, 0) / chaseSpeeds.length;
+  for (const speed of chaseSpeeds) {
+    expect(speed).toBeGreaterThan(0);
+    expect(speed).toBeGreaterThan(averageSpeed * 0.85);
+    expect(speed).toBeLessThan(averageSpeed * 1.15);
+  }
   await setSceneProgress(0.44);
   expect(await body.evaluate((element) => getComputedStyle(element).transform)).not.toBe(
     beforeImpact,
@@ -122,9 +146,10 @@ try {
     }
   }
   expect(await mascot.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
+  expect(await mouse.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
   await vase.evaluate((element) => {
     for (const part of element.querySelectorAll(
-      '.lore-scroll-holder-body, .lore-scroll-holder-rolls, .lore-scroll-holder-escaping-scroll, .lore-mascot-traveler, .lore-mascot-run-sprite',
+      '.lore-scroll-holder-body, .lore-scroll-holder-rolls, .lore-scroll-holder-escaping-scroll, .lore-mascot-traveler, .lore-mascot-run-sprite, .lore-mouse-motion',
     )) {
       for (const animation of part.getAnimations()) {
         animation.currentTime = 0;
@@ -185,6 +210,7 @@ try {
   await folderChoice.hover();
   expect(await fallingScroll.evaluate((element) => element.getAnimations().length)).toBe(0);
   expect(await mascot.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
+  expect(await mouse.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
   expect(await fallingScroll.evaluate((element) => getComputedStyle(element).transform)).toBe(
     heldTransform,
   );
@@ -396,7 +422,7 @@ try {
   await noOverflow();
   expect(errors).toEqual([]);
   console.log(
-    'Lore desktop/celular: raposa esbarrando na tigela, queda sem subida exagerada, permanência e reset, magia, som, edição e persistência aprovados.',
+    'Lore desktop/celular: raposa perseguindo rato sem parar no esbarrão, queda, permanência e reset, magia, som, edição e persistência aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/lore-failure.png', fullPage: true });

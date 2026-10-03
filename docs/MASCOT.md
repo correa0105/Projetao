@@ -38,14 +38,18 @@ mesma linha do chão e preserva transparência. Usa somente arquivos do projeto.
 Na lore, `LoreScrollHolderIcon` desenha a tigela e os papéis em SVG. O mascote
 usa o atlas em `foreignObject`; quatro poses alternam cinco ciclos de 0,42 s.
 Sua passagem dura 2,1 s. Aos 32%, o contato inicia a inclinação da tigela e o
-rolo pivota na borda. O personagem continua correndo e sai; o rolo fica no chão
+rolo pivota na borda. A raposa persegue um rato de campo desenhado em SVG, com
+patas alternando, cauda flexível, orelhas e bigodes. O rato corre à frente e
+passa diante da tigela; a raposa esbarra de passagem, com avanço contínuo sem
+parar nem recuar. Os dois saem; o rolo fica no chão
 com os fios luminosos e estrelas até clique ou saída do ponteiro.
 
 A sequência acontece uma vez por hover/foco. Toque abre a pasta diretamente;
 movimento reduzido mantém só o rolo no chão e a magia estática. Nenhum estado
 ou dado da lore é alterado por essa animação.
 
-O smoke em banco descartável confere sincronização, limite de subida, folga
+O smoke em banco descartável confere rato à frente, velocidade contínua no
+contato, saída dos dois animais, sincronização, limite de subida, folga
 do metal durante a descida, desaparecimento do mascote, permanência/reset,
 movimento reduzido e uso das pastas/crônicas em desktop/celular. Capturas em
 `test-results/lore-mascot-*.png` e `lore-scroll-holder-fallen.png`.

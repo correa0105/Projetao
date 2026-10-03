@@ -813,7 +813,8 @@
   opacity: 0;
   animation: lore-scroll-holder-glow-ignite 0.15s 1.78s ease-out both;
 }
-.lore-mascot-traveler {
+.lore-mascot-traveler,
+.lore-mouse-traveler {
   opacity: 0;
   transform-box: view-box;
 }
@@ -822,11 +823,38 @@
   height: 116px;
   background: url('/mascot/crystal-fox-run.webp') 0 0 / 200% 200% no-repeat;
 }
-.lore-scroll-holder-icon.is-rummaging .lore-mascot-traveler {
+.lore-scroll-holder-icon.is-rummaging .lore-mascot-traveler,
+.lore-scroll-holder-icon.is-rummaging .lore-mouse-traveler {
   animation: lore-mascot-rush 2.1s linear both;
 }
 .lore-scroll-holder-icon.is-rummaging .lore-mascot-run-sprite {
   animation: lore-mascot-stride 0.42s steps(1, end) 5 both;
+}
+.lore-mouse-tail,
+.lore-mouse-hind-legs,
+.lore-mouse-front-legs {
+  transform-box: view-box;
+}
+.lore-mouse-tail {
+  transform-origin: 118px 140px;
+}
+.lore-mouse-hind-legs {
+  transform-origin: 124px 143px;
+}
+.lore-mouse-front-legs {
+  transform-origin: 141px 143px;
+}
+.lore-scroll-holder-icon.is-rummaging .lore-mouse-tail {
+  animation: lore-mouse-tail-flick 0.15s ease-in-out 14 alternate both;
+}
+.lore-scroll-holder-icon.is-rummaging .lore-mouse-bob {
+  animation: lore-mouse-scurry 0.21s ease-in-out 10 both;
+}
+.lore-scroll-holder-icon.is-rummaging .lore-mouse-hind-legs {
+  animation: lore-mouse-step 0.175s linear 12 both;
+}
+.lore-scroll-holder-icon.is-rummaging .lore-mouse-front-legs {
+  animation: lore-mouse-step 0.175s -0.0875s linear 12 reverse both;
 }
 .lore-folder-row {
   display: flex;
@@ -1133,34 +1161,43 @@
 @keyframes lore-mascot-rush {
   0% {
     opacity: 0;
-    transform: translate(-125px, 2px);
+    transform: translate(-194px, 0);
   }
   8% {
     opacity: 1;
   }
-  32% {
-    transform: translate(-76px, 0);
-  }
-  38% {
-    transform: translate(-71px, -1px);
-  }
-  44% {
-    transform: translate(-75px, -3px);
-  }
-  54% {
-    transform: translate(-47px, 0);
-  }
-  76% {
+  88% {
     opacity: 1;
-    transform: translate(65px, -2px);
-  }
-  92% {
-    opacity: 1;
-    transform: translate(160px, 0);
   }
   100% {
     opacity: 0;
-    transform: translate(196px, 0);
+    transform: translate(176px, 0);
+  }
+}
+@keyframes lore-mouse-tail-flick {
+  from {
+    transform: rotate(-8deg);
+  }
+  to {
+    transform: rotate(9deg);
+  }
+}
+@keyframes lore-mouse-scurry {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+@keyframes lore-mouse-step {
+  0%,
+  100% {
+    transform: rotate(-22deg);
+  }
+  50% {
+    transform: rotate(20deg);
   }
 }
 @keyframes lore-mascot-stride {
@@ -1356,7 +1393,8 @@
   .lore-scroll-holder-icon.is-rummaging .lore-scroll-holder-escaping-scroll {
     transform: translate(21px, 39px) rotate(90deg);
   }
-  .lore-mascot-traveler {
+  .lore-mascot-traveler,
+  .lore-mouse-traveler {
     opacity: 0;
   }
   .lore-scroll-holder-grounded-glow,

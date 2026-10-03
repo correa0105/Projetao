@@ -1,5 +1,17 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Perseguição sem parar no esbarrão (03/10/2026)
+
+Mascote agora corre atrás de um rato de campo ilustrado em SVG, com volume,
+orelhas, bigodes, patas alternando e cauda flexível. Rato passa à frente da
+tigela; raposa esbarra de passagem e segue atrás dele. Removidas desaceleração
+e marcha à ré no contato: trajeto horizontal contínuo e uniforme, com os dois
+animais saindo após 2,1 s. Contato e queda do rolo permanecem sincronizados em
+32% da sequência, com brilho/permanência/reset já aprovados. Movimento reduzido
+esconde os dois animais. Arte/identidade da raposa permanece a versão corrigida.
+Smoke mede avanço sem pausa/inversão no esbarrão, rato à frente, saída de ambos
+e todos os fluxos/alternativa estática anteriores. Substitui a corrida anterior.
+
 ## Tigela e mascote de cristal (03/10/2026)
 
 Usuário rejeitou o porta-pergaminhos alto e sua extração vertical. Pastas agora

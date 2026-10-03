@@ -216,6 +216,11 @@ export function LoreScrollHolderIcon({ rummaging = false }: { rummaging?: boolea
           <stop offset=".45" stopColor="#4e3725" />
           <stop offset="1" stopColor="#16120f" />
         </radialGradient>
+        <linearGradient id={`${id}-mouse-fur`} x1=".2" y1="0" x2=".7" y2="1">
+          <stop stopColor="#d3cdbf" />
+          <stop offset=".45" stopColor="#a5a198" />
+          <stop offset="1" stopColor="#625e58" />
+        </linearGradient>
         <clipPath id={`${id}-mascot-stage`}>
           <rect x="-92" width="272" height="160" />
         </clipPath>
@@ -328,6 +333,92 @@ export function LoreScrollHolderIcon({ rummaging = false }: { rummaging?: boolea
           {[35, 46, 57, 68, 79, 90, 101].map((x) => (
             <circle key={x} cx={x} cy={116 - Math.abs(68 - x) * 0.08} r="1.3" />
           ))}
+        </g>
+      </g>
+      <g clipPath={`url(#${id}-mascot-stage)`} pointerEvents="none" data-lore-mouse="">
+        <g className="lore-mouse-traveler lore-mouse-motion">
+          <g transform="translate(152 137) scale(1.15) translate(-132 -140)">
+            <ellipse cx="132" cy="150" rx="18" ry="2" fill="#050504" opacity=".4" />
+            <g className="lore-mouse-tail lore-mouse-motion">
+              <path
+                d="M118 140c-11-6-14 5-24 3-5-1-5-5-9-4"
+                fill="none"
+                stroke="#a67e70"
+                strokeWidth="2.6"
+                strokeLinecap="round"
+              />
+              <path
+                d="M117 139c-10-5-14 5-23 3"
+                fill="none"
+                stroke="#d0aa90"
+                strokeWidth=".9"
+                strokeLinecap="round"
+              />
+            </g>
+            <g className="lore-mouse-bob lore-mouse-motion">
+              <g
+                className="lore-mouse-hind-legs lore-mouse-motion"
+                fill="#ae927c"
+                stroke="#644838"
+                strokeWidth=".9"
+              >
+                <path d="m121 142-7 5 1 2h8l-2-2 5-4Z" />
+                <path d="m127 143 1 5 6 1 1-2-4-1-1-5Z" />
+              </g>
+              <ellipse
+                data-mouse-body=""
+                cx="132"
+                cy="137"
+                rx="16"
+                ry="9"
+                fill={`url(#${id}-mouse-fur)`}
+                stroke="#6a6359"
+                strokeWidth="1"
+              />
+              <path d="M120 142c9 7 19 4 25-1" fill="none" stroke="#cdb99a" strokeWidth="3" />
+              <path
+                d="M128 130c5-2 9-1 12 1m-19 1 3-1m5 3 3-1"
+                fill="none"
+                stroke="#e2caa6"
+                strokeWidth=".9"
+                opacity=".7"
+              />
+              <path
+                d="M141 131c6-2 9 3 13 7l-1 3c-5 2-13 1-15-3Z"
+                fill={`url(#${id}-mouse-fur)`}
+                stroke="#766b60"
+              />
+              <ellipse
+                cx="142"
+                cy="128"
+                rx="5"
+                ry="5.5"
+                fill="#b2a797"
+                stroke="#756559"
+                strokeWidth="1"
+              />
+              <ellipse cx="142.5" cy="128.5" rx="3" ry="3.6" fill="#c39a90" />
+              <ellipse cx="149" cy="136" rx="1.8" ry="2" fill="#211910" />
+              <circle cx="149.5" cy="135.4" r=".6" fill="#f3e3c6" />
+              <circle cx="154" cy="139" r="1.4" fill="#c59389" />
+              <path
+                d="m153 140 7-2m-7 3 7 1m-8-2-3 2"
+                fill="none"
+                stroke="#ddc8a9"
+                strokeWidth=".65"
+                strokeLinecap="round"
+              />
+              <g
+                className="lore-mouse-front-legs lore-mouse-motion"
+                fill="#ae927c"
+                stroke="#644838"
+                strokeWidth=".9"
+              >
+                <path d="m141 142 3 5 6 1v-2l-4-1-1-4Z" />
+                <path d="m138 142-2 5 2 2h6v-2l-5-1 3-4Z" />
+              </g>
+            </g>
+          </g>
         </g>
       </g>
       {rummaging && (
