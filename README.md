@@ -277,8 +277,10 @@ No Início, **Nova publicação** abre o editor de artigos, imagens e reuniões.
 
 A música começa a 40%, após a primeira interação quando necessário. Os controles no login e junto ao retrato superior direito permitem mutar e ajustar de 0% a 100%; ambas as preferências persistem no navegador. A loja usa a faixa Medieval Market enviada pelo usuário e toca um sino metálico curto uma vez ao entrar. As demais páginas mantêm Medieval Travelers Journey, com continuidade entre rotas que usam a mesma faixa. `siteSoundtracks` (`src/SiteMusic.tsx`) define as faixas por página; o sino também respeita volume e mute.
 
-Colocar itens no balcão toca impacto proporcional ao peso e tamanho; poções e
-frascos também têm líquido mexendo. A sequência da Ginna recebe emergência
+Colocar itens no balcão toca sons de metal, corrente, esferas, vidro, madeira,
+papel, couro ou tecido, proporcionais ao peso e tamanho. Poções têm contato
+suave do frasco e água mexendo; cantis usam couro e água. Os 71 itens têm falas
+próprias do mercador. A sequência da Ginna recebe emergência
 aquática sinistra e atrito molhado ao envolver o visitante, sincronizados à
 animação. Ambos usam os controles de áudio do site. Fontes e validação em
 [SHOP-AUDIO.md](docs/SHOP-AUDIO.md) e

@@ -3,8 +3,8 @@
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
   "checked": "2026-10-04",
   "generator": "scripts/generate-shop-counter-audio.mjs",
-  "encoding": "PCM WAV mono, 48 kHz, 16 bit, pico 68%",
-  "composition": "Gravações reais de impacto de madeira, recipiente na mesa e água dentro de uma garrafa; recorte do primeiro gesto, filtragem e mixagem. Nenhum bip ou oscilador sintetizado.",
+  "encoding": "PCM WAV mono, 48 kHz, 16 bit; picos por material, teto de 68%. Papel, tecido e recipientes deliberadamente mais suaves.",
+  "composition": "Gravações reais CC0 de objetos de madeira, ferro, corrente de aço, esferas metálicas, vidro, papel, couro, tecido e água. Recortes, filtragem e mixagem; nenhum bip, oscilador ou som sintetizado.",
   "playback": "Impacto proporcional ao peso e tamanho, pitch entre 0,80 e 1,10 com variação pequena; mesmo volume/mute do site; vozes canceladas e contexto encerrado ao ocultar ou sair.",
   "files": {
     "wood": {
@@ -12,17 +12,118 @@
       "sha256": "e02ec3aaff9ee8aba58af22ebee037a5dfa09bc444bc6a0854dba7e0fd7c4311",
       "duration": 0.55,
       "peak": 0.68,
+      "gain": 1.136014560414858,
       "rms": 0.15813,
       "bytes": 52844
     },
     "liquid": {
       "file": "shop-counter-liquid.wav",
-      "sha256": "8aaa81b066d3467647dbc1812357baca37c5a742553cc2badafcc10732d0da19",
+      "sha256": "3dfdedb25eea8db922d11b63f1492ee3d8977c4d09f267032ba7a8d6521b2e6c",
       "duration": 1.08,
-      "peak": 0.68,
-      "rms": 0.10113,
+      "peak": 0.234738,
+      "gain": 1.168567711843678,
+      "rms": 0.02899,
       "bytes": 103724
+    },
+    "waterskin": {
+      "file": "shop-counter-waterskin.wav",
+      "sha256": "790b6f79ceee38c3087d2f9c79c5d3b539006d0dab9a7bc80523ed603ed09508",
+      "duration": 1.1,
+      "peak": 0.232113,
+      "gain": 1.168567711843678,
+      "rms": 0.024,
+      "bytes": 105644
+    },
+    "metal": {
+      "file": "shop-counter-metal.wav",
+      "sha256": "e76404d658285c858f037bdacd7d2d8dcdd7ffd31faf433151e89f6978f2bcb8",
+      "duration": 0.86,
+      "peak": 0.62,
+      "gain": 0.9008624394441537,
+      "rms": 0.03981,
+      "bytes": 82604
+    },
+    "chain": {
+      "file": "shop-counter-chain.wav",
+      "sha256": "03a333a9dca101e4e3e7a190a4afc75e7763fa8c6731b6d1c7f0dbe8528d9ba5",
+      "duration": 0.76,
+      "peak": 0.53,
+      "gain": 0.7969335971756836,
+      "rms": 0.02677,
+      "bytes": 73004
+    },
+    "spheres": {
+      "file": "shop-counter-spheres.wav",
+      "sha256": "39084949036d3a3ff68a5f4f155707e8770f37e449cbf942a927c58ffb85a448",
+      "duration": 1.04,
+      "peak": 0.44,
+      "gain": 0.6002662289744496,
+      "rms": 0.0315,
+      "bytes": 99884
+    },
+    "glass": {
+      "file": "shop-counter-glass.wav",
+      "sha256": "f028d6dfac525e3de9ed36c380d08d778ddcb3334251e6fedfc505736d3c89dc",
+      "duration": 0.62,
+      "peak": 0.37,
+      "gain": 1.2854144879231415,
+      "rms": 0.01988,
+      "bytes": 59564
+    },
+    "paper": {
+      "file": "shop-counter-paper.wav",
+      "sha256": "1dac028ecc8620bab68e78395484b1e212bd9aa87660236ec929d6e14d8da779",
+      "duration": 0.66,
+      "peak": 0.18,
+      "gain": 1.0411121656651086,
+      "rms": 0.01325,
+      "bytes": 63404
+    },
+    "leather": {
+      "file": "shop-counter-leather.wav",
+      "sha256": "bb39a3dc3de8773d05083cf3ee63f4673503f56c3974f56ad406a8be5b801af4",
+      "duration": 0.66,
+      "peak": 0.27,
+      "gain": 0.42685941380911,
+      "rms": 0.01196,
+      "bytes": 63404
+    },
+    "cloth": {
+      "file": "shop-counter-cloth.wav",
+      "sha256": "4f61b26cf4c431d106ed0e8ff762ad6aa35008c7805bb8d8585f5f13b66318a9",
+      "duration": 0.68,
+      "peak": 0.17,
+      "gain": 0.22848837621038584,
+      "rms": 0.01523,
+      "bytes": 65324
     }
+  },
+  "descriptions": {
+    "wood": "Objeto de madeira apoiado no balcão; gravação anterior preservada.",
+    "liquid": "Frasco apoiado com contato leve de vidro; água anterior intacta, sem batida de madeira.",
+    "waterskin": "Recipiente de couro apoiado com água; nenhum contato de vidro.",
+    "metal": "Barra de ferro sobre madeira, com corpo e ressonância curta de metal.",
+    "chain": "Corrente de aço caindo, com elos que assentam em sequência.",
+    "spheres": "Pequenas esferas de aço caindo e rolando; gravação de ball bearings.",
+    "glass": "Recipiente de vidro apoiado, seco, sem água.",
+    "paper": "Farfalhar leve de papel pousado, sem impacto pesado.",
+    "leather": "Couro pousado no balcão, contato abafado e flexão do material.",
+    "cloth": "Tecido pousado, contato suave e movimento das fibras."
+  },
+  "waterPreservation": {
+    "previousMixNormalization": 1.168567711843678,
+    "finalGain": 0.7197407033601407,
+    "source": {
+      "id": "shop-liquid",
+      "start": 0.088,
+      "length": 0.93,
+      "at": 0.055,
+      "gain": 0.6159169862947763,
+      "cutoff": 5700,
+      "release": 0.17,
+      "attack": 0.003
+    },
+    "unchanged": "Mesmo segmento, ganho de saída, afinação, filtro e envelope da camada água anterior. Somente o contato do frasco foi amaciado e reduzido; a madeira foi removida."
   },
   "layers": {
     "wood": [
@@ -33,28 +134,13 @@
         "at": 0,
         "gain": 0.6159377390917853,
         "cutoff": 7200,
-        "release": 0.09
+        "release": 0.09,
+        "attack": 0.003,
+        "finalGain": 0.6997142399172759,
+        "playbackRate": 1
       }
     ],
     "liquid": [
-      {
-        "id": "shop-wood",
-        "start": 0,
-        "length": 0.35,
-        "at": 0,
-        "gain": 0.1950469507123987,
-        "cutoff": 5200,
-        "release": 0.09
-      },
-      {
-        "id": "shop-bottle",
-        "start": 0.016,
-        "length": 0.62,
-        "at": 0,
-        "gain": 0.5164040417744824,
-        "cutoff": 8200,
-        "release": 0.09
-      },
       {
         "id": "shop-liquid",
         "start": 0.088,
@@ -62,7 +148,146 @@
         "at": 0.055,
         "gain": 0.6159169862947763,
         "cutoff": 5700,
-        "release": 0.17
+        "release": 0.17,
+        "attack": 0.003,
+        "finalGain": 0.7197407033601407,
+        "playbackRate": 1
+      },
+      {
+        "id": "shop-bottle",
+        "start": 0.016,
+        "length": 0.46,
+        "at": 0,
+        "gain": 0.09619290974230556,
+        "cutoff": 3700,
+        "release": 0.13,
+        "attack": 0.012,
+        "finalGain": 0.11240792843315144,
+        "playbackRate": 1
+      }
+    ],
+    "waterskin": [
+      {
+        "id": "shop-liquid",
+        "start": 0.088,
+        "length": 0.93,
+        "at": 0.055,
+        "gain": 0.6159169862947763,
+        "cutoff": 5700,
+        "release": 0.17,
+        "attack": 0.003,
+        "finalGain": 0.7197407033601407,
+        "playbackRate": 1
+      },
+      {
+        "id": "shop-leather",
+        "start": 1.924,
+        "length": 0.5,
+        "at": 0,
+        "gain": 0.10302028073661285,
+        "cutoff": 1850,
+        "release": 0.15,
+        "attack": 0.009,
+        "finalGain": 0.120386173733877,
+        "playbackRate": 1
+      }
+    ],
+    "metal": [
+      {
+        "id": "shop-metal",
+        "start": 0.52,
+        "length": 0.84,
+        "at": 0,
+        "gain": 1,
+        "cutoff": 6400,
+        "release": 0.15,
+        "attack": 0.004,
+        "finalGain": 0.9008624394441537,
+        "playbackRate": 1
+      }
+    ],
+    "chain": [
+      {
+        "id": "shop-chain",
+        "start": 0,
+        "length": 0.74,
+        "at": 0,
+        "gain": 1,
+        "cutoff": 6800,
+        "release": 0.12,
+        "attack": 0.004,
+        "finalGain": 0.7969335971756836,
+        "playbackRate": 1
+      }
+    ],
+    "spheres": [
+      {
+        "id": "shop-spheres",
+        "start": 0.388,
+        "length": 1.02,
+        "at": 0,
+        "gain": 1,
+        "cutoff": 6500,
+        "release": 0.18,
+        "attack": 0.004,
+        "finalGain": 0.6002662289744496,
+        "playbackRate": 1
+      }
+    ],
+    "glass": [
+      {
+        "id": "shop-glass",
+        "start": 0.232,
+        "length": 0.6,
+        "at": 0,
+        "gain": 1,
+        "cutoff": 5900,
+        "release": 0.13,
+        "attack": 0.008,
+        "finalGain": 1.2854144879231415,
+        "playbackRate": 1
+      }
+    ],
+    "paper": [
+      {
+        "id": "shop-paper",
+        "start": 0.28,
+        "length": 0.64,
+        "at": 0,
+        "gain": 1,
+        "cutoff": 4500,
+        "release": 0.15,
+        "attack": 0.018,
+        "finalGain": 1.0411121656651086,
+        "playbackRate": 1
+      }
+    ],
+    "leather": [
+      {
+        "id": "shop-leather",
+        "start": 1.924,
+        "length": 0.64,
+        "at": 0,
+        "gain": 1,
+        "cutoff": 2700,
+        "release": 0.17,
+        "attack": 0.01,
+        "finalGain": 0.42685941380911,
+        "playbackRate": 1
+      }
+    ],
+    "cloth": [
+      {
+        "id": "shop-cloth",
+        "start": 0.064,
+        "length": 0.66,
+        "at": 0,
+        "gain": 1,
+        "cutoff": 3900,
+        "release": 0.17,
+        "attack": 0.014,
+        "finalGain": 0.22848837621038584,
+        "playbackRate": 1
       }
     ]
   },
@@ -94,6 +319,76 @@
       "page": "https://freesound.org/people/twinpix/sounds/536953/",
       "url": "https://cdn.freesound.org/previews/536/536953_842338-hq.mp3",
       "sha256": "c188574d178a0d896541b96cea167bd57e142ae1ef9023ee98d6cacf86f8d1cc",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-metal",
+      "title": "Iron Bar Drop onto Wood & Straw Floor",
+      "author": "dkudos / Paul Villeneuve e Dominic Kaiser",
+      "page": "https://freesound.org/people/dkudos/sounds/213124/",
+      "url": "https://cdn.freesound.org/previews/213/213124_3022067-hq.mp3",
+      "sha256": "a565526b0ad673a68a53d5967c4a6d00420875e303de6d5c377a10f343dbb846",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-chain",
+      "title": "Steel - Chain drop",
+      "author": "ldezem",
+      "page": "https://freesound.org/people/ldezem/sounds/386213/",
+      "url": "https://cdn.freesound.org/previews/386/386213_1655965-hq.mp3",
+      "sha256": "2e850ae42e408190c8988c404a4684d8be5725e6fb42c6ba327fd8c303544de0",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-spheres",
+      "title": "Steel Balls Dropping Into Cardboard Box.wav",
+      "author": "Ted_Erski",
+      "page": "https://freesound.org/people/Ted_Erski/sounds/535286/",
+      "url": "https://cdn.freesound.org/previews/535/535286_5809673-hq.mp3",
+      "sha256": "8fe22a229ca185d88c27a00915b2838f195524dd727578b86ff6d0b47b3b8765",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-paper",
+      "title": "Paper Rustle",
+      "author": "BenjaminNelan",
+      "page": "https://freesound.org/people/BenjaminNelan/sounds/353125/",
+      "url": "https://cdn.freesound.org/previews/353/353125_1196020-hq.mp3",
+      "sha256": "fbf05bd9ba67a9df8eff656e813881c7f1a754d7473388785b228b0ed62dc564",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-leather",
+      "title": "leather_belt",
+      "author": "j1987",
+      "page": "https://freesound.org/people/j1987/sounds/829198/",
+      "url": "https://cdn.freesound.org/previews/829/829198_367313-hq.mp3",
+      "sha256": "14bbbe4fe8a07a4d65fdf8ab5db4b3638813d82a68efdb6330df519d9eaffe75",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-cloth",
+      "title": "clothes drop 7",
+      "author": "ZoviPoland / Bartosz Mazur",
+      "page": "https://freesound.org/people/ZoviPoland/sounds/517727/",
+      "url": "https://cdn.freesound.org/previews/517/517727_5845877-hq.mp3",
+      "sha256": "2a23b01d91367711a73c965bba9f4bfd11133fe7a25d1a90ec5e5edc46676555",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-glass",
+      "title": "place glass object.wav",
+      "author": "milpower",
+      "page": "https://freesound.org/people/milpower/sounds/353105/",
+      "url": "https://cdn.freesound.org/previews/353/353105_6220210-hq.mp3",
+      "sha256": "5eec14d965f65d2915f7bb94c667cd99f2c294b5b5ef54c649a8cb77f797f845",
       "license": "CC0-1.0",
       "publicPreview": true
     }

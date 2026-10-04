@@ -20,13 +20,20 @@ consulta; permissões continuam verificadas no servidor.
 
 ## Som dos itens no balcão (04/10/2026)
 
-A loja toca impacto de madeira a cada inclusão aceita no balcão, inclusive
-unidades repetidas. Peso e tamanho aumentam intensidade e gravidade do toque;
-poções/frascos/cantis combinam recipiente e líquido mexendo. Soltar um objeto
-reposicionado também toca. Inspeção, exclusão, limites ou mesa cheia ficam
-silenciosos. Gravações CC0, variação discreta, volume/mute compartilhados e
-descarte ao ocultar/sair. Sem mudanças no catálogo, compras ou SQL. Detalhes
-e manifesto em docs/SHOP-AUDIO.md.
+A loja usa dez sons de materiais: madeira, metal, corrente, esferas metálicas,
+vidro seco, papel, couro, tecido, frasco com líquido e cantil de couro com água.
+Os 71 IDs ativos têm perfil físico explícito. A poção perdeu a batida de
+madeira e ganhou contato suave do frasco; água preservada no mesmo nível e
+com cauda idêntica. Peso/tamanho aumentam intensidade e gravidade; materiais
+macios são mais discretos. Cada item tem sua própria fala, incluindo cinco
+cosméticos e charuto antes genéricos; onze comentários mágicos refinados.
+
+Inclusões aceitas, unidades repetidas e reposicionamento real tocam. Inspeção,
+exclusão, limites ou mesa cheia ficam silenciosos. Arquivos carregam e
+decodificam separadamente para uma falha não silenciar outros materiais.
+Gravações CC0, variação discreta, volume/mute compartilhados e descarte ao
+ocultar/sair. Sem mudanças no catálogo, compras ou SQL. Detalhes, manifesto
+e validação em docs/SHOP-AUDIO.md.
 
 ## Regras editáveis, Ginna aprovada e áudio (04/10/2026)
 

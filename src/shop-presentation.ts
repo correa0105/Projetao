@@ -129,7 +129,8 @@ const comments: Record<string, string> = {
   oil: 'Óleo de lamparina. Não é tempero, mesmo que a ração esteja triste.',
   'boots-of-elvenkind': 'Passos silenciosos. Infelizmente, não silenciam o bardo do grupo.',
   'goggles-of-night': 'Para enxergar no escuro. O que estiver olhando de volta é problema seu.',
-  'immovable-rod': 'Mais teimoso que eu. E olha que eu cobro preço cheio há décadas.',
+  'immovable-rod':
+    'Aperte o botão e o bastão se recusa a sair do lugar. Mais teimoso que eu, e olha que cobro preço cheio há décadas.',
   'slippers-of-spider-climbing': 'Pode subir pelas paredes. Só não use meu teto como provador.',
   'leather-armor': 'Couro bem curtido. Não evita toda pancada, mas você apanha com elegância.',
   'chain-mail': 'Ouça os elos. Malha boa não precisa de uma história enfeitada.',
@@ -153,21 +154,43 @@ const comments: Record<string, string> = {
   rations: 'Não é um banquete. Mas é melhor que negociar com o estômago vazio.',
   tent: 'Está dobrada para viagem. Não tente armá-la aqui dentro.',
   'grappling-hook': 'Ferro firme. Confira onde vai prender antes de confiar o pescoço.',
-  'bag-of-holding': 'Por fora, discreta. Por dentro… bem, examine com respeito.',
-  'spell-scroll-cantrip': 'Cuidado com os dedos. A tinta custou mais que o pergaminho.',
+  'bag-of-holding':
+    'Cabe mais nessa bolsa do que o tamanho dela sugere. Já na minha loja, espaço continua caro: nada de despejar a mochila no balcão.',
+  'spell-scroll-cantrip':
+    'Um truque escrito em pergaminho. Não confunda a simplicidade do feitiço com o trabalho de copiá-lo; meu escriba não aceita pagamento em elogios.',
   'potion-of-healing': 'Para quando o plano “confia em mim” dá errado. Costumo vender aos pares.',
-  'potion-of-climbing': 'Para quem prefere subir a dar a volta.',
+  'potion-of-climbing':
+    'Escalada engarrafada, para quem olha um paredão e vê um atalho. Se era só para buscar algo na prateleira, eu tinha uma escada mais barata.',
   'potion-of-growth': 'Guarde para um lugar espaçoso. Meu teto é baixo.',
   'potion-of-heroism': 'Coragem engarrafada. Bom senso ainda é por sua conta.',
-  'potion-of-flying': 'Leve com cuidado. Eu prefiro manter meus pés no chão.',
-  'cloak-of-protection': 'Discreto e bem acabado. Pode sentir o tecido.',
+  'potion-of-flying':
+    'Voo em um frasco. Antes de pensar na vista lá de cima, escolha onde vai pousar; nunca confiei num plano que termina com “depois eu vejo”.',
+  'cloak-of-protection':
+    'O manto parece discreto, mas a proteção faz parte do encanto. Gosto de mercadoria que trabalha sem anunciar sua chegada a uma rua inteira.',
   'cloak-of-displacement': 'O tecido prega peças nos olhos. Não é defeito.',
-  'crystal-ball': 'Manuseie com as duas mãos. Vidro e pressa não são amigos.',
-  'ring-of-protection': 'Pequeno o bastante para perder. Valioso demais para isso.',
-  'ring-of-regeneration': 'Uma joia dessas merece uma mão cuidadosa.',
-  'ring-of-invisibility': 'Se sumir com o anel, ainda vou lembrar da conta.',
-  'staff-of-the-magi': 'Não bata a ponta no chão. Certas mercadorias exigem respeito.',
+  'crystal-ball':
+    'Esta bola serve à vidência, não à decoração da sala. Se conseguir ver o futuro, me avise antes do próximo aumento de impostos.',
+  'ring-of-protection':
+    'Um aro pequeno, com proteção que vai além do enfeite. Guarde bem: procurar uma joia perdida é a aventura menos lucrativa que conheço.',
+  'ring-of-regeneration':
+    'A regeneração é mérito do anel. A teimosia de voltar com novos ferimentos costuma ser do dono; conheço bem essa espécie de cliente.',
+  'ring-of-invisibility':
+    'O anel pode esconder você dos olhos alheios. Da minha caderneta, só pagando; tenho ótima memória para quem desaparece antes de acertar a conta.',
+  'staff-of-the-magi':
+    'Um cajado desses pertence às mãos de um conjurador, não ao canto das bengalas. Não bata a ponta no chão; já tenho problemas suficientes sem irritar a mercadoria.',
   'dragon-orb': 'Esse não é um enfeite. Até eu escolho as palavras perto dele.',
+  'cosmetic-cape':
+    'Essa capa não tem encantamento, só um caimento que ajuda a entrar na taverna com alguma dignidade. O resto depende de como você sai de lá.',
+  'cosmetic-necklace':
+    'Prata e uma pequena gema azul. Não guarda feitiço nem segredo real; às vezes um colar bonito já é motivo suficiente para gastar moedas.',
+  'cosmetic-tiara':
+    'A gema azul fica bem no centro, como convém a quem quer ser notado. A tiara não dá autoridade; para isso, infelizmente, ainda pedem juízo.',
+  'cosmetic-gloves':
+    'Luvas de couro castanho. Deixam o aperto de mão mais apresentável, mas não tornam um mau acordo menos ruim.',
+  'cosmetic-boots':
+    'Botas de viagem, sem o encanto das élficas. Se fizerem barulho na entrada, diga que chegou com presença; sai mais barato que magia.',
+  cigar:
+    'Enrolado à mão, para quem prefere fazer a conversa durar na taverna. Acenda longe dos meus pergaminhos; não cobro perdas em baforadas.',
 };
 export function merchantComment(item: Item) {
   return comments[item.id] ?? `${item.name}. Examine à vontade antes de decidir.`;

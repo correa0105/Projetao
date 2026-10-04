@@ -3,11 +3,118 @@ import { chromium, expect } from '@playwright/test';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
 const source = JSON.parse(await readFile('data/shop-export/loja.json', 'utf8'));
-const catalog = source.items.map((item) => ({
+const equipment = JSON.parse(await readFile('data/equipment-catalog.json', 'utf8'));
+const audioManifest = JSON.parse(await readFile('public/audio/shop-counter-manifest.json', 'utf8'));
+// Mirror the active seed, including the six extensions and the plate bundle.
+const catalog = [...source.items, ...equipment.filter((item) => item.active)].map((item) => ({
   ...item,
-  weight_lb: String(item.weight_lb),
-  image_path: `/shop/items/${item.id}.png`,
+  original_name: item.original_name || item.name,
+  weight_lb: String(item.id === 'plate-armor' ? 27 : item.weight_lb),
+  image_path: item.image_path || `/shop/items/${item.id}.png`,
 }));
+// The expected contact materials follow the objects depicted in the catalog art.
+// Mixed kits use the container touching the tabletop, not their individual contents.
+const materialItems = {
+  wood: [
+    'shortbow',
+    'longbow',
+    'bucket',
+    'chest',
+    'quarterstaff',
+    'staff-of-the-magi',
+    'torch',
+    'basket',
+  ],
+  liquid: [
+    'antitoxin',
+    'alchemists-fire',
+    'acid',
+    'oil',
+    'potion-of-growth',
+    'potion-of-healing',
+    'potion-of-climbing',
+    'potion-of-heroism',
+    'potion-of-flying',
+  ],
+  waterskin: ['waterskin'],
+  metal: [
+    'dagger',
+    'immovable-rod',
+    'hunting-trap',
+    'plate-armor',
+    'lock',
+    'tinderbox',
+    'shield',
+    'greatsword',
+    'longsword',
+    'grappling-hook',
+    'hooded-lantern',
+    'shovel',
+    'crowbar',
+    'breastplate',
+    'rapier',
+    'ring-of-invisibility',
+    'ring-of-protection',
+    'ring-of-regeneration',
+    'cosmetic-necklace',
+    'cosmetic-tiara',
+    'bell',
+    'caltrops',
+  ],
+  chain: ['manacles', 'chain', 'chain-mail'],
+  spheres: ['ball-bearings'],
+  glass: ['glass-bottle', 'goggles-of-night', 'crystal-ball', 'dragon-orb'],
+  paper: ['book', 'spell-scroll-cantrip', 'cigar'],
+  leather: [
+    'leather-armor',
+    'component-pouch',
+    'bag-of-holding',
+    'boots-of-elvenkind',
+    'studded-leather',
+    'healers-kit',
+    'climbers-kit',
+    'backpack',
+    'slippers-of-spider-climbing',
+    'cosmetic-gloves',
+    'cosmetic-boots',
+  ],
+  cloth: [
+    'tent',
+    'blanket',
+    'hempen-rope-50-feet',
+    'cloak-of-displacement',
+    'cloak-of-protection',
+    'rations',
+    'bedroll',
+    'cosmetic-cape',
+    'candle',
+  ],
+};
+const expectedMaterials = new Map(
+  Object.entries(materialItems).flatMap(([kind, ids]) => ids.map((id) => [id, kind])),
+);
+// Similar magical and cosmetic objects retain their own subject, not one shared sales line.
+const individualTopics = {
+  'bag-of-holding': /bolsa.*tamanho/i,
+  'spell-scroll-cantrip': /truque.*pergaminho/i,
+  'potion-of-climbing': /[Ee]scalada.*engarrafada/,
+  'potion-of-flying': /[Vv]oo.*frasco/,
+  'cloak-of-protection': /proteção.*encanto/i,
+  'crystal-ball': /vidência/i,
+  'ring-of-protection': /proteção.*enfeite/i,
+  'ring-of-regeneration': /regeneração.*anel/i,
+  'ring-of-invisibility': /esconder.*olhos/i,
+  'staff-of-the-magi': /cajado.*conjurador/i,
+  'cosmetic-cape': /capa.*não tem encantamento/i,
+  'cosmetic-necklace': /prata.*gema azul/i,
+  'cosmetic-tiara': /gema azul.*tiara/i,
+  'cosmetic-gloves': /luvas.*couro castanho/i,
+  'cosmetic-boots': /botas.*sem o encanto das élficas/i,
+  cigar: /enrolado à mão.*taverna/i,
+};
+expect(catalog).toHaveLength(71);
+expect(new Set(catalog.map((item) => item.id)).size).toBe(71);
+expect([...expectedMaterials.keys()].sort()).toEqual(catalog.map((item) => item.id).sort());
 await mkdir('test-results', { recursive: true });
 await writeFile(
   'test-results/shop-counter-audio.html',
@@ -46,10 +153,11 @@ async function fresh({
   viewport = { width: 1440, height: 900 },
   deferAudio = false,
   audioUnavailable = false,
+  failedAudioKind = null,
 } = {}) {
   const context = await browser.newContext({ viewport });
   await context.addInitScript(
-    ({ muted, volume, audioUnavailable }) => {
+    ({ muted, volume, audioUnavailable, audioFiles }) => {
       localStorage.setItem('alvorada-music-muted', String(muted));
       localStorage.setItem('alvorada-music-volume', String(volume));
       window.counterTrace = [];
@@ -64,6 +172,7 @@ async function fresh({
       }
       const Native = window.AudioContext;
       const connected = new WeakMap();
+      const bufferFiles = new WeakMap();
       const connect = AudioNode.prototype.connect;
       AudioNode.prototype.connect = function (destination, ...args) {
         connected.set(this, destination);
@@ -79,6 +188,16 @@ async function fresh({
             event: 'context',
             gesture: navigator.userActivation.hasBeenActive,
           });
+        }
+        async decodeAudioData(bytes) {
+          const hash = Array.from(
+            new Uint8Array(await crypto.subtle.digest('SHA-256', bytes.slice(0))),
+          )
+            .map((byte) => byte.toString(16).padStart(2, '0'))
+            .join('');
+          const buffer = await super.decodeAudioData(bytes);
+          bufferFiles.set(buffer, audioFiles[hash]);
+          return buffer;
         }
         createGain() {
           const gain = super.createGain();
@@ -96,6 +215,7 @@ async function fresh({
             this.voices.add(source);
             window.counterTrace.push({
               event: 'start',
+              file: bufferFiles.get(source.buffer),
               duration: source.buffer?.duration,
               pitch: source.playbackRate.value,
               gain: gain?.gain.value,
@@ -114,9 +234,27 @@ async function fresh({
         }
       };
     },
-    { muted, volume, audioUnavailable },
+    {
+      muted,
+      volume,
+      audioUnavailable,
+      audioFiles: Object.fromEntries(
+        Object.values(audioManifest.files).map((file) => [file.sha256, file.file]),
+      ),
+    },
   );
   const page = await context.newPage();
+  let failedAudioRequests = 0;
+  const failedAudioPath = failedAudioKind ? `/audio/shop-counter-${failedAudioKind}.wav` : null;
+  if (failedAudioPath)
+    await page.route(`**${failedAudioPath}`, async (route) => {
+      failedAudioRequests++;
+      await route.fulfill({
+        status: 503,
+        contentType: 'text/plain',
+        body: 'Falha isolada no teste.',
+      });
+    });
   let releaseAudio;
   const audioGate = new Promise((resolve) => {
     releaseAudio = resolve;
@@ -128,13 +266,17 @@ async function fresh({
     });
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('response', (response) => {
-    if (/shop-counter-.*\.wav/.test(response.url()) && response.status() !== 200)
+    if (
+      /shop-counter-.*\.wav/.test(response.url()) &&
+      response.status() !== 200 &&
+      !response.url().endsWith(failedAudioPath || '\u0000')
+    )
       errors.push(response.url());
   });
   await page.goto(`http://localhost:${port}/test-results/shop-counter-audio.html`);
   await expect(page.locator('.shop-scene')).toBeVisible();
   await expect.poll(() => page.evaluate(() => !!window.counterControls)).toBe(true);
-  return { page, context, releaseAudio };
+  return { page, context, releaseAudio, failedAudioRequests: () => failedAudioRequests };
 }
 const root = (page) => page.locator('.shop-scene');
 const starts = (page) =>
@@ -159,6 +301,82 @@ async function silent(page, action) {
 }
 try {
   {
+    const { page, context } = await fresh({ muted: true });
+    const comments = [];
+    for (const item of catalog) {
+      await page.getByRole('textbox', { name: 'Procurar item' }).fill(item.name);
+      await page.getByRole('button', { name: `Examinar ${item.name}`, exact: true }).click();
+      const speech = page.getByRole('status', { name: 'Comentário do vendedor' }).locator('span');
+      await expect(speech).toBeVisible();
+      const text = (await speech.innerText()).trim();
+      expect(text.length, item.id).toBeGreaterThan(20);
+      expect(text, item.id).not.toBe(`${item.name}. Examine à vontade antes de decidir.`);
+      if (individualTopics[item.id]) expect(text, item.id).toMatch(individualTopics[item.id]);
+      comments.push({ id: item.id, text });
+    }
+    expect(new Set(comments.map((comment) => comment.text)).size).toBe(71);
+    await count(page, 0);
+    expect((await starts(page)).length).toBe(0);
+    await expect(page.locator('.shop-table-token')).toHaveCount(0);
+    reports.push({ scenario: '71-individual-merchant-comments-examination-silent', comments });
+    await context.close();
+  }
+  {
+    const { page, context } = await fresh();
+    const placements = [];
+    expect(new Set(Object.keys(materialItems))).toEqual(new Set(Object.keys(audioManifest.files)));
+    expect(new Set(Object.values(audioManifest.files).map((file) => file.file)).size).toBe(10);
+    for (const [index, item] of catalog.entries()) {
+      await buy(page, item.id);
+      await count(page, index + 1);
+      const kind = expectedMaterials.get(item.id);
+      await expect(root(page)).toHaveAttribute('data-counter-audio-item', item.id);
+      await expect(root(page)).toHaveAttribute('data-counter-audio-kind', kind);
+      const trace = (await starts(page)).at(-1);
+      expect(trace.file, item.id).toBe(audioManifest.files[kind].file);
+      expect(trace.duration, item.id).toBeCloseTo(audioManifest.files[kind].duration, 2);
+      expect(trace.gesture, item.id).toBe(true);
+      placements.push({ id: item.id, kind, file: audioManifest.files[kind].file, ...trace });
+      await page.getByRole('button', { name: `Remover ${item.name} da mesa`, exact: true }).click();
+      await expect(page.locator('.shop-table-token')).toHaveCount(0);
+      await count(page, index + 1);
+    }
+    expect((await starts(page)).length).toBe(71);
+    reports.push({ scenario: '71-real-catalog-material-placements', placements });
+    await context.close();
+  }
+  {
+    const { page, context, failedAudioRequests } = await fresh({ failedAudioKind: 'chain' });
+    await buy(page, 'chain');
+    await expect(page.locator('.shop-table-token')).toHaveCount(1);
+    await expect(root(page)).toHaveAttribute('data-counter-audio-state', 'unavailable');
+    await count(page, 0);
+    expect(failedAudioRequests()).toBeGreaterThan(0);
+    for (const [index, id] of ['dagger', 'quarterstaff', 'potion-of-healing'].entries()) {
+      await buy(page, id);
+      await count(page, index + 1);
+      await expect(root(page)).toHaveAttribute(
+        'data-counter-audio-kind',
+        expectedMaterials.get(id),
+      );
+    }
+    await expect(page.locator('.shop-table-token')).toHaveCount(4);
+    await page.getByRole('button', { name: /Abrir carrinho/ }).click();
+    for (const id of ['chain', 'dagger', 'quarterstaff', 'potion-of-healing']) {
+      const item = catalog.find((item) => item.id === id);
+      await expect(
+        page.getByRole('spinbutton', { name: `Quantidade de ${item.name}` }),
+      ).toHaveValue('1');
+    }
+    await expect(page.getByRole('button', { name: /Finalizar compra/ })).toBeEnabled();
+    reports.push({
+      scenario: 'one-wave-unavailable-other-materials-and-cart-continue',
+      failedAudioRequests: failedAudioRequests(),
+      trace: await starts(page),
+    });
+    await context.close();
+  }
+  {
     const { page, context } = await fresh();
     expect(await page.evaluate(() => window.counterContexts.length)).toBe(0);
     await page.getByRole('textbox', { name: 'Procurar item' }).fill('Adaga');
@@ -167,6 +385,7 @@ try {
     );
     await buy(page, 'dagger');
     await count(page, 1);
+    await expect(root(page)).toHaveAttribute('data-counter-audio-kind', 'metal');
     await buy(page, 'dagger');
     await count(page, 2);
     await expect(
@@ -174,13 +393,18 @@ try {
     ).toBeVisible();
     await buy(page, 'plate-armor');
     await count(page, 3);
+    await expect(root(page)).toHaveAttribute('data-counter-audio-kind', 'metal');
+    await expect(root(page)).toHaveAttribute('data-counter-audio-weight', '65.000');
     const heavy = (await starts(page)).at(-1),
       light = (await starts(page))[0];
     expect(heavy.gain).toBeGreaterThan(light.gain);
     expect(heavy.pitch).toBeLessThan(light.pitch);
     await buy(page, 'potion-of-healing');
     await count(page, 4);
-    expect((await starts(page)).at(-1).duration).toBeCloseTo(1.08, 2);
+    expect((await starts(page)).at(-1).duration).toBeCloseTo(
+      audioManifest.files.liquid.duration,
+      2,
+    );
     await expect(root(page)).toHaveAttribute('data-counter-audio-kind', 'liquid');
     // Keyboard activation adds the same item and produces one placement.
     await page.locator('.shop-product footer button').focus();
@@ -405,7 +629,7 @@ try {
     JSON.stringify({ errors, reports }, null, 2) + '\n',
   );
   console.log(
-    'Shop counter audio: accepted placements, DnD, heavy/liquid, mute/volume, full/99, visibility and disposal passed.',
+    'Shop counter audio: 71 comments/material placements, isolated WAV failure, DnD, heavy/liquid, mute/volume, full/99, visibility and disposal passed.',
   );
 } finally {
   await browser.close();
