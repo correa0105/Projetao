@@ -205,8 +205,31 @@ try {
     );
     await assertBalloonAttached('.stable-field > .ginna-balloon');
     await expect(page.locator('.ginna-vision')).toHaveCount(0);
+    await expect(keeper.locator('img')).toHaveAttribute(
+      'src',
+      warning >= 2 ? '/stable/ginna-serious.webp' : '/stable/ginna.webp',
+    );
+    if (warning === 2) {
+      await expect
+        .poll(() => keeper.locator('img').evaluate((image: HTMLImageElement) => image.naturalWidth))
+        .toBeGreaterThan(0);
+      await page.screenshot({ path: 'test-results/ginna-serious-warning.png' });
+    }
   }
   await expect(normalBalloon.locator('[role="status"]')).toContainText('ÚLTIMA VEZ');
+  const shakingLetter = normalBalloon.locator('.ginna-shaking-letter').first();
+  await expect(shakingLetter).toBeVisible();
+  expect(await shakingLetter.evaluate((element) => getComputedStyle(element).animationName)).toBe(
+    'none',
+  );
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  expect(await shakingLetter.evaluate((element) => getComputedStyle(element).animationName)).toBe(
+    'ginna-letter-shake',
+  );
+  await expect
+    .poll(() => shakingLetter.evaluate((element) => getComputedStyle(element).transform))
+    .not.toBe('none');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.screenshot({ path: 'test-results/ginna-conversation.png' });
   // Closing the balloon does not erase the warnings on this visit.
   await conversation.locator('[data-ginna-question="warning"]').press('Escape');
@@ -230,6 +253,22 @@ try {
   };
   await expect(vision).toBeVisible();
   await expect(vision).toContainText('Pague para ver o que acontece');
+  const ominousText = vision.locator('.ginna-balloon-copy');
+  expect(
+    await ominousText.evaluate((element) => getComputedStyle(element).textDecorationLine),
+  ).toBe('line-through');
+  expect(await ominousText.evaluate((element) => getComputedStyle(element).animationName)).toBe(
+    'ginna-text-heartbeat',
+  );
+  const firstColor = await ominousText.evaluate((element) => getComputedStyle(element).color);
+  await expect
+    .poll(() => ominousText.evaluate((element) => getComputedStyle(element).color))
+    .not.toBe(firstColor);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  expect(await ominousText.evaluate((element) => getComputedStyle(element).animationName)).toBe(
+    'none',
+  );
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   await expect(page.locator('.stable-animal')).toBeHidden();
   expect(await normalMusic.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
   const visionMusic = page.locator('[data-ginna-music]');
@@ -333,6 +372,44 @@ try {
   const breath = page.locator('[data-ginna-breathing]');
   await expect(recovery).toBeVisible();
   await expect(recovery).toHaveAttribute('data-motion', 'full');
+  await expect(recovery).toHaveAttribute('data-phase', 'reaching');
+  expect(await recovery.evaluate((element) => getComputedStyle(element).backgroundColor)).toBe(
+    'rgba(0, 0, 0, 0)',
+  );
+  expect(
+    await recovery.evaluate((element) => getComputedStyle(element, '::backdrop').backdropFilter),
+  ).toBe('none');
+  await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute('data-stage', 'sky');
+  await expect
+    .poll(() =>
+      recovery
+        .locator('[data-tentacle="distant"]')
+        .evaluate((element: SVGPathElement) => element.getBBox().height),
+    )
+    .toBeGreaterThan(200);
+  await page.screenshot({ path: 'test-results/ginna-tentacle-sky.png' });
+  await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute(
+    'data-stage',
+    'descending',
+  );
+  await page.screenshot({ path: 'test-results/ginna-tentacle-descending.png' });
+  await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute(
+    'data-stage',
+    'wrapping',
+  );
+  await expect
+    .poll(() =>
+      recovery.locator('.ginna-return-tentacles').getAttribute('data-progress').then(Number),
+    )
+    .toBeGreaterThan(0.85);
+  await expect(vision).toBeVisible();
+  await page.screenshot({ path: 'test-results/ginna-tentacle-wrapping.png' });
+  await page.waitForFunction(
+    () => document.querySelector('.ginna-return')?.getAttribute('data-phase') === 'closed',
+  );
+  const closedFrame = await page.screenshot({ path: 'test-results/ginna-return-closed.png' });
+  const closedColors = await sharp(closedFrame).removeAlpha().stats();
+  expect(closedColors.channels.every((channel) => channel.max < 2)).toBe(true);
   await expect
     .poll(() =>
       breath.evaluate(
@@ -348,12 +425,6 @@ try {
   expect(await breath.evaluate((element: HTMLAudioElement) => element.volume)).toBe(
     Math.min(1, musicBefore.volume * 1.25),
   );
-  await page.waitForFunction(
-    () => document.querySelector('.ginna-return')?.getAttribute('data-phase') === 'closed',
-  );
-  const closedFrame = await page.screenshot({ path: 'test-results/ginna-return-closed.png' });
-  const closedColors = await sharp(closedFrame).removeAlpha().stats();
-  expect(closedColors.channels.every((channel) => channel.max < 2)).toBe(true);
   await expect(vision).toHaveCount(0);
   expect(await visionPlayer!.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
   await expect(recovery).toHaveCount(0);
@@ -361,6 +432,7 @@ try {
   expect(await breath.evaluate((element: HTMLAudioElement) => element.paused)).toBe(false);
   await expect(page.locator('.stable-animal-base')).toHaveAttribute('src', normalImage!);
   await expect(keeper).toBeFocused();
+  await expect(keeper.locator('img')).toHaveAttribute('src', '/stable/ginna.webp');
   await expect
     .poll(() => normalMusic.evaluate((element: HTMLAudioElement) => element.paused))
     .toBe(false);

@@ -126,9 +126,19 @@ não foi implementada. Até 50 blocos por página e 100 uploads por página.
 
 ## Verificação
 
+Crônicas e rascunhos podem ser excluídos pela lixeira ao lado do título na lista
+ou por **Excluir crônica** na leitura. A confirmação mostra o título e permite
+cancelar. Disponível ao autor, staff e gestão da lore, com autorização no servidor
+e revisão atual obrigatória. A migration 043 registra a exclusão sem apagar
+histórico/imagens do SQL; as rotas deixam de expor ambos após a exclusão.
+Não há restauração de crônicas pela interface. O seed não recria crônicas
+iniciais excluídas.
+
 `npm run test:lore` usa um PostgreSQL descartável para testar regiões/subpastas,
 preservação das crônicas, uploads, ownership, publicação, imagens privadas,
 referências entre páginas, revisões e snapshots.
+Também verifica exclusão por autor/staff/gestão, bloqueio de outras contas,
+conflito de revisão, imagens indisponíveis, auditoria e persistência após seed.
 Também verifica permissões de pastas, edição de categorias existentes, ciclos,
 reorganização, exclusão com destino, restauração, limite de profundidade e
 preservação de edições posteriores à exclusão.

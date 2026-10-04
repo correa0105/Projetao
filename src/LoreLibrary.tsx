@@ -319,6 +319,7 @@ export function LoreLibrary() {
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
   const [deletingFolder, setDeletingFolder] = useState<LoreFolder | null>(null);
+  const [deletingPage, setDeletingPage] = useState<LorePageSummary | null>(null);
   const [editingFolder, setEditingFolder] = useState<LoreFolder | null>(null);
   const [trash, setTrash] = useState<LoreDeletedFolder[] | null>(null);
   const [trashError, setTrashError] = useState('');
@@ -487,9 +488,14 @@ export function LoreLibrary() {
                     <ArrowLeft size={15} /> Voltar ao arquivo
                   </button>
                   {page.can_edit && (
-                    <button onClick={() => setEditing(true)}>
-                      <Feather size={15} /> Editar crônica
-                    </button>
+                    <>
+                      <button onClick={() => setEditing(true)}>
+                        <Feather size={15} /> Editar crônica
+                      </button>
+                      <button onClick={() => setDeletingPage(page)}>
+                        <Trash2 size={15} /> Excluir crônica
+                      </button>
+                    </>
                   )}
                 </div>
                 <header>
@@ -525,29 +531,37 @@ export function LoreLibrary() {
                 </label>
                 <div className="lore-page-list">
                   {pages.map((item) => (
-                    <button
-                      key={item.id}
-                      className="lore-page-link"
-                      onClick={() => void openPage(item.id)}
-                    >
-                      <LoreScrollIcon />
-                      <span className="lore-page-copy">
-                        <small>
-                          {loreFolderPath(item.folder_id, folders)}
-                          {!item.published && ' · Rascunho'}
-                        </small>
-                        <strong>{item.title}</strong>
-                        <span>{item.subtitle}</span>
-                      </span>
-                      <span
-                        className="lore-page-art"
-                        aria-hidden="true"
-                        style={{
-                          backgroundImage: `url("${item.thumbnail || '/alvorada-dawn-banner.png'}")`,
-                        }}
-                      />
-                      <ChevronRight size={20} />
-                    </button>
+                    <div className="lore-page-row" key={item.id}>
+                      <button className="lore-page-link" onClick={() => void openPage(item.id)}>
+                        <LoreScrollIcon />
+                        <span className="lore-page-copy">
+                          <small>
+                            {loreFolderPath(item.folder_id, folders)}
+                            {!item.published && ' · Rascunho'}
+                          </small>
+                          <strong>{item.title}</strong>
+                          <span>{item.subtitle}</span>
+                        </span>
+                        <span
+                          className="lore-page-art"
+                          aria-hidden="true"
+                          style={{
+                            backgroundImage: `url("${item.thumbnail || '/alvorada-dawn-banner.png'}")`,
+                          }}
+                        />
+                        <ChevronRight size={20} />
+                      </button>
+                      {item.can_edit && (
+                        <button
+                          className="lore-page-delete"
+                          aria-label={`Excluir crônica ${item.title}`}
+                          title="Excluir crônica"
+                          onClick={() => setDeletingPage(item)}
+                        >
+                          <Trash2 size={17} />
+                        </button>
+                      )}
+                    </div>
                   ))}
                 </div>
                 {!pages.length && (
@@ -588,6 +602,31 @@ export function LoreLibrary() {
               setPage(created);
               setEditing(true);
             } else setFolderId(created.id);
+          }}
+        />
+      )}
+      {deletingPage && (
+        <LoreDeletePageDialog
+          page={deletingPage}
+          onClose={() => setDeletingPage(null)}
+          onDeleted={async () => {
+            request.current++;
+            setBusy(false);
+            setIndex((current) =>
+              current
+                ? {
+                    ...current,
+                    pages: current.pages.filter((item) => item.id !== deletingPage.id),
+                  }
+                : current,
+            );
+            if (page?.id === deletingPage.id) {
+              setPage(null);
+              setEditing(false);
+            }
+            setDeletingPage(null);
+            setMessage('Crônica excluída.');
+            await refresh();
           }}
         />
       )}
@@ -657,6 +696,59 @@ export function LoreLibrary() {
         </Modal>
       )}
     </section>
+  );
+}
+
+function LoreDeletePageDialog({
+  page,
+  onClose,
+  onDeleted,
+}: {
+  page: LorePageSummary;
+  onClose: () => void;
+  onDeleted: () => Promise<void>;
+}) {
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  return (
+    <Modal
+      title={`Excluir crônica ${page.title}`}
+      close={() => {
+        if (!busy) onClose();
+      }}
+    >
+      <form
+        className="lore-delete-form"
+        onSubmit={async (event) => {
+          event.preventDefault();
+          if (busy) return;
+          setBusy(true);
+          setError('');
+          try {
+            await api(`/lore/pages/${page.id}`, {
+              method: 'DELETE',
+              body: JSON.stringify({ revision: page.revision }),
+            });
+            await onDeleted();
+          } catch (issue) {
+            setError((issue as Error).message);
+          } finally {
+            setBusy(false);
+          }
+        }}
+      >
+        <p>A crônica “{page.title}” e suas imagens sairão da biblioteca.</p>
+        {error && <FlashMessage kind="error">{error}</FlashMessage>}
+        <div>
+          <button className="button" type="button" disabled={busy} onClick={onClose}>
+            Cancelar
+          </button>
+          <button className="button danger" disabled={busy}>
+            <Trash2 size={15} /> {busy ? 'Excluindo…' : 'Excluir crônica'}
+          </button>
+        </div>
+      </form>
+    </Modal>
   );
 }
 

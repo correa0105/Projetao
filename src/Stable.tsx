@@ -105,6 +105,8 @@ export function Stable({
   const keeperTrigger = useRef<HTMLButtonElement>(null);
   const mountVisits = useRef<Record<string, number>>({});
   useEffect(() => {
+    const portrait = new Image();
+    portrait.src = '/stable/ginna-serious.webp';
     const timer = window.setTimeout(() => setGreetingVisible(false), 7000);
     return () => window.clearTimeout(timer);
   }, []);
@@ -131,6 +133,11 @@ export function Stable({
     window.requestAnimationFrame(() => keeperTrigger.current?.focus({ preventScroll: true }));
   }
   const finishVision = useCallback(() => {
+    const player = breathing.current;
+    if (player) {
+      player.currentTime = 0;
+      void player.play().catch(() => {});
+    }
     setVision(false);
     setSpeech('Assim é melhor. Eles só precisam de cuidado e gentileza. Agora podemos continuar.');
     warnings.current = 0;
@@ -141,11 +148,6 @@ export function Stable({
   }, []);
   function beginReturn() {
     if (returning) return;
-    const player = breathing.current;
-    if (player) {
-      player.currentTime = 0;
-      void player.play().catch(() => {});
-    }
     setReturning(true);
   }
   useEffect(() => {
@@ -420,13 +422,21 @@ export function Stable({
                 setTalk('questions');
               }}
             >
-              <img src="/stable/ginna.webp" alt="Jovem cuidadora dos animais, sem chapéu" />
+              <img
+                src={warnings.current >= 3 ? '/stable/ginna-serious.webp' : '/stable/ginna.webp'}
+                alt={
+                  warnings.current >= 3
+                    ? 'Ginna séria, com expressão de impaciência'
+                    : 'Jovem cuidadora dos animais, sem chapéu'
+                }
+              />
             </button>
           </div>
           {(talk || speech !== ginnaGreeting || greetingVisible) && (
             <GinnaBalloon
               speaker={known ? 'Ginna' : 'Cuidadora'}
               text={talk === 'questions' ? 'O que deseja saber?' : speech}
+              textEffect={talk !== 'questions' && speech === ginnaWarnings[3] ? 'shake' : 'plain'}
               label={talk ? 'Perguntas à cuidadora' : undefined}
               close={closeConversation}
             >

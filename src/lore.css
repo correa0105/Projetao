@@ -267,6 +267,35 @@
   padding: 6px 0;
   font-size: 12px;
 }
+.lore-page-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--lore-line);
+}
+.lore-page-row > .lore-page-link {
+  flex: 1;
+  min-width: 0;
+  border-bottom: 0;
+}
+.lore-page-delete {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--lore-muted);
+  border-radius: 4px;
+}
+.lore-page-delete:hover,
+.lore-page-delete:focus-visible {
+  color: #d8a18b;
+  background: #9a4e3226;
+}
+.lore-page-copy {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .lore-page-link {
   position: relative;
   isolation: isolate;

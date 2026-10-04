@@ -15,6 +15,10 @@ estábulo. Clicar na personagem continua abrindo a conversa; o prazo da saudaç�
 não interrompe perguntas, respostas ou a sequência de advertências.
 Clique nela ou use Enter para abrir um balão ancorado à personagem, com três
 perguntas sobre identidade, origem dos animais e consequências de maltratá-los.
+A resposta sobre a origem dos animais foi revista em 04/10/2026: eles vêm até
+Ginna, atraídos pela comida e pelo sossego, e recebem água fresca, abrigo e
+paciência até se sentirem seguros. Fala direta e acolhedora, sem referências a
+caminhos secretos, preservando a iniciativa dos animais de procurá-la.
 Fluxo como na loja: O que deseja saber? abre as opções; selecionar uma fecha
 as perguntas e mostra apenas a resposta. Clicar novamente ou Escape fecha.
 Sem rótulo/botão Conversar visível nas duas formas; o próprio corpo é clicável
@@ -132,7 +136,47 @@ https://www.youtube.com/watch?v=ohNpf4VnlP8 . Não é atribuído a CC0.
 
 > Use case: stylized-concept. Asset type: TWO-FRAME transparent sprite sheet for blinking eyes embedded FLUSH in the ground of a realistic medieval horror scene. Exactly two equal rectangular frames stacked vertically, top OPEN eye, bottom the IDENTICAL eye CLOSED. Whole canvas 3:4; each frame 3:2. Each frame contains the SAME single large eye set into a very low shallow cracked dark-earth opening. Camera looks DOWN at the ground from a shallow 35-degree above-ground angle, so the eye opening is a broad HORIZONTAL flattened almond/ellipse foreshortened by ground perspective. No upright eyeball looking from a standing creature, NO mound or monster head, NO mouths, teeth, faces, extra eyes or creature. The upper frame eye has a pale gray iris with an inky pupil and dim wet reflection; fleshy charcoal eyelids meet rough dark muddy soil at the edges. The lower frame shows the upper eyelid covering the iris completely with a single closed-eye crease; precisely same soil rim, lighting, viewpoint, footprint and location within the frame. Eye sits at the middle of each frame with generous transparent margin; widths match. Realistic detailed dark fantasy PAINTING matching the stable website, nuanced muddy earth, translucent sparse dirt crumbs. Absolutely transparent alpha outside each eye/soil rim, no background, halo, white outline or text. This is a production sprite sheet: same scale and framing for perfect blinking alignment.
 
-## Validação
+## Expressão, tipografia e retorno com tentáculos (04/10/2026)
+
+A terceira advertência (Minha paciência está acabando) troca a arte por
+`public/stable/ginna-serious.webp`, mantendo roupa, feno, personagem e alfa.
+A expressão séria permanece até o retorno, que restaura a arte original.
+A quarta advertência usa letras com tremor individual; a fala da visão escura
+recebe um traço no meio e dois pulsos de vermelho por ciclo de 1,6 s.
+As letras permanecem legíveis e o leitor de tela recebe a frase completa.
+Movimento reduzido desativa tremor/pulsação, preservando vermelho e traço.
+
+`public/stable/paddock-ruined-eye-mountain-v2.webp` restaura apenas um pequeno
+pico central. A máscara do olho acompanha a crista mais alta, sem cortar a íris.
+As artes foram editadas com a ferramenta integrada image_gen e convertidas em
+WebP; as versões anteriores foram preservadas.
+
+Ao escolher Não vou machucá-los!, GinnaTentacles inicia 4,2 s de movimento:
+um tentáculo distante surge atrás da crista e sobe ao céu; um segundo desce
+perto da câmera e forma voltas ao redor do visitante. Geometria afilada,
+ventosas, textura existente do kraken e sombras em SVG, adaptadas à tela.
+A subida distante acompanha o enquadramento cover do fundo; a aproximação
+ocupa o viewport. Em seguida as pálpebras cobrem a cena e o estábulo normal
+retorna. Respiração começa somente nessa troca de cenário. Aba oculta pausa
+o avanço dos tentáculos; desmontar cancela o frame pendente. Movimento reduzido
+mostra uma composição estática breve e mantém o fade de retorno.
+
+### Prompt final — expressão séria
+
+> Use case: identity-preserve. Asset type: transparent character sprite for a fantasy stable website. Input image 1 is the edit target, the existing Ginna character. Change ONLY her facial expression and a tiny natural adjustment of head angle: she has now become serious, visibly losing patience, with brows drawn slightly inward and down, direct firm gaze at the viewer, lips closed and unsmiling with mild tension. The expression is a stern warning from a protective caretaker, believable and clear at small size, not cartoon anger. Preserve exactly the same youthful woman, face identity, blonde hair and braids, no hat, purple dress, ivory blouse/apron, red ribbon, hay in hands, hand/arm/body pose, complete full body including boots, realistic painterly style, warm daylight, scale, original silhouette and placement. Keep feet and face in the same image positions for seamless sprite swap. Transparent background with actual alpha. No scene, no shadow backdrop, no extra objects, no lettering, no red/glowing eyes, no supernatural transformation.
+
+### Prompt final — pequena crista da montanha
+
+> Use case: precise-object-edit. Asset type: wide background for the existing Ginna nightmare scene. Image 1 is the edit target. Change ONLY the small central distant mountain crest in the middle-left of the image, centered at 47% of image width: restore a modest amount of jagged gray-black mountain rock ABOVE its current flattened ridge, making a shallow natural peak and rocky shoulder that rises only about 3% of the total image height. It is intended to frame a separately composited eye placed on the mountain face, so leave the face rock empty. Preserve EXACTLY the existing landscape, camera, framing, image proportions, ruin at left, foreground earth/fences, dead trees, lake/bridge, castle at right, sky/clouds, nighttime lighting, dark desaturated palette. Keep the ridge natural and local, do not restore an enormous peak and do not alter mountains elsewhere. NO eye, tentacle, creature, person, text, UI, or extra fog painted in: those will be animated separately.
+
+## Validação dos refinamentos
+
+Smoke do estábulo verifica troca de arte na terceira fala, imagem carregada,
+letras animadas na quarta, traço/pulsação e movimento reduzido na visão,
+as três etapas dos tentáculos, cena escura até envolver o visitante e retorno
+com pálpebras/respiração. Capturas em `test-results/ginna-serious-warning.png`,
+`ginna-tentacle-sky.png`, `ginna-tentacle-descending.png` e
+`ginna-tentacle-wrapping.png`.
 
 `node scripts/test-stable-isolated.mjs` usa PostgreSQL descartável e Microsoft
 Edge. Cobre saudação alegre sem nome e revelação pela pergunta, retirada do

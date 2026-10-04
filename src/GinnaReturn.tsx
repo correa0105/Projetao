@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { GinnaTentacles, animateGinnaTentacles } from './GinnaTentacles';
 
 /** Cover the nightmare before changing the scene; reopen onto the actual stable. */
 export function GinnaReturn({
@@ -9,7 +10,7 @@ export function GinnaReturn({
   onFinished: () => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
-  const [phase, setPhase] = useState('closing');
+  const [phase, setPhase] = useState('reaching');
 
   useEffect(() => {
     const overlay = dialog.current!;
@@ -21,6 +22,7 @@ export function GinnaReturn({
     let releaseHold: (() => void) | undefined;
     overlay.dataset.motion = reduced ? 'reduced' : 'full';
     overlay.showModal();
+    const tentacles = animateGinnaTentacles(overlay, reduced);
 
     async function moveLids(closing: boolean) {
       const motions = lids.map((lid, index) => {
@@ -40,6 +42,9 @@ export function GinnaReturn({
     }
 
     void (async () => {
+      await tentacles.finished;
+      if (cancelled) return;
+      setPhase('closing');
       await moveLids(true);
       if (cancelled) return;
       setPhase('closed');
@@ -60,6 +65,7 @@ export function GinnaReturn({
       cancelled = true;
       window.clearTimeout(hold);
       releaseHold?.();
+      tentacles.cancel();
       animations.forEach((animation) => animation.cancel());
       overlay.close();
     };
@@ -70,9 +76,10 @@ export function GinnaReturn({
       ref={dialog}
       className="ginna-return"
       data-phase={phase}
-      aria-label="Fechando os olhos e voltando ao estábulo"
+      aria-label="Tentáculos envolvem a visão antes do retorno ao estábulo"
       onCancel={(event) => event.preventDefault()}
     >
+      <GinnaTentacles />
       <div className="ginna-return-lid ginna-return-upper" aria-hidden="true" />
       <div className="ginna-return-lid ginna-return-lower" aria-hidden="true" />
     </dialog>

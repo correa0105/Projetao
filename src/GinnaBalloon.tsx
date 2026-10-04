@@ -1,4 +1,11 @@
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type CSSProperties,
+} from 'react';
 
 export function GinnaBalloon({
   text,
@@ -7,6 +14,7 @@ export function GinnaBalloon({
   close,
   label,
   dark = false,
+  textEffect = 'plain',
 }: {
   text: string;
   speaker: string;
@@ -14,6 +22,7 @@ export function GinnaBalloon({
   close?: () => void;
   label?: string;
   dark?: boolean;
+  textEffect?: 'plain' | 'shake' | 'heartbeat';
 }) {
   const root = useRef<HTMLDivElement>(null);
   const [shape, setShape] = useState({ width: 1, height: 1, targetY: 22 });
@@ -114,8 +123,39 @@ export function GinnaBalloon({
         />
       </svg>
       <strong className="npc-speaker">{speaker}</strong>
-      <p className="ginna-balloon-copy" role="status">
-        {text}
+      <p
+        className="ginna-balloon-copy"
+        data-text-effect={textEffect}
+        role="status"
+        aria-label={textEffect === 'shake' ? text : undefined}
+      >
+        {textEffect === 'shake' ? (
+          <span aria-hidden="true">
+            {text.split(/(\s+)/).map((word, wordIndex) =>
+              /\s/.test(word) ? (
+                word
+              ) : (
+                <span className="ginna-shaking-word" key={wordIndex}>
+                  {Array.from(word).map((letter, index) => (
+                    <span
+                      className="ginna-shaking-letter"
+                      key={index}
+                      style={
+                        {
+                          '--letter-delay': `${-((wordIndex * 71 + index * 43) % 420)}ms`,
+                        } as CSSProperties
+                      }
+                    >
+                      {letter}
+                    </span>
+                  ))}
+                </span>
+              ),
+            )}
+          </span>
+        ) : (
+          text
+        )}
       </p>
       {children && <div className="ginna-questions">{children}</div>}
     </div>

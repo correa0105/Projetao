@@ -1,5 +1,29 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Excluir crônicas e fala da Ginna (04/10/2026)
+
+Refinos adicionais da Ginna: arte séria na terceira advertência, tremor por
+letra na quarta e fala escura riscada com pulsação vermelha. Pequeno pico
+restaurado no fundo v2 para acomodar o olho da montanha. Pedido de desculpas
+inicia 4,2 s de tentáculos: subida atrás da crista, descida próxima e voltas
+ao redor da câmera, antes das pálpebras e do retorno ao dia. Respiração
+sincronizada com a troca de cenário. Movimento reduzido preserva os estados
+visuais com retorno breve estático. Detalhes, prompts e assets em
+docs/STABLE-GINNA.md. Nenhuma mudança nas regras, montarias ou compras.
+
+Crônicas e rascunhos têm lixeira na lista e opção Excluir crônica na leitura,
+com confirmação pelo título. Autor, staff e gestão da lore usam as permissões
+de edição existentes, verificadas no servidor. Migration 043 registra exclusão
+com data/autor e preserva histórico/imagens no SQL; página e imagens ficam
+indisponíveis nas rotas públicas e privadas, inclusive após recarga/seed.
+DELETE exige a revisão atual para impedir exclusão sobre uma edição recente.
+Crônicas excluídas não impedem excluir uma pasta vazia; restaurar pastas não
+reabre crônicas excluídas. Não há interface de restauração de crônicas.
+
+Resposta da Ginna sobre a origem dos animais passa a explicar diretamente
+que eles vêm até ela, atraídos por comida e sossego, e recebem água, abrigo e
+paciência até ganhar confiança. Removidas as alusões a caminhos misteriosos.
+
 ## Ginna e visão do estábulo (03/10/2026)
 
 Brida foi substituída por Ginna, moça jovem em arte realista sem chapéu.

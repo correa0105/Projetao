@@ -12,7 +12,7 @@ export const ginnaQuestions = [
     id: 'animals',
     question: 'Como você conseguiu esses animais?',
     answer:
-      'Consegui? Que palavra curiosa… Os animais vêm até mim. Às vezes atravessam a estrada; às vezes, caminhos que você não saberia encontrar. Eles sabem onde serão acolhidos. Eu apenas deixo a porteira aberta.',
+      'Os animais vêm até mim. Alguns chegam cansados da estrada; outros se aproximam aos poucos, atraídos pela comida e pelo sossego do estábulo. Eu recebo cada um com água fresca, abrigo e paciência, até que se sintam seguros. Com o tempo, ganham confiança e ficam por aqui. Meu trabalho é fazer deste lugar um lar para eles.',
   },
   { id: 'warning', question: 'E se eu fizer mal a ele?', answer: '' },
 ] as const;

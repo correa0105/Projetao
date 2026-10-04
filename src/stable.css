@@ -331,6 +331,32 @@
   overflow-y: auto;
   scrollbar-width: thin;
 }
+.ginna-shaking-word,
+.ginna-shaking-letter {
+  display: inline-block;
+}
+.ginna-shaking-letter {
+  animation: ginna-letter-shake 420ms var(--letter-delay, 0ms) linear infinite;
+}
+:root .app-shell .ginna-balloon.npc-speech .ginna-balloon-copy[data-text-effect='heartbeat'] {
+  color: #d77878;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #b74e4e;
+  animation: ginna-text-heartbeat 1.6s ease-in-out infinite;
+}
+@keyframes ginna-letter-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  18% { transform: translate(.4px, -1px) rotate(-1.5deg); }
+  39% { transform: translate(-.5px, .6px) rotate(1.2deg); }
+  63% { transform: translate(.5px, .8px) rotate(-.8deg); }
+  81% { transform: translate(-.3px, -.6px) rotate(1deg); }
+}
+@keyframes ginna-text-heartbeat {
+  0%, 42%, 100% { color: #d77878; text-shadow: 0 0 2px #70141450; }
+  10%, 27% { color: #ff5555; text-shadow: 0 0 6px #e9292970, 0 0 12px #a9101040; }
+  18%, 35% { color: #d96161; text-shadow: 0 0 3px #9e1b1b60; }
+}
 .ginna-questions {
   display: grid;
   flex: none;
@@ -375,7 +401,7 @@ dialog.ginna-vision {
   background: #000;
 }
 /* Viewer closes both eyelids, holds briefly, then opens onto daylight. */
-dialog.ginna-return {
+:root dialog.ginna-return {
   position: fixed;
   inset: 0;
   margin: 0;
@@ -388,8 +414,28 @@ dialog.ginna-return {
   max-height: none;
   overflow: hidden;
   background: transparent;
+  background-image: none;
+  box-shadow: none;
 }
-.ginna-return::backdrop { background: transparent; }
+:root dialog.ginna-return::backdrop { background: transparent; backdrop-filter: none; }
+.ginna-return-tentacles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ginna-return-horizon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100vw, calc(100dvh * 1672 / 941));
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: .78;
+}
+.ginna-return-near { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ginna-near-tentacle-body { filter: drop-shadow(0 12px 14px #000c); }
+.ginna-return[data-phase='closed'] .ginna-return-tentacles,
+.ginna-return[data-phase='opening'] .ginna-return-tentacles { visibility: hidden; }
 .ginna-return-lid {
   position: absolute;
   left: 0;
@@ -439,7 +485,7 @@ dialog.ginna-return {
   inset: 0;
   background:
     linear-gradient(#000a, #0005 55%, #0008),
-    url('/stable/paddock-ruined-eye-mountain.webp') center/cover;
+    url('/stable/paddock-ruined-eye-mountain-v2.webp') center/cover;
 }
 .ginna-vision-fog {
   position: absolute;
@@ -596,6 +642,10 @@ dialog.ginna-return {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  :root .app-shell .ginna-balloon.npc-speech .ginna-shaking-letter,
+  :root .app-shell .ginna-balloon.npc-speech .ginna-balloon-copy[data-text-effect='heartbeat'] {
+    animation: none;
+  }
   .ginna-earth-eye,
   .ginna-eye-mound,
   .ginna-eye-blink,

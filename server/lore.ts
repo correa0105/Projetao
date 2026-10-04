@@ -14,8 +14,8 @@ async function requireFolderManager(userId: string) {
     throw new AppError(403, 'Esta conta não pode editar, excluir ou restaurar pastas da lore.');
 }
 const loreManager = `EXISTS(SELECT 1 FROM lore_folder_managers WHERE user_id=$1)`;
-const editable = `(COALESCE(p.author_id=$1,false) OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1) OR ${loreManager})`;
-const visible = `(p.published OR ${editable})`;
+const editable = `(p.deleted_at IS NULL AND (COALESCE(p.author_id=$1,false) OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1) OR ${loreManager}))`;
+const visible = `(p.deleted_at IS NULL AND (p.published OR ${editable}))`;
 const summary = `p.id,p.region_id,p.folder_id,p.title,p.subtitle,p.published,p.revision,
   ${editable} AS can_edit,
   (SELECT '/api/lore/images/' || (b->>'asset_id') FROM jsonb_array_elements(p.blocks) b
@@ -203,7 +203,7 @@ export function loreRouter() {
       );
       const folderIds = folders.map((folder) => folder.id);
       const { rows: pages } = await client.query(
-        'SELECT * FROM lore_pages WHERE folder_id=ANY($1::uuid[]) FOR UPDATE',
+        'SELECT * FROM lore_pages WHERE folder_id=ANY($1::uuid[]) AND deleted_at IS NULL FOR UPDATE',
         [folderIds],
       );
       if (destination_id) {
@@ -335,6 +335,35 @@ export function loreRouter() {
   router.get('/lore/pages/:id', async (req, res) =>
     res.json(await getPage(uuid.parse(req.params.id), res.locals.user.id)),
   );
+  router.delete('/lore/pages/:id', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      userId = res.locals.user.id;
+    const { revision } = z
+      .object({ revision: z.number().int().min(0) })
+      .strict()
+      .parse(req.body);
+    await transaction(async (client) => {
+      await folderWriteLock(client);
+      const {
+        rows: [page],
+      } = await client.query(
+        `SELECT p.* FROM lore_pages p WHERE p.id=$2 AND ${editable} FOR UPDATE`,
+        [userId, id],
+      );
+      if (!page) throw new AppError(404, 'Crônica não encontrada ou indisponível para exclusão.');
+      if (page.revision !== revision)
+        throw new AppError(409, 'Esta crônica mudou em outra janela. Recarregue antes de excluir.');
+      await client.query(
+        'INSERT INTO lore_page_versions(page_id,revision,editor_id,snapshot) VALUES($1,$2,$3,$4)',
+        [id, revision, userId, JSON.stringify(page)],
+      );
+      await client.query(
+        'UPDATE lore_pages SET deleted_at=now(),deleted_by=$2,revision=revision+1,updated_at=now() WHERE id=$1',
+        [id, userId],
+      );
+    });
+    res.json({ deleted: true });
+  });
   router.post('/lore/pages', async (req, res) => {
     const data = lorePageInput.parse(req.body);
     if (data.blocks.some((block) => block.type === 'image'))

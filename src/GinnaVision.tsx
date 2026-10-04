@@ -121,6 +121,7 @@ export function GinnaVision({ known, onFinished }: { known: boolean; onFinished:
         <GinnaBalloon
           speaker={known ? 'Ginna' : 'Cuidadora'}
           text="Pague para ver o que acontece…"
+          textEffect="heartbeat"
           dark
           label={responding ? 'Resposta à cuidadora' : undefined}
         >

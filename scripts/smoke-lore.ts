@@ -492,6 +492,60 @@ try {
   await expect(
     page.getByRole('button', { name: 'Editar pasta Portos antigos', exact: true }),
   ).toBeVisible();
+  await page
+    .getByRole('button', { name: 'Excluir crônica As muralhas de Vigília', exact: true })
+    .click();
+  const deletePage = page.getByRole('dialog');
+  await expect(deletePage).toContainText(
+    'A crônica “As muralhas de Vigília” e suas imagens sairão da biblioteca.',
+  );
+  await deletePage.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await expect(deletePage).toHaveCount(0);
+  await page.getByRole('button').filter({ hasText: 'As muralhas de Vigília' }).click();
+  await page.getByRole('button', { name: 'Excluir crônica', exact: true }).click();
+  await deletePage.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await expect(page.locator('.lore-reader-title')).toContainText('As muralhas de Vigília');
+  await page.getByRole('button', { name: 'Voltar ao arquivo' }).click();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page
+    .getByRole('button', { name: 'Excluir crônica As muralhas de Vigília', exact: true })
+    .click();
+  await noOverflow();
+  await page.screenshot({ path: 'test-results/lore-delete-page-mobile.png', fullPage: true });
+  await deletePage.getByRole('button', { name: 'Excluir crônica', exact: true }).click();
+  await expect(deletePage).toHaveCount(0);
+  await expect(
+    page.locator('.lore-page-link').filter({ hasText: 'As muralhas de Vigília' }),
+  ).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator('.lore-page-link')).toHaveCount(2);
+  await expect(
+    page.locator('.lore-page-link').filter({ hasText: 'As muralhas de Vigília' }),
+  ).toHaveCount(0);
+  // A draft can be deleted directly from the list too.
+  const deletionIndex = await (await page.request.get(origin + '/api/lore')).json();
+  const draft = await page.request.post(origin + '/api/lore/pages', {
+    headers: { Origin: origin },
+    data: {
+      title: 'Rascunho descartável',
+      subtitle: '',
+      region_id: 'reino-do-norte',
+      folder_id: cities.id,
+      published: false,
+      blocks: [],
+    },
+  });
+  expect(draft.ok()).toBe(true);
+  await page.reload();
+  await expect(
+    page.getByRole('button', { name: 'Excluir crônica Rascunho descartável', exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole('button', { name: 'Excluir crônica Rascunho descartável', exact: true })
+    .click();
+  await deletePage.getByRole('button', { name: 'Excluir crônica', exact: true }).click();
+  await expect(deletePage).toHaveCount(0);
+  await expect(page.locator('.lore-page-link')).toHaveCount(deletionIndex.pages.length);
   await noOverflow();
   expect(errors).toEqual([]);
   console.log(

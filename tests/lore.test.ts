@@ -473,6 +473,110 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     const revised = (await req(`/lore/pages/${id}`, alice.cookie)).data;
     assert.equal(revised.title, 'Crônica revisada após a exclusão');
     assert.equal(revised.folder_id, history.id);
+    // Deletion respects permissions and concurrent edits, and hides both page and image.
+    assert.equal(
+      (await req(`/lore/pages/${id}`, '', 'DELETE', { revision: revised.revision })).status,
+      401,
+    );
+    assert.equal(
+      (await req(`/lore/pages/${id}`, charlie.cookie, 'DELETE', { revision: revised.revision }))
+        .status,
+      404,
+    );
+    assert.equal(
+      (await req(`/lore/pages/${id}`, alice.cookie, 'DELETE', { revision: revised.revision - 1 }))
+        .status,
+      409,
+    );
+    assert.equal((await req(`/lore/pages/${id}`, alice.cookie)).status, 200);
+    assert.equal(
+      (await req(`/lore/pages/${id}`, alice.cookie, 'DELETE', { revision: revised.revision }))
+        .status,
+      200,
+    );
+    for (const user of [alice, bob, charlie]) {
+      assert.equal((await req(`/lore/pages/${id}`, user.cookie)).status, 404);
+      assert.equal((await req(`/lore/images/${image.data.id}`, user.cookie)).status, 404);
+      assert.ok(
+        !(await req('/lore', user.cookie)).data.pages.some(
+          (page: { id: string }) => page.id === id,
+        ),
+      );
+    }
+    assert.equal(
+      (await req(`/lore/pages/${id}`, alice.cookie, 'DELETE', { revision: revised.revision }))
+        .status,
+      404,
+    );
+    assert.equal(
+      (await req(`/lore/pages/${id}/images`, alice.cookie, 'POST', png, 'image/png')).status,
+      404,
+    );
+    assert.equal(
+      (
+        await req(`/lore/pages/${id}`, alice.cookie, 'PUT', {
+          ...updated,
+          revision: revised.revision + 1,
+        })
+      ).status,
+      404,
+    );
+    const pageDeletion = (
+      await pool.query('SELECT deleted_at,deleted_by FROM lore_pages WHERE id=$1', [id])
+    ).rows[0];
+    assert.ok(pageDeletion.deleted_at);
+    assert.equal(pageDeletion.deleted_by, alice.id);
+    assert.equal(
+      (
+        await pool.query('SELECT 1 FROM lore_page_versions WHERE page_id=$1 AND revision=$2', [
+          id,
+          revised.revision,
+        ])
+      ).rowCount,
+      1,
+    );
+    // The lore manager can delete another author's draft.
+    const managed = (await req(`/lore/pages/${sharedDraft.id}`, alice.cookie)).data;
+    assert.equal(
+      (
+        await req(`/lore/pages/${managed.id}`, alice.cookie, 'DELETE', {
+          revision: managed.revision,
+        })
+      ).status,
+      200,
+    );
+    assert.equal((await req(`/lore/pages/${managed.id}`, charlie.cookie)).status, 404);
+    // Staff can delete; ordinary accounts cannot delete published legacy pages.
+    assert.equal(
+      (
+        await req(`/lore/pages/${legacy.id}`, charlie.cookie, 'DELETE', {
+          revision: legacy.revision + 1,
+        })
+      ).status,
+      404,
+    );
+    const beforeDelete = (await req(`/lore/pages/${legacy.id}`, bob.cookie)).data;
+    assert.equal(
+      (
+        await req(`/lore/pages/${legacy.id}`, bob.cookie, 'DELETE', {
+          revision: beforeDelete.revision,
+        })
+      ).status,
+      200,
+    );
+    await seed();
+    assert.equal((await req(`/lore/pages/${legacy.id}`, alice.cookie)).status, 404);
+    // Authors can remove their own drafts without management permissions.
+    const ownDraft = await req('/lore/pages', charlie.cookie, 'POST', {
+      ...data,
+      folder_id: history.id,
+    });
+    assert.equal(ownDraft.status, 201);
+    assert.equal(
+      (await req(`/lore/pages/${ownDraft.data.id}`, charlie.cookie, 'DELETE', { revision: 0 }))
+        .status,
+      200,
+    );
   } finally {
     await new Promise<void>((resolve, reject) =>
       server.close((error) => (error ? reject(error) : resolve())),
