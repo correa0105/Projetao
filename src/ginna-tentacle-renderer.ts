@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { makeGinnaTentacleCups } from './ginna-tentacle-cups';
+import { createGinnaLakeEffects, drawGinnaLakeContact2D } from './ginna-lake-effects';
 
 export const GINNA_TENTACLE_DURATION = 5600;
 const TAU = Math.PI * 2;
@@ -157,88 +159,7 @@ function makeTube(
 /** Flared, recessed cups with a raised lip and dark bowl; depth writes and shadows
  * make them adhere to the underside instead of looking like painted ellipses. */
 function makeCups(tube: Tube, texture: THREE.Texture) {
-  const profile = [
-    new THREE.Vector2(0, 0.018),
-    new THREE.Vector2(0.34, 0.018),
-    new THREE.Vector2(0.55, 0.03),
-    new THREE.Vector2(0.7, 0.12),
-    new THREE.Vector2(0.72, 0.26),
-    new THREE.Vector2(0.64, 0.35),
-    new THREE.Vector2(0.54, 0.32),
-    new THREE.Vector2(0.47, 0.19),
-    new THREE.Vector2(0.35, 0.095),
-    new THREE.Vector2(0, 0.07),
-  ];
-  const geometry = new THREE.LatheGeometry(profile, 32);
-  const colors = new Float32Array(geometry.attributes.position.count * 3);
-  const color = new THREE.Color();
-  for (let i = 0; i < geometry.attributes.position.count; i++) {
-    const p = i % profile.length;
-    color.set(p >= 8 ? '#17191d' : p >= 4 && p <= 6 ? '#697073' : '#363e41');
-    colors[i * 3] = color.r;
-    colors[i * 3 + 1] = color.g;
-    colors[i * 3 + 2] = color.b;
-  }
-  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  geometry.rotateX(Math.PI / 2);
-  const material = new THREE.MeshPhysicalMaterial({
-    vertexColors: true,
-    roughness: 0.7,
-    metalness: 0,
-    clearcoat: 0.14,
-    clearcoatRoughness: 0.56,
-    map: texture,
-    bumpMap: texture,
-    bumpScale: 0.02,
-  });
-  material.onBeforeCompile = (shader) => {
-    shader.fragmentShader = shader.fragmentShader.replace(
-      '#include <map_fragment>',
-      `#include <map_fragment>
-       float cupLuma=pow(dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722)),0.72);
-       diffuseColor.rgb=mix(diffuseColor.rgb,vec3(cupLuma),0.95)*vec3(0.88,0.94,1.0);`,
-    );
-  };
-  material.customProgramCacheKey = () => 'ginna-cup-skin-v1';
-  const count = 80;
-  const cups = new THREE.InstancedMesh(geometry, material, count * 2);
-  cups.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
-  cups.castShadow = cups.receiveShadow = true;
-  cups.frustumCulled = false;
-  const matrix = new THREE.Matrix4(),
-    basis = new THREE.Matrix4();
-  const rotation = new THREE.Quaternion(),
-    scale = new THREE.Vector3();
-  const normal = new THREE.Vector3(),
-    side = new THREE.Vector3(),
-    origin = new THREE.Vector3();
-  const update = (progress: number, tight: number, age: number) => {
-    let visible = 0;
-    for (let i = 0; i < count; i++) {
-      const t = 0.07 + (i / count) * 0.91;
-      if (t > progress - 0.004) break;
-      const pose = tube.sample(t, progress, tight, age);
-      for (const row of [-1, 1]) {
-        const angle = row * (0.42 + Math.sin(i * 0.69) * 0.04);
-        normal
-          .copy(pose.normal)
-          .multiplyScalar(Math.cos(angle))
-          .addScaledVector(pose.binormal, Math.sin(angle));
-        side.crossVectors(pose.tangent, normal).normalize();
-        basis.makeBasis(side, pose.tangent, normal);
-        rotation.setFromRotationMatrix(basis);
-        origin.copy(pose.point).addScaledVector(normal, pose.radius * 0.975);
-        const size = pose.radius * (0.5 + Math.sin(i * 1.71) * 0.025);
-        scale.set(size * 0.92, size * 1.12, size * 0.95);
-        matrix.compose(origin, rotation, scale);
-        cups.setMatrixAt(visible++, matrix);
-      }
-    }
-    cups.count = visible;
-    cups.visible = visible > 0;
-    cups.instanceMatrix.needsUpdate = true;
-  };
-  return { mesh: cups, update };
+  return makeGinnaTentacleCups(tube, texture);
 }
 
 function progression(milliseconds: number) {
@@ -307,53 +228,6 @@ function waterRipples(milliseconds: number) {
       phase: index * 1.4 + age * 0.4,
     };
   });
-}
-
-function makeWaterRipples() {
-  const geometry = new THREE.PlaneGeometry(220, 62);
-  const material = new THREE.ShaderMaterial({
-    transparent: true,
-    depthWrite: false,
-    uniforms: { age: { value: 0 }, crestColor: { value: new THREE.Color('#626c71') } },
-    vertexShader: `varying vec2 vLakeUV;
-      void main() { vLakeUV=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
-    fragmentShader: `varying vec2 vLakeUV;
-      uniform float age; uniform vec3 crestColor;
-      void main() {
-        vec2 p=(vLakeUV-0.5)*vec2(220.0,62.0);
-        float angle=atan(p.y/0.18,p.x);
-        float distance=length(vec2(p.x,p.y/0.18));
-        float antialias=max(fwidth(distance)*0.65,0.8);
-        float crest=0.0;
-        for(int i=0;i<4;i++) {
-          float time=(age-float(i)*0.24)/1.85;
-          if(time<0.0 || time>=1.0) continue;
-          float radius=11.0+time*79.0;
-          float irregular=sin(angle*7.0+float(i)*1.4+age*0.4)*1.2+sin(angle*13.0-age*0.5)*0.6;
-          float edge=1.0-smoothstep(0.5,1.2+antialias,abs(distance-radius-irregular));
-          float broken=0.58+0.42*pow(0.5+0.5*sin(angle*19.0+float(i)*2.8),2.0);
-          float fade=1.0-smoothstep(0.65,1.0,time);
-          crest=max(crest,edge*broken*fade);
-        }
-        float onset=smoothstep(0.0,0.18,age);
-        float disturbance=exp(-dot(p/vec2(23.0,6.0),p/vec2(23.0,6.0)))*
-          (1.0-smoothstep(0.6,1.6,age))*0.13;
-        float alpha=(crest*0.36+disturbance)*onset;
-        gl_FragColor=vec4(mix(crestColor*0.26,crestColor,crest),alpha);
-        #include <tonemapping_fragment>
-        #include <colorspace_fragment>
-      }`,
-  });
-  const mesh = new THREE.Mesh(geometry, material);
-  mesh.position.set(LAKE.x, 941 - LAKE.y, 17);
-  mesh.renderOrder = 2;
-  mesh.frustumCulled = false;
-  return {
-    mesh,
-    update: (milliseconds: number) => {
-      material.uniforms.age.value = milliseconds / 1000;
-    },
-  };
 }
 
 export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) {
@@ -463,32 +337,54 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
     );
   };
   skin.customProgramCacheKey = () => 'ginna-photographic-skin-v1';
+  const lakeAge = { value: 0 };
   const distantSkin = skin.clone();
+  distantSkin.transparent = true;
   distantSkin.onBeforeCompile = (shader, renderer) => {
     skin.onBeforeCompile(shader, renderer);
+    shader.uniforms.ginnaLakeAge = lakeAge;
     shader.vertexShader = shader.vertexShader
-      .replace('#include <common>', '#include <common>\nvarying vec2 vGinnaFarPosition;')
+      .replace(
+        '#include <common>',
+        '#include <common>\nvarying vec2 vGinnaFarPosition; uniform float ginnaLakeAge;',
+      )
       .replace(
         '#include <begin_vertex>',
         '#include <begin_vertex>\nvGinnaFarPosition=position.xy;',
       );
     shader.fragmentShader = shader.fragmentShader
-      .replace('#include <common>', '#include <common>\nvarying vec2 vGinnaFarPosition;')
+      .replace(
+        '#include <common>',
+        '#include <common>\nvarying vec2 vGinnaFarPosition; uniform float ginnaLakeAge;',
+      )
       .replace(
         '#include <clipping_planes_fragment>',
         `#include <clipping_planes_fragment>
-        if(vGinnaFarPosition.y<${941 - LAKE.y}.0) discard;`,
+        float waterline=${941 - LAKE.y}.0+sin((vGinnaFarPosition.x-${LAKE.x}.0)*0.38+ginnaLakeAge*3.0)*0.55;
+        if(vGinnaFarPosition.y<waterline-1.2) discard;
+        diffuseColor.a*=smoothstep(waterline-1.2,waterline+7.5,vGinnaFarPosition.y);`,
+      )
+      .replace(
+        '#include <color_fragment>',
+        `#include <color_fragment>
+        float wetRoot=1.0-smoothstep(${941 - LAKE.y}.0,${941 - LAKE.y + 34}.0,vGinnaFarPosition.y);
+        diffuseColor.rgb*=1.0-wetRoot*0.19;`,
+      )
+      .replace(
+        '#include <roughnessmap_fragment>',
+        `#include <roughnessmap_fragment>
+        roughnessFactor=mix(roughnessFactor,0.24,wetRoot*0.8);`,
       );
   };
-  distantSkin.customProgramCacheKey = () => 'ginna-distant-lake-v1';
+  distantSkin.customProgramCacheKey = () => 'ginna-distant-lake-contact-v2';
   distantSkin.color.set('#747c84');
   distantSkin.bumpScale = 0.09;
   const near = makeTube(nearCenter, 0.37, skin);
   const far = makeTube(farCenter, 18, distantSkin, 96, 18);
   const cups = makeCups(near, texture);
   nearScene.add(near.mesh, cups.mesh);
-  const waves = makeWaterRipples();
-  farGroup.add(far.mesh, waves.mesh);
+  const lakeEffects = createGinnaLakeEffects(far.mesh.geometry, texture, LAKE);
+  farGroup.add(far.mesh, lakeEffects.group);
 
   const resize = () => {
     if (released) return;
@@ -511,8 +407,15 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
     const pose = progression(milliseconds);
     near.update(pose.near, pose.tight, pose.age);
     cups.update(pose.near, pose.tight, pose.age);
+    host.dataset.cupCount = String(cups.stats.count);
+    host.dataset.cupMinGap = cups.stats.minGap.toFixed(5);
+    host.dataset.cupRequiredGap = cups.stats.requiredGap.toFixed(5);
+    host.dataset.cupCollisionCount = String(cups.stats.collisions);
+    host.dataset.cupRows = String(cups.stats.rows);
+    host.dataset.cupDetail = 'polar-radial-wrinkles-pores';
     far.update(pose.far, 0, pose.age);
-    waves.update(milliseconds);
+    lakeAge.value = milliseconds / 1000;
+    lakeEffects.update(milliseconds);
     const plane = alignFar();
     farGroup.matrix.set(
       plane.a,
@@ -545,13 +448,11 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
     observer.disconnect();
     near.mesh.geometry.dispose();
     far.mesh.geometry.dispose();
-    cups.mesh.geometry.dispose();
+    cups.dispose();
     skin.dispose();
     distantSkin.dispose();
-    cups.mesh.material.dispose();
     texture.dispose();
-    waves.mesh.geometry.dispose();
-    waves.mesh.material.dispose();
+    lakeEffects.dispose();
     key.shadow.map?.dispose();
     renderer.renderLists.dispose();
     renderer.dispose();
@@ -588,6 +489,8 @@ function updateHooks(
   const waves = waterRipples(milliseconds);
   host.dataset.waterRipples = String(waves.filter((wave) => wave.opacity > 0.01).length);
   host.dataset.waterDeformation = Math.max(...waves.map((wave) => wave.opacity)).toFixed(3);
+  host.dataset.waterContact = 'wet-meniscus';
+  host.dataset.waterReflection = 'deformed-tentacle';
   if (pressure) pressure.style.opacity = String(pose.tight * 0.75);
 }
 
@@ -632,6 +535,7 @@ function createFallback(
       const a = (i / 80) * pose.far,
         b = ((i + 1) / 80) * pose.far;
       farCenter(a, 0, pose.age, far);
+      context.globalAlpha = ease((far.y - (941 - LAKE.y) + 1.2) / 8.7);
       context.beginPath();
       context.moveTo(far.x, 941 - far.y);
       farCenter(b, 0, pose.age, far);
@@ -644,6 +548,16 @@ function createFallback(
     context.restore();
     context.save();
     context.transform(plane.a, plane.b, plane.c, plane.d, plane.x, plane.y);
+    drawGinnaLakeContact2D(
+      context,
+      LAKE,
+      milliseconds,
+      (t) => {
+        farCenter(t, 0, pose.age, far);
+        return { x: far.x, y: 941 - far.y };
+      },
+      pose.far,
+    );
     for (const wave of waterRipples(milliseconds)) {
       if (wave.opacity <= 0) continue;
       context.beginPath();

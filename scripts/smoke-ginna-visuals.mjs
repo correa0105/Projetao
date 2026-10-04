@@ -100,12 +100,40 @@ try {
     );
     const returnScene = page.locator('.ginna-return-tentacles');
     await expect(returnScene).toHaveAttribute('data-renderer', 'webgl');
+    // Observe the actual animated poses, including coils that tighten between
+    // screenshots. The gap measures enclosing spheres of the complete cup mesh.
+    await returnScene.evaluate((element) => {
+      const samples = { count: 0, wrapping: 0, minGap: Infinity, collisions: 0 };
+      window.ginnaCupSamples = samples;
+      const observer = new MutationObserver(() => {
+        if (Number(element.dataset.cupCount) < 2) return;
+        samples.count++;
+        if (element.dataset.stage === 'wrapping') samples.wrapping++;
+        samples.minGap = Math.min(samples.minGap, Number(element.dataset.cupMinGap));
+        samples.collisions = Math.max(
+          samples.collisions,
+          Number(element.dataset.cupCollisionCount),
+        );
+        if (!element.isConnected) observer.disconnect();
+      });
+      observer.observe(element, { attributes: true, attributeFilter: ['data-frame'] });
+      // Disconnect when the return is removed, even when no new frame follows.
+      const removal = new MutationObserver(() => {
+        if (!element.isConnected) {
+          observer.disconnect();
+          removal.disconnect();
+        }
+      });
+      removal.observe(document.body, { childList: true, subtree: true });
+    });
     await expect(vision).toHaveAttribute('data-returning', 'true');
     await expect(vision.locator('.ginna-balloon-copy')).toHaveText(
       'Melhor assim. Estarei de olho em você.',
     );
     await expect(promise).toHaveCount(0);
     await expect(returnScene).toHaveAttribute('data-origin', 'lake');
+    await expect(returnScene).toHaveAttribute('data-water-contact', 'wet-meniscus');
+    await expect(returnScene).toHaveAttribute('data-water-reflection', 'deformed-tentacle');
     const quake = await vision
       .locator('.ginna-nightmare-scene')
       .evaluate((element) => getComputedStyle(element).transform);
@@ -130,9 +158,18 @@ try {
       .toBeGreaterThan(0.88);
     expect(Number(await returnScene.getAttribute('data-turns'))).toBeGreaterThan(2.8);
     expect(Number(await returnScene.getAttribute('data-constriction'))).toBeGreaterThan(0.5);
+    await expect(returnScene).toHaveAttribute('data-cup-rows', '2');
     await page.screenshot({ path: `test-results/ginna-tentacle-volume-enclosed-${label}.png` });
     await expect(page.locator('.ginna-return')).toHaveCount(0, { timeout: 15000 });
     await expect(vision).toHaveCount(0);
+    const cups = await page.evaluate(() => window.ginnaCupSamples);
+    expect(cups.count).toBeGreaterThan(12);
+    expect(cups.wrapping).toBeGreaterThan(5);
+    expect(cups.minGap).toBeGreaterThanOrEqual(0.022);
+    expect(cups.collisions).toBe(0);
+    console.log(
+      `${label}: ${cups.count} poses de ventosas, folga mínima ${cups.minGap}, sem colisões.`,
+    );
   }
   expect(errors).toEqual([]);
   console.log('Ginna: olhos e tentáculos com volume em desktop/celular, sem erros WebGL.');

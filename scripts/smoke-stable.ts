@@ -207,7 +207,11 @@ try {
     await expect(page.locator('.ginna-vision')).toHaveCount(0);
     await expect(keeper.locator('img')).toHaveAttribute(
       'src',
-      warning >= 2 ? '/stable/ginna-serious.webp' : '/stable/ginna.webp',
+      warning === 3
+        ? '/stable/ginna-angry.webp'
+        : warning === 2
+          ? '/stable/ginna-serious.webp'
+          : '/stable/ginna.webp',
     );
     if (warning === 2) {
       await expect
@@ -215,16 +219,25 @@ try {
         .toBeGreaterThan(0);
       await page.screenshot({ path: 'test-results/ginna-serious-warning.png' });
     }
+    if (warning === 3) {
+      await expect
+        .poll(() => keeper.locator('img').evaluate((image: HTMLImageElement) => image.naturalWidth))
+        .toBe(768);
+      await page.screenshot({ path: 'test-results/ginna-angry-warning.png' });
+    }
   }
   await expect(normalBalloon.locator('[role="status"]')).toContainText('ÚLTIMA VEZ');
-  const shakingText = await normalBalloon.locator('.ginna-balloon-copy').textContent();
   const shakingLetters = await normalBalloon.locator('.ginna-shaking-letter').allTextContents();
   expect(shakingLetters.every((letter) => /^\p{Lu}$/u.test(letter))).toBe(true);
   expect(shakingLetters.join('')).toBe(
-    Array.from(shakingText!)
-      .filter((letter) => /\p{Lu}/u.test(letter))
-      .join(''),
+    'ÚLTIMAVEZNÃOMALTRATENENHUMDELESEMHIPÓTESEALGUMAVOCÊENTENDEU',
   );
+  for (const word of ['Esta', 'Não']) {
+    const sentenceWord = normalBalloon
+      .locator('.ginna-shaking-word')
+      .filter({ hasText: new RegExp(`^${word}$`) });
+    await expect(sentenceWord.locator('.ginna-shaking-letter')).toHaveCount(0);
+  }
   const shakingLetter = normalBalloon.locator('.ginna-shaking-letter').first();
   await expect(shakingLetter).toBeVisible();
   expect(await shakingLetter.evaluate((element) => getComputedStyle(element).animationName)).toBe(

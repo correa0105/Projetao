@@ -131,14 +131,17 @@ export function GinnaBalloon({
       >
         {textEffect === 'shake' ? (
           <span aria-hidden="true">
-            {text.split(/(\s+)/).map((word, wordIndex) =>
-              /\s/.test(word) ? (
-                word
-              ) : (
+            {text.split(/(\s+)/).map((word, wordIndex) => {
+              if (/\s/.test(word)) return word;
+              const letters = word.match(/\p{L}/gu);
+              const uppercaseWord = letters?.every((letter) => /\p{Lu}/u.test(letter));
+              return (
                 <span className="ginna-shaking-word" key={wordIndex}>
                   {Array.from(word).map((letter, index) => (
                     <span
-                      className={/\p{Lu}/u.test(letter) ? 'ginna-shaking-letter' : undefined}
+                      className={
+                        uppercaseWord && /\p{Lu}/u.test(letter) ? 'ginna-shaking-letter' : undefined
+                      }
                       key={index}
                       style={
                         {
@@ -150,8 +153,8 @@ export function GinnaBalloon({
                     </span>
                   ))}
                 </span>
-              ),
-            )}
+              );
+            })}
           </span>
         ) : (
           text

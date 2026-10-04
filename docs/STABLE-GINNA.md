@@ -140,9 +140,12 @@ https://www.youtube.com/watch?v=ohNpf4VnlP8 . Não é atribuído a CC0.
 
 A terceira advertência (Minha paciência está acabando) troca a arte por
 `public/stable/ginna-serious.webp`, mantendo roupa, feno, personagem e alfa.
-A expressão séria permanece até o retorno, que restaura a arte original.
-A quarta advertência usa tremor individual só nas letras maiúsculas Unicode,
-incluindo as acentuadas; minúsculas, espaços e pontuação permanecem estáticos.
+A quarta advertência troca para `public/stable/ginna-angry.webp`, com expressão
+muito brava; o retorno restaura a arte original. Arte criada em modo integrado,
+alfa preservado e prompts registrados em [STABLE-GINNA-ANGRY.md](STABLE-GINNA-ANGRY.md).
+O tremor da quarta fala aplica-se somente às palavras cujas letras são todas
+maiúsculas Unicode, incluindo as acentuadas. “Esta” e “Não” em início de frase
+ficam inteiramente estáticas; espaços e pontuação também permanecem estáticos.
 A fala da visão escura
 usa fonte maior, sem traço no meio, e dois pulsos de vermelho por ciclo de 1,6 s.
 As letras permanecem legíveis e o leitor de tela recebe a frase completa.
@@ -182,6 +185,23 @@ Estarei de olho em você.” e retira o botão. A fala continua visível durante
 a subida/descida dos tentáculos até a visão ser coberta; reaparece no dia
 com a mesma frase. Música, respiração e contador mantêm o fluxo existente.
 
+### Contato com o lago e ventosas separadas
+
+`ginna-lake-effects.ts` integra a raiz à água: transição suave no nível ondulado,
+pele molhada mais escura, reflexo deformado da própria geometria, menisco com
+espuma irregular, pequenos salpicos e névoa localizada. As ondas deixam de ser
+elipses uniformes contínuas. Esses elementos compartilham o mesmo grupo do
+tentáculo distante e acompanham exatamente o tremor e o enquadramento do fundo.
+A alternativa Canvas 2D mantém os mesmos sinais de contato/reflexo.
+
+`ginna-tentacle-cups.ts` mantém duas fileiras de ventosas pela distância real
+percorrida na curva a cada pose. Todos os pares, inclusive de voltas diferentes,
+limitam o tamanho usando esferas que contêm a malha completa, preservando ao
+menos 0,022 unidades de espaço entre elas durante a constrição. O corpo próximo
+mantém a textura anterior. Só as ventosas ganham rugas radiais, poros, aro
+irregular e variação de rugosidade no interior, com UV próprio da cavidade.
+Geometria, material e mapa de detalhes são liberados ao encerrar.
+
 ### Relevo dos olhos
 
 `GinnaGroundEyes.tsx` renderiza os 22 olhos sobre superfícies curvas com
@@ -213,10 +233,12 @@ liberados ao desmontar. Sem novos assets ou imagens geradas nesta revisão.
 
 ## Validação dos refinamentos
 
-Smoke do estábulo verifica troca de arte na terceira fala, imagem carregada,
-letras animadas na quarta, fonte vermelha ampliada sem traço, pulsação e movimento reduzido na visão,
+Smoke do estábulo verifica troca de arte na terceira e quarta falas, imagens carregadas,
+palavras totalmente maiúsculas animadas e iniciais maiúsculas estáticas na quarta,
+fonte vermelha ampliada sem traço, pulsação e movimento reduzido na visão,
 as três etapas dos tentáculos, cena escura até envolver o visitante e retorno
 com pálpebras/respiração. Capturas em `test-results/ginna-serious-warning.png`,
+`ginna-angry-warning.png`,
 `ginna-tentacle-sky.png`, `ginna-tentacle-descending.png` e
 `ginna-tentacle-wrapping.png`.
 
@@ -256,3 +278,11 @@ pausa da aba, movimento reduzido, troca de frase sem reiniciar o relógio e
 fechamento do AudioContext ao sair. Verificação adicional no Edge cobriu movimento reduzido,
 troca da preferência sem nova emergência, pausa em aba oculta e perda/retorno
 de contexto WebGL com alternativa raster. Serviço local reconstruído no Docker.
+
+Revisão da última advertência/contato/ventosas em 04/10/2026: TypeScript,
+build cliente/servidor e smoke completo do estábulo em banco descartável passaram.
+Smoke visual monitorou 623 poses em desktop e 634 no celular, sempre com
+folga mínima de 0,022 e zero colisões entre ventosas. Capturas finais da nova
+expressão e das cavidades revisadas. Menisco/reflexo e sincronização com três
+fases do tremor também conferidos em desktop/celular, movimento reduzido e
+alternativa Canvas. Novos recursos de GPU são liberados ao encerrar o retorno.

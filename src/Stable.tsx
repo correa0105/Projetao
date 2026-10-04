@@ -123,8 +123,10 @@ export function Stable({
   const keeperTrigger = useRef<HTMLButtonElement>(null);
   const mountVisits = useRef<Record<string, number>>({});
   useEffect(() => {
-    const portrait = new Image();
-    portrait.src = '/stable/ginna-serious.webp';
+    for (const source of ['/stable/ginna-serious.webp', '/stable/ginna-angry.webp']) {
+      const portrait = new Image();
+      portrait.src = source;
+    }
     const timer = window.setTimeout(() => setGreetingVisible(false), 7000);
     return () => window.clearTimeout(timer);
   }, []);
@@ -441,11 +443,19 @@ export function Stable({
               }}
             >
               <img
-                src={warnings.current >= 3 ? '/stable/ginna-serious.webp' : '/stable/ginna.webp'}
+                src={
+                  warnings.current >= 4
+                    ? '/stable/ginna-angry.webp'
+                    : warnings.current >= 3
+                      ? '/stable/ginna-serious.webp'
+                      : '/stable/ginna.webp'
+                }
                 alt={
-                  warnings.current >= 3
-                    ? 'Ginna séria, com expressão de impaciência'
-                    : 'Jovem cuidadora dos animais, sem chapéu'
+                  warnings.current >= 4
+                    ? 'Ginna muito brava, com expressão de última advertência'
+                    : warnings.current >= 3
+                      ? 'Ginna séria, com expressão de impaciência'
+                      : 'Jovem cuidadora dos animais, sem chapéu'
                 }
               />
             </button>

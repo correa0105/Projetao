@@ -1,9 +1,27 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Ginna brava e palavras totalmente maiúsculas (04/10/2026)
+
+A quarta advertência usa `public/stable/ginna-angry.webp`, expressão muito
+brava criada com o gerador integrado e alfa real preservado. A terceira mantém
+a arte séria e o retorno restaura a imagem normal. Prompts e arquivo em
+docs/STABLE-GINNA-ANGRY.md. Tremor somente nas palavras com todas as letras
+maiúsculas, incluindo acentos: “Esta” e o “Não” em início de frase ficam
+inteiramente parados. Esta regra substitui a seleção anterior por letra isolada.
+
+Saída do lago integrada por raiz úmida com recorte suave no nível ondulado,
+reflexo deformado da própria malha, espuma irregular, menisco, salpicos e
+névoa local; o grupo mantém o mesmo tremor e enquadramento do cenário.
+Ventosas distribuídas pela distância real na curva, em duas fileiras, com
+limites entre todos os vizinhos/voltas que preservam ao menos 0,022 unidades
+de separação. Somente aro/interior recebem rugas radiais, poros e acabamento
+úmido; corpo próximo mantém a textura anterior. Detalhes em
+docs/STABLE-GINNA.md. Sem mudanças SQL.
+
 ## Advertência, olho da montanha e saída do lago (04/10/2026)
 
-Na quarta advertência só as letras maiúsculas tremem (incluindo acentos);
-minúsculas, espaços e pontuação ficam estáticos. Cada pulso vermelho da fala
+Na quarta advertência só palavras inteiramente maiúsculas tremem (incluindo acentos);
+palavras com minúsculas, espaços e pontuação ficam estáticos. Cada pulso vermelho da fala
 escura toca um batimento grave abafado, sincronizado ao relógio da própria
 animação (picos em 10% e 27% de 1,6 s), respeitando volume/mute, pausa da aba
 e movimento reduzido. Sem loop independente que possa perder a sincronia.
