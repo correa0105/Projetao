@@ -25,7 +25,7 @@ function Preview() {
   const covered = React.useCallback(() => setVision(false), []);
   const finished = React.useCallback(() => setReturning(false), []);
   return React.createElement(SiteMusicProvider, null, React.createElement('main', {className:'app-shell', style:{position:'fixed', inset:0, background:"url('/stable/paddock-camp-v2.webp') center/cover"}},
-    vision && React.createElement(GinnaVision, {known:true, onFinished:start}),
+    vision && React.createElement(GinnaVision, {known:true, returning, onFinished:start}),
     returning && React.createElement(GinnaReturn, {onCovered:covered, onFinished:finished})));
 }
 createRoot(document.getElementById('preview')).render(React.createElement(Preview));
@@ -66,13 +66,33 @@ try {
         vision.locator('.ginna-ground-eyes-canvas').getAttribute('data-frame').then(Number),
       )
       .toBeGreaterThan(30);
-    await expect(vision.locator('.ginna-ground-eyes-canvas')).toHaveAttribute('data-emerged', '22');
+    await expect(vision.locator('.ginna-ground-eyes-canvas')).toHaveAttribute('data-emerged', '23');
+    await expect(vision.locator('.ginna-ground-eyes-canvas')).toHaveAttribute(
+      'data-mountain-eye-count',
+      '1',
+    );
+    await expect(vision.locator('[data-depth="mountain"]')).toHaveAttribute(
+      'data-renderer',
+      'webgl',
+    );
     await page.screenshot({ path: `test-results/ginna-eyes-3d-${label}.png` });
     const keeper = vision.getByRole('button', { name: 'Conversar com a cuidadora na visão' });
     const box = await keeper.boundingBox();
     await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
     const promise = vision.getByRole('button', { name: 'Não vou machucá-los!', exact: true });
     await expect(promise).toBeVisible();
+    await expect(vision).toHaveAttribute('data-heartbeat-state', 'playing');
+    await expect
+      .poll(() => vision.getAttribute('data-heartbeat-beats').then(Number))
+      .toBeGreaterThan(1);
+    const phase = Number(await vision.getAttribute('data-heartbeat-phase'));
+    expect(Math.min(Math.abs(phase - 0.1), Math.abs(phase - 0.27))).toBeLessThan(0.04);
+    // Hold the existing quake at a known frame to verify the far layer shares it.
+    await vision.locator('.ginna-nightmare-scene').evaluate((element) => {
+      const quake = element.getAnimations()[0];
+      quake.pause();
+      quake.currentTime = 410;
+    });
     const promiseBox = await promise.boundingBox();
     await page.mouse.click(
       promiseBox.x + promiseBox.width / 2,
@@ -80,10 +100,24 @@ try {
     );
     const returnScene = page.locator('.ginna-return-tentacles');
     await expect(returnScene).toHaveAttribute('data-renderer', 'webgl');
+    await expect(vision).toHaveAttribute('data-returning', 'true');
+    await expect(vision.locator('.ginna-balloon-copy')).toHaveText(
+      'Melhor assim. Estarei de olho em você.',
+    );
+    await expect(promise).toHaveCount(0);
+    await expect(returnScene).toHaveAttribute('data-origin', 'lake');
+    const quake = await vision
+      .locator('.ginna-nightmare-scene')
+      .evaluate((element) => getComputedStyle(element).transform);
+    await expect(returnScene).toHaveAttribute('data-far-quake', quake);
     await expect
       .poll(() => returnScene.getAttribute('data-far-progress').then(Number))
       .toBeGreaterThan(0.6);
+    expect(Number(await returnScene.getAttribute('data-water-ripples'))).toBeGreaterThan(0);
     await page.screenshot({ path: `test-results/ginna-tentacle-volume-sky-${label}.png` });
+    await vision
+      .locator('.ginna-nightmare-scene')
+      .evaluate((element) => element.getAnimations()[0].play());
     await expect(returnScene).toHaveAttribute('data-stage', 'descending');
     await page.screenshot({ path: `test-results/ginna-tentacle-volume-descent-${label}.png` });
     await expect(returnScene).toHaveAttribute('data-stage', 'wrapping');

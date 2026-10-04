@@ -217,6 +217,14 @@ try {
     }
   }
   await expect(normalBalloon.locator('[role="status"]')).toContainText('ÚLTIMA VEZ');
+  const shakingText = await normalBalloon.locator('.ginna-balloon-copy').textContent();
+  const shakingLetters = await normalBalloon.locator('.ginna-shaking-letter').allTextContents();
+  expect(shakingLetters.every((letter) => /^\p{Lu}$/u.test(letter))).toBe(true);
+  expect(shakingLetters.join('')).toBe(
+    Array.from(shakingText!)
+      .filter((letter) => /\p{Lu}/u.test(letter))
+      .join(''),
+  );
   const shakingLetter = normalBalloon.locator('.ginna-shaking-letter').first();
   await expect(shakingLetter).toBeVisible();
   expect(await shakingLetter.evaluate((element) => getComputedStyle(element).animationName)).toBe(
@@ -267,10 +275,20 @@ try {
     'ginna-text-heartbeat',
   );
   const firstColor = await ominousText.evaluate((element) => getComputedStyle(element).color);
+  await expect(vision).toHaveAttribute('data-heartbeat-state', 'playing');
+  await expect
+    .poll(() => vision.getAttribute('data-heartbeat-beats').then(Number))
+    .toBeGreaterThan(1);
+  const beatPhase = Number(await vision.getAttribute('data-heartbeat-phase'));
+  expect(Math.min(Math.abs(beatPhase - 0.1), Math.abs(beatPhase - 0.27))).toBeLessThan(0.04);
   await expect
     .poll(() => ominousText.evaluate((element) => getComputedStyle(element).color))
     .not.toBe(firstColor);
   await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(vision).toHaveAttribute('data-heartbeat-state', 'reduced');
+  const reducedBeats = await vision.getAttribute('data-heartbeat-beats');
+  await page.waitForTimeout(300);
+  expect(await vision.getAttribute('data-heartbeat-beats')).toBe(reducedBeats);
   expect(await ominousText.evaluate((element) => getComputedStyle(element).animationName)).toBe(
     'none',
   );
@@ -315,36 +333,35 @@ try {
   expect(
     Math.max(...eyeBoxes.map((box) => box.y)) - Math.min(...eyeBoxes.map((box) => box.y)),
   ).toBeGreaterThan(160);
-  const mountain = (await vision.locator('[data-depth="mountain"]').boundingBox())!;
+  const mountain = await vision
+    .locator('[data-depth="mountain"]')
+    .evaluate((element) => element.getBoundingClientRect().toJSON());
   expect(mountain.width).toBeGreaterThan(200);
   expect(mountain.y).toBeLessThan(250);
   expect(mountain.height / mountain.width).toBeGreaterThan(0.95);
   const groundCanvas = vision.locator('.ginna-ground-eyes-canvas');
   await expect(groundCanvas).toHaveAttribute('data-renderer', 'webgl');
-  await expect(groundCanvas).toHaveAttribute('data-eye-count', '22');
+  await expect(groundCanvas).toHaveAttribute('data-eye-count', '23');
+  await expect(groundCanvas).toHaveAttribute('data-ground-eye-count', '22');
+  await expect(groundCanvas).toHaveAttribute('data-mountain-eye-count', '1');
+  await expect(vision.locator('[data-depth="mountain"]')).toHaveAttribute('data-renderer', 'webgl');
   await expect.poll(() => groundCanvas.getAttribute('data-frame').then(Number)).toBeGreaterThan(15);
-  await expect(groundCanvas).toHaveAttribute('data-emerged', '22');
+  await expect(groundCanvas).toHaveAttribute('data-emerged', '23');
   expect(await groundCanvas.getAttribute('data-eye-vertices').then(Number)).toBeGreaterThan(1000);
   expect(
     await groundCanvas.evaluate(
       (element: HTMLCanvasElement) => element.width > 0 && element.height > 0,
     ),
   ).toBe(true);
-  const blinkingEye = vision.locator('.ginna-eye-blink').first();
-  await blinkingEye.evaluate((element) => {
-    const animation = element.getAnimations()[0];
-    animation.pause();
-    const timing = animation.effect!.getTiming();
-    animation.currentTime = (timing.delay || 0) + Number(timing.duration) * 0.47;
-  });
-  expect(await blinkingEye.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
-  await blinkingEye.evaluate((element) => {
-    const animation = element.getAnimations()[0];
-    const timing = animation.effect!.getTiming();
-    animation.currentTime = (timing.delay || 0) + Number(timing.duration) * 0.55;
-  });
-  expect(await blinkingEye.evaluate((element) => getComputedStyle(element).opacity)).toBe('0');
-  await blinkingEye.evaluate((element) => element.getAnimations()[0].play());
+  await expect
+    .poll(() => groundCanvas.getAttribute('data-mountain-blink').then(Number), {
+      timeout: 8000,
+      intervals: [75],
+    })
+    .toBeGreaterThan(0.7);
+  await expect
+    .poll(() => groundCanvas.getAttribute('data-mountain-blink').then(Number), { intervals: [75] })
+    .toBeLessThan(0.1);
   const shakes = await vision.locator('.ginna-nightmare-scene').evaluate((element) => {
     const animation = element.getAnimations()[0];
     animation.pause();
@@ -359,6 +376,10 @@ try {
   await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
   await vision.getByRole('button', { name: 'Mutar música', exact: true }).click();
   expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.muted)).toBe(true);
+  await expect(vision).toHaveAttribute('data-heartbeat-state', 'muted');
+  const mutedBeats = await vision.getAttribute('data-heartbeat-beats');
+  await page.waitForTimeout(350);
+  expect(await vision.getAttribute('data-heartbeat-beats')).toBe(mutedBeats);
   await vision.getByRole('button', { name: 'Ativar música', exact: true }).click();
   await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
   await page.screenshot({ path: 'test-results/ginna-vision-desktop.png' });
@@ -379,6 +400,10 @@ try {
   await expect(recovery).toBeVisible();
   await expect(recovery).toHaveAttribute('data-motion', 'full');
   await expect(recovery).toHaveAttribute('data-phase', 'reaching');
+  await expect(vision.locator('.ginna-balloon-copy')).toHaveText(
+    'Melhor assim. Estarei de olho em você.',
+  );
+  await expect(promise).toHaveCount(0);
   expect(await recovery.evaluate((element) => getComputedStyle(element).backgroundColor)).toBe(
     'rgba(0, 0, 0, 0)',
   );
@@ -386,6 +411,7 @@ try {
     await recovery.evaluate((element) => getComputedStyle(element, '::backdrop').backdropFilter),
   ).toBe('none');
   await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute('data-stage', 'sky');
+  await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute('data-origin', 'lake');
   await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute(
     'data-renderer',
     'webgl',
@@ -395,6 +421,9 @@ try {
       recovery.locator('.ginna-return-tentacles').getAttribute('data-far-progress').then(Number),
     )
     .toBeGreaterThan(0.6);
+  expect(
+    Number(await recovery.locator('.ginna-return-tentacles').getAttribute('data-water-ripples')),
+  ).toBeGreaterThan(0);
   await page.screenshot({ path: 'test-results/ginna-tentacle-sky.png' });
   await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute(
     'data-stage',
@@ -463,10 +492,9 @@ try {
   for (let warning = 0; warning < 5; warning++) await askQuestion('warning');
   await expect(vision).toBeVisible();
   await expect(groundCanvas).toHaveAttribute('data-motion', 'static');
-  await expect(groundCanvas).toHaveAttribute('data-emerged', '22');
-  expect(await blinkingEye.evaluate((element) => getComputedStyle(element).animationName)).toBe(
-    'none',
-  );
+  await expect(groundCanvas).toHaveAttribute('data-emerged', '23');
+  await expect(groundCanvas).toHaveAttribute('data-mountain-blink', '0.000');
+  await expect(vision).toHaveAttribute('data-heartbeat-state', 'reduced');
   expect(
     await vision
       .locator('.ginna-nightmare-scene')

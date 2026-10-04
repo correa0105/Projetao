@@ -1,6 +1,8 @@
 export const ginnaGreeting =
   'Olha só, visita! Seja muito bem-vindo! Entre, entre! Se ganhar uma lambida, considere um abraço de boas-vindas. Vem conhecer meus queridinhos — só cuidado com o seu lanche, hihi!';
 
+export const ginnaFarewell = 'Melhor assim. Estarei de olho em você.';
+
 export const ginnaQuestions = [
   {
     id: 'identity',

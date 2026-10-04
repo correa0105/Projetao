@@ -5,6 +5,7 @@ const TAU = Math.PI * 2;
 const TURNS = 3.4;
 const SEGMENTS = 224;
 const SIDES = 28;
+const LAKE = { x: 1008, y: 444 };
 const clamp = (n: number) => THREE.MathUtils.clamp(n, 0, 1);
 const ease = (n: number) => {
   const t = clamp(n);
@@ -41,8 +42,8 @@ function nearCenter(t: number, constriction: number, age: number, out: THREE.Vec
 function farCenter(t: number, _tight: number, age: number, out: THREE.Vector3) {
   const v = 1 - t;
   out.set(
-    v ** 3 * 784 + 3 * v * v * t * 965 + 3 * v * t * t * 675 + t ** 3 * 1040,
-    941 - (v ** 3 * 228 + 3 * v * v * t * 106 + 3 * v * t * t * 22 - t ** 3 * 170),
+    v ** 3 * LAKE.x + 3 * v * v * t * 1150 + 3 * v * t * t * 790 + t ** 3 * 1080,
+    941 - (v ** 3 * LAKE.y + 3 * v * v * t * 310 + 3 * v * t * t * 100 - t ** 3 * 180),
     -5,
   );
   out.x += Math.sin(t * 7 - age * 1.1) * Math.sin(t * Math.PI) * 6;
@@ -250,12 +251,118 @@ function progression(milliseconds: number) {
   return { far, near, tight, age: milliseconds / 1000 };
 }
 
-export function createGinnaTentacleRenderer(host: HTMLElement) {
+/** Read the existing scene's current transform, including its original animation
+ * phase. The painted cover plane extends ten pixels past each viewport edge;
+ * using that plane keeps the root planted in exactly the same patch of water. */
+function createFarAlignment(host: HTMLElement, reduced: boolean) {
+  const nightmare = host.ownerDocument.querySelector<HTMLElement>(
+    '.ginna-vision[open] .ginna-nightmare-scene',
+  );
+  const landscape = nightmare?.querySelector<HTMLElement>('.ginna-vision-landscape');
+  return () => {
+    const hostRect = host.getBoundingClientRect();
+    const width = Math.max(1, host.clientWidth),
+      height = Math.max(1, host.clientHeight);
+    let scale = Math.max(width / 1672, height / 941);
+    let centerX = width / 2,
+      centerY = height / 2;
+    let quake = 'none';
+    let matrix = new DOMMatrixReadOnly();
+    if (nightmare?.isConnected && landscape) {
+      scale = parseFloat(getComputedStyle(landscape).width) / 1672;
+      if (!reduced) {
+        quake = getComputedStyle(nightmare).transform;
+        if (quake !== 'none') matrix = new DOMMatrixReadOnly(quake);
+        const rect = nightmare.getBoundingClientRect();
+        centerX = rect.left + rect.width / 2 - hostRect.left;
+        centerY = rect.top + rect.height / 2 - hostRect.top;
+      } else {
+        const parent = nightmare.parentElement!.getBoundingClientRect();
+        centerX = parent.left + nightmare.offsetLeft + nightmare.clientWidth / 2 - hostRect.left;
+        centerY = parent.top + nightmare.offsetTop + nightmare.clientHeight / 2 - hostRect.top;
+      }
+    }
+    const a = matrix.a * scale,
+      b = matrix.b * scale;
+    const c = matrix.c * scale,
+      d = matrix.d * scale;
+    const x = centerX - a * 836 - c * 470.5;
+    const y = centerY - b * 836 - d * 470.5;
+    host.dataset.farQuake = quake;
+    host.dataset.farQuakeX = matrix.e.toFixed(3);
+    host.dataset.farQuakeY = matrix.f.toFixed(3);
+    host.dataset.farPlane = [a, b, c, d, x, y].map((value) => value.toFixed(5)).join(',');
+    return { a, b, c, d, x, y, scale, width, height };
+  };
+}
+
+function waterRipples(milliseconds: number) {
+  const age = milliseconds / 1000;
+  return Array.from({ length: 4 }, (_, index) => {
+    const time = (age - index * 0.24) / 1.85;
+    const life = clamp(time);
+    return {
+      radius: 11 + life * 79,
+      opacity: time < 0 || time >= 1 ? 0 : ease(age / 0.18) * (1 - ease((life - 0.65) / 0.35)),
+      phase: index * 1.4 + age * 0.4,
+    };
+  });
+}
+
+function makeWaterRipples() {
+  const geometry = new THREE.PlaneGeometry(220, 62);
+  const material = new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    uniforms: { age: { value: 0 }, crestColor: { value: new THREE.Color('#626c71') } },
+    vertexShader: `varying vec2 vLakeUV;
+      void main() { vLakeUV=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+    fragmentShader: `varying vec2 vLakeUV;
+      uniform float age; uniform vec3 crestColor;
+      void main() {
+        vec2 p=(vLakeUV-0.5)*vec2(220.0,62.0);
+        float angle=atan(p.y/0.18,p.x);
+        float distance=length(vec2(p.x,p.y/0.18));
+        float antialias=max(fwidth(distance)*0.65,0.8);
+        float crest=0.0;
+        for(int i=0;i<4;i++) {
+          float time=(age-float(i)*0.24)/1.85;
+          if(time<0.0 || time>=1.0) continue;
+          float radius=11.0+time*79.0;
+          float irregular=sin(angle*7.0+float(i)*1.4+age*0.4)*1.2+sin(angle*13.0-age*0.5)*0.6;
+          float edge=1.0-smoothstep(0.5,1.2+antialias,abs(distance-radius-irregular));
+          float broken=0.58+0.42*pow(0.5+0.5*sin(angle*19.0+float(i)*2.8),2.0);
+          float fade=1.0-smoothstep(0.65,1.0,time);
+          crest=max(crest,edge*broken*fade);
+        }
+        float onset=smoothstep(0.0,0.18,age);
+        float disturbance=exp(-dot(p/vec2(23.0,6.0),p/vec2(23.0,6.0)))*
+          (1.0-smoothstep(0.6,1.6,age))*0.13;
+        float alpha=(crest*0.36+disturbance)*onset;
+        gl_FragColor=vec4(mix(crestColor*0.26,crestColor,crest),alpha);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+      }`,
+  });
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(LAKE.x, 941 - LAKE.y, 17);
+  mesh.renderOrder = 2;
+  mesh.frustumCulled = false;
+  return {
+    mesh,
+    update: (milliseconds: number) => {
+      material.uniforms.age.value = milliseconds / 1000;
+    },
+  };
+}
+
+export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) {
   let canvas = document.createElement('canvas');
   canvas.className = 'ginna-return-canvas';
   Object.assign(canvas.style, { position: 'absolute', inset: '0', width: '100%', height: '100%' });
   host.append(canvas);
   const pressure = host.querySelector<HTMLElement>('.ginna-return-pressure');
+  const alignFar = createFarAlignment(host, reduced);
   let frame = 0,
     released = false,
     disposed = false;
@@ -281,7 +388,7 @@ export function createGinnaTentacleRenderer(host: HTMLElement) {
       height: '100%',
     });
     host.append(canvas);
-    return createFallback(host, canvas, pressure);
+    return createFallback(host, canvas, pressure, alignFar);
   }
   host.dataset.renderer = 'webgl';
   renderer.setClearColor(0x000000, 0);
@@ -294,12 +401,15 @@ export function createGinnaTentacleRenderer(host: HTMLElement) {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.65));
   const nearScene = new THREE.Scene(),
     farScene = new THREE.Scene();
+  const farGroup = new THREE.Group();
+  farGroup.matrixAutoUpdate = false;
+  farScene.add(farGroup);
   nearScene.fog = new THREE.FogExp2('#111519', 0.08);
   const camera = new THREE.PerspectiveCamera(58, 1, 0.04, 18);
   camera.position.set(0, 0, 0);
   camera.lookAt(0, 0, -1);
-  const farCamera = new THREE.OrthographicCamera(0, 1672, 941, 0, 0.1, 100);
-  farCamera.position.z = 30;
+  const farCamera = new THREE.OrthographicCamera(0, 1, 1, 0, 0.1, 2000);
+  farCamera.position.z = 1000;
   const hemisphere = new THREE.HemisphereLight('#9ba5b0', '#25211e', 0.85);
   nearScene.add(hemisphere);
   const key = new THREE.DirectionalLight('#d5d0c5', 3);
@@ -317,11 +427,11 @@ export function createGinnaTentacleRenderer(host: HTMLElement) {
   const fill = new THREE.DirectionalLight('#8c9dab', 0.6);
   fill.position.set(3.5, 0.5, 1.6);
   nearScene.add(fill);
-  farScene.add(new THREE.HemisphereLight('#7e868d', '#13171d', 0.8));
+  farGroup.add(new THREE.HemisphereLight('#7e868d', '#13171d', 0.8));
   const farLight = new THREE.DirectionalLight('#bdc2c8', 1.8);
   farLight.position.set(650, 1150, 550);
   farLight.target.position.set(800, 850, -5);
-  farScene.add(farLight, farLight.target);
+  farGroup.add(farLight, farLight.target);
 
   const texture = new THREE.TextureLoader().load(
     '/atlas-model-materials/kraken-skin-v1.webp',
@@ -367,54 +477,18 @@ export function createGinnaTentacleRenderer(host: HTMLElement) {
       .replace(
         '#include <clipping_planes_fragment>',
         `#include <clipping_planes_fragment>
-        float gx=vGinnaFarPosition.x;
-        float ridge=719.0;
-        if(gx>=970.0) ridge=691.0;
-        else if(gx>=900.0) ridge=mix(721.0,691.0,(gx-900.0)/70.0);
-        else if(gx>=845.0) ridge=mix(728.0,721.0,(gx-845.0)/55.0);
-        else if(gx>=807.0) ridge=mix(739.0,728.0,(gx-807.0)/38.0);
-        else if(gx>=775.0) ridge=mix(755.0,739.0,(gx-775.0)/32.0);
-        else if(gx>=752.0) ridge=mix(738.0,755.0,(gx-752.0)/23.0);
-        else if(gx>=728.0) ridge=mix(732.0,738.0,(gx-728.0)/24.0);
-        else if(gx>=700.0) ridge=mix(719.0,732.0,(gx-700.0)/28.0);
-        if(vGinnaFarPosition.y<ridge) discard;`,
+        if(vGinnaFarPosition.y<${941 - LAKE.y}.0) discard;`,
       );
   };
-  distantSkin.customProgramCacheKey = () => 'ginna-distant-ridge-v1';
-  distantSkin.color.set('#848c93');
+  distantSkin.customProgramCacheKey = () => 'ginna-distant-lake-v1';
+  distantSkin.color.set('#747c84');
   distantSkin.bumpScale = 0.09;
   const near = makeTube(nearCenter, 0.37, skin);
   const far = makeTube(farCenter, 18, distantSkin, 96, 18);
   const cups = makeCups(near, texture);
   nearScene.add(near.mesh, cups.mesh);
-  farScene.add(far.mesh);
-  // Invisible depth geometry occludes the distant root with the same ridge as
-  // the background. The near scene clears depth before drawing the embrace.
-  const ridge = new THREE.Shape();
-  ridge.moveTo(-200, -200);
-  ridge.lineTo(1900, -200);
-  for (const [x, y] of [
-    [1900, 250],
-    [970, 250],
-    [900, 220],
-    [845, 213],
-    [807, 202],
-    [775, 186],
-    [752, 203],
-    [728, 209],
-    [700, 222],
-    [-200, 222],
-  ]) {
-    ridge.lineTo(x, 941 - y);
-  }
-  ridge.closePath();
-  const occluder = new THREE.Mesh(
-    new THREE.ShapeGeometry(ridge),
-    new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true }),
-  );
-  occluder.position.z = 0;
-  occluder.renderOrder = -1;
-  farScene.add(occluder);
+  const waves = makeWaterRipples();
+  farGroup.add(far.mesh, waves.mesh);
 
   const resize = () => {
     if (released) return;
@@ -423,13 +497,10 @@ export function createGinnaTentacleRenderer(host: HTMLElement) {
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    const scale = Math.max(width / 1672, height / 941);
-    const cropX = (1672 - width / scale) / 2,
-      cropY = (941 - height / scale) / 2;
-    farCamera.left = cropX;
-    farCamera.right = 1672 - cropX;
-    farCamera.top = 941 - cropY;
-    farCamera.bottom = cropY;
+    farCamera.left = 0;
+    farCamera.right = width;
+    farCamera.top = height;
+    farCamera.bottom = 0;
     farCamera.updateProjectionMatrix();
   };
   const observer = new ResizeObserver(resize);
@@ -441,6 +512,27 @@ export function createGinnaTentacleRenderer(host: HTMLElement) {
     near.update(pose.near, pose.tight, pose.age);
     cups.update(pose.near, pose.tight, pose.age);
     far.update(pose.far, 0, pose.age);
+    waves.update(milliseconds);
+    const plane = alignFar();
+    farGroup.matrix.set(
+      plane.a,
+      -plane.c,
+      0,
+      plane.c * 941 + plane.x,
+      -plane.b,
+      plane.d,
+      0,
+      plane.height - plane.d * 941 - plane.y,
+      0,
+      0,
+      plane.scale,
+      0,
+      0,
+      0,
+      0,
+      1,
+    );
+    farGroup.matrixWorldNeedsUpdate = true;
     renderer.clear();
     renderer.render(farScene, farCamera);
     renderer.clearDepth();
@@ -458,8 +550,8 @@ export function createGinnaTentacleRenderer(host: HTMLElement) {
     distantSkin.dispose();
     cups.mesh.material.dispose();
     texture.dispose();
-    occluder.geometry.dispose();
-    occluder.material.dispose();
+    waves.mesh.geometry.dispose();
+    waves.mesh.material.dispose();
     key.shadow.map?.dispose();
     renderer.renderLists.dispose();
     renderer.dispose();
@@ -491,6 +583,11 @@ function updateHooks(
   host.dataset.frame = String(frame);
   host.dataset.turns = (Math.max(0, (pose.near - 0.2) / 0.8) * TURNS).toFixed(2);
   host.dataset.constriction = pose.tight.toFixed(3);
+  host.dataset.origin = 'lake';
+  host.dataset.originPoint = `${LAKE.x},${LAKE.y}`;
+  const waves = waterRipples(milliseconds);
+  host.dataset.waterRipples = String(waves.filter((wave) => wave.opacity > 0.01).length);
+  host.dataset.waterDeformation = Math.max(...waves.map((wave) => wave.opacity)).toFixed(3);
   if (pressure) pressure.style.opacity = String(pose.tight * 0.75);
 }
 
@@ -499,6 +596,7 @@ function createFallback(
   host: HTMLElement,
   canvas: HTMLCanvasElement,
   pressure: HTMLElement | null,
+  alignFar: ReturnType<typeof createFarAlignment>,
 ) {
   host.dataset.renderer = 'canvas';
   const context = canvas.getContext('2d');
@@ -523,40 +621,45 @@ function createFallback(
     camera.updateProjectionMatrix();
     const pose = progression(milliseconds);
     context.clearRect(0, 0, width, height);
-    const scale = Math.max(width / 1672, height / 941);
-    const cropX = (width - 1672 * scale) / 2,
-      cropY = (height - 941 * scale) / 2;
+    const plane = alignFar();
     const far = new THREE.Vector3();
     context.save();
+    context.transform(plane.a, plane.b, plane.c, plane.d, plane.x, plane.y);
     context.beginPath();
-    context.moveTo(cropX, cropY);
-    context.lineTo(cropX + 1672 * scale, cropY);
-    for (const [x, y] of [
-      [1672, 250],
-      [970, 250],
-      [900, 220],
-      [845, 213],
-      [807, 202],
-      [775, 186],
-      [752, 203],
-      [728, 209],
-      [700, 222],
-      [0, 222],
-    ])
-      context.lineTo(cropX + x * scale, cropY + y * scale);
-    context.closePath();
+    context.rect(0, -1000, 1672, LAKE.y + 1000);
     context.clip();
     for (let i = 0; i < 80; i++) {
       const a = (i / 80) * pose.far,
         b = ((i + 1) / 80) * pose.far;
       farCenter(a, 0, pose.age, far);
       context.beginPath();
-      context.moveTo(cropX + far.x * scale, cropY + (941 - far.y) * scale);
+      context.moveTo(far.x, 941 - far.y);
       farCenter(b, 0, pose.age, far);
-      context.lineTo(cropX + far.x * scale, cropY + (941 - far.y) * scale);
-      context.lineWidth = (1 - i / 80) * 36 * scale;
-      context.strokeStyle = '#22272b';
+      context.lineTo(far.x, 941 - far.y);
+      context.lineWidth = (1 - i / 80) * 36;
+      context.strokeStyle = '#1c2125';
       context.lineCap = 'round';
+      context.stroke();
+    }
+    context.restore();
+    context.save();
+    context.transform(plane.a, plane.b, plane.c, plane.d, plane.x, plane.y);
+    for (const wave of waterRipples(milliseconds)) {
+      if (wave.opacity <= 0) continue;
+      context.beginPath();
+      for (let i = 0; i <= 90; i++) {
+        const angle = (i / 90) * TAU;
+        const radius =
+          wave.radius +
+          Math.sin(angle * 7 + wave.phase) * 1.2 +
+          Math.sin(angle * 13 - pose.age * 0.5) * 0.6;
+        const x = LAKE.x + Math.cos(angle) * radius,
+          y = LAKE.y + Math.sin(angle) * radius * 0.18;
+        if (i) context.lineTo(x, y);
+        else context.moveTo(x, y);
+      }
+      context.strokeStyle = `rgba(85,98,106,${wave.opacity * 0.34})`;
+      context.lineWidth = 0.85;
       context.stroke();
     }
     context.restore();

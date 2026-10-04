@@ -19,6 +19,7 @@ import { GinnaBalloon } from './GinnaBalloon';
 import { useMusicInterlude } from './SiteMusic';
 import {
   ginnaGreeting,
+  ginnaFarewell,
   ginnaMountLines,
   ginnaQuestions,
   ginnaExcuses,
@@ -156,7 +157,7 @@ export function Stable({
       void player.play().catch(() => {});
     }
     setVision(false);
-    setSpeech('Assim é melhor. Eles só precisam de cuidado e gentileza. Agora podemos continuar.');
+    setSpeech(ginnaFarewell);
     warnings.current = 0;
   }, []);
   const finishReturn = useCallback(() => {
@@ -484,7 +485,7 @@ export function Stable({
       </div>
       {vision && (
         <Suspense fallback={null}>
-          <GinnaVision known={known} onFinished={beginReturn} />
+          <GinnaVision known={known} returning={returning} onFinished={beginReturn} />
         </Suspense>
       )}
       {returning && (

@@ -1,13 +1,14 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-export type GinnaGroundEye = {
+export type GinnaEye = {
   x: number;
   y: number;
   width: number;
   delay: number;
   blink: number;
   angle: number;
+  depth: 'ground' | 'mountain';
 };
 
 const SCENE_WIDTH = 100;
@@ -19,7 +20,7 @@ const smooth = (value: number) => {
 };
 
 /** The original painting is the skin of a raised, continuous earthen surface. */
-function makeReliefGeometry() {
+function makeReliefGeometry(depth: GinnaEye['depth']) {
   const geometry = new THREE.PlaneGeometry(1, 1, SEGMENTS, SEGMENTS);
   const positions = geometry.getAttribute('position') as THREE.BufferAttribute;
   const uv = geometry.getAttribute('uv') as THREE.BufferAttribute;
@@ -58,6 +59,28 @@ function makeReliefGeometry() {
         upperLid * 0.024 +
         earthCreases,
     );
+    if (depth === 'mountain') {
+      // The summit is a face of rock aimed at the visitor, not a patch of the
+      // ground. Its glistening globe and raised stone lids keep the full iris.
+      const summitGlobe = gaussian(x, y, 0.235, 0.205);
+      open[i] = Math.max(
+        0.002,
+        0.012 +
+          soil * 0.036 +
+          summitGlobe * 0.255 +
+          upperLid * 0.091 +
+          lowerLid * 0.078 +
+          earthCreases * 0.55,
+      );
+      closed[i] = Math.max(
+        0.002,
+        0.012 +
+          soil * 0.042 +
+          gaussian(x, y + 0.006, 0.33, 0.24) * 0.26 +
+          upperLid * 0.051 +
+          earthCreases * 0.55,
+      );
+    }
   }
 
   const reliefNormals = (heights: Float32Array) => {
@@ -84,24 +107,34 @@ const eyeVertex = /* glsl */ `
   attribute vec3 normalClosed;
   uniform float blink;
   uniform float rise;
+  uniform float mountain;
   varying vec2 vUv;
+  varying vec2 vMaskUv;
   varying vec3 vNormal;
   varying float vElevation;
   void main() {
     vUv = uv;
-    float elevation = mix(heightOpen, heightClosed, blink) - (1.0 - rise) * 0.37;
+    float elevation = mix(heightOpen, heightClosed, blink) * mix(1.0, rise, mountain)
+      - (1.0 - rise) * 0.37 * (1.0 - mountain);
     vElevation = elevation;
     vNormal = normalize(normalMatrix * mix(normalOpen, normalClosed, blink));
     vec3 raised = vec3(position.xy, elevation);
+    // The original summit mask is fixed to the rock silhouette in screen space,
+    // so raising the globe cannot push a piece of soil beyond the skyline.
+    vMaskUv = mix(vUv,
+      vec2(vUv.x, raised.y * 0.990268 + elevation * 0.139173 + 0.18), mountain);
     gl_Position = projectionMatrix * modelViewMatrix * vec4(raised, 1.0);
   }
 `;
 
 const eyeFragment = /* glsl */ `
   uniform sampler2D atlas;
+  uniform sampler2D ridgeMask;
   uniform float blink;
   uniform float rise;
+  uniform float mountain;
   varying vec2 vUv;
+  varying vec2 vMaskUv;
   varying vec3 vNormal;
   varying float vElevation;
   void main() {
@@ -111,6 +144,13 @@ const eyeFragment = /* glsl */ `
     vec4 painted = mix(opened, shut, blink);
     float groundCut = smoothstep(-0.004, 0.012, vElevation);
     float alpha = painted.a * groundCut * smoothstep(0.0, 0.16, rise);
+    if (mountain > 0.5) {
+      float ridge = texture2D(ridgeMask, clamp(vMaskUv, 0.0, 1.0)).a;
+      float rimDistance = length((vMaskUv - vec2(0.5, 0.65)) / vec2(0.707107, 0.919239));
+      float rimFade = 1.0 - smoothstep(0.45, 0.75, rimDistance);
+      float forestFade = smoothstep(0.30, 0.46, vMaskUv.y);
+      alpha *= ridge * rimFade * forestFade;
+    }
     if (alpha < 0.025) discard;
 
     vec2 irisCoords = (vUv - vec2(0.51, 0.546)) / vec2(0.222, 0.152);
@@ -119,9 +159,13 @@ const eyeFragment = /* glsl */ `
     float diffuse = max(dot(normal, normalize(vec3(-0.65, 0.72, 0.8))), 0.0);
     // Linear-light factors: the painted iris keeps its existing gray tone; the soil
     // and fleshy rim are significantly darker. No global grayscale/color wash.
-    float earthShade = 0.095 * (0.63 + diffuse * 0.56);
-    float irisShade = 0.265 * (0.97 + diffuse * 0.03);
-    vec3 color = painted.rgb * mix(earthShade, irisShade, innerEye);
+    float earthShade = mix(0.095, 0.15, mountain) * (0.63 + diffuse * 0.56);
+    float irisShade = mix(0.265, 0.185, mountain) * (0.97 + diffuse * 0.03);
+    // The summit was grayscale in the original rock compositor. Keep that
+    // stone palette here without washing out the approved ground eyes.
+    float rockGray = dot(painted.rgb, vec3(0.2126, 0.7152, 0.0722));
+    vec3 paintedColor = mix(painted.rgb, vec3(rockGray), mountain * 0.95);
+    vec3 color = paintedColor * mix(earthShade, irisShade, innerEye);
     float dampGleam = pow(max(dot(normal, normalize(vec3(-0.26, 0.5, 1.0))), 0.0), 26.0);
     color += vec3(0.0025) * dampGleam * innerEye;
     gl_FragColor = vec4(color, alpha * 0.96);
@@ -148,12 +192,12 @@ const shadowFragment = /* glsl */ `
   }
 `;
 
-/** One transparent renderer for the ground. The mountain eye stays in the original compositor. */
+/** One transparent renderer for the earth and summit; the original paintings remain its skin. */
 export function GinnaGroundEyes({
   eyes,
   onReady,
 }: {
-  eyes: readonly GinnaGroundEye[];
+  eyes: readonly GinnaEye[];
   onReady: (available: boolean) => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -168,8 +212,9 @@ export function GinnaGroundEyes({
     let ready = false;
     let animationFrame = 0;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let motionReduced = reducedMotion.matches;
     const fullyEmergedTime = Math.max(0, ...eyes.map((eye) => eye.delay / 1000)) + 1.12;
-    let sceneTime = reducedMotion.matches ? fullyEmergedTime : 0;
+    let sceneTime = motionReduced ? fullyEmergedTime : 0;
     let lastTick = 0;
     let lastDraw = 0;
     let draws = 0;
@@ -184,6 +229,7 @@ export function GinnaGroundEyes({
       });
     } catch {
       canvas.dataset.renderer = 'fallback';
+      canvas.dataset.mountainRenderer = 'raster';
       onReady(false);
       return;
     }
@@ -192,42 +238,77 @@ export function GinnaGroundEyes({
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(0, SCENE_WIDTH, SCENE_HEIGHT, 0, 0.1, 300);
     camera.position.set(0, 0, 100);
-    const geometry = makeReliefGeometry();
+    const geometry = makeReliefGeometry('ground');
+    const mountainGeometry = makeReliefGeometry('mountain');
     const shadowGeometry = new THREE.PlaneGeometry(1.18, 0.79);
     const loader = new THREE.TextureLoader();
+    let loadedTextures = 0;
+    const textureLoaded = () => {
+      if (disposed || ++loadedTextures < 2) return;
+      ready = true;
+      canvas.dataset.renderer = 'webgl';
+      canvas.dataset.mountainRenderer = eyes.some((eye) => eye.depth === 'mountain')
+        ? 'webgl'
+        : 'none';
+      onReady(true);
+      render();
+      schedule();
+    };
+    const textureFailed = () => {
+      if (disposed) return;
+      canvas.dataset.renderer = 'fallback';
+      canvas.dataset.mountainRenderer = 'raster';
+      onReady(false);
+    };
     const atlas = loader.load(
       '/stable/ginna-raised-eyes.webp',
-      () => {
+      textureLoaded,
+      undefined,
+      textureFailed,
+    );
+    // SVGs with only a viewBox can upload as an empty WebGL texture in Edge.
+    // Rasterize the existing mask at runtime with explicit intrinsic dimensions;
+    // its original path/blur remain the sole source of the skyline clipping.
+    const maskCanvas = document.createElement('canvas');
+    maskCanvas.width = maskCanvas.height = 512;
+    const ridgeMask = new THREE.CanvasTexture(maskCanvas);
+    new THREE.ImageLoader().load(
+      '/stable/ginna-mountain-mask.svg',
+      (image) => {
         if (disposed) return;
-        ready = true;
-        canvas.dataset.renderer = 'webgl';
-        onReady(true);
-        render();
-        schedule();
+        const context = maskCanvas.getContext('2d');
+        if (!context) return textureFailed();
+        context.drawImage(image, 0, 0, maskCanvas.width, maskCanvas.height);
+        ridgeMask.needsUpdate = true;
+        textureLoaded();
       },
       undefined,
-      () => {
-        if (disposed) return;
-        canvas.dataset.renderer = 'fallback';
-        onReady(false);
-      },
+      textureFailed,
     );
+    ridgeMask.minFilter = THREE.LinearFilter;
+    ridgeMask.magFilter = THREE.LinearFilter;
     atlas.colorSpace = THREE.SRGBColorSpace;
     atlas.minFilter = THREE.LinearMipmapLinearFilter;
     atlas.magFilter = THREE.LinearFilter;
     atlas.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
 
     const surfaces = eyes.map((eye, index) => {
+      const mountain = eye.depth === 'mountain';
       const group = new THREE.Group();
       group.position.set(eye.x, SCENE_HEIGHT * (1 - eye.y / 100), index * 0.002);
       group.scale.setScalar(eye.width);
-      const tilt = Math.max(42, 64 - (eye.y - 56) * 0.54);
+      // Keep the summit's old translate(-50%, -38%) framing while reusing
+      // the contact origin at 82% of the painted frame.
+      if (mountain) group.position.y -= eye.width * 0.44;
+      const tilt = mountain ? 8 : Math.max(42, 64 - (eye.y - 56) * 0.54);
       // Vertical relief projects above the contact line, with the soil plane receding.
       group.rotation.set(-THREE.MathUtils.degToRad(tilt), 0, -THREE.MathUtils.degToRad(eye.angle));
       const uniforms = {
         atlas: { value: atlas },
+        ridgeMask: { value: ridgeMask },
+        mountain: { value: mountain ? 1 : 0 },
         blink: { value: 0 },
-        rise: { value: reducedMotion.matches ? 1 : 0 },
+        rise: { value: motionReduced ? 1 : 0 },
       };
       const material = new THREE.ShaderMaterial({
         uniforms,
@@ -237,7 +318,7 @@ export function GinnaGroundEyes({
         depthWrite: true,
         side: THREE.DoubleSide,
       });
-      const mound = new THREE.Mesh(geometry, material);
+      const mound = new THREE.Mesh(mountain ? mountainGeometry : geometry, material);
       mound.renderOrder = 1;
       group.add(mound);
       const shadowMaterial = new THREE.ShaderMaterial({
@@ -250,12 +331,17 @@ export function GinnaGroundEyes({
       const contact = new THREE.Mesh(shadowGeometry, shadowMaterial);
       contact.position.set(0.035, 0.245, -0.012);
       contact.renderOrder = 0;
-      group.add(contact);
+      if (!mountain) group.add(contact);
       scene.add(group);
       return { eye, uniforms, material, shadowMaterial };
     });
 
     canvas.dataset.eyeCount = String(eyes.length);
+    canvas.dataset.groundEyeCount = String(eyes.filter((eye) => eye.depth === 'ground').length);
+    canvas.dataset.mountainEyeCount = String(eyes.filter((eye) => eye.depth === 'mountain').length);
+    canvas.dataset.mountainRelief = 'stone-lids-and-convex-globe';
+    canvas.dataset.mountainVertices = String(mountainGeometry.getAttribute('position').count);
+    canvas.dataset.mountainMask = 'original-svg-projected-to-ridge';
     canvas.dataset.eyeVertices = String(geometry.getAttribute('position').count * eyes.length);
     canvas.dataset.relief = 'raised-earth-lids-and-convex-globe';
     canvas.dataset.iris = 'original-gray';
@@ -265,28 +351,39 @@ export function GinnaGroundEyes({
       if (!ready || disposed || contextLost || document.hidden) return;
       let emerged = 0;
       let blinking = 0;
+      let groundEmerged = 0;
+      let mountainEmerged = 0;
       for (const { eye, uniforms } of surfaces) {
         const localTime = Math.max(0, sceneTime - eye.delay / 1000);
-        const rise = reducedMotion.matches ? 1 : smooth(localTime / 1.12);
+        const rise = motionReduced
+          ? 1
+          : smooth(localTime / (eye.depth === 'mountain' ? 0.85 : 1.12));
         const cycle = (localTime % eye.blink) / eye.blink;
-        const blink = reducedMotion.matches
+        const blink = motionReduced
           ? 0
           : smooth((cycle - 0.44) / 0.035) * (1 - smooth((cycle - 0.505) / 0.045));
         uniforms.rise.value = rise;
         uniforms.blink.value = blink;
-        if (rise > 0.99) emerged++;
+        if (rise > 0.99) {
+          emerged++;
+          if (eye.depth === 'mountain') mountainEmerged++;
+          else groundEmerged++;
+        }
         if (blink > 0.5) blinking++;
+        if (eye.depth === 'mountain') canvas.dataset.mountainBlink = blink.toFixed(3);
       }
       renderer.render(scene, camera);
       canvas.dataset.frame = String(++draws);
       canvas.dataset.emerged = String(emerged);
+      canvas.dataset.groundEmerged = String(groundEmerged);
+      canvas.dataset.mountainEmerged = String(mountainEmerged);
       canvas.dataset.blinking = String(blinking);
-      canvas.dataset.motion = reducedMotion.matches ? 'static' : 'animated';
+      canvas.dataset.motion = motionReduced ? 'static' : 'animated';
     }
 
     function tick(now: number) {
       animationFrame = 0;
-      if (!ready || disposed || contextLost || document.hidden || reducedMotion.matches) return;
+      if (!ready || disposed || contextLost || document.hidden || motionReduced) return;
       if (lastTick) sceneTime += Math.min(0.08, (now - lastTick) / 1000);
       lastTick = now;
       // Independent blink timing needs no more than 30 frames per second.
@@ -303,7 +400,7 @@ export function GinnaGroundEyes({
         !disposed &&
         !contextLost &&
         !document.hidden &&
-        !reducedMotion.matches &&
+        !motionReduced &&
         !animationFrame
       )
         animationFrame = requestAnimationFrame(tick);
@@ -331,13 +428,16 @@ export function GinnaGroundEyes({
       }
     }
 
-    function motion() {
+    function motion(event: MediaQueryListEvent) {
+      // Use the delivered preference for this render, so the static pose and
+      // stop/resume decision always use the same state.
+      motionReduced = event.matches;
       cancelAnimationFrame(animationFrame);
       animationFrame = 0;
       lastTick = 0;
       // Restoring normal movement resumes blinking without sinking eyes that
       // were already fully raised in the accessible static pose.
-      if (reducedMotion.matches) sceneTime = Math.max(sceneTime, fullyEmergedTime);
+      if (motionReduced) sceneTime = Math.max(sceneTime, fullyEmergedTime);
       render();
       schedule();
     }
@@ -348,6 +448,7 @@ export function GinnaGroundEyes({
       cancelAnimationFrame(animationFrame);
       animationFrame = 0;
       canvas.dataset.renderer = 'fallback';
+      canvas.dataset.mountainRenderer = 'raster';
       onReady(false);
     }
 
@@ -355,6 +456,7 @@ export function GinnaGroundEyes({
       contextLost = false;
       lastTick = 0;
       canvas.dataset.renderer = 'webgl';
+      canvas.dataset.mountainRenderer = 'webgl';
       onReady(true);
       render();
       schedule();
@@ -377,8 +479,10 @@ export function GinnaGroundEyes({
       canvas.removeEventListener('webglcontextlost', loseContext);
       canvas.removeEventListener('webglcontextrestored', restoreContext);
       geometry.dispose();
+      mountainGeometry.dispose();
       shadowGeometry.dispose();
       atlas.dispose();
+      ridgeMask.dispose();
       for (const surface of surfaces) {
         surface.material.dispose();
         surface.shadowMaterial.dispose();

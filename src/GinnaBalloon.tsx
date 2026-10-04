@@ -138,7 +138,7 @@ export function GinnaBalloon({
                 <span className="ginna-shaking-word" key={wordIndex}>
                   {Array.from(word).map((letter, index) => (
                     <span
-                      className="ginna-shaking-letter"
+                      className={/\p{Lu}/u.test(letter) ? 'ginna-shaking-letter' : undefined}
                       key={index}
                       style={
                         {

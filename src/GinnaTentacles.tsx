@@ -3,7 +3,7 @@ import { createGinnaTentacleRenderer, GINNA_TENTACLE_DURATION } from './ginna-te
 /** The coils close around the visitor before the existing eyelids cover the scene. */
 export function animateGinnaTentacles(root: HTMLElement, reduced: boolean) {
   const scene = root.querySelector<HTMLElement>('.ginna-return-tentacles')!;
-  const renderer = createGinnaTentacleRenderer(scene);
+  const renderer = createGinnaTentacleRenderer(scene, reduced);
   let frame = 0;
   let elapsed = 0;
   let previous = performance.now();
@@ -51,7 +51,13 @@ export function animateGinnaTentacles(root: HTMLElement, reduced: boolean) {
 
 export function GinnaTentacles() {
   return (
-    <div className="ginna-return-tentacles" aria-hidden="true" data-stage="sky" data-progress="0">
+    <div
+      className="ginna-return-tentacles"
+      aria-hidden="true"
+      data-stage="sky"
+      data-progress="0"
+      data-origin="lake"
+    >
       <div
         className="ginna-return-pressure"
         style={{

@@ -141,10 +141,20 @@ https://www.youtube.com/watch?v=ohNpf4VnlP8 . Não é atribuído a CC0.
 A terceira advertência (Minha paciência está acabando) troca a arte por
 `public/stable/ginna-serious.webp`, mantendo roupa, feno, personagem e alfa.
 A expressão séria permanece até o retorno, que restaura a arte original.
-A quarta advertência usa letras com tremor individual; a fala da visão escura
+A quarta advertência usa tremor individual só nas letras maiúsculas Unicode,
+incluindo as acentuadas; minúsculas, espaços e pontuação permanecem estáticos.
+A fala da visão escura
 usa fonte maior, sem traço no meio, e dois pulsos de vermelho por ciclo de 1,6 s.
 As letras permanecem legíveis e o leitor de tela recebe a frase completa.
 Movimento reduzido desativa tremor/pulsação, preservando o vermelho.
+
+Cada pico vermelho (10% e 27% do ciclo de 1,6 s) acompanha um batimento
+cardíaco grave abafado. `useGinnaHeartbeat.ts` usa Web Audio e o relógio da
+própria animação CSS para manter cor/som sincronizados, sem um loop de áudio
+separado. Som sintetizado localmente, sem dependência de gravação externa.
+Respeita volume/mute do site, pausa ao ocultar a aba e encerra recursos ao
+desmontar; movimento reduzido, sem pulso visual, também desativa os batimentos.
+Trocar para a resposta à promessa mantém a mesma animação e sincronia.
 
 `public/stable/paddock-ruined-eye-mountain-v2.webp` restaura apenas um pequeno
 pico central. A máscara do olho acompanha a crista mais alta, sem cortar a íris.
@@ -152,20 +162,27 @@ As artes foram editadas com a ferramenta integrada image_gen e convertidas em
 WebP; as versões anteriores foram preservadas.
 
 Ao escolher Não vou machucá-los!, GinnaTentacles inicia 5,6 s de movimento:
-um tentáculo distante surge atrás da crista e sobe ao céu; um segundo desce
+um tentáculo distante surge do lago, abaixo da ponte, e sobe ao céu; um segundo desce
 perto da câmera e forma voltas ao redor do visitante. Tubo afilado em Three.js,
 ventosas em relevo, textura existente do kraken e sombras reais, adaptados à tela.
 O visitante fica dentro de um eixo vertical: as voltas passam atrás e à frente
 da câmera em alturas diferentes, apertando-se no final. Não é uma espiral
 desenhada no plano da tela. Luz/material dessaturados acompanham o cenário;
-uma malha invisível recorta a raiz distante atrás da crista.
-A subida distante acompanha o enquadramento cover do fundo; a aproximação
+ondas elípticas se expandem sobre a água quando a raiz emerge.
+A subida distante e as ondas acompanham o enquadramento cover e a transformação
+real do cenário em tremor, incluindo translação e rotação. A pele distante
+recebe escurecimento adicional discreto. A aproximação
 ocupa o viewport. Em seguida as pálpebras cobrem a cena e o estábulo normal
 retorna. Respiração começa somente nessa troca de cenário. Aba oculta pausa
 o avanço dos tentáculos; desmontar cancela o frame pendente e libera a GPU. Movimento reduzido
 mostra uma composição estática breve e mantém o fade de retorno.
 
-### Relevo dos olhos no chão
+Ao aceitar a promessa, o balão escuro troca imediatamente para “Melhor assim.
+Estarei de olho em você.” e retira o botão. A fala continua visível durante
+a subida/descida dos tentáculos até a visão ser coberta; reaparece no dia
+com a mesma frase. Música, respiração e contador mantêm o fluxo existente.
+
+### Relevo dos olhos
 
 `GinnaGroundEyes.tsx` renderiza os 22 olhos sobre superfícies curvas com
 44 × 44 subdivisões. Globo, pálpebras e terra têm elevação própria, normais
@@ -175,8 +192,10 @@ terra e pálpebras recebem escurecimento maior, sem mudar a cor interna cinza.
 Durante a emergência, a superfície sobe de baixo do solo com recorte na
 altura zero; piscar combina a forma fechada com a segunda metade do atlas.
 
-Um canvas transparente compartilha geometria/textura entre os olhos e usa o
-mesmo plano cover do fundo. O olho da montanha mantém seu recorte original.
+O olho da montanha também usa superfície curva quase frontal, com globo e
+pálpebras em relevo, máscara da crista e esmaecimento da base preservados.
+Um canvas transparente compartilha geometria/textura entre os 23 olhos e
+usa o mesmo plano cover do fundo.
 Os componentes da visão/retorno são carregados sob demanda, mantendo Three.js
 fora do carregamento inicial; o retorno é antecipado ao entrar na visão.
 Renderização limitada a 30 fps e resolução limitada; aba oculta pausa o relógio,
@@ -209,7 +228,7 @@ balão sem modal central, quatro desculpas sucessivas com balão mantido,
 cinco insistências com fechamento/reabertura, ocultação/retorno da
 montaria, distribuição/proporções dos 23 olhos, ausência dos olhos de encosta,
 olho no pico, piscar
-aberto/fechado, canvas WebGL com 22 olhos e malhas em relevo, tremor,
+aberto/fechado, canvas WebGL com 23 olhos e malhas em relevo, tremor,
 permanência além do antigo timeout, clique real na cena em movimento,
 promessa obrigatória, fechar/abrir das pálpebras, pixels totalmente pretos na
 troca do cenário, retorno ao dia com seleção mantida, reprodução/duração/volume
@@ -229,6 +248,11 @@ do retorno e ausência de erros WebGL; capturas em
 `test-results/ginna-eyes-3d-*.png` e `ginna-tentacle-volume-*.png`.
 
 Revisão 04/10/2026: build cliente/servidor, smoke isolado do estábulo e smoke
-visual passaram. Verificação adicional no Edge cobriu movimento reduzido,
+visual passaram. A revisão da montanha/lago/batimentos também passou nos dois
+smokes: tremor somente em maiúsculas, piscada na malha da montanha, ondas,
+transformação distante idêntica à da cena e resposta durante o retorno.
+Áudio validado no Edge com disparos nos picos 10%/27%, mute/volume zero,
+pausa da aba, movimento reduzido, troca de frase sem reiniciar o relógio e
+fechamento do AudioContext ao sair. Verificação adicional no Edge cobriu movimento reduzido,
 troca da preferência sem nova emergência, pausa em aba oculta e perda/retorno
 de contexto WebGL com alternativa raster. Serviço local reconstruído no Docker.

@@ -1,16 +1,37 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Advertência, olho da montanha e saída do lago (04/10/2026)
+
+Na quarta advertência só as letras maiúsculas tremem (incluindo acentos);
+minúsculas, espaços e pontuação ficam estáticos. Cada pulso vermelho da fala
+escura toca um batimento grave abafado, sincronizado ao relógio da própria
+animação (picos em 10% e 27% de 1,6 s), respeitando volume/mute, pausa da aba
+e movimento reduzido. Sem loop independente que possa perder a sincronia.
+Após Não vou machucá-los!,
+Ginna responde imediatamente “Melhor assim. Estarei de olho em você.” no
+balão da forma escura enquanto o tentáculo vem; a resposta permanece ao
+voltar ao dia. Botão da promessa desaparece assim que é aceito.
+
+O olho da montanha também passa a ter relevo 3D, preservando posição, máscara
+da crista, íris e esmaecimento da base. Compartilha o canvas com os 22 olhos
+do chão. Origem do tentáculo distante muda da crista para a água abaixo da
+ponte, com ondas elípticas se expandindo ao emergir. Tentáculo distante um
+pouco mais escuro e sincronizado com a transformação real do cenário em
+tremor; ondas e recorte acompanham o mesmo enquadramento cover. A aproximação
+e as voltas junto do visitante continuam em perspectiva. Movimento reduzido
+mantém uma pose estática, sem tremor ou ondas animadas. Sem mudanças SQL.
+
 ## Olhos e tentáculos em 3D (04/10/2026)
 
 Os 22 olhos do chão usam a arte original sobre malhas 3D curvas, com relevo
 do globo, pálpebras e terra. Emergência recortada pelo nível do solo, sombra
 de contato e piscada com deformação da superfície. Terra/bordas escurecidas
-separadamente da íris, que mantém o cinza anterior. O olho da montanha e o
-fundo v2 permanecem no compositor existente. Um canvas compartilhado, limite
+separadamente da íris, que mantém o cinza anterior. O fundo v2 permanece.
+Um canvas compartilhado, limite
 de 30 fps, pausa em aba oculta e alternativa raster se WebGL falhar.
 
 Retorno substitui o tentáculo SVG por tubo 3D afilado, textura de pele do
-kraken e ventosas em relevo. Em 5,6 s sobe atrás da montanha, desce perto do
+kraken e ventosas em relevo. Em 5,6 s sobe da água, desce perto do
 visitante e envolve a câmera com voltas em um eixo vertical que se apertam,
 antes das pálpebras e do retorno ao dia. Materiais e luz usam a paleta escura
 do cenário. A fala vermelha perde o risco e recebe fonte maior, preservando
