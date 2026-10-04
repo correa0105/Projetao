@@ -1,0 +1,629 @@
+import * as THREE from 'three';
+
+export const GINNA_TENTACLE_DURATION = 5600;
+const TAU = Math.PI * 2;
+const TURNS = 3.4;
+const SEGMENTS = 224;
+const SIDES = 28;
+const clamp = (n: number) => THREE.MathUtils.clamp(n, 0, 1);
+const ease = (n: number) => {
+  const t = clamp(n);
+  return t * t * (3 - 2 * t);
+};
+
+/** A vertical body axis, with the viewer inside it looking forward into the valley.
+ * Front half-turns cross the view; the rear halves travel behind the viewer.
+ * This is intentionally a cylindrical helix rather than a frontal screen spiral. */
+function nearCenter(t: number, constriction: number, age: number, out: THREE.Vector3) {
+  const radius = 1.85 - constriction;
+  const angle0 = -1.11;
+  const startX = Math.cos(angle0) * radius,
+    startZ = Math.sin(angle0) * radius;
+  if (t < 0.2) {
+    const u = t / 0.2,
+      v = 1 - u;
+    out.set(
+      2.55 * v ** 3 + 2.12 * 3 * v * v * u + (startX + 0.53) * 3 * v * u * u + startX * u ** 3,
+      4.2 * v ** 3 + 2.84 * 3 * v * v * u + 1.04 * 3 * v * u * u + 0.86 * u ** 3,
+      -6.6 * v ** 3 - 5 * 3 * v * v * u + (startZ + 0.26) * 3 * v * u * u + startZ * u ** 3,
+    );
+  } else {
+    const u = (t - 0.2) / 0.8;
+    const theta = angle0 - u * TAU * TURNS;
+    // A small travelling muscle wave changes the shape, without rotating the coils.
+    const flex = Math.sin(u * 13 - age * 2.1) * 0.025 * Math.sin(u * Math.PI);
+    out.set(Math.cos(theta) * (radius + flex), 0.86 - u * 2.05, Math.sin(theta) * (radius + flex));
+    out.y += Math.sin(u * 17 + age * 1.7) * 0.025 * Math.sin(u * Math.PI);
+  }
+  return out;
+}
+
+function farCenter(t: number, _tight: number, age: number, out: THREE.Vector3) {
+  const v = 1 - t;
+  out.set(
+    v ** 3 * 784 + 3 * v * v * t * 965 + 3 * v * t * t * 675 + t ** 3 * 1040,
+    941 - (v ** 3 * 228 + 3 * v * v * t * 106 + 3 * v * t * t * 22 - t ** 3 * 170),
+    -5,
+  );
+  out.x += Math.sin(t * 7 - age * 1.1) * Math.sin(t * Math.PI) * 6;
+  return out;
+}
+
+type Centerline = typeof nearCenter;
+type Tube = {
+  mesh: THREE.Mesh<THREE.BufferGeometry, THREE.MeshPhysicalMaterial>;
+  update: (progress: number, tight: number, age: number) => void;
+  sample: (
+    t: number,
+    progress: number,
+    tight: number,
+    age: number,
+  ) => {
+    point: THREE.Vector3;
+    normal: THREE.Vector3;
+    tangent: THREE.Vector3;
+    binormal: THREE.Vector3;
+    radius: number;
+  };
+};
+
+function makeTube(
+  line: Centerline,
+  width: number,
+  material: THREE.MeshPhysicalMaterial,
+  segments = SEGMENTS,
+  sides = SIDES,
+): Tube {
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array((segments + 1) * (sides + 1) * 3);
+  const normals = new Float32Array(positions.length);
+  const uvs = new Float32Array((segments + 1) * (sides + 1) * 2);
+  const indices: number[] = [];
+  for (let i = 0; i < segments; i++)
+    for (let j = 0; j < sides; j++) {
+      const a = i * (sides + 1) + j,
+        b = a + sides + 1;
+      indices.push(a, a + 1, b, b, a + 1, b + 1);
+    }
+  geometry.setIndex(indices);
+  geometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage),
+  );
+  geometry.setAttribute(
+    'normal',
+    new THREE.BufferAttribute(normals, 3).setUsage(THREE.DynamicDrawUsage),
+  );
+  geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2).setUsage(THREE.DynamicDrawUsage));
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.castShadow = mesh.receiveShadow = true;
+  mesh.frustumCulled = false;
+  const point = new THREE.Vector3(),
+    before = new THREE.Vector3(),
+    after = new THREE.Vector3();
+  const normal = new THREE.Vector3(),
+    tangent = new THREE.Vector3(),
+    binormal = new THREE.Vector3();
+  const sample = (t: number, progress: number, tight: number, age: number) => {
+    line(t, tight, age, point);
+    line(Math.max(0, t - 0.0005), tight, age, before);
+    line(Math.min(1, t + 0.0005), tight, age, after);
+    tangent.subVectors(after, before).normalize();
+    if (line === nearCenter) normal.set(-point.x, 0, -point.z).normalize();
+    else normal.set(0, 0, 1);
+    normal.addScaledVector(tangent, -normal.dot(tangent)).normalize();
+    binormal.crossVectors(tangent, normal).normalize();
+    // Most of the arm stays fleshy; only the actively advancing end tapers to a tip.
+    const relative = clamp(t / Math.max(progress, 0.0001));
+    const taper = 1 - relative ** 5;
+    const radius = width * (0.78 + 0.22 * (1 - t)) * taper + width * 0.025;
+    return { point, normal, tangent, binormal, radius };
+  };
+  const update = (progress: number, tight: number, age: number) => {
+    mesh.visible = progress > 0.001;
+    if (!mesh.visible) return;
+    for (let i = 0; i <= segments; i++) {
+      const t = (i / segments) * progress;
+      const pose = sample(t, progress, tight, age);
+      for (let j = 0; j <= sides; j++) {
+        const phi = (j / sides) * TAU;
+        const c = Math.cos(phi),
+          s = Math.sin(phi);
+        const k = (i * (sides + 1) + j) * 3;
+        const nx = normal.x * c + binormal.x * s;
+        const ny = normal.y * c + binormal.y * s;
+        const nz = normal.z * c + binormal.z * s;
+        // Broad muscle ridges underneath the microscopic photographed skin detail.
+        const skin = 1 + Math.sin(phi * 7 + t * 19) * 0.012 + Math.cos(t * 127) * 0.006;
+        positions[k] = point.x + nx * pose.radius * skin;
+        positions[k + 1] = point.y + ny * pose.radius * skin;
+        positions[k + 2] = point.z + nz * pose.radius * skin;
+        normals[k] = nx;
+        normals[k + 1] = ny;
+        normals[k + 2] = nz;
+        const uv = (i * (sides + 1) + j) * 2;
+        uvs[uv] = t * (line === nearCenter ? 14 : 2.6);
+        uvs[uv + 1] = j / sides;
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+    geometry.attributes.normal.needsUpdate = true;
+    geometry.attributes.uv.needsUpdate = true;
+  };
+  return { mesh, update, sample };
+}
+
+/** Flared, recessed cups with a raised lip and dark bowl; depth writes and shadows
+ * make them adhere to the underside instead of looking like painted ellipses. */
+function makeCups(tube: Tube, texture: THREE.Texture) {
+  const profile = [
+    new THREE.Vector2(0, 0.018),
+    new THREE.Vector2(0.34, 0.018),
+    new THREE.Vector2(0.55, 0.03),
+    new THREE.Vector2(0.7, 0.12),
+    new THREE.Vector2(0.72, 0.26),
+    new THREE.Vector2(0.64, 0.35),
+    new THREE.Vector2(0.54, 0.32),
+    new THREE.Vector2(0.47, 0.19),
+    new THREE.Vector2(0.35, 0.095),
+    new THREE.Vector2(0, 0.07),
+  ];
+  const geometry = new THREE.LatheGeometry(profile, 32);
+  const colors = new Float32Array(geometry.attributes.position.count * 3);
+  const color = new THREE.Color();
+  for (let i = 0; i < geometry.attributes.position.count; i++) {
+    const p = i % profile.length;
+    color.set(p >= 8 ? '#17191d' : p >= 4 && p <= 6 ? '#697073' : '#363e41');
+    colors[i * 3] = color.r;
+    colors[i * 3 + 1] = color.g;
+    colors[i * 3 + 2] = color.b;
+  }
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.rotateX(Math.PI / 2);
+  const material = new THREE.MeshPhysicalMaterial({
+    vertexColors: true,
+    roughness: 0.7,
+    metalness: 0,
+    clearcoat: 0.14,
+    clearcoatRoughness: 0.56,
+    map: texture,
+    bumpMap: texture,
+    bumpScale: 0.02,
+  });
+  material.onBeforeCompile = (shader) => {
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <map_fragment>',
+      `#include <map_fragment>
+       float cupLuma=pow(dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722)),0.72);
+       diffuseColor.rgb=mix(diffuseColor.rgb,vec3(cupLuma),0.95)*vec3(0.88,0.94,1.0);`,
+    );
+  };
+  material.customProgramCacheKey = () => 'ginna-cup-skin-v1';
+  const count = 80;
+  const cups = new THREE.InstancedMesh(geometry, material, count * 2);
+  cups.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  cups.castShadow = cups.receiveShadow = true;
+  cups.frustumCulled = false;
+  const matrix = new THREE.Matrix4(),
+    basis = new THREE.Matrix4();
+  const rotation = new THREE.Quaternion(),
+    scale = new THREE.Vector3();
+  const normal = new THREE.Vector3(),
+    side = new THREE.Vector3(),
+    origin = new THREE.Vector3();
+  const update = (progress: number, tight: number, age: number) => {
+    let visible = 0;
+    for (let i = 0; i < count; i++) {
+      const t = 0.07 + (i / count) * 0.91;
+      if (t > progress - 0.004) break;
+      const pose = tube.sample(t, progress, tight, age);
+      for (const row of [-1, 1]) {
+        const angle = row * (0.42 + Math.sin(i * 0.69) * 0.04);
+        normal
+          .copy(pose.normal)
+          .multiplyScalar(Math.cos(angle))
+          .addScaledVector(pose.binormal, Math.sin(angle));
+        side.crossVectors(pose.tangent, normal).normalize();
+        basis.makeBasis(side, pose.tangent, normal);
+        rotation.setFromRotationMatrix(basis);
+        origin.copy(pose.point).addScaledVector(normal, pose.radius * 0.975);
+        const size = pose.radius * (0.5 + Math.sin(i * 1.71) * 0.025);
+        scale.set(size * 0.92, size * 1.12, size * 0.95);
+        matrix.compose(origin, rotation, scale);
+        cups.setMatrixAt(visible++, matrix);
+      }
+    }
+    cups.count = visible;
+    cups.visible = visible > 0;
+    cups.instanceMatrix.needsUpdate = true;
+  };
+  return { mesh: cups, update };
+}
+
+function progression(milliseconds: number) {
+  const far = ease(milliseconds / 1600);
+  const near =
+    milliseconds < 2700
+      ? 0.2 * ease((milliseconds - 1500) / 1200)
+      : 0.2 + 0.8 * ease((milliseconds - 2700) / 2900);
+  const tight = ease((milliseconds - 3700) / 1900);
+  return { far, near, tight, age: milliseconds / 1000 };
+}
+
+export function createGinnaTentacleRenderer(host: HTMLElement) {
+  let canvas = document.createElement('canvas');
+  canvas.className = 'ginna-return-canvas';
+  Object.assign(canvas.style, { position: 'absolute', inset: '0', width: '100%', height: '100%' });
+  host.append(canvas);
+  const pressure = host.querySelector<HTMLElement>('.ginna-return-pressure');
+  let frame = 0,
+    released = false,
+    disposed = false;
+  let renderer: THREE.WebGLRenderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance',
+      preserveDrawingBuffer: true,
+    });
+  } catch {
+    // A photographic perspective fallback still completes the return on machines
+    // without WebGL, without forcing motion on the reduced-motion path.
+    canvas.remove();
+    canvas = document.createElement('canvas');
+    canvas.className = 'ginna-return-canvas';
+    Object.assign(canvas.style, {
+      position: 'absolute',
+      inset: '0',
+      width: '100%',
+      height: '100%',
+    });
+    host.append(canvas);
+    return createFallback(host, canvas, pressure);
+  }
+  host.dataset.renderer = 'webgl';
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  renderer.autoClear = false;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.65));
+  const nearScene = new THREE.Scene(),
+    farScene = new THREE.Scene();
+  nearScene.fog = new THREE.FogExp2('#111519', 0.08);
+  const camera = new THREE.PerspectiveCamera(58, 1, 0.04, 18);
+  camera.position.set(0, 0, 0);
+  camera.lookAt(0, 0, -1);
+  const farCamera = new THREE.OrthographicCamera(0, 1672, 941, 0, 0.1, 100);
+  farCamera.position.z = 30;
+  const hemisphere = new THREE.HemisphereLight('#9ba5b0', '#25211e', 0.85);
+  nearScene.add(hemisphere);
+  const key = new THREE.DirectionalLight('#d5d0c5', 3);
+  key.position.set(-3, 4.5, 3);
+  key.target.position.set(0, 0, -1);
+  key.castShadow = true;
+  key.shadow.mapSize.set(1024, 1024);
+  key.shadow.camera.left = key.shadow.camera.bottom = -4;
+  key.shadow.camera.right = key.shadow.camera.top = 4;
+  key.shadow.camera.near = 0.1;
+  key.shadow.camera.far = 14;
+  key.shadow.normalBias = 0.013;
+  key.shadow.bias = -0.0005;
+  nearScene.add(key, key.target);
+  const fill = new THREE.DirectionalLight('#8c9dab', 0.6);
+  fill.position.set(3.5, 0.5, 1.6);
+  nearScene.add(fill);
+  farScene.add(new THREE.HemisphereLight('#7e868d', '#13171d', 0.8));
+  const farLight = new THREE.DirectionalLight('#bdc2c8', 1.8);
+  farLight.position.set(650, 1150, 550);
+  farLight.target.position.set(800, 850, -5);
+  farScene.add(farLight, farLight.target);
+
+  const texture = new THREE.TextureLoader().load(
+    '/atlas-model-materials/kraken-skin-v1.webp',
+    (map) => {
+      if (released) map.dispose();
+    },
+  );
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  const skin = new THREE.MeshPhysicalMaterial({
+    color: '#b6b9b9',
+    map: texture,
+    bumpMap: texture,
+    bumpScale: 0.026,
+    roughness: 0.68,
+    metalness: 0,
+    clearcoat: 0.16,
+    clearcoatRoughness: 0.52,
+  });
+  // Keep photographed pores while bringing the rust-colored atlas into the
+  // charcoal, stone and muted cold light of the painted nightmare landscape.
+  skin.onBeforeCompile = (shader) => {
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <map_fragment>',
+      `#include <map_fragment>
+       float ginnaSkinLuma=pow(dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722)),0.76);
+       diffuseColor.rgb=mix(diffuseColor.rgb,vec3(ginnaSkinLuma),0.94)*vec3(0.86,0.92,1.0);`,
+    );
+  };
+  skin.customProgramCacheKey = () => 'ginna-photographic-skin-v1';
+  const distantSkin = skin.clone();
+  distantSkin.onBeforeCompile = (shader, renderer) => {
+    skin.onBeforeCompile(shader, renderer);
+    shader.vertexShader = shader.vertexShader
+      .replace('#include <common>', '#include <common>\nvarying vec2 vGinnaFarPosition;')
+      .replace(
+        '#include <begin_vertex>',
+        '#include <begin_vertex>\nvGinnaFarPosition=position.xy;',
+      );
+    shader.fragmentShader = shader.fragmentShader
+      .replace('#include <common>', '#include <common>\nvarying vec2 vGinnaFarPosition;')
+      .replace(
+        '#include <clipping_planes_fragment>',
+        `#include <clipping_planes_fragment>
+        float gx=vGinnaFarPosition.x;
+        float ridge=719.0;
+        if(gx>=970.0) ridge=691.0;
+        else if(gx>=900.0) ridge=mix(721.0,691.0,(gx-900.0)/70.0);
+        else if(gx>=845.0) ridge=mix(728.0,721.0,(gx-845.0)/55.0);
+        else if(gx>=807.0) ridge=mix(739.0,728.0,(gx-807.0)/38.0);
+        else if(gx>=775.0) ridge=mix(755.0,739.0,(gx-775.0)/32.0);
+        else if(gx>=752.0) ridge=mix(738.0,755.0,(gx-752.0)/23.0);
+        else if(gx>=728.0) ridge=mix(732.0,738.0,(gx-728.0)/24.0);
+        else if(gx>=700.0) ridge=mix(719.0,732.0,(gx-700.0)/28.0);
+        if(vGinnaFarPosition.y<ridge) discard;`,
+      );
+  };
+  distantSkin.customProgramCacheKey = () => 'ginna-distant-ridge-v1';
+  distantSkin.color.set('#848c93');
+  distantSkin.bumpScale = 0.09;
+  const near = makeTube(nearCenter, 0.37, skin);
+  const far = makeTube(farCenter, 18, distantSkin, 96, 18);
+  const cups = makeCups(near, texture);
+  nearScene.add(near.mesh, cups.mesh);
+  farScene.add(far.mesh);
+  // Invisible depth geometry occludes the distant root with the same ridge as
+  // the background. The near scene clears depth before drawing the embrace.
+  const ridge = new THREE.Shape();
+  ridge.moveTo(-200, -200);
+  ridge.lineTo(1900, -200);
+  for (const [x, y] of [
+    [1900, 250],
+    [970, 250],
+    [900, 220],
+    [845, 213],
+    [807, 202],
+    [775, 186],
+    [752, 203],
+    [728, 209],
+    [700, 222],
+    [-200, 222],
+  ]) {
+    ridge.lineTo(x, 941 - y);
+  }
+  ridge.closePath();
+  const occluder = new THREE.Mesh(
+    new THREE.ShapeGeometry(ridge),
+    new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true }),
+  );
+  occluder.position.z = 0;
+  occluder.renderOrder = -1;
+  farScene.add(occluder);
+
+  const resize = () => {
+    if (released) return;
+    const width = Math.max(1, host.clientWidth),
+      height = Math.max(1, host.clientHeight);
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    const scale = Math.max(width / 1672, height / 941);
+    const cropX = (1672 - width / scale) / 2,
+      cropY = (941 - height / scale) / 2;
+    farCamera.left = cropX;
+    farCamera.right = 1672 - cropX;
+    farCamera.top = 941 - cropY;
+    farCamera.bottom = cropY;
+    farCamera.updateProjectionMatrix();
+  };
+  const observer = new ResizeObserver(resize);
+  observer.observe(host);
+  resize();
+  const draw = (milliseconds: number) => {
+    if (released) return;
+    const pose = progression(milliseconds);
+    near.update(pose.near, pose.tight, pose.age);
+    cups.update(pose.near, pose.tight, pose.age);
+    far.update(pose.far, 0, pose.age);
+    renderer.clear();
+    renderer.render(farScene, farCamera);
+    renderer.clearDepth();
+    renderer.render(nearScene, camera);
+    updateHooks(host, pressure, milliseconds, pose, ++frame);
+  };
+  const release = () => {
+    if (released) return;
+    released = true;
+    observer.disconnect();
+    near.mesh.geometry.dispose();
+    far.mesh.geometry.dispose();
+    cups.mesh.geometry.dispose();
+    skin.dispose();
+    distantSkin.dispose();
+    cups.mesh.material.dispose();
+    texture.dispose();
+    occluder.geometry.dispose();
+    occluder.material.dispose();
+    key.shadow.map?.dispose();
+    renderer.renderLists.dispose();
+    renderer.dispose();
+  };
+  return {
+    draw,
+    release,
+    dispose: () => {
+      if (disposed) return;
+      disposed = true;
+      release();
+      renderer.forceContextLoss();
+      canvas.remove();
+    },
+  };
+}
+
+function updateHooks(
+  host: HTMLElement,
+  pressure: HTMLElement | null,
+  milliseconds: number,
+  pose: ReturnType<typeof progression>,
+  frame: number,
+) {
+  host.dataset.stage =
+    milliseconds < 1500 ? 'sky' : milliseconds < 2700 ? 'descending' : 'wrapping';
+  host.dataset.progress = pose.near.toFixed(3);
+  host.dataset.farProgress = pose.far.toFixed(3);
+  host.dataset.frame = String(frame);
+  host.dataset.turns = (Math.max(0, (pose.near - 0.2) / 0.8) * TURNS).toFixed(2);
+  host.dataset.constriction = pose.tight.toFixed(3);
+  if (pressure) pressure.style.opacity = String(pose.tight * 0.75);
+}
+
+/** Same perspective projection and depth ordering when WebGL is unavailable. */
+function createFallback(
+  host: HTMLElement,
+  canvas: HTMLCanvasElement,
+  pressure: HTMLElement | null,
+) {
+  host.dataset.renderer = 'canvas';
+  const context = canvas.getContext('2d');
+  const image = new Image();
+  image.src = '/atlas-model-materials/kraken-skin-v1.webp';
+  let released = false,
+    frame = 0;
+  const camera = new THREE.PerspectiveCamera(58, 1, 0.04, 18);
+  camera.lookAt(0, 0, -1);
+  camera.updateMatrixWorld();
+  const tube = makeTube(nearCenter, 0.37, new THREE.MeshPhysicalMaterial(), 112, 18);
+  const point = new THREE.Vector3();
+  const draw = (milliseconds: number) => {
+    if (released || !context) return;
+    const width = Math.max(1, host.clientWidth),
+      height = Math.max(1, host.clientHeight);
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
+    }
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    const pose = progression(milliseconds);
+    context.clearRect(0, 0, width, height);
+    const scale = Math.max(width / 1672, height / 941);
+    const cropX = (width - 1672 * scale) / 2,
+      cropY = (height - 941 * scale) / 2;
+    const far = new THREE.Vector3();
+    context.save();
+    context.beginPath();
+    context.moveTo(cropX, cropY);
+    context.lineTo(cropX + 1672 * scale, cropY);
+    for (const [x, y] of [
+      [1672, 250],
+      [970, 250],
+      [900, 220],
+      [845, 213],
+      [807, 202],
+      [775, 186],
+      [752, 203],
+      [728, 209],
+      [700, 222],
+      [0, 222],
+    ])
+      context.lineTo(cropX + x * scale, cropY + y * scale);
+    context.closePath();
+    context.clip();
+    for (let i = 0; i < 80; i++) {
+      const a = (i / 80) * pose.far,
+        b = ((i + 1) / 80) * pose.far;
+      farCenter(a, 0, pose.age, far);
+      context.beginPath();
+      context.moveTo(cropX + far.x * scale, cropY + (941 - far.y) * scale);
+      farCenter(b, 0, pose.age, far);
+      context.lineTo(cropX + far.x * scale, cropY + (941 - far.y) * scale);
+      context.lineWidth = (1 - i / 80) * 36 * scale;
+      context.strokeStyle = '#22272b';
+      context.lineCap = 'round';
+      context.stroke();
+    }
+    context.restore();
+    const rings: { z: number; polygon: { x: number; y: number }[] }[] = [];
+    for (let i = 0; i < 180; i++) {
+      const t = (i / 180) * pose.near,
+        next = ((i + 1) / 180) * pose.near;
+      const polygon: { x: number; y: number }[] = [];
+      let z = 0,
+        valid = true;
+      for (const [u, side] of [
+        [t, -1],
+        [next, -1],
+        [next, 1],
+        [t, 1],
+      ]) {
+        const sample = tube.sample(u, pose.near, pose.tight, pose.age);
+        // Silhouette sides lie perpendicular to the projected centerline.
+        point.copy(sample.point).addScaledVector(sample.binormal, side * sample.radius);
+        if (point.z >= -0.05) {
+          valid = false;
+          break;
+        }
+        z += point.z;
+        point.project(camera);
+        polygon.push({ x: (point.x * 0.5 + 0.5) * width, y: (-point.y * 0.5 + 0.5) * height });
+      }
+      if (valid) rings.push({ z, polygon });
+    }
+    rings.sort((a, b) => a.z - b.z);
+    context.save();
+    context.shadowColor = '#000';
+    context.shadowBlur = 17;
+    for (const ring of rings) {
+      context.beginPath();
+      ring.polygon.forEach((p, i) => (i ? context.lineTo(p.x, p.y) : context.moveTo(p.x, p.y)));
+      context.closePath();
+      context.fillStyle = '#343b40';
+      context.fill();
+      if (image.complete && image.naturalWidth) {
+        context.save();
+        context.clip();
+        context.filter = 'grayscale(1) brightness(.52)';
+        const pattern = context.createPattern(image, 'repeat');
+        if (pattern) {
+          pattern.setTransform(new DOMMatrix().scale(0.3));
+          context.fillStyle = pattern;
+          context.fill();
+        }
+        context.restore();
+      }
+    }
+    context.restore();
+    updateHooks(host, pressure, milliseconds, pose, ++frame);
+  };
+  const release = () => {
+    released = true;
+    tube.mesh.geometry.dispose();
+    tube.mesh.material.dispose();
+  };
+  return {
+    draw,
+    release,
+    dispose: () => {
+      release();
+      image.src = '';
+      canvas.remove();
+    },
+  };
+}

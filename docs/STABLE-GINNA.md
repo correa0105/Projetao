@@ -46,7 +46,7 @@ a tela com o mesmo cenário destruído, névoa escura, Ginna menor em fumaça se
 chapéu e tremor irregular contínuo. Vinte e três olhos compõem a visão:
 22 no chão e um grande substituindo o pico central. Os seis pequenos do fundo
 foram removidos, assim como cinco próximos à esquerda da cuidadora.
-O fundo foi editado para retirar o pico, preservando o restante da composição.
+O fundo v2 restaura um pequeno pico para acomodar o olho, preservando o restante da composição.
 Arte nova tem globo saltado, pálpebras grossas, terra rachada e sombras de contato;
 os olhos emergem em tempos diferentes e piscam com transição entre aberto e
 fechado. A perspectiva do chão varia com a profundidade: mais rasante no fundo,
@@ -93,7 +93,7 @@ disponível dentro da cena. Nenhum iframe externo.
 | --- | --- |
 | `public/stable/ginna.webp` | Ginna jovem, sem chapéu, 768 × 1152, alfa |
 | `public/stable/ginna-shadow.webp` | Forma escura sem chapéu, 768 × 1152, alfa |
-| `public/stable/paddock-ruined-eye-mountain.webp` | Cenário arruinado com o pico removido, 1672 × 941 |
+| `public/stable/paddock-ruined-eye-mountain-v2.webp` | Cenário arruinado com pequena crista restaurada, 1672 × 941 |
 | `public/stable/ginna-raised-eyes.webp` | Olho saltado, atlas vertical aberto/fechado, 768 × 1536, alfa |
 | `public/stable/ginna-mountain-mask.svg` | Recorte da terra do olho pela crista da montanha |
 | `public/audio/ginna-lullaby-of-woe.mp3` | Trilha temporária fornecida pelo usuário |
@@ -142,24 +142,47 @@ A terceira advertência (Minha paciência está acabando) troca a arte por
 `public/stable/ginna-serious.webp`, mantendo roupa, feno, personagem e alfa.
 A expressão séria permanece até o retorno, que restaura a arte original.
 A quarta advertência usa letras com tremor individual; a fala da visão escura
-recebe um traço no meio e dois pulsos de vermelho por ciclo de 1,6 s.
+usa fonte maior, sem traço no meio, e dois pulsos de vermelho por ciclo de 1,6 s.
 As letras permanecem legíveis e o leitor de tela recebe a frase completa.
-Movimento reduzido desativa tremor/pulsação, preservando vermelho e traço.
+Movimento reduzido desativa tremor/pulsação, preservando o vermelho.
 
 `public/stable/paddock-ruined-eye-mountain-v2.webp` restaura apenas um pequeno
 pico central. A máscara do olho acompanha a crista mais alta, sem cortar a íris.
 As artes foram editadas com a ferramenta integrada image_gen e convertidas em
 WebP; as versões anteriores foram preservadas.
 
-Ao escolher Não vou machucá-los!, GinnaTentacles inicia 4,2 s de movimento:
+Ao escolher Não vou machucá-los!, GinnaTentacles inicia 5,6 s de movimento:
 um tentáculo distante surge atrás da crista e sobe ao céu; um segundo desce
-perto da câmera e forma voltas ao redor do visitante. Geometria afilada,
-ventosas, textura existente do kraken e sombras em SVG, adaptadas à tela.
+perto da câmera e forma voltas ao redor do visitante. Tubo afilado em Three.js,
+ventosas em relevo, textura existente do kraken e sombras reais, adaptados à tela.
+O visitante fica dentro de um eixo vertical: as voltas passam atrás e à frente
+da câmera em alturas diferentes, apertando-se no final. Não é uma espiral
+desenhada no plano da tela. Luz/material dessaturados acompanham o cenário;
+uma malha invisível recorta a raiz distante atrás da crista.
 A subida distante acompanha o enquadramento cover do fundo; a aproximação
 ocupa o viewport. Em seguida as pálpebras cobrem a cena e o estábulo normal
 retorna. Respiração começa somente nessa troca de cenário. Aba oculta pausa
-o avanço dos tentáculos; desmontar cancela o frame pendente. Movimento reduzido
+o avanço dos tentáculos; desmontar cancela o frame pendente e libera a GPU. Movimento reduzido
 mostra uma composição estática breve e mantém o fade de retorno.
+
+### Relevo dos olhos no chão
+
+`GinnaGroundEyes.tsx` renderiza os 22 olhos sobre superfícies curvas com
+44 × 44 subdivisões. Globo, pálpebras e terra têm elevação própria, normais
+calculadas e sombra de contato. O atlas original fornece a pele e a íris,
+preservando a qualidade da pintura. Uma máscara separa a íris do entorno:
+terra e pálpebras recebem escurecimento maior, sem mudar a cor interna cinza.
+Durante a emergência, a superfície sobe de baixo do solo com recorte na
+altura zero; piscar combina a forma fechada com a segunda metade do atlas.
+
+Um canvas transparente compartilha geometria/textura entre os olhos e usa o
+mesmo plano cover do fundo. O olho da montanha mantém seu recorte original.
+Os componentes da visão/retorno são carregados sob demanda, mantendo Three.js
+fora do carregamento inicial; o retorno é antecipado ao entrar na visão.
+Renderização limitada a 30 fps e resolução limitada; aba oculta pausa o relógio,
+movimento reduzido mostra a pose final estática. Falha/perda de contexto WebGL
+mantém os olhos raster como alternativa. Recursos, observer e listeners são
+liberados ao desmontar. Sem novos assets ou imagens geradas nesta revisão.
 
 ### Prompt final — expressão séria
 
@@ -172,7 +195,7 @@ mostra uma composição estática breve e mantém o fade de retorno.
 ## Validação dos refinamentos
 
 Smoke do estábulo verifica troca de arte na terceira fala, imagem carregada,
-letras animadas na quarta, traço/pulsação e movimento reduzido na visão,
+letras animadas na quarta, fonte vermelha ampliada sem traço, pulsação e movimento reduzido na visão,
 as três etapas dos tentáculos, cena escura até envolver o visitante e retorno
 com pálpebras/respiração. Capturas em `test-results/ginna-serious-warning.png`,
 `ginna-tentacle-sky.png`, `ginna-tentacle-descending.png` e
@@ -186,7 +209,7 @@ balão sem modal central, quatro desculpas sucessivas com balão mantido,
 cinco insistências com fechamento/reabertura, ocultação/retorno da
 montaria, distribuição/proporções dos 23 olhos, ausência dos olhos de encosta,
 olho no pico, piscar
-aberto/fechado, relevo não achatado, tremor,
+aberto/fechado, canvas WebGL com 22 olhos e malhas em relevo, tremor,
 permanência além do antigo timeout, clique real na cena em movimento,
 promessa obrigatória, fechar/abrir das pálpebras, pixels totalmente pretos na
 troca do cenário, retorno ao dia com seleção mantida, reprodução/duração/volume
@@ -199,3 +222,13 @@ Capturas locais em `test-results/ginna-conversation.png`,
 `ginna-vision-desktop.png`, `ginna-balloon-mobile.png`,
 `ginna-vision-mobile.png`, `ginna-return-closed.png`, `ginna-return-day.png`
 e `stable-*.png`.
+
+`node scripts/smoke-ginna-visuals.mjs` também exercita os componentes reais em
+desktop/celular sem acessar o banco. Verifica canvas de olhos, sequência 3D
+do retorno e ausência de erros WebGL; capturas em
+`test-results/ginna-eyes-3d-*.png` e `ginna-tentacle-volume-*.png`.
+
+Revisão 04/10/2026: build cliente/servidor, smoke isolado do estábulo e smoke
+visual passaram. Verificação adicional no Edge cobriu movimento reduzido,
+troca da preferência sem nova emergência, pausa em aba oculta e perda/retorno
+de contexto WebGL com alternativa raster. Serviço local reconstruído no Docker.

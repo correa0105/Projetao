@@ -1,11 +1,28 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Olhos e tentáculos em 3D (04/10/2026)
+
+Os 22 olhos do chão usam a arte original sobre malhas 3D curvas, com relevo
+do globo, pálpebras e terra. Emergência recortada pelo nível do solo, sombra
+de contato e piscada com deformação da superfície. Terra/bordas escurecidas
+separadamente da íris, que mantém o cinza anterior. O olho da montanha e o
+fundo v2 permanecem no compositor existente. Um canvas compartilhado, limite
+de 30 fps, pausa em aba oculta e alternativa raster se WebGL falhar.
+
+Retorno substitui o tentáculo SVG por tubo 3D afilado, textura de pele do
+kraken e ventosas em relevo. Em 5,6 s sobe atrás da montanha, desce perto do
+visitante e envolve a câmera com voltas em um eixo vertical que se apertam,
+antes das pálpebras e do retorno ao dia. Materiais e luz usam a paleta escura
+do cenário. A fala vermelha perde o risco e recebe fonte maior, preservando
+os dois pulsos por ciclo. Movimento reduzido mantém composições estáticas.
+Detalhes e validação em docs/STABLE-GINNA.md. Sem mudanças SQL.
+
 ## Excluir crônicas e fala da Ginna (04/10/2026)
 
 Refinos adicionais da Ginna: arte séria na terceira advertência, tremor por
-letra na quarta e fala escura riscada com pulsação vermelha. Pequeno pico
+letra na quarta e fala escura com pulsação vermelha. Pequeno pico
 restaurado no fundo v2 para acomodar o olho da montanha. Pedido de desculpas
-inicia 4,2 s de tentáculos: subida atrás da crista, descida próxima e voltas
+inicia a sequência de tentáculos: subida atrás da crista, descida próxima e voltas
 ao redor da câmera, antes das pálpebras e do retorno ao dia. Respiração
 sincronizada com a troca de cenário. Movimento reduzido preserva os estados
 visuais com retorno breve estático. Detalhes, prompts e assets em

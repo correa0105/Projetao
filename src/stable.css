@@ -340,9 +340,9 @@
 }
 :root .app-shell .ginna-balloon.npc-speech .ginna-balloon-copy[data-text-effect='heartbeat'] {
   color: #d77878;
-  text-decoration: line-through;
-  text-decoration-thickness: 1px;
-  text-decoration-color: #b74e4e;
+  font-size: clamp(18px, 1.35vw, 22px);
+  line-height: 1.5;
+  text-decoration: none;
   animation: ginna-text-heartbeat 1.6s ease-in-out infinite;
 }
 @keyframes ginna-letter-shake {
@@ -423,17 +423,8 @@ dialog.ginna-vision {
   inset: 0;
   pointer-events: none;
 }
-.ginna-return-horizon {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: max(100vw, calc(100dvh * 1672 / 941));
-  height: auto;
-  transform: translate(-50%, -50%);
-  opacity: .78;
-}
-.ginna-return-near { position: absolute; inset: 0; width: 100%; height: 100%; }
-.ginna-near-tentacle-body { filter: drop-shadow(0 12px 14px #000c); }
+.ginna-return-canvas,
+.ginna-ground-eyes-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .ginna-return[data-phase='closed'] .ginna-return-tentacles,
 .ginna-return[data-phase='opening'] .ginna-return-tentacles { visibility: hidden; }
 .ginna-return-lid {
@@ -634,6 +625,9 @@ dialog.ginna-vision {
 @media (max-width: 600px) {
   .stable-keeper { height: 41%; width: 36%; right: 0; bottom: 0; }
   .stable-speech { bottom: calc(100% + 20px); }
+  :root .app-shell .ginna-balloon.npc-speech .ginna-balloon-copy[data-text-effect='heartbeat'] {
+    font-size: 16px;
+  }
   .ginna-vision-keeper {
     height: 34%;
     width: 35%;

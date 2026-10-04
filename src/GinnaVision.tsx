@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { MusicControls, useMusicInterlude } from './SiteMusic';
 import { GinnaBalloon } from './GinnaBalloon';
+import { GinnaGroundEyes } from './GinnaGroundEyes';
 
 // Coordinates share the background's cover plane.
 // They remain planted in the same patch of soil when the viewport crops the scene.
@@ -30,11 +31,13 @@ const eyes = [
   { x: 53, y: 95, width: 8.2, delay: 1310, blink: 4.2, angle: 5, depth: 'ground' },
   { x: 85, y: 93, width: 6.8, delay: 1250, blink: 4.8, angle: 2, depth: 'ground' },
 ];
+const groundEyes = eyes.filter((eye) => eye.depth === 'ground');
 
 export function GinnaVision({ known, onFinished }: { known: boolean; onFinished: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const music = useRef<HTMLAudioElement>(null);
   const [responding, setResponding] = useState(false);
+  const [groundEyes3d, setGroundEyes3d] = useState(false);
   const { muted, volume, beginInterlude } = useMusicInterlude();
 
   useEffect(() => {
@@ -75,15 +78,22 @@ export function GinnaVision({ known, onFinished }: { known: boolean; onFinished:
         <div className="ginna-vision-landscape" aria-hidden="true">
           <div className="ginna-vision-ruins" />
           <div className="ginna-vision-eyes">
+            <GinnaGroundEyes eyes={groundEyes} onReady={setGroundEyes3d} />
             {eyes.map((eye, index) => (
               <span
                 key={index}
                 className="ginna-earth-eye"
                 data-depth={eye.depth}
+                data-renderer={eye.depth === 'ground' && groundEyes3d ? 'webgl' : 'raster'}
+                data-eye-x={eye.x}
+                data-eye-y={eye.y}
+                data-eye-width={eye.width}
+                data-eye-relief={eye.depth === 'ground' ? 'raised' : undefined}
                 style={
                   {
                     left: eye.x + '%',
                     top: eye.y + '%',
+                    visibility: eye.depth === 'ground' && groundEyes3d ? 'hidden' : undefined,
                     '--eye-width': eye.width + '%',
                     '--eye-delay': eye.delay + 'ms',
                     '--blink-duration': eye.blink + 's',

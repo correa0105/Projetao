@@ -1,5 +1,13 @@
 import { FlashMessage } from './FlashMessage';
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
 import { stableGear, stableGearComments } from '../shared/stable-gear';
@@ -7,8 +15,6 @@ import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
 import { Modal } from './components';
-import { GinnaVision } from './GinnaVision';
-import { GinnaReturn } from './GinnaReturn';
 import { GinnaBalloon } from './GinnaBalloon';
 import { useMusicInterlude } from './SiteMusic';
 import {
@@ -20,6 +26,14 @@ import {
   type GinnaTopic,
 } from './stable-ginna';
 import './stable.css';
+
+// Load the 3D compositor only when the visitor enters Ginna's vision.
+const GinnaVision = lazy(() =>
+  import('./GinnaVision').then((module) => ({ default: module.GinnaVision })),
+);
+const GinnaReturn = lazy(() =>
+  import('./GinnaReturn').then((module) => ({ default: module.GinnaReturn })),
+);
 
 type Hoof = { x: number; y: number; width: number };
 const hoofCache = new Map<string, Hoof[]>();
@@ -98,6 +112,9 @@ export function Stable({
   const [talk, setTalk] = useState<'questions' | 'warning' | null>(null);
   const [known, setKnown] = useState(false);
   const [vision, setVision] = useState(false);
+  useEffect(() => {
+    if (vision) void import('./GinnaReturn');
+  }, [vision]);
   const [returning, setReturning] = useState(false);
   const breathing = useRef<HTMLAudioElement>(null);
   const { muted, volume } = useMusicInterlude();
@@ -465,8 +482,16 @@ export function Stable({
           )}
         </div>
       </div>
-      {vision && <GinnaVision known={known} onFinished={beginReturn} />}
-      {returning && <GinnaReturn onCovered={finishVision} onFinished={finishReturn} />}
+      {vision && (
+        <Suspense fallback={null}>
+          <GinnaVision known={known} onFinished={beginReturn} />
+        </Suspense>
+      )}
+      {returning && (
+        <Suspense fallback={null}>
+          <GinnaReturn onCovered={finishVision} onFinished={finishReturn} />
+        </Suspense>
+      )}
       <audio
         ref={breathing}
         src="/audio/ginna-panting.mp3"

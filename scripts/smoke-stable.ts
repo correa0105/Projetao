@@ -244,6 +244,9 @@ try {
     time: element.currentTime,
     volume: element.volume,
   }));
+  const normalTextFontSize = await normalBalloon
+    .locator('.ginna-balloon-copy')
+    .evaluate((element) => parseFloat(getComputedStyle(element).fontSize));
   await askQuestion('warning');
   const vision = page.locator('.ginna-vision');
   // The scene deliberately keeps moving; click the live target with the mouse.
@@ -256,7 +259,10 @@ try {
   const ominousText = vision.locator('.ginna-balloon-copy');
   expect(
     await ominousText.evaluate((element) => getComputedStyle(element).textDecorationLine),
-  ).toBe('line-through');
+  ).toBe('none');
+  expect(
+    await ominousText.evaluate((element) => parseFloat(getComputedStyle(element).fontSize)),
+  ).toBeGreaterThan(normalTextFontSize);
   expect(await ominousText.evaluate((element) => getComputedStyle(element).animationName)).toBe(
     'ginna-text-heartbeat',
   );
@@ -313,17 +319,17 @@ try {
   expect(mountain.width).toBeGreaterThan(200);
   expect(mountain.y).toBeLessThan(250);
   expect(mountain.height / mountain.width).toBeGreaterThan(0.95);
-  const projectedEyes = await vision
-    .locator('[data-depth="ground"] .ginna-eye-mound')
-    .evaluateAll((elements) =>
-      elements.map((element) => {
-        const box = element.getBoundingClientRect();
-        return { ratio: box.height / box.width, transform: getComputedStyle(element).transform };
-      }),
-    );
-  expect(Math.min(...projectedEyes.map((eye) => eye.ratio))).toBeGreaterThan(0.35);
-  expect(Math.max(...projectedEyes.map((eye) => eye.ratio))).toBeLessThan(0.92);
-  expect(projectedEyes.every((eye) => eye.transform.startsWith('matrix3d('))).toBe(true);
+  const groundCanvas = vision.locator('.ginna-ground-eyes-canvas');
+  await expect(groundCanvas).toHaveAttribute('data-renderer', 'webgl');
+  await expect(groundCanvas).toHaveAttribute('data-eye-count', '22');
+  await expect.poll(() => groundCanvas.getAttribute('data-frame').then(Number)).toBeGreaterThan(15);
+  await expect(groundCanvas).toHaveAttribute('data-emerged', '22');
+  expect(await groundCanvas.getAttribute('data-eye-vertices').then(Number)).toBeGreaterThan(1000);
+  expect(
+    await groundCanvas.evaluate(
+      (element: HTMLCanvasElement) => element.width > 0 && element.height > 0,
+    ),
+  ).toBe(true);
   const blinkingEye = vision.locator('.ginna-eye-blink').first();
   await blinkingEye.evaluate((element) => {
     const animation = element.getAnimations()[0];
@@ -380,13 +386,15 @@ try {
     await recovery.evaluate((element) => getComputedStyle(element, '::backdrop').backdropFilter),
   ).toBe('none');
   await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute('data-stage', 'sky');
+  await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute(
+    'data-renderer',
+    'webgl',
+  );
   await expect
     .poll(() =>
-      recovery
-        .locator('[data-tentacle="distant"]')
-        .evaluate((element: SVGPathElement) => element.getBBox().height),
+      recovery.locator('.ginna-return-tentacles').getAttribute('data-far-progress').then(Number),
     )
-    .toBeGreaterThan(200);
+    .toBeGreaterThan(0.6);
   await page.screenshot({ path: 'test-results/ginna-tentacle-sky.png' });
   await expect(recovery.locator('.ginna-return-tentacles')).toHaveAttribute(
     'data-stage',
@@ -448,9 +456,14 @@ try {
   const mobileBalloon = (await conversation.boundingBox())!;
   expect(mobileBalloon.x).toBeGreaterThanOrEqual(0);
   expect(mobileBalloon.x + mobileBalloon.width).toBeLessThanOrEqual(390);
+  const normalMobileTextFontSize = await normalBalloon
+    .locator('.ginna-balloon-copy')
+    .evaluate((element) => parseFloat(getComputedStyle(element).fontSize));
   await page.screenshot({ path: 'test-results/ginna-balloon-mobile.png' });
   for (let warning = 0; warning < 5; warning++) await askQuestion('warning');
   await expect(vision).toBeVisible();
+  await expect(groundCanvas).toHaveAttribute('data-motion', 'static');
+  await expect(groundCanvas).toHaveAttribute('data-emerged', '22');
   expect(await blinkingEye.evaluate((element) => getComputedStyle(element).animationName)).toBe(
     'none',
   );
@@ -464,6 +477,12 @@ try {
   const darkMobileBalloon = (await vision.locator('.ginna-balloon').boundingBox())!;
   expect(darkMobileBalloon.x).toBeGreaterThanOrEqual(6);
   expect(darkMobileBalloon.x + darkMobileBalloon.width).toBeLessThanOrEqual(390);
+  expect(
+    await ominousText.evaluate((element) => getComputedStyle(element).textDecorationLine),
+  ).toBe('none');
+  expect(
+    await ominousText.evaluate((element) => parseFloat(getComputedStyle(element).fontSize)),
+  ).toBeGreaterThan(normalMobileTextFontSize);
   await page.screenshot({ path: 'test-results/ginna-vision-mobile.png' });
   await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
   await vision.getByRole('button', { name: 'Mutar música', exact: true }).click();
