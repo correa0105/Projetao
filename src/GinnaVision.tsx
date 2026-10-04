@@ -60,7 +60,7 @@ export function GinnaVision({
   useLayoutEffect(() => {
     const overlay = dialog.current!;
     overlay.showModal();
-    // Keep the blink above this scene and the daytime HUD in the top layer.
+    // Keep the dark mist above this scene and the daytime HUD in the top layer.
     if (entering) onPresented?.();
     else {
       overlay

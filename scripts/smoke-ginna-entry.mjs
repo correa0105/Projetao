@@ -24,7 +24,7 @@ route==='stable'?React.createElement(Stable,{character,onPurchased:async()=>{win
 React.createElement('section',{'aria-label':'Destino da navegação'},React.createElement('button',{autoFocus:true},'Continuar no mundo')))),
 React.createElement(Navigation,{page:route,go:(page)=>{location.hash=page}}),
 React.createElement('button',{'data-day-nav':true,onClick:()=>{location.hash='world'},style:{position:'fixed',top:'18px',right:'18px',width:'100px',height:'34px',zIndex:2147483647,background:'#ff00ff',border:0}},'HUD diurno'));}
-createRoot(document.getElementById('preview')).render(React.createElement(React.Fragment,null,
+createRoot(document.getElementById('preview')).render(React.createElement(React.StrictMode,null,
 React.createElement(SiteMusicProvider,null,React.createElement(Preview)),React.createElement(FlashMessages)));
 </script></body></html>`,
 );
@@ -84,20 +84,18 @@ async function prepareEntry(page) {
     const read = () => {
       const entry = document.querySelector('.ginna-entry');
       const vision = document.querySelector('.ginna-vision');
-      const lids = entry
-        ? [...entry.querySelectorAll('.ginna-entry-lid')].map((lid) => {
-            const rect = lid.getBoundingClientRect();
-            const style = getComputedStyle(lid);
-            return {
-              left: rect.left,
-              right: rect.right,
-              top: rect.top,
-              bottom: rect.bottom,
-              opacity: Number(style.opacity),
-              transform: style.transform,
-            };
-          })
-        : [];
+      const fog = entry?.querySelector('.ginna-reality-fog');
+      const ctx = fog?.getContext('2d');
+      const coverage =
+        ctx && fog.width
+          ? [
+              [0, 0],
+              [0.5, 0.5],
+              [0.99, 0.99],
+            ].map(([x, y]) => [
+              ...ctx.getImageData(Math.floor(x * fog.width), Math.floor(y * fog.height), 1, 1).data,
+            ])
+          : [];
       samples.push({
         time: performance.now(),
         phase: entry?.dataset.phase || 'absent',
@@ -106,7 +104,8 @@ async function prepareEntry(page) {
         entryModal: Boolean(entry?.matches(':modal')),
         vision: Boolean(vision),
         visionOpen: Boolean(vision?.open),
-        lids,
+        coverage,
+        shards: entry?.querySelectorAll('.ginna-reality-piece').length || 0,
         active: document.activeElement?.className || document.activeElement?.tagName,
         width: innerWidth,
         height: innerHeight,
@@ -231,6 +230,12 @@ try {
       motion: 'full',
     },
     {
+      label: 'mobile',
+      viewport: { width: 390, height: 844 },
+      reducedMotion: 'no-preference',
+      motion: 'full',
+    },
+    {
       label: 'mobile-reduced',
       viewport: { width: 390, height: 844 },
       reducedMotion: 'reduce',
@@ -262,6 +267,16 @@ try {
     });
     if (motion === 'full')
       await page.screenshot({ path: `test-results/ginna-entry-closing-${label}.png` });
+    if (motion === 'full') {
+      await expect(entry.locator('.ginna-reality-snapshot')).toHaveCount(14);
+      expect(
+        await entry
+          .locator('.ginna-reality-snapshot')
+          .evaluateAll((nodes) => nodes.every((node) => node.inert)),
+      ).toBe(true);
+      await page.waitForTimeout(750);
+      await page.screenshot({ path: `test-results/ginna-entry-shattering-${label}.png` });
+    }
     await page.waitForFunction(
       () => document.querySelector('.ginna-entry')?.dataset.phase === 'closed',
     );
@@ -284,37 +299,20 @@ try {
     ).toBe(true);
     // The dark portrait is deliberately delayed: opening must wait for its actual decode.
     await expect(entry).toHaveAttribute('data-phase', 'closed');
+    await page.mouse.click(viewport.width - 40, 35);
+    expect(new URL(page.url()).hash).toBe('#stable');
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.ginna-vision .ginna-questions button')).toHaveCount(0);
     releaseImage();
     await page.waitForFunction(
       () => document.querySelector('.ginna-entry')?.dataset.phase === 'opening',
     );
     await expect(page.locator('.ginna-vision')).toBeVisible();
-    await entry.evaluate((element) => {
-      window.entryOpeningAnimations = element
-        .getAnimations({ subtree: true })
-        .filter((animation) => animation.playState === 'running');
-      for (const animation of window.entryOpeningAnimations) {
-        animation.pause();
-        animation.currentTime = Number(animation.effect.getTiming().duration) * 0.9;
-      }
-    });
-    expect(await page.evaluate(() => window.entryOpeningAnimations.length)).toBe(2);
+    if (motion === 'full') await page.waitForTimeout(430);
     const opening = await page.screenshot({
       path: `test-results/ginna-entry-opening-${label}.png`,
     });
     expect(await magentaPixels(opening)).toBe(0);
-    // The high sibling navigation marker must remain inert above neither modal scene.
-    await page.mouse.click(viewport.width - 40, 35);
-    expect(new URL(page.url()).hash).toBe('#stable');
-    await page.keyboard.press('Escape');
-    await expect(
-      page
-        .locator('.ginna-vision')
-        .getByRole('button', { name: 'Não vou machucá-los!', exact: true }),
-    ).toHaveCount(0);
-    await page.evaluate(() =>
-      window.entryOpeningAnimations.forEach((animation) => animation.play()),
-    );
     await expect(entry).toHaveCount(0, { timeout: 10000 });
     await expect(page.locator('.ginna-vision')).toBeVisible();
     await expect(page.locator('.ginna-vision [data-ginna-music]')).toHaveCount(1);
@@ -337,13 +335,9 @@ try {
       samples.filter((sample) => sample.phase === 'closing').every((sample) => !sample.vision),
     ).toBe(true);
     const covered = samples[firstVision];
-    expect(covered.lids).toHaveLength(2);
-    expect(
-      covered.lids.every(
-        (lid) => lid.opacity > 0.99 && lid.left <= 1 && lid.right >= covered.width - 1,
-      ),
-    ).toBe(true);
-    expect(covered.lids[0].bottom).toBeGreaterThanOrEqual(covered.lids[1].top);
+    expect(covered.coverage).toHaveLength(3);
+    expect(covered.coverage.every((pixel) => pixel.join(',') === '0,0,0,255')).toBe(true);
+    expect(covered.shards).toBe(0);
     expect(
       await page.evaluate(
         () =>
@@ -363,7 +357,7 @@ try {
       returnPreserved: true,
     });
     console.log(
-      `${label}: scene changed under closed lids, input blocked, focus restored, entry/return cleaned up.`,
+      `${label}: scene fractures into mist, scene swap fully covered, input blocked, focus restored and cleanup verified.`,
     );
     if (label === 'desktop') {
       // Native click/focus on the second entry must not scroll the oversized nightmare scene.
@@ -445,7 +439,7 @@ try {
   );
   await page.getByRole('button', { name: 'Continuar no mundo' }).click();
   await expect(page.getByRole('button', { name: 'Continuar no mundo' })).toBeFocused();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(3000);
   await expect(page.locator('.ginna-entry,.ginna-vision,.ginna-return')).toHaveCount(0);
   expect(
     await page.evaluate(
@@ -471,7 +465,7 @@ try {
   expect(errors).toEqual([]);
   await writeFile('test-results/ginna-entry-report.json', JSON.stringify(reports, null, 2));
   console.log(
-    'PASS: first-person eyelid entry full/reduced, scene swap only fully covered, modal input, focus, cancellation/navigation and existing tentacle return.',
+    'PASS: fractured reality and dark mist full/reduced, covered scene swap, modal input, focus, cancellation/navigation and existing tentacle return.',
   );
 } finally {
   await browser.close();

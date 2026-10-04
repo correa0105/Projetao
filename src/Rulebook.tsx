@@ -36,6 +36,7 @@ import {
 import {
   RULEBOOK_MAX_DOCUMENT_BYTES,
   RULEBOOK_MAX_IMAGE_BYTES,
+  RULEBOOK_SYMBOLS,
   rulebookDocumentSchema,
   type RuleArticle,
   type RuleBlock,
@@ -45,6 +46,13 @@ import {
   type RulebookResponse,
 } from '../shared/rulebook';
 import { FlashMessage } from './FlashMessage';
+import {
+  chapterSymbol,
+  CodexIllustration,
+  RulebookEmblem,
+  rulebookSymbolNames,
+} from './RulebookSymbols';
+import { useRulebookSound } from './RulebookSound';
 import './rulebook.css';
 
 type Notice = { id: number; text: string; kind: 'success' | 'error' | 'info' };
@@ -809,6 +817,7 @@ function EditBlock({
 }
 
 export function Rulebook({ active = true }: { active?: boolean }) {
+  const playBook = useRulebookSound(active);
   const [record, setRecord] = useState<RulebookResponse | null>(null);
   const recordRef = useRef<RulebookResponse | null>(null);
   recordRef.current = record;
@@ -940,6 +949,7 @@ export function Rulebook({ active = true }: { active?: boolean }) {
       }),
     );
   const selectArticle = (location: ArticleLocation, scroll = true) => {
+    if (!edit && location.article.id !== activeArticle?.id) playBook('page');
     setChapterId(location.chapter.id);
     setArticleId(location.article.id);
     setExpanded((value) =>
@@ -1294,6 +1304,7 @@ export function Rulebook({ active = true }: { active?: boolean }) {
   return (
     <section
       className="rulebook"
+      data-active={active}
       data-editing={editing || undefined}
       data-preview={preview || undefined}
       aria-label="Livro de regras"
@@ -1406,6 +1417,11 @@ export function Rulebook({ active = true }: { active?: boolean }) {
           } as CSSProperties
         }
       >
+        <div className="rb-library-dust" aria-hidden="true">
+          {Array.from({ length: 8 }, (_, i) => (
+            <i key={i} style={{ '--dust': i } as CSSProperties} />
+          ))}
+        </div>
         <div className="rb-hero-top">
           <span className="rb-kicker">
             <span />
@@ -1464,7 +1480,21 @@ export function Rulebook({ active = true }: { active?: boolean }) {
             {number(current.chapters.length)} capítulos <i />
             {number(articles.length)} artigos
           </span>
-          <span className="rb-edition">O códice da nossa mesa</span>
+          {!edit && (
+            <button
+              type="button"
+              className="rb-open-codex"
+              onClick={() => {
+                playBook('cover');
+                scrollToArticle();
+              }}
+            >
+              <CodexIllustration />
+              <span>
+                <small>O códice da nossa mesa</small>Entrar no códice <ArrowRight size={14} />
+              </span>
+            </button>
+          )}
         </div>
       </header>
       {edit && (
@@ -1540,9 +1570,16 @@ export function Rulebook({ active = true }: { active?: boolean }) {
         </details>
       )}
       <div className="rb-reading-tools">
-        <span>
+        <span className="rb-reading-position">
           <BookOpen size={16} />
-          Consulta ao códice
+          <span>
+            Consulta ao códice
+            <small>
+              {pageIndex >= 0
+                ? `Artigo ${number(pageIndex + 1)} de ${number(articles.length)}`
+                : 'O livro da nossa mesa'}
+            </small>
+          </span>
         </span>
         <label className="rb-search">
           <Search size={17} />
@@ -1600,12 +1637,16 @@ export function Rulebook({ active = true }: { active?: boolean }) {
                         open ? value.filter((id) => id !== chapter.id) : [...value, chapter.id],
                       );
                       if (!open || !chapter.articles.length) {
+                        if (!edit && chapter.id !== activeChapter?.id) playBook('page');
                         setChapterId(chapter.id);
                         setArticleId(chapter.articles[0]?.id || '');
                       }
                     }}
                   >
-                    <span className="rb-chapter-number">{number(chapterIndex + 1)}</span>
+                    <span className="rb-chapter-mark">
+                      <RulebookEmblem symbol={chapterSymbol(chapter)} />
+                      <small>{number(chapterIndex + 1)}</small>
+                    </span>
                     <span>{chapter.title}</span>
                     <ChevronRight size={14} />
                   </button>
@@ -1747,6 +1788,12 @@ export function Rulebook({ active = true }: { active?: boolean }) {
             <>
               {activeChapter && (
                 <div className="rb-chapter-intro">
+                  {!edit && (
+                    <RulebookEmblem
+                      symbol={chapterSymbol(activeChapter)}
+                      className="rb-chapter-emblem"
+                    />
+                  )}
                   <span className="rb-kicker">
                     Capítulo {number(current.chapters.indexOf(activeChapter) + 1)}
                   </span>
@@ -1777,6 +1824,41 @@ export function Rulebook({ active = true }: { active?: boolean }) {
                           }
                         />
                       </Field>
+                      <div className="rb-symbol-editor">
+                        <span>Símbolo do capítulo</span>
+                        <div
+                          className="rb-symbol-picker"
+                          role="group"
+                          aria-label="Símbolo do capítulo"
+                        >
+                          <button
+                            type="button"
+                            aria-pressed={!activeChapter.symbol}
+                            onClick={() =>
+                              changeChapter(activeChapter.id, (value) => {
+                                const { symbol: _symbol, ...automatic } = value;
+                                return automatic;
+                              })
+                            }
+                          >
+                            Automático
+                          </button>
+                          {RULEBOOK_SYMBOLS.map((symbol) => (
+                            <button
+                              type="button"
+                              key={symbol}
+                              aria-label={'Usar símbolo: ' + rulebookSymbolNames[symbol]}
+                              aria-pressed={activeChapter.symbol === symbol}
+                              onClick={() =>
+                                changeChapter(activeChapter.id, (value) => ({ ...value, symbol }))
+                              }
+                            >
+                              <RulebookEmblem symbol={symbol} />
+                              <small>{rulebookSymbolNames[symbol]}</small>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <>
@@ -1788,10 +1870,18 @@ export function Rulebook({ active = true }: { active?: boolean }) {
               )}
               {activeArticle ? (
                 <article
-                  className="rb-article"
+                  className={'rb-article' + (!edit ? ' rb-folio' : '')}
+                  key={edit ? 'editor' : activeArticle.id}
                   aria-label={activeArticle.title}
                   data-article-id={activeArticle.id}
                 >
+                  {!edit && (
+                    <div className="rb-folio-ornament" aria-hidden="true">
+                      <span />
+                      <RulebookEmblem symbol={chapterSymbol(activeChapter!)} />
+                      <span />
+                    </div>
+                  )}
                   <header className="rb-article-head">
                     {edit ? (
                       <>
@@ -1962,6 +2052,18 @@ export function Rulebook({ active = true }: { active?: boolean }) {
                       {activeChapter ? 'Adicionar primeiro artigo' : 'Adicionar primeiro capítulo'}
                     </button>
                   )}
+                </div>
+              )}
+              {activeArticle && articles.length > 1 && (
+                <div
+                  className="rb-page-position"
+                  aria-label={`Artigo ${pageIndex + 1} de ${articles.length}`}
+                >
+                  <span />
+                  <span>
+                    {number(pageIndex + 1)} <i>/</i> {number(articles.length)}
+                  </span>
+                  <span />
                 </div>
               )}
               {activeArticle && articles.length > 1 && (

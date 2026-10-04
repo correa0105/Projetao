@@ -215,6 +215,7 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
       id: 'chapter-edited',
       title: 'Capítulo recuperável',
       description: 'Exemplo do editor',
+      symbol: 'swords',
       articles: [
         {
           id: 'article-edited',
@@ -266,6 +267,7 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
     assert.equal(published.status, 200);
     revision = published.data.revision;
     document = published.data.document;
+    assert.equal(document.chapters.at(-1)!.symbol, 'swords');
     assert.equal(revision, 1);
     assert.equal(document.chapters.at(-1)!.articles[0].blocks.at(-2)!.type, 'image');
     assert.deepEqual((await req('/rulebook', reader.cookie)).data.document, document);
@@ -306,6 +308,7 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
       { ...document, cover_image: 'https://user:secret@example.test/map.webp' },
       { ...document, cover_image: `/api/rulebook/images/${randomUUID()}` },
       { ...document, chapters: [document.chapters[0], document.chapters[0]] },
+      { ...document, chapters: [{ ...document.chapters[0], symbol: 'invalid-symbol' }] },
       {
         ...document,
         chapters: [

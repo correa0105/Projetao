@@ -85,11 +85,24 @@ export const ruleArticleSchema = z
     blocks: z.array(ruleBlockSchema).max(80),
   })
   .strict();
+export const RULEBOOK_SYMBOLS = [
+  'codex',
+  'dice',
+  'crest',
+  'coins',
+  'compass',
+  'oath',
+  'swords',
+  'quill',
+  'arcana',
+] as const;
+export type RulebookSymbol = (typeof RULEBOOK_SYMBOLS)[number];
 export const ruleChapterSchema = z
   .object({
     id,
     title: z.string().trim().min(1).max(160),
     description: z.string().max(1200),
+    symbol: z.enum(RULEBOOK_SYMBOLS).optional(),
     articles: z.array(ruleArticleSchema).max(80),
   })
   .strict();

@@ -1,5 +1,33 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Códice com ambientação e entrada da Ginna por ruptura (04/10/2026)
+
+Regras ganhou emblemas ilustrados de metal envelhecido nos capítulos,
+encadernação e marcador nas páginas, poeira suave na capa, animação de troca
+de artigo e livro interativo para entrar na leitura. O editor oferece nove
+símbolos por capítulo e opção Automático. Campo `symbol` opcional, validado
+no shared/rulebook.ts e preservado pelo JSONB/histórico/importação atuais;
+documentos existentes continuam válidos sem alteração dos textos ou migration.
+Couro ao entrar e papel ao navegar seguem Efeitos sonoros; mute/volume zero,
+aba oculta, página inativa e desmontagem interrompem áudio. Movimento reduzido
+remove efeitos decorativos. Leitura e autonomia de edição/exclusão preservadas.
+Detalhes em docs/RULEBOOK.md.
+
+O usuário substituiu a piscada de entrada da Ginna por realidade se quebrando.
+`GinnaEntry` recorta cópias inertes da cena atual em 14 fragmentos irregulares,
+que se desprendem e caem; Canvas procedural expande névoa escura sobre as
+rupturas por 2,7 s. Troca para visão sombria apenas sob cobertura preta integral,
+aguarda artes prontas e dissipa a névoa em 1,55 s. Movimento reduzido usa fade.
+Ordem modal, foco, bloqueio de entrada e cleanup mantidos. Retorno com tentáculos
+e pálpebras permanece. Detalhes e testes em docs/STABLE-GINNA.md.
+
+Validação desta entrega: TypeScript/build cliente e servidor; regras em banco
+descartável (símbolo persistido e enum inválido rejeitado), editor responsivo
+com sons/volume/mute e smoke com API real; ruptura em desktop/celular,
+movimento reduzido, StrictMode, arte atrasada, cobertura por pixels, foco e
+cancelamento; smoke completo do estábulo em PostgreSQL descartável. Docker
+reconstruído, healthcheck saudável e novos bundles confirmados no localhost:3000.
+
 ## Músicas e efeitos sonoros separados (04/10/2026)
 
 Configurações de som oferece dois controles independentes, Músicas e Efeitos
@@ -1160,4 +1188,4 @@ Blocos vizinhos de texto e imagem em lados opostos agora formam uma composição
 Balcão da loja livre (04/10/2026): removidos bloqueios de colisão/mesa cheia; todos os 71 itens podem ocupar o tampo e ser sobrepostos por arraste ou teclado. Seleção/foco/arraste trazem o objeto à frente com camada estável. Carrinho tem Localizar no balcão para recuperar objetos cobertos. Escalas moderadas por tamanho projetado da ilustração, entre 0,55 e 1,70; joias e frascos menores, armas longas/volumes maiores. Arte separada do alvo mínimo de 48 px preserva diferença visual no celular; sentinela CSS/ResizeObserver alinham render e arraste. Superfície mobile ampliada 32 px no tampo. Quantidades agrupadas, transação de 99 unidades/item e preços preservados. Detalhes em docs/SHOP-LAYOUT.md.
 
 
-Entrada na visão da Ginna por piscada (04/10/2026): GinnaEntry fecha pálpebras sobre o dia em 240 ms, só monta a visão sob cobertura total e aguarda chunk/artes prontos, segura 120 ms e abre no escuro em 360 ms. Movimento reduzido usa fade de 100/160 ms. Ordem dos diálogos no top layer preserva pálpebras acima da visão e HUD, sem flash do cabeçalho. Foco vai à cuidadora escura ao terminar; Escape bloqueado e cleanup cancela animações/timers/callbacks ao sair. Preload da visão na quarta advertência e arte v2 correta; antigo shutter fade removido. Retorno/tentáculos/som preservados. Detalhes em docs/STABLE-GINNA.md.
+Entrada na visão da Ginna (04/10/2026): a piscada foi substituída, por pedido posterior do usuário, por rachaduras, fragmentos da cena caindo e névoa escura. A implementação vigente está descrita no início deste contexto e em docs/STABLE-GINNA.md. Pálpebras continuam apenas no retorno.

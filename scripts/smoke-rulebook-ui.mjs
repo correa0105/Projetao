@@ -10,6 +10,7 @@ await writeFile(
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Rulebook } from '../../src/Rulebook';
+import { SiteMusicProvider, useSoundEffects } from '../../src/SiteMusic';
 import { PageHeader } from '../../src/PageHeader';
 import { FlashMessages } from '../../src/FlashMessage';
 import '../../src/styles.css';
@@ -19,10 +20,16 @@ import '../../src/theme.css';
 import '../../src/disclosures.css';
 import '../../src/page-header.css';
 import '../../src/npc-speech.css';
-createRoot(document.getElementById('root')!).render(<><div className="app-shell" data-page="rules">
+function Fixture() {
+  const [active, setActive] = React.useState(true);
+  const effects = useSoundEffects();
+  window.rulebookFixture = { setActive, effects };
+  return <><div className="app-shell" data-page="rules">
   <div className="main-shell"><PageHeader title="Regras da mesa"><span /></PageHeader>
-    <main className="main-content"><div className="page-header-spacer" aria-hidden="true" /><Rulebook /></main></div>
-</div><FlashMessages /></>);
+    <main className="main-content"><div className="page-header-spacer" aria-hidden="true" /><Rulebook active={active} /></main></div>
+</div><FlashMessages /></>;
+}
+createRoot(document.getElementById('root')!).render(<SiteMusicProvider><Fixture /></SiteMusicProvider>);
 `,
 );
 const server = await createServer({
@@ -60,6 +67,24 @@ let saveDelay = 0,
 const failures = [];
 async function pageFor(owner = true, viewport = { width: 1440, height: 1000 }) {
   const page = await browser.newPage({ viewport, reducedMotion: 'reduce' });
+  await page.addInitScript(() => {
+    localStorage.setItem('alvorada-music-muted', 'true');
+    localStorage.setItem('alvorada-effects-muted', 'false');
+    localStorage.setItem('alvorada-effects-volume', '0.4');
+    window.rulebookAudio = [];
+    HTMLMediaElement.prototype.play = function () {
+      window.rulebookAudio.push({
+        action: 'play',
+        src: this.src,
+        volume: this.volume,
+        player: this,
+      });
+      return Promise.resolve();
+    };
+    HTMLMediaElement.prototype.pause = function () {
+      window.rulebookAudio.push({ action: 'pause', src: this.src });
+    };
+  });
   page.on('pageerror', (error) => failures.push(error.message));
   await page.route(/\/api\/rulebook(?:\/|$|\?)/, async (route) => {
     const request = route.request(),
@@ -128,6 +153,20 @@ try {
   const reader = await pageFor(false);
   await expect(reader.getByRole('button', { name: 'Editar conteúdo' })).toHaveCount(0);
   await expect(reader.locator('.rb-item-actions')).toHaveCount(0);
+  await expect(reader.locator('.rb-chapter-mark .rb-emblem')).toHaveCount(6);
+  expect(
+    await reader.evaluate(
+      () =>
+        window.rulebookAudio.filter((a) => a.action === 'play' && /shop-counter/.test(a.src))
+          .length,
+    ),
+  ).toBe(0);
+  await reader.getByRole('button', { name: /Entrar no códice/ }).click();
+  expect(
+    await reader.evaluate(
+      () => window.rulebookAudio.filter((a) => a.action === 'play' && /leather/.test(a.src)).length,
+    ),
+  ).toBe(1);
   await expect(
     reader.locator('a[href="https://creativecommons.org/licenses/by/4.0/legalcode"]'),
   ).toBeVisible();
@@ -138,6 +177,54 @@ try {
   await expect(reader.locator('.rb-article')).toContainText('Criar um aventureiro');
   await reader.getByRole('button', { name: /^Próximo/ }).click();
   await expect(reader.locator('.rb-article')).toContainText('Uma rolagem para a ficha');
+  expect(
+    await reader.evaluate(
+      () => window.rulebookAudio.filter((a) => a.action === 'play' && /paper/.test(a.src)).length,
+    ),
+  ).toBe(2);
+  await reader.evaluate(() => window.rulebookFixture.effects.setVolume(0.2));
+  await expect
+    .poll(() =>
+      reader.evaluate(
+        () => window.rulebookAudio.find((a) => /paper/.test(a.src) && a.player)?.player.volume,
+      ),
+    )
+    .toBe(0.17);
+  await reader.evaluate(() => window.rulebookFixture.effects.toggle());
+  await expect
+    .poll(() =>
+      reader.evaluate(
+        () => window.rulebookAudio.find((a) => /paper/.test(a.src) && a.player)?.player.muted,
+      ),
+    )
+    .toBe(true);
+  await reader.getByRole('button', { name: /^Próximo/ }).click();
+  expect(
+    await reader.evaluate(
+      () => window.rulebookAudio.filter((a) => a.action === 'play' && /paper/.test(a.src)).length,
+    ),
+  ).toBe(2);
+  await reader.evaluate(() => {
+    window.rulebookFixture.effects.toggle();
+    window.rulebookFixture.effects.setVolume(0);
+  });
+  await reader.getByRole('button', { name: /^Próximo/ }).click();
+  expect(
+    await reader.evaluate(
+      () => window.rulebookAudio.filter((a) => a.action === 'play' && /paper/.test(a.src)).length,
+    ),
+  ).toBe(2);
+  await reader.evaluate(() => {
+    window.rulebookFixture.effects.setVolume(0.4);
+    window.rulebookFixture.setActive(false);
+  });
+  await expect(reader.locator('.rulebook')).toHaveAttribute('data-active', 'false');
+  await reader.getByRole('button', { name: /^Próximo/ }).click();
+  expect(
+    await reader.evaluate(
+      () => window.rulebookAudio.filter((a) => a.action === 'play' && /paper/.test(a.src)).length,
+    ),
+  ).toBe(2);
   await reader.close();
   const mobile = await pageFor(false, { width: 390, height: 844 });
   expect(await mobile.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
@@ -261,6 +348,10 @@ try {
   await page
     .getByRole('textbox', { name: 'Descrição do capítulo' })
     .fill('Acordos vivos da nossa mesa.');
+  await page.getByRole('button', { name: 'Usar símbolo: Espadas', exact: true }).click();
+  await expect(
+    page.getByRole('button', { name: 'Usar símbolo: Espadas', exact: true }),
+  ).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: 'Adicionar primeiro artigo', exact: true }).click();
   await page.getByRole('textbox', { name: 'Título do artigo', exact: true }).fill('Uma mesa unida');
   await page
@@ -346,6 +437,7 @@ try {
   await expect(page.locator('.rb-edit-state')).toContainText('Tudo salvo');
   expect(document.title).toBe('O códice da Vigília');
   expect(document.cover_image).toBe(null);
+  expect(document.chapters.at(-1).symbol).toBe('swords');
   const article = document.chapters.at(-1).articles[0];
   expect(article.blocks.map((block) => block.type)).toEqual([
     'text',

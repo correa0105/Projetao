@@ -292,32 +292,38 @@ fases do tremor também conferidos em desktop/celular, movimento reduzido e
 alternativa Canvas. Novos recursos de GPU são liberados ao encerrar o retorno.
 
 
-## Piscada ao entrar na visão — 04/10/2026
+## Realidade se desfazendo ao entrar na visão — 04/10/2026
 
-A quinta insistência inicia `GinnaEntry`: pálpebras curvas fecham sobre o
-estábulo diurno em 240 ms. Apenas com a visão totalmente coberta a cena
-escura é montada e os animais diurnos são ocultados. A cobertura permanece
-fechada até o componente e suas artes estarem prontos; após uma pausa de
-120 ms, as pálpebras abrem em 360 ms. O antigo fade de revelação foi removido.
+Por nova decisão do usuário, a entrada por piscada foi substituída. A quinta
+insistência inicia `GinnaEntry`: rachaduras irregulares percorrem a tela e 14
+fragmentos da própria cena diurna se desprendem, giram e caem em profundidade.
+Cópias inertes apenas do cenário atual, recortadas por arestas compartilhadas,
+preservam os animais, a cuidadora e a interface dentro dos pedaços. Modais,
+áudio/vídeo, IDs e páginas ocultas são retirados dessas cópias.
 
-A visão e a piscada usam diálogos no top layer, com ordem controlada no
-layout antes do paint. Assim, cabeçalho e menu diurnos não aparecem sobre a
-cena durante a abertura. A cuidadora escura recebe foco somente ao terminar;
-Escape e interação com o cenário são bloqueados enquanto a piscada ocorre.
-Movimento reduzido usa fade de 100/160 ms, mantendo a troca sob preto.
+Névoa escura com textura procedural, ondulações e expansão orgânica vaza junto
+às rupturas até cobrir tudo em 2,7 s. A cena sombria só monta sob cobertura
+completamente preta. Aguarda o componente e suas artes; depois de 180 ms,
+a névoa se dispersa sobre a visão da Ginna por 1,55 s. O Canvas limita a
+resolução a 1,25× e libera seu loop após cobrir a tela enquanto aguarda assets.
+
+Visão e ruptura usam diálogos no top layer, com ordem controlada no layout.
+Cabeçalho/menu diurnos ficam abaixo da cobertura. A cuidadora escura recebe
+foco somente ao terminar; Escape e cliques no cenário ficam bloqueados durante
+a transição. Movimento reduzido omite fragmentos e usa fade de 150/240 ms.
 O diálogo da visão usa `overflow: clip` para que o foco não desloque a cena
 horizontalmente ao abrir a resposta ou repetir a sequência no celular.
 
 O chunk da visão é antecipado na quarta advertência e o preload usa a arte
 vigente `paddock-ruined-eye-mountain-v2.webp`. Falha do WebGL conserva o
 alternativo raster; prontidão da entrada não depende de WebGL. Animações,
-timer e callbacks pendentes são cancelados ao sair da página. O retorno com
+timers, Canvas e callbacks pendentes são cancelados ao sair da página. O retorno com
 tentáculos, sons, pálpebras e respiração mantém sua sequência anterior.
 
 `node scripts/smoke-ginna-entry.mjs` exercita os componentes reais sem banco:
-fechamento no dia, montagem sob cobertura, arte atrasada, pixels pretos,
-abertura no escuro, camadas acima do HUD, foco, Escape, movimento reduzido,
-navegação durante a piscada e retorno. O smoke isolado do estábulo também
+fragmentos inertes, montagem sob cobertura, arte atrasada, pixels pretos,
+dispersão no escuro, camadas acima do HUD, foco, Escape, movimento reduzido,
+navegação durante a ruptura e retorno. O smoke isolado do estábulo também
 aguarda a entrada terminar antes das interações na visão.
 
 O smoke focado passou em desktop e celular, incluindo a segunda entrada
@@ -326,4 +332,4 @@ dentro do viewport e a abertura não mostrou pixels do HUD diurno. A cobertura
 fechada ficou totalmente preta mesmo com a arte atrasada.
 TypeScript, build cliente/servidor e smoke completo do estábulo em PostgreSQL
 descartável também passaram, cobrindo retorno, áudio, compras e seis viewports.
-Docker reconstruído; healthcheck e bundle da piscada confirmados no serviço local.
+O fluxo de retorno com tentáculos continua independente da nova entrada.

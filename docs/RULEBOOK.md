@@ -17,6 +17,28 @@ iniciais podem ser alterados ou removidos.
 
 Salvar publica o documento inteiro para a guilda. Até salvar, alterações permanecem apenas no estado de edição da aba; Cancelar volta à versão publicada. Navegar para outra área e voltar preserva o rascunho durante a sessão aberta. Recarregar com alterações sem salvar pede confirmação do navegador. Importar JSON carrega um rascunho para revisão, e exportar cria uma cópia do conteúdo escolhido. O histórico carrega uma versão antiga como rascunho, mantendo a revisão atual para a próxima publicação.
 
+## Ambientação e símbolos — 04/10/2026
+
+O leitor tem páginas com encadernação, bordas sobrepostas, marcador de tecido,
+vinheta de capítulo e numeração de artigos. O pequeno livro ilustrado da capa
+abre ao passar o mouse/focar; Entrar no códice leva à leitura. Emblemas gravados
+em metal envelhecido diferenciam os capítulos. No editor, Símbolo do capítulo
+oferece nove desenhos ou Automático; a escolha acompanha publicação, histórico
+e cópias JSON. Documentos antigos continuam válidos e recebem símbolos pelo tema
+sem alterar seu conteúdo. `symbol` é opcional e validado no esquema compartilhado;
+a persistência JSONB existente dispensa migration.
+
+Trocar artigo/capítulo toca papel; entrar pelo livro toca couro. São gravações
+locais já licenciadas em `shop-counter-manifest.json`, usadas em volume discreto.
+Os sons seguem Efeitos sonoros, independentemente das músicas; não tocam ao
+carregar a página, editar texto, passar o mouse ou selecionar o artigo atual.
+Silenciar, volume zero, ocultar a aba, navegar para outra área e desmontar a página
+interrompem os efeitos. Navegação rápida reinicia um único som sem sobreposição.
+
+Poeira suave na capa, brilho dos emblemas e animação curta de página acompanham
+as interações. Movimento reduzido remove animações decorativas e usa rolagem
+instantânea. A página inativa pausa a ambientação.
+
 ## Persistência e integridade
 
 Migration `044_rulebook.sql` acrescenta documento global em JSONB, revisões completas e uploads de imagens em PostgreSQL. Os `world_entries` anteriores são preservados. O conteúdo inicial é criado uma única vez; rodar seed novamente não sobrescreve edições nem recria capítulos que o editor excluiu.
@@ -37,7 +59,7 @@ Arte e prompt da capa em [RULEBOOK-ART.md](RULEBOOK-ART.md).
   concorrência, histórico, importação, limites, imagens e seed preservando dados.
 - `node scripts/test-rulebook-isolated.mjs --browser`: edição e publicação com
   API real, leitor, recarga, imagens, capa, rascunho entre áreas e recuperação.
-- `node scripts/smoke-rulebook-ui.mjs`: editor completo e responsivo no Edge,
+- `node --import tsx scripts/smoke-rulebook-ui.mjs`: editor completo e responsivo no Edge,
   incluindo cinco tipos de blocos, busca, prévia, importação/exportação, conflito
   e respostas atrasadas de salvamento, histórico e upload.
 
