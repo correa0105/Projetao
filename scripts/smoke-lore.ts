@@ -334,6 +334,33 @@ try {
   await editor.getByRole('button', { name: 'Voltar à edição', exact: true }).click();
   await imageBlock.getByLabel('Enquadramento').selectOption('contain');
   await imageBlock.getByLabel('Efeito').selectOption('cinematic');
+  const firstText = editor.getByRole('region', { name: 'Bloco 1', exact: true });
+  await imageBlock.getByLabel('Posição').selectOption('right');
+  for (const style of ['prose', 'parchment', 'inscription', 'quote']) {
+    await firstText.getByLabel('Tipo de caixa').selectOption(style);
+    for (const side of ['left', 'right']) {
+      await firstText.getByLabel('Alinhamento').selectOption(side);
+      await imageBlock.getByLabel('Posição').selectOption(side === 'left' ? 'right' : 'left');
+      await editor.getByRole('button', { name: 'Prévia', exact: true }).click();
+      const pair = editor.locator('.lore-block-pair');
+      await expect(pair).toHaveCount(1);
+      const text = await pair.locator('.lore-text').boundingBox();
+      const image = await pair.locator('.lore-block--image').boundingBox();
+      expect(Math.abs(text!.y - image!.y)).toBeLessThan(2);
+      expect(
+        side === 'left' ? text!.x + text!.width < image!.x : image!.x + image!.width < text!.x,
+      ).toBe(true);
+      await page.setViewportSize({ width: 390, height: 844 });
+      await noOverflow();
+      const mobileText = await pair.locator('.lore-text').boundingBox();
+      const mobileImage = await pair.locator('.lore-block--image').boundingBox();
+      expect(mobileImage!.y).toBeGreaterThanOrEqual(mobileText!.y + mobileText!.height);
+      await page.setViewportSize({ width: 1440, height: 1000 });
+      await editor.getByRole('button', { name: 'Voltar à edição', exact: true }).click();
+    }
+  }
+  await firstText.getByLabel('Tipo de caixa').selectOption('parchment');
+  await firstText.getByLabel('Alinhamento').selectOption('right');
   await imageBlock.getByLabel('Formato').selectOption('half-landscape');
   expect(await imageBlock.getByLabel('Posição').locator('option').allTextContents()).toEqual([
     'Esquerda',

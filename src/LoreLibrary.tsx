@@ -122,6 +122,24 @@ export function LoreImage({ block }: { block: Extract<LoreBlock, { type: 'image'
 
 export function LoreBlocks({ blocks }: { blocks: LoreBlock[] }) {
   const root = useRef<HTMLDivElement>(null);
+  const rows: LoreBlock[][] = [];
+  for (let index = 0; index < blocks.length; index++) {
+    const block = blocks[index];
+    const next = blocks[index + 1];
+    const image = block.type === 'image' ? block : next?.type === 'image' ? next : null;
+    if (
+      next &&
+      block.type !== next.type &&
+      image &&
+      image.format !== 'landscape' &&
+      block.alignment !== 'center' &&
+      next.alignment !== 'center' &&
+      block.alignment !== next.alignment
+    ) {
+      rows.push([block, next]);
+      index++;
+    } else rows.push([block]);
+  }
   useEffect(() => {
     if (!root.current || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const observer = new IntersectionObserver(
@@ -142,29 +160,33 @@ export function LoreBlocks({ blocks }: { blocks: LoreBlock[] }) {
   }, [blocks]);
   return (
     <div className="lore-blocks" ref={root}>
-      {blocks.map((block) =>
-        block.type === 'image' ? (
-          <div
-            className={`lore-block lore-block--image lore-block--${block.format} lore-align--${block.alignment}`}
-            key={block.id}
-          >
-            <LoreImage block={block} />
-          </div>
-        ) : (
-          <section
-            className={`lore-block lore-text lore-text--${block.style} lore-align--${block.alignment}`}
-            key={block.id}
-          >
-            {block.title && <h3>{block.title}</h3>}
-            {block.text
-              .split(/\n\s*\n/)
-              .filter(Boolean)
-              .map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-          </section>
-        ),
-      )}
+      {rows.map((row) => (
+        <div className={row.length === 2 ? 'lore-block-pair' : 'lore-block-single'} key={row[0].id}>
+          {row.map((block) =>
+            block.type === 'image' ? (
+              <div
+                className={`lore-block lore-block--image lore-block--${block.format} lore-align--${block.alignment}`}
+                key={block.id}
+              >
+                <LoreImage block={block} />
+              </div>
+            ) : (
+              <section
+                className={`lore-block lore-text lore-text--${block.style} lore-align--${block.alignment}`}
+                key={block.id}
+              >
+                {block.title && <h3>{block.title}</h3>}
+                {block.text
+                  .split(/\n\s*\n/)
+                  .filter(Boolean)
+                  .map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+              </section>
+            ),
+          )}
+        </div>
+      ))}
     </div>
   );
 }

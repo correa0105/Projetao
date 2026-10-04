@@ -156,3 +156,6 @@ A suíte geral executada nesta entrega passou 41 de 43 testes. As duas falhas
 são anteriores à alteração e pertencem a `tests/world-fleet.test.ts`
 (limite angular dos tentáculos e expectativa de ausência da cabeça do kraken).
 Os arquivos de mundo e esses testes não foram alterados nesta entrega.
+
+Para colocar uma imagem ao lado de qualquer tipo de texto, mantenha os dois blocos consecutivos e escolha lados opostos (texto à esquerda e imagem à direita, ou o inverso). Retrato e meia paisagem compõem duas colunas na prévia e leitura, mesmo adicionados depois do texto; use as setas para aproximar os blocos. Centro e paisagem inteira ficam separados. No celular, a composição empilha os blocos na ordem salva.
+

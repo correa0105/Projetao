@@ -645,6 +645,42 @@
 .lore-text:not(.lore-text--prose) p:last-child {
   margin-bottom: 0;
 }
+.lore-block-single {
+  display: contents;
+}
+.lore-block-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+  clear: both;
+  margin: 35px 0;
+}
+.lore-blocks > .lore-block-pair > .lore-block {
+  float: none;
+  clear: none;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  grid-row: 1;
+}
+.lore-block-pair > .lore-align--left {
+  grid-column: 1;
+}
+.lore-block-pair > .lore-align--right {
+  grid-column: 2;
+}
+@media (max-width: 600px) {
+  .lore-blocks > .lore-block-pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .lore-blocks > .lore-block-pair > .lore-block {
+    grid-column: 1;
+    grid-row: auto;
+    margin: 0;
+  }
+}
 .lore-create-form {
   display: grid;
   gap: 18px;
