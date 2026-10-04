@@ -20,7 +20,8 @@ do conjunto. Pequenas variações de afinação evitam um toque idêntico.
 O som acontece nos dois casos de inclusão aceita: novo item ou aumento de
 quantidade de um já colocado. Arrastar pelo balcão toca ao soltar somente se
 houve mudança real de posição. Examinar, remover, cancelar arraste ou tentar
-adicionar em uma mesa cheia/no limite de 99 unidades não toca impacto.
+ultrapassar 99 unidades do mesmo item não toca impacto. O balcão aceita todos
+os itens simultaneamente, inclusive sobrepostos; não existe bloqueio de mesa cheia.
 
 `src/shop-counter-audio.ts` usa o canal Efeitos sonoros de `SiteMusic`, com
 volume/mute independentes da música (docs/SOUND-SETTINGS.md), prepara
@@ -62,7 +63,7 @@ materiais, proporções, formatos, hashes, picos e preservação da água.
 nomes recebidos e 71 comentários distintos.
 `node scripts/smoke-shop-counter-audio.mjs` usa a UI real para examinar os 71
 itens e colocar cada um no balcão, conferir arquivo/material, clique, Enter,
-drop, movimento, falhas, limites, mute/volume, aba oculta, desmontagem e
+drop, movimento, falhas, sobreposição dos 71 itens, mute/volume, aba oculta, desmontagem e
 carregamento pendente. Inclui falha de um arquivo com os demais funcionando.
 `node scripts/test-shop-isolated.mjs` verifica o catálogo real, transações de
 compra e layout responsivo em um PostgreSQL descartável.

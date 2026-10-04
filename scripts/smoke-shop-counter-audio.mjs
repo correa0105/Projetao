@@ -599,30 +599,62 @@ try {
   }
   {
     const { page, context } = await fresh();
-    let full = false;
-    for (const item of catalog) {
-      const before = (await starts(page)).length;
-      await buy(page, item.id);
-      const countTokens = await page.locator('.shop-table-token').count();
-      if (
-        await page
-          .getByText('A mesa está cheia. Retire um item ou finalize o carrinho.', { exact: true })
-          .isVisible()
-      ) {
-        await page.waitForTimeout(120);
-        expect((await starts(page)).length).toBe(before);
-        full = true;
-        reports.push({ scenario: 'fullcounter', tokens: countTokens });
-        break;
-      }
-      await expect.poll(async () => (await starts(page)).length).toBe(before + 1);
+    // One real gesture unlocks audio; every accepted HTML5 drop then keeps its own effect.
+    await page.mouse.click(10, 10);
+    for (const [index, item] of catalog.entries()) {
+      await page.evaluate((id) => {
+        const table = document.querySelector('.shop-table-surface');
+        const box = table.getBoundingClientRect();
+        const dataTransfer = new DataTransfer();
+        dataTransfer.setData('application/x-alvorada-shop', id);
+        table.dispatchEvent(
+          new DragEvent('drop', {
+            bubbles: true,
+            cancelable: true,
+            dataTransfer,
+            clientX: box.x + box.width / 2,
+            clientY: box.y + box.height / 2,
+          }),
+        );
+      }, item.id);
+      await expect(page.locator('.shop-table-token')).toHaveCount(index + 1);
+      await count(page, index + 1);
     }
-    expect(full).toBe(true);
+    await expect(
+      page.getByText('A mesa está cheia. Retire um item ou finalize o carrinho.', { exact: true }),
+    ).toHaveCount(0);
+    const commonCenter = await page.locator('.shop-table-token').evaluateAll((tokens) => {
+      const centers = tokens.map((token) => {
+        const rect = token.getBoundingClientRect();
+        return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 };
+      });
+      return Math.max(
+        ...centers.map((center) => Math.hypot(center.x - centers[0].x, center.y - centers[0].y)),
+      );
+    });
+    expect(commonCenter).toBeLessThan(2);
+    await page.getByRole('button', { name: /Abrir carrinho/ }).click();
+    await expect(page.getByRole('spinbutton')).toHaveCount(71);
+    await expect(page.getByRole('button', { name: /Finalizar compra/ })).toBeDisabled();
+    await expect(
+      page.getByRole('spinbutton', { name: 'Quantidade de Orbe do dragão' }),
+    ).toHaveValue('1');
+    await page.getByRole('button', { name: 'Fechar', exact: true }).click();
     expect(
       await page.evaluate(() =>
         window.counterContexts.every((context) => context.voices.size <= 6),
       ),
     ).toBe(true);
+    reports.push({
+      scenario: 'all-71-simultaneous-overlapping-drops-including-unpriced-orb',
+      tokens: 71,
+      commonCenter,
+      trace: await starts(page),
+    });
+    await page.screenshot({
+      path: 'test-results/shop-counter-audio-overlap-71.png',
+      fullPage: true,
+    });
     await context.close();
   }
   expect(errors).toEqual([]);
@@ -631,7 +663,7 @@ try {
     JSON.stringify({ errors, reports }, null, 2) + '\n',
   );
   console.log(
-    'Shop counter audio: 71 comments/material placements, isolated WAV failure, DnD, heavy/liquid, mute/volume, full/99, visibility and disposal passed.',
+    'Shop counter audio: 71 comments/material placements and simultaneous overlapping drops, isolated WAV failure, DnD, heavy/liquid, mute/volume, quantity99, visibility and disposal passed.',
   );
 } finally {
   await browser.close();

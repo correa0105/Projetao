@@ -129,6 +129,9 @@
   .shop-counter.merchant-countertop {
     height: var(--shop-table-depth);
   }
+  .shop-counter .shop-table-surface {
+    bottom: 12px;
+  }
 }
 @media (max-width: 650px) {
   .app-shell[data-page='shop'] {

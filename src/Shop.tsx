@@ -19,8 +19,9 @@ import './shop-reference.css';
 import './shop-responsive.css';
 import { merchantComment, merchantConversations } from './shop-presentation';
 import { useShopCounterSound } from './shop-counter-audio';
+import { shopItemScale } from './shop-item-scale';
 
-type Line = { id: string; quantity: number; x: number; y: number };
+type Line = { id: string; quantity: number; x: number; y: number; z: number };
 type Point = { x: number; y: number };
 function SpeechBubbleShape() {
   const ref = useRef<SVGSVGElement>(null);
@@ -179,10 +180,33 @@ export function Shop({
   }, [talk]);
   const keys = useRef<Record<string, string>>({});
   const surface = useRef<HTMLDivElement>(null);
+  const measure = useRef<HTMLDivElement>(null);
+  const layer = useRef(0);
+  const [tableSize, setTableSize] = useState({ width: 1, height: 1, base: 50 });
+  useLayoutEffect(() => {
+    const table = surface.current;
+    const ruler = measure.current;
+    if (!table || !ruler) return;
+    const resize = () => {
+      const { width, height } = table.getBoundingClientRect();
+      const base = ruler.getBoundingClientRect().width;
+      setTableSize((current) =>
+        current.width === width && current.height === height && current.base === base
+          ? current
+          : { width, height, base },
+      );
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(table);
+    observer.observe(ruler);
+    resize();
+    return () => observer.disconnect();
+  }, []);
   const dragging = useRef<{
     id: string;
     x: number;
     y: number;
+    offset: Point;
     moved: boolean;
     original: Point;
     current: Point;
@@ -210,43 +234,50 @@ export function Shop({
     if (changed) keys.current[owner] = crypto.randomUUID();
     setError('');
   }
-  function dimensions(id?: string) {
+  function tokenSize(item: Item | undefined, width: number, height: number, base: number) {
+    const art = Math.min(base * shopItemScale(item), width, height);
+    return { art, size: Math.min(Math.max(48, art), width, height) };
+  }
+  function dimensions(id: string) {
     const r = surface.current!.getBoundingClientRect();
-    const size = (window.innerWidth <= 700 ? 82.8 : 110.4) * itemScale(items.get(id || ''));
+    const base = measure.current!.getBoundingClientRect().width;
+    const { size } = tokenSize(items.get(id), r.width, r.height, base);
     return { r, size, w: Math.max(1, r.width - size), h: Math.max(1, r.height - size) };
   }
-  function isFree(p: Point, id: string) {
-    const { w, h, size, r } = dimensions(id);
-    return lines.every((line) => {
-      if (line.id === id) return true;
-      const other = dimensions(line.id).size;
-      const x = p.x * w,
-        y = p.y * h;
-      const ox = line.x * (r.width - other),
-        oy = line.y * (r.height - other);
-      return x + size + 6 <= ox || ox + other + 6 <= x || y + size + 6 <= oy || oy + other + 6 <= y;
-    });
-  }
-  function position(clientX: number, clientY: number, id: string) {
+  function position(clientX: number, clientY: number, id: string, offset?: Point) {
     const { r, w, h, size } = dimensions(id);
     return {
-      x: Math.max(0, Math.min(1, (clientX - r.left - size / 2) / w)),
-      y: Math.max(0, Math.min(1, (clientY - r.top - size / 2) / h)),
+      x: Math.max(0, Math.min(1, (clientX - r.left - (offset?.x ?? size / 2)) / w)),
+      y: Math.max(0, Math.min(1, (clientY - r.top - (offset?.y ?? size / 2)) / h)),
     };
   }
-  function freePosition(id: string, preferred?: Point): Point | null {
-    if (preferred && isFree(preferred, id)) return preferred;
-    for (let n = 0; n < 150; n++) {
-      const p = { x: Math.random(), y: Math.random() };
-      if (isFree(p, id)) return p;
+  function select(id: string) {
+    const z = ++layer.current;
+    setCarts((current) => ({
+      ...current,
+      [owner]: (current[owner] || []).map((line) => (line.id === id ? { ...line, z } : line)),
+    }));
+    setSelected(id);
+    setError('');
+  }
+  function locate(id: string) {
+    select(id);
+    setCheckout(false);
+    const item = items.get(id);
+    if (item) {
+      setExamined(item);
+      say(item);
     }
-    const { w, h, size } = dimensions(id);
-    for (let y = 0; y <= h; y += size + 7)
-      for (let x = 0; x <= w; x += size + 7) {
-        const p = { x: x / w, y: y / h };
-        if (isFree(p, id)) return p;
-      }
-    return null;
+    requestAnimationFrame(() => {
+      const token = [
+        ...(surface.current?.querySelectorAll<HTMLElement>('.shop-table-token') || []),
+      ].find((element) => element.dataset.itemId === id);
+      token?.querySelector('button')?.focus({ preventScroll: true });
+      token?.scrollIntoView({
+        block: 'nearest',
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      });
+    });
   }
   function add(item: Item, preferred?: Point) {
     if (busy) return;
@@ -260,21 +291,19 @@ export function Shop({
       }
       update(
         lines.map((line) =>
-          line.id === item.id ? { ...line, quantity: line.quantity + 1 } : line,
+          line.id === item.id
+            ? { ...line, quantity: line.quantity + 1, ...preferred, z: ++layer.current }
+            : line,
         ),
       );
       setSelected(item.id);
-      placeSound(item, itemScale(item));
+      placeSound(item, shopItemScale(item));
       return;
     }
-    const p = freePosition(item.id, preferred);
-    if (!p) {
-      setError('A mesa está cheia. Retire um item ou finalize o carrinho.');
-      return;
-    }
-    update([...lines, { id: item.id, quantity: 1, ...p }]);
+    const p = preferred || { x: Math.random(), y: Math.random() };
+    update([...lines, { id: item.id, quantity: 1, ...p, z: ++layer.current }]);
     setSelected(item.id);
-    placeSound(item, itemScale(item));
+    placeSound(item, shopItemScale(item));
   }
   function remove(id: string) {
     if (busy) return;
@@ -286,14 +315,12 @@ export function Shop({
     if (!drag || drag.id !== line.id) return;
     if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 4) drag.moved = true;
     if (!drag.moved) return;
-    const p = position(event.clientX, event.clientY, line.id);
-    if (isFree(p, line.id)) {
-      drag.current = p;
-      update(
-        lines.map((v) => (v.id === line.id ? { ...v, ...p } : v)),
-        false,
-      );
-    }
+    const p = position(event.clientX, event.clientY, line.id, drag.offset);
+    drag.current = p;
+    update(
+      lines.map((v) => (v.id === line.id ? { ...v, ...p } : v)),
+      false,
+    );
   }
   async function pay() {
     if (!character || busy || !lines.length || unpriced) return;
@@ -507,18 +534,31 @@ export function Shop({
             if (item) add(item, position(e.clientX, e.clientY, item.id));
           }}
         >
+          <div className="shop-table-measure" ref={measure} aria-hidden="true" />
           {lines.map((line) => {
             const item = items.get(line.id);
             if (!item) return null;
+            const { art, size } = tokenSize(
+              item,
+              tableSize.width,
+              tableSize.height,
+              tableSize.base,
+            );
             return (
               <div
                 className={`shop-table-token${selected === line.id ? ' selected' : ''}`}
                 key={line.id}
+                data-item-id={line.id}
+                data-scale={shopItemScale(item)}
+                data-x={line.x}
+                data-y={line.y}
                 style={
                   {
-                    '--shop-token-size': `calc(var(--shop-base-size) * ${itemScale(item)})`,
+                    '--shop-token-size': `${size}px`,
+                    '--shop-art-size': `${art}px`,
                     left: `calc(${line.x * 100}% - ${line.x} * var(--shop-token-size))`,
                     top: `calc(${line.y * 100}% - ${line.y} * var(--shop-token-size))`,
+                    zIndex: line.z,
                   } as CSSProperties
                 }
               >
@@ -528,15 +568,17 @@ export function Shop({
                   onPointerDown={(e) => {
                     if (e.button !== 0) return;
                     e.currentTarget.setPointerCapture(e.pointerId);
+                    const box = e.currentTarget.parentElement!.getBoundingClientRect();
                     dragging.current = {
                       id: line.id,
                       x: e.clientX,
                       y: e.clientY,
+                      offset: { x: e.clientX - box.left, y: e.clientY - box.top },
                       moved: false,
                       original: line,
                       current: line,
                     };
-                    setSelected(line.id);
+                    select(line.id);
                     say(item);
                   }}
                   onPointerMove={(e) => move(e, line)}
@@ -550,17 +592,18 @@ export function Shop({
                         drag.current.y - drag.original.y,
                       ) > 0.001
                     )
-                      placeSound(item, itemScale(item));
+                      placeSound(item, shopItemScale(item));
                     dragging.current = null;
                   }}
                   onPointerCancel={() => {
                     dragging.current = null;
                   }}
                   onClick={() => {
-                    setSelected(line.id);
+                    select(line.id);
                     setExamined(item);
                     say(item);
                   }}
+                  onFocus={() => select(line.id)}
                   onKeyDown={(e) => {
                     if (e.key === 'Delete') {
                       remove(line.id);
@@ -578,11 +621,10 @@ export function Shop({
                         x: Math.max(0, Math.min(1, line.x + delta[e.key].x)),
                         y: Math.max(0, Math.min(1, line.y + delta[e.key].y)),
                       };
-                      if (isFree(p, line.id))
-                        update(
-                          lines.map((l) => (l.id === line.id ? { ...l, ...p } : l)),
-                          false,
-                        );
+                      update(
+                        lines.map((l) => (l.id === line.id ? { ...l, ...p } : l)),
+                        false,
+                      );
                     }
                   }}
                 >
@@ -634,6 +676,14 @@ export function Shop({
                         ? 'Preço a definir'
                         : `${money(item.price_cp)} PO / unidade`}
                     </small>
+                    <button
+                      className="shop-checkout-locate"
+                      disabled={busy}
+                      aria-label={`Localizar ${item.name} no balcão`}
+                      onClick={() => locate(line.id)}
+                    >
+                      Localizar no balcão
+                    </button>
                     <label>
                       Quantidade
                       <input

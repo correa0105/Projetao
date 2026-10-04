@@ -294,6 +294,12 @@ animação. Ambos usam os controles de áudio do site. Fontes e validação em
 [SHOP-AUDIO.md](docs/SHOP-AUDIO.md) e
 [STABLE-GINNA-AUDIO.md](docs/STABLE-GINNA-AUDIO.md).
 
+O balcão aceita todos os itens sobrepostos, sem limite de espaço. Joias e
+frascos são menores; armas longas e objetos volumosos são maiores, com
+proporções moderadas para manter a leitura. Selecionar ou focar um objeto o
+traz para a frente. No carrinho, **Localizar no balcão** recupera itens cobertos.
+Detalhes e validação em [SHOP-LAYOUT.md](docs/SHOP-LAYOUT.md).
+
 Verificação isolada do Início e da sombra da estante: `node scripts/test-home-isolated.mjs`. A verificação do dragão também valida reprodução, mute persistido, volume e continuidade de áudio: `node scripts/test-world-dragon-isolated.mjs`. Não executar os testes em produção.
 
 O estábulo usa uma nova vista do vale do acampamento, com montanhas, ponte e cidade coerentes com a tela Personagens. Sombras junto aos cascos são calculadas para cada pelagem e equipamento. Arte e prompt em `docs/STABLE-ART.md`; validação isolada em `node scripts/test-stable-isolated.mjs`.

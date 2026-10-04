@@ -41,9 +41,12 @@ try {
   const hero = await createLegacyTestCharacter(userId, 'Arden');
   const alternate = await createLegacyTestCharacter(userId, 'Nara');
   await pool.query('UPDATE characters SET portrait_revision=1 WHERE id=$1', [alternate.id]);
-  await page.route(`**/api/characters/${alternate.id}/portrait?*`, route => route.fulfill({
-    path: 'public/character-silhouette-v2.png', contentType: 'image/png',
-  }));
+  await page.route(`**/api/characters/${alternate.id}/portrait?*`, (route) =>
+    route.fulfill({
+      path: 'public/character-silhouette-v2.png',
+      contentType: 'image/png',
+    }),
+  );
   const outsider = await browser.newContext();
   const outsiderSignup = await outsider.request.post(origin + '/api/auth/sign-up/email', {
     headers: { Origin: origin },
@@ -75,7 +78,9 @@ try {
       { item_id: 'hempen-rope-50-feet', quantity: 1 },
     ],
   };
-  const active = (await pool.query('SELECT id FROM catalog_items WHERE active=true')).rows;
+  const active = (
+    await pool.query('SELECT id,name,price_cp FROM catalog_items WHERE active=true ORDER BY id')
+  ).rows;
   expect(active).toHaveLength(71);
   // Resolve the rope ID from the provided catalog rather than assuming an old identifier.
   const rope = (
@@ -121,6 +126,16 @@ try {
   expect(
     (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
   ).toBe(balance);
+  for (const quantity of [0, 100])
+    expect(
+      (
+        await send({
+          ...base,
+          idempotency_key: randomUUID(),
+          items: [{ item_id: 'dagger', quantity }],
+        })
+      ).status(),
+    ).toBe(400);
   await page.goto(origin + '/#shop');
   await page.reload();
   await expect(page.getByRole('region', { name: 'Catálogo da loja' })).toBeVisible();
@@ -143,7 +158,10 @@ try {
   await page.screenshot({ path: 'test-results/profile-picker-desktop.png' });
   await page.getByRole('option', { name: 'Nara', exact: true }).click();
   await expect(avatar).toHaveAttribute('aria-label', 'Abrir menu de Nara');
-  await expect(avatar.locator('img')).toHaveAttribute('src', `/api/characters/${alternate.id}/portrait?v=1`);
+  await expect(avatar.locator('img')).toHaveAttribute(
+    'src',
+    `/api/characters/${alternate.id}/portrait?v=1`,
+  );
   await expect(avatar.locator('img')).toBeVisible();
   await avatar.click();
   await page.getByRole('option', { name: 'Arden', exact: true }).click();
@@ -162,6 +180,66 @@ try {
   await expect(page.locator('.merchant-conversation')).toBeVisible();
   await merchant.click();
   await expect(page.locator('.merchant-conversation')).toHaveCount(0);
+  // Spatial capacity is unrestricted: every active item can occupy this same point.
+  const tableSurface = page.locator('.shop-table-surface');
+  for (const [index, item] of active.entries()) {
+    await page.evaluate((id: string) => {
+      const table = document.querySelector('.shop-table-surface')!;
+      const box = table.getBoundingClientRect();
+      const dataTransfer = new DataTransfer();
+      dataTransfer.setData('application/x-alvorada-shop', id);
+      table.dispatchEvent(
+        new DragEvent('drop', {
+          bubbles: true,
+          cancelable: true,
+          dataTransfer,
+          clientX: box.x + box.width / 2,
+          clientY: box.y + box.height / 2,
+        }),
+      );
+    }, item.id);
+    await expect(page.locator('.shop-table-token')).toHaveCount(index + 1);
+  }
+  await expect(
+    page.getByText('A mesa está cheia. Retire um item ou finalize o carrinho.', { exact: true }),
+  ).toHaveCount(0);
+  await expect(tableSurface.locator('.shop-table-token')).toHaveCount(71);
+  await page.getByRole('button', { name: /Abrir carrinho:/ }).click();
+  await expect(page.getByRole('spinbutton')).toHaveCount(71);
+  await expect(page.getByRole('button', { name: /Finalizar compra/ })).toBeDisabled();
+  await page.getByRole('button', { name: 'Localizar Adaga no balcão', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Seu carrinho' })).toHaveCount(0);
+  const overlapDagger = tableSurface.locator('.shop-table-token[data-item-id="dagger"]');
+  await expect(overlapDagger).toHaveClass(/selected/);
+  const previousOverlap = await overlapDagger.boundingBox();
+  await overlapDagger
+    .getByRole('button', { name: 'Adaga na mesa, 1 unidades', exact: true })
+    .press('ArrowRight');
+  expect((await overlapDagger.boundingBox())!.x).toBeGreaterThan(previousOverlap!.x);
+  await page.getByRole('button', { name: /Abrir carrinho:/ }).click();
+  await page
+    .getByRole('button', { name: 'Remover Orbe do dragão do carrinho', exact: true })
+    .click();
+  await expect(page.getByRole('spinbutton')).toHaveCount(70);
+  await expect(
+    page.getByText('O Orbe do Dragão está sem preço definido. Retire-o para finalizar a compra.', {
+      exact: true,
+    }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByText('Saldo insuficiente para este carrinho.', { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole('button', { name: /Finalizar compra/ })).toBeDisabled();
+  await page.getByRole('button', { name: 'Fechar', exact: true }).click();
+  for (const item of active.filter((item) => item.id !== 'dragon-orb'))
+    await tableSurface
+      .locator('.shop-table-token[data-item-id="' + item.id + '"]')
+      .getByRole('button', { name: item.name + ' na mesa, 1 unidades', exact: true })
+      .press('Delete');
+  await expect(tableSurface.locator('.shop-table-token')).toHaveCount(0);
+  expect(
+    (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
+  ).toBe(balance);
   const search = page.getByRole('textbox', { name: 'Procurar item' });
   await search.fill('Adaga');
   await page.getByRole('button', { name: 'Comprar', exact: true }).click();
@@ -171,9 +249,14 @@ try {
   const comment = (await pool.query("SELECT merchant_comment FROM catalog_items WHERE id='dagger'"))
     .rows[0].merchant_comment;
   await expect(page.locator('.merchant-speech[role="status"] > span')).toHaveText(comment);
-  await expect(page.locator('.merchant-speech[role="status"] > span')).toHaveCSS('color', 'rgb(241, 228, 206)');
+  await expect(page.locator('.merchant-speech[role="status"] > span')).toHaveCSS(
+    'color',
+    'rgb(241, 228, 206)',
+  );
   await expect(page.locator('.merchant-speech .npc-speaker')).toHaveText('Desconhecido');
-  expect(await page.locator('.merchant-speech > span').evaluate(el => getComputedStyle(el).fontFamily)).toContain('NPC Inter');
+  expect(
+    await page.locator('.merchant-speech > span').evaluate((el) => getComputedStyle(el).fontFamily),
+  ).toContain('NPC Inter');
   await expect(page.locator('.merchant-speech[role="status"]')).toBeHidden({ timeout: 16000 });
   await page.getByRole('button', { name: 'Examinar Adaga', exact: true }).click();
   await expect(page.locator('.merchant-speech[role="status"] > span')).toHaveText(comment);
@@ -186,12 +269,20 @@ try {
   expect(after.x !== before.x || after.y !== before.y).toBe(true);
   await page.getByRole('button', { name: 'Remover Adaga da mesa' }).click();
   await expect(page.locator('.shop-table-token')).toHaveCount(0);
-  const sourceBox = (await page.getByRole('button', { name: 'Examinar Adaga', exact: true }).boundingBox())!;
+  const sourceBox = (await page
+    .getByRole('button', { name: 'Examinar Adaga', exact: true })
+    .boundingBox())!;
   const targetBox = (await page.locator('.shop-table-surface').boundingBox())!;
   await page.mouse.move(sourceBox.x + sourceBox.width / 2, sourceBox.y + sourceBox.height / 2);
   await page.mouse.down();
-  await page.mouse.move(sourceBox.x + sourceBox.width / 2 + 12, sourceBox.y + sourceBox.height / 2 + 12, { steps: 4 });
-  await page.mouse.move(targetBox.x + targetBox.width / 2, targetBox.y + targetBox.height / 2, { steps: 15 });
+  await page.mouse.move(
+    sourceBox.x + sourceBox.width / 2 + 12,
+    sourceBox.y + sourceBox.height / 2 + 12,
+    { steps: 4 },
+  );
+  await page.mouse.move(targetBox.x + targetBox.width / 2, targetBox.y + targetBox.height / 2, {
+    steps: 15,
+  });
   await page.mouse.up();
   await expect(page.locator('.shop-table-token')).toHaveCount(1);
   await page.getByRole('button', { name: /Abrir carrinho:/ }).click();
@@ -212,23 +303,52 @@ try {
   await page.screenshot({ path: 'test-results/shop-desktop.png' });
   await page.setViewportSize({ width: 1740, height: 852 });
   await page.screenshot({ path: 'test-results/shop-reference-wide.png' });
-  for (const viewport of [{width:1440,height:900}, {width:1920,height:1080}, {width:1740,height:852}, {width:2560,height:1440},
-    {width:1280,height:720}, {width:1110,height:800}, {width:320,height:740}, {width:1024,height:768}, {width:768,height:1024},
-    {width:390,height:844}, {width:844,height:390}]) {
+  for (const viewport of [
+    { width: 1440, height: 900 },
+    { width: 1920, height: 1080 },
+    { width: 1740, height: 852 },
+    { width: 2560, height: 1440 },
+    { width: 1280, height: 720 },
+    { width: 1110, height: 800 },
+    { width: 320, height: 740 },
+    { width: 1024, height: 768 },
+    { width: 768, height: 1024 },
+    { width: 390, height: 844 },
+    { width: 844, height: 390 },
+  ]) {
     await page.setViewportSize(viewport);
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(100);
     await page.getByRole('button', { name: 'Examinar Armadura de couro', exact: true }).click();
     const bubble = page.locator('.merchant-speech');
-    await expect(bubble.locator('svg')).toHaveAttribute('data-tail-side', (await bubble.getAttribute('data-placement')) === 'above' ? 'bottom' : 'right');
-    expect(await bubble.locator('span').first().evaluate(el => el.scrollHeight <= el.clientHeight + 1)).toBe(true);
-    const overflowingCards = await page.locator('.shop-product').evaluateAll(cards => cards.flatMap(card => {
-      const box = card.getBoundingClientRect();
-      return Array.from(card.querySelectorAll('h3, p, small, .shop-weight, footer, footer button, footer strong')).filter(el => {
-        const r = el.getBoundingClientRect();
-        return r.left < box.left - 1 || r.right > box.right + 1 || r.top < box.top - 1 || r.bottom > box.bottom + 1;
-      }).map(el => el.textContent);
-    }));
+    await expect(bubble.locator('svg')).toHaveAttribute(
+      'data-tail-side',
+      (await bubble.getAttribute('data-placement')) === 'above' ? 'bottom' : 'right',
+    );
+    expect(
+      await bubble
+        .locator('span')
+        .first()
+        .evaluate((el) => el.scrollHeight <= el.clientHeight + 1),
+    ).toBe(true);
+    const overflowingCards = await page.locator('.shop-product').evaluateAll((cards) =>
+      cards.flatMap((card) => {
+        const box = card.getBoundingClientRect();
+        return Array.from(
+          card.querySelectorAll('h3, p, small, .shop-weight, footer, footer button, footer strong'),
+        )
+          .filter((el) => {
+            const r = el.getBoundingClientRect();
+            return (
+              r.left < box.left - 1 ||
+              r.right > box.right + 1 ||
+              r.top < box.top - 1 ||
+              r.bottom > box.bottom + 1
+            );
+          })
+          .map((el) => el.textContent);
+      }),
+    );
     expect(overflowingCards, `Card overflow at ${viewport.width}px`).toEqual([]);
     const bubbleBox = (await bubble.boundingBox())!;
     expect(bubbleBox.y).toBeGreaterThanOrEqual(0);
@@ -237,7 +357,8 @@ try {
     const desk = (await page.locator('.shop-counter').boundingBox())!;
     const catalog = (await page.locator('.shop-showcase').boundingBox())!;
     const layout = (await page.locator('.shop-layout').boundingBox())!;
-    const contentEdge = viewport.width <= 900 ? 18 : Math.min(95, Math.max(24, viewport.width * .066));
+    const contentEdge =
+      viewport.width <= 900 ? 18 : Math.min(95, Math.max(24, viewport.width * 0.066));
     expect(layout.x).toBeCloseTo(contentEdge, 0);
     if (viewport.width > 1100) await expect(bubble).toHaveAttribute('data-placement', 'side');
     expect(catalog.x).toBeCloseTo(layout.x, 0);
@@ -245,16 +366,23 @@ try {
     expect(npc.x + npc.width).toBeCloseTo(layout.x + layout.width, 0);
     expect(bubbleBox.x).toBeGreaterThanOrEqual(layout.x - 1);
     expect(bubbleBox.x + bubbleBox.width).toBeLessThanOrEqual(layout.x + layout.width + 1);
-    expect(catalog.width).toBeGreaterThan(layout.width * .49);
+    expect(catalog.width).toBeGreaterThan(layout.width * 0.49);
     expect(catalog.height).toBeGreaterThan(400);
     expect(catalog.y + catalog.height).toBeLessThan(desk.y);
     expect(npc.x).toBeGreaterThanOrEqual(0);
     expect(npc.x + npc.width).toBeLessThanOrEqual(viewport.width + 1);
-    expect(npc.y + npc.height).toBeLessThan(desk.y + npc.width * .16);
-    expect(npc.x >= catalog.x + catalog.width || npc.y >= catalog.y + catalog.height - 30).toBe(true);
+    expect(npc.y + npc.height).toBeLessThan(desk.y + npc.width * 0.16);
+    expect(npc.x >= catalog.x + catalog.width || npc.y >= catalog.y + catalog.height - 30).toBe(
+      true,
+    );
     expect(desk.height).toBeGreaterThanOrEqual(145);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.screenshot({path: `test-results/shop-${viewport.width}x${viewport.height}.png`, fullPage:true});
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await page.screenshot({
+      path: `test-results/shop-${viewport.width}x${viewport.height}.png`,
+      fullPage: true,
+    });
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await search.fill('Adaga');
@@ -265,7 +393,9 @@ try {
   await avatar.click();
   await expect(profileControls).toBeVisible();
   await expect(page.getByRole('listbox', { name: 'Seus personagens' })).toBeVisible();
-  const mobileOptions = (await page.getByRole('listbox', { name: 'Seus personagens' }).boundingBox())!;
+  const mobileOptions = (await page
+    .getByRole('listbox', { name: 'Seus personagens' })
+    .boundingBox())!;
   expect(mobileOptions.x).toBeGreaterThanOrEqual(0);
   expect(mobileOptions.x + mobileOptions.width).toBeLessThanOrEqual(390);
   await page.getByRole('option', { name: 'Arden', exact: true }).click();
@@ -275,7 +405,9 @@ try {
   expect(mobileNotifications.x + mobileNotifications.width).toBeLessThanOrEqual(390);
   await page.keyboard.press('Escape');
   await page.setViewportSize({ width: 1740, height: 852 });
-  await page.evaluate(() => { location.hash = 'characters'; });
+  await page.evaluate(() => {
+    location.hash = 'characters';
+  });
   await expect(page.getByRole('heading', { name: 'Seu acampamento', exact: true })).toBeVisible();
   const campHeading = (await page.locator('.page-header .page-title').boundingBox())!;
   const campHud = (await page.locator('.topbar.player-hud').boundingBox())!;
@@ -284,14 +416,36 @@ try {
   expect(campTitle.x).toBeCloseTo(campHeading.x, 0);
   expect(campHeading.y + campHeading.height / 2).toBeCloseTo(campHud.y + campHud.height / 2, 0);
   await page.screenshot({ path: 'test-results/character-camp-header.png' });
-  for (const viewport of [{ width: 1740, height: 852 }, { width: 2560, height: 1440 }, { width: 768, height: 1024 }, { width: 390, height: 844 }]) {
+  for (const viewport of [
+    { width: 1740, height: 852 },
+    { width: 2560, height: 1440 },
+    { width: 768, height: 1024 },
+    { width: 390, height: 844 },
+  ]) {
     await page.setViewportSize(viewport);
-    await page.evaluate(() => { location.hash = 'inventory'; });
+    await page.evaluate(() => {
+      location.hash = 'inventory';
+    });
     await expect(page.getByRole('heading', { name: 'Inventário', exact: true })).toBeVisible();
     const referenceTitle = (await page.locator('.page-title h1').boundingBox())!;
     const referenceHud = (await page.locator('.topbar.player-hud').boundingBox())!;
-    for (const target of ['profile', 'characters', 'shop', 'achievements', 'board', 'missions', 'hooks', 'stable', 'overview', 'world', 'lore', 'rules']) {
-      await page.evaluate(target => { location.hash = target; }, target);
+    for (const target of [
+      'profile',
+      'characters',
+      'shop',
+      'achievements',
+      'board',
+      'missions',
+      'hooks',
+      'stable',
+      'overview',
+      'world',
+      'lore',
+      'rules',
+    ]) {
+      await page.evaluate((target) => {
+        location.hash = target;
+      }, target);
       await expect(page.locator('.app-shell')).toHaveAttribute('data-page', target);
       await expect(page.locator('header.page-header')).toHaveCount(1);
       await expect(page.locator('header.page-header > .page-title h1')).toBeVisible();
