@@ -45,6 +45,8 @@ export function RulebookEmblem({
       className={'rb-emblem ' + className}
       data-symbol={symbol}
       viewBox="0 0 100 100"
+      width="100"
+      height="100"
       aria-hidden="true"
     >
       <defs>
@@ -247,7 +249,7 @@ export function CodexIllustration() {
             d="m42 23 12 1-12 12Zm62 5-12-1 12 12ZM45 80l12 1-12-12Zm59 4-12-1 12-12Z"
             fill={`url(#${id}-gold)`}
           />
-          <g transform="translate(43 27) scale(.55)">
+          <g transform="translate(46 24.5) skewY(4.2) scale(.55)">
             <RulebookEmblem symbol="codex" />
           </g>
           <path d="m104 55 16 1v10l-16-1Z" fill={`url(#${id}-gold)`} stroke="#3a2d1f" />

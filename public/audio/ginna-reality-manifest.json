@@ -1,0 +1,57 @@
+{
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "checked": "2026-10-04",
+  "generator": "scripts/generate-ginna-entry-audio.mjs",
+  "encoding": "PCM estéreo, 48 kHz, 16 bits",
+  "description": "Trinca seca em três estalos, janela de vidro quebrando com queda de lascas e sopro grave de névoa; gravações recortadas, filtradas e reverberadas.",
+  "sources": [
+    {
+      "id": "entry-crack",
+      "title": "Crackle #1.wav",
+      "author": "abstraktgeneriert (antes Agaxly)",
+      "page": "https://freesound.org/people/abstraktgeneriert/sounds/348942/",
+      "url": "https://cdn.freesound.org/previews/348/348942_3610778-hq.mp3",
+      "sha256": "393f3a698019dce839e907dde1b56ff6122ad7de0bc214a6c88246297e2b4cf2"
+    },
+    {
+      "id": "entry-glass",
+      "title": "Glass Break",
+      "author": "avrahamy",
+      "page": "https://freesound.org/people/avrahamy/sounds/141563/",
+      "url": "https://cdn.freesound.org/previews/141/141563_1422573-hq.mp3",
+      "sha256": "3cf725050dd2a3685f0c80b165c22c63615059f3bb10695ae20ba3dd398bc7b4"
+    },
+    {
+      "id": "entry-mist",
+      "title": "Dark Whoosh",
+      "author": "The-Sacha-Rush",
+      "page": "https://freesound.org/people/The-Sacha-Rush/sounds/657795/",
+      "url": "https://cdn.freesound.org/previews/657/657795_685248-hq.mp3",
+      "sha256": "32cbf655d8edc697b5a9ae8fad180f4758bc7d89e6a47fea669df79037cb6295"
+    }
+  ],
+  "files": [
+    {
+      "file": "ginna-reality-crack.wav",
+      "duration": 1.15,
+      "peak": 0.58,
+      "rms": 0.01733805126691812,
+      "sha256": "512bd64b2236e35a27fabad73be100f3075ecd86f6990a52f2fcec6beb2a2e17"
+    },
+    {
+      "file": "ginna-reality-glass.wav",
+      "duration": 2.05,
+      "peak": 0.7,
+      "rms": 0.08155121699746311,
+      "sha256": "8de5b061b4aee5777efd0f64dd6ddb33dbdfdfda5d84ffbbebe26d4e75b5e156"
+    },
+    {
+      "file": "ginna-reality-mist.wav",
+      "duration": 2.05,
+      "peak": 0.56,
+      "rms": 0.1313787327399054,
+      "sha256": "c006706db87cf96804edd4e66f2bd9b7ca0ae2412bad013b89ffd703dcb148bd"
+    }
+  ]
+}

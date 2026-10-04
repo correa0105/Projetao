@@ -295,17 +295,20 @@ alternativa Canvas. Novos recursos de GPU são liberados ao encerrar o retorno.
 ## Realidade se desfazendo ao entrar na visão — 04/10/2026
 
 Por nova decisão do usuário, a entrada por piscada foi substituída. A quinta
-insistência inicia `GinnaEntry`: rachaduras irregulares percorrem a tela e 14
-fragmentos da própria cena diurna se desprendem, giram e caem em profundidade.
-Cópias inertes apenas do cenário atual, recortadas por arestas compartilhadas,
-preservam os animais, a cuidadora e a interface dentro dos pedaços. Modais,
-áudio/vídeo, IDs e páginas ocultas são retirados dessas cópias.
+insistência inicia `GinnaEntry`: uma fissura vertical nasce no centro e puxa
+ramificações menores. Em seguida a abertura cresce e pequenas lascas de vidro
+caem com rotação, separação lateral e gravidade. A cena atual permanece por
+trás do Canvas transparente, sem duplicação do DOM nem grandes painéis.
 
 Névoa escura com textura procedural, ondulações e expansão orgânica vaza junto
-às rupturas até cobrir tudo em 2,7 s. A cena sombria só monta sob cobertura
+à fissura até cobrir tudo em 3,6 s. A cena sombria só monta sob cobertura
 completamente preta. Aguarda o componente e suas artes; depois de 180 ms,
 a névoa se dispersa sobre a visão da Ginna por 1,55 s. O Canvas limita a
 resolução a 1,25× e libera seu loop após cobrir a tela enquanto aguarda assets.
+Trinca, quebra de vidro e avanço da névoa usam três WAVs locais sincronizados
+com o relógio visual; detalhes e fontes em [STABLE-GINNA-AUDIO.md](STABLE-GINNA-AUDIO.md).
+Ocultar a aba pausa os dois; atraso no carregamento do som retoma a posição
+atual e omite trechos já terminados. A espera inicial por áudio tem teto de 450 ms.
 
 Visão e ruptura usam diálogos no top layer, com ordem controlada no layout.
 Cabeçalho/menu diurnos ficam abaixo da cobertura. A cuidadora escura recebe
@@ -321,7 +324,8 @@ timers, Canvas e callbacks pendentes são cancelados ao sair da página. O retor
 tentáculos, sons, pálpebras e respiração mantém sua sequência anterior.
 
 `node scripts/smoke-ginna-entry.mjs` exercita os componentes reais sem banco:
-fragmentos inertes, montagem sob cobertura, arte atrasada, pixels pretos,
+fissura central, ramificações, lascas e cantos inicialmente transparentes,
+montagem sob cobertura, arte atrasada, pixels pretos,
 dispersão no escuro, camadas acima do HUD, foco, Escape, movimento reduzido,
 navegação durante a ruptura e retorno. O smoke isolado do estábulo também
 aguarda a entrada terminar antes das interações na visão.

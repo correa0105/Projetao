@@ -105,6 +105,8 @@ async function prepareEntry(page) {
         vision: Boolean(vision),
         visionOpen: Boolean(vision?.open),
         coverage,
+        stage: fog?.dataset.stage || null,
+        flakes: Number(fog?.dataset.flakes || 0),
         shards: entry?.querySelectorAll('.ginna-reality-piece').length || 0,
         active: document.activeElement?.className || document.activeElement?.tagName,
         width: innerWidth,
@@ -268,13 +270,10 @@ try {
     if (motion === 'full')
       await page.screenshot({ path: `test-results/ginna-entry-closing-${label}.png` });
     if (motion === 'full') {
-      await expect(entry.locator('.ginna-reality-snapshot')).toHaveCount(14);
-      expect(
-        await entry
-          .locator('.ginna-reality-snapshot')
-          .evaluateAll((nodes) => nodes.every((node) => node.inert)),
-      ).toBe(true);
-      await page.waitForTimeout(750);
+      await expect(entry.locator('.ginna-reality-snapshot')).toHaveCount(0);
+      await expect(entry.locator('.ginna-reality-fog')).toHaveAttribute('data-stage', 'branches');
+      await page.screenshot({ path: `test-results/ginna-entry-branches-${label}.png` });
+      await expect(entry.locator('.ginna-reality-fog')).toHaveAttribute('data-stage', 'flakes');
       await page.screenshot({ path: `test-results/ginna-entry-shattering-${label}.png` });
     }
     await page.waitForFunction(
@@ -338,6 +337,18 @@ try {
     expect(covered.coverage).toHaveLength(3);
     expect(covered.coverage.every((pixel) => pixel.join(',') === '0,0,0,255')).toBe(true);
     expect(covered.shards).toBe(0);
+    if (motion === 'full') {
+      expect(covered.stage).toBe('covered');
+      expect(covered.flakes).toBe(0);
+      for (const stage of ['fissure', 'branches', 'flakes', 'mist'])
+        expect(samples.some((sample) => sample.stage === stage && !sample.vision)).toBe(true);
+      const early = samples.filter((sample) => sample.stage === 'branches');
+      expect(early.length).toBeGreaterThan(0);
+      expect(
+        early.every((sample) => sample.coverage[0][3] === 0 && sample.coverage[2][3] === 0),
+      ).toBe(true);
+      expect(samples.some((sample) => sample.flakes > 0)).toBe(true);
+    }
     expect(
       await page.evaluate(
         () =>
@@ -357,7 +368,7 @@ try {
       returnPreserved: true,
     });
     console.log(
-      `${label}: scene fractures into mist, scene swap fully covered, input blocked, focus restored and cleanup verified.`,
+      `${label}: central fissure, branches and flakes; scene swap fully covered, input blocked, focus restored and cleanup verified.`,
     );
     if (label === 'desktop') {
       // Native click/focus on the second entry must not scroll the oversized nightmare scene.
@@ -439,7 +450,7 @@ try {
   );
   await page.getByRole('button', { name: 'Continuar no mundo' }).click();
   await expect(page.getByRole('button', { name: 'Continuar no mundo' })).toBeFocused();
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(4200);
   await expect(page.locator('.ginna-entry,.ginna-vision,.ginna-return')).toHaveCount(0);
   expect(
     await page.evaluate(

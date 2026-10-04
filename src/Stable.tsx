@@ -117,7 +117,6 @@ export function Stable({
   const [entering, setEntering] = useState(false);
   const [visionReady, setVisionReady] = useState(false);
   const entryDialog = useRef<HTMLDialogElement>(null);
-  const sceneRef = useRef<HTMLElement>(null);
   const presentVision = useCallback(() => {
     const overlay = entryDialog.current;
     if (!overlay?.open) return;
@@ -305,7 +304,6 @@ export function Stable({
   return (
     <section
       className="stable-page"
-      ref={sceneRef}
       aria-label="Estábulo"
       data-ginna-vision={vision || undefined}
       data-ginna-entering={entering || undefined}
@@ -539,7 +537,6 @@ export function Stable({
       {entering && (
         <GinnaEntry
           ready={visionReady}
-          sceneRef={sceneRef}
           overlayRef={entryDialog}
           onCovered={coverEntry}
           onFinished={finishEntry}

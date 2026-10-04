@@ -13,19 +13,24 @@ aba oculta, página inativa e desmontagem interrompem áudio. Movimento reduzido
 remove efeitos decorativos. Leitura e autonomia de edição/exclusão preservadas.
 Detalhes em docs/RULEBOOK.md.
 
-O usuário substituiu a piscada de entrada da Ginna por realidade se quebrando.
-`GinnaEntry` recorta cópias inertes da cena atual em 14 fragmentos irregulares,
-que se desprendem e caem; Canvas procedural expande névoa escura sobre as
-rupturas por 2,7 s. Troca para visão sombria apenas sob cobertura preta integral,
+O usuário refinou a entrada da Ginna: fissura vertical central, ramificações
+finas que se espalham e pequenas lascas de vidro que se desprendem. Canvas
+abre a fissura e deixa névoa escura vazar por ela, cobrindo a tela em 3,6 s.
+Sons distintos de trinca (40 ms), vidro quebrando (1180 ms) e névoa (1530 ms)
+seguem o mesmo relógio visual e as preferências de Efeitos sonoros.
+Troca para visão sombria apenas sob cobertura preta integral,
 aguarda artes prontas e dissipa a névoa em 1,55 s. Movimento reduzido usa fade.
 Ordem modal, foco, bloqueio de entrada e cleanup mantidos. Retorno com tentáculos
 e pálpebras permanece. Detalhes e testes em docs/STABLE-GINNA.md.
+O emblema na capa do pequeno livro de entrada do códice foi centralizado
+na área interna da encadernação, acompanhando sua inclinação.
 
 Validação desta entrega: TypeScript/build cliente e servidor; regras em banco
 descartável (símbolo persistido e enum inválido rejeitado), editor responsivo
 com sons/volume/mute e smoke com API real; ruptura em desktop/celular,
 movimento reduzido, StrictMode, arte atrasada, cobertura por pixels, foco e
-cancelamento; smoke completo do estábulo em PostgreSQL descartável. Docker
+cancelamento; trinca/vidro/névoa em Web Audio real, pausa, volume ao vivo,
+rede lenta e arquivos ausentes; smoke completo do estábulo em PostgreSQL descartável. Docker
 reconstruído, healthcheck saudável e novos bundles confirmados no localhost:3000.
 
 ## Músicas e efeitos sonoros separados (04/10/2026)

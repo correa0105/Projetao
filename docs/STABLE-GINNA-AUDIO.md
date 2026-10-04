@@ -34,3 +34,31 @@ com as letras vermelhas continua independente destes dois efeitos.
 Validação: `node scripts/smoke-ginna-tentacle-audio.mjs` testa reprodução com
 gesto, sincronia das duas fases, desbloqueio tardio, mute, volume zero, pausa,
 cancelamento, movimento reduzido e encerramento do contexto no Edge.
+
+## Fissura, vidro e névoa na entrada
+
+`src/ginna-entry-audio.ts` recebe o relógio visual de `GinnaEntry`. A trinca
+começa em 40 ms, a queda de lascas em 1180 ms e o avanço da névoa em 1530 ms.
+Os efeitos terminam antes da cobertura integral aos 3600 ms. Espera inicial
+por decodificação limitada a 450 ms; falta de arquivo não impede a transição.
+
+- `ginna-reality-crack.wav`: três estalos secos, 1,15 s, pico 58%.
+- `ginna-reality-glass.wav`: vidro real quebrando, 2,05 s, pico 70%.
+- `ginna-reality-mist.wav`: sopro grave e reverberante, 2,05 s, pico 56%.
+
+Os arquivos ficam em `public/audio/`, PCM estéreo de 48 kHz, 16 bits.
+Gravações CC0 do Freesound: Crackle #1 de abstraktgeneriert (348942),
+Glass Break de avrahamy (141563) e Dark Whoosh de The-Sacha-Rush (657795).
+URLs, licenças e hashes estão em `ginna-reality-manifest.json`.
+`node scripts/generate-ginna-entry-audio.mjs` reproduz a mixagem, com verificação
+dos hashes das fontes, desaceleração, filtro, envelopes e reverberação.
+
+Segue Efeitos sonoros, independentemente de Músicas. Mute/volume zero,
+movimento reduzido e ausência de interação inicial ficam silenciosos. Aba
+oculta suspende contexto e relógio; retomar usa o ponto atual. Carregamento
+tardio não repete a trinca já expirada. Desmontagem cancela downloads,
+fontes, listeners e contexto; conclusão libera áudio antes de revelar Ginna.
+
+`node scripts/smoke-ginna-entry-audio.mjs` verifica os WAVs, as três entradas
+sincronizadas em Web Audio real, controles ao vivo, música independente,
+pausa/retomada, rede lenta, arquivos ausentes, movimento reduzido e limpeza.
