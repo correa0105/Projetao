@@ -41,28 +41,52 @@ try {
     .toBeGreaterThan(Number(pausedTime));
   const music = page.locator('audio[data-site-music]');
   await expect(page.locator('.entry-music')).toBeVisible();
-  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
-  const volume = page.getByRole('slider', { name: 'Volume da música', exact: true });
-  await expect(volume).toHaveAttribute('aria-orientation', 'vertical');
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
+  const volume = page.getByRole('slider', { name: 'Volume das músicas', exact: true });
+  const effectsVolume = page.getByRole('slider', {
+    name: 'Volume dos efeitos sonoros',
+    exact: true,
+  });
+  const bell = page.locator('audio[data-shop-door-bell]');
+  await expect(volume).toHaveAttribute('aria-orientation', 'horizontal');
+  await expect(effectsVolume).toHaveAttribute('aria-orientation', 'horizontal');
   const sliderBox = (await volume.boundingBox())!;
-  expect(sliderBox.height).toBeGreaterThan(sliderBox.width * 3);
+  expect(sliderBox.width).toBeGreaterThan(sliderBox.height * 3);
   await expect(volume).toHaveValue('40');
+  await expect(effectsVolume).toHaveValue('40');
   await volume.fill('0');
   expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0);
   await volume.fill('100');
   expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(1);
   await volume.fill('23');
+  await expect(effectsVolume).toHaveValue('40');
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.volume)).toBeCloseTo(0.5, 2);
   await page.reload();
-  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
   await expect(volume).toHaveValue('23');
+  await expect(effectsVolume).toHaveValue('40');
   expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0.23);
+  await effectsVolume.fill('61');
+  expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0.23);
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.volume)).toBeCloseTo(0.61 * 1.25, 2);
+  await page.getByRole('button', { name: 'Silenciar efeitos sonoros', exact: true }).click();
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.muted)).toBe(true);
+  expect(await music.evaluate((a: HTMLAudioElement) => a.muted)).toBe(false);
+  await page.reload();
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
+  await expect(volume).toHaveValue('23');
+  await expect(effectsVolume).toHaveValue('61');
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.muted)).toBe(true);
+  expect(await music.evaluate((a: HTMLAudioElement) => a.muted)).toBe(false);
+  await page.getByRole('button', { name: 'Ativar efeitos sonoros', exact: true }).click();
+  await effectsVolume.fill('40');
   await page.getByRole('button', { name: 'Iniciar aventura', exact: true }).click();
   await expect(page.locator('.login-form')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Pausar animação', exact: true })).toBeVisible();
   await expect
     .poll(() => music.evaluate((a: HTMLAudioElement) => !a.paused && a.currentTime > 0))
     .toBe(true);
-  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
   await volume.fill('40');
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -89,7 +113,7 @@ try {
   await expect
     .poll(() => music.evaluate((a: HTMLAudioElement) => !a.paused && a.currentTime > 0))
     .toBe(true);
-  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
   await volume.fill('65');
   expect(await music.evaluate((a: HTMLAudioElement) => a.volume)).toBe(0.65);
   await page.screenshot({ path: 'test-results/profile-music-volume.png' });
@@ -103,13 +127,14 @@ try {
   });
   expect(range.status()).toBe(206);
   expect((await range.body()).length).toBe(1024);
-  await page.getByRole('button', { name: 'Mutar música', exact: true }).click();
+  await page.getByRole('button', { name: 'Silenciar músicas', exact: true }).click();
   expect(await music.evaluate((a: HTMLAudioElement) => a.muted)).toBe(true);
+  expect(await bell.evaluate((a: HTMLAudioElement) => a.muted)).toBe(false);
   await page.reload();
   expect(await music.evaluate((a: HTMLAudioElement) => a.muted)).toBe(true);
   await page.getByRole('button', { name: 'Abrir menu de personagem e conta', exact: true }).click();
-  await page.getByRole('button', { name: 'Ajustar volume da música', exact: true }).click();
-  await page.getByRole('button', { name: 'Ativar música', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
+  await page.getByRole('button', { name: 'Ativar músicas', exact: true }).click();
   expect(await music.evaluate((a: HTMLAudioElement) => a.muted)).toBe(false);
   await expect
     .poll(() => music.evaluate((a: HTMLAudioElement) => a.currentTime))
@@ -129,7 +154,6 @@ try {
     location.hash = 'shop';
   });
   await expect(music).toHaveAttribute('src', '/audio/medieval-market.ogg');
-  const bell = page.locator('audio[data-shop-door-bell]');
   await expect.poll(() => bell.evaluate((a: HTMLAudioElement) => a.currentTime)).toBeGreaterThan(0);
   expect(await bell.evaluate((a: HTMLAudioElement) => a.loop)).toBe(false);
   expect(await bell.evaluate((a: HTMLAudioElement) => a.volume)).toBeCloseTo(0.5, 2);
@@ -145,7 +169,7 @@ try {
   });
   await expect(music).toHaveAttribute('src', '/audio/medieval-travelers-journey.ogg');
   console.log(
-    'Música: faixa servida em partes, login, ajuste 0–100%, volume persistido, reprodução, mute persistido, faixa exclusiva da loja, sino único por entrada e continuidade entre páginas OK.',
+    'Som: músicas e efeitos com volumes/mute independentes e persistidos, controles horizontais, faixa servida em partes, login, faixa exclusiva da loja, sino único e continuidade entre páginas OK.',
   );
   const viewport = page.locator('.world-map__viewport');
   await expect(viewport).toHaveAttribute('data-dragon-x', /.+/, { timeout: 45000 });

@@ -3,6 +3,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useId,
   useRef,
   useState,
   type ReactNode,
@@ -24,6 +25,22 @@ const MusicContext = createContext({
   beginInterlude: (): (() => void) => () => {},
 });
 const preference = 'alvorada-music-muted';
+type SoundChannel = {
+  muted: boolean;
+  volume: number;
+  toggle: () => void;
+  setVolume: (value: number) => void;
+};
+const EffectsContext = createContext<SoundChannel>({
+  muted: false,
+  volume: 0.4,
+  toggle: () => {},
+  setVolume: () => {},
+});
+
+export function useSoundEffects() {
+  return useContext(EffectsContext);
+}
 
 export function useLoreScrollSound() {
   return useContext(MusicContext).playScroll;
@@ -68,15 +85,36 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       return false;
     }
   });
+  // Existing preferences applied to all audio before the channels were separated.
+  const [effectsVolume, setEffectsVolume] = useState(() => {
+    try {
+      const saved = localStorage.getItem('alvorada-effects-volume');
+      const value = saved === null ? volume : Number(saved);
+      return Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : volume;
+    } catch {
+      return volume;
+    }
+  });
+  const [effectsMuted, setEffectsMuted] = useState(() => {
+    try {
+      const saved = localStorage.getItem('alvorada-effects-muted');
+      return saved === null ? muted : saved === 'true';
+    } catch {
+      return muted;
+    }
+  });
+  const effects = useRef({ muted: effectsMuted, volume: effectsVolume });
+  effects.current = { muted: effectsMuted, volume: effectsVolume };
   useEffect(() => {
     const player = audio.current!;
     const doorBell = bell.current!;
     let currentRoute = location.hash;
     player.volume = volume;
-    doorBell.volume = Math.min(1, volume * 1.25);
+    doorBell.volume = Math.min(1, effectsVolume * 1.25);
     const playBell = () => {
       if (!bellPending.current || document.hidden) return;
       bellPending.current = false;
+      if (effects.current.muted || effects.current.volume === 0) return;
       doorBell.currentTime = 0;
       void doorBell.play().catch(() => {
         bellPending.current = location.hash === '#shop';
@@ -126,20 +164,30 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   }, []);
   useEffect(() => {
     audio.current!.volume = volume;
-    bell.current!.volume = Math.min(1, volume * 1.25);
-    scroll.current!.volume = Math.min(1, volume * 1.45);
     try {
       localStorage.setItem('alvorada-music-volume', String(volume));
     } catch {}
   }, [volume]);
   useEffect(() => {
     audio.current!.muted = muted;
-    bell.current!.muted = muted;
-    scroll.current!.muted = muted;
     try {
       localStorage.setItem(preference, String(muted));
     } catch {}
   }, [muted]);
+  useEffect(() => {
+    bell.current!.volume = Math.min(1, effectsVolume * 1.25);
+    scroll.current!.volume = Math.min(1, effectsVolume * 1.45);
+    bell.current!.muted = effectsMuted;
+    scroll.current!.muted = effectsMuted;
+    if (effectsMuted || effectsVolume === 0) {
+      bell.current!.pause();
+      scroll.current!.pause();
+    }
+    try {
+      localStorage.setItem('alvorada-effects-volume', String(effectsVolume));
+      localStorage.setItem('alvorada-effects-muted', String(effectsMuted));
+    } catch {}
+  }, [effectsVolume, effectsMuted]);
   useEffect(() => {
     if (!interlude.current) void audio.current!.play().catch(() => {});
   }, [track]);
@@ -150,51 +198,65 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
         volume,
         beginInterlude,
         setVolume: (value) => {
+          if (!Number.isFinite(value)) return;
           setVolume(Math.max(0, Math.min(1, value)));
           if (value > 0) setMuted(false);
         },
         toggle: () => setMuted((value) => !value),
         playScroll: () => {
           const sound = scroll.current;
-          if (!sound || muted || volume === 0) return;
+          if (!sound || effectsMuted || effectsVolume === 0 || document.hidden) return;
           sound.currentTime = 0;
           void sound.play().catch(() => {});
         },
       }}
     >
-      <audio
-        ref={audio}
-        src={track}
-        loop
-        preload="auto"
-        muted={muted}
-        data-site-music
-        aria-hidden="true"
-      />
-      <audio
-        ref={bell}
-        src="/audio/shop-door-bell.wav?v=old-shop-door-5"
-        preload="auto"
-        muted={muted}
-        data-shop-door-bell
-        aria-hidden="true"
-      />
-      {children}
-      <audio
-        ref={scroll}
-        src="/audio/lore-scroll-open.wav"
-        preload="auto"
-        muted={muted}
-        data-lore-scroll-sound
-        aria-hidden="true"
-      />
+      <EffectsContext.Provider
+        value={{
+          muted: effectsMuted,
+          volume: effectsVolume,
+          toggle: () => setEffectsMuted((value) => !value),
+          setVolume: (value) => {
+            if (!Number.isFinite(value)) return;
+            setEffectsVolume(Math.max(0, Math.min(1, value)));
+            if (value > 0) setEffectsMuted(false);
+          },
+        }}
+      >
+        <audio
+          ref={audio}
+          src={track}
+          loop
+          preload="auto"
+          muted={muted}
+          data-site-music
+          aria-hidden="true"
+        />
+        <audio
+          ref={bell}
+          src="/audio/shop-door-bell.wav?v=old-shop-door-5"
+          preload="auto"
+          muted={effectsMuted}
+          data-shop-door-bell
+          aria-hidden="true"
+        />
+        {children}
+        <audio
+          ref={scroll}
+          src="/audio/lore-scroll-open.wav"
+          preload="auto"
+          muted={effectsMuted}
+          data-lore-scroll-sound
+          aria-hidden="true"
+        />
+      </EffectsContext.Provider>
     </MusicContext.Provider>
   );
 }
 
 export function MusicToggle() {
   const { muted, toggle } = useContext(MusicContext);
-  const label = muted ? 'Ativar música' : 'Mutar música';
+  const label = muted ? 'Ativar músicas' : 'Silenciar músicas';
   return (
     <button
       type="button"
@@ -209,8 +271,60 @@ export function MusicToggle() {
   );
 }
 
+function SoundChannelControl({
+  channel,
+  label,
+  settings,
+}: {
+  channel: 'music' | 'effects';
+  label: string;
+  settings: SoundChannel;
+}) {
+  const silent = settings.muted || settings.volume === 0;
+  const action = settings.muted
+    ? `Ativar ${label.toLowerCase()}`
+    : `Silenciar ${label.toLowerCase()}`;
+  return (
+    <div className={'sound-channel' + (silent ? ' is-muted' : '')} data-channel={channel}>
+      <div className="sound-channel-header">
+        <span>{label}</span>
+        <button
+          type="button"
+          className="music-toggle"
+          aria-label={action}
+          title={action}
+          aria-pressed={settings.muted}
+          onClick={settings.toggle}
+        >
+          {silent ? (
+            <VolumeX size={15} aria-hidden="true" />
+          ) : (
+            <Volume2 size={15} aria-hidden="true" />
+          )}
+        </button>
+      </div>
+      <div className="sound-channel-volume">
+        <input
+          aria-label={channel === 'music' ? 'Volume das músicas' : 'Volume dos efeitos sonoros'}
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          aria-orientation="horizontal"
+          value={Math.round(settings.volume * 100)}
+          onChange={(e) => settings.setVolume(Number(e.target.value) / 100)}
+        />
+        <output>{Math.round(settings.volume * 100)}%</output>
+      </div>
+    </div>
+  );
+}
+
 export function MusicControls({ login = false }: { login?: boolean }) {
-  const { volume, muted, setVolume } = useContext(MusicContext);
+  const music = useContext(MusicContext);
+  const effects = useSoundEffects();
+  const panelId = useId();
+  const silent = (music.muted || music.volume === 0) && (effects.muted || effects.volume === 0);
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -227,6 +341,7 @@ export function MusicControls({ login = false }: { login?: boolean }) {
       className={'music-controls' + (login ? ' entry-music' : '')}
       onKeyDown={(e) => {
         if (e.key === 'Escape') {
+          e.preventDefault();
           e.stopPropagation();
           setOpen(false);
           root.current?.querySelector<HTMLButtonElement>('.music-settings-trigger')?.focus();
@@ -236,28 +351,27 @@ export function MusicControls({ login = false }: { login?: boolean }) {
       <button
         type="button"
         className="music-settings-trigger"
-        aria-label="Ajustar volume da música"
+        aria-label="Configurações de som"
+        title="Configurações de som"
+        aria-controls={open ? panelId : undefined}
         aria-expanded={open}
         onClick={() => setOpen(!open)}
       >
-        {muted || volume === 0 ? <VolumeX size={14} /> : <Volume2 size={14} />}
+        {silent ? (
+          <VolumeX size={14} aria-hidden="true" />
+        ) : (
+          <Volume2 size={14} aria-hidden="true" />
+        )}
       </button>
       {open && (
-        <div className="music-volume-panel">
-          <output>{Math.round(volume * 100)}%</output>
-          <span className="music-volume-limit">100%</span>
-          <input
-            aria-label="Volume da música"
-            type="range"
-            min="0"
-            max="100"
-            step="1"
-            aria-orientation="vertical"
-            value={Math.round(volume * 100)}
-            onChange={(e) => setVolume(Number(e.target.value) / 100)}
-          />
-          <span className="music-volume-limit">0%</span>
-          <MusicToggle />
+        <div
+          className="music-volume-panel"
+          id={panelId}
+          role="group"
+          aria-label="Configurações de som"
+        >
+          <SoundChannelControl channel="music" label="Músicas" settings={music} />
+          <SoundChannelControl channel="effects" label="Efeitos sonoros" settings={effects} />
         </div>
       )}
     </div>

@@ -10,13 +10,14 @@ await writeFile(
 <body><div id="preview"></div><script type="module">
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import {SiteMusicProvider,useMusicInterlude} from '/src/SiteMusic.tsx';
+import {SiteMusicProvider,useMusicInterlude,useSoundEffects} from '/src/SiteMusic.tsx';
 import {GinnaReturn} from '/src/GinnaReturn.tsx';
 import '/src/styles.css'; import '/src/theme.css'; import '/src/stable.css';
 function Preview() {
   const [running,setRunning]=React.useState(new URLSearchParams(location.search).has('auto'));
-  const {setVolume,toggle}=useMusicInterlude();
-  window.audioControls={setVolume,toggle,remove:()=>setRunning(false)};
+  const {setVolume,toggle}=useSoundEffects();
+  const music=useMusicInterlude();
+  window.audioControls={setVolume,toggle,setMusicVolume:music.setVolume,toggleMusic:music.toggle,remove:()=>setRunning(false)};
   const covered=React.useCallback(()=>{window.audioCovered=true},[]);
   const finished=React.useCallback(()=>{window.audioFinished=true;setRunning(false)},[]);
   return React.createElement(React.Fragment,null,
@@ -44,8 +45,10 @@ async function fresh({
   const context = await browser.newContext({ reducedMotion });
   await context.addInitScript(
     ({ muted, volume }) => {
-      localStorage.setItem('alvorada-music-muted', String(muted));
-      localStorage.setItem('alvorada-music-volume', String(volume));
+      localStorage.setItem('alvorada-effects-muted', String(muted));
+      localStorage.setItem('alvorada-effects-volume', String(volume));
+      localStorage.setItem('alvorada-music-muted', 'false');
+      localStorage.setItem('alvorada-music-volume', '0.4');
       window.audioTrace = [];
       window.audioContexts = [];
       const Native = window.AudioContext;

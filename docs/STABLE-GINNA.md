@@ -75,7 +75,7 @@ do visitante em 420 ms; com a tela completamente preta, o cenário escuro é
 retirado. Após uma pausa de 380 ms, os olhos reabrem em 720 ms sobre o estábulo
 normal, com a montaria/equipamentos preservados, e o foco volta à cuidadora.
 Uma gravação real e curta de respiração ofegante acompanha o gesto e continua
-por cerca de 4,27 segundos no total, sem loop. Respeita mute/volume geral
+por cerca de 4,27 segundos no total, sem loop. Respeita mute/volume de Efeitos sonoros
 (125%, limitado a 100%) e para ao ocultar a aba ou sair do estábulo.
 Escape revela
 a resposta e não encerra a cena. Ocultar a aba pausa a música, mantendo a
@@ -87,7 +87,7 @@ em movimento. Escape não interrompe a transição; animações/timer são cance
 ao desmontar a página.
 
 A música principal é pausada, preservando sua posição. A trilha temporária
-usa o MP3 fornecido pelo usuário em loop, respeita volume/mute e para ao
+usa o MP3 fornecido pelo usuário em loop, respeita volume/mute de Músicas e para ao
 encerrar a visão; a música principal retoma do ponto anterior. Controle de som
 disponível dentro da cena. Nenhum iframe externo.
 
@@ -159,7 +159,7 @@ Cada pico vermelho (10% e 27% do ciclo de 1,6 s) acompanha um batimento
 cardíaco grave abafado. `useGinnaHeartbeat.ts` usa Web Audio e o relógio da
 própria animação CSS para manter cor/som sincronizados, sem um loop de áudio
 separado. Som sintetizado localmente, sem dependência de gravação externa.
-Respeita volume/mute do site, pausa ao ocultar a aba e encerra recursos ao
+Respeita volume/mute de Efeitos sonoros, pausa ao ocultar a aba e encerra recursos ao
 desmontar; movimento reduzido, sem pulso visual, também desativa os batimentos.
 Trocar para a resposta à promessa mantém a mesma animação e sincronia.
 

@@ -1,5 +1,23 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Músicas e efeitos sonoros separados (04/10/2026)
+
+Configurações de som oferece dois controles independentes, Músicas e Efeitos
+sonoros, cada um com volume de 0–100% e silenciar/ativar. Painel horizontal
+compacto no login, perfil e visão da Ginna. Preferências antigas migram para
+os efeitos na primeira visita, preservando o volume/silêncio anterior; depois
+cada canal persiste separadamente no navegador.
+
+`useMusicInterlude` controla trilhas; `useSoundEffects` controla sino da loja,
+pergaminho, balcão, batimentos, tentáculos e respiração. A música da visão e
+a atenuação durante o retorno continuam no canal de músicas. Volume zero/mute
+de efeitos interrompe os sons sem silenciar a trilha. Detalhes e verificações
+em docs/SOUND-SETTINGS.md. Sem alterações SQL ou de compras.
+
+Ilustrador local reativado no host a pedido do usuário: sessão ChatGPT validada
+e heartbeat disponível confirmado. Continua separado do Docker, conforme
+docs/CHARACTER-ART.md; reiniciar a aplicação não inicia esse processo.
+
 ## Editar e excluir todo o conteúdo da biblioteca (04/10/2026)
 
 Corrigida a permissão de Regras para reconhecer `lore_folder_managers`. A conta

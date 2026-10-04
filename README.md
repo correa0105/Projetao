@@ -271,11 +271,19 @@ Refino do Mundo em 30/09/2026: ondas costeiras móveis, árvores menos densas co
 
 O login usa o mesmo Mundo 3D animado, sem os controles de navegação. **Pausar animação** congela a cena; **Retomar animação** continua do mesmo ponto. O botão permanece disponível no formulário, e a preferência de movimento reduzido do sistema é respeitada.
 
-A página Início tem fundo de salão da guilda com madeira escura e luz de velas nas laterais, e exibe somente publicações reais. Os exemplos fixos sem edição foram removidos. Arte e prompt em `docs/HOME-ART.md`. O próprio ícone de som abre uma barra vertical de volume logo abaixo; o botão de mutar fica no mesmo controle.
+A página Início tem fundo de salão da guilda com madeira escura e luz de velas nas laterais, e exibe somente publicações reais. Os exemplos fixos sem edição foram removidos. Arte e prompt em `docs/HOME-ART.md`. O ícone de som abre os controles separados de Músicas e Efeitos sonoros, cada um com volume e botão de silenciar.
 
 No Início, **Nova publicação** abre o editor de artigos, imagens e reuniões. Escolha destaque lateral, cartão em paisagem/retrato ou nota; envie uma imagem, formate o texto e defina um link interno (como `#world`) ou http/https. **Visualizar** mostra a composição antes de publicar. Autores podem editar/remover suas publicações; a staff existente pode moderar. Os conteúdos e imagens são persistidos no PostgreSQL pela migration 040. Encontros podem ser adicionados ao calendário; missões das próximas 24 horas continuam na agenda.
 
-A música começa a 40%, após a primeira interação quando necessário. Os controles no login e junto ao retrato superior direito permitem mutar e ajustar de 0% a 100%; ambas as preferências persistem no navegador. A loja usa a faixa Medieval Market enviada pelo usuário e toca um sino metálico curto uma vez ao entrar. As demais páginas mantêm Medieval Travelers Journey, com continuidade entre rotas que usam a mesma faixa. `siteSoundtracks` (`src/SiteMusic.tsx`) define as faixas por página; o sino também respeita volume e mute.
+Músicas e efeitos começam a 40%, após a primeira interação quando necessário.
+Os controles no login, junto ao retrato superior direito e na visão da Ginna
+permitem ajustar de 0% a 100% e silenciar cada canal separadamente. Preferências
+persistem no navegador; as antigas são preservadas na migração. A loja usa a
+faixa Medieval Market enviada pelo usuário e toca um sino metálico curto uma
+vez ao entrar. As demais páginas mantêm Medieval Travelers Journey, com
+continuidade entre rotas que usam a mesma faixa. `siteSoundtracks`
+(`src/SiteMusic.tsx`) define as faixas por página; sino, pergaminho, balcão e
+sons da Ginna seguem Efeitos sonoros. [Controles de som](docs/SOUND-SETTINGS.md).
 
 Colocar itens no balcão toca sons de metal, corrente, esferas, vidro, madeira,
 papel, couro ou tecido, proporcionais ao peso e tamanho. Poções têm contato

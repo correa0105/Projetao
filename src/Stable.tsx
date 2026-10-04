@@ -16,7 +16,7 @@ import { post } from './api';
 import { money } from '../shared/rules';
 import { Modal } from './components';
 import { GinnaBalloon } from './GinnaBalloon';
-import { useMusicInterlude } from './SiteMusic';
+import { useSoundEffects } from './SiteMusic';
 import {
   ginnaGreeting,
   ginnaFarewell,
@@ -118,7 +118,9 @@ export function Stable({
   }, [vision]);
   const [returning, setReturning] = useState(false);
   const breathing = useRef<HTMLAudioElement>(null);
-  const { muted, volume } = useMusicInterlude();
+  const { muted, volume } = useSoundEffects();
+  const effectSettings = useRef({ muted, volume });
+  effectSettings.current = { muted, volume };
   const warnings = useRef(0);
   const keeperTrigger = useRef<HTMLButtonElement>(null);
   const mountVisits = useRef<Record<string, number>>({});
@@ -154,7 +156,12 @@ export function Stable({
   }
   const finishVision = useCallback(() => {
     const player = breathing.current;
-    if (player) {
+    if (
+      player &&
+      !document.hidden &&
+      !effectSettings.current.muted &&
+      effectSettings.current.volume > 0
+    ) {
       player.currentTime = 0;
       void player.play().catch(() => {});
     }
@@ -175,6 +182,7 @@ export function Stable({
     if (player) {
       player.muted = muted;
       player.volume = Math.min(1, volume * 1.25);
+      if (muted || volume <= 0) player.pause();
     }
   }, [muted, volume]);
   useEffect(() => {

@@ -386,15 +386,39 @@ try {
     return [first, second];
   });
   expect(shakes[0]).not.toBe(shakes[1]);
-  await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
-  await vision.getByRole('button', { name: 'Mutar música', exact: true }).click();
-  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.muted)).toBe(true);
+  await vision.getByRole('button', { name: 'Configurações de som' }).click();
+  const musicVolumeControl = vision.getByRole('slider', {
+    name: 'Volume das músicas',
+    exact: true,
+  });
+  const effectsVolumeControl = vision.getByRole('slider', {
+    name: 'Volume dos efeitos sonoros',
+    exact: true,
+  });
+  const effectsBefore = Number(await effectsVolumeControl.inputValue()) / 100;
+  await musicVolumeControl.fill('23');
+  await expect(vision).toHaveAttribute('data-heartbeat-volume', String(effectsBefore));
+  await effectsVolumeControl.fill('35');
+  await expect(vision).toHaveAttribute('data-heartbeat-volume', '0.35');
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.volume)).toBe(0.23);
+  await vision.getByRole('button', { name: 'Silenciar efeitos sonoros', exact: true }).click();
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.muted)).toBe(false);
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.paused)).toBe(false);
   await expect(vision).toHaveAttribute('data-heartbeat-state', 'muted');
   const mutedBeats = await vision.getAttribute('data-heartbeat-beats');
   await page.waitForTimeout(350);
   expect(await vision.getAttribute('data-heartbeat-beats')).toBe(mutedBeats);
-  await vision.getByRole('button', { name: 'Ativar música', exact: true }).click();
-  await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
+  await vision.getByRole('button', { name: 'Ativar efeitos sonoros', exact: true }).click();
+  await vision.getByRole('button', { name: 'Silenciar músicas', exact: true }).click();
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.muted)).toBe(true);
+  await expect(vision).toHaveAttribute('data-heartbeat-state', 'playing');
+  await expect
+    .poll(() => vision.getAttribute('data-heartbeat-beats').then(Number))
+    .toBeGreaterThan(Number(mutedBeats));
+  await vision.getByRole('button', { name: 'Ativar músicas', exact: true }).click();
+  await musicVolumeControl.fill(String(Math.round(musicBefore.volume * 100)));
+  await effectsVolumeControl.fill(String(Math.round(effectsBefore * 100)));
+  await vision.getByRole('button', { name: 'Configurações de som' }).click();
   await page.screenshot({ path: 'test-results/ginna-vision-desktop.png' });
   // It must persist beyond the former automatic timeout, keeping the music.
   await page.waitForTimeout(6100);
@@ -473,7 +497,7 @@ try {
     .toBe(true);
   expect(await breath.evaluate((element: HTMLAudioElement) => element.loop)).toBe(false);
   expect(await breath.evaluate((element: HTMLAudioElement) => element.volume)).toBe(
-    Math.min(1, musicBefore.volume * 1.25),
+    Math.min(1, effectsBefore * 1.25),
   );
   await expect(vision).toHaveCount(0);
   expect(await visionPlayer!.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
@@ -525,8 +549,9 @@ try {
     await ominousText.evaluate((element) => parseFloat(getComputedStyle(element).fontSize)),
   ).toBeGreaterThan(normalMobileTextFontSize);
   await page.screenshot({ path: 'test-results/ginna-vision-mobile.png' });
-  await vision.getByRole('button', { name: 'Ajustar volume da música' }).click();
-  await vision.getByRole('button', { name: 'Mutar música', exact: true }).click();
+  await vision.getByRole('button', { name: 'Configurações de som' }).click();
+  await vision.getByRole('button', { name: 'Silenciar efeitos sonoros', exact: true }).click();
+  expect(await visionMusic.evaluate((element: HTMLAudioElement) => element.muted)).toBe(false);
   await promise.click();
   await expect(recovery).toBeVisible();
   await expect(recovery).toHaveAttribute('data-motion', 'reduced');

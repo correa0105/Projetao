@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { GinnaTentacles, animateGinnaTentacles } from './GinnaTentacles';
-import { useMusicInterlude } from './SiteMusic';
+import { useSoundEffects } from './SiteMusic';
 import { createGinnaTentacleAudio } from './ginna-tentacle-audio';
 
 /** Cover the nightmare before changing the scene; reopen onto the actual stable. */
@@ -13,7 +13,7 @@ export function GinnaReturn({
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [phase, setPhase] = useState('reaching');
-  const { muted, volume } = useMusicInterlude();
+  const { muted, volume } = useSoundEffects();
   const settings = useRef({ muted, volume });
   settings.current = { muted, volume };
   const sound = useRef<ReturnType<typeof createGinnaTentacleAudio> | null>(null);

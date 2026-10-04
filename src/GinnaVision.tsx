@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { MusicControls, useMusicInterlude } from './SiteMusic';
+import { MusicControls, useMusicInterlude, useSoundEffects } from './SiteMusic';
 import { GinnaBalloon } from './GinnaBalloon';
 import { GinnaGroundEyes, type GinnaEye } from './GinnaGroundEyes';
 import { ginnaFarewell } from './stable-ginna';
@@ -47,7 +47,8 @@ export function GinnaVision({
   const music = useRef<HTMLAudioElement>(null);
   const [responding, setResponding] = useState(false);
   const [groundEyes3d, setGroundEyes3d] = useState(false);
-  const { muted, volume, beginInterlude } = useMusicInterlude();
+  const { muted: musicMuted, volume: musicVolume, beginInterlude } = useMusicInterlude();
+  const { muted, volume } = useSoundEffects();
   useGinnaHeartbeat(dialog, { muted, volume });
 
   useEffect(() => {
@@ -69,10 +70,10 @@ export function GinnaVision({
 
   useEffect(() => {
     if (music.current) {
-      music.current.volume = volume * (returning ? 0.15 : 1);
-      music.current.muted = muted;
+      music.current.volume = musicVolume * (returning ? 0.15 : 1);
+      music.current.muted = musicMuted;
     }
-  }, [muted, volume, returning]);
+  }, [musicMuted, musicVolume, returning]);
 
   return (
     <dialog
@@ -162,7 +163,7 @@ export function GinnaVision({
         src="/audio/ginna-lullaby-of-woe.mp3"
         preload="auto"
         loop
-        muted={muted}
+        muted={musicMuted}
         data-ginna-music
         aria-hidden="true"
       />

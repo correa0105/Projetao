@@ -22,7 +22,8 @@ quantidade de um já colocado. Arrastar pelo balcão toca ao soltar somente se
 houve mudança real de posição. Examinar, remover, cancelar arraste ou tentar
 adicionar em uma mesa cheia/no limite de 99 unidades não toca impacto.
 
-`src/shop-counter-audio.ts` usa o mesmo volume/mute de `SiteMusic`, prepara
+`src/shop-counter-audio.ts` usa o canal Efeitos sonoros de `SiteMusic`, com
+volume/mute independentes da música (docs/SOUND-SETTINGS.md), prepara
 arquivos na interação e mantém um contexto Web Audio por visita. Carregamento
 e decodificação são independentes por material: um arquivo indisponível não
 silencia os demais nem interfere no carrinho. Há limite

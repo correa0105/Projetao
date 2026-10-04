@@ -22,7 +22,10 @@ com espera máxima de 1200 ms para que uma falha de áudio não impeça o retorn
 O contexto exige interação do visitante. Se ela chegar tarde, o som começa na
 posição atual da animação, sem repetir a emergência.
 
-Volume zero, mute e movimento reduzido ficam silenciosos. Ocultar a aba pausa
+Os tentáculos, batimentos e respiração seguem Efeitos sonoros; a trilha da
+visão segue Músicas. Os dois canais têm volume e silêncio próprios no painel
+Configurações de som (docs/SOUND-SETTINGS.md).
+Volume zero/mute dos efeitos e movimento reduzido ficam silenciosos. Ocultar a aba pausa
 o áudio e a progressão dos tentáculos. Retomar usa o mesmo instante. Cancelar
 ou concluir libera fontes, listeners e contexto; os efeitos terminam antes
 de fechar as pálpebras e da respiração de volta ao dia. O batimento sincronizado
@@ -31,4 +34,3 @@ com as letras vermelhas continua independente destes dois efeitos.
 Validação: `node scripts/smoke-ginna-tentacle-audio.mjs` testa reprodução com
 gesto, sincronia das duas fases, desbloqueio tardio, mute, volume zero, pausa,
 cancelamento, movimento reduzido e encerramento do contexto no Edge.
-

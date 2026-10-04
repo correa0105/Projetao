@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, type RefObject } from 'react';
 import { shopWeight } from '../shared/armor-bundles';
 import type { Item } from './types';
-import { useMusicInterlude } from './SiteMusic';
+import { useSoundEffects } from './SiteMusic';
 
 type Settings = { muted: boolean; volume: number };
 type Kind =
@@ -390,7 +390,7 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
 }
 
 export function useShopCounterSound(root: RefObject<HTMLElement | null>) {
-  const { muted, volume } = useMusicInterlude();
+  const { muted, volume } = useSoundEffects();
   const preferences = useRef({ muted, volume });
   preferences.current = { muted, volume };
   const player = useRef<ReturnType<typeof createShopCounterAudio> | null>(null);

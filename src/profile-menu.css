@@ -79,7 +79,8 @@
   .profile-menu-controls,
 .profile-menu:has(
     .character-selector-trigger[aria-expanded='true'],
-    .notifications-trigger[aria-expanded='true']
+    .notifications-trigger[aria-expanded='true'],
+    .music-settings-trigger[aria-expanded='true']
   )
   .profile-menu-controls {
   opacity: 1;
@@ -96,6 +97,11 @@
   to {
     clip-path: inset(0 0 0 0);
   }
+}
+:root .profile-menu:has(.music-settings-trigger[aria-expanded='true']) .profile-menu-controls {
+  clip-path: none;
+  transition: none;
+  animation: none;
 }
 :root .app-shell .profile-menu .topbar-right {
   display: flex;
@@ -217,28 +223,6 @@
   }
 }
 
-:root .app-shell .profile-menu .music-toggle {
-  display: grid;
-  place-items: center;
-  flex: 0 0 24px;
-  width: 24px;
-  height: 24px;
-  min-height: 24px;
-  margin-left: 6px;
-  padding: 0;
-  border: 1px solid #ad8c5838;
-  border-radius: 5px;
-  background: #171611;
-  color: #d9bd87;
-  cursor: pointer;
-}
-:root .app-shell .profile-menu .music-toggle:hover {
-  background: #51432b;
-}
-:root .app-shell .profile-menu .music-toggle:focus-visible {
-  outline: 2px solid #d9bd87;
-  outline-offset: 2px;
-}
 .music-controls {
   position: relative;
   display: flex;
@@ -247,59 +231,95 @@
   margin-left: 5px;
   flex: 0 0 auto;
 }
-.music-controls .music-toggle,
-.music-settings-trigger {
+:root .music-controls :is(.music-toggle, .music-settings-trigger) {
   display: grid;
   place-items: center;
   width: 28px;
   height: 28px;
   min-height: 28px;
   flex: 0 0 auto;
+  margin: 0;
   padding: 0;
   border: 1px solid #ad8c5838;
   border-radius: 5px;
-  background: #171611;
+  background: #181815;
   color: #d9bd87;
   cursor: pointer;
 }
-.music-controls button:hover {
-  background: #51432b;
+:root .music-controls button:hover {
+  background: #393329;
 }
-.music-controls button:focus-visible,
-.music-controls input:focus-visible {
+:root .music-controls button:focus-visible,
+:root .music-controls input:focus-visible {
   outline: 2px solid #d9bd87;
   outline-offset: 3px;
 }
 .music-volume-panel {
   position: absolute;
   z-index: 60;
-  left: 50%;
+  right: 0;
+  left: auto;
   top: calc(100% + 8px);
-  transform: translateX(-50%);
-  width: 58px;
-  padding: 12px 8px;
+  width: 268px;
+  max-width: calc(100vw - 32px);
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  gap: 12px;
   background: linear-gradient(135deg, #242320f7, #141614fa);
   border: 1px solid #ad8c5859;
   border-radius: 8px;
   box-shadow: 0 12px 32px #0006;
-  color: #e5d5b8;
-  font: 12px/1.5 var(--sans);
+  color: #e5dcd0;
+  font: 13px/1.5 var(--sans, 'DM Sans', sans-serif);
 }
-.music-volume-panel output {
+.sound-channel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.sound-channel + .sound-channel {
+  padding-top: 12px;
+  border-top: 1px solid #ad8c5829;
+}
+.sound-channel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 32px;
+  font-weight: 550;
+}
+:root .music-controls .sound-channel .music-toggle {
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  flex: 0 0 32px;
+}
+.sound-channel-volume {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sound-channel-volume output {
+  min-width: 36px;
   color: #d9b36e;
   font-variant-numeric: tabular-nums;
+  text-align: right;
 }
 :root .music-volume-panel input[type='range'] {
-  writing-mode: vertical-lr;
-  direction: rtl;
+  appearance: none;
+  -webkit-appearance: none;
+  writing-mode: horizontal-tb;
+  direction: ltr;
   display: block;
-  width: 24px;
-  height: 132px;
-  min-height: 132px;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  height: 34px;
+  min-height: 34px;
   padding: 0;
   margin: 0;
   border: 0;
@@ -307,11 +327,41 @@
   accent-color: #d9b36e;
   cursor: pointer;
   background: none;
-  touch-action: none;
+  touch-action: pan-y;
 }
-.music-volume-limit {
-  font-size: 9px;
-  color: #b8aa90;
+:root .music-volume-panel input[type='range']::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 3px;
+  background: #766348;
+}
+:root .music-volume-panel input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 19px;
+  height: 19px;
+  margin-top: -7px;
+  border: 1px solid #e0c68e;
+  border-radius: 50%;
+  background: #c4a268;
+  box-shadow: 0 2px 5px #0006;
+}
+:root .music-volume-panel input[type='range']::-moz-range-track {
+  height: 5px;
+  border-radius: 3px;
+  background: #766348;
+}
+:root .music-volume-panel input[type='range']::-moz-range-progress {
+  height: 5px;
+  border-radius: 3px;
+  background: #c4a268;
+}
+:root .music-volume-panel input[type='range']::-moz-range-thumb {
+  width: 17px;
+  height: 17px;
+  border: 1px solid #e0c68e;
+  border-radius: 50%;
+  background: #c4a268;
+  box-shadow: 0 2px 5px #0006;
 }
 .entry-music {
   position: fixed;
@@ -326,8 +376,10 @@
   backdrop-filter: blur(8px);
 }
 
-:root .app-shell .profile-menu .music-controls .music-toggle {
-  margin-left: 0;
+:root .app-shell .profile-menu .music-volume-panel {
+  right: -55px;
+  top: calc(100% + 14px);
+  max-width: calc(100vw - 2 * var(--page-header-edge, 16px));
 }
 @media (max-width: 600px) {
   .profile-menu-controls {

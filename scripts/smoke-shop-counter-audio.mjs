@@ -123,14 +123,14 @@ await writeFile(
 <body><div id="preview"></div><script type="module">
 import React from 'react';import {createRoot} from 'react-dom/client';
 import {Shop} from '/src/Shop.tsx';
-import {SiteMusicProvider,useMusicInterlude} from '/src/SiteMusic.tsx';
+import {SiteMusicProvider,useMusicInterlude,useSoundEffects} from '/src/SiteMusic.tsx';
 import {FlashMessages} from '/src/FlashMessage.tsx';
 import '/src/styles.css';import '/src/alvorada.css';import '/src/journey.css';import '/src/theme.css';
 import '/src/page-header.css';import '/src/npc-speech.css';
 const catalog=${JSON.stringify(catalog)};
 const character={id:'sound-test',name:'Arden',gold_cp:10000000};
-function Preview(){const [active,setActive]=React.useState(true);const {setVolume,toggle}=useMusicInterlude();
-window.counterControls={setVolume,toggle,remove:()=>setActive(false)};
+function Preview(){const [active,setActive]=React.useState(true);const {setVolume,toggle}=useSoundEffects();const music=useMusicInterlude();
+window.counterControls={setVolume,toggle,setMusicVolume:music.setVolume,toggleMusic:music.toggle,remove:()=>setActive(false)};
 return React.createElement('div',{className:'app-shell','data-page':'shop'},
 React.createElement('main',{className:'main-shell'},React.createElement('div',{className:'main-content'},
 active&&React.createElement(Shop,{catalog,character,onPurchased:async()=>{}}))));}
@@ -158,8 +158,10 @@ async function fresh({
   const context = await browser.newContext({ viewport });
   await context.addInitScript(
     ({ muted, volume, audioUnavailable, audioFiles }) => {
-      localStorage.setItem('alvorada-music-muted', String(muted));
-      localStorage.setItem('alvorada-music-volume', String(volume));
+      localStorage.setItem('alvorada-effects-muted', String(muted));
+      localStorage.setItem('alvorada-effects-volume', String(volume));
+      localStorage.setItem('alvorada-music-muted', 'false');
+      localStorage.setItem('alvorada-music-volume', '0.4');
       window.counterTrace = [];
       window.counterContexts = [];
       if (audioUnavailable) {
