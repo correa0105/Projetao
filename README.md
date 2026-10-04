@@ -100,7 +100,12 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
   renomear, reorganizar, excluir e restaurar pastas existentes e editar todas
   as crônicas. Pergaminhos ilustrados com efeito azul e som ao abrir.
   [Biblioteca de lore](docs/LORE.md).
-- Regras e House têm conteúdo inicial persistido no SQL.
+- Regras possui códice com capa, índice, busca e editor completo de capítulos,
+  artigos, textos, destaques, listas, tabelas e imagens. A conta autorizada e
+  staff/admin podem publicar edições, importar/exportar e recuperar versões
+  pelo histórico. Conteúdo persistido no SQL; alterações do manual não mudam
+  os cálculos de jogo. [Editor de regras](docs/RULEBOOK.md).
+- House mantém seu conteúdo narrativo inicial persistido no SQL.
 - Interface adaptável para desktop e celular, com tema exclusivamente escuro e menu retrátil com ícones medievais ilustrados.
 
 ## Limites deste protótipo
@@ -162,6 +167,8 @@ npm run test:atlas   # Mundo, visão do reino, missões compartilhadas e celular
 npm run db:migrate   # Aplica migrations pendentes
 npm run db:seed      # Atualiza catálogo e cria conteúdo inicial ausente
 npm run test:shop    # Loja e checkout em PostgreSQL descartável + navegador
+npm run test:rulebook # Regras: API e imagens em PostgreSQL descartável
+npm run test:rulebook -- --browser # Editor e leitura com API real no Edge
 ```
 
 O teste de navegador usa Microsoft Edge instalado. Para Chrome, configure `BROWSER_CHANNEL=chrome`.
@@ -269,6 +276,13 @@ A página Início tem fundo de salão da guilda com madeira escura e luz de vela
 No Início, **Nova publicação** abre o editor de artigos, imagens e reuniões. Escolha destaque lateral, cartão em paisagem/retrato ou nota; envie uma imagem, formate o texto e defina um link interno (como `#world`) ou http/https. **Visualizar** mostra a composição antes de publicar. Autores podem editar/remover suas publicações; a staff existente pode moderar. Os conteúdos e imagens são persistidos no PostgreSQL pela migration 040. Encontros podem ser adicionados ao calendário; missões das próximas 24 horas continuam na agenda.
 
 A música começa a 40%, após a primeira interação quando necessário. Os controles no login e junto ao retrato superior direito permitem mutar e ajustar de 0% a 100%; ambas as preferências persistem no navegador. A loja usa a faixa Medieval Market enviada pelo usuário e toca um sino metálico curto uma vez ao entrar. As demais páginas mantêm Medieval Travelers Journey, com continuidade entre rotas que usam a mesma faixa. `siteSoundtracks` (`src/SiteMusic.tsx`) define as faixas por página; o sino também respeita volume e mute.
+
+Colocar itens no balcão toca impacto proporcional ao peso e tamanho; poções e
+frascos também têm líquido mexendo. A sequência da Ginna recebe emergência
+aquática sinistra e atrito molhado ao envolver o visitante, sincronizados à
+animação. Ambos usam os controles de áudio do site. Fontes e validação em
+[SHOP-AUDIO.md](docs/SHOP-AUDIO.md) e
+[STABLE-GINNA-AUDIO.md](docs/STABLE-GINNA-AUDIO.md).
 
 Verificação isolada do Início e da sombra da estante: `node scripts/test-home-isolated.mjs`. A verificação do dragão também valida reprodução, mute persistido, volume e continuidade de áudio: `node scripts/test-world-dragon-isolated.mjs`. Não executar os testes em produção.
 

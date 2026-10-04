@@ -1,5 +1,45 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Som dos itens no balcão (04/10/2026)
+
+A loja toca impacto de madeira a cada inclusão aceita no balcão, inclusive
+unidades repetidas. Peso e tamanho aumentam intensidade e gravidade do toque;
+poções/frascos/cantis combinam recipiente e líquido mexendo. Soltar um objeto
+reposicionado também toca. Inspeção, exclusão, limites ou mesa cheia ficam
+silenciosos. Gravações CC0, variação discreta, volume/mute compartilhados e
+descarte ao ocultar/sair. Sem mudanças no catálogo, compras ou SQL. Detalhes
+e manifesto em docs/SHOP-AUDIO.md.
+
+## Regras editáveis, Ginna aprovada e áudio (04/10/2026)
+
+A aba Regras agora usa um códice próprio com capa ilustrada, sumário, busca
+sem acentos e navegação entre artigos. O proprietário autorizado
+`correa.l@icloud.com` e staff/admin podem editar apresentação, capa, capítulos,
+artigos e blocos de texto, nota/citação, lista, tabela e imagem. Há reordenação,
+exclusão, prévia, importação/exportação JSON e histórico recuperável como
+rascunho. Salvar publica para os leitores autenticados. As permissões são
+verificadas no servidor, sem promover contas.
+
+Migration 044 mantém documento, revisões e uploads no PostgreSQL. A publicação
+é atômica e exige revisão atual; conflito preserva o rascunho. Imagens enviadas
+ficam privadas para editores até serem usadas na publicação vigente. Seeds
+preservam o livro editado e os registros anteriores de `world_entries`.
+Editar o manual não altera cálculos ou automações de jogo: o texto inicial
+distingue recursos disponíveis de descrições ainda não automatizadas.
+Detalhes em docs/RULEBOOK.md; arte e prompt em docs/RULEBOOK-ART.md.
+
+A quarta advertência mantém exatamente a imagem escolhida pelo usuário em
+`public/stable/ginna-angry-approved.png`, sem clarear ou regenerar. Ela substitui
+a versão WebP anterior, preservada como histórico. A terceira advertência
+continua séria; o retorno restaura a imagem normal.
+
+Tentáculos recebem dois efeitos com gravações reais CC0: emergência aquática
+sinistra e atrito molhado ao envolver o visitante. Eles acompanham o relógio
+da animação em 0 e 2700 ms, encerrando em 5600 ms antes da respiração.
+A trilha da visão cai para 15% durante os efeitos; mute/volume, aba oculta e
+movimento reduzido são respeitados. Fontes, manifesto e testes em
+docs/STABLE-GINNA-AUDIO.md.
+
 ## Ginna brava e palavras totalmente maiúsculas (04/10/2026)
 
 A quarta advertência usa `public/stable/ginna-angry.webp`, expressão muito

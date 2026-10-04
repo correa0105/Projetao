@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { GinnaTentacles, animateGinnaTentacles } from './GinnaTentacles';
+import { useMusicInterlude } from './SiteMusic';
+import { createGinnaTentacleAudio } from './ginna-tentacle-audio';
 
 /** Cover the nightmare before changing the scene; reopen onto the actual stable. */
 export function GinnaReturn({
@@ -11,6 +13,11 @@ export function GinnaReturn({
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [phase, setPhase] = useState('reaching');
+  const { muted, volume } = useMusicInterlude();
+  const settings = useRef({ muted, volume });
+  settings.current = { muted, volume };
+  const sound = useRef<ReturnType<typeof createGinnaTentacleAudio> | null>(null);
+  useEffect(() => sound.current?.setSettings({ muted, volume }), [muted, volume]);
 
   useEffect(() => {
     const overlay = dialog.current!;
@@ -22,7 +29,9 @@ export function GinnaReturn({
     let releaseHold: (() => void) | undefined;
     overlay.dataset.motion = reduced ? 'reduced' : 'full';
     overlay.showModal();
-    const tentacles = animateGinnaTentacles(overlay, reduced);
+    const audio = createGinnaTentacleAudio(overlay, reduced, settings.current);
+    sound.current = audio;
+    let tentacles: ReturnType<typeof animateGinnaTentacles> | undefined;
 
     async function moveLids(closing: boolean) {
       const motions = lids.map((lid, index) => {
@@ -42,8 +51,12 @@ export function GinnaReturn({
     }
 
     void (async () => {
+      await audio.ready;
+      if (cancelled) return;
+      tentacles = animateGinnaTentacles(overlay, reduced, audio.update);
       await tentacles.finished;
       if (cancelled) return;
+      audio.finish();
       setPhase('closing');
       await moveLids(true);
       if (cancelled) return;
@@ -65,7 +78,9 @@ export function GinnaReturn({
       cancelled = true;
       window.clearTimeout(hold);
       releaseHold?.();
-      tentacles.cancel();
+      tentacles?.cancel();
+      audio.dispose();
+      if (sound.current === audio) sound.current = null;
       animations.forEach((animation) => animation.cancel());
       overlay.close();
     };

@@ -123,7 +123,7 @@ export function Stable({
   const keeperTrigger = useRef<HTMLButtonElement>(null);
   const mountVisits = useRef<Record<string, number>>({});
   useEffect(() => {
-    for (const source of ['/stable/ginna-serious.webp', '/stable/ginna-angry.webp']) {
+    for (const source of ['/stable/ginna-serious.webp', '/stable/ginna-angry-approved.png']) {
       const portrait = new Image();
       portrait.src = source;
     }
@@ -445,7 +445,7 @@ export function Stable({
               <img
                 src={
                   warnings.current >= 4
-                    ? '/stable/ginna-angry.webp'
+                    ? '/stable/ginna-angry-approved.png'
                     : warnings.current >= 3
                       ? '/stable/ginna-serious.webp'
                       : '/stable/ginna.webp'

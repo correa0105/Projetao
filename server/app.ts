@@ -1,5 +1,6 @@
 import { homeUpdatesRouter } from './home-updates.js';
 import { loreRouter } from './lore.js';
+import { rulebookRouter } from './rulebook.js';
 import express from 'express';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
@@ -92,7 +93,12 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     helmet({
       contentSecurityPolicy:
         process.env.NODE_ENV === 'production'
-          ? { directives: { 'upgrade-insecure-requests': null } }
+          ? {
+              directives: {
+                'upgrade-insecure-requests': null,
+                imgSrc: ["'self'", 'data:', 'https:'],
+              },
+            }
           : false,
     }),
   );
@@ -110,7 +116,9 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     toNodeHandler(auth),
   );
   app.use((req, res, next) =>
-    req.path === '/api/character-art' || req.path.startsWith('/api/lore')
+    req.path === '/api/character-art' ||
+    req.path.startsWith('/api/lore') ||
+    req.path.startsWith('/api/rulebook')
       ? next()
       : express.json({ limit: '128kb' })(req, res, next),
   );
@@ -139,6 +147,8 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   });
   app.use('/api/character-art', express.json({ limit: '12mb' }));
   app.use('/api/lore', express.json({ limit: '2mb' }));
+  app.use('/api/rulebook', express.json({ limit: '12mb' }));
+  app.use('/api', rulebookRouter());
   app.use('/api', loreRouter());
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());

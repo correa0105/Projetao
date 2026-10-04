@@ -25,7 +25,8 @@
     "test:notice-board": "node scripts/test-notice-board-isolated.mjs",
     "test:stable": "node scripts/test-stable-isolated.mjs",
     "test:shop": "node scripts/test-shop-isolated.mjs",
-    "test:lore": "node scripts/test-lore-isolated.mjs"
+    "test:lore": "node scripts/test-lore-isolated.mjs",
+    "test:rulebook": "node scripts/test-rulebook-isolated.mjs"
   },
   "dependencies": {
     "better-auth": "^1.7.5",

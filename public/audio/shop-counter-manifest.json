@@ -1,0 +1,101 @@
+{
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "checked": "2026-10-04",
+  "generator": "scripts/generate-shop-counter-audio.mjs",
+  "encoding": "PCM WAV mono, 48 kHz, 16 bit, pico 68%",
+  "composition": "Gravações reais de impacto de madeira, recipiente na mesa e água dentro de uma garrafa; recorte do primeiro gesto, filtragem e mixagem. Nenhum bip ou oscilador sintetizado.",
+  "playback": "Impacto proporcional ao peso e tamanho, pitch entre 0,80 e 1,10 com variação pequena; mesmo volume/mute do site; vozes canceladas e contexto encerrado ao ocultar ou sair.",
+  "files": {
+    "wood": {
+      "file": "shop-counter-wood.wav",
+      "sha256": "e02ec3aaff9ee8aba58af22ebee037a5dfa09bc444bc6a0854dba7e0fd7c4311",
+      "duration": 0.55,
+      "peak": 0.68,
+      "rms": 0.15813,
+      "bytes": 52844
+    },
+    "liquid": {
+      "file": "shop-counter-liquid.wav",
+      "sha256": "8aaa81b066d3467647dbc1812357baca37c5a742553cc2badafcc10732d0da19",
+      "duration": 1.08,
+      "peak": 0.68,
+      "rms": 0.10113,
+      "bytes": 103724
+    }
+  },
+  "layers": {
+    "wood": [
+      {
+        "id": "shop-wood",
+        "start": 0,
+        "length": 0.49,
+        "at": 0,
+        "gain": 0.6159377390917853,
+        "cutoff": 7200,
+        "release": 0.09
+      }
+    ],
+    "liquid": [
+      {
+        "id": "shop-wood",
+        "start": 0,
+        "length": 0.35,
+        "at": 0,
+        "gain": 0.1950469507123987,
+        "cutoff": 5200,
+        "release": 0.09
+      },
+      {
+        "id": "shop-bottle",
+        "start": 0.016,
+        "length": 0.62,
+        "at": 0,
+        "gain": 0.5164040417744824,
+        "cutoff": 8200,
+        "release": 0.09
+      },
+      {
+        "id": "shop-liquid",
+        "start": 0.088,
+        "length": 0.93,
+        "at": 0.055,
+        "gain": 0.6159169862947763,
+        "cutoff": 5700,
+        "release": 0.17
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "shop-wood",
+      "title": "Wooden Thud (Mono)",
+      "author": "Breviceps",
+      "page": "https://freesound.org/people/Breviceps/sounds/449955/",
+      "url": "https://cdn.freesound.org/previews/449/449955_9159316-hq.mp3",
+      "sha256": "8f2d2c815df5c771d1fb8a97b9bea7bc75595b56de543e4922d76923303268c1",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-bottle",
+      "title": "Bottle hitting a table",
+      "author": "TheMikirog",
+      "page": "https://freesound.org/people/TheMikirog/sounds/331646/",
+      "url": "https://cdn.freesound.org/previews/331/331646_2503553-hq.mp3",
+      "sha256": "f4d390ee18285a75c3463b3baa77556b75488f51a802d1049d2cee93849cffe7",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "shop-liquid",
+      "title": "Water Slosh in Metal Bottle - various.mp3",
+      "author": "twinpix",
+      "page": "https://freesound.org/people/twinpix/sounds/536953/",
+      "url": "https://cdn.freesound.org/previews/536/536953_842338-hq.mp3",
+      "sha256": "c188574d178a0d896541b96cea167bd57e142ae1ef9023ee98d6cacf86f8d1cc",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    }
+  ]
+}

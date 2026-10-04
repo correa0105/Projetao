@@ -2,6 +2,10 @@
 
 Implementado em 03/10/2026. Substitui Brida na interface do estábulo.
 
+Atualização de 04/10/2026: quarta advertência usa a imagem aprovada do usuário,
+`ginna-angry-approved.png`. Emergência e envolvimento recebem efeitos sonoros
+sincronizados com a animação, documentados em [STABLE-GINNA-AUDIO.md](STABLE-GINNA-AUDIO.md).
+
 ## Interação
 
 Ginna tem aparência jovem, pintura realista, nenhum chapéu e escala reduzida para
@@ -140,7 +144,7 @@ https://www.youtube.com/watch?v=ohNpf4VnlP8 . Não é atribuído a CC0.
 
 A terceira advertência (Minha paciência está acabando) troca a arte por
 `public/stable/ginna-serious.webp`, mantendo roupa, feno, personagem e alfa.
-A quarta advertência troca para `public/stable/ginna-angry.webp`, com expressão
+A quarta advertência troca para `public/stable/ginna-angry-approved.png`, com expressão
 muito brava; o retorno restaura a arte original. Arte criada em modo integrado,
 alfa preservado e prompts registrados em [STABLE-GINNA-ANGRY.md](STABLE-GINNA-ANGRY.md).
 O tremor da quarta fala aplica-se somente às palavras cujas letras são todas

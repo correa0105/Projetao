@@ -10,6 +10,10 @@ Separar implementação, conteúdo apenas descritivo e planos futuros.
 
 ## O que existe hoje
 
+- Códice de consulta editável na aba Regras, com capítulos, artigos, busca,
+  blocos de conteúdo e imagens. A conta autorizada e staff/admin podem editar
+  a apresentação e todo o conteúdo, importar/exportar e recuperar versões.
+  Esse editor publica textos da mesa; não acrescenta automação às regras abaixo.
 - Base de regras revisadas de D&D 2024/5.5e, usando SRD 5.2.1.
 - Criação e ficha inicial de nível 1: nove espécies, doze classes, quatro antecedentes,
   escolhas de origem, atributos, equipamentos, maestrias e conjuração inicial.

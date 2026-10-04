@@ -69,10 +69,10 @@ export function GinnaVision({
 
   useEffect(() => {
     if (music.current) {
-      music.current.volume = volume;
+      music.current.volume = volume * (returning ? 0.15 : 1);
       music.current.muted = muted;
     }
-  }, [muted, volume]);
+  }, [muted, volume, returning]);
 
   return (
     <dialog

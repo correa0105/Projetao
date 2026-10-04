@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { transaction } from './db.js';
 import { PLATE_PIECES } from '../shared/armor-bundles.js';
 import { seedLore } from './lore.js';
+import { ensureInitialRulebook } from './rulebook.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -207,5 +208,6 @@ export async function seed() {
       );
   });
   await seedLore();
+  await ensureInitialRulebook();
   console.log('Catálogo e cenário inicial disponíveis.');
 }

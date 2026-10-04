@@ -1,7 +1,11 @@
 import { createGinnaTentacleRenderer, GINNA_TENTACLE_DURATION } from './ginna-tentacle-renderer';
 
 /** The coils close around the visitor before the existing eyelids cover the scene. */
-export function animateGinnaTentacles(root: HTMLElement, reduced: boolean) {
+export function animateGinnaTentacles(
+  root: HTMLElement,
+  reduced: boolean,
+  onTime?: (elapsed: number) => void,
+) {
   const scene = root.querySelector<HTMLElement>('.ginna-return-tentacles')!;
   const renderer = createGinnaTentacleRenderer(scene, reduced);
   let frame = 0;
@@ -19,6 +23,7 @@ export function animateGinnaTentacles(root: HTMLElement, reduced: boolean) {
     elapsed += Math.min(80, Math.max(0, now - previous));
     previous = now;
     renderer.draw(reduced ? GINNA_TENTACLE_DURATION : elapsed);
+    onTime?.(elapsed);
     if (elapsed >= (reduced ? 180 : GINNA_TENTACLE_DURATION)) {
       completed = true;
       document.removeEventListener('visibilitychange', visibility);
@@ -35,6 +40,7 @@ export function animateGinnaTentacles(root: HTMLElement, reduced: boolean) {
   };
   document.addEventListener('visibilitychange', visibility);
   renderer.draw(reduced ? GINNA_TENTACLE_DURATION : 0);
+  onTime?.(0);
   if (!document.hidden) frame = requestAnimationFrame(update);
 
   return {

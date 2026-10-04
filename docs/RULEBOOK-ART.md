@@ -1,0 +1,8 @@
+# Arte da abertura do códice
+
+Gerada com a ferramenta de imagens integrada (modo `historical-scene`), fundo opaco. Arquivo de produção: `public/rules/rulebook-desk.webp`. Conversão para WebP sem redimensionar a pintura. A capa é configurável e removível pelo editor da aba Regras.
+
+## Prompt final
+
+Use case: historical-scene. Asset type: wide cinematic header background for the editable Rules codex of the medieval fantasy guild website Alvorada Cinzenta. A beautifully crafted ancient open leather rulebook on a dark charcoal oak desk in a stone guild library at night, thick subtly weathered ivory pages with faint indistinct handwritten marks, one old copper pen, a small brass candlestick and wax seal on the right, shelves and stone arches receding into deep shadows. Close, tactile realistic painted fantasy art with the rendering quality of a premium medieval game website. Book and small warm candle occupy the right two fifths, diagonally composed, the left half is very dark quiet textured desk/shadowed stone with generous empty negative space for website title overlay. Charcoal black, warm neutral gray, aged copper and subdued parchment ivory; restrained small amber candle glow only, no orange flood, no blue neon. Depth, realistic paper fibres, worn leather corners, engraved copper details, soft wisps of candle smoke. Landscape 16:9 or wider, polished detailed realism, no people or creatures, no logos, NO readable text, no UI, no ornate frame, no green palette. The background must remain dark enough behind white website text, especially the entire left half; avoid overly bright pages and clutter. Opaque full background.
+

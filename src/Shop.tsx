@@ -18,6 +18,7 @@ import './shop.css';
 import './shop-reference.css';
 import './shop-responsive.css';
 import { merchantComment, merchantConversations } from './shop-presentation';
+import { useShopCounterSound } from './shop-counter-audio';
 
 type Line = { id: string; quantity: number; x: number; y: number };
 type Point = { x: number; y: number };
@@ -145,6 +146,7 @@ export function Shop({
   }, [speechKey, speech]);
   const vendorRef = useRef<HTMLElement>(null);
   const sceneRef = useRef<HTMLDivElement>(null);
+  const placeSound = useShopCounterSound(sceneRef);
   useLayoutEffect(() => {
     const scene = sceneRef.current;
     if (!scene) return;
@@ -183,6 +185,7 @@ export function Shop({
     y: number;
     moved: boolean;
     original: Point;
+    current: Point;
   } | null>(null);
   const owner = character?.id || 'guest';
   const lines = carts[owner] || [];
@@ -261,6 +264,7 @@ export function Shop({
         ),
       );
       setSelected(item.id);
+      placeSound(item, itemScale(item));
       return;
     }
     const p = freePosition(item.id, preferred);
@@ -270,6 +274,7 @@ export function Shop({
     }
     update([...lines, { id: item.id, quantity: 1, ...p }]);
     setSelected(item.id);
+    placeSound(item, itemScale(item));
   }
   function remove(id: string) {
     if (busy) return;
@@ -282,11 +287,13 @@ export function Shop({
     if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 4) drag.moved = true;
     if (!drag.moved) return;
     const p = position(event.clientX, event.clientY, line.id);
-    if (isFree(p, line.id))
+    if (isFree(p, line.id)) {
+      drag.current = p;
       update(
         lines.map((v) => (v.id === line.id ? { ...v, ...p } : v)),
         false,
       );
+    }
   }
   async function pay() {
     if (!character || busy || !lines.length || unpriced) return;
@@ -527,12 +534,23 @@ export function Shop({
                       y: e.clientY,
                       moved: false,
                       original: line,
+                      current: line,
                     };
                     setSelected(line.id);
                     say(item);
                   }}
                   onPointerMove={(e) => move(e, line)}
                   onPointerUp={() => {
+                    const drag = dragging.current;
+                    if (
+                      drag?.id === line.id &&
+                      drag.moved &&
+                      Math.hypot(
+                        drag.current.x - drag.original.x,
+                        drag.current.y - drag.original.y,
+                      ) > 0.001
+                    )
+                      placeSound(item, itemScale(item));
                     dragging.current = null;
                   }}
                   onPointerCancel={() => {

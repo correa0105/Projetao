@@ -17,13 +17,11 @@ import {
   ArrowRight,
   ArrowUpRight,
   Backpack,
-  BookOpen,
   Check,
   ChevronRight,
   CircleCheck,
   Coins,
   Compass,
-  ExternalLink,
   Feather,
   Heart,
   House,
@@ -59,6 +57,7 @@ import type { AtlasLocation, Character, Details, Entry, Item, Page, Post, User }
 const WorldAtlas = lazy(() =>
   import('./WorldAtlas').then((module) => ({ default: module.WorldAtlas })),
 );
+const Rulebook = lazy(() => import('./Rulebook').then((module) => ({ default: module.Rulebook })));
 
 type Icon = ComponentType<{ size?: number; className?: string }>;
 const titles: Record<Page, string> = {
@@ -117,6 +116,7 @@ function Portal({ user }: { user: User }) {
   const [completingMission, setCompletingMission] = useState<Post | null>(null);
   const [now, setNow] = useState(Date.now());
   const [page, setPage] = useState<Page>(initialPage);
+  const [rulesVisited, setRulesVisited] = useState(() => initialPage() === 'rules');
   const [characters, setCharacters] = useState<Character[]>([]);
   const [selectedId, setSelectedId] = useState('');
   const [characterMenuOpen, setCharacterMenuOpen] = useState(false);
@@ -134,6 +134,7 @@ function Portal({ user }: { user: User }) {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('Todos');
   const [postKind, setPostKind] = useState<'mission' | 'event'>('mission');
+  const rulesActive = page === 'rules' && !loading && !loadError;
   const character = characters.find((item) => item.id === selectedId) || characters[0];
   const refresh = useCallback(async () => {
     const [nextCharacters, nextCatalog, nextPosts, nextEntries, me] = await Promise.all([
@@ -164,7 +165,9 @@ function Portal({ user }: { user: User }) {
   }, [refresh]);
   useEffect(() => {
     const onHash = () => {
-      setPage(initialPage());
+      const next = initialPage();
+      if (next === 'rules') setRulesVisited(true);
+      setPage(next);
       setQuery('');
       setCategory('Todos');
       setPostKind('mission');
@@ -197,6 +200,7 @@ function Portal({ user }: { user: User }) {
     };
   }, [character]);
   function go(next: Page) {
+    if (next === 'rules') setRulesVisited(true);
     location.hash = next;
     // Start page audio while the navigation gesture is still active.
     window.dispatchEvent(new Event('alvorada:navigate'));
@@ -475,6 +479,7 @@ function Portal({ user }: { user: User }) {
           {loadError}
         </Empty>
       );
+    if (page === 'rules') return null;
     if (page === 'world')
       return (
         <Suspense fallback={<div className="loading-content">Desdobrando o atlas…</div>}>
@@ -559,55 +564,28 @@ function Portal({ user }: { user: User }) {
           />
         )}
         {page === 'lore' && <LoreLibrary />}
-        {['house', 'rules'].includes(page) && (
+        {page === 'house' && (
           <>
-            <div className={`entries-grid ${page === 'house' ? 'house-grid' : ''}`}>
+            <div className="entries-grid house-grid">
               {entries
                 .filter((entry) => entry.section === page)
                 .map((entry) => {
-                  const EntryIcon = page === 'house' ? House : BookOpen;
                   return (
                     <article className="entry-card paper" key={entry.id}>
                       <div className="entry-icon">
-                        <EntryIcon size={31} />
+                        <House size={31} />
                       </div>
                       <span className="eyebrow">{entry.tag}</span>
                       <h2>{entry.title}</h2>
                       <p className="entry-subtitle">{entry.subtitle}</p>
                       <p>{entry.body}</p>
-                      {page === 'house' && (
-                        <span className="badge neutral">
-                          Conteúdo de cenário · Funcionalidades em desenvolvimento
-                        </span>
-                      )}
+                      <span className="badge neutral">
+                        Conteúdo de cenário · Funcionalidades em desenvolvimento
+                      </span>
                     </article>
                   );
                 })}
             </div>
-            {page === 'rules' && (
-              <div className="license-note">
-                <b>Referências e atribuição</b>
-                <p>
-                  This work includes material from the System Reference Document 5.2.1 (“SRD 5.2.1”)
-                  by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD
-                  5.2.1 is licensed under the Creative Commons Attribution 4.0 International
-                  License, available at https://creativecommons.org/licenses/by/4.0/legalcode. Nomes
-                  traduzidos e regras resumidas.
-                </p>
-                <a href="https://www.dndbeyond.com/srd" target="_blank" rel="noreferrer">
-                  System Reference Document
-                  <ExternalLink size={13} />
-                </a>
-                <a
-                  href="https://creativecommons.org/licenses/by/4.0/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Licença CC BY 4.0
-                  <ExternalLink size={13} />
-                </a>
-              </div>
-            )}
           </>
         )}
       </>
@@ -686,6 +664,14 @@ function Portal({ user }: { user: User }) {
         </PageHeader>
         <main className="main-content" id="main-content">
           {renderContent()}
+          {rulesVisited && (
+            <div hidden={!rulesActive} style={{ display: rulesActive ? undefined : 'none' }}>
+              <div className="page-header-spacer" aria-hidden="true" />
+              <Suspense fallback={<div className="loading-content">Abrindo o códice…</div>}>
+                <Rulebook active={Boolean(rulesActive)} />
+              </Suspense>
+            </div>
+          )}
         </main>
       </div>
       <Navigation page={page} go={go} />

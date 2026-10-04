@@ -2,7 +2,13 @@
 
 Arte produzida com o gerador de imagens integrado, em modo de edição `identity-preserve`, com fundo transparente. O alvo foi `public/stable/ginna-serious.webp`.
 
-Arquivo usado no site: `public/stable/ginna-angry.webp`, 768 × 1152, WebP com alfa. O PNG gerado foi convertido e redimensionado sem remover ou reconstruir seu canal alfa. A terceira advertência mantém a expressão séria; a quarta usa a versão muito brava; após voltar à realidade, retorna à imagem normal.
+Arquivo vigente usado no site: `public/stable/ginna-angry-approved.png`, 1024 × 1536,
+cópia exata do PNG com alfa enviado pelo usuário em 04/10/2026. Essa escolha
+substitui a versão percebida como mais clara; nenhuma correção de cores,
+iluminação ou recorte foi aplicada ao arquivo fornecido. A versão anterior
+`public/stable/ginna-angry.webp` permanece preservada. A terceira advertência
+mantém a expressão séria; a quarta usa a versão muito brava escolhida;
+após voltar à realidade, retorna à imagem normal.
 
 ## Prompt da expressão
 
@@ -11,4 +17,3 @@ Use case: identity-preserve. Asset type: transparent full-body character sprite 
 ## Prompt final de recorte
 
 Edit target: the provided angry Ginna full-body character sprite. Keep the entire girl EXACTLY unchanged, especially the very angry facial expression, facial identity, head angle, hair, hands, pose, hay, clothing, boots, and current position/scale. Remove ONLY all the soft brown/golden backdrop, shadow, atmospheric halo, haze and glow that surrounds the silhouette, including beside the head and body and below her feet. The entire exterior of the character must be 100% transparent with zero background alpha, as a clean professional game character sprite cutout. Retain fine hair strands and clean naturally antialiased edges. Genuine transparent background. No drop shadow, no outer glow, no scene, no added elements. Same 2:3 image proportions and full body framing.
-

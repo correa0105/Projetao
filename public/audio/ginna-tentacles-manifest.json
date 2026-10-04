@@ -1,0 +1,71 @@
+{
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "checked": "2026-10-04",
+  "encoding": "PCM WAV estéreo, 48 kHz, 16 bit, pico 82%",
+  "generator": "scripts/generate-ginna-tentacle-audio.mjs",
+  "composition": "Gravações reais de água, rugido de leão/elefante e atrito molhado, recortadas, desaceleradas, filtradas e mixadas. Grave discreto original e reverberação curta. Sem áudio extraído de filmes.",
+  "files": {
+    "emergence": "ginna-tentacle-emergence.wav",
+    "wrapping": "ginna-tentacle-wrapping.wav",
+    "preview": "ginna-tentacle-preview.wav"
+  },
+  "timing": {
+    "emergence": 0,
+    "wrapping": 2700,
+    "end": 5600
+  },
+  "playback": "Relógio dos tentáculos; trilha da visão atenuada durante os efeitos; mute/volume gerais, pausa em aba oculta, silêncio em movimento reduzido. Contexto encerrado antes do fechar dos olhos e da respiração.",
+  "sources": [
+    {
+      "id": "lake",
+      "title": "jump-into-water.flac",
+      "author": "yurkobb",
+      "page": "https://freesound.org/people/yurkobb/sounds/280219/",
+      "url": "https://cdn.freesound.org/previews/280/280219_2023784-hq.mp3",
+      "sha256": "237a169a18640dc034a30048d6419d9ae6111e56b64ae5381f1357f9baa65f0e",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "splash",
+      "title": "Big Water Splash",
+      "author": "qubodup",
+      "page": "https://freesound.org/people/qubodup/sounds/442773/",
+      "url": "https://cdn.freesound.org/previews/442/442773_71257-hq.mp3",
+      "sha256": "b8227adae409996ceee3481c7057ceda717575fa7569cec5d9d0ee1b94a8fe33",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "animal",
+      "title": "Monster Growl Ashtur.wav",
+      "author": "FK_Prod",
+      "page": "https://freesound.org/people/FK_Prod/sounds/188949/",
+      "url": "https://cdn.freesound.org/previews/188/188949_3517340-hq.mp3",
+      "sha256": "827be7c7a585dba025837fbf0b2913d51fbba245ee8a97e42aeb2de6b1312e80",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "wet",
+      "title": "Rubber Skid.mp3",
+      "author": "shatterstars",
+      "page": "https://freesound.org/people/shatterstars/sounds/492071/",
+      "url": "https://cdn.freesound.org/previews/492/492071_5186268-hq.mp3",
+      "sha256": "0bb0f79e0dfa6ef9908a8c65c192b12b48ee596c348fdd5a21b162a05a1c394b",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    },
+    {
+      "id": "friction",
+      "title": "LAABI_Rami_2014_2015_Roar.wav",
+      "author": "univ_lyon3",
+      "page": "https://freesound.org/people/univ_lyon3/sounds/250683/",
+      "url": "https://cdn.freesound.org/previews/250/250683_2465261-hq.mp3",
+      "sha256": "9ab622503dbe72aedd4d896fda147146e532e6138e200f732918e772c50e5486",
+      "license": "CC0-1.0",
+      "publicPreview": true
+    }
+  ]
+}

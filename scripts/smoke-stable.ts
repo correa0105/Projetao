@@ -208,7 +208,7 @@ try {
     await expect(keeper.locator('img')).toHaveAttribute(
       'src',
       warning === 3
-        ? '/stable/ginna-angry.webp'
+        ? '/stable/ginna-angry-approved.png'
         : warning === 2
           ? '/stable/ginna-serious.webp'
           : '/stable/ginna.webp',
@@ -222,7 +222,7 @@ try {
     if (warning === 3) {
       await expect
         .poll(() => keeper.locator('img').evaluate((image: HTMLImageElement) => image.naturalWidth))
-        .toBe(768);
+        .toBe(1024);
       await page.screenshot({ path: 'test-results/ginna-angry-warning.png' });
     }
   }
