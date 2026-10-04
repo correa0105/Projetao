@@ -1,5 +1,34 @@
 # Alvorada Cinzenta
 
+## Mascotes, eventos, títulos e cartas
+
+O menu reúne **Casa dos mascotes**, **Eventos**, **Títulos** e **Cartas**.
+Garalho atende por placas de madeira e miados, com Baguncinha tomando café
+ao lado da casa. Dez espécies, aparências alternativas, sons próprios e compras
+em ouro persistidas no inventário. Administradores editam eventos e todo o
+cenário, incluindo background, artes e animações, e criam títulos com metas
+ou concessão a outros personagens.
+
+Conquistas podem ser colocadas livremente nas três prateleiras, sem limite
+por nível. Cada personagem equipa até três cartas; quatro são compráveis.
+Aprimoramentos e drops ficam para as regras futuras definidas pelo usuário.
+A ficha agora é escura, com **História** e **Equipamento** separados, e a Lore
+tem panorama do mundo. [Funcionamento e preços](docs/COMPANHEIROS-EVENTOS-TITULOS-CARTAS.md).
+
+## Administração e novos arquivos da Lore
+
+A coluna `"user".administrador` usa `0` para jogador e `1` para administrador.
+Somente administradores alteram Lore, linha do tempo, Regras, Início, editor do
+reino e eventos. Autoria, permissões antigas de staff e e-mails não liberam edição.
+Para uma conta cadastrada, execute `node --import tsx scripts/admin.ts email@exemplo.com 1`;
+para revogar, use `0`. Cadastro/perfil não concedem essa permissão.
+
+Na Lore, **Editar eras** permite alterar títulos/períodos, revelar eras, ordenar,
+adicionar/excluir e vincular pastas. Ao abrir uma pasta vinculada (ou subpasta),
+a linha do tempo percorre as eras até a correspondente; na mesma era, toca só a
+finalização. No inventário, **Companheiros de estrada** escolhe a montaria que
+aparece no fundo do acampamento do personagem selecionado. Dados persistem no PostgreSQL.
+
 ## Patentes e níveis
 
 Cada missão é exclusiva de uma patente, selecionada na criação. Não é possível se
@@ -23,7 +52,7 @@ persistido em PostgreSQL. Protótipo funcional em português, inspirado em D&D 5
 Identidade da guilda: nome escrito em Libre Baskerville na apresentação, azul de noite, pergaminho e cobre envelhecido.
 O Bastião da Alvorada é a sede em Vigília. [Direção visual, arte e prompt](docs/IDENTIDADE.md).
 
-O Reino do Norte está em fase de composição. Sua visão regional abre como uma área vazia, sem fundo ou elementos predefinidos. O editor permite enviar um background próprio (inclusive 8K), manter a proporção da imagem, navegar, girar em oito direções e posicionar objetos ilustrados em oito perspectivas. Há zoom amplo, controle deslizante e opção de salvar o enquadramento atual como 100%. **Remover fundo (área vazia)** volta ao espaço vazio, preservando os itens do rascunho. Neste momento, somente `correa.l@icloud.com` tem acesso ao editor; os dados salvos ainda são privados e não publicados aos demais jogadores. Os seis locais e suas missões continuam no SQL; o Mundo 3D permanece independente. Consulte [a documentação da visão do reino](docs/KINGDOM-2D.md).
+O Reino do Norte está em fase de composição. Sua visão regional abre como uma área vazia, sem fundo ou elementos predefinidos. O editor permite enviar um background próprio (inclusive 8K), manter a proporção da imagem, navegar, girar em oito direções e posicionar objetos ilustrados em oito perspectivas. Há zoom amplo, controle deslizante e opção de salvar o enquadramento atual como 100%. **Remover fundo (área vazia)** volta ao espaço vazio, preservando os itens do rascunho. Somente contas com `administrador=1` têm acesso ao editor; os dados salvos ainda são privados e não publicados aos demais jogadores. Os seis locais e suas missões continuam no SQL; o Mundo 3D permanece independente. Consulte [a documentação da visão do reino](docs/KINGDOM-2D.md).
 
 O botão **Editar mapa**, visível apenas à conta autorizada, permite posicionar objetos ilustrados, arrastá-los diretamente, mover a seleção com setas, duplicar, ajustar tamanho e orientação e salvar um rascunho particular no PostgreSQL.
 
@@ -89,7 +118,7 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
   [Equipamentos e geração](docs/EQUIPMENT.md).
 - Mural: missões com data/hora e inscrições; próximas mesas aparecem no Início nas 24 horas anteriores, com aviso para o criador mestrar.
 - Conclusão pelo criador com resumo, progresso por missões, ouro por inscrito e gancho opcional. Recompensas e promoções são registradas uma única vez.
-- Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos da staff/admin.
+- Ganchos são somente para consulta e nascem da conclusão de missões. Eventos são exclusivos dos administradores.
 - Mundo com relevo cartográfico em Three.js, detalhe de solo/rocha, arraste elástico, zoom e nuvens em movimento, preenchendo a tela. A visão inicial usa 100%, equivalente ao antigo enquadramento de 142%; a silhueta fornecida pelo usuário define a geografia. Vinte e dois territórios têm demarcações com destaque ao passar o mouse e clique na superfície; mar contínuo ampliado, ilhotas, vulcão e tormenta complementam o cenário.
 - Reino do Norte abre uma área regional vazia e navegável em Canvas 2D. A conta autorizada pode enviar um fundo e compor sprites em oito direções. Não há névoa ou terreno predefinido. O Mundo em 3D permanece independente. Detalhes em [KINGDOM-2D.md](docs/KINGDOM-2D.md).
 - Barcos piratas em 3D percorrem o mar lentamente em direção às costas; a cada 30 segundos de animação visível, um kraken envolve e afunda um barco. Movimento reduzido pausa a navegação e os ataques.
@@ -101,8 +130,8 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
   as crônicas. Pergaminhos ilustrados com efeito azul e som ao abrir.
   [Biblioteca de lore](docs/LORE.md).
 - Regras possui códice com capa, índice, busca e editor completo de capítulos,
-  artigos, textos, destaques, listas, tabelas e imagens. A gestão da lore,
-  a conta autorizada e staff/admin podem publicar edições, importar/exportar e recuperar versões
+  artigos, textos, destaques, listas, tabelas e imagens. Somente administradores
+  podem publicar edições, importar/exportar e recuperar versões
   pelo histórico. Conteúdo persistido no SQL; alterações do manual não mudam
   os cálculos de jogo. [Editor de regras](docs/RULEBOOK.md).
 - House mantém seu conteúdo narrativo inicial persistido no SQL.

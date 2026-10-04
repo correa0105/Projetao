@@ -66,7 +66,7 @@ try {
   });
   expect(signup.ok()).toBe(true);
   const testUser = (await signup.json()).user;
-  await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [testUser.id]);
+  await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [testUser.id]);
   await page.goto(origin + '/#lore');
   await page.reload();
   await expect(page.getByRole('region', { name: 'Biblioteca de lore' })).toBeVisible();
@@ -103,6 +103,8 @@ try {
   await page.setViewportSize({ width: 1890, height: 1000 });
   const heroBounds = await page.locator('.lore-hero').boundingBox();
   expect(heroBounds!.x).toBe(0);
+  expect(heroBounds!.y + (await page.evaluate(() => window.scrollY))).toBe(0);
+  await expect(page.locator('.page-header h1')).toHaveCount(0);
   expect(heroBounds!.width).toBe(1890);
   await page.screenshot({ path: 'test-results/lore-library-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });

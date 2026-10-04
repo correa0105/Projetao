@@ -68,6 +68,7 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     );
     await seed();
     assert.equal((await req('/lore', alice.cookie)).data.pages.length, 2);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [alice.id]);
     const root = initial.folders.find(
       (folder: LoreFolder) => folder.region_id === 'reino-do-norte' && folder.name === 'Cidades',
     );
@@ -129,7 +130,7 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
       .toBuffer();
     assert.equal(
       (await req(`/lore/pages/${id}/images`, bob.cookie, 'POST', png, 'image/png')).status,
-      404,
+      403,
     );
     assert.equal(
       (
@@ -162,7 +163,7 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
       effect: 'cinematic',
     };
     const updated = { ...data, revision: 0, published: true, blocks: [imageBlock, block] };
-    assert.equal((await req(`/lore/pages/${id}`, bob.cookie, 'PUT', updated)).status, 404);
+    assert.equal((await req(`/lore/pages/${id}`, bob.cookie, 'PUT', updated)).status, 403);
     const published = await req(`/lore/pages/${id}`, alice.cookie, 'PUT', updated);
     assert.equal(published.status, 200);
     assert.equal(published.data.revision, 1);
@@ -223,8 +224,9 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     assert.equal(loreFolderPath(child.data.id, folders), 'Cidades / Portos');
     assert.ok(loreDescendants(root.id, folders).has(child.data.id));
     await pool.query('INSERT INTO guild_staff(user_id,role) VALUES($1,$2)', [bob.id, 'staff']);
-    assert.equal((await req(`/lore/pages/${id}`, bob.cookie)).data.can_edit, true);
-    // Folder management is a separate permission, including for existing staff.
+    assert.equal((await req(`/lore/pages/${id}`, bob.cookie)).status, 404);
+    await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [alice.id]);
+    // Legacy staff and author ownership cannot grant system editing.
     assert.equal((await req('/lore', alice.cookie)).data.can_manage_folders, false);
     assert.equal(
       (await req(`/lore/folders/${root.id}`, bob.cookie, 'DELETE', { destination_id: null }))
@@ -243,6 +245,10 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     );
     assert.equal((await req('/lore/folder-trash', bob.cookie)).status, 403);
     await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [alice.id]);
+    assert.equal((await req('/lore', alice.cookie)).data.can_manage_folders, false);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=ANY($1::text[])', [
+      [alice.id, bob.id],
+    ]);
     assert.equal((await req('/lore', alice.cookie)).data.can_manage_folders, true);
     // The authorized account manages every region and edits lore without gaining guild staff.
     assert.equal(
@@ -282,6 +288,7 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     );
     const charlie = await signup();
     assert.equal((await req(`/lore/pages/${legacy.id}`, charlie.cookie)).data.can_edit, false);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [charlie.id]);
     const distantFolder = initial.folders.find(
       (folder: LoreFolder) => folder.region_id === 'coroa-da-geada' && folder.name === 'Capital',
     );
@@ -291,6 +298,7 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
       folder_id: distantFolder.id,
     });
     assert.equal(privatePage.status, 201);
+    await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [charlie.id]);
     const sharedDraft = (await req(`/lore/pages/${privatePage.data.id}`, alice.cookie)).data;
     assert.equal(sharedDraft.can_edit, true);
     const sharedImage = await req(
@@ -398,11 +406,13 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
       ),
     );
     assert.equal((await req('/lore/folder-trash', alice.cookie)).data.length, 1);
+    await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [bob.id]);
     assert.equal(
       (await req(`/lore/folder-trash/${deletion.data.deletion_id}/restore`, bob.cookie, 'POST', {}))
         .status,
       403,
     );
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [bob.id]);
     assert.equal(
       (
         await req(
@@ -481,7 +491,7 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     assert.equal(
       (await req(`/lore/pages/${id}`, charlie.cookie, 'DELETE', { revision: revised.revision }))
         .status,
-      404,
+      403,
     );
     assert.equal(
       (await req(`/lore/pages/${id}`, alice.cookie, 'DELETE', { revision: revised.revision - 1 }))
@@ -546,14 +556,14 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
       200,
     );
     assert.equal((await req(`/lore/pages/${managed.id}`, charlie.cookie)).status, 404);
-    // Staff can delete; ordinary accounts cannot delete published legacy pages.
+    // Only administrators can delete published legacy pages.
     assert.equal(
       (
         await req(`/lore/pages/${legacy.id}`, charlie.cookie, 'DELETE', {
           revision: legacy.revision + 1,
         })
       ).status,
-      404,
+      403,
     );
     const beforeDelete = (await req(`/lore/pages/${legacy.id}`, bob.cookie)).data;
     assert.equal(
@@ -566,12 +576,21 @@ test('lore: regiões, subpastas, uploads, rascunhos privados, publicação, owne
     );
     await seed();
     assert.equal((await req(`/lore/pages/${legacy.id}`, alice.cookie)).status, 404);
-    // Authors can remove their own drafts without management permissions.
+    // Revocation applies immediately, even to an author's own draft.
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [charlie.id]);
     const ownDraft = await req('/lore/pages', charlie.cookie, 'POST', {
       ...data,
       folder_id: history.id,
     });
     assert.equal(ownDraft.status, 201);
+    await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [charlie.id]);
+    assert.equal((await req(`/lore/pages/${ownDraft.data.id}`, charlie.cookie)).status, 404);
+    assert.equal(
+      (await req(`/lore/pages/${ownDraft.data.id}`, charlie.cookie, 'DELETE', { revision: 0 }))
+        .status,
+      403,
+    );
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [charlie.id]);
     assert.equal(
       (await req(`/lore/pages/${ownDraft.data.id}`, charlie.cookie, 'DELETE', { revision: 0 }))
         .status,

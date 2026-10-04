@@ -1,4 +1,5 @@
 import { FlashMessage } from './FlashMessage';
+import { CharacterTitleLabel } from './Titles';
 import { useEffect, useState } from 'react';
 import {
   BookOpen,
@@ -188,6 +189,7 @@ export function CharacterSheet({
         );
   return (
     <div className="character-sheet">
+      <CharacterTitleLabel characterId={c.id} />
       <section
         className={`sheet-rank-banner${rankReady ? ' is-ready' : ''}`}
         aria-label="Patente e progressão"
@@ -243,16 +245,8 @@ export function CharacterSheet({
           <p>{progressionLabel(c.level, c.progression_missions)}</p>
         </div>
       </section>
-      {error && (
-        <FlashMessage>
-          {error}
-        </FlashMessage>
-      )}
-      {saved && (
-        <FlashMessage kind="info">
-          Salvo.
-        </FlashMessage>
-      )}
+      {error && <FlashMessage>{error}</FlashMessage>}
+      {saved && <FlashMessage kind="info">Salvo.</FlashMessage>}
       {!data && !error && <p role="status">Abrindo o tomo…</p>}
       {data && (!s?.rolls || !s?.choices) && (
         <section className="sheet-panel">
@@ -404,7 +398,7 @@ export function CharacterSheet({
             })}
           </div>
           <div className="sheet-tabs" role="tablist" aria-label="Seções da ficha">
-            {['Atributos', 'Combate', 'Magias', 'História e equipamento'].map((t) => (
+            {['Atributos', 'Combate', 'Magias', 'História', 'Equipamento'].map((t) => (
               <button
                 key={t}
                 role="tab"
@@ -733,10 +727,10 @@ export function CharacterSheet({
                 ))}
               </>
             )}
-            {tab === 'História e equipamento' && (
+            {['História', 'Equipamento'].includes(tab) && (
               <>
-                <div className="sheet-columns">
-                  <div>
+                <div className="sheet-columns sheet-separated">
+                  <div hidden={tab !== 'História'}>
                     <h3>Identidade</h3>
                     <p>
                       {choices.backgroundType} · {choices.alignment}
@@ -765,7 +759,7 @@ export function CharacterSheet({
                       {c.biography || 'Sua história ainda está sendo escrita.'}
                     </p>
                   </div>
-                  <div>
+                  <div hidden={tab !== 'Equipamento'}>
                     <h3>
                       Equipamento inicial
                       <SheetHelp label="Equipamento inicial">
@@ -791,21 +785,25 @@ export function CharacterSheet({
                     </p>
                   </div>
                 </div>
-                <label>
-                  Anotações
-                  <textarea
-                    aria-label="Anotações"
-                    rows={6}
-                    maxLength={8000}
-                    value={draft.notes}
-                    onChange={(e) => change({ notes: e.target.value })}
-                  />
-                </label>
-                <div className="sheet-actions">
-                  <button className="button primary" disabled={busy} onClick={saveState}>
-                    Salvar anotações
-                  </button>
-                </div>
+                {tab === 'História' && (
+                  <>
+                    <label>
+                      Anotações
+                      <textarea
+                        aria-label="Anotações"
+                        rows={6}
+                        maxLength={8000}
+                        value={draft.notes}
+                        onChange={(e) => change({ notes: e.target.value })}
+                      />
+                    </label>
+                    <div className="sheet-actions">
+                      <button className="button primary" disabled={busy} onClick={saveState}>
+                        Salvar anotações
+                      </button>
+                    </div>
+                  </>
+                )}
               </>
             )}
             {(visibleRestFields.length > 0 || (tab === 'Magias' && c.class === 'Mago')) && (

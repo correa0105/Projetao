@@ -10,6 +10,8 @@ import {
 } from '../shared/equipment';
 import { INVENTORY_DRAG_TYPE as dragType } from './inventory-drag';
 import { EquipmentPanel } from './EquipmentPanel';
+import { MountSelection } from './CharacterMount';
+import { PetCollection } from './PetShop';
 import { money } from '../shared/rules';
 import { SheetHelp } from './SheetHelp';
 import { Modal } from './components';
@@ -237,7 +239,9 @@ function StoragePanel({
               {isVault
                 ? 'Compartilhado somente entre os personagens da sua conta. Estes itens ficam guardados e não fazem parte da mochila levada à missão.'
                 : 'Exclusiva deste personagem. Estes são os itens levados à missão. O peso considera todas as unidades em libras; equipamentos iniciais registrados na ficha permanecem em História e equipamento.'}{' '}
-              Arraste um item para o outro inventário ou use o botão de transferência. Sem Shift, transfere a pilha inteira; com Shift, apenas uma unidade. Espaços vazios não limitam a capacidade.
+              Arraste um item para o outro inventário ou use o botão de transferência. Sem Shift,
+              transfere a pilha inteira; com Shift, apenas uma unidade. Espaços vazios não limitam a
+              capacidade.
             </SheetHelp>
           </h2>
           <p className="loot-storage-caption">
@@ -343,7 +347,12 @@ export function Inventory({
     );
     if (item) {
       setError('');
-      const order = { item, from, quantity: single ? 1 : item.quantity ?? 1, key: crypto.randomUUID() };
+      const order = {
+        item,
+        from,
+        quantity: single ? 1 : (item.quantity ?? 1),
+        key: crypto.randomUUID(),
+      };
       setTransfer(order);
       void submitTransfer(order);
     }
@@ -423,7 +432,11 @@ export function Inventory({
   if (!storage)
     return (
       <section className="loot-storage">
-        {error ? <FlashMessage>{error}</FlashMessage> : <p role="status">Abrindo mochila e cofre…</p>}
+        {error ? (
+          <FlashMessage>{error}</FlashMessage>
+        ) : (
+          <p role="status">Abrindo mochila e cofre…</p>
+        )}
         {error && (
           <button className="button outline" onClick={reload}>
             Tentar novamente
@@ -438,16 +451,10 @@ export function Inventory({
   );
   return (
     <div className="loot-inventory">
-      {notice && (
-        <FlashMessage kind="info">
-          {notice}
-        </FlashMessage>
-      )}
-      {error && !transfer && (
-        <FlashMessage>
-          {error}
-        </FlashMessage>
-      )}
+      {notice && <FlashMessage kind="info">{notice}</FlashMessage>}
+      {error && !transfer && <FlashMessage>{error}</FlashMessage>}
+      <MountSelection key={character.id} characterId={character.id} />
+      <PetCollection key={character.id} characterId={character.id} />
       <div className="loot-layout">
         <div className="loot-pack-column">
           <section className="loot-summary" aria-label="Resumo da mochila">
@@ -566,11 +573,7 @@ export function Inventory({
                 }
               />
             </label>
-            {error && (
-              <FlashMessage>
-                {error}
-              </FlashMessage>
-            )}
+            {error && <FlashMessage>{error}</FlashMessage>}
             <div className="sheet-actions">
               <button className="button primary" disabled={busy} type="submit">
                 {busy ? 'Transferindo…' : 'Transferir'}

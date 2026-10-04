@@ -3,6 +3,7 @@ import sharp from 'sharp';
 import { z } from 'zod';
 import { pool } from './db.js';
 import { AppError } from './services.js';
+import { administratorPredicate, requireAdministrator } from './administrators.js';
 import { homeUpdateSchema } from '../shared/home-updates.js';
 const idSchema = z.string().uuid();
 const fields = [
@@ -20,14 +21,19 @@ const fields = [
   'text_size',
   'position',
 ] as const;
-const permitted = `(author_id=$2 OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$2))`;
+const permitted = administratorPredicate(2);
 export function homeUpdatesRouter() {
   const router = express.Router();
+  router.use(['/home-updates', '/home-images'], async (req, res, next) => {
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method))
+      await requireAdministrator(res.locals.user.id);
+    next();
+  });
   router.get('/home-updates', async (_req, res) => {
     res.json(
       (
         await pool.query(
-          `SELECT h.*,u.name AS author_name,(h.author_id=$1 OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1)) AS can_edit FROM home_updates h JOIN "user" u ON u.id=h.author_id ORDER BY h.position,h.created_at DESC LIMIT 100`,
+          `SELECT h.*,u.name AS author_name,${administratorPredicate()} AS can_edit FROM home_updates h JOIN "user" u ON u.id=h.author_id ORDER BY h.position,h.created_at DESC LIMIT 100`,
           [res.locals.user.id],
         )
       ).rows,
@@ -54,7 +60,7 @@ export function homeUpdatesRouter() {
       res.locals.user.id,
     ]);
     if (!owned.rowCount) throw new AppError(404, 'Publicação não encontrada.');
-    await checkImage(input.image_path, res.locals.user.id, id);
+    await checkImage(input.image_path, res.locals.user.id);
     const values = fields.map((f) => input[f]);
     const result = await pool.query(
       `UPDATE home_updates SET ${fields.map((f, i) => f + '=$' + (i + 3)).join(',')},revision=revision+1,updated_at=now() WHERE id=$1 AND ${permitted} AND revision=$${fields.length + 3} RETURNING *`,
@@ -105,7 +111,7 @@ export function homeUpdatesRouter() {
     const {
       rows: [row],
     } = await pool.query(
-      `SELECT bytes FROM home_images i WHERE i.id=$1 AND (i.author_id=$2 OR EXISTS(SELECT 1 FROM home_updates h WHERE h.image_path='/api/home-images/'||i.id::text))`,
+      `SELECT bytes FROM home_images i WHERE i.id=$1 AND (${administratorPredicate(2)} OR EXISTS(SELECT 1 FROM home_updates h WHERE h.image_path='/api/home-images/'||i.id::text))`,
       [idSchema.parse(req.params.id), res.locals.user.id],
     );
     if (!row) throw new AppError(404, 'Imagem não encontrada.');
@@ -113,11 +119,11 @@ export function homeUpdatesRouter() {
   });
   return router;
 }
-async function checkImage(path: string, user: string, article?: string) {
+async function checkImage(path: string, user: string) {
   if (!path.startsWith('/api/home-images/')) return;
   const result = await pool.query(
-    `SELECT id FROM home_images WHERE id=$1 AND (author_id=$2 OR EXISTS(SELECT 1 FROM home_updates WHERE id=$3 AND image_path=$4 AND (author_id=$2 OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$2))))`,
-    [path.split('/').pop(), user, article || null, path],
+    `SELECT id FROM home_images WHERE id=$1 AND ${administratorPredicate(2)}`,
+    [path.split('/').pop(), user],
   );
-  if (!result.rowCount) throw new AppError(400, 'Use uma imagem enviada por você.');
+  if (!result.rowCount) throw new AppError(400, 'Imagem não encontrada ou indisponível.');
 }

@@ -23,6 +23,7 @@ import { api, post } from './api';
 import { Modal } from './components';
 import { FlashMessage } from './FlashMessage';
 import { LoreScrollHolderIcon, LoreScrollIcon } from './LoreSymbols';
+import { LoreTimeline, type LoreTimelineHandle } from './LoreTimeline';
 import { useLoreScrollSound } from './SiteMusic';
 import {
   loreDescendants,
@@ -330,6 +331,7 @@ export function LoreLibrary() {
   const [trash, setTrash] = useState<LoreDeletedFolder[] | null>(null);
   const [trashError, setTrashError] = useState('');
   const request = useRef(0);
+  const timeline = useRef<LoreTimelineHandle>(null);
   async function refresh() {
     const data = await api<LoreIndex>('/lore');
     setIndex(data);
@@ -354,13 +356,18 @@ export function LoreLibrary() {
       if (token === request.current) setBusy(false);
     }
   }
-  function navigate(region: string, folder: string | null) {
+  function navigateImmediately(region: string, folder: string | null) {
     request.current++;
     setBusy(false);
     setRegionId(region);
     setFolderId(folder);
     setPage(null);
     setEditing(false);
+  }
+  async function navigate(region: string, folder: string | null) {
+    const token = ++request.current;
+    const arrived = !folder || !timeline.current || (await timeline.current.travelToFolder(folder));
+    if (arrived && token === request.current) navigateImmediately(region, folder);
   }
   if (!index)
     return (
@@ -404,6 +411,17 @@ export function LoreLibrary() {
           </h1>
         </div>
       </header>
+      {!editing && (
+        <LoreTimeline
+          ref={timeline}
+          folders={index.folders}
+          regions={index.regions}
+          onFolder={(id) => {
+            const folder = index.folders.find((item) => item.id === id);
+            if (folder) navigateImmediately(folder.region_id, id);
+          }}
+        />
+      )}
       {editing && page ? (
         <LoreEditor
           key={page.id}
@@ -447,9 +465,11 @@ export function LoreLibrary() {
               onDelete={index.can_manage_folders ? setDeletingFolder : undefined}
               onEdit={index.can_manage_folders ? setEditingFolder : undefined}
             />
-            <button className="lore-folder-add" onClick={() => setDialog('folder')}>
-              <LoreScrollHolderIcon /> Nova pasta / subpasta
-            </button>
+            {index.can_manage_folders && (
+              <button className="lore-folder-add" onClick={() => setDialog('folder')}>
+                <LoreScrollHolderIcon /> Nova pasta / subpasta
+              </button>
+            )}
             {index.can_manage_folders && (
               <button
                 className="lore-folder-trash"
@@ -482,9 +502,11 @@ export function LoreLibrary() {
                 </span>
                 <h2>{region.name}</h2>
               </div>
-              <button className="button lore-new" onClick={() => setDialog('page')}>
-                <Feather size={16} /> Nova crônica
-              </button>
+              {index.can_manage_folders && (
+                <button className="button lore-new" onClick={() => setDialog('page')}>
+                  <Feather size={16} /> Nova crônica
+                </button>
+              )}
             </div>
             {busy && <p role="status">Lendo a crônica…</p>}
             {page ? (

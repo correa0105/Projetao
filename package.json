@@ -26,7 +26,9 @@
     "test:stable": "node scripts/test-stable-isolated.mjs",
     "test:shop": "node scripts/test-shop-isolated.mjs",
     "test:lore": "node scripts/test-lore-isolated.mjs",
-    "test:rulebook": "node scripts/test-rulebook-isolated.mjs"
+    "test:rulebook": "node scripts/test-rulebook-isolated.mjs",
+    "test:community": "node scripts/test-community-isolated.mjs",
+    "test:community:browser": "node scripts/test-community-isolated.mjs --browser"
   },
   "dependencies": {
     "better-auth": "^1.7.5",

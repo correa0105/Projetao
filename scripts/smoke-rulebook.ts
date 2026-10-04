@@ -59,7 +59,7 @@ try {
       const user = (await response.json()).user;
       // The scratch account inherits the existing owner's lore permission,
       // without becoming guild staff or changing any live grant.
-      await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [user.id]);
+      await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [user.id]);
       expect(
         (await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [user.id])).rowCount,
       ).toBe(0);

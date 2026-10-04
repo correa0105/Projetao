@@ -57,7 +57,7 @@
   position: absolute;
   inset: 0;
   z-index: -3;
-  background: url('/alvorada-dawn-banner.png') center 45% / cover;
+  background: url('/lore-world-v1.webp') center 48% / cover;
   filter: saturate(0.6) brightness(0.63);
   transform: scale(1.04);
   animation: lore-hero-drift 35s ease-in-out infinite alternate;

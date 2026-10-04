@@ -1,4 +1,5 @@
 import { FlashMessage } from './FlashMessage';
+import { CharacterTitleLabel } from './Titles';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
@@ -7,6 +8,7 @@ import type { Character } from './types';
 import type { ArtJob, ArtState } from '../shared/character-art';
 import type { EquipmentSlot } from '../shared/equipment';
 import { ArtEquipmentChoices } from './ArtEquipmentChoices';
+import { CampMount } from './CharacterMount';
 import { characterHeightScale } from '../shared/character-stature';
 import './character-camp.css';
 
@@ -120,11 +122,7 @@ export function ReferenceInput({
         classe. Corpo inteiro e estilo fixo para todos. PNG, JPEG ou WebP · até 8 MB.
       </p>
       {preview && <img className="reference-preview" src={preview} alt="Referência selecionada" />}
-      {error && (
-        <FlashMessage>
-          {error}
-        </FlashMessage>
-      )}
+      {error && <FlashMessage>{error}</FlashMessage>}
     </div>
   );
 }
@@ -214,6 +212,7 @@ export function CharacterCamp({
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
       <CampEmbers />
+      {selectedId && <CampMount key={selectedId} characterId={selectedId} />}
       <div className="page-header-spacer" aria-hidden="true" />
       <div className="camp-capacity-row">
         <span className="camp-capacity">
@@ -262,6 +261,7 @@ export function CharacterCamp({
                 Nível {character.level} {selectedId === character.id ? '· Selecionado' : ''}
               </span>
               <h2>{character.name}</h2>
+              <CharacterTitleLabel characterId={character.id} />
               <p>
                 {character.race} · {character.class}
               </p>
@@ -336,12 +336,12 @@ export function CharacterCamp({
           </article>
         )}
       </div>
-      {(loadError || (error && !editing)) && (
-        <FlashMessage>
-          {loadError || error}
+      {(loadError || (error && !editing)) && <FlashMessage>{loadError || error}</FlashMessage>}
+      {notice && (
+        <FlashMessage key={notice.id}>
+          {notice.name}: {notice.error}
         </FlashMessage>
       )}
-      {notice && <FlashMessage key={notice.id}>{notice.name}: {notice.error}</FlashMessage>}
       {editing && (
         <Modal
           title={`Imagem de ${editing.name}`}
@@ -390,11 +390,7 @@ export function CharacterCamp({
               helmetMode={helmetMode}
               onHelmetModeChange={setHelmetMode}
             />
-            {error && (
-              <FlashMessage>
-                {error}
-              </FlashMessage>
-            )}
+            {error && <FlashMessage>{error}</FlashMessage>}
             <button className="button primary" disabled={busy || !reference || !equipmentReady}>
               {busy ? 'Enviando…' : 'Gerar imagem'}
             </button>
@@ -450,11 +446,7 @@ export function CharacterCamp({
                 disabled={busy}
               />
             </label>
-            {deleteError && (
-              <FlashMessage>
-                {deleteError}
-              </FlashMessage>
-            )}
+            {deleteError && <FlashMessage>{deleteError}</FlashMessage>}
             <div className="camp-delete-actions">
               <button
                 type="button"

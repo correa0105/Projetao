@@ -8,11 +8,15 @@ import {
 } from 'react';
 import {
   Backpack,
+  CalendarDays,
+  Crown,
+  Layers,
   BookOpen,
   Compass,
   Feather,
   House,
   Map,
+  PawPrint,
   ScrollText,
   Shield,
   Trophy,
@@ -40,19 +44,27 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
       { page: 'profile', label: 'Ficha', icon: Shield },
       { page: 'inventory', label: 'Inventário', icon: Backpack },
       { page: 'achievements', label: 'Conquistas', icon: Trophy },
+      { page: 'titles', label: 'Títulos', icon: Crown },
+      { page: 'cards', label: 'Cartas', icon: Layers },
     ],
   },
   {
     id: 'board',
     label: 'Mural',
     icon: NoticeBoardIcon,
-    items: [{ page: 'board', label: 'Mural', icon: ScrollText }],
+    items: [
+      { page: 'board', label: 'Mural', icon: ScrollText },
+      { page: 'events', label: 'Eventos', icon: CalendarDays },
+    ],
   },
   {
-    id: 'shop', label: 'Loja', icon: PouchIcon,
+    id: 'shop',
+    label: 'Loja',
+    icon: PouchIcon,
     items: [
       { page: 'shop', label: 'Empório', icon: Backpack },
       { page: 'stable', label: 'Estábulo', icon: House },
+      { page: 'pets', label: 'Mascotes', icon: PawPrint },
     ],
   },
   {

@@ -442,44 +442,71 @@ export function LoreScrollIcon({ open = false }: { open?: boolean }) {
         <EngravedPaper id={id} />
         <g
           className="lore-scroll-closed"
-          transform="rotate(-22 54 64)"
+          transform="rotate(-14 54 64)"
           stroke="#704729"
-          strokeWidth="1.4"
+          strokeWidth="1.1"
         >
-          <path d="M34 22c3-6 33-7 39 0l-3 87c-9 5-25 5-34-1Z" fill={`url(#${id}-paper)`} />
           <path
-            d="M40 29 42 98M45 33v22"
+            d="M40 12c3-5 26-6 29 0l-2 103c-5 5-21 5-26-1Z"
+            fill={`url(#${id}-paper)`}
+            filter={`url(#${id}-grain)`}
+          />
+          <path d="M41 18c1 25 0 73 1 93l4 2-1-97Z" fill="#614120" opacity=".25" stroke="none" />
+          <path d="M65 17c-1 22 0 70-2 96l4 1 1-98Z" fill="#70502e" opacity=".35" stroke="none" />
+          <path
+            d="M47 19c-1 25 2 53 0 89M51 22l-1 23m1 36v24"
             fill="none"
             stroke="#ffedbf"
-            strokeWidth="2"
-            opacity=".62"
+            strokeWidth="1.5"
+            opacity=".72"
           />
-          <path d="M65 27 63 97M58 30l1 22m-20 30 7-2m14 18 9-1" fill="none" opacity=".48" />
-          <path d="M34 21c0-8 39-10 40 0s-38 10-40 0Z" fill="#efd19b" />
-          <ellipse cx="54" cy="21" rx="13" ry="5" fill="#533622" />
+          <g fill="none" stroke="#896139" strokeWidth=".65" opacity=".42">
+            <path d="M60 20c2 29-1 61 1 88M55 24l1 14m-1 51v13m-13-62 5-2m13 14 7-2m-25 35 4 1m13 15 6-1" />
+            <path d="m44 28 3-1m11 5 4-1m-16 22 3-1m9 38 4-2m-14 13 3 1M43 96l3-2m11-18 5-1" />
+          </g>
+          <path d="M40 11c-1-8 29-10 30 0s-30 10-30 0Z" fill="#efd19b" />
+          <ellipse cx="55" cy="11" rx="10.4" ry="4.4" fill="#60412a" />
+          <ellipse
+            cx="55"
+            cy="11"
+            rx="8.3"
+            ry="3.3"
+            fill="#281c13"
+            stroke="#b48c55"
+            strokeWidth=".8"
+          />
           <path
-            d="M44 20c9-7 23 1 15 4-8 3-18-3-11-5 5-2 10 1 5 2"
+            d="M47 10c7-5 18 1 12 3-6 2-14-2-9-4 4-1 8 1 4 2"
             fill="none"
-            stroke="#d3b27b"
-            strokeWidth="1.8"
+            stroke="#e6c58c"
+            strokeWidth="1.2"
           />
-          <path d="M36 108c0-7 34-8 35 0s-34 8-35 0Z" fill="#b68b52" />
-          <path d="M38 105c7 5 24 4 31 0" stroke="#f1cd8d" fill="none" />
-          <path d="m35 61 36-3-1 15-35 3Z" fill="#5a2d24" stroke="#ad7050" />
-          <path d="m35 63 35-3m-34 13 33-3" stroke="#d09e64" strokeWidth="1" />
+          <path d="M41 114c0-6 26-7 27 0s-27 7-27 0Z" fill="#b68b52" />
           <path
-            d="m53 71-10 21 8-3 5 5 3-22m4-3 10 19-7-2-3 4-7-19"
-            fill="#8e3d2c"
+            d="M43 112c5 4 18 4 23 0m-23 5c6 2 16 2 21 0"
+            stroke="#f1cd8d"
+            strokeWidth=".8"
+            fill="none"
+          />
+          <path d="m40 60 28-2-1 11-27 3Z" fill="#502c24" stroke="#b57b51" />
+          <path d="m41 62 26-2m-26 10 25-3" stroke="#d09e64" strokeWidth=".7" />
+          <path d="m42 63 24-2v4l-24 3Z" fill="#875039" opacity=".55" stroke="none" />
+          <path
+            d="m53 71-7 22 5-3 4 4 2-23m4-2 7 21-5-3-3 4-4-21"
+            fill="#793324"
             stroke="#b36142"
+            strokeWidth=".7"
           />
           <path
-            d="m53 55 6 2 6-1 4 5 1 7-4 6-7 3-7-2-5-5-1-7 3-5Z"
+            d="m51 56 5 1 5-1 4 4 1 5-2 6-6 3-5-1-5-4-1-5 2-5Z"
             fill={`url(#${id}-seal)`}
             stroke="#e29860"
+            strokeWidth=".8"
           />
-          <circle cx="58" cy="66" r="7.2" fill="none" stroke="#e48b55" strokeWidth="1" />
-          <path d="m58 60 4 6-4 6-4-6Zm0 3v6" fill="none" stroke="#f0b77b" strokeWidth="1.4" />
-          <path d="M38 44h2m24-5 3-1m-25 56 3-1m-5 7 2 1" stroke="#916537" opacity=".6" />
+          <circle cx="56" cy="65" r="6" fill="none" stroke="#521c18" strokeWidth="1.7" />
+          <circle cx="56" cy="64.5" r="5.8" fill="none" stroke="#df8b58" strokeWidth=".75" />
+          <path d="m56 60 3 5-3 5-3-5Zm0 3v4" fill="none" stroke="#f0b77b" strokeWidth="1" />
+          <path d="m50 59 2-1m9 11 2-2m-7 5 3-1" fill="none" stroke="#e5a273" strokeWidth=".6" />
         </g>
         <g className="lore-scroll-open" stroke="#886139" strokeWidth="1.4">
           <path

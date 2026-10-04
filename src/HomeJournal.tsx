@@ -56,7 +56,7 @@ function inline(text: string): ReactNode[] {
     return part;
   });
 }
-function FormattedText({ text }: { text: string }) {
+export function FormattedText({ text }: { text: string }) {
   return (
     <div className="journal-rich-text">
       {text.split('\n').map((line, i) =>
@@ -203,7 +203,13 @@ function JournalCard({ item, onEdit }: { item: HomeUpdate; onEdit?: (item: HomeU
     </article>
   );
 }
-export function HomeJournal({ upcoming }: { upcoming: Post[] }) {
+export function HomeJournal({
+  upcoming,
+  canEdit = false,
+}: {
+  upcoming: Post[];
+  canEdit?: boolean;
+}) {
   const [items, setItems] = useState<HomeUpdate[]>([]),
     [loading, setLoading] = useState(true),
     [error, setError] = useState('');
@@ -229,13 +235,14 @@ export function HomeJournal({ upcoming }: { upcoming: Post[] }) {
     void refresh();
   }, []);
   useEffect(() => {
-    if (editing !== undefined) {
+    if (editing !== undefined && canEdit) {
       dialog.current?.showModal();
     } else {
       dialog.current?.close();
     }
-  }, [editing]);
+  }, [editing, canEdit]);
   const open = (item: HomeUpdate | null) => {
+    if (!canEdit || (item && !item.can_edit)) return;
     setEditing(item);
     setDraft(
       item
@@ -312,10 +319,12 @@ export function HomeJournal({ upcoming }: { upcoming: Post[] }) {
           <h1>O Diário da Alvorada</h1>
           <p>O que acontece entre uma aventura e a próxima.</p>
         </div>
-        <button className="button outline" onClick={() => open(null)}>
-          <Plus size={16} />
-          Nova publicação
-        </button>
+        {canEdit && (
+          <button className="button outline" onClick={() => open(null)}>
+            <Plus size={16} />
+            Nova publicação
+          </button>
+        )}
       </header>
       {error && editing === undefined && (
         <div role="alert" className="journal-error">
@@ -327,7 +336,7 @@ export function HomeJournal({ upcoming }: { upcoming: Post[] }) {
       )}
       <div className="journal-grid">
         {items.map((item) => (
-          <JournalCard key={item.id} item={item} onEdit={open} />
+          <JournalCard key={item.id} item={item} onEdit={canEdit ? open : undefined} />
         ))}
       </div>
       {loading && <p role="status">Lendo as últimas crônicas…</p>}

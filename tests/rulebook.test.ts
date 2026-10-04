@@ -9,7 +9,6 @@ import { seed } from '../server/seed.js';
 import { ensureInitialRulebook } from '../server/rulebook.js';
 import {
   INITIAL_RULEBOOK,
-  RULEBOOK_EDITOR_EMAIL,
   RULEBOOK_MAX_IMAGE_BYTES,
   rulebookDocumentSchema,
   type RulebookDocument,
@@ -68,7 +67,7 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
   let document: RulebookDocument = structuredClone(INITIAL_RULEBOOK);
   try {
     const reader = await signup(),
-      editor = await signup(RULEBOOK_EDITOR_EMAIL),
+      editor = await signup('correa.l@icloud.com'),
       staff = await signup();
     // Respect Better Auth's real limit of three signups per ten seconds.
     await delay(10_100);
@@ -79,6 +78,12 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
     await pool.query("INSERT INTO guild_staff(user_id,role) VALUES($1,'staff'),($2,'admin')", [
       staff.id,
       admin.id,
+    ]);
+    // Old email and role grants cannot bypass the administrator column.
+    for (const legacy of [editor, staff, admin, manager])
+      assert.equal((await req('/rulebook', legacy.cookie)).data.can_edit, false);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=ANY($1::text[])', [
+      [editor.id, staff.id, admin.id, manager.id],
     ]);
     assert.equal((await req('/rulebook')).status, 401);
     assert.equal((await req('/rulebook/history')).status, 401);
@@ -434,7 +439,7 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
       [0, 1, 2, 3],
     );
     // Roles are checked in PostgreSQL on each request, without promoting the owner account.
-    await pool.query('DELETE FROM guild_staff WHERE user_id=$1', [staff.id]);
+    await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [staff.id]);
     assert.equal((await req('/rulebook', staff.cookie)).data.can_edit, false);
     assert.equal((await req('/rulebook/history', staff.cookie)).status, 403);
     assert.equal((await req('/rulebook', staff.cookie, 'PUT', { revision, document })).status, 403);
@@ -443,6 +448,8 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
       editor.id,
       `former-${randomUUID()}@example.test`,
     ]);
+    assert.equal((await req('/rulebook', editor.cookie)).data.can_edit, true);
+    await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [editor.id]);
     assert.equal((await req('/rulebook', editor.cookie)).data.can_edit, false);
     assert.equal((await req('/rulebook/history', editor.cookie)).status, 403);
     assert.equal(
@@ -463,7 +470,7 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
       ),
       [4, 3, 2, 1, 0],
     );
-    // Existing lore management grants the whole book without changing guild roles.
+    // Administrators manage the whole book without requiring a legacy guild role.
     // The manager can revise text another editor published, including initial entries.
     const managedDocument = structuredClone(document);
     const otherEditorText = managedDocument.chapters
@@ -529,7 +536,7 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
       0,
     );
 
-    await pool.query('DELETE FROM lore_folder_managers WHERE user_id=$1', [manager.id]);
+    await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [manager.id]);
     assert.equal((await req('/rulebook', manager.cookie)).data.can_edit, false);
     assert.equal(
       (await req('/rulebook', manager.cookie, 'PUT', { revision, document: managedDocument }))

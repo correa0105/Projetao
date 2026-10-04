@@ -1,5 +1,62 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Mascotes, eventos, títulos, cartas e ficha escura (04/10/2026)
+
+Menu com Casa dos mascotes, Eventos, Títulos e Cartas. Garalho preserva olhos
+separados e referência do usuário; só mia e escreve por 2,5 s na placa de madeira
+antes de virá-la. Baguncinha é o esqueleto humanoide sentado fora da casa tomando
+café. Dez espécies com preços definidos, sete aparências adicionais reimaginadas,
+sons ao aparecer e compras reais no inventário. Imagens e prompts em COMPANIONS-ART.md.
+
+Eventos usam board_posts; administrador cria/edita/exclui e compõe cenário inteiro
+com upload de background, enquadramento, luz, névoa/brasas, camadas de arte e seis
+animações. Conquistas não têm limite por prateleira nem posições fixas; arraste
+entre três níveis, setas e sobreposição. Candelabro alinhado. Títulos administráveis,
+metas por conquista/nível/missões/gasto no empório ou concessão/revogação manual,
+com auditoria e escolha de título exibido no acampamento/ficha.
+
+Cartas: três equipadas por personagem, oito artes e Anfitrião em salão noturno
+com janela iluminada pela lua. Quatro compráveis por 50/75/100/150 PO. Resposta
+expressa do usuário: upgrades serão definidos depois; drops serão implementados
+mais adiante no servidor. Não inventar custos, obtenção ou bônus automáticos.
+Compras/ownership/idempotência e equipagem estão implementados no SQL.
+
+Ficha em papel escuro/tinta clara, História separada de Equipamento. Banner da
+Lore substituído por panorama geral do mundo. Migrations 048–054; contratos,
+preços, persistência e validação em COMPANHEIROS-EVENTOS-TITULOS-CARTAS.md.
+Suíte geral: 60 de 62 testes passaram; duas falhas preexistentes do WorldFleet
+(órbita e olho/onda) continuam documentadas, sem alteração nesta entrega.
+Testes novos de comunidade e administração e fluxos reais de navegador passaram.
+
+Aplicado no ambiente local: migrations 045–054, Docker app reconstruído e
+healthcheck saudável em localhost:3000. Bundle index-ByLrSlyT.js confirmado.
+Concessão solicitada feita explicitamente pelo CLI: limawelsn@gmail.com com
+administrador=1. Nenhuma concessão por seed/e-mail fixo no código. Backup SQL
+pré-migração preservado em .local/backups (ignorado no Git); volume mantido.
+
+## Administração, cronologia e montaria do personagem (04/10/2026)
+
+Permissões compartilhadas unificadas em `"user".administrador` 0/1, padrão 0,
+com autorização renovada no PostgreSQL a cada operação. Só 1 altera Lore/pastas,
+linha do tempo, Regras, Início, editor do reino e eventos. Substitui autoria,
+staff/gestão antigos e e-mail fixo; não promover via cadastro/seed. Concessão
+explícita solicitada para limawelsn@gmail.com usa scripts/admin.ts (conta existente).
+Jogadores mantêm seus fluxos privados com ownership, inclusive montarias.
+
+Lore ganhou linha do tempo editável pelo administrador: seis eras iniciais, só
+Alvorada Cinzenta revelada, anos/títulos/descrições/ordem/revelação e vínculos de
+pastas configuráveis. Abrir pasta vinculada ou subpasta faz percurso cronológico
+e chegada; na mesma era toca apenas chegada. Documento SQL compartilhado com revisão.
+Cabeçalho da Lore sem margem superior e título repetido; pergaminho fechado mais
+longo/estreito e elaborado diretamente no SVG. Tentáculo da Gina com tons de carvão,
+reflexos mais suaves e ventosas no braço distante, integrado à luz fria/neutra da cena.
+
+Inventário ganhou Companheiros de estrada: escolha persistida por personagem de
+qual montaria aparece, ou ocultação. Acampamento mostra a escolha à esquerda e
+mais ao fundo, mudando imediatamente com o personagem selecionado; arte conserva
+pelagem/equipamento comprado. Migrations 045–047. Detalhes, endpoints e validação em
+docs/ADMINISTRADORES-ERAS-MONTARIAS.md.
+
 ## Códice com ambientação e entrada da Ginna por ruptura (04/10/2026)
 
 Regras ganhou emblemas ilustrados de metal envelhecido nos capítulos,

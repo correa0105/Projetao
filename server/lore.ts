@@ -4,17 +4,16 @@ import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
+import { administratorPredicate, isAdministrator, requireAdministrator } from './administrators.js';
 import { lorePageInput, LORE_MAX_IMAGE_BYTES } from '../shared/lore.js';
 
 const uuid = z.string().uuid();
 const folderWriteLock = (client: import('pg').PoolClient) =>
   client.query('SELECT pg_advisory_xact_lock(74261925)');
 async function requireFolderManager(userId: string) {
-  if (!(await pool.query('SELECT 1 FROM lore_folder_managers WHERE user_id=$1', [userId])).rowCount)
-    throw new AppError(403, 'Esta conta não pode editar, excluir ou restaurar pastas da lore.');
+  await requireAdministrator(userId);
 }
-const loreManager = `EXISTS(SELECT 1 FROM lore_folder_managers WHERE user_id=$1)`;
-const editable = `(p.deleted_at IS NULL AND (COALESCE(p.author_id=$1,false) OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1) OR ${loreManager}))`;
+const editable = `(p.deleted_at IS NULL AND ${administratorPredicate()})`;
 const visible = `(p.deleted_at IS NULL AND (p.published OR ${editable}))`;
 const summary = `p.id,p.region_id,p.folder_id,p.title,p.subtitle,p.published,p.revision,
   ${editable} AS can_edit,
@@ -44,6 +43,11 @@ async function getPage(id: string, userId: string, edit = false) {
 
 export function loreRouter() {
   const router = express.Router();
+  router.use('/lore', async (req, res, next) => {
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method))
+      await requireAdministrator(res.locals.user.id);
+    next();
+  });
   router.get('/lore', async (_req, res) => {
     const userId = res.locals.user.id;
     const [regions, folders, pages, manager] = await Promise.all([
@@ -55,13 +59,13 @@ export function loreRouter() {
         `SELECT ${summary} FROM lore_pages p WHERE ${visible} ORDER BY p.created_at,p.id`,
         [userId],
       ),
-      pool.query('SELECT 1 FROM lore_folder_managers WHERE user_id=$1', [userId]),
+      isAdministrator(userId),
     ]);
     res.json({
       regions: regions.rows,
       folders: folders.rows,
       pages: pages.rows,
-      can_manage_folders: !!manager.rowCount,
+      can_manage_folders: manager,
     });
   });
   router.post('/lore/folders', async (req, res) => {

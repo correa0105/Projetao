@@ -8,6 +8,25 @@ Ao retomar perguntas sobre o estado das regras, lançamento, níveis altos ou su
 leia também `docs/ROADMAP-REGRAS.md`. Diferencie o que está implementado do que está
 planejado; não apresente a migração ao SRD como implementação completa de D&D.
 
+## Permissões vigentes (04/10/2026)
+
+Por pedido explícito do usuário, a coluna `"user".administrador` (0/1, padrão 0)
+é a única fonte de autorização para editar conteúdo/configuração compartilhados:
+Lore (pastas, crônicas, imagens e linha do tempo), Regras, Início, editor do reino
+e publicação de eventos. Esta regra substitui as permissões antigas por autoria,
+`guild_staff`, `lore_folder_managers` ou e-mail fixo mencionadas abaixo/documentos
+históricos. O servidor consulta o banco a cada operação. Não permitir que cadastro
+ou perfil promovam a própria conta. Usar `scripts/admin.ts email 0|1` para concessão
+explícita a conta já existente. Jogadores continuam gerenciando seus personagens,
+inventário, montarias, compras e missões conforme ownership e regras de jogo.
+
+Eventos permanecem em board_posts. Títulos compartilhados e concessão/revogação
+também exigem administrador=1. Mascotes e cartas pertencem a cada personagem,
+com compra em ouro transacional e idempotente. Cartas permitem três equipadas;
+o usuário definirá upgrades depois, e drops serão implementados no futuro.
+Não inventar upgrade, distribuição automática ou bônus de cartas nesta etapa.
+Detalhes em docs/COMPANHEIROS-EVENTOS-TITULOS-CARTAS.md.
+
 ## Acordos de desenvolvimento
 
 - Comunicação e interface em português brasileiro.

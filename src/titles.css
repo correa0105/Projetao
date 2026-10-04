@@ -1,0 +1,167 @@
+.title-hall {
+  margin: 30px 0;
+  padding: 28px;
+  border: 1px solid #a98a4a45;
+  background: linear-gradient(120deg, #252219ee, #15161bec);
+  border-radius: 7px;
+}
+.title-hall > header {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.title-hall h2 {
+  font:
+    26px 'Libre Baskerville',
+    Georgia,
+    serif;
+  margin: 9px 0;
+}
+.title-hall p {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #b7ad98;
+}
+.title-hall-cards {
+  display: grid;
+  gap: 12px;
+}
+.title-hall-cards article {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  background: #090e1380;
+  border: 1px solid #a98a4a30;
+  border-radius: 4px;
+}
+.title-hall-cards article[data-earned='false'] {
+  opacity: 0.65;
+}
+.title-hall-cards article > div {
+  flex: 1;
+  min-width: 0;
+}
+.title-hall h3 {
+  font:
+    18px Georgia,
+    serif;
+  margin: 0;
+}
+.title-hall small {
+  font-size: 10px;
+  color: #c0a776;
+}
+.title-hall progress {
+  display: block;
+  width: min(240px, 100%);
+  height: 4px;
+  margin-top: 10px;
+  accent-color: #bd975b;
+}
+.title-seal {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 4px #0004,
+    inset 0 0 22px #bc8a4340,
+    0 3px 10px #0005;
+  background: radial-gradient(#b7844e35, #13110b);
+  color: #d3a76a;
+}
+.title-silver {
+  color: #c1d1df;
+}
+.title-crimson {
+  color: #cb7771;
+}
+.character-title-label {
+  display: block;
+  font:
+    italic 11px/1.6 Georgia,
+    serif;
+  color: #c5a26c;
+  letter-spacing: 0.03em;
+}
+.title-manager {
+  display: grid;
+  gap: 22px;
+}
+.title-manager-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.title-manager-list button {
+  font-size: 11px;
+  padding: 8px 12px;
+}
+.title-manager-list button[aria-pressed='true'] {
+  border-color: #d3a76a;
+  color: #ebd2a8;
+}
+.title-manager form fieldset {
+  border: 0;
+  padding: 0;
+  display: grid;
+  gap: 15px;
+  margin: 0;
+  min-width: 0;
+}
+.title-manager label {
+  display: grid;
+  gap: 7px;
+  font-size: 12px;
+}
+.title-manager input,
+.title-manager select,
+.title-manager textarea {
+  width: 100%;
+  min-width: 0;
+}
+.title-distribution {
+  border: 1px solid #a98a4a45;
+  padding: 20px;
+  display: grid;
+  gap: 12px;
+}
+.title-distribution p {
+  font-size: 11px;
+  color: #b7ad98;
+}
+.title-distribution > div {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+@media (max-width: 650px) {
+  .title-hall {
+    padding: 20px;
+  }
+  .title-hall > header {
+    flex-direction: column;
+    align-items: start;
+  }
+  .title-hall-cards article {
+    flex-wrap: wrap;
+    gap: 13px;
+  }
+  .title-hall-cards article .text-button {
+    margin-left: auto;
+  }
+  .title-seal {
+    width: 48px;
+    height: 48px;
+  }
+  .title-hall-cards article > div {
+    flex-basis: 65%;
+  }
+}

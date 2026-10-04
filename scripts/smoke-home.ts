@@ -35,6 +35,7 @@ try {
   });
   expect(signup.ok()).toBe(true);
   const user = (await signup.json()).user;
+  await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [user.id]);
   const other = await browser.newContext();
   const outsider = await other.request.post(origin + '/api/auth/sign-up/email', {
     headers: { Origin: origin },
@@ -77,7 +78,7 @@ try {
         data: { title: 'Imagem alheia', image_path: imagePath },
       })
     ).status(),
-  ).toBe(400);
+  ).toBe(403);
   await page.goto(origin + '/#overview');
   await expect(page.getByRole('heading', { name: 'O Diário da Alvorada' })).toBeVisible();
   await expect(page.locator('.journal-card')).toHaveCount(0);
@@ -112,14 +113,14 @@ try {
         data: { ...item, title: 'Invadido' },
       })
     ).status(),
-  ).toBe(404);
+  ).toBe(403);
   expect(
     (
       await other.request.delete(origin + '/api/home-updates/' + item.id, {
         headers: { Origin: origin },
       })
     ).status(),
-  ).toBe(404);
+  ).toBe(403);
   expect(
     (
       await page.request.put(origin + '/api/home-updates/' + item.id, {

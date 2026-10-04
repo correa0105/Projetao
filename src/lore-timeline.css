@@ -1,0 +1,324 @@
+.lore-timeline {
+  position: relative;
+  margin: 0;
+  padding: 52px clamp(24px, 4.5vw, 90px) 40px;
+  border-bottom: 1px solid var(--lore-line);
+  background:
+    radial-gradient(ellipse at 78% 35%, #ab7d2920, transparent 55%),
+    linear-gradient(130deg, #141612, #1c1d17 70%, #141512);
+  isolation: isolate;
+}
+.lore-timeline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background: url('/parchment-grain.svg');
+  z-index: -1;
+}
+.lore-timeline-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.lore-timeline-heading h2 {
+  margin: 7px 0 0;
+  font-size: clamp(23px, 2.5vw, 36px);
+}
+.lore-timeline-edit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #141511;
+  color: var(--lore-gold);
+  border: 1px solid var(--lore-line);
+  padding: 10px 14px;
+  border-radius: 3px;
+  font-size: 12px !important;
+}
+.lore-era-window {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #92744355 transparent;
+  margin: 25px -10px 0;
+}
+.lore-era-track {
+  display: flex;
+  position: relative;
+  min-width: 720px;
+  padding: 20px 10px 30px;
+}
+.lore-era-thread {
+  position: absolute;
+  top: 81px;
+  height: 1px;
+  left: calc(50% / var(--era-count));
+  right: calc(50% / var(--era-count));
+  background: #71644a70;
+}
+.lore-era-thread::before {
+  content: '';
+  position: absolute;
+  inset: -3px 0;
+  border-block: 1px solid #b3985420;
+}
+.lore-era-thread i {
+  position: absolute;
+  left: calc(100% * var(--era-position) / max(1, var(--era-count) - 1));
+  top: -2px;
+  width: 4px;
+  height: 5px;
+  background: #ebcf91;
+  box-shadow: 0 0 16px 7px #d4aa553b;
+  transition: left 0.18s linear;
+}
+.lore-era {
+  flex: 1 0 116px;
+  position: relative;
+  color: #817d70;
+  background: transparent;
+  border: 0;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.lore-era-year {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(12px, 1.1vw, 16px);
+  white-space: nowrap;
+  color: #b9ab8e;
+}
+.lore-era-medallion {
+  display: grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
+  margin: 19px 0 17px;
+  position: relative;
+  border: 1px solid #74644675;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 20%, #414037, #171914 75%);
+  box-shadow:
+    inset 0 0 0 4px #171914,
+    inset 0 0 0 5px #74644650,
+    0 6px 15px #0005;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.lore-era-medallion i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  bottom: -4px;
+  left: calc(50% - 2px);
+  background: #9b8554;
+  transform: rotate(45deg);
+}
+.lore-era small {
+  letter-spacing: 0.17em;
+  font-size: 8px;
+  margin-bottom: 7px;
+}
+.lore-era strong {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 400;
+  font-size: 14px;
+  max-width: 160px;
+  line-height: 1.4;
+}
+.lore-era-footnote {
+  font-size: 10px;
+  opacity: 0.55;
+  margin-top: 6px;
+}
+.lore-era[data-revealed='true'] {
+  color: #cdb88a;
+}
+.lore-era[data-revealed='false'] .lore-era-medallion {
+  background: radial-gradient(circle at 45% 40%, #292b25, #11130f 80%);
+}
+.lore-era:hover .lore-era-medallion,
+.lore-era[aria-pressed='true'] .lore-era-medallion {
+  color: #e8ce94;
+  border-color: #c7a566;
+  box-shadow:
+    inset 0 0 0 4px #171914,
+    inset 0 0 0 5px #b2955875,
+    0 0 26px #c89a3624;
+}
+.lore-era[aria-pressed='true'] strong {
+  color: #e4cfaa;
+}
+.lore-era-record {
+  display: flex;
+  gap: 19px;
+  min-height: 110px;
+  max-width: 820px;
+  padding: 20px 0 0;
+  border-top: 1px solid #a58a5125;
+}
+.lore-era-record h3 {
+  margin: 5px 0 9px;
+  font-size: 23px;
+}
+.lore-era-record p {
+  margin: 0;
+  color: var(--lore-muted);
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.lore-era-arrival {
+  color: #b79860;
+  padding-top: 5px;
+}
+.lore-era-record[data-arriving='true'] {
+  animation: lore-era-arrival 0.65s ease-out both;
+}
+.lore-timeline[data-phase='travelling'] .lore-era-thread {
+  box-shadow: 0 0 10px #ccae6233;
+}
+.lore-timeline[data-phase='travelling'] .lore-era-medallion {
+  transition-duration: 0.13s;
+}
+.lore-era-folders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+.lore-era-folders button {
+  padding: 7px 12px;
+  background: #8e764519;
+  border: 1px solid #b0995d40;
+  border-radius: 2px;
+  color: #d9c398;
+  font-size: 12px !important;
+}
+.lore-era-folders span {
+  margin-left: 14px;
+}
+.lore-era-editor {
+  display: grid;
+  gap: 18px;
+}
+.lore-era-editor > label {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  color: #caba98;
+}
+.lore-era-editor :is(input:not([type='checkbox']), textarea) {
+  width: 100%;
+  padding: 10px;
+  color: #e2d7c1;
+  border: 1px solid #a58a5150;
+  background: #13150f;
+  border-radius: 3px;
+}
+.lore-era-editor-tabs,
+.lore-era-editor-order {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.lore-era-editor :is(.lore-era-editor-tabs, .lore-era-editor-order) button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  color: #caba98;
+  background: #202219;
+  border: 1px solid #a58a5140;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.lore-era-editor-tabs button[aria-pressed='true'] {
+  border-color: #bb995c;
+  background: #bb995c26;
+}
+.lore-era-editor fieldset {
+  padding: 16px;
+  border: 1px solid #a58a5140;
+}
+.lore-era-editor legend {
+  color: #caba98;
+  font-size: 13px;
+}
+.lore-era-editor fieldset p {
+  font-size: 12px;
+  color: #a79c86;
+  margin-top: 0;
+  line-height: 1.5;
+}
+.lore-era-folder-options {
+  display: grid;
+  max-height: 200px;
+  overflow-y: auto;
+  gap: 12px;
+  padding: 3px;
+}
+.lore-era-editor .lore-era-checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #caba98;
+}
+.lore-era-checkbox input {
+  accent-color: #bb995c;
+  margin-top: 3px;
+}
+.lore-era-checkbox small {
+  display: block;
+  color: #988c75;
+}
+.lore-timeline-error {
+  padding: 20px 5vw;
+}
+@keyframes lore-era-arrival {
+  from {
+    opacity: 0.3;
+    filter: blur(2px);
+    transform: translateY(6px);
+  }
+  45% {
+    text-shadow: 0 0 18px #edc77560;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .lore-timeline {
+    padding: 32px 22px 25px;
+  }
+  .lore-timeline-heading {
+    align-items: flex-start;
+  }
+  .lore-timeline-edit {
+    padding: 9px;
+  }
+  .lore-timeline-heading h2 {
+    font-size: 24px;
+  }
+  .lore-era-record h3 {
+    font-size: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lore-timeline *,
+  .lore-timeline *::before {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

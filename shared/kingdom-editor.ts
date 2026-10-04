@@ -33,7 +33,6 @@ export type KingdomEditorItem = {
   direction: number;
 };
 export type KingdomEditorLayout = { revision: number; items: KingdomEditorItem[] };
-export const KINGDOM_EDITOR_EMAIL = 'correa.l@icloud.com';
 export const KINGDOM_DEFAULT_PIXELS = 3072;
 export const KINGDOM_DEFAULT_WIDTH = 4096;
 export const KINGDOM_DEFAULT_HEIGHT = 3072;

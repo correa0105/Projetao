@@ -113,7 +113,7 @@ function makeTube(
     line(Math.min(1, t + 0.0005), tight, age, after);
     tangent.subVectors(after, before).normalize();
     if (line === nearCenter) normal.set(-point.x, 0, -point.z).normalize();
-    else normal.set(0, 0, 1);
+    else normal.set(Math.sin(t * 4 + 0.45) * 0.55, 0, 1).normalize();
     normal.addScaledVector(tangent, -normal.dot(tangent)).normalize();
     binormal.crossVectors(tangent, normal).normalize();
     // Most of the arm stays fleshy; only the actively advancing end tapers to a tip.
@@ -137,7 +137,8 @@ function makeTube(
         const ny = normal.y * c + binormal.y * s;
         const nz = normal.z * c + binormal.z * s;
         // Broad muscle ridges underneath the microscopic photographed skin detail.
-        const skin = 1 + Math.sin(phi * 7 + t * 19) * 0.012 + Math.cos(t * 127) * 0.006;
+        const skin =
+          1 + Math.sin(phi * 5 + t * 17) * 0.023 + Math.cos(t * 93 + Math.sin(phi * 3)) * 0.008;
         positions[k] = point.x + nx * pose.radius * skin;
         positions[k + 1] = point.y + ny * pose.radius * skin;
         positions[k + 2] = point.z + nz * pose.radius * skin;
@@ -268,10 +269,10 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 0.94;
   renderer.autoClear = false;
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFShadowMap;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.65));
   const nearScene = new THREE.Scene(),
     farScene = new THREE.Scene();
@@ -284,9 +285,9 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
   camera.lookAt(0, 0, -1);
   const farCamera = new THREE.OrthographicCamera(0, 1, 1, 0, 0.1, 2000);
   farCamera.position.z = 1000;
-  const hemisphere = new THREE.HemisphereLight('#9ba5b0', '#25211e', 0.85);
+  const hemisphere = new THREE.HemisphereLight('#a3a6a5', '#383532', 1.05);
   nearScene.add(hemisphere);
-  const key = new THREE.DirectionalLight('#d5d0c5', 3);
+  const key = new THREE.DirectionalLight('#b5b4b0', 1.9);
   key.position.set(-3, 4.5, 3);
   key.target.position.set(0, 0, -1);
   key.castShadow = true;
@@ -298,11 +299,11 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
   key.shadow.normalBias = 0.013;
   key.shadow.bias = -0.0005;
   nearScene.add(key, key.target);
-  const fill = new THREE.DirectionalLight('#8c9dab', 0.6);
+  const fill = new THREE.DirectionalLight('#8c9296', 0.7);
   fill.position.set(3.5, 0.5, 1.6);
   nearScene.add(fill);
-  farGroup.add(new THREE.HemisphereLight('#7e868d', '#13171d', 0.8));
-  const farLight = new THREE.DirectionalLight('#bdc2c8', 1.8);
+  farGroup.add(new THREE.HemisphereLight('#8b8c89', '#292a29', 1));
+  const farLight = new THREE.DirectionalLight('#a2a4a1', 1.2);
   farLight.position.set(650, 1150, 550);
   farLight.target.position.set(800, 850, -5);
   farGroup.add(farLight, farLight.target);
@@ -317,14 +318,14 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
   const skin = new THREE.MeshPhysicalMaterial({
-    color: '#b6b9b9',
+    color: '#939794',
     map: texture,
     bumpMap: texture,
-    bumpScale: 0.026,
-    roughness: 0.68,
+    bumpScale: 0.011,
+    roughness: 0.83,
     metalness: 0,
-    clearcoat: 0.16,
-    clearcoatRoughness: 0.52,
+    clearcoat: 0.08,
+    clearcoatRoughness: 0.69,
   });
   // Keep photographed pores while bringing the rust-colored atlas into the
   // charcoal, stone and muted cold light of the painted nightmare landscape.
@@ -332,11 +333,14 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <map_fragment>',
       `#include <map_fragment>
-       float ginnaSkinLuma=pow(dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722)),0.76);
-       diffuseColor.rgb=mix(diffuseColor.rgb,vec3(ginnaSkinLuma),0.94)*vec3(0.86,0.92,1.0);`,
+       float ginnaSkinLuma=dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722));
+       // Compress the pale patches; retain the pores without a white, scaly glare.
+       float ginnaPigment=0.10+ginnaSkinLuma*0.60;
+       float ginnaFolds=sin(vMapUv.x*8.0+sin(vMapUv.y*18.85)*0.8)*0.5+0.5;
+       diffuseColor.rgb=vec3(ginnaPigment)*vec3(0.96,0.985,1.0)*(0.86+ginnaFolds*0.14);`,
     );
   };
-  skin.customProgramCacheKey = () => 'ginna-photographic-skin-v1';
+  skin.customProgramCacheKey = () => 'ginna-charcoal-organic-skin-v3';
   const lakeAge = { value: 0 };
   const distantSkin = skin.clone();
   distantSkin.transparent = true;
@@ -373,18 +377,20 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
       .replace(
         '#include <roughnessmap_fragment>',
         `#include <roughnessmap_fragment>
-        roughnessFactor=mix(roughnessFactor,0.24,wetRoot*0.8);`,
+        diffuseColor.rgb=mix(diffuseColor.rgb*(1.0-wetRoot*0.16),vec3(0.035,0.037,0.038),0.13+wetRoot*0.16);
+        roughnessFactor=mix(roughnessFactor,0.43,wetRoot*0.8);`,
       );
   };
-  distantSkin.customProgramCacheKey = () => 'ginna-distant-lake-contact-v2';
-  distantSkin.color.set('#747c84');
-  distantSkin.bumpScale = 0.09;
+  distantSkin.customProgramCacheKey = () => 'ginna-distant-lake-contact-v3';
+  distantSkin.color.set('#818581');
+  distantSkin.bumpScale = 0.2;
   const near = makeTube(nearCenter, 0.37, skin);
-  const far = makeTube(farCenter, 18, distantSkin, 96, 18);
+  const far = makeTube(farCenter, 23, distantSkin, 128, 28);
   const cups = makeCups(near, texture);
+  const farCups = makeCups(far, texture);
   nearScene.add(near.mesh, cups.mesh);
   const lakeEffects = createGinnaLakeEffects(far.mesh.geometry, texture, LAKE);
-  farGroup.add(far.mesh, lakeEffects.group);
+  farGroup.add(far.mesh, farCups.mesh, lakeEffects.group);
 
   const resize = () => {
     if (released) return;
@@ -414,6 +420,7 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
     host.dataset.cupRows = String(cups.stats.rows);
     host.dataset.cupDetail = 'polar-radial-wrinkles-pores';
     far.update(pose.far, 0, pose.age);
+    farCups.update(pose.far, 0, pose.age);
     lakeAge.value = milliseconds / 1000;
     lakeEffects.update(milliseconds);
     const plane = alignFar();
@@ -449,6 +456,7 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
     near.mesh.geometry.dispose();
     far.mesh.geometry.dispose();
     cups.dispose();
+    farCups.dispose();
     skin.dispose();
     distantSkin.dispose();
     texture.dispose();

@@ -1,0 +1,18 @@
+ALTER TABLE character_pets DROP CONSTRAINT character_pets_character_id_fkey;
+ALTER TABLE character_pets ADD CONSTRAINT character_pets_character_id_fkey FOREIGN KEY(character_id)REFERENCES characters(id)ON DELETE CASCADE;
+ALTER TABLE character_cards DROP CONSTRAINT character_cards_character_id_fkey;
+ALTER TABLE character_cards ADD CONSTRAINT character_cards_character_id_fkey FOREIGN KEY(character_id)REFERENCES characters(id)ON DELETE CASCADE;
+ALTER TABLE character_titles DROP CONSTRAINT character_titles_character_id_fkey;
+ALTER TABLE character_titles ADD CONSTRAINT character_titles_character_id_fkey FOREIGN KEY(character_id)REFERENCES characters(id)ON DELETE CASCADE;
+ALTER TABLE character_title_log DROP CONSTRAINT character_title_log_character_id_fkey;
+ALTER TABLE character_title_log ADD CONSTRAINT character_title_log_character_id_fkey FOREIGN KEY(character_id)REFERENCES characters(id)ON DELETE CASCADE;
+ALTER TABLE character_titles DROP CONSTRAINT character_titles_granted_by_fkey;
+ALTER TABLE character_titles ADD CONSTRAINT character_titles_granted_by_fkey FOREIGN KEY(granted_by)REFERENCES "user"(id)ON DELETE SET NULL;
+ALTER TABLE character_title_log DROP CONSTRAINT character_title_log_actor_id_fkey;
+ALTER TABLE character_title_log ADD CONSTRAINT character_title_log_actor_id_fkey FOREIGN KEY(actor_id)REFERENCES "user"(id)ON DELETE SET NULL;
+ALTER TABLE title_catalog DROP CONSTRAINT title_catalog_created_by_fkey;
+ALTER TABLE title_catalog ADD CONSTRAINT title_catalog_created_by_fkey FOREIGN KEY(created_by)REFERENCES "user"(id)ON DELETE SET NULL;
+ALTER TABLE event_scene DROP CONSTRAINT event_scene_updated_by_fkey;
+ALTER TABLE event_scene ADD CONSTRAINT event_scene_updated_by_fkey FOREIGN KEY(updated_by)REFERENCES "user"(id)ON DELETE SET NULL;
+ALTER TABLE event_images DROP CONSTRAINT event_images_author_id_fkey;
+ALTER TABLE event_images ADD CONSTRAINT event_images_author_id_fkey FOREIGN KEY(author_id)REFERENCES "user"(id)ON DELETE CASCADE;

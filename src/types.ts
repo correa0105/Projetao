@@ -3,6 +3,7 @@ export type User = {
   name: string;
   email: string;
   role?: 'player' | 'staff' | 'admin';
+  administrador?: 0 | 1;
   canEditKingdom?: boolean;
 };
 export type Character = {
@@ -110,6 +111,10 @@ export type Page =
   | 'hooks'
   | 'shop'
   | 'stable'
+  | 'pets'
+  | 'events'
+  | 'titles'
+  | 'cards'
   | 'house'
   | 'world'
   | 'lore'

@@ -85,7 +85,7 @@ before(async () => {
   await pool.query(
     'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
   );
-  server = createApp({ kingdomEditorEmail: editorTestEmail }).listen(0, '127.0.0.1');
+  server = createApp().listen(0, '127.0.0.1');
   await new Promise<void>((resolve) => server.once('listening', resolve));
   const address = server.address();
   assert.ok(address && typeof address !== 'string');
@@ -264,27 +264,62 @@ async function verifyKingdomView(alice: Client, bob: Client) {
 
 async function notificationsTest(owner: Client, other: Client) {
   const c = await createLegacyTestCharacter(owner.id);
-  const list = async () => (await request('/api/notifications', owner)).data as {kind:string;characterId:string;level?:number}[];
+  const list = async () =>
+    (await request('/api/notifications', owner)).data as {
+      kind: string;
+      characterId: string;
+      level?: number;
+    }[];
   assert.equal((await request('/api/notifications')).status, 401);
-  assert.deepEqual((await list()).map(n => n.kind), ['origin']);
+  assert.deepEqual(
+    (await list()).map((n) => n.kind),
+    ['origin'],
+  );
   assert.deepEqual((await request('/api/notifications', other)).data, []);
-  await pool.query(`INSERT INTO character_sheets(character_id,choices,rules_version) VALUES($1,$2,'5.2.1')`, [c.id, JSON.stringify(defaultChoices('Elfo','Guerreiro'))]);
-  assert.deepEqual((await list()).map(n => n.kind), ['roll']);
-  await pool.query('UPDATE character_sheets SET rolls=$2 WHERE character_id=$1', [c.id,JSON.stringify(Array.from({length:6},()=>[3,4,5,6]))]);
-  assert.deepEqual((await list()).map(n => n.kind), ['assignment']);
-  await pool.query('UPDATE character_sheets SET assignment=$2,finalized_at=now() WHERE character_id=$1', [c.id,JSON.stringify([0,1,2,3,4,5])]);
+  await pool.query(
+    `INSERT INTO character_sheets(character_id,choices,rules_version) VALUES($1,$2,'5.2.1')`,
+    [c.id, JSON.stringify(defaultChoices('Elfo', 'Guerreiro'))],
+  );
+  assert.deepEqual(
+    (await list()).map((n) => n.kind),
+    ['roll'],
+  );
+  await pool.query('UPDATE character_sheets SET rolls=$2 WHERE character_id=$1', [
+    c.id,
+    JSON.stringify(Array.from({ length: 6 }, () => [3, 4, 5, 6])),
+  ]);
+  assert.deepEqual(
+    (await list()).map((n) => n.kind),
+    ['assignment'],
+  );
+  await pool.query(
+    'UPDATE character_sheets SET assignment=$2,finalized_at=now() WHERE character_id=$1',
+    [c.id, JSON.stringify([0, 1, 2, 3, 4, 5])],
+  );
   assert.deepEqual(await list(), []);
   await pool.query('UPDATE characters SET level=4,progression_missions=21 WHERE id=$1', [c.id]);
-  assert.deepEqual((await list()).map(n => n.kind), ['level']);
+  assert.deepEqual(
+    (await list()).map((n) => n.kind),
+    ['level'],
+  );
   await pool.query('UPDATE characters SET progression_missions=22 WHERE id=$1', [c.id]);
-  assert.deepEqual((await list()).map(n => n.kind), ['rank','level']);
+  assert.deepEqual(
+    (await list()).map((n) => n.kind),
+    ['rank', 'level'],
+  );
   const path = `/api/characters/${c.id}/notifications/level-read`;
-  assert.equal((await request(path, other, {level:4})).status, 404);
-  assert.equal((await request(path, owner, {level:5})).status, 404);
-  assert.equal((await request(path, owner, {level:4})).status, 200);
-  assert.deepEqual((await list()).map(n => n.kind), ['rank']);
+  assert.equal((await request(path, other, { level: 4 })).status, 404);
+  assert.equal((await request(path, owner, { level: 5 })).status, 404);
+  assert.equal((await request(path, owner, { level: 4 })).status, 200);
+  assert.deepEqual(
+    (await list()).map((n) => n.kind),
+    ['rank'],
+  );
   await pool.query('UPDATE characters SET level=5 WHERE id=$1', [c.id]);
-  assert.deepEqual((await list()).map(n => n.kind), ['level']);
+  assert.deepEqual(
+    (await list()).map((n) => n.kind),
+    ['level'],
+  );
   assert.equal((await list())[0].level, 5);
   await pool.query('UPDATE characters SET deleted_at=now() WHERE id=$1', [c.id]);
   assert.deepEqual(await list(), []);
@@ -293,7 +328,9 @@ async function notificationsTest(owner: Client, other: Client) {
 test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores', async (t) => {
   const alice = await signup(editorTestEmail);
   const bob = await signup();
-  await t.test('notificações: ficha, patente, leitura e isolamento', () => notificationsTest(alice, bob));
+  await t.test('notificações: ficha, patente, leitura e isolamento', () =>
+    notificationsTest(alice, bob),
+  );
   const arden = await character(alice);
   const mira = await character(alice, 'Mira');
   const borin = await character(bob, 'Borin');
@@ -434,6 +471,7 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
     );
     await pool.query('UPDATE character_art_worker SET available=true,heartbeat_at=now()');
   });
+  await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [alice.id]);
   await t.test('rascunho do editor: persistência, revisão e isolamento por usuário', async () =>
     verifyKingdomDraft(alice, bob),
   );
@@ -443,6 +481,7 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
   await t.test('visão inicial: zoom salvo, isolamento e vínculo ao background', async () =>
     verifyKingdomView(alice, bob),
   );
+  await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [alice.id]);
   await t.test('sessão, múltiplos personagens, atributos e acesso isolado', async () => {
     assert.equal((await request('/api/characters')).status, 401);
     const response = await request('/api/characters', alice);
@@ -710,7 +749,7 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
     ); // Ouro anunciado creditado uma única vez, pelo servidor.
   });
   await t.test(
-    'agendamento obrigatório, eventos restritos à staff e ganchos somente na conclusão',
+    'agendamento obrigatório, eventos restritos a administradores e ganchos somente na conclusão',
     async () => {
       const data = {
         kind: 'mission',
@@ -730,8 +769,12 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
       assert.equal((await request('/api/me', alice)).data.role, 'player');
       await pool.query("INSERT INTO guild_staff(user_id,role) VALUES($1,'staff')", [alice.id]);
       assert.equal((await request('/api/me', alice)).data.role, 'staff');
+      assert.equal((await request('/api/board', alice, { ...data, kind: 'event' })).status, 403);
+      await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [alice.id]);
+      assert.equal((await request('/api/me', alice)).data.role, 'admin');
       const event = await request('/api/board', alice, { ...data, kind: 'event' });
       assert.equal(event.status, 201);
+      await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [alice.id]);
       await pool.query('DELETE FROM guild_staff WHERE user_id=$1', [alice.id]);
       assert.equal(
         (await request(`/api/board/${event.data.id}`, alice, { status: 'active' }, 'PATCH')).status,
@@ -947,9 +990,9 @@ test('Fluxos reais com PostgreSQL, autenticação e isolamento entre jogadores',
     'missões exigem patente exata e calculam os cinco pagamentos no servidor',
     async () => {
       // Nova instância para esta matriz; preserva o limite real de requisições.
-      await new Promise<void>(resolve => server.close(() => resolve()));
-      server = createApp({kingdomEditorEmail:editorTestEmail}).listen(0,'127.0.0.1');
-      await new Promise<void>(resolve => server.once('listening',resolve));
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      server = createApp().listen(0, '127.0.0.1');
+      await new Promise<void>((resolve) => server.once('listening', resolve));
       const address = server.address();
       assert.ok(address && typeof address !== 'string');
       base = `http://127.0.0.1:${address.port}`;

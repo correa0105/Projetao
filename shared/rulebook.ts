@@ -2,7 +2,6 @@ import { z } from 'zod';
 import { classes, races, statNames } from './rules.js';
 import { MISSION_THRESHOLDS, RANKS, RANK_REWARD_CP, rankName } from './progression.js';
 
-export const RULEBOOK_EDITOR_EMAIL = 'correa.l@icloud.com';
 export const RULEBOOK_MAX_DOCUMENT_BYTES = 2 * 1024 * 1024;
 export const RULEBOOK_MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 export const RULEBOOK_MAX_IMAGE_EDGE = 8192;

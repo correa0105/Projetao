@@ -4,9 +4,7 @@ import { createServer } from 'node:net';
 import { chromium, expect } from '@playwright/test';
 import sharp from 'sharp';
 
-// Run the production UI against a separate app instance. Only this test
-// instance substitutes the editor email; server/index.ts always uses the
-// fixed account from shared/kingdom-editor.ts.
+// The isolated browser fixture explicitly grants administrator access.
 const probe = createServer();
 await new Promise<void>((resolve) => probe.listen(0, '127.0.0.1', resolve));
 const address = probe.address();
@@ -21,7 +19,7 @@ const [{ createApp }, { pool }] = await Promise.all([
   import('../server/db.js'),
 ]);
 const email = `editor-browser-${randomUUID()}@example.test`;
-const app = createApp({ kingdomEditorEmail: email });
+const app = createApp();
 const server = app.listen(address.port, '127.0.0.1');
 await new Promise<void>((resolve) => server.once('listening', resolve));
 const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || 'msedge' });
@@ -35,6 +33,7 @@ try {
   });
   expect(signup.status()).toBe(200);
   userId = (await signup.json()).user.id;
+  await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [userId]);
   await (
     await import('../tests/character-fixtures.js')
   ).createLegacyTestCharacter(userId!, 'Cartógrafo');

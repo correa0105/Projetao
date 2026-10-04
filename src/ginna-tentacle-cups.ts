@@ -63,7 +63,11 @@ function makeCupGeometry() {
     const lip = Math.exp(-(((v - 0.49) / 0.1) ** 2));
     const wrinkle = Math.sin(angle * 23 + v * 2.7) + Math.sin(angle * 37 - v * 4) * 0.35;
     const radius = Math.hypot(positions.getX(i), positions.getZ(i));
-    const irregularity = 1 + wrinkle * 0.009 * interior + Math.sin(angle * 11) * 0.006 * lip;
+    const irregularity =
+      1 +
+      wrinkle * 0.016 * interior +
+      Math.sin(angle * 11) * 0.01 * lip +
+      Math.sin(angle * 3 + v * 4) * 0.016;
     positions.setX(i, positions.getX(i) * irregularity);
     positions.setZ(i, positions.getZ(i) * irregularity);
     positions.setY(
@@ -74,14 +78,14 @@ function makeCupGeometry() {
     );
     color.set(
       p >= 14
-        ? '#343b40'
+        ? '#9ca2a6'
         : p >= 11
-          ? '#4e575c'
+          ? '#b3b8bb'
           : p >= 6
-            ? '#798184'
+            ? '#c6cacc'
             : p >= 3
-              ? '#51595e'
-              : '#363e41',
+              ? '#afb5b9'
+              : '#989fa2',
     );
     color.multiplyScalar(0.965 + Math.sin(angle * 7 + v * 13) * 0.035);
     colors.set([color.r, color.g, color.b], i * 3);
@@ -167,9 +171,9 @@ export function makeGinnaTentacleCups(tube: CupTube, skinTexture: THREE.Texture)
     map: skinTexture,
     bumpMap: details,
     bumpScale: 0.018,
-    roughness: 0.86,
+    roughness: 0.82,
     metalness: 0,
-    clearcoat: 0.06,
+    clearcoat: 0.08,
     clearcoatRoughness: 0.74,
   });
   material.onBeforeCompile = (shader) => {
@@ -179,13 +183,13 @@ export function makeGinnaTentacleCups(tube: CupTube, skinTexture: THREE.Texture)
       .replace(
         '#include <map_fragment>',
         `#include <map_fragment>
-        float cupLuma=pow(dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722)),0.72);
-        diffuseColor.rgb=mix(diffuseColor.rgb,vec3(cupLuma),0.95)*vec3(0.88,0.94,1.0);
+        float cupLuma=dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722));
+        diffuseColor.rgb=vec3(0.078+cupLuma*0.60)*vec3(0.96,0.985,1.0);
         float cupDetail=texture2D(ginnaCupDetails,vMapUv).r;
         float cupDetailZone=smoothstep(0.18,0.32,vMapUv.y);
         diffuseColor.rgb*=mix(1.0,0.60+cupDetail*0.84,cupDetailZone);
         float cupBowl=smoothstep(0.58,0.76,vMapUv.y);
-        vec3 bowlAlbedo=vec3(0.052,0.059,0.064)*(0.75+cupDetail*0.65);
+        vec3 bowlAlbedo=vec3(0.135,0.142,0.146)*(0.65+cupDetail*0.85);
         diffuseColor.rgb=mix(diffuseColor.rgb,bowlAlbedo,cupBowl*0.82);`,
       )
       .replace(
@@ -195,7 +199,7 @@ export function makeGinnaTentacleCups(tube: CupTube, skinTexture: THREE.Texture)
         roughnessFactor=clamp(roughnessFactor+(cupWetDetail-0.5)*0.22,0.70,0.94);`,
       );
   };
-  material.customProgramCacheKey = () => 'ginna-cup-polar-wrinkles-v2';
+  material.customProgramCacheKey = () => 'ginna-cup-charcoal-folds-v4';
   const mesh = new THREE.InstancedMesh(geometry, material, PAIRS * 2);
   mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
   mesh.castShadow = mesh.receiveShadow = true;

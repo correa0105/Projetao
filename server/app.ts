@@ -1,5 +1,6 @@
 import { homeUpdatesRouter } from './home-updates.js';
 import { loreRouter } from './lore.js';
+import { loreTimelineRouter } from './lore-timeline.js';
 import { rulebookRouter } from './rulebook.js';
 import express from 'express';
 import helmet from 'helmet';
@@ -11,6 +12,7 @@ import { existsSync } from 'node:fs';
 import sharp from 'sharp';
 import { auth, origins } from './auth.js';
 import { pool, transaction } from './db.js';
+import { administratorPredicate, isAdministrator, requireAdministrator } from './administrators.js';
 import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema } from './missions.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
@@ -21,6 +23,10 @@ import { achievementsRouter } from './achievements.js';
 import { inventoryRouter } from './inventory.js';
 import { notificationsRouter } from './notifications.js';
 import { stableRouter } from './stable.js';
+import { petsRouter } from './pets.js';
+import { eventsRouter } from './events.js';
+import { titlesRouter } from './titles.js';
+import { cardsRouter } from './cards.js';
 import { shopRouter } from './shop.js';
 import { PAPER_STYLES } from '../shared/notice-board.js';
 import { testEligible, rankName, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
@@ -30,7 +36,6 @@ import {
   KINGDOM_BACKGROUND_MAX_PIXELS,
   KINGDOM_DEFAULT_WIDTH,
   KINGDOM_DEFAULT_HEIGHT,
-  KINGDOM_EDITOR_EMAIL,
   KINGDOM_EDITOR_CATALOG,
 } from '../shared/kingdom-editor.js';
 
@@ -85,8 +90,7 @@ const kingdomViewSchema = z.object({
     .refine((angle) => angle < 2 * Math.PI),
 });
 
-export function createApp(options: { kingdomEditorEmail?: string } = {}) {
-  const kingdomEditorEmail = options.kingdomEditorEmail ?? KINGDOM_EDITOR_EMAIL;
+export function createApp() {
   const app = express();
   app.disable('x-powered-by');
   app.use(
@@ -117,7 +121,9 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   );
   app.use((req, res, next) =>
     req.path === '/api/character-art' ||
-    req.path.startsWith('/api/lore') ||
+    req.path === '/api/event-images' ||
+    req.path === '/api/lore' ||
+    req.path.startsWith('/api/lore/') ||
     req.path.startsWith('/api/rulebook')
       ? next()
       : express.json({ limit: '128kb' })(req, res, next),
@@ -150,22 +156,36 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   app.use('/api/rulebook', express.json({ limit: '12mb' }));
   app.use('/api', rulebookRouter());
   app.use('/api', loreRouter());
+  app.use('/api', loreTimelineRouter());
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
   app.use('/api', inventoryRouter());
   app.use('/api', notificationsRouter());
   app.use('/api', shopRouter());
   app.use('/api', stableRouter());
+  app.use('/api', petsRouter());
+  app.use('/api', eventsRouter());
+  app.use('/api', titlesRouter());
+  app.use('/api', cardsRouter());
   app.use('/api', achievementsRouter());
   app.use('/api', homeUpdatesRouter());
   app.get('/api/me', async (_req, res) => {
     const {
-      rows: [staff],
-    } = await pool.query('SELECT role FROM guild_staff WHERE user_id=$1', [res.locals.user.id]);
+      rows: [permission],
+    } = await pool.query(
+      'SELECT u.administrador,s.role FROM "user" u LEFT JOIN guild_staff s ON s.user_id=u.id WHERE u.id=$1',
+      [res.locals.user.id],
+    );
     res.json({
       ...res.locals.user,
-      role: staff?.role || 'player',
-      canEditKingdom: res.locals.user.email?.trim().toLowerCase() === kingdomEditorEmail,
+      administrador: permission?.administrador ?? 0,
+      role:
+        permission?.administrador === 1
+          ? 'admin'
+          : permission?.role === 'staff'
+            ? 'staff'
+            : 'player',
+      canEditKingdom: permission?.administrador === 1,
     });
   });
   app.get('/api/characters', async (_req, res) => {
@@ -258,12 +278,8 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
       throw new AppError(400, 'O teste deve pertencer à patente de origem da promoção.');
     if (data.rank_test_level !== null && data.kind !== 'mission')
       throw new AppError(400, 'Teste de patente deve ser uma missão.');
-    if (
-      data.kind === 'event' &&
-      !(await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [res.locals.user.id]))
-        .rowCount
-    )
-      throw new AppError(403, 'Somente a staff pode criar eventos.');
+    if (data.kind === 'event' && !(await isAdministrator(res.locals.user.id)))
+      throw new AppError(403, 'Somente administradores podem criar eventos.');
     if (data.kind === 'mission' && !data.starts_at)
       throw new AppError(400, 'Informe a data e a hora de início da missão.');
     if (data.starts_at && new Date(data.starts_at).getTime() <= Date.now())
@@ -308,7 +324,7 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
       .parse(req.body);
     const result = await pool.query(
       `UPDATE board_posts SET paper_x=$3,paper_y=$4,paper_style=$5
-       WHERE id=$1 AND author_id=$2 RETURNING id,paper_x,paper_y,paper_style`,
+       WHERE id=$1 AND ((kind='event' AND ${administratorPredicate(2)}) OR (kind<>'event' AND author_id=$2)) RETURNING id,paper_x,paper_y,paper_style`,
       [id, res.locals.user.id, data.paper_x, data.paper_y, data.paper_style],
     );
     if (!result.rowCount) throw new AppError(403, 'Somente o autor pode alterar este papel.');
@@ -390,10 +406,10 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
     const {
       rows: [post],
     } = await pool.query(
-      `UPDATE board_posts SET status=$1,closed_at=CASE WHEN $1 IN ('completed','closed') THEN now() ELSE NULL END
+      `UPDATE board_posts SET status=$1,event_revision=event_revision+CASE WHEN kind='event' THEN 1 ELSE 0 END,closed_at=CASE WHEN $1 IN ('completed','closed') THEN now() ELSE NULL END
       WHERE id=$2 AND author_id=$3 AND status=ANY($4::text[]) AND kind <> 'hook'
       AND NOT (kind='mission' AND $1='completed')
-      AND (kind <> 'event' OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$3)) RETURNING *`,
+      AND (kind <> 'event' OR ${administratorPredicate(3)}) RETURNING *`,
       [status, id, res.locals.user.id, allowed],
     );
     if (!post)
@@ -416,9 +432,8 @@ export function createApp(options: { kingdomEditorEmail?: string } = {}) {
   });
   app.use(
     ['/api/kingdom/editor-draft', '/api/kingdom/editor-background', '/api/kingdom/editor-view'],
-    (_req, res, next) => {
-      if (res.locals.user.email?.trim().toLowerCase() !== kingdomEditorEmail)
-        throw new AppError(403, 'Somente o editor autorizado pode modificar este mapa.');
+    async (_req, res, next) => {
+      await requireAdministrator(res.locals.user.id);
       next();
     },
   );

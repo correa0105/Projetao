@@ -68,15 +68,22 @@ try {
   const id = await finishTestArt((await response.json()).id);
   await expect(page.locator(`.camp-figure img[src*="${id}"]`)).toBeVisible({ timeout: 15000 });
   await page.getByRole('link', { name: 'Abrir ficha' }).click();
-  await expect(page.getByRole('heading', { name: 'Ficha', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Ficha de Personagem', exact: true }),
+  ).toBeVisible();
   await expect(page.getByRole('button', { name: 'Rolar os seis atributos' })).toBeVisible();
   await mkdir('test-results', { recursive: true });
-  await page.locator('.sheet-panel details').first().evaluate((el) => el.setAttribute('open', ''));
+  await page
+    .locator('.sheet-panel details')
+    .first()
+    .evaluate((el) => el.setAttribute('open', ''));
   await page.screenshot({ path: 'test-results/sheet-choices.png', fullPage: true });
   await page.getByRole('button', { name: 'Rolar os seis atributos' }).click();
   await expect(page.locator('.sheet-rolls>div')).toHaveCount(6);
   await expect(page.getByLabel('Resultado para Inteligência')).toHaveCount(0);
-  const persistedRolls = (await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])).rows[0].rolls as number[][];
+  const persistedRolls = (
+    await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])
+  ).rows[0].rolls as number[][];
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   for (let i = 0; i < 6; i++) {
     await page.getByRole('button', { name: `Lançar dados · resultado ${i + 1}` }).click();
@@ -85,7 +92,9 @@ try {
     await expect(diceDialog.locator('.attribute-die')).toHaveCount(4);
     await expect(diceDialog.getByRole('button', { name: 'Guardar resultado' })).toBeVisible();
     const dice = persistedRolls[i];
-    await expect(diceDialog.locator('.attribute-dice-outcome strong')).toHaveText(String(dice.reduce((a,b) => a+b, 0) - Math.min(...dice)));
+    await expect(diceDialog.locator('.attribute-dice-outcome strong')).toHaveText(
+      String(dice.reduce((a, b) => a + b, 0) - Math.min(...dice)),
+    );
     if (i === 0) await page.screenshot({ path: 'test-results/sheet-dice-desktop.png' });
     if (i === 1) {
       await page.setViewportSize({ width: 390, height: 844 });
@@ -96,7 +105,10 @@ try {
     if (i === 1) await page.setViewportSize({ width: 1440, height: 1000 });
   }
   await expect(page.getByLabel('Resultado para Inteligência')).toBeVisible();
-  expect((await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])).rows[0].rolls).toEqual(persistedRolls);
+  expect(
+    (await pool.query('SELECT rolls FROM character_sheets WHERE character_id=$1', [id])).rows[0]
+      .rolls,
+  ).toEqual(persistedRolls);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const before = await page.locator('.sheet-rolls').innerText();
   await page.reload();
@@ -105,6 +117,10 @@ try {
   await page.getByRole('button', { name: 'Confirmar distribuição e abrir ficha' }).click();
   await expect(page.getByRole('tab', { name: 'Atributos', exact: true })).toBeVisible();
   await expect(page.locator('.sheet-vitals')).toBeVisible();
+  await expect(page.locator('.sheet-panel').first()).toHaveCSS(
+    'background-color',
+    'rgb(23, 27, 30)',
+  );
   expect(
     await page.locator('.main-shell').evaluate((el) => getComputedStyle(el).backgroundImage),
   ).toContain('character-library-v1.png');
@@ -127,11 +143,13 @@ try {
     .first()
     .check();
   await page.getByRole('button', { name: 'Salvar magias e espaços' }).click();
-  await page.getByRole('tab', { name: 'História e equipamento', exact: true }).click();
+  await page.getByRole('tab', { name: 'História', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Identidade', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Equipamento inicial/ })).toHaveCount(0);
   await page.getByLabel('Anotações', { exact: true }).fill('Uma pista entre as páginas.');
   await page.getByRole('button', { name: 'Salvar anotações' }).click();
   await page.reload();
-  await page.getByRole('tab', { name: 'História e equipamento', exact: true }).click();
+  await page.getByRole('tab', { name: 'História', exact: true }).click();
   await expect(page.getByLabel('Anotações', { exact: true })).toHaveValue(
     'Uma pista entre as páginas.',
   );
@@ -142,7 +160,7 @@ try {
       .getByRole('checkbox')
       .first(),
   ).toBeChecked();
-  for (const tab of ['Atributos', 'Combate', 'Magias', 'História e equipamento']) {
+  for (const tab of ['Atributos', 'Combate', 'Magias', 'História', 'Equipamento']) {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.getByRole('tab', { name: tab, exact: true }).click();
     if (tab === 'Atributos') {
@@ -163,8 +181,12 @@ try {
     });
   }
   expect(errors).toEqual([]);
+  await page.getByRole('tab', { name: 'Equipamento', exact: true }).click();
+  await expect(page.getByRole('heading', { name: /^Equipamento inicial/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Identidade', exact: true })).toHaveCount(0);
+  await expect(page.getByLabel('Anotações', { exact: true })).toHaveCount(0);
   console.log(
-    'Ficha no navegador: criação real, arte de teste, rolagem, recarga, distribuição, preparação, notas e quatro seções mobile OK.',
+    'Ficha no navegador: criação real, arte de teste, rolagem, recarga, distribuição, preparação, notas e cinco seções mobile OK.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/sheet-failure.png', fullPage: true });

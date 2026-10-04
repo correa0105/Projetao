@@ -48,6 +48,10 @@ import { MissionCompletion } from './MissionCompletion';
 import { CharacterSheet } from './CharacterSheet';
 import { Notifications } from './Notifications';
 import { Stable } from './Stable';
+import { PetShop } from './PetShop';
+import { Events } from './Events';
+import { TitleHall } from './Titles';
+import { Cards } from './Cards';
 import { Shop } from './Shop';
 import { Achievements } from './Achievements';
 import { Inventory } from './Inventory';
@@ -71,6 +75,10 @@ const titles: Record<Page, string> = {
   hooks: 'Mural Alvorada',
   shop: 'Empório do viajante',
   stable: 'Estábulo da Alvorada',
+  pets: 'Casa dos mascotes',
+  events: 'Eventos da Alvorada',
+  titles: 'Títulos & honrarias',
+  cards: 'Salão das cartas',
   house: 'House',
   world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',
@@ -111,7 +119,7 @@ export default function App() {
 }
 
 function Portal({ user }: { user: User }) {
-  const [role, setRole] = useState<User['role']>('player');
+  const [administrator, setAdministrator] = useState(false);
   const [canEditKingdom, setCanEditKingdom] = useState(false);
   const [completingMission, setCompletingMission] = useState<Post | null>(null);
   const [now, setNow] = useState(Date.now());
@@ -148,7 +156,7 @@ function Portal({ user }: { user: User }) {
     setCatalog(nextCatalog);
     setPosts(nextPosts);
     setEntries(nextEntries);
-    setRole(me.role);
+    setAdministrator(me.administrador === 1);
     setCanEditKingdom(me.canEditKingdom === true);
   }, []);
   useEffect(() => {
@@ -388,7 +396,7 @@ function Portal({ user }: { user: User }) {
           </span>
           {item.author_id === user.id &&
             item.kind !== 'hook' &&
-            (item.kind !== 'event' || role === 'staff' || role === 'admin') &&
+            (item.kind !== 'event' || administrator) &&
             ['open', 'active'].includes(item.status) && (
               <div>
                 {item.status === 'open' && (
@@ -495,10 +503,23 @@ function Portal({ user }: { user: User }) {
           />
         </Suspense>
       );
-    if (page === 'overview') return <HomeJournal upcoming={upcoming} />;
+    if (page === 'overview') return <HomeJournal upcoming={upcoming} canEdit={administrator} />;
+    if (page === 'events') return <Events />;
+    if (page === 'cards')
+      return <Cards key={character?.id || 'visitor'} character={character} onPurchased={refresh} />;
+    if (page === 'titles')
+      return (
+        <TitleHall
+          key={character?.id || 'catalog'}
+          characterId={character?.id}
+          canEdit={administrator}
+        />
+      );
     return (
       <>
-        {page !== 'characters' && <div className="page-header-spacer" aria-hidden="true" />}
+        {page !== 'characters' && page !== 'lore' && page !== 'pets' && (
+          <div className="page-header-spacer" aria-hidden="true" />
+        )}
         {page === 'characters' && (
           <CharacterCamp
             characters={characters}
@@ -521,6 +542,9 @@ function Portal({ user }: { user: User }) {
           ))}
         {page === 'stable' && (
           <Stable key={character?.id || 'guest'} character={character} onPurchased={refresh} />
+        )}
+        {page === 'pets' && (
+          <PetShop key={character?.id || 'visitor'} character={character} onPurchased={refresh} />
         )}
         {page === 'shop' && <Shop catalog={catalog} character={character} onPurchased={refresh} />}
         {page === 'inventory' &&
@@ -554,7 +578,7 @@ function Portal({ user }: { user: User }) {
             onPaperChange={refresh}
             feedback={toast}
             renderPost={(item) => postCard(item, false)}
-            canCreateEvent={role === 'staff' || role === 'admin'}
+            canCreateEvent={administrator}
             onPublish={(kind) => {
               setPostKind(kind);
               setPostLocation(undefined);
@@ -596,6 +620,7 @@ function Portal({ user }: { user: User }) {
     <div className="app-shell" data-page={page}>
       <div className="main-shell">
         <PageHeader
+          showTitle={page !== 'lore' && page !== 'events' && page !== 'cards'}
           title={
             page === 'characters'
               ? 'Seu acampamento'
@@ -692,7 +717,7 @@ function Portal({ user }: { user: User }) {
         <Modal title="Um chamado à guilda" close={() => setModal(null)}>
           <PostForm
             initialKind={postFromAtlas ? 'mission' : postKind}
-            canCreateEvent={!postFromAtlas && (role === 'staff' || role === 'admin')}
+            canCreateEvent={!postFromAtlas && administrator}
             initialLocation={postLocation}
             requireMappedLocation={postFromAtlas}
             done={async () => {

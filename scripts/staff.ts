@@ -1,4 +1,4 @@
-import { pool } from '../server/db.js';
+import { pool, transaction } from '../server/db.js';
 
 const [email, role] = process.argv.slice(2);
 try {
@@ -8,12 +8,19 @@ try {
     rows: [user],
   } = await pool.query('SELECT id FROM "user" WHERE lower(email)=lower($1)', [email]);
   if (!user) throw new Error('Conta não encontrada. Cadastre a conta primeiro.');
-  if (role === 'remove') await pool.query('DELETE FROM guild_staff WHERE user_id=$1', [user.id]);
-  else
-    await pool.query(
-      'INSERT INTO guild_staff(user_id,role) VALUES($1,$2) ON CONFLICT(user_id) DO UPDATE SET role=excluded.role',
-      [user.id, role],
-    );
+  await transaction(async (client) => {
+    await client.query('UPDATE "user" SET administrador=$2 WHERE id=$1', [
+      user.id,
+      role === 'admin' ? 1 : 0,
+    ]);
+    if (role === 'remove')
+      await client.query('DELETE FROM guild_staff WHERE user_id=$1', [user.id]);
+    else
+      await client.query(
+        'INSERT INTO guild_staff(user_id,role) VALUES($1,$2) ON CONFLICT(user_id) DO UPDATE SET role=excluded.role',
+        [user.id, role],
+      );
+  });
   console.log(
     role === 'remove' ? 'Permissão de staff removida.' : `Permissão atualizada: ${role}.`,
   );
