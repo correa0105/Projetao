@@ -42,9 +42,10 @@ const url = `http://localhost:${port}/test-results/ginna-entry.html#stable`;
 async function fresh({
   reducedMotion = 'no-preference',
   viewport = { width: 1440, height: 900 },
+  deviceScaleFactor = 1,
   holdVisionImage = false,
 } = {}) {
-  const context = await browser.newContext({ viewport, reducedMotion });
+  const context = await browser.newContext({ viewport, reducedMotion, deviceScaleFactor });
   await context.addInitScript(() => {
     localStorage.setItem('alvorada-music-muted', 'true');
     localStorage.setItem('alvorada-effects-muted', 'true');
@@ -247,6 +248,7 @@ try {
     const { page, context, releaseImage } = await fresh({
       viewport,
       reducedMotion,
+      deviceScaleFactor: label.startsWith('mobile') ? 1.25 : 1,
       holdVisionImage: true,
     });
     const warning = await prepareEntry(page);
@@ -275,13 +277,27 @@ try {
       await page.screenshot({ path: `test-results/ginna-entry-branches-${label}.png` });
       await expect(entry.locator('.ginna-reality-fog')).toHaveAttribute('data-stage', 'flakes');
       await page.screenshot({ path: `test-results/ginna-entry-shattering-${label}.png` });
+      await expect
+        .poll(async () => Number(await entry.getAttribute('data-entry-audio-time')))
+        .toBeGreaterThan(2800);
+      await page.screenshot({ path: `test-results/ginna-entry-spreading-${label}.png` });
     }
     await page.waitForFunction(
       () => document.querySelector('.ginna-entry')?.dataset.phase === 'closed',
     );
     const closed = await page.screenshot({ path: `test-results/ginna-entry-closed-${label}.png` });
     const colors = await sharp(closed).removeAlpha().stats();
-    expect(colors.channels.every((channel) => channel.max < 3)).toBe(true);
+    expect(colors.channels.every((channel) => channel.max < (motion === 'full' ? 42 : 3))).toBe(
+      true,
+    );
+    const fullCoverage = await entry.locator('canvas').evaluate((canvas) => {
+      const pixels = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+      let minimum = 255;
+      for (let i = 3; i < pixels.length; i += 4) minimum = Math.min(minimum, pixels[i]);
+      return minimum;
+    });
+    expect(fullCoverage).toBe(255);
+    expect(await magentaPixels(closed)).toBe(0);
     await expect(page.locator('.ginna-vision')).toHaveAttribute('data-entering', 'true');
     expect(
       await page
@@ -335,7 +351,11 @@ try {
     ).toBe(true);
     const covered = samples[firstVision];
     expect(covered.coverage).toHaveLength(3);
-    expect(covered.coverage.every((pixel) => pixel.join(',') === '0,0,0,255')).toBe(true);
+    expect(
+      covered.coverage.every(
+        (pixel) => pixel[3] === 255 && pixel.slice(0, 3).every((channel) => channel < 42),
+      ),
+    ).toBe(true);
     expect(covered.shards).toBe(0);
     if (motion === 'full') {
       expect(covered.stage).toBe('covered');
@@ -348,6 +368,9 @@ try {
         early.every((sample) => sample.coverage[0][3] === 0 && sample.coverage[2][3] === 0),
       ).toBe(true);
       expect(samples.some((sample) => sample.flakes > 0)).toBe(true);
+      const firstCovered = samples.find((sample) => sample.stage === 'covered' && !sample.vision);
+      expect(firstCovered).toBeTruthy();
+      expect(samples[firstVision].time - firstCovered.time).toBeGreaterThan(100);
     }
     expect(
       await page.evaluate(
@@ -363,7 +386,8 @@ try {
       label,
       motion,
       samples,
-      blackFrame: colors.channels.map((channel) => channel.max),
+      fogFrame: colors.channels.map((channel) => channel.max),
+      minimumCoverageAlpha: fullCoverage,
       openingDayHudPixels: await magentaPixels(opening),
       returnPreserved: true,
     });

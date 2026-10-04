@@ -420,6 +420,11 @@ dialog.ginna-vision {
 }
 :root dialog.ginna-return::backdrop,
 :root dialog.ginna-entry::backdrop { background: transparent; backdrop-filter: none; }
+:root dialog.ginna-entry {
+  inset: -1px;
+  width: calc(100vw + 2px);
+  height: calc(100dvh + 2px);
+}
 :root dialog.ginna-entry[data-phase='closed'] { background: #000; }
 dialog.ginna-vision[data-entering='true'] { pointer-events: none; }
 .ginna-return-tentacles {

@@ -1604,13 +1604,25 @@
   flex: none;
   width: 44px;
   margin-top: -3px;
+  perspective: 320px;
 }
 .rb-chapter-mark .rb-emblem {
   width: 44px;
   height: 44px;
+  transform-origin: 50% 58%;
   transition:
-    filter 240ms,
-    transform 240ms;
+    filter 420ms ease,
+    transform 520ms cubic-bezier(0.18, 0.75, 0.25, 1);
+}
+.rb-emblem-engraving {
+  transform-origin: 50px 52px;
+  transition: transform 520ms cubic-bezier(0.18, 0.75, 0.25, 1);
+}
+.rb-emblem-sheen {
+  opacity: 0;
+}
+.rb-current-chapter .rb-chapter-mark .rb-emblem-sheen {
+  animation: rb-metal-rest 8.5s ease-in-out infinite;
 }
 .rb-chapter-mark small {
   position: absolute;
@@ -1631,13 +1643,52 @@
 .rb-chapter-button > svg {
   margin-top: 0;
 }
+.rb-current-chapter .rb-chapter-mark .rb-emblem {
+  filter: drop-shadow(0 3px 3px #0009) drop-shadow(0 0 6px #ad854c26);
+}
 .rb-chapter-button:hover .rb-emblem,
 .rb-chapter-button:focus-visible .rb-emblem {
-  transform: rotate(-6deg);
-  filter: drop-shadow(0 3px 4px #0009) brightness(1.2);
+  transform: translateY(-2px) rotateX(5deg) rotateY(-12deg) rotateZ(-2deg) scale(1.06);
+  filter: drop-shadow(2px 5px 4px #000a) drop-shadow(-1px -1px 1px #b6945b22);
 }
-.rb-current-chapter .rb-chapter-mark .rb-emblem {
-  filter: drop-shadow(0 0 7px #ad854c30) brightness(1.12);
+.rb-chapter-button:hover .rb-emblem-engraving,
+.rb-chapter-button:focus-visible .rb-emblem-engraving {
+  transform: translate(0.5px, -0.8px) scale(1.025);
+}
+.rb-chapter-button:hover .rb-emblem-sheen,
+.rb-chapter-button:focus-visible .rb-emblem-sheen {
+  animation: rb-metal-glint 1050ms cubic-bezier(0.2, 0.55, 0.3, 1) both;
+}
+@keyframes rb-metal-glint {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  16% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(235px);
+    opacity: 0;
+  }
+}
+@keyframes rb-metal-rest {
+  0%,
+  15% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.65;
+  }
+  31%,
+  100% {
+    transform: translateX(235px);
+    opacity: 0;
+  }
 }
 .rb-index-articles {
   padding-left: 21px;
@@ -1906,6 +1957,9 @@
 .rulebook[data-editing]:not([data-preview]) .rb-library-dust i {
   animation-play-state: paused;
 }
+.rulebook[data-active='false'] .rb-emblem-sheen {
+  animation-play-state: paused;
+}
 @media (max-width: 720px) {
   .rb-hero-bottom {
     flex-wrap: wrap;
@@ -1969,5 +2023,13 @@
   }
   .rb-folio {
     animation: none;
+  }
+  :root .rulebook .rb-emblem-sheen {
+    animation: none;
+    opacity: 0;
+  }
+  .rulebook .rb-chapter-button .rb-emblem,
+  .rulebook .rb-chapter-button .rb-emblem-engraving {
+    transform: none;
   }
 }

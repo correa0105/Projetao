@@ -44,6 +44,76 @@ function smokeTexture() {
   return texture;
 }
 
+/** Opaque fog behind a billowing front, so smoke itself conceals the old scene. */
+function fogCover() {
+  const width = 320,
+    height = 240;
+  const texture = document.createElement('canvas');
+  const layer = document.createElement('canvas');
+  const mask = document.createElement('canvas');
+  for (const surface of [texture, layer, mask]) {
+    surface.width = width;
+    surface.height = height;
+  }
+  const ink = texture.getContext('2d')!;
+  const pixels = ink.createImageData(width, height);
+  const arrival = new Float32Array(width * height);
+  for (let y = 0; y < height; y++)
+    for (let x = 0; x < width; x++) {
+      const broad = noise(x / 85, y / 65),
+        curl = noise(x / 34 + broad * 2, y / 29),
+        fine = noise(x / 11, y / 9);
+      const shade = 8 + broad * 15 + curl * 10 + fine * 3;
+      const at = (y * width + x) * 4;
+      pixels.data[at] = shade * 0.86;
+      pixels.data[at + 1] = shade * 0.88;
+      pixels.data[at + 2] = shade;
+      pixels.data[at + 3] = 255;
+      const seam = 0.5 + (noise(0, y / 37) - 0.5) * 0.035;
+      arrival[y * width + x] = Math.max(
+        0,
+        Math.min(
+          1,
+          Math.abs(x / (width - 1) - seam) * 2 + (curl - 0.5) * 0.18 + (broad - 0.5) * 0.09,
+        ),
+      );
+    }
+  ink.putImageData(pixels, 0, 0);
+  const surface = layer.getContext('2d')!;
+  const masking = mask.getContext('2d')!;
+  const opacity = masking.createImageData(width, height);
+  return {
+    draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: number, opening: boolean) {
+      // Include rounded backing pixels on displays with fractional device scaling.
+      const transform = ctx.getTransform();
+      w = ctx.canvas.width / transform.a;
+      h = ctx.canvas.height / transform.d;
+      if (!opening && p <= 0.47) return;
+      if (opening || p >= 0.93) {
+        ctx.globalAlpha = opening ? 1 - smooth(p) : 1;
+        ctx.drawImage(texture, 0, 0, w, h);
+        ctx.globalAlpha = 1;
+        return;
+      }
+      const front = -0.14 + smooth((p - 0.47) / 0.46) * 1.3;
+      for (let i = 0; i < arrival.length; i++)
+        opacity.data[i * 4 + 3] = smooth((front - arrival[i]) / 0.14) * 255;
+      masking.putImageData(opacity, 0, 0);
+      surface.globalCompositeOperation = 'copy';
+      surface.drawImage(texture, 0, 0);
+      surface.globalCompositeOperation = 'destination-in';
+      surface.drawImage(mask, 0, 0);
+      surface.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1;
+      ctx.drawImage(layer, 0, 0, w, h);
+      ctx.globalAlpha = 1;
+    },
+    destroy() {
+      for (const surface of [texture, layer, mask]) surface.width = surface.height = 0;
+    },
+  };
+}
+
 function crackGeometry() {
   const spine = Array.from({ length: 25 }, (_, i): Point => ({
     x: i === 12 ? 0.5 : 0.5 + (random(i + 19) - 0.5) * 0.033 + Math.sin(i * 1.7) * 0.007,
@@ -93,6 +163,7 @@ function crackGeometry() {
 export function createRealityFog(canvas: HTMLCanvasElement, reduced: boolean) {
   const ctx = canvas.getContext('2d', { alpha: true })!;
   const texture = reduced ? null : smokeTexture();
+  const cover = reduced ? null : fogCover();
   const { spine, veins } = crackGeometry();
   let width = 0,
     height = 0;
@@ -103,6 +174,7 @@ export function createRealityFog(canvas: HTMLCanvasElement, reduced: boolean) {
     canvas.width = Math.ceil(width * ratio);
     canvas.height = Math.ceil(height * ratio);
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    if (canvas.dataset.stage === 'covered') cover?.draw(ctx, width, height, 1, false);
   };
   resize();
   window.addEventListener('resize', resize);
@@ -226,7 +298,7 @@ export function createRealityFog(canvas: HTMLCanvasElement, reduced: boolean) {
       if (reduced) {
         ctx.globalAlpha = opening ? 1 - p : p;
         ctx.fillStyle = '#000';
-        ctx.fillRect(0, 0, width, height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         canvas.dataset.stage = opening ? 'revealing' : 'fade';
         return;
       }
@@ -241,12 +313,13 @@ export function createRealityFog(canvas: HTMLCanvasElement, reduced: boolean) {
               : p < 1
                 ? 'mist'
                 : 'covered';
+      if (!opening && p >= 0.93) {
+        canvas.dataset.flakes = '0';
+        cover!.draw(ctx, width, height, p, false);
+        return;
+      }
       if (!opening) drawFracture(p);
-      const veil = opening ? 1 - smooth(p * 1.45) : smooth((p - 0.7) / 0.3);
-      ctx.globalAlpha = veil;
-      ctx.fillStyle = '#000';
-      ctx.fillRect(0, 0, width, height);
-      const time = opening ? 0.96 + p * 0.55 : p;
+      const time = opening ? 1 + p * 0.55 : p;
       for (let i = 0; i < 84; i++) {
         const birth = 0.4 + random(i + 10) * 0.18,
           age = time - birth;
@@ -260,7 +333,7 @@ export function createRealityFog(canvas: HTMLCanvasElement, reduced: boolean) {
           height * originY -
           age * height * 0.3 +
           Math.sin(i * 2.39996 + time) * age * height * 0.28;
-        ctx.globalAlpha = Math.min(0.85, age * 6) * (opening ? (1 - smooth(p)) * 0.95 : 1 - veil);
+        ctx.globalAlpha = Math.min(0.85, age * 6) * (opening ? (1 - smooth(p)) * 0.95 : 1);
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(i * 0.51 + time * 0.2);
@@ -268,14 +341,13 @@ export function createRealityFog(canvas: HTMLCanvasElement, reduced: boolean) {
         ctx.restore();
       }
       ctx.globalAlpha = 1;
-      if (!opening && p >= 1) {
-        ctx.fillStyle = '#000';
-        ctx.fillRect(0, 0, width, height);
-      }
+      cover!.draw(ctx, width, height, p, opening);
     },
     destroy() {
       window.removeEventListener('resize', resize);
       canvas.width = canvas.height = 0;
+      cover?.destroy();
+      if (texture) texture.width = texture.height = 0;
     },
   };
 }

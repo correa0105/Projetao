@@ -301,8 +301,10 @@ caem com rotação, separação lateral e gravidade. A cena atual permanece por
 trás do Canvas transparente, sem duplicação do DOM nem grandes painéis.
 
 Névoa escura com textura procedural, ondulações e expansão orgânica vaza junto
-à fissura até cobrir tudo em 3,6 s. A cena sombria só monta sob cobertura
-completamente preta. Aguarda o componente e suas artes; depois de 180 ms,
+à fissura até cobrir tudo em 3,6 s. Uma frente de fumaça irregular avança do
+centro até os cantos; a textura permanece opaca em toda a tela. A cobertura
+integral fica visível por 180 ms antes de montar a cena sombria abaixo dela.
+Aguarda o componente e suas artes; depois de mais 180 ms,
 a névoa se dispersa sobre a visão da Ginna por 1,55 s. O Canvas limita a
 resolução a 1,25× e libera seu loop após cobrir a tela enquanto aguarda assets.
 Trinca, quebra de vidro e avanço da névoa usam três WAVs locais sincronizados
@@ -325,7 +327,7 @@ tentáculos, sons, pálpebras e respiração mantém sua sequência anterior.
 
 `node scripts/smoke-ginna-entry.mjs` exercita os componentes reais sem banco:
 fissura central, ramificações, lascas e cantos inicialmente transparentes,
-montagem sob cobertura, arte atrasada, pixels pretos,
+montagem sob cobertura, arte atrasada, alfa 255 em todos os pixels da névoa,
 dispersão no escuro, camadas acima do HUD, foco, Escape, movimento reduzido,
 navegação durante a ruptura e retorno. O smoke isolado do estábulo também
 aguarda a entrada terminar antes das interações na visão.
@@ -333,7 +335,11 @@ aguarda a entrada terminar antes das interações na visão.
 O smoke focado passou em desktop e celular, incluindo a segunda entrada
 após retorno/redimensionamento. A cena permaneceu sem rolagem, o balão ficou
 dentro do viewport e a abertura não mostrou pixels do HUD diurno. A cobertura
-fechada ficou totalmente preta mesmo com a arte atrasada.
+fechada ficou completamente opaca mesmo com a arte atrasada; a cena antiga
+permanece sob a névoa por uma breve pausa antes da troca.
+Celular com escala de tela 1,25× também passou: cobertura do Canvas com alfa
+255 em todos os pixels. O diálogo avança 1 px além das bordas para evitar
+frestas no arredondamento da composição em escalas fracionadas.
 TypeScript, build cliente/servidor e smoke completo do estábulo em PostgreSQL
 descartável também passaram, cobrindo retorno, áudio, compras e seis viewports.
 O fluxo de retorno com tentáculos continua independente da nova entrada.

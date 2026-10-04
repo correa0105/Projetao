@@ -16,19 +16,25 @@ Detalhes em docs/RULEBOOK.md.
 O usuário refinou a entrada da Ginna: fissura vertical central, ramificações
 finas que se espalham e pequenas lascas de vidro que se desprendem. Canvas
 abre a fissura e deixa névoa escura vazar por ela, cobrindo a tela em 3,6 s.
+A frente irregular da névoa avança até todas as bordas, com textura opaca
+integral. Essa cobertura fica visível por 180 ms antes de trocar a cena abaixo.
 Sons distintos de trinca (40 ms), vidro quebrando (1180 ms) e névoa (1530 ms)
 seguem o mesmo relógio visual e as preferências de Efeitos sonoros.
-Troca para visão sombria apenas sob cobertura preta integral,
+Troca para visão sombria apenas sob cobertura integral da névoa,
 aguarda artes prontas e dissipa a névoa em 1,55 s. Movimento reduzido usa fade.
 Ordem modal, foco, bloqueio de entrada e cleanup mantidos. Retorno com tentáculos
 e pálpebras permanece. Detalhes e testes em docs/STABLE-GINNA.md.
 O emblema na capa do pequeno livro de entrada do códice foi centralizado
 na área interna da encadernação, acompanhando sua inclinação.
+Os emblemas do índice receberam elevação/inclinação suaves, movimento da
+gravação e reflexo sobre o metal no hover/foco. Capítulo atual tem brilho
+periódico discreto; número fica estável. Movimento reduzido e pausa preservados.
 
 Validação desta entrega: TypeScript/build cliente e servidor; regras em banco
 descartável (símbolo persistido e enum inválido rejeitado), editor responsivo
 com sons/volume/mute e smoke com API real; ruptura em desktop/celular,
-movimento reduzido, StrictMode, arte atrasada, cobertura por pixels, foco e
+movimento reduzido, StrictMode, arte atrasada, cobertura integral por alfa,
+pausa da cena antiga sob névoa, foco e
 cancelamento; trinca/vidro/névoa em Web Audio real, pausa, volume ao vivo,
 rede lenta e arquivos ausentes; smoke completo do estábulo em PostgreSQL descartável. Docker
 reconstruído, healthcheck saudável e novos bundles confirmados no localhost:3000.

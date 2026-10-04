@@ -40,6 +40,8 @@ export function RulebookEmblem({
   const id = useId().replace(/:/g, '');
   const bronze = `url(#${id}-bronze)`,
     ink = `url(#${id}-ink)`;
+  const outline =
+    'M50 3 61 9 74 8 81 20 93 27 91 41 97 50 91 61 93 74 81 81 74 93 60 91 50 97 39 91 26 93 19 81 7 74 9 60 3 50 9 39 7 26 19 19 26 7 40 9Z';
   return (
     <svg
       className={'rb-emblem ' + className}
@@ -62,14 +64,19 @@ export function RulebookEmblem({
           <stop offset=".7" stopColor="#1b1d1c" />
           <stop offset="1" stopColor="#111313" />
         </radialGradient>
+        <linearGradient id={id + '-sheen'} x1="0" x2="1" y1="0" y2="0">
+          <stop stopColor="#f3dfb6" stopOpacity="0" />
+          <stop offset=".46" stopColor="#f3dfb6" stopOpacity=".08" />
+          <stop offset=".58" stopColor="#fff0d0" stopOpacity=".42" />
+          <stop offset=".68" stopColor="#e6c58a" stopOpacity=".12" />
+          <stop offset="1" stopColor="#e6c58a" stopOpacity="0" />
+        </linearGradient>
+        <clipPath id={id + '-face'}>
+          <path d={outline} />
+        </clipPath>
       </defs>
       <circle cx="50" cy="53" r="43" fill="#000" opacity=".5" />
-      <path
-        d="M50 3 61 9 74 8 81 20 93 27 91 41 97 50 91 61 93 74 81 81 74 93 60 91 50 97 39 91 26 93 19 81 7 74 9 60 3 50 9 39 7 26 19 19 26 7 40 9Z"
-        fill={bronze}
-        stroke="#34281c"
-        strokeWidth="1.5"
-      />
+      <path d={outline} fill={bronze} stroke="#34281c" strokeWidth="1.5" />
       <circle cx="50" cy="50" r="40" fill={ink} stroke={bronze} strokeWidth="2" />
       <circle cx="50" cy="50" r="35.5" fill="none" stroke="#927143" strokeWidth=".7" />
       <circle
@@ -82,7 +89,14 @@ export function RulebookEmblem({
         strokeDasharray=".8 5.15"
         opacity=".65"
       />
-      <g fill="none" stroke={bronze} strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
+      <g
+        className="rb-emblem-engraving"
+        fill="none"
+        stroke={bronze}
+        strokeWidth="2.2"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      >
         {symbol === 'codex' && (
           <>
             <path d="M22 31Q36 25 50 33Q64 25 78 31V69Q63 64 50 73Q36 64 22 69Z" fill="#ac855037" />
@@ -185,6 +199,11 @@ export function RulebookEmblem({
         <circle cx="91" cy="50" r="1.8" />
         <circle cx="50" cy="91" r="1.8" />
         <circle cx="9" cy="50" r="1.8" />
+      </g>
+      <g clipPath={`url(#${id}-face)`} pointerEvents="none">
+        <g className="rb-emblem-sheen">
+          <path d="M-90-30h40l72 160h-40Z" fill={`url(#${id}-sheen)`} />
+        </g>
       </g>
     </svg>
   );

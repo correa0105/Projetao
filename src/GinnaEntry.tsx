@@ -63,8 +63,11 @@ export function GinnaEntry({
       const p = Math.min(1, elapsed / duration);
       fog.current?.draw(p);
       player.update(elapsed);
-      if (p < 1) frame = requestAnimationFrame(draw);
-      else {
+      // Give the fully opaque fog a visible beat before changing the scene below it.
+      if (p < 1 || elapsed < duration + (reduced.current ? 0 : 180)) {
+        if (p >= 1) player.finish();
+        frame = requestAnimationFrame(draw);
+      } else {
         player.finish();
         setPhase('closed');
         setCovered(true);

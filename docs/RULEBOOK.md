@@ -38,6 +38,11 @@ interrompem os efeitos. Navegação rápida reinicia um único som sem sobreposi
 Poeira suave na capa, brilho dos emblemas e animação curta de página acompanham
 as interações. Movimento reduzido remove animações decorativas e usa rolagem
 instantânea. A página inativa pausa a ambientação.
+Os emblemas do índice levantam discretamente e inclinam em perspectiva ao
+passar o mouse ou focar pelo teclado; a gravação acompanha o movimento e um
+reflexo diagonal percorre a face metálica. O capítulo atual tem um reflexo
+periódico discreto. Número do capítulo permanece estável. Movimento reduzido
+remove inclinação/reflexo; página inativa pausa o brilho.
 
 ## Persistência e integridade
 
