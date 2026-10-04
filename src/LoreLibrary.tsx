@@ -268,26 +268,32 @@ function FolderTree({
                   count={count}
                   onSelect={onSelect}
                 />
-                {onEdit && (
-                  <button
-                    className="lore-folder-edit"
-                    type="button"
-                    aria-label={`Editar pasta ${folder.name}`}
-                    title={`Editar pasta ${folder.name}`}
-                    onClick={() => onEdit(folder)}
+                {(onEdit || onDelete) && (
+                  <div
+                    className="lore-folder-actions"
+                    style={{ '--folder-depth': depth } as CSSProperties}
                   >
-                    <Pencil size={13} />
-                  </button>
-                )}
-                {onDelete && (
-                  <button
-                    className="lore-folder-delete"
-                    type="button"
-                    aria-label={`Excluir pasta ${folder.name}`}
-                    onClick={() => onDelete(folder)}
-                  >
-                    <Trash2 size={13} />
-                  </button>
+                    {onEdit && (
+                      <button
+                        className="lore-folder-edit lore-content-action"
+                        type="button"
+                        aria-label={`Editar pasta ${folder.name}`}
+                        onClick={() => onEdit(folder)}
+                      >
+                        <Pencil size={13} /> <span>Editar</span>
+                      </button>
+                    )}
+                    {onDelete && (
+                      <button
+                        className="lore-folder-delete lore-content-action"
+                        type="button"
+                        aria-label={`Excluir pasta ${folder.name}`}
+                        onClick={() => onDelete(folder)}
+                      >
+                        <Trash2 size={13} /> <span>Excluir</span>
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
               <FolderTree
@@ -332,15 +338,15 @@ export function LoreLibrary() {
   useEffect(() => {
     void refresh().catch((error) => setMessage(error.message));
   }, []);
-  async function openPage(id: string) {
-    playScroll();
+  async function openPage(id: string, edit = false) {
+    if (!edit) playScroll();
     const token = ++request.current;
     setBusy(true);
     try {
       const loaded = await api<LorePage>(`/lore/pages/${id}`);
       if (token === request.current) {
         setPage(loaded);
-        setEditing(false);
+        setEditing(edit && loaded.can_edit);
       }
     } catch (error) {
       setMessage((error as Error).message);
@@ -552,14 +558,24 @@ export function LoreLibrary() {
                         <ChevronRight size={20} />
                       </button>
                       {item.can_edit && (
-                        <button
-                          className="lore-page-delete"
-                          aria-label={`Excluir crônica ${item.title}`}
-                          title="Excluir crônica"
-                          onClick={() => setDeletingPage(item)}
-                        >
-                          <Trash2 size={17} />
-                        </button>
+                        <div className="lore-page-actions">
+                          <button
+                            type="button"
+                            className="lore-page-edit lore-content-action"
+                            aria-label={`Editar crônica ${item.title}`}
+                            onClick={() => void openPage(item.id, true)}
+                          >
+                            <Pencil size={15} /> <span>Editar</span>
+                          </button>
+                          <button
+                            type="button"
+                            className="lore-page-delete lore-content-action"
+                            aria-label={`Excluir crônica ${item.title}`}
+                            onClick={() => setDeletingPage(item)}
+                          >
+                            <Trash2 size={15} /> <span>Excluir</span>
+                          </button>
+                        </div>
                       )}
                     </div>
                   ))}

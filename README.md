@@ -101,8 +101,8 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
   as crônicas. Pergaminhos ilustrados com efeito azul e som ao abrir.
   [Biblioteca de lore](docs/LORE.md).
 - Regras possui códice com capa, índice, busca e editor completo de capítulos,
-  artigos, textos, destaques, listas, tabelas e imagens. A conta autorizada e
-  staff/admin podem publicar edições, importar/exportar e recuperar versões
+  artigos, textos, destaques, listas, tabelas e imagens. A gestão da lore,
+  a conta autorizada e staff/admin podem publicar edições, importar/exportar e recuperar versões
   pelo histórico. Conteúdo persistido no SQL; alterações do manual não mudam
   os cálculos de jogo. [Editor de regras](docs/RULEBOOK.md).
 - House mantém seu conteúdo narrativo inicial persistido no SQL.

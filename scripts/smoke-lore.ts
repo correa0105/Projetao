@@ -72,6 +72,25 @@ try {
   await expect(page.getByRole('region', { name: 'Biblioteca de lore' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Crônicas & lore.' })).toBeVisible();
   await expect(page.locator('.lore-page-link')).toHaveCount(2);
+  await expect(page.locator('.lore-page-edit')).toHaveCount(2);
+  await expect(page.locator('.lore-page-delete')).toHaveCount(2);
+  await expect(page.locator('.lore-page-edit').first()).toHaveText('Editar');
+  await expect(page.locator('.lore-page-delete').first()).toHaveText('Excluir');
+  await expect(page.getByRole('button', { name: 'Editar pasta História', exact: true })).toHaveText(
+    'Editar',
+  );
+  await expect(
+    page.getByRole('button', { name: 'Excluir pasta História', exact: true }),
+  ).toHaveText('Excluir');
+  await page.locator('.lore-page-edit').first().click();
+  await expect(page.getByRole('region', { name: 'Editor de crônica' })).toBeVisible();
+  expect(
+    await page
+      .locator('audio[data-lore-scroll-sound]')
+      .evaluate((audio: HTMLAudioElement) => audio.paused),
+  ).toBe(true);
+  await page.getByRole('button', { name: 'Fechar edição', exact: true }).click();
+  await page.getByRole('button', { name: 'Voltar ao arquivo' }).click();
   await expect(page.getByRole('button', { name: 'Abrir os arquivos' })).toHaveCount(0);
   await expect(page.locator('.lore-hero-number')).toHaveCount(0);
   await expect(page.getByText('Terras, crenças e histórias que atravessam as eras.')).toHaveCount(

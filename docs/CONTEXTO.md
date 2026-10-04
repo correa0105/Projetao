@@ -1,5 +1,23 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Editar e excluir todo o conteúdo da biblioteca (04/10/2026)
+
+Corrigida a permissão de Regras para reconhecer `lore_folder_managers`. A conta
+existente Pai do Cris (`limawelsn@gmail.com`) já gerenciava toda a lore, mas não
+recebia `can_edit` no manual porque não é staff e usa outro e-mail. Agora pode
+editar/excluir capítulos, artigos e todos os blocos, publicar, enviar imagens
+e recuperar histórico. O e-mail autorizado anterior e staff/admin continuam
+com acesso. Nenhuma promoção de staff, grant ao vivo ou migration nova.
+
+Lore mostra Editar e Excluir escritos junto a cada pasta/subpasta e cada
+crônica na lista, inclusive as iniciais e de outros autores para a gestão.
+Editar na lista abre diretamente o editor sem tocar o som de leitura.
+Regras oferece as mesmas ações claras nos capítulos/artigos durante a leitura
+autorizada; Editar seleciona o item e abre o rascunho, Excluir confirma o alvo
+e altera o rascunho antes de Salvar. Blocos têm Excluir bloco por escrito.
+O índice abre durante edição também no celular. Leitores comuns conservam
+consulta; permissões continuam verificadas no servidor.
+
 ## Som dos itens no balcão (04/10/2026)
 
 A loja toca impacto de madeira a cada inclusão aceita no balcão, inclusive

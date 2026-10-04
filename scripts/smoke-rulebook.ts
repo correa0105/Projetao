@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
-import { RULEBOOK_EDITOR_EMAIL, type RulebookResponse } from '../shared/rulebook.js';
+import type { RulebookResponse } from '../shared/rulebook.js';
 
 const databaseUrl = new URL(process.env.DATABASE_URL!);
 if (
@@ -47,7 +47,7 @@ async function save() {
 }
 try {
   for (const [current, email, name] of [
-    [page, RULEBOOK_EDITOR_EMAIL, 'Cronista do códice'],
+    [page, 'limawelsn@gmail.com', 'Cronista do códice'],
     [reader, `rules-reader-${randomUUID()}@example.test`, 'Leitora da guilda'],
   ] as const) {
     const response = await current.request.post(origin + '/api/auth/sign-up/email', {
@@ -55,11 +55,34 @@ try {
       data: { name, email, password: `Test-${randomUUID()}` },
     });
     expect(response.ok()).toBe(true);
+    if (current === page) {
+      const user = (await response.json()).user;
+      // The scratch account inherits the existing owner's lore permission,
+      // without becoming guild staff or changing any live grant.
+      await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [user.id]);
+      expect(
+        (await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [user.id])).rowCount,
+      ).toBe(0);
+    }
   }
   await page.goto(origin + '/#rules');
   const initial = await publication();
   expect(initial.can_edit).toBe(true);
   await expect(page.locator('.rb-hero h2')).toHaveText(initial.document.title);
+  await page
+    .getByRole('button', { name: 'Editar capítulo Atributos e ficha', exact: true })
+    .click();
+  await expect(page.getByRole('textbox', { name: 'Título do capítulo', exact: true })).toHaveValue(
+    'Atributos e ficha',
+  );
+  await page
+    .getByRole('button', { name: 'Editar artigo Uma rolagem para a ficha', exact: true })
+    .click();
+  await expect(page.getByRole('textbox', { name: 'Título do artigo', exact: true })).toHaveValue(
+    'Uma rolagem para a ficha',
+  );
+  await page.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await expect(page.locator('.rb-editor-bar')).toHaveCount(0);
   await page.getByRole('button', { name: 'Editar conteúdo', exact: true }).click();
   await page
     .getByRole('textbox', { name: 'Título do códice', exact: true })
@@ -109,6 +132,7 @@ try {
   await reader.goto(origin + '/#rules');
   await expect(reader.locator('.rb-hero h2')).toHaveText(published.document.title);
   await expect(reader.getByRole('button', { name: 'Editar conteúdo', exact: true })).toHaveCount(0);
+  await expect(reader.locator('.rb-item-actions')).toHaveCount(0);
   await reader
     .getByRole('textbox', { name: 'Buscar no livro', exact: true })
     .fill('UMA MESA PARA TODOS');
@@ -147,9 +171,13 @@ try {
   await page
     .getByRole('textbox', { name: 'Título do códice', exact: true })
     .fill(published.document.title);
+  await page.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await expect(page.locator('.rb-editor-bar')).toHaveCount(0);
   await page
     .getByRole('button', { name: 'Excluir artigo Uma mesa para todos', exact: true })
     .click();
+  await expect(page.locator('.rb-editor-bar')).toHaveCount(0);
+  expect((await publication()).document.chapters.at(-1)!.articles).toHaveLength(1);
   await page
     .getByRole('dialog')
     .getByRole('button', { name: 'Excluir artigo', exact: true })
@@ -157,6 +185,12 @@ try {
   await save();
   const deleted = await publication();
   expect(deleted.document.chapters.at(-1)!.articles).toHaveLength(0);
+  if (
+    !(await page
+      .locator('.rb-cover-editor')
+      .evaluate((element) => (element as HTMLDetailsElement).open))
+  )
+    await page.locator('.rb-cover-editor > summary').click();
   await page.getByRole('button', { name: 'Histórico', exact: true }).click();
   await page
     .getByRole('dialog')
@@ -174,7 +208,7 @@ try {
   await page.screenshot({ path: 'test-results/rulebook-real-desktop.png', fullPage: true });
   expect(errors).toEqual([]);
   console.log(
-    'Regras: owner edita e publica, upload persistente, leitor/reload, capa removida, rascunho entre abas, exclusão e recuperação com histórico, desktop e celular OK.',
+    'Regras: gestor de lore edita diretamente capítulos/artigos e publica; exclusão em leitura só altera draft confirmado; upload, leitor/reload, capa removida, rascunho entre abas, histórico, desktop e celular OK.',
   );
 } finally {
   await browser.close();

@@ -178,12 +178,14 @@ function OrderButtons({
   total,
   move,
   remove,
+  removeLabel,
 }: {
   name: string;
   index: number;
   total: number;
   move: (offset: number) => void;
-  remove: () => void;
+  remove?: () => void;
+  removeLabel?: string;
 }) {
   return (
     <div className="rb-order-buttons">
@@ -201,9 +203,61 @@ function OrderButtons({
       >
         <ArrowDown size={14} />
       </IconButton>
-      <IconButton label={'Excluir ' + name} danger onClick={remove}>
-        <Trash2 size={14} />
-      </IconButton>
+      {remove &&
+        (removeLabel ? (
+          <button
+            type="button"
+            className="rb-item-action rb-danger"
+            aria-label={'Excluir ' + name}
+            onClick={remove}
+          >
+            <Trash2 size={14} />
+            {removeLabel}
+          </button>
+        ) : (
+          <IconButton label={'Excluir ' + name} danger onClick={remove}>
+            <Trash2 size={14} />
+          </IconButton>
+        ))}
+    </div>
+  );
+}
+function ItemActions({
+  name,
+  edit,
+  remove,
+  disabled,
+  children,
+}: {
+  name: string;
+  edit: () => void;
+  remove: () => void;
+  disabled: boolean;
+  children?: ReactNode;
+}) {
+  return (
+    <div className="rb-item-actions">
+      <button
+        type="button"
+        className="rb-item-action"
+        aria-label={'Editar ' + name}
+        onClick={edit}
+        disabled={disabled}
+      >
+        <PenLine size={13} />
+        Editar
+      </button>
+      <button
+        type="button"
+        className="rb-item-action rb-danger"
+        aria-label={'Excluir ' + name}
+        onClick={remove}
+        disabled={disabled}
+      >
+        <Trash2 size={13} />
+        Excluir
+      </button>
+      {children}
     </div>
   );
 }
@@ -923,12 +977,71 @@ export function Rulebook({ active = true }: { active?: boolean }) {
       blocks: article.blocks.map((value) => (value.id === id ? block : value)),
     }));
   const beginEditing = () => {
-    if (!record?.can_edit || loading) return;
-    setDraft(structuredClone(record.document));
+    if (!record?.can_edit || loading) return false;
+    if (!editing) setDraft(structuredClone(record.document));
     setEditing(true);
     setPreview(false);
     setQuery('');
+    setIndexOpen(true);
+    return true;
   };
+  const editLocation = (chapter: RuleChapter, article?: RuleArticle) => {
+    if (!beginEditing()) return;
+    setChapterId(chapter.id);
+    setArticleId(article?.id || chapter.articles[0]?.id || '');
+    setExpanded((value) => (value.includes(chapter.id) ? value : [...value, chapter.id]));
+    scrollToArticle();
+    window.requestAnimationFrame(() => {
+      const input = articleRef.current?.querySelector<HTMLInputElement>(
+        article ? '.rb-article-title-input' : '.rb-chapter-fields input',
+      );
+      input?.focus({ preventScroll: true });
+    });
+  };
+  const removeChapter = (chapter: RuleChapter) =>
+    setConfirmation({
+      title: 'Excluir “' + chapter.title + '”?',
+      detail:
+        'O capítulo e seus ' +
+        chapter.articles.length +
+        ' artigos serão removidos do rascunho. A publicação só será alterada ao salvar.',
+      action: 'Excluir capítulo',
+      run: () => {
+        if (!beginEditing()) return;
+        const source = draftRef.current || recordRef.current?.document;
+        if (!source) return;
+        const chapters = source.chapters.filter((value) => value.id !== chapter.id);
+        setDraft({ ...source, chapters });
+        if (activeChapter?.id === chapter.id) {
+          setChapterId(chapters[0]?.id || '');
+          setArticleId(chapters[0]?.articles[0]?.id || '');
+        }
+      },
+    });
+  const removeArticle = (chapter: RuleChapter, article: RuleArticle) =>
+    setConfirmation({
+      title: 'Excluir “' + article.title + '”?',
+      detail:
+        'Este artigo e seus ' +
+        article.blocks.length +
+        ' blocos serão removidos do rascunho. A publicação só será alterada ao salvar.',
+      action: 'Excluir artigo',
+      run: () => {
+        if (!beginEditing()) return;
+        const source = draftRef.current || recordRef.current?.document;
+        if (!source) return;
+        const chapters = source.chapters.map((value) =>
+          value.id === chapter.id
+            ? { ...value, articles: value.articles.filter((item) => item.id !== article.id) }
+            : value,
+        );
+        setDraft({ ...source, chapters });
+        setChapterId(chapter.id);
+        if (activeArticle?.id === article.id || !editing)
+          setArticleId(chapters.find((value) => value.id === chapter.id)?.articles[0]?.id || '');
+        setExpanded((value) => (value.includes(chapter.id) ? value : [...value, chapter.id]));
+      },
+    });
   const cancel = () => {
     const run = () => {
       setDraft(null);
@@ -1496,39 +1609,26 @@ export function Rulebook({ active = true }: { active?: boolean }) {
                     <span>{chapter.title}</span>
                     <ChevronRight size={14} />
                   </button>
-                  {edit && (
-                    <OrderButtons
+                  {record?.can_edit && (
+                    <ItemActions
                       name={'capítulo ' + chapter.title}
-                      index={chapterIndex}
-                      total={current.chapters.length}
-                      move={(offset) =>
-                        changeDocument({
-                          chapters: reorder(current.chapters, chapterIndex, offset),
-                        })
-                      }
-                      remove={() =>
-                        setConfirmation({
-                          title: 'Excluir “' + chapter.title + '”?',
-                          detail:
-                            'O capítulo e seus ' +
-                            chapter.articles.length +
-                            ' artigos serão removidos do rascunho.',
-                          action: 'Excluir capítulo',
-                          run: () => {
+                      edit={() => editLocation(chapter)}
+                      remove={() => removeChapter(chapter)}
+                      disabled={loading}
+                    >
+                      {edit && (
+                        <OrderButtons
+                          name={'capítulo ' + chapter.title}
+                          index={chapterIndex}
+                          total={current.chapters.length}
+                          move={(offset) =>
                             changeDocument({
-                              chapters: current.chapters.filter((value) => value.id !== chapter.id),
-                            });
-                            if (activeChapter?.id === chapter.id) {
-                              const next = current.chapters.find(
-                                (value) => value.id !== chapter.id,
-                              );
-                              setChapterId(next?.id || '');
-                              setArticleId(next?.articles[0]?.id || '');
-                            }
-                          },
-                        })
-                      }
-                    />
+                              chapters: reorder(current.chapters, chapterIndex, offset),
+                            })
+                          }
+                        />
+                      )}
+                    </ItemActions>
                   )}
                   {open && (
                     <div className="rb-index-articles">
@@ -1548,41 +1648,27 @@ export function Rulebook({ active = true }: { active?: boolean }) {
                             <span>{number(chapterIndex + 1) + '.' + number(articleIndex + 1)}</span>
                             {article.title}
                           </button>
-                          {edit && (
-                            <OrderButtons
+                          {record?.can_edit && (
+                            <ItemActions
                               name={'artigo ' + article.title}
-                              index={articleIndex}
-                              total={chapter.articles.length}
-                              move={(offset) =>
-                                changeChapter(chapter.id, (value) => ({
-                                  ...value,
-                                  articles: reorder(value.articles, articleIndex, offset),
-                                }))
-                              }
-                              remove={() =>
-                                setConfirmation({
-                                  title: 'Excluir “' + article.title + '”?',
-                                  detail:
-                                    'Este artigo e seus ' +
-                                    article.blocks.length +
-                                    ' blocos serão removidos do rascunho.',
-                                  action: 'Excluir artigo',
-                                  run: () => {
+                              edit={() => editLocation(chapter, article)}
+                              remove={() => removeArticle(chapter, article)}
+                              disabled={loading}
+                            >
+                              {edit && (
+                                <OrderButtons
+                                  name={'artigo ' + article.title}
+                                  index={articleIndex}
+                                  total={chapter.articles.length}
+                                  move={(offset) =>
                                     changeChapter(chapter.id, (value) => ({
                                       ...value,
-                                      articles: value.articles.filter(
-                                        (item) => item.id !== article.id,
-                                      ),
-                                    }));
-                                    if (activeArticle?.id === article.id)
-                                      setArticleId(
-                                        chapter.articles.find((value) => value.id !== article.id)
-                                          ?.id || '',
-                                      );
-                                  },
-                                })
-                              }
-                            />
+                                      articles: reorder(value.articles, articleIndex, offset),
+                                    }))
+                                  }
+                                />
+                              )}
+                            </ItemActions>
                           )}
                         </div>
                       ))}
@@ -1779,6 +1865,7 @@ export function Rulebook({ active = true }: { active?: boolean }) {
                             </span>
                             <OrderButtons
                               name={'bloco ' + (index + 1)}
+                              removeLabel="Excluir bloco"
                               index={index}
                               total={activeArticle.blocks.length}
                               move={(offset) =>

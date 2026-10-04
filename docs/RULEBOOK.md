@@ -4,9 +4,16 @@ A aba Regras substitui os cartões fixos por um livro de consulta com capa ilust
 
 ## Controle do conteúdo
 
-A conta `correa.l@icloud.com` e staff/admin podem editar o manual inteiro. As demais contas autenticadas podem ler e pesquisar. Não há promoção automática de contas.
+A gestão da lore, incluindo a conta existente Pai do Cris (`limawelsn@gmail.com`), pode editar o manual inteiro. A conta `correa.l@icloud.com` e staff/admin mantêm o acesso já autorizado. As demais contas autenticadas podem ler e pesquisar. A permissão de gestão é conferida no PostgreSQL em cada operação; revogá-la retira o acesso sem alterar papéis de staff.
 
 O modo de edição permite alterar título, subtítulo, introdução e capa, criar/renomear/mover/excluir capítulos e artigos, editar resumos/etiquetas e compor blocos de texto, destaque, lista, tabela ou imagem. Capítulos, artigos e blocos preservam sua ordem. Imagens podem ser enviadas pelo editor ou usar uma URL HTTPS. Remover a capa mantém a escolha sem aplicar uma imagem automática por trás.
+
+Editar e Excluir aparecem por escrito nas entradas de capítulos e artigos,
+inclusive durante a leitura autorizada. Editar abre o rascunho no item escolhido.
+Excluir identifica o alvo na confirmação e remove do rascunho; Salvar publica
+a exclusão. O índice abre ao entrar/retornar à edição no celular. Cada bloco
+mostra Excluir bloco junto às setas de ordem. Todos os capítulos e artigos
+iniciais podem ser alterados ou removidos.
 
 Salvar publica o documento inteiro para a guilda. Até salvar, alterações permanecem apenas no estado de edição da aba; Cancelar volta à versão publicada. Navegar para outra área e voltar preserva o rascunho durante a sessão aberta. Recarregar com alterações sem salvar pede confirmação do navegador. Importar JSON carrega um rascunho para revisão, e exportar cria uma cópia do conteúdo escolhido. O histórico carrega uma versão antiga como rascunho, mantendo a revisão atual para a próxima publicação.
 

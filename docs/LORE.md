@@ -59,6 +59,10 @@ automaticamente ao carregar, editar ou salvar a página.
 
 ## Organização e edição
 
+- Editar e Excluir aparecem por escrito ao lado de cada crônica no arquivo
+  e abaixo de cada pasta/subpasta. Editar crônica na lista abre o editor
+  diretamente, sem precisar passar pela leitura. Conteúdos iniciais e de
+  outros autores recebem as mesmas ações para a gestão já autorizada.
 - As 22 regiões vêm de `world_regions`, incluindo regiões ainda não exploráveis.
   Disponibilidade de exploração não impede documentar sua lore.
 - Cada região possui Cidades, Capital, Religião, Lendas, Criaturas e História.
@@ -89,10 +93,10 @@ automaticamente ao carregar, editar ou salvar a página.
   contas e em outras regiões. A autoria original e os snapshots são preservados.
   Rascunhos permanecem privados para leitores comuns; autor, staff e gestão
   da lore têm acesso para edição.
-- A conta **Pai do Cris** pode editar todas as pastas existentes pelo lápis:
+- A conta **Pai do Cris** pode editar todas as pastas existentes por Editar:
   renomear e escolher outra pasta superior na mesma região. O servidor impede
   ciclos, nomes duplicados e mais de quatro níveis, inclusive nas subpastas.
-- A lixeira ao lado de cada pasta permite excluí-la junto com as subpastas.
+- Excluir abaixo de cada pasta permite removê-la junto com as subpastas.
   Se houver crônicas, é obrigatório escolher outra pasta da região para
   guardá-las; textos, imagens, autoria e publicação são preservados.
   **Pastas excluídas** permite restaurar a estrutura. Crônicas sem edições

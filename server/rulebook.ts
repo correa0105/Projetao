@@ -21,6 +21,7 @@ type Database = Pool | PoolClient;
 const editorPredicate = `(
   EXISTS(SELECT 1 FROM "user" WHERE id=$1 AND lower(btrim(email))=$2)
   OR EXISTS(SELECT 1 FROM guild_staff WHERE user_id=$1 AND role IN ('staff','admin'))
+  OR EXISTS(SELECT 1 FROM lore_folder_managers WHERE user_id=$1)
 )`;
 const initialDocument = JSON.stringify(rulebookDocumentSchema.parse(INITIAL_RULEBOOK));
 const writeSchema = z

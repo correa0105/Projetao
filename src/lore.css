@@ -292,6 +292,41 @@
   color: #d8a18b;
   background: #9a4e3226;
 }
+.lore-page-actions {
+  display: flex;
+  flex: none;
+  gap: 8px;
+  padding: 12px 0 12px 12px;
+}
+.lore-library .lore-content-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: auto;
+  flex: none;
+  min-height: 36px;
+  height: auto;
+  padding: 7px 10px;
+  border: 1px solid var(--lore-line);
+  border-radius: 3px;
+  background: transparent;
+  color: #c5ac80;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.lore-library .lore-content-action:hover,
+.lore-library .lore-content-action:focus-visible {
+  background: #a9986c10;
+  color: #e5d3ae;
+}
+.lore-library .lore-page-delete:hover,
+.lore-library .lore-folder-delete:hover {
+  color: #e1a18b;
+  border-color: #9a4e3255;
+  background: #9a4e3226;
+}
 .lore-page-copy {
   min-width: 0;
   overflow-wrap: anywhere;
@@ -957,22 +992,17 @@
   animation: lore-mouse-step 0.175s -0.0875s linear 12 reverse both;
 }
 .lore-folder-row {
-  display: flex;
-  align-items: center;
+  display: block;
 }
 .lore-folder-row > button:first-child {
   flex: 1;
   min-width: 0;
 }
-.lore-folder-tree .lore-folder-edit,
-.lore-folder-tree .lore-folder-delete {
-  width: 26px;
-  flex: 0 0 26px;
-  height: 36px;
-  padding: 0;
-  justify-content: center;
-  border: 0;
-  color: #c5a16a;
+.lore-folder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -3px 0 10px calc(8px + var(--folder-depth, 0) * 14px);
 }
 .lore-folder-tree .lore-folder-edit:hover {
   color: #e5c783;
@@ -1421,6 +1451,17 @@
   .lore-page-link {
     min-height: 145px;
     gap: 15px;
+  }
+  .lore-page-row {
+    flex-wrap: wrap;
+  }
+  .lore-page-row > .lore-page-link {
+    flex-basis: 100%;
+  }
+  .lore-page-actions {
+    width: 100%;
+    justify-content: flex-end;
+    padding: 0 0 18px;
   }
   .lore-page-copy strong {
     font-size: 21px;

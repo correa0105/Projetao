@@ -72,13 +72,11 @@ async function pageFor(owner = true, viewport = { width: 1440, height: 1000 }) {
     if (path === '/api/rulebook/history') {
       await route.fulfill({
         json: {
-          revisions: [...snapshots]
-            .reverse()
-            .map(([value, doc]) => ({
-              revision: value,
-              title: doc.title,
-              updated_at: '2026-10-04T18:00:00Z',
-            })),
+          revisions: [...snapshots].reverse().map(([value, doc]) => ({
+            revision: value,
+            title: doc.title,
+            updated_at: '2026-10-04T18:00:00Z',
+          })),
         },
       });
       return;
@@ -129,6 +127,7 @@ async function pageFor(owner = true, viewport = { width: 1440, height: 1000 }) {
 try {
   const reader = await pageFor(false);
   await expect(reader.getByRole('button', { name: 'Editar conteúdo' })).toHaveCount(0);
+  await expect(reader.locator('.rb-item-actions')).toHaveCount(0);
   await expect(
     reader.locator('a[href="https://creativecommons.org/licenses/by/4.0/legalcode"]'),
   ).toBeVisible();
@@ -151,6 +150,107 @@ try {
   await expect(mobile.getByRole('button', { name: 'Abrir índice' })).toBeVisible();
   await expect(mobile.locator('.rb-article')).toContainText('Criar um aventureiro');
   await mobile.close();
+
+  const actions = await pageFor();
+  await expect(
+    actions.getByRole('button', { name: 'Editar capítulo Atributos e ficha', exact: true }),
+  ).toBeVisible();
+  await expect(
+    actions.getByRole('button', { name: 'Excluir artigo Criar um aventureiro', exact: true }),
+  ).toHaveText('Excluir');
+  await actions.screenshot({ path: 'test-results/rulebook-actions-desktop.png', fullPage: true });
+  await actions
+    .getByRole('button', { name: 'Excluir capítulo A vida na guilda', exact: true })
+    .click();
+  await expect(actions.getByRole('dialog')).toContainText('2 artigos');
+  await actions.getByRole('button', { name: 'Manter como está', exact: true }).click();
+  await expect(actions.locator('.rb-editor-bar')).toHaveCount(0);
+  await actions
+    .getByRole('button', { name: 'Editar capítulo Atributos e ficha', exact: true })
+    .click();
+  await expect(
+    actions.getByRole('textbox', { name: 'Título do capítulo', exact: true }),
+  ).toHaveValue('Atributos e ficha');
+  await expect(
+    actions.getByRole('textbox', { name: 'Título do capítulo', exact: true }),
+  ).toBeFocused();
+  await actions
+    .getByRole('textbox', { name: 'Descrição do capítulo', exact: true })
+    .fill('Rascunho conservado ao editar outro artigo.');
+  await actions
+    .getByRole('button', { name: 'Editar artigo Uma rolagem para a ficha', exact: true })
+    .click();
+  await expect(actions.getByRole('textbox', { name: 'Título do artigo', exact: true })).toHaveValue(
+    'Uma rolagem para a ficha',
+  );
+  await expect(
+    actions.getByRole('textbox', { name: 'Título do artigo', exact: true }),
+  ).toBeFocused();
+  await expect(
+    actions.getByRole('textbox', { name: 'Descrição do capítulo', exact: true }),
+  ).toHaveValue('Rascunho conservado ao editar outro artigo.');
+  await actions.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await actions.getByRole('button', { name: 'Descartar alterações', exact: true }).click();
+  await actions
+    .getByRole('button', { name: 'Excluir capítulo A vida na guilda', exact: true })
+    .click();
+  await actions
+    .getByRole('dialog')
+    .getByRole('button', { name: 'Excluir capítulo', exact: true })
+    .click();
+  await expect(actions.locator('.rb-editor-bar')).toBeVisible();
+  await expect(
+    actions.getByRole('button', { name: 'Editar capítulo A vida na guilda', exact: true }),
+  ).toHaveCount(0);
+  expect(document.chapters).toHaveLength(INITIAL_RULEBOOK.chapters.length);
+  await actions.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await actions.getByRole('button', { name: 'Descartar alterações', exact: true }).click();
+  await actions
+    .getByRole('button', { name: 'Excluir artigo Criar um aventureiro', exact: true })
+    .click();
+  await actions
+    .getByRole('dialog')
+    .getByRole('button', { name: 'Excluir artigo', exact: true })
+    .click();
+  await expect(
+    actions.getByRole('button', { name: 'Editar artigo Criar um aventureiro', exact: true }),
+  ).toHaveCount(0);
+  expect(document.chapters[0].articles).toHaveLength(INITIAL_RULEBOOK.chapters[0].articles.length);
+  await actions.close();
+
+  const mobileActions = await pageFor(true, { width: 390, height: 844 });
+  await mobileActions.getByRole('button', { name: 'Abrir índice', exact: true }).click();
+  await mobileActions
+    .getByRole('button', { name: 'Editar capítulo A vida na guilda', exact: true })
+    .click();
+  await expect(
+    mobileActions.getByRole('button', { name: 'Fechar índice', exact: true }),
+  ).toBeVisible();
+  await expect(
+    mobileActions.getByRole('textbox', { name: 'Título do capítulo', exact: true }),
+  ).toHaveValue('A vida na guilda');
+  await mobileActions
+    .getByRole('textbox', { name: 'Descrição do capítulo', exact: true })
+    .fill('Descrição ainda no rascunho.');
+  await mobileActions
+    .getByRole('button', { name: 'Excluir artigo Uma guilda, muitas jornadas', exact: true })
+    .click();
+  await mobileActions
+    .getByRole('dialog')
+    .getByRole('button', { name: 'Excluir artigo', exact: true })
+    .click();
+  await expect(
+    mobileActions.getByRole('textbox', { name: 'Descrição do capítulo', exact: true }),
+  ).toHaveValue('Descrição ainda no rascunho.');
+  expect(
+    await mobileActions.evaluate(() => document.documentElement.scrollWidth),
+  ).toBeLessThanOrEqual(390);
+  await mobileActions.screenshot({
+    path: 'test-results/rulebook-actions-mobile.png',
+    fullPage: true,
+  });
+  await mobileActions.close();
+
   const page = await pageFor();
   await page.getByRole('button', { name: 'Editar conteúdo' }).click();
   await expect(page.getByRole('textbox', { name: 'Título do códice', exact: true })).toBeVisible();
@@ -212,6 +312,9 @@ try {
     .locator('.rb-block-picker')
     .getByRole('button', { name: 'Imagem', exact: true })
     .click();
+  await expect(page.getByRole('button', { name: 'Excluir bloco 1', exact: true })).toHaveText(
+    'Excluir bloco',
+  );
   await page.locator('.rb-cover-editor > summary').click();
   uploadDelay = 800;
   await page
@@ -290,23 +393,19 @@ try {
     JSON.parse(await readFile('test-results/rulebook-draft-export.json', 'utf8')).chapters.at(-1)
       .articles[0].title,
   ).toBe('Meu rascunho preservado');
-  await page
-    .getByLabel('Arquivo JSON do códice')
-    .setInputFiles({
-      name: 'invalid.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from('{"version":2}'),
-    });
+  await page.getByLabel('Arquivo JSON do códice').setInputFiles({
+    name: 'invalid.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from('{"version":2}'),
+  });
   await expect(page.getByText(/Este arquivo não é um códice válido/)).toBeVisible();
   const imported = structuredClone(document);
   imported.title = 'Cópia importada';
-  await page
-    .getByLabel('Arquivo JSON do códice')
-    .setInputFiles({
-      name: 'valid.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from(JSON.stringify(imported)),
-    });
+  await page.getByLabel('Arquivo JSON do códice').setInputFiles({
+    name: 'valid.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(imported)),
+  });
   await page
     .getByRole('dialog')
     .getByRole('button', { name: 'Importar códice', exact: true })
@@ -392,13 +491,11 @@ try {
   ];
   expect(rulebookDocumentSchema.safeParse(large).success).toBe(true);
   expect(Buffer.byteLength(JSON.stringify(large, null, 2))).toBeGreaterThan(2 * 1024 * 1024);
-  await history
-    .getByLabel('Arquivo JSON do códice')
-    .setInputFiles({
-      name: 'large.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from(JSON.stringify(large)),
-    });
+  await history.getByLabel('Arquivo JSON do códice').setInputFiles({
+    name: 'large.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(large)),
+  });
   await history
     .getByRole('dialog')
     .getByRole('button', { name: 'Importar códice', exact: true })
@@ -437,6 +534,8 @@ try {
       conflictDraft: true,
       importExport: true,
       historyKeepsCurrentRevision: true,
+      directEditDelete: true,
+      directMobileActions: true,
       puts: puts.length,
     }),
   );

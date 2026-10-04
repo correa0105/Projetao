@@ -72,7 +72,10 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
       staff = await signup();
     // Respect Better Auth's real limit of three signups per ten seconds.
     await delay(10_100);
-    const admin = await signup();
+    const admin = await signup(),
+      manager = await signup('limawelsn@gmail.com');
+    assert.equal((await req('/rulebook', manager.cookie)).data.can_edit, false);
+    await pool.query('INSERT INTO lore_folder_managers(user_id) VALUES($1)', [manager.id]);
     await pool.query("INSERT INTO guild_staff(user_id,role) VALUES($1,'staff'),($2,'admin')", [
       staff.id,
       admin.id,
@@ -87,8 +90,12 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
     assert.deepEqual(first.data.document, rulebookDocumentSchema.parse(INITIAL_RULEBOOK));
     assert.equal(first.data.document.cover_image, '/rules/rulebook-desk.webp');
     assert.equal(first.data.document.chapters.length, 6);
-    for (const allowed of [editor, staff, admin])
+    for (const allowed of [editor, staff, admin, manager])
       assert.equal((await req('/rulebook', allowed.cookie)).data.can_edit, true);
+    assert.equal(
+      (await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [manager.id])).rowCount,
+      0,
+    );
     assert.equal(
       (await pool.query('SELECT count(*)::int AS n FROM guild_staff WHERE user_id=$1', [editor.id]))
         .rows[0].n,
@@ -452,6 +459,98 @@ test('regras: autorização, revisão, histórico, importação, exclusão e ima
         (item: { revision: number }) => item.revision,
       ),
       [4, 3, 2, 1, 0],
+    );
+    // Existing lore management grants the whole book without changing guild roles.
+    // The manager can revise text another editor published, including initial entries.
+    const managedDocument = structuredClone(document);
+    const otherEditorText = managedDocument.chapters
+      .at(-1)!
+      .articles[0].blocks.find((block) => block.id === 'block-text');
+    assert.ok(otherEditorText?.type === 'text');
+    otherEditorText.text = 'Texto de outro editor revisado pela gestão da lore.';
+    managedDocument.introduction = 'Apresentação inicial revisada pela gestão da lore.';
+    const managerPublication = await req('/rulebook', manager.cookie, 'PUT', {
+      revision,
+      document: managedDocument,
+    });
+    assert.equal(managerPublication.status, 200);
+    revision = managerPublication.data.revision;
+    assert.equal(revision, 5);
+    assert.equal(managerPublication.data.can_edit, true);
+    assert.deepEqual((await req('/rulebook', reader.cookie)).data.document, managedDocument);
+    assert.equal(
+      (await pool.query('SELECT updated_by FROM rulebook_documents WHERE id=1')).rows[0].updated_by,
+      manager.id,
+    );
+    assert.deepEqual((await req('/rulebook/history/4', manager.cookie)).data.document, document);
+    assert.deepEqual(
+      (await req('/rulebook/history/5', manager.cookie)).data.document,
+      managedDocument,
+    );
+
+    const managerImage = await req('/rulebook/images', manager.cookie, 'POST', {
+      name: 'Rascunho privado da gestão.png',
+      data: `data:image/png;base64,${png.toString('base64')}`,
+    });
+    assert.equal(managerImage.status, 201);
+    assert.equal((await req(managerImage.data.src.slice(4), manager.cookie)).status, 200);
+    assert.equal((await req(managerImage.data.src.slice(4), reader.cookie)).status, 404);
+    const managerDeletion = await req('/rulebook', manager.cookie, 'PUT', {
+      revision,
+      document: { ...managedDocument, chapters: [], cover_image: null },
+    });
+    assert.equal(managerDeletion.status, 200);
+    revision = managerDeletion.data.revision;
+    assert.equal(revision, 6);
+    assert.deepEqual((await req('/rulebook', reader.cookie)).data.document.chapters, []);
+    assert.deepEqual(
+      (await req('/rulebook/history/5', manager.cookie)).data.document,
+      managedDocument,
+    );
+    const managerRecovery = await req('/rulebook', manager.cookie, 'PUT', {
+      revision,
+      document: managedDocument,
+    });
+    assert.equal(managerRecovery.status, 200);
+    revision = managerRecovery.data.revision;
+    assert.equal(revision, 7);
+    assert.deepEqual((await req('/rulebook', reader.cookie)).data.document, managedDocument);
+    assert.deepEqual(
+      (await req('/rulebook/history', manager.cookie)).data.revisions.map(
+        (item: { revision: number }) => item.revision,
+      ),
+      [7, 6, 5, 4, 3, 2, 1, 0],
+    );
+    assert.equal(
+      (await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [manager.id])).rowCount,
+      0,
+    );
+
+    await pool.query('DELETE FROM lore_folder_managers WHERE user_id=$1', [manager.id]);
+    assert.equal((await req('/rulebook', manager.cookie)).data.can_edit, false);
+    assert.equal(
+      (await req('/rulebook', manager.cookie, 'PUT', { revision, document: managedDocument }))
+        .status,
+      403,
+    );
+    assert.equal(
+      (
+        await req('/rulebook/images', manager.cookie, 'POST', {
+          name: 'Sem autorização.png',
+          data: `data:image/png;base64,${png.toString('base64')}`,
+        })
+      ).status,
+      403,
+    );
+    assert.equal((await req('/rulebook/history', manager.cookie)).status, 403);
+    assert.equal((await req('/rulebook/history/5', manager.cookie)).status, 403);
+    assert.equal((await req(managerImage.data.src.slice(4), manager.cookie)).status, 404);
+    assert.equal((await req(uploads[0].src.slice(4), manager.cookie)).status, 200);
+    await seed();
+    assert.equal((await req('/rulebook', manager.cookie)).data.can_edit, false);
+    assert.equal(
+      (await pool.query('SELECT 1 FROM guild_staff WHERE user_id=$1', [manager.id])).rowCount,
+      0,
     );
   } finally {
     await new Promise<void>((resolve) => server.close(() => resolve()));
