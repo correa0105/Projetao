@@ -290,3 +290,40 @@ folga mínima de 0,022 e zero colisões entre ventosas. Capturas finais da nova
 expressão e das cavidades revisadas. Menisco/reflexo e sincronização com três
 fases do tremor também conferidos em desktop/celular, movimento reduzido e
 alternativa Canvas. Novos recursos de GPU são liberados ao encerrar o retorno.
+
+
+## Piscada ao entrar na visão — 04/10/2026
+
+A quinta insistência inicia `GinnaEntry`: pálpebras curvas fecham sobre o
+estábulo diurno em 240 ms. Apenas com a visão totalmente coberta a cena
+escura é montada e os animais diurnos são ocultados. A cobertura permanece
+fechada até o componente e suas artes estarem prontos; após uma pausa de
+120 ms, as pálpebras abrem em 360 ms. O antigo fade de revelação foi removido.
+
+A visão e a piscada usam diálogos no top layer, com ordem controlada no
+layout antes do paint. Assim, cabeçalho e menu diurnos não aparecem sobre a
+cena durante a abertura. A cuidadora escura recebe foco somente ao terminar;
+Escape e interação com o cenário são bloqueados enquanto a piscada ocorre.
+Movimento reduzido usa fade de 100/160 ms, mantendo a troca sob preto.
+O diálogo da visão usa `overflow: clip` para que o foco não desloque a cena
+horizontalmente ao abrir a resposta ou repetir a sequência no celular.
+
+O chunk da visão é antecipado na quarta advertência e o preload usa a arte
+vigente `paddock-ruined-eye-mountain-v2.webp`. Falha do WebGL conserva o
+alternativo raster; prontidão da entrada não depende de WebGL. Animações,
+timer e callbacks pendentes são cancelados ao sair da página. O retorno com
+tentáculos, sons, pálpebras e respiração mantém sua sequência anterior.
+
+`node scripts/smoke-ginna-entry.mjs` exercita os componentes reais sem banco:
+fechamento no dia, montagem sob cobertura, arte atrasada, pixels pretos,
+abertura no escuro, camadas acima do HUD, foco, Escape, movimento reduzido,
+navegação durante a piscada e retorno. O smoke isolado do estábulo também
+aguarda a entrada terminar antes das interações na visão.
+
+O smoke focado passou em desktop e celular, incluindo a segunda entrada
+após retorno/redimensionamento. A cena permaneceu sem rolagem, o balão ficou
+dentro do viewport e a abertura não mostrou pixels do HUD diurno. A cobertura
+fechada ficou totalmente preta mesmo com a arte atrasada.
+TypeScript, build cliente/servidor e smoke completo do estábulo em PostgreSQL
+descartável também passaram, cobrindo retorno, áudio, compras e seis viewports.
+Docker reconstruído; healthcheck e bundle da piscada confirmados no serviço local.

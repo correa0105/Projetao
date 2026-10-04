@@ -392,7 +392,7 @@ dialog.ginna-vision {
   height: 100dvh;
   max-width: none;
   max-height: none;
-  overflow: hidden;
+  overflow: clip;
   background: #000;
   color: #ddd9d3;
   isolation: isolate;
@@ -400,8 +400,9 @@ dialog.ginna-vision {
 .ginna-vision::backdrop {
   background: #000;
 }
-/* Viewer closes both eyelids, holds briefly, then opens onto daylight. */
-:root dialog.ginna-return {
+/* The visitor's eyelids hide the scene change in both directions. */
+:root dialog.ginna-return,
+:root dialog.ginna-entry {
   position: fixed;
   inset: 0;
   margin: 0;
@@ -417,7 +418,10 @@ dialog.ginna-vision {
   background-image: none;
   box-shadow: none;
 }
-:root dialog.ginna-return::backdrop { background: transparent; backdrop-filter: none; }
+:root dialog.ginna-return::backdrop,
+:root dialog.ginna-entry::backdrop { background: transparent; backdrop-filter: none; }
+:root dialog.ginna-entry[data-phase='closed'] { background: #000; }
+dialog.ginna-vision[data-entering='true'] { pointer-events: none; }
 .ginna-return-tentacles {
   position: absolute;
   inset: 0;
@@ -427,7 +431,8 @@ dialog.ginna-vision {
 .ginna-ground-eyes-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .ginna-return[data-phase='closed'] .ginna-return-tentacles,
 .ginna-return[data-phase='opening'] .ginna-return-tentacles { visibility: hidden; }
-.ginna-return-lid {
+.ginna-return-lid,
+.ginna-entry-lid {
   position: absolute;
   left: 0;
   width: 100%;
@@ -435,25 +440,29 @@ dialog.ginna-vision {
   background: #000;
   will-change: transform;
 }
-.ginna-return-upper {
+.ginna-return-upper,
+.ginna-entry-upper {
   top: 0;
   clip-path: ellipse(80% 100% at 50% 0%);
   filter: drop-shadow(0 6px 6px #000);
   transform: translateY(-100%);
 }
-.ginna-return-lower {
+.ginna-return-lower,
+.ginna-entry-lower {
   bottom: 0;
   clip-path: ellipse(80% 100% at 50% 100%);
   filter: drop-shadow(0 -6px 6px #000);
   transform: translateY(100%);
 }
-.ginna-return[data-motion='reduced'] .ginna-return-lid {
+.ginna-return[data-motion='reduced'] .ginna-return-lid,
+.ginna-entry[data-motion='reduced'] .ginna-entry-lid {
   height: 50.1%;
   clip-path: none;
   filter: none;
   transform: none;
   will-change: opacity;
 }
+.ginna-entry[data-motion='reduced'] .ginna-entry-lid { opacity: 0; }
 .ginna-nightmare-scene {
   position: absolute;
   inset: -10px;
@@ -580,14 +589,6 @@ dialog.ginna-vision {
   top: 18px;
   right: 18px;
 }
-.ginna-vision-shutter {
-  position: absolute;
-  inset: 0;
-  z-index: 8;
-  background: #000;
-  pointer-events: none;
-  animation: ginna-vision-reveal .6s ease-out both;
-}
 @keyframes ginna-eye-emerge {
   from { opacity: 0; }
   to { opacity: .9; }
@@ -603,10 +604,6 @@ dialog.ginna-vision {
 @keyframes ginna-fog-drift {
   from { transform: translateX(-3%) scale(1.04); }
   to { transform: translateX(3%) scale(1.08); }
-}
-@keyframes ginna-vision-reveal {
-  from { opacity: 1; }
-  to { opacity: 0; }
 }
 @keyframes ginna-quake {
   0%, 100% { transform: translate(0, 0); }
@@ -646,5 +643,4 @@ dialog.ginna-vision {
   .ginna-vision-fog,
   .ginna-nightmare-scene { animation: none; }
   .ginna-earth-eye { opacity: .9; }
-  .ginna-vision-shutter { display: none; }
 }

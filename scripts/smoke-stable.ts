@@ -276,6 +276,8 @@ try {
     await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
   };
   await expect(vision).toBeVisible();
+  // The vision is mounted beneath closed eyelids before becoming interactive.
+  await expect(page.locator('.ginna-entry')).toHaveCount(0);
   await expect(vision).toContainText('Pague para ver o que acontece');
   const ominousText = vision.locator('.ginna-balloon-copy');
   expect(

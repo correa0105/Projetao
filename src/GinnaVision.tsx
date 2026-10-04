@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { MusicControls, useMusicInterlude, useSoundEffects } from './SiteMusic';
 import { GinnaBalloon } from './GinnaBalloon';
 import { GinnaGroundEyes, type GinnaEye } from './GinnaGroundEyes';
@@ -36,11 +36,17 @@ const eyes: GinnaEye[] = [
 
 export function GinnaVision({
   known,
+  entering = false,
   returning = false,
+  onReady,
+  onPresented,
   onFinished,
 }: {
   known: boolean;
+  entering?: boolean;
   returning?: boolean;
+  onReady?: () => void;
+  onPresented?: () => void;
   onFinished: () => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -51,8 +57,41 @@ export function GinnaVision({
   const { muted, volume } = useSoundEffects();
   useGinnaHeartbeat(dialog, { muted, volume });
 
+  useLayoutEffect(() => {
+    const overlay = dialog.current!;
+    overlay.showModal();
+    // Keep the blink above this scene and the daytime HUD in the top layer.
+    if (entering) onPresented?.();
+    else {
+      overlay
+        .querySelector<HTMLButtonElement>('.stable-keeper-trigger')
+        ?.focus({ preventScroll: true });
+    }
+    return () => overlay.close();
+  }, [entering, onPresented]);
+
   useEffect(() => {
-    dialog.current?.showModal();
+    if (!onReady) return;
+    let cancelled = false;
+    void Promise.all(
+      [
+        '/stable/paddock-ruined-eye-mountain-v2.webp',
+        '/stable/ginna-shadow.webp',
+        '/stable/ginna-raised-eyes.webp',
+      ].map((source) => {
+        const image = new Image();
+        image.src = source;
+        return image.decode().catch(() => {});
+      }),
+    ).then(() => {
+      if (!cancelled) onReady();
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [onReady]);
+
+  useEffect(() => {
     const player = music.current;
     const resume = beginInterlude();
     const visibility = () => {
@@ -79,6 +118,7 @@ export function GinnaVision({
     <dialog
       ref={dialog}
       className="ginna-vision"
+      data-entering={entering || undefined}
       data-returning={returning || undefined}
       aria-label="Visão sombria do estábulo"
       onCancel={(event) => {
@@ -157,7 +197,6 @@ export function GinnaVision({
       <div className="ginna-vision-volume">
         <MusicControls />
       </div>
-      <div className="ginna-vision-shutter" aria-hidden="true" />
       <audio
         ref={music}
         src="/audio/ginna-lullaby-of-woe.mp3"

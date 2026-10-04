@@ -16,6 +16,7 @@ import { post } from './api';
 import { money } from '../shared/rules';
 import { Modal } from './components';
 import { GinnaBalloon } from './GinnaBalloon';
+import { GinnaEntry } from './GinnaEntry';
 import { useSoundEffects } from './SiteMusic';
 import {
   ginnaGreeting,
@@ -113,6 +114,19 @@ export function Stable({
   const [talk, setTalk] = useState<'questions' | 'warning' | null>(null);
   const [known, setKnown] = useState(false);
   const [vision, setVision] = useState(false);
+  const [entering, setEntering] = useState(false);
+  const [visionReady, setVisionReady] = useState(false);
+  const entryDialog = useRef<HTMLDialogElement>(null);
+  const presentVision = useCallback(() => {
+    const overlay = entryDialog.current;
+    if (!overlay?.open) return;
+    // Put the eyelids back above the newly mounted modal scene before painting.
+    overlay.close();
+    overlay.showModal();
+  }, []);
+  const coverEntry = useCallback(() => setVision(true), []);
+  const readyVision = useCallback(() => setVisionReady(true), []);
+  const finishEntry = useCallback(() => setEntering(false), []);
   useEffect(() => {
     if (vision) void import('./GinnaReturn');
   }, [vision]);
@@ -142,9 +156,11 @@ export function Stable({
     }
     if (warnings.current >= 5) return;
     warnings.current += 1;
+    if (warnings.current === 4) void import('./GinnaVision');
     if (warnings.current === 5) {
       setTalk(null);
-      setVision(true);
+      setVisionReady(false);
+      setEntering(true);
       return;
     }
     setSpeech(ginnaWarnings[warnings.current - 1]);
@@ -199,7 +215,7 @@ export function Stable({
   useEffect(() => {
     for (const path of [
       '/stable/ginna-shadow.webp',
-      '/stable/paddock-ruined-eye-mountain.webp',
+      '/stable/paddock-ruined-eye-mountain-v2.webp',
       '/stable/ginna-raised-eyes.webp',
     ]) {
       const image = new Image();
@@ -286,7 +302,12 @@ export function Stable({
     }
   }
   return (
-    <section className="stable-page" aria-label="Estábulo" data-ginna-vision={vision || undefined}>
+    <section
+      className="stable-page"
+      aria-label="Estábulo"
+      data-ginna-vision={vision || undefined}
+      data-ginna-entering={entering || undefined}
+    >
       <div className="stable-background" aria-hidden="true" />
       <header className="stable-selected-title">
         <h2>{mount.name}</h2>
@@ -503,8 +524,23 @@ export function Stable({
       </div>
       {vision && (
         <Suspense fallback={null}>
-          <GinnaVision known={known} returning={returning} onFinished={beginReturn} />
+          <GinnaVision
+            known={known}
+            entering={entering}
+            returning={returning}
+            onReady={readyVision}
+            onPresented={presentVision}
+            onFinished={beginReturn}
+          />
         </Suspense>
+      )}
+      {entering && (
+        <GinnaEntry
+          ready={visionReady}
+          overlayRef={entryDialog}
+          onCovered={coverEntry}
+          onFinished={finishEntry}
+        />
       )}
       {returning && (
         <Suspense fallback={null}>
