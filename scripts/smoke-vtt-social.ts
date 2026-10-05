@@ -134,9 +134,47 @@ try {
   await expect(page.locator('.public-camp-heading')).toContainText('Arden');
   await expect(page.locator('.public-camp-pet')).toContainText('Brasa');
   await expect(page.locator('.public-camp-mount')).toContainText('Bruma');
+  async function checkCompanionFraming() {
+    const framing = await page.locator('.public-camp-stage').evaluate((stage) => {
+      const panel = stage.closest('.public-camp')!.getBoundingClientRect();
+      const pet = stage.querySelector('.public-camp-pet')!.getBoundingClientRect();
+      const art = stage.querySelector('.pet-art')!;
+      const svg = art.querySelector('svg')!;
+      const animal = svg.getBoundingClientRect();
+      const frame = svg.viewBox.baseVal;
+      const mount = stage.querySelector('.public-camp-mount > img') as HTMLImageElement;
+      const horse = mount.getBoundingClientRect();
+      const labels = Array.from(
+        stage.querySelectorAll('.public-camp-pet > span:not(.pet-art), .public-camp-mount > span'),
+      );
+      return {
+        artPosition: getComputedStyle(art).position,
+        petInside: animal.top >= pet.top - 1 && animal.bottom <= pet.bottom + 1,
+        allInside: [animal, horse, ...labels.map((label) => label.getBoundingClientRect())].every(
+          (r) => r.left >= panel.left && r.right <= panel.right && r.bottom <= panel.bottom,
+        ),
+        petRatio: animal.width / animal.height,
+        frameRatio: frame.width / frame.height,
+        mountRatio: horse.width / horse.height,
+        sourceRatio: mount.naturalWidth / mount.naturalHeight,
+      };
+    });
+    expect(framing.artPosition).toBe('static');
+    expect(framing.petInside).toBe(true);
+    expect(framing.allInside).toBe(true);
+    expect(framing.petRatio).toBeCloseTo(framing.frameRatio, 2);
+    expect(framing.mountRatio).toBeCloseTo(framing.sourceRatio, 2);
+  }
+  await page.setViewportSize({ width: 1880, height: 812 });
+  await checkCompanionFraming();
+  await page.screenshot({ path: 'test-results/profile-animals-1880.png', fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await checkCompanionFraming();
+  await page.screenshot({ path: 'test-results/profile-animals-1440.png', fullPage: true });
   await page.getByRole('button', { name: 'Selecionar Mira no perfil' }).click();
   await expect(page.locator('.public-camp-pet')).toContainText('Pingo');
   await expect(page.locator('.public-camp-mount')).toContainText('Faísca');
+  await checkCompanionFraming();
   await page.screenshot({ path: 'test-results/profile-camp-desktop.png', fullPage: true });
   await page
     .locator('.profile-visit-nav')
@@ -1204,6 +1242,9 @@ try {
   for (const width of [768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(origin + '/#profiles?user=' + owner.id);
+    await expect(page.locator('.public-camp-pet')).toContainText('Brasa');
+    await checkCompanionFraming();
+    await page.screenshot({ path: `test-results/profile-animals-${width}.png`, fullPage: true });
     await page
       .locator('.profile-visit-nav')
       .getByRole('button', { name: 'Conquistas', exact: true })

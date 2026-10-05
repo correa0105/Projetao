@@ -1,5 +1,16 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Animais nas visitas aos perfis (05/10/2026)
+
+O seletor genérico de etiquetas `.public-camp-pet > span` também atingia o
+container `.pet-art`, posicionando todo o SVG abaixo da caixa e cortando o animal.
+Etiquetas agora excluem a arte. SVG preserva o aspecto do viewport aprovado;
+largura vem da espécie/aparência, e montarias usam a escala do catálogo e altura
+natural. Posicionamento, sombra e adaptação ao celular mantêm os animais no chão
+e dentro do cenário. Sem mudança nos registros, seleção persistida ou permissões.
+Smoke verifica contenção/proporções com cão/cavalo e sapo/pônei, além de imagens
+1880/1440/768/390/320; TypeScript e build validados.
+
 ## Refino final da mesa e fórmulas (05/10/2026)
 
 Ataques passam para barra compacta com atacante amarelo/alvo vermelho por clique,

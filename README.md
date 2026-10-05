@@ -1,5 +1,9 @@
 # Alvorada Cinzenta
 
+Perfis: mascotes aparecem inteiros no chão, com proporção e tamanho por espécie;
+montarias mantêm o porte próprio. Corrigido o estilo do nome que deslocava a arte
+do animal para fora do cenário. Visitas continuam somente de consulta.
+
 VTT: **Configurações e ajuda → Ajuda → Rolagens personalizadas** explica fórmulas,
 modificadores e ordem de resolução; o lançador e o chat aceitam a mesma sintaxe.
 **Chat → Combate** controla o carrossel de iniciativa. Clique no segundo token

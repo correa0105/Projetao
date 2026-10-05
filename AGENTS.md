@@ -62,6 +62,11 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Correção de perfis (05/10): o estilo das etiquetas não pode atingir `.pet-art`.
+Mascotes na visita usam viewport/proporção e largura própria por espécie/aparência;
+montarias usam escala do catálogo, imagem proporcional e apoio no chão do cenário.
+Preservar as artes/clipPaths aprovados e o caráter somente consulta da visita.
+
 Direção final de 05/10: atacante amarelo e alvo vermelho por clique, ataque/dano/
 vantagem/descarte na barra compacta sem modal. Seta sinalizadora salta três vezes;
 quando usada pelo mestre sincroniza as câmeras (064), mantendo a visão privada.

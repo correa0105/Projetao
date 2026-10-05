@@ -28,7 +28,8 @@ import { PortraitCabinet } from './PortraitFrames';
 import { CardCollection } from './CharacterCards';
 import { PetArt } from './PetShop';
 import { pets } from '../shared/pets';
-import { ownedMountImage, type OwnedMount } from '../shared/mounts';
+import { mounts, ownedMountImage, type OwnedMount } from '../shared/mounts';
+import { petArtwork } from './pet-art';
 import { HallOfFame, visitProfile } from './HallOfFame';
 import type { deriveSheet } from '../shared/character-sheet';
 import type { ShelfConfig, AchievementDefinition } from '../shared/achievements';
@@ -498,6 +499,12 @@ export function Profiles({ user }: { user: User }) {
                     {companion && (
                       <button
                         className="public-camp-mount"
+                        style={
+                          {
+                            '--mount-scale':
+                              mounts.find((m) => m.id === companion.mount_id)?.scale || 1,
+                          } as CSSProperties
+                        }
                         onClick={() => setCompanion(null)}
                         title="Ocultar montaria nesta visita"
                       >
@@ -526,9 +533,18 @@ export function Profiles({ user }: { user: User }) {
                       ))}
                     </div>
                     {displayPet && species && (
-                      <div className="public-camp-pet">
+                      <div
+                        className="public-camp-pet"
+                        style={
+                          {
+                            '--companion-width': `${petArtwork(species.id, displayPet.appearance).width}px`,
+                            '--companion-proportion':
+                              petArtwork(species.id, displayPet.appearance).width / 218,
+                          } as CSSProperties
+                        }
+                      >
                         <PetArt pet={species} appearance={displayPet.appearance} />
-                        <span>{displayPet.name}</span>
+                        <span title={displayPet.name}>{displayPet.name}</span>
                       </div>
                     )}
                   </div>

@@ -168,6 +168,12 @@ Ficha é consulta; não oferece gasto de ouro, edição de atributos, compra, up
 alteração de inventário ou recursos da conta visitada. Não são retornados e-mail,
 saldo, experiência privada, inventário ou históricos de compras.
 
+Animais mantêm a proporção original: SVG usa o viewport aprovado de cada aparência,
+tamanho relativo vem da espécie e montaria usa sua escala do catálogo. Etiqueta
+do nome é separada da arte para não deslocar/cortar o mascote; animais ficam no chão
+com espaço para o nome também no celular. Smoke verifica contenção e proporções
+em 1880/1440/768/390/320, incluindo troca entre cão/cavalo e sapo/pônei.
+
 Conquistas continua sendo a página original. Quatro molduras antigas distintas,
 duas de cada lado da estante, selecionam o personagem e ganham borda dourada ao
 passar o mouse/focar. Contas continuam limitadas a dois personagens: os demais
@@ -264,12 +270,12 @@ sem substituir persistência por localStorage. Player recebe apenas cena ativa,
 tokens visíveis, ficha própria e handouts públicos; notas do mestre e arquivos não
 referenciados na visão pública são filtrados no servidor.
 
-Esta entrega é uma mesa funcional integrada. Não é a implementação completa do Roll20:
-sem voz/vídeo, WebSocket, efeitos de partículas, automação completa de combate/magias,
-grades isométricas, pacotes binários de campanha ou iluminação 3D. Névoa manual usa
-círculos de revelação; ocultar remove círculos que intersectam o pincel. Música tem
+Esta entrega é uma mesa funcional integrada, sem voz/vídeo, WebSocket,
+automação completa de combate/magias, grades isométricas, pacotes binários de
+campanha ou iluminação 3D. Névoa manual usa pincel, áreas e polígonos. Música tem
 estado compartilhado, sem alinhamento preciso do instante de reprodução. O sinalizador
-é local. Atributos/rolagens podem ser usados manualmente para todos os conteúdos.
+sincroniza as câmeras quando usado pelo mestre. Atributos/rolagens podem ser usados
+manualmente para todos os conteúdos.
 Totais de slots têm nove círculos configuráveis pelo mestre; progressão automática
 de todos os níveis/classes ainda depende das regras futuras do site. O modo de
 visão é uma aproximação visual 2D; não automatiza todos os efeitos de combate.
