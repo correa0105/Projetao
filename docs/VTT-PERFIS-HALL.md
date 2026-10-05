@@ -282,6 +282,34 @@ visão é uma aproximação visual 2D; não automatiza todos os efeitos de comba
 
 ## Compêndio e fontes
 
+Fichas de monstros usam seções distintas de Características, Ações, Ações bônus,
+Reações e Ações lendárias/de covil, quando presentes. Nomes de habilidades ficam
+em subtítulos separados do texto; continuações são preservadas. Fichas → Abrir
+folha completa abre duas colunas com estatísticas/defesas à esquerda e ações à
+direita, empilhadas no celular. Ficha e Anotações usam abas próprias. CA/PV e
+atributos mostram os valores atuais da sessão. O mestre arrasta Fixar para um
+espaço da barra, ou clica para adicionar; Usar ataque fecha a folha e abre os
+controles compactos existentes. Rolagens seguem o servidor e permissões vigentes.
+
+O mestre também arrasta monstros da lista ou da galeria de arte para o mapa:
+token, retrato e ficha completos no ponto solto, respeitando zoom, pan, grade
+quadrada/hexagonal e bordas. Biblioteca permanece aberta para trazer outros.
+Prévia/jogador/espectador não habilitam o arraste. Apenas IDs de entradas atuais
+são aceitos pelo navegador; persistência continua na atualização autenticada.
+
+`shared/vtt-compendium.ts` normaliza tags e estrutura do texto. Corrige o antigo
+uso de XPHB como condição/PV e conserva nomes de exibição. O importador inclui
+salvaguardas, perícias, imunidades, sentidos e idiomas. `legacyDetails` identifica
+tokens intactos do catálogo antigo para melhorar apenas a exibição: texto editado
+não é substituído, regras numéricas não mudam e atalhos continuam resolvidos pelo
+texto real do token. Nenhuma migration ou escrita em mesas salvas é necessária.
+
+Verificação deste refino: 23 testes de API isolados, 16 de dados/física/fórmulas/
+compêndio e smoke de navegador com arraste nativo sob zoom em grade hexagonal,
+ficha completa, Fixar sobre a janela e Usar ataque. Folha longa conferida em
+1440/390/320 px sem transbordamento; fluxo completo mantém permissões, iniciativa,
+efeitos, HP, consumíveis, perfis e layouts 1440/768/390/320. Capturas em test-results.
+
 330 monstros e 339 magias do **SRD 5.2.1 (regras 2024 / D&D 5.5)**, em inglês,
 normalizados pelo script `scripts/import-vtt-srd.mjs` a partir de registros
 `srd52` do formato 5etools. Não inclui ilustrações nem conteúdo fechado de livros.

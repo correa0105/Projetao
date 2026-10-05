@@ -4,6 +4,7 @@ import {
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
+  type DragEvent as ReactDragEvent,
 } from 'react';
 import {
   MousePointer2,
@@ -88,6 +89,7 @@ import type { AttackRequest } from '../shared/vtt-attack';
 import { vttUpdateMessage } from '../shared/vtt-protocol';
 import { pingDuration, type VttPing } from './vtt-ping';
 import { VttSheet } from './VttSheet';
+import { VttMonsterSheet, VttMonsterStatblock, type MonsterProfile } from './VttMonsterSheet';
 import { VttDice } from './VttDice';
 import { VttToolGroup } from './VttToolGroup';
 import { VttHotbar, ActionShortcut } from './VttHotbar';
@@ -95,7 +97,8 @@ import { VttEffects } from './VttEffects';
 import { VttRollHelp } from './VttRollHelp';
 import { useVttCombat, VttTurnCarousel, VttCombatPanel } from './VttCombat';
 import { effectEnds, type EffectPreset } from '../shared/vtt-effects';
-import { monsterActions } from '../shared/vtt-monster-actions';
+import type { MonsterAction } from '../shared/vtt-monster-actions';
+import { compendiumText, monsterDetails } from '../shared/vtt-compendium';
 import { monsterArt } from '../shared/vtt-monster-art';
 import { hpCommand } from '../shared/vtt-hp';
 import { VttHpControl } from './VttHpControl';
@@ -149,7 +152,11 @@ type Entry = {
   time?: string;
   duration?: string;
   components?: string;
+  speed?: string;
+  legacyDetails?: string;
+  information?: { label: string; value: string }[];
 };
+const monsterMime = 'application/x-alvorada-monster';
 const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
   { id: 'chat', name: 'Chat', icon: MessageSquare },
   { id: 'art', name: 'Biblioteca de arte', icon: Image },
@@ -185,14 +192,7 @@ function download(name: string, bytes: Blob) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 function tagText(value: unknown): string {
-  if (typeof value === 'string')
-    return value.replace(/\{@\w+(?: ([^}]*))?\}/g, (_, content = '') => content.split('|')[0]);
-  if (Array.isArray(value)) return value.map(tagText).join('\n');
-  if (value && typeof value === 'object') {
-    const o = value as Record<string, unknown>;
-    return [o.name, o.entries, o.items, o.entry].filter(Boolean).map(tagText).join('\n');
-  }
-  return '';
+  return compendiumText(value);
 }
 function DiceIcon({ sides }: { sides: number }) {
   const path =
@@ -1427,15 +1427,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setSelection([t.id]);
     setTab('token');
   }
-  function addMonster(e: Entry) {
-    if (!scene || !gm) return;
+  function addMonster(e: Entry, at?: Point, keepLibrary = false) {
+    if (!scene || !gm || preview) return;
     const t = newToken(crypto.randomUUID(), scene);
     const size: Record<string, number> = { T: 0.5, S: 1, M: 1, L: 2, H: 3, G: 4 };
     Object.assign(t, {
       name: e.name,
       image: monsterArt(e.id, e.name),
-      x: camera.x,
-      y: camera.y,
       width: scene.grid.size * (size[e.size || 'M'] || 1),
       height: scene.grid.size * (size[e.size || 'M'] || 1),
       hp: e.hp || 10,
@@ -1448,15 +1446,75 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         class: '',
         level: 0,
         stats: e.stats || [10, 10, 10, 10, 10, 10],
-        speed: 30,
+        speed: Number(e.speed?.match(/\bwalk:\s*(\d+)/)?.[1] ?? 30),
         biography: '',
         details: e.details,
       },
     });
+    const origin = at ? snapPoint(at, scene.grid) : camera;
+    t.x = Math.max(
+      Math.min(t.width / 2, scene.width / 2),
+      Math.min(scene.width - t.width / 2, origin.x),
+    );
+    t.y = Math.max(
+      Math.min(t.height / 2, scene.height / 2),
+      Math.min(scene.height - t.height / 2, origin.y),
+    );
     editScene((s) => s.tokens.push(t));
     setSelection([t.id]);
-    setTab('sheet');
+    setAttackTargetId(null);
+    if (!keepLibrary) setTab('sheet');
     setLayer('tokens');
+  }
+  function dragMonster(event: ReactDragEvent<HTMLElement>, id: string) {
+    if (!gm || preview) {
+      event.preventDefault();
+      return;
+    }
+    event.dataTransfer.setData(monsterMime, id);
+    event.dataTransfer.effectAllowed = 'copy';
+  }
+  function entryProfile(e: Entry): MonsterProfile {
+    return {
+      ...e,
+      hp: e.hp ?? 10,
+      ac: e.ac ?? 10,
+      stats: e.stats ?? [10, 10, 10, 10, 10, 10],
+      image: monsterArt(e.id, e.name),
+    };
+  }
+  function tokenProfile(t: VttToken): MonsterProfile {
+    const source = catalog.monsters.find(
+      (e) =>
+        (e.name === t.name || monsterArt(e.id, e.name) === t.image) &&
+        (e.details === t.sheet?.details || e.legacyDetails === t.sheet?.details),
+    );
+    return {
+      ...(source ? entryProfile(source) : {}),
+      name: t.name,
+      image: t.image,
+      hp: t.hp,
+      maxHp: t.maxHp,
+      ac: t.ac,
+      stats: t.sheet?.stats || [10, 10, 10, 10, 10, 10],
+      source: t.sheet?.source,
+      type: t.sheet?.race,
+      details: source?.details ?? t.sheet?.details ?? '',
+      actionDetails: t.sheet?.details,
+      speed: source?.speed || `${t.sheet?.speed ?? 30} ft`,
+    };
+  }
+  function useMonsterAction(t: VttToken, action: MonsterAction) {
+    if (!gm || preview) return;
+    setSheetId(null);
+    if (action.attack)
+      beginAttack({
+        actorId: t.id,
+        name: t.name + ' · ' + action.name,
+        attack: action.attack,
+        damage: action.damage,
+      });
+    else void act(() => send(action.damage.join('+'), t.name + ' · ' + action.name));
   }
   async function exportImage() {
     if (!scene) return;
@@ -1509,15 +1567,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           id: crypto.randomUUID(),
           kind,
           name: String(e.name).slice(0, 150),
-          details: tagText([
-            e.trait,
-            e.action,
-            e.bonus,
-            e.reaction,
-            e.legendary,
-            e.entries,
-            e.entriesHigherLevel,
-          ]).slice(0, 40000),
+          details: (kind === 'monster'
+            ? monsterDetails(e)
+            : tagText([e.entries, e.entriesHigherLevel])
+          ).slice(0, 40000),
           hp: Math.max(1, Number(e.hp?.average) || 10),
           ac: Number(typeof e.ac?.[0] === 'number' ? e.ac[0] : e.ac?.[0]?.ac) || 10,
           stats: [e.str, e.dex, e.con, e.int, e.wis, e.cha].map((v) => Number(v) || 10),
@@ -1539,7 +1592,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   function openSheet(t = token) {
     if (spectator) return;
-    if (t?.characterId) setSheetId(t.id);
+    if (t && (t.characterId || t.sheet)) setSheetId(t.id);
     else {
       setTab('sheet');
       setPanelOpen(true);
@@ -1997,6 +2050,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onPointerDown={pointerDown}
             onPointerMove={pointerMove}
             onPointerUp={pointerUp}
+            onDragOver={(e) => {
+              if (gm && !preview && e.dataTransfer.types.includes(monsterMime)) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'copy';
+              }
+            }}
+            onDrop={(e) => {
+              if (!gm || preview || !e.dataTransfer.types.includes(monsterMime)) return;
+              e.preventDefault();
+              const id = e.dataTransfer.getData(monsterMime);
+              const monster = [
+                ...catalog.monsters,
+                ...doc.custom.filter((e) => e.kind === 'monster'),
+              ].find((e) => e.id === id);
+              if (monster) addMonster(monster, point(e), true);
+            }}
             data-attacker-id={token?.layer === 'tokens' ? token.id : undefined}
             data-camera-x={camera.x}
             data-camera-y={camera.y}
@@ -3047,8 +3116,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           {catalog.monsters
                             .filter((e) => e.name.toLowerCase().includes(query.toLowerCase()))
                             .map((e) => (
-                              <div className="vtt-asset" key={e.id}>
-                                <img loading="lazy" src={monsterArt(e.id, e.name)} alt={e.name} />
+                              <div
+                                className="vtt-asset"
+                                key={e.id}
+                                draggable={gm && !preview}
+                                onDragStart={(event) => dragMonster(event, e.id)}
+                                title={gm ? 'Arraste para a mesa' : ''}
+                              >
+                                <img
+                                  loading="lazy"
+                                  src={monsterArt(e.id, e.name)}
+                                  alt={e.name}
+                                  draggable={false}
+                                />
                                 <span>{e.name}</span>
                                 {gm && (
                                   <button onClick={() => addMonster(e)}>Adicionar token</button>
@@ -3151,20 +3231,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             <ChevronLeft size={14} />
                             Voltar à lista
                           </button>
-                          <h3>{entry.name}</h3>
-                          {library === 'monsters' && monsterArt(entry.id, entry.name) && (
-                            <img
-                              className="vtt-monster-portrait"
-                              src={monsterArt(entry.id, entry.name)}
-                              alt={entry.name}
-                            />
+                          {library === 'spells' && <h3>{entry.name}</h3>}
+                          {library === 'spells' && (
+                            <p>
+                              {entry.source || 'Importação da mesa'} ·{' '}
+                              {`Nível ${entry.level} · ${entry.school || ''}`}
+                            </p>
                           )}
-                          <p>
-                            {entry.source || 'Importação da mesa'} ·{' '}
-                            {library === 'monsters'
-                              ? `ND ${entry.cr} · CA ${entry.ac} · PV ${entry.hp}`
-                              : `Nível ${entry.level} · ${entry.school || ''}`}
-                          </p>
                           {entry.range && (
                             <p>
                               Alcance: {entry.range} · {entry.time}
@@ -3175,7 +3248,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               Duração: {entry.duration} · {entry.components}
                             </p>
                           )}
-                          {entry.stats && (
+                          {library === 'spells' && entry.stats && (
                             <div className="vtt-stats">
                               {entry.stats.map((v, i) => (
                                 <span key={i}>
@@ -3185,7 +3258,26 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               ))}
                             </div>
                           )}
-                          <pre>{entry.details}</pre>
+                          {library === 'monsters' ? (
+                            <VttMonsterStatblock
+                              compact
+                              monster={{
+                                ...entryProfile(entry),
+                                actionDetails:
+                                  token?.name === entry.name ? token.sheet?.details : undefined,
+                              }}
+                              tokenId={token?.name === entry.name ? token.id : undefined}
+                              gm={gm && !preview}
+                              roll={send}
+                              useAction={
+                                token?.name === entry.name
+                                  ? (action) => useMonsterAction(token, action)
+                                  : undefined
+                              }
+                            />
+                          ) : (
+                            <pre>{entry.details}</pre>
+                          )}
                           {gm && library === 'monsters' && (
                             <button className="vtt-gold" onClick={() => addMonster(entry)}>
                               Adicionar ao tabuleiro
@@ -3202,6 +3294,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           <p className="vtt-muted">
                             {catalog[library].length} entradas SRD 2024 · textos em inglês
                           </p>
+                          {gm && library === 'monsters' && (
+                            <p className="vtt-muted">Arraste um monstro para colocá-lo na mesa.</p>
+                          )}
                           <div className="vtt-compendium">
                             {[
                               ...catalog[library],
@@ -3215,13 +3310,24 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                                   .includes(query.toLowerCase()),
                               )
                               .map((e) => (
-                                <button key={e.id} onClick={() => setEntry(e)}>
+                                <button
+                                  key={e.id}
+                                  onClick={() => setEntry(e)}
+                                  draggable={library === 'monsters' && gm && !preview}
+                                  onDragStart={(event) => dragMonster(event, e.id)}
+                                  title={
+                                    library === 'monsters' && gm
+                                      ? 'Arraste para a mesa ou clique para ver a ficha'
+                                      : undefined
+                                  }
+                                >
                                   {library === 'monsters' && monsterArt(e.id, e.name) && (
                                     <img
                                       className="vtt-monster-thumbnail"
                                       loading="lazy"
                                       src={monsterArt(e.id, e.name)}
                                       alt=""
+                                      draggable={false}
                                     />
                                   )}
                                   <span>{e.name}</span>
@@ -3295,64 +3401,65 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   ))}
                   {token && (
                     <>
-                      <h3>{token.name}</h3>
+                      {(token.characterId || !token.sheet) && <h3>{token.name}</h3>}
                       {token.characterId && (
                         <button className="vtt-gold" onClick={() => openSheet()}>
                           Abrir folha completa
                         </button>
                       )}
-                      <p>
-                        PV {token.hp}/{token.maxHp} · CA {token.ac}
-                      </p>
+                      {(token.characterId || !token.sheet) && (
+                        <p>
+                          PV {token.hp}/{token.maxHp} · CA {token.ac}
+                        </p>
+                      )}
                       {token.sheet ? (
                         <>
-                          <p>
-                            {token.sheet.race} · {token.sheet.class} · Nível {token.sheet.level}
-                          </p>
-                          <div className="vtt-stats">
-                            {token.sheet.stats.map((v, i) => (
-                              <button
-                                key={i}
-                                title={`Rolar ${['Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'][i]}`}
-                                onClick={() =>
-                                  void act(() =>
-                                    send(
-                                      `1d20${Math.floor((v - 10) / 2) >= 0 ? '+' : ''}${Math.floor((v - 10) / 2)}`,
-                                      `${token.name} · ${['Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'][i]}`,
-                                    ),
-                                  )
-                                }
-                              >
-                                {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
-                                <b>{v}</b>
-                              </button>
-                            ))}
-                          </div>
-                          <p>Deslocamento: {token.sheet.speed} ft</p>
-                          <p>{token.sheet.biography}</p>
-                          {gm &&
-                            !token.characterId &&
-                            monsterActions(token.sheet.details).map((a) => (
-                              <div className="vtt-monster-action" key={a.id}>
-                                <strong>{a.name}</strong>
-                                <ActionShortcut
-                                  action={{
-                                    kind: 'monster',
-                                    tokenId: token.id,
-                                    sourceId: a.id,
-                                    label: token.name + ' · ' + a.name,
-                                  }}
-                                />
-                                <small>
-                                  {a.attack ? 'Ataque ' + a.attack : 'Salvaguarda'}
-                                  {a.damage.length ? ' · Dano ' + a.damage.join(' + ') : ''}
-                                </small>
+                          {token.characterId ? (
+                            <>
+                              <p>
+                                {token.sheet.race} · {token.sheet.class} · Nível {token.sheet.level}
+                              </p>
+                              <div className="vtt-stats">
+                                {token.sheet.stats.map((v, i) => (
+                                  <button
+                                    key={i}
+                                    title={`Rolar ${['Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'][i]}`}
+                                    onClick={() =>
+                                      void act(() =>
+                                        send(
+                                          `1d20${Math.floor((v - 10) / 2) >= 0 ? '+' : ''}${Math.floor((v - 10) / 2)}`,
+                                          `${token.name} · ${['Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'][i]}`,
+                                        ),
+                                      )
+                                    }
+                                  >
+                                    {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
+                                    <b>{v}</b>
+                                  </button>
+                                ))}
                               </div>
-                            ))}
-                          <details>
-                            <summary>Ficha completa e ações</summary>
-                            <pre className="vtt-sheet-details">{token.sheet.details}</pre>
-                          </details>
+                              <p>Deslocamento: {token.sheet.speed} ft</p>
+                              <p>{token.sheet.biography}</p>
+                              <details>
+                                <summary>Ficha completa e ações</summary>
+                                <pre className="vtt-sheet-details">{token.sheet.details}</pre>
+                              </details>
+                            </>
+                          ) : (
+                            <>
+                              <button className="vtt-gold" onClick={() => openSheet()}>
+                                Abrir folha completa
+                              </button>
+                              <VttMonsterStatblock
+                                compact
+                                monster={tokenProfile(token)}
+                                tokenId={token.id}
+                                gm={gm && !preview}
+                                roll={send}
+                                useAction={(action) => useMonsterAction(token, action)}
+                              />
+                            </>
+                          )}
                           <button
                             onClick={() =>
                               download(
@@ -3953,17 +4060,35 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           </aside>
         )}
       </div>
-      {!spectator && sheetId && scene.tokens.find((t) => t.id === sheetId) && (
-        <VttSheet
-          roomId={state.id}
-          token={scene.tokens.find((t) => t.id === sheetId)!}
-          close={() => setSheetId(null)}
-          roll={send}
-          onAttack={beginAttack}
-          refresh={refreshRoom}
-          shareSpell={shareSpell}
-        />
-      )}
+      {!spectator &&
+        sheetId &&
+        scene.tokens.find((t) => t.id === sheetId) &&
+        (scene.tokens.find((t) => t.id === sheetId)!.characterId ? (
+          <VttSheet
+            roomId={state.id}
+            token={scene.tokens.find((t) => t.id === sheetId)!}
+            close={() => setSheetId(null)}
+            roll={send}
+            onAttack={beginAttack}
+            refresh={refreshRoom}
+            shareSpell={shareSpell}
+          />
+        ) : (
+          <VttMonsterSheet
+            monster={tokenProfile(scene.tokens.find((t) => t.id === sheetId)!)}
+            tokenId={sheetId}
+            gm={gm && !preview}
+            biography={scene.tokens.find((t) => t.id === sheetId)!.sheet?.biography || ''}
+            close={() => setSheetId(null)}
+            roll={send}
+            useAction={(action) =>
+              useMonsterAction(
+                scene.tokens.find((t) => t.id === sheetId)!,
+                action,
+              )
+            }
+          />
+        ))}
       {gm && mapsOpen && (
         <MapLibrary
           doc={doc}

@@ -1,5 +1,12 @@
 # Alvorada Cinzenta
 
+VTT: arraste um monstro da Biblioteca ou da Biblioteca de arte para o ponto
+desejado do mapa. A ficha lateral separa características, ações e atributos;
+**Fichas → Abrir folha completa** mostra estatísticas à esquerda e ações à direita.
+O mestre pode arrastar **Fixar** de cada ataque para a barra rápida, ou usar o
+ataque pela própria ficha. Fichas/atalhos de mesas anteriores são preservados.
+O tentáculo do lago na visão da Ginna agora tem a base submersa, sem ponta cortada.
+
 Perfis: mascotes aparecem inteiros no chão, com proporção e tamanho por espécie;
 montarias mantêm o porte próprio. Corrigido o estilo do nome que deslocava a arte
 do animal para fora do cenário. Visitas continuam somente de consulta.

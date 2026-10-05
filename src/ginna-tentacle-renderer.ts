@@ -42,6 +42,10 @@ function nearCenter(t: number, constriction: number, age: number, out: THREE.Vec
 }
 
 function farCenter(t: number, _tight: number, age: number, out: THREE.Vector3) {
+  // Continue the same curve under the surface. Starting an open tube exactly
+  // at the waterline exposes its diagonal end instead of a submerged root.
+  // The original lake crossing and all of the above-water path stay in place.
+  t = (t - 0.105) / 0.895;
   const v = 1 - t;
   out.set(
     v ** 3 * LAKE.x + 3 * v * v * t * 1150 + 3 * v * t * t * 790 + t ** 3 * 1080,
@@ -343,51 +347,62 @@ export function createGinnaTentacleRenderer(host: HTMLElement, reduced = false) 
   skin.customProgramCacheKey = () => 'ginna-charcoal-organic-skin-v3';
   const lakeAge = { value: 0 };
   const distantSkin = skin.clone();
-  distantSkin.transparent = true;
-  distantSkin.onBeforeCompile = (shader, renderer) => {
-    skin.onBeforeCompile(shader, renderer);
-    shader.uniforms.ginnaLakeAge = lakeAge;
-    shader.vertexShader = shader.vertexShader
-      .replace(
-        '#include <common>',
-        '#include <common>\nvarying vec2 vGinnaFarPosition; uniform float ginnaLakeAge;',
-      )
-      .replace(
-        '#include <begin_vertex>',
-        '#include <begin_vertex>\nvGinnaFarPosition=position.xy;',
-      );
-    shader.fragmentShader = shader.fragmentShader
-      .replace(
-        '#include <common>',
-        '#include <common>\nvarying vec2 vGinnaFarPosition; uniform float ginnaLakeAge;',
-      )
-      .replace(
-        '#include <clipping_planes_fragment>',
-        `#include <clipping_planes_fragment>
+  distantSkin.onBeforeCompile = skin.onBeforeCompile;
+  const clipAtLake = (material: THREE.MeshPhysicalMaterial, cacheKey: string) => {
+    material.transparent = true;
+    const surfaceShader = material.onBeforeCompile;
+    material.onBeforeCompile = (shader, renderer) => {
+      surfaceShader.call(material, shader, renderer);
+      shader.uniforms.ginnaLakeAge = lakeAge;
+      shader.vertexShader = shader.vertexShader
+        .replace(
+          '#include <common>',
+          '#include <common>\nvarying vec2 vGinnaFarPosition; uniform float ginnaLakeAge;',
+        )
+        .replace(
+          '#include <project_vertex>',
+          `#include <project_vertex>
+        #ifdef USE_INSTANCING
+          vGinnaFarPosition=(instanceMatrix*vec4(transformed,1.0)).xy;
+        #else
+          vGinnaFarPosition=transformed.xy;
+        #endif`,
+        );
+      shader.fragmentShader = shader.fragmentShader
+        .replace(
+          '#include <common>',
+          '#include <common>\nvarying vec2 vGinnaFarPosition; uniform float ginnaLakeAge;',
+        )
+        .replace(
+          '#include <clipping_planes_fragment>',
+          `#include <clipping_planes_fragment>
         float waterline=${941 - LAKE.y}.0+sin((vGinnaFarPosition.x-${LAKE.x}.0)*0.38+ginnaLakeAge*3.0)*0.55;
         if(vGinnaFarPosition.y<waterline-1.2) discard;
         diffuseColor.a*=smoothstep(waterline-1.2,waterline+7.5,vGinnaFarPosition.y);`,
-      )
-      .replace(
-        '#include <color_fragment>',
-        `#include <color_fragment>
+        )
+        .replace(
+          '#include <color_fragment>',
+          `#include <color_fragment>
         float wetRoot=1.0-smoothstep(${941 - LAKE.y}.0,${941 - LAKE.y + 34}.0,vGinnaFarPosition.y);
         diffuseColor.rgb*=1.0-wetRoot*0.19;`,
-      )
-      .replace(
-        '#include <roughnessmap_fragment>',
-        `#include <roughnessmap_fragment>
+        )
+        .replace(
+          '#include <roughnessmap_fragment>',
+          `#include <roughnessmap_fragment>
         diffuseColor.rgb=mix(diffuseColor.rgb*(1.0-wetRoot*0.16),vec3(0.035,0.037,0.038),0.13+wetRoot*0.16);
         roughnessFactor=mix(roughnessFactor,0.43,wetRoot*0.8);`,
-      );
+        );
+    };
+    material.customProgramCacheKey = () => cacheKey;
   };
-  distantSkin.customProgramCacheKey = () => 'ginna-distant-lake-contact-v3';
+  clipAtLake(distantSkin, 'ginna-distant-lake-contact-v4');
   distantSkin.color.set('#818581');
   distantSkin.bumpScale = 0.2;
   const near = makeTube(nearCenter, 0.37, skin);
   const far = makeTube(farCenter, 23, distantSkin, 128, 28);
   const cups = makeCups(near, texture);
   const farCups = makeCups(far, texture);
+  clipAtLake(farCups.mesh.material, 'ginna-distant-cups-lake-contact-v5');
   nearScene.add(near.mesh, cups.mesh);
   const lakeEffects = createGinnaLakeEffects(far.mesh.geometry, texture, LAKE);
   farGroup.add(far.mesh, farCups.mesh, lakeEffects.group);

@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { createRequire } from 'node:module';
+import { snapPoint } from '../shared/vtt.js';
 const require = createRequire(import.meta.url);
 const { build } = createRequire(require.resolve('tsup'))('esbuild');
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
@@ -382,10 +383,36 @@ try {
   await expect(panel).toContainText('Parede 1');
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
   await panel.getByRole('button', { name: 'Monstros', exact: true }).click();
+  await panel.getByLabel('Buscar na biblioteca', { exact: true }).fill('Aboleth');
+  await panel.locator('.vtt-compendium button').first().click();
+  await expect(panel.locator('.vtt-monster-section h3')).toHaveText([
+    'Características',
+    'Ações',
+    'Ações lendárias',
+  ]);
+  await expect(panel.locator('.vtt-monster-sheet')).not.toContainText('XPHB');
+  await page.screenshot({ path: 'test-results/vtt-monster-aboleth-library.png' });
+  await panel.getByRole('button', { name: 'Voltar à lista', exact: true }).click();
   await panel.getByLabel('Buscar na biblioteca', { exact: true }).fill('Goblin');
   await expect(panel.locator('.vtt-compendium button').first()).toBeVisible();
-  await panel.locator('.vtt-compendium button').first().click();
-  await panel.getByRole('button', { name: 'Adicionar ao tabuleiro', exact: true }).click();
+  const dropped = page.locator('canvas[aria-label="Tabuleiro da mesa"]');
+  const dropBounds = (await dropped.boundingBox())!;
+  await dropped.hover({ position: { x: dropBounds.width / 2, y: dropBounds.height / 2 } });
+  const previousZoom = Number(await dropped.getAttribute('data-camera-zoom'));
+  await page.mouse.wheel(0, -150);
+  await expect
+    .poll(async () => Number(await dropped.getAttribute('data-camera-zoom')))
+    .toBeGreaterThan(previousZoom);
+  const beforeDrop = {
+    x: Number(await dropped.getAttribute('data-camera-x')),
+    y: Number(await dropped.getAttribute('data-camera-y')),
+    zoom: Number(await dropped.getAttribute('data-camera-zoom')),
+  };
+  await panel
+    .locator('.vtt-compendium button')
+    .first()
+    .dragTo(dropped, { targetPosition: { x: dropBounds.width * 0.3, y: dropBounds.height * 0.3 } });
+  await expect(panel.locator('.vtt-compendium')).toBeVisible();
   await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
   await expect
     .poll(async () => {
@@ -396,6 +423,39 @@ try {
         .find((t: any) => t.name === 'Goblin Boss')?.image;
     })
     .toBe('/vtt/monsters/monster-goblin-boss.webp');
+  {
+    const id = (await (await ctx.request.get(origin + '/api/vtt')).json()).rooms[0].id;
+    const state = await (await ctx.request.get(origin + '/api/vtt/rooms/' + id)).json();
+    const scene = state.document.scenes.find((s: any) => s.id === state.document.activeScene);
+    const goblins = scene.tokens.filter((t: any) => t.name === 'Goblin Boss');
+    expect(goblins).toHaveLength(1);
+    const expected = snapPoint(
+      {
+        x: beforeDrop.x - (dropBounds.width * 0.2) / beforeDrop.zoom,
+        y: beforeDrop.y - (dropBounds.height * 0.2) / beforeDrop.zoom,
+      },
+      scene.grid,
+    );
+    expect(goblins[0].x).toBeCloseTo(expected.x, 0);
+    expect(goblins[0].y).toBeCloseTo(expected.y, 0);
+  }
+  await page.getByRole('button', { name: 'Fichas', exact: true }).click();
+  await panel.getByRole('button', { name: 'Abrir folha completa', exact: true }).click();
+  const monsterSheet = page.getByRole('dialog', { name: 'Ficha · Goblin Boss', exact: true });
+  await expect(monsterSheet).toBeVisible();
+  await expect(monsterSheet.locator('.vtt-monster-abilities button')).toHaveCount(6);
+  await expect(monsterSheet.locator('.vtt-monster-section h3')).toContainText(['Ações']);
+  const monsterPin = monsterSheet.getByRole('button', { name: /^Fixar / }).first();
+  await monsterPin.dragTo(page.locator('.vtt-hotbar-slot').first());
+  await expect(page.locator('.vtt-hotbar-slot').first()).not.toHaveAccessibleName(/vazio/);
+  await page.screenshot({ path: 'test-results/vtt-monster-sheet-desktop.png' });
+  await monsterSheet
+    .getByRole('button', { name: /^Usar / })
+    .first()
+    .click();
+  await expect(monsterSheet).not.toBeVisible();
+  await expect(page.locator('.vtt-attack-inline')).toBeVisible();
+  await page.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
   expect((await ctx.request.get(origin + '/vtt/monsters/monster-goblin-boss.webp')).status()).toBe(
     200,
   );
@@ -423,7 +483,10 @@ try {
   expect(
     (await page.getByRole('button', { name: 'Camadas', exact: true }).boundingBox())!.x,
   ).toBeLessThan(80);
-  const monsterShortcut = panel.locator('.vtt-monster-action').first().getByRole('button');
+  const monsterShortcut = panel
+    .locator('.vtt-monster-action')
+    .first()
+    .getByRole('button', { name: /^Fixar / });
   await expect(monsterShortcut).toBeVisible();
   await monsterShortcut.dragTo(page.locator('.vtt-hotbar-slot').first());
   await expect(page.locator('.vtt-hotbar-slot').first()).not.toHaveAccessibleName(/vazio/);

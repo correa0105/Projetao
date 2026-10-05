@@ -62,6 +62,14 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Refino posterior de 05/10: ficha de monstro estruturada com características,
+ações e atributos, folha completa em duas colunas e ataques arrastáveis para
+a barra existente. Arraste do catálogo para mapa respeita câmera/grade/limites,
+apenas mestre fora da prévia. Preservar texto editado, valores de sessão e IDs
+de ações de fichas antigas; enriquecimento do catálogo é somente exibição.
+Tentáculo do lago inicia abaixo da água, com recorte também nas ventosas;
+preservar o percurso exposto, coreografia, som e posição da água.
+
 Correção de perfis (05/10): o estilo das etiquetas não pode atingir `.pet-art`.
 Mascotes na visita usam viewport/proporção e largura própria por espécie/aparência;
 montarias usam escala do catálogo, imagem proporcional e apoio no chão do cenário.

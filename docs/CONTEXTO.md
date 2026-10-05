@@ -1,5 +1,34 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Fichas de monstros, arraste e contato do tentáculo (05/10/2026)
+
+Monstros podem ser arrastados da lista da Biblioteca e da galeria de arte direto
+para o mapa. Coordenadas consideram pan/zoom, grade quadrada/hexagonal e limites;
+cria um token completo e mantém a lista aberta. Apenas mestre fora da prévia.
+O payload carrega ID resolvido no catálogo/documento atual, sem objetos externos.
+
+`VttMonsterSheet` organiza a lateral e oferece folha completa com atributos,
+CA/PV, deslocamentos, sentidos, defesas e características à esquerda, ações à
+direita. No celular as colunas empilham. Títulos/subtítulos e parágrafos separados;
+Fixar arrasta ações para a barra existente e Usar ataque abre o controle compacto.
+Parser compartilhado corrige tags que exibiam XPHB no lugar de condições/PV.
+Catálogo conserva 330 monstros/339 magias, regras numéricas e créditos originais.
+Texto legado permanece no catálogo para reconhecer fichas intactas e melhorar
+somente sua exibição; PV/atributos/edições e IDs de atalhos vêm do token salvo.
+Sem migration, reimportação automática ou reescrita de mesas.
+
+Tentáculo distante prolonga a mesma curva abaixo da água. Corpo e ventosas usam
+o mesmo recorte/umidade na linha do lago; a diagonal aberta da base não aparece
+mais acima da superfície. Coreografia, posição, duração e áudio preservados.
+Smoke visual registra 637 poses no PC/567 no celular, folga mínima 0,022,
+zero colisões de ventosas e ausência de erros WebGL. Capturas antes/depois em
+test-results (ignorado). Guia detalhado em STABLE-GINNA.md e VTT-PERFIS-HALL.md.
+TypeScript, build Docker completo, 23 testes isolados de API e 16 de fórmulas/
+física/compêndio passaram. Smoke completo do VTT valida arraste, ficha e atalhos;
+smoke do estábulo confirma retorno, áudio, compras e seis viewports. Comparação
+dos 330 registros confirma zero mudança numérica e nenhum ataque/dano divergente
+do catálogo anterior. Backup local: before-monster-sheets-lake-20261005.dump.
+
 ## Animais nas visitas aos perfis (05/10/2026)
 
 O seletor genérico de etiquetas `.public-camp-pet > span` também atingia o

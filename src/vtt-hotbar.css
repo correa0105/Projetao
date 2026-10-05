@@ -100,26 +100,6 @@
   cursor: grab;
   padding: 4px 7px !important;
 }
-.vtt-monster-action {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin: 7px 0;
-  padding: 9px;
-  border: 1px solid #40424a;
-  background: #0c131a70;
-  border-radius: 5px;
-}
-.vtt-monster-action strong {
-  flex: 1;
-  font-size: 12px;
-}
-.vtt-monster-action small {
-  flex-basis: 100%;
-  color: #b6aea1;
-  font-size: 11px;
-}
 @media (max-width: 600px) {
   .vtt-hotbar {
     bottom: 72px;

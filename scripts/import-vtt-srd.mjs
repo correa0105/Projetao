@@ -1,31 +1,8 @@
 // Import only SRD 5.2 records. Do not import book illustrations or non-SRD entries.
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { compendiumText as text, monsterDetails } from '../shared/vtt-compendium.ts';
 const root = 'https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/';
-const tags = {
-  atk: 'Ataque',
-  atkr: 'Ataque',
-  h: 'Acerto: ',
-  actSave: 'Salvaguarda',
-  actSaveFail: 'Falha: ',
-  actSaveSuccess: 'Sucesso: ',
-  actSaveSuccessOrFail: 'Sucesso ou falha: ',
-  recharge: 'Recarga',
-};
-function text(value) {
-  if (typeof value === 'string')
-    return value
-      .replace(/\{@(\w+)(?: ([^}]*))?\}/g, (_, tag, content = '') =>
-        tags[tag] ? tags[tag] + ' ' + content.split('|')[0] : content.split('|').at(-1) || tag,
-      )
-      .replace(/<[^>]+>/g, '');
-  if (Array.isArray(value)) return value.map(text).filter(Boolean).join('\n');
-  if (value && typeof value === 'object')
-    return [value.name, value.entries, value.items, value.entry, value.rows]
-      .filter(Boolean)
-      .map(text)
-      .join('\n');
-  return '';
-}
+const previous = JSON.parse(await readFile('data/vtt/srd-2024.json', 'utf8'));
 const catalog = {
   version: 'SRD 5.2.1 · D&D 2024',
   license: 'CC BY 4.0',
@@ -55,20 +32,42 @@ for (const [kind, path] of [
         ac: typeof entry.ac[0] === 'number' ? entry.ac[0] : entry.ac[0].ac,
         stats: [entry.str, entry.dex, entry.con, entry.int, entry.wis, entry.cha],
         speed: text(
-          Object.entries(entry.speed).map(
-            ([type, speed]) =>
-              type + ': ' + (typeof speed === 'number' ? speed : speed.number) + ' ft',
-          ),
+          Object.entries(entry.speed).flatMap(([type, speed]) => {
+            const n = typeof speed === 'number' ? speed : speed?.number;
+            return typeof n === 'number'
+              ? [type + ': ' + n + ' ft' + (speed?.condition ? ' · ' + text(speed.condition) : '')]
+              : [];
+          }),
         ),
-        details: [
-          text(entry.trait),
-          text(entry.action),
-          text(entry.bonus),
-          text(entry.reaction),
-          text(entry.legendary),
+        legacyDetails:
+          previous.monsters.find((m) => m.id === id)?.legacyDetails ||
+          previous.monsters.find((m) => m.id === id)?.details,
+        information: [
+          [
+            'Salvaguardas',
+            entry.save &&
+              Object.entries(entry.save)
+                .map(([k, v]) => `${k.toUpperCase()} ${v}`)
+                .join(' · '),
+          ],
+          [
+            'Perícias',
+            entry.skill &&
+              Object.entries(entry.skill)
+                .map(([k, v]) => `${k} ${v}`)
+                .join(' · '),
+          ],
+          ['Vulnerabilidades', text(entry.vulnerable)],
+          ['Resistências', text(entry.resist)],
+          ['Imunidades a dano', text(entry.immune)],
+          ['Imunidades a condições', text(entry.conditionImmune)],
+          ['Sentidos', text(entry.senses)],
+          ['Percepção passiva', entry.passive],
+          ['Idiomas', text(entry.languages)],
         ]
-          .filter(Boolean)
-          .join('\n\n'),
+          .filter(([, v]) => v !== undefined && v !== '' && v !== null)
+          .map(([label, value]) => ({ label, value: String(value) })),
+        details: monsterDetails(entry),
       });
     else
       catalog.spells.push({

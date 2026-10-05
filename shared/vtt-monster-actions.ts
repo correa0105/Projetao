@@ -13,7 +13,7 @@ export function monsterActions(details: string): MonsterAction[] {
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i];
     const hit =
-      line.match(/\bAtaque\s+[a-z, ]+\s+([+-]?\d{1,3})\b/i) ||
+      line.match(/\bAtaque\s+[a-zà-ÿ, ]+\s+([+-]?\d{1,3})\b/i) ||
       line.match(
         /\b(?:Melee|Ranged)(?: or Ranged)?(?: Weapon| Spell)? Attack(?: Roll)?:?\s*([+-]?\d{1,3})\b/i,
       ) ||

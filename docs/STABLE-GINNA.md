@@ -343,3 +343,20 @@ frestas no arredondamento da composição em escalas fracionadas.
 TypeScript, build cliente/servidor e smoke completo do estábulo em PostgreSQL
 descartável também passaram, cobrindo retorno, áudio, compras e seis viewports.
 O fluxo de retorno com tentáculos continua independente da nova entrada.
+
+## Base do tentáculo no lago — 05/10/2026
+
+A curva distante antes começava exatamente na linha da água. A seção aberta
+da malha ficava diagonal e deixava parte da raiz suspensa, como na captura do
+usuário. `farCenter` agora prolonga a mesma curva abaixo da superfície, mantendo
+o ponto de saída e o percurso acima dela. Corpo e ventosas compartilham recorte
+animado, transição de transparência e acabamento molhado junto ao lago. Canvas
+alternativo usa a mesma curva/recorte. Não alterar duração de 5,6 s, posição do
+lago, sons, tremor ou tentáculos próximos por causa desta correção.
+
+`node scripts/smoke-ginna-visuals.mjs`: 637 poses no PC e 567 no celular,
+folga mínima 0,022, zero colisões de ventosas e nenhum erro WebGL. Capturas
+ginna-root-before.png/ginna-root-after.png em test-results (ignorado) mostram
+respectivamente a base diagonal exposta e o contato completo com a água.
+O smoke completo isolado do estábulo também passou, cobrindo o retorno com
+áudio, ownership, compras idempotentes e seis viewports. Build Docker validado.
