@@ -12,6 +12,8 @@ export function usePetAppearanceSound(petId: string, appearance: string, trigger
     context = useRef<AudioContext | null>(null),
     gain = useRef<GainNode | null>(null);
   useEffect(() => {
+    // The raven recording was rejected for its unexpected voice; keep this pet silent.
+    if (petId === 'raven') return;
     let cancelled = false,
       sounded = false,
       pending = false;

@@ -1,5 +1,15 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Voz inesperada do corvo removida (05/10/2026)
+
+Usuário rejeitou a voz estranha ao ouvir o corvo. Reprodução de raven.wav foi
+desativada nas duas aparências da Casa dos mascotes, sem cair no efeito genérico
+de farejar. Seleção/placa/compra e sons dos demais animais continuam. Gravação
+e créditos antigos arquivados; não reativar sem pedido do usuário.
+TypeScript/build e smoke de calendário/mascotes passaram em banco descartável,
+incluindo ausência de reprodução nas duas aparências. Docker local atualizado,
+saúde OK e bundle index-DeHh_Hhy.js / index-BV9BEDFq.css confirmado. Sem migration.
+
 ## Conquistas restauradas, Lore, mascotes e calendário (05/10/2026)
 
 Correção explícita do usuário: voltou a página original **Conquistas**, com

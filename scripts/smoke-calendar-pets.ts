@@ -85,17 +85,17 @@ try {
     .locator('.pet-shop-choices button')
     .filter({ has: page.getByText('Corvo', { exact: true }) })
     .click();
-  await expect
-    .poll(() =>
-      page.evaluate(
-        (index) =>
-          (window as any).__petVoices
-            .slice(index)
-            .map((item: any) => item.source.split('/').at(-1)),
-        before,
-      ),
-    )
-    .toEqual(['raven.wav']);
+  await expect(page.locator('.garalho-sign-front p')).toContainText('Conte suas moedas', {
+    timeout: 5000,
+  });
+  expect(await page.evaluate(() => (window as any).__petVoices.length)).toBe(before);
+  await page.locator('.pet-appearances button').last().click();
+  await expect(page.locator('.pet-shop-preview [role=img]')).toHaveAttribute(
+    'aria-label',
+    'Corvo das sombras',
+  );
+  await page.waitForTimeout(250);
+  expect(await page.evaluate(() => (window as any).__petVoices.length)).toBe(before);
   await expect(page.locator('.garalho-reply')).toHaveCount(0);
   await page
     .locator('.pet-shop-choices button')
