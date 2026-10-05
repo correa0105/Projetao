@@ -21,10 +21,14 @@ const { createApp } = await import('../server/app.js'),
 await new Promise<void>((resolve) => server.once('listening', resolve));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   ctx = await browser.newContext({
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '2' },
     viewport: { width: 1440, height: 1000 },
     acceptDownloads: true,
   }),
-  ctx2 = await browser.newContext({ viewport: { width: 1280, height: 900 } }),
+  ctx2 = await browser.newContext({
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '2' },
+    viewport: { width: 1280, height: 900 },
+  }),
   page = await ctx.newPage(),
   peerPage = await ctx2.newPage(),
   errors: string[] = [];
@@ -357,21 +361,56 @@ try {
   await page.locator('.vtt-hotbar-slot').first().click();
   await page.getByRole('button', { name: 'Rolar ataque', exact: true }).click();
   await expect(page.locator('.vtt-hotbar-action')).toHaveCount(0);
+  const attackDialog = page.locator('.vtt-attack-layer');
+  await expect(attackDialog).toBeVisible();
+  const targetValue = await attackDialog
+    .getByLabel('Alvo do ataque')
+    .locator('option')
+    .nth(1)
+    .getAttribute('value');
+  await attackDialog.getByLabel('Alvo do ataque').selectOption(targetValue!);
+  await attackDialog.getByRole('button', { name: 'Rolar ataque', exact: true }).click();
+  await expect(attackDialog.locator('.vtt-attack-result')).toBeVisible();
+  const hit = await attackDialog.locator('.hit').count();
+  if (hit) {
+    await attackDialog.getByRole('button', { name: 'Rolar dano', exact: true }).click();
+    await expect(attackDialog).toContainText('Dano rolado:');
+  } else
+    await expect(attackDialog.getByRole('button', { name: 'Rolar dano', exact: true })).toHaveCount(
+      0,
+    );
+  await attackDialog.getByRole('button', { name: /^Fechar Ataque/ }).click();
   await page.locator('.vtt-hotbar-slot').first().click();
-  await page.getByRole('button', { name: 'Rolar dano', exact: true }).click();
+  await page.getByRole('button', { name: 'Rolar dano separado', exact: true }).click();
   const effectsButton = page.getByRole('button', { name: 'Efeitos do mestre', exact: true });
+  const effectsBounds = await effectsButton.boundingBox(),
+    stageBounds = await page.locator('.vtt-stage').boundingBox();
+  expect(
+    stageBounds!.y + stageBounds!.height - effectsBounds!.y - effectsBounds!.height,
+  ).toBeLessThan(25);
   await effectsButton.click();
   const effects = page.getByRole('region', { name: 'Efeitos salvos do mestre', exact: true });
   await effects.getByRole('button', { name: 'Novo efeito', exact: true }).click();
   await effects.getByLabel('Nome do efeito', { exact: true }).fill('Sangue do mestre');
   await effects.getByRole('button', { name: 'Salvar efeito', exact: true }).click();
   await expect(effects.locator('.vtt-effects-row')).toHaveCount(1);
+  await expect(effects.locator('.vtt-effects-row').first()).toHaveAttribute('draggable', 'true');
   await effects.locator('.vtt-effects-row').first().dragTo(page.locator('.vtt-hotbar-slot').nth(1));
   await expect(page.locator('.vtt-hotbar-slot').nth(1)).toContainText('Sangue do mestre');
   await effects.getByRole('button', { name: 'Novo efeito', exact: true }).click();
   await effects.getByLabel('Modelo do efeito', { exact: true }).selectOption('fire');
   await effects.getByLabel('Nome do efeito', { exact: true }).fill('Brasa do mestre');
-  await effects.getByLabel('Duração do efeito', { exact: true }).fill('0');
+  await effects.getByLabel('Efeito infinito', { exact: true }).check();
+  const beforePreview = (await (await ctx.request.get(origin + '/api/vtt')).json()).rooms[0].id;
+  const beforeDoc = (
+    await (await ctx.request.get(origin + '/api/vtt/rooms/' + beforePreview)).json()
+  ).document;
+  await effects.getByRole('button', { name: 'Visualizar no token', exact: true }).click();
+  await expect(page.locator('.vtt-map-footer')).toContainText('Prévia do efeito');
+  expect(
+    (await (await ctx.request.get(origin + '/api/vtt/rooms/' + beforePreview)).json()).document,
+  ).toEqual(beforeDoc);
+  await page.screenshot({ path: 'test-results/vtt-effect-preview.png' });
   await effects.getByRole('button', { name: 'Salvar efeito', exact: true }).click();
   await expect(effects.locator('.vtt-effects-row')).toHaveCount(2);
   await effects.locator('.vtt-effects-apply').filter({ hasText: 'Brasa do mestre' }).click();
@@ -431,6 +470,10 @@ try {
   await panel.getByRole('button', { name: 'Rolar dados', exact: true }).click();
   await expect(page.locator('.vtt-dice-overlay')).toHaveAttribute('data-dice-count', '2');
   await expect(page.locator('canvas[aria-label="Dados 3D"]')).toBeVisible();
+  await expect(page.locator('canvas[aria-label="Dados 3D"]')).toHaveAttribute(
+    'data-physics',
+    'rigid-body',
+  );
   await page.screenshot({ path: 'test-results/vtt-dice-3d.png' });
   await expect(page.locator('.vtt-roll').last()).toContainText('2d20kh1+3');
   const [file] = await Promise.all([
@@ -484,6 +527,21 @@ try {
   await peerPage.goto(origin + '/#vtt');
   await peerPage.getByLabel('Código de convite', { exact: true }).fill(mesa.invite);
   await peerPage.getByRole('button', { name: 'Entrar na mesa', exact: true }).click();
+  await expect(peerPage.getByLabel('Participação na mesa')).toHaveValue('player');
+  const joined = await (await ctx.request.get(origin + '/api/vtt/rooms/' + rid)).json();
+  const spawn = joined.document.scenes
+    .find((s: any) => s.id === joined.document.activeScene)
+    .tokens.find((t: any) => t.characterId === c.id);
+  spawn.x = 875;
+  spawn.y = 875;
+  expect(
+    (
+      await ctx.request.put(origin + '/api/vtt/rooms/' + rid, {
+        headers: { Origin: origin },
+        data: { revision: joined.revision, document: joined.document },
+      })
+    ).ok(),
+  ).toBe(true);
   await peerPage.getByRole('button', { name: 'Fichas', exact: true }).click();
   await expect(
     peerPage.getByRole('button', { name: 'Efeitos do mestre', exact: true }),
@@ -631,6 +689,52 @@ try {
   const hidden = await pixel(600, 0);
   expect(Math.max(...hidden.slice(0, 3))).toBeLessThan(15);
   await peerPage.screenshot({ path: 'test-results/vtt-darkvision-color-fog.png' });
+  const observerContext = await browser.newContext({
+    viewport: { width: 1280, height: 900 },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '2' },
+  });
+  const observer = await signup(observerContext, 'Espectador'),
+    observerPage = await observerContext.newPage();
+  observerPage.on('pageerror', (e) => errors.push(e.message));
+  await observerPage.goto(origin + '/#vtt');
+  await observerPage.getByLabel('Código de convite', { exact: true }).fill(mesa.invite);
+  await observerPage.getByLabel('Entrar como', { exact: true }).selectOption('spectator');
+  await observerPage.getByRole('button', { name: 'Entrar na mesa', exact: true }).click();
+  await expect(observerPage.getByLabel('Participação na mesa')).toHaveValue('spectator');
+  await expect(observerPage.locator('.vtt-hotbar')).toHaveCount(0);
+  await expect(
+    observerPage.getByRole('button', { name: 'Escolher dados', exact: true }),
+  ).toHaveCount(0);
+  await observerPage.getByLabel('Ver pela visão de', { exact: true }).selectOption(peer.id);
+  await expect(observerPage.getByLabel('Ver pela visão de')).toHaveValue(peer.id);
+  const observed = await (
+    await observerContext.request.get(origin + '/api/vtt/rooms/' + rid)
+  ).json();
+  expect(observed.role).toBe('spectator');
+  expect(observed.viewingUser).toBe(peer.id);
+  expect(observed.document.scenes[0].tokens.every((t: any) => !t.sheet && !t.notes)).toBe(true);
+  await observerPage.getByRole('button', { name: 'Fichas', exact: true }).click();
+  await expect(observerPage.locator('.vtt-panel')).toContainText('sem trazer fichas');
+  await observerPage.screenshot({ path: 'test-results/vtt-spectator.png' });
+  await observerPage.getByRole('button', { name: 'Chat', exact: true }).click();
+  await expect(
+    observerPage.getByRole('button', { name: 'Enviar à mesa', exact: true }),
+  ).toHaveCount(0);
+  await expect(observerPage.getByRole('button', { name: 'Rolar dados', exact: true })).toHaveCount(
+    0,
+  );
+  await observerPage.getByLabel('Participação na mesa').selectOption('player');
+  await expect(observerPage.locator('.vtt-hotbar')).toBeVisible();
+  await observerPage.getByLabel('Participação na mesa').selectOption('spectator');
+  await expect(observerPage.locator('.vtt-hotbar')).toHaveCount(0);
+  for (const width of [390, 320]) {
+    await observerPage.setViewportSize({ width, height: 900 });
+    expect(
+      await observerPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
+    ).toBe(true);
+    await observerPage.screenshot({ path: 'test-results/vtt-spectator-' + width + '.png' });
+  }
+  await observerContext.close();
   // Inspect the real canvas renderer with an isolated, clearly lit portrait.
   const visual = await ctx.newPage();
   await visual.route('**/death-render-check', (route) =>

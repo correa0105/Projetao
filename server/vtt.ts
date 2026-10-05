@@ -10,6 +10,7 @@ import { AppError } from './services.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
+import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol.js';
 import {
   documentSchema,
   newDocument,
@@ -32,7 +33,8 @@ async function room(db: DB, id: string, user: string, lock = false) {
   const {
     rows: [r],
   } = await db.query(
-    `SELECT r.* FROM vtt_rooms r WHERE r.id=$1 AND (r.owner_id=$2 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$2))${lock ? ' FOR UPDATE' : ''}`,
+    `SELECT r.*, (SELECT role FROM vtt_members WHERE room_id=r.id AND user_id=$2) AS role,
+      (SELECT viewing_user_id FROM vtt_members WHERE room_id=r.id AND user_id=$2) AS viewing_user_id FROM vtt_rooms r WHERE r.id=$1 AND (r.owner_id=$2 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$2))${lock ? ' FOR UPDATE' : ''}`,
     [id, user],
   );
   if (!r) throw new AppError(404, 'Mesa não encontrada.');
@@ -43,6 +45,8 @@ async function room(db: DB, id: string, user: string, lock = false) {
     document: VttDocument;
     revision: number;
     invite: string;
+    role: 'player' | 'spectator' | null;
+    viewing_user_id: string | null;
   };
 }
 async function gm(db: DB, id: string, user: string, lock = false) {
@@ -59,11 +63,13 @@ function canSee(t: VttToken, s: VttScene, user: string) {
   const viewers = s.tokens.filter((t) => t.controller === user && t.layer === 'tokens');
   return viewers.some((v) => !v.hidden && viewerSees(v, t, s));
 }
-function playerDocument(doc: VttDocument, user: string): VttDocument {
+function playerDocument(doc: VttDocument, user: string, spectator = false): VttDocument {
   const scene = doc.scenes.find((s) => s.id === doc.activeScene)!;
   const tokens = scene.tokens
-    .filter((t) => canSee(t, scene, user))
-    .map((t) => ({ ...t, notes: '', sheet: t.controller === user ? t.sheet : null }));
+    .filter((t) =>
+      spectator && !scene.fog && !user ? !t.hidden && t.layer !== 'gm' : canSee(t, scene, user),
+    )
+    .map((t) => ({ ...t, notes: '', sheet: !spectator && t.controller === user ? t.sheet : null }));
   return {
     ...doc,
     effects: [],
@@ -122,14 +128,30 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
 async function state(rid: string, user: string) {
   const r = await room(pool, rid, user);
   const isGm = r.owner_id === user && (await isAdministrator(user));
-  const document = isGm ? r.document : playerDocument(r.document, user);
+  const spectator = r.role === 'spectator' && !isGm;
+  const viewpoints = (
+    await pool.query(
+      `SELECT u.id,u.name FROM "user" u JOIN vtt_members m ON m.user_id=u.id WHERE m.room_id=$1 AND m.role='player' ORDER BY u.name`,
+      [rid],
+    )
+  ).rows.filter((m) =>
+    r.document.scenes
+      .find((s) => s.id === r.document.activeScene)!
+      .tokens.some((t) => t.controller === m.id && t.layer === 'tokens' && !t.hidden),
+  );
+  const viewingUser = spectator
+    ? viewpoints.some((m) => m.id === r.viewing_user_id)
+      ? r.viewing_user_id
+      : null
+    : user;
+  const document = isGm ? r.document : playerDocument(r.document, viewingUser || '', spectator);
   const [assets, members, messages] = await Promise.all([
     pool.query(
       'SELECT id,name,kind,width,height FROM vtt_assets WHERE room_id=$1 ORDER BY created_at DESC',
       [rid],
     ),
     pool.query(
-      'SELECT u.id,u.name FROM "user" u WHERE u.id=$1 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=$2 AND m.user_id=u.id)',
+      `SELECT u.id,u.name,COALESCE(m.role,'master') AS role FROM "user" u LEFT JOIN vtt_members m ON m.room_id=$2 AND m.user_id=u.id WHERE u.id=$1 OR m.user_id IS NOT NULL`,
       [r.owner_id, rid],
     ),
     pool.query(
@@ -143,6 +165,9 @@ async function state(rid: string, user: string) {
     revision: r.revision,
     document,
     is_gm: isGm,
+    role: isGm ? 'master' : spectator ? 'spectator' : 'player',
+    viewingUser,
+    viewpoints,
     ...(isGm ? { invite: r.invite } : {}),
     assets: assets.rows
       .filter((a) => isGm || visible.has('/api/vtt/assets/' + a.id))
@@ -152,9 +177,139 @@ async function state(rid: string, user: string) {
     bossBars: sceneBossBars(r.document.scenes.find((s) => s.id === r.document.activeScene)!),
   };
 }
+async function importCharacter(
+  db: DB,
+  r: Awaited<ReturnType<typeof room>>,
+  user: string,
+  cid: string,
+) {
+  const {
+    rows: [c],
+  } = await db.query('SELECT * FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL', [
+    cid,
+    user,
+  ]);
+  if (!c) throw new AppError(404, 'Personagem não pertence à sua conta.');
+  await db.query(
+    'INSERT INTO vtt_character_links(room_id,character_id,imported_by)VALUES($1,$2,$3)ON CONFLICT DO NOTHING',
+    [r.id, cid, user],
+  );
+  const {
+    rows: [sheet],
+  } = await db.query('SELECT * FROM character_sheets WHERE character_id=$1', [cid]);
+  const derived = sheet?.finalized_at ? deriveSheet(c, sheet.choices) : null;
+  const {
+    rows: [portrait],
+  } = await db.query('SELECT image FROM character_portraits WHERE character_id=$1', [cid]);
+  const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
+  if (scene.tokens.some((t) => t.characterId === cid && t.controller === user)) return false;
+  const previousToken = r.document.scenes
+    .flatMap((s) => s.tokens)
+    .find((t) => t.characterId === cid);
+  const token = newToken(randomUUID(), scene);
+  Object.assign(token, {
+    name: c.name,
+    hp: previousToken?.hp ?? sheet?.current_hp ?? c.hp,
+    conditions: previousToken?.conditions || [],
+    maxHp: c.hp,
+    ac: c.armor_class,
+    controller: user,
+    characterId: cid,
+    vision: ['Elfo', 'Anão', 'Gnomo', 'Orc', 'Tiefling', 'Draconato'].includes(c.race)
+      ? ['Anão', 'Gnomo', 'Orc'].includes(c.race) || sheet?.choices?.subrace === 'Drow'
+        ? 120
+        : 60
+      : 0,
+    sheet: {
+      source: 'Alvorada · SRD 5.2.1',
+      race: c.race,
+      class: c.class,
+      level: c.level,
+      stats: c.stats,
+      speed: derived?.speed ? derived.speed / 0.3 : 30,
+      biography: c.biography || '',
+      details: derived
+        ? [
+            `Proficiência: +${derived.proficiency} · Iniciativa: ${derived.initiative >= 0 ? '+' : ''}${derived.initiative}`,
+            `Deslocamento: ${derived.speed} m · Percepção passiva: ${derived.passivePerception}`,
+            `Idiomas: ${derived.languages.join(', ')}`,
+            'Perícias\n' +
+              derived.skills
+                .map(
+                  (s) =>
+                    `${s.name}: ${s.value >= 0 ? '+' : ''}${s.value}${s.trained ? ' (treinada)' : ''}`,
+                )
+                .join('\n'),
+            'Características\n' + derived.features.join('\n'),
+            'Equipamento declarado\n' + derived.equipment.join('\n'),
+          ].join('\n\n')
+        : 'Ficha básica importada do personagem. A ficha completa ainda não foi finalizada.',
+    },
+  });
+  if (portrait) {
+    const bytes = await sharp(portrait.image)
+      .resize({ width: 512, height: 512, fit: 'cover', position: 'attention' })
+      .webp({ quality: 90 })
+      .toBuffer();
+    const a = await db.query(
+      "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height)VALUES($1,$2,'image','image/webp',$3,512,512)RETURNING id",
+      [r.id, c.name + ' · token', bytes],
+    );
+    token.image = '/api/vtt/assets/' + a.rows[0].id;
+  }
+  const offset = scene.tokens.filter((t) => t.characterId).length;
+  token.x = Math.max(
+    token.width / 2,
+    Math.min(scene.width - token.width / 2, token.x + (offset % 6) * token.width * 1.2),
+  );
+  token.y = Math.max(
+    token.height / 2,
+    Math.min(
+      scene.height - token.height / 2,
+      token.y + Math.floor(offset / 6) * token.height * 1.2,
+    ),
+  );
+  scene.tokens.push(tokenSchema.parse(token));
+  return true;
+}
+async function chooseParticipation(
+  db: DB,
+  r: Awaited<ReturnType<typeof room>>,
+  user: string,
+  role: 'player' | 'spectator',
+) {
+  if (r.owner_id === user) return;
+  await db.query(
+    'INSERT INTO vtt_members(room_id,user_id,role)VALUES($1,$2,$3)ON CONFLICT(room_id,user_id)DO UPDATE SET role=EXCLUDED.role,viewing_user_id=NULL',
+    [r.id, user, role],
+  );
+  let changed = false;
+  if (role === 'player') {
+    const { rows } = await db.query(
+      'SELECT id FROM characters WHERE user_id=$1 AND deleted_at IS NULL ORDER BY created_at,id',
+      [user],
+    );
+    for (const c of rows) changed = (await importCharacter(db, r, user, c.id)) || changed;
+  }
+  if (changed)
+    await db.query(
+      'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
+      [r.id, JSON.stringify(documentSchema.parse(r.document))],
+    );
+}
 export function vttRouter() {
   const router = express.Router();
   router.use('/vtt', express.json({ limit: '12mb' }));
+  router.use('/vtt/rooms/:id', async (req, res, next) => {
+    const roleChange = req.path === '/participation' || req.path === '/viewpoint';
+    const privateRead = req.path.startsWith('/sheets/') || req.path.startsWith('/hotbar');
+    if (!roleChange && (req.method !== 'GET' || privateRead)) {
+      const r = await room(pool, uuid.parse(req.params.id), res.locals.user.id);
+      if (r.role === 'spectator' && r.owner_id !== res.locals.user.id)
+        throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
+    }
+    next();
+  });
   router.use(vttSheetRouter(room));
   router.use(vttHotbarRouter(room));
   router.get('/vtt', async (_req, res) =>
@@ -180,20 +335,63 @@ export function vttRouter() {
     res.status(201).json(await state(r.rows[0].id, res.locals.user.id));
   });
   router.post('/vtt/join', async (req, res) => {
-    const invite = z
-      .string()
-      .regex(/^[0-9a-f]{48}$/)
-      .parse(req.body.invite);
-    const {
-      rows: [r],
-    } = await pool.query('SELECT id,owner_id FROM vtt_rooms WHERE invite=$1', [invite]);
-    if (!r) throw new AppError(404, 'Convite inválido ou revogado.');
-    if (r.owner_id !== res.locals.user.id)
-      await pool.query(
-        'INSERT INTO vtt_members(room_id,user_id)VALUES($1,$2)ON CONFLICT DO NOTHING',
-        [r.id, res.locals.user.id],
-      );
-    res.json(await state(r.id, res.locals.user.id));
+    const input = z
+      .object({
+        invite: z.string().regex(/^[0-9a-f]{48}$/),
+        role: z.enum(['player', 'spectator']).default('player'),
+      })
+      .strict()
+      .parse(req.body);
+    const rid = await transaction(async (db) => {
+      const {
+        rows: [r],
+      } = await db.query('SELECT * FROM vtt_rooms WHERE invite=$1 FOR UPDATE', [input.invite]);
+      if (!r) throw new AppError(404, 'Convite inválido ou revogado.');
+      r.document = documentSchema.parse(r.document);
+      await chooseParticipation(db, r, res.locals.user.id, input.role);
+      return r.id;
+    });
+    res.json(await state(rid, res.locals.user.id));
+  });
+  router.post('/vtt/rooms/:id/participation', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      role = z.enum(['player', 'spectator']).parse(req.body.role);
+    await transaction(async (db) => {
+      const r = await room(db, rid, res.locals.user.id, true);
+      await chooseParticipation(db, r, res.locals.user.id, role);
+    });
+    res.json(await state(rid, res.locals.user.id));
+  });
+  router.put('/vtt/rooms/:id/viewpoint', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      user = res.locals.user.id;
+    const viewer = z.string().min(1).max(100).nullable().parse(req.body.userId);
+    await transaction(async (db) => {
+      const r = await room(db, rid, user, true);
+      if (r.role !== 'spectator')
+        throw new AppError(403, 'Escolher a visão de outro jogador é exclusivo do espectador.');
+      if (viewer) {
+        const {
+          rows: [m],
+        } = await db.query(
+          `SELECT user_id FROM vtt_members WHERE room_id=$1 AND user_id=$2 AND role='player'`,
+          [rid, viewer],
+        );
+        if (
+          !m ||
+          !r.document.scenes
+            .find((s) => s.id === r.document.activeScene)!
+            .tokens.some((t) => t.controller === viewer && t.layer === 'tokens' && !t.hidden)
+        )
+          throw new AppError(400, 'Escolha um jogador com personagem visível neste mapa.');
+      }
+      await db.query('UPDATE vtt_members SET viewing_user_id=$3 WHERE room_id=$1 AND user_id=$2', [
+        rid,
+        user,
+        viewer,
+      ]);
+    });
+    res.json(await state(rid, user));
   });
   router.get('/vtt/compendium', async (_req, res) => {
     res.json(JSON.parse(await readFile('data/vtt/srd-2024.json', 'utf8')));
@@ -202,6 +400,8 @@ export function vttRouter() {
     res.json(await state(uuid.parse(req.params.id), res.locals.user.id)),
   );
   router.put('/vtt/rooms/:id', async (req, res) => {
+    if (req.get('X-Vtt-Schema-Version') !== String(vttProtocolVersion))
+      throw new AppError(409, vttUpdateMessage);
     const rid = uuid.parse(req.params.id),
       input = z
         .object({ revision: z.number().int().min(1), document: documentSchema })
@@ -223,12 +423,18 @@ export function vttRouter() {
           if (old) applyTokenDeath(t, old.hp);
         }
       const ids = (
-        await db.query('SELECT user_id FROM vtt_members WHERE room_id=$1', [rid])
+        await db.query(`SELECT user_id FROM vtt_members WHERE room_id=$1 AND role='player'`, [rid])
       ).rows.map((m) => m.user_id);
       if (
         input.document.scenes.some((s) =>
           s.tokens.some(
-            (t) => t.controller && t.controller !== r.owner_id && !ids.includes(t.controller),
+            (t) =>
+              t.controller &&
+              t.controller !== r.owner_id &&
+              !ids.includes(t.controller) &&
+              !r.document.scenes
+                .flatMap((s) => s.tokens)
+                .some((previous) => previous.id === t.id && previous.controller === t.controller),
           ),
         )
       )
@@ -316,6 +522,8 @@ export function vttRouter() {
       const r = await room(db, rid, res.locals.user.id, true),
         s = r.document.scenes.find((s) => s.id === r.document.activeScene)!,
         t = s.tokens.find((t) => t.id === tid);
+      if (r.role === 'spectator')
+        throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
       if (!t || t.hidden || t.layer !== 'tokens' || t.controller !== res.locals.user.id || t.locked)
         throw new AppError(403, 'Você não controla este token.');
       if (input.hp !== undefined && input.hp > t.hp)
@@ -343,6 +551,8 @@ export function vttRouter() {
   router.post('/vtt/rooms/:id/messages', async (req, res) => {
     const rid = uuid.parse(req.params.id);
     const current = await room(pool, rid, res.locals.user.id);
+    if (current.role === 'spectator')
+      throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
     const input = z
       .object({
         text: z.string().trim().max(2000).default(''),
@@ -383,19 +593,26 @@ export function vttRouter() {
     }
     if (!input.text && !roll && !spell)
       throw new AppError(400, 'Escreva uma mensagem ou role dados.');
-    await pool.query(
-      'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private,spell)VALUES($1,$2,$3,$4,$5,$6,$7)',
-      [
-        rid,
-        res.locals.user.id,
-        res.locals.user.name,
-        input.text,
-        roll ? JSON.stringify(roll) : null,
-        input.private,
-        spell ? JSON.stringify(spell) : null,
-      ],
-    );
-    res.status(201).json(await state(rid, res.locals.user.id));
+    const created = await transaction(async (db) => {
+      const r = await room(db, rid, res.locals.user.id, true);
+      if (r.role === 'spectator')
+        throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
+      return await db.query(
+        'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private,spell)VALUES($1,$2,$3,$4,$5,$6,$7)RETURNING id::text',
+        [
+          rid,
+          res.locals.user.id,
+          res.locals.user.name,
+          input.text,
+          roll ? JSON.stringify(roll) : null,
+          input.private,
+          spell ? JSON.stringify(spell) : null,
+        ],
+      );
+    });
+    res
+      .status(201)
+      .json({ ...(await state(rid, res.locals.user.id)), createdMessageId: created.rows[0].id });
   });
   router.get('/vtt/rooms/:id/messages', async (req, res) => {
     const rid = uuid.parse(req.params.id),
@@ -419,86 +636,13 @@ export function vttRouter() {
     await room(pool, rid, res.locals.user.id);
     await transaction(async (db) => {
       const r = await room(db, rid, res.locals.user.id, true);
-      const {
-        rows: [c],
-      } = await db.query(
-        'SELECT * FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL',
-        [cid, res.locals.user.id],
-      );
-      if (!c) throw new AppError(404, 'Personagem não pertence à sua conta.');
-      await db.query(
-        'INSERT INTO vtt_character_links(room_id,character_id,imported_by)VALUES($1,$2,$3)ON CONFLICT DO NOTHING',
-        [rid, cid, res.locals.user.id],
-      );
-      const {
-        rows: [sheet],
-      } = await db.query('SELECT * FROM character_sheets WHERE character_id=$1', [cid]);
-      const derived = sheet?.finalized_at ? deriveSheet(c, sheet.choices) : null;
-      const {
-        rows: [portrait],
-      } = await db.query('SELECT image FROM character_portraits WHERE character_id=$1', [cid]);
-      const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
-      if (scene.tokens.some((t) => t.characterId === cid && t.controller === res.locals.user.id))
-        return;
-      const previousToken = r.document.scenes
-        .flatMap((s) => s.tokens)
-        .find((t) => t.characterId === cid);
-      const token = newToken(randomUUID(), scene);
-      Object.assign(token, {
-        name: c.name,
-        hp: previousToken?.hp ?? sheet?.current_hp ?? c.hp,
-        conditions: previousToken?.conditions || [],
-        maxHp: c.hp,
-        ac: c.armor_class,
-        controller: res.locals.user.id,
-        characterId: cid,
-        vision: ['Elfo', 'Anão', 'Gnomo', 'Orc', 'Tiefling', 'Draconato'].includes(c.race)
-          ? ['Anão', 'Gnomo', 'Orc'].includes(c.race) || sheet?.choices?.subrace === 'Drow'
-            ? 120
-            : 60
-          : 0,
-        sheet: {
-          source: 'Alvorada · SRD 5.2.1',
-          race: c.race,
-          class: c.class,
-          level: c.level,
-          stats: c.stats,
-          speed: derived?.speed ? derived.speed / 0.3 : 30,
-          biography: c.biography || '',
-          details: derived
-            ? [
-                `Proficiência: +${derived.proficiency} · Iniciativa: ${derived.initiative >= 0 ? '+' : ''}${derived.initiative}`,
-                `Deslocamento: ${derived.speed} m · Percepção passiva: ${derived.passivePerception}`,
-                `Idiomas: ${derived.languages.join(', ')}`,
-                'Perícias\n' +
-                  derived.skills
-                    .map(
-                      (s) =>
-                        `${s.name}: ${s.value >= 0 ? '+' : ''}${s.value}${s.trained ? ' (treinada)' : ''}`,
-                    )
-                    .join('\n'),
-                'Características\n' + derived.features.join('\n'),
-                'Equipamento declarado\n' + derived.equipment.join('\n'),
-              ].join('\n\n')
-            : 'Ficha básica importada do personagem. A ficha completa ainda não foi finalizada.',
-        },
-      });
-      if (portrait) {
-        const bytes = await sharp(portrait.image)
-          .resize({ width: 512, height: 512, fit: 'cover', position: 'attention' })
-          .webp({ quality: 90 })
-          .toBuffer();
-        const a = await db.query(
-          "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height)VALUES($1,$2,'image','image/webp',$3,512,512)RETURNING id",
-          [rid, c.name + ' · token', bytes],
+      if (r.role === 'spectator')
+        throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
+      if (await importCharacter(db, r, res.locals.user.id, cid))
+        await db.query(
+          'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
+          [rid, JSON.stringify(documentSchema.parse(r.document))],
         );
-        token.image = '/api/vtt/assets/' + a.rows[0].id;
-      }
-      scene.tokens.push(tokenSchema.parse(token));
-      await db.query(
-        'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
-        [rid, JSON.stringify(documentSchema.parse(r.document))],
-      );
     });
     res.status(201).json(await state(rid, res.locals.user.id));
   });
@@ -567,9 +711,21 @@ export function vttRouter() {
     if (!a) throw new AppError(404, 'Arquivo não encontrado.');
     const r = await room(pool, a.room_id, res.locals.user.id);
     const isGm = r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id));
+    let viewAs = res.locals.user.id;
+    if (r.role === 'spectator') {
+      const {
+        rows: [member],
+      } = await pool.query(
+        "SELECT user_id FROM vtt_members WHERE room_id=$1 AND user_id=$2 AND role='player'",
+        [r.id, r.viewing_user_id],
+      );
+      viewAs = member?.user_id || '';
+    }
     if (
       !isGm &&
-      !paths(playerDocument(r.document, res.locals.user.id)).includes('/api/vtt/assets/' + id)
+      !paths(playerDocument(r.document, viewAs, r.role === 'spectator')).includes(
+        '/api/vtt/assets/' + id,
+      )
     )
       throw new AppError(404, 'Arquivo não disponível.');
     res.setHeader('Content-Type', a.mime);

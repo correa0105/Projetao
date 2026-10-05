@@ -6,6 +6,7 @@ import type { VttToken } from '../shared/vtt';
 import type { VttSheetData } from '../shared/vtt-sheet';
 import { spells, sheetAttacks, skills, skillAbilities } from '../shared/character-sheet';
 import { modifier, statNames } from '../shared/rules';
+import type { AttackRequest } from '../shared/vtt-attack';
 import './vtt-sheet.css';
 import { ActionShortcut } from './VttHotbar';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
@@ -14,13 +15,15 @@ export function VttSheet({
   token,
   close,
   roll,
+  onAttack,
   refresh,
   shareSpell,
 }: {
   roomId: string;
   token: VttToken;
   close: () => void;
-  roll: (formula: string, label: string) => Promise<void>;
+  roll: (formula: string, label: string) => Promise<unknown>;
+  onAttack: (request: AttackRequest) => void;
   refresh: () => Promise<void>;
   shareSpell: (name: string) => Promise<void>;
 }) {
@@ -280,7 +283,16 @@ export function VttSheet({
                               />
                             )}
                             <div>
-                              <button onClick={() => check(w.attack, w.name + ' · ataque')}>
+                              <button
+                                onClick={() =>
+                                  onAttack({
+                                    actorId: t.id,
+                                    name: t.name + ' · ' + w.name,
+                                    attack: '1d20' + signed(w.attack),
+                                    damage: w.dice === '—' ? [] : [w.dice + signed(w.ability)],
+                                  })
+                                }
+                              >
                                 Acerto {signed(w.attack)}
                               </button>
                               {w.dice !== '—' && (

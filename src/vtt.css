@@ -789,3 +789,28 @@
     scroll-behavior: auto;
   }
 }
+
+.vtt-participation {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+.vtt-participation select {
+  min-width: 0;
+  max-width: 185px;
+}
+@media (max-width: 700px) {
+  .vtt-top:has(.vtt-participation) {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 56px;
+  }
+  .vtt-participation {
+    order: 3;
+    flex-basis: 100%;
+  }
+  .vtt-participation select {
+    flex: 1;
+    max-width: none;
+  }
+}

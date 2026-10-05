@@ -1,7 +1,7 @@
 .vtt-effects {
   position: absolute;
   left: 12px;
-  bottom: 164px;
+  bottom: 14px;
   z-index: 15;
   color: #e5d8c2;
 }
@@ -14,10 +14,10 @@
 }
 .vtt-effects-menu {
   position: absolute;
-  bottom: 46px;
+  bottom: 150px;
   left: 0;
   width: min(390px, calc(100vw - 94px));
-  max-height: min(650px, calc(100dvh - 270px));
+  max-height: min(650px, calc(100dvh - 300px));
   overflow: auto;
   padding: 14px;
   border: 1px solid #71583b;
@@ -117,7 +117,7 @@
 }
 @media (max-width: 600px) {
   .vtt-effects {
-    bottom: 155px;
+    bottom: 14px;
     left: 6px;
   }
   .vtt-effects-menu {
@@ -130,4 +130,16 @@
   .vtt-effects-row .vtt-pin-action {
     font-size: 0 !important;
   }
+}
+.vtt-effects-infinite {
+  grid-column: 1/-1;
+  display: flex !important;
+  align-items: center;
+  gap: 8px !important;
+}
+.vtt-effects-infinite input {
+  width: 16px;
+}
+.vtt-effects-preview-note {
+  color: #d4b17e !important;
 }

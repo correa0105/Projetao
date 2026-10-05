@@ -1,0 +1,48 @@
+.vtt-attack-layer .vtt-modal-backdrop {
+  z-index: 140;
+}
+.vtt-attack-content {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  color: #ded5c5;
+}
+.vtt-attack-content label {
+  display: grid;
+  gap: 6px;
+}
+.vtt-attack-content select {
+  width: 100%;
+}
+.vtt-attack-content p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.vtt-attack-content button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.vtt-attack-result {
+  border: 1px solid #9c7c48;
+  background: #b9944e13;
+  padding: 15px;
+  display: grid;
+  gap: 12px;
+}
+.vtt-attack-result.miss {
+  border-color: #6e5c58;
+  background: #6a3e3817;
+}
+.vtt-attack-content small {
+  line-height: 1.5;
+  color: #ada79c;
+}
+.vtt-attack-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+}

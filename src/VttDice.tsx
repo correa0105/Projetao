@@ -4,83 +4,9 @@ import type { VttMessage } from '../shared/vtt';
 import { useSoundEffects } from './SiteMusic';
 import './vtt-dice.css';
 
-type Face = { center: THREE.Vector3; normal: THREE.Vector3 };
-// A pentagonal trapezohedron: ten planar kite faces, rather than a generic sphere.
-export function d10Geometry() {
-  const ring = Array.from(
-    { length: 10 },
-    (_, i) =>
-      new THREE.Vector3(
-        Math.cos((i * Math.PI) / 5),
-        Math.sin((i * Math.PI) / 5),
-        i % 2 ? -0.12 : 0.12,
-      ),
-  );
-  const h = (0.12 * (1 + Math.cos(Math.PI / 5))) / (1 - Math.cos(Math.PI / 5));
-  const points = [...ring, new THREE.Vector3(0, 0, h), new THREE.Vector3(0, 0, -h)];
-  const faces: Face[] = [],
-    positions: number[] = [];
-  for (let i = 0; i < 5; i++)
-    for (const ids of [
-      [10, i * 2, (i * 2 + 1) % 10, (i * 2 + 2) % 10],
-      [11, (i * 2 + 1) % 10, (i * 2 + 2) % 10, (i * 2 + 3) % 10],
-    ]) {
-      const vs = ids.map((id) => points[id]);
-      const center = vs.reduce((v, p) => v.add(p), new THREE.Vector3()).multiplyScalar(0.25);
-      const normal = new THREE.Vector3()
-        .subVectors(vs[1], vs[0])
-        .cross(new THREE.Vector3().subVectors(vs[2], vs[0]))
-        .normalize();
-      if (normal.dot(center) < 0) {
-        vs.reverse();
-        normal.negate();
-      }
-      for (const tri of [
-        [0, 1, 2],
-        [0, 2, 3],
-      ])
-        for (const id of tri) positions.push(...vs[id].toArray());
-      faces.push({ center, normal });
-    }
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-  geometry.computeVertexNormals();
-  return { geometry, faces };
-}
-function shape(sides: number) {
-  if (sides === 10) return d10Geometry();
-  const geo =
-    sides === 4
-      ? new THREE.TetrahedronGeometry(1)
-      : sides === 6
-        ? new THREE.BoxGeometry(1.45, 1.45, 1.45)
-        : sides === 8
-          ? new THREE.OctahedronGeometry(1)
-          : sides === 12
-            ? new THREE.DodecahedronGeometry(1)
-            : new THREE.IcosahedronGeometry(1);
-  const geometry = geo.index ? geo.toNonIndexed() : geo;
-  if (geometry !== geo) geo.dispose();
-  const p = geometry.getAttribute('position'),
-    faces: Face[] = [];
-  for (let i = 0; i < p.count; i += 3) {
-    const a = new THREE.Vector3().fromBufferAttribute(p, i),
-      b = new THREE.Vector3().fromBufferAttribute(p, i + 1),
-      c = new THREE.Vector3().fromBufferAttribute(p, i + 2);
-    const normal = b.clone().sub(a).cross(c.clone().sub(a)).normalize();
-    const center = a
-      .add(b)
-      .add(c)
-      .multiplyScalar(1 / 3);
-    const existing = faces.find((f) => f.normal.dot(normal) > 0.9999);
-    if (existing) existing.center.add(center);
-    else faces.push({ normal, center });
-  }
-  // Box and dodecahedron faces consist of multiple coplanar triangles.
-  const tris = p.count / 3 / faces.length;
-  faces.forEach((f) => f.center.multiplyScalar(1 / tris));
-  return { geometry, faces };
-}
+import { shape } from './vtt-dice-geometry';
+import { DicePhysics } from './vtt-dice-physics';
+export { d10Geometry } from './vtt-dice-geometry';
 function die(sides: number, result: number, tint: number, percentile = false) {
   const { geometry, faces } = shape(sides),
     group = new THREE.Group();
@@ -98,10 +24,12 @@ function die(sides: number, result: number, tint: number, percentile = false) {
     new THREE.LineBasicMaterial({ color: 0xb8a57d, transparent: true, opacity: 0.6 }),
   );
   group.add(edges);
-  const textures: THREE.Texture[] = [];
+  const textures: THREE.CanvasTexture[] = [];
+  const labels: HTMLCanvasElement[] = [];
   faces.forEach((face, i) => {
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 128;
+    labels.push(canvas);
     const c = canvas.getContext('2d')!;
     c.font = 'bold 80px Georgia';
     c.textAlign = 'center';
@@ -129,11 +57,35 @@ function die(sides: number, result: number, tint: number, percentile = false) {
     label.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), face.normal);
     group.add(label);
   });
-  const index = sides === 10 ? result % 10 : result - 1;
-  const settled = new THREE.Quaternion().setFromUnitVectors(
-    faces[index]?.normal || faces[0].normal,
-    new THREE.Vector3(0, 0, 1),
-  );
+  const setTop = (orientation: THREE.Quaternion) => {
+    const up = faces.reduce(
+      (best, face, i) =>
+        face.normal.clone().applyQuaternion(orientation).z >
+        faces[best].normal.clone().applyQuaternion(orientation).z
+          ? i
+          : best,
+      0,
+    );
+    const wanted = sides === 10 ? result % 10 : result - 1;
+    if (up === wanted) return;
+    for (const [index, value] of [
+      [up, wanted],
+      [wanted, up],
+    ]) {
+      const c = labels[index].getContext('2d')!;
+      c.clearRect(0, 0, 128, 128);
+      c.fillText(
+        percentile
+          ? String(value * 10).padStart(2, '0')
+          : sides === 10
+            ? String(value)
+            : String(value + 1),
+        64,
+        65,
+      );
+      textures[index].needsUpdate = true;
+    }
+  };
   const dispose = () => {
     group.traverse((o) => {
       if (o instanceof THREE.Mesh || o instanceof THREE.LineSegments) {
@@ -144,7 +96,7 @@ function die(sides: number, result: number, tint: number, percentile = false) {
     });
     textures.forEach((t) => t.dispose());
   };
-  return { group, settled, dispose };
+  return { group, geometry, setTop, dispose };
 }
 function impact(context: AudioContext, volume: number, strength: number) {
   const now = context.currentTime,
@@ -256,7 +208,7 @@ export function VttDice({
       new THREE.PlaneGeometry(30, 30),
       new THREE.ShadowMaterial({ opacity: 0.3 }),
     );
-    floor.position.z = -0.85;
+    floor.position.z = 0;
     floor.receiveShadow = true;
     scene.add(floor);
     const values = roll.roll.dice.flatMap((n) =>
@@ -268,28 +220,23 @@ export function VttDice({
         : [{ sides, result: n, tens: false }],
     );
     const count = values.length,
-      cols = Math.min(12, Math.ceil(Math.sqrt(count * 1.8))),
-      rows = Math.ceil(count / cols),
-      scale = Math.min(0.85, 12 / (cols * 2), (camera.top * 1.6) / (rows * 2));
-    const dice = values.map((v, i) => {
-      const d = die(
-        [4, 6, 8, 10, 12, 20].includes(v.sides) ? v.sides : 20,
-        v.result,
-        v.tens ? 0x624430 : 0x293e65,
-        v.tens,
+      scale = Math.min(
+        0.82,
+        12 / (Math.ceil(Math.sqrt(count)) * 2.65),
+        (camera.top * 1.65) / (Math.ceil(Math.sqrt(count)) * 2.65),
       );
+    const dice = values.map((v) => {
+      const d = die(v.sides, v.result, v.tens ? 0x624430 : 0x293e65, v.tens);
       d.group.scale.setScalar(scale);
       scene.add(d.group);
-      return {
-        ...d,
-        x: ((i % cols) - (cols - 1) / 2) * scale * 2.2,
-        y: (Math.floor(i / cols) - (rows - 1) / 2) * scale * 2.2,
-        startX: -7 + Math.random() * 1.2,
-        startY: camera.top * (0.25 + Math.random() * 0.45),
-        curve: (Math.random() - 0.5) * 3,
-        spin: new THREE.Euler(Math.random() * 9, Math.random() * 9, Math.random() * 9),
-      };
+      return d;
     });
+    const physics = new DicePhysics(
+      dice.map((d) => d.geometry),
+      camera.right - camera.left,
+      camera.top - camera.bottom,
+      scale,
+    );
     let context: AudioContext | undefined;
     const fx = currentEffects.current;
     if (!fx.muted && fx.volume > 0 && !document.hidden) {
@@ -300,39 +247,72 @@ export function VttDice({
         /* Visual dice still work when audio is unavailable. */
       }
     }
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches,
-      duration = reduced ? 0.12 : 3.2,
-      start = performance.now();
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let frame = 0,
-      impactIndex = 0;
-    const timings = [0.38, 0.87, 1.35, 1.85, 2.36, 2.85];
-    function render(now: number) {
-      const elapsed = (now - start) / 1000,
-        t = Math.min(1, elapsed / duration);
-      if (context && elapsed > (timings[impactIndex] ?? Infinity)) {
-        const fx = currentEffects.current;
-        if (!fx.muted && !document.hidden) impact(context, fx.volume, 1 - impactIndex * 0.11);
-        impactIndex++;
+      cancelled = false,
+      lastImpact = -1;
+    async function prepare() {
+      let slice = performance.now();
+      for (let i = 0; i < 420 && !physics.settled; i++) {
+        if (cancelled) return;
+        physics.step();
+        if (performance.now() - slice > 12) {
+          await new Promise<void>((resolve) => setTimeout(resolve, 0));
+          slice = performance.now();
+        }
       }
-      for (const d of dice) {
-        const q = 1 - t;
-        d.group.position.set(
-          d.startX * q * q + d.x * (1 - q * q),
-          d.startY * q * q + d.y * (1 - q * q) + Math.sin(t * Math.PI) * d.curve,
-          Math.abs(Math.sin(t * Math.PI * 6)) * q * 2.3,
-        );
-        d.group.quaternion.setFromEuler(
-          new THREE.Euler(d.spin.x * q * 3, d.spin.y * q * 3, d.spin.z * q * 3),
-        );
-        if (t > 0.82) d.group.quaternion.slerp(d.settled, (t - 0.82) / 0.18);
-        if (t === 1) d.group.quaternion.copy(d.settled);
+      if (cancelled) return;
+      dice.forEach((d, i) => {
+        const q = physics.bodies[i].quaternion;
+        d.setTop(new THREE.Quaternion(q.x, q.y, q.z, q.w));
+      });
+      const duration = (physics.samples.length - 1) / 60,
+        start = performance.now();
+      function render(now: number) {
+        const elapsed = Math.max(0, (now - start) / 1000),
+          position = reduced
+            ? physics.samples.length - 1
+            : Math.min(physics.samples.length - 1, elapsed * 60),
+          index = Math.floor(position),
+          alpha = position - index;
+        const a = physics.samples[index],
+          b = physics.samples[Math.min(index + 1, physics.samples.length - 1)];
+        for (let i = 0; i < dice.length; i++) {
+          const k = i * 7,
+            d = dice[i];
+          d.group.position.set(
+            a[k] + (b[k] - a[k]) * alpha,
+            a[k + 1] + (b[k + 1] - a[k + 1]) * alpha,
+            a[k + 2] + (b[k + 2] - a[k + 2]) * alpha,
+          );
+          d.group.quaternion.set(a[k + 3], a[k + 4], a[k + 5], a[k + 6]);
+          d.group.quaternion.slerp(
+            new THREE.Quaternion(b[k + 3], b[k + 4], b[k + 5], b[k + 6]),
+            alpha,
+          );
+        }
+        if (context && !reduced) {
+          const fx = currentEffects.current;
+          const hit = physics.impacts
+            .filter((h) => h.time <= elapsed && h.time > lastImpact)
+            .at(-1);
+          if (hit) {
+            lastImpact = elapsed;
+            if (!fx.muted && !document.hidden) impact(context, fx.volume, hit.strength);
+          }
+        }
+        renderer.render(scene, camera);
+        renderer.domElement.dataset.physics = 'rigid-body';
+        renderer.domElement.dataset.phase =
+          position >= physics.samples.length - 1 ? 'settled' : 'rolling';
+        if (elapsed < (reduced ? 3 : duration + 2.2)) frame = requestAnimationFrame(render);
+        else setRoll(null);
       }
-      renderer.render(scene, camera);
-      if (elapsed < 6.5) frame = requestAnimationFrame(render);
-      else setRoll(null);
+      frame = requestAnimationFrame(render);
     }
-    frame = requestAnimationFrame(render);
+    void prepare();
     return () => {
+      cancelled = true;
       cancelAnimationFrame(frame);
       observer.disconnect();
       dice.forEach((d) => d.dispose());

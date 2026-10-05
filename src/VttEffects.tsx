@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Sparkles, Plus, Pencil, Trash2, X } from 'lucide-react';
+import { Sparkles, Plus, Pencil, Trash2, X, Eye } from 'lucide-react';
 import { actionMime } from '../shared/vtt-hotbar';
 import {
   effectKinds,
@@ -19,6 +19,7 @@ export function VttEffects({
   remove,
   apply,
   clear,
+  preview,
 }: {
   presets: EffectPreset[];
   token?: VttToken;
@@ -27,12 +28,22 @@ export function VttEffects({
   remove: (id: string) => Promise<void>;
   apply: (id: string) => Promise<void>;
   clear: () => Promise<void>;
+  preview: (preset: EffectPreset | null) => void;
 }) {
   const [open, setOpen] = useState(false),
     [draft, setDraft] = useState<EffectPreset | null>(null),
     [working, setWorking] = useState(false),
-    [error, setError] = useState('');
+    [error, setError] = useState(''),
+    [previewing, setPreviewing] = useState(false),
+    [previewId, setPreviewId] = useState<string | null>(null);
   const root = useRef<HTMLDivElement>(null);
+  const previewRef = useRef(preview);
+  previewRef.current = preview;
+  useEffect(() => {
+    const preset = draft || presets.find((e) => e.id === previewId);
+    previewRef.current(open && previewing && token && preset ? preset : null);
+    return () => previewRef.current(null);
+  }, [open, previewing, draft, previewId, token?.id, presets]);
   useEffect(() => {
     if (!open) return;
     const outside = (e: PointerEvent) => {
@@ -51,6 +62,7 @@ export function VttEffects({
   async function run(fn: () => Promise<void>) {
     if (working || busy) return;
     setWorking(true);
+    setPreviewing(false);
     setError('');
     try {
       await fn();
@@ -115,6 +127,19 @@ export function VttEffects({
                 </button>
                 <ActionShortcut action={{ kind: 'effect', sourceId: e.id, label: e.name }} />
                 <button
+                  aria-label={'Prévia de ' + e.name}
+                  title="Visualizar antes de aplicar"
+                  disabled={blocked || !token || token.layer === 'map'}
+                  aria-pressed={previewing && previewId === e.id && !draft}
+                  onClick={() => {
+                    setDraft(null);
+                    setPreviewId(e.id);
+                    setPreviewing(!previewing || previewId !== e.id);
+                  }}
+                >
+                  <Eye size={14} />
+                </button>
+                <button
                   aria-label={'Editar efeito ' + e.name}
                   disabled={blocked}
                   onClick={() => setDraft({ ...e })}
@@ -166,6 +191,20 @@ export function VttEffects({
                   onChange={(e) => setDraft({ ...draft, name: e.target.value })}
                 />
               </label>
+              <button
+                type="button"
+                disabled={!token || token.layer === 'map'}
+                aria-pressed={previewing}
+                onClick={() => setPreviewing(!previewing)}
+              >
+                <Eye size={14} /> {previewing ? 'Encerrar prévia no token' : 'Visualizar no token'}
+              </button>
+              {previewing && (
+                <p className="vtt-effects-preview-note">
+                  Prévia no token · ainda não aplicada. Os outros participantes não veem esta
+                  prévia.
+                </p>
+              )}
               <label>
                 Modelo
                 <select
@@ -217,6 +256,7 @@ export function VttEffects({
                     Duração (s)
                     <input
                       aria-label="Duração do efeito"
+                      disabled={draft.duration === 0}
                       type="number"
                       min="0"
                       max="60"
@@ -225,7 +265,15 @@ export function VttEffects({
                       onChange={(e) => setDraft({ ...draft, duration: Number(e.target.value) })}
                     />
                   </label>
-                  <small>0 mantém o efeito até limpar.</small>
+                  <label className="vtt-effects-infinite">
+                    <input
+                      type="checkbox"
+                      aria-label="Efeito infinito"
+                      checked={draft.duration === 0}
+                      onChange={(e) => setDraft({ ...draft, duration: e.target.checked ? 0 : 5 })}
+                    />{' '}
+                    Infinito · até limpar
+                  </label>
                 </div>
               ) : (
                 <p>

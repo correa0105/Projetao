@@ -1,5 +1,10 @@
 # Alvorada Cinzenta
 
+Mesa: entrada como jogador importa personagens; espectador só acompanha e pode
+seguir a visão de um jogador na névoa. Ataques com alvo oferecem dano após acerto.
+Efeitos têm prévia local e duração infinita. Dados 3D usam física e colisões reais.
+Migration 063 e [detalhes](docs/VTT-PERFIS-HALL.md).
+
 Mesa: morte mantém token inteiro vermelho com sangue, sem fragmentação. Efeitos
 salvos do mestre no canto inferior esquerdo podem ir à barra rápida, assim como
 ataques de monstros. Camadas na esquerda; direita em Chat, Biblioteca de arte,

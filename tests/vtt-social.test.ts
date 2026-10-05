@@ -47,7 +47,12 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
   async function request(path: string, who?: Account, method = 'GET', body?: unknown) {
     const r = await fetch(base + path, {
       method,
-      headers: { Origin: origin, Cookie: who?.cookie || '', 'Content-Type': 'application/json' },
+      headers: {
+        Origin: origin,
+        Cookie: who?.cookie || '',
+        'Content-Type': 'application/json',
+        'X-Vtt-Schema-Version': '2',
+      },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     return { status: r.status, data: await r.json(), headers: r.headers };
@@ -94,6 +99,7 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
           200,
         );
         assert.equal((await request(`/vtt/rooms/${room.id}`, player)).data.invite, undefined);
+        room = (await request(`/vtt/rooms/${room.id}`, adm)).data;
         const path = `/vtt/rooms/${room.id}`;
         assert.equal(
           (await request(path, player, 'PUT', { revision: room.revision, document: room.document }))
@@ -1139,6 +1145,127 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         assert.equal(r.data.document.background, path);
       },
     );
+    await t.test(
+      'entrada jogador/espectador, visão delegada e bloqueio completo de ações',
+      async () => {
+        const before = (await pool.query('SELECT * FROM characters WHERE user_id=$1', [player.id]))
+          .rows;
+        const created = (await request('/vtt', adm, 'POST', { name: 'Observação segura' })).data,
+          root = '/vtt/rooms/' + created.id;
+        const watch = await request('/vtt/join', other, 'POST', {
+          invite: created.invite,
+          role: 'spectator',
+        });
+        assert.equal(watch.status, 200, JSON.stringify(watch.data));
+        assert.equal(watch.data.role, 'spectator');
+        assert.equal(
+          (
+            await pool.query(
+              'SELECT count(*)::int AS n FROM vtt_character_links WHERE room_id=$1',
+              [created.id],
+            )
+          ).rows[0].n,
+          0,
+        );
+        const play = await request('/vtt/join', player, 'POST', {
+          invite: created.invite,
+          role: 'player',
+        });
+        assert.equal(play.data.role, 'player');
+        assert.equal(
+          play.data.document.scenes[0].tokens.filter((t: any) => t.characterId === p.id).length,
+          1,
+        );
+        let master = (await request(root, adm)).data;
+        const scene = master.document.scenes[0],
+          origin = scene.tokens.find((t: any) => t.characterId === p.id);
+        origin.x = 200;
+        origin.y = 200;
+        origin.vision = 60;
+        scene.width = 2000;
+        scene.height = 2000;
+        const near = {
+            ...newToken(randomUUID(), scene),
+            name: 'Perto',
+            x: 260,
+            y: 200,
+            notes: 'segredo',
+          },
+          far = { ...near, id: randomUUID(), name: 'Longe', x: 1600 },
+          hidden = { ...near, id: randomUUID(), name: 'Oculto', hidden: true },
+          gmOnly = { ...near, id: randomUUID(), name: 'Mestre', layer: 'gm' };
+        scene.tokens.push(near, far, hidden, gmOnly);
+        const saved = await request(root, adm, 'PUT', {
+          revision: master.revision,
+          document: master.document,
+        });
+        assert.equal(saved.status, 200, JSON.stringify(saved.data));
+        master = saved.data;
+        assert.equal(
+          (await request(root + '/viewpoint', other, 'PUT', { userId: adm.id })).status,
+          400,
+        );
+        const selected = await request(root + '/viewpoint', other, 'PUT', { userId: player.id });
+        assert.equal(selected.status, 200, JSON.stringify(selected.data));
+        assert.equal(selected.data.viewingUser, player.id);
+        const tokens = selected.data.document.scenes[0].tokens;
+        assert.ok(tokens.some((t: any) => t.id === near.id));
+        for (const t of [far, hidden, gmOnly]) assert.ok(!tokens.some((v: any) => v.id === t.id));
+        assert.ok(tokens.every((t: any) => !t.sheet && !t.notes));
+        assert.equal(selected.data.invite, undefined);
+        for (const [suffix, method, body] of [
+          ['/messages', 'POST', { text: 'Não permitido' }],
+          ['/characters/' + o.id, 'POST', {}],
+          ['/tokens/' + origin.id, 'PATCH', { x: 300 }],
+          ['/hotbar', 'PUT', {}],
+          ['/sheets/' + origin.id + '/damage', 'POST', { amount: 1 }],
+        ] as const) {
+          assert.equal((await request(root + suffix, other, method, body)).status, 403, suffix);
+        }
+        assert.equal((await request(root + '/sheets/' + origin.id, other)).status, 403);
+        assert.equal((await request(root + '/hotbar', other)).status, 403);
+        assert.equal((await request(root, adm)).data.revision, master.revision);
+        // Changing role imports once, and moving back to spectator never keeps control.
+        const asPlayer = await request(root + '/participation', other, 'POST', { role: 'player' });
+        assert.equal(asPlayer.status, 200);
+        const own = asPlayer.data.document.scenes[0].tokens.find(
+          (t: any) => t.characterId === o.id,
+        );
+        assert.ok(own);
+        const again = await request(root + '/participation', other, 'POST', { role: 'player' });
+        assert.equal(
+          again.data.document.scenes[0].tokens.filter((t: any) => t.characterId === o.id).length,
+          1,
+        );
+        await request(root + '/participation', other, 'POST', { role: 'spectator' });
+        assert.equal(
+          (await request(root + '/tokens/' + own.id, other, 'PATCH', { hp: 0 })).status,
+          403,
+        );
+        const after = (await request(root, adm)).data;
+        assert.equal(
+          (await request(root, adm, 'PUT', { revision: after.revision, document: after.document }))
+            .status,
+          200,
+        );
+        assert.deepEqual(
+          (await pool.query('SELECT * FROM characters WHERE user_id=$1', [player.id])).rows,
+          before,
+        );
+      },
+    );
+    await t.test('cliente antigo não pode substituir o documento com efeitos atuais', async () => {
+      const root = '/vtt/rooms/' + room.id,
+        current = (await request(root, adm)).data;
+      const r = await fetch(base + root, {
+        method: 'PUT',
+        headers: { Origin: origin, Cookie: adm.cookie, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ revision: current.revision, document: current.document }),
+      });
+      assert.equal(r.status, 409);
+      assert.match((await r.json()).error, /Recarregue/);
+      assert.equal((await request(root, adm)).data.revision, current.revision);
+    });
   } finally {
     await new Promise<void>((resolve) => server.close(() => resolve()));
     await pool.end();

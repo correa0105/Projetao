@@ -318,9 +318,12 @@ export type VttState = {
   revision: number;
   document: VttDocument;
   is_gm: boolean;
+  role: 'master' | 'player' | 'spectator';
+  viewingUser: string | null;
+  viewpoints: { id: string; name: string }[];
   invite?: string;
   assets: VttAsset[];
-  members: { id: string; name: string }[];
+  members: { id: string; name: string; role: 'master' | 'player' | 'spectator' }[];
   messages: VttMessage[];
   bossBars: BossBar[];
 };

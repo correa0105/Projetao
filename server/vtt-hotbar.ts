@@ -16,7 +16,7 @@ type Access = (
   id: string,
   user: string,
   lock?: boolean,
-) => Promise<{ owner_id: string; document: VttDocument }>;
+) => Promise<{ owner_id: string; document: VttDocument; role?: string | null }>;
 export function vttHotbarRouter(getRoom: Access) {
   const router = Router();
   router.get('/vtt/rooms/:id/hotbar/monster/:token/:action', async (req, res) => {
@@ -59,6 +59,8 @@ export function vttHotbarRouter(getRoom: Access) {
       .parse(req.body);
     const result = await transaction(async (db) => {
       const room = await getRoom(db, id, user, true);
+      if (room.role === 'spectator')
+        throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
       const {
         rows: [old],
       } = await db.query(

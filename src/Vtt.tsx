@@ -68,6 +68,7 @@ import {
   intersection,
   activateTokenVision,
   applyTokenDeath,
+  viewerSees,
   sceneBossBars,
   bossStyles,
   bossStyleNames,
@@ -81,6 +82,9 @@ import {
   type VttAsset,
 } from '../shared/vtt';
 import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
+import { VttAttack } from './VttAttack';
+import type { AttackRequest } from '../shared/vtt-attack';
+import { vttUpdateMessage } from '../shared/vtt-protocol';
 import { VttSheet } from './VttSheet';
 import { VttDice } from './VttDice';
 import { VttToolGroup } from './VttToolGroup';
@@ -265,6 +269,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [camera, setCamera] = useState<VttCamera>({ x: 1120, y: 840, zoom: 0.45 }),
     [bounds, setBounds] = useState({ width: 900, height: 700 }),
     [preview, setPreview] = useState(false),
+    [previewViewerId, setPreviewViewerId] = useState<string | null>(null),
+    [effectPreview, setEffectPreview] = useState<{
+      tokenId: string;
+      preset: EffectPreset;
+      at: number;
+    } | null>(null),
+    [attack, setAttack] = useState<AttackRequest | null>(null),
+    [joinRole, setJoinRole] = useState<'player' | 'spectator'>('player'),
     [showWalls, setShowWalls] = useState(true),
     [ruler, setRuler] = useState<Point[]>([]),
     [fogShape, setFogShape] = useState<'rect' | 'polygon' | 'brush'>('rect'),
@@ -335,7 +347,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     selectedWall = scene?.walls.find((w) => w.id === selection[0]),
     selectedDrawing = scene?.drawings.find((d) => d.id === selection[0]),
     gm = state?.is_gm === true,
-    canToken = gm || token?.controller === user.id;
+    spectator = state?.role === 'spectator',
+    canToken = !spectator && (gm || token?.controller === user.id),
+    viewer =
+      scene?.tokens.find((t) => t.id === previewViewerId && t.layer === 'tokens' && !t.hidden) ||
+      scene?.tokens.find(
+        (t) =>
+          t.controller === (spectator ? state?.viewingUser : user.id) &&
+          t.layer === 'tokens' &&
+          !t.hidden,
+      ) ||
+      (gm ? scene?.tokens.find((t) => t.layer === 'tokens' && !t.hidden) : null) ||
+      null;
   const resetDirty = () => {
     dirtyRef.current = false;
     setDirty(false);
@@ -343,6 +366,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   function receive(next: VttState, reset = true) {
     if (stateRef.current?.id !== next.id) {
       setOlderMessages([]);
+      setAttack(null);
+      setPreview(false);
+      setPreviewViewerId(null);
+      setEffectPreview(null);
       setHistoryEnd(false);
       setSheetId(null);
     }
@@ -492,12 +519,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     savePromise.current = promise;
     return promise;
   }, []);
-  async function act(fn: () => Promise<void>) {
+  async function act(fn: () => Promise<unknown>) {
     try {
       setNotice('');
       await fn();
     } catch (error) {
-      setNotice((error as Error).message);
+      setNotice((error as Error).name === 'ZodError' ? vttUpdateMessage : (error as Error).message);
     }
   }
   function fit(s = scene) {
@@ -513,7 +540,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   async function openRoom(id: string) {
     await save();
-    const next = await api<VttState>('/vtt/rooms/' + id);
+    let next = await api<VttState>('/vtt/rooms/' + id);
+    if (!next.is_gm && next.role === 'player')
+      next = await post<VttState>(`/vtt/rooms/${id}/participation`, { role: 'player' });
     receive(next);
     setSelection([]);
     undo.current = [];
@@ -569,7 +598,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         void api<VttState>('/vtt/rooms/' + id)
           .then((next) => {
             if (stateRef.current?.id === id && !dirtyRef.current && !drag.current) {
-              if (next.revision !== stateRef.current.revision) receive(next);
+              if (
+                next.revision !== stateRef.current.revision ||
+                next.role !== stateRef.current.role ||
+                next.viewingUser !== stateRef.current.viewingUser
+              )
+                receive(next);
               else {
                 setState(next);
                 stateRef.current = next;
@@ -598,38 +632,57 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     c.width = Math.round(bounds.width * dpr);
     c.height = Math.round(bounds.height * dpr);
     const draw = () =>
-      renderVtt(c.getContext('2d')!, scene, {
-        camera,
-        width: bounds.width,
-        height: bounds.height,
-        dpr,
-        images: images.current,
-        selected: selection,
-        gm,
-        preview,
-        viewer:
-          (token?.layer === 'tokens' ? token : null) ||
-          scene.tokens.find((t) => t.controller === user.id && t.layer === 'tokens' && !t.hidden) ||
-          scene.tokens.find((t) => t.layer === 'tokens' && !t.hidden) ||
-          null,
-        layer,
-        ruler,
-        draft: fogPoints.length
-          ? {
-              id: 'fog-preview',
-              kind: 'pen',
-              points: [...fogPoints, ...(fogPointer ? [fogPointer] : [])],
-              color: tool === 'reveal' ? '#96c9aa' : '#d29283',
-              width: 2,
-              fill: false,
-              text: '',
-              layer: 'tokens',
-            }
-          : draft,
-        showWalls,
-        ping,
-        userId: user.id,
-      });
+      renderVtt(
+        c.getContext('2d')!,
+        spectator && !scene.fog && !state?.viewingUser
+          ? { ...scene, lighting: false }
+          : effectPreview && gm
+            ? {
+                ...scene,
+                tokens: scene.tokens.map((t) =>
+                  t.id !== effectPreview.tokenId
+                    ? t
+                    : effectPreview.preset.kind === 'death'
+                      ? { ...t, deathAt: effectPreview.at }
+                      : {
+                          ...t,
+                          effects: [
+                            ...t.effects.filter((e) => e.kind !== effectPreview.preset.kind),
+                            { ...effectPreview.preset, duration: 0, at: effectPreview.at },
+                          ],
+                        },
+                ),
+              }
+            : scene,
+        {
+          camera,
+          width: bounds.width,
+          height: bounds.height,
+          dpr,
+          images: images.current,
+          selected: selection,
+          gm,
+          preview,
+          viewer,
+          layer,
+          ruler,
+          draft: fogPoints.length
+            ? {
+                id: 'fog-preview',
+                kind: 'pen',
+                points: [...fogPoints, ...(fogPointer ? [fogPointer] : [])],
+                color: tool === 'reveal' ? '#96c9aa' : '#d29283',
+                width: 2,
+                fill: false,
+                text: '',
+                layer: 'tokens',
+              }
+            : draft,
+          showWalls,
+          ping,
+          userId: spectator ? state?.viewingUser || '' : user.id,
+        },
+      );
     draw();
     let frame = 0;
     const ends = scene.tokens
@@ -641,10 +694,20 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       ...ends,
     );
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
-    if (until > Date.now() && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const animate = () => {
-        draw();
-        if (Date.now() < until) frame = requestAnimationFrame(animate);
+    const infinite =
+      !!effectPreview ||
+      scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death'));
+    if (
+      (infinite || until > Date.now()) &&
+      !matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      let lastDraw = 0;
+      const animate = (now: number) => {
+        if (now - lastDraw >= 32 && !document.hidden) {
+          draw();
+          lastDraw = now;
+        }
+        if (infinite || Date.now() < until) frame = requestAnimationFrame(animate);
       };
       frame = requestAnimationFrame(animate);
     }
@@ -658,6 +721,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     bounds,
     selection,
     preview,
+    previewViewerId,
+    state?.viewingUser,
+    effectPreview,
     imageVersion,
     layer,
     ruler,
@@ -837,6 +903,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
     e.currentTarget.setPointerCapture(e.pointerId);
+    if (spectator) {
+      drag.current = {
+        kind: 'pan',
+        start: p,
+        last: p,
+        screen: { x: e.clientX, y: e.clientY },
+        camera,
+        original: doc,
+        tokens: [],
+      };
+      return;
+    }
     if (tool === 'ping') {
       setPing(p);
       setTimeout(() => setPing(null), 1800);
@@ -907,7 +985,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           return;
         }
       }
-      const hit = tokenAt(p, scene, layer, gm);
+      const hitScene =
+        gm && preview
+          ? {
+              ...scene,
+              tokens: scene.tokens.filter(
+                (t) =>
+                  !t.hidden &&
+                  t.layer !== 'gm' &&
+                  (!viewer ? t.layer === 'map' : t.layer === 'map' || viewerSees(viewer, t, scene)),
+              ),
+            }
+          : scene;
+      const hit = spectator ? null : tokenAt(p, hitScene, layer, gm && !preview);
       if (hit) {
         const ids = e.shiftKey
           ? selection.includes(hit.id)
@@ -918,7 +1008,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             : [hit.id];
         setSelection(ids);
         setTab('token');
-        if (!hit.locked && (gm || hit.controller === user.id)) {
+        if (!preview && !hit.locked && (gm || hit.controller === user.id)) {
           drag.current = {
             kind: 'tokens',
             start: p,
@@ -930,10 +1020,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               (t) => ids.includes(t.id) && (gm || t.controller === user.id) && !t.locked,
             ),
           };
-          if (gm) {
-            undo.current.push(structuredClone(doc));
-            redo.current = [];
-          }
         }
         return;
       }
@@ -1070,7 +1156,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (d.kind === 'tokens') {
+      const current = docRef.current!.scenes.find((s) => s.id === docRef.current!.activeScene)!;
+      if (
+        !d.tokens.some((t) => {
+          const next = current.tokens.find((n) => n.id === t.id);
+          return next && (next.x !== t.x || next.y !== t.y);
+        })
+      )
+        return;
       if (gm) {
+        undo.current.push(d.original);
+        redo.current = [];
         serial.current++;
         dirtyRef.current = true;
         setDirty(true);
@@ -1252,6 +1348,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setNotice(`${entries.length} entradas adicionadas à biblioteca da mesa.`);
   }
   function openSheet(t = token) {
+    if (spectator) return;
     if (t?.characterId) setSheetId(t.id);
     else {
       setTab('sheet');
@@ -1287,16 +1384,21 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setTab('chat');
   }
   async function send(formulaValue = '', textValue = chat, spellId?: string) {
+    if (spectator) throw Error('Espectadores podem somente assistir à mesa.');
     await save();
-    const next = await post<VttState>(`/vtt/rooms/${state!.id}/messages`, {
-      ...(spellId ? { spell_id: spellId } : {}),
-      text: textValue,
-      formula: formulaValue,
-      private: privateRoll,
-    });
+    const next = await post<VttState & { createdMessageId: string }>(
+      `/vtt/rooms/${state!.id}/messages`,
+      {
+        ...(spellId ? { spell_id: spellId } : {}),
+        text: textValue,
+        formula: formulaValue,
+        private: privateRoll,
+      },
+    );
     setState(next);
     stateRef.current = next;
     setChat('');
+    return next.messages.find((m) => m.id === next.createdMessageId)?.roll || null;
   }
   const journal = doc?.journal.find((j) => j.id === journalId);
   if (!state || !doc || !scene)
@@ -1342,7 +1444,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onSubmit={(e) => {
               e.preventDefault();
               void act(async () => {
-                const next = await post<VttState>('/vtt/join', { invite: inviteInput.trim() });
+                const next = await post<VttState>('/vtt/join', {
+                  invite: inviteInput.trim(),
+                  role: joinRole,
+                });
                 receive(next);
               });
             }}
@@ -1350,6 +1455,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             <label>
               Código de convite
               <input value={inviteInput} onChange={(e) => setInviteInput(e.target.value)} />
+            </label>
+            <label>
+              Entrar como
+              <select
+                aria-label="Entrar como"
+                value={joinRole}
+                onChange={(e) => setJoinRole(e.target.value as 'player' | 'spectator')}
+              >
+                <option value="player">Jogador · trazer meus personagens</option>
+                <option value="spectator">Espectador · somente assistir</option>
+              </select>
             </label>
             <button>Entrar na mesa</button>
           </form>
@@ -1378,6 +1494,54 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           ))}
           {!rooms.some((r) => r.id === state.id) && <option value={state.id}>{doc.name}</option>}
         </select>
+        {!gm && (
+          <div className="vtt-participation">
+            {!gm && (
+              <select
+                aria-label="Participação na mesa"
+                value={state.role}
+                disabled={busy}
+                onChange={(e) =>
+                  void act(async () => {
+                    receive(
+                      await post<VttState>(`/vtt/rooms/${state.id}/participation`, {
+                        role: e.target.value,
+                      }),
+                    );
+                    setSelection([]);
+                    setSheetId(null);
+                  })
+                }
+              >
+                <option value="player">Jogador</option>
+                <option value="spectator">Espectador</option>
+              </select>
+            )}
+            {spectator && (
+              <select
+                aria-label="Ver pela visão de"
+                value={state.viewingUser || ''}
+                onChange={(e) =>
+                  void act(async () =>
+                    receive(
+                      await api<VttState>(`/vtt/rooms/${state.id}/viewpoint`, {
+                        method: 'PUT',
+                        body: JSON.stringify({ userId: e.target.value || null }),
+                      }),
+                    ),
+                  )
+                }
+              >
+                <option value="">Escolher visão do jogador</option>
+                {state.viewpoints.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+        )}
         <div className="vtt-top-actions">
           {gm && (
             <button
@@ -1445,16 +1609,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }}
             />
           )}
-          <button
-            aria-label="Escolher dados"
-            title="Escolher dados"
-            aria-pressed={diceOpen}
-            onClick={() => setDiceOpen((v) => !v)}
-          >
-            <Dices size={20} />
-          </button>
+          {!spectator && (
+            <button
+              aria-label="Escolher dados"
+              title="Escolher dados"
+              aria-pressed={diceOpen}
+              onClick={() => setDiceOpen((v) => !v)}
+            >
+              <Dices size={20} />
+            </button>
+          )}
           {toolList
-            .filter((t) => gm || !t.gm)
+            .filter((t) => (spectator ? t.id === 'pan' : gm || !t.gm))
             .map(({ id, name, icon: Icon }) =>
               ['circle', 'cone', 'line', 'hide'].includes(id) ? null : id === 'rect' ? (
                 <VttToolGroup
@@ -1563,22 +1729,30 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         <div className="vtt-stage" ref={stage}>
           <VttDice messages={state.messages} roomId={state.id} enabled={dice3d} />
           <VttBossBars bars={gm ? sceneBossBars(scene) : state.bossBars} />
-          <VttHotbar
-            key={state.id}
-            roomId={state.id}
-            tokens={scene.tokens}
-            sheetOpen={!!sheetId}
-            roll={send}
-            shareSpell={shareSpell}
-            refresh={refreshRoom}
-            gm={gm}
-            applyEffect={applyEffect}
-          />
+          {!spectator && (
+            <VttHotbar
+              key={state.id}
+              roomId={state.id}
+              tokens={scene.tokens}
+              sheetOpen={!!sheetId}
+              roll={send}
+              shareSpell={shareSpell}
+              refresh={refreshRoom}
+              gm={gm}
+              applyEffect={applyEffect}
+              onAttack={setAttack}
+            />
+          )}
           {gm && !sheetId && (
             <VttEffects
               presets={doc.effects}
               token={token}
               busy={busy}
+              preview={(preset) =>
+                setEffectPreview(
+                  preset && token ? { tokenId: token.id, preset, at: Date.now() } : null,
+                )
+              }
               save={saveEffect}
               remove={async (id) => {
                 edit((d) => {
@@ -1619,6 +1793,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             }}
             onContextMenu={(e) => {
               e.preventDefault();
+              if (spectator || preview) return;
               setTool('select');
               const p = point(e),
                 hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
@@ -1658,6 +1833,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               setCamera({ zoom, x: p.x - dx / zoom, y: p.y - dy / zoom });
             }}
             onDoubleClick={(e) => {
+              if (spectator) return;
               if (['reveal', 'hide'].includes(tool) && fogPoints.length >= 3) {
                 commitFog(fogPoints);
                 return;
@@ -1682,7 +1858,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             }}
           />
-          {diceOpen && (
+          {diceOpen && !spectator && (
             <div className="vtt-dice-picker" role="dialog" aria-label="Lançador de dados">
               <header>
                 <strong>Lançar dados</strong>
@@ -1695,7 +1871,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   <div className="vtt-dice-row" key={n}>
                     <button
                       aria-label={'Rolar 1d' + n}
-                      disabled={busy}
+                      disabled={busy || spectator}
                       onClick={() => {
                         setDiceSides(n);
                         setDiceCount(1);
@@ -1811,7 +1987,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               <button
                 className={preview ? 'is-active' : ''}
                 aria-pressed={preview}
-                onClick={() => setPreview((v) => !v)}
+                onClick={() => {
+                  setPreviewViewerId(
+                    preview
+                      ? null
+                      : token?.layer === 'tokens' && !token.hidden
+                        ? token.id
+                        : viewer?.id || null,
+                  );
+                  setPreview((v) => !v);
+                }}
               >
                 <Eye size={14} />
                 Visão do jogador
@@ -1854,8 +2039,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           )}
           <div className="vtt-map-footer">
             <span>
-              {toolList.find((t) => t.id === tool)?.name} · {scene.grid.scale} {scene.grid.unit} por
-              célula
+              {spectator
+                ? 'Espectador · somente visualização'
+                : effectPreview
+                  ? 'Prévia do efeito · ainda não aplicado'
+                  : ''}
             </span>
             <div>
               <button
@@ -2394,11 +2582,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               onChange={(e) => editToken({ controller: e.target.value || null })}
                             >
                               <option value="">Somente mestre</option>
-                              {state.members.map((m) => (
-                                <option key={m.id} value={m.id}>
-                                  {m.name}
-                                </option>
-                              ))}
+                              {state.members
+                                .filter((m) => m.id === user.id || m.role !== 'spectator')
+                                .map((m) => (
+                                  <option key={m.id} value={m.id}>
+                                    {m.name}
+                                  </option>
+                                ))}
                             </select>
                           </label>
                           <label className="vtt-check">
@@ -2753,7 +2943,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </a>
                 </>
               )}
-              {tab === 'sheet' && (
+              {spectator && tab === 'sheet' && (
+                <p className="vtt-muted">
+                  Espectadores acompanham a mesa sem trazer fichas. Escolha a visão de um jogador no
+                  topo.
+                </p>
+              )}
+              {tab === 'sheet' && !spectator && (
                 <>
                   <h3>Trazer personagem do site</h3>
                   <p className="vtt-muted">
@@ -2875,38 +3071,42 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {tab === 'chat' && (
                 <>
-                  <div className="vtt-dice-buttons">
-                    {[4, 6, 8, 10, 12, 20, 100].map((n) => (
-                      <button key={n} onClick={() => void act(() => send('1d' + n, ''))}>
-                        d{n}
-                      </button>
-                    ))}
-                  </div>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      void act(() => send(formula, ''));
-                    }}
-                  >
-                    <label>
-                      Rolagem
-                      <input
-                        value={formula}
-                        onChange={(e) => setFormula(e.target.value)}
-                        placeholder="2d6+3 ou 2d20kh1"
-                        maxLength={100}
-                      />
-                    </label>
-                    <button className="vtt-gold">Rolar dados</button>
-                  </form>
-                  <label className="vtt-check">
-                    <input
-                      type="checkbox"
-                      checked={privateRoll}
-                      onChange={(e) => setPrivateRoll(e.target.checked)}
-                    />
-                    Somente você e o mestre
-                  </label>
+                  {!spectator && (
+                    <>
+                      <div className="vtt-dice-buttons">
+                        {[4, 6, 8, 10, 12, 20, 100].map((n) => (
+                          <button key={n} onClick={() => void act(() => send('1d' + n, ''))}>
+                            d{n}
+                          </button>
+                        ))}
+                      </div>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          void act(() => send(formula, ''));
+                        }}
+                      >
+                        <label>
+                          Rolagem
+                          <input
+                            value={formula}
+                            onChange={(e) => setFormula(e.target.value)}
+                            placeholder="2d6+3 ou 2d20kh1"
+                            maxLength={100}
+                          />
+                        </label>
+                        <button className="vtt-gold">Rolar dados</button>
+                      </form>
+                      <label className="vtt-check">
+                        <input
+                          type="checkbox"
+                          checked={privateRoll}
+                          onChange={(e) => setPrivateRoll(e.target.checked)}
+                        />
+                        Somente você e o mestre
+                      </label>
+                    </>
+                  )}
                   {!historyEnd && (
                     <button
                       onClick={() =>
@@ -2985,51 +3185,57 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                         </article>
                       ))}
                   </div>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      void act(() => send('', chat));
-                    }}
-                  >
-                    <label>
-                      Mensagem
-                      <textarea
-                        value={chat}
-                        onChange={(e) => setChat(e.target.value)}
-                        maxLength={2000}
-                        rows={2}
-                      />
-                    </label>
-                    <button>Enviar à mesa</button>
-                  </form>
-                  <h3>Macros</h3>
-                  {doc.macros.map((m) => (
-                    <div className="vtt-list-row" key={m.id}>
-                      <button onClick={() => void act(() => send(m.formula, m.name))}>
-                        {m.name}
-                      </button>
+                  {!spectator && (
+                    <>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          void act(() => send('', chat));
+                        }}
+                      >
+                        <label>
+                          Mensagem
+                          <textarea
+                            value={chat}
+                            onChange={(e) => setChat(e.target.value)}
+                            maxLength={2000}
+                            rows={2}
+                          />
+                        </label>
+                        <button>Enviar à mesa</button>
+                      </form>
+                      <h3>Macros</h3>
+                      {doc.macros.map((m) => (
+                        <div className="vtt-list-row" key={m.id}>
+                          <button onClick={() => void act(() => send(m.formula, m.name))}>
+                            {m.name}
+                          </button>
+                          {gm && (
+                            <button
+                              aria-label={'Excluir macro ' + m.name}
+                              onClick={() =>
+                                edit((d) => (d.macros = d.macros.filter((v) => v.id !== m.id)))
+                              }
+                            >
+                              <Trash2 size={12} />
+                            </button>
+                          )}
+                        </div>
+                      ))}
                       {gm && (
                         <button
-                          aria-label={'Excluir macro ' + m.name}
-                          onClick={() =>
-                            edit((d) => (d.macros = d.macros.filter((v) => v.id !== m.id)))
-                          }
+                          onClick={() => {
+                            const name = prompt('Nome da macro');
+                            if (name)
+                              edit((d) =>
+                                d.macros.push({ id: crypto.randomUUID(), name, formula }),
+                              );
+                          }}
                         >
-                          <Trash2 size={12} />
+                          Salvar rolagem como macro
                         </button>
                       )}
-                    </div>
-                  ))}
-                  {gm && (
-                    <button
-                      onClick={() => {
-                        const name = prompt('Nome da macro');
-                        if (name)
-                          edit((d) => d.macros.push({ id: crypto.randomUUID(), name, formula }));
-                      }}
-                    >
-                      Salvar rolagem como macro
-                    </button>
+                    </>
                   )}
                 </>
               )}
@@ -3514,14 +3720,30 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           </aside>
         )}
       </div>
-      {sheetId && scene.tokens.find((t) => t.id === sheetId) && (
+      {!spectator && sheetId && scene.tokens.find((t) => t.id === sheetId) && (
         <VttSheet
           roomId={state.id}
           token={scene.tokens.find((t) => t.id === sheetId)!}
           close={() => setSheetId(null)}
           roll={send}
+          onAttack={setAttack}
           refresh={refreshRoom}
           shareSpell={shareSpell}
+        />
+      )}
+      {attack && !spectator && (
+        <VttAttack
+          request={attack}
+          tokens={
+            gm && preview
+              ? scene.tokens.filter(
+                  (t) => !t.hidden && t.layer !== 'gm' && !!viewer && viewerSees(viewer, t, scene),
+                )
+              : scene.tokens
+          }
+          selected={selection[0]}
+          close={() => setAttack(null)}
+          roll={send}
         />
       )}
       {gm && mapsOpen && (

@@ -62,6 +62,15 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Direção posterior de 05/10: participação jogador/espectador (063). Jogador traz
+seus personagens automaticamente, sem duplicar/restaurar. Espectador só vê:
+não trazer fichas nem permitir chat/dados/movimento/recursos; bloquear no servidor.
+Na névoa, acompanha projeção de um jogador escolhido, sem dados privados. Efeitos
+no rodapé, prévia local no token e opção Infinito; animações distintas por modelo.
+Ataques com alvo comparam CA e oferecem dano no acerto. Dados 3D usam corpos
+convexos/colisões/atrito (cannon-es), mantendo resultados do servidor. Seleção sem
+movimento não salva e observador da prévia permanece fixo. Detalhes no contexto.
+
 Direção posterior de 05/10: morte sem fragmentos, apenas token inteiro vermelho
 e sangue. Menu Efeitos do mestre no canto inferior esquerdo, presets no documento
 da mesa e atalhos arrastáveis, inclusive ataques de monstros. Presets privados;

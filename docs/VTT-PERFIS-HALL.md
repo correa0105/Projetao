@@ -1,5 +1,44 @@
 # Mesa virtual, perfis, amigos e Hall da Fama — 05/10/2026
 
+## Participação, combate, efeitos e física (05/10/2026)
+
+Entrada oferece Jogador ou Espectador. Jogador importa automaticamente seus
+personagens no mapa ativo, com vínculo/retrato e cópia de sessão; reencontros
+não duplicam tokens nem restauram PV/recursos. Participação persiste por mesa
+na migration 063. Espectador não importa ficha, não move tokens, não envia chat,
+não rola dados e não usa ficha/barra de ações. A API bloqueia essas operações,
+inclusive sob o lock transacional. Na névoa, escolhe um jogador com token visível
+no mapa e recebe a mesma projeção de visão desse jogador, sem fichas, notas ou
+arquivos ocultos. Sem névoa e sem visão escolhida, acompanha os tokens públicos.
+Pode trocar participação no topo, inclusive em telas pequenas.
+
+Ataques da ficha e dos atalhos de jogador/monstro abrem seleção de alvo. Resultado
+real do servidor é comparado à CA: igualdade acerta, 1 natural falha, 20 natural
+acerta. Acerto oferece Rolar dano; crítico dobra dados sem dobrar modificador.
+Componentes de dano são publicados no chat, e aplicação dos PV continua manual.
+A opção Dano separado preserva rolagens avulsas e ações de salvaguarda.
+
+Efeitos ocupa o lugar do antigo indicador de ferramenta no rodapé esquerdo.
+Prévia aparece no token só para o mestre, sem escrever no documento; fecha ao
+sair do menu. Duração Infinito mantém a animação até limpar. Chamas/brasas,
+cristais/neve, fumaça/bolhas de veneno, runas/raios de cura e arcos elétricos
+usam desenhos e movimentos distintos. Token morto continua inteiro e vermelho
+com sangue. O menu abre acima da barra de atalhos para permitir arraste.
+
+Dados usam cannon-es com cascos convexos das próprias malhas, gravidade,
+atrito, restituição, chão e bordas; resolvem colisões entre dados em passos
+fixos de 1/120 s. Trajetória física é preparada em pequenos blocos e reproduzida
+com interpolação, sem guiar cada dado a uma posição fixa. Faces são numeradas
+antes da reprodução para manter o resultado aleatório recebido do servidor.
+Impactos reais acionam o som. Movimento reduzido mostra o repouso. Seleção sem
+arraste não salva tokens; prévia do jogador mantém o observador ao selecionar
+outro token. Protocolo 2 bloqueia substituições do documento por clientes antigos.
+
+Validação: PostgreSQL descartável (21 testes), geometria/colisão/combate unitários,
+navegador com jogadores e espectador, prévia sem persistência, arraste de efeitos,
+dados WebGL e layouts 1440/768/390/320. Backup antes de deploy e preservação dos
+dados originais obrigatórios.
+
 ## Ferramentas, atalhos, boss e morte
 
 Navegação direita: Chat, Biblioteca de arte, Fichas, Biblioteca (monstros/magias),
@@ -36,7 +75,7 @@ barreiras e círculos legados ao ativar visão em mapas antigos afetados.
 
 Lançador tem sete linhas D4/D6/D8/D10/D12/D20/D100 e quantidades rápidas 1–6;
 entrada manual até 100 com modificador e opção privada. D100 mantém dois D10.
-Dados percorrem mais espaço, giram e quicam por 3,2 segundos, mantendo o
+Dados percorrem a tela com física de colisão, atrito e repouso, mantendo o
 resultado recebido do servidor. Som respeita o controle global de efeitos.
 
 Barra de ações: dez espaços numerados, até vinte abas por jogador/mesa.

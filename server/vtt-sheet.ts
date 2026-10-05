@@ -8,7 +8,7 @@ import { deriveSheet, classRules } from '../shared/character-sheet.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
 import { applyTokenDeath, type VttDocument } from '../shared/vtt.js';
 type DB = Pick<PoolClient, 'query'>;
-type Room = { id: string; owner_id: string; document: VttDocument };
+type Room = { id: string; owner_id: string; document: VttDocument; role?: string | null };
 type RoomAccess = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
 const uuid = z.string().uuid();
 const nine = z.array(z.number().int().min(0).max(30)).length(9);
@@ -21,6 +21,7 @@ async function access(
   lock = false,
 ) {
   const room = await getRoom(db, rid, user, lock);
+  if (room.role === 'spectator') throw new AppError(403, 'Espectadores não têm acesso à ficha.');
   const scene = room.document.scenes.find((s) => s.id === room.document.activeScene)!;
   const token = scene.tokens.find((t) => t.id === tid);
   if (!token?.characterId) throw new AppError(404, 'Este token não tem personagem importado.');

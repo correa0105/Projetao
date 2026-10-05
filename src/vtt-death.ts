@@ -15,18 +15,43 @@ export function drawDeath(c: CanvasRenderingContext2D, t: VttToken) {
   c.fillStyle = '#66100ee0';
   c.strokeStyle = '#240609';
   c.lineWidth = 1;
+  const growth = 0.4 + 0.6 * progress;
+  const points = Array.from({ length: 24 }, (_, i) => {
+    const a = (i / 24) * Math.PI * 2,
+      r = radius * (0.85 + rand(i) * 0.38) * growth;
+    return { x: Math.cos(a) * r, y: Math.sin(a) * r };
+  });
+  const last = points.at(-1)!,
+    first = points[0];
   c.beginPath();
-  for (let i = 0; i < 60; i++) {
-    const a = (i / 60) * Math.PI * 2,
-      r = radius * (0.65 + rand(i) * 1.1) * (0.4 + 0.6 * progress);
-    const x = Math.cos(a) * r,
-      y = Math.sin(a) * r;
-    if (!i) c.moveTo(x, y);
-    else c.lineTo(x, y);
-  }
+  c.moveTo((last.x + first.x) / 2, (last.y + first.y) / 2);
+  points.forEach((p, i) => {
+    const next = points[(i + 1) % points.length];
+    c.quadraticCurveTo(p.x, p.y, (p.x + next.x) / 2, (p.y + next.y) / 2);
+  });
   c.closePath();
+  const pool = c.createRadialGradient(0, 0, radius * 0.4, 0, 0, radius * 1.3);
+  pool.addColorStop(0, '#79140ee8');
+  pool.addColorStop(1, '#480b0ddc');
+  c.fillStyle = pool;
   c.fill();
   c.stroke();
+  c.fillStyle = '#64100fdf';
+  for (let i = 0; i < 12; i++) {
+    const a = rand(i + 610) * Math.PI * 2,
+      tip = radius * (1.3 + rand(i + 620) * 0.65) * growth,
+      width = radius * (0.025 + rand(i + 630) * 0.035),
+      start = radius * 0.65 * growth;
+    c.save();
+    c.rotate(a);
+    c.beginPath();
+    c.moveTo(start, -width * 2.1);
+    c.bezierCurveTo(tip * 0.65, -width * 1.6, tip, -width, tip + width, 0);
+    c.bezierCurveTo(tip, width * 1.1, tip * 0.65, width * 1.6, start, width * 2.1);
+    c.closePath();
+    c.fill();
+    c.restore();
+  }
   for (let i = 0; i < 50; i++) {
     const a = rand(i + 100) * Math.PI * 2,
       r = radius * (1 + rand(i + 200) * 1.05) * progress;

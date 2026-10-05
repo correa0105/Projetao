@@ -12,6 +12,7 @@ import { sheetAttacks, spells } from '../shared/character-sheet';
 import type { VttSheetData } from '../shared/vtt-sheet';
 import type { VttToken } from '../shared/vtt';
 import type { MonsterAction } from '../shared/vtt-monster-actions';
+import type { AttackRequest } from '../shared/vtt-attack';
 import './vtt-hotbar.css';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
 export function ActionShortcut({ action }: { action: HotbarAction }) {
@@ -40,11 +41,13 @@ export function VttHotbar({
   refresh,
   gm,
   applyEffect,
+  onAttack,
 }: {
   roomId: string;
   tokens: VttToken[];
   sheetOpen: boolean;
-  roll: (formula: string, label: string) => Promise<void>;
+  roll: (formula: string, label: string) => Promise<unknown>;
+  onAttack: (request: AttackRequest) => void;
   shareSpell: (name: string) => Promise<void>;
   refresh: () => Promise<void>;
   gm: boolean;
@@ -189,7 +192,12 @@ export function VttHotbar({
         );
         const label = monster.tokenName + ' · ' + monster.action.name;
         if (mode === 'attack' && monster.action.attack)
-          await roll(monster.action.attack, label + ' · ataque');
+          onAttack({
+            actorId: action.tokenId,
+            name: label,
+            attack: monster.action.attack,
+            damage: monster.action.damage,
+          });
         else if (mode === 'damage') {
           for (const formula of monster.action.damage) await roll(formula, label + ' · dano');
         } else if (mode === 'description')
@@ -201,10 +209,18 @@ export function VttHotbar({
           choices &&
           sheetAttacks(c.race, c.class, c.stats, choices).find((w) => w.name === action.sourceId);
         if (!attack) throw Error('Este ataque não está mais na ficha.');
-        await roll(
-          mode === 'damage' ? attack.dice + signed(attack.ability) : '1d20' + signed(attack.attack),
-          data.token.name + ' · ' + attack.name + (mode === 'damage' ? ' · dano' : ' · ataque'),
-        );
+        if (mode === 'attack')
+          onAttack({
+            actorId: data.token.id,
+            name: data.token.name + ' · ' + attack.name,
+            attack: '1d20' + signed(attack.attack),
+            damage: attack.dice === '—' ? [] : [attack.dice + signed(attack.ability)],
+          });
+        else
+          await roll(
+            attack.dice + signed(attack.ability),
+            data.token.name + ' · ' + attack.name + ' · dano separado',
+          );
       } else if (action.kind === 'spell' && data) {
         const spell = spells.find((s) => s.id === action.sourceId);
         if (!spell) throw Error('Magia indisponível.');
@@ -306,7 +322,7 @@ export function VttHotbar({
               )}
               {!!selected.monster?.action.damage.length && (
                 <button disabled={busy} onClick={() => void execute('damage')}>
-                  Rolar dano
+                  Rolar dano separado
                 </button>
               )}
               <button
@@ -322,7 +338,7 @@ export function VttHotbar({
                 Rolar ataque
               </button>
               <button disabled={busy || !selected.data} onClick={() => void execute('damage')}>
-                Rolar dano
+                Rolar dano separado
               </button>
             </>
           ) : selected.action.kind === 'spell' ? (
