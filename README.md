@@ -1,5 +1,11 @@
 # Alvorada Cinzenta
 
+Para publicar um card no **Início → Diário** pelo console do navegador, use
+[scripts/browser/adicionar-card-diario.js](scripts/browser/adicionar-card-diario.js).
+Edite os campos do card, entre com uma conta administradora e cole o arquivo
+inteiro em **F12 → Console**. Cada execução cria uma publicação no PostgreSQL;
+recarregue a página para vê-la. O script usa a API e a sessão normal do site.
+
 Mesa: entrada como jogador importa personagens; espectador só acompanha e pode
 seguir a visão de um jogador na névoa. Ataques com alvo oferecem dano após acerto.
 Efeitos têm prévia local e duração infinita. Dados 3D usam física e colisões reais.
