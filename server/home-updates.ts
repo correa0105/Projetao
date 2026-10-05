@@ -51,6 +51,14 @@ export function homeUpdatesRouter() {
     );
     res.status(201).json(row);
   });
+  router.get('/home-updates/:id', async (req, res) => {
+    const result = await pool.query(
+      `SELECT h.*,u.name AS author_name,${administratorPredicate(2)} AS can_edit FROM home_updates h JOIN "user" u ON u.id=h.author_id WHERE h.id=$1`,
+      [idSchema.parse(req.params.id), res.locals.user.id],
+    );
+    if (!result.rowCount) throw new AppError(404, 'Publicação não encontrada.');
+    res.json(result.rows[0]);
+  });
   router.put('/home-updates/:id', async (req, res) => {
     const id = idSchema.parse(req.params.id),
       input = homeUpdateSchema.parse(req.body);

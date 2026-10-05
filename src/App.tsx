@@ -50,7 +50,7 @@ import { Notifications } from './Notifications';
 import { Stable } from './Stable';
 import { PetShop } from './PetShop';
 import { Events } from './Events';
-import { TitleHall } from './Titles';
+import { Achievements } from './Achievements';
 import { Cards } from './Cards';
 import { Shop } from './Shop';
 import { Inventory } from './Inventory';
@@ -92,7 +92,7 @@ const statusLabel = {
 };
 const initialPage = (): Page => {
   const key = location.hash.slice(1);
-  if (key === 'achievements') return 'titles';
+  if (key === 'titles') return 'achievements';
   return key in titles ? (key as Page) : 'overview';
 };
 
@@ -507,14 +507,6 @@ function Portal({ user }: { user: User }) {
     if (page === 'events') return <Events />;
     if (page === 'cards')
       return <Cards key={character?.id || 'visitor'} character={character} onPurchased={refresh} />;
-    if (page === 'titles')
-      return (
-        <TitleHall
-          key={character?.id || 'catalog'}
-          characterId={character?.id}
-          canEdit={administrator}
-        />
-      );
     return (
       <>
         {page !== 'characters' && page !== 'lore' && page !== 'pets' && (
@@ -563,6 +555,12 @@ function Portal({ user }: { user: User }) {
                 setDetails((current) => (current ? { ...current, inventory } : current))
               }
             />
+          ))}
+        {page === 'achievements' &&
+          (character ? (
+            <Achievements key={character.id} characterId={character.id} />
+          ) : (
+            noCharacter
           ))}
         {['missions', 'board', 'hooks', 'stable'].includes(page) && (
           <NoticeBoard

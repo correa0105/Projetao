@@ -5,7 +5,7 @@ export const pets = [
     price_cp: 1000,
     cell: 0,
     description: 'Fiel, curioso e sempre pronto para uma caminhada.',
-    sign: 'Ele já está de olho na porta. Acho que quer passear com você.',
+    sign: 'Vigia sua mochila. O lanche que sumir foi inspeção de segurança.',
   },
   {
     id: 'cat',
@@ -13,7 +13,7 @@ export const pets = [
     price_cp: 1500,
     cell: 1,
     description: 'Um observador de bigodes, com horários e opiniões próprios.',
-    sign: 'Se ele deitar na sua mochila, considere a escolha feita.',
+    sign: 'Carinho só no horário dele. Reclamações também.',
   },
   {
     id: 'rabbit',
@@ -21,7 +21,7 @@ export const pets = [
     price_cp: 500,
     cell: 2,
     description: 'Orelhas atentas, patas leves e gosto por cantinhos tranquilos.',
-    sign: 'Esse gosta de colo, mas só depois de pegar confiança.',
+    sign: 'Faz cenouras sumirem. Não é magia, mas impressiona.',
   },
   {
     id: 'owl',
@@ -29,7 +29,7 @@ export const pets = [
     price_cp: 3000,
     cell: 3,
     description: 'Uma companheira noturna, silenciosa e de olhar atento.',
-    sign: 'De dia, deixe ela dormir. À noite, é ela quem cuida do movimento.',
+    sign: 'Vigia à noite, cochila de dia. Finalmente alguém com a sua rotina.',
   },
   {
     id: 'fox',
@@ -37,7 +37,7 @@ export const pets = [
     price_cp: 4000,
     cell: 4,
     description: 'Esperta, inquieta e apaixonada por investigar a trilha.',
-    sign: 'Essa viu você chegar e já quer saber o que tem na sua bolsa.',
+    sign: 'Se a bolsa sumir, negocie com petiscos antes de acusar alguém.',
   },
   {
     id: 'raven',
@@ -45,7 +45,7 @@ export const pets = [
     price_cp: 2000,
     cell: 5,
     description: 'Olhos atentos, penas negras e curiosidade por coisas brilhantes.',
-    sign: 'Ele leva um tempo para confiar. Depois, não larga mais do seu pé.',
+    sign: 'Conte suas moedas antes e depois do passeio. Por precaução.',
   },
   {
     id: 'frog',
@@ -53,7 +53,7 @@ export const pets = [
     price_cp: 200,
     cell: 6,
     description: 'Um pequeno companheiro de passos lentos e saltos inesperados.',
-    sign: 'Fica quietinho no seu canto. Quando chove, a casa inteira escuta.',
+    sign: 'Quietinho até chover. Aí começa a carreira de cantor.',
   },
   {
     id: 'snake',
@@ -61,7 +61,7 @@ export const pets = [
     price_cp: 1200,
     cell: 7,
     description: 'Serena, discreta e de escamas em tons de terra.',
-    sign: 'Ela se acostuma com calma. Deixe vir até você, sem pressa.',
+    sign: 'Não faz bagunça com as patas. Uma vantagem de não ter patas.',
   },
   {
     id: 'rat',
@@ -69,7 +69,7 @@ export const pets = [
     price_cp: 300,
     cell: 8,
     description: 'Inteligente, sociável e dono de um nariz muito curioso.',
-    sign: 'Já descobriu onde guardo a comida. Esconder não adianta mais.',
+    sign: 'Encontra comida até no escuro. Estou pensando em contratar.',
   },
   {
     id: 'guinea-pig',
@@ -77,7 +77,7 @@ export const pets = [
     price_cp: 600,
     cell: 9,
     description: 'Um amigo tranquilo, de focinho pequeno e muitos assobios.',
-    sign: 'Esse assobia quando me vê. Desconfio que seja por causa da comida.',
+    sign: 'Assobia quando a comida chega. Alguém aqui elogia meu serviço.',
   },
 ] as const;
 export type Pet = (typeof pets)[number];
@@ -100,24 +100,40 @@ export type OwnedPet = {
   appearance: string;
   price_cp: number;
   created_at: string;
+  displayed: boolean;
 };
+export type PetBreed = { pet_id: string; appearance: string; name: string; revision: number };
+export type PetBreedCatalog = { breeds: PetBreed[]; can_edit: boolean };
+export function defaultPetBreeds(): PetBreed[] {
+  return pets.flatMap((pet) => [
+    { pet_id: pet.id, appearance: 'original', name: `${pet.name} clássico`, revision: 0 },
+    ...petVariants
+      .filter((variant) => variant.pet_id === pet.id)
+      .map((variant) => ({
+        pet_id: pet.id,
+        appearance: variant.id,
+        name: variant.name,
+        revision: 0,
+      })),
+  ]);
+}
 export const garalhoQuestions = [
   {
     id: 'name',
     question: 'Quem é você?',
     meow: 'Miau… miaaau.',
-    answer: 'Sou Garalho. Essa é minha casa. Pode olhar os bichos à vontade.',
+    answer: 'Sou Garalho. Vendedor e fiscal dos cochilos. O cargo mais disputado.',
   },
   {
     id: 'companion',
     question: 'Como escolho um companheiro?',
     meow: 'Miau. Miau!',
-    answer: 'Passe um tempo com eles. Você vai perceber com qual se dá melhor.',
+    answer: 'Veja quem gosta de você. Se gostar do seu lanche, já é um começo.',
   },
   {
     id: 'care',
     question: 'Como cuida dos animais?',
     meow: 'Miaaau… miau.',
-    answer: 'Aqui ninguém passa fome ou frio. E carinho nunca falta.',
+    answer: 'Comida, cobertor e carinho. Só falta eles ajudarem no aluguel.',
   },
 ] as const;

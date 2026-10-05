@@ -40,10 +40,23 @@ Preservar tamanho relativo por espécie. Prompts em docs/PET-SHOP-REFINEMENT.md.
 Direção posterior de 05/10: corvo clássico também no chão, sem galho, usando
 raven-ground-v4.png. Salão de cartas com janela à esquerda, anfitrião menor/ao
 fundo em sombra e cartas em leque à frente; conversa aparece só sob interação.
-Estante/página independente de Conquistas removidas; conquistas integradas em
-Títulos, nome/descrição/vínculo editáveis pelo administrador (migration 055).
+Correção explícita do usuário: preservar a página original de Conquistas e sua
+estante. O menu/página independente de Títulos foi removido; o catálogo e a
+escolha/administração de títulos ficam dentro de Conquistas. Nome, descrição e
+vínculo de cada conquista são editáveis pelo administrador (migration 055).
 Não apagar histórico de conquistas, estantes ou títulos recebidos. Exibição de
 título separada na tela do personagem/ficha. Detalhes em docs/SALAO-CONQUISTAS.md.
+
+Calendário fica em Início → Calendário, reunindo eventos, missões e encontros
+do Diário sem duplicar registros. Administradores editam apresentação e eventos;
+ownership das missões permanece. Eventos usam temporariamente a rua da vila,
+com editor integral do cenário preservado. Mascote exibido é escolhido no
+inventário por personagem, aparece à direita no acampamento e muda ao selecionar
+outro personagem. Raças são editáveis só por administradores; nome pessoal é
+definido pelo comprador. Garalho abre conversa só ao clicar nele; miado vem só
+após pergunta. Sons de seleção são apenas vozes dos animais, sem impacto extra.
+Migrations 056–057 e detalhes em docs/CALENDARIO-MASCOTES.md. Lore usa barra
+contínua de luz entre eras e finalização com engrenagens/tranco, sem bolinha móvel.
 
 ## Acordos de desenvolvimento
 
@@ -86,15 +99,9 @@ título separada na tela do personagem/ficha. Detalhes em docs/SALAO-CONQUISTAS.
 
 Não são necessários subagentes para alterações rotineiras; nenhum fluxo de delegação é obrigatório.
 
-
-
-
-
-
-
 ## Fluxo Git autorizado pelo usuário (30/09/2026)
-Neste checkout, trabalhar na branch Welson e enviar para origin/Welson as alterações solicitadas pelo usuário após validação. Autorização contínua dada nesta conversa. Não enviar para main. Preservar alterações de outras pessoas e backups locais.
 
+Neste checkout, trabalhar na branch Welson e enviar para origin/Welson as alterações solicitadas pelo usuário após validação. Autorização contínua dada nesta conversa. Não enviar para main. Preservar alterações de outras pessoas e backups locais.
 
 ## Acabamento inspirado no Inkarnate (30/09/2026)
 

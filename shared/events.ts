@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { safeHomeLink } from './home-updates.js';
 export const eventBackgrounds = [
+  { path: '/notice-village-empty-v4.png', label: 'Rua da vila' },
   { path: '/events/hall-v1.webp', label: 'Salão dos encontros' },
   { path: '/alvorada-dawn-banner.png', label: 'Alvorada nas montanhas' },
   { path: '/notice-village-tavern-v3.png', label: 'Taverna da vila' },
@@ -25,6 +26,7 @@ const imagePath = z
       /^\/api\/event-images\/[0-9a-f-]{36}$/.test(v),
     'Escolha uma arte da galeria ou envie uma imagem.',
   );
+export { imagePath as eventImagePathSchema };
 export const eventLayerSchema = z
   .object({
     id: z.string().uuid(),
@@ -91,7 +93,7 @@ export const defaultEventScene: EventScene = {
   x: 50,
   y: 50,
   darkness: 0.42,
-  ambient: 'embers',
+  ambient: 'none',
   layers: [],
 };
 export const blankEvent: EventInput = {

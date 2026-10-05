@@ -310,30 +310,6 @@
 .garalho-scene[data-phase='turning'] .garalho-sign-front {
   opacity: 0;
 }
-.garalho-meow {
-  position: absolute;
-  top: -15%;
-  width: 100%;
-  color: #ead7b3;
-  text-shadow: 0 2px 5px #000;
-  text-align: center;
-  pointer-events: none;
-}
-.garalho-meow small {
-  display: block;
-  font:
-    12px 'Cinzel',
-    Georgia,
-    serif;
-  color: #d8bd89;
-}
-.garalho-meow em {
-  display: block;
-  font:
-    16px Georgia,
-    serif;
-  margin-top: 3px;
-}
 .garalho-caption {
   position: absolute;
   top: 100%;
@@ -365,12 +341,89 @@
   cursor: default;
 }
 .garalho-questions {
-  position: absolute;
-  right: 5%;
-  top: 106px;
-  width: 225px;
   display: grid;
   gap: 6px;
+}
+.garalho-dialogue {
+  position: absolute;
+  right: 5%;
+  top: 90px;
+  width: min(290px, 35%);
+  padding: 17px;
+  border: 1px solid #ab945c88;
+  border-radius: 9px;
+  background: #171c13ed;
+  box-shadow: 0 10px 30px #0006;
+  backdrop-filter: blur(8px);
+  z-index: 4;
+}
+.garalho-dialogue::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 32px;
+  width: 12px;
+  height: 12px;
+  background: #171c13;
+  border-right: 1px solid #ab945c88;
+  border-bottom: 1px solid #ab945c88;
+  transform: rotate(45deg);
+}
+.garalho-dialogue header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #c5aa74;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.garalho-dialogue header button {
+  padding: 3px;
+  border: 0;
+  background: none;
+  color: #c5aa74;
+  cursor: pointer;
+}
+.garalho-reply {
+  font:
+    italic 19px Georgia,
+    serif;
+  color: #efe1c4;
+  margin: 0 0 14px;
+}
+.garalho-dialogue-intro {
+  color: #bcb39d;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+.pet-breed-heading {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #b9ab8c;
+  font-size: 12px;
+}
+.pet-breed-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+.pet-breed-editor {
+  display: grid;
+  gap: 18px;
+}
+.pet-breed-editor label {
+  display: grid;
+  gap: 9px;
+}
+.pet-breed-editor p {
+  font-size: 12px;
+  color: #bcb39d;
 }
 .garalho-questions > span {
   padding: 0 10px 4px;
@@ -497,6 +550,13 @@
   outline: 2px solid #d3b780;
   outline-offset: 4px;
 }
+.pet-sound-credits {
+  display: block;
+  padding: 0 5% 24px;
+  color: #948870;
+  text-align: right;
+  font-size: 10px;
+}
 .inventory-pets {
   padding: 20px 24px;
   margin-bottom: 24px;
@@ -529,7 +589,7 @@
   gap: 18px;
   margin-top: 12px;
 }
-.inventory-pets article {
+.inventory-pet-choice {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -538,17 +598,35 @@
   border: 1px solid #a4885230;
   border-radius: 4px;
   padding: 10px 15px 10px 10px;
+  color: #ded1b7;
+  text-align: left;
+  cursor: pointer;
+}
+.inventory-pet-choice[aria-pressed='true'] {
+  border-color: #c2a06a;
+  background: #93733924;
+}
+.inventory-pet-choice:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.inventory-pet-choice em {
+  display: block;
+  font-size: 10px;
+  font-style: normal;
+  color: #c3a56b;
+  margin-top: 7px;
 }
 .inventory-pets .pet-art {
   width: 85px;
   height: 85px;
   flex: 0 0 85px;
 }
-.inventory-pets article > span:last-child {
+.inventory-pet-choice > span {
   min-width: 0;
   overflow-wrap: anywhere;
 }
-.inventory-pets article small {
+.inventory-pet-choice small {
   display: block;
   font-size: 10px;
   color: #aaa08c;
@@ -659,11 +737,11 @@
   .garalho-sign-front p {
     font-size: 8px;
   }
-  .garalho-questions {
-    top: 96px;
+  .garalho-dialogue {
+    top: 110px;
     left: 20px;
     right: auto;
-    width: min(225px, 60%);
+    width: min(290px, calc(100% - 40px));
   }
   .garalho-questions button {
     font-size: 10px;

@@ -30,18 +30,18 @@ Refino de 05/10: madeira sem riscos animados, falas cotidianas e dez clássicos
 v3 no nível das alternativas. Ambas as corujas estão no chão, sem poleiro.
 [Artes e prompts atuais](PET-SHOP-REFINEMENT.md).
 
-| Mascote | Preço (PO) |
-| --- | ---: |
-| Cão | 10 |
-| Gato | 15 |
-| Coelho | 5 |
-| Coruja | 30 |
-| Raposa | 40 |
-| Corvo | 20 |
-| Sapo | 2 |
-| Cobra | 12 |
-| Rato | 3 |
-| Porquinho-da-índia | 6 |
+| Mascote            | Preço (PO) |
+| ------------------ | ---------: |
+| Cão                |         10 |
+| Gato               |         15 |
+| Coelho             |          5 |
+| Coruja             |         30 |
+| Raposa             |         40 |
+| Corvo              |         20 |
+| Sapo               |          2 |
+| Cobra              |         12 |
+| Rato               |          3 |
+| Porquinho-da-índia |          6 |
 
 As sete imagens adicionais do usuário originaram opções de aparência: pastor,
 gato ruivo de pelo longo, coelho branco com marcas, coruja com olhos laranja,
@@ -56,15 +56,22 @@ O servidor valida a combinação espécie/aparência, bloqueia o personagem com
 
 `PetSounds.ts` toca uma voz curta distinta quando a arte aparece, após estar
 carregada e haver áudio disponível no navegador. Latidos, miado, pios, coaxar,
-chiado e pequenos ruídos são sintetizados localmente; coelho usa passos/folhagem.
+chiado e pequenos ruídos seguem a revisão em [CALENDARIO-MASCOTES.md](CALENDARIO-MASCOTES.md):
+oito espécies usam gravações naturais licenciadas; cobra/coelho usam ruídos discretos.
+Não há impacto/efeito extra junto da voz. As raças são editáveis por administrador;
+o comprador dá nome ao pet e escolhe no inventário qual aparece no acampamento.
 Seguem Efeitos sonoros, volume e silêncio. Trocar de animal, ocultar a aba e
 sair da página encerram o áudio. Animações respeitam movimento reduzido.
 
-## Salão dos eventos
+## Eventos
 
 `#events` possui fundo integral pintado, luz noturna, partículas/névoa discretas,
 evento em destaque, próximos encontros, filtros e contagem para a data marcada.
 Administradores criam, editam e excluem eventos e alteram o cenário inteiro.
+Direção atual: fundo mais mundano, usando a rua da vila já ilustrada no site,
+com ambientação padrão sem partículas. A opção de salão continua na galeria.
+Início ganhou Calendário, reunindo esses mesmos eventos, missões e encontros
+do Diário. Apresentação e compromissos têm edição administrativa.
 
 **Editar cenário** permite trocar/enviar o background, ajustar enquadramento e
 escurecimento, título/subtítulo, ambientação e camadas de artes transparentes.
@@ -87,11 +94,11 @@ alterar eventos. Evento não concede ouro ou progresso de missão automaticament
 
 ## Prateleiras e títulos
 
-Direção vigente de 05/10: página/estante removidas; conquistas integradas em
-Títulos com editor administrativo de nome, descrição e título vinculado.
-Migration 055 guarda definições e revisões; dados históricos de estantes não
-foram apagados. Salão recomposto em leque, conversa sob demanda e nova arte.
-Esta decisão substitui a interface de prateleiras descrita historicamente abaixo.
+Correção vigente de 05/10: página/estante original de Conquistas restauradas;
+menu/página separados de Títulos removidos. Catálogo mantém editor administrativo
+de nome, descrição e título vinculado (migration 055). A criação de título parte
+da conquista, com meta preenchida; escolha/administração fica na mesma página.
+Salão de cartas recomposto em leque, conversa sob demanda e nova arte.
 Detalhes, artes e prompts em [SALAO-CONQUISTAS.md](SALAO-CONQUISTAS.md).
 
 Migration 051 remove posições fixas e o limite de seis objetos por prateleira.
@@ -103,8 +110,9 @@ Escolher a prateleira e **Exibir na estante** adiciona uma conquista desbloquead
 **Mover para esta prateleira** muda a já exposta. Salvamento continua por personagem.
 O candelabro do fundo foi alinhado ao centro visual da estante.
 
-`#titles` e a seção integrada às conquistas mostram títulos, metas e escolha
+`#achievements` mostra a estante, o catálogo de conquistas, títulos, metas e escolha
 do título em exibição. A identificação aparece no acampamento e na ficha.
+`#titles` antigo é um alias para Conquistas, sem página independente.
 Administradores têm **Administrar títulos** para criar, editar, excluir e
 conceder/revogar a outros personagens por busca de personagem/jogador.
 

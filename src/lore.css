@@ -997,6 +997,41 @@
 .lore-folder-row > button:first-child {
   flex: 1;
   min-width: 0;
+  padding-block: 17px;
+  gap: 13px;
+  border-bottom: 1px solid #ae915226;
+}
+.lore-folder-name {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.035em;
+  color: #d9c8a4;
+  text-shadow: 0 2px 3px #0009;
+  overflow-wrap: anywhere;
+  transition:
+    color 0.25s,
+    text-shadow 0.25s;
+}
+.lore-folder-row > button:is(:hover, .is-active) .lore-folder-name {
+  color: #f1d69f;
+  text-shadow:
+    0 0 12px #c49a3b40,
+    0 2px 3px #000;
+}
+.lore-folder-tree .lore-folder-count {
+  flex-shrink: 0;
+  min-width: 27px;
+  padding: 3px 4px;
+  text-align: center;
+  color: #c2a574;
+  border: 1px solid #b3954933;
+  background: #ae91520d;
+  border-radius: 2px;
+  opacity: 1;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
 }
 .lore-folder-actions {
   display: flex;

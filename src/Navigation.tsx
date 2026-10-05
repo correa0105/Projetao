@@ -9,7 +9,7 @@ import {
 import {
   Backpack,
   CalendarDays,
-  Crown,
+  Trophy,
   Layers,
   BookOpen,
   Compass,
@@ -42,7 +42,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
       { page: 'characters', label: 'Personagens', icon: Users },
       { page: 'profile', label: 'Ficha', icon: Shield },
       { page: 'inventory', label: 'Inventário', icon: Backpack },
-      { page: 'titles', label: 'Títulos', icon: Crown },
+      { page: 'achievements', label: 'Conquistas', icon: Trophy },
       { page: 'cards', label: 'Cartas', icon: Layers },
     ],
   },

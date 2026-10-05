@@ -109,7 +109,17 @@ try {
   await expect(editor).not.toBeVisible();
   await page.locator('[data-folder-choice]').filter({ hasText: 'História' }).click();
   await expect(page.locator('.lore-timeline')).toHaveAttribute('data-phase', 'travelling');
+  await expect
+    .poll(() =>
+      page.locator('.lore-era-light').evaluate((element) => element.getBoundingClientRect().width),
+    )
+    .toBeGreaterThan(20);
+  await page.screenshot({ path: 'test-results/lore-era-light-travelling.png' });
   await expect(page.locator('.lore-timeline')).toHaveAttribute('data-phase', 'arriving');
+  await expect(page.locator('[data-lore-era-sound]')).toHaveAttribute(
+    'src',
+    '/audio/lore-era-lock.wav',
+  );
   await expect(page.locator('.lore-era').first()).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.lore-timeline')).toHaveAttribute('data-phase', 'idle');
   await page.locator('.lore-era').first().click();

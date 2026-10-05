@@ -1,5 +1,56 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Conquistas restauradas, Lore, mascotes e calendário (05/10/2026)
+
+Correção explícita do usuário: voltou a página original **Conquistas**, com
+estante, prateleiras livres sem limite, posições/personalização salvas e catálogo.
+A aba separada **Títulos** foi removida; `#titles` antigo abre Conquistas.
+Administradores editam nome/descrição/vínculo no catálogo e criam título a partir
+da conquista. Escolha/administração de títulos fica na mesma página. Histórico,
+metas e concessões preservados; código duplicado AchievementHonors removido.
+
+Lore: barra contínua de luz cresce entre eras, chegando a cada marcador antes
+de mudar a seleção. Mesma era usa só finalização; movimento reduzido preservado.
+Áudio original de engrenagens desacelerando e tranco em lore-era-lock.wav, com
+volume/silêncio de Efeitos sonoros. Pastas com nomes Cinzel maiores e destaque.
+
+Garalho: clicar abre caixa com nome e perguntas, fechar/Escape encerra; miado
+textual/sonoro aparece somente após pergunta. Placas com humor curto, cabendo
+no celular, sem riscos por trás da madeira. Selecionar animal escreve comentário
+sem miado de Garalho. Oito vozes naturais licenciadas substituem sons eletrônicos;
+cobra/coelho usam ruído discreto, sem impacto extra. Credits.md e manifest.json
+acompanham os áudios em public/audio/pets, com link público na página.
+
+Administrador edita nomes das 17 raças/aparências. Comprador dá nome pessoal ao
+pet; inventário escolhe qual aparece à direita no acampamento. Troca de personagem
+mostra sua própria escolha, descartando resposta atrasada. Primeira compra exibida
+automaticamente; próximas compras/replays preservam seleção. Migration 056 guarda
+rótulos/revisões e pet exibido único por personagem. Chaves distintas de React
+para CampMount/CampPet evitam companheiro anterior persistindo após troca.
+
+Eventos ganhou fundo mundano de rua da vila; editor completo e galeria continuam.
+Início → Calendário reúne eventos, missões e publicações datadas do Diário,
+sem duplicar conteúdo. Grade mensal, Hoje, escolha de mês, filtros e todos os
+compromissos do dia; no celular há indicadores e detalhes abaixo. Administrador
+edita título, apresentação, fundo próprio/galeria, cor e início da semana, com
+prévia, e cria/edita/exclui eventos. Diário abre editor com registro atual,
+inclusive fora das 100 publicações mais recentes. Missões mantêm ownership.
+Migration 057 guarda só apresentação/revisão e troca somente o antigo fundo
+do salão, preservando textos/camadas. Upload publicado de calendário é visível
+ao jogador; imagem sem referência continua privada. Datas em America/Sao_Paulo.
+Contratos e fontes em CALENDARIO-MASCOTES.md.
+
+Validação: TypeScript/build cliente e servidor, sete testes de comunidade,
+cinco de calendário/mascotes e smokes Edge de comunidade, conquistas, Lore/montarias
+e calendário/mascotes passaram em bancos descartáveis. Edição/revisão/permissões,
+economia, concorrência, fuso, upload, Diário, seleção por personagem e telas
+320/390/768 px conferidos; capturas em test-results (ignorado pelo Git).
+Backup pré-migrations 056–057: .local/backups/alvorada-before-calendar-pets-20261005.dump
+(431440716 bytes). Docker local atualizado e saudável, migrations 056–057
+confirmadas. localhost:3000 serve index-DBm9eR_5.js / index-BV9BEDFq.css, oito
+vozes e som de engrenagens com HTTP 200. Fundo da vila confirmado no SQL.
+Dados existentes e volumes preservados; nenhum teste executado no banco do usuário.
+
 ## Salão em sombra, conquistas editáveis e corvo no chão (05/10/2026)
 
 Nova composição do salão conforme desenho do usuário: janela no terço esquerdo,
@@ -9,7 +60,8 @@ três perguntas. Cartas provocam comentários individuais temporários, sem menu
 de perguntas permanente; fechar/Escape encerram. Três espaços, coleção e compras
 preservados. Arte atual moonlit-room-v2.png; prompts em SALAO-CONQUISTAS.md.
 
-Página/estante de Conquistas removidas; rota antiga abre Títulos. Sete conquistas
+Decisão anterior corrigida pelo usuário na entrega acima: página/estante de
+Conquistas foram removidas indevidamente; rota antiga abria Títulos. Sete conquistas
 integradas com progresso e editor administrativo de nome/descrição/título.
 Criar título parte da própria conquista com meta preenchida. Editor resolve
 vínculo e revisão em transação; substituir/remover associação preserva títulos
@@ -740,7 +792,6 @@ Por pedido explícito do usuário, o catálogo ativo foi substituído pelos **65
 - Orbe do dragão veio com preço nulo: pode ser examinado, mas bloqueia checkout até ser removido. Não inventar preço. Pesos estimados são identificados na loja; consulte PESOS.md.
 - Testes: `npm run test:shop` usa banco descartável e Edge, cobre concorrência/idempotência, preço no servidor, saldo, validação, compra com múltiplos itens, mesa, remoção, quantidade e mobile. Suíte npm test (29 testes) passou em banco isolado.
 
-
 Navegação: o botão principal antes chamado Aventura agora é **Mural**, com acesso
 direto a `board`, sem submenu intermediário. Ícone simplificado de folha e pena,
 `public/guild-icon-notice-board-v3.png`, substitui a espada. Quadros detalhados V1/V2 rejeitados. Transparência nativa,
@@ -960,6 +1011,7 @@ Better Auth gerencia sessões. Consultas privadas filtram pelo usuário autentic
 Dados de jogadores e volumes Docker não devem ser apagados. Migrations aplicadas não devem ser modificadas; adicione uma nova quando necessário. O histórico de mapas descartados pode ser consultado nos commits Git anteriores, sem carregar seus grandes arquivos no checkout atual.
 
 ### Novas metas de conquistas
+
 - Catálogo com 7 conquistas e insígnias próprias; atlas `achievement-milestones-v1.png` para as quatro novas.
 - Veterano do Norte: 10 participações em missões concluídas no Reino do Norte, verificadas por `mission_rewards` e região do mural.
 - Conte uma história: uma missão concluída como autor/mestre da conta; disponível para seus personagens.
@@ -996,6 +1048,7 @@ Títulos das categorias do mural agora ficam sobre as próprias folhas, abaixo d
 Ajuste dos avisos: folhas dimensionadas pela largura e proporção fixa, sem altura percentual que as alongava; títulos ampliados de 8,8 para 14cqw. Conferência visual e teste do mural aprovados.
 
 ## Mural com avisos reais — 28/09/2026
+
 - As três folhas fixas foram removidas. Cada board_post aberto/em andamento aparece como papel clicável; concluidos/encerrados ficam no histórico das listas. Não foram criadas tabelas paralelas nem alteradas regras de publicação de eventos/ganchos.
 - Cenário ativo: public/notice-village-empty-v4.png, sem nenhum papel decorativo pintado. Enquadramento afastado para max(130vw,145dvh); superfície útil acompanha a imagem (left 28,3%, top 29,5%, width 31,7%, height 27,2%). No celular há placas inferiores para acessar listas.
 - Migration 028_board_papers acrescenta paper_style (seis modelos), paper_summary opcional (180 caracteres), paper_x e paper_y em board_posts. Coordenadas 0–1 representam o espaço de deslocamento disponível: o papel inteiro permanece na madeira. Posições iniciais são persistidas; sobreposição é permitida.
@@ -1024,22 +1077,17 @@ Ajustes finos: enquadramento deslocado ligeiramente à esquerda (-52%, cobertura
 
 Ficha: espaçamentos entre campos e parágrafos compactados, rótulos de 14 px e títulos de 15–17 px acima das opções de 13 px. Bônus do antecedente agora usa um seletor único com sete distribuições válidas (+2/+1 em atributos diferentes ou +1 nos três), impedindo combinações inválidas durante a edição. Validação do servidor preservada; fluxo de navegador verifica as sete opções e a troca entre distribuições.
 
-
 Criação de personagem padronizada com a ficha: dialog usa character-sheet/sheet-panel, mesma textura espelhada de pergaminho, largura máxima de 1160 px, tipografia, seletores compactos e grade de escolhas em duas colunas. Formulário reutiliza sheet-form-reset; não manter um tema genérico separado para a criação.
-
 
 Rolagem de atributos: AttributeDice mostra seis resultados em sequência por clique; cada lançamento exibe quatro dados com seis faces CSS 3D, queda/giro/quique em dialog sobre toda a interface e descarte do menor. Distribuição aparece após seis revelações. Servidor continua gerando e persistindo os 24 dados uma única vez; animação não sorteia valores. Recarga recupera os resultados e Rever rolagens em 3D apenas repete a apresentação. Movimento reduzido respeitado. test:sheet verifica as seis revelações contra os valores SQL, recarga, conclusão e telas desktop/mobile. Em 28/09, a pedido do usuário, reset pontual de rolls/assignment somente onde finalized_at IS NULL para testar a animação; fichas confirmadas preservadas.
 
-
 Escolhas após descanso longo movidas para dentro do papel da ficha, recolhidas ao final da seção correspondente: maestrias em Combate e opções de conjuração em Magias. Removido o painel solto acima dos indicadores de PV/CA.
-
 
 Cabeçalhos padronizados em src/page-header.css: título até 32 px e HUD de personagem/conta reduzido cerca de 20%, margens laterais independentes do conteúdo (até 95 px, aproximadamente 2,5 cm CSS). Desktop alinha os dois lados da viewport; telas até 900 px mantêm HUD e título em linhas separadas. Ícone Mural V3: folha de pergaminho e pena simples, PNG alfa, mesma renderização SVG do menu.
 
-
 ## Pendências e notificações — 29/09/2026
-Sino junto ao seletor de personagem, contador e painel de madeira com avisos de todos os personagens ativos da conta. GET /api/notifications consulta somente personagens do usuário autenticado e deriva etapas exclusivas: origem/revisão, rolagem, distribuição/finalização. Teste de patente aparece somente ao atingir o requisito (22/53/80/102); some após promoção. Aviso de nível alcançado usa notification_level_read (migration 031) e leitura persistente pelo endpoint de titularidade /characters/:id/notifications/level-read. Não confundir marcar nível como lido com executar evolução de classe: recursos de nível alto seguem pendentes de desenvolvimento, não são uma tarefa delegada ao mestre. O usuário decidiu implementar essa evolução depois. Pendências não podem ser dispensadas sem resolução. Atalhos selecionam o personagem correto antes de navegar; atualização ao abrir, trocar página, recuperar foco e refresh de 60 s. Painel fecha ao clicar fora/Escape, com retorno do foco. Build, 29 testes em PostgreSQL descartável e navegador desktop/mobile aprovados.
 
+Sino junto ao seletor de personagem, contador e painel de madeira com avisos de todos os personagens ativos da conta. GET /api/notifications consulta somente personagens do usuário autenticado e deriva etapas exclusivas: origem/revisão, rolagem, distribuição/finalização. Teste de patente aparece somente ao atingir o requisito (22/53/80/102); some após promoção. Aviso de nível alcançado usa notification_level_read (migration 031) e leitura persistente pelo endpoint de titularidade /characters/:id/notifications/level-read. Não confundir marcar nível como lido com executar evolução de classe: recursos de nível alto seguem pendentes de desenvolvimento, não são uma tarefa delegada ao mestre. O usuário decidiu implementar essa evolução depois. Pendências não podem ser dispensadas sem resolução. Atalhos selecionam o personagem correto antes de navegar; atualização ao abrir, trocar página, recuperar foco e refresh de 60 s. Painel fecha ao clicar fora/Escape, com retorno do foco. Build, 29 testes em PostgreSQL descartável e navegador desktop/mobile aprovados.
 
 ### Ajuste do mercador (29/09/2026)
 
@@ -1080,9 +1128,11 @@ Exceções expressas: catálogo central existente e header padrão do site prese
 Validado com build e teste de loja em PostgreSQL isolado, desktop 1440×900, referência 1740×852 e mobile 390×844.
 
 ### Itens na mesa restaurados
+
 Restaurada a apresentação anterior: quantidade no canto, destaque discreto de seleção e X circular sobre o item selecionado. Removida a legenda inferior. Tamanhos anteriores e colisões correspondentes restaurados, mantendo o cenário, NPC e balões do pacote.
 
 ### Enquadramento abaixo do header
+
 Cenário e NPC descem juntos até o topo visível da cabeça tocar o limite inferior do HUD no desktop. ResizeObserver recalcula em mudanças de viewport; se a imagem expuser o topo, sua escala proporcional aumenta preservando o deslocamento da borda do balcão. NPC deslocado à direita com parte do braço fora da tela; balão acompanha por estar dentro do mesmo elemento. Área dos itens acompanha o tampo e fica acima da transparência do NPC para permitir clicar no X.
 
 Texto do balcão restaurado: apenas com a mesa vazia, frase discreta e centralizada Escolha seus itens e coloque-os sobre o balcão. Removidos título Seu balcão e legenda no canto.
@@ -1152,11 +1202,10 @@ Balões medem o espaço livre entre catálogo e rosto: priorizam posição later
 Cartões do catálogo agora usam grade com altura pelo conteúdo, detalhes em fluxo normal e quebra de textos/botões. Catálogo com menos de 620px úteis muda para uma coluna. Smoke verifica os limites de texto, preço e botão dos 65 itens em onze resoluções, inclusive 320px e 1110px.
 
 ## Estábulo (30/09/2026)
+
 Menu Loja abre Empório e Estábulo (#stable). Stable.tsx/stable.css exibem campo gramado, quatro artes individuais (cavalo de montaria, guerra, pônei e mula), retratos de cabeça, Brida com falas próprias e comentários determinísticos sobre nomes. Ficha consulta preço, porte, CA, PV, deslocamento e capacidade SRD 5.2.1. Compra separada em /api/stable/purchase: preço no servidor, bloqueio do personagem, transação e idempotência; migration 033 salva animal, nome, valor e chave em character_mounts. GET /api/stable/:characterId exige titularidade. Montarias permanecem salvas no personagem; não automatiza combate/movimentação nem inclui arreios. test:stable usa banco descartável, cobre economia/ownership/nomes/persistência/menu e seis viewports. --unit no runner roda a suíte Node no banco isolado. Assets e prompts: public/stable e docs/STABLE-ART.md.
 
-
 Refinamento do estábulo: removido o painel Seu estábulo e a ficha lateral permanente. Botão ? sobre o animal abre ficha/compra em modal; nome da espécie centralizado no alto. Animal e tratadora ampliados, com composição vertical em celulares. Duas pelagens ilustradas por espécie, selecionáveis no campo e persistidas pela migration 034; idempotência também verifica a pelagem. Smoke isolado cobre seleção, persistência da cor, modal e seis viewports (320 a 1920px). Prompts em docs/STABLE-COATS-ART.md.
-
 
 Estábulo: pelagens e botão ? reunidos no menu de montarias, sem link de retorno ao Empório. Layout refeito para 100dvh, removendo o padding inferior global de 155px nesta página. Em celulares o menu fica compacto acima do campo; a cena não exige rolagem vertical. Balão ancorado ao centro da tratadora, cores das figuras harmonizadas com o entardecer e sombras de contato. Smoke valida ausência de rolagem, acesso aos controles e compra em seis resoluções.
 
@@ -1169,7 +1218,6 @@ Selas integradas (30/09/2026): 16 novas artes completas, quatro espécies × dua
 Bardas integradas (30/09/2026): couro, cota de malha e placas agora usam artes completas por espécie e pelagem, 24 combinações em public/stable/barded. Não há mais barda avulsa sobreposta à silhueta. Sela selecionada junto da barda continua em primeiro plano. Manifesto e prompts do imagegen integrado: docs/STABLE-BARDED-ART.json. Smoke valida as 24 imagens e os conjuntos com sela.
 
 Seleção da selaria: sela e barda são alternativas na interface. O último clique substitui a seleção anterior e troca a arte inteira; removida a camada de sela sobre a barda. Preço/compra acompanham somente a seleção atual, ração independente. Teste cobre as duas direções de troca nas quatro espécies.
-
 
 ## Acabamento inspirado no Inkarnate (30/09/2026)
 
@@ -1263,7 +1311,6 @@ Correção da saída do kraken (02/10/2026): direção vigente é bater no centr
 
 Nova finalização do kraken (02/10/2026): sequência coreografada de um último golpe por braço, em seis tempos diferentes no centro do naufrágio, seguida de dobra e mergulho individuais. Retirada começa entre 1,25 e 1,85s após a destruição e termina antes de 2,9s. Geometria desce totalmente sob a água antes de ocultar o grupo, sem retomar a pose de ataque. Onda de espuma irregular se expande no plano da água, independente da altura do kraken, e desaparece suavemente até o limite de 3s. QA inclui capturas próximas da retirada e testes de submersão em tempos distintos.
 
-
 Refação vigente do kraken e do dragão (02/10/2026): finalização anterior substituída por controles Bézier quarticos em src/world-kraken-ending.ts. A dobra acompanha a ponta com atraso, um golpe para cada braço em seis tempos irregulares, pontas no centro do naufrágio e mergulhos individuais completos antes de 2,85s. Encerramento permanece em no máximo 3s após a destruição. Espuma superficial calculada no shader, fragmentada por ruído, com pequenas manchas centrais. Dragão mantém escala cartográfica 0,38, mas usa perfis anatômicos curvos densos, cabeça com mandíbula, narinas, olhos/fendas, dentes, patas e garras; asas subdivididas com membrana até o corpo. Albedo do couro reptiliano e da membrana em 2048px; normal e rugosidade derivadas da textura em 1024px, aplicadas aos materiais físicos com UV, mipmaps e anisotropia. Não afirmar que são mapas escaneados nem um modelo de cinema. Assets e origem em public/atlas-model-materials/manifest.json.
 
 Música geral (02/10/2026): faixa completa enviada pelo usuário convertida para public/audio/medieval-travelers-journey.ogg (Ogg/Opus). SiteMusicProvider mantém uma única instância de áudio acima das páginas, volume inicial 40%, loop e continuidade entre rotas. Botão de mutar junto ao perfil superior direito; preferência de mute local (não dados do jogo), preservada ao recarregar. Navegador inicia após interação se bloquear autoplay; pausa ao ocultar a página. siteSoundtracks aceita substituições futuras por rota, atualmente todas usam a mesma faixa. Não adicionar áudio ambiente paralelo às áreas sem coordenar com esse provider. Origem da faixa registrada em public/audio/manifest.json.
@@ -1318,9 +1365,6 @@ Retorno da visão da Ginna (03/10/2026): escolher Não vou machucá-los! fecha a
 
 Blocos vizinhos de texto e imagem em lados opostos agora formam uma composição de duas colunas, independentemente da ordem. Funciona com Texto livre, Pergaminho, Inscrição e Citação / lenda, em retrato ou meia paisagem. Centro e paisagem inteira mantêm o fluxo individual. Até 600 px, os blocos são empilhados na ordem salva. Prévia e leitura usam a mesma composição; dados existentes preservados. Smoke isolado aprovado nos quatro estilos, ambos os lados, desktop/celular e persistência.
 
-
-
 Balcão da loja livre (04/10/2026): removidos bloqueios de colisão/mesa cheia; todos os 71 itens podem ocupar o tampo e ser sobrepostos por arraste ou teclado. Seleção/foco/arraste trazem o objeto à frente com camada estável. Carrinho tem Localizar no balcão para recuperar objetos cobertos. Escalas moderadas por tamanho projetado da ilustração, entre 0,55 e 1,70; joias e frascos menores, armas longas/volumes maiores. Arte separada do alvo mínimo de 48 px preserva diferença visual no celular; sentinela CSS/ResizeObserver alinham render e arraste. Superfície mobile ampliada 32 px no tampo. Quantidades agrupadas, transação de 99 unidades/item e preços preservados. Detalhes em docs/SHOP-LAYOUT.md.
-
 
 Entrada na visão da Ginna (04/10/2026): a piscada foi substituída, por pedido posterior do usuário, por rachaduras, fragmentos da cena caindo e névoa escura. A implementação vigente está descrita no início deste contexto e em docs/STABLE-GINNA.md. Pálpebras continuam apenas no retorno.

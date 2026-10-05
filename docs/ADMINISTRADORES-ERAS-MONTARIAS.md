@@ -28,7 +28,12 @@ das eras não reveladas aos leitores. Excluir toda a lista não é permitido: re
 ao menos uma era, cujo título pode ficar vazio. Título geral também é opcional.
 
 `LoreTimeline.tsx` percorre os marcadores da era atual até a escolhida, rola a linha
-horizontal no celular e finaliza com um breve efeito. Na mesma era, não percorre
+horizontal no celular e finaliza com um breve efeito. A animação atual usa uma
+barra contínua de luz que se estende até cada era, sem bolinha indo e voltando.
+Chegada toca `audio/lore-era-lock.wav`, som original de engrenagens desacelerando
+até um tranco mecânico, gerado por scripts/generate-lore-era-sound.mjs. Volume e
+silêncio seguem Efeitos sonoros. Nomes das pastas ganharam tipografia Cinzel,
+contraste e contagem em detalhe de cobre. Na mesma era, não percorre
 marcadores. Movimento reduzido usa só chegada discreta. Vínculo da pasta mais
 próxima prevalece sobre o de um ancestral. Abrir um marcador vinculado navega à
 primeira pasta correspondente; o registro abaixo lista todos os vínculos ativos.

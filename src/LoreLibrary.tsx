@@ -227,8 +227,8 @@ function LoreFolderButton({
       }}
     >
       <LoreScrollHolderIcon rummaging={rummaging} />
-      <span>{folder.name}</span>
-      <small>{count.toString().padStart(2, '0')}</small>
+      <span className="lore-folder-name">{folder.name}</span>
+      <small className="lore-folder-count">{count.toString().padStart(2, '0')}</small>
     </button>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type CSSProperties } from 'react';
-import { Check, Coins, PawPrint, ShoppingBag, Maximize2 } from 'lucide-react';
+import { Check, Coins, PawPrint, ShoppingBag, Maximize2, Pencil, Save, X } from 'lucide-react';
 import { api, post } from './api';
 import { useSoundEffects } from './SiteMusic';
 import {
@@ -9,6 +9,9 @@ import {
   garalhoQuestions,
   type Pet,
   type OwnedPet,
+  defaultPetBreeds,
+  type PetBreed,
+  type PetBreedCatalog,
 } from '../shared/pets';
 import { usePetAppearanceSound } from './PetSounds';
 import { money } from '../shared/rules';
@@ -61,12 +64,20 @@ export function PetArt({
 }
 export function PetCollection({ characterId }: { characterId: string }) {
   const [items, setItems] = useState<OwnedPet[]>([]),
+    [breeds, setBreeds] = useState<PetBreed[]>(defaultPetBreeds),
+    [busy, setBusy] = useState(false),
     [error, setError] = useState('');
   useEffect(() => {
     let active = true;
-    void api<OwnedPet[]>(`/pets/${characterId}`)
-      .then((value) => {
-        if (active) setItems(value);
+    void Promise.all([
+      api<OwnedPet[]>(`/pets/${characterId}`),
+      api<PetBreedCatalog>('/pets/catalog'),
+    ])
+      .then(([value, catalog]) => {
+        if (active) {
+          setItems(value);
+          setBreeds(catalog.breeds);
+        }
       })
       .catch((e: Error) => {
         if (active) setError(e.message);
@@ -75,6 +86,22 @@ export function PetCollection({ characterId }: { characterId: string }) {
       active = false;
     };
   }, [characterId]);
+  async function select(id: string | null) {
+    if (busy) return;
+    setBusy(true);
+    setError('');
+    try {
+      await api(`/pets/${characterId}/display`, {
+        method: 'PUT',
+        body: JSON.stringify({ pet_id: id }),
+      });
+      setItems((items) => items.map((item) => ({ ...item, displayed: item.id === id })));
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
   return (
     <section className="inventory-pets" aria-label="Mascotes do personagem">
       <header>
@@ -82,22 +109,47 @@ export function PetCollection({ characterId }: { characterId: string }) {
         <h3>Pequenos companheiros</h3>
         <a href="#pets">Visitar Garalho →</a>
       </header>
+      {items.length > 0 && (
+        <p>Escolha o mascote que aparece à direita no acampamento deste personagem.</p>
+      )}
       {error && <p role="alert">{error}</p>}
       {!items.length && !error && <p>Os mascotes que você levar para casa aparecem aqui.</p>}
       <div>
         {items.map((item) => {
           const pet = pets.find((pet) => pet.id === item.pet_id);
           return pet ? (
-            <article key={item.id}>
+            <button
+              key={item.id}
+              className="inventory-pet-choice"
+              disabled={busy}
+              aria-pressed={item.displayed}
+              aria-label={`Mostrar ${item.name} no acampamento`}
+              onClick={() => void select(item.id)}
+            >
               <PetArt pet={pet} appearance={item.appearance} />
               <span>
                 <strong>{item.name}</strong>
-                <small>{petAppearance(pet.id, item.appearance)?.name || pet.name}</small>
+                <small>
+                  {breeds.find(
+                    (breed) => breed.pet_id === item.pet_id && breed.appearance === item.appearance,
+                  )?.name || pet.name}
+                </small>
+                <em>{item.displayed ? 'Aparece no acampamento' : 'Mostrar no acampamento'}</em>
               </span>
-            </article>
+              {item.displayed && <Check size={16} />}
+            </button>
           ) : null;
         })}
       </div>
+      {items.length > 0 && (
+        <button
+          className="text-button"
+          disabled={busy || !items.some((item) => item.displayed)}
+          onClick={() => void select(null)}
+        >
+          Não mostrar mascote no acampamento
+        </button>
+      )}
     </section>
   );
 }
@@ -111,27 +163,56 @@ export function PetShop({
 }) {
   const [selected, setSelected] = useState<Pet>(pets[0]);
   const [appearance, setAppearance] = useState('original');
-  usePetAppearanceSound(selected.id, appearance);
+  const [soundTrigger, setSoundTrigger] = useState(0);
+  usePetAppearanceSound(selected.id, appearance, soundTrigger);
   const [name, setName] = useState('');
+  const [catalog, setCatalog] = useState<PetBreedCatalog>({
+    breeds: defaultPetBreeds(),
+    can_edit: false,
+  });
+  const [editingBreed, setEditingBreed] = useState<PetBreed | null>(null);
+  const [talking, setTalking] = useState(false);
   const [phase, setPhase] = useState<'ready' | 'writing' | 'turning'>('ready');
-  const [answer, setAnswer] = useState(
-    'Pode chegar. Dê uma olhada nos bichos; cada um tem seu jeito.',
-  );
+  const [answer, setAnswer] = useState('Pode entrar. Os bichos são meus; o sofá é dos gatos.');
   const [reading, setReading] = useState(false);
-  const [meow, setMeow] = useState('Miau…');
+  const [meow, setMeow] = useState('');
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
   const sound = useSoundEffects();
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const audio = useRef<AudioContext | null>(null);
+  const audio = useRef<HTMLAudioElement | null>(null);
   const key = useRef(crypto.randomUUID());
   const inFlight = useRef(false);
   const live = useRef(true);
   const garden = useRef<HTMLDivElement>(null);
+  const breed = catalog.breeds.find(
+    (item) => item.pet_id === selected.id && item.appearance === appearance,
+  )!;
+  useEffect(() => {
+    let active = true;
+    void api<PetBreedCatalog>('/pets/catalog')
+      .then((value) => {
+        if (active) setCatalog(value);
+      })
+      .catch((e: Error) => {
+        if (active) setError(e.message);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+  useEffect(() => {
+    if (!talking) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setTalking(false);
+    };
+    document.addEventListener('keydown', escape);
+    return () => document.removeEventListener('keydown', escape);
+  }, [talking]);
   function silence() {
     if (audio.current) {
-      void audio.current.close().catch(() => {});
+      audio.current.pause();
       audio.current = null;
     }
   }
@@ -150,43 +231,31 @@ export function PetShop({
   }, []);
   useEffect(() => {
     if (sound.muted || sound.volume === 0) silence();
+    else if (audio.current) audio.current.volume = sound.volume * 0.8;
   }, [sound.muted, sound.volume]);
   function meowSound() {
     if (sound.muted || !sound.volume || document.hidden) return;
     silence();
     try {
-      const context = new AudioContext();
-      audio.current = context;
-      const gain = context.createGain(),
-        voice = context.createOscillator(),
-        formant = context.createBiquadFilter();
-      voice.type = 'triangle';
-      voice.frequency.setValueAtTime(380, context.currentTime);
-      voice.frequency.exponentialRampToValueAtTime(620, context.currentTime + 0.1);
-      voice.frequency.exponentialRampToValueAtTime(230, context.currentTime + 0.55);
-      formant.type = 'bandpass';
-      formant.frequency.value = 1100;
-      formant.Q.value = 1.4;
-      gain.gain.setValueAtTime(0.0001, context.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.12 * sound.volume, context.currentTime + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.6);
-      voice.connect(formant).connect(gain).connect(context.destination);
-      voice.start();
-      voice.stop(context.currentTime + 0.65);
+      const voice = new Audio('/audio/pets/cat.wav');
+      audio.current = voice;
+      voice.volume = sound.volume * 0.8;
+      void voice.play().catch(() => {});
       voice.onended = () => {
-        if (audio.current === context) silence();
+        if (audio.current === voice) silence();
       };
     } catch {
       /* Text communication remains available if audio is unavailable. */
     }
   }
-  function write(text: string, voice = 'Miau… miaaau.') {
+  function write(text: string, voice = '') {
     timers.current.forEach(clearTimeout);
     timers.current = [];
     setMeow(voice);
     setReading(false);
     setPhase('writing');
-    meowSound();
+    if (voice) meowSound();
+    else silence();
     timers.current.push(
       setTimeout(() => {
         setAnswer(text);
@@ -212,7 +281,7 @@ export function PetShop({
       if (live.current) {
         key.current = crypto.randomUUID();
         setNotice(`${result.pet.name} agora acompanha ${character.name}.`);
-        write('Pronto, podem ir. Quando passarem por aqui, quero saber como ele está.', 'Miau!');
+        write('Amigo novo. Agora você pode parar de conversar com a espada.');
       }
       await onPurchased();
     } catch (e) {
@@ -235,6 +304,18 @@ export function PetShop({
           </header>
           <div className="pet-shop-details">
             <h3>{selected.name}</h3>
+            <div className="pet-breed-heading">
+              <span>{breed.name}</span>
+              {catalog.can_edit && (
+                <button
+                  className="text-button"
+                  disabled={busy}
+                  onClick={() => setEditingBreed(breed)}
+                >
+                  <Pencil size={13} /> Editar raça
+                </button>
+              )}
+            </div>
             <p>{selected.description}</p>
             {petVariants.some((v) => v.pet_id === selected.id) && (
               <fieldset className="pet-appearances" disabled={busy}>
@@ -248,11 +329,16 @@ export function PetShop({
                     aria-pressed={appearance === id}
                     onClick={() => {
                       setAppearance(id);
+                      setSoundTrigger((value) => value + 1);
                       key.current = crypto.randomUUID();
                     }}
                   >
                     <PetArt pet={selected} appearance={id} />
-                    <span>{petAppearance(selected.id, id)?.name || 'Clássico'}</span>
+                    <span>
+                      {catalog.breeds.find(
+                        (breed) => breed.pet_id === selected.id && breed.appearance === id,
+                      )?.name || 'Clássico'}
+                    </span>
                   </button>
                 ))}
               </fieldset>
@@ -315,7 +401,13 @@ export function PetShop({
           <button
             className="garalho-portrait"
             aria-label="Conversar com Garalho"
-            onClick={() => write(garalhoQuestions[0].answer, 'Miau…')}
+            aria-expanded={talking}
+            aria-controls={talking ? 'garalho-dialogue' : undefined}
+            onClick={() => {
+              setTalking((value) => !value);
+              setMeow('');
+              silence();
+            }}
           >
             <img
               className="garalho-ready-pose"
@@ -335,10 +427,6 @@ export function PetShop({
               aria-hidden="true"
             />
           </button>
-          <div className="garalho-meow" aria-live="polite">
-            <small>Garalho</small>
-            <em>{meow}</em>
-          </div>
           <div className="garalho-sign" data-phase={phase}>
             <div className="garalho-sign-front">
               <p aria-live="polite">{phase === 'ready' ? answer : ''}</p>
@@ -361,14 +449,40 @@ export function PetShop({
             </button>
           </div>
         </div>
-        <div className="garalho-questions" aria-label="Perguntas para Garalho">
-          <span>Converse com o anfitrião</span>
-          {garalhoQuestions.map((question) => (
-            <button key={question.id} onClick={() => write(question.answer, question.meow)}>
-              {question.question}
-            </button>
-          ))}
-        </div>
+        {talking && (
+          <aside
+            className="garalho-dialogue"
+            id="garalho-dialogue"
+            aria-label="Conversa com Garalho"
+          >
+            <header>
+              <span>Garalho</span>
+              <button
+                aria-label="Fechar conversa com Garalho"
+                onClick={() => {
+                  setTalking(false);
+                  silence();
+                }}
+              >
+                <X size={15} />
+              </button>
+            </header>
+            {meow ? (
+              <p className="garalho-reply" aria-live="polite">
+                {meow}
+              </p>
+            ) : (
+              <p className="garalho-dialogue-intro">O gato ajeita a placa e espera sua pergunta.</p>
+            )}
+            <div className="garalho-questions" aria-label="Perguntas para Garalho">
+              {garalhoQuestions.map((question) => (
+                <button key={question.id} onClick={() => write(question.answer, question.meow)}>
+                  {question.question}
+                </button>
+              ))}
+            </div>
+          </aside>
+        )}
       </div>
       <section className="pet-shop-catalog" aria-label="Mascotes à venda">
         <header>
@@ -386,12 +500,13 @@ export function PetShop({
               disabled={busy}
               onClick={() => {
                 setSelected(pet);
+                setSoundTrigger((value) => value + 1);
                 setAppearance('original');
                 setName('');
                 key.current = crypto.randomUUID();
                 setNotice('');
                 setError('');
-                write(pet.sign, pet.id === 'cat' ? 'Miaaau.' : 'Miau…');
+                write(pet.sign);
                 garden.current?.scrollIntoView({
                   behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
                     ? 'instant'
@@ -410,14 +525,95 @@ export function PetShop({
           ))}
         </div>
       </section>
+      <a
+        className="pet-sound-credits"
+        href="/audio/pets/CREDITS.md"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Créditos dos sons
+      </a>
       {reading && (
         <Modal title="Placa de Garalho" close={() => setReading(false)}>
           <div className="garalho-reading-board">
             <p>{answer}</p>
-            <small>Garalho · {meow}</small>
+            <small>Garalho</small>
           </div>
         </Modal>
       )}
+      {editingBreed && (
+        <PetBreedEditor
+          breed={editingBreed}
+          close={() => setEditingBreed(null)}
+          saved={(breed) => {
+            setCatalog((catalog) => ({
+              ...catalog,
+              breeds: catalog.breeds.map((item) =>
+                item.pet_id === breed.pet_id && item.appearance === breed.appearance ? breed : item,
+              ),
+            }));
+            setEditingBreed(null);
+          }}
+        />
+      )}
     </section>
+  );
+}
+function PetBreedEditor({
+  breed,
+  close,
+  saved,
+}: {
+  breed: PetBreed;
+  close: () => void;
+  saved: (breed: PetBreed) => void;
+}) {
+  const [name, setName] = useState(breed.name),
+    [busy, setBusy] = useState(false),
+    [error, setError] = useState('');
+  return (
+    <Modal
+      title="Editar raça do mascote"
+      close={() => {
+        if (!busy) close();
+      }}
+    >
+      <form
+        className="pet-breed-editor"
+        onSubmit={(event) => {
+          event.preventDefault();
+          setBusy(true);
+          setError('');
+          void api<PetBreed>(`/pets/catalog/${breed.pet_id}/${breed.appearance}`, {
+            method: 'PUT',
+            body: JSON.stringify({ name: name.trim(), revision: breed.revision }),
+          })
+            .then(saved)
+            .catch((e: Error) => setError(e.message))
+            .finally(() => setBusy(false));
+        }}
+      >
+        <label>
+          Nome da raça
+          <input
+            required
+            maxLength={80}
+            value={name}
+            disabled={busy}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
+        <p>O nome será atualizado na loja e nos mascotes que já foram comprados.</p>
+        {error && <p role="alert">{error}</p>}
+        <div className="modal-actions">
+          <button type="button" className="button" disabled={busy} onClick={close}>
+            Cancelar
+          </button>
+          <button className="button primary" disabled={busy}>
+            <Save size={15} /> {busy ? 'Salvando…' : 'Salvar raça'}
+          </button>
+        </div>
+      </form>
+    </Modal>
   );
 }

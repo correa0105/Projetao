@@ -1,0 +1,67 @@
+.camp-pet {
+  position: absolute;
+  right: 3%;
+  top: 55%;
+  width: var(--companion-width);
+  max-width: 24vw;
+  transform: translateY(-100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: camp-pet-arrives 0.55s ease-out both;
+}
+.camp-pet .pet-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.8) saturate(0.75) drop-shadow(0 5px 5px #0009);
+}
+.camp-pet .pet-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--pet-ratio);
+}
+.camp-pet::after {
+  content: '';
+  position: absolute;
+  bottom: 13px;
+  left: 15%;
+  width: 70%;
+  height: 8px;
+  border-radius: 50%;
+  background: #080806bd;
+  filter: blur(5px);
+  z-index: -1;
+}
+.camp-pet > span {
+  display: block;
+  margin-top: 2px;
+  text-align: center;
+  font:
+    11px 'Cinzel',
+    Georgia,
+    serif;
+  color: #d1bd95;
+  text-shadow: 0 2px 4px #000;
+  overflow-wrap: anywhere;
+}
+@keyframes camp-pet-arrives {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 600px) {
+  .camp-pet {
+    right: 8px;
+    width: calc(var(--companion-width) * 0.65);
+    max-width: 31vw;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .camp-pet {
+    animation: none;
+  }
+}

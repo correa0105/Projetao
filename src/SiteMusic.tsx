@@ -22,6 +22,7 @@ const MusicContext = createContext({
   toggle: () => {},
   setVolume: (_value: number) => {},
   playScroll: () => {},
+  playEra: () => {},
   beginInterlude: (): (() => void) => () => {},
 });
 const preference = 'alvorada-music-muted';
@@ -45,6 +46,9 @@ export function useSoundEffects() {
 export function useLoreScrollSound() {
   return useContext(MusicContext).playScroll;
 }
+export function useLoreEraSound() {
+  return useContext(MusicContext).playEra;
+}
 
 export function useMusicInterlude() {
   return useContext(MusicContext);
@@ -54,6 +58,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
   const audio = useRef<HTMLAudioElement>(null);
   const bell = useRef<HTMLAudioElement>(null);
   const scroll = useRef<HTMLAudioElement>(null);
+  const era = useRef<HTMLAudioElement>(null);
   const interlude = useRef<symbol | null>(null);
   const beginInterlude = useCallback(() => {
     const token = Symbol('music-interlude');
@@ -61,6 +66,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     audio.current?.pause();
     bell.current?.pause();
     scroll.current?.pause();
+    era.current?.pause();
     return () => {
       if (interlude.current !== token) return;
       interlude.current = null;
@@ -130,12 +136,16 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
         player.pause();
         doorBell.pause();
         scroll.current?.pause();
+        era.current?.pause();
       } else play();
     };
     const route = () => {
       if (currentRoute === location.hash) return;
       currentRoute = location.hash;
-      if (currentRoute !== '#lore') scroll.current?.pause();
+      if (currentRoute !== '#lore') {
+        scroll.current?.pause();
+        era.current?.pause();
+      }
       const nextTrack = trackForPage();
       // Set and play synchronously; waiting for a React effect can lose activation.
       if (player.getAttribute('src') !== nextTrack) player.src = nextTrack;
@@ -155,6 +165,7 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
       player.pause();
       doorBell.pause();
       scroll.current?.pause();
+      era.current?.pause();
       document.removeEventListener('pointerdown', play);
       document.removeEventListener('keydown', play);
       document.removeEventListener('visibilitychange', visibility);
@@ -179,9 +190,12 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
     scroll.current!.volume = Math.min(1, effectsVolume * 1.45);
     bell.current!.muted = effectsMuted;
     scroll.current!.muted = effectsMuted;
+    era.current!.volume = effectsVolume;
+    era.current!.muted = effectsMuted;
     if (effectsMuted || effectsVolume === 0) {
       bell.current!.pause();
       scroll.current!.pause();
+      era.current!.pause();
     }
     try {
       localStorage.setItem('alvorada-effects-volume', String(effectsVolume));
@@ -205,6 +219,12 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
         toggle: () => setMuted((value) => !value),
         playScroll: () => {
           const sound = scroll.current;
+          if (!sound || effectsMuted || effectsVolume === 0 || document.hidden) return;
+          sound.currentTime = 0;
+          void sound.play().catch(() => {});
+        },
+        playEra: () => {
+          const sound = era.current;
           if (!sound || effectsMuted || effectsVolume === 0 || document.hidden) return;
           sound.currentTime = 0;
           void sound.play().catch(() => {});
@@ -247,6 +267,14 @@ export function SiteMusicProvider({ children }: { children: ReactNode }) {
           preload="auto"
           muted={effectsMuted}
           data-lore-scroll-sound
+          aria-hidden="true"
+        />
+        <audio
+          ref={era}
+          src="/audio/lore-era-lock.wav"
+          preload="auto"
+          muted={effectsMuted}
+          data-lore-era-sound
           aria-hidden="true"
         />
       </EffectsContext.Provider>

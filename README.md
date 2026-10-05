@@ -2,7 +2,7 @@
 
 ## Mascotes, eventos, títulos e cartas
 
-O menu reúne **Casa dos mascotes**, **Eventos**, **Títulos** e **Cartas**.
+O menu reúne **Casa dos mascotes**, **Eventos**, **Conquistas** e **Cartas**.
 Garalho atende por placas de madeira nas patas e miados, menor junto à casa;
 escreve e apresenta a resposta. O jardim está sem o esqueleto. Dez espécies,
 aparências alternativas inteiras, proporções preservadas, sons próprios e compras
@@ -10,8 +10,9 @@ em ouro persistidas no inventário. Administradores editam eventos e todo o
 cenário, incluindo background, artes e animações, e criam títulos com metas
 ou concessão a outros personagens.
 
-Conquistas ficam integradas em Títulos, com nome, descrição e título concedido
-editáveis pelo administrador. O título escolhido aparece no acampamento/ficha.
+Conquistas mantém a estante original e seu catálogo, com nome, descrição e título
+concedido editáveis pelo administrador. Títulos são administrados e escolhidos
+dentro de Conquistas; não há uma aba separada. O escolhido aparece no acampamento/ficha.
 Cada personagem equipa até três cartas; quatro são compráveis.
 Aprimoramentos e drops ficam para as regras futuras definidas pelo usuário.
 A ficha agora é escura, com **História** e **Equipamento** separados, e a Lore
@@ -27,6 +28,20 @@ Corvo clássico também no chão, sem madeira. Salão de cartas recomposto com
 janela à esquerda, anfitrião ao fundo em sombra e cartas em leque à frente;
 conversa aparece sob interação. [Mudanças e prompts](docs/SALAO-CONQUISTAS.md).
 
+Em **Início → Calendário**, navegue entre meses, filtre eventos/missões/Diário
+e selecione um dia para ver todos os compromissos. Administradores têm **Editar
+calendário** (título, apresentação, fundo próprio, cor e primeiro dia da semana)
+e **Novo compromisso**, além da edição/exclusão dos eventos. O calendário usa
+os mesmos registros das outras páginas. Eventos tem por enquanto uma rua de vila
+como fundo; o editor completo do cenário continua disponível.
+
+Mascotes: o comprador escolhe o nome; no **Inventário → Mascotes**, escolha qual
+aparece à direita do personagem no acampamento. A seleção muda junto do personagem.
+Administradores podem **Editar raça** no catálogo. A conversa de Garalho abre ao
+clicar nele e só mostra miado após pergunta; as placas têm respostas bem-humoradas.
+Seleção de animais usa vozes próprias, sem o efeito extra de impacto.
+[Calendário, seleção e fontes de áudio](docs/CALENDARIO-MASCOTES.md).
+
 ## Administração e novos arquivos da Lore
 
 A coluna `"user".administrador` usa `0` para jogador e `1` para administrador.
@@ -37,8 +52,9 @@ para revogar, use `0`. Cadastro/perfil não concedem essa permissão.
 
 Na Lore, **Editar eras** permite alterar títulos/períodos, revelar eras, ordenar,
 adicionar/excluir e vincular pastas. Ao abrir uma pasta vinculada (ou subpasta),
-a linha do tempo percorre as eras até a correspondente; na mesma era, toca só a
-finalização. No inventário, **Companheiros de estrada** escolhe a montaria que
+a barra contínua de luz percorre as eras até a correspondente, com engrenagens
+e um tranco na chegada; na mesma era, toca só a finalização. Os nomes das pastas
+ganharam destaque tipográfico. No inventário, **Companheiros de estrada** escolhe a montaria que
 aparece no fundo do acampamento do personagem selecionado. Dados persistem no PostgreSQL.
 
 ## Patentes e níveis
@@ -292,6 +308,7 @@ docker compose up -d --build app
 Missões, eventos e ganchos ativos aparecem como papéis clicáveis no mural da vila. Ao publicar, escolha entre seis modelos de papel e informe um resumo opcional. Apenas o autor pode arrastar seu aviso dentro da madeira ou mover com as setas do teclado; a posição fica salva no PostgreSQL. As placas laterais abrem listas com busca, filtros e paginação, incluindo o histórico e a opção de localizar um papel encoberto. Eventos continuam restritos à staff; ganchos nascem da conclusão de missões. `npm run test:notice-board` valida o fluxo em um banco descartável.
 
 ### Estábulo
+
 Em Menu → Loja → Estábulo, escolha entre quatro montarias e duas pelagens por espécie. O botão ? no menu de montarias abre sua ficha SRD. Nome e compra ficam diretamente na cena. Ouro, animal e pelagem são persistidos no personagem. A página prioriza o campo, sem painel de montarias adquiridas; pelagens ficam no menu e a cena acompanha a altura da janela, com controles compactos acima do campo nos celulares. npm run test:stable verifica o fluxo em banco descartável.
 
 A selaria abaixo das montarias permite experimentar duas selas, três bardas e ração. O campo de nome e a compra ficam sob o título. A compra do conjunto salva animal, pelagem e acessórios; regras de combate são consultivas. Veja `docs/STABLE-TACK-ART.md` para arte e fonte SRD.
@@ -300,13 +317,11 @@ O nome agora fica acima das montarias, na coluna esquerda; a compra fica abaixo 
 
 As três bardas também possuem artes completas para todas as espécies e pelagens (24 combinações). Arquivos e prompts em docs/STABLE-BARDED-ART.json.
 
-
 ## Acabamento inspirado no Inkarnate (30/09/2026)
 
 Direção vigente: acabamento construído diretamente no 3D. A imagem Inkarnate foi retirada do material e permanece somente como referência histórica (docs/ATLAS-INKARNATE.md). src/world-relief.ts usa cores por bioma, fotografias CC0 de solo/rocha projetadas em três eixos, fissuras e estratos calculados no shader, erosão nos vértices e copas de árvores em duas malhas instanciadas com sombras reais. src/world-ocean.ts calcula espuma costeira irregular animada. Preservar geografia, territórios e navegação; não reaplicar a imagem completa sobre o terreno. Detalhes e validação em docs/ATLAS-3D-MATERIALS.md.
 
 Refino do Mundo em 30/09/2026: ondas costeiras móveis, árvores menos densas com folhagem procedural, destaque das fronteiras acima das copas e detalhe de dunas/areia. Vulcão e ilhotas cônicas ao sul retirados; 21 marcadores visíveis, registros SQL preservados. Detalhes em docs/ATLAS-3D-MATERIALS.md.
-
 
 ## Diário da Alvorada e música geral
 

@@ -23,6 +23,13 @@ const context = await browser.newContext({ viewport: { width: 1440, height: 900 
 // Observe the real browser audio nodes; keep native scheduling/output intact.
 await context.addInitScript(() => {
   const native = window.AudioContext;
+  const media: { voice: HTMLMediaElement; source: string }[] = [];
+  (window as any).__communityMedia = media;
+  const play = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function () {
+    if (this.src.includes('/audio/pets/')) media.push({ voice: this, source: this.src });
+    return play.call(this);
+  };
   const observations: { context: AudioContext; starts: number; buffers: number }[] = [];
   (window as any).__communityAudio = observations;
   window.AudioContext = class extends native {
@@ -186,13 +193,16 @@ try {
   const gardenBox = await page.locator('.pet-shop-garden').boundingBox();
   expect(catBox!.height).toBeLessThan(gardenBox!.height * 0.4);
   const q = page.getByRole('button', { name: 'Como escolho um companheiro?', exact: true });
+  await expect(page.locator('.garalho-dialogue')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Conversar com Garalho', exact: true }).click();
+  await expect(page.locator('.garalho-reply')).toHaveCount(0);
   const start = Date.now();
   await q.click();
   await expect(page.locator('.garalho-sign')).toHaveAttribute('data-phase', 'writing');
   await expect(page.locator('.garalho-sign svg')).toHaveCount(0);
   await expect(page.locator('.garalho-writing-pose')).toHaveCSS('opacity', '1');
   await page.screenshot({ path: 'test-results/garalho-writing.png' });
-  await expect(page.locator('.garalho-sign-front p')).toContainText('Passe um tempo com eles.', {
+  await expect(page.locator('.garalho-sign-front p')).toContainText('Veja quem gosta de você.', {
     timeout: 5000,
   });
   expect(Date.now() - start).toBeGreaterThan(2400);
@@ -203,7 +213,7 @@ try {
   expect(board!.y + board!.height).toBeLessThan(catBox!.y + catBox!.height);
   await page.getByRole('button', { name: 'Ler placa', exact: true }).click();
   await expect(page.getByRole('dialog', { name: 'Placa de Garalho', exact: true })).toContainText(
-    'Passe um tempo com eles.',
+    'Veja quem gosta de você.',
   );
   await page.getByRole('button', { name: 'Fechar', exact: true }).click();
   for (const width of [320, 390, 768]) {
@@ -245,21 +255,36 @@ try {
     'Cão',
   ]) {
     const before = await page.evaluate(() => (window as any).__communityAudio.length);
+    const beforeMedia = await page.evaluate(() => (window as any).__communityMedia.length);
     await page
       .locator('.pet-shop-choices button')
       .filter({ has: page.getByText(species, { exact: true }) })
       .click();
     await expect
       .poll(() =>
-        page.evaluate((index) => {
-          const observations = (window as any).__communityAudio.slice(index);
-          // Garalho's separate meow has one oscillator. The appearing animal also
-          // produces its own context: multi-part voice or a noise buffer.
-          return observations.some(
-            (entry: any) =>
-              entry.context.state === 'running' && (entry.starts > 1 || entry.buffers > 0),
-          );
-        }, before),
+        page
+          .evaluate((index) => {
+            const observations = (window as any).__communityAudio.slice(index);
+            // Garalho's separate meow has one oscillator. The appearing animal also
+            // produces its own context: multi-part voice or a noise buffer.
+            return observations.some(
+              (entry: any) =>
+                entry.context.state === 'running' && (entry.starts > 1 || entry.buffers > 0),
+            );
+          }, before)
+          .then(
+            async (synth) =>
+              synth ||
+              (await page.evaluate(
+                (index) =>
+                  (window as any).__communityMedia
+                    .slice(index)
+                    .some(
+                      (entry: any) => !entry.voice.paused && entry.source.includes('/audio/pets/'),
+                    ),
+                beforeMedia,
+              )),
+          ),
       )
       .toBe(true);
     const appearances = page.locator('.pet-appearances button');
@@ -279,6 +304,7 @@ try {
   await page.keyboard.press('Escape');
   await page.keyboard.press('Escape');
   const beforeMuted = await page.evaluate(() => (window as any).__communityAudio.length);
+  const mediaMuted = await page.evaluate(() => (window as any).__communityMedia.length);
   await page
     .locator('.pet-shop-choices button')
     .filter({ has: page.getByText('Gato', { exact: true }) })
@@ -286,6 +312,7 @@ try {
   await expect(page.locator('.pet-shop-preview [role=img]')).toHaveAttribute('aria-label', 'Gato');
   await page.waitForTimeout(200);
   expect(await page.evaluate(() => (window as any).__communityAudio.length)).toBe(beforeMuted);
+  expect(await page.evaluate(() => (window as any).__communityMedia.length)).toBe(mediaMuted);
   await page.locator('.profile-avatar').click();
   await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
   await page.getByRole('button', { name: 'Ativar efeitos sonoros', exact: true }).click();
@@ -360,9 +387,9 @@ try {
   ).toBeVisible();
   await page.screenshot({ path: 'test-results/events-desktop.png', fullPage: true });
   await page.goto(origin + '/#achievements');
-  await expect(page.locator('.honor-achievements-list article')).toHaveCount(7);
-  await expect(page.locator('.fantasy-cabinet')).toHaveCount(0);
-  const conquest = page.locator('.honor-achievements-list article[data-code="first_purchase"]');
+  await expect(page.locator('.catalog-achievement')).toHaveCount(5);
+  await expect(page.locator('.fantasy-cabinet')).toHaveCount(1);
+  const conquest = page.locator('.catalog-achievement[data-code="first_purchase"]');
   await conquest.getByRole('button', { name: 'Criar título', exact: true }).click();
   dialog = page.getByRole('dialog', { name: 'Administrar títulos', exact: true });
   await expect(dialog.getByLabel('Forma de conquistar', { exact: true })).toHaveValue(

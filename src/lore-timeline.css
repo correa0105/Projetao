@@ -64,15 +64,26 @@
   inset: -3px 0;
   border-block: 1px solid #b3985420;
 }
-.lore-era-thread i {
+.lore-era-light {
   position: absolute;
-  left: calc(100% * var(--era-position) / max(1, var(--era-count) - 1));
-  top: -2px;
-  width: 4px;
-  height: 5px;
-  background: #ebcf91;
-  box-shadow: 0 0 16px 7px #d4aa553b;
-  transition: left 0.18s linear;
+  left: calc(100% * var(--light-start) / max(1, var(--era-count) - 1));
+  width: calc(100% * var(--light-length) / max(1, var(--era-count) - 1));
+  top: -1px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(#f8e6b3, #e1b86c 55%, #b3833e);
+  box-shadow:
+    0 0 8px 2px #d6aa5266,
+    0 0 22px 5px #d4aa5526;
+  opacity: 0;
+  transition:
+    left var(--light-duration) linear,
+    width var(--light-duration) linear,
+    opacity 0.35s;
+}
+.lore-timeline[data-phase='travelling'] .lore-era-light,
+.lore-timeline[data-phase='arriving'] .lore-era-light {
+  opacity: 1;
 }
 .lore-era {
   flex: 1 0 116px;
@@ -178,7 +189,7 @@
   padding-top: 5px;
 }
 .lore-era-record[data-arriving='true'] {
-  animation: lore-era-arrival 0.65s ease-out both;
+  animation: lore-era-arrival 1.05s ease-out both;
 }
 .lore-timeline[data-phase='travelling'] .lore-era-thread {
   box-shadow: 0 0 10px #ccae6233;

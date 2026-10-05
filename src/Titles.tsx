@@ -4,7 +4,6 @@ import { api, post } from './api';
 import { Modal } from './components';
 import { achievementCatalog } from '../shared/achievements';
 import type { AchievementDefinition } from '../shared/achievements';
-import { AchievementHonors } from './AchievementHonors';
 import {
   emptyTitle,
   titleGoalNames,
@@ -43,18 +42,20 @@ export function CharacterTitleLabel({ characterId }: { characterId: string }) {
 export function TitleHall({
   characterId,
   canEdit = false,
+  definitions = achievementCatalog.map((a) => ({ ...a, revision: 0 })),
+  refreshVersion = 0,
+  onChanged,
 }: {
   characterId?: string;
   canEdit?: boolean;
+  definitions?: AchievementDefinition[];
+  refreshVersion?: number;
+  onChanged?: () => Promise<void>;
 }) {
   const [data, setData] = useState<TitlesResponse | null>(null),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
-    [manager, setManager] = useState(false),
-    [initialAchievement, setInitialAchievement] = useState<AchievementDefinition | undefined>(),
-    [definitions, setDefinitions] = useState<AchievementDefinition[]>(
-      [...achievementCatalog].map((a) => ({ ...a, revision: 0 })),
-    );
+    [manager, setManager] = useState(false);
   async function refresh() {
     if (characterId) setData(await api<TitlesResponse>('/titles/' + characterId));
     else {
@@ -85,7 +86,7 @@ export function TitleHall({
     return () => {
       live = false;
     };
-  }, [characterId]);
+  }, [characterId, refreshVersion]);
   async function display(id: string | null) {
     if (!characterId) return;
     setBusy(true);
@@ -107,14 +108,13 @@ export function TitleHall({
       <header>
         <div>
           <span className="eyebrow">NOMES QUE A GUILDA RECONHECE</span>
-          <h2>Títulos & honrarias</h2>
-          <p>Conquistas viram histórias. Histórias dão significado ao nome que você carrega.</p>
+          <h2>Títulos do personagem</h2>
+          <p>Escolha um título recebido para exibir no acampamento e na ficha.</p>
         </div>
         {(data?.can_edit || canEdit) && (
           <button
             className="button outline"
             onClick={() => {
-              setInitialAchievement(undefined);
               setManager(true);
             }}
           >
@@ -162,31 +162,20 @@ export function TitleHall({
         ))}
       </div>
       {!data && !error && <p role="status">Consultando as honrarias…</p>}
-      {data && (
-        <AchievementHonors
-          characterId={characterId}
-          titles={data.items}
-          onDefinitions={setDefinitions}
-          canEdit={data.can_edit}
-          onChanged={refresh}
-          onCreateTitle={(a) => {
-            setInitialAchievement(a);
-            setManager(true);
-          }}
-        />
-      )}
       {manager && (data?.can_edit || canEdit) && (
         <TitleManager
-          initialAchievement={initialAchievement}
           definitions={definitions}
           close={() => setManager(false)}
-          changed={refresh}
+          changed={async () => {
+            await refresh();
+            await onChanged?.();
+          }}
         />
       )}
     </section>
   );
 }
-function TitleManager({
+export function TitleManager({
   close,
   changed,
   initialAchievement,

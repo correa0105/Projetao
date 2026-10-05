@@ -2,134 +2,95 @@ import { useEffect, useRef } from 'react';
 import { useSoundEffects } from './SiteMusic';
 import { petArtwork } from './pet-art';
 
-// Short, locally synthesized animal voices; no tracking or third-party audio requests.
-export function usePetAppearanceSound(petId: string, appearance: string) {
-  const preferences = useSoundEffects();
-  const settings = useRef(preferences);
+// Freely licensed, short animal recordings; source credits ship with the local files.
+const recorded = new Set(['dog', 'cat', 'owl', 'raven', 'fox', 'frog', 'rat', 'guinea-pig']);
+export function usePetAppearanceSound(petId: string, appearance: string, trigger = 0) {
+  const preferences = useSoundEffects(),
+    settings = useRef(preferences);
   settings.current = preferences;
-  const audio = useRef<AudioContext | null>(null);
-  const master = useRef<GainNode | null>(null);
+  const voice = useRef<HTMLAudioElement | null>(null),
+    context = useRef<AudioContext | null>(null),
+    gain = useRef<GainNode | null>(null);
   useEffect(() => {
     let cancelled = false,
       sounded = false,
-      timer: ReturnType<typeof setTimeout> | undefined;
+      pending = false;
     const stop = () => {
-      if (timer) clearTimeout(timer);
-      const context = audio.current;
-      audio.current = null;
-      master.current = null;
-      if (context) void context.close().catch(() => {});
+      if (voice.current) {
+        voice.current.onended = null;
+        voice.current.pause();
+        voice.current = null;
+      }
+      if (context.current) {
+        void context.current.close().catch(() => {});
+        context.current = null;
+      }
+      gain.current = null;
     };
     const play = async () => {
       if (
         cancelled ||
         sounded ||
+        pending ||
         settings.current.muted ||
         !settings.current.volume ||
         document.hidden
       )
         return;
+      pending = true;
       stop();
       try {
-        const context = new AudioContext();
-        audio.current = context;
-        await context.resume();
-        if (cancelled || audio.current !== context || context.state !== 'running') return;
-        sounded = true;
-        const output = context.createGain();
-        output.gain.value = settings.current.volume * 0.32;
-        output.connect(context.destination);
-        master.current = output;
-        const t = context.currentTime + 0.025;
-        const tone = (
-          at: number,
-          duration: number,
-          start: number,
-          end: number,
-          amplitude: number,
-          rough = false,
-        ) => {
-          const voice = context.createOscillator(),
-            gain = context.createGain(),
-            filter = context.createBiquadFilter();
-          voice.type = rough ? 'sawtooth' : 'sine';
-          voice.frequency.setValueAtTime(start, t + at);
-          voice.frequency.exponentialRampToValueAtTime(end, t + at + duration);
-          filter.type = 'lowpass';
-          filter.frequency.value = rough ? 1100 : 5000;
-          gain.gain.setValueAtTime(0.0001, t + at);
-          gain.gain.exponentialRampToValueAtTime(amplitude, t + at + 0.018);
-          gain.gain.exponentialRampToValueAtTime(0.0001, t + at + duration);
-          voice.connect(filter).connect(gain).connect(output);
-          voice.start(t + at);
-          voice.stop(t + at + duration + 0.02);
-        };
-        const rustle = (duration: number, frequency: number, amplitude: number) => {
-          const buffer = context.createBuffer(
+        if (recorded.has(petId)) {
+          const audio = new Audio(`/audio/pets/${petId}.wav`);
+          voice.current = audio;
+          audio.volume = settings.current.volume * (petId === 'rat' ? 0.55 : 0.8);
+          await audio.play();
+          if (cancelled || settings.current.muted || !settings.current.volume || document.hidden) {
+            audio.pause();
+            return;
+          }
+          sounded = true;
+          audio.onended = stop;
+        } else {
+          // Quiet pets: a gentle hiss or sniff. No electronic tone or impact.
+          const audio = new AudioContext();
+          context.current = audio;
+          await audio.resume();
+          if (
+            cancelled ||
+            context.current !== audio ||
+            settings.current.muted ||
+            document.hidden ||
+            audio.state !== 'running'
+          )
+            return;
+          const duration = petId === 'snake' ? 0.75 : 0.3;
+          const buffer = audio.createBuffer(
               1,
-              Math.ceil(context.sampleRate * duration),
-              context.sampleRate,
+              Math.ceil(audio.sampleRate * duration),
+              audio.sampleRate,
             ),
             samples = buffer.getChannelData(0);
           for (let i = 0; i < samples.length; i++)
-            samples[i] = (Math.random() * 2 - 1) * Math.sin((Math.PI * i) / samples.length);
-          const source = context.createBufferSource(),
-            filter = context.createBiquadFilter(),
-            gain = context.createGain();
+            samples[i] = (Math.random() * 2 - 1) * Math.sin((Math.PI * i) / samples.length) ** 1.5;
+          const source = audio.createBufferSource(),
+            filter = audio.createBiquadFilter(),
+            output = audio.createGain();
           source.buffer = buffer;
           filter.type = 'bandpass';
-          filter.frequency.value = frequency;
+          filter.frequency.value = petId === 'snake' ? 3400 : 950;
           filter.Q.value = 0.6;
-          gain.gain.value = amplitude;
-          source.connect(filter).connect(gain).connect(output);
-          source.start(t);
-        };
-        switch (petId) {
-          case 'dog':
-            tone(0, 0.18, 190, 80, 0.7, true);
-            tone(0.28, 0.22, 210, 75, 0.55, true);
-            rustle(0.5, 700, 0.18);
-            break;
-          case 'cat':
-            tone(0, 0.5, 410, 260, 0.65, true);
-            tone(0.06, 0.36, 790, 480, 0.16);
-            break;
-          case 'owl':
-            tone(0, 0.23, 520, 390, 0.7);
-            tone(0.32, 0.38, 470, 390, 0.65);
-            break;
-          case 'raven':
-            tone(0, 0.25, 570, 210, 0.6, true);
-            tone(0.34, 0.28, 580, 230, 0.45, true);
-            rustle(0.6, 1500, 0.22);
-            break;
-          case 'fox':
-            tone(0, 0.14, 700, 260, 0.65, true);
-            tone(0.25, 0.12, 760, 330, 0.45, true);
-            break;
-          case 'frog':
-            tone(0, 0.22, 165, 100, 0.8, true);
-            tone(0.3, 0.23, 145, 90, 0.7, true);
-            break;
-          case 'snake':
-            rustle(0.8, 3800, 0.8);
-            break;
-          case 'rat':
-            tone(0, 0.11, 2250, 1650, 0.35);
-            tone(0.22, 0.14, 2500, 1800, 0.3);
-            break;
-          case 'guinea-pig':
-            tone(0, 0.22, 1150, 1700, 0.4);
-            tone(0.28, 0.25, 1350, 1900, 0.4);
-            break;
-          default:
-            rustle(0.5, 1800, 0.35);
-            tone(0.05, 0.06, 130, 80, 0.25);
-            tone(0.25, 0.06, 140, 80, 0.2);
+          output.gain.value = settings.current.volume * (petId === 'snake' ? 0.24 : 0.035);
+          gain.current = output;
+          source.connect(filter).connect(output).connect(audio.destination);
+          source.start();
+          source.onended = stop;
+          sounded = true;
         }
-        timer = setTimeout(stop, 1500);
       } catch {
         stop();
+      } finally {
+        pending = false;
       }
     };
     const image = new Image();
@@ -154,15 +115,20 @@ export function usePetAppearanceSound(petId: string, appearance: string) {
       document.removeEventListener('keydown', unlock);
       document.removeEventListener('visibilitychange', visibility);
     };
-  }, [petId, appearance]);
+  }, [petId, appearance, trigger]);
   useEffect(() => {
-    if (master.current)
-      master.current.gain.value = preferences.muted ? 0 : preferences.volume * 0.32;
-    if ((preferences.muted || !preferences.volume) && audio.current) {
-      const context = audio.current;
-      audio.current = null;
-      master.current = null;
-      void context.close().catch(() => {});
+    if (voice.current) {
+      voice.current.volume = preferences.volume * (petId === 'rat' ? 0.55 : 0.8);
+      if (preferences.muted || !preferences.volume) voice.current.pause();
     }
-  }, [preferences.muted, preferences.volume]);
+    if (gain.current)
+      gain.current.gain.value = preferences.muted
+        ? 0
+        : preferences.volume * (petId === 'snake' ? 0.24 : 0.035);
+    if ((preferences.muted || !preferences.volume) && context.current) {
+      void context.current.close().catch(() => {});
+      context.current = null;
+      gain.current = null;
+    }
+  }, [preferences.muted, preferences.volume, petId]);
 }

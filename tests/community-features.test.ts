@@ -463,7 +463,7 @@ test('mascotes, cartas, títulos, eventos e estante: economia, ownership e admin
       },
     );
     await t.test(
-      'estante histórica: peças e ownership preservados após a remoção da página',
+      'estante de conquistas: peças, prateleiras livres e ownership preservados',
       async () => {
         for (const item of achievementCatalog)
           await pool.query(

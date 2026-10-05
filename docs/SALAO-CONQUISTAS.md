@@ -2,7 +2,17 @@
 
 Direção atual: janela no terço esquerdo, anfitrião menor ao fundo à direita em sombra, luz fria lateral, cartas em leque no primeiro plano. Conversa sob demanda, com encerramento e Escape; não há painel de diálogo permanente. Três cartas equipadas, preços e obtenção preservados. Aprimoramento e drops seguem pendentes conforme o usuário.
 
-Conquistas integradas em Títulos; menu sem estante e rota antiga abre Títulos. Administração altera nome/descrição e título vinculado, com revisão e transação. Direitos de administrador conferidos no servidor. Trocar/remover vínculo preserva títulos já recebidos. Histórico e estantes SQL preservados. Migration 055 acrescenta definições editáveis; nenhum dado existente apagado. Título escolhido aparece separadamente na tela do personagem e na ficha; link Escolher título no acampamento.
+Correção do usuário: a página original **Conquistas** foi restaurada, incluindo
+estante, prateleiras sem limite, posições livres, personalização e catálogo.
+O menu/página separado **Títulos** foi removido; títulos ficam abaixo do catálogo
+de conquistas. `#titles` antigo redireciona para Conquistas. Administração altera
+nome/descrição e título vinculado pelo botão **Editar conquista**, com revisão e
+transação. **Criar título** parte da conquista e preenche sua meta. O título em
+exibição é escolhido nessa mesma página; **Administrar títulos** continua permitindo
+metas e concessão/revogação manual. Trocar/remover vínculo preserva títulos já
+recebidos. Direitos de administrador conferidos no servidor. Migration 055 guarda
+definições editáveis; nenhum dado existente foi apagado. O título aparece separado
+do nome na tela do personagem e ficha, com atalho **Escolher título**.
 
 Corvo clássico sem madeira, apoiado nas próprias patas. Aparência alternativa já não tinha poleiro. PNG novo substitui apenas o corvo clássico, com enquadramento completo e proporção preservada.
 
@@ -15,8 +25,9 @@ de conquistas (dois personagens, permissão e persistência) passaram. PNG/SVG
 dos animais verificados sem cortes ou vizinhos. Movimento reduzido preservado;
 celular mostra janela e anfitrião, com rolagem dentro do leque.
 
-Aplicado no Docker local, migration 055 confirmada. localhost:3000 serve
-index-Df-zRMUI.js / index-UriLdI7V.css. Backup anterior à migration em
+Entrega anterior do salão aplicada no Docker local com migration 055. A correção
+de Conquistas é registrada em CONTEXTO.md junto do calendário/mascotes.
+Backup anterior à migration em
 .local/backups/alvorada-before-salon-20261005.dump, ignorado no Git.
 Volumes e dados históricos preservados.
 Healthcheck saudável; corvo e salão novos servidos com HTTP 200/image/png.

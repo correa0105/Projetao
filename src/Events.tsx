@@ -312,7 +312,7 @@ export function Events() {
     </section>
   );
 }
-function ImageField({
+export function EventImageField({
   value,
   onChange,
   label,
@@ -375,14 +375,16 @@ function ImageField({
     </div>
   );
 }
-function EventEditor({
+export function EventEditor({
   item,
   close,
   saved,
+  initialDate,
 }: {
   item?: GuildEvent;
   close: () => void;
   saved: () => Promise<void>;
+  initialDate?: string;
 }) {
   const [draft, setDraft] = useState<EventInput>(
       item
@@ -394,7 +396,7 @@ function EventEditor({
             status: item.status,
             presentation: { ...item.presentation },
           }
-        : structuredClone(blankEvent),
+        : { ...structuredClone(blankEvent), starts_at: initialDate || null },
     ),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
@@ -520,7 +522,7 @@ function EventEditor({
               />
             </label>
           </div>
-          <ImageField
+          <EventImageField
             label="Arte do evento"
             value={draft.presentation.image}
             onChange={(image) => change({ presentation: { ...draft.presentation, image } })}
@@ -666,7 +668,7 @@ function SceneEditor({
               onChange={(e) => change({ subtitle: e.target.value })}
             />
           </label>
-          <ImageField
+          <EventImageField
             label="Fundo de tela inteira"
             value={draft.background}
             onChange={(background) => change({ background })}
@@ -722,7 +724,7 @@ function SceneEditor({
                   <Trash2 size={14} />
                 </button>
               </header>
-              <ImageField
+              <EventImageField
                 label="Imagem da arte"
                 value={layer.path}
                 disabled={busy}

@@ -1,4 +1,5 @@
 import { homeUpdatesRouter } from './home-updates.js';
+import { calendarRouter } from './calendar.js';
 import { loreRouter } from './lore.js';
 import { loreTimelineRouter } from './lore-timeline.js';
 import { rulebookRouter } from './rulebook.js';
@@ -169,6 +170,7 @@ export function createApp() {
   app.use('/api', cardsRouter());
   app.use('/api', achievementsRouter());
   app.use('/api', homeUpdatesRouter());
+  app.use('/api', calendarRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [permission],

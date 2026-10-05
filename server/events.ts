@@ -151,7 +151,7 @@ export function eventsRouter() {
   router.get('/event-images/:id', async (req, res) => {
     const id = uuid.parse(req.params.id);
     const r = await pool.query(
-      `SELECT bytes FROM event_images i WHERE id=$1 AND (${administratorPredicate(2)} OR EXISTS(SELECT 1 FROM event_scene WHERE document->>'background'='/api/event-images/'||i.id::text OR EXISTS(SELECT 1 FROM jsonb_array_elements(document->'layers') l WHERE l->>'path'='/api/event-images/'||i.id::text)) OR EXISTS(SELECT 1 FROM board_posts b WHERE kind='event' AND event_presentation->>'image'='/api/event-images/'||i.id::text))`,
+      `SELECT bytes FROM event_images i WHERE id=$1 AND (${administratorPredicate(2)} OR EXISTS(SELECT 1 FROM event_scene WHERE document->>'background'='/api/event-images/'||i.id::text OR EXISTS(SELECT 1 FROM jsonb_array_elements(document->'layers') l WHERE l->>'path'='/api/event-images/'||i.id::text)) OR EXISTS(SELECT 1 FROM guild_calendar WHERE document->>'background'='/api/event-images/'||i.id::text) OR EXISTS(SELECT 1 FROM board_posts b WHERE kind='event' AND event_presentation->>'image'='/api/event-images/'||i.id::text))`,
       [id, res.locals.user.id],
     );
     if (!r.rowCount) throw new AppError(404, 'Imagem não encontrada.');

@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { api } from './api';
 import { Modal } from './components';
-import { useLoreScrollSound } from './SiteMusic';
+import { useLoreEraSound } from './SiteMusic';
 import { loreFolderPath, type LoreFolder } from '../shared/lore';
 import {
   type LoreEra,
@@ -44,12 +44,13 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
   const [selected, setSelected] = useState('');
   const [phase, setPhase] = useState<'idle' | 'travelling' | 'arriving'>('idle');
   const [arrival, setArrival] = useState(0);
+  const [beam, setBeam] = useState({ origin: 0, tip: 0, duration: 0, token: 0 });
   const [edit, setEdit] = useState(false);
   const [error, setError] = useState('');
   const host = useRef<HTMLElement>(null);
   const active = useRef('');
   const flight = useRef(0);
-  const sound = useLoreScrollSound();
+  const sound = useLoreEraSound();
   async function refresh() {
     const value = await api<LoreTimelineResponse>('/lore-timeline');
     setTimeline(value);
@@ -77,18 +78,25 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       eras.findIndex((era) => era.id === active.current),
     );
     if (from !== destination && !reduced) {
+      setBeam({ origin: from, tip: from, duration: 0, token });
       setPhase('travelling');
       const step = from > destination ? -1 : 1;
-      const duration = Math.min(190, 1400 / Math.abs(destination - from));
+      const duration = Math.min(320, 1600 / Math.abs(destination - from));
+      // Give the new, empty strip a frame before extending it toward the next era.
+      await pause(40);
       for (let index = from + step; index !== destination + step; index += step) {
+        if (flight.current !== token) return false;
+        setBeam({ origin: from, tip: index, duration, token });
+        host.current
+          ?.querySelector<HTMLElement>(`[data-era-id="${eras[index].id}"]`)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        await pause(duration);
         if (flight.current !== token) return false;
         active.current = eras[index].id;
         setSelected(active.current);
-        host.current
-          ?.querySelector<HTMLElement>(`[data-era-id="${active.current}"]`)
-          ?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        await pause(duration);
       }
+    } else {
+      setBeam({ origin: destination, tip: destination, duration: 0, token });
     }
     if (flight.current !== token) return false;
     active.current = eraId;
@@ -96,7 +104,7 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
     setArrival((value) => value + 1);
     setPhase('arriving');
     sound();
-    await pause(reduced ? 120 : 650);
+    await pause(reduced ? 120 : 1050);
     if (flight.current !== token) return false;
     setPhase('idle');
     return true;
@@ -150,7 +158,17 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       <div className="lore-era-window">
         <div className="lore-era-track">
           <div className="lore-era-thread" aria-hidden="true">
-            <i />
+            <span
+              key={beam.token}
+              className="lore-era-light"
+              style={
+                {
+                  '--light-start': Math.min(beam.origin, beam.tip),
+                  '--light-length': Math.abs(beam.tip - beam.origin),
+                  '--light-duration': `${beam.duration}ms`,
+                } as CSSProperties
+              }
+            />
           </div>
           {document.eras.map((item, index) => (
             <button

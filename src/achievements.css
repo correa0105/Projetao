@@ -1,0 +1,905 @@
+.app-shell[data-page='achievements'] .main-content {
+  width: calc(100% - 48px);
+  max-width: 1524px;
+  padding: 20px 0 0;
+}
+.app-shell[data-page='achievements'] .topbar.player-hud {
+  position: absolute;
+  top: 20px;
+  right: max(24px, calc((100% - 1524px) / 2));
+  margin: 0;
+}
+.app-shell[data-page='achievements'] .page-title {
+  min-height: 76px;
+  padding-right: 350px;
+  margin-bottom: 28px;
+}
+.app-shell[data-page='achievements'] .page-title h1 {
+  font-size: clamp(26px, 3vw, 40px);
+  margin: 5px 0;
+}
+.app-shell[data-page='achievements'] .main-shell {
+  background: radial-gradient(ellipse at 50% 25%, #55422a36, transparent 65%), #131210;
+}
+.achievement-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+.fantasy-cabinet {
+  position: relative;
+  aspect-ratio: 3/2;
+  isolation: isolate;
+}
+.cabinet-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.material-walnut {
+  filter: none;
+}
+.material-oak {
+  filter: sepia(0.28) saturate(0.65) brightness(1.3);
+}
+.material-ebony {
+  filter: saturate(0.25) brightness(0.65);
+}
+.cabinet-spaces {
+  position: absolute;
+  left: 17%;
+  right: 17%;
+  top: 17%;
+  bottom: 24%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 2.7% 5%;
+}
+:root .cabinet-slot {
+  background: transparent;
+  border: 1px solid transparent;
+  min-width: 0;
+  padding: 0 4px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 1px;
+  border-radius: 5px;
+  box-shadow: none;
+}
+:root .cabinet-slot:hover,
+:root .cabinet-slot.selected {
+  background: #ccad5920;
+  border-color: #c5a16588;
+}
+.cabinet-slot:focus-visible {
+  outline: 2px solid #f0ce87;
+  outline-offset: 2px;
+}
+.fantasy-medal {
+  display: block;
+  position: relative;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  background: url('/achievement-frames-v2.png') left center/300% 100% no-repeat;
+  width: 84px;
+}
+.medal-silver {
+  background-position: center;
+}
+.medal-dragon {
+  background-position: right;
+}
+.fantasy-medal > svg {
+  position: absolute;
+  left: 34%;
+  top: 33%;
+  width: 32%;
+  height: 32%;
+  color: #ebca85;
+  filter: drop-shadow(0 2px 3px #000);
+}
+.cabinet-slot .fantasy-medal {
+  height: 75%;
+  width: auto;
+  max-width: 90%;
+}
+.cabinet-title {
+  font: clamp(7px, 1.1vw, 12px) var(--serif);
+  color: #e5cfa2;
+  text-shadow: 0 2px 3px #000;
+  text-align: center;
+  white-space: nowrap;
+}
+.empty-position {
+  opacity: 0;
+  color: #ccb680;
+  margin-bottom: 22%;
+}
+.cabinet-slot:hover .empty-position,
+.cabinet-slot.selected .empty-position,
+.cabinet-slot:focus-visible .empty-position {
+  opacity: 0.6;
+}
+.cabinet-customization {
+  margin: 16px 0 38px;
+  border-block: 1px solid #ad89533f;
+  padding: 22px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.cabinet-customization fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.cabinet-customization legend {
+  font: 16px var(--serif);
+  margin-bottom: 14px;
+  padding: 0;
+}
+.material-options {
+  display: grid;
+  gap: 9px;
+}
+.material-options label,
+.medal-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.wood-swatch {
+  width: 34px;
+  height: 25px;
+  border: 1px solid #a2865a;
+  background: url('/achievement-cabinet-v2.png') 45% 25%/500px auto;
+}
+.medal-options {
+  display: flex;
+  gap: 12px;
+}
+.medal-options label {
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.medal-options label:has(:checked) {
+  border-color: #ac8955;
+  background: #aa874512;
+}
+.medal-options .fantasy-medal {
+  width: 64px;
+}
+.cabinet-customization input {
+  accent-color: #ae8b50;
+}
+.cabinet-actions {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #bca989;
+}
+.cabinet-actions .primary {
+  margin-left: auto;
+}
+.fantasy-catalog h2 {
+  font-size: 24px;
+  margin: 0 0 7px;
+}
+.fantasy-catalog header p {
+  font-size: 12px;
+  color: #afa595;
+}
+.catalog-filters {
+  display: flex;
+  gap: 7px;
+  padding: 14px 0;
+  border-bottom: 1px solid #ac895566;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+:root .catalog-filters button {
+  padding: 7px 12px;
+  font-size: 11px;
+}
+:root .catalog-filters button[aria-pressed='true'] {
+  background: #755938;
+  color: #f1dfb9;
+}
+.catalog-achievement {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 12px 0;
+  padding: 14px 18px;
+  border: 1px solid #8a795848;
+  border-radius: 5px;
+  background: linear-gradient(100deg, #39342a55, transparent), #1c1c1b;
+}
+.catalog-achievement > div {
+  flex: 1;
+}
+.catalog-achievement h3 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+.catalog-achievement p {
+  font-size: 12px;
+  margin: 4px 0;
+  color: #b7ac99;
+}
+.catalog-achievement time {
+  font-size: 10px;
+  color: #a59883;
+}
+.catalog-achievement.locked .fantasy-medal {
+  filter: grayscale(1);
+  opacity: 0.45;
+}
+.catalog-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #a99a7b;
+}
+.catalog-achievement .button {
+  font-size: 11px;
+}
+@media (max-width: 700px) {
+  .app-shell[data-page='achievements'] .main-content {
+    width: calc(100% - 28px);
+    padding-top: 16px;
+  }
+  .app-shell[data-page='achievements'] .topbar.player-hud {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 14px 14px 0 auto;
+  }
+  .app-shell[data-page='achievements'] .page-title {
+    padding-right: 0;
+    min-height: auto;
+    margin-bottom: 20px;
+  }
+  .cabinet-customization {
+    grid-template-columns: 1fr;
+  }
+  .catalog-achievement {
+    gap: 10px;
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+  .catalog-achievement .fantasy-medal {
+    width: 60px;
+  }
+  .catalog-achievement .button {
+    margin-left: auto;
+  }
+  .cabinet-title {
+    white-space: normal;
+    font-size: 7px;
+    line-height: 1.1;
+  }
+  .cabinet-slot .fantasy-medal {
+    height: 68%;
+  }
+  .cabinet-actions {
+    gap: 12px;
+  }
+}
+:root .cabinet-customization input[type='radio'] {
+  width: 14px;
+  height: 14px;
+  min-height: 0;
+  flex: 0 0 14px;
+  padding: 0;
+  margin: 0;
+}
+:root .material-options label {
+  justify-content: flex-start;
+}
+@media (max-width: 700px) {
+  .catalog-achievement > div {
+    min-width: 160px;
+  }
+}
+/* Cenário acompanha a área da estante, sem uma imagem retangular atrás do móvel. */
+.app-shell[data-page='achievements'] .main-shell {
+  position: relative;
+  isolation: isolate;
+  background: #15120f;
+}
+.app-shell[data-page='achievements'] .main-shell::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto;
+  height: 850px;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, #100e0b30 0%, transparent 55%, #15120f 100%),
+    url('/achievement-house-v1.png') center top / cover no-repeat;
+}
+.fantasy-cabinet::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 9%;
+  right: 7%;
+  top: 8%;
+  bottom: 5%;
+  border-radius: 8%;
+  background: #120b05a8;
+  filter: blur(18px);
+  transform: translate(8px, 8px);
+}
+.cabinet-customization {
+  padding: 24px;
+  background: #191713e8;
+  border: 1px solid #ad89533f;
+  border-radius: 5px;
+}
+.fantasy-catalog {
+  padding: 24px;
+  background: #191713e8;
+  border: 1px solid #ad89533f;
+  border-radius: 5px;
+}
+@media (max-width: 700px) {
+  .app-shell[data-page='achievements'] .main-shell::before {
+    height: calc(205px + 66.667vw);
+    background-position: center top;
+  }
+  .cabinet-customization,
+  .fantasy-catalog {
+    padding: 16px;
+  }
+}
+/* Uma escala comum mantém a base no encontro entre parede e piso. */
+.app-shell[data-page='achievements'] .main-shell {
+  --room-width: clamp(900px, 100vw, 2000px);
+}
+.app-shell[data-page='achievements'] .main-shell::before {
+  height: calc(var(--room-width) * 0.666667);
+  background-image:
+    linear-gradient(to bottom, #100e0b30 0%, transparent 55%, #15120f 100%),
+    url('/achievement-house-v2.png');
+  background-position: center top;
+  background-size:
+    100% 100%,
+    var(--room-width) auto;
+}
+.cabinet-room-stage {
+  position: relative;
+  height: calc(var(--room-width) * 0.42 - 20px - var(--page-header-height) - 27px);
+  margin-bottom: 65px;
+}
+.cabinet-room-stage .fantasy-cabinet {
+  position: absolute;
+  width: calc(var(--room-width) * 0.48);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cabinet-room-stage .fantasy-cabinet::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 7%;
+  right: 7%;
+  bottom: 4.6%;
+  height: 1.8%;
+  border-radius: 50%;
+  background: #090604d9;
+  filter: blur(3px);
+}
+@media (max-width: 700px) {
+  .app-shell[data-page='achievements'] .main-shell {
+    --room-width: 100vw;
+  }
+  .app-shell[data-page='achievements'] .main-shell::before {
+    top: 125px;
+    height: calc(100vw * 0.666667);
+  }
+  .cabinet-room-stage {
+    height: calc(100vw * 0.42 - 16px);
+    min-height: 115px;
+    margin-bottom: 50px;
+  }
+  .cabinet-room-stage .fantasy-cabinet {
+    width: 72vw;
+  }
+}
+@media (max-width: 700px) {
+  .cabinet-room-stage .fantasy-cabinet {
+    width: 48vw;
+  }
+}
+/* Cada feito tem sua própria ilustração e moldura, sem personalização genérica. */
+.fantasy-medal.achievement-art {
+  background-image: url('/achievement-badges-v1.png');
+  background-position: left center;
+}
+.fantasy-medal.art-first_purchase {
+  background-position: center;
+}
+.fantasy-medal.art-first_mission {
+  background-position: right;
+}
+.cabinet-type {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  font: 16px var(--serif);
+}
+.cabinet-type select {
+  width: 100%;
+  min-width: 0;
+  font:
+    13px 'DM Sans',
+    sans-serif;
+}
+.fantasy-medal.achievement-art.art-first_character {
+  background-image: url('/achievement-first-chapter-seal-v1.png');
+  background-size: contain;
+  background-position: center;
+}
+.fantasy-medal.achievement-art.art-first_purchase,
+.fantasy-medal.achievement-art.art-first_mission {
+  background-image: url('/achievement-insignias-v2.png');
+  background-size: 200% 100%;
+  background-position: left center;
+}
+.fantasy-medal.achievement-art.art-first_mission {
+  background-position: right center;
+}
+
+/* Mesmo material e acabamento dos painéis de inventário. */
+.cabinet-customization,
+.fantasy-catalog {
+  padding: 24px;
+  background: #29261f url('/character-parchment-v2.png') center / 760px auto;
+  background-blend-mode: multiply;
+  border: 1px solid #a78a514d;
+  border-radius: 7px;
+  box-shadow: 0 15px 40px #0004;
+}
+.cabinet-customization legend,
+.cabinet-type {
+  font-size: 18px;
+}
+.material-options {
+  gap: 10px;
+}
+.material-options label {
+  color: #d0c5b1;
+}
+.cabinet-actions {
+  padding-top: 18px;
+  border-top: 1px solid #a78a5133;
+}
+.catalog-achievement {
+  background: #14130f80;
+  border-color: #a78a5126;
+  box-shadow: inset 0 2px 8px #0003;
+}
+.catalog-filters {
+  border-color: #a78a5133;
+}
+.achievement-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0 12px;
+  border: 1px solid #8f80594d;
+  border-radius: 4px;
+  background: #1c1b16;
+  color: #c5a36b;
+}
+:root .achievement-search input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #e7dac1;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+  min-height: 0;
+  line-height: normal;
+}
+.achievement-search:focus-within {
+  outline: 2px solid #c8a36a;
+  outline-offset: 2px;
+}
+:root .achievement-search input:focus-visible {
+  outline: none;
+}
+:root .achievement-search input::placeholder {
+  color: #a69983;
+}
+@media (max-width: 700px) {
+  .cabinet-customization,
+  .fantasy-catalog {
+    padding: 16px;
+  }
+}
+
+/* Busca compacta: remove a margem herdada dos campos de formulário. */
+.achievement-search {
+  height: 36px;
+  box-sizing: border-box;
+  gap: 8px;
+  padding: 0 10px;
+}
+.achievement-search > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: block;
+}
+/* O rádio mantém teclado e semântica; a amostra funciona como indicador visual. */
+:root .material-options label {
+  position: relative;
+  align-self: start;
+  justify-self: start;
+  padding: 4px 8px 4px 0;
+  cursor: pointer;
+}
+:root .material-options input[type='radio'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+}
+.material-options .wood-swatch {
+  width: 34px;
+  height: 27px;
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #87765370;
+  border-radius: 3px;
+}
+.material-options label:has(:checked) {
+  color: #efdfbf;
+}
+.material-options label:has(:checked) .wood-swatch {
+  border: 2px solid #d0b078;
+  box-shadow: 0 0 0 2px #c2a06430;
+}
+.material-options label:has(:checked) .wood-swatch::after {
+  content: '◆';
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  font-size: 9px;
+  line-height: 11px;
+  color: #e1c08a;
+  text-shadow: 0 1px 3px #000;
+}
+.material-options label:has(:focus-visible) {
+  outline: 2px solid #d0b078;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.cabinet-spaces {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: 1%;
+}
+:root .cabinet-slot {
+  position: relative;
+  padding: 0 0 4px;
+}
+.cabinet-slot .fantasy-medal {
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: 88%;
+}
+.cabinet-slot .cabinet-title {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 180px;
+  white-space: normal;
+  padding: 7px 10px;
+  background: #171510f5;
+  border: 1px solid #9c8254;
+  border-radius: 4px;
+  font:
+    11px/1.4 'DM Sans',
+    sans-serif;
+  color: #efdfbf;
+  box-shadow: 0 3px 12px #0008;
+  pointer-events: none;
+}
+.cabinet-slot:hover .cabinet-title,
+.cabinet-slot:focus-visible .cabinet-title {
+  display: block;
+}
+.cabinet-personalization {
+  margin: 16px 0 38px;
+  border: 1px solid #a78a514d;
+  border-radius: 7px;
+  background: #29261f url('/character-parchment-v2.png') center/760px auto;
+  background-blend-mode: multiply;
+  box-shadow: 0 15px 40px #0004;
+}
+.cabinet-personalization > summary {
+  padding: 18px 24px;
+  cursor: pointer;
+  color: #dac7a4;
+  font: 17px var(--serif);
+}
+.cabinet-personalization > summary:focus-visible {
+  outline: 2px solid #c8a36a;
+  outline-offset: 3px;
+}
+.cabinet-personalization > .cabinet-customization {
+  margin: 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  border-top: 1px solid #a78a5133;
+  border-radius: 0;
+}
+/* O indicador de espaço vazio ocupa o centro geométrico do slot. */
+.cabinet-slot .empty-position {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  pointer-events: none;
+}
+.cabinet-personalization > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+}
+.cabinet-personalization > summary::marker {
+  content: '';
+}
+.cabinet-personalization > summary::-webkit-details-marker {
+  display: none;
+}
+.cabinet-personalization > summary svg {
+  flex-shrink: 0;
+  color: #baa17b;
+  transition: transform 0.18s ease;
+}
+.cabinet-personalization[open] > summary svg {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cabinet-personalization > summary svg {
+    transition: none;
+  }
+}
+
+/* Individual relief insignias, each with its own silhouette. */
+.fantasy-medal.achievement-art.art-north_veteran,
+.fantasy-medal.achievement-art.art-first_story,
+.fantasy-medal.achievement-art.art-shop_patron,
+.fantasy-medal.achievement-art.art-north_renown {
+  background-image: url('/achievement-milestones-v1.png');
+  background-size: 200% 200%;
+}
+.fantasy-medal.achievement-art.art-north_veteran {
+  background-position: left top;
+}
+.fantasy-medal.achievement-art.art-first_story {
+  background-position: right top;
+}
+.fantasy-medal.achievement-art.art-shop_patron {
+  background-position: left bottom;
+}
+.fantasy-medal.achievement-art.art-north_renown {
+  background-position: right bottom;
+}
+.achievement-progress {
+  display: grid;
+  gap: 5px;
+  margin-top: 9px;
+  font-size: 11px;
+  color: #bfae8d;
+}
+.achievement-progress progress {
+  width: min(220px, 100%);
+  height: 4px;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  accent-color: #b18d4f;
+}
+.achievement-progress progress::-webkit-progress-bar {
+  background: #ffffff12;
+}
+.achievement-progress progress::-webkit-progress-value {
+  background: #b18d4f;
+}
+.achievement-pending {
+  display: block;
+  margin-top: 8px;
+  color: #ae9f85;
+  font-size: 11px;
+}
+/* Troféus apoiados no tampo de cada prateleira, com deslocamento contínuo. */
+.cabinet-spaces {
+  inset: 0 17%;
+  display: block;
+}
+:root .cabinet-slot {
+  position: absolute;
+  width: 10%;
+  height: 17%;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  justify-content: flex-end;
+  touch-action: pan-y;
+}
+:root .cabinet-slot.occupied {
+  cursor: grab;
+  touch-action: none;
+}
+:root .cabinet-slot.occupied:active {
+  cursor: grabbing;
+}
+:root .cabinet-slot.selected,
+:root .cabinet-slot:hover {
+  background: transparent;
+  box-shadow: 0 0 0 1px #c5a16588;
+}
+.cabinet-slot .fantasy-medal.achievement-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  aspect-ratio: auto;
+  background: none;
+  filter: drop-shadow(1px 2px 1px #0009);
+  pointer-events: none;
+}
+.fantasy-medal.achievement-art {
+  background: none !important;
+  object-fit: contain;
+  width: 84px;
+  height: 84px;
+}
+.material-options label:has(:checked) .wood-swatch::after {
+  content: none;
+}
+/* Veios de madeira escura, sem a textura de papel/pedra dos outros painéis. */
+.cabinet-personalization,
+.fantasy-catalog {
+  background-color: #211b14;
+  background-image: linear-gradient(#17130ece, #17130ece), url('/achievement-wood-v1.png');
+  background-size:
+    auto,
+    620px auto;
+  background-blend-mode: normal;
+  border-color: #7c65443d;
+}
+.cabinet-personalization > .cabinet-customization {
+  background: none;
+}
+.achievement-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #a78a5133;
+  color: #bfae8d;
+  font-size: 12px;
+}
+.achievement-pagination .button {
+  font-size: 12px;
+  padding: 8px 14px;
+}
+.app-shell[data-page='achievements'] .main-shell::before {
+  background-position:
+    center top,
+    calc(50% + var(--room-width) * 0.026) top;
+}
+:root .cabinet-row-target {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 17%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  z-index: 0;
+  cursor: pointer;
+}
+:root .cabinet-row-target:hover,
+:root .cabinet-row-target:focus-visible {
+  background: #c29a4510;
+  outline: 1px solid #c29a4570;
+}
+.cabinet-row-choices {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 0 25px;
+}
+.cabinet-row-choices button {
+  font-size: 11px;
+}
+.cabinet-row-choices button[aria-pressed='true'] {
+  border-color: #c8a36a;
+  color: #efdfbf;
+  background: #74573060;
+}
+.cabinet-row-choices .primary {
+  margin-left: auto;
+}
+.cabinet-row-choices > span {
+  font-size: 11px;
+  color: #c8a36a;
+}
+.achievement-linked-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+  color: #d0b381;
+  font-size: 11px;
+}
+.achievement-admin-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.achievement-admin-actions .text-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+.catalog-achievement:has(.achievement-admin-actions) {
+  flex-wrap: wrap;
+}
+.achievement-admin-actions {
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid #a78a5128;
+}

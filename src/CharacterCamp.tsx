@@ -9,6 +9,7 @@ import type { ArtJob, ArtState } from '../shared/character-art';
 import type { EquipmentSlot } from '../shared/equipment';
 import { ArtEquipmentChoices } from './ArtEquipmentChoices';
 import { CampMount } from './CharacterMount';
+import { CampPet } from './CharacterPet';
 import { characterHeightScale } from '../shared/character-stature';
 import './character-camp.css';
 
@@ -212,7 +213,8 @@ export function CharacterCamp({
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
       <CampEmbers />
-      {selectedId && <CampMount key={selectedId} characterId={selectedId} />}
+      {selectedId && <CampMount key={`mount-${selectedId}`} characterId={selectedId} />}
+      {selectedId && <CampPet key={`pet-${selectedId}`} characterId={selectedId} />}
       <div className="page-header-spacer" aria-hidden="true" />
       <div className="camp-capacity-row">
         <span className="camp-capacity">
@@ -271,7 +273,7 @@ export function CharacterCamp({
               <div className="camp-actions">
                 <a
                   className="button outline small-button"
-                  href="#titles"
+                  href="#achievements"
                   onClick={() => onSelect(character.id)}
                 >
                   Escolher título
