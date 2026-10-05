@@ -5,7 +5,7 @@ export const pets = [
     price_cp: 1000,
     cell: 0,
     description: 'Fiel, curioso e sempre pronto para uma caminhada.',
-    sign: 'Este conhece o caminho de volta. Só não prometa passeios que não pretende fazer.',
+    sign: 'Fiel e companheiro. Reserve tempo para passear e brincar com ele.',
   },
   {
     id: 'cat',
@@ -13,7 +13,7 @@ export const pets = [
     price_cp: 1500,
     cell: 1,
     description: 'Um observador de bigodes, com horários e opiniões próprios.',
-    sign: 'Excelente companhia. O contrato é simples: você oferece abrigo, ele decide quando oferece carinho.',
+    sign: 'Você oferece abrigo. Ele escolhe a hora de oferecer carinho.',
   },
   {
     id: 'rabbit',
@@ -21,7 +21,7 @@ export const pets = [
     price_cp: 500,
     cell: 2,
     description: 'Orelhas atentas, patas leves e gosto por cantinhos tranquilos.',
-    sign: 'Nada de puxar pelas orelhas. Ele prefere feno, sossego e uma boa toca.',
+    sign: 'Feno, sossego e uma boa toca. Nada de puxar pelas orelhas.',
   },
   {
     id: 'owl',
@@ -29,7 +29,7 @@ export const pets = [
     price_cp: 3000,
     cell: 3,
     description: 'Uma companheira noturna, silenciosa e de olhar atento.',
-    sign: 'Ela gosta da noite. Respeite o descanso dela e não confunda silêncio com falta de opinião.',
+    sign: 'Ela prefere a noite. Respeite o descanso da sua companheira.',
   },
   {
     id: 'fox',
@@ -37,7 +37,7 @@ export const pets = [
     price_cp: 4000,
     cell: 4,
     description: 'Esperta, inquieta e apaixonada por investigar a trilha.',
-    sign: 'Antes de confiar na raposa, confira onde deixou o lanche. Ela também está fazendo essa conferência.',
+    sign: 'Esperta e curiosa. Guarde o lanche: ela já está de olho nele.',
   },
   {
     id: 'raven',
@@ -45,7 +45,7 @@ export const pets = [
     price_cp: 2000,
     cell: 5,
     description: 'Olhos atentos, penas negras e curiosidade por coisas brilhantes.',
-    sign: 'Guarde suas moedas. Ele não cobra pela amizade, mas adora examinar o pagamento.',
+    sign: 'Um amigo atento. Só não deixe suas moedas brilhantes ao alcance dele.',
   },
   {
     id: 'frog',
@@ -53,7 +53,7 @@ export const pets = [
     price_cp: 200,
     cell: 6,
     description: 'Um pequeno companheiro de passos lentos e saltos inesperados.',
-    sign: 'Precisa de um cantinho úmido e seguro. Não beije o sapo. Aqui não há promessa de príncipe.',
+    sign: 'Um cantinho úmido e seguro. Beijar não faz parte dos cuidados.',
   },
   {
     id: 'snake',
@@ -61,7 +61,7 @@ export const pets = [
     price_cp: 1200,
     cell: 7,
     description: 'Serena, discreta e de escamas em tons de terra.',
-    sign: 'Esta não é venenosa. Dê espaço, calor e um abrigo adequado. Apertar demais não é carinho.',
+    sign: 'Esta não é venenosa. Dê abrigo, calor e espaço; manuseie com cuidado.',
   },
   {
     id: 'rat',
@@ -69,7 +69,7 @@ export const pets = [
     price_cp: 300,
     cell: 8,
     description: 'Inteligente, sociável e dono de um nariz muito curioso.',
-    sign: 'O rato é um ótimo companheiro. Baguncinha insiste em esconder o biscoito do café; o rato insiste em encontrar.',
+    sign: 'Sociável e bom de faro. Até os biscoitos escondidos ele encontra.',
   },
   {
     id: 'guinea-pig',
@@ -77,7 +77,7 @@ export const pets = [
     price_cp: 600,
     cell: 9,
     description: 'Um amigo tranquilo, de focinho pequeno e muitos assobios.',
-    sign: 'Este avisa quando a comida está atrasada. Às vezes avisa antes, só para garantir.',
+    sign: 'Tranquilo e falante. Ele sempre avisa quando é hora da comida.',
   },
 ] as const;
 export type Pet = (typeof pets)[number];
@@ -106,21 +106,18 @@ export const garalhoQuestions = [
     id: 'name',
     question: 'Quem é você?',
     meow: 'Miau… miaaau.',
-    answer:
-      'Garalho. Comerciante, cuidador e dono desta casa. Eu escrevo; você lê. Parece um acordo justo.',
+    answer: 'Garalho. Cuido desta casa e dos bichinhos. Eu escrevo; você lê. Miau!',
   },
   {
-    id: 'skeleton',
-    question: 'Quem é o esqueleto ali?',
+    id: 'companion',
+    question: 'Como escolho um companheiro?',
     meow: 'Miau. Miau!',
-    answer:
-      'Baguncinha, meu servo. Ele organiza a casa, cuida dos bichinhos e faz café. Hoje está testando a última função com bastante dedicação.',
+    answer: 'Conheça cada um. Escolha pela companhia que deseja, além da aparência.',
   },
   {
     id: 'care',
     question: 'Como cuida dos animais?',
     meow: 'Miaaau… miau.',
-    answer:
-      'Com abrigo, alimento e paciência. Eles procuram companhia, não um dono que os assuste. Cuide bem de quem escolher seguir com você.',
+    answer: 'Com abrigo, alimento e paciência. Leve um amigo e trate-o com respeito.',
   },
 ] as const;

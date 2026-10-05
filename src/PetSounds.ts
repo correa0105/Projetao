@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useSoundEffects } from './SiteMusic';
-import { petAppearance } from '../shared/pets';
+import { petArtwork } from './pet-art';
 
 // Short, locally synthesized animal voices; no tracking or third-party audio requests.
 export function usePetAppearanceSound(petId: string, appearance: string) {
@@ -132,12 +132,11 @@ export function usePetAppearanceSound(petId: string, appearance: string) {
         stop();
       }
     };
-    const variant = petAppearance(petId, appearance),
-      image = new Image();
+    const image = new Image();
     image.onload = () => {
       if (!cancelled) void play();
     };
-    image.src = variant ? `/pets/variants-${variant.atlas}-v1.png` : '/pets/animals-v1.png';
+    image.src = petArtwork(petId, appearance).source;
     const unlock = () => {
       if (image.complete && image.naturalWidth) void play();
     };

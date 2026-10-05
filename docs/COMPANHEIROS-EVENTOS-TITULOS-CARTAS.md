@@ -15,12 +15,17 @@ recompensas, bônus automáticos ou uma economia paralela.
 ## Casa dos mascotes
 
 `#pets` abre o Empório de Garalho. Cenário pintado de uma casa de pedra coberta
-de vegetação; Baguncinha é o esqueleto humanoide sentado do lado de fora, tomando
-café. Garalho conserva os olhos dourados separados/assimétricos da referência,
+de vegetação, sem o esqueleto por decisão posterior do usuário. Garalho menor
+segura a placa fisicamente nas patas e conserva os olhos separados/assimétricos,
 capa vermelha e equipamento mecânico. Suas falas sonoras/textuais são miados.
 Ele responde às três perguntas pela placa de madeira: escreve por 2,5 segundos,
 vira a placa e mostra a resposta, sem balão de fala. Cada espécie tem descrição
 e comentário próprios. O animal selecionado aparece no cenário.
+
+Catálogo amplo sem rolagens internas; imagens inteiras em SVG com enquadramento
+por silhueta, preservando proporções. Dez espécies e sete aparências novas v2.
+Ler placa amplia a resposta; escolha de mascote retorna ao jardim. Artes/prompts
+e detalhes de renderização em [PET-SHOP-REDESIGN.md](PET-SHOP-REDESIGN.md).
 
 | Mascote | Preço (PO) |
 | --- | ---: |

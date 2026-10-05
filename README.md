@@ -3,8 +3,9 @@
 ## Mascotes, eventos, títulos e cartas
 
 O menu reúne **Casa dos mascotes**, **Eventos**, **Títulos** e **Cartas**.
-Garalho atende por placas de madeira e miados, com Baguncinha tomando café
-ao lado da casa. Dez espécies, aparências alternativas, sons próprios e compras
+Garalho atende por placas de madeira nas patas e miados, menor junto à casa;
+escreve e apresenta a resposta. O jardim está sem o esqueleto. Dez espécies,
+aparências alternativas inteiras, proporções preservadas, sons próprios e compras
 em ouro persistidas no inventário. Administradores editam eventos e todo o
 cenário, incluindo background, artes e animações, e criam títulos com metas
 ou concessão a outros personagens.
@@ -14,6 +15,10 @@ por nível. Cada personagem equipa até três cartas; quatro são compráveis.
 Aprimoramentos e drops ficam para as regras futuras definidas pelo usuário.
 A ficha agora é escura, com **História** e **Equipamento** separados, e a Lore
 tem panorama do mundo. [Funcionamento e preços](docs/COMPANHEIROS-EVENTOS-TITULOS-CARTAS.md).
+
+Casa dos mascotes reformulada: catálogo amplo, imagens sem cortes ou figuras
+vizinhas, animais de tamanhos diferentes no jardim e “Ler placa” para ampliar
+a resposta. [Artes e prompts da reforma](docs/PET-SHOP-REDESIGN.md).
 
 ## Administração e novos arquivos da Lore
 

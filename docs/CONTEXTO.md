@@ -1,11 +1,33 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Reforma completa da Casa dos mascotes (04/10/2026)
+
+Pedido atual substitui a composição inicial: Baguncinha/cadeira/café removidos
+da arte do jardim; Garalho menor, olhos separados preservados, duas novas poses
+com placa fisicamente nas patas, escrita por 2,5 s, movimento apenas da pata e
+apresentação suave. Texto na madeira; botão Ler placa amplia a mesma resposta.
+Casa fica no fundo apenas do jardim, com enquadramento independente da altura
+do catálogo. Catálogo amplo fora do painel de compra, sem rolagens internas.
+Animais reimaginados, inteiros e proporcionais nas dez espécies/sete aparências.
+src/pet-art.ts define limites reais de cada silhueta; PetArt usa viewBox, meet e
+clipPath explícito para excluir vizinhos das pranchas inclusive nas margens.
+Inventário reutiliza a mesma renderização; larguras de cenário variam por animal.
+Escolher mascote retorna ao jardim. Sons e compras transacionais preservados.
+Artes finais/prompts da ferramenta image_gen em PET-SHOP-REDESIGN.md; v1 preservadas.
+Validação: TypeScript/build, seis testes de comunidade em banco descartável e
+fluxo real de Edge passaram. Checagens de pixels no SVG confirmam ausência de
+vizinhos/cortes nas 17 aparências; comparação de captura com/sem animal confirma
+pintura real no jardim após trocas. Placa e overflow conferidos em 320/390/768 px.
+Aplicado no Docker local, healthcheck saudável e bundle index-DEi6_Y88.js /
+index-XzJ_BmXL.css confirmado em localhost:3000. Arte v2 servida com HTTP 200.
+Não há alteração SQL nesta reforma; dados e volume preservados.
+
 ## Mascotes, eventos, títulos, cartas e ficha escura (04/10/2026)
 
 Menu com Casa dos mascotes, Eventos, Títulos e Cartas. Garalho preserva olhos
 separados e referência do usuário; só mia e escreve por 2,5 s na placa de madeira
-antes de virá-la. Baguncinha é o esqueleto humanoide sentado fora da casa tomando
-café. Dez espécies com preços definidos, sete aparências adicionais reimaginadas,
+antes de virá-la. A composição original com Baguncinha foi substituída pela
+reforma descrita acima. Dez espécies com preços definidos, sete aparências adicionais,
 sons ao aparecer e compras reais no inventário. Imagens e prompts em COMPANIONS-ART.md.
 
 Eventos usam board_posts; administrador cria/edita/exclui e compõe cenário inteiro

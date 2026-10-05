@@ -27,6 +27,13 @@ o usuário definirá upgrades depois, e drops serão implementados no futuro.
 Não inventar upgrade, distribuição automática ou bônus de cartas nesta etapa.
 Detalhes em docs/COMPANHEIROS-EVENTOS-TITULOS-CARTAS.md.
 
+Casa dos mascotes: direção atual de 04/10 substitui a composição inicial com
+Baguncinha. Retirar esqueleto/cadeira/café do cenário, Garalho menor, placa
+fisicamente nas patas e duas poses para escrever/apresentar. Preservar olhos
+separados. Cada arte de animal tem viewport próprio e clipPath SVG explícito
+para não cortar silhuetas nem mostrar vizinhos; nunca esticar atlas em células
+CSS iguais. Arte, prompts e enquadramento em docs/PET-SHOP-REDESIGN.md.
+
 ## Acordos de desenvolvimento
 
 - Comunicação e interface em português brasileiro.

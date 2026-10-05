@@ -1,5 +1,10 @@
 # Arte dos mascotes, eventos, cartas e Lore
 
+Casa dos mascotes v2: a composição inicial abaixo foi substituída a pedido do
+usuário. Jardim sem esqueleto, Garalho menor segurando a placa, duas poses e
+animais reenquadrados inteiros. Arquivos ativos/prompts atuais da reforma em
+[PET-SHOP-REDESIGN.md](PET-SHOP-REDESIGN.md). O catálogo v1 abaixo é histórico.
+
 Gerada com a skill imagegen e a ferramenta nativa, sem alterar as referências originais. Modo com referências para Garalho, casa, variantes e Anfitrião; geração nova para atlas clássico, salão de Eventos, panorama da Lore e artes das cartas. PNG transparente para personagens/animais; fundos e cartas opacos exportados em WebP com Sharp, sem redesenho ou mudança de composição. Originais permanecem no diretório de imagens geradas do Codex.
 
 ## Arquivos ativos

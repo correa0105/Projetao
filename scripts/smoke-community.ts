@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
+import sharp from 'sharp';
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw new Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3002';
@@ -73,24 +74,163 @@ try {
   );
   await page.goto(origin + '/#pets');
   await expect(page.locator('.pet-shop-choices button')).toHaveCount(10);
+  // Rasterize the actual SVG as displayed in wide thumbnail boxes. Opaque pixels
+  // in letterboxing indicate that a neighbouring sprite is leaking into the art.
+  async function checkPetFrames() {
+    if (await page.locator('.pet-shop-preview').count()) {
+      await page.locator('.pet-shop-preview').evaluate(async (preview) => {
+        await Promise.all(preview.getAnimations().map((animation) => animation.finished));
+      });
+      const stage = await page.locator('.pet-shop-preview .pet-art svg').boundingBox();
+      expect(stage!.width).toBeGreaterThan(40);
+      expect(stage!.height).toBeGreaterThan(40);
+      // Check actual browser paint too, including after a sprite replacement.
+      const art = page.locator('.pet-shop-preview .pet-art');
+      await art.scrollIntoViewIfNeeded();
+      const clip = (await art.boundingBox())!;
+      const visible = await page.screenshot({ clip, animations: 'disabled' });
+      await art.evaluate((el) => {
+        (el as HTMLElement).style.opacity = '0';
+      });
+      let hidden: Buffer;
+      try {
+        hidden = await page.screenshot({ clip, animations: 'disabled' });
+      } finally {
+        await art.evaluate((el) => {
+          (el as HTMLElement).style.removeProperty('opacity');
+        });
+      }
+      const a = await sharp(visible).ensureAlpha().raw().toBuffer();
+      const b = await sharp(hidden).ensureAlpha().raw().toBuffer();
+      let painted = 0;
+      for (let i = 0; i < a.length; i += 4)
+        if (
+          Math.abs(a[i] - b[i]) + Math.abs(a[i + 1] - b[i + 1]) + Math.abs(a[i + 2] - b[i + 2]) >
+          24
+        )
+          painted++;
+      expect(painted, 'Animal realmente visível no cenário').toBeGreaterThan(200);
+    }
+    const reports = await page.locator('.pet-art svg').evaluateAll(async (elements) => {
+      const results: { frame: string; leaks: number; edge: number; painted: number }[] = [];
+      for (const element of elements) {
+        const svg = element.cloneNode(true) as SVGSVGElement;
+        const source = svg.querySelector('image')!;
+        const bytes = await fetch(source.getAttribute('href')!).then((r) => r.blob());
+        const url = await new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.readAsDataURL(bytes);
+        });
+        source.setAttribute('href', url);
+        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        svg.setAttribute('width', '200');
+        svg.setAttribute('height', '120');
+        const object = URL.createObjectURL(new Blob([svg.outerHTML], { type: 'image/svg+xml' }));
+        const img = new Image();
+        img.src = object;
+        await img.decode();
+        const canvas = document.createElement('canvas');
+        canvas.width = 200;
+        canvas.height = 120;
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(img, 0, 0);
+        URL.revokeObjectURL(object);
+        const frame = element.getAttribute('viewBox')!;
+        const [, , w, h] = frame.split(' ').map(Number);
+        const scale = Math.min(200 / w, 120 / h);
+        const left = (200 - w * scale) / 2,
+          top = (120 - h * scale) / 2;
+        const rgba = ctx.getImageData(0, 0, 200, 120).data;
+        let leaks = 0,
+          edge = 0,
+          painted = 0;
+        for (let y = 0; y < 120; y++)
+          for (let x = 0; x < 200; x++) {
+            if (rgba[(y * 200 + x) * 4 + 3] < 32) continue;
+            painted++;
+            if (x < left - 1 || x > 200 - left + 1 || y < top - 1 || y > 120 - top + 1) leaks++;
+            if (
+              Math.abs(x - left) < 1 ||
+              Math.abs(x - (200 - left)) < 1 ||
+              Math.abs(y - top) < 1 ||
+              Math.abs(y - (120 - top)) < 1
+            )
+              edge++;
+          }
+        results.push({ frame, leaks, edge, painted });
+      }
+      return results;
+    });
+    for (const report of reports) {
+      expect(report.leaks, `Arte vizinha vazando: ${report.frame}`).toBe(0);
+      expect(report.edge, `Silhueta tocando o corte: ${report.frame}`).toBeLessThan(5);
+      expect(report.painted, `Imagem vazia: ${report.frame}`).toBeGreaterThan(200);
+    }
+  }
+  await checkPetFrames();
   await expect
     .poll(() =>
       page
-        .locator('.garalho-portrait img')
+        .locator('.garalho-ready-pose')
         .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
     )
     .toBe(true);
   await page.screenshot({ path: 'test-results/pets-desktop.png' });
-  const q = page.getByRole('button', { name: 'Quem é o esqueleto ali?', exact: true });
+  await expect(page.locator('.baguncinha-label')).toHaveCount(0);
+  await expect(page.locator('.pet-shop-background')).toHaveCSS(
+    'background-image',
+    /garalho-cottage-v2/,
+  );
+  const catBox = await page.locator('.garalho-scene').boundingBox();
+  const gardenBox = await page.locator('.pet-shop-garden').boundingBox();
+  expect(catBox!.height).toBeLessThan(gardenBox!.height * 0.4);
+  const q = page.getByRole('button', { name: 'Como escolho um companheiro?', exact: true });
   const start = Date.now();
   await q.click();
   await expect(page.locator('.garalho-sign')).toHaveAttribute('data-phase', 'writing');
+  await expect(page.locator('.garalho-writing-pose')).toHaveCSS('opacity', '1');
   await page.screenshot({ path: 'test-results/garalho-writing.png' });
-  await expect(page.locator('.garalho-sign-front p')).toContainText('Baguncinha, meu servo.', {
+  await expect(page.locator('.garalho-sign-front p')).toContainText('Conheça cada um.', {
     timeout: 5000,
   });
   expect(Date.now() - start).toBeGreaterThan(2400);
   await page.screenshot({ path: 'test-results/garalho-sign-front.png' });
+  const board = await page.locator('.garalho-sign').boundingBox();
+  expect(board!.x).toBeGreaterThan(catBox!.x);
+  expect(board!.x + board!.width).toBeLessThan(catBox!.x + catBox!.width);
+  expect(board!.y + board!.height).toBeLessThan(catBox!.y + catBox!.height);
+  await page.getByRole('button', { name: 'Ler placa', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Placa de Garalho', exact: true })).toContainText(
+    'Conheça cada um.',
+  );
+  await page.getByRole('button', { name: 'Fechar', exact: true }).click();
+  for (const width of [320, 390, 768]) {
+    await page.setViewportSize({ width, height: 844 });
+    await checkPetFrames();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    const signFits = await page.locator('.garalho-sign-front').evaluate((front) => {
+      const box = front.getBoundingClientRect(),
+        text = front.querySelector('p')!.getBoundingClientRect();
+      return text.top >= box.top - 1 && text.bottom <= box.bottom + 1;
+    });
+    expect(signFits, `Texto dentro da placa em ${width}px`).toBe(true);
+    await page.screenshot({
+      path: `test-results/pets-redesign-${width}.png`,
+      fullPage: true,
+      animations: 'disabled',
+    });
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.locator('.pet-shop-catalog').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: 'test-results/pets-catalog-desktop.png' });
+  for (const art of await page.locator('.pet-shop-choices .pet-art svg').all()) {
+    await expect(art).toHaveAttribute('preserveAspectRatio', 'xMidYMid meet');
+    const visible = await art.boundingBox();
+    expect(visible!.height).toBeGreaterThan(100);
+  }
   for (const species of [
     'Gato',
     'Coelho',
@@ -121,6 +261,9 @@ try {
         }, before),
       )
       .toBe(true);
+    const appearances = page.locator('.pet-appearances button');
+    if ((await appearances.count()) > 1) await appearances.last().click();
+    await checkPetFrames();
   }
   await page.locator('.profile-avatar').click();
   await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
@@ -152,12 +295,21 @@ try {
     .filter({ has: page.getByText('Cão', { exact: true }) })
     .click();
   await page.locator('.pet-appearances button').filter({ hasText: 'Pastor da estrada' }).click();
+  await expect(page.locator('.pet-shop-preview')).toHaveCSS('opacity', '1');
+  await checkPetFrames();
+  await page.screenshot({
+    path: 'test-results/pets-shepherd-desktop.png',
+    fullPage: true,
+    animations: 'disabled',
+  });
   await page.getByLabel('Como vai se chamar?', { exact: true }).fill('Brasa');
   await page.getByRole('button', { name: 'Levar este companheiro', exact: true }).click();
   await expect(page.locator('.pet-shop-notice')).toContainText('Brasa');
   await page.goto(origin + '/#inventory');
   await expect(page.locator('.inventory-pets')).toContainText('Pastor da estrada');
   await expect(page.locator('.inventory-pets')).toContainText('Brasa');
+  await checkPetFrames();
+  await page.screenshot({ path: 'test-results/pets-inventory.png' });
   await page.goto(origin + '/#cards');
   await expect(page.locator('.cards-equipped>button')).toHaveCount(3);
   await expect(page.locator('.cards-catalog>button')).toHaveCount(8);
