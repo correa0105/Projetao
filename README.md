@@ -1,10 +1,12 @@
 # Alvorada Cinzenta
 
-Para publicar um card no **Início → Diário** pelo console do navegador, use
-[scripts/browser/adicionar-card-diario.js](scripts/browser/adicionar-card-diario.js).
-Edite os campos do card, entre com uma conta administradora e cole o arquivo
-inteiro em **F12 → Console**. Cada execução cria uma publicação no PostgreSQL;
-recarregue a página para vê-la. O script usa a API e a sessão normal do site.
+Para testar a autorização de criação no **Início → Diário**, use
+[scripts/browser/testar-seguranca-diario.js](scripts/browser/testar-seguranca-diario.js).
+Em um ambiente de teste, entre com uma conta comum e cole o arquivo inteiro em
+**F12 → Console**. A tabela deve mostrar 401 sem sessão e 403 para conta comum,
+inclusive com permissão administrativa falsa no JSON. O script recusa uma sessão
+administradora e não altera publicações existentes. Se a API aceitar a criação,
+interrompe e identifica o card de teste para remoção pelo administrador.
 
 Mesa: entrada como jogador importa personagens; espectador só acompanha e pode
 seguir a visão de um jogador na névoa. Ataques com alvo oferecem dano após acerto.
