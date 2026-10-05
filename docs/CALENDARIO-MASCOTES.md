@@ -60,7 +60,7 @@ após uma pergunta; a escrita continua por 2,5 s nas poses da placa antes da
 virada. Frases curtas, bem-humoradas e individuais cabem na madeira no celular.
 Escolher uma espécie escreve seu comentário sem reproduzir a voz de Garalho.
 
-Sete vozes naturais ativas: cão, gato, coruja, raposa, sapo, rato e
+Oito vozes naturais ativas: cão, gato, coruja, corvo, raposa, sapo, rato e
 porquinho-da-índia. A seleção toca somente a voz do animal, uma vez quando a arte
 carrega, inclusive ao clicar novamente. Cobra/coelho usam chiado/farejo discretos
 de ruído filtrado, sem osciladores ou impacto. A fala de Garalho usa a gravação
@@ -68,9 +68,12 @@ de gato só ao responder pergunta. Todos seguem Efeitos sonoros, volume, silênc
 e encerramento ao trocar animal, sair ou ocultar a página; não há som do pet
 no acampamento.
 
-Correção posterior de 05/10: usuário rejeitou a voz inesperada na gravação do
-corvo. O corvo fica sem áudio de aparição em ambas as aparências; a gravação
-antiga permanece arquivada com seus créditos, sem reprodução nem som substituto.
+Correção posterior de 05/10: usuário quer manter o som do animal, removendo só
+a voz humana. O corvo voltou a ter grasnado nas duas aparências, com uma nova
+gravação curta de Bidone/Freesound (CC0), em `raven-caw-v2.wav`. A gravação antiga
+fica arquivada com créditos, sem reprodução. O nome novo do arquivo evita que
+o cache do navegador continue tocando o áudio anterior. O importador usa fonte,
+cache e recorte explícitos para não recuperar aquele trecho por volume.
 
 `scripts/import-pet-audio.mjs` importa fontes licenciadas, recorta uma voz sem
 alterar pitch e grava PCM mono com normalização/fades. O cache original fica em

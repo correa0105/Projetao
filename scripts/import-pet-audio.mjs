@@ -7,7 +7,15 @@ const sources = [
   { id: 'dog', title: 'Barking of a dog 2.ogg', length: 1.5 },
   { id: 'cat', title: 'Meow.ogg', length: 1 },
   { id: 'owl', title: 'Tawny Owl (Strix aluco) (W1CDR0001519 BD8).ogg', length: 2.5 },
-  { id: 'raven', title: 'Common Raven.ogg', length: 1.7 },
+  {
+    id: 'raven',
+    freesound: 66763,
+    author: 'Bidone',
+    length: 2.08,
+    offset: 0,
+    fileName: 'raven-caw-v2.wav',
+    cacheKey: 'raven-caw-v2',
+  },
   { id: 'fox', title: 'Red Fox (Vulpes vulpes) (W1CDR0001529 BD12).ogg', length: 1.7 },
   { id: 'frog', title: 'Single Frog Croak.oga', length: 1.2 },
   { id: 'guinea-pig', freesound: 583077, author: 'Breviceps', length: 1.6 },
@@ -47,7 +55,7 @@ for (const source of sources) {
     author = source.author;
     license = 'CC0';
   }
-  const cached = `.local/pet-audio/${source.id}`;
+  const cached = `.local/pet-audio/${source.cacheKey || source.id}`;
   let bytes;
   if (existsSync(cached)) bytes = await readFile(cached);
   else {
@@ -55,7 +63,7 @@ for (const source of sources) {
     if (!audio.ok) throw new Error('Download indisponível: ' + source.id);
     bytes = Buffer.from(await audio.arrayBuffer());
   }
-  await writeFile(`.local/pet-audio/${source.id}`, bytes);
+  await writeFile(cached, bytes);
   manifest.push({
     ...source,
     author,
@@ -75,7 +83,8 @@ for (const source of sources) {
 }
 const server = createServer(async (req, res) => {
   const id = req.url?.slice(1);
-  if (sources.some((source) => source.id === id)) res.end(await readFile(`.local/pet-audio/${id}`));
+  const source = sources.find((source) => source.id === id);
+  if (source) res.end(await readFile(`.local/pet-audio/${source.cacheKey || source.id}`));
   else {
     res.setHeader('Content-Type', 'text/html');
     res.end('<html></html>');
@@ -87,7 +96,7 @@ try {
   const page = await browser.newPage();
   await page.goto('http://127.0.0.1:3049');
   for (const source of sources) {
-    const data = await page.evaluate(async ({ id, length }) => {
+    const data = await page.evaluate(async ({ id, length, offset: fixedOffset }) => {
       const ctx = new AudioContext(),
         input = await ctx.decodeAudioData(await fetch('/' + id).then((r) => r.arrayBuffer()));
       const rate = input.sampleRate,
@@ -105,7 +114,10 @@ try {
       }
       const peak = Math.max(...energy),
         call = energy.findIndex((value) => value > peak * 0.65);
-      const offset = Math.max(0, (call - 1) * frame),
+      const offset =
+          typeof fixedOffset === 'number'
+            ? Math.round(fixedOffset * rate)
+            : Math.max(0, (call - 1) * frame),
         end = Math.min(mono.length, offset + Math.round(rate * length));
       const clip = mono.slice(offset, end);
       let maximum = 0;
@@ -132,11 +144,12 @@ try {
     wav.write('data', 36);
     wav.writeUInt32LE(data.samples.length * 2, 40);
     data.samples.forEach((value, i) => wav.writeInt16LE(Math.round(value * 32767), 44 + i * 2));
-    await writeFile(`public/audio/pets/${source.id}.wav`, wav);
+    const fileName = source.fileName || `${source.id}.wav`;
+    await writeFile(`public/audio/pets/${fileName}`, wav);
     Object.assign(
       manifest.find((item) => item.id === source.id),
       {
-        file: `/audio/pets/${source.id}.wav`,
+        file: `/audio/pets/${fileName}`,
         offset: data.offset,
         duration: data.samples.length / data.rate,
       },
@@ -152,7 +165,7 @@ try {
             `- **${item.id}**: [gravação original](${item.source}), ${item.author}, [${item.license}](${item.license_url}).`,
         )
         .join('\n') +
-      '\n\nCobra e coelho: efeitos suaves produzidos pelo projeto (sopro e farejar), sem amostras de terceiros.\n',
+      '\n\nCobra e coelho: efeitos suaves produzidos pelo projeto (sopro e farejar), sem amostras de terceiros.\n\nGravação antiga `raven.wav` arquivada, sem reprodução: [Common Raven.ogg](https://commons.wikimedia.org/wiki/File:Common_Raven.ogg), G. McGrane, domínio público. O som ativo do corvo é `raven-caw-v2.wav`.\n',
   );
 } finally {
   await browser.close();

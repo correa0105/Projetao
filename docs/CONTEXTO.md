@@ -1,8 +1,22 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Corvo com grasnado, sem voz humana (05/10/2026)
+
+Usuário corrigiu a interpretação: retirar somente a voz humana, preservando
+o animal. Corvo reativado com `raven-caw-v2.wav`, gravação curta própria de
+grasnado, fonte Bidone/Freesound 66763 (CC0). A gravação antiga raven.wav não é
+reproduzida. Nome novo evita cache antigo; importador tem fonte/cache/recorte
+explícitos e créditos atualizados. As duas aparências usam o mesmo grasnado e
+seguem volume/silêncio; selecionar corvo não reproduz miado de Garalho.
+TypeScript/build e smoke Edge em banco descartável passaram: apenas o novo
+arquivo toca nas duas aparências. PCM tem duração 2,065 s, volume presente e
+sem saturação. Docker local atualizado e saudável, index-lsy7k-l4.js /
+index-BV9BEDFq.css confirmado; áudio novo servido com bytes idênticos ao arquivo
+validado. Sem alteração SQL.
+
 ## Voz inesperada do corvo removida (05/10/2026)
 
-Usuário rejeitou a voz estranha ao ouvir o corvo. Reprodução de raven.wav foi
+Decisão intermediária corrigida acima: reprodução de raven.wav foi
 desativada nas duas aparências da Casa dos mascotes, sem cair no efeito genérico
 de farejar. Seleção/placa/compra e sons dos demais animais continuam. Gravação
 e créditos antigos arquivados; não reativar sem pedido do usuário.

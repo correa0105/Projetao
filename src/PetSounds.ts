@@ -12,8 +12,6 @@ export function usePetAppearanceSound(petId: string, appearance: string, trigger
     context = useRef<AudioContext | null>(null),
     gain = useRef<GainNode | null>(null);
   useEffect(() => {
-    // The raven recording was rejected for its unexpected voice; keep this pet silent.
-    if (petId === 'raven') return;
     let cancelled = false,
       sounded = false,
       pending = false;
@@ -43,7 +41,9 @@ export function usePetAppearanceSound(petId: string, appearance: string, trigger
       stop();
       try {
         if (recorded.has(petId)) {
-          const audio = new Audio(`/audio/pets/${petId}.wav`);
+          // Separate filename keeps browsers from replaying the old raven clip with speech.
+          const file = petId === 'raven' ? 'raven-caw-v2' : petId;
+          const audio = new Audio(`/audio/pets/${file}.wav`);
           voice.current = audio;
           audio.volume = settings.current.volume * (petId === 'rat' ? 0.55 : 0.8);
           await audio.play();

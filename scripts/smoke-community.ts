@@ -260,39 +260,45 @@ try {
       .locator('.pet-shop-choices button')
       .filter({ has: page.getByText(species, { exact: true }) })
       .click();
-    if (species !== 'Corvo')
-      await expect
-        .poll(() =>
-          page
-            .evaluate((index) => {
-              const observations = (window as any).__communityAudio.slice(index);
-              // Quiet pets use a noise buffer; other active animals use recordings.
-              return observations.some(
-                (entry: any) =>
-                  entry.context.state === 'running' && (entry.starts > 1 || entry.buffers > 0),
-              );
-            }, before)
-            .then(
-              async (synth) =>
-                synth ||
-                (await page.evaluate(
-                  (index) =>
-                    (window as any).__communityMedia
-                      .slice(index)
-                      .some(
-                        (entry: any) =>
-                          !entry.voice.paused && entry.source.includes('/audio/pets/'),
-                      ),
-                  beforeMedia,
-                )),
-            ),
-        )
-        .toBe(true);
+    await expect
+      .poll(() =>
+        page
+          .evaluate((index) => {
+            const observations = (window as any).__communityAudio.slice(index);
+            // Quiet pets use a noise buffer; other active animals use recordings.
+            return observations.some(
+              (entry: any) =>
+                entry.context.state === 'running' && (entry.starts > 1 || entry.buffers > 0),
+            );
+          }, before)
+          .then(
+            async (synth) =>
+              synth ||
+              (await page.evaluate(
+                (index) =>
+                  (window as any).__communityMedia
+                    .slice(index)
+                    .some(
+                      (entry: any) => !entry.voice.paused && entry.source.includes('/audio/pets/'),
+                    ),
+                beforeMedia,
+              )),
+          ),
+      )
+      .toBe(true);
     const appearances = page.locator('.pet-appearances button');
     if ((await appearances.count()) > 1) await appearances.last().click();
     await checkPetFrames();
     if (species === 'Corvo') {
-      expect(await page.evaluate(() => (window as any).__communityMedia.length)).toBe(beforeMedia);
+      const clips = await page.evaluate(
+        (index) =>
+          (window as any).__communityMedia
+            .slice(index)
+            .map((entry: any) => entry.source.split('/').at(-1)),
+        beforeMedia,
+      );
+      expect(clips.length).toBeGreaterThan(0);
+      expect(clips.every((clip: string) => clip === 'raven-caw-v2.wav')).toBe(true);
       expect(await page.evaluate(() => (window as any).__communityAudio.length)).toBe(before);
     }
   }
@@ -470,7 +476,7 @@ try {
   );
   expect(errors).toEqual([]);
   console.log(
-    'Mascotes/placa/aparência, dez vozes reais/silenciar, cartas em leque/3 espaços/conversa sob demanda, eventos/cenário, conquistas editáveis/título automático, concessão/exibição e responsividade verificados.',
+    'Mascotes/placa/aparência, sons dos animais e corvo sem a gravação antiga/silenciar, cartas em leque/3 espaços/conversa sob demanda, eventos/cenário, conquistas editáveis/título automático, concessão/exibição e responsividade verificados.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/community-failure.png', fullPage: true });
