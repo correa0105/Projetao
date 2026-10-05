@@ -13,6 +13,8 @@ import {
 } from '../shared/vtt';
 import { drawDeath } from './vtt-death';
 import { drawTokenEffects } from './vtt-effects-canvas';
+import { drawPing, type VttPing } from './vtt-ping';
+import { drawTurnEffect } from './vtt-turn-effect';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
   camera: VttCamera;
@@ -21,6 +23,9 @@ export type RenderOptions = {
   dpr: number;
   images: Map<string, HTMLImageElement>;
   selected: string[];
+  target?: string;
+  currentTurn?: string;
+  nextTurn?: string;
   gm: boolean;
   preview: boolean;
   viewer: VttToken | null;
@@ -28,7 +33,7 @@ export type RenderOptions = {
   ruler: Point[];
   draft: VttDrawing | null;
   showWalls: boolean;
-  ping: Point | null;
+  ping: VttPing | null;
   userId?: string;
 };
 function path(c: CanvasRenderingContext2D, points: Point[], closed = false) {
@@ -51,7 +56,9 @@ function drawing(c: CanvasRenderingContext2D, d: VttDrawing) {
   if (d.kind === 'text') {
     c.font = `${Math.max(16, d.width * 8)}px Georgia`;
     c.fillStyle = d.color;
-    c.fillText(d.text, a.x, a.y);
+    d.text
+      .split('\n')
+      .forEach((line, i) => c.fillText(line, a.x, a.y + i * Math.max(20, d.width * 9.6)));
   } else if (d.kind === 'circle') {
     c.beginPath();
     c.arc(a.x, a.y, Math.hypot(b.x - a.x, b.y - a.y), 0, Math.PI * 2);
@@ -109,8 +116,9 @@ export function drawingBounds(d: VttDrawing) {
     return {
       x: a.x,
       y: a.y - Math.max(16, d.width * 8),
-      width: d.text.length * Math.max(8, d.width * 4),
-      height: Math.max(16, d.width * 8),
+      width:
+        Math.max(...d.text.split('\n').map((line) => line.length)) * Math.max(10, d.width * 4.8),
+      height: Math.max(20, d.width * 9.6) * d.text.split('\n').length,
     };
   const xs = d.points.map((p) => p.x),
     ys = d.points.map((p) => p.y);
@@ -297,6 +305,8 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
+      if (t.id === o.currentTurn || t.id === o.nextTurn)
+        drawTurnEffect(c, Math.max(t.width, t.height) * 0.6, t.id === o.nextTurn);
       drawTokenEffects(c, t);
       drawDeath(c, t);
       c.save();
@@ -311,6 +321,17 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           c.fillStyle = t.color;
           c.fillRect(-t.width / 2, -t.height / 2, t.width, t.height);
         }
+      } else if (t.image.startsWith('/vtt/monsters/') && img?.complete && img.naturalWidth) {
+        const factor = Math.min(t.width / img.naturalWidth, t.height / img.naturalHeight);
+        c.shadowBlur = 6 / cam.zoom;
+        c.shadowColor = '#000b';
+        c.drawImage(
+          img,
+          (-img.naturalWidth * factor) / 2,
+          (-img.naturalHeight * factor) / 2,
+          img.naturalWidth * factor,
+          img.naturalHeight * factor,
+        );
       } else {
         c.shadowBlur = 9 / cam.zoom;
         c.shadowColor = '#000';
@@ -355,10 +376,14 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.stroke();
       }
       c.restore();
-      if (o.selected.includes(t.id)) {
-        c.strokeStyle = '#efd293';
-        c.lineWidth = 2 / cam.zoom;
-        c.setLineDash([6 / cam.zoom, 3 / cam.zoom]);
+      drawTokenEffects(c, t, 'front');
+      if (o.selected.includes(t.id) || o.target === t.id) {
+        const targeted = o.target === t.id;
+        c.strokeStyle = targeted ? '#ef544b' : '#efd293';
+        c.lineWidth = (targeted ? 3 : 2) / cam.zoom;
+        c.shadowColor = targeted ? '#e64336' : 'transparent';
+        c.shadowBlur = targeted ? 7 / cam.zoom : 0;
+        c.setLineDash(targeted ? [] : [6 / cam.zoom, 3 / cam.zoom]);
         c.strokeRect(
           -t.width / 2 - 4 / cam.zoom,
           -t.height / 2 - 4 / cam.zoom,
@@ -405,7 +430,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     const master = o.gm && !o.preview;
     const darkness = master ? s.gmDarkness : 1;
     const viewers = master
-      ? s.tokens.filter((t) => t.layer === 'tokens' && !t.hidden)
+      ? []
       : o.gm
         ? o.viewer
           ? [o.viewer]
@@ -480,6 +505,10 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     }
     vc.setTransform(1, 0, 0, 1, 0, 0);
     if (s.ambient > 0.05) vc.drawImage(los, 0, 0);
+    if (master && s.ambient > 0.05) {
+      vc.fillStyle = '#fff';
+      vc.fillRect(0, 0, width * dpr, height * dpr);
+    }
     vc.drawImage(light, 0, 0);
     if (master && !viewers.length) vc.drawImage(light, 0, 0);
     c.save();
@@ -655,17 +684,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.fillText(label, (a.x + b.x) / 2, (a.y + b.y) / 2 - 3 / cam.zoom);
     c.restore();
   }
-  if (o.ping) {
-    c.save();
-    c.strokeStyle = '#ebc789';
-    c.lineWidth = 3 / cam.zoom;
-    for (const r of [15, 30, 45]) {
-      c.beginPath();
-      c.arc(o.ping.x, o.ping.y, r / cam.zoom, 0, Math.PI * 2);
-      c.stroke();
-    }
-    c.restore();
-  }
+  if (o.ping) drawPing(c, o.ping, cam.zoom);
   c.strokeStyle = '#5b5846';
   c.lineWidth = 2 / cam.zoom;
   c.strokeRect(0, 0, s.width, s.height);

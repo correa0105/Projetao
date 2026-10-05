@@ -143,3 +143,14 @@
 .vtt-effects-preview-note {
   color: #d4b17e !important;
 }
+.vtt-effects-death {
+  border: 1px solid #4c4538;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 8px 0 14px;
+}
+.vtt-effects-death legend {
+  font-family: Georgia, serif;
+  padding: 0 5px;
+  color: #d9c8a4;
+}

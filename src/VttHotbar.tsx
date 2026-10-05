@@ -10,9 +10,10 @@ import {
 } from '../shared/vtt-hotbar';
 import { sheetAttacks, spells } from '../shared/character-sheet';
 import type { VttSheetData } from '../shared/vtt-sheet';
-import type { VttToken } from '../shared/vtt';
+import type { VttMessage, VttToken } from '../shared/vtt';
 import type { MonsterAction } from '../shared/vtt-monster-actions';
 import type { AttackRequest } from '../shared/vtt-attack';
+import { VttAttack } from './VttAttack';
 import './vtt-hotbar.css';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
 export function ActionShortcut({ action }: { action: HotbarAction }) {
@@ -42,12 +43,24 @@ export function VttHotbar({
   gm,
   applyEffect,
   onAttack,
+  attack,
+  target,
+  selectedTokenId,
+  closeAttack,
+  attackBusy,
+  onAttackBusy,
 }: {
   roomId: string;
   tokens: VttToken[];
   sheetOpen: boolean;
-  roll: (formula: string, label: string) => Promise<unknown>;
+  roll: (formula: string, label: string) => Promise<VttMessage['roll']>;
   onAttack: (request: AttackRequest) => void;
+  attack: AttackRequest | null;
+  target?: VttToken;
+  selectedTokenId?: string;
+  closeAttack: () => void;
+  attackBusy: boolean;
+  onAttackBusy: (busy: boolean) => void;
   shareSpell: (name: string) => Promise<void>;
   refresh: () => Promise<void>;
   gm: boolean;
@@ -75,9 +88,12 @@ export function VttHotbar({
     };
   }, [url]);
   const page = state?.document.pages.find((p) => p.id === state.document.active);
-  useEffect(() => setSelected(null), [page?.id]);
+  useEffect(() => {
+    setSelected(null);
+    closeAttack();
+  }, [page?.id]);
   async function mutate(fn: (d: HotbarDocument) => void) {
-    if (!state || inFlight.current) return;
+    if (!state || inFlight.current || attackBusy) return;
     inFlight.current = true;
     setBusy(true);
     setError('');
@@ -123,7 +139,9 @@ export function VttHotbar({
     return () => window.removeEventListener('vtt-pin-action', handler);
   });
   async function choose(action: HotbarAction, index: number) {
-    if (inFlight.current) return;
+    if (inFlight.current || attackBusy) return;
+    closeAttack();
+    setSelected(null);
     if (action.kind === 'effect' || action.kind === 'monster') {
       if (!gm) {
         setError('Esse atalho é exclusivo do mestre.');
@@ -141,6 +159,13 @@ export function VttHotbar({
             url + '/monster/' + action.tokenId + '/' + encodeURIComponent(action.sourceId),
           );
           setSelected({ action, monster, index });
+          if (monster.action.attack)
+            onAttack({
+              actorId: action.tokenId,
+              name: monster.tokenName + ' · ' + monster.action.name,
+              attack: monster.action.attack,
+              damage: monster.action.damage,
+            });
         } catch (e) {
           setError((e as Error).message);
           setSelected({ action, index });
@@ -166,6 +191,20 @@ export function VttHotbar({
       await refresh();
       const data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}`);
       setSelected({ action, data, index });
+      if (action.kind === 'attack') {
+        const c = data.character,
+          choices = data.sheet?.choices;
+        const weapon =
+          choices &&
+          sheetAttacks(c.race, c.class, c.stats, choices).find((w) => w.name === action.sourceId);
+        if (!weapon) throw Error('Este ataque não está mais na ficha.');
+        onAttack({
+          actorId: data.token.id,
+          name: data.token.name + ' · ' + weapon.name,
+          attack: '1d20' + signed(weapon.attack),
+          damage: weapon.dice === '—' ? [] : [weapon.dice + signed(weapon.ability)],
+        });
+      }
     } catch (e) {
       setError((e as Error).message);
       setSelected({ action, index });
@@ -175,7 +214,7 @@ export function VttHotbar({
     }
   }
   async function execute(mode: 'attack' | 'damage' | 'description' | 'cast' | 'use' | 'apply') {
-    if (!selected || inFlight.current) return;
+    if (!selected || inFlight.current || attackBusy) return;
     inFlight.current = true;
     setBusy(true);
     setError('');
@@ -252,6 +291,7 @@ export function VttHotbar({
         await refresh();
       }
       setSelected(null);
+      closeAttack();
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -299,21 +339,37 @@ export function VttHotbar({
           </button>
         </div>
       )}
-      {selected && (
+      {(selected || attack) && (
         <div
           className="vtt-hotbar-action"
           role="dialog"
-          aria-label={'Atalho · ' + selected.action.label}
+          aria-label={'Atalho · ' + (attack?.name || selected?.action.label)}
         >
-          <strong>{selected.action.label}</strong>
-          <button aria-label="Fechar atalho" onClick={() => setSelected(null)}>
+          <strong>{attack?.name || selected?.action.label}</strong>
+          <button
+            aria-label="Fechar atalho"
+            disabled={busy || attackBusy}
+            onClick={() => {
+              setSelected(null);
+              closeAttack();
+            }}
+          >
             <X size={14} />
           </button>
-          {selected.action.kind === 'effect' ? (
+          {attack ? (
+            <VttAttack
+              key={attack.actorId + ':' + attack.name}
+              request={attack}
+              target={target}
+              active={selectedTokenId === attack.actorId}
+              roll={roll}
+              onBusy={onAttackBusy}
+            />
+          ) : selected?.action.kind === 'effect' ? (
             <button disabled={busy} onClick={() => void execute('apply')}>
               Aplicar no token selecionado
             </button>
-          ) : selected.action.kind === 'monster' ? (
+          ) : selected?.action.kind === 'monster' ? (
             <>
               {selected.monster?.action.attack && (
                 <button disabled={busy} onClick={() => void execute('attack')}>
@@ -332,7 +388,7 @@ export function VttHotbar({
                 Descrição no chat
               </button>
             </>
-          ) : selected.action.kind === 'attack' ? (
+          ) : selected?.action.kind === 'attack' ? (
             <>
               <button disabled={busy || !selected.data} onClick={() => void execute('attack')}>
                 Rolar ataque
@@ -341,7 +397,7 @@ export function VttHotbar({
                 Rolar dano separado
               </button>
             </>
-          ) : selected.action.kind === 'spell' ? (
+          ) : selected?.action.kind === 'spell' ? (
             <>
               <button disabled={busy || !selected.data} onClick={() => void execute('description')}>
                 Descrição no chat
@@ -359,7 +415,7 @@ export function VttHotbar({
                 {spell?.level ? `Conjurar · gastar espaço ${spell.level}` : 'Conjurar truque'}
               </button>
             </>
-          ) : (
+          ) : selected ? (
             <button
               disabled={
                 busy ||
@@ -371,15 +427,21 @@ export function VttHotbar({
             >
               Usar uma unidade
             </button>
+          ) : null}
+          {attack && selected?.action.kind === 'monster' && (
+            <button disabled={busy || attackBusy} onClick={() => void execute('description')}>
+              Descrição no chat
+            </button>
           )}
-          {!page.locked && (
+          {selected && !page.locked && (
             <button
-              disabled={busy}
+              disabled={busy || attackBusy}
               onClick={() => {
                 void mutate((d) => {
                   d.pages.find((p) => p.id === d.active)!.slots[selected.index] = null;
                 });
                 setSelected(null);
+                closeAttack();
               }}
             >
               <Trash2 size={12} /> Remover atalho
@@ -390,10 +452,11 @@ export function VttHotbar({
       <div className="vtt-hotbar-pages">
         <select
           aria-label="Aba da barra de ações"
-          disabled={busy}
+          disabled={busy || attackBusy}
           value={page.id}
           onChange={(e) => {
             setSelected(null);
+            closeAttack();
             void mutate((d) => {
               d.active = e.target.value;
             });
@@ -408,7 +471,7 @@ export function VttHotbar({
         </select>
         <button
           aria-label={page.locked ? 'Destrancar aba' : 'Trancar aba'}
-          disabled={busy}
+          disabled={busy || attackBusy}
           onClick={() =>
             void mutate((d) => {
               d.pages.find((p) => p.id === d.active)!.locked = !page.locked;
@@ -419,7 +482,7 @@ export function VttHotbar({
         </button>
         <button
           aria-label="Nova aba de ações"
-          disabled={busy || state.document.pages.length >= 20}
+          disabled={busy || attackBusy || state.document.pages.length >= 20}
           onClick={() =>
             void mutate((d) => {
               const id = crypto.randomUUID();
@@ -437,7 +500,7 @@ export function VttHotbar({
         </button>
         <button
           aria-label="Renomear aba de ações"
-          disabled={busy || page.locked}
+          disabled={busy || attackBusy || page.locked}
           onClick={() => {
             const name = prompt('Nome da aba', page.name)?.trim();
             if (name)
@@ -450,7 +513,7 @@ export function VttHotbar({
         </button>
         <button
           aria-label="Remover aba de ações"
-          disabled={busy || page.locked || state.document.pages.length === 1}
+          disabled={busy || attackBusy || page.locked || state.document.pages.length === 1}
           onClick={() => {
             if (confirm('Remover esta aba e seus atalhos?'))
               void mutate((d) => {

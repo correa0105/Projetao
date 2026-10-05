@@ -260,6 +260,24 @@ try {
   await page.getByRole('button', { name: 'Fichas', exact: true }).click();
   await panel.getByRole('button').filter({ hasText: 'Arden' }).click();
   await expect(page.getByRole('dialog', { name: 'Ficha · Arden', exact: true })).toBeVisible();
+  const sheetHealth = page.getByRole('dialog', { name: 'Ficha · Arden', exact: true });
+  const initialHp = Number(
+    (await sheetHealth.locator('.vtt-sheet-health strong').innerText()).split('/')[0].trim(),
+  );
+  await sheetHealth.getByLabel('Registrar dano', { exact: true }).fill('3');
+  await sheetHealth.getByRole('button', { name: 'Aplicar dano', exact: true }).click();
+  await expect(sheetHealth.locator('.vtt-sheet-health strong')).toHaveText(
+    new RegExp('^' + (initialHp - 3) + '\\s*/'),
+  );
+  await sheetHealth.getByLabel('Registrar cura', { exact: true }).fill('2');
+  await sheetHealth.getByRole('button', { name: 'Aplicar cura', exact: true }).click();
+  await expect(sheetHealth.locator('.vtt-sheet-health strong')).toHaveText(
+    new RegExp('^' + (initialHp - 1) + '\\s*/'),
+  );
+  await sheetHealth.getByRole('button', { name: 'Restaurar PV', exact: true }).click();
+  await expect(sheetHealth.locator('.vtt-sheet-health strong')).toHaveText(
+    new RegExp('^' + initialHp + '\\s*/'),
+  );
   await page.screenshot({ path: 'test-results/vtt-full-sheet.png' });
   await page.getByRole('button', { name: 'Fechar ficha', exact: true }).click();
   await expect(panel).toContainText('Arden');
@@ -330,6 +348,19 @@ try {
   await expect(panel.locator('.vtt-compendium button').first()).toBeVisible();
   await panel.locator('.vtt-compendium button').first().click();
   await panel.getByRole('button', { name: 'Adicionar ao tabuleiro', exact: true }).click();
+  await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
+  await expect
+    .poll(async () => {
+      const id = (await (await ctx.request.get(origin + '/api/vtt')).json()).rooms[0].id;
+      const r = await (await ctx.request.get(origin + '/api/vtt/rooms/' + id)).json();
+      return r.document.scenes
+        .flatMap((s: any) => s.tokens)
+        .find((t: any) => t.name === 'Goblin Boss')?.image;
+    })
+    .toBe('/vtt/monsters/monster-goblin-boss.webp');
+  expect((await ctx.request.get(origin + '/vtt/monsters/monster-goblin-boss.webp')).status()).toBe(
+    200,
+  );
   await page.getByRole('button', { name: 'Biblioteca de arte', exact: true }).click();
   await panel
     .locator('.vtt-asset')
@@ -358,30 +389,101 @@ try {
   await expect(monsterShortcut).toBeVisible();
   await monsterShortcut.dragTo(page.locator('.vtt-hotbar-slot').first());
   await expect(page.locator('.vtt-hotbar-slot').first()).not.toHaveAccessibleName(/vazio/);
-  await page.locator('.vtt-hotbar-slot').first().click();
-  await page.getByRole('button', { name: 'Rolar ataque', exact: true }).click();
-  await expect(page.locator('.vtt-hotbar-action')).toHaveCount(0);
-  const attackDialog = page.locator('.vtt-attack-layer');
-  await expect(attackDialog).toBeVisible();
-  const targetValue = await attackDialog
-    .getByLabel('Alvo do ataque')
-    .locator('option')
-    .nth(1)
-    .getAttribute('value');
-  await attackDialog.getByLabel('Alvo do ataque').selectOption(targetValue!);
-  await attackDialog.getByRole('button', { name: 'Rolar ataque', exact: true }).click();
-  await expect(attackDialog.locator('.vtt-attack-result')).toBeVisible();
-  const hit = await attackDialog.locator('.hit').count();
-  if (hit) {
-    await attackDialog.getByRole('button', { name: 'Rolar dano', exact: true }).click();
-    await expect(attackDialog).toContainText('Dano rolado:');
-  } else
-    await expect(attackDialog.getByRole('button', { name: 'Rolar dano', exact: true })).toHaveCount(
-      0,
+  {
+    await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
+    const roomId = (await (await ctx.request.get(origin + '/api/vtt')).json()).rooms[0].id;
+    const roomState = await (await ctx.request.get(origin + '/api/vtt/rooms/' + roomId)).json();
+    const s = roomState.document.scenes.find((s: any) => s.id === roomState.document.activeScene),
+      attacker = s.tokens.find((t: any) => t.name.includes('Goblin')),
+      target = s.tokens.find((t: any) => t.characterId === a.id);
+    Object.assign(attacker, { x: 875 + 200, y: 875 });
+    Object.assign(target, { x: 875 - 200, y: 875, ac: 0 });
+    Object.assign(s, { fog: false, lighting: false });
+    expect(
+      (
+        await ctx.request.put(origin + '/api/vtt/rooms/' + roomId, {
+          headers: { Origin: origin },
+          data: { revision: roomState.revision, document: roomState.document },
+        })
+      ).ok(),
+    ).toBe(true);
+    await page.reload();
+    const board = page.locator('canvas[aria-label="Tabuleiro da mesa"]');
+    await expect(board).toBeVisible();
+    await page.locator('.vtt-hotbar-slot').first().click();
+    const strip = page.locator('.vtt-attack-inline');
+    await expect(strip).toBeVisible();
+    await expect(page.locator('.vtt-attack-layer')).toHaveCount(0);
+    const box = (await board.boundingBox())!,
+      z = Number(await board.getAttribute('data-camera-zoom')),
+      cx = Number(await board.getAttribute('data-camera-x')),
+      cy = Number(await board.getAttribute('data-camera-y'));
+    await page.mouse.click(
+      box.x + box.width / 2 + (target.x - cx) * z,
+      box.y + box.height / 2 + (target.y - cy) * z,
     );
-  await attackDialog.getByRole('button', { name: /^Fechar Ataque/ }).click();
-  await page.locator('.vtt-hotbar-slot').first().click();
-  await page.getByRole('button', { name: 'Rolar dano separado', exact: true }).click();
+    await expect(board).toHaveAttribute('data-attacker-id', attacker.id);
+    await expect(board).toHaveAttribute('data-target-id', target.id);
+    await strip.getByLabel('Vantagem do ataque').selectOption('advantage');
+    for (let retry = 0; retry < 8; retry++) {
+      await strip.getByRole('button', { name: /^Rolar (novo )?ataque$/ }).click();
+      await expect(strip.locator('.vtt-attack-result')).toBeVisible();
+      if (await strip.locator('.hit').count()) break;
+    }
+    await expect(strip.locator('.hit')).toBeVisible();
+    const attackRoll = (
+      await (await ctx.request.get(origin + '/api/vtt/rooms/' + roomId)).json()
+    ).messages
+      .filter((m: any) => m.roll && m.text.includes('ataque'))
+      .at(-1);
+    expect(attackRoll.roll.formula).toMatch(/^2d20kh1/);
+    await strip.getByRole('button', { name: 'Descartar dano', exact: true }).click();
+    await expect(strip).toContainText('Dano descartado');
+    await expect(strip.getByRole('button', { name: 'Rolar dano', exact: true })).toHaveCount(0);
+    for (let retry = 0; retry < 8; retry++) {
+      await strip.getByRole('button', { name: 'Rolar novo ataque', exact: true }).click();
+      await expect(strip.locator('.vtt-attack-result')).toBeVisible();
+      if (await strip.locator('.hit').count()) break;
+    }
+    await strip.getByRole('button', { name: 'Rolar dano', exact: true }).click();
+    await expect(strip).toContainText('Dano rolado:');
+    await page.screenshot({ path: 'test-results/vtt-attack-inline.png' });
+    await page.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
+    await page.getByRole('button', { name: 'Fichas', exact: true }).click();
+    await page.getByRole('button', { name: 'Token selecionado', exact: true }).click();
+    await page.mouse.click(
+      box.x + box.width / 2 + (attacker.x - cx) * z,
+      box.y + box.height / 2 + (attacker.y - cy) * z,
+      { button: 'right' },
+    );
+    const health = page.locator('.vtt-context-menu');
+    await health.getByLabel('Editar PV do token').fill('-3');
+    await health.getByRole('button', { name: 'Aplicar PV', exact: true }).click();
+    await expect(health.locator('.vtt-hp-orb strong')).toHaveText(String(attacker.hp - 3));
+    await health.getByLabel('Editar PV do token').fill('+2');
+    await health.getByRole('button', { name: 'Aplicar PV', exact: true }).click();
+    await expect(health.locator('.vtt-hp-orb strong')).toHaveText(String(attacker.hp - 1));
+    await page.getByRole('button', { name: 'Fechar ações', exact: true }).click();
+    await page.getByRole('button', { name: 'Texto', exact: true }).click();
+    await page.mouse.click(box.x + box.width * 0.6, box.y + box.height * 0.3);
+    await page.getByLabel('Texto no mapa', { exact: true }).fill('Entrada secreta');
+    await page.getByLabel('Texto no mapa', { exact: true }).press('Enter');
+    await expect(page.getByLabel('Texto no mapa', { exact: true })).toHaveCount(0);
+    await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
+    await expect
+      .poll(async () => {
+        const withText = await (await ctx.request.get(origin + '/api/vtt/rooms/' + roomId)).json();
+        return withText.document.scenes
+          .find((s: any) => s.id === withText.document.activeScene)
+          .drawings.some((d: any) => d.text === 'Entrada secreta');
+      })
+      .toBe(true);
+    await page.getByRole('button', { name: 'Selecionar (V)', exact: true }).click();
+    await page.locator('.vtt-hotbar-slot').first().click();
+    await page.getByRole('button', { name: 'Rolar dano separado', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Fechar atalho', exact: true })).toBeEnabled();
+    await page.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
+  }
   const effectsButton = page.getByRole('button', { name: 'Efeitos do mestre', exact: true });
   const effectsBounds = await effectsButton.boundingBox(),
     stageBounds = await page.locator('.vtt-stage').boundingBox();
@@ -422,19 +524,33 @@ try {
   await page.getByRole('button', { name: 'Aplicar no token selecionado', exact: true }).click();
   await expect(page.locator('.vtt-hotbar-action')).toHaveCount(0);
   await page.getByRole('button', { name: 'Token selecionado', exact: true }).click();
-  await panel.getByLabel('Estilo da barra de boss').selectOption('royal');
-  await panel.getByLabel('Efeito de morte automático ao zerar PV').check();
+  await panel.getByLabel('Estilo da barra de boss').selectOption('classic-ice');
+  expect(
+    await panel.getByLabel('Estilo da barra de boss').locator('option').allTextContents(),
+  ).toEqual([
+    'Não mostrar barra',
+    'Classic · Red',
+    'Classic · Ice',
+    'Classic · Grass',
+    'Classic · Oak',
+    'Evil',
+  ]);
+  await effectsButton.click();
+  await effects.getByLabel('Automático ao zerar PV').check();
+  await effects.getByRole('button', { name: 'Fechar efeitos', exact: true }).click();
   await panel.getByLabel('PV atual', { exact: true }).fill('0');
   await expect(page.locator('.vtt-boss-track')).toHaveAttribute('aria-valuenow', '0');
   await page.waitForTimeout(1400);
   await page.screenshot({ path: 'test-results/vtt-boss-death.png' });
   await panel.getByLabel('PV atual', { exact: true }).fill('8');
   await expect(page.locator('.vtt-boss-heal')).toBeVisible();
-  await panel.getByRole('button', { name: 'Aplicar efeito de morte', exact: true }).click();
+  await effectsButton.click();
+  await effects.getByRole('button', { name: 'Aplicar efeito de morte', exact: true }).click();
   await expect(
-    panel.getByRole('button', { name: 'Limpar efeito de morte', exact: true }),
+    effects.getByRole('button', { name: 'Limpar efeito de morte', exact: true }),
   ).toBeEnabled();
-  await panel.getByRole('button', { name: 'Limpar efeito de morte', exact: true }).click();
+  await effects.getByRole('button', { name: 'Limpar efeito de morte', exact: true }).click();
+  await effects.getByRole('button', { name: 'Fechar efeitos', exact: true }).click();
   await page.getByRole('button', { name: 'Formas', exact: true }).click();
   await page
     .getByRole('group', { name: 'Opções de Formas' })
@@ -524,6 +640,10 @@ try {
       })
     ).ok(),
   ).toBe(true);
+  // Keep the real connection limiter enabled while pacing this dense smoke.
+  await page.waitForTimeout(
+    Math.min(59000, Math.max(0, 61000 - (Date.now() - requestWindowStart))),
+  );
   await peerPage.goto(origin + '/#vtt');
   await peerPage.getByLabel('Código de convite', { exact: true }).fill(mesa.invite);
   await peerPage.getByRole('button', { name: 'Entrar na mesa', exact: true }).click();
@@ -607,7 +727,10 @@ try {
   await peerPage.mouse.up();
   await expect
     .poll(async () => {
-      const st = await (await ctx2.request.get(origin + '/api/vtt/rooms/' + rid)).json();
+      const response = await ctx2.request.get(origin + '/api/vtt/rooms/' + rid);
+      if (!response.ok())
+        throw Error('Consulta da mesa: HTTP ' + response.status() + ' ' + (await response.text()));
+      const st = await response.json();
       return st.document.scenes[0].tokens.find((t: any) => t.characterId === c.id)?.x;
     })
     .toBeLessThan(875);
@@ -734,6 +857,148 @@ try {
     ).toBe(true);
     await observerPage.screenshot({ path: 'test-results/vtt-spectator-' + width + '.png' });
   }
+  await observerPage.setViewportSize({ width: 1280, height: 900 });
+  {
+    await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
+    const latest = await (await ctx.request.get(origin + '/api/vtt/rooms/' + rid)).json();
+    const s = latest.document.scenes.find((s: any) => s.id === latest.document.activeScene);
+    Object.assign(s, { fog: false, lighting: false, ambient: 1 });
+    s.tokens
+      .filter((t: any) => !t.hidden && t.layer === 'tokens')
+      .forEach((t: any, i: number) => {
+        t.x = 750 + i * 150;
+        t.y = 875;
+      });
+    expect(
+      (
+        await ctx.request.put(origin + '/api/vtt/rooms/' + rid, {
+          headers: { Origin: origin },
+          data: { revision: latest.revision, document: latest.document },
+        })
+      ).ok(),
+    ).toBe(true);
+    await page.getByRole('button', { name: 'Chat', exact: true }).click();
+    await page.getByRole('button', { name: 'Combate', exact: true }).click();
+    const combatPanel = page.getByRole('region', { name: 'Ordem dos turnos' });
+    await combatPanel
+      .getByRole('button', { name: 'Selecionar todos os tokens', exact: true })
+      .click();
+    await combatPanel.getByRole('button', { name: 'Adicionar todos à ordem', exact: true }).click();
+    await expect(page.getByRole('region', { name: 'Carrossel de turnos' })).toBeVisible();
+    const order = await (
+      await ctx.request.get(origin + '/api/vtt/rooms/' + rid + '/combat')
+    ).json();
+    expect(order.entries.length).toBeGreaterThan(1);
+    for (const [i, e] of order.entries.entries())
+      await ctx.request.post(origin + '/api/vtt/rooms/' + rid + '/combat', {
+        headers: { Origin: origin },
+        data: { kind: 'set', tokenId: e.tokenId, value: 100 - i },
+      });
+    const owned = order.entries.find((e: any) =>
+      s.tokens.some((t: any) => t.id === e.tokenId && t.controller === peer.id),
+    );
+    await peerPage.getByRole('button', { name: 'Chat', exact: true }).click();
+    await peerPage.getByRole('button', { name: 'Combate', exact: true }).click();
+    const peerCombat = peerPage.getByRole('region', { name: 'Ordem dos turnos' });
+    await peerCombat
+      .getByRole('button', { name: 'Rolar iniciativa de ' + owned.name, exact: true })
+      .click();
+    await peerPage
+      .getByRole('region', { name: 'Carrossel de turnos' })
+      .getByRole('button', { name: 'Rolar iniciativa de ' + owned.name, exact: true })
+      .click();
+    await expect(
+      combatPanel.getByRole('button', { name: 'Iniciar combate', exact: true }),
+    ).toBeEnabled();
+    await combatPanel.getByRole('button', { name: 'Iniciar combate', exact: true }).click();
+    await expect(page.getByRole('region', { name: 'Carrossel de turnos' })).toContainText(
+      'Rodada 1',
+    );
+    await expect(observerPage.getByRole('region', { name: 'Carrossel de turnos' })).toContainText(
+      'Rodada 1',
+    );
+    await expect(
+      observerPage
+        .getByRole('region', { name: 'Carrossel de turnos' })
+        .getByRole('button', { name: /Rolar iniciativa/ }),
+    ).toHaveCount(0);
+    await page.screenshot({ path: 'test-results/vtt-turn-carousel.png' });
+    const priorCombat = await (
+      await ctx.request.get(origin + '/api/vtt/rooms/' + rid + '/combat')
+    ).json();
+    await page
+      .getByRole('region', { name: 'Carrossel de turnos' })
+      .getByRole('button', { name: 'Avançar turno', exact: true })
+      .click();
+    await expect
+      .poll(
+        async () =>
+          (await (await ctx.request.get(origin + '/api/vtt/rooms/' + rid + '/combat')).json())
+            .revision,
+      )
+      .toBeGreaterThan(priorCombat.revision);
+    const combatState = await (
+      await ctx.request.get(origin + '/api/vtt/rooms/' + rid + '/combat')
+    ).json();
+    await expect
+      .poll(
+        async () =>
+          (await (await ctx2.request.get(origin + '/api/vtt/rooms/' + rid + '/combat')).json())
+            .currentId,
+      )
+      .toBe(combatState.currentId);
+    // GM arrow broadcasts camera center even to spectators, without changing vision.
+    const board = page.locator('canvas[aria-label="Tabuleiro da mesa"]'),
+      box = (await board.boundingBox())!;
+    await page.getByRole('button', { name: 'Sinalizar ponto', exact: true }).click();
+    await page.mouse.click(box.x + box.width * 0.55, box.y + box.height * 0.42);
+    await expect
+      .poll(
+        async () =>
+          (await (await ctx.request.get(origin + '/api/vtt/rooms/' + rid + '/signal')).json())?.id,
+      )
+      .toBeTruthy();
+    const focus = await (
+      await ctx.request.get(origin + '/api/vtt/rooms/' + rid + '/signal')
+    ).json();
+    for (const p of [page, peerPage, observerPage]) {
+      await expect
+        .poll(
+          async () =>
+            Number(
+              await p
+                .locator('canvas[aria-label="Tabuleiro da mesa"]')
+                .getAttribute('data-camera-x'),
+            ),
+          { timeout: 8000 },
+        )
+        .toBeCloseTo(focus.x, 1);
+      await expect
+        .poll(async () =>
+          Number(
+            await p.locator('canvas[aria-label="Tabuleiro da mesa"]').getAttribute('data-camera-y'),
+          ),
+        )
+        .toBeCloseTo(focus.y, 1);
+    }
+    await expect(page.getByRole('button', { name: 'Mover (H)', exact: true })).toHaveCount(0);
+    await combatPanel.getByRole('button', { name: 'Encerrar combate', exact: true }).click();
+    await page.getByRole('button', { name: 'Selecionar (V)', exact: true }).click();
+    await page.getByRole('button', { name: 'Escolher dados', exact: true }).click();
+    await page.getByLabel('Fórmula personalizada', { exact: true }).fill('4d6kh3');
+    await page.getByRole('button', { name: 'Rolar fórmula', exact: true }).click();
+    await page.locator('.vtt-roll-help summary').first().click();
+    await expect(page.locator('.vtt-roll-help').first()).toContainText(
+      'Como a fórmula é resolvida',
+    );
+    await page.screenshot({ path: 'test-results/vtt-custom-roll-help.png' });
+    await page.getByRole('button', { name: 'Fechar lançador', exact: true }).click();
+    await page.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
+    await panel.getByRole('button', { name: 'Ajuda', exact: true }).click();
+    await panel.locator('.vtt-roll-help summary').click();
+    await expect(panel.locator('.vtt-roll-help')).toContainText('1d20cs>18cf<2');
+    await page.screenshot({ path: 'test-results/vtt-settings-roll-help.png' });
+  }
   await observerContext.close();
   // Inspect the real canvas renderer with an isolated, clearly lit portrait.
   const visual = await ctx.newPage();
@@ -744,6 +1009,8 @@ try {
     }),
   );
   await visual.goto(origin + '/death-render-check');
+  // tsx preserves local arrow names with this helper when serializing evaluate.
+  await visual.addScriptTag({ content: 'window.__name = function (fn) { return fn; };' });
   const renderer = await build({
     entryPoints: ['src/vtt-canvas.ts'],
     bundle: true,
@@ -821,6 +1088,116 @@ try {
   expect(pixelCheck.calls).toBe(1); // Only the intact portrait, never image fragments.
   expect(pixelCheck.blood).toBeGreaterThan(300);
   await visual.screenshot({ path: 'test-results/vtt-death-intact-portrait.png' });
+  const effectChecks = await visual.evaluate(async (scene) => {
+    const c = document.querySelector('canvas')!.getContext('2d')!,
+      img = new Image();
+    img.src = scene.tokens[0].image;
+    await img.decode();
+    const options = {
+      camera: { x: 350, y: 280, zoom: 1 },
+      width: 700,
+      height: 560,
+      dpr: 1,
+      images: new Map([[img.src.replace(location.origin, ''), img]]),
+      selected: [],
+      gm: true,
+      preview: false,
+      viewer: null,
+      layer: 'tokens',
+      ruler: [],
+      draft: null,
+      showWalls: false,
+      ping: null,
+    };
+    scene.tokens[0].deathAt = null;
+    const render = () => {
+      (window as any).vttRenderer.renderVtt(c, scene, options);
+      return c.getImageData(0, 0, 700, 560).data;
+    };
+    const plain = render(),
+      pictures: Uint8ClampedArray[] = [],
+      checks: number[] = [];
+    for (const [i, kind] of ['fire', 'frost', 'poison', 'heal', 'sparks'].entries()) {
+      scene.tokens[0].effects = [
+        { id: 'check-' + i, kind, color: '#b9d5ed', scale: 1, duration: 0, at: Date.now() - 2400 },
+      ];
+      const p = render();
+      pictures.push(p);
+      let changed = 0;
+      for (let y = 225; y < 335; y++)
+        for (let x = 295; x < 405; x++) {
+          if (Math.hypot(x - 350, y - 280) > 55) continue;
+          const j = (y * 700 + x) * 4;
+          if (
+            Math.abs(p[j] - plain[j]) +
+              Math.abs(p[j + 1] - plain[j + 1]) +
+              Math.abs(p[j + 2] - plain[j + 2]) >
+            20
+          )
+            changed++;
+        }
+      checks.push(changed);
+    }
+    const differences = pictures.map((p, i) =>
+      i
+        ? p.reduce(
+            (n, v, j) => n + (j % 4 !== 3 && Math.abs(v - pictures[i - 1][j]) > 15 ? 1 : 0),
+            0,
+          )
+        : 0,
+    );
+    // A monster with darkvision must not erase the master's wall shadow.
+    scene.tokens[0].effects = [];
+    Object.assign(scene.tokens[0], {
+      x: 500,
+      y: 200,
+      width: 40,
+      height: 40,
+      vision: 60,
+      light: 0,
+      dimLight: 0,
+    });
+    Object.assign(scene, { lighting: true, ambient: 0, gmDarkness: 1 });
+    scene.lights = [
+      {
+        id: 'light',
+        name: 'Luz',
+        x: 250,
+        y: 280,
+        bright: 80,
+        dim: 0,
+        color: '#fff4cc',
+        rotation: 0,
+        angle: 360,
+        enabled: true,
+      },
+    ];
+    const wall = {
+      id: 'wall',
+      a: { x: 350, y: 0 },
+      b: { x: 350, y: 560 },
+      kind: 'wall',
+      open: false,
+    };
+    scene.walls = [wall];
+    const brightness = () => {
+      render();
+      const p = c.getImageData(450, 280, 1, 1).data;
+      return p[0] + p[1] + p[2];
+    };
+    const closed = brightness();
+    wall.kind = 'door';
+    wall.open = true;
+    const opened = brightness();
+    wall.kind = 'window';
+    wall.open = false;
+    const throughGlass = brightness();
+    return { checks, differences, closed, opened, window: throughGlass };
+  }, visualScene);
+  for (const changed of effectChecks.checks) expect(changed).toBeGreaterThan(100);
+  for (const changed of effectChecks.differences.slice(1)) expect(changed).toBeGreaterThan(500);
+  expect(effectChecks.opened - effectChecks.closed).toBeGreaterThan(80);
+  expect(effectChecks.window - effectChecks.closed).toBeGreaterThan(80);
   await visual.close();
   // Keep the real 240/min limiter enabled; let its first window finish before layout navigation.
   await page.waitForTimeout(Math.max(0, 61000 - (Date.now() - requestWindowStart)));

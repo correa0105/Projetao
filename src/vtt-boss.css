@@ -14,9 +14,13 @@
 }
 .vtt-boss-bar {
   --rim: #6c665b;
+  --material: url('/vtt/boss/blood-v1.webp');
   padding: 7px 12px 10px;
   border: 1px solid var(--rim);
-  background: linear-gradient(90deg, #101017c4, #16141cc9, #101017c4);
+  background-image: linear-gradient(#090b10e8, #090b10cf), var(--material);
+  background-size:
+    auto,
+    720px auto;
   border-radius: 2px;
   box-shadow:
     0 3px 10px #0008,
@@ -52,8 +56,14 @@
 .vtt-boss-red {
   position: absolute;
   inset: 0 auto 0 0;
-  background: linear-gradient(#ca3032, #7b1117 52%, #b6222b);
-  box-shadow: inset 0 1px 0 #ef696877;
+  background-image: linear-gradient(#ffffff1a, #00000018 55%, #00000055), var(--material);
+  background-size:
+    auto,
+    680px auto;
+  background-position: center;
+  box-shadow:
+    inset 0 1px 0 #ffffff66,
+    inset 0 -1px 2px #0008;
   transition: width 0.65s ease-out;
 }
 .vtt-boss-heal {
@@ -81,6 +91,7 @@
 }
 .style-classic-ice {
   --rim: #91c6d5;
+  --material: url('/vtt/boss/ice-v1.webp');
   border-radius: 5px;
   box-shadow:
     0 0 10px #a1dcec33,
@@ -88,49 +99,19 @@
 }
 .style-classic-grass {
   --rim: #536b3e;
+  --material: url('/vtt/boss/grass-v1.webp');
   border-radius: 18px 4px;
 }
 .style-classic-oak {
   --rim: #8c5a2f;
+  --material: url('/vtt/boss/oak-v1.webp');
   border: 3px ridge #725038;
-  background: repeating-linear-gradient(5deg, #2c1d12d9 0 3px, #140e0aee 4px 8px);
 }
 .style-evil {
   --rim: #7d2a3a;
+  --material: url('/vtt/boss/evil-v1.webp');
   clip-path: polygon(1% 0, 99% 0, 100% 20%, 98% 100%, 2% 100%, 0 20%);
   border-top: 3px solid #8a313f;
-}
-.style-gears,
-.style-steampunk {
-  --rim: #98713e;
-  border: 4px ridge #866843;
-  background: repeating-linear-gradient(90deg, #191714e9 0 27px, #69543bba 28px 30px);
-}
-.style-ooze {
-  --rim: #527554;
-  border-radius: 14px 20px 25px 8px;
-  box-shadow:
-    0 4px 0 #2945348a,
-    inset 0 0 14px #57774947;
-}
-.style-royal {
-  --rim: #c3a45e;
-  border: 3px double #b69a55;
-  border-radius: 10px 10px 2px 2px;
-  background: linear-gradient(90deg, #1a1326dd, #37213dee, #1a1326dd);
-}
-.style-segmented .vtt-boss-track::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(90deg, transparent 0 calc(10% - 2px), #070a10 0 10%);
-}
-.style-steampunk {
-  border-radius: 14px;
-  border-width: 5px;
-  box-shadow:
-    inset 0 0 0 2px #30261c,
-    0 3px 10px #0009;
 }
 @media (max-width: 600px) {
   .vtt-boss-bars {

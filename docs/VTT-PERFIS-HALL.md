@@ -12,17 +12,19 @@ no mapa e recebe a mesma projeção de visão desse jogador, sem fichas, notas o
 arquivos ocultos. Sem névoa e sem visão escolhida, acompanha os tokens públicos.
 Pode trocar participação no topo, inclusive em telas pequenas.
 
-Ataques da ficha e dos atalhos de jogador/monstro abrem seleção de alvo. Resultado
+Ataques da ficha e dos atalhos de jogador/monstro ficam na barra compacta. O token
+selecionado é amarelo; clicar no segundo marca o alvo vermelho. Shift seleciona
+vários; Ctrl/Meta muda o atacante. Vantagem/desvantagem é escolhida na barra. Resultado
 real do servidor é comparado à CA: igualdade acerta, 1 natural falha, 20 natural
-acerta. Acerto oferece Rolar dano; crítico dobra dados sem dobrar modificador.
+acerta. Acerto oferece Rolar dano ou Descartar dano; crítico dobra dados sem dobrar modificador.
 Componentes de dano são publicados no chat, e aplicação dos PV continua manual.
 A opção Dano separado preserva rolagens avulsas e ações de salvaguarda.
 
 Efeitos ocupa o lugar do antigo indicador de ferramenta no rodapé esquerdo.
 Prévia aparece no token só para o mestre, sem escrever no documento; fecha ao
 sair do menu. Duração Infinito mantém a animação até limpar. Chamas/brasas,
-cristais/neve, fumaça/bolhas de veneno, runas/raios de cura e arcos elétricos
-usam desenhos e movimentos distintos. Token morto continua inteiro e vermelho
+gelo com fraturas/neve, fumaça/bolhas de veneno, fitas/runas de cura e arcos elétricos
+usam desenhos e movimentos distintos, em passes atrás e sobre o retrato. Token morto continua inteiro e vermelho
 com sangue. O menu abre acima da barra de atalhos para permitir arraste.
 
 Dados usam cannon-es com cascos convexos das próprias malhas, gravidade,
@@ -34,7 +36,7 @@ Impactos reais acionam o som. Movimento reduzido mostra o repouso. Seleção sem
 arraste não salva tokens; prévia do jogador mantém o observador ao selecionar
 outro token. Protocolo 2 bloqueia substituições do documento por clientes antigos.
 
-Validação: PostgreSQL descartável (21 testes), geometria/colisão/combate unitários,
+Validação: PostgreSQL descartável, geometria/colisão/combate e fórmulas unitários,
 navegador com jogadores e espectador, prévia sem persistência, arraste de efeitos,
 dados WebGL e layouts 1440/768/390/320. Backup antes de deploy e preservação dos
 dados originais obrigatórios.
@@ -91,12 +93,16 @@ consumíveis debitam uma unidade com auditoria e idempotência. Não aplica efei
 narrativos ou dano automático ao alvo. Se publicação falhar após gasto, o
 recurso continua gasto e somente mestre pode corrigir pelo histórico da ficha.
 
-Mestre seleciona token → Fichas → Token selecionado → Boss e efeito de morte. Escolher um dos dez
+Mestre seleciona token → Fichas → Token selecionado → Barra de boss. Escolher um dos cinco
 estilos publica a barra para todos, inclusive quando o token está oculto;
 apenas tokenId/nome/PV/máximo/estilo são públicos, sem posição/arte/notas/ficha.
-Não mostrar barra remove-a. Vermelho recua sobre preto, verde sinaliza cura e
-retorna ao vermelho. PV vêm do próprio token, incluindo gasto pela ficha.
-Duplicação não duplica a designação de boss. Efeito de morte manual é visual;
+Não mostrar barra remove-a. Red usa sangue, Ice usa gelo fraturado, Grass usa musgo,
+Oak usa carvalho e Evil usa obsidiana incandescente. PV recuam sobre preto;
+verde sinaliza cura por 1,4 s e volta ao material escolhido. Estilos antigos
+continuam legíveis no banco, exibidos como Red, mas saíram do seletor. Texturas e
+prompts em VTT-BOSS-ART.md. PV vêm do próprio token, incluindo gasto pela ficha.
+Duplicação não duplica a designação de boss. Em Efeitos estão Aplicar morte,
+Limpar morte e Automático ao zerar PV. Efeito de morte manual é visual;
 automático dispara uma vez ao cruzar PV positivo → zero/negativo, não ao reabrir
 a página. Token permanece inteiro, vermelho, com sangue ao redor. Removidos os
 fragmentos do personagem por pedido posterior. Sangue se espalha brevemente,
@@ -104,6 +110,41 @@ respeita névoa/visão/movimento reduzido e permanece até limpar/restaurar PV.
 Tokens e personagens nunca são excluídos pelo efeito. Restauração de
 PV via ficha também limpa a marca. Não acrescenta regras de morte definitiva
 ou testes contra a morte; o mestre decide o uso do efeito.
+
+Mestre pode registrar quantidade de cura na ficha importada. Pelo botão direito,
+a caixa vermelha de PV aceita valor absoluto ou `+N`/`-N`, limitado a zero/máximo.
+São alterações de sessão e não recuperam consumíveis nem recursos originais.
+
+Chat → Combate oferece selecionar todos, adicionar selecionados (Shift + clique)
+ou todos à ordem. O carrossel aparece no topo central. Jogador rola somente por
+seus personagens no painel ou carrossel; servidor usa d20 e bônus da ficha real.
+Iniciativas ordenam do maior ao menor. Mestre pode editar valores, escolher
+qualquer turno e avançar/recuar, inclusive antes de iniciar. Iniciar exige valores
+de todos. Em combate, círculo mágico rotativo destaca o atual e amarelo discreto
+o próximo. Estado em `vtt_rooms.combat` (065) não disputa revisão com os movimentos.
+Espectadores apenas veem; névoa também filtra os participantes do carrossel.
+
+Sinalizar ponto desenha uma seta dourada saltando três vezes. Sinal do mestre
+centra todas as câmeras com transição curta, preservando zoom e visão (064).
+Jogador sinaliza apenas localmente; arrastar o fundo ainda move a câmera, sem
+botão de mão. Texto abre editor pequeno junto ao clique, Enter salva, Shift+Enter
+quebra linha e Esc cancela. Desenhos nunca usam a camada de iluminação.
+Barreiras ativam luz dinâmica; paredes e portas fechadas recortam luz real,
+portas abertas/janelas deixam passar. Visão no escuro dos monstros não ilumina
+a área do mestre atrás das paredes.
+
+Biblioteca de arte inclui 330 tokens transparentes dos monstros locais, obtidos
+do release 5etools-img v2.36.1; adicionar monstro já usa sua arte correspondente.
+Token existente pode receber Usar arte do monstro. Manifest de origem/hash em
+`data/vtt/monster-token-art.json`; importador idempotente em
+`scripts/import-vtt-monster-art.mjs`. Não importa novas regras de suplementos.
+
+Configurações e ajuda → Ajuda e o lançador explicam Rolagens personalizadas.
+Parser no servidor suporta conservação/descarte, lançamentos adicionais,
+relançamento, contagem, grupos, funções e dados de equilíbrio. Resultado e todos
+os lançamentos reais são registrados; detalhes e limites em VTT-ROLAGENS.md.
+Consultas rápidas de sinal/combate usam limite separado de 180/min por usuário
+autenticado, para não consumir o limite por conexão das ações normais.
 
 ## Navegação e visitas
 
@@ -189,7 +230,7 @@ Recursos implementados:
 - Grade quadrada, hexagonal nas duas orientações ou sem grade; tamanho, escala,
   unidade, deslocamentos, cor, transparência, encaixe e quatro medidas de diagonais.
 - Régua temporária com seta, removida ao soltar/cancelar o arraste; desenho livre
-  com paleta e cor própria, retângulo, círculo, cone, linha, texto, sinalizador local,
+  com paleta e cor própria, retângulo, círculo, cone, linha, texto, sinalizador com câmera do mestre,
   seleção múltipla, giro/tamanho, bloqueio, ocultação, duplicação e desfazer/refazer.
   Seleção permite apagar desenhos/barreiras/fontes de luz da camada ativa.
 - Tokens com retrato/arte editáveis, nome, PV/CA, condições, controle por jogador,
@@ -264,7 +305,8 @@ abertura; sem renderizar a arte como CSS background da foto. Hover usa sombra do
 
 ## Banco e verificação
 
-Migrations **058_vtt.sql**, **059_social_hall.sql** e **060_vtt_resources.sql**.
+Migrations **058–065**: mesa/comunidade/recursos, apresentações, atalhos,
+participação, sinal de câmera e combate.
 A última adiciona vínculos de importação, recursos, auditoria de uso e mensagens
 de magia; não remove registros de personagens/conquistas/compras. Convites usam crypto.randomBytes no
 servidor, sem depender de extensão PostgreSQL adicional. Imagens só aceitas como
@@ -276,9 +318,16 @@ executa migrations/seed e testes de API/geometria, e remove apenas esse banco.
 cartas/ficha de consulta, Hall, VTT e responsividade. Não rodar esses testes no
 banco de jogadores. Capturas e PNG exportado ficam em test-results (ignorado).
 
-Refino de efeitos: 19 testes de API/geometria, build Docker/TypeScript e smoke
-com duas contas em 1440/768/390/320 px. Verifica presets/atalhos persistidos,
-trancas, referências removidas, privacidade, ataques reais do SRD, arraste,
-aplicação/limpeza e ordem dos sete ícones. Canvas real com retrato iluminado
-confirma imagem inteira (uma chamada de desenho) e sangue fora do token.
-Capturas vtt-effects-menu.png e vtt-death-intact-portrait.png.
+Refino final: 23 testes de API/geometria e 13 de dados/física/fórmulas aprovados,
+TypeScript/Vite/tsup e build Docker. Smoke com mestre, jogador e espectador em
+1440/768/390/320 px: seleção vermelha/amarela, vantagem, dano/descarte, texto,
+PV +/- e cura quantitativa, morte em Efeitos, materiais de boss, iniciativa nos
+dois controles, início/avanço sincronizado, câmera para todos e ajuda em
+Configurações. Também mantém amizade, perfis, Hall, trancas, recursos e privacidade.
+Canvas real confirma retrato inteiro e sangue externo; os cinco efeitos alteram
+pixels dentro do retrato e diferem entre si usando a mesma cor. Parede escurece
+o ponto atrás dela; porta aberta/janela restaura a luz, inclusive no mestre com
+monstro de visão no escuro. Manifest verifica 330 arquivos/hashes/dimensões,
+todos com alfa, e cinco texturas de boss.
+Capturas vtt-attack-inline.png, vtt-turn-carousel.png, vtt-settings-roll-help.png,
+vtt-effects-refined.png e vtt-death-intact-portrait.png em test-results (ignorado).

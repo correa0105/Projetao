@@ -62,6 +62,20 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Direção final de 05/10: atacante amarelo e alvo vermelho por clique, ataque/dano/
+vantagem/descarte na barra compacta sem modal. Seta sinalizadora salta três vezes;
+quando usada pelo mestre sincroniza as câmeras (064), mantendo a visão privada.
+Morte fica exclusivamente em Efeitos; boss mantém somente Red/Ice/Grass/Oak/Evil,
+com materiais próprios e compatibilidade de leitura dos estilos antigos. Mestre
+registra cura quantitativa e edita PV por botão direito com valor absoluto ou
+`+N`/`-N`. Combate (065) é independente da revisão do documento: carrossel central,
+iniciativa real por dono do personagem, mestre controla início/turno/rodada.
+Rolagens personalizadas têm parser próprio no servidor, sem eval, limites e guia
+em Configurações/Ajuda. Preservar abreviações matemáticas interoperáveis; nomes e
+explicações próprios em português, sem prometer compatibilidade com templates/
+atributos de outra plataforma. Artes locais de 330 monstros com manifest/hash.
+Detalhes em docs/VTT-PERFIS-HALL.md e docs/VTT-ROLAGENS.md.
+
 Direção posterior de 05/10: participação jogador/espectador (063). Jogador traz
 seus personagens automaticamente, sem duplicar/restaurar. Espectador só vê:
 não trazer fichas nem permitir chat/dados/movimento/recursos; bloquear no servidor.

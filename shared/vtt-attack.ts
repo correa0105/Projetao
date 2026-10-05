@@ -1,5 +1,14 @@
 import type { VttMessage } from './vtt.js';
 export type AttackRequest = { actorId: string; name: string; attack: string; damage: string[] };
+export type AttackMode = 'normal' | 'advantage' | 'disadvantage';
+export function attackFormula(formula: string, mode: AttackMode) {
+  const match = formula.replace(/\s/g, '').match(/^(?:1d20|2d20(?:kh1|kl1))([+-]\d+)?$/i);
+  if (!match) throw Error('Este ataque não informa uma rolagem de d20 válida.');
+  return (
+    (mode === 'advantage' ? '2d20kh1' : mode === 'disadvantage' ? '2d20kl1' : '1d20') +
+    (match[1] || '')
+  );
+}
 export function criticalDamage(formula: string) {
   const match = formula.replace(/\s/g, '').match(/^(\d+)d(\d+)([+-]\d+)?$/i);
   if (!match) return [formula];

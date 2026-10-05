@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import type { BossBar } from '../shared/vtt';
+import { visibleBossStyle, type BossBar } from '../shared/vtt';
 import './vtt-boss.css';
 function Bar({ boss }: { boss: BossBar }) {
   const percent = Math.max(0, Math.min(100, (boss.hp / boss.maxHp) * 100));
@@ -22,7 +22,10 @@ function Bar({ boss }: { boss: BossBar }) {
     return () => clearTimeout(timer);
   }, [percent]);
   return (
-    <div className={'vtt-boss-bar style-' + boss.style} aria-label={'Boss · ' + boss.name}>
+    <div
+      className={'vtt-boss-bar style-' + visibleBossStyle(boss.style)}
+      aria-label={'Boss · ' + boss.name}
+    >
       <div className="vtt-boss-title">
         <strong>{boss.name}</strong>
         <small>

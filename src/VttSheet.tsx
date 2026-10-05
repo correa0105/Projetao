@@ -32,7 +32,8 @@ export function VttSheet({
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
     [totals, setTotals] = useState<number[] | null>(null),
-    [damage, setDamage] = useState('');
+    [damage, setDamage] = useState(''),
+    [healing, setHealing] = useState('');
   const url = `/vtt/rooms/${roomId}/sheets/${token.id}`;
   useEffect(() => {
     let live = true;
@@ -238,10 +239,35 @@ export function VttSheet({
                         Aplicar dano
                       </button>
                       {data.is_gm && (
-                        <button disabled={busy} onClick={() => restore({ kind: 'hp' })}>
-                          <RotateCcw size={13} />
-                          Restaurar PV
-                        </button>
+                        <>
+                          <label>
+                            Registrar cura
+                            <input
+                              aria-label="Registrar cura"
+                              type="number"
+                              min={1}
+                              max={100000}
+                              placeholder="Quantidade"
+                              value={healing}
+                              onChange={(e) => setHealing(e.target.value)}
+                            />
+                          </label>
+                          <button
+                            disabled={
+                              busy ||
+                              t.hp >= t.maxHp ||
+                              !Number.isInteger(Number(healing)) ||
+                              Number(healing) <= 0
+                            }
+                            onClick={() => void action('/heal', { amount: Number(healing) })}
+                          >
+                            Aplicar cura
+                          </button>
+                          <button disabled={busy} onClick={() => restore({ kind: 'hp' })}>
+                            <RotateCcw size={13} />
+                            Restaurar PV
+                          </button>
+                        </>
                       )}
                     </>,
                   )}

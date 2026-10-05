@@ -133,6 +133,8 @@ export function createApp() {
       ? next()
       : express.json({ limit: '128kb' })(req, res, next),
   );
+  const isVttSync = (req: express.Request) =>
+    req.method === 'GET' && /^\/vtt\/rooms\/[0-9a-f-]{36}\/(signal|combat)$/.test(req.path);
   app.use(
     '/api',
     rateLimit({
@@ -141,6 +143,13 @@ export function createApp() {
       standardHeaders: 'draft-8',
       legacyHeaders: false,
       message: { error: 'Muitas solicitações. Tente novamente em um minuto.' },
+      skip: async (req, res) => {
+        if (!isVttSync(req)) return false;
+        const session = await auth.api.getSession({ headers: fromNodeHeaders(req.headers) });
+        if (!session) return false;
+        res.locals.verifiedSession = session;
+        return true;
+      },
     }),
   );
   app.use('/api', async (req, res, next) => {
@@ -151,11 +160,27 @@ export function createApp() {
     ) {
       throw new AppError(403, 'Origem da solicitação não autorizada.');
     }
-    const session = await auth.api.getSession({ headers: fromNodeHeaders(req.headers) });
+    const session =
+      res.locals.verifiedSession ||
+      (await auth.api.getSession({ headers: fromNodeHeaders(req.headers) }));
     if (!session) throw new AppError(401, 'Entre na sua conta para continuar.');
     res.locals.user = session.user;
     next();
   });
+  // Frequent read-only updates have their own authenticated-user budget. Players
+  // on one connection must not exhaust each other's chat and mutation allowance.
+  app.use(
+    '/api',
+    rateLimit({
+      windowMs: 60000,
+      limit: 180,
+      standardHeaders: 'draft-8',
+      legacyHeaders: false,
+      skip: (req) => !isVttSync(req),
+      keyGenerator: (_req, res) => res.locals.user.id,
+      message: { error: 'Muitas atualizações da mesa. Aguarde um instante.' },
+    }),
+  );
   app.use('/api/character-art', express.json({ limit: '12mb' }));
   app.use('/api/lore', express.json({ limit: '2mb' }));
   app.use('/api/rulebook', express.json({ limit: '12mb' }));

@@ -7,7 +7,7 @@ import './vtt-dice.css';
 import { shape } from './vtt-dice-geometry';
 import { DicePhysics } from './vtt-dice-physics';
 export { d10Geometry } from './vtt-dice-geometry';
-function die(sides: number, result: number, tint: number, percentile = false) {
+function die(sides: number, result: number, tint: number, percentile = false, balance = false) {
   const { geometry, faces } = shape(sides),
     group = new THREE.Group();
   const material = new THREE.MeshStandardMaterial({
@@ -36,7 +36,13 @@ function die(sides: number, result: number, tint: number, percentile = false) {
     c.textBaseline = 'middle';
     c.fillStyle = '#fff1c9';
     c.fillText(
-      percentile ? String(i * 10).padStart(2, '0') : sides === 10 ? String(i) : String(i + 1),
+      balance
+        ? ['−', '0', '+'][i % 3]
+        : percentile
+          ? String(i * 10).padStart(2, '0')
+          : sides === 10
+            ? String(i)
+            : String(i + 1),
       64,
       65,
     );
@@ -66,7 +72,7 @@ function die(sides: number, result: number, tint: number, percentile = false) {
           : best,
       0,
     );
-    const wanted = sides === 10 ? result % 10 : result - 1;
+    const wanted = balance ? result + 1 : sides === 10 ? result % 10 : result - 1;
     if (up === wanted) return;
     for (const [index, value] of [
       [up, wanted],
@@ -75,11 +81,13 @@ function die(sides: number, result: number, tint: number, percentile = false) {
       const c = labels[index].getContext('2d')!;
       c.clearRect(0, 0, 128, 128);
       c.fillText(
-        percentile
-          ? String(value * 10).padStart(2, '0')
-          : sides === 10
-            ? String(value)
-            : String(value + 1),
+        balance
+          ? ['−', '0', '+'][value % 3]
+          : percentile
+            ? String(value * 10).padStart(2, '0')
+            : sides === 10
+              ? String(value)
+              : String(value + 1),
         64,
         65,
       );
@@ -157,7 +165,12 @@ export function VttDice({
   useEffect(() => {
     if (!roll?.roll || !enabled || !host.current) return;
     const sides = Number(roll.roll.formula.match(/d(\d+)/i)?.[1]);
-    if (![4, 6, 8, 10, 12, 20, 100].includes(sides)) {
+    const physical = roll.roll.throws || roll.roll.dice.map((value) => ({ sides, value }));
+    if (
+      !physical.length ||
+      physical.length > 30 ||
+      physical.some((t) => ![-1, 4, 6, 8, 10, 12, 20, 100].includes(t.sides))
+    ) {
       setFallback(true);
       const timer = setTimeout(() => setRoll(null), 5000);
       return () => clearTimeout(timer);
@@ -211,13 +224,13 @@ export function VttDice({
     floor.position.z = 0;
     floor.receiveShadow = true;
     scene.add(floor);
-    const values = roll.roll.dice.flatMap((n) =>
+    const values = physical.flatMap(({ sides, value: n }) =>
       sides === 100
         ? [
-            { sides: 10, result: Math.floor((n % 100) / 10), tens: true },
-            { sides: 10, result: n % 10, tens: false },
+            { sides: 10, result: Math.floor((n % 100) / 10), tens: true, balance: false },
+            { sides: 10, result: n % 10, tens: false, balance: false },
           ]
-        : [{ sides, result: n, tens: false }],
+        : [{ sides: sides === -1 ? 6 : sides, result: n, tens: false, balance: sides === -1 }],
     );
     const count = values.length,
       scale = Math.min(
@@ -226,7 +239,7 @@ export function VttDice({
         (camera.top * 1.65) / (Math.ceil(Math.sqrt(count)) * 2.65),
       );
     const dice = values.map((v) => {
-      const d = die(v.sides, v.result, v.tens ? 0x624430 : 0x293e65, v.tens);
+      const d = die(v.sides, v.result, v.tens ? 0x624430 : 0x293e65, v.tens, v.balance);
       d.group.scale.setScalar(scale);
       scene.add(d.group);
       return d;

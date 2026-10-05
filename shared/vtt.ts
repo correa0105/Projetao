@@ -20,6 +20,10 @@ export const bossStyles = [
   'classic-grass',
   'classic-oak',
   'evil',
+] as const;
+// Older rooms still load; obsolete looks are displayed as Classic Red.
+const storedBossStyles = [
+  ...bossStyles,
   'gears',
   'ooze',
   'royal',
@@ -32,18 +36,16 @@ export const bossStyleNames = [
   'Classic · Grass',
   'Classic · Oak',
   'Evil',
-  'Gears',
-  'Ooze',
-  'Royal',
-  'Segmented',
-  'Steampunk',
 ];
+export function visibleBossStyle(style: (typeof storedBossStyles)[number]) {
+  return bossStyles.includes(style as (typeof bossStyles)[number]) ? style : 'classic-red';
+}
 export type BossBar = {
   tokenId: string;
   name: string;
   hp: number;
   maxHp: number;
-  style: (typeof bossStyles)[number];
+  style: (typeof storedBossStyles)[number];
 };
 export const sheetSchema = z
   .object({
@@ -76,7 +78,7 @@ export const tokenSchema = z
     hidden: z.boolean().default(false),
     hp: z.number().min(-10000).max(100000).default(10),
     maxHp: z.number().min(1).max(100000).default(10),
-    bossStyle: z.enum(bossStyles).nullable().default(null),
+    bossStyle: z.enum(storedBossStyles).nullable().default(null),
     deathAutomatic: z.boolean().default(false),
     deathAt: z.number().int().min(0).max(9999999999999).nullable().default(null),
     effects: z.array(tokenEffectSchema).max(10).default([]),
@@ -298,7 +300,13 @@ export type VttMessage = {
   id: string;
   author: string;
   text: string;
-  roll: { formula: string; dice: number[]; total: number } | null;
+  roll: {
+    formula: string;
+    dice: number[];
+    total: number;
+    throws?: { sides: number; value: number }[];
+    highlights?: { value: number; kind: 'surge' | 'mishap' | 'match' }[];
+  } | null;
   spell?: {
     id: string;
     name: string;
@@ -326,7 +334,9 @@ export type VttState = {
   members: { id: string; name: string; role: 'master' | 'player' | 'spectator' }[];
   messages: VttMessage[];
   bossBars: BossBar[];
+  focusSignal: VttFocusSignal | null;
 };
+export type VttFocusSignal = Point & { id: string; sceneId: string; at: number };
 export function applyTokenDeath(token: VttToken, previousHp: number, now = Date.now()) {
   if (token.hp > 0 && previousHp <= 0) token.deathAt = null;
   if (token.deathAutomatic && previousHp > 0 && token.hp <= 0) token.deathAt = now;

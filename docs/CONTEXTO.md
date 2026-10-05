@@ -1,5 +1,41 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Refino final da mesa e fórmulas (05/10/2026)
+
+Ataques passam para barra compacta com atacante amarelo/alvo vermelho por clique,
+vantagem/desvantagem, CA real e dano/descarte; sem modal. Sinalizador é seta que
+salta três vezes e, pelo mestre, centra todas as câmeras preservando visão (064).
+Botão de mão retirado; pan pelo fundo mantido. Texto salva na camada válida com
+editor junto ao clique. Paredes/portas fechadas bloqueiam luz real sem visão no
+escuro de todos os tokens iluminar o mestre. Efeitos têm passes sobre retratos.
+Morte manual/automática fica em Efeitos. Boss oferece cinco materiais distintos,
+com verde temporário na cura; estilos removidos mantidos legíveis no banco.
+Mestre registra cura quantitativa e edita PV com botão direito (`20`, `+5`, `-5`).
+330 artes locais de monstros com origem/hash e importador idempotente.
+
+Chat → Combate adiciona todos/selecionados, carrossel central, rolagem própria
+pela ficha real, ordenação decrescente e início depois de todos os valores.
+Mestre controla giro/escolha/início/fim; círculo mágico no atual e amarelo fraco
+no próximo. Combate em coluna própria (065), sem conflito com revisão do documento.
+Espectador/névoa filtrados também no carrossel. Sinal/combate têm orçamento de
+polling separado por usuário autenticado; ações preservam limite por conexão.
+
+Rolagens personalizadas usa parser próprio sem eval, com conservação/descarte,
+explosões simples/acumuladas/com desconto, relançamentos, sucesso/falha, repetição,
+grupos, funções, dados calculados/equilíbrio e operações matemáticas. Até 100
+dados iniciais/500 lançamentos/100 caracteres/10 níveis, crypto.randomInt no
+servidor. Chat/lançador/macros usam mesmo engine; Ajuda explica termos próprios
+e ordem. Sintaxe matemática interoperável conservada. Expansão de atributos,
+templates e consultas específicas de plataforma externa não implementados.
+Detalhes em VTT-PERFIS-HALL.md, VTT-ROLAGENS.md e VTT-BOSS-ART.md.
+
+Validação final: 23 testes isolados de servidor, 13 de dados/física/fórmulas,
+TypeScript/Vite/tsup, build Docker e smoke com três contas/layouts 1440/768/390/320.
+Canvas comprova efeitos sobre o retrato, diferenças mesmo na mesma cor e bloqueio
+de luz por parede, com passagem em porta aberta/janela. 330 hashes/alfas/dimensões
+e cinco materiais verificados. Backup antes da atualização local em
+`.local/backups/before-vtt-refino-20261005-final.dump`; não versionar banco/dados privados.
+
 ## Participação, combate, efeitos e física (05/10/2026)
 
 Entrada oferece Jogador ou Espectador. Jogador importa automaticamente seus
@@ -12,7 +48,7 @@ no mapa e recebe a mesma projeção de visão desse jogador, sem fichas, notas o
 arquivos ocultos. Sem névoa e sem visão escolhida, acompanha os tokens públicos.
 Pode trocar participação no topo, inclusive em telas pequenas.
 
-Ataques da ficha e dos atalhos de jogador/monstro abrem seleção de alvo. Resultado
+Ataques da ficha e dos atalhos de jogador/monstro ficam na barra compacta com alvo vermelho. Resultado
 real do servidor é comparado à CA: igualdade acerta, 1 natural falha, 20 natural
 acerta. Acerto oferece Rolar dano; crítico dobra dados sem dobrar modificador.
 Componentes de dano são publicados no chat, e aplicação dos PV continua manual.
@@ -21,7 +57,7 @@ A opção Dano separado preserva rolagens avulsas e ações de salvaguarda.
 Efeitos ocupa o lugar do antigo indicador de ferramenta no rodapé esquerdo.
 Prévia aparece no token só para o mestre, sem escrever no documento; fecha ao
 sair do menu. Duração Infinito mantém a animação até limpar. Chamas/brasas,
-cristais/neve, fumaça/bolhas de veneno, runas/raios de cura e arcos elétricos
+gelo fraturado/neve, fumaça/bolhas de veneno, fitas/runas de cura e arcos elétricos
 usam desenhos e movimentos distintos. Token morto continua inteiro e vermelho
 com sangue. O menu abre acima da barra de atalhos para permitir arraste.
 
@@ -34,7 +70,7 @@ Impactos reais acionam o som. Movimento reduzido mostra o repouso. Seleção sem
 arraste não salva tokens; prévia do jogador mantém o observador ao selecionar
 outro token. Protocolo 2 bloqueia substituições do documento por clientes antigos.
 
-Validação: PostgreSQL descartável (21 testes), geometria/colisão/combate unitários,
+Validação: PostgreSQL descartável, geometria/colisão/combate e fórmulas unitários,
 navegador com jogadores e espectador, prévia sem persistência, arraste de efeitos,
 dados WebGL e layouts 1440/768/390/320. Backup antes de deploy e preservação dos
 dados originais obrigatórios.

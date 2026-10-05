@@ -10,6 +10,8 @@ import { AppError } from './services.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
+import { vttCombatRouter } from './vtt-combat.js';
+import { rollFormula } from '../shared/vtt-roll.js';
 import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol.js';
 import {
   documentSchema,
@@ -26,6 +28,7 @@ import {
   type VttDocument,
   type VttScene,
   type VttToken,
+  type VttFocusSignal,
 } from '../shared/vtt.js';
 const uuid = z.string().uuid();
 type DB = Pick<PoolClient, 'query'>;
@@ -47,6 +50,7 @@ async function room(db: DB, id: string, user: string, lock = false) {
     invite: string;
     role: 'player' | 'spectator' | null;
     viewing_user_id: string | null;
+    focus_signal: VttFocusSignal | null;
   };
 }
 async function gm(db: DB, id: string, user: string, lock = false) {
@@ -155,7 +159,7 @@ async function state(rid: string, user: string) {
       [r.owner_id, rid],
     ),
     pool.query(
-      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY id DESC LIMIT 100',
+      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY vtt_messages.id DESC LIMIT 100',
       [rid, user, isGm],
     ),
   ]);
@@ -175,6 +179,7 @@ async function state(rid: string, user: string) {
     members: members.rows,
     messages: messages.rows.reverse(),
     bossBars: sceneBossBars(r.document.scenes.find((s) => s.id === r.document.activeScene)!),
+    focusSignal: r.focus_signal,
   };
 }
 async function importCharacter(
@@ -312,6 +317,7 @@ export function vttRouter() {
   });
   router.use(vttSheetRouter(room));
   router.use(vttHotbarRouter(room));
+  router.use(vttCombatRouter(room, canSee));
   router.get('/vtt', async (_req, res) =>
     res.json({
       can_create: await isAdministrator(res.locals.user.id),
@@ -399,6 +405,36 @@ export function vttRouter() {
   router.get('/vtt/rooms/:id', async (req, res) =>
     res.json(await state(uuid.parse(req.params.id), res.locals.user.id)),
   );
+  router.get('/vtt/rooms/:id/signal', async (req, res) => {
+    const {
+      rows: [row],
+    } = await pool.query(
+      `SELECT focus_signal FROM vtt_rooms r WHERE id=$1 AND (owner_id=$2 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$2))`,
+      [uuid.parse(req.params.id), res.locals.user.id],
+    );
+    if (!row) throw new AppError(404, 'Mesa não encontrada.');
+    res.json(row.focus_signal);
+  });
+  router.post('/vtt/rooms/:id/signal', async (req, res) => {
+    const rid = uuid.parse(req.params.id);
+    const input = z
+      .object({ sceneId: uuid, x: z.number().finite().min(0), y: z.number().finite().min(0) })
+      .strict()
+      .parse(req.body);
+    const signal = await transaction(async (db) => {
+      const r = await gm(db, rid, res.locals.user.id, true);
+      const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
+      if (input.sceneId !== scene.id || input.x > scene.width || input.y > scene.height)
+        throw new AppError(400, 'Sinalize um ponto dentro do mapa ativo.');
+      const signal: VttFocusSignal = { ...input, id: randomUUID(), at: Date.now() };
+      await db.query('UPDATE vtt_rooms SET focus_signal=$2 WHERE id=$1', [
+        rid,
+        JSON.stringify(signal),
+      ]);
+      return signal;
+    });
+    res.json(signal);
+  });
   router.put('/vtt/rooms/:id', async (req, res) => {
     if (req.get('X-Vtt-Schema-Version') !== String(vttProtocolVersion))
       throw new AppError(409, vttUpdateMessage);
@@ -564,22 +600,11 @@ export function vttRouter() {
       .parse(req.body);
     let roll = null;
     if (input.formula) {
-      const match = input.formula
-        .replace(/\s/g, '')
-        .match(/^(\d{1,3})d(\d{1,4})(kh1|kl1)?([+-]\d{1,4})?$/i);
-      if (!match) throw new AppError(400, 'Use NdM, NdM+K, 2d20kh1 ou 2d20kl1.');
-      const n = Number(match[1]),
-        sides = Number(match[2]);
-      if (n < 1 || n > 100 || sides < 2 || sides > 1000)
-        throw new AppError(400, 'Rolagem fora dos limites.');
-      const dice = Array.from({ length: n }, () => randomInt(1, sides + 1)),
-        sum =
-          match[3]?.toLowerCase() === 'kh1'
-            ? Math.max(...dice)
-            : match[3]?.toLowerCase() === 'kl1'
-              ? Math.min(...dice)
-              : dice.reduce((a, b) => a + b, 0);
-      roll = { formula: input.formula, dice, total: sum + Number(match[4] || 0) };
+      try {
+        roll = rollFormula(input.formula, randomInt);
+      } catch (e) {
+        throw new AppError(400, (e as Error).message);
+      }
     }
     let spell = null;
     if (input.spell_id) {
@@ -625,7 +650,7 @@ export function vttRouter() {
       .parse(req.query.before);
     const isGm = current.owner_id === user && (await isAdministrator(user));
     const { rows } = await pool.query(
-      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) AND ($4::bigint IS NULL OR id<$4::bigint) ORDER BY id DESC LIMIT 101',
+      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) AND ($4::bigint IS NULL OR id<$4::bigint) ORDER BY vtt_messages.id DESC LIMIT 101',
       [rid, user, isGm, before || null],
     );
     res.json({ messages: rows.slice(0, 100).reverse(), has_more: rows.length > 100 });

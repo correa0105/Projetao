@@ -7,7 +7,7 @@ import {
 } from 'react';
 import {
   MousePointer2,
-  Hand,
+  ArrowDown,
   Ruler,
   Pencil,
   Square,
@@ -72,6 +72,7 @@ import {
   sceneBossBars,
   bossStyles,
   bossStyleNames,
+  visibleBossStyle,
   type VttMessage,
   type VttState,
   type VttDocument,
@@ -80,18 +81,24 @@ import {
   type VttScene,
   type Point,
   type VttAsset,
+  type VttFocusSignal,
 } from '../shared/vtt';
 import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
-import { VttAttack } from './VttAttack';
 import type { AttackRequest } from '../shared/vtt-attack';
 import { vttUpdateMessage } from '../shared/vtt-protocol';
+import { pingDuration, type VttPing } from './vtt-ping';
 import { VttSheet } from './VttSheet';
 import { VttDice } from './VttDice';
 import { VttToolGroup } from './VttToolGroup';
 import { VttHotbar, ActionShortcut } from './VttHotbar';
 import { VttEffects } from './VttEffects';
+import { VttRollHelp } from './VttRollHelp';
+import { useVttCombat, VttTurnCarousel, VttCombatPanel } from './VttCombat';
 import { effectEnds, type EffectPreset } from '../shared/vtt-effects';
 import { monsterActions } from '../shared/vtt-monster-actions';
+import { monsterArt } from '../shared/vtt-monster-art';
+import { hpCommand } from '../shared/vtt-hp';
+import { VttHpControl } from './VttHpControl';
 import { VttBossBars } from './VttBossBars';
 import { MapLibrary, MapSettings } from './VttMaps';
 import { useMusicInterlude } from './SiteMusic';
@@ -154,9 +161,8 @@ const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
 ];
 const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
   { id: 'select', name: 'Selecionar (V)', icon: MousePointer2 },
-  { id: 'pan', name: 'Mover mapa (H)', icon: Hand },
   { id: 'ruler', name: 'Régua (R)', icon: Ruler },
-  { id: 'ping', name: 'Sinalizar ponto', icon: Scan },
+  { id: 'ping', name: 'Sinalizar ponto', icon: ArrowDown },
   { id: 'pen', name: 'Desenhar (P)', icon: Pencil, gm: true },
   { id: 'rect', name: 'Retângulo', icon: Square, gm: true },
   { id: 'circle', name: 'Área circular', icon: Circle, gm: true },
@@ -266,6 +272,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [tab, setTab] = useState<Tab>('chat'),
     [layer, setLayer] = useState('tokens'),
     [selection, setSelection] = useState<string[]>([]),
+    [attackTargetId, setAttackTargetId] = useState<string | null>(null),
+    [attackBusy, setAttackBusy] = useState(false),
     [camera, setCamera] = useState<VttCamera>({ x: 1120, y: 840, zoom: 0.45 }),
     [bounds, setBounds] = useState({ width: 900, height: 700 }),
     [preview, setPreview] = useState(false),
@@ -283,11 +291,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [fogPoints, setFogPoints] = useState<Point[]>([]),
     [fogPointer, setFogPointer] = useState<Point | null>(null),
     [draft, setDraft] = useState<VttDrawing | null>(null),
-    [ping, setPing] = useState<Point | null>(null),
+    [ping, setPing] = useState<VttPing | null>(null),
     [brushColor, setBrushColor] = useState('#dac28e'),
     [brushWidth, setBrushWidth] = useState(3),
     [brushFill, setBrushFill] = useState(true),
     [text, setText] = useState(''),
+    [textEdit, setTextEdit] = useState<{
+      point: Point;
+      x: number;
+      y: number;
+      value: string;
+    } | null>(null),
     [brushRadius, setBrushRadius] = useState(140),
     [panelOpen, setPanelOpen] = useState(true),
     [mapsOpen, setMapsOpen] = useState(false),
@@ -336,6 +350,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       tokens: VttToken[];
     } | null>(null),
     musicRef = useRef<HTMLAudioElement | null>(null),
+    focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
+    focusFrame = useRef(0),
     contextRef = useRef<HTMLDivElement>(null);
   const music = useMusicInterlude();
   useEffect(() => music.beginInterlude(), [music.beginInterlude]);
@@ -343,6 +359,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   docRef.current = doc;
   const scene = doc?.scenes.find((s) => s.id === doc.activeScene),
     token = scene?.tokens.find((t) => t.id === selection[0]),
+    attackTarget =
+      token?.layer === 'tokens' && selection.length === 1
+        ? scene?.tokens.find(
+            (t) =>
+              t.id === attackTargetId &&
+              t.id !== token.id &&
+              t.layer === 'tokens' &&
+              !t.hidden &&
+              (!preview ||
+                !!viewerSees(
+                  scene.tokens.find((v) => v.id === previewViewerId) || token,
+                  t,
+                  scene,
+                )),
+          )
+        : undefined,
     selectedLight = scene?.lights.find((l) => l.id === selection[0]),
     selectedWall = scene?.walls.find((w) => w.id === selection[0]),
     selectedDrawing = scene?.drawings.find((d) => d.id === selection[0]),
@@ -365,6 +397,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   };
   function receive(next: VttState, reset = true) {
     if (stateRef.current?.id !== next.id) {
+      focusSeen.current = {
+        roomId: next.id,
+        at: next.focusSignal?.at || 0,
+        id: next.focusSignal?.id || '',
+      };
       setOlderMessages([]);
       setAttack(null);
       setPreview(false);
@@ -384,14 +421,61 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         zoom: Math.min(bounds.width / (s.width + 100), bounds.height / (s.height + 100)),
       });
       setSelection([]);
+      setAttackTargetId(null);
+      setAttack(null);
       setSheetId(null);
     }
     stateRef.current = next;
     docRef.current = next.document;
     setState(next);
     setDoc(next.document);
+    followSignal(next.focusSignal, next.id, next.document.activeScene);
     if (reset) resetDirty();
   }
+  function followSignal(
+    signal: VttFocusSignal | null,
+    roomId = stateRef.current?.id,
+    sceneId = docRef.current?.activeScene,
+  ) {
+    if (
+      !signal ||
+      !roomId ||
+      signal.sceneId !== sceneId ||
+      focusSeen.current?.roomId !== roomId ||
+      signal.id === focusSeen.current?.id ||
+      signal.at < (focusSeen.current?.at || 0)
+    )
+      return;
+    focusSeen.current = { roomId, at: signal.at, id: signal.id };
+    setPing({ x: signal.x, y: signal.y, at: Date.now() });
+    cancelAnimationFrame(focusFrame.current);
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCamera((c) => ({ ...c, x: signal.x, y: signal.y }));
+      return;
+    }
+    const start = performance.now();
+    let from: VttCamera | null = null;
+    const animate = (now: number) => {
+      const p = Math.min(1, Math.max(0, (now - start) / 550)),
+        ease = 1 - Math.pow(1 - p, 3);
+      setCamera((c) => {
+        from ||= c;
+        return {
+          ...c,
+          x: from.x + (signal.x - from.x) * ease,
+          y: from.y + (signal.y - from.y) * ease,
+        };
+      });
+      if (p < 1) focusFrame.current = requestAnimationFrame(animate);
+    };
+    focusFrame.current = requestAnimationFrame(animate);
+  }
+  useEffect(() => () => cancelAnimationFrame(focusFrame.current), []);
+  useEffect(() => {
+    if (!ping) return;
+    const timer = setTimeout(() => setPing((p) => (p?.at === ping.at ? null : p)), pingDuration);
+    return () => clearTimeout(timer);
+  }, [ping]);
   function edit(fn: (d: VttDocument) => void, remember = true) {
     if (!gm || !docRef.current) return;
     if (remember) {
@@ -487,6 +571,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     document.addEventListener('pointerdown', outside);
     return () => document.removeEventListener('pointerdown', outside);
   }, [contextMenu]);
+  useEffect(() => {
+    setTextEdit(null);
+    setContextMenu(null);
+    cancelAnimationFrame(focusFrame.current);
+  }, [scene?.id, state?.id, tool, gm]);
   const save = useCallback(async () => {
     if (savePromise.current) return savePromise.current;
     if (!stateRef.current?.is_gm || !dirtyRef.current) return;
@@ -519,6 +608,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     savePromise.current = promise;
     return promise;
   }, []);
+  const combat = useVttCombat(state?.id, scene?.id, save, refreshRoom);
   async function act(fn: () => Promise<unknown>) {
     try {
       setNotice('');
@@ -615,6 +705,29 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     return () => clearInterval(timer);
   }, [state?.id]);
   useEffect(() => {
+    if (!state?.id) return;
+    let live = true,
+      pending = false;
+    const id = state.id,
+      timer = setInterval(async () => {
+        if (!live || pending || document.hidden) return;
+        pending = true;
+        try {
+          const signal = await api<VttFocusSignal | null>(`/vtt/rooms/${id}/signal`);
+          if (live && stateRef.current?.id === id) followSignal(signal);
+        } catch {
+          /* The regular room poll reports participation and connection changes. */
+        } finally {
+          pending = false;
+        }
+      }, 750);
+    return () => {
+      live = false;
+      clearInterval(timer);
+      cancelAnimationFrame(focusFrame.current);
+    };
+  }, [state?.id]);
+  useEffect(() => {
     if (!scene) return;
     for (const path of [scene.background, ...scene.tokens.map((t) => t.image)]) {
       if (!path || images.current.has(path)) continue;
@@ -661,6 +774,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           dpr,
           images: images.current,
           selected: selection,
+          target: attackTarget?.id,
+          currentTurn: combat.state?.active ? combat.state.currentId || undefined : undefined,
+          nextTurn: combat.state?.active ? combat.state.nextId || undefined : undefined,
           gm,
           preview,
           viewer,
@@ -692,9 +808,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       0,
       ...scene.tokens.map((t) => (t.deathAt ? t.deathAt + 1300 : 0)),
       ...ends,
+      ping ? ping.at + pingDuration : 0,
     );
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
     const infinite =
+      !!combat.state?.active ||
       !!effectPreview ||
       scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death'));
     if (
@@ -720,6 +838,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     camera,
     bounds,
     selection,
+    attackTarget?.id,
+    combat.state,
     preview,
     previewViewerId,
     state?.viewingUser,
@@ -816,6 +936,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         if (mapsOpen || settingsId || sheetId) return;
         setContextMenu(null);
         setSelection([]);
+        setAttackTargetId(null);
+        if (!attackBusy) setAttack(null);
         setDraft(null);
         setRuler([]);
         setTool('select');
@@ -842,7 +964,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         e.preventDefault();
         duplicate();
       }
-      const shortcuts: Record<string, Tool> = { v: 'select', h: 'pan', r: 'ruler', p: 'pen' };
+      const shortcuts: Record<string, Tool> = { v: 'select', r: 'ruler', p: 'pen' };
       if (shortcuts[e.key.toLowerCase()] && !e.ctrlKey && !e.metaKey)
         setTool(shortcuts[e.key.toLowerCase()]);
       if (e.key.startsWith('Arrow') && token && canToken) {
@@ -898,6 +1020,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     };
   }
   function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
+    cancelAnimationFrame(focusFrame.current);
     if (!scene || !doc || e.button === 2) return;
     setContextMenu(null);
     const p = point(e),
@@ -916,8 +1039,35 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (tool === 'ping') {
-      setPing(p);
-      setTimeout(() => setPing(null), 1800);
+      const position = {
+        x: Math.max(0, Math.min(scene.width, p.x)),
+        y: Math.max(0, Math.min(scene.height, p.y)),
+      };
+      if (gm)
+        void act(async () => {
+          await save();
+          const signal = await post<VttFocusSignal>(`/vtt/rooms/${state!.id}/signal`, {
+            ...position,
+            sceneId: scene.id,
+          });
+          followSignal(signal);
+        });
+      else setPing({ ...position, at: Date.now() });
+      return;
+    }
+    if (tool === 'text' && gm) {
+      if (layer === 'lighting') setLayer('tokens');
+      const rect = e.currentTarget.getBoundingClientRect();
+      setTextEdit({
+        point: snap,
+        x: Math.max(
+          8,
+          Math.min(rect.width - Math.min(244, rect.width - 16) - 8, e.clientX - rect.left),
+        ),
+        y: Math.max(8, Math.min(rect.height - 170, e.clientY - rect.top)),
+        value: text,
+      });
+      setDraft(null);
       return;
     }
     if (tool === 'light' && gm) {
@@ -999,6 +1149,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           : scene;
       const hit = spectator ? null : tokenAt(p, hitScene, layer, gm && !preview);
       if (hit) {
+        if (attackBusy) return;
+        if (
+          !e.shiftKey &&
+          !e.ctrlKey &&
+          !e.metaKey &&
+          token &&
+          token.layer === 'tokens' &&
+          selection.length === 1 &&
+          (gm || token.controller === user.id) &&
+          hit.layer === 'tokens' &&
+          !hit.hidden &&
+          hit.id !== token.id
+        ) {
+          setAttackTargetId((id) => (id === hit.id ? null : hit.id));
+          return;
+        }
         const ids = e.shiftKey
           ? selection.includes(hit.id)
             ? selection.filter((id) => id !== hit.id)
@@ -1007,6 +1173,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             ? selection
             : [hit.id];
         setSelection(ids);
+        if (ids[0] !== token?.id || ids.length !== 1) setAttackTargetId(null);
         setTab('token');
         if (!preview && !hit.locked && (gm || hit.controller === user.id)) {
           drag.current = {
@@ -1030,6 +1197,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         return;
       }
       setSelection([]);
+      setAttackTargetId(null);
     }
     if (tool === 'pan' || tool === 'select' || e.button === 1) {
       drag.current = {
@@ -1075,7 +1243,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         width: brushWidth,
         fill: brushFill,
         text,
-        layer: layer as VttDrawing['layer'],
+        layer: layer === 'map' || layer === 'gm' ? layer : 'tokens',
       });
     else setRuler([snap, snap]);
   }
@@ -1204,6 +1372,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           };
           carveOpening(s, opening, () => crypto.randomUUID());
           s.walls.push(opening);
+          if (!s.lighting) s.ambient = 0;
+          s.lighting = true;
         });
       setRuler([]);
     } else if (d.kind === 'shape' && draft && gm) {
@@ -1229,6 +1399,24 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setState((current) => (current ? { ...current, assets: [a, ...current.assets] } : current));
     return a as VttAsset;
   }
+  function commitText() {
+    if (!gm || !textEdit?.value.trim()) return;
+    const value = textEdit.value.trim().slice(0, 500);
+    editScene((s) =>
+      s.drawings.push({
+        id: crypto.randomUUID(),
+        kind: 'text',
+        points: [textEdit.point],
+        text: value,
+        color: brushColor,
+        width: brushWidth,
+        fill: false,
+        layer: layer === 'map' || layer === 'gm' ? layer : 'tokens',
+      }),
+    );
+    setTextEdit(null);
+    setText('');
+  }
   function newMarker() {
     if (!scene) return;
     const t = newToken(crypto.randomUUID(), scene);
@@ -1245,6 +1433,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const size: Record<string, number> = { T: 0.5, S: 1, M: 1, L: 2, H: 3, G: 4 };
     Object.assign(t, {
       name: e.name,
+      image: monsterArt(e.id, e.name),
       x: camera.x,
       y: camera.y,
       width: scene.grid.size * (size[e.size || 'M'] || 1),
@@ -1267,6 +1456,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     editScene((s) => s.tokens.push(t));
     setSelection([t.id]);
     setTab('sheet');
+    setLayer('tokens');
   }
   async function exportImage() {
     if (!scene) return;
@@ -1382,6 +1572,20 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!found) throw Error('Magia não encontrada na biblioteca da mesa.');
     await send('', '', found.id);
     setTab('chat');
+  }
+  function beginAttack(request: AttackRequest) {
+    if (attackBusy || spectator) return;
+    const actor = scene?.tokens.find((t) => t.id === request.actorId);
+    if (!actor || (!gm && actor.controller !== user.id)) {
+      setNotice('Você precisa controlar o token atacante.');
+      return;
+    }
+    if (attackTargetId === actor.id) setAttackTargetId(null);
+    setSelection([actor.id]);
+    setLayer('tokens');
+    setTool('select');
+    setSheetId(null);
+    setAttack(request);
   }
   async function send(formulaValue = '', textValue = chat, spellId?: string) {
     if (spectator) throw Error('Espectadores podem somente assistir à mesa.');
@@ -1740,7 +1944,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               refresh={refreshRoom}
               gm={gm}
               applyEffect={applyEffect}
-              onAttack={setAttack}
+              onAttack={beginAttack}
+              attack={attack}
+              target={attackTarget}
+              selectedTokenId={token?.id}
+              attackBusy={attackBusy}
+              onAttackBusy={setAttackBusy}
+              closeAttack={() => setAttack(null)}
             />
           )}
           {gm && !sheetId && (
@@ -1763,7 +1973,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               apply={applyEffect}
               clear={async () => {
                 if (token) {
+                  await save();
                   editToken({ deathAt: null, effects: [] });
+                  await save();
+                }
+              }}
+              editDeath={async (patch) => {
+                if (token) {
+                  if (!('deathAutomatic' in patch)) await save();
+                  editToken(patch);
                   await save();
                 }
               }}
@@ -1779,6 +1997,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onPointerDown={pointerDown}
             onPointerMove={pointerMove}
             onPointerUp={pointerUp}
+            data-attacker-id={token?.layer === 'tokens' ? token.id : undefined}
+            data-camera-x={camera.x}
+            data-camera-y={camera.y}
+            data-camera-zoom={camera.zoom}
+            data-target-id={attackTarget?.id}
             onPointerCancel={() => {
               setFogPoints([]);
               setFogPointer(null);
@@ -1793,12 +2016,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             }}
             onContextMenu={(e) => {
               e.preventDefault();
-              if (spectator || preview) return;
+              if (spectator || preview || attackBusy) return;
               setTool('select');
               const p = point(e),
                 hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
               if (hit) {
                 if (!selection.includes(hit.id)) setSelection([hit.id]);
+                setAttackTargetId(null);
                 setLayer(hit.layer);
                 setTab('token');
               } else if (gm) {
@@ -1825,6 +2049,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             }}
             onWheel={(e) => {
               e.preventDefault();
+              cancelAnimationFrame(focusFrame.current);
               const p = point(e),
                 zoom = Math.min(5, Math.max(0.03, camera.zoom * Math.exp(-e.deltaY * 0.0015)));
               const rect = e.currentTarget.getBoundingClientRect(),
@@ -1833,7 +2058,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               setCamera({ zoom, x: p.x - dx / zoom, y: p.y - dy / zoom });
             }}
             onDoubleClick={(e) => {
-              if (spectator) return;
+              if (spectator || attackBusy) return;
               if (['reveal', 'hide'].includes(tool) && fogPoints.length >= 3) {
                 commitFog(fogPoints);
                 return;
@@ -1853,9 +2078,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 const hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
                 if (hit) {
                   setSelection([hit.id]);
+                  setAttackTargetId(null);
                   openSheet(hit);
                 }
               }
+            }}
+          />
+          <VttTurnCarousel
+            controls={combat}
+            gm={gm}
+            open={() => {
+              setTab('combat');
+              setPanelOpen(true);
             }}
           />
           {diceOpen && !spectator && (
@@ -1912,6 +2146,23 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </div>
                 ))}
               </div>
+              <label>
+                Fórmula personalizada
+                <input
+                  aria-label="Fórmula personalizada"
+                  value={formula}
+                  maxLength={100}
+                  onChange={(e) => setFormula(e.target.value)}
+                  placeholder="4d6kh3"
+                />
+              </label>
+              <button
+                disabled={busy || !formula.trim()}
+                onClick={() => void act(() => send(formula, ''))}
+              >
+                Rolar fórmula
+              </button>
+              <VttRollHelp />
               <label>
                 Tipo de dado
                 <select
@@ -2064,6 +2315,42 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               </button>
             </div>
           </div>
+          {gm && textEdit && (
+            <div
+              className="vtt-text-editor"
+              style={{ left: textEdit.x, top: textEdit.y }}
+              role="group"
+              aria-label="Inserir texto no mapa"
+            >
+              <textarea
+                autoFocus
+                aria-label="Texto no mapa"
+                placeholder="Digite o texto…"
+                maxLength={500}
+                rows={3}
+                value={textEdit.value}
+                onChange={(e) => setTextEdit({ ...textEdit, value: e.target.value })}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') {
+                    e.stopPropagation();
+                    setTextEdit(null);
+                  }
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    commitText();
+                  }
+                }}
+              />
+              <div>
+                <button disabled={!textEdit.value.trim()} onClick={commitText}>
+                  Inserir texto
+                </button>
+                <button onClick={() => setTextEdit(null)}>Cancelar</button>
+              </div>
+              <small>Enter para inserir · Shift + Enter para nova linha</small>
+            </div>
+          )}
         </div>
         {panelOpen && (
           <aside className="vtt-panel">
@@ -2478,12 +2765,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       </div>
                       {gm && (
                         <>
-                          <h3>Boss e efeito de morte</h3>
+                          <h3>Barra de boss</h3>
                           <label>
                             Barra de boss
                             <select
                               aria-label="Estilo da barra de boss"
-                              value={token.bossStyle || ''}
+                              value={token.bossStyle ? visibleBossStyle(token.bossStyle) : ''}
                               onChange={(e) =>
                                 editToken({
                                   bossStyle: e.target.value
@@ -2500,25 +2787,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               ))}
                             </select>
                           </label>
-                          <label className="vtt-check">
-                            <input
-                              type="checkbox"
-                              checked={token.deathAutomatic}
-                              onChange={(e) => editToken({ deathAutomatic: e.target.checked })}
-                            />
-                            Efeito de morte automático ao zerar PV
-                          </label>
-                          <div className="vtt-row">
-                            <button onClick={() => editToken({ deathAt: Date.now() })}>
-                              Aplicar efeito de morte
-                            </button>
+                          {monsterArt('', token.name) && (
                             <button
-                              disabled={!token.deathAt}
-                              onClick={() => editToken({ deathAt: null })}
+                              onClick={() => editToken({ image: monsterArt('', token.name) })}
                             >
-                              Limpar efeito de morte
+                              Usar arte do monstro
                             </button>
-                          </div>
+                          )}
                           <div className="vtt-two">
                             <NumberField
                               label="Largura do token"
@@ -2766,6 +3041,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   )}
                   {library === 'images' ? (
                     <>
+                      <details className="vtt-monster-gallery">
+                        <summary>Tokens dos monstros · {catalog.monsters.length}</summary>
+                        <div className="vtt-asset-grid">
+                          {catalog.monsters
+                            .filter((e) => e.name.toLowerCase().includes(query.toLowerCase()))
+                            .map((e) => (
+                              <div className="vtt-asset" key={e.id}>
+                                <img loading="lazy" src={monsterArt(e.id, e.name)} alt={e.name} />
+                                <span>{e.name}</span>
+                                {gm && (
+                                  <button onClick={() => addMonster(e)}>Adicionar token</button>
+                                )}
+                              </div>
+                            ))}
+                        </div>
+                      </details>
                       <div className="vtt-asset-grid">
                         <div className="vtt-asset">
                           <img src="/vtt/crypt.svg" alt="Mapa da cripta" />
@@ -2861,6 +3152,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             Voltar à lista
                           </button>
                           <h3>{entry.name}</h3>
+                          {library === 'monsters' && monsterArt(entry.id, entry.name) && (
+                            <img
+                              className="vtt-monster-portrait"
+                              src={monsterArt(entry.id, entry.name)}
+                              alt={entry.name}
+                            />
+                          )}
                           <p>
                             {entry.source || 'Importação da mesa'} ·{' '}
                             {library === 'monsters'
@@ -2918,6 +3216,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               )
                               .map((e) => (
                                 <button key={e.id} onClick={() => setEntry(e)}>
+                                  {library === 'monsters' && monsterArt(e.id, e.name) && (
+                                    <img
+                                      className="vtt-monster-thumbnail"
+                                      loading="lazy"
+                                      src={monsterArt(e.id, e.name)}
+                                      alt=""
+                                    />
+                                  )}
                                   <span>{e.name}</span>
                                   <small>
                                     {library === 'monsters'
@@ -3177,7 +3483,23 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             <div className="vtt-roll">
                               <span>
                                 {m.roll.formula}
-                                <small>{m.roll.dice.join(' + ')}</small>
+                                <small>{m.roll.dice.join(' · ')}</small>
+                                {!!m.roll.highlights?.length && (
+                                  <small>
+                                    {m.roll.highlights
+                                      .map(
+                                        (h) =>
+                                          (h.kind === 'surge'
+                                            ? 'Resultado excepcional'
+                                            : h.kind === 'mishap'
+                                              ? 'Contratempo'
+                                              : 'Repetição') +
+                                          ': ' +
+                                          h.value,
+                                      )
+                                      .join(' · ')}
+                                  </small>
+                                )}
                               </span>
                               <b>{m.roll.total}</b>
                             </div>
@@ -3240,111 +3562,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 </>
               )}
               {tab === 'combat' && (
-                <>
-                  <div className="vtt-round">
-                    <span>Rodada</span>
-                    <b>{doc.round}</b>
-                  </div>
-                  {gm && (
-                    <>
-                      <button
-                        onClick={() => {
-                          if (!token) return;
-                          edit((d) => {
-                            d.initiative = d.initiative.filter((v) => v.tokenId !== token.id);
-                            d.initiative.push({ tokenId: token.id, value: 0 });
-                            d.initiative.sort((a, b) => b.value - a.value);
-                          });
-                        }}
-                      >
-                        Adicionar token selecionado
-                      </button>
-                      <div className="vtt-row">
-                        <button
-                          onClick={() =>
-                            edit((d) => {
-                              if (!d.initiative.length) return;
-                              d.turn = (d.turn + 1) % d.initiative.length;
-                              if (d.turn === 0) d.round++;
-                            })
-                          }
-                        >
-                          Próximo turno <ChevronRight size={14} />
-                        </button>
-                        <button
-                          onClick={() =>
-                            edit((d) => {
-                              d.initiative.sort((a, b) => b.value - a.value);
-                              d.turn = 0;
-                            })
-                          }
-                        >
-                          Ordenar
-                        </button>
-                      </div>
-                    </>
-                  )}
-                  {doc.initiative.map((i, index) => {
-                    const t = scene.tokens.find((t) => t.id === i.tokenId);
-                    return t ? (
-                      <div
-                        className={`vtt-initiative ${doc.turn === index ? 'active' : ''}`}
-                        key={i.tokenId}
-                      >
-                        <button
-                          onClick={() => {
-                            setSelection([t.id]);
-                            setCamera((c) => ({ ...c, x: t.x, y: t.y }));
-                          }}
-                        >
-                          {t.name}
-                          <small>
-                            {t.hp}/{t.maxHp} PV
-                          </small>
-                        </button>
-                        <input
-                          aria-label={'Iniciativa de ' + t.name}
-                          type="number"
-                          value={i.value}
-                          disabled={!gm}
-                          onChange={(e) =>
-                            edit(
-                              (d) =>
-                                (d.initiative.find((v) => v.tokenId === i.tokenId)!.value =
-                                  Number(e.target.value) || 0),
-                            )
-                          }
-                        />
-                        {gm && (
-                          <button
-                            aria-label={'Remover ' + t.name + ' da iniciativa'}
-                            onClick={() =>
-                              edit(
-                                (d) =>
-                                  (d.initiative = d.initiative.filter((v) => v.tokenId !== t.id)),
-                              )
-                            }
-                          >
-                            <X size={12} />
-                          </button>
-                        )}
-                      </div>
-                    ) : null;
-                  })}
-                  {gm && (
-                    <button
-                      onClick={() =>
-                        edit((d) => {
-                          d.initiative = [];
-                          d.turn = 0;
-                          d.round = 1;
-                        })
-                      }
-                    >
-                      Encerrar combate
-                    </button>
-                  )}
-                </>
+                <VttCombatPanel
+                  controls={combat}
+                  gm={gm}
+                  tokens={scene.tokens}
+                  selected={selection}
+                  selectAll={() => {
+                    setSelection(
+                      scene.tokens
+                        .filter((t) => t.layer === 'tokens' && !t.hidden)
+                        .map((t) => t.id),
+                    );
+                    setAttackTargetId(null);
+                    setTool('select');
+                    setLayer('tokens');
+                  }}
+                />
               )}
               {tab === 'journal' && (
                 <>
@@ -3693,10 +3926,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </ol>
                   <h3>Atalhos</h3>
                   <p>
-                    V selecionar · H mover · R régua · P lápis. Roda do mouse: zoom no cursor.
-                    Shift+clique: seleção múltipla. Alt+arraste: movimento sem grade. Delete:
-                    excluir. Ctrl+D: duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc: encerrar
-                    ferramenta.
+                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Shift+clique:
+                    seleção múltipla. Alt+arraste: movimento sem grade. Delete: excluir. Ctrl+D:
+                    duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc: encerrar ferramenta.
                   </p>
                   <h3>Portas e luz</h3>
                   <p>
@@ -3709,6 +3941,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     Use 2d6+3, 2d20kh1 (vantagem) ou 2d20kl1 (desvantagem). Rolagens são feitas no
                     servidor e ficam no histórico da mesa.
                   </p>
+                  <VttRollHelp />
                   <h3>Salvamento</h3>
                   <p>
                     Alterações do mestre são salvas automaticamente. Se outra sessão editar a mesma
@@ -3726,24 +3959,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           token={scene.tokens.find((t) => t.id === sheetId)!}
           close={() => setSheetId(null)}
           roll={send}
-          onAttack={setAttack}
+          onAttack={beginAttack}
           refresh={refreshRoom}
           shareSpell={shareSpell}
-        />
-      )}
-      {attack && !spectator && (
-        <VttAttack
-          request={attack}
-          tokens={
-            gm && preview
-              ? scene.tokens.filter(
-                  (t) => !t.hidden && t.layer !== 'gm' && !!viewer && viewerSees(viewer, t, scene),
-                )
-              : scene.tokens
-          }
-          selected={selection[0]}
-          close={() => setAttack(null)}
-          roll={send}
         />
       )}
       {gm && mapsOpen && (
@@ -3777,7 +3995,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           ref={contextRef}
           role="dialog"
           aria-label="Ações do objeto"
-          style={{ left: contextMenu.x, top: contextMenu.y }}
+          style={{
+            left: contextMenu.x,
+            top: contextMenu.y,
+            maxHeight: `calc(100dvh - ${contextMenu.y + 8}px)`,
+          }}
         >
           <header>
             <span>
@@ -3800,6 +4022,39 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               </button>
               {gm && (
                 <>
+                  <VttHpControl
+                    key={token.id}
+                    token={token}
+                    busy={busy}
+                    apply={async (value) => {
+                      editToken({ hp: hpCommand(value, token.hp, token.maxHp) });
+                      await save();
+                    }}
+                  />
+                  <button
+                    disabled={
+                      combat.busy ||
+                      combat.state?.active ||
+                      !selection.some((id) =>
+                        scene.tokens.some((t) => t.id === id && t.layer === 'tokens' && !t.hidden),
+                      )
+                    }
+                    onClick={() => {
+                      void combat.send({
+                        kind: 'add',
+                        tokenIds: selection.filter((id) =>
+                          scene.tokens.some(
+                            (t) => t.id === id && t.layer === 'tokens' && !t.hidden,
+                          ),
+                        ),
+                      });
+                      setTab('combat');
+                      setPanelOpen(true);
+                      setContextMenu(null);
+                    }}
+                  >
+                    Adicionar selecionados à ordem
+                  </button>
                   <label>
                     Camada do objeto
                     <select

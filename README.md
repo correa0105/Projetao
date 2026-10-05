@@ -1,5 +1,16 @@
 # Alvorada Cinzenta
 
+VTT: **Configurações e ajuda → Ajuda → Rolagens personalizadas** explica fórmulas,
+modificadores e ordem de resolução; o lançador e o chat aceitam a mesma sintaxe.
+**Chat → Combate** controla o carrossel de iniciativa. Clique no segundo token
+para marcar o alvo vermelho mantendo o atacante amarelo; vantagem, dano e
+descarte ficam na barra rápida. Mestre edita PV pelo botão direito (`20`, `+5`,
+`-5`) ou registra cura na ficha. Sinalizar ponto puxa as câmeras para a seta.
+Efeitos sobrepõem o retrato, incluindo controles de morte no menu Efeitos.
+Cinco materiais de boss e 330 artes locais de monstros. Migrations 064–065.
+[Comportamento](docs/VTT-PERFIS-HALL.md), [dados](docs/VTT-ROLAGENS.md) e
+[texturas e prompts](docs/VTT-BOSS-ART.md).
+
 Para testar a autorização de criação no **Início → Diário**, use
 [scripts/browser/testar-seguranca-diario.js](scripts/browser/testar-seguranca-diario.js).
 Em um ambiente de teste, entre com uma conta comum e cole o arquivo inteiro em

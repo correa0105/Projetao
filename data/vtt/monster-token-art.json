@@ -1,0 +1,3305 @@
+{
+  "release": "v2.36.1",
+  "images": [
+    {
+      "id": "monster-aboleth",
+      "name": "Aboleth",
+      "path": "/vtt/monsters/monster-aboleth.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Aboleth.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a6f095a893875c205e8a3ad44f801dd593fd770c516480824017d75701597b99"
+    },
+    {
+      "id": "monster-adult-black-dragon",
+      "name": "Adult Black Dragon",
+      "path": "/vtt/monsters/monster-adult-black-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Black%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ca44906df81426c597983ba7ea888d118458ca79c5b34d4414f1ff7a82eba0af"
+    },
+    {
+      "id": "monster-adult-blue-dragon",
+      "name": "Adult Blue Dragon",
+      "path": "/vtt/monsters/monster-adult-blue-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Blue%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0f64c5dad00573d5d053a7505be8bf8281f66f66d9e6a022d5b83e1ee728d262"
+    },
+    {
+      "id": "monster-adult-brass-dragon",
+      "name": "Adult Brass Dragon",
+      "path": "/vtt/monsters/monster-adult-brass-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Brass%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a1df5d096d909df5c91ebb2cae8d7bd3d540de8f4569484aaaa64c9db4500fd3"
+    },
+    {
+      "id": "monster-adult-bronze-dragon",
+      "name": "Adult Bronze Dragon",
+      "path": "/vtt/monsters/monster-adult-bronze-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Bronze%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "22c6b89d3ae1838a190c80b383f794f98d22138814a1857b8ebc0d402d866781"
+    },
+    {
+      "id": "monster-adult-copper-dragon",
+      "name": "Adult Copper Dragon",
+      "path": "/vtt/monsters/monster-adult-copper-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Copper%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5f7cc45d91fafa137a88c9eb5e001e0d4892e20e64a472de4ced7977bc9d8904"
+    },
+    {
+      "id": "monster-adult-gold-dragon",
+      "name": "Adult Gold Dragon",
+      "path": "/vtt/monsters/monster-adult-gold-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Gold%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a34f7d53a4bc23a4fb494e8f3ff6505315d14541920f96ea91c8165519534976"
+    },
+    {
+      "id": "monster-adult-green-dragon",
+      "name": "Adult Green Dragon",
+      "path": "/vtt/monsters/monster-adult-green-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Green%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "96744faa69d761eeddc218f4953a1e7f22a768e1950b3a09f5aaf22f008c6656"
+    },
+    {
+      "id": "monster-adult-red-dragon",
+      "name": "Adult Red Dragon",
+      "path": "/vtt/monsters/monster-adult-red-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Red%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f5951be0c20dbc1bbacab96f0b1fc79cd9bf98f220e5bd21a1f0937936c32475"
+    },
+    {
+      "id": "monster-adult-silver-dragon",
+      "name": "Adult Silver Dragon",
+      "path": "/vtt/monsters/monster-adult-silver-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20Silver%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "afaf430639246b3d1730c5dad3574ce24718670604d4e0d944d538713fbd2ccc"
+    },
+    {
+      "id": "monster-adult-white-dragon",
+      "name": "Adult White Dragon",
+      "path": "/vtt/monsters/monster-adult-white-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Adult%20White%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ee029fbfb0ad25d0cfb8a2e8411cf3cd86e9e99bd9350e69e5a36551d7f78d01"
+    },
+    {
+      "id": "monster-air-elemental",
+      "name": "Air Elemental",
+      "path": "/vtt/monsters/monster-air-elemental.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Air%20Elemental.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "4decf238b672cf77df1da5e32b217552ef148328f9b217c515cd4f2f99761a4e"
+    },
+    {
+      "id": "monster-allosaurus",
+      "name": "Allosaurus",
+      "path": "/vtt/monsters/monster-allosaurus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Allosaurus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8f3f3f5aaba93df2419f0006fe2a2397a6156cb4c0e83a50ef62429c638912d9"
+    },
+    {
+      "id": "monster-ancient-black-dragon",
+      "name": "Ancient Black Dragon",
+      "path": "/vtt/monsters/monster-ancient-black-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Black%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "57be4f6ed885c922d3758a67182036420d3817c634da229fb58eb7028bca14c6"
+    },
+    {
+      "id": "monster-ancient-blue-dragon",
+      "name": "Ancient Blue Dragon",
+      "path": "/vtt/monsters/monster-ancient-blue-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Blue%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "633cfb3f234b9c0c2af093674b065dc944f4c5e689f34fc72f913ba6b64238d3"
+    },
+    {
+      "id": "monster-ancient-brass-dragon",
+      "name": "Ancient Brass Dragon",
+      "path": "/vtt/monsters/monster-ancient-brass-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Brass%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "53de0b93a6217426d67db70f93014b26bab7a5afc75712bcc7b5b7a37a52a837"
+    },
+    {
+      "id": "monster-ancient-bronze-dragon",
+      "name": "Ancient Bronze Dragon",
+      "path": "/vtt/monsters/monster-ancient-bronze-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Bronze%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "20f8ca719df9f34889a83568c2f658629ef7930909ceeb09470f55e521044691"
+    },
+    {
+      "id": "monster-ancient-copper-dragon",
+      "name": "Ancient Copper Dragon",
+      "path": "/vtt/monsters/monster-ancient-copper-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Copper%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "78ea07e379316fe85ec116b4df85293be12e8c7ab557d5526a2a03a2c8083b7c"
+    },
+    {
+      "id": "monster-ancient-gold-dragon",
+      "name": "Ancient Gold Dragon",
+      "path": "/vtt/monsters/monster-ancient-gold-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Gold%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8f0362b31dbb29a501876660d9d0cc9299ed0167bbed432abfbb4797f1180782"
+    },
+    {
+      "id": "monster-ancient-green-dragon",
+      "name": "Ancient Green Dragon",
+      "path": "/vtt/monsters/monster-ancient-green-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Green%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e7b73800583b04224d1311229fa26cb77b03d363c818ae74f5159627923376ea"
+    },
+    {
+      "id": "monster-ancient-red-dragon",
+      "name": "Ancient Red Dragon",
+      "path": "/vtt/monsters/monster-ancient-red-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Red%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "4830823d628c0d4d10ade019470cf3f1e13e16a4d4b32846d1805ba6353f3851"
+    },
+    {
+      "id": "monster-ancient-silver-dragon",
+      "name": "Ancient Silver Dragon",
+      "path": "/vtt/monsters/monster-ancient-silver-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20Silver%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "b3b0e5fec02e46bd2bff798b32cc82064020e192b17147af780fc78f74dc1988"
+    },
+    {
+      "id": "monster-ancient-white-dragon",
+      "name": "Ancient White Dragon",
+      "path": "/vtt/monsters/monster-ancient-white-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ancient%20White%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "2dca8d21e51f489cb6a952d150417406e1859a0c29e62eb6155c6c6883bb7e9f"
+    },
+    {
+      "id": "monster-animated-armor",
+      "name": "Animated Armor",
+      "path": "/vtt/monsters/monster-animated-armor.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Animated%20Armor.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e066ba481005aa302eb8dd2903c04c58710fb90706d8f10c60b0d37d19fd08cb"
+    },
+    {
+      "id": "monster-animated-flying-sword",
+      "name": "Animated Flying Sword",
+      "path": "/vtt/monsters/monster-animated-flying-sword.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Animated%20Flying%20Sword.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f57614b9a516c761d8146882c3d947b07b5150dde2146dabf0fa55594d414e15"
+    },
+    {
+      "id": "monster-animated-rug-of-smothering",
+      "name": "Animated Rug of Smothering",
+      "path": "/vtt/monsters/monster-animated-rug-of-smothering.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Animated%20Rug%20of%20Smothering.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "23a80834a601781a12454a04ad446dcf71a78ddd3d704d654610f399c0eba1f9"
+    },
+    {
+      "id": "monster-ankheg",
+      "name": "Ankheg",
+      "path": "/vtt/monsters/monster-ankheg.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ankheg.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "be6886c305b5a8de49a1683cb6ccdd222355cb2d3b72c3866cf681090e363742"
+    },
+    {
+      "id": "monster-ankylosaurus",
+      "name": "Ankylosaurus",
+      "path": "/vtt/monsters/monster-ankylosaurus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ankylosaurus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c61fc4fca6618b8e3ae0268333886e5a0feb8e095247a252103ba05da52571cd"
+    },
+    {
+      "id": "monster-ape",
+      "name": "Ape",
+      "path": "/vtt/monsters/monster-ape.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ape.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7ec79298db6dd1cc3857a25942b5c8325fdb1eb601de3b45891d4d6c3d8172dc"
+    },
+    {
+      "id": "monster-archelon",
+      "name": "Archelon",
+      "path": "/vtt/monsters/monster-archelon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Archelon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1ac97fadc4ddeb99d549875f1e51cd93a5aa7c58c1de9ec82181d6f7fb437b8e"
+    },
+    {
+      "id": "monster-archmage",
+      "name": "Archmage",
+      "path": "/vtt/monsters/monster-archmage.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Archmage.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "627ac735b4bd601e10e245e6fad20246d5551c58f3846743b32abf106076213c"
+    },
+    {
+      "id": "monster-assassin",
+      "name": "Assassin",
+      "path": "/vtt/monsters/monster-assassin.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Assassin.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "865ddb64a6dee42a57eccb8570b8ed373a8913756936174db735c90b48cd2baf"
+    },
+    {
+      "id": "monster-awakened-shrub",
+      "name": "Awakened Shrub",
+      "path": "/vtt/monsters/monster-awakened-shrub.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Awakened%20Shrub.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "91f10d007bea02585a7b8c6697034cda5c5a75d76996fdef46b9640549e7a1c5"
+    },
+    {
+      "id": "monster-awakened-tree",
+      "name": "Awakened Tree",
+      "path": "/vtt/monsters/monster-awakened-tree.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Awakened%20Tree.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ba90763e6d1bf83f7f82f4dc6b893f23c915dd60eed6e4c16fb48728db445712"
+    },
+    {
+      "id": "monster-axe-beak",
+      "name": "Axe Beak",
+      "path": "/vtt/monsters/monster-axe-beak.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Axe%20Beak.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d73432847d68e61d1fb080e1fcad23caf9bb4169719a0905f79e94a9e82c4c21"
+    },
+    {
+      "id": "monster-azer-sentinel",
+      "name": "Azer Sentinel",
+      "path": "/vtt/monsters/monster-azer-sentinel.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Azer%20Sentinel.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "32c502e2b2d942b6fe335135e4a6b7c065c080b5f7cc8202fd360549ac695f2b"
+    },
+    {
+      "id": "monster-baboon",
+      "name": "Baboon",
+      "path": "/vtt/monsters/monster-baboon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Baboon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8b26a9573822d8dc6ec7509f10ce16231d0925fa47f535019d498d9a43cb854f"
+    },
+    {
+      "id": "monster-badger",
+      "name": "Badger",
+      "path": "/vtt/monsters/monster-badger.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Badger.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1511c78187a93d6bd7cd8c13312dbecc1568f82086b5669d5c46b016cf24ddf5"
+    },
+    {
+      "id": "monster-balor",
+      "name": "Balor",
+      "path": "/vtt/monsters/monster-balor.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Balor.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "944170903fab17de78263cfa089690c5dbd6015bd84b94fe569e2e1e3fde2dd4"
+    },
+    {
+      "id": "monster-bandit",
+      "name": "Bandit",
+      "path": "/vtt/monsters/monster-bandit.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bandit.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "bd1c5c06895baddb1b23b5199e4c5543371d7d5559850efa3876a9164a962e8c"
+    },
+    {
+      "id": "monster-bandit-captain",
+      "name": "Bandit Captain",
+      "path": "/vtt/monsters/monster-bandit-captain.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bandit%20Captain.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ff60849c4f19fc6e485cf9c07a28c5dee768ad52de8fad7bb00ab6a84ce1bdcb"
+    },
+    {
+      "id": "monster-barbed-devil",
+      "name": "Barbed Devil",
+      "path": "/vtt/monsters/monster-barbed-devil.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Barbed%20Devil.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "147a31aa83a4f6d5548413b4276e91a4637672577f4e1274dcdb1859f001b08f"
+    },
+    {
+      "id": "monster-basilisk",
+      "name": "Basilisk",
+      "path": "/vtt/monsters/monster-basilisk.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Basilisk.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c5763f0a539d5c1565fe5b79d15002a661f3cc633be4d63e111b2f27a883cd31"
+    },
+    {
+      "id": "monster-bat",
+      "name": "Bat",
+      "path": "/vtt/monsters/monster-bat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ba089af386197dee1adb62a186c10b75b37adf8ccadb5dd9a0fb3a8c469d3bcd"
+    },
+    {
+      "id": "monster-bearded-devil",
+      "name": "Bearded Devil",
+      "path": "/vtt/monsters/monster-bearded-devil.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bearded%20Devil.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6079508b5640c644ae14d6f6bdf0b31b6213529c3f0d9e303deade9c3467884a"
+    },
+    {
+      "id": "monster-behir",
+      "name": "Behir",
+      "path": "/vtt/monsters/monster-behir.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Behir.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "14a143175ddfca7b81919196831c73938712f454dcba8792aab7f71948b550c9"
+    },
+    {
+      "id": "monster-berserker",
+      "name": "Berserker",
+      "path": "/vtt/monsters/monster-berserker.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Berserker.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d1f6644ef2ad5118c89000cfa45d4f9e465486167933db0662d770051ffc7c11"
+    },
+    {
+      "id": "monster-black-bear",
+      "name": "Black Bear",
+      "path": "/vtt/monsters/monster-black-bear.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Black%20Bear.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "46e1ea8b9f688be2706c74ce6abbfb6b6cee37441356c296590885dca861567d"
+    },
+    {
+      "id": "monster-black-dragon-wyrmling",
+      "name": "Black Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-black-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Black%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "669e4dd2c75426f54ba6de2e2cdfe0b5ae30a300adbf1ea6e0e4d2134d2914e2"
+    },
+    {
+      "id": "monster-black-pudding",
+      "name": "Black Pudding",
+      "path": "/vtt/monsters/monster-black-pudding.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Black%20Pudding.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1a57c16735f07077d17ce133c5b563aea6d10c95d11607744b1669befdf3dd38"
+    },
+    {
+      "id": "monster-blink-dog",
+      "name": "Blink Dog",
+      "path": "/vtt/monsters/monster-blink-dog.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Blink%20Dog.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "834bbe629b7602ce708a28b5131760ecbcd85842d72bf5ca9a50634ab259777d"
+    },
+    {
+      "id": "monster-blood-hawk",
+      "name": "Blood Hawk",
+      "path": "/vtt/monsters/monster-blood-hawk.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Blood%20Hawk.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a3836e6ddafea44d65e3aa6c958b0b85bce9b1989ada33582078443c63a0bd46"
+    },
+    {
+      "id": "monster-blue-dragon-wyrmling",
+      "name": "Blue Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-blue-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Blue%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "09d5a9a3e42ca2b4045a0129b34a6d30eaf29428e71b9aa655486b596413ecc9"
+    },
+    {
+      "id": "monster-boar",
+      "name": "Boar",
+      "path": "/vtt/monsters/monster-boar.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Boar.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0eba8df9bf170aaeb8159a5f6f317c0677eb11262367d8133e60580f6c8c5a27"
+    },
+    {
+      "id": "monster-bone-devil",
+      "name": "Bone Devil",
+      "path": "/vtt/monsters/monster-bone-devil.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bone%20Devil.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5ebad18f4f91f3cf6bea6fd75c5bc2ddd11b8a81bb95832fbd0808bc4f7ba535"
+    },
+    {
+      "id": "monster-brass-dragon-wyrmling",
+      "name": "Brass Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-brass-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Brass%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0aea0d0e9b378d17f14c03e5b245d6d8def302b2bb1c3a67ed5aa6358284482a"
+    },
+    {
+      "id": "monster-bronze-dragon-wyrmling",
+      "name": "Bronze Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-bronze-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bronze%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "38567df1b64465a1e126c2e63647cfed9a7b6734c6c1a57a04461409eca00763"
+    },
+    {
+      "id": "monster-brown-bear",
+      "name": "Brown Bear",
+      "path": "/vtt/monsters/monster-brown-bear.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Brown%20Bear.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fce526755ee02cf2ef2d5eaabd68788d357798b108acba4447e2191de53431e5"
+    },
+    {
+      "id": "monster-bugbear-stalker",
+      "name": "Bugbear Stalker",
+      "path": "/vtt/monsters/monster-bugbear-stalker.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bugbear%20Stalker.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ae48ad1767d023f9f5ec02fffa5b15ea96e62c1223be9e952d3b372b8d2eca48"
+    },
+    {
+      "id": "monster-bugbear-warrior",
+      "name": "Bugbear Warrior",
+      "path": "/vtt/monsters/monster-bugbear-warrior.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bugbear%20Warrior.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "72b83a17594892fb65fb400f19c6301bea3ee4475c15296d160b0388e1cf9186"
+    },
+    {
+      "id": "monster-bulette",
+      "name": "Bulette",
+      "path": "/vtt/monsters/monster-bulette.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Bulette.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5f57ec3b1eb9335b99eb640bfef285f3489343367898cae981e1107eb1b075b8"
+    },
+    {
+      "id": "monster-camel",
+      "name": "Camel",
+      "path": "/vtt/monsters/monster-camel.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Camel.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e55fe0aaa0e00a1a6cc6b7a89d96e01941f7f4cc3930e124ec31836daf36cace"
+    },
+    {
+      "id": "monster-cat",
+      "name": "Cat",
+      "path": "/vtt/monsters/monster-cat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Cat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5321e8007e9f849e8d5b4baaa2e71e6ab08012d2edcc35c8196c17643d245926"
+    },
+    {
+      "id": "monster-centaur-trooper",
+      "name": "Centaur Trooper",
+      "path": "/vtt/monsters/monster-centaur-trooper.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Centaur%20Trooper.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "27d04757043200ba0be6832e0c16a05cfe8737f4d892084432d26009490da166"
+    },
+    {
+      "id": "monster-chain-devil",
+      "name": "Chain Devil",
+      "path": "/vtt/monsters/monster-chain-devil.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Chain%20Devil.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c3426a0bc05036ccc27830001778e592cec79d430c1fcb763c9efe1918fff4c9"
+    },
+    {
+      "id": "monster-chimera",
+      "name": "Chimera",
+      "path": "/vtt/monsters/monster-chimera.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Chimera.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "68074487ef7b302f9ca21a658087e97004ef37d496f1808225e9873b9650230f"
+    },
+    {
+      "id": "monster-chuul",
+      "name": "Chuul",
+      "path": "/vtt/monsters/monster-chuul.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Chuul.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1d6101d7884cb2ceca7de5ec193ee3fafe0218b447fdc1b21d6c0d716f4eeec8"
+    },
+    {
+      "id": "monster-clay-golem",
+      "name": "Clay Golem",
+      "path": "/vtt/monsters/monster-clay-golem.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Clay%20Golem.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1f6a9aa2fc2fbce32b44244ca0b013a9b4f1207fac38226fff9546e4a4a4fe3b"
+    },
+    {
+      "id": "monster-cloaker",
+      "name": "Cloaker",
+      "path": "/vtt/monsters/monster-cloaker.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Cloaker.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c8273fc686a7069d4a4fccfb01cf95e1b5519e8d43fbb09a4593c3476d619941"
+    },
+    {
+      "id": "monster-cloud-giant",
+      "name": "Cloud Giant",
+      "path": "/vtt/monsters/monster-cloud-giant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Cloud%20Giant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "648ac52bfc750cf350a95143452847f011be69d592a84108f81e881bfcb32ef4"
+    },
+    {
+      "id": "monster-cockatrice",
+      "name": "Cockatrice",
+      "path": "/vtt/monsters/monster-cockatrice.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Cockatrice.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "3129c3fca30f540e7c642ed9a3581441c748c9f10681db156793f8b3e4cf90e0"
+    },
+    {
+      "id": "monster-commoner",
+      "name": "Commoner",
+      "path": "/vtt/monsters/monster-commoner.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Commoner.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "339483c20d121cc8d787b0c2cc5aace1d375a7e19ad0889caee111cf003a7a97"
+    },
+    {
+      "id": "monster-constrictor-snake",
+      "name": "Constrictor Snake",
+      "path": "/vtt/monsters/monster-constrictor-snake.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Constrictor%20Snake.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "23a597e14a519b4792c62c02db636e74331ee3fdd2b3d60d73a90fca6f95cc00"
+    },
+    {
+      "id": "monster-copper-dragon-wyrmling",
+      "name": "Copper Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-copper-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Copper%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5ce0dda8b32112dd559f903bd64b26bb58f4ad14ffa3a1d59fb0ade525ecc786"
+    },
+    {
+      "id": "monster-couatl",
+      "name": "Couatl",
+      "path": "/vtt/monsters/monster-couatl.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Couatl.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "abb2c91e9ea1aa616bfa4c73e7fd9e552ec2894cecaf9cf26b1d405fd7d68097"
+    },
+    {
+      "id": "monster-crab",
+      "name": "Crab",
+      "path": "/vtt/monsters/monster-crab.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Crab.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "598365e140a191cd30148385d2b69abdfb2025aacd0f63caa3c839dcf4b04767"
+    },
+    {
+      "id": "monster-crocodile",
+      "name": "Crocodile",
+      "path": "/vtt/monsters/monster-crocodile.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Crocodile.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e84549428567687f242278e1cd3978bd50a12066a07ca6b4af00b33bf505d94a"
+    },
+    {
+      "id": "monster-cultist",
+      "name": "Cultist",
+      "path": "/vtt/monsters/monster-cultist.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Cultist.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fea96e04ed8e8a0617240f6d701f5c5c7af23f4f08b5bf86075443d41e4c1739"
+    },
+    {
+      "id": "monster-cultist-fanatic",
+      "name": "Cultist Fanatic",
+      "path": "/vtt/monsters/monster-cultist-fanatic.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Cultist%20Fanatic.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "cd0fb906eef03ba39a9e580368494f21bf3215eebb081677843e3f3e30b07a2b"
+    },
+    {
+      "id": "monster-darkmantle",
+      "name": "Darkmantle",
+      "path": "/vtt/monsters/monster-darkmantle.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Darkmantle.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "2154ce0625c34404f2a6432af8cf991cfca639b1eadfdceb836c667d21c70912"
+    },
+    {
+      "id": "monster-death-dog",
+      "name": "Death Dog",
+      "path": "/vtt/monsters/monster-death-dog.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Death%20Dog.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "79be1a158e81481980505a4a8fd533241cb684bc91cb49ea87b6650ab449b2af"
+    },
+    {
+      "id": "monster-deer",
+      "name": "Deer",
+      "path": "/vtt/monsters/monster-deer.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Deer.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6bf152904b7547bd51227cc6225d98fe6beacc16be2d9074b55a43ad08391ee1"
+    },
+    {
+      "id": "monster-deva",
+      "name": "Deva",
+      "path": "/vtt/monsters/monster-deva.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Deva.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8cbc1af59a25ddd761c661730355062f4e3579c60fbe740932abba2eef821ce3"
+    },
+    {
+      "id": "monster-dire-wolf",
+      "name": "Dire Wolf",
+      "path": "/vtt/monsters/monster-dire-wolf.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Dire%20Wolf.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0498c0915eaed08517d5060cad1ce52a91aee4be55d7d822024a81abe3e31054"
+    },
+    {
+      "id": "monster-djinni",
+      "name": "Djinni",
+      "path": "/vtt/monsters/monster-djinni.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Djinni.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "840af9672ff5607c93c27dd70124cb8e2aed0fd5ade14d857d140ea3cd22a6df"
+    },
+    {
+      "id": "monster-doppelganger",
+      "name": "Doppelganger",
+      "path": "/vtt/monsters/monster-doppelganger.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Doppelganger.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "af66560b2bbdbc6fa43e52085aa3f790855fc12c701860fa7b3f37125995dac3"
+    },
+    {
+      "id": "monster-draft-horse",
+      "name": "Draft Horse",
+      "path": "/vtt/monsters/monster-draft-horse.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Draft%20Horse.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "cc852eb618acb1da45666668d0b5ffc55be0a0abde6ec6692c2e2bd6985a49c6"
+    },
+    {
+      "id": "monster-dragon-turtle",
+      "name": "Dragon Turtle",
+      "path": "/vtt/monsters/monster-dragon-turtle.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Dragon%20Turtle.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "28a6c5db67099a72ffb85b5b5fcaf305a8e7ccc773b6e39ac957e161c6ae2609"
+    },
+    {
+      "id": "monster-dretch",
+      "name": "Dretch",
+      "path": "/vtt/monsters/monster-dretch.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Dretch.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5ae21e328965e27b65b30176a774c217c33af7d8296e533fb781d7eea6137730"
+    },
+    {
+      "id": "monster-drider",
+      "name": "Drider",
+      "path": "/vtt/monsters/monster-drider.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Drider.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "bf187e91e14d23ed7f0dd651c08ce60c357b59b9c95871fc4940dedb4b607418"
+    },
+    {
+      "id": "monster-druid",
+      "name": "Druid",
+      "path": "/vtt/monsters/monster-druid.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Druid.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c381b0b13a66a2a2afb3794cb0735aeb5afc8e56d2e6370373d32872e639f275"
+    },
+    {
+      "id": "monster-dryad",
+      "name": "Dryad",
+      "path": "/vtt/monsters/monster-dryad.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Dryad.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "84a9f448aa9d1d0921f9b870fa24b43c0e84b99118b08052ba2b403aeffe002a"
+    },
+    {
+      "id": "monster-dust-mephit",
+      "name": "Dust Mephit",
+      "path": "/vtt/monsters/monster-dust-mephit.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Dust%20Mephit.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a245ddcf7bb070f0f9c74c4994351e28e01c32224985f706d9fdf9cf51894d32"
+    },
+    {
+      "id": "monster-eagle",
+      "name": "Eagle",
+      "path": "/vtt/monsters/monster-eagle.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Eagle.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "eae31ef601ec3af32523926f5dabe3d31cb41ea90ee0fededd97d292f6f3797a"
+    },
+    {
+      "id": "monster-earth-elemental",
+      "name": "Earth Elemental",
+      "path": "/vtt/monsters/monster-earth-elemental.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Earth%20Elemental.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "decf55f012038ddef3da6d74129ee2cd976ceb2946714ed09da6224fb8d17026"
+    },
+    {
+      "id": "monster-efreeti",
+      "name": "Efreeti",
+      "path": "/vtt/monsters/monster-efreeti.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Efreeti.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "911bebe4a54d49897eed2664f389b1884324fceea5796109c755b97e5d6f0483"
+    },
+    {
+      "id": "monster-elephant",
+      "name": "Elephant",
+      "path": "/vtt/monsters/monster-elephant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Elephant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6a81c5d108473d00f82ebb654f7539166b7e919efc7ed5b91947e0ec7fb39f77"
+    },
+    {
+      "id": "monster-elk",
+      "name": "Elk",
+      "path": "/vtt/monsters/monster-elk.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Elk.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5d22346b28b3f8d51a35e148fdb11819f6e7922cdab4334ddaf6c807654d25fc"
+    },
+    {
+      "id": "monster-erinyes",
+      "name": "Erinyes",
+      "path": "/vtt/monsters/monster-erinyes.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Erinyes.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ab84722f586e1f0f889d059c4fa5f93c8108d81cd1fe0030afa995237b09e277"
+    },
+    {
+      "id": "monster-ettercap",
+      "name": "Ettercap",
+      "path": "/vtt/monsters/monster-ettercap.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ettercap.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "862b8bca6ae9b222df39bd1ece9ba066663ad4d6ea0896361fc94a290217ca10"
+    },
+    {
+      "id": "monster-ettin",
+      "name": "Ettin",
+      "path": "/vtt/monsters/monster-ettin.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ettin.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a32b2b0809c06853287bfd48cfd79030810687be3719286ea625fa73dd7a0817"
+    },
+    {
+      "id": "monster-fire-elemental",
+      "name": "Fire Elemental",
+      "path": "/vtt/monsters/monster-fire-elemental.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Fire%20Elemental.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "99353418503b6e14eef4b27ac4a90352546280fb2ddd9f6422a334ddfd2ffb1c"
+    },
+    {
+      "id": "monster-fire-giant",
+      "name": "Fire Giant",
+      "path": "/vtt/monsters/monster-fire-giant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Fire%20Giant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "63413e9215123cd4ceb7a7a1f60f97528bc4ddc3905c3a07bee7b948ba590fbb"
+    },
+    {
+      "id": "monster-flesh-golem",
+      "name": "Flesh Golem",
+      "path": "/vtt/monsters/monster-flesh-golem.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Flesh%20Golem.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ff3d71f14fecae2f3af65edae4bfc885f5346d860d14ea94252c519a12733f25"
+    },
+    {
+      "id": "monster-flying-snake",
+      "name": "Flying Snake",
+      "path": "/vtt/monsters/monster-flying-snake.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Flying%20Snake.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "2fc7b6da3cbaef27cab328a7e2a70dc0eac4184f6365438bdbc0bfe81770717a"
+    },
+    {
+      "id": "monster-frog",
+      "name": "Frog",
+      "path": "/vtt/monsters/monster-frog.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Frog.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "569c92bb54107b3a2bdaf58409b95bfaf8032d74c925bdb2a94e1e72ae34ec86"
+    },
+    {
+      "id": "monster-frost-giant",
+      "name": "Frost Giant",
+      "path": "/vtt/monsters/monster-frost-giant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Frost%20Giant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "44853914c3b1233076120e499aa894921e2d3b1c126258e934c42fe68c46c5c4"
+    },
+    {
+      "id": "monster-gargoyle",
+      "name": "Gargoyle",
+      "path": "/vtt/monsters/monster-gargoyle.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gargoyle.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ddbe89535115b5bd7fdd92e85a7f7576a7317b0055621051d86a71af4f7a39bb"
+    },
+    {
+      "id": "monster-gelatinous-cube",
+      "name": "Gelatinous Cube",
+      "path": "/vtt/monsters/monster-gelatinous-cube.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gelatinous%20Cube.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "42ab5676109deaee6932b5516672962b366182f71e32a5ca347bd52f9351ede7"
+    },
+    {
+      "id": "monster-ghast",
+      "name": "Ghast",
+      "path": "/vtt/monsters/monster-ghast.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ghast.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "772c66b0dfb1c6951907aaefde17fff2733a40b1238cd024017be3d97073c823"
+    },
+    {
+      "id": "monster-ghost",
+      "name": "Ghost",
+      "path": "/vtt/monsters/monster-ghost.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ghost.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f04f8d9cf5ad2515e05f2774782ca8fc2c3be7d17c028591f9d31d744949becd"
+    },
+    {
+      "id": "monster-ghoul",
+      "name": "Ghoul",
+      "path": "/vtt/monsters/monster-ghoul.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ghoul.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8d14abda921cefa8cb4130793de18465fac02376870b2b9d76d7efebe8dcc02a"
+    },
+    {
+      "id": "monster-giant-ape",
+      "name": "Giant Ape",
+      "path": "/vtt/monsters/monster-giant-ape.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Ape.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "42a22c0693ba38d9b3088a94a16fca47b4cc975262187c819755556bac846e2d"
+    },
+    {
+      "id": "monster-giant-badger",
+      "name": "Giant Badger",
+      "path": "/vtt/monsters/monster-giant-badger.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Badger.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "93beba6e65ebb4cda467c3efe58ccda95e69082431098e3b9afd4814662ceb29"
+    },
+    {
+      "id": "monster-giant-bat",
+      "name": "Giant Bat",
+      "path": "/vtt/monsters/monster-giant-bat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Bat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ecea7c25bcbe45c541cbfb38645e7d7d1099a609c7745f10552f5c910118905d"
+    },
+    {
+      "id": "monster-giant-boar",
+      "name": "Giant Boar",
+      "path": "/vtt/monsters/monster-giant-boar.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Boar.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8b99091782055b9d66f59c3e2074e8d28f86f94b366bd4f0cb7b76cfa464fef4"
+    },
+    {
+      "id": "monster-giant-centipede",
+      "name": "Giant Centipede",
+      "path": "/vtt/monsters/monster-giant-centipede.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Centipede.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c20fe6d51e3bd170c64b93e2212b62a4d527522a84583dc05ff8665b9a4e95bb"
+    },
+    {
+      "id": "monster-giant-constrictor-snake",
+      "name": "Giant Constrictor Snake",
+      "path": "/vtt/monsters/monster-giant-constrictor-snake.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Constrictor%20Snake.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "bf057088ef49f6d4d3350494afb9dcb155f43b836ecdd64b54b79e04bb4b05ff"
+    },
+    {
+      "id": "monster-giant-crab",
+      "name": "Giant Crab",
+      "path": "/vtt/monsters/monster-giant-crab.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Crab.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "02a1511d79ef92ab0d02541699e4a63f5aa397506069d0d5be105b45161d8920"
+    },
+    {
+      "id": "monster-giant-crocodile",
+      "name": "Giant Crocodile",
+      "path": "/vtt/monsters/monster-giant-crocodile.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Crocodile.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f48f5b3239c8a47f42dc171b5bdf822813cccfe5eb3c986be2293cf65aa20cc5"
+    },
+    {
+      "id": "monster-giant-eagle",
+      "name": "Giant Eagle",
+      "path": "/vtt/monsters/monster-giant-eagle.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Eagle.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "408251f31bbbd669cced900545f8a106dd74d808ebef81a042db4512e9da9246"
+    },
+    {
+      "id": "monster-giant-elk",
+      "name": "Giant Elk",
+      "path": "/vtt/monsters/monster-giant-elk.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Elk.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "04c02dc253c7dc2ec78acb67f05bb41f0b89e58a67bd791e769bd4a348583e55"
+    },
+    {
+      "id": "monster-giant-fire-beetle",
+      "name": "Giant Fire Beetle",
+      "path": "/vtt/monsters/monster-giant-fire-beetle.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Fire%20Beetle.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1de2cae715480e73c6220356afb059bf3e3c906ac8e8441d7eafc3947abbb0dd"
+    },
+    {
+      "id": "monster-giant-frog",
+      "name": "Giant Frog",
+      "path": "/vtt/monsters/monster-giant-frog.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Frog.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "60f4f21a01a6a8e00cddcb8b346f05734ddd2c3ccb6984e87933bedd2bd8292e"
+    },
+    {
+      "id": "monster-giant-goat",
+      "name": "Giant Goat",
+      "path": "/vtt/monsters/monster-giant-goat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Goat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f1cbce28f8b486679153f59e9deec6bafe4c09694e9ee9af8e7baf20fff5ca8a"
+    },
+    {
+      "id": "monster-giant-hyena",
+      "name": "Giant Hyena",
+      "path": "/vtt/monsters/monster-giant-hyena.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Hyena.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "cee5b9da5085b9760204449af88abd6aefe33de55a3f134389a96e93821fc2b4"
+    },
+    {
+      "id": "monster-giant-lizard",
+      "name": "Giant Lizard",
+      "path": "/vtt/monsters/monster-giant-lizard.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Lizard.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7e7b733e6771a81ac3dc6f1d75e294c2df1673171300cbaa472d7bbfceb37a4f"
+    },
+    {
+      "id": "monster-giant-octopus",
+      "name": "Giant Octopus",
+      "path": "/vtt/monsters/monster-giant-octopus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Octopus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "43d4db579335fae790ee64ee67d857ee4f7ea82a1bea558b0b3e555eac51b461"
+    },
+    {
+      "id": "monster-giant-owl",
+      "name": "Giant Owl",
+      "path": "/vtt/monsters/monster-giant-owl.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Owl.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "4301b2a881f5529303fbac998651a789629ec0b99d03c596398728805a2dc9ad"
+    },
+    {
+      "id": "monster-giant-rat",
+      "name": "Giant Rat",
+      "path": "/vtt/monsters/monster-giant-rat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Rat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a254a5ca2e825c3ddba0aeff7f705691436e7d8b8c5c9c24e9ac0ef83572b86b"
+    },
+    {
+      "id": "monster-giant-scorpion",
+      "name": "Giant Scorpion",
+      "path": "/vtt/monsters/monster-giant-scorpion.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Scorpion.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "df009c198d4d0b10821f55d628b8ff869bd5e2b3f3fbc3e88e0140322af528e2"
+    },
+    {
+      "id": "monster-giant-seahorse",
+      "name": "Giant Seahorse",
+      "path": "/vtt/monsters/monster-giant-seahorse.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Seahorse.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "92a916737de900a4f31bf3f0d1e0f34ec578d62ff1ff876be3c0766a50611608"
+    },
+    {
+      "id": "monster-giant-shark",
+      "name": "Giant Shark",
+      "path": "/vtt/monsters/monster-giant-shark.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Shark.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "2c7a133046cdf52339bfde4c77f2e4eb8bc1cdd821606777e770a6d38adf4a09"
+    },
+    {
+      "id": "monster-giant-spider",
+      "name": "Giant Spider",
+      "path": "/vtt/monsters/monster-giant-spider.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Spider.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "3b33f00b45d78547439cb5488affa1c9c88d98ac9e9b9987ecae4f327465149e"
+    },
+    {
+      "id": "monster-giant-toad",
+      "name": "Giant Toad",
+      "path": "/vtt/monsters/monster-giant-toad.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Toad.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1f2130b8bbbfffec76d0db47cf3d9722585983a25591370b444787f51852f2da"
+    },
+    {
+      "id": "monster-giant-venomous-snake",
+      "name": "Giant Venomous Snake",
+      "path": "/vtt/monsters/monster-giant-venomous-snake.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Venomous%20Snake.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "74f0b50523068ec5ee7d8c2f9ae3483b8ed1d006c03cf7a516eb2b6edf1a8613"
+    },
+    {
+      "id": "monster-giant-vulture",
+      "name": "Giant Vulture",
+      "path": "/vtt/monsters/monster-giant-vulture.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Vulture.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7beb28ff51a625e2a427058ca3c51caaa4bcd347db765f6434c89be591aed2c5"
+    },
+    {
+      "id": "monster-giant-wasp",
+      "name": "Giant Wasp",
+      "path": "/vtt/monsters/monster-giant-wasp.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Wasp.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "69a3842ce82ba323b6bf19f8e3662513a25db696a6dc51b50a2cf767d931c5d2"
+    },
+    {
+      "id": "monster-giant-weasel",
+      "name": "Giant Weasel",
+      "path": "/vtt/monsters/monster-giant-weasel.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Weasel.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6f19668946367aeeb9c485b7445f4f0a7f35da7e41ee110301b5bd31e3ae8ed3"
+    },
+    {
+      "id": "monster-giant-wolf-spider",
+      "name": "Giant Wolf Spider",
+      "path": "/vtt/monsters/monster-giant-wolf-spider.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Giant%20Wolf%20Spider.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "518e75acf98a599a7daf5e3f40ba452e511c17f14739fe580c62297622a731cd"
+    },
+    {
+      "id": "monster-gibbering-mouther",
+      "name": "Gibbering Mouther",
+      "path": "/vtt/monsters/monster-gibbering-mouther.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gibbering%20Mouther.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1b018848df3c34526c951a8d1eb5c13809152077465a59755f4e9f643ec7293c"
+    },
+    {
+      "id": "monster-glabrezu",
+      "name": "Glabrezu",
+      "path": "/vtt/monsters/monster-glabrezu.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Glabrezu.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ae5d436f7bef408bf5fe87473521bc862ad16a968721b7e087941005e943c9cb"
+    },
+    {
+      "id": "monster-gladiator",
+      "name": "Gladiator",
+      "path": "/vtt/monsters/monster-gladiator.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gladiator.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a58a1037d69bdc7c92850ff254b429c8b809f25a693e66b5f2d0cd27968a2e7d"
+    },
+    {
+      "id": "monster-gnoll-warrior",
+      "name": "Gnoll Warrior",
+      "path": "/vtt/monsters/monster-gnoll-warrior.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gnoll%20Warrior.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "bd6608866c2e2eaf81214b484770c1719c80f8935978cd528c0c6360c2028953"
+    },
+    {
+      "id": "monster-goat",
+      "name": "Goat",
+      "path": "/vtt/monsters/monster-goat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Goat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e85a2079aeb9a551f743c4a7f1ee6ab8d05de65527a0435c212e25b799477c49"
+    },
+    {
+      "id": "monster-goblin-boss",
+      "name": "Goblin Boss",
+      "path": "/vtt/monsters/monster-goblin-boss.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Goblin%20Boss.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c8ec0852edc864f38e041d45f9a6b6f193ed4534a756381116f7783007de693e"
+    },
+    {
+      "id": "monster-goblin-minion",
+      "name": "Goblin Minion",
+      "path": "/vtt/monsters/monster-goblin-minion.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Goblin%20Minion.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ff5ba1662e36cae341ff06effeac6090d35738091c417c4fe35d99df2952d4bc"
+    },
+    {
+      "id": "monster-goblin-warrior",
+      "name": "Goblin Warrior",
+      "path": "/vtt/monsters/monster-goblin-warrior.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Goblin%20Warrior.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "47b89d8de098fe69452155f082e69fd730e01af8fb33b87a504711efe0f8e02e"
+    },
+    {
+      "id": "monster-gold-dragon-wyrmling",
+      "name": "Gold Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-gold-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gold%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d582a67889a216b3d9b541fe41ab817b969ad1394533e42aa033c35ef8f97f23"
+    },
+    {
+      "id": "monster-gorgon",
+      "name": "Gorgon",
+      "path": "/vtt/monsters/monster-gorgon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gorgon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1f7d72d39a09d5b58ea29c817ca576cf5b2ce04e0ca0086f43c5a36a843a75ab"
+    },
+    {
+      "id": "monster-gray-ooze",
+      "name": "Gray Ooze",
+      "path": "/vtt/monsters/monster-gray-ooze.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Gray%20Ooze.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5a94a257bafdb996e6106c0c984774d7c6bb2e58dbcc3e2dd0facb2f623183df"
+    },
+    {
+      "id": "monster-green-dragon-wyrmling",
+      "name": "Green Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-green-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Green%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7765d514285bd760cebf9a47f1a7e960e8383ac2058d49f15b402ecc21d39da4"
+    },
+    {
+      "id": "monster-green-hag",
+      "name": "Green Hag",
+      "path": "/vtt/monsters/monster-green-hag.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Green%20Hag.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d92b11865eaf3edd866b5b088d384f215e7070e888b544740eadc21ea4b5524f"
+    },
+    {
+      "id": "monster-grick",
+      "name": "Grick",
+      "path": "/vtt/monsters/monster-grick.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Grick.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ee3b946fe2e670d1de367882e514862a43bc54c2fffcb6cb67119bed7bbaee66"
+    },
+    {
+      "id": "monster-griffon",
+      "name": "Griffon",
+      "path": "/vtt/monsters/monster-griffon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Griffon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "2897c36ada2f8208d866a836edd20eca663e48dc776bff5801844d1dd2719d97"
+    },
+    {
+      "id": "monster-grimlock",
+      "name": "Grimlock",
+      "path": "/vtt/monsters/monster-grimlock.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Grimlock.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "147498d3f67107b991fb5b7b28bb321b1e06ce9395f6f91f4b8b4077107bbaaf"
+    },
+    {
+      "id": "monster-guard",
+      "name": "Guard",
+      "path": "/vtt/monsters/monster-guard.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Guard.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "997c882f0009e176ce7de2c2b5eca1c329c2c5f887249e0a8a6d853ff64878f2"
+    },
+    {
+      "id": "monster-guard-captain",
+      "name": "Guard Captain",
+      "path": "/vtt/monsters/monster-guard-captain.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Guard%20Captain.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0c2abc1f151dbce69ccfd6c96b7f0956d324df7124c092193da1533205484c1d"
+    },
+    {
+      "id": "monster-guardian-naga",
+      "name": "Guardian Naga",
+      "path": "/vtt/monsters/monster-guardian-naga.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Guardian%20Naga.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "158a891146f01a7ef1ace01105d0808ffb68a7ae5817a87c0e50c7d980f418e8"
+    },
+    {
+      "id": "monster-half-dragon",
+      "name": "Half-Dragon",
+      "path": "/vtt/monsters/monster-half-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Half-Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "3d13d5bf4c0a700417ec885534b19ef228c39511d823b67ab0bea97e9a5eb6a3"
+    },
+    {
+      "id": "monster-harpy",
+      "name": "Harpy",
+      "path": "/vtt/monsters/monster-harpy.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Harpy.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "efd4a59f77d3fdacb4a65392a91aa3d408097bb95e882448dc1449fe2ad969d1"
+    },
+    {
+      "id": "monster-hawk",
+      "name": "Hawk",
+      "path": "/vtt/monsters/monster-hawk.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hawk.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6c19a06145f741622fd0f2a660012261eb9af2e3cf7397e46e154fb4bc99ea6b"
+    },
+    {
+      "id": "monster-hell-hound",
+      "name": "Hell Hound",
+      "path": "/vtt/monsters/monster-hell-hound.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hell%20Hound.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e2bc636115b50734758ed9210a5415a661410bbec773fb138d9d2f3b637b386d"
+    },
+    {
+      "id": "monster-hezrou",
+      "name": "Hezrou",
+      "path": "/vtt/monsters/monster-hezrou.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hezrou.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d7373fb59faf52e70d38b56ae1bf05400f952b35122941b715e0b5e99a94dc08"
+    },
+    {
+      "id": "monster-hill-giant",
+      "name": "Hill Giant",
+      "path": "/vtt/monsters/monster-hill-giant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hill%20Giant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "bcb5cd17324431a51ea06b9bc1be74623bf84969001312535542690c49283eb2"
+    },
+    {
+      "id": "monster-hippogriff",
+      "name": "Hippogriff",
+      "path": "/vtt/monsters/monster-hippogriff.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hippogriff.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8fcb71712c2407acbcc27b3fb325c64dce53e3f577d0be0a2245f44ecf283ef9"
+    },
+    {
+      "id": "monster-hippopotamus",
+      "name": "Hippopotamus",
+      "path": "/vtt/monsters/monster-hippopotamus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hippopotamus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "cf432eb1189ae76c4bbd6dede48927caa8dc855217a4dc3d0e51d6dc3c9e42a5"
+    },
+    {
+      "id": "monster-hobgoblin-captain",
+      "name": "Hobgoblin Captain",
+      "path": "/vtt/monsters/monster-hobgoblin-captain.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hobgoblin%20Captain.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8861df4a4cb838c3e5ea9a5976cd0ff76882e6e3c9c071286235b78113f1ee24"
+    },
+    {
+      "id": "monster-hobgoblin-warrior",
+      "name": "Hobgoblin Warrior",
+      "path": "/vtt/monsters/monster-hobgoblin-warrior.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hobgoblin%20Warrior.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "2cbbb1eb05ef96ce949c750f969d8d1788467dd2f08ecf009cbeea9a5727d1c3"
+    },
+    {
+      "id": "monster-homunculus",
+      "name": "Homunculus",
+      "path": "/vtt/monsters/monster-homunculus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Homunculus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5b0555638b20cb1266d9b3b1a9673a2eafb826d049c439be416b1e684d16a28c"
+    },
+    {
+      "id": "monster-horned-devil",
+      "name": "Horned Devil",
+      "path": "/vtt/monsters/monster-horned-devil.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Horned%20Devil.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "36a4ff328fc7a7fef91bef5a4852c3b5f0c0d2479f6620bddfcfa07dc0ea7663"
+    },
+    {
+      "id": "monster-hunter-shark",
+      "name": "Hunter Shark",
+      "path": "/vtt/monsters/monster-hunter-shark.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hunter%20Shark.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6e619ba6bf11f04901072cf10a0db1cd226548f3036e8900753ee52383c59c7e"
+    },
+    {
+      "id": "monster-hydra",
+      "name": "Hydra",
+      "path": "/vtt/monsters/monster-hydra.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hydra.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0fd81bd5405c7f4b1e7e8dbe9cf4cd0466195773be5df41776abae7427d2a5d0"
+    },
+    {
+      "id": "monster-hyena",
+      "name": "Hyena",
+      "path": "/vtt/monsters/monster-hyena.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Hyena.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "4952ccf3fa1595588f08feabef0bfda5333948cb9ec8aa6cffab749ed2b94ce3"
+    },
+    {
+      "id": "monster-ice-devil",
+      "name": "Ice Devil",
+      "path": "/vtt/monsters/monster-ice-devil.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ice%20Devil.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "61152ef76620d89826c984305f4c093994501c8f78810d5586f18b61f39bf026"
+    },
+    {
+      "id": "monster-ice-mephit",
+      "name": "Ice Mephit",
+      "path": "/vtt/monsters/monster-ice-mephit.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ice%20Mephit.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "21436801ffef31fa3d20f3b123b709a71c6b8496e1c193c76fdfe3a7a15d80a8"
+    },
+    {
+      "id": "monster-imp",
+      "name": "Imp",
+      "path": "/vtt/monsters/monster-imp.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Imp.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "4a9714205fe4dad317042d1ea8ec6de0ea78622ce3fc456fdd7cdeb6b844da51"
+    },
+    {
+      "id": "monster-incubus",
+      "name": "Incubus",
+      "path": "/vtt/monsters/monster-incubus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Incubus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "91babd6503f47bfe4c8daf9bf2affd8aece1538a36114919ed316bc162840193"
+    },
+    {
+      "id": "monster-invisible-stalker",
+      "name": "Invisible Stalker",
+      "path": "/vtt/monsters/monster-invisible-stalker.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Invisible%20Stalker.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "045f108d1f8414f827c6436e6e191edbd52b0d06d2239b8555b84f0c61a66758"
+    },
+    {
+      "id": "monster-iron-golem",
+      "name": "Iron Golem",
+      "path": "/vtt/monsters/monster-iron-golem.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Iron%20Golem.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fc644c6499f744dc137ca26ec3d56415be72e50abe8936d975400503eb3a7453"
+    },
+    {
+      "id": "monster-jackal",
+      "name": "Jackal",
+      "path": "/vtt/monsters/monster-jackal.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Jackal.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ce73c04002d5c59a9858da2fac6369332fd89b00a3f72156e21bbba8576e28a7"
+    },
+    {
+      "id": "monster-killer-whale",
+      "name": "Killer Whale",
+      "path": "/vtt/monsters/monster-killer-whale.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Killer%20Whale.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "9614af58e5b2df62d2025efe3b93857b4a1ad98cf6b5fdabdfc236ac2a2bb895"
+    },
+    {
+      "id": "monster-knight",
+      "name": "Knight",
+      "path": "/vtt/monsters/monster-knight.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Knight.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "670a0a7134ffa67607f21f1677f25dd5855aa62d5dae1fb09b051aa7981b2f03"
+    },
+    {
+      "id": "monster-kobold-warrior",
+      "name": "Kobold Warrior",
+      "path": "/vtt/monsters/monster-kobold-warrior.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Kobold%20Warrior.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "41f382a20c9bff5ab7b19d3ed2d201c77dca3e6326ac38619d80cd4f2b07e1bb"
+    },
+    {
+      "id": "monster-kraken",
+      "name": "Kraken",
+      "path": "/vtt/monsters/monster-kraken.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Kraken.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ce2d53288af42e9b4e483695c759ca29b251438e8413709d2b6bff898eb31023"
+    },
+    {
+      "id": "monster-lamia",
+      "name": "Lamia",
+      "path": "/vtt/monsters/monster-lamia.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Lamia.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1a405e069d69ddec780cf8c6eae3c2afc60d64eee468fcdcfb10ad3d96b910ee"
+    },
+    {
+      "id": "monster-lemure",
+      "name": "Lemure",
+      "path": "/vtt/monsters/monster-lemure.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Lemure.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "95e620b838df1b6017108b8724171bfdd882efd3bebfdcb2ce0191f708bc1cb5"
+    },
+    {
+      "id": "monster-lich",
+      "name": "Lich",
+      "path": "/vtt/monsters/monster-lich.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Lich.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fe64ec42be217433c6a26011c56e9ff775f7e073111f87d655ca538e36f9f966"
+    },
+    {
+      "id": "monster-lion",
+      "name": "Lion",
+      "path": "/vtt/monsters/monster-lion.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Lion.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "58c6c4dd627d8166fe2c97e723485a486e348476fddee8b8be2aacd23fa9ee81"
+    },
+    {
+      "id": "monster-lizard",
+      "name": "Lizard",
+      "path": "/vtt/monsters/monster-lizard.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Lizard.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "24c55c45352450a8a9348a243f9186a2571b9fb4cb1a24a53d9fddf72c5b04f9"
+    },
+    {
+      "id": "monster-mage",
+      "name": "Mage",
+      "path": "/vtt/monsters/monster-mage.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Mage.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8f94059a54a354e1ad458e90b47640e23b4c9e4e2d27fbd789e1ee7655d95066"
+    },
+    {
+      "id": "monster-magma-mephit",
+      "name": "Magma Mephit",
+      "path": "/vtt/monsters/monster-magma-mephit.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Magma%20Mephit.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ddf4ed64a14276a26e55ec0a8d2374238470d4753037f3cc3fc18c350a4e318b"
+    },
+    {
+      "id": "monster-magmin",
+      "name": "Magmin",
+      "path": "/vtt/monsters/monster-magmin.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Magmin.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ec1cf26572e00be74feb6e153810608650a4015a689f24ac9c1c853291ccbb25"
+    },
+    {
+      "id": "monster-mammoth",
+      "name": "Mammoth",
+      "path": "/vtt/monsters/monster-mammoth.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Mammoth.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8049f8dada8b6548c8027f66ffbc51293ce5b4c97610d477864d98c78ad0f834"
+    },
+    {
+      "id": "monster-manticore",
+      "name": "Manticore",
+      "path": "/vtt/monsters/monster-manticore.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Manticore.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d0488a9af9c82db4c528d47054b0b67463e5e3e666ab8ed9fefb5c951fd6c97b"
+    },
+    {
+      "id": "monster-marilith",
+      "name": "Marilith",
+      "path": "/vtt/monsters/monster-marilith.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Marilith.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c0a7b3b7eb5f102e0edf70323fd8c0564b5d0ce331c0f695120132fde16bc512"
+    },
+    {
+      "id": "monster-mastiff",
+      "name": "Mastiff",
+      "path": "/vtt/monsters/monster-mastiff.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Mastiff.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "67eeb8d6849d5911aaf9dd578983eb6205b083378412c779d67f1c02c5d6e843"
+    },
+    {
+      "id": "monster-medusa",
+      "name": "Medusa",
+      "path": "/vtt/monsters/monster-medusa.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Medusa.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "47b9bdcef3dea839cc514144e7b4ea07464e9a0c388b7ab6227bab7451ad8365"
+    },
+    {
+      "id": "monster-merfolk-skirmisher",
+      "name": "Merfolk Skirmisher",
+      "path": "/vtt/monsters/monster-merfolk-skirmisher.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Merfolk%20Skirmisher.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fc3e8f414a7ac2908941290d89d4f1ec6f72fce728a6c9030beeef239b6240f5"
+    },
+    {
+      "id": "monster-merrow",
+      "name": "Merrow",
+      "path": "/vtt/monsters/monster-merrow.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Merrow.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "57c78bbce6cf3edf6e736be4083ccb2bcba0edf9b10645296eeda2ae8acaafcc"
+    },
+    {
+      "id": "monster-mimic",
+      "name": "Mimic",
+      "path": "/vtt/monsters/monster-mimic.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Mimic.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5079575a5583cde21c72a5de16fc3fd4446f32222cf82cd71412d90289475e5b"
+    },
+    {
+      "id": "monster-minotaur-of-baphomet",
+      "name": "Minotaur of Baphomet",
+      "path": "/vtt/monsters/monster-minotaur-of-baphomet.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Minotaur%20of%20Baphomet.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5acf1b2a5fbce87404ec42a23f649325e4a7809d8d89a13a50fe0e414279cb69"
+    },
+    {
+      "id": "monster-minotaur-skeleton",
+      "name": "Minotaur Skeleton",
+      "path": "/vtt/monsters/monster-minotaur-skeleton.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Minotaur%20Skeleton.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "13a17d6571da7dfc6eeeefea78a7895e91548585ea76740272ef376fcc45aa87"
+    },
+    {
+      "id": "monster-mule",
+      "name": "Mule",
+      "path": "/vtt/monsters/monster-mule.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Mule.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5fd85c66216b445cc8021696eb9a4db3b1ccabed73bb12fbdf3aa21aa7fc0795"
+    },
+    {
+      "id": "monster-mummy",
+      "name": "Mummy",
+      "path": "/vtt/monsters/monster-mummy.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Mummy.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d91a63ff09d245159b7497ef2da59e28e725fabb42c07c3b0c1ed90895375413"
+    },
+    {
+      "id": "monster-mummy-lord",
+      "name": "Mummy Lord",
+      "path": "/vtt/monsters/monster-mummy-lord.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Mummy%20Lord.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6db2db598119023797c6e41a674b6cabe2fe71cafc53c6970f1216e2eb7bdfff"
+    },
+    {
+      "id": "monster-nalfeshnee",
+      "name": "Nalfeshnee",
+      "path": "/vtt/monsters/monster-nalfeshnee.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Nalfeshnee.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "483228911674d0768f4658689a9692790f39807d26728e81bff2b8b8ef702949"
+    },
+    {
+      "id": "monster-night-hag",
+      "name": "Night Hag",
+      "path": "/vtt/monsters/monster-night-hag.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Night%20Hag.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "62923ff3fab8cebe61668864b1872f7fd0b3027ddae4835ae34779f53fe5d64c"
+    },
+    {
+      "id": "monster-nightmare",
+      "name": "Nightmare",
+      "path": "/vtt/monsters/monster-nightmare.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Nightmare.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "494b157a18d8bf32170e71beb7e391b3dc21d186c793cf138590611bca776840"
+    },
+    {
+      "id": "monster-noble",
+      "name": "Noble",
+      "path": "/vtt/monsters/monster-noble.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Noble.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "b86e1ea23786a32fba4429ea3ff19ce8dd63812e8846e00c64535813df7e888a"
+    },
+    {
+      "id": "monster-ochre-jelly",
+      "name": "Ochre Jelly",
+      "path": "/vtt/monsters/monster-ochre-jelly.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ochre%20Jelly.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "74510b3f681af7f2481d2e4124728728ab0ce891247fc2571f84dd5b6f4b6ad1"
+    },
+    {
+      "id": "monster-octopus",
+      "name": "Octopus",
+      "path": "/vtt/monsters/monster-octopus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Octopus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fb6416fe4a25a113545f7b1c0ea94fe4027fd6c870776cfbec5d91783799274a"
+    },
+    {
+      "id": "monster-ogre",
+      "name": "Ogre",
+      "path": "/vtt/monsters/monster-ogre.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ogre.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "aed8da1d1870a02c2f197ef1f4ad1187469ef2b084137894c08cb2907ed670ea"
+    },
+    {
+      "id": "monster-ogre-zombie",
+      "name": "Ogre Zombie",
+      "path": "/vtt/monsters/monster-ogre-zombie.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Ogre%20Zombie.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d6886b02a1111e278d4b817e307efe2fa227a6a4fb0f16a28a04c1a9385e354a"
+    },
+    {
+      "id": "monster-oni",
+      "name": "Oni",
+      "path": "/vtt/monsters/monster-oni.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Oni.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "88782438e27305024955205e380ed8ddf714ad290adf68e58c16f5fb6c5721b8"
+    },
+    {
+      "id": "monster-otyugh",
+      "name": "Otyugh",
+      "path": "/vtt/monsters/monster-otyugh.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Otyugh.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d29159d88f7355ca0c61d578b9ff0955ecbcb956eaf131339251a46c5a0eb108"
+    },
+    {
+      "id": "monster-owl",
+      "name": "Owl",
+      "path": "/vtt/monsters/monster-owl.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Owl.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "aa48aa0946596c5201ec5816929b9327ad04a328627358b4d5c04a5732e0ca22"
+    },
+    {
+      "id": "monster-owlbear",
+      "name": "Owlbear",
+      "path": "/vtt/monsters/monster-owlbear.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Owlbear.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "9ad0a21a06390be234503b02355af1b1719194f2283134782946dcb6fa4644fa"
+    },
+    {
+      "id": "monster-panther",
+      "name": "Panther",
+      "path": "/vtt/monsters/monster-panther.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Panther.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "06a65def33c6982924668226cca41baf94861d0bc8431efe146ac8d950d20e28"
+    },
+    {
+      "id": "monster-pegasus",
+      "name": "Pegasus",
+      "path": "/vtt/monsters/monster-pegasus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Pegasus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "35c371d42c081da98cb8f3dc2a2b20bd241d8ab7b3a203c5bf673cbddc8cd28a"
+    },
+    {
+      "id": "monster-phase-spider",
+      "name": "Phase Spider",
+      "path": "/vtt/monsters/monster-phase-spider.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Phase%20Spider.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "af55a62b7c89c7a25f2e4042a0a3d227fe7afb29a069383be1d0b59a675b37ce"
+    },
+    {
+      "id": "monster-piranha",
+      "name": "Piranha",
+      "path": "/vtt/monsters/monster-piranha.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Piranha.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ae7d55eaab7d3386cb34f8207b63072b3ec96417a97af9088ca8764589ff8bd5"
+    },
+    {
+      "id": "monster-pirate",
+      "name": "Pirate",
+      "path": "/vtt/monsters/monster-pirate.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Pirate.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "566d90c8c424a394ab0c46756d61e0fcd5361f327f5b80e09817107aafafea85"
+    },
+    {
+      "id": "monster-pirate-captain",
+      "name": "Pirate Captain",
+      "path": "/vtt/monsters/monster-pirate-captain.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Pirate%20Captain.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6ac76b48676ed7ce63b279d9e43a1cd0b3bc95325dc930d30c844f120dea3aa0"
+    },
+    {
+      "id": "monster-pit-fiend",
+      "name": "Pit Fiend",
+      "path": "/vtt/monsters/monster-pit-fiend.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Pit%20Fiend.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a3971d2bb4f7a006fa3d4a3f91f4f5e39c7fa9403513bd6deee2115a98614864"
+    },
+    {
+      "id": "monster-planetar",
+      "name": "Planetar",
+      "path": "/vtt/monsters/monster-planetar.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Planetar.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "594d485bee770aa9d52d9c2bbe7fa7bfcb21490507ef5a6d007a7780fe158698"
+    },
+    {
+      "id": "monster-plesiosaurus",
+      "name": "Plesiosaurus",
+      "path": "/vtt/monsters/monster-plesiosaurus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Plesiosaurus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "53cd3641f79e515922f66d3677d902c482ca909f2ac95edf09e42fd1021f2e85"
+    },
+    {
+      "id": "monster-polar-bear",
+      "name": "Polar Bear",
+      "path": "/vtt/monsters/monster-polar-bear.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Polar%20Bear.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "165936b1e6ddbaf17f6c186c646dfd3c8917ec5d6c5627a0a3acb243997173a7"
+    },
+    {
+      "id": "monster-pony",
+      "name": "Pony",
+      "path": "/vtt/monsters/monster-pony.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Pony.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "3b17c2507e8c9ac72e87eb41251fac4915ddef80fc4860bba75970358cb3060c"
+    },
+    {
+      "id": "monster-priest",
+      "name": "Priest",
+      "path": "/vtt/monsters/monster-priest.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Priest.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "83c026bdb3a592adc8e76ad954f8200b4deb28f198304050588338dfd394504e"
+    },
+    {
+      "id": "monster-priest-acolyte",
+      "name": "Priest Acolyte",
+      "path": "/vtt/monsters/monster-priest-acolyte.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Priest%20Acolyte.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "565b80c353142c7f071504a6228c9426f773f8a66468fff54e680a36f13f6718"
+    },
+    {
+      "id": "monster-pseudodragon",
+      "name": "Pseudodragon",
+      "path": "/vtt/monsters/monster-pseudodragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Pseudodragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f1f9712e49126b7c8d6274fd161cbeab2a95a7e3c3e5071df118f2db8c7f148b"
+    },
+    {
+      "id": "monster-pteranodon",
+      "name": "Pteranodon",
+      "path": "/vtt/monsters/monster-pteranodon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Pteranodon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a427142106f86755e986b86d110f62ee1d0440678edfe1e686b0d56b9009861d"
+    },
+    {
+      "id": "monster-purple-worm",
+      "name": "Purple Worm",
+      "path": "/vtt/monsters/monster-purple-worm.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Purple%20Worm.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7b0780d599f0a56a81c3575c425a21cdd1983146ba292b7c82e34ca05a5b3995"
+    },
+    {
+      "id": "monster-quasit",
+      "name": "Quasit",
+      "path": "/vtt/monsters/monster-quasit.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Quasit.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "feb22287cb943f9e74924615387ab2b2c80950e0cc19c6203439bef9dba73e2b"
+    },
+    {
+      "id": "monster-rakshasa",
+      "name": "Rakshasa",
+      "path": "/vtt/monsters/monster-rakshasa.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Rakshasa.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d1890963bb271e28e90898ce687fac5384f330aa4001e3cee961011515f0edac"
+    },
+    {
+      "id": "monster-rat",
+      "name": "Rat",
+      "path": "/vtt/monsters/monster-rat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Rat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "194381dc83acf1aaf17010370e2e949da820020913010ce95394cd91e1ec1d11"
+    },
+    {
+      "id": "monster-raven",
+      "name": "Raven",
+      "path": "/vtt/monsters/monster-raven.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Raven.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e3981f0c6e4ed1a090853f81a3f8b8451bc3fa41b214a73949e0a606a720e7fe"
+    },
+    {
+      "id": "monster-red-dragon-wyrmling",
+      "name": "Red Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-red-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Red%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "9087b4cfe7fddfc2ddb82f535bd1e481ccd7bb793f81b2c17f6120a364021b44"
+    },
+    {
+      "id": "monster-reef-shark",
+      "name": "Reef Shark",
+      "path": "/vtt/monsters/monster-reef-shark.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Reef%20Shark.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fda1eead565a680ea85c1fbc40e3faabf600ea3c6625cd822b6b29e93b52090d"
+    },
+    {
+      "id": "monster-remorhaz",
+      "name": "Remorhaz",
+      "path": "/vtt/monsters/monster-remorhaz.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Remorhaz.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "58cd6f5db87f5a7f0fda722672e55c57d482f61c90c32569ab8ebcb82810024c"
+    },
+    {
+      "id": "monster-rhinoceros",
+      "name": "Rhinoceros",
+      "path": "/vtt/monsters/monster-rhinoceros.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Rhinoceros.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "867908560e7bdb2089ceee9c6301a1640b5f2af69bc2de910e75f26ad6d59026"
+    },
+    {
+      "id": "monster-riding-horse",
+      "name": "Riding Horse",
+      "path": "/vtt/monsters/monster-riding-horse.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Riding%20Horse.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0f91fba7e24ea4e01d4b8c429861523d0e0f48a26ba4abaf2eeb0834aa2db921"
+    },
+    {
+      "id": "monster-roc",
+      "name": "Roc",
+      "path": "/vtt/monsters/monster-roc.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Roc.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "61f27f667c38b73cdf7c82135c41a6a1470ffbf92e6bdaac967006a40c6288b6"
+    },
+    {
+      "id": "monster-roper",
+      "name": "Roper",
+      "path": "/vtt/monsters/monster-roper.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Roper.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1c2dad029fb8b98816b562d67b38208145abdf9967e201426a649976a4807989"
+    },
+    {
+      "id": "monster-rust-monster",
+      "name": "Rust Monster",
+      "path": "/vtt/monsters/monster-rust-monster.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Rust%20Monster.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "90a2476b9345e15ae707fcbbb0f9dc5c93bd0f22363215ae39ba6c12ce32a52c"
+    },
+    {
+      "id": "monster-saber-toothed-tiger",
+      "name": "Saber-Toothed Tiger",
+      "path": "/vtt/monsters/monster-saber-toothed-tiger.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Saber-Toothed%20Tiger.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "b08aedea7a4be15ca9075c2c987f4962c6067c3167cdf2119e04c55f37fb0733"
+    },
+    {
+      "id": "monster-sahuagin-warrior",
+      "name": "Sahuagin Warrior",
+      "path": "/vtt/monsters/monster-sahuagin-warrior.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Sahuagin%20Warrior.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "b37cce68756d6a080b95819ed5bd28acf2b2ec1fc021422adb3aad9ad56dde80"
+    },
+    {
+      "id": "monster-salamander",
+      "name": "Salamander",
+      "path": "/vtt/monsters/monster-salamander.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Salamander.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7653921733a15817aa8b48c3711f8755d9fe1221bc43556fba66ee0e4a433701"
+    },
+    {
+      "id": "monster-satyr",
+      "name": "Satyr",
+      "path": "/vtt/monsters/monster-satyr.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Satyr.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "576c4585ddd314198464d46e30aabd3bc3c789829e5450cb5ecfb45d91e6de5f"
+    },
+    {
+      "id": "monster-scorpion",
+      "name": "Scorpion",
+      "path": "/vtt/monsters/monster-scorpion.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Scorpion.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "058f3010af6ec96325532e582c68474147fbda2a347d725133584e06c3f3cccd"
+    },
+    {
+      "id": "monster-scout",
+      "name": "Scout",
+      "path": "/vtt/monsters/monster-scout.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Scout.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "960c3123722ed4ed21af9a97ac126246137a03fe0c3b6c4334217499100b486c"
+    },
+    {
+      "id": "monster-sea-hag",
+      "name": "Sea Hag",
+      "path": "/vtt/monsters/monster-sea-hag.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Sea%20Hag.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "4b5b0745f49e6c287eccc3914c1172537ed97317ffe6c131c5609f470b997b2b"
+    },
+    {
+      "id": "monster-seahorse",
+      "name": "Seahorse",
+      "path": "/vtt/monsters/monster-seahorse.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Seahorse.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "83587d9a5ca04c87612147b180b304b4937acc569d0f42b793f57074182fc501"
+    },
+    {
+      "id": "monster-shadow",
+      "name": "Shadow",
+      "path": "/vtt/monsters/monster-shadow.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Shadow.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7464e45c483e6862322348d70fc1eaa57c9f9b97cb5ccb2326789699a601ab17"
+    },
+    {
+      "id": "monster-shambling-mound",
+      "name": "Shambling Mound",
+      "path": "/vtt/monsters/monster-shambling-mound.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Shambling%20Mound.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fdf59d07a7e437a0302e8e6a0933d56259b27fe7e53771daee82c8d97fe7d6d3"
+    },
+    {
+      "id": "monster-shield-guardian",
+      "name": "Shield Guardian",
+      "path": "/vtt/monsters/monster-shield-guardian.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Shield%20Guardian.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "d407809a4c93fa94d25fde120e30e6d15d158685d5286a428802863e05857aaa"
+    },
+    {
+      "id": "monster-shrieker-fungus",
+      "name": "Shrieker Fungus",
+      "path": "/vtt/monsters/monster-shrieker-fungus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Shrieker%20Fungus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f4514854372dc4b17adbd03783dfb8cee548e2f3734305cb71fc8ff4118074a7"
+    },
+    {
+      "id": "monster-silver-dragon-wyrmling",
+      "name": "Silver Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-silver-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Silver%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "982d2c972d2949aecbe1bb1928f4691db136f92255d44f21f12726ec0a3b0b7a"
+    },
+    {
+      "id": "monster-skeleton",
+      "name": "Skeleton",
+      "path": "/vtt/monsters/monster-skeleton.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Skeleton.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "43b90fabc23a2f5f466a26e80d859a822cd0f949fc0010bb8740afb4f5a999b0"
+    },
+    {
+      "id": "monster-solar",
+      "name": "Solar",
+      "path": "/vtt/monsters/monster-solar.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Solar.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7b2d10f5e53b5a2350a58f1f2f85aa0c24491d59971455a18d1b1daa950e43b7"
+    },
+    {
+      "id": "monster-specter",
+      "name": "Specter",
+      "path": "/vtt/monsters/monster-specter.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Specter.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ca9dc93e1c0f45d2449fc9ac64019c1d5bc4ec0208270f3ca1c70366117043f9"
+    },
+    {
+      "id": "monster-sphinx-of-lore",
+      "name": "Sphinx of Lore",
+      "path": "/vtt/monsters/monster-sphinx-of-lore.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Sphinx%20of%20Lore.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ff597fc6842fd85ec46f945f03e8ad99920492a41ac54dcb795415d5f1b84c40"
+    },
+    {
+      "id": "monster-sphinx-of-valor",
+      "name": "Sphinx of Valor",
+      "path": "/vtt/monsters/monster-sphinx-of-valor.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Sphinx%20of%20Valor.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "82f0f1d666b04eaf405efc8c8f00492c56ec172ef5aa09ce8f6d1539814172aa"
+    },
+    {
+      "id": "monster-sphinx-of-wonder",
+      "name": "Sphinx of Wonder",
+      "path": "/vtt/monsters/monster-sphinx-of-wonder.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Sphinx%20of%20Wonder.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "1e31f9107bbc0b1fc2e40e6a831aa9ccef9bd16f30207f6a930f22fa1723966d"
+    },
+    {
+      "id": "monster-spider",
+      "name": "Spider",
+      "path": "/vtt/monsters/monster-spider.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Spider.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6023c47d778cbc35353d58b1c7eeaf099783db1fdda6c9151180c52fb33d99ec"
+    },
+    {
+      "id": "monster-spirit-naga",
+      "name": "Spirit Naga",
+      "path": "/vtt/monsters/monster-spirit-naga.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Spirit%20Naga.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "9ac3b809cd8a1fae20ba9a50546464796283a327f67bc97dc3c3cbe67eda8072"
+    },
+    {
+      "id": "monster-sprite",
+      "name": "Sprite",
+      "path": "/vtt/monsters/monster-sprite.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Sprite.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6f8e2e72f278b88b8bf11709adbcf66803439fc945cd3bc744af6c2afb2b4d6b"
+    },
+    {
+      "id": "monster-spy",
+      "name": "Spy",
+      "path": "/vtt/monsters/monster-spy.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Spy.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e4258e3987f8b6cb58bc21ef3164e68d372415d23e4ca7beecf20ad96d6d4af5"
+    },
+    {
+      "id": "monster-steam-mephit",
+      "name": "Steam Mephit",
+      "path": "/vtt/monsters/monster-steam-mephit.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Steam%20Mephit.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e3441b5071abd1077990cc98dad1200303dbf335006f3ae495529a1beacac996"
+    },
+    {
+      "id": "monster-stirge",
+      "name": "Stirge",
+      "path": "/vtt/monsters/monster-stirge.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Stirge.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ce2d8e6947f041fdcbea08d3ee9e24d95f47829554f6e1b1df7a177971d4f842"
+    },
+    {
+      "id": "monster-stone-giant",
+      "name": "Stone Giant",
+      "path": "/vtt/monsters/monster-stone-giant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Stone%20Giant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "46d9e67008182abac3c029b95b77a8898904a5fb737ba21b037a7fdba1cba4d0"
+    },
+    {
+      "id": "monster-stone-golem",
+      "name": "Stone Golem",
+      "path": "/vtt/monsters/monster-stone-golem.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Stone%20Golem.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0b7714f1e0f84eb621369210244b195b8423b5529a7a1ef98bc779d68bb27662"
+    },
+    {
+      "id": "monster-storm-giant",
+      "name": "Storm Giant",
+      "path": "/vtt/monsters/monster-storm-giant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Storm%20Giant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "82f1eb8e1dde8ec21e4f787f4e40f3a139ad83abcb0187ec72be6a8fab038a3c"
+    },
+    {
+      "id": "monster-succubus",
+      "name": "Succubus",
+      "path": "/vtt/monsters/monster-succubus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Succubus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a8a94832cafec053d2dd1a1b08857c4bff85eaa2403c7fef081c1ac14a764e9f"
+    },
+    {
+      "id": "monster-swarm-of-bats",
+      "name": "Swarm of Bats",
+      "path": "/vtt/monsters/monster-swarm-of-bats.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Swarm%20of%20Bats.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "82e03c50d98809a8e42958648a466f78ab1247fb41105927aa41037ff01aa79f"
+    },
+    {
+      "id": "monster-swarm-of-crawling-claws",
+      "name": "Swarm of Crawling Claws",
+      "path": "/vtt/monsters/monster-swarm-of-crawling-claws.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Swarm%20of%20Crawling%20Claws.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "fb8469ce1bc9e1f64dcb8f1294db7b5de53180914b94c68c673b8ecdffa3e5f4"
+    },
+    {
+      "id": "monster-swarm-of-insects",
+      "name": "Swarm of Insects",
+      "path": "/vtt/monsters/monster-swarm-of-insects.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Swarm%20of%20Insects.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6795283154d57acd9fc6ee064486c65834743a150c9577b631f57335149de879"
+    },
+    {
+      "id": "monster-swarm-of-piranhas",
+      "name": "Swarm of Piranhas",
+      "path": "/vtt/monsters/monster-swarm-of-piranhas.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Swarm%20of%20Piranhas.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f3fde7aaa879da972b4e9cee53e6df6b314420fcb82fdb016a85523d61f219a5"
+    },
+    {
+      "id": "monster-swarm-of-rats",
+      "name": "Swarm of Rats",
+      "path": "/vtt/monsters/monster-swarm-of-rats.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Swarm%20of%20Rats.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "6549bdecef1bf91f277c118342fdeb1be1d8a0c514c29b0a8c111e0ceb2bb47e"
+    },
+    {
+      "id": "monster-swarm-of-ravens",
+      "name": "Swarm of Ravens",
+      "path": "/vtt/monsters/monster-swarm-of-ravens.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Swarm%20of%20Ravens.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "bc1a0dfc539a7de0a97f125b66850eeed2c25d944688159b1bea1412f163568a"
+    },
+    {
+      "id": "monster-swarm-of-venomous-snakes",
+      "name": "Swarm of Venomous Snakes",
+      "path": "/vtt/monsters/monster-swarm-of-venomous-snakes.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Swarm%20of%20Venomous%20Snakes.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "74f0b50523068ec5ee7d8c2f9ae3483b8ed1d006c03cf7a516eb2b6edf1a8613"
+    },
+    {
+      "id": "monster-tarrasque",
+      "name": "Tarrasque",
+      "path": "/vtt/monsters/monster-tarrasque.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Tarrasque.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "3d6401b52d5b9e93a62fc43b0702c108887e4411bd7394a0973d4a946fd4728e"
+    },
+    {
+      "id": "monster-tiger",
+      "name": "Tiger",
+      "path": "/vtt/monsters/monster-tiger.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Tiger.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0c7301665e773fd7a19ddc83ec5f31891320b608ac6e800453405197f01cb766"
+    },
+    {
+      "id": "monster-tough",
+      "name": "Tough",
+      "path": "/vtt/monsters/monster-tough.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Tough.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a4c98c65848fed4d46e425dd3e4b34de4225be22c7453940ef55532c8152b823"
+    },
+    {
+      "id": "monster-tough-boss",
+      "name": "Tough Boss",
+      "path": "/vtt/monsters/monster-tough-boss.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Tough%20Boss.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "573116546352d68abd232e11c581c8e728b0e1f5c05c43a0fd92ade832ed7088"
+    },
+    {
+      "id": "monster-treant",
+      "name": "Treant",
+      "path": "/vtt/monsters/monster-treant.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Treant.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "4e31aebeb759d07191fad0438557413da762dc782aee25e279f3cedc1e0eff3e"
+    },
+    {
+      "id": "monster-triceratops",
+      "name": "Triceratops",
+      "path": "/vtt/monsters/monster-triceratops.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Triceratops.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "90f3000c02e703550eceafc209d91118ef86daa3a0bba68770b00abd3040fe49"
+    },
+    {
+      "id": "monster-troll",
+      "name": "Troll",
+      "path": "/vtt/monsters/monster-troll.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Troll.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ee678c977165321941b846b71ccbb2bd2d49a7aac45b87c9d10e9717191e7115"
+    },
+    {
+      "id": "monster-troll-limb",
+      "name": "Troll Limb",
+      "path": "/vtt/monsters/monster-troll-limb.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Troll%20Limb.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "8b5b35a71932bf3f1e839b3b2a99b792e7e86b6882c8f41ae30d7f1326dbad57"
+    },
+    {
+      "id": "monster-tyrannosaurus-rex",
+      "name": "Tyrannosaurus Rex",
+      "path": "/vtt/monsters/monster-tyrannosaurus-rex.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Tyrannosaurus%20Rex.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "e2e56873401061394d599cf6b0f0caadbd3f4dda771523cc83042d0407dae13a"
+    },
+    {
+      "id": "monster-unicorn",
+      "name": "Unicorn",
+      "path": "/vtt/monsters/monster-unicorn.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Unicorn.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "44e3ce9ad328d5acd05c2eac3538234ba23ec8c7dc6106daea8a1283d05cd1cd"
+    },
+    {
+      "id": "monster-vampire",
+      "name": "Vampire",
+      "path": "/vtt/monsters/monster-vampire.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Vampire.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "56864f3e58cd2f19529d635f6d7605cf89e2f3f14c8d8f042426a8db42ae1b0f"
+    },
+    {
+      "id": "monster-vampire-familiar",
+      "name": "Vampire Familiar",
+      "path": "/vtt/monsters/monster-vampire-familiar.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Vampire%20Familiar.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "9b1016590c3f4596f419174940b7a06ca537c2c01a057761807f07b2b7525d6e"
+    },
+    {
+      "id": "monster-vampire-spawn",
+      "name": "Vampire Spawn",
+      "path": "/vtt/monsters/monster-vampire-spawn.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Vampire%20Spawn.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f3decd5dc631872ac0e59d021c00962037136730c113f2ddbf6e4da5e38fb6da"
+    },
+    {
+      "id": "monster-venomous-snake",
+      "name": "Venomous Snake",
+      "path": "/vtt/monsters/monster-venomous-snake.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Venomous%20Snake.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c8548c9607e864d612e87b6dcd5bdee1fe33973a5cb474c30d7daea54c1bc3fc"
+    },
+    {
+      "id": "monster-violet-fungus",
+      "name": "Violet Fungus",
+      "path": "/vtt/monsters/monster-violet-fungus.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Violet%20Fungus.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "9ddb2a36cc21da233c523f8f584a168eddcdc87ae8e5150c7cbce49721060930"
+    },
+    {
+      "id": "monster-vrock",
+      "name": "Vrock",
+      "path": "/vtt/monsters/monster-vrock.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Vrock.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ea5adaebf8ad016bb776cadeb3ceb9f928c64a03e965db1b27d32a88c0b95a3d"
+    },
+    {
+      "id": "monster-vulture",
+      "name": "Vulture",
+      "path": "/vtt/monsters/monster-vulture.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Vulture.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "565f7ad2a23b09381844a02eda656a7060b461ec0b12b4a1a98374d6b98edd7b"
+    },
+    {
+      "id": "monster-warhorse",
+      "name": "Warhorse",
+      "path": "/vtt/monsters/monster-warhorse.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Warhorse.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c19f5baee9cff9d6e895bf4d08b8df382843dfa12d9586880708bf1b87aca37b"
+    },
+    {
+      "id": "monster-warhorse-skeleton",
+      "name": "Warhorse Skeleton",
+      "path": "/vtt/monsters/monster-warhorse-skeleton.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Warhorse%20Skeleton.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7c53a0ecd59957cf0dc96a31b71442e10a05178f9205354e0749355819a7c2b3"
+    },
+    {
+      "id": "monster-warrior-infantry",
+      "name": "Warrior Infantry",
+      "path": "/vtt/monsters/monster-warrior-infantry.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Warrior%20Infantry.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "678a32547d00a9de5779a83e1b9a7b509adea2f98eb43030544c2dbe67b61770"
+    },
+    {
+      "id": "monster-warrior-veteran",
+      "name": "Warrior Veteran",
+      "path": "/vtt/monsters/monster-warrior-veteran.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Warrior%20Veteran.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "90df135bbdb954f073aac84f0a69a02417c603f8b6992b3c4ba60c1963a45e07"
+    },
+    {
+      "id": "monster-water-elemental",
+      "name": "Water Elemental",
+      "path": "/vtt/monsters/monster-water-elemental.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Water%20Elemental.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "5097849e46fad54d69ae7141d1927c6eea6fc2d5fd973e24aaa2046b45cca1fd"
+    },
+    {
+      "id": "monster-weasel",
+      "name": "Weasel",
+      "path": "/vtt/monsters/monster-weasel.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Weasel.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ddfbd4080cee19ab1880ff6b12acb63f136f254da1111e91d1fe3d8ba491d581"
+    },
+    {
+      "id": "monster-werebear",
+      "name": "Werebear",
+      "path": "/vtt/monsters/monster-werebear.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Werebear.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f951f0af8a04b40c85d78f19e977860ae8becb81fba6f15a30dc35623dfe2560"
+    },
+    {
+      "id": "monster-wereboar",
+      "name": "Wereboar",
+      "path": "/vtt/monsters/monster-wereboar.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Wereboar.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7a6814ac664d1b0bdd94675d0dce112339f0bcf36ff39ee24d714f62f5f68dd3"
+    },
+    {
+      "id": "monster-wererat",
+      "name": "Wererat",
+      "path": "/vtt/monsters/monster-wererat.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Wererat.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "986f62e31c80e7cb545d6867f7fb455a01749d231fe966bf5d4ec3563f6d6e94"
+    },
+    {
+      "id": "monster-weretiger",
+      "name": "Weretiger",
+      "path": "/vtt/monsters/monster-weretiger.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Weretiger.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f6397d140a22a166d522d5010c6b5f537a09f381eaf55d606adb59b8bad73706"
+    },
+    {
+      "id": "monster-werewolf",
+      "name": "Werewolf",
+      "path": "/vtt/monsters/monster-werewolf.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Werewolf.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "28a4a38ac5a8fdacf398a0b650935e85f6708346535ebae7e2e535b882f8b766"
+    },
+    {
+      "id": "monster-white-dragon-wyrmling",
+      "name": "White Dragon Wyrmling",
+      "path": "/vtt/monsters/monster-white-dragon-wyrmling.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/White%20Dragon%20Wyrmling.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a58dafb9a586a8229fd54913219da4aeea8949d85ab06fcbc89f8f752e21edbf"
+    },
+    {
+      "id": "monster-wight",
+      "name": "Wight",
+      "path": "/vtt/monsters/monster-wight.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Wight.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "0e2869b1b2bf2b0c411f6e99de2fbe588b67e34ed4e334ecf4f40cee92418712"
+    },
+    {
+      "id": "monster-will-o-wisp",
+      "name": "Will-o'-Wisp",
+      "path": "/vtt/monsters/monster-will-o-wisp.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Will-o'-Wisp.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "ed28a679c6427659c1e306467a3af6e52588f59f5e6ea079369b6494e21ae829"
+    },
+    {
+      "id": "monster-winter-wolf",
+      "name": "Winter Wolf",
+      "path": "/vtt/monsters/monster-winter-wolf.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Winter%20Wolf.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "28bb0edd4959d59439fcab39d150f498919cf349a1bf6194fb7e40e7167704a5"
+    },
+    {
+      "id": "monster-wolf",
+      "name": "Wolf",
+      "path": "/vtt/monsters/monster-wolf.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Wolf.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f64b5342f268958d60e8db33862f1fa55ddf370ad72067127218a5189c25d867"
+    },
+    {
+      "id": "monster-worg",
+      "name": "Worg",
+      "path": "/vtt/monsters/monster-worg.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Worg.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "dbca2d20eb011509f80d72b01e2deabba7e3f07ca4b76a4a15a870bcc565db96"
+    },
+    {
+      "id": "monster-wraith",
+      "name": "Wraith",
+      "path": "/vtt/monsters/monster-wraith.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Wraith.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "aca8726fc08a663d2515c72893fdeb458eaac6ceefab77dce020f2112d1ae9fe"
+    },
+    {
+      "id": "monster-wyvern",
+      "name": "Wyvern",
+      "path": "/vtt/monsters/monster-wyvern.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Wyvern.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "615a411800cf944ac4674003b5603ea2c914145f8e0399c4524dbe52c1adaab8"
+    },
+    {
+      "id": "monster-xorn",
+      "name": "Xorn",
+      "path": "/vtt/monsters/monster-xorn.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Xorn.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "c127ef8f6f853608d883b7f2d7d3cc1ded8d7141e99fe9c2e942ee4b870d9a69"
+    },
+    {
+      "id": "monster-young-black-dragon",
+      "name": "Young Black Dragon",
+      "path": "/vtt/monsters/monster-young-black-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Black%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f2342d1ec5682d19de7967903e6ec9f42835ac94010cd4a8a05ca30ffb07b68e"
+    },
+    {
+      "id": "monster-young-blue-dragon",
+      "name": "Young Blue Dragon",
+      "path": "/vtt/monsters/monster-young-blue-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Blue%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "2657dfdcfd34cecdbac6721d95229d422d161924d3c6715e37ecb593d9e97c07"
+    },
+    {
+      "id": "monster-young-brass-dragon",
+      "name": "Young Brass Dragon",
+      "path": "/vtt/monsters/monster-young-brass-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Brass%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "13009f502c42be9538f70f6b934aec311c76879eafd03ae6b55173db88b72eec"
+    },
+    {
+      "id": "monster-young-bronze-dragon",
+      "name": "Young Bronze Dragon",
+      "path": "/vtt/monsters/monster-young-bronze-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Bronze%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "bc54ee1e6ef790c5a531c44a2bff9c02ce6adff9f2097206fe42a762421c059b"
+    },
+    {
+      "id": "monster-young-copper-dragon",
+      "name": "Young Copper Dragon",
+      "path": "/vtt/monsters/monster-young-copper-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Copper%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "a8e79ef9f5885b0d06a44c07008d412e2e0d5bddbfd6fa561c0bb27b4a116dbd"
+    },
+    {
+      "id": "monster-young-gold-dragon",
+      "name": "Young Gold Dragon",
+      "path": "/vtt/monsters/monster-young-gold-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Gold%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "15c5a96276ab2b1401fd76503f2ad436425b2840fa7b0c7daa8a1efa030736c5"
+    },
+    {
+      "id": "monster-young-green-dragon",
+      "name": "Young Green Dragon",
+      "path": "/vtt/monsters/monster-young-green-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Green%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "281199ea703d30e8317ceb8d775767c2a2ed81660951640f477bd4f1900e6c34"
+    },
+    {
+      "id": "monster-young-red-dragon",
+      "name": "Young Red Dragon",
+      "path": "/vtt/monsters/monster-young-red-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Red%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "f0fa8f01aef38aaee255b66f3e502ca573d4f7351f5747ae60ded89a77cd941b"
+    },
+    {
+      "id": "monster-young-silver-dragon",
+      "name": "Young Silver Dragon",
+      "path": "/vtt/monsters/monster-young-silver-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20Silver%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "617ba7118b2feb1c113efeb3155532cb5a635a873866261311ae81a6c8829e5c"
+    },
+    {
+      "id": "monster-young-white-dragon",
+      "name": "Young White Dragon",
+      "path": "/vtt/monsters/monster-young-white-dragon.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Young%20White%20Dragon.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "637ba54acfef9f9cd3e620ce90d39c3b2e5b6b1b5dcbf95ad203b29ce0a9389e"
+    },
+    {
+      "id": "monster-zombie",
+      "name": "Zombie",
+      "path": "/vtt/monsters/monster-zombie.webp",
+      "source": "XMM",
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/v2.36.1/bestiary/tokens/XMM/Zombie.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "be37ca8f9fb1f4378c6e0a784c5418af14421d8a9e313f5d30a7b3b6642e23ea"
+    }
+  ]
+}

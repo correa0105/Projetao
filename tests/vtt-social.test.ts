@@ -389,6 +389,15 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
           1,
         );
         assert.equal(room.document.scenes[0].tokens.find((t: any) => t.id === token.id).hp, 2);
+        assert.equal((await request(path + '/heal', player, 'POST', { amount: 1 })).status, 403);
+        assert.equal((await request(path + '/heal', other, 'POST', { amount: 1 })).status, 404);
+        assert.equal((await request(path + '/heal', adm, 'POST', { amount: -1 })).status, 400);
+        const healed = await request(path + '/heal', adm, 'POST', { amount: 1 });
+        assert.equal(healed.status, 200, JSON.stringify(healed.data));
+        assert.equal(healed.data.token.hp, 3);
+        const full = await request(path + '/heal', adm, 'POST', { amount: 100000 });
+        assert.equal(full.data.token.hp, full.data.token.maxHp);
+        room = (await request(root, adm)).data;
         const forged = structuredClone(room.document);
         const fake = { ...token, id: randomUUID(), characterId: o.id };
         forged.scenes[0].tokens.push(fake);
@@ -422,6 +431,21 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         );
         assert.equal((await request(path, player, 'POST', { formula: '1000d20' })).status, 400);
         assert.equal((await request(path, player, 'POST', { formula: 'alert(1)' })).status, 400);
+        const advanced = await request(path, player, 'POST', {
+          formula: '4d6kh3+1',
+          text: 'Teste personalizado',
+        });
+        assert.equal(advanced.status, 201);
+        const advancedMessage = (await request('/vtt/rooms/' + room.id, adm)).data.messages.find(
+          (m: any) => m.text === 'Teste personalizado',
+        );
+        assert.equal(
+          advancedMessage.roll.total,
+          [...advancedMessage.roll.dice]
+            .sort((a: number, b: number) => b - a)
+            .slice(0, 3)
+            .reduce((a: number, b: number) => a + b, 1),
+        );
         await request('/vtt/join', other, 'POST', { invite: room.invite });
         const forOther = (await request(`/vtt/rooms/${room.id}`, other)).data;
         assert.equal(
@@ -1219,6 +1243,7 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
           ['/tokens/' + origin.id, 'PATCH', { x: 300 }],
           ['/hotbar', 'PUT', {}],
           ['/sheets/' + origin.id + '/damage', 'POST', { amount: 1 }],
+          ['/sheets/' + origin.id + '/heal', 'POST', { amount: 1 }],
         ] as const) {
           assert.equal((await request(root + suffix, other, method, body)).status, 403, suffix);
         }
@@ -1252,6 +1277,160 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
           (await pool.query('SELECT * FROM characters WHERE user_id=$1', [player.id])).rows,
           before,
         );
+      },
+    );
+    await t.test(
+      'combate: seleção, iniciativa real, controle do mestre e espectadores sem ações',
+      async () => {
+        const created = (await request('/vtt', adm, 'POST', { name: 'Carrossel' })).data,
+          root = '/vtt/rooms/' + created.id;
+        await request('/vtt/join', player, 'POST', { invite: created.invite, role: 'player' });
+        await request('/vtt/join', other, 'POST', { invite: created.invite, role: 'spectator' });
+        let state = (await request(root, adm)).data,
+          scene = state.document.scenes[0];
+        Object.assign(scene, { fog: false, lighting: false });
+        const own = scene.tokens.find((t: any) => t.controller === player.id),
+          monster = newToken(randomUUID(), scene);
+        assert.ok(own);
+        monster.name = 'Guardião';
+        monster.notes = 'segredo';
+        scene.tokens.push(monster);
+        const hidden = { ...monster, id: randomUUID(), name: 'Emboscada secreta', hidden: true };
+        scene.tokens.push(hidden);
+        await request(root, adm, 'PUT', { revision: state.revision, document: state.document });
+        const before = (await request(root, adm)).data,
+          charsBefore = (await pool.query('SELECT * FROM characters ORDER BY id')).rows;
+        assert.equal(
+          (await request(root + '/combat', other, 'POST', { kind: 'add', tokenIds: [own.id] }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (await request(root + '/combat', adm, 'POST', { kind: 'add', tokenIds: [hidden.id] }))
+            .status,
+          400,
+        );
+        assert.equal(
+          (await request(root + '/combat', player, 'POST', { kind: 'add', tokenIds: [own.id] }))
+            .status,
+          403,
+        );
+        const added = await request(root + '/combat', adm, 'POST', {
+          kind: 'add',
+          tokenIds: [own.id, monster.id, own.id],
+        });
+        assert.equal(added.status, 200, JSON.stringify(added.data));
+        assert.equal(added.data.entries.length, 2);
+        assert.equal((await request(root + '/combat', adm, 'POST', { kind: 'start' })).status, 409);
+        assert.equal(
+          (await request(root + '/combat', player, 'POST', { kind: 'roll', tokenId: monster.id }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (
+            await request(root + '/combat', player, 'POST', {
+              kind: 'roll',
+              tokenId: own.id,
+              bonus: 100,
+            })
+          ).status,
+          400,
+        );
+        const rolled = await request(root + '/combat', player, 'POST', {
+          kind: 'roll',
+          tokenId: own.id,
+        });
+        assert.equal(rolled.status, 200, JSON.stringify(rolled.data));
+        const ownRoll = rolled.data.entries.find((e: any) => e.tokenId === own.id);
+        assert.ok(ownRoll.die >= 1 && ownRoll.die <= 20);
+        assert.equal(ownRoll.value, ownRoll.die + ownRoll.bonus);
+        assert.equal(
+          (
+            await request(root + '/combat', player, 'POST', {
+              kind: 'set',
+              tokenId: own.id,
+              value: 100,
+            })
+          ).status,
+          403,
+        );
+        await request(root + '/combat', adm, 'POST', {
+          kind: 'set',
+          tokenId: monster.id,
+          value: 100,
+        });
+        const started = await request(root + '/combat', adm, 'POST', { kind: 'start' });
+        assert.equal(started.data.currentId, monster.id);
+        assert.equal(started.data.nextId, own.id);
+        assert.equal(
+          (await request(root + '/combat', player, 'POST', { kind: 'step', direction: 1 })).status,
+          403,
+        );
+        assert.equal(
+          (await request(root + '/combat', player, 'POST', { kind: 'roll', tokenId: own.id }))
+            .status,
+          409,
+        );
+        const next = await request(root + '/combat', adm, 'POST', { kind: 'step', direction: 1 });
+        assert.equal(next.data.currentId, own.id);
+        const nextRound = await request(root + '/combat', adm, 'POST', {
+          kind: 'step',
+          direction: 1,
+        });
+        assert.equal(nextRound.data.round, 2);
+        const backwards = await request(root + '/combat', adm, 'POST', {
+          kind: 'step',
+          direction: -1,
+        });
+        assert.equal(backwards.data.round, 1);
+        const chosen = await request(root + '/combat', adm, 'POST', {
+          kind: 'goto',
+          tokenId: monster.id,
+        });
+        assert.equal(chosen.data.currentId, monster.id);
+        const spectator = (await request(root + '/combat', other)).data;
+        assert.ok(spectator.entries.every((e: any) => !e.canRoll));
+        assert.ok(!JSON.stringify(spectator).includes('segredo'));
+        const after = (await request(root, adm)).data;
+        assert.equal(after.revision, before.revision);
+        assert.deepEqual(after.document, before.document);
+        assert.deepEqual(
+          (await pool.query('SELECT * FROM characters ORDER BY id')).rows,
+          charsBefore,
+        );
+        const ended = await request(root + '/combat', adm, 'POST', { kind: 'end' });
+        assert.equal(ended.data.active, false);
+        assert.equal(ended.data.entries.length, 0);
+      },
+    );
+    await t.test(
+      'sinal do mestre chega a jogador/espectador sem alterar revisão ou revelar dados',
+      async () => {
+        const created = (await request('/vtt', adm, 'POST', { name: 'Sinais da mesa' })).data,
+          root = '/vtt/rooms/' + created.id;
+        await request('/vtt/join', player, 'POST', { invite: created.invite, role: 'player' });
+        await request('/vtt/join', other, 'POST', { invite: created.invite, role: 'spectator' });
+        const before = (await request(root, adm)).data;
+        const body = { sceneId: before.document.activeScene, x: 100, y: 150 };
+        assert.equal((await request(root + '/signal', player, 'POST', body)).status, 403);
+        assert.equal((await request(root + '/signal', other, 'POST', body)).status, 403);
+        assert.equal(
+          (await request(root + '/signal', adm, 'POST', { ...body, x: 50000 })).status,
+          400,
+        );
+        const result = await request(root + '/signal', adm, 'POST', body);
+        assert.equal(result.status, 200, JSON.stringify(result.data));
+        for (const who of [adm, player, other]) {
+          const signal = await request(root + '/signal', who);
+          assert.equal(signal.status, 200);
+          assert.deepEqual(signal.data, result.data);
+          assert.deepEqual(Object.keys(signal.data).sort(), ['at', 'id', 'sceneId', 'x', 'y']);
+        }
+        assert.equal((await request('/vtt/rooms/' + randomUUID() + '/signal', player)).status, 404);
+        const after = (await request(root, adm)).data;
+        assert.equal(after.revision, before.revision);
+        assert.deepEqual(after.document, before.document);
       },
     );
     await t.test('cliente antigo não pode substituir o documento com efeitos atuais', async () => {

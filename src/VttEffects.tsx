@@ -20,6 +20,7 @@ export function VttEffects({
   apply,
   clear,
   preview,
+  editDeath,
 }: {
   presets: EffectPreset[];
   token?: VttToken;
@@ -29,6 +30,7 @@ export function VttEffects({
   apply: (id: string) => Promise<void>;
   clear: () => Promise<void>;
   preview: (preset: EffectPreset | null) => void;
+  editDeath: (patch: Pick<Partial<VttToken>, 'deathAt' | 'deathAutomatic'>) => Promise<void>;
 }) {
   const [open, setOpen] = useState(false),
     [draft, setDraft] = useState<EffectPreset | null>(null),
@@ -98,6 +100,31 @@ export function VttEffects({
             {token && token.layer !== 'map' ? 'Alvo · ' + token.name : 'Nenhum token selecionado'}
           </div>
           {error && <p role="alert">{error}</p>}
+          <fieldset
+            className="vtt-effects-death"
+            disabled={blocked || !token || token.layer === 'map'}
+          >
+            <legend>Efeito de morte</legend>
+            <label className="vtt-check">
+              <input
+                type="checkbox"
+                checked={!!token?.deathAutomatic}
+                onChange={(e) => void run(() => editDeath({ deathAutomatic: e.target.checked }))}
+              />
+              Automático ao zerar PV
+            </label>
+            <div className="vtt-row">
+              <button onClick={() => void run(() => editDeath({ deathAt: Date.now() }))}>
+                Aplicar efeito de morte
+              </button>
+              <button
+                disabled={!token?.deathAt}
+                onClick={() => void run(() => editDeath({ deathAt: null }))}
+              >
+                Limpar efeito de morte
+              </button>
+            </div>
+          </fieldset>
           <div className="vtt-effects-list">
             {!presets.length && <p>Nenhum efeito salvo. Crie o primeiro abaixo.</p>}
             {presets.map((e) => (

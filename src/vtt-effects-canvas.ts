@@ -1,5 +1,6 @@
 import type { VttToken } from '../shared/vtt';
 import { effectEnds } from '../shared/vtt-effects';
+import { drawEffectFront } from './vtt-effects-front';
 const tau = Math.PI * 2,
   fract = (n: number) => n - Math.floor(n);
 function seed(text: string) {
@@ -21,72 +22,11 @@ function light(
   c.fillStyle = g;
   c.fillRect(x - r, y - r, r * 2, r * 2);
 }
-function flame(
+export function drawTokenEffects(
   c: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  t: number,
-  color: string,
+  token: VttToken,
+  pass: 'behind' | 'front' = 'behind',
 ) {
-  const sway = Math.sin(t * 3 + x) * w * 0.55,
-    g = c.createLinearGradient(x, y, x, y - h);
-  g.addColorStop(0, '#fff0bf');
-  g.addColorStop(0.3, '#ffb35b');
-  g.addColorStop(0.7, color + 'db');
-  g.addColorStop(1, color + '00');
-  c.fillStyle = g;
-  c.beginPath();
-  c.moveTo(x - w, y);
-  c.bezierCurveTo(x - w * 1.6, y - h * 0.4, x + sway - w * 0.8, y - h * 0.6, x + sway, y - h);
-  c.bezierCurveTo(x + sway + w * 0.5, y - h * 0.45, x + w * 1.4, y - h * 0.35, x + w, y);
-  c.closePath();
-  c.fill();
-  c.fillStyle = '#fff3cbbc';
-  c.beginPath();
-  c.moveTo(x - w * 0.35, y);
-  c.quadraticCurveTo(x - w * 0.5, y - h * 0.24, x + sway * 0.25, y - h * 0.52);
-  c.quadraticCurveTo(x + w * 0.65, y - h * 0.25, x + w * 0.35, y);
-  c.fill();
-}
-function frost(
-  c: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  angle: number,
-  color: string,
-) {
-  c.save();
-  c.translate(x, y);
-  c.rotate(angle);
-  const g = c.createLinearGradient(-w, 0, w, -h);
-  g.addColorStop(0, color + 'be');
-  g.addColorStop(0.48, '#e1f4ffff');
-  g.addColorStop(1, color + '65');
-  c.fillStyle = g;
-  c.beginPath();
-  c.moveTo(-w, 0);
-  c.lineTo(-w * 0.65, -h * 0.42);
-  c.lineTo(0, -h);
-  c.lineTo(w * 0.7, -h * 0.46);
-  c.lineTo(w, 0);
-  c.closePath();
-  c.fill();
-  c.strokeStyle = '#d5f1ffe0';
-  c.lineWidth = Math.max(0.7, w * 0.07);
-  c.beginPath();
-  c.moveTo(0, 0);
-  c.lineTo(0, -h);
-  c.moveTo(-w * 0.65, -h * 0.42);
-  c.lineTo(0, -h * 0.32);
-  c.lineTo(w * 0.7, -h * 0.46);
-  c.stroke();
-  c.restore();
-}
-export function drawTokenEffects(c: CanvasRenderingContext2D, token: VttToken) {
   if (token.layer === 'map') return;
   const now = Date.now(),
     reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -101,14 +41,14 @@ export function drawTokenEffects(c: CanvasRenderingContext2D, token: VttToken) {
     c.globalAlpha *= end ? Math.min(1, (end - now) / 600) : 1;
     c.lineCap = 'round';
     c.lineJoin = 'round';
+    if (pass === 'front') {
+      drawEffectFront(c, e, r, t, random);
+      c.restore();
+      continue;
+    }
     if (e.kind === 'fire') {
       light(c, 0, r * 0.38, r * 1.35, e.color, '38');
-      for (let i = 0; i < 7; i++) {
-        const x = (i - 3) * r * 0.25,
-          y = r * (0.62 - Math.abs(i - 3) * 0.13),
-          h = r * (0.5 + random(i) * 0.63) * (1 + 0.12 * Math.sin(t * 5 + i));
-        flame(c, x, y, r * (0.095 + random(i + 8) * 0.035), h, t + i, e.color);
-      }
+      drawEffectFront(c, e, r * 1.12, t, random);
       for (let i = 0; i < 22; i++) {
         const p = fract(t * (0.26 + random(i) * 0.3) + random(i + 40)),
           x = (random(i + 70) - 0.5) * r * 1.7 + Math.sin(t * 2 + i) * r * 0.1,
@@ -123,20 +63,6 @@ export function drawTokenEffects(c: CanvasRenderingContext2D, token: VttToken) {
       }
     } else if (e.kind === 'frost') {
       light(c, 0, r * 0.45, r * 1.18, e.color, '26');
-      for (let i = 0; i < 9; i++) {
-        const a = (i - 4) * 0.25,
-          x = Math.sin(a) * r * 0.85,
-          y = Math.cos(a) * r * 0.66;
-        frost(
-          c,
-          x,
-          y,
-          r * (0.07 + random(i) * 0.045),
-          r * (0.28 + random(i + 15) * 0.38),
-          a * 0.85 + Math.sin(t * 0.7 + i) * 0.025,
-          e.color,
-        );
-      }
       c.strokeStyle = '#d3efffcc';
       c.lineWidth = r * 0.01;
       for (let i = 0; i < 8; i++) {

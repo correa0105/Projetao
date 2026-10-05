@@ -3,7 +3,10 @@ import assert from 'node:assert/strict';
 import * as C from 'cannon-es';
 import { shape } from '../src/vtt-dice-geometry.js';
 import { diceHull, DicePhysics } from '../src/vtt-dice-physics.js';
-import { attackOutcome, criticalDamage } from '../shared/vtt-attack.js';
+import { attackFormula, attackOutcome, criticalDamage } from '../shared/vtt-attack.js';
+import { hpCommand } from '../shared/vtt-hp.js';
+import { bossStyles, tokenSchema, visibleBossStyle } from '../shared/vtt.js';
+import { monsterArt } from '../shared/vtt-monster-art.js';
 const rng = () => {
   let n = 42;
   return () => {
@@ -76,4 +79,32 @@ test('Attack equality hits AC, natural one misses and natural twenty hits', () =
 test('Critical damage doubles dice without doubling the modifier', () => {
   assert.deepEqual(criticalDamage('2d6+3'), ['4d6+3']);
   assert.deepEqual(criticalDamage('60d4-2'), ['60d4-2', '60d4']);
+});
+test('Attack mode keeps the modifier and rejects non-attack formulas', () => {
+  assert.equal(attackFormula('1d20+7', 'advantage'), '2d20kh1+7');
+  assert.equal(attackFormula('1d20-2', 'disadvantage'), '2d20kl1-2');
+  assert.equal(attackFormula('2d20kh1+3', 'normal'), '1d20+3');
+  assert.throws(() => attackFormula('3d6', 'advantage'));
+});
+test('PV commands distinguish setting, healing and damage, with bounds', () => {
+  assert.equal(hpCommand('+4', 5, 11), 9);
+  assert.equal(hpCommand('-3', 5, 11), 2);
+  assert.equal(hpCommand('4', 5, 11), 4);
+  assert.equal(hpCommand('+99', 5, 11), 11);
+  assert.equal(hpCommand('-99', 5, 11), 0);
+  for (const value of ['', '+', '1.5', '1e3', 'foo']) assert.throws(() => hpCommand(value, 5, 11));
+});
+test('Boss choices omit obsolete styles while older rooms retain compatibility', () => {
+  assert.deepEqual(bossStyles, [
+    'classic-red',
+    'classic-ice',
+    'classic-grass',
+    'classic-oak',
+    'evil',
+  ]);
+  assert.equal(tokenSchema.shape.bossStyle.parse('royal'), 'royal');
+  assert.equal(visibleBossStyle('royal'), 'classic-red');
+  assert.equal(visibleBossStyle('classic-ice'), 'classic-ice');
+  assert.match(monsterArt('monster-goblin-warrior', ''), /^\/vtt\/monsters\//);
+  assert.equal(monsterArt('', ' Goblin Warrior '), monsterArt('monster-goblin-warrior', ''));
 });

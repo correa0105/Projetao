@@ -142,6 +142,34 @@ export function vttSheetRouter(getRoom: RoomAccess) {
     });
     res.json(await sheetData(getRoom, rid, tid, user));
   });
+  router.post('/vtt/rooms/:id/sheets/:token/heal', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      tid = uuid.parse(req.params.token),
+      user = res.locals.user.id;
+    const { amount } = z
+      .object({ amount: z.number().int().min(1).max(100000) })
+      .strict()
+      .parse(req.body);
+    await transaction(async (db) => {
+      await requireAdministrator(user, db as PoolClient);
+      const a = await access(getRoom, db, rid, tid, user, true);
+      if (!a.isGm) throw new AppError(403, 'Somente o mestre desta mesa pode curar manualmente.');
+      const oldHp = a.token.hp;
+      a.token.hp = Math.min(a.token.maxHp, a.token.hp + amount);
+      applyTokenDeath(a.token, oldHp);
+      await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
+        rid,
+        JSON.stringify(a.room.document),
+      ]);
+      await db.query('INSERT INTO vtt_messages(room_id,author_id,author,text)VALUES($1,$2,$3,$4)', [
+        rid,
+        user,
+        a.character.name,
+        'Recuperou ' + (a.token.hp - oldHp) + ' PV.',
+      ]);
+    });
+    res.json(await sheetData(getRoom, rid, tid, user));
+  });
   router.post('/vtt/rooms/:id/sheets/:token/use', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       tid = uuid.parse(req.params.token),
