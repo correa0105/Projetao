@@ -1,5 +1,23 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Placa limpa, falas naturais e animais clássicos v3 (05/10/2026)
+
+Retirado SVG de riscos de escrita e keyframes correspondentes: a madeira fica
+limpa durante o gesto; resposta só aparece ao apresentar a placa. Saudação,
+despedida, perguntas e dez comentários reescritos como falas cotidianas de Garalho,
+com observações de cada animal, sem instruções genéricas ou texto de inventário.
+Pedido ampliado: substituir as dez primeiras aparências com arte mais trabalhada
+como as alternativas. Três pranchas 2×2 em classics-a/b/c-v3.png têm cães/gatos/raposa
+adultos em pé e anatomia/texturas mais naturais. Coruja clássica e alternativa
+apoiadas nas próprias patas, sem tronco/poleiro; alternativa em PNG separado.
+src/pet-art.ts usa fontes por animal e viewports próprios com meet/clipPath;
+tamanhos de jardim continuam relativos à espécie. IDs, preços, persistência
+e aparências compradas preservados. Artes e prompts em PET-SHOP-REFINEMENT.md.
+Validação: TypeScript/build e fluxo real no Edge em banco descartável passaram;
+17 aparências sem cortes/vizinhos, placa limpa e responsividade em 320/390/768 px.
+Docker local atualizado e saudável; localhost:3000 serve index-1YPdHXfR.js /
+index-BdzxehXv.css e as quatro novas artes com HTTP 200. Sem alteração SQL.
+
 ## Reforma completa da Casa dos mascotes (04/10/2026)
 
 Pedido atual substitui a composição inicial: Baguncinha/cadeira/café removidos

@@ -19,6 +19,9 @@ tem panorama do mundo. [Funcionamento e preços](docs/COMPANHEIROS-EVENTOS-TITUL
 Casa dos mascotes reformulada: catálogo amplo, imagens sem cortes ou figuras
 vizinhas, animais de tamanhos diferentes no jardim e “Ler placa” para ampliar
 a resposta. [Artes e prompts da reforma](docs/PET-SHOP-REDESIGN.md).
+Refino atual: falas mais naturais, madeira sem riscos animados, dez aparências
+clássicas novas e ambas as corujas no chão, sem poleiro.
+[Artes e prompts atuais](docs/PET-SHOP-REFINEMENT.md).
 
 ## Administração e novos arquivos da Lore
 

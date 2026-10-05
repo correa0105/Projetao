@@ -5,7 +5,7 @@ export const pets = [
     price_cp: 1000,
     cell: 0,
     description: 'Fiel, curioso e sempre pronto para uma caminhada.',
-    sign: 'Fiel e companheiro. Reserve tempo para passear e brincar com ele.',
+    sign: 'Ele já está de olho na porta. Acho que quer passear com você.',
   },
   {
     id: 'cat',
@@ -13,7 +13,7 @@ export const pets = [
     price_cp: 1500,
     cell: 1,
     description: 'Um observador de bigodes, com horários e opiniões próprios.',
-    sign: 'Você oferece abrigo. Ele escolhe a hora de oferecer carinho.',
+    sign: 'Se ele deitar na sua mochila, considere a escolha feita.',
   },
   {
     id: 'rabbit',
@@ -21,7 +21,7 @@ export const pets = [
     price_cp: 500,
     cell: 2,
     description: 'Orelhas atentas, patas leves e gosto por cantinhos tranquilos.',
-    sign: 'Feno, sossego e uma boa toca. Nada de puxar pelas orelhas.',
+    sign: 'Esse gosta de colo, mas só depois de pegar confiança.',
   },
   {
     id: 'owl',
@@ -29,7 +29,7 @@ export const pets = [
     price_cp: 3000,
     cell: 3,
     description: 'Uma companheira noturna, silenciosa e de olhar atento.',
-    sign: 'Ela prefere a noite. Respeite o descanso da sua companheira.',
+    sign: 'De dia, deixe ela dormir. À noite, é ela quem cuida do movimento.',
   },
   {
     id: 'fox',
@@ -37,7 +37,7 @@ export const pets = [
     price_cp: 4000,
     cell: 4,
     description: 'Esperta, inquieta e apaixonada por investigar a trilha.',
-    sign: 'Esperta e curiosa. Guarde o lanche: ela já está de olho nele.',
+    sign: 'Essa viu você chegar e já quer saber o que tem na sua bolsa.',
   },
   {
     id: 'raven',
@@ -45,7 +45,7 @@ export const pets = [
     price_cp: 2000,
     cell: 5,
     description: 'Olhos atentos, penas negras e curiosidade por coisas brilhantes.',
-    sign: 'Um amigo atento. Só não deixe suas moedas brilhantes ao alcance dele.',
+    sign: 'Ele leva um tempo para confiar. Depois, não larga mais do seu pé.',
   },
   {
     id: 'frog',
@@ -53,7 +53,7 @@ export const pets = [
     price_cp: 200,
     cell: 6,
     description: 'Um pequeno companheiro de passos lentos e saltos inesperados.',
-    sign: 'Um cantinho úmido e seguro. Beijar não faz parte dos cuidados.',
+    sign: 'Fica quietinho no seu canto. Quando chove, a casa inteira escuta.',
   },
   {
     id: 'snake',
@@ -61,7 +61,7 @@ export const pets = [
     price_cp: 1200,
     cell: 7,
     description: 'Serena, discreta e de escamas em tons de terra.',
-    sign: 'Esta não é venenosa. Dê abrigo, calor e espaço; manuseie com cuidado.',
+    sign: 'Ela se acostuma com calma. Deixe vir até você, sem pressa.',
   },
   {
     id: 'rat',
@@ -69,7 +69,7 @@ export const pets = [
     price_cp: 300,
     cell: 8,
     description: 'Inteligente, sociável e dono de um nariz muito curioso.',
-    sign: 'Sociável e bom de faro. Até os biscoitos escondidos ele encontra.',
+    sign: 'Já descobriu onde guardo a comida. Esconder não adianta mais.',
   },
   {
     id: 'guinea-pig',
@@ -77,7 +77,7 @@ export const pets = [
     price_cp: 600,
     cell: 9,
     description: 'Um amigo tranquilo, de focinho pequeno e muitos assobios.',
-    sign: 'Tranquilo e falante. Ele sempre avisa quando é hora da comida.',
+    sign: 'Esse assobia quando me vê. Desconfio que seja por causa da comida.',
   },
 ] as const;
 export type Pet = (typeof pets)[number];
@@ -106,18 +106,18 @@ export const garalhoQuestions = [
     id: 'name',
     question: 'Quem é você?',
     meow: 'Miau… miaaau.',
-    answer: 'Garalho. Cuido desta casa e dos bichinhos. Eu escrevo; você lê. Miau!',
+    answer: 'Sou Garalho. Essa é minha casa. Pode olhar os bichos à vontade.',
   },
   {
     id: 'companion',
     question: 'Como escolho um companheiro?',
     meow: 'Miau. Miau!',
-    answer: 'Conheça cada um. Escolha pela companhia que deseja, além da aparência.',
+    answer: 'Passe um tempo com eles. Você vai perceber com qual se dá melhor.',
   },
   {
     id: 'care',
     question: 'Como cuida dos animais?',
     meow: 'Miaaau… miau.',
-    answer: 'Com abrigo, alimento e paciência. Leve um amigo e trate-o com respeito.',
+    answer: 'Aqui ninguém passa fome ou frio. E carinho nunca falta.',
   },
 ] as const;

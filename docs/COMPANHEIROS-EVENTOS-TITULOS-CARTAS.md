@@ -26,6 +26,9 @@ Catálogo amplo sem rolagens internas; imagens inteiras em SVG com enquadramento
 por silhueta, preservando proporções. Dez espécies e sete aparências novas v2.
 Ler placa amplia a resposta; escolha de mascote retorna ao jardim. Artes/prompts
 e detalhes de renderização em [PET-SHOP-REDESIGN.md](PET-SHOP-REDESIGN.md).
+Refino de 05/10: madeira sem riscos animados, falas cotidianas e dez clássicos
+v3 no nível das alternativas. Ambas as corujas estão no chão, sem poleiro.
+[Artes e prompts atuais](PET-SHOP-REFINEMENT.md).
 
 | Mascote | Preço (PO) |
 | --- | ---: |

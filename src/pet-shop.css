@@ -278,7 +278,7 @@
 .garalho-scene[data-phase='writing'] .garalho-writing-paw {
   animation: garalho-pencil 0.3s ease-in-out infinite alternate;
 }
-/* The wood and gripping paws are part of both paintings. Only chalk is overlaid. */
+/* Wood and gripping paws are painted in both poses; only the final reply is overlaid. */
 .garalho-sign {
   position: absolute;
   left: 22.5%;
@@ -309,27 +309,6 @@
 .garalho-scene[data-phase='writing'] .garalho-sign-front,
 .garalho-scene[data-phase='turning'] .garalho-sign-front {
   opacity: 0;
-}
-.garalho-sign-writing {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: translateY(7%) rotate(-5deg);
-}
-.garalho-sign-writing svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: #e5d2a3;
-  stroke-width: 1;
-}
-.garalho-scene[data-phase='writing'] .garalho-sign-writing {
-  opacity: 0.65;
-}
-.garalho-scene[data-phase='writing'] .garalho-sign-writing path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: garalho-write-lines 2.5s linear forwards;
 }
 .garalho-meow {
   position: absolute;
@@ -574,11 +553,6 @@
   font-size: 10px;
   color: #aaa08c;
   margin-top: 4px;
-}
-@keyframes garalho-write-lines {
-  to {
-    stroke-dashoffset: 0;
-  }
 }
 @keyframes garalho-pencil {
   from {

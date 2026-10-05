@@ -33,6 +33,10 @@ fisicamente nas patas e duas poses para escrever/apresentar. Preservar olhos
 separados. Cada arte de animal tem viewport próprio e clipPath SVG explícito
 para não cortar silhuetas nem mostrar vizinhos; nunca esticar atlas em células
 CSS iguais. Arte, prompts e enquadramento em docs/PET-SHOP-REDESIGN.md.
+Refino de 05/10: placa sem riscos/linhas animadas; falas naturais e individuais.
+As dez aparências clássicas usam novas artes v3 no nível das alternativas.
+Ambas as corujas ficam no chão, sem tronco/poleiro, com patas visíveis.
+Preservar tamanho relativo por espécie. Prompts em docs/PET-SHOP-REFINEMENT.md.
 
 ## Acordos de desenvolvimento
 

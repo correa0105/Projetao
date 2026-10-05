@@ -115,7 +115,7 @@ export function PetShop({
   const [name, setName] = useState('');
   const [phase, setPhase] = useState<'ready' | 'writing' | 'turning'>('ready');
   const [answer, setAnswer] = useState(
-    'Bem-vindo. Escolha um amigo. Aqui todos recebem abrigo e cuidado.',
+    'Pode chegar. Dê uma olhada nos bichos; cada um tem seu jeito.',
   );
   const [reading, setReading] = useState(false);
   const [meow, setMeow] = useState('Miau…');
@@ -212,7 +212,7 @@ export function PetShop({
       if (live.current) {
         key.current = crypto.randomUUID();
         setNotice(`${result.pet.name} agora acompanha ${character.name}.`);
-        write('Negócio feito. Seu amigo está no inventário. Cuide bem dele.', 'Miau!');
+        write('Pronto, podem ir. Quando passarem por aqui, quero saber como ele está.', 'Miau!');
       }
       await onPurchased();
     } catch (e) {
@@ -315,12 +315,7 @@ export function PetShop({
           <button
             className="garalho-portrait"
             aria-label="Conversar com Garalho"
-            onClick={() =>
-              write(
-                'Garalho. Cuido desta casa e dos bichinhos. Eu escrevo; você lê. Miau!',
-                'Miau…',
-              )
-            }
+            onClick={() => write(garalhoQuestions[0].answer, 'Miau…')}
           >
             <img
               className="garalho-ready-pose"
@@ -347,14 +342,6 @@ export function PetShop({
           <div className="garalho-sign" data-phase={phase}>
             <div className="garalho-sign-front">
               <p aria-live="polite">{phase === 'ready' ? answer : ''}</p>
-            </div>
-            <div className="garalho-sign-writing" aria-hidden="true">
-              <svg viewBox="0 0 150 60">
-                <path
-                  pathLength="1"
-                  d="M20 14q12-5 24 0t24 0 28 0M20 28q15-4 33 0t30 0 17 0M20 42q18-5 36 0t39 0"
-                />
-              </svg>
             </div>
           </div>
           <div className="garalho-caption">

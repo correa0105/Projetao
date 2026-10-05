@@ -1,5 +1,9 @@
 # Reforma da Casa dos mascotes — 04/10/2026
 
+Atualização de 05/10: riscos animados retirados, falas renovadas, dez aparências
+clássicas v3 e ambas as corujas sem poleiro. Direção e prompts vigentes em
+[PET-SHOP-REFINEMENT.md](PET-SHOP-REFINEMENT.md); as artes v2 abaixo são históricas.
+
 Direção atual do usuário: refazer a página inteira, retirar o esqueleto, diminuir Garalho, colocar a placa nas patas e corrigir proporções e recortes de todos os mascotes. Substitui a composição anterior com Baguncinha no jardim.
 
 O cenário ocupa somente o jardim superior, preservando as proporções da casa independentemente da altura do catálogo. Garalho usa duas poses pintadas com a placa integrada às patas: escreve por 2,5 s com movimento pequeno da pata/lápis, apresenta a placa em 480 ms e exibe a resposta na madeira. Não mover o gato inteiro como efeito de escrita. “Ler placa” abre a mesma mensagem ampliada. Os olhos separados, mochila mecânica, capa, miados, perguntas, compras, nomes e sons por espécie permanecem.

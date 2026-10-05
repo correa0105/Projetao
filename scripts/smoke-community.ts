@@ -189,9 +189,10 @@ try {
   const start = Date.now();
   await q.click();
   await expect(page.locator('.garalho-sign')).toHaveAttribute('data-phase', 'writing');
+  await expect(page.locator('.garalho-sign svg')).toHaveCount(0);
   await expect(page.locator('.garalho-writing-pose')).toHaveCSS('opacity', '1');
   await page.screenshot({ path: 'test-results/garalho-writing.png' });
-  await expect(page.locator('.garalho-sign-front p')).toContainText('Conheça cada um.', {
+  await expect(page.locator('.garalho-sign-front p')).toContainText('Passe um tempo com eles.', {
     timeout: 5000,
   });
   expect(Date.now() - start).toBeGreaterThan(2400);
@@ -202,7 +203,7 @@ try {
   expect(board!.y + board!.height).toBeLessThan(catBox!.y + catBox!.height);
   await page.getByRole('button', { name: 'Ler placa', exact: true }).click();
   await expect(page.getByRole('dialog', { name: 'Placa de Garalho', exact: true })).toContainText(
-    'Conheça cada um.',
+    'Passe um tempo com eles.',
   );
   await page.getByRole('button', { name: 'Fechar', exact: true }).click();
   for (const width of [320, 390, 768]) {
