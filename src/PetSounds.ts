@@ -41,8 +41,8 @@ export function usePetAppearanceSound(petId: string, appearance: string, trigger
       stop();
       try {
         if (recorded.has(petId)) {
-          // Separate filename keeps browsers from replaying the old raven clip with speech.
-          const file = petId === 'raven' ? 'raven-caw-v2' : petId;
+          // Versioned file avoids cached raven recordings with speech or wind.
+          const file = petId === 'raven' ? 'raven-caw-v3' : petId;
           const audio = new Audio(`/audio/pets/${file}.wav`);
           voice.current = audio;
           audio.volume = settings.current.volume * (petId === 'rat' ? 0.55 : 0.8);

@@ -298,7 +298,7 @@ try {
         beforeMedia,
       );
       expect(clips.length).toBeGreaterThan(0);
-      expect(clips.every((clip: string) => clip === 'raven-caw-v2.wav')).toBe(true);
+      expect(clips.every((clip: string) => clip === 'raven-caw-v3.wav')).toBe(true);
       expect(await page.evaluate(() => (window as any).__communityAudio.length)).toBe(before);
     }
   }

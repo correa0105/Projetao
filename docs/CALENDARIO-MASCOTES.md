@@ -68,12 +68,17 @@ de gato só ao responder pergunta. Todos seguem Efeitos sonoros, volume, silênc
 e encerramento ao trocar animal, sair ou ocultar a página; não há som do pet
 no acampamento.
 
-Correção posterior de 05/10: usuário quer manter o som do animal, removendo só
-a voz humana. O corvo voltou a ter grasnado nas duas aparências, com uma nova
-gravação curta de Bidone/Freesound (CC0), em `raven-caw-v2.wav`. A gravação antiga
-fica arquivada com créditos, sem reprodução. O nome novo do arquivo evita que
-o cache do navegador continue tocando o áudio anterior. O importador usa fonte,
-cache e recorte explícitos para não recuperar aquele trecho por volume.
+Correções de 05/10: o corvo mantém o grasnado nas duas aparências, sem voz humana
+nem vento de fundo. O áudio ativo é `raven-caw-v3.wav`, tratado a partir da gravação
+de Bidone/Freesound (CC0). `raven.wav` (voz humana) e `raven-caw-v2.wav` (vento)
+ficam arquivados com créditos, sem reprodução. O nome novo evita o cache antigo.
+`scripts/clean-raven-audio.mjs` usa perfil de ruído dos trechos sem grasnado,
+redução espectral com suavização e corte de graves em 450 Hz. Preserva os dois
+chamados e sua altura natural, recorta o início/final e silencia o intervalo com
+fades suaves. Duração 1,51 s, PCM mono 48 kHz, pico 0,7 sem saturação; os graves
+abaixo de 250 Hz caíram mais de 52 dB durante os chamados, mantendo a energia
+da voz entre 800–5000 Hz. Regerar só esse animal, sem alterar os demais áudios:
+`node scripts/import-pet-audio.mjs --raven-only`.
 
 `scripts/import-pet-audio.mjs` importa fontes licenciadas, recorta uma voz sem
 alterar pitch e grava PCM mono com normalização/fades. O cache original fica em

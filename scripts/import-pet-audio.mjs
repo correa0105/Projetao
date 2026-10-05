@@ -3,7 +3,8 @@ import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { chromium } from '@playwright/test';
-const sources = [
+import { cleanRavenAudio } from './clean-raven-audio.mjs';
+const allSources = [
   { id: 'dog', title: 'Barking of a dog 2.ogg', length: 1.5 },
   { id: 'cat', title: 'Meow.ogg', length: 1 },
   { id: 'owl', title: 'Tawny Owl (Strix aluco) (W1CDR0001519 BD8).ogg', length: 2.5 },
@@ -13,7 +14,7 @@ const sources = [
     author: 'Bidone',
     length: 2.08,
     offset: 0,
-    fileName: 'raven-caw-v2.wav',
+    fileName: 'raven-caw-v3.wav',
     cacheKey: 'raven-caw-v2',
   },
   { id: 'fox', title: 'Red Fox (Vulpes vulpes) (W1CDR0001529 BD12).ogg', length: 1.7 },
@@ -21,9 +22,13 @@ const sources = [
   { id: 'guinea-pig', freesound: 583077, author: 'Breviceps', length: 1.6 },
   { id: 'rat', freesound: 143125, author: 'Zabuhailo', length: 0.9 },
 ];
+const ravenOnly = process.argv.includes('--raven-only');
+const sources = ravenOnly ? allSources.filter(({ id }) => id === 'raven') : allSources;
 await mkdir('.local/pet-audio', { recursive: true });
 await mkdir('public/audio/pets', { recursive: true });
-const manifest = [];
+const manifest = ravenOnly
+  ? JSON.parse(await readFile('public/audio/pets/manifest.json', 'utf8'))
+  : [];
 for (const source of sources) {
   let url, author, license, page;
   if (source.title) {
@@ -64,7 +69,7 @@ for (const source of sources) {
     bytes = Buffer.from(await audio.arrayBuffer());
   }
   await writeFile(cached, bytes);
-  manifest.push({
+  const entry = {
     ...source,
     author,
     license,
@@ -77,8 +82,14 @@ for (const source of sources) {
           : 'https://creativecommons.org/licenses/' +
             license.toLowerCase().replace('cc ', '').replaceAll(' ', '/') +
             '/',
-    changes: 'Trecho curto em mono, volume nivelado e fades; sem alteração de altura da voz.',
-  });
+    changes:
+      source.id === 'raven'
+        ? 'Grasnados isolados com redução espectral do vento, corte de graves, silêncio entre chamados, volume nivelado e fades; altura natural preservada.'
+        : 'Trecho curto em mono, volume nivelado e fades; sem alteração de altura da voz.',
+  };
+  const existing = manifest.findIndex(({ id }) => id === source.id);
+  if (existing >= 0) manifest[existing] = entry;
+  else manifest.push(entry);
   console.log(`${source.id}: ${license}, ${bytes.length} bytes.`);
 }
 const server = createServer(async (req, res) => {
@@ -130,6 +141,11 @@ try {
       await ctx.close();
       return { rate, samples: Array.from(clip), offset: offset / rate };
     }, source);
+    if (source.id === 'raven') {
+      const cleaned = cleanRavenAudio(data.samples, data.rate);
+      data.samples = Array.from(cleaned.samples);
+      data.offset += cleaned.offset;
+    }
     const wav = Buffer.alloc(44 + data.samples.length * 2);
     wav.write('RIFF');
     wav.writeUInt32LE(wav.length - 8, 4);
@@ -165,7 +181,7 @@ try {
             `- **${item.id}**: [gravação original](${item.source}), ${item.author}, [${item.license}](${item.license_url}).`,
         )
         .join('\n') +
-      '\n\nCobra e coelho: efeitos suaves produzidos pelo projeto (sopro e farejar), sem amostras de terceiros.\n\nGravação antiga `raven.wav` arquivada, sem reprodução: [Common Raven.ogg](https://commons.wikimedia.org/wiki/File:Common_Raven.ogg), G. McGrane, domínio público. O som ativo do corvo é `raven-caw-v2.wav`.\n',
+      '\n\nCorvo: vento removido por redução espectral e corte de graves; intervalos entre grasnados silenciados, com fades suaves. Altura natural preservada.\n\nCobra e coelho: efeitos suaves produzidos pelo projeto (sopro e farejar), sem amostras de terceiros.\n\nGravação antiga `raven.wav` arquivada, sem reprodução: [Common Raven.ogg](https://commons.wikimedia.org/wiki/File:Common_Raven.ogg), G. McGrane, domínio público. `raven-caw-v2.wav` também está arquivado por conter vento. O som ativo do corvo é `raven-caw-v3.wav`.\n',
   );
 } finally {
   await browser.close();

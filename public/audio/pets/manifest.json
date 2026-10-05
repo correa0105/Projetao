@@ -43,15 +43,15 @@
     "freesound": 66763,
     "author": "Bidone",
     "length": 2.08,
-    "offset": 0,
-    "fileName": "raven-caw-v2.wav",
+    "offset": 0.245,
+    "fileName": "raven-caw-v3.wav",
     "cacheKey": "raven-caw-v2",
     "license": "CC0",
     "source": "https://freesound.org/people/Bidone/sounds/66763/",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "changes": "Trecho curto em mono, volume nivelado e fades; sem alteração de altura da voz.",
-    "file": "/audio/pets/raven-caw-v2.wav",
-    "duration": 2.0647291666666665
+    "changes": "Grasnados isolados com redução espectral do vento, corte de graves, silêncio entre chamados, volume nivelado e fades; altura natural preservada.",
+    "file": "/audio/pets/raven-caw-v3.wav",
+    "duration": 1.51
   },
   {
     "id": "fox",

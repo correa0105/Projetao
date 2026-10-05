@@ -94,7 +94,7 @@ try {
         (window as any).__petVoices.slice(index).map((item: any) => item.source.split('/').at(-1)),
       before,
     ),
-  ).toEqual(['raven-caw-v2.wav']);
+  ).toEqual(['raven-caw-v3.wav']);
   await page.locator('.pet-appearances button').last().click();
   await expect(page.locator('.pet-shop-preview [role=img]')).toHaveAttribute(
     'aria-label',
@@ -110,7 +110,7 @@ try {
         before,
       ),
     )
-    .toEqual(['raven-caw-v2.wav', 'raven-caw-v2.wav']);
+    .toEqual(['raven-caw-v3.wav', 'raven-caw-v3.wav']);
   await expect(page.locator('.garalho-reply')).toHaveCount(0);
   await page
     .locator('.pet-shop-choices button')

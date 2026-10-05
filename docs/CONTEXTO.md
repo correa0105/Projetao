@@ -1,5 +1,23 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Vento do corvo removido (05/10/2026)
+
+Usuário pediu apenas o som do animal. Áudio ativo passa a `raven-caw-v3.wav`,
+com os dois grasnados de Bidone/Freesound 66763 preservados. Redução espectral
+aprende o ruído nos trechos sem chamado; suavização evita artefatos metálicos,
+corte de graves remove vento e fades isolam os chamados, com silêncio exato
+entre eles. Novo nome impede replay da v2 em cache. `clean-raven-audio.mjs`
+é reproduzível sem dependências novas; `import-pet-audio.mjs --raven-only`
+regenera só o corvo. Fontes, cache original, gravações anteriores e demais sons
+preservados. Créditos e manifest atualizados.
+Análise PCM: 1,51 s, 48 kHz, pico 0,7 sem saturação; graves abaixo de 250 Hz
+reduzidos em 60,6/52,8 dB nos dois chamados, energia da voz preservada
+(+0,4/+0,3 dB entre 800–5000 Hz), similaridade espectral acima de 99,5%.
+TypeScript/build cliente e servidor passaram, assim como smoke Edge em banco
+descartável: somente v3 toca, uma vez, nas duas aparências. Docker local atualizado
+e saudável, index-DcuLLrc8.js / index-BV9BEDFq.css confirmado; áudio servido com
+bytes idênticos ao PCM validado (145004 bytes). Sem alteração SQL.
+
 ## Corvo com grasnado, sem voz humana (05/10/2026)
 
 Usuário corrigiu a interpretação: retirar somente a voz humana, preservando

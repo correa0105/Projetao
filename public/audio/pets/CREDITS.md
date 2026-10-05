@@ -11,6 +11,8 @@ Trechos em mono com volume nivelado e fades. A altura das vozes foi preservada. 
 - **guinea-pig**: [gravação original](https://freesound.org/people/Breviceps/sounds/583077/), Breviceps, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 - **rat**: [gravação original](https://freesound.org/people/Zabuhailo/sounds/143125/), Zabuhailo, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 
+Corvo: vento removido por redução espectral e corte de graves; intervalos entre grasnados silenciados, com fades suaves. Altura natural preservada.
+
 Cobra e coelho: efeitos suaves produzidos pelo projeto (sopro e farejar), sem amostras de terceiros.
 
-Gravação antiga `raven.wav` arquivada, sem reprodução: [Common Raven.ogg](https://commons.wikimedia.org/wiki/File:Common_Raven.ogg), G. McGrane, domínio público. O som ativo do corvo é `raven-caw-v2.wav`.
+Gravação antiga `raven.wav` arquivada, sem reprodução: [Common Raven.ogg](https://commons.wikimedia.org/wiki/File:Common_Raven.ogg), G. McGrane, domínio público. `raven-caw-v2.wav` também está arquivado por conter vento. O som ativo do corvo é `raven-caw-v3.wav`.
