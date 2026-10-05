@@ -20,6 +20,8 @@ import {
   ScrollText,
   Shield,
   Users,
+  Dices,
+  Crown,
 } from 'lucide-react';
 import {
   CandleIcon,
@@ -44,6 +46,8 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
       { page: 'inventory', label: 'Inventário', icon: Backpack },
       { page: 'achievements', label: 'Conquistas', icon: Trophy },
       { page: 'cards', label: 'Cartas', icon: Layers },
+      { page: 'hall', label: 'Hall da Fama', icon: Crown },
+      { page: 'profiles', label: 'Perfis', icon: Users },
     ],
   },
   {
@@ -53,6 +57,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     items: [
       { page: 'board', label: 'Mural', icon: ScrollText },
       { page: 'events', label: 'Eventos', icon: CalendarDays },
+      { page: 'vtt', label: 'Mesa virtual', icon: Dices },
     ],
   },
   {

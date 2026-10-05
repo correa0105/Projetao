@@ -1,5 +1,46 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Mesa virtual, Hall da Fama e perfis sociais (05/10/2026)
+
+Entregas reunidas deste turno: **Mural → Mesa virtual**, **Personagem → Hall da
+Fama / Perfis**. Migrations 058–059 aplicadas no Docker local; saúde OK. VTT tem
+mapa/tokens, grade quadrada/hexagonal, régua, desenho/áreas, luz por raios, paredes/
+portas/janelas, névoa manual, fichas de sessão, biblioteca de imagens, dados/chat,
+iniciativa, diário, música e exportação PNG/JSON. Administrador cria/mestra apenas
+suas mesas; jogador entra por convite, importa cópia do próprio personagem e move
+tokens atribuídos. Nenhuma alteração de sessão escreve no personagem original.
+330 monstros/339 magias SRD 5.2.1, em inglês, obtidos dos registros abertos `srd52`
+do formato 5etools; sem ilustrações ou conteúdo fechado de livros. JSON próprio
+do mestre amplia a biblioteca. Não apresentar como cópia completa do Roll20 nem
+automação integral de D&D. Limites e fontes em docs/VTT-PERFIS-HALL.md.
+
+Perfis por ID da conta Better Auth, avatares circulares, busca, apresentação/
+cenário pessoais, amizades com aceite e chat privado entre amigos. Bloqueio,
+histórico, leitura e não lidas. DMs não são retornadas a administradores externos.
+Visita autenticada tem personagens/companheiros e navegação lateral por conquistas,
+Hall, ficha e cartas de consulta, sem expor e-mail, ouro ou inventário privado.
+Escolha do personagem muda a montaria/mascote exibidos. O Hall usa registros reais
+do servidor, categorias e pesos editáveis pelo administrador; uma avaliação por
+conta, sem autoavaliação e média ponderada no ranking.
+
+Conquistas original preservada, agora com quatro molduras trabalhadas, duas à
+esquerda e duas à direita da estante, brilho dourado e seleção por retrato também
+na visita. Duas posições reservadas quando a conta tem só dois personagens;
+não aumentou limite nem criou personagens fictícios. Artes transparentes e máscaras
+em public/profiles; prompts/proporções em docs/VTT-PERFIS-HALL.md.
+
+Validação: build completo Docker (TypeScript/cliente/servidor), 11 verificações de
+API/geometria VTT/social, sete de economia/ownership/comunidade anteriores e browser
+de Conquistas original. Browser novo testa duas contas, amizade/chat, visitas,
+companheiros, ficha/cartas, molduras, Hall, importação, grade/barreira, compêndio,
+dados, exportação, movimento do jogador bloqueado/restaurado e movimento livre;
+layouts 1440/768/390/320. Todos em bancos descartáveis. Comparação no banco local
+confirmou contas/personagens, inventário/compras, conquistas/estantes, companheiros,
+cartas/títulos, ouro/progressão preservados. Backup anterior privado em
+`.local/backups/before-vtt-social-20261005-104146.dump` (431.444.668 bytes).
+Comandos reproduzíveis: `node scripts/test-vtt-social-isolated.mjs` e `--browser`.
+Estado atualizado enviado para origin/Welson após validação; nunca main.
+
 ## Vento do corvo removido (05/10/2026)
 
 Usuário pediu apenas o som do animal. Áudio ativo passa a `raven-caw-v3.wav`,

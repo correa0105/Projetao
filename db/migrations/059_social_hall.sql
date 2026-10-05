@@ -1,0 +1,11 @@
+CREATE TABLE player_profiles(user_id text PRIMARY KEY REFERENCES "user"(id) ON DELETE CASCADE,document jsonb NOT NULL DEFAULT '{}',revision integer NOT NULL DEFAULT 1,updated_at timestamptz NOT NULL DEFAULT now());
+CREATE TABLE profile_assets(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),user_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,bytes bytea NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
+CREATE INDEX profile_assets_owner ON profile_assets(user_id);
+CREATE TABLE profile_reviews(target_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,author_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,score smallint NOT NULL CHECK(score BETWEEN 1 AND 5),comment text NOT NULL DEFAULT '',created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(target_id,author_id),CHECK(target_id<>author_id));
+CREATE TABLE social_friendships(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),user_a text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,user_b text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,requested_by text NOT NULL REFERENCES "user"(id),status text NOT NULL DEFAULT 'pending' CHECK(status IN('pending','accepted')),created_at timestamptz NOT NULL DEFAULT now(),CHECK(user_a<>user_b));
+CREATE UNIQUE INDEX social_friend_pair ON social_friendships(LEAST(user_a COLLATE "C",user_b COLLATE "C"),GREATEST(user_a COLLATE "C",user_b COLLATE "C"));
+CREATE TABLE social_blocks(blocker_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,blocked_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,PRIMARY KEY(blocker_id,blocked_id),CHECK(blocker_id<>blocked_id));
+CREATE TABLE social_messages(id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,sender_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,recipient_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,body text NOT NULL CHECK(char_length(body) BETWEEN 1 AND 2000),created_at timestamptz NOT NULL DEFAULT now(),read_at timestamptz,CHECK(sender_id<>recipient_id));
+CREATE INDEX social_messages_recipient ON social_messages(recipient_id,id DESC);
+CREATE INDEX social_messages_sender ON social_messages(sender_id,id DESC);
+CREATE TABLE hall_settings(id smallint PRIMARY KEY CHECK(id=1),document jsonb NOT NULL,revision integer NOT NULL DEFAULT 1,updated_by text REFERENCES "user"(id),updated_at timestamptz NOT NULL DEFAULT now());

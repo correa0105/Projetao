@@ -17,6 +17,7 @@ import type { TitlesResponse, CharacterTitle } from '../shared/titles';
 import './achievements.css';
 import { TitleHall, TitleManager } from './Titles';
 import { AchievementEditor } from './AchievementEditor';
+import { PortraitCabinet, type FramedCharacter } from './PortraitFrames';
 function Medal({ code }: { code: string }) {
   return (
     <img
@@ -172,7 +173,15 @@ export function AchievementShelf({
     </div>
   );
 }
-export function Achievements({ characterId }: { characterId: string }) {
+export function Achievements({
+  characterId,
+  characters = [],
+  onSelect = () => {},
+}: {
+  characterId: string;
+  characters?: FramedCharacter[];
+  onSelect?: (id: string) => void;
+}) {
   const [data, setData] = useState<AchievementState | null>(null),
     [config, setConfig] = useState<ShelfConfig>(emptyShelf);
   const [selected, setSelected] = useState<number | null>(null),
@@ -311,40 +320,42 @@ export function Achievements({ characterId }: { characterId: string }) {
   return (
     <div className="achievement-content">
       <div className="cabinet-room-stage">
-        <AchievementShelf
-          config={config}
-          definitions={definitions}
-          selected={selected}
-          onShelfSelect={
-            busy
-              ? undefined
-              : (row) => {
-                  setSelectedShelf(row);
-                  setSelected(null);
-                }
-          }
-          onMove={
-            busy
-              ? undefined
-              : (index, x, row) => {
-                  const positions = [
-                      ...(config.positions ?? defaultPositions(config.slots.length)),
-                    ],
-                    rows = [...(config.rows ?? defaultShelfRows(config.slots.length))];
-                  positions[index] = x;
-                  if (row !== undefined) rows[index] = row;
-                  change({ ...config, positions, rows });
-                }
-          }
-          onSelect={
-            busy
-              ? undefined
-              : (index) => {
-                  setSelectedShelf((config.rows ?? defaultShelfRows(config.slots.length))[index]);
-                  setSelected((current) => (current === index ? null : index));
-                }
-          }
-        />
+        <PortraitCabinet characters={characters} active={characterId} onSelect={onSelect}>
+          <AchievementShelf
+            config={config}
+            definitions={definitions}
+            selected={selected}
+            onShelfSelect={
+              busy
+                ? undefined
+                : (row) => {
+                    setSelectedShelf(row);
+                    setSelected(null);
+                  }
+            }
+            onMove={
+              busy
+                ? undefined
+                : (index, x, row) => {
+                    const positions = [
+                        ...(config.positions ?? defaultPositions(config.slots.length)),
+                      ],
+                      rows = [...(config.rows ?? defaultShelfRows(config.slots.length))];
+                    positions[index] = x;
+                    if (row !== undefined) rows[index] = row;
+                    change({ ...config, positions, rows });
+                  }
+            }
+            onSelect={
+              busy
+                ? undefined
+                : (index) => {
+                    setSelectedShelf((config.rows ?? defaultShelfRows(config.slots.length))[index]);
+                    setSelected((current) => (current === index ? null : index));
+                  }
+            }
+          />
+        </PortraitCabinet>
       </div>
       <div className="cabinet-row-choices" aria-label="Prateleira escolhida">
         {[0, 1, 2].map((row) => (

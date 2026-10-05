@@ -1,0 +1,165 @@
+.portrait-cabinet-layout {
+  display: grid;
+  grid-template-columns: minmax(90px, 150px) minmax(0, 1fr) minmax(90px, 150px);
+  gap: 10px;
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  align-items: center;
+}
+.portrait-frame-wall {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.antique-portrait {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 142px;
+  aspect-ratio: 0.64;
+  margin: 0 0 23px;
+  border: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  cursor: pointer;
+  filter: drop-shadow(0 9px 10px #0008);
+  transition:
+    filter 0.25s,
+    transform 0.25s;
+}
+.antique-frame-art {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 2;
+}
+.frame-style-0 {
+  aspect-ratio: 447 / 700;
+}
+.frame-style-1 {
+  aspect-ratio: 455 / 700;
+}
+.frame-style-2 {
+  aspect-ratio: 397 / 700;
+}
+.frame-style-3 {
+  aspect-ratio: 410 / 700;
+}
+.antique-portrait-opening {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(#384047, #111b24 80%);
+  mask-image: var(--frame-mask);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #8d826a;
+}
+.antique-portrait-opening > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  filter: saturate(0.7) contrast(1.05);
+}
+.antique-portrait-plaque {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 99%;
+  background: linear-gradient(#302719, #181917);
+  border: 1px solid #665539;
+  border-radius: 2px;
+  padding: 5px 4px;
+  color: #c8b78e;
+  font:
+    10px/1.5 'Libre Baskerville',
+    Georgia;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
+  z-index: 4;
+  box-shadow: 0 3px 8px #0007;
+}
+.antique-portrait:hover:not(:disabled),
+.antique-portrait:focus-visible {
+  filter: drop-shadow(0 0 6px #f0c65dab) drop-shadow(0 0 15px #c9993670);
+  transform: translateY(-3px);
+}
+.antique-portrait.selected {
+  filter: drop-shadow(0 0 5px #deb96080);
+}
+.antique-portrait.empty {
+  opacity: 0.48;
+  cursor: default;
+}
+.portrait-cabinet-center {
+  min-width: 0;
+}
+.achievement-content:has(.portrait-cabinet-layout) {
+  max-width: 1350px;
+}
+.cabinet-room-stage:has(.portrait-cabinet-layout) {
+  width: 100%;
+  max-width: none;
+}
+.portrait-frame-wall.left .frame-style-0 {
+  transform: rotate(-3deg);
+}
+.portrait-frame-wall.left .frame-style-1 {
+  transform: rotate(2deg);
+}
+.portrait-frame-wall.right .frame-style-2 {
+  transform: rotate(2deg);
+}
+.portrait-frame-wall.right .frame-style-3 {
+  transform: rotate(-2deg);
+}
+@media (max-width: 700px) {
+  .portrait-cabinet-layout {
+    grid-template-columns: 75px minmax(0, 1fr) 75px;
+    gap: 3px;
+  }
+  .antique-portrait {
+    max-width: 75px;
+  }
+  .antique-portrait-plaque {
+    font-size: 8px;
+    white-space: normal;
+    padding: 3px;
+    min-height: 25px;
+    line-height: 1.3;
+  }
+  .portrait-frame-wall {
+    gap: 27px;
+  }
+  .antique-portrait-opening > svg {
+    width: 25px;
+  }
+}
+@media (max-width: 420px) {
+  .portrait-cabinet-layout {
+    grid-template-columns: 55px minmax(0, 1fr) 55px;
+  }
+  .antique-portrait {
+    max-width: 55px;
+  }
+  .portrait-frame-wall {
+    gap: 35px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .antique-portrait {
+    transition: none;
+  }
+}

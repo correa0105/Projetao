@@ -61,6 +61,11 @@ const WorldAtlas = lazy(() =>
   import('./WorldAtlas').then((module) => ({ default: module.WorldAtlas })),
 );
 const Rulebook = lazy(() => import('./Rulebook').then((module) => ({ default: module.Rulebook })));
+const Vtt = lazy(() => import('./Vtt').then((module) => ({ default: module.Vtt })));
+const HallOfFame = lazy(() =>
+  import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
+);
+const Profiles = lazy(() => import('./Profiles').then((module) => ({ default: module.Profiles })));
 
 type Icon = ComponentType<{ size?: number; className?: string }>;
 const titles: Record<Page, string> = {
@@ -78,6 +83,9 @@ const titles: Record<Page, string> = {
   events: 'Eventos da Alvorada',
   titles: 'Títulos & honrarias',
   cards: 'Salão das cartas',
+  vtt: 'Mesa virtual',
+  hall: 'Hall da Fama',
+  profiles: 'Perfis da Alvorada',
   house: 'House',
   world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',
@@ -91,7 +99,7 @@ const statusLabel = {
   closed: 'Encerrada',
 };
 const initialPage = (): Page => {
-  const key = location.hash.slice(1);
+  const key = location.hash.slice(1).split('?')[0];
   if (key === 'titles') return 'achievements';
   return key in titles ? (key as Page) : 'overview';
 };
@@ -505,6 +513,20 @@ function Portal({ user }: { user: User }) {
       );
     if (page === 'overview') return <HomeJournal upcoming={upcoming} canEdit={administrator} />;
     if (page === 'events') return <Events />;
+    if (page === 'hall' || page === 'profiles')
+      return (
+        <Suspense
+          fallback={<div className="loading-content">Abrindo as histórias da Alvorada…</div>}
+        >
+          {page === 'hall' ? <HallOfFame /> : <Profiles user={user} />}
+        </Suspense>
+      );
+    if (page === 'vtt')
+      return (
+        <Suspense fallback={<div className="loading-content">Preparando a mesa…</div>}>
+          <Vtt characters={characters} user={user} />
+        </Suspense>
+      );
     if (page === 'cards')
       return <Cards key={character?.id || 'visitor'} character={character} onPurchased={refresh} />;
     return (
@@ -558,7 +580,15 @@ function Portal({ user }: { user: User }) {
           ))}
         {page === 'achievements' &&
           (character ? (
-            <Achievements key={character.id} characterId={character.id} />
+            <Achievements
+              key={character.id}
+              characterId={character.id}
+              characters={characters.map((c) => ({
+                ...c,
+                portrait: `/api/profiles/${encodeURIComponent(user.id)}/characters/${c.id}/portrait?v=${c.portrait_revision}`,
+              }))}
+              onSelect={setSelectedId}
+            />
           ) : (
             noCharacter
           ))}
@@ -611,74 +641,76 @@ function Portal({ user }: { user: User }) {
   return (
     <div className="app-shell" data-page={page}>
       <div className="main-shell">
-        <PageHeader
-          showTitle={page !== 'lore' && page !== 'events' && page !== 'cards'}
-          title={
-            page === 'characters'
-              ? 'Seu acampamento'
-              : page === 'overview'
-                ? 'Início'
-                : titles[page]
-          }
-        >
-          <ProfileMenu
-            character={character}
-            open={characterMenuOpen}
-            onOpenChange={setCharacterMenuOpen}
+        {page !== 'vtt' && (
+          <PageHeader
+            showTitle={!['lore', 'events', 'cards', 'vtt', 'hall', 'profiles'].includes(page)}
+            title={
+              page === 'characters'
+                ? 'Seu acampamento'
+                : page === 'overview'
+                  ? 'Início'
+                  : titles[page]
+            }
           >
-            <div className="topbar-right">
-              {character && (
-                <span
-                  className="profile-character-summary"
-                  title={`${rankName(character.level)} · ${character.class}`}
-                >
-                  <span>{rankName(character.level)}</span>
-                  <small>{character.class}</small>
-                </span>
-              )}
-              <div className="player-hud-selection">
-                {characters.length > 0 && (
-                  <CharacterSelector
-                    characters={characters}
-                    selectedId={character?.id || ''}
-                    onSelect={setSelectedId}
-                    open={characterMenuOpen}
-                    onOpenChange={setCharacterMenuOpen}
-                    hideTrigger
-                  />
+            <ProfileMenu
+              character={character}
+              open={characterMenuOpen}
+              onOpenChange={setCharacterMenuOpen}
+            >
+              <div className="topbar-right">
+                {character && (
+                  <span
+                    className="profile-character-summary"
+                    title={`${rankName(character.level)} · ${character.class}`}
+                  >
+                    <span>{rankName(character.level)}</span>
+                    <small>{character.class}</small>
+                  </span>
                 )}
+                <div className="player-hud-selection">
+                  {characters.length > 0 && (
+                    <CharacterSelector
+                      characters={characters}
+                      selectedId={character?.id || ''}
+                      onSelect={setSelectedId}
+                      open={characterMenuOpen}
+                      onOpenChange={setCharacterMenuOpen}
+                      hideTrigger
+                    />
+                  )}
+                </div>
+                <Notifications
+                  characters={characters}
+                  page={page}
+                  onNavigate={(id, target) => {
+                    setSelectedId(id);
+                    go(target);
+                  }}
+                />
+                <button
+                  className="logout-button"
+                  aria-label="Sair da conta"
+                  title="Sair da conta"
+                  disabled={busy}
+                  onClick={async () => {
+                    setBusy(true);
+                    try {
+                      const result = await authClient.signOut();
+                      if (result.error) throw new Error('Não foi possível sair. Tente novamente.');
+                      location.hash = '';
+                    } catch (error) {
+                      setToast((error as Error).message);
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                >
+                  <LogOut size={16} aria-hidden="true" />
+                </button>
               </div>
-              <Notifications
-                characters={characters}
-                page={page}
-                onNavigate={(id, target) => {
-                  setSelectedId(id);
-                  go(target);
-                }}
-              />
-              <button
-                className="logout-button"
-                aria-label="Sair da conta"
-                title="Sair da conta"
-                disabled={busy}
-                onClick={async () => {
-                  setBusy(true);
-                  try {
-                    const result = await authClient.signOut();
-                    if (result.error) throw new Error('Não foi possível sair. Tente novamente.');
-                    location.hash = '';
-                  } catch (error) {
-                    setToast((error as Error).message);
-                  } finally {
-                    setBusy(false);
-                  }
-                }}
-              >
-                <LogOut size={16} aria-hidden="true" />
-              </button>
-            </div>
-          </ProfileMenu>
-        </PageHeader>
+            </ProfileMenu>
+          </PageHeader>
+        )}
         <main className="main-content" id="main-content">
           {renderContent()}
           {rulesVisited && (

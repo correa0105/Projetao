@@ -1,5 +1,22 @@
 # Alvorada Cinzenta
 
+## Mesa virtual e comunidade
+
+**Mural → Mesa virtual** reúne mapas, tokens/fichas, grade, régua, luz e barreiras,
+névoa, desenhos, dados, iniciativa, diário e música. Administrador cria uma mesa e
+convida jogadores; importar personagem cria uma cópia para a sessão. Biblioteca
+com 330 monstros e 339 magias abertas do SRD 2024, além de imagens próprias e JSON
+do 5etools. Exportação PNG/JSON e salvamento no PostgreSQL.
+
+**Personagem → Hall da Fama / Perfis**: rankings reais com pesos administrativos,
+perfis por ID, busca, amizades e chat privado entre amigos. Visitas têm personagem,
+companheiros, conquistas, ficha/cartas de consulta e navegação lateral. Quatro molduras
+antigas selecionam a estante por personagem também na página original Conquistas.
+[Funcionamento, permissões, limitações e arte](docs/VTT-PERFIS-HALL.md).
+
+Testes isolados: `node scripts/test-vtt-social-isolated.mjs` e o mesmo comando com
+`--browser`. Migrations 058–059. Não usar banco de jogadores para testes.
+
 ## Mascotes, eventos, títulos e cartas
 
 O menu reúne **Casa dos mascotes**, **Eventos**, **Conquistas** e **Cartas**.

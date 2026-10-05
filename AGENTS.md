@@ -60,6 +60,18 @@ contínua de luz entre eras e finalização com engrenagens/tranco, sem bolinha 
 
 ## Acordos de desenvolvimento
 
+- Mesa virtual e comunidade (05/10): docs/VTT-PERFIS-HALL.md. Mestre de VTT precisa
+  ser dono da mesa e administrador=1; jogadores controlam tokens atribuídos/importam
+  seus personagens. Cópia de sessão nunca altera ficha/saldo original. Filtrar no
+  servidor tokens, notas, fichas e arquivos privados antes de retornar a jogadores.
+- Perfil pessoal editável pelo dono é separado do conteúdo compartilhado administrativo.
+  Visitas por ID autenticadas são somente consulta de personagens, conquistas,
+  companheiros, ficha e cartas; não expor e-mail, ouro ou inventário privado. DMs só
+  entre amigos aceitos, sem acesso administrativo ao histórico de outras pessoas.
+  Bloqueio/amizade/envio são serializados por par em transação. Hall calcula dados
+  reais no servidor; pesos/presentação apenas administrador. Preserve Conquistas
+  original com quatro molduras e limite existente de dois personagens por conta.
+
 - Comunicação e interface em português brasileiro.
 - Nome definitivo: Alvorada Cinzenta. Banco/usuário `alvorada_cinzenta`, Compose e package `alvorada-cinzenta`.
 - Identidade apenas tipográfica (sem brasão/logo), azul de noite, pergaminho e cobre envelhecido.

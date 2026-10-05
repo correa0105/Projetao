@@ -3,6 +3,8 @@ import { calendarRouter } from './calendar.js';
 import { loreRouter } from './lore.js';
 import { loreTimelineRouter } from './lore-timeline.js';
 import { rulebookRouter } from './rulebook.js';
+import { vttRouter } from './vtt.js';
+import { socialRouter } from './social.js';
 import express from 'express';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
@@ -121,6 +123,8 @@ export function createApp() {
     toNodeHandler(auth),
   );
   app.use((req, res, next) =>
+    req.path === '/api/vtt' ||
+    req.path.startsWith('/api/vtt/') ||
     req.path === '/api/character-art' ||
     req.path === '/api/event-images' ||
     req.path === '/api/lore' ||
@@ -171,6 +175,8 @@ export function createApp() {
   app.use('/api', achievementsRouter());
   app.use('/api', homeUpdatesRouter());
   app.use('/api', calendarRouter());
+  app.use('/api', vttRouter());
+  app.use('/api', socialRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [permission],

@@ -1,0 +1,67 @@
+import type { ReactNode, CSSProperties } from 'react';
+import { UserRound } from 'lucide-react';
+import './portrait-frames.css';
+export type FramedCharacter = {
+  id: string;
+  name: string;
+  portrait_revision?: number;
+  portrait?: string;
+};
+export function PortraitCabinet({
+  characters,
+  active,
+  onSelect,
+  children,
+}: {
+  characters: FramedCharacter[];
+  active: string;
+  onSelect: (id: string) => void;
+  children: ReactNode;
+}) {
+  function frame(index: number) {
+    const c = characters[index],
+      path = c?.portrait
+        ? c.portrait + (c.portrait.includes('?') ? '&' : '?') + 'thumb=1'
+        : `/api/characters/${c?.id}/portrait?v=${c?.portrait_revision || 0}`;
+    return (
+      <button
+        key={index}
+        className={`antique-portrait frame-style-${index} ${c?.id === active ? 'selected' : ''} ${!c ? 'empty' : ''}`}
+        aria-label={c ? `Ver conquistas de ${c.name}` : `Quadro reservado ${index + 1}`}
+        aria-pressed={Boolean(c && c.id === active)}
+        disabled={!c}
+        onClick={() => c && onSelect(c.id)}
+        style={{ '--frame-mask': `url('/profiles/frame-${index}-mask.png')` } as CSSProperties}
+      >
+        <span className="antique-portrait-opening">
+          {c && (c.portrait_revision || 0) > 0 ? (
+            <img
+              src={path}
+              alt={c.name}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          ) : (
+            <UserRound size={45} />
+          )}
+        </span>
+        <img className="antique-frame-art" src={`/profiles/frame-${index}-v1.webp`} alt="" />
+        <span className="antique-portrait-plaque">{c?.name || 'Retrato reservado'}</span>
+      </button>
+    );
+  }
+  return (
+    <div className="portrait-cabinet-layout">
+      <div className="portrait-frame-wall left">
+        {frame(0)}
+        {frame(1)}
+      </div>
+      <div className="portrait-cabinet-center">{children}</div>
+      <div className="portrait-frame-wall right">
+        {frame(2)}
+        {frame(3)}
+      </div>
+    </div>
+  );
+}
