@@ -6,7 +6,7 @@ import { AppError } from './services.js';
 import { isAdministrator, requireAdministrator } from './administrators.js';
 import { deriveSheet, classRules } from '../shared/character-sheet.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
-import type { VttDocument } from '../shared/vtt.js';
+import { applyTokenDeath, type VttDocument } from '../shared/vtt.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = { id: string; owner_id: string; document: VttDocument };
 type RoomAccess = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
@@ -125,7 +125,9 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       .parse(req.body);
     await transaction(async (db) => {
       const a = await access(getRoom, db, rid, tid, user, true);
+      const oldHp = a.token.hp;
       a.token.hp = Math.max(0, a.token.hp - amount);
+      applyTokenDeath(a.token, oldHp);
       await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
         rid,
         JSON.stringify(a.room.document),
@@ -296,6 +298,7 @@ export function vttSheetRouter(getRoom: RoomAccess) {
         );
       } else if (input.kind === 'hp') a.token.hp = a.token.maxHp;
       else throw new AppError(400, 'Escolha o recurso a restaurar.');
+      if (input.kind === 'hp' || input.kind === 'all') a.token.deathAt = null;
       await db.query(
         'UPDATE vtt_character_resources SET slots_used=$2,hit_dice_used=$3,updated_at=now()WHERE character_id=$1',
         [cid, JSON.stringify(r.slots_used), r.hit_dice_used],

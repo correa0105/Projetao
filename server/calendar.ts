@@ -26,7 +26,7 @@ export function calendarRouter() {
         [month + '-01'],
       ),
       pool.query(
-        `SELECT id,title,body,starts_at,location FROM home_updates WHERE (starts_at AT TIME ZONE 'America/Sao_Paulo')::date >= $1::date AND (starts_at AT TIME ZONE 'America/Sao_Paulo')::date < ($1::date+interval '1 month') ORDER BY starts_at,id`,
+        `SELECT id,title,body,starts_at,location,image_path FROM home_updates WHERE (starts_at AT TIME ZONE 'America/Sao_Paulo')::date >= $1::date AND (starts_at AT TIME ZONE 'America/Sao_Paulo')::date < ($1::date+interval '1 month') ORDER BY starts_at,id`,
         [month + '-01'],
       ),
     ]);
@@ -39,6 +39,7 @@ export function calendarRouter() {
         starts_at: item.starts_at,
         location: item.location,
         status: item.status,
+        image: item.kind === 'event' ? item.presentation?.image || '' : '',
         ...(item.kind === 'event' ? { event: item } : {}),
       })),
       ...publications.rows.map((item) => ({
@@ -49,6 +50,7 @@ export function calendarRouter() {
         starts_at: item.starts_at,
         location: item.location,
         status: 'open',
+        image: item.image_path || '',
       })),
     ];
     entries.sort((a, b) => new Date(a.starts_at).getTime() - new Date(b.starts_at).getTime());

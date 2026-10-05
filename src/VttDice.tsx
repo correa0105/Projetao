@@ -284,6 +284,9 @@ export function VttDice({
         ...d,
         x: ((i % cols) - (cols - 1) / 2) * scale * 2.2,
         y: (Math.floor(i / cols) - (rows - 1) / 2) * scale * 2.2,
+        startX: -7 + Math.random() * 1.2,
+        startY: camera.top * (0.25 + Math.random() * 0.45),
+        curve: (Math.random() - 0.5) * 3,
         spin: new THREE.Euler(Math.random() * 9, Math.random() * 9, Math.random() * 9),
       };
     });
@@ -298,11 +301,11 @@ export function VttDice({
       }
     }
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches,
-      duration = reduced ? 0.12 : 2.1,
+      duration = reduced ? 0.12 : 3.2,
       start = performance.now();
     let frame = 0,
       impactIndex = 0;
-    const timings = [0.3, 0.63, 0.95, 1.24, 1.51, 1.76];
+    const timings = [0.38, 0.87, 1.35, 1.85, 2.36, 2.85];
     function render(now: number) {
       const elapsed = (now - start) / 1000,
         t = Math.min(1, elapsed / duration);
@@ -314,18 +317,18 @@ export function VttDice({
       for (const d of dice) {
         const q = 1 - t;
         d.group.position.set(
-          d.x - q * 3,
-          d.y + q * q * 2,
-          Math.abs(Math.sin(t * Math.PI * 5)) * q * 3,
+          d.startX * q * q + d.x * (1 - q * q),
+          d.startY * q * q + d.y * (1 - q * q) + Math.sin(t * Math.PI) * d.curve,
+          Math.abs(Math.sin(t * Math.PI * 6)) * q * 2.3,
         );
         d.group.quaternion.setFromEuler(
-          new THREE.Euler(d.spin.x * q * 2, d.spin.y * q * 2, d.spin.z * q * 2),
+          new THREE.Euler(d.spin.x * q * 3, d.spin.y * q * 3, d.spin.z * q * 3),
         );
         if (t > 0.82) d.group.quaternion.slerp(d.settled, (t - 0.82) / 0.18);
         if (t === 1) d.group.quaternion.copy(d.settled);
       }
       renderer.render(scene, camera);
-      if (elapsed < 5.2) frame = requestAnimationFrame(render);
+      if (elapsed < 6.5) frame = requestAnimationFrame(render);
       else setRoll(null);
     }
     frame = requestAnimationFrame(render);

@@ -1293,6 +1293,11 @@
     transition: none;
   }
 }
+@media (max-width: 420px) {
+  .visiting .profiles-top > div > button svg {
+    display: none;
+  }
+}
 /* Visita com escala e cenário completos. */
 .app-shell[data-page='profiles']:has(.visiting) {
   width: 100%;
@@ -1317,11 +1322,18 @@
   position: absolute;
   top: 15px;
   left: 24px;
-  right: 80px;
+  right: calc(var(--page-header-edge, 95px) + 68px);
   z-index: 8;
   padding: 0;
   margin: 0;
   border: 0;
+}
+.visiting .profiles-top > div {
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.visiting .profiles-top > div > button {
+  white-space: nowrap;
 }
 .visiting .visited-profile-heading {
   position: absolute;
@@ -1475,9 +1487,37 @@
   padding-right: 190px;
 }
 @media (max-width: 800px) {
+  .visiting .profiles-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+    right: 18px;
+    left: 18px;
+    gap: 12px;
+  }
+  .visiting .profiles-top > .social-back {
+    justify-self: start;
+    width: auto;
+    white-space: nowrap;
+    max-width: calc(100% - 75px);
+    min-height: 45px;
+  }
+  .visiting .profiles-top > div {
+    gap: 5px;
+  }
+  .visiting .profiles-top > div > button {
+    font-size: 10px;
+    padding: 8px 7px;
+    gap: 5px;
+    flex: 1;
+    justify-content: center;
+  }
+  .visiting .profiles-top > div > button svg {
+    width: 13px;
+  }
   .visiting .visited-profile-heading {
     right: 25px;
-    top: 88px;
+    top: 135px;
     display: grid;
     grid-template-columns: 55px minmax(0, 1fr);
     align-items: start;

@@ -115,6 +115,7 @@ export type Page =
   | 'events'
   | 'titles'
   | 'cards'
+  | 'character-cards'
   | 'vtt'
   | 'hall'
   | 'profiles'

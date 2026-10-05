@@ -319,6 +319,8 @@ export function EventImageField({
   disabled,
   onBusy,
   onError,
+  gallery = eventBackgrounds,
+  emptyLabel = 'Sem imagem',
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -326,6 +328,8 @@ export function EventImageField({
   disabled: boolean;
   onBusy: (busy: boolean) => void;
   onError: (error: string) => void;
+  gallery?: { path: string; label: string }[];
+  emptyLabel?: string;
 }) {
   return (
     <div className="event-image-field">
@@ -333,19 +337,19 @@ export function EventImageField({
         {label}
         <select
           aria-label={label}
-          value={eventBackgrounds.some((b) => b.path === value) ? value : value ? 'custom' : ''}
+          value={gallery.some((b) => b.path === value) ? value : value ? 'custom' : ''}
           disabled={disabled}
           onChange={(e) => {
             if (e.target.value !== 'custom') onChange(e.target.value);
           }}
         >
-          <option value="">Sem imagem</option>
-          {eventBackgrounds.map((b) => (
+          <option value="">{emptyLabel}</option>
+          {gallery.map((b) => (
             <option key={b.path} value={b.path}>
               {b.label}
             </option>
           ))}
-          {value && !eventBackgrounds.some((b) => b.path === value) && (
+          {value && !gallery.some((b) => b.path === value) && (
             <option value="custom">Imagem enviada</option>
           )}
         </select>

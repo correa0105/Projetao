@@ -151,7 +151,7 @@ try {
   await expect(page.locator('.camp-pet')).toHaveAttribute('data-pet-id', third.id);
   await expect(page.locator('.camp-pet')).toHaveCount(1);
   await page.setViewportSize({ width: 390, height: 844 });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await expect
     .poll(() => page.locator('.camp-pet').evaluate((el) => Number(getComputedStyle(el).opacity)))
     .toBe(1);
@@ -177,6 +177,10 @@ try {
         description: 'Um encontro para todos.',
         starts_at: day + 'T19:00:00-03:00',
         location: 'Praça da vila',
+        presentation: {
+          ...blankEvent.presentation,
+          image: title === 'Encontro na taverna' ? '/calendar/roadside-camp-v1.webp' : '',
+        },
       },
     });
     expect(r.status()).toBe(201);
@@ -192,13 +196,34 @@ try {
   ).toBe(true);
   await page.locator(`.calendar-day[data-date="${day}"]`).click();
   await expect(page.locator('.calendar-appointment')).toHaveCount(4);
+  await expect(page.locator('.calendar-cover h1')).toHaveText('Calendário');
+  await expect(page.locator('.calendar-cover .calendar-kicker')).toHaveCount(0);
+  await page
+    .locator('.calendar-appointment-select')
+    .filter({ hasText: 'Encontro na taverna' })
+    .click();
+  await expect(page.locator('.calendar-cover-art')).toHaveAttribute(
+    'src',
+    '/calendar/roadside-camp-v1.webp',
+  );
+  await page
+    .locator('.calendar-appointment-select')
+    .filter({ hasText: 'Feira dos artesãos' })
+    .click();
+  await expect(page.locator('.calendar-cover-art')).toHaveAttribute(
+    'src',
+    '/calendar/village-night-v1.webp',
+  );
+  expect(
+    await page
+      .locator('.calendar-cover-art')
+      .evaluate((el) => (el as HTMLImageElement).naturalWidth),
+  ).toBeGreaterThan(0);
   await expect(page.locator(`.calendar-day[data-date="${day}"]`)).toContainText('+1 compromisso');
   await page.getByRole('button', { name: 'Editar calendário', exact: true }).click();
   const settings = page.getByRole('dialog', { name: 'Editar calendário', exact: true });
   await settings.getByLabel('Título do calendário', { exact: true }).fill('O calendário da mesa');
-  await settings
-    .getByLabel('Apresentação', { exact: true })
-    .fill('Todo encontro começa com um dia marcado.');
+  await expect(settings.getByLabel('Apresentação', { exact: true })).toHaveCount(0);
   await settings.getByLabel('Primeiro dia da semana', { exact: true }).selectOption('sunday');
   await settings.getByRole('button', { name: 'Salvar calendário', exact: true }).click();
   await expect(settings).not.toBeVisible();

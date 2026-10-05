@@ -1,31 +1,9 @@
-.journal-view-tabs {
-  display: flex;
-  gap: 20px;
-  border-bottom: 1px solid #af945740;
-  margin-bottom: 24px;
-}
-.journal-view-tabs button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #a99f89;
-  font-size: 13px;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  padding: 12px 3px;
-  background: none;
-  cursor: pointer;
-}
-.journal-view-tabs button[aria-pressed='true'] {
-  color: #e3c68b;
-  border-color: #c6a261;
-}
 .guild-calendar {
   color: #e6dac2;
   border: 1px solid #af945746;
   border-radius: 7px;
   overflow: hidden;
-  background: #141610;
+  background: #151a20;
   box-shadow: 0 18px 50px #0004;
 }
 .calendar-cover {
@@ -35,24 +13,35 @@
   align-items: end;
   justify-content: space-between;
   padding: 34px;
+  min-height: 210px;
+  background: #11161c;
   background-size: cover;
   background-position: center 57%;
   isolation: isolate;
+}
+.calendar-cover-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 57%;
+  z-index: -2;
 }
 .calendar-cover::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(95deg, #10140ff5, #141610a8), linear-gradient(0deg, #141610, transparent);
+    linear-gradient(95deg, #10151de6, #10151d35), linear-gradient(0deg, #151a20, transparent 70%);
   z-index: -1;
 }
 .calendar-cover h1 {
   font:
-    clamp(25px, 3vw, 40px) 'Libre Baskerville',
+    clamp(28px, 3vw, 40px) var(--serif),
     Georgia,
     serif;
-  margin: 14px 0 13px;
+  margin: 0;
 }
 .calendar-cover p {
   max-width: 650px;
@@ -102,7 +91,7 @@
   color: var(--calendar-accent);
   border: 1px solid #af945746;
   border-radius: 3px;
-  background: #28291d66;
+  background: #262b3466;
   display: grid;
   place-items: center;
   padding: 7px;
@@ -121,7 +110,7 @@
   max-width: 150px;
   border: 1px solid #af945746;
   border-radius: 3px;
-  background: #10130e;
+  background: #10151c;
   color: #cec3ab;
   padding: 7px;
   font-size: 11px;
@@ -179,7 +168,7 @@
   color: #b5a37f;
   padding: 14px 3px;
   border-bottom: 1px solid #af945733;
-  background: #b79b5210;
+  background: #a88c6010;
 }
 .calendar-day {
   position: relative;
@@ -194,7 +183,7 @@
   border: 0;
   border-bottom: 1px solid #af945721;
   border-right: 1px solid #af945721;
-  background: #191c13;
+  background: #181e25;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -202,14 +191,14 @@
   border-right: 0;
 }
 .calendar-day[data-outside='true'] {
-  color: #575b4e;
-  background: #10130e;
+  color: #69717a;
+  background: #10151c;
 }
 .calendar-day:hover {
-  background: #323025;
+  background: #242c35;
 }
 .calendar-day[aria-pressed='true'] {
-  background: color-mix(in srgb, var(--calendar-accent) 13%, #191c13);
+  background: color-mix(in srgb, var(--calendar-accent) 13%, #181e25);
   box-shadow: inset 0 0 0 1px var(--calendar-accent);
   z-index: 1;
 }
@@ -264,7 +253,7 @@
   min-width: 0;
   padding: 26px 22px;
   border-left: 1px solid #af945733;
-  background: linear-gradient(125deg, #25251a55, #10130e);
+  background: linear-gradient(125deg, #26303b55, #10151c);
 }
 .calendar-day-detail > h2 {
   font:
@@ -323,6 +312,19 @@
     serif;
   margin: 10px 0;
 }
+.calendar-appointment-select {
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.calendar-appointment-select:hover,
+.calendar-appointment-select[aria-pressed='true'] {
+  color: var(--calendar-accent);
+}
 .calendar-appointment-time {
   display: flex;
   align-items: center;
@@ -379,7 +381,7 @@
   border: 1px solid #af945746;
   border-radius: 4px;
   color: #ded1b6;
-  background: #171c13;
+  background: #171e27;
   padding: 10px;
 }
 .calendar-settings-editor input[type='color'] {
@@ -421,12 +423,6 @@
   }
 }
 @media (max-width: 600px) {
-  .app-shell[data-page='overview'] .main-content:has(.home-journal-calendar) {
-    padding-inline: 0;
-  }
-  .home-journal-calendar {
-    padding-inline: 0;
-  }
   .calendar-days {
     grid-template-rows: repeat(6, minmax(70px, 1fr));
   }

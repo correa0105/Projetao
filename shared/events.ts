@@ -1,11 +1,13 @@
 import { z } from 'zod';
 import { safeHomeLink } from './home-updates.js';
+import { calendarBackgrounds } from './calendar-art.js';
 export const eventBackgrounds = [
   { path: '/notice-village-empty-v4.png', label: 'Rua da vila' },
   { path: '/events/hall-v1.webp', label: 'Salão dos encontros' },
   { path: '/alvorada-dawn-banner.png', label: 'Alvorada nas montanhas' },
   { path: '/notice-village-tavern-v3.png', label: 'Taverna da vila' },
   { path: '/character-camp-v2.png', label: 'Acampamento' },
+  ...calendarBackgrounds,
 ];
 export const artAnimations = ['none', 'float', 'sway', 'breathe', 'glow', 'drift'] as const;
 export const artAnimationNames = {

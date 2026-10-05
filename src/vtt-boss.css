@@ -1,0 +1,159 @@
+.vtt-boss-bars {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(880px, calc(100% - 32px));
+  z-index: 9;
+  pointer-events: none;
+  display: grid;
+  gap: 12px;
+  max-height: 32%;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.vtt-boss-bar {
+  --rim: #6c665b;
+  padding: 7px 12px 10px;
+  border: 1px solid var(--rim);
+  background: linear-gradient(90deg, #101017c4, #16141cc9, #101017c4);
+  border-radius: 2px;
+  box-shadow:
+    0 3px 10px #0008,
+    inset 0 0 12px #000a;
+}
+.vtt-boss-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: #eee4d3;
+  margin-bottom: 5px;
+  font-family: Georgia, serif;
+  text-shadow: 0 2px 3px #000;
+}
+.vtt-boss-title strong {
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vtt-boss-title small {
+  font-size: 11px;
+}
+.vtt-boss-track {
+  height: 17px;
+  position: relative;
+  background: #030405;
+  border: 1px solid #030304;
+  box-shadow: inset 0 1px 5px #000;
+  overflow: hidden;
+}
+.vtt-boss-red {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(#ca3032, #7b1117 52%, #b6222b);
+  box-shadow: inset 0 1px 0 #ef696877;
+  transition: width 0.65s ease-out;
+}
+.vtt-boss-heal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transform-origin: left;
+  background: linear-gradient(#b0e88f, #27884f);
+  animation: boss-heal 1.4s ease-out both;
+}
+@keyframes boss-heal {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  45%,
+  70% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+.style-classic-ice {
+  --rim: #91c6d5;
+  border-radius: 5px;
+  box-shadow:
+    0 0 10px #a1dcec33,
+    inset 0 0 10px #729db42b;
+}
+.style-classic-grass {
+  --rim: #536b3e;
+  border-radius: 18px 4px;
+}
+.style-classic-oak {
+  --rim: #8c5a2f;
+  border: 3px ridge #725038;
+  background: repeating-linear-gradient(5deg, #2c1d12d9 0 3px, #140e0aee 4px 8px);
+}
+.style-evil {
+  --rim: #7d2a3a;
+  clip-path: polygon(1% 0, 99% 0, 100% 20%, 98% 100%, 2% 100%, 0 20%);
+  border-top: 3px solid #8a313f;
+}
+.style-gears,
+.style-steampunk {
+  --rim: #98713e;
+  border: 4px ridge #866843;
+  background: repeating-linear-gradient(90deg, #191714e9 0 27px, #69543bba 28px 30px);
+}
+.style-ooze {
+  --rim: #527554;
+  border-radius: 14px 20px 25px 8px;
+  box-shadow:
+    0 4px 0 #2945348a,
+    inset 0 0 14px #57774947;
+}
+.style-royal {
+  --rim: #c3a45e;
+  border: 3px double #b69a55;
+  border-radius: 10px 10px 2px 2px;
+  background: linear-gradient(90deg, #1a1326dd, #37213dee, #1a1326dd);
+}
+.style-segmented .vtt-boss-track::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 calc(10% - 2px), #070a10 0 10%);
+}
+.style-steampunk {
+  border-radius: 14px;
+  border-width: 5px;
+  box-shadow:
+    inset 0 0 0 2px #30261c,
+    0 3px 10px #0009;
+}
+@media (max-width: 600px) {
+  .vtt-boss-bars {
+    top: 92px;
+    gap: 5px;
+    width: calc(100% - 18px);
+  }
+  .vtt-boss-title strong {
+    font-size: 12px;
+  }
+  .vtt-boss-bar {
+    padding: 4px 7px 7px;
+  }
+  .vtt-boss-track {
+    height: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vtt-boss-red {
+    transition: none;
+  }
+  .vtt-boss-heal {
+    animation: none;
+    opacity: 0.8;
+  }
+}

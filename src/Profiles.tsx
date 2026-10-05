@@ -17,7 +17,6 @@ import {
   X,
   Flag,
   Send,
-  Image as ImageIcon,
 } from 'lucide-react';
 import { api, post } from './api';
 import type { User } from './types';
@@ -26,7 +25,7 @@ import { profileSettingsSchema } from '../shared/social';
 import { rankName, progressionLabel } from '../shared/progression';
 import { AchievementShelf } from './Achievements';
 import { PortraitCabinet } from './PortraitFrames';
-import { CardFace } from './Cards';
+import { CardCollection } from './CharacterCards';
 import { PetArt } from './PetShop';
 import { pets } from '../shared/pets';
 import { ownedMountImage, type OwnedMount } from '../shared/mounts';
@@ -328,6 +327,12 @@ export function Profiles({ user }: { user: User }) {
               <b className="social-unread">{inbox.reduce((n, i) => n + i.unread, 0)}</b>
             )}
           </button>
+          {profile?.is_owner && (
+            <button onClick={() => setEditing(structuredClone(profile.document))}>
+              <Settings2 size={15} />
+              Personalizar perfil
+            </button>
+          )}
         </div>
       </div>
       {error && (
@@ -404,12 +409,7 @@ export function Profiles({ user }: { user: User }) {
               <small>ID: {profile.id}</small>
             </div>
             <div className="visited-profile-actions">
-              {profile.is_owner ? (
-                <button onClick={() => setEditing(structuredClone(profile.document))}>
-                  <Settings2 size={15} />
-                  Personalizar perfil
-                </button>
-              ) : profile.blocked_by_me ? (
+              {profile.is_owner ? null : profile.blocked_by_me ? (
                 <button
                   onClick={() =>
                     void run(async () => {
@@ -530,60 +530,6 @@ export function Profiles({ user }: { user: User }) {
                         <PetArt pet={species} appearance={displayPet.appearance} />
                         <span>{displayPet.name}</span>
                       </div>
-                    )}
-                  </div>
-                  <div className="public-camp-summary">
-                    <p>
-                      {profile.document.bio ||
-                        current?.biography ||
-                        'As próximas aventuras ainda esperam por este viajante.'}
-                    </p>
-                    {details && (
-                      <>
-                        <div className="public-highlights">
-                          {[...details.achievements]
-                            .sort((a, b) => {
-                              const displayed = details.shelf.slots.filter((s): s is string => !!s);
-                              return (
-                                (displayed.includes(a.code) ? displayed.indexOf(a.code) : 1000) -
-                                (displayed.includes(b.code) ? displayed.indexOf(b.code) : 1000)
-                              );
-                            })
-                            .slice(0, 4)
-                            .map((a) => (
-                              <button
-                                key={a.code}
-                                onClick={() => setPanel('achievements')}
-                                title={details.definitions.find((d) => d.code === a.code)?.title}
-                              >
-                                <img
-                                  src={'/trophies/' + a.code + '.png'}
-                                  alt={
-                                    details.definitions.find((d) => d.code === a.code)?.title ||
-                                    a.code
-                                  }
-                                />
-                              </button>
-                            ))}
-                        </div>
-                        {details.mounts.length > 0 && (
-                          <details>
-                            <summary>Montarias de {current?.name}</summary>
-                            <div className="public-mount-options">
-                              {details.mounts.map((m) => (
-                                <button
-                                  key={m.id}
-                                  onClick={() => setCompanion(m)}
-                                  aria-pressed={companion?.id === m.id}
-                                >
-                                  <img src={ownedMountImage(m)} alt={m.name} />
-                                  <span>{m.name}</span>
-                                </button>
-                              ))}
-                            </div>
-                          </details>
-                        )}
-                      </>
                     )}
                   </div>
                 </section>
@@ -711,18 +657,15 @@ export function Profiles({ user }: { user: User }) {
                 >
                   <span className="social-eyebrow">As histórias que o acompanham</span>
                   <h2>Cartas de {current?.name || profile.name}</h2>
-                  <div className="public-card-collection">
-                    {details?.cards.map((c) => (
-                      <article key={c.id}>
-                        <CardFace card={c} />
-                        <span>{c.slot ? `Equipada · espaço ${c.slot}` : 'Na coleção'}</span>
-                        <p>{c.description}</p>
-                      </article>
-                    ))}
-                  </div>
-                  {details?.cards.length === 0 && (
-                    <p className="social-empty">Este personagem ainda não possui cartas.</p>
-                  )}
+                  <CardCollection
+                    key={current?.id || profile.id}
+                    items={(details?.cards || []).map((card) => ({
+                      ownedId: card.id,
+                      card,
+                      level: card.level,
+                      slot: card.slot,
+                    }))}
+                  />
                 </section>
               </div>
             </div>
@@ -1102,23 +1045,6 @@ export function Profiles({ user }: { user: User }) {
                   <option value={editing.background}>Imagem personalizada</option>
                 )}
               </select>
-            </label>
-            <label className="social-upload">
-              <ImageIcon size={15} />
-              Enviar cenário próprio
-              <input
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-                onChange={(e) => {
-                  const f = e.target.files?.[0];
-                  if (f)
-                    void run(async () => {
-                      const path = await upload(f);
-                      setEditing((v) => (v ? { ...v, background: path } : v));
-                    });
-                  e.target.value = '';
-                }}
-              />
             </label>
             <label className="social-upload">
               <UserRound size={15} />

@@ -12,7 +12,7 @@
 }
 .vtt-dice-result {
   position: absolute;
-  bottom: 70px;
+  bottom: 174px;
   left: 50%;
   transform: translateX(-50%);
   display: grid;
@@ -43,6 +43,8 @@
   top: 60px;
   left: 14px;
   width: 260px;
+  max-height: calc(100% - 84px);
+  overflow-y: auto;
   max-width: calc(100% - 28px);
   padding: 16px;
   border: 1px solid #886e48;
@@ -57,6 +59,33 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
+}
+.vtt-dice-picker .vtt-dice-buttons {
+  display: grid;
+  gap: 0;
+  margin: 0 -4px 12px;
+}
+.vtt-dice-row {
+  display: grid;
+  grid-template-columns: 64px repeat(5, minmax(0, 1fr));
+}
+.vtt-dice-row button {
+  border: 0;
+  border-right: 1px solid #5c646838;
+  border-radius: 0;
+  background: transparent;
+  padding: 8px 2px;
+  font-size: 12px;
+}
+.vtt-dice-row button:first-child {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-align: left;
+  font-weight: 700;
+}
+.vtt-dice-row button:hover {
+  background: #a28a5633;
 }
 .vtt-dice-picker > label {
   display: grid;

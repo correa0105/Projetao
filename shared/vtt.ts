@@ -13,6 +13,37 @@ const media = z
   );
 export const pointSchema = z.object({ x: coordinate, y: coordinate }).strict();
 export type Point = z.infer<typeof pointSchema>;
+export const bossStyles = [
+  'classic-red',
+  'classic-ice',
+  'classic-grass',
+  'classic-oak',
+  'evil',
+  'gears',
+  'ooze',
+  'royal',
+  'segmented',
+  'steampunk',
+] as const;
+export const bossStyleNames = [
+  'Classic · Red',
+  'Classic · Ice',
+  'Classic · Grass',
+  'Classic · Oak',
+  'Evil',
+  'Gears',
+  'Ooze',
+  'Royal',
+  'Segmented',
+  'Steampunk',
+];
+export type BossBar = {
+  tokenId: string;
+  name: string;
+  hp: number;
+  maxHp: number;
+  style: (typeof bossStyles)[number];
+};
 export const sheetSchema = z
   .object({
     source: z.string().max(100),
@@ -44,6 +75,9 @@ export const tokenSchema = z
     hidden: z.boolean().default(false),
     hp: z.number().min(-10000).max(100000).default(10),
     maxHp: z.number().min(1).max(100000).default(10),
+    bossStyle: z.enum(bossStyles).nullable().default(null),
+    deathAutomatic: z.boolean().default(false),
+    deathAt: z.number().int().min(0).max(9999999999999).nullable().default(null),
     ac: z.number().min(0).max(100).default(10),
     conditions: z.array(z.string().max(40)).max(30).default([]),
     notes: z.string().max(4000).default(''),
@@ -135,6 +169,14 @@ export const sceneSchema = z
         z.object({ x: coordinate, y: coordinate, radius: z.number().min(5).max(30000) }).strict(),
       )
       .max(2000),
+    fogAreas: z
+      .array(
+        z
+          .object({ id, points: z.array(pointSchema).min(3).max(1000), reveal: z.boolean() })
+          .strict(),
+      )
+      .max(3000)
+      .default([]),
     tokens: z.array(tokenSchema).max(1000),
     walls: z.array(wallSchema).max(2000),
     lights: z.array(lightSchema).max(500).default([]),
@@ -275,7 +317,17 @@ export type VttState = {
   assets: VttAsset[];
   members: { id: string; name: string }[];
   messages: VttMessage[];
+  bossBars: BossBar[];
 };
+export function applyTokenDeath(token: VttToken, previousHp: number, now = Date.now()) {
+  if (token.hp > 0 && previousHp <= 0) token.deathAt = null;
+  if (token.deathAutomatic && previousHp > 0 && token.hp <= 0) token.deathAt = now;
+}
+export function sceneBossBars(scene: VttScene): BossBar[] {
+  return scene.tokens
+    .filter((t) => t.bossStyle !== null)
+    .map((t) => ({ tokenId: t.id, name: t.name, hp: t.hp, maxHp: t.maxHp, style: t.bossStyle! }));
+}
 export const conditions = [
   'Cego',
   'Enfeitiçado',
@@ -314,9 +366,9 @@ export function newScene(id: string, name = 'Novo mapa'): VttScene {
       snap: true,
       diagonal: 'five',
     },
-    lighting: false,
-    ambient: 0.12,
-    fog: false,
+    lighting: true,
+    ambient: 0,
+    fog: true,
     fogMode: 'vision',
     restrictMovement: true,
     reveals: [],
@@ -504,7 +556,7 @@ export function inLight(p: Point, s: VttScene) {
     s.ambient > 0.05 ||
     sceneLights(s).some(
       (l) =>
-        visiblePoint(l, p, s, ((l.bright + l.dim) / s.grid.scale) * s.grid.size) &&
+        visiblePoint(l, p, s, visionPixels(l.bright + l.dim, s)) &&
         (l.angle === 360 ||
           Math.abs(
             (((Math.atan2(p.y - l.y, p.x - l.x) * 180) / Math.PI - l.rotation + 540) % 360) - 180,
@@ -516,7 +568,30 @@ export function inLight(p: Point, s: VttScene) {
 export function viewerSees(origin: VttToken, p: Point, s: VttScene) {
   if (!visiblePoint(origin, p, s, 50000)) return false;
   if (!s.lighting && !(s.fog && s.fogMode === 'vision')) return true;
-  return inLight(p, s) || visiblePoint(origin, p, s, (origin.vision / s.grid.scale) * s.grid.size);
+  return inLight(p, s) || visiblePoint(origin, p, s, visionPixels(origin.vision, s));
+}
+export function visionPixels(feet: number, scene: VttScene) {
+  return ((feet * (scene.grid.unit === 'm' ? 0.3048 : 1)) / scene.grid.scale) * scene.grid.size;
+}
+export function activateTokenVision(scene: VttScene) {
+  if (!scene.lighting || scene.fogMode === 'manual') scene.ambient = 0;
+  scene.lighting = true;
+  scene.fog = true;
+  scene.fogMode = 'vision';
+}
+export function manualFogSees(p: Point, scene: VttScene) {
+  let visible = scene.reveals.some((r) => Math.hypot(r.x - p.x, r.y - p.y) <= r.radius);
+  for (const area of scene.fogAreas) {
+    let inside = false;
+    for (let i = 0, j = area.points.length - 1; i < area.points.length; j = i++) {
+      const a = area.points[i],
+        b = area.points[j];
+      if (a.y > p.y !== b.y > p.y && p.x < ((b.x - a.x) * (p.y - a.y)) / (b.y - a.y) + a.x)
+        inside = !inside;
+    }
+    if (inside) visible = area.reveal;
+  }
+  return visible;
 }
 export function visiblePoint(origin: Point, target: Point, s: VttScene, radius: number) {
   return (

@@ -1,5 +1,47 @@
 # Mesa virtual, perfis, amigos e Hall da Fama — 05/10/2026
 
+## Ferramentas, atalhos, boss e morte
+
+Formas reúne retângulo, círculo, cone e linha diagonal. Névoa reúne revelação e
+ocultação por retângulo, polígono ou pincel, reinício e volta à visão automática.
+Polígonos terminam com Enter/duplo clique; Esc cancela. A ordem das áreas decide
+o resultado em sobreposições e desfazer funciona. Ferramentas manuais desligam
+a iluminação automática até selecionar Visão automática dos tokens. Revelar
+todos e ocultar todos limpam também os polígonos antigos. Alcances de visão e
+luz são em pés e convertem na grade em metros. Migration 061 preserva tokens,
+barreiras e círculos legados ao ativar visão em mapas antigos afetados.
+
+Lançador tem sete linhas D4/D6/D8/D10/D12/D20/D100 e quantidades rápidas 1–6;
+entrada manual até 100 com modificador e opção privada. D100 mantém dois D10.
+Dados percorrem mais espaço, giram e quicam por 3,2 segundos, mantendo o
+resultado recebido do servidor. Som respeita o controle global de efeitos.
+
+Barra de ações: dez espaços numerados, até vinte abas por jogador/mesa.
+Arrastar Fixar da ficha para um espaço, ou clicar para usar o primeiro vazio.
+Arraste entre espaços troca sua ordem. Aba trancada permite usar atalhos e
+trocar abas, mas impede mover, renomear, remover ou adicionar. Destrancar é uma
+operação separada também validada no servidor. Remover atalho preserva a ação
+na ficha. Migration 062 guarda revisão e documento em vtt_hotbars por room/user,
+sem localStorage. Servidor valida acesso à mesa, ownership, importação e origem.
+Cada uso consulta a ficha atual: ataques rolam acerto/dano; magias publicam
+descrição ou gastam espaço do nível antes de publicar; truques não gastam;
+consumíveis debitam uma unidade com auditoria e idempotência. Não aplica efeitos
+narrativos ou dano automático ao alvo. Se publicação falhar após gasto, o
+recurso continua gasto e somente mestre pode corrigir pelo histórico da ficha.
+
+Mestre seleciona token → Token → Boss e efeito de morte. Escolher um dos dez
+estilos publica a barra para todos, inclusive quando o token está oculto;
+apenas tokenId/nome/PV/máximo/estilo são públicos, sem posição/arte/notas/ficha.
+Não mostrar barra remove-a. Vermelho recua sobre preto, verde sinaliza cura e
+retorna ao vermelho. PV vêm do próprio token, incluindo gasto pela ficha.
+Duplicação não duplica a designação de boss. Efeito de morte manual é visual;
+automático dispara uma vez ao cruzar PV positivo → zero/negativo, não ao reabrir
+a página. Mancha permanece até limpar ou restaurar PV pelo mestre. Fragmentos
+animam por tempo limitado, respeitam névoa/visão e preferência de movimento
+reduzido. Tokens e personagens nunca são excluídos pelo efeito. Restauração de
+PV via ficha também limpa a marca. Não acrescenta regras de morte definitiva
+ou testes contra a morte; o mestre decide o uso do efeito.
+
 ## Navegação e visitas
 
 **Personagem → Hall da Fama / Perfis**. Perfis lista contas com avatares redondos,

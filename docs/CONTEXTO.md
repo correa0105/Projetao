@@ -1,5 +1,29 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Refino posterior de 05/10/2026
+
+Calendário ao final do Diário: título padrão Calendário, sem selo/subtítulo,
+cores carvão/azul/cobre. Capa acompanha o compromisso selecionado; três artes
+genéricas novas para ausência de imagem. Prompts e comportamento em
+CALENDARIO-PERFIS-REFINO.md. Personagem → Cartas tem inventário e três espaços
+equipados, inclusive na consulta de perfis. Loja mantém compra separada. Perfil
+sem novos uploads de cenários; avatares e fundos antigos preservados. Ações em
+uma linha, molduras diagonais e painel inferior do acampamento removido.
+
+VTT: busca de mapas alinhada; Formas e Névoa agrupados. Fog manual permite
+polígono/retângulo/pincel de revelar e ocultar, reinício/desfazer. Selecionar
+essas ferramentas usa controle manual; visão automática dos tokens volta pelo
+menu. Novos mapas usam visão automática e escuridão sem luz ambiente; migration
+061 corrige mapas antigos que retiveram névoa manual com iluminação desligada.
+Editar alcance de visão/luz também ativa modo automático; ft converte para m.
+Dados percorrem a tela e têm seletor D4–D100 com atalhos de quantidade 1–6 e
+entrada manual até 100. Atalhos da ficha têm dez espaços, até vinte abas,
+tranca/remoção e persistência privada por usuário/mesa (migration 062).
+Boss: mestre marca token e estilo; todos veem só nome/PV/estilo, vermelho sobre
+preto e cura verde temporária. Efeito de morte manual ou ao cruzar PV positivo
+para zero, sem excluir token/ficha; cura/limpeza pelo mestre remove o efeito.
+Gastos ainda são reais, auditados e restaurados somente pelo mestre.
+
 ## Refino da mesa virtual, visitas, eras e calendário (05/10/2026)
 
 Direção vigente substitui os limites de sessão descritos na entrega anterior:

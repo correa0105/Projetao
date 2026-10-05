@@ -26,6 +26,7 @@ import {
 } from '../shared/calendar';
 import type { GuildEvent } from '../shared/events';
 import './guild-calendar.css';
+import { calendarBackgrounds, calendarFallbackImage } from '../shared/calendar-art';
 const names = { event: 'Evento', mission: 'Missão', publication: 'Encontro do diário' };
 const icons = { event: Sparkles, mission: Sword, publication: BookOpen };
 const longDay = (key: string) =>
@@ -66,6 +67,8 @@ export function GuildCalendar({
     [error, setError] = useState(''),
     [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all'),
+    [focusedEntry, setFocusedEntry] = useState(''),
+    [failedImage, setFailedImage] = useState(''),
     [editing, setEditing] = useState<GuildEvent | 'new' | null>(null),
     [settings, setSettings] = useState(false);
   const sequence = useRef(0);
@@ -95,6 +98,9 @@ export function GuildCalendar({
   const all = loadedMonth === month ? data?.entries || [] : [];
   const entries = all.filter((item) => filter === 'all' || filter === item.source);
   const daily = entries.filter((item) => calendarDate(item.starts_at) === selected);
+  const featured = daily.find((item) => item.source + item.id === focusedEntry) || daily[0];
+  const fallback = calendarFallbackImage(featured?.source, selected, doc.background);
+  const coverImage = featured?.image && featured.image !== failedImage ? featured.image : fallback;
   const days = monthDays(month, doc.week_start === 'monday');
   const week =
     doc.week_start === 'monday'
@@ -122,16 +128,19 @@ export function GuildCalendar({
       aria-label="Calendário da guilda"
       style={{ '--calendar-accent': doc.accent } as CSSProperties}
     >
-      <div
-        className="calendar-cover"
-        style={{ backgroundImage: doc.background ? `url('${doc.background}')` : undefined }}
-      >
+      <div className="calendar-cover">
+        <img
+          key={coverImage}
+          className="calendar-cover-art"
+          src={coverImage}
+          alt=""
+          onError={(event) => {
+            if (coverImage !== fallback) setFailedImage(coverImage);
+            else event.currentTarget.style.visibility = 'hidden';
+          }}
+        />
         <div className="calendar-cover-copy">
-          <span className="calendar-kicker">
-            <CalendarDays size={16} /> A AGENDA DA GUILDA
-          </span>
           <h1>{doc.title}</h1>
-          <p>{doc.subtitle}</p>
         </div>
         {data?.can_edit && (
           <div className="calendar-admin">
@@ -257,6 +266,8 @@ export function GuildCalendar({
               key={item.source + item.id}
               item={item}
               canEdit={Boolean(data?.can_edit)}
+              selected={featured?.id === item.id && featured.source === item.source}
+              select={() => setFocusedEntry(item.source + item.id)}
               edit={() => {
                 if (item.event) setEditing(item.event);
                 else if (item.source === 'publication') onEditPublication(item.id);
@@ -293,10 +304,14 @@ function CalendarAppointment({
   item,
   canEdit,
   edit,
+  selected,
+  select,
 }: {
   item: CalendarEntry;
   canEdit: boolean;
   edit: () => void;
+  selected: boolean;
+  select: () => void;
 }) {
   const Icon = icons[item.source];
   return (
@@ -311,7 +326,11 @@ function CalendarAppointment({
           </button>
         )}
       </div>
-      <h3>{item.title}</h3>
+      <h3>
+        <button className="calendar-appointment-select" aria-pressed={selected} onClick={select}>
+          {item.title}
+        </button>
+      </h3>
       <p className="calendar-appointment-time">
         <Clock size={13} /> <time dateTime={item.starts_at}>{time(item.starts_at)}</time>
         {item.location && (
@@ -376,19 +395,11 @@ function CalendarSettingsEditor({
               onChange={(event) => setDraft({ ...draft, title: event.target.value })}
             />
           </label>
-          <label>
-            Apresentação
-            <textarea
-              aria-label="Apresentação"
-              maxLength={500}
-              rows={3}
-              value={draft.subtitle}
-              onChange={(event) => setDraft({ ...draft, subtitle: event.target.value })}
-            />
-          </label>
           <EventImageField
             value={draft.background}
-            label="Fundo do calendário"
+            label="Fundo para compromissos sem imagem"
+            gallery={calendarBackgrounds}
+            emptyLabel="Alternar os três cenários automaticamente"
             disabled={busy || uploading}
             onBusy={setUploading}
             onError={setError}
@@ -419,13 +430,10 @@ function CalendarSettingsEditor({
             className="calendar-settings-preview"
             style={{
               borderColor: draft.accent,
-              backgroundImage: draft.background
-                ? `linear-gradient(#111c,#111c),url('${draft.background}')`
-                : undefined,
+              backgroundImage: `linear-gradient(#10151ac9,#10151ac9),url('${draft.background || calendarBackgrounds[0].path}')`,
             }}
           >
             <strong style={{ color: draft.accent }}>{draft.title}</strong>
-            <p>{draft.subtitle}</p>
           </div>
         </fieldset>
         {error && <p role="alert">{error}</p>}

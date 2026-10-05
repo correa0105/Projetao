@@ -12,9 +12,9 @@ export const calendarSettingsSchema = z
   .strict();
 export type CalendarSettings = z.infer<typeof calendarSettingsSchema>;
 export const defaultCalendarSettings: CalendarSettings = {
-  title: 'O tempo da Alvorada',
-  subtitle: 'Encontros, jornadas e dias que merecem ser lembrados.',
-  background: '/notice-village-empty-v4.png',
+  title: 'Calendário',
+  subtitle: '',
+  background: '',
   accent: '#c7a66a',
   week_start: 'monday',
 };
@@ -26,6 +26,7 @@ export type CalendarEntry = {
   starts_at: string;
   location: string;
   status: string;
+  image: string;
   event?: GuildEvent;
 };
 export type CalendarResponse = {

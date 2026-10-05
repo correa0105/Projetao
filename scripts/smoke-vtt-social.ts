@@ -46,6 +46,10 @@ try {
   const a = await createLegacyTestCharacter(owner.id, 'Arden'),
     b = await createLegacyTestCharacter(owner.id, 'Mira'),
     c = await createLegacyTestCharacter(peer.id, 'Lyra');
+  await pool.query(
+    "INSERT INTO inventory(character_id,item_id,quantity)VALUES($1,'potion-of-healing',2)",
+    [c.id],
+  );
   const png = await sharp(await readFile('public/shop/merchant-v2.png'))
     .resize({ height: 900 })
     .png()
@@ -154,14 +158,36 @@ try {
     .locator('.profile-visit-nav')
     .getByRole('button', { name: 'Cartas', exact: true })
     .click();
-  await expect(page.locator('.public-cards .arcana-card-face')).toHaveCount(1);
+  await expect(page.locator('.public-cards .character-card-slot')).toHaveCount(3);
+  await expect(page.locator('.public-cards .character-card-slot .arcana-card-face')).toHaveCount(1);
+  await expect(page.locator('.public-cards .character-card-choice')).toHaveCount(1);
+  await expect(
+    page.locator('.public-cards').getByRole('button', { name: /Equipar no espaço/ }),
+  ).toHaveCount(0);
   await page.getByRole('button', { name: 'Personalizar perfil' }).click();
+  await expect(page.getByText('Enviar cenário próprio', { exact: true })).toHaveCount(0);
+  await expect(page.locator('.social-modal input[type=file]')).toHaveCount(1);
   await page.getByLabel('Frase de apresentação').fill('Pelas estradas da Alvorada.');
   await page.getByLabel('Sobre você', { exact: true }).fill('Um lugar para novas histórias.');
   await page.getByRole('button', { name: 'Salvar meu perfil' }).click();
   await expect(page.locator('.visited-profile-heading')).toContainText(
     'Pelas estradas da Alvorada.',
   );
+  await expect(page.locator('.public-camp-summary')).toHaveCount(0);
+  await page.goto(origin + '/#character-cards');
+  await expect(page.locator('.character-card-slot')).toHaveCount(3);
+  await expect(page.locator('.character-card-choice')).toHaveCount(1);
+  await page.getByRole('button', { name: 'Equipar no espaço 2', exact: true }).click();
+  await expect(page.locator('.character-card-slot[data-slot="2"] .arcana-card-face')).toHaveCount(
+    1,
+  );
+  await page.reload();
+  await expect(page.locator('.character-card-slot[data-slot="2"] .arcana-card-face')).toHaveCount(
+    1,
+  );
+  await page.getByRole('button', { name: /Retirar.*2/ }).click();
+  await expect(page.locator('.character-card-slot[data-empty="true"]')).toHaveCount(3);
+  await expect(page.locator('.character-card-choice')).toHaveCount(1);
   await page.goto(origin + '/#profiles');
   await expect(page.locator('.profile-directory article')).toHaveCount(2);
   await page.getByLabel('Localizador de perfil').fill(peer.id);
@@ -203,6 +229,12 @@ try {
   const panel = page.locator('.vtt-panel-content');
   await page.getByRole('button', { name: 'Biblioteca de mapas', exact: true }).first().click();
   const maps = page.getByRole('dialog', { name: 'Biblioteca de mapas', exact: true });
+  const searchBox = await maps.getByLabel('Buscar mapas').boundingBox();
+  const searchIcon = await maps.locator('.vtt-map-search label svg').boundingBox();
+  expect(searchBox!.height).toBeLessThanOrEqual(42);
+  expect(
+    Math.abs(searchIcon!.y + searchIcon!.height / 2 - searchBox!.y - searchBox!.height / 2),
+  ).toBeLessThan(2);
   await maps.getByRole('button', { name: 'Nova pasta', exact: true }).click();
   await maps.getByLabel('Nome da pasta', { exact: true }).fill('Campanha do Norte');
   await maps.getByRole('button', { name: 'Salvar pasta', exact: true }).click();
@@ -289,13 +321,56 @@ try {
   await expect(panel.locator('.vtt-compendium button').first()).toBeVisible();
   await panel.locator('.vtt-compendium button').first().click();
   await panel.getByRole('button', { name: 'Adicionar ao tabuleiro', exact: true }).click();
+  await page.getByRole('button', { name: 'Token', exact: true }).click();
+  await panel.getByLabel('Estilo da barra de boss').selectOption('royal');
+  await panel.getByLabel('Efeito de morte automático ao zerar PV').check();
+  await panel.getByLabel('PV atual', { exact: true }).fill('0');
+  await expect(page.locator('.vtt-boss-track')).toHaveAttribute('aria-valuenow', '0');
+  await page.screenshot({ path: 'test-results/vtt-boss-death.png' });
+  await panel.getByLabel('PV atual', { exact: true }).fill('8');
+  await expect(page.locator('.vtt-boss-heal')).toBeVisible();
+  await panel.getByRole('button', { name: 'Aplicar efeito de morte', exact: true }).click();
+  await expect(
+    panel.getByRole('button', { name: 'Limpar efeito de morte', exact: true }),
+  ).toBeEnabled();
+  await panel.getByRole('button', { name: 'Limpar efeito de morte', exact: true }).click();
+  await page.getByRole('button', { name: 'Formas', exact: true }).click();
+  await page
+    .getByRole('group', { name: 'Opções de Formas' })
+    .getByRole('button', { name: 'Linha', exact: true })
+    .click();
+  await page.getByRole('button', { name: 'Névoa', exact: true }).click();
+  await page
+    .getByRole('group', { name: 'Opções de Névoa' })
+    .getByRole('button', { name: 'Revelar polígono', exact: true })
+    .click();
+  const fogBoard = (await page.locator('canvas[aria-label="Tabuleiro da mesa"]').boundingBox())!;
+  for (const [x, y] of [
+    [0.3, 0.3],
+    [0.5, 0.3],
+    [0.5, 0.5],
+    [0.3, 0.5],
+  ])
+    await page.mouse.click(fogBoard.x + fogBoard.width * x, fogBoard.y + fogBoard.height * y);
+  await page.locator('canvas[aria-label="Tabuleiro da mesa"]').press('Enter');
+  await page.getByRole('button', { name: 'Névoa', exact: true }).click();
+  await page
+    .getByRole('group', { name: 'Opções de Névoa' })
+    .getByRole('button', { name: 'Visão automática dos tokens', exact: true })
+    .click();
+  await page.getByRole('button', { name: 'Escolher dados', exact: true }).click();
+  await expect(page.locator('.vtt-dice-row')).toHaveCount(7);
+  await expect(page.locator('.vtt-dice-row button')).toHaveCount(42);
+  await page.getByRole('button', { name: 'Rolar 3d20', exact: true }).click();
+  await expect(page.locator('.vtt-dice-overlay')).toHaveAttribute('data-dice-count', '3');
+  await page.getByRole('button', { name: 'Fechar lançador', exact: true }).click();
   await page.getByRole('button', { name: 'Dados e chat', exact: true }).click();
   await panel.getByLabel('Rolagem', { exact: true }).fill('2d20kh1+3');
   await panel.getByRole('button', { name: 'Rolar dados', exact: true }).click();
   await expect(page.locator('.vtt-dice-overlay')).toHaveAttribute('data-dice-count', '2');
   await expect(page.locator('canvas[aria-label="Dados 3D"]')).toBeVisible();
   await page.screenshot({ path: 'test-results/vtt-dice-3d.png' });
-  await expect(page.locator('.vtt-roll')).toContainText('2d20kh1+3');
+  await expect(page.locator('.vtt-roll').last()).toContainText('2d20kh1+3');
   const [file] = await Promise.all([
     page.waitForEvent('download'),
     page.getByRole('button', { name: 'Exportar imagem PNG', exact: true }).click(),
@@ -348,6 +423,36 @@ try {
     .filter({ hasText: 'Lyra' })
     .click();
   await expect(peerPage.getByRole('dialog', { name: 'Ficha · Lyra', exact: true })).toBeVisible();
+  const pinItem = peerPage.getByRole('button', { name: 'Fixar Poção de cura', exact: true });
+  await expect(pinItem).toBeVisible();
+  await pinItem.dragTo(peerPage.locator('.vtt-hotbar-slot').first());
+  await expect(peerPage.locator('.vtt-hotbar-slot').first()).toContainText('Poção');
+  await peerPage.getByRole('button', { name: 'Trancar aba', exact: true }).click();
+  await expect(peerPage.locator('.vtt-hotbar-slot').first()).toHaveAttribute('draggable', 'false');
+  await peerPage.locator('.vtt-hotbar-slot').first().click();
+  await expect(peerPage.getByRole('button', { name: 'Remover atalho', exact: true })).toHaveCount(
+    0,
+  );
+  await peerPage.getByRole('button', { name: 'Usar uma unidade', exact: true }).click();
+  await expect
+    .poll(async () =>
+      Number(
+        (
+          await pool.query(
+            "SELECT quantity FROM inventory WHERE character_id=$1 AND item_id='potion-of-healing'",
+            [c.id],
+          )
+        ).rows[0].quantity,
+      ),
+    )
+    .toBe(1);
+  await peerPage.getByRole('button', { name: 'Destrancar aba', exact: true }).click();
+  await peerPage.getByRole('button', { name: 'Nova aba de ações', exact: true }).click();
+  await expect(peerPage.getByLabel('Aba da barra de ações').locator('option')).toHaveCount(2);
+  await peerPage.getByLabel('Aba da barra de ações').selectOption({ label: 'Ações' });
+  await peerPage.locator('.vtt-hotbar-slot').first().click();
+  await peerPage.getByRole('button', { name: 'Remover atalho', exact: true }).click();
+  await expect(peerPage.locator('.vtt-hotbar-slot').first()).not.toContainText('Poção');
   await expect(peerPage.getByRole('button', { name: 'Restaurar PV', exact: true })).toHaveCount(0);
   await peerPage.getByRole('button', { name: 'Fechar ficha', exact: true }).click();
   await expect(peerPage.locator('.vtt-panel-content h3').filter({ hasText: 'Lyra' })).toBeVisible();
@@ -446,8 +551,12 @@ try {
       return Math.max(...rgb.slice(0, 3)) - Math.min(...rgb.slice(0, 3));
     })
     .toBeLessThan(3);
-  const illuminated = await pixel(300, 0);
-  expect(illuminated[0] - illuminated[2]).toBeGreaterThan(30);
+  await expect
+    .poll(async () => {
+      const illuminated = await pixel(300, 0);
+      return illuminated[0] - illuminated[2];
+    })
+    .toBeGreaterThan(30);
   const hidden = await pixel(600, 0);
   expect(Math.max(...hidden.slice(0, 3))).toBeLessThan(15);
   await peerPage.screenshot({ path: 'test-results/vtt-darkvision-color-fog.png' });
@@ -459,6 +568,21 @@ try {
       .getByRole('button', { name: 'Conquistas', exact: true })
       .click();
     await expect(page.locator('.public-achievements')).toHaveAttribute('aria-hidden', 'false');
+    const buttons = await page.locator('.profiles-top > div > button').evaluateAll((buttons) =>
+      buttons.map((b) => {
+        const r = b.getBoundingClientRect();
+        return { x: r.x, y: r.y, right: r.right, bottom: r.bottom };
+      }),
+    );
+    expect(
+      Math.max(...buttons.map((b) => b.y)) - Math.min(...buttons.map((b) => b.y)),
+    ).toBeLessThan(2);
+    const avatar = await page.locator('.profile-avatar').boundingBox();
+    expect(
+      buttons.every(
+        (b) => b.bottom <= avatar!.y || b.y >= avatar!.y + avatar!.height || b.right <= avatar!.x,
+      ),
+    ).toBe(true);
     await expect
       .poll(() =>
         page

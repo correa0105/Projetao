@@ -52,6 +52,7 @@ import { PetShop } from './PetShop';
 import { Events } from './Events';
 import { Achievements } from './Achievements';
 import { Cards } from './Cards';
+import { CharacterCards } from './CharacterCards';
 import { Shop } from './Shop';
 import { Inventory } from './Inventory';
 import { CharacterCamp } from './CharacterCamp';
@@ -83,6 +84,7 @@ const titles: Record<Page, string> = {
   events: 'Eventos da Alvorada',
   titles: 'Títulos & honrarias',
   cards: 'Salão das cartas',
+  'character-cards': 'Cartas',
   vtt: 'Mesa virtual',
   hall: 'Hall da Fama',
   profiles: 'Perfis da Alvorada',
@@ -529,6 +531,8 @@ function Portal({ user }: { user: User }) {
       );
     if (page === 'cards')
       return <Cards key={character?.id || 'visitor'} character={character} onPurchased={refresh} />;
+    if (page === 'character-cards')
+      return <CharacterCards key={character?.id || 'visitor'} character={character} />;
     return (
       <>
         {page !== 'characters' && page !== 'lore' && page !== 'pets' && (

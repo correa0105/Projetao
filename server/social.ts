@@ -161,9 +161,14 @@ export function socialRouter() {
       await db.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [uid]);
       const {
         rows: [current],
-      } = await db.query('SELECT revision FROM player_profiles WHERE user_id=$1', [uid]);
+      } = await db.query('SELECT revision,document FROM player_profiles WHERE user_id=$1', [uid]);
       if ((current?.revision || 0) !== input.revision)
         throw new AppError(409, 'Seu perfil mudou. Reabra antes de salvar.');
+      if (
+        doc.background.startsWith('/api/social/assets/') &&
+        doc.background !== current?.document?.background
+      )
+        throw new AppError(403, 'Cenários próprios não estão disponíveis para personalização.');
       return (
         await db.query(
           'INSERT INTO player_profiles(user_id,document)VALUES($1,$2)ON CONFLICT(user_id)DO UPDATE SET document=$2,revision=player_profiles.revision+1,updated_at=now()RETURNING document,revision',

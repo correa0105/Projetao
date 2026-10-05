@@ -19,7 +19,11 @@ import {
   lightSchema,
   carveOpening,
   viewerSees,
+  manualFogSees,
+  visionPixels,
+  activateTokenVision,
 } from '../shared/vtt.js';
+import { emptyHotbar } from '../shared/vtt-hotbar.js';
 import { defaultHallSettings, profileSettingsSchema, fameScore } from '../shared/social.js';
 
 test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descartável', async (t) => {
@@ -140,6 +144,8 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         token.hidden = true;
         token.image = privateAsset;
         token.notes = 'segredo';
+        scene.lighting = false;
+        scene.fog = false;
         scene.tokens.push(token);
         const publicToken = {
           ...newToken(randomUUID(), scene),
@@ -773,6 +779,199 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         s.walls[0].kind = 'window';
         assert.equal(visiblePoint({ x: 50, y: 100 }, { x: 150, y: 100 }, s, 500), true);
         assert.ok(sightPolygon({ x: 50, y: 100 }, 500, s).length > 100);
+      },
+    );
+    await t.test(
+      'boss público sem dados privados, cura, morte automática e controle exclusivo do mestre',
+      async () => {
+        const root = `/vtt/rooms/${room.id}`;
+        room = (await request(root, adm)).data;
+        const s = room.document.scenes.find((s: any) => s.id === room.document.activeScene);
+        const boss = newToken(randomUUID(), s);
+        Object.assign(boss, {
+          name: 'Guardião',
+          hp: 25,
+          maxHp: 50,
+          hidden: true,
+          notes: 'segredo-do-boss',
+          bossStyle: 'royal',
+          deathAutomatic: true,
+        });
+        s.tokens.push(boss);
+        room = (
+          await request(root, adm, 'PUT', { revision: room.revision, document: room.document })
+        ).data;
+        const publicState = (await request(root, player)).data;
+        assert.deepEqual(
+          publicState.bossBars.find((b: any) => b.tokenId === boss.id),
+          { tokenId: boss.id, name: 'Guardião', hp: 25, maxHp: 50, style: 'royal' },
+        );
+        assert.equal(
+          publicState.document.scenes[0].tokens.some((t: any) => t.id === boss.id),
+          false,
+        );
+        assert.equal(JSON.stringify(publicState.bossBars).includes('segredo-do-boss'), false);
+        const change = async (hp: number) => {
+          const t = room.document.scenes
+            .find((s: any) => s.id === room.document.activeScene)
+            .tokens.find((t: any) => t.id === boss.id);
+          t.hp = hp;
+          const r = await request(root, adm, 'PUT', {
+            revision: room.revision,
+            document: room.document,
+          });
+          assert.equal(r.status, 200, JSON.stringify(r.data));
+          room = r.data;
+          return room.document.scenes
+            .find((s: any) => s.id === room.document.activeScene)
+            .tokens.find((t: any) => t.id === boss.id);
+        };
+        assert.ok((await change(0)).deathAt > 0);
+        const at = room.document.scenes
+          .find((s: any) => s.id === room.document.activeScene)
+          .tokens.find((t: any) => t.id === boss.id).deathAt;
+        assert.equal((await change(0)).deathAt, at);
+        assert.equal((await change(15)).deathAt, null);
+        assert.equal(
+          (await request(root, player, 'PUT', { revision: room.revision, document: room.document }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (await request(root + '/tokens/' + boss.id, player, 'PATCH', { deathAutomatic: true }))
+            .status,
+          400,
+        );
+      },
+    );
+    await t.test(
+      'barra de ações privada, persistida, com abas trancadas e referências reais',
+      async () => {
+        const root = `/vtt/rooms/${room.id}`,
+          path = root + '/hotbar';
+        await pool.query(
+          "INSERT INTO inventory(character_id,item_id,quantity)VALUES($1,'potion-of-healing',3)ON CONFLICT(character_id,item_id)DO UPDATE SET quantity=3",
+          [p.id],
+        );
+        const start = await request(path, player);
+        assert.equal(start.status, 200);
+        let bar = start.data;
+        bar.document.pages[0].slots[0] = {
+          kind: 'consumable',
+          characterId: p.id,
+          sourceId: 'potion-of-healing',
+          label: 'Poção de cura',
+        };
+        const put = async (document: any, revision = bar.revision) =>
+          request(path, player, 'PUT', { revision, document });
+        let r = await put(bar.document);
+        assert.equal(r.status, 200, JSON.stringify(r.data));
+        bar = r.data;
+        assert.equal(
+          (await request(path, player)).data.document.pages[0].slots[0].characterId,
+          p.id,
+        );
+        assert.equal((await request(path, adm)).data.document.pages[0].slots[0], null);
+        const foreign = structuredClone(bar.document);
+        foreign.pages[0].slots[1] = { ...foreign.pages[0].slots[0], characterId: o.id };
+        assert.equal((await put(foreign)).status, 403);
+        const fake = structuredClone(bar.document);
+        fake.pages[0].slots[1] = { ...fake.pages[0].slots[0], sourceId: 'full-plate' };
+        assert.equal((await put(fake)).status, 400);
+        const lock = structuredClone(bar.document);
+        lock.pages[0].locked = true;
+        r = await put(lock);
+        assert.equal(r.status, 200);
+        bar = r.data;
+        const remove = structuredClone(bar.document);
+        remove.pages[0].slots[0] = null;
+        assert.equal((await put(remove)).status, 403);
+        remove.pages[0].locked = false;
+        assert.equal((await put(remove)).status, 403);
+        const unlock = structuredClone(bar.document);
+        unlock.pages[0].locked = false;
+        r = await put(unlock);
+        assert.equal(r.status, 200);
+        bar = r.data;
+        const second = emptyHotbar(randomUUID()).pages[0];
+        bar.document.pages.push(second);
+        bar.document.active = second.id;
+        r = await put(bar.document);
+        assert.equal(r.status, 200);
+        bar = r.data;
+        assert.equal((await request(path, player)).data.document.pages.length, 2);
+        assert.equal((await put(bar.document, 1)).status, 409);
+      },
+    );
+    await t.test(
+      'névoa por polígono permite revelar, ocultar e resetar; visão converte pés em metros',
+      () => {
+        const s = newScene(randomUUID());
+        const p = { x: 50, y: 50 };
+        const points = [
+          { x: 0, y: 0 },
+          { x: 100, y: 0 },
+          { x: 100, y: 100 },
+          { x: 0, y: 100 },
+        ];
+        s.fogAreas.push({ id: randomUUID(), points, reveal: true });
+        assert.equal(manualFogSees(p, s), true);
+        assert.equal(manualFogSees({ x: 150, y: 50 }, s), false);
+        s.fogAreas.push({ id: randomUUID(), points, reveal: false });
+        assert.equal(manualFogSees(p, s), false);
+        s.fogAreas.push({ id: randomUUID(), points, reveal: true });
+        assert.equal(manualFogSees(p, s), true);
+        s.fogAreas = [];
+        assert.equal(manualFogSees(p, s), false);
+        s.grid.unit = 'm';
+        s.grid.scale = 1.524;
+        assert.ok(Math.abs(visionPixels(60, s) - 840) < 0.001);
+        s.lighting = false;
+        s.fogMode = 'manual';
+        s.ambient = 0.12;
+        activateTokenVision(s);
+        assert.deepEqual([s.lighting, s.fog, s.fogMode, s.ambient], [true, true, 'vision', 0]);
+      },
+    );
+    await t.test(
+      'perfil mantém avatar e cenário legado; novo envio de cenário fica indisponível',
+      async () => {
+        const png = await sharp({
+          create: { width: 16, height: 16, channels: 4, background: '#555555' },
+        })
+          .png()
+          .toBuffer();
+        const asset = await fetch(base + '/social/assets', {
+          method: 'POST',
+          headers: { Origin: origin, Cookie: player.cookie, 'Content-Type': 'image/png' },
+          body: png,
+        });
+        assert.equal(asset.status, 201);
+        const path = (await asset.json()).path;
+        const root = '/profiles/' + player.id;
+        let profile = (await request(root, player)).data;
+        let r = await request(root, player, 'PUT', {
+          revision: profile.revision,
+          document: { ...profile.document, avatar: path },
+        });
+        assert.equal(r.status, 200, JSON.stringify(r.data));
+        profile = r.data;
+        r = await request(root, player, 'PUT', {
+          revision: profile.revision,
+          document: { ...profile.document, background: path },
+        });
+        assert.equal(r.status, 403);
+        await pool.query(
+          "UPDATE player_profiles SET document=jsonb_set(document,'{background}',to_jsonb($2::text)) WHERE user_id=$1",
+          [player.id, path],
+        );
+        profile = (await request(root, player)).data;
+        r = await request(root, player, 'PUT', {
+          revision: profile.revision,
+          document: { ...profile.document, tagline: 'Cenário preservado' },
+        });
+        assert.equal(r.status, 200, JSON.stringify(r.data));
+        assert.equal(r.data.document.background, path);
       },
     );
   } finally {

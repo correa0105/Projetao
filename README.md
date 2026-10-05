@@ -1,5 +1,13 @@
 # Alvorada Cinzenta
 
+Refino de 05/10: calendário com capa do compromisso e três artes genéricas;
+coleção de cartas com três espaços; perfil sem envio de cenário próprio,
+ações lado a lado e quadros diagonais. Mesa com menus agrupados, névoa por
+polígonos/áreas/pincel, dados 3D com percurso maior e seletor por quantidade,
+barra de ações por jogador com abas trancáveis, barra de boss e efeito de morte
+manual/automático. [Artes e prompts](docs/CALENDARIO-PERFIS-REFINO.md) e
+[comportamento da mesa](docs/VTT-PERFIS-HALL.md). Migrations 061–062.
+
 ## Mesa virtual e comunidade
 
 **Mural → Mesa virtual** reúne mapas, tokens/fichas, grade, régua, luz e barreiras,

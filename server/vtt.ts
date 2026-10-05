@@ -9,6 +9,7 @@ import { requireAdministrator, isAdministrator } from './administrators.js';
 import { AppError } from './services.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
+import { vttHotbarRouter } from './vtt-hotbar.js';
 import {
   documentSchema,
   newDocument,
@@ -18,6 +19,9 @@ import {
   intersection,
   visiblePoint,
   viewerSees,
+  manualFogSees,
+  sceneBossBars,
+  applyTokenDeath,
   type VttDocument,
   type VttScene,
   type VttToken,
@@ -50,12 +54,7 @@ async function gm(db: DB, id: string, user: string, lock = false) {
 function canSee(t: VttToken, s: VttScene, user: string) {
   if (t.hidden || t.layer === 'gm') return false;
   if (t.controller === user) return true;
-  if (
-    s.fog &&
-    s.fogMode === 'manual' &&
-    !s.reveals.some((r) => Math.hypot(r.x - t.x, r.y - t.y) <= r.radius)
-  )
-    return false;
+  if (s.fog && s.fogMode === 'manual' && !manualFogSees(t, s)) return false;
   if (!s.lighting && !(s.fog && s.fogMode === 'vision')) return true;
   const viewers = s.tokens.filter((t) => t.controller === user && t.layer === 'tokens');
   return viewers.some((v) => !v.hidden && viewerSees(v, t, s));
@@ -149,12 +148,14 @@ async function state(rid: string, user: string) {
       .map((a) => ({ ...a, path: '/api/vtt/assets/' + a.id })),
     members: members.rows,
     messages: messages.rows.reverse(),
+    bossBars: sceneBossBars(r.document.scenes.find((s) => s.id === r.document.activeScene)!),
   };
 }
 export function vttRouter() {
   const router = express.Router();
   router.use('/vtt', express.json({ limit: '12mb' }));
   router.use(vttSheetRouter(room));
+  router.use(vttHotbarRouter(room));
   router.get('/vtt', async (_req, res) =>
     res.json({
       can_create: await isAdministrator(res.locals.user.id),
@@ -213,6 +214,13 @@ export function vttRouter() {
           'Outra alteração chegou à mesa. Recarregue ou exporte seu rascunho.',
         );
       await validateAssets(db, rid, input.document);
+      for (const s of input.document.scenes)
+        for (const t of s.tokens) {
+          const old = r.document.scenes
+            .find((previous) => previous.id === s.id)
+            ?.tokens.find((previous) => previous.id === t.id);
+          if (old) applyTokenDeath(t, old.hp);
+        }
       const ids = (
         await db.query('SELECT user_id FROM vtt_members WHERE room_id=$1', [rid])
       ).rows.map((m) => m.user_id);
@@ -289,7 +297,9 @@ export function vttRouter() {
         blockingWalls(s, true).some((w) => intersection(t, destination, w.a, w.b, true))
       )
         throw new AppError(400, 'Uma barreira bloqueia o movimento.');
+      const oldHp = t.hp;
       Object.assign(t, input);
+      applyTokenDeath(t, oldHp);
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
         [rid, JSON.stringify(r.document)],

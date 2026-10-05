@@ -184,6 +184,39 @@
   background: #4d473a;
   margin: 6px;
 }
+.vtt-tool-popup {
+  position: fixed;
+  z-index: 150;
+  width: 216px;
+  padding: 7px;
+  border: 1px solid #8c754b;
+  border-radius: 6px;
+  background: #121a23f5;
+  box-shadow: 0 12px 30px #0009;
+  max-height: calc(100dvh - 16px);
+  overflow: auto;
+}
+.vtt-tool-popup button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  padding: 11px 9px;
+  background: none;
+  color: #d8ccb6;
+  font-size: 11px;
+  cursor: pointer;
+  text-align: left;
+}
+.vtt-tool-popup button:hover,
+.vtt-tool-popup button[aria-pressed='true'] {
+  background: #a88a5430;
+  color: #efd3a0;
+}
+.vtt-tool-popup button:focus-visible {
+  outline: 2px solid #d0ae72;
+}
 .vtt-panel {
   border-left: 1px solid #46463f;
   background: linear-gradient(120deg, #1b222a, #141a22);

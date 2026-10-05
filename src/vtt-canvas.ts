@@ -5,11 +5,13 @@ import {
   orderedTokens,
   sceneLights,
   viewerSees,
+  visionPixels,
   type Point,
   type VttScene,
   type VttToken,
   type VttDrawing,
 } from '../shared/vtt';
+import { drawDeath } from './vtt-death';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
   camera: VttCamera;
@@ -294,7 +296,10 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
+      drawDeath(c, t, images.get(t.image));
       c.save();
+      if (t.deathAt && layer !== 'map')
+        c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const img = images.get(t.image);
       if (layer === 'map') {
@@ -438,13 +443,13 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       line.fillStyle = '#fff';
       line.fill();
       if (v.vision > 0) {
-        polygon(vc, sightPolygon(v, (v.vision / g.scale) * g.size, s));
+        polygon(vc, sightPolygon(v, visionPixels(v.vision, s), s));
         vc.fillStyle = '#fff';
         vc.fill();
       }
     }
     for (const source of sceneLights(s)) {
-      const r = ((source.bright + source.dim) / g.scale) * g.size;
+      const r = visionPixels(source.bright + source.dim, s);
       if (r <= 0) continue;
       lc.save();
       polygon(lc, sightPolygon(source, r, s, source.rotation, source.angle));
@@ -521,6 +526,12 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     for (const r of s.reveals) {
       m.beginPath();
       m.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+      m.fill();
+    }
+    for (const area of s.fogAreas) {
+      m.globalCompositeOperation = area.reveal ? 'destination-out' : 'source-over';
+      m.fillStyle = '#03060a';
+      polygon(m, area.points);
       m.fill();
     }
     c.save();

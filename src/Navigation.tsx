@@ -45,7 +45,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
       { page: 'profile', label: 'Ficha', icon: Shield },
       { page: 'inventory', label: 'Inventário', icon: Backpack },
       { page: 'achievements', label: 'Conquistas', icon: Trophy },
-      { page: 'cards', label: 'Cartas', icon: Layers },
+      { page: 'character-cards', label: 'Cartas', icon: Layers },
       { page: 'hall', label: 'Hall da Fama', icon: Crown },
       { page: 'profiles', label: 'Perfis', icon: Users },
     ],
@@ -68,6 +68,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
       { page: 'shop', label: 'Empório', icon: Backpack },
       { page: 'stable', label: 'Estábulo', icon: House },
       { page: 'pets', label: 'Mascotes', icon: PawPrint },
+      { page: 'cards', label: 'Salão das cartas', icon: Layers },
     ],
   },
   {

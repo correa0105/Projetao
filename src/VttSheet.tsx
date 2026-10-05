@@ -7,6 +7,7 @@ import type { VttSheetData } from '../shared/vtt-sheet';
 import { spells, sheetAttacks, skills, skillAbilities } from '../shared/character-sheet';
 import { modifier, statNames } from '../shared/rules';
 import './vtt-sheet.css';
+import { ActionShortcut } from './VttHotbar';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
 export function VttSheet({
   roomId,
@@ -268,6 +269,16 @@ export function VttSheet({
                         sheetAttacks(c!.race, c!.class, c!.stats, choices).map((w) => (
                           <article key={w.name}>
                             <strong>{w.name}</strong>
+                            {data.can_use && (
+                              <ActionShortcut
+                                action={{
+                                  kind: 'attack',
+                                  characterId: c!.id,
+                                  sourceId: w.name,
+                                  label: w.name,
+                                }}
+                              />
+                            )}
                             <div>
                               <button onClick={() => check(w.attack, w.name + ' · ataque')}>
                                 Acerto {signed(w.attack)}
@@ -320,22 +331,34 @@ export function VttSheet({
                             </details>
                           </div>
                           {i.consumable && (
-                            <button
-                              aria-label={'Usar ' + i.name}
-                              disabled={busy}
-                              onClick={() => {
-                                if (
-                                  confirm(
-                                    'Usar uma unidade de ' +
-                                      i.name +
-                                      '? Ela será removida do inventário do personagem.',
+                            <div>
+                              {data.can_use && (
+                                <ActionShortcut
+                                  action={{
+                                    kind: 'consumable',
+                                    characterId: c!.id,
+                                    sourceId: i.id,
+                                    label: i.name,
+                                  }}
+                                />
+                              )}
+                              <button
+                                aria-label={'Usar ' + i.name}
+                                disabled={busy}
+                                onClick={() => {
+                                  if (
+                                    confirm(
+                                      'Usar uma unidade de ' +
+                                        i.name +
+                                        '? Ela será removida do inventário do personagem.',
+                                    )
                                   )
-                                )
-                                  use({ kind: 'consumable', item_id: i.id });
-                              }}
-                            >
-                              Usar
-                            </button>
+                                    use({ kind: 'consumable', item_id: i.id });
+                                }}
+                              >
+                                Usar
+                              </button>
+                            </div>
                           )}
                         </article>
                       ))}
@@ -491,6 +514,16 @@ export function VttSheet({
                     const spell = spells.find((s) => s.id === id);
                     return (
                       <article key={id}>
+                        {data.can_use && (
+                          <ActionShortcut
+                            action={{
+                              kind: 'spell',
+                              characterId: c!.id,
+                              sourceId: id,
+                              label: spell?.label || id,
+                            }}
+                          />
+                        )}
                         <div>
                           <ScrollText size={19} />
                           <strong>{spell?.label || id}</strong>

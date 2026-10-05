@@ -8,7 +8,7 @@ export const homeImages = [
 export function safeHomeLink(value: string) {
   if (!value) return true;
   if (
-    /^#(overview|characters|profile|inventory|achievements|missions|board|events|titles|cards|hooks|shop|stable|pets|house|world|lore|rules)$/.test(
+    /^#(overview|characters|profile|inventory|achievements|missions|board|events|titles|cards|character-cards|hooks|shop|stable|pets|house|world|lore|rules)$/.test(
       value,
     )
   )

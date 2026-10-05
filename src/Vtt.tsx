@@ -13,6 +13,7 @@ import {
   Square,
   Circle,
   Triangle,
+  Slash,
   Type,
   BrickWall,
   DoorOpen,
@@ -65,6 +66,11 @@ import {
   lightSchema,
   carveOpening,
   intersection,
+  activateTokenVision,
+  applyTokenDeath,
+  sceneBossBars,
+  bossStyles,
+  bossStyleNames,
   type VttMessage,
   type VttState,
   type VttDocument,
@@ -77,6 +83,9 @@ import {
 import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
 import { VttSheet } from './VttSheet';
 import { VttDice } from './VttDice';
+import { VttToolGroup } from './VttToolGroup';
+import { VttHotbar } from './VttHotbar';
+import { VttBossBars } from './VttBossBars';
 import { MapLibrary, MapSettings } from './VttMaps';
 import { useMusicInterlude } from './SiteMusic';
 import './vtt.css';
@@ -147,7 +156,7 @@ const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
   { id: 'rect', name: 'Retângulo', icon: Square, gm: true },
   { id: 'circle', name: 'Área circular', icon: Circle, gm: true },
   { id: 'cone', name: 'Área de cone', icon: Triangle, gm: true },
-  { id: 'line', name: 'Linha', icon: Ruler, gm: true },
+  { id: 'line', name: 'Linha', icon: Slash, gm: true },
   { id: 'text', name: 'Texto', icon: Type, gm: true },
   { id: 'wall', name: 'Barreira de luz', icon: BrickWall, gm: true },
   { id: 'door', name: 'Porta', icon: DoorOpen, gm: true },
@@ -173,6 +182,32 @@ function tagText(value: unknown): string {
     return [o.name, o.entries, o.items, o.entry].filter(Boolean).map(tagText).join('\n');
   }
   return '';
+}
+function DiceIcon({ sides }: { sides: number }) {
+  const path =
+    sides === 4
+      ? 'M12 2 22 21H2Z M12 2 12 15 2 21 M12 15 22 21'
+      : sides === 6
+        ? 'M4 4H20V20H4Z M4 4 8 8H20 M8 8V20'
+        : sides === 8
+          ? 'M12 2 22 12 12 22 2 12Z M2 12H22 M12 2V22'
+          : sides === 10 || sides === 100
+            ? 'M12 2 22 11 18 20 6 20 2 11Z M12 2 8 12 6 20 M8 12 18 20 M8 12 22 11'
+            : sides === 12
+              ? 'M7 2H17L23 10 19 21H5L1 10Z M7 2 9 8H16L17 2 M9 8 6 15 5 21 M6 15H18L19 21 M16 8 18 15 23 10 M1 10 6 15'
+              : 'M12 1 22 7V17L12 23 2 17V7Z M12 1 7 8 2 7 M7 8 17 8 22 7 M7 8 6 17 2 17 M17 8 18 17 22 17 M6 17H18L12 23 M7 8 12 18 17 8';
+  return (
+    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+      <path
+        d={path}
+        fill="#81776c"
+        fillOpacity=".28"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 function NumberField({
   label,
@@ -231,6 +266,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [preview, setPreview] = useState(false),
     [showWalls, setShowWalls] = useState(true),
     [ruler, setRuler] = useState<Point[]>([]),
+    [fogShape, setFogShape] = useState<'rect' | 'polygon' | 'brush'>('rect'),
+    [fogPoints, setFogPoints] = useState<Point[]>([]),
+    [fogPointer, setFogPointer] = useState<Point | null>(null),
     [draft, setDraft] = useState<VttDrawing | null>(null),
     [ping, setPing] = useState<Point | null>(null),
     [brushColor, setBrushColor] = useState('#dac28e'),
@@ -348,10 +386,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!token) return;
     if (gm)
       editScene((s) => {
+        const target = s.tokens.find((t) => t.id === token.id)!;
+        const oldHp = target.hp;
         Object.assign(
           s.tokens.find((t) => t.id === token.id)!,
           patch,
         );
+        applyTokenDeath(target, oldHp);
+        if (['vision', 'light', 'dimLight'].some((key) => key in patch)) activateTokenVision(s);
       });
     else if (canToken) {
       void act(async () => {
@@ -554,23 +596,50 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const dpr = Math.min(2, devicePixelRatio || 1);
     c.width = Math.round(bounds.width * dpr);
     c.height = Math.round(bounds.height * dpr);
-    renderVtt(c.getContext('2d')!, scene, {
-      camera,
-      width: bounds.width,
-      height: bounds.height,
-      dpr,
-      images: images.current,
-      selected: selection,
-      gm,
-      preview,
-      viewer: token || scene.tokens.find((t) => t.controller === user.id) || null,
-      layer,
-      ruler,
-      draft,
-      showWalls,
-      ping,
-      userId: user.id,
-    });
+    const draw = () =>
+      renderVtt(c.getContext('2d')!, scene, {
+        camera,
+        width: bounds.width,
+        height: bounds.height,
+        dpr,
+        images: images.current,
+        selected: selection,
+        gm,
+        preview,
+        viewer:
+          (token?.layer === 'tokens' ? token : null) ||
+          scene.tokens.find((t) => t.controller === user.id && t.layer === 'tokens' && !t.hidden) ||
+          scene.tokens.find((t) => t.layer === 'tokens' && !t.hidden) ||
+          null,
+        layer,
+        ruler,
+        draft: fogPoints.length
+          ? {
+              id: 'fog-preview',
+              kind: 'pen',
+              points: [...fogPoints, ...(fogPointer ? [fogPointer] : [])],
+              color: tool === 'reveal' ? '#96c9aa' : '#d29283',
+              width: 2,
+              fill: false,
+              text: '',
+              layer: 'tokens',
+            }
+          : draft,
+        showWalls,
+        ping,
+        userId: user.id,
+      });
+    draw();
+    let frame = 0;
+    const until = Math.max(0, ...scene.tokens.map((t) => (t.deathAt ? t.deathAt + 4800 : 0)));
+    if (until > Date.now() && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const animate = () => {
+        draw();
+        if (Date.now() < until) frame = requestAnimationFrame(animate);
+      };
+      frame = requestAnimationFrame(animate);
+    }
+    return () => cancelAnimationFrame(frame);
   }, [
     doc,
     camera,
@@ -581,6 +650,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     layer,
     ruler,
     draft,
+    fogPoints,
+    fogPointer,
     showWalls,
     ping,
     gm,
@@ -653,6 +724,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       id: crypto.randomUUID(),
       x: t.x + scene.grid.size,
       y: t.y + scene.grid.size,
+      bossStyle: null,
+      deathAt: null,
     }));
     editScene((s) => s.tokens.push(...copies));
     setSelection(copies.map((t) => t.id));
@@ -668,6 +741,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         setDraft(null);
         setRuler([]);
         setTool('select');
+        setFogPoints([]);
+        setFogPointer(null);
+      }
+      if (e.key === 'Enter' && fogPoints.length >= 3) {
+        e.preventDefault();
+        commitFog(fogPoints);
       }
       if (e.key === 'Delete' || e.key === 'Backspace') {
         e.preventDefault();
@@ -706,7 +785,29 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     }
     window.addEventListener('keydown', key);
     return () => window.removeEventListener('keydown', key);
-  }, [doc, selection, gm, token, mapsOpen, settingsId, sheetId]);
+  }, [doc, selection, gm, token, mapsOpen, settingsId, sheetId, fogPoints, tool]);
+  function commitFog(points: Point[], remember = true) {
+    if (points.length < 3 || !gm) return;
+    editScene((s) => {
+      s.fog = true;
+      s.fogMode = 'manual';
+      s.lighting = false;
+      if (s.fogAreas.length < 3000)
+        s.fogAreas.push({
+          id: crypto.randomUUID(),
+          points: points.slice(0, 1000),
+          reveal: tool === 'reveal',
+        });
+    }, remember);
+    setFogPoints([]);
+    setFogPointer(null);
+  }
+  function fogCircle(p: Point) {
+    return Array.from({ length: 32 }, (_, i) => ({
+      x: p.x + Math.cos((i * Math.PI) / 16) * brushRadius,
+      y: p.y + Math.sin((i * Math.PI) / 16) * brushRadius,
+    }));
+  }
   function point(e: { clientX: number; clientY: number }): Point {
     const rect = canvas.current!.getBoundingClientRect();
     return {
@@ -746,22 +847,38 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setTab('scene');
       return;
     }
-    if (tool === 'reveal' && gm) {
-      editScene((s) => {
-        s.fog = true;
-        s.fogMode = 'manual';
-        s.reveals.push({ x: p.x, y: p.y, radius: brushRadius });
-      });
-      return;
-    }
-    if (tool === 'hide' && gm) {
-      editScene((s) => {
-        s.fog = true;
-        s.fogMode = 'manual';
-        s.reveals = s.reveals.filter(
-          (r) => Math.hypot(r.x - p.x, r.y - p.y) > brushRadius + r.radius * 0.3,
+    if (gm && (tool === 'reveal' || tool === 'hide')) {
+      if (fogShape === 'polygon') {
+        setFogPoints((points) =>
+          points.length >= 1000 ||
+          (points.length && Math.hypot(points.at(-1)!.x - p.x, points.at(-1)!.y - p.y) < 3)
+            ? points
+            : [...points, p],
         );
-      });
+        setFogPointer(p);
+      } else {
+        drag.current = {
+          kind: 'shape',
+          start: p,
+          last: p,
+          screen: { x: e.clientX, y: e.clientY },
+          camera,
+          tokens: [],
+          original: structuredClone(doc),
+        };
+        if (fogShape === 'brush') commitFog(fogCircle(p));
+        else
+          setDraft({
+            id: crypto.randomUUID(),
+            kind: 'rect',
+            points: [p, p],
+            color: tool === 'reveal' ? '#96c9aa' : '#d29283',
+            width: 2,
+            fill: false,
+            text: '',
+            layer: 'tokens',
+          });
+      }
       return;
     }
     if (tool === 'select') {
@@ -866,8 +983,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   function pointerMove(e: ReactPointerEvent<HTMLCanvasElement>) {
     const d = drag.current;
+    if (fogPoints.length) {
+      setFogPointer(point(e));
+      return;
+    }
     if (!d || !scene || !doc) return;
     const p = point(e);
+    if (gm && ['reveal', 'hide'].includes(tool) && fogShape === 'brush') {
+      if (Math.hypot(p.x - d.start.x, p.y - d.start.y) > brushRadius * 0.3) {
+        commitFog(fogCircle(p), false);
+        d.start = p;
+      }
+      return;
+    }
     d.last = p;
     if (d.kind === 'pan') {
       setCamera({
@@ -915,6 +1043,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const d = drag.current;
     if (!d || !scene) return;
     drag.current = null;
+    if (gm && ['reveal', 'hide'].includes(tool)) {
+      if (fogShape === 'rect' && draft) {
+        const a = d.start,
+          b = point(e);
+        if (Math.hypot(b.x - a.x, b.y - a.y) > 3)
+          commitFog([a, { x: b.x, y: a.y }, b, { x: a.x, y: b.y }]);
+      }
+      setDraft(null);
+      return;
+    }
     if (tool === 'ruler') {
       setRuler([]);
       return;
@@ -1272,29 +1410,87 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           </button>
           {toolList
             .filter((t) => gm || !t.gm)
-            .map(({ id, name, icon: Icon }) => (
-              <button
-                key={id}
-                title={name}
-                aria-label={name}
-                aria-pressed={tool === id}
-                onClick={() => {
-                  setTool(id);
-                  setContextMenu(null);
-                  if (['wall', 'door', 'window', 'light'].includes(id)) {
-                    setLayer('lighting');
-                    setSelection([]);
-                  } else if (
-                    layer === 'lighting' &&
-                    ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
-                  )
-                    setLayer('tokens');
-                  setDraft(null);
-                }}
-              >
-                <Icon size={19} />
-              </button>
-            ))}
+            .map(({ id, name, icon: Icon }) =>
+              ['circle', 'cone', 'line', 'hide'].includes(id) ? null : id === 'rect' ? (
+                <VttToolGroup
+                  key="forms"
+                  label="Formas"
+                  options={toolList.filter((t) =>
+                    ['rect', 'circle', 'cone', 'line'].includes(t.id),
+                  )}
+                  selected={tool}
+                  choose={(id) => {
+                    setFogPoints([]);
+                    setFogPointer(null);
+                    setTool(id as Tool);
+                    setDraft(null);
+                    if (layer === 'lighting') setLayer('tokens');
+                  }}
+                />
+              ) : id === 'reveal' ? (
+                <VttToolGroup
+                  key="fog"
+                  label="Névoa"
+                  selected={['reveal', 'hide'].includes(tool) ? tool + '-' + fogShape : ''}
+                  options={[
+                    { id: 'reveal-rect', name: 'Revelar área', icon: Eye },
+                    { id: 'reveal-polygon', name: 'Revelar polígono', icon: Triangle },
+                    { id: 'hide-rect', name: 'Ocultar área', icon: EyeOff },
+                    { id: 'hide-polygon', name: 'Ocultar polígono', icon: Triangle },
+                    { id: 'reveal-brush', name: 'Revelar com pincel', icon: Circle },
+                    { id: 'hide-brush', name: 'Ocultar com pincel', icon: Circle },
+                    { id: 'automatic', name: 'Visão automática dos tokens', icon: Eye },
+                    { id: 'reset', name: 'Reiniciar névoa', icon: Trash2 },
+                  ]}
+                  choose={(id) => {
+                    setFogPoints([]);
+                    setFogPointer(null);
+                    setDraft(null);
+                    if (id === 'automatic') {
+                      editScene(activateTokenVision);
+                      setTool('select');
+                    } else if (id === 'reset') {
+                      editScene((s) => {
+                        s.fog = true;
+                        s.fogMode = 'manual';
+                        s.lighting = false;
+                        s.reveals = [];
+                        s.fogAreas = [];
+                      });
+                      setTool('select');
+                    } else {
+                      const [mode, shape] = id.split('-');
+                      setTool(mode as Tool);
+                      setFogShape(shape as typeof fogShape);
+                    }
+                  }}
+                />
+              ) : (
+                <button
+                  key={id}
+                  title={name}
+                  aria-label={name}
+                  aria-pressed={tool === id}
+                  onClick={() => {
+                    setTool(id);
+                    setFogPoints([]);
+                    setFogPointer(null);
+                    setContextMenu(null);
+                    if (['wall', 'door', 'window', 'light'].includes(id)) {
+                      setLayer('lighting');
+                      setSelection([]);
+                    } else if (
+                      layer === 'lighting' &&
+                      ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
+                    )
+                      setLayer('tokens');
+                    setDraft(null);
+                  }}
+                >
+                  <Icon size={19} />
+                </button>
+              ),
+            )}
           {gm && (
             <>
               <div className="vtt-tool-separator" />
@@ -1321,6 +1517,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         </nav>
         <div className="vtt-stage" ref={stage}>
           <VttDice messages={state.messages} roomId={state.id} enabled={dice3d} />
+          <VttBossBars bars={gm ? sceneBossBars(scene) : state.bossBars} />
+          <VttHotbar
+            key={state.id}
+            roomId={state.id}
+            tokens={scene.tokens}
+            sheetOpen={!!sheetId}
+            roll={send}
+            shareSpell={shareSpell}
+            refresh={refreshRoom}
+          />
           <canvas
             ref={canvas}
             aria-label="Tabuleiro da mesa"
@@ -1332,6 +1538,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onPointerMove={pointerMove}
             onPointerUp={pointerUp}
             onPointerCancel={() => {
+              setFogPoints([]);
+              setFogPointer(null);
               setRuler([]);
               const d = drag.current;
               drag.current = null;
@@ -1382,6 +1590,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               setCamera({ zoom, x: p.x - dx / zoom, y: p.y - dy / zoom });
             }}
             onDoubleClick={(e) => {
+              if (['reveal', 'hide'].includes(tool) && fogPoints.length >= 3) {
+                commitFog(fogPoints);
+                return;
+              }
               const p = point(e);
               const door = scene.walls.find(
                 (w) =>
@@ -1412,11 +1624,64 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               </header>
               <div className="vtt-dice-buttons">
                 {[4, 6, 8, 10, 12, 20, 100].map((n) => (
-                  <button key={n} aria-pressed={diceSides === n} onClick={() => setDiceSides(n)}>
-                    d{n}
-                  </button>
+                  <div className="vtt-dice-row" key={n}>
+                    <button
+                      aria-label={'Rolar 1d' + n}
+                      disabled={busy}
+                      onClick={() => {
+                        setDiceSides(n);
+                        setDiceCount(1);
+                        void act(() =>
+                          send(
+                            '1d' +
+                              n +
+                              (diceModifier ? (diceModifier > 0 ? '+' : '') + diceModifier : ''),
+                            '',
+                          ),
+                        );
+                      }}
+                    >
+                      <DiceIcon sides={n} />D{n}
+                    </button>
+                    {[2, 3, 4, 5, 6].map((count) => (
+                      <button
+                        key={count}
+                        aria-label={'Rolar ' + count + 'd' + n}
+                        disabled={busy}
+                        onClick={() => {
+                          setDiceSides(n);
+                          setDiceCount(count);
+                          void act(() =>
+                            send(
+                              count +
+                                'd' +
+                                n +
+                                (diceModifier ? (diceModifier > 0 ? '+' : '') + diceModifier : ''),
+                              '',
+                            ),
+                          );
+                        }}
+                      >
+                        {count}
+                      </button>
+                    ))}
+                  </div>
                 ))}
               </div>
+              <label>
+                Tipo de dado
+                <select
+                  aria-label="Tipo de dado manual"
+                  value={diceSides}
+                  onChange={(e) => setDiceSides(Number(e.target.value))}
+                >
+                  {[4, 6, 8, 10, 12, 20, 100].map((n) => (
+                    <option key={n} value={n}>
+                      D{n}
+                    </option>
+                  ))}
+                </select>
+              </label>
               <NumberField
                 label="Quantidade de dados"
                 value={diceCount}
@@ -1468,6 +1733,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </div>
           )}
           <div className="vtt-scene-pills">
+            {['reveal', 'hide'].includes(tool) && fogShape === 'polygon' && (
+              <span>
+                Clique nos vértices · Enter ou duplo clique para concluir · Esc para cancelar
+              </span>
+            )}
             <span>{scene.name}</span>
             {gm && (
               <select
@@ -1747,16 +2017,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       <div className="vtt-row">
                         <button
                           onClick={() =>
-                            editScene(
-                              (s) =>
-                                (s.reveals = [
-                                  {
-                                    x: s.width / 2,
-                                    y: s.height / 2,
-                                    radius: Math.hypot(s.width, s.height),
-                                  },
-                                ]),
-                            )
+                            editScene((s) => {
+                              s.fog = true;
+                              s.fogMode = 'manual';
+                              s.lighting = false;
+                              s.fogAreas = [];
+                              s.reveals = [
+                                {
+                                  x: s.width / 2,
+                                  y: s.height / 2,
+                                  radius: Math.hypot(s.width, s.height),
+                                },
+                              ];
+                            })
                           }
                         >
                           Revelar tudo
@@ -1765,6 +2038,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           onClick={() =>
                             editScene((s) => {
                               s.reveals = [];
+                              s.fogAreas = [];
+                              s.lighting = false;
                               s.fog = true;
                               s.fogMode = 'manual';
                             })
@@ -1898,6 +2173,47 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       </div>
                       {gm && (
                         <>
+                          <h3>Boss e efeito de morte</h3>
+                          <label>
+                            Barra de boss
+                            <select
+                              aria-label="Estilo da barra de boss"
+                              value={token.bossStyle || ''}
+                              onChange={(e) =>
+                                editToken({
+                                  bossStyle: e.target.value
+                                    ? (e.target.value as VttToken['bossStyle'])
+                                    : null,
+                                })
+                              }
+                            >
+                              <option value="">Não mostrar barra</option>
+                              {bossStyles.map((style, i) => (
+                                <option key={style} value={style}>
+                                  {bossStyleNames[i]}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <label className="vtt-check">
+                            <input
+                              type="checkbox"
+                              checked={token.deathAutomatic}
+                              onChange={(e) => editToken({ deathAutomatic: e.target.checked })}
+                            />
+                            Efeito de morte automático ao zerar PV
+                          </label>
+                          <div className="vtt-row">
+                            <button onClick={() => editToken({ deathAt: Date.now() })}>
+                              Aplicar efeito de morte
+                            </button>
+                            <button
+                              disabled={!token.deathAt}
+                              onClick={() => editToken({ deathAt: null })}
+                            >
+                              Limpar efeito de morte
+                            </button>
+                          </div>
                           <div className="vtt-two">
                             <NumberField
                               label="Largura do token"

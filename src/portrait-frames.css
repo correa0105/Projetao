@@ -23,6 +23,12 @@
 .portrait-frame-wall.right {
   right: calc(50% - var(--portrait-room-width, 100vw) * 0.285);
 }
+.portrait-frame-wall.left > .antique-portrait:first-child {
+  translate: calc(var(--portrait-room-width, 100vw) * -0.035) 0;
+}
+.portrait-frame-wall.right > .antique-portrait:first-child {
+  translate: calc(var(--portrait-room-width, 100vw) * 0.035) 0;
+}
 .antique-portrait {
   display: block;
   position: relative;

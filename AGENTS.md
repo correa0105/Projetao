@@ -62,6 +62,19 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Refino posterior de 05/10: Calendário tem paleta carvão/azul/cobre, sem selo ou
+subtítulo, arte do compromisso selecionado e três fallbacks novos (prompts em
+docs/CALENDARIO-PERFIS-REFINO.md). Personagem → Cartas é coleção/equipamento com
+três espaços; loja mantém compra. Removido envio de cenário do perfil (servidor
+bloqueia novos, preserva antigos), ações lado a lado e resumo inferior retirado.
+Molduras escalonadas na diagonal em ambos os lados. VTT agrupa formas e névoa,
+com áreas, polígonos e pincel para cobrir/revelar. Visão automática passa a ser
+o padrão, inclusive mapas legados afetados (migration 061). Atalhos persistem
+por usuário/mesa no PostgreSQL (062); aba trancada precisa ser destrancada antes
+de editar, mover ou remover. Boss publica só nome, PV e estilo; configuração e
+efeito de morte manual/automático são do mestre. Token morto permanece na mesa.
+Restauração continua exclusiva do mestre. Detalhes em docs/VTT-PERFIS-HALL.md.
+
 - Mesa virtual e comunidade (05/10): docs/VTT-PERFIS-HALL.md. Mestre de VTT precisa
   ser dono da mesa e administrador=1; jogadores controlam tokens atribuídos/importam
   seus personagens. PV e condições são de sessão, sem alterar a ficha/saldo original;

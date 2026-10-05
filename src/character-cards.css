@@ -1,0 +1,154 @@
+.character-cards-page {
+  min-height: 100dvh;
+  padding: 0 clamp(18px, 4vw, 60px) 100px;
+  color: #e8dfd0;
+  background: #080e1780;
+}
+.character-cards-heading h1 {
+  font: clamp(24px, 3vw, 38px)/1.4 var(--serif);
+  margin: 20px 0 32px;
+}
+.character-card-collection {
+  max-width: 1050px;
+  width: 100%;
+}
+.character-card-slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 3vw, 32px);
+  max-width: 800px;
+  margin: 0 auto 45px;
+}
+.character-card-slot {
+  position: relative;
+  min-width: 0;
+}
+.character-card-empty {
+  aspect-ratio: 0.7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 1px solid #9c835340;
+  border-radius: 6px;
+  background: #080d1666;
+  color: #a49372;
+  font-size: 12px;
+}
+.character-card-slot-label {
+  display: block;
+  padding-top: 12px;
+  color: #c9b68e;
+  text-align: center;
+  font-size: 11px;
+}
+.character-card-remove {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 6px;
+  background: #080d16cf;
+  border: 1px solid #9c835380;
+  border-radius: 3px;
+  color: #ddc593;
+  cursor: pointer;
+}
+.character-card-inventory {
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid #9c835338;
+  border-radius: 6px;
+  background: #080d1666;
+}
+.character-card-inventory > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.character-card-inventory h3 {
+  font: 20px/1.5 var(--serif);
+  margin: 0;
+}
+.character-card-inventory > header > span {
+  color: #b5a98e;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.character-card-inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  gap: 20px;
+}
+.character-card-choice {
+  max-width: 160px;
+  border: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  cursor: pointer;
+  color: #cec0a2;
+  display: block !important;
+}
+.character-card-choice > span:last-child {
+  display: block;
+  font-size: 10px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+.character-card-choice[aria-pressed='true'] .arcana-card-face {
+  border-color: #e0c08b;
+  box-shadow: 0 0 18px #c9a66330;
+}
+.character-card-description {
+  border-top: 1px solid #9c835332;
+  margin-top: 26px;
+  padding-top: 20px;
+}
+.character-card-description h4 {
+  font: 18px/1.5 var(--serif);
+  margin: 0 0 10px;
+}
+.character-card-description p,
+.character-card-collection-empty {
+  color: #b9b5ad;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.character-card-equip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.character-card-collection button:focus-visible {
+  outline: 2px solid #d0ae72;
+  outline-offset: 4px;
+}
+.character-card-collection .arcana-card-face {
+  width: 100%;
+}
+.visiting .public-cards .character-card-collection {
+  width: calc(100% - 220px);
+}
+@media (max-width: 800px) {
+  .visiting .public-cards .character-card-collection {
+    width: 100%;
+  }
+  .character-card-inventory h3 {
+    font-size: 17px;
+  }
+  .character-card-empty {
+    font-size: 10px;
+    gap: 9px;
+  }
+  .character-card-slot-label {
+    font-size: 9px;
+  }
+  .character-card-slots .arcana-card-name {
+    font-size: clamp(11px, 2.5vw, 20px);
+  }
+  .character-card-slots .arcana-card-family {
+    font-size: 7px;
+  }
+}
