@@ -24,6 +24,7 @@ import {
   activateTokenVision,
 } from '../shared/vtt.js';
 import { emptyHotbar } from '../shared/vtt-hotbar.js';
+import { monsterActions } from '../shared/vtt-monster-actions.js';
 import { defaultHallSettings, profileSettingsSchema, fameScore } from '../shared/social.js';
 
 test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descartável', async (t) => {
@@ -901,6 +902,170 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         bar = r.data;
         assert.equal((await request(path, player)).data.document.pages.length, 2);
         assert.equal((await put(bar.document, 1)).status, 409);
+      },
+    );
+    await t.test(
+      'efeitos salvos e ataques de monstros: mestre, atalhos, persistência e privacidade',
+      async () => {
+        const root = `/vtt/rooms/${room.id}`;
+        room = (await request(root, adm)).data;
+        const s = room.document.scenes.find((s: any) => s.id === room.document.activeScene);
+        s.fog = false;
+        s.lighting = false;
+        const monster = newToken(randomUUID(), s);
+        monster.sheet = {
+          source: 'Teste',
+          race: '',
+          class: '',
+          level: 0,
+          stats: [10, 10, 10, 10, 10, 10],
+          speed: 30,
+          biography: '',
+          details:
+            'Rend\nAtaque m 11, reach 10 ft. Acerto: 13 (2d6 + 6) Slashing damage plus 4 (1d8) Acid damage.\nAcid Breath\nSalvaguarda dex 18. Falha: 54 (12d8) Acid damage.',
+        };
+        const parsed = monsterActions(monster.sheet.details);
+        assert.equal(parsed[0].attack, '1d20+11');
+        assert.deepEqual(parsed[0].damage, ['2d6+6', '1d8']);
+        assert.deepEqual(parsed[1].damage, ['12d8']);
+        assert.equal(parsed[1].attack, null);
+        assert.equal(
+          monsterActions(
+            'Bite\nMelee Weapon Attack: 3 to hit. Hit: 7 (1d6 + 4) piercing damage.',
+          )[0].attack,
+          '1d20+3',
+        );
+        s.tokens.push(monster);
+        const preset = {
+          id: randomUUID(),
+          name: 'Efeito privado do mestre',
+          kind: 'fire',
+          color: '#d68a44',
+          scale: 1.2,
+          duration: 5,
+        };
+        const blood = { ...preset, id: randomUUID(), name: 'Sangue', kind: 'death', duration: 0 };
+        room.document.effects.push(preset, blood);
+        let r = await request(root, adm, 'PUT', {
+          revision: room.revision,
+          document: room.document,
+        });
+        assert.equal(r.status, 200, JSON.stringify(r.data));
+        room = r.data;
+        assert.deepEqual((await request(root, adm)).data.document.effects.slice(-2), [
+          preset,
+          blood,
+        ]);
+        assert.deepEqual((await request(root, player)).data.document.effects, []);
+        const apply = root + '/effects/' + preset.id + '/apply';
+        assert.equal((await request(apply, player, 'POST', { tokenId: monster.id })).status, 403);
+        assert.equal((await request(apply, adm, 'POST', { tokenId: randomUUID() })).status, 404);
+        r = await request(apply, adm, 'POST', { tokenId: monster.id });
+        assert.equal(r.status, 200, JSON.stringify(r.data));
+        room = r.data;
+        const publicMonster = (await request(root, player)).data.document.scenes[0].tokens.find(
+          (v: any) => v.id === monster.id,
+        );
+        assert.equal(publicMonster.effects[0].kind, 'fire');
+        assert.equal(publicMonster.hp, 10);
+        assert.equal(publicMonster.sheet, null);
+        r = await request(root + '/effects/' + blood.id + '/apply', adm, 'POST', {
+          tokenId: monster.id,
+        });
+        assert.equal(r.status, 200);
+        room = r.data;
+        const dead = room.document.scenes
+          .find((v: any) => v.id === s.id)
+          .tokens.find((v: any) => v.id === monster.id);
+        assert.ok(dead.deathAt > 0);
+        assert.equal(dead.hp, 10);
+        const action = {
+          kind: 'monster',
+          tokenId: monster.id,
+          sourceId: parsed[0].id,
+          label: 'Rend',
+        };
+        const effect = { kind: 'effect', sourceId: preset.id, label: preset.name };
+        let bar = (await request(root + '/hotbar', adm)).data;
+        bar.document.pages[0].slots[0] = effect;
+        bar.document.pages[0].slots[1] = action;
+        r = await request(root + '/hotbar', adm, 'PUT', {
+          revision: bar.revision,
+          document: bar.document,
+        });
+        assert.equal(r.status, 200, JSON.stringify(r.data));
+        bar = r.data;
+        assert.deepEqual(
+          (await request(root + '/hotbar', adm)).data.document.pages[0].slots.slice(0, 2),
+          [effect, action],
+        );
+        const playerBar = (await request(root + '/hotbar', player)).data;
+        for (const a of [effect, action]) {
+          playerBar.document.pages[0].slots[0] = a;
+          assert.equal(
+            (
+              await request(root + '/hotbar', player, 'PUT', {
+                revision: playerBar.revision,
+                document: playerBar.document,
+              })
+            ).status,
+            403,
+          );
+        }
+        const source = root + '/hotbar/monster/' + monster.id + '/' + parsed[0].id;
+        assert.equal((await request(source, player)).status, 403);
+        assert.deepEqual((await request(source, adm)).data.action, parsed[0]);
+        bar.document.pages[0].locked = true;
+        r = await request(root + '/hotbar', adm, 'PUT', {
+          revision: bar.revision,
+          document: bar.document,
+        });
+        assert.equal(r.status, 200);
+        bar = r.data;
+        bar.document.pages[0].slots[0] = null;
+        assert.equal(
+          (
+            await request(root + '/hotbar', adm, 'PUT', {
+              revision: bar.revision,
+              document: bar.document,
+            })
+          ).status,
+          403,
+        );
+        const malformed = structuredClone(room.document);
+        malformed.effects[0].scale = 100;
+        assert.equal(
+          (await request(root, adm, 'PUT', { revision: room.revision, document: malformed }))
+            .status,
+          400,
+        );
+        bar = (await request(root + '/hotbar', adm)).data;
+        bar.document.pages[0].locked = false;
+        r = await request(root + '/hotbar', adm, 'PUT', {
+          revision: bar.revision,
+          document: bar.document,
+        });
+        assert.equal(r.status, 200);
+        bar = r.data;
+        room.document.effects = room.document.effects.filter((e: any) => e.id !== preset.id);
+        room.document.scenes.find((v: any) => v.id === s.id).tokens = room.document.scenes
+          .find((v: any) => v.id === s.id)
+          .tokens.filter((v: any) => v.id !== monster.id);
+        r = await request(root, adm, 'PUT', { revision: room.revision, document: room.document });
+        assert.equal(r.status, 200);
+        room = r.data;
+        assert.equal((await request(source, adm)).status, 404);
+        bar.document.pages[0].slots[0] = null;
+        bar.document.pages[0].slots[1] = null;
+        assert.equal(
+          (
+            await request(root + '/hotbar', adm, 'PUT', {
+              revision: bar.revision,
+              document: bar.document,
+            })
+          ).status,
+          200,
+        );
       },
     );
     await t.test(

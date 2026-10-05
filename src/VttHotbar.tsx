@@ -11,6 +11,7 @@ import {
 import { sheetAttacks, spells } from '../shared/character-sheet';
 import type { VttSheetData } from '../shared/vtt-sheet';
 import type { VttToken } from '../shared/vtt';
+import type { MonsterAction } from '../shared/vtt-monster-actions';
 import './vtt-hotbar.css';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
 export function ActionShortcut({ action }: { action: HotbarAction }) {
@@ -37,6 +38,8 @@ export function VttHotbar({
   roll,
   shareSpell,
   refresh,
+  gm,
+  applyEffect,
 }: {
   roomId: string;
   tokens: VttToken[];
@@ -44,13 +47,16 @@ export function VttHotbar({
   roll: (formula: string, label: string) => Promise<void>;
   shareSpell: (name: string) => Promise<void>;
   refresh: () => Promise<void>;
+  gm: boolean;
+  applyEffect: (id: string) => Promise<void>;
 }) {
   const [state, setState] = useState<HotbarState | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [selected, setSelected] = useState<{
       action: HotbarAction;
-      data: VttSheetData;
+      data?: VttSheetData;
+      monster?: { tokenName: string; action: MonsterAction };
       index: number;
     } | null>(null);
   const inFlight = useRef(false),
@@ -75,6 +81,7 @@ export function VttHotbar({
     const document = structuredClone(state.document);
     fn(document);
     try {
+      if (gm) await refresh();
       const next = await api<HotbarState>(url, {
         method: 'PUT',
         body: JSON.stringify({ revision: state.revision, document }),
@@ -114,11 +121,39 @@ export function VttHotbar({
   });
   async function choose(action: HotbarAction, index: number) {
     if (inFlight.current) return;
+    if (action.kind === 'effect' || action.kind === 'monster') {
+      if (!gm) {
+        setError('Esse atalho é exclusivo do mestre.');
+        return;
+      }
+      if (action.kind === 'effect') {
+        setSelected({ action, index });
+      } else {
+        setBusy(true);
+        inFlight.current = true;
+        setError('');
+        try {
+          await refresh();
+          const monster = await api<{ tokenName: string; action: MonsterAction }>(
+            url + '/monster/' + action.tokenId + '/' + encodeURIComponent(action.sourceId),
+          );
+          setSelected({ action, monster, index });
+        } catch (e) {
+          setError((e as Error).message);
+          setSelected({ action, index });
+        } finally {
+          setBusy(false);
+          inFlight.current = false;
+        }
+      }
+      return;
+    }
     const token = tokens.find(
       (t) => t.characterId === action.characterId && t.layer === 'tokens' && !t.hidden,
     );
     if (!token) {
       setError('O personagem precisa estar importado e disponível neste mapa.');
+      setSelected({ action, index });
       return;
     }
     setBusy(true);
@@ -130,19 +165,36 @@ export function VttHotbar({
       setSelected({ action, data, index });
     } catch (e) {
       setError((e as Error).message);
+      setSelected({ action, index });
     } finally {
       setBusy(false);
       inFlight.current = false;
     }
   }
-  async function execute(mode: 'attack' | 'damage' | 'description' | 'cast' | 'use') {
+  async function execute(mode: 'attack' | 'damage' | 'description' | 'cast' | 'use' | 'apply') {
     if (!selected || inFlight.current) return;
     inFlight.current = true;
     setBusy(true);
     setError('');
     const { action, data } = selected;
     try {
-      if (action.kind === 'attack') {
+      if (action.kind === 'effect') {
+        if (!gm) throw Error('Esse atalho é exclusivo do mestre.');
+        await applyEffect(action.sourceId);
+      } else if (action.kind === 'monster') {
+        if (!gm) throw Error('Esse atalho é exclusivo do mestre.');
+        await refresh();
+        const monster = await api<{ tokenName: string; action: MonsterAction }>(
+          url + '/monster/' + action.tokenId + '/' + encodeURIComponent(action.sourceId),
+        );
+        const label = monster.tokenName + ' · ' + monster.action.name;
+        if (mode === 'attack' && monster.action.attack)
+          await roll(monster.action.attack, label + ' · ataque');
+        else if (mode === 'damage') {
+          for (const formula of monster.action.damage) await roll(formula, label + ' · dano');
+        } else if (mode === 'description')
+          await roll('', (label + '\n' + monster.action.description).slice(0, 2000));
+      } else if (action.kind === 'attack' && data) {
         const c = data.character,
           choices = data.sheet?.choices;
         const attack =
@@ -153,7 +205,7 @@ export function VttHotbar({
           mode === 'damage' ? attack.dice + signed(attack.ability) : '1d20' + signed(attack.attack),
           data.token.name + ' · ' + attack.name + (mode === 'damage' ? ' · dano' : ' · ataque'),
         );
-      } else if (action.kind === 'spell') {
+      } else if (action.kind === 'spell' && data) {
         const spell = spells.find((s) => s.id === action.sourceId);
         if (!spell) throw Error('Magia indisponível.');
         if (mode === 'cast' && spell.level > 0) {
@@ -168,7 +220,7 @@ export function VttHotbar({
           await refresh();
         }
         await shareSpell(spell.name);
-      } else {
+      } else if (action.kind === 'consumable' && data) {
         const item = data.inventory.find(
           (i) => i.id === action.sourceId && i.consumable && i.quantity > 0,
         );
@@ -241,26 +293,50 @@ export function VttHotbar({
           <button aria-label="Fechar atalho" onClick={() => setSelected(null)}>
             <X size={14} />
           </button>
-          {selected.action.kind === 'attack' ? (
+          {selected.action.kind === 'effect' ? (
+            <button disabled={busy} onClick={() => void execute('apply')}>
+              Aplicar no token selecionado
+            </button>
+          ) : selected.action.kind === 'monster' ? (
             <>
-              <button disabled={busy} onClick={() => void execute('attack')}>
+              {selected.monster?.action.attack && (
+                <button disabled={busy} onClick={() => void execute('attack')}>
+                  Rolar ataque
+                </button>
+              )}
+              {!!selected.monster?.action.damage.length && (
+                <button disabled={busy} onClick={() => void execute('damage')}>
+                  Rolar dano
+                </button>
+              )}
+              <button
+                disabled={busy || !selected.monster}
+                onClick={() => void execute('description')}
+              >
+                Descrição no chat
+              </button>
+            </>
+          ) : selected.action.kind === 'attack' ? (
+            <>
+              <button disabled={busy || !selected.data} onClick={() => void execute('attack')}>
                 Rolar ataque
               </button>
-              <button disabled={busy} onClick={() => void execute('damage')}>
+              <button disabled={busy || !selected.data} onClick={() => void execute('damage')}>
                 Rolar dano
               </button>
             </>
           ) : selected.action.kind === 'spell' ? (
             <>
-              <button disabled={busy} onClick={() => void execute('description')}>
+              <button disabled={busy || !selected.data} onClick={() => void execute('description')}>
                 Descrição no chat
               </button>
               <button
                 disabled={
                   busy ||
+                  !selected.data ||
                   (!!spell?.level &&
-                    selected.data.resources.slots_used[spell.level - 1] >=
-                      selected.data.resources.slots_total[spell.level - 1])
+                    (selected.data?.resources.slots_used[spell.level - 1] ?? 0) >=
+                      (selected.data?.resources.slots_total[spell.level - 1] ?? 0))
                 }
                 onClick={() => void execute('cast')}
               >
@@ -271,7 +347,7 @@ export function VttHotbar({
             <button
               disabled={
                 busy ||
-                !selected.data.inventory.some(
+                !selected.data?.inventory.some(
                   (i) => i.id === selected.action.sourceId && i.quantity > 0,
                 )
               }
@@ -373,7 +449,11 @@ export function VttHotbar({
       <div className="vtt-hotbar-slots">
         {page.slots.map((action, i) => {
           const Icon =
-            action?.kind === 'attack' ? Swords : action?.kind === 'spell' ? Sparkles : FlaskConical;
+            action?.kind === 'attack' || action?.kind === 'monster'
+              ? Swords
+              : action?.kind === 'spell' || action?.kind === 'effect'
+                ? Sparkles
+                : FlaskConical;
           return (
             <button
               key={i}

@@ -84,7 +84,10 @@ import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from '
 import { VttSheet } from './VttSheet';
 import { VttDice } from './VttDice';
 import { VttToolGroup } from './VttToolGroup';
-import { VttHotbar } from './VttHotbar';
+import { VttHotbar, ActionShortcut } from './VttHotbar';
+import { VttEffects } from './VttEffects';
+import { effectEnds, type EffectPreset } from '../shared/vtt-effects';
+import { monsterActions } from '../shared/vtt-monster-actions';
 import { VttBossBars } from './VttBossBars';
 import { MapLibrary, MapSettings } from './VttMaps';
 import { useMusicInterlude } from './SiteMusic';
@@ -107,6 +110,7 @@ type Tool =
   | 'light'
   | 'ping';
 type Tab =
+  | 'art'
   | 'scene'
   | 'token'
   | 'library'
@@ -136,16 +140,13 @@ type Entry = {
   components?: string;
 };
 const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
-  { id: 'scene', name: 'Cena', icon: Layers },
-  { id: 'token', name: 'Token', icon: MousePointer2 },
-  { id: 'library', name: 'Bibliotecas', icon: BookOpen },
-  { id: 'sheet', name: 'Ficha', icon: Users },
-  { id: 'chat', name: 'Dados e chat', icon: Dices },
-  { id: 'combat', name: 'Combate', icon: Swords },
+  { id: 'chat', name: 'Chat', icon: MessageSquare },
+  { id: 'art', name: 'Biblioteca de arte', icon: Image },
+  { id: 'sheet', name: 'Fichas', icon: Users },
+  { id: 'library', name: 'Biblioteca', icon: BookOpen },
+  { id: 'music', name: 'Som', icon: Music },
   { id: 'journal', name: 'Diário', icon: BookOpen },
-  { id: 'music', name: 'Música', icon: Music },
-  { id: 'table', name: 'Mesa', icon: Settings2 },
-  { id: 'help', name: 'Ajuda', icon: HelpCircle },
+  { id: 'table', name: 'Configurações e ajuda', icon: Settings2 },
 ];
 const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
   { id: 'select', name: 'Selecionar (V)', icon: MousePointer2 },
@@ -258,7 +259,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [busy, setBusy] = useState(false),
     [dirty, setDirty] = useState(false);
   const [tool, setTool] = useState<Tool>('select'),
-    [tab, setTab] = useState<Tab>('scene'),
+    [tab, setTab] = useState<Tab>('chat'),
     [layer, setLayer] = useState('tokens'),
     [selection, setSelection] = useState<string[]>([]),
     [camera, setCamera] = useState<VttCamera>({ x: 1120, y: 840, zoom: 0.45 }),
@@ -631,7 +632,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       });
     draw();
     let frame = 0;
-    const until = Math.max(0, ...scene.tokens.map((t) => (t.deathAt ? t.deathAt + 4800 : 0)));
+    const ends = scene.tokens
+      .flatMap((t) => t.effects.map(effectEnds))
+      .filter((at) => at > Date.now());
+    const until = Math.max(
+      0,
+      ...scene.tokens.map((t) => (t.deathAt ? t.deathAt + 1300 : 0)),
+      ...ends,
+    );
+    const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
     if (until > Date.now() && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const animate = () => {
         draw();
@@ -639,7 +648,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       };
       frame = requestAnimationFrame(animate);
     }
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      timers.forEach(clearTimeout);
+    };
   }, [
     doc,
     camera,
@@ -1250,6 +1262,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     await save();
     receive(await api<VttState>(`/vtt/rooms/${state!.id}`));
   }
+  async function saveEffect(preset: EffectPreset) {
+    edit((d) => {
+      const i = d.effects.findIndex((e) => e.id === preset.id);
+      if (i < 0) d.effects.push(preset);
+      else d.effects[i] = preset;
+    });
+    await save();
+  }
+  async function applyEffect(id: string) {
+    if (!gm || !token || token.layer === 'map')
+      throw Error('Selecione um token para aplicar o efeito.');
+    await save();
+    receive(
+      await post<VttState>(`/vtt/rooms/${state!.id}/effects/${id}/apply`, { tokenId: token.id }),
+    );
+  }
   async function shareSpell(name: string) {
     const found =
       catalog.spells.find((s) => s.name.toLowerCase() === name.toLowerCase()) ||
@@ -1400,6 +1428,23 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       )}
       <div className={`vtt-layout ${!panelOpen ? 'panel-closed' : ''}`}>
         <nav className="vtt-tools" aria-label="Ferramentas da mesa">
+          {gm && (
+            <VttToolGroup
+              label="Camadas"
+              selected={layer}
+              icon={Layers}
+              options={[
+                { id: 'map', name: 'Fundo · visível aos jogadores', icon: Image },
+                { id: 'tokens', name: 'Tokens · jogadores', icon: Users },
+                { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
+                { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
+              ]}
+              choose={(id) => {
+                setLayer(id);
+                setSelection([]);
+              }}
+            />
+          )}
           <button
             aria-label="Escolher dados"
             title="Escolher dados"
@@ -1526,7 +1571,30 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             roll={send}
             shareSpell={shareSpell}
             refresh={refreshRoom}
+            gm={gm}
+            applyEffect={applyEffect}
           />
+          {gm && !sheetId && (
+            <VttEffects
+              presets={doc.effects}
+              token={token}
+              busy={busy}
+              save={saveEffect}
+              remove={async (id) => {
+                edit((d) => {
+                  d.effects = d.effects.filter((e) => e.id !== id);
+                });
+                await save();
+              }}
+              apply={applyEffect}
+              clear={async () => {
+                if (token) {
+                  editToken({ deathAt: null, effects: [] });
+                  await save();
+                }
+              }}
+            />
+          )}
           <canvas
             ref={canvas}
             aria-label="Tabuleiro da mesa"
@@ -1740,21 +1808,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             )}
             <span>{scene.name}</span>
             {gm && (
-              <select
-                aria-label="Camada ativa"
-                value={layer}
-                onChange={(e) => {
-                  setLayer(e.target.value);
-                  setSelection([]);
-                }}
-              >
-                <option value="map">Fundo · visível aos jogadores</option>
-                <option value="tokens">Tokens · jogadores</option>
-                <option value="gm">Mestre · oculto</option>
-                <option value="lighting">Iluminação e barreiras</option>
-              </select>
-            )}
-            {gm && (
               <button
                 className={preview ? 'is-active' : ''}
                 aria-pressed={preview}
@@ -1832,8 +1885,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   key={id}
                   aria-label={name}
                   title={name}
-                  aria-pressed={tab === id}
-                  onClick={() => setTab(id)}
+                  aria-pressed={
+                    tab === id ||
+                    (id === 'sheet' && tab === 'token') ||
+                    (id === 'chat' && tab === 'combat') ||
+                    (id === 'table' && (tab === 'scene' || tab === 'help'))
+                  }
+                  onClick={() => {
+                    setTab(id);
+                    if (id === 'art') {
+                      setLibrary('images');
+                      setQuery('');
+                      setEntry(null);
+                    }
+                    if (id === 'library' && library === 'images') {
+                      setLibrary('monsters');
+                      setQuery('');
+                      setEntry(null);
+                    }
+                  }}
                 >
                   <Icon size={17} />
                 </button>
@@ -1841,7 +1911,21 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </nav>
             <div className="vtt-panel-content">
               <div className="vtt-panel-heading">
-                <h2>{tabs.find((t) => t.id === tab)?.name}</h2>
+                <h2>
+                  {
+                    tabs.find(
+                      (t) =>
+                        t.id ===
+                        (tab === 'token'
+                          ? 'sheet'
+                          : tab === 'combat'
+                            ? 'chat'
+                            : tab === 'scene' || tab === 'help'
+                              ? 'table'
+                              : tab),
+                    )?.name
+                  }
+                </h2>
                 {gm && tab === 'token' && (
                   <button className="vtt-gold" onClick={newMarker}>
                     <Plus size={14} />
@@ -1849,6 +1933,39 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </button>
                 )}
               </div>
+              {['sheet', 'token'].includes(tab) && (
+                <div className="vtt-subtabs">
+                  <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>
+                    Personagens
+                  </button>
+                  <button aria-pressed={tab === 'token'} onClick={() => setTab('token')}>
+                    Token selecionado
+                  </button>
+                </div>
+              )}
+              {['chat', 'combat'].includes(tab) && (
+                <div className="vtt-subtabs">
+                  <button aria-pressed={tab === 'chat'} onClick={() => setTab('chat')}>
+                    Mensagens e dados
+                  </button>
+                  <button aria-pressed={tab === 'combat'} onClick={() => setTab('combat')}>
+                    Combate
+                  </button>
+                </div>
+              )}
+              {['table', 'scene', 'help'].includes(tab) && (
+                <div className="vtt-subtabs">
+                  <button aria-pressed={tab === 'table'} onClick={() => setTab('table')}>
+                    Mesa
+                  </button>
+                  <button aria-pressed={tab === 'scene'} onClick={() => setTab('scene')}>
+                    Mapa
+                  </button>
+                  <button aria-pressed={tab === 'help'} onClick={() => setTab('help')}>
+                    <HelpCircle size={13} /> Ajuda
+                  </button>
+                </div>
+              )}
               {tab === 'scene' && (
                 <>
                   <label>
@@ -2319,7 +2436,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           <button
                             onClick={() => {
                               setLibrary('images');
-                              setTab('library');
+                              setTab('art');
                             }}
                           >
                             Usar imagem da biblioteca
@@ -2404,23 +2521,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   )}
                 </>
               )}
-              {tab === 'library' && (
+              {(tab === 'library' || tab === 'art') && (
                 <>
-                  <div className="vtt-subtabs">
-                    {(['images', 'monsters', 'spells'] as const).map((k) => (
-                      <button
-                        key={k}
-                        aria-pressed={library === k}
-                        onClick={() => {
-                          setLibrary(k);
-                          setQuery('');
-                          setEntry(null);
-                        }}
-                      >
-                        {k === 'images' ? 'Imagens' : k === 'monsters' ? 'Monstros' : 'Magias'}
-                      </button>
-                    ))}
-                  </div>
+                  {tab === 'library' && (
+                    <div className="vtt-subtabs">
+                      {(['monsters', 'spells'] as const).map((k) => (
+                        <button
+                          key={k}
+                          aria-pressed={library === k}
+                          onClick={() => {
+                            setLibrary(k);
+                            setQuery('');
+                            setEntry(null);
+                          }}
+                        >
+                          {k === 'monsters' ? 'Monstros' : 'Magias'}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                   <label className="vtt-search">
                     Buscar na biblioteca
                     <input
@@ -2709,6 +2828,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           </div>
                           <p>Deslocamento: {token.sheet.speed} ft</p>
                           <p>{token.sheet.biography}</p>
+                          {gm &&
+                            !token.characterId &&
+                            monsterActions(token.sheet.details).map((a) => (
+                              <div className="vtt-monster-action" key={a.id}>
+                                <strong>{a.name}</strong>
+                                <ActionShortcut
+                                  action={{
+                                    kind: 'monster',
+                                    tokenId: token.id,
+                                    sourceId: a.id,
+                                    label: token.name + ' · ' + a.name,
+                                  }}
+                                />
+                                <small>
+                                  {a.attack ? 'Ataque ' + a.attack : 'Salvaguarda'}
+                                  {a.damage.length ? ' · Dano ' + a.damage.join(' + ') : ''}
+                                </small>
+                              </div>
+                            ))}
                           <details>
                             <summary>Ficha completa e ações</summary>
                             <pre className="vtt-sheet-details">{token.sheet.details}</pre>
@@ -3339,9 +3477,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 <div className="vtt-help">
                   <h3>Comece por aqui</h3>
                   <ol>
-                    <li>Em Bibliotecas, envie o mapa e clique em Mapa.</li>
-                    <li>Em Cena, ajuste tamanho, grade, escala e diagonais.</li>
-                    <li>Importe seu personagem em Ficha ou adicione monstros.</li>
+                    <li>Em Biblioteca de arte, envie o mapa e clique em Mapa.</li>
+                    <li>Em Configurações e ajuda → Mapa, ajuste a grade e a iluminação.</li>
+                    <li>Importe seu personagem em Fichas ou adicione monstros na Biblioteca.</li>
+                    <li>Escolha a camada em Camadas, na barra à esquerda.</li>
                     <li>Desenhe paredes, portas e janelas; ative a iluminação.</li>
                     <li>Selecione um token e confira a Visão do jogador.</li>
                     <li>Compartilhe o convite e escolha quem controla cada token.</li>

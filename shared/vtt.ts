@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
 const id = z.string().uuid();
 const coordinate = z.number().finite().min(-50000).max(50000);
 const color = z.string().regex(/^#[0-9a-f]{6}$/i);
@@ -78,6 +79,7 @@ export const tokenSchema = z
     bossStyle: z.enum(bossStyles).nullable().default(null),
     deathAutomatic: z.boolean().default(false),
     deathAt: z.number().int().min(0).max(9999999999999).nullable().default(null),
+    effects: z.array(tokenEffectSchema).max(10).default([]),
     ac: z.number().min(0).max(100).default(10),
     conditions: z.array(z.string().max(40)).max(30).default([]),
     notes: z.string().max(4000).default(''),
@@ -192,6 +194,7 @@ export type VttScene = z.infer<typeof sceneSchema>;
 export const documentSchema = z
   .object({
     version: z.literal(1),
+    effects: z.array(effectPresetSchema).max(100).default([]),
     folders: z
       .array(
         z.object({ id, name: z.string().trim().min(1).max(100), parentId: id.nullable() }).strict(),
@@ -259,6 +262,8 @@ export const documentSchema = z
       ctx.addIssue({ code: 'custom', message: 'Cena ativa inexistente.' });
     if (new Set(doc.scenes.map((s) => s.id)).size !== doc.scenes.length)
       ctx.addIssue({ code: 'custom', message: 'Cenas repetidas.' });
+    if (new Set(doc.effects.map((e) => e.id)).size !== doc.effects.length)
+      ctx.addIssue({ code: 'custom', message: 'Efeitos repetidos.' });
     const folders = new Map(doc.folders.map((f) => [f.id, f]));
     if (folders.size !== doc.folders.length)
       ctx.addIssue({ code: 'custom', message: 'Pastas repetidas.' });
@@ -381,6 +386,7 @@ export function newDocument(id: string): VttDocument {
   const scene = newScene(id, 'Primeiro mapa');
   return {
     version: 1,
+    effects: [],
     folders: [],
     custom: [],
     name: 'Mesa da Alvorada',

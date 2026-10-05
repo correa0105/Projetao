@@ -227,7 +227,7 @@
 }
 .vtt-panel-tabs {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 3px;
   padding: 8px;
   border-bottom: 1px solid #373c3b;
@@ -235,6 +235,8 @@
 }
 .vtt-panel-tabs button {
   min-height: 31px;
+  min-width: 0;
+  padding: 6px 3px;
 }
 .vtt-panel-content {
   overflow: auto;

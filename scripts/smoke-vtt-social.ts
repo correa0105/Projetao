@@ -3,6 +3,9 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import sharp from 'sharp';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const { build } = createRequire(require.resolve('tsup'))('esbuild');
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3004';
@@ -25,6 +28,7 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   page = await ctx.newPage(),
   peerPage = await ctx2.newPage(),
   errors: string[] = [];
+const requestWindowStart = Date.now();
 for (const p of [page, peerPage]) p.on('pageerror', (e) => errors.push(e.message));
 await mkdir('test-results', { recursive: true });
 try {
@@ -249,13 +253,13 @@ try {
   await expect(mapSettings).not.toBeVisible();
   await page.getByRole('button', { name: 'Biblioteca de mapas', exact: true }).first().click();
   await maps.getByRole('button', { name: 'Abrir mapa Primeiro mapa', exact: true }).click();
-  await page.getByRole('button', { name: 'Ficha', exact: true }).click();
+  await page.getByRole('button', { name: 'Fichas', exact: true }).click();
   await panel.getByRole('button').filter({ hasText: 'Arden' }).click();
   await expect(page.getByRole('dialog', { name: 'Ficha · Arden', exact: true })).toBeVisible();
   await page.screenshot({ path: 'test-results/vtt-full-sheet.png' });
   await page.getByRole('button', { name: 'Fechar ficha', exact: true }).click();
   await expect(panel).toContainText('Arden');
-  await page.getByRole('button', { name: 'Token', exact: true }).first().click();
+  await page.getByRole('button', { name: 'Token selecionado', exact: true }).click();
   await expect(panel.getByLabel('Nome', { exact: true })).toHaveValue('Arden');
   await panel.getByLabel('Nome', { exact: true }).fill('Arden · aventureiro');
   await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
@@ -300,7 +304,8 @@ try {
   await expect
     .poll(() => rulerBoard.evaluate((el) => (el as HTMLCanvasElement).toDataURL()))
     .toBe(beforeRuler);
-  await page.getByRole('button', { name: 'Cena', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
+  await panel.getByRole('button', { name: 'Mapa', exact: true }).click();
   await panel.getByRole('button', { name: 'Configurar mapa', exact: true }).click();
   const settings = page.getByRole('dialog', { name: /Configurações/ });
   await settings.getByLabel('Tipo de grade').selectOption('hex-point');
@@ -315,17 +320,74 @@ try {
   await page.mouse.move(bounds!.x + bounds!.width * 0.6, bounds!.y + bounds!.height * 0.55);
   await page.mouse.up();
   await expect(panel).toContainText('Parede 1');
-  await page.getByRole('button', { name: 'Bibliotecas', exact: true }).click();
+  await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
   await panel.getByRole('button', { name: 'Monstros', exact: true }).click();
   await panel.getByLabel('Buscar na biblioteca', { exact: true }).fill('Goblin');
   await expect(panel.locator('.vtt-compendium button').first()).toBeVisible();
   await panel.locator('.vtt-compendium button').first().click();
   await panel.getByRole('button', { name: 'Adicionar ao tabuleiro', exact: true }).click();
-  await page.getByRole('button', { name: 'Token', exact: true }).click();
+  await page.getByRole('button', { name: 'Biblioteca de arte', exact: true }).click();
+  await panel
+    .locator('.vtt-asset')
+    .filter({ hasText: 'Arden' })
+    .getByRole('button', { name: 'Token', exact: true })
+    .first()
+    .click();
+  await page.getByRole('button', { name: 'Fichas', exact: true }).click();
+  expect(
+    await page
+      .locator('.vtt-panel-tabs button')
+      .evaluateAll((buttons) => buttons.map((b) => b.getAttribute('aria-label'))),
+  ).toEqual([
+    'Chat',
+    'Biblioteca de arte',
+    'Fichas',
+    'Biblioteca',
+    'Som',
+    'Diário',
+    'Configurações e ajuda',
+  ]);
+  expect(
+    (await page.getByRole('button', { name: 'Camadas', exact: true }).boundingBox())!.x,
+  ).toBeLessThan(80);
+  const monsterShortcut = panel.locator('.vtt-monster-action').first().getByRole('button');
+  await expect(monsterShortcut).toBeVisible();
+  await monsterShortcut.dragTo(page.locator('.vtt-hotbar-slot').first());
+  await expect(page.locator('.vtt-hotbar-slot').first()).not.toHaveAccessibleName(/vazio/);
+  await page.locator('.vtt-hotbar-slot').first().click();
+  await page.getByRole('button', { name: 'Rolar ataque', exact: true }).click();
+  await expect(page.locator('.vtt-hotbar-action')).toHaveCount(0);
+  await page.locator('.vtt-hotbar-slot').first().click();
+  await page.getByRole('button', { name: 'Rolar dano', exact: true }).click();
+  const effectsButton = page.getByRole('button', { name: 'Efeitos do mestre', exact: true });
+  await effectsButton.click();
+  const effects = page.getByRole('region', { name: 'Efeitos salvos do mestre', exact: true });
+  await effects.getByRole('button', { name: 'Novo efeito', exact: true }).click();
+  await effects.getByLabel('Nome do efeito', { exact: true }).fill('Sangue do mestre');
+  await effects.getByRole('button', { name: 'Salvar efeito', exact: true }).click();
+  await expect(effects.locator('.vtt-effects-row')).toHaveCount(1);
+  await effects.locator('.vtt-effects-row').first().dragTo(page.locator('.vtt-hotbar-slot').nth(1));
+  await expect(page.locator('.vtt-hotbar-slot').nth(1)).toContainText('Sangue do mestre');
+  await effects.getByRole('button', { name: 'Novo efeito', exact: true }).click();
+  await effects.getByLabel('Modelo do efeito', { exact: true }).selectOption('fire');
+  await effects.getByLabel('Nome do efeito', { exact: true }).fill('Brasa do mestre');
+  await effects.getByLabel('Duração do efeito', { exact: true }).fill('0');
+  await effects.getByRole('button', { name: 'Salvar efeito', exact: true }).click();
+  await expect(effects.locator('.vtt-effects-row')).toHaveCount(2);
+  await effects.locator('.vtt-effects-apply').filter({ hasText: 'Brasa do mestre' }).click();
+  await expect(effects.locator('.vtt-effects-target')).toContainText('Goblin');
+  await page.screenshot({ path: 'test-results/vtt-effects-menu.png' });
+  await effects.getByRole('button', { name: 'Limpar efeitos do token', exact: true }).click();
+  await page.locator('.vtt-hotbar-slot').nth(1).click();
+  await expect(effects).toHaveCount(0);
+  await page.getByRole('button', { name: 'Aplicar no token selecionado', exact: true }).click();
+  await expect(page.locator('.vtt-hotbar-action')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Token selecionado', exact: true }).click();
   await panel.getByLabel('Estilo da barra de boss').selectOption('royal');
   await panel.getByLabel('Efeito de morte automático ao zerar PV').check();
   await panel.getByLabel('PV atual', { exact: true }).fill('0');
   await expect(page.locator('.vtt-boss-track')).toHaveAttribute('aria-valuenow', '0');
+  await page.waitForTimeout(1400);
   await page.screenshot({ path: 'test-results/vtt-boss-death.png' });
   await panel.getByLabel('PV atual', { exact: true }).fill('8');
   await expect(page.locator('.vtt-boss-heal')).toBeVisible();
@@ -364,7 +426,7 @@ try {
   await page.getByRole('button', { name: 'Rolar 3d20', exact: true }).click();
   await expect(page.locator('.vtt-dice-overlay')).toHaveAttribute('data-dice-count', '3');
   await page.getByRole('button', { name: 'Fechar lançador', exact: true }).click();
-  await page.getByRole('button', { name: 'Dados e chat', exact: true }).click();
+  await page.getByRole('button', { name: 'Chat', exact: true }).click();
   await panel.getByLabel('Rolagem', { exact: true }).fill('2d20kh1+3');
   await panel.getByRole('button', { name: 'Rolar dados', exact: true }).click();
   await expect(page.locator('.vtt-dice-overlay')).toHaveAttribute('data-dice-count', '2');
@@ -384,7 +446,13 @@ try {
     lightBoard.x + lightBoard.width * 0.25,
     lightBoard.y + lightBoard.height * 0.35,
   );
-  await expect(page.getByLabel('Camada ativa')).toHaveValue('lighting');
+  await page.getByRole('button', { name: 'Camadas', exact: true }).click();
+  await expect(
+    page
+      .getByRole('group', { name: 'Opções de Camadas' })
+      .getByRole('button', { name: 'Iluminação e barreiras', exact: true }),
+  ).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('group', { name: 'Opções de Camadas' }).press('Escape');
   await expect(page.locator('.vtt-panel-content')).toContainText('Fonte de luz');
   await page.getByRole('button', { name: 'Selecionar (V)', exact: true }).click();
   await page.mouse.click(
@@ -416,7 +484,10 @@ try {
   await peerPage.goto(origin + '/#vtt');
   await peerPage.getByLabel('Código de convite', { exact: true }).fill(mesa.invite);
   await peerPage.getByRole('button', { name: 'Entrar na mesa', exact: true }).click();
-  await peerPage.getByRole('button', { name: 'Ficha', exact: true }).click();
+  await peerPage.getByRole('button', { name: 'Fichas', exact: true }).click();
+  await expect(
+    peerPage.getByRole('button', { name: 'Efeitos do mestre', exact: true }),
+  ).toHaveCount(0);
   await peerPage
     .locator('.vtt-panel-content')
     .getByRole('button')
@@ -560,6 +631,95 @@ try {
   const hidden = await pixel(600, 0);
   expect(Math.max(...hidden.slice(0, 3))).toBeLessThan(15);
   await peerPage.screenshot({ path: 'test-results/vtt-darkvision-color-fog.png' });
+  // Inspect the real canvas renderer with an isolated, clearly lit portrait.
+  const visual = await ctx.newPage();
+  await visual.route('**/death-render-check', (route) =>
+    route.fulfill({
+      contentType: 'text/html',
+      body: '<html><body style="margin:0"><canvas width="700" height="560"></canvas></body></html>',
+    }),
+  );
+  await visual.goto(origin + '/death-render-check');
+  const renderer = await build({
+    entryPoints: ['src/vtt-canvas.ts'],
+    bundle: true,
+    write: false,
+    format: 'iife',
+    globalName: 'vttRenderer',
+    platform: 'browser',
+  });
+  await visual.addScriptTag({ content: renderer.outputFiles[0].text });
+  const portraitToken = mesa.document.scenes
+    .flatMap((s: any) => s.tokens)
+    .find((t: any) => t.characterId === a.id);
+  expect(portraitToken?.image).toBeTruthy();
+  const visualScene = structuredClone(mesa.document.scenes[0]);
+  Object.assign(visualScene, {
+    width: 700,
+    height: 560,
+    background: '',
+    backgroundColor: '#a28d69',
+    lighting: false,
+    fog: false,
+    walls: [],
+    lights: [],
+    drawings: [],
+    tokens: [
+      {
+        ...portraitToken,
+        name: 'Retrato íntegro',
+        x: 350,
+        y: 280,
+        width: 160,
+        height: 160,
+        deathAt: Date.now() - 2000,
+        effects: [],
+      },
+    ],
+  });
+  const pixelCheck = await visual.evaluate(async (scene) => {
+    const c = document.querySelector('canvas')!.getContext('2d')!;
+    const img = new Image();
+    img.src = scene.tokens[0].image;
+    await img.decode();
+    const original = c.drawImage.bind(c);
+    let calls = 0;
+    c.drawImage = ((...args: any[]) => {
+      calls++;
+      return (original as any)(...args);
+    }) as typeof c.drawImage;
+    (window as any).vttRenderer.renderVtt(c, scene, {
+      camera: { x: 350, y: 280, zoom: 1 },
+      width: 700,
+      height: 560,
+      dpr: 1,
+      images: new Map([[img.src.replace(location.origin, ''), img]]),
+      selected: [],
+      gm: true,
+      preview: false,
+      viewer: null,
+      layer: 'tokens',
+      ruler: [],
+      draft: null,
+      showWalls: false,
+      ping: null,
+    });
+    const p = c.getImageData(0, 0, 700, 560).data;
+    let blood = 0;
+    for (let y = 150; y < 410; y++)
+      for (let x = 220; x < 480; x++) {
+        if (Math.hypot(x - 350, y - 280) <= 84) continue;
+        const i = (y * 700 + x) * 4;
+        if (p[i] > p[i + 1] * 2 && p[i] > p[i + 2] * 2) blood++;
+      }
+    return { calls, blood };
+  }, visualScene);
+  expect(pixelCheck.calls).toBe(1); // Only the intact portrait, never image fragments.
+  expect(pixelCheck.blood).toBeGreaterThan(300);
+  await visual.screenshot({ path: 'test-results/vtt-death-intact-portrait.png' });
+  await visual.close();
+  // Keep the real 240/min limiter enabled; let its first window finish before layout navigation.
+  await page.waitForTimeout(Math.max(0, 61000 - (Date.now() - requestWindowStart)));
   for (const width of [768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(origin + '/#profiles?user=' + owner.id);

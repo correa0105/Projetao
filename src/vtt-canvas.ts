@@ -12,6 +12,7 @@ import {
   type VttDrawing,
 } from '../shared/vtt';
 import { drawDeath } from './vtt-death';
+import { drawTokenEffects } from './vtt-effects-canvas';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
   camera: VttCamera;
@@ -296,7 +297,8 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
-      drawDeath(c, t, images.get(t.image));
+      drawTokenEffects(c, t);
+      drawDeath(c, t);
       c.save();
       if (t.deathAt && layer !== 'map')
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';

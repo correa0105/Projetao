@@ -66,6 +66,7 @@ function playerDocument(doc: VttDocument, user: string): VttDocument {
     .map((t) => ({ ...t, notes: '', sheet: t.controller === user ? t.sheet : null }));
   return {
     ...doc,
+    effects: [],
     folders: [],
     scenes: [
       {
@@ -235,6 +236,38 @@ export function vttRouter() {
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
         [rid, JSON.stringify(input.document)],
+      );
+    });
+    res.json(await state(rid, res.locals.user.id));
+  });
+  router.post('/vtt/rooms/:id/effects/:effect/apply', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      effectId = uuid.parse(req.params.effect);
+    const input = z.object({ tokenId: uuid }).strict().parse(req.body);
+    await transaction(async (db) => {
+      const r = await gm(db, rid, res.locals.user.id, true);
+      const preset = r.document.effects.find((e) => e.id === effectId);
+      if (!preset) throw new AppError(404, 'Este efeito não está mais salvo na mesa.');
+      const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
+      const token = scene.tokens.find((t) => t.id === input.tokenId && t.layer !== 'map');
+      if (!token) throw new AppError(404, 'Selecione um token neste mapa para aplicar o efeito.');
+      if (preset.kind === 'death') token.deathAt = Date.now();
+      else {
+        token.effects = token.effects.filter(
+          (e) => e.kind !== preset.kind && (!e.duration || e.at + e.duration * 1000 > Date.now()),
+        );
+        token.effects.push({
+          id: randomUUID(),
+          kind: preset.kind,
+          color: preset.color,
+          scale: preset.scale,
+          duration: preset.duration,
+          at: Date.now(),
+        });
+      }
+      await db.query(
+        'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
+        [rid, JSON.stringify(r.document)],
       );
     });
     res.json(await state(rid, res.locals.user.id));

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 export const actionMime = 'application/x-alvorada-action';
-export const hotbarActionSchema = z
+const characterActionSchema = z
   .object({
     kind: z.enum(['attack', 'spell', 'consumable']),
     characterId: z.string().uuid(),
@@ -8,6 +8,24 @@ export const hotbarActionSchema = z
     label: z.string().trim().min(1).max(180),
   })
   .strict();
+export const hotbarActionSchema = z.union([
+  characterActionSchema,
+  z
+    .object({
+      kind: z.literal('effect'),
+      sourceId: z.string().uuid(),
+      label: z.string().trim().min(1).max(180),
+    })
+    .strict(),
+  z
+    .object({
+      kind: z.literal('monster'),
+      tokenId: z.string().uuid(),
+      sourceId: z.string().min(1).max(180),
+      label: z.string().trim().min(1).max(180),
+    })
+    .strict(),
+]);
 export type HotbarAction = z.infer<typeof hotbarActionSchema>;
 export const hotbarSchema = z
   .object({

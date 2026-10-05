@@ -1,5 +1,11 @@
 # Alvorada Cinzenta
 
+Mesa: morte mantém token inteiro vermelho com sangue, sem fragmentação. Efeitos
+salvos do mestre no canto inferior esquerdo podem ir à barra rápida, assim como
+ataques de monstros. Camadas na esquerda; direita em Chat, Biblioteca de arte,
+Fichas, Biblioteca, Som, Diário e Configurações/Ajuda na mesma aba.
+[Detalhes e permissões](docs/VTT-PERFIS-HALL.md).
+
 Refino de 05/10: calendário com capa do compromisso e três artes genéricas;
 coleção de cartas com três espaços; perfil sem envio de cenário próprio,
 ações lado a lado e quadros diagonais. Mesa com menus agrupados, névoa por

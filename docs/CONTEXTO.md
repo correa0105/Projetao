@@ -1,5 +1,19 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Efeitos e navegação da mesa (05/10/2026)
+
+Pedido posterior remove fragmentos da morte: token inteiro vermelho e sangue
+ao redor, sem apagar token/ficha. Efeitos do mestre no canto inferior esquerdo,
+presets persistidos no documento da mesa (sem nova migration). Chamas/gelo/veneno/
+cura/faíscas ajustáveis e sangue permanente; arraste para barra rápida, aplique
+ao token selecionado e limpe. Visuais sincronizados não alteram PV/recursos.
+Presets privados; servidor exige dono administrador para aplicar e fixar. Ataques
+de monstros também têm Fixar/arraste, rolagem de acerto e dos danos explícitos,
+com consulta da ficha atual no servidor. Trancas continuam impedindo edições.
+Camadas foi para a barra esquerda. Direita: Chat, Biblioteca de arte, Fichas,
+Biblioteca, Som, Diário, Configurações e ajuda. Token em Fichas; iniciativa em
+Chat; Mapa/Mesa/Ajuda são subabas da última. docs/VTT-PERFIS-HALL.md documenta.
+
 ## Refino posterior de 05/10/2026
 
 Calendário ao final do Diário: título padrão Calendário, sem selo/subtítulo,

@@ -62,6 +62,15 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Direção posterior de 05/10: morte sem fragmentos, apenas token inteiro vermelho
+e sangue. Menu Efeitos do mestre no canto inferior esquerdo, presets no documento
+da mesa e atalhos arrastáveis, inclusive ataques de monstros. Presets privados;
+aplicação e atalhos exigem dono administrador no servidor; aparência acompanha
+visibilidade do token. Efeitos são visuais, não mudam recursos. Camadas na barra
+esquerda; direita ordenada Chat/Arte/Fichas/Biblioteca/Som/Diário/Configurações,
+com Ajuda dentro da mesma aba. Preservar controles em Fichas → Token, Chat →
+Combate e Configurações → Mapa. Detalhes em docs/VTT-PERFIS-HALL.md.
+
 Refino posterior de 05/10: Calendário tem paleta carvão/azul/cobre, sem selo ou
 subtítulo, arte do compromisso selecionado e três fallbacks novos (prompts em
 docs/CALENDARIO-PERFIS-REFINO.md). Personagem → Cartas é coleção/equipamento com

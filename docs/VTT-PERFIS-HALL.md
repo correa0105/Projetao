@@ -2,6 +2,29 @@
 
 ## Ferramentas, atalhos, boss e morte
 
+Navegação direita: Chat, Biblioteca de arte, Fichas, Biblioteca (monstros/magias),
+Som, Diário e Configurações e ajuda. Ajuda/Mapa/Mesa compartilham a última aba;
+token selecionado fica em Fichas e iniciativa em Chat → Combate. Camadas fica
+na barra esquerda, com fundo/tokens/mestre/iluminação no mesmo botão.
+
+Efeitos do mestre fica no canto inferior esquerdo. Nome/modelo são salvos em
+vtt_rooms.document.effects (até 100), com chamas/gelo/veneno/cura/faíscas de cor,
+tamanho e duração ajustáveis (0 permanente, até 60 s) e sangue/token vermelho
+permanente. Arraste o efeito salvo ou Fixar para a barra; clique no atalho →
+Aplicar no token selecionado. Efeito usa cópia visual sincronizada no token,
+sem alterar PV/condições/recursos, e pode ser limpo pelo mestre. Biblioteca de
+presets é privada; jogadores veem somente a aparência dos tokens visíveis.
+Aplicação é transacional e exige dono da mesa + administrador no servidor.
+Sem migração: campos legados recebem arrays vazios ao ler o documento.
+
+Ataques de monstros aparecem na ficha do token, com Fixar/arraste. Referência
+do atalho usa token/ação desta mesa; uso consulta os dados atuais no servidor.
+Acerto e cada componente de dano explícito são rolados separadamente, incluindo
+ataques SRD e JSON 5etools. Ações com salvaguarda não inventam bônus de ataque.
+Descrição pode ir ao chat. Não aplica dano/PV automaticamente. Jogadores não
+podem salvar/consultar esses atalhos exclusivos do mestre; trancas continuam
+valendo para efeitos e monstros. Remover a origem deixa atalho antigo removível.
+
 Formas reúne retângulo, círculo, cone e linha diagonal. Névoa reúne revelação e
 ocultação por retângulo, polígono ou pincel, reinício e volta à visão automática.
 Polígonos terminam com Enter/duplo clique; Esc cancela. A ordem das áreas decide
@@ -29,16 +52,17 @@ consumíveis debitam uma unidade com auditoria e idempotência. Não aplica efei
 narrativos ou dano automático ao alvo. Se publicação falhar após gasto, o
 recurso continua gasto e somente mestre pode corrigir pelo histórico da ficha.
 
-Mestre seleciona token → Token → Boss e efeito de morte. Escolher um dos dez
+Mestre seleciona token → Fichas → Token selecionado → Boss e efeito de morte. Escolher um dos dez
 estilos publica a barra para todos, inclusive quando o token está oculto;
 apenas tokenId/nome/PV/máximo/estilo são públicos, sem posição/arte/notas/ficha.
 Não mostrar barra remove-a. Vermelho recua sobre preto, verde sinaliza cura e
 retorna ao vermelho. PV vêm do próprio token, incluindo gasto pela ficha.
 Duplicação não duplica a designação de boss. Efeito de morte manual é visual;
 automático dispara uma vez ao cruzar PV positivo → zero/negativo, não ao reabrir
-a página. Mancha permanece até limpar ou restaurar PV pelo mestre. Fragmentos
-animam por tempo limitado, respeitam névoa/visão e preferência de movimento
-reduzido. Tokens e personagens nunca são excluídos pelo efeito. Restauração de
+a página. Token permanece inteiro, vermelho, com sangue ao redor. Removidos os
+fragmentos do personagem por pedido posterior. Sangue se espalha brevemente,
+respeita névoa/visão/movimento reduzido e permanece até limpar/restaurar PV.
+Tokens e personagens nunca são excluídos pelo efeito. Restauração de
 PV via ficha também limpa a marca. Não acrescenta regras de morte definitiva
 ou testes contra a morte; o mestre decide o uso do efeito.
 
@@ -212,3 +236,10 @@ executa migrations/seed e testes de API/geometria, e remove apenas esse banco.
 `--browser` testa duas contas, amizade/chat, perfil/companheiros, quatro quadros,
 cartas/ficha de consulta, Hall, VTT e responsividade. Não rodar esses testes no
 banco de jogadores. Capturas e PNG exportado ficam em test-results (ignorado).
+
+Refino de efeitos: 19 testes de API/geometria, build Docker/TypeScript e smoke
+com duas contas em 1440/768/390/320 px. Verifica presets/atalhos persistidos,
+trancas, referências removidas, privacidade, ataques reais do SRD, arraste,
+aplicação/limpeza e ordem dos sete ícones. Canvas real com retrato iluminado
+confirma imagem inteira (uma chamada de desenho) e sangue fora do token.
+Capturas vtt-effects-menu.png e vtt-death-intact-portrait.png.

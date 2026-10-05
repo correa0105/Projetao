@@ -1,6 +1,6 @@
 import type { VttToken } from '../shared/vtt';
-// A stable stain remains with the token; only the recent burst moves.
-export function drawDeath(c: CanvasRenderingContext2D, t: VttToken, image?: HTMLImageElement) {
+// The intact red token and blood stain remain; no image pieces are emitted.
+export function drawDeath(c: CanvasRenderingContext2D, t: VttToken) {
   if (!t.deathAt || t.layer === 'map') return;
   const radius = Math.max(t.width, t.height) * 0.55;
   const seed = [...t.id].reduce((s, v) => s + v.charCodeAt(0), 0);
@@ -42,43 +42,5 @@ export function drawDeath(c: CanvasRenderingContext2D, t: VttToken, image?: HTML
     );
     c.fill();
   }
-  // Scatter angular fragments with a dark outline, then let them settle into the stain.
-  if (!reduced && age < 4.8)
-    for (let i = 0; i < 14; i++) {
-      const a = (i / 14) * Math.PI * 2 + rand(i + 500) * 0.4,
-        travel = radius * (1 + rand(i + 600)) * progress;
-      c.save();
-      c.translate(
-        Math.cos(a) * travel,
-        Math.sin(a) * travel - Math.sin(progress * Math.PI) * radius * 0.4,
-      );
-      c.rotate(a + progress * (rand(i + 700) - 0.5) * 6);
-      c.globalAlpha = age > 3.7 ? Math.max(0, (4.8 - age) / 1.1) : 1;
-      c.beginPath();
-      c.moveTo(-radius * 0.12, -radius * 0.2);
-      c.lineTo(radius * 0.18, -radius * 0.13);
-      c.lineTo(radius * 0.08, radius * 0.15);
-      c.lineTo(-radius * 0.16, radius * 0.08);
-      c.closePath();
-      c.fillStyle = '#21090a';
-      c.fill();
-      if (image?.complete && image.naturalWidth) {
-        c.clip();
-        c.filter = 'brightness(.45) sepia(.8) saturate(2)';
-        c.drawImage(
-          image,
-          rand(i + 800) * image.naturalWidth * 0.65,
-          rand(i + 900) * image.naturalHeight * 0.65,
-          image.naturalWidth * 0.3,
-          image.naturalHeight * 0.3,
-          -radius * 0.2,
-          -radius * 0.2,
-          radius * 0.4,
-          radius * 0.4,
-        );
-        c.filter = 'none';
-      }
-      c.restore();
-    }
   c.restore();
 }

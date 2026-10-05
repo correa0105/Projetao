@@ -6,17 +6,19 @@ export function VttToolGroup({
   options,
   selected,
   choose,
+  icon: GroupIcon,
 }: {
   label: string;
   options: Option[];
   selected: string;
   choose: (id: string) => void;
+  icon?: Option['icon'];
 }) {
   const [open, setOpen] = useState(false),
     [position, setPosition] = useState({ left: 0, top: 0 });
   const anchor = useRef<HTMLButtonElement>(null),
     popup = useRef<HTMLDivElement>(null);
-  const Icon = (options.find((option) => option.id === selected) || options[0]).icon;
+  const Icon = GroupIcon || (options.find((option) => option.id === selected) || options[0]).icon;
   useEffect(() => {
     if (!open) return;
     const close = (e: PointerEvent) => {
