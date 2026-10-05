@@ -182,8 +182,14 @@ try {
     expect(r.status()).toBe(201);
   }
   await page.goto(origin + '/#overview');
-  await page.getByRole('button', { name: 'Calendário', exact: true }).click();
+  await page.locator('.guild-calendar').scrollIntoViewIfNeeded();
   await expect(page.locator('.calendar-day')).toHaveCount(42);
+  await expect(page.locator('.journal-view-tabs')).toHaveCount(0);
+  expect(
+    await page
+      .locator('.home-journal')
+      .evaluate((el) => el.lastElementChild?.classList.contains('guild-calendar')),
+  ).toBe(true);
   await page.locator(`.calendar-day[data-date="${day}"]`).click();
   await expect(page.locator('.calendar-appointment')).toHaveCount(4);
   await expect(page.locator(`.calendar-day[data-date="${day}"]`)).toContainText('+1 compromisso');
@@ -241,8 +247,8 @@ try {
     `INSERT INTO home_updates(author_id,title,body,kind,layout,image_side,image_fit,text_align,text_size,starts_at,location) VALUES($1,'Reunião de planejamento','Vamos preparar a próxima jornada.','meeting','compact','left','contain','left','normal',$2,'Taverna')`,
     [owner.id, meetingDay + 'T20:00:00-03:00'],
   );
-  await page.getByRole('button', { name: 'Diário', exact: true }).first().click();
-  await page.getByRole('button', { name: 'Calendário', exact: true }).click();
+  await page.reload();
+  await page.locator('.guild-calendar').scrollIntoViewIfNeeded();
   await page.locator(`.calendar-day[data-date="${meetingDay}"]`).click();
   await expect(page.locator('.calendar-appointment')).toHaveCount(1);
   await page.getByRole('button', { name: 'Editar Reunião de planejamento', exact: true }).click();
@@ -251,7 +257,7 @@ try {
   await publication.getByLabel('Título', { exact: true }).first().fill('Planejamento da jornada');
   await publication.getByRole('button', { name: 'Publicar', exact: true }).click();
   await expect(publication).not.toBeVisible();
-  await page.getByRole('button', { name: 'Calendário', exact: true }).click();
+  await page.locator('.guild-calendar').scrollIntoViewIfNeeded();
   await page.locator(`.calendar-day[data-date="${meetingDay}"]`).click();
   await expect(page.locator('.calendar-day-detail')).toContainText('Planejamento da jornada');
   await page.goto(origin + '/#events');
@@ -269,7 +275,7 @@ try {
   await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [owner.id]);
   await page.goto(origin + '/#overview');
   await page.reload();
-  await page.getByRole('button', { name: 'Calendário', exact: true }).click();
+  await page.locator('.guild-calendar').scrollIntoViewIfNeeded();
   await expect(page.locator('.calendar-cover')).toContainText('O calendário da mesa');
   await expect(page.getByRole('button', { name: 'Editar calendário', exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Novo compromisso', exact: true })).toHaveCount(0);

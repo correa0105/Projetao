@@ -5,20 +5,30 @@
   width: 100%;
   max-width: 1300px;
   margin: auto;
-  align-items: center;
+  align-items: start;
 }
 .portrait-frame-wall {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
   align-items: center;
-  padding-bottom: 20px;
+  padding: 0;
+  position: absolute;
+  top: var(--portrait-wall-top, 55px);
+  width: calc(var(--portrait-room-width, 100vw) * 0.07);
+}
+.portrait-frame-wall.left {
+  left: calc(50% - var(--portrait-room-width, 100vw) * 0.285);
+}
+.portrait-frame-wall.right {
+  right: calc(50% - var(--portrait-room-width, 100vw) * 0.285);
 }
 .antique-portrait {
   display: block;
   position: relative;
   width: 100%;
-  max-width: 142px;
+  max-width: 90px;
+  width: calc(var(--portrait-room-width, 100vw) * 0.05);
   aspect-ratio: 0.64;
   margin: 0 0 23px;
   border: 0 !important;
@@ -65,11 +75,32 @@
   color: #8d826a;
 }
 .antique-portrait-opening > img {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  left: 18.6%;
+  top: 20.1%;
+  width: 62.6%;
+  height: 59.3%;
   object-fit: cover;
-  object-position: 50% 15%;
+  object-position: center 38%;
   filter: saturate(0.7) contrast(1.05);
+}
+.frame-style-1 .antique-portrait-opening > img {
+  left: 17.1%;
+  top: 16%;
+  width: 65.3%;
+  height: 68.1%;
+}
+.frame-style-2 .antique-portrait-opening > img {
+  left: 16.9%;
+  top: 26.7%;
+  width: 65.7%;
+  height: 60.3%;
+}
+.frame-style-3 .antique-portrait-opening > img {
+  left: 18.8%;
+  top: 17.3%;
+  width: 62.2%;
+  height: 64.7%;
 }
 .antique-portrait-plaque {
   position: absolute;
@@ -131,20 +162,21 @@
     gap: 3px;
   }
   .antique-portrait {
-    max-width: 75px;
+    max-width: none;
+    margin-bottom: 12px;
   }
   .antique-portrait-plaque {
-    font-size: 8px;
-    white-space: normal;
-    padding: 3px;
-    min-height: 25px;
-    line-height: 1.3;
+    font-size: 6px;
+    white-space: nowrap;
+    padding: 1px;
+    min-height: 0;
+    line-height: 1.2;
   }
   .portrait-frame-wall {
-    gap: 27px;
+    gap: 3px;
   }
   .antique-portrait-opening > svg {
-    width: 25px;
+    width: 12px;
   }
 }
 @media (max-width: 420px) {
@@ -152,10 +184,10 @@
     grid-template-columns: 55px minmax(0, 1fr) 55px;
   }
   .antique-portrait {
-    max-width: 55px;
+    max-width: none;
   }
   .portrait-frame-wall {
-    gap: 35px;
+    gap: 3px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

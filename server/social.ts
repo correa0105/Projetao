@@ -242,7 +242,38 @@ export function socialRouter() {
     }
     res.setHeader('Cache-Control', 'private, max-age=3600');
     res.type('image/webp');
-    if (req.query.thumb === '1')
+    if (req.query.face === '1') {
+      const trimmed = await sharp(p.image).trim().toBuffer({ resolveWithObject: true });
+      const sample = await sharp(trimmed.data)
+        .resize(100, 100, { fit: 'fill' })
+        .ensureAlpha()
+        .raw()
+        .toBuffer();
+      let sum = 0,
+        weight = 0;
+      for (let y = 0; y < 18; y++)
+        for (let x = 0; x < 100; x++) {
+          const alpha = sample[(y * 100 + x) * 4 + 3];
+          sum += x * alpha;
+          weight += alpha;
+        }
+      const height = Math.max(1, Math.round(trimmed.info.height * 0.44));
+      const width = Math.min(trimmed.info.width, Math.max(1, Math.round(height * 0.67)));
+      const center = weight
+        ? ((sum / weight + 0.5) / 100) * trimmed.info.width
+        : trimmed.info.width / 2;
+      const left = Math.max(
+        0,
+        Math.min(trimmed.info.width - width, Math.round(center - width / 2)),
+      );
+      res.end(
+        await sharp(trimmed.data)
+          .extract({ left, top: 0, width, height })
+          .resize(256, 400, { fit: 'cover', position: 'centre' })
+          .webp({ quality: 91 })
+          .toBuffer(),
+      );
+    } else if (req.query.thumb === '1')
       res.end(
         await sharp(p.image)
           .resize(256, 256, { fit: 'cover', position: 'attention' })

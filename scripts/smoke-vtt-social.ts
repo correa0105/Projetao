@@ -201,20 +201,82 @@ try {
   await page.getByRole('button', { name: 'Criar mesa', exact: true }).click();
   await expect(page.getByRole('region', { name: 'Mesa virtual', exact: true })).toBeVisible();
   const panel = page.locator('.vtt-panel-content');
+  await page.getByRole('button', { name: 'Biblioteca de mapas', exact: true }).first().click();
+  const maps = page.getByRole('dialog', { name: 'Biblioteca de mapas', exact: true });
+  await maps.getByRole('button', { name: 'Nova pasta', exact: true }).click();
+  await maps.getByLabel('Nome da pasta', { exact: true }).fill('Campanha do Norte');
+  await maps.getByRole('button', { name: 'Salvar pasta', exact: true }).click();
+  await maps.getByRole('button', { name: 'Nova pasta', exact: true }).click();
+  await maps.getByLabel('Nome da pasta', { exact: true }).fill('Porões');
+  await maps.getByRole('button', { name: 'Salvar pasta', exact: true }).click();
+  await page.screenshot({ path: 'test-results/vtt-map-folders.png' });
+  await maps.getByRole('button', { name: 'Novo mapa', exact: true }).click();
+  const mapSettings = page.getByRole('dialog', { name: /Configurações/ });
+  await mapSettings.getByLabel('Nome do mapa', { exact: true }).fill('Porão escuro');
+  await mapSettings.getByRole('button', { name: 'Salvar configurações', exact: true }).click();
+  await expect(mapSettings).not.toBeVisible();
+  await page.getByRole('button', { name: 'Biblioteca de mapas', exact: true }).first().click();
+  await maps.getByRole('button', { name: 'Abrir mapa Primeiro mapa', exact: true }).click();
   await page.getByRole('button', { name: 'Ficha', exact: true }).click();
   await panel.getByRole('button').filter({ hasText: 'Arden' }).click();
+  await expect(page.getByRole('dialog', { name: 'Ficha · Arden', exact: true })).toBeVisible();
+  await page.screenshot({ path: 'test-results/vtt-full-sheet.png' });
+  await page.getByRole('button', { name: 'Fechar ficha', exact: true }).click();
   await expect(panel).toContainText('Arden');
   await page.getByRole('button', { name: 'Token', exact: true }).first().click();
   await expect(panel.getByLabel('Nome', { exact: true })).toHaveValue('Arden');
   await panel.getByLabel('Nome', { exact: true }).fill('Arden · aventureiro');
   await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
   await expect(page.locator('.vtt-saved')).toContainText('Salvo');
+  const boardBefore = (await page.locator('canvas[aria-label="Tabuleiro da mesa"]').boundingBox())!;
+  await page.mouse.click(
+    boardBefore.x + boardBefore.width / 2,
+    boardBefore.y + boardBefore.height / 2,
+    { button: 'right' },
+  );
+  const actions = page.locator('.vtt-context-menu');
+  await expect(actions).toBeVisible();
+  await actions.getByLabel('Nível de profundidade', { exact: true }).fill('-0.1');
+  await actions.getByLabel('Nível de profundidade', { exact: true }).blur();
+  await actions.getByRole('button', { name: 'Horizontal', exact: true }).click();
+  await actions.getByLabel('Camada no menu', { exact: true }).selectOption('gm');
+  await page.getByRole('button', { name: 'Fechar ações', exact: true }).click();
+  await page.mouse.click(
+    boardBefore.x + boardBefore.width / 2,
+    boardBefore.y + boardBefore.height / 2,
+    { button: 'right' },
+  );
+  await expect(actions.getByLabel('Nível de profundidade', { exact: true })).toHaveValue('-0.1');
+  await actions.getByLabel('Camada no menu', { exact: true }).selectOption('tokens');
+  await page.getByRole('button', { name: 'Fechar ações', exact: true }).click();
+  await page.getByRole('button', { name: 'Régua (R)', exact: true }).click();
+  const rulerBoard = page.locator('canvas[aria-label="Tabuleiro da mesa"]');
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+  const beforeRuler = await rulerBoard.evaluate((el) => (el as HTMLCanvasElement).toDataURL());
+  await page.mouse.move(boardBefore.x + 80, boardBefore.y + 180);
+  await page.mouse.down();
+  await page.mouse.move(boardBefore.x + 170, boardBefore.y + 230);
+  await expect
+    .poll(() => rulerBoard.evaluate((el) => (el as HTMLCanvasElement).toDataURL()))
+    .not.toBe(beforeRuler);
+  await page.mouse.up();
+  await expect
+    .poll(() => rulerBoard.evaluate((el) => (el as HTMLCanvasElement).toDataURL()))
+    .toBe(beforeRuler);
   await page.getByRole('button', { name: 'Cena', exact: true }).click();
-  await panel.getByLabel('Tipo de grade').selectOption('hex-point');
-  await panel.getByLabel('Tamanho da célula').fill('80');
-  await panel.getByLabel('Tamanho da célula').blur();
+  await panel.getByRole('button', { name: 'Configurar mapa', exact: true }).click();
+  const settings = page.getByRole('dialog', { name: /Configurações/ });
+  await settings.getByLabel('Tipo de grade').selectOption('hex-point');
+  await settings.getByLabel('Tamanho da célula', { exact: true }).fill('80');
+  await settings.getByRole('button', { name: 'Salvar configurações', exact: true }).click();
+  await expect(settings).not.toBeVisible();
   await page.getByRole('button', { name: 'Barreira de luz', exact: true }).click();
-  const bounds = await page.locator('canvas').boundingBox();
+  const bounds = await page.locator('canvas[aria-label="Tabuleiro da mesa"]').boundingBox();
   expect(bounds).not.toBeNull();
   await page.mouse.move(bounds!.x + bounds!.width * 0.4, bounds!.y + bounds!.height * 0.35);
   await page.mouse.down();
@@ -230,6 +292,9 @@ try {
   await page.getByRole('button', { name: 'Dados e chat', exact: true }).click();
   await panel.getByLabel('Rolagem', { exact: true }).fill('2d20kh1+3');
   await panel.getByRole('button', { name: 'Rolar dados', exact: true }).click();
+  await expect(page.locator('.vtt-dice-overlay')).toHaveAttribute('data-dice-count', '2');
+  await expect(page.locator('canvas[aria-label="Dados 3D"]')).toBeVisible();
+  await page.screenshot({ path: 'test-results/vtt-dice-3d.png' });
   await expect(page.locator('.vtt-roll')).toContainText('2d20kh1+3');
   const [file] = await Promise.all([
     page.waitForEvent('download'),
@@ -238,15 +303,29 @@ try {
   expect(file.suggestedFilename()).toMatch(/\.png$/);
   await file.saveAs('test-results/vtt-map-export.png');
   await page.screenshot({ path: 'test-results/vtt-desktop.png' });
+  await page.getByRole('button', { name: 'Fonte de luz', exact: true }).click();
+  const lightBoard = (await page.locator('canvas[aria-label="Tabuleiro da mesa"]').boundingBox())!;
+  await page.mouse.click(
+    lightBoard.x + lightBoard.width * 0.25,
+    lightBoard.y + lightBoard.height * 0.35,
+  );
+  await expect(page.getByLabel('Camada ativa')).toHaveValue('lighting');
+  await expect(page.locator('.vtt-panel-content')).toContainText('Fonte de luz');
+  await page.getByRole('button', { name: 'Selecionar (V)', exact: true }).click();
+  await page.mouse.click(
+    lightBoard.x + lightBoard.width * 0.25,
+    lightBoard.y + lightBoard.height * 0.35,
+  );
+  await page.getByRole('button', { name: 'Excluir luz selecionada', exact: true }).click();
   await page.getByRole('button', { name: 'Salvar mesa', exact: true }).click();
   const rooms = await (await ctx.request.get(origin + '/api/vtt')).json(),
     rid = rooms.rooms[0].id;
   let mesa = await (await ctx.request.get(origin + '/api/vtt/rooms/' + rid)).json();
-  mesa.document.scenes[0].walls = [
+  mesa.document.scenes.find((s: any) => s.id === mesa.document.activeScene).walls = [
     {
       id: randomUUID(),
-      a: { x: 1150, y: 400 },
-      b: { x: 1150, y: 1200 },
+      a: { x: 900, y: 400 },
+      b: { x: 900, y: 1200 },
       kind: 'wall',
       open: false,
     },
@@ -268,9 +347,14 @@ try {
     .getByRole('button')
     .filter({ hasText: 'Lyra' })
     .click();
+  await expect(peerPage.getByRole('dialog', { name: 'Ficha · Lyra', exact: true })).toBeVisible();
+  await expect(peerPage.getByRole('button', { name: 'Restaurar PV', exact: true })).toHaveCount(0);
+  await peerPage.getByRole('button', { name: 'Fechar ficha', exact: true }).click();
   await expect(peerPage.locator('.vtt-panel-content h3').filter({ hasText: 'Lyra' })).toBeVisible();
   await peerPage.getByRole('button', { name: 'Selecionar (V)', exact: true }).click();
-  const playerBoard = await peerPage.locator('canvas').boundingBox();
+  const playerBoard = await peerPage
+    .locator('canvas[aria-label="Tabuleiro da mesa"]')
+    .boundingBox();
   expect(playerBoard).not.toBeNull();
   const px = playerBoard!.x + playerBoard!.width / 2,
     py = playerBoard!.y + playerBoard!.height / 2;
@@ -292,8 +376,81 @@ try {
       const st = await (await ctx2.request.get(origin + '/api/vtt/rooms/' + rid)).json();
       return st.document.scenes[0].tokens.find((t: any) => t.characterId === c.id)?.x;
     })
-    .toBeLessThan(1120);
+    .toBeLessThan(875);
   await peerPage.screenshot({ path: 'test-results/vtt-player.png' });
+  // Pixel evidence: darkvision is grey; real lights restore color; full fog hides elsewhere.
+  mesa = await (await ctx.request.get(origin + '/api/vtt/rooms/' + rid)).json();
+  const visibleScene = mesa.document.scenes.find((s: any) => s.id === mesa.document.activeScene),
+    controlled = visibleScene.tokens.find((t: any) => t.characterId === c.id);
+  Object.assign(controlled, { x: 875, y: 875, vision: 10, light: 0, dimLight: 0 });
+  Object.assign(visibleScene, {
+    background: '',
+    backgroundColor: '#884020',
+    walls: [],
+    fog: true,
+    fogMode: 'vision',
+    lighting: true,
+    ambient: 0,
+  });
+  visibleScene.grid.type = 'none';
+  visibleScene.lights = [
+    {
+      id: randomUUID(),
+      name: 'Luz de teste',
+      x: 1175,
+      y: 875,
+      bright: 10,
+      dim: 0,
+      color: '#ffffff',
+      rotation: 0,
+      angle: 360,
+      enabled: true,
+    },
+  ];
+  expect(
+    (
+      await ctx.request.put(origin + '/api/vtt/rooms/' + rid, {
+        headers: { Origin: origin },
+        data: { revision: mesa.revision, document: mesa.document },
+      })
+    ).ok(),
+  ).toBe(true);
+  async function pixel(dx: number, dy: number) {
+    return peerPage.locator('canvas[aria-label="Tabuleiro da mesa"]').evaluate(
+      (el, args) => {
+        const canvas = el as HTMLCanvasElement,
+          rect = canvas.getBoundingClientRect(),
+          z = parseInt(document.querySelector('.vtt-map-footer span')?.textContent || '0') / 100;
+        const zoom =
+          Number(
+            document.querySelector('.vtt-map-footer')?.textContent?.match(/(\d+)%/)?.[1] || '38',
+          ) / 100;
+        const ratio = canvas.width / rect.width;
+        return [
+          ...canvas
+            .getContext('2d')!
+            .getImageData(
+              Math.round((rect.width / 2 + args.dx * zoom) * ratio),
+              Math.round((rect.height / 2 + args.dy * zoom) * ratio),
+              1,
+              1,
+            ).data,
+        ];
+      },
+      { dx, dy },
+    );
+  }
+  await expect
+    .poll(async () => {
+      const rgb = await pixel(0, 120);
+      return Math.max(...rgb.slice(0, 3)) - Math.min(...rgb.slice(0, 3));
+    })
+    .toBeLessThan(3);
+  const illuminated = await pixel(300, 0);
+  expect(illuminated[0] - illuminated[2]).toBeGreaterThan(30);
+  const hidden = await pixel(600, 0);
+  expect(Math.max(...hidden.slice(0, 3))).toBeLessThan(15);
+  await peerPage.screenshot({ path: 'test-results/vtt-darkvision-color-fog.png' });
   for (const width of [768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(origin + '/#profiles?user=' + owner.id);
@@ -320,7 +477,7 @@ try {
     );
     await page.screenshot({ path: `test-results/hall-${width}.png`, fullPage: true });
     await page.goto(origin + '/#vtt');
-    await expect(page.locator('canvas')).toBeVisible();
+    await expect(page.locator('canvas[aria-label="Tabuleiro da mesa"]')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
       true,
     );

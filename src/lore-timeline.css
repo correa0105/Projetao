@@ -56,22 +56,22 @@
   height: 1px;
   left: calc(50% / var(--era-count));
   right: calc(50% / var(--era-count));
-  background: #71644a70;
+  background: transparent;
 }
 .lore-era-thread::before {
   content: '';
   position: absolute;
   inset: -3px 0;
-  border-block: 1px solid #b3985420;
+  border: 0;
 }
 .lore-era-light {
   position: absolute;
   left: calc(100% * var(--light-start) / max(1, var(--era-count) - 1));
   width: calc(100% * var(--light-length) / max(1, var(--era-count) - 1));
-  top: -1px;
-  height: 3px;
+  top: -14px;
+  height: 28px;
   border-radius: 2px;
-  background: linear-gradient(#f8e6b3, #e1b86c 55%, #b3833e);
+  background: linear-gradient(transparent, #e1b86c50 50%, transparent);
   box-shadow:
     0 0 8px 2px #d6aa5266,
     0 0 22px 5px #d4aa5526;
@@ -192,7 +192,66 @@
   animation: lore-era-arrival 1.05s ease-out both;
 }
 .lore-timeline[data-phase='travelling'] .lore-era-thread {
-  box-shadow: 0 0 10px #ccae6233;
+  box-shadow: none;
+}
+.lore-era-gears {
+  position: absolute;
+  inset: 0;
+}
+.lore-time-gear {
+  position: absolute;
+  top: 50%;
+  width: 27px;
+  height: 27px;
+  fill: #29271f;
+  stroke: #786240;
+  stroke-width: 1.2;
+  filter: drop-shadow(0 2px 2px #0009);
+}
+.lore-time-gear > circle {
+  fill: #11160f;
+  stroke: #98784b;
+}
+.lore-time-gear .gear-spokes {
+  fill: none;
+}
+.lore-time-gear[data-powered='true'] {
+  fill: #6f5430;
+  stroke: #dfba75;
+  filter: drop-shadow(0 0 4px #d8ae5c70);
+}
+.lore-era-light {
+  z-index: -1;
+}
+.lore-era-medallion {
+  z-index: 1;
+}
+.lore-era[data-seated='true'] .lore-era-medallion::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid #b79457;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 4px #000,
+    0 0 6px #b88b3440;
+}
+.lore-timeline[data-phase='arriving'] .lore-era[data-seated='true'] .lore-era-medallion {
+  animation: lore-gear-seat 0.45s ease-out both;
+}
+@keyframes lore-gear-seat {
+  0% {
+    transform: translateY(-4px);
+  }
+  25% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 .lore-timeline[data-phase='travelling'] .lore-era-medallion {
   transition-duration: 0.13s;

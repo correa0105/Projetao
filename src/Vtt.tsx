@@ -47,6 +47,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Lightbulb,
+  Map as MapIcon,
+  FlipHorizontal2,
+  FlipVertical2,
 } from 'lucide-react';
 import { api, post } from './api';
 import type { Character, User } from './types';
@@ -58,7 +61,11 @@ import {
   distance,
   conditions,
   blockingWalls,
+  activateScene,
+  lightSchema,
+  carveOpening,
   intersection,
+  type VttMessage,
   type VttState,
   type VttDocument,
   type VttToken,
@@ -67,7 +74,10 @@ import {
   type Point,
   type VttAsset,
 } from '../shared/vtt';
-import { renderVtt, tokenAt, type VttCamera } from './vtt-canvas';
+import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
+import { VttSheet } from './VttSheet';
+import { VttDice } from './VttDice';
+import { MapLibrary, MapSettings } from './VttMaps';
 import { useMusicInterlude } from './SiteMusic';
 import './vtt.css';
 type Tool =
@@ -181,21 +191,25 @@ function NumberField({
   step?: number;
   disabled?: boolean;
 }) {
+  const [draftValue, setDraftValue] = useState(String(value));
+  useEffect(() => setDraftValue(String(value)), [value]);
   return (
     <label>
       {label}
       <input
         aria-label={label}
         type="number"
-        value={value}
+        value={draftValue}
         min={min}
         max={max}
         step={step}
         disabled={disabled}
         onChange={(e) => {
+          setDraftValue(e.currentTarget.value);
           const n = e.currentTarget.valueAsNumber;
           if (Number.isFinite(n)) onChange(Math.min(max, Math.max(min, n)));
         }}
+        onBlur={() => setDraftValue(String(value))}
       />
     </label>
   );
@@ -224,7 +238,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [brushFill, setBrushFill] = useState(true),
     [text, setText] = useState(''),
     [brushRadius, setBrushRadius] = useState(140),
-    [panelOpen, setPanelOpen] = useState(true);
+    [panelOpen, setPanelOpen] = useState(true),
+    [mapsOpen, setMapsOpen] = useState(false),
+    [sheetId, setSheetId] = useState<string | null>(null),
+    [diceOpen, setDiceOpen] = useState(false),
+    [dice3d, setDice3d] = useState(true),
+    [diceCount, setDiceCount] = useState(1),
+    [diceSides, setDiceSides] = useState(20),
+    [diceModifier, setDiceModifier] = useState(0),
+    [olderMessages, setOlderMessages] = useState<VttMessage[]>([]),
+    [historyEnd, setHistoryEnd] = useState(false),
+    [settingsId, setSettingsId] = useState<string | null>(null),
+    [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const [library, setLibrary] = useState<'images' | 'monsters' | 'spells'>('images'),
     [query, setQuery] = useState(''),
     [entry, setEntry] = useState<Entry | null>(null),
@@ -259,13 +284,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       kind: 'pan' | 'tokens' | 'shape';
       tokens: VttToken[];
     } | null>(null),
-    musicRef = useRef<HTMLAudioElement | null>(null);
+    musicRef = useRef<HTMLAudioElement | null>(null),
+    contextRef = useRef<HTMLDivElement>(null);
   const music = useMusicInterlude();
   useEffect(() => music.beginInterlude(), [music.beginInterlude]);
   stateRef.current = state;
   docRef.current = doc;
   const scene = doc?.scenes.find((s) => s.id === doc.activeScene),
     token = scene?.tokens.find((t) => t.id === selection[0]),
+    selectedLight = scene?.lights.find((l) => l.id === selection[0]),
+    selectedWall = scene?.walls.find((w) => w.id === selection[0]),
+    selectedDrawing = scene?.drawings.find((d) => d.id === selection[0]),
     gm = state?.is_gm === true,
     canToken = gm || token?.controller === user.id;
   const resetDirty = () => {
@@ -273,6 +302,24 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setDirty(false);
   };
   function receive(next: VttState, reset = true) {
+    if (stateRef.current?.id !== next.id) {
+      setOlderMessages([]);
+      setHistoryEnd(false);
+      setSheetId(null);
+    }
+    if (
+      stateRef.current?.id !== next.id ||
+      stateRef.current?.document.activeScene !== next.document.activeScene
+    ) {
+      const s = next.document.scenes.find((s) => s.id === next.document.activeScene)!;
+      setCamera({
+        x: s.width / 2,
+        y: s.height / 2,
+        zoom: Math.min(bounds.width / (s.width + 100), bounds.height / (s.height + 100)),
+      });
+      setSelection([]);
+      setSheetId(null);
+    }
     stateRef.current = next;
     docRef.current = next.document;
     setState(next);
@@ -317,6 +364,59 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       });
     }
   }
+  function editSelected(fn: (t: VttToken) => void) {
+    if (!gm) return;
+    editScene((s) => s.tokens.filter((t) => selection.includes(t.id)).forEach(fn));
+  }
+  function openMap(id: string) {
+    edit((d) => activateScene(d, id));
+    setSelection([]);
+    setContextMenu(null);
+    setMapsOpen(false);
+    fit(docRef.current?.scenes.find((s) => s.id === id));
+  }
+  function createMap(folderId: string | null = null) {
+    const next = newScene(crypto.randomUUID());
+    next.folderId = folderId;
+    edit((d) => {
+      d.scenes.push(next);
+      activateScene(d, next.id);
+    });
+    setSelection([]);
+    setMapsOpen(false);
+    fit(next);
+    setSettingsId(next.id);
+  }
+  function saveMap(next: VttScene) {
+    edit((d) => {
+      d.scenes[d.scenes.findIndex((s) => s.id === next.id)] = next;
+      if (next.archived && d.activeScene === next.id)
+        activateScene(d, d.scenes.find((s) => !s.archived)!.id);
+    });
+    setSettingsId(null);
+    setSelection([]);
+    fit(docRef.current?.scenes.find((s) => s.id === docRef.current?.activeScene));
+  }
+  function removeMap(id: string) {
+    edit((d) => {
+      d.scenes = d.scenes.filter((s) => s.id !== id);
+      if (d.activeScene === id) {
+        activateScene(d, d.scenes.find((s) => !s.archived)!.id);
+        d.initiative = [];
+      }
+    });
+    setSettingsId(null);
+    setSelection([]);
+    fit(docRef.current?.scenes.find((s) => s.id === docRef.current?.activeScene));
+  }
+  useEffect(() => {
+    if (!contextMenu) return;
+    const outside = (e: PointerEvent) => {
+      if (!contextRef.current?.contains(e.target as Node)) setContextMenu(null);
+    };
+    document.addEventListener('pointerdown', outside);
+    return () => document.removeEventListener('pointerdown', outside);
+  }, [contextMenu]);
   const save = useCallback(async () => {
     if (savePromise.current) return savePromise.current;
     if (!stateRef.current?.is_gm || !dirtyRef.current) return;
@@ -469,6 +569,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       draft,
       showWalls,
       ping,
+      userId: user.id,
     });
   }, [
     doc,
@@ -537,8 +638,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!gm) return;
     editScene((s) => {
       s.tokens = s.tokens.filter((t) => !selection.includes(t.id));
+      s.walls = s.walls.filter((w) => !selection.includes(w.id));
+      s.lights = s.lights.filter((l) => !selection.includes(l.id));
+      s.drawings = s.drawings.filter((d) => !selection.includes(d.id));
     });
     setSelection([]);
+    setContextMenu(null);
   }
   function duplicate() {
     if (!gm || !scene) return;
@@ -557,6 +662,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       if ((e.target as HTMLElement).closest('input,textarea,select,button,[contenteditable]'))
         return;
       if (e.key === 'Escape') {
+        if (mapsOpen || settingsId || sheetId) return;
+        setContextMenu(null);
         setSelection([]);
         setDraft(null);
         setRuler([]);
@@ -599,7 +706,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     }
     window.addEventListener('keydown', key);
     return () => window.removeEventListener('keydown', key);
-  }, [doc, selection, gm, token]);
+  }, [doc, selection, gm, token, mapsOpen, settingsId, sheetId]);
   function point(e: { clientX: number; clientY: number }): Point {
     const rect = canvas.current!.getBoundingClientRect();
     return {
@@ -612,7 +719,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     };
   }
   function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
-    if (!scene || !doc) return;
+    if (!scene || !doc || e.button === 2) return;
+    setContextMenu(null);
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -622,26 +730,26 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (tool === 'light' && gm) {
-      const t = newToken(crypto.randomUUID(), scene);
-      Object.assign(t, {
-        name: 'Luz',
+      const l = lightSchema.parse({
+        id: crypto.randomUUID(),
+        name: 'Fonte de luz',
         x: snap.x,
         y: snap.y,
-        width: 24,
-        height: 24,
-        light: 20,
-        dimLight: 20,
-        vision: 0,
         color: '#e9c887',
       });
-      editScene((s) => s.tokens.push(t));
-      setSelection([t.id]);
-      setTab('token');
+      editScene((s) => {
+        s.lights.push(l);
+        s.lighting = true;
+      });
+      setSelection([l.id]);
+      setLayer('lighting');
+      setTab('scene');
       return;
     }
     if (tool === 'reveal' && gm) {
       editScene((s) => {
         s.fog = true;
+        s.fogMode = 'manual';
         s.reveals.push({ x: p.x, y: p.y, radius: brushRadius });
       });
       return;
@@ -649,6 +757,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (tool === 'hide' && gm) {
       editScene((s) => {
         s.fog = true;
+        s.fogMode = 'manual';
         s.reveals = s.reveals.filter(
           (r) => Math.hypot(r.x - p.x, r.y - p.y) > brushRadius + r.radius * 0.3,
         );
@@ -656,6 +765,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (tool === 'select') {
+      if (gm && layer === 'lighting') {
+        const light = [...scene.lights]
+          .reverse()
+          .find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom);
+        const wall = [...scene.walls]
+          .reverse()
+          .find((w) => segmentDistance(p, w.a, w.b) < 9 / camera.zoom);
+        if (light || wall) {
+          setSelection([(light || wall)!.id]);
+          setTab('scene');
+          return;
+        }
+      }
       const hit = tokenAt(p, scene, layer, gm);
       if (hit) {
         const ids = e.shiftKey
@@ -684,6 +806,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             redo.current = [];
           }
         }
+        return;
+      }
+      const drawing = gm ? drawingAt(p, scene, layer, 8 / camera.zoom) : null;
+      if (drawing) {
+        setSelection([drawing.id]);
+        setTab('scene');
         return;
       }
       setSelection([]);
@@ -787,6 +915,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const d = drag.current;
     if (!d || !scene) return;
     drag.current = null;
+    if (tool === 'ruler') {
+      setRuler([]);
+      return;
+    }
     if (d.kind === 'tokens') {
       if (gm) {
         serial.current++;
@@ -816,15 +948,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (d.kind === 'shape' && gm && ['wall', 'door', 'window'].includes(tool)) {
       const b = e.altKey ? point(e) : snapPoint(point(e), scene.grid);
       if (Math.hypot(b.x - d.start.x, b.y - d.start.y) > 3)
-        editScene((s) =>
-          s.walls.push({
+        editScene((s) => {
+          const opening = {
             id: crypto.randomUUID(),
             a: d.start,
             b,
             kind: tool as 'wall' | 'door' | 'window',
             open: false,
-          }),
-        );
+          };
+          carveOpening(s, opening, () => crypto.randomUUID());
+          s.walls.push(opening);
+        });
       setRuler([]);
     } else if (d.kind === 'shape' && draft && gm) {
       editScene((s) => s.drawings.push(draft));
@@ -854,7 +988,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const t = newToken(crypto.randomUUID(), scene);
     t.x = camera.x;
     t.y = camera.y;
-    t.layer = layer as VttToken['layer'];
+    t.layer = layer === 'lighting' ? 'tokens' : (layer as VttToken['layer']);
     editScene((s) => s.tokens.push(t));
     setSelection([t.id]);
     setTab('token');
@@ -909,6 +1043,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       draft: null,
       showWalls: false,
       ping: null,
+      userId: user.id,
     });
     await new Promise<void>((resolve) =>
       out.toBlob((blob) => {
@@ -966,9 +1101,29 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     });
     setNotice(`${entries.length} entradas adicionadas à biblioteca da mesa.`);
   }
-  async function send(formulaValue = '', textValue = chat) {
+  function openSheet(t = token) {
+    if (t?.characterId) setSheetId(t.id);
+    else {
+      setTab('sheet');
+      setPanelOpen(true);
+    }
+  }
+  async function refreshRoom() {
+    await save();
+    receive(await api<VttState>(`/vtt/rooms/${state!.id}`));
+  }
+  async function shareSpell(name: string) {
+    const found =
+      catalog.spells.find((s) => s.name.toLowerCase() === name.toLowerCase()) ||
+      doc?.custom.find((s) => s.kind === 'spell' && s.name.toLowerCase() === name.toLowerCase());
+    if (!found) throw Error('Magia não encontrada na biblioteca da mesa.');
+    await send('', '', found.id);
+    setTab('chat');
+  }
+  async function send(formulaValue = '', textValue = chat, spellId?: string) {
     await save();
     const next = await post<VttState>(`/vtt/rooms/${state!.id}/messages`, {
+      ...(spellId ? { spell_id: spellId } : {}),
       text: textValue,
       formula: formulaValue,
       private: privateRoll,
@@ -1058,6 +1213,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           {!rooms.some((r) => r.id === state.id) && <option value={state.id}>{doc.name}</option>}
         </select>
         <div className="vtt-top-actions">
+          {gm && (
+            <button
+              aria-label="Biblioteca de mapas"
+              title="Biblioteca de mapas"
+              onClick={() => setMapsOpen(true)}
+            >
+              <MapIcon size={18} />
+            </button>
+          )}
           <span className={dirty ? 'vtt-unsaved' : 'vtt-saved'}>
             {busy ? 'Salvando…' : dirty ? 'Alterações pendentes' : 'Salvo'}
           </span>
@@ -1098,6 +1262,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       )}
       <div className={`vtt-layout ${!panelOpen ? 'panel-closed' : ''}`}>
         <nav className="vtt-tools" aria-label="Ferramentas da mesa">
+          <button
+            aria-label="Escolher dados"
+            title="Escolher dados"
+            aria-pressed={diceOpen}
+            onClick={() => setDiceOpen((v) => !v)}
+          >
+            <Dices size={20} />
+          </button>
           {toolList
             .filter((t) => gm || !t.gm)
             .map(({ id, name, icon: Icon }) => (
@@ -1108,6 +1280,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 aria-pressed={tool === id}
                 onClick={() => {
                   setTool(id);
+                  setContextMenu(null);
+                  if (['wall', 'door', 'window', 'light'].includes(id)) {
+                    setLayer('lighting');
+                    setSelection([]);
+                  } else if (
+                    layer === 'lighting' &&
+                    ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
+                  )
+                    setLayer('tokens');
                   setDraft(null);
                 }}
               >
@@ -1117,6 +1298,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           {gm && (
             <>
               <div className="vtt-tool-separator" />
+              <button
+                aria-label="Excluir objetos selecionados"
+                title="Excluir seleção (Delete)"
+                disabled={!selection.length}
+                onClick={removeSelected}
+              >
+                <Trash2 size={18} />
+              </button>
               <button aria-label="Desfazer" title="Desfazer (Ctrl+Z)" onClick={() => history(true)}>
                 <Undo2 size={18} />
               </button>
@@ -1131,6 +1320,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           )}
         </nav>
         <div className="vtt-stage" ref={stage}>
+          <VttDice messages={state.messages} roomId={state.id} enabled={dice3d} />
           <canvas
             ref={canvas}
             aria-label="Tabuleiro da mesa"
@@ -1142,6 +1332,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onPointerMove={pointerMove}
             onPointerUp={pointerUp}
             onPointerCancel={() => {
+              setRuler([]);
               const d = drag.current;
               drag.current = null;
               if (d) {
@@ -1153,6 +1344,33 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onContextMenu={(e) => {
               e.preventDefault();
               setTool('select');
+              const p = point(e),
+                hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
+              if (hit) {
+                if (!selection.includes(hit.id)) setSelection([hit.id]);
+                setLayer(hit.layer);
+                setTab('token');
+              } else if (gm) {
+                const light =
+                  layer === 'lighting'
+                    ? scene.lights.find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom)
+                    : null;
+                const wall =
+                  layer === 'lighting'
+                    ? scene.walls.find((w) => segmentDistance(p, w.a, w.b) < 9 / camera.zoom)
+                    : null;
+                const drawing = drawingAt(p, scene, layer, 8 / camera.zoom);
+                if (!(light || wall || drawing)) {
+                  setContextMenu(null);
+                  return;
+                }
+                setSelection([(light || wall || drawing)!.id]);
+                setTab('scene');
+              } else return;
+              setContextMenu({
+                x: Math.max(8, Math.min(e.clientX, innerWidth - 270)),
+                y: Math.max(8, Math.min(e.clientY, innerHeight - 520)),
+              });
             }}
             onWheel={(e) => {
               e.preventDefault();
@@ -1175,9 +1393,80 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 editScene((s) => {
                   s.walls.find((w) => w.id === door.id)!.open = !door.open;
                 });
-              else if (token) setTab('sheet');
+              else {
+                const hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
+                if (hit) {
+                  setSelection([hit.id]);
+                  openSheet(hit);
+                }
+              }
             }}
           />
+          {diceOpen && (
+            <div className="vtt-dice-picker" role="dialog" aria-label="Lançador de dados">
+              <header>
+                <strong>Lançar dados</strong>
+                <button aria-label="Fechar lançador" onClick={() => setDiceOpen(false)}>
+                  <X size={15} />
+                </button>
+              </header>
+              <div className="vtt-dice-buttons">
+                {[4, 6, 8, 10, 12, 20, 100].map((n) => (
+                  <button key={n} aria-pressed={diceSides === n} onClick={() => setDiceSides(n)}>
+                    d{n}
+                  </button>
+                ))}
+              </div>
+              <NumberField
+                label="Quantidade de dados"
+                value={diceCount}
+                min={1}
+                max={100}
+                onChange={setDiceCount}
+              />
+              <NumberField
+                label="Modificador dos dados"
+                value={diceModifier}
+                min={-9999}
+                max={9999}
+                onChange={setDiceModifier}
+              />
+              <label className="vtt-check">
+                <input
+                  type="checkbox"
+                  checked={dice3d}
+                  onChange={(e) => setDice3d(e.target.checked)}
+                />
+                Dados 3D no tabuleiro
+              </label>
+              <label className="vtt-check">
+                <input
+                  type="checkbox"
+                  checked={privateRoll}
+                  onChange={(e) => setPrivateRoll(e.target.checked)}
+                />
+                Somente você e o mestre
+              </label>
+              <button
+                className="vtt-gold"
+                disabled={busy}
+                onClick={() =>
+                  void act(() =>
+                    send(
+                      diceCount +
+                        'd' +
+                        diceSides +
+                        (diceModifier ? (diceModifier > 0 ? '+' : '') + diceModifier : ''),
+                      '',
+                    ),
+                  )
+                }
+              >
+                Rolar {diceCount}d{diceSides}
+              </button>
+              {diceSides === 100 && <small>Percentual: dois d10, dezenas e unidades.</small>}
+            </div>
+          )}
           <div className="vtt-scene-pills">
             <span>{scene.name}</span>
             {gm && (
@@ -1189,9 +1478,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   setSelection([]);
                 }}
               >
-                <option value="tokens">Tokens e objetos</option>
-                <option value="map">Mapa</option>
+                <option value="map">Fundo · visível aos jogadores</option>
+                <option value="tokens">Tokens · jogadores</option>
                 <option value="gm">Mestre · oculto</option>
+                <option value="lighting">Iluminação e barreiras</option>
               </select>
             )}
             {gm && (
@@ -1205,6 +1495,40 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               </button>
             )}
           </div>
+          {gm && ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(tool) && (
+            <div className="vtt-draw-controls" aria-label="Opções de desenho">
+              {['#dac28e', '#f0f0e7', '#22262e', '#de665b', '#72a586', '#71add1', '#ad83cd'].map(
+                (color, i) => (
+                  <button
+                    key={color}
+                    aria-label={
+                      'Cor ' +
+                      ['dourada', 'branca', 'escura', 'vermelha', 'verde', 'azul', 'roxa'][i]
+                    }
+                    aria-pressed={brushColor === color}
+                    style={{ background: color }}
+                    onClick={() => setBrushColor(color)}
+                  />
+                ),
+              )}
+              <label>
+                Cor livre
+                <input
+                  aria-label="Cor livre da caneta"
+                  type="color"
+                  value={brushColor}
+                  onChange={(e) => setBrushColor(e.target.value)}
+                />
+              </label>
+              <NumberField
+                label="Traço"
+                value={brushWidth}
+                min={1}
+                max={100}
+                onChange={setBrushWidth}
+              />
+            </div>
+          )}
           <div className="vtt-map-footer">
             <span>
               {toolList.find((t) => t.id === tool)?.name} · {scene.grid.scale} {scene.grid.unit} por
@@ -1258,259 +1582,160 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               {tab === 'scene' && (
                 <>
                   <label>
-                    Cena
+                    Mapa ativo
                     <select
                       value={scene.id}
-                      onChange={(e) => {
-                        edit((d) => (d.activeScene = e.target.value));
-                        setSelection([]);
-                        fit(doc.scenes.find((s) => s.id === e.target.value));
-                      }}
+                      onChange={(e) => openMap(e.target.value)}
                       disabled={!gm}
                     >
-                      {doc.scenes.map((s) => (
-                        <option key={s.id} value={s.id}>
-                          {s.name}
-                        </option>
-                      ))}
+                      {doc.scenes
+                        .filter((s) => !s.archived)
+                        .map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {s.name}
+                          </option>
+                        ))}
                     </select>
                   </label>
+                  <p className="vtt-muted">
+                    {scene.width} × {scene.height} px ·{' '}
+                    {scene.grid.type === 'none' ? 'sem grade' : scene.grid.size + ' px por célula'}
+                  </p>
                   {gm && (
                     <>
                       <div className="vtt-row">
-                        <button
-                          onClick={() => {
-                            const s = newScene(crypto.randomUUID());
-                            edit((d) => {
-                              d.scenes.push(s);
-                              d.activeScene = s.id;
-                            });
-                            fit(s);
-                          }}
-                        >
+                        <button onClick={() => setMapsOpen(true)}>
+                          <MapIcon size={15} />
+                          Biblioteca de mapas
+                        </button>
+                        <button onClick={() => setSettingsId(scene.id)}>
+                          <Settings2 size={15} />
+                          Configurar mapa
+                        </button>
+                        <button onClick={() => createMap()}>
                           <Plus size={14} />
-                          Nova
-                        </button>
-                        <button
-                          onClick={() => {
-                            const s = {
-                              ...structuredClone(scene),
-                              id: crypto.randomUUID(),
-                              name: scene.name + ' · cópia',
-                            };
-                            s.tokens = s.tokens.map((t) => ({ ...t, id: crypto.randomUUID() }));
-                            s.walls = s.walls.map((w) => ({ ...w, id: crypto.randomUUID() }));
-                            edit((d) => {
-                              d.scenes.push(s);
-                              d.activeScene = s.id;
-                            });
-                          }}
-                        >
-                          <Copy size={14} />
-                          Duplicar
-                        </button>
-                        <button
-                          aria-label="Excluir cena"
-                          disabled={doc.scenes.length < 2}
-                          onClick={() => {
-                            if (confirm('Excluir esta cena e seus objetos?'))
-                              edit((d) => {
-                                d.scenes = d.scenes.filter((s) => s.id !== scene.id);
-                                d.activeScene = d.scenes[0].id;
-                                d.initiative = [];
-                              });
-                          }}
-                        >
-                          <Trash2 size={14} />
+                          Novo mapa
                         </button>
                       </div>
+                      <h3>Camadas</h3>
                       <label>
-                        Nome da cena
+                        Opacidade da camada do mestre
                         <input
-                          value={scene.name}
-                          onChange={(e) => editScene((s) => (s.name = e.target.value || 'Cena'))}
-                        />
-                      </label>
-                      <div className="vtt-two">
-                        <NumberField
-                          label="Largura do mapa"
-                          value={scene.width}
-                          min={280}
-                          onChange={(v) => editScene((s) => (s.width = v))}
-                        />
-                        <NumberField
-                          label="Altura do mapa"
-                          value={scene.height}
-                          min={280}
-                          onChange={(v) => editScene((s) => (s.height = v))}
-                        />
-                      </div>
-                      <label>
-                        Cor de fundo
-                        <input
-                          type="color"
-                          value={scene.backgroundColor}
-                          onChange={(e) => editScene((s) => (s.backgroundColor = e.target.value))}
-                        />
-                      </label>
-                      <button
-                        onClick={() => {
-                          setTab('library');
-                          setLibrary('images');
-                        }}
-                      >
-                        <Image size={15} />
-                        Escolher mapa na biblioteca
-                      </button>
-                      <button onClick={() => editScene((s) => (s.background = ''))}>
-                        Remover imagem do mapa
-                      </button>
-                      <h3>Grade e medidas</h3>
-                      <label>
-                        Tipo de grade
-                        <select
-                          value={scene.grid.type}
-                          onChange={(e) =>
-                            editScene(
-                              (s) => (s.grid.type = e.target.value as VttScene['grid']['type']),
-                            )
-                          }
-                        >
-                          <option value="square">Quadrada</option>
-                          <option value="hex-flat">Hexagonal · horizontal</option>
-                          <option value="hex-point">Hexagonal · vertical</option>
-                          <option value="none">Sem grade</option>
-                        </select>
-                      </label>
-                      <div className="vtt-two">
-                        <NumberField
-                          label="Tamanho da célula"
-                          value={scene.grid.size}
-                          min={10}
-                          max={500}
-                          onChange={(v) => editScene((s) => (s.grid.size = v))}
-                        />
-                        <NumberField
-                          label="Escala da célula"
-                          value={scene.grid.scale}
-                          min={0.1}
-                          max={1000}
-                          step={0.1}
-                          onChange={(v) => editScene((s) => (s.grid.scale = v))}
-                        />
-                      </div>
-                      <label>
-                        Unidade
-                        <select
-                          value={scene.grid.unit}
-                          onChange={(e) =>
-                            editScene((s) => (s.grid.unit = e.target.value as 'ft' | 'm'))
-                          }
-                        >
-                          <option value="ft">Pés</option>
-                          <option value="m">Metros</option>
-                        </select>
-                      </label>
-                      <label>
-                        Medida das diagonais
-                        <select
-                          value={scene.grid.diagonal}
-                          onChange={(e) =>
-                            editScene(
-                              (s) =>
-                                (s.grid.diagonal = e.target.value as VttScene['grid']['diagonal']),
-                            )
-                          }
-                        >
-                          <option value="five">D&D · mesma distância</option>
-                          <option value="alternating">Alternada · 5 / 10</option>
-                          <option value="euclidean">Euclidiana</option>
-                          <option value="manhattan">Soma dos eixos</option>
-                        </select>
-                      </label>
-                      <div className="vtt-two">
-                        <NumberField
-                          label="Deslocamento X da grade"
-                          value={scene.grid.offsetX}
-                          min={-500}
-                          max={500}
-                          onChange={(v) => editScene((s) => (s.grid.offsetX = v))}
-                        />
-                        <NumberField
-                          label="Deslocamento Y da grade"
-                          value={scene.grid.offsetY}
-                          min={-500}
-                          max={500}
-                          onChange={(v) => editScene((s) => (s.grid.offsetY = v))}
-                        />
-                      </div>
-                      <label>
-                        Cor da grade
-                        <input
-                          type="color"
-                          value={scene.grid.color}
-                          onChange={(e) => editScene((s) => (s.grid.color = e.target.value))}
-                        />
-                      </label>
-                      <label>
-                        Opacidade da grade
-                        <input
+                          aria-label="Opacidade da camada do mestre"
                           type="range"
-                          min="0"
+                          min=".05"
                           max="1"
                           step=".01"
-                          value={scene.grid.opacity}
+                          value={scene.gmOpacity}
                           onChange={(e) =>
-                            editScene((s) => (s.grid.opacity = Number(e.target.value)))
+                            editScene((s) => {
+                              s.gmOpacity = Number(e.target.value);
+                            })
                           }
                         />
+                        <span>{Math.round(scene.gmOpacity * 100)}%</span>
                       </label>
-                      <label className="vtt-check">
-                        <input
-                          type="checkbox"
-                          checked={scene.grid.snap}
-                          onChange={(e) => editScene((s) => (s.grid.snap = e.target.checked))}
-                        />
-                        Encaixar objetos na grade
-                      </label>
-                      <h3>Luz e exploração</h3>
-                      <label className="vtt-check">
-                        <input
-                          type="checkbox"
-                          checked={scene.lighting}
-                          onChange={(e) => editScene((s) => (s.lighting = e.target.checked))}
-                        />
-                        Iluminação dinâmica
-                      </label>
-                      <label>
-                        Luz ambiente
-                        <input
-                          type="range"
-                          min="0"
-                          max="1"
-                          step=".01"
-                          value={scene.ambient}
-                          onChange={(e) => editScene((s) => (s.ambient = Number(e.target.value)))}
-                        />
-                      </label>
-                      <label className="vtt-check">
-                        <input
-                          type="checkbox"
-                          checked={scene.fog}
-                          onChange={(e) => editScene((s) => (s.fog = e.target.checked))}
-                        />
-                        Névoa manual
-                      </label>
-                      <label className="vtt-check">
-                        <input
-                          type="checkbox"
-                          checked={scene.restrictMovement}
-                          onChange={(e) =>
-                            editScene((s) => (s.restrictMovement = e.target.checked))
-                          }
-                        />
-                        Barreiras impedem movimento dos jogadores
-                      </label>
+                      {selectedLight && (
+                        <div className="vtt-object-detail">
+                          <h3>Fonte de luz</h3>
+                          <label>
+                            Nome da luz
+                            <input
+                              value={selectedLight.name}
+                              onChange={(e) =>
+                                editScene((s) => {
+                                  s.lights.find((l) => l.id === selectedLight.id)!.name =
+                                    e.target.value || 'Fonte de luz';
+                                })
+                              }
+                            />
+                          </label>
+                          <div className="vtt-two">
+                            {(['bright', 'dim', 'x', 'y', 'angle', 'rotation'] as const).map(
+                              (key) => (
+                                <NumberField
+                                  key={key}
+                                  label={
+                                    {
+                                      bright: 'Luz forte',
+                                      dim: 'Luz fraca adicional',
+                                      x: 'Posição X da luz',
+                                      y: 'Posição Y da luz',
+                                      angle: 'Ângulo da luz',
+                                      rotation: 'Rotação da luz',
+                                    }[key]
+                                  }
+                                  value={selectedLight[key]}
+                                  min={key === 'rotation' ? -360 : key === 'angle' ? 1 : 0}
+                                  max={
+                                    key === 'rotation' || key === 'angle'
+                                      ? 360
+                                      : key === 'bright' || key === 'dim'
+                                        ? 10000
+                                        : 16000
+                                  }
+                                  onChange={(n) =>
+                                    editScene((s) => {
+                                      s.lights.find((l) => l.id === selectedLight.id)![key] = n;
+                                    })
+                                  }
+                                />
+                              ),
+                            )}
+                          </div>
+                          <label>
+                            Cor da luz
+                            <input
+                              type="color"
+                              value={selectedLight.color}
+                              onChange={(e) =>
+                                editScene((s) => {
+                                  s.lights.find((l) => l.id === selectedLight.id)!.color =
+                                    e.target.value;
+                                })
+                              }
+                            />
+                          </label>
+                          <label className="vtt-check">
+                            <input
+                              type="checkbox"
+                              checked={selectedLight.enabled}
+                              onChange={(e) =>
+                                editScene((s) => {
+                                  s.lights.find((l) => l.id === selectedLight.id)!.enabled =
+                                    e.target.checked;
+                                })
+                              }
+                            />
+                            Luz acesa
+                          </label>
+                          <button onClick={removeSelected}>
+                            <Trash2 size={14} />
+                            Excluir luz selecionada
+                          </button>
+                        </div>
+                      )}
+                      {(selectedDrawing || selectedWall) && (
+                        <div className="vtt-object-detail">
+                          <h3>{selectedWall ? 'Barreira selecionada' : 'Desenho selecionado'}</h3>
+                          {selectedWall?.kind === 'door' && (
+                            <button
+                              onClick={() =>
+                                editScene((s) => {
+                                  s.walls.find((w) => w.id === selectedWall.id)!.open =
+                                    !selectedWall.open;
+                                })
+                              }
+                            >
+                              {selectedWall.open ? 'Fechar porta' : 'Abrir porta'}
+                            </button>
+                          )}
+                          <button onClick={removeSelected}>
+                            <Trash2 size={14} />
+                            Excluir objeto selecionado
+                          </button>
+                        </div>
+                      )}
                       <label className="vtt-check">
                         <input
                           type="checkbox"
@@ -1541,6 +1766,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             editScene((s) => {
                               s.reveals = [];
                               s.fog = true;
+                              s.fogMode = 'manual';
                             })
                           }
                         >
@@ -1642,7 +1868,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           label="PV atual"
                           value={token.hp}
                           min={-10000}
-                          max={100000}
+                          max={gm ? 100000 : token.hp}
                           disabled={!canToken}
                           onChange={(v) => editToken({ hp: v })}
                         />
@@ -1709,6 +1935,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               <option value="gm">Mestre</option>
                             </select>
                           </label>
+                          <NumberField
+                            label="Nível de profundidade"
+                            value={token.level}
+                            min={-10000}
+                            max={10000}
+                            step={0.1}
+                            onChange={(n) => editToken({ level: n })}
+                          />
+                          <p className="vtt-muted">0,1 à frente de 0; −0,1 atrás de 0.</p>
+                          <div className="vtt-row">
+                            <button onClick={() => editToken({ flipX: !token.flipX })}>
+                              <FlipHorizontal2 size={15} />
+                              Espelhar horizontal
+                            </button>
+                            <button onClick={() => editToken({ flipY: !token.flipY })}>
+                              <FlipVertical2 size={15} />
+                              Espelhar vertical
+                            </button>
+                          </div>
                           <label>
                             Controlado por
                             <select
@@ -1824,7 +2069,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                         {conditions.map((c) => (
                           <button
                             key={c}
-                            disabled={!canToken}
+                            disabled={!canToken || (!gm && token.conditions.includes(c))}
                             aria-pressed={token.conditions.includes(c)}
                             onClick={() =>
                               editToken({
@@ -1838,7 +2083,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           </button>
                         ))}
                       </div>
-                      <button onClick={() => setTab('sheet')}>Abrir ficha do token</button>
+                      <button onClick={() => openSheet()}>Abrir ficha do token</button>
                     </>
                   )}
                 </>
@@ -2024,13 +2269,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             </button>
                           )}
                           {library === 'spells' && (
-                            <button
-                              onClick={() =>
-                                void act(() =>
-                                  send('', `${entry.name}\n${entry.details.slice(0, 1800)}`),
-                                )
-                              }
-                            >
+                            <button onClick={() => void act(() => send('', '', entry.id))}>
                               Compartilhar no chat
                             </button>
                           )}
@@ -2102,7 +2341,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           const s = next.document.scenes.find(
                             (s) => s.id === next.document.activeScene,
                           )!;
-                          setSelection([s.tokens.at(-1)!.id]);
+                          const imported = s.tokens.find(
+                            (t) => t.characterId === c.id && t.controller === user.id,
+                          )!;
+                          setSelection([imported.id]);
+                          setSheetId(imported.id);
                         })
                       }
                     >
@@ -2116,6 +2359,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   {token && (
                     <>
                       <h3>{token.name}</h3>
+                      {token.characterId && (
+                        <button className="vtt-gold" onClick={() => openSheet()}>
+                          Abrir folha completa
+                        </button>
+                      )}
                       <p>
                         PV {token.hp}/{token.maxHp} · CA {token.ac}
                       </p>
@@ -2205,32 +2453,83 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     />
                     Somente você e o mestre
                   </label>
+                  {!historyEnd && (
+                    <button
+                      onClick={() =>
+                        void act(async () => {
+                          const all = [...olderMessages, ...state.messages];
+                          const first = all.reduce(
+                            (a, b) => (BigInt(a.id) < BigInt(b.id) ? a : b),
+                            all[0],
+                          );
+                          const next = await api<{ messages: VttMessage[]; has_more: boolean }>(
+                            `/vtt/rooms/${state.id}/messages${first ? '?before=' + first.id : ''}`,
+                          );
+                          setOlderMessages((v) => [...next.messages, ...v]);
+                          setHistoryEnd(!next.has_more);
+                        })
+                      }
+                    >
+                      Carregar histórico anterior
+                    </button>
+                  )}
                   <div className="vtt-chat-log" aria-live="polite">
-                    {state.messages.map((m) => (
-                      <article key={m.id}>
-                        <header>
-                          <strong>{m.author}</strong>
-                          <small>
-                            {m.private
-                              ? 'Privado'
-                              : new Date(m.created_at).toLocaleTimeString('pt-BR', {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                })}
-                          </small>
-                        </header>
-                        <p>{m.text}</p>
-                        {m.roll && (
-                          <div className="vtt-roll">
-                            <span>
-                              {m.roll.formula}
-                              <small>{m.roll.dice.join(' + ')}</small>
-                            </span>
-                            <b>{m.roll.total}</b>
-                          </div>
-                        )}
-                      </article>
-                    ))}
+                    {[
+                      ...new Map(
+                        [...olderMessages, ...state.messages].map((m) => [m.id, m]),
+                      ).values(),
+                    ]
+                      .sort((a, b) => Number(BigInt(a.id) - BigInt(b.id)))
+                      .map((m) => (
+                        <article key={m.id}>
+                          <header>
+                            <strong>{m.author}</strong>
+                            <small>
+                              {m.private
+                                ? 'Privado'
+                                : new Date(m.created_at).toLocaleTimeString('pt-BR', {
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                  })}
+                            </small>
+                          </header>
+                          <p>{m.text}</p>
+                          {m.spell && (
+                            <section className="vtt-spell-message">
+                              <h3>{m.spell.name}</h3>
+                              <small>
+                                {m.spell.level === 0 ? 'Truque' : 'Nível ' + m.spell.level} ·{' '}
+                                {m.spell.school}
+                              </small>
+                              <dl>
+                                {[
+                                  ['Conjuração', m.spell.time],
+                                  ['Alcance', m.spell.range],
+                                  ['Componentes', m.spell.components],
+                                  ['Duração', m.spell.duration],
+                                ]
+                                  .filter(([, v]) => v)
+                                  .map(([k, v]) => (
+                                    <div key={k}>
+                                      <dt>{k}</dt>
+                                      <dd>{v}</dd>
+                                    </div>
+                                  ))}
+                              </dl>
+                              <p>{m.spell.details}</p>
+                            </section>
+                          )}
+                          {m.roll && (
+                            <div className="vtt-roll">
+                              <span>
+                                {m.roll.formula}
+                                <small>{m.roll.dice.join(' + ')}</small>
+                              </span>
+                              <b>{m.roll.total}</b>
+                            </div>
+                          )}
+                        </article>
+                      ))}
                   </div>
                   <form
                     onSubmit={(e) => {
@@ -2760,6 +3059,211 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           </aside>
         )}
       </div>
+      {sheetId && scene.tokens.find((t) => t.id === sheetId) && (
+        <VttSheet
+          roomId={state.id}
+          token={scene.tokens.find((t) => t.id === sheetId)!}
+          close={() => setSheetId(null)}
+          roll={send}
+          refresh={refreshRoom}
+          shareSpell={shareSpell}
+        />
+      )}
+      {gm && mapsOpen && (
+        <MapLibrary
+          doc={doc}
+          edit={edit}
+          activate={openMap}
+          create={createMap}
+          configure={(id) => setSettingsId(id)}
+          close={() => {
+            setSettingsId(null);
+            setMapsOpen(false);
+          }}
+        />
+      )}
+      {gm && settingsId && doc.scenes.some((s) => s.id === settingsId) && (
+        <MapSettings
+          key={settingsId}
+          scene={doc.scenes.find((s) => s.id === settingsId)!}
+          doc={doc}
+          assets={state.assets}
+          close={() => setSettingsId(null)}
+          save={saveMap}
+          remove={() => removeMap(settingsId)}
+          upload={uploadAsset}
+        />
+      )}
+      {contextMenu && (token || selectedLight || selectedWall || selectedDrawing) && (
+        <div
+          className="vtt-context-menu"
+          ref={contextRef}
+          role="dialog"
+          aria-label="Ações do objeto"
+          style={{ left: contextMenu.x, top: contextMenu.y }}
+        >
+          <header>
+            <span>
+              {token?.name || selectedLight?.name || (selectedWall ? 'Barreira' : 'Desenho')}
+            </span>
+            <button aria-label="Fechar ações" onClick={() => setContextMenu(null)}>
+              <X size={13} />
+            </button>
+          </header>
+          {token && (
+            <>
+              <button
+                onClick={() => {
+                  openSheet();
+                  setContextMenu(null);
+                }}
+              >
+                <Users size={14} />
+                Abrir ficha
+              </button>
+              {gm && (
+                <>
+                  <label>
+                    Camada do objeto
+                    <select
+                      aria-label="Camada no menu"
+                      value={token.layer}
+                      onChange={(e) => {
+                        const to = e.target.value as VttToken['layer'];
+                        editSelected((t) => {
+                          t.layer = to;
+                        });
+                        setLayer(to);
+                      }}
+                    >
+                      <option value="map">Fundo · visível aos jogadores</option>
+                      <option value="tokens">Tokens · jogadores</option>
+                      <option value="gm">Mestre · somente você</option>
+                    </select>
+                  </label>
+                  <NumberField
+                    label="Nível de profundidade"
+                    value={token.level}
+                    min={-10000}
+                    max={10000}
+                    step={0.1}
+                    onChange={(n) =>
+                      editSelected((t) => {
+                        t.level = n;
+                      })
+                    }
+                  />
+                  <p>
+                    0,1 fica à frente de 0. −0,1 fica atrás. A ordem vale dentro da mesma camada.
+                  </p>
+                </>
+              )}
+              {canToken && (
+                <>
+                  <div className="vtt-two">
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.flipX = !t.flipX;
+                            })
+                          : editToken({ flipX: !token.flipX })
+                      }
+                    >
+                      <FlipHorizontal2 size={15} />
+                      Horizontal
+                    </button>
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.flipY = !t.flipY;
+                            })
+                          : editToken({ flipY: !token.flipY })
+                      }
+                    >
+                      <FlipVertical2 size={15} />
+                      Vertical
+                    </button>
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.rotation = (t.rotation + 45) % 360;
+                            })
+                          : editToken({ rotation: (token.rotation + 45) % 360 })
+                      }
+                    >
+                      <RotateCw size={14} />
+                      Girar 45°
+                    </button>
+                    <button
+                      onClick={() =>
+                        gm
+                          ? editSelected((t) => {
+                              t.rotation = (t.rotation + 90) % 360;
+                            })
+                          : editToken({ rotation: (token.rotation + 90) % 360 })
+                      }
+                    >
+                      <RotateCw size={14} />
+                      Girar 90°
+                    </button>
+                  </div>
+                  <button
+                    onClick={() =>
+                      gm
+                        ? editSelected((t) => {
+                            t.flipX = false;
+                            t.flipY = false;
+                            t.rotation = 0;
+                          })
+                        : editToken({ flipX: false, flipY: false, rotation: 0 })
+                    }
+                  >
+                    Redefinir orientação
+                  </button>
+                </>
+              )}
+              {gm && (
+                <>
+                  <hr />
+                  <button
+                    onClick={() =>
+                      editSelected((t) => {
+                        t.locked = !t.locked;
+                      })
+                    }
+                  >
+                    {token.locked ? <Unlock size={14} /> : <Lock size={14} />}
+                    {token.locked ? 'Desbloquear' : 'Bloquear'} movimento
+                  </button>
+                  <button
+                    onClick={() =>
+                      editSelected((t) => {
+                        t.hidden = !t.hidden;
+                      })
+                    }
+                  >
+                    <EyeOff size={14} />
+                    {token.hidden ? 'Mostrar aos jogadores' : 'Ocultar dos jogadores'}
+                  </button>
+                  <button onClick={duplicate}>
+                    <Copy size={14} />
+                    Duplicar seleção
+                  </button>
+                </>
+              )}
+            </>
+          )}
+          {gm && (
+            <button className="vtt-delete" onClick={removeSelected}>
+              <Trash2 size={14} />
+              Excluir seleção
+            </button>
+          )}
+        </div>
+      )}
     </section>
   );
 }

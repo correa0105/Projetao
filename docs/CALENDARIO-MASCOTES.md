@@ -2,7 +2,9 @@
 
 ## Calendário em Início
 
-**Início → Calendário** abre um mês com seis semanas, navegação anterior/próximo,
+O calendário aparece sempre no final de **Início → Diário**, abaixo das entradas,
+sem uma aba própria. Edições do Diário atualizam os compromissos preservando o mês
+e o dia selecionados. Mostra um mês com seis semanas, navegação anterior/próximo,
 atalho Hoje e escolha direta do mês. O dia atual e o selecionado têm destaque.
 Filtros: Todos, Eventos, Missões e Diário. A grade mostra até três chamadas por
 dia e a contagem das restantes; o painel do dia lista todos os compromissos,

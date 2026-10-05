@@ -47,7 +47,8 @@ vínculo de cada conquista são editáveis pelo administrador (migration 055).
 Não apagar histórico de conquistas, estantes ou títulos recebidos. Exibição de
 título separada na tela do personagem/ficha. Detalhes em docs/SALAO-CONQUISTAS.md.
 
-Calendário fica em Início → Calendário, reunindo eventos, missões e encontros
+Calendário fica sempre ao final de Início → Diário, abaixo das publicações e sem
+aba separada, reunindo eventos, missões e encontros
 do Diário sem duplicar registros. Administradores editam apresentação e eventos;
 ownership das missões permanece. Eventos usam temporariamente a rua da vila,
 com editor integral do cenário preservado. Mascote exibido é escolhido no
@@ -55,14 +56,19 @@ inventário por personagem, aparece à direita no acampamento e muda ao selecion
 outro personagem. Raças são editáveis só por administradores; nome pessoal é
 definido pelo comprador. Garalho abre conversa só ao clicar nele; miado vem só
 após pergunta. Sons de seleção são apenas vozes dos animais, sem impacto extra.
-Migrations 056–057 e detalhes em docs/CALENDARIO-MASCOTES.md. Lore usa barra
-contínua de luz entre eras e finalização com engrenagens/tranco, sem bolinha móvel.
+Migrations 056–057 e detalhes em docs/CALENDARIO-MASCOTES.md. Lore usa sequência
+de engrenagens entre eras: luz mais lenta ativa a rotação, áudio mecânico acompanha
+o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
 - Mesa virtual e comunidade (05/10): docs/VTT-PERFIS-HALL.md. Mestre de VTT precisa
   ser dono da mesa e administrador=1; jogadores controlam tokens atribuídos/importam
-  seus personagens. Cópia de sessão nunca altera ficha/saldo original. Filtrar no
+  seus personagens. PV e condições são de sessão, sem alterar a ficha/saldo original;
+  exceção explícita do usuário: usar consumível debita o inventário original em
+  transação idempotente auditada. Somente mestre dono e administrador restaura
+  recursos, slots, PV ou consumíveis gastos. Importação não pode repor recursos.
+  Recursos e vínculo explícito de importação: migration 060. Filtrar no
   servidor tokens, notas, fichas e arquivos privados antes de retornar a jogadores.
 - Perfil pessoal editável pelo dono é separado do conteúdo compartilhado administrativo.
   Visitas por ID autenticadas são somente consulta de personagens, conquistas,
@@ -71,6 +77,8 @@ contínua de luz entre eras e finalização com engrenagens/tranco, sem bolinha 
   Bloqueio/amizade/envio são serializados por par em transação. Hall calcula dados
   reais no servidor; pesos/presentação apenas administrador. Preserve Conquistas
   original com quatro molduras e limite existente de dois personagens por conta.
+  Visitas ocupam a tela inteira. Molduras menores ficam na parede, afastadas do
+  teto/vigas, com recorte do rosto. Não retornar à visita encolhida.
 
 - Comunicação e interface em português brasileiro.
 - Nome definitivo: Alvorada Cinzenta. Banco/usuário `alvorada_cinzenta`, Compose e package `alvorada-cinzenta`.

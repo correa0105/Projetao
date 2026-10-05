@@ -1,4 +1,4 @@
-import type { ReactNode, CSSProperties } from 'react';
+import { useLayoutEffect, useRef, type ReactNode, type CSSProperties } from 'react';
 import { UserRound } from 'lucide-react';
 import './portrait-frames.css';
 export type FramedCharacter = {
@@ -18,10 +18,48 @@ export function PortraitCabinet({
   onSelect: (id: string) => void;
   children: ReactNode;
 }) {
+  const root = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const layout = root.current!,
+      stage = layout.closest<HTMLElement>('.cabinet-room-stage')!;
+    const room =
+      layout.closest<HTMLElement>('.public-achievements') ||
+      layout.closest<HTMLElement>('.main-shell')!;
+    const measure = () => {
+      const raw = getComputedStyle(room).getPropertyValue('--room-width').trim();
+      const width = raw.includes('clamp')
+        ? Math.max(900, Math.min(2000, innerWidth))
+        : raw.endsWith('vw')
+          ? (parseFloat(raw) * innerWidth) / 100
+          : parseFloat(raw) || room.clientWidth;
+      const mobile = innerWidth <= (room.classList.contains('public-achievements') ? 800 : 700);
+      const backgroundTop = room.classList.contains('public-achievements')
+        ? parseFloat(getComputedStyle(room).getPropertyValue('--portrait-background-top')) || 0
+        : mobile
+          ? 125
+          : 0;
+      const offset = stage.getBoundingClientRect().top - room.getBoundingClientRect().top;
+      stage.style.setProperty('--cabinet-stage-offset', offset + 'px');
+      layout.style.setProperty(
+        '--portrait-wall-top',
+        width * 0.105 + backgroundTop - offset + 'px',
+      );
+      layout.style.setProperty('--portrait-room-width', width + 'px');
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(room);
+    observer.observe(stage);
+    window.addEventListener('resize', measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, []);
   function frame(index: number) {
     const c = characters[index],
       path = c?.portrait
-        ? c.portrait + (c.portrait.includes('?') ? '&' : '?') + 'thumb=1'
+        ? c.portrait + (c.portrait.includes('?') ? '&' : '?') + 'face=1&crop=2'
         : `/api/characters/${c?.id}/portrait?v=${c?.portrait_revision || 0}`;
     return (
       <button
@@ -52,7 +90,7 @@ export function PortraitCabinet({
     );
   }
   return (
-    <div className="portrait-cabinet-layout">
+    <div className="portrait-cabinet-layout" ref={root}>
       <div className="portrait-frame-wall left">
         {frame(0)}
         {frame(1)}

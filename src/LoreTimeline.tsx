@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { api } from './api';
 import { Modal } from './components';
-import { useLoreEraSound } from './SiteMusic';
+import { useLoreMechanism } from './lore-mechanism';
 import { loreFolderPath, type LoreFolder } from '../shared/lore';
 import {
   type LoreEra,
@@ -50,7 +50,28 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
   const host = useRef<HTMLElement>(null);
   const active = useRef('');
   const flight = useRef(0);
-  const sound = useLoreEraSound();
+  const sound = useLoreMechanism();
+  const mechanism = useRef<((locked?: boolean) => void) | null>(null);
+  const [gears, setGears] = useState<{ position: number; active: boolean; angle: number }[]>([]);
+  useEffect(() => {
+    if (!host.current) return;
+    const track = host.current.querySelector<HTMLElement>('.lore-era-thread')!;
+    const measure = () => {
+      const width = track.clientWidth,
+        count = Math.max(1, Math.round(width / 25));
+      setGears(
+        Array.from({ length: count }, (_, i) => ({
+          position: (i + 0.5) / count,
+          active: false,
+          angle: 0,
+        })),
+      );
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, [timeline?.document.eras.length]);
   async function refresh() {
     const value = await api<LoreTimelineResponse>('/lore-timeline');
     setTimeline(value);
@@ -63,6 +84,7 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
     void refresh().catch((error: Error) => setError(error.message));
     return () => {
       flight.current++;
+      mechanism.current?.();
     };
   }, []);
   async function travel(eraId: string) {
@@ -73,6 +95,9 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
     if (destination < 0) return false;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     host.current?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'center' });
+    mechanism.current?.();
+    const finish = sound(false);
+    mechanism.current = finish;
     const from = Math.max(
       0,
       eras.findIndex((era) => era.id === active.current),
@@ -81,7 +106,10 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       setBeam({ origin: from, tip: from, duration: 0, token });
       setPhase('travelling');
       const step = from > destination ? -1 : 1;
-      const duration = Math.min(320, 1600 / Math.abs(destination - from));
+      const duration = 560;
+      finish();
+      const moving = sound(true);
+      mechanism.current = moving;
       // Give the new, empty strip a frame before extending it toward the next era.
       await pause(40);
       for (let index = from + step; index !== destination + step; index += step) {
@@ -90,7 +118,33 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
         host.current
           ?.querySelector<HTMLElement>(`[data-era-id="${eras[index].id}"]`)
           ?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        await pause(duration);
+        const start = performance.now();
+        await new Promise<void>((resolve) => {
+          const tick = (now: number) => {
+            if (flight.current !== token) {
+              resolve();
+              return;
+            }
+            const progress = Math.min(1, (now - start) / duration),
+              front = (index - step + step * progress) / Math.max(1, eras.length - 1),
+              origin = from / Math.max(1, eras.length - 1);
+            setGears((gs) =>
+              gs.map((g, i) => {
+                const reached =
+                  g.position >= Math.min(origin, front) - 0.01 &&
+                  g.position <= Math.max(origin, front) + 0.01;
+                return {
+                  ...g,
+                  active: reached,
+                  angle: reached ? g.angle + (i % 2 ? -1 : 1) * 3 : g.angle,
+                };
+              }),
+            );
+            if (progress < 1) requestAnimationFrame(tick);
+            else resolve();
+          };
+          requestAnimationFrame(tick);
+        });
         if (flight.current !== token) return false;
         active.current = eras[index].id;
         setSelected(active.current);
@@ -103,7 +157,8 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
     setSelected(eraId);
     setArrival((value) => value + 1);
     setPhase('arriving');
-    sound();
+    mechanism.current?.(true);
+    setGears((gs) => gs.map((g) => ({ ...g, active: false })));
     await pause(reduced ? 120 : 1050);
     if (flight.current !== token) return false;
     setPhase('idle');
@@ -142,6 +197,7 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       aria-label="Linha do tempo das eras"
       data-phase={phase}
       data-era={era.id}
+      data-locked={phase === 'idle' || phase === 'arriving'}
       style={{ '--era-position': position, '--era-count': document.eras.length } as CSSProperties}
     >
       <header className="lore-timeline-heading">
@@ -158,6 +214,25 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       <div className="lore-era-window">
         <div className="lore-era-track">
           <div className="lore-era-thread" aria-hidden="true">
+            <div className="lore-era-gears">
+              {gears.map((g, i) => (
+                <svg
+                  key={i}
+                  viewBox="0 0 40 40"
+                  className="lore-time-gear"
+                  data-powered={g.active}
+                  style={{
+                    left: `${g.position * 100}%`,
+                    transform: `translate(-50%,-50%) rotate(${g.angle}deg)`,
+                  }}
+                >
+                  <path d="M16 2h8l1 5 4 2 5-2 4 7-4 3v6l4 3-4 7-5-2-4 2-1 5h-8l-1-5-4-2-5 2-4-7 4-3v-6l-4-3 4-7 5 2 4-2z" />
+                  <circle cx="20" cy="20" r="10" />
+                  <circle cx="20" cy="20" r="3" />
+                  <path className="gear-spokes" d="M20 10v7m0 6v7m-10-10h7m6 0h7" />
+                </svg>
+              ))}
+            </div>
             <span
               key={beam.token}
               className="lore-era-light"
@@ -176,6 +251,7 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
               className="lore-era"
               data-era-id={item.id}
               data-revealed={item.revealed}
+              data-seated={(phase === 'arriving' || phase === 'idle') && item.id === era.id}
               aria-pressed={item.id === era.id}
               onClick={() => {
                 void travel(item.id).then((arrived) => {

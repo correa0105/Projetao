@@ -1,5 +1,54 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Refino da mesa virtual, visitas, eras e calendário (05/10/2026)
+
+Direção vigente substitui os limites de sessão descritos na entrega anterior:
+consumíveis usados na mesa são debitados do inventário real, em transação com
+idempotência e auditoria. PV/condições continuam de sessão. Jogador só gasta;
+apenas mestre dono e administrador restaura PV, slots, dados de vida ou consumo
+auditado. Reimportação não repõe recursos. Migration 060 adiciona vínculo explícito
+de importação, recursos persistentes, histórico e mensagens de magias.
+
+VTT: mapas novos vazios quadrados/escuros, biblioteca de mapas com pastas e
+subpastas, editor de configuração, camadas fundo/tokens/mestre/iluminação, ordem
+decimal negativa/positiva, menu de contexto para camada/espelho/giro. Fontes de
+luz são entidades independentes. Névoa automática segue visão do jogador e
+barreiras; visão no escuro fica acinzentada fora da luz real. Janela/porta corta
+parede alinhada e cria conectores. Régua com seta desaparece ao soltar; caneta
+tem paleta. Objetos da camada ativa podem ser selecionados e apagados.
+
+Ficha completa escura em Essencial/Biografia/Magias, inventário real, gasto de
+consumíveis/slots/dados de vida e restauração administrativa. Nove totais de slots
+editáveis pelo mestre; progressão automática completa depende das regras futuras.
+Chat com histórico paginado e descrições completas de magias. Seletor lateral de
+dados/quantidade/modificador; formas Three.js d4/d6/d8/d10/d12/d20 e d100 com dois
+d10, som de impacto e toggle 3D. Resultado sempre vem do servidor; fallback textual
+quando WebGL não está disponível. Não é automação completa do Roll20 ou de D&D.
+
+Visitas por perfil usam largura total e escala original dos cenários em todos os
+painéis; navegação móvel precede o cenário. Molduras menores ficam na parede,
+afastadas das vigas/teto, com máscaras alinhadas e recorte superior centralizado no
+rosto. Arquivos originais preservados. Lore tem trem de engrenagens, rotação ativada
+pela chegada da luz mais lenta, áudio mecânico durante viagem e encaixe firme ao
+terminar. Respeita movimento reduzido e volume/silêncio de efeitos.
+
+Pedido posterior: calendário sem aba própria, sempre ao final de Início → Diário,
+abaixo de publicações/agenda. CRUD, aparência, datas e filtros preservados; editar
+entrada do Diário atualiza calendário sem trocar mês/dia selecionado.
+
+Verificação: TypeScript e build completo Docker passaram; 14 testes VTT/social,
+sete de comunidade/economia, browser VTT/perfis com duas contas e layouts
+1440/768/390/320, browser calendário/mascotes e smoke de eras/engrenagens passaram
+em bancos descartáveis. Cenários, recortes, calendário e visão/luz inspecionados
+visualmente; pixels confirmam cinza em visão no escuro, cor na luz e fog preto.
+Scripts reproduzíveis e limites em docs/VTT-PERFIS-HALL.md e
+docs/CALENDARIO-MASCOTES.md. Docker local atualizado e saudável, migration 060
+aplicada e index-Spt9H4NQ.js / index-DDFJ7HB6.css confirmados. Contagens e totais
+de contas/personagens, inventário/compras, conquistas/estantes, companheiros,
+cartas/títulos, ouro e progressão preservados. Backup imediatamente anterior
+privado: `.local/backups/before-vtt-refinement-20261005.dump` (431.971.503 bytes).
+Alterações validadas seguem o fluxo autorizado para origin/Welson; nunca main.
+
 ## Mesa virtual, Hall da Fama e perfis sociais (05/10/2026)
 
 Entregas reunidas deste turno: **Mural → Mesa virtual**, **Personagem → Hall da

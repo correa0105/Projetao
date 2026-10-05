@@ -8,7 +8,6 @@ import {
   Plus,
   Save,
   X,
-  BookOpen,
 } from 'lucide-react';
 import { api, post } from './api';
 import {
@@ -215,7 +214,7 @@ export function HomeJournal({
   const [items, setItems] = useState<HomeUpdate[]>([]),
     [loading, setLoading] = useState(true),
     [error, setError] = useState('');
-  const [view, setView] = useState<'journal' | 'calendar'>('journal');
+  const [calendarRevision, setCalendarRevision] = useState(0);
   const [editing, setEditing] = useState<HomeUpdate | null | undefined>(),
     [draft, setDraft] = useState<HomeUpdateInput>(blank),
     [busy, setBusy] = useState(false),
@@ -227,6 +226,7 @@ export function HomeJournal({
   const refresh = async () => {
     try {
       setItems(await api<HomeUpdate[]>('/home-updates'));
+      setCalendarRevision((v) => v + 1);
       setError('');
     } catch (e) {
       setError((e as Error).message);
@@ -313,40 +313,9 @@ export function HomeJournal({
       setBusy(false);
     }
   };
-  const tabs = (
-    <nav className="journal-view-tabs" aria-label="Visualização do Início">
-      <button aria-pressed={view === 'journal'} onClick={() => setView('journal')}>
-        <BookOpen size={15} /> Diário
-      </button>
-      <button aria-pressed={view === 'calendar'} onClick={() => setView('calendar')}>
-        <CalendarDays size={15} /> Calendário
-      </button>
-    </nav>
-  );
-  if (view === 'calendar')
-    return (
-      <section className="home-journal home-journal-calendar">
-        <div className="page-header-spacer" aria-hidden="true" />
-        {tabs}
-        <GuildCalendar
-          onEditPublication={(id) => {
-            void api<HomeUpdate>(`/home-updates/${id}`)
-              .then((item) => {
-                setView('journal');
-                open(item);
-              })
-              .catch((error: Error) => {
-                setView('journal');
-                setError(error.message);
-              });
-          }}
-        />
-      </section>
-    );
   return (
     <section className="home-journal">
       <div className="page-header-spacer" aria-hidden="true" />
-      {tabs}
       <header className="journal-masthead">
         <div>
           <span className="journal-eyebrow">Notícias · encontros · histórias</span>
@@ -689,6 +658,14 @@ export function HomeJournal({
           )}
         </form>
       </dialog>
+      <GuildCalendar
+        revision={calendarRevision}
+        onEditPublication={(id) => {
+          void api<HomeUpdate>(`/home-updates/${id}`)
+            .then(open)
+            .catch((e: Error) => setError(e.message));
+        }}
+      />
     </section>
   );
 }

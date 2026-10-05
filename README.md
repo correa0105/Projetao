@@ -6,16 +6,21 @@
 névoa, desenhos, dados, iniciativa, diário e música. Administrador cria uma mesa e
 convida jogadores; importar personagem cria uma cópia para a sessão. Biblioteca
 com 330 monstros e 339 magias abertas do SRD 2024, além de imagens próprias e JSON
-do 5etools. Exportação PNG/JSON e salvamento no PostgreSQL.
+do 5etools. Exportação PNG/JSON e salvamento no PostgreSQL. Mapas começam vazios,
+em tema escuro, e têm pastas/subpastas e editor completo de configuração. Iluminação
+tem camada própria; visão no escuro aparece acinzentada fora das fontes de luz.
+Fichas completas abrem em uma janela com Essencial, Biografia e Magias. Consumíveis
+usados são debitados do inventário real; apenas o mestre restaura recursos gastos.
+Dados 3D têm formas próprias, som e resultados definidos pelo servidor.
 
 **Personagem → Hall da Fama / Perfis**: rankings reais com pesos administrativos,
 perfis por ID, busca, amizades e chat privado entre amigos. Visitas têm personagem,
-companheiros, conquistas, ficha/cartas de consulta e navegação lateral. Quatro molduras
+companheiros, conquistas, ficha/cartas de consulta e navegação lateral em tela inteira. Quatro molduras
 antigas selecionam a estante por personagem também na página original Conquistas.
 [Funcionamento, permissões, limitações e arte](docs/VTT-PERFIS-HALL.md).
 
 Testes isolados: `node scripts/test-vtt-social-isolated.mjs` e o mesmo comando com
-`--browser`. Migrations 058–059. Não usar banco de jogadores para testes.
+`--browser`. Migrations 058–060. Não usar banco de jogadores para testes.
 
 ## Mascotes, eventos, títulos e cartas
 
@@ -45,7 +50,8 @@ Corvo clássico também no chão, sem madeira. Salão de cartas recomposto com
 janela à esquerda, anfitrião ao fundo em sombra e cartas em leque à frente;
 conversa aparece sob interação. [Mudanças e prompts](docs/SALAO-CONQUISTAS.md).
 
-Em **Início → Calendário**, navegue entre meses, filtre eventos/missões/Diário
+O calendário fica sempre ao final de **Início → Diário**, abaixo das publicações,
+sem aba separada. Navegue entre meses, filtre eventos/missões/Diário
 e selecione um dia para ver todos os compromissos. Administradores têm **Editar
 calendário** (título, apresentação, fundo próprio, cor e primeiro dia da semana)
 e **Novo compromisso**, além da edição/exclusão dos eventos. O calendário usa
@@ -69,8 +75,9 @@ para revogar, use `0`. Cadastro/perfil não concedem essa permissão.
 
 Na Lore, **Editar eras** permite alterar títulos/períodos, revelar eras, ordenar,
 adicionar/excluir e vincular pastas. Ao abrir uma pasta vinculada (ou subpasta),
-a barra contínua de luz percorre as eras até a correspondente, com engrenagens
-e um tranco na chegada; na mesma era, toca só a finalização. Os nomes das pastas
+a luz percorre mais lentamente uma sequência de engrenagens que começam a girar
+conforme ela chega, com som mecânico durante o percurso e encaixe firme na chegada;
+na mesma era, toca só a finalização. Os nomes das pastas
 ganharam destaque tipográfico. No inventário, **Companheiros de estrada** escolhe a montaria que
 aparece no fundo do acampamento do personagem selecionado. Dados persistem no PostgreSQL.
 
@@ -188,7 +195,8 @@ Mundo usa uma malha de terreno com alturas, materiais procedurais com detalhe de
 
 House é uma página narrativa; propriedades ainda não estão implementadas.
 A ficha implementa a criação no nível 1 do SRD 5.2.1. Não há combate automático,
-evolução completa dos recursos de classe, vender/consumir itens ou aplicação automática de efeitos. Equipamentos iniciais
+evolução completa dos recursos de classe, venda de itens ou aplicação automática de efeitos.
+Consumo auditado de itens comprados está disponível na ficha da mesa virtual. Equipamentos iniciais
 ficam registrados na ficha, separados das compras do inventário. Novos personagens recebem a riqueza oficial de classe e antecedente. Conversões preservam o saldo existente.
 
 Missões concluídas creditam o ouro anunciado e a progressão por patentes no servidor.

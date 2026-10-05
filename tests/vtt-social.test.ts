@@ -14,6 +14,11 @@ import {
   visiblePoint,
   documentSchema,
   sightPolygon,
+  newDocument,
+  orderedTokens,
+  lightSchema,
+  carveOpening,
+  viewerSees,
 } from '../shared/vtt.js';
 import { defaultHallSettings, profileSettingsSchema, fameScore } from '../shared/social.js';
 
@@ -244,6 +249,148 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
           (await pool.query('SELECT * FROM characters WHERE id=$1', [p.id])).rows[0],
           before,
         );
+      },
+    );
+    await t.test(
+      'ficha completa, consumo transacional, idempotência e restauração exclusiva do mestre',
+      async () => {
+        const root = `/vtt/rooms/${room.id}`;
+        const token = room.document.scenes[0].tokens.find((t: any) => t.characterId === p.id);
+        const path = root + '/sheets/' + token.id;
+        await pool.query(
+          "INSERT INTO inventory(character_id,item_id,quantity)VALUES($1,'rations',1)ON CONFLICT(character_id,item_id)DO UPDATE SET quantity=1",
+          [p.id],
+        );
+        assert.equal((await request(path, player)).status, 200);
+        assert.equal((await request(path, other)).status, 404);
+        const start = (await request(path, player)).data;
+        assert.equal(start.is_gm, false);
+        assert.equal(start.character.id, p.id);
+        const key = randomUUID(),
+          consume = { kind: 'consumable', item_id: 'rations', idempotency_key: key };
+        const uses = await Promise.all([
+          request(path + '/use', player, 'POST', consume),
+          request(path + '/use', player, 'POST', consume),
+        ]);
+        assert.deepEqual(
+          uses.map((r) => r.status),
+          [200, 200],
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*)::int AS n FROM inventory WHERE character_id=$1 AND item_id='rations'",
+              [p.id],
+            )
+          ).rows[0].n,
+          0,
+        );
+        assert.equal(
+          (
+            await request(path + '/use', player, 'POST', {
+              ...consume,
+              idempotency_key: randomUUID(),
+            })
+          ).status,
+          409,
+        );
+        assert.equal(
+          (
+            await request(path + '/use', player, 'POST', {
+              kind: 'consumable',
+              item_id: 'longsword',
+              idempotency_key: randomUUID(),
+            })
+          ).status,
+          400,
+        );
+        const audit = uses[0].data.uses.find((u: any) => u.kind === 'consumable');
+        assert.equal(
+          (await request(path + '/restore', player, 'POST', { kind: 'use', use_id: audit.id }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (await request(path + '/restore', adm, 'POST', { kind: 'use', use_id: audit.id })).status,
+          200,
+        );
+        assert.equal(
+          (await request(path + '/restore', adm, 'POST', { kind: 'use', use_id: audit.id })).status,
+          409,
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT quantity FROM inventory WHERE character_id=$1 AND item_id='rations'",
+              [p.id],
+            )
+          ).rows[0].quantity,
+          1,
+        );
+        assert.equal(
+          (await request(path + '/slots', player, 'PUT', { totals: [2, 0, 0, 0, 0, 0, 0, 0, 0] }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (await request(path + '/slots', adm, 'PUT', { totals: [2, 0, 0, 0, 0, 0, 0, 0, 0] }))
+            .status,
+          200,
+        );
+        const slot = await request(path + '/use', player, 'POST', {
+          kind: 'slot',
+          slot: 1,
+          idempotency_key: randomUUID(),
+        });
+        assert.equal(slot.status, 200);
+        assert.equal(
+          (await request(path + '/restore', player, 'POST', { kind: 'slot', slot: 1 })).status,
+          403,
+        );
+        const slotUse = slot.data.uses.find((u: any) => u.kind === 'slot');
+        assert.equal(
+          (await request(path + '/restore', adm, 'POST', { kind: 'slot', slot: 1 })).status,
+          200,
+        );
+        assert.equal(
+          (await request(path + '/restore', adm, 'POST', { kind: 'use', use_id: slotUse.id }))
+            .status,
+          409,
+        );
+        assert.equal(
+          (await request(root + '/tokens/' + token.id, player, 'PATCH', { hp: token.maxHp }))
+            .status,
+          403,
+        );
+        const damaged = await request(path + '/damage', player, 'POST', { amount: 1 });
+        assert.equal(damaged.status, 200);
+        assert.equal(damaged.data.token.hp, 2);
+        assert.equal(
+          (await request(path + '/restore', player, 'POST', { kind: 'hp' })).status,
+          403,
+        );
+        await request(root + '/characters/' + p.id, player, 'POST', {});
+        room = (await request(root, adm)).data;
+        assert.equal(
+          room.document.scenes[0].tokens.filter((t: any) => t.characterId === p.id).length,
+          1,
+        );
+        assert.equal(room.document.scenes[0].tokens.find((t: any) => t.id === token.id).hp, 2);
+        const forged = structuredClone(room.document);
+        const fake = { ...token, id: randomUUID(), characterId: o.id };
+        forged.scenes[0].tokens.push(fake);
+        const saved = await request(root, adm, 'PUT', {
+          revision: room.revision,
+          document: forged,
+        });
+        assert.equal(saved.status, 200);
+        assert.equal((await request(root + '/sheets/' + fake.id, adm)).status, 403);
+        room = (
+          await request(root, adm, 'PUT', {
+            revision: saved.data.revision,
+            document: room.document,
+          })
+        ).data;
       },
     );
     await t.test(
@@ -491,6 +638,106 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         assert.deepEqual(edits.map((r) => r.status).sort(), [200, 409]);
         await request(path, other, 'DELETE');
         assert.equal((await request('/profiles/' + player.id, other)).data.rating.count, 0);
+      },
+    );
+    await t.test(
+      'mapa vazio, pastas sem ciclos, profundidade decimal, janela recorta parede e luz independente',
+      () => {
+        const doc = newDocument(randomUUID());
+        const scene = doc.scenes[0];
+        assert.equal(scene.background, '');
+        assert.equal(scene.width, 1750);
+        assert.equal(scene.height, 1750);
+        const parent = { id: randomUUID(), name: 'Norte', parentId: null },
+          child = { id: randomUUID(), name: 'Porão', parentId: parent.id };
+        doc.folders = [parent, child];
+        scene.folderId = child.id;
+        assert.equal(documentSchema.safeParse(doc).success, true);
+        parent.parentId = child.id as any;
+        assert.equal(documentSchema.safeParse(doc).success, false);
+        parent.parentId = null;
+        const a = newToken(randomUUID(), scene),
+          b = newToken(randomUUID(), scene),
+          c = newToken(randomUUID(), scene);
+        a.level = 0.1;
+        b.level = 0;
+        c.level = -0.1;
+        scene.tokens = [a, b, c];
+        assert.deepEqual(
+          orderedTokens(scene.tokens).map((t) => t.id),
+          [c.id, b.id, a.id],
+        );
+        scene.walls = [
+          {
+            id: randomUUID(),
+            a: { x: 100, y: 0 },
+            b: { x: 100, y: 300 },
+            kind: 'wall',
+            open: false,
+          },
+        ];
+        const opening = {
+          id: randomUUID(),
+          a: { x: 102, y: 80 },
+          b: { x: 102, y: 140 },
+          kind: 'window' as const,
+          open: false,
+        };
+        carveOpening(scene, opening, randomUUID);
+        scene.walls.push(opening);
+        assert.equal(scene.walls.length, 3);
+        assert.equal(opening.a.x, 100);
+        assert.equal(visiblePoint({ x: 50, y: 110 }, { x: 150, y: 110 }, scene, 500), true);
+        assert.equal(visiblePoint({ x: 50, y: 180 }, { x: 150, y: 180 }, scene, 500), false);
+        scene.lighting = true;
+        scene.ambient = 0;
+        scene.fog = true;
+        scene.fogMode = 'vision';
+        a.x = 50;
+        a.y = 110;
+        a.vision = 0;
+        const target = { x: 150, y: 110 };
+        assert.equal(viewerSees(a, target, scene), false);
+        scene.lights = [
+          lightSchema.parse({ id: randomUUID(), x: 150, y: 110, bright: 20, dim: 10 }),
+        ];
+        assert.equal(scene.tokens.length, 3);
+        assert.equal(viewerSees(a, target, scene), true);
+        scene.lights = [];
+        a.vision = 60;
+        assert.equal(viewerSees(a, target, scene), true);
+        assert.equal(viewerSees(a, { x: 150, y: 180 }, scene), false);
+      },
+    );
+    await t.test(
+      'magia completa no histórico e paginação mantém isolamento de mensagens privadas',
+      async () => {
+        const root = `/vtt/rooms/${room.id}`,
+          compendium = (await request('/vtt/compendium', player)).data;
+        const spell =
+          compendium.spells.find((s: any) => s.details.length > 2000) || compendium.spells[0];
+        const posted = await request(root + '/messages', player, 'POST', { spell_id: spell.id });
+        assert.equal(posted.status, 201);
+        assert.equal(posted.data.messages.at(-1).spell.details, spell.details);
+        assert.equal(
+          (await request(root + '/messages', player, 'POST', { spell_id: 'inventada' })).status,
+          404,
+        );
+        await pool.query(
+          "INSERT INTO vtt_messages(room_id,author_id,author,text)SELECT $1,$2,'Mestre','História '||i FROM generate_series(1,110)i",
+          [room.id, adm.id],
+        );
+        const latest = (await request(root + '/messages', player)).data;
+        assert.equal(latest.messages.length, 100);
+        assert.equal(latest.has_more, true);
+        const earlier = (await request(root + '/messages?before=' + latest.messages[0].id, player))
+          .data;
+        assert.ok(earlier.messages.some((m: any) => m.spell?.id === spell.id));
+        assert.equal(
+          earlier.messages.some((m: any) => m.private && m.author !== 'Viajante'),
+          false,
+        );
+        assert.equal((await request(root + '/messages', other)).status, 404);
       },
     );
     await t.test(

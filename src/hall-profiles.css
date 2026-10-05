@@ -1293,3 +1293,284 @@
     transition: none;
   }
 }
+/* Visita com escala e cenário completos. */
+.app-shell[data-page='profiles']:has(.visiting) {
+  width: 100%;
+  max-width: none;
+}
+.app-shell[data-page='profiles']:has(.visiting) .main-shell {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+.app-shell[data-page='profiles']:has(.visiting) .main-content {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+.profiles-page.visiting {
+  padding: 0 0 100px;
+  position: relative;
+  width: 100%;
+}
+.visiting .profiles-top {
+  position: absolute;
+  top: 15px;
+  left: 24px;
+  right: 80px;
+  z-index: 8;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.visiting .visited-profile-heading {
+  position: absolute;
+  top: 78px;
+  left: clamp(25px, 4vw, 80px);
+  right: 260px;
+  z-index: 5;
+  margin: 0;
+  gap: 14px;
+  pointer-events: none;
+}
+.visiting .visited-profile-heading .social-avatar {
+  width: 55px;
+  height: 55px;
+}
+.visiting .visited-profile-heading h1 {
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+.visiting .visited-profile-heading .social-eyebrow {
+  font-size: 8px;
+  margin-bottom: 6px;
+}
+.visiting .visited-profile-heading p {
+  font-size: 11px;
+  margin: 0 0 5px;
+}
+.visiting .visited-profile-heading small {
+  font-size: 9px;
+}
+.visiting .visited-profile-actions {
+  pointer-events: auto;
+  margin-left: auto;
+  width: auto;
+}
+.visiting .visited-profile-layout {
+  display: block;
+  position: relative;
+}
+.visiting .profile-panels-viewport {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.visiting .public-profile-panel {
+  min-height: 100dvh;
+  padding: 180px clamp(24px, 5vw, 90px) 80px;
+}
+.visiting .public-profile-panel[aria-hidden='true'] {
+  max-height: 100dvh;
+}
+.visiting .profile-visit-nav {
+  position: absolute;
+  z-index: 6;
+  right: 25px;
+  top: 190px;
+  width: 180px;
+  padding: 16px;
+  background: #0d1722d9;
+  border: 1px solid #8c754b66;
+  border-radius: 5px;
+  backdrop-filter: blur(6px);
+}
+.visiting .profile-visit-nav > p {
+  font-size: 10px;
+  line-height: 1.6;
+}
+.visiting .profile-visit-nav > strong {
+  font-size: 12px;
+}
+.visiting .public-camp {
+  padding: 180px clamp(24px, 5vw, 90px) 45px;
+  background:
+    linear-gradient(#050b1435, transparent 60%, #08101b85),
+    var(--profile-background, url('/character-camp-v2.png')) center top/cover;
+}
+.visiting .public-camp-stage {
+  height: clamp(430px, calc(100dvh - 315px), 720px);
+}
+.visiting .public-character-figures {
+  inset: 0 18%;
+  gap: 5%;
+}
+.visiting .public-character-figure {
+  width: 36%;
+  max-width: 380px;
+  height: 94%;
+  outline: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.visiting .public-camp-mount {
+  left: 2%;
+  bottom: 95px;
+  width: 24%;
+  max-width: 350px;
+}
+.visiting .public-camp-mount > img {
+  height: clamp(160px, 23vw, 290px);
+}
+.visiting .public-camp-pet {
+  right: 11%;
+  bottom: 25px;
+  width: 160px;
+  height: 150px;
+}
+.visiting .public-camp-summary {
+  max-width: 1000px;
+  margin: 30px auto 0;
+}
+.visiting .public-achievements {
+  --room-width: clamp(900px, 100vw, 2000px);
+  --portrait-background-top: 0px;
+  background:
+    linear-gradient(#100e0b30, transparent 55%, #15120f),
+    url('/achievement-house-v2.png') center top / var(--room-width) auto no-repeat #15120f;
+}
+.visiting .public-achievements > h2 {
+  font-size: 18px;
+  max-width: 210px;
+  line-height: 1.5;
+}
+.visiting .public-cabinet-stage {
+  height: calc(var(--room-width) * 0.4 - var(--cabinet-stage-offset, 270px));
+  margin: 0 auto 70px;
+  max-width: 1300px;
+}
+.visiting .public-cabinet-stage .fantasy-cabinet {
+  width: calc(var(--room-width) * 0.48);
+}
+.visiting .public-earned-achievements,
+.visiting .profile-community {
+  max-width: 1150px;
+  margin: 40px auto;
+}
+.visiting .public-sheet > *,
+.visiting .public-card-collection {
+  max-width: 1200px;
+}
+.visiting .public-cards {
+  background:
+    linear-gradient(90deg, #050a12c9, #050a1240),
+    url('/cards/moonlit-room-v2.png') center/cover;
+}
+.visiting .public-card-collection {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  padding-right: 200px;
+}
+.visiting .public-profile-panel .hall-of-fame.embedded {
+  padding-right: 190px;
+}
+@media (max-width: 800px) {
+  .visiting .visited-profile-heading {
+    right: 25px;
+    top: 88px;
+    display: grid;
+    grid-template-columns: 55px minmax(0, 1fr);
+    align-items: start;
+    gap: 8px 14px;
+  }
+  .visiting .visited-profile-actions {
+    grid-column: 2;
+    margin-left: 0;
+    max-width: none;
+  }
+  .visiting .visited-profile-actions .button {
+    min-height: 32px;
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+  .visiting .visited-profile-layout {
+    display: flex;
+    flex-direction: column;
+    padding-top: 250px;
+  }
+  .visiting .profile-visit-nav {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: calc(100% - 36px);
+    margin: 0 auto 20px;
+    order: -1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 5px;
+  }
+  .visiting .profile-visit-nav > strong,
+  .visiting .profile-visit-nav > p {
+    display: none;
+  }
+  .visiting .profile-visit-nav label {
+    flex: 0 0 100%;
+    margin: 0 0 4px;
+  }
+  .visiting .profile-visit-nav > button {
+    flex: 1 0 auto;
+    font-size: 10px !important;
+    min-height: 32px;
+    padding: 7px !important;
+  }
+  .visiting .public-profile-panel,
+  .visiting .public-camp {
+    padding: 40px 20px 60px;
+  }
+  .visiting .public-camp-stage {
+    height: 450px;
+  }
+  .visiting .public-character-figures {
+    inset: 0 12%;
+  }
+  .visiting .public-character-figure {
+    max-width: 260px;
+    width: 48%;
+  }
+  .visiting .public-camp-pet {
+    right: 2%;
+    width: 100px;
+    height: 100px;
+  }
+  .visiting .public-camp-mount {
+    left: -10px;
+    width: 30%;
+  }
+  .visiting .public-profile-panel .hall-of-fame.embedded {
+    padding-right: 0;
+  }
+  .visiting .public-achievements {
+    --portrait-background-top: 70px;
+    background-position: center var(--portrait-background-top);
+    --room-width: 100vw;
+    padding-top: 15px;
+  }
+  .visiting .public-achievements > h2 {
+    font-size: 14px;
+    max-width: none;
+    text-align: center;
+  }
+  .visiting .public-cabinet-stage {
+    height: calc(
+      var(--room-width) * 0.4 + var(--portrait-background-top) - var(--cabinet-stage-offset, 80px)
+    );
+    min-height: 95px;
+  }
+  .visiting .public-card-collection {
+    padding-right: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

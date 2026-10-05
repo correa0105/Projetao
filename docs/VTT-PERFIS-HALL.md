@@ -16,6 +16,8 @@ Ao escolher um personagem, a visita carrega seus dados públicos, a montaria e o
 mascote sinalizados no inventário. Explorar/ocultar uma montaria durante a visita
 não modifica a seleção persistida do dono. O menu à direita desliza entre
 **Personagens, Conquistas, Hall da Fama, Ficha e Cartas**. Movimento reduzido respeitado.
+Cada painel ocupa a largura completa da tela, mantendo a escala dos cenários. No
+celular, a navegação vem antes do cenário, sem cobrir personagens ou molduras.
 Ficha é consulta; não oferece gasto de ouro, edição de atributos, compra, upgrades,
 alteração de inventário ou recursos da conta visitada. Não são retornados e-mail,
 saldo, experiência privada, inventário ou históricos de compras.
@@ -26,7 +28,9 @@ passar o mouse/focar. Contas continuam limitadas a dois personagens: os demais
 quadros ficam reservados. Não inventar personagens para preencher quadros. A mesma
 composição aparece nas visitas. Catálogo, personalização e administração de títulos
 da página original são preservados; visita usa somente a estante para leitura.
-Os destaques priorizam conquistas colocadas na estante.
+Os destaques priorizam conquistas colocadas na estante. Molduras menores estão na
+parede, afastadas das vigas/teto. A rota de retrato recorta a região superior da arte
+e procura centralizar o rosto, preservando o arquivo original.
 
 ## Amizades e chat
 
@@ -70,24 +74,41 @@ ser renovados e participantes removidos pelo mestre. Código não é exposto aos
 
 Recursos implementados:
 
-- Várias cenas, mapa próprio, objetos de mapa, camada de tokens e camada oculta do
-  mestre; duplicar, excluir cena, editar dimensões e fundo, zoom, pan e tela cheia.
+- Mapas novos vazios de 1750 × 1750 px com grade escura; biblioteca com miniaturas,
+  busca, pastas e subpastas, arquivamento, duplicação e exclusão. Configuração em
+  janela com dimensões em células/pixels, fundo/tabuleiro, cores, escala, grade,
+  névoa, opacidade do mestre e música ao carregar; zoom, pan e tela cheia.
+- Camadas de fundo, tokens, mestre e iluminação. Objetos do mestre aparecem com
+  transparência ajustável. Menu de contexto do token permite trocar camada, ordem
+  decimal (inclusive negativa), espelhar nos dois eixos e girar.
 - Grade quadrada, hexagonal nas duas orientações ou sem grade; tamanho, escala,
   unidade, deslocamentos, cor, transparência, encaixe e quatro medidas de diagonais.
-- Régua, desenho livre, retângulo, círculo, cone, linha, texto, sinalizador local,
+- Régua temporária com seta, removida ao soltar/cancelar o arraste; desenho livre
+  com paleta e cor própria, retângulo, círculo, cone, linha, texto, sinalizador local,
   seleção múltipla, giro/tamanho, bloqueio, ocultação, duplicação e desfazer/refazer.
+  Seleção permite apagar desenhos/barreiras/fontes de luz da camada ativa.
 - Tokens com retrato/arte editáveis, nome, PV/CA, condições, controle por jogador,
   ficha de sessão; visão, luz forte/fraca, cor e ângulo de luz.
-- Luz dinâmica por raios e interseção com paredes, portas abertas/fechadas e
-  janelas transparentes à luz; prévia de jogador, névoa manual e pincel de revelação.
+- Fontes de luz independentes dos tokens, na camada de iluminação. Luz dinâmica
+  por raios e interseção com paredes, portas abertas/fechadas e janelas transparentes
+  à luz. Janela/porta sobre parede alinhada corta o trecho e cria conectores.
+  Névoa automática completa acompanha visão e deslocamento do token; visão no
+  escuro é acinzentada fora da luz real. Prévia de jogador e névoa manual também disponíveis.
   Movimento de jogador validado pelo servidor contra barreiras e limites do mapa.
 - Biblioteca de imagens enviada à mesa, monstros, magias, handouts públicos/privados
   no diário, música enviada e compartilhada com silêncio/volume local.
 - Chat da mesa, dados `NdM±K`, vantagem/desvantagem `2d20kh1/kl1`, rolagens privadas
-  ao autor/mestre, macros, ordem de iniciativa, turnos e contador de rodadas.
-- Importar **cópia** da ficha/retrato do site; nenhum PV, condição ou texto de sessão
-  escreve de volta no personagem original. Ficha finalizada também traz resumo de
-  perícias, características, idiomas e equipamento declarado.
+  ao autor/mestre, histórico paginado, descrições completas de magias, macros,
+  ordem de iniciativa, turnos e contador de rodadas. Seletor lateral de quantidade
+  e modificador; dados 3D d4/d6/d8/d10/d12/d20 e d100 (dois d10), som de impacto e
+  opção de desligar 3D. Resultado vem do servidor; WebGL indisponível usa resultado textual.
+- Ficha importada abre janela escura **Essencial / Biografia / Magias**, com
+  atributos, perícias, ataques, características, idiomas, PV, equipamento, inventário
+  e recursos. PV, condições e texto de sessão não escrevem na ficha original.
+- Usar consumíveis remove unidades do inventário real do personagem, com transação,
+  idempotência e auditoria. Slots e dados de vida usados persistem por personagem.
+  Jogador só gasta recursos; restaurar PV, slots, dados de vida ou consumo auditado
+  exige mestre dono/administrador. Reimportar não restaura nem duplica o personagem.
 - Exportar mapa em PNG (até 4096 px no maior lado); exportar/importar documento JSON
   da mesa. JSON referencia arquivos da própria biblioteca, não inclui seus binários.
 
@@ -103,6 +124,9 @@ grades isométricas, pacotes binários de campanha ou iluminação 3D. Névoa ma
 círculos de revelação; ocultar remove círculos que intersectam o pincel. Música tem
 estado compartilhado, sem alinhamento preciso do instante de reprodução. O sinalizador
 é local. Atributos/rolagens podem ser usados manualmente para todos os conteúdos.
+Totais de slots têm nove círculos configuráveis pelo mestre; progressão automática
+de todos os níveis/classes ainda depende das regras futuras do site. O modo de
+visão é uma aproximação visual 2D; não automatiza todos os efeitos de combate.
 
 ## Compêndio e fontes
 
@@ -114,7 +138,8 @@ referências `_copy` não resolvidas são ignoradas. Fontes/atribuição em
 [data/vtt/CREDITS.md](../data/vtt/CREDITS.md),
 [SRD oficial](https://www.dndbeyond.com/srd) e
 [fonte do formato](https://github.com/5etools-mirror-3/5etools-src).
-Cripta é SVG original feito no código, não imagem extraída de livro.
+Cripta histórica é SVG original feito no código, não imagem extraída de livro;
+mapas novos agora começam sem esse fundo.
 
 ## Arte das molduras
 
@@ -134,8 +159,9 @@ abertura; sem renderizar a arte como CSS background da foto. Hover usa sombra do
 
 ## Banco e verificação
 
-Migrations novas **058_vtt.sql** e **059_social_hall.sql**; não alteram registros
-anteriores de personagens/conquistas/compras. Convites usam crypto.randomBytes no
+Migrations **058_vtt.sql**, **059_social_hall.sql** e **060_vtt_resources.sql**.
+A última adiciona vínculos de importação, recursos, auditoria de uso e mensagens
+de magia; não remove registros de personagens/conquistas/compras. Convites usam crypto.randomBytes no
 servidor, sem depender de extensão PostgreSQL adicional. Imagens só aceitas como
 arquivos locais da mesa/perfil, com ownership e validação de conteúdo.
 

@@ -503,3 +503,8 @@
     aspect-ratio: auto;
   }
 }
+
+/* O calendário encerra o Diário, depois de todas as publicações e da agenda. */
+.home-journal > .guild-calendar {
+  margin-top: 48px;
+}

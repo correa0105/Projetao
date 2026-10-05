@@ -8,6 +8,7 @@ import { pool, transaction } from './db.js';
 import { requireAdministrator, isAdministrator } from './administrators.js';
 import { AppError } from './services.js';
 import { deriveSheet } from '../shared/character-sheet.js';
+import { vttSheetRouter } from './vtt-sheet.js';
 import {
   documentSchema,
   newDocument,
@@ -16,6 +17,7 @@ import {
   blockingWalls,
   intersection,
   visiblePoint,
+  viewerSees,
   type VttDocument,
   type VttScene,
   type VttToken,
@@ -30,6 +32,7 @@ async function room(db: DB, id: string, user: string, lock = false) {
     [id, user],
   );
   if (!r) throw new AppError(404, 'Mesa não encontrada.');
+  r.document = documentSchema.parse(r.document);
   return r as {
     id: string;
     owner_id: string;
@@ -47,27 +50,15 @@ async function gm(db: DB, id: string, user: string, lock = false) {
 function canSee(t: VttToken, s: VttScene, user: string) {
   if (t.hidden || t.layer === 'gm') return false;
   if (t.controller === user) return true;
-  if (s.fog && !s.reveals.some((r) => Math.hypot(r.x - t.x, r.y - t.y) <= r.radius)) return false;
-  if (!s.lighting) return true;
+  if (
+    s.fog &&
+    s.fogMode === 'manual' &&
+    !s.reveals.some((r) => Math.hypot(r.x - t.x, r.y - t.y) <= r.radius)
+  )
+    return false;
+  if (!s.lighting && !(s.fog && s.fogMode === 'vision')) return true;
   const viewers = s.tokens.filter((t) => t.controller === user && t.layer === 'tokens');
-  return viewers.some(
-    (v) =>
-      visiblePoint(v, t, s, (v.vision / s.grid.scale) * s.grid.size) ||
-      ((s.ambient > 0.5 ||
-        s.tokens.some(
-          (l) =>
-            !l.hidden &&
-            l.layer !== 'gm' &&
-            visiblePoint(l, t, s, ((l.light + l.dimLight) / s.grid.scale) * s.grid.size) &&
-            (l.lightAngle === 360 ||
-              Math.abs(
-                (((Math.atan2(t.y - l.y, t.x - l.x) * 180) / Math.PI - l.rotation + 540) % 360) -
-                  180,
-              ) <=
-                l.lightAngle / 2),
-        )) &&
-        visiblePoint(v, t, s, 50000)),
-  );
+  return viewers.some((v) => !v.hidden && viewerSees(v, t, s));
 }
 function playerDocument(doc: VttDocument, user: string): VttDocument {
   const scene = doc.scenes.find((s) => s.id === doc.activeScene)!;
@@ -76,14 +67,26 @@ function playerDocument(doc: VttDocument, user: string): VttDocument {
     .map((t) => ({ ...t, notes: '', sheet: t.controller === user ? t.sheet : null }));
   return {
     ...doc,
-    scenes: [{ ...scene, tokens, drawings: scene.drawings.filter((d) => d.layer !== 'gm') }],
+    folders: [],
+    scenes: [
+      {
+        ...scene,
+        folderId: null,
+        tokens,
+        drawings: scene.drawings.filter((d) => d.layer !== 'gm'),
+      },
+    ],
     journal: doc.journal.filter((j) => j.public),
     initiative: doc.initiative.filter((i) => tokens.some((t) => t.id === i.tokenId)),
   };
 }
 function paths(doc: VttDocument) {
   return doc.scenes
-    .flatMap((s) => [s.background, ...s.tokens.map((t) => t.image)])
+    .flatMap((s) => [
+      s.background,
+      ...s.tokens.map((t) => t.image),
+      ...(s.onLoadAudio ? ['/api/vtt/assets/' + s.onLoadAudio] : []),
+    ])
     .concat(
       doc.journal.map((j) => j.image),
       doc.music.assetId ? '/api/vtt/assets/' + doc.music.assetId : [],
@@ -110,7 +113,8 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
   for (const asset of assets.rows) {
     if (
       (images.includes('/api/vtt/assets/' + asset.id) && asset.kind !== 'image') ||
-      (asset.id === doc.music.assetId && asset.kind !== 'audio')
+      ((asset.id === doc.music.assetId || doc.scenes.some((s) => s.onLoadAudio === asset.id)) &&
+        asset.kind !== 'audio')
     )
       throw new AppError(400, 'Escolha uma imagem para a arte e um áudio para a trilha.');
   }
@@ -129,7 +133,7 @@ async function state(rid: string, user: string) {
       [r.owner_id, rid],
     ),
     pool.query(
-      'SELECT id::text,author,text,roll,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY id DESC LIMIT 100',
+      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY id DESC LIMIT 100',
       [rid, user, isGm],
     ),
   ]);
@@ -150,6 +154,7 @@ async function state(rid: string, user: string) {
 export function vttRouter() {
   const router = express.Router();
   router.use('/vtt', express.json({ limit: '12mb' }));
+  router.use(vttSheetRouter(room));
   router.get('/vtt', async (_req, res) =>
     res.json({
       can_create: await isAdministrator(res.locals.user.id),
@@ -259,6 +264,9 @@ export function vttRouter() {
         x: z.number().finite().min(0).max(16000).optional(),
         y: z.number().finite().min(0).max(16000).optional(),
         hp: z.number().min(-10000).max(100000).optional(),
+        rotation: z.number().finite().min(-360).max(360).optional(),
+        flipX: z.boolean().optional(),
+        flipY: z.boolean().optional(),
         conditions: z.array(z.string().max(40)).max(30).optional(),
       })
       .strict()
@@ -269,6 +277,10 @@ export function vttRouter() {
         t = s.tokens.find((t) => t.id === tid);
       if (!t || t.hidden || t.layer !== 'tokens' || t.controller !== res.locals.user.id || t.locked)
         throw new AppError(403, 'Você não controla este token.');
+      if (input.hp !== undefined && input.hp > t.hp)
+        throw new AppError(403, 'Somente o mestre pode restaurar pontos de vida.');
+      if (input.conditions && t.conditions.some((c) => !input.conditions!.includes(c)))
+        throw new AppError(403, 'Somente o mestre pode remover condições.');
       const destination = { x: input.x ?? t.x, y: input.y ?? t.y };
       if (destination.x > s.width || destination.y > s.height)
         throw new AppError(400, 'Movimento fora do mapa.');
@@ -287,12 +299,13 @@ export function vttRouter() {
   });
   router.post('/vtt/rooms/:id/messages', async (req, res) => {
     const rid = uuid.parse(req.params.id);
-    await room(pool, rid, res.locals.user.id);
+    const current = await room(pool, rid, res.locals.user.id);
     const input = z
       .object({
         text: z.string().trim().max(2000).default(''),
         formula: z.string().trim().max(100).default(''),
         private: z.boolean().default(false),
+        spell_id: z.string().min(1).max(150).optional(),
       })
       .strict()
       .parse(req.body);
@@ -315,9 +328,20 @@ export function vttRouter() {
               : dice.reduce((a, b) => a + b, 0);
       roll = { formula: input.formula, dice, total: sum + Number(match[4] || 0) };
     }
-    if (!input.text && !roll) throw new AppError(400, 'Escreva uma mensagem ou role dados.');
+    let spell = null;
+    if (input.spell_id) {
+      const catalog = JSON.parse(await readFile('data/vtt/srd-2024.json', 'utf8'));
+      const entry =
+        catalog.spells.find((s: { id: string }) => s.id === input.spell_id) ||
+        current.document.custom.find((s) => s.kind === 'spell' && s.id === input.spell_id);
+      if (!entry) throw new AppError(404, 'Magia não encontrada na biblioteca.');
+      const { id, name, details, level, school, time, range, duration, components } = entry;
+      spell = { id, name, details, level, school, time, range, duration, components };
+    }
+    if (!input.text && !roll && !spell)
+      throw new AppError(400, 'Escreva uma mensagem ou role dados.');
     await pool.query(
-      'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private)VALUES($1,$2,$3,$4,$5,$6)',
+      'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private,spell)VALUES($1,$2,$3,$4,$5,$6,$7)',
       [
         rid,
         res.locals.user.id,
@@ -325,9 +349,26 @@ export function vttRouter() {
         input.text,
         roll ? JSON.stringify(roll) : null,
         input.private,
+        spell ? JSON.stringify(spell) : null,
       ],
     );
     res.status(201).json(await state(rid, res.locals.user.id));
+  });
+  router.get('/vtt/rooms/:id/messages', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      user = res.locals.user.id;
+    const current = await room(pool, rid, user);
+    const before = z
+      .string()
+      .regex(/^\d{1,19}$/)
+      .optional()
+      .parse(req.query.before);
+    const isGm = current.owner_id === user && (await isAdministrator(user));
+    const { rows } = await pool.query(
+      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) AND ($4::bigint IS NULL OR id<$4::bigint) ORDER BY id DESC LIMIT 101',
+      [rid, user, isGm, before || null],
+    );
+    res.json({ messages: rows.slice(0, 100).reverse(), has_more: rows.length > 100 });
   });
   router.post('/vtt/rooms/:id/characters/:character', async (req, res) => {
     const rid = uuid.parse(req.params.id),
@@ -342,6 +383,10 @@ export function vttRouter() {
         [cid, res.locals.user.id],
       );
       if (!c) throw new AppError(404, 'Personagem não pertence à sua conta.');
+      await db.query(
+        'INSERT INTO vtt_character_links(room_id,character_id,imported_by)VALUES($1,$2,$3)ON CONFLICT DO NOTHING',
+        [rid, cid, res.locals.user.id],
+      );
       const {
         rows: [sheet],
       } = await db.query('SELECT * FROM character_sheets WHERE character_id=$1', [cid]);
@@ -350,14 +395,25 @@ export function vttRouter() {
         rows: [portrait],
       } = await db.query('SELECT image FROM character_portraits WHERE character_id=$1', [cid]);
       const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
+      if (scene.tokens.some((t) => t.characterId === cid && t.controller === res.locals.user.id))
+        return;
+      const previousToken = r.document.scenes
+        .flatMap((s) => s.tokens)
+        .find((t) => t.characterId === cid);
       const token = newToken(randomUUID(), scene);
       Object.assign(token, {
         name: c.name,
-        hp: c.hp,
+        hp: previousToken?.hp ?? sheet?.current_hp ?? c.hp,
+        conditions: previousToken?.conditions || [],
         maxHp: c.hp,
         ac: c.armor_class,
         controller: res.locals.user.id,
         characterId: cid,
+        vision: ['Elfo', 'Anão', 'Gnomo', 'Orc', 'Tiefling', 'Draconato'].includes(c.race)
+          ? ['Anão', 'Gnomo', 'Orc'].includes(c.race) || sheet?.choices?.subrace === 'Drow'
+            ? 120
+            : 60
+          : 0,
         sheet: {
           source: 'Alvorada · SRD 5.2.1',
           race: c.race,

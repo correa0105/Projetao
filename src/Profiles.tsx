@@ -596,16 +596,18 @@ export function Profiles({ user }: { user: User }) {
                   <h2>Conquistas de {current?.name || profile.name}</h2>
                   {details && (
                     <>
-                      <PortraitCabinet
-                        characters={profile.characters}
-                        active={selected}
-                        onSelect={setSelected}
-                      >
-                        <AchievementShelf
-                          config={details.shelf}
-                          definitions={details.definitions}
-                        />
-                      </PortraitCabinet>
+                      <div className="cabinet-room-stage public-cabinet-stage">
+                        <PortraitCabinet
+                          characters={profile.characters}
+                          active={selected}
+                          onSelect={setSelected}
+                        >
+                          <AchievementShelf
+                            config={details.shelf}
+                            definitions={details.definitions}
+                          />
+                        </PortraitCabinet>
+                      </div>
                       <div className="public-earned-achievements">
                         {details.achievements.map((a) => {
                           const def = details.definitions.find((d) => d.code === a.code);

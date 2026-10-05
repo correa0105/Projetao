@@ -51,7 +51,13 @@ function monthDays(month: string, monday: boolean) {
     };
   });
 }
-export function GuildCalendar({ onEditPublication }: { onEditPublication: (id: string) => void }) {
+export function GuildCalendar({
+  onEditPublication,
+  revision = 0,
+}: {
+  onEditPublication: (id: string) => void;
+  revision?: number;
+}) {
   const today = calendarDate(new Date());
   const [month, setMonth] = useState(today.slice(0, 7)),
     [selected, setSelected] = useState(today);
@@ -84,7 +90,7 @@ export function GuildCalendar({ onEditPublication }: { onEditPublication: (id: s
     return () => {
       sequence.current++;
     };
-  }, [refresh]);
+  }, [refresh, revision]);
   const doc = data?.document || defaultCalendarSettings;
   const all = loadedMonth === month ? data?.entries || [] : [];
   const entries = all.filter((item) => filter === 'all' || filter === item.source);
