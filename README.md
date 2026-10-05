@@ -10,8 +10,9 @@ em ouro persistidas no inventário. Administradores editam eventos e todo o
 cenário, incluindo background, artes e animações, e criam títulos com metas
 ou concessão a outros personagens.
 
-Conquistas podem ser colocadas livremente nas três prateleiras, sem limite
-por nível. Cada personagem equipa até três cartas; quatro são compráveis.
+Conquistas ficam integradas em Títulos, com nome, descrição e título concedido
+editáveis pelo administrador. O título escolhido aparece no acampamento/ficha.
+Cada personagem equipa até três cartas; quatro são compráveis.
 Aprimoramentos e drops ficam para as regras futuras definidas pelo usuário.
 A ficha agora é escura, com **História** e **Equipamento** separados, e a Lore
 tem panorama do mundo. [Funcionamento e preços](docs/COMPANHEIROS-EVENTOS-TITULOS-CARTAS.md).
@@ -22,6 +23,9 @@ a resposta. [Artes e prompts da reforma](docs/PET-SHOP-REDESIGN.md).
 Refino atual: falas mais naturais, madeira sem riscos animados, dez aparências
 clássicas novas e ambas as corujas no chão, sem poleiro.
 [Artes e prompts atuais](docs/PET-SHOP-REFINEMENT.md).
+Corvo clássico também no chão, sem madeira. Salão de cartas recomposto com
+janela à esquerda, anfitrião ao fundo em sombra e cartas em leque à frente;
+conversa aparece sob interação. [Mudanças e prompts](docs/SALAO-CONQUISTAS.md).
 
 ## Administração e novos arquivos da Lore
 

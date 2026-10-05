@@ -314,6 +314,19 @@ try {
   await page.goto(origin + '/#cards');
   await expect(page.locator('.cards-equipped>button')).toHaveCount(3);
   await expect(page.locator('.cards-catalog>button')).toHaveCount(8);
+  await expect(page.locator('.cards-host-dialogue')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Conversar com o Anfitrião', exact: true }).click();
+  await expect(page.locator('.cards-host-dialogue')).toContainText('A cadeira está livre');
+  await page.getByRole('button', { name: 'Quem é você?', exact: true }).click();
+  await expect(page.locator('.cards-host-dialogue')).toContainText('Chamam-me de Anfitrião');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.cards-host-dialogue')).toHaveCount(0);
+  await page.locator('.cards-catalog > button').filter({ hasText: 'O Corvo' }).click();
+  await expect(page.locator('.cards-host-dialogue')).toContainText('Olhe as penas');
+  await expect(page.locator('.cards-host-questions')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Encerrar conversa', exact: true }).click();
+  await page.locator('.cards-catalog > button').filter({ hasText: 'A Vigília' }).click();
+  await page.getByRole('button', { name: 'Encerrar conversa', exact: true }).click();
   await page.getByRole('button', { name: 'Comprar carta', exact: true }).click();
   await expect(
     page.getByRole('button', { name: 'Equipar no espaço 1', exact: true }),
@@ -347,40 +360,36 @@ try {
   ).toBeVisible();
   await page.screenshot({ path: 'test-results/events-desktop.png', fullPage: true });
   await page.goto(origin + '/#achievements');
-  await page.getByRole('button', { name: 'Prateleira 1', exact: true }).click();
-  for (const title of [
-    'O primeiro capítulo',
-    'Pronto para a estrada',
-    'Atenda ao chamado',
-    'Veterano do Norte',
-    'Conte uma história',
-  ]) {
-    const article = page
-      .locator('.catalog-achievement')
-      .filter({ has: page.getByRole('heading', { name: title, exact: true }) });
-    await article.getByRole('button', { name: 'Exibir na estante', exact: true }).click();
-  }
-  await page.getByRole('button', { name: 'Próxima', exact: true }).click();
-  for (const title of ['Fortuna em circulação', 'Honra do Norte']) {
-    await page
-      .locator('.catalog-achievement')
-      .filter({ has: page.getByRole('heading', { name: title, exact: true }) })
-      .getByRole('button', { name: 'Exibir na estante', exact: true })
-      .click();
-  }
-  await page
-    .locator('.cabinet-row-choices')
-    .getByRole('button', { name: 'Salvar estante', exact: true })
-    .click();
-  await expect(page.locator('.cabinet-slot.occupied')).toHaveCount(7);
-  expect(
-    (
-      await context.request
-        .get(origin + '/api/characters/' + a.id + '/achievements')
-        .then((r) => r.json())
-    ).shelf.rows,
-  ).toEqual([0, 0, 0, 0, 0, 0, 0]);
-  await page.screenshot({ path: 'test-results/shelves-desktop.png' });
+  await expect(page.locator('.honor-achievements-list article')).toHaveCount(7);
+  await expect(page.locator('.fantasy-cabinet')).toHaveCount(0);
+  const conquest = page.locator('.honor-achievements-list article[data-code="first_purchase"]');
+  await conquest.getByRole('button', { name: 'Criar título', exact: true }).click();
+  dialog = page.getByRole('dialog', { name: 'Administrar títulos', exact: true });
+  await expect(dialog.getByLabel('Forma de conquistar', { exact: true })).toHaveValue(
+    'achievement',
+  );
+  await expect(dialog.getByLabel('Conquista vinculada', { exact: true })).toHaveValue(
+    'first_purchase',
+  );
+  await dialog.getByLabel('Nome do título', { exact: true }).fill('Companheiro de estrada');
+  await dialog.getByRole('button', { name: 'Salvar título', exact: true }).click();
+  await expect(dialog.getByText('Título salvo.', { exact: true })).toBeVisible();
+  await dialog.getByRole('button', { name: 'Fechar', exact: true }).click();
+  await conquest.getByRole('button', { name: 'Editar conquista', exact: true }).click();
+  dialog = page.getByRole('dialog', { name: 'Editar conquista', exact: true });
+  await dialog.getByLabel('Nome da conquista', { exact: true }).fill('A primeira troca');
+  await dialog
+    .getByLabel('Descrição da conquista', { exact: true })
+    .fill('Faça sua primeira compra para seguir viagem.');
+  await dialog
+    .getByLabel('Título concedido', { exact: true })
+    .selectOption({ label: 'Companheiro de estrada' });
+  await dialog.getByRole('button', { name: 'Salvar conquista', exact: true }).click();
+  await expect(conquest).toContainText('A primeira troca');
+  await expect(conquest).toContainText('Companheiro de estrada');
+  await page.reload();
+  await expect(conquest).toContainText('A primeira troca');
+  await page.screenshot({ path: 'test-results/achievements-titles-desktop.png', fullPage: true });
   await page.goto(origin + '/#titles');
   await page.getByRole('button', { name: 'Administrar títulos', exact: true }).click();
   dialog = page.getByRole('dialog', { name: 'Administrar títulos', exact: true });
@@ -401,6 +410,8 @@ try {
   ).toBeVisible();
   await page.goto(origin + '/#characters');
   await expect(page.locator('.character-title-label')).toContainText('Amigo da Alvorada');
+  await page.goto(origin + '/#inventory');
+  await expect(page.locator('.character-title-label')).toHaveCount(0);
   // Desktop and narrow-screen composition, overflow and reduced-motion checks.
   for (const route of ['pets', 'cards', 'events', 'achievements', 'lore']) {
     await page.goto(origin + '/#' + route);
@@ -420,12 +431,14 @@ try {
   await expect(page.getByRole('button', { name: 'Editar cenário', exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Criar evento', exact: true })).toHaveCount(0);
   await page.goto(origin + '/#titles');
+  await expect(page.getByRole('button', { name: 'Editar conquista', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Criar título', exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Administrar títulos', exact: true })).toHaveCount(
     0,
   );
   expect(errors).toEqual([]);
   console.log(
-    'Mascotes/placa/aparência, dez vozes em Web Audio real/silenciar, cartas/3 espaços, eventos/cenário, sete conquistas numa prateleira, concessão/título em exibição e responsividade verificados.',
+    'Mascotes/placa/aparência, dez vozes reais/silenciar, cartas em leque/3 espaços/conversa sob demanda, eventos/cenário, conquistas editáveis/título automático, concessão/exibição e responsividade verificados.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/community-failure.png', fullPage: true });

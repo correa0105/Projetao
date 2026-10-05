@@ -378,7 +378,92 @@ test('mascotes, cartas, títulos, eventos e estante: economia, ownership e admin
       },
     );
     await t.test(
-      'estante: sete peças na mesma prateleira, movimento vertical, persistência e conquista bloqueada',
+      'conquistas editáveis: permissão, revisão, vínculo automático e títulos recebidos preservados',
+      async () => {
+        const catalog = (await req('/achievements/catalog', owner.cookie)).data;
+        assert.equal(catalog.can_edit, false);
+        assert.equal(catalog.items.length, 7);
+        const input = {
+          title: 'A primeira troca',
+          description: 'Sua primeira compra na guilda.',
+          revision: 0,
+          title_id: null as string | null,
+        };
+        const path = '/achievements/catalog/first_purchase';
+        assert.equal((await req(path, '', 'PUT', input)).status, 401);
+        assert.equal((await req(path, owner.cookie, 'PUT', input)).status, 403);
+        const title = (
+          await req('/titles/catalog', admin.cookie, 'POST', {
+            ...emptyTitle,
+            name: 'Amigo da estrada',
+          })
+        ).data.id;
+        const linked = { ...input, title_id: title };
+        const concurrent = await Promise.all([
+          req(path, admin.cookie, 'PUT', linked),
+          req(path, admin.cookie, 'PUT', linked),
+        ]);
+        assert.deepEqual(concurrent.map((r) => r.status).sort(), [200, 409]);
+        assert.equal(
+          (await req('/achievements/catalog', owner.cookie)).data.items.find(
+            (a: { code: string }) => a.code === 'first_purchase',
+          ).title,
+          input.title,
+        );
+        await pool.query(
+          "INSERT INTO achievements(character_id,code) VALUES($1,'first_purchase') ON CONFLICT DO NOTHING",
+          [a.id],
+        );
+        const earned = (await req('/titles/' + a.id, owner.cookie)).data.items.find(
+          (t: { id: string }) => t.id === title,
+        );
+        assert.equal(earned.earned, true);
+        assert.equal(
+          (await req('/titles/' + b.id, owner.cookie)).data.items.find(
+            (t: { id: string }) => t.id === title,
+          ).earned,
+          false,
+        );
+        assert.equal(
+          (await req('/titles/' + a.id + '/display', owner.cookie, 'PUT', { title_id: title }))
+            .status,
+          200,
+        );
+        assert.equal(
+          (await req('/titles/' + b.id + '/display', owner.cookie, 'PUT', { title_id: title }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (await req(path, admin.cookie, 'PUT', { ...input, revision: 1, title_id: randomUUID() }))
+            .status,
+          404,
+        );
+        assert.equal(
+          (await req(path, admin.cookie, 'PUT', { ...input, revision: 1, code: 'first_character' }))
+            .status,
+          400,
+        );
+        assert.equal((await req(path, admin.cookie, 'PUT', { ...input, revision: 1 })).status, 200);
+        assert.equal((await req('/titles/' + a.id, owner.cookie)).data.displayed, title);
+        const unlinked = (await req('/titles/catalog', owner.cookie)).data.items.find(
+          (t: { id: string }) => t.id === title,
+        );
+        assert.equal(unlinked.goal.kind, 'manual');
+        await seed();
+        assert.equal(
+          (await req('/achievements/catalog', owner.cookie)).data.items.find(
+            (a: { code: string }) => a.code === 'first_purchase',
+          ).revision,
+          2,
+        );
+        await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [admin.id]);
+        assert.equal((await req(path, admin.cookie, 'PUT', { ...input, revision: 2 })).status, 403);
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [admin.id]);
+      },
+    );
+    await t.test(
+      'estante histórica: peças e ownership preservados após a remoção da página',
       async () => {
         for (const item of achievementCatalog)
           await pool.query(

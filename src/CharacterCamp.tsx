@@ -270,6 +270,13 @@ export function CharacterCamp({
               )}
               <div className="camp-actions">
                 <a
+                  className="button outline small-button"
+                  href="#titles"
+                  onClick={() => onSelect(character.id)}
+                >
+                  Escolher título
+                </a>
+                <a
                   className="button small-button"
                   href="#profile"
                   onClick={() => onSelect(character.id)}

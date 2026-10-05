@@ -1,5 +1,32 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Salão em sombra, conquistas editáveis e corvo no chão (05/10/2026)
+
+Nova composição do salão conforme desenho do usuário: janela no terço esquerdo,
+luz fria lateral, anfitrião menor ao fundo à direita e em sombra, cartas em leque
+no primeiro plano. Conversa oculta ao entrar; clicar no anfitrião abre falas e
+três perguntas. Cartas provocam comentários individuais temporários, sem menu
+de perguntas permanente; fechar/Escape encerram. Três espaços, coleção e compras
+preservados. Arte atual moonlit-room-v2.png; prompts em SALAO-CONQUISTAS.md.
+
+Página/estante de Conquistas removidas; rota antiga abre Títulos. Sete conquistas
+integradas com progresso e editor administrativo de nome/descrição/título.
+Criar título parte da própria conquista com meta preenchida. Editor resolve
+vínculo e revisão em transação; substituir/remover associação preserva títulos
+já recebidos. Migration 055 guarda definições; códigos/metas de jogo e histórico
+SQL/estantes permanecem. Título escolhido exibido separadamente no acampamento
+e ficha, com atalho Escolher título; inventário não exibe título por enquanto.
+
+Corvo clássico usa raven-ground-v4.png, sem madeira e com patas completas;
+alternativa já estava sem suporte. Tamanhos e aparências persistidas preservados.
+Validação: build completo, sete testes de comunidade em banco descartável,
+smoke completo no Edge e smoke específico de conquistas passaram. Corvo e
+demais artes sem cortes; conversa, compra/equipagem, edição/vínculo e título
+persistidos; composição desktop/mobile e movimento reduzido conferidos.
+Aplicado no Docker local, migration 055 e bundle index-Df-zRMUI.js /
+index-UriLdI7V.css confirmados. Backup pré-migration em .local/backups,
+ignorado no Git. Nenhum volume ou histórico removido.
+
 ## Placa limpa, falas naturais e animais clássicos v3 (05/10/2026)
 
 Retirado SVG de riscos de escrita e keyframes correspondentes: a madeira fica

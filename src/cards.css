@@ -4,46 +4,53 @@
   padding: 0;
 }
 .cards-room {
+  color: #e8dfd0;
+  background: #070a12;
+  padding-bottom: 100px;
+}
+.cards-scene {
   position: relative;
   isolation: isolate;
-  min-height: 100dvh;
-  background: #080c17;
-  color: #e8dfd0;
-  padding: 120px max(6vw, 22px) 115px;
+  height: max(760px, 100dvh);
   overflow: hidden;
+  background: #060910;
 }
 .cards-room-backdrop {
   position: absolute;
   inset: 0;
   z-index: -3;
-  background: url('/cards/moonlit-room-v1.webp') center top/cover fixed;
+  background: url('/cards/moonlit-room-v2.png') center/cover no-repeat;
 }
 .cards-room-shade {
   position: absolute;
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(90deg, #040811cf 0%, #04081165 38%, #04081100 70%),
-    linear-gradient(0deg, #080c17 0%, #080c1700 60%);
+    linear-gradient(180deg, #03050b70, transparent 28%, transparent 60%, #070a12dd),
+    linear-gradient(90deg, #03050b60, transparent 40%);
 }
 .cards-room-content {
-  position: relative;
-  z-index: 1;
-  max-width: 650px;
+  position: static;
 }
 .cards-room header {
-  margin-bottom: 30px;
+  position: absolute;
+  top: 100px;
+  left: 5.5%;
+  max-width: 440px;
+  pointer-events: none;
 }
 .cards-room header h1 {
   font:
-    clamp(31px, 3.8vw, 53px)/1.3 'Libre Baskerville',
+    clamp(24px, 2.5vw, 38px)/1.35 'Libre Baskerville',
     Georgia,
     serif;
-  margin: 15px 0 20px;
+  margin: 12px 0;
+  text-shadow: 0 3px 14px #000;
 }
 .cards-room header p {
-  font-size: 13px;
-  color: #bbb5ad;
+  font-size: 12px;
+  color: #b6b2ae;
+  max-width: 340px;
 }
 .cards-room .eyebrow {
   color: #bc9e70;
@@ -51,24 +58,26 @@
   letter-spacing: 0.15em;
 }
 .cards-equipped {
+  position: absolute;
+  right: 5.5%;
+  top: 90px;
   display: flex;
-  gap: 18px;
-  max-width: 465px;
-  margin-bottom: 35px;
+  gap: 10px;
+  width: 228px;
 }
 .cards-equipped > button {
   flex: 1;
   min-width: 0;
   padding: 0;
-  background: #090e1999;
-  border: 1px solid #bd945e66;
-  border-radius: 5px;
   position: relative;
+  background: #070a1480;
+  border: 1px solid #92774866;
+  border-radius: 4px;
   cursor: pointer;
 }
 .cards-equipped > button[aria-pressed='true'] {
-  border-color: #e3bd7b;
-  box-shadow: 0 0 15px #bc945329;
+  border-color: #dbb879;
+  box-shadow: 0 0 18px #c0a76c1c;
 }
 .cards-empty-slot {
   aspect-ratio: 0.7;
@@ -76,68 +85,94 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  color: #978563;
+  gap: 9px;
+  color: #a48c60;
 }
 .cards-empty-slot > span {
-  font-size: 27px;
+  font-size: 23px;
 }
 .cards-empty-slot small {
-  font-size: 10px;
+  font-size: 8px;
 }
 .cards-slot-index {
   position: absolute;
-  bottom: -12px;
-  left: calc(50% - 10px);
-  width: 22px;
-  height: 22px;
+  bottom: -9px;
+  left: calc(50% - 9px);
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #302818;
-  border: 1px solid #a78c59;
-  color: #e6c994;
+  background: #201b14;
+  border: 1px solid #8f784e;
+  color: #d8c294;
   display: grid;
   place-items: center;
-  font-size: 10px;
+  font-size: 9px;
+}
+.cards-table {
+  position: absolute;
+  bottom: 38px;
+  left: 0;
+  right: 0;
 }
 .cards-filters {
   display: flex;
-  gap: 20px;
-  border-block: 1px solid #a5895940;
-  padding: 14px 0;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 28px;
+  padding: 12px 0 20px;
 }
 .cards-filters button {
+  padding: 6px 2px;
   background: none;
   border: 0;
-  color: #aaa08f;
+  border-bottom: 1px solid transparent;
+  color: #b4afa5;
   font-size: 11px;
   cursor: pointer;
-  padding: 3px 0;
+  text-shadow: 0 2px 7px #000;
 }
 .cards-filters button[aria-pressed='true'] {
-  color: #e5c78c;
+  color: #e7c68c;
+  border-color: #a98a50;
 }
 .cards-catalog {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 42px 35px 24px;
 }
 .cards-catalog > button {
+  flex: 0 0 clamp(98px, 9.5vw, 144px);
+  min-width: 0;
   border: 0;
   background: none;
   padding: 0;
-  min-width: 0;
   cursor: pointer;
-  transition: transform 0.25s;
+  position: relative;
+  z-index: var(--fan-layer);
+  margin: 0 -12px;
+  transform: translateY(var(--fan-drop)) rotate(var(--fan-angle));
+  transform-origin: 50% 115%;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
-.cards-catalog > button:hover {
-  transform: translateY(-6px) rotate(0.8deg);
+.cards-catalog > button:hover,
+.cards-catalog > button:focus-visible {
+  transform: translateY(calc(var(--fan-drop) - 30px)) rotate(var(--fan-angle));
+  z-index: 20;
+  filter: brightness(1.15);
+  outline: none;
 }
-.cards-catalog > button[aria-pressed='true'] .arcana-card-face {
-  border-color: #efd399;
+.cards-catalog > button[aria-pressed='true'] {
+  transform: translateY(calc(var(--fan-drop) - 16px)) rotate(var(--fan-angle));
+  z-index: 19;
+}
+.cards-catalog > button[aria-pressed='true'] .arcana-card-face,
+.cards-catalog > button:focus-visible .arcana-card-face {
+  border-color: #e3c691;
   box-shadow:
     0 0 0 1px #bd965a80,
-    0 9px 18px #0007;
+    0 12px 25px #000a;
 }
 .arcana-card-face {
   position: relative;
@@ -149,7 +184,7 @@
   overflow: hidden;
   box-shadow:
     inset 0 0 0 3px #0005,
-    0 3px 9px #0007;
+    0 7px 18px #000a;
   isolation: isolate;
 }
 .arcana-card-face::after {
@@ -168,13 +203,13 @@
   background: url('/cards/arcana-art-v1.webp') no-repeat;
   background-size: 400% 200%;
   z-index: -1;
-  filter: saturate(0.84);
+  filter: saturate(0.76);
 }
 .arcana-card-face::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(#05091190, #05091100 38%, #05091120 60%, #030710ef 89%);
+  background: linear-gradient(#05091170, #05091100 38%, #05091120 60%, #030710ef 89%);
   z-index: 0;
 }
 .arcana-card-ornament {
@@ -193,7 +228,7 @@
   left: 8%;
   right: 8%;
   font:
-    clamp(10px, 1.25vw, 16px)/1.4 'Libre Baskerville',
+    clamp(10px, 1vw, 14px)/1.4 'Libre Baskerville',
     Georgia,
     serif;
   color: #f0dfb9;
@@ -206,33 +241,41 @@
   right: 0;
   bottom: 7%;
   text-align: center;
-  font-size: 8px;
+  font-size: 7px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #c8ad80;
 }
 .arcana-card-face.small .arcana-card-name {
-  font-size: 11px;
+  font-size: 8px;
+  bottom: 12%;
+}
+.arcana-card-face.small .arcana-card-family {
+  display: none;
+}
+.arcana-card-face.small .arcana-card-ornament {
+  font-size: 10px;
 }
 .cards-catalog-price {
   display: flex;
   gap: 5px;
   align-items: center;
   justify-content: center;
-  margin: 8px 0 3px;
+  margin: 9px 0 3px;
   font-size: 9px;
   color: #c8b38b;
+  text-shadow: 0 2px 5px #000;
 }
 .cards-detail {
-  margin-top: 28px;
-  padding: 25px 28px;
-  background: linear-gradient(120deg, #1b2230e9, #0f1420e9);
-  border: 1px solid #a589593d;
-  border-radius: 5px;
+  position: relative;
+  margin: 0 auto;
+  padding: 25px max(6vw, 24px) 35px;
+  max-width: 900px;
+  border-top: 1px solid #a589593d;
 }
 .cards-detail h2 {
   font:
-    25px Georgia,
+    26px Georgia,
     serif;
   margin: 10px 0 14px;
 }
@@ -240,6 +283,7 @@
   font-size: 13px;
   line-height: 1.8;
   color: #c0b9ac;
+  max-width: 580px;
 }
 .cards-level,
 .cards-gold span {
@@ -261,6 +305,7 @@
   justify-content: space-between;
   gap: 15px;
   margin: 18px 0;
+  max-width: 490px;
 }
 .cards-gold strong {
   font:
@@ -276,158 +321,286 @@
 }
 .cards-host-hit {
   position: absolute;
-  left: 63%;
-  top: 260px;
-  width: 24%;
-  height: 390px;
+  left: 61%;
+  top: 32%;
+  width: 18%;
+  height: 36%;
   border: 0;
   background: transparent;
   cursor: pointer;
   z-index: 0;
+  border-radius: 40%;
 }
-.cards-host-hit:hover {
-  box-shadow: inset 0 0 50px #ddc48304;
+.cards-host-hit span {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  border-bottom: 1px solid #a98a50;
+  padding: 7px 10px;
+  color: #d0bb91;
+  background: #060910a0;
+  font:
+    11px Georgia,
+    serif;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.cards-host-hit:hover span,
+.cards-host-hit:focus-visible span {
+  opacity: 1;
+}
+.cards-host-hit:focus-visible {
+  outline: 1px solid #ba9f6750;
+  outline-offset: 4px;
 }
 .cards-host-dialogue {
   position: absolute;
-  z-index: 2;
-  right: 5%;
-  top: 660px;
-  width: 30%;
-  max-width: 440px;
+  z-index: 25;
+  top: 28%;
+  right: 8%;
+  width: min(340px, 32%);
   padding: 22px 25px;
-  background: linear-gradient(120deg, #101523dd, #171a23da);
-  border: 1px solid #9d7f504a;
+  background: linear-gradient(120deg, #0b101aed, #151820ed);
+  border: 1px solid #9d7f5066;
   border-radius: 6px;
-  box-shadow: 0 15px 40px #0006;
+  box-shadow: 0 15px 40px #0009;
+  animation: cards-speech 0.35s ease both;
+}
+.cards-host-dialogue::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 35%;
+  width: 14px;
+  height: 14px;
+  background: #121720;
+  border-right: 1px solid #9d7f5066;
+  border-bottom: 1px solid #9d7f5066;
+  transform: rotate(45deg);
 }
 .cards-host-dialogue > p {
   font:
-    14px/1.8 'Libre Baskerville',
+    13px/1.85 'Libre Baskerville',
     Georgia,
     serif;
   color: #ddd2bc;
-  min-height: 105px;
-  margin: 12px 0 20px;
+  margin: 12px 0 4px;
+  animation: cards-speech 0.4s ease both;
 }
-.cards-host-dialogue > p[data-speaking='true'] {
-  animation: cards-speech 0.7s ease both;
-}
-.cards-host-dialogue > div {
+.cards-host-questions {
   display: grid;
   gap: 6px;
+  margin-top: 18px;
 }
-.cards-host-dialogue button {
+.cards-host-questions button {
   text-align: left;
-  background: #0a101d8c;
+  background: #070c158c;
   border: 1px solid #9d7f503a;
   color: #c6b394;
-  font-size: 10px;
+  font-size: 11px;
   padding: 10px 12px;
   border-radius: 3px;
   cursor: pointer;
 }
-.cards-host-dialogue button:hover {
+.cards-host-questions button:hover {
   border-color: #c0a16c;
+}
+.cards-conversation-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  background: none;
+  border: 0;
+  color: #c6b394;
+  cursor: pointer;
+}
+.cards-moon-dust {
+  position: absolute;
+  z-index: -1;
+  inset: 20% 28% 38% 24%;
+  pointer-events: none;
+  overflow: hidden;
+  transform: rotate(13deg);
+}
+.cards-moon-dust i {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #b8cae0;
+  opacity: 0;
+  left: calc(var(--dust-i) * 8%);
+  top: calc(10% + var(--dust-i) * 6%);
+  animation: cards-dust calc(10s + var(--dust-i) * 0.6s) linear infinite;
+  animation-delay: calc(var(--dust-i) * -1.4s);
+}
+@keyframes cards-dust {
+  15%,
+  70% {
+    opacity: 0.25;
+  }
+  to {
+    transform: translate(55px, -35px);
+    opacity: 0;
+  }
 }
 @keyframes cards-speech {
   from {
-    opacity: 0.25;
-    transform: translateY(4px);
+    opacity: 0;
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-@media (max-width: 1050px) {
-  .cards-room-content {
-    max-width: 55%;
-  }
-  .cards-catalog {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .cards-host-dialogue {
-    width: 35%;
-    right: 4%;
-    top: 630px;
+@media (max-width: 900px) {
+  .cards-room header {
+    left: 4%;
+    max-width: 350px;
   }
   .cards-equipped {
-    gap: 9px;
+    right: 4%;
+    width: 183px;
   }
-  .arcana-card-face.small .arcana-card-name {
-    font-size: 9px;
+  .cards-catalog > button {
+    flex-basis: 105px;
+    margin: 0 -17px;
+  }
+  .cards-host-dialogue {
+    width: 320px;
+    right: 6%;
+    top: 30%;
   }
 }
 @media (max-width: 650px) {
-  .cards-room {
-    padding: 100px 20px 100px;
+  .cards-scene {
+    height: 820px;
   }
   .cards-room-backdrop {
-    background-attachment: scroll;
-    background-size: auto 680px;
-    background-position: 69% top;
-    background-repeat: no-repeat;
+    background-size: auto 360px;
+    background-position: 50% 200px;
   }
   .cards-room-shade {
-    background: linear-gradient(0deg, #080c17 0%, #080c17 38%, #080c1720 90%);
+    background: linear-gradient(180deg, #070a12 0%, #070a1260 20%, transparent 42%, #070a12 85%);
   }
-  .cards-room-content {
+  .cards-room header {
+    top: 95px;
+    left: 22px;
+    right: 22px;
     max-width: none;
-    padding-top: 530px;
   }
   .cards-room header h1 {
-    font-size: 34px;
+    font-size: 26px;
   }
-  .cards-host-hit {
-    left: 25%;
-    top: 185px;
-    width: 60%;
-    height: 200px;
-  }
-  .cards-host-dialogue {
-    top: 390px;
-    right: 20px;
-    left: 20px;
-    width: auto;
-    max-width: none;
-    padding: 16px 20px;
-  }
-  .cards-host-dialogue > p {
-    min-height: 0;
+  .cards-room header p {
     font-size: 11px;
-    margin: 8px 0 12px;
-  }
-  .cards-host-dialogue > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  .cards-host-dialogue button {
-    padding: 7px;
-    font-size: 9px;
-    flex: 1;
-    min-width: 80px;
-  }
-  .cards-catalog {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 10px;
+    max-width: calc(100% - 135px);
   }
   .cards-equipped {
-    max-width: 420px;
+    top: 178px;
+    right: 22px;
+    width: 130px;
+    gap: 5px;
   }
-  .cards-detail {
-    padding: 22px;
+  .cards-empty-slot {
+    gap: 5px;
+  }
+  .cards-empty-slot small {
+    font-size: 6px;
+  }
+  .cards-slot-index {
+    width: 15px;
+    height: 15px;
+    left: calc(50% - 7px);
+    bottom: -6px;
+    font-size: 8px;
+  }
+  .cards-host-hit {
+    left: 54%;
+    top: 35%;
+    width: 40%;
+    height: 26%;
+  }
+  .cards-host-hit span {
+    opacity: 0.8;
+    bottom: 2%;
+  }
+  .cards-host-dialogue {
+    left: 20px;
+    right: 20px;
+    top: 30%;
+    width: auto;
+    padding: 20px;
+  }
+  .cards-host-dialogue > p {
+    font-size: 11px;
+  }
+  .cards-table {
+    bottom: 24px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #93764b #080b13;
+    scroll-padding-inline: 42px;
+  }
+  .cards-filters {
+    position: sticky;
+    left: 0;
+    width: 100vw;
+    gap: 24px;
+    padding-bottom: 15px;
+  }
+  .cards-catalog {
+    justify-content: center;
+    padding: 30px 42px 40px;
+    width: max-content;
+    min-width: 100%;
+  }
+  .cards-catalog > button {
+    flex-basis: 94px;
+    margin: 0 -14px;
+    --fan-drop: 0px !important;
   }
   .arcana-card-name {
+    font-size: 9px;
+    left: 4%;
+    right: 4%;
+  }
+  .arcana-card-family {
+    font-size: 6px;
+    letter-spacing: 0.05em;
+  }
+  .arcana-card-ornament {
     font-size: 10px;
+  }
+  .cards-catalog-price {
+    font-size: 8px;
+    gap: 2px;
+  }
+  .cards-catalog-price svg {
+    width: 8px;
+  }
+  .cards-detail {
+    padding: 24px;
   }
   .cards-detail-actions .button {
     font-size: 11px;
+  }
+  .cards-moon-dust {
+    inset: 27% 5% 37% 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .cards-room * {
     animation: none !important;
     transition: none !important;
+  }
+  .cards-moon-dust {
+    display: none;
   }
 }

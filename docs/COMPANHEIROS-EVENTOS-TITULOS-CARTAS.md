@@ -87,6 +87,13 @@ alterar eventos. Evento não concede ouro ou progresso de missão automaticament
 
 ## Prateleiras e títulos
 
+Direção vigente de 05/10: página/estante removidas; conquistas integradas em
+Títulos com editor administrativo de nome, descrição e título vinculado.
+Migration 055 guarda definições e revisões; dados históricos de estantes não
+foram apagados. Salão recomposto em leque, conversa sob demanda e nova arte.
+Esta decisão substitui a interface de prateleiras descrita historicamente abaixo.
+Detalhes, artes e prompts em [SALAO-CONQUISTAS.md](SALAO-CONQUISTAS.md).
+
 Migration 051 remove posições fixas e o limite de seis objetos por prateleira.
 `slots`, `positions` e `rows` são listas alinhadas de tamanho variável. Configurações
 antigas são preservadas e recebem a prateleira correspondente. São três níveis

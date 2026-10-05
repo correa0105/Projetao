@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Check, Coins, Lock, Sparkles } from 'lucide-react';
+import { Check, Coins, Lock, Sparkles, X } from 'lucide-react';
 import { api, post } from './api';
 import { cards, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
 import { money } from '../shared/rules';
@@ -38,10 +38,9 @@ export function Cards({
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [notice, setNotice] = useState(''),
-    [speech, setSpeech] = useState(
-      'A noite costuma trazer bons visitantes. Escolha uma carta; eu lhe conto o que ela guarda.',
-    ),
-    [phase, setPhase] = useState(false);
+    [speech, setSpeech] = useState(''),
+    [conversation, setConversation] = useState(false),
+    [questions, setQuestions] = useState(false);
   const key = useRef(crypto.randomUUID()),
     inFlight = useRef(false),
     live = useRef(true),
@@ -57,11 +56,20 @@ export function Cards({
       if (timer.current) clearTimeout(timer.current);
     };
   }, [character?.id]);
-  function say(text: string) {
+  useEffect(() => {
+    if (!conversation) return;
+    const escape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setConversation(false);
+    };
+    window.addEventListener('keydown', escape);
+    return () => window.removeEventListener('keydown', escape);
+  }, [conversation]);
+  function say(text: string, showQuestions = false) {
     if (timer.current) clearTimeout(timer.current);
-    setPhase(true);
     setSpeech(text);
-    timer.current = setTimeout(() => setPhase(false), 700);
+    setQuestions(showQuestions);
+    setConversation(true);
+    if (!showQuestions) timer.current = setTimeout(() => setConversation(false), 14000);
   }
   const item = owned.find((c) => c.card_id === selected.id);
   async function purchase() {
@@ -121,171 +129,204 @@ export function Cards({
   }
   return (
     <section className="cards-room" aria-label="Salão das cartas">
-      <div className="cards-room-backdrop" aria-hidden="true" />
-      <div className="cards-room-shade" aria-hidden="true" />
-      <div className="cards-room-content">
-        <header>
-          <span className="eyebrow">O SALÃO DA MEIA-NOITE</span>
-          <h1>
-            Três lugares.
-            <br />
-            Inúmeras histórias.
-          </h1>
-          <p>Escolha as cartas que seguirão com {character?.name || 'seu personagem'}.</p>
-        </header>
-        <section className="cards-equipped" aria-label="Três cartas equipadas">
-          {[1, 2, 3].map((position) => {
-            const equipped = owned.find((c) => c.slot === position),
-              definition = cards.find((c) => c.id === equipped?.card_id);
-            return (
-              <button
-                key={position}
-                disabled={busy}
-                aria-label={`Selecionar espaço ${position}${definition ? ': ' + definition.name : ''}`}
-                aria-pressed={slot === position}
-                onClick={() => {
-                  setSlot(position);
-                  if (definition) {
-                    setSelected(definition);
-                    say(definition.comment);
-                  }
-                }}
-              >
-                {definition ? (
-                  <CardFace card={definition} small />
-                ) : (
-                  <span className="cards-empty-slot">
-                    <span>✦</span>
-                    <small>Espaço {position}</small>
-                  </span>
-                )}
-                <span className="cards-slot-index">{position}</span>
-              </button>
-            );
-          })}
-        </section>
-        <nav className="cards-filters" aria-label="Filtrar cartas">
-          {['Todas', 'Minha coleção', 'À venda'].map((label) => (
-            <button key={label} aria-pressed={filter === label} onClick={() => setFilter(label)}>
-              {label}
-            </button>
+      <div className="cards-scene">
+        <div className="cards-room-backdrop" aria-hidden="true" />
+        <div className="cards-room-shade" aria-hidden="true" />
+        <div className="cards-moon-dust" aria-hidden="true">
+          {Array.from({ length: 12 }, (_, i) => (
+            <i key={i} style={{ '--dust-i': i } as CSSProperties} />
           ))}
-        </nav>
-        <div className="cards-catalog">
-          {cards
-            .filter(
-              (c) =>
-                filter === 'Todas' ||
-                (filter === 'À venda' ? c.buyable : owned.some((o) => o.card_id === c.id)),
-            )
-            .map((card) => (
-              <button
-                key={card.id}
-                disabled={busy}
-                aria-pressed={selected.id === card.id}
-                onClick={() => {
-                  setSelected(card);
-                  key.current = crypto.randomUUID();
-                  setError('');
-                  setNotice('');
-                  say(card.comment);
-                }}
-              >
-                <CardFace card={card} />
-                <span className="cards-catalog-price">
-                  {owned.some((o) => o.card_id === card.id) ? (
-                    <>
-                      <Check size={12} />
-                      Na coleção
-                    </>
-                  ) : card.buyable ? (
-                    money(card.price_cp) + ' PO'
-                  ) : (
-                    <>
-                      <Lock size={11} />
-                      Outra história
-                    </>
-                  )}
-                </span>
-              </button>
-            ))}
         </div>
-        <section className="cards-detail" aria-label="Carta selecionada">
-          <span className="eyebrow">{selected.family}</span>
-          <h2>{selected.name}</h2>
-          <p>{selected.description}</p>
-          {item ? (
-            <>
-              <span className="cards-level">
-                <Sparkles size={12} />
-                Nível {item.level} · {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
-              </span>
-              <div className="cards-detail-actions">
+        <div className="cards-room-content">
+          <header>
+            <span className="eyebrow">O SALÃO DA MEIA-NOITE</span>
+            <h1>O que a noite guarda.</h1>
+            <p>Escolha as cartas que seguirão com {character?.name || 'seu personagem'}.</p>
+          </header>
+          <section className="cards-equipped" aria-label="Três cartas equipadas">
+            {[1, 2, 3].map((position) => {
+              const equipped = owned.find((c) => c.slot === position),
+                definition = cards.find((c) => c.id === equipped?.card_id);
+              return (
                 <button
-                  className="button primary"
-                  disabled={busy || item.slot === slot}
-                  onClick={() => void equip(item.id)}
+                  key={position}
+                  disabled={busy}
+                  aria-label={`Selecionar espaço ${position}${definition ? ': ' + definition.name : ''}`}
+                  aria-pressed={slot === position}
+                  onClick={() => {
+                    setSlot(position);
+                    if (definition) {
+                      setSelected(definition);
+                      say(definition.comment);
+                    }
+                  }}
                 >
-                  Equipar no espaço {slot}
+                  {definition ? (
+                    <CardFace card={definition} small />
+                  ) : (
+                    <span className="cards-empty-slot">
+                      <span>✦</span>
+                      <small>Espaço {position}</small>
+                    </span>
+                  )}
+                  <span className="cards-slot-index">{position}</span>
                 </button>
-                {owned.some((c) => c.slot === slot) && (
+              );
+            })}
+          </section>
+          <div className="cards-table">
+            <nav className="cards-filters" aria-label="Filtrar cartas">
+              {['Todas', 'Minha coleção', 'À venda'].map((label) => (
+                <button
+                  key={label}
+                  aria-pressed={filter === label}
+                  onClick={() => setFilter(label)}
+                >
+                  {label}
+                </button>
+              ))}
+            </nav>
+            <div className="cards-catalog">
+              {cards
+                .filter(
+                  (c) =>
+                    filter === 'Todas' ||
+                    (filter === 'À venda' ? c.buyable : owned.some((o) => o.card_id === c.id)),
+                )
+                .map((card, index, collection) => (
                   <button
-                    className="button outline"
+                    key={card.id}
+                    style={
+                      {
+                        '--fan-angle': `${(index - (collection.length - 1) / 2) * 6}deg`,
+                        '--fan-drop': `${Math.abs(index - (collection.length - 1) / 2) ** 2 * 2.5}px`,
+                        '--fan-layer': index + 1,
+                      } as CSSProperties
+                    }
                     disabled={busy}
-                    onClick={() => void equip(null)}
+                    aria-pressed={selected.id === card.id}
+                    onClick={() => {
+                      setSelected(card);
+                      key.current = crypto.randomUUID();
+                      setError('');
+                      setNotice('');
+                      say(card.comment);
+                    }}
                   >
-                    Esvaziar espaço {slot}
+                    <CardFace card={card} />
+                    <span className="cards-catalog-price">
+                      {owned.some((o) => o.card_id === card.id) ? (
+                        <>
+                          <Check size={12} />
+                          Na coleção
+                        </>
+                      ) : card.buyable ? (
+                        money(card.price_cp) + ' PO'
+                      ) : (
+                        <>
+                          <Lock size={11} />
+                          Outra história
+                        </>
+                      )}
+                    </span>
                   </button>
-                )}
+                ))}
+            </div>
+          </div>
+        </div>
+        <button
+          className="cards-host-hit"
+          aria-label="Conversar com o Anfitrião"
+          aria-expanded={conversation && questions}
+          onClick={() =>
+            say(
+              'Entre. A cadeira está livre, e ninguém aqui vai lhe pedir pressa. Estava examinando estas cartas; alguma chamou sua atenção?',
+              true,
+            )
+          }
+        >
+          <span>Conversar</span>
+        </button>
+        {conversation && (
+          <aside className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
+            <button
+              className="cards-conversation-close"
+              aria-label="Encerrar conversa"
+              onClick={() => setConversation(false)}
+            >
+              <X size={16} />
+            </button>
+            <span className="eyebrow">O ANFITRIÃO</span>
+            <p key={speech} aria-live="polite">
+              {speech}
+            </p>
+            {questions && (
+              <div className="cards-host-questions">
+                {cardQuestions.map((q) => (
+                  <button key={q.question} onClick={() => say(q.answer, true)}>
+                    {q.question}
+                  </button>
+                ))}
               </div>
-              <small className="cards-upgrade-note">
-                Os aprimoramentos serão definidos em uma próxima etapa.
-              </small>
-            </>
-          ) : selected.buyable ? (
-            <>
-              <div className="cards-gold">
-                <strong>{money(selected.price_cp)} PO</strong>
-                <span>
-                  <Coins size={12} />
-                  {character
-                    ? money(character.gold_cp) + ' PO disponíveis'
-                    : 'Selecione um personagem'}
-                </span>
-              </div>
+            )}
+          </aside>
+        )}
+      </div>
+      <section className="cards-detail" aria-label="Carta selecionada">
+        <span className="eyebrow">{selected.family}</span>
+        <h2>{selected.name}</h2>
+        <p>{selected.description}</p>
+        {item ? (
+          <>
+            <span className="cards-level">
+              <Sparkles size={12} />
+              Nível {item.level} · {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
+            </span>
+            <div className="cards-detail-actions">
               <button
                 className="button primary"
-                disabled={busy || !character || character.gold_cp < selected.price_cp}
-                onClick={() => void purchase()}
+                disabled={busy || item.slot === slot}
+                onClick={() => void equip(item.id)}
               >
-                {busy ? 'Guardando a carta…' : 'Comprar carta'}
+                Equipar no espaço {slot}
               </button>
-            </>
-          ) : (
-            <p className="cards-unavailable">
-              Esta carta ainda não tem uma forma de obtenção disponível.
-            </p>
-          )}
-          {error && <p role="alert">{error}</p>}
-          {notice && <p role="status">{notice}</p>}
-        </section>
-      </div>
-      <button
-        className="cards-host-hit"
-        aria-label="Conversar com o Anfitrião"
-        onClick={() => say('Pode se aproximar. As cartas não têm pressa, e eu também não.')}
-      />
-      <aside className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
-        <span className="eyebrow">O ANFITRIÃO</span>
-        <p data-speaking={phase}>{speech}</p>
-        <div>
-          {cardQuestions.map((q) => (
-            <button key={q.question} onClick={() => say(q.answer)}>
-              {q.question}
+              {owned.some((c) => c.slot === slot) && (
+                <button className="button outline" disabled={busy} onClick={() => void equip(null)}>
+                  Esvaziar espaço {slot}
+                </button>
+              )}
+            </div>
+            <small className="cards-upgrade-note">
+              Os aprimoramentos serão definidos em uma próxima etapa.
+            </small>
+          </>
+        ) : selected.buyable ? (
+          <>
+            <div className="cards-gold">
+              <strong>{money(selected.price_cp)} PO</strong>
+              <span>
+                <Coins size={12} />
+                {character
+                  ? money(character.gold_cp) + ' PO disponíveis'
+                  : 'Selecione um personagem'}
+              </span>
+            </div>
+            <button
+              className="button primary"
+              disabled={busy || !character || character.gold_cp < selected.price_cp}
+              onClick={() => void purchase()}
+            >
+              {busy ? 'Guardando a carta…' : 'Comprar carta'}
             </button>
-          ))}
-        </div>
-      </aside>
+          </>
+        ) : (
+          <p className="cards-unavailable">
+            Esta carta ainda não tem uma forma de obtenção disponível.
+          </p>
+        )}
+        {error && <p role="alert">{error}</p>}
+        {notice && <p role="status">{notice}</p>}
+      </section>
     </section>
   );
 }

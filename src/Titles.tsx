@@ -3,6 +3,8 @@ import { Crown, Shield, Feather, Star, Lock, Plus, Save, Trash2 } from 'lucide-r
 import { api, post } from './api';
 import { Modal } from './components';
 import { achievementCatalog } from '../shared/achievements';
+import type { AchievementDefinition } from '../shared/achievements';
+import { AchievementHonors } from './AchievementHonors';
 import {
   emptyTitle,
   titleGoalNames,
@@ -24,6 +26,7 @@ export function CharacterTitleLabel({ characterId }: { characterId: string }) {
   const [title, setTitle] = useState<CharacterTitle | null>(null);
   useEffect(() => {
     let live = true;
+    setTitle(null);
     api<TitlesResponse>('/titles/' + characterId)
       .then((r) => {
         if (live) setTitle(r.items.find((t) => t.id === r.displayed) || null);
@@ -47,7 +50,11 @@ export function TitleHall({
   const [data, setData] = useState<TitlesResponse | null>(null),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
-    [manager, setManager] = useState(false);
+    [manager, setManager] = useState(false),
+    [initialAchievement, setInitialAchievement] = useState<AchievementDefinition | undefined>(),
+    [definitions, setDefinitions] = useState<AchievementDefinition[]>(
+      [...achievementCatalog].map((a) => ({ ...a, revision: 0 })),
+    );
   async function refresh() {
     if (characterId) setData(await api<TitlesResponse>('/titles/' + characterId));
     else {
@@ -104,7 +111,13 @@ export function TitleHall({
           <p>Conquistas viram histórias. Histórias dão significado ao nome que você carrega.</p>
         </div>
         {(data?.can_edit || canEdit) && (
-          <button className="button outline" onClick={() => setManager(true)}>
+          <button
+            className="button outline"
+            onClick={() => {
+              setInitialAchievement(undefined);
+              setManager(true);
+            }}
+          >
             Administrar títulos
           </button>
         )}
@@ -119,7 +132,7 @@ export function TitleHall({
               <p>{title.description}</p>
               <small>
                 {title.goal.kind === 'achievement'
-                  ? `Conquista: ${achievementCatalog.find((a) => a.code === title.goal.achievement)?.title}`
+                  ? `Conquista: ${definitions.find((a) => a.code === title.goal.achievement)?.title}`
                   : title.goal.kind === 'manual'
                     ? 'Concedido pelo administrador'
                     : `${titleGoalNames[title.goal.kind]}: ${title.goal.target.toLocaleString('pt-BR')}${title.goal.kind === 'spent' ? ' PO' : ''}`}
@@ -149,16 +162,53 @@ export function TitleHall({
         ))}
       </div>
       {!data && !error && <p role="status">Consultando as honrarias…</p>}
+      {data && (
+        <AchievementHonors
+          characterId={characterId}
+          titles={data.items}
+          onDefinitions={setDefinitions}
+          canEdit={data.can_edit}
+          onChanged={refresh}
+          onCreateTitle={(a) => {
+            setInitialAchievement(a);
+            setManager(true);
+          }}
+        />
+      )}
       {manager && (data?.can_edit || canEdit) && (
-        <TitleManager close={() => setManager(false)} changed={refresh} />
+        <TitleManager
+          initialAchievement={initialAchievement}
+          definitions={definitions}
+          close={() => setManager(false)}
+          changed={refresh}
+        />
       )}
     </section>
   );
 }
-function TitleManager({ close, changed }: { close: () => void; changed: () => Promise<void> }) {
+function TitleManager({
+  close,
+  changed,
+  initialAchievement,
+  definitions,
+}: {
+  close: () => void;
+  changed: () => Promise<void>;
+  initialAchievement?: AchievementDefinition;
+  definitions: AchievementDefinition[];
+}) {
   const [catalog, setCatalog] = useState<CharacterTitle[]>([]),
     [selected, setSelected] = useState<CharacterTitle | null>(null),
-    [draft, setDraft] = useState<TitleInput>(structuredClone(emptyTitle)),
+    [draft, setDraft] = useState<TitleInput>(() =>
+      initialAchievement
+        ? {
+            ...structuredClone(emptyTitle),
+            name: initialAchievement.title,
+            description: initialAchievement.description,
+            goal: { kind: 'achievement', target: 1, achievement: initialAchievement.code },
+          }
+        : structuredClone(emptyTitle),
+    ),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [confirm, setConfirm] = useState(false),
@@ -345,6 +395,7 @@ function TitleManager({ close, changed }: { close: () => void; changed: () => Pr
               Forma de conquistar
               <select
                 value={draft.goal.kind}
+                aria-label="Forma de conquistar"
                 onChange={(e) =>
                   setDraft((d) => ({
                     ...d,
@@ -364,13 +415,14 @@ function TitleManager({ close, changed }: { close: () => void; changed: () => Pr
                 Conquista vinculada
                 <select
                   required
+                  aria-label="Conquista vinculada"
                   value={draft.goal.achievement}
                   onChange={(e) =>
                     setDraft((d) => ({ ...d, goal: { ...d.goal, achievement: e.target.value } }))
                   }
                 >
                   <option value="">Escolha a conquista</option>
-                  {achievementCatalog.map((a) => (
+                  {definitions.map((a) => (
                     <option value={a.code} key={a.code}>
                       {a.title}
                     </option>

@@ -9,7 +9,7 @@ export const cards = [
     description:
       'Uma chama protegida contra a noite. O símbolo de quem permanece quando os outros precisam descansar.',
     comment:
-      'A primeira escolha não precisa ser grandiosa. Uma pequena luz já muda o que se enxerga no escuro.',
+      'A Vigília. Ficavam acesas lanternas como esta nos portões do Norte, mesmo quando ninguém esperava visitas. Gosto de pensar que algum viajante conseguiu voltar por causa delas.',
   },
   {
     id: 'raven',
@@ -21,7 +21,7 @@ export const cards = [
     description:
       'Olhos atentos sobre as ruínas. Nem toda mensagem chega pelas mãos de um mensageiro.',
     comment:
-      'Ele observa antes de agir. Talvez seja esse o segredo de voltar inteiro de tantas histórias.',
+      'Olhe as penas, perto do pescoço. O artista pintou cada uma antes de tocar no céu. Disse que este corvo conhecia o caminho de casa; nunca me contou de quem era a casa.',
   },
   {
     id: 'mirror',
@@ -32,7 +32,7 @@ export const cards = [
     cell: 2,
     description: 'Os fragmentos guardam perspectivas que um espelho inteiro jamais mostraria.',
     comment:
-      'Reconhecer uma rachadura é o primeiro passo. Decidir o que fazer com ela costuma demorar mais.',
+      'Recebi este espelho dentro de um pano de linho. O dono pediu que eu não juntasse os pedaços. Guardei a carta, e respeitei o pedido. Você parece ter parado no mesmo fragmento que ele.',
   },
   {
     id: 'moon',
@@ -43,7 +43,7 @@ export const cards = [
     cell: 3,
     description: 'Uma luz distante acompanha os viajantes que seguem depois do último portão.',
     comment:
-      'A lua não escolhe a estrada por você. Mas até os caminhos mais difíceis ficam diferentes sob sua luz.',
+      'Esta foi pintada por alguém que viajava à noite. Repare na figura junto à montanha: ela segue em frente, embora a estrada já tenha sumido. Sempre volto a olhar esse detalhe.',
   },
   {
     id: 'roots',
@@ -54,7 +54,7 @@ export const cards = [
     cell: 4,
     description: 'Muito antes dos nomes dos reinos, estas raízes já sustentavam a terra.',
     comment:
-      'Esta ainda não está à venda. Algumas histórias precisam encontrar o próprio caminho até você.',
+      'Passe o olhar pelas raízes. Quase se confundem com a pedra. Ainda não posso entregar esta carta; prometi guardá-la até que saibam de onde veio.',
   },
   {
     id: 'anchor',
@@ -65,7 +65,7 @@ export const cards = [
     cell: 5,
     description: 'O peso que dá direção ao retorno quando o mar insiste em apagar as rotas.',
     comment:
-      'Nem tudo o que pesa nos impede de seguir. Às vezes é justamente o que torna o retorno possível.',
+      'Um marinheiro deixou esta comigo antes de partir. Pediu que eu a conservasse longe da umidade, como se não tivesse passado a vida no mar. Ela permanece guardada por enquanto.',
   },
   {
     id: 'blade',
@@ -76,7 +76,7 @@ export const cards = [
     cell: 6,
     description: 'A lâmina descansa. O juramento que a acompanha permanece desperto.',
     comment:
-      'Uma lâmina silenciosa conta muito sobre quem a carrega. Esta ainda aguarda sua história.',
+      'O fio está limpo, mas o punho foi gasto por muitas mãos. Há um nome gravado na guarda; a pintura não deixa ler. Também esta continua sob meus cuidados.',
   },
   {
     id: 'throne',
@@ -86,7 +86,8 @@ export const cards = [
     buyable: false,
     cell: 7,
     description: 'Uma cadeira sem dono, um lugar sem promessa. A ausência também deixa sua marca.',
-    comment: 'O trono está vazio. Isso não significa que esteja esperando por qualquer um.',
+    comment:
+      'Quando trouxe esta carta, o pintor ficou um bom tempo sentado onde você está. Perguntou se uma cadeira vazia podia incomodar alguém. Não a pus à venda.',
   },
 ] as const;
 export type Card = (typeof cards)[number];
@@ -102,16 +103,16 @@ export const cardQuestions = [
   {
     question: 'Quem é você?',
     answer:
-      'Por enquanto, sou o Anfitrião. Cuido desta sala e das cartas que chegam até ela. Sente-se; temos tempo para conversar.',
+      'Chamam-me de Anfitrião. Recebo as cartas que viajantes trazem e cuido delas até encontrarem outra companhia. Algumas vieram com uma história; outras, apenas com um pedido de silêncio. Pode se sentar.',
   },
   {
     question: 'Quantas cartas posso levar?',
     answer:
-      'Suas cartas pertencem ao personagem que as recebe. Você pode manter três equipadas de cada vez e trocar a combinação quando quiser.',
+      'Três podem acompanhar você ao mesmo tempo. As demais ficam guardadas na sua coleção. Escolha um dos três lugares e coloque ali a carta que deseja levar; poderá trocar a combinação quando voltar.',
   },
   {
     question: 'Como consigo novas cartas?',
     answer:
-      'As cartas com preço podem ser compradas aqui com seu ouro. As outras ainda guardam histórias que serão abertas depois. Os aprimoramentos também terão seu momento.',
+      'As quatro primeiras estão à venda; deixei o preço junto de cada uma. As outras ficam sob minha guarda por enquanto. Quando houver um modo de recebê-las, você saberá. Não aceito ouro por promessas.',
   },
 ] as const;

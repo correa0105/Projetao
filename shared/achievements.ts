@@ -40,6 +40,13 @@ export const materials = {
   oak: 'Carvalho envelhecido',
   ebony: 'Ébano',
 } as const;
+export type AchievementDefinition = {
+  code: string;
+  title: string;
+  description: string;
+  revision: number;
+};
+export type AchievementCatalogResponse = { can_edit: boolean; items: AchievementDefinition[] };
 export const medalFrames = {
   bronze: 'Folhas de bronze',
   silver: 'Lua élfica',

@@ -10,7 +10,7 @@ const originals: Record<string, Artwork> = {
   rabbit: { frame: [36, 650, 652, 591], width: 94, source: '/pets/classics-a-v3.png' },
   owl: { frame: [741, 635, 421, 619], width: 92, source: '/pets/classics-a-v3.png' },
   fox: { frame: [0, 0, 677, 702], width: 156, source: '/pets/classics-b-v3.png' },
-  raven: { frame: [660, 37, 594, 666], width: 106, source: '/pets/classics-b-v3.png' },
+  raven: { frame: [85, 60, 1100, 1194], width: 106, source: '/pets/raven-ground-v4.png' },
   frog: { frame: [33, 713, 611, 495], width: 70, source: '/pets/classics-b-v3.png' },
   snake: { frame: [638, 693, 607, 554], width: 132, source: '/pets/classics-b-v3.png' },
   rat: { frame: [17, 95, 649, 526], width: 84, source: '/pets/classics-c-v3.png' },

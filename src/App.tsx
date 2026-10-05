@@ -53,7 +53,6 @@ import { Events } from './Events';
 import { TitleHall } from './Titles';
 import { Cards } from './Cards';
 import { Shop } from './Shop';
-import { Achievements } from './Achievements';
 import { Inventory } from './Inventory';
 import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
@@ -93,6 +92,7 @@ const statusLabel = {
 };
 const initialPage = (): Page => {
   const key = location.hash.slice(1);
+  if (key === 'achievements') return 'titles';
   return key in titles ? (key as Page) : 'overview';
 };
 
@@ -563,12 +563,6 @@ function Portal({ user }: { user: User }) {
                 setDetails((current) => (current ? { ...current, inventory } : current))
               }
             />
-          ))}
-        {page === 'achievements' &&
-          (character ? (
-            <Achievements key={character.id} characterId={character.id} />
-          ) : (
-            noCharacter
           ))}
         {['missions', 'board', 'hooks', 'stable'].includes(page) && (
           <NoticeBoard

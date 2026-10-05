@@ -142,6 +142,105 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+.honor-achievements {
+  margin-top: 42px;
+  border-top: 1px solid #a98a4a45;
+  padding-top: 28px;
+}
+.honor-achievements > header {
+  margin-bottom: 24px;
+}
+.honor-achievements-list {
+  display: grid;
+  gap: 12px;
+}
+.honor-achievements-list article {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #a98a4a30;
+  background: #090e1360;
+  border-radius: 5px;
+}
+.honor-achievement-mark {
+  flex: 0 0 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #987f58;
+  border: 1px solid #a98a4a45;
+  border-radius: 50%;
+}
+.honor-achievements-list article[data-earned='true'] .honor-achievement-mark {
+  color: #dfc48c;
+  background: #ad874d20;
+}
+.honor-achievements-list article > div:first-of-type {
+  flex: 1;
+  min-width: 0;
+}
+.honor-achievements-list small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.honor-achievement-actions {
+  display: grid;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.honor-achievement-actions button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+.honor-achievement-progress span {
+  display: block;
+  font-size: 10px;
+  color: #9a9282;
+  margin-top: 8px;
+}
+.achievement-definition-editor fieldset {
+  display: grid;
+  gap: 18px;
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.achievement-definition-editor label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+.achievement-definition-editor p {
+  color: #b7ad98;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.achievement-definition-editor input,
+.achievement-definition-editor textarea,
+.achievement-definition-editor select {
+  width: 100%;
+  min-width: 0;
+}
+@media (max-width: 650px) {
+  .honor-achievements-list article {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+  .honor-achievement-actions {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 18px;
+  }
+  .honor-achievements-list article > div:first-of-type {
+    flex-basis: 70%;
+  }
+}
 @media (max-width: 650px) {
   .title-hall {
     padding: 20px;

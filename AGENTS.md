@@ -37,6 +37,13 @@ Refino de 05/10: placa sem riscos/linhas animadas; falas naturais e individuais.
 As dez aparências clássicas usam novas artes v3 no nível das alternativas.
 Ambas as corujas ficam no chão, sem tronco/poleiro, com patas visíveis.
 Preservar tamanho relativo por espécie. Prompts em docs/PET-SHOP-REFINEMENT.md.
+Direção posterior de 05/10: corvo clássico também no chão, sem galho, usando
+raven-ground-v4.png. Salão de cartas com janela à esquerda, anfitrião menor/ao
+fundo em sombra e cartas em leque à frente; conversa aparece só sob interação.
+Estante/página independente de Conquistas removidas; conquistas integradas em
+Títulos, nome/descrição/vínculo editáveis pelo administrador (migration 055).
+Não apagar histórico de conquistas, estantes ou títulos recebidos. Exibição de
+título separada na tela do personagem/ficha. Detalhes em docs/SALAO-CONQUISTAS.md.
 
 ## Acordos de desenvolvimento
 
