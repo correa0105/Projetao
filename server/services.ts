@@ -1,5 +1,6 @@
 import { transaction } from './db.js';
 import { grantPurchaseItems } from './purchase-grants.js';
+import { currentGoldUnlimited, spendGold } from './gold.js';
 
 export class AppError extends Error {
   constructor(
@@ -18,6 +19,7 @@ export async function purchase(
   key: string,
 ) {
   return transaction(async (client) => {
+    const gold_unlimited = await currentGoldUnlimited(client, userId);
     // Serialize all spending for a character; ownership is checked inside the transaction.
     const {
       rows: [character],
@@ -35,7 +37,7 @@ export async function purchase(
     if (previous) {
       if (previous.item_id !== itemId || previous.quantity !== quantity)
         throw new AppError(409, 'Esta chave de compra já foi usada para outro pedido.');
-      return { purchase: previous, gold_cp: character.gold_cp, replayed: true };
+      return { purchase: previous, gold_cp: character.gold_cp, gold_unlimited, replayed: true };
     }
     const {
       rows: [item],
@@ -45,12 +47,14 @@ export async function purchase(
     if (!item) throw new AppError(404, 'Item indisponível.');
     if (item.price_cp === null) throw new AppError(409, 'Este item ainda não tem preço definido.');
     const total = item.price_cp * quantity;
-    if (character.gold_cp < total) throw new AppError(409, 'Ouro insuficiente para esta compra.');
-    const {
-      rows: [updated],
-    } = await client.query(
-      'UPDATE characters SET gold_cp=gold_cp-$1 WHERE id=$2 RETURNING gold_cp',
-      [total, characterId],
+    if (total > 2147483647)
+      throw new AppError(409, 'O valor do pedido excede o limite de uma compra.');
+    const gold_cp = await spendGold(
+      client,
+      character,
+      total,
+      gold_unlimited,
+      'Ouro insuficiente para esta compra.',
     );
     const {
       rows: [order],
@@ -63,6 +67,6 @@ export async function purchase(
       "INSERT INTO achievements(character_id,code) VALUES($1,'first_purchase') ON CONFLICT DO NOTHING",
       [characterId],
     );
-    return { purchase: order, gold_cp: updated.gold_cp, replayed: false };
+    return { purchase: order, gold_cp, gold_unlimited, replayed: false };
   });
 }

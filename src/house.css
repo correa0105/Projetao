@@ -86,6 +86,7 @@
   height: auto;
   min-width: 0;
   transform-origin: 50% 100%;
+  transition: none;
   cursor: grab;
 }
 .house-scene .house-piece:hover,
@@ -93,7 +94,8 @@
   background: transparent;
   border: 0;
 }
-.house-piece.selected {
+.house-piece.selected,
+.house-actor.selected {
   outline: 1px dashed #d4b57b;
   outline-offset: 6px;
 }
@@ -125,6 +127,29 @@
   transform: translateX(-50%);
   white-space: nowrap;
   text-shadow: 0 2px 4px #000;
+  pointer-events: none;
+}
+.house-actor-controls {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 0 2px;
+  font-size: 12px;
+}
+.house-actor-controls label {
+  display: grid;
+  gap: 5px;
+  flex: 1 1 240px;
+  max-width: 380px;
+  min-width: 0;
+}
+.house-actor-controls select {
+  width: 100%;
+  min-width: 0;
+}
+.house-actor-controls button {
+  flex: 0 1 auto;
 }
 .house-item-art {
   display: block;
@@ -132,19 +157,178 @@
   width: 100%;
   height: auto;
 }
+.house-item-projection {
+  display: block;
+  width: 100%;
+  container-type: inline-size;
+  pointer-events: none;
+}
+.house-item-projection > .house-item-art {
+  transform: perspective(300cqw) rotateX(var(--house-depth-angle, 0deg))
+    rotateY(var(--house-depth-yaw, 0deg));
+  transform-origin: 50% 100%;
+}
+.house-projection-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+.house-projection-controls label {
+  margin: 0;
+}
+.house-projection-controls label:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.house-projection-controls input[type='checkbox'] {
+  width: auto;
+}
+.house-projection-controls label:last-child {
+  flex: 1 1 200px;
+  max-width: 320px;
+}
 .house-item-art > img {
   width: 100%;
   height: auto;
   display: block;
 }
-.house-frame-art .house-picture {
+.house-frame-surface {
   position: absolute;
   top: 0;
   left: 0;
   width: 100px;
   height: 140px;
   transform-origin: 0 0;
+  overflow: hidden;
+  clip-path: inset(0);
+  z-index: 1;
+}
+.house-frame-art > img {
+  position: relative;
+  z-index: 2;
+}
+.house-frame-wood {
+  position: absolute;
+  inset: 0;
+  background: url('/house/items/views/frame/4.webp') center / 270% auto;
+}
+.house-frame-art .house-picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+.house-piece-tools {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 750;
+}
+.house-piece-tools button {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #b79c65;
+  border-radius: 50%;
+  background: #171b16ed;
+  color: #e5cc94;
+  box-shadow: 0 2px 7px #0009;
+  pointer-events: auto;
+}
+.house-scene .house-piece-tools button:not(:disabled):active {
+  transform: none;
+}
+.house-piece-popover {
+  position: fixed;
+  z-index: 2100;
+  max-height: calc(100dvh - 24px);
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid #9a8151;
+  border-radius: 8px;
+  background: #171e22f7;
+  color: #e3d5ba;
+  box-shadow: 0 8px 30px #000b;
+  font-size: 13px;
+}
+.house-piece-popover-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.house-piece-popover button {
+  border: 1px solid #79695180;
+  border-radius: 4px;
+  background: #131d24;
+  color: #d5cec0;
+  cursor: pointer;
+}
+.house-piece-popover button:hover:not(:disabled) {
+  border-color: #b59863;
+  background: #29343b;
+}
+.house-piece-popover button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.house-piece-popover-title strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.house-piece-popover-title button {
+  flex: 0 0 28px;
+  padding: 4px;
+  display: grid;
+  place-items: center;
+}
+.house-piece-popover .house-transform {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 0;
+  border-top: 1px solid #77644455;
+  margin: 10px 0 0;
+  min-width: 0;
+  padding-bottom: 0;
+}
+.house-piece-popover .house-transform label {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  max-width: none;
+  grid-column: 1 / -1;
+}
+.house-piece-popover .house-transform input,
+.house-piece-popover .house-transform select {
+  width: 100%;
+  min-width: 0;
+}
+.house-piece-popover .house-transform small {
+  color: #b7aa91;
+  font-size: 11px;
+}
+.house-piece-popover .house-transform .house-frame-backing-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.house-piece-popover .house-frame-backing-toggle input {
+  width: auto;
+}
+.house-piece-popover .house-transform button {
+  padding: 8px;
+  min-width: 0;
+  font-size: 12px;
+  white-space: normal;
 }
 .house-scene-caption {
   position: absolute;
@@ -383,7 +567,7 @@
 }
 .house-rp-overlay {
   position: absolute;
-  z-index: 450;
+  z-index: 700;
   left: 50%;
   bottom: 6%;
   transform: translateX(-50%);
@@ -397,6 +581,21 @@
   text-shadow:
     0 1px 3px #000,
     0 1px 6px #000;
+}
+.house-rp-pin {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: #c6af84;
+}
+.house-rp-pin input {
+  width: auto;
+  max-width: 16px;
+  margin: 0;
+  accent-color: #aa8650;
 }
 .house-rp-log {
   max-height: clamp(48px, 11vw, 180px);
@@ -544,7 +743,9 @@
   .house-rooms button {
     min-width: 0;
     flex: 1;
-    padding: 8px;
+    padding: 8px 6px;
+    font-size: 12px;
+    white-space: nowrap;
   }
   .house-rooms span {
     display: none;

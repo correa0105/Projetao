@@ -78,7 +78,8 @@ export function EquipmentPanel({
               (item.quantity || 0) >
                 storage.equipped.filter(
                   (equipped) => equipped.slot !== slot && equipped.id === item.id,
-                ).length,
+                ).length +
+                  (storage.companion_allocated?.[item.id] || 0),
           );
           const blocked = equipmentBlockMessage(slot, storage.equipped);
           const draggedItem = dragged && storage.inventory.find((item) => item.id === dragged.id);

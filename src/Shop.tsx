@@ -2,45 +2,89 @@ import { FlashMessage } from './FlashMessage';
 import {
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type CSSProperties,
   type PointerEvent,
 } from 'react';
-import { Coins, Search, ShoppingCart, X, Plus } from 'lucide-react';
+import { Coins, Search, ShoppingCart, X, Plus, Pencil } from 'lucide-react';
 import type { Character, Item } from './types';
 import { money } from '../shared/rules';
 import { shopWeight } from '../shared/armor-bundles';
-import { post } from './api';
+import { api, post } from './api';
 import { Modal } from './components';
 import content from './shop-content.json';
 import './shop.css';
 import './shop-reference.css';
 import './shop-responsive.css';
+import './shop-prices.css';
+import './shop-variants.css';
 import { merchantComment, merchantConversations } from './shop-presentation';
 import { useShopCounterSound } from './shop-counter-audio';
 import { shopItemScale } from './shop-item-scale';
 import { houseCatalog } from '../shared/house';
 import { HousePurchase } from './HousePurchase';
+import { ShopPriceEditor } from './ShopPriceEditor';
+import {
+  groupShopItems,
+  getVariantLabel,
+  matchShopGroup,
+  type ShopItemGroup,
+} from './shop-variants';
 
-const houseItems: Item[] = houseCatalog.map((item) => ({
-  id: `house-${item.id}`,
-  name: item.name,
-  original_name: item.name,
-  category: 'Itens de House',
-  description: item.description,
-  price_cp: item.price_cp,
-  image_path: item.image,
-  audio_path: `/audio/emporium/house-${item.id}.wav`,
-  merchant_comment: item.speech,
-  weight_lb: '0',
-  weight_estimated: true,
-  source: 'Alvorada Cinzenta',
-  source_url: '',
-}));
+type HouseSpec = (typeof houseCatalog)[number];
+const asShopHouseItems = (specs: HouseSpec[]): Item[] =>
+  specs.map((item) => ({
+    id: `house-${item.id}`,
+    name: item.name,
+    original_name: item.name,
+    category: 'Itens de House',
+    description: item.description,
+    price_cp: item.price_cp,
+    image_path: item.image,
+    audio_path: `/audio/emporium/house-${item.id}.wav`,
+    merchant_comment: item.speech,
+    weight_lb: '0',
+    weight_estimated: true,
+    source: 'Alvorada Cinzenta',
+    source_url: '',
+  }));
 
 type Line = { id: string; quantity: number; x: number; y: number; z: number };
 type Point = { x: number; y: number };
+type OfferChoice = { model: string; variant: string; query: string };
+function chosenOffer(group: ShopItemGroup, choice: OfferChoice | undefined, query: string) {
+  if (!group.family) return { model: null, item: group.variants[0] };
+  const matches = matchShopGroup(group, query);
+  const model = group.models.find((candidate) => candidate.id === choice?.model);
+  if (
+    !model ||
+    (choice?.query !== normalize(query) &&
+      !matches.some((candidate) => candidate.base_item === model.id))
+  )
+    return { model: null, item: null };
+  const candidates = matches.filter((candidate) => candidate.base_item === model.id);
+  const preferred = model.variants.find((candidate) => candidate.id === choice?.variant);
+  const item =
+    preferred &&
+    (choice?.query === normalize(query) ||
+      candidates.some((candidate) => candidate.id === preferred.id))
+      ? preferred
+      : model.variants.length === 1
+        ? model.variants[0]
+        : query.trim() && candidates.length === 1
+          ? candidates[0]
+          : null;
+  return { model, item };
+}
+function variantHeading(group: ShopItemGroup) {
+  if (group.family === 'Armor of Resistance') return 'Resistência';
+  if (group.variants.some((item) => item.damage_type)) return 'Tipo de dano';
+  if (group.variants.some((item) => item.enhancement != null)) return 'Bônus mágico';
+  if (group.family === 'Dragon Scale Mail') return 'Dragão';
+  return 'Variação';
+}
 function SpeechBubbleShape() {
   const ref = useRef<SVGSVGElement>(null);
   const [shape, setShape] = useState({ width: 200, height: 100, x: 100, y: 140, bottom: true });
@@ -140,12 +184,64 @@ export function Shop({
   catalog: ordinaryCatalog,
   character,
   onPurchased,
+  canAdmin = false,
 }: {
   catalog: Item[];
   character?: Character;
   onPurchased: () => Promise<void>;
+  canAdmin?: boolean;
 }) {
-  const catalog = [...ordinaryCatalog, ...houseItems];
+  const [houseSpecs, setHouseSpecs] = useState<HouseSpec[]>([]);
+  const [houseCatalogError, setHouseCatalogError] = useState('');
+  const [priceEdit, setPriceEdit] = useState<Item | null>(null);
+  const [priceNotice, setPriceNotice] = useState('');
+  const houseItems = useMemo(() => asShopHouseItems(houseSpecs), [houseSpecs]);
+  const catalog = useMemo(() => [...ordinaryCatalog, ...houseItems], [ordinaryCatalog, houseItems]);
+  const offers = useMemo(() => groupShopItems(catalog), [catalog]);
+  useEffect(() => {
+    let active = true;
+    api<{ catalog: HouseSpec[] }>('/house')
+      .then((result) => {
+        if (active) setHouseSpecs(result.catalog);
+      })
+      .catch(() => {
+        if (active) setHouseCatalogError('Não foi possível consultar os preços de House.');
+      });
+    return () => {
+      active = false;
+    };
+  }, [ordinaryCatalog]);
+  useEffect(() => {
+    if (!canAdmin) setPriceEdit(null);
+  }, [canAdmin]);
+  async function reloadHousePrices() {
+    setHouseCatalogError('');
+    try {
+      const result = await api<{ catalog: HouseSpec[] }>('/house');
+      setHouseSpecs(result.catalog);
+    } catch {
+      setHouseCatalogError('Não foi possível consultar os preços de House.');
+      throw Error('Não foi possível atualizar os preços exibidos.');
+    }
+  }
+  async function priceSaved(result: { id: string; price_cp: number | null }) {
+    if (result.id.startsWith('house-') && result.price_cp !== null) {
+      setHouseSpecs((current) =>
+        current.map((item) =>
+          `house-${item.id}` === result.id ? { ...item, price_cp: result.price_cp! } : item,
+        ),
+      );
+    }
+    setExamined((current) =>
+      current?.id === result.id ? { ...current, price_cp: result.price_cp } : current,
+    );
+    try {
+      await Promise.all([onPurchased(), reloadHousePrices()]);
+      setPriceNotice('Preço salvo.');
+    } catch {
+      setPriceNotice('Preço salvo. Atualize a página para consultar os preços atuais.');
+    }
+  }
   const categories = [
     ...new Set([
       'Itens mundanos',
@@ -157,11 +253,17 @@ export function Shop({
   const [houseBuy, setHouseBuy] = useState<(typeof houseCatalog)[number] | null>(null);
   const [houseNotice, setHouseNotice] = useState('');
   useEffect(() => {
+    setHouseBuy((current) =>
+      current ? houseSpecs.find((item) => item.id === current.id) || null : null,
+    );
+  }, [houseSpecs]);
+  useEffect(() => {
     setHouseBuy(null);
     setHouseNotice('');
   }, [character?.id]);
   const [category, setCategory] = useState('Todos'),
     [query, setQuery] = useState('');
+  const [offerChoices, setOfferChoices] = useState<Record<string, OfferChoice>>({});
   const [carts, setCarts] = useState<Record<string, Line[]>>({});
   const [selected, setSelected] = useState<string | null>(null),
     [examined, setExamined] = useState<Item | null>(null);
@@ -254,15 +356,30 @@ export function Shop({
     0,
   );
   const unpriced = lines.some((line) => items.get(line.id)?.price_cp == null);
-  const filtered = catalog.filter(
-    (i) =>
-      (category === 'Todos' || category === i.category) &&
-      normalize(i.name + ' ' + i.original_name).includes(normalize(query)),
+  const filtered = offers.filter(
+    (offer) =>
+      (category === 'Todos' || offer.categories.includes(category)) &&
+      matchShopGroup(offer, query).length > 0,
   );
   function say(item: Item) {
     setTalk(false);
     setSpeech(item.category === 'Itens de House' ? item.merchant_comment! : merchantComment(item));
     setSpeechKey((v) => v + 1);
+  }
+  function chooseModel(offer: ShopItemGroup, model: string) {
+    const choice = { model, variant: '', query: normalize(query) };
+    setOfferChoices((current) => ({ ...current, [offer.id]: choice }));
+    const item = chosenOffer(offer, choice, query).item;
+    setExamined(item);
+    if (item) say(item);
+  }
+  function chooseVariant(offer: ShopItemGroup, item: Item) {
+    setOfferChoices((current) => ({
+      ...current,
+      [offer.id]: { model: item.base_item!, variant: item.id, query: normalize(query) },
+    }));
+    setExamined(item);
+    say(item);
   }
   function update(next: Line[], changed = true) {
     setCarts((current) => ({ ...current, [owner]: next }));
@@ -300,6 +417,10 @@ export function Shop({
     setCheckout(false);
     const item = items.get(id);
     if (item) {
+      const offer = offers.find(
+        (candidate) => candidate.family && candidate.variants.some((variant) => variant.id === id),
+      );
+      if (offer) chooseVariant(offer, item);
       setExamined(item);
       say(item);
     }
@@ -323,7 +444,7 @@ export function Shop({
         setError('Escolha um personagem para comprar.');
         return;
       }
-      setHouseBuy(houseCatalog.find((spec) => `house-${spec.id}` === item.id) || null);
+      setHouseBuy(houseSpecs.find((spec) => `house-${spec.id}` === item.id) || null);
       return;
     }
     const existing = lines.find((line) => line.id === item.id);
@@ -476,8 +597,8 @@ export function Shop({
                 {name}
                 <span>
                   {name === 'Todos'
-                    ? catalog.length
-                    : catalog.filter((i) => i.category === name).length}
+                    ? offers.length
+                    : offers.filter((offer) => offer.categories.includes(name)).length}
                 </span>
               </button>
             ))}
@@ -495,7 +616,7 @@ export function Shop({
               </label>
               <span>
                 <Coins size={15} />
-                {money(character?.gold_cp || 0)} PO
+                {character?.gold_unlimited ? '∞' : money(character?.gold_cp || 0)} PO
               </span>
               <button
                 className="shop-cart-toggle"
@@ -510,54 +631,154 @@ export function Shop({
               </button>
             </div>
             <div className="shop-product-list" tabIndex={0} aria-label="Itens da loja">
-              {filtered.map((item) => (
-                <article
-                  key={item.id}
-                  className={`shop-product${examined?.id === item.id ? ' is-examined' : ''}`}
-                  style={{ '--item-scale': itemScale(item) } as CSSProperties}
-                >
-                  <button
-                    className="shop-product-art"
-                    aria-label={`Examinar ${item.name}`}
-                    draggable={!busy}
-                    onDragStart={(event) => {
-                      event.dataTransfer.setData('application/x-alvorada-shop', item.id);
-                      event.dataTransfer.effectAllowed = 'copy';
-                      say(item);
-                    }}
-                    onClick={() => {
-                      setExamined(item);
-                      say(item);
-                    }}
-                  >
-                    <img
-                      src={item.image_path || ''}
-                      alt={item.name}
-                      draggable={false}
-                      loading="lazy"
-                    />
+              {houseCatalogError && (
+                <p className="shop-catalog-note" role="status">
+                  {houseCatalogError}{' '}
+                  <button type="button" onClick={() => void reloadHousePrices().catch(() => {})}>
+                    Tentar novamente
                   </button>
-                  <div>
-                    <small>{item.category}</small>
-                    <h3>{item.name}</h3>
-                    <p>{item.description}</p>
-                    {item.category !== 'Itens de House' && (
-                      <span className="shop-weight">
-                        {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
-                        {shopWeight(item).toLocaleString('pt-BR')} lb
-                      </span>
-                    )}
-                    <footer>
-                      <strong>
-                        {item.price_cp === null ? 'Preço a definir' : `${money(item.price_cp)} PO`}
-                      </strong>
-                      <button disabled={busy} onClick={() => add(item)}>
-                        {item.price_cp === null ? 'Examinar na mesa' : 'Comprar'} <Plus size={13} />
-                      </button>
-                    </footer>
-                  </div>
-                </article>
-              ))}
+                </p>
+              )}
+              {filtered.map((offer) => {
+                const { model, item: chosen } = chosenOffer(offer, offerChoices[offer.id], query);
+                const item = chosen || offer.variants[0];
+                const grouped = !!offer.family;
+                const familyTitle = offer.name.toLocaleUpperCase('pt-BR');
+                const title = grouped
+                  ? `${familyTitle}${!model ? ` (ESCOLHER TIPO DA ${offer.kind === 'armor' ? 'ARMADURA' : 'ARMA'})` : ''}`
+                  : item.name;
+                const modelHeading = offer.kind === 'armor' ? 'Tipo de armadura' : 'Tipo de arma';
+                const variantTitle = variantHeading(offer);
+                return (
+                  <article
+                    key={offer.id}
+                    data-offer-id={offer.id}
+                    data-item-id={chosen?.id || ''}
+                    data-family={offer.family || undefined}
+                    className={`shop-product${grouped ? ' shop-product-family' : ''}${chosen && examined?.id === chosen.id ? ' is-examined' : ''}`}
+                    style={{ '--item-scale': itemScale(item) } as CSSProperties}
+                  >
+                    <button
+                      className="shop-product-art"
+                      aria-label={`Examinar ${chosen?.name || title}`}
+                      disabled={grouped && !chosen}
+                      draggable={!busy && !!chosen}
+                      onDragStart={(event) => {
+                        if (!chosen) return event.preventDefault();
+                        event.dataTransfer.setData('application/x-alvorada-shop', chosen.id);
+                        event.dataTransfer.effectAllowed = 'copy';
+                        say(chosen);
+                      }}
+                      onClick={() => {
+                        if (!chosen) return;
+                        setExamined(chosen);
+                        say(chosen);
+                      }}
+                    >
+                      <img
+                        src={grouped ? `/shop/magic-${offer.kind}-box.webp` : item.image_path || ''}
+                        alt={grouped ? `Caixa selada de ${offer.name}` : item.name}
+                        draggable={false}
+                        loading="lazy"
+                      />
+                    </button>
+                    <div>
+                      <small>{chosen ? item.category : offer.categories.join(' · ')}</small>
+                      <h3>{title}</h3>
+                      {grouped && (
+                        <div className="shop-variant-selectors">
+                          <label>
+                            {modelHeading}
+                            <select
+                              aria-label={`${modelHeading} de ${familyTitle}`}
+                              value={model?.id || ''}
+                              disabled={busy}
+                              onChange={(event) => chooseModel(offer, event.target.value)}
+                            >
+                              <option value="" disabled>
+                                {offer.kind === 'armor'
+                                  ? 'ESCOLHER TIPO DA ARMADURA'
+                                  : 'ESCOLHER TIPO DA ARMA'}
+                              </option>
+                              {offer.models.map((choice) => (
+                                <option key={choice.id} value={choice.id}>
+                                  {choice.label}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          {offer.models.some((choice) => choice.variants.length > 1) && (
+                            <label>
+                              {variantTitle}
+                              <select
+                                aria-label={`${variantTitle} de ${familyTitle}`}
+                                value={chosen?.id || ''}
+                                disabled={busy || !model}
+                                onChange={(event) => {
+                                  const variant = offer.variants.find(
+                                    (choice) => choice.id === event.target.value,
+                                  );
+                                  if (variant) chooseVariant(offer, variant);
+                                }}
+                              >
+                                <option value="" disabled>
+                                  Escolher {variantTitle.toLocaleLowerCase('pt-BR')}
+                                </option>
+                                {(model?.variants || []).map((variant) => (
+                                  <option key={variant.id} value={variant.id}>
+                                    {getVariantLabel(variant, model?.label)}
+                                  </option>
+                                ))}
+                              </select>
+                            </label>
+                          )}
+                        </div>
+                      )}
+                      <p>
+                        {chosen
+                          ? item.description
+                          : `Escolha o tipo ${offer.kind === 'armor' ? 'da armadura' : 'da arma'} para consultar seus detalhes e preço.`}
+                      </p>
+                      {chosen && item.category !== 'Itens de House' && (
+                        <span className="shop-weight">
+                          {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
+                          {shopWeight(item).toLocaleString('pt-BR')} lb
+                        </span>
+                      )}
+                      <footer>
+                        <span className="shop-price">
+                          <strong>
+                            {!chosen
+                              ? 'Escolha o tipo'
+                              : item.price_cp === null
+                                ? 'Preço a definir'
+                                : `${money(item.price_cp)} PO`}
+                          </strong>
+                          {canAdmin && chosen && (
+                            <button
+                              type="button"
+                              className="shop-price-edit"
+                              aria-label={`Editar preço de ${item.name}`}
+                              title="Editar preço"
+                              disabled={busy}
+                              onClick={() => {
+                                setPriceNotice('');
+                                setPriceEdit(chosen);
+                              }}
+                            >
+                              <Pencil size={13} aria-hidden="true" />
+                            </button>
+                          )}
+                        </span>
+                        <button disabled={busy || !chosen} onClick={() => chosen && add(chosen)}>
+                          {item.price_cp === null ? 'Examinar na mesa' : 'Comprar'}{' '}
+                          <Plus size={13} />
+                        </button>
+                      </footer>
+                    </div>
+                  </article>
+                );
+              })}
               {!filtered.length && <p className="shop-no-results">Nenhum item encontrado.</p>}
             </div>
           </div>
@@ -573,6 +794,7 @@ export function Shop({
           key={`${character.id}-${houseBuy.id}`}
           item={houseBuy}
           characterId={character.id}
+          goldUnlimited={character.gold_unlimited}
           close={() => setHouseBuy(null)}
           purchased={async () => {
             placeSound(houseItems.find((i) => i.id === `house-${houseBuy.id}`)!);
@@ -581,6 +803,15 @@ export function Shop({
           }}
         />
       )}
+      {canAdmin && priceEdit && (
+        <ShopPriceEditor
+          key={priceEdit.id}
+          item={priceEdit}
+          close={() => setPriceEdit(null)}
+          saved={priceSaved}
+        />
+      )}
+      {priceNotice && <FlashMessage kind="info">{priceNotice}</FlashMessage>}
       <section className="shop-counter merchant-countertop" aria-label="Balcão de compras">
         <div
           className="shop-table-surface"
@@ -774,7 +1005,9 @@ export function Shop({
               );
             })}
             <div className="shop-checkout-total">
-              <span>Saldo: {money(character?.gold_cp || 0)} PO</span>
+              <span>
+                Saldo: {character?.gold_unlimited ? '∞' : money(character?.gold_cp || 0)} PO
+              </span>
               <strong>Total: {money(total)} PO</strong>
             </div>
             {unpriced && (
@@ -782,14 +1015,18 @@ export function Shop({
                 Há itens sem preço definido no carrinho. Retire-os para finalizar a compra.
               </p>
             )}
-            {character && total > character.gold_cp && (
+            {character && !character.gold_unlimited && total > character.gold_cp && (
               <FlashMessage>Saldo insuficiente para este carrinho.</FlashMessage>
             )}
             {error && <FlashMessage>{error}</FlashMessage>}
             <button
               className="button primary full"
               disabled={
-                busy || !character || !lines.length || unpriced || total > (character?.gold_cp || 0)
+                busy ||
+                !character ||
+                !lines.length ||
+                unpriced ||
+                (!character.gold_unlimited && total > character.gold_cp)
               }
               onClick={() => void pay()}
             >

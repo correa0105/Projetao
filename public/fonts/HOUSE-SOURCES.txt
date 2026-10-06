@@ -1,0 +1,22 @@
+House reading fonts
+Downloaded on 2026-10-06 from the official Google Fonts repository.
+Repository: https://github.com/google/fonts
+Pinned revision: 7085eb89a950e85db5b166b7a58d414544b4140c
+Files are unmodified and distributed with their individual SIL OFL 1.1 licenses.
+
+house-bilbo-regular.ttf
+Source: https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/bilbo/Bilbo-Regular.ttf
+License: house-bilbo-OFL.txt
+SHA-256: f479505c839db0c7a8be7108d046acca3d409a034b777514241cc6a2f9d818fc
+
+house-tangerine-bold.ttf
+Source: https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/tangerine/Tangerine-Bold.ttf
+License: house-tangerine-OFL.txt
+SHA-256: a35368c814c71c15928ffc60cbac32bc81461f03b895a4a607df9c64b3d1548b
+
+house-pirata-one-regular.ttf
+Source: https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/pirataone/PirataOne-Regular.ttf
+License: house-pirataone-OFL.txt
+SHA-256: 5347a2e155589ecf667d4b766613c8ee003edde9f83717fd24c09599a4b1ecc0
+
+Classic reader option uses the browser's existing Georgia serif font.

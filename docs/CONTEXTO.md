@@ -1,5 +1,127 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Verificação e atualização local (06/10/2026)
+
+Aplicação reconstruída com TypeScript, Vite e tsup, e atualizada em localhost:3000.
+Migrations 075 e 076 aplicadas; Docker saudável. Ilustrador do host reiniciado com
+a sessão ChatGPT existente, heartbeat disponível e sem API key. Backup custom
+validado em .local/backups/before-companion-equipment-20261006.dump (432.489.684 bytes).
+Resumos de integridade pré/pós confirmaram preservação de contas, personagens e
+retratos, inventário, compras, conquistas, companheiros, cartas, títulos, perfis,
+social, mesas/arquivos/chat/barras, House, saldo e progressão. Arte estática servida
+foi comparada por SHA-256 com cartas, fontes e caixas locais.
+
+QA de navegador: House cursor/camadas, engrenagem/setas, leitura/fontes/madeira/RP,
+preços, variantes, nomes obrigatórios, ouro ilimitado e equipamentos dos animais
+em 1440/768/390/320 px. VTT carrega as 330 artes autenticadas; arraste nativo de
+monstro cria, seleciona e persiste após reload, inclusive após carregar o acervo.
+Jogador permanece sem permissão administrativa. Os pedidos de arte animal do smoke
+foram concluídos por fixture interna, sem gasto no provedor; caixas/cartas finais
+foram geradas pela ferramenta nativa e salvas no projeto com seus prompts.
+
+## Equipamento dos animais, variantes e ouro administrativo (06/10/2026)
+
+Correção VTT: o acervo premium de 330 artes esgotava o limite comum de 240/min e
+causava HTTP 429 nas miniaturas e depois no salvamento da mesa. GET/HEAD autenticados
+premium/preview têm orçamento próprio de 1200/min por usuário, preservando 401/403,
+no-store e limite comum de mutações. Arquivos/hashes das artes estavam íntegros.
+Regressão carrega acervo, decodifica dragões e salva documento em seguida.
+
+House admin/rewards corrigido de ORDER BY created_at inexistente para ORDER BY id.
+House 16/16 cobre consulta administrativa, recusa de jogador/visitante/sem sessão e revogação.
+
+Inventário alterna Personagem/Montaria/Mascote no painel equipado. Animais usam
+espaços compatíveis com anatomia; reservas de cópias reais compartilham mochila,
+equipamento humano/animais, cofre e consumíveis VTT. Migration 076 mantém compras
+legadas do estábulo e permite tirar/trocar/reequipar sem perder o bem. Vestir usa
+BASE confiável da espécie/pelagem e referências de equipamentos, substituindo
+aparência antiga, com imagem privada no acampamento/inventário/House. Cota humana
+existente de 2/mês UTC compartilhada; allowances preservadas, failed/stale liberam.
+Última arte permanece até nova válida; revisão mudou durante job não aplica.
+Guia: docs/COMPANION-EQUIPMENT.md. Browser 3020 em quatro larguras e API/worker aprovados
+sem gasto no provedor (conclusão interna de fixtures).
+
+31 famílias mágicas que possuem variantes viraram ofertas únicas no Empório,
+preservando os 684 IDs reais/preços/artes/sons/falas das variantes. Escolha explícita
+de modelo e eventual dano/bônus/cor é obrigatória antes de comprar/arrastar/editar
+preço. Resistência tem 12 modelos × 10 tipos válidos no SRD 5.2.1; escolhas incompletas não
+compram item arbitrário. Caixas public/shop/magic-{weapon,armor}-box.webp têm um
+único broche no selo; prompts/hashes em magic-boxes-manifest.json, geração nativa.
+
+Administrador vigente recebe gold_unlimited=true e ∞ PO nas interfaces, sem alterar
+gold_cp salvo. Seis caminhos de compra consultam "user".administrador com FOR SHARE
+antes do lock do personagem: item Empório, carrinho, House, pets, estábulo, cartas.
+Admin não debita/não bloqueia por saldo; histórico mantém preço real/idempotência.
+Revogação vale na mesma sessão, jogadores pagam normalmente e gold int não inflado.
+Ficha VTT consulta privilégio do dono do personagem, nunca o do mestre. Testes de
+ouro 8/8 e regressões de preços/House/nomes/cartas passaram; UI 3016 com saldo zero validada.
+
+## Preços administrativos e novo refino de House (06/10/2026)
+
+Montarias/mascotes só podem ser comprados com nome pessoal.
+Stable/PetShop removem fallback automático ao nome da espécie, usam required,
+botões desabilitados para trim vazio e guardas no envio/confirmar. APIs já exigiam
+string trim min1 e foram preservadas, incluindo histórico/replays e nomes antigos;
+restrição não renomeia animais comprados. Texto curto explica o campo obrigatório.
+
+Empório tem lápis Editar preço junto a cada oferta, inclusive os doze objetos
+House. Administrador definido por "user".administrador=1 consultado a cada PATCH
+/api/catalog/:id/price; não aceitar permissão pelo cliente. PO com vírgula/ponto
+converte a cobre inteiro positivo até 2.147.483.647. Catálogo comum aceita null
+para suspender compra; House exige positivo. Migration 075 guarda overrides,
+autor/data; seed reaplica todos os preços sob o mesmo lock das edições. Compras
+mantêm locks, saldo transacional e total histórico; replays usam o pedido antigo.
+GET /house retorna preços efetivos para Empório/Mobília, incluindo refresh.
+Oito testes isolados de preços e regressões Empório/House aprovados.
+
+Bug reproduzido: button:active global removia translate do personagem enquanto
+o botão estava pressionado. Ator agora tem transform explícito e sprites sem
+transição/arraste nativo. Curva de profundidade passa a linear (base y=.84 ainda 1),
+pois a quadrática perdia solução ao agarrar o alto de retrato comprido. Coordenadas
+internas da cena recalculadas ao rolar; polling não restaura presença enquanto
+ela está sendo movida/salva. Camadas ficam sob a cena, por objeto ou atalhos
+atrás/à frente da mobília, com ownership e persistência existentes.
+
+Experimento solicitado: Decorar → Perspectiva dos itens permite desligar a
+projeção interna; padrão 12° por conta/navegador. Cada peça salva pitch 0–20° e
+yaw −20–20° no layout JSONB, com revisão/ownership, sem migration de dados.
+Negativo recua esquerda (direita fica à frente); positivo recua direita.
+Quadros/imagens próprias compõem o mesmo transform, chão/posição preservados;
+companheiros/presença não recebem o afinamento. Layout legado válido. House
+API com 15 testes e geometria com cinco aprovados; scripts validam o cursor
+enquanto o botão está pressionado e a
+projeção, evitando repetir a verificação incompleta que só olhava após soltar.
+
+Controles de cada peça passam à engrenagem junto ao objeto selecionado na cena;
+setas esquerda/direita alternam as oito vistas reais com retorno circular.
+Decorar mantém inventário/cenário e ajustes gerais. Quadro tem Manter fundo de
+madeira: frame_backing opcional boolean no placement, salvo por ownership/revisão.
+Madeira composta na abertura frontal/diagonal fica atrás da imagem; desativar
+preserva moldura e transparência. Vistas traseiras intactas. API isolada valida
+persistência true/false, legado, tipos estritos e visualização pelo visitante.
+
+Carta Selada tem nova arte fechada em perspectiva e letter-open.webp, geradas
+com imagegen embutido e alpha preservado; prompts/hash em manifest. Duplo clique
+abre carta/quadro/peça com conteúdo. Leitor novo coloca título acima do texto
+HTML escapado, no papel aberto, e oferece Bilbo/Tangerine/Pirata/Georgia.
+Fontes locais OFL documentadas em public/fonts/HOUSE-SOURCES.txt; opção de leitura
+local, conteúdo original/presente intacto. Quadros abrem imagem privada grande e
+dedicatória. Texto longo rola no papel; um clique segue selecionar/arrastar.
+
+RP: Manter RP aberto persiste por conta/navegador e conserva a sobreposição
+ao mudar de painel. Enter/Enviar mantém campo habilitado/focado; clique ou Tab
+fora encerra intenção de continuar escrevendo. Envio captura texto/chave/casa/
+personagem; só limpa rascunho intocado, inclusive se um novo texto for idêntico.
+Resposta atrasada não rouba foco nem substitui texto digitado durante o envio.
+
+Quadros de Conquistas/visitas: componente compartilhado PortraitFrames baixa
+ambos os retratos de cada lado, preservando intervalo e etiquetas. Âncora da
+parede passa de 0,103 para 0,14 da largura do cenário (≈53 px em 1440), afastando
+o ornamento superior da viga diagonal. Cada par recebe apenas a redução uniforme
+necessária para manter também o quadro inferior e todas as placas acima do lambril;
+proporções, abertura da imagem e intervalo são preservados. Revisão visual e
+assertions de todos os quadros/placas aprovadas em 1440/768/390/320.
+
 ## Correções finais de House, Empório e navegação (06/10/2026)
 
 Pedidos novos concluídos sobre a base House: oito vistas reais por objeto

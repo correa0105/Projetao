@@ -578,7 +578,14 @@ function Portal({ user }: { user: User }) {
         {page === 'pets' && (
           <PetShop key={character?.id || 'visitor'} character={character} onPurchased={refresh} />
         )}
-        {page === 'shop' && <Shop catalog={catalog} character={character} onPurchased={refresh} />}
+        {page === 'shop' && (
+          <Shop
+            catalog={catalog}
+            character={character}
+            onPurchased={refresh}
+            canAdmin={administrator}
+          />
+        )}
         {page === 'inventory' &&
           (!character ? (
             noCharacter

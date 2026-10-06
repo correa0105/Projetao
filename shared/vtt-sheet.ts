@@ -29,6 +29,7 @@ export type VttSheetData = {
     biography: string;
     stats: number[];
     gold_cp: number;
+    gold_unlimited?: boolean;
   };
   token: VttToken;
   sheet: SheetRecord | null;

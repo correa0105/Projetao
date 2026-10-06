@@ -4,6 +4,7 @@ export type User = {
   email: string;
   role?: 'player' | 'staff' | 'admin';
   administrador?: 0 | 1;
+  gold_unlimited?: boolean;
   canEditKingdom?: boolean;
 };
 export type Character = {
@@ -24,6 +25,7 @@ export type Character = {
   hp: number;
   armor_class: number;
   gold_cp: number;
+  gold_unlimited?: boolean;
   stats: number[];
 };
 export type Item = {
@@ -36,6 +38,13 @@ export type Item = {
   image_path?: string | null;
   audio_path?: string | null;
   merchant_comment?: string;
+  magic_family?: string | null;
+  base_item?: string | null;
+  damage_type?: string | null;
+  rarity?: string | null;
+  variant?: string | null;
+  enhancement?: number | null;
+  magic_kind?: 'weapon' | 'armor' | null;
   weight_estimated?: boolean;
   weight_lb: string;
   source: string;
@@ -48,7 +57,12 @@ export type Details = {
   history: { id: string; name: string; quantity: number; total_cp: number; created_at: string }[];
 };
 export type EquippedItem = Item & { slot: import('../shared/equipment').EquipmentSlot };
-export type StorageState = { inventory: Item[]; vault: Item[]; equipped: EquippedItem[] };
+export type StorageState = {
+  inventory: Item[];
+  vault: Item[];
+  equipped: EquippedItem[];
+  companion_allocated?: Record<string, number>;
+};
 export type Post = {
   paper_style: import('../shared/notice-board').PaperStyle;
   paper_summary: string;

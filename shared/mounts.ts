@@ -65,6 +65,10 @@ export const mounts = [
 ] as const;
 export type Mount = (typeof mounts)[number];
 export type OwnedMount = {
+  image_url?: string | null;
+  image_revision?: number;
+  equipment_revision?: number;
+  art_equipment_revision?: number | null;
   id: string;
   mount_id: string;
   coat: string;
@@ -75,7 +79,10 @@ export type OwnedMount = {
   created_at: string;
   displayed: boolean;
 };
-export function ownedMountImage(mount: Pick<OwnedMount, 'mount_id' | 'coat' | 'equipment'>) {
+export function ownedMountImage(
+  mount: Pick<OwnedMount, 'mount_id' | 'coat' | 'equipment' | 'image_url'>,
+) {
+  if (mount.image_url) return mount.image_url;
   const armor = mount.equipment.find((id) => id.startsWith('barding-'));
   const saddle = mount.equipment.find((id) => id === 'saddle-riding' || id === 'saddle-military');
   if (armor)

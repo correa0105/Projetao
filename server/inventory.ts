@@ -3,6 +3,7 @@ import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
+import { allocatedCopies, companionAllocated } from './companion-inventory.js';
 import {
   EQUIPMENT_SLOTS,
   compatibleSlots,
@@ -56,7 +57,12 @@ async function storageState(client: PoolClient, userId: string, characterId: str
      JOIN characters p ON p.id=e.character_id WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY e.slot`,
     [characterId, userId],
   );
-  return { inventory: inventory.rows, vault: vault.rows, equipped: equipped.rows };
+  return {
+    inventory: inventory.rows,
+    vault: vault.rows,
+    equipped: equipped.rows,
+    companion_allocated: await companionAllocated(client, characterId),
+  };
 }
 
 export function inventoryRouter() {
@@ -83,13 +89,10 @@ export function inventoryRouter() {
         if (!item) throw new AppError(409, 'Este item não está na mochila deste personagem.');
         if (!compatibleSlots(item).includes(data.slot))
           throw new AppError(400, 'Este item não pode ser equipado nessa posição.');
-        const {
-          rows: [used],
-        } = await client.query(
-          'SELECT count(*)::int AS total FROM character_equipment WHERE character_id=$1 AND item_id=$2 AND slot<>$3',
-          [data.character_id, data.item_id, data.slot],
-        );
-        if (used.total >= item.quantity)
+        const used = await allocatedCopies(client, data.character_id, data.item_id, {
+          humanSlot: data.slot,
+        });
+        if (used >= item.quantity)
           throw new AppError(409, 'Todas as unidades deste item já estão equipadas.');
         const { rows: equipped } = await client.query(
           'SELECT c.*,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id WHERE e.character_id=$1',
@@ -163,13 +166,8 @@ export function inventoryRouter() {
           'Quantidade indisponível. Atualize o inventário e tente novamente.',
         );
       if (data.direction === 'to_vault') {
-        const {
-          rows: [used],
-        } = await client.query(
-          'SELECT count(*)::int AS total FROM character_equipment WHERE character_id=$1 AND item_id=$2',
-          [data.character_id, data.item_id],
-        );
-        if (stock.quantity - used.total < data.quantity)
+        const used = await allocatedCopies(client, data.character_id, data.item_id);
+        if (stock.quantity - used < data.quantity)
           throw new AppError(409, 'Desequipe o item antes de guardá-lo no cofre.');
       }
       const {

@@ -40,11 +40,23 @@ export function PortraitCabinet({
           : 0;
       const offset = stage.getBoundingClientRect().top - room.getBoundingClientRect().top;
       stage.style.setProperty('--cabinet-stage-offset', offset + 'px');
-      layout.style.setProperty(
-        '--portrait-wall-top',
-        width * 0.103 + backgroundTop - offset + 'px',
-      );
+      layout.style.setProperty('--portrait-wall-top', width * 0.14 + backgroundTop - offset + 'px');
       layout.style.setProperty('--portrait-room-width', width + 'px');
+      const stoneBottom = room.getBoundingClientRect().top + backgroundTop + width * 0.318;
+      for (const wall of layout.querySelectorAll<HTMLElement>('.portrait-frame-wall')) {
+        // Fit the whole pair, including its plaques, within the stone above the wainscot.
+        // Scaling the pair preserves the frame proportions and the space between them.
+        wall.style.setProperty('--portrait-wall-scale', '1');
+        const top = wall.getBoundingClientRect().top;
+        const bottom = Math.max(
+          ...Array.from(
+            wall.querySelectorAll<HTMLElement>('.antique-portrait, .antique-portrait-plaque'),
+            (element) => element.getBoundingClientRect().bottom,
+          ),
+        );
+        const scale = Math.min(1, Math.max(0.1, (stoneBottom - top) / (bottom - top)));
+        wall.style.setProperty('--portrait-wall-scale', String(scale));
+      }
     };
     measure();
     const observer = new ResizeObserver(measure);

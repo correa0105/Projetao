@@ -5,7 +5,10 @@ import {
   useState,
   type CSSProperties,
   type PointerEvent,
+  type ReactNode,
+  type RefObject,
 } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Save,
   Package,
@@ -21,9 +24,13 @@ import {
   Armchair,
   ChevronDown,
   Send,
+  Settings,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
+import { HouseItemReader } from './HouseItemReader';
 import {
   houseCatalog,
   houseTemplates,
@@ -34,7 +41,7 @@ import {
   type HouseVariant,
 } from '../shared/house';
 import { achievementCatalog } from '../shared/achievements';
-import { PetArt } from './PetShop';
+import { OwnedPetArt } from './OwnedPetArt';
 import { pets } from '../shared/pets';
 import { mounts, ownedMountImage } from '../shared/mounts';
 import { characterHeightScale } from '../shared/character-stature';
@@ -55,10 +62,29 @@ type Index = {
   homes: { id: string; character_id: string; name: string; character_name: string }[];
   invites: { home_id: string; status: string; name: string; owner_name: string }[];
   variants: HouseVariant[];
+  catalog: typeof houseCatalog;
   can_admin: boolean;
 };
 type Profile = { id: string; name: string; characters: { id: string; name: string }[] };
 const labels = { sala: 'Sala', cozinha: 'Cozinha', varanda: 'Varanda', jardim: 'Jardim' };
+type ItemProjection = { enabled: boolean; angle: number };
+function itemProjectionPreference(userId: string): ItemProjection {
+  try {
+    const value = JSON.parse(localStorage.getItem(`house-item-perspective:${userId}`) || 'null');
+    if (typeof value?.enabled === 'boolean' && Number.isFinite(value.angle))
+      return { enabled: value.enabled, angle: Math.max(0, Math.min(20, value.angle)) };
+  } catch {
+    /* A browser preference must not block the house. */
+  }
+  return { enabled: true, angle: 12 };
+}
+function pinnedRpPreference(userId: string) {
+  try {
+    return localStorage.getItem(`house-rp-pinned:${userId}`) === 'true';
+  } catch {
+    return false;
+  }
+}
 const fileData = (file: File) =>
   new Promise<string>((resolve, reject) => {
     if (file.size > 5 * 1024 * 1024) {
@@ -70,8 +96,16 @@ const fileData = (file: File) =>
     reader.onerror = () => reject(Error('Não foi possível ler a imagem.'));
     reader.readAsDataURL(file);
   });
-function HousePicture({ item, facing }: { item: HouseItem; facing: number }) {
-  const ref = useRef<HTMLImageElement>(null),
+function HousePicture({
+  item,
+  facing,
+  backing,
+}: {
+  item: HouseItem;
+  facing: number;
+  backing: boolean;
+}) {
+  const ref = useRef<HTMLSpanElement>(null),
     [matrix, setMatrix] = useState('');
   useLayoutEffect(() => {
     const parent = ref.current?.parentElement;
@@ -102,26 +136,47 @@ function HousePicture({ item, facing }: { item: HouseItem; facing: number }) {
     return () => observer.disconnect();
   }, [facing]);
   return (
-    <img
+    <span
       ref={ref}
-      className="house-picture"
+      className="house-frame-surface"
       style={{ transform: matrix, visibility: matrix ? 'visible' : 'hidden' }}
-      src={`/api/house/items/${item.id}/image`}
-      alt={item.content.title || 'Lembrança'}
-    />
+    >
+      {backing && (
+        <span className="house-frame-wood" role="img" aria-label="Fundo de madeira do quadro" />
+      )}
+      {item.has_image && (
+        <img
+          className="house-picture"
+          draggable={false}
+          src={`/api/house/items/${item.id}/image`}
+          alt={item.content.title || 'Lembrança'}
+        />
+      )}
+    </span>
   );
 }
-function ItemArt({ item, facing }: { item: HouseItem; facing?: number }) {
+function ItemArt({
+  item,
+  facing,
+  backing = false,
+}: {
+  item: HouseItem;
+  facing?: number;
+  backing?: boolean;
+}) {
   const spec = houseCatalog.find((c) => c.id === item.catalog_id);
   return (
     <span
       className={`house-item-art ${item.catalog_id === 'frame' ? 'house-frame-art' : ''}`}
       data-facing={facing}
     >
-      {item.has_image && (facing === undefined || [0, 1, 7].includes(facing)) && (
-        <HousePicture item={item} facing={facing ?? 0} />
-      )}
+      {item.catalog_id === 'frame' &&
+        (item.has_image || backing) &&
+        (facing === undefined || [0, 1, 7].includes(facing)) && (
+          <HousePicture item={item} facing={facing ?? 0} backing={backing} />
+        )}
       <img
+        draggable={false}
         src={
           facing === undefined
             ? item.catalog_id === 'frame'
@@ -136,6 +191,221 @@ function ItemArt({ item, facing }: { item: HouseItem; facing?: number }) {
         }}
       />
     </span>
+  );
+}
+function HousePieceTools({
+  stage,
+  placement,
+  name,
+  onTurn,
+  disabled,
+  children,
+}: {
+  stage: RefObject<HTMLDivElement | null>;
+  placement: HousePlacement;
+  name: string;
+  onTurn: (step: -1 | 1) => void;
+  disabled: boolean;
+  children: ReactNode;
+}) {
+  const [open, setOpen] = useState(false),
+    [anchor, setAnchor] = useState<{
+      left: number;
+      right: number;
+      leftY: number;
+      rightY: number;
+      gearX: number;
+      gearY: number;
+      sceneX: number;
+      sceneY: number;
+      vw: number;
+      vh: number;
+    } | null>(null),
+    [popupHeight, setPopupHeight] = useState(0);
+  const toolbar = useRef<HTMLDivElement>(null),
+    popup = useRef<HTMLDivElement>(null),
+    gear = useRef<HTMLButtonElement>(null);
+  useLayoutEffect(() => {
+    const scene = stage.current;
+    const piece = scene?.querySelector<HTMLElement>(`[data-house-piece="${placement.id}"]`);
+    if (!scene || !piece) return;
+    const measure = () => {
+      const bounds = scene.getBoundingClientRect(),
+        art = piece.getBoundingClientRect(),
+        clamp = (value: number, maximum: number) => Math.max(4, Math.min(maximum - 36, value)),
+        x = art.left - bounds.left - scene.clientLeft,
+        y = art.top - bounds.top - scene.clientTop;
+      const left = clamp(x - 40, scene.clientWidth),
+        right = clamp(x + art.width + 8, scene.clientWidth),
+        middle = clamp(y + art.height / 2 - 16, scene.clientHeight);
+      const arrowTop = (toolX: number) => {
+        if (
+          toolX + 32 <= x ||
+          toolX >= x + art.width ||
+          middle + 32 <= y ||
+          middle >= y + art.height
+        )
+          return middle;
+        if (y - 40 >= 4) return y - 40;
+        if (y + art.height + 8 <= scene.clientHeight - 36) return y + art.height + 8;
+        const bottom = scene.clientHeight - 36,
+          center = y + art.height / 2;
+        return Math.abs(center - 20) > Math.abs(center - bottom - 16) ? 4 : bottom;
+      };
+      const next = {
+        left,
+        right,
+        leftY: arrowTop(left),
+        rightY: arrowTop(right),
+        gearX: clamp(x + art.width - 32, scene.clientWidth),
+        gearY: clamp(y - 40, scene.clientHeight),
+        sceneX: bounds.left + scene.clientLeft,
+        sceneY: bounds.top + scene.clientTop,
+        vw: window.innerWidth,
+        vh: window.innerHeight,
+      };
+      if (next.leftY !== middle || next.rightY !== middle) {
+        // At room edges, keep the three tools in a separate row rather than
+        // covering the sprite or stacking the arrow beneath the gear.
+        const rowX = Math.max(4, Math.min(scene.clientWidth - 108, x + art.width / 2 - 52)),
+          rowY = next.leftY !== middle ? next.leftY : next.rightY;
+        next.left = rowX;
+        next.gearX = rowX + 36;
+        next.right = rowX + 72;
+        next.leftY = next.gearY = next.rightY = rowY;
+      }
+      setAnchor((old) =>
+        old &&
+        Object.keys(next).every(
+          (key) => old[key as keyof typeof old] === next[key as keyof typeof next],
+        )
+          ? old
+          : next,
+      );
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(scene);
+    observer.observe(piece);
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('scroll', measure, true);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
+      window.removeEventListener('scroll', measure, true);
+    };
+  }, [stage, placement]);
+  useLayoutEffect(() => {
+    if (!open || !popup.current) return;
+    const element = popup.current,
+      measure = () => setPopupHeight(element.getBoundingClientRect().height),
+      observer = new ResizeObserver(measure);
+    observer.observe(element);
+    measure();
+    return () => observer.disconnect();
+  }, [open]);
+  useEffect(() => {
+    if (!open) return;
+    const outside = (event: globalThis.PointerEvent) => {
+        if (
+          !popup.current?.contains(event.target as Node) &&
+          !toolbar.current?.contains(event.target as Node)
+        )
+          setOpen(false);
+      },
+      escape = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+          setOpen(false);
+          gear.current?.focus({ preventScroll: true });
+        }
+      };
+    document.addEventListener('pointerdown', outside, true);
+    document.addEventListener('keydown', escape);
+    return () => {
+      document.removeEventListener('pointerdown', outside, true);
+      document.removeEventListener('keydown', escape);
+    };
+  }, [open]);
+  if (!anchor) return null;
+  const width = Math.min(320, anchor.vw - 24),
+    left = Math.max(
+      12,
+      Math.min(anchor.vw - width - 12, anchor.sceneX + anchor.gearX + 32 - width),
+    ),
+    top = Math.max(12, Math.min(anchor.vh - popupHeight - 12, anchor.sceneY + anchor.gearY + 40));
+  return (
+    <>
+      <div
+        className="house-piece-tools"
+        ref={toolbar}
+        onPointerDown={(event) => event.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
+      >
+        {placement.kind === 'item' && (
+          <>
+            <button
+              type="button"
+              aria-label="Vista anterior da peça"
+              disabled={disabled}
+              title="Vista anterior"
+              style={{ left: anchor.left, top: anchor.leftY }}
+              onClick={() => onTurn(-1)}
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Próxima vista da peça"
+              disabled={disabled}
+              title="Próxima vista"
+              style={{ left: anchor.right, top: anchor.rightY }}
+              onClick={() => onTurn(1)}
+            >
+              <ChevronRight size={18} />
+            </button>
+          </>
+        )}
+        <button
+          ref={gear}
+          type="button"
+          aria-label="Ajustar peça"
+          aria-expanded={open}
+          aria-haspopup="dialog"
+          title={`Ajustar ${name}`}
+          style={{ left: anchor.gearX, top: anchor.gearY }}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <Settings size={18} />
+        </button>
+      </div>
+      {open &&
+        createPortal(
+          <div
+            ref={popup}
+            role="dialog"
+            aria-label="Ajustes da peça"
+            className="house-piece-popover"
+            style={{ left, top, width }}
+            onPointerDown={(event) => event.stopPropagation()}
+          >
+            <div className="house-piece-popover-title">
+              <strong>{name}</strong>
+              <button
+                type="button"
+                aria-label="Fechar ajustes da peça"
+                onClick={() => {
+                  setOpen(false);
+                  gear.current?.focus({ preventScroll: true });
+                }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            {children}
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }
 export function House({
@@ -177,19 +447,51 @@ export function House({
     [rewardKind, setRewardKind] = useState('count'),
     [rewardValue, setRewardValue] = useState('1'),
     [grantReason, setGrantReason] = useState('');
+  const [itemProjection, setItemProjection] = useState(() => itemProjectionPreference(user.id));
+  const [rpPinned, setRpPinned] = useState(() => pinnedRpPreference(user.id));
+  useEffect(() => {
+    setItemProjection(itemProjectionPreference(user.id));
+    setRpPinned(pinnedRpPreference(user.id));
+  }, [user.id]);
+  function changeItemProjection(patch: Partial<ItemProjection>) {
+    setItemProjection((old) => {
+      const value = { ...old, ...patch };
+      try {
+        localStorage.setItem(`house-item-perspective:${user.id}`, JSON.stringify(value));
+      } catch {
+        /* Optional local preference. */
+      }
+      return value;
+    });
+  }
   const stage = useRef<HTMLDivElement>(null),
     chatLog = useRef<HTMLDivElement>(null),
+    chatForm = useRef<HTMLFormElement>(null),
+    chatInput = useRef<HTMLInputElement>(null),
+    resumeChatInput = useRef(false),
     followChat = useRef(true),
     dirtyRef = useRef(false),
+    activeDrag = useRef(false),
     purchaseKey = useRef<string | null>(null),
     messageKey = useRef<string | null>(null),
     generation = useRef(0);
   const sound = useSoundEffects();
   const lastMessage = home?.messages.at(-1)?.id;
   useEffect(() => {
-    if (tab === 'rp' && followChat.current && chatLog.current)
+    if ((tab === 'rp' || rpPinned) && followChat.current && chatLog.current)
       chatLog.current.scrollTop = chatLog.current.scrollHeight;
-  }, [lastMessage, tab, homeId]);
+  }, [lastMessage, tab, homeId, rpPinned]);
+  useEffect(() => {
+    const leaveComposer = (event: Event) => {
+      if (!chatForm.current?.contains(event.target as Node)) resumeChatInput.current = false;
+    };
+    document.addEventListener('pointerdown', leaveComposer, true);
+    document.addEventListener('focusin', leaveComposer, true);
+    return () => {
+      document.removeEventListener('pointerdown', leaveComposer, true);
+      document.removeEventListener('focusin', leaveComposer, true);
+    };
+  }, []);
   useEffect(() => {
     dirtyRef.current = dirty;
   }, [dirty]);
@@ -281,7 +583,7 @@ export function House({
               prev
                 ? {
                     ...prev,
-                    presence: v.presence,
+                    presence: activeDrag.current ? prev.presence : v.presence,
                     messages: v.messages,
                     ...(!dirtyRef.current
                       ? {
@@ -347,7 +649,8 @@ export function House({
   }
   const current = home?.rooms.find((r) => r.kind === room),
     choice = current?.placements.find((p) => p.id === selected),
-    spec = houseCatalog.find((c) => c.id === buy);
+    spec = (index?.catalog || houseCatalog).find((c) => c.id === buy),
+    ownActor = home?.presence.find((p) => p.user_id === user.id && p.room === room);
   function edit(fn: (h: HouseState) => HouseState) {
     setHome((h) => (h ? fn(h) : h));
     setDirty(true);
@@ -409,9 +712,11 @@ export function House({
     setSelected(id);
   }
   function drag(event: PointerEvent<HTMLButtonElement>, p: HousePlacement) {
-    if (!home?.is_owner || busy) return;
+    if (!home?.is_owner || busy || event.button !== 0) return;
+    event.preventDefault();
+    activeDrag.current = true;
     setSelected(p.id);
-    const bounds = stage.current!.getBoundingClientRect(),
+    const bounds = sceneBounds(),
       factor = housePerspectiveScale(p.y),
       grab = {
         x: (event.clientX - bounds.left - p.x * bounds.width) / factor,
@@ -421,6 +726,7 @@ export function House({
     event.currentTarget.setPointerCapture(event.pointerId);
     const el = event.currentTarget;
     const move = (e: globalThis.PointerEvent) => {
+      const bounds = sceneBounds();
       const position = houseDragPosition(
         { x: e.clientX - bounds.left, y: e.clientY - bounds.top },
         grab,
@@ -431,6 +737,7 @@ export function House({
       patch(p.id, position);
     };
     const end = () => {
+      activeDrag.current = false;
       el.removeEventListener('pointermove', move);
       el.removeEventListener('pointerup', end);
       el.removeEventListener('pointercancel', end);
@@ -440,8 +747,11 @@ export function House({
     el.addEventListener('pointercancel', end);
   }
   function dragActor(event: PointerEvent<HTMLButtonElement>, p: HouseState['presence'][number]) {
-    if (p.user_id !== user.id || busy) return;
-    const bounds = stage.current!.getBoundingClientRect(),
+    if (p.user_id !== user.id || busy || event.button !== 0) return;
+    event.preventDefault();
+    activeDrag.current = true;
+    setSelected(`actor:${p.user_id}`);
+    const bounds = sceneBounds(),
       factor = housePerspectiveScale(p.y),
       grab = {
         x: (event.clientX - bounds.left - p.x * bounds.width) / factor,
@@ -452,6 +762,7 @@ export function House({
     const el = event.currentTarget;
     el.setPointerCapture(event.pointerId);
     const move = (e: globalThis.PointerEvent) => {
+      const bounds = sceneBounds();
       ({ x, y } = houseDragPosition(
         { x: e.clientX - bounds.left, y: e.clientY - bounds.top },
         grab,
@@ -470,23 +781,74 @@ export function House({
       el.removeEventListener('pointerup', end);
       el.removeEventListener('pointercancel', end);
       void run(async () => {
-        await api(`/house/${homeId}/presence`, {
-          method: 'PUT',
-          body: JSON.stringify({
-            character_id: p.character_id,
-            variant_id: p.variant_id,
-            room: p.room,
-            x,
-            y,
-            scale: p.scale,
-            layer: p.layer,
-          }),
-        });
+        try {
+          await api(`/house/${homeId}/presence`, {
+            method: 'PUT',
+            body: JSON.stringify({
+              character_id: p.character_id,
+              variant_id: p.variant_id,
+              room: p.room,
+              x,
+              y,
+              scale: p.scale,
+              layer: p.layer,
+            }),
+          });
+        } finally {
+          activeDrag.current = false;
+        }
       });
     };
     el.addEventListener('pointermove', move);
     el.addEventListener('pointerup', end);
     el.addEventListener('pointercancel', end);
+  }
+  function sceneBounds() {
+    const el = stage.current!,
+      rect = el.getBoundingClientRect();
+    return {
+      left: rect.left + el.clientLeft,
+      top: rect.top + el.clientTop,
+      width: el.clientWidth,
+      height: el.clientHeight,
+    };
+  }
+  function changeActorLayer(layer: number) {
+    if (!ownActor) return;
+    const actor = ownActor;
+    void run(async () => {
+      await api(`/house/${homeId}/presence`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          character_id: actor.character_id,
+          variant_id: actor.variant_id,
+          room: actor.room,
+          x: actor.x,
+          y: actor.y,
+          scale: actor.scale,
+          layer,
+        }),
+      });
+      setHome((h) =>
+        h
+          ? {
+              ...h,
+              presence: h.presence.map((a) => (a.user_id === user.id ? { ...a, layer } : a)),
+            }
+          : h,
+      );
+    });
+  }
+  function placementName(piece: HousePlacement) {
+    const item =
+      home?.inventory.find((i) => i.id === piece.ref) ||
+      home?.items.find((i) => i.id === piece.ref);
+    return (
+      item?.content.title ||
+      houseCatalog.find((c) => c.id === item?.catalog_id)?.name ||
+      home?.companions.find((c) => c.id === piece.ref)?.name ||
+      'objeto'
+    );
   }
   function placed(ref: string) {
     return home?.rooms.some((r) => r.placements.some((p) => p.ref === ref));
@@ -696,38 +1058,198 @@ export function House({
                       zIndex: p.layer * 2 + 2,
                     } as CSSProperties
                   }
+                  data-house-piece={p.id}
                   data-base-scale={p.scale}
                   data-depth-scale={housePerspectiveScale(p.y)}
                   data-facing={p.facing ?? 0}
                   data-layer={p.layer}
+                  title={
+                    item && (['letter', 'frame'].includes(item.catalog_id) || item.content.text)
+                      ? 'Dois cliques para abrir'
+                      : undefined
+                  }
                   onPointerDown={(e) => drag(e, p)}
                   onClick={() => {
                     if (home.is_owner) setSelected(p.id);
-                    else if (item && ['letter', 'frame'].includes(item.catalog_id)) setRead(item);
+                  }}
+                  onDoubleClick={() => {
+                    if (
+                      item &&
+                      (['letter', 'frame'].includes(item.catalog_id) || item.content.text)
+                    )
+                      setRead(item);
                   }}
                 >
                   {item ? (
-                    <ItemArt item={item} facing={p.facing ?? 0} />
+                    <span
+                      className="house-item-projection"
+                      data-projection-angle={
+                        itemProjection.enabled ? (p.perspective_pitch ?? itemProjection.angle) : 0
+                      }
+                      data-projection-yaw={itemProjection.enabled ? (p.perspective_yaw ?? 0) : 0}
+                      style={
+                        {
+                          '--house-depth-angle': `${itemProjection.enabled ? (p.perspective_pitch ?? itemProjection.angle) : 0}deg`,
+                          '--house-depth-yaw': `${itemProjection.enabled ? (p.perspective_yaw ?? 0) : 0}deg`,
+                        } as CSSProperties
+                      }
+                    >
+                      <ItemArt
+                        item={item}
+                        facing={p.facing ?? 0}
+                        backing={p.frame_backing === true}
+                      />
+                    </span>
                   ) : p.kind === 'pet' && companion ? (
-                    <PetArt
-                      pet={pets.find((a) => a.id === companion.pet_id) || pets[0]}
-                      appearance={companion.appearance}
-                    />
+                    <OwnedPetArt pet={companion} />
                   ) : companion ? (
                     <img src={ownedMountImage(companion as any)} alt={name} />
                   ) : null}
                 </button>
               );
             })}
+            {home.is_owner && choice && (
+              <HousePieceTools
+                key={choice.id}
+                stage={stage}
+                placement={choice}
+                name={placementName(choice)}
+                disabled={busy}
+                onTurn={(step) =>
+                  patch(choice.id, { facing: ((choice.facing ?? 0) + step + 8) % 8 })
+                }
+              >
+                <fieldset
+                  className="house-transform"
+                  disabled={busy}
+                  aria-label="Controles da peça"
+                >
+                  {choice.kind === 'item' && (
+                    <>
+                      <label>
+                        Direção
+                        <select
+                          aria-label="Direção da peça"
+                          value={choice.facing ?? 0}
+                          onChange={(e) => patch(choice.id, { facing: Number(e.target.value) })}
+                        >
+                          {houseViewLabels.map((label, i) => (
+                            <option value={i} key={label}>
+                              {label}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      {home.inventory.find((item) => item.id === choice.ref)?.catalog_id ===
+                        'frame' && (
+                        <label className="house-frame-backing-toggle">
+                          <input
+                            type="checkbox"
+                            checked={choice.frame_backing === true}
+                            onChange={(event) =>
+                              patch(choice.id, { frame_backing: event.target.checked })
+                            }
+                          />
+                          Manter fundo de madeira
+                        </label>
+                      )}
+                      <label>
+                        Afinamento ao fundo · {choice.perspective_pitch ?? itemProjection.angle}
+                        °
+                        <input
+                          aria-label="Afinamento ao fundo"
+                          type="range"
+                          min="0"
+                          max="20"
+                          disabled={!itemProjection.enabled}
+                          value={choice.perspective_pitch ?? itemProjection.angle}
+                          onChange={(e) =>
+                            patch(choice.id, { perspective_pitch: Number(e.target.value) })
+                          }
+                        />
+                      </label>
+                      <label>
+                        Recuo lateral · {choice.perspective_yaw ?? 0}°
+                        <input
+                          aria-label="Recuo lateral da peça"
+                          type="range"
+                          min="-20"
+                          max="20"
+                          disabled={!itemProjection.enabled}
+                          value={choice.perspective_yaw ?? 0}
+                          onChange={(e) =>
+                            patch(choice.id, { perspective_yaw: Number(e.target.value) })
+                          }
+                        />
+                        <small>− esquerda ao fundo · + direita ao fundo</small>
+                      </label>
+                    </>
+                  )}
+                  <label>
+                    Tamanho
+                    <input
+                      aria-label="Tamanho da peça"
+                      type="range"
+                      min="3"
+                      max="55"
+                      value={choice.scale * 100}
+                      onChange={(e) => patch(choice.id, { scale: Number(e.target.value) / 100 })}
+                    />
+                  </label>
+                  <label>
+                    Giro
+                    <input
+                      aria-label="Giro da peça"
+                      type="range"
+                      min="-180"
+                      max="180"
+                      value={choice.rotation}
+                      onChange={(e) => patch(choice.id, { rotation: Number(e.target.value) })}
+                    />
+                  </label>
+                  <button onClick={() => patch(choice.id, { rotation: 0 })}>
+                    <RotateCw size={16} />
+                    Endireitar
+                  </button>
+                  <button onClick={() => order(choice.id, 1)}>Trazer à frente</button>
+                  <button onClick={() => order(choice.id, -1)}>Enviar para trás</button>
+                  <button
+                    onClick={() => {
+                      edit((h) => ({
+                        ...h,
+                        rooms: h.rooms.map((r) => ({
+                          ...r,
+                          placements: r.placements.filter((p) => p.id !== choice.id),
+                        })),
+                      }));
+                      setSelected('');
+                    }}
+                  >
+                    <Package size={16} />
+                    Guardar
+                  </button>
+                  {home.inventory.find((i) => i.id === choice.ref) && (
+                    <button
+                      onClick={() => setRead(home.inventory.find((i) => i.id === choice.ref)!)}
+                    >
+                      Ver lembrança
+                    </button>
+                  )}
+                </fieldset>
+              </HousePieceTools>
+            )}
             {home.presence
               .filter((p) => p.room === room)
               .map((p) => (
                 <button
                   key={p.user_id}
-                  className="house-actor"
+                  className={`house-actor ${selected === `actor:${p.user_id}` ? 'selected' : ''}`}
                   data-layer={p.layer}
                   aria-label={`${p.name}${p.user_id === user.id ? ' · mover personagem' : ''}`}
                   onPointerDown={(e) => dragActor(e, p)}
+                  onClick={() => {
+                    if (p.user_id === user.id) setSelected(`actor:${p.user_id}`);
+                  }}
                   data-base-scale={p.scale}
                   data-depth-scale={housePerspectiveScale(p.y)}
                   style={{
@@ -735,9 +1257,11 @@ export function House({
                     top: `${p.y * 100}%`,
                     width: `${p.scale * housePerspectiveScale(p.y) * 100}%`,
                     zIndex: p.layer,
+                    transform: 'translate(-50%, -100%)',
                   }}
                 >
                   <img
+                    draggable={false}
                     src={
                       p.variant_id
                         ? `/api/house/variants/${p.variant_id}/image`
@@ -748,8 +1272,25 @@ export function House({
                   <span>{p.name}</span>
                 </button>
               ))}
-            {tab === 'rp' && (
+            {(tab === 'rp' || rpPinned) && (
               <div className="house-rp-overlay">
+                <label className="house-rp-pin">
+                  <input
+                    type="checkbox"
+                    checked={rpPinned}
+                    onChange={(e) => {
+                      const pinned = e.target.checked;
+                      setRpPinned(pinned);
+                      followChat.current = true;
+                      try {
+                        localStorage.setItem(`house-rp-pinned:${user.id}`, String(pinned));
+                      } catch {
+                        /* Optional browser preference. */
+                      }
+                    }}
+                  />
+                  Manter RP aberto
+                </label>
                 <div
                   className="house-rp-log"
                   role="log"
@@ -769,28 +1310,52 @@ export function House({
                 </div>
                 <form
                   className="house-rp-compose"
+                  aria-busy={busy}
+                  ref={chatForm}
                   onSubmit={(e) => {
                     e.preventDefault();
                     if (!character || busy || !text.trim()) return;
                     messageKey.current ||= crypto.randomUUID();
+                    const submitted = {
+                      body: text,
+                      key: messageKey.current,
+                      characterId: character.id,
+                      homeId,
+                      generation: generation.current,
+                    };
+                    resumeChatInput.current = true;
+                    chatInput.current?.focus({ preventScroll: true });
                     void run(async () => {
-                      await post(`/house/${homeId}/messages`, {
-                        character_id: character.id,
-                        body: text,
-                        idempotency_key: messageKey.current,
-                      });
-                      messageKey.current = null;
-                      followChat.current = true;
-                      setText('');
-                      const v = await api<HouseState>(`/house/${homeId}`);
-                      setHome((h) => (h ? { ...h, messages: v.messages } : h));
+                      try {
+                        await post(`/house/${submitted.homeId}/messages`, {
+                          character_id: submitted.characterId,
+                          body: submitted.body,
+                          idempotency_key: submitted.key,
+                        });
+                        if (submitted.generation !== generation.current) return;
+                        const untouched = messageKey.current === submitted.key;
+                        if (untouched) messageKey.current = null;
+                        followChat.current = true;
+                        setText((draft) => (untouched && draft === submitted.body ? '' : draft));
+                        const v = await api<HouseState>(`/house/${submitted.homeId}`);
+                        setHome((h) =>
+                          h?.id === submitted.homeId ? { ...h, messages: v.messages } : h,
+                        );
+                      } finally {
+                        if (submitted.generation === generation.current && resumeChatInput.current)
+                          chatInput.current?.focus({ preventScroll: true });
+                      }
                     });
                   }}
                 >
                   <input
+                    ref={chatInput}
                     aria-label={`Mensagem de ${character?.name || 'personagem'}`}
                     maxLength={2000}
-                    disabled={busy || !character}
+                    disabled={!character}
+                    onFocus={() => {
+                      resumeChatInput.current = true;
+                    }}
                     value={text}
                     onChange={(e) => {
                       setText(e.target.value);
@@ -812,6 +1377,44 @@ export function House({
               {houseTemplates.find((t) => t.id === current?.template)?.name}
             </div>
           </div>
+          {ownActor && (
+            <div className="house-actor-controls" aria-label="Camadas do personagem">
+              <label>
+                Camada do personagem
+                <select
+                  aria-label="Camada do personagem"
+                  value={ownActor.layer}
+                  disabled={busy}
+                  onChange={(e) => changeActorLayer(Number(e.target.value))}
+                >
+                  <option value={602}>À frente de todos os objetos</option>
+                  <option value={0}>Atrás de todos os objetos</option>
+                  {(current?.placements || [])
+                    .slice()
+                    .sort((a, b) => a.layer - b.layer)
+                    .map((piece) => (
+                      <option key={piece.id} value={piece.layer * 2 + 1}>
+                        Atrás de {placementName(piece)}
+                      </option>
+                    ))}
+                  {ownActor.layer !== 0 &&
+                    ownActor.layer !== 602 &&
+                    !current?.placements.some((p) => p.layer * 2 + 1 === ownActor.layer) && (
+                      <option value={ownActor.layer}>Camada atual</option>
+                    )}
+                </select>
+              </label>
+              <button disabled={busy || ownActor.layer === 0} onClick={() => changeActorLayer(0)}>
+                Atrás da mobília
+              </button>
+              <button
+                disabled={busy || ownActor.layer === 602}
+                onClick={() => changeActorLayer(602)}
+              >
+                À frente da mobília
+              </button>
+            </div>
+          )}
           <nav className="house-dock" aria-label="Controles da casa">
             {home.is_owner && (
               <>
@@ -829,7 +1432,7 @@ export function House({
                 </button>
               </>
             )}
-            <button aria-pressed={tab === 'rp'} onClick={() => toggle('rp')}>
+            <button aria-pressed={tab === 'rp' || rpPinned} onClick={() => toggle('rp')}>
               <MessageCircle size={17} />
               RP
             </button>
@@ -887,81 +1490,31 @@ export function House({
                       </select>
                     </label>
                   </div>
-                  {choice && (
-                    <div className="house-transform">
-                      {choice.kind === 'item' && (
-                        <label>
-                          Direção
-                          <select
-                            aria-label="Direção da peça"
-                            value={choice.facing ?? 0}
-                            onChange={(e) => patch(choice.id, { facing: Number(e.target.value) })}
-                          >
-                            {houseViewLabels.map((label, i) => (
-                              <option value={i} key={label}>
-                                {label}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-                      )}
-                      <label>
-                        Tamanho
-                        <input
-                          aria-label="Tamanho da peça"
-                          type="range"
-                          min="3"
-                          max="55"
-                          value={choice.scale * 100}
-                          onChange={(e) =>
-                            patch(choice.id, { scale: Number(e.target.value) / 100 })
-                          }
-                        />
-                      </label>
-                      <label>
-                        Giro
-                        <input
-                          aria-label="Giro da peça"
-                          type="range"
-                          min="-180"
-                          max="180"
-                          value={choice.rotation}
-                          onChange={(e) => patch(choice.id, { rotation: Number(e.target.value) })}
-                        />
-                      </label>
-                      <button onClick={() => patch(choice.id, { rotation: 0 })}>
-                        <RotateCw size={16} />
-                        Endireitar
-                      </button>
-                      <button onClick={() => order(choice.id, 1)}>Trazer à frente</button>
-                      <button onClick={() => order(choice.id, -1)}>Enviar para trás</button>
-                      <button
-                        onClick={() => {
-                          edit((h) => ({
-                            ...h,
-                            rooms: h.rooms.map((r) => ({
-                              ...r,
-                              placements: r.placements.filter((p) => p.id !== choice.id),
-                            })),
-                          }));
-                          setSelected('');
-                        }}
-                      >
-                        <Package size={16} />
-                        Guardar
-                      </button>
-                      {home.inventory.find((i) => i.id === choice.ref) && (
-                        <button
-                          onClick={() => setRead(home.inventory.find((i) => i.id === choice.ref)!)}
-                        >
-                          Ver lembrança
-                        </button>
-                      )}
-                    </div>
-                  )}
+                  <div className="house-projection-controls">
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={itemProjection.enabled}
+                        onChange={(e) => changeItemProjection({ enabled: e.target.checked })}
+                      />
+                      Perspectiva dos itens
+                    </label>
+                    <label>
+                      Afinamento padrão ao fundo · {itemProjection.angle}°
+                      <input
+                        aria-label="Afinamento padrão dos itens"
+                        type="range"
+                        min="0"
+                        max="20"
+                        value={itemProjection.angle}
+                        disabled={!itemProjection.enabled}
+                        onChange={(e) => changeItemProjection({ angle: Number(e.target.value) })}
+                      />
+                    </label>
+                  </div>
                   <p className="house-help">
-                    Escolha uma peça e arraste pela cena. Ajuste tamanho, giro e ordem; salve quando
-                    terminar.
+                    Escolha uma peça e arraste pela cena. Use as setas para mudar a vista e a
+                    engrenagem para ajustar; salve quando terminar.
                   </p>
                   <div className="house-inventory">
                     {home.inventory.map((item) => (
@@ -995,10 +1548,7 @@ export function House({
                     {home.companions.map((c) => (
                       <button key={c.id} disabled={placed(c.id)} onClick={() => add(c.kind, c.id)}>
                         {c.kind === 'pet' ? (
-                          <PetArt
-                            pet={pets.find((p) => p.id === c.pet_id) || pets[0]}
-                            appearance={c.appearance}
-                          />
+                          <OwnedPetArt pet={c} />
                         ) : (
                           <img src={ownedMountImage(c as any)} alt={c.name} />
                         )}
@@ -1020,11 +1570,12 @@ export function House({
                   <div className="house-panel-heading">
                     <h3>Mobília & lembranças</h3>
                     <span>
-                      {money(home.gold_cp || 0)} PO <a href="#shop">Ir ao Empório</a>
+                      {home.gold_unlimited ? '∞' : money(home.gold_cp || 0)} PO{' '}
+                      <a href="#shop">Ir ao Empório</a>
                     </span>
                   </div>
                   <div className="house-catalog">
-                    {houseCatalog.map((c) => (
+                    {(index?.catalog || houseCatalog).map((c) => (
                       <button
                         key={c.id}
                         onClick={() => {
@@ -1146,66 +1697,6 @@ export function House({
                           onChange={(e) => setPresenceScale(Number(e.target.value) / 100)}
                         />
                       </label>
-                      {home.presence
-                        .filter((p) => p.user_id === user.id && p.room === room)
-                        .map((p) => (
-                          <label key={p.user_id}>
-                            Camada do personagem
-                            <select
-                              aria-label="Camada do personagem"
-                              value={p.layer}
-                              disabled={busy}
-                              onChange={(e) => {
-                                const layer = Number(e.target.value);
-                                void run(async () => {
-                                  await api(`/house/${homeId}/presence`, {
-                                    method: 'PUT',
-                                    body: JSON.stringify({
-                                      character_id: p.character_id,
-                                      variant_id: p.variant_id,
-                                      room: p.room,
-                                      x: p.x,
-                                      y: p.y,
-                                      scale: p.scale,
-                                      layer,
-                                    }),
-                                  });
-                                  setHome((h) =>
-                                    h
-                                      ? {
-                                          ...h,
-                                          presence: h.presence.map((a) =>
-                                            a.user_id === user.id ? { ...a, layer } : a,
-                                          ),
-                                        }
-                                      : h,
-                                  );
-                                });
-                              }}
-                            >
-                              <option value={602}>À frente de todos os objetos</option>
-                              <option value={0}>Atrás de todos os objetos</option>
-                              {(current?.placements || []).map((piece) => (
-                                <option key={piece.id} value={piece.layer * 2 + 1}>
-                                  Atrás de{' '}
-                                  {home.inventory.find((i) => i.id === piece.ref)?.content.title ||
-                                    houseCatalog.find(
-                                      (c) =>
-                                        c.id ===
-                                        home.inventory.find((i) => i.id === piece.ref)?.catalog_id,
-                                    )?.name ||
-                                    home.companions.find((c) => c.id === piece.ref)?.name ||
-                                    'objeto'}
-                                </option>
-                              ))}
-                              {p.layer !== 0 &&
-                                p.layer !== 602 &&
-                                !current?.placements.some((v) => v.layer * 2 + 1 === p.layer) && (
-                                  <option value={p.layer}>Camada atual</option>
-                                )}
-                            </select>
-                          </label>
-                        ))}
                       <div className="house-inline">
                         <button
                           disabled={busy}
@@ -1552,24 +2043,7 @@ export function House({
           </form>
         </Modal>
       )}
-      {read && (
-        <Modal
-          title={
-            read.content.title ||
-            houseCatalog.find((c) => c.id === read.catalog_id)?.name ||
-            'Lembrança'
-          }
-          close={() => setRead(null)}
-        >
-          <div className="house-letter">
-            <ItemArt item={read} />
-            <p>
-              {read.content.text || houseCatalog.find((c) => c.id === read.catalog_id)?.description}
-            </p>
-            {read.sender_name && <small>Presente de {read.sender_name}</small>}
-          </div>
-        </Modal>
-      )}
+      {read && <HouseItemReader item={read} close={() => setRead(null)} />}
       {gift && (
         <Modal
           title="Oferecer uma lembrança"

@@ -16,6 +16,8 @@
   position: absolute;
   top: var(--portrait-wall-top, 55px);
   width: calc(var(--portrait-room-width, 100vw) * 0.07);
+  transform: scale(var(--portrait-wall-scale, 1));
+  transform-origin: center top;
 }
 .portrait-frame-wall.left {
   left: calc(50% - var(--portrait-room-width, 100vw) * 0.285);

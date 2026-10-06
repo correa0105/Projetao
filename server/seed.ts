@@ -4,6 +4,7 @@ import { transaction } from './db.js';
 import { PLATE_PIECES } from '../shared/armor-bundles.js';
 import { seedLore } from './lore.js';
 import { ensureInitialRulebook } from './rulebook.js';
+import { lockCatalogPrices } from './shop-prices.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -14,7 +15,7 @@ export async function seed() {
     await readFile(resolve('data/emporium-expansion.json'), 'utf8'),
   ).items;
   await transaction(async (client) => {
-    await client.query('SELECT pg_advisory_xact_lock(74261924)');
+    await lockCatalogPrices(client);
     await client.query('UPDATE catalog_items SET active=false WHERE NOT(id=ANY($1::text[]))', [
       [...catalog.items, ...equipmentCatalog, ...expansion].map((item: { id: string }) => item.id),
     ]);
@@ -105,6 +106,10 @@ export async function seed() {
           (i: { id: string }) => i.id,
         ),
       ],
+    );
+    await client.query(
+      `UPDATE catalog_items c SET price_cp=o.price_cp
+       FROM shop_price_overrides o WHERE o.item_id=c.id`,
     );
     // Migration 038 captured only pre-update suits. Applying each snapshot once avoids
     // duplicating pieces on subsequent seeds or on purchases through the new checkout.

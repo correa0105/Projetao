@@ -7,6 +7,14 @@ import { useCampMountSize } from './useCampMountSize';
 
 export function CampMount({ characterId }: { characterId: string }) {
   const [mount, setMount] = useState<OwnedMount | null>(null);
+  const [artRefresh, setArtRefresh] = useState(0);
+  useEffect(() => {
+    const changed = (event: Event) => {
+      if ((event as CustomEvent).detail?.characterId === characterId) setArtRefresh((v) => v + 1);
+    };
+    window.addEventListener('companion-art-updated', changed);
+    return () => window.removeEventListener('companion-art-updated', changed);
+  }, [characterId]);
   const host = useRef<HTMLDivElement>(null);
   useCampMountSize(host, mount?.id);
   useEffect(() => {
@@ -21,7 +29,7 @@ export function CampMount({ characterId }: { characterId: string }) {
     return () => {
       active = false;
     };
-  }, [characterId]);
+  }, [characterId, artRefresh]);
   if (!mount) return null;
   const animal = mounts.find((item) => item.id === mount.mount_id);
   return (
@@ -39,6 +47,14 @@ export function CampMount({ characterId }: { characterId: string }) {
 }
 
 export function MountSelection({ characterId }: { characterId: string }) {
+  const [artRefresh, setArtRefresh] = useState(0);
+  useEffect(() => {
+    const changed = (event: Event) => {
+      if ((event as CustomEvent).detail?.characterId === characterId) setArtRefresh((v) => v + 1);
+    };
+    window.addEventListener('companion-art-updated', changed);
+    return () => window.removeEventListener('companion-art-updated', changed);
+  }, [characterId]);
   const [items, setItems] = useState<OwnedMount[]>([]),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
@@ -58,7 +74,7 @@ export function MountSelection({ characterId }: { characterId: string }) {
     return () => {
       active = false;
     };
-  }, [characterId]);
+  }, [characterId, artRefresh]);
   async function select(id: string | null) {
     if (busy) return;
     setBusy(true);

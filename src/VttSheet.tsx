@@ -350,7 +350,8 @@ export function VttSheet({
                     'Equipamento e consumíveis',
                     <>
                       <div className="vtt-sheet-gold">
-                        {(c!.gold_cp / 100).toLocaleString('pt-BR')} PO · peso{' '}
+                        {c!.gold_unlimited ? '∞' : (c!.gold_cp / 100).toLocaleString('pt-BR')} PO ·
+                        peso{' '}
                         {data.inventory
                           .reduce((n, i) => n + Number(i.weight_lb) * i.quantity, 0)
                           .toFixed(1)}{' '}

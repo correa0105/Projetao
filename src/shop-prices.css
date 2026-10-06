@@ -1,0 +1,80 @@
+.shop-product footer .shop-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+:root .shop-product footer .shop-price-edit {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  background: transparent;
+  border-color: transparent;
+  color: #c2ab7c;
+}
+
+:root .shop-product footer .shop-price-edit:is(:hover, :focus-visible) {
+  background: #7e633435;
+  border-color: #ae915559;
+}
+
+.shop-price-form {
+  display: grid;
+  gap: 16px;
+  width: min(400px, 100%);
+  min-width: 0;
+}
+
+.shop-price-current {
+  display: grid;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+
+.shop-price-current span,
+.shop-price-hint {
+  color: #b6ac98;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.shop-price-form > label {
+  display: grid;
+  gap: 8px;
+}
+
+.shop-price-form input[type='text'] {
+  width: 100%;
+  min-width: 0;
+}
+
+.shop-price-form .shop-price-unpriced {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shop-price-unpriced input {
+  width: auto;
+}
+
+.shop-price-hint,
+.shop-price-error {
+  margin: 0;
+}
+
+.shop-price-error {
+  color: #e9a49a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.shop-price-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}

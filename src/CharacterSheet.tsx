@@ -779,7 +779,8 @@ export function CharacterSheet({
                       ))}
                     </ul>
                     <p>
-                      {money(c.gold_cp)} PO · {rankName(c.level)} · Nível {c.level}
+                      {c.gold_unlimited ? '∞' : money(c.gold_cp)} PO · {rankName(c.level)} · Nível{' '}
+                      {c.level}
                       <br />
                       {progressionLabel(c.level, c.progression_missions)}
                     </p>

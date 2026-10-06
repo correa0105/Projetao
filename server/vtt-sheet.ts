@@ -3,6 +3,7 @@ import type { PoolClient } from 'pg';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
+import { companionAllocated } from './companion-inventory.js';
 import { isAdministrator, requireAdministrator } from './administrators.js';
 import { deriveSheet, classRules } from '../shared/character-sheet.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
@@ -29,7 +30,7 @@ async function access(
   const {
     rows: [character],
   } = await db.query(
-    `SELECT c.* FROM characters c JOIN vtt_character_links l ON l.character_id=c.id AND l.room_id=$2 WHERE c.id=$1 AND c.deleted_at IS NULL${lock ? ' FOR UPDATE OF c' : ''}`,
+    `SELECT c.*,EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1) AS gold_unlimited FROM characters c JOIN vtt_character_links l ON l.character_id=c.id AND l.room_id=$2 WHERE c.id=$1 AND c.deleted_at IS NULL${lock ? ' FOR UPDATE OF c' : ''}`,
     [token.characterId, rid],
   );
   if (
@@ -93,6 +94,7 @@ async function sheetData(getRoom: RoomAccess, rid: string, tid: string, user: st
       biography: c.biography,
       stats: c.stats,
       gold_cp: c.gold_cp,
+      gold_unlimited: c.gold_unlimited,
     },
     token: a.token,
     sheet: a.sheet || null,
@@ -215,6 +217,9 @@ export function vttSheetRouter(getRoom: RoomAccess) {
         );
         if (!item)
           throw new AppError(409, 'Este consumível já foi gasto ou não está no inventário.');
+        const animalCopies = (await companionAllocated(db, cid))[input.item_id] || 0;
+        if (item.quantity - animalCopies < 1)
+          throw new AppError(409, 'Desequipe o item do animal antes de consumi-lo.');
         if (item.quantity === 1) {
           await db.query('DELETE FROM character_equipment WHERE character_id=$1 AND item_id=$2', [
             cid,

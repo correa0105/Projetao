@@ -268,7 +268,11 @@ export function Stable({
   }, [name]);
   async function buy() {
     if (!character || busy) return;
-    const finalName = name.trim() || mount.name;
+    const finalName = name.trim();
+    if (!finalName) {
+      setError('Dê um nome à sua montaria antes de comprar.');
+      return;
+    }
     const fingerprint = `${character.id}:${mount.id}:${coat}:${finalName}:${equipment.join(',')}`;
     if (request.current?.fingerprint !== fingerprint)
       request.current = { fingerprint, key: crypto.randomUUID() };
@@ -321,6 +325,7 @@ export function Stable({
               id="mount-name"
               form="stable-checkout"
               value={name}
+              required
               maxLength={40}
               pattern="[\p{L}\p{M}\p{N} '\-]+"
               placeholder="Dê um nome à sua montaria"
@@ -410,6 +415,13 @@ export function Stable({
             className="stable-order"
             onSubmit={(e) => {
               e.preventDefault();
+              if (
+                !character ||
+                busy ||
+                !name.trim() ||
+                (!character.gold_unlimited && character.gold_cp < total)
+              )
+                return;
               setError('');
               setConfirm(true);
             }}
@@ -417,7 +429,8 @@ export function Stable({
             <div className="stable-price">
               <strong>{money(total)} PO</strong>
               <span>
-                <Coins size={15} /> {money(character?.gold_cp || 0)} PO disponíveis
+                <Coins size={15} />{' '}
+                {character?.gold_unlimited ? '∞' : money(character?.gold_cp || 0)} PO disponíveis
               </span>
             </div>
             <div className="stable-order-actions">
@@ -432,7 +445,12 @@ export function Stable({
               <button
                 aria-label="Comprar conjunto"
                 className="button primary"
-                disabled={!character || busy || character.gold_cp < total}
+                disabled={
+                  !character ||
+                  busy ||
+                  !name.trim() ||
+                  (!character.gold_unlimited && character.gold_cp < total)
+                }
               >
                 <Footprints size={17} /> Comprar conjunto{' '}
                 <span className="stable-mobile-total">· {money(total)} PO</span>
@@ -441,7 +459,12 @@ export function Stable({
             {!character ? (
               <p>Selecione um personagem para comprar.</p>
             ) : (
-              character.gold_cp < total && <p>Faltam {money(total - character.gold_cp)} PO.</p>
+              <>
+                {!name.trim() && <p>Dê um nome à sua montaria para comprar.</p>}
+                {!character.gold_unlimited && character.gold_cp < total && (
+                  <p>Faltam {money(total - character.gold_cp)} PO.</p>
+                )}
+              </>
             )}
           </form>
         </div>
@@ -624,7 +647,7 @@ export function Stable({
           }}
         >
           <p>
-            Comprar <strong>{name.trim() || mount.name}</strong> ({mount.name}) por{' '}
+            Comprar <strong>{name.trim()}</strong> ({mount.name}) por{' '}
             <strong>{money(total)} PO</strong> para {character?.name}?
           </p>
           <ul>
@@ -636,7 +659,7 @@ export function Stable({
           </ul>
           <p>A montaria, a pelagem e os equipamentos ficarão salvos no seu personagem.</p>
           {error && <FlashMessage>{error}</FlashMessage>}
-          <button className="button primary" disabled={busy} onClick={buy}>
+          <button className="button primary" disabled={busy || !name.trim()} onClick={buy}>
             {busy ? 'Registrando…' : 'Confirmar compra'}
           </button>
         </Modal>

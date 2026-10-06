@@ -2,6 +2,44 @@
 
 ## Vistas, perspectiva, camadas e RP
 
+Refino posterior: o transform do personagem é explícito, para que o estilo
+global de botão pressionado não tire o ator do cursor. Sprites não animam a
+posição nem iniciam arraste nativo da imagem. O cálculo usa os limites internos
+atuais da cena e conserva presença local durante o arraste/salvamento, sem o
+polling restaurar a posição anterior. Camada do personagem também fica abaixo
+da cena, com nome dos objetos e atalhos atrás/à frente da mobília.
+
+Teste reversível de perspectiva: Decorar → Perspectiva dos itens ativa/desativa
+uma projeção adicional apenas na arte interna dos objetos. Afinamento padrão
+ao fundo (0–20°, inicial 12°) fica por conta/navegador. Cada peça pode salvar
+perspective_pitch 0–20 e perspective_yaw −20–20 no layout existente, por
+ownership/revisão. Recuo lateral negativo estreita/recua a esquerda; positivo
+recua a direita. Desligar o experimento conserva as posições, oito vistas e
+ajustes salvos. Personagens, montarias e mascotes não recebem essa projeção.
+As imagens personalizadas dos quadros acompanham a arte interna projetada.
+
+Controles da peça ficam na engrenagem junto ao objeto selecionado na cena,
+inclusive com Decorar fechado: direção, tamanho, giro, endireitar, camadas,
+guardar e ver lembrança. Setas laterais alternam as oito vistas existentes
+(esquerda −1, direita +1, com retorno circular), sem espelhar a arte ou arrastar.
+O menu fecha ao trocar seleção, clicar fora ou usar Esc; alterações usam Salvar
+mudanças no cabeçalho. Decorar conserva o catálogo e os ajustes gerais da casa.
+
+Quadro → Manter fundo de madeira salva frame_backing boolean opcional no layout
+JSONB. Frente e diagonais frontais mostram madeira atrás da imagem personalizada
+quando ativado; desativado conserva a abertura transparente e a moldura. Vistas
+traseiras continuam usando a arte real da parte de trás. A superfície reaproveita
+a madeira existente via composição CSS na mesma homografia da imagem, sem uma
+segunda moldura. Configuração do dono aparece também aos visitantes autorizados.
+Layouts antigos preservam o visual transparente e não precisam de migration.
+
+Duplo clique em cartas, quadros e peças com conteúdo abre o leitor; selecionar
+e arrastar continuam separados. Carta tem nova miniatura em perspectiva e
+arte aberta letter-open.webp para leitura, com título acima do texto real em
+HTML. Fonte de leitura oferece cursiva medieval, caligrafia, gótica e clássica;
+preferência visual local, conteúdo/presente original intacto. Fontes locais com
+licença OFL e textos escapados pelo React; texto longo rola no papel.
+
 Os doze objetos possuem oito artes independentes, na ordem Frente, Frente e
 direita, Direita, Trás e direita, Trás, Trás e esquerda, Esquerda, Frente e
 esquerda. Decoração → Direção da peça troca a vista, enquanto Giro mantém o
@@ -10,7 +48,8 @@ prompts, SHA-256 e dimensões em public/house/items/views/art-manifest.json.
 Não usar espelhamento ou rotação plana como substituto das oito vistas.
 
 shared/house-perspective.ts calcula o fator pela posição do pé/base no cenário:
-0,15 + 0,85 × ((y − 0,08) / 0,76)², com y limitado a 0,08–0,98.
+0,15 + 0,85 × ((y − 0,08) / 0,76), com y limitado a 0,08–0,98.
+Curva linear evita a inversão/salto ao agarrar o alto de um retrato comprido.
 O ajuste base continua salvo; mudar a profundidade altera apenas a renderização.
 Cada vista de objeto em pé é calibrada pela altura visível no alpha, mantendo
 a altura física ao trocar frente/perfil. O tapete usa sua projeção no plano do
@@ -31,6 +70,11 @@ antigos sem layer conservam a camada existente ao mover/entrar novamente.
 
 RP abre apenas dentro do cenário, com histórico translúcido e campo dourado
 junto à base; segue mensagens quando já no final. O painel externo foi retirado.
+Manter RP aberto salva preferência por conta/navegador e conserva o chat visível
+ao abrir outros controles. Enter ou Enviar mantém o foco no campo enquanto não
+houver clique/foco fora da caixa. O campo permanece habilitado durante o envio,
+guardando o próximo rascunho, inclusive quando ele repete o texto anterior.
+Respostas atrasadas não roubam foco nem alteram o texto de outra casa/personagem.
 Sons dos doze objetos usam arquivos próprios /audio/emporium/house-ID.wav e
 preservam volume/mute dos efeitos. Tamanhos iniciais de personagens, montarias
 e mascotes consideram suas proporções; layouts antigos conservam o ajuste manual.
@@ -53,7 +97,8 @@ nenhuma peça possui revenda, peso de combate ou bônus automático.
 
 Mobília vende doze peças por ouro do personagem dono da casa, com preço definido
 no servidor, lock, chave idempotente, auditoria e débito inteiro em cobre. O Empório
-tem acesso a Mobília/cartas/quadros. Carta Selada guarda texto/assunto. Quadro de
+permite ao administrador editar esses preços; Mobília consulta o mesmo catálogo
+efetivo (075), preservando pedidos históricos e valores após seed. Carta Selada guarda texto/assunto. Quadro de
 Memórias recebe uma imagem PNG/JPEG/WebP e dedicatória. Imagens são normalizadas
 no servidor, até 5 MB/20 milhões de pixels, sem URLs remotas. Oferecer transfere
 uma carta/quadro guardado para um personagem de outro jogador, preserva conteúdo

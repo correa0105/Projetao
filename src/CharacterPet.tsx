@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { api } from './api';
-import { PetArt } from './PetShop';
+import { OwnedPetArt } from './OwnedPetArt';
 import { petArtwork } from './pet-art';
 import { pets, type OwnedPet, type PetBreedCatalog } from '../shared/pets';
 import './character-pet.css';
@@ -9,6 +9,14 @@ export function CampPet({ characterId }: { characterId: string }) {
   const [pet, setPet] = useState<OwnedPet | null>(null),
     [breed, setBreed] = useState('');
   const host = useRef<HTMLDivElement>(null);
+  const [artRefresh, setArtRefresh] = useState(0);
+  useEffect(() => {
+    const changed = (event: Event) => {
+      if ((event as CustomEvent).detail?.characterId === characterId) setArtRefresh((v) => v + 1);
+    };
+    window.addEventListener('companion-art-updated', changed);
+    return () => window.removeEventListener('companion-art-updated', changed);
+  }, [characterId]);
   useEffect(() => {
     let active = true;
     setPet(null);
@@ -35,7 +43,7 @@ export function CampPet({ characterId }: { characterId: string }) {
     return () => {
       active = false;
     };
-  }, [characterId]);
+  }, [characterId, artRefresh]);
   useLayoutEffect(() => {
     const element = host.current,
       camp = element?.closest<HTMLElement>('.character-camp'),
@@ -69,7 +77,7 @@ export function CampPet({ characterId }: { characterId: string }) {
         } as CSSProperties
       }
     >
-      <PetArt pet={species} appearance={pet.appearance} />
+      <OwnedPetArt pet={pet} />
       <span>{pet.name}</span>
     </div>
   );

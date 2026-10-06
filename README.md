@@ -1,5 +1,39 @@
 # Alvorada Cinzenta
 
+Atualização de 06/10: o Inventário alterna equipamentos de personagem, montaria e
+mascote. **Vestir** usa a imagem base do animal com suas peças reais, preserva bens
+comprados no estábulo e compartilha o orçamento existente do ilustrador. Guia em
+[COMPANION-EQUIPMENT.md](docs/COMPANION-EQUIPMENT.md).
+
+Administradores vigentes têm **∞ PO** nas compras; o saldo real continua salvo e o
+histórico registra o preço integral. Famílias mágicas com variantes usam uma única
+oferta com escolhas de modelo/dano/bônus/cor e caixas com um único broche no selo.
+
+Empório: administradores têm **Editar preço** (lápis junto ao valor) em todas as
+ofertas, incluindo House. Valores em PO aceitam vírgula ou ponto; **Sem preço
+definido** bloqueia a compra de itens de aventura. Alterações persistem após
+reinício/seed e afetam somente compras futuras. Migration 075.
+
+House: **Camada do personagem** fica sob a cena, com atalhos para trás/à frente
+da mobília. Arraste preserva o ponto clicado também enquanto o botão está
+pressionado. Em **Decorar**, **Perspectiva dos itens** permite testar/desligar
+o afinamento e ajustar **Recuo lateral da peça**: negativo recua a esquerda,
+positivo recua a direita. Ajustes por peça usam **Salvar mudanças**.
+Ao selecionar uma peça na cena, as setas laterais alternam suas oito vistas.
+A engrenagem reúne direção, tamanho, giro, camadas e ações da lembrança.
+Quadros oferecem **Manter fundo de madeira** nas vistas frontais.
+Duplo clique abre cartas e quadros; cartas mostram papel aberto com título
+acima do texto, e **Fonte de leitura** oferece quatro estilos.
+**RP → Manter RP aberto** conserva o chat na cena ao abrir outros controles.
+Depois de enviar, o campo continua pronto para escrever; clicar fora encerra
+o foco. Rascunhos digitados durante o envio são preservados.
+Os quadros de Conquistas e visitas foram baixados juntos para afastar o de cima
+da viga de madeira; quadros e placas cabem na parede de pedra em telas menores.
+
+Estábulo e Casa dos mascotes exigem um nome pessoal antes de liberar a compra.
+Campo vazio ou só com espaços mantém o botão desabilitado; a espécie não é
+mais usada automaticamente como nome do animal.
+
 House: os doze objetos têm oito vistas reais em **Decorar → Direção da peça**.
 O tamanho acompanha a profundidade preservando o ajuste base. **Personagem →
 Camada do personagem** permite ficar atrás de toda a mobília ou de um objeto

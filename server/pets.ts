@@ -4,6 +4,8 @@ import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { pets, petAppearance, defaultPetBreeds } from '../shared/pets.js';
 import { requireAdministrator, isAdministrator } from './administrators.js';
+import { withCompanionImages } from './companion-images.js';
+import { currentGoldUnlimited, spendGold } from './gold.js';
 
 export function petsRouter() {
   const router = Router();
@@ -61,12 +63,16 @@ export function petsRouter() {
     );
     if (!character.rowCount) throw new AppError(404, 'Personagem não encontrado.');
     res.json(
-      (
-        await pool.query(
-          'SELECT id,pet_id,name,appearance,price_cp,created_at,displayed FROM character_pets WHERE character_id=$1 ORDER BY created_at DESC,id',
-          [id],
-        )
-      ).rows,
+      await withCompanionImages(
+        pool,
+        id,
+        (
+          await pool.query(
+            'SELECT id,pet_id,name,appearance,price_cp,created_at,displayed FROM character_pets WHERE character_id=$1 ORDER BY created_at DESC,id',
+            [id],
+          )
+        ).rows,
+      ),
     );
   });
   router.put('/pets/:characterId/display', async (req, res) => {
@@ -116,6 +122,7 @@ export function petsRouter() {
     if (input.appearance !== 'original' && !petAppearance(pet.id, input.appearance))
       throw new AppError(400, 'Aparência indisponível para este mascote.');
     const result = await transaction(async (client) => {
+      const gold_unlimited = await currentGoldUnlimited(client, res.locals.user.id);
       const {
         rows: [character],
       } = await client.query(
@@ -136,21 +143,22 @@ export function petsRouter() {
           previous.appearance !== input.appearance
         )
           throw new AppError(409, 'Esta compra já foi registrada com outra escolha.');
-        return { pet: previous, gold_cp: character.gold_cp, replayed: true };
+        return { pet: previous, gold_cp: character.gold_cp, gold_unlimited, replayed: true };
       }
-      if (character.gold_cp < pet.price_cp)
-        throw new AppError(409, 'Ouro insuficiente para comprar este mascote.');
-      await client.query('UPDATE characters SET gold_cp=gold_cp-$2 WHERE id=$1', [
-        character.id,
+      const gold_cp = await spendGold(
+        client,
+        character,
         pet.price_cp,
-      ]);
+        gold_unlimited,
+        'Ouro insuficiente para comprar este mascote.',
+      );
       const {
         rows: [owned],
       } = await client.query(
         'INSERT INTO character_pets(character_id,pet_id,name,price_cp,idempotency_key,appearance,displayed) VALUES($1,$2,$3,$4,$5,$6,NOT EXISTS(SELECT 1 FROM character_pets WHERE character_id=$1)) RETURNING id,pet_id,name,appearance,price_cp,created_at,displayed',
         [character.id, pet.id, input.name, pet.price_cp, input.idempotency_key, input.appearance],
       );
-      return { pet: owned, gold_cp: character.gold_cp - pet.price_cp, replayed: false };
+      return { pet: owned, gold_cp, gold_unlimited, replayed: false };
     });
     res.status(result.replayed ? 200 : 201).json(result);
   });

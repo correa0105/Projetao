@@ -92,6 +92,7 @@ try {
   await page.mouse.down();
   await page.mouse.move(box!.x + box!.width / 2 + 100, box!.y + box!.height / 2 + 20, { steps: 8 });
   await page.mouse.up();
+  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByLabel('Giro da peça').fill('12');
   await page.getByLabel('Tamanho da peça').fill('28');
   await page.getByLabel('Direção da peça').selectOption('7');
@@ -246,6 +247,7 @@ try {
     .locator('.house-piece')
     .filter({ has: page.locator('img[alt="Quadro de Memórias"]') });
   await framePiece.click();
+  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByLabel('Tamanho da peça').fill('45');
   for (const direction of [0, 1, 7, 4]) {
     await page.getByLabel('Direção da peça').selectOption(String(direction));
@@ -270,6 +272,7 @@ try {
     .locator('.house-piece')
     .filter({ has: page.locator('img[alt="Sofá de Carvalho"]') });
   await sofaPiece.click();
+  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByRole('button', { name: 'Enviar para trás', exact: true }).click();
   await expect(sofaPiece).toHaveAttribute('data-layer', '1');
   await page.getByRole('button', { name: 'Trazer à frente', exact: true }).click();

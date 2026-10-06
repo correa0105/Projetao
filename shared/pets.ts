@@ -94,6 +94,10 @@ export function petAppearance(petId: string, appearance = 'original') {
   return petVariants.find((v) => v.pet_id === petId && v.id === appearance);
 }
 export type OwnedPet = {
+  image_url?: string | null;
+  image_revision?: number;
+  equipment_revision?: number;
+  art_equipment_revision?: number | null;
   id: string;
   pet_id: string;
   name: string;

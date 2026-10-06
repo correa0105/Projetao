@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { pool, transaction } from './db.js';
 import { cards } from '../shared/cards.js';
 import { AppError } from './services.js';
+import { currentGoldUnlimited, spendGold } from './gold.js';
 const uuid = z.string().uuid();
 export function cardsRouter() {
   const router = Router();
@@ -35,6 +36,7 @@ export function cardsRouter() {
     if (!card?.buyable)
       throw new AppError(400, 'Esta carta ainda não está disponível para compra.');
     const result = await transaction(async (client) => {
+      const gold_unlimited = await currentGoldUnlimited(client, res.locals.user.id);
       const {
         rows: [character],
       } = await client.query(
@@ -51,7 +53,7 @@ export function cardsRouter() {
       if (previous) {
         if (previous.card_id !== card.id)
           throw new AppError(409, 'Esta compra já foi registrada com outra carta.');
-        return { card: previous, gold_cp: character.gold_cp, replayed: true };
+        return { card: previous, gold_cp: character.gold_cp, gold_unlimited, replayed: true };
       }
       if (
         (
@@ -62,19 +64,20 @@ export function cardsRouter() {
         ).rowCount
       )
         throw new AppError(409, 'Este personagem já possui esta carta.');
-      if (character.gold_cp < card.price_cp)
-        throw new AppError(409, 'Ouro insuficiente para comprar esta carta.');
-      await client.query('UPDATE characters SET gold_cp=gold_cp-$2 WHERE id=$1', [
-        character.id,
+      const gold_cp = await spendGold(
+        client,
+        character,
         card.price_cp,
-      ]);
+        gold_unlimited,
+        'Ouro insuficiente para comprar esta carta.',
+      );
       const {
         rows: [owned],
       } = await client.query(
         'INSERT INTO character_cards(character_id,card_id,price_cp,idempotency_key)VALUES($1,$2,$3,$4)RETURNING id,card_id,level,slot,price_cp,created_at',
         [character.id, card.id, card.price_cp, d.idempotency_key],
       );
-      return { card: owned, gold_cp: character.gold_cp - card.price_cp, replayed: false };
+      return { card: owned, gold_cp, gold_unlimited, replayed: false };
     });
     res.status(result.replayed ? 200 : 201).json(result);
   });

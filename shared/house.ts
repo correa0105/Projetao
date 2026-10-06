@@ -112,7 +112,7 @@ export const houseCatalog = [
     price_cp: 1000,
     description: 'Escreva uma mensagem e ofereça como lembrança.',
     speech: 'A tinta é sua. Eu só cuido para o selo chegar inteiro.',
-    art: 'one sealed medieval parchment envelope with aged red wax seal, front view',
+    art: 'one sealed medieval parchment envelope with aged red wax seal, resting flat, elevated front-right three-quarter view with visible paper edge thickness',
   },
   {
     id: 'frame',
@@ -133,6 +133,9 @@ export const placementSchema = z
     scale: z.number().min(0.03).max(0.55),
     rotation: z.number().min(-180).max(180),
     facing: z.number().int().min(0).max(7).optional(),
+    perspective_pitch: z.number().finite().min(0).max(20).optional(),
+    perspective_yaw: z.number().finite().min(-20).max(20).optional(),
+    frame_backing: z.boolean().optional(),
     layer: z.number().int().min(0).max(300),
   })
   .strict();
@@ -181,6 +184,7 @@ export type HouseItem = {
 export type HouseVariant = { id: string; character_id: string; name: string };
 export type HouseState = {
   gold_cp?: number;
+  gold_unlimited?: boolean;
   id: string;
   character_id: string;
   name: string;
@@ -199,6 +203,8 @@ export type HouseState = {
     appearance?: string;
     coat?: string;
     equipment?: string[];
+    image_url?: string | null;
+    image_revision?: number;
   }[];
   presence: {
     user_id: string;

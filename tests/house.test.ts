@@ -6,7 +6,12 @@ import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
 import { createLegacyTestCharacter } from './character-fixtures.js';
-import { houseTemplates, houseCatalog, initialHouseRooms } from '../shared/house.js';
+import {
+  houseTemplates,
+  houseCatalog,
+  initialHouseRooms,
+  placementSchema,
+} from '../shared/house.js';
 test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL isolado', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
   await migrate();
@@ -226,6 +231,153 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
       assert.equal((await request(`/house/${home.id}`, guest, 'PUT', layout())).status, 404);
       assert.equal((await request(`/house/${home.id}/rewards`, guest, 'POST', {})).status, 404);
     });
+    await t.test(
+      'perspectiva por objeto persiste, valida limites e conserva layouts antigos',
+      async () => {
+        const chair = await request('/house/purchase', owner, 'POST', {
+          character_id: hero.id,
+          catalog_id: 'chair',
+          idempotency_key: randomUUID(),
+        });
+        assert.equal(chair.status, 201);
+        home = await load();
+        const input = layout();
+        input.rooms[0].placements[0].perspective_pitch = 13.25;
+        input.rooms[0].placements[0].perspective_yaw = -8.5;
+        input.rooms[1].placements.push({
+          id: randomUUID(),
+          kind: 'item',
+          ref: chair.data.item_id,
+          x: 0.35,
+          y: 0.78,
+          scale: 0.2,
+          rotation: 0,
+          layer: 0,
+          perspective_pitch: 4,
+          perspective_yaw: 9,
+        });
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 200);
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 409);
+        home = await load();
+        assert.equal(home.rooms[0].placements[0].perspective_pitch, 13.25);
+        assert.equal(home.rooms[0].placements[0].perspective_yaw, -8.5);
+        assert.equal(home.rooms[1].placements[0].perspective_pitch, 4);
+        assert.equal(home.rooms[1].placements[0].perspective_yaw, 9);
+        const unchanged = structuredClone(home.rooms);
+        const revision = home.revision;
+        for (const [field, value] of [
+          ['perspective_pitch', -0.1],
+          ['perspective_pitch', 20.1],
+          ['perspective_pitch', null],
+          ['perspective_pitch', '8'],
+          ['perspective_yaw', -20.1],
+          ['perspective_yaw', 20.1],
+          ['perspective_yaw', null],
+        ]) {
+          const invalid = layout();
+          invalid.rooms[0].placements[0][field as string] = value;
+          assert.equal((await request(`/house/${home.id}`, owner, 'PUT', invalid)).status, 400);
+        }
+        for (const field of ['perspective_pitch', 'perspective_yaw'])
+          for (const value of [Infinity, -Infinity, NaN])
+            assert.equal(
+              placementSchema.safeParse({ ...home.rooms[0].placements[0], [field]: value }).success,
+              false,
+            );
+        const guestAttempt = layout();
+        guestAttempt.rooms[0].placements[0].perspective_pitch = 0;
+        assert.equal((await request(`/house/${home.id}`, guest, 'PUT', guestAttempt)).status, 404);
+        assert.equal((await request(`/house/${home.id}`, admin, 'PUT', guestAttempt)).status, 404);
+        const afterRejected = await load();
+        assert.equal(afterRejected.revision, revision);
+        assert.deepEqual(afterRejected.rooms, unchanged);
+        const legacy = layout();
+        for (const room of legacy.rooms)
+          for (const placement of room.placements) {
+            delete placement.perspective_pitch;
+            delete placement.perspective_yaw;
+          }
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', legacy)).status, 200);
+        home = await load();
+        for (const room of home.rooms)
+          for (const placement of room.placements) {
+            assert.equal(placement.perspective_pitch, undefined);
+            assert.equal(placement.perspective_yaw, undefined);
+          }
+      },
+    );
+    await t.test(
+      'fundo do quadro é opcional, persistente e visível somente a visitantes autorizados',
+      async () => {
+        const frame = await request('/house/purchase', owner, 'POST', {
+          character_id: hero.id,
+          catalog_id: 'frame',
+          idempotency_key: randomUUID(),
+        });
+        assert.equal(frame.status, 201);
+        home = await load();
+        const placementId = randomUUID();
+        const initial = layout();
+        initial.rooms[0].placements.push({
+          id: placementId,
+          kind: 'item',
+          ref: frame.data.item_id,
+          x: 0.62,
+          y: 0.24,
+          scale: 0.1,
+          rotation: 0,
+          layer: 3,
+        });
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', initial)).status, 200);
+        home = await load();
+        const placed = (state: any) =>
+          state.rooms[0].placements.find((piece: any) => piece.id === placementId);
+        assert.equal(placed(home).frame_backing, undefined);
+        assert.equal(placed(await load(guest)).frame_backing, undefined);
+        for (const frame_backing of [true, false]) {
+          const updated = layout();
+          placed(updated).frame_backing = frame_backing;
+          assert.equal((await request(`/house/${home.id}`, owner, 'PUT', updated)).status, 200);
+          assert.equal((await request(`/house/${home.id}`, owner, 'PUT', updated)).status, 409);
+          home = await load();
+          assert.equal(placed(home).frame_backing, frame_backing);
+          const visitorView = await load(guest);
+          assert.equal(placed(visitorView).frame_backing, frame_backing);
+          assert.equal(visitorView.inventory.length, 0);
+          assert.equal(
+            visitorView.items.find((item: any) => item.id === frame.data.item_id).has_image,
+            false,
+          );
+        }
+        const unchanged = structuredClone(home.rooms);
+        const revision = home.revision;
+        for (const value of [null, 'true', 'false', 0, 1, {}, []]) {
+          const invalid = layout();
+          placed(invalid).frame_backing = value;
+          assert.equal((await request(`/house/${home.id}`, owner, 'PUT', invalid)).status, 400);
+        }
+        const attempted = layout();
+        placed(attempted).frame_backing = true;
+        assert.equal((await request(`/house/${home.id}`, guest, 'PUT', attempted)).status, 404);
+        assert.equal((await request(`/house/${home.id}`, admin, 'PUT', attempted)).status, 404);
+        const afterRejected = await load();
+        assert.equal(afterRejected.revision, revision);
+        assert.deepEqual(afterRejected.rooms, unchanged);
+        assert.equal((await request(`/house/${home.id}`, other)).status, 404);
+        const legacy = layout();
+        delete placed(legacy).frame_backing;
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', legacy)).status, 200);
+        home = await load();
+        assert.equal(placed(home).frame_backing, undefined);
+        assert.equal(placed(await load(guest)).frame_backing, undefined);
+        const cleared = layout();
+        cleared.rooms[0].placements = cleared.rooms[0].placements.filter(
+          (piece: any) => piece.id !== placementId,
+        );
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', cleared)).status, 200);
+        home = await load();
+      },
+    );
     await t.test('presente transfere a peça uma única vez e preserva conteúdo', async () => {
       assert.equal(
         (
@@ -399,6 +551,37 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
             .status,
           400,
         );
+      },
+    );
+    await t.test(
+      'consulta administrativa de recompensas usa ordem estável e permissão vigente',
+      async () => {
+        assert.equal((await request('/house/admin/rewards')).status, 401);
+        assert.equal((await request('/house/admin/rewards', owner)).status, 403);
+        assert.equal((await request('/house/admin/rewards', guest)).status, 403);
+        const response = await request('/house/admin/rewards', admin);
+        assert.equal(response.status, 200);
+        const rules = response.data.rules;
+        assert.equal(rules.length, 2);
+        assert.ok(rules.some((rule: any) => rule.catalog_id === 'chest' && !rule.active));
+        assert.ok(rules.some((rule: any) => rule.catalog_id === 'lantern' && rule.active));
+        const ids = rules.map((rule: any) => rule.id);
+        assert.deepEqual(ids, [...ids].sort());
+        assert.deepEqual((await request('/house/admin/rewards', admin)).data.rules, rules);
+        assert.ok(
+          response.data.missions.some((mission: any) => mission.title === 'Missão da casa'),
+        );
+        assert.ok(
+          response.data.achievements.some(
+            (achievement: any) => achievement.code === 'first_character',
+          ),
+        );
+        await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [admin.id]);
+        try {
+          assert.equal((await request('/house/admin/rewards', admin)).status, 403);
+        } finally {
+          await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [admin.id]);
+        }
       },
     );
     await t.test('revogação retira presença e acesso inclusive às imagens', async () => {

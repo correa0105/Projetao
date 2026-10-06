@@ -1,5 +1,51 @@
 # Expansão do Empório — 06/10/2026
 
+## Famílias mágicas e ouro administrativo
+
+As 31 famílias de equipamento mágico com variantes são ofertas únicas, mantendo
+os 684 IDs originais. A vitrine mostra uma caixa com um único broche de arma ou
+armadura no selo; título em maiúsculas, escolha de modelo e eventual dano/bônus/cor.
+Sem escolhas completas, comprar, arrastar e editar preço ficam bloqueados. Uma
+família pode atravessar categorias de raridade; todas as opções continuam disponíveis.
+Busca inclui nomes das variantes. Mesa, carrinho, inventário, som, fala, preço e
+histórico continuam usando o item real escolhido, nunca o ID de uma família.
+
+Armadura de resistência oferece os 12 modelos do catálogo e 10 tipos de dano permitidos
+pelo [SRD 5.2.1, p. 210](https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210):
+ácido, frio, fogo, força, elétrico, necrótico, veneno, psíquico, radiante e trovão.
+Não acrescentar os três danos físicos à resistência; pertencem a outra família.
+
+Administradores vigentes têm ∞ PO para compras, consultado no banco por operação.
+O saldo real não é inflado nem debitado e o preço integral é registrado no histórico.
+Revogar administrador remove o benefício; jogadores e preços sem definição mantêm
+suas restrições. O benefício abrange Empório/carrinho, House, pets, estábulo e cartas.
+
+Artes nativas salvas em public/shop/magic-weapon-box.webp e magic-armor-box.webp,
+prompts/hashes em public/shop/magic-boxes-manifest.json. Verificação isolada:
+test-shop-variants-isolated.mjs, test-gold-unlimited-isolated.mjs e
+test-unlimited-gold-ui-isolated.mjs, sem alterar contas reais.
+
+## Edição administrativa dos preços
+
+O lápis junto ao preço abre Editar preço, exclusivo de administrador vigente.
+O campo Preço em PO aceita vírgula ou ponto e até duas casas decimais; a API
+recebe cobre inteiro positivo até 2.147.483.647. Itens comuns podem ficar Sem
+preço definido (null), bloqueando novas compras; House exige preço positivo.
+PATCH /api/catalog/:id/price usa IDs normais ou house-ID e consulta
+"user".administrador no banco a cada operação, sem autorização pelo cliente.
+
+Migration 075 cria shop_price_overrides, com autor/data. Edição e seed usam o
+mesmo advisory lock; o seed reaplica os valores, inclusive null, após importar
+catálogos. Compras comuns bloqueiam as linhas do catálogo; House resolve seu
+preço efetivo sob lock por item. GET /api/house devolve esses valores para
+Empório e Mobília. Carrinhos grandes rejeitam total acima do limite antes de
+debitar. Preços históricos e replays idempotentes conservam o valor original.
+
+node scripts/test-shop-prices-isolated.mjs verifica autorização, revogação,
+validação, seed, histórico, idempotência, limites e compras comuns/House.
+--browser verifica edição e compra real, vírgula/ponto, quatro larguras e
+sincronização de preços entre Empório e House, em PostgreSQL descartável.
+
 O catálogo ativo reúne 1.319 itens de aventura: os 71 já aprovados e 1.248
 adições. A vitrine inclui ainda os doze itens de House na categoria nativa
 Itens de House, totalizando 1.331 ofertas. A grade conserva duas colunas

@@ -11,6 +11,12 @@ import { characterHeightScale, characterStature } from '../shared/character-stat
 import { type ArtEquipment, type HelmetMode } from '../shared/equipment.js';
 import { describeArtEquipment } from './equipment-art.js';
 import { equipmentReferenceSheet } from './equipment-reference.js';
+import {
+  companionArtInstructions,
+  describeCompanionEquipment,
+  type CompanionArtEquipment,
+  type CompanionArtSubject,
+} from './companion-art.js';
 
 export class IllustratorError extends Error {
   constructor(
@@ -123,7 +129,13 @@ export async function checkCodexLogin() {
     throw new Error('Use codex login com sua conta ChatGPT.');
 }
 
-async function reviewComposition(image: string, directory: string, hasCape: boolean) {
+async function reviewComposition(
+  image: string,
+  directory: string,
+  hasCape: boolean,
+  companion?: CompanionArtSubject,
+  baseReference?: string,
+) {
   const schema = join(directory, 'review-schema.json'),
     result = join(directory, 'review.json');
   await unlink(result).catch(() => {});
@@ -153,6 +165,7 @@ async function reviewComposition(image: string, directory: string, hasCape: bool
       directory,
       '--image',
       image,
+      ...(baseReference ? ['--image', baseReference] : []),
       '--output-schema',
       schema,
       '--output-last-message',
@@ -167,7 +180,8 @@ async function reviewComposition(image: string, directory: string, hasCape: bool
     incluindo luvas integradas às braçadeiras. Tecido da capa encobre ombreiras e armadura;
     luvas encobrem anéis. Não exigir que peças encobertas fiquem visíveis nem sugerir
     deslocar, abrir ou tornar transparente outro item para revelá-las.
-    ${hasCape ? 'A capa deve cair solta como manto sem mangas, por cima dos ombros; reprove tecido enrolado no braço ou metal atravessando o tecido.' : ''}
+    ${hasCape && !companion ? 'A capa deve cair solta como manto sem mangas, por cima dos ombros; reprove tecido enrolado no braço ou metal atravessando o tecido.' : ''}
+    ${companion ? `O sujeito é um ANIMAL ${JSON.stringify(companion)}. Imagem 1 é a composição final a julgar; imagem 2 é a BASE confiável sem equipamento. Compare identidade, pose, direção, anatomia e proporções com a BASE. Reprove mudança de espécie, pelagem, pose ou escala da silhueta que não seja adaptação natural do equipamento. Confira anatomia animal: sem membros humanos, sem braços/mãos extras, sem inversão das patas traseiras; asas ligadas ao dorso, cauda e crânio naturais. Equipamento adaptado às partes reais do animal, sem arma nem cavaleiro. Não exigir anatomia humana. Reprove penas, patas, cauda ou equipamentos cortados e qualquer torso antropomórfico.` : ''}
     Seja rigoroso sobre esses defeitos visíveis, sem inventar falhas ou exigir acessórios ocultos.
     Retorne approved=true e issues=[] somente se cumprir. Caso contrário, approved=false e
     descreva em português os defeitos VISÍVEIS e as correções necessárias, sem comandos ou código.`,
@@ -192,8 +206,9 @@ export async function generateCharacterArt(job: {
   class: string;
   choices?: unknown;
   character_id?: string | null;
-  equipment?: ArtEquipment[];
+  equipment?: (ArtEquipment | CompanionArtEquipment)[];
   helmet_mode?: HelmetMode;
+  companion?: CompanionArtSubject;
 }) {
   z.string().uuid().parse(job.id);
   const race = z.enum(races).parse(job.race);
@@ -201,7 +216,10 @@ export async function generateCharacterArt(job: {
   const choices = job.choices ? validateChoices(race, characterClass, job.choices) : undefined;
   const size = choices?.options.size?.[0] || raceRules[race].size;
   const origin = `Regras SRD 5.2.1 / 2024, nível 1 sem subclasse. Tamanho: ${size}.${choices ? ` Linhagem: ${choices.subrace}.` : ''}${race === 'Draconato' && choices ? ` Ancestralidade dracônica: ${choices.options.dragon[0]}.` : ''}`;
-  const directory = resolve('.local/character-art', job.id);
+  const directory = resolve(
+    job.companion ? '.local/companion-art' : '.local/character-art',
+    job.id,
+  );
   await mkdir(directory, { recursive: true });
   const reference = join(directory, 'reference.png');
   const style = resolve('docs/references/character-style-v1.png');
@@ -209,26 +227,36 @@ export async function generateCharacterArt(job: {
   const schema = join(directory, 'result-schema.json');
   await writeFile(reference, job.reference);
   const equipmentPaths: string[] = [];
-  const equipmentDescriptions: ReturnType<typeof describeArtEquipment>[] = [];
+  const equipmentDescriptions: (
+    ReturnType<typeof describeArtEquipment> | ReturnType<typeof describeCompanionEquipment>
+  )[] = [];
   for (const [index, item] of (job.equipment || []).entries()) {
     const path = join(directory, `equipment-${index}.png`);
     await writeFile(path, item.image);
     equipmentPaths.push(path);
-    equipmentDescriptions.push(describeArtEquipment(item, index, job.helmet_mode));
+    equipmentDescriptions.push(
+      job.companion
+        ? describeCompanionEquipment(item as CompanionArtEquipment, index)
+        : describeArtEquipment(item as ArtEquipment, index, job.helmet_mode),
+    );
   }
   // The native image tool accepts at most five references.
-  const useSheet = equipmentPaths.length > 3;
+  const useSheet = equipmentPaths.length > (job.companion ? 4 : 3);
   const sheetPath = join(directory, 'equipment-sheet.png');
   if (useSheet) await writeFile(sheetPath, await equipmentReferenceSheet(job.equipment!));
   const attachedEquipment = useSheet ? [sheetPath] : equipmentPaths;
   const describedEquipment = equipmentDescriptions.map((description, index) =>
-    useSheet ? { ...description, reference_image: 3, reference_panel: index + 1 } : description,
+    useSheet
+      ? { ...description, reference_image: job.companion ? 2 : 3, reference_panel: index + 1 }
+      : description,
   );
   const gearInstructions = equipmentDescriptions.length
     ? `Equipamentos selecionados: ${JSON.stringify(describedEquipment)}.
-${useSheet ? 'Imagem 3: prancha numerada de equipamentos; reference_panel identifica cada painel, da esquerda para a direita e de cima para baixo. NÃO reproduza sua grade, etiquetas ou peças isoladas.' : 'Imagens 3 em diante: modelos dos equipamentos, na ordem listada.'}
+${useSheet ? `Imagem ${job.companion ? 2 : 3}: prancha numerada de equipamentos; reference_panel identifica cada painel, da esquerda para a direita e de cima para baixo. NÃO reproduza sua grade, etiquetas ou peças isoladas.` : `Imagens ${job.companion ? 2 : 3} em diante: modelos dos equipamentos, na ordem listada.`}
 Transcreva as posições e opções ao prompt da ferramenta de imagem.`
-    : 'Nenhum equipamento selecionado: usar apenas trapos velhos, camisa branca e calça cinza, como um pijama rudimentar.';
+    : job.companion
+      ? 'Nenhum equipamento selecionado: manter apenas o animal BASE sem acessórios.'
+      : 'Nenhum equipamento selecionado: usar apenas trapos velhos, camisa branca e calça cinza, como um pijama rudimentar.';
   await writeFile(
     schema,
     JSON.stringify({
@@ -238,22 +266,26 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
       additionalProperties: false,
     }),
   );
-  const instructions = await readFile(resolve('docs/CHARACTER-ART-PROMPT-v1.md'), 'utf8');
+  const instructions = job.companion
+    ? companionArtInstructions(job.companion)
+    : await readFile(resolve('docs/CHARACTER-ART-PROMPT-v1.md'), 'utf8');
   const candidatePath = join(directory, 'candidate.png');
   try {
     const render = async (repair = '', previousImage?: string): Promise<Buffer> => {
       await unlink(resultPath).catch(() => {});
       const activeReferences = previousImage
         ? [previousImage]
-        : [style, reference, ...attachedEquipment];
+        : job.companion
+          ? [reference, ...attachedEquipment]
+          : [style, reference, ...attachedEquipment];
       const prompt = previousImage
         ? `EDITE a única imagem anexada com a ferramenta nativa de imagem. Ela é a composição a corrigir. Preserve rosto, identidade, pose, enquadramento, estilo, cores e modelos dos equipamentos. Altere somente as regiões com os defeitos descritos abaixo, incluindo o tecido necessário para corrigir seu caimento.
 ${repair}
-Respeite camadas naturais: capa sem mangas por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive luvas integradas às braçadeiras. Acessórios encobertos permanecem ocultos; nunca exponha uma peça através de outra nem desloque a peça que a encobre. Não cortar nem duplicar objetos. Se houver corte na borda, afaste a câmera e amplie o enquadramento até caber a silhueta inteira, incluindo capa e armas, com margem transparente de 8% em todos os lados.
+${job.companion ? 'Preserve anatomia e pose animal: não criar braços, mãos humanas, armas ou cavaleiro; patas, asas, focinho e cauda mantêm suas formas e proporções. Equipamento adaptado ao animal e sobreposto com oclusão natural.' : 'Respeite camadas naturais: capa sem mangas por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive luvas integradas às braçadeiras.'} Acessórios encobertos permanecem ocultos; nunca exponha uma peça através de outra nem desloque a peça que a encobre. Não cortar nem duplicar objetos. Se houver corte na borda, afaste a câmera e amplie o enquadramento até caber a silhueta inteira, com margem transparente de 8% em todos os lados.
 Use referenced_image_paths com ${JSON.stringify(activeReferences)}, transparent_background=true. Não use num_last_images_to_include. Devolva o caminho da imagem editada no JSON solicitado.`
-        : `${instructions}\n\nRaça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy} ${gearInstructions}
+        : `${instructions}\n\n${job.companion ? '' : `Raça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy}`} ${gearInstructions}
 Referências locais completas, na mesma ordem das imagens anexadas: ${JSON.stringify(activeReferences)}.
-Use referenced_image_paths com TODOS esses caminhos e transparent_background=true. Não use num_last_images_to_include. Enquadre a silhueta inteira, incluindo capa, armas e pés, com margem transparente de 8% em todos os lados; afaste a câmera se necessário. Gere agora com a ferramenta nativa.`;
+Use referenced_image_paths com TODOS esses caminhos e transparent_background=true. Não use num_last_images_to_include. Enquadre a silhueta inteira, ${job.companion ? 'incluindo cauda, patas, asas e equipamento' : 'incluindo capa, armas e pés'}, com margem transparente de 8% em todos os lados; afaste a câmera se necessário. Gere agora com a ferramenta nativa.`;
       const execution = await runCodex(
         [
           'exec',
@@ -299,10 +331,12 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
           if (files.length) {
             // A single execution may render and then correct an image. Select its
             // final artifact only within this exact session, never another job.
-            const candidates = await Promise.all(files.map(async (entry) => ({
-              name: entry.name,
-              modified: (await stat(join(sessionRoot, entry.name))).mtimeMs,
-            })));
+            const candidates = await Promise.all(
+              files.map(async (entry) => ({
+                name: entry.name,
+                modified: (await stat(join(sessionRoot, entry.name))).mtimeMs,
+              })),
+            );
             candidates.sort((a, b) => b.modified - a.modified || a.name.localeCompare(b.name));
             const nativeFile = await realpath(join(sessionRoot, candidates[0].name));
             const part = relative(await realpath(sessionRoot), nativeFile);
@@ -372,7 +406,17 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
       }
       const allowedRoots = [
         directory,
-        resolve(process.env.CODEX_HOME || join(homedir(), '.codex'), 'generated_images'),
+        ...(job.companion
+          ? execution.threadId
+            ? [
+                resolve(
+                  process.env.CODEX_HOME || join(homedir(), '.codex'),
+                  'generated_images',
+                  execution.threadId,
+                ),
+              ]
+            : []
+          : [resolve(process.env.CODEX_HOME || join(homedir(), '.codex'), 'generated_images')]),
       ];
       const allowed = await Promise.all(
         allowedRoots.map(async (root) => {
@@ -396,10 +440,14 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
         candidatePath,
         directory,
         (job.equipment || []).some((item) => item.slot === 'cloak'),
+        job.companion,
+        job.companion ? reference : undefined,
       );
       const meta = await sharp(bytes).metadata();
       if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)
-        review.issues.push('Remover completamente o fundo e entregar PNG com canal alfa realmente transparente, usando transparent_background=true.');
+        review.issues.push(
+          'Remover completamente o fundo e entregar PNG com canal alfa realmente transparente, usando transparent_background=true.',
+        );
       if (review.approved && review.issues.length === 0) return bytes;
       repair = `CORREÇÃO OBRIGATÓRIA: a única imagem anexada é o resultado REPROVADO. Edite os defeitos visuais identificados: ${JSON.stringify(review.issues)}. Preserve a identidade e os modelos dos itens. Corrija a composição nas regiões afetadas; não repita o defeito anterior.`;
     }
@@ -416,4 +464,25 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
       [candidatePath, join(directory, 'review.json')].map((path) => unlink(path).catch(() => {})),
     );
   }
+}
+export async function generateCompanionArt(job: {
+  id: string;
+  reference: Buffer;
+  kind: CompanionArtSubject['kind'];
+  species_id: string;
+  name: string;
+  appearance: string;
+  equipment?: CompanionArtEquipment[];
+}) {
+  return generateCharacterArt({
+    ...job,
+    race: 'Humano',
+    class: 'Guerreiro',
+    companion: {
+      kind: job.kind,
+      species_id: job.species_id,
+      name: job.name,
+      appearance: job.appearance,
+    },
+  });
 }

@@ -8,11 +8,13 @@ import './house.css';
 export function HousePurchase({
   item,
   characterId,
+  goldUnlimited = false,
   close,
   purchased,
 }: {
   item: (typeof houseCatalog)[number];
   characterId: string;
+  goldUnlimited?: boolean;
   close: () => void;
   purchased: () => Promise<void>;
 }) {
@@ -72,6 +74,7 @@ export function HousePurchase({
         <img src={item.image} alt={item.name} />
         <p>{item.description}</p>
         <p>A compra fica na coleção de House deste personagem.</p>
+        {goldUnlimited && <p>Saldo: ∞ PO.</p>}
         {['letter', 'frame'].includes(item.id) && (
           <>
             <label>

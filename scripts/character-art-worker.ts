@@ -1,9 +1,11 @@
 import 'dotenv/config';
 import { pool, transaction } from '../server/db.js';
 import { completeArt } from '../server/character-art.js';
+import { completeCompanionArt } from '../server/companion-equipment.js';
 import {
   checkCodexLogin,
   generateCharacterArt,
+  generateCompanionArt,
   IllustratorError,
 } from '../server/codex-illustrator.js';
 import { AppError } from '../server/services.js';
@@ -32,6 +34,12 @@ try {
   await pool.query(
     "UPDATE character_art_jobs SET status='failed',reference=NULL,error='A geração foi interrompida. Envie a referência novamente; a tentativa não consumiu a cota.' WHERE status='running'",
   );
+  await pool.query(
+    "UPDATE companion_art_jobs SET status='failed',reference=NULL,error='A geração foi interrompida. A tentativa não consumiu a cota.' WHERE status='running'",
+  );
+  await pool.query(
+    "DELETE FROM companion_art_equipment WHERE job_id IN(SELECT id FROM companion_art_jobs WHERE status IN('failed','stale'))",
+  );
   const beat = () =>
     pool.query(
       'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
@@ -47,6 +55,25 @@ try {
   console.log('Ilustrador ativo — sessão ChatGPT do Codex, sem API key. Ctrl+C para parar.');
   do {
     const job = await transaction(async (client) => {
+      const candidate = (
+        await client.query(
+          "SELECT id,created_at,'character' AS queue_kind FROM character_art_jobs WHERE status='queued' UNION ALL SELECT id,created_at,'companion' FROM companion_art_jobs WHERE status='queued' ORDER BY created_at,id LIMIT 1",
+        )
+      ).rows[0];
+      if (candidate?.queue_kind === 'companion') {
+        const next = (
+          await client.query(
+            "SELECT * FROM companion_art_jobs WHERE id=$1 AND status='queued' FOR UPDATE SKIP LOCKED",
+            [candidate.id],
+          )
+        ).rows[0];
+        if (next)
+          await client.query(
+            "UPDATE companion_art_jobs SET status='running',started_at=now() WHERE id=$1",
+            [next.id],
+          );
+        return next ? { ...next, queue_kind: 'companion' } : undefined;
+      }
       const {
         rows: [next],
       } = await client.query(
@@ -61,14 +88,23 @@ try {
     });
     if (job) {
       try {
+        const companion = job.queue_kind === 'companion';
         const { rows: equipment } = await pool.query(
-          'SELECT slot,item_id,name,image FROM character_art_equipment WHERE job_id=$1 ORDER BY slot',
+          `SELECT slot,item_id,name,image FROM ${companion ? 'companion_art_equipment' : 'character_art_equipment'} WHERE job_id=$1 ORDER BY slot`,
           [job.id],
         );
         job.equipment = equipment;
-        const output = await generateCharacterArt(job);
-        await completeArt(job.id, output);
-        console.log(`Arte concluída: ${job.id}`);
+        if (companion) {
+          const result = await completeCompanionArt(job.id, await generateCompanionArt(job));
+          console.log(
+            result.status === 'stale'
+              ? `Arte descartada por equipamento alterado: ${job.id}. Cota preservada.`
+              : `Arte concluída: ${job.id}`,
+          );
+        } else {
+          await completeArt(job.id, await generateCharacterArt(job));
+          console.log(`Arte concluída: ${job.id}`);
+        }
       } catch (error) {
         const code =
           error instanceof IllustratorError
@@ -81,9 +117,11 @@ try {
             ? error.message
             : 'Não foi possível finalizar a arte. Tente novamente.';
         await pool.query(
-          "UPDATE character_art_jobs SET status='failed',reference=NULL,error=$2 WHERE id=$1 AND status='running'",
+          `UPDATE ${job.queue_kind === 'companion' ? 'companion_art_jobs' : 'character_art_jobs'} SET status='failed',reference=NULL,error=$2 WHERE id=$1 AND status='running'`,
           [job.id, `${message} Sua cota foi preservada.`],
         );
+        if (job.queue_kind === 'companion')
+          await pool.query('DELETE FROM companion_art_equipment WHERE job_id=$1', [job.id]);
         console.error(`Falha de geração: ${job.id}. Motivo: ${code}. Cota preservada.`);
       }
     } else if (!process.argv.includes('--once'))

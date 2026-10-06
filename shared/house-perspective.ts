@@ -16,7 +16,7 @@ export const houseViewLabels = [
 /** Base size is calibrated at y=.84; moving changes only the displayed size. */
 export function housePerspectiveScale(y: number) {
   const depth = (Math.max(0.08, Math.min(0.98, y)) - 0.08) / 0.76;
-  return 0.15 + 0.85 * depth * depth;
+  return 0.15 + 0.85 * depth;
 }
 
 /** Solve the floor anchor while the grabbed point stays under the pointer as size changes. */
@@ -27,32 +27,17 @@ export function houseDragPosition(
   previousY: number,
   minY = 0.08,
 ) {
-  const a = (grab.y * 0.85) / 0.76 ** 2,
-    b = bounds.height - 0.16 * a,
-    c = 0.08 ** 2 * a + grab.y * 0.15 - cursor.y;
-  const roots: number[] = [];
-  if (Math.abs(a) < 1e-8) roots.push(-c / b);
-  else {
-    const discriminant = b * b - 4 * a * c;
-    if (discriminant >= 0)
-      roots.push(
-        (-b + Math.sqrt(discriminant)) / (2 * a),
-        (-b - Math.sqrt(discriminant)) / (2 * a),
-      );
-  }
-  const valid = roots.filter((v) => Number.isFinite(v) && v >= minY && v <= 0.98);
-  let y = valid.sort((v, w) => Math.abs(v - previousY) - Math.abs(w - previousY))[0];
-  if (y === undefined) {
-    const candidates = [minY, 0.98, ...roots.map((v) => Math.max(minY, Math.min(0.98, v)))];
-    if (Math.abs(a) > 1e-8) candidates.push(Math.max(minY, Math.min(0.98, -b / (2 * a))));
-    y = candidates
-      .filter(Number.isFinite)
-      .sort(
-        (v, w) =>
-          Math.abs(v * bounds.height + grab.y * housePerspectiveScale(v) - cursor.y) -
-          Math.abs(w * bounds.height + grab.y * housePerspectiveScale(w) - cursor.y),
-      )[0];
-  }
+  const slope = 0.85 / 0.76,
+    denominator = bounds.height + grab.y * slope;
+  // An oversized sprite can have its grabbed point outside the room's projection.
+  // Keep that exceptional drag continuous instead of jumping to another floor anchor.
+  const projectedY =
+    denominator > 1e-8
+      ? (cursor.y - grab.y * (0.15 - 0.08 * slope)) / denominator
+      : previousY +
+        (cursor.y - (previousY * bounds.height + grab.y * housePerspectiveScale(previousY))) /
+          bounds.height;
+  const y = Math.max(minY, Math.min(0.98, projectedY));
   return {
     x: Math.max(
       0.02,

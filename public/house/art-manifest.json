@@ -289,10 +289,10 @@
     "id": "letter",
     "kind": "item",
     "path": "public/house/items/letter.webp",
-    "prompt": "Use case: stylized-concept. Individual transparent decoration sprite for a medieval fantasy house. one sealed medieval parchment envelope with aged red wax seal, front view. Beautiful realistically painted asset, same sober detailed style as Alvorada Cinzenta: aged wood, muted cloth, worn copper. Entire object with 8 percent margin, ground-contact shadow only immediately beneath it, true transparent background, no scene, text, interface, frame around image or additional objects. Physically plausible proportions and craftsmanship.",
+    "prompt": "Use case: precise-object-edit. Project asset for Alvorada Cinzenta medieval House shop. Image 1 is the EDIT TARGET: a single aged parchment envelope with folded triangular flap and dark red wax seal bearing fleur-de-lis. Image 2 is a CAMERA AND STYLE REFERENCE ONLY, the leather-bound book stack. Redraw the SAME SINGLE sealed envelope, resting flat horizontally on an imaginary shelf/table, shown from an elevated front-right three-quarter perspective matching the book stack's viewing angle (see broad top flap surface and thin front and right paper edges). The envelope should visibly recede in depth as a physical rectangle, with a raised realistic wax seal on its upper face. This is an isometric-like object cutout, NOT a flat upright front-facing rectangle. Keep same cream weathered parchment material, burgundy fleur-de-lis wax seal, delicate folds and worn corners, realistic painterly fantasy catalog rendering and soft upper-left light. Envelope is thin, physically plausible paper thickness, no book, no extra envelope, no stack. Whole item with small even margin, subtle close contact shadow immediately underneath only, genuine transparent background, no surface, no room, no text or UI. Produce one standalone transparent asset.\n",
     "width": 1536,
     "height": 1024,
-    "sha256": "3f91683dd8208173ed02ce773b1b299e188ff372b5d67c8890ba2724da1f7be7",
+    "sha256": "7ec9777ec764305604ab07190438eec98ce6f0825271462484dd32a62628c95a",
     "generator": "built-in imagegen",
     "created": "2026-10-06"
   },
@@ -304,6 +304,17 @@
     "width": 1199,
     "height": 1312,
     "sha256": "376c731422be9d3dd658389a0fd4ede0230a67cb13b9b6a6adb1e7ee605366df",
+    "generator": "built-in imagegen",
+    "created": "2026-10-06"
+  },
+  {
+    "id": "letter-open",
+    "kind": "item",
+    "path": "public/house/items/letter-open.webp",
+    "prompt": "Use case: stylized-concept. Asset type: opened medieval letter parchment background for an HTML reading panel in a fantasy game. Create ONE opened aged cream parchment letter, camera directly perpendicular to the FRONT of the writing surface so HTML text can be overlaid legibly. Portrait aspect 3:4. A broad single unfolded sheet whose entire center is clean blank light cream with very subtle paper fiber, with delicate old crease marks and softly curled irregular warm brown edges. The top flap of the opened envelope visible BEHIND the sheet near the top, a small dark red broken fleur-de-lis wax seal and tiny folded envelope flap partly behind the bottom edge; both unobtrusive outside the main blank writing area. Realistically painted medieval fantasy craftsmanship, matching target weathered parchment and burgundy fleur-de-lis seal. Main blank writable area spans approximately x15%-85%, y16%-83% of canvas. Do not put writing, calligraphy, line rules, signatures, icons, text or UI anywhere. Whole paper contained within 5% outer margin, true transparent background outside the paper, no table, no surrounding room, no hands. Soft even illumination that keeps all writing area light and readable.\n",
+    "width": 1086,
+    "height": 1448,
+    "sha256": "ccb2ff30799cec0770959d980f41748784bad2ff4463ef0e9671a80ec6f1bc52",
     "generator": "built-in imagegen",
     "created": "2026-10-06"
   }

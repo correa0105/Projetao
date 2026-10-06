@@ -26,6 +26,7 @@ import { characterSchema } from '../shared/character-art.js';
 import { characterSheetRouter } from './character-sheet.js';
 import { achievementsRouter } from './achievements.js';
 import { inventoryRouter } from './inventory.js';
+import { companionEquipmentRouter } from './companion-equipment.js';
 import { notificationsRouter } from './notifications.js';
 import { stableRouter } from './stable.js';
 import { petsRouter } from './pets.js';
@@ -138,6 +139,9 @@ export function createApp() {
   );
   const isVttSync = (req: express.Request) =>
     req.method === 'GET' && /^\/vtt\/rooms\/[0-9a-f-]{36}\/(signal|combat)$/.test(req.path);
+  const isVttArtwork = (req: express.Request) =>
+    ['GET', 'HEAD'].includes(req.method) &&
+    /^\/vtt\/premium-(?:preview-)?art\/monster-[a-z0-9-]+$/.test(req.path);
   app.use(
     '/api',
     rateLimit({
@@ -147,7 +151,7 @@ export function createApp() {
       legacyHeaders: false,
       message: { error: 'Muitas solicitações. Tente novamente em um minuto.' },
       skip: async (req, res) => {
-        if (!isVttSync(req)) return false;
+        if (!isVttSync(req) && !isVttArtwork(req)) return false;
         const session = await auth.api.getSession({ headers: fromNodeHeaders(req.headers) });
         if (!session) return false;
         res.locals.verifiedSession = session;
@@ -172,6 +176,22 @@ export function createApp() {
   });
   // Frequent read-only updates have their own authenticated-user budget. Players
   // on one connection must not exhaust each other's chat and mutation allowance.
+  // The 330-art compendium also needs an independent budget: loading thumbnails
+  // must not consume the allowance used to save, drag tokens, or send messages.
+  // Authentication is verified before this exemption; each image route still
+  // checks premium/room access and keeps no-store for immediate revocation.
+  app.use(
+    '/api',
+    rateLimit({
+      windowMs: 60000,
+      limit: 1200,
+      standardHeaders: 'draft-8',
+      legacyHeaders: false,
+      skip: (req) => !isVttArtwork(req),
+      keyGenerator: (_req, res) => res.locals.user.id,
+      message: { error: 'Muitas imagens da mesa. Aguarde um instante.' },
+    }),
+  );
   app.use(
     '/api',
     rateLimit({
@@ -194,6 +214,7 @@ export function createApp() {
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
   app.use('/api', inventoryRouter());
+  app.use('/api', companionEquipmentRouter());
   app.use('/api', notificationsRouter());
   app.use('/api', shopRouter());
   app.use('/api', stableRouter());
@@ -218,6 +239,7 @@ export function createApp() {
     res.json({
       ...res.locals.user,
       administrador: permission?.administrador ?? 0,
+      gold_unlimited: permission?.administrador === 1,
       role:
         permission?.administrador === 1
           ? 'admin'
@@ -268,7 +290,14 @@ export function createApp() {
     res.json(
       (
         await pool.query(
-          'SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url,image_path,audio_path,merchant_comment,weight_estimated FROM catalog_items WHERE active=true ORDER BY category,name',
+          `SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url,
+           image_path,audio_path,merchant_comment,weight_estimated,
+           raw_data->>'magic_family' AS magic_family,raw_data->>'base_item' AS base_item,
+           raw_data->>'damage_type' AS damage_type,raw_data->>'rarity' AS rarity,
+           raw_data->>'variant' AS variant,raw_data->'enhancement' AS enhancement,
+           CASE WHEN raw_data->>'srd_type' LIKE 'Armor %' THEN 'armor'
+                WHEN raw_data->>'srd_type' LIKE 'Weapon %' THEN 'weapon' END AS magic_kind
+           FROM catalog_items WHERE active=true ORDER BY category,name`,
         )
       ).rows,
     ),

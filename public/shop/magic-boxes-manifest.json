@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-10-06",
+  "mode": "built-in imagegen",
+  "assets": [
+    {
+      "kind": "weapon",
+      "asset": "/shop/magic-weapon-box.webp",
+      "source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-567bbfdd-242d-45d6-af8d-bb68ee5e99e5.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "sha256": "03f64ce1080248a188729ea3701e1e1935288eb4025818069a29a45a39140959",
+      "prompt": "Use case: precise-object-edit. Edit target: the attached mahogany equipment presentation box. Make one precise correction: REMOVE the entire separate loose crossed-sword-and-axe golden brooch sitting to the right and below the red wax seal. Restore only the wood grain in its place. Keep the single existing crossed sword and axe emblem INSIDE the red wax seal unchanged. There must be exactly ONE weapon emblem, on that seal, and no second weapon brooch, no loose objects. Preserve the box shape, perspective, wood, leather straps, copper corners, existing single seal, style, proportions, and lighting. Remove the wide brown background glow and all backdrop: deliver a clean genuinely TRANSPARENT alpha background around the box, at most a tiny contact shadow immediately underneath. No text, no new decorations."
+    },
+    {
+      "kind": "armor",
+      "asset": "/shop/magic-armor-box.webp",
+      "source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-3ce2f8db-4f6e-4a14-8125-c42aec7c45b5.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "sha256": "68830a49a521852cf2af2aae35f204b35e6864202515128a21c1c250ebe7c0c3",
+      "prompt": "Use case: precise-object-edit. Edit target: the attached mahogany armor presentation box. Place the existing golden breastplate brooch ON TOP OF the existing red wax seal, centered in that seal, replacing the fleur-de-lis inside the seal. Remove its former loose position to the right and restore the wood grain there. Exactly ONE breastplate emblem, mounted on the red seal, with no second brooch or loose object. Preserve the box shape, perspective, wood, leather straps, copper corners, seal position, style, proportions, and lighting. Remove the wide brown background glow and all backdrop: deliver a clean genuinely TRANSPARENT alpha background around the box, at most a tiny contact shadow immediately underneath. No text, no new decorations."
+    }
+  ]
+}

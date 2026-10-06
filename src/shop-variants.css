@@ -1,0 +1,32 @@
+.shop-product-family .shop-product-art:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.shop-variant-selectors {
+  display: grid;
+  gap: 7px;
+  margin: 8px 0;
+}
+.shop-variant-selectors label {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  min-width: 0;
+  font-size: 11px;
+  color: #d4c29f;
+}
+.shop-variant-selectors select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 7px 6px;
+  font: inherit;
+  color: #e8dcc1;
+  background: #211f19;
+  border-color: #85714b;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+}
+.shop-product-family h3 {
+  overflow-wrap: anywhere;
+}

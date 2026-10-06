@@ -1,8 +1,7 @@
 import sharp, { type OverlayOptions } from 'sharp';
-import type { ArtEquipment } from '../shared/equipment.js';
 
 /** Pack every selected item into numbered panels, within the native reference limit. */
-export async function equipmentReferenceSheet(items: ArtEquipment[]) {
+export async function equipmentReferenceSheet(items: { slot: string; image: Buffer }[]) {
   const columns = Math.min(items.length, items.length > 9 ? 4 : 3),
     width = 384,
     height = 528,

@@ -10,6 +10,7 @@ import {
 } from '../shared/equipment';
 import { INVENTORY_DRAG_TYPE as dragType } from './inventory-drag';
 import { EquipmentPanel } from './EquipmentPanel';
+import { CompanionEquipmentPanel } from './CompanionEquipmentPanel';
 import { MountSelection } from './CharacterMount';
 import { PetCollection } from './PetShop';
 import { money } from '../shared/rules';
@@ -31,7 +32,8 @@ function availableInventory(storage: Storage) {
       ...item,
       quantity:
         (item.quantity || 0) -
-        storage.equipped.filter((equipped) => equipped.id === item.id).length,
+        storage.equipped.filter((equipped) => equipped.id === item.id).length -
+        (storage.companion_allocated?.[item.id] || 0),
     }))
     .filter((item) => item.quantity > 0);
 }
@@ -303,6 +305,9 @@ export function Inventory({
   onInventoryChange: (items: Item[]) => void;
 }) {
   const [storage, setStorage] = useState<Storage | null>(null);
+  const [equipmentSubject, setEquipmentSubject] = useState<'character' | 'mount' | 'pet'>(
+    'character',
+  );
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
@@ -465,7 +470,7 @@ export function Inventory({
               <span>
                 Ouro
                 <strong>
-                  {money(character.gold_cp)} <small>PO</small>
+                  {character.gold_unlimited ? '∞' : money(character.gold_cp)} <small>PO</small>
                 </strong>
               </span>
             </div>
@@ -488,15 +493,47 @@ export function Inventory({
               </span>
             </div>
           </section>
-          <EquipmentPanel
-            character={character}
-            storage={storage}
-            busy={busy}
-            onEquip={equip}
-            dragged={dragged}
-            onDropItem={dropEquipment}
-            onRefresh={onRefresh}
-          />
+          <div className="equipment-workspace">
+            <nav className="equipment-subjects" aria-label="Configurar equipamentos de">
+              {(
+                [
+                  ['character', 'Personagem'],
+                  ['mount', 'Montaria'],
+                  ['pet', 'Mascote'],
+                ] as const
+              ).map(([kind, label]) => (
+                <button
+                  type="button"
+                  key={kind}
+                  aria-pressed={equipmentSubject === kind}
+                  onClick={() => setEquipmentSubject(kind)}
+                >
+                  {label}
+                </button>
+              ))}
+            </nav>
+            {equipmentSubject === 'character' ? (
+              <EquipmentPanel
+                character={character}
+                storage={storage}
+                busy={busy}
+                onEquip={equip}
+                dragged={dragged}
+                onDropItem={dropEquipment}
+                onRefresh={onRefresh}
+              />
+            ) : (
+              <CompanionEquipmentPanel
+                key={character.id + equipmentSubject}
+                characterId={character.id}
+                kind={equipmentSubject}
+                busy={busy}
+                dragged={dragged}
+                onInventoryRefresh={reload}
+                onRefresh={onRefresh}
+              />
+            )}
+          </div>
         </div>
         <StoragePanel
           place="backpack"

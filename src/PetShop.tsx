@@ -17,6 +17,7 @@ import { usePetAppearanceSound } from './PetSounds';
 import { money } from '../shared/rules';
 import { petArtwork } from './pet-art';
 import { Modal } from './components';
+import { OwnedPetArt } from './OwnedPetArt';
 import type { Character } from './types';
 import './pet-shop.css';
 
@@ -66,7 +67,16 @@ export function PetCollection({ characterId }: { characterId: string }) {
   const [items, setItems] = useState<OwnedPet[]>([]),
     [breeds, setBreeds] = useState<PetBreed[]>(defaultPetBreeds),
     [busy, setBusy] = useState(false),
-    [error, setError] = useState('');
+    [error, setError] = useState(''),
+    [artRefresh, setArtRefresh] = useState(0);
+  useEffect(() => {
+    const changed = (event: Event) => {
+      if ((event as CustomEvent<{ characterId?: string }>).detail?.characterId === characterId)
+        setArtRefresh((value) => value + 1);
+    };
+    window.addEventListener('companion-art-updated', changed);
+    return () => window.removeEventListener('companion-art-updated', changed);
+  }, [characterId]);
   useEffect(() => {
     let active = true;
     void Promise.all([
@@ -77,6 +87,7 @@ export function PetCollection({ characterId }: { characterId: string }) {
         if (active) {
           setItems(value);
           setBreeds(catalog.breeds);
+          setError('');
         }
       })
       .catch((e: Error) => {
@@ -85,7 +96,7 @@ export function PetCollection({ characterId }: { characterId: string }) {
     return () => {
       active = false;
     };
-  }, [characterId]);
+  }, [characterId, artRefresh]);
   async function select(id: string | null) {
     if (busy) return;
     setBusy(true);
@@ -123,7 +134,7 @@ export function PetCollection({ characterId }: { characterId: string }) {
               aria-label={`Mostrar ${item.name} no acampamento`}
               onClick={() => void select(item.id)}
             >
-              <PetArt pet={pet} appearance={item.appearance} />
+              <OwnedPetArt pet={item} />
               <span>
                 <strong>{item.name}</strong>
                 <small>
@@ -262,6 +273,11 @@ export function PetShop({
   }
   async function buy() {
     if (!character || inFlight.current) return;
+    const finalName = name.trim();
+    if (!finalName) {
+      setError('Dê um nome ao seu mascote antes de comprar.');
+      return;
+    }
     inFlight.current = true;
     setBusy(true);
     setError('');
@@ -271,7 +287,7 @@ export function PetShop({
         character_id: character.id,
         pet_id: selected.id,
         appearance,
-        name: name.trim() || selected.name,
+        name: finalName,
         idempotency_key: key.current,
       });
       if (live.current) {
@@ -344,6 +360,7 @@ export function PetShop({
               <input
                 maxLength={40}
                 value={name}
+                required
                 disabled={busy}
                 placeholder={`Nome do seu ${selected.name.toLocaleLowerCase('pt-BR')}`}
                 onChange={(event) => {
@@ -357,7 +374,7 @@ export function PetShop({
               <small>
                 <Coins size={12} />{' '}
                 {character
-                  ? `${money(character.gold_cp)} PO disponíveis`
+                  ? `${character.gold_unlimited ? '∞' : money(character.gold_cp)} PO disponíveis`
                   : 'Selecione um personagem'}
               </small>
             </div>
@@ -373,11 +390,17 @@ export function PetShop({
             )}
             <button
               className="button primary"
-              disabled={busy || !character || character.gold_cp < selected.price_cp}
+              disabled={
+                busy ||
+                !character ||
+                !name.trim() ||
+                (!character.gold_unlimited && character.gold_cp < selected.price_cp)
+              }
               onClick={() => void buy()}
             >
               <ShoppingBag size={16} /> {busy ? 'Preparando a viagem…' : 'Levar este companheiro'}
             </button>
+            {character && !name.trim() && <p>Dê um nome ao seu mascote para comprar.</p>}
             <a className="pet-shop-inventory-link" href="#inventory">
               Ver meus mascotes no inventário →
             </a>

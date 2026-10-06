@@ -125,7 +125,7 @@ export async function enqueueArt(userId: string, input: unknown) {
       if (pending.rowCount)
         throw new AppError(409, 'Já há uma imagem em preparação para este personagem.');
       const count = await client.query(
-        `SELECT count(*)::int AS used FROM character_art_jobs WHERE character_id=$1 AND status <> 'failed' AND created_at >= ${monthStart}`,
+        `SELECT ((SELECT count(*) FROM character_art_jobs WHERE character_id=$1 AND status <> 'failed' AND created_at >= ${monthStart}) + (SELECT count(*) FROM companion_art_jobs WHERE character_id=$1 AND status NOT IN('failed','stale') AND created_at >= ${monthStart}))::int AS used`,
         [data.character_id],
       );
       if (!account?.art_unlimited && count.rows[0].used >= ART_MONTHLY_LIMIT)
@@ -288,7 +288,7 @@ export function characterArtRouter() {
         throw new AppError(400, 'Digite o nome do personagem para confirmar.');
       if (character.deleted_at) return;
       const pending = await client.query(
-        "SELECT 1 FROM character_art_jobs WHERE character_id=$1 AND status IN ('queued','running')",
+        "SELECT 1 FROM character_art_jobs WHERE character_id=$1 AND status IN ('queued','running') UNION ALL SELECT 1 FROM companion_art_jobs WHERE character_id=$1 AND status IN('queued','running')",
         [id],
       );
       if (pending.rowCount)
@@ -302,6 +302,17 @@ export function characterArtRouter() {
       ]);
       await client.query('DELETE FROM character_portraits WHERE character_id=$1', [id]);
       await client.query('UPDATE character_art_jobs SET reference=NULL WHERE character_id=$1', [
+        id,
+      ]);
+      await client.query(
+        'DELETE FROM companion_artworks WHERE wardrobe_id IN(SELECT id FROM companion_wardrobes WHERE character_id=$1)',
+        [id],
+      );
+      await client.query(
+        'DELETE FROM companion_art_equipment WHERE job_id IN(SELECT id FROM companion_art_jobs WHERE character_id=$1)',
+        [id],
+      );
+      await client.query('UPDATE companion_art_jobs SET reference=NULL WHERE character_id=$1', [
         id,
       ]);
     });
@@ -337,8 +348,9 @@ export function characterArtRouter() {
 }
 
 export const characterListSql = `SELECT c.*,
+  EXISTS(SELECT 1 FROM "user" u WHERE u.id=c.user_id AND u.administrador=1) AS gold_unlimited,
   EXISTS(SELECT 1 FROM character_art_allowances a WHERE a.user_id=c.user_id AND a.unlimited) AS art_unlimited,
   (SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,
-  (SELECT count(*)::int FROM character_art_jobs j WHERE j.character_id=c.id AND j.status <> 'failed' AND j.created_at >= ${monthStart}) AS art_used,
+  ((SELECT count(*) FROM character_art_jobs j WHERE j.character_id=c.id AND j.status <> 'failed' AND j.created_at >= ${monthStart}) + (SELECT count(*) FROM companion_art_jobs j WHERE j.character_id=c.id AND j.status NOT IN('failed','stale') AND j.created_at >= ${monthStart}))::int AS art_used,
   EXISTS(SELECT 1 FROM character_art_jobs j WHERE j.character_id=c.id AND j.status IN ('queued','running')) AS art_pending
   FROM characters c WHERE c.user_id=$1 AND c.deleted_at IS NULL ORDER BY c.created_at`;

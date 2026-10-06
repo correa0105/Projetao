@@ -14,6 +14,9 @@ import {
   roomKinds,
 } from '../shared/house.js';
 import { achievementCatalog } from '../shared/achievements.js';
+import { currentHouseCatalog, currentHousePrice } from './shop-prices.js';
+import { withCompanionImages } from './companion-images.js';
+import { currentGoldUnlimited, spendGold } from './gold.js';
 const uuid = z.string().uuid(),
   uid = z.string().min(1).max(100);
 type DB = Pick<PoolClient, 'query'>;
@@ -95,6 +98,7 @@ async function state(db: DB, h: any, user: string) {
     `SELECT id,'pet' AS kind,name,pet_id,appearance,NULL AS mount_id,NULL AS coat,NULL AS equipment FROM character_pets WHERE character_id=$1 UNION ALL SELECT id,'mount',name,NULL,NULL,mount_id,coat,equipment FROM character_mounts WHERE character_id=$1`,
     [h.character_id],
   );
+  companions.rows = await withCompanionImages(db, h.character_id, companions.rows);
   const presence = await db.query(
     `SELECT p.user_id,p.character_id,c.name,p.variant_id,p.room,p.x,p.y,p.scale,p.layer FROM house_presence p JOIN characters c ON c.id=p.character_id WHERE p.home_id=$1 AND c.deleted_at IS NULL AND (p.user_id=$2 OR EXISTS(SELECT 1 FROM house_invites i WHERE i.home_id=p.home_id AND i.user_id=p.user_id AND i.status='accepted')) AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=p.user_id AND b.blocked_id=$2)OR(b.blocker_id=$2 AND b.blocked_id=p.user_id))`,
     [h.id, h.user_id],
@@ -116,7 +120,9 @@ async function state(db: DB, h: any, user: string) {
     revision: h.revision,
     rooms: h.rooms,
     is_owner: owner,
-    ...(owner ? { gold_cp: h.gold_cp } : {}),
+    ...(owner
+      ? { gold_cp: h.gold_cp, gold_unlimited: await currentGoldUnlimited(db, user, false) }
+      : {}),
     owner_name: h.owner_name,
     inventory: owner ? items.rows : [],
     items: items.rows.filter((i) => placed.includes(i.id)),
@@ -134,6 +140,7 @@ export function houseRouter() {
   const router = Router();
   router.get('/house', async (_req, res) => {
     const u = res.locals.user.id;
+    const can_admin = await isAdministrator(u);
     const [homes, invites, variants] = await Promise.all([
       pool.query(
         `SELECT h.id,h.character_id,h.name,c.name AS character_name FROM house_homes h JOIN characters c ON c.id=h.character_id WHERE c.user_id=$1 AND c.deleted_at IS NULL ORDER BY h.created_at`,
@@ -152,9 +159,10 @@ export function houseRouter() {
       homes: homes.rows,
       invites: invites.rows,
       variants: variants.rows,
-      catalog: houseCatalog,
+      catalog: await currentHouseCatalog(),
       templates: houseTemplates,
-      can_admin: await isAdministrator(u),
+      can_admin,
+      gold_unlimited: can_admin,
     });
   });
   router.post('/house', async (req, res) => {
@@ -290,6 +298,7 @@ export function houseRouter() {
       throw new AppError(400, 'Este móvel não recebe uma dedicatória.');
     const bytes = input.image ? await imageBytes(input.image) : null;
     const result = await transaction(async (db) => {
+      const gold_unlimited = await currentGoldUnlimited(db, res.locals.user.id);
       const c = await owned(db, input.character_id, res.locals.user.id);
       const previous = (
         await db.query(
@@ -311,26 +320,21 @@ export function houseRouter() {
           p.content.text !== input.content.text
         )
           throw new AppError(409, 'Chave já usada para outro pedido.');
-        return { item_id: previous.item_id, gold_cp: c.gold_cp, replayed: true };
+        return { item_id: previous.item_id, gold_cp: c.gold_cp, gold_unlimited, replayed: true };
       }
-      if (c.gold_cp < item.price_cp) throw new AppError(409, 'Ouro insuficiente.');
+      const price = await currentHousePrice(db, item.id, item.price_cp);
+      const gold_cp = await spendGold(db, c, price, gold_unlimited, 'Ouro insuficiente.');
       const added = (
         await db.query(
           `INSERT INTO house_items(character_id,catalog_id,content,image,source)VALUES($1,$2,$3,$4,'purchase')RETURNING id`,
           [c.id, item.id, input.content, bytes],
         )
       ).rows[0];
-      const gold = (
-        await db.query('UPDATE characters SET gold_cp=gold_cp-$2 WHERE id=$1 RETURNING gold_cp', [
-          c.id,
-          item.price_cp,
-        ])
-      ).rows[0];
       await db.query(
         'INSERT INTO house_orders(character_id,idempotency_key,request,total_cp,item_id)VALUES($1,$2,$3,$4,$5)',
-        [c.id, input.idempotency_key, request, item.price_cp, added.id],
+        [c.id, input.idempotency_key, request, price, added.id],
       );
-      return { item_id: added.id, gold_cp: gold.gold_cp, replayed: false };
+      return { item_id: added.id, gold_cp, gold_unlimited, replayed: false };
     });
     res.status(result.replayed ? 200 : 201).json(result);
   });
@@ -629,7 +633,7 @@ export function houseRouter() {
   router.get('/house/admin/rewards', async (_req, res) => {
     await requireAdministrator(res.locals.user.id);
     const [rules, missions, achievements] = await Promise.all([
-      pool.query('SELECT * FROM house_reward_rules ORDER BY created_at'),
+      pool.query('SELECT * FROM house_reward_rules ORDER BY id'),
       pool.query(
         "SELECT id,title FROM board_posts WHERE kind='mission' ORDER BY created_at DESC LIMIT 200",
       ),

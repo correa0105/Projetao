@@ -62,6 +62,42 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Leituras VTT premium/preview autenticadas usam orçamento de 1200/min por usuário,
+separado do limite de 240/min de API comum/mutações. Não voltar a debitar carregamento
+do acervo no mesmo orçamento: 330 artes causavam HTTP 429 e bloqueavam salvar tokens.
+Autenticação/autorização e no-store permanecem. Arquivos não estavam corrompidos.
+
+Ouro infinito para administrador vigente é capability gold_unlimited do servidor,
+derivada exclusivamente de "user".administrador=1 a cada compra. Não inflar gold_cp:
+admin compra sem débito, histórico mantém preço integral; players pagam e revogação
+é imediata na API. Famílias mágicas com variantes agrupam na vitrine sem perder IDs
+reais; escolhas obrigatórias de modelo/dano/bônus/cor. Caixa tem um só broche no selo.
+
+Inventário permite configurar montarias e mascotes com peças reais reservadas da
+mochila; preservar bens legados do estábulo e sua possibilidade de reequipar. Vestir
+sempre usa BASE confiável e referências de equipamento, nunca arte já vestida para
+acumular armaduras. Imagens privadas, anatomia/proporções da espécie, revisão de
+equipamento e cota existente compartilhada: docs/COMPANION-EQUIPMENT.md prevalece.
+
+Estábulo/mascotes exigem nome pessoal não vazio após trim para comprar.
+Não restaurar fallback do nome da espécie em Stable/PetShop. Botões, submit e
+confirmação bloqueiam campo vazio/espaços; APIs mantêm trim min1. Animais antigos
+e replays preservados, sem renomeação automática.
+
+Refino posterior House/Empório 06/10: preço é editável só por administrador=1
+vigente, por PATCH /catalog/:id/price. 075_shop_price_overrides persiste edições
+inclusive null de itens comuns através do seed; House exige preço positivo.
+Preservar total histórico/replay e resolver cobrança no servidor sob lock.
+House: transform explícito do ator evita button:active global; profundidade linear
+preserva cursor em retratos compridos. Camadas também abaixo da cena. Experimento
+reversível de perspectiva interna por peça (pitch 0–20°, yaw −20–20°) fica no layout
+JSONB, respeita revisão/ownership e não deforma atores/companheiros.
+Controles de peça ficam na engrenagem ancorada à seleção, com setas para as oito
+vistas reais. frame_backing opcional preserva abertura transparente por padrão;
+madeira frontal é composição CSS atrás da imagem e fica salva no layout.
+Duplo clique em carta/quadro abre leitura com arte aberta, título acima e quatro fontes locais
+OFL; texto real escapado pelo React. Guias HOUSE.md/EMPORIO-EXPANSAO.md vigentes.
+
 Refino House/Empório 06/10: guias HOUSE.md e EMPORIO-EXPANSAO.md prevalecem
 sobre o limite histórico de 71 itens abaixo. São 1319 itens normais + 12 House,
 SRD 5.2.1, 258 famílias mágicas, 20 cosméticos e sons/falas individuais;

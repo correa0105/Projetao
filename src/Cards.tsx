@@ -307,13 +307,17 @@ export function Cards({
               <span>
                 <Coins size={12} />
                 {character
-                  ? money(character.gold_cp) + ' PO disponíveis'
+                  ? (character.gold_unlimited ? '∞' : money(character.gold_cp)) + ' PO disponíveis'
                   : 'Selecione um personagem'}
               </span>
             </div>
             <button
               className="button primary"
-              disabled={busy || !character || character.gold_cp < selected.price_cp}
+              disabled={
+                busy ||
+                !character ||
+                (!character.gold_unlimited && character.gold_cp < selected.price_cp)
+              }
               onClick={() => void purchase()}
             >
               {busy ? 'Guardando a carta…' : 'Comprar carta'}

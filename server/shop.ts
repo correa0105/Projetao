@@ -4,9 +4,46 @@ import { z } from 'zod';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
 import { grantPurchaseItems } from './purchase-grants.js';
+import { requireAdministrator } from './administrators.js';
+import { lockCatalogPrices, lockHousePrice } from './shop-prices.js';
+import { houseCatalog } from '../shared/house.js';
+import { currentGoldUnlimited, spendGold } from './gold.js';
 
 export function shopRouter() {
   const router = Router();
+  router.patch('/catalog/:id/price', async (req, res) => {
+    const { price_cp } = z
+      .object({ price_cp: z.number().int().min(1).max(2147483647).nullable() })
+      .strict()
+      .parse(req.body);
+    const id = z.string().min(1).max(100).parse(req.params.id);
+    const result = await transaction(async (client) => {
+      await lockCatalogPrices(client);
+      await requireAdministrator(res.locals.user.id, client);
+      if (id.startsWith('house-')) {
+        const houseId = id.slice('house-'.length);
+        if (!houseCatalog.some((item) => item.id === houseId))
+          throw new AppError(404, 'Item não encontrado.');
+        if (price_cp === null)
+          throw new AppError(400, 'Defina um preço maior que zero para o item de House.');
+        await lockHousePrice(client, houseId);
+      } else {
+        const updated = await client.query(
+          'UPDATE catalog_items SET price_cp=$2 WHERE id=$1 AND active=true RETURNING id',
+          [id, price_cp],
+        );
+        if (!updated.rowCount) throw new AppError(404, 'Item não encontrado.');
+      }
+      await client.query(
+        `INSERT INTO shop_price_overrides(item_id,price_cp,updated_by)VALUES($1,$2,$3)
+         ON CONFLICT(item_id)DO UPDATE SET price_cp=excluded.price_cp,
+         updated_by=excluded.updated_by,updated_at=now()`,
+        [id, price_cp, res.locals.user.id],
+      );
+      return { id, price_cp };
+    });
+    res.json(result);
+  });
   router.post('/shop/checkout', async (req, res) => {
     const data = z
       .object({
@@ -29,6 +66,7 @@ export function shopRouter() {
       .parse(req.body);
     const lines = [...data.items].sort((a, b) => a.item_id.localeCompare(b.item_id));
     const result = await transaction(async (client) => {
+      const gold_unlimited = await currentGoldUnlimited(client, res.locals.user.id);
       const {
         rows: [character],
       } = await client.query(
@@ -58,6 +96,7 @@ export function shopRouter() {
           id: previous.id,
           total_cp: Number(previous.total_cp),
           gold_cp: character.gold_cp,
+          gold_unlimited,
           replayed: true,
         };
       }
@@ -71,18 +110,21 @@ export function shopRouter() {
       if (items.some((i) => i.price_cp === null))
         throw new AppError(409, 'Remova do carrinho os itens sem preço definido.');
       const total = lines.reduce((sum, i) => sum + prices.get(i.item_id)! * i.quantity, 0);
-      if (character.gold_cp < total)
-        throw new AppError(409, 'Ouro insuficiente para finalizar o carrinho.');
+      if (total > 2147483647)
+        throw new AppError(409, 'O valor do carrinho excede o limite de uma compra.');
+      const gold_cp = await spendGold(
+        client,
+        character,
+        total,
+        gold_unlimited,
+        'Ouro insuficiente para finalizar o carrinho.',
+      );
       const {
         rows: [order],
       } = await client.query(
         'INSERT INTO shop_checkouts(character_id,idempotency_key,lines,total_cp) VALUES($1,$2,$3,$4) RETURNING id',
         [character.id, data.idempotency_key, JSON.stringify(lines), total],
       );
-      await client.query('UPDATE characters SET gold_cp=gold_cp-$2 WHERE id=$1', [
-        character.id,
-        total,
-      ]);
       for (const line of lines) {
         const {
           rows: [purchase],
@@ -103,7 +145,7 @@ export function shopRouter() {
         "INSERT INTO achievements(character_id,code) VALUES($1,'first_purchase') ON CONFLICT DO NOTHING",
         [character.id],
       );
-      return { id: order.id, total_cp: total, gold_cp: character.gold_cp - total, replayed: false };
+      return { id: order.id, total_cp: total, gold_cp, gold_unlimited, replayed: false };
     });
     res.status(result.replayed ? 200 : 201).json(result);
   });

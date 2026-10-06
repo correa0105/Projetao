@@ -4,6 +4,8 @@ import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { stableGear } from '../shared/stable-gear.js';
 import { mounts } from '../shared/mounts.js';
+import { withCompanionImages } from './companion-images.js';
+import { currentGoldUnlimited, spendGold } from './gold.js';
 
 export function stableRouter() {
   const router = Router();
@@ -18,7 +20,7 @@ export function stableRouter() {
       'SELECT id,mount_id,coat,name,price_cp,equipment,equipment_price_cp,created_at,displayed FROM character_mounts WHERE character_id=$1 ORDER BY created_at DESC,id',
       [id],
     );
-    res.json(rows);
+    res.json(await withCompanionImages(pool, id, rows));
   });
   router.put('/stable/:characterId/display', async (req, res) => {
     const id = z.string().uuid().parse(req.params.characterId);
@@ -82,6 +84,7 @@ export function stableRouter() {
     const equipmentPrice = gear.reduce((sum, g) => sum + g!.price_cp, 0);
     const total = mount.price_cp + equipmentPrice;
     const result = await transaction(async (client) => {
+      const gold_unlimited = await currentGoldUnlimited(client, res.locals.user.id);
       const {
         rows: [character],
       } = await client.query(
@@ -103,14 +106,15 @@ export function stableRouter() {
           JSON.stringify(previous.equipment) !== JSON.stringify(equipment)
         )
           throw new AppError(409, 'Esta compra já foi registrada com outros dados.');
-        return { mount: previous, gold_cp: character.gold_cp, replayed: true };
+        return { mount: previous, gold_cp: character.gold_cp, gold_unlimited, replayed: true };
       }
-      if (character.gold_cp < total)
-        throw new AppError(409, 'Ouro insuficiente para comprar esta montaria.');
-      await client.query('UPDATE characters SET gold_cp=gold_cp-$2 WHERE id=$1', [
-        character.id,
+      const gold_cp = await spendGold(
+        client,
+        character,
         total,
-      ]);
+        gold_unlimited,
+        'Ouro insuficiente para comprar esta montaria.',
+      );
       const {
         rows: [owned],
       } = await client.query(
@@ -126,7 +130,7 @@ export function stableRouter() {
           equipmentPrice,
         ],
       );
-      return { mount: owned, gold_cp: character.gold_cp - total, replayed: false };
+      return { mount: owned, gold_cp, gold_unlimited, replayed: false };
     });
     res.status(result.replayed ? 200 : 201).json(result);
   });
