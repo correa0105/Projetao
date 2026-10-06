@@ -520,7 +520,12 @@ function Portal({ user }: { user: User }) {
     if (page === 'tower')
       return (
         <Suspense fallback={<div className="loading-content">Abrindo as portas da torre…</div>}>
-          <Tower characters={characters} character={character} refreshCharacters={refresh} />
+          <Tower
+            characters={characters}
+            catalog={catalog}
+            character={character}
+            refreshCharacters={refresh}
+          />
         </Suspense>
       );
     if (page === 'hall' || page === 'profiles')

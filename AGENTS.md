@@ -62,13 +62,18 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
-Torre experimental (05/10): Mural → Torre, 30 andares/seis regiões e guardião a
-cada cinco. Versão anterior preservada em 35d5f36 e na tag GitHub
+Torre experimental (06/10): Mural → Torre, 100 andares. Administrador edita
+informações, criaturas, armadilhas, guardião por andar, valores e tabelas d100/itens.
+Encontros/armadilhas só são retornados pelo servidor após conclusão pessoal/guilda;
+o projeto tem uma guilda compartilhada. Não pré-preencher criaturas inventadas.
+Arte v2 fechada, sem interiores/biomas expostos e laterais limpas. Versão anterior preservada em 35d5f36 e na tag GitHub
 codex/checkpoint-antes-torre-2026-10-05. Mestre é administrador e dono da expedição;
 confirma progresso em sequência e retorno. Personagens só entram por ownership.
-Ouro/cristais base e d100/relíquia são transacionais e idempotentes (066); servidor
+Ouro/cristais base e d100/relíquia/itens são transacionais e idempotentes (066–068); servidor
 resolve todos os valores e sorteia, sem aceitar saldo, andar ou dado do cliente.
-Cristais e coleção ficam na Torre; não alterar patentes/XP, cartas ou inventário.
+Tabela vigente é registrada no retorno; edições não mudam claims já conquistados.
+Itens vinculados creditam inventário com tower_item_grants (placas em peças).
+Cristais e coleção ficam na Torre; não alterar patentes/XP ou cartas.
 Não apagar dados nem migrations ao desfazer o experimento. Guia em docs/TORRE-EXPERIMENTAL.md.
 
 Refino posterior de 05/10: ficha de monstro estruturada com características,

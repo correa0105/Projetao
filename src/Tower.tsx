@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   ArrowUpRight,
   Check,
@@ -9,6 +9,9 @@ import {
   Dices,
   Flag,
   Plus,
+  Lock,
+  Pencil,
+  ChevronLeft,
   Shield,
   Swords,
   Users,
@@ -20,14 +23,19 @@ import { money } from '../shared/rules';
 import { monsterArt } from '../shared/vtt-monster-art';
 import {
   towerName,
+  towerFloorCount,
   towerFloors,
   towerZones,
   towerLootTable,
   towerBaseReward,
   type TowerRun,
   type TowerState,
+  type TowerFloorContent,
+  type TowerRewardTable,
+  type TowerItemInfo,
 } from '../shared/tower';
-import type { Character } from './types';
+import type { Character, Item } from './types';
+import { TowerDialog, TowerFloorEditor, TowerRewardEditor, TowerItemPreview } from './TowerEditors';
 import './tower.css';
 const statusNames = {
   preparing: 'Reunindo a expedição',
@@ -41,10 +49,12 @@ const date = (value: string) =>
   );
 export function Tower({
   characters,
+  catalog,
   character,
   refreshCharacters,
 }: {
   characters: Character[];
+  catalog: Item[];
   character?: Character;
   refreshCharacters: () => Promise<void>;
 }) {
@@ -61,7 +71,10 @@ export function Tower({
       run: TowerRun;
       action: 'clear' | 'finish' | 'cancel';
     } | null>(null),
-    [lastRoll, setLastRoll] = useState<string | null>(null);
+    [lastRoll, setLastRoll] = useState<string | null>(null),
+    [draft, setDraft] = useState<TowerFloorContent | null>(null),
+    [rewardDraft, setRewardDraft] = useState<TowerRewardTable | null>(null),
+    [itemPreview, setItemPreview] = useState<TowerItemInfo | null>(null);
   const refresh = useCallback(async () => setState(await api<TowerState>('/tower')), []);
   useEffect(() => {
     void refresh().catch((e) => setError(e.message));
@@ -84,11 +97,32 @@ export function Tower({
       setBusy(false);
     }
   }
-  const level = towerFloors[floor - 1],
-    zone = towerZones[level.zone],
-    bosses = towerFloors.filter((f) => f.boss && f.number <= floor).map((f) => f.number),
-    base = towerBaseReward(floor, bosses),
-    loot = towerLootTable(base.tier);
+  const level: TowerFloorContent = state?.floors[floor - 1] || {
+    number: floor,
+    name: 'Andar ' + floor,
+    description: '',
+    challenge: null,
+    hazard: null,
+    traps: null,
+    creatures: null,
+    boss: false,
+    boss_name: null,
+    revision: 0,
+    discovery: 'hidden',
+    base_gold_cp: null,
+    base_crystals: null,
+  };
+  const zoneIndex = towerFloors[floor - 1].zone,
+    zone = towerZones[zoneIndex],
+    bosses = (state?.floors || []).filter((f) => f.boss && f.number <= floor).map((f) => f.number),
+    defaultBase = towerBaseReward(floor, bosses),
+    base = {
+      ...defaultBase,
+      gold_cp: level.base_gold_cp ?? defaultBase.gold_cp,
+      crystals: level.base_crystals ?? defaultBase.crystals,
+    },
+    rewardTable = state?.reward_tables.find((t) => t.tier === base.tier),
+    loot = rewardTable?.rows || towerLootTable(base.tier);
   const currentRun =
     state?.expeditions.find((r) => r.id === runId) ||
     state?.expeditions.find(
@@ -104,19 +138,28 @@ export function Tower({
     await post(`/tower/expeditions/${run.id}/progress`, {
       revision: run.revision,
       action,
-      defeat_boss: action === 'clear' && (run.cleared_floor + 1) % 5 === 0,
+      defeat_boss: action === 'clear' && !!state?.floors[run.cleared_floor]?.boss,
       summary: action === 'finish' || action === 'cancel' ? summary : undefined,
     });
     setConfirm(null);
     setSummary('');
   }
+  const runReward = (run: TowerRun) => {
+    const reward = towerBaseReward(run.cleared_floor, run.bosses),
+      content = state?.floors[run.cleared_floor - 1];
+    return {
+      ...reward,
+      gold_cp: content?.base_gold_cp ?? reward.gold_cp,
+      crystals: content?.base_crystals ?? reward.crystals,
+    };
+  };
   return (
     <section className="tower-page" aria-label={towerName}>
       <header className="tower-hero">
         <img
           className="tower-hero-art"
-          src="/tower/tower-veil-v1.webp"
-          alt="Uma torre colossal com cavernas de cristal, jardins, forjas e terraços gelados acima das ruínas."
+          src="/tower/tower-veil-v2.webp"
+          alt="Uma torre de pedra fechada e monumental, com estátuas de guardiões junto a um lago sob nuvens."
           fetchPriority="high"
         />
         <div className="tower-hero-shade" />
@@ -128,34 +171,6 @@ export function Tower({
           <h1>
             Torre <i>do Véu</i>
           </h1>
-          <p>
-            Trinta andares entre você
-            <br />e a última luz.
-          </p>
-          <button
-            className="tower-primary"
-            onClick={() => {
-              setTab('expeditions');
-              document.getElementById('tower-content')?.scrollIntoView({
-                behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
-                  ? 'auto'
-                  : 'smooth',
-              });
-            }}
-          >
-            Preparar a ascensão <ArrowUpRight size={17} />
-          </button>
-        </div>
-        <div className="tower-hero-metrics">
-          <span>
-            <b>30</b>andares
-          </span>
-          <span>
-            <b>06</b>guardiões
-          </span>
-          <span>
-            <b>d100</b>tesouros
-          </span>
         </div>
         {character && (
           <div className="tower-wallet">
@@ -194,37 +209,66 @@ export function Tower({
         {!state && !error && <p role="status">Abrindo o registro das expedições…</p>}
         {tab === 'atlas' && (
           <>
-            <div className="tower-atlas">
-              <aside className="tower-route" aria-label="Regiões da torre">
-                <span className="tower-kicker">ESCOLHA SEU DESTINO</span>
-                {towerZones.map((z, i) => (
-                  <button
-                    key={z.theme}
-                    className={'tower-zone ' + z.theme}
-                    aria-pressed={level.zone === i}
-                    onClick={() => setFloor(i * 5 + 1)}
+            <div className="tower-atlas tower-atlas-compact">
+              <nav className="tower-floor-picker" aria-label="Escolher andar da torre">
+                <label>
+                  Andar
+                  <select
+                    aria-label="Escolher andar"
+                    value={floor}
+                    onChange={(e) => {
+                      setFloor(Number(e.target.value));
+                      setDraft(null);
+                    }}
                   >
-                    <span className="tower-zone-index">{String(i + 1).padStart(2, '0')}</span>
-                    <div>
-                      <small>
-                        Andares {i * 5 + 1}–{i * 5 + 5}
-                      </small>
-                      <b>{z.name}</b>
-                    </div>
-                    <ChevronRight size={14} />
+                    {(state?.floors || towerFloors).map((f) => (
+                      <option key={f.number} value={f.number}>
+                        {String(f.number).padStart(2, '0')} · {f.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  aria-label="Andar anterior"
+                  disabled={floor === 1}
+                  onClick={() => setFloor(floor - 1)}
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  aria-label="Próximo andar"
+                  disabled={floor === towerFloorCount}
+                  onClick={() => setFloor(floor + 1)}
+                >
+                  <ChevronRight size={16} />
+                </button>
+                <span>
+                  {towerFloorCount} andares · {zone.name}
+                </span>
+                {state?.can_create && (
+                  <button
+                    className="tower-edit-floor"
+                    onClick={() => {
+                      setError('');
+                      setDraft({
+                        ...level,
+                        creatures: level.creatures?.map((c) => ({ ...c })) || [],
+                      });
+                    }}
+                  >
+                    <Pencil size={15} />
+                    Editar andar
                   </button>
-                ))}
-                <p>
-                  O perigo cresce a cada região.
-                  <br />
-                  Escolha até onde ousa ir.
-                </p>
-              </aside>
+                )}
+              </nav>
               <article className={'tower-floor ' + zone.theme}>
                 <header className="tower-floor-heading">
                   <div>
                     <span className="tower-kicker">
-                      {zone.name} · níveis sugeridos {zone.level}
+                      {zone.name} ·{' '}
+                      {zone.level === 'Definido pelo mestre'
+                        ? 'Exploração a preparar'
+                        : 'níveis sugeridos ' + zone.level}
                     </span>
                     <h2>{level.name}</h2>
                   </div>
@@ -234,8 +278,8 @@ export function Tower({
                   </div>
                 </header>
                 <nav className="tower-floor-steps" aria-label="Andares desta região">
-                  {towerFloors
-                    .filter((f) => f.zone === level.zone)
+                  {(state?.floors || [])
+                    .filter((f) => Math.floor((f.number - 1) / 5) === zoneIndex)
                     .map((f) => (
                       <button
                         key={f.number}
@@ -252,46 +296,82 @@ export function Tower({
                       </button>
                     ))}
                 </nav>
-                <p className="tower-floor-description">{zone.description}</p>
-                {level.boss ? (
-                  <div className="tower-boss">
-                    <img src={monsterArt('', zone.bossArt)} alt="" />
+                {level.description && (
+                  <p className="tower-floor-description">{level.description}</p>
+                )}
+                {level.discovery === 'hidden' ? (
+                  <div className="tower-hidden">
+                    <Lock size={28} />
                     <div>
-                      <span className="tower-kicker">GUARDIÃO DO ANDAR {floor}</span>
-                      <h3>{zone.boss}</h3>
+                      <h3>Andar ainda não descoberto</h3>
                       <p>
-                        Vencer este guardião abre a região seguinte e eleva a tabela de tesouros.
+                        Criaturas, armadilhas e desafios serão revelados depois que seu personagem
+                        ou uma expedição da guilda concluir este andar.
                       </p>
-                      <span className="tower-boss-tier">
-                        <Crown size={14} /> Tesouro de grau {base.tier}
-                      </span>
                     </div>
                   </div>
                 ) : (
-                  <div className="tower-creatures">
-                    <span className="tower-kicker">CRIATURAS NESTA REGIÃO</span>
-                    <div>
-                      {zone.creatures.map((creature) => (
-                        <figure key={creature}>
-                          <img src={monsterArt('', creature)} alt="" loading="lazy" />
-                          <figcaption>{creature}</figcaption>
-                        </figure>
-                      ))}
+                  <>
+                    <div className="tower-discovery">
+                      {level.discovery === 'master'
+                        ? 'Visão do administrador · conteúdo preparado para a sessão'
+                        : level.discovery === 'personal'
+                          ? 'Descoberto pelo seu personagem'
+                          : 'Descoberto pela guilda'}
                     </div>
-                  </div>
+                    {level.boss && (
+                      <div className="tower-boss">
+                        <Crown size={36} />
+                        <div>
+                          <span className="tower-kicker">GUARDIÃO DO ANDAR {floor}</span>
+                          <h3>{level.boss_name || 'Guardião a definir pelo mestre'}</h3>
+                          <p>Vencer este guardião eleva a tabela de tesouros.</p>
+                        </div>
+                      </div>
+                    )}
+                    <div className="tower-creatures">
+                      <span className="tower-kicker">CRIATURAS DESTE ANDAR</span>
+                      <div>
+                        {level.creatures?.map((creature, i) => (
+                          <figure key={i}>
+                            {creature.art && monsterArt('', creature.art) ? (
+                              <img src={monsterArt('', creature.art)} alt="" loading="lazy" />
+                            ) : (
+                              <Shield size={35} />
+                            )}
+                            <figcaption>{creature.name}</figcaption>
+                          </figure>
+                        ))}
+                      </div>
+                      {!level.creatures?.length && (
+                        <p>
+                          {state?.can_create
+                            ? 'Adicione as criaturas em Editar andar.'
+                            : 'Nenhuma criatura registrada neste andar.'}
+                        </p>
+                      )}
+                    </div>
+                    <div className="tower-challenges">
+                      <div>
+                        <Swords size={18} />
+                        <h3>O desafio</h3>
+                        <p>{level.challenge || 'A definir pelo mestre.'}</p>
+                      </div>
+                      <div>
+                        <Wind size={18} />
+                        <h3>O ambiente</h3>
+                        <p>{level.hazard || 'A definir pelo mestre.'}</p>
+                      </div>
+                      {level.traps && (
+                        <div className="tower-traps">
+                          <Flag size={18} />
+                          <h3>Armadilhas</h3>
+                          <p>{level.traps}</p>
+                        </div>
+                      )}
+                    </div>
+                  </>
                 )}
-                <div className="tower-challenges">
-                  <div>
-                    <Swords size={18} />
-                    <h3>O desafio</h3>
-                    <p>{zone.challenge}</p>
-                  </div>
-                  <div>
-                    <Wind size={18} />
-                    <h3>O ambiente</h3>
-                    <p>{zone.hazard}</p>
-                  </div>
-                </div>
                 <footer className="tower-floor-reward">
                   <span>Ao concluir até este andar</span>
                   <b>
@@ -325,6 +405,17 @@ export function Tower({
                     GRAU <b>{base.tier}</b>
                   </span>
                 </div>
+                {state?.can_create && rewardTable && (
+                  <button
+                    onClick={() => {
+                      setError('');
+                      setRewardDraft(rewardTable);
+                    }}
+                  >
+                    <Pencil size={15} />
+                    Editar prêmios
+                  </button>
+                )}
               </header>
               <div className="tower-table-wrap">
                 <table>
@@ -345,6 +436,16 @@ export function Tower({
                         <td>
                           <small>{r.rarity}</small>
                           <b>{r.relic}</b>
+                          {r.item_id && catalog.find((item) => item.id === r.item_id) && (
+                            <button
+                              className="tower-item-link"
+                              onClick={() =>
+                                setItemPreview(catalog.find((item) => item.id === r.item_id)!)
+                              }
+                            >
+                              {catalog.find((item) => item.id === r.item_id)!.name} × {r.quantity}
+                            </button>
+                          )}
                         </td>
                         <td>{money(r.gold_cp)} PO</td>
                         <td>
@@ -460,7 +561,11 @@ export function Tower({
                         </small>
                       </span>
                       <div className="tower-progress-track">
-                        <i style={{ width: (currentRun.cleared_floor / 30) * 100 + '%' }} />
+                        <i
+                          style={{
+                            width: (currentRun.cleared_floor / towerFloorCount) * 100 + '%',
+                          }}
+                        />
                       </div>
                     </div>
                     <div className="tower-party">
@@ -521,16 +626,20 @@ export function Tower({
                         {!characters.length && <p>Crie seu personagem para participar.</p>}
                       </div>
                     )}
-                    {currentRun.status === 'active' && currentRun.cleared_floor < 30 && (
-                      <div className="tower-next">
-                        <span className="tower-kicker">O PRÓXIMO DESAFIO</span>
-                        <h3>{towerFloors[currentRun.cleared_floor].name}</h3>
-                        <p>
-                          Andar {currentRun.cleared_floor + 1} ·{' '}
-                          {towerZones[towerFloors[currentRun.cleared_floor].zone].name}
-                        </p>
-                      </div>
-                    )}
+                    {currentRun.status === 'active' &&
+                      currentRun.cleared_floor < towerFloorCount && (
+                        <div className="tower-next">
+                          <span className="tower-kicker">O PRÓXIMO DESAFIO</span>
+                          <h3>
+                            {state?.floors[currentRun.cleared_floor]?.name ||
+                              'Andar ' + (currentRun.cleared_floor + 1)}
+                          </h3>
+                          <p>
+                            Andar {currentRun.cleared_floor + 1} ·{' '}
+                            {towerZones[towerFloors[currentRun.cleared_floor].zone].name}
+                          </p>
+                        </div>
+                      )}
                     {currentRun.summary && (
                       <p className="tower-run-summary">{currentRun.summary}</p>
                     )}
@@ -563,15 +672,15 @@ export function Tower({
                               <>
                                 <button
                                   className="tower-primary"
-                                  disabled={busy || currentRun.cleared_floor >= 30}
+                                  disabled={busy || currentRun.cleared_floor >= towerFloorCount}
                                   onClick={() => setConfirm({ run: currentRun, action: 'clear' })}
                                 >
-                                  {(currentRun.cleared_floor + 1) % 5 === 0 ? (
+                                  {state?.floors[currentRun.cleared_floor]?.boss ? (
                                     <Crown size={15} />
                                   ) : (
                                     <Check size={15} />
                                   )}{' '}
-                                  {(currentRun.cleared_floor + 1) % 5 === 0
+                                  {state?.floors[currentRun.cleared_floor]?.boss
                                     ? 'Confirmar derrota do guardião'
                                     : 'Concluir andar ' + (currentRun.cleared_floor + 1)}
                                 </button>
@@ -673,6 +782,14 @@ export function Tower({
                       <div className="tower-roll-result" role="status">
                         <span>{c.rarity}</span>
                         <h3>{c.relic}</h3>
+                        {c.item && (
+                          <button
+                            className="tower-item-link"
+                            onClick={() => setItemPreview(c.item!)}
+                          >
+                            {c.item.name} × {c.item_quantity}
+                          </button>
+                        )}
                         <p>Relíquia de coleção da Torre do Véu.</p>
                         <div>
                           <b>
@@ -706,26 +823,31 @@ export function Tower({
             <p>
               O mestre abre a expedição; os jogadores entram com seus próprios personagens, até oito
               por grupo. Cada personagem participa de uma subida de cada vez. O mestre inicia a
-              ascensão e confirma os andares em sequência; a cada cinco, um guardião precisa ser
-              derrotado.
+              ascensão e confirma os andares em sequência. Os andares com guardião são definidos
+              pelo administrador e exigem confirmação de derrota.
             </p>
             <p>
               Ao retornar após ao menos um andar concluído, cada participante recebe ouro e cristais
               pelo progresso confirmado. O jogador revela um tesouro com um d100. O grau depende dos
-              guardiões vencidos; as faixas de raridade são 1–50, 51–75, 76–90, 91–98 e 99–100. Ouro
-              e cristais do tesouro são adicionais.
+              guardiões vencidos; o administrador configura as faixas, nomes e valores em Editar
+              prêmios. Ouro e cristais do tesouro são adicionais. Itens vinculados são entregues ao
+              inventário; clique no nome para ver imagem e informações. A tabela fica registrada no
+              retorno da expedição, preservando o prêmio conquistado.
             </p>
             <p>
               Cristais são a moeda da torre; o saldo e as relíquias ficam nesta página. As relíquias
               são de coleção. A expedição não soma missões para patente. Criaturas, encontros e
               desafios são conduzidos pelo mestre durante a sessão. Esta é a primeira versão
-              experimental, com 30 andares.
+              experimental, com 100 andares. Administradores preparam informações, criaturas e
+              armadilhas em Editar andar. Nome e descrição são públicos; os encontros, desafios e
+              armadilhas são revelados somente após a conclusão pelo personagem ou pela guilda.
             </p>
           </div>
         </details>
       </div>
       {confirm && (
-        <TowerConfirmation
+        <TowerDialog
+          label="Confirmar progresso da torre"
           close={() => {
             if (!busy) setConfirm(null);
           }}
@@ -741,7 +863,7 @@ export function Tower({
           <span className="tower-kicker">DECISÃO DO MESTRE</span>
           <h2>
             {confirm.action === 'clear'
-              ? (confirm.run.cleared_floor + 1) % 5 === 0
+              ? state?.floors[confirm.run.cleared_floor]?.boss
                 ? 'O guardião foi derrotado?'
                 : 'O andar foi vencido?'
               : confirm.action === 'finish'
@@ -750,9 +872,9 @@ export function Tower({
           </h2>
           <p>
             {confirm.action === 'clear'
-              ? `Confirme o resultado do grupo no andar ${confirm.run.cleared_floor + 1}. ${(confirm.run.cleared_floor + 1) % 5 === 0 ? 'A tabela de tesouros evoluirá.' : ''}`
+              ? `Confirme o resultado do grupo no andar ${confirm.run.cleared_floor + 1}. ${state?.floors[confirm.run.cleared_floor]?.boss ? 'A tabela de tesouros evoluirá.' : ''}`
               : confirm.action === 'finish'
-                ? `${confirm.run.members.length} participantes receberão ${money(towerBaseReward(confirm.run.cleared_floor, confirm.run.bosses).gold_cp)} PO e ${towerBaseReward(confirm.run.cleared_floor, confirm.run.bosses).crystals} cristais cada, além da rolagem de tesouro.`
+                ? `${confirm.run.members.length} participantes receberão ${money(runReward(confirm.run).gold_cp)} PO e ${runReward(confirm.run).crystals} cristais cada, além da rolagem de tesouro.`
                 : 'A expedição será encerrada sem entregar ouro, cristais ou tesouros.'}
           </p>
           {confirm.action !== 'clear' && (
@@ -787,30 +909,57 @@ export function Tower({
               Voltar
             </button>
           </div>
-        </TowerConfirmation>
+        </TowerDialog>
       )}
+      {draft && (
+        <TowerFloorEditor
+          initial={draft}
+          busy={busy}
+          error={error}
+          close={() => {
+            if (!busy) setDraft(null);
+          }}
+          save={(value) =>
+            void act(async () => {
+              await post('/tower/floors/' + value.number, {
+                revision: value.revision,
+                name: value.name,
+                description: value.description,
+                challenge: value.challenge || '',
+                hazard: value.hazard || '',
+                traps: value.traps || '',
+                creatures: value.creatures || [],
+                boss: value.boss,
+                boss_name: value.boss_name || '',
+                base_gold_cp: value.base_gold_cp,
+                base_crystals: value.base_crystals,
+              });
+              setDraft(null);
+            })
+          }
+        />
+      )}
+      {rewardDraft && (
+        <TowerRewardEditor
+          initial={rewardDraft}
+          catalog={catalog}
+          busy={busy}
+          error={error}
+          close={() => {
+            if (!busy) setRewardDraft(null);
+          }}
+          save={(value) =>
+            void act(async () => {
+              await post('/tower/rewards/' + value.tier, {
+                revision: value.revision,
+                rows: value.rows,
+              });
+              setRewardDraft(null);
+            })
+          }
+        />
+      )}
+      {itemPreview && <TowerItemPreview item={itemPreview} close={() => setItemPreview(null)} />}
     </section>
-  );
-}
-function TowerConfirmation({ children, close }: { children: ReactNode; close: () => void }) {
-  const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => {
-    ref.current?.showModal();
-  }, []);
-  return (
-    <dialog
-      ref={ref}
-      className="tower-confirm"
-      aria-label="Confirmar progresso da torre"
-      onCancel={(e) => {
-        e.preventDefault();
-        close();
-      }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) close();
-      }}
-    >
-      {children}
-    </dialog>
   );
 }

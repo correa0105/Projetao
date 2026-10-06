@@ -50,13 +50,55 @@ try {
     pHero = await createLegacyTestCharacter(pId, 'Bruma');
   await page.goto(origin + '/#tower');
   await expect(page.getByRole('heading', { name: 'Torre do Véu', exact: true })).toBeVisible();
-  await expect(page.locator('.tower-route .tower-zone')).toHaveCount(6);
+  await expect(page.getByLabel('Escolher andar', { exact: true }).locator('option')).toHaveCount(
+    100,
+  );
+  await expect(page.locator('.tower-hero')).not.toContainText('Trinta andares');
+  await expect(page.getByRole('button', { name: 'Preparar a ascensão' })).toHaveCount(0);
+  await expect(page.locator('.tower-hero-metrics')).toHaveCount(0);
+  await expect(page.locator('.tower-hero-art')).toHaveAttribute('src', '/tower/tower-veil-v2.webp');
+  await page.getByRole('button', { name: 'Editar andar', exact: true }).click();
+  let editor = page.getByRole('dialog', { name: 'Editar andar da torre' });
+  await expect(editor.getByLabel('Nome do andar')).toBeFocused();
+  await editor.getByLabel('Nome do andar').fill('Portas sem Nome');
+  await editor.getByLabel('Descrição pública').fill('A entrada sob uma torre de pedra.');
+  await editor.getByLabel('Desafio', { exact: true }).fill('Encontrem a chave da porta.');
+  await editor
+    .getByLabel('Armadilhas', { exact: true })
+    .fill('Uma placa de pressão aciona o corredor.');
+  for (const [i, name] of ['Skeleton', 'Giant Spider', 'Ogre'].entries()) {
+    await editor.getByRole('button', { name: 'Adicionar criatura' }).click();
+    await editor.getByLabel('Nome da criatura ' + (i + 1), { exact: true }).fill(name);
+    await editor.getByLabel('Arte da criatura ' + (i + 1), { exact: true }).fill(name);
+  }
+  await editor.getByRole('button', { name: 'Salvar andar' }).click();
+  await expect(editor).toHaveCount(0);
   await expect(page.locator('.tower-creatures img')).toHaveCount(3);
+  await page.getByRole('button', { name: 'Editar prêmios', exact: true }).click();
+  let prizes = page.getByRole('dialog', { name: 'Editar prêmios da torre' });
+  await prizes
+    .locator('fieldset')
+    .first()
+    .getByLabel('Item do catálogo')
+    .selectOption('plate-armor');
+  await prizes.getByLabel('Quantidade do item').fill('2');
+  await prizes.getByRole('button', { name: 'Salvar prêmios' }).click();
+  await expect(prizes).toHaveCount(0);
+  await page.locator('.tower-loot-preview .tower-item-link').first().click();
+  const itemDialog = page.getByRole('dialog');
+  await expect(itemDialog.locator('.tower-item-art')).toBeVisible();
+  await expect(itemDialog.locator('.tower-item-description')).not.toBeEmpty();
+  await itemDialog.getByRole('button', { name: 'Fechar informações do item' }).click();
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: 'test-results/tower-atlas-desktop.png', fullPage: true });
-  await page.getByRole('button', { name: /Andares 6–10 Cavernas Prismáticas/ }).click();
-  await expect(page.getByRole('heading', { name: 'Veios de Luz', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Andar 10 · Matriarca Prismática', exact: true }).click();
+  await page.getByLabel('Escolher andar', { exact: true }).selectOption('6');
+  await expect(page.getByRole('heading', { name: 'Andar 6', exact: true })).toBeVisible();
+  await page.getByLabel('Escolher andar', { exact: true }).selectOption('10');
+  await page.getByRole('button', { name: 'Editar andar', exact: true }).click();
+  editor = page.getByRole('dialog', { name: 'Editar andar da torre' });
+  await editor.getByLabel('Nome do guardião').fill('Matriarca Prismática');
+  await editor.getByRole('button', { name: 'Salvar andar' }).click();
+  await expect(editor).toHaveCount(0);
   await expect(page.locator('.tower-boss')).toContainText('Matriarca Prismática');
   await expect(page.locator('.tower-treasure-tier')).toContainText('2');
   await page.screenshot({ path: 'test-results/tower-boss-desktop.png', fullPage: true });
@@ -69,6 +111,11 @@ try {
   await page.getByRole('button', { name: 'Abrir expedição', exact: true }).click();
   await page.getByRole('button', { name: 'Arden da aurora', exact: true }).click();
   await playerPage.goto(origin + '/#tower');
+  await expect(playerPage.locator('.tower-hidden')).toBeVisible();
+  await expect(playerPage.locator('.tower-creatures img')).toHaveCount(0);
+  await expect(playerPage.getByRole('button', { name: 'Editar andar', exact: true })).toHaveCount(
+    0,
+  );
   await playerPage.getByRole('button', { name: 'Expedições', exact: true }).click();
   await expect(playerPage.getByRole('button', { name: 'Nova expedição', exact: true })).toHaveCount(
     0,
@@ -94,6 +141,11 @@ try {
   }
   await expect(page.locator('.tower-run-progress')).toContainText('tesouro grau 1');
   await page.screenshot({ path: 'test-results/tower-expedition-desktop.png', fullPage: true });
+  await playerPage.reload();
+  await expect(playerPage.locator('.tower-creatures img')).toHaveCount(3);
+  await expect(playerPage.locator('.tower-traps')).toContainText('placa de pressão');
+  await playerPage.getByLabel('Escolher andar', { exact: true }).selectOption('6');
+  await expect(playerPage.locator('.tower-hidden')).toBeVisible();
   await page.getByRole('button', { name: 'Retornar e recompensar', exact: true }).click();
   const completion = page.getByRole('dialog', { name: 'Confirmar progresso da torre' });
   await completion
@@ -151,7 +203,7 @@ try {
   ).toBe(2);
   expect(errors).toEqual([]);
   console.log(
-    'Torre: atlas, seis biomas/chefes, mestre/jogador, andares sequenciais, conclusão, d100 persistente e layouts 1440/768/390/320 verificados.',
+    'Torre: 100 andares, edição administrativa, criaturas/armadilhas ocultas, prêmios/itens clicáveis, mestre/jogador, andares sequenciais, conclusão, d100 persistente e layouts 1440/768/390/320 verificados.',
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/tower-failure.png', fullPage: true });

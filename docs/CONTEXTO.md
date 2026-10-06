@@ -2,6 +2,20 @@
 
 ## Torre experimental e editor de efeitos (05/10/2026)
 
+Refino de 06/10: por pedido do usuário, o topo da Torre mantém arte/título e saldo,
+sem slogan, botão “Preparar a ascensão” ou indicadores decorativos 30/06/d100.
+As abas Expedições/Tesouros permanecem acessíveis. Direção posterior: **100 andares**,
+arte v2 com torre fechada/laterais limpas, navegação compacta sem sidebar extensa.
+Editar andar prepara nome/descrição pública, desafios, ambiente, armadilhas, criaturas
+e guardião; encontros são vazios por padrão. Servidor esconde criaturas/armadilhas e
+detalhes até conclusão pessoal ou pela guilda compartilhada. Administradores veem tudo.
+Editar prêmios configura faixas/raridade/nome/ouro/cristais/item/quantidade por grau.
+Itens abrem detalhes/imagem e creditam inventário uma vez, com peças de placas e
+auditoria própria. Ouro/cristais base também podem ser substituídos por andar.
+Migrations 067–068: limite 100, conteúdo editável, tabelas e snapshot de prêmios no
+retorno, preservando conquistas anteriores após edições. Testes 11/11 e navegador
+mestre/jogador em quatro larguras aprovados; prompt final em TORRE-EXPERIMENTAL.md.
+
 Pedido explícito: salvar versão anterior no GitHub antes da Torre. Confirmado
 origin/Welson=35d5f36 antes das edições; tag codex/checkpoint-antes-torre-2026-10-05
 também enviada. Torre do Véu fica no submenu Mural, com arte original, 30 andares,

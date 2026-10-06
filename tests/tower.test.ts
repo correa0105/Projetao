@@ -5,23 +5,15 @@ import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
 import { createLegacyTestCharacter } from './character-fixtures.js';
-import {
-  towerFloors,
-  towerZones,
-  towerLootTable,
-  towerBaseReward,
-  towerTreasure,
-} from '../shared/tower.js';
-import { monsterArt } from '../shared/vtt-monster-art.js';
-test('Torre: trinta andares, seis guardiões, tesouros exaustivos e progressivos', () => {
-  assert.equal(towerFloors.length, 30);
+import { towerFloors, towerLootTable, towerBaseReward, towerTreasure } from '../shared/tower.js';
+import { purchaseContents } from '../shared/armor-bundles.js';
+test('Torre: cem andares, guardiões configuráveis e tesouros exaustivos e progressivos', () => {
+  assert.equal(towerFloors.length, 100);
   assert.deepEqual(
     towerFloors.filter((f) => f.boss).map((f) => f.number),
-    [5, 10, 15, 20, 25, 30],
+    Array.from({ length: 20 }, (_, i) => (i + 1) * 5),
   );
-  for (const zone of towerZones)
-    for (const name of [...zone.creatures, zone.bossArt]) assert.ok(monsterArt('', name), name);
-  for (let tier = 0; tier <= 6; tier++) {
+  for (let tier = 0; tier <= 100; tier++) {
     const table = towerLootTable(tier);
     const counts = Array(5).fill(0);
     for (let roll = 1; roll <= 100; roll++) {
@@ -35,6 +27,8 @@ test('Torre: trinta andares, seis guardiões, tesouros exaustivos e progressivos
   for (const roll of [0, 101, 1.5, NaN]) assert.throws(() => towerTreasure(0, roll));
   assert.throws(() => towerBaseReward(4, [5]));
   assert.throws(() => towerBaseReward(5, [5, 5]));
+  assert.throws(() => towerBaseReward(101, []));
+  assert.equal(towerBaseReward(100, [2, 5, 100]).tier, 3);
 });
 test('Torre: permissões, sequência, pagamento e d100 idempotentes em PostgreSQL isolado', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
@@ -110,6 +104,53 @@ test('Torre: permissões, sequência, pagamento e d100 idempotentes em PostgreSQ
       assert.equal((await progress('start')).status, 409);
     });
     await t.test(
+      'edição administrativa e sigilo real de criaturas/armadilhas antes da descoberta',
+      async () => {
+        const current = (await request('/tower', gm)).data.floors[0];
+        const input = {
+          revision: current.revision,
+          name: 'Entrada velada',
+          description: 'Uma entrada de pedra.',
+          challenge: 'Desafio secreto!',
+          hazard: 'Ambiente secreto!',
+          traps: 'Armadilha secreta!',
+          creatures: [{ name: 'Sentinela inédita', art: 'Skeleton' }],
+          boss: false,
+          boss_name: '',
+          base_gold_cp: 4200,
+          base_crystals: 7,
+        };
+        assert.equal((await request('/tower/floors/1', player, 'POST', input)).status, 403);
+        assert.equal((await request('/tower/floors/1', gm, 'POST', input)).status, 200);
+        assert.equal((await request('/tower/floors/1', gm, 'POST', input)).status, 409);
+        assert.equal((await request('/tower/floors/101', gm, 'POST', input)).status, 400);
+        const fresh = (await request('/tower', gm)).data.floors[0];
+        assert.equal(
+          (
+            await request('/tower/floors/1', gm, 'POST', {
+              ...input,
+              revision: fresh.revision,
+              creatures: [{ name: 'Algo', art: 'http://invalid.test/image' }],
+            })
+          ).status,
+          400,
+        );
+        const hidden = (await request('/tower', player)).data;
+        assert.equal(hidden.floors.length, 100);
+        assert.equal(hidden.floors[0].name, 'Entrada velada');
+        for (const key of ['creatures', 'traps', 'hazard', 'challenge', 'boss_name'])
+          assert.equal(hidden.floors[0][key], null);
+        for (const secret of [
+          'Sentinela inédita',
+          'Armadilha secreta!',
+          'Ambiente secreto!',
+          'Desafio secreto!',
+        ])
+          assert.ok(!JSON.stringify(hidden).includes(secret));
+        assert.equal(fresh.creatures[0].name, 'Sentinela inédita');
+      },
+    );
+    await t.test(
       'somente personagem próprio; inscrição repetida não duplica; uma subida por personagem',
       async () => {
         assert.equal(
@@ -182,6 +223,17 @@ test('Torre: permissões, sequência, pagamento e d100 idempotentes em PostgreSQ
           assert.equal(run.cleared_floor, floor);
         }
         assert.deepEqual(run.bosses, [5]);
+        const personal = (await request('/tower', player)).data.floors,
+          guild = (await request('/tower', other)).data.floors;
+        assert.equal(personal[0].discovery, 'personal');
+        assert.equal(personal[0].creatures[0].name, 'Sentinela inédita');
+        assert.equal(personal[0].traps, 'Armadilha secreta!');
+        await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [other.id]);
+        const shared = (await request('/tower', other)).data.floors;
+        assert.equal(shared[0].discovery, 'guild');
+        assert.equal(shared[5].discovery, 'hidden');
+        assert.equal(shared[5].creatures, null);
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [other.id]);
         assert.equal((await progress('clear', { cleared_floor: 30 })).status, 400);
       },
     );
@@ -260,6 +312,218 @@ test('Torre: permissões, sequência, pagamento e d100 idempotentes em PostgreSQ
         assert.deepEqual(privateState.wallets, []);
       },
     );
+    await t.test(
+      'prêmios editáveis com catálogo, snapshot de retorno e itens idempotentes no inventário',
+      async () => {
+        const state = (await request('/tower', gm)).data,
+          table = state.reward_tables[0];
+        const row = {
+          min: 1,
+          max: 100,
+          rarity: 'Especial',
+          relic: 'Armadura da exploração',
+          gold_cp: 12300,
+          crystals: 11,
+          item_id: 'plate-armor',
+          quantity: 2,
+        };
+        assert.equal(
+          (
+            await request('/tower/rewards/0', player, 'POST', {
+              revision: table.revision,
+              rows: [row],
+            })
+          ).status,
+          403,
+        );
+        assert.equal(
+          (
+            await request('/tower/rewards/0', gm, 'POST', {
+              revision: table.revision,
+              rows: [{ ...row, min: 2 }],
+            })
+          ).status,
+          400,
+        );
+        assert.equal(
+          (
+            await request('/tower/rewards/0', gm, 'POST', {
+              revision: table.revision,
+              rows: [{ ...row, item_id: 'inventado' }],
+            })
+          ).status,
+          400,
+        );
+        assert.equal(
+          (await request('/tower/rewards/0', gm, 'POST', { revision: table.revision, rows: [row] }))
+            .status,
+          200,
+        );
+        assert.equal(
+          (await request('/tower/rewards/0', gm, 'POST', { revision: table.revision, rows: [row] }))
+            .status,
+          409,
+        );
+        const made = (await request('/tower/expeditions', gm, 'POST', { name: 'Itens da torre' }))
+          .data;
+        await request('/tower/expeditions/' + made.id + '/join', player, 'POST', {
+          character_id: hero.id,
+        });
+        const step = async (action: string) => {
+          const r = (await request('/tower', gm)).data.expeditions.find(
+            (r: any) => r.id === made.id,
+          );
+          assert.equal(
+            (
+              await request('/tower/expeditions/' + made.id + '/progress', gm, 'POST', {
+                revision: r.revision,
+                action,
+              })
+            ).status,
+            200,
+          );
+        };
+        await step('start');
+        await step('clear');
+        const goldBefore = (
+          await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])
+        ).rows[0].gold_cp;
+        await step('finish');
+        const pending = (await request('/tower', player)).data.claims.find(
+          (c: any) => c.run_id === made.id,
+        );
+        assert.equal(pending.base_gold_cp, 4200);
+        assert.equal(pending.base_crystals, 7);
+        const latest = (await request('/tower', gm)).data.reward_tables[0];
+        await request('/tower/rewards/0', gm, 'POST', {
+          revision: latest.revision,
+          rows: [{ ...row, gold_cp: 99999, quantity: 9 }],
+        });
+        const before = new Map(
+          (
+            await pool.query('SELECT item_id,quantity FROM inventory WHERE character_id=$1', [
+              hero.id,
+            ])
+          ).rows.map((r) => [r.item_id, r.quantity]),
+        );
+        const replies = await Promise.all(
+          Array.from({ length: 8 }, () =>
+            request('/tower/expeditions/' + made.id + '/treasure', player, 'POST', {
+              character_id: hero.id,
+            }),
+          ),
+        );
+        assert.ok(
+          replies.every(
+            (r) =>
+              r.status === 200 &&
+              r.data.item_id === 'plate-armor' &&
+              r.data.item_quantity === 2 &&
+              r.data.bonus_gold_cp === 12300,
+          ),
+        );
+        for (const item of purchaseContents('plate-armor'))
+          assert.equal(
+            (
+              await pool.query(
+                'SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',
+                [hero.id, item],
+              )
+            ).rows[0].quantity,
+            (before.get(item) || 0) + 2,
+          );
+        assert.equal(
+          (
+            await pool.query('SELECT count(*)::int AS n FROM tower_item_grants WHERE run_id=$1', [
+              made.id,
+            ])
+          ).rows[0].n,
+          purchaseContents('plate-armor').length,
+        );
+        assert.equal(
+          (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0]
+            .gold_cp,
+          goldBefore + 4200 + 12300,
+        );
+        const claim = (await request('/tower', player)).data.claims.find(
+          (c: any) => c.run_id === made.id,
+        );
+        assert.equal(claim.item.id, 'plate-armor');
+        assert.ok(claim.item.description);
+        assert.ok(claim.item.image_path);
+      },
+    );
+    await t.test('andar 100, guardião fora do intervalo padrão e limite persistente', async () => {
+      const made = (await request('/tower/expeditions', gm, 'POST', { name: 'Coroa da torre' }))
+        .data;
+      await request('/tower/expeditions/' + made.id + '/join', player, 'POST', {
+        character_id: hero.id,
+      });
+      await pool.query(
+        "UPDATE tower_expeditions SET status='active',cleared_floor=98,bosses=$2 WHERE id=$1",
+        [made.id, JSON.stringify(Array.from({ length: 19 }, (_, i) => (i + 1) * 5))],
+      );
+      const floor99 = (await request('/tower', gm)).data.floors[98];
+      await request('/tower/floors/99', gm, 'POST', {
+        ...floor99,
+        discovery: undefined,
+        number: undefined,
+        boss: true,
+        boss_name: 'O guardião escolhido',
+        creatures: [],
+        traps: '',
+        challenge: '',
+        hazard: '',
+      });
+      let r = (await request('/tower', gm)).data.expeditions.find((r: any) => r.id === made.id);
+      assert.equal(
+        (
+          await request('/tower/expeditions/' + made.id + '/progress', gm, 'POST', {
+            revision: r.revision,
+            action: 'clear',
+          })
+        ).status,
+        409,
+      );
+      for (const floor of [99, 100]) {
+        assert.equal(
+          (
+            await request('/tower/expeditions/' + made.id + '/progress', gm, 'POST', {
+              revision: r.revision,
+              action: 'clear',
+              defeat_boss: true,
+            })
+          ).status,
+          200,
+        );
+        r = (await request('/tower', gm)).data.expeditions.find((r: any) => r.id === made.id);
+        assert.equal(r.cleared_floor, floor);
+      }
+      assert.equal(
+        (
+          await request('/tower/expeditions/' + made.id + '/progress', gm, 'POST', {
+            revision: r.revision,
+            action: 'clear',
+            defeat_boss: true,
+          })
+        ).status,
+        409,
+      );
+      assert.equal(
+        (
+          await request('/tower/expeditions/' + made.id + '/progress', gm, 'POST', {
+            revision: r.revision,
+            action: 'finish',
+          })
+        ).status,
+        200,
+      );
+      const claim = (await request('/tower', player)).data.claims.find(
+        (c: any) => c.run_id === made.id,
+      );
+      assert.equal(claim.floor, 100);
+      assert.equal(claim.tier, 21);
+    });
     await t.test('cancelamento não paga; revogação administrativa vale imediatamente', async () => {
       const created = (
         await request('/tower/expeditions', other, 'POST', { name: 'Sem recompensa' })
