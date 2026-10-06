@@ -122,6 +122,19 @@ placeholders nem reaproveitar uma imagem para fingir múltiplos monstros conclu�
 
 ## Verificação
 
+Novo refino de 06/10, após os anexos de negro/bronze anciões e Balor:
+as duas artes de dragão foram reconstruídas em vista dorsal ortográfica, com
+raízes musculares das asas visíveis sobre as escápulas junto à crista e separadas
+das quatro patas. Balor mantém a pose e passa a ter um único chicote contínuo
+entre cabo e ponta, sem o trecho de corrente excedente. Prompts das iterações
+aceitas, notas da inspeção visual, alpha e hashes estão em
+`data/vtt/premium-art/manifest.json`. Artes finais feitas com imagegen embutido,
+copiadas também para Downloads. Comparação com o manifest anterior: três hashes
+alterados, outras 327 artes intactas, total 330. O volume privado somente leitura
+do Compose expõe as substituições imediatamente aos mesmos endpoints do VTT,
+sem regravar tokens, posições ou fichas. Leitura e hashes conferidos no container;
+health HTTP 200. Atualizar a página recarrega as imagens privadas sem cache.
+
 Revisão posterior de 06/10: os 22 anexos do usuário receberam reparos individuais.
 Depois de rejeições de pés/armas/perspectiva, foram examinados o
 [guerreiro com machado](https://forgottenadventures.piwigo.com/picture?/142260),

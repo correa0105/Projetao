@@ -1789,6 +1789,13 @@ Retorno da visão da Ginna (03/10/2026): escolher Não vou machucá-los! fecha a
 
 ## Texto e retrato lado a lado na lore (04/10/2026)
 
+Refino premium adicional de 06/10: negro e bronze anciões reconstruídos com asas
+saindo de raízes dorsais sobre as escápulas; corrente extra do chicote do Balor
+removida. Três artes substituídas, 327 preservadas, 330 no total; prompts e revisão
+visual no manifest privado. O bind mount somente leitura do Compose entrega os
+novos arquivos aos mesmos endpoints sem alterar mesas/fichas. Hashes no container
+e health conferidos. Ver docs/VTT-ACERVO-PREMIUM.md.
+
 Blocos vizinhos de texto e imagem em lados opostos agora formam uma composição de duas colunas, independentemente da ordem. Funciona com Texto livre, Pergaminho, Inscrição e Citação / lenda, em retrato ou meia paisagem. Centro e paisagem inteira mantêm o fluxo individual. Até 600 px, os blocos são empilhados na ordem salva. Prévia e leitura usam a mesma composição; dados existentes preservados. Smoke isolado aprovado nos quatro estilos, ambos os lados, desktop/celular e persistência.
 
 Balcão da loja livre (04/10/2026): removidos bloqueios de colisão/mesa cheia; todos os 71 itens podem ocupar o tampo e ser sobrepostos por arraste ou teclado. Seleção/foco/arraste trazem o objeto à frente com camada estável. Carrinho tem Localizar no balcão para recuperar objetos cobertos. Escalas moderadas por tamanho projetado da ilustração, entre 0,55 e 1,70; joias e frascos menores, armas longas/volumes maiores. Arte separada do alvo mínimo de 48 px preserva diferença visual no celular; sentinela CSS/ResizeObserver alinham render e arraste. Superfície mobile ampliada 32 px no tampo. Quantidades agrupadas, transação de 99 unidades/item e preços preservados. Detalhes em docs/SHOP-LAYOUT.md.
