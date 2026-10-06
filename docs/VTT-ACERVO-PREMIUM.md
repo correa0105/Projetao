@@ -65,7 +65,7 @@ arquivo, dimensões, pixels transparentes, hash SHA-256, prompt completo e refer
 pesquisadas no Pinterest. Modo usado: **imagegen embutido**, geração individual; azul
 recebeu edição de margem. Originais preservados no diretório de imagens geradas.
 
-Marco de produção: 130 artes concluídas em 06/10, do Aboleth ao Giant Rat, incluindo os
+Marco de produção: 160 artes concluídas em 06/10, do Aboleth ao Half-Dragon, incluindo os
 dez dragões adultos e os dez anciões, todos com arquivos próprios. Armadura, árvore,
 bico de machado, azer, golem de argila e bugbear receberam revisão da câmera.
 Basilisco e cão teleportador tiveram os membros corrigidos; behir foi redesenhado
@@ -74,7 +74,10 @@ ajuste de enquadramento. Serpente constritora teve a continuidade corrigida; man
 sombrio recebeu oito tentáculos e drider foi redesenhado com oito patas separadas
 em quatro pares. Caranguejo gigante foi redesenhado com oito patas de caminhada e
 duas pinças; polvo gigante teve os oito braços corrigidos. Cubo gelatinoso usa
-face superior quadrada em perspectiva ortográfica. O total restante é 200;
+face superior quadrada em perspectiva ortográfica. Escorpião gigante teve os
+quatro pares de patas corrigidos, além das pinças; aranha gigante recebeu mais
+margem preservando oito patas. Górgona segue o touro de placas metálicas do catálogo.
+O total restante é 170;
 o contador ao vivo continua vindo do manifest, sem estimar imagens prontas.
 Silhuetas estreitas, como a espada animada, são validadas sem exigir a área de
 um corpo largo. Verificação visual no navegador confirmou alpha e bordas limpas.
