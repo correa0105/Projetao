@@ -1,12 +1,14 @@
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Check, Footprints } from 'lucide-react';
 import { api } from './api';
 import { mounts, mountCoats, ownedMountImage, type OwnedMount } from '../shared/mounts';
 import './character-mount.css';
+import { useCampMountSize } from './useCampMountSize';
 
 export function CampMount({ characterId }: { characterId: string }) {
   const [mount, setMount] = useState<OwnedMount | null>(null);
   const host = useRef<HTMLDivElement>(null);
+  useCampMountSize(host, mount?.id);
   useEffect(() => {
     let active = true;
     void api<OwnedMount[]>(`/stable/${characterId}`)
@@ -20,26 +22,6 @@ export function CampMount({ characterId }: { characterId: string }) {
       active = false;
     };
   }, [characterId]);
-  useLayoutEffect(() => {
-    const element = host.current;
-    const camp = element?.closest<HTMLElement>('.character-camp');
-    const stage = camp?.querySelector<HTMLElement>('.camp-stage');
-    if (!element || !camp || !stage) return;
-    const align = () => {
-      const bounds = camp.getBoundingClientRect(),
-        figures = [...stage.querySelectorAll<HTMLElement>('.camp-figure')];
-      const floor = Math.max(...figures.map((figure) => figure.getBoundingClientRect().bottom));
-      const height = Math.max(...figures.map((figure) => figure.clientHeight));
-      if (Number.isFinite(floor))
-        element.style.top = `${floor - bounds.top + Math.min(14, height * 0.035)}px`;
-    };
-    const observer = new ResizeObserver(align);
-    observer.observe(camp);
-    observer.observe(stage);
-    stage.querySelectorAll('.camp-figure').forEach((element) => observer.observe(element));
-    align();
-    return () => observer.disconnect();
-  }, [mount]);
   if (!mount) return null;
   const animal = mounts.find((item) => item.id === mount.mount_id);
   return (

@@ -94,10 +94,28 @@ try {
   await page.mouse.up();
   await page.getByLabel('Giro da peça').fill('12');
   await page.getByLabel('Tamanho da peça').fill('28');
+  await page.getByLabel('Direção da peça').selectOption('7');
   await page.getByRole('button', { name: 'Salvar mudanças' }).click();
   await expect(page.getByRole('button', { name: 'Salvo', exact: true })).toBeDisabled();
   await page.reload();
   await expect(page.locator('.house-piece')).toHaveCount(1);
+  await expect(page.locator('.house-piece')).toHaveAttribute('data-facing', '7');
+  await page.getByRole('button', { name: 'Decorar', exact: true }).click();
+  await page.locator('.house-piece').click();
+  const nearWidth = await piece.evaluate((el) => el.clientWidth);
+  const nearDepth = await piece.getAttribute('data-depth-scale');
+  const anchor = await piece.boundingBox();
+  await page.mouse.move(anchor!.x + anchor!.width / 2, anchor!.y + anchor!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(anchor!.x + anchor!.width / 2, anchor!.y + anchor!.height / 2 - 120, {
+    steps: 8,
+  });
+  await page.mouse.up();
+  expect(await piece.evaluate((el) => el.clientWidth)).toBeLessThan(nearWidth);
+  expect(await piece.getAttribute('data-depth-scale')).not.toBe(nearDepth);
+  await expect(piece).toHaveAttribute('data-base-scale', '0.28');
+  await page.getByRole('button', { name: 'Descartar', exact: true }).click();
+  await expect(piece).toHaveAttribute('data-depth-scale', nearDepth!);
   await expect(page.locator('.house-piece')).toHaveCSS('width', /\d+px/);
   const mount = await req(ctx, '/stable/purchase', {
     character_id: hero.id,
@@ -119,6 +137,12 @@ try {
       character_id: hero.id,
       catalog_id,
       idempotency_key: randomUUID(),
+      ...(catalog_id === 'frame'
+        ? {
+            content: { title: 'Lembrança da sala', text: 'A nossa primeira visita.' },
+            image: (await readFile('public/calendar/village-night-v1.webp')).toString('base64'),
+          }
+        : {}),
     });
   await page.reload();
   await page.getByRole('button', { name: 'Decorar', exact: true }).click();
@@ -126,7 +150,7 @@ try {
     'Sofá de Carvalho',
     'Vaso de Alecrim',
     'Livros do Caminho',
-    'Quadro de Memórias',
+    'Lembrança da sala',
   ])
     await page
       .locator('.house-inventory-item')
@@ -192,9 +216,9 @@ try {
       id: randomUUID(),
       kind: 'mount',
       ref: mount.mount.id,
-      x: 0.17,
-      y: 0.93,
-      scale: 0.21,
+      x: 0.29,
+      y: 0.84,
+      scale: 0.5,
       rotation: 0,
       layer: 5,
     },
@@ -217,10 +241,87 @@ try {
   );
   await page.reload();
   await expect(page.locator('.house-piece')).toHaveCount(7);
+  await page.getByRole('button', { name: 'Decorar', exact: true }).click();
+  const framePiece = page
+    .locator('.house-piece')
+    .filter({ has: page.locator('img[alt="Quadro de Memórias"]') });
+  await framePiece.click();
+  await page.getByLabel('Tamanho da peça').fill('45');
+  for (const direction of [0, 1, 7, 4]) {
+    await page.getByLabel('Direção da peça').selectOption(String(direction));
+    await expect(framePiece).toHaveAttribute('data-facing', String(direction));
+    await expect
+      .poll(() =>
+        framePiece
+          .locator('img')
+          .evaluateAll((imgs) =>
+            imgs.every(
+              (i) => (i as HTMLImageElement).complete && (i as HTMLImageElement).naturalWidth > 0,
+            ),
+          ),
+      )
+      .toBe(true);
+    await expect(framePiece.locator('.house-picture')).toHaveCount(direction === 4 ? 0 : 1);
+    await framePiece.screenshot({ path: 'test-results/house-frame-' + direction + '.png' });
+  }
+  await page.getByLabel('Direção da peça').selectOption('0');
+  await page.getByLabel('Tamanho da peça').fill('7');
+  const sofaPiece = page
+    .locator('.house-piece')
+    .filter({ has: page.locator('img[alt="Sofá de Carvalho"]') });
+  await sofaPiece.click();
+  await page.getByRole('button', { name: 'Enviar para trás', exact: true }).click();
+  await expect(sofaPiece).toHaveAttribute('data-layer', '1');
+  await page.getByRole('button', { name: 'Trazer à frente', exact: true }).click();
+  await expect(sofaPiece).toHaveAttribute('data-layer', '2');
+  await page.getByLabel('Direção da peça').selectOption('4');
+  await expect(sofaPiece).toHaveAttribute('data-facing', '4');
+  await page.getByRole('button', { name: 'Salvar mudanças' }).click();
+  await expect(page.getByRole('button', { name: 'Salvo', exact: true })).toBeDisabled();
   await page.getByRole('button', { name: 'Personagem', exact: true }).click();
   await page.getByRole('button', { name: 'Entrar na cena', exact: true }).click();
   await expect(page.locator('.house-actor')).toHaveCount(1);
+  await expect(page.getByRole('button', { name: 'Entrar na cena', exact: true })).toBeEnabled();
+  await page.getByLabel('Camada do personagem').selectOption('0');
+  await expect(page.locator('.house-actor')).toHaveAttribute('data-layer', '0');
+  const storedLayer = (
+    await ctx.request.get(origin + '/api/house/' + home.id).then((r) => r.json())
+  ).presence.find((p: any) => p.user_id === owner).layer;
+  expect(storedLayer).toBe(0);
+  expect(
+    await page.locator('.house-actor').evaluate((el) => Number(getComputedStyle(el).zIndex)),
+  ).toBeLessThan(await sofaPiece.evaluate((el) => Number(getComputedStyle(el).zIndex)));
+  await page.getByLabel('Camada do personagem').selectOption('602');
+  await expect(page.locator('.house-actor')).toHaveAttribute('data-layer', '602');
   await page.getByRole('button', { name: 'Fechar painel' }).click();
+  const actor = page.locator('.house-actor').first();
+  await expect
+    .poll(() =>
+      actor
+        .locator('img')
+        .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
+    )
+    .toBe(true);
+  await actor.scrollIntoViewIfNeeded();
+  const actorNear = await actor.evaluate((el) => el.clientWidth);
+  const actorBox = await actor.boundingBox();
+  await page.mouse.move(actorBox!.x + actorBox!.width / 2, actorBox!.y + actorBox!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(
+    actorBox!.x + actorBox!.width / 2,
+    actorBox!.y + actorBox!.height / 2 - 110,
+    { steps: 8 },
+  );
+  await page.mouse.up();
+  await expect.poll(() => actor.evaluate((el) => el.clientWidth)).toBeLessThan(actorNear);
+  const afterDrag = await actor.boundingBox();
+  expect(
+    Math.abs(afterDrag!.x + afterDrag!.width / 2 - (actorBox!.x + actorBox!.width / 2)),
+  ).toBeLessThan(2);
+  expect(
+    Math.abs(afterDrag!.y + afterDrag!.height / 2 - (actorBox!.y + actorBox!.height / 2 - 110)),
+  ).toBeLessThan(2);
+  await expect(actor).toHaveAttribute('data-base-scale', '0.19');
   await page.getByRole('button', { name: 'Convidados', exact: true }).click();
   await page.getByLabel('Buscar jogador').fill('Viajante convidado');
   await page.getByRole('button', { name: 'Convidar Viajante convidado' }).click();
@@ -239,7 +340,21 @@ try {
   await page.reload();
   await page.getByRole('button', { name: 'RP', exact: true }).click();
   await expect(page.getByRole('log')).toContainText('Bruma senta perto da lareira');
-  await page.getByRole('button', { name: 'Fechar painel' }).click();
+  await expect(page.locator('.house-scene .house-rp-overlay')).toBeVisible();
+  await expect(page.locator('.house-panel')).toHaveCount(0);
+  await expect
+    .poll(() =>
+      page
+        .locator('.house-actor img')
+        .evaluateAll((imgs) =>
+          imgs.every(
+            (i) => (i as HTMLImageElement).complete && (i as HTMLImageElement).naturalWidth > 0,
+          ),
+        ),
+    )
+    .toBe(true);
+  await page.screenshot({ path: 'test-results/house-rp-desktop.png', fullPage: true });
+  await page.getByRole('button', { name: 'RP', exact: true }).click();
   await expect
     .poll(() =>
       page
@@ -262,6 +377,13 @@ try {
     );
     await page.screenshot({ path: `test-results/house-${width}.png`, fullPage: true });
     await page.getByRole('button', { name: 'Fechar painel' }).click();
+    await page.getByRole('button', { name: 'RP', exact: true }).click();
+    await expect(page.locator('.house-scene .house-rp-overlay')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await page.screenshot({ path: `test-results/house-rp-${width}.png`, fullPage: true });
+    await page.getByRole('button', { name: 'RP', exact: true }).click();
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Convidados', exact: true }).click();

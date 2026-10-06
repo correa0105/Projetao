@@ -1,6 +1,8 @@
 import type { SheetRecord, deriveSheet } from './character-sheet';
 import type { VttToken } from './vtt';
+import expandedConsumables from './emporium-consumables.json';
 export const consumableItems = new Set([
+  ...expandedConsumables,
   'antitoxin',
   'acid',
   'alchemists-fire',

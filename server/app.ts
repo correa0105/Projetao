@@ -268,7 +268,7 @@ export function createApp() {
     res.json(
       (
         await pool.query(
-          'SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url,image_path,merchant_comment,weight_estimated FROM catalog_items WHERE active=true ORDER BY category,name',
+          'SELECT id,name,original_name,category,description,price_cp,weight_lb,source,source_url,image_path,audio_path,merchant_comment,weight_estimated FROM catalog_items WHERE active=true ORDER BY category,name',
         )
       ).rows,
     ),

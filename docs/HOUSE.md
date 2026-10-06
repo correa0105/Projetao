@@ -1,5 +1,45 @@
 # House — 06/10/2026
 
+## Vistas, perspectiva, camadas e RP
+
+Os doze objetos possuem oito artes independentes, na ordem Frente, Frente e
+direita, Direita, Trás e direita, Trás, Trás e esquerda, Esquerda, Frente e
+esquerda. Decoração → Direção da peça troca a vista, enquanto Giro mantém o
+ajuste fino. São 96 WebPs transparentes, vistos/revisados individualmente;
+prompts, SHA-256 e dimensões em public/house/items/views/art-manifest.json.
+Não usar espelhamento ou rotação plana como substituto das oito vistas.
+
+shared/house-perspective.ts calcula o fator pela posição do pé/base no cenário:
+0,15 + 0,85 × ((y − 0,08) / 0,76)², com y limitado a 0,08–0,98.
+O ajuste base continua salvo; mudar a profundidade altera apenas a renderização.
+Cada vista de objeto em pé é calibrada pela altura visível no alpha, mantendo
+a altura física ao trocar frente/perfil. O tapete usa sua projeção no plano do
+chão. scripts/calibrate-house-views.mjs gera shared/house-view-sizes.json.
+Quadros projetam a imagem própria na abertura frontal/diagonal usando as quatro
+quinas de shared/house-frame-quads.json; atrás mostram madeira e fixação.
+
+O arraste resolve a posição da base levando em conta a mudança de escala. O
+ponto originalmente clicado permanece sob o cursor até os limites da cena,
+inclusive no personagem. Enviar para trás/Trazer à frente troca posições
+adjacentes reais, incluindo empates/lacunas de layouts anteriores.
+
+Personagem → Camada do personagem oferece À frente de tudo, Atrás de tudo e
+Atrás de cada objeto colocado. Migration 074 adiciona house_presence.layer,
+inteiro 0–602, padrão 602. Objetos usam z-index 2×layer+2; presença atrás de um
+objeto usa 2×layer+1. Convidados ajustam somente a própria presença. Payloads
+antigos sem layer conservam a camada existente ao mover/entrar novamente.
+
+RP abre apenas dentro do cenário, com histórico translúcido e campo dourado
+junto à base; segue mensagens quando já no final. O painel externo foi retirado.
+Sons dos doze objetos usam arquivos próprios /audio/emporium/house-ID.wav e
+preservam volume/mute dos efeitos. Tamanhos iniciais de personagens, montarias
+e mascotes consideram suas proporções; layouts antigos conservam o ajuste manual.
+
+Treze testes isolados de API, três testes de geometria/cursor/camadas e navegador
+em quatro larguras aprovados. O navegador verifica camada persistida, ponto de
+arraste a menos de 2 px do cursor, troca de vista, altura/base preservada e
+quadros frontais/diagonais/traseiros com imagem privada.
+
 Implementação iniciada depois do checkpoint GitHub `654c304`, com a tag enviada
 `codex/checkpoint-antes-house-2026-10-06`. Não modificar o checkpoint.
 

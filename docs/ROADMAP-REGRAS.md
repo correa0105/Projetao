@@ -10,6 +10,11 @@ Separar implementação, conteúdo apenas descritivo e planos futuros.
 
 ## O que existe hoje
 
+Empório (06/10): equipamentos físicos das tabelas do SRD 5.2.1 e as 258 famílias
+mágicas com variantes concretas, sem automatizar efeitos, sintonia/cargas ou
+recursos de classes. Catálogo antigo preservado; cobertura e fontes em
+EMPORIO-EXPANSAO.md. Isso não implementa o conjunto de todos os suplementos.
+
 - Códice de consulta editável na aba Regras, com capítulos, artigos, busca,
   blocos de conteúdo e imagens. A conta autorizada e staff/admin podem editar
   a apresentação e todo o conteúdo, importar/exportar e recuperar versões.
@@ -83,4 +88,5 @@ de suplementos continuam dependendo de etapas próprias.
 - Atribuição e fontes do projeto: `ATTRIBUTION.md`.
 
 ## Decisão de 29/09/2026
+
 O fluxo de evolução de PV, habilidades, subclasses e magias será implementado posteriormente. Não apresentar essa lacuna como obrigação de conferir com o mestre. O aviso de nível comunica o nível registrado e a implementação pendente.

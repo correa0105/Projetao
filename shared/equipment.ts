@@ -1,3 +1,4 @@
+import expandedEquipment from './emporium-equipment.json';
 export const EQUIPMENT_SLOTS = [
   'head',
   'armor',
@@ -39,9 +40,17 @@ export function isHelmet(item: { id?: string; item_id?: string; name: string }) 
   return /helmet|capacete|elmo/i.test(`${item.id || item.item_id || ''} ${item.name}`);
 }
 export function twoHanded(item: EquipmentItem) {
+  const expanded = (expandedEquipment as Record<string, { slots: string[]; two_handed: boolean }>)[
+    item.id
+  ];
+  if (expanded) return expanded.two_handed;
   return ['greatsword', 'longbow', 'shortbow'].includes(item.id) || /duas mãos/i.test(item.name);
 }
 export function compatibleSlots(item: EquipmentItem): EquipmentSlot[] {
+  const expanded = (
+    expandedEquipment as Record<string, { slots: EquipmentSlot[]; two_handed: boolean }>
+  )[item.id];
+  if (expanded) return [...expanded.slots];
   const name = `${item.id} ${item.name}`.toLowerCase();
   if (/pauldron|ombreira/.test(name)) return ['shoulders'];
   if (/bracer|braçadeira/.test(name)) return ['bracers'];

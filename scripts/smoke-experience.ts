@@ -54,7 +54,7 @@ try {
     expect(response.status()).toBe(201);
     return (await response.json()).mount;
   }
-  const first = await purchase(a.id, 'riding-horse', 'Brasa'),
+  const first = await purchase(a.id, 'warhorse', 'Brasa'),
     second = await purchase(a.id, 'pony', 'Pé de Pano'),
     third = await purchase(b.id, 'mule', 'Cinza');
   await page.goto(origin + '/#characters');
@@ -92,6 +92,13 @@ try {
   await page.goto(origin + '/#characters');
   await expect(page.locator('.camp-mount')).toHaveAttribute('data-mount-id', second.id);
   await page.setViewportSize({ width: 390, height: 844 });
+  await expect
+    .poll(() => page.locator('.camp-mount').evaluate((el) => Number(getComputedStyle(el).opacity)))
+    .toBe(1);
+  const desktopHorseHeight = await page
+    .locator('.camp-mount img')
+    .evaluate((el) => el.getBoundingClientRect().height);
+  expect(desktopHorseHeight).toBeGreaterThan(80);
   await page.screenshot({ path: 'test-results/camp-mount-mobile.png' });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.setViewportSize({ width: 1440, height: 900 });

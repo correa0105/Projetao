@@ -58,7 +58,10 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
       visitor = await createLegacyTestCharacter(guest.id, 'Bruma'),
       outsider = await createLegacyTestCharacter(other.id, 'Pedra');
     await pool.query('UPDATE characters SET gold_cp=100000 WHERE id=$1', [hero.id]);
-    await pool.query("INSERT INTO achievements(character_id,code)VALUES($1,'first_character') ON CONFLICT DO NOTHING",[hero.id]);
+    await pool.query(
+      "INSERT INTO achievements(character_id,code)VALUES($1,'first_character') ON CONFLICT DO NOTHING",
+      [hero.id],
+    );
     let home: any,
       guestHome: any,
       letterId = '',
@@ -131,10 +134,18 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
         scale: 0.21,
         rotation: 15,
         layer: 1,
+        facing: 7,
       });
       assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 200);
       assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 409);
       home = await load();
+      assert.equal(home.rooms[0].placements[0].facing, 7);
+      for (const invalid of [-1, 8, 1.5]) {
+        const invalidView = layout();
+        invalidView.rooms[0].placements[0].facing = invalid;
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', invalidView)).status, 400);
+        assert.equal((await load()).revision, home.revision);
+      }
       const next = layout();
       next.rooms[1].placements.push({ ...next.rooms[0].placements[0], id: randomUUID() });
       assert.equal((await request(`/house/${home.id}`, owner, 'PUT', next)).status, 400);
@@ -366,7 +377,10 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
           (await request(`/house/${home.id}/rewards`, owner, 'POST', {})).data.granted,
           0,
         );
-        await pool.query('INSERT INTO mission_participants(post_id,character_id)VALUES($1,$2)',[m.id,hero.id]);
+        await pool.query('INSERT INTO mission_participants(post_id,character_id)VALUES($1,$2)', [
+          m.id,
+          hero.id,
+        ]);
         await pool.query(
           'INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by,gold_cp)VALUES($1,$2,0,$3,15000)',
           [m.id, hero.id, admin.id],
@@ -412,6 +426,50 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
       );
       assert.equal((await load()).messages.length, 1);
     });
+    await t.test(
+      'camada da presença é privada, persiste no arraste legado e valida limites',
+      async () => {
+        const input = {
+          character_id: hero.id,
+          variant_id: null,
+          room: 'sala',
+          x: 0.5,
+          y: 0.84,
+          scale: 0.19,
+          layer: 0,
+        };
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, owner, 'PUT', input)).status,
+          200,
+        );
+        assert.equal((await load()).presence.find((p: any) => p.user_id === owner.id).layer, 0);
+        const { layer, ...legacy } = input;
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, owner, 'PUT', { ...legacy, x: 0.6 })).status,
+          200,
+        );
+        assert.equal((await load()).presence.find((p: any) => p.user_id === owner.id).layer, 0);
+        for (const invalid of [-1, 603, 0.5])
+          assert.equal(
+            (
+              await request(`/house/${home.id}/presence`, owner, 'PUT', {
+                ...input,
+                layer: invalid,
+              })
+            ).status,
+            400,
+          );
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, guest, 'PUT', input)).status,
+          404,
+        );
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, owner, 'PUT', { ...input, layer: 602 }))
+            .status,
+          200,
+        );
+      },
+    );
     await t.test('bloqueio social impede convites e presentes', async () => {
       await pool.query('INSERT INTO social_blocks(blocker_id,blocked_id)VALUES($1,$2)', [
         other.id,

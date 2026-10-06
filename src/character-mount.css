@@ -1,8 +1,8 @@
 .camp-mount {
   position: absolute;
-  left: 3%;
+  left: calc(3% - var(--mount-reference-height, 320px) * 0.12);
   top: 45%;
-  width: calc(clamp(180px, 27vw, 390px) * var(--mount-scale));
+  width: max-content;
   transform: translateY(-100%);
   pointer-events: none;
   z-index: 0;
@@ -10,7 +10,8 @@
 }
 .camp-mount img {
   display: block;
-  width: 100%;
+  width: auto;
+  height: calc(var(--mount-reference-height, 320px) * 1.04 * var(--mount-scale, 1));
   filter: brightness(0.63) saturate(0.63) contrast(0.94) drop-shadow(0 4px 7px #0009);
 }
 .camp-mount::after {
@@ -128,7 +129,6 @@
 @media (max-width: 600px) {
   .camp-mount {
     left: -25px;
-    width: calc(180px * var(--mount-scale));
   }
   .camp-mount-name {
     font-size: 10px;

@@ -1,0 +1,2582 @@
+[
+  {
+    "number": 1,
+    "name": "Adamantine Armor",
+    "page": 209,
+    "kind": "Armor",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Armor (Any Medium or Heavy, Except Hide Armor), \nUncommon"
+  },
+  {
+    "number": 2,
+    "name": "Ammunition, +1, +2, or +3",
+    "page": 209,
+    "kind": "Weapon",
+    "rarity": "Uncommon",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Weapon (Any Ammunition), Uncommon "
+  },
+  {
+    "number": 3,
+    "name": "Ammunition of Slaying",
+    "page": 209,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Weapon (Any Ammunition), Very "
+  },
+  {
+    "number": 4,
+    "name": "Amulet of Health",
+    "page": 209,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 5,
+    "name": "Amulet of Proof against Detection and Location",
+    "page": 209,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 6,
+    "name": "Amulet of the Planes",
+    "page": 209,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 7,
+    "name": "Animated Shield",
+    "page": 209,
+    "kind": "Armor",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Shield), Very "
+  },
+  {
+    "number": 8,
+    "name": "Apparatus of the Crab",
+    "page": 210,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 9,
+    "name": "Armor, +1, +2, or +3",
+    "page": 210,
+    "kind": "Armor",
+    "rarity": "Rare",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Armor (Any Light, Medium, or Heavy), Rare "
+  },
+  {
+    "number": 10,
+    "name": "Armor of Invulnerability",
+    "page": 210,
+    "kind": "Armor",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Plate Armor), Legendary "
+  },
+  {
+    "number": 11,
+    "name": "Armor of Resistance",
+    "page": 210,
+    "kind": "Armor",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Any Light, Medium, or Heavy), Rare "
+  },
+  {
+    "number": 12,
+    "name": "Armor of Vulnerability",
+    "page": 211,
+    "kind": "Armor",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Any Light, Medium, or Heavy), Rare "
+  },
+  {
+    "number": 13,
+    "name": "Arrow-Catching Shield",
+    "page": 211,
+    "kind": "Armor",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Shield), Rare "
+  },
+  {
+    "number": 14,
+    "name": "Bag of Beans",
+    "page": 211,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 15,
+    "name": "Bag of Devouring",
+    "page": 212,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 16,
+    "name": "Bag of Holding",
+    "page": 212,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 17,
+    "name": "Bag of Tricks",
+    "page": 212,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 18,
+    "name": "Bead of Force",
+    "page": 212,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 19,
+    "name": "Bead of Nourishment",
+    "page": 213,
+    "kind": "Wondrous Item",
+    "rarity": "Common",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Common "
+  },
+  {
+    "number": 20,
+    "name": "Belt of Dwarvenkind",
+    "page": 213,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 21,
+    "name": "Belt of Giant Strength",
+    "page": 213,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": true,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rarity "
+  },
+  {
+    "number": 22,
+    "name": "Berserker Axe",
+    "page": 213,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Battleaxe, Greataxe, or Halberd), Rare "
+  },
+  {
+    "number": 23,
+    "name": "Boots of Elvenkind",
+    "page": 213,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 24,
+    "name": "Boots of Levitation",
+    "page": 213,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 25,
+    "name": "Boots of Speed",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 26,
+    "name": "Boots of Striding and Springing",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 27,
+    "name": "Boots of the Winterlands",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 28,
+    "name": "Bowl of Commanding Water Elementals",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 29,
+    "name": "Bracers of Archery",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 30,
+    "name": "Bracers of Defense",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 31,
+    "name": "Brazier of Commanding Fire Elementals",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 32,
+    "name": "Brooch of Shielding",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 33,
+    "name": "Broom of Flying",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 34,
+    "name": "Candle of Invocation",
+    "page": 214,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 35,
+    "name": "Cape of the Mountebank",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 36,
+    "name": "Carpet of Flying",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 37,
+    "name": "Censer of Controlling Air Elementals",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 38,
+    "name": "Chime of Opening",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 39,
+    "name": "Circlet of Blasting",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 40,
+    "name": "Cloak of Arachnida",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 41,
+    "name": "Cloak of Displacement",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 42,
+    "name": "Cloak of Elvenkind",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 43,
+    "name": "Cloak of Invisibility",
+    "page": 215,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 44,
+    "name": "Cloak of Protection",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 45,
+    "name": "Cloak of the Bat",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 46,
+    "name": "Cloak of the Manta Ray",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 47,
+    "name": "Crystal Ball",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 48,
+    "name": "Crystal Ball of Mind Reading",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 49,
+    "name": "Crystal Ball of Telepathy",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 50,
+    "name": "Crystal Ball of True Seeing",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 51,
+    "name": "Cube of Force",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 52,
+    "name": "Cubic Gate",
+    "page": 216,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 53,
+    "name": "Dagger of Venom",
+    "page": 216,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Weapon (Dagger), Rare "
+  },
+  {
+    "number": 54,
+    "name": "Dancing Sword",
+    "page": 217,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Greatsword, Longsword, Rapier, Scimitar, or \nShortsword), Very "
+  },
+  {
+    "number": 55,
+    "name": "Decanter of Endless Water",
+    "page": 217,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 56,
+    "name": "Deck of Illusions",
+    "page": 217,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 57,
+    "name": "Defender",
+    "page": 218,
+    "kind": "Weapon",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Any Melee Weapon), Legendary "
+  },
+  {
+    "number": 58,
+    "name": "Demon Armor",
+    "page": 218,
+    "kind": "Armor",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Any Light, Medium, or Heavy), Very "
+  },
+  {
+    "number": 59,
+    "name": "Dimensional Shackles",
+    "page": 218,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 60,
+    "name": "Dragon Orb",
+    "page": 218,
+    "kind": "Wondrous Item",
+    "rarity": "Artifact",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Artifact "
+  },
+  {
+    "number": 61,
+    "name": "Dragon Scale Mail",
+    "page": 218,
+    "kind": "Armor",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Scale Mail), Very "
+  },
+  {
+    "number": 62,
+    "name": "Dragon Slayer",
+    "page": 219,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Weapon (Any Simple or Martial), Rare "
+  },
+  {
+    "number": 63,
+    "name": "Dust of Disappearance",
+    "page": 219,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 64,
+    "name": "Dust of Dryness",
+    "page": 219,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 65,
+    "name": "Dust of Sneezing and Choking",
+    "page": 219,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 66,
+    "name": "Dwarven Plate",
+    "page": 219,
+    "kind": "Armor",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Armor (Half Plate Armor or Plate Armor), Very "
+  },
+  {
+    "number": 67,
+    "name": "Dwarven Thrower",
+    "page": 219,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Warhammer), Very "
+  },
+  {
+    "number": 68,
+    "name": "Efficient Quiver",
+    "page": 219,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 69,
+    "name": "Efreeti Bottle",
+    "page": 220,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 70,
+    "name": "Elemental Gem",
+    "page": 220,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 71,
+    "name": "Elixir of Health",
+    "page": 220,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 72,
+    "name": "Elven Chain",
+    "page": 220,
+    "kind": "Armor",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Armor (Chain Mail or Chain Shirt), Rare "
+  },
+  {
+    "number": 73,
+    "name": "Energy Bow",
+    "page": 220,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Longbow or Shortbow), Very "
+  },
+  {
+    "number": 74,
+    "name": "Eversmoking Bottle",
+    "page": 220,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 75,
+    "name": "Eyes of Charming",
+    "page": 221,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 76,
+    "name": "Eyes of Minute Seeing",
+    "page": 221,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 77,
+    "name": "Eyes of the Eagle",
+    "page": 221,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 78,
+    "name": "Feather Token",
+    "page": 221,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rarity "
+  },
+  {
+    "number": 79,
+    "name": "Figurine of Wondrous Power",
+    "page": 221,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rarity "
+  },
+  {
+    "number": 80,
+    "name": "Flame Tongue",
+    "page": 223,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Any Melee Weapon), Rare "
+  },
+  {
+    "number": 81,
+    "name": "Folding Boat",
+    "page": 223,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 82,
+    "name": "Frost Brand",
+    "page": 223,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Glaive, Greatsword, Longsword, Rapier, \nScimitar, or Shortsword), Very "
+  },
+  {
+    "number": 83,
+    "name": "Gauntlets of Ogre Power",
+    "page": 223,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 84,
+    "name": "Gem of Brightness",
+    "page": 223,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 85,
+    "name": "Gem of Seeing",
+    "page": 223,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 86,
+    "name": "Giant Slayer",
+    "page": 223,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Weapon (Any Simple or Martial), Rare "
+  },
+  {
+    "number": 87,
+    "name": "Glamoured Studded Leather",
+    "page": 223,
+    "kind": "Armor",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Armor (Studded Leather Armor), Rare "
+  },
+  {
+    "number": 88,
+    "name": "Gloves of Missile Snaring",
+    "page": 224,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 89,
+    "name": "Gloves of Swimming and Climbing",
+    "page": 224,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 90,
+    "name": "Gloves of Thievery",
+    "page": 224,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 91,
+    "name": "Goggles of Night",
+    "page": 224,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 92,
+    "name": "Hammer of Thunderbolts",
+    "page": 224,
+    "kind": "Weapon",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Maul or Warhammer), Legendary "
+  },
+  {
+    "number": 93,
+    "name": "Handy Haversack",
+    "page": 224,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 94,
+    "name": "Hat of Disguise",
+    "page": 224,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 95,
+    "name": "Hat of Many Spells",
+    "page": 224,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 96,
+    "name": "Headband of Intellect",
+    "page": 225,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 97,
+    "name": "Helm of Brilliance",
+    "page": 225,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 98,
+    "name": "Helm of Comprehending Languages",
+    "page": 226,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 99,
+    "name": "Helm of Telepathy",
+    "page": 226,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 100,
+    "name": "Helm of Teleportation",
+    "page": 226,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 101,
+    "name": "Holy Avenger",
+    "page": 226,
+    "kind": "Weapon",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Any Simple or Martial), Legendary "
+  },
+  {
+    "number": 102,
+    "name": "Horn of Blasting",
+    "page": 226,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 103,
+    "name": "Horn of Valhalla",
+    "page": 226,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 104,
+    "name": "Horseshoes of a Zephyr",
+    "page": 226,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 105,
+    "name": "Horseshoes of Speed",
+    "page": 227,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 106,
+    "name": "Immovable Rod",
+    "page": 227,
+    "kind": "Rod",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Rod, Uncommon "
+  },
+  {
+    "number": 107,
+    "name": "Instant Fortress",
+    "page": 227,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 108,
+    "name": "Ioun Stone",
+    "page": 227,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": true,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rarity "
+  },
+  {
+    "number": 109,
+    "name": "Iron Bands",
+    "page": 228,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 110,
+    "name": "Iron Flask",
+    "page": 228,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 111,
+    "name": "Javelin of Lightning",
+    "page": 228,
+    "kind": "Weapon",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Weapon (Javelin), Uncommon "
+  },
+  {
+    "number": 112,
+    "name": "Lantern of Revealing",
+    "page": 228,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 113,
+    "name": "Luck Blade",
+    "page": 229,
+    "kind": "Weapon",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Glaive, Greatsword, Longsword, Rapier, \nScimitar, Sickle, or Shortsword), Legendary "
+  },
+  {
+    "number": 114,
+    "name": "Mace of Disruption",
+    "page": 229,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Mace), Rare "
+  },
+  {
+    "number": 115,
+    "name": "Mace of Smiting",
+    "page": 229,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Weapon (Mace), Rare "
+  },
+  {
+    "number": 116,
+    "name": "Mace of Terror",
+    "page": 229,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Mace), Rare "
+  },
+  {
+    "number": 117,
+    "name": "Mantle of Spell Resistance",
+    "page": 229,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 118,
+    "name": "Manual of Bodily Health",
+    "page": 229,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 119,
+    "name": "Manual of Gainful Exercise",
+    "page": 229,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 120,
+    "name": "Manual of Golems",
+    "page": 229,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 121,
+    "name": "Manual of Quickness of Action",
+    "page": 230,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 122,
+    "name": "Marvelous Pigments",
+    "page": 230,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 123,
+    "name": "Medallion of Thoughts",
+    "page": 230,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 124,
+    "name": "Mirror of Life Trapping",
+    "page": 230,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 125,
+    "name": "Mithral Armor",
+    "page": 231,
+    "kind": "Armor",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Armor (Any Medium or Heavy, Except Hide Armor), \nUncommon "
+  },
+  {
+    "number": 126,
+    "name": "Mysterious Deck",
+    "page": 231,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 127,
+    "name": "Necklace of Adaptation",
+    "page": 232,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 128,
+    "name": "Necklace of Fireballs",
+    "page": 233,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 129,
+    "name": "Necklace of Prayer Beads",
+    "page": 233,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 130,
+    "name": "Nine Lives Stealer",
+    "page": 233,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Any Simple or Martial), Very "
+  },
+  {
+    "number": 131,
+    "name": "Oathbow",
+    "page": 233,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Longbow or Shortbow), Very "
+  },
+  {
+    "number": 132,
+    "name": "Oil of Etherealness",
+    "page": 233,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 133,
+    "name": "Oil of Sharpness",
+    "page": 233,
+    "kind": "Potion",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Very "
+  },
+  {
+    "number": 134,
+    "name": "Oil of Slipperiness",
+    "page": 233,
+    "kind": "Potion",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Uncommon "
+  },
+  {
+    "number": 135,
+    "name": "Pearl of Power",
+    "page": 234,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 136,
+    "name": "Periapt of Health",
+    "page": 234,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 137,
+    "name": "Periapt of Proof against Poison",
+    "page": 234,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 138,
+    "name": "Periapt of Wound Closure",
+    "page": 234,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 139,
+    "name": "Philter of Love",
+    "page": 234,
+    "kind": "Potion",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Uncommon "
+  },
+  {
+    "number": 140,
+    "name": "Pipes of Haunting",
+    "page": 234,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 141,
+    "name": "Pipes of the Sewers",
+    "page": 234,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 142,
+    "name": "Plate Armor of Etherealness",
+    "page": 234,
+    "kind": "Armor",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Half Plate Armor or Plate Armor), Legendary "
+  },
+  {
+    "number": 143,
+    "name": "Portable Hole",
+    "page": 234,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 144,
+    "name": "Potion of Animal Friendship",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Uncommon "
+  },
+  {
+    "number": 145,
+    "name": "Potion of Clairvoyance",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 146,
+    "name": "Potion of Climbing",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Common",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Common "
+  },
+  {
+    "number": 147,
+    "name": "Potion of Diminution",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 148,
+    "name": "Potion of Flying",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Very "
+  },
+  {
+    "number": 149,
+    "name": "Potion of Gaseous Form",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 150,
+    "name": "Potion of Giant Strength",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Potion, Rarity "
+  },
+  {
+    "number": 151,
+    "name": "Potion of Growth",
+    "page": 235,
+    "kind": "Potion",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Uncommon "
+  },
+  {
+    "number": 152,
+    "name": "Potions of Healing",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Common",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Potion, Rarity "
+  },
+  {
+    "number": 153,
+    "name": "Potion of Heroism",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 154,
+    "name": "Potion of Invisibility",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 155,
+    "name": "Potion of Invulnerability",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 156,
+    "name": "Potion of Longevity",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Very "
+  },
+  {
+    "number": 157,
+    "name": "Potion of Mind Reading",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Rare "
+  },
+  {
+    "number": 158,
+    "name": "Potion of Poison",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Uncommon "
+  },
+  {
+    "number": 159,
+    "name": "Potion of Resistance",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Uncommon "
+  },
+  {
+    "number": 160,
+    "name": "Potion of Speed",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Very "
+  },
+  {
+    "number": 161,
+    "name": "Potion of Vitality",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Very "
+  },
+  {
+    "number": 162,
+    "name": "Potion of Water Breathing",
+    "page": 236,
+    "kind": "Potion",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Potion, Uncommon "
+  },
+  {
+    "number": 163,
+    "name": "Quarterstaff of the Acrobat",
+    "page": 237,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Quarterstaff), Very "
+  },
+  {
+    "number": 164,
+    "name": "Ring of Animal Influence",
+    "page": 237,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 165,
+    "name": "Ring of Djinni Summoning",
+    "page": 237,
+    "kind": "Ring",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Legendary "
+  },
+  {
+    "number": 166,
+    "name": "Ring of Elemental Command",
+    "page": 237,
+    "kind": "Ring",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Legendary "
+  },
+  {
+    "number": 167,
+    "name": "Ring of Evasion",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 168,
+    "name": "Ring of Feather Falling",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 169,
+    "name": "Ring of Free Action",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 170,
+    "name": "Ring of Invisibility",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Legendary "
+  },
+  {
+    "number": 171,
+    "name": "Ring of Jumping",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Uncommon "
+  },
+  {
+    "number": 172,
+    "name": "Ring of Mind Shielding",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Uncommon "
+  },
+  {
+    "number": 173,
+    "name": "Ring of Protection",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 174,
+    "name": "Ring of Regeneration",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Very "
+  },
+  {
+    "number": 175,
+    "name": "Ring of Resistance",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 176,
+    "name": "Ring of Shooting Stars",
+    "page": 238,
+    "kind": "Ring",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Very "
+  },
+  {
+    "number": 177,
+    "name": "Ring of Spell Storing",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 178,
+    "name": "Ring of Spell Turning",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Legendary "
+  },
+  {
+    "number": 179,
+    "name": "Ring of Swimming",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Ring, Uncommon "
+  },
+  {
+    "number": 180,
+    "name": "Ring of Telekinesis",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Very "
+  },
+  {
+    "number": 181,
+    "name": "Ring of the Ram",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 182,
+    "name": "Ring of Three Wishes",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Ring, Legendary "
+  },
+  {
+    "number": 183,
+    "name": "Ring of Warmth",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Uncommon "
+  },
+  {
+    "number": 184,
+    "name": "Ring of Water Walking",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Ring, Uncommon "
+  },
+  {
+    "number": 185,
+    "name": "Ring of X-ray Vision",
+    "page": 239,
+    "kind": "Ring",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Ring, Rare "
+  },
+  {
+    "number": 186,
+    "name": "Robe of Eyes",
+    "page": 240,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 187,
+    "name": "Robe of Scintillating Colors",
+    "page": 240,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 188,
+    "name": "Robe of Stars",
+    "page": 240,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 189,
+    "name": "Robe of the Archmagi",
+    "page": 240,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 190,
+    "name": "Robe of Useful Items",
+    "page": 240,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 191,
+    "name": "Rod of Absorption",
+    "page": 241,
+    "kind": "Rod",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Rod, Very "
+  },
+  {
+    "number": 192,
+    "name": "Rod of Alertness",
+    "page": 241,
+    "kind": "Rod",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Rod, Very "
+  },
+  {
+    "number": 193,
+    "name": "Rod of Lordly Might",
+    "page": 241,
+    "kind": "Rod",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Rod, Legendary "
+  },
+  {
+    "number": 194,
+    "name": "Rod of Resurrection",
+    "page": 242,
+    "kind": "Rod",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Rod, Legendary "
+  },
+  {
+    "number": 195,
+    "name": "Rod of Rulership",
+    "page": 242,
+    "kind": "Rod",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Rod, Rare "
+  },
+  {
+    "number": 196,
+    "name": "Rod of Security",
+    "page": 242,
+    "kind": "Rod",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Rod, Very "
+  },
+  {
+    "number": 197,
+    "name": "Rope of Climbing",
+    "page": 242,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 198,
+    "name": "Rope of Entanglement",
+    "page": 242,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 199,
+    "name": "Scarab of Protection",
+    "page": 243,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 200,
+    "name": "Scimitar of Speed",
+    "page": 243,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Scimitar), Very "
+  },
+  {
+    "number": 201,
+    "name": "Sending Stones",
+    "page": 243,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 202,
+    "name": "Sentinel Shield",
+    "page": 243,
+    "kind": "Armor",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Armor (Shield), Uncommon "
+  },
+  {
+    "number": 203,
+    "name": "Shield, +1, +2, or +3",
+    "page": 243,
+    "kind": "Armor",
+    "rarity": "Uncommon",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Armor (Shield), Uncommon "
+  },
+  {
+    "number": 204,
+    "name": "Shield of Missile Attraction",
+    "page": 243,
+    "kind": "Armor",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Shield), Rare "
+  },
+  {
+    "number": 205,
+    "name": "Shield of the Cavalier",
+    "page": 243,
+    "kind": "Armor",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Shield), Very "
+  },
+  {
+    "number": 206,
+    "name": "Slippers of Spider Climbing",
+    "page": 244,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 207,
+    "name": "Sovereign Glue",
+    "page": 244,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 208,
+    "name": "Spellguard Shield",
+    "page": 244,
+    "kind": "Armor",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Armor (Shield), Very "
+  },
+  {
+    "number": 209,
+    "name": "Spell Scroll",
+    "page": 244,
+    "kind": "Scroll",
+    "rarity": "Rare",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Scroll, Rarity "
+  },
+  {
+    "number": 210,
+    "name": "Sphere of Annihilation",
+    "page": 244,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 211,
+    "name": "Staff of Charming",
+    "page": 245,
+    "kind": "Staff",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Rare "
+  },
+  {
+    "number": 212,
+    "name": "Staff of Fire",
+    "page": 245,
+    "kind": "Staff",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Very "
+  },
+  {
+    "number": 213,
+    "name": "Staff of Frost",
+    "page": 245,
+    "kind": "Staff",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Very "
+  },
+  {
+    "number": 214,
+    "name": "Staff of Healing",
+    "page": 245,
+    "kind": "Staff",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Rare "
+  },
+  {
+    "number": 215,
+    "name": "Staff of Power",
+    "page": 245,
+    "kind": "Staff",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Very "
+  },
+  {
+    "number": 216,
+    "name": "Staff of Striking",
+    "page": 246,
+    "kind": "Staff",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Very "
+  },
+  {
+    "number": 217,
+    "name": "Staff of Swarming Insects",
+    "page": 246,
+    "kind": "Staff",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Rare "
+  },
+  {
+    "number": 218,
+    "name": "Staff of the Magi",
+    "page": 246,
+    "kind": "Staff",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Legendary "
+  },
+  {
+    "number": 219,
+    "name": "Staff of the Python",
+    "page": 247,
+    "kind": "Staff",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Uncommon "
+  },
+  {
+    "number": 220,
+    "name": "Staff of the Woodlands",
+    "page": 247,
+    "kind": "Staff",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Rare "
+  },
+  {
+    "number": 221,
+    "name": "Staff of Thunder and Lightning",
+    "page": 247,
+    "kind": "Staff",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Very "
+  },
+  {
+    "number": 222,
+    "name": "Staff of Withering",
+    "page": 248,
+    "kind": "Staff",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Staff, Rare "
+  },
+  {
+    "number": 223,
+    "name": "Stone of Controlling Earth Elementals",
+    "page": 248,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Rare "
+  },
+  {
+    "number": 224,
+    "name": "Stone of Good Luck (Luckstone)",
+    "page": 248,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 225,
+    "name": "Sun Blade",
+    "page": 248,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Longsword), Rare "
+  },
+  {
+    "number": 226,
+    "name": "Sword of Life Stealing",
+    "page": 248,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Glaive, Greatsword, Longsword, Rapier, \nScimitar, or Shortsword), Rare "
+  },
+  {
+    "number": 227,
+    "name": "Sword of Sharpness",
+    "page": 248,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Glaive, Greatsword, Longsword, or Scimitar), \nVery "
+  },
+  {
+    "number": 228,
+    "name": "Sword of Wounding",
+    "page": 248,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Glaive, Greatsword, Longsword, Rapier, \nScimitar, or Shortsword), Rare "
+  },
+  {
+    "number": 229,
+    "name": "Talisman of Pure Good",
+    "page": 248,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 230,
+    "name": "Talisman of the Sphere",
+    "page": 249,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 231,
+    "name": "Talisman of Ultimate Evil",
+    "page": 249,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 232,
+    "name": "Thunderous Greatclub",
+    "page": 249,
+    "kind": "Weapon",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Greatclub), Very "
+  },
+  {
+    "number": 233,
+    "name": "Tome of Clear Thought",
+    "page": 249,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 234,
+    "name": "Tome of Leadership and Influence",
+    "page": 249,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 235,
+    "name": "Tome of Understanding",
+    "page": 250,
+    "kind": "Wondrous Item",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Very "
+  },
+  {
+    "number": 236,
+    "name": "Trident of Fish Command",
+    "page": 250,
+    "kind": "Weapon",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Trident), Uncommon "
+  },
+  {
+    "number": 237,
+    "name": "Universal Solvent",
+    "page": 250,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 238,
+    "name": "Vicious Weapon",
+    "page": 250,
+    "kind": "Weapon",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Weapon (Any Simple or Martial), Rare "
+  },
+  {
+    "number": 239,
+    "name": "Vorpal Sword",
+    "page": 250,
+    "kind": "Weapon",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Glaive, Greatsword, Longsword, or Scimitar), \nLegendary "
+  },
+  {
+    "number": 240,
+    "name": "Wand of Binding",
+    "page": 250,
+    "kind": "Wand",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Rare "
+  },
+  {
+    "number": 241,
+    "name": "Wand of Enemy Detection",
+    "page": 250,
+    "kind": "Wand",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Rare "
+  },
+  {
+    "number": 242,
+    "name": "Wand of Fear",
+    "page": 250,
+    "kind": "Wand",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Rare "
+  },
+  {
+    "number": 243,
+    "name": "Wand of Fireballs",
+    "page": 250,
+    "kind": "Wand",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Rare "
+  },
+  {
+    "number": 244,
+    "name": "Wand of Lightning Bolts",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Rare "
+  },
+  {
+    "number": 245,
+    "name": "Wand of Magic Detection",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wand, Uncommon "
+  },
+  {
+    "number": 246,
+    "name": "Wand of Magic Missiles",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wand, Uncommon "
+  },
+  {
+    "number": 247,
+    "name": "Wand of Paralysis",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Rare "
+  },
+  {
+    "number": 248,
+    "name": "Wand of Polymorph",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Very Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Very "
+  },
+  {
+    "number": 249,
+    "name": "Wand of Secrets",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wand, Uncommon "
+  },
+  {
+    "number": 250,
+    "name": "Wand of the War Mage, +1, +2, or +3",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Uncommon",
+    "variable": true,
+    "attunement": true,
+    "srd_type": "Wand, Uncommon "
+  },
+  {
+    "number": 251,
+    "name": "Wand of Web",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Uncommon "
+  },
+  {
+    "number": 252,
+    "name": "Wand of Wonder",
+    "page": 251,
+    "kind": "Wand",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wand, Rare "
+  },
+  {
+    "number": 253,
+    "name": "Weapon, +1, +2, or +3",
+    "page": 253,
+    "kind": "Weapon",
+    "rarity": "Uncommon",
+    "variable": true,
+    "attunement": false,
+    "srd_type": "Weapon (Any Simple or Martial), Uncommon "
+  },
+  {
+    "number": 254,
+    "name": "Weapon of Warning",
+    "page": 253,
+    "kind": "Weapon",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Weapon (Any Simple or Martial), Uncommon "
+  },
+  {
+    "number": 255,
+    "name": "Well of Many Worlds",
+    "page": 253,
+    "kind": "Wondrous Item",
+    "rarity": "Legendary",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Legendary "
+  },
+  {
+    "number": 256,
+    "name": "Wind Fan",
+    "page": 253,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": false,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 257,
+    "name": "Winged Boots",
+    "page": 253,
+    "kind": "Wondrous Item",
+    "rarity": "Uncommon",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Uncommon "
+  },
+  {
+    "number": 258,
+    "name": "Wings of Flying",
+    "page": 253,
+    "kind": "Wondrous Item",
+    "rarity": "Rare",
+    "variable": false,
+    "attunement": true,
+    "srd_type": "Wondrous Item, Rare "
+  }
+]

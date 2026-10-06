@@ -176,6 +176,21 @@ try {
   await expect(page.locator('.public-camp-pet')).toContainText('Pingo');
   await expect(page.locator('.public-camp-mount')).toContainText('Faísca');
   await checkCompanionFraming();
+  const mountHeight = await page
+    .locator('.public-camp-mount > img')
+    .evaluate((img) => img.clientHeight);
+  await page
+    .locator('.profile-visit-nav')
+    .getByRole('button', { name: 'Conquistas', exact: true })
+    .click();
+  await page
+    .locator('.profile-visit-nav')
+    .getByRole('button', { name: 'Personagens', exact: true })
+    .click();
+  await expect
+    .poll(() => page.locator('.public-camp-mount > img').evaluate((img) => img.clientHeight))
+    .toBeCloseTo(mountHeight, 0);
+  await checkCompanionFraming();
   await page.screenshot({ path: 'test-results/profile-camp-desktop.png', fullPage: true });
   await page
     .locator('.profile-visit-nav')
@@ -445,14 +460,14 @@ try {
   await expect(monsterSheet).toBeVisible();
   await expect(monsterSheet.locator('.vtt-monster-abilities button')).toHaveCount(6);
   await expect(monsterSheet.locator('.vtt-monster-section h3')).toContainText(['Ações']);
-  const monsterPin = monsterSheet.getByRole('button', { name: /^Fixar / }).first();
+  const monsterPin = monsterSheet.getByRole('button', {
+    name: 'Fixar Goblin Boss · Scimitar',
+    exact: true,
+  });
   await monsterPin.dragTo(page.locator('.vtt-hotbar-slot').first());
   await expect(page.locator('.vtt-hotbar-slot').first()).not.toHaveAccessibleName(/vazio/);
   await page.screenshot({ path: 'test-results/vtt-monster-sheet-desktop.png' });
-  await monsterSheet
-    .getByRole('button', { name: /^Usar / })
-    .first()
-    .click();
+  await monsterSheet.getByRole('button', { name: 'Usar Scimitar', exact: true }).click();
   await expect(monsterSheet).not.toBeVisible();
   await expect(page.locator('.vtt-attack-inline')).toBeVisible();
   await page.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
@@ -477,16 +492,16 @@ try {
     'Fichas',
     'Biblioteca',
     'Som',
-    'Diário',
+    'Combate',
     'Configurações e ajuda',
   ]);
   expect(
     (await page.getByRole('button', { name: 'Camadas', exact: true }).boundingBox())!.x,
   ).toBeLessThan(80);
-  const monsterShortcut = panel
-    .locator('.vtt-monster-action')
-    .first()
-    .getByRole('button', { name: /^Fixar / });
+  const monsterShortcut = panel.getByRole('button', {
+    name: 'Fixar Goblin Boss · Scimitar',
+    exact: true,
+  });
   await expect(monsterShortcut).toBeVisible();
   await monsterShortcut.dragTo(page.locator('.vtt-hotbar-slot').first());
   await expect(page.locator('.vtt-hotbar-slot').first()).not.toHaveAccessibleName(/vazio/);
@@ -816,15 +831,25 @@ try {
   expect(playerBoard).not.toBeNull();
   const px = playerBoard!.x + playerBoard!.width / 2,
     py = playerBoard!.y + playerBoard!.height / 2;
+  let blockedPatches = 0;
+  const countBlockedPatch = (request: import('@playwright/test').Request) => {
+    if (request.method() === 'PATCH' && request.url().includes('/tokens/' + spawn.id))
+      blockedPatches++;
+  };
+  peerPage.on('request', countBlockedPatch);
   await peerPage.mouse.move(px, py);
   await peerPage.mouse.down();
   await peerPage.mouse.move(px + 90, py);
   await peerPage.mouse.up();
-  await expect(peerPage.locator('.vtt-notice')).toContainText('Uma barreira bloqueia o movimento.');
-  await peerPage.getByRole('button', { name: 'Fechar aviso', exact: true }).click();
   await peerPage.evaluate(
     () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
   );
+  expect(blockedPatches).toBe(0);
+  peerPage.off('request', countBlockedPatch);
+  const blockedState = await ctx2.request
+    .get(origin + '/api/vtt/rooms/' + rid)
+    .then((r) => r.json());
+  expect(blockedState.document.scenes[0].tokens.find((t: any) => t.id === spawn.id).x).toBe(875);
   await peerPage.mouse.move(px, py);
   await peerPage.mouse.down();
   await peerPage.mouse.move(px - 70, py);

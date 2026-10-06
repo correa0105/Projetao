@@ -6,6 +6,11 @@
   background: #151a20;
   box-shadow: 0 18px 50px #0004;
 }
+.calendar-header {
+  position: relative;
+  isolation: isolate;
+  background: #11161c;
+}
 .calendar-cover {
   position: relative;
   display: flex;
@@ -14,10 +19,6 @@
   justify-content: space-between;
   padding: 34px;
   min-height: 210px;
-  background: #11161c;
-  background-size: cover;
-  background-position: center 57%;
-  isolation: isolate;
 }
 .calendar-cover-art {
   position: absolute;
@@ -28,12 +29,12 @@
   object-position: center 57%;
   z-index: -2;
 }
-.calendar-cover::before {
+.calendar-header::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(95deg, #10151de6, #10151d35), linear-gradient(0deg, #151a20, transparent 70%);
+    linear-gradient(95deg, #10151dce, #10151d50), linear-gradient(0deg, #10151dac, transparent 70%);
   z-index: -1;
 }
 .calendar-cover h1 {

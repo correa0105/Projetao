@@ -36,6 +36,11 @@ try {
   expect(signup.ok()).toBe(true);
   const hero = await createLegacyTestCharacter((await signup.json()).user.id, 'Aurora');
   await pool.query('UPDATE characters SET gold_cp=500000 WHERE id=$1', [hero.id]);
+  await context.addInitScript(() => {
+    localStorage.setItem('alvorada-music-muted', 'true');
+    localStorage.setItem('alvorada-effects-muted', 'false');
+    localStorage.setItem('alvorada-effects-volume', '0.4');
+  });
   await page.goto(origin + '/#shop');
   await expect(page.locator('.shop-scene')).toBeVisible();
   await expect(page.locator('.house-emporium-link')).toHaveCount(0);
@@ -55,7 +60,11 @@ try {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    await page.locator('.shop-product img').evaluateAll(imgs => imgs.forEach(i => { (i as HTMLImageElement).loading = 'eager'; }));
+    await page.locator('.shop-product img').evaluateAll((imgs) =>
+      imgs.forEach((i) => {
+        (i as HTMLImageElement).loading = 'eager';
+      }),
+    );
     await expect
       .poll(() =>
         page
@@ -91,9 +100,78 @@ try {
   ).toBe(499000);
   await page.getByRole('button', { name: /^Itens mundanos/ }).click();
   await expect(page.locator('.shop-product').first()).toBeVisible();
+  const catalog = await context.request.get(origin + '/api/catalog').then((r) => r.json());
+  expect(catalog).toHaveLength(1319);
+  await page.getByRole('button', { name: /^Cosméticos/ }).click();
+  await expect(page.locator('.shop-product')).toHaveCount(20);
+  await page.locator('.shop-product img').evaluateAll((imgs) =>
+    imgs.forEach((i) => {
+      (i as HTMLImageElement).loading = 'eager';
+    }),
+  );
+  await expect
+    .poll(() =>
+      page
+        .locator('.shop-product img')
+        .evaluateAll((imgs) =>
+          imgs.every(
+            (i) => (i as HTMLImageElement).complete && (i as HTMLImageElement).naturalWidth > 0,
+          ),
+        ),
+    )
+    .toBe(true);
+  await page.screenshot({ path: 'test-results/emporium-cosmetics-desktop.png', fullPage: true });
+  await page.getByRole('button', { name: /^Armas/ }).click();
+  await page.getByLabel('Procurar item').fill('Clava');
+  const clubData = catalog.find((item: { id: string }) => item.id === 'club');
+  const club = page
+    .locator('.shop-product')
+    .filter({ has: page.getByRole('button', { name: 'Examinar Clava', exact: true }) });
+  await expect(club).toHaveCount(1);
+  await club.getByRole('button', { name: 'Examinar Clava', exact: true }).click();
+  await expect(page.getByRole('status', { name: 'Comentário do vendedor' })).toContainText(
+    clubData.merchant_comment,
+  );
+  await club.getByRole('button', { name: /Comprar/ }).click();
+  await expect(page.locator('.shop-scene')).toHaveAttribute(
+    'data-counter-audio-asset',
+    '/audio/emporium/club.wav',
+  );
+  const count = Number(await page.locator('.shop-scene').getAttribute('data-counter-audio-count'));
+  expect(count).toBeGreaterThan(0);
+  await page.getByRole('button', { name: 'Abrir carrinho: 1 itens' }).click();
+  const checkout = page.getByRole('dialog', { name: 'Seu carrinho' });
+  await checkout.getByRole('button', { name: /Finalizar compra/ }).click();
+  await expect(checkout).toHaveCount(0);
+  expect(
+    Number(
+      (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
+    ),
+  ).toBe(498990);
+  expect(
+    (
+      await pool.query("SELECT quantity FROM inventory WHERE character_id=$1 AND item_id='club'", [
+        hero.id,
+      ])
+    ).rows[0].quantity,
+  ).toBe(1);
+  await page.getByRole('button', { name: 'Abrir menu de Aurora' }).click();
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
+  await page
+    .locator('[data-channel="effects"]')
+    .getByRole('button', { name: /Silenciar/ })
+    .click();
+  await page.getByRole('button', { name: 'Configurações de som', exact: true }).click();
+  await page.getByRole('button', { name: 'Abrir menu de Aurora' }).click();
+  const mutedCount = await page.locator('.shop-scene').getAttribute('data-counter-audio-count');
+  await club.getByRole('button', { name: /Comprar/ }).click();
+  await expect(page.locator('.shop-scene')).toHaveAttribute('data-counter-audio-muted', 'true');
+  expect(await page.locator('.shop-scene').getAttribute('data-counter-audio-count')).toBe(
+    mutedCount,
+  );
   expect(errors).toEqual([]);
   console.log(
-    'Empório: grade em quatro larguras, 12 itens de House nas prateleiras e compra de carta auditada aprovados.',
+    'Empório: grade em quatro larguras, 12 itens de House, 20 cosméticos, fala própria, áudio individual/mute e duas compras auditadas aprovados.',
   );
 } finally {
   await browser.close();

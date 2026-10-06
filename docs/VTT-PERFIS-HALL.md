@@ -1,5 +1,25 @@
 # Mesa virtual, perfis, amigos e Hall da Fama — 05/10/2026
 
+## Navegação e personalização — 06/10/2026
+
+Combate ocupa a antiga posição de Diário nos sete ícones da barra lateral.
+Diário é a terceira subaba de Fichas (Personagens, Token selecionado, Diário);
+anotações/imagens e permissões continuam no mesmo documento da mesa.
+Chat tem Minimizar / Mostrar controles do chat: recolhe título, dados rápidos,
+fórmula, privacidade e carregar histórico; log/envio continuam disponíveis.
+Configurações e ajuda → Personalização → Recolher controles do chat controla
+o mesmo estado. Preferência local por conta na chave vtt-chat-controls:USER_ID.
+Não altera documento, chat, permissões ou preferências dos demais participantes.
+
+Montarias de acampamento/visita usam referência comum de altura humana via
+useCampMountSize, escala por espécie e piso do cenário. ResizeObserver ajusta
+ao tamanho da tela e à reentrada no painel Personagens; raças pequenas não
+transformam cavalos em pôneis. Artes conservam a proporção original.
+
+scripts/test-ui-customization-isolated.mjs verifica sete ícones, Diário editável
+em Fichas, persistência da anotação, chat recolhido com mensagem/envio, recarga,
+sincronização com configuração e quatro larguras. API VTT: 23 regressões.
+
 ## Participação, combate, efeitos e física (05/10/2026)
 
 Entrada oferece Jogador ou Espectador. Jogador importa automaticamente seus

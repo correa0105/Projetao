@@ -193,5 +193,9 @@ const comments: Record<string, string> = {
     'Enrolado à mão, para quem prefere fazer a conversa durar na taverna. Acenda longe dos meus pergaminhos; não cobro perdas em baforadas.',
 };
 export function merchantComment(item: Item) {
-  return comments[item.id] ?? `${item.name}. Examine à vontade antes de decidir.`;
+  return (
+    comments[item.id] ??
+    item.merchant_comment ??
+    `${item.name}. Examine à vontade antes de decidir.`
+  );
 }

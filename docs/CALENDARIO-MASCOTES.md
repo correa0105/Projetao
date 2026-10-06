@@ -1,5 +1,12 @@
 # Calendário, eventos mundanos e mascotes — 05/10/2026
 
+Refino 06/10: a imagem dinâmica do compromisso é posicionada na calendar-header
+inteira, incluindo título, ações, mês, filtro e contador, conforme o anexo.
+Gradiente sobre a faixa mantém controles/textos legíveis; calendário/dias abaixo
+mantêm a estrutura existente. Não muda fontes de dados, edição ou fuso.
+Smoke verifica troca de duas imagens, bordas cobrindo toda a faixa e filtros,
+CRUD e responsividade em 1440/768/390/320 px.
+
 ## Calendário em Início
 
 O calendário aparece sempre no final de **Início → Diário**, abaixo das entradas,

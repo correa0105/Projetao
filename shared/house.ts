@@ -132,6 +132,7 @@ export const placementSchema = z
     y: z.number().min(0.08).max(0.98),
     scale: z.number().min(0.03).max(0.55),
     rotation: z.number().min(-180).max(180),
+    facing: z.number().int().min(0).max(7).optional(),
     layer: z.number().int().min(0).max(300),
   })
   .strict();
@@ -208,6 +209,7 @@ export type HouseState = {
     x: number;
     y: number;
     scale: number;
+    layer: number;
   }[];
   invites: { user_id: string; name: string; status: string }[];
   messages: { id: string; name: string; body: string; created_at: string }[];

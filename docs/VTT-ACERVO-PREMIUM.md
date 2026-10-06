@@ -1,5 +1,12 @@
 # Acervo premium e fichas privadas — 06/10/2026
 
+Revisões posteriores dos anexos: Ancient Black Dragon e Ancient Bronze Dragon
+com inserção dorsal de asas/anatomia coerente; Balor com chicote contínuo sem
+corrente sobrando; Young Blue Dragon com tronco/quadril e asas compactas.
+O bronze serviu só como referência de estrutura, preservando o azul/corno
+próprios do Young Blue. Arquivos privados estáveis e cópias em Downloads
+atualizados, prompts/hashes no manifest. Outras artes não foram regeneradas.
+
 ## Uso
 
 Biblioteca → Monstros conserva o catálogo SRD e suas artes anteriores. Presets de

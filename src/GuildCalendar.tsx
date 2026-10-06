@@ -128,7 +128,7 @@ export function GuildCalendar({
       aria-label="Calendário da guilda"
       style={{ '--calendar-accent': doc.accent } as CSSProperties}
     >
-      <div className="calendar-cover">
+      <div className="calendar-header">
         <img
           key={coverImage}
           className="calendar-cover-art"
@@ -139,57 +139,63 @@ export function GuildCalendar({
             else event.currentTarget.style.visibility = 'hidden';
           }}
         />
-        <div className="calendar-cover-copy">
-          <h1>{doc.title}</h1>
+        <div className="calendar-cover">
+          <div className="calendar-cover-copy">
+            <h1>{doc.title}</h1>
+          </div>
+          {data?.can_edit && (
+            <div className="calendar-admin">
+              <button className="button outline" onClick={() => setSettings(true)}>
+                <Settings2 size={15} /> Editar calendário
+              </button>
+              <button className="button primary" onClick={() => setEditing('new')}>
+                <Plus size={15} /> Novo compromisso
+              </button>
+            </div>
+          )}
         </div>
-        {data?.can_edit && (
-          <div className="calendar-admin">
-            <button className="button outline" onClick={() => setSettings(true)}>
-              <Settings2 size={15} /> Editar calendário
+        <div className="calendar-toolbar">
+          <div className="calendar-month-nav">
+            <button
+              aria-label="Mês anterior"
+              disabled={month === '1900-01'}
+              onClick={() => move(-1)}
+            >
+              <ChevronLeft size={18} />
             </button>
-            <button className="button primary" onClick={() => setEditing('new')}>
-              <Plus size={15} /> Novo compromisso
+            <h2>{monthTitle}</h2>
+            <button aria-label="Próximo mês" disabled={month === '2199-12'} onClick={() => move(1)}>
+              <ChevronRight size={18} />
             </button>
           </div>
-        )}
-      </div>
-      <div className="calendar-toolbar">
-        <div className="calendar-month-nav">
-          <button aria-label="Mês anterior" disabled={month === '1900-01'} onClick={() => move(-1)}>
-            <ChevronLeft size={18} />
-          </button>
-          <h2>{monthTitle}</h2>
-          <button aria-label="Próximo mês" disabled={month === '2199-12'} onClick={() => move(1)}>
-            <ChevronRight size={18} />
-          </button>
+          <div className="calendar-jump">
+            <button onClick={() => jump(today.slice(0, 7), today)}>Hoje</button>
+            <input
+              type="month"
+              min="1900-01"
+              max="2199-12"
+              aria-label="Ir para outro mês"
+              value={month}
+              onChange={(event) => jump(event.target.value)}
+            />
+          </div>
         </div>
-        <div className="calendar-jump">
-          <button onClick={() => jump(today.slice(0, 7), today)}>Hoje</button>
-          <input
-            type="month"
-            min="1900-01"
-            max="2199-12"
-            aria-label="Ir para outro mês"
-            value={month}
-            onChange={(event) => jump(event.target.value)}
-          />
+        <div className="calendar-filters" aria-label="Filtrar calendário">
+          {[
+            ['all', 'Todos'],
+            ['event', 'Eventos'],
+            ['mission', 'Missões'],
+            ['publication', 'Diário'],
+          ].map(([id, label]) => (
+            <button key={id} aria-pressed={filter === id} onClick={() => setFilter(id)}>
+              {label}
+            </button>
+          ))}
+          <span>
+            {all.length} {all.length === 1 ? 'compromisso' : 'compromissos'} neste mês · horário de
+            Brasília
+          </span>
         </div>
-      </div>
-      <div className="calendar-filters" aria-label="Filtrar calendário">
-        {[
-          ['all', 'Todos'],
-          ['event', 'Eventos'],
-          ['mission', 'Missões'],
-          ['publication', 'Diário'],
-        ].map(([id, label]) => (
-          <button key={id} aria-pressed={filter === id} onClick={() => setFilter(id)}>
-            {label}
-          </button>
-        ))}
-        <span>
-          {all.length} {all.length === 1 ? 'compromisso' : 'compromissos'} neste mês · horário de
-          Brasília
-        </span>
       </div>
       {error && (
         <p className="calendar-error" role="alert">

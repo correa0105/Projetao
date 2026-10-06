@@ -1,5 +1,22 @@
 # Alvorada Cinzenta
 
+House: os doze objetos têm oito vistas reais em **Decorar → Direção da peça**.
+O tamanho acompanha a profundidade preservando o ajuste base. **Personagem →
+Camada do personagem** permite ficar atrás de toda a mobília ou de um objeto
+específico; o arraste conserva o ponto clicado junto ao cursor. RP abre dentro
+do cenário. Montarias usam o porte próprio no acampamento e nas visitas.
+
+Empório ampliado para **1.319 itens de aventura + 12 itens de House**, com
+258 famílias mágicas do SRD 5.2.1 e suas variantes, equipamentos mundanos e
+quatro cosméticos de cada tipo. Arquivos de som individuais e falas próprias;
+487 artes novas transparentes. [Cobertura e fontes](docs/EMPORIO-EXPANSAO.md).
+Efeitos mágicos descritos continuam sendo resolvidos na mesa. Migrations 073–074.
+
+VTT: **Combate** ocupa a antiga posição de Diário; **Fichas → Diário** conserva
+as anotações. Chat tem **Minimizar / Mostrar controles do chat**, também em
+Configurações e ajuda → Personalização, com preferência por conta/navegador.
+O cenário dinâmico do calendário cobre título, mês, ações e filtros.
+
 **Explorar → House**: casa por personagem, quatro ambientes com quatro cenários
 cada, coleção de mobília e companheiros, arraste/giro/tamanho/camadas e salvamento.
 Mobília vende cartas escritas e quadros personalizados que podem ser oferecidos
@@ -63,7 +80,7 @@ do animal para fora do cenário. Visitas continuam somente de consulta.
 
 VTT: **Configurações e ajuda → Ajuda → Rolagens personalizadas** explica fórmulas,
 modificadores e ordem de resolução; o lançador e o chat aceitam a mesma sintaxe.
-**Chat → Combate** controla o carrossel de iniciativa. Clique no segundo token
+**Combate** controla o carrossel de iniciativa. Clique no segundo token
 para marcar o alvo vermelho mantendo o atacante amarelo; vantagem, dano e
 descarte ficam na barra rápida. Mestre edita PV pelo botão direito (`20`, `+5`,
 `-5`) ou registra cura na ficha. Sinalizar ponto puxa as câmeras para a seta.
@@ -88,7 +105,7 @@ Migration 063 e [detalhes](docs/VTT-PERFIS-HALL.md).
 Mesa: morte mantém token inteiro vermelho com sangue, sem fragmentação. Efeitos
 salvos do mestre no canto inferior esquerdo podem ir à barra rápida, assim como
 ataques de monstros. Camadas na esquerda; direita em Chat, Biblioteca de arte,
-Fichas, Biblioteca, Som, Diário e Configurações/Ajuda na mesma aba.
+Fichas (incluindo Diário), Biblioteca, Som, Combate e Configurações/Ajuda na mesma aba.
 [Detalhes e permissões](docs/VTT-PERFIS-HALL.md).
 
 Refino de 05/10: calendário com capa do compromisso e três artes genéricas;

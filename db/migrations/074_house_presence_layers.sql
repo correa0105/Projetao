@@ -1,0 +1,1 @@
+ALTER TABLE house_presence ADD COLUMN layer integer NOT NULL DEFAULT 602 CHECK (layer BETWEEN 0 AND 602);

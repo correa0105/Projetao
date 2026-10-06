@@ -1,0 +1,4994 @@
+{
+  "club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dart": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "light-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "sling": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "blowgun": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "hand-crossbow": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "heavy-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "musket": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "pistol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "padded-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "hide-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "chain-shirt": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "scale-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "ring-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "splint-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "alchemists-supplies": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "brewers-supplies": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "calligraphers-supplies": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "carpenters-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "cartographers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "cobblers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "cooks-utensils": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "glassblowers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "jewelers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "leatherworkers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "masons-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "painters-supplies": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potters-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "smiths-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "tinkers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weavers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "woodcarvers-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "disguise-kit": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "forgery-kit": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "gaming-dice": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragonchess-set": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "playing-card-set": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "three-dragon-ante-set": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "herbalism-kit": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "bagpipes": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "drum": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dulcimer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flute": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "horn": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "lute": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "lyre": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "pan-flute": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "shawm": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "viol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "navigators-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "poisoners-kit": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "thieves-tools": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "arrows-20": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "bolts-20": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "firearm-bullets-10": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sling-bullets-20": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "blowgun-needles-50": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "arcane-focus-crystal": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "arcane-focus-orb": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "arcane-focus-rod": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "arcane-focus-staff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "arcane-focus-wand": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "barrel": {
+    "slots": [],
+    "two_handed": false
+  },
+  "block-and-tackle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "burglars-pack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "crossbow-bolt-case": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "map-scroll-case": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "fine-clothes": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "travelers-clothes": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "costume": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "diplomats-pack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "druidic-focus-mistletoe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "druidic-focus-staff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "druidic-focus-yew-wand": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dungeoneers-pack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "entertainers-pack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "explorers-pack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flask": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-symbol-amulet": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "holy-symbol-emblem": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-symbol-reliquary": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-water": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "ink": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "ink-pen": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "jug": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "ladder": {
+    "slots": [],
+    "two_handed": false
+  },
+  "lamp": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "bullseye-lantern": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magnifying-glass": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "map": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "mirror": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "net": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "paper": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "parchment": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "perfume": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "basic-poison": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "pole": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "iron-pot": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "pouch": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "priests-pack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "quiver": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "portable-ram": {
+    "slots": [],
+    "two_handed": false
+  },
+  "robe": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "sack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "scholars-pack": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "signal-whistle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "iron-spikes-10": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spyglass": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "string": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vial": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "carriage": {
+    "slots": [],
+    "two_handed": false
+  },
+  "cart": {
+    "slots": [],
+    "two_handed": false
+  },
+  "chariot": {
+    "slots": [],
+    "two_handed": false
+  },
+  "animal-feed": {
+    "slots": [],
+    "two_handed": false
+  },
+  "saddle-exotic": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "saddle-military": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "saddle-riding": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sled": {
+    "slots": [],
+    "two_handed": false
+  },
+  "wagon": {
+    "slots": [],
+    "two_handed": false
+  },
+  "airship": {
+    "slots": [],
+    "two_handed": false
+  },
+  "galley": {
+    "slots": [],
+    "two_handed": false
+  },
+  "keelboat": {
+    "slots": [],
+    "two_handed": false
+  },
+  "longship": {
+    "slots": [],
+    "two_handed": false
+  },
+  "rowboat": {
+    "slots": [],
+    "two_handed": false
+  },
+  "sailing-ship": {
+    "slots": [],
+    "two_handed": false
+  },
+  "warship": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-padded-armor": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-leather-armor": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-studded-leather": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-hide-armor": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-chain-shirt": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-scale-mail": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-breastplate": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-half-plate-armor": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-ring-mail": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-chain-mail": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-splint-armor": {
+    "slots": [],
+    "two_handed": false
+  },
+  "barding-plate-armor": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ale-mug": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "bread-loaf": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "cheese-wedge": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wine-common": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wine-fine": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "meal-squalid": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "meal-poor": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "meal-modest": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "meal-comfortable": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "meal-wealthy": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "meal-aristocratic": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "adamantine-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-ammunition": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying": {
+    "slots": [],
+    "two_handed": false
+  },
+  "amulet-of-health": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "amulet-of-proof-against-detection-and-location": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "amulet-of-the-planes": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "animated-shield": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "apparatus-of-the-crab": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-invulnerability": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "arrow-catching-shield": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "bag-of-beans": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "bag-of-devouring": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "bag-of-tricks": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "bead-of-force": {
+    "slots": [],
+    "two_handed": false
+  },
+  "bead-of-nourishment": {
+    "slots": [],
+    "two_handed": false
+  },
+  "belt-of-dwarvenkind": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "belt-of-giant-strength": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "berserker-axe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "boots-of-levitation": {
+    "slots": ["feet"],
+    "two_handed": false
+  },
+  "boots-of-speed": {
+    "slots": ["feet"],
+    "two_handed": false
+  },
+  "boots-of-striding-and-springing": {
+    "slots": ["feet"],
+    "two_handed": false
+  },
+  "boots-of-the-winterlands": {
+    "slots": ["feet"],
+    "two_handed": false
+  },
+  "bowl-of-commanding-water-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "bracers-of-archery": {
+    "slots": ["bracers"],
+    "two_handed": false
+  },
+  "bracers-of-defense": {
+    "slots": ["bracers"],
+    "two_handed": false
+  },
+  "brazier-of-commanding-fire-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "brooch-of-shielding": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "broom-of-flying": {
+    "slots": [],
+    "two_handed": false
+  },
+  "candle-of-invocation": {
+    "slots": [],
+    "two_handed": false
+  },
+  "cape-of-the-mountebank": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "carpet-of-flying": {
+    "slots": [],
+    "two_handed": false
+  },
+  "censer-of-controlling-air-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "chime-of-opening": {
+    "slots": [],
+    "two_handed": false
+  },
+  "circlet-of-blasting": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "cloak-of-arachnida": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "cloak-of-elvenkind": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "cloak-of-invisibility": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "cloak-of-the-bat": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "cloak-of-the-manta-ray": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "crystal-ball-of-mind-reading": {
+    "slots": [],
+    "two_handed": false
+  },
+  "crystal-ball-of-telepathy": {
+    "slots": [],
+    "two_handed": false
+  },
+  "crystal-ball-of-true-seeing": {
+    "slots": [],
+    "two_handed": false
+  },
+  "cube-of-force": {
+    "slots": [],
+    "two_handed": false
+  },
+  "cubic-gate": {
+    "slots": [],
+    "two_handed": false
+  },
+  "dagger-of-venom": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dancing-sword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "decanter-of-endless-water": {
+    "slots": [],
+    "two_handed": false
+  },
+  "deck-of-illusions": {
+    "slots": [],
+    "two_handed": false
+  },
+  "defender": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "demon-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dimensional-shackles": {
+    "slots": [],
+    "two_handed": false
+  },
+  "dragon-scale-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-slayer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dust-of-disappearance": {
+    "slots": [],
+    "two_handed": false
+  },
+  "dust-of-dryness": {
+    "slots": [],
+    "two_handed": false
+  },
+  "dust-of-sneezing-and-choking": {
+    "slots": [],
+    "two_handed": false
+  },
+  "dwarven-plate": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dwarven-thrower": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "efficient-quiver": {
+    "slots": [],
+    "two_handed": false
+  },
+  "efreeti-bottle": {
+    "slots": [],
+    "two_handed": false
+  },
+  "elemental-gem": {
+    "slots": [],
+    "two_handed": false
+  },
+  "elixir-of-health": {
+    "slots": [],
+    "two_handed": false
+  },
+  "elven-chain": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "energy-bow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "eversmoking-bottle": {
+    "slots": [],
+    "two_handed": false
+  },
+  "eyes-of-charming": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "eyes-of-minute-seeing": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "eyes-of-the-eagle": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "feather-token": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power": {
+    "slots": [],
+    "two_handed": false
+  },
+  "flame-tongue": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "folding-boat": {
+    "slots": [],
+    "two_handed": false
+  },
+  "frost-brand": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "gauntlets-of-ogre-power": {
+    "slots": ["hands"],
+    "two_handed": false
+  },
+  "gem-of-brightness": {
+    "slots": [],
+    "two_handed": false
+  },
+  "gem-of-seeing": {
+    "slots": [],
+    "two_handed": false
+  },
+  "giant-slayer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "glamoured-studded-leather": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "gloves-of-missile-snaring": {
+    "slots": ["hands"],
+    "two_handed": false
+  },
+  "gloves-of-swimming-and-climbing": {
+    "slots": ["hands"],
+    "two_handed": false
+  },
+  "gloves-of-thievery": {
+    "slots": ["hands"],
+    "two_handed": false
+  },
+  "hammer-of-thunderbolts": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "handy-haversack": {
+    "slots": ["back"],
+    "two_handed": false
+  },
+  "hat-of-disguise": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "hat-of-many-spells": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "headband-of-intellect": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "helm-of-brilliance": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "helm-of-comprehending-languages": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "helm-of-telepathy": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "helm-of-teleportation": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "holy-avenger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "horn-of-blasting": {
+    "slots": [],
+    "two_handed": false
+  },
+  "horn-of-valhalla": {
+    "slots": [],
+    "two_handed": false
+  },
+  "horseshoes-of-a-zephyr": {
+    "slots": [],
+    "two_handed": false
+  },
+  "horseshoes-of-speed": {
+    "slots": [],
+    "two_handed": false
+  },
+  "instant-fortress": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone": {
+    "slots": [],
+    "two_handed": false
+  },
+  "iron-bands": {
+    "slots": [],
+    "two_handed": false
+  },
+  "iron-flask": {
+    "slots": [],
+    "two_handed": false
+  },
+  "javelin-of-lightning": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "lantern-of-revealing": {
+    "slots": [],
+    "two_handed": false
+  },
+  "luck-blade": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "mace-of-disruption": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "mace-of-smiting": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "mace-of-terror": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "mantle-of-spell-resistance": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "manual-of-bodily-health": {
+    "slots": [],
+    "two_handed": false
+  },
+  "manual-of-gainful-exercise": {
+    "slots": [],
+    "two_handed": false
+  },
+  "manual-of-golems": {
+    "slots": [],
+    "two_handed": false
+  },
+  "manual-of-quickness-of-action": {
+    "slots": [],
+    "two_handed": false
+  },
+  "marvelous-pigments": {
+    "slots": [],
+    "two_handed": false
+  },
+  "medallion-of-thoughts": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "mirror-of-life-trapping": {
+    "slots": [],
+    "two_handed": false
+  },
+  "mithral-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "mysterious-deck": {
+    "slots": [],
+    "two_handed": false
+  },
+  "necklace-of-adaptation": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "necklace-of-fireballs": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "necklace-of-prayer-beads": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "nine-lives-stealer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "oathbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "oil-of-etherealness": {
+    "slots": [],
+    "two_handed": false
+  },
+  "oil-of-sharpness": {
+    "slots": [],
+    "two_handed": false
+  },
+  "oil-of-slipperiness": {
+    "slots": [],
+    "two_handed": false
+  },
+  "pearl-of-power": {
+    "slots": [],
+    "two_handed": false
+  },
+  "periapt-of-health": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "periapt-of-proof-against-poison": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "periapt-of-wound-closure": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "philter-of-love": {
+    "slots": [],
+    "two_handed": false
+  },
+  "pipes-of-haunting": {
+    "slots": [],
+    "two_handed": false
+  },
+  "pipes-of-the-sewers": {
+    "slots": [],
+    "two_handed": false
+  },
+  "plate-armor-of-etherealness": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "portable-hole": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "potion-of-animal-friendship": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-clairvoyance": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-diminution": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-gaseous-form": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-giant-strength": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-invisibility": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-invulnerability": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-longevity": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-mind-reading": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-poison": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-speed": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-vitality": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-water-breathing": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "quarterstaff-of-the-acrobat": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "ring-of-animal-influence": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-djinni-summoning": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-elemental-command": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-evasion": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-feather-falling": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-free-action": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-jumping": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-mind-shielding": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-shooting-stars": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-spell-storing": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-spell-turning": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-swimming": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-telekinesis": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-the-ram": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-three-wishes": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-warmth": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-water-walking": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-x-ray-vision": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "robe-of-eyes": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "robe-of-scintillating-colors": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "robe-of-stars": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "robe-of-the-archmagi": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "robe-of-useful-items": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "rod-of-absorption": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "rod-of-alertness": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "rod-of-lordly-might": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "rod-of-resurrection": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "rod-of-rulership": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "rod-of-security": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "rope-of-climbing": {
+    "slots": [],
+    "two_handed": false
+  },
+  "rope-of-entanglement": {
+    "slots": [],
+    "two_handed": false
+  },
+  "scarab-of-protection": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "scimitar-of-speed": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sending-stones": {
+    "slots": [],
+    "two_handed": false
+  },
+  "sentinel-shield": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "magic-shield": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "shield-of-missile-attraction": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "shield-of-the-cavalier": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "sovereign-glue": {
+    "slots": [],
+    "two_handed": false
+  },
+  "spellguard-shield": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "sphere-of-annihilation": {
+    "slots": [],
+    "two_handed": false
+  },
+  "staff-of-charming": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-fire": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-frost": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-healing": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-power": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-striking": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-swarming-insects": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-the-python": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-the-woodlands": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-thunder-and-lightning": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "staff-of-withering": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "stone-of-controlling-earth-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "stone-of-good-luck-luckstone": {
+    "slots": [],
+    "two_handed": false
+  },
+  "sun-blade": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-life-stealing": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-sharpness": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-wounding": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "talisman-of-pure-good": {
+    "slots": [],
+    "two_handed": false
+  },
+  "talisman-of-the-sphere": {
+    "slots": [],
+    "two_handed": false
+  },
+  "talisman-of-ultimate-evil": {
+    "slots": [],
+    "two_handed": false
+  },
+  "thunderous-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "tome-of-clear-thought": {
+    "slots": [],
+    "two_handed": false
+  },
+  "tome-of-leadership-and-influence": {
+    "slots": [],
+    "two_handed": false
+  },
+  "tome-of-understanding": {
+    "slots": [],
+    "two_handed": false
+  },
+  "trident-of-fish-command": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "universal-solvent": {
+    "slots": [],
+    "two_handed": false
+  },
+  "vicious-weapon": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vorpal-sword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-binding": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-enemy-detection": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-fear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-fireballs": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-lightning-bolts": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-magic-detection": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-magic-missiles": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-paralysis": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-polymorph": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-secrets": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-the-war-mage": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-web": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-wonder": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "well-of-many-worlds": {
+    "slots": [],
+    "two_handed": false
+  },
+  "wind-fan": {
+    "slots": [],
+    "two_handed": false
+  },
+  "winged-boots": {
+    "slots": [],
+    "two_handed": false
+  },
+  "wings-of-flying": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "adamantine-armor-chain-shirt": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "adamantine-armor-scale-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "adamantine-armor-breastplate": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "adamantine-armor-half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "adamantine-armor-ring-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "adamantine-armor-chain-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "adamantine-armor-splint-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-plate-armor-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-plate-armor-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-padded-armor-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-padded-armor-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-padded-armor-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-leather-armor-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-leather-armor-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-leather-armor-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-studded-leather-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-studded-leather-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-studded-leather-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-hide-armor-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-hide-armor-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-hide-armor-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-chain-shirt-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-chain-shirt-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-chain-shirt-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-scale-mail-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-scale-mail-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-scale-mail-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-breastplate-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-breastplate-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-breastplate-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-half-plate-armor-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-half-plate-armor-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-half-plate-armor-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-ring-mail-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-ring-mail-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-ring-mail-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-chain-mail-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-chain-mail-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-chain-mail-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-splint-armor-plus-1": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-splint-armor-plus-2": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-armor-splint-armor-plus-3": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-padded-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-leather-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-studded-leather": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-hide-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-chain-shirt": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-scale-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-breastplate": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-ring-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-chain-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-splint-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "berserker-axe-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "berserker-axe-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dancing-sword-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dancing-sword-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dancing-sword-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dancing-sword-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "defender-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "defender-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "demon-armor-padded-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-leather-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-studded-leather": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-hide-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-chain-shirt": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-scale-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-breastplate": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-ring-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-chain-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "demon-armor-splint-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-slayer-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-dart": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-light-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-sling": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-blowgun": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-hand-crossbow": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dragon-slayer-heavy-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-longbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-musket": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "dragon-slayer-pistol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "dwarven-plate-half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "elven-chain-chain-shirt": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "energy-bow-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "flame-tongue-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "flame-tongue-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "frost-brand-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "frost-brand-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "frost-brand-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "frost-brand-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "frost-brand-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-dart": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-light-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-sling": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-blowgun": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-hand-crossbow": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "giant-slayer-heavy-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-longbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-musket": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "giant-slayer-pistol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "hammer-of-thunderbolts-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-dart": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-light-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-sling": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-blowgun": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-hand-crossbow": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "holy-avenger-heavy-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-longbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-musket": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "holy-avenger-pistol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "luck-blade-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "luck-blade-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "luck-blade-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "luck-blade-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "luck-blade-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "luck-blade-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "mithral-armor-chain-shirt": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "mithral-armor-scale-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "mithral-armor-breastplate": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "mithral-armor-half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "mithral-armor-ring-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "mithral-armor-chain-mail": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "mithral-armor-splint-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-dart": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-light-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-sling": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-blowgun": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-hand-crossbow": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "nine-lives-stealer-heavy-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-longbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-musket": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "nine-lives-stealer-pistol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "oathbow-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "plate-armor-of-etherealness-half-plate-armor": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "magic-shield-shield-plus-2": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "magic-shield-shield-plus-3": {
+    "slots": ["off_hand"],
+    "two_handed": false
+  },
+  "sword-of-life-stealing-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "sword-of-life-stealing-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "sword-of-life-stealing-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-life-stealing-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-life-stealing-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-sharpness-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "sword-of-sharpness-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "sword-of-sharpness-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-wounding-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "sword-of-wounding-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "sword-of-wounding-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-wounding-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "sword-of-wounding-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-dart": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-light-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-sling": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-blowgun": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-hand-crossbow": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vicious-weapon-heavy-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-longbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-musket": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vicious-weapon-pistol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "vorpal-sword-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vorpal-sword-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "vorpal-sword-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-longsword-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-longsword-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-club-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-club-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-club-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-dagger-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-dagger-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-dagger-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-greatclub-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greatclub-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greatclub-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-handaxe-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-handaxe-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-handaxe-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-javelin-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-javelin-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-javelin-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-light-hammer-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-light-hammer-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-light-hammer-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-mace-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-mace-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-mace-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-quarterstaff-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-quarterstaff-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-quarterstaff-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-sickle-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-sickle-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-sickle-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-spear-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-spear-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-spear-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-dart-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-dart-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-dart-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-light-crossbow-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-light-crossbow-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-light-crossbow-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-shortbow-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-shortbow-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-shortbow-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-sling-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-sling-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-sling-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-battleaxe-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-battleaxe-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-battleaxe-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-flail-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-flail-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-flail-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-glaive-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-glaive-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-glaive-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greataxe-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greataxe-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greataxe-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greatsword-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greatsword-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-greatsword-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-halberd-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-halberd-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-halberd-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-lance-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-lance-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-lance-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-maul-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-maul-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-maul-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-morningstar-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-morningstar-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-morningstar-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-pike-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-pike-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-pike-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-rapier-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-rapier-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-rapier-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-scimitar-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-scimitar-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-scimitar-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-shortsword-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-shortsword-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-shortsword-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-trident-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-trident-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-trident-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-warhammer-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-warhammer-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-warhammer-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-war-pick-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-war-pick-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-war-pick-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-whip-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-whip-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-whip-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-blowgun-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-blowgun-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-blowgun-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-hand-crossbow-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-hand-crossbow-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-hand-crossbow-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-heavy-crossbow-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-heavy-crossbow-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-heavy-crossbow-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-longbow-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-longbow-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-longbow-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-musket-plus-1": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-musket-plus-2": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-musket-plus-3": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "magic-weapon-pistol-plus-1": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-pistol-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-weapon-pistol-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-club": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-dagger": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-greatclub": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-handaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-javelin": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-light-hammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-mace": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-quarterstaff": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-sickle": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-spear": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-dart": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-light-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-shortbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-sling": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-battleaxe": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-flail": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-glaive": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-greataxe": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-greatsword": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-halberd": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-lance": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-maul": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-morningstar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-pike": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-rapier": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-scimitar": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-shortsword": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-trident": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-warhammer": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-war-pick": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-whip": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-blowgun": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-hand-crossbow": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "weapon-of-warning-heavy-crossbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-longbow": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-musket": {
+    "slots": ["main_hand"],
+    "two_handed": true
+  },
+  "weapon-of-warning-pistol": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-ammunition-plus-2": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-plus-3": {
+    "slots": [],
+    "two_handed": false
+  },
+  "belt-of-giant-strength-frost-stone": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "belt-of-giant-strength-fire": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "belt-of-giant-strength-cloud": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "belt-of-giant-strength-storm": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "potion-of-giant-strength-frost-stone": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-giant-strength-fire": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-giant-strength-cloud": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-giant-strength-storm": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-healing-greater": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-healing-superior": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-healing-supreme": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-4": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-5": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-6": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-7": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-8": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "spell-scroll-level-9": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-the-war-mage-plus-2": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "wand-of-the-war-mage-plus-3": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-plate-armor-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-padded-armor-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-leather-armor-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-studded-leather-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-hide-armor-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-shirt-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-scale-mail-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-breastplate-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-half-plate-armor-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-ring-mail-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-chain-mail-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-cold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-fire": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-force": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-lightning": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-necrotic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-poison": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-psychic": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-radiant": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-resistance-splint-armor-thunder": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "potion-of-resistance-cold": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-fire": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-force": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-lightning": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-necrotic": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-poison": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-psychic": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-radiant": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "potion-of-resistance-thunder": {
+    "slots": ["main_hand", "off_hand"],
+    "two_handed": false
+  },
+  "magic-ammunition-bolts-plus-1": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-bolts-plus-2": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-bolts-plus-3": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-firearm-bullets-plus-1": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-firearm-bullets-plus-2": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-firearm-bullets-plus-3": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-sling-bullets-plus-1": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-sling-bullets-plus-2": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-sling-bullets-plus-3": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-needles-plus-1": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-needles-plus-2": {
+    "slots": [],
+    "two_handed": false
+  },
+  "magic-ammunition-needles-plus-3": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-beasts": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-celestials": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-constructs": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-dragons": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-fey": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-fiends": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-giants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-humanoids": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-monstrosities": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-oozes": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-plants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-arrows-undead": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-aberrations": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-beasts": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-celestials": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-constructs": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-dragons": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-fey": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-fiends": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-giants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-humanoids": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-monstrosities": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-oozes": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-plants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-bolts-undead": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-aberrations": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-beasts": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-celestials": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-constructs": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-dragons": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-fey": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-fiends": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-giants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-humanoids": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-monstrosities": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-oozes": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-plants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-firearm-bullets-undead": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-aberrations": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-beasts": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-celestials": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-constructs": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-dragons": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-fey": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-fiends": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-giants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-humanoids": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-monstrosities": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-oozes": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-plants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-sling-bullets-undead": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-aberrations": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-beasts": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-celestials": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-constructs": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-dragons": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-elementals": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-fey": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-fiends": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-giants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-humanoids": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-monstrosities": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-oozes": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-plants": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ammunition-of-slaying-needles-undead": {
+    "slots": [],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-plate-armor-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-plate-armor-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-padded-armor-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-padded-armor-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-leather-armor-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-leather-armor-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-studded-leather-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-studded-leather-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-hide-armor-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-hide-armor-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-chain-shirt-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-chain-shirt-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-scale-mail-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-scale-mail-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-breastplate-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-breastplate-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-half-plate-armor-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-half-plate-armor-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-ring-mail-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-ring-mail-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-chain-mail-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-chain-mail-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-splint-armor-piercing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "armor-of-vulnerability-splint-armor-slashing": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "bag-of-tricks-rust": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "bag-of-tricks-tan": {
+    "slots": ["belt"],
+    "two_handed": false
+  },
+  "elemental-gem-water": {
+    "slots": [],
+    "two_handed": false
+  },
+  "elemental-gem-fire": {
+    "slots": [],
+    "two_handed": false
+  },
+  "elemental-gem-earth": {
+    "slots": [],
+    "two_handed": false
+  },
+  "horn-of-valhalla-brass": {
+    "slots": [],
+    "two_handed": false
+  },
+  "horn-of-valhalla-bronze": {
+    "slots": [],
+    "two_handed": false
+  },
+  "horn-of-valhalla-iron": {
+    "slots": [],
+    "two_handed": false
+  },
+  "carpet-of-flying-4x6": {
+    "slots": [],
+    "two_handed": false
+  },
+  "carpet-of-flying-5x7": {
+    "slots": [],
+    "two_handed": false
+  },
+  "carpet-of-flying-6x9": {
+    "slots": [],
+    "two_handed": false
+  },
+  "feather-token-bird": {
+    "slots": [],
+    "two_handed": false
+  },
+  "feather-token-fan": {
+    "slots": [],
+    "two_handed": false
+  },
+  "feather-token-swan-boat": {
+    "slots": [],
+    "two_handed": false
+  },
+  "feather-token-tree": {
+    "slots": [],
+    "two_handed": false
+  },
+  "feather-token-whip": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-ebony-fly": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-golden-lions": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-ivory-goats": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-marble-elephant": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-obsidian-steed": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-onyx-dog": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-serpentine-owl": {
+    "slots": [],
+    "two_handed": false
+  },
+  "figurine-of-wondrous-power-silver-raven": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-absorption": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-agility": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-fortitude": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-greater-absorption": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-insight": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-intellect": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-leadership": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-mastery": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-protection": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-regeneration": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-reserve": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-strength": {
+    "slots": [],
+    "two_handed": false
+  },
+  "ioun-stone-sustenance": {
+    "slots": [],
+    "two_handed": false
+  },
+  "manual-of-golems-flesh": {
+    "slots": [],
+    "two_handed": false
+  },
+  "manual-of-golems-iron": {
+    "slots": [],
+    "two_handed": false
+  },
+  "manual-of-golems-stone": {
+    "slots": [],
+    "two_handed": false
+  },
+  "robe-of-the-archmagi-gray": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "robe-of-the-archmagi-black": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "ring-of-resistance-cold": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-fire": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-force": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-lightning": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-necrotic": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-poison": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-psychic": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-radiant": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-resistance-thunder": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "mysterious-deck-22-cards": {
+    "slots": [],
+    "two_handed": false
+  },
+  "dragon-scale-mail-black": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-blue": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-brass": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-copper": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-gold": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-green": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-red": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-silver": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "dragon-scale-mail-white": {
+    "slots": ["armor"],
+    "two_handed": false
+  },
+  "ring-of-elemental-command-earth": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-elemental-command-fire": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "ring-of-elemental-command-water": {
+    "slots": ["ring_left", "ring_right"],
+    "two_handed": false
+  },
+  "cosmetic-cape-embroidered": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "cosmetic-cape-rain": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "cosmetic-cape-velvet": {
+    "slots": ["cloak"],
+    "two_handed": false
+  },
+  "cosmetic-necklace-pearl": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "cosmetic-necklace-leaf": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "cosmetic-necklace-garnet": {
+    "slots": ["neck"],
+    "two_handed": false
+  },
+  "cosmetic-tiara-silver": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "cosmetic-tiara-flowers": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "cosmetic-tiara-moon": {
+    "slots": ["head"],
+    "two_handed": false
+  },
+  "cosmetic-gloves-suede": {
+    "slots": ["hands"],
+    "two_handed": false
+  },
+  "cosmetic-gloves-lace": {
+    "slots": ["hands"],
+    "two_handed": false
+  },
+  "cosmetic-gloves-velvet": {
+    "slots": ["hands"],
+    "two_handed": false
+  },
+  "cosmetic-boots-riding": {
+    "slots": ["feet"],
+    "two_handed": false
+  },
+  "cosmetic-boots-fur": {
+    "slots": ["feet"],
+    "two_handed": false
+  },
+  "cosmetic-boots-court": {
+    "slots": ["feet"],
+    "two_handed": false
+  }
+}

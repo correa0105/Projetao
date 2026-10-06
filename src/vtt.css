@@ -225,6 +225,17 @@
   min-height: 0;
   min-width: 0;
 }
+.vtt-chat-collapse {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  margin-left: auto;
+}
+#vtt-chat-controls:not([hidden]) {
+  display: grid;
+  gap: 12px;
+}
 .vtt-panel-tabs {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));

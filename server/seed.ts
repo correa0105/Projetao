@@ -10,10 +10,13 @@ export async function seed() {
   const equipmentCatalog = JSON.parse(
     await readFile(resolve('data/equipment-catalog.json'), 'utf8'),
   );
+  const expansion = JSON.parse(
+    await readFile(resolve('data/emporium-expansion.json'), 'utf8'),
+  ).items;
   await transaction(async (client) => {
     await client.query('SELECT pg_advisory_xact_lock(74261924)');
     await client.query('UPDATE catalog_items SET active=false WHERE NOT(id=ANY($1::text[]))', [
-      [...catalog.items, ...equipmentCatalog].map((item: { id: string }) => item.id),
+      [...catalog.items, ...equipmentCatalog, ...expansion].map((item: { id: string }) => item.id),
     ]);
     for (const item of catalog.items) {
       await client.query(
@@ -68,6 +71,41 @@ export async function seed() {
         ],
       );
     }
+    for (const item of expansion) {
+      await client.query(
+        `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,image_path,merchant_comment,weight_estimated,audio_path)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+         ON CONFLICT(id) DO UPDATE SET name=excluded.name,original_name=excluded.original_name,
+         category=excluded.category,description=excluded.description,price_cp=excluded.price_cp,
+         weight_lb=excluded.weight_lb,source=excluded.source,source_url=excluded.source_url,
+         raw_data=excluded.raw_data,image_path=excluded.image_path,merchant_comment=excluded.merchant_comment,
+         weight_estimated=excluded.weight_estimated,audio_path=excluded.audio_path,active=true`,
+        [
+          item.id,
+          item.name,
+          item.original_name,
+          item.category,
+          item.description,
+          item.price_cp,
+          item.weight_lb,
+          item.source,
+          item.source_url,
+          item.raw_data,
+          item.image_path,
+          item.merchant_comment,
+          item.weight_estimated,
+          item.audio_path,
+        ],
+      );
+    }
+    await client.query(
+      "UPDATE catalog_items SET audio_path='/audio/emporium/' || id || '.wav' WHERE id=ANY($1::text[])",
+      [
+        [...catalog.items, ...equipmentCatalog.filter((i: { active: boolean }) => i.active)].map(
+          (i: { id: string }) => i.id,
+        ),
+      ],
+    );
     // Migration 038 captured only pre-update suits. Applying each snapshot once avoids
     // duplicating pieces on subsequent seeds or on purchases through the new checkout.
     const { rows: backfills } = await client.query(

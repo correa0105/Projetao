@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, type RefObject } from 'react';
 import { shopWeight } from '../shared/armor-bundles';
 import type { Item } from './types';
 import { useSoundEffects } from './SiteMusic';
+import expandedMaterials from '../shared/emporium-materials.json';
 
 type Settings = { muted: boolean; volume: number };
 type Kind =
@@ -15,7 +16,10 @@ type Kind =
   | 'paper'
   | 'leather'
   | 'cloth';
-type SoundItem = Pick<Item, 'id' | 'name' | 'original_name' | 'category' | 'weight_lb'>;
+type SoundItem = Pick<
+  Item,
+  'id' | 'name' | 'original_name' | 'category' | 'weight_lb' | 'audio_path'
+>;
 const assets: Record<Kind, string> = {
   wood: '/audio/shop-counter-wood.wav',
   liquid: '/audio/shop-counter-liquid.wav',
@@ -132,6 +136,8 @@ const materialLevels: Record<
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
 function materialOf(item: SoundItem): Kind {
+  const expanded = (expandedMaterials as Record<string, Kind>)[item.id];
+  if (expanded) return expanded;
   if (materials[item.id]) return materials[item.id];
   const normalized = `${item.id} ${item.name} ${item.original_name} ${item.category}`
     .normalize('NFD')
@@ -200,8 +206,8 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
   let epoch = 0;
   let count = 0;
   let variation = 0;
-  const decoding: Partial<Record<Kind, Promise<void>>> = {};
-  const buffers: Partial<Record<Kind, AudioBuffer>> = {};
+  const decoding: Record<string, Promise<void> | undefined> = {};
+  const buffers: Record<string, AudioBuffer | undefined> = {};
   const voices = new Set<Voice>();
   const abort = new AbortController();
   const state = (value: string) => {
@@ -213,16 +219,15 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
     root.dataset.counterAudioVolume = String(settings.volume);
   };
   const kinds = Object.keys(assets) as Kind[];
-  const loading = Object.fromEntries(
-    (Object.entries(assets) as [Kind, string][]).map(([kind, url]) => [
-      kind,
-      (async () => {
-        const response = await fetch(url, { signal: abort.signal });
-        if (!response.ok) throw new Error('Efeito do balcão indisponível.');
-        return await response.arrayBuffer();
-      })().catch(() => null),
-    ]),
-  ) as Record<Kind, Promise<ArrayBuffer | null>>;
+  const loading: Record<string, Promise<ArrayBuffer | null>> = {};
+  const load = (url: string) =>
+    (loading[url] ??= (async () => {
+      const response = await fetch(url, { signal: abort.signal });
+      if (!response.ok) throw new Error('Efeito do balcão indisponível.');
+      return await response.arrayBuffer();
+    })().catch(() => null));
+  // Item-specific files are fetched only when that item is used.
+  for (const kind of kinds) void load(assets[kind]);
 
   const stop = (voice: Voice) => {
     voices.delete(voice);
@@ -281,27 +286,27 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
     }
     return context;
   };
-  const decode = (target: AudioContext, kind: Kind): Promise<void> => {
-    if (buffers[kind]) return Promise.resolve();
-    if (!decoding[kind])
-      decoding[kind] = loading[kind]
+  const decode = (target: AudioContext, url: string): Promise<void> => {
+    if (buffers[url]) return Promise.resolve();
+    if (!decoding[url])
+      decoding[url] = load(url)
         .then(async (bytes) => {
           if (!bytes || disposed) return;
           const buffer = await target.decodeAudioData(bytes.slice(0));
-          if (!disposed) buffers[kind] = buffer;
+          if (!disposed) buffers[url] = buffer;
         })
         .catch(() => {})
         .finally(() => {
-          delete decoding[kind];
+          delete decoding[url];
         });
-    return decoding[kind]!;
+    return decoding[url]!;
   };
   const prepare = () => {
     const target = initialize();
     if (!target) return;
     void target
       .resume()
-      .then(() => Promise.all(kinds.map((kind) => decode(target, kind))))
+      .then(() => Promise.all(kinds.map((kind) => decode(target, assets[kind]))))
       .catch(() => {});
   };
   const visibility = () => {
@@ -321,9 +326,13 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
       const requestedEpoch = epoch;
       const requestedAt = performance.now();
       const profile = shopCounterSoundProfile(item, size);
+      const url =
+        item.audio_path && /^\/audio\/emporium\/[a-z0-9-]+\.wav$/.test(item.audio_path)
+          ? item.audio_path
+          : assets[profile.kind];
       void target
         .resume()
-        .then(() => decode(target, profile.kind))
+        .then(() => decode(target, url))
         .then(() => {
           // A sound belongs to this accepted placement, never to a later visit.
           if (
@@ -334,7 +343,7 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
             performance.now() - requestedAt > 450
           )
             return;
-          const buffer = buffers[profile.kind];
+          const buffer = buffers[url];
           if (!buffer) {
             state('unavailable');
             return;
@@ -370,6 +379,7 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
           count++;
           root.dataset.counterAudioItem = item.id;
           root.dataset.counterAudioKind = profile.kind;
+          root.dataset.counterAudioAsset = url;
           root.dataset.counterAudioWeight = profile.weight.toFixed(3);
           root.dataset.counterAudioGain = profile.gain.toFixed(4);
           root.dataset.counterAudioPitch = pitch.toFixed(4);
@@ -396,7 +406,7 @@ export function createShopCounterAudio(root: HTMLElement, initial: Settings) {
       document.removeEventListener('keydown', prepare, true);
       document.removeEventListener('visibilitychange', visibility);
       close('disposed');
-      for (const kind of kinds) delete buffers[kind];
+      for (const url of Object.keys(buffers)) delete buffers[url];
     },
   };
 }

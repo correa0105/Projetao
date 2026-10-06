@@ -34,6 +34,7 @@ export type Item = {
   description: string;
   price_cp: number | null;
   image_path?: string | null;
+  audio_path?: string | null;
   merchant_comment?: string;
   weight_estimated?: boolean;
   weight_lb: string;

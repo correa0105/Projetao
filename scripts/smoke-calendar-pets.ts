@@ -151,7 +151,9 @@ try {
   await expect(page.locator('.camp-pet')).toHaveAttribute('data-pet-id', third.id);
   await expect(page.locator('.camp-pet')).toHaveCount(1);
   await page.setViewportSize({ width: 390, height: 844 });
-  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect
+    .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
+    .toBe(true);
   await expect
     .poll(() => page.locator('.camp-pet').evaluate((el) => Number(getComputedStyle(el).opacity)))
     .toBe(1);
@@ -219,6 +221,26 @@ try {
       .locator('.calendar-cover-art')
       .evaluate((el) => (el as HTMLImageElement).naturalWidth),
   ).toBeGreaterThan(0);
+  async function checkCalendarBackground() {
+    const geometry = await page.locator('.calendar-header').evaluate((header) => {
+      const h = header.getBoundingClientRect();
+      const art = header.querySelector('.calendar-cover-art')!.getBoundingClientRect();
+      const filters = header.querySelector('.calendar-filters')!.getBoundingClientRect();
+      return {
+        left: art.left - h.left,
+        right: art.right - h.right,
+        top: art.top - h.top,
+        bottom: art.bottom - h.bottom,
+        coversFilters: art.bottom >= filters.bottom,
+      };
+    });
+    expect(Math.abs(geometry.left)).toBeLessThan(1);
+    expect(Math.abs(geometry.right)).toBeLessThan(1);
+    expect(Math.abs(geometry.top)).toBeLessThan(1);
+    expect(Math.abs(geometry.bottom)).toBeLessThan(1);
+    expect(geometry.coversFilters).toBe(true);
+  }
+  await checkCalendarBackground();
   await expect(page.locator(`.calendar-day[data-date="${day}"]`)).toContainText('+1 compromisso');
   await page.getByRole('button', { name: 'Editar calendário', exact: true }).click();
   const settings = page.getByRole('dialog', { name: 'Editar calendário', exact: true });
@@ -244,6 +266,9 @@ try {
   await expect(edit).not.toBeVisible();
   await expect(page.locator('.calendar-day-detail')).toContainText('Noite de dados');
   await page.locator('.guild-calendar').scrollIntoViewIfNeeded();
+  await page
+    .locator('.calendar-header')
+    .screenshot({ path: 'test-results/calendar-header-desktop.png' });
   await page.screenshot({ path: 'test-results/calendar-desktop.png', fullPage: true });
   for (const width of [320, 390, 768]) {
     await page.setViewportSize({ width, height: 900 });
@@ -251,6 +276,7 @@ try {
       true,
     );
     await expect(page.locator('.calendar-appointment')).toHaveCount(5);
+    await checkCalendarBackground();
     await page.screenshot({ path: `test-results/calendar-${width}.png`, fullPage: true });
   }
   await page.setViewportSize({ width: 1440, height: 1000 });

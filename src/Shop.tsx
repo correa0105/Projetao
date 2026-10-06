@@ -31,6 +31,7 @@ const houseItems: Item[] = houseCatalog.map((item) => ({
   description: item.description,
   price_cp: item.price_cp,
   image_path: item.image,
+  audio_path: `/audio/emporium/house-${item.id}.wav`,
   merchant_comment: item.speech,
   weight_lb: '0',
   weight_estimated: true,
@@ -778,7 +779,7 @@ export function Shop({
             </div>
             {unpriced && (
               <p role="status">
-                O Orbe do Dragão está sem preço definido. Retire-o para finalizar a compra.
+                Há itens sem preço definido no carrinho. Retire-os para finalizar a compra.
               </p>
             )}
             {character && total > character.gold_cp && (

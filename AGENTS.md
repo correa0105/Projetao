@@ -62,6 +62,15 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Refino House/Empório 06/10: guias HOUSE.md e EMPORIO-EXPANSAO.md prevalecem
+sobre o limite histórico de 71 itens abaixo. São 1319 itens normais + 12 House,
+SRD 5.2.1, 258 famílias mágicas, 20 cosméticos e sons/falas individuais;
+efeitos mágicos continuam descritivos. Seed preserva preços legados/bens/histórico.
+074 adiciona camada própria da presença House, validada por ownership; oito
+vistas reais por objeto e arraste preservando o ponto clicado. Não substituir
+vistas por espelho/rotação plana. RP na cena. Combate é aba principal do VTT,
+Diário fica em Fichas; chat recolhe por preferência local da conta. 073 áudio.
+
 House 06/10 implementado depois do checkpoint654c304/tag antes-house enviado.
 Guia vigente em docs/HOUSE.md: propriedade por personagem, quatro ambientes/16
 cenários, coleção house_items sem revenda, layout com revisão, presentes uma vez,

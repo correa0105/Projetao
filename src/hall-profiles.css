@@ -1450,14 +1450,19 @@
 .visiting .public-camp-mount {
   left: 2%;
   bottom: 45px;
-  width: calc(29% * var(--mount-scale, 1));
-  max-width: calc(430px * var(--mount-scale, 1));
+  width: max-content;
+  max-width: none;
   z-index: 0;
   filter: brightness(0.8) saturate(0.8) drop-shadow(0 7px 5px #0008);
 }
 .visiting .public-camp-mount > img {
   display: block;
-  height: auto;
+  width: auto;
+  height: calc(var(--mount-reference-height, 320px) * 1.04 * var(--mount-scale, 1));
+}
+.visiting .public-character-figure > img {
+  transform: scale(calc(var(--stature-scale, 1) * 0.8));
+  transform-origin: center bottom;
 }
 .visiting .public-camp-pet {
   right: 12%;
@@ -1625,7 +1630,6 @@
   }
   .visiting .public-camp-mount {
     left: 0;
-    width: calc(29% * var(--mount-scale, 1));
   }
   .visiting .public-profile-panel .hall-of-fame.embedded {
     padding-right: 0;

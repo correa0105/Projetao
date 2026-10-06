@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent,
+} from 'react';
 import {
   Save,
   Package,
@@ -13,6 +20,7 @@ import {
   ImagePlus,
   Armchair,
   ChevronDown,
+  Send,
 } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
@@ -28,11 +36,21 @@ import {
 import { achievementCatalog } from '../shared/achievements';
 import { PetArt } from './PetShop';
 import { pets } from '../shared/pets';
-import { ownedMountImage } from '../shared/mounts';
+import { mounts, ownedMountImage } from '../shared/mounts';
+import { characterHeightScale } from '../shared/character-stature';
+import { petArtwork } from './pet-art';
 import type { Character, User } from './types';
 import { money } from '../shared/rules';
 import { useSoundEffects } from './SiteMusic';
+import {
+  housePerspectiveScale,
+  houseDragPosition,
+  houseViewWidth,
+  houseViewLabels,
+  shiftHouseLayer,
+} from '../shared/house-perspective';
 import './house.css';
+import frameQuads from '../shared/house-frame-quads.json';
 type Index = {
   homes: { id: string; character_id: string; name: string; character_name: string }[];
   invites: { home_id: string; status: string; name: string; owner_name: string }[];
@@ -52,18 +70,71 @@ const fileData = (file: File) =>
     reader.onerror = () => reject(Error('Não foi possível ler a imagem.'));
     reader.readAsDataURL(file);
   });
-function ItemArt({ item }: { item: HouseItem }) {
+function HousePicture({ item, facing }: { item: HouseItem; facing: number }) {
+  const ref = useRef<HTMLImageElement>(null),
+    [matrix, setMatrix] = useState('');
+  useLayoutEffect(() => {
+    const parent = ref.current?.parentElement;
+    if (!parent) return;
+    const quad = (frameQuads as Record<string, number[][]>)[String(facing)];
+    if (!quad) return;
+    const resize = () => {
+      const [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = quad.map(([x, y]) => [
+        x * parent.clientWidth,
+        y * parent.clientHeight,
+      ]);
+      const dx1 = x1 - x2,
+        dx2 = x3 - x2,
+        dx3 = x0 - x1 + x2 - x3,
+        dy1 = y1 - y2,
+        dy2 = y3 - y2,
+        dy3 = y0 - y1 + y2 - y3,
+        det = dx1 * dy2 - dx2 * dy1;
+      const g = Math.abs(det) > 1e-8 ? (dx3 * dy2 - dx2 * dy3) / det : 0,
+        h = Math.abs(det) > 1e-8 ? (dx1 * dy3 - dx3 * dy1) / det : 0;
+      setMatrix(
+        `matrix3d(${(x1 - x0 + g * x1) / 100},${(y1 - y0 + g * y1) / 100},0,${g / 100},${(x3 - x0 + h * x3) / 140},${(y3 - y0 + h * y3) / 140},0,${h / 140},0,0,1,0,${x0},${y0},0,1)`,
+      );
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(parent);
+    resize();
+    return () => observer.disconnect();
+  }, [facing]);
+  return (
+    <img
+      ref={ref}
+      className="house-picture"
+      style={{ transform: matrix, visibility: matrix ? 'visible' : 'hidden' }}
+      src={`/api/house/items/${item.id}/image`}
+      alt={item.content.title || 'Lembrança'}
+    />
+  );
+}
+function ItemArt({ item, facing }: { item: HouseItem; facing?: number }) {
   const spec = houseCatalog.find((c) => c.id === item.catalog_id);
   return (
-    <span className={`house-item-art ${item.catalog_id === 'frame' ? 'house-frame-art' : ''}`}>
-      {item.has_image && (
-        <img
-          className="house-picture"
-          src={`/api/house/items/${item.id}/image`}
-          alt={item.content.title || 'Lembrança'}
-        />
+    <span
+      className={`house-item-art ${item.catalog_id === 'frame' ? 'house-frame-art' : ''}`}
+      data-facing={facing}
+    >
+      {item.has_image && (facing === undefined || [0, 1, 7].includes(facing)) && (
+        <HousePicture item={item} facing={facing ?? 0} />
       )}
-      <img src={spec?.image} alt={spec?.name || 'Decoração'} />
+      <img
+        src={
+          facing === undefined
+            ? item.catalog_id === 'frame'
+              ? '/house/items/views/frame/0.webp'
+              : spec?.image
+            : `/house/items/views/${item.catalog_id}/${facing}.webp`
+        }
+        alt={spec?.name || 'Decoração'}
+        onError={(e) => {
+          if (e.currentTarget.src.includes('/house/items/views/') && spec)
+            e.currentTarget.src = spec.image;
+        }}
+      />
     </span>
   );
 }
@@ -107,14 +178,27 @@ export function House({
     [rewardValue, setRewardValue] = useState('1'),
     [grantReason, setGrantReason] = useState('');
   const stage = useRef<HTMLDivElement>(null),
+    chatLog = useRef<HTMLDivElement>(null),
+    followChat = useRef(true),
     dirtyRef = useRef(false),
     purchaseKey = useRef<string | null>(null),
     messageKey = useRef<string | null>(null),
     generation = useRef(0);
   const sound = useSoundEffects();
+  const lastMessage = home?.messages.at(-1)?.id;
+  useEffect(() => {
+    if (tab === 'rp' && followChat.current && chatLog.current)
+      chatLog.current.scrollTop = chatLog.current.scrollHeight;
+  }, [lastMessage, tab, homeId]);
   useEffect(() => {
     dirtyRef.current = dirty;
   }, [dirty]);
+  useEffect(() => {
+    if (character)
+      setPresenceScale(
+        (0.19 * characterHeightScale(character.race, character.species_size)) / 0.875,
+      );
+  }, [character?.id]);
   async function refreshIndex() {
     const v = await api<Index>('/house');
     setIndex(v);
@@ -278,8 +362,26 @@ export function House({
       })),
     }));
   }
+  function order(id: string, direction: -1 | 1) {
+    edit((h) => ({
+      ...h,
+      rooms: h.rooms.map((r) => ({
+        ...r,
+        placements: shiftHouseLayer(r.placements, id, direction),
+      })),
+    }));
+  }
   function add(kind: HousePlacement['kind'], ref: string) {
     const id = crypto.randomUUID();
+    const companion = home?.companions.find((c) => c.id === ref);
+    const scale =
+      kind === 'mount'
+        ? 0.5 * (mounts.find((m) => m.id === companion?.mount_id)?.scale || 1)
+        : kind === 'pet'
+          ? (0.09 *
+              petArtwork(companion?.pet_id || 'dog', companion?.appearance || 'original').width) /
+            218
+          : 0.17;
     edit((h) => ({
       ...h,
       rooms: h.rooms.map((r) =>
@@ -294,8 +396,9 @@ export function House({
                   ref,
                   x: 0.5,
                   y: 0.82,
-                  scale: kind === 'mount' ? 0.24 : 0.17,
+                  scale: Math.max(0.03, Math.min(0.55, scale)),
                   rotation: 0,
+                  facing: 0,
                   layer: r.placements.length,
                 },
               ],
@@ -309,14 +412,24 @@ export function House({
     if (!home?.is_owner || busy) return;
     setSelected(p.id);
     const bounds = stage.current!.getBoundingClientRect(),
-      start = { x: event.clientX, y: event.clientY };
+      factor = housePerspectiveScale(p.y),
+      grab = {
+        x: (event.clientX - bounds.left - p.x * bounds.width) / factor,
+        y: (event.clientY - bounds.top - p.y * bounds.height) / factor,
+      };
+    let y = p.y;
     event.currentTarget.setPointerCapture(event.pointerId);
     const el = event.currentTarget;
-    const move = (e: globalThis.PointerEvent) =>
-      patch(p.id, {
-        x: Math.min(0.98, Math.max(0.02, p.x + (e.clientX - start.x) / bounds.width)),
-        y: Math.min(0.98, Math.max(0.08, p.y + (e.clientY - start.y) / bounds.height)),
-      });
+    const move = (e: globalThis.PointerEvent) => {
+      const position = houseDragPosition(
+        { x: e.clientX - bounds.left, y: e.clientY - bounds.top },
+        grab,
+        bounds,
+        y,
+      );
+      y = position.y;
+      patch(p.id, position);
+    };
     const end = () => {
       el.removeEventListener('pointermove', move);
       el.removeEventListener('pointerup', end);
@@ -329,14 +442,23 @@ export function House({
   function dragActor(event: PointerEvent<HTMLButtonElement>, p: HouseState['presence'][number]) {
     if (p.user_id !== user.id || busy) return;
     const bounds = stage.current!.getBoundingClientRect(),
-      start = { x: event.clientX, y: event.clientY };
+      factor = housePerspectiveScale(p.y),
+      grab = {
+        x: (event.clientX - bounds.left - p.x * bounds.width) / factor,
+        y: (event.clientY - bounds.top - p.y * bounds.height) / factor,
+      };
     let x = p.x,
       y = p.y;
     const el = event.currentTarget;
     el.setPointerCapture(event.pointerId);
     const move = (e: globalThis.PointerEvent) => {
-      x = Math.min(0.98, Math.max(0.02, p.x + (e.clientX - start.x) / bounds.width));
-      y = Math.min(0.98, Math.max(0.1, p.y + (e.clientY - start.y) / bounds.height));
+      ({ x, y } = houseDragPosition(
+        { x: e.clientX - bounds.left, y: e.clientY - bounds.top },
+        grab,
+        bounds,
+        y,
+        0.1,
+      ));
       setHome((h) =>
         h
           ? { ...h, presence: h.presence.map((a) => (a.user_id === user.id ? { ...a, x, y } : a)) }
@@ -357,6 +479,7 @@ export function House({
             x,
             y,
             scale: p.scale,
+            layer: p.layer,
           }),
         });
       });
@@ -372,6 +495,7 @@ export function House({
     setRecipient(await api<Profile>(`/profiles/${encodeURIComponent(id)}`));
   }
   function toggle(name: string) {
+    if (name === 'rp') followChat.current = true;
     setTab((v) => (v === name ? '' : name));
     setError('');
     setRecipient(null);
@@ -567,11 +691,15 @@ export function House({
                     {
                       left: `${p.x * 100}%`,
                       top: `${p.y * 100}%`,
-                      width: `${p.scale * 100}%`,
+                      width: `${p.scale * housePerspectiveScale(p.y) * (item ? houseViewWidth(item.catalog_id, p.facing ?? 0) : 1) * 100}%`,
                       transform: `translate(-50%,-100%) rotate(${p.rotation}deg)`,
-                      zIndex: p.layer + 1,
+                      zIndex: p.layer * 2 + 2,
                     } as CSSProperties
                   }
+                  data-base-scale={p.scale}
+                  data-depth-scale={housePerspectiveScale(p.y)}
+                  data-facing={p.facing ?? 0}
+                  data-layer={p.layer}
                   onPointerDown={(e) => drag(e, p)}
                   onClick={() => {
                     if (home.is_owner) setSelected(p.id);
@@ -579,7 +707,7 @@ export function House({
                   }}
                 >
                   {item ? (
-                    <ItemArt item={item} />
+                    <ItemArt item={item} facing={p.facing ?? 0} />
                   ) : p.kind === 'pet' && companion ? (
                     <PetArt
                       pet={pets.find((a) => a.id === companion.pet_id) || pets[0]}
@@ -597,13 +725,16 @@ export function House({
                 <button
                   key={p.user_id}
                   className="house-actor"
+                  data-layer={p.layer}
                   aria-label={`${p.name}${p.user_id === user.id ? ' · mover personagem' : ''}`}
                   onPointerDown={(e) => dragActor(e, p)}
+                  data-base-scale={p.scale}
+                  data-depth-scale={housePerspectiveScale(p.y)}
                   style={{
                     left: `${p.x * 100}%`,
                     top: `${p.y * 100}%`,
-                    width: `${p.scale * 100}%`,
-                    zIndex: 150 + Math.round(p.y * 100),
+                    width: `${p.scale * housePerspectiveScale(p.y) * 100}%`,
+                    zIndex: p.layer,
                   }}
                 >
                   <img
@@ -617,6 +748,66 @@ export function House({
                   <span>{p.name}</span>
                 </button>
               ))}
+            {tab === 'rp' && (
+              <div className="house-rp-overlay">
+                <div
+                  className="house-rp-log"
+                  role="log"
+                  aria-label="Conversa de RP"
+                  ref={chatLog}
+                  onScroll={(e) => {
+                    const el = e.currentTarget;
+                    followChat.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
+                  }}
+                >
+                  {home.messages.map((m) => (
+                    <p key={m.id}>
+                      <strong>{m.name}:</strong> {m.body}
+                    </p>
+                  ))}
+                  {!home.messages.length && <p>A primeira história ainda está por ser contada.</p>}
+                </div>
+                <form
+                  className="house-rp-compose"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (!character || busy || !text.trim()) return;
+                    messageKey.current ||= crypto.randomUUID();
+                    void run(async () => {
+                      await post(`/house/${homeId}/messages`, {
+                        character_id: character.id,
+                        body: text,
+                        idempotency_key: messageKey.current,
+                      });
+                      messageKey.current = null;
+                      followChat.current = true;
+                      setText('');
+                      const v = await api<HouseState>(`/house/${homeId}`);
+                      setHome((h) => (h ? { ...h, messages: v.messages } : h));
+                    });
+                  }}
+                >
+                  <input
+                    aria-label={`Mensagem de ${character?.name || 'personagem'}`}
+                    maxLength={2000}
+                    disabled={busy || !character}
+                    value={text}
+                    onChange={(e) => {
+                      setText(e.target.value);
+                      messageKey.current = null;
+                    }}
+                    placeholder="Escreva sua mensagem de RP…"
+                  />
+                  <button
+                    aria-label="Enviar"
+                    title="Enviar mensagem de RP"
+                    disabled={busy || !character || !text.trim()}
+                  >
+                    <Send size={22} />
+                  </button>
+                </form>
+              </div>
+            )}
             <div className="house-scene-caption">
               {houseTemplates.find((t) => t.id === current?.template)?.name}
             </div>
@@ -653,7 +844,7 @@ export function House({
               </button>
             )}
           </nav>
-          {tab && (
+          {tab && tab !== 'rp' && (
             <div className="house-panel">
               <button
                 className="house-panel-close"
@@ -698,6 +889,22 @@ export function House({
                   </div>
                   {choice && (
                     <div className="house-transform">
+                      {choice.kind === 'item' && (
+                        <label>
+                          Direção
+                          <select
+                            aria-label="Direção da peça"
+                            value={choice.facing ?? 0}
+                            onChange={(e) => patch(choice.id, { facing: Number(e.target.value) })}
+                          >
+                            {houseViewLabels.map((label, i) => (
+                              <option value={i} key={label}>
+                                {label}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      )}
                       <label>
                         Tamanho
                         <input
@@ -726,16 +933,8 @@ export function House({
                         <RotateCw size={16} />
                         Endireitar
                       </button>
-                      <button
-                        onClick={() => patch(choice.id, { layer: Math.min(300, choice.layer + 1) })}
-                      >
-                        Trazer à frente
-                      </button>
-                      <button
-                        onClick={() => patch(choice.id, { layer: Math.max(0, choice.layer - 1) })}
-                      >
-                        Enviar para trás
-                      </button>
+                      <button onClick={() => order(choice.id, 1)}>Trazer à frente</button>
+                      <button onClick={() => order(choice.id, -1)}>Enviar para trás</button>
                       <button
                         onClick={() => {
                           edit((h) => ({
@@ -831,9 +1030,7 @@ export function House({
                         onClick={() => {
                           setBuy(c.id);
                           if (!sound.muted && sound.volume > 0) {
-                            const audio = new Audio(
-                              `/audio/shop-counter-${['letter', 'books'].includes(c.id) ? 'paper' : c.id === 'rug' ? 'cloth' : ['lantern', 'frame'].includes(c.id) ? 'metal' : 'wood'}.wav`,
-                            );
+                            const audio = new Audio(`/audio/emporium/house-${c.id}.wav`);
                             audio.volume = sound.volume;
                             void audio.play().catch(() => {});
                           }
@@ -916,60 +1113,6 @@ export function House({
                   </ul>
                 </>
               )}
-              {tab === 'rp' && (
-                <>
-                  <h3>À luz da lareira</h3>
-                  <div className="house-chat" role="log" aria-label="Conversa de RP">
-                    {home.messages.map((m) => (
-                      <p key={m.id}>
-                        <strong>{m.name}</strong>
-                        <span>{m.body}</span>
-                        <time dateTime={m.created_at}>
-                          {new Date(m.created_at).toLocaleTimeString('pt-BR', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
-                        </time>
-                      </p>
-                    ))}
-                    {!home.messages.length && (
-                      <p>A primeira história ainda está por ser contada.</p>
-                    )}
-                  </div>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      if (!character) return;
-                      messageKey.current ||= crypto.randomUUID();
-                      void run(async () => {
-                        await post(`/house/${homeId}/messages`, {
-                          character_id: character.id,
-                          body: text,
-                          idempotency_key: messageKey.current,
-                        });
-                        messageKey.current = null;
-                        setText('');
-                        const v = await api<HouseState>(`/house/${homeId}`);
-                        setHome((h) => (h ? { ...h, messages: v.messages } : h));
-                      });
-                    }}
-                  >
-                    <label>
-                      Mensagem de {character?.name || 'personagem'}
-                      <textarea
-                        maxLength={2000}
-                        value={text}
-                        onChange={(e) => {
-                          setText(e.target.value);
-                          messageKey.current = null;
-                        }}
-                        placeholder="Escreva sua mensagem de RP…"
-                      />
-                    </label>
-                    <button disabled={busy || !character || !text.trim()}>Enviar</button>
-                  </form>
-                </>
-              )}
               {tab === 'versions' && (
                 <>
                   <h3>Seu personagem na casa</h3>
@@ -1003,6 +1146,66 @@ export function House({
                           onChange={(e) => setPresenceScale(Number(e.target.value) / 100)}
                         />
                       </label>
+                      {home.presence
+                        .filter((p) => p.user_id === user.id && p.room === room)
+                        .map((p) => (
+                          <label key={p.user_id}>
+                            Camada do personagem
+                            <select
+                              aria-label="Camada do personagem"
+                              value={p.layer}
+                              disabled={busy}
+                              onChange={(e) => {
+                                const layer = Number(e.target.value);
+                                void run(async () => {
+                                  await api(`/house/${homeId}/presence`, {
+                                    method: 'PUT',
+                                    body: JSON.stringify({
+                                      character_id: p.character_id,
+                                      variant_id: p.variant_id,
+                                      room: p.room,
+                                      x: p.x,
+                                      y: p.y,
+                                      scale: p.scale,
+                                      layer,
+                                    }),
+                                  });
+                                  setHome((h) =>
+                                    h
+                                      ? {
+                                          ...h,
+                                          presence: h.presence.map((a) =>
+                                            a.user_id === user.id ? { ...a, layer } : a,
+                                          ),
+                                        }
+                                      : h,
+                                  );
+                                });
+                              }}
+                            >
+                              <option value={602}>À frente de todos os objetos</option>
+                              <option value={0}>Atrás de todos os objetos</option>
+                              {(current?.placements || []).map((piece) => (
+                                <option key={piece.id} value={piece.layer * 2 + 1}>
+                                  Atrás de{' '}
+                                  {home.inventory.find((i) => i.id === piece.ref)?.content.title ||
+                                    houseCatalog.find(
+                                      (c) =>
+                                        c.id ===
+                                        home.inventory.find((i) => i.id === piece.ref)?.catalog_id,
+                                    )?.name ||
+                                    home.companions.find((c) => c.id === piece.ref)?.name ||
+                                    'objeto'}
+                                </option>
+                              ))}
+                              {p.layer !== 0 &&
+                                p.layer !== 602 &&
+                                !current?.placements.some((v) => v.layer * 2 + 1 === p.layer) && (
+                                  <option value={p.layer}>Camada atual</option>
+                                )}
+                            </select>
+                          </label>
+                        ))}
                       <div className="house-inline">
                         <button
                           disabled={busy}

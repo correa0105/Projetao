@@ -50,6 +50,8 @@ import {
   Layers,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Lightbulb,
   Map as MapIcon,
   FlipHorizontal2,
@@ -175,7 +177,7 @@ const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
   { id: 'sheet', name: 'Fichas', icon: Users },
   { id: 'library', name: 'Biblioteca', icon: BookOpen },
   { id: 'music', name: 'Som', icon: Music },
-  { id: 'journal', name: 'Diário', icon: BookOpen },
+  { id: 'combat', name: 'Combate', icon: Swords },
   { id: 'table', name: 'Configurações e ajuda', icon: Settings2 },
 ];
 const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
@@ -342,6 +344,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [chat, setChat] = useState(''),
     [formula, setFormula] = useState('1d20'),
     [privateRoll, setPrivateRoll] = useState(false),
+    [chatControlsCollapsed, setChatControlsCollapsed] = useState(() => {
+      try {
+        return localStorage.getItem(`vtt-chat-controls:${user.id}`) === 'collapsed';
+      } catch {
+        return false;
+      }
+    }),
     [inviteInput, setInviteInput] = useState(''),
     [roomName, setRoomName] = useState('Mesa da Alvorada'),
     [journalId, setJournalId] = useState(''),
@@ -379,6 +388,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     focusFrame = useRef(0),
     contextRef = useRef<HTMLDivElement>(null);
   const music = useMusicInterlude();
+  function customizeChatControls(collapsed: boolean) {
+    setChatControlsCollapsed(collapsed);
+    try {
+      localStorage.setItem(`vtt-chat-controls:${user.id}`, collapsed ? 'collapsed' : 'expanded');
+    } catch {
+      /* The controls still work when browser storage is unavailable. */
+    }
+  }
   useEffect(() => music.beginInterlude(), [music.beginInterlude]);
   stateRef.current = state;
   docRef.current = doc;
@@ -2636,8 +2653,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   title={name}
                   aria-pressed={
                     tab === id ||
-                    (id === 'sheet' && tab === 'token') ||
-                    (id === 'chat' && tab === 'combat') ||
+                    (id === 'sheet' && (tab === 'token' || tab === 'journal')) ||
                     (id === 'table' && (tab === 'scene' || tab === 'help'))
                   }
                   onClick={() => {
@@ -2660,21 +2676,35 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </nav>
             <div className="vtt-panel-content">
               <div className="vtt-panel-heading">
-                <h2>
+                <h2 hidden={tab === 'chat' && chatControlsCollapsed}>
                   {
                     tabs.find(
                       (t) =>
                         t.id ===
-                        (tab === 'token'
+                        (tab === 'token' || tab === 'journal'
                           ? 'sheet'
-                          : tab === 'combat'
-                            ? 'chat'
-                            : tab === 'scene' || tab === 'help'
-                              ? 'table'
-                              : tab),
+                          : tab === 'scene' || tab === 'help'
+                            ? 'table'
+                            : tab),
                     )?.name
                   }
                 </h2>
+                {tab === 'chat' && (
+                  <button
+                    className="vtt-chat-collapse"
+                    aria-expanded={!chatControlsCollapsed}
+                    aria-controls="vtt-chat-controls"
+                    onClick={() => customizeChatControls(!chatControlsCollapsed)}
+                    title={
+                      chatControlsCollapsed
+                        ? 'Mostrar controles do chat'
+                        : 'Minimizar controles do chat'
+                    }
+                  >
+                    {chatControlsCollapsed ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
+                    {chatControlsCollapsed ? 'Mostrar controles do chat' : 'Minimizar'}
+                  </button>
+                )}
                 {gm && tab === 'token' && (
                   <button className="vtt-gold" onClick={newMarker}>
                     <Plus size={14} />
@@ -2682,7 +2712,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </button>
                 )}
               </div>
-              {['sheet', 'token'].includes(tab) && (
+              {['sheet', 'token', 'journal'].includes(tab) && (
                 <div className="vtt-subtabs">
                   <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>
                     Personagens
@@ -2690,15 +2720,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   <button aria-pressed={tab === 'token'} onClick={() => setTab('token')}>
                     Token selecionado
                   </button>
-                </div>
-              )}
-              {['chat', 'combat'].includes(tab) && (
-                <div className="vtt-subtabs">
-                  <button aria-pressed={tab === 'chat'} onClick={() => setTab('chat')}>
-                    Mensagens e dados
-                  </button>
-                  <button aria-pressed={tab === 'combat'} onClick={() => setTab('combat')}>
-                    Combate
+                  <button aria-pressed={tab === 'journal'} onClick={() => setTab('journal')}>
+                    Diário
                   </button>
                 </div>
               )}
@@ -3728,67 +3751,69 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {tab === 'chat' && (
                 <>
-                  {!spectator && (
-                    <>
-                      <div className="vtt-dice-buttons">
-                        {[4, 6, 8, 10, 12, 20, 100].map((n) => (
-                          <button key={n} onClick={() => void act(() => send('1d' + n, ''))}>
-                            d{n}
-                          </button>
-                        ))}
-                      </div>
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          void act(() => send(formula, ''));
-                        }}
-                      >
-                        <label>
-                          Rolagem
+                  <section id="vtt-chat-controls" hidden={chatControlsCollapsed}>
+                    {!spectator && (
+                      <>
+                        <div className="vtt-dice-buttons">
+                          {[4, 6, 8, 10, 12, 20, 100].map((n) => (
+                            <button key={n} onClick={() => void act(() => send('1d' + n, ''))}>
+                              d{n}
+                            </button>
+                          ))}
+                        </div>
+                        <form
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            void act(() => send(formula, ''));
+                          }}
+                        >
+                          <label>
+                            Rolagem
+                            <input
+                              value={formula}
+                              onChange={(e) => setFormula(e.target.value)}
+                              placeholder="2d6+3 ou 2d20kh1"
+                              maxLength={100}
+                            />
+                          </label>
+                          <button className="vtt-gold">Rolar dados</button>
+                        </form>
+                        <label className="vtt-check">
                           <input
-                            value={formula}
-                            onChange={(e) => setFormula(e.target.value)}
-                            placeholder="2d6+3 ou 2d20kh1"
-                            maxLength={100}
+                            type="checkbox"
+                            checked={privateRoll}
+                            onChange={(e) => setPrivateRoll(e.target.checked)}
                           />
+                          Somente você e o mestre
                         </label>
-                        <button className="vtt-gold">Rolar dados</button>
-                      </form>
-                      <label className="vtt-check">
-                        <input
-                          type="checkbox"
-                          checked={privateRoll}
-                          onChange={(e) => setPrivateRoll(e.target.checked)}
-                        />
-                        Somente você e o mestre
-                      </label>
-                    </>
-                  )}
-                  {!historyEnd && (
-                    <button
-                      onClick={() =>
-                        void act(async () => {
-                          const all = [...olderMessages, ...state.messages];
-                          const first = all.reduce(
-                            (a, b) => (BigInt(a.id) < BigInt(b.id) ? a : b),
-                            all[0],
-                          );
-                          const next = await api<{ messages: VttMessage[]; has_more: boolean }>(
-                            `/vtt/rooms/${state.id}/messages${first ? '?before=' + first.id : ''}`,
-                          );
-                          if (chatLog.current)
-                            chatHistoryAnchor.current = {
-                              height: chatLog.current.scrollHeight,
-                              top: chatLog.current.scrollTop,
-                            };
-                          setOlderMessages((v) => [...next.messages, ...v]);
-                          setHistoryEnd(!next.has_more);
-                        })
-                      }
-                    >
-                      Carregar histórico anterior
-                    </button>
-                  )}
+                      </>
+                    )}
+                    {!historyEnd && (
+                      <button
+                        onClick={() =>
+                          void act(async () => {
+                            const all = [...olderMessages, ...state.messages];
+                            const first = all.reduce(
+                              (a, b) => (BigInt(a.id) < BigInt(b.id) ? a : b),
+                              all[0],
+                            );
+                            const next = await api<{ messages: VttMessage[]; has_more: boolean }>(
+                              `/vtt/rooms/${state.id}/messages${first ? '?before=' + first.id : ''}`,
+                            );
+                            if (chatLog.current)
+                              chatHistoryAnchor.current = {
+                                height: chatLog.current.scrollHeight,
+                                top: chatLog.current.scrollTop,
+                              };
+                            setOlderMessages((v) => [...next.messages, ...v]);
+                            setHistoryEnd(!next.has_more);
+                          })
+                        }
+                      >
+                        Carregar histórico anterior
+                      </button>
+                    )}
+                  </section>
                   <div
                     className="vtt-chat-log"
                     aria-live="polite"
@@ -4178,6 +4203,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {tab === 'table' && (
                 <>
+                  <h3>Personalização</h3>
+                  <label className="vtt-check">
+                    <input
+                      type="checkbox"
+                      checked={chatControlsCollapsed}
+                      onChange={(e) => customizeChatControls(e.target.checked)}
+                    />
+                    Recolher controles do chat
+                  </label>
                   {gm && <VttPremiumAccess changed={() => void refreshRoom()} />}
                   {gm && (
                     <>

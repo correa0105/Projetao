@@ -5787,43 +5787,24 @@
       "id": "monster-young-blue-dragon",
       "name": "Young Blue Dragon",
       "filename": "monster-young-blue-dragon-v1.webp",
-      "width": 1367,
-      "height": 1150,
-      "sha256": "2e80effeca7e839bd6ee357930571eb6aeb86a34215cc2bbd7b40ebd8346e0cb",
-      "transparentPixels": 1032491,
+      "width": 1222,
+      "height": 1287,
+      "sha256": "91a73939a2c48fd1f1d9eeb8b8f7b2c603a4d9c2fd3426964dce476130c54f41",
+      "transparentPixels": 883668,
       "mode": "imagegen built-in",
-      "prompt": "Correct ONLY the hind feet in image 1 (blue dragon); image 2 (black dragon) shows the exact correct direction. Preserve the entire blue dragon design, dorsal overhead camera, gold wing membranes, wings, horns, tail and front legs. The TWO hind feet at the hips in the LOWER half must point FORWARD, UP toward the dragon's head at the TOP of the canvas. Rotate and redraw each hind ankle and toe cluster so all long claws face the TOP and heels face the BOTTOM. Use the hind ankle bend and forward-facing feet of image 2 as the anatomical reference. Keep exactly FOUR legs and TWO wings, no extra toes pointing backward. Do not rotate the whole dragon, do not change its colors or head. Full silhouette with clear margins and genuine transparent background, no shadow/base/text.",
+      "prompt": "Use case: precise-object-edit. Rebuild a BLUE dragon VTT token.\nImage 1 is STRUCTURAL POSE REFERENCE ONLY: borrow its well-shaped broad three-dimensional ribcage, muscular broad hips, flowing curved neck, natural asymmetric spread wings and long S-curving tail proportions.\nImage 2 is the BLUE DRAGON EDIT TARGET / identity reference ONLY. DISCARD its current straight thin stick-like body, long needle head and mechanically mirrored silhouette. Redraw the entire anatomy in a substantially different natural pose using image 1's physical structure. The result must be a Young BLUE Dragon, never bronze.\nBuild a much broader barrel-shaped upper torso and strong hips with a narrower waist, a gently curved muscular neck that arcs to one side and a SHORTER BROADER reptilian skull. The short stout blue reptile head faces north and has exactly ONE gold nasal horn rising from the nose, no swept bronze horns or neck frill. Blue cobalt scales with gold ridge accents, gold-yellow leathery wing membranes, blue bones and golden claw tips. No webbed feet or bronze fins. Full dorsal silhouette, back not belly.\nWings: two short prominent raised wing-root muscles on the top of the shoulder blades just behind the neck, visibly ON TOP of back scales next to the spine. Wing upper arms overlap the dorsal torso and project outward/forward, elbows flex to wrists, fingers fan backwards supporting broad membranes. Comparable wing sizes, but naturally different folds/angles and not mirror duplicates. Four separate compact reptilian legs with coherent elbow/knee joints, strong but proportionate thighs, toes pointing generally toward the head/outward. Long tapering natural tail curves around to a side like the structural reference and is at least torso+neck length. No giant hindlegs.\nThe body must occupy substantial visual area with palpable ribcage and pelvis volume, NOT a thin vertical blue pipe between gigantic wings. This is a total reconstruction of structure and pose, not a small edit to the old outline.\nDetailed realistic painted fantasy style, strict 90-degree orthographic overhead dorsal camera, whole uncropped creature with margin, actual transparent alpha. No floor, shadow, text, frame or token circle.",
       "references": [
-        "https://br.pinterest.com/pin/324611085643692072/",
-        "https://ca.pinterest.com/pin/dnd-unpainted-minis-wv15-young-blue-dragon--563161128417258779/"
-      ],
-      "created_at": "2026-10-06",
-      "research_query": "Young Blue Dragon DnD token Pinterest",
-      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais.",
-      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Blue Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ca.pinterest.com/pin/dnd-unpainted-minis-wv15-young-blue-dragon--563161128417258779/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG BLUE DRAGON, stocky adolescent desert dragon, FOUR strong clawed legs, TWO broad leathery royal-blue wings, ONE long muscular tail. ONE long central nasal horn and broad finlike angular ears, thick cobalt layered dorsal scales with warm cream horn/claws, ochre-bronze undersides of wing membranes. Head toward lower-left, grounded low crawling diagonal stance with wings folded halfway beside dorsal back, tail curls rear right, clearly distinct pose/silhouette from other young dragons, all tips complete. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
-      "revision": 2,
-      "repaired_at": "2026-10-06",
-      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
-      "repairSourceHash": "37ca4934664b183a7f7c34173efe82a001dedd7b6e9e15f9d6acc2896ce9bae5",
-      "originalSha256": "6319c171546a85decad9710ae0675b1793bc49f9c8eecec285210e97409f79b4",
-      "repairReferences": [
         {
-          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
-          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+          "role": "pose / structure only",
+          "path": "data/vtt/premium-art/monster-adult-bronze-dragon-v1.webp"
         },
         {
-          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
-          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
-        },
-        {
-          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
-          "use": "Proporção compacta de membros de dragão."
-        },
-        {
-          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
-          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+          "role": "identity / edit target",
+          "path": "data/vtt/premium-art/monster-young-blue-dragon-v1.webp"
         }
-      ]
+      ],
+      "revision_notes": "Torso e quadril com volume, pescoço e cauda naturais, asas dorsais; referência de bronze sem transferir suas características de espécie.",
+      "created_at": "2026-10-06"
     },
     {
       "id": "monster-young-brass-dragon",

@@ -1,5 +1,46 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Correções finais de House, Empório e navegação (06/10/2026)
+
+Pedidos novos concluídos sobre a base House: oito vistas reais por objeto
+(96 WebPs) com ajuste Direção da peça, calibração pela altura visível,
+quadros personalizados projetados na abertura frontal/diagonal e madeira atrás.
+Profundidade amplia/reduz mobília/companheiros/presença sem regravar tamanho base.
+Arraste conserva o ponto clicado sob o cursor. Enviar para trás agora troca
+camadas adjacentes reais; Personagem → Camada do personagem permite atrás de
+tudo ou de cada objeto. Layer 0–602 salvo em house_presence (074), ownership
+conservado e payload antigo preserva camada. RP somente dentro da cena.
+Treze testes isolados + três de geometria + navegador em quatro larguras.
+
+Empório: 1.248 adições aos 71 produtos anteriores, 258 famílias SRD 5.2.1 com
+1.060 novos produtos mágicos concretos; mundanos/ferramentas/veículos/bardas,
+quatro cosméticos de cada um dos cinco tipos. 1.319 itens normais + 12 House
+na prateleira nativa. 487 artes originais e 1.331 arquivos de som individuais,
+derivados das gravações CC0 existentes, falas próprias. Migration 073 áudio;
+seed preserva bens, saldo e compras. Equipamento/consumo manual compatíveis.
+Regras mágicas descritas não são automação; SRD não inclui todos os suplementos.
+Fontes, preços, arte, limites e regeneração em EMPORIO-EXPANSAO.md.
+
+Montarias do acampamento/visita agora compartilham referência humana de altura,
+mantendo porte por espécie e chão; reentrada no painel recalibra. Guerreiro/
+dragões/armas mantêm revisões aceitas. Young Blue Dragon final substitui somente
+seu arquivo estável privado; Ancient Black/Bronze/Balor já enviados em 3fc943a.
+330 artes privadas continuam protegidas. Espada flamejante, absorção e
+ressurreição retas no Empório.
+
+VTT: Combate substitui Diário na navegação principal; Diário dentro de Fichas.
+Minimizar/Mostrar controles do chat e configuração Personalização persistem por
+conta/navegador; log/envio permanecem acessíveis. Calendário: capa dinâmica
+preenche também mês, ações e filtros da faixa enviada. Testes específicos de
+interface e calendário aprovados em quatro larguras; 23 regressões VTT de API.
+Checkpoint anterior ao House permanece no GitHub; trabalhar/enviar só Welson.
+Atualização Docker validada: migrations 073/074 aplicadas, aplicação saudável,
+1319 produtos ativos, 96 vistas e três armas conferidos por SHA servido;
+330 artes privadas conferidas no container e Young Blue idêntico em Downloads.
+Backup antes do deploy e comparação integral das tabelas de contas/personagens,
+economia/social/VTT/House confirmam preservação dos registros. Smoke completo de
+perfis/VTT em 1440/768/390/320 passou, além dos testes específicos acima.
+
 ## House implementado após checkpoint (06/10/2026)
 
 Checkpoint anterior `654c304` e tag codex/checkpoint-antes-house-2026-10-06 foram
@@ -12,7 +53,7 @@ Administração concede peças e vincula a missões/conquistas históricas com a
 e concessão única; sem bypass administrativo de visita. Migration 072; doze testes
 isolados + navegador em quatro larguras aprovados. Arte própria, prompts/hashes
 em public/house/art-manifest.json. Guia completo HOUSE.md. Compra em mapas futura.
-Próxima etapa autorizada: expansão do Empório conforme FILA-2026-10-06.md.
+Etapa posterior de expansão do Empório concluída; ver seção de correções finais acima.
 
 ## Correções de interface e anatomia antes do House (06/10/2026)
 

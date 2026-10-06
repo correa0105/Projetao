@@ -30,6 +30,8 @@ import { PetArt } from './PetShop';
 import { pets } from '../shared/pets';
 import { mounts, ownedMountImage, type OwnedMount } from '../shared/mounts';
 import { petArtwork } from './pet-art';
+import { characterHeightScale } from '../shared/character-stature';
+import { useCampMountSize } from './useCampMountSize';
 import { HallOfFame, visitProfile } from './HallOfFame';
 import type { deriveSheet } from '../shared/character-sheet';
 import type { ShelfConfig, AchievementDefinition } from '../shared/achievements';
@@ -125,6 +127,8 @@ export function Profiles({ user }: { user: User }) {
     [rating, setRating] = useState(5),
     [comment, setComment] = useState(''),
     [companion, setCompanion] = useState<OwnedMount | null>(null);
+  const mountHost = useRef<HTMLButtonElement>(null);
+  useCampMountSize(mountHost, companion?.id, panel);
   const loadProfile = async (uid = target) => {
     const next = await api<Profile>('/profiles/' + encodeURIComponent(uid));
     setProfile(next);
@@ -502,6 +506,7 @@ export function Profiles({ user }: { user: User }) {
                     {companion && (
                       <button
                         className="public-camp-mount"
+                        ref={mountHost}
                         style={
                           {
                             '--mount-scale':
@@ -522,6 +527,9 @@ export function Profiles({ user }: { user: User }) {
                           className={`public-character-figure ${selected === c.id ? 'selected' : ''}`}
                           aria-label={`Selecionar ${c.name} no perfil`}
                           aria-pressed={selected === c.id}
+                          style={
+                            { '--stature-scale': characterHeightScale(c.race) } as CSSProperties
+                          }
                           onClick={() => setSelected(c.id)}
                         >
                           {c.portrait_revision > 0 ? (

@@ -1,5 +1,14 @@
 # Fontes e atribuição
 
+Expansão do Empório de 06/10: 258 famílias mágicas e equipamentos físicos
+derivados do SRD 5.2.1 abaixo, com nomes/resumos em português e páginas por item
+em data/emporium-expansion.json. Mantidos os créditos dos produtos históricos.
+487 artes de objetos e 96 vistas de House foram geradas com imagegen integrado;
+prompts/hashes nos manifests públicos, sem distribuição de referências alheias.
+1.331 WAVs específicos são variações das dez gravações CC0 existentes do balcão,
+com fontes/licenças em public/audio/shop-counter-manifest.json e vínculos
+de origem em public/audio/emporium/manifest.json. Guia EMPORIO-EXPANSAO.md.
+
 This work includes material from the System Reference Document 5.2.1 (“SRD 5.2.1”) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.
 
 Regras resumidas e nomes traduzidos localmente para português brasileiro. Fonte oficial: https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf.
@@ -43,7 +52,6 @@ O primeiro atlas ilustrado do menu substituiu os antigos desenhos SVG. Foi gerad
 
 public/guild-icons-candle-helmet.png é a versão ativa do atlas, editada com imagegen integrada. Vela adaptada da nova referência fornecida pelo usuário; capacete viking de fantasia criado no mesmo estilo. Prompt completo em docs/VELA-CAPACETE-PROMPT.md. public/dock-grain.svg é uma textura procedural original.
 
-
 ## Mapa ativo de apresentação — Alvorada Cinzenta
 
 public/alvorada-map-v2.png é o mapa da apresentação/login, com grandes regiões e relevo, criado com imagegen integrada. A captura de Runeterra fornecida pelo usuário serviu como referência de composição. Geografia original, sem texto incorporado. Prompt completo e dimensões reais: docs/ALVORADA-MAPA-V2-PROMPT.md. A versão anterior foi retirada do checkout e permanece no histórico Git; prompt em docs/ALVORADA-MAPA-PROMPT.md. Este ativo é independente da ilustração do Mundo.
@@ -63,6 +71,7 @@ A antiga visão do reino usava geometria procedural original, com fallback em `a
 As superfícies 3D regionais anteriores usavam **Forest Ground 04**, **Dark Rock** e **Brown Mud**, da Poly Haven, sob CC0. São nove mapas PBR de cor, normal e rugosidade preservados em `public/atlas-materials`. Mundo continua usando `ground-color.jpg` e `rock-color.jpg` como detalhe neutro de luminância e normais, preservando suas cores de biomas. Autores, fontes individuais, licença, dimensões e integridade dos arquivos estão registrados em [ATLAS-MATERIALS.md](ATLAS-MATERIALS.md). Não são pinturas de mapas nem recursos extraídos das referências de jogos.
 
 ## Fonte do mural
+
 IM Fell English SC, distribuída pelo Google Fonts sob SIL Open Font License. Arquivo e licença em public/fonts/im-fell-english-sc.ttf e im-fell-english-sc-OFL.txt. Origem: https://github.com/google/fonts/tree/main/ofl/imfellenglishsc .
 
 Mural de avisos: cenário vazio notice-village-empty-v4.png e atlas de seis papéis paper-atlas-v1.png gerados com image_gen para o projeto. Os textos dos avisos são renderizados pela aplicação sobre os sprites com alfa. Prompts em NOTICE-BOARD-PROMPTS.md.
@@ -78,6 +87,7 @@ Os 65 PNGs de itens, descrições, preços, pesos e falas foram fornecidos pelo 
 Inter variável (inter-variable.ttf): google/fonts, ofl/inter/Inter[opsz,wght].ttf, licença SIL OFL já incluída em public/shop/reference/fonts/inter-OFL.txt. Adicionada para renderizar o peso regular real no diálogo.
 
 ## Montarias
+
 shared/mounts.ts resume SRD 5.2.1: preço e carga (p.100), mula (p.357), pônei (p.359), cavalo de montaria (p.360), cavalo de guerra (p.364). Tradução local; falas de Brida e descrições narrativas são originais. Imagens originais geradas pela ferramenta integrada imagegen: public/stable, prompts em docs/STABLE-ART.md.
 
 Ginna substitui Brida na interface. Artes realistas de Ginna jovem, sua forma
