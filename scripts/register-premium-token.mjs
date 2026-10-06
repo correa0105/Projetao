@@ -17,7 +17,11 @@ for (let i = 3; i < data.length; i += 4) {
   if (data[i] === 0) transparent++;
   if (data[i] > 240) solid++;
 }
-if (transparent < info.width * info.height * 0.05 || solid < info.width * info.height * 0.1)
+// Espadas e criaturas alongadas ocupam naturalmente menos área que dragões.
+if (
+  transparent < info.width * info.height * 0.05 ||
+  solid < Math.max(4096, info.width * info.height * 0.02)
+)
   throw Error('A imagem precisa de fundo transparente real e silhueta visível.');
 await mkdir('data/vtt/premium-art', { recursive: true });
 const filename = id + '-v1.webp';

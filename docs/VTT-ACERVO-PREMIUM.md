@@ -65,6 +65,16 @@ arquivo, dimensões, pixels transparentes, hash SHA-256, prompt completo e refer
 pesquisadas no Pinterest. Modo usado: **imagegen embutido**, geração individual; azul
 recebeu edição de margem. Originais preservados no diretório de imagens geradas.
 
+Marco de produção: 40 artes concluídas em 06/10, do Aboleth ao Bandit, incluindo os
+dez dragões adultos e os dez anciões, todos com arquivos próprios. Armadura, árvore,
+bico de machado e azer receberam revisão da câmera. O total restante é 290;
+o contador ao vivo continua vindo do manifest, sem estimar imagens prontas.
+Silhuetas estreitas, como a espada animada, são validadas sem exigir a área de
+um corpo largo. Verificação visual no navegador confirmou alpha e bordas limpas.
+Quando não há token superior específico indexado no Pinterest, essa limitação
+fica explícita nos metadados de pesquisa; a referência geral e a anatomia do
+catálogo orientam o desenho original.
+
 Referência do usuário: [Creature Tokens Pack 07](https://br.pinterest.com/pin/324611085643692072/).
 O Pinterest apresentou uma janela de entrada; apenas a imagem pública visível e
 resultados públicos foram consultados. Artes novas são originais, sem copiar ou
