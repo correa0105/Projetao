@@ -35,7 +35,7 @@ try {
   });
   expect(signup.status()).toBe(200);
   const user = (await signup.json()).user;
-  await pool.query('UPDATE "user" SET administrador=1,vtt_premium=true WHERE id=$1', [user.id]);
+  await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [user.id]);
   const { createLegacyTestCharacter } = await import('../tests/character-fixtures.js');
   await createLegacyTestCharacter(user.id, 'Arden');
   await page.goto(origin + '/#vtt');
@@ -106,9 +106,33 @@ try {
   await panel.getByRole('button', { name: 'Premium', exact: true }).click();
   const assets = JSON.parse(await readFile('data/vtt/premium-art/manifest.json', 'utf8')).assets;
   await expect(panel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
-  await panel.getByRole('button', { name: /Aboleth/ }).click();
-  await panel.getByRole('button', { name: 'Trazer token premium à mesa' }).click();
+  await expect(panel.locator('.vtt-premium-preview-block')).toHaveCount(2);
+  for (const group of await panel.locator('.vtt-premium-preview-block').all())
+    await expect(group.locator('img')).toHaveCount(6);
+  const tokenPreference = panel.getByLabel('Mudar tokens para premium', { exact: true });
+  await expect(tokenPreference).toBeEnabled();
+  await expect(tokenPreference).not.toBeChecked();
+  await tokenPreference.check();
+  await expect(tokenPreference).toBeChecked();
+  await expect(tokenPreference).toBeEnabled();
+  await panel.getByRole('button', { name: 'Ver todos os monstros', exact: true }).click();
+  await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
+  const aboleth = panel.locator('.vtt-compendium > button').filter({ hasText: /^AbolethND/ });
+  await expect(aboleth.locator('img')).toHaveAttribute(
+    'src',
+    '/api/vtt/premium-art/monster-aboleth',
+  );
+  await aboleth.click();
+  await panel.getByRole('button', { name: 'Adicionar ao tabuleiro', exact: true }).click();
   await expect(panel.getByRole('button', { name: 'Abrir folha completa' })).toBeVisible();
+  await expect
+    .poll(async () => {
+      const {
+        rows: [saved],
+      } = await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id]);
+      return saved.document.scenes[0].tokens.find((t: any) => t.name === 'Aboleth')?.image;
+    })
+    .toBe('/api/vtt/premium-art/monster-aboleth');
   await panel.getByRole('button', { name: 'Abrir folha completa' }).click();
   let sheet = page.getByRole('dialog', { name: 'Ficha · Aboleth', exact: true });
   await sheet.getByRole('button', { name: 'Editar', exact: true }).click();
@@ -168,10 +192,37 @@ try {
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
   await panel.getByRole('button', { name: 'Premium', exact: true }).click();
   await expect(panel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
+  await expect(tokenPreference).toBeChecked();
+  await tokenPreference.uncheck();
+  await expect(tokenPreference).not.toBeChecked();
+  await expect(tokenPreference).toBeEnabled();
+  await panel.getByRole('button', { name: 'Ver todos os monstros', exact: true }).click();
+  await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(0);
+  await expect
+    .poll(async () => {
+      const {
+        rows: [saved],
+      } = await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id]);
+      return saved.document.scenes[0].tokens.find((t: any) => t.name === 'Aboleth da aurora')
+        ?.image;
+    })
+    .toBe('/api/vtt/premium-art/monster-aboleth');
+  await panel.getByRole('button', { name: 'Premium', exact: true }).click();
+  await tokenPreference.check();
+  await expect(tokenPreference).toBeChecked();
+  await expect(tokenPreference).toBeEnabled();
+  await page.reload();
+  await expect(page.getByRole('region', { name: 'Mesa virtual', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
+  await panel.getByRole('button', { name: 'Monstros', exact: true }).click();
+  await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
+  await page.screenshot({ path: 'test-results/vtt-premium-monsters.png' });
+  await panel.getByRole('button', { name: 'Premium', exact: true }).click();
+  await expect(tokenPreference).toBeChecked();
   await expect
     .poll(() =>
       panel
-        .locator('.vtt-premium-grid img')
+        .locator('.vtt-premium-preview-grid img')
         .first()
         .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
     )
@@ -185,7 +236,7 @@ try {
   }
   expect(errors).toEqual([]);
   console.log(
-    `VTT premium: ${assets.length} artes disponíveis, chat segue final/preserva leitura, arte inteira, editor/presets privados, dano e quatro larguras aprovados.`,
+    `VTT premium: administrador sem tag, duas prévias de seis, ${assets.length} imagens corretas em Monstros, preferência após recarga, token adicionado premium, reversão preserva mesa, chat/editor/dano e quatro larguras aprovados.`,
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/vtt-premium-failure.png' });

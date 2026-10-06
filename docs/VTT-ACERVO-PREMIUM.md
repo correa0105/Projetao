@@ -20,19 +20,30 @@ nunca são traduzidas. O catálogo original permanece intacto.
 [Instalação oficial](https://docs.libretranslate.com/guides/installation/).
 
 Biblioteca → Premium reúne as 330 artes individuais concluídas, uma para cada
-monstro do catálogo atual. Clique na aba novamente para atualizar o acervo;
-clique no cartão para consultar a ficha ou arraste para a mesa. Silhuetas usam
+monstro do catálogo atual. A apresentação mostra dois blocos com seis criaturas
+cada; Explorar acervo completo abre os 330 cartões. Clique na aba novamente para
+atualizar o acervo; clique no cartão para consultar a ficha ou arraste para a mesa. Silhuetas usam
 proporção integral e transparência, sem recorte circular. Nenhum atlas é usado.
 
-Acesso atual: **administrador=1 E tag Tokens premium** (`vtt_premium=true`). O usuário
-recebeu uma pergunta para distinguir esse comportamento de administrador OU tag;
-até resposta, vale a leitura restrita do pedido. Administradores concedem/revogam
+Acesso atual, por correção explícita do usuário em 06/10: **administrador=1 OU tag
+Tokens premium** (`vtt_premium=true`). Administradores têm acesso imediato, mesmo
+sem tag. Administradores concedem/revogam
 a tag em Configurações e ajuda → Acesso premium. Perfil/cadastro não podem concedê-la.
 Biblioteca, importação e novas colocações/duplicações são protegidas no servidor.
 Participantes de uma mesa podem visualizar uma arte já colocada em um token que
 possam ver; isso não concede acesso ao acervo nem capacidade de usá-lo em outra mesa.
 Arquivos ficam em data/vtt/premium-art, fora da publicação estática, e são servidos
 com autenticação, verificação de visibilidade e cache privado desabilitado.
+As doze amostras têm uma rota própria autenticada; essa rota recusa IDs fora dos
+dois blocos. Ela não libera catálogo completo nem colocação de arte sem acesso.
+
+Mudar tokens para premium salva a preferência na própria conta (migration 070).
+Monstros, fichas do catálogo e a galeria passam a usar a imagem premium pelo ID
+exato; novos tokens trazidos ou arrastados também a usam. Ver todos os monstros
+leva à lista. Desativar restaura as imagens originais da biblioteca. Tokens já
+colocados, fichas editadas e presets conservam suas imagens. O servidor só aplica
+a preferência com acesso vigente; remover a tag de uma conta não administradora
+retira o catálogo e a troca imediatamente. Outras contas e o SRD original não mudam.
 
 ## Chat e dano
 
@@ -112,9 +123,13 @@ placeholders nem reaproveitar uma imagem para fingir múltiplos monstros conclu�
 ## Verificação
 
 `node scripts/test-vtt-premium-isolated.mjs`: permissões premium, revogação,
+administrador sem tag, duas amostras de seis, preferência por conta, 330 vínculos
+exatos e reversão sem alterar mesas,
 visibilidade, biblioteca intacta, presets separados por dono, IDs de ações, dano
 concorrente/idempotente, privacidade, descarte e hashes/alpha.
 `node scripts/test-vtt-premium-isolated.mjs --browser`: editor e presets, arte,
+administrador sem tag, dois blocos de seis, troca das 330 miniaturas, preferência
+após recarga, nova colocação premium, reversão preservando tokens anteriores,
 chat no final e leitura anterior, aplicação do dano e larguras 1440/768/390/320.
 Regressão: os 23 testes de VTT/perfis existentes passaram. Tradução real do ataque
 do Aboleth verificada com bônus +9, alcance 15, dano 12 (2d6+5) e escape 14 intactos.

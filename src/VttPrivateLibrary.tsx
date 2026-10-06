@@ -13,6 +13,9 @@ export function VttPrivateLibrary({
   kind,
   gm,
   enabled,
+  premiumTokens,
+  changeTokens,
+  viewMonsters,
   query,
   loadKey,
   importPreset,
@@ -22,6 +25,9 @@ export function VttPrivateLibrary({
   kind: 'premium' | 'presets';
   gm: boolean;
   enabled: boolean;
+  premiumTokens: boolean;
+  changeTokens: (enabled: boolean) => Promise<void>;
+  viewMonsters: () => void;
   query: string;
   loadKey: number;
   importPreset: (id: string) => Promise<void>;
@@ -36,11 +42,20 @@ export function VttPrivateLibrary({
     }>({ total: 330, available: 0, monsters: [] });
   const [selected, setSelected] = useState<PremiumMonster | null>(null),
     [error, setError] = useState(''),
-    [loading, setLoading] = useState(false);
+    [loading, setLoading] = useState(false),
+    [savingTokens, setSavingTokens] = useState(false),
+    [tokenChoice, setTokenChoice] = useState(premiumTokens),
+    [expanded, setExpanded] = useState(false),
+    [showcase, setShowcase] = useState<{
+      total: number;
+      available: number;
+      groups: { id: string; title: string; monsters: PremiumMonster[] }[];
+    }>({ total: 330, available: 0, groups: [] });
   useEffect(() => {
     setError('');
     setSelected(null);
-    if (kind === 'presets' ? !gm : !enabled) return;
+    if (kind === 'presets' && !gm) return;
+    if (!enabled) setPremium({ total: 330, available: 0, monsters: [] });
     setLoading(true);
     let current = true;
     void (
@@ -48,9 +63,18 @@ export function VttPrivateLibrary({
         ? api<MonsterPreset[]>('/vtt/monster-presets').then((v) => {
             if (current) setPresets(v);
           })
-        : api<typeof premium>('/vtt/premium').then((v) => {
-            if (current) setPremium(v);
-          })
+        : Promise.all([
+            api<typeof showcase>('/vtt/premium-preview').then((v) => {
+              if (current) setShowcase(v);
+            }),
+            ...(enabled
+              ? [
+                  api<typeof premium>('/vtt/premium').then((v) => {
+                    if (current) setPremium(v);
+                  }),
+                ]
+              : []),
+          ])
     )
       .catch((e) => {
         if (current) setError(e.message);
@@ -62,15 +86,25 @@ export function VttPrivateLibrary({
       current = false;
     };
   }, [kind, gm, enabled, loadKey]);
-  if (kind === 'premium' && !enabled)
-    return (
-      <div className="vtt-premium-locked">
-        <span>ACERVO PREMIUM</span>
-        <h3>Criaturas vistas de cima</h3>
-        <p>O acesso exige administrador e a tag Tokens premium.</p>
-        <p>A tag pode ser concedida em Configurações e ajuda → Acesso premium.</p>
-      </div>
-    );
+  const premiumGrid = (
+    <div className="vtt-premium-grid">
+      {premium.monsters
+        .filter((m) => m.name.toLowerCase().includes(query.toLowerCase()))
+        .map((m) => (
+          <button
+            key={m.id}
+            draggable={gm}
+            onDragStart={(e) => drag(e, 'premium:' + m.id)}
+            onClick={() => setSelected(m)}
+            title={gm ? 'Arraste para a mesa ou abra a ficha' : 'Ver ficha'}
+          >
+            <img loading="lazy" src={m.image} alt="" draggable={false} />
+            <span>{m.name}</span>
+            <small>ND {m.cr}</small>
+          </button>
+        ))}
+    </div>
+  );
   return (
     <section className={'vtt-private-library ' + kind}>
       <header>
@@ -78,55 +112,106 @@ export function VttPrivateLibrary({
         <h3>{kind === 'premium' ? 'Criaturas vistas de cima' : 'Presets de monstros'}</h3>
         <p>
           {kind === 'premium'
-            ? `${premium.available} de ${premium.total} monstros com arte individual disponível.`
+            ? `${showcase.available} de ${showcase.total} monstros com arte individual disponível.`
             : 'Monstros trazidos às suas mesas, com suas imagens, fichas e alterações.'}
         </p>
       </header>
       {error && <p role="alert">{error}</p>}
       {loading && <p>Carregando acervo…</p>}
+      {kind === 'premium' && (
+        <div className="vtt-premium-switch">
+          <label className="vtt-check">
+            <input
+              type="checkbox"
+              checked={savingTokens ? tokenChoice : premiumTokens}
+              disabled={!enabled || savingTokens}
+              onChange={(e) => {
+                setError('');
+                setTokenChoice(e.target.checked);
+                setSavingTokens(true);
+                void changeTokens(e.target.checked)
+                  .catch((e) => setError(e.message))
+                  .finally(() => setSavingTokens(false));
+              }}
+            />
+            <span>Mudar tokens para premium</span>
+          </label>
+          <p>
+            {enabled
+              ? 'Troca as imagens em Monstros e nos novos tokens trazidos à mesa. Sua escolha fica salva na conta.'
+              : 'Veja as amostras abaixo. O acervo completo está disponível para administradores ou contas com a tag Tokens premium.'}
+          </p>
+          {enabled && <button onClick={viewMonsters}>Ver todos os monstros</button>}
+        </div>
+      )}
       {selected ? (
         <>
           <button onClick={() => setSelected(null)}>Voltar ao acervo</button>
           <VttMonsterStatblock monster={selected} compact />
-          {gm && (
-            <button onClick={() => importPremium(selected)}>Trazer token premium à mesa</button>
+          {gm && enabled && (
+            <button
+              onClick={() =>
+                importPremium({ ...selected, image: '/api/vtt/premium-art/' + selected.id })
+              }
+            >
+              Trazer token premium à mesa
+            </button>
+          )}
+        </>
+      ) : kind === 'premium' ? (
+        <>
+          <div className="vtt-premium-showcase">
+            {showcase.groups.map((group) => (
+              <section
+                className="vtt-premium-preview-block"
+                key={group.id}
+                aria-label={group.title}
+              >
+                <header>
+                  <h4>{group.title}</h4>
+                  <small>6 criaturas</small>
+                </header>
+                <div className="vtt-premium-preview-grid">
+                  {group.monsters.map((m) => (
+                    <button key={m.id} onClick={() => setSelected(m)} title={'Ver ' + m.name}>
+                      <img src={m.image} alt={m.name} draggable={false} />
+                      <span>{m.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+          {enabled && (
+            <details
+              className="vtt-premium-complete"
+              open={expanded || !!query.trim()}
+              onToggle={(e) => setExpanded(e.currentTarget.open)}
+            >
+              <summary>Explorar acervo completo · {premium.available} monstros</summary>
+              {premiumGrid}
+            </details>
           )}
         </>
       ) : (
         <div className="vtt-premium-grid">
-          {kind === 'premium'
-            ? premium.monsters
-                .filter((m) => m.name.toLowerCase().includes(query.toLowerCase()))
-                .map((m) => (
-                  <button
-                    key={m.id}
-                    draggable={gm}
-                    onDragStart={(e) => drag(e, 'premium:' + m.id)}
-                    onClick={() => setSelected(m)}
-                    title={gm ? 'Arraste para a mesa ou abra a ficha' : 'Ver ficha'}
-                  >
-                    <img loading="lazy" src={m.image} alt="" draggable={false} />
-                    <span>{m.name}</span>
-                    <small>ND {m.cr}</small>
-                  </button>
-                ))
-            : presets
-                .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
-                .map((p) => (
-                  <article key={p.id} draggable={gm} onDragStart={(e) => drag(e, 'preset:' + p.id)}>
-                    <img loading="lazy" src={p.image || undefined} alt="" draggable={false} />
-                    <strong>{p.name}</strong>
-                    <small>
-                      CA {p.token.ac} · PV {p.token.maxHp}
-                    </small>
-                    <button
-                      disabled={!gm}
-                      onClick={() => void importPreset(p.id).catch((e) => setError(e.message))}
-                    >
-                      Trazer à mesa
-                    </button>
-                  </article>
-                ))}
+          {presets
+            .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
+            .map((p) => (
+              <article key={p.id} draggable={gm} onDragStart={(e) => drag(e, 'preset:' + p.id)}>
+                <img loading="lazy" src={p.image || undefined} alt="" draggable={false} />
+                <strong>{p.name}</strong>
+                <small>
+                  CA {p.token.ac} · PV {p.token.maxHp}
+                </small>
+                <button
+                  disabled={!gm}
+                  onClick={() => void importPreset(p.id).catch((e) => setError(e.message))}
+                >
+                  Trazer à mesa
+                </button>
+              </article>
+            ))}
         </div>
       )}
       {kind === 'presets' && !loading && !presets.length && (
@@ -151,7 +236,7 @@ export function VttPremiumAccess({ changed }: { changed: () => void }) {
   return (
     <details className="vtt-premium-access">
       <summary>Acesso premium</summary>
-      <p>Tag de recurso: Tokens premium. O acervo exige também administrador.</p>
+      <p>Administradores já têm acesso. A tag Tokens premium libera o acervo para outras contas.</p>
       <label>
         Buscar conta
         <input value={query} onChange={(e) => setQuery(e.target.value)} />

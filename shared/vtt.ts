@@ -334,6 +334,7 @@ export type VttState = {
   document: VttDocument;
   is_gm: boolean;
   premiumAccess?: boolean;
+  premiumTokens?: boolean;
   role: 'master' | 'player' | 'spectator';
   viewingUser: string | null;
   viewpoints: { id: string; name: string }[];

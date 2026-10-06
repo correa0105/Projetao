@@ -14,10 +14,16 @@ Premium concluído: 330 artes individuais (Aboleth a Zombie), cobrindo todos os
 monstros do catálogo atual, uma criatura por imagem, vista ortográfica superior e
 transparência real, Pinterest como referência. Manifest registra arquivos e hashes
 exclusivos, pesquisas e prompts completos. Revisão visual das silhuetas/bordas e cinco
-testes isolados aprovados para as 330 artes. Acesso atual exige administrador E
-vtt_premium; pergunta sobre OU/E
-enviada ao usuário, pendente. Administrador concede tag na configuração do VTT.
-Participantes veem apenas arte já colocada em token visível, sem acesso ao catálogo.
+testes isolados aprovados para as 330 artes. Refino explícito de 06/10: acesso por
+administrador OU vtt_premium; administrador não precisa da tag. A aba mostra dois
+blocos de seis criaturas, com prévias limitadas para contas autenticadas. Mudar
+tokens para premium salva a preferência por conta (070) e associa as 330 imagens
+aos IDs de Monstros, incluindo ficha, galeria e novas colocações/arrastes. Não muda
+tokens existentes ou cópias privadas. Catálogo completo ainda exige acesso;
+revogação da tag desativa a troca para não administradores. Administrador concede
+tag na configuração do VTT. Sete testes específicos, 23 regressões e navegador
+1440/768/390/320 aprovados, incluindo recarga e token adicionado com arte correta.
+Participantes também veem arte já colocada em token visível.
 Novos campos de ficha também são removidos da projeção pública. Guia em
 VTT-ACERVO-PREMIUM.md. Pasta privada data/vtt/premium-art; não publicar em public.
 

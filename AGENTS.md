@@ -69,8 +69,12 @@ auditoria idempotente e descarte antes de aplicar; não alterar ficha do site.
 Premium: produzir 330 artes individuais superiores transparentes uma a uma; contador
 vem do manifest de artes realmente concluídas. Modo imagegen embutido e prompts no
 manifest. Não substituir por atlas/recolorações/placeholders. Arquivos privados,
-acesso servidor por administrador E tag vtt_premium (esclarecimento OU/E pendente).
-Participantes só visualizam arte de token visível na mesa, sem catálogo. Administrador
+Refino explícito de 06/10: acesso servidor por administrador OU tag vtt_premium;
+administradores não precisam da tag. Duas prévias de seis criaturas são visíveis
+a contas autenticadas, sem liberar o restante do acervo. Preferência por conta
+Mudar tokens para premium troca imagens na biblioteca e em novas colocações por ID;
+não reescrever tokens/fichas existentes nem catálogo original. Migration 070.
+Participantes também visualizam arte de token visível na mesa. Administrador
 gerencia tag no VTT. Tradução local LibreTranslate/Argos com proteção das regras.
 Migration 069 e detalhes em docs/VTT-ACERVO-PREMIUM.md. Produção concluída em 06/10:
 330 artes próprias para os 330 monstros atuais, com alpha/hash e revisão visual.

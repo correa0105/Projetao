@@ -162,6 +162,9 @@ type Entry = {
   image?: string;
 };
 const monsterMime = 'application/x-alvorada-monster';
+function monsterImage(entry: Entry) {
+  return entry.image || monsterArt(entry.id, entry.name);
+}
 const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
   { id: 'chat', name: 'Chat', icon: MessageSquare },
   { id: 'art', name: 'Biblioteca de arte', icon: Image },
@@ -670,13 +673,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         }
       })
       .catch((e) => setNotice(e.message));
-    api<typeof catalog>('/vtt/compendium')
-      .then((c) => live && setCatalog(c))
-      .catch((e) => setNotice(e.message));
     return () => {
       live = false;
     };
   }, []);
+  useEffect(() => {
+    let live = true;
+    api<typeof catalog>('/vtt/compendium')
+      .then((c) => {
+        if (!live) return;
+        setCatalog(c);
+        setEntry((current) =>
+          current ? c.monsters.find((m) => m.id === current.id) || current : null,
+        );
+      })
+      .catch((e) => live && setNotice(e.message));
+    return () => {
+      live = false;
+    };
+  }, [state?.premiumAccess, state?.premiumTokens]);
   useEffect(() => {
     if (!stage.current) return;
     const observer = new ResizeObserver(([entry]) =>
@@ -3217,6 +3232,21 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       kind={library}
                       gm={gm && !preview}
                       enabled={!!state.premiumAccess}
+                      premiumTokens={!!state.premiumTokens}
+                      changeTokens={async (enabled) => {
+                        const settings = await api<
+                          Pick<VttState, 'premiumAccess' | 'premiumTokens'>
+                        >('/vtt/premium-tokens', {
+                          method: 'PUT',
+                          body: JSON.stringify({ enabled }),
+                        });
+                        setState((current) => (current ? { ...current, ...settings } : current));
+                      }}
+                      viewMonsters={() => {
+                        setLibrary('monsters');
+                        setQuery('');
+                        setEntry(null);
+                      }}
                       query={query}
                       loadKey={presetVersion}
                       importPreset={importMonsterPreset}
@@ -3240,7 +3270,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               >
                                 <img
                                   loading="lazy"
-                                  src={monsterArt(e.id, e.name)}
+                                  src={e.image || monsterArt(e.id, e.name)}
                                   alt={e.name}
                                   draggable={false}
                                 />
@@ -3436,11 +3466,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                                       : undefined
                                   }
                                 >
-                                  {library === 'monsters' && monsterArt(e.id, e.name) && (
+                                  {library === 'monsters' && monsterImage(e) && (
                                     <img
-                                      className="vtt-monster-thumbnail"
+                                      className={
+                                        'vtt-monster-thumbnail' +
+                                        (monsterImage(e).startsWith('/api/vtt/premium-art/')
+                                          ? ' premium'
+                                          : '')
+                                      }
                                       loading="lazy"
-                                      src={monsterArt(e.id, e.name)}
+                                      src={monsterImage(e)}
                                       alt=""
                                       draggable={false}
                                     />

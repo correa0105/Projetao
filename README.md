@@ -6,7 +6,10 @@ privado do mestre; **Traduzir para português** prepara uma cópia revisável. B
 quando já está no final e permite aplicar o dano rolado uma única vez por alvo.
 Biblioteca → Premium reúne 330 artes originais individuais vistas de cima, transparentes,
 uma para cada monstro do catálogo atual, com arquivos próprios e vínculos às fichas.
-Tag Tokens premium em Configurações e ajuda → Acesso premium. Migration 069 e
+Administradores já têm acesso; a tag Tokens premium libera outras contas.
+A aba mostra duas prévias de seis criaturas. **Mudar tokens para premium** troca
+as imagens em Monstros e nos novos tokens da mesa, com preferência salva na conta.
+Tag em Configurações e ajuda → Acesso premium. Migrations 069–070 e
 [funcionamento, permissões e arte](docs/VTT-ACERVO-PREMIUM.md).
 
 **Mural → Torre** abre a Torre do Véu, experimento com 100 andares, encontros e

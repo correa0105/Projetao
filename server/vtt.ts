@@ -11,7 +11,12 @@ import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
 import { vttCombatRouter } from './vtt-combat.js';
-import { vttPremiumRouter, premiumAccess, validatePremiumImages } from './vtt-premium.js';
+import {
+  vttPremiumRouter,
+  premiumSettings,
+  premiumAssets,
+  validatePremiumImages,
+} from './vtt-premium.js';
 import { vttMonsterPresetRouter, saveMonsterPresets } from './vtt-monster-presets.js';
 import { vttDamageRouter } from './vtt-damage.js';
 import { translateMonsterLines } from './vtt-translate.js';
@@ -195,7 +200,7 @@ async function state(rid: string, user: string) {
           ? m.damage
           : null,
     })),
-    premiumAccess: await premiumAccess(user),
+    ...(await premiumSettings(user)),
     bossBars: sceneBossBars(r.document.scenes.find((s) => s.id === r.document.activeScene)!),
     focusSignal: r.focus_signal,
   };
@@ -506,7 +511,14 @@ export function vttRouter() {
     res.json(await state(rid, user));
   });
   router.get('/vtt/compendium', async (_req, res) => {
-    res.json(JSON.parse(await readFile('data/vtt/srd-2024.json', 'utf8')));
+    const catalog = JSON.parse(await readFile('data/vtt/srd-2024.json', 'utf8'));
+    if ((await premiumSettings(res.locals.user.id)).premiumTokens) {
+      const available = new Set((await premiumAssets()).map((a) => a.id));
+      catalog.monsters = catalog.monsters.map((m: { id: string }) =>
+        available.has(m.id) ? { ...m, image: '/api/vtt/premium-art/' + m.id } : m,
+      );
+    }
+    res.json(catalog);
   });
   router.get('/vtt/rooms/:id', async (req, res) =>
     res.json(await state(uuid.parse(req.params.id), res.locals.user.id)),
