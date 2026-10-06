@@ -64,6 +64,7 @@ const WorldAtlas = lazy(() =>
 const Rulebook = lazy(() => import('./Rulebook').then((module) => ({ default: module.Rulebook })));
 const Vtt = lazy(() => import('./Vtt').then((module) => ({ default: module.Vtt })));
 const Tower = lazy(() => import('./Tower').then((module) => ({ default: module.Tower })));
+const HousePage = lazy(() => import('./House').then((module) => ({ default: module.House })));
 const HallOfFame = lazy(() =>
   import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
 );
@@ -627,30 +628,7 @@ function Portal({ user }: { user: User }) {
           />
         )}
         {page === 'lore' && <LoreLibrary />}
-        {page === 'house' && (
-          <>
-            <div className="entries-grid house-grid">
-              {entries
-                .filter((entry) => entry.section === page)
-                .map((entry) => {
-                  return (
-                    <article className="entry-card paper" key={entry.id}>
-                      <div className="entry-icon">
-                        <House size={31} />
-                      </div>
-                      <span className="eyebrow">{entry.tag}</span>
-                      <h2>{entry.title}</h2>
-                      <p className="entry-subtitle">{entry.subtitle}</p>
-                      <p>{entry.body}</p>
-                      <span className="badge neutral">
-                        Conteúdo de cenário · Funcionalidades em desenvolvimento
-                      </span>
-                    </article>
-                  );
-                })}
-            </div>
-          </>
-        )}
+        {page === 'house' && <HousePage character={character} user={user} onPurchased={refresh} />}
       </>
     );
   }

@@ -42,7 +42,9 @@ function SpeechBubbleShape() {
       const rightLimit = face.left + face.width * 0.54 - (stacked ? 32 : 56);
       const available = rightLimit - leftLimit;
       const side = available >= 160;
-      const originalWidth = side ? Math.min(320, available) : Math.min(380, face.width, room.width - 28);
+      const originalWidth = side
+        ? Math.min(320, available)
+        : Math.min(380, face.width, room.width - 28);
       const width = side ? Math.max(160, originalWidth * 0.8) : originalWidth;
       bubble.style.width = `${width}px`;
       bubble.style.maxWidth = 'none';
@@ -421,6 +423,9 @@ export function Shop({
           )}
         </aside>
         <section className="shop-showcase" aria-label="Catálogo da loja">
+          <a className="house-emporium-link" href="#house">
+            Mobília, cartas e quadros para sua House →
+          </a>
           <nav className="shop-shelves shop-stone" aria-label="Categorias da loja">
             <h2>Prateleiras</h2>
             {['Todos', ...content.categories].map((name) => (
@@ -646,11 +651,7 @@ export function Shop({
           })}
         </div>
       </section>
-      {error && !checkout && (
-        <FlashMessage kind="info">
-          {error}
-        </FlashMessage>
-      )}
+      {error && !checkout && <FlashMessage kind="info">{error}</FlashMessage>}
       {checkout && (
         <Modal
           title="Seu carrinho"

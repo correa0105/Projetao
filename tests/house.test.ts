@@ -1,0 +1,442 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
+import sharp from 'sharp';
+import { pool } from '../server/db.js';
+import { migrate } from '../server/migrate.js';
+import { seed } from '../server/seed.js';
+import { createLegacyTestCharacter } from './character-fixtures.js';
+import { houseTemplates, houseCatalog, initialHouseRooms } from '../shared/house.js';
+test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL isolado', async (t) => {
+  assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
+  await migrate();
+  await seed();
+  const { createApp } = await import('../server/app.js');
+  const server = createApp().listen(0, '127.0.0.1');
+  await new Promise<void>((r) => server.once('listening', r));
+  const addr = server.address();
+  assert.ok(addr && typeof addr !== 'string');
+  const base = `http://127.0.0.1:${addr.port}/api`,
+    origin = (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0];
+  type Account = { id: string; cookie: string };
+  async function request(path: string, a?: Account, method = 'GET', body?: unknown) {
+    const r = await fetch(base + path, {
+      method,
+      headers: { Origin: origin, Cookie: a?.cookie || '', 'Content-Type': 'application/json' },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+    return {
+      status: r.status,
+      data: r.headers.get('content-type')?.includes('json')
+        ? await r.json()
+        : await r.arrayBuffer(),
+      headers: r.headers,
+    };
+  }
+  async function signup(name: string) {
+    const r = await request('/auth/sign-up/email', undefined, 'POST', {
+      name,
+      email: `house-${randomUUID()}@example.test`,
+      password: `Test-${randomUUID()}`,
+    });
+    assert.equal(r.status, 200);
+    return {
+      id: r.data.user.id,
+      cookie: r.headers
+        .getSetCookie()
+        .map((c) => c.split(';')[0])
+        .join('; '),
+    };
+  }
+  try {
+    const owner = await signup('Dona'),
+      guest = await signup('Visitante'),
+      admin = await signup('Administrador'),
+      other = admin;
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [admin.id]);
+    const hero = await createLegacyTestCharacter(owner.id, 'Aurora'),
+      visitor = await createLegacyTestCharacter(guest.id, 'Bruma'),
+      outsider = await createLegacyTestCharacter(other.id, 'Pedra');
+    await pool.query('UPDATE characters SET gold_cp=100000 WHERE id=$1', [hero.id]);
+    await pool.query("INSERT INTO achievements(character_id,code)VALUES($1,'first_character') ON CONFLICT DO NOTHING",[hero.id]);
+    let home: any,
+      guestHome: any,
+      letterId = '',
+      frameId = '',
+      variantId = '';
+    const load = async (a = owner, id = home.id) => (await request(`/house/${id}`, a)).data;
+    const layout = () => ({
+      revision: home.revision,
+      name: home.name,
+      rooms: structuredClone(home.rooms),
+    });
+    await t.test('dezesseis ambientes e casa exclusiva por personagem', async () => {
+      assert.equal(houseTemplates.length, 16);
+      for (const k of ['sala', 'cozinha', 'varanda', 'jardim'])
+        assert.equal(houseTemplates.filter((t) => t.kind === k).length, 4);
+      assert.equal((await request('/house')).status, 401);
+      assert.equal((await request('/house', guest, 'POST', { character_id: hero.id })).status, 404);
+      const r = await request('/house', owner, 'POST', { character_id: hero.id });
+      assert.equal(r.status, 201);
+      home = await load(owner, r.data.id);
+      const duplicate = await request('/house', owner, 'POST', { character_id: hero.id });
+      assert.equal(duplicate.data.id, home.id);
+      assert.equal(home.rooms.length, 4);
+      assert.equal((await request(`/house/${home.id}`, admin)).status, 404);
+      guestHome = (await request('/house', guest, 'POST', { character_id: visitor.id })).data;
+    });
+    await t.test('preço servidor, débito único e recusa de saldo arbitrário', async () => {
+      const input = { character_id: hero.id, catalog_id: 'rug', idempotency_key: randomUUID() };
+      const results = await Promise.all([
+        request('/house/purchase', owner, 'POST', input),
+        request('/house/purchase', owner, 'POST', input),
+      ]);
+      assert.deepEqual(results.map((r) => r.status).sort(), [200, 201]);
+      assert.equal(results[0].data.item_id, results[1].data.item_id);
+      assert.equal(
+        (await request('/house/purchase', owner, 'POST', { ...input, price_cp: 1 })).status,
+        400,
+      );
+      assert.equal(
+        (await request('/house/purchase', owner, 'POST', { ...input, catalog_id: 'sofa' })).status,
+        409,
+      );
+      assert.equal(
+        (
+          await request('/house/purchase', guest, 'POST', {
+            ...input,
+            idempotency_key: randomUUID(),
+          })
+        ).status,
+        404,
+      );
+      assert.equal(
+        Number(
+          (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0]
+            .gold_cp,
+        ),
+        97500,
+      );
+      home = await load();
+    });
+    await t.test('geometria, duplicação, ownership e revisão com rollback', async () => {
+      const input = layout(),
+        item = home.inventory[0];
+      input.rooms[0].placements.push({
+        id: randomUUID(),
+        kind: 'item',
+        ref: item.id,
+        x: 0.42,
+        y: 0.84,
+        scale: 0.21,
+        rotation: 15,
+        layer: 1,
+      });
+      assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 200);
+      assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 409);
+      home = await load();
+      const next = layout();
+      next.rooms[1].placements.push({ ...next.rooms[0].placements[0], id: randomUUID() });
+      assert.equal((await request(`/house/${home.id}`, owner, 'PUT', next)).status, 400);
+      next.rooms[1].placements = [];
+      next.rooms[0].placements[0].ref = randomUUID();
+      assert.equal((await request(`/house/${home.id}`, owner, 'PUT', next)).status, 400);
+      assert.equal((await load()).revision, 1);
+      next.rooms[0].placements = [];
+      next.rooms[0].template = 'garden-moon';
+      assert.equal((await request(`/house/${home.id}`, owner, 'PUT', next)).status, 400);
+    });
+    await t.test('carta e quadro com imagem própria, sem endereço externo', async () => {
+      const image = (
+        await sharp({ create: { width: 50, height: 50, channels: 4, background: '#70624b' } })
+          .png()
+          .toBuffer()
+      ).toString('base64');
+      let r = await request('/house/purchase', owner, 'POST', {
+        character_id: hero.id,
+        catalog_id: 'letter',
+        idempotency_key: randomUUID(),
+        content: { title: 'Primeira viagem', text: 'Guarde esta lembrança do caminho.' },
+      });
+      assert.equal(r.status, 201);
+      letterId = r.data.item_id;
+      r = await request('/house/purchase', owner, 'POST', {
+        character_id: hero.id,
+        catalog_id: 'frame',
+        idempotency_key: randomUUID(),
+        content: { title: 'A ponte', text: 'Onde nos encontramos.' },
+        image,
+      });
+      assert.equal(r.status, 201);
+      frameId = r.data.item_id;
+      assert.equal((await request(`/house/items/${frameId}/image`, owner)).status, 200);
+      assert.equal((await request(`/house/items/${frameId}/image`, guest)).status, 404);
+      assert.equal(
+        (
+          await request('/house/purchase', owner, 'POST', {
+            character_id: hero.id,
+            catalog_id: 'frame',
+            idempotency_key: randomUUID(),
+            image: 'https://bad.test/secret',
+          })
+        ).status,
+        400,
+      );
+      home = await load();
+    });
+    await t.test('convite pendente não libera a casa; aceite libera só visita e RP', async () => {
+      assert.equal(
+        (await request(`/house/${home.id}/invites`, owner, 'POST', { user_id: guest.id })).status,
+        200,
+      );
+      assert.equal((await request(`/house/${home.id}`, guest)).status, 404);
+      assert.equal(
+        (
+          await request(`/house/${home.id}/invites/${guest.id}`, other, 'PUT', {
+            status: 'accepted',
+          })
+        ).status,
+        403,
+      );
+      assert.equal(
+        (
+          await request(`/house/${home.id}/invites/${guest.id}`, guest, 'PUT', {
+            status: 'accepted',
+          })
+        ).status,
+        200,
+      );
+      const view = await load(guest);
+      assert.equal(view.is_owner, false);
+      assert.deepEqual(view.inventory, []);
+      assert.deepEqual(view.invites, []);
+      assert.equal(view.gold_cp, undefined);
+      assert.equal(view.items.length, 1);
+      assert.equal((await request(`/house/${home.id}`, guest, 'PUT', layout())).status, 404);
+      assert.equal((await request(`/house/${home.id}/rewards`, guest, 'POST', {})).status, 404);
+    });
+    await t.test('presente transfere a peça uma única vez e preserva conteúdo', async () => {
+      assert.equal(
+        (
+          await request(`/house/items/${letterId}/gift`, owner, 'POST', {
+            character_id: visitor.id,
+          })
+        ).status,
+        200,
+      );
+      assert.equal(
+        (
+          await request(`/house/items/${letterId}/gift`, owner, 'POST', {
+            character_id: outsider.id,
+          })
+        ).status,
+        404,
+      );
+      const collection = await load(guest, guestHome.id);
+      assert.equal(collection.inventory.length, 1);
+      assert.equal(collection.inventory[0].content.text, 'Guarde esta lembrança do caminho.');
+      assert.equal(collection.inventory[0].sender_name, 'Dona');
+      assert.equal(
+        (
+          await pool.query('SELECT count(*)::int AS n FROM house_gift_audit WHERE item_id=$1', [
+            letterId,
+          ])
+        ).rows[0].n,
+        1,
+      );
+      const draft = layout();
+      draft.rooms[0].placements.push({
+        id: randomUUID(),
+        kind: 'item',
+        ref: frameId,
+        x: 0.7,
+        y: 0.25,
+        scale: 0.1,
+        rotation: 0,
+        layer: 2,
+      });
+      assert.equal((await request(`/house/${home.id}`, owner, 'PUT', draft)).status, 200);
+      home = await load();
+      assert.equal(
+        (await request(`/house/items/${frameId}/gift`, owner, 'POST', { character_id: visitor.id }))
+          .status,
+        409,
+      );
+      assert.equal((await request(`/house/items/${frameId}/image`, guest)).status, 200);
+    });
+    await t.test('versões privadas, presença própria e RP idempotente', async () => {
+      const image = (
+        await sharp({ create: { width: 70, height: 120, channels: 4, background: '#897354' } })
+          .webp()
+          .toBuffer()
+      ).toString('base64');
+      let r = await request('/house/variants', guest, 'POST', {
+        character_id: visitor.id,
+        name: 'Ao fogo',
+        image,
+      });
+      assert.equal(r.status, 201);
+      variantId = r.data.id;
+      assert.equal((await request(`/house/variants/${variantId}/image`, owner)).status, 404);
+      const input = {
+        character_id: visitor.id,
+        variant_id: variantId,
+        room: 'sala',
+        x: 0.4,
+        y: 0.8,
+        scale: 0.18,
+      };
+      assert.equal((await request(`/house/${home.id}/presence`, guest, 'PUT', input)).status, 200);
+      assert.equal((await request(`/house/variants/${variantId}/image`, owner)).status, 200);
+      assert.equal((await request(`/house/${home.id}/presence`, owner, 'PUT', input)).status, 404);
+      const message = {
+        character_id: visitor.id,
+        body: 'Bruma aproxima-se da lareira.',
+        idempotency_key: randomUUID(),
+      };
+      const sent = await Promise.all([
+        request(`/house/${home.id}/messages`, guest, 'POST', message),
+        request(`/house/${home.id}/messages`, guest, 'POST', message),
+      ]);
+      assert.equal(sent[0].data.id, sent[1].data.id);
+      assert.equal((await load()).messages.length, 1);
+      assert.equal(
+        (
+          await request(`/house/${home.id}/messages`, guest, 'POST', {
+            ...message,
+            body: 'Outra mensagem.',
+          })
+        ).status,
+        409,
+      );
+    });
+    await t.test('concessões administrativas e conquistas não duplicam recompensas', async () => {
+      const grant = {
+        character_id: hero.id,
+        catalog_id: 'books',
+        reason: 'Prêmio de decoração',
+        idempotency_key: randomUUID(),
+      };
+      assert.equal((await request('/house/admin/grants', owner, 'POST', grant)).status, 403);
+      const pair = await Promise.all([
+        request('/house/admin/grants', admin, 'POST', grant),
+        request('/house/admin/grants', admin, 'POST', grant),
+      ]);
+      assert.ok(pair.every((r) => r.status === 201));
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS n FROM house_items WHERE character_id=$1 AND source='admin'",
+            [hero.id],
+          )
+        ).rows[0].n,
+        1,
+      );
+      const r = await request('/house/admin/rewards', admin, 'POST', {
+        catalog_id: 'chest',
+        achievement_code: 'first_character',
+      });
+      assert.equal(r.status, 201);
+      assert.equal((await request('/house/admin/rewards', owner)).status, 403);
+      const grants = await Promise.all([
+        request(`/house/${home.id}/rewards`, owner, 'POST', {}),
+        request(`/house/${home.id}/rewards`, owner, 'POST', {}),
+      ]);
+      assert.equal(
+        grants.reduce((s, r) => s + r.data.granted, 0),
+        1,
+      );
+      assert.equal((await request(`/house/${home.id}/rewards`, owner, 'POST', {})).data.granted, 0);
+      await request('/house/admin/rewards/' + r.data.id, admin, 'PUT', { active: false });
+    });
+    await t.test(
+      'recompensa exige missão concluída real; dados arbitrários recusados',
+      async () => {
+        const m = (
+          await pool.query(
+            "INSERT INTO board_posts(author_id,kind,status,title,description,location,difficulty,mission_rank)VALUES($1,'mission','active','Missão da casa','Uma jornada da guilda.','Vigília','Tranquila','Ferro')RETURNING id",
+            [admin.id],
+          )
+        ).rows[0];
+        await request('/house/admin/rewards', admin, 'POST', {
+          catalog_id: 'lantern',
+          mission_id: m.id,
+        });
+        assert.equal(
+          (await request(`/house/${home.id}/rewards`, owner, 'POST', {})).data.granted,
+          0,
+        );
+        await pool.query('INSERT INTO mission_participants(post_id,character_id)VALUES($1,$2)',[m.id,hero.id]);
+        await pool.query(
+          'INSERT INTO mission_rewards(post_id,character_id,experience,awarded_by,gold_cp)VALUES($1,$2,0,$3,15000)',
+          [m.id, hero.id, admin.id],
+        );
+        assert.equal(
+          (await request(`/house/${home.id}/rewards`, owner, 'POST', {})).data.granted,
+          0,
+        );
+        await pool.query("UPDATE board_posts SET status='completed' WHERE id=$1", [m.id]);
+        assert.equal(
+          (await request(`/house/${home.id}/rewards`, owner, 'POST', {})).data.granted,
+          1,
+        );
+        assert.equal(
+          (await request(`/house/${home.id}/rewards`, owner, 'POST', { mission_count: 999 }))
+            .status,
+          400,
+        );
+      },
+    );
+    await t.test('revogação retira presença e acesso inclusive às imagens', async () => {
+      assert.equal(
+        (
+          await request(`/house/${home.id}/invites/${guest.id}`, owner, 'PUT', {
+            status: 'revoked',
+          })
+        ).status,
+        200,
+      );
+      assert.equal((await request(`/house/${home.id}`, guest)).status, 404);
+      assert.equal((await request(`/house/items/${frameId}/image`, guest)).status, 404);
+      assert.equal((await request(`/house/variants/${variantId}/image`, owner)).status, 404);
+      assert.equal((await load()).presence.length, 0);
+      assert.equal(
+        (
+          await request(`/house/${home.id}/messages`, guest, 'POST', {
+            character_id: visitor.id,
+            body: 'Tentativa',
+            idempotency_key: randomUUID(),
+          })
+        ).status,
+        404,
+      );
+      assert.equal((await load()).messages.length, 1);
+    });
+    await t.test('bloqueio social impede convites e presentes', async () => {
+      await pool.query('INSERT INTO social_blocks(blocker_id,blocked_id)VALUES($1,$2)', [
+        other.id,
+        owner.id,
+      ]);
+      assert.equal(
+        (await request(`/house/${home.id}/invites`, owner, 'POST', { user_id: other.id })).status,
+        403,
+      );
+      const letter = await request('/house/purchase', owner, 'POST', {
+        character_id: hero.id,
+        catalog_id: 'letter',
+        idempotency_key: randomUUID(),
+      });
+      assert.equal(
+        (
+          await request(`/house/items/${letter.data.item_id}/gift`, owner, 'POST', {
+            character_id: outsider.id,
+          })
+        ).status,
+        403,
+      );
+    });
+  } finally {
+    await new Promise<void>((r, j) => server.close((e) => (e ? j(e) : r())));
+    await pool.end();
+  }
+});

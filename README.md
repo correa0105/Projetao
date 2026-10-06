@@ -1,5 +1,13 @@
 # Alvorada Cinzenta
 
+**Explorar → House**: casa por personagem, quatro ambientes com quatro cenários
+cada, coleção de mobília e companheiros, arraste/giro/tamanho/camadas e salvamento.
+Mobília vende cartas escritas e quadros personalizados que podem ser oferecidos
+a outro personagem. Convites privados liberam visita e RP por texto; versões
+do personagem podem ser guardadas e colocadas na cena. Administrador concede
+mobília e vincula prêmios a missões/conquistas. [Guia e permissões](docs/HOUSE.md).
+Migration 072; checkpoint anterior preservado no GitHub em `654c304`.
+
 Combate: carrossel mais alto e transparente, com minimizar/expandir por jogador
 ou mestre. Antes de iniciar, o mestre pode **Rolar todas as iniciativas**.
 Inventário: escolha compacta de montaria/mascote. Em Conquistas → Títulos do

@@ -1,0 +1,506 @@
+.house-workspace {
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+  color: #d5cec0;
+}
+.house-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 6px;
+}
+.house-header h2 {
+  margin: 5px 0;
+  font-family: var(--font-heading, Georgia, serif);
+  font-weight: 500;
+}
+.house-header-actions,
+.house-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.house-workspace button,
+.house-workspace select,
+.house-buy button {
+  border: 1px solid #79695180;
+  background: #131d24dd;
+  color: #d5cec0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.house-workspace button:hover,
+.house-workspace button[aria-pressed='true'] {
+  border-color: #b59863;
+  background: #29343b;
+}
+.house-workspace button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.house-header select {
+  max-width: 250px;
+}
+.house-rooms {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 5px 0 12px;
+}
+.house-rooms button {
+  min-width: 90px;
+}
+.house-rooms span {
+  margin-left: auto;
+  font-size: 12px;
+  opacity: 0.7;
+}
+.house-scene {
+  position: relative;
+  aspect-ratio: 16/9;
+  background-position: center;
+  background-size: 100% 100%;
+  overflow: hidden;
+  border: 1px solid #77644455;
+  border-radius: 5px;
+  isolation: isolate;
+}
+.house-scene .house-piece,
+.house-scene .house-actor {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  touch-action: none;
+  user-select: none;
+  display: block;
+  height: auto;
+  min-width: 0;
+  transform-origin: 50% 100%;
+  cursor: grab;
+}
+.house-scene .house-piece:hover,
+.house-scene .house-actor:hover {
+  background: transparent;
+  border: 0;
+}
+.house-piece.selected {
+  outline: 1px dashed #d4b57b;
+  outline-offset: 6px;
+}
+.house-piece img,
+.house-actor img,
+.house-piece .pet-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+.house-piece .pet-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.house-actor {
+  transform: translate(-50%, -100%);
+  filter: drop-shadow(0 4px 5px #0007);
+}
+.house-actor span {
+  font:
+    11px Georgia,
+    serif;
+  position: absolute;
+  bottom: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-shadow: 0 2px 4px #000;
+}
+.house-item-art {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.house-item-art > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.house-frame-art .house-picture {
+  position: absolute;
+  inset: 15% 17%;
+  width: 66%;
+  height: 70%;
+  object-fit: cover;
+}
+.house-scene-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  color: #c4b699;
+  font:
+    11px Georgia,
+    serif;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  text-shadow: 0 2px 4px #000;
+  z-index: 500;
+}
+.house-dock {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.house-dock button {
+  background: #151f27cc;
+  padding: 10px 16px;
+}
+.house-panel {
+  position: relative;
+  border: 1px solid #74664e66;
+  border-radius: 5px;
+  background: #111b23eb;
+  padding: 26px 22px;
+  margin-bottom: 25px;
+}
+.house-panel-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px !important;
+}
+.house-panel-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+.house-panel h3 {
+  font:
+    22px Georgia,
+    serif;
+  margin: 0 0 14px;
+}
+.house-panel p {
+  font-size: 13px;
+  color: #bcb7ae;
+}
+.house-panel label,
+.house-buy label {
+  display: grid;
+  gap: 7px;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+.house-panel input,
+.house-panel textarea,
+.house-panel select,
+.house-buy input,
+.house-buy textarea {
+  background: #0c151bd9;
+  color: #e1d8c7;
+  border: 1px solid #71634c88;
+  border-radius: 3px;
+  padding: 9px;
+  min-width: 0;
+  width: 100%;
+}
+.house-panel textarea,
+.house-buy textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.house-settings {
+  display: flex;
+  gap: 14px;
+  align-items: end;
+  flex-wrap: wrap;
+}
+.house-settings label {
+  flex: 1;
+  min-width: 180px;
+}
+.house-settings button {
+  margin-bottom: 14px;
+}
+.house-transform {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  border-block: 1px solid #77644455;
+  padding: 12px 0;
+}
+.house-transform label {
+  margin: 0;
+  max-width: 200px;
+}
+.house-help {
+  font-size: 12px !important;
+}
+.house-inventory,
+.house-catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  gap: 10px;
+}
+.house-inventory > button,
+.house-inventory-item > button,
+.house-catalog > button {
+  display: flex;
+  flex-direction: column;
+  background: #1a252dcc;
+  border-color: #71634c55;
+  gap: 7px;
+  min-width: 0;
+  width: 100%;
+  height: 180px;
+  font-size: 12px;
+}
+.house-catalog img,
+.house-inventory img,
+.house-inventory .house-item-art,
+.house-inventory .pet-art {
+  height: 110px;
+  max-width: 110px;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+.house-inventory .house-item-art > img {
+  height: 100%;
+  object-fit: contain;
+}
+.house-inventory .pet-art svg {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+.house-inventory small,
+.house-catalog span {
+  color: #b49b6e;
+}
+.house-inventory-item > div {
+  display: flex;
+  gap: 4px;
+  padding-top: 4px;
+}
+.house-inventory-item > div > button {
+  font-size: 10px;
+  flex: 1;
+  padding: 5px;
+}
+.house-feedback {
+  padding: 12px;
+  background: #1a2733;
+  border-left: 2px solid #bb956b;
+  white-space: pre-wrap;
+}
+.house-invitations > div {
+  padding: 14px;
+  border: 1px solid #74664e;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.house-invitations span {
+  flex: 1;
+}
+.house-welcome {
+  position: relative;
+  min-height: 350px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.house-welcome > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+.house-welcome > div {
+  position: relative;
+  padding: 110px 30px;
+  background: linear-gradient(90deg, #0e1729e6, #0e172915);
+  height: 100%;
+}
+.house-welcome h3 {
+  font:
+    30px Georgia,
+    serif;
+}
+.house-welcome p {
+  max-width: 320px;
+}
+.house-people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 190px;
+  overflow: auto;
+  margin-bottom: 15px;
+}
+.house-guest-list {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow: auto;
+}
+.house-guest-list li {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #77644444;
+  font-size: 12px;
+}
+.house-chat {
+  max-height: 290px;
+  overflow: auto;
+  margin-bottom: 15px;
+  overscroll-behavior: contain;
+}
+.house-chat p {
+  display: grid;
+  grid-template-columns: 100px 1fr 40px;
+  gap: 15px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.house-chat strong {
+  color: #c4a26c;
+}
+.house-chat time {
+  font-size: 10px;
+  opacity: 0.6;
+}
+.house-buy {
+  display: grid;
+  gap: 12px;
+}
+.house-buy > img {
+  max-height: 180px;
+  max-width: 200px;
+  object-fit: contain;
+  justify-self: center;
+}
+.house-buy blockquote {
+  font:
+    italic 16px Georgia,
+    serif;
+  color: #bfa57d;
+}
+.house-letter p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.house-letter > .house-item-art {
+  width: 220px;
+  margin: auto;
+}
+.house-panel details {
+  border-block: 1px solid #77644455;
+  padding: 15px 0;
+  margin-block: 15px;
+}
+.house-panel summary {
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+@media (max-width: 650px) {
+  .house-header {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .house-header-actions {
+    width: 100%;
+  }
+  .house-header select {
+    flex: 1;
+    max-width: 100%;
+  }
+  .house-header button {
+    font-size: 11px;
+  }
+  .house-rooms button {
+    min-width: 0;
+    flex: 1;
+    padding: 8px;
+  }
+  .house-rooms span {
+    display: none;
+  }
+  .house-scene {
+    min-height: 0;
+  }
+  .house-dock {
+    gap: 4px;
+  }
+  .house-dock button {
+    font-size: 11px;
+    padding: 8px;
+  }
+  .house-dock svg {
+    width: 14px;
+  }
+  .house-panel {
+    padding: 24px 12px;
+  }
+  .house-panel-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+  .house-chat p {
+    grid-template-columns: 70px 1fr;
+    gap: 8px;
+  }
+  .house-chat time {
+    grid-column: 2;
+  }
+  .house-transform {
+    gap: 8px;
+  }
+  .house-inventory,
+  .house-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .house-workspace {
+    overflow-wrap: anywhere;
+  }
+  .house-settings label {
+    min-width: 120px;
+  }
+  .house-workspace input,
+  .house-workspace select {
+    max-width: 100%;
+  }
+  .house-actor span {
+    font-size: 8px;
+    bottom: -11px;
+  }
+  .house-scene-caption {
+    font-size: 8px;
+    bottom: 4px;
+    left: 5px;
+  }
+}

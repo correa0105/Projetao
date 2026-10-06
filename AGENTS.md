@@ -62,6 +62,14 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+House 06/10 implementado depois do checkpoint654c304/tag antes-house enviado.
+Guia vigente em docs/HOUSE.md: propriedade por personagem, quatro ambientes/16
+cenários, coleção house_items sem revenda, layout com revisão, presentes uma vez,
+convites/visitas privadas e RP, versões/presença por ownership, recompensas por
+histórico real. Sem bypass de visita para administrador; bloqueios sociais valem.
+Migration 072; imagens privadas em PostgreSQL, cenários/objetos em public/house.
+Não alterar o acampamento, inventário de combate ou cartas equipáveis por isso.
+
 Correções 06/10 antes do House: carrossel alto/transparente com minimizar local;
 mestre rola iniciativas em grupo somente antes de começar (bônus/dados resolvidos
 no servidor). Inventário: controles compactos de montaria/mascote, sem seções

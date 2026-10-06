@@ -19,6 +19,7 @@ import { pool, transaction } from './db.js';
 import { administratorPredicate, isAdministrator, requireAdministrator } from './administrators.js';
 import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema } from './missions.js';
+import { houseRouter } from './house.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
 import { characterArtRouter, characterListSql } from './character-art.js';
 import { characterSchema } from '../shared/character-art.js';
@@ -130,7 +131,8 @@ export function createApp() {
     req.path === '/api/event-images' ||
     req.path === '/api/lore' ||
     req.path.startsWith('/api/lore/') ||
-    req.path.startsWith('/api/rulebook')
+    req.path.startsWith('/api/rulebook') ||
+    req.path.startsWith('/api/house')
       ? next()
       : express.json({ limit: '128kb' })(req, res, next),
   );
@@ -183,6 +185,7 @@ export function createApp() {
     }),
   );
   app.use('/api/character-art', express.json({ limit: '12mb' }));
+  app.use('/api/house', express.json({ limit: '8mb' }));
   app.use('/api/lore', express.json({ limit: '2mb' }));
   app.use('/api/rulebook', express.json({ limit: '12mb' }));
   app.use('/api', rulebookRouter());
@@ -204,6 +207,7 @@ export function createApp() {
   app.use('/api', vttRouter());
   app.use('/api', socialRouter());
   app.use('/api', towerRouter());
+  app.use('/api', houseRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [permission],

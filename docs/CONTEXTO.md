@@ -1,5 +1,19 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## House implementado após checkpoint (06/10/2026)
+
+Checkpoint anterior `654c304` e tag codex/checkpoint-antes-house-2026-10-06 foram
+enviados/verificados no GitHub antes da implementação. House agora é funcional:
+quatro ambientes, quatro cenários cada, doze móveis/lembranças, coleção própria
+sem revenda, arraste/giro/tamanho/camadas, revisão e salvar/descartar. Convites
+privados, RP idempotente, presença/versões próprias e companheiros. Cartas e
+quadros com texto/imagem são compráveis e transferíveis uma vez a outro personagem.
+Administração concede peças e vincula a missões/conquistas históricas com auditoria
+e concessão única; sem bypass administrativo de visita. Migration 072; doze testes
+isolados + navegador em quatro larguras aprovados. Arte própria, prompts/hashes
+em public/house/art-manifest.json. Guia completo HOUSE.md. Compra em mapas futura.
+Próxima etapa autorizada: expansão do Empório conforme FILA-2026-10-06.md.
+
 ## Correções de interface e anatomia antes do House (06/10/2026)
 
 Carrossel do combate mais alto/transparente, com minimizar/expandir local por
