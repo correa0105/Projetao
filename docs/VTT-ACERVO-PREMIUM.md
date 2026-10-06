@@ -65,12 +65,14 @@ arquivo, dimensões, pixels transparentes, hash SHA-256, prompt completo e refer
 pesquisadas no Pinterest. Modo usado: **imagegen embutido**, geração individual; azul
 recebeu edição de margem. Originais preservados no diretório de imagens geradas.
 
-Marco de produção: 70 artes concluídas em 06/10, do Aboleth ao Cloud Giant, incluindo os
+Marco de produção: 100 artes concluídas em 06/10, do Aboleth ao Ettercap, incluindo os
 dez dragões adultos e os dez anciões, todos com arquivos próprios. Armadura, árvore,
 bico de machado, azer, golem de argila e bugbear receberam revisão da câmera.
 Basilisco e cão teleportador tiveram os membros corrigidos; behir foi redesenhado
 com doze patas em seis pares visíveis. Chuul e filhote de dragão negro receberam
-ajuste de enquadramento. O total restante é 260;
+ajuste de enquadramento. Serpente constritora teve a continuidade corrigida; manto
+sombrio recebeu oito tentáculos e drider foi redesenhado com oito patas separadas
+em quatro pares. O total restante é 230;
 o contador ao vivo continua vindo do manifest, sem estimar imagens prontas.
 Silhuetas estreitas, como a espada animada, são validadas sem exigir a área de
 um corpo largo. Verificação visual no navegador confirmou alpha e bordas limpas.
