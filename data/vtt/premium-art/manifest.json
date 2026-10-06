@@ -1642,6 +1642,491 @@
         "https://www.pinterest.com/pin/563161128420975151/"
       ],
       "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-ettin",
+      "name": "Ettin",
+      "filename": "monster-ettin-v1.webp",
+      "width": 1374,
+      "height": 1145,
+      "sha256": "66950708a01ccf639b622bda577e3c095f782f6728ffc9a8e4890cbeeb98de76",
+      "transparentPixels": 776722,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Ettin. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/694187730058776939/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: An ettin giant: ONE massive hulking shared humanoid torso with EXACTLY TWO heads side by side and exactly TWO arms, TWO legs. Both bald rough-haired crown tops visible, patchwork fur/leather across broad dorsal shoulders, crude double-bitted axe in one hand, large knotted club in other. Muddy tan skin, powerful uneven anatomy, one loincloth, no second body or extra heads, no frontal faces. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/694187730058776939/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-fire-elemental",
+      "name": "Fire Elemental",
+      "filename": "monster-fire-elemental-v1.webp",
+      "width": 1275,
+      "height": 1233,
+      "sha256": "91dbd1c33783ee818b190a1467500eae273686df4c0ed73b33c2dba607d5ed25",
+      "transparentPixels": 905093,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Fire Elemental. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/1041105638852185943/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: A fire elemental: ONE coherent humanoid-shaped body of layered living flame, opaque dark ember core along dorsal spine and crown with translucent curling fire edges attached to body, exactly TWO arm-like branching flames and ONE joined tapering vortex-like lower flame column. Flame tongues in copper gold and deep red, realistic richly modeled flame volumes with readable silhouette, no free-floating sparks, backdrop glow or smoke. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/1041105638852185943/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-fire-giant",
+      "name": "Fire Giant",
+      "filename": "monster-fire-giant-v1.webp",
+      "width": 1280,
+      "height": 1229,
+      "sha256": "8a195ccedb27a4ce44e756649fd3108c561310c9e7906c2e565e5d74a9f75ebb",
+      "transparentPixels": 817592,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Fire Giant. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/699043173442269432/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One fire giant, huge stocky powerful humanoid with charcoal-dark skin, vivid braided rust-orange hair seen on crown, heavy soot-black iron plate armor with bronze rivets and worn forge texture, exactly TWO arms and TWO booted legs. Broad-backed battle stance, enormous heavy dark greatsword angled across side, one clenched gauntlet, no flaming background, no frontal chest, distinctive dwarf-like bulk. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/699043173442269432/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-flesh-golem",
+      "name": "Flesh Golem",
+      "filename": "monster-flesh-golem-v1.webp",
+      "width": 1234,
+      "height": 1275,
+      "sha256": "ce68a90599a7dc2dec4c35ff54604e49f6e7f7b6f14f70625b29caafdd38e6bf",
+      "transparentPixels": 781080,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Flesh Golem. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/279997301827583335/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One ancient humanoid arcane patchwork guardian, a massive fantasy golem fully dressed in a weathered dark leather work apron and heavy trousers. Slate-gray and pale tan hands and head with faint smooth healed seam lines, old brass fasteners on outer leather garments, broad asymmetrical dorsal shoulders, exactly TWO large arms, TWO booted legs, ONE blocky bald head viewed from above. Closed smooth intact surfaces throughout, calm heavy stance, powerful chunky hands held outward. Worn clothing and age marks, non-graphic fantasy collectible art, no injury scene. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/279997301827583335/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-flying-snake",
+      "name": "Flying Snake",
+      "filename": "monster-flying-snake-v1.webp",
+      "width": 1237,
+      "height": 1271,
+      "sha256": "35b13e6fac90ff42421b203f8e2b002cae099213242ff5d581e62fc9cd0a35eb",
+      "transparentPixels": 1252065,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Flying Snake. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/12384967704379946/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One small flying snake, single continuous slim emerald and russet patterned snake body, ONE small snake head, ONE tapering tail, exactly TWO small feathered gold/green wings attached just behind neck, no limbs/feet. Open loose curving body, delicate natural scales, fully intact feathers, lighter and smaller wings than the couatl, no scene. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/12384967704379946/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-frog",
+      "name": "Frog",
+      "filename": "monster-frog-v1.webp",
+      "width": 1278,
+      "height": 1230,
+      "sha256": "733b2ee82a87bc3e16672619fe6dd98f9f361273e157448ee52918931aa33601",
+      "transparentPixels": 890648,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Frog. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ . Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural small marsh frog: ONE smooth olive-green mottled squat body, ONE head with two rounded eye bumps seen from above, exactly FOUR limbs, two small front arms with finger toes and two large folded rear hopping legs with webbed feet. Wet finely textured skin and ochre dorsal stripe, no tail, humanoid costume or extra feet. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/"
+      ],
+      "research_query": "Frog DnD token Pinterest; Frog monster art Pinterest",
+      "research_note": "Pesquisa pública não localizou arte superior específica indexada; anatomia do catálogo e referência geral orientam desenho original.",
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-frost-giant",
+      "name": "Frost Giant",
+      "filename": "monster-frost-giant-v1.webp",
+      "width": 1287,
+      "height": 1222,
+      "sha256": "d74d0e81b461776bbf90747934b79cab05f881d9024ed9eafb5353014d659199",
+      "transparentPixels": 796220,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Frost Giant. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/967992513632723247/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One frost giant, massive pale ice-blue humanoid with thick snowy white braided hair crown, shaggy gray fur cloak, heavy aged blue iron/leather harness across broad shoulders, exactly TWO arms and TWO fur-booted legs. Wields one large two-handed northern battle axe tilted outward, long bundled hair tail on back, intricate worn ice-scarred armor, no frost glow/backdrop. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/967992513632723247/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-gargoyle",
+      "name": "Gargoyle",
+      "filename": "monster-gargoyle-v1.webp",
+      "width": 1309,
+      "height": 1201,
+      "sha256": "2b638cf36d32041f55cae64e4069c917b6ca76c1fbbffe381ded667d0301bc48",
+      "transparentPixels": 890879,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Gargoyle. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/776448792011174194/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One gargoyle: monstrous hunched stony humanoid with weathered slate gray material, angular demonic head crown with two short stone horns, exactly TWO arms with claw hands, TWO crouched legs and TWO short broad membranous stone wings attached to dorsal back, ONE narrow stone tail. Irregular chipped carved surfaces, moss only in fissures, no pedestal, building or scenery. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/776448792011174194/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-gelatinous-cube",
+      "name": "Gelatinous Cube",
+      "filename": "monster-gelatinous-cube-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f1d8d1f8bcc719047c1b574a5b1046f4df86cd7c8842917d05b0e527359261ae",
+      "transparentPixels": 448595,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Gelatinous Cube. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/487585097154144401/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One gelatinous cube seen STRICTLY straight down: a SQUARE upper face with slightly rounded wobbly edges and thick convex jelly volume, transparent sea-glass pale teal/slate gelatin with tiny suspended bubbles, trapped old bronze helmet and weathered dagger embedded INSIDE cube for scale. Subtle wavy optical refraction and viscous ripples across square top, face fills squared silhouette; NO visible isometric side faces. No arms, eyes, head or ground/base. Real transparent background outside cube, opaque highlights/embedded items sufficient readable on dark VTT. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/487585097154144401/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-ghast",
+      "name": "Ghast",
+      "filename": "monster-ghast-v1.webp",
+      "width": 1219,
+      "height": 1290,
+      "sha256": "25154280a039b36d8fb73f2ec3c33f8399fda36f7a5f6c28ff24c820a086c344",
+      "transparentPixels": 924262,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Ghast. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ . Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One ghast, feral strong undead humanoid with wiry sinewy gray-purple skin, coarse black hair crown, bony hunched dorsal shoulders, exactly TWO elongated clawed arms and TWO bent legs. Torn dark ochre funeral wraps and tattered leather girdle, mouth mostly hidden by overhead crown, small protruding dark tongue toward floor. Strong muscular spine and sickly purple lesions, non-graphic, no blood or detached parts, no Minecraft cube shape. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/"
+      ],
+      "research_query": "Ghast DnD token Pinterest; Ghast monster art Pinterest",
+      "research_note": "Pesquisa pública não localizou arte superior específica indexada; anatomia do catálogo e referência geral orientam desenho original.",
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-ghost",
+      "name": "Ghost",
+      "filename": "monster-ghost-v1.webp",
+      "width": 1230,
+      "height": 1278,
+      "sha256": "93b0a2569a92e8b592744ac4071945751e9d1658e41a7f8039c4cfb9061d170d",
+      "transparentPixels": 996073,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Ghost. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/899031144341819408/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One humanoid ghost spirit viewed from true overhead crown/back: long loose silver-white hair crown, aged translucent blue-gray flowing ceremonial robe with clearly modeled folds, exactly TWO outstretched arms, lower body dissolves into ONE short coherent trailing spectral tail. Semitransparent at silhouette edges, ivory opaque highlights on cloth crest, distinct expressive hands. No ambient scene mist, circular halo, facial portrait or free-floating ornaments. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/899031144341819408/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-ghoul",
+      "name": "Ghoul",
+      "filename": "monster-ghoul-v1.webp",
+      "width": 1312,
+      "height": 1199,
+      "sha256": "33112decf74ac070b4a2d627e1f95e01bd21e6fcc29a578b8d28c6486276e840",
+      "transparentPixels": 973129,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Ghoul. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/200621358394727881/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One ghoul undead humanoid, lean pale gray-tan leathery skin, sparse dark hair crown, hunched sharp shoulder blades, exactly TWO long clawed arms and TWO gaunt bent legs, ragged dark green/brown burial trousers. Lower stalking crouch, sinewy dorsal spine, dirt and old healed scars, no exposed organs or blood. Distinct leaner anatomy than muscular ghast, no weapon or armor. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/200621358394727881/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-ape",
+      "name": "Giant Ape",
+      "filename": "monster-giant-ape-v1.webp",
+      "width": 1222,
+      "height": 1287,
+      "sha256": "6e5ba8b026c17d0befd194982deb00716aa8a5062093b22c0f06780a06e7bce1",
+      "transparentPixels": 664183,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Ape. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/349169777375106558/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT ape, immense silver-backed gorilla rather than recolored smaller ape. Huge rounded dorsal shoulder muscle, charcoal coarse fur with broad textured silver saddle on back, exactly FOUR primate limbs: TWO long thick arms on knuckles and TWO shorter rear legs. One head crown between shoulders, no tail, huge leathery knuckles, asymmetrical turning knuckle-walk, fine individual fur with scars, no human equipment. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/349169777375106558/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-badger",
+      "name": "Giant Badger",
+      "filename": "monster-giant-badger-v1.webp",
+      "width": 1374,
+      "height": 1145,
+      "sha256": "609725087e905cdad64c5c3c430c2e873d5f09974c9616ea066cfd4e42fb09ff",
+      "transparentPixels": 832817,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Badger. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/17662623526184309/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT badger, stocky immense mustelid with thick coarse slate-brown fur and black/ivory head stripes, ONE head, exactly FOUR muscular short legs, broad digger claws extended at front, ONE short furry tail. Powerful broad-backed crouch turning right, scarred pelt and muddy rough claws, distinct new pose/anatomy from ordinary badger, not resized artwork. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/17662623526184309/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-bat",
+      "name": "Giant Bat",
+      "filename": "monster-giant-bat-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "68ca3bed57de78658d7ece7097ab965df51bef2fd6d75b369951978444a007a9",
+      "transparentPixels": 985556,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Bat. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/820288519652696863/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT bat, enormous russet-black furred bat seen overhead in flight, ONE elongated bat head with large upright ears, exactly TWO huge leathery membranous wings incorporating long arm/finger bones and TWO hind feet joined by narrow tail membrane. ONE short thin tail. Slight asymmetric wing sweep, fine veins and layered leathery folds, intact wingtips and claws, no giant external shadow or cave. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/820288519652696863/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-boar",
+      "name": "Giant Boar",
+      "filename": "monster-giant-boar-v1.webp",
+      "width": 1201,
+      "height": 1310,
+      "sha256": "fca538078fb6ad1ff15f20279dbf6daf44912bfb65dc292d342df80336fe9c34",
+      "transparentPixels": 836584,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Boar. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/587579082622208586/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT wild boar, massive deep gray-brown bristled body with heavily ridged neck mane, broad skull crown, TWO large outward-curving ivory tusks, exactly FOUR short strong hoofed legs and ONE small coarse tail. Charging turned diagonally toward lower right, scarred bristled dorsal pelt and thick shoulders. New original larger creature anatomy/pose, not resized ordinary boar. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/587579082622208586/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-centipede",
+      "name": "Giant Centipede",
+      "filename": "monster-giant-centipede-v1.webp",
+      "width": 1224,
+      "height": 1285,
+      "sha256": "bc23cfce41bf2086e17e97f597cdad45e7bf55a57ec5068e311f7650beed048d",
+      "transparentPixels": 1179632,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Centipede. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/20688479529768775/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT centipede: ONE very long flattened segmented rust/umber insect body, ONE armored head with TWO antennae and curved mandibles, ONE tapered posterior. Many repeated articulated legs arranged as ONE left/right pair PER trunk segment. Long open shallow C curve with clear gaps so segments and rows of legs are readable. Layered chitin plates, fine bristles, precise joints, not a reptile or colorful dragon, no disconnected leg piles. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/20688479529768775/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-constrictor-snake",
+      "name": "Giant Constrictor Snake",
+      "filename": "monster-giant-constrictor-snake-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "fdc8839bd886b9f9cb8fe7fe0c830f95cf11a01fd6dd34d3d2b5c76d4793269b",
+      "transparentPixels": 758584,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Constrictor Snake. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/671599363169541351/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT constrictor snake: huge thick muscular dark jade/charcoal patterned python, ONE continuous legless snake body with ONE head at one end and ONE tapering tail at the opposite end. A wide loose open coil with head angled upper right and tail sweeping left, continuous anatomy throughout, no disconnected snake pieces. Bronze olive scale highlights, very heavy volume, distinct markings and new pose from ordinary constrictor. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/671599363169541351/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-crab",
+      "name": "Giant Crab",
+      "filename": "monster-giant-crab-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "5eb393f5ea95c3bed65eacedbd5bd799ac3b2ec7d0a72ce94f31a6c837fde1b6",
+      "transparentPixels": 849714,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original GIANT CRAB token, exact 90 degree orthographic overhead dorsal view, real transparent alpha. ONE broad dark blue-brown barnacle scarred carapace and TWO massive forward asymmetrical pincers, one left one right. EIGHT WALKING LEGS are crucial, separate from the pincers: FOUR clearly separated jointed walking legs fan from EACH side of shell. Pair1 extends sideways and slightly forward at shoulder level, pair2 extends straight sideways at upper-middle shell, pair3 extends sideways and slightly rearward at lower-middle shell, pair4 extends strongly backward from bottom corners. Final count is FOUR walking legs on LEFT, FOUR walking legs on RIGHT, plus TWO big front claws = TEN appendages. Give each walking leg an obvious three-jointed complete tapered tip with transparent gaps. Broad but not round shell, irregular natural blue iron-brown shell textures, sea barnacles only attached to body, beautiful modeled volume, scratches and wet reflection. Exquisite finely painted realistic fantasy artwork. Complete all ten appendages, generous transparent margin on every side. No text, no numbers or diagrams, no frame, token base, atlas, water or scenery. Reference direction only from Pinterest https://br.pinterest.com/pin/324611085643692072/ and https://www.pinterest.com/pin/908953137988813507/; original artwork no copying.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/908953137988813507/"
+      ],
+      "created_at": "2026-10-06",
+      "revision_note": "Novo desenho para oito patas de caminhada em quatro pares e duas pinças"
+    },
+    {
+      "id": "monster-giant-crocodile",
+      "name": "Giant Crocodile",
+      "filename": "monster-giant-crocodile-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "75c6580226d0df4106c8cbc93b70005180574773c033bed3d88562b108a529f9",
+      "transparentPixels": 991069,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Crocodile. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/82401868177310646/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT crocodile, massive ancient broad-backed dark olive-black reptile with huge irregular dorsal scutes, ONE very broad flattened head, exactly FOUR muscular short clawed legs, ONE long thick tapering tail curving left. Scarred and weathered armor texture, fine small scales between scutes, predatory spread stance, no rider or saddle, no dragon wings, no water or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/82401868177310646/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-eagle",
+      "name": "Giant Eagle",
+      "filename": "monster-giant-eagle-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "911892f0006a22247e2284abfce73396566f8ed6a63c1a560d8ddf20c748e4bc",
+      "transparentPixels": 1035541,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Eagle. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/378583912429451311/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT eagle seen true overhead in flight, ONE head with small sharp gold hook beak, exactly TWO enormous broad feathered wings and TWO taloned feet folded subtly toward body, ONE fanned layered tail. Dark espresso plumage, pale ivory nape streak and amber-gold covert feather fringes. Wings tilted asymmetrically within overhead plane, richly detailed intact flight feathers, original pose/pattern unlike normal eagle, no rider. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/378583912429451311/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-elk",
+      "name": "Giant Elk",
+      "filename": "monster-giant-elk-v1.webp",
+      "width": 1226,
+      "height": 1283,
+      "sha256": "ea74ed238c2fd005866608f1b01225b442a9d59574bbe79768a4a525601101da",
+      "transparentPixels": 958507,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Elk. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/656399714431087512/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT elk, colossal noble cervid with robust dark chestnut body, black shaggy shoulder mane, exactly FOUR strong hoofed legs, ONE head and ONE short tail, TWO enormous realistically branching antlers attached only to head. Dorsal back and antler crowns seen overhead, walking diagonally right, antler tips separated clearly, subtle old scars, no humanoid traits, no magic branches from body. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/656399714431087512/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-fire-beetle",
+      "name": "Giant Fire Beetle",
+      "filename": "monster-giant-fire-beetle-v1.webp",
+      "width": 1216,
+      "height": 1293,
+      "sha256": "0901dd6b40346dc53ebd028f4c76f9c65bee83b4a1eaf451e69bd80fd3ac330b",
+      "transparentPixels": 970090,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Fire Beetle. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/862720872357930379/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One giant FIRE beetle: natural insect anatomy, oval lustrous charcoal/rust wing cases over dorsal abdomen, exactly SIX jointed legs (three pairs), TWO short antennae, ONE small head with mandibles. Two contained amber bioluminescent glands near head and one near rear, warm reflected glow ON shell only, no detached fire or background glow. Fine rugged chitin microtexture, readable insect silhouette, not a humanoid. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/862720872357930379/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-frog",
+      "name": "Giant Frog",
+      "filename": "monster-giant-frog-v1.webp",
+      "width": 1312,
+      "height": 1199,
+      "sha256": "d770ad17e1fd98c1255f80bc064741dc9ff0dcac916ba46a2b6bc3e698f41f4a",
+      "transparentPixels": 662604,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Frog. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/732046114401542788/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT frog, massive squat marsh amphibian with rough mottled moss-olive and warm brown dorsal skin, broad flattened ONE head and two raised eye bumps, exactly FOUR limbs: TWO short front legs and TWO powerful folded rear jumping legs with large webbed feet. No tail, connected stocky torso, oversized natural frog anatomy with many subtle warts, new pose distinct from small frog, no humanoid clothes or swamp scenery. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/732046114401542788/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-goat",
+      "name": "Giant Goat",
+      "filename": "monster-giant-goat-v1.webp",
+      "width": 1199,
+      "height": 1312,
+      "sha256": "840c70e0fea34afd70bed05dfdde9641f93474e4572435d8fdb3d3c1c66202fc",
+      "transparentPixels": 987360,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Goat. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/413275703324965555/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT mountain goat, heavy ivory/gray shaggy body with dark spine stripe, ONE lowered head, TWO massive backward curved ridged horns, exactly FOUR muscular hoofed legs and ONE short tail. One long chin tuft barely visible under muzzle, crown and dorsal mane seen directly above, braced stepping pose, fine flowing fur and horn striations, no saddle, armor or steampunk machinery. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/413275703324965555/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-hyena",
+      "name": "Giant Hyena",
+      "filename": "monster-giant-hyena-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "bd24cc7789bf01d0640b53b25c128e2465691504f782850d217aa5ecda47bfef",
+      "transparentPixels": 859481,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Hyena. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/536280268132889261/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT spotted hyena, huge heavy tan/gray spotted canine-like body with strongly raised shoulder hump and sloping rear back, broad blunt muzzle, rounded ears, coarse short black dorsal mane, exactly FOUR muscular legs and ONE short bushy tail. Loping scavenger turn left, black natural spot clusters, fine brindled coarse fur and old scars. Natural hyena, not biped gnoll, no fire, neon, jewelry or clothes. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/536280268132889261/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-lizard",
+      "name": "Giant Lizard",
+      "filename": "monster-giant-lizard-v1.webp",
+      "width": 1222,
+      "height": 1287,
+      "sha256": "c0bb778ab12f07e4d9bceecbf6b16b8d3753bf7122dfdf09a8fe9b5d24d65191",
+      "transparentPixels": 1011526,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Lizard. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/653233120980984789/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT monitor lizard, heavy long olive-brown reptile with elongated narrow head, tiny crown scales, broad dorsal torso, exactly FOUR splayed clawed legs and ONE very long tapered whipping tail curved to right. Fine pebbled scales with dark mottled patterns and broad muscular shoulders, forked tongue barely visible, distinct monitor rather than crocodile armored scutes, no wings or fantasy horns. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/653233120980984789/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-octopus",
+      "name": "Giant Octopus",
+      "filename": "monster-giant-octopus-v1.webp",
+      "width": 1312,
+      "height": 1199,
+      "sha256": "dc69bc1b263621ff35956d42ecee751afe38a9c76de2c699ec643ee0329fc4f3",
+      "transparentPixels": 731530,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Octopus. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/486599934716391433/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT octopus: ONE rounded heavy soft mantle, exactly EIGHT thick tapering arms attached together around ONE central head/mouth area, spread in distinct irregular readable directions with natural curl tips and some small ventral sucker edges visible. Red-brown and indigo mottled pebbly skin, iridescent wet highlights restricted to body, highly detailed muscular suckered arms, no extra ninth tentacle, no water/lighthouse or scenery. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/486599934716391433/"
+      ],
+      "created_at": "2026-10-06",
+      "edit_prompt": "Use case: edit-anatomical-detail. Correct octopus arm count ONLY: currently SEVEN arms attached around the head. Add ONE new eighth suckered arm attached to the UPPER RIGHT side of central head, extending upward into the open gap between the mantle and existing upper-right arm, then curls to a separated tapered tip at upper right corner. Preserve seven existing arms and one mantle, final exactly EIGHT arms total. New arm must visibly connect to head, never branch from another arm. Maintain premium red-brown and indigo mottled skin, detailed small ivory suckers, modeled wet volume, same exact overhead dorsal perspective. Slightly widen framing to maintain clear transparent margin on ALL sides and around every arm tip. Real alpha transparent outside creature, no extra creature, base, water, backdrop, shadow, text or numbers.",
+      "revision_note": "Oito braços conectados ao corpo, revisão anatômica"
+    },
+    {
+      "id": "monster-giant-owl",
+      "name": "Giant Owl",
+      "filename": "monster-giant-owl-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "07e5121481adc421a6250d47979d8b50f7568efc9dea7bbc23456e480eefec71",
+      "transparentPixels": 789579,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Owl. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/366128644727971948/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT owl in overhead flight: ONE round tawny head crown with small ear tufts, TWO broad outspread wings with layered buff/gray/russet barred feathers, TWO taloned feet folded close underneath, ONE short fanned tail. Giant broad dorsal silhouette and natural fluffy neck, asymmetrical feather fan distinct from eagle or normal owl, no frontal facial disk looking at viewer, no background. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/366128644727971948/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-giant-rat",
+      "name": "Giant Rat",
+      "filename": "monster-giant-rat-v1.webp",
+      "width": 1283,
+      "height": 1226,
+      "sha256": "db4f0d49421a01d76f67aab414da455dbe1c032e27828d052968c934b2c2a6d4",
+      "transparentPixels": 1048896,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Giant Rat. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/41517627811579849/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One GIANT rat, large scarred dark brown/gray coarse-furred rodent body, ONE narrow head with two rounded pink-gray ears, exactly FOUR small clawed legs and ONE very long hairless segmented pink-brown tail sweeping away in an open curve. Hunched dorsal spine and coarse guard hairs, heavy muscular shoulders, natural scurrying pose, no diseased gore or human props, distinct large monster anatomy. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/41517627811579849/"
+      ],
+      "created_at": "2026-10-06"
     }
   ]
 }
