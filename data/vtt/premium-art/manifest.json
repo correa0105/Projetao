@@ -5095,6 +5095,369 @@
       "created_at": "2026-10-06",
       "research_query": "Werewolf DnD token Pinterest",
       "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-white-dragon-wyrmling",
+      "name": "White Dragon Wyrmling",
+      "filename": "monster-white-dragon-wyrmling-v1.webp",
+      "width": 1304,
+      "height": 1206,
+      "sha256": "9e2a5a29ec79425408c91ba9aafc7d042406af7c6db7253e52b5ffd4bdaf1b1b",
+      "transparentPixels": 900729,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: White Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ar.pinterest.com/pin/754704850051088526/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One WHITE DRAGON WYRMLING, small compact juvenile ice dragon with FOUR short clawed legs, TWO leathery icy-white wings and ONE short thick tapered tail. Blunt low crocodilian head, jagged pearl-white dorsal spikes, frost-blue wing membranes with fine veins, tiny black claws. Exact dorsal overhead camera, head points toward lower-left, wings half-spread asymmetrically while stalking, no ice floor or frost aura. Clearly baby/compact anatomy distinct from young/adult. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ar.pinterest.com/pin/754704850051088526/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "White Dragon Wyrmling DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-wight",
+      "name": "Wight",
+      "filename": "monster-wight-v1.webp",
+      "width": 1329,
+      "height": 1183,
+      "sha256": "f2a65b7b73e610e96c7fb53d3946b723c1c506a68b68371ca5ca313245ea71ac",
+      "transparentPixels": 893266,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Wight. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://jp.pinterest.com/pin/412431278375513228/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. For upright humanoids, lean far forward: head CROWN at lower-center FRONT, shoulders and BACK occupy upper half like a floor-plan miniature; no front chest or long hanging front torso. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One WIGHT undead armored warrior, crown of sparse gray hair/head low/front of broad corroded steel BACK upper half. TWO arms and TWO booted legs, intact gray-white skin, fully clothed bronze-studded charcoal mail and dark green ragged rear cape, one complete necrotic LONGSWORD in right hand and weathered longbow attached to back. Fine ancient metal corrosion and cloth fraying, no open wounds/gore/blood, foreshortened dorsal torso, no frontal long abdomen. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://jp.pinterest.com/pin/412431278375513228/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Wight DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-will-o-wisp",
+      "name": "Will-o'-Wisp",
+      "filename": "monster-will-o-wisp-v1.webp",
+      "width": 1214,
+      "height": 1295,
+      "sha256": "be658ffb7fb884d6f046688d03e7d0eab83f5d506ba88d935f7dde38c8ef40e7",
+      "transparentPixels": 1063522,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Will-o'-Wisp. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://www.pinterest.com/pin/308567011964555222/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One WILL-O-WISP creature, ONE tiny intense pale aquamarine living spectral FIRE nucleus with twisting luminous blue-violet flame filaments wrapping a dense teardrop core. Exact top-down view of compact ghost-flame cluster, exquisite hand-painted bright cyan-white internal energy strands and dark teal translucent body details. No humanoid body/arms/legs/face, no lantern or items. All light is INSIDE the shaped flame silhouette, no circular halo or backdrop diffuse glow, transparent OUTSIDE flame, crisp separated readable flame tips, no ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/308567011964555222/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Will-o'-Wisp DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-winter-wolf",
+      "name": "Winter Wolf",
+      "filename": "monster-winter-wolf-v1.webp",
+      "width": 1240,
+      "height": 1269,
+      "sha256": "db39c4f5c2320741f4eb3541c3c316768d4e07c9c7b98b64d0c63ee741d9f458",
+      "transparentPixels": 1169290,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Winter Wolf. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ar.pinterest.com/pin/675469644143920060/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One WINTER WOLF, huge supernatural white arctic wolf with FOUR muscular canine legs and ONE thick white bushy tail. Long heavy frost-silver dorsal fur, faint ice-blue eyes, ice crystals clinging only to fur and shoulder mane. Diagonal predatory stalking stance with full dorsal back/skull dominant, separated paw outlines, dense white layered fur hand-painted detail, no ice ground, no external fog/breath/halo/aura. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ar.pinterest.com/pin/675469644143920060/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Winter Wolf DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais.",
+      "edit_prompt": "Edit this existing individual Winter Wolf token. Preserve exactly its design, colors, texture, strict overhead camera and FOUR paws plus ONE tail. ONLY pull the camera back so the COMPLETE silhouette has at least 8% empty transparent margin on ALL FOUR sides. The lowest front paw's fur must be fully inside the canvas, not touching the bottom. Reconstruct any cut fur naturally. No ground, haze, cast shadow or backdrop; genuine alpha transparency. Do not change pose or add limbs."
+    },
+    {
+      "id": "monster-wolf",
+      "name": "Wolf",
+      "filename": "monster-wolf-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "ee33be2c53f9295f4e284931e0a995311446da9ef195fc84eddd118642aaa518",
+      "transparentPixels": 1080634,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Wolf. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ar.pinterest.com/pin/z-animal-photo-archive-gray-wolf-happy-gray-wolfstarts-to-run--636203884833716152/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One natural gray WOLF, FOUR lean canine legs with paws and ONE fluffy dark tipped tail. Long gray-brown mottled dorsal fur, erect ears, pointed wolf snout, low diagonal running pose from straight overhead, complete silhouette all four paws visible, ordinary animal anatomy no armor/clothes or fantasy spikes. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ar.pinterest.com/pin/z-animal-photo-archive-gray-wolf-happy-gray-wolfstarts-to-run--636203884833716152/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Wolf DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-worg",
+      "name": "Worg",
+      "filename": "monster-worg-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "f230dde3f92076cc8e0fc64e52c0985561875a657b44cbcf768dd3117df7f694",
+      "transparentPixels": 909491,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Worg. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://br.pinterest.com/pin/660129257907271706/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One WORG monstrous quadruped wolf-like creature, FOUR massive powerful canine legs, ONE thick dark tail, huge broad blunt wolf head and heavy coarse charcoal umber dorsal fur. Large prominent ivory canine fangs, low heavy hunched shoulders with dark bristled mane, diagonal stalking pose viewed directly down onto spine/head, visible separate paws, no rider/harness/armor, no blood. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://br.pinterest.com/pin/660129257907271706/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Worg DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-wraith",
+      "name": "Wraith",
+      "filename": "monster-wraith-v1.webp",
+      "width": 1214,
+      "height": 1295,
+      "sha256": "45b7616d0c4c4185ead10f456dde284603538897b7f6fbc53c60ef481a940279",
+      "transparentPixels": 924186,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Wraith. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://mx.pinterest.com/pin/915356693019256669/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. For upright humanoids, lean far forward: head CROWN at lower-center FRONT, shoulders and BACK occupy upper half like a floor-plan miniature; no front chest or long hanging front torso. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One WRAITH incorporeal cloaked undead spirit. One dark teal-black hood CROWN low/front of tattered deep indigo cloak BACK upper half, TWO long robed arms ending in aged ivory skeletal hands, NO legs. One continuous tapered twisting robe hem trails rear as connected ectoplasmic tendrils, all spirit texture within silhouette. Dense layered fabric-like spectral surfaces edged with restrained teal energy, empty dark face under hood mostly hidden by overhead crown, strict ceiling view top/back, no diffuse exterior smoke/glow/ground, no frontal portrait. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://mx.pinterest.com/pin/915356693019256669/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Wraith DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-wyvern",
+      "name": "Wyvern",
+      "filename": "monster-wyvern-v1.webp",
+      "width": 1376,
+      "height": 1143,
+      "sha256": "30597d42fe8361e9235b920976050bb1a04caad92e83b19b6b789381c7b5beb1",
+      "transparentPixels": 964999,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Wyvern. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://es.pinterest.com/pin/963137070306678893/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One WYVERN: exact anatomy TWO clawed rear LEGS and TWO huge membranous WING FORELIMBS, ONE long serpentine neck/head and ONE muscular tail with a prominent venom STINGER. Absolutely NO separate front arms or four walking legs. Ochre olive leathery dorsal scales, dark brown wing veins, thorny ridge down long spine. Diagonal gliding turn with head lower-right, wings spread in staggered asymmetric sweep, rear legs visible separate under hip, whole tail/stinger intact, no halo. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://es.pinterest.com/pin/963137070306678893/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Wyvern DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-xorn",
+      "name": "Xorn",
+      "filename": "monster-xorn-v1.webp",
+      "width": 1278,
+      "height": 1230,
+      "sha256": "040b067a0cfd992b37ac2fd064b4cba6c5f71172e400fda87ec2c05f88b93d5e",
+      "transparentPixels": 883761,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Xorn. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://fr.pinterest.com/pin/683350943490931479/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One XORN earth creature, one squat ochre-gray stony BARREL shaped torso with ONE tooth-ringed round MOUTH directly on TOP facing ceiling camera, THREE spaced mineral amber eyes around upper barrel. EXACTLY THREE clawed ARMS rooted at 10 oclock, 2 oclock, and 6 oclock extending into separate gaps; EXACTLY THREE stocky walking LEGS rooted at 12 oclock, 4 oclock and 8 oclock between arms. Six distinct limbs total with separated silhouettes. Radial threefold symmetry, pebbled craggy stone skin with small turquoise mineral veins, top-down mouth clear, no humanoid head/torso, no terrain/gore. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://fr.pinterest.com/pin/683350943490931479/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Xorn DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-black-dragon",
+      "name": "Young Black Dragon",
+      "filename": "monster-young-black-dragon-v1.webp",
+      "width": 1309,
+      "height": 1201,
+      "sha256": "480cf2e303ef2a00b73973ed561a031645652b1fa6ae055da1db9414d0a7421c",
+      "transparentPixels": 1106630,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Black Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ar.pinterest.com/pin/787004103668253540/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG BLACK DRAGON, slender angular adolescent swamp dragon, FOUR clawed walking legs, TWO long ragged-edge leathery wings and ONE long whiplike curved tail. Distinct skull-like bony ivory-black face with TWO curved horns sweeping forward, glossy near-black obsidian overlapping dorsal scales and olive-gray wing membranes. Diagonal diving turn facing lower-right, left wing raised wide upper-left and right wing partially swept rear, both complete, prominent ridged spine. Medium adolescent proportions unlike tiny wyrmling or giant ancient, no external acid smoke. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ar.pinterest.com/pin/787004103668253540/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Black Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais.",
+      "edit_prompt": "Edit this existing individual Young Black Dragon token. Preserve exact species, design, colors, detailed scales, overhead pose, FOUR walking legs, TWO wings and ONE tail. ONLY pull the camera back to give at least 8% empty transparent margin on ALL FOUR sides. Reconstruct the complete upper-left wing tip, whose point is cut by the top edge, naturally. Every wing point, claw, head and tail tip must be completely inside the canvas, none touching any edge. Do not alter anatomy or composition. No ground, haze, shadow, background or border. Genuine transparent alpha."
+    },
+    {
+      "id": "monster-young-blue-dragon",
+      "name": "Young Blue Dragon",
+      "filename": "monster-young-blue-dragon-v1.webp",
+      "width": 1367,
+      "height": 1151,
+      "sha256": "6319c171546a85decad9710ae0675b1793bc49f9c8eecec285210e97409f79b4",
+      "transparentPixels": 884701,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Blue Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ca.pinterest.com/pin/dnd-unpainted-minis-wv15-young-blue-dragon--563161128417258779/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG BLUE DRAGON, stocky adolescent desert dragon, FOUR strong clawed legs, TWO broad leathery royal-blue wings, ONE long muscular tail. ONE long central nasal horn and broad finlike angular ears, thick cobalt layered dorsal scales with warm cream horn/claws, ochre-bronze undersides of wing membranes. Head toward lower-left, grounded low crawling diagonal stance with wings folded halfway beside dorsal back, tail curls rear right, clearly distinct pose/silhouette from other young dragons, all tips complete. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ca.pinterest.com/pin/dnd-unpainted-minis-wv15-young-blue-dragon--563161128417258779/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Blue Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-brass-dragon",
+      "name": "Young Brass Dragon",
+      "filename": "monster-young-brass-dragon-v1.webp",
+      "width": 1225,
+      "height": 1284,
+      "sha256": "17f2e5fe2245f777241f3716da04cf77364f76fc2951a84d82baaf5246c97aa9",
+      "transparentPixels": 946736,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Brass Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://se.pinterest.com/pin/198088083605308294/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG BRASS DRAGON, supple adolescent metallic dragon. FOUR clawed legs, TWO broad fan-shaped leathery brass-gold wings and ONE slim curved tail. Wide shieldlike domed metallic forehead and curving cheek plates, brassy ochre scales weathered with warm copper patina, pale beige layered wing membranes. Exact top view, head near lower-center, one wing unfurls wide to left, opposite wing half-folded into angular fan to right, dorsal back and tail curve gently to upper-left. No duplicate geometry/recolor, distinct shield-head/fan wings. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://se.pinterest.com/pin/198088083605308294/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Brass Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-bronze-dragon",
+      "name": "Young Bronze Dragon",
+      "filename": "monster-young-bronze-dragon-v1.webp",
+      "width": 1226,
+      "height": 1283,
+      "sha256": "a4daa01d5d3da33cf351b8bacf55db1246ab976a4b86c51cf3f67db4939a8f32",
+      "transparentPixels": 1019735,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Bronze Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://fr.pinterest.com/pin/563161128416704720/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG BRONZE DRAGON, sturdy adolescent coastal metallic dragon. FOUR clawed legs, TWO long webbed bronze-green wings and ONE tapering tail. Swept facial horns and several short dorsal horn pairs, angular bronze armorlike scale rows, green patina between scales, pale gray turquoise-edged wing membranes. Head points lower-right, diagonal agile stride with both wings arched backward alongside hips, tail sweeps upper-left in open S, all appendages clear. Distinct anatomy and pose, no sea/rock floor. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://fr.pinterest.com/pin/563161128416704720/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Bronze Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-copper-dragon",
+      "name": "Young Copper Dragon",
+      "filename": "monster-young-copper-dragon-v1.webp",
+      "width": 1312,
+      "height": 1199,
+      "sha256": "6eecc4a8be3d47356801e38d5f0d26a6e09f3ee06251bf9c5ad39dac50a8c541",
+      "transparentPixels": 897981,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Copper Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://uk.pinterest.com/pin/dungeons-dragons-nolzurs-marvelous-unpainted-miniatures-young-copper-dragon-wave-8-in-2025--198088083605339987/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG COPPER DRAGON, lithe adolescent metallic dragon. FOUR slender clawed legs, TWO wide angular notched copper wings, ONE slender segmented tail. Flat broad triangular head shield with curled brow horn plates, fine copper-red pebbled scales dotted with turquoise oxidized pits, warm ivory pale wing membranes. Head aimed lower-left, playful curved climbing pose seen directly onto dorsal back with left wing compactly folded rear and right wing opened full sideways, tail curling upper-right. Unique body geometry, no scenery. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://uk.pinterest.com/pin/dungeons-dragons-nolzurs-marvelous-unpainted-miniatures-young-copper-dragon-wave-8-in-2025--198088083605339987/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Copper Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-gold-dragon",
+      "name": "Young Gold Dragon",
+      "filename": "monster-young-gold-dragon-v1.webp",
+      "width": 1247,
+      "height": 1261,
+      "sha256": "622780861c4feccd009a0a5d52d96485e7e9ed02122c0b0e9e06f30bf9059a03",
+      "transparentPixels": 862932,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Gold Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://au.pinterest.com/pin/1072490098905645801/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG GOLD DRAGON, elegant long serpentine adolescent metallic dragon. FOUR short but complete clawed legs, TWO flowing broad leathery gold wings, ONE long single tail. Long noble narrow head with TWO long golden whiskers, several short swept crown horns, continuous flowing dorsal fins running down neck/back/tail. Rich gold overlapping scales, warm ivory membrane accents and amber dorsal fin veins. Head points lower-center, elongated S curve stretches upper-left, one wing fans upper-right and other sweeps left, four feet all distinct. Original pose, no flame/halo. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://au.pinterest.com/pin/1072490098905645801/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Gold Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-green-dragon",
+      "name": "Young Green Dragon",
+      "filename": "monster-young-green-dragon-v1.webp",
+      "width": 1312,
+      "height": 1199,
+      "sha256": "93b37b4e50ea180595125f026d01f2d849fa138b21af5228cd083548501ea2a3",
+      "transparentPixels": 918939,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Green Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ru.pinterest.com/pin/531847037227401099/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG GREEN DRAGON, lean long-necked adolescent forest dragon. FOUR clawed legs, TWO leathery dark emerald wings, ONE long trailing tail. Very tall serrated dorsal FAN CREST begins at skull crown and continues down sinuous spine, two curved brow horns and sharp narrow head, olive-lime wing membranes with detailed dark veins, jade triangular dorsal scales. Head toward lower-right, both wings low widely spread forming an asymmetric swept V, tail curves up left behind rear legs. All limbs complete, no fog/gas/forest ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ru.pinterest.com/pin/531847037227401099/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Green Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-red-dragon",
+      "name": "Young Red Dragon",
+      "filename": "monster-young-red-dragon-v1.webp",
+      "width": 1346,
+      "height": 1168,
+      "sha256": "ab939a32d8904bc584a9611f1739c0082e488a8ba23235a0ff652c17d1a94461",
+      "transparentPixels": 904563,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Red Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://se.pinterest.com/pin/nolzurs-marvelous-miniatures-young-red-dragon-in-2024--1136596024698133577/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG RED DRAGON, muscular adolescent fire dragon. FOUR powerful clawed legs, TWO enormous leathery red wings, ONE thick tapered tail. TWO large swept black-ivory horns, rugged crimson/terracotta dorsal scales and high charcoal dorsal spikes, rich ochre amber wing membranes with worn dark veins. Head points lower-left, crouching explosive diagonal launch stance, one wing fully arced upper-left and other arced to right, tail swings rear upper-right. Full overhead back/skull, no flame or smoke background, individual anatomy/pose distinct. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://se.pinterest.com/pin/nolzurs-marvelous-miniatures-young-red-dragon-in-2024--1136596024698133577/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Red Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais.",
+      "edit_prompt": "Edit this existing individual Young Red Dragon token. Preserve exact species, design, colors, detailed scales, overhead pose, FOUR walking legs, TWO wings and ONE tail. ONLY pull the camera back to give at least 8% empty transparent margin on ALL FOUR sides. Reconstruct the complete upper-left wing points and the outer tail edge currently clipped by the image boundaries. Every wing tip, claw, head and tail tip must be completely inside the canvas, none touching any edge. Do not add limbs or change pose. No ground, haze, shadow, background or border. Genuine transparent alpha."
+    },
+    {
+      "id": "monster-young-silver-dragon",
+      "name": "Young Silver Dragon",
+      "filename": "monster-young-silver-dragon-v1.webp",
+      "width": 1222,
+      "height": 1287,
+      "sha256": "fe8921b727293f83e34b816ed8e01db1252ccde03e48829aa389a8744f3a2bdb",
+      "transparentPixels": 1013854,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Silver Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ca.pinterest.com/pin/833658581072908258/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG SILVER DRAGON, elegant adolescent metallic dragon. FOUR clawed legs, TWO leathery platinum wings, ONE long graceful tail. Long narrow noble head with swept cheek horns, tall soft-looking blade dorsal crest running down neck and spine, fine bright silver armorlike scales with pale slate-blue crevices and frosted pale lilac wing membranes. Head toward lower-right, narrow S-shaped neck and body twisting in a graceful glide with left wing broad fanning upper-left and right wing fanning lower-right, four feet visible. No feathers or cloud/aura. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ca.pinterest.com/pin/833658581072908258/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young Silver Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-young-white-dragon",
+      "name": "Young White Dragon",
+      "filename": "monster-young-white-dragon-v1.webp",
+      "width": 1222,
+      "height": 1287,
+      "sha256": "e380ab72f2b9fb78b776af29cd9164f20953f1ac5a3d765619e182c77e8a7255",
+      "transparentPixels": 747008,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young White Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://uk.pinterest.com/pin/dd-nolzurs-marvelous-unpainted-miniatures-young-white-dragon-in-2025--198088083605301644/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG WHITE DRAGON, compact strong adolescent ice dragon, FOUR short powerful clawed legs, TWO broad icy leathery wings, ONE thick tapered curling tail. Blunt crocodilian head, low jagged crest, short straight horn spikes, irregular ivory-white dorsal scales, very pale cold gray-blue membranes with fine frosty veins. Head lower-center, crouching low symmetrical ambush stance but tail hooks upper-right and left wing slightly folded, full dorsal view. Larger/longer than compact wyrmling, unique proportion/pose, no ice floor/cloud/frost halo. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://uk.pinterest.com/pin/dd-nolzurs-marvelous-unpainted-miniatures-young-white-dragon-in-2025--198088083605301644/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Young White Dragon DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+    },
+    {
+      "id": "monster-zombie",
+      "name": "Zombie",
+      "filename": "monster-zombie-v1.webp",
+      "width": 1278,
+      "height": 1230,
+      "sha256": "c769465555c305c4f74a34cda91f422424a100428e57cc5d0c9a6bb3746d8460",
+      "transparentPixels": 895726,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Zombie. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ar.pinterest.com/pin/462674561741635554/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. For upright humanoids, lean far forward: head CROWN at lower-center FRONT, shoulders and BACK occupy upper half like a floor-plan miniature; no front chest or long hanging front torso. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One adult ZOMBIE humanoid, fully clothed in worn earth-brown work tunic, gray trousers, leather boots and frayed moss-green shoulder shawl. Intact closed grayish skin with NO exposed flesh, open wounds, blood or gore. TWO arms reaching outward and TWO booted legs staggered, crown of thinning dark hair low/front, hunched clothed BACK upper half dominates strict overhead view, whole connected anatomy, finely textured shabby fabric/seams, no diffuse smoke, no frontal long torso. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ar.pinterest.com/pin/462674561741635554/"
+      ],
+      "created_at": "2026-10-06",
+      "research_query": "Zombie DnD token Pinterest",
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
     }
   ]
 }

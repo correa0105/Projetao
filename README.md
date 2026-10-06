@@ -4,8 +4,8 @@ VTT: folha do monstro → **Editar** salva nome/imagem/atributos/ações em um p
 privado do mestre; **Traduzir para português** prepara uma cópia revisável. Biblioteca
 → Presets de monstros permite reutilizá-la em outras mesas. Chat acompanha rolagens
 quando já está no final e permite aplicar o dano rolado uma única vez por alvo.
-Biblioteca → Premium recebe artes originais individuais vistas de cima, transparentes;
-produção dos 330 monstros em andamento, com contador real de artes concluídas.
+Biblioteca → Premium reúne 330 artes originais individuais vistas de cima, transparentes,
+uma para cada monstro do catálogo atual, com arquivos próprios e vínculos às fichas.
 Tag Tokens premium em Configurações e ajuda → Acesso premium. Migration 069 e
 [funcionamento, permissões e arte](docs/VTT-ACERVO-PREMIUM.md).
 

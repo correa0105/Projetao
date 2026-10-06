@@ -10,11 +10,12 @@ interno, digest fixo, modelos persistidos. Chat segue final e conserva leitura/h
 dano aplicado da rolagem real é auditado/idempotente por mensagem/token e pode ser
 descartado antes da aplicação. Só PV da sessão. Migration 069; 23 regressões e cinco
 testes novos aprovados, navegador em quatro larguras aprovado; tradução real verificada.
-Premium ainda em produção: marco de 310 artes individuais (Aboleth a Werewolf),
-20 restantes; usuário pediu 330 artes, uma criatura por imagem,
-vista ortográfica superior e transparência real, Pinterest como referência. Manifest
-registra apenas artes concluídas e prompts completos; não dizer que todo o acervo
-está pronto. Acesso atual exige administrador E vtt_premium; pergunta sobre OU/E
+Premium concluído: 330 artes individuais (Aboleth a Zombie), cobrindo todos os
+monstros do catálogo atual, uma criatura por imagem, vista ortográfica superior e
+transparência real, Pinterest como referência. Manifest registra arquivos e hashes
+exclusivos, pesquisas e prompts completos. Revisão visual das silhuetas/bordas e cinco
+testes isolados aprovados para as 330 artes. Acesso atual exige administrador E
+vtt_premium; pergunta sobre OU/E
 enviada ao usuário, pendente. Administrador concede tag na configuração do VTT.
 Participantes veem apenas arte já colocada em token visível, sem acesso ao catálogo.
 Novos campos de ficha também são removidos da projeção pública. Guia em

@@ -167,6 +167,15 @@ try {
   ).toBeDisabled();
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
   await panel.getByRole('button', { name: 'Premium', exact: true }).click();
+  await expect(panel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
+  await expect
+    .poll(() =>
+      panel
+        .locator('.vtt-premium-grid img')
+        .first()
+        .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
+    )
+    .toBe(true);
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.screenshot({ path: `test-results/vtt-premium-${width}.png` });
@@ -176,7 +185,7 @@ try {
   }
   expect(errors).toEqual([]);
   console.log(
-    'VTT premium: chat segue final/preserva leitura, arte inteira, editor/presets privados, dano e quatro larguras aprovados.',
+    `VTT premium: ${assets.length} artes disponíveis, chat segue final/preserva leitura, arte inteira, editor/presets privados, dano e quatro larguras aprovados.`,
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/vtt-premium-failure.png' });

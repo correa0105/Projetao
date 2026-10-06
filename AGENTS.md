@@ -72,7 +72,8 @@ manifest. Não substituir por atlas/recolorações/placeholders. Arquivos privad
 acesso servidor por administrador E tag vtt_premium (esclarecimento OU/E pendente).
 Participantes só visualizam arte de token visível na mesa, sem catálogo. Administrador
 gerencia tag no VTT. Tradução local LibreTranslate/Argos com proteção das regras.
-Migration 069 e detalhes em docs/VTT-ACERVO-PREMIUM.md. Produção das artes continua.
+Migration 069 e detalhes em docs/VTT-ACERVO-PREMIUM.md. Produção concluída em 06/10:
+330 artes próprias para os 330 monstros atuais, com alpha/hash e revisão visual.
 
 Torre experimental (06/10): Mural → Torre, 100 andares. Administrador edita
 informações, criaturas, armadilhas, guardião por andar, valores e tabelas d100/itens.

@@ -19,8 +19,8 @@ trechos de prosa separadamente, conservando todas as regras. Fórmulas dos ataqu
 nunca são traduzidas. O catálogo original permanece intacto.
 [Instalação oficial](https://docs.libretranslate.com/guides/installation/).
 
-Biblioteca → Premium mostra somente artes individuais concluídas, com contador
-real em relação aos 330 monstros. Clique na aba novamente para atualizar o acervo;
+Biblioteca → Premium reúne as 330 artes individuais concluídas, uma para cada
+monstro do catálogo atual. Clique na aba novamente para atualizar o acervo;
 clique no cartão para consultar a ficha ou arraste para a mesa. Silhuetas usam
 proporção integral e transparência, sem recorte circular. Nenhum atlas é usado.
 
@@ -58,15 +58,14 @@ adicionar artes durante a produção sem reconstruir o site para cada monstro.
 
 ## Arte e continuidade
 
-Pedido: todos os 330 monstros, cada qual em sua imagem, vista superior e fundo
-transparente. Produção ainda em andamento; não confundir catálogo completo com
-imagens premium concluídas. `manifest.json` é a fonte do contador e contém ID/nome,
+Pedido concluído: todos os 330 monstros do catálogo atual têm uma imagem própria,
+vista superior e fundo transparente. `manifest.json` é a fonte do contador e contém ID/nome,
 arquivo, dimensões, pixels transparentes, hash SHA-256, prompt completo e referências
 pesquisadas no Pinterest. Modo usado: **imagegen embutido**, geração individual; azul
 recebeu edição de margem. Originais preservados no diretório de imagens geradas.
 
-Marco de produção: 310 artes concluídas em 06/10, do Aboleth ao Werewolf, incluindo os
-dez dragões adultos e os dez anciões, todos com arquivos próprios. Armadura, árvore,
+Produção concluída em 06/10: 330 artes, do Aboleth ao Zombie, incluindo os dez dragões
+adultos, os dez anciões e os dez jovens, todos com arquivos próprios. Armadura, árvore,
 bico de machado, azer, golem de argila e bugbear receberam revisão da câmera.
 Basilisco e cão teleportador tiveram os membros corrigidos; behir foi redesenhado
 com doze patas em seis pares visíveis. Chuul e filhote de dragão negro receberam
@@ -80,17 +79,20 @@ margem preservando oito patas. Górgona segue o touro de placas metálicas do ca
 Hezrou recebeu margem adicional; capitão hobgoblin, homúnculo, cavaleiro e lich
 tiveram a câmera superior revisada. Hidra tem cinco cabeças e kraken tem dez
 tentáculos separados, corrigidos após a revisão visual. Os cinco testes isolados
-passaram neste marco, incluindo vínculos, transparência real e hashes das 310 artes.
+passaram na conclusão, incluindo vínculos, transparência real e hashes das 330 artes.
 Nobre e senhor das múmias receberam revisão da câmera; polvo tem oito braços,
 marilith seis braços, otyugh três pernas e dois tentáculos de combate. Sacerdote e
 acólito receberam câmera estritamente dorsal; salamandra tem as duas pontas da
 lança inteiras. Aranha de fase tem oito patas e roper seis tentáculos. Escorpião comum
 recebeu oito patas; fungo gritador teve a anatomia humanoide removida e naga espiritual
-teve os ombros substituídos por pescoço de serpente. Três esfinges e cinco enxames têm
+teve os ombros substituídos por pescoço de serpente. Três esfinges e sete enxames têm
 artes específicas. Vrock recebeu margem para as asas completas; unicórnio teve a
 câmera e os quatro membros corrigidos. Familiar de vampiro é o humanoide da ficha,
-e os cinco licantropos usam formas híbridas próprias. O total restante é 20;
-o contador ao vivo continua vindo do manifest, sem estimar imagens prontas.
+e os cinco licantropos usam formas híbridas próprias. Wyvern conserva duas patas
+e duas asas; xorn tem três braços, três pernas e três olhos. Lobo do inverno e
+dragões negro/vermelho jovens receberam margem adicional. Não há monstros pendentes
+no catálogo atual; o contador ao vivo continua vindo do manifest. As 330 artes têm
+arquivos e hashes exclusivos, sem atlas, imagens reaproveitadas ou placeholders.
 Silhuetas estreitas, como a espada animada, são validadas sem exigir a área de
 um corpo largo. Verificação visual no navegador confirmou alpha e bordas limpas.
 Quando não há token superior específico indexado no Pinterest, essa limitação
