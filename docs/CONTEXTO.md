@@ -10,8 +10,8 @@ interno, digest fixo, modelos persistidos. Chat segue final e conserva leitura/h
 dano aplicado da rolagem real é auditado/idempotente por mensagem/token e pode ser
 descartado antes da aplicação. Só PV da sessão. Migration 069; 23 regressões e cinco
 testes novos aprovados, navegador em quatro larguras aprovado; tradução real verificada.
-Premium ainda em produção: marco de 250 artes individuais (Aboleth a Satyr),
-80 restantes; usuário pediu 330 artes, uma criatura por imagem,
+Premium ainda em produção: marco de 280 artes individuais (Aboleth a Swarm of Rats),
+50 restantes; usuário pediu 330 artes, uma criatura por imagem,
 vista ortográfica superior e transparência real, Pinterest como referência. Manifest
 registra apenas artes concluídas e prompts completos; não dizer que todo o acervo
 está pronto. Acesso atual exige administrador E vtt_premium; pergunta sobre OU/E
