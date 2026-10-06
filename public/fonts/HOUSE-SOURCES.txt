@@ -2,7 +2,8 @@ House reading fonts
 Downloaded on 2026-10-06 from the official Google Fonts repository.
 Repository: https://github.com/google/fonts
 Pinned revision: 7085eb89a950e85db5b166b7a58d414544b4140c
-Files are unmodified and distributed with their individual SIL OFL 1.1 licenses.
+Font binaries are unmodified and distributed with their individual SIL OFL 1.1 licenses.
+Trailing whitespace in the license text was normalized; the wording is unchanged.
 
 house-bilbo-regular.ttf
 Source: https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/bilbo/Bilbo-Regular.ttf
