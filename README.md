@@ -1,5 +1,25 @@
 # Alvorada Cinzenta
 
+Combate: carrossel mais alto e transparente, com minimizar/expandir por jogador
+ou mestre. Antes de iniciar, o mestre pode **Rolar todas as iniciativas**.
+Inventário: escolha compacta de montaria/mascote. Em Conquistas → Títulos do
+personagem, **Posição do título** salva abaixo ou ao lado do nome, por personagem.
+Quadros e etiquetas ficam dentro da parede de pedra; cavalo apoiado no chão.
+
+22 artes premium anexadas receberam correções individuais de anatomia/armas,
+com arquivos correspondentes atualizados também em Downloads. Referências,
+prompts e hashes em data/vtt/premium-art/manifest.json; outras 308 artes preservadas.
+
+VTT: **Seleção livre (L)** permite ao mestre arrastar um contorno sobre vários
+objetos da camada ativa. **Shift** adiciona à seleção, **Delete** ou a lixeira
+exclui o grupo, e **Efeitos** aplica/pré-visualiza o efeito em todos os tokens
+selecionados. **Esc** cancela o contorno; Desfazer recupera os objetos excluídos.
+Selecionar não move objetos nem salva o documento. Desenhos, fontes de luz e
+barreiras também podem ser selecionados para exclusão na respectiva camada.
+Paredes, portas fechadas e janelas fechadas bloqueiam o movimento; portas/janelas
+abertas e espaços livres permitem passagem. O arraste acompanha o percurso real,
+e o servidor verifica cada trecho, inclusive em mapas com a opção legada desligada.
+
 VTT: folha do monstro → **Editar** salva nome/imagem/atributos/ações em um preset
 privado do mestre; **Traduzir para português** prepara uma cópia revisável. Biblioteca
 → Presets de monstros permite reutilizá-la em outras mesas. Chat acompanha rolagens

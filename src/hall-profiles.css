@@ -561,6 +561,15 @@
 .public-camp-heading h2 {
   margin-bottom: 9px;
 }
+.public-camp-name[data-title-position='beside'] {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.public-camp-name[data-title-position='beside'] .public-character-title {
+  margin: 0;
+}
 .public-camp-heading p {
   color: #c1c1b8;
   font-size: 12px;

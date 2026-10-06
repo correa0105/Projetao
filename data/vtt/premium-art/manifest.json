@@ -246,17 +246,41 @@
       "id": "monster-ancient-brass-dragon",
       "name": "Ancient Brass Dragon",
       "filename": "monster-ancient-brass-dragon-v1.webp",
-      "width": 1312,
-      "height": 1199,
-      "sha256": "735d176e34255bef116baf3d90e3a8a976d6dbeeeb8e0c8cd5f4f52e19932f4a",
-      "transparentPixels": 864627,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "62d1abe7dd6077d4ccc3b01dba58a8381c04c07898e489cf3341db0a98422f43",
+      "transparentPixels": 973781,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. Create ONE original premium VTT token for Ancient Brass Dragon. One standalone full-body creature on genuine transparent alpha background. Pinterest research direction: https://fr.pinterest.com/pin/14988611254498596/; user's overhead creature token reference https://br.pinterest.com/pin/324611085643692072/. Use these only for species/composition research; design an original creature, not a copy of anyone's illustration. Camera: exact 90-degree orthographic bird's-eye view looking straight DOWN at the TOP and BACK. No horizon, side view, portrait, front view or isometric angle. Species and original design: An ancient desert metallic dragon with a long sinuous neck, flattened broad shield-shaped head and sweeping bony cheek flanges, antique brass plate scales with tawny sand weathering, large age-darkened horns, long fan-like leathery wings stretched in an asymmetrical gliding-crouch, four lean strong clawed legs, thick tail curling left with fin-shaped ridges. Distinct ancient anatomy: huge sweeping head flange and knotted cervical scales, long narrow wing fingers, not a generic dragon recolor. One head, exactly four legs, two wings and one tail. Style: exquisite premium hand-painted semi-realistic fantasy game sprite, finely detailed material texture, carefully modeled volume, readable silhouette at tabletop scale, controlled top-left light, restrained highlights, no cartoon outline. Composition: entire creature, every appendage and tip well inside image, generous transparent padding on all four sides, at least 5% image width; no clipping. Single cohesive creature only. No alternate figures, collage, atlas, token border, circle, base, floor, environment, shadow beyond silhouette, background glow, writing, watermark or labels. Genuine transparency, polished clean cutout.",
+      "prompt": "Use case: stylized-concept. Create an ORIGINAL ancient BRASS dragon VTT token, using this image only to understand the overhead anatomy and perspective. The dragon is viewed orthographically from exactly 90 degrees above. It faces DOWN: elongated brass snout at bottom, streamlined long neck leads UP to a robust torso and hips, then a very long tail tapering and bending gently at top. Enormous wings extend sideways from shoulders, membranes sweep UP toward the tail and hips as in the anatomical reference. Four small proportionate reptilian feet partly visible under the wing edges, toes point DOWN with the snout; strong but compact rear thighs, not oversized frog legs. Preserve the coherent head-neck-torso-hips-tail chain of an actual dragon. Make an entirely new detailed realistic fantasy illustration: hundreds of textured warm brass scales, aged copper patina in seams, two gently swept horns, broad brass cheek frill, leathery pale golden membranes with fine veins, dorsal ridge of broad small shields. Rich natural material shading and high detail, not the reference's flat painted teal colors. Fit the WHOLE silhouette comfortably inside the image with clear transparent margin on every edge. True transparent background. No floor, text, logo or ring.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://fr.pinterest.com/pin/14988611254498596/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. Create ONE original premium VTT token for Ancient Brass Dragon. One standalone full-body creature on genuine transparent alpha background. Pinterest research direction: https://fr.pinterest.com/pin/14988611254498596/; user's overhead creature token reference https://br.pinterest.com/pin/324611085643692072/. Use these only for species/composition research; design an original creature, not a copy of anyone's illustration. Camera: exact 90-degree orthographic bird's-eye view looking straight DOWN at the TOP and BACK. No horizon, side view, portrait, front view or isometric angle. Species and original design: An ancient desert metallic dragon with a long sinuous neck, flattened broad shield-shaped head and sweeping bony cheek flanges, antique brass plate scales with tawny sand weathering, large age-darkened horns, long fan-like leathery wings stretched in an asymmetrical gliding-crouch, four lean strong clawed legs, thick tail curling left with fin-shaped ridges. Distinct ancient anatomy: huge sweeping head flange and knotted cervical scales, long narrow wing fingers, not a generic dragon recolor. One head, exactly four legs, two wings and one tail. Style: exquisite premium hand-painted semi-realistic fantasy game sprite, finely detailed material texture, carefully modeled volume, readable silhouette at tabletop scale, controlled top-left light, restrained highlights, no cartoon outline. Composition: entire creature, every appendage and tip well inside image, generous transparent padding on all four sides, at least 5% image width; no clipping. Single cohesive creature only. No alternate figures, collage, atlas, token border, circle, base, floor, environment, shadow beyond silhouette, background glow, writing, watermark or labels. Genuine transparency, polished clean cutout.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "e82b11f42e9a42b97f99c5f8dda0331d7848e110de74b7d804e288eba4d4005e",
+      "originalSha256": "735d176e34255bef116baf3d90e3a8a976d6dbeeeb8e0c8cd5f4f52e19932f4a",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-ancient-bronze-dragon",
@@ -488,17 +512,41 @@
       "id": "monster-archmage",
       "name": "Archmage",
       "filename": "monster-archmage-v1.webp",
-      "width": 1294,
+      "width": 1293,
       "height": 1216,
-      "sha256": "961afd2a8d4342b34eb4f9e5ea8298c7075f87366318d052ca8ef77fb21c85f7",
-      "transparentPixels": 1030577,
+      "sha256": "a851b7ad1c43ff947e4419721c173f15ea78b7afd67e5e6b54269fbd17c87436",
+      "transparentPixels": 969583,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. Create ONE original premium virtual tabletop token: Archmage. One complete individual creature or animated object with genuine transparent alpha background. Overhead quality direction from Pinterest https://br.pinterest.com/pin/324611085643692072/; species research https://fr.pinterest.com/pin/mage-token-roll20-sans-ombre--6333255719570106/; design original artwork, never trace or copy an existing illustration. Camera is EXACTLY 90 degrees above looking straight DOWN at the TOP/BACK, orthographic with no horizon. Do not use a portrait, front view, side view or isometric perspective. Species/design: ONE venerable human mage standing ready to cast, viewed directly above crown of gray hair and shoulders, body and legs foreshortened beneath. Layered deep midnight-blue robes with aged gold embroidered seams, a short indigo mantle, leather utility belt, left hand holding a gnarled wooden staff angled diagonally, right hand lifted with a small arcane light held entirely in palm. Robes arranged asymmetrically, visible practical boots. Detailed premium cloth folds and wood texture, no front portrait, no facial close-up, no huge spell effects outside silhouette. Premium hand-painted semi-realistic fantasy game sprite with crisp silhouette, rich finely painted material detail, careful directional top-left shading, believable anatomical volumes and excellent readability at tabletop scale. Keep the entire figure inside frame with visible comfortable transparent padding on all sides, no cut tips. ONE connected subject only, no alternate poses, no duplicate figures, no atlas or collage. No token circle/frame/base, no floor, environment, cast shadow beyond subject, background haze or glow, text, labels, watermark or signature.",
+      "prompt": "Edit this Archmage VTT token to repair the anatomy and staff. Maintain exactly this elderly silver-haired human, embroidered navy blue robes with gold celestial designs, leather shoes, casting orb and wooden staff with blue gem. True straight overhead camera looking DOWN onto head and shoulders. Clean balanced stance with exactly TWO arms and TWO feet, coherent torso/hips/legs. Left casting hand visible with exactly thumb and four fingers gently surrounding the orb, relaxed anatomical fingers, no fused fingers. Right hand securely wraps exactly four fingers and thumb around ONE continuous wooden staff, grip below the gem ornament, thumb opposite fingers; staff must be straight and fully continuous. Both shoes aligned with the forward direction of the human head, no reversed foot or extra leg. Preserve luxurious fabric/wood/material detail and fine realistic fantasy painting. Full silhouette and staff within generous clear margins, no cropped staff/gem. Transparent alpha background, no scene, no shadow/base/ring/text.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://fr.pinterest.com/pin/mage-token-roll20-sans-ombre--6333255719570106/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. Create ONE original premium virtual tabletop token: Archmage. One complete individual creature or animated object with genuine transparent alpha background. Overhead quality direction from Pinterest https://br.pinterest.com/pin/324611085643692072/; species research https://fr.pinterest.com/pin/mage-token-roll20-sans-ombre--6333255719570106/; design original artwork, never trace or copy an existing illustration. Camera is EXACTLY 90 degrees above looking straight DOWN at the TOP/BACK, orthographic with no horizon. Do not use a portrait, front view, side view or isometric perspective. Species/design: ONE venerable human mage standing ready to cast, viewed directly above crown of gray hair and shoulders, body and legs foreshortened beneath. Layered deep midnight-blue robes with aged gold embroidered seams, a short indigo mantle, leather utility belt, left hand holding a gnarled wooden staff angled diagonally, right hand lifted with a small arcane light held entirely in palm. Robes arranged asymmetrically, visible practical boots. Detailed premium cloth folds and wood texture, no front portrait, no facial close-up, no huge spell effects outside silhouette. Premium hand-painted semi-realistic fantasy game sprite with crisp silhouette, rich finely painted material detail, careful directional top-left shading, believable anatomical volumes and excellent readability at tabletop scale. Keep the entire figure inside frame with visible comfortable transparent padding on all sides, no cut tips. ONE connected subject only, no alternate poses, no duplicate figures, no atlas or collage. No token circle/frame/base, no floor, environment, cast shadow beyond subject, background haze or glow, text, labels, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "7244326aa9eea74538a5ffc575151a6bb9a8bc0de9eae00d6e59a95f22df1a5f",
+      "originalSha256": "961afd2a8d4342b34eb4f9e5ea8298c7075f87366318d052ca8ef77fb21c85f7",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-assassin",
@@ -623,18 +671,42 @@
       "id": "monster-balor",
       "name": "Balor",
       "filename": "monster-balor-v1.webp",
-      "width": 1374,
-      "height": 1145,
-      "sha256": "87f75773aa0910d7bfae4679f89cfbb9b7f66e9c237c42fbcc6f18381debacc2",
-      "transparentPixels": 867416,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "dafbdf60573b0444259e8b38f03d6cccb2523160279fbc3a89087dc85b2606c6",
+      "transparentPixels": 907243,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. Create ONE original premium virtual tabletop token: Balor. One complete individual creature or animated object with genuine transparent alpha background. Overhead quality direction from Pinterest https://br.pinterest.com/pin/324611085643692072/;  design original artwork, never trace or copy an existing illustration. Camera is EXACTLY 90 degrees above looking straight DOWN at the TOP/BACK, orthographic with no horizon. Do not use a portrait, front view, side view or isometric perspective. Species/design: ONE enormous horned winged demon in a broad combat crouch, powerful deep reddish-brown torso with charred textured hide, great curved obsidian horns on head pointing up, two enormous leathery bat wings spread unequally, two muscular arms, two heavily clawed legs, and a thick pointed tail. Right hand holds a jagged massive dark sword, left hand holds a coiled fiery whip contained in frame. Strict overhead BACK view, not a front-facing demon portrait. Tiny ember cracks confined to hide and whip, beautifully shaded weathered leather and muscle. No flames outside silhouette or scene; one demon only. Premium hand-painted semi-realistic fantasy game sprite with crisp silhouette, rich finely painted material detail, careful directional top-left shading, believable anatomical volumes and excellent readability at tabletop scale. Keep the entire figure inside frame with visible comfortable transparent padding on all sides, no cut tips. ONE connected subject only, no alternate poses, no duplicate figures, no atlas or collage. No token circle/frame/base, no floor, environment, cast shadow beyond subject, background haze or glow, text, labels, watermark or signature.",
+      "prompt": "Use case: stylized-concept. Rebuild a premium BALOR demon tabletop token from exactly 90 degrees vertically above. Reference image demonstrates only correct overhead HUMANOID CAMERA and foreshortening. Balor is a massive humanoid fire demon with deep red skin, obsidian plates, glowing lava cracks, two curved black horns, two leathery dark-red wings, a long pointed tail, one lava sword and one fiery whip. Make his NOSE face toward BOTTOM of canvas; the crown and horns are above it, shoulders and back above the head, hips and tail extend toward TOP behind the shoulders. Compact foreshortened STANDING humanoid proportions: we see skull crown, shoulder tops and back; chest and face mostly occluded, legs naturally hidden under torso with only two small clawed foot tips pointing BOTTOM like the nose. Wings root on upper BACK and spread outward and backward toward TOP, separate from both arms. Two arms bent naturally at the front (bottom): left hand closed properly around sword hilt, straight blade extends diagonally bottom-left beyond the front; right hand closed on short whip handle, whip coils in open space at bottom-right. All joints and all limbs face the same direction. Heavy warrior stance, not a flying dragon pose. Full silhouette with transparent border; wings and weapons fit inside. Detailed realistic aged obsidian, skin and leathery membranes, subtle orange glow, no scenery, no ring, no text, true transparent alpha.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/"
       ],
       "research_query": "Balor token Pinterest",
       "research_note": "Pesquisa pública no Pinterest não encontrou arte superior específica indexada; desenho original orientado pela referência geral e anatomia do catálogo.",
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. Create ONE original premium virtual tabletop token: Balor. One complete individual creature or animated object with genuine transparent alpha background. Overhead quality direction from Pinterest https://br.pinterest.com/pin/324611085643692072/;  design original artwork, never trace or copy an existing illustration. Camera is EXACTLY 90 degrees above looking straight DOWN at the TOP/BACK, orthographic with no horizon. Do not use a portrait, front view, side view or isometric perspective. Species/design: ONE enormous horned winged demon in a broad combat crouch, powerful deep reddish-brown torso with charred textured hide, great curved obsidian horns on head pointing up, two enormous leathery bat wings spread unequally, two muscular arms, two heavily clawed legs, and a thick pointed tail. Right hand holds a jagged massive dark sword, left hand holds a coiled fiery whip contained in frame. Strict overhead BACK view, not a front-facing demon portrait. Tiny ember cracks confined to hide and whip, beautifully shaded weathered leather and muscle. No flames outside silhouette or scene; one demon only. Premium hand-painted semi-realistic fantasy game sprite with crisp silhouette, rich finely painted material detail, careful directional top-left shading, believable anatomical volumes and excellent readability at tabletop scale. Keep the entire figure inside frame with visible comfortable transparent padding on all sides, no cut tips. ONE connected subject only, no alternate poses, no duplicate figures, no atlas or collage. No token circle/frame/base, no floor, environment, cast shadow beyond subject, background haze or glow, text, labels, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "794fad79099d8e686a556e5ec923d793d4e5f8bb62af767977faf19f452ffcd5",
+      "originalSha256": "87f75773aa0910d7bfae4679f89cfbb9b7f66e9c237c42fbcc6f18381debacc2",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-bandit",
@@ -756,17 +828,41 @@
       "id": "monster-berserker",
       "name": "Berserker",
       "filename": "monster-berserker-v1.webp",
-      "width": 1302,
-      "height": 1208,
-      "sha256": "5668d5cff0f2e9b81b1dad011b9a24417e1523e4882b945b34a224c300b6beeb",
-      "transparentPixels": 944787,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1a668903691a3a43d8c94b8b0c41f55622980642aa5c47e59a443f72bc2ee3f0",
+      "transparentPixels": 992063,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Berserker. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest user's overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://se.pinterest.com/pin/berserker-dnd-character--386605949272059596/. These are reference research only; create original anatomy, pose and artwork, do not copy or trace a reference. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling view directly DOWN onto crown, dorsal spine and TOP/BACK. Not a 45-degree view, no portrait, visible frontal face/chest, side perspective, horizon or isometric angle. Species/design: A fierce muscular human axe fighter seen from EXACTLY overhead crown/back/shoulders, auburn braided hair, coarse wolf-gray fur shoulder mantle over weathered brown leather armor, two bare sinewy forearms gripping one two-handed steel greataxe extended diagonally, two braced leather boots. Low ready stance, realistic cloth and fur, copper belt fittings, no horned helmet or frontal face portrait, no other characters. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures and layered surfaces, crisp readable silhouette, beautifully modeled volume, controlled restrained top-left lighting, subtle natural wear and sophisticated color variation. ONE connected creature only, every tip and appendage fully in frame with a clear transparent margin on ALL sides. No extra creatures, alternate poses, atlas, collage, circle, border, token base, ground, scene, cast shadow beyond creature, background haze/glow, words, labels, watermark or signature.",
+      "prompt": "Use case: precise-object-edit. Edit only the AXE HEAD CONNECTION in this overhead berserker token. Keep the warrior, two hands, head, shoulders, boots, braid, straight wooden shaft, camera, colors, and transparent background unchanged. The shaft runs diagonally from upper left to lower right. Replace the crooked upright steel socket with a SMALL iron collar whose hollow eye is exactly COAXIAL with that diagonal wooden shaft. The wood continues straight THROUGH this collar, with a short visible wooden stub beyond it at the upper-left end. Attach ONE crescent blade to the SIDE of this collar, perpendicular to the shaft; the blade is steel with subtle knotwork. Both ends of the collar are perpendicular to the shaft. The axe is a believable assembled tool, no offset joint, no upright decorative cylinder, no bent shaft. Isolated full token with true alpha.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://se.pinterest.com/pin/berserker-dnd-character--386605949272059596/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Berserker. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest user's overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://se.pinterest.com/pin/berserker-dnd-character--386605949272059596/. These are reference research only; create original anatomy, pose and artwork, do not copy or trace a reference. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling view directly DOWN onto crown, dorsal spine and TOP/BACK. Not a 45-degree view, no portrait, visible frontal face/chest, side perspective, horizon or isometric angle. Species/design: A fierce muscular human axe fighter seen from EXACTLY overhead crown/back/shoulders, auburn braided hair, coarse wolf-gray fur shoulder mantle over weathered brown leather armor, two bare sinewy forearms gripping one two-handed steel greataxe extended diagonally, two braced leather boots. Low ready stance, realistic cloth and fur, copper belt fittings, no horned helmet or frontal face portrait, no other characters. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures and layered surfaces, crisp readable silhouette, beautifully modeled volume, controlled restrained top-left lighting, subtle natural wear and sophisticated color variation. ONE connected creature only, every tip and appendage fully in frame with a clear transparent margin on ALL sides. No extra creatures, alternate poses, atlas, collage, circle, border, token base, ground, scene, cast shadow beyond creature, background haze/glow, words, labels, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "4cbf90adc6715f42cb65268df430d2f52461e6a2fdcbe390015638944f579856",
+      "originalSha256": "5668d5cff0f2e9b81b1dad011b9a24417e1523e4882b945b34a224c300b6beeb",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-black-bear",
@@ -788,19 +884,43 @@
       "id": "monster-black-dragon-wyrmling",
       "name": "Black Dragon Wyrmling",
       "filename": "monster-black-dragon-wyrmling-v1.webp",
-      "width": 1246,
-      "height": 1262,
-      "sha256": "cf9daf7344f6c2b8a3a4a50cd97ed20acff468a942f5a563cd3c0c2c2a9ee9e1",
-      "transparentPixels": 1100204,
+      "width": 1241,
+      "height": 1268,
+      "sha256": "9e85601b55e1a7440e580db614d5124c868a279914b7cbb12e76218d8ea393ed",
+      "transparentPixels": 1070546,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Black Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest user's overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ar.pinterest.com/pin/820499625894256832/. These are reference research only; create original anatomy, pose and artwork, do not copy or trace a reference. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling view directly DOWN onto crown, dorsal spine and TOP/BACK. Not a 45-degree view, no portrait, visible frontal face/chest, side perspective, horizon or isometric angle. Species/design: A young swamp dragon hatchling with disproportionately large narrow crocodilian head, small forward-curling ivory horns, charcoal-black fine glossy scales with olive creases, slender short neck, exactly four small clawed legs, two thin batlike wings opened unevenly, and one long tail curling right. True overhead back view, inquisitive predatory crouch. Juvenile thin bones, delicate horns and supple membranes distinguish it from adults; original pose and anatomy, not scaled-down adult artwork. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures and layered surfaces, crisp readable silhouette, beautifully modeled volume, controlled restrained top-left lighting, subtle natural wear and sophisticated color variation. ONE connected creature only, every tip and appendage fully in frame with a clear transparent margin on ALL sides. No extra creatures, alternate poses, atlas, collage, circle, border, token base, ground, scene, cast shadow beyond creature, background haze/glow, words, labels, watermark or signature.",
+      "prompt": "Image 1 is our black dragon to fix. Image 2 is an overhead anatomy reference ONLY. Preserve image 1 head, scales, wings and tail. Replace its enormous hind legs with SHORT COMPACT reptilian hind limbs in natural top-down foreshortening, based on image 2: hips close to torso, small thighs partly hidden by wings, short shins, small scaled feet. Each rear foot must be approximately the SAME SIZE as the existing front foot, not larger. Rear limbs should project only slightly beyond the sides of the body, not sprawl far outward. Three narrow clawed toes face forward toward the head at TOP. Anatomically attached knees and ankles, no hand-like palms. Retain exactly four legs and two wings. Premium realistic painted cutout with true transparent alpha, full silhouette contained and no background/shadow/base/text.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://ar.pinterest.com/pin/820499625894256832/"
       ],
       "created_at": "2026-10-06",
       "edit": "Edit the attached ONE original premium VTT token. Fix framing ONLY: fit complete juvenile black dragon including ALL wing tips inside canvas, with clear generous transparent padding around ALL sides. Preserve exactly FOUR legs, TWO wings and ONE tail, head anatomy, original pose, premium scales and skull-like head. Do not crop wings to border; expand transparent canvas margin. No scenery, background, glow, base or text. Research direction: https://br.pinterest.com/pin/324611085643692072/ and species reference https://ar.pinterest.com/pin/820499625894256832/. Create original work, do not trace/copy.",
-      "revision_note": "Fix framing ONLY: fit complete juvenile black dragon including ALL wing tips inside canvas, with clear generous transparent padding around ALL sides. Preserve exactly FOUR legs, TWO wings and ONE tail, head anatomy, original pose, premium scales and skull-like head. Do not crop wings to border; expand transparent canvas margin. No scenery, background, glow, base or text."
+      "revision_note": "Fix framing ONLY: fit complete juvenile black dragon including ALL wing tips inside canvas, with clear generous transparent padding around ALL sides. Preserve exactly FOUR legs, TWO wings and ONE tail, head anatomy, original pose, premium scales and skull-like head. Do not crop wings to border; expand transparent canvas margin. No scenery, background, glow, base or text.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Black Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest user's overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ar.pinterest.com/pin/820499625894256832/. These are reference research only; create original anatomy, pose and artwork, do not copy or trace a reference. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling view directly DOWN onto crown, dorsal spine and TOP/BACK. Not a 45-degree view, no portrait, visible frontal face/chest, side perspective, horizon or isometric angle. Species/design: A young swamp dragon hatchling with disproportionately large narrow crocodilian head, small forward-curling ivory horns, charcoal-black fine glossy scales with olive creases, slender short neck, exactly four small clawed legs, two thin batlike wings opened unevenly, and one long tail curling right. True overhead back view, inquisitive predatory crouch. Juvenile thin bones, delicate horns and supple membranes distinguish it from adults; original pose and anatomy, not scaled-down adult artwork. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures and layered surfaces, crisp readable silhouette, beautifully modeled volume, controlled restrained top-left lighting, subtle natural wear and sophisticated color variation. ONE connected creature only, every tip and appendage fully in frame with a clear transparent margin on ALL sides. No extra creatures, alternate poses, atlas, collage, circle, border, token base, ground, scene, cast shadow beyond creature, background haze/glow, words, labels, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "d47dc5be9c521302a31e70e34eaa6132d161489ffb9755df8a6f9d138f6c87f5",
+      "originalSha256": "cf9daf7344f6c2b8a3a4a50cd97ed20acff468a942f5a563cd3c0c2c2a9ee9e1",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-black-pudding",
@@ -842,15 +962,39 @@
       "filename": "monster-blood-hawk-v1.webp",
       "width": 1536,
       "height": 1024,
-      "sha256": "9124e682fad3ee249b5e2075d73ffab1b2db19f302b3b96fcbc6d0621254aafc",
-      "transparentPixels": 1024608,
+      "sha256": "cfbb151c391b8657e29f9bd84f6566cc7bdd1fd54bc81e31bba7a954864253c7",
+      "transparentPixels": 959535,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Blood Hawk. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest user's overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ch.pinterest.com/pin/pin-en-ddf-beasts--862720872357930086/. These are reference research only; create original anatomy, pose and artwork, do not copy or trace a reference. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling view directly DOWN onto crown, dorsal spine and TOP/BACK. Not a 45-degree view, no portrait, visible frontal face/chest, side perspective, horizon or isometric angle. Species/design: A predatory hawk flying with exactly two broad layered feather wings extended unequally, compact feathered torso, short hooked black beak, two small tucked taloned feet and one fan tail. Dorsal overhead view feathers in rich russet red-brown with dark gray barred flight feathers, fine crisp individual feather structure, head looking straight forward. Real bird anatomy, no blood spray, scene, circular frame or swarm. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures and layered surfaces, crisp readable silhouette, beautifully modeled volume, controlled restrained top-left lighting, subtle natural wear and sophisticated color variation. ONE connected creature only, every tip and appendage fully in frame with a clear transparent margin on ALL sides. No extra creatures, alternate poses, atlas, collage, circle, border, token base, ground, scene, cast shadow beyond creature, background haze/glow, words, labels, watermark or signature.",
+      "prompt": "Precise object edit. Repair this Blood Hawk into a straight anatomically correct bird viewed directly from overhead, dorsal back facing viewer. Preserve rust red/copper/brown hawk feathers, dark barred wing/tail tips, sharp dark hooked beak, high quality painted individual feather detail. Beak faces TOP, back spine is straight and continuous to centered fan tail BELOW. Exactly TWO WINGS, left and right same length and same level, matching shoulder roots and normal elbow/wrist/primary-feather structure, evenly spread in a horizontal soaring pose. Wing broad ends must not point opposing directions or look twisted. Exactly TWO small folded raptor legs under the torso with natural talons. One tail centered on rump. Body does not twist, no extra feathers as limbs. Isolate complete single hawk occupying central 80 percent of image with transparent padding around every feather tip. Remove all brown streaked background/ghosting and colored fringes. Clean natural true alpha background, no motion trail, ground, text or circle frame.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://ch.pinterest.com/pin/pin-en-ddf-beasts--862720872357930086/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Blood Hawk. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest user's overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ch.pinterest.com/pin/pin-en-ddf-beasts--862720872357930086/. These are reference research only; create original anatomy, pose and artwork, do not copy or trace a reference. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling view directly DOWN onto crown, dorsal spine and TOP/BACK. Not a 45-degree view, no portrait, visible frontal face/chest, side perspective, horizon or isometric angle. Species/design: A predatory hawk flying with exactly two broad layered feather wings extended unequally, compact feathered torso, short hooked black beak, two small tucked taloned feet and one fan tail. Dorsal overhead view feathers in rich russet red-brown with dark gray barred flight feathers, fine crisp individual feather structure, head looking straight forward. Real bird anatomy, no blood spray, scene, circular frame or swarm. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures and layered surfaces, crisp readable silhouette, beautifully modeled volume, controlled restrained top-left lighting, subtle natural wear and sophisticated color variation. ONE connected creature only, every tip and appendage fully in frame with a clear transparent margin on ALL sides. No extra creatures, alternate poses, atlas, collage, circle, border, token base, ground, scene, cast shadow beyond creature, background haze/glow, words, labels, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "4b7b7fdd9a68b128b38c6ac6374542f7f92a6c9075462f9d2eb501574d111dfb",
+      "originalSha256": "9124e682fad3ee249b5e2075d73ffab1b2db19f302b3b96fcbc6d0621254aafc",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-blue-dragon-wyrmling",
@@ -2475,17 +2619,41 @@
       "id": "monster-green-dragon-wyrmling",
       "name": "Green Dragon Wyrmling",
       "filename": "monster-green-dragon-wyrmling-v1.webp",
-      "width": 1374,
-      "height": 1145,
-      "sha256": "0da8a3dc80e0c76a0690fbb9a50ef8c46bd76d86758715c0e103873a1e09d9c3",
-      "transparentPixels": 979305,
+      "width": 1222,
+      "height": 1287,
+      "sha256": "520fbcf70f104983a5123a40d2ff0714d5a6897f80583916e6c2015b80b613a2",
+      "transparentPixels": 1034593,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Green Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/298926494029331509/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One juvenile GREEN dragon wyrmling, ONE compact slender forest-green scaled torso, short curved neck with ONE narrow reptilian head and youthful small brow horns, tall finlike neck crest and ridged spine, exactly FOUR clawed legs and TWO emerald leathery wings with visible delicate gold-brown veins, ONE narrow tapering tail. Crouching turn toward left with wings swept back unevenly, textured leaf-green scales and deep moss grooves, own juvenile anatomy/pose, not recolored other dragon. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Correct ONLY the two HIND FEET of the GREEN dragon in image 1. Image 2 BLACK dragon is exact anatomy reference. Keep green scales, head at TOP, green-gold wings, upper back, front legs and single curved tail unchanged. In the LOWER half beside hips, redraw hind knees/ankles so the feet curl FORWARD and all long claws point UP toward the head/TOP, heels toward tail/BOTTOM, as image 2. Current outward/backward rear claws are WRONG. Exactly FOUR legs and TWO wings, no extra parts. Preserve premium painting detail. Entire silhouette inside frame with clear transparent margins; genuine transparent alpha, no base/ring/shadow/text.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://www.pinterest.com/pin/298926494029331509/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Green Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/298926494029331509/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One juvenile GREEN dragon wyrmling, ONE compact slender forest-green scaled torso, short curved neck with ONE narrow reptilian head and youthful small brow horns, tall finlike neck crest and ridged spine, exactly FOUR clawed legs and TWO emerald leathery wings with visible delicate gold-brown veins, ONE narrow tapering tail. Crouching turn toward left with wings swept back unevenly, textured leaf-green scales and deep moss grooves, own juvenile anatomy/pose, not recolored other dragon. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "ef64781d408be68039ea5c259b1f0784e8b9db145e1cc30fc2a9d40b68c8972e",
+      "originalSha256": "0da8a3dc80e0c76a0690fbb9a50ef8c46bd76d86758715c0e103873a1e09d9c3",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-green-hag",
@@ -2590,31 +2758,79 @@
       "filename": "monster-guardian-naga-v1.webp",
       "width": 1226,
       "height": 1283,
-      "sha256": "0bcf27fa7ad4072d607963d81709636a6ac4f211ded56e458e0045884890acb8",
-      "transparentPixels": 977643,
+      "sha256": "eb670610a624840dcd90f9ee3ac6bf0d3cbfebb8b7c0de51459e77c9bbe122c4",
+      "transparentPixels": 1098172,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Guardian Naga. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/92675704820796234/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One guardian naga, ONE massive legless serpent body with lustrous gold-green patterned scales, ONE sacred feminine humanoidlike head seen mainly on crown with elaborate dark braided hair and modest bronze diadem, ONE tapering tail. Long open gently curling continuous body, head bows toward floor so no portrait face, delicate dorsal scale facets and noble crested neck, no humanoid arms or legs, no statue pedestal/scenery or detached coils. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Precise object edit. The owner wants this female serpent Guardian Naga to have proper humanoid ARMS. Correct reference into one coherent naga: elegant armored HUMAN FEMALE upper body with head, neck, shoulders and EXACTLY TWO human arms with elbows, wrists, and normal five-finger hands; torso transitions smoothly into ONE continuous green-gold scaled snake body and ONE tail. No legs. Preserve black braided hair, gold crown/ornament, olive emerald metallic scales, cream belly, fine premium painted realistic fantasy detail. Head and torso face same direction, do not attach woman's head directly to giant snake with missing shoulders. Top-down dorsal view from above: viewer sees crown/back of head, upper back/shoulder armor and snake back. Head faces TOP, arms naturally reach forward from shoulder sides, fingers separated. Serpent lower body coils in a clear relaxed S below pelvis without overlapping or fused sections and tapers to single complete tail. No duplicated coils/arms/tail. Fully framed single creature with generous transparent padding around hands and tail, no fringe/halo, true transparent background without scene/text/frame.\n\nFinal framing correction: Use case: precise-object-edit. Preserve this guardian naga artwork and anatomy, but reframe the WHOLE subject slightly smaller at center so there is a clean 4 percent transparent margin on every side. Both entire hands and all five fingers on each hand must be fully inside the canvas, including the far-left fingertips. Keep the same green/gold serpentine body, woman, armor, braided hair, gesture, scale detail, lighting and perspective. No crop, no extra limbs, no change to species or costume. Completely transparent empty background.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://www.pinterest.com/pin/92675704820796234/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Guardian Naga. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/92675704820796234/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One guardian naga, ONE massive legless serpent body with lustrous gold-green patterned scales, ONE sacred feminine humanoidlike head seen mainly on crown with elaborate dark braided hair and modest bronze diadem, ONE tapering tail. Long open gently curling continuous body, head bows toward floor so no portrait face, delicate dorsal scale facets and noble crested neck, no humanoid arms or legs, no statue pedestal/scenery or detached coils. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "ca7b4369f615d6df3f0e01dd1c052fc948941c09bae7fb949f49129d1ff7ff06",
+      "originalSha256": "0bcf27fa7ad4072d607963d81709636a6ac4f211ded56e458e0045884890acb8",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-half-dragon",
       "name": "Half-Dragon",
       "filename": "monster-half-dragon-v1.webp",
       "width": 1218,
-      "height": 1291,
-      "sha256": "8745189207c5995979332ec370463af0088434d995435c2b5293c4172c940fd5",
-      "transparentPixels": 857628,
+      "height": 1292,
+      "sha256": "7a980807d217306c479b82d7e9e1a6a3c508865d3f4e7eeae3ca7ff7e5230972",
+      "transparentPixels": 855341,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Half-Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/826269862914401171/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One half-dragon warrior humanoid, ONE draconic red-bronze horned head crown, exactly TWO muscular scaled arms ending in clawed hands and TWO digitigrade booted legs, ONE long thick scaled tail curving outward. Full dark worn chainmail/leather tunic and iron shoulder armor, one broad axe and one battered shield. Dorsal overhead posture, fine scarlet/copper scales with dark ridge along back, no extra arms, full dragon quadruped body or wings, no frontal portrait. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Precise object edit. Correct this premium half-dragon warrior's body and weapon anatomy, preserving red scales, horns, chainmail, dark steel armor, red cloth, large round shield and single short curved tail. Consistent top-down overhead view, head direction matches hips and two feet. Exactly two humanoid arms and two humanoid legs. Feet are matching dragon claws attached naturally to shin armor, not an extra claw on waist. The shield is attached by forearm straps and gripped behind its center by the LEFT hand; elbow/forearm remain connected naturally to shoulder. RIGHT hand grips ONE straight haft of ONE single-headed steel battle axe. Replace distorted axe blade with a structurally normal broad convex single axe blade with a CLOSED central metal eye/socket at the top of the shaft, short flat poll opposite the blade; one uninterrupted shaft from eye through wrapped fingers to butt cap. No second head, no hooked overlapping axe blades, no crooked shaft, no hand gripping blade. Correct opposable thumb and fingers around haft. Fine premium painted realistic fantasy texture, whole single creature and equipment fully visible inside clear transparent margins. Clean natural alpha, no colored fringe, completely transparent background, no text frame ground.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://www.pinterest.com/pin/826269862914401171/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Half-Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/826269862914401171/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One half-dragon warrior humanoid, ONE draconic red-bronze horned head crown, exactly TWO muscular scaled arms ending in clawed hands and TWO digitigrade booted legs, ONE long thick scaled tail curving outward. Full dark worn chainmail/leather tunic and iron shoulder armor, one broad axe and one battered shield. Dorsal overhead posture, fine scarlet/copper scales with dark ridge along back, no extra arms, full dragon quadruped body or wings, no frontal portrait. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "f94c4557a905a48f5644d00e39dc165e7f6621ea0993edf0c33cfa36f2073d81",
+      "originalSha256": "8745189207c5995979332ec370463af0088434d995435c2b5293c4172c940fd5",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-harpy",
@@ -2703,15 +2919,39 @@
       "filename": "monster-hippogriff-v1.webp",
       "width": 1230,
       "height": 1278,
-      "sha256": "77ce455319556352c277ebd8b9469f823e429e16a540e50913c0d49c1b58c9f1",
-      "transparentPixels": 907217,
+      "sha256": "c2bb05aa762cb420fbdd3878d1b0e4d2cca0187433cf39f18c089d60bdfe2033",
+      "transparentPixels": 1009487,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Hippogriff. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://it.pinterest.com/pin/hippogriff-by-me-drawing--409757266068011994/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One hippogriff in banking glide facing upper right: eagle head and forequarters with cream feathers and hooked ochre beak, two feathered wings; exactly two eagle taloned forelegs, two dark chestnut horse hindlegs with hooves, one chestnut horse tail. Clear anatomical transition from tawny eagle shoulders into horse back; no lion rear body. Separate attached wings and all four feet readable. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Precise object edit. Repair this premium hippogriff into an anatomically coherent DIRECTLY OVERHEAD DORSAL quadruped token, camera vertically above. Preserve chestnut horse hindquarters/tail, cream eagle head, brown feathered front body and wings, gold curved eagle beak, fine detailed fantasy painting. Head beak faces TOP, rump tail toward BOTTOM, spine consistently aligned all the way, no inverted rear half. Exactly FOUR legs: two bird talon forelegs rooted in front shoulders, two equine hind legs with hooves rooted in hips; matching left/right joints and feet. The two feathery wings attach to the upper BACK behind foreleg shoulders, same size and level, extend evenly left/right from matched wing roots, with natural layered feathers and tips fully visible. Wings do not replace limbs. No extra feet or mismatched limbs. Complete single hippogriff centered with generous clear transparent margin around wing tips and tail. Clean alpha without red colored fringe; transparent background, no ground/scenery/text/frame.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://it.pinterest.com/pin/hippogriff-by-me-drawing--409757266068011994/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Hippogriff. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://it.pinterest.com/pin/hippogriff-by-me-drawing--409757266068011994/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One hippogriff in banking glide facing upper right: eagle head and forequarters with cream feathers and hooked ochre beak, two feathered wings; exactly two eagle taloned forelegs, two dark chestnut horse hindlegs with hooves, one chestnut horse tail. Clear anatomical transition from tawny eagle shoulders into horse back; no lion rear body. Separate attached wings and all four feet readable. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "db56a99df14a5381c8582f5f95d3f7f5249b9dad67bdb84062fd4565930843bd",
+      "originalSha256": "77ce455319556352c277ebd8b9469f823e429e16a540e50913c0d49c1b58c9f1",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-hippopotamus",
@@ -2766,18 +3006,42 @@
       "id": "monster-homunculus",
       "name": "Homunculus",
       "filename": "monster-homunculus-v1.webp",
-      "width": 1296,
-      "height": 1213,
-      "sha256": "b0dea777d7f5e2dcb545922a2a66994d4d33d54fa72f323c075388af1a4e2593",
-      "transparentPixels": 1039376,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "cfec06b8dc0fc4914e27996b07adfb509594da61b1c96ca09758d6a9c544ddec",
+      "transparentPixels": 1158988,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Homunculus. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://mx.pinterest.com/pin/936537685011273520/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One tiny original winged homunculus, an obviously nonhuman alchemical creature with batlike pointed ears, broad round slate-blue head, ridged dorsal back and leathery scaled surfaces. Exactly two short arms, two taloned legs, two bat wings attached independently at shoulders and one short curved tail. Small leather harness covering torso with brass potion pouch; mature creature proportions, no human child, no nudity. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: stylized-concept. Rebuild the HOMUNCULUS game token as a coherent compact creature seen exactly 90 degrees from ABOVE, using this reference only for correct overhead body foreshortening. Small blue-gray imp-like scaled magical humanoid, large pointed pink inner ears, smooth little reptilian snout pointing BOTTOM, subtle short dorsal spines, small lavender bat wings attached to its UPPER BACK, separate from two little arms. We see skull crown and shoulder/back tops; wings extend to the sides and sweep toward TOP behind the arms, with clear dorsal root joints. Its two hands reach forward near BOTTOM on either side of snout, fingers naturally curled. Two small planted three-toed feet also point BOTTOM, mostly hidden by the squat torso, NOT splayed backward. A slim proportionate long tail trails behind toward TOP, softly curved. Thin brown leather belt/harness, tiny green potion at side. Detailed natural skin/scales, fine leathery translucent purple membranes, warm brass buckles, realistic fantasy token finish. One original entire creature, no raised chest/front view, no duplicate limbs, no prop platform. Complete silhouette with transparent margin; true transparent background.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://mx.pinterest.com/pin/936537685011273520/"
       ],
       "created_at": "2026-10-06",
-      "edit_prompt": "Re-render this original slate-blue homunculus in EXACT 90-degree orthographic overhead view: camera above CROWN AND BACK looking straight down, NOT face, chest or front belly. Tilt creature forward in flying crouch, its crown and long scaled dorsal spine lead toward lower-left; dorsal harness across back with potion pouch on side. Exactly TWO small arms, TWO taloned legs, TWO separate bat wings and ONE curled tail, ONE broad nonhuman head with long ears. Preserve polished detailed material. All tips intact, at least8 percent transparent margin on all4sides. Single creature only, real alpha background, no ground, words or castshadow."
+      "edit_prompt": "Re-render this original slate-blue homunculus in EXACT 90-degree orthographic overhead view: camera above CROWN AND BACK looking straight down, NOT face, chest or front belly. Tilt creature forward in flying crouch, its crown and long scaled dorsal spine lead toward lower-left; dorsal harness across back with potion pouch on side. Exactly TWO small arms, TWO taloned legs, TWO separate bat wings and ONE curled tail, ONE broad nonhuman head with long ears. Preserve polished detailed material. All tips intact, at least8 percent transparent margin on all4sides. Single creature only, real alpha background, no ground, words or castshadow.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Homunculus. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://mx.pinterest.com/pin/936537685011273520/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One tiny original winged homunculus, an obviously nonhuman alchemical creature with batlike pointed ears, broad round slate-blue head, ridged dorsal back and leathery scaled surfaces. Exactly two short arms, two taloned legs, two bat wings attached independently at shoulders and one short curved tail. Small leather harness covering torso with brass potion pouch; mature creature proportions, no human child, no nudity. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "dc8b6b4d7b1f3360db1601fcb7914f265668fb4f557077fec05604d71f85b76d",
+      "originalSha256": "b0dea777d7f5e2dcb545922a2a66994d4d33d54fa72f323c075388af1a4e2593",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-horned-devil",
@@ -2879,17 +3143,41 @@
       "id": "monster-imp",
       "name": "Imp",
       "filename": "monster-imp-v1.webp",
-      "width": 1240,
-      "height": 1269,
-      "sha256": "105a76e87a552fff545c7a90e804484575ecb48d08bbb8b92431f3aca718a6c1",
-      "transparentPixels": 997440,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "dd0bbcfc619a61e0b5d49f6a899ae22adcc9076f538c8dc7e59df50eb66acaea",
+      "transparentPixels": 1196613,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Imp. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://nz.pinterest.com/pin/542050505122094303/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One small crimson imp seen from dorsal crown/back, exactly two clawed arms, two bent taloned legs, two batlike wings and one curving stinger tail. Burnished red leathery scales with black hornlets, copper leather waist harness and tiny pouch, crouching mischievous alert posture. Wings have crisp veins and warm dark interiors; entire tail in frame, no extra face or creature. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: stylized-concept. Rebuild one red IMP demon VTT token. This reference shows only the correct 90-degree overhead camera and natural humanoid foreshortening; do not copy warrior equipment. A small leathery crimson devil with two short curved dark horns, pointed ears, wiry arms, a compact torso, two short legs, broad brown-red bat wings rooted on UPPER BACK, and thin curved tail with arrow tip. Viewed exactly vertically ABOVE a crouching standing imp, face and nose pointing BOTTOM. Skull crown and shoulder tops dominate, torso and hip are foreshortened behind toward TOP, legs mostly occluded with two small clawed feet visible at sides, toes pointing BOTTOM like the nose. Two small arms reach forward BOTTOM separately from the wings. Wings spread outward and sweep backward toward TOP from clear dorsal root joints, not attached to forearms or chest. Tail trails toward TOP, bends gently in clear space. Small worn leather belt and pouch. Natural detailed red skin, fine scales, leathery wing membranes, dark claws. Coherent compact anatomy, not a full rear-view dragon pose. One entire creature comfortably inside canvas, genuine transparent alpha, no floor, circle or text.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://nz.pinterest.com/pin/542050505122094303/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Imp. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://nz.pinterest.com/pin/542050505122094303/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One small crimson imp seen from dorsal crown/back, exactly two clawed arms, two bent taloned legs, two batlike wings and one curving stinger tail. Burnished red leathery scales with black hornlets, copper leather waist harness and tiny pouch, crouching mischievous alert posture. Wings have crisp veins and warm dark interiors; entire tail in frame, no extra face or creature. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "9c69274e7e5896e5cd219c3b36a096c01526e184e1755266a561154ef7ffbdf1",
+      "originalSha256": "105a76e87a552fff545c7a90e804484575ecb48d08bbb8b92431f3aca718a6c1",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-incubus",
@@ -3059,16 +3347,40 @@
       "filename": "monster-lich-v1.webp",
       "width": 1254,
       "height": 1254,
-      "sha256": "d0d23eec7ef726ccec44a86e27927fe509007341adce50fd0b9f767054372e65",
-      "transparentPixels": 796430,
+      "sha256": "2d2181921d963071ffe6fd8f0f15abdfdf236e9fffd745863944dc9607690568",
+      "transparentPixels": 814269,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Lich. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://in.pinterest.com/pin/967781407560802175/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One ancient lich, a fully clothed skeletal arcane figure in layered midnight teal brocade robes, embroidered silver trim and rigid high collar, bone skull crown partially exposed above shoulders. Exactly two gloved bony arms and two robed legs; one hand holds crooked ancient obsidian staff and other a closed rune-carved tome. Tarnished metal clasp, jade gemstones and subtle cold illumination on body only, no organs or violence scene. Overhead compact crown and richly textured back. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target: Lich premium VTT token. Correct skeletal hands, staff/book grips and incoherent pelvis/feet. Preserve aged ivory skull with bronze crown, teal jewel, dark teal embroidered tattered robes, ornate staff with a teal crystal and one closed dark grimoire. One cohesive undead humanoid with exactly two arms and two legs, natural elbows/wrists/shoulders and one continuous spine. Both feet orient forward with skull and chest; no body half reversed, no arm emerging from hip. View from directly OVERHEAD in one consistent dorsal viewpoint, crown and shoulders/back seen from above, not mixed front/back perspective. Staff held securely in one skeletal hand: four bony fingers curl around a continuous SINGLE straight shaft with an opposing thumb, staff head firmly connects to shaft. Other hand supports ONE book naturally by spine/bottom edge, exactly five distinct skeletal fingers, no floating book or bones passing through it. Keep complete clothing, hands, feet and staff inside wide EMPTY transparent margins. Premium fine realistic painted bone/fabric/metal texture, genuine transparent alpha, no glow outside silhouette, colored fringe, ground, backdrop, external shadow, text, token frame or collage. ONE lich only.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://in.pinterest.com/pin/967781407560802175/"
       ],
       "created_at": "2026-10-06",
-      "edit_prompt": "Re-render this exact original lich design with orthographic90-degree overhead camera straight DOWN at skull CROWN, HIGH COLLAR AND BACK. No frontal ribcage, chest, face or elongated front robe. Lean forward in compact casting stance; robe dorsal folds spread over back and shoulders dominate, crown seen fully on top, just two boot tips below. Two arms extend sideways, one with obsidian jade staff and one with closed tome; preserve rich teal brocade and silver embroidery. One head,two arms,two legs; fullyclothed; alltips complete with8percent transparent margin all4sides. No ground/text/extrafigure, genuinealpha background."
+      "edit_prompt": "Re-render this exact original lich design with orthographic90-degree overhead camera straight DOWN at skull CROWN, HIGH COLLAR AND BACK. No frontal ribcage, chest, face or elongated front robe. Lean forward in compact casting stance; robe dorsal folds spread over back and shoulders dominate, crown seen fully on top, just two boot tips below. Two arms extend sideways, one with obsidian jade staff and one with closed tome; preserve rich teal brocade and silver embroidery. One head,two arms,two legs; fullyclothed; alltips complete with8percent transparent margin all4sides. No ground/text/extrafigure, genuinealpha background.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Lich. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://in.pinterest.com/pin/967781407560802175/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One ancient lich, a fully clothed skeletal arcane figure in layered midnight teal brocade robes, embroidered silver trim and rigid high collar, bone skull crown partially exposed above shoulders. Exactly two gloved bony arms and two robed legs; one hand holds crooked ancient obsidian staff and other a closed rune-carved tome. Tarnished metal clasp, jade gemstones and subtle cold illumination on body only, no organs or violence scene. Overhead compact crown and richly textured back. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "c99e99073e47066f8a5dafd022aa203894fa6e7b062e787493cf17489e513a1c",
+      "originalSha256": "d0d23eec7ef726ccec44a86e27927fe509007341adce50fd0b9f767054372e65",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-lion",
@@ -3076,15 +3388,39 @@
       "filename": "monster-lion-v1.webp",
       "width": 1223,
       "height": 1286,
-      "sha256": "61c40456273ea948505a912873402ddcb17076eb5835d26cc24fb3ec22e61a79",
-      "transparentPixels": 1061299,
+      "sha256": "33bc3a6a1794fdcbf299b7f7b662f122e5de3b572fe6ed948cd4619fa9247e36",
+      "transparentPixels": 1246533,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Lion. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ca.pinterest.com/pin/token-collection-for-erollplay--256071928804797534/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural adult male lion taking a broad quiet step forward upper left, exactly four heavy paws and one long tail ending in black tuft, one head with large warm brown mane and short ears. Golden fur with muted cream accents, individual dark mane strands spread around top of crown and shoulders, muscular feline dorsal spine and haunches. No costume, no ground or framed circle. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case precise-object-edit. Repair this lion token's twisted anatomy. Preserve species mature male lion, honey gold fur, broad brown mane, rich fine painted realistic fantasy detail and same quality. Rebuild a TRUE DIRECT OVERHEAD dorsal quadruped: head faces TOP, straight coherent spine from mane to rump, body entirely faces same direction. Exactly FOUR anatomically correct feline legs, two front limbs rooted at shoulder girdle under mane and two rear limbs rooted at hips, matching paired paws with normal feline toes. Natural low standing/stalking pose, all four paws on same ground plane, no fused paws or human feet, no inverted hindquarters, no head at side of belly. Exactly one tail attaches centrally to rear rump and curls gently backward below body, ending in dark tuft. Back/mane seen from above, no sideways belly view. Complete single lion centered with generous transparent padding around every paw and tail. No props scenery text border shadow ground or background; real transparent alpha.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://ca.pinterest.com/pin/token-collection-for-erollplay--256071928804797534/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Lion. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ca.pinterest.com/pin/token-collection-for-erollplay--256071928804797534/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural adult male lion taking a broad quiet step forward upper left, exactly four heavy paws and one long tail ending in black tuft, one head with large warm brown mane and short ears. Golden fur with muted cream accents, individual dark mane strands spread around top of crown and shoulders, muscular feline dorsal spine and haunches. No costume, no ground or framed circle. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "739cdbfe3701036abab076e9156569f321ab41d647ef5aa263bd544592347bb7",
+      "originalSha256": "61c40456273ea948505a912873402ddcb17076eb5835d26cc24fb3ec22e61a79",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-lizard",
@@ -3284,15 +3620,39 @@
       "filename": "monster-minotaur-of-baphomet-v1.webp",
       "width": 1312,
       "height": 1199,
-      "sha256": "37a77dbd531bc7cff6b113f288f6e206b604f76bf5224d7c0e5291587a130ce9",
-      "transparentPixels": 777247,
+      "sha256": "3df5b7736a307929413170cf0fc80cfb25d906314c37db55316866dfd5ba719c",
+      "transparentPixels": 839504,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Minotaur of Baphomet. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/131026670402333632/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One adult minotaur of Baphomet, one horned bovine head seen from broad crown and dark mane, exactly two powerful humanoid arms and two digitigrade hoof legs, one short tail. Fully covering worn charcoal leather armor, rust-red cloth skirt and heavy bronze shoulder plates on broad BACK. One double-headed iron greataxe gripped with two hands sideward, complete axe blade/haft. Crouched overhead charging stance, warm dark brown fur and scratched horn ridges, no frontal bare chest or battle scene. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case precise-object-edit. Correct ONLY the broken weapon and the two hands needed to grip it in this premium Minotaur token. Keep the creature identity, overhead view, exact brown fur, horns, armor, red cloth, posture, two hooves and single tail, lighting and fine painted detail. DELETE the entire existing malformed crescent weapon head and its loose disconnected pieces. Replace it with a structurally realistic TWO-HANDED GREATAxe with ONE large broad steel axe blade, a short compact flat poll on the opposite side, and ONE straight wooden haft wrapped in dark leather. It is NOT a double crescent weapon. A normal medieval bearded battle axe scaled large: the metal head has a closed solid central socket/eye around the TOP END of the shaft; the broad blade flares from that socket and terminates in ONE continuous convex cutting edge. The haft runs uninterrupted from the head socket through both hands to the brass butt cap. No additional shafts, loops, central gaps, holes in the blade, detached second blade, spear points, or decorative star. Put head toward upper-left, long haft diagonally down toward lower-right. Both thumbs oppose the four gripping fingers, fingers wrap around the cylindrical haft at two widely separated grip points below the axe head. All shaft sections and the socket share the SAME straight centerline. Match weapon perspective to creature's view. The entire single creature including the axe head fits within the canvas with generous transparent padding, alpha background completely transparent, no text no frame no scenery.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://uk.pinterest.com/pin/131026670402333632/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Minotaur of Baphomet. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/131026670402333632/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One adult minotaur of Baphomet, one horned bovine head seen from broad crown and dark mane, exactly two powerful humanoid arms and two digitigrade hoof legs, one short tail. Fully covering worn charcoal leather armor, rust-red cloth skirt and heavy bronze shoulder plates on broad BACK. One double-headed iron greataxe gripped with two hands sideward, complete axe blade/haft. Crouched overhead charging stance, warm dark brown fur and scratched horn ridges, no frontal bare chest or battle scene. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "3763b034cef9ea906f344bbc9437abd51dd949f40e0c4ef2d9f15f51e599329e",
+      "originalSha256": "37a77dbd531bc7cff6b113f288f6e206b604f76bf5224d7c0e5291587a130ce9",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-minotaur-skeleton",
@@ -3347,17 +3707,41 @@
       "name": "Mummy Lord",
       "filename": "monster-mummy-lord-v1.webp",
       "width": 1269,
-      "height": 1239,
-      "sha256": "10bd47d72a1bea3b8eb0f5204fa58ceacc0420545e20abd55e8fcc895b0b42a9",
-      "transparentPixels": 845986,
+      "height": 1240,
+      "sha256": "f1558c079e0e3e5f4f1151b121f1700c899a00cc605c1f875842382a1ef0635d",
+      "transparentPixels": 798906,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Mummy Lord. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://au.pinterest.com/pin/dd-nolzurs-marvelous-unpainted-miniatures-lich-mummy-lord--659073726757228830/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One mummy lord fully wrapped in dense aged ivory linen, ornate lapis-and-gold headdress over skull crown, royal indigo mantle covering broad BACK and gilded collar visible from above. Exactly one head, two arms and two legs, compact crouched upright stance with boot tips. One hand holds an intricate gold crooked ceremonial staff fully framed, other raised open. Fine linen fibers, tarnished hammered gold and lapis mosaic, no visible skin wounds/gore or frontal torso; overhead dorsal royal silhouette clearly distinct from common mummy. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target: Mummy Lord premium VTT token. Repair hand anatomy, weapon grip and contradictory torso/leg orientations. Preserve blue-gold pharaoh crown, purple patterned royal robes, linen mummy wrappings, worn gold ornaments and ceremonial blue/gold CROOK staff. Exactly ONE head, TWO arms and TWO legs on one coherent upright standing skeleton. Both feet point forward consistently with the head, no twisted pelvis or chest; camera is true 90-degree overhead viewing crown, shoulders and upper BACK, all parts use same perspective. One hand wraps its four fingers and thumb naturally around a SINGLE straight connected staff shaft, no fingers passing through the shaft, no disconnected/floating staff head. The other hand has exactly five well-articulated skeletal fingers in a calm casting gesture. Crook staff is not an axe or sword. Entire staff, both hands, robes and feet inside spacious transparent margins. Preserve polished fine hand-painted fantasy texture and aged fabric detail; clean silhouette with real transparent alpha, no background glow, colored edge artifacts, ground, outside shadow, circle, words or collage. One mummy lord only.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://au.pinterest.com/pin/dd-nolzurs-marvelous-unpainted-miniatures-lich-mummy-lord--659073726757228830/"
       ],
       "created_at": "2026-10-06",
-      "edit_prompt": "Repaint this same fully wrapped regal mummy lord premium game token to a STRICT 90-degree ORTHOGRAPHIC DORSAL OVERHEAD camera directly over the CROWN and BACK. Camera correction: top of blue-gold crown, broad embroidered purple cape BACK, shoulders and dorsal spine dominate; FRONT chest, frontal abdomen and upright portrait torso must NOT be visible. Torso strongly foreshortened and hidden under upper back/cape. Preserve same blue/gold crown, purple mantle, intact closed linen wrappings, golden crook held left and casting right hand, two arms and two feet peeking outward. ONE individual polished semi-realistic painted sprite, all accessories complete, generous transparent margin on all sides. Real transparent alpha, no ground, no external shadow."
+      "edit_prompt": "Repaint this same fully wrapped regal mummy lord premium game token to a STRICT 90-degree ORTHOGRAPHIC DORSAL OVERHEAD camera directly over the CROWN and BACK. Camera correction: top of blue-gold crown, broad embroidered purple cape BACK, shoulders and dorsal spine dominate; FRONT chest, frontal abdomen and upright portrait torso must NOT be visible. Torso strongly foreshortened and hidden under upper back/cape. Preserve same blue/gold crown, purple mantle, intact closed linen wrappings, golden crook held left and casting right hand, two arms and two feet peeking outward. ONE individual polished semi-realistic painted sprite, all accessories complete, generous transparent margin on all sides. Real transparent alpha, no ground, no external shadow.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Mummy Lord. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://au.pinterest.com/pin/dd-nolzurs-marvelous-unpainted-miniatures-lich-mummy-lord--659073726757228830/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One mummy lord fully wrapped in dense aged ivory linen, ornate lapis-and-gold headdress over skull crown, royal indigo mantle covering broad BACK and gilded collar visible from above. Exactly one head, two arms and two legs, compact crouched upright stance with boot tips. One hand holds an intricate gold crooked ceremonial staff fully framed, other raised open. Fine linen fibers, tarnished hammered gold and lapis mosaic, no visible skin wounds/gore or frontal torso; overhead dorsal royal silhouette clearly distinct from common mummy. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "6d4bcca396831ef86fcfed055933adf0317798ca3de5d21c8a5d4d6df5ca3b99",
+      "originalSha256": "10bd47d72a1bea3b8eb0f5204fa58ceacc0420545e20abd55e8fcc895b0b42a9",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-nalfeshnee",
@@ -3868,15 +4252,39 @@
       "filename": "monster-raven-v1.webp",
       "width": 1536,
       "height": 1024,
-      "sha256": "3ec85d832a47633c51bb26910e24aa921da66e83374deae7c6a195d5e35a063e",
-      "transparentPixels": 976898,
+      "sha256": "d5efd9b52d5ccf1bf93c7038301455a376e854639a44b0214392e4c3a2bb8754",
+      "transparentPixels": 987812,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Raven. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/81064862030004455/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural raven in flight, glossy black dorsal feathers with subtle blue-violet iridescence, thick black beak, TWO asymmetrically spread wings, TWO small curled talon feet, ONE fan tail. Direct back/top view, shoulder feathers layered with crisp shape, complete primary feathers. No skull, humanoid mask, accessories, extra birds, ground or sky. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target: Raven premium VTT token. Repair the crooked wings and mismatched left/right body orientation. One realistic black RAVEN in level gliding flight seen from EXACTLY 90 degrees directly above its DORSAL BACK. Head, neck, torso and tail form a straight vertical centerline, beak points to TOP of image, tail to bottom. Exactly TWO wings spread laterally at MATCHING angles and elevation, equal span and shape, anatomically correct shoulder, elbow and wrist articulation and layered primary/secondary feathers. Do not show one wing from below and the other from above. We see TOP of both wings and top of head; do not twist torso, neck or pelvis. Two small feet naturally tucked below/behind body, not hanging sideways. Preserve glossy charcoal/blue-black feather detail, premium crisp hand-painted realism and natural avian proportions, no armor or props. The COMPLETE body and wingtips stay inside frame with generous EMPTY transparent space on all sides. Remove all input background haze/streaks and colored outlines, true clean transparent alpha, no scenery, floor, outside shadow, text, border or collage. One raven only.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://www.pinterest.com/pin/81064862030004455/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Raven. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/81064862030004455/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural raven in flight, glossy black dorsal feathers with subtle blue-violet iridescence, thick black beak, TWO asymmetrically spread wings, TWO small curled talon feet, ONE fan tail. Direct back/top view, shoulder feathers layered with crisp shape, complete primary feathers. No skull, humanoid mask, accessories, extra birds, ground or sky. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "535e455f8ec6b4135616cba6ca2d0b0dfb5a5e01870bade8133be6528333586e",
+      "originalSha256": "3ec85d832a47633c51bb26910e24aa921da66e83374deae7c6a195d5e35a063e",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-red-dragon-wyrmling",
@@ -4126,15 +4534,39 @@
       "filename": "monster-seahorse-v1.webp",
       "width": 1024,
       "height": 1536,
-      "sha256": "094e229e2c033faad66dca605047c564219ee35d6e7bd3fdda9f0e55e9b08a34",
-      "transparentPixels": 1138582,
+      "sha256": "853860768f88b3e5d291eed67ba8b6ac349276d56eae2dd3dd2f139353d5b49b",
+      "transparentPixels": 1237626,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Seahorse. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://dk.pinterest.com/pin/seahorse--707980003937958019/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. For upright humanoids, lean far forward: head CROWN at lower-center FRONT, shoulders and BACK occupy upper half like a floor-plan miniature; no front chest or long hanging front torso. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: ONE small natural amber-brown seahorse, finely ribbed armored dorsal body, ONE horse-like head with long tubular snout, one continuous curled prehensile tail, small dorsal fin and two tiny pectoral fins. Strict camera above its spine, seahorse curves on a slight diagonal so crown/dorsal plates dominate, not a lateral diagram. No legs, extra fins or horses, no water, bubble or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target: golden Seahorse premium VTT sprite. Correct fin anatomy: the SINGLE delicate fan-shaped DORSAL FIN is attached to the BACK of the central broad TRUNK, immediately behind the belly/torso and BEFORE the narrow tail begins. It must NOT be on the coiled tail or at tail base. Exactly two tiny pectoral fins behind the head/gill covers. One equine-shaped fish head with tubular snout, one curved neck, one barrel-like ringed trunk, one narrowing PREHENSILE tail curling at the end with NO tail fin, no extra head/legs. Preserve beautiful amber/gold bony rings, wet scales, refined natural seahorse form and detailed premium painted quality. Redraw coherent anatomy as needed, one continuous dorsal spine viewed from directly OVERHEAD at 90 degrees, head facing the TOP of canvas, body not twisted, dorsal fin's attachment to trunk clearly identifiable from above. Entire animal with generous transparent margin. Delete all backdrop haze/streaks from reference, output genuine transparent alpha outside the clean silhouette. No ground, water, shadow outside creature, colored outline, border, text or collage. One seahorse only.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://dk.pinterest.com/pin/seahorse--707980003937958019/"
       ],
-      "created_at": "2026-10-06"
+      "created_at": "2026-10-06",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Seahorse. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://dk.pinterest.com/pin/seahorse--707980003937958019/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. For upright humanoids, lean far forward: head CROWN at lower-center FRONT, shoulders and BACK occupy upper half like a floor-plan miniature; no front chest or long hanging front torso. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: ONE small natural amber-brown seahorse, finely ribbed armored dorsal body, ONE horse-like head with long tubular snout, one continuous curled prehensile tail, small dorsal fin and two tiny pectoral fins. Strict camera above its spine, seahorse curves on a slight diagonal so crown/dorsal plates dominate, not a lateral diagram. No legs, extra fins or horses, no water, bubble or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "2f72e2ecb88145af0a08f53b0b1c8aab7204916dca5dc8b70708a755e5eb87a0",
+      "originalSha256": "094e229e2c033faad66dca605047c564219ee35d6e7bd3fdda9f0e55e9b08a34",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-shadow",
@@ -4335,16 +4767,40 @@
       "filename": "monster-spirit-naga-v1.webp",
       "width": 1223,
       "height": 1286,
-      "sha256": "513583a4b6e48ff31a82a32b440704b9db0acad4af061a1a6b6303c8d7716aeb",
-      "transparentPixels": 788936,
+      "sha256": "c375f788272578b3b258c6328b255721f0603ae30e0259c387035851f1cb1798",
+      "transparentPixels": 871638,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Spirit Naga. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/spirit-naga-miniature-for-dungeons-and-dragons-by-mz4250-etsy-canada-in-2025--908953137907747638/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. For upright humanoids, lean far forward: head CROWN at lower-center FRONT, shoulders and BACK occupy upper half like a floor-plan miniature; no front chest or long hanging front torso. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One spirit naga, ONE continuous thick dark crimson-and-black scaled snake body coiled in a readable broad S, ONE adult humanlike head with dark crown hair emerging at front, spine/crown dominate strict overhead. One long tapering tail, no arms, legs, wings or extra heads. Weathered dark bronze jeweled collar, subtle purple eye glow inside face only. Crisp overlapping scales, complete tail, no mist, ground, aura or gore. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target: Spirit Naga overhead premium VTT token. User requests correcting the missing arms: redesign her as a coherent WOMAN-SERPENT with a fully formed female humanoid upper torso and EXACTLY TWO visible human ARMS attached naturally to two SHOULDERS, elbows, wrists and hands with correct fingers. This requested artistic interpretation must include arms, do NOT keep a head-only snake. Preserve long ornate black hair, red gemstone gold crown, glowing purple eyes, gold jewelry and dark crimson/red-black serpent scales. Upper torso wears elegant opaque gold/red scale armor. Her human waist blends anatomically into ONE long serpentine lower body in a graceful coil; no human legs, no separate head pasted onto snake. Strict orthographic overhead camera onto crown, shoulders, back, arms and dorsal snake scales, entire upper and lower body share SAME perspective; crown/head faces TOP of canvas and arms extend naturally on either side for clear visibility. One continuous spine, one head, one tail. Hands in relaxed spellcasting pose, no staff or extra weapon. Exquisite detailed fantasy hand-painted finish. Full body including tailtip/hands with broad transparent margin. Discard ALL backdrop pixels from reference: genuine clean transparent alpha, no haze, colored fringe, scenery, floor, outside shadow, text, border, collage.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://uk.pinterest.com/pin/spirit-naga-miniature-for-dungeons-and-dragons-by-mz4250-etsy-canada-in-2025--908953137907747638/"
       ],
       "created_at": "2026-10-06",
-      "edit_prompt": "Correct this original Spirit Naga overhead token. Preserve the one human head and crown, black hair, jewels, detailed red-black scaled SINGLE continuous serpent body and one tail. REMOVE the two bare HUMAN SHOULDER bumps beside the head/jewel collar; replace both flesh bumps with continuous RED-BLACK SERPENT SCALES attached to the snake NECK. This is one human HEAD attached directly to one SERPENT NECK and one serpentine body, no humanoid torso, shoulders, arms, hands or legs. Keep original exact overhead camera and premium texture, preserve single continuous body/tail, generous alpha margin, genuine transparent background, no ground/no text."
+      "edit_prompt": "Correct this original Spirit Naga overhead token. Preserve the one human head and crown, black hair, jewels, detailed red-black scaled SINGLE continuous serpent body and one tail. REMOVE the two bare HUMAN SHOULDER bumps beside the head/jewel collar; replace both flesh bumps with continuous RED-BLACK SERPENT SCALES attached to the snake NECK. This is one human HEAD attached directly to one SERPENT NECK and one serpentine body, no humanoid torso, shoulders, arms, hands or legs. Keep original exact overhead camera and premium texture, preserve single continuous body/tail, generous alpha margin, genuine transparent background, no ground/no text.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Spirit Naga. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/spirit-naga-miniature-for-dungeons-and-dragons-by-mz4250-etsy-canada-in-2025--908953137907747638/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. For upright humanoids, lean far forward: head CROWN at lower-center FRONT, shoulders and BACK occupy upper half like a floor-plan miniature; no front chest or long hanging front torso. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One spirit naga, ONE continuous thick dark crimson-and-black scaled snake body coiled in a readable broad S, ONE adult humanlike head with dark crown hair emerging at front, spine/crown dominate strict overhead. One long tapering tail, no arms, legs, wings or extra heads. Weathered dark bronze jeweled collar, subtle purple eye glow inside face only. Crisp overlapping scales, complete tail, no mist, ground, aura or gore. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "048d198dc8578d9cd7682250dd3ccded87a985829be029ec21672b57152b3b74",
+      "originalSha256": "513583a4b6e48ff31a82a32b440704b9db0acad4af061a1a6b6303c8d7716aeb",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-sprite",
@@ -4904,17 +5360,41 @@
       "filename": "monster-warhorse-v1.webp",
       "width": 1024,
       "height": 1536,
-      "sha256": "b1208eebc0aec77542d422777c99a09c51e0b4aa88913880ce9064543dce52ec",
-      "transparentPixels": 1143687,
+      "sha256": "83a34a5561e4719c7f7757a082e7cff34f134dd932226154cb27082b73b835e1",
+      "transparentPixels": 1161332,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Warhorse. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ca.pinterest.com/pin/horse-armor-horses-creature-concept--489555421966407050/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One powerful living WARHORSE, FOUR equine legs and ONE flowing dark tail. Dark bay glossy horse hide, polished steel and ochre leather BARDING covering dorsal neck/flanks, embroidered navy saddle blanket and empty saddle (NO rider). Dynamic diagonal walking stance, full dorsal anatomy, all hooves readable, complete tail. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target: premium Warhorse VTT token. Repair the horse's anatomy and twisted mismatched legs. Preserve dark bay coat, black mane and tail, steel barding, leather tack and navy gold embroidered saddle blanket, empty saddle, no rider. Redraw one coherent standing horse from a TRUE 90-degree ORTHOGRAPHIC TOP-DOWN dorsal camera, head and muzzle toward the TOP of the image, tail behind toward bottom. Horse is standing upright, not upside down; we see crown of head, neck crest, withers, back, saddle and rump. EXACTLY four equine legs, a paired foreleg set attached below the shoulders and a paired hindleg set attached to the hips, each joint bends in its natural direction and each foot has one hoof. Legs are slightly apart in a calm walking stance to read separately from above. One head, two ears, one continuous spine, one tail. No extra floating hoof, twisted pelvis, foreleg attached to neck or hindleg on shoulder. Preserve highly refined realistic painted detail and metal/leather texture. Entire body with generous transparent margin all around. GENUINE transparent alpha outside clean silhouette, no colored fringe, background streaks, scenery, floor, outside shadow, circle, text or collage.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://ca.pinterest.com/pin/horse-armor-horses-creature-concept--489555421966407050/"
       ],
       "created_at": "2026-10-06",
       "research_query": "Warhorse DnD token Pinterest",
-      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Warhorse. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ca.pinterest.com/pin/horse-armor-horses-creature-concept--489555421966407050/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One powerful living WARHORSE, FOUR equine legs and ONE flowing dark tail. Dark bay glossy horse hide, polished steel and ochre leather BARDING covering dorsal neck/flanks, embroidered navy saddle blanket and empty saddle (NO rider). Dynamic diagonal walking stance, full dorsal anatomy, all hooves readable, complete tail. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "9b8b45113f92ff4dbc97ac3be6a52168e2eff53911b52fc52553f6b1f1f7b663",
+      "originalSha256": "b1208eebc0aec77542d422777c99a09c51e0b4aa88913880ce9064543dce52ec",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-warhorse-skeleton",
@@ -5100,19 +5580,43 @@
       "id": "monster-white-dragon-wyrmling",
       "name": "White Dragon Wyrmling",
       "filename": "monster-white-dragon-wyrmling-v1.webp",
-      "width": 1304,
-      "height": 1206,
-      "sha256": "9e2a5a29ec79425408c91ba9aafc7d042406af7c6db7253e52b5ffd4bdaf1b1b",
-      "transparentPixels": 900729,
+      "width": 1305,
+      "height": 1205,
+      "sha256": "6bb872ad4dd82398e6d5defce71e33dabe231f3abc4ad4943dd08ab81d2b3630",
+      "transparentPixels": 1016641,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: White Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ar.pinterest.com/pin/754704850051088526/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One WHITE DRAGON WYRMLING, small compact juvenile ice dragon with FOUR short clawed legs, TWO leathery icy-white wings and ONE short thick tapered tail. Blunt low crocodilian head, jagged pearl-white dorsal spikes, frost-blue wing membranes with fine veins, tiny black claws. Exact dorsal overhead camera, head points toward lower-left, wings half-spread asymmetrically while stalking, no ice floor or frost aura. Clearly baby/compact anatomy distinct from young/adult. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Correct ONLY the hind feet direction in image 1 (white dragon), using image 2 (black dragon) as anatomy reference. Preserve this white dragon, dorsal overhead view, ice-blue wing membranes, scales, head toward TOP, wings, front legs and curved tail. The TWO hind feet beside the hips in the LOWER half must point FORWARD UP toward the head/TOP. Redraw their ankle bends and toe clusters with long claws aimed TOP, heels BOTTOM, exactly as image 2's hind feet. No hind claws aimed outward horizontally or downward. Exactly FOUR legs and TWO matched wings attached to back. Preserve all other art. Keep entire creature and wing tips INSIDE frame with clear margins on every side. Transparent alpha background, no shadow, base, scene or text.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://ar.pinterest.com/pin/754704850051088526/"
       ],
       "created_at": "2026-10-06",
       "research_query": "White Dragon Wyrmling DnD token Pinterest",
-      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: White Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ar.pinterest.com/pin/754704850051088526/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One WHITE DRAGON WYRMLING, small compact juvenile ice dragon with FOUR short clawed legs, TWO leathery icy-white wings and ONE short thick tapered tail. Blunt low crocodilian head, jagged pearl-white dorsal spikes, frost-blue wing membranes with fine veins, tiny black claws. Exact dorsal overhead camera, head points toward lower-left, wings half-spread asymmetrically while stalking, no ice floor or frost aura. Clearly baby/compact anatomy distinct from young/adult. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "14902b19df88a79e457e597363cf6c062476ac3d56a18678407b3ea6b72bd906",
+      "originalSha256": "9e2a5a29ec79425408c91ba9aafc7d042406af7c6db7253e52b5ffd4bdaf1b1b",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-wight",
@@ -5283,18 +5787,42 @@
       "name": "Young Blue Dragon",
       "filename": "monster-young-blue-dragon-v1.webp",
       "width": 1367,
-      "height": 1151,
-      "sha256": "6319c171546a85decad9710ae0675b1793bc49f9c8eecec285210e97409f79b4",
-      "transparentPixels": 884701,
+      "height": 1150,
+      "sha256": "2e80effeca7e839bd6ee357930571eb6aeb86a34215cc2bbd7b40ebd8346e0cb",
+      "transparentPixels": 1032491,
       "mode": "imagegen built-in",
-      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Blue Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ca.pinterest.com/pin/dnd-unpainted-minis-wv15-young-blue-dragon--563161128417258779/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG BLUE DRAGON, stocky adolescent desert dragon, FOUR strong clawed legs, TWO broad leathery royal-blue wings, ONE long muscular tail. ONE long central nasal horn and broad finlike angular ears, thick cobalt layered dorsal scales with warm cream horn/claws, ochre-bronze undersides of wing membranes. Head toward lower-left, grounded low crawling diagonal stance with wings folded halfway beside dorsal back, tail curls rear right, clearly distinct pose/silhouette from other young dragons, all tips complete. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "prompt": "Correct ONLY the hind feet in image 1 (blue dragon); image 2 (black dragon) shows the exact correct direction. Preserve the entire blue dragon design, dorsal overhead camera, gold wing membranes, wings, horns, tail and front legs. The TWO hind feet at the hips in the LOWER half must point FORWARD, UP toward the dragon's head at the TOP of the canvas. Rotate and redraw each hind ankle and toe cluster so all long claws face the TOP and heels face the BOTTOM. Use the hind ankle bend and forward-facing feet of image 2 as the anatomical reference. Keep exactly FOUR legs and TWO wings, no extra toes pointing backward. Do not rotate the whole dragon, do not change its colors or head. Full silhouette with clear margins and genuine transparent background, no shadow/base/text.",
       "references": [
         "https://br.pinterest.com/pin/324611085643692072/",
         "https://ca.pinterest.com/pin/dnd-unpainted-minis-wv15-young-blue-dragon--563161128417258779/"
       ],
       "created_at": "2026-10-06",
       "research_query": "Young Blue Dragon DnD token Pinterest",
-      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais."
+      "research_note": "Pinterest pesquisado individualmente por espécie; quando o resultado não é uma vista superior específica, usa-se a referência de anatomia/personagem e a direção de câmera do pacote indicado pelo usuário. Arte, pose e detalhes originais.",
+      "originalPrompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Young Blue Dragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species/anatomy reference https://ca.pinterest.com/pin/dnd-unpainted-minis-wv15-young-blue-dragon--563161128417258779/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Species/design: One YOUNG BLUE DRAGON, stocky adolescent desert dragon, FOUR strong clawed legs, TWO broad leathery royal-blue wings, ONE long muscular tail. ONE long central nasal horn and broad finlike angular ears, thick cobalt layered dorsal scales with warm cream horn/claws, ochre-bronze undersides of wing membranes. Head toward lower-left, grounded low crawling diagonal stance with wings folded halfway beside dorsal back, tail curls rear right, clearly distinct pose/silhouette from other young dragons, all tips complete. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "revision": 2,
+      "repaired_at": "2026-10-06",
+      "repair": "Anatomia, perspectiva coerente, membros/armas e empunhadura revisados individualmente, conforme correção explícita do usuário.",
+      "repairSourceHash": "37ca4934664b183a7f7c34173efe82a001dedd7b6e9e15f9d6acc2896ce9bae5",
+      "originalSha256": "6319c171546a85decad9710ae0675b1793bc49f9c8eecec285210e97409f79b4",
+      "repairReferences": [
+        {
+          "url": "https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed",
+          "access": "Pesquisa e pin exigiram login; consulta visual dos exemplos feita na galeria original."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/142260",
+          "use": "Câmera superior, encurtamento de membros, empunhadura/encaixe de machado."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/29000",
+          "use": "Proporção compacta de membros de dragão."
+        },
+        {
+          "url": "https://forgottenadventures.piwigo.com/picture?/151245",
+          "use": "Anatomia/continuidade de dragão de latão; asas, pescoço e cauda."
+        }
+      ]
     },
     {
       "id": "monster-young-brass-dragon",

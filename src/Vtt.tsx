@@ -9,6 +9,7 @@ import {
 } from 'react';
 import {
   MousePointer2,
+  LassoSelect,
   ArrowDown,
   Ruler,
   Pencil,
@@ -105,6 +106,8 @@ import type { MonsterAction } from '../shared/vtt-monster-actions';
 import { compendiumText, monsterDetails } from '../shared/vtt-compendium';
 import { monsterArt } from '../shared/vtt-monster-art';
 import { hpCommand } from '../shared/vtt-hp';
+import { lassoSelection } from '../shared/vtt-selection';
+import { movementBlocked } from '../shared/vtt-movement';
 import { VttHpControl } from './VttHpControl';
 import { VttBossBars } from './VttBossBars';
 import { MapLibrary, MapSettings } from './VttMaps';
@@ -112,6 +115,7 @@ import { useMusicInterlude } from './SiteMusic';
 import './vtt.css';
 type Tool =
   | 'select'
+  | 'lasso'
   | 'pan'
   | 'ruler'
   | 'pen'
@@ -176,6 +180,7 @@ const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
 ];
 const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
   { id: 'select', name: 'Selecionar (V)', icon: MousePointer2 },
+  { id: 'lasso', name: 'Seleção livre (L)', icon: LassoSelect, gm: true },
   { id: 'ruler', name: 'Régua (R)', icon: Ruler },
   { id: 'ping', name: 'Sinalizar ponto', icon: ArrowDown },
   { id: 'pen', name: 'Desenhar (P)', icon: Pencil, gm: true },
@@ -287,7 +292,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [preview, setPreview] = useState(false),
     [previewViewerId, setPreviewViewerId] = useState<string | null>(null),
     [effectPreview, setEffectPreview] = useState<{
-      tokenId: string;
+      tokenIds: string[];
       preset: EffectPreset;
       at: number;
     } | null>(null),
@@ -295,6 +300,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [joinRole, setJoinRole] = useState<'player' | 'spectator'>('player'),
     [showWalls, setShowWalls] = useState(true),
     [ruler, setRuler] = useState<Point[]>([]),
+    [lasso, setLasso] = useState<Point[]>([]),
     [fogShape, setFogShape] = useState<'rect' | 'polygon' | 'brush'>('rect'),
     [fogPoints, setFogPoints] = useState<Point[]>([]),
     [fogPointer, setFogPointer] = useState<Point | null>(null),
@@ -361,8 +367,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       screen: Point;
       camera: VttCamera;
       original: VttDocument;
-      kind: 'pan' | 'tokens' | 'shape';
+      kind: 'pan' | 'tokens' | 'shape' | 'lasso';
       tokens: VttToken[];
+      lasso?: Point[];
+      additive?: boolean;
+      baseSelection?: string[];
+      path?: Point[];
     } | null>(null),
     musicRef = useRef<HTMLAudioElement | null>(null),
     focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
@@ -374,6 +384,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   docRef.current = doc;
   const scene = doc?.scenes.find((s) => s.id === doc.activeScene),
     token = scene?.tokens.find((t) => t.id === selection[0]),
+    selectedEffectTokens =
+      scene?.tokens.filter((t) => selection.includes(t.id) && t.layer !== 'map') || [],
     attackTarget =
       token?.layer === 'tokens' && selection.length === 1
         ? scene?.tokens.find(
@@ -783,7 +795,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             ? {
                 ...scene,
                 tokens: scene.tokens.map((t) =>
-                  t.id !== effectPreview.tokenId
+                  !effectPreview.tokenIds.includes(t.id)
                     ? t
                     : effectPreview.preset.kind === 'death'
                       ? { ...t, deathAt: effectPreview.at }
@@ -812,6 +824,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           viewer,
           layer,
           ruler,
+          lasso,
           draft: fogPoints.length
             ? {
                 id: 'fog-preview',
@@ -877,6 +890,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     imageVersion,
     layer,
     ruler,
+    lasso,
     draft,
     fogPoints,
     fogPointer,
@@ -970,6 +984,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         if (!attackBusy) setAttack(null);
         setDraft(null);
         setRuler([]);
+        setLasso([]);
+        if (drag.current?.kind === 'lasso') drag.current = null;
         setTool('select');
         setFogPoints([]);
         setFogPointer(null);
@@ -994,9 +1010,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         e.preventDefault();
         duplicate();
       }
-      const shortcuts: Record<string, Tool> = { v: 'select', r: 'ruler', p: 'pen' };
-      if (shortcuts[e.key.toLowerCase()] && !e.ctrlKey && !e.metaKey)
-        setTool(shortcuts[e.key.toLowerCase()]);
+      const shortcuts: Record<string, Tool> = { v: 'select', l: 'lasso', r: 'ruler', p: 'pen' };
+      const shortcut = shortcuts[e.key.toLowerCase()];
+      if (shortcut && !e.ctrlKey && !e.metaKey && (shortcut !== 'lasso' || (gm && !preview))) {
+        setTool(shortcut);
+        setLasso([]);
+        if (drag.current?.kind === 'lasso') drag.current = null;
+      }
       if (e.key.startsWith('Arrow') && token && canToken) {
         e.preventDefault();
         const step = e.shiftKey ? 1 : scene?.grid.size || 70,
@@ -1010,12 +1030,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               token.y + (e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0),
             ),
           };
+        if (scene && token.layer === 'tokens' && movementBlocked(scene, token, p)) {
+          setNotice('Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
+          return;
+        }
         editToken(p);
       }
     }
     window.addEventListener('keydown', key);
     return () => window.removeEventListener('keydown', key);
-  }, [doc, selection, gm, token, mapsOpen, settingsId, sheetId, fogPoints, tool]);
+  }, [doc, selection, gm, token, mapsOpen, settingsId, sheetId, fogPoints, tool, preview]);
   function commitFog(points: Point[], remember = true) {
     if (points.length < 3 || !gm) return;
     editScene((s) => {
@@ -1066,6 +1090,24 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         original: doc,
         tokens: [],
       };
+      return;
+    }
+    if (tool === 'lasso' && e.button === 0) {
+      if (!gm || preview) return;
+      drag.current = {
+        kind: 'lasso',
+        start: p,
+        last: p,
+        screen: { x: e.clientX, y: e.clientY },
+        camera,
+        original: doc,
+        tokens: [],
+        lasso: [p],
+        additive: e.shiftKey,
+        baseSelection: selection,
+      };
+      setLasso([p]);
+      setAttackTargetId(null);
       return;
     }
     if (tool === 'ping') {
@@ -1285,6 +1327,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     }
     if (!d || !scene || !doc) return;
     const p = point(e);
+    if (d.kind === 'lasso') {
+      const path = d.lasso!;
+      if (Math.hypot(p.x - path.at(-1)!.x, p.y - path.at(-1)!.y) >= 3 / d.camera.zoom) {
+        d.lasso = path.length >= 1500 ? path.filter((_, i) => i % 2 === 0) : path;
+        d.lasso = [...d.lasso, p];
+        setLasso(d.lasso);
+      }
+      return;
+    }
     if (gm && ['reveal', 'hide'].includes(tool) && fogShape === 'brush') {
       if (Math.hypot(p.x - d.start.x, p.y - d.start.y) > brushRadius * 0.3) {
         commitFog(fogCircle(p), false);
@@ -1316,8 +1367,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             : s.grid;
         const dest = e.altKey ? to : snapPoint(to, grid);
-        t.x = Math.max(0, Math.min(s.width, dest.x));
-        t.y = Math.max(0, Math.min(s.height, dest.y));
+        const destination = {
+          x: Math.max(0, Math.min(s.width, dest.x)),
+          y: Math.max(0, Math.min(s.height, dest.y)),
+        };
+        if (t.layer === 'tokens' && movementBlocked(s, t, destination)) continue;
+        if (!gm && (d.path?.length || 0) >= 2000) continue;
+        if (!gm && (t.x !== destination.x || t.y !== destination.y))
+          d.path = [...(d.path || []), destination];
+        Object.assign(t, destination);
       }
       docRef.current = next;
       setDoc(next);
@@ -1339,6 +1397,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const d = drag.current;
     if (!d || !scene) return;
     drag.current = null;
+    if (d.kind === 'lasso') {
+      if (gm && !preview) {
+        const ids = lassoSelection(scene, layer, [...d.lasso!, point(e)]);
+        setSelection(d.additive ? [...new Set([...d.baseSelection!, ...ids])] : ids);
+        setAttackTargetId(null);
+      }
+      setLasso([]);
+      return;
+    }
     if (gm && ['reveal', 'hide'].includes(tool)) {
       if (fogShape === 'rect' && draft) {
         const a = d.start,
@@ -1374,7 +1441,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           .current!.scenes.find((s) => s.id === docRef.current!.activeScene)!
           .tokens.find((t) => t.id === d.tokens[0]?.id);
         if (moved) {
-          const p = { x: moved.x, y: moved.y };
+          const p = { x: moved.x, y: moved.y, ...(d.path?.length ? { path: d.path } : {}) };
           void api<VttState>(`/vtt/rooms/${state!.id}/tokens/${moved.id}`, {
             method: 'PATCH',
             body: JSON.stringify(p),
@@ -1652,11 +1719,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     await save();
   }
   async function applyEffect(id: string) {
-    if (!gm || !token || token.layer === 'map')
-      throw Error('Selecione um token para aplicar o efeito.');
+    if (!gm || !selectedEffectTokens.length)
+      throw Error('Selecione um ou mais tokens para aplicar o efeito.');
     await save();
     receive(
-      await post<VttState>(`/vtt/rooms/${state!.id}/effects/${id}/apply`, { tokenId: token.id }),
+      await post<VttState>(`/vtt/rooms/${state!.id}/effects/${id}/apply`, {
+        tokenIds: selectedEffectTokens.map((t) => t.id),
+      }),
     );
   }
   async function shareSpell(name: string) {
@@ -2029,10 +2098,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               ) : (
                 <button
                   key={id}
-                  title={name}
+                  title={
+                    id === 'lasso'
+                      ? 'Seleção livre (L) · Arraste um contorno. Shift adiciona à seleção.'
+                      : name
+                  }
                   aria-label={name}
                   aria-pressed={tool === id}
+                  disabled={id === 'lasso' && preview}
                   onClick={() => {
+                    setLasso([]);
+                    drag.current = null;
                     setTool(id);
                     setFogPoints([]);
                     setFogPointer(null);
@@ -2106,11 +2182,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           {gm && !sheetId && (
             <VttEffects
               presets={doc.effects}
-              token={token}
+              tokens={selectedEffectTokens}
               busy={busy}
               preview={(preset) =>
                 setEffectPreview(
-                  preset && token ? { tokenId: token.id, preset, at: Date.now() } : null,
+                  preset && selectedEffectTokens.length
+                    ? { tokenIds: selectedEffectTokens.map((t) => t.id), preset, at: Date.now() }
+                    : null,
                 )
               }
               save={saveEffect}
@@ -2122,16 +2200,23 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }}
               apply={applyEffect}
               clear={async () => {
-                if (token) {
+                if (selectedEffectTokens.length) {
                   await save();
-                  editToken({ deathAt: null, effects: [] });
+                  editSelected((t) => {
+                    if (t.layer !== 'map') {
+                      t.deathAt = null;
+                      t.effects = [];
+                    }
+                  });
                   await save();
                 }
               }}
               editDeath={async (patch) => {
-                if (token) {
+                if (selectedEffectTokens.length) {
                   if (!('deathAutomatic' in patch)) await save();
-                  editToken(patch);
+                  editSelected((t) => {
+                    if (t.layer !== 'map') Object.assign(t, patch);
+                  });
                   await save();
                 }
               }}
@@ -2182,7 +2267,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             data-camera-y={camera.y}
             data-camera-zoom={camera.zoom}
             data-target-id={attackTarget?.id}
+            data-selection-count={selection.length}
+            data-selection-ids={selection.join(',')}
             onPointerCancel={() => {
+              setLasso([]);
               setFogPoints([]);
               setFogPointer(null);
               setRuler([]);
@@ -2408,6 +2496,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </div>
           )}
           <div className="vtt-scene-pills">
+            {gm && tool === 'lasso' && !preview && (
+              <span role="status">
+                Seleção livre · {selection.length} {selection.length === 1 ? 'objeto' : 'objetos'} ·
+                Arraste o contorno · Shift adiciona · Delete exclui
+              </span>
+            )}
             {['reveal', 'hide'].includes(tool) && fogShape === 'polygon' && (
               <span>
                 Clique nos vértices · Enter ou duplo clique para concluir · Esc para cancelar

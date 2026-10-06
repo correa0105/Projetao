@@ -28,6 +28,91 @@
   max-width: 1160px;
   margin-inline: auto;
 }
+.loot-companions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border: 1px solid #a78a5138;
+  border-radius: 4px;
+  background: linear-gradient(145deg, #17191ac7, #101213b8);
+}
+.loot-companions > :is(.inventory-mounts, .inventory-pets) {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+.loot-companions > section + section {
+  border-left: 1px solid #a78a5128;
+  padding-left: 18px;
+}
+.loot-companions header {
+  gap: 8px;
+  min-height: 22px;
+  color: #b4a990;
+}
+.loot-companions header h3 {
+  font:
+    14px 'Cinzel',
+    Georgia,
+    serif;
+  margin: 0;
+}
+.loot-companions :is(.inventory-mount-list, .inventory-pets > div) {
+  gap: 8px;
+  margin: 10px 0 5px;
+}
+.loot-companions :is(.inventory-mount-choice, .inventory-pet-choice) {
+  gap: 8px;
+  flex: 0 1 auto;
+  max-width: 100%;
+  padding: 5px 8px;
+  border-color: #a78a5128;
+  background: #0c111450;
+}
+.loot-companions :is(.inventory-mount-choice, .inventory-pet-choice)[aria-pressed='true'] {
+  background: #9b825215;
+  border-color: #b59b6866;
+}
+.loot-companions .inventory-mount-choice img {
+  width: 52px;
+  height: 42px;
+}
+.loot-companions .inventory-pets .pet-art {
+  width: 46px;
+  height: 46px;
+  flex-basis: 46px;
+}
+.loot-companions :is(.inventory-mount-choice, .inventory-pet-choice) strong {
+  font:
+    12px 'Cinzel',
+    Georgia,
+    serif;
+}
+.loot-companions :is(.inventory-mount-choice, .inventory-pet-choice) small {
+  font-size: 9px;
+  margin-top: 3px;
+}
+.loot-companions .text-button,
+.loot-companions header a {
+  font-size: 10px;
+}
+@media (max-width: 600px) {
+  .loot-companions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+  .loot-companions > section + section {
+    padding: 12px 0 0;
+    border-left: 0;
+    border-top: 1px solid #a78a5128;
+  }
+}
 .loot-summary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -281,7 +366,9 @@
   color: #cbbb9e;
   font-size: 12px;
 }
-.loot-vault .loot-storage-heading h2 { gap: 6px; }
+.loot-vault .loot-storage-heading h2 {
+  gap: 6px;
+}
 .loot-notice {
   position: fixed;
   z-index: 60;
@@ -407,8 +494,12 @@
   }
 }
 
-.loot-slot-wrap { min-width: 0; }
-.loot-slot-wrap > .loot-slot { width: 100%; }
+.loot-slot-wrap {
+  min-width: 0;
+}
+.loot-slot-wrap > .loot-slot {
+  width: 100%;
+}
 .loot-item-balloon {
   position: fixed;
   inset: auto;
@@ -425,41 +516,94 @@
   color: #ead9bc;
   box-shadow: 0 10px 32px #0009;
 }
-.loot-item-balloon:not(:popover-open) { display: none; }
-.loot-item-balloon:popover-open { display: block; }
+.loot-item-balloon:not(:popover-open) {
+  display: none;
+}
+.loot-item-balloon:popover-open {
+  display: block;
+}
 @media (min-width: 701px) and (max-width: 1000px) {
-  .loot-vault .loot-slots { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+  .loot-vault .loot-slots {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
 }
 
 /* As duas colunas terminam na mesma linha, incluindo a legenda da mochila. */
-.loot-layout { align-items: stretch; }
-.loot-layout > .loot-storage { display: flex; flex-direction: column; }
-.loot-layout > .loot-storage > .loot-slots { flex: 1; grid-auto-rows: minmax(76px, 1fr); }
-.loot-layout .loot-slot { height: 100%; min-height: 76px; }
-.loot-pack-column { display: flex; flex-direction: column; }
-.loot-backpack { margin-top: auto; padding-top: 54px; }
+.loot-layout {
+  align-items: stretch;
+}
+.loot-layout > .loot-storage {
+  display: flex;
+  flex-direction: column;
+}
+.loot-layout > .loot-storage > .loot-slots {
+  flex: 1;
+  grid-auto-rows: minmax(76px, 1fr);
+}
+.loot-layout .loot-slot {
+  height: 100%;
+  min-height: 76px;
+}
+.loot-pack-column {
+  display: flex;
+  flex-direction: column;
+}
+.loot-backpack {
+  margin-top: auto;
+  padding-top: 54px;
+}
 @media (max-width: 700px) {
-  .loot-backpack { margin-top: 24px; padding-top: 0; }
-  .loot-layout > .loot-storage > .loot-slots { grid-auto-rows: 70px; }
-  .loot-layout .loot-slot { min-height: 70px; }
+  .loot-backpack {
+    margin-top: 24px;
+    padding-top: 0;
+  }
+  .loot-layout > .loot-storage > .loot-slots {
+    grid-auto-rows: 70px;
+  }
+  .loot-layout .loot-slot {
+    min-height: 70px;
+  }
 }
 
-.loot-slot .loot-item-art { width: 48px; height: 48px; object-fit: contain; }
+.loot-slot .loot-item-art {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
 /* Grade completa e slots quadrados, sem esticar as linhas na altura do painel. */
 .loot-layout > .loot-storage > .loot-slots {
- grid-template-columns:repeat(7,minmax(0,1fr));
- min-height:0;
- flex:none;
- grid-auto-rows:auto;
- align-content:start;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  min-height: 0;
+  flex: none;
+  grid-auto-rows: auto;
+  align-content: start;
 }
-:root .loot-slots .loot-slot { min-height:0; height:auto; aspect-ratio:1; padding:4px 2px; gap:0; }
-.loot-slot-wrap { aspect-ratio:1; }
-:root .loot-slot-wrap > .loot-slot { height:100%; }
-.loot-layout .loot-slot .loot-item-art { width:38px; height:38px; max-width:100%; max-height:100%; }
-@media(min-width:701px) and (max-width:1000px) {
- .loot-layout > .loot-storage > .loot-slots { grid-template-columns:repeat(5,minmax(0,1fr)); }
+:root .loot-slots .loot-slot {
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 1;
+  padding: 4px 2px;
+  gap: 0;
 }
-@media(max-width:700px) {
- .loot-layout > .loot-storage > .loot-slots { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.loot-slot-wrap {
+  aspect-ratio: 1;
+}
+:root .loot-slot-wrap > .loot-slot {
+  height: 100%;
+}
+.loot-layout .loot-slot .loot-item-art {
+  width: 38px;
+  height: 38px;
+  max-width: 100%;
+  max-height: 100%;
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .loot-layout > .loot-storage > .loot-slots {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .loot-layout > .loot-storage > .loot-slots {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Dices, Swords, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Dices, Swords, X } from 'lucide-react';
 import { api } from './api';
 import type { CombatView } from '../shared/vtt-combat';
 import type { VttToken } from '../shared/vtt';
@@ -89,6 +89,8 @@ export function VttTurnCarousel({
   open: () => void;
 }) {
   const { state: c, busy, send } = controls;
+  const [minimized, setMinimized] = useState(false);
+  useEffect(() => setMinimized(false), [c?.sceneId]);
   if (!c?.entries.length) return null;
   const at = Math.max(
     0,
@@ -96,62 +98,82 @@ export function VttTurnCarousel({
   );
   const cards = c.entries.map((_, i) => c.entries[(at + i) % c.entries.length]).slice(0, 5);
   return (
-    <section className="vtt-turn-carousel" aria-label="Carrossel de turnos">
+    <section
+      className={'vtt-turn-carousel' + (minimized ? ' is-minimized' : '')}
+      aria-label="Carrossel de turnos"
+    >
       <header>
         <button onClick={open}>{c.active ? 'Rodada ' + c.round : 'Aguardando iniciativa'}</button>
-        {gm && (
-          <div>
-            <button
-              disabled={busy}
-              aria-label="Turno anterior"
-              onClick={() => void send({ kind: 'step', direction: -1 })}
-            >
-              <ChevronLeft size={16} />
-            </button>
-            <button
-              disabled={busy}
-              aria-label="Avançar turno"
-              onClick={() => void send({ kind: 'step', direction: 1 })}
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
+        {minimized && (
+          <strong className="vtt-turn-current" title={cards[0].name}>
+            {cards[0].name}
+          </strong>
         )}
-      </header>
-      <div className="vtt-turn-cards">
-        {cards.map((e) => (
-          <article
-            key={e.tokenId}
-            className={
-              c.active && e.tokenId === c.currentId
-                ? 'current'
-                : c.active && e.tokenId === c.nextId
-                  ? 'next'
-                  : ''
-            }
-          >
-            <button
-              className="vtt-turn-portrait"
-              title={gm ? 'Escolher turno de ' + e.name : e.name}
-              disabled={!gm || busy}
-              onClick={() => void send({ kind: 'goto', tokenId: e.tokenId })}
-            >
-              <Portrait entry={e} />
-            </button>
-            <strong title={e.name}>{e.name}</strong>
-            <span>{e.value ?? '—'}</span>
-            {e.canRoll && (
+        <div>
+          {gm && (
+            <>
               <button
-                aria-label={'Rolar iniciativa de ' + e.name}
                 disabled={busy}
-                onClick={() => void send({ kind: 'roll', tokenId: e.tokenId })}
+                aria-label="Turno anterior"
+                onClick={() => void send({ kind: 'step', direction: -1 })}
               >
-                <Dices size={13} />
+                <ChevronLeft size={16} />
               </button>
-            )}
-          </article>
-        ))}
-      </div>
+              <button
+                disabled={busy}
+                aria-label="Avançar turno"
+                onClick={() => void send({ kind: 'step', direction: 1 })}
+              >
+                <ChevronRight size={16} />
+              </button>
+            </>
+          )}
+          <button
+            aria-label={minimized ? 'Expandir carrossel' : 'Minimizar carrossel'}
+            title={minimized ? 'Expandir carrossel' : 'Minimizar carrossel'}
+            aria-expanded={!minimized}
+            onClick={() => setMinimized((value) => !value)}
+          >
+            {minimized ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
+          </button>
+        </div>
+      </header>
+      {!minimized && (
+        <div className="vtt-turn-cards">
+          {cards.map((e) => (
+            <article
+              key={e.tokenId}
+              className={
+                c.active && e.tokenId === c.currentId
+                  ? 'current'
+                  : c.active && e.tokenId === c.nextId
+                    ? 'next'
+                    : ''
+              }
+            >
+              <button
+                className="vtt-turn-portrait"
+                title={gm ? 'Escolher turno de ' + e.name : e.name}
+                disabled={!gm || busy}
+                onClick={() => void send({ kind: 'goto', tokenId: e.tokenId })}
+              >
+                <Portrait entry={e} />
+              </button>
+              <strong title={e.name}>{e.name}</strong>
+              <span>{e.value ?? '—'}</span>
+              {e.canRoll && (
+                <button
+                  aria-label={'Rolar iniciativa de ' + e.name}
+                  disabled={busy}
+                  onClick={() => void send({ kind: 'roll', tokenId: e.tokenId })}
+                >
+                  <Dices size={13} />
+                </button>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -233,6 +255,16 @@ export function VttCombatPanel({
           ? 'Shift + clique seleciona vários tokens. Defina as iniciativas antes de iniciar.'
           : 'Role a iniciativa do seu personagem aqui ou no carrossel.'}
       </p>
+      {gm && (
+        <div className="vtt-row">
+          <button
+            disabled={busy || c?.active || !c?.entries.length}
+            onClick={() => void send({ kind: 'rollAll' })}
+          >
+            <Dices size={16} /> Rolar todas as iniciativas
+          </button>
+        </div>
+      )}
       {c?.entries.map((e) => (
         <div
           className={'vtt-combat-entry ' + (c.active && e.tokenId === c.currentId ? 'current' : '')}

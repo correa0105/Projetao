@@ -1,10 +1,11 @@
 .vtt-turn-carousel {
   position: absolute;
-  top: 56px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   max-width: calc(100% - 130px);
+  width: max-content;
   color: #e7dcc7;
 }
 .vtt-turn-carousel header {
@@ -15,13 +16,29 @@
   margin-bottom: 3px;
 }
 .vtt-turn-carousel header button {
-  background: #0b121ad9;
+  background: #0b121a70;
   font-size: 10px;
   padding: 3px 8px;
 }
 .vtt-turn-carousel header div {
   display: flex;
   gap: 3px;
+  flex-shrink: 0;
+}
+.vtt-turn-current {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+}
+.vtt-turn-carousel.is-minimized {
+  max-width: min(440px, calc(100% - 130px));
+}
+.vtt-turn-carousel.is-minimized header {
+  padding: 3px;
+  background: #0b121a45;
+  border-radius: 3px;
 }
 .vtt-turn-cards {
   display: flex;
@@ -36,10 +53,10 @@
   display: grid;
   grid-template-columns: 1fr auto;
   padding: 4px;
-  border: 1px solid #645541;
-  background: linear-gradient(#1b2225df, #0e121ade);
+  border: 1px solid #64554199;
+  background: linear-gradient(#1b222560, #0e121a40);
   border-radius: 3px;
-  box-shadow: 0 3px 8px #0009;
+  box-shadow: 0 2px 5px #0004;
 }
 .vtt-turn-portrait {
   grid-column: 1/-1;
@@ -64,7 +81,7 @@
   font:
     22px Georgia,
     serif;
-  background: #2a3034;
+  background: #2a303460;
 }
 .vtt-turn-cards strong {
   grid-column: 1/-1;
@@ -90,7 +107,10 @@
   border-color: #c8ab64;
 }
 .vtt-stage:has(.vtt-turn-carousel) .vtt-boss-bars {
-  top: 190px;
+  top: 145px;
+}
+.vtt-stage:has(.vtt-turn-carousel.is-minimized) .vtt-boss-bars {
+  top: 52px;
 }
 .vtt-combat-entry {
   display: flex;
@@ -132,8 +152,15 @@
 }
 @media (max-width: 600px) {
   .vtt-turn-carousel {
-    top: 90px;
+    top: 52px;
     max-width: calc(100% - 115px);
+  }
+  .vtt-turn-carousel header {
+    gap: 4px;
+  }
+  .vtt-turn-carousel header button {
+    padding: 3px 4px;
+    font-size: 9px;
   }
   .vtt-turn-cards article {
     width: 62px;
@@ -143,6 +170,9 @@
     height: 48px;
   }
   .vtt-stage:has(.vtt-turn-carousel) .vtt-boss-bars {
-    top: 215px;
+    top: 175px;
+  }
+  .vtt-stage:has(.vtt-turn-carousel.is-minimized) .vtt-boss-bars {
+    top: 95px;
   }
 }

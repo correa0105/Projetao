@@ -38,6 +38,7 @@ export type CharacterTitle = TitleInput & {
 export type TitlesResponse = {
   can_edit: boolean;
   displayed: string | null;
+  position?: 'below' | 'beside';
   items: CharacterTitle[];
 };
 export const emptyTitle: TitleInput = {

@@ -112,7 +112,7 @@ export function titlesRouter() {
       const {
         rows: [character],
       } = await client.query(
-        'SELECT id,level,progression_missions,displayed_title_id FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
+        'SELECT id,level,progression_missions,displayed_title_id,title_position FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
         [id, uid],
       );
       if (!character) throw new AppError(404, 'Personagem não encontrado.');
@@ -173,6 +173,7 @@ export function titlesRouter() {
         source: awards.find((a) => a.title_id === item.id)?.source,
       }));
       return {
+        position: character.title_position,
         displayed: combined.some((t) => t.id === character.displayed_title_id && t.earned)
           ? character.displayed_title_id
           : null,
@@ -207,6 +208,19 @@ export function titlesRouter() {
       await client.query('UPDATE characters SET displayed_title_id=$2 WHERE id=$1', [id, title_id]);
     });
     res.json({ ok: true });
+  });
+  router.put('/titles/:characterId/position', async (req, res) => {
+    const id = uuid.parse(req.params.characterId);
+    const { position } = z
+      .object({ position: z.enum(['below', 'beside']) })
+      .strict()
+      .parse(req.body);
+    const result = await pool.query(
+      'UPDATE characters SET title_position=$3 WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL RETURNING title_position',
+      [id, res.locals.user.id, position],
+    );
+    if (!result.rowCount) throw new AppError(404, 'Personagem não encontrado.');
+    res.json({ position: result.rows[0].title_position });
   });
   return router;
 }

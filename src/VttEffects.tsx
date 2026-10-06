@@ -13,7 +13,7 @@ import { ActionShortcut } from './VttHotbar';
 import './vtt-effects.css';
 export function VttEffects({
   presets,
-  token,
+  tokens,
   busy,
   save,
   remove,
@@ -23,7 +23,7 @@ export function VttEffects({
   editDeath,
 }: {
   presets: EffectPreset[];
-  token?: VttToken;
+  tokens: VttToken[];
   busy: boolean;
   save: (preset: EffectPreset) => Promise<void>;
   remove: (id: string) => Promise<void>;
@@ -32,6 +32,8 @@ export function VttEffects({
   preview: (preset: EffectPreset | null) => void;
   editDeath: (patch: Pick<Partial<VttToken>, 'deathAt' | 'deathAutomatic'>) => Promise<void>;
 }) {
+  const token = tokens[0];
+  const selectionKey = tokens.map((t) => t.id).join(',');
   const [open, setOpen] = useState(false),
     [draft, setDraft] = useState<EffectPreset | null>(null),
     [working, setWorking] = useState(false),
@@ -52,7 +54,7 @@ export function VttEffects({
     const preset = draft || presets.find((e) => e.id === previewId);
     previewRef.current(open && previewing && token && preset ? preset : null);
     return () => previewRef.current(null);
-  }, [open, previewing, draft, previewId, token?.id, presets]);
+  }, [open, previewing, draft, previewId, selectionKey, presets]);
   useEffect(() => {
     if (!open) return;
     const outside = (e: PointerEvent) => {
@@ -111,10 +113,15 @@ export function VttEffects({
           {error && <p role="alert">{error}</p>}
           {!draft && (
             <>
-              <p>Selecione um token para aplicar. Arraste um efeito salvo para a barra rápida.</p>
+              <p>
+                Selecione um ou mais tokens para aplicar. Arraste um efeito salvo para a barra
+                rápida.
+              </p>
               <div className="vtt-effects-target">
                 {token && token.layer !== 'map'
-                  ? 'Alvo · ' + token.name
+                  ? tokens.length > 1
+                    ? 'Alvos · ' + tokens.length + ' tokens'
+                    : 'Alvo · ' + token.name
                   : 'Nenhum token selecionado'}
               </div>
               <fieldset
@@ -125,7 +132,13 @@ export function VttEffects({
                 <label className="vtt-check">
                   <input
                     type="checkbox"
-                    checked={!!token?.deathAutomatic}
+                    checked={tokens.length > 0 && tokens.every((t) => t.deathAutomatic)}
+                    ref={(input) => {
+                      if (input)
+                        input.indeterminate =
+                          tokens.some((t) => t.deathAutomatic) &&
+                          !tokens.every((t) => t.deathAutomatic);
+                    }}
                     onChange={(e) =>
                       void run(() => editDeath({ deathAutomatic: e.target.checked }))
                     }
@@ -137,7 +150,7 @@ export function VttEffects({
                     Aplicar efeito de morte
                   </button>
                   <button
-                    disabled={!token?.deathAt}
+                    disabled={!tokens.some((t) => t.deathAt)}
                     onClick={() => void run(() => editDeath({ deathAt: null }))}
                   >
                     Limpar efeito de morte
@@ -163,7 +176,7 @@ export function VttEffects({
                       className="vtt-effects-apply"
                       disabled={blocked || !token || token.layer === 'map'}
                       onClick={() => void run(() => apply(e.id))}
-                      title="Aplicar no token selecionado"
+                      title="Aplicar nos tokens selecionados"
                     >
                       <Sparkles size={15} style={{ color: e.color }} />
                       <span>
@@ -347,10 +360,11 @@ export function VttEffects({
           {!draft && (
             <>
               <button
-                disabled={blocked || !token || (!token.deathAt && !token.effects.length)}
+                disabled={blocked || !tokens.some((t) => t.deathAt || t.effects.length)}
                 onClick={() => void run(clear)}
               >
-                <Trash2 size={13} /> Limpar efeitos do token
+                <Trash2 size={13} />{' '}
+                {tokens.length > 1 ? 'Limpar efeitos dos tokens' : 'Limpar efeitos do token'}
               </button>
               <p className="vtt-effects-note">
                 Efeitos visuais não alteram PV, condições ou recursos.

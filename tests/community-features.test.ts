@@ -232,6 +232,33 @@ test('mascotes, cartas, títulos, eventos e estante: economia, ownership e admin
           200,
         );
         assert.equal((await req('/titles/' + a.id, admin.cookie)).status, 404);
+        assert.equal(state.position, 'below');
+        assert.equal(
+          (await req('/titles/' + a.id + '/position', owner.cookie, 'PUT', { position: 'beside' }))
+            .status,
+          200,
+        );
+        assert.equal((await req('/titles/' + a.id, owner.cookie)).data.position, 'beside');
+        assert.equal((await req('/titles/' + b.id, owner.cookie)).data.position, 'below');
+        assert.equal(
+          (await req('/titles/' + a.id + '/position', admin.cookie, 'PUT', { position: 'below' }))
+            .status,
+          404,
+        );
+        assert.equal(
+          (await req('/titles/' + a.id + '/position', owner.cookie, 'PUT', { position: 'outside' }))
+            .status,
+          400,
+        );
+        assert.equal(
+          (
+            await req('/titles/' + a.id + '/position', owner.cookie, 'PUT', {
+              position: 'below',
+              user_id: admin.id,
+            })
+          ).status,
+          400,
+        );
         const grant = { character_id: b.id, title_id: id, action: 'grant' };
         assert.equal((await req('/titles/grant', owner.cookie, 'POST', grant)).status, 403);
         assert.equal((await req('/titles/grant', admin.cookie, 'POST', grant)).status, 200);

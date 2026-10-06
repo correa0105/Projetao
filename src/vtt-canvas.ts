@@ -31,6 +31,7 @@ export type RenderOptions = {
   viewer: VttToken | null;
   layer: string;
   ruler: Point[];
+  lasso?: Point[];
   draft: VttDrawing | null;
   showWalls: boolean;
   ping: VttPing | null;
@@ -652,6 +653,18 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.restore();
   }
   if (o.draft) drawing(c, o.draft);
+  if (o.lasso && o.lasso.length > 1) {
+    c.save();
+    polygon(c, o.lasso);
+    c.fillStyle = '#d7b77225';
+    c.fill('evenodd');
+    c.strokeStyle = '#f0d38d';
+    c.lineWidth = 2 / cam.zoom;
+    c.lineJoin = 'round';
+    c.setLineDash([7 / cam.zoom, 4 / cam.zoom]);
+    c.stroke();
+    c.restore();
+  }
   if (o.ruler.length > 1) {
     c.save();
     c.strokeStyle = '#ebce88';

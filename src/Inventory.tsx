@@ -453,8 +453,10 @@ export function Inventory({
     <div className="loot-inventory">
       {notice && <FlashMessage kind="info">{notice}</FlashMessage>}
       {error && !transfer && <FlashMessage>{error}</FlashMessage>}
-      <MountSelection key={character.id} characterId={character.id} />
-      <PetCollection key={character.id} characterId={character.id} />
+      <section className="loot-companions" aria-label="Companheiros no acampamento">
+        <MountSelection key={'mounts-' + character.id} characterId={character.id} />
+        <PetCollection key={'pets-' + character.id} characterId={character.id} />
+      </section>
       <div className="loot-layout">
         <div className="loot-pack-column">
           <section className="loot-summary" aria-label="Resumo da mochila">

@@ -1,5 +1,63 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Correções de interface e anatomia antes do House (06/10/2026)
+
+Carrossel do combate mais alto/transparente, com minimizar/expandir local por
+jogador ou mestre. Mestre pode rolar todas as iniciativas antes do início;
+servidor resolve dados/bônus de cada participante, ordena uma vez e grava em
+transação única. Combate ativo rejeita rolagem coletiva. Dez testes isolados
+do premium/combate e navegador em quatro larguras aprovados.
+
+Montaria foi reposicionada para apoiar no chão à esquerda do acampamento.
+Inventário tem uma única seção de montarias e seleção compacta de montaria/
+mascote, no mesmo contêiner e estilo dos demais controles; chaves distintas
+evitam repetição entre os dois componentes. Quadros e etiquetas menores,
+espaçados proporcionalmente e deslocados para dentro da parede de pedra, em
+Conquistas e visitas. Conquistas → Títulos do personagem → Posição do título
+permite abaixo/ao lado do nome. Preferência persistida por personagem em 071,
+protegida por ownership e exibida também na visita pública. Sete testes de
+API e navegador de acampamento/inventário/títulos aprovados.
+
+Os 22 tokens anexados foram corrigidos individualmente, com prompts/hashes e
+referências da revisão no manifest, arquivos estáveis privados e cópias exatas
+em Downloads/Monstros Premium - Alvorada. As outras 308 artes foram preservadas.
+Após rejeições explícitas, a câmera foi corrigida usando exemplos visuais da
+galeria original de Forgotten Adventures: guerreiro visto de cima, dragão negro
+e dragão de latão. A pesquisa e os pins do Pinterest fornecido exigiram login;
+não alegar consulta visual dos pins bloqueados. Links e limites de acesso no
+manifest e em VTT-ACERVO-PREMIUM.md. Homúnculo/imp/Balor têm asas nas costas,
+pose compacta superior e pés na mesma direção do rosto; berserker tem cabo
+reto/encaixe coaxial e pegada com duas mãos. Dragão negro com membros traseiros
+compactos; latão foi refeito com anatomia contínua, asas recuadas e cauda longa.
+Alpha, bordas e hashes das 22 cópias validados; arte de referência não distribuída.
+
+Fila autorizada em FILA-2026-10-06.md: após validar estas correções, salvar
+origin/Welson e checkpoint antes de iniciar House; depois ampliar Empório.
+House ainda não implementado neste checkpoint. Vinculação/compra em mapas futura.
+
+## Seleção livre do VTT (06/10/2026)
+
+Correção posterior: colisão de movimento no cliente e servidor sempre considera
+paredes e portas/janelas fechadas, inclusive lighting=false/restrictMovement=false.
+Opção antiga removida da configuração, valor armazenado preservado por compatibilidade.
+Arraste bloqueia o cruzamento na tela; percurso real permite contornar paredes e
+é validado trecho a trecho no PATCH, antes de gravar. Limite de 2000 pontos, bounds,
+destino final e permissões conferidos. Janela aberta permite passagem; janela fechada
+continua transmitindo luz, mas bloqueia movimento. Paredes sempre sólidas. Três testes
+geométricos, API para portas/janelas/caminho/rollback e arraste no navegador aprovados.
+
+Ferramenta Seleção livre (L) após a seta na barra esquerda. Mestre desenha um
+contorno irregular na camada ativa; seleciona tokens girados, desenhos/áreas/texto
+ou barreiras/fontes na iluminação. Shift adiciona, Esc cancela, Delete/lixeira
+exclui em conjunto, Desfazer recupera. Contorno dourado translúcido e contagem
+visível. A seleção é local, sem alterar posição, câmera ou revisão do documento.
+Efeitos salvos, prévia, limpeza e controles de morte alcançam todos os tokens
+selecionados (objetos de mapa/desenhos não recebem efeitos de token). Servidor
+aceita tokenIds e valida o grupo inteiro no mapa ativo antes de uma transação;
+deduplica IDs e mantém compatibilidade com tokenId dos atalhos anteriores.
+Seis testes geométricos e oito testes isolados de API aprovados, navegador valida
+contorno, Shift, efeito em dois tokens, exclusão mista, Desfazer e Esc sem gravação.
+
 ## Acervo privado/premium, tradução e dano (06/10/2026)
 
 Mestre edita integralmente a cópia do monstro pela folha completa → Editar e salva

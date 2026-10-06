@@ -62,6 +62,33 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Correções 06/10 antes do House: carrossel alto/transparente com minimizar local;
+mestre rola iniciativas em grupo somente antes de começar (bônus/dados resolvidos
+no servidor). Inventário: controles compactos de montaria/mascote, sem seções
+duplicadas. Quadros/placas somente na parede de pedra. Título abaixo/ao lado do
+nome por personagem (071), incluindo visita. Os 22 tokens anexados têm revisão
+individual, referências reais e prompts no manifest; outras 308 artes preservadas.
+Pinterest de Forgotten Adventures exigiu login; exemplos foram examinados na
+galeria original. Preservar perspectiva superior, membros compactos, asas dorsais,
+empunhadura e alinhamento de arma. Não validar anatomia só por alpha/hash.
+Usuário autorizou iniciar House depois destas correções, exigindo checkpoint
+no GitHub ANTES da implementação. Empório ampliado vem ao final; nova autorização
+substitui restrição antiga de catálogo. Escopo/ordem em docs/FILA-2026-10-06.md.
+
+VTT 06/10: seleção livre por contorno (L), apenas mestre fora da prévia, respeita
+camada ativa. Paredes, portas e janelas fechadas sempre bloqueiam movimento,
+independentemente de lighting/restrictMovement legado. Arraste valida cada trecho
+no cliente e envia percurso limitado ao servidor, que verifica antes de gravar.
+Mestre ainda pode posicionar tokens pela edição administrativa do documento.
+Somente portas/janelas abertas permitem passagem; preservar bloqueio óptico distinto.
+Seleção livre respeita
+camada ativa e geometria real, incluindo objetos cruzados pelo contorno. Shift
+adiciona; Esc cancela; selecionar não altera câmera/documento nem move objetos.
+Exclusão usa seleção/histórico existente. Efeitos/limpeza/prévia e morte atingem
+todos os tokens não-map selecionados, inclusive seleção mista com desenhos.
+Servidor valida todos os alvos no mapa ativo antes de aplicar em transação única;
+payload antigo tokenId continua válido. Seis testes de geometria, API e navegador.
+
 VTT 06/10: fichas de monstros editáveis e traduzíveis somente na cópia privada do
 mestre; presets por conta, biblioteca SRD intacta. Preservar IDs de ações/atalhos.
 Chat segue apenas quando já no final. Dano usa rolagem persistida, alvo vinculado,

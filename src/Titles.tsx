@@ -23,12 +23,16 @@ function TitleSeal({ title }: { title: TitleInput }) {
 }
 export function CharacterTitleLabel({ characterId }: { characterId: string }) {
   const [title, setTitle] = useState<CharacterTitle | null>(null);
+  const [position, setPosition] = useState<'below' | 'beside'>('below');
   useEffect(() => {
     let live = true;
     setTitle(null);
     api<TitlesResponse>('/titles/' + characterId)
       .then((r) => {
-        if (live) setTitle(r.items.find((t) => t.id === r.displayed) || null);
+        if (live) {
+          setTitle(r.items.find((t) => t.id === r.displayed) || null);
+          setPosition(r.position || 'below');
+        }
       })
       .catch(() => {});
     return () => {
@@ -36,7 +40,9 @@ export function CharacterTitleLabel({ characterId }: { characterId: string }) {
     };
   }, [characterId]);
   return title ? (
-    <span className={'character-title-label title-' + title.tone}>{title.name}</span>
+    <span className={'character-title-label title-' + title.tone} data-title-position={position}>
+      {title.name}
+    </span>
   ) : null;
 }
 export function TitleHall({
@@ -103,6 +109,22 @@ export function TitleHall({
       setBusy(false);
     }
   }
+  async function position(value: 'below' | 'beside') {
+    if (!characterId || busy) return;
+    setBusy(true);
+    setError('');
+    try {
+      await api('/titles/' + characterId + '/position', {
+        method: 'PUT',
+        body: JSON.stringify({ position: value }),
+      });
+      await refresh();
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
   return (
     <section className="title-hall" aria-label="Títulos e honrarias">
       <header>
@@ -123,6 +145,20 @@ export function TitleHall({
         )}
       </header>
       {error && <p role="alert">{error}</p>}
+      {characterId && data && (
+        <div className="title-position-setting">
+          <label htmlFor={'title-position-' + characterId}>Posição do título</label>
+          <select
+            id={'title-position-' + characterId}
+            value={data.position || 'below'}
+            disabled={busy}
+            onChange={(e) => void position(e.target.value as 'below' | 'beside')}
+          >
+            <option value="below">Abaixo do nome</option>
+            <option value="beside">Ao lado do nome</option>
+          </select>
+        </div>
+      )}
       <div className="title-hall-cards">
         {data?.items.map((title) => (
           <article key={title.id} data-earned={title.earned}>

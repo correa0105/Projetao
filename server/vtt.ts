@@ -19,6 +19,7 @@ import {
 } from './vtt-premium.js';
 import { vttMonsterPresetRouter, saveMonsterPresets } from './vtt-monster-presets.js';
 import { vttDamageRouter } from './vtt-damage.js';
+import { movementBlocked } from '../shared/vtt-movement.js';
 import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
 import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol.js';
@@ -27,8 +28,7 @@ import {
   newDocument,
   newToken,
   tokenSchema,
-  blockingWalls,
-  intersection,
+  pointSchema,
   visiblePoint,
   viewerSees,
   manualFogSees,
@@ -605,27 +605,40 @@ export function vttRouter() {
   router.post('/vtt/rooms/:id/effects/:effect/apply', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       effectId = uuid.parse(req.params.effect);
-    const input = z.object({ tokenId: uuid }).strict().parse(req.body);
+    const input = z
+      .union([
+        z.object({ tokenId: uuid }).strict(),
+        z.object({ tokenIds: z.array(uuid).min(1).max(1000) }).strict(),
+      ])
+      .parse(req.body);
+    const tokenIds = [...new Set('tokenIds' in input ? input.tokenIds : [input.tokenId])];
     await transaction(async (db) => {
       const r = await gm(db, rid, res.locals.user.id, true);
       const preset = r.document.effects.find((e) => e.id === effectId);
       if (!preset) throw new AppError(404, 'Este efeito não está mais salvo na mesa.');
       const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
-      const token = scene.tokens.find((t) => t.id === input.tokenId && t.layer !== 'map');
-      if (!token) throw new AppError(404, 'Selecione um token neste mapa para aplicar o efeito.');
-      if (preset.kind === 'death') token.deathAt = Date.now();
-      else {
-        token.effects = token.effects.filter(
-          (e) => e.kind !== preset.kind && (!e.duration || e.at + e.duration * 1000 > Date.now()),
-        );
-        token.effects.push({
-          id: randomUUID(),
-          kind: preset.kind,
-          color: preset.color,
-          scale: preset.scale,
-          duration: preset.duration,
-          at: Date.now(),
-        });
+      const tokens = tokenIds.map((id) =>
+        scene.tokens.find((t) => t.id === id && t.layer !== 'map'),
+      );
+      if (tokens.some((t) => !t))
+        throw new AppError(404, 'Selecione tokens neste mapa para aplicar o efeito.');
+      const at = Date.now();
+      for (const token of tokens) {
+        if (!token) continue;
+        if (preset.kind === 'death') token.deathAt = at;
+        else {
+          token.effects = token.effects.filter(
+            (e) => e.kind !== preset.kind && (!e.duration || e.at + e.duration * 1000 > at),
+          );
+          token.effects.push({
+            id: randomUUID(),
+            kind: preset.kind,
+            color: preset.color,
+            scale: preset.scale,
+            duration: preset.duration,
+            at,
+          });
+        }
       }
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
@@ -671,6 +684,7 @@ export function vttRouter() {
         flipX: z.boolean().optional(),
         flipY: z.boolean().optional(),
         conditions: z.array(z.string().max(40)).max(30).optional(),
+        path: z.array(pointSchema).min(1).max(2000).optional(),
       })
       .strict()
       .parse(req.body);
@@ -689,13 +703,24 @@ export function vttRouter() {
       const destination = { x: input.x ?? t.x, y: input.y ?? t.y };
       if (destination.x > s.width || destination.y > s.height)
         throw new AppError(400, 'Movimento fora do mapa.');
-      if (
-        s.restrictMovement &&
-        blockingWalls(s, true).some((w) => intersection(t, destination, w.a, w.b, true))
-      )
-        throw new AppError(400, 'Uma barreira bloqueia o movimento.');
+      const path = input.path || [destination];
+      const final = path.at(-1)!;
+      if (final.x !== destination.x || final.y !== destination.y)
+        throw new AppError(400, 'O percurso deve terminar na posição informada.');
+      let from = { x: t.x, y: t.y };
+      for (const to of path) {
+        if (to.x < 0 || to.y < 0 || to.x > s.width || to.y > s.height)
+          throw new AppError(400, 'Movimento fora do mapa.');
+        if (movementBlocked(s, from, to))
+          throw new AppError(
+            400,
+            'Uma parede, porta fechada ou janela fechada bloqueia o movimento.',
+          );
+        from = to;
+      }
       const oldHp = t.hp;
-      Object.assign(t, input);
+      const { path: _path, ...patch } = input;
+      Object.assign(t, patch);
       applyTokenDeath(t, oldHp);
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',

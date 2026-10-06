@@ -42,7 +42,7 @@ export function PortraitCabinet({
       stage.style.setProperty('--cabinet-stage-offset', offset + 'px');
       layout.style.setProperty(
         '--portrait-wall-top',
-        width * 0.105 + backgroundTop - offset + 'px',
+        width * 0.103 + backgroundTop - offset + 'px',
       );
       layout.style.setProperty('--portrait-room-width', width + 'px');
     };

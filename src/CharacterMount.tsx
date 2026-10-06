@@ -31,7 +31,7 @@ export function CampMount({ characterId }: { characterId: string }) {
       const floor = Math.max(...figures.map((figure) => figure.getBoundingClientRect().bottom));
       const height = Math.max(...figures.map((figure) => figure.clientHeight));
       if (Number.isFinite(floor))
-        element.style.top = `${floor - bounds.top - Math.max(45, height * 0.19)}px`;
+        element.style.top = `${floor - bounds.top + Math.min(14, height * 0.035)}px`;
     };
     const observer = new ResizeObserver(align);
     observer.observe(camp);
@@ -98,8 +98,7 @@ export function MountSelection({ characterId }: { characterId: string }) {
       <header>
         <Footprints size={19} />
         <div>
-          <h3>Companheiros de estrada</h3>
-          <p>Escolha quem aparece no acampamento deste personagem.</p>
+          <h3>Montaria</h3>
         </div>
       </header>
       {error && <p role="alert">{error}</p>}
@@ -127,7 +126,6 @@ export function MountSelection({ characterId }: { characterId: string }) {
                 {mounts.find((animal) => animal.id === item.mount_id)?.name} ·{' '}
                 {mountCoats[item.mount_id]?.find((coat) => coat.id === item.coat)?.label}
               </small>
-              <em>{item.displayed ? 'Aparece no acampamento' : 'Mostrar no acampamento'}</em>
             </span>
             {item.displayed && <Check size={17} />}
           </button>
@@ -139,7 +137,7 @@ export function MountSelection({ characterId }: { characterId: string }) {
           disabled={busy || !items.some((item) => item.displayed)}
           onClick={() => void select(null)}
         >
-          Não mostrar montaria no acampamento
+          Ocultar montaria
         </button>
       )}
     </section>

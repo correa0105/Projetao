@@ -10,7 +10,7 @@
 .portrait-frame-wall {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(var(--portrait-room-width, 100vw) * 0.007);
   align-items: center;
   padding: 0;
   position: absolute;
@@ -24,19 +24,19 @@
   right: calc(50% - var(--portrait-room-width, 100vw) * 0.285);
 }
 .portrait-frame-wall.left > .antique-portrait:first-child {
-  translate: calc(var(--portrait-room-width, 100vw) * -0.035) 0;
+  translate: calc(var(--portrait-room-width, 100vw) * -0.015) 0;
 }
 .portrait-frame-wall.right > .antique-portrait:first-child {
-  translate: calc(var(--portrait-room-width, 100vw) * 0.035) 0;
+  translate: calc(var(--portrait-room-width, 100vw) * 0.015) 0;
 }
 .antique-portrait {
   display: block;
   position: relative;
   width: 100%;
   max-width: 90px;
-  width: calc(var(--portrait-room-width, 100vw) * 0.05);
+  width: calc(var(--portrait-room-width, 100vw) * 0.046);
   aspect-ratio: 0.64;
-  margin: 0 0 23px;
+  margin: 0 0 calc(var(--portrait-room-width, 100vw) * 0.012);
   border: 0 !important;
   padding: 0 !important;
   background: transparent !important;

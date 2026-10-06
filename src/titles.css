@@ -5,6 +5,30 @@
   background: linear-gradient(120deg, #252219ee, #15161bec);
   border-radius: 7px;
 }
+.title-position-setting {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: #b7ad98;
+  font-size: 12px;
+}
+.title-position-setting select {
+  width: auto;
+  max-width: 100%;
+}
+.camp-name-line:has(> .character-title-label[data-title-position='beside']) {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 10px;
+}
+.camp-name-line .character-title-label[data-title-position='beside'] {
+  display: inline;
+  margin: 0;
+}
 .title-hall > header {
   display: flex;
   gap: 25px;

@@ -818,11 +818,11 @@ export function MapSettings({
                 s.ambient = n;
               }),
             )}
-            {toggle('Barreiras impedem movimento dos jogadores', draft.restrictMovement, (n) =>
-              change((s) => {
-                s.restrictMovement = n;
-              }),
-            )}
+            <p className="vtt-muted">
+              Paredes, portas fechadas e janelas fechadas sempre bloqueiam a passagem dos
+              personagens. Abra portas e janelas na camada de iluminação para permitir
+              atravessá-las.
+            </p>
             <p className="vtt-muted">
               A camada do mestre fica invisível aos jogadores. A opacidade afeta apenas sua
               visualização.

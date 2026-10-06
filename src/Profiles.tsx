@@ -51,6 +51,7 @@ type PublicCharacter = {
   portrait: string;
   progression_missions: number;
   displayed_title: string | null;
+  title_position: 'below' | 'beside';
 };
 type Profile = {
   id: string;
@@ -482,17 +483,19 @@ export function Profiles({ user }: { user: User }) {
                   inert={panel !== 'characters'}
                 >
                   <div className="public-camp-heading">
-                    <h2>{current?.name || 'O acampamento do viajante'}</h2>
+                    <div className="public-camp-name" data-title-position={current?.title_position}>
+                      <h2>{current?.name || 'O acampamento do viajante'}</h2>
+                      {current?.displayed_title && (
+                        <div className="public-character-title">
+                          <Crown size={14} />
+                          {current.displayed_title}
+                        </div>
+                      )}
+                    </div>
                     {current && (
                       <p>
                         {rankName(current.level)} · {current.race} · {current.class}
                       </p>
-                    )}
-                    {current?.displayed_title && (
-                      <div className="public-character-title">
-                        <Crown size={14} />
-                        {current.displayed_title}
-                      </div>
                     )}
                   </div>
                   <div className="public-camp-stage">

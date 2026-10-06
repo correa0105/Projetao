@@ -106,12 +106,9 @@ export function PetCollection({ characterId }: { characterId: string }) {
     <section className="inventory-pets" aria-label="Mascotes do personagem">
       <header>
         <PawPrint size={18} />
-        <h3>Pequenos companheiros</h3>
+        <h3>Mascote</h3>
         <a href="#pets">Visitar Garalho →</a>
       </header>
-      {items.length > 0 && (
-        <p>Escolha o mascote que aparece à direita no acampamento deste personagem.</p>
-      )}
       {error && <p role="alert">{error}</p>}
       {!items.length && !error && <p>Os mascotes que você levar para casa aparecem aqui.</p>}
       <div>
@@ -134,7 +131,6 @@ export function PetCollection({ characterId }: { characterId: string }) {
                     (breed) => breed.pet_id === item.pet_id && breed.appearance === item.appearance,
                   )?.name || pet.name}
                 </small>
-                <em>{item.displayed ? 'Aparece no acampamento' : 'Mostrar no acampamento'}</em>
               </span>
               {item.displayed && <Check size={16} />}
             </button>
@@ -147,7 +143,7 @@ export function PetCollection({ characterId }: { characterId: string }) {
           disabled={busy || !items.some((item) => item.displayed)}
           onClick={() => void select(null)}
         >
-          Não mostrar mascote no acampamento
+          Ocultar mascote
         </button>
       )}
     </section>

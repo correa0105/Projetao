@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
-import { newToken } from '../shared/vtt.js';
+import { newToken, drawingSchema } from '../shared/vtt.js';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3006';
@@ -234,7 +234,250 @@ try {
       false,
     );
   }
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  const {
+    rows: [selectionRoom],
+  } = await pool.query('SELECT document,revision FROM vtt_rooms WHERE id=$1', [r.id]);
+  const selectionScene = selectionRoom.document.scenes.find(
+    (s: any) => s.id === selectionRoom.document.activeScene,
+  );
+  const first = newToken(randomUUID(), selectionScene),
+    second = newToken(randomUUID(), selectionScene),
+    outside = newToken(randomUUID(), selectionScene);
+  Object.assign(first, { name: 'Grupo um', x: 750, y: 650, width: 70, height: 70 });
+  Object.assign(second, { name: 'Grupo dois', x: 950, y: 650, width: 70, height: 70 });
+  Object.assign(outside, { name: 'Fora do grupo', x: 1450, y: 650, width: 70, height: 70 });
+  const stroke = drawingSchema.parse({
+    id: randomUUID(),
+    kind: 'pen',
+    points: [
+      { x: 720, y: 725 },
+      { x: 990, y: 725 },
+    ],
+    width: 4,
+    color: '#e7c58b',
+    fill: false,
+  });
+  selectionScene.tokens.push(first, second, outside);
+  selectionScene.drawings.push(stroke);
+  const groupEffect = {
+    id: randomUUID(),
+    name: 'Chama do grupo',
+    kind: 'fire',
+    color: '#d68a44',
+    scale: 1,
+    duration: 0,
+  };
+  selectionRoom.document.effects.push(groupEffect);
+  await pool.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
+    r.id,
+    JSON.stringify(selectionRoom.document),
+  ]);
+  const originalRevision = selectionRoom.revision + 1;
+  await page.reload();
+  await expect(canvas).toBeVisible();
+  await page.getByRole('button', { name: 'Seleção livre (L)', exact: true }).click();
+  async function drawLasso(points: { x: number; y: number }[], shift = false, cancel = false) {
+    const rect = (await canvas.boundingBox())!;
+    const x = Number(await canvas.getAttribute('data-camera-x')),
+      y = Number(await canvas.getAttribute('data-camera-y')),
+      zoom = Number(await canvas.getAttribute('data-camera-zoom'));
+    const screen = (p: { x: number; y: number }) => ({
+      x: rect.x + rect.width / 2 + (p.x - x) * zoom,
+      y: rect.y + rect.height / 2 + (p.y - y) * zoom,
+    });
+    if (shift) await page.keyboard.down('Shift');
+    const start = screen(points[0]);
+    await page.mouse.move(start.x, start.y);
+    await page.mouse.down();
+    for (const p of points.slice(1)) {
+      const s = screen(p);
+      await page.mouse.move(s.x, s.y, { steps: 5 });
+    }
+    if (cancel) await page.keyboard.press('Escape');
+    else await page.screenshot({ path: 'test-results/vtt-free-selection-contour.png' });
+    await page.mouse.up();
+    if (shift) await page.keyboard.up('Shift');
+  }
+  const contour = [
+    { x: 650, y: 560 },
+    { x: 800, y: 535 },
+    { x: 1050, y: 565 },
+    { x: 1070, y: 750 },
+    { x: 900, y: 780 },
+    { x: 670, y: 770 },
+    { x: 650, y: 560 },
+  ];
+  await drawLasso(contour);
+  await expect(canvas).toHaveAttribute('data-selection-count', '3');
+  expect((await canvas.getAttribute('data-selection-ids'))!.split(',').sort()).toEqual(
+    [first.id, second.id, stroke.id].sort(),
+  );
+  expect(
+    (await pool.query('SELECT revision FROM vtt_rooms WHERE id=$1', [r.id])).rows[0].revision,
+  ).toBe(originalRevision);
+  await drawLasso(
+    [
+      { x: 1390, y: 590 },
+      { x: 1510, y: 590 },
+      { x: 1510, y: 710 },
+      { x: 1390, y: 710 },
+    ],
+    true,
+  );
+  await expect(canvas).toHaveAttribute('data-selection-count', '4');
+  await drawLasso(contour);
+  await expect(canvas).toHaveAttribute('data-selection-count', '3');
+  await page.getByRole('button', { name: 'Efeitos do mestre', exact: true }).click();
+  await expect(page.locator('.vtt-effects-target')).toHaveText('Alvos · 2 tokens');
+  await page.locator('.vtt-effects-apply').filter({ hasText: 'Chama do grupo' }).click();
+  await expect
+    .poll(async () => {
+      const doc = (await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id])).rows[0]
+        .document;
+      return doc.scenes[0].tokens.filter(
+        (t: any) =>
+          [first.id, second.id].includes(t.id) && t.effects.some((e: any) => e.kind === 'fire'),
+      ).length;
+    })
+    .toBe(2);
+  await page.getByRole('button', { name: 'Fechar efeitos', exact: true }).click();
+  await page.screenshot({ path: 'test-results/vtt-free-selection-group.png' });
+  await page.getByRole('button', { name: 'Excluir objetos selecionados', exact: true }).click();
+  await expect
+    .poll(async () => {
+      const s = (await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id])).rows[0]
+        .document.scenes[0];
+      return [
+        s.tokens.some((t: any) => t.id === first.id || t.id === second.id),
+        s.drawings.some((d: any) => d.id === stroke.id),
+        s.tokens.some((t: any) => t.id === outside.id),
+      ];
+    })
+    .toEqual([false, false, true]);
+  await page.getByRole('button', { name: 'Desfazer', exact: true }).click();
+  await expect
+    .poll(async () => {
+      const s = (await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id])).rows[0]
+        .document.scenes[0];
+      return (
+        s.tokens.filter((t: any) => [first.id, second.id].includes(t.id)).length +
+        s.drawings.filter((d: any) => d.id === stroke.id).length
+      );
+    })
+    .toBe(3);
+  const beforeCancel = (
+    await pool.query('SELECT document,revision FROM vtt_rooms WHERE id=$1', [r.id])
+  ).rows[0];
+  await canvas.focus();
+  await page.keyboard.press('l');
+  await drawLasso(contour, false, true);
+  await expect(canvas).toHaveAttribute('data-selection-count', '0');
+  expect(
+    (await pool.query('SELECT document,revision FROM vtt_rooms WHERE id=$1', [r.id])).rows[0],
+  ).toEqual(beforeCancel);
+  const movementDocument = structuredClone(beforeCancel.document);
+  movementDocument.scenes[0].grid.snap = false;
+  movementDocument.scenes[0].restrictMovement = false;
+  movementDocument.scenes[0].walls.push({
+    id: randomUUID(),
+    kind: 'wall',
+    a: { x: 850, y: 580 },
+    b: { x: 850, y: 760 },
+    open: false,
+  });
+  await pool.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
+    r.id,
+    JSON.stringify(movementDocument),
+  ]);
+  await page.reload();
+  await expect(canvas).toBeVisible();
+  await page.getByRole('button', { name: 'Selecionar (V)', exact: true }).click();
+  async function dragToken(points: { x: number; y: number }[]) {
+    const rect = (await canvas.boundingBox())!,
+      cx = Number(await canvas.getAttribute('data-camera-x')),
+      cy = Number(await canvas.getAttribute('data-camera-y')),
+      zoom = Number(await canvas.getAttribute('data-camera-zoom'));
+    const screen = (p: { x: number; y: number }) => ({
+      x: rect.x + rect.width / 2 + (p.x - cx) * zoom,
+      y: rect.y + rect.height / 2 + (p.y - cy) * zoom,
+    });
+    const start = screen(points[0]);
+    await page.mouse.move(start.x, start.y);
+    await page.mouse.down();
+    for (const p of points.slice(1)) {
+      const s = screen(p);
+      await page.mouse.move(s.x, s.y, { steps: 10 });
+    }
+    await page.mouse.up();
+  }
+  await dragToken([
+    { x: 750, y: 650 },
+    { x: 970, y: 650 },
+  ]);
+  await expect
+    .poll(async () => {
+      const s = (await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id])).rows[0]
+        .document.scenes[0];
+      return s.tokens.find((t: any) => t.id === first.id).x;
+    })
+    .toBeGreaterThan(750);
+  const blockedPosition = (
+    await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id])
+  ).rows[0].document.scenes[0].tokens.find((t: any) => t.id === first.id);
+  expect(blockedPosition.x).toBeLessThan(850);
+  await dragToken([
+    { x: blockedPosition.x, y: blockedPosition.y },
+    { x: blockedPosition.x, y: 520 },
+    { x: 1000, y: 520 },
+    { x: 1000, y: 650 },
+  ]);
+  await expect
+    .poll(async () => {
+      const s = (await pool.query('SELECT document FROM vtt_rooms WHERE id=$1', [r.id])).rows[0]
+        .document.scenes[0];
+      return Math.round(s.tokens.find((t: any) => t.id === first.id).x);
+    })
+    .toBe(1000);
+  console.log(
+    'Movimento no navegador: parede impede arraste direto mesmo sem restrição legada; contornar pela área aberta permite chegar ao outro lado.',
+  );
+  await page.getByRole('button', { name: 'Chat', exact: true }).click();
+  await panel.getByRole('button', { name: 'Combate', exact: true }).click();
+  await panel.getByRole('button', { name: 'Adicionar todos à ordem', exact: true }).click();
+  const combatEntries = movementDocument.scenes[0].tokens.filter(
+    (t: any) => t.layer === 'tokens' && !t.hidden,
+  ).length;
+  await expect(panel.locator('.vtt-combat-entry')).toHaveCount(combatEntries);
+  await panel.getByRole('button', { name: 'Rolar todas as iniciativas', exact: true }).click();
+  await expect
+    .poll(async () =>
+      Promise.all(
+        (await panel.locator('.vtt-combat-entry input').all()).map((input) => input.inputValue()),
+      ),
+    )
+    .not.toContain('');
+  await panel.getByRole('button', { name: 'Iniciar combate', exact: true }).click();
+  await expect(page.locator('.vtt-turn-carousel')).toContainText('Rodada 1');
+  const carousel = page.locator('.vtt-turn-carousel');
+  await expect(carousel.locator('article')).toHaveCount(Math.min(5, combatEntries));
+  expect(await carousel.evaluate((el) => parseFloat(getComputedStyle(el).top))).toBe(8);
+  await carousel.getByRole('button', { name: 'Minimizar carrossel', exact: true }).click();
+  await expect(carousel.locator('article')).toHaveCount(0);
+  await carousel.getByRole('button', { name: 'Expandir carrossel', exact: true }).click();
+  await expect(carousel.locator('article')).toHaveCount(Math.min(5, combatEntries));
+  await page.screenshot({ path: 'test-results/vtt-combat-carousel-desktop.png' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({ path: 'test-results/vtt-combat-carousel-mobile.png' });
+  await carousel.getByRole('button', { name: 'Minimizar carrossel', exact: true }).click();
+  await page.screenshot({ path: 'test-results/vtt-combat-carousel-minimized.png' });
+  console.log(
+    'Combate: rolagem coletiva do mestre, início, carrossel mais alto/transparente e minimizar/expandir aprovados.',
+  );
   expect(errors).toEqual([]);
+  console.log(
+    'Seleção livre: contorno irregular, Shift, efeitos em dois tokens, exclusão mista, desfazer e Esc aprovados; seleção não grava nem move objetos.',
+  );
   console.log(
     `VTT premium: administrador sem tag, duas prévias de seis, ${assets.length} imagens corretas em Monstros, preferência após recarga, token adicionado premium, reversão preserva mesa, chat/editor/dano e quatro larguras aprovados.`,
   );

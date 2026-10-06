@@ -522,7 +522,9 @@ export function intersection(
     : null;
 }
 export function blockingWalls(s: VttScene, movement = false) {
-  return s.walls.filter((w) => !w.open && (movement || w.kind !== 'window'));
+  return s.walls.filter(
+    (w) => (movement && w.kind === 'wall') || (!w.open && (movement || w.kind !== 'window')),
+  );
 }
 /** Split a wall at a snapped opening; never remove unrelated wall sections. */
 export function carveOpening(s: VttScene, opening: VttWall, createId: () => string) {

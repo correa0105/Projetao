@@ -122,6 +122,23 @@ placeholders nem reaproveitar uma imagem para fingir múltiplos monstros conclu�
 
 ## Verificação
 
+Revisão posterior de 06/10: os 22 anexos do usuário receberam reparos individuais.
+Depois de rejeições de pés/armas/perspectiva, foram examinados o
+[guerreiro com machado](https://forgottenadventures.piwigo.com/picture?/142260),
+[dragão negro](https://forgottenadventures.piwigo.com/picture?/29000) e
+[dragão de latão](https://forgottenadventures.piwigo.com/picture?/151245) na galeria
+original de Forgotten Adventures. A
+[pesquisa do Pinterest indicada pelo usuário](https://uk.pinterest.com/search/pins/?q=forgotten%20adventure%20tokens&rs=typed)
+e o pin aberto exigiram login. Referências usadas para câmera/foreshortening,
+continuidade e proporção; os arquivos dos artistas não são assets distribuídos.
+Berserker com duas mãos e encaixe coaxial do machado; Balor/homúnculo/imp com
+asas dorsais e pés seguindo o rosto; dragão negro sem membros traseiros gigantes;
+latão refeito com cauda longa e asas recuadas. Naga guardiã tem mãos completas
+com margem. Revisão 2, prompt, repairReferences, hash e originalSha256 no manifest.
+330 vínculos/hashes verificados, 22 cópias exatas em Downloads, alpha sem bordas
+cortadas, outras 308 artes preservadas. Esses checks técnicos complementam a
+inspeção visual; não demonstram anatomia sozinhos.
+
 `node scripts/test-vtt-premium-isolated.mjs`: permissões premium, revogação,
 administrador sem tag, duas amostras de seis, preferência por conta, 330 vínculos
 exatos e reversão sem alterar mesas,

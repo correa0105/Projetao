@@ -6,7 +6,7 @@ import sharp from 'sharp';
 import { pool } from '../server/db.js';
 import { migrate } from '../server/migrate.js';
 import { seed } from '../server/seed.js';
-import { newToken, documentSchema } from '../shared/vtt.js';
+import { newToken, newScene, documentSchema } from '../shared/vtt.js';
 import { monsterActions } from '../shared/vtt-monster-actions.js';
 
 test('VTT: acervo privado, premium e dano verificado', async (t) => {
@@ -413,6 +413,207 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
           ).status,
           400,
         );
+      },
+    );
+    await t.test(
+      'efeito em grupo é atômico, deduplica alvos e exige mestre do mapa ativo',
+      async () => {
+        room = (await request('/vtt/rooms/' + room.id, gm)).data;
+        const active = room.document.scenes.find((s: any) => s.id === room.document.activeScene);
+        const original = structuredClone(room.document);
+        const effect = {
+          id: randomUUID(),
+          name: 'Fogo em grupo',
+          kind: 'fire',
+          color: '#d68a44',
+          scale: 1,
+          duration: 0,
+        };
+        room.document.effects.push(effect);
+        const map = { ...active.tokens[0], id: randomUUID(), layer: 'map' };
+        active.tokens.push(map);
+        const otherScene = newScene(randomUUID());
+        const foreign = newToken(randomUUID(), otherScene);
+        otherScene.tokens.push(foreign);
+        room.document.scenes.push(otherScene);
+        await put();
+        const path = `/vtt/rooms/${room.id}/effects/${effect.id}/apply`;
+        const before = structuredClone(room);
+        for (const invalidId of [randomUUID(), map.id, foreign.id]) {
+          assert.equal(
+            (await request(path, gm, 'POST', { tokenIds: [actor.id, invalidId] })).status,
+            404,
+          );
+          const after = (await request('/vtt/rooms/' + room.id, gm)).data;
+          assert.deepEqual(after.document, before.document);
+          assert.equal(after.revision, before.revision);
+        }
+        for (const account of [other, player])
+          assert.equal(
+            (await request(path, account, 'POST', { tokenIds: [actor.id, target.id] })).status,
+            403,
+          );
+        assert.equal((await request(path, gm, 'POST', { tokenIds: [] })).status, 400);
+        assert.equal(
+          (await request(path, gm, 'POST', { tokenId: actor.id, tokenIds: [target.id] })).status,
+          400,
+        );
+        const response = await request(path, gm, 'POST', {
+          tokenIds: [actor.id, target.id, actor.id],
+        });
+        assert.equal(response.status, 200);
+        room = response.data;
+        assert.equal(room.revision, before.revision + 1);
+        const tokens = room.document.scenes.find(
+          (s: any) => s.id === room.document.activeScene,
+        ).tokens;
+        const a = tokens.find((t: any) => t.id === actor.id),
+          b = tokens.find((t: any) => t.id === target.id);
+        assert.equal(a.effects.filter((e: any) => e.kind === 'fire').length, 1);
+        assert.equal(b.effects.filter((e: any) => e.kind === 'fire').length, 1);
+        assert.equal(
+          a.effects.find((e: any) => e.kind === 'fire').at,
+          b.effects.find((e: any) => e.kind === 'fire').at,
+        );
+        assert.equal(a.hp, before.document.scenes[0].tokens.find((t: any) => t.id === a.id).hp);
+        assert.equal(b.hp, before.document.scenes[0].tokens.find((t: any) => t.id === b.id).hp);
+        assert.deepEqual(
+          tokens.find((t: any) => t.id === map.id),
+          map,
+        );
+        // Existing shortcuts keep the single-token payload and replace the same effect.
+        assert.equal((await request(path, gm, 'POST', { tokenId: actor.id })).status, 200);
+        room = (await request('/vtt/rooms/' + room.id, gm)).data;
+        room.document = original;
+        await put();
+      },
+    );
+    await t.test(
+      'movimento físico bloqueia paredes/portas/janelas fechadas e valida o percurso completo',
+      async () => {
+        room = (await request('/vtt/rooms/' + room.id, gm)).data;
+        const original = structuredClone(room.document);
+        const active = room.document.scenes[0];
+        const controlled = active.tokens.find((t: any) => t.id === target.id);
+        Object.assign(controlled, { x: 100, y: 100 });
+        active.restrictMovement = false;
+        active.lighting = false;
+        const wall = {
+          id: randomUUID(),
+          kind: 'wall',
+          a: { x: 150, y: 0 },
+          b: { x: 150, y: 200 },
+          open: false,
+        };
+        active.walls = [wall];
+        await put();
+        const path = `/vtt/rooms/${room.id}/tokens/${target.id}`;
+        const before = structuredClone(room);
+        for (const body of [
+          { x: 200, y: 100 },
+          { x: 150, y: 100 },
+          { x: 200, y: 100, path: [{ x: 200, y: 100 }] },
+          { x: 200, y: 100, path: [{ x: 100, y: 250 }] },
+          {
+            x: 200,
+            y: 100,
+            path: [
+              { x: -10, y: 250 },
+              { x: 200, y: 100 },
+            ],
+          },
+        ]) {
+          assert.equal((await request(path, player, 'PATCH', body)).status, 400);
+          const after = (await request('/vtt/rooms/' + room.id, gm)).data;
+          assert.deepEqual(after.document, before.document);
+          assert.equal(after.revision, before.revision);
+        }
+        const around = await request(path, player, 'PATCH', {
+          x: 200,
+          y: 100,
+          path: [
+            { x: 100, y: 250 },
+            { x: 200, y: 250 },
+            { x: 200, y: 100 },
+          ],
+        });
+        assert.equal(around.status, 200);
+        room = (await request('/vtt/rooms/' + room.id, gm)).data;
+        for (const kind of ['door', 'window']) {
+          const s = room.document.scenes[0];
+          Object.assign(
+            s.tokens.find((t: any) => t.id === target.id),
+            { x: 100, y: 100 },
+          );
+          Object.assign(s.walls[0], { kind, open: false });
+          await put();
+          assert.equal((await request(path, player, 'PATCH', { x: 200, y: 100 })).status, 400);
+          room.document.scenes[0].walls[0].open = true;
+          await put();
+          assert.equal((await request(path, player, 'PATCH', { x: 200, y: 100 })).status, 200);
+          room = (await request('/vtt/rooms/' + room.id, gm)).data;
+        }
+        room.document = original;
+        await put();
+      },
+    );
+    await t.test(
+      'mestre rola toda a ordem com dados reais, uma revisão e mensagens atômicas',
+      async () => {
+        const path = `/vtt/rooms/${room.id}/combat`;
+        for (const account of [player, spectator])
+          assert.equal((await request(path, account, 'POST', { kind: 'rollAll' })).status, 403);
+        assert.equal((await request(path, gm, 'POST', { kind: 'rollAll' })).status, 409);
+        const added = await request(path, gm, 'POST', {
+          kind: 'add',
+          tokenIds: [actor.id, target.id],
+        });
+        assert.equal(added.status, 200);
+        const before = (
+          await pool.query('SELECT document,revision,combat FROM vtt_rooms WHERE id=$1', [room.id])
+        ).rows[0];
+        const messagesBefore = Number(
+          (await pool.query('SELECT count(*) FROM vtt_messages WHERE room_id=$1', [room.id]))
+            .rows[0].count,
+        );
+        const rolled = await request(path, gm, 'POST', { kind: 'rollAll' });
+        assert.equal(rolled.status, 200, JSON.stringify(rolled.data));
+        assert.equal(rolled.data.revision, added.data.revision + 1);
+        assert.equal(rolled.data.entries.length, 2);
+        for (const e of rolled.data.entries) {
+          assert.ok(e.die >= 1 && e.die <= 20);
+          const token = before.document.scenes[0].tokens.find((t: any) => t.id === e.tokenId);
+          assert.equal(e.bonus, Math.floor(((token.sheet?.stats[1] ?? 10) - 10) / 2));
+          assert.equal(e.value, e.die + e.bonus);
+        }
+        assert.ok(rolled.data.entries[0].value >= rolled.data.entries[1].value);
+        const after = (
+          await pool.query('SELECT document,revision FROM vtt_rooms WHERE id=$1', [room.id])
+        ).rows[0];
+        assert.deepEqual(after, { document: before.document, revision: before.revision });
+        assert.equal(
+          Number(
+            (await pool.query('SELECT count(*) FROM vtt_messages WHERE room_id=$1', [room.id]))
+              .rows[0].count,
+          ),
+          messagesBefore + 2,
+        );
+        assert.equal((await request(path, gm, 'POST', { kind: 'start' })).status, 200);
+        const active = (await pool.query('SELECT combat FROM vtt_rooms WHERE id=$1', [room.id]))
+          .rows[0];
+        assert.equal((await request(path, gm, 'POST', { kind: 'rollAll' })).status, 409);
+        assert.deepEqual(
+          (await pool.query('SELECT combat FROM vtt_rooms WHERE id=$1', [room.id])).rows[0],
+          active,
+        );
+        assert.equal(
+          Number(
+            (await pool.query('SELECT count(*) FROM vtt_messages WHERE room_id=$1', [room.id]))
+              .rows[0].count,
+          ),
+          messagesBefore + 2,
+        );
+        await request(path, gm, 'POST', { kind: 'end' });
       },
     );
     await t.test('artes individuais têm vínculo válido, alpha real e hash registrado', async () => {

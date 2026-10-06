@@ -35,6 +35,10 @@ try {
   const a = await createLegacyTestCharacter(owner.id, 'Arden'),
     b = await createLegacyTestCharacter(owner.id, 'Mira');
   await pool.query('UPDATE characters SET gold_cp=100000 WHERE id=ANY($1::uuid[])', [[a.id, b.id]]);
+  await pool.query(
+    "INSERT INTO achievements(character_id,code) VALUES($1,'first_character') ON CONFLICT DO NOTHING",
+    [a.id],
+  );
   async function purchase(characterId: string, mount: string, name: string) {
     const response = await context.request.post(origin + '/api/stable/purchase', {
       headers: { Origin: origin },
@@ -75,6 +79,7 @@ try {
   await page.getByRole('button', { name: 'Selecionar Arden', exact: true }).click();
   await expect(page.locator('.camp-mount')).toHaveAttribute('data-mount-id', first.id);
   await page.goto(origin + '/#inventory');
+  await expect(page.locator('.inventory-mounts')).toHaveCount(1);
   const chosen = page.getByRole('button', {
     name: 'Mostrar Pé de Pano no acampamento',
     exact: true,
@@ -82,12 +87,62 @@ try {
   await expect(chosen).toBeVisible();
   await chosen.click();
   await expect(chosen).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.inventory-mounts')).toHaveCount(1);
   await page.screenshot({ path: 'test-results/inventory-mount-choice.png', fullPage: true });
   await page.goto(origin + '/#characters');
   await expect(page.locator('.camp-mount')).toHaveAttribute('data-mount-id', second.id);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({ path: 'test-results/camp-mount-mobile.png' });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(origin + '/#achievements');
+  const titleState = await (await context.request.get(origin + '/api/titles/' + a.id)).json();
+  const firstTitle = titleState.items.find((item: { earned: boolean }) => item.earned);
+  expect(firstTitle).toBeTruthy();
+  expect(
+    (
+      await context.request.put(origin + '/api/titles/' + a.id + '/display', {
+        headers: { Origin: origin },
+        data: { title_id: firstTitle.id },
+      })
+    ).ok(),
+  ).toBe(true);
+  await page.reload();
+  await page.getByLabel('Posição do título', { exact: true }).selectOption('beside');
+  await expect(page.getByLabel('Posição do título', { exact: true })).toBeEnabled();
+  await page.locator('.cabinet-room-stage').scrollIntoViewIfNeeded();
+  await expect(page.locator('.antique-portrait')).toHaveCount(4);
+  await page.screenshot({ path: 'test-results/portraits-wall-desktop.png' });
+  await page.goto(origin + '/#characters');
+  await expect(
+    page.locator('.camp-character').filter({ hasText: 'Arden' }).locator('.character-title-label'),
+  ).toHaveAttribute('data-title-position', 'beside');
+  await page.reload();
+  await expect(page.locator('.character-title-label[data-title-position="beside"]')).toHaveCount(1);
+  await page.screenshot({ path: 'test-results/camp-title-beside-desktop.png' });
+  await page.goto(origin + '/#profiles?user=' + owner.id + '&character=' + a.id);
+  await expect(page.locator('.public-camp-name')).toHaveAttribute('data-title-position', 'beside');
+  await expect(page.locator('.public-character-title')).toHaveText(firstTitle.name);
+  await page
+    .locator('.profile-visit-nav')
+    .getByRole('button', { name: 'Conquistas', exact: true })
+    .click();
+  await expect(page.locator('.public-achievements')).toHaveAttribute('aria-hidden', 'false');
+  await expect(page.locator('.antique-portrait')).toHaveCount(4);
+  await expect
+    .poll(() =>
+      page
+        .locator('.profile-panels-strip')
+        .evaluate((el) => el.getAnimations().every((a) => a.playState !== 'running')),
+    )
+    .toBe(true);
+  await page.screenshot({ path: 'test-results/public-portraits-wall-desktop.png' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({ path: 'test-results/public-portraits-wall-mobile.png' });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.goto(origin + '/#achievements');
+  await page.locator('.cabinet-room-stage').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: 'test-results/portraits-wall-mobile.png' });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(origin + '/#lore');
   await expect(page.locator('.lore-era')).toHaveCount(6);

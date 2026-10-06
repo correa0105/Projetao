@@ -262,8 +262,10 @@ export function CharacterCamp({
               <span className="eyebrow">
                 Nível {character.level} {selectedId === character.id ? '· Selecionado' : ''}
               </span>
-              <h2>{character.name}</h2>
-              <CharacterTitleLabel characterId={character.id} />
+              <div className="camp-name-line">
+                <h2>{character.name}</h2>
+                <CharacterTitleLabel characterId={character.id} />
+              </div>
               <p>
                 {character.race} · {character.class}
               </p>

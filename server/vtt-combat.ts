@@ -23,6 +23,7 @@ const inputSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('add'), tokenIds: z.array(uuid).min(1).max(1000) }).strict(),
   z.object({ kind: z.literal('remove'), tokenId: uuid }).strict(),
   z.object({ kind: z.literal('roll'), tokenId: uuid }).strict(),
+  z.object({ kind: z.literal('rollAll') }).strict(),
   z
     .object({ kind: z.literal('set'), tokenId: uuid, value: z.number().int().min(-100).max(1000) })
     .strict(),
@@ -141,51 +142,61 @@ export function vttCombatRouter(
           if (!c.entries.some((e) => e.tokenId === id))
             c.entries.push({ tokenId: id, value: null, die: null, bonus: null });
         }
-      } else if (input.kind === 'roll') {
-        const entry = c.entries.find((e) => e.tokenId === input.tokenId),
-          token = scene.tokens.find((t) => t.id === input.tokenId);
-        if (!entry || !token) throw new AppError(404, 'Token fora da ordem dos turnos.');
+      } else if (input.kind === 'roll' || input.kind === 'rollAll') {
         if (c.active) throw new AppError(409, 'A iniciativa já foi definida para este combate.');
-        if (!gm && (token.controller !== user || token.hidden || !canSee(token, scene, user)))
-          throw new AppError(403, 'Você pode rolar somente pelo seu personagem.');
-        let bonus = Math.floor(((token.sheet?.stats[1] ?? 10) - 10) / 2);
-        if (token.characterId) {
-          const ch = (
-            await db.query(
-              'SELECT c.* FROM characters c JOIN vtt_character_links l ON l.character_id=c.id AND l.room_id=$2 WHERE c.id=$1 AND c.deleted_at IS NULL',
-              [token.characterId, rid],
-            )
-          ).rows[0];
-          if (!ch || (!gm && ch.user_id !== user))
-            throw new AppError(403, 'Personagem não pertence a você.');
-          const sheet = (
-            await db.query(
-              'SELECT choices,finalized_at FROM character_sheets WHERE character_id=$1',
-              [token.characterId],
-            )
-          ).rows[0];
-          bonus =
-            sheet?.finalized_at && sheet.choices
-              ? deriveSheet(ch, sheet.choices).initiative
-              : Math.floor((ch.stats[1] - 10) / 2);
+        const entries =
+          input.kind === 'rollAll'
+            ? c.entries
+            : c.entries.filter((e) => e.tokenId === input.tokenId);
+        if (!entries.length)
+          throw new AppError(
+            input.kind === 'rollAll' ? 409 : 404,
+            'Adicione participantes à ordem dos turnos.',
+          );
+        for (const entry of entries) {
+          const token = scene.tokens.find((t) => t.id === entry.tokenId);
+          if (!token) throw new AppError(404, 'Token fora da ordem dos turnos.');
+          if (!gm && (token.controller !== user || token.hidden || !canSee(token, scene, user)))
+            throw new AppError(403, 'Você pode rolar somente pelo seu personagem.');
+          let bonus = Math.floor(((token.sheet?.stats[1] ?? 10) - 10) / 2);
+          if (token.characterId) {
+            const ch = (
+              await db.query(
+                'SELECT c.* FROM characters c JOIN vtt_character_links l ON l.character_id=c.id AND l.room_id=$2 WHERE c.id=$1 AND c.deleted_at IS NULL',
+                [token.characterId, rid],
+              )
+            ).rows[0];
+            if (!ch || (!gm && ch.user_id !== user))
+              throw new AppError(403, 'Personagem não pertence a você.');
+            const sheet = (
+              await db.query(
+                'SELECT choices,finalized_at FROM character_sheets WHERE character_id=$1',
+                [token.characterId],
+              )
+            ).rows[0];
+            bonus =
+              sheet?.finalized_at && sheet.choices
+                ? deriveSheet(ch, sheet.choices).initiative
+                : Math.floor((ch.stats[1] - 10) / 2);
+          }
+          entry.bonus = bonus;
+          entry.die = randomInt(1, 21);
+          entry.value = entry.die + entry.bonus;
+          await db.query(
+            'INSERT INTO vtt_messages(room_id,author_id,author,text,roll) VALUES($1,$2,$3,$4,$5)',
+            [
+              rid,
+              user,
+              token.name,
+              token.name + ' · iniciativa',
+              JSON.stringify({
+                formula: '1d20' + (entry.bonus >= 0 ? '+' : '') + entry.bonus,
+                dice: [entry.die],
+                total: entry.value,
+              }),
+            ],
+          );
         }
-        entry.bonus = bonus;
-        entry.die = randomInt(1, 21);
-        entry.value = entry.die + entry.bonus;
-        await db.query(
-          'INSERT INTO vtt_messages(room_id,author_id,author,text,roll) VALUES($1,$2,$3,$4,$5)',
-          [
-            rid,
-            user,
-            token.name,
-            token.name + ' · iniciativa',
-            JSON.stringify({
-              formula: '1d20' + (entry.bonus >= 0 ? '+' : '') + entry.bonus,
-              dice: [entry.die],
-              total: entry.value,
-            }),
-          ],
-        );
         sortCombat(c);
         c.currentId = c.entries[0]?.tokenId || null;
       } else if (input.kind === 'set') {
