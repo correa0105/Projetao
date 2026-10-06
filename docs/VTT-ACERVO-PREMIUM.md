@@ -65,7 +65,7 @@ arquivo, dimensões, pixels transparentes, hash SHA-256, prompt completo e refer
 pesquisadas no Pinterest. Modo usado: **imagegen embutido**, geração individual; azul
 recebeu edição de margem. Originais preservados no diretório de imagens geradas.
 
-Marco de produção: 160 artes concluídas em 06/10, do Aboleth ao Half-Dragon, incluindo os
+Marco de produção: 190 artes concluídas em 06/10, do Aboleth ao Lizard, incluindo os
 dez dragões adultos e os dez anciões, todos com arquivos próprios. Armadura, árvore,
 bico de machado, azer, golem de argila e bugbear receberam revisão da câmera.
 Basilisco e cão teleportador tiveram os membros corrigidos; behir foi redesenhado
@@ -77,7 +77,11 @@ duas pinças; polvo gigante teve os oito braços corrigidos. Cubo gelatinoso usa
 face superior quadrada em perspectiva ortográfica. Escorpião gigante teve os
 quatro pares de patas corrigidos, além das pinças; aranha gigante recebeu mais
 margem preservando oito patas. Górgona segue o touro de placas metálicas do catálogo.
-O total restante é 170;
+Hezrou recebeu margem adicional; capitão hobgoblin, homúnculo, cavaleiro e lich
+tiveram a câmera superior revisada. Hidra tem cinco cabeças e kraken tem dez
+tentáculos separados, corrigidos após a revisão visual. Os cinco testes isolados
+passaram neste marco, incluindo vínculos, transparência real e hashes das 190 artes.
+O total restante é 140;
 o contador ao vivo continua vindo do manifest, sem estimar imagens prontas.
 Silhuetas estreitas, como a espada animada, são validadas sem exigir a área de
 um corpo largo. Verificação visual no navegador confirmou alpha e bordas limpas.
