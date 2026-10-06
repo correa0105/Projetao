@@ -65,7 +65,7 @@ arquivo, dimensões, pixels transparentes, hash SHA-256, prompt completo e refer
 pesquisadas no Pinterest. Modo usado: **imagegen embutido**, geração individual; azul
 recebeu edição de margem. Originais preservados no diretório de imagens geradas.
 
-Marco de produção: 220 artes concluídas em 06/10, do Aboleth ao Pegasus, incluindo os
+Marco de produção: 250 artes concluídas em 06/10, do Aboleth ao Satyr, incluindo os
 dez dragões adultos e os dez anciões, todos com arquivos próprios. Armadura, árvore,
 bico de machado, azer, golem de argila e bugbear receberam revisão da câmera.
 Basilisco e cão teleportador tiveram os membros corrigidos; behir foi redesenhado
@@ -80,9 +80,11 @@ margem preservando oito patas. Górgona segue o touro de placas metálicas do ca
 Hezrou recebeu margem adicional; capitão hobgoblin, homúnculo, cavaleiro e lich
 tiveram a câmera superior revisada. Hidra tem cinco cabeças e kraken tem dez
 tentáculos separados, corrigidos após a revisão visual. Os cinco testes isolados
-passaram neste marco, incluindo vínculos, transparência real e hashes das 220 artes.
+passaram neste marco, incluindo vínculos, transparência real e hashes das 250 artes.
 Nobre e senhor das múmias receberam revisão da câmera; polvo tem oito braços,
-marilith seis braços, otyugh três pernas e dois tentáculos de combate. O total restante é 110;
+marilith seis braços, otyugh três pernas e dois tentáculos de combate. Sacerdote e
+acólito receberam câmera estritamente dorsal; salamandra tem as duas pontas da
+lança inteiras. Aranha de fase tem oito patas e roper seis tentáculos. O total restante é 80;
 o contador ao vivo continua vindo do manifest, sem estimar imagens prontas.
 Silhuetas estreitas, como a espada animada, são validadas sem exigir a área de
 um corpo largo. Verificação visual no navegador confirmou alpha e bordas limpas.

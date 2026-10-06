@@ -3585,6 +3585,491 @@
         "https://it.pinterest.com/pin/pegasus-token--418623727875821653/"
       ],
       "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-phase-spider",
+      "name": "Phase Spider",
+      "filename": "monster-phase-spider-v1.webp",
+      "width": 1374,
+      "height": 1145,
+      "sha256": "1e40f7055947a9a83a335ebe62f95b1e5e37ff2fc29601866d6e7463aef9fd7f",
+      "transparentPixels": 954088,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Phase Spider. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://jp.pinterest.com/pin/663084745170341620/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: Pale ghostly phase spider, opalescent white chitin and violet dorsal markings, glassy hairs, no surrounding mist. EXACTLY EIGHT segmented walking legs arranged at FOUR separate paired root stations on the cephalothorax: front-left/front-right, mid-front-left/right, mid-rear-left/right, rear-left/right. All eight complete legs individually separated on alpha, two small pedipalps clearly shorter than legs. One rounded abdomen and one cephalothorax, eight small eyes. Crouched prowling, no webs or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://jp.pinterest.com/pin/663084745170341620/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-piranha",
+      "name": "Piranha",
+      "filename": "monster-piranha-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "739dab9655864631082789e67f263273f19b8f19450b05146609d1dba89bdb0a",
+      "transparentPixels": 1077543,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Piranha. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/34691859620071276/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One compact red-bellied piranha swimming diagonally, dorsal steel-blue silver scales, burnt-red belly peeking along sides, sturdy jaw visible only as forward muzzle, complete forked tail, one dorsal fin, one anal fin, paired pectoral and pelvic fins. Fish back dominates, not a lateral fish portrait. No water, bubble trail or splash. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/34691859620071276/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-pirate",
+      "name": "Pirate",
+      "filename": "monster-pirate-v1.webp",
+      "width": 1289,
+      "height": 1221,
+      "sha256": "40cd5fac558527838d5d2ff778f8e102655461a64b0722c6f3810290143e77ff",
+      "transparentPixels": 934445,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Pirate. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://in.pinterest.com/pin/topdown-pirate-in-2023--1070027192699157700/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One fully clothed adult human pirate deckhand, worn indigo vest over striped linen shirt, russet headscarf crown, weathered leather belts and trousers, cutlass in right hand and coiled rope in left. Forward leaning combat stance: head crown, shoulder tops and cloth BACK dominate, frontal chest hidden. Exactly two arms and two legs, footwear compact under foreshortened torso. No ship, deck or flag. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://in.pinterest.com/pin/topdown-pirate-in-2023--1070027192699157700/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-pirate-captain",
+      "name": "Pirate Captain",
+      "filename": "monster-pirate-captain-v1.webp",
+      "width": 1287,
+      "height": 1222,
+      "sha256": "fcf01f5be3631face9ac608c4c2b527c9fd9e1c823b9305dbb038413f649f77e",
+      "transparentPixels": 930436,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Pirate Captain. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://de.pinterest.com/pin/dd-pirate-captain--797418677766233802/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One fully clothed adult human pirate captain, large dark navy tricorn with modest feather, rich teal brocade coat BACK, gold braid epaulettes, leather sea boots, single curved cutlass and flintlock pistol held low in separate hands. A compact forward-leaning ready stance, top of tricorn and dorsal coat dominant, no upright front torso. One head, two arms, two legs. Distinct silhouette and premium materials, no ship or flag. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://de.pinterest.com/pin/dd-pirate-captain--797418677766233802/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-pit-fiend",
+      "name": "Pit Fiend",
+      "filename": "monster-pit-fiend-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "b1654f07fe3957cf852f5cf509de5dc1072a55bcc1a8cf9ca4a1abd8b260eaf0",
+      "transparentPixels": 860203,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Pit Fiend. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://br.pinterest.com/pin/22518066881255582/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: Massive crimson pit fiend, dorsal muscular spine with dark obsidian spikes, broad ribbed bat wings banked outward, backward curling horns, ornate black iron armor and loincloth fully covering torso/pelvis, exactly two strong arms, two clawed legs, two wings and one segmented curling tail with barbed tip. Holds one heavy infernal mace. Dorsal crown/back are dominant, no frontal chest. Restrained glowing seams inside body only, no external aura or fire. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://br.pinterest.com/pin/22518066881255582/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-planetar",
+      "name": "Planetar",
+      "filename": "monster-planetar-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "8be8dd44f883edbbc5d7f76bf2e6bce6982235fcfd6886d8bc3ed1675129d2c5",
+      "transparentPixels": 920663,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Planetar. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://au.pinterest.com/pin/dd-nolzurs-marvelous-miniatures-planetar--563161128416877974/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One celestial planetar warrior, emerald skin, shaved crown, magnificent TWO white ivory feathered wings, exactly two arms and two booted legs, fully clothed in silver-gold celestial armor and deep jade dorsal cape. One long elegant greatsword in right hand, open left hand. Foreshortened head crown and cape BACK dominate. No halo, background rays or external glow. Powerful distinct wing posture, complete feathers. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://au.pinterest.com/pin/dd-nolzurs-marvelous-miniatures-planetar--563161128416877974/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-plesiosaurus",
+      "name": "Plesiosaurus",
+      "filename": "monster-plesiosaurus-v1.webp",
+      "width": 1226,
+      "height": 1283,
+      "sha256": "0b711ad8e78da61319d6c608171616e18cf6685b678e92ceea5c528f9eb755c9",
+      "transparentPixels": 1142675,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Plesiosaurus. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://in.pinterest.com/pin/776167317067742574/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One plesiosaurus marine reptile, slate teal pebbled dorsal hide, broad oval torso, ONE long graceful neck ending in small reptile head, FOUR paddle flippers one pair at front shoulders and one pair at rear hips, ONE short tapering tail. Horizontal diagonal S-neck swim pose, strict back/top view, all four paddles separated. No dragon wings, extra necks, fins, water or splashes. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://in.pinterest.com/pin/776167317067742574/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-polar-bear",
+      "name": "Polar Bear",
+      "filename": "monster-polar-bear-v1.webp",
+      "width": 1222,
+      "height": 1287,
+      "sha256": "e4f8b9489356900012835b74dc5afb6990d488ce450107624bec288ae7618b45",
+      "transparentPixels": 982083,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Polar Bear. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://pt.pinterest.com/pin/152700243611599800/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural polar bear, thick off-white ivory fur with subtle cool gray shadow, massive dorsal shoulder hump, elongated head, dark muzzle and small round ears, exactly four sturdy legs and one short tail. Low diagonal stalking stance, paws separated around the body, back dominates. No armor, clothing, snow or ground. Realistic sculpted fur, distinct from brown bear. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://pt.pinterest.com/pin/152700243611599800/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-pony",
+      "name": "Pony",
+      "filename": "monster-pony-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "a28b3ee0b09206f656b93ad2ca241181f6076ca6fe9d25f50199fcba24093db0",
+      "transparentPixels": 1070674,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Pony. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ . Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural pony, compact stocky chestnut-and-white pinto horse, thick cream mane and long brushed tail, small upright ears, four complete short sturdy hoofed legs. Dorsal back, crown, mane dominate from straight overhead, diagonal relaxed trot showing separated hooves. No wings, horn, clothing, rider, saddle or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/"
+      ],
+      "research_query": "pony horse overhead animal art Pinterest",
+      "research_note": "Pesquisa pública não localizou arte superior específica indexada; anatomia do catálogo e referência geral orientam desenho original.",
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-priest",
+      "name": "Priest",
+      "filename": "monster-priest-v1.webp",
+      "width": 1265,
+      "height": 1244,
+      "sha256": "e47d73da851ed6d6c0ac57fdfcd5e8e547b4a8843acc7ac907d9c782aea1fb26",
+      "transparentPixels": 870958,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Priest. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ru.pinterest.com/pin/331718328822903523/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One fully clothed adult human priest, deep cream hood crown, ornate ivory and wine ceremonial robes, gold embroidered cape BACK, small golden sun medallion, wooden mace in one hand and closed prayer book in other. Compact forward leaning stance with foreshortened torso hidden beneath dorsal robes. Exactly two arms and two feet visible, top of hood and shoulders dominate. No horns, wings, halo, rays, scene or readable text. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ru.pinterest.com/pin/331718328822903523/"
+      ],
+      "created_at": "2026-10-06",
+      "edit_prompt": "Correct this same priest's camera to a STRICT DIRECT 90-DEGREE ORTHOGRAPHIC OVERHEAD FLOOR-PLAN TOKEN. Repose the priest leaning far forward so the hood CROWN sits at the LOWER-CENTER FRONT of a broad burgundy embroidered cape BACK, and dorsal shoulders/back occupy the upper half. NO frontal chest, hanging frontal tabard or long front abdomen should be seen. Body is compact strongly foreshortened under cloak, only two boots peek outward. Preserve ivory hood and sleeves, burgundy/gold cloak, mace and prayer book in the two hands. One fully clothed adult original priest, detailed premium fabric/metal paint, all accessories intact, generous true alpha margin, no ground or shadows."
+    },
+    {
+      "id": "monster-priest-acolyte",
+      "name": "Priest Acolyte",
+      "filename": "monster-priest-acolyte-v1.webp",
+      "width": 1243,
+      "height": 1266,
+      "sha256": "5853aa4f0fa35fdb925686df12954c33c281f9f3005c2865fb066eb37c3512da",
+      "transparentPixels": 851877,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Priest Acolyte. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://co.pinterest.com/pin/472737292148454841/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One fully clothed adult human priest acolyte, simple gray-brown hooded wool robe BACK and narrow cream stole, plain leather belt and worn sandals. Holds small brass lantern in one hand and rolled parchment in other. Crown and dorsal robe dominate from straight overhead, compact humble leaning pose, exactly two arms/two legs. Distinct simple silhouette from ornate priest. No background light or readable text. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://co.pinterest.com/pin/472737292148454841/"
+      ],
+      "created_at": "2026-10-06",
+      "edit_prompt": "Correct same fully clothed adult acolyte to a STRICT DIRECT 90-DEGREE ORTHOGRAPHIC OVERHEAD FLOOR-PLAN TOKEN. Repose leaning far forward with hood CROWN in lower-center, broad plain gray-brown robe BACK and shoulders in upper half. No frontal face/chest, long hanging front robe or front abdomen. Torso compact and foreshortened hidden under dorsal robe. Exactly two sleeves/arms hold brass lantern and rolled parchment, exactly two small sandals peek sideways. Cream stole lies mainly over dorsal shoulder tops. Preserve rustic fine cloth and polished lantern quality. ONE person, complete silhouette, generous real transparent alpha margin all sides, no ground, scenery or external light."
+    },
+    {
+      "id": "monster-pseudodragon",
+      "name": "Pseudodragon",
+      "filename": "monster-pseudodragon-v1.webp",
+      "width": 1241,
+      "height": 1267,
+      "sha256": "9003ef9e2d57b19c5b72611049ad378353eb4f9b027d6fa462a72a0cf0a15f49",
+      "transparentPixels": 1035647,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Pseudodragon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://in.pinterest.com/pin/452963675041452210/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: ONE small copper-red pseudodragon, delicate mottled scales, short backward horns, expressive narrow reptile muzzle pointed forward, FOUR clawed legs, TWO little ochre membranous wings spread unevenly, ONE long curling tail ending in a fine stinger. Straight dorsal top view, compact playful prowling pose, complete wing tips and stinger. Not a large dragon or wyvern, no rider or smoke. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://in.pinterest.com/pin/452963675041452210/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-pteranodon",
+      "name": "Pteranodon",
+      "filename": "monster-pteranodon-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7a052672bca55d17ca904d1cd86c25f0edc425dd8e613352274cdcaf98ab3bcb",
+      "transparentPixels": 1199497,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Pteranodon. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://de.pinterest.com/pin/57139489013772684/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural pteranodon in banked flight, weathered ochre and slate leathery hide, TWO long membranous wing forelimbs, TWO short hind legs with curled talons, ONE long pointed toothless beak and ONE backward crest, extremely short tail. Back/crown dominant directly overhead. Correct pterosaur anatomy, no four walking legs, no feathers or dragon tail. Full wings with generous transparent margin. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://de.pinterest.com/pin/57139489013772684/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-purple-worm",
+      "name": "Purple Worm",
+      "filename": "monster-purple-worm-v1.webp",
+      "width": 1234,
+      "height": 1274,
+      "sha256": "a4b31591ac6a35ef35efa85277e45781435e3d815c88cb6c42d095b11a2777b7",
+      "transparentPixels": 644522,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Purple Worm. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/341007003036001574/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One giant purple worm, ONE continuous thick elongated segmented worm body coiled into a compact broad S, deep violet armored plates and subtly lighter joints. One round toothed head angled sideways at the front so crown dominates, ONE tapered rear tail ending in curved stinger. No limbs, wings, arms, duplicate heads or disconnected tail. Heavy organic volume, natural plate wear, no ground, stones or gore. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/341007003036001574/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-quasit",
+      "name": "Quasit",
+      "filename": "monster-quasit-v1.webp",
+      "width": 1245,
+      "height": 1263,
+      "sha256": "579ac338ecf5aba9618f3705aeaf75a6466f4f5a702bab880634be3c1b0e8ccb",
+      "transparentPixels": 1038746,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Quasit. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://ca.pinterest.com/pin/833658581072855746/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One tiny green quasit demon, gray olive knobbly skin, small horned crown, spiky shoulder BACK, hunched compact silhouette, TWO long clawed arms and TWO digitigrade feet, ONE slender curled tail. Fully covering worn leather tunic and wrap over torso/pelvis. No wings; crouched mischievous dorsal pose. Fine hand-painted hide and small claws, no magic cloud or external glow. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ca.pinterest.com/pin/833658581072855746/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-rakshasa",
+      "name": "Rakshasa",
+      "filename": "monster-rakshasa-v1.webp",
+      "width": 1214,
+      "height": 1295,
+      "sha256": "500a1615f6643a0d567ddfd2543469a114de4b3b100e9a29abaa5f1d8b8f2973",
+      "transparentPixels": 796686,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Rakshasa. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/rakshasa-art-dd-en-2024--906490231234280023/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One regal tiger-headed rakshasa, rich rust-orange striped dorsal fur, one tiger head whose ear/crown dominate from above, fully clothed dark emerald silk court robes and violet gold embroidered cloak BACK, two arms with species-characteristic reversed wrists/hands, two booted legs, one striped tail. Holds short curved ceremonial saber and jade talisman. Compact foreshortened torso, no front portrait. Exquisite fabric detail, no backdrop. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/rakshasa-art-dd-en-2024--906490231234280023/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-rat",
+      "name": "Rat",
+      "filename": "monster-rat-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "0bb6d4ed64596a5999b586568f2adc5823bd7f21c726c80f5c7fe4618fc4feaa",
+      "transparentPixels": 1241130,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Rat. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ . Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural small brown-gray rat, fine short coarse dorsal fur, tiny round pink ears, pointed muzzle, long intact pink scaled tail curving into a gentle S, EXACTLY four small pink paws. Low darting diagonal pose seen directly overhead, complete whiskers and tail, no giant spikes, clothing, token circle or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/"
+      ],
+      "research_query": "rat animal top down token Pinterest",
+      "research_note": "Pesquisa pública não localizou arte superior específica indexada; anatomia do catálogo e referência geral orientam desenho original.",
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-raven",
+      "name": "Raven",
+      "filename": "monster-raven-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "3ec85d832a47633c51bb26910e24aa921da66e83374deae7c6a195d5e35a063e",
+      "transparentPixels": 976898,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Raven. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/81064862030004455/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural raven in flight, glossy black dorsal feathers with subtle blue-violet iridescence, thick black beak, TWO asymmetrically spread wings, TWO small curled talon feet, ONE fan tail. Direct back/top view, shoulder feathers layered with crisp shape, complete primary feathers. No skull, humanoid mask, accessories, extra birds, ground or sky. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/81064862030004455/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-red-dragon-wyrmling",
+      "name": "Red Dragon Wyrmling",
+      "filename": "monster-red-dragon-wyrmling-v1.webp",
+      "width": 1223,
+      "height": 1286,
+      "sha256": "9428154b287b2ea134a4d8081f7ce38b9c65652a75df32543ceaa77f06af0e32",
+      "transparentPixels": 832811,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Red Dragon Wyrmling. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/dd-nolzurs-marvelous-unpainted-miniatures-w10-red-dragon-wyrmling-in-2025--198088083605289472/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: ONE young red dragon wyrmling with stout juvenile proportions, crimson rust scales, short backward ochre horns, ridged dorsal spine, FOUR separate clawed legs, TWO scarlet membranous wings, ONE thick curled tail ending in small spade. Crouched diagonal youthful hunting pose, dorsal back crown dominate. Distinct original anatomy and pose from all previous dragons. No breath, smoke, landscape or glow. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://uk.pinterest.com/pin/dd-nolzurs-marvelous-unpainted-miniatures-w10-red-dragon-wyrmling-in-2025--198088083605289472/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-reef-shark",
+      "name": "Reef Shark",
+      "filename": "monster-reef-shark-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "a5722f41bb9a8bd8c2defb4f5ea341e04e6c03a9f20f79b7842430a8b1bce5e0",
+      "transparentPixels": 1266289,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Reef Shark. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/dungeons-dragons-giant-shark-coming-out-of-water-miniature-in-2025--571183166058835295/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural sleek reef shark, pale gray-blue smooth dorsal skin, dark gray fin tips, two pectoral fins, paired smaller pelvic fins, one principal and one small rear dorsal fin, single heterocercal tail. Straight overhead back silhouette, slight S swimming pose, long narrow muzzle. No oversized fantasy teeth, water, bubbles or wake, complete fins and tail. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://uk.pinterest.com/pin/dungeons-dragons-giant-shark-coming-out-of-water-miniature-in-2025--571183166058835295/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-remorhaz",
+      "name": "Remorhaz",
+      "filename": "monster-remorhaz-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "61551ea89045843e0be9c7760b95c3ddc9e6d7dd9e59f5b90068ddaffa6ad9f1",
+      "transparentPixels": 918917,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Remorhaz. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/remorhaz-boxed-miniature-dd-icons-of-the-realms-in-2025--198088083605611390/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One long blue armored remorhaz insect monstrosity, pale icy turquoise segmented dorsal plates with internally orange-red seams, single horned insect head with hooked mandibles, ONE continuous segmented body arranged in readable broad S. Numerous paired short walking legs, one left/right pair rooted at each visible segment, evenly repeated all along abdomen, no randomly floating limbs. Two lateral flaring head frills, one tapering terminal tail. Complete silhouette, no snow, aura or external fire. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://uk.pinterest.com/pin/remorhaz-boxed-miniature-dd-icons-of-the-realms-in-2025--198088083605611390/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-rhinoceros",
+      "name": "Rhinoceros",
+      "filename": "monster-rhinoceros-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "1595178a0935accccd7e5bf507a972c375ae9a00c5b37fb4abaecf11d7968fe9",
+      "transparentPixels": 921008,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Rhinoceros. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://in.pinterest.com/pin/illustration-of-a-animal-rhino-rhinoceros-ad-affiliate-animalillustrationrhinocerosrhino--664492120013509689/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural rhinoceros, immense gray cracked folded dorsal hide, broad shoulders, one head bearing one large front nose horn and one smaller rear nose horn, small pointed ears, FOUR thick short hoofed legs, ONE thin tufted tail. Diagonal lumbering stance straight overhead showing back and crown. No monster wings, armor, excessive horn, clothing, scene or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://in.pinterest.com/pin/illustration-of-a-animal-rhino-rhinoceros-ad-affiliate-animalillustrationrhinocerosrhino--664492120013509689/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-riding-horse",
+      "name": "Riding Horse",
+      "filename": "monster-riding-horse-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0104b1d2199188e139a6f895dd6e124d09da8e6058b7cc8cfd90ce80c69795e7",
+      "transparentPixels": 1231771,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Riding Horse. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://dk.pinterest.com/pin/434104851558296015/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural adult bay riding horse, sleek chestnut-brown dorsal coat, black mane, black tail and lower legs, leather saddle with visible seat/stirrups and rolled blanket, brown harness/reins tucked close. Four complete hoofed legs in slow diagonal trot, one head and one long tail. Straight overhead back/saddle dominant. No rider, packs obscuring body, wings, horn or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://dk.pinterest.com/pin/434104851558296015/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-roc",
+      "name": "Roc",
+      "filename": "monster-roc-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "bc39557526547d4cf83cc2780917ca87ab14d3a5eabd869b31f80c8c4409e512",
+      "transparentPixels": 842633,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Roc. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://de.pinterest.com/pin/579627414575750639/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One enormous mythical roc raptor, broad weathered tawny and charcoal dorsal flight feathers, huge TWO asymmetrical spread wings with pale layered primary tips, powerful golden hooked beak, shaggy pale crown, TWO heavy taloned legs tucked ready to land, ONE fan tail. Direct overhead back dominates, massive bird proportions. No extra bird heads, humanoid, cargo, ground or clouds. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://de.pinterest.com/pin/579627414575750639/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-roper",
+      "name": "Roper",
+      "filename": "monster-roper-v1.webp",
+      "width": 1374,
+      "height": 1145,
+      "sha256": "2f959986b6506d6b2900059e1a8c26b3cba51f919892d5d786d264281cf1ce9a",
+      "transparentPixels": 999359,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Roper. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://au.pinterest.com/pin/1072490098905688518/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One roper aberration, a compact conical stalagmite-like body whose cracked stone TOP dominates overhead, single large recessed eye glimpsed along forward slope and closed toothed seam, EXACTLY SIX long ropey tentacles rooted at six evenly spaced base positions, all six distinct coiling curved tips spread out. No legs, arms or second creature, no rocks/ground around. Natural limestone moss texture and organic tendon details, no gore. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://au.pinterest.com/pin/1072490098905688518/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-rust-monster",
+      "name": "Rust Monster",
+      "filename": "monster-rust-monster-v1.webp",
+      "width": 1223,
+      "height": 1286,
+      "sha256": "8f23234d32f8eb23550b425492fd6678b59097d1e963fe97d41d3a90e723deae",
+      "transparentPixels": 1103821,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Rust Monster. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://in.pinterest.com/pin/1136947868426069259/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One rust monster, low beetle-like dorsal body in copper-brown corroded chitin with segmented domed back, FOUR short stocky walking legs at two clearly separated pairs, TWO long flexible feathery antennae extending from one blunt head, ONE long tail terminating in a double-bladed paddle fan. Strict back/top view, whole anatomy complete, no six insect legs, no extra tails, no objects being eaten or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://in.pinterest.com/pin/1136947868426069259/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-saber-toothed-tiger",
+      "name": "Saber-Toothed Tiger",
+      "filename": "monster-saber-toothed-tiger-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "df70a41724d361bf959abbf04112f0eafd0b240f79c806edb7e6543cc814580f",
+      "transparentPixels": 872563,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Saber-Toothed Tiger. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://uk.pinterest.com/pin/saber-toothed-tiger-while-not-actually-related-to-tigers-or-really-any-living-cat-species-was-an-incredibly-success-in-2025--118993615148187896/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One natural muscular saber-toothed tiger, golden tawny dorsal fur with subtle broken rosettes, broad heavy shoulders, shorter stocky hindquarters, FOUR powerful feline legs, ONE short bobtail, ONE feline head with TWO long curved ivory upper fangs peeking beside lowered muzzle. Diagonal stalking overhead pose; dorsal back/crown dominate. No extra fangs, wings, saddle, ground or gore. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://uk.pinterest.com/pin/saber-toothed-tiger-while-not-actually-related-to-tigers-or-really-any-living-cat-species-was-an-incredibly-success-in-2025--118993615148187896/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-sahuagin-warrior",
+      "name": "Sahuagin Warrior",
+      "filename": "monster-sahuagin-warrior-v1.webp",
+      "width": 1312,
+      "height": 1199,
+      "sha256": "dea1d26f22b4223072f00551a6c7d838ef806c1200a0eb5fcb6cfd235d75e842",
+      "transparentPixels": 980656,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Sahuagin Warrior. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://it.pinterest.com/pin/sahuagin-warrior--582090320625654858/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One sea-green sahuagin warrior, fishlike dorsal scales, fin crest along crown/spine, two humanoid arms with webbed clawed hands, two digitigrade webbed legs, one thin fish tail. Fully covering kelp leather shoulder harness and trousers, bronze bracers; holds one jagged coral spear and small shell shield. Crown/back dominant, compact hunched foreshortened torso, no mermaid lower body. Fine scales and shell detail, no water or backdrop. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://it.pinterest.com/pin/sahuagin-warrior--582090320625654858/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-salamander",
+      "name": "Salamander",
+      "filename": "monster-salamander-v1.webp",
+      "width": 1145,
+      "height": 1374,
+      "sha256": "822e108454dc396ea135ca2907ce089e200285a6714684037544f6d0c8b7bd95",
+      "transparentPixels": 1219619,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Salamander. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://au.pinterest.com/pin/salamander--11118330327828891/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One fire salamander elemental creature, ONE humanoid upper body of copper-red heat-textured scales, TWO strong arms holding a single long iron spear, ONE long continuous serpentine lower body coiling in S and tapering to one tail tip, NO legs or wings. Horned crown, upper BACK and scale spine dominate overhead, fully covering bronze cuirass and wrap. Internal warm seams only, no external aura, fire cloud, water or ground. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://au.pinterest.com/pin/salamander--11118330327828891/"
+      ],
+      "created_at": "2026-10-06",
+      "edit_prompt": "Keep this exact original premium fire salamander sprite, same top-down view, copper red scales, two arms, continuous single serpentine body, spear and textures. Fix framing ONLY: zoom OUT so the FULL spear including BOTH complete sharp endpoints and every silhouette edge fits well inside the canvas with at least 8 percent clear transparent margin on ALL sides. No clipped spear tip, do not change anatomy or pose. Real transparent alpha, no ground, external aura or shadow."
+    },
+    {
+      "id": "monster-satyr",
+      "name": "Satyr",
+      "filename": "monster-satyr-v1.webp",
+      "width": 1298,
+      "height": 1212,
+      "sha256": "d95b3454ffa864b415969c193a4c86f71f08abfb37c9b7af98fb4df0b4cd6c5d",
+      "transparentPixels": 990600,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE premium original virtual-tabletop creature token: Satyr. Complete individual creature, genuinely transparent alpha background. Research direction: Pinterest overhead creature tokens https://br.pinterest.com/pin/324611085643692072/ and species reference https://www.pinterest.com/pin/man-with-long-hair-and-horns-is-dressed-in-a-costume-of-a-satyr-with-horns--913878949380614243/. Research only: original anatomy, pose and artwork, no tracing/copying. CAMERA CRITICAL: exact 90-degree orthographic overhead ceiling camera directly DOWN onto CROWN, dorsal spine and TOP/BACK. Not 45-degree, frontal face/chest, portrait, side or isometric perspective. Upright humanoid torso strongly foreshortened: top of head, shoulders and dorsal back dominate, feet peek outward; no visible frontal pectoral chest or long frontal abdomen. Species/design: One adult satyr, two curled ram horns around a chestnut hair crown, two humanoid arms, two furry goat hindlegs ending in split hooves and one short tail. Fully clothed in olive linen tunic and brown leather waist wrap, russet short dorsal cloak; holds a wooden flute and small rustic curved blade. Compact leaning dorsal pose, head crown and BACK dominant, no frontal torso or exposed chest. Natural textured fur and rustic fabrics, no stage, forest or extra creatures. Exquisite premium hand-painted semi-realistic fantasy sprite, finely detailed material textures, layered surfaces, crisp readable silhouette, beautifully modeled volume, restrained top-left lighting, natural wear and sophisticated color variation. ONE connected creature only, all appendages complete with generous transparent margin on ALL sides. Correct species limb count, no missing or extra limbs. No extra creatures, variations, atlas, collage, circle, border, token base, ground, cast shadow beyond creature, backdrop haze/glow, labels, words, watermark or signature.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/man-with-long-hair-and-horns-is-dressed-in-a-costume-of-a-satyr-with-horns--913878949380614243/"
+      ],
+      "created_at": "2026-10-06"
     }
   ]
 }
