@@ -307,10 +307,13 @@
 }
 @media (min-width: 1101px) {
   .shop-layout > .shop-showcase {
-    width: calc(0.92 * min(
-      calc(66vw - var(--page-header-edge)),
-      calc(100% - min(32vw, var(--shop-stage-height) * 0.51) - 24px)
-    ));
+    width: calc(
+      0.92 *
+        min(
+          calc(66vw - var(--page-header-edge)),
+          calc(100% - min(32vw, var(--shop-stage-height) * 0.51) - 24px)
+        )
+    );
   }
 }
 @media (max-width: 1100px) {
@@ -319,6 +322,20 @@
   }
 }
 /* No celular, acompanha o mesmo recuo de título e seletor. */
+.shop-house-notice {
+  position: absolute;
+  bottom: 12px;
+  left: var(--page-header-edge);
+  z-index: 5;
+  max-width: calc(100% - 36px);
+  padding: 8px 12px;
+  background: rgb(20 19 16 / 88%);
+  border: 1px solid #6b5a39;
+  color: #d9cba9;
+  pointer-events: none;
+}
 @media (max-width: 900px) {
-  .shop-layout { inset-inline: 18px; }
+  .shop-layout {
+    inset-inline: 18px;
+  }
 }

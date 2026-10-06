@@ -57,3 +57,11 @@ economia/concorrência, geometria/revisão, transferências, imagens, convites,
 presenças/RP, administração, histórico e bloqueio social. Navegador testa compra,
 arraste, giro/tamanho, recarga, mascote/montaria, convite/visita/RP/revogação e quatro
 larguras (1440, 768, 390 e 320). Scripts test-house-isolated.mjs e smoke-house.ts.
+
+Empório (06/10): os doze objetos aparecem na prateleira “Itens de House”, junto
+às demais categorias. Removido o link externo que se tornava uma terceira célula
+na grade da vitrine. A compra abre o formulário dentro do Empório, incluindo
+carta/dedicatória/imagem pessoal, e usa o mesmo endpoint transacional de House.
+Não cria produtos duplicados no inventário de aventura nem exige abrir a casa.
+Layout e compra real de carta validados em PostgreSQL isolado e quatro larguras
+(1755, 768, 390 e 320), pelo script test-emporium-isolated.mjs --browser.

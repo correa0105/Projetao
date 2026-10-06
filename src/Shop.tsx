@@ -20,6 +20,23 @@ import './shop-responsive.css';
 import { merchantComment, merchantConversations } from './shop-presentation';
 import { useShopCounterSound } from './shop-counter-audio';
 import { shopItemScale } from './shop-item-scale';
+import { houseCatalog } from '../shared/house';
+import { HousePurchase } from './HousePurchase';
+
+const houseItems: Item[] = houseCatalog.map((item) => ({
+  id: `house-${item.id}`,
+  name: item.name,
+  original_name: item.name,
+  category: 'Itens de House',
+  description: item.description,
+  price_cp: item.price_cp,
+  image_path: item.image,
+  merchant_comment: item.speech,
+  weight_lb: '0',
+  weight_estimated: true,
+  source: 'Alvorada Cinzenta',
+  source_url: '',
+}));
 
 type Line = { id: string; quantity: number; x: number; y: number; z: number };
 type Point = { x: number; y: number };
@@ -119,7 +136,7 @@ const normalize = (value: string) =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase();
 export function Shop({
-  catalog,
+  catalog: ordinaryCatalog,
   character,
   onPurchased,
 }: {
@@ -127,6 +144,21 @@ export function Shop({
   character?: Character;
   onPurchased: () => Promise<void>;
 }) {
+  const catalog = [...ordinaryCatalog, ...houseItems];
+  const categories = [
+    ...new Set([
+      'Itens mundanos',
+      'Itens de House',
+      ...content.categories,
+      ...catalog.map((item) => item.category),
+    ]),
+  ];
+  const [houseBuy, setHouseBuy] = useState<(typeof houseCatalog)[number] | null>(null);
+  const [houseNotice, setHouseNotice] = useState('');
+  useEffect(() => {
+    setHouseBuy(null);
+    setHouseNotice('');
+  }, [character?.id]);
   const [category, setCategory] = useState('Todos'),
     [query, setQuery] = useState('');
   const [carts, setCarts] = useState<Record<string, Line[]>>({});
@@ -228,7 +260,7 @@ export function Shop({
   );
   function say(item: Item) {
     setTalk(false);
-    setSpeech(merchantComment(item));
+    setSpeech(item.category === 'Itens de House' ? item.merchant_comment! : merchantComment(item));
     setSpeechKey((v) => v + 1);
   }
   function update(next: Line[], changed = true) {
@@ -285,6 +317,14 @@ export function Shop({
     if (busy) return;
     say(item);
     setExamined(item);
+    if (item.category === 'Itens de House') {
+      if (!character) {
+        setError('Escolha um personagem para comprar.');
+        return;
+      }
+      setHouseBuy(houseCatalog.find((spec) => `house-${spec.id}` === item.id) || null);
+      return;
+    }
     const existing = lines.find((line) => line.id === item.id);
     if (existing) {
       if (existing.quantity >= 99) {
@@ -423,12 +463,9 @@ export function Shop({
           )}
         </aside>
         <section className="shop-showcase" aria-label="Catálogo da loja">
-          <a className="house-emporium-link" href="#house">
-            Mobília, cartas e quadros para sua House →
-          </a>
           <nav className="shop-shelves shop-stone" aria-label="Categorias da loja">
             <h2>Prateleiras</h2>
-            {['Todos', ...content.categories].map((name) => (
+            {['Todos', ...categories].map((name) => (
               <button
                 key={name}
                 className={category === name ? 'active' : ''}
@@ -503,10 +540,12 @@ export function Shop({
                     <small>{item.category}</small>
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
-                    <span className="shop-weight">
-                      {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
-                      {shopWeight(item).toLocaleString('pt-BR')} lb
-                    </span>
+                    {item.category !== 'Itens de House' && (
+                      <span className="shop-weight">
+                        {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
+                        {shopWeight(item).toLocaleString('pt-BR')} lb
+                      </span>
+                    )}
                     <footer>
                       <strong>
                         {item.price_cp === null ? 'Preço a definir' : `${money(item.price_cp)} PO`}
@@ -523,6 +562,24 @@ export function Shop({
           </div>
         </section>
       </div>
+      {houseNotice && (
+        <p className="shop-house-notice" role="status">
+          {houseNotice}
+        </p>
+      )}
+      {houseBuy && character && (
+        <HousePurchase
+          key={`${character.id}-${houseBuy.id}`}
+          item={houseBuy}
+          characterId={character.id}
+          close={() => setHouseBuy(null)}
+          purchased={async () => {
+            placeSound(houseItems.find((i) => i.id === `house-${houseBuy.id}`)!);
+            setHouseNotice('Compra guardada na coleção de House.');
+            await onPurchased();
+          }}
+        />
+      )}
       <section className="shop-counter merchant-countertop" aria-label="Balcão de compras">
         <div
           className="shop-table-surface"

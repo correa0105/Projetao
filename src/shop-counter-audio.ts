@@ -30,6 +30,18 @@ const assets: Record<Kind, string> = {
 };
 // Match the physical object, rather than assuming everything in a magical category is alike.
 const materials: Record<string, Kind> = {
+  'house-rug': 'cloth',
+  'house-sofa': 'wood',
+  'house-table': 'wood',
+  'house-chair': 'wood',
+  'house-chest': 'wood',
+  'house-books': 'paper',
+  'house-lantern': 'metal',
+  'house-plant': 'glass',
+  'house-statue': 'glass',
+  'house-bench': 'wood',
+  'house-letter': 'paper',
+  'house-frame': 'wood',
   dagger: 'metal',
   manacles: 'chain',
   'ring-of-invisibility': 'metal',
