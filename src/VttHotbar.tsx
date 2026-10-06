@@ -49,11 +49,19 @@ export function VttHotbar({
   closeAttack,
   attackBusy,
   onAttackBusy,
+  applyDamage,
+  discardDamage,
 }: {
   roomId: string;
   tokens: VttToken[];
   sheetOpen: boolean;
-  roll: (formula: string, label: string) => Promise<VttMessage['roll']>;
+  roll: (
+    formula: string,
+    label: string,
+    damage?: { actor_id: string; target_id: string },
+  ) => Promise<VttMessage['roll']>;
+  applyDamage?: (messageIds: string[], tokenId: string) => Promise<void>;
+  discardDamage: (messageIds: string[]) => Promise<void>;
   onAttack: (request: AttackRequest) => void;
   attack: AttackRequest | null;
   target?: VttToken;
@@ -364,6 +372,8 @@ export function VttHotbar({
               active={selectedTokenId === attack.actorId}
               roll={roll}
               onBusy={onAttackBusy}
+              applyDamage={applyDamage}
+              discardDamage={discardDamage}
             />
           ) : selected?.action.kind === 'effect' ? (
             <button disabled={busy} onClick={() => void execute('apply')}>

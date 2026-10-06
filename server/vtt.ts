@@ -11,6 +11,10 @@ import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
 import { vttCombatRouter } from './vtt-combat.js';
+import { vttPremiumRouter, premiumAccess, validatePremiumImages } from './vtt-premium.js';
+import { vttMonsterPresetRouter, saveMonsterPresets } from './vtt-monster-presets.js';
+import { vttDamageRouter } from './vtt-damage.js';
+import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
 import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol.js';
 import {
@@ -73,7 +77,12 @@ function playerDocument(doc: VttDocument, user: string, spectator = false): VttD
     .filter((t) =>
       spectator && !scene.fog && !user ? !t.hidden && t.layer !== 'gm' : canSee(t, scene, user),
     )
-    .map((t) => ({ ...t, notes: '', sheet: !spectator && t.controller === user ? t.sheet : null }));
+    .map((t) => ({
+      ...t,
+      notes: '',
+      monster: null,
+      sheet: !spectator && t.controller === user ? t.sheet : null,
+    }));
   return {
     ...doc,
     effects: [],
@@ -159,7 +168,9 @@ async function state(rid: string, user: string) {
       [r.owner_id, rid],
     ),
     pool.query(
-      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY vtt_messages.id DESC LIMIT 100',
+      `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,
+        COALESCE((SELECT jsonb_agg(a.token_id) FROM vtt_damage_applications a WHERE a.message_id=vtt_messages.id),'[]'::jsonb) AS applied
+        FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY vtt_messages.id DESC LIMIT 100`,
       [rid, user, isGm],
     ),
   ]);
@@ -177,7 +188,14 @@ async function state(rid: string, user: string) {
       .filter((a) => isGm || visible.has('/api/vtt/assets/' + a.id))
       .map((a) => ({ ...a, path: '/api/vtt/assets/' + a.id })),
     members: members.rows,
-    messages: messages.rows.reverse(),
+    messages: messages.rows.reverse().map((m) => ({
+      ...m,
+      damage:
+        !m.damage || isGm || document.scenes[0].tokens.some((t) => t.id === m.damage.target_id)
+          ? m.damage
+          : null,
+    })),
+    premiumAccess: await premiumAccess(user),
     bossBars: sceneBossBars(r.document.scenes.find((s) => s.id === r.document.activeScene)!),
     focusSignal: r.focus_signal,
   };
@@ -318,6 +336,94 @@ export function vttRouter() {
   router.use(vttSheetRouter(room));
   router.use(vttHotbarRouter(room));
   router.use(vttCombatRouter(room, canSee));
+  router.use(vttDamageRouter(room, canSee, state));
+  router.use(vttMonsterPresetRouter());
+  router.use(
+    vttPremiumRouter(async (user, path) => {
+      const { rows } = await pool.query(
+        `SELECT r.id FROM vtt_rooms r WHERE r.owner_id=$1 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$1)`,
+        [user],
+      );
+      for (const entry of rows) {
+        const r = await room(pool, entry.id, user);
+        if (r.owner_id === user && (await isAdministrator(user))) {
+          if (paths(r.document).includes(path)) return true;
+        } else if (
+          paths(
+            playerDocument(
+              r.document,
+              r.role === 'spectator' ? r.viewing_user_id || '' : user,
+              r.role === 'spectator',
+            ),
+          ).includes(path)
+        )
+          return true;
+      }
+      return false;
+    }),
+  );
+  router.post('/vtt/rooms/:id/translate-monster', async (req, res) => {
+    await gm(pool, uuid.parse(req.params.id), res.locals.user.id);
+    const input = z
+      .object({ lines: z.array(z.string().max(24000)).max(300) })
+      .strict()
+      .parse(req.body);
+    if (input.lines.join('').length > 40000) throw new AppError(400, 'Ficha muito extensa.');
+    res.json({ lines: await translateMonsterLines(input.lines) });
+  });
+  router.post('/vtt/rooms/:id/monster-presets/:preset/import', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      pid = uuid.parse(req.params.preset),
+      user = res.locals.user.id;
+    const input = z
+      .object({
+        x: z.number().finite().min(-50000).max(50000),
+        y: z.number().finite().min(-50000).max(50000),
+      })
+      .strict()
+      .parse(req.body);
+    await transaction(async (db) => {
+      const r = await gm(db, rid, user, true);
+      const {
+        rows: [preset],
+      } = await db.query('SELECT token FROM vtt_monster_presets WHERE id=$1 AND user_id=$2', [
+        pid,
+        user,
+      ]);
+      if (!preset) throw new AppError(404, 'Preset não pertence à sua conta.');
+      const token = tokenSchema.parse(preset.token);
+      await validatePremiumImages(db, user, [token.image]);
+      if (token.image.startsWith('/api/vtt/assets/')) {
+        const aid = uuid.parse(token.image.split('/').at(-1));
+        const {
+          rows: [asset],
+        } = await db.query(
+          `INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height)
+          SELECT $1,a.name,a.kind,a.mime,a.bytes,a.width,a.height FROM vtt_assets a JOIN vtt_rooms source ON source.id=a.room_id
+          WHERE a.id=$2 AND source.owner_id=$3 AND a.kind='image' RETURNING id`,
+          [rid, aid, user],
+        );
+        if (!asset)
+          throw new AppError(404, 'A imagem original do preset não está mais disponível.');
+        token.image = '/api/vtt/assets/' + asset.id;
+      }
+      const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
+      token.id = randomUUID();
+      token.characterId = null;
+      token.controller = null;
+      token.layer = 'tokens';
+      token.x = Math.max(token.width / 2, Math.min(scene.width - token.width / 2, input.x));
+      token.y = Math.max(token.height / 2, Math.min(scene.height - token.height / 2, input.y));
+      scene.tokens.push(token);
+      documentSchema.parse(r.document);
+      await db.query(
+        'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
+        [rid, JSON.stringify(r.document)],
+      );
+      await saveMonsterPresets(db, user, rid, r.document);
+    });
+    res.json(await state(rid, user));
+  });
   router.get('/vtt', async (_req, res) =>
     res.json({
       can_create: await isAdministrator(res.locals.user.id),
@@ -451,6 +557,7 @@ export function vttRouter() {
           'Outra alteração chegou à mesa. Recarregue ou exporte seu rascunho.',
         );
       await validateAssets(db, rid, input.document);
+      await validatePremiumImages(db, res.locals.user.id, paths(input.document), paths(r.document));
       for (const s of input.document.scenes)
         for (const t of s.tokens) {
           const old = r.document.scenes
@@ -479,6 +586,7 @@ export function vttRouter() {
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
         [rid, JSON.stringify(input.document)],
       );
+      await saveMonsterPresets(db, res.locals.user.id, rid, input.document);
     });
     res.json(await state(rid, res.locals.user.id));
   });
@@ -595,6 +703,7 @@ export function vttRouter() {
         formula: z.string().trim().max(100).default(''),
         private: z.boolean().default(false),
         spell_id: z.string().min(1).max(150).optional(),
+        damage: z.object({ actor_id: uuid, target_id: uuid }).strict().optional(),
       })
       .strict()
       .parse(req.body);
@@ -622,8 +731,29 @@ export function vttRouter() {
       const r = await room(db, rid, res.locals.user.id, true);
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
+      let damage = null;
+      if (input.damage) {
+        if (!roll) throw new AppError(400, 'Role o dano antes de vinculá-lo ao alvo.');
+        const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
+        const actor = scene.tokens.find(
+          (t) => t.id === input.damage!.actor_id && t.layer === 'tokens',
+        );
+        const target = scene.tokens.find(
+          (t) => t.id === input.damage!.target_id && t.layer === 'tokens',
+        );
+        const isGm =
+          r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id, db));
+        if (
+          !actor ||
+          !target ||
+          (!isGm &&
+            (actor.controller !== res.locals.user.id || !canSee(target, scene, res.locals.user.id)))
+        )
+          throw new AppError(403, 'Atacante ou alvo indisponível.');
+        damage = { ...input.damage, target_name: target.name };
+      }
       return await db.query(
-        'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private,spell)VALUES($1,$2,$3,$4,$5,$6,$7)RETURNING id::text',
+        'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private,spell,damage)VALUES($1,$2,$3,$4,$5,$6,$7,$8)RETURNING id::text',
         [
           rid,
           res.locals.user.id,
@@ -632,6 +762,7 @@ export function vttRouter() {
           roll ? JSON.stringify(roll) : null,
           input.private,
           spell ? JSON.stringify(spell) : null,
+          damage ? JSON.stringify(damage) : null,
         ],
       );
     });
@@ -650,10 +781,31 @@ export function vttRouter() {
       .parse(req.query.before);
     const isGm = current.owner_id === user && (await isAdministrator(user));
     const { rows } = await pool.query(
-      'SELECT id::text,author,text,roll,spell,private,created_at FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) AND ($4::bigint IS NULL OR id<$4::bigint) ORDER BY vtt_messages.id DESC LIMIT 101',
+      `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,
+        COALESCE((SELECT jsonb_agg(a.token_id) FROM vtt_damage_applications a WHERE a.message_id=vtt_messages.id),'[]'::jsonb) AS applied
+        FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) AND ($4::bigint IS NULL OR id<$4::bigint) ORDER BY vtt_messages.id DESC LIMIT 101`,
       [rid, user, isGm, before || null],
     );
-    res.json({ messages: rows.slice(0, 100).reverse(), has_more: rows.length > 100 });
+    const visible = isGm
+      ? current.document
+      : playerDocument(
+          current.document,
+          current.role === 'spectator' ? current.viewing_user_id || '' : user,
+          current.role === 'spectator',
+        );
+    res.json({
+      messages: rows
+        .slice(0, 100)
+        .reverse()
+        .map((m) => ({
+          ...m,
+          damage:
+            !m.damage || isGm || visible.scenes[0].tokens.some((t) => t.id === m.damage.target_id)
+              ? m.damage
+              : null,
+        })),
+      has_more: rows.length > 100,
+    });
   });
   router.post('/vtt/rooms/:id/characters/:character', async (req, res) => {
     const rid = uuid.parse(req.params.id),

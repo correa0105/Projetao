@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
+import { monsterCustomizationSchema } from './vtt-monster-presets.js';
 const id = z.string().uuid();
 const coordinate = z.number().finite().min(-50000).max(50000);
 const color = z.string().regex(/^#[0-9a-f]{6}$/i);
@@ -10,6 +11,7 @@ const media = z
     (p) =>
       p === '' ||
       /^\/api\/vtt\/assets\/[0-9a-f-]{36}$/.test(p) ||
+      /^\/api\/vtt\/premium-art\/monster-[a-z0-9-]+$/.test(p) ||
       (/^\/vtt\/[\w/.-]+$/.test(p) && !p.includes('..')),
   );
 export const pointSchema = z.object({ x: coordinate, y: coordinate }).strict();
@@ -93,6 +95,7 @@ export const tokenSchema = z
     controller: z.string().max(100).nullable().default(null),
     characterId: id.nullable().default(null),
     sheet: sheetSchema.nullable().default(null),
+    monster: monsterCustomizationSchema.nullable().default(null),
   })
   .strict();
 export type VttToken = z.infer<typeof tokenSchema>;
@@ -306,6 +309,7 @@ export type VttMessage = {
     total: number;
     throws?: { sides: number; value: number }[];
     highlights?: { value: number; kind: 'surge' | 'mishap' | 'match' }[];
+    messageId?: string;
   } | null;
   spell?: {
     id: string;
@@ -319,6 +323,9 @@ export type VttMessage = {
     components?: string;
   } | null;
   private: boolean;
+  damage?: { actor_id: string; target_id: string; target_name: string } | null;
+  applied?: string[];
+  discarded?: boolean;
   created_at: string;
 };
 export type VttState = {
@@ -326,6 +333,7 @@ export type VttState = {
   revision: number;
   document: VttDocument;
   is_gm: boolean;
+  premiumAccess?: boolean;
   role: 'master' | 'player' | 'spectator';
   viewingUser: string | null;
   viewpoints: { id: string; name: string }[];

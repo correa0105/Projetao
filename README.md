@@ -1,5 +1,14 @@
 # Alvorada Cinzenta
 
+VTT: folha do monstro → **Editar** salva nome/imagem/atributos/ações em um preset
+privado do mestre; **Traduzir para português** prepara uma cópia revisável. Biblioteca
+→ Presets de monstros permite reutilizá-la em outras mesas. Chat acompanha rolagens
+quando já está no final e permite aplicar o dano rolado uma única vez por alvo.
+Biblioteca → Premium recebe artes originais individuais vistas de cima, transparentes;
+produção dos 330 monstros em andamento, com contador real de artes concluídas.
+Tag Tokens premium em Configurações e ajuda → Acesso premium. Migration 069 e
+[funcionamento, permissões e arte](docs/VTT-ACERVO-PREMIUM.md).
+
 **Mural → Torre** abre a Torre do Véu, experimento com 100 andares, encontros e
 armadilhas preparados pelo administrador e revelados após conclusão pessoal/guilda.
 Editar andar e Editar prêmios permitem definir guardiões, valores e itens do catálogo;

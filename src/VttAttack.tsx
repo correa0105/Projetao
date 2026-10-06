@@ -16,12 +16,20 @@ export function VttAttack({
   active,
   roll,
   onBusy,
+  applyDamage,
+  discardDamage,
 }: {
   request: AttackRequest;
   target?: VttToken;
   active: boolean;
-  roll: (formula: string, label: string) => Promise<VttMessage['roll']>;
+  roll: (
+    formula: string,
+    label: string,
+    damage?: { actor_id: string; target_id: string },
+  ) => Promise<VttMessage['roll']>;
   onBusy: (busy: boolean) => void;
+  applyDamage?: (messageIds: string[], tokenId: string) => Promise<void>;
+  discardDamage: (messageIds: string[]) => Promise<void>;
 }) {
   const [mode, setMode] = useState<AttackMode>('normal'),
     [result, setResult] = useState<{
@@ -34,6 +42,7 @@ export function VttAttack({
     [error, setError] = useState(''),
     [damage, setDamage] = useState<Roll[]>([]),
     [discarded, setDiscarded] = useState(false);
+  const [applied, setApplied] = useState(false);
   const inFlight = useRef(false),
     completed = useRef<Roll[]>([]),
     context = `${request.actorId}:${target?.id || ''}:${active}`,
@@ -44,6 +53,7 @@ export function VttAttack({
     setDamage([]);
     completed.current = [];
     setDiscarded(false);
+    setApplied(false);
     setError('');
   }, [context]);
   const formulas = result?.critical ? request.damage.flatMap(criticalDamage) : request.damage;
@@ -74,6 +84,7 @@ export function VttAttack({
       setDamage([]);
       completed.current = [];
       setDiscarded(false);
+      setApplied(false);
       const value = await roll(
         attackFormula(request.attack, mode),
         request.name + ' → ' + snapshot.name + ' · ataque',
@@ -95,6 +106,7 @@ export function VttAttack({
             ' → ' +
             result.target.name +
             (result.critical ? ' · dano crítico' : ' · dano'),
+          { actor_id: request.actorId, target_id: result.target.id },
         );
         if (!value) throw Error('A rolagem de dano não retornou um resultado.');
         if (currentContext.current !== at) return;
@@ -104,9 +116,11 @@ export function VttAttack({
     });
   }
   async function discard() {
-    if (!result?.hit || discarded) return;
+    if (!result?.hit || discarded || applied) return;
     const at = context;
     await run(async () => {
+      const ids = completed.current.map((r) => r.messageId).filter((id): id is string => !!id);
+      if (ids.length) await discardDamage(ids);
       await roll('', request.name + ' → ' + result.target.name + ' · dano descartado');
       if (currentContext.current === at) setDiscarded(true);
     });
@@ -141,7 +155,11 @@ export function VttAttack({
           onClick={() =>
             void run(async () => {
               for (const formula of request.damage)
-                await roll(formula, request.name + ' · dano separado');
+                await roll(
+                  formula,
+                  request.name + ' · dano separado',
+                  target ? { actor_id: request.actorId, target_id: target.id } : undefined,
+                );
             })
           }
         >
@@ -164,11 +182,27 @@ export function VttAttack({
                   <Dices size={14} /> {damage.length ? 'Rolar dano restante' : 'Rolar dano'}
                 </button>
               )}
-              <button disabled={busy} onClick={() => void discard()}>
+              <button disabled={busy || applied} onClick={() => void discard()}>
                 Descartar dano
               </button>
               {!formulas.length && <small>A ficha não informa dano.</small>}
             </>
+          )}
+          {done && !discarded && applyDamage && (
+            <button
+              disabled={busy || applied}
+              onClick={() =>
+                void run(async () => {
+                  const ids = damage.map((r) => r.messageId).filter((id): id is string => !!id);
+                  if (ids.length !== damage.length)
+                    throw Error('As rolagens não foram identificadas.');
+                  await applyDamage(ids, result.target.id);
+                  setApplied(true);
+                })
+              }
+            >
+              {applied ? 'Dano aplicado' : 'Aplicar dano em ' + result.target.name}
+            </button>
           )}
           {discarded ? (
             <b>Dano descartado</b>

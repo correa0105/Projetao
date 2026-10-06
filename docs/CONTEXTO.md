@@ -1,5 +1,24 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Acervo privado/premium, tradução e dano (06/10/2026)
+
+Mestre edita integralmente a cópia do monstro pela folha completa → Editar e salva
+em Presets de monstros, privado por conta, sem alterar SRD. Importação em outra mesa
+copia imagens privadas. Ações mantêm IDs e fórmulas próprios; tradução revisável
+usa LibreTranslate/Argos local en/pt e conserva números/regras/atalhos. Tradutor
+interno, digest fixo, modelos persistidos. Chat segue final e conserva leitura/histórico;
+dano aplicado da rolagem real é auditado/idempotente por mensagem/token e pode ser
+descartado antes da aplicação. Só PV da sessão. Migration 069; 23 regressões e cinco
+testes novos aprovados, navegador em quatro larguras aprovado; tradução real verificada.
+Premium ainda em produção: usuário pediu 330 artes, uma criatura por imagem,
+vista ortográfica superior e transparência real, Pinterest como referência. Manifest
+registra apenas artes concluídas e prompts completos; não dizer que todo o acervo
+está pronto. Acesso atual exige administrador E vtt_premium; pergunta sobre OU/E
+enviada ao usuário, pendente. Administrador concede tag na configuração do VTT.
+Participantes veem apenas arte já colocada em token visível, sem acesso ao catálogo.
+Novos campos de ficha também são removidos da projeção pública. Guia em
+VTT-ACERVO-PREMIUM.md. Pasta privada data/vtt/premium-art; não publicar em public.
+
 ## Torre experimental e editor de efeitos (05/10/2026)
 
 Refino de 06/10: por pedido do usuário, o topo da Torre mantém arte/título e saldo,

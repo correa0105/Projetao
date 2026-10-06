@@ -321,7 +321,11 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           c.fillStyle = t.color;
           c.fillRect(-t.width / 2, -t.height / 2, t.width, t.height);
         }
-      } else if (t.image.startsWith('/vtt/monsters/') && img?.complete && img.naturalWidth) {
+      } else if (
+        (t.image.startsWith('/vtt/monsters/') || t.image.startsWith('/api/vtt/premium-art/')) &&
+        img?.complete &&
+        img.naturalWidth
+      ) {
         const factor = Math.min(t.width / img.naturalWidth, t.height / img.naturalHeight);
         c.shadowBlur = 6 / cam.zoom;
         c.shadowColor = '#000b';

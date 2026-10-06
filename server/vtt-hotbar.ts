@@ -9,7 +9,7 @@ import { emptyHotbar, hotbarSchema } from '../shared/vtt-hotbar.js';
 import { spells, sheetAttacks, deriveSheet } from '../shared/character-sheet.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
 import type { VttDocument } from '../shared/vtt.js';
-import { monsterActions } from '../shared/vtt-monster-actions.js';
+import { tokenMonsterActions } from '../shared/vtt-monster-presets.js';
 type DB = Pick<PoolClient, 'query'>;
 type Access = (
   db: DB,
@@ -27,8 +27,7 @@ export function vttHotbarRouter(getRoom: Access) {
     const t = r.document.scenes
       .find((s) => s.id === r.document.activeScene)!
       .tokens.find((t) => t.id === tokenId && !t.characterId && t.layer !== 'map');
-    const action =
-      t?.sheet && monsterActions(t.sheet.details).find((a) => a.id === req.params.action);
+    const action = t?.sheet && tokenMonsterActions(t).find((a) => a.id === req.params.action);
     if (!t || !action)
       throw new AppError(404, 'O monstro ou esta ação não está disponível neste mapa.');
     res.json({ tokenName: t.name, action });
@@ -92,7 +91,7 @@ export function vttHotbarRouter(getRoom: Access) {
                     !t.characterId &&
                     t.layer !== 'map' &&
                     t.sheet &&
-                    monsterActions(t.sheet.details).some((w) => w.id === a.sourceId),
+                    tokenMonsterActions(t).some((w) => w.id === a.sourceId),
                 ),
               );
         const existing = hotbarSchema

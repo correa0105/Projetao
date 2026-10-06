@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
@@ -54,6 +55,9 @@ import {
   FlipVertical2,
 } from 'lucide-react';
 import { api, post } from './api';
+import { VttPrivateLibrary, VttPremiumAccess } from './VttPrivateLibrary';
+import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
+import { monsterCustomDetails } from '../shared/vtt-monster-presets';
 import type { Character, User } from './types';
 import {
   documentSchema,
@@ -155,6 +159,7 @@ type Entry = {
   speed?: string;
   legacyDetails?: string;
   information?: { label: string; value: string }[];
+  image?: string;
 };
 const monsterMime = 'application/x-alvorada-monster';
 const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
@@ -315,7 +320,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [historyEnd, setHistoryEnd] = useState(false),
     [settingsId, setSettingsId] = useState<string | null>(null),
     [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
-  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells'>('images'),
+  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium'>(
+      'images',
+    ),
+    [presetVersion, setPresetVersion] = useState(0),
     [query, setQuery] = useState(''),
     [entry, setEntry] = useState<Entry | null>(null),
     [catalog, setCatalog] = useState<{ monsters: Entry[]; spells: Entry[] }>({
@@ -330,6 +338,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [journalId, setJournalId] = useState(''),
     [audioError, setAudioError] = useState('');
   const canvas = useRef<HTMLCanvasElement>(null),
+    chatLog = useRef<HTMLDivElement>(null),
+    chatStick = useRef(true),
+    chatTop = useRef(0),
+    chatHistoryAnchor = useRef<{ height: number; top: number } | null>(null),
     stage = useRef<HTMLDivElement>(null),
     images = useRef(new Map<string, HTMLImageElement>()),
     [imageVersion, setImageVersion] = useState(0),
@@ -403,6 +415,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         id: next.focusSignal?.id || '',
       };
       setOlderMessages([]);
+      chatStick.current = true;
+      chatTop.current = 0;
+      chatHistoryAnchor.current = null;
       setAttack(null);
       setPreview(false);
       setPreviewViewerId(null);
@@ -1433,7 +1448,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const size: Record<string, number> = { T: 0.5, S: 1, M: 1, L: 2, H: 3, G: 4 };
     Object.assign(t, {
       name: e.name,
-      image: monsterArt(e.id, e.name),
+      image: e.image || monsterArt(e.id, e.name),
+      monster: customMonster(entryProfile(e), e.id),
       width: scene.grid.size * (size[e.size || 'M'] || 1),
       height: scene.grid.size * (size[e.size || 'M'] || 1),
       hp: e.hp || 10,
@@ -1480,7 +1496,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       hp: e.hp ?? 10,
       ac: e.ac ?? 10,
       stats: e.stats ?? [10, 10, 10, 10, 10, 10],
-      image: monsterArt(e.id, e.name),
+      image: e.image || monsterArt(e.id, e.name),
     };
   }
   function tokenProfile(t: VttToken): MonsterProfile {
@@ -1499,9 +1515,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       stats: t.sheet?.stats || [10, 10, 10, 10, 10, 10],
       source: t.sheet?.source,
       type: t.sheet?.race,
-      details: source?.details ?? t.sheet?.details ?? '',
+      details: t.monster
+        ? monsterCustomDetails(t.monster)
+        : (source?.details ?? t.sheet?.details ?? ''),
       actionDetails: t.sheet?.details,
-      speed: source?.speed || `${t.sheet?.speed ?? 30} ft`,
+      speed: t.monster?.speed || source?.speed || `${t.sheet?.speed ?? 30} ft`,
+      ...(t.monster
+        ? {
+            size: t.monster.size,
+            cr: t.monster.cr,
+            information: t.monster.information,
+            actions: t.monster.actions,
+          }
+        : {}),
     };
   }
   function useMonsterAction(t: VttToken, action: MonsterAction) {
@@ -1640,13 +1666,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setSheetId(null);
     setAttack(request);
   }
-  async function send(formulaValue = '', textValue = chat, spellId?: string) {
+  async function send(
+    formulaValue = '',
+    textValue = chat,
+    spellId?: string,
+    damage?: { actor_id: string; target_id: string },
+  ) {
     if (spectator) throw Error('Espectadores podem somente assistir à mesa.');
     await save();
     const next = await post<VttState & { createdMessageId: string }>(
       `/vtt/rooms/${state!.id}/messages`,
       {
         ...(spellId ? { spell_id: spellId } : {}),
+        ...(damage ? { damage } : {}),
         text: textValue,
         formula: formulaValue,
         private: privateRoll,
@@ -1655,8 +1687,54 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setState(next);
     stateRef.current = next;
     setChat('');
-    return next.messages.find((m) => m.id === next.createdMessageId)?.roll || null;
+    const rolled = next.messages.find((m) => m.id === next.createdMessageId)?.roll;
+    return rolled ? { ...rolled, messageId: next.createdMessageId } : null;
   }
+  async function applyRolledDamage(messageIds: string[], tokenId: string) {
+    await save();
+    const next = await post<VttState>(`/vtt/rooms/${state!.id}/damage`, {
+      message_ids: messageIds,
+      token_id: tokenId,
+    });
+    receive(next);
+    const applied = new Set(messageIds);
+    setOlderMessages((old) =>
+      old.map((m) =>
+        applied.has(m.id) ? { ...m, applied: [...new Set([...(m.applied || []), tokenId])] } : m,
+      ),
+    );
+  }
+  async function discardRolledDamage(messageIds: string[]) {
+    await save();
+    receive(
+      await post<VttState>(`/vtt/rooms/${state!.id}/damage/discard`, { message_ids: messageIds }),
+    );
+  }
+  async function importMonsterPreset(id: string, at: Point = camera) {
+    await save();
+    const before = new Set(scene?.tokens.map((t) => t.id));
+    const next = await post<VttState>(
+      `/vtt/rooms/${state!.id}/monster-presets/${id}/import`,
+      snapPoint(at, scene!.grid),
+    );
+    receive(next);
+    setPresetVersion((v) => v + 1);
+    const added = next.document.scenes
+      .find((s) => s.id === next.document.activeScene)
+      ?.tokens.find((t) => !before.has(t.id));
+    if (added) setSelection([added.id]);
+  }
+  useLayoutEffect(() => {
+    const element = chatLog.current;
+    if (!element) return;
+    if (chatHistoryAnchor.current) {
+      const anchor = chatHistoryAnchor.current;
+      element.scrollTop = anchor.top + element.scrollHeight - anchor.height;
+      chatHistoryAnchor.current = null;
+    } else if (chatStick.current) element.scrollTop = element.scrollHeight;
+    else element.scrollTop = chatTop.current;
+    chatTop.current = element.scrollTop;
+  }, [state?.id, state?.messages, olderMessages, tab, panelOpen]);
   const journal = doc?.journal.find((j) => j.id === journalId);
   if (!state || !doc || !scene)
     return (
@@ -1992,7 +2070,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               roomId={state.id}
               tokens={scene.tokens}
               sheetOpen={!!sheetId}
-              roll={send}
+              roll={(formula, label, damage) => send(formula, label, undefined, damage)}
               shareSpell={shareSpell}
               refresh={refreshRoom}
               gm={gm}
@@ -2003,6 +2081,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               selectedTokenId={token?.id}
               attackBusy={attackBusy}
               onAttackBusy={setAttackBusy}
+              applyDamage={
+                gm || attackTarget?.controller === user.id ? applyRolledDamage : undefined
+              }
+              discardDamage={discardRolledDamage}
               closeAttack={() => setAttack(null)}
             />
           )}
@@ -2060,6 +2142,20 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               if (!gm || preview || !e.dataTransfer.types.includes(monsterMime)) return;
               e.preventDefault();
               const id = e.dataTransfer.getData(monsterMime);
+              if (id.startsWith('preset:')) {
+                void act(() => importMonsterPreset(id.slice(7), point(e)));
+                return;
+              }
+              if (id.startsWith('premium:')) {
+                const monster = catalog.monsters.find((m) => m.id === id.slice(8));
+                if (monster && state.premiumAccess)
+                  addMonster(
+                    { ...monster, image: '/api/vtt/premium-art/' + monster.id },
+                    point(e),
+                    true,
+                  );
+                return;
+              }
               const monster = [
                 ...catalog.monsters,
                 ...doc.custom.filter((e) => e.kind === 'monster'),
@@ -3059,7 +3155,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 <>
                   {tab === 'library' && (
                     <div className="vtt-subtabs">
-                      {(['monsters', 'spells'] as const).map((k) => (
+                      {(['monsters', 'presets', 'premium', 'spells'] as const).map((k) => (
                         <button
                           key={k}
                           aria-pressed={library === k}
@@ -3067,9 +3163,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             setLibrary(k);
                             setQuery('');
                             setEntry(null);
+                            if (k === 'presets' || k === 'premium') setPresetVersion((v) => v + 1);
                           }}
                         >
-                          {k === 'monsters' ? 'Monstros' : 'Magias'}
+                          {
+                            {
+                              monsters: 'Monstros',
+                              presets: 'Presets de monstros',
+                              premium: 'Premium',
+                              spells: 'Magias',
+                            }[k]
+                          }
                         </button>
                       ))}
                     </div>
@@ -3083,7 +3187,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       placeholder="Nome, tipo, nível…"
                     />
                   </label>
-                  {gm && (
+                  {gm && library !== 'presets' && library !== 'premium' && (
                     <label className="vtt-file-button">
                       <Upload size={14} />
                       {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
@@ -3108,7 +3212,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       />
                     </label>
                   )}
-                  {library === 'images' ? (
+                  {library === 'presets' || library === 'premium' ? (
+                    <VttPrivateLibrary
+                      kind={library}
+                      gm={gm && !preview}
+                      enabled={!!state.premiumAccess}
+                      query={query}
+                      loadKey={presetVersion}
+                      importPreset={importMonsterPreset}
+                      importPremium={(m) => addMonster(m as Entry)}
+                      drag={dragMonster}
+                    />
+                  ) : library === 'images' ? (
                     <>
                       <details className="vtt-monster-gallery">
                         <summary>Tokens dos monstros · {catalog.monsters.length}</summary>
@@ -3532,6 +3647,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           const next = await api<{ messages: VttMessage[]; has_more: boolean }>(
                             `/vtt/rooms/${state.id}/messages${first ? '?before=' + first.id : ''}`,
                           );
+                          if (chatLog.current)
+                            chatHistoryAnchor.current = {
+                              height: chatLog.current.scrollHeight,
+                              top: chatLog.current.scrollTop,
+                            };
                           setOlderMessages((v) => [...next.messages, ...v]);
                           setHistoryEnd(!next.has_more);
                         })
@@ -3540,7 +3660,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       Carregar histórico anterior
                     </button>
                   )}
-                  <div className="vtt-chat-log" aria-live="polite">
+                  <div
+                    className="vtt-chat-log"
+                    aria-live="polite"
+                    ref={chatLog}
+                    onScroll={(e) => {
+                      const el = e.currentTarget;
+                      chatStick.current = el.scrollHeight - el.clientHeight - el.scrollTop <= 2;
+                      chatTop.current = el.scrollTop;
+                    }}
+                  >
                     {[
                       ...new Map(
                         [...olderMessages, ...state.messages].map((m) => [m.id, m]),
@@ -3611,6 +3740,35 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               <b>{m.roll.total}</b>
                             </div>
                           )}
+                          {m.roll &&
+                            m.roll.total > 0 &&
+                            !m.discarded &&
+                            !spectator &&
+                            (() => {
+                              const target = m.damage
+                                ? scene.tokens.find((t) => t.id === m.damage!.target_id)
+                                : attackTarget || token;
+                              if (
+                                !target ||
+                                target.layer !== 'tokens' ||
+                                (!gm && target.controller !== user.id)
+                              )
+                                return null;
+                              const applied = m.applied?.includes(target.id);
+                              return (
+                                <button
+                                  className="vtt-chat-damage"
+                                  disabled={busy || applied}
+                                  onClick={() =>
+                                    void act(() => applyRolledDamage([m.id], target.id))
+                                  }
+                                >
+                                  {applied ? 'Dano aplicado em ' : 'Aplicar dano em '}
+                                  {target.name}
+                                </button>
+                              );
+                            })()}
+                          {m.discarded && <small>Dano descartado</small>}
                         </article>
                       ))}
                   </div>
@@ -3891,6 +4049,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {tab === 'table' && (
                 <>
+                  {gm && <VttPremiumAccess changed={() => void refreshRoom()} />}
                   {gm && (
                     <>
                       <label>
@@ -4086,6 +4245,28 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 scene.tokens.find((t) => t.id === sheetId)!,
                 action,
               )
+            }
+            editor={
+              gm && !preview
+                ? (done) => (
+                    <VttMonsterEditor
+                      key={sheetId}
+                      roomId={state.id}
+                      token={scene.tokens.find((t) => t.id === sheetId)!}
+                      profile={tokenProfile(scene.tokens.find((t) => t.id === sheetId)!)}
+                      done={done}
+                      upload={async (file) => (await uploadAsset(file)).path}
+                      save={async (next) => {
+                        editScene((s) => {
+                          const t = s.tokens.find((t) => t.id === sheetId);
+                          if (t) Object.assign(t, next);
+                        });
+                        await save();
+                        setPresetVersion((v) => v + 1);
+                      }}
+                    />
+                  )
+                : undefined
             }
           />
         ))}

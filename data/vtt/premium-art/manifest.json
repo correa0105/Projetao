@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "monster-aboleth",
+      "name": "Aboleth",
+      "filename": "monster-aboleth-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "29b25d7430d000a3e1c7e0441f9e9335a727eddd321a41ca5d3ec8b082cc9a32",
+      "transparentPixels": 932146,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium virtual-tabletop monster token, Aboleth, individual full-body cutout on genuine transparent alpha background. Reference direction: the user's Pinterest Creature Tokens Pack 07 shows clean overhead hand-painted creature tokens; produce an original design with the same legibility and level of polished graphic detail, not a copy. Subject: an ancient aquatic aberration with a long broad eel-fish body, muscular ridged jade-and-slate hide, three small luminous amber eyes aligned along its head, small dorsal fins, thick tail curling naturally, four long powerful tentacles spreading asymmetrically from the upper body. Camera: strictly orthographic bird's-eye view, exactly 90 degrees looking straight DOWN at the top of the creature, no horizon, no frontal portrait, no side view, no isometric angle. Entire body, all four tentacles and tail fully inside frame with a comfortable transparent margin, head pointing toward the top of the image. Style: premium hand-painted semi-realistic fantasy game sprite, beautifully crisp silhouette, carefully shaded wet skin, subtle scars and natural patterned scales, fine restrained rim light, readable volumes and controlled directional lighting. Compose one cohesive creature, no duplicate figures or alternate poses. No circular token border or frame, no floor, water, rocks, scenery, background glow, cast shadow outside the creature, text, labels, watermark, grid or atlas. A single standalone Aboleth only, truly transparent background.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://cz.pinterest.com/davidhartl365/aboleth/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-adult-black-dragon",
+      "name": "Adult Black Dragon",
+      "filename": "monster-adult-black-dragon-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0cf19e191b3e7498e27402d22e6e04010877cf0a57c1fb3aff764b44696addbb",
+      "transparentPixels": 787300,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. Create ONE original premium VTT monster token: Adult Black Dragon, complete standalone full-body cutout, genuine transparent alpha background. Direction: the user's Pinterest Creature Tokens Pack 07 and top-down dragon tokens such as https://ar.pinterest.com/pin/820499625894256832/ are research references for overhead legibility only, not designs to copy. Strict orthographic bird's-eye camera 90 degrees looking straight DOWN at the back, no horizon, portrait, side view or isometric view. An adult swamp dragon with long narrow crocodilian skull pointing up, distinctive swept forward ivory horns, glossy charcoal black scales with subtle dark olive weathering, articulated dorsal ridges, four muscular clawed legs, broad partly extended ragged leathery bat wings framing its body, tail curving asymmetrically to one side. Exactly one head, four limbs, two wings and one tail, all anatomically connected. Polished hand-painted semi-realistic fantasy game asset with individually detailed overlapping scales, beautiful readable wing membrane folds, restrained directional highlights, crisp clean silhouette and strong volume. Entire creature including every wingtip, horn, toe and tailtip inside frame with comfortable transparent padding. Single creature only, no alternate poses, token border, circle, base, ground, water, scenery, shadow outside creature, text, labels, watermark, atlas or collage.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://ar.pinterest.com/pin/820499625894256832/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-adult-blue-dragon",
+      "name": "Adult Blue Dragon",
+      "filename": "monster-adult-blue-dragon-v1.webp",
+      "width": 1145,
+      "height": 1374,
+      "sha256": "cbd7148a40a385b77d8bbb8b1897cd07d1fec75a9b3d45bab9cd2f9237f713a7",
+      "transparentPixels": 921518,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE original premium virtual tabletop monster token: Adult Blue Dragon, individual full-body cutout on genuine transparent alpha background. Overhead token composition researched through Pinterest https://www.pinterest.com/pin/this-is-the-blue-dragon-token-check-out-more-tokens-on-my-patreon-httpswwwpatreoncommeditating_munky--804666658426553375/ and the user's Creature Tokens Pack 07. Original design, no copying. Strict orthographic bird's-eye camera exactly 90 degrees looking straight DOWN at the dragon's BACK. No horizon, side view, portrait or isometric perspective. A powerful desert dragon with one prominent ivory nasal horn, a broad wedge-shaped head, large outward swept fin-like ears, deep sapphire and cobalt pebbled scales, thick armored neck, raised serrated dorsal crest, four muscular clawed legs, and exactly two broad leathery wings swept outward in an asymmetric crouched stalking pose. Long tail hooks to the left. Head points toward top. Differentiated anatomy and pose, not a black dragon recolored. Premium hand-painted semi-realistic fantasy game sprite, crisp legible silhouette, refined scales and wing membrane folds, subtle weathered ivory details, consistent restrained directional light and exquisite material shading. Entire creature, every horn, wingtip, toe and tailtip within image with generous transparent margin. Exactly ONE creature with one head, four legs, two wings and one tail. No other figure, alternates, circular border, base, ground, scenery, cast shadow beyond creature, lightning outside silhouette, text, labels, watermark, atlas or collage.",
+      "edit": "Expand transparent padding; preserve creature, overhead perspective and design.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/this-is-the-blue-dragon-token-check-out-more-tokens-on-my-patreon-httpswwwpatreoncommeditating_munky--804666658426553375/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-adult-brass-dragon",
+      "name": "Adult Brass Dragon",
+      "filename": "monster-adult-brass-dragon-v1.webp",
+      "width": 1223,
+      "height": 1286,
+      "sha256": "b399089612416fce529ad54ecc5b72d524da3e2c42430ac378a6c6ee19bda3b1",
+      "transparentPixels": 1024832,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE original premium VTT token: Adult Brass Dragon, complete individual full-body cutout with genuine transparent alpha background. Pinterest research direction: https://kr.pinterest.com/pin/813251645246054502/ overhead dragon tokens and the user's Creature Tokens Pack 07. Original dragon, do not copy art. Strict orthographic bird's-eye view exactly 90 degrees looking DOWN at the BACK. Head points up. This dragon has polished muted antique BRASS scales, a broad flattened shovel-shaped desert-dragon head with an elegant shield-like cranial frill, two swept back curved horns, streamlined long neck, comparatively smooth dorsal ridges, four slender muscular legs, two very long fingered bat wings partially fanned in a relaxed asymmetrical stance, and a long sinuous tail curled gently right. Make the anatomy, scales, head and wing shape clearly distinct from black and blue dragons, not a recolor. Premium semi-realistic hand-painted fantasy game asset, crisp beautifully shaded sculptural scales, delicate warm olive-gold wing membranes, restrained natural light, excellent small-token readability. Exactly one head, four clawed legs, two wings and one tail. Compose the entire single creature within the CENTER 80 percent of the canvas, leaving at least 10 percent fully transparent margin on all four sides. Every horn, wingtip, toe, tail fully visible. No ground, scenery, circle or border, base, cast shadow outside the silhouette, label, watermark, text, extra figures, alternate poses, atlas or collage.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://kr.pinterest.com/pin/813251645246054502/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-adult-bronze-dragon",
+      "name": "Adult Bronze Dragon",
+      "filename": "monster-adult-bronze-dragon-v1.webp",
+      "width": 1222,
+      "height": 1287,
+      "sha256": "114e60be6aa9167ec76068c9b88ecaea35e9814b747b55702b1746812c366949",
+      "transparentPixels": 910479,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE original premium VTT token: Adult Bronze Dragon, single complete full-body cutout, genuine transparent alpha background. Overhead token research through Pinterest https://br.pinterest.com/pin/379569074861009176/ and the user's Creature Tokens Pack 07; use only general top-down readability, not copies. Strict orthographic bird's-eye camera exactly 90 degrees straight DOWN at its BACK, head points upward. A powerful coastal dragon with antique bronze armor scales, green verdigris along ridges, distinctly long wedge-shaped head with three paired backswept facial horns, fan-like webbed cheek fins, sturdy forelegs and broad webbed hind feet, exactly two broad swept-back wings with scalloped amber-brown membranes, long tapering tail curled loosely left. Low crouched aquatic-hunter pose, neck curves slightly right, wings fold differently from the black, blue and brass dragon. Anatomy and materials unmistakably bronze dragon, not a recolor. Premium hand-painted semi-realistic fantasy game sprite, intricate readable natural scale patterns, carefully layered patina, delicate wing folds, restrained top-left light, crisp professional silhouette. Exactly one head, four connected limbs, two wings, one tail. The entire SINGLE creature occupies only the CENTER 80 percent of the canvas with at least 10 percent genuine transparent padding all around; every horn, wingtip, claw and tailtip fully visible. No circular token frame, base, ground, water, rocks, scenery, cast shadow outside silhouette, text, watermark, alternate poses, other figures, atlas or collage.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://br.pinterest.com/pin/379569074861009176/"
+      ],
+      "created_at": "2026-10-06"
+    },
+    {
+      "id": "monster-adult-copper-dragon",
+      "name": "Adult Copper Dragon",
+      "filename": "monster-adult-copper-dragon-v1.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0375fe38dd90c79dab51e44c0548765002c2d4993aef6b00d0d04cd81dd01c6a",
+      "transparentPixels": 903001,
+      "mode": "imagegen built-in",
+      "prompt": "Use case: stylized-concept. ONE original premium VTT monster token: Adult Copper Dragon, individual complete full-body cutout on genuine transparent alpha. Overhead reference research: https://www.pinterest.com/pin/dragons--50524827062808069/ and user Creature Tokens Pack 07. Original creature design, not copied. Strict orthographic bird's-eye camera looking 90 degrees straight DOWN at the BACK, no horizon, portrait, side view or isometric angle. Agile rocky-upland dragon with warm REDDISH COPPER polished scales, delicate green patina between plates, a short broad expressive head, swept-back brow horns forming a V-shaped head crest, wide cheek plates, lean serpentine neck, four athletic clawed legs, two expansive fan-shaped wings with blue-green streaks across copper wing membranes, long playful tail coiled behind to the right. Uneven stalking stance with one front paw extended; head aimed up-left. Distinct copper dragon skull, proportion, pose and wing geometry, not another dragon recolored. Exquisite premium hand-painted semi-realistic fantasy sprite with fine scales, leather folds, subtle metal sheen, restrained consistent top-left light, clean crisp silhouette and readable volume. Exactly one head, four legs, two wings, one tail. Entire SINGLE creature inside CENTER 80 percent of image, 10 percent genuine transparent margin on every side. All horns, wings, toes, tail fully visible. No circle/frame, base, floor, scenery, shadow beyond silhouette, text, labels, watermark, additional creature, alternate pose, atlas or collage.",
+      "references": [
+        "https://br.pinterest.com/pin/324611085643692072/",
+        "https://www.pinterest.com/pin/dragons--50524827062808069/"
+      ],
+      "created_at": "2026-10-06"
+    }
+  ]
+}

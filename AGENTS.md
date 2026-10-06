@@ -62,6 +62,18 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+VTT 06/10: fichas de monstros editáveis e traduzíveis somente na cópia privada do
+mestre; presets por conta, biblioteca SRD intacta. Preservar IDs de ações/atalhos.
+Chat segue apenas quando já no final. Dano usa rolagem persistida, alvo vinculado,
+auditoria idempotente e descarte antes de aplicar; não alterar ficha do site.
+Premium: produzir 330 artes individuais superiores transparentes uma a uma; contador
+vem do manifest de artes realmente concluídas. Modo imagegen embutido e prompts no
+manifest. Não substituir por atlas/recolorações/placeholders. Arquivos privados,
+acesso servidor por administrador E tag vtt_premium (esclarecimento OU/E pendente).
+Participantes só visualizam arte de token visível na mesa, sem catálogo. Administrador
+gerencia tag no VTT. Tradução local LibreTranslate/Argos com proteção das regras.
+Migration 069 e detalhes em docs/VTT-ACERVO-PREMIUM.md. Produção das artes continua.
+
 Torre experimental (06/10): Mural → Torre, 100 andares. Administrador edita
 informações, criaturas, armadilhas, guardião por andar, valores e tabelas d100/itens.
 Encontros/armadilhas só são retornados pelo servidor após conclusão pessoal/guilda;

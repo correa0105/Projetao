@@ -22,6 +22,7 @@ export type MonsterProfile = {
   cr?: string;
   speed?: string;
   information?: { label: string; value: string }[];
+  actions?: MonsterAction[];
 };
 const signed = (n: number) => `${n >= 0 ? '+' : ''}${n}`;
 const sizes: Record<string, string> = {
@@ -66,7 +67,7 @@ export function VttMonsterStatblock({
 }) {
   const [error, setError] = useState('');
   const sections = monsterSections(monster.details);
-  const actions = monsterActions(monster.actionDetails ?? monster.details);
+  const actions = monster.actions ?? monsterActions(monster.actionDetails ?? monster.details);
   const occurrences = new Map<string, number>();
   const prepared = sections.map((s) => ({
     ...s,
@@ -131,7 +132,14 @@ export function VttMonsterStatblock({
   return (
     <div className={'vtt-monster-sheet ' + (compact ? 'compact' : '')}>
       <header className="vtt-monster-banner">
-        {monster.image && <img src={monster.image} alt="" draggable={false} />}
+        {monster.image && (
+          <img
+            className={monster.image.startsWith('/api/vtt/premium-art/') ? 'overhead' : undefined}
+            src={monster.image}
+            alt=""
+            draggable={false}
+          />
+        )}
         <div>
           <span>{monster.source || 'Ficha de sessão'}</span>
           <h2>{monster.name}</h2>
@@ -218,6 +226,7 @@ export function VttMonsterSheet({
   close,
   roll,
   useAction,
+  editor,
 }: {
   monster: MonsterProfile;
   tokenId: string;
@@ -226,12 +235,13 @@ export function VttMonsterSheet({
   close: () => void;
   roll: (formula: string, label: string) => Promise<unknown>;
   useAction: (action: MonsterAction) => void;
+  editor?: (done: () => void) => import('react').ReactNode;
 }) {
   const [tab, setTab] = useState('Ficha');
   return (
     <VttModal title={'Ficha · ' + monster.name} wide close={close}>
       <nav className="vtt-monster-tabs" aria-label="Páginas da ficha do monstro">
-        {['Ficha', 'Anotações'].map((name) => (
+        {['Ficha', 'Anotações', ...(gm && editor ? ['Editar'] : [])].map((name) => (
           <button key={name} aria-pressed={tab === name} onClick={() => setTab(name)}>
             {name}
           </button>
@@ -246,6 +256,8 @@ export function VttMonsterSheet({
             roll={roll}
             useAction={useAction}
           />
+        ) : tab === 'Editar' && editor ? (
+          editor(() => setTab('Ficha'))
         ) : (
           <section className="vtt-monster-notes">
             <h3>Anotações da sessão</h3>
