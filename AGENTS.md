@@ -62,6 +62,15 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Torre experimental (05/10): Mural → Torre, 30 andares/seis regiões e guardião a
+cada cinco. Versão anterior preservada em 35d5f36 e na tag GitHub
+codex/checkpoint-antes-torre-2026-10-05. Mestre é administrador e dono da expedição;
+confirma progresso em sequência e retorno. Personagens só entram por ownership.
+Ouro/cristais base e d100/relíquia são transacionais e idempotentes (066); servidor
+resolve todos os valores e sorteia, sem aceitar saldo, andar ou dado do cliente.
+Cristais e coleção ficam na Torre; não alterar patentes/XP, cartas ou inventário.
+Não apagar dados nem migrations ao desfazer o experimento. Guia em docs/TORRE-EXPERIMENTAL.md.
+
 Refino posterior de 05/10: ficha de monstro estruturada com características,
 ações e atributos, folha completa em duas colunas e ataques arrastáveis para
 a barra existente. Arraste do catálogo para mapa respeita câmera/grade/limites,

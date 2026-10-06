@@ -5,6 +5,7 @@ import { loreTimelineRouter } from './lore-timeline.js';
 import { rulebookRouter } from './rulebook.js';
 import { vttRouter } from './vtt.js';
 import { socialRouter } from './social.js';
+import { towerRouter } from './tower.js';
 import express from 'express';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
@@ -202,6 +203,7 @@ export function createApp() {
   app.use('/api', calendarRouter());
   app.use('/api', vttRouter());
   app.use('/api', socialRouter());
+  app.use('/api', towerRouter());
   app.get('/api/me', async (_req, res) => {
     const {
       rows: [permission],

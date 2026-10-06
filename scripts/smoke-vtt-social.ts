@@ -594,6 +594,9 @@ try {
   await effectsButton.click();
   const effects = page.getByRole('region', { name: 'Efeitos salvos do mestre', exact: true });
   await effects.getByRole('button', { name: 'Novo efeito', exact: true }).click();
+  await expect(effects.getByRole('form', { name: 'Editor de efeito' })).toBeVisible();
+  await expect(effects.getByLabel('Nome do efeito', { exact: true })).toBeFocused();
+  await effects.getByLabel('Modelo do efeito', { exact: true }).selectOption('death');
   await effects.getByLabel('Nome do efeito', { exact: true }).fill('Sangue do mestre');
   await effects.getByRole('button', { name: 'Salvar efeito', exact: true }).click();
   await expect(effects.locator('.vtt-effects-row')).toHaveCount(1);

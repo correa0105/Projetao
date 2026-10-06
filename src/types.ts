@@ -101,6 +101,7 @@ export type Entry = {
   tag: string;
 };
 export type Page =
+  | 'tower'
   | 'overview'
   | 'characters'
   | 'profile'

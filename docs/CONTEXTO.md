@@ -1,5 +1,33 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Torre experimental e editor de efeitos (05/10/2026)
+
+Pedido explícito: salvar versão anterior no GitHub antes da Torre. Confirmado
+origin/Welson=35d5f36 antes das edições; tag codex/checkpoint-antes-torre-2026-10-05
+também enviada. Torre do Véu fica no submenu Mural, com arte original, 30 andares,
+seis biomas, desafios e guardião a cada cinco. Exploração de andares, expedições
+e tesouros em abas. Mestre administrador/dono inicia e confirma cada andar;
+participantes entram com seus personagens, até oito, uma subida ativa por personagem.
+
+Migration 066 cria quatro tabelas próprias, sem alterar registros anteriores.
+Retorno confirmado paga ouro real/cristais uma vez por participante; d100 posterior
+é sorteado no servidor e paga bônus/relíquia uma vez. Guardiões elevam tabela.
+Locks/revisão/PK garantem idempotência sob concorrência; payloads estritos recusam
+andar/saldo/dado arbitrários. Saldo de cristais e relíquias privados por ownership.
+Não concede missões, XP, itens de equipamento ou cartas; relíquias são de coleção.
+Encontros são conduzidos pelo mestre, sem simulação automática de combate.
+
+Novo efeito agora substitui a lista pelo editor, volta ao topo e foca o nome;
+antes o formulário era acrescentado abaixo da lista, fora da área visível.
+Erro de gravação permanece visível no editor. Modelo inicial é Fogo; morte ainda
+fica disponível no seletor e controles próprios. Presets existentes preservados.
+
+8 testes de Torre/API e smoke mestre/jogador 1440/768/390/320 passaram; VTT completo
+também passou. Suíte geral: 113/115, duas falhas anteriores em world-fleet.test.ts
+(órbita/cabeça do kraken). world-fleet.ts e dependências/testes iguais ao checkpoint;
+não mascarar nem alterar esta animação por causa da Torre. Detalhes e prompt em
+TORRE-EXPERIMENTAL.md; backup local before-tower-20261005.dump.
+
 ## Fichas de monstros, arraste e contato do tentáculo (05/10/2026)
 
 Monstros podem ser arrastados da lista da Biblioteca e da galeria de arte direto

@@ -22,6 +22,7 @@ import {
   Users,
   Dices,
   Crown,
+  Castle,
 } from 'lucide-react';
 import {
   CandleIcon,
@@ -57,6 +58,7 @@ const packages: { id: string; label: string; icon: Destination['icon']; items: D
     items: [
       { page: 'board', label: 'Mural', icon: ScrollText },
       { page: 'events', label: 'Eventos', icon: CalendarDays },
+      { page: 'tower', label: 'Torre', icon: Castle },
       { page: 'vtt', label: 'Mesa virtual', icon: Dices },
     ],
   },

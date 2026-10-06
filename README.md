@@ -1,5 +1,12 @@
 # Alvorada Cinzenta
 
+**Mural → Torre** abre a Torre do Véu, experimento com 30 andares, seis regiões,
+chefes, expedições e tesouros no d100. Mestre confirma subida/retorno; jogadores
+recebem ouro, cristais persistentes e uma relíquia de coleção. Versão anterior no
+[checkpoint GitHub](https://github.com/correa0105/Projetao/tree/codex/checkpoint-antes-torre-2026-10-05).
+[Regras, arquitetura, arte e verificação](docs/TORRE-EXPERIMENTAL.md). Migration 066.
+VTT → Novo efeito abre editor próprio imediatamente, inclusive com listas longas.
+
 VTT: arraste um monstro da Biblioteca ou da Biblioteca de arte para o ponto
 desejado do mapa. A ficha lateral separa características, ações e atributos;
 **Fichas → Abrir folha completa** mostra estatísticas à esquerda e ações à direita.

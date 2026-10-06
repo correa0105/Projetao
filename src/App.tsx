@@ -63,6 +63,7 @@ const WorldAtlas = lazy(() =>
 );
 const Rulebook = lazy(() => import('./Rulebook').then((module) => ({ default: module.Rulebook })));
 const Vtt = lazy(() => import('./Vtt').then((module) => ({ default: module.Vtt })));
+const Tower = lazy(() => import('./Tower').then((module) => ({ default: module.Tower })));
 const HallOfFame = lazy(() =>
   import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
 );
@@ -82,6 +83,7 @@ const titles: Record<Page, string> = {
   stable: 'Estábulo da Alvorada',
   pets: 'Casa dos mascotes',
   events: 'Eventos da Alvorada',
+  tower: 'Torre do Véu',
   titles: 'Títulos & honrarias',
   cards: 'Salão das cartas',
   'character-cards': 'Cartas',
@@ -515,6 +517,12 @@ function Portal({ user }: { user: User }) {
       );
     if (page === 'overview') return <HomeJournal upcoming={upcoming} canEdit={administrator} />;
     if (page === 'events') return <Events />;
+    if (page === 'tower')
+      return (
+        <Suspense fallback={<div className="loading-content">Abrindo as portas da torre…</div>}>
+          <Tower characters={characters} character={character} refreshCharacters={refresh} />
+        </Suspense>
+      );
     if (page === 'hall' || page === 'profiles')
       return (
         <Suspense
@@ -647,7 +655,9 @@ function Portal({ user }: { user: User }) {
       <div className="main-shell">
         {page !== 'vtt' && (
           <PageHeader
-            showTitle={!['lore', 'events', 'cards', 'vtt', 'hall', 'profiles'].includes(page)}
+            showTitle={
+              !['lore', 'events', 'tower', 'cards', 'vtt', 'hall', 'profiles'].includes(page)
+            }
             title={
               page === 'characters'
                 ? 'Seu acampamento'

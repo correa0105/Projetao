@@ -39,8 +39,15 @@ export function VttEffects({
     [previewing, setPreviewing] = useState(false),
     [previewId, setPreviewId] = useState<string | null>(null);
   const root = useRef<HTMLDivElement>(null);
+  const editorName = useRef<HTMLInputElement>(null);
   const previewRef = useRef(preview);
   previewRef.current = preview;
+  useEffect(() => {
+    if (!draft) return;
+    const menu = root.current?.querySelector('.vtt-effects-menu');
+    if (menu) menu.scrollTop = 0;
+    editorName.current?.focus({ preventScroll: true });
+  }, [draft?.id, open]);
   useEffect(() => {
     const preset = draft || presets.find((e) => e.id === previewId);
     previewRef.current(open && previewing && token && preset ? preset : null);
@@ -90,116 +97,131 @@ export function VttEffects({
       {open && (
         <section className="vtt-effects-menu" aria-label="Efeitos salvos do mestre">
           <header>
-            <strong>Efeitos</strong>
+            <strong>
+              {draft
+                ? presets.some((e) => e.id === draft.id)
+                  ? 'Editar efeito'
+                  : 'Novo efeito'
+                : 'Efeitos'}
+            </strong>
             <button aria-label="Fechar efeitos" onClick={() => setOpen(false)}>
               <X size={15} />
             </button>
           </header>
-          <p>Selecione um token para aplicar. Arraste um efeito salvo para a barra rápida.</p>
-          <div className="vtt-effects-target">
-            {token && token.layer !== 'map' ? 'Alvo · ' + token.name : 'Nenhum token selecionado'}
-          </div>
           {error && <p role="alert">{error}</p>}
-          <fieldset
-            className="vtt-effects-death"
-            disabled={blocked || !token || token.layer === 'map'}
-          >
-            <legend>Efeito de morte</legend>
-            <label className="vtt-check">
-              <input
-                type="checkbox"
-                checked={!!token?.deathAutomatic}
-                onChange={(e) => void run(() => editDeath({ deathAutomatic: e.target.checked }))}
-              />
-              Automático ao zerar PV
-            </label>
-            <div className="vtt-row">
-              <button onClick={() => void run(() => editDeath({ deathAt: Date.now() }))}>
-                Aplicar efeito de morte
-              </button>
-              <button
-                disabled={!token?.deathAt}
-                onClick={() => void run(() => editDeath({ deathAt: null }))}
-              >
-                Limpar efeito de morte
-              </button>
-            </div>
-          </fieldset>
-          <div className="vtt-effects-list">
-            {!presets.length && <p>Nenhum efeito salvo. Crie o primeiro abaixo.</p>}
-            {presets.map((e) => (
-              <div
-                className="vtt-effects-row"
-                key={e.id}
-                draggable={!blocked}
-                onDragStart={(event) => {
-                  event.dataTransfer.setData(
-                    actionMime,
-                    JSON.stringify({ kind: 'effect', sourceId: e.id, label: e.name }),
-                  );
-                  event.dataTransfer.effectAllowed = 'copy';
-                }}
-              >
-                <button
-                  className="vtt-effects-apply"
-                  disabled={blocked || !token || token.layer === 'map'}
-                  onClick={() => void run(() => apply(e.id))}
-                  title="Aplicar no token selecionado"
-                >
-                  <Sparkles size={15} style={{ color: e.color }} />
-                  <span>
-                    {e.name}
-                    <small>{effectNames[effectKinds.indexOf(e.kind)]}</small>
-                  </span>
-                </button>
-                <ActionShortcut action={{ kind: 'effect', sourceId: e.id, label: e.name }} />
-                <button
-                  aria-label={'Prévia de ' + e.name}
-                  title="Visualizar antes de aplicar"
-                  disabled={blocked || !token || token.layer === 'map'}
-                  aria-pressed={previewing && previewId === e.id && !draft}
-                  onClick={() => {
-                    setDraft(null);
-                    setPreviewId(e.id);
-                    setPreviewing(!previewing || previewId !== e.id);
-                  }}
-                >
-                  <Eye size={14} />
-                </button>
-                <button
-                  aria-label={'Editar efeito ' + e.name}
-                  disabled={blocked}
-                  onClick={() => setDraft({ ...e })}
-                >
-                  <Pencil size={13} />
-                </button>
-                <button
-                  aria-label={'Remover efeito ' + e.name}
-                  disabled={blocked}
-                  onClick={() => void run(() => remove(e.id))}
-                >
-                  <Trash2 size={13} />
-                </button>
+          {!draft && (
+            <>
+              <p>Selecione um token para aplicar. Arraste um efeito salvo para a barra rápida.</p>
+              <div className="vtt-effects-target">
+                {token && token.layer !== 'map'
+                  ? 'Alvo · ' + token.name
+                  : 'Nenhum token selecionado'}
               </div>
-            ))}
-          </div>
-          <button
-            disabled={blocked || presets.length >= 100}
-            onClick={() =>
-              setDraft({
-                id: crypto.randomUUID(),
-                name: effectNames[0],
-                kind: 'death',
-                color: effectColors[0],
-                scale: 1,
-                duration: 0,
-              })
-            }
-          >
-            <Plus size={14} /> Novo efeito
-          </button>
+              <fieldset
+                className="vtt-effects-death"
+                disabled={blocked || !token || token.layer === 'map'}
+              >
+                <legend>Efeito de morte</legend>
+                <label className="vtt-check">
+                  <input
+                    type="checkbox"
+                    checked={!!token?.deathAutomatic}
+                    onChange={(e) =>
+                      void run(() => editDeath({ deathAutomatic: e.target.checked }))
+                    }
+                  />
+                  Automático ao zerar PV
+                </label>
+                <div className="vtt-row">
+                  <button onClick={() => void run(() => editDeath({ deathAt: Date.now() }))}>
+                    Aplicar efeito de morte
+                  </button>
+                  <button
+                    disabled={!token?.deathAt}
+                    onClick={() => void run(() => editDeath({ deathAt: null }))}
+                  >
+                    Limpar efeito de morte
+                  </button>
+                </div>
+              </fieldset>
+              <div className="vtt-effects-list">
+                {!presets.length && <p>Nenhum efeito salvo. Crie o primeiro abaixo.</p>}
+                {presets.map((e) => (
+                  <div
+                    className="vtt-effects-row"
+                    key={e.id}
+                    draggable={!blocked}
+                    onDragStart={(event) => {
+                      event.dataTransfer.setData(
+                        actionMime,
+                        JSON.stringify({ kind: 'effect', sourceId: e.id, label: e.name }),
+                      );
+                      event.dataTransfer.effectAllowed = 'copy';
+                    }}
+                  >
+                    <button
+                      className="vtt-effects-apply"
+                      disabled={blocked || !token || token.layer === 'map'}
+                      onClick={() => void run(() => apply(e.id))}
+                      title="Aplicar no token selecionado"
+                    >
+                      <Sparkles size={15} style={{ color: e.color }} />
+                      <span>
+                        {e.name}
+                        <small>{effectNames[effectKinds.indexOf(e.kind)]}</small>
+                      </span>
+                    </button>
+                    <ActionShortcut action={{ kind: 'effect', sourceId: e.id, label: e.name }} />
+                    <button
+                      aria-label={'Prévia de ' + e.name}
+                      title="Visualizar antes de aplicar"
+                      disabled={blocked || !token || token.layer === 'map'}
+                      aria-pressed={previewing && previewId === e.id && !draft}
+                      onClick={() => {
+                        setDraft(null);
+                        setPreviewId(e.id);
+                        setPreviewing(!previewing || previewId !== e.id);
+                      }}
+                    >
+                      <Eye size={14} />
+                    </button>
+                    <button
+                      aria-label={'Editar efeito ' + e.name}
+                      disabled={blocked}
+                      onClick={() => setDraft({ ...e })}
+                    >
+                      <Pencil size={13} />
+                    </button>
+                    <button
+                      aria-label={'Remover efeito ' + e.name}
+                      disabled={blocked}
+                      onClick={() => void run(() => remove(e.id))}
+                    >
+                      <Trash2 size={13} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <button
+                disabled={blocked || presets.length >= 100}
+                onClick={() =>
+                  setDraft({
+                    id: crypto.randomUUID(),
+                    name: effectNames[1],
+                    kind: effectKinds[1],
+                    color: effectColors[1],
+                    scale: 1,
+                    duration: 5,
+                  })
+                }
+              >
+                <Plus size={14} /> Novo efeito
+              </button>
+            </>
+          )}
           {draft && (
             <form
+              aria-label="Editor de efeito"
               onSubmit={(event) => {
                 event.preventDefault();
                 void run(async () => {
@@ -211,6 +233,7 @@ export function VttEffects({
               <label>
                 Nome do efeito
                 <input
+                  ref={editorName}
                   aria-label="Nome do efeito"
                   required
                   maxLength={60}
@@ -242,7 +265,10 @@ export function VttEffects({
                     setDraft({
                       ...draft,
                       kind: effectKinds[i],
-                      name: effectNames[i],
+                      name:
+                        draft.name === effectNames[effectKinds.indexOf(draft.kind)]
+                          ? effectNames[i]
+                          : draft.name,
                       color: effectColors[i],
                       duration: i ? 5 : 0,
                     });
@@ -318,13 +344,19 @@ export function VttEffects({
               </div>
             </form>
           )}
-          <button
-            disabled={blocked || !token || (!token.deathAt && !token.effects.length)}
-            onClick={() => void run(clear)}
-          >
-            <Trash2 size={13} /> Limpar efeitos do token
-          </button>
-          <p className="vtt-effects-note">Efeitos visuais não alteram PV, condições ou recursos.</p>
+          {!draft && (
+            <>
+              <button
+                disabled={blocked || !token || (!token.deathAt && !token.effects.length)}
+                onClick={() => void run(clear)}
+              >
+                <Trash2 size={13} /> Limpar efeitos do token
+              </button>
+              <p className="vtt-effects-note">
+                Efeitos visuais não alteram PV, condições ou recursos.
+              </p>
+            </>
+          )}
         </section>
       )}
     </div>
