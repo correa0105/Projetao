@@ -1,5 +1,33 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Efeitos: referências PeriSFX e JB2A (07/10/2026)
+
+Pedido posterior: elevar qualidade usando demonstrações públicas PeriSFX e
+library.jb2a.com. PSFX produz sons sincronizados aos visuais JB2A; consultados
+Healing Generic/Loop Greenorange, Ice Spikes/Radial Loop White, Lightning Orb e
+Fumes. Código original, sem incorporar arquivos de terceiros ou dependência da
+biblioteca online. Guia VTT-EFFECTS-QUALITY.md.
+
+Campos procedurais de vapor/fogo/energia em atlas transparentes de duas variantes
+com turbulência, luz e transição suave. Gelo facetado radial + geada alpha; cura
+em faixas com largura/cor/altura; raios têm disparo rápido e rastro decrescente,
+com geometria estável durante cada descarga. Fluxos de água/vento/arcano/barreira
+também refinados; veneno conserva bolhas e ganha vapor com textura. Tamanho salvo
+agora expande o plano de chão e o volume sem redimensionar máscara do corpo.
+Mantidos centro/altura em direção à câmera superior, contain/giro/espelho,
+IDs/cor/duração/presets e renderer circular legado. Nenhuma migration.
+
+TypeScript e testes de render/alpha/projeção 8/8. Navegador: 16 modelos em três
+formatos, repouso/expiração/cleanup, editor em quatro larguras; centro/círculo e
+tamanho 0,5→1,5 em três proporções. Transparência, cache LRU24 e zero reconstruções
+após aquecimento: 22 atlas. Cerca de 9 ms/quadro para 15 efeitos/2 passes nesta
+máquina, medição local. Capturas comparativas em test-results e vídeo de seis
+segundos vtt-effects-refined.webm com Assassin/veneno/cura/gelo/raio no mapa.
+Build TSC/Vite/tsup e Docker concluídas. Deploy localhost:3000 saudável e arquivos
+servidos conferidos por hash: index-BBWNufNC / Vtt-C2Otf8qn. Sete artes privadas
+mantidas, anônimo 401. Comparação pré/pós de 43 tabelas idêntica; bens, saldos,
+mensagens, House e mesas preservados. Estado anterior abaixo é histórico.
+
 ## Visita de perfil e perspectiva dos efeitos (07/10/2026)
 
 Visita de Personagens compartilha grade, enquadramento, chão e escala com a aba

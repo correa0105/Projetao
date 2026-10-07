@@ -12,7 +12,7 @@ body{margin:0;background:#0b141d;color:#eee4d5;font:14px Georgia}#grid{display:g
 <script type="module">
 import React from 'react';import {createRoot} from 'react-dom/client';
 import {effectLibrary} from '/shared/vtt-effects.ts';import {renderEffect} from '/src/vtt-effects-canvas.ts';
-import {drawDeath} from '/src/vtt-death.ts';import {clearEffectTextureCache,effectTextureCacheSize,plume} from '/src/vtt-effects-primitives.ts';
+import {drawDeath} from '/src/vtt-death.ts';import {clearMaterialCache,materialCacheSize,materialBakeCount,materialSprite} from '/src/vtt-effects-materials.ts';import {clearEffectTextureCache,effectTextureCacheSize,plume} from '/src/vtt-effects-primitives.ts';
 import {VttEffects} from '/src/VttEffects.tsx';import '/src/styles.css';import '/src/theme.css';import '/src/vtt.css';
 const image=new Image();image.src='data:image/webp;base64,${tokenArt}';await image.decode();
 const sizes=[[32,32],[74,115],[130,65],[160,160]];
@@ -36,6 +36,9 @@ window.fxTest={kinds:effectLibrary.map(e=>e.kind),
  finiteExpired(){const c=document.createElement('canvas').getContext('2d');return renderEffect(c,{...make('fire'),duration:1},90,90,{now:2000,reducedMotion:false});},
  cache(){clearEffectTextureCache();for(let i=0;i<30;i++)plume('#'+(i*7219).toString(16).padStart(6,'0'),'smoke');const size=effectTextureCacheSize();clearEffectTextureCache();return {size,after:effectTextureCacheSize()};},
  benchmark(){const canvas=document.createElement('canvas');canvas.width=canvas.height=256;const c=canvas.getContext('2d');c.translate(128,128);const kinds=effectLibrary.filter(e=>e.kind!=='death');for(const e of kinds){renderEffect(c,make(e.kind),90,90,{now:3000,reducedMotion:false,overhead:true,image});}const start=performance.now();for(let frame=0;frame<30;frame++){c.clearRect(-128,-128,256,256);for(const e of kinds)for(const pass of ['behind','front'])renderEffect(c,make(e.kind),90,90,{now:3000+frame*32,reducedMotion:false,pass,overhead:true,image});}return (performance.now()-start)/30;},
+ materials(){clearMaterialCache();const canvas=document.createElement('canvas');canvas.width=canvas.height=200;const c=canvas.getContext('2d');c.translate(100,100);materialSprite(c,'#92b65f','vapor',0,0,160,0,.5,1);const pixels=c.getImageData(0,0,200,200).data;let edge=0,visible=0,partial=0;for(let y=0;y<200;y++)for(let x=0;x<200;x++){const a=pixels[(y*200+x)*4+3];if(x===0||y===0||x===199||y===199)edge+=a;if(a>0)visible++;if(a>0&&a<230)partial++;}for(let i=0;i<30;i++)materialSprite(c,'#'+(i*7219).toString(16).padStart(6,'0'),'vapor',0,0,100,0,.5,1);const size=materialCacheSize();clearMaterialCache();return {edge,visible,partial,size,after:materialCacheSize()};},
+ geometry(width,height,scale){const canvas=document.createElement('canvas');canvas.width=canvas.height=600;const c=canvas.getContext('2d');c.translate(300,300);renderEffect(c,{...make('heal'),scale},width,height,{now:2850,reducedMotion:false,overhead:true,image,pass:'behind'});const pixels=c.getImageData(0,0,600,600).data;let minX=600,minY=600,maxX=0,maxY=0;for(let y=0;y<600;y++)for(let x=0;x<600;x++)if(pixels[(y*600+x)*4+3]>10){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}return {width:maxX-minX,height:maxY-minY,cx:(maxX+minX)/2,cy:(maxY+minY)/2};},
+ warm(){clearMaterialCache();this.benchmark();const before=materialBakeCount();this.benchmark();return {before,after:materialBakeCount(),size:materialCacheSize()};},
  pending:()=>pending.size};
 function Demo(){const [presets,setPresets]=React.useState([]);return React.createElement(VttEffects,{presets,tokens:[{id,name:'Cavaleiro',layer:'tokens',effects:[],deathAt:null,deathAutomatic:false}],busy:false,save:async p=>setPresets(v=>[...v,p]),remove:async id=>setPresets(v=>v.filter(p=>p.id!==id)),apply:async()=>{},clear:async()=>{},preview:()=>{},editDeath:async()=>{}});}
 createRoot(document.getElementById('ui')).render(React.createElement(Demo));window.fxTest.sheet(1);
@@ -82,14 +85,42 @@ try {
   );
   expect(await page.evaluate(() => window.fxTest.finiteExpired())).toBe(false);
   expect(await page.evaluate(() => window.fxTest.cache())).toEqual({ size: 24, after: 0 });
+  const materials = await page.evaluate(() => window.fxTest.materials());
+  expect(materials.edge).toBe(0);
+  expect(materials.visible).toBeGreaterThan(2000);
+  expect(materials.partial).toBeGreaterThan(materials.visible * 0.8);
+  expect(materials.size).toBe(24);
+  expect(materials.after).toBe(0);
+  for (const [width, height] of [
+    [100, 100],
+    [80, 150],
+    [220, 90],
+  ]) {
+    const small = await page.evaluate(
+      ([w, h]) => window.fxTest.geometry(w, h, 0.5),
+      [width, height],
+    );
+    const large = await page.evaluate(
+      ([w, h]) => window.fxTest.geometry(w, h, 1.5),
+      [width, height],
+    );
+    expect(Math.abs(large.width - large.height), 'floor circle in map coordinates').toBeLessThan(5);
+    expect(Math.abs(large.cx - 300), 'center x').toBeLessThan(3);
+    expect(Math.abs(large.cy - 300), 'center y').toBeLessThan(3);
+    expect(large.width, 'saved scale expands effect').toBeGreaterThan(small.width * 2.5);
+  }
+  const warm = await page.evaluate(() => window.fxTest.warm());
+  expect(warm.before).toBeGreaterThan(0);
+  expect(warm.after, 'no frame-time atlas rebakes after warmup').toBe(warm.before);
+  expect(warm.size).toBeLessThanOrEqual(24);
   const frameMs = await page.evaluate(() => window.fxTest.benchmark());
   expect(
     frameMs,
     '15 simultaneous effects should remain within a practical frame budget',
-  ).toBeLessThan(65);
+  ).toBeLessThan(25);
   await writeFile(
     'test-results/vtt-effects-performance.json',
-    JSON.stringify({ simultaneous: 15, passes: 2, frameMs }, null, 2),
+    JSON.stringify({ simultaneous: 15, passes: 2, frameMs, warm, materials }, null, 2),
   );
   for (let size = 0; size < 3; size++) {
     await page.evaluate((size) => window.fxTest.sheet(size), size);

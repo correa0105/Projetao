@@ -1,18 +1,10 @@
 import type { TokenEffect } from '../shared/vtt-effects';
 import { footprintPoint, paintFootprint, type EffectFootprint } from './vtt-effect-footprint';
-import {
-  alpha,
-  bolt,
-  fract,
-  glow,
-  luminousStroke,
-  plume,
-  star,
-  tau,
-  tint,
-} from './vtt-effects-primitives';
+import { alpha, fract, glow, luminousStroke, star, tau, tint } from './vtt-effects-primitives';
 type Random = (index: number) => number;
 import { projectOverheadEffect } from './vtt-effect-projection';
+import { materialSprite } from './vtt-effects-materials';
+import { drawOverheadMagic, energySpiral } from './vtt-effects-overhead-magic';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -37,7 +29,6 @@ function mist(
   opacity: number,
   fire = false,
 ) {
-  const sprite = plume(color, fire ? 'fire' : 'smoke');
   for (let i = 0; i < count; i++) {
     const age = fract(t * (fire ? 0.6 : 0.16) + random(i + 19));
     const angle = random(i + 61) * tau + Math.sin(t * 0.3 + i) * 0.3;
@@ -47,7 +38,8 @@ function mist(
     c.globalAlpha *= Math.sin(age * Math.PI) * opacity;
     c.translate(p.x, p.y);
     c.rotate(fire ? angle + Math.PI / 2 : i + t * 0.12);
-    c.drawImage(sprite, -size / 2, -size / 2, size, size);
+    if (fire) c.globalCompositeOperation = 'screen';
+    materialSprite(c, color, fire ? 'flame' : 'vapor', 0, 0, size * 1.3, 0, t * 0.35 + i * 0.7, 1);
     c.restore();
   }
 }
@@ -77,37 +69,6 @@ function particles(
     }
     c.restore();
   }
-}
-function ice(
-  c: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  angle: number,
-  size: number,
-  color: string,
-) {
-  c.save();
-  c.translate(x, y);
-  c.rotate(angle);
-  const g = c.createLinearGradient(-size * 0.35, size * 0.2, size * 0.35, -size);
-  g.addColorStop(0, alpha(color, 0.12));
-  g.addColorStop(0.45, alpha(tint(color, 0.78), 0.78));
-  g.addColorStop(1, alpha(color, 0.3));
-  c.fillStyle = g;
-  c.beginPath();
-  c.moveTo(-size * 0.3, size * 0.1);
-  c.lineTo(-size * 0.22, -size * 0.5);
-  c.lineTo(0, -size);
-  c.lineTo(size * 0.27, -size * 0.48);
-  c.lineTo(size * 0.3, size * 0.1);
-  c.closePath();
-  c.fill();
-  c.beginPath();
-  c.moveTo(0, -size);
-  c.lineTo(size * 0.1, -size * 0.35);
-  c.lineTo(0, size * 0.1);
-  luminousStroke(c, color, 0.7, 0.7);
-  c.restore();
 }
 function shard(
   c: CanvasRenderingContext2D,
@@ -141,34 +102,30 @@ function shard(
   c.stroke();
   c.restore();
 }
+function flowField(
+  c: CanvasRenderingContext2D,
+  f: EffectFootprint,
+  color: string,
+  t: number,
+  opacity: number,
+) {
+  c.save();
+  c.scale(f.plane.rx / 80, f.plane.ry / 80);
+  materialSprite(c, color, 'energy', 0, 0, 230, t * 0.1, t * 0.22, opacity);
+  c.restore();
+}
 function ribbons(
   c: CanvasRenderingContext2D,
   f: EffectFootprint,
   color: string,
   t: number,
-  random: Random,
   count: number,
   opacity: number,
 ) {
-  for (let i = 0; i < Math.min(2, count); i++)
-    for (let segment = 0; segment < 4; segment++) {
-      c.save();
-      c.globalAlpha *= opacity * (0.35 + segment * 0.17);
-      c.beginPath();
-      for (let k = 0; k <= 16; k++) {
-        const progress = (segment + k / 16) / 4;
-        const angle = progress * tau * 1.65 + t * 0.55 + i * Math.PI;
-        const p = projectOverheadEffect(
-          f.plane,
-          0.8 + random(i + 41) * 0.08,
-          angle,
-          0.06 + progress * 0.84,
-        );
-        k ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y);
-      }
-      luminousStroke(c, color, 0.7 + segment * 0.13, 0.8);
-      c.restore();
-    }
+  c.save();
+  c.globalAlpha *= opacity;
+  energySpiral(c, f, color, t, tint(color, 0.2), 2, count < 5 ? 24 : 32);
+  c.restore();
 }
 // Transparent top-down sprites have an irregular body, not a coin-shaped base.
 // Surface materials follow alpha. Airborne effects rise from the token center
@@ -186,6 +143,7 @@ export function drawOverheadEffect(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawOverheadMagic(c, e, f, t, random, pass, detail)) return;
   if (e.kind === 'poison' || e.kind === 'shadow' || e.kind === 'fire' || e.kind === 'acid') {
     const poison = e.kind === 'poison',
       fire = e.kind === 'fire',
@@ -223,63 +181,8 @@ export function drawOverheadEffect(
           c.restore();
         }
     }
-  } else if (e.kind === 'frost') {
-    if (!front) mist(c, f, tint(e.color, 0.25), t * 0.5, random, n(12), 0.5);
-    else {
-      paintFootprint(c, f, tint(e.color, 0.65), 0.17 + Math.sin(t * 0.7) * 0.025);
-      for (let i = 0; i < n(14); i++) {
-        const p = footprintPoint(f, Math.floor(random(i + 46) * f.edge.length), true);
-        ice(c, p.x, p.y, Math.atan2(p.ny, p.nx) + Math.PI / 2, 7 + random(i + 18) * 10, e.color);
-        c.beginPath();
-        c.moveTo(p.x, p.y);
-        c.lineTo(p.x - p.nx * 8, p.y - p.ny * 8);
-        c.lineTo(p.x - p.nx * 12 + p.ny * 4, p.y - p.ny * 12 - p.nx * 4);
-        luminousStroke(c, e.color, 0.6, 0.65);
-      }
-      particles(c, f, e.color, t * 0.5, random, n(16), true);
-    }
-  } else if (e.kind === 'heal' || e.kind === 'radiant') {
-    const color = e.kind === 'heal' ? e.color : tint(e.color, 0.1);
-    if (!front) {
-      groundCircle(c, f, color, t);
-      mist(c, f, color, t * 0.65, random, n(8), 0.25);
-    } else {
-      c.globalCompositeOperation = 'screen';
-      paintFootprint(c, f, color, 0.08 + Math.sin(t * 2) * 0.025);
-      ribbons(c, f, color, t * 0.6, random, n(6), 0.6);
-      particles(c, f, tint(color, 0.35, '#ffe3a2'), t * 0.8, random, n(22), true);
-      for (let i = 0; i < n(5); i++) {
-        const p = footprintPoint(f, i * 23);
-        glow(c, p.x, p.y, 16, color, 0.12 + Math.sin(t * 2 + i) * 0.05);
-      }
-    }
-  } else if (e.kind === 'lightning' || e.kind === 'sparks') {
-    c.globalCompositeOperation = 'screen';
-    const tick = Math.floor(t * (e.kind === 'lightning' ? 9 : 13));
-    if (!front)
-      for (let i = 0; i < n(7); i++) {
-        const p = footprintPoint(f, i * 17, true);
-        glow(c, p.x, p.y, 19, e.color, 0.1 + random(tick + i) * 0.2);
-      }
-    else {
-      for (let i = 0; i < n(e.kind === 'lightning' ? 5 : 4); i++) {
-        const p = projectOverheadEffect(f.plane, 0.02, 0, 0);
-        const q = projectOverheadEffect(
-          f.plane,
-          0.35 + random(i + tick * 13) * 0.6,
-          random(i + tick * 31 + 107) * tau,
-          random(i + tick * 7),
-        );
-        c.save();
-        c.globalAlpha *= 0.35 + random(tick + i * 7) * 0.65;
-        bolt(c, p, q, 45, random, tick + i * 51, e.color, e.kind === 'lightning' ? 0.033 : 0.018);
-        glow(c, p.x, p.y, 8, e.color, 0.45);
-        c.restore();
-      }
-      particles(c, f, e.color, t * 2.7, random, n(16));
-    }
   } else if (e.kind === 'shield') {
-    if (!front) mist(c, f, e.color, t * 0.3, random, n(7), 0.2);
+    if (!front) flowField(c, f, e.color, t * 0.3, 0.38);
     else {
       paintFootprint(c, f, e.color, 0.075);
       for (let i = 0; i < n(18); i++) {
@@ -300,9 +203,9 @@ export function drawOverheadEffect(
   } else if (e.kind === 'arcane') {
     if (!front) {
       groundCircle(c, f, e.color, t);
-      mist(c, f, e.color, t * 0.5, random, n(7), 0.32);
+      flowField(c, f, e.color, t * 0.5, 0.42);
     } else {
-      ribbons(c, f, e.color, t, random, n(5), 0.55);
+      ribbons(c, f, e.color, t, n(5), 0.55);
       for (let i = 0; i < n(10); i++) {
         const p = footprintPoint(f, Math.floor(random(i + 90) * f.edge.length), true);
         c.save();
@@ -322,9 +225,9 @@ export function drawOverheadEffect(
     const water = e.kind === 'water';
     if (!front) {
       if (water) groundCircle(c, f, e.color, t);
-      mist(c, f, e.color, t, random, n(7), water ? 0.3 : 0.25);
+      flowField(c, f, e.color, t, water ? 0.5 : 0.32);
     } else {
-      ribbons(c, f, e.color, t * (water ? 0.8 : 1.5), random, n(9), 0.75);
+      ribbons(c, f, e.color, t * (water ? 0.8 : 1.5), n(9), 0.75);
       particles(c, f, e.color, t, random, n(20));
     }
   } else if (e.kind === 'earth') {

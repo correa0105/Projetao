@@ -58,6 +58,10 @@ export function renderEffect(
     if (options.overhead) {
       c.scale(options.flipX ? -1 : 1, options.flipY ? -1 : 1);
       const footprint = effectFootprint(width, height, geometry.rx, geometry.ry, options.image);
+      // Surface masks fit the real art; the saved effect size expands the
+      // airborne volume/floor plane instead of cancelling through normalization.
+      footprint.plane.rx *= effect.scale;
+      footprint.plane.ry *= effect.scale;
       drawOverheadEffect(
         c,
         effect,

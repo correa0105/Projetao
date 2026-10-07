@@ -75,6 +75,14 @@ central atrás da arte, circular no mapa; hélice projetada de cima em torno do
 mesmo eixo. Evitar emissor abaixo do corpo, elipse lateral e espiral de perfil.
 Alpha/contain/giro/espelho continuam para os detalhes de superfície.
 
+Refino seguinte: PeriSFX e library.jb2a.com são referências públicas de qualidade.
+PSFX produz áudio; os visuais demonstrados são JB2A. Implementação própria em
+Canvas: campos de vapor/fogo/energia com textura, gelo facetado radial, cura em
+faixas volumétricas e descargas com ataque/decaimento. Não recolocar emissor
+lateral. Manter transparência, IDs/presets, cor/duração/tamanho, acesso básico e
+renderer legado; limitar cache e evitar gerar texturas a cada quadro. Detalhes
+em docs/VTT-EFFECTS-QUALITY.md.
+
 Direção mais recente de 07/10 substitui o acesso premium descrito no histórico:
 as 330 artes individuais de monstros são padrão do VTT para TODA conta autenticada.
 Não exigir administrador, tag vtt_premium ou preferência vtt_premium_tokens para

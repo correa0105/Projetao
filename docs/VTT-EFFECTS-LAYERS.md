@@ -1,5 +1,9 @@
 # Efeitos e camada de barreiras — 07/10/2026
 
+Refino vigente inspirado nas referências públicas PeriSFX/JB2A:
+[VTT-EFFECTS-QUALITY.md](VTT-EFFECTS-QUALITY.md). Materiais procedurais, facetas,
+faixas volumétricas e descargas com decaimento substituem o acabamento anterior.
+
 O VTT oferece 16 modelos. Os seis IDs existentes continuam válidos em mesas e
 atalhos salvos: sangue, chamas, gelo, veneno, cura e faíscas. Os dez novos são
 relâmpagos, selo arcano, barreira, luz radiante, sombras, ácido, vendaval, água,
@@ -61,5 +65,5 @@ alternando camadas com geometria salva, incluindo seleção e gestos em andament
 Os testes verificam alpha irregular, contain/leitura única, eixo central,
 perspectiva de altura e círculo de chão em três proporções. A revisão ampliada
 de veneno/cura/gelo/relâmpagos está em duas capturas consecutivas de tempo.
-A revisão overhead mediu cerca de 3 ms/quadro com 15 efeitos simultâneos e dois
+A revisão overhead mais recente mediu cerca de 9 ms/quadro com 15 efeitos simultâneos e dois
 passes no navegador local; esse número é evidência local, não garantia de hardware.

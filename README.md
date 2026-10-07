@@ -1,5 +1,10 @@
 # Alvorada Cinzenta
 
+Efeitos do VTT refinados com as demonstrações públicas de PeriSFX/JB2A como
+referência: vapor com textura, gelo facetado radial, cura com fluxos de energia
+e relâmpagos com descargas e decaimento, mantendo a vista de cima.
+[Referências, implementação e validação](docs/VTT-EFFECTS-QUALITY.md).
+
 Visitas de perfil (07/10): enquadramento e chão compartilhados com a aba padrão
 de personagens; montaria e mascote na mesma escala. Navegação em cinco placas
 de madeira com contorno no hover/foco; seletor do personagem visitado no canto
