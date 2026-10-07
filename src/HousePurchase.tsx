@@ -4,6 +4,7 @@ import { money } from '../shared/rules';
 import { post } from './api';
 import { Modal } from './components';
 import './house.css';
+import { ItemInfoButton } from './ItemInfoButton';
 
 export function HousePurchase({
   item,
@@ -117,9 +118,12 @@ export function HousePurchase({
             )}
           </>
         )}
-        <button type="submit" disabled={busy}>
-          Comprar por {money(item.price_cp)} PO
-        </button>
+        <div className="item-purchase-actions">
+          <button type="submit" disabled={busy}>
+            Comprar por {money(item.price_cp)} PO
+          </button>
+          <ItemInfoButton item={{ ...item, id: `house-${item.id}`, category: 'Itens de House' }} />
+        </div>
         {error && <p role="alert">{error}</p>}
       </form>
     </Modal>

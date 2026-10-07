@@ -34,6 +34,7 @@ import { eventsRouter } from './events.js';
 import { titlesRouter } from './titles.js';
 import { cardsRouter } from './cards.js';
 import { shopRouter } from './shop.js';
+import { shopItemRulesRouter } from './shop-item-rules.js';
 import { PAPER_STYLES } from '../shared/notice-board.js';
 import { testEligible, rankName, RANKS, RANK_REWARD_CP } from '../shared/progression.js';
 import {
@@ -217,6 +218,7 @@ export function createApp() {
   app.use('/api', companionEquipmentRouter());
   app.use('/api', notificationsRouter());
   app.use('/api', shopRouter());
+  app.use('/api', shopItemRulesRouter());
   app.use('/api', stableRouter());
   app.use('/api', petsRouter());
   app.use('/api', eventsRouter());

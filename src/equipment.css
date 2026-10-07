@@ -165,7 +165,15 @@
 .equipment-picker h3 { margin:0 0 8px; font:14px var(--serif); }
 .equipment-picker p { font-size:12px; margin:0 0 10px; line-height:1.4; }
 .equipment-picker small { display:block; margin-top:8px; font-size:11px; }
+.equipment-set-picker { margin-top:14px; min-width:0; }
+.equipment-set-picker > label { display:block; margin-bottom:5px; font-size:12px; color:#e4d6bb; }
+.equipment-set-controls { display:flex; align-items:center; gap:8px; min-width:0; }
+.equipment-set-controls select { flex:1; min-width:0; width:100%; font-size:12px; padding:8px; background:#252520; color:#e4d6bb; border:1px solid #766248; border-radius:6px; }
+.equipment-set-controls > button { flex-shrink:0; padding:8px; font-size:11px; }
+.equipment-set-picker > p { margin:7px 0 0; color:#a9a296; font-size:11px; line-height:1.5; }
 @media(max-width:600px) {
+ .equipment-set-controls { flex-wrap:wrap; }
+ .equipment-set-controls select { flex-basis:100%; }
  .equipment-panel { padding:14px; }
  .equipment-grid { grid-template-columns:44px minmax(0,1fr) 44px; grid-template-rows:repeat(8,40px); gap:5px 8px; }
  .equipment-art img { max-height:32px; }

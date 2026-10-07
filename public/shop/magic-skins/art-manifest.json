@@ -1,0 +1,50 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "energy-bow-shortbow",
+      "path": "/shop/magic-skins/energy-bow-shortbow.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent medieval fantasy inventory equipment artwork. Primary request: a compact ENERGY SHORTBOW, distinctly short curved limbs rather than a longbow, based on the ornate dark metal and blue energy design in the reference. Input image: referenced energy longbow is a STYLE reference, not the geometry; create a true compact shortbow. Silver-edged dark steel limbs with coherent blue glowing engraved runes, leather center grip, a taut bright blue ENERGY STRING spanning the two limb tips and one single straight blue energy arrow nocked. Realistic richly detailed painted fantasy game art. Full item completely visible centered with margins, three-quarter view, genuinely transparent background, no scene, no person, no floor, no text, no watermark. Keep bow structure coherent, one string, one arrow, restrained glow, no severed or bent limbs.",
+      "original_file": "exec-eb05fcde-e967-426e-a467-feb8e4538768.png",
+      "sha256": "85cda701b109385324ec3165d7185eb0d5eaba4029a9d656ae32e2c4b9f0af2c",
+      "alpha": true
+    },
+    {
+      "id": "belt-of-giant-strength-frost-stone",
+      "path": "/shop/magic-skins/belt-of-giant-strength-frost-stone.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent medieval fantasy RPG shop/inventory item. Reference image is a STYLE reference for realism and wearable loop construction; change this variant's design. Primary request: one complete heavy magical GIANT STRENGTH BELT, shown as a coherent rounded open leather belt loop with the large front buckle visible, realistic leather and metal, exquisite high quality painted game item art. Variant design: FROST AND STONE GIANT: thick charcoal-gray leather, cool pale silver buckle of heavy faceted carved granite with angular ice-crystal engravings, one large pale icy blue gemstone. Rugged cold mountain finish, restrained frost on metal edges, no fire. Composition: centered full item fully visible with margins, three-quarter frontal perspective. Genuinely transparent alpha background. Keep one belt, one functional buckle, one main gemstone, no spare buckles or detached items. No person, no giant, no mannequin, no environment, no floor or shadow outside the belt, no labels, no text, no watermark. Distinctive silhouette details and materials, not just a color change.",
+      "original_file": "exec-776e55e1-fbb2-431f-870e-9fa14daca159.png",
+      "sha256": "6d58e9a7fb09d3a17c7dc3f1fde78233796d724844cd712fb6290ef8eaef5c98",
+      "alpha": true
+    },
+    {
+      "id": "belt-of-giant-strength-fire",
+      "path": "/shop/magic-skins/belt-of-giant-strength-fire.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent medieval fantasy RPG shop/inventory item. Reference image is a STYLE reference for realism and wearable loop construction; change this variant's design. Primary request: one complete heavy magical GIANT STRENGTH BELT, shown as a coherent rounded open leather belt loop with the large front buckle visible, realistic leather and metal, exquisite high quality painted game item art. Variant design: FIRE GIANT: blackened thick leather, dark forged steel buckle edged in aged copper and bronze, angular volcanic motifs, one large deep orange ember gemstone with glowing molten fissures. Restrained fiery highlights in the buckle, no ice. Composition: centered full item fully visible with margins, three-quarter frontal perspective. Genuinely transparent alpha background. Keep one belt, one functional buckle, one main gemstone, no spare buckles or detached items. No person, no giant, no mannequin, no environment, no floor or shadow outside the belt, no labels, no text, no watermark. Distinctive silhouette details and materials, not just a color change.",
+      "original_file": "exec-44301dc8-1ad0-4324-969e-d4271771895f.png",
+      "sha256": "1e0c64dd3f0f6327d858e9cb34a6f9381e6a2e2cda078dc573c7a2858f071fe2",
+      "alpha": true
+    },
+    {
+      "id": "belt-of-giant-strength-cloud",
+      "path": "/shop/magic-skins/belt-of-giant-strength-cloud.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent medieval fantasy RPG shop/inventory item. Reference image is a STYLE reference for realism and wearable loop construction; change this variant's design. Primary request: one complete heavy magical GIANT STRENGTH BELT, shown as a coherent rounded open leather belt loop with the large front buckle visible, realistic leather and metal, exquisite high quality painted game item art. Variant design: CLOUD GIANT: rich cream and pale gray leather, ornate warm gold buckle with sculpted sweeping cloud and wind motifs, one large pearly white opal gemstone. Elegant airy high noble craftsmanship, no flames or storm bolts. Composition: centered full item fully visible with margins, three-quarter frontal perspective. Genuinely transparent alpha background. Keep one belt, one functional buckle, one main gemstone, no spare buckles or detached items. No person, no giant, no mannequin, no environment, no floor or shadow outside the belt, no labels, no text, no watermark. Distinctive silhouette details and materials, not just a color change.",
+      "original_file": "exec-125790e4-5c9a-4f55-978a-e9cfde13c0f6.png",
+      "sha256": "f1a71b227b602e7a1658974de2037b7d7d1153c240b64b69a1ec3da071a7e130",
+      "alpha": true
+    },
+    {
+      "id": "belt-of-giant-strength-storm",
+      "path": "/shop/magic-skins/belt-of-giant-strength-storm.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent medieval fantasy RPG shop/inventory item. Reference image is a STYLE reference for realism and wearable loop construction; change this variant's design. Primary request: one complete heavy magical GIANT STRENGTH BELT, shown as a coherent rounded open leather belt loop with the large front buckle visible, realistic leather and metal, exquisite high quality painted game item art. Variant design: STORM GIANT: deep midnight blue thick leather, silver and dark steel buckle with angular lightning and ocean-wave engravings, one large sapphire gemstone crossed by fine vivid blue energy fissures. Powerful storm finish, restrained blue glow, no flame. Composition: centered full item fully visible with margins, three-quarter frontal perspective. Genuinely transparent alpha background. Keep one belt, one functional buckle, one main gemstone, no spare buckles or detached items. No person, no giant, no mannequin, no environment, no floor or shadow outside the belt, no labels, no text, no watermark. Distinctive silhouette details and materials, not just a color change.",
+      "original_file": "exec-176a4dcb-a940-4f17-b65a-9cff92dba334.png",
+      "sha256": "f4018faa1846535c4ab23717667a4bac129d9736a6be67e6c38a52f6d53b46a2",
+      "alpha": true
+    }
+  ]
+}

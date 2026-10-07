@@ -106,18 +106,29 @@ try {
     'leather-armor',
     'plate-helmet',
     'plate-bracers',
+    'pet-armor-leather',
   ];
+  const petArmorPurchase = await post('/shop/checkout', {
+    character_id: hero.id,
+    idempotency_key: randomUUID(),
+    items: [{ item_id: 'pet-armor-leather', quantity: 1 }],
+  });
+  expect(petArmorPurchase.status()).toBe(201);
   for (const id of fixtureItems) {
     const stock = await pool.query('SELECT id FROM catalog_items WHERE id=$1', [id]);
     expect(stock.rowCount, `Catálogo: ${id}`).toBe(1);
-    await pool.query('INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,1)', [
-      hero.id,
-      id,
-    ]);
+    if (id !== 'pet-armor-leather')
+      await pool.query('INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,1)', [
+        hero.id,
+        id,
+      ]);
   }
   const names = new Map(
     (
-      await pool.query('SELECT id,name FROM catalog_items WHERE id=ANY($1::text[])', [fixtureItems])
+      await pool.query(
+        "SELECT id,COALESCE(raw_data->>'armor_piece_name',name) AS name FROM catalog_items WHERE id=ANY($1::text[])",
+        [fixtureItems],
+      )
     ).rows.map((row) => [row.id, row.name as string]),
   );
   const equipmentPath = `/companions/${hero.id}/equipment`;
@@ -316,8 +327,45 @@ try {
   await equip('saddle', '');
   await reserved('saddle-military', 0);
   await equip('saddle', 'legacy:saddle-riding');
-  await equip('armor', 'leather-armor');
-  await reserved('leather-armor', 1);
+  const bardaSource = bag.getByRole('button', {
+    name: `${names.get('barding-padded-armor')}, quantidade 1`,
+    exact: true,
+  });
+  const [dragResponse] = await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().endsWith('/api' + equipmentPath) && response.request().method() === 'PUT',
+    ),
+    bardaSource.dragTo(panel.locator('[data-companion-slot="armor"]')),
+  ]);
+  expect(dragResponse.status()).toBe(200);
+  await reserved('barding-padded-armor', 1);
+  const animalBeforeForged = await outfit(horse.id);
+  for (const [slot, item_id] of [
+    ['armor', 'leather-armor'],
+    ['head', 'plate-helmet'],
+    ['bracers', 'plate-bracers'],
+  ]) {
+    const response = await context.request.put(origin + '/api' + equipmentPath, {
+      headers: { Origin: origin },
+      data: { kind: 'mount', companion_id: horse.id, slot, item_id },
+    });
+    expect(response.status()).toBe(400);
+  }
+  expect(await outfit(horse.id)).toEqual(animalBeforeForged);
+  expect(
+    (
+      await context.request.put(origin + '/api' + equipmentPath, {
+        headers: { Origin: origin },
+        data: {
+          kind: 'mount',
+          companion_id: mule.id,
+          slot: 'armor',
+          item_id: 'barding-padded-armor',
+        },
+      })
+    ).status(),
+  ).toBe(409);
   await selectSubject('Personagem');
   const humanArmor = page.locator('[data-equipment-slot="armor"]');
   await humanArmor.locator('.equipment-slot-trigger').click();
@@ -325,23 +373,28 @@ try {
     await humanArmor
       .locator('select option')
       .evaluateAll((options) => options.map((node) => (node as HTMLOptionElement).value)),
-  ).not.toContain('leather-armor');
+  ).toContain('leather-armor');
+  expect(
+    await humanArmor
+      .locator('select option')
+      .evaluateAll((options) => options.map((node) => (node as HTMLOptionElement).value)),
+  ).not.toContain('barding-padded-armor');
   await page.keyboard.press('Escape');
   expect(
     (
       await post('/inventory/equipment', {
         character_id: hero.id,
         slot: 'armor',
-        item_id: 'leather-armor',
+        item_id: 'barding-padded-armor',
       })
     ).status(),
-  ).toBe(409);
+  ).toBe(400);
   expect(
     (
       await post('/inventory/transfers', {
         character_id: hero.id,
         direction: 'to_vault',
-        item_id: 'leather-armor',
+        item_id: 'barding-padded-armor',
         quantity: 1,
         idempotency_key: randomUUID(),
       })
@@ -367,22 +420,32 @@ try {
   await expect(panel.locator('.companion-outfit-image figcaption')).toHaveText('Lua');
   await panel.locator('.companion-equipment-choice select').selectOption(dog.id);
   await expect(panel.locator('[data-companion-slot="saddle"]')).toHaveCount(0);
-  const source = bag.getByRole('button', {
-    name: `${names.get('plate-helmet')}, quantidade 1`,
-    exact: true,
-  });
-  const target = panel.locator('[data-companion-slot="head"]');
-  const [dragResponse] = await Promise.all([
-    page.waitForResponse(
-      (response) =>
-        response.url().endsWith('/api' + equipmentPath) && response.request().method() === 'PUT',
-    ),
-    source.dragTo(target),
-  ]);
-  expect(dragResponse.status()).toBe(200);
-  await reserved('plate-helmet', 1);
-  await equip('bracers', 'plate-bracers');
-  await reserved('plate-bracers', 1);
+  for (const [slot, forbidden] of [
+    ['head', 'plate-helmet'],
+    ['armor', 'leather-armor'],
+    ['bracers', 'plate-bracers'],
+  ] as const) {
+    const popup = await picker(slot);
+    expect(
+      await popup
+        .locator('select option')
+        .evaluateAll((options) => options.map((node) => (node as HTMLOptionElement).value)),
+    ).not.toContain(forbidden);
+    await page.keyboard.press('Escape');
+    expect(
+      (
+        await context.request.put(origin + '/api' + equipmentPath, {
+          headers: { Origin: origin },
+          data: { kind: 'pet', companion_id: dog.id, slot, item_id: forbidden },
+        })
+      ).status(),
+    ).toBe(400);
+  }
+  expect((await outfit(dog.id)).equipped).toHaveLength(0);
+  await reserved('plate-helmet', 0);
+  await reserved('plate-bracers', 0);
+  await equip('armor', 'pet-armor-leather');
+  await reserved('pet-armor-leather', 1);
   const dressedDog = await dress(dog.id, 'pet');
 
   for (const width of [1440, 768, 390, 320]) {
@@ -393,6 +456,17 @@ try {
     ] as const) {
       await selectSubject(label, id);
       await validateImage(panel.locator('.companion-outfit-image img'), saved.image_url!);
+      expect(
+        await panel.locator('[data-companion-slot] .equipment-slot-trigger').evaluateAll((slots) =>
+          slots.every((slot) => {
+            const icon = slot.querySelector('svg[data-companion-icon]');
+            return Boolean(
+              slot.querySelector('img') || (icon && icon.querySelector('path')?.getAttribute('d')),
+            );
+          }),
+        ),
+      ).toBe(true);
+      await expect(panel.locator('svg.lucide-package')).toHaveCount(0);
       await panel.scrollIntoViewIfNeeded();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
         true,
@@ -418,15 +492,16 @@ try {
   await page.reload();
   await selectSubject('Montaria', horse.id);
   await validateImage(panel.locator('.companion-outfit-image img'), dressedHorse.image_url!);
-  await reserved('leather-armor', 1);
+  await reserved('barding-padded-armor', 1);
   await selectSubject('Mascote', dog.id);
   await validateImage(panel.locator('.companion-outfit-image img'), dressedDog.image_url!);
-  await reserved('plate-helmet', 1);
-  await reserved('plate-bracers', 1);
+  await reserved('plate-helmet', 0);
+  await reserved('plate-bracers', 0);
+  await reserved('pet-armor-leather', 1);
   expect(artRequests).toHaveLength(2);
   expect(errors).toEqual([]);
   console.log(
-    'Equipamento companion no navegador: trocar sujeito/animal, legado/estoque/reservas, drag, cofre/humano bloqueados, Vestir automático/private/revisão/proporção e 1440/768/390/320 OK. Sem provider: fixture interna concluiu2jobs com bases reais.',
+    'Equipamento companion no navegador: trocar sujeito/animal, legado/estoque/reservas, drag de barda, peças humanas recusadas por animais, cofre/reserva bloqueados, Vestir automático/private/revisão/proporção e 1440/768/390/320 OK. Sem provider: fixture interna concluiu 2 jobs com bases reais.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/companion-equipment-failure.png', fullPage: true });

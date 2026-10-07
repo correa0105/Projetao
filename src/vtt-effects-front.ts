@@ -1,259 +1,309 @@
 import type { TokenEffect } from '../shared/vtt-effects';
-const tau = Math.PI * 2;
-const cache = new Map<string, HTMLCanvasElement>();
-const frac = (n: number) => n - Math.floor(n);
-const hash = (x: number, y: number) => frac(Math.sin(x * 127.1 + y * 311.7) * 43758.5453);
-function noise(x: number, y: number) {
-  const a = Math.floor(x),
-    b = Math.floor(y),
-    u = frac(x),
-    v = frac(y),
-    sx = u * u * (3 - 2 * u),
-    sy = v * v * (3 - 2 * v);
-  return (
-    (hash(a, b) * (1 - sx) + hash(a + 1, b) * sx) * (1 - sy) +
-    (hash(a, b + 1) * (1 - sx) + hash(a + 1, b + 1) * sx) * sy
-  );
-}
-// Cached density textures: soft, turbulent edges instead of flat discs/solid shapes.
-function plume(color: string, fire: boolean) {
-  const key = color + fire;
-  const existing = cache.get(key);
-  if (existing) return existing;
-  const canvas = document.createElement('canvas');
-  canvas.width = canvas.height = 256;
-  const c = canvas.getContext('2d')!,
-    pixels = c.createImageData(256, 256);
-  const rgb = [1, 3, 5].map((i) => parseInt(color.slice(i, i + 2), 16));
-  for (let y = 0; y < 256; y++)
-    for (let x = 0; x < 256; x++) {
-      const px = (x / 255) * 2 - 1,
-        py = (y / 255) * 2 - 1;
-      const n =
-        noise(x / 38, y / 38) * 0.53 + noise(x / 17, y / 17) * 0.28 + noise(x / 7, y / 7) * 0.19;
-      const drift = fire ? Math.sin(py * 7) * 0.12 * (1 - py) : 0;
-      const width = fire ? 0.2 + (py + 1) * 0.31 : 1;
-      const radial = Math.max(0, 1 - ((px - drift) / width) ** 2 - py ** 2);
-      const density = Math.max(0, radial * (n * 1.35 + 0.12) - 0.12);
-      const core = fire ? Math.min(1, density * 0.9 * (py + 1)) : density * 0.18;
-      const index = (y * 256 + x) * 4;
-      for (let k = 0; k < 3; k++)
-        pixels.data[index + k] = rgb[k] * (1 - core) + (fire ? [255, 237, 179][k] : 219) * core;
-      pixels.data[index + 3] = Math.min(255, density * (fire ? 335 : 205));
-    }
-  c.putImageData(pixels, 0, 0);
-  if (cache.size >= 24) cache.delete(cache.keys().next().value!);
-  cache.set(key, canvas);
-  return canvas;
-}
-function star(c: CanvasRenderingContext2D, x: number, y: number, r: number) {
-  c.beginPath();
-  c.moveTo(x, y - r);
-  c.quadraticCurveTo(x + r * 0.12, y - r * 0.12, x + r * 0.65, y);
-  c.quadraticCurveTo(x + r * 0.12, y + r * 0.12, x, y + r);
-  c.quadraticCurveTo(x - r * 0.12, y + r * 0.12, x - r * 0.65, y);
-  c.quadraticCurveTo(x - r * 0.12, y - r * 0.12, x, y - r);
-  c.fill();
-}
-function bolt(
+import {
+  alpha,
+  bolt,
+  floorRing,
+  fract,
+  glow,
+  luminousStroke,
+  plume,
+  star,
+  tau,
+  tint,
+} from './vtt-effects-primitives';
+import { drawExpandedEffect } from './vtt-effects-expanded';
+
+type Random = (i: number) => number;
+function smoke(
   c: CanvasRenderingContext2D,
-  a: { x: number; y: number },
-  b: { x: number; y: number },
-  r: number,
-  seed: number,
   color: string,
-) {
-  const points = Array.from({ length: 17 }, (_, i) => {
-    const p = i / 16,
-      n = (hash(i, seed) - 0.5) * r * 0.24 * Math.sin(p * Math.PI);
-    return { x: a.x + (b.x - a.x) * p + n, y: a.y + (b.y - a.y) * p - n * 0.65 };
-  });
-  c.beginPath();
-  points.forEach((p, i) => (i ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y)));
-  for (let k = 4; k < 14; k += 4) {
-    const p = points[k],
-      side = k % 8 ? 1 : -1;
-    c.moveTo(p.x, p.y);
-    c.lineTo(p.x + r * 0.15 * side, p.y - r * 0.12);
-    c.lineTo(p.x + r * 0.08 * side, p.y - r * 0.2);
-    c.lineTo(p.x + r * 0.28 * side, p.y - r * 0.38);
-  }
-  c.shadowColor = color;
-  c.shadowBlur = r * 0.13;
-  c.lineWidth = Math.max(0.9, r * 0.035);
-  c.strokeStyle = color + '60';
-  c.stroke();
-  c.lineWidth = Math.max(0.6, r * 0.014);
-  c.strokeStyle = color;
-  c.stroke();
-  c.shadowBlur = 0;
-  c.lineWidth = Math.max(0.35, r * 0.006);
-  c.strokeStyle = '#f5fbff';
-  c.stroke();
-}
-export function drawEffectFront(
-  c: CanvasRenderingContext2D,
-  effect: TokenEffect,
   r: number,
   t: number,
-  random: (i: number) => number,
+  random: Random,
+  count: number,
+  opacity: number,
 ) {
-  c.save();
-  c.imageSmoothingEnabled = true;
-  c.imageSmoothingQuality = 'high';
-  if (effect.kind === 'fire') {
-    const sprite = plume(effect.color, true);
-    for (let i = 0; i < 17; i++) {
-      const p = frac(t * (0.48 + random(i) * 0.25) + random(i + 30));
-      const x = (random(i + 18) - 0.5) * r * 1.25 + Math.sin(t * 2 + i) * r * 0.08,
-        y = r * 0.69 - p * r * 1.18,
-        w = r * (0.23 + random(i + 75) * 0.17),
-        h = r * (0.78 + random(i + 40) * 0.45);
-      c.save();
-      c.globalAlpha *= Math.sin(p * Math.PI) * 0.84;
-      c.translate(x, y);
-      c.rotate(Math.sin(t * 1.2 + i) * 0.18);
-      c.drawImage(sprite, -w / 2, -h, w, h);
-      c.restore();
-    }
-    c.globalCompositeOperation = 'screen';
-    const glow = c.createRadialGradient(0, r * 0.5, 0, 0, r * 0.5, r * 0.72);
-    glow.addColorStop(0, '#ffa65348');
-    glow.addColorStop(1, '#ef601000');
-    c.fillStyle = glow;
-    c.fillRect(-r, -r * 0.22, r * 2, r * 1.44);
-    c.fillStyle = '#ffe9b5';
-    for (let i = 0; i < 14; i++) {
-      const p = frac(t * 0.7 + random(i)),
-        x = (random(i + 20) - 0.5) * r * 1.25,
-        y = r * 0.55 - p * r * 1.5;
-      c.save();
-      c.globalAlpha *= Math.sin(p * Math.PI) * 0.9;
-      c.beginPath();
-      c.ellipse(x, y, r * 0.007, r * 0.022, 0.2, 0, tau);
-      c.fill();
-      c.restore();
-    }
-  } else if (effect.kind === 'frost') {
+  const sprite = plume(color, 'smoke');
+  for (let i = 0; i < count; i++) {
+    const p = fract(t * (0.11 + random(i) * 0.09) + random(i + 20)),
+      x = Math.sin(p * 4 + i) * r * (0.4 + random(i + 10) * 0.4),
+      y = r * 0.65 - p * r * 1.65,
+      size = r * (0.6 + p * 0.6 + random(i + 40) * 0.18);
     c.save();
+    c.globalAlpha *= Math.sin(p * Math.PI) * opacity;
+    c.translate(x, y);
+    c.rotate(p * 1.3 + i);
+    c.drawImage(sprite, -size / 2, -size / 2, size, size);
+    c.restore();
+  }
+}
+function crystals(
+  c: CanvasRenderingContext2D,
+  r: number,
+  t: number,
+  color: string,
+  random: Random,
+  count: number,
+) {
+  for (let i = 0; i < count; i++) {
+    const a = (i / count) * tau,
+      x = Math.cos(a) * r * 0.84,
+      y = Math.sin(a) * r * 0.76,
+      h = r * (0.12 + random(i + 61) * 0.16),
+      w = h * 0.36;
+    c.save();
+    c.translate(x, y);
+    c.rotate(a + Math.PI / 2);
+    const g = c.createLinearGradient(-w, 0, w, -h);
+    g.addColorStop(0, alpha(color, 0.15));
+    g.addColorStop(0.45, alpha(tint(color, 0.65), 0.72));
+    g.addColorStop(1, alpha(color, 0.3));
+    c.fillStyle = g;
     c.beginPath();
-    c.ellipse(0, 0, r * 0.75, r * 0.75, 0, 0, tau);
-    c.clip();
-    const ice = c.createLinearGradient(-r, r, r, -r);
-    ice.addColorStop(0, effect.color + '85');
-    ice.addColorStop(0.46, '#e9faff12');
-    ice.addColorStop(1, effect.color + '42');
-    c.fillStyle = ice;
-    c.fillRect(-r, -r, r * 2, r * 2);
-    for (let i = 0; i < 11; i++) {
-      const a = random(i) * tau,
-        x = Math.cos(a) * r * 0.72,
-        y = Math.sin(a) * r * 0.72;
-      c.strokeStyle = '#dff6ff' + (i % 2 ? 'ab' : '65');
-      c.lineWidth = r * 0.008;
+    c.moveTo(-w, 0);
+    c.lineTo(-w * 0.6, -h * 0.55);
+    c.lineTo(0, -h);
+    c.lineTo(w * 0.7, -h * 0.5);
+    c.lineTo(w, 0);
+    c.closePath();
+    c.fill();
+    c.beginPath();
+    c.moveTo(0, -h);
+    c.lineTo(w * 0.2, -h * 0.48);
+    c.lineTo(0, 0);
+    luminousStroke(c, color, r * 0.006, 0.5);
+    c.restore();
+  }
+}
+function motes(
+  c: CanvasRenderingContext2D,
+  r: number,
+  t: number,
+  random: Random,
+  color: string,
+  count: number,
+  stars = false,
+) {
+  c.fillStyle = tint(color, 0.78);
+  for (let i = 0; i < count; i++) {
+    const p = fract(t * (0.24 + random(i) * 0.17) + random(i + 40)),
+      x = (random(i + 20) - 0.5) * r * 1.5 + Math.sin(t + i) * r * 0.025,
+      y = r * 0.65 - p * r * 1.85,
+      size = r * (0.008 + random(i + 30) * 0.018);
+    c.save();
+    c.globalAlpha *= Math.sin(p * Math.PI) * 0.85;
+    if (stars) star(c, x, y, size * 1.5);
+    else {
       c.beginPath();
-      c.moveTo(x, y);
-      let px = x,
-        py = y;
-      for (let k = 0; k < 4; k++) {
-        px = px * 0.7 + (random(i + k * 30) - 0.5) * r * 0.15;
-        py = py * 0.7 + (random(i + k * 20) - 0.5) * r * 0.15;
-        c.lineTo(px, py);
-        c.lineTo(px + Math.cos(a + 0.9) * r * 0.14, py + Math.sin(a + 0.9) * r * 0.14);
-        c.moveTo(px, py);
-      }
-      c.stroke();
+      c.ellipse(x, y, size * 0.55, size * 1.2, 0.2, 0, tau);
+      c.fill();
     }
     c.restore();
-    c.shadowColor = '#b4ddff';
-    c.shadowBlur = r * 0.08;
-    c.fillStyle = '#f0fbff';
-    for (let i = 0; i < 9; i++) {
-      const p = frac(t * 0.16 + random(i)),
-        a = random(i + 12) * tau;
-      c.save();
-      c.globalAlpha *= 0.3 + 0.7 * Math.sin(p * Math.PI);
-      star(c, Math.cos(a) * r * 0.65, Math.sin(a) * r * 0.65, r * 0.034);
-      c.restore();
-    }
-  } else if (effect.kind === 'poison') {
-    const smoke = plume(effect.color, false);
-    for (let i = 0; i < 13; i++) {
-      const p = frac(t * (0.15 + random(i) * 0.12) + random(i + 20)),
-        x = Math.sin(p * 4 + i) * r * (0.2 + random(i + 10) * 0.45),
-        y = r * 0.75 - p * r * 1.55,
-        size = r * (0.6 + p * 0.42 + random(i + 40) * 0.15);
-      c.save();
-      c.globalAlpha *= Math.sin(p * Math.PI) * 0.72;
-      c.translate(x, y);
-      c.rotate(p * 1.5 + i);
-      c.drawImage(smoke, -size / 2, -size / 2, size, size);
-      c.restore();
-    }
-    c.strokeStyle = '#b7ca8180';
-    c.lineWidth = r * 0.012;
-    for (let i = 0; i < 5; i++) {
-      const p = frac(t * 0.4 + random(i));
-      c.save();
-      c.globalAlpha *= Math.sin(p * Math.PI);
-      c.beginPath();
-      c.arc((random(i + 3) - 0.5) * r, r * 0.5 - p * r * 0.95, r * 0.026, 0, tau);
-      c.stroke();
-      c.restore();
-    }
-  } else if (effect.kind === 'heal') {
-    c.globalCompositeOperation = 'screen';
-    for (let i = 0; i < 3; i++) {
-      c.beginPath();
-      for (let k = 0; k <= 32; k++) {
-        const p = k / 32,
-          a = p * tau + t * 1.2 + i * 2.1,
-          x = Math.cos(a) * r * 0.65,
-          y = r * 0.62 - p * r * 1.35;
-        if (Math.sin(a) < 0) {
-          c.moveTo(x, y);
-          continue;
-        }
-        c.lineTo(x, y);
-      }
-      c.shadowColor = effect.color;
-      c.shadowBlur = r * 0.08;
-      c.lineWidth = r * 0.016;
-      c.strokeStyle = effect.color + 'a0';
-      c.stroke();
-      c.lineWidth = r * 0.005;
-      c.strokeStyle = '#fff6dba8';
-      c.stroke();
-    }
-    c.fillStyle = '#fff4cf';
-    c.shadowColor = '#f4d68e';
-    for (let i = 0; i < 13; i++) {
-      const p = frac(t * 0.27 + random(i)),
-        x = (random(i + 21) - 0.5) * r * 1.35,
-        y = r * 0.6 - p * r * 1.3;
-      c.save();
-      c.globalAlpha *= Math.sin(p * Math.PI);
-      star(c, x, y, r * (0.016 + random(i + 32) * 0.045));
-      c.restore();
-    }
-  } else if (effect.kind === 'sparks') {
-    c.globalCompositeOperation = 'screen';
-    const tick = Math.floor(t * 11);
-    for (let i = 0; i < 3; i++) {
-      const a = random(i + (tick % 17)) * tau,
-        spread = r * (0.62 + random(i + 60) * 0.2);
-      c.save();
-      c.globalAlpha *= 0.55 + 0.4 * hash(tick, i);
-      bolt(
-        c,
-        { x: Math.cos(a) * spread, y: Math.sin(a) * spread },
-        { x: -Math.cos(a + 0.4) * spread, y: -Math.sin(a + 0.4) * spread },
-        r,
-        tick + i * 53,
-        effect.color,
-      );
-      c.restore();
-    }
   }
-  c.restore();
+}
+export function drawEffectLayer(
+  c: CanvasRenderingContext2D,
+  e: TokenEffect,
+  r: number,
+  t: number,
+  random: Random,
+  pass: 'behind' | 'front',
+  detail = 1,
+) {
+  const front = pass === 'front',
+    n = (count: number) => Math.max(3, Math.round(count * detail));
+  c.imageSmoothingEnabled = true;
+  c.imageSmoothingQuality = 'high';
+  if (e.kind === 'fire') {
+    if (!front) {
+      glow(c, 0, r * 0.42, r * 1.2, e.color, 0.24);
+      smoke(c, tint(e.color, 0.72, '#181724'), r, t, random, n(6), 0.35);
+      c.save();
+      c.scale(1, 0.28);
+      glow(c, 0, r * 1.7, r * 0.92, e.color, 0.55);
+      c.restore();
+    } else {
+      const sprite = plume(e.color, 'fire');
+      for (let i = 0; i < n(20); i++) {
+        const p = fract(t * (0.4 + random(i) * 0.25) + random(i + 30)),
+          x = (random(i + 18) - 0.5) * r * 1.3 + Math.sin(t * 2 + i) * r * 0.075,
+          y = r * 0.73 - p * r * 0.8,
+          w = r * (0.25 + random(i + 75) * 0.22),
+          h = r * (0.65 + random(i + 40) * 0.68);
+        c.save();
+        c.globalAlpha *= Math.sin(p * Math.PI) * 0.83;
+        c.translate(x, y);
+        c.rotate(Math.sin(t * 1.3 + i) * 0.16);
+        c.drawImage(sprite, -w / 2, -h, w, h);
+        c.restore();
+      }
+      c.globalCompositeOperation = 'screen';
+      glow(c, 0, r * 0.51, r * 0.65, e.color, 0.23);
+      motes(c, r, t * 1.8, random, e.color, n(24));
+    }
+  } else if (e.kind === 'frost') {
+    if (!front) {
+      glow(c, 0, r * 0.4, r * 1.2, e.color, 0.19);
+      smoke(c, tint(e.color, 0.42), r, t * 0.45, random, n(7), 0.26);
+      crystals(c, r, t, e.color, random, n(12));
+    } else {
+      c.save();
+      c.beginPath();
+      c.ellipse(0, 0, r * 0.75, r * 0.75, 0, 0, tau);
+      c.clip();
+      const g = c.createLinearGradient(-r, r, r, -r);
+      g.addColorStop(0, alpha(e.color, 0.3));
+      g.addColorStop(0.45, alpha(tint(e.color, 0.8), 0.035));
+      g.addColorStop(1, alpha(e.color, 0.18));
+      c.fillStyle = g;
+      c.fillRect(-r, -r, r * 2, r * 2);
+      for (let i = 0; i < n(12); i++) {
+        const a = random(i) * tau;
+        let x = Math.cos(a) * r * 0.77,
+          y = Math.sin(a) * r * 0.77;
+        c.beginPath();
+        c.moveTo(x, y);
+        for (let k = 0; k < 5; k++) {
+          x = x * 0.68 + (random(i + k * 31) - 0.5) * r * 0.12;
+          y = y * 0.68 + (random(i + k * 23) - 0.5) * r * 0.12;
+          c.lineTo(x, y);
+          c.lineTo(x + Math.cos(a + 0.9) * r * 0.12, y + Math.sin(a + 0.9) * r * 0.12);
+          c.moveTo(x, y);
+        }
+        luminousStroke(c, e.color, r * 0.005, 0.55);
+      }
+      c.restore();
+      c.fillStyle = '#eefaff';
+      for (let i = 0; i < n(16); i++) {
+        const p = fract(t * 0.13 + random(i)),
+          a = random(i + 15) * tau,
+          x = Math.cos(a) * r * (0.55 + random(i + 42) * 0.45),
+          y = -r * 0.95 + p * r * 1.8;
+        c.save();
+        c.globalAlpha *= Math.sin(p * Math.PI) * 0.7;
+        star(c, x, y, r * (0.012 + random(i + 28) * 0.022));
+        c.restore();
+      }
+    }
+  } else if (e.kind === 'poison') {
+    if (!front) {
+      glow(c, 0, r * 0.52, r * 1.2, e.color, 0.22);
+      smoke(c, tint(e.color, 0.4, '#25301d'), r, t, random, n(10), 0.6);
+    } else {
+      smoke(c, e.color, r, t, random, n(10), 0.62);
+      for (let i = 0; i < n(9); i++) {
+        const p = fract(t * (0.19 + random(i) * 0.1) + random(i + 13)),
+          x = (random(i + 43) - 0.5) * r * 1.55,
+          y = r * 0.68 - p * r * 1.65,
+          size = r * (0.025 + random(i + 32) * 0.03);
+        c.save();
+        c.globalAlpha *= Math.sin(p * Math.PI);
+        const g = c.createRadialGradient(x - size * 0.3, y - size * 0.4, 0, x, y, size);
+        g.addColorStop(0, alpha(tint(e.color, 0.8), 0.55));
+        g.addColorStop(0.55, alpha(e.color, 0.12));
+        g.addColorStop(1, alpha(e.color, 0.02));
+        c.fillStyle = g;
+        c.beginPath();
+        c.arc(x, y, size, 0, tau);
+        c.fill();
+        c.strokeStyle = alpha(tint(e.color, 0.4), 0.65);
+        c.lineWidth = r * 0.008;
+        c.stroke();
+        c.beginPath();
+        c.arc(x - size * 0.15, y - size * 0.15, size * 0.6, Math.PI, Math.PI * 1.55);
+        c.stroke();
+        c.restore();
+      }
+    }
+  } else if (e.kind === 'heal') {
+    if (!front) {
+      floorRing(c, r, e.color, t);
+      c.save();
+      c.translate(0, r * 0.6);
+      c.scale(1, 0.26);
+      c.rotate(t * 0.14);
+      for (let i = 0; i < 12; i++) {
+        c.save();
+        c.rotate((i * tau) / 12);
+        c.beginPath();
+        c.moveTo(r * 0.8, -r * 0.035);
+        c.lineTo(r * 0.9, 0);
+        c.lineTo(r * 0.8, r * 0.035);
+        luminousStroke(c, e.color, r * 0.008, 0.5);
+        c.restore();
+      }
+      c.restore();
+      glow(c, 0, r * 0.3, r, e.color, 0.13);
+    } else {
+      c.globalCompositeOperation = 'screen';
+      for (let i = 0; i < 3; i++) {
+        c.beginPath();
+        let joined = false;
+        for (let k = 0; k <= 64; k++) {
+          const p = k / 64,
+            a = p * tau * 1.15 + t * 0.85 + (i * tau) / 3,
+            x = Math.cos(a) * r * 0.65,
+            y = r * 0.67 - p * r * 1.48;
+          if (Math.sin(a) < -0.1) {
+            joined = false;
+            continue;
+          }
+          if (joined) c.lineTo(x, y);
+          else c.moveTo(x, y);
+          joined = true;
+        }
+        luminousStroke(c, e.color, r * 0.011, 0.8);
+      }
+      motes(c, r, t, random, tint(e.color, 0.55, '#ffe6a8'), n(20), true);
+    }
+  } else if (e.kind === 'sparks') {
+    c.globalCompositeOperation = 'screen';
+    const tick = Math.floor(t * 9);
+    if (!front) {
+      glow(c, 0, 0, r, e.color, 0.11);
+      for (let arc = 0; arc < 3; arc++) {
+        c.beginPath();
+        for (let i = 0; i <= 16; i++) {
+          const a = (i / 16) * tau * 0.56 + (arc * tau) / 3 + t * 0.35,
+            rr = r * (0.9 + (random(i + tick * 41 + arc) - 0.5) * 0.22),
+            x = Math.cos(a) * rr,
+            y = Math.sin(a) * rr;
+          i ? c.lineTo(x, y) : c.moveTo(x, y);
+        }
+        luminousStroke(c, e.color, r * 0.009, 0.7);
+      }
+    } else {
+      for (let i = 0; i < n(4); i++) {
+        const a = random(i + (tick % 19)) * tau,
+          spread = r * (0.48 + random(i + 60) * 0.24);
+        c.save();
+        c.globalAlpha *= 0.45 + random(tick + i) * 0.5;
+        bolt(
+          c,
+          { x: Math.cos(a) * spread, y: Math.sin(a) * spread },
+          { x: -Math.cos(a + 0.4) * spread, y: -Math.sin(a + 0.4) * spread },
+          r,
+          random,
+          tick + i * 51,
+          e.color,
+          0.011,
+        );
+        c.restore();
+      }
+      for (let i = 0; i < n(18); i++) {
+        const p = fract(t * 0.8 + random(i + 8)),
+          a = random(i + 24) * tau,
+          rr = r * (0.5 + p * 0.65),
+          x = Math.cos(a) * rr,
+          y = Math.sin(a) * rr;
+        c.save();
+        c.globalAlpha *= 1 - p;
+        c.beginPath();
+        c.moveTo(x, y);
+        c.lineTo(x + Math.cos(a) * r * 0.065, y + Math.sin(a) * r * 0.065);
+        luminousStroke(c, e.color, r * 0.007, 0.8);
+        c.restore();
+      }
+    }
+  } else drawExpandedEffect(c, e, r, t, random, pass, detail);
 }

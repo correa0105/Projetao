@@ -79,7 +79,7 @@ try {
   await page.goto(origin + '/#stable');
   await expect(page.locator('.stable-price')).toContainText('∞ PO disponíveis');
   const mountName = page.getByLabel('Como vai se chamar?', { exact: true }),
-    mountBuy = page.getByRole('button', { name: 'Comprar conjunto', exact: true });
+    mountBuy = page.getByRole('button', { name: 'Comprar montaria', exact: true });
   await expect(mountName).toHaveAttribute('required', '');
   await expect(mountName).toHaveValue('');
   await expect(mountBuy).toBeDisabled();
@@ -199,7 +199,7 @@ try {
   ).toBeVisible();
   await visit.goto(origin + '/#stable');
   await visit.getByLabel('Como vai se chamar?', { exact: true }).fill('Montaria sem saldo');
-  await expect(visit.getByRole('button', { name: 'Comprar conjunto', exact: true })).toBeDisabled();
+  await expect(visit.getByRole('button', { name: 'Comprar montaria', exact: true })).toBeDisabled();
   await expect(visit.locator('.stable-price')).toContainText('0 PO disponíveis');
   await visit.goto(origin + '/#pets');
   await visit.getByLabel('Como vai se chamar?', { exact: true }).fill('Mascote sem saldo');

@@ -8,6 +8,12 @@ import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { normalizeArtImage, artWorkerAvailable } from './character-art.js';
 import { allocatedCopies, companionAllocated } from './companion-inventory.js';
+import { armorSetPieces } from './equipment-sets.js';
+import {
+  equipmentArtReference,
+  trustedEquipmentPath,
+  rasterizeEquipmentArt,
+} from './equipment-art-reference.js';
 import { ART_MONTHLY_LIMIT } from '../shared/character-art.js';
 import {
   COMPANION_SLOTS,
@@ -33,6 +39,9 @@ const equipSchema = z
   .strict();
 const artSchema = z
   .object({ kind: kindSchema, companion_id: uuid, idempotency_key: uuid })
+  .strict();
+const equipSetSchema = z
+  .object({ kind: kindSchema, companion_id: uuid, item_id: z.string().min(1).max(100) })
   .strict();
 const table = (kind: CompanionKind) => (kind === 'mount' ? 'character_mounts' : 'character_pets');
 async function workerAvailable(db: DB) {
@@ -90,6 +99,20 @@ async function ensureWardrobe(db: DB, animal: any) {
         );
     }
   }
+  const { rows: current } = await db.query(
+    'SELECT e.slot,c.* FROM companion_equipment e JOIN catalog_items c ON c.id=e.item_id WHERE e.wardrobe_id=$1',
+    [animal.id],
+  );
+  const invalid = current.filter(
+    (item) => !compatibleCompanionSlots(item, animal.kind, animal.species_id).includes(item.slot),
+  );
+  if (invalid.length) {
+    await db.query(
+      'DELETE FROM companion_equipment WHERE wardrobe_id=$1 AND item_id=ANY($2::text[])',
+      [animal.id, invalid.map((item) => item.id)],
+    );
+    await db.query('UPDATE companion_wardrobes SET revision=revision+1 WHERE id=$1', [animal.id]);
+  }
   return (await db.query('SELECT * FROM companion_wardrobes WHERE id=$1 FOR UPDATE', [animal.id]))
     .rows[0];
 }
@@ -146,8 +169,7 @@ export async function trustedCompanionBase(animal: {
     .toBuffer();
 }
 async function localImage(path: string) {
-  if (!/^\/[a-zA-Z0-9/_-]+\.(png|webp|jpg|jpeg)$/.test(path))
-    throw new AppError(400, 'Imagem de referência indisponível.');
+  if (!trustedEquipmentPath(path)) throw new AppError(400, 'Imagem de referência indisponível.');
   try {
     return await readFile(resolve('public', path.slice(1)));
   } catch {
@@ -286,8 +308,18 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
     const reference = await trustedCompanionBase(animal),
       equipped = await equipment(db, animal),
       refs = [];
-    for (const item of equipped)
-      refs.push({ ...item, image: await normalizeArtImage(await localImage(item.image_path)) });
+    for (const item of equipped) {
+      const ref = equipmentArtReference(item);
+      if (!ref.path)
+        throw new AppError(400, `O item ${item.name} ainda não possui imagem de referência.`);
+      refs.push({
+        ...item,
+        name: ref.name,
+        image: await normalizeArtImage(
+          await rasterizeEquipmentArt(await localImage(ref.path), ref.path),
+        ),
+      });
+    }
     const {
       rows: [job],
     } = await db.query(
@@ -377,6 +409,48 @@ export async function completeCompanionArt(jobId: string, output: Buffer) {
 }
 export function companionEquipmentRouter() {
   const router = Router();
+  router.put('/companions/:characterId/equipment-set', async (req, res) => {
+    const characterId = uuid.parse(req.params.characterId),
+      userId = res.locals.user.id,
+      data = equipSetSchema.parse(req.body);
+    res.json(
+      await transaction(async (db) => {
+        await lockOwner(db, userId, characterId);
+        const animal = await companion(db, characterId, data.kind, data.companion_id),
+          wardrobe = await ensureWardrobe(db, animal);
+        const pieces = await armorSetPieces(
+          db,
+          characterId,
+          data.item_id,
+          data.kind,
+          companionSlots(data.kind, animal.species_id),
+          wardrobe.id,
+        );
+        if (
+          pieces.some(
+            (piece) =>
+              !compatibleCompanionSlots(piece, data.kind, animal.species_id).includes(piece.slot),
+          )
+        )
+          throw new AppError(400, 'Uma peça não é compatível com a anatomia deste animal.');
+        let changed = false;
+        for (const piece of pieces) {
+          const written = await db.query(
+            `INSERT INTO companion_equipment(wardrobe_id,character_id,slot,item_id,legacy_id) VALUES($1,$2,$3,$4,NULL)
+          ON CONFLICT(wardrobe_id,slot) DO UPDATE SET item_id=EXCLUDED.item_id,legacy_id=NULL,equipped_at=now()
+          WHERE companion_equipment.item_id IS DISTINCT FROM EXCLUDED.item_id OR companion_equipment.legacy_id IS NOT NULL`,
+            [wardrobe.id, characterId, piece.slot, piece.id],
+          );
+          changed ||= !!written.rowCount;
+        }
+        if (changed)
+          await db.query('UPDATE companion_wardrobes SET revision=revision+1 WHERE id=$1', [
+            wardrobe.id,
+          ]);
+        return state(db, userId, characterId);
+      }),
+    );
+  });
   router.get('/companions/:characterId/equipment', async (req, res) => {
     const characterId = uuid.parse(req.params.characterId),
       userId = res.locals.user.id;

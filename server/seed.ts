@@ -5,6 +5,7 @@ import { PLATE_PIECES } from '../shared/armor-bundles.js';
 import { seedLore } from './lore.js';
 import { ensureInitialRulebook } from './rulebook.js';
 import { lockCatalogPrices } from './shop-prices.js';
+import { seedArmorPieces } from './armor-catalog.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -14,6 +15,14 @@ export async function seed() {
   const expansion = JSON.parse(
     await readFile(resolve('data/emporium-expansion.json'), 'utf8'),
   ).items;
+  let animals: any[] = [];
+  try {
+    const data = JSON.parse(await readFile(resolve('data/animal-equipment-catalog.json'), 'utf8'));
+    animals = Array.isArray(data) ? data : data.items;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+  }
+  expansion.push(...animals);
   await transaction(async (client) => {
     await lockCatalogPrices(client);
     await client.query('UPDATE catalog_items SET active=false WHERE NOT(id=ANY($1::text[]))', [
@@ -131,6 +140,7 @@ export async function seed() {
       }
       await client.query('UPDATE armor_piece_backfills SET applied_at=now() WHERE id=$1', [row.id]);
     }
+    await seedArmorPieces(client);
     const entries = [
       [
         'dominios-da-alvorada',

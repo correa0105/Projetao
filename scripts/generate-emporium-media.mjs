@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
+const only = process.argv.find((arg) => arg.startsWith('--only='))?.slice(7);
+if (only && !/^[a-z0-9-]+$/.test(only)) throw Error('Invalid sound identity');
 const expansion = JSON.parse(fs.readFileSync('data/emporium-expansion.json', 'utf8')).items;
 const old = JSON.parse(fs.readFileSync('data/shop-export/loja.json', 'utf8')).items;
 const equipment = JSON.parse(fs.readFileSync('data/equipment-catalog.json', 'utf8')).filter(
@@ -137,16 +139,21 @@ for (const x of expansion) {
   )
     consumables.push(x.id);
 }
-fs.writeFileSync('shared/emporium-materials.json', JSON.stringify(media, null, 2) + '\n');
-fs.writeFileSync('shared/emporium-equipment.json', JSON.stringify(slots, null, 2) + '\n');
-fs.writeFileSync('shared/emporium-consumables.json', JSON.stringify(consumables, null, 2) + '\n');
+if (!only) {
+  fs.writeFileSync('shared/emporium-materials.json', JSON.stringify(media, null, 2) + '\n');
+  fs.writeFileSync('shared/emporium-equipment.json', JSON.stringify(slots, null, 2) + '\n');
+  fs.writeFileSync('shared/emporium-consumables.json', JSON.stringify(consumables, null, 2) + '\n');
+}
 fs.mkdirSync('public/audio/emporium', { recursive: true });
 const manifest = [];
-for (const x of entries) {
+for (const x of entries.filter((entry) => !only || entry.id === only)) {
   const kind = media[x.id] || materials[x.id];
   if (!kind) throw Error('Missing material ' + x.id);
   const bytes = wav(x.id, kind),
-    path = 'public/audio/emporium/' + x.id + '.wav';
+    path =
+      'public/audio/emporium/' +
+      (x.id === 'house-statue' ? 'house-statue-refit-20261007' : x.id) +
+      '.wav';
   fs.writeFileSync(path, bytes);
   manifest.push({
     id: x.id,
@@ -157,6 +164,14 @@ for (const x of entries) {
     algorithm:
       'Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono',
   });
+}
+if (only) {
+  if (!manifest.length) throw Error('Unknown sound identity: ' + only);
+  const previous = JSON.parse(fs.readFileSync('public/audio/emporium/manifest.json', 'utf8'));
+  const generated = new Map(manifest.map((item) => [item.id, item]));
+  const combined = previous.map((item) => generated.get(item.id) || item);
+  for (const item of manifest) if (!previous.some((old) => old.id === item.id)) combined.push(item);
+  manifest.splice(0, manifest.length, ...combined);
 }
 if (new Set(manifest.map((x) => x.sha256)).size !== manifest.length)
   throw Error('Duplicate waveform');

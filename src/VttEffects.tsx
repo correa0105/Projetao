@@ -5,11 +5,13 @@ import {
   effectKinds,
   effectNames,
   effectColors,
+  effectLibrary,
   effectPresetSchema,
   type EffectPreset,
 } from '../shared/vtt-effects';
 import type { VttToken } from '../shared/vtt';
 import { ActionShortcut } from './VttHotbar';
+import { VttEffectPreview } from './VttEffectPreview';
 import './vtt-effects.css';
 export function VttEffects({
   presets,
@@ -40,6 +42,9 @@ export function VttEffects({
     [error, setError] = useState(''),
     [previewing, setPreviewing] = useState(false),
     [previewId, setPreviewId] = useState<string | null>(null);
+  const [libraryOpen, setLibraryOpen] = useState(presets.length === 0),
+    [libraryGroup, setLibraryGroup] = useState('Todos'),
+    [animatedKind, setAnimatedKind] = useState<string | null>(null);
   const root = useRef<HTMLDivElement>(null);
   const editorName = useRef<HTMLInputElement>(null);
   const previewRef = useRef(preview);
@@ -84,6 +89,17 @@ export function VttEffects({
     }
   }
   const blocked = working || busy;
+  function createEffect(i: number) {
+    setDraft({
+      id: crypto.randomUUID(),
+      name: effectNames[i],
+      kind: effectKinds[i],
+      color: effectColors[i],
+      scale: 1,
+      duration: i ? 5 : 0,
+    });
+    setPreviewing(false);
+  }
   return (
     <div className="vtt-effects" ref={root}>
       <button
@@ -157,6 +173,57 @@ export function VttEffects({
                   </button>
                 </div>
               </fieldset>
+              <button
+                className="vtt-effects-library-toggle"
+                aria-expanded={libraryOpen}
+                onClick={() => setLibraryOpen(!libraryOpen)}
+              >
+                <Sparkles size={14} /> Biblioteca de efeitos · {effectKinds.length}
+              </button>
+              {libraryOpen && (
+                <section className="vtt-effects-library" aria-label="Biblioteca de efeitos">
+                  <p>
+                    Escolha um modelo para personalizar e salvar. Passe o cursor para ver o
+                    movimento.
+                  </p>
+                  <div className="vtt-effects-groups" aria-label="Categorias de efeitos">
+                    {['Todos', 'Elementos', 'Magia', 'Natureza', 'Estado'].map((group) => (
+                      <button
+                        key={group}
+                        aria-pressed={libraryGroup === group}
+                        onClick={() => setLibraryGroup(group)}
+                      >
+                        {group}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="vtt-effects-gallery">
+                    {effectLibrary
+                      .filter((e) => libraryGroup === 'Todos' || e.group === libraryGroup)
+                      .map((e) => (
+                        <button
+                          key={e.kind}
+                          className="vtt-effect-card"
+                          disabled={blocked || presets.length >= 100}
+                          aria-label={'Criar efeito · ' + e.name}
+                          title={e.description}
+                          onPointerEnter={() => setAnimatedKind(e.kind)}
+                          onPointerLeave={() => setAnimatedKind(null)}
+                          onFocus={() => setAnimatedKind(e.kind)}
+                          onBlur={() => setAnimatedKind(null)}
+                          onClick={() => createEffect(effectKinds.indexOf(e.kind))}
+                        >
+                          <VttEffectPreview
+                            preset={{ id: 'library-' + e.kind, ...e, scale: 1, duration: 0 }}
+                            animated={animatedKind === e.kind}
+                          />
+                          <span>{e.name}</span>
+                          <small>{e.group}</small>
+                        </button>
+                      ))}
+                  </div>
+                </section>
+              )}
               <div className="vtt-effects-list">
                 {!presets.length && <p>Nenhum efeito salvo. Crie o primeiro abaixo.</p>}
                 {presets.map((e) => (
@@ -215,19 +282,7 @@ export function VttEffects({
                   </div>
                 ))}
               </div>
-              <button
-                disabled={blocked || presets.length >= 100}
-                onClick={() =>
-                  setDraft({
-                    id: crypto.randomUUID(),
-                    name: effectNames[1],
-                    kind: effectKinds[1],
-                    color: effectColors[1],
-                    scale: 1,
-                    duration: 5,
-                  })
-                }
-              >
+              <button disabled={blocked || presets.length >= 100} onClick={() => createEffect(1)}>
                 <Plus size={14} /> Novo efeito
               </button>
             </>
@@ -294,6 +349,10 @@ export function VttEffects({
                   ))}
                 </select>
               </label>
+              <div className="vtt-effects-editor-preview">
+                <VttEffectPreview preset={draft} animated />
+                <p>{effectLibrary.find((e) => e.kind === draft.kind)?.description}</p>
+              </div>
               {draft.kind !== 'death' ? (
                 <div className="vtt-effects-fields">
                   <label>

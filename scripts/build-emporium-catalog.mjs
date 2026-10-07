@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import { expandVariants } from './emporium-variants.mjs';
+import { assignMagicSkins } from './magic-skin-profiles.mjs';
 const sourceUrl = 'https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf';
 const old = JSON.parse(fs.readFileSync('data/shop-export/loja.json', 'utf8')).items;
 const existing = new Map(old.map((x) => [x.id, x]));
@@ -429,6 +430,7 @@ expandVariants({
   item,
   idOf,
 });
+assignMagicSkins(expansion, old);
 for (const line of fs
   .readFileSync('data/emporium-source/cosmetics.tsv', 'utf8')
   .trim()

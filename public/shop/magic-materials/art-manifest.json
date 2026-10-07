@@ -1,0 +1,230 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "runic-steel",
+      "path": "/shop/magic-materials/runic-steel.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: silver-black forged steel with richly detailed fine engraved blue-silver angular magical runes, restrained luminous lines, brushed metal and tiny gold inlays, coherent close-up enchanting pattern. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-0a69d378-7561-475f-9ae1-f60faa792f90.png",
+      "sha256": "aa92b17fdb3e0f9369fbd748096c99f35c84fa8ad10073f947d6a69f5f94529c",
+      "alpha": false
+    },
+    {
+      "id": "flame",
+      "path": "/shop/magic-materials/flame.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: incandescent orange and gold molten fiery energy, organically flowing tongues of flame and dark charcoal steel veining, restrained detailed flame pattern, not smoke. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-6a1c6c08-6ffa-428b-b5f0-5bb8acc8fba4.png",
+      "sha256": "1a46427a0b44020ec0f021cb8d6f1db19b397ff365fc157146a2586edb1f6843",
+      "alpha": false
+    },
+    {
+      "id": "frost",
+      "path": "/shop/magic-materials/frost.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: pale cyan frosted silver metal with sharp crystalline icy veins and subtle luminous blue ancient engraved runes, fine realistic frost crystals. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-38aa38b8-7c0e-49a4-9cc6-d4181e84ff3a.png",
+      "sha256": "20a596addc55d84301c054e2da3564a909486cd33771d1b6854fb58aa7be81c9",
+      "alpha": false
+    },
+    {
+      "id": "holy",
+      "path": "/shop/magic-materials/holy.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: warm ivory and luminous gold engraved sacred metal, sunburst filigree and restrained tiny gold-white light fissures, ornate realistic medieval holy relic finish. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-2311ed45-e25f-491a-b09e-a1a30a2bc6f9.png",
+      "sha256": "6eb39c7e54dd8699455b5b4e259352acaa327463756fdfa0d31d7bee6806b045",
+      "alpha": false
+    },
+    {
+      "id": "shadow",
+      "path": "/shop/magic-materials/shadow.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: deep obsidian blackened steel with faint violet-red engraved runes and intricate subtle ominous silver etching, quiet necrotic power. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-c2c127a8-a306-4233-8251-013deaecee91.png",
+      "sha256": "fad252481fc34fe9f93661a0dc297bb0b7ffc49577a401fadabefbe8e462d3ee",
+      "alpha": false
+    },
+    {
+      "id": "venom",
+      "path": "/shop/magic-materials/venom.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: aged dark metal with luminous emerald green thin magical fissures and curved serpent-like engraved filigree, restrained poison energy finish. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-ead1e33c-d39b-418e-ba46-097bb2a722e1.png",
+      "sha256": "f911414ec3059523e57a392a79996758e3935a1847b1fa6de039be3afd5445d3",
+      "alpha": false
+    },
+    {
+      "id": "bronze",
+      "path": "/shop/magic-materials/bronze.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: antique burnished gold-bronze metal with engraved dragon-scale filigree, small clear runic incisions and bright polished edges, realistic layered metal. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-ea5c7d3e-b3ab-4d1b-82a7-e1e735f679ad.png",
+      "sha256": "0856fb168bb589a74c687208e335b2e7c3b677e0ea0b4de0cdbb95a712dc3733",
+      "alpha": false
+    },
+    {
+      "id": "mithral",
+      "path": "/shop/magic-materials/mithral.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless enchanted equipment material texture for a native SVG skin system in a realistic medieval fantasy RPG. Subject: elegant bright pearlescent silver metal with intricate fine elven engraved filigree and softly iridescent pale blue details, no flames. Composition: a continuous finely detailed full-frame material surface, flat orthographic macro texture, no object silhouette, no perspective, no letters or readable text, no icons, no weapons, no borders, no watermark. Consistent gentle illumination, detailed game-art painted realism. This is a material texture to mask onto multiple different weapon or armor shapes.",
+      "original_file": "exec-1bc901d8-302f-4d84-a0da-75444f610e08.png",
+      "sha256": "65c6b6fbe517e7594d985a3da943541ab0f842ff2238fcc8a23b86f8ac6a0a02",
+      "alpha": false
+    },
+    {
+      "id": "family-berserker-axe",
+      "path": "/shop/magic-materials/family-berserker-axe.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Berserker Axe WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: rough blackened forged iron with deep crimson angular gouges, thick savage geometric engravings, restrained red energy in jagged lines. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-c8313b79-f257-4f81-9cc7-492c5b8564f7.png",
+      "sha256": "ffd11d6813ac2d50803f2f96cb40cfed92ed00845f27ec6fc7146bc32d241bfe",
+      "alpha": false
+    },
+    {
+      "id": "family-dancing-sword",
+      "path": "/shop/magic-materials/family-dancing-sword.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Dancing Sword WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: polished silver steel with flowing cyan and violet spiral filigree, elegant interlaced wind curves and faint star-like light specks, graceful flowing magical movement. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-f4d5c8cd-91db-48b0-a26f-5194f266395b.png",
+      "sha256": "19f54d5c2c127ee28ca176c76cee13bb45cafea835bd44e5e3b52d8a7054fa28",
+      "alpha": false
+    },
+    {
+      "id": "family-defender",
+      "path": "/shop/magic-materials/family-defender.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Defender WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: cool silver steel with protective interlocking hexagonal azure tracery and intricate shield-like geometric bands, pale blue highlights. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-071afc93-2b21-491c-903a-4d738fe2cc83.png",
+      "sha256": "da93db706ab15b6a28fa868154fdc73550eebec80f86b4039240e98a007eb813",
+      "alpha": false
+    },
+    {
+      "id": "family-dragon-slayer",
+      "path": "/shop/magic-materials/family-dragon-slayer.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Dragon Slayer WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: aged golden bronze and silver with engraved dragon-scale patterns, fine sharp draconic spine motifs and small amber-gold luminous accents. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-d46699f4-7ac0-47d3-8cb0-4963d96fa06d.png",
+      "sha256": "cc428281419caf958940b314d59d4e1cc846a1ecb98cf0d93b6a7c0f3e8cfe0e",
+      "alpha": false
+    },
+    {
+      "id": "family-giant-slayer",
+      "path": "/shop/magic-materials/family-giant-slayer.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Giant Slayer WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: rugged dark steel with heavy warm bronze inlaid squared knotwork and broad monumental angular engravings, ochre highlights. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-fdf56a64-64e0-4ea8-8781-ac46cff7b2f0.png",
+      "sha256": "5c328ea1bb28191f45ef59e0314701f77134faa4507e8d557c067f6b7317f3d7",
+      "alpha": false
+    },
+    {
+      "id": "family-hammer-thunderbolts",
+      "path": "/shop/magic-materials/family-hammer-thunderbolts.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Hammer of Thunderbolts WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: dark silver steel engraved with cobalt blue branching lightning fissures framed in old gold, bright restrained electric energy. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-8f877705-907e-4d3b-ae58-048399e8c787.png",
+      "sha256": "c5aeeb0321c53ad0688c6d7476b31236b7b9ebd119982da1d36d8ecacca285b8",
+      "alpha": false
+    },
+    {
+      "id": "family-holy-avenger",
+      "path": "/shop/magic-materials/family-holy-avenger.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Holy Avenger WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: ivory silver steel with exceptionally ornate gold sacred sunray filigree and fine warm white light veins, noble holy relic finish. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-1910f40d-bbbc-4a06-b9c6-1424ebd4acf1.png",
+      "sha256": "946984dfb032ea72bb4b046feadf42e3db797f9b97d627332c11478478383d2b",
+      "alpha": false
+    },
+    {
+      "id": "family-luck-blade",
+      "path": "/shop/magic-materials/family-luck-blade.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Luck Blade WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: polished silver steel with unique emerald green and gold intertwined leaf-knot inlays, tiny green luminous leaf tips, elegant lucky enchanted finish. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-b58a4e62-5f9b-4269-9e73-9d267a0f10a0.png",
+      "sha256": "18c00361835f0e47fa924898226e87d34a814ad5ef0ec7c70bf64c79e6d20bbd",
+      "alpha": false
+    },
+    {
+      "id": "family-nine-lives-stealer",
+      "path": "/shop/magic-materials/family-nine-lives-stealer.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Nine Lives Stealer WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: obsidian dark steel with amethyst violet connected clusters of nine tiny abstract star-like facets and ominous silver life-thread etching. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-d4c0d061-77e8-4b96-abed-78ff9478300e.png",
+      "sha256": "b14cc27e19674707f4f86854e5b29aee1ad081a209809d9bb997b295f91058e4",
+      "alpha": false
+    },
+    {
+      "id": "family-oathbow",
+      "path": "/shop/magic-materials/family-oathbow.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Oathbow WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: pale ivory wood grain with distinctive deep emerald paired leaf-vein inlays and intricate flowing silver elven tendrils, restrained green magical highlights. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-6b12c27b-88d3-4307-93fb-95aa7224b61c.png",
+      "sha256": "b64ee5fee160607c998a6c96bad67715b9e3c7584df964e417940b249ace4350",
+      "alpha": false
+    },
+    {
+      "id": "family-sword-life-stealing",
+      "path": "/shop/magic-materials/family-sword-life-stealing.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Sword of Life Stealing WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: black obsidian steel with fine branching purple and crimson soul-like wisps engraved inside its surface, cold silver outlines around thin dark veins. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-c9a61449-0336-4237-9481-3bd0902b4568.png",
+      "sha256": "ea28a2f2620c40b14cba90f7ded7bfbc8ee38874db8c8edde28036e05b5cf265",
+      "alpha": false
+    },
+    {
+      "id": "family-sword-sharpness",
+      "path": "/shop/magic-materials/family-sword-sharpness.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Sword of Sharpness WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: bright mirror silver forged steel with razor-fine repeated straight platinum incisions and narrow converging geometric linework, white diamond-like glints and cool crisp polished cutting-edge character. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-dd648ff8-56e7-4cca-b4c8-5f32ad79046e.png",
+      "sha256": "b57188dec93468f99867fd42b02cabf749903fc4889dd357a870b3efd662a09a",
+      "alpha": false
+    },
+    {
+      "id": "family-sword-wounding",
+      "path": "/shop/magic-materials/family-sword-wounding.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Sword of Wounding WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: dark gunmetal steel with deep blood-red winding fissures and thorn-like etched dark silver vine motifs, restrained ruby-red glow. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-ef1d8c27-0e13-4a14-94c2-4425fa1f01d7.png",
+      "sha256": "488c28cab16d93136a4a0440c37f1e56302b6a2f97d16608f3fdbc8dc59b532a",
+      "alpha": false
+    },
+    {
+      "id": "family-vicious-weapon",
+      "path": "/shop/magic-materials/family-vicious-weapon.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Vicious Weapon WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: matte black iron with vicious jagged diagonal crimson tooth-like engraved chevrons and deep metallic charcoal textured ridges, small red gleams. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-cebad667-2f5b-4744-8186-3b36c9cc577a.png",
+      "sha256": "ba6995550cfe2433538b24b5461a6470b652aa597d374744854ddfbbf3df65da",
+      "alpha": false
+    },
+    {
+      "id": "family-vorpal-sword",
+      "path": "/shop/magic-materials/family-vorpal-sword.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Vorpal Sword WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: mirror-black steel with extremely precise sharp silver diagonal lattice and tiny vivid violet gem-like inlays, ominous razor-sharp refined finish. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-1469bbe1-6c94-4d23-b7f5-72a23c95aa3e.png",
+      "sha256": "a86282a49591a4490f90dde3c3a11660bd53f09cfcab56740b0713037025bdc4",
+      "alpha": false
+    },
+    {
+      "id": "family-weapon-enhancement",
+      "path": "/shop/magic-materials/family-weapon-enhancement.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Weapon, +1, +2, or +3 WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: clean bright enchanted silver steel with distinctive fine repeating blue angular arcane geometric runes and narrow elegant gold borders, restrained blue luminescence. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-7845fb4f-ffa8-42d6-a224-6c6e2b6bf8e3.png",
+      "sha256": "87a25632e5f620d9251671681882012e33369247a7eb413e224bc6c361d15e48",
+      "alpha": false
+    },
+    {
+      "id": "family-weapon-warning",
+      "path": "/shop/magic-materials/family-weapon-warning.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: unique square enchanted material texture for the Weapon of Warning WEAPON FAMILY in a native SVG RPG equipment skin system. Primary request: aged golden brass with repeating stylized watchful eye-shaped geometric etchings and fine warm amber halos, ornate alert protective finish. Every model in this family must share this recognizably distinct ornament style. Composition: continuous finely detailed full-frame surface, flat orthographic macro texture, finely etched game-art realism and high medieval fantasy craftsmanship, consistent gentle illumination. No weapon outline, no complete object, no readable letters or text, no borders, no logos, no watermark, no scene. Material fills the entire canvas. Distinct decorative design; not a plain color wash.",
+      "original_file": "exec-3fb1af8b-3de9-4012-9f01-98f8519f8727.png",
+      "sha256": "b4d0f0571c13bb49bcc2961ab43e0228213741950aa60f865d4158f185a8ea84",
+      "alpha": false
+    }
+  ]
+}

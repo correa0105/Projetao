@@ -1,5 +1,18 @@
 # Alvorada Cinzenta
 
+Atualização de 07/10: armaduras entregam peças independentes e podem ser equipadas
+como conjunto em uma única ação. Montarias e mascotes aceitam somente equipamentos
+da própria categoria. A loja ganhou cosméticos de montaria e **Acessórios para pet**;
+variantes de armas recebem skins coerentes com sua família, e cinturões de gigante
+têm designs distintos. [Guia](docs/ANIMAL-ARMOR-MAGIC-SKINS.md).
+
+Cada item da loja oferece **?** junto de Comprar, com explicação em português e
+referência da variante selecionada. [Fonte e tradução](docs/SHOP-ITEM-RULES.md).
+VTT: seis efeitos revistos e dez novos; paredes são exibidas e editadas somente
+em **Iluminação e barreiras**. [Efeitos e camadas](docs/VTT-EFFECTS-LAYERS.md).
+O painel **Selaria** foi retirado do Estábulo. Sela de montaria e sela militar
+ficam no Empório, em **Equipamentos de montaria**, e são equipadas no Inventário.
+
 Atualização de 06/10: o Inventário alterna equipamentos de personagem, montaria e
 mascote. **Vestir** usa a imagem base do animal com suas peças reais, preserva bens
 comprados no estábulo e compartilha o orçamento existente do ilustrador. Guia em
@@ -14,13 +27,19 @@ ofertas, incluindo House. Valores em PO aceitam vírgula ou ponto; **Sem preço
 definido** bloqueia a compra de itens de aventura. Alterações persistem após
 reinício/seed e afetam somente compras futuras. Migration 075.
 
-House: **Camada do personagem** fica sob a cena, com atalhos para trás/à frente
+House: **Camada do personagem** fica no painel lateral, com atalhos para trás/à frente
 da mobília. Arraste preserva o ponto clicado também enquanto o botão está
-pressionado. Em **Decorar**, **Perspectiva dos itens** permite testar/desligar
-o afinamento e ajustar **Recuo lateral da peça**: negativo recua a esquerda,
-positivo recua a direita. Ajustes por peça usam **Salvar mudanças**.
-Ao selecionar uma peça na cena, as setas laterais alternam suas oito vistas.
-A engrenagem reúne direção, tamanho, giro, camadas e ações da lembrança.
+pressionado. O teste de afinamento 3D foi retirado em 07/10, restaurando a
+aparência anterior dos itens. As oito vistas reais e o tamanho por profundidade
+continuam disponíveis. Ajustes por peça usam **Salvar mudanças**.
+Mobília usa vistas iniciais que acompanham o cenário; referências e padrão para
+novas artes em [Direção de arte](docs/HOUSE-ART-DIRECTION.md).
+A House ocupa a tela sem rolagem da página, com navegação à esquerda e controles
+à direita. Ao selecionar uma peça, os controles explícitos de direção, tamanho,
+giro, camadas e ações aparecem no painel. O seletor Direção alterna oito vistas reais.
+O cabeçalho e o **Menu** principal continuam acessíveis para navegar entre salas
+e lojas. A mobília foi refeita em dez modelos com 80 vistas na perspectiva do
+cenário; carta, quadro e a coleção comprada permanecem.
 Quadros oferecem **Manter fundo de madeira** nas vistas frontais.
 Duplo clique abre cartas e quadros; cartas mostram papel aberto com título
 acima do texto, e **Fonte de leitura** oferece quatro estilos.
@@ -486,9 +505,9 @@ Missões, eventos e ganchos ativos aparecem como papéis clicáveis no mural da 
 
 Em Menu → Loja → Estábulo, escolha entre quatro montarias e duas pelagens por espécie. O botão ? no menu de montarias abre sua ficha SRD. Nome e compra ficam diretamente na cena. Ouro, animal e pelagem são persistidos no personagem. A página prioriza o campo, sem painel de montarias adquiridas; pelagens ficam no menu e a cena acompanha a altura da janela, com controles compactos acima do campo nos celulares. npm run test:stable verifica o fluxo em banco descartável.
 
-A selaria abaixo das montarias permite experimentar duas selas, três bardas e ração. O campo de nome e a compra ficam sob o título. A compra do conjunto salva animal, pelagem e acessórios; regras de combate são consultivas. Veja `docs/STABLE-TACK-ART.md` para arte e fonte SRD.
+O painel antigo de selaria foi retirado em 07/10. Selas e equipamentos são vendidos no Empório e configurados no Inventário. A compra no Estábulo escolhe animal, nome e pelagem; bens e artes de equipamentos antigos permanecem disponíveis. Veja `docs/STABLE-TACK-ART.md` para o histórico de arte e fonte SRD.
 
-O nome agora fica acima das montarias, na coluna esquerda; a compra fica abaixo da selaria. As duas selas têm artes completas para cada espécie e pelagem (16 combinações), documentadas em [STABLE-SADDLED-ART.json](docs/STABLE-SADDLED-ART.json).
+O nome fica acima das montarias, na coluna esquerda, com compra abaixo do catálogo. As artes legadas das duas selas por espécie e pelagem (16 combinações) estão documentadas em [STABLE-SADDLED-ART.json](docs/STABLE-SADDLED-ART.json).
 
 As três bardas também possuem artes completas para todas as espécies e pelagens (24 combinações). Arquivos e prompts em docs/STABLE-BARDED-ART.json.
 

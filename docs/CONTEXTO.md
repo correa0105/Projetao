@@ -1,5 +1,95 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Refino de equipamentos, regras e VTT (07/10/2026)
+
+Publicação local final da House em 07/10: index-391FztOh / House-C0P4d_7-,
+Docker TSC/Vite/tsup e compose up concluídos, localhost:3000 saudável. Os dez
+modelos de mobília novos estão ativos com 80 vistas reais; carta/quadro mantidos.
+Cabeçalho e Menu global permanecem visíveis: a House reserva a altura real do
+cabeçalho e a faixa inferior do menu. A versão parcial que escondia a navegação
+foi corrigida. QA3041/3042 passou em 1920/1440/768/390/320, incluindo navegação
+real House→Loja→Empório→Estábulo→Explorar→House, arraste, RP, salvar e recarregar.
+Produção conferida por SHA dos bundles, 80 imagens e arquivos protegidos; dados
+de contas, saldo, estoque antigo, compras e layouts preservados no pré/pós.
+Marcador SKIN TEMÁTICA e categoria única de montaria também publicados.
+Pedido ainda em execução: substituir ícones das seis partes das 12 bardas por
+72 artes próprias. Fontes estão sendo geradas; não declarar essa parte publicada.
+
+Toda armadura humanoide, barda e armadura de mascote é um conjunto de seis peças
+(266 conjuntos), com compra de partes reais e ação atômica para equipar o conjunto.
+Migration 077 guarda snapshot do estoque antigo e completa peças uma só vez,
+sem alterar compras, quantidades originais ou saldos. Montarias aceitam somente
+destino mount; mascotes somente pet. O servidor consulta o catálogo confiável,
+inclusive contra metadados falsos do cliente, e preserva bens legados do estábulo.
+Os espaços dos animais usam ícones próprios. Há quatro armaduras e quatro
+acessórios novos de mascote e quatro cosméticos novos de montaria. Guia vigente:
+docs/ANIMAL-ARMOR-MAGIC-SKINS.md, que prevalece sobre compatibilidade histórica.
+
+Pedido posterior: o painel Selaria foi removido do Estábulo. Sela de montaria e
+sela militar usam as ofertas reais saddle-riding/saddle-military no Empório,
+categoria Equipamentos de montaria, com preços atuais/overrides e sem duplicatas.
+O Estábulo compra o animal com nome/pelagem; selas e bardas são configuradas no
+Inventário. Itens, imagens vestidas e compras legadas do Estábulo permanecem.
+
+Famílias mágicas usam 660 skins próprias por modelo, preservando a silhueta de
+cada arma/armadura e a identidade visual da família. Arco curto de energia tem
+arte específica; cinco categorias de cinturão de gigante têm designs distintos.
+São 42 imagens novas geradas com image_gen nativo (12 produtos animais, 25
+materiais, arco curto e quatro cinturões); fontes transparentes, prompts e hashes
+nos manifests dos diretórios public/shop/animal-equipment, magic-materials e
+magic-skins. SVGs finais incorporam PNG, com um único modelo em defs/use; referência
+do ilustrador aceita somente esse diretório interno seguro e rasteriza para PNG.
+
+Todo item da loja tem ? junto de Comprar. A consulta exige sessão e o ID da
+variante efetivamente escolhida. Regras licenciadas do SRD 5.2.1 vêm da revisão
+imutável do 5etools, com atribuição, hashes e CC BY 4.0; textos em português usam
+glossário e revisões manuais versionadas. Produtos próprios são identificados
+como Conteúdo do projeto. Diálogo tem Escape, retorno de foco e rolagem longa.
+Ver docs/SHOP-ITEM-RULES.md. Os efeitos descritos continuam resolvidos na mesa.
+
+VTT conserva os seis IDs originais de efeitos e acrescenta dez modelos, com
+Canvas em passagens atrás/à frente do token, prévias estáticas e animação somente
+sob foco/cursor. Cache limitado e movimento reduzido respeitado. Paredes, portas
+e janelas só ficam visíveis e editáveis em Iluminação e barreiras; continuam
+bloqueando luz, visão e movimento nas outras camadas. Trocar camada cancela gesto
+e seleção de parede. Guia: docs/VTT-EFFECTS-LAYERS.md.
+
+Retorno da House: a solicitação de voltar à alteração anterior foi aplicada ao
+experimento reversível de afinamento CSS3D, introduzido em 1fa7e47; cc18780 registra
+a aparência anterior ao teste. A pergunta de escopo não recebeu resposta antes
+da continuação. Retirar projeção e controles, preservando arraste, camadas, oito
+vistas reais, escala por profundidade, engrenagem, leitura, madeira e RP. Manter
+pitch/yaw opcionais no schema para layouts antigos continuarem válidos.
+
+Referência posterior de perspectiva: sala vazia/mobiliada em docs/references.
+O usuário explicitamente pediu substituir a mobília antiga, mantendo somente
+carta e quadro. Essa decisão substitui a orientação inicial de preservar os
+modelos dos móveis. Os dez IDs persistem para conservar compras e coleção,
+mas recebem novos modelos: sofá de três lugares, mesa de centro, poltrona,
+banco com pele, baú retangular, livros, candelabro, vaso florido, tapete e estante.
+Oito vistas reais por modelo em public/house/items/house-refit-20261007; câmera
+baixa, apoio, recuo e iluminação coerentes com a referência. Não reorientar nem
+reescalar layouts explícitos salvos. Carta/quadro preservam seus 20 arquivos e
+calibração. Guia docs/HOUSE-ART-DIRECTION.md.
+
+A House voltou a controles explícitos de tamanho/giro/direção/camadas. A página
+ocupa o viewport sem rolagem, com navegação à esquerda, cenário contido e painel
+à direita; em telas estreitas o painel vira gaveta interna. Engrenagem e setas
+flutuantes anteriores foram removidas. Chat RP e arraste preservam foco/cursor.
+
+Backup prévio validado: .local/backups/before-armor-animal-skins-20261007.dump
+(432.507.775 bytes), sem restaurá-lo sobre dados reais. Testes usam bancos isolados.
+Conjuntos, reservas, categoria, API, skins e navegador em 1440/768/390/320 px
+verificados. Atualização parcial de 07/10 às 12:58 UTC: Docker build TSC/Vite/tsup
+e compose up concluídos; localhost:3000 saudável, migration 077 aplicada. Bundle
+index-B52liitQ / House-CTq0wQtB inclui sidebar, conjuntos, VTT e categorias unificadas.
+Essa versão ainda não contém a ativação da mobília nova nem o marcador de skin.
+Backup adicional before-sidebar-release-20261007-1202.dump validado (432.503.860
+bytes). Comparação pré/pós preservou contas, saldos, compras, companheiros, House,
+VTT, preços administrativos e todas as linhas antigas de inventário/cofre;
+apenas 15 linhas de peças complementares foram acrescentadas ao inventário.
+Worker de arte do host reiniciado oculto, heartbeat disponível e filas vazias.
+
 ## Verificação e atualização local (06/10/2026)
 
 Aplicação reconstruída com TypeScript, Vite e tsup, e atualizada em localhost:3000.

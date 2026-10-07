@@ -18,6 +18,7 @@ import { SheetHelp } from './SheetHelp';
 import { Modal } from './components';
 import { api, post } from './api';
 import './inventory.css';
+import { inventoryPieceName } from './armor-set-options';
 
 const number = (value: number) =>
   new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(value);
@@ -57,6 +58,7 @@ function InventorySlot({
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const changingPopover = useRef(false);
   const Icon = itemIcon(item);
+  const displayName = inventoryPieceName(item);
   function cancelHide() {
     clearTimeout(timer.current);
   }
@@ -121,7 +123,7 @@ function InventorySlot({
       <button
         ref={trigger}
         className="loot-slot"
-        aria-label={item.name + ', quantidade ' + (item.quantity ?? 0)}
+        aria-label={displayName + ', quantidade ' + (item.quantity ?? 0)}
         aria-controls={id}
         aria-haspopup="dialog"
         draggable={!busy}
@@ -141,7 +143,7 @@ function InventorySlot({
         ) : (
           <Icon size={23} aria-hidden="true" />
         )}
-        <span className="loot-slot-name">{item.name}</span>
+        <span className="loot-slot-name">{displayName}</span>
         <span className="loot-quantity">{item.quantity ?? 0}</span>
       </button>
       <div
@@ -149,13 +151,13 @@ function InventorySlot({
         id={id}
         popover="auto"
         role="dialog"
-        aria-label={'Detalhes de ' + item.name}
+        aria-label={'Detalhes de ' + displayName}
         className="loot-item-detail loot-item-balloon"
         onMouseEnter={cancelHide}
         onMouseLeave={scheduleHide}
       >
         <span className="loot-category">{item.category}</span>
-        <h3>{item.name}</h3>
+        <h3>{displayName}</h3>
         <p className="loot-original">{item.original_name}</p>
         <p>{item.description}</p>
         <dl>
@@ -408,6 +410,28 @@ export function Inventory({
       if (mounted.current) setBusy(false);
     }
   }
+  async function equipSet(itemId: string) {
+    if (inFlight.current) return;
+    inFlight.current = true;
+    setBusy(true);
+    setError('');
+    try {
+      const value = await post<Storage>('/inventory/equipment-set', {
+        character_id: character.id,
+        item_id: itemId,
+      });
+      if (mounted.current) {
+        setStorage(value);
+        onInventoryChange(value.inventory);
+        setNotice('Armadura completa equipada. Use Vestir para atualizar a aparência.');
+      }
+    } catch (error) {
+      if (mounted.current) setError((error as Error).message);
+    } finally {
+      inFlight.current = false;
+      if (mounted.current) setBusy(false);
+    }
+  }
   async function submitTransfer(order = transfer) {
     if (!order || inFlight.current) return;
     inFlight.current = true;
@@ -518,6 +542,7 @@ export function Inventory({
                 storage={storage}
                 busy={busy}
                 onEquip={equip}
+                onEquipSet={equipSet}
                 dragged={dragged}
                 onDropItem={dropEquipment}
                 onRefresh={onRefresh}

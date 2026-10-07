@@ -82,6 +82,8 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
     ).data.pet;
     for (const [item, quantity] of [
       ['plate-armor', 1],
+      ['barding-leather-armor', 1],
+      ['horseshoes-of-speed', 1],
       ['backpack', 2],
       ['cosmetic-cape', 1],
     ] as const) {
@@ -132,25 +134,26 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
         .equipment,
       ['barding-leather', 'saddle-riding'],
     );
-    assert.equal((await equip('mount', mount.id, 'armor', 'plate-armor')).status, 200);
+    assert.equal((await equip('mount', mount.id, 'armor', 'plate-armor')).status, 400);
+    assert.equal((await equip('mount', mount.id, 'armor', 'barding-leather-armor')).status, 200);
     assert.equal(
       (
         await request('/inventory/equipment', owner.cookie, {
           character_id: hero.id,
           slot: 'armor',
-          item_id: 'plate-armor',
+          item_id: 'barding-leather-armor',
         })
       ).status,
-      409,
+      400,
     );
-    assert.equal((await equip('pet', dog.id, 'armor', 'plate-armor')).status, 409);
+    assert.equal((await equip('pet', dog.id, 'armor', 'plate-armor')).status, 400);
     const storage = (await request(`/characters/${hero.id}/storage`, owner.cookie)).data;
-    assert.equal(storage.companion_allocated['plate-armor'], 1);
+    assert.equal(storage.companion_allocated['barding-leather-armor'], 1);
     assert.equal(
       (
         await request('/inventory/transfers', owner.cookie, {
           character_id: hero.id,
-          item_id: 'plate-armor',
+          item_id: 'barding-leather-armor',
           direction: 'to_vault',
           quantity: 1,
           idempotency_key: randomUUID(),
@@ -169,21 +172,25 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
       ).status,
       200,
     );
-    assert.equal((await equip('mount', mount.id, 'armor', 'plate-armor')).status, 409);
+    assert.equal((await equip('mount', mount.id, 'armor', 'plate-armor')).status, 400);
     await request('/inventory/equipment', owner.cookie, {
       character_id: hero.id,
       slot: 'armor',
       item_id: null,
     });
     const concurrent = await Promise.all([
-      equip('mount', mount.id, 'back', 'backpack'),
-      equip('pet', dog.id, 'back', 'backpack'),
-      equip('mount', otherMount.id, 'back', 'backpack'),
+      equip('mount', mount.id, 'feet', 'horseshoes-of-speed'),
+      equip('pet', dog.id, 'feet', 'horseshoes-of-speed'),
+      equip('mount', otherMount.id, 'feet', 'horseshoes-of-speed'),
     ]);
-    assert.equal(concurrent.filter((entry) => entry.status === 200).length, 2);
+    assert.equal(concurrent.filter((entry) => entry.status === 200).length, 1);
     assert.equal(concurrent.filter((entry) => entry.status === 409).length, 1);
+    assert.equal(concurrent.filter((entry) => entry.status === 400).length, 1);
+    assert.equal((await equip('mount', mount.id, 'back', 'backpack')).status, 400);
+    assert.equal((await equip('pet', dog.id, 'back', 'backpack')).status, 400);
     assert.equal(
-      (await state()).data.inventory.find((item: any) => item.id === 'backpack').available,
+      (await state()).data.inventory.find((item: any) => item.id === 'horseshoes-of-speed')
+        .available,
       0,
     );
     assert.deepEqual(
@@ -249,7 +256,7 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
       await pool.query('SELECT count(*) FROM character_art_jobs WHERE character_id=$1', [hero.id])
     ).rows[0].count;
     await pool.query("UPDATE companion_art_jobs SET status='running' WHERE id=$1", [job.data.id]);
-    await equip('mount', mount.id, 'armor', 'plate-armor');
+    await equip('mount', mount.id, 'armor', 'barding-leather-armor');
     assert.equal((await completeCompanionArt(job.data.id, reference)).status, 'stale');
     assert.equal(
       (await state()).data.companions.find((animal: any) => animal.id === mount.id).art_used,
@@ -271,7 +278,9 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
         [fresh.data.id],
       )
     ).rows;
-    assert.ok(snapshot.some((item) => item.item_id === 'plate-armor' && item.image.length > 0));
+    assert.ok(
+      snapshot.some((item) => item.item_id === 'barding-leather-armor' && item.image.length > 0),
+    );
     assert.ok(snapshot.some((item) => item.item_id === 'legacy:saddle-riding'));
     await pool.query("UPDATE companion_art_jobs SET status='running' WHERE id=$1", [fresh.data.id]);
     assert.equal((await completeCompanionArt(fresh.data.id, reference)).status, 'completed');

@@ -157,39 +157,6 @@
   width: 100%;
   height: auto;
 }
-.house-item-projection {
-  display: block;
-  width: 100%;
-  container-type: inline-size;
-  pointer-events: none;
-}
-.house-item-projection > .house-item-art {
-  transform: perspective(300cqw) rotateX(var(--house-depth-angle, 0deg))
-    rotateY(var(--house-depth-yaw, 0deg));
-  transform-origin: 50% 100%;
-}
-.house-projection-controls {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  padding: 10px 0;
-}
-.house-projection-controls label {
-  margin: 0;
-}
-.house-projection-controls label:first-child {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.house-projection-controls input[type='checkbox'] {
-  width: auto;
-}
-.house-projection-controls label:last-child {
-  flex: 1 1 200px;
-  max-width: 320px;
-}
 .house-item-art > img {
   width: 100%;
   height: auto;
@@ -221,114 +188,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.house-piece-tools {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 750;
-}
-.house-piece-tools button {
-  position: absolute;
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid #b79c65;
-  border-radius: 50%;
-  background: #171b16ed;
-  color: #e5cc94;
-  box-shadow: 0 2px 7px #0009;
-  pointer-events: auto;
-}
-.house-scene .house-piece-tools button:not(:disabled):active {
-  transform: none;
-}
-.house-piece-popover {
-  position: fixed;
-  z-index: 2100;
-  max-height: calc(100dvh - 24px);
-  box-sizing: border-box;
-  overflow: auto;
-  padding: 12px;
-  border: 1px solid #9a8151;
-  border-radius: 8px;
-  background: #171e22f7;
-  color: #e3d5ba;
-  box-shadow: 0 8px 30px #000b;
-  font-size: 13px;
-}
-.house-piece-popover-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.house-piece-popover button {
-  border: 1px solid #79695180;
-  border-radius: 4px;
-  background: #131d24;
-  color: #d5cec0;
-  cursor: pointer;
-}
-.house-piece-popover button:hover:not(:disabled) {
-  border-color: #b59863;
-  background: #29343b;
-}
-.house-piece-popover button:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-.house-piece-popover-title strong {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-.house-piece-popover-title button {
-  flex: 0 0 28px;
-  padding: 4px;
-  display: grid;
-  place-items: center;
-}
-.house-piece-popover .house-transform {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  border: 0;
-  border-top: 1px solid #77644455;
-  margin: 10px 0 0;
-  min-width: 0;
-  padding-bottom: 0;
-}
-.house-piece-popover .house-transform label {
-  display: grid;
-  gap: 5px;
-  min-width: 0;
-  max-width: none;
-  grid-column: 1 / -1;
-}
-.house-piece-popover .house-transform input,
-.house-piece-popover .house-transform select {
-  width: 100%;
-  min-width: 0;
-}
-.house-piece-popover .house-transform small {
-  color: #b7aa91;
-  font-size: 11px;
-}
-.house-piece-popover .house-transform .house-frame-backing-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.house-piece-popover .house-frame-backing-toggle input {
-  width: auto;
-}
-.house-piece-popover .house-transform button {
-  padding: 8px;
-  min-width: 0;
-  font-size: 12px;
-  white-space: normal;
 }
 .house-scene-caption {
   position: absolute;
@@ -803,4 +662,409 @@
     bottom: 4px;
     left: 5px;
   }
+}
+
+/* The room uses the space between the site header and its main Menu. */
+body.house-immersive {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+body.house-immersive .app-shell > .journey-dock {
+  z-index: 700;
+}
+body.house-immersive .app-shell > .main-shell > .page-header {
+  z-index: 650;
+}
+body.house-immersive .app-shell,
+body.house-immersive .app-shell .main-shell,
+body.house-immersive .app-shell .main-content {
+  min-height: 0;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.house-workspace {
+  position: fixed;
+  inset: var(--house-top, 82px) 0 calc(60px + env(safe-area-inset-bottom));
+  z-index: 500;
+  max-width: none;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: #10181b;
+  overflow: hidden;
+}
+.house-header {
+  flex: 0 0 auto;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #7b684540;
+  min-width: 0;
+}
+.house-exit {
+  flex: 0 0 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #79695180;
+  border-radius: 4px;
+  color: #d7c59f;
+  text-decoration: none;
+}
+.house-heading {
+  flex: 1;
+  min-width: 0;
+}
+.house-heading .eyebrow {
+  font-size: 9px;
+}
+.house-heading h2 {
+  font-size: 23px;
+  margin: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.house-header-actions {
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.house-header-actions button {
+  white-space: nowrap;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+.house-header-actions select {
+  min-width: 0;
+  max-width: 210px;
+  font-size: 12px;
+}
+.house-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 98px minmax(0, 1fr) 310px;
+  gap: 0;
+}
+.house-dock {
+  margin: 0;
+  padding: 10px 6px;
+  border-right: 1px solid #7b684540;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: stretch;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.house-dock button {
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 5px;
+  padding: 11px 4px;
+  font-size: 11px;
+  min-height: 55px;
+}
+.house-center {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  padding: 8px;
+}
+.house-rooms {
+  flex: 0 0 auto;
+  padding: 0 0 8px;
+  flex-wrap: wrap;
+}
+.house-rooms button {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 8px;
+  font-size: 12px;
+}
+.house-rooms span {
+  flex-basis: 100%;
+  margin: 0;
+  text-align: center;
+}
+.house-stage-slot {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.house-scene {
+  flex: none;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+}
+.house-sidebar {
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  border-left: 1px solid #7b684540;
+  background: #141f25;
+}
+.house-panel,
+.house-inspector,
+.house-actor-controls,
+.house-sidebar-hint {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 16px;
+  min-width: 0;
+}
+.house-panel,
+.house-inspector,
+.house-actor-controls {
+  border-bottom: 1px solid #7b684540;
+}
+.house-panel {
+  padding-top: 40px;
+}
+.house-sidebar h3 {
+  font: 19px var(--font-heading, Georgia, serif);
+  margin: 0 0 12px;
+  overflow-wrap: anywhere;
+}
+.house-sidebar-hint {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b8ac96;
+}
+.house-transform {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  gap: 9px;
+}
+.house-transform label {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  max-width: none;
+  font-size: 12px;
+}
+.house-transform input,
+.house-transform select {
+  width: 100%;
+  min-width: 0;
+}
+.house-transform .house-frame-backing-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.house-frame-backing-toggle input {
+  width: auto;
+}
+.house-transform button {
+  min-width: 0;
+  font-size: 11px;
+  padding: 8px;
+  white-space: normal;
+}
+.house-actor-controls {
+  font-size: 11px;
+}
+.house-actor-controls label {
+  flex-basis: 100%;
+}
+.house-actor-controls button {
+  flex: 1 1 90px;
+  font-size: 11px;
+  padding: 7px;
+}
+.house-settings {
+  display: grid;
+  width: 100%;
+  gap: 8px;
+}
+.house-settings label {
+  min-width: 0;
+  margin-bottom: 4px;
+}
+.house-panel-heading {
+  align-items: start;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.house-inventory,
+.house-catalog {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.house-feedback {
+  flex: 0 0 auto;
+  max-height: 64px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 7px 14px;
+  font-size: 12px;
+}
+.house-invitations {
+  flex: 0 0 auto;
+  max-height: 90px;
+  overflow-y: auto;
+}
+.house-invitations > div {
+  margin: 0;
+  padding: 8px 14px;
+}
+.house-welcome {
+  flex: 1;
+  min-height: 0;
+}
+.house-welcome > img {
+  object-fit: contain;
+}
+.house-welcome > div {
+  padding: clamp(20px, 8vh, 110px) 30px;
+  overflow-y: auto;
+}
+@media (max-width: 1050px) {
+  .house-body {
+    grid-template-columns: 72px minmax(0, 1fr) 270px;
+  }
+  .house-header-actions select {
+    max-width: 160px;
+  }
+}
+@media (max-width: 800px) {
+  .house-body {
+    grid-template-columns: 58px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .house-body.has-panel {
+    grid-template-rows: minmax(0, 55%) minmax(0, 45%);
+  }
+  .house-dock {
+    grid-row: 1 / -1;
+    padding: 6px 3px;
+    gap: 4px;
+  }
+  .house-dock button {
+    padding: 9px 2px;
+    font-size: 9px;
+    min-height: 52px;
+  }
+  .house-center {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 5px;
+  }
+  .house-sidebar {
+    grid-column: 2;
+    grid-row: 2;
+    border: 0;
+    border-top: 1px solid #9b805a80;
+  }
+  .house-body:not(.has-panel) .house-sidebar {
+    display: none;
+  }
+  .house-panel,
+  .house-inspector,
+  .house-actor-controls {
+    padding: 12px;
+  }
+  .house-panel {
+    padding-top: 36px;
+  }
+  .house-rooms {
+    gap: 3px;
+    padding-bottom: 5px;
+  }
+  .house-rooms button {
+    padding: 7px 3px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 650px) {
+  .house-header {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    align-items: center;
+    gap: 6px 10px;
+    padding: 7px 8px;
+  }
+  .house-exit {
+    height: 30px;
+  }
+  .house-heading h2 {
+    font-size: 18px;
+  }
+  .house-heading .eyebrow {
+    display: none;
+  }
+  .house-header-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    width: 100%;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .house-header-actions select {
+    flex: 1 1 110px;
+    max-width: none;
+    width: 110px;
+    padding: 6px;
+    font-size: 10px;
+  }
+  .house-header-actions button {
+    padding: 6px;
+    font-size: 10px;
+  }
+  .house-header-actions svg {
+    width: 13px;
+    height: 13px;
+  }
+  .house-header-actions button:last-child {
+    flex: 0 0 auto;
+  }
+  .house-rp-log {
+    max-height: 45px;
+  }
+  .house-rp-overlay {
+    bottom: 5%;
+  }
+  .house-rp-pin {
+    margin-bottom: 3px;
+    font-size: 9px;
+  }
+}
+
+.house-sidebar-top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  background: #1a252b;
+  border-bottom: 1px solid #7b684540;
+  font-size: 12px;
+}
+.house-sidebar-top button {
+  padding: 4px;
+}
+.house-panel {
+  padding-top: 16px;
+}
+.house-dock button {
+  overflow-wrap: normal;
 }

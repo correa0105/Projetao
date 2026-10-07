@@ -42,7 +42,7 @@ const materials: Record<string, Kind> = {
   'house-books': 'paper',
   'house-lantern': 'metal',
   'house-plant': 'glass',
-  'house-statue': 'glass',
+  'house-statue': 'wood',
   'house-bench': 'wood',
   'house-letter': 'paper',
   'house-frame': 'wood',

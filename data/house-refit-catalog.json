@@ -1,0 +1,112 @@
+[
+  {
+    "id": "rug",
+    "name": "Tapete do Solar",
+    "price_cp": 2500,
+    "default_facing": 0,
+    "description": "Tapete de lã bordô com trama antiga e franjas, para o piso da sala.",
+    "speech": "O bordô combina com a luz da lareira. A lã também agradece quando deixam as botas na porta.",
+    "art": "a burgundy rectangular medieval wool floor rug with aged woven patterns and fringes, lying flat, low room-reference camera",
+    "default_scale": 0.55,
+    "audio_path": "/audio/emporium/house-rug.wav"
+  },
+  {
+    "id": "sofa",
+    "name": "Sofá de Carvalho",
+    "price_cp": 6500,
+    "default_facing": 7,
+    "description": "Sofá de três lugares em carvalho, com almofadas terracota e uma manta sobre o braço.",
+    "speech": "Três lugares, almofadas macias e uma manta para quem ficou de vigia a noite inteira.",
+    "art": "a weathered carved oak three-seat medieval sofa, terracotta upholstery, patterned cushions, burgundy throw on one arm, low room-reference camera",
+    "default_scale": 0.34,
+    "audio_path": "/audio/emporium/house-sofa.wav"
+  },
+  {
+    "id": "table",
+    "name": "Mesa de Centro",
+    "price_cp": 3000,
+    "default_facing": 0,
+    "description": "Mesa baixa de carvalho com quatro pernas robustas e tampo livre.",
+    "speech": "Fica ao alcance de quem está sentado. Há espaço para uma caneca, um livro e aquela conversa que demora.",
+    "art": "a low rectangular aged oak medieval coffee table, four stout turned legs and low cross stretchers, empty tabletop, low room-reference camera",
+    "default_scale": 0.3,
+    "audio_path": "/audio/emporium/house-table.wav"
+  },
+  {
+    "id": "chair",
+    "name": "Poltrona de Couro",
+    "price_cp": 1500,
+    "default_facing": 1,
+    "description": "Poltrona de carvalho com braços e assento em couro envelhecido.",
+    "speech": "O couro já está amaciado. Puxe para perto do fogo e escolha quem vai contar a primeira história.",
+    "art": "a medieval oak armchair with aged brown leather seat and back, sturdy armrests, low room-reference camera",
+    "default_scale": 0.16,
+    "audio_path": "/audio/emporium/house-chair.wav"
+  },
+  {
+    "id": "chest",
+    "name": "Arca de Recordações",
+    "price_cp": 3500,
+    "default_facing": 1,
+    "description": "Arca retangular de carvalho, tampa plana e ferragens escuras.",
+    "speech": "Madeira grossa, ferragens firmes e uma tampa sem enfeites. Guarde aqui o que deseja encontrar depois.",
+    "art": "a closed rectangular medieval oak chest, flat plank lid, black forged iron straps and central lock, small wooden feet, low room-reference camera",
+    "default_scale": 0.19,
+    "audio_path": "/audio/emporium/house-chest.wav"
+  },
+  {
+    "id": "books",
+    "name": "Livros do Caminho",
+    "price_cp": 1200,
+    "default_facing": 1,
+    "description": "Volumes de couro envelhecido para o tampo ou a estante.",
+    "speech": "As capas têm marcas de viagem. As páginas ainda têm muito a dizer a quem tiver tempo para ler.",
+    "art": "weathered medieval leather-bound books with realistic pages and worn covers, low room-reference camera",
+    "default_scale": 0.052,
+    "audio_path": "/audio/emporium/house-books.wav"
+  },
+  {
+    "id": "lantern",
+    "name": "Candelabro de Três Velas",
+    "price_cp": 1800,
+    "default_facing": 1,
+    "description": "Candelabro de metal envelhecido com três velas e braços curvos.",
+    "speech": "Três pequenas chamas dão luz suficiente para terminar a carta antes de dormir.",
+    "art": "a medieval aged metal three-candle candelabrum, curved branches, warm candle flames, low room-reference camera",
+    "default_scale": 0.036,
+    "audio_path": "/audio/emporium/house-lantern.wav"
+  },
+  {
+    "id": "plant",
+    "name": "Vaso de Flores",
+    "price_cp": 600,
+    "default_facing": 1,
+    "description": "Vaso com flores e folhas para trazer cor à sala.",
+    "speech": "Nem tudo que entra numa casa precisa ser armadura ou mapa. Estas flores pedem só um pouco de água.",
+    "art": "a medieval decorative vase holding a natural bouquet of flowers and green leaves, low room-reference camera",
+    "default_scale": 0.085,
+    "audio_path": "/audio/emporium/house-plant.wav"
+  },
+  {
+    "id": "statue",
+    "name": "Estante de Livros",
+    "price_cp": 8000,
+    "default_facing": 1,
+    "description": "Estante aberta de carvalho com prateleiras e livros de couro.",
+    "speech": "Uma prateleira para cada história que você trouxe. Deixe uma livre para as próximas.",
+    "art": "an open medieval oak bookcase with several shelves of leather-bound books, low room-reference camera",
+    "default_scale": 0.16,
+    "audio_path": "/audio/emporium/house-statue-refit-20261007.wav"
+  },
+  {
+    "id": "bench",
+    "name": "Banco de Carvalho",
+    "price_cp": 2200,
+    "default_facing": 1,
+    "description": "Banco de madeira sem encosto, com uma pele sobre o assento.",
+    "speech": "A pele suaviza o assento e a madeira firme aguenta a roda de conversa.",
+    "art": "a sturdy medieval backless oak bench with an animal-fur throw over its seat, low room-reference camera",
+    "default_scale": 0.23,
+    "audio_path": "/audio/emporium/house-bench.wav"
+  }
+]

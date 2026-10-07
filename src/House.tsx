@@ -5,10 +5,7 @@ import {
   useState,
   type CSSProperties,
   type PointerEvent,
-  type ReactNode,
-  type RefObject,
 } from 'react';
-import { createPortal } from 'react-dom';
 import {
   Save,
   Package,
@@ -24,15 +21,17 @@ import {
   Armchair,
   ChevronDown,
   Send,
-  Settings,
-  ChevronLeft,
-  ChevronRight,
+  ArrowLeft,
 } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
 import { HouseItemReader } from './HouseItemReader';
+import { ItemInfoButton } from './ItemInfoButton';
 import {
   houseCatalog,
+  houseDefaultFacing,
+  houseDefaultScale,
+  houseItemImage,
   houseTemplates,
   roomKinds,
   type HouseState,
@@ -67,17 +66,6 @@ type Index = {
 };
 type Profile = { id: string; name: string; characters: { id: string; name: string }[] };
 const labels = { sala: 'Sala', cozinha: 'Cozinha', varanda: 'Varanda', jardim: 'Jardim' };
-type ItemProjection = { enabled: boolean; angle: number };
-function itemProjectionPreference(userId: string): ItemProjection {
-  try {
-    const value = JSON.parse(localStorage.getItem(`house-item-perspective:${userId}`) || 'null');
-    if (typeof value?.enabled === 'boolean' && Number.isFinite(value.angle))
-      return { enabled: value.enabled, angle: Math.max(0, Math.min(20, value.angle)) };
-  } catch {
-    /* A browser preference must not block the house. */
-  }
-  return { enabled: true, angle: 12 };
-}
 function pinnedRpPreference(userId: string) {
   try {
     return localStorage.getItem(`house-rp-pinned:${userId}`) === 'true';
@@ -182,230 +170,15 @@ function ItemArt({
             ? item.catalog_id === 'frame'
               ? '/house/items/views/frame/0.webp'
               : spec?.image
-            : `/house/items/views/${item.catalog_id}/${facing}.webp`
+            : houseItemImage(item.catalog_id, facing)
         }
         alt={spec?.name || 'Decoração'}
         onError={(e) => {
           if (e.currentTarget.src.includes('/house/items/views/') && spec)
-            e.currentTarget.src = spec.image;
+            e.currentTarget.src = `/house/items/${spec.id}.webp`;
         }}
       />
     </span>
-  );
-}
-function HousePieceTools({
-  stage,
-  placement,
-  name,
-  onTurn,
-  disabled,
-  children,
-}: {
-  stage: RefObject<HTMLDivElement | null>;
-  placement: HousePlacement;
-  name: string;
-  onTurn: (step: -1 | 1) => void;
-  disabled: boolean;
-  children: ReactNode;
-}) {
-  const [open, setOpen] = useState(false),
-    [anchor, setAnchor] = useState<{
-      left: number;
-      right: number;
-      leftY: number;
-      rightY: number;
-      gearX: number;
-      gearY: number;
-      sceneX: number;
-      sceneY: number;
-      vw: number;
-      vh: number;
-    } | null>(null),
-    [popupHeight, setPopupHeight] = useState(0);
-  const toolbar = useRef<HTMLDivElement>(null),
-    popup = useRef<HTMLDivElement>(null),
-    gear = useRef<HTMLButtonElement>(null);
-  useLayoutEffect(() => {
-    const scene = stage.current;
-    const piece = scene?.querySelector<HTMLElement>(`[data-house-piece="${placement.id}"]`);
-    if (!scene || !piece) return;
-    const measure = () => {
-      const bounds = scene.getBoundingClientRect(),
-        art = piece.getBoundingClientRect(),
-        clamp = (value: number, maximum: number) => Math.max(4, Math.min(maximum - 36, value)),
-        x = art.left - bounds.left - scene.clientLeft,
-        y = art.top - bounds.top - scene.clientTop;
-      const left = clamp(x - 40, scene.clientWidth),
-        right = clamp(x + art.width + 8, scene.clientWidth),
-        middle = clamp(y + art.height / 2 - 16, scene.clientHeight);
-      const arrowTop = (toolX: number) => {
-        if (
-          toolX + 32 <= x ||
-          toolX >= x + art.width ||
-          middle + 32 <= y ||
-          middle >= y + art.height
-        )
-          return middle;
-        if (y - 40 >= 4) return y - 40;
-        if (y + art.height + 8 <= scene.clientHeight - 36) return y + art.height + 8;
-        const bottom = scene.clientHeight - 36,
-          center = y + art.height / 2;
-        return Math.abs(center - 20) > Math.abs(center - bottom - 16) ? 4 : bottom;
-      };
-      const next = {
-        left,
-        right,
-        leftY: arrowTop(left),
-        rightY: arrowTop(right),
-        gearX: clamp(x + art.width - 32, scene.clientWidth),
-        gearY: clamp(y - 40, scene.clientHeight),
-        sceneX: bounds.left + scene.clientLeft,
-        sceneY: bounds.top + scene.clientTop,
-        vw: window.innerWidth,
-        vh: window.innerHeight,
-      };
-      if (next.leftY !== middle || next.rightY !== middle) {
-        // At room edges, keep the three tools in a separate row rather than
-        // covering the sprite or stacking the arrow beneath the gear.
-        const rowX = Math.max(4, Math.min(scene.clientWidth - 108, x + art.width / 2 - 52)),
-          rowY = next.leftY !== middle ? next.leftY : next.rightY;
-        next.left = rowX;
-        next.gearX = rowX + 36;
-        next.right = rowX + 72;
-        next.leftY = next.gearY = next.rightY = rowY;
-      }
-      setAnchor((old) =>
-        old &&
-        Object.keys(next).every(
-          (key) => old[key as keyof typeof old] === next[key as keyof typeof next],
-        )
-          ? old
-          : next,
-      );
-    };
-    const observer = new ResizeObserver(measure);
-    observer.observe(scene);
-    observer.observe(piece);
-    measure();
-    window.addEventListener('resize', measure);
-    window.addEventListener('scroll', measure, true);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', measure);
-      window.removeEventListener('scroll', measure, true);
-    };
-  }, [stage, placement]);
-  useLayoutEffect(() => {
-    if (!open || !popup.current) return;
-    const element = popup.current,
-      measure = () => setPopupHeight(element.getBoundingClientRect().height),
-      observer = new ResizeObserver(measure);
-    observer.observe(element);
-    measure();
-    return () => observer.disconnect();
-  }, [open]);
-  useEffect(() => {
-    if (!open) return;
-    const outside = (event: globalThis.PointerEvent) => {
-        if (
-          !popup.current?.contains(event.target as Node) &&
-          !toolbar.current?.contains(event.target as Node)
-        )
-          setOpen(false);
-      },
-      escape = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-          setOpen(false);
-          gear.current?.focus({ preventScroll: true });
-        }
-      };
-    document.addEventListener('pointerdown', outside, true);
-    document.addEventListener('keydown', escape);
-    return () => {
-      document.removeEventListener('pointerdown', outside, true);
-      document.removeEventListener('keydown', escape);
-    };
-  }, [open]);
-  if (!anchor) return null;
-  const width = Math.min(320, anchor.vw - 24),
-    left = Math.max(
-      12,
-      Math.min(anchor.vw - width - 12, anchor.sceneX + anchor.gearX + 32 - width),
-    ),
-    top = Math.max(12, Math.min(anchor.vh - popupHeight - 12, anchor.sceneY + anchor.gearY + 40));
-  return (
-    <>
-      <div
-        className="house-piece-tools"
-        ref={toolbar}
-        onPointerDown={(event) => event.stopPropagation()}
-        onClick={(event) => event.stopPropagation()}
-      >
-        {placement.kind === 'item' && (
-          <>
-            <button
-              type="button"
-              aria-label="Vista anterior da peça"
-              disabled={disabled}
-              title="Vista anterior"
-              style={{ left: anchor.left, top: anchor.leftY }}
-              onClick={() => onTurn(-1)}
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              type="button"
-              aria-label="Próxima vista da peça"
-              disabled={disabled}
-              title="Próxima vista"
-              style={{ left: anchor.right, top: anchor.rightY }}
-              onClick={() => onTurn(1)}
-            >
-              <ChevronRight size={18} />
-            </button>
-          </>
-        )}
-        <button
-          ref={gear}
-          type="button"
-          aria-label="Ajustar peça"
-          aria-expanded={open}
-          aria-haspopup="dialog"
-          title={`Ajustar ${name}`}
-          style={{ left: anchor.gearX, top: anchor.gearY }}
-          onClick={() => setOpen((value) => !value)}
-        >
-          <Settings size={18} />
-        </button>
-      </div>
-      {open &&
-        createPortal(
-          <div
-            ref={popup}
-            role="dialog"
-            aria-label="Ajustes da peça"
-            className="house-piece-popover"
-            style={{ left, top, width }}
-            onPointerDown={(event) => event.stopPropagation()}
-          >
-            <div className="house-piece-popover-title">
-              <strong>{name}</strong>
-              <button
-                type="button"
-                aria-label="Fechar ajustes da peça"
-                onClick={() => {
-                  setOpen(false);
-                  gear.current?.focus({ preventScroll: true });
-                }}
-              >
-                <X size={18} />
-              </button>
-            </div>
-            {children}
-          </div>,
-          document.body,
-        )}
-    </>
   );
 }
 export function House({
@@ -447,23 +220,40 @@ export function House({
     [rewardKind, setRewardKind] = useState('count'),
     [rewardValue, setRewardValue] = useState('1'),
     [grantReason, setGrantReason] = useState('');
-  const [itemProjection, setItemProjection] = useState(() => itemProjectionPreference(user.id));
   const [rpPinned, setRpPinned] = useState(() => pinnedRpPreference(user.id));
   useEffect(() => {
-    setItemProjection(itemProjectionPreference(user.id));
     setRpPinned(pinnedRpPreference(user.id));
   }, [user.id]);
-  function changeItemProjection(patch: Partial<ItemProjection>) {
-    setItemProjection((old) => {
-      const value = { ...old, ...patch };
-      try {
-        localStorage.setItem(`house-item-perspective:${user.id}`, JSON.stringify(value));
-      } catch {
-        /* Optional local preference. */
-      }
-      return value;
-    });
-  }
+  const stageSlot = useRef<HTMLDivElement>(null);
+  const [sceneSize, setSceneSize] = useState({ width: 0, height: 0 });
+  const [viewportTop, setViewportTop] = useState(82);
+  useLayoutEffect(() => {
+    document.body.classList.add('house-immersive');
+    const header = document.querySelector<HTMLElement>('.main-shell > .page-header');
+    const resize = () =>
+      setViewportTop(header ? Math.max(0, header.getBoundingClientRect().bottom + 8) : 8);
+    const observer = new ResizeObserver(resize);
+    if (header) observer.observe(header);
+    window.addEventListener('resize', resize);
+    resize();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', resize);
+      document.body.classList.remove('house-immersive');
+    };
+  }, []);
+  useLayoutEffect(() => {
+    const slot = stageSlot.current;
+    if (!slot) return;
+    const resize = () => {
+      const width = Math.max(0, Math.min(slot.clientWidth, (slot.clientHeight * 16) / 9));
+      setSceneSize({ width, height: (width * 9) / 16 });
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(slot);
+    resize();
+    return () => observer.disconnect();
+  }, [home?.id]);
   const stage = useRef<HTMLDivElement>(null),
     chatLog = useRef<HTMLDivElement>(null),
     chatForm = useRef<HTMLFormElement>(null),
@@ -652,6 +442,7 @@ export function House({
     spec = (index?.catalog || houseCatalog).find((c) => c.id === buy),
     ownActor = home?.presence.find((p) => p.user_id === user.id && p.room === room);
   function edit(fn: (h: HouseState) => HouseState) {
+    if (busy) return;
     setHome((h) => (h ? fn(h) : h));
     setDirty(true);
     dirtyRef.current = true;
@@ -675,6 +466,7 @@ export function House({
     }));
   }
   function add(kind: HousePlacement['kind'], ref: string) {
+    if (busy) return;
     const id = crypto.randomUUID();
     const companion = home?.companions.find((c) => c.id === ref);
     const scale =
@@ -684,7 +476,7 @@ export function House({
           ? (0.09 *
               petArtwork(companion?.pet_id || 'dog', companion?.appearance || 'original').width) /
             218
-          : 0.17;
+          : houseDefaultScale(home?.inventory.find((item) => item.id === ref)?.catalog_id || '');
     edit((h) => ({
       ...h,
       rooms: h.rooms.map((r) =>
@@ -701,7 +493,12 @@ export function House({
                   y: 0.82,
                   scale: Math.max(0.03, Math.min(0.55, scale)),
                   rotation: 0,
-                  facing: 0,
+                  facing:
+                    kind === 'item'
+                      ? houseDefaultFacing(
+                          home?.inventory.find((item) => item.id === ref)?.catalog_id || '',
+                        )
+                      : 0,
                   layer: r.placements.length,
                 },
               ],
@@ -863,9 +660,16 @@ export function House({
     setRecipient(null);
   }
   return (
-    <section className="house-workspace" aria-label="House">
+    <section
+      className="house-workspace"
+      aria-label="House"
+      style={{ '--house-top': `${viewportTop}px` } as CSSProperties}
+    >
       <header className="house-header">
-        <div>
+        <a className="house-exit" href="#overview" aria-label="Sair da House" title="Sair da House">
+          <ArrowLeft size={20} />
+        </a>
+        <div className="house-heading">
           <span className="eyebrow">Seu lugar na Alvorada</span>
           <h2>{home?.name || 'House'}</h2>
         </div>
@@ -1009,116 +813,295 @@ export function House({
         </div>
       )}
       {home && (
-        <>
-          <nav className="house-rooms" aria-label="Ambientes da casa">
-            {roomKinds.map((k) => (
-              <button
-                key={k}
-                aria-pressed={room === k}
-                onClick={() => {
-                  setRoom(k);
-                  setSelected('');
-                }}
-              >
-                {labels[k]}
+        <div className={`house-body ${tab && tab !== 'rp' ? 'has-panel' : ''}`}>
+          <nav className="house-dock" aria-label="Controles da casa">
+            {home.is_owner && (
+              <>
+                <button aria-pressed={tab === 'decor'} onClick={() => toggle('decor')}>
+                  <Package size={17} />
+                  Decorar
+                </button>
+                <button aria-pressed={tab === 'shop'} onClick={() => toggle('shop')}>
+                  <ShoppingBag size={17} />
+                  Mobília
+                </button>
+                <button aria-pressed={tab === 'guests'} onClick={() => toggle('guests')}>
+                  <Users size={17} />
+                  Convidados
+                </button>
+              </>
+            )}
+            <button aria-pressed={tab === 'rp' || rpPinned} onClick={() => toggle('rp')}>
+              <MessageCircle size={17} />
+              RP
+            </button>
+            <button aria-pressed={tab === 'versions'} onClick={() => toggle('versions')}>
+              <ImagePlus size={17} />
+              Personagem
+            </button>
+            {index?.can_admin && (
+              <button aria-pressed={tab === 'rewards'} onClick={() => toggle('rewards')}>
+                <Gift size={17} />
+                Recompensas
               </button>
-            ))}
-            {!home.is_owner && <span>Visitando {home.owner_name}</span>}
+            )}
           </nav>
-          <div
-            className="house-scene"
-            ref={stage}
-            style={{
-              backgroundImage: `url(${houseTemplates.find((t) => t.id === current?.template)?.image})`,
-            }}
-            onClick={(e) => {
-              if (e.target === e.currentTarget) setSelected('');
-            }}
-          >
-            {current?.placements.map((p) => {
-              const item =
-                  home.inventory.find((i) => i.id === p.ref) ||
-                  home.items.find((i) => i.id === p.ref),
-                companion = home.companions.find((c) => c.id === p.ref);
-              const name = item
-                ? item.content.title || houseCatalog.find((c) => c.id === item.catalog_id)?.name
-                : companion?.name;
-              return (
+          <div className="house-center">
+            <nav className="house-rooms" aria-label="Ambientes da casa">
+              {roomKinds.map((k) => (
                 <button
-                  key={p.id}
-                  type="button"
-                  className={`house-piece ${selected === p.id ? 'selected' : ''}`}
-                  aria-label={`${name}${home.is_owner ? ' · mover' : ''}`}
-                  style={
-                    {
-                      left: `${p.x * 100}%`,
-                      top: `${p.y * 100}%`,
-                      width: `${p.scale * housePerspectiveScale(p.y) * (item ? houseViewWidth(item.catalog_id, p.facing ?? 0) : 1) * 100}%`,
-                      transform: `translate(-50%,-100%) rotate(${p.rotation}deg)`,
-                      zIndex: p.layer * 2 + 2,
-                    } as CSSProperties
-                  }
-                  data-house-piece={p.id}
-                  data-base-scale={p.scale}
-                  data-depth-scale={housePerspectiveScale(p.y)}
-                  data-facing={p.facing ?? 0}
-                  data-layer={p.layer}
-                  title={
-                    item && (['letter', 'frame'].includes(item.catalog_id) || item.content.text)
-                      ? 'Dois cliques para abrir'
-                      : undefined
-                  }
-                  onPointerDown={(e) => drag(e, p)}
+                  key={k}
+                  aria-pressed={room === k}
                   onClick={() => {
-                    if (home.is_owner) setSelected(p.id);
-                  }}
-                  onDoubleClick={() => {
-                    if (
-                      item &&
-                      (['letter', 'frame'].includes(item.catalog_id) || item.content.text)
-                    )
-                      setRead(item);
+                    setRoom(k);
+                    setSelected('');
                   }}
                 >
-                  {item ? (
-                    <span
-                      className="house-item-projection"
-                      data-projection-angle={
-                        itemProjection.enabled ? (p.perspective_pitch ?? itemProjection.angle) : 0
-                      }
-                      data-projection-yaw={itemProjection.enabled ? (p.perspective_yaw ?? 0) : 0}
+                  {labels[k]}
+                </button>
+              ))}
+              {!home.is_owner && <span>Visitando {home.owner_name}</span>}
+            </nav>
+            <div className="house-stage-slot" ref={stageSlot}>
+              <div
+                className="house-scene"
+                ref={stage}
+                style={{
+                  width: sceneSize.width,
+                  height: sceneSize.height,
+                  backgroundImage: `url(${houseTemplates.find((t) => t.id === current?.template)?.image})`,
+                }}
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) setSelected('');
+                }}
+              >
+                {current?.placements.map((p) => {
+                  const item =
+                      home.inventory.find((i) => i.id === p.ref) ||
+                      home.items.find((i) => i.id === p.ref),
+                    companion = home.companions.find((c) => c.id === p.ref);
+                  const name = item
+                    ? item.content.title || houseCatalog.find((c) => c.id === item.catalog_id)?.name
+                    : companion?.name;
+                  return (
+                    <button
+                      key={p.id}
+                      type="button"
+                      className={`house-piece ${selected === p.id ? 'selected' : ''}`}
+                      aria-label={`${name}${home.is_owner ? ' · mover' : ''}`}
                       style={
                         {
-                          '--house-depth-angle': `${itemProjection.enabled ? (p.perspective_pitch ?? itemProjection.angle) : 0}deg`,
-                          '--house-depth-yaw': `${itemProjection.enabled ? (p.perspective_yaw ?? 0) : 0}deg`,
+                          left: `${p.x * 100}%`,
+                          top: `${p.y * 100}%`,
+                          width: `${p.scale * housePerspectiveScale(p.y) * (item ? houseViewWidth(item.catalog_id, p.facing ?? 0) : 1) * 100}%`,
+                          transform: `translate(-50%,-100%) rotate(${p.rotation}deg)`,
+                          zIndex: p.layer * 2 + 2,
                         } as CSSProperties
                       }
+                      data-house-piece={p.id}
+                      data-base-scale={p.scale}
+                      data-depth-scale={housePerspectiveScale(p.y)}
+                      data-facing={p.facing ?? 0}
+                      data-layer={p.layer}
+                      title={
+                        item && (['letter', 'frame'].includes(item.catalog_id) || item.content.text)
+                          ? 'Dois cliques para abrir'
+                          : undefined
+                      }
+                      onPointerDown={(e) => drag(e, p)}
+                      onClick={() => {
+                        if (home.is_owner) setSelected(p.id);
+                      }}
+                      onDoubleClick={() => {
+                        if (
+                          item &&
+                          (['letter', 'frame'].includes(item.catalog_id) || item.content.text)
+                        )
+                          setRead(item);
+                      }}
                     >
-                      <ItemArt
-                        item={item}
-                        facing={p.facing ?? 0}
-                        backing={p.frame_backing === true}
+                      {item ? (
+                        <ItemArt
+                          item={item}
+                          facing={p.facing ?? 0}
+                          backing={p.frame_backing === true}
+                        />
+                      ) : p.kind === 'pet' && companion ? (
+                        <OwnedPetArt pet={companion} />
+                      ) : companion ? (
+                        <img src={ownedMountImage(companion as any)} alt={name} />
+                      ) : null}
+                    </button>
+                  );
+                })}
+                {home.presence
+                  .filter((p) => p.room === room)
+                  .map((p) => (
+                    <button
+                      key={p.user_id}
+                      className={`house-actor ${selected === `actor:${p.user_id}` ? 'selected' : ''}`}
+                      data-layer={p.layer}
+                      aria-label={`${p.name}${p.user_id === user.id ? ' · mover personagem' : ''}`}
+                      onPointerDown={(e) => dragActor(e, p)}
+                      onClick={() => {
+                        if (p.user_id === user.id) setSelected(`actor:${p.user_id}`);
+                      }}
+                      data-base-scale={p.scale}
+                      data-depth-scale={housePerspectiveScale(p.y)}
+                      style={{
+                        left: `${p.x * 100}%`,
+                        top: `${p.y * 100}%`,
+                        width: `${p.scale * housePerspectiveScale(p.y) * 100}%`,
+                        zIndex: p.layer,
+                        transform: 'translate(-50%, -100%)',
+                      }}
+                    >
+                      <img
+                        draggable={false}
+                        src={
+                          p.variant_id
+                            ? `/api/house/variants/${p.variant_id}/image`
+                            : `/api/profiles/${encodeURIComponent(p.user_id)}/characters/${p.character_id}/portrait`
+                        }
+                        alt={p.name}
                       />
-                    </span>
-                  ) : p.kind === 'pet' && companion ? (
-                    <OwnedPetArt pet={companion} />
-                  ) : companion ? (
-                    <img src={ownedMountImage(companion as any)} alt={name} />
-                  ) : null}
+                      <span>{p.name}</span>
+                    </button>
+                  ))}
+                {(tab === 'rp' || rpPinned) && (
+                  <div className="house-rp-overlay">
+                    <label className="house-rp-pin">
+                      <input
+                        type="checkbox"
+                        checked={rpPinned}
+                        onChange={(e) => {
+                          const pinned = e.target.checked;
+                          setRpPinned(pinned);
+                          followChat.current = true;
+                          try {
+                            localStorage.setItem(`house-rp-pinned:${user.id}`, String(pinned));
+                          } catch {
+                            /* Optional browser preference. */
+                          }
+                        }}
+                      />
+                      Manter RP aberto
+                    </label>
+                    <div
+                      className="house-rp-log"
+                      role="log"
+                      aria-label="Conversa de RP"
+                      ref={chatLog}
+                      onScroll={(e) => {
+                        const el = e.currentTarget;
+                        followChat.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
+                      }}
+                    >
+                      {home.messages.map((m) => (
+                        <p key={m.id}>
+                          <strong>{m.name}:</strong> {m.body}
+                        </p>
+                      ))}
+                      {!home.messages.length && (
+                        <p>A primeira história ainda está por ser contada.</p>
+                      )}
+                    </div>
+                    <form
+                      className="house-rp-compose"
+                      aria-busy={busy}
+                      ref={chatForm}
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        if (!character || busy || !text.trim()) return;
+                        messageKey.current ||= crypto.randomUUID();
+                        const submitted = {
+                          body: text,
+                          key: messageKey.current,
+                          characterId: character.id,
+                          homeId,
+                          generation: generation.current,
+                        };
+                        resumeChatInput.current = true;
+                        chatInput.current?.focus({ preventScroll: true });
+                        void run(async () => {
+                          try {
+                            await post(`/house/${submitted.homeId}/messages`, {
+                              character_id: submitted.characterId,
+                              body: submitted.body,
+                              idempotency_key: submitted.key,
+                            });
+                            if (submitted.generation !== generation.current) return;
+                            const untouched = messageKey.current === submitted.key;
+                            if (untouched) messageKey.current = null;
+                            followChat.current = true;
+                            setText((draft) =>
+                              untouched && draft === submitted.body ? '' : draft,
+                            );
+                            const v = await api<HouseState>(`/house/${submitted.homeId}`);
+                            setHome((h) =>
+                              h?.id === submitted.homeId ? { ...h, messages: v.messages } : h,
+                            );
+                          } finally {
+                            if (
+                              submitted.generation === generation.current &&
+                              resumeChatInput.current
+                            )
+                              chatInput.current?.focus({ preventScroll: true });
+                          }
+                        });
+                      }}
+                    >
+                      <input
+                        ref={chatInput}
+                        aria-label={`Mensagem de ${character?.name || 'personagem'}`}
+                        maxLength={2000}
+                        disabled={!character}
+                        onFocus={() => {
+                          resumeChatInput.current = true;
+                        }}
+                        value={text}
+                        onChange={(e) => {
+                          setText(e.target.value);
+                          messageKey.current = null;
+                        }}
+                        placeholder="Escreva sua mensagem de RP…"
+                      />
+                      <button
+                        aria-label="Enviar"
+                        title="Enviar mensagem de RP"
+                        disabled={busy || !character || !text.trim()}
+                      >
+                        <Send size={22} />
+                      </button>
+                    </form>
+                  </div>
+                )}
+                <div className="house-scene-caption">
+                  {houseTemplates.find((t) => t.id === current?.template)?.name}
+                </div>
+              </div>
+            </div>
+          </div>
+          <aside className="house-sidebar" aria-label="Painel da casa">
+            <div className="house-sidebar-top">
+              <strong>
+                {{
+                  decor: 'Decorar',
+                  shop: 'Mobília',
+                  guests: 'Convidados',
+                  versions: 'Personagem',
+                  rewards: 'Recompensas',
+                }[tab] || (choice ? 'Ajustes da peça' : 'Personagem')}
+              </strong>
+              {tab && tab !== 'rp' && (
+                <button aria-label="Fechar painel" onClick={() => setTab('')}>
+                  <X size={17} />
                 </button>
-              );
-            })}
+              )}
+            </div>
             {home.is_owner && choice && (
-              <HousePieceTools
-                key={choice.id}
-                stage={stage}
-                placement={choice}
-                name={placementName(choice)}
-                disabled={busy}
-                onTurn={(step) =>
-                  patch(choice.id, { facing: ((choice.facing ?? 0) + step + 8) % 8 })
-                }
-              >
+              <section className="house-inspector" aria-label="Ajustes da peça">
+                <h3>{placementName(choice)}</h3>
                 <fieldset
                   className="house-transform"
                   disabled={busy}
@@ -1153,36 +1136,6 @@ export function House({
                           Manter fundo de madeira
                         </label>
                       )}
-                      <label>
-                        Afinamento ao fundo · {choice.perspective_pitch ?? itemProjection.angle}
-                        °
-                        <input
-                          aria-label="Afinamento ao fundo"
-                          type="range"
-                          min="0"
-                          max="20"
-                          disabled={!itemProjection.enabled}
-                          value={choice.perspective_pitch ?? itemProjection.angle}
-                          onChange={(e) =>
-                            patch(choice.id, { perspective_pitch: Number(e.target.value) })
-                          }
-                        />
-                      </label>
-                      <label>
-                        Recuo lateral · {choice.perspective_yaw ?? 0}°
-                        <input
-                          aria-label="Recuo lateral da peça"
-                          type="range"
-                          min="-20"
-                          max="20"
-                          disabled={!itemProjection.enabled}
-                          value={choice.perspective_yaw ?? 0}
-                          onChange={(e) =>
-                            patch(choice.id, { perspective_yaw: Number(e.target.value) })
-                          }
-                        />
-                        <small>− esquerda ao fundo · + direita ao fundo</small>
-                      </label>
                     </>
                   )}
                   <label>
@@ -1192,6 +1145,7 @@ export function House({
                       type="range"
                       min="3"
                       max="55"
+                      step="0.1"
                       value={choice.scale * 100}
                       onChange={(e) => patch(choice.id, { scale: Number(e.target.value) / 100 })}
                     />
@@ -1236,734 +1190,551 @@ export function House({
                     </button>
                   )}
                 </fieldset>
-              </HousePieceTools>
+              </section>
             )}
-            {home.presence
-              .filter((p) => p.room === room)
-              .map((p) => (
-                <button
-                  key={p.user_id}
-                  className={`house-actor ${selected === `actor:${p.user_id}` ? 'selected' : ''}`}
-                  data-layer={p.layer}
-                  aria-label={`${p.name}${p.user_id === user.id ? ' · mover personagem' : ''}`}
-                  onPointerDown={(e) => dragActor(e, p)}
-                  onClick={() => {
-                    if (p.user_id === user.id) setSelected(`actor:${p.user_id}`);
-                  }}
-                  data-base-scale={p.scale}
-                  data-depth-scale={housePerspectiveScale(p.y)}
-                  style={{
-                    left: `${p.x * 100}%`,
-                    top: `${p.y * 100}%`,
-                    width: `${p.scale * housePerspectiveScale(p.y) * 100}%`,
-                    zIndex: p.layer,
-                    transform: 'translate(-50%, -100%)',
-                  }}
-                >
-                  <img
-                    draggable={false}
-                    src={
-                      p.variant_id
-                        ? `/api/house/variants/${p.variant_id}/image`
-                        : `/api/profiles/${encodeURIComponent(p.user_id)}/characters/${p.character_id}/portrait`
-                    }
-                    alt={p.name}
-                  />
-                  <span>{p.name}</span>
-                </button>
-              ))}
-            {(tab === 'rp' || rpPinned) && (
-              <div className="house-rp-overlay">
-                <label className="house-rp-pin">
-                  <input
-                    type="checkbox"
-                    checked={rpPinned}
-                    onChange={(e) => {
-                      const pinned = e.target.checked;
-                      setRpPinned(pinned);
-                      followChat.current = true;
-                      try {
-                        localStorage.setItem(`house-rp-pinned:${user.id}`, String(pinned));
-                      } catch {
-                        /* Optional browser preference. */
-                      }
-                    }}
-                  />
-                  Manter RP aberto
-                </label>
-                <div
-                  className="house-rp-log"
-                  role="log"
-                  aria-label="Conversa de RP"
-                  ref={chatLog}
-                  onScroll={(e) => {
-                    const el = e.currentTarget;
-                    followChat.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
-                  }}
-                >
-                  {home.messages.map((m) => (
-                    <p key={m.id}>
-                      <strong>{m.name}:</strong> {m.body}
-                    </p>
-                  ))}
-                  {!home.messages.length && <p>A primeira história ainda está por ser contada.</p>}
-                </div>
-                <form
-                  className="house-rp-compose"
-                  aria-busy={busy}
-                  ref={chatForm}
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    if (!character || busy || !text.trim()) return;
-                    messageKey.current ||= crypto.randomUUID();
-                    const submitted = {
-                      body: text,
-                      key: messageKey.current,
-                      characterId: character.id,
-                      homeId,
-                      generation: generation.current,
-                    };
-                    resumeChatInput.current = true;
-                    chatInput.current?.focus({ preventScroll: true });
-                    void run(async () => {
-                      try {
-                        await post(`/house/${submitted.homeId}/messages`, {
-                          character_id: submitted.characterId,
-                          body: submitted.body,
-                          idempotency_key: submitted.key,
-                        });
-                        if (submitted.generation !== generation.current) return;
-                        const untouched = messageKey.current === submitted.key;
-                        if (untouched) messageKey.current = null;
-                        followChat.current = true;
-                        setText((draft) => (untouched && draft === submitted.body ? '' : draft));
-                        const v = await api<HouseState>(`/house/${submitted.homeId}`);
-                        setHome((h) =>
-                          h?.id === submitted.homeId ? { ...h, messages: v.messages } : h,
-                        );
-                      } finally {
-                        if (submitted.generation === generation.current && resumeChatInput.current)
-                          chatInput.current?.focus({ preventScroll: true });
-                      }
-                    });
-                  }}
-                >
-                  <input
-                    ref={chatInput}
-                    aria-label={`Mensagem de ${character?.name || 'personagem'}`}
-                    maxLength={2000}
-                    disabled={!character}
-                    onFocus={() => {
-                      resumeChatInput.current = true;
-                    }}
-                    value={text}
-                    onChange={(e) => {
-                      setText(e.target.value);
-                      messageKey.current = null;
-                    }}
-                    placeholder="Escreva sua mensagem de RP…"
-                  />
-                  <button
-                    aria-label="Enviar"
-                    title="Enviar mensagem de RP"
-                    disabled={busy || !character || !text.trim()}
+            {ownActor && (
+              <div className="house-actor-controls" aria-label="Camadas do personagem">
+                <label>
+                  Camada do personagem
+                  <select
+                    aria-label="Camada do personagem"
+                    value={ownActor.layer}
+                    disabled={busy}
+                    onChange={(e) => changeActorLayer(Number(e.target.value))}
                   >
-                    <Send size={22} />
-                  </button>
-                </form>
+                    <option value={602}>À frente de todos os objetos</option>
+                    <option value={0}>Atrás de todos os objetos</option>
+                    {(current?.placements || [])
+                      .slice()
+                      .sort((a, b) => a.layer - b.layer)
+                      .map((piece) => (
+                        <option key={piece.id} value={piece.layer * 2 + 1}>
+                          Atrás de {placementName(piece)}
+                        </option>
+                      ))}
+                    {ownActor.layer !== 0 &&
+                      ownActor.layer !== 602 &&
+                      !current?.placements.some((p) => p.layer * 2 + 1 === ownActor.layer) && (
+                        <option value={ownActor.layer}>Camada atual</option>
+                      )}
+                  </select>
+                </label>
+                <button disabled={busy || ownActor.layer === 0} onClick={() => changeActorLayer(0)}>
+                  Atrás da mobília
+                </button>
+                <button
+                  disabled={busy || ownActor.layer === 602}
+                  onClick={() => changeActorLayer(602)}
+                >
+                  À frente da mobília
+                </button>
               </div>
             )}
-            <div className="house-scene-caption">
-              {houseTemplates.find((t) => t.id === current?.template)?.name}
-            </div>
-          </div>
-          {ownActor && (
-            <div className="house-actor-controls" aria-label="Camadas do personagem">
-              <label>
-                Camada do personagem
-                <select
-                  aria-label="Camada do personagem"
-                  value={ownActor.layer}
-                  disabled={busy}
-                  onChange={(e) => changeActorLayer(Number(e.target.value))}
-                >
-                  <option value={602}>À frente de todos os objetos</option>
-                  <option value={0}>Atrás de todos os objetos</option>
-                  {(current?.placements || [])
-                    .slice()
-                    .sort((a, b) => a.layer - b.layer)
-                    .map((piece) => (
-                      <option key={piece.id} value={piece.layer * 2 + 1}>
-                        Atrás de {placementName(piece)}
-                      </option>
-                    ))}
-                  {ownActor.layer !== 0 &&
-                    ownActor.layer !== 602 &&
-                    !current?.placements.some((p) => p.layer * 2 + 1 === ownActor.layer) && (
-                      <option value={ownActor.layer}>Camada atual</option>
-                    )}
-                </select>
-              </label>
-              <button disabled={busy || ownActor.layer === 0} onClick={() => changeActorLayer(0)}>
-                Atrás da mobília
-              </button>
-              <button
-                disabled={busy || ownActor.layer === 602}
-                onClick={() => changeActorLayer(602)}
-              >
-                À frente da mobília
-              </button>
-            </div>
-          )}
-          <nav className="house-dock" aria-label="Controles da casa">
-            {home.is_owner && (
-              <>
-                <button aria-pressed={tab === 'decor'} onClick={() => toggle('decor')}>
-                  <Package size={17} />
-                  Decorar
-                </button>
-                <button aria-pressed={tab === 'shop'} onClick={() => toggle('shop')}>
-                  <ShoppingBag size={17} />
-                  Mobília
-                </button>
-                <button aria-pressed={tab === 'guests'} onClick={() => toggle('guests')}>
-                  <Users size={17} />
-                  Convidados
-                </button>
-              </>
-            )}
-            <button aria-pressed={tab === 'rp' || rpPinned} onClick={() => toggle('rp')}>
-              <MessageCircle size={17} />
-              RP
-            </button>
-            <button aria-pressed={tab === 'versions'} onClick={() => toggle('versions')}>
-              <ImagePlus size={17} />
-              Personagem
-            </button>
-            {index?.can_admin && (
-              <button aria-pressed={tab === 'rewards'} onClick={() => toggle('rewards')}>
-                <Gift size={17} />
-                Recompensas
-              </button>
-            )}
-          </nav>
-          {tab && tab !== 'rp' && (
-            <div className="house-panel">
-              <button
-                className="house-panel-close"
-                aria-label="Fechar painel"
-                onClick={() => setTab('')}
-              >
-                <X size={17} />
-              </button>
-              {tab === 'decor' && home.is_owner && (
-                <>
-                  <div className="house-settings">
-                    <label>
-                      Nome da casa
-                      <input
-                        maxLength={80}
-                        value={home.name}
-                        onChange={(e) => edit((h) => ({ ...h, name: e.target.value }))}
-                      />
-                    </label>
-                    <label>
-                      Cenário
-                      <select
-                        value={current?.template}
-                        onChange={(e) =>
-                          edit((h) => ({
-                            ...h,
-                            rooms: h.rooms.map((r) =>
-                              r.kind === room ? { ...r, template: e.target.value } : r,
-                            ),
-                          }))
-                        }
-                      >
-                        {houseTemplates
-                          .filter((t) => t.kind === room)
-                          .map((t) => (
-                            <option key={t.id} value={t.id}>
-                              {t.name}
-                            </option>
-                          ))}
-                      </select>
-                    </label>
-                  </div>
-                  <div className="house-projection-controls">
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={itemProjection.enabled}
-                        onChange={(e) => changeItemProjection({ enabled: e.target.checked })}
-                      />
-                      Perspectiva dos itens
-                    </label>
-                    <label>
-                      Afinamento padrão ao fundo · {itemProjection.angle}°
-                      <input
-                        aria-label="Afinamento padrão dos itens"
-                        type="range"
-                        min="0"
-                        max="20"
-                        value={itemProjection.angle}
-                        disabled={!itemProjection.enabled}
-                        onChange={(e) => changeItemProjection({ angle: Number(e.target.value) })}
-                      />
-                    </label>
-                  </div>
-                  <p className="house-help">
-                    Escolha uma peça e arraste pela cena. Use as setas para mudar a vista e a
-                    engrenagem para ajustar; salve quando terminar.
-                  </p>
-                  <div className="house-inventory">
-                    {home.inventory.map((item) => (
-                      <div key={item.id} className="house-inventory-item">
-                        <button disabled={placed(item.id)} onClick={() => add('item', item.id)}>
-                          <ItemArt item={item} />
-                          <strong>
-                            {item.content.title ||
-                              houseCatalog.find((c) => c.id === item.catalog_id)?.name}
-                          </strong>
-                          <small>{placed(item.id) ? 'Na casa' : 'Colocar'}</small>
-                        </button>
-                        {['letter', 'frame'].includes(item.catalog_id) && (
-                          <div>
-                            <button onClick={() => setRead(item)}>Ler</button>
-                            <button
-                              disabled={placed(item.id) || busy}
-                              onClick={() => {
-                                setGift(item);
-                                setQuery('');
-                                setRecipient(null);
-                              }}
-                            >
-                              <Gift size={13} />
-                              Oferecer
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                    {home.companions.map((c) => (
-                      <button key={c.id} disabled={placed(c.id)} onClick={() => add(c.kind, c.id)}>
-                        {c.kind === 'pet' ? (
-                          <OwnedPetArt pet={c} />
-                        ) : (
-                          <img src={ownedMountImage(c as any)} alt={c.name} />
-                        )}
-                        <strong>{c.name}</strong>
-                        <small>{placed(c.id) ? 'Na casa' : 'Colocar companheiro'}</small>
-                      </button>
-                    ))}
-                  </div>
-                  {!home.inventory.length && !home.companions.length && (
-                    <p>
-                      Sua coleção está vazia. Encontre móveis na aba Mobília ou receba lembranças de
-                      missões.
-                    </p>
-                  )}
-                </>
-              )}
-              {tab === 'shop' && home.is_owner && (
-                <>
-                  <div className="house-panel-heading">
-                    <h3>Mobília & lembranças</h3>
-                    <span>
-                      {home.gold_unlimited ? '∞' : money(home.gold_cp || 0)} PO{' '}
-                      <a href="#shop">Ir ao Empório</a>
-                    </span>
-                  </div>
-                  <div className="house-catalog">
-                    {(index?.catalog || houseCatalog).map((c) => (
-                      <button
-                        key={c.id}
-                        onClick={() => {
-                          setBuy(c.id);
-                          if (!sound.muted && sound.volume > 0) {
-                            const audio = new Audio(`/audio/emporium/house-${c.id}.wav`);
-                            audio.volume = sound.volume;
-                            void audio.play().catch(() => {});
-                          }
-                          setTitle('');
-                          setDedication('');
-                          setPicture(null);
-                          purchaseKey.current = crypto.randomUUID();
-                        }}
-                      >
-                        <img src={c.image} alt="" />
-                        <strong>{c.name}</strong>
-                        <span>{money(c.price_cp)} PO</span>
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-              {tab === 'guests' && home.is_owner && (
-                <>
-                  <h3>Receber companheiros</h3>
-                  <p>
-                    O convite libera a visita e o RP. Você pode revogar o acesso a qualquer momento.
-                  </p>
-                  <label>
-                    Buscar jogador
-                    <input
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Nome do jogador"
-                    />
-                  </label>
-                  <div className="house-people">
-                    {people.map((p) => (
-                      <button
-                        key={p.id}
-                        disabled={busy}
-                        onClick={() =>
-                          void run(async () => {
-                            await post(`/house/${homeId}/invites`, { user_id: p.id });
-                            await load();
-                            setNotice(`Convite enviado a ${p.name}.`);
-                          })
-                        }
-                      >
-                        Convidar {p.name}
-                      </button>
-                    ))}
-                  </div>
-                  <ul className="house-guest-list">
-                    {home.invites.map((i) => (
-                      <li key={i.user_id}>
-                        <span>
-                          {i.name} ·{' '}
-                          {i.status === 'accepted'
-                            ? 'Aceito'
-                            : i.status === 'pending'
-                              ? 'Pendente'
-                              : i.status === 'declined'
-                                ? 'Recusado'
-                                : 'Revogado'}
-                        </span>
-                        {['accepted', 'pending'].includes(i.status) && (
-                          <button
-                            disabled={busy}
-                            onClick={() =>
-                              void run(async () => {
-                                await api(
-                                  `/house/${homeId}/invites/${encodeURIComponent(i.user_id)}`,
-                                  { method: 'PUT', body: JSON.stringify({ status: 'revoked' }) },
-                                );
-                                await load();
-                              })
-                            }
-                          >
-                            Revogar
-                          </button>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-              {tab === 'versions' && (
-                <>
-                  <h3>Seu personagem na casa</h3>
-                  {character ? (
-                    <>
+            {tab && tab !== 'rp' && (
+              <div className="house-panel" role="region" aria-label="Opções da casa">
+                {tab === 'decor' && home.is_owner && (
+                  <>
+                    <div className="house-settings">
                       <label>
-                        Aparência
+                        Nome da casa
+                        <input
+                          maxLength={80}
+                          disabled={busy}
+                          value={home.name}
+                          onChange={(e) => edit((h) => ({ ...h, name: e.target.value }))}
+                        />
+                      </label>
+                      <label>
+                        Cenário
                         <select
-                          aria-label="Aparência do personagem"
-                          value={variant}
-                          onChange={(e) => setVariant(e.target.value)}
+                          disabled={busy}
+                          value={current?.template}
+                          onChange={(e) =>
+                            edit((h) => ({
+                              ...h,
+                              rooms: h.rooms.map((r) =>
+                                r.kind === room ? { ...r, template: e.target.value } : r,
+                              ),
+                            }))
+                          }
                         >
-                          <option value="">Arte atual</option>
-                          {index?.variants
-                            .filter((v) => v.character_id === character.id)
-                            .map((v) => (
-                              <option key={v.id} value={v.id}>
-                                {v.name}
+                          {houseTemplates
+                            .filter((t) => t.kind === room)
+                            .map((t) => (
+                              <option key={t.id} value={t.id}>
+                                {t.name}
                               </option>
                             ))}
                         </select>
                       </label>
-                      <label>
-                        Tamanho do personagem
-                        <input
-                          aria-label="Tamanho do personagem"
-                          type="range"
-                          min="5"
-                          max="45"
-                          value={presenceScale * 100}
-                          onChange={(e) => setPresenceScale(Number(e.target.value) / 100)}
-                        />
-                      </label>
-                      <div className="house-inline">
-                        <button
-                          disabled={busy}
-                          onClick={() =>
-                            void run(async () => {
-                              await api(`/house/${homeId}/presence`, {
-                                method: 'PUT',
-                                body: JSON.stringify({
-                                  character_id: character.id,
-                                  variant_id: variant || null,
-                                  room,
-                                  x:
-                                    home.presence.find(
-                                      (p) => p.user_id === user.id && p.room === room,
-                                    )?.x ||
-                                    [0.45, 0.64, 0.26, 0.82].find(
-                                      (x) =>
-                                        !home.presence.some(
-                                          (p) => p.room === room && Math.abs(p.x - x) < 0.14,
-                                        ),
-                                    ) ||
-                                    0.5,
-                                  y:
-                                    home.presence.find(
-                                      (p) => p.user_id === user.id && p.room === room,
-                                    )?.y || 0.84,
-                                  scale: presenceScale,
-                                }),
-                              });
-                              const v = await api<HouseState>(`/house/${homeId}`);
-                              setHome((h) => (h ? { ...h, presence: v.presence } : h));
-                            })
-                          }
-                        >
-                          Entrar na cena
-                        </button>
-                        <button
-                          disabled={busy}
-                          onClick={() =>
-                            void run(async () => {
-                              await api(`/house/${homeId}/presence`, { method: 'DELETE' });
-                              setHome((h) =>
-                                h
-                                  ? {
-                                      ...h,
-                                      presence: h.presence.filter((p) => p.user_id !== user.id),
-                                    }
-                                  : h,
-                              );
-                            })
-                          }
-                        >
-                          Sair da cena
-                        </button>
-                      </div>
-                      <p className="house-help">
-                        Arraste seu personagem para posicioná-lo. Crie versões com poses diferentes
-                        enviando uma imagem transparente, ou guarde sua arte atual.
-                      </p>
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          void run(async () => {
-                            const v = await post<HouseVariant>('/house/variants', {
-                              character_id: character.id,
-                              name: variantName,
-                              ...(variantFile ? { image: await fileData(variantFile) } : {}),
-                            });
-                            await refreshIndex();
-                            setVariant(v.id);
-                            setVariantName('');
-                            setVariantFile(null);
-                            setNotice('Versão guardada.');
-                          });
-                        }}
-                        className="house-settings"
-                      >
-                        <label>
-                          Nome da versão
-                          <input
-                            required
-                            minLength={2}
-                            maxLength={60}
-                            value={variantName}
-                            onChange={(e) => setVariantName(e.target.value)}
-                          />
-                        </label>
-                        <label>
-                          Imagem da pose (opcional)
-                          <input
-                            type="file"
-                            accept="image/png,image/jpeg,image/webp"
-                            onChange={(e) => setVariantFile(e.target.files?.[0] || null)}
-                          />
-                        </label>
-                        <button disabled={busy}>Guardar versão</button>
-                      </form>
-                    </>
-                  ) : (
-                    <p>Selecione um personagem no menu Personagem.</p>
-                  )}
-                </>
-              )}
-              {tab === 'rewards' && index?.can_admin && (
-                <>
-                  <h3>Mobília da guilda</h3>
-                  <label>
-                    Peça
-                    <select
-                      value={rewardCatalog}
-                      onChange={(e) => setRewardCatalog(e.target.value)}
-                    >
-                      {houseCatalog.map((c) => (
-                        <option key={c.id} value={c.id}>
-                          {c.name}
-                        </option>
+                    </div>
+                    <p className="house-help">
+                      Escolha uma peça e arraste pela cena. Ajuste a direção, o tamanho e as camadas
+                      neste painel; salve quando terminar.
+                    </p>
+                    <div className="house-inventory">
+                      {home.inventory.map((item) => (
+                        <div key={item.id} className="house-inventory-item">
+                          <button
+                            disabled={busy || placed(item.id)}
+                            onClick={() => add('item', item.id)}
+                          >
+                            <ItemArt item={item} />
+                            <strong>
+                              {item.content.title ||
+                                houseCatalog.find((c) => c.id === item.catalog_id)?.name}
+                            </strong>
+                            <small>{placed(item.id) ? 'Na casa' : 'Colocar'}</small>
+                          </button>
+                          {['letter', 'frame'].includes(item.catalog_id) && (
+                            <div>
+                              <button onClick={() => setRead(item)}>Ler</button>
+                              <button
+                                disabled={placed(item.id) || busy}
+                                onClick={() => {
+                                  setGift(item);
+                                  setQuery('');
+                                  setRecipient(null);
+                                }}
+                              >
+                                <Gift size={13} />
+                                Oferecer
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       ))}
-                    </select>
-                  </label>
-                  <details>
-                    <summary>Conceder a um personagem</summary>
-                    <label>
-                      Buscar jogador
-                      <input value={query} onChange={(e) => setQuery(e.target.value)} />
-                    </label>
-                    <div className="house-people">
-                      {people.map((p) => (
-                        <button key={p.id} onClick={() => void run(() => openRecipient(p.id))}>
-                          {p.name}
+                      {home.companions.map((c) => (
+                        <button
+                          key={c.id}
+                          disabled={busy || placed(c.id)}
+                          onClick={() => add(c.kind, c.id)}
+                        >
+                          {c.kind === 'pet' ? (
+                            <OwnedPetArt pet={c} />
+                          ) : (
+                            <img src={ownedMountImage(c as any)} alt={c.name} />
+                          )}
+                          <strong>{c.name}</strong>
+                          <small>{placed(c.id) ? 'Na casa' : 'Colocar companheiro'}</small>
                         </button>
                       ))}
                     </div>
+                    {!home.inventory.length && !home.companions.length && (
+                      <p>
+                        Sua coleção está vazia. Encontre móveis na aba Mobília ou receba lembranças
+                        de missões.
+                      </p>
+                    )}
+                  </>
+                )}
+                {tab === 'shop' && home.is_owner && (
+                  <>
+                    <div className="house-panel-heading">
+                      <h3>Mobília & lembranças</h3>
+                      <span>
+                        {home.gold_unlimited ? '∞' : money(home.gold_cp || 0)} PO{' '}
+                        <a href="#shop">Ir ao Empório</a>
+                      </span>
+                    </div>
+                    <div className="house-catalog">
+                      {(index?.catalog || houseCatalog).map((c) => (
+                        <button
+                          key={c.id}
+                          onClick={() => {
+                            setBuy(c.id);
+                            if (!sound.muted && sound.volume > 0) {
+                              const audio = new Audio(c.audio_path);
+                              audio.volume = sound.volume;
+                              void audio.play().catch(() => {});
+                            }
+                            setTitle('');
+                            setDedication('');
+                            setPicture(null);
+                            purchaseKey.current = crypto.randomUUID();
+                          }}
+                        >
+                          <img src={c.image} alt="" />
+                          <strong>{c.name}</strong>
+                          <span>{money(c.price_cp)} PO</span>
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {tab === 'guests' && home.is_owner && (
+                  <>
+                    <h3>Receber companheiros</h3>
+                    <p>
+                      O convite libera a visita e o RP. Você pode revogar o acesso a qualquer
+                      momento.
+                    </p>
                     <label>
-                      Motivo
+                      Buscar jogador
                       <input
-                        maxLength={300}
-                        value={grantReason}
-                        onChange={(e) => setGrantReason(e.target.value)}
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder="Nome do jogador"
                       />
                     </label>
-                    {recipient?.characters.map((c) => (
-                      <button
-                        key={c.id}
-                        disabled={busy || grantReason.trim().length < 3}
-                        onClick={() =>
-                          void run(async () => {
-                            await post('/house/admin/grants', {
-                              character_id: c.id,
-                              catalog_id: rewardCatalog,
-                              reason: grantReason,
-                              idempotency_key: crypto.randomUUID(),
-                            });
-                            setNotice(`Peça concedida a ${c.name}.`);
-                          })
-                        }
-                      >
-                        Conceder a {c.name}
-                      </button>
-                    ))}
-                  </details>
-                  <form
-                    className="house-settings"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      void run(async () => {
-                        const data = {
-                          catalog_id: rewardCatalog,
-                          ...(rewardKind === 'mission'
-                            ? { mission_id: rewardValue }
-                            : rewardKind === 'achievement'
-                              ? { achievement_code: rewardValue }
-                              : { mission_count: Number(rewardValue) }),
-                        };
-                        const r = await post('/house/admin/rewards', data);
-                        setRules((v) => [...v, r]);
-                        setNotice('Recompensa vinculada ao histórico.');
-                      });
-                    }}
-                  >
-                    <label>
-                      Vínculo
-                      <select
-                        value={rewardKind}
-                        onChange={(e) => {
-                          setRewardKind(e.target.value);
-                          setRewardValue(
-                            e.target.value === 'count'
-                              ? '1'
-                              : e.target.value === 'achievement'
-                                ? achievementCatalog[0].code
-                                : missions[0]?.id || '',
-                          );
-                        }}
-                      >
-                        <option value="count">Missões concluídas</option>
-                        <option value="mission">Missão específica</option>
-                        <option value="achievement">Conquista</option>
-                      </select>
-                    </label>
-                    <label>
-                      Requisito
-                      {rewardKind === 'count' ? (
-                        <input
-                          required
-                          type="number"
-                          min="1"
-                          max="10000"
-                          value={rewardValue}
-                          onChange={(e) => setRewardValue(e.target.value)}
-                        />
-                      ) : (
-                        <select
-                          value={rewardValue}
-                          onChange={(e) => setRewardValue(e.target.value)}
-                        >
-                          {rewardKind === 'mission'
-                            ? missions.map((m) => (
-                                <option key={m.id} value={m.id}>
-                                  {m.title}
-                                </option>
-                              ))
-                            : achievementCatalog.map((a) => (
-                                <option key={a.code} value={a.code}>
-                                  {a.title}
-                                </option>
-                              ))}
-                        </select>
-                      )}
-                    </label>
-                    <button disabled={busy}>Vincular recompensa</button>
-                  </form>
-                  <ul className="house-guest-list">
-                    {rules.map((r) => (
-                      <li key={r.id}>
-                        <span>
-                          {houseCatalog.find((c) => c.id === r.catalog_id)?.name} ·{' '}
-                          {r.mission_count
-                            ? `${r.mission_count} missões`
-                            : r.achievement_code
-                              ? achievementCatalog.find((a) => a.code === r.achievement_code)?.title
-                              : missions.find((m) => m.id === r.mission_id)?.title}{' '}
-                          · {r.active ? 'Ativa' : 'Inativa'}
-                        </span>
+                    <div className="house-people">
+                      {people.map((p) => (
                         <button
+                          key={p.id}
                           disabled={busy}
                           onClick={() =>
                             void run(async () => {
-                              await api(`/house/admin/rewards/${r.id}`, {
-                                method: 'PUT',
-                                body: JSON.stringify({ active: !r.active }),
-                              });
-                              setRules((v) =>
-                                v.map((x) => (x.id === r.id ? { ...x, active: !r.active } : x)),
-                              );
+                              await post(`/house/${homeId}/invites`, { user_id: p.id });
+                              await load();
+                              setNotice(`Convite enviado a ${p.name}.`);
                             })
                           }
                         >
-                          {r.active ? 'Desativar' : 'Ativar'}
+                          Convidar {p.name}
                         </button>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          )}
-        </>
+                      ))}
+                    </div>
+                    <ul className="house-guest-list">
+                      {home.invites.map((i) => (
+                        <li key={i.user_id}>
+                          <span>
+                            {i.name} ·{' '}
+                            {i.status === 'accepted'
+                              ? 'Aceito'
+                              : i.status === 'pending'
+                                ? 'Pendente'
+                                : i.status === 'declined'
+                                  ? 'Recusado'
+                                  : 'Revogado'}
+                          </span>
+                          {['accepted', 'pending'].includes(i.status) && (
+                            <button
+                              disabled={busy}
+                              onClick={() =>
+                                void run(async () => {
+                                  await api(
+                                    `/house/${homeId}/invites/${encodeURIComponent(i.user_id)}`,
+                                    { method: 'PUT', body: JSON.stringify({ status: 'revoked' }) },
+                                  );
+                                  await load();
+                                })
+                              }
+                            >
+                              Revogar
+                            </button>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {tab === 'versions' && (
+                  <>
+                    <h3>Seu personagem na casa</h3>
+                    {character ? (
+                      <>
+                        <label>
+                          Aparência
+                          <select
+                            aria-label="Aparência do personagem"
+                            value={variant}
+                            onChange={(e) => setVariant(e.target.value)}
+                          >
+                            <option value="">Arte atual</option>
+                            {index?.variants
+                              .filter((v) => v.character_id === character.id)
+                              .map((v) => (
+                                <option key={v.id} value={v.id}>
+                                  {v.name}
+                                </option>
+                              ))}
+                          </select>
+                        </label>
+                        <label>
+                          Tamanho do personagem
+                          <input
+                            aria-label="Tamanho do personagem"
+                            type="range"
+                            min="5"
+                            max="45"
+                            value={presenceScale * 100}
+                            onChange={(e) => setPresenceScale(Number(e.target.value) / 100)}
+                          />
+                        </label>
+                        <div className="house-inline">
+                          <button
+                            disabled={busy}
+                            onClick={() =>
+                              void run(async () => {
+                                await api(`/house/${homeId}/presence`, {
+                                  method: 'PUT',
+                                  body: JSON.stringify({
+                                    character_id: character.id,
+                                    variant_id: variant || null,
+                                    room,
+                                    x:
+                                      home.presence.find(
+                                        (p) => p.user_id === user.id && p.room === room,
+                                      )?.x ||
+                                      [0.45, 0.64, 0.26, 0.82].find(
+                                        (x) =>
+                                          !home.presence.some(
+                                            (p) => p.room === room && Math.abs(p.x - x) < 0.14,
+                                          ),
+                                      ) ||
+                                      0.5,
+                                    y:
+                                      home.presence.find(
+                                        (p) => p.user_id === user.id && p.room === room,
+                                      )?.y || 0.84,
+                                    scale: presenceScale,
+                                  }),
+                                });
+                                const v = await api<HouseState>(`/house/${homeId}`);
+                                setHome((h) => (h ? { ...h, presence: v.presence } : h));
+                              })
+                            }
+                          >
+                            Entrar na cena
+                          </button>
+                          <button
+                            disabled={busy}
+                            onClick={() =>
+                              void run(async () => {
+                                await api(`/house/${homeId}/presence`, { method: 'DELETE' });
+                                setHome((h) =>
+                                  h
+                                    ? {
+                                        ...h,
+                                        presence: h.presence.filter((p) => p.user_id !== user.id),
+                                      }
+                                    : h,
+                                );
+                              })
+                            }
+                          >
+                            Sair da cena
+                          </button>
+                        </div>
+                        <p className="house-help">
+                          Arraste seu personagem para posicioná-lo. Crie versões com poses
+                          diferentes enviando uma imagem transparente, ou guarde sua arte atual.
+                        </p>
+                        <form
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            void run(async () => {
+                              const v = await post<HouseVariant>('/house/variants', {
+                                character_id: character.id,
+                                name: variantName,
+                                ...(variantFile ? { image: await fileData(variantFile) } : {}),
+                              });
+                              await refreshIndex();
+                              setVariant(v.id);
+                              setVariantName('');
+                              setVariantFile(null);
+                              setNotice('Versão guardada.');
+                            });
+                          }}
+                          className="house-settings"
+                        >
+                          <label>
+                            Nome da versão
+                            <input
+                              required
+                              minLength={2}
+                              maxLength={60}
+                              value={variantName}
+                              onChange={(e) => setVariantName(e.target.value)}
+                            />
+                          </label>
+                          <label>
+                            Imagem da pose (opcional)
+                            <input
+                              type="file"
+                              accept="image/png,image/jpeg,image/webp"
+                              onChange={(e) => setVariantFile(e.target.files?.[0] || null)}
+                            />
+                          </label>
+                          <button disabled={busy}>Guardar versão</button>
+                        </form>
+                      </>
+                    ) : (
+                      <p>Selecione um personagem no menu Personagem.</p>
+                    )}
+                  </>
+                )}
+                {tab === 'rewards' && index?.can_admin && (
+                  <>
+                    <h3>Mobília da guilda</h3>
+                    <label>
+                      Peça
+                      <select
+                        value={rewardCatalog}
+                        onChange={(e) => setRewardCatalog(e.target.value)}
+                      >
+                        {houseCatalog.map((c) => (
+                          <option key={c.id} value={c.id}>
+                            {c.name}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <details>
+                      <summary>Conceder a um personagem</summary>
+                      <label>
+                        Buscar jogador
+                        <input value={query} onChange={(e) => setQuery(e.target.value)} />
+                      </label>
+                      <div className="house-people">
+                        {people.map((p) => (
+                          <button key={p.id} onClick={() => void run(() => openRecipient(p.id))}>
+                            {p.name}
+                          </button>
+                        ))}
+                      </div>
+                      <label>
+                        Motivo
+                        <input
+                          maxLength={300}
+                          value={grantReason}
+                          onChange={(e) => setGrantReason(e.target.value)}
+                        />
+                      </label>
+                      {recipient?.characters.map((c) => (
+                        <button
+                          key={c.id}
+                          disabled={busy || grantReason.trim().length < 3}
+                          onClick={() =>
+                            void run(async () => {
+                              await post('/house/admin/grants', {
+                                character_id: c.id,
+                                catalog_id: rewardCatalog,
+                                reason: grantReason,
+                                idempotency_key: crypto.randomUUID(),
+                              });
+                              setNotice(`Peça concedida a ${c.name}.`);
+                            })
+                          }
+                        >
+                          Conceder a {c.name}
+                        </button>
+                      ))}
+                    </details>
+                    <form
+                      className="house-settings"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        void run(async () => {
+                          const data = {
+                            catalog_id: rewardCatalog,
+                            ...(rewardKind === 'mission'
+                              ? { mission_id: rewardValue }
+                              : rewardKind === 'achievement'
+                                ? { achievement_code: rewardValue }
+                                : { mission_count: Number(rewardValue) }),
+                          };
+                          const r = await post('/house/admin/rewards', data);
+                          setRules((v) => [...v, r]);
+                          setNotice('Recompensa vinculada ao histórico.');
+                        });
+                      }}
+                    >
+                      <label>
+                        Vínculo
+                        <select
+                          value={rewardKind}
+                          onChange={(e) => {
+                            setRewardKind(e.target.value);
+                            setRewardValue(
+                              e.target.value === 'count'
+                                ? '1'
+                                : e.target.value === 'achievement'
+                                  ? achievementCatalog[0].code
+                                  : missions[0]?.id || '',
+                            );
+                          }}
+                        >
+                          <option value="count">Missões concluídas</option>
+                          <option value="mission">Missão específica</option>
+                          <option value="achievement">Conquista</option>
+                        </select>
+                      </label>
+                      <label>
+                        Requisito
+                        {rewardKind === 'count' ? (
+                          <input
+                            required
+                            type="number"
+                            min="1"
+                            max="10000"
+                            value={rewardValue}
+                            onChange={(e) => setRewardValue(e.target.value)}
+                          />
+                        ) : (
+                          <select
+                            value={rewardValue}
+                            onChange={(e) => setRewardValue(e.target.value)}
+                          >
+                            {rewardKind === 'mission'
+                              ? missions.map((m) => (
+                                  <option key={m.id} value={m.id}>
+                                    {m.title}
+                                  </option>
+                                ))
+                              : achievementCatalog.map((a) => (
+                                  <option key={a.code} value={a.code}>
+                                    {a.title}
+                                  </option>
+                                ))}
+                          </select>
+                        )}
+                      </label>
+                      <button disabled={busy}>Vincular recompensa</button>
+                    </form>
+                    <ul className="house-guest-list">
+                      {rules.map((r) => (
+                        <li key={r.id}>
+                          <span>
+                            {houseCatalog.find((c) => c.id === r.catalog_id)?.name} ·{' '}
+                            {r.mission_count
+                              ? `${r.mission_count} missões`
+                              : r.achievement_code
+                                ? achievementCatalog.find((a) => a.code === r.achievement_code)
+                                    ?.title
+                                : missions.find((m) => m.id === r.mission_id)?.title}{' '}
+                            · {r.active ? 'Ativa' : 'Inativa'}
+                          </span>
+                          <button
+                            disabled={busy}
+                            onClick={() =>
+                              void run(async () => {
+                                await api(`/house/admin/rewards/${r.id}`, {
+                                  method: 'PUT',
+                                  body: JSON.stringify({ active: !r.active }),
+                                });
+                                setRules((v) =>
+                                  v.map((x) => (x.id === r.id ? { ...x, active: !r.active } : x)),
+                                );
+                              })
+                            }
+                          >
+                            {r.active ? 'Desativar' : 'Ativar'}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
+            )}
+            {!tab && !choice && (
+              <p className="house-sidebar-hint">
+                Escolha uma opção à esquerda ou uma peça na cena.
+              </p>
+            )}
+          </aside>
+        </div>
       )}
       {buy && spec && home && (
         <Modal
@@ -2036,9 +1807,14 @@ export function House({
                 )}
               </>
             )}
-            <button disabled={busy} type="submit">
-              Comprar por {money(spec.price_cp)} PO
-            </button>
+            <div className="item-purchase-actions">
+              <button disabled={busy} type="submit">
+                Comprar por {money(spec.price_cp)} PO
+              </button>
+              <ItemInfoButton
+                item={{ ...spec, id: `house-${spec.id}`, category: 'Itens de House' }}
+              />
+            </div>
             {error && <p role="alert">{error}</p>}
           </form>
         </Modal>

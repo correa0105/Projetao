@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type DragEvent } from 'react';
-import { Package, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
+import { CompanionEquipmentIcon } from './CompanionEquipmentIcon';
 import {
   COMPANION_SLOT_LABELS,
   compatibleCompanionSlots,
@@ -12,6 +13,8 @@ import { api, post } from './api';
 import { FlashMessage } from './FlashMessage';
 import { INVENTORY_DRAG_TYPE, type InventoryDrag } from './inventory-drag';
 import './companion-equipment.css';
+import { ArmorSetPicker } from './ArmorSetPicker';
+import { armorSetOptions, inventoryPieceName } from './armor-set-options';
 
 export function CompanionEquipmentPanel({
   characterId,
@@ -117,6 +120,33 @@ export function CompanionEquipmentPanel({
       if (alive.current) setSaving(false);
     }
   }
+  async function equipSet(itemId: string) {
+    if (!selected || disabled || inFlight.current) return;
+    inFlight.current = true;
+    requestVersion.current++;
+    setSaving(true);
+    setError('');
+    setNotice('');
+    try {
+      const result = await api<CompanionEquipmentState>(
+        `/companions/${characterId}/equipment-set`,
+        {
+          method: 'PUT',
+          body: JSON.stringify({ kind, companion_id: selected.id, item_id: itemId }),
+        },
+      );
+      if (alive.current) {
+        setState(result);
+        setNotice('Armadura completa equipada. Use Vestir para atualizar a aparência.');
+      }
+      await onInventoryRefresh();
+    } catch (e) {
+      if (alive.current) setError((e as Error).message);
+    } finally {
+      inFlight.current = false;
+      if (alive.current) setSaving(false);
+    }
+  }
   function drop(event: DragEvent, slot: CompanionSlot) {
     event.preventDefault();
     event.stopPropagation();
@@ -186,6 +216,24 @@ export function CompanionEquipmentPanel({
     selected?.art_pending || latest?.status === 'queued' || latest?.status === 'running';
   const quotaFull =
     selected && selected.art_limit !== null && selected.art_used >= selected.art_limit;
+  const armorSets =
+    selected && state
+      ? armorSetOptions(
+          state.inventory,
+          kind,
+          selected.slots,
+          (item, slot) =>
+            item.available +
+            (selected.equipped.some(
+              (equipped) =>
+                equipped.source === 'inventory' &&
+                equipped.id === item.id &&
+                equipped.slot === slot,
+            )
+              ? 1
+              : 0),
+        )
+      : [];
   return (
     <section
       className="equipment-panel loot-storage companion-equipment-panel"
@@ -222,6 +270,12 @@ export function CompanionEquipmentPanel({
               ))}
             </select>
           </label>
+          <ArmorSetPicker
+            key={selected.id}
+            options={armorSets}
+            busy={disabled}
+            onEquip={(id) => void equipSet(id)}
+          />
           <div className="companion-outfit-grid">
             <figure className="companion-outfit-image">
               <img
@@ -278,7 +332,11 @@ export function CompanionEquipmentPanel({
                       {current?.image_path ? (
                         <img src={current.image_path} alt={current.name} draggable={false} />
                       ) : (
-                        <Package size={22} />
+                        <CompanionEquipmentIcon
+                          slot={slot}
+                          kind={kind}
+                          speciesId={selected.species_id}
+                        />
                       )}
                     </span>
                   </button>
@@ -299,7 +357,11 @@ export function CompanionEquipmentPanel({
                     }}
                   >
                     <h3>{COMPANION_SLOT_LABELS[slot]}</h3>
-                    <p>{current?.name || 'Escolha um equipamento compatível da mochila.'}</p>
+                    <p>
+                      {current
+                        ? inventoryPieceName(current)
+                        : 'Escolha um equipamento compatível da mochila.'}
+                    </p>
                     <label className="sr-only" htmlFor={pickerId + '-select'}>
                       {COMPANION_SLOT_LABELS[slot]}
                     </label>
@@ -324,7 +386,7 @@ export function CompanionEquipmentPanel({
                       )}
                       {candidates.map((i) => (
                         <option value={i.id} key={i.id}>
-                          {i.name}
+                          {inventoryPieceName(i)}
                         </option>
                       ))}
                     </select>

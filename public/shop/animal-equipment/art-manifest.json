@@ -1,0 +1,113 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "pet-armor-padded",
+      "path": "/shop/animal-equipment/pet-armor-padded.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A fitted quilted dark forest-green padded animal armor vest, designed for a small quadruped torso with a short open collar, curved chest, two visible foreleg openings and brass buckles. No animal. Thick medieval stitched linen padding, worn leather edging. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-88f89f4a-b9dc-4fe9-bd48-ea6c472601c3.png",
+      "sha256": "50d36b49fd9ed7b949c85891a71772b21efdec9ea129fbbc889ec81dbec6182a",
+      "alpha": true
+    },
+    {
+      "id": "pet-armor-leather",
+      "path": "/shop/animal-equipment/pet-armor-leather.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A fitted chest armor vest for a small quadruped animal, dark reddish brown aged leather with brass rivets, a low collar, wide foreleg openings, curved protective breast and belly straps. No animal. Clearly animal barding, not a human breastplate. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-2470833f-2d43-4b95-b893-4aef7c61cd0a.png",
+      "sha256": "5975e4e9ed863cbc47c0345845b7fb86d625ec9c56d365e065c71c9b29840fc9",
+      "alpha": true
+    },
+    {
+      "id": "pet-armor-chain",
+      "path": "/shop/animal-equipment/pet-armor-chain.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A small animal chainmail barding vest, aged steel linked rings draped on a curved quadruped chest shape, open foreleg holes, short flexible collar, brown leather straps and brass closures. No animal, no humanoid sleeves or arms. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-21ad0f62-aca8-4f32-ba0c-a110d374d8ed.png",
+      "sha256": "bed73df894d933ad79aad01e590f32f2ff39c18b6cd5da1e703d86eb1d79aaa1",
+      "alpha": true
+    },
+    {
+      "id": "pet-armor-scales",
+      "path": "/shop/animal-equipment/pet-armor-scales.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A fitted scale barding vest for a small quadruped animal, overlapping aged bronze scales on dark brown leather, arched neck opening and two open foreleg holes, adjustable side straps. No animal, no human shoulder shape. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-d71103c3-bd66-4401-b6fb-6a81375a4096.png",
+      "sha256": "b9f68b2af29e55f5f6cc474ef853ae3c1a1b32cf472985d33f0046b86afd9d41",
+      "alpha": true
+    },
+    {
+      "id": "pet-collar-medallion",
+      "path": "/shop/animal-equipment/pet-collar-medallion.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single medieval pet collar made of aged chestnut brown leather, one brass buckle and a single round bronze medallion hanging at the front. Open circular three-quarter view, detailed leather stitching, no duplicate pendants. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-0f630190-8ad2-4a0e-a647-b3714e43f6a1.png",
+      "sha256": "2690ff310f6cc731fe5d0ca166594b5d5beba9ec94580c3bb5660268bf8cfa16",
+      "alpha": true
+    },
+    {
+      "id": "pet-bandana",
+      "path": "/shop/animal-equipment/pet-bandana.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single burgundy cloth bandana for a small animal, triangular front with a neat knot at the back, subtle embroidered gold edging, worn natural linen texture. Three-quarter view with visible neck opening. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-d24e8552-3bc7-4b79-a5ce-c83919420376.png",
+      "sha256": "d5252b3a9e5451181df689ed7764812daa59710fe38e4e750676c7b29fb2bc9f",
+      "alpha": true
+    },
+    {
+      "id": "pet-embroidered-harness",
+      "path": "/shop/animal-equipment/pet-embroidered-harness.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single small animal harness, chestnut leather straps forming a chest Y and curved torso loops, elegant muted gold thread embroidery and small brass buckle closures. No leash, no animal, open readable three-quarter view. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-73d141ff-e5ef-4f0a-8317-3f7b6fdc3f2b.png",
+      "sha256": "b83bd7e356ac60c75ec7157c7304ab3cdbc6bf376e53c04e6b82768f49ec6bca",
+      "alpha": true
+    },
+    {
+      "id": "pet-velvet-cape",
+      "path": "/shop/animal-equipment/pet-velvet-cape.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single short navy blue velvet cape for a small animal, rounded shoulder opening with a brass clasp, gentle draped folds and delicate gold trim. Three-quarter view, no animal or human, no sleeves. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-27249756-4dc5-49dd-9650-4a29ecd84736.png",
+      "sha256": "c1236912d7fcf2a17ffdf2b30d703c99a293c98fe722ad613e02c4fb07ab97bf",
+      "alpha": true
+    },
+    {
+      "id": "mount-ornate-chamfron",
+      "path": "/shop/animal-equipment/mount-ornate-chamfron.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single medieval ceremonial horse chamfron headpiece, elongated horse-face shaped bronze and dark leather plate, clear two eye cutouts, scalloped forehead and open ear cutouts, elegant engraved leaf motifs. No horse, angled three-quarter view, not a human helmet. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-ec85da6f-599e-4d74-a98a-a5181115c8ed.png",
+      "sha256": "9484d5d0c38fd928fbb1a9eca3cfdcd7c09133396922597f27401e178d4cdc0a",
+      "alpha": true
+    },
+    {
+      "id": "mount-embroidered-blanket",
+      "path": "/shop/animal-equipment/mount-embroidered-blanket.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single folded over a saddle-shaped curve medieval horse saddle blanket, deep burgundy wool with rich but restrained gold embroidery, hanging side panels and short golden fringe. No saddle, no horse, three-quarter view of the one blanket. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-21658ed6-1e66-4027-a97c-0341749f8a0e.png",
+      "sha256": "dccfb94811ea5de3a88cb68b072582c484653336a612c9aa1d58f6e5828a590c",
+      "alpha": true
+    },
+    {
+      "id": "mount-mane-plume",
+      "path": "/shop/animal-equipment/mount-mane-plume.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single elegant horse ceremonial mane plume with dark red and cream feathers held by one bronze engraved leather clip, feather cluster upright and naturally curved. No horse, no helmet, detailed isolated three-quarter view. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-f36fc0a3-f8a9-40cf-b143-6f14f1605313.png",
+      "sha256": "6562212e163f2bd4d1e3481fbd6ce5cdc19056eb8cf11e33fb85613f4b77032b",
+      "alpha": true
+    },
+    {
+      "id": "mount-ornate-bridle",
+      "path": "/shop/animal-equipment/mount-ornate-bridle.webp",
+      "mode": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory/shop equipment sprite for a realistic medieval fantasy RPG. Primary request: A single medieval horse bridle with elongated horse-head shaped chestnut leather straps, browband, cheek straps, noseband and bronze rings, subtle engraved bronze ornaments. No horse, no reins extending off frame, coherent loop construction shown in three-quarter view. Style/medium: richly detailed painted realistic game item art with physically believable construction, aged materials, warm soft lighting from upper left, matching a high quality medieval equipment catalogue. Composition: ONE isolated item centered on a square canvas, full item fully visible with generous clean margins, three-quarter perspective, crisp readable silhouette. Scene/backdrop: genuinely transparent alpha background. Constraints: no animal, no person, no mannequin, no environment, no floor, no cast shadow outside the item, no text, no labels, no watermark, no extra separate objects, no giant magical aura. Keep functional openings and buckles anatomically plausible for the intended animal; do not make humanoid armor.",
+      "original_file": "exec-dd5295c1-0929-4ebd-ada5-7261f226f917.png",
+      "sha256": "36303908e269dcf52b7ca00b105a5cecb692304b6f64fde547187bf13881fa58",
+      "alpha": true
+    }
+  ]
+}

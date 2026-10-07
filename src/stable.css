@@ -98,14 +98,6 @@
 .stable-background { background-image:linear-gradient(#11190e33,transparent 45%,#1c220e22),url('/stable/paddock-earth.png'); }
 .stable-sidebar { min-height:0; display:flex; flex-direction:column; gap:10px; }
 .stable-choices { flex:none; width:100%; }
-.stable-tack-shop { min-height:100px; flex:1; display:flex; flex-direction:column; }
-:root .stable-tack-shop h2 { font:19px var(--serif); margin:0 0 3px; }
-:root .stable-tack-shop > p { font-size:10px; margin:0 0 8px; color:#c9b99e; }
-.stable-tack-items { overflow:auto; min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-:root .stable-tack-items button { padding:5px; color:#eddfc6; background:#111913a6; border:1px solid #9c885442; border-radius:4px; text-align:left; min-width:0; font-size:11px; display:flex; flex-direction:column; gap:4px; }
-:root .stable-tack-items button[aria-pressed='true'] { border-color:#e3bc76; background:#6b573b66; }
-.stable-tack-items img { width:100%; height:66px; object-fit:contain; }
-.stable-tack-items small { display:block; color:#c9aa73; margin-top:3px; font-size:10px; }
 .stable-order { display:flex; align-items:center; justify-content:center; gap:10px; flex:none; margin:0 auto 12px; padding:8px 12px; background:linear-gradient(#17130ece,#17130ece),url('/achievement-wood-v1.png') center/620px auto; border:1px solid #7c654466; border-radius:5px; max-width:100%; }
 .stable-order label { font-size:11px; color:#dfc9a3; }
 .stable-order input { min-width:0; width:180px; color:#f0dfbf; background:#111810; border:1px solid #a28a5e77; border-radius:4px; padding:8px; }
@@ -137,13 +129,6 @@
  .stable-order > .button { font-size:10px; }
  .stable-sidebar { gap:5px; }
  .stable-choices { padding:5px; }
- .stable-tack-shop { min-height:0; padding:5px; flex:none; }
- :root .stable-tack-shop h2 { font-size:13px; }
- :root .stable-tack-shop > p { display:none; }
- .stable-tack-items { display:flex; overflow-x:auto; }
- :root .stable-tack-items button { min-width:76px; max-width:76px; font-size:9px; }
- .stable-tack-items img { height:32px; }
- .stable-tack-items small { font-size:8px; }
  .stable-head { height:28px; width:36px; }
  .stable-selection-tools { margin-top:3px; padding-top:3px; }
  .stable-coats legend { font-size:10px; }
@@ -153,7 +138,7 @@
  :root .stable-speech p { font-size:10px; }
  .stable-keeper { height:52%; }
 }
-.stable-sidebar,.stable-tack-shop,.stable-tack-items { min-width:0; }
+.stable-sidebar { min-width:0; }
 @media(max-width:600px) { .stable-layout { grid-template-columns:minmax(0,1fr); } }
 .stable-mobile-total { display:none; }
 @media(max-width:600px) { .stable-mobile-total { display:inline; } .stable-order .button { flex-wrap:wrap; justify-content:center; max-width:155px; } }
@@ -193,9 +178,6 @@
  .stable-sidebar .stable-order > p { grid-column:1/-1; font-size:9px; }
 }
 @media(max-width:600px) {
- .stable-tack-items img { height:24px; }
- :root .stable-tack-items button { padding:3px; gap:1px; line-height:1.1; }
- .stable-tack-items small { margin-top:1px; }
  .stable-name { padding:4px; }
  .stable-speech { width:min(280px,calc(100vw - 28px)); bottom:calc(100% - 2px); }
 }
@@ -229,7 +211,6 @@
 .stable-order-actions { display:grid; grid-template-columns:1fr 1.5fr; gap:6px; }
 :root .stable-order-actions .button { min-width:0; width:100%; max-width:none; white-space:normal; justify-content:center; }
 :root .stable-view-details { background:#17130e99; border:1px solid #ad916366; color:#eee1c9; }
-.stable-saddle-description { border-top:1px solid #a08d6555; margin-top:16px; padding-top:12px; }
 @media(max-width:600px) {
  .stable-speech { bottom:calc(100% - 2px); }
  .stable-order-actions { grid-column:2; grid-row:1; grid-template-columns:1fr 1.4fr; gap:4px; }

@@ -4,6 +4,7 @@ import type { PoolClient } from 'pg';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
 import { allocatedCopies, companionAllocated } from './companion-inventory.js';
+import { armorSetPieces } from './equipment-sets.js';
 import {
   EQUIPMENT_SLOTS,
   compatibleSlots,
@@ -20,6 +21,9 @@ const equipSchema = z
   .strict();
 
 const uuid = z.string().uuid();
+const equipSetSchema = z
+  .object({ character_id: uuid, item_id: z.string().min(1).max(100) })
+  .strict();
 const transferSchema = z
   .object({
     character_id: uuid,
@@ -42,18 +46,18 @@ async function lockStorage(client: PoolClient, userId: string, characterId: stri
 
 async function storageState(client: PoolClient, userId: string, characterId: string) {
   const inventory = await client.query(
-    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
+    `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
      JOIN characters p ON p.id=i.character_id
      WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY c.name`,
     [characterId, userId],
   );
   const vault = await client.query(
-    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,v.quantity FROM account_vault v JOIN catalog_items c ON c.id=v.item_id
+    `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,v.quantity FROM account_vault v JOIN catalog_items c ON c.id=v.item_id
      WHERE v.user_id=$1 ORDER BY c.name`,
     [userId],
   );
   const equipped = await client.query(
-    `SELECT c.*,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id
+    `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id
      JOIN characters p ON p.id=e.character_id WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY e.slot`,
     [characterId, userId],
   );
@@ -67,6 +71,37 @@ async function storageState(client: PoolClient, userId: string, characterId: str
 
 export function inventoryRouter() {
   const router = Router();
+  router.post('/inventory/equipment-set', async (req, res) => {
+    const data = equipSetSchema.parse(req.body),
+      userId = res.locals.user.id;
+    res.json(
+      await transaction(async (client) => {
+        await lockStorage(client, userId, data.character_id);
+        const pieces = await armorSetPieces(
+          client,
+          data.character_id,
+          data.item_id,
+          'human',
+          EQUIPMENT_SLOTS,
+        );
+        if (pieces.some((piece) => !compatibleSlots(piece).includes(piece.slot)))
+          throw new AppError(400, 'Uma peça não pode ser equipada nessa posição.');
+        for (const piece of pieces)
+          await client.query(
+            `INSERT INTO character_equipment(character_id,slot,item_id) VALUES($1,$2,$3)
+          ON CONFLICT(character_id,slot) DO UPDATE SET item_id=EXCLUDED.item_id,equipped_at=now()
+          WHERE character_equipment.item_id IS DISTINCT FROM EXCLUDED.item_id`,
+            [data.character_id, piece.slot, piece.id],
+          );
+        if (pieces.some((piece) => piece.id === 'plate-bracers'))
+          await client.query(
+            "DELETE FROM character_equipment WHERE character_id=$1 AND slot='hands'",
+            [data.character_id],
+          );
+        return storageState(client, userId, data.character_id);
+      }),
+    );
+  });
   router.post('/inventory/equipment', async (req, res) => {
     const data = equipSchema.parse(req.body),
       userId = res.locals.user.id;

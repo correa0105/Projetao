@@ -133,6 +133,7 @@ type Tool =
   | 'hide'
   | 'light'
   | 'ping';
+const barrierTools = new Set<Tool>(['wall', 'door', 'window', 'light']);
 type Tab =
   | 'art'
   | 'scene'
@@ -377,6 +378,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       camera: VttCamera;
       original: VttDocument;
       kind: 'pan' | 'tokens' | 'shape' | 'lasso';
+      tool?: Tool;
+      layer?: string;
       tokens: VttToken[];
       lasso?: Point[];
       additive?: boolean;
@@ -419,10 +422,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 )),
           )
         : undefined,
-    selectedLight = scene?.lights.find((l) => l.id === selection[0]),
-    selectedWall = scene?.walls.find((w) => w.id === selection[0]),
-    selectedDrawing = scene?.drawings.find((d) => d.id === selection[0]),
     gm = state?.is_gm === true,
+    barrierEditing = gm && !preview && layer === 'lighting',
+    selectedLight = barrierEditing ? scene?.lights.find((l) => l.id === selection[0]) : undefined,
+    selectedWall =
+      barrierEditing && showWalls ? scene?.walls.find((w) => w.id === selection[0]) : undefined,
+    selectedDrawing = scene?.drawings.find((d) => d.id === selection[0]),
     spectator = state?.role === 'spectator',
     canToken = !spectator && (gm || token?.controller === user.id),
     viewer =
@@ -435,6 +440,36 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       ) ||
       (gm ? scene?.tokens.find((t) => t.layer === 'tokens' && !t.hidden) : null) ||
       null;
+  function changeLayer(next: string, nextSelection: string[] = []) {
+    if (next === layer) return;
+    if (drag.current?.kind === 'shape' || drag.current?.kind === 'lasso') {
+      drag.current = null;
+      setDraft(null);
+      setRuler([]);
+      setLasso([]);
+    }
+    if (next !== 'lighting' && barrierTools.has(tool)) setTool('select');
+    setContextMenu(null);
+    setSelection(nextSelection);
+    setLayer(next);
+  }
+  useEffect(() => {
+    if (barrierEditing) return;
+    if (barrierTools.has(tool)) {
+      setTool('select');
+      drag.current = null;
+      setDraft(null);
+      setRuler([]);
+    }
+    if (scene) {
+      const editingIds = new Set([...scene.walls, ...scene.lights].map((v) => v.id));
+      setSelection((current) =>
+        current.some((id) => editingIds.has(id))
+          ? current.filter((id) => !editingIds.has(id))
+          : current,
+      );
+    }
+  }, [barrierEditing, tool, scene?.id]);
   const resetDirty = () => {
     dirtyRef.current = false;
     setDirty(false);
@@ -859,7 +894,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           userId: spectator ? state?.viewingUser || '' : user.id,
         },
       );
-    draw();
     let frame = 0;
     const ends = scene.tokens
       .flatMap((t) => t.effects.map(effectEnds))
@@ -875,10 +909,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       !!combat.state?.active ||
       !!effectPreview ||
       scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death'));
-    if (
-      (infinite || until > Date.now()) &&
-      !matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
+    const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+    const restartAnimation = () => {
+      cancelAnimationFrame(frame);
+      draw();
+      if (!(infinite || until > Date.now()) || motionPreference.matches) return;
       let lastDraw = 0;
       const animate = (now: number) => {
         if (now - lastDraw >= 32 && !document.hidden) {
@@ -888,9 +923,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         if (infinite || Date.now() < until) frame = requestAnimationFrame(animate);
       };
       frame = requestAnimationFrame(animate);
-    }
+    };
+    restartAnimation();
+    motionPreference.addEventListener('change', restartAnimation);
     return () => {
       cancelAnimationFrame(frame);
+      motionPreference.removeEventListener('change', restartAnimation);
       timers.forEach(clearTimeout);
     };
   }, [
@@ -968,8 +1006,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!gm) return;
     editScene((s) => {
       s.tokens = s.tokens.filter((t) => !selection.includes(t.id));
-      s.walls = s.walls.filter((w) => !selection.includes(w.id));
-      s.lights = s.lights.filter((l) => !selection.includes(l.id));
+      s.walls = s.walls.filter((w) => !(barrierEditing && showWalls && selection.includes(w.id)));
+      s.lights = s.lights.filter((l) => !(barrierEditing && selection.includes(l.id)));
       s.drawings = s.drawings.filter((d) => !selection.includes(d.id));
     });
     setSelection([]);
@@ -1002,7 +1040,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         setDraft(null);
         setRuler([]);
         setLasso([]);
-        if (drag.current?.kind === 'lasso') drag.current = null;
+        if (
+          drag.current?.kind === 'lasso' ||
+          (drag.current?.kind === 'shape' && barrierTools.has(drag.current.tool!))
+        )
+          drag.current = null;
         setTool('select');
         setFogPoints([]);
         setFogPointer(null);
@@ -1032,7 +1074,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       if (shortcut && !e.ctrlKey && !e.metaKey && (shortcut !== 'lasso' || (gm && !preview))) {
         setTool(shortcut);
         setLasso([]);
-        if (drag.current?.kind === 'lasso') drag.current = null;
+        if (
+          drag.current?.kind === 'lasso' ||
+          (drag.current?.kind === 'shape' && barrierTools.has(drag.current.tool!))
+        ) {
+          drag.current = null;
+          setRuler([]);
+          setDraft(null);
+        }
       }
       if (e.key.startsWith('Arrow') && token && canToken) {
         e.preventDefault();
@@ -1056,7 +1105,20 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     }
     window.addEventListener('keydown', key);
     return () => window.removeEventListener('keydown', key);
-  }, [doc, selection, gm, token, mapsOpen, settingsId, sheetId, fogPoints, tool, preview]);
+  }, [
+    doc,
+    selection,
+    gm,
+    token,
+    mapsOpen,
+    settingsId,
+    sheetId,
+    fogPoints,
+    tool,
+    preview,
+    layer,
+    showWalls,
+  ]);
   function commitFog(points: Point[], remember = true) {
     if (points.length < 3 || !gm) return;
     editScene((s) => {
@@ -1093,6 +1155,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
     cancelAnimationFrame(focusFrame.current);
     if (!scene || !doc || e.button === 2) return;
+    if (barrierTools.has(tool) && !barrierEditing) return;
     setContextMenu(null);
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
@@ -1145,7 +1208,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (tool === 'text' && gm) {
-      if (layer === 'lighting') setLayer('tokens');
+      if (layer === 'lighting') changeLayer('tokens');
       const rect = e.currentTarget.getBoundingClientRect();
       setTextEdit({
         point: snap,
@@ -1171,8 +1234,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         s.lights.push(l);
         s.lighting = true;
       });
+      changeLayer('lighting');
       setSelection([l.id]);
-      setLayer('lighting');
       setTab('scene');
       return;
     }
@@ -1211,13 +1274,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (tool === 'select') {
-      if (gm && layer === 'lighting') {
+      if (barrierEditing) {
         const light = [...scene.lights]
           .reverse()
           .find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom);
-        const wall = [...scene.walls]
-          .reverse()
-          .find((w) => segmentDistance(p, w.a, w.b) < 9 / camera.zoom);
+        const wall = showWalls
+          ? [...scene.walls].reverse().find((w) => segmentDistance(p, w.a, w.b) < 9 / camera.zoom)
+          : undefined;
         if (light || wall) {
           setSelection([(light || wall)!.id]);
           setTab('scene');
@@ -1316,6 +1379,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (!gm) return;
     drag.current = {
       kind: 'shape',
+      tool,
+      layer,
       start: snap,
       last: snap,
       screen: p,
@@ -1343,6 +1408,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (!d || !scene || !doc) return;
+    if (
+      d.kind === 'shape' &&
+      barrierTools.has(d.tool!) &&
+      (!barrierEditing || d.layer !== layer || d.tool !== tool)
+    ) {
+      drag.current = null;
+      setDraft(null);
+      setRuler([]);
+      return;
+    }
     const p = point(e);
     if (d.kind === 'lasso') {
       const path = d.lasso!;
@@ -1416,7 +1491,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     drag.current = null;
     if (d.kind === 'lasso') {
       if (gm && !preview) {
-        const ids = lassoSelection(scene, layer, [...d.lasso!, point(e)]);
+        const ids = lassoSelection(showWalls ? scene : { ...scene, walls: [] }, layer, [
+          ...d.lasso!,
+          point(e),
+        ]);
         setSelection(d.additive ? [...new Set([...d.baseSelection!, ...ids])] : ids);
         setAttackTargetId(null);
       }
@@ -1473,7 +1551,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       }
       return;
     }
-    if (d.kind === 'shape' && gm && ['wall', 'door', 'window'].includes(tool)) {
+    if (d.kind === 'shape' && ['wall', 'door', 'window'].includes(d.tool || '')) {
+      if (!barrierEditing || d.layer !== layer || d.tool !== tool) {
+        setRuler([]);
+        setDraft(null);
+        return;
+      }
       const b = e.altKey ? point(e) : snapPoint(point(e), scene.grid);
       if (Math.hypot(b.x - d.start.x, b.y - d.start.y) > 3)
         editScene((s) => {
@@ -1538,6 +1621,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     t.y = camera.y;
     t.layer = layer === 'lighting' ? 'tokens' : (layer as VttToken['layer']);
     editScene((s) => s.tokens.push(t));
+    changeLayer(t.layer);
     setSelection([t.id]);
     setTab('token');
   }
@@ -1576,10 +1660,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       Math.min(scene.height - t.height / 2, origin.y),
     );
     editScene((s) => s.tokens.push(t));
+    changeLayer('tokens');
     setSelection([t.id]);
     setAttackTargetId(null);
     if (!keepLibrary) setTab('sheet');
-    setLayer('tokens');
   }
   function dragMonster(event: ReactDragEvent<HTMLElement>, id: string) {
     if (!gm || preview) {
@@ -1761,8 +1845,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (attackTargetId === actor.id) setAttackTargetId(null);
+    changeLayer('tokens');
     setSelection([actor.id]);
-    setLayer('tokens');
     setTool('select');
     setSheetId(null);
     setAttack(request);
@@ -2039,10 +2123,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 { id: 'gm', name: 'Mestre · oculto', icon: EyeOff },
                 { id: 'lighting', name: 'Iluminação e barreiras', icon: Lightbulb },
               ]}
-              choose={(id) => {
-                setLayer(id);
-                setSelection([]);
-              }}
+              choose={changeLayer}
             />
           )}
           {!spectator && (
@@ -2056,7 +2137,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </button>
           )}
           {toolList
-            .filter((t) => (spectator ? t.id === 'pan' : gm || !t.gm))
+            .filter(
+              (t) =>
+                (spectator ? t.id === 'pan' : gm || !t.gm) &&
+                (!barrierTools.has(t.id) || barrierEditing),
+            )
             .map(({ id, name, icon: Icon }) =>
               ['circle', 'cone', 'line', 'hide'].includes(id) ? null : id === 'rect' ? (
                 <VttToolGroup
@@ -2069,9 +2154,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   choose={(id) => {
                     setFogPoints([]);
                     setFogPointer(null);
-                    setTool(id as Tool);
                     setDraft(null);
-                    if (layer === 'lighting') setLayer('tokens');
+                    if (layer === 'lighting') changeLayer('tokens');
+                    setTool(id as Tool);
                   }}
                 />
               ) : id === 'reveal' ? (
@@ -2126,18 +2211,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   onClick={() => {
                     setLasso([]);
                     drag.current = null;
-                    setTool(id);
                     setFogPoints([]);
                     setFogPointer(null);
                     setContextMenu(null);
                     if (['wall', 'door', 'window', 'light'].includes(id)) {
-                      setLayer('lighting');
                       setSelection([]);
                     } else if (
                       layer === 'lighting' &&
                       ['pen', 'rect', 'circle', 'cone', 'line', 'text'].includes(id)
                     )
-                      setLayer('tokens');
+                      changeLayer('tokens');
+                    setTool(id);
                     setDraft(null);
                   }}
                 >
@@ -2306,17 +2390,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               const p = point(e),
                 hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
               if (hit) {
+                changeLayer(hit.layer, selection.includes(hit.id) ? selection : [hit.id]);
                 if (!selection.includes(hit.id)) setSelection([hit.id]);
                 setAttackTargetId(null);
-                setLayer(hit.layer);
                 setTab('token');
               } else if (gm) {
-                const light =
-                  layer === 'lighting'
-                    ? scene.lights.find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom)
-                    : null;
+                const light = barrierEditing
+                  ? scene.lights.find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom)
+                  : null;
                 const wall =
-                  layer === 'lighting'
+                  barrierEditing && showWalls
                     ? scene.walls.find((w) => segmentDistance(p, w.a, w.b) < 9 / camera.zoom)
                     : null;
                 const drawing = drawingAt(p, scene, layer, 8 / camera.zoom);
@@ -2349,12 +2432,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 return;
               }
               const p = point(e);
-              const door = scene.walls.find(
-                (w) =>
-                  w.kind === 'door' &&
-                  Math.hypot((w.a.x + w.b.x) / 2 - p.x, (w.a.y + w.b.y) / 2 - p.y) <
-                    30 / camera.zoom,
-              );
+              const door =
+                barrierEditing && showWalls
+                  ? scene.walls.find(
+                      (w) =>
+                        w.kind === 'door' &&
+                        Math.hypot((w.a.x + w.b.x) / 2 - p.x, (w.a.y + w.b.y) / 2 - p.y) <
+                          30 / camera.zoom,
+                    )
+                  : undefined;
               if (gm && door)
                 editScene((s) => {
                   s.walls.find((w) => w.id === door.id)!.open = !door.open;
@@ -2895,14 +2981,22 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           </button>
                         </div>
                       )}
-                      <label className="vtt-check">
-                        <input
-                          type="checkbox"
-                          checked={showWalls}
-                          onChange={(e) => setShowWalls(e.target.checked)}
-                        />
-                        Mostrar barreiras do mestre
-                      </label>
+                      {barrierEditing && (
+                        <label className="vtt-check">
+                          <input
+                            type="checkbox"
+                            checked={showWalls}
+                            onChange={(e) => {
+                              setShowWalls(e.target.checked);
+                              if (!e.target.checked)
+                                setSelection((ids) =>
+                                  ids.filter((id) => !scene.walls.some((w) => w.id === id)),
+                                );
+                            }}
+                          />
+                          Mostrar barreiras do mestre
+                        </label>
+                      )}
                       <div className="vtt-row">
                         <button
                           onClick={() =>
@@ -2937,34 +3031,42 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           Ocultar tudo
                         </button>
                       </div>
-                      <h3>Paredes, portas e janelas</h3>
-                      {scene.walls.map((w, i) => (
-                        <div className="vtt-list-row" key={w.id}>
-                          <span>
-                            {w.kind === 'wall' ? 'Parede' : w.kind === 'door' ? 'Porta' : 'Janela'}{' '}
-                            {i + 1}
-                          </span>
-                          {w.kind === 'door' && (
-                            <button
-                              onClick={() =>
-                                editScene(
-                                  (s) => (s.walls.find((v) => v.id === w.id)!.open = !w.open),
-                                )
-                              }
-                            >
-                              {w.open ? 'Fechar' : 'Abrir'}
-                            </button>
-                          )}
-                          <button
-                            aria-label={`Excluir barreira ${i + 1}`}
-                            onClick={() =>
-                              editScene((s) => (s.walls = s.walls.filter((v) => v.id !== w.id)))
-                            }
-                          >
-                            <Trash2 size={13} />
-                          </button>
-                        </div>
-                      ))}
+                      {barrierEditing && (
+                        <>
+                          <h3>Paredes, portas e janelas</h3>
+                          {scene.walls.map((w, i) => (
+                            <div className="vtt-list-row" key={w.id}>
+                              <span>
+                                {w.kind === 'wall'
+                                  ? 'Parede'
+                                  : w.kind === 'door'
+                                    ? 'Porta'
+                                    : 'Janela'}{' '}
+                                {i + 1}
+                              </span>
+                              {w.kind === 'door' && (
+                                <button
+                                  onClick={() =>
+                                    editScene(
+                                      (s) => (s.walls.find((v) => v.id === w.id)!.open = !w.open),
+                                    )
+                                  }
+                                >
+                                  {w.open ? 'Fechar' : 'Abrir'}
+                                </button>
+                              )}
+                              <button
+                                aria-label={`Excluir barreira ${i + 1}`}
+                                onClick={() =>
+                                  editScene((s) => (s.walls = s.walls.filter((v) => v.id !== w.id)))
+                                }
+                              >
+                                <Trash2 size={13} />
+                              </button>
+                            </div>
+                          ))}
+                        </>
+                      )}
                       <h3>Desenho e áreas</h3>
                       <label>
                         Cor
@@ -3987,6 +4089,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   tokens={scene.tokens}
                   selected={selection}
                   selectAll={() => {
+                    changeLayer('tokens');
                     setSelection(
                       scene.tokens
                         .filter((t) => t.layer === 'tokens' && !t.hidden)
@@ -3994,7 +4097,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     );
                     setAttackTargetId(null);
                     setTool('select');
-                    setLayer('tokens');
                   }}
                 />
               )}
@@ -4534,7 +4636,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                         editSelected((t) => {
                           t.layer = to;
                         });
-                        setLayer(to);
+                        changeLayer(to, selection);
                       }}
                     >
                       <option value="map">Fundo · visível aos jogadores</option>

@@ -1,4 +1,5 @@
-import { compatibleSlots, type EquipmentItem } from './equipment.js';
+import type { EquipmentItem } from './equipment.js';
+import { equipmentTarget } from './equipment-target.js';
 export const COMPANION_SLOTS = [
   'head',
   'armor',
@@ -94,13 +95,20 @@ export function compatibleCompanionSlots(
   kind: CompanionKind,
   speciesId: string,
 ): CompanionSlot[] {
+  if (equipmentTarget(item) !== kind) return [];
+  const allowed = companionSlots(kind, speciesId);
+  const configured = item.raw_data?.equipment_slots;
+  if (Array.isArray(configured))
+    return configured.filter((slot): slot is CompanionSlot =>
+      allowed.includes(slot as CompanionSlot),
+    );
+  const pieceSlot = item.raw_data?.piece_slot;
+  if (pieceSlot)
+    return allowed.includes(pieceSlot as CompanionSlot) ? [pieceSlot as CompanionSlot] : [];
   if (item.id === 'saddlebags') return kind === 'mount' ? ['back'] : [];
   if (/^horseshoes-/.test(item.id)) return kind === 'mount' ? ['feet'] : [];
   if (/^saddle-/.test(item.id) || /\bsela\b/i.test(item.name))
     return kind === 'mount' ? ['saddle'] : [];
-  if (/barding|barda/i.test(`${item.id} ${item.name}`)) return ['armor'];
-  const allowed = companionSlots(kind, speciesId);
-  return compatibleSlots(item).filter((slot) =>
-    allowed.includes(slot as CompanionSlot),
-  ) as CompanionSlot[];
+  if (item.raw_data?.barding === true) return ['armor'];
+  return [];
 }

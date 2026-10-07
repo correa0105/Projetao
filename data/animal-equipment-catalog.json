@@ -1,0 +1,258 @@
+[
+  {
+    "id": "pet-armor-padded",
+    "name": "Armadura acolchoada para mascote",
+    "original_name": "Armadura acolchoada para mascote",
+    "category": "Acessórios para pet",
+    "price_cp": 1500,
+    "weight_lb": 4,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-armor-padded.webp",
+    "description": "Proteção acolchoada própria para mascotes, ajustada à anatomia da espécie. Entregue em peças; pode ser equipada como conjunto. Não concede bônus de combate automático.",
+    "merchant_comment": "Feita para acompanhar seu companheiro sem limitar seus movimentos.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["armor"],
+      "animal_armor": true,
+      "armor_base": "Acolchoada",
+      "cosmetic": false
+    }
+  },
+  {
+    "id": "pet-armor-leather",
+    "name": "Armadura de couro para mascote",
+    "original_name": "Armadura de couro para mascote",
+    "category": "Acessórios para pet",
+    "price_cp": 2500,
+    "weight_lb": 6,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-armor-leather.webp",
+    "description": "Armadura de couro própria para mascotes, com encaixes que respeitam patas, asas ou corpo alongado. Entregue em peças; pode ser equipada como conjunto. Não concede bônus de combate automático.",
+    "merchant_comment": "Feita para acompanhar seu companheiro sem limitar seus movimentos.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["armor"],
+      "animal_armor": true,
+      "armor_base": "Couro",
+      "cosmetic": false
+    }
+  },
+  {
+    "id": "pet-armor-chain",
+    "name": "Armadura de malha para mascote",
+    "original_name": "Armadura de malha para mascote",
+    "category": "Acessórios para pet",
+    "price_cp": 7500,
+    "weight_lb": 10,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-armor-chain.webp",
+    "description": "Malha protetora própria para mascotes. O conjunto adapta suas peças à anatomia do animal, sem cobrir olhos ou impedir movimentos. Não concede bônus de combate automático.",
+    "merchant_comment": "Feita para acompanhar seu companheiro sem limitar seus movimentos.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["armor"],
+      "animal_armor": true,
+      "armor_base": "Malha",
+      "cosmetic": false
+    }
+  },
+  {
+    "id": "pet-armor-scales",
+    "name": "Armadura de escamas para mascote",
+    "original_name": "Armadura de escamas para mascote",
+    "category": "Acessórios para pet",
+    "price_cp": 6500,
+    "weight_lb": 8,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-armor-scales.webp",
+    "description": "Escamas metálicas sobre couro para mascotes, adaptadas à espécie. Entregue em peças, com opção de equipar o conjunto completo. Não concede bônus de combate automático.",
+    "merchant_comment": "Feita para acompanhar seu companheiro sem limitar seus movimentos.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["armor"],
+      "animal_armor": true,
+      "armor_base": "Escamas",
+      "cosmetic": false
+    }
+  },
+  {
+    "id": "pet-collar-medallion",
+    "name": "Coleira com medalhão",
+    "original_name": "Coleira com medalhão",
+    "category": "Acessórios para pet",
+    "price_cp": 1200,
+    "weight_lb": 0.3,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-collar-medallion.webp",
+    "description": "Coleira de couro com medalhão de bronze para mascotes. Cosmético próprio para o pescoço do animal, sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["neck"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  },
+  {
+    "id": "pet-bandana",
+    "name": "Lenço de aventureiro para mascote",
+    "original_name": "Lenço de aventureiro para mascote",
+    "category": "Acessórios para pet",
+    "price_cp": 800,
+    "weight_lb": 0.1,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-bandana.webp",
+    "description": "Lenço bordô para mascotes, preso no pescoço. Cosmético sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["neck"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  },
+  {
+    "id": "pet-embroidered-harness",
+    "name": "Peitoral bordado para mascote",
+    "original_name": "Peitoral bordado para mascote",
+    "category": "Acessórios para pet",
+    "price_cp": 1800,
+    "weight_lb": 0.5,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-embroidered-harness.webp",
+    "description": "Peitoral de couro com bordados, próprio para mascotes. Encaixa no corpo sem substituir uma armadura humanoide. Cosmético sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["belt"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  },
+  {
+    "id": "pet-velvet-cape",
+    "name": "Capa de veludo para mascote",
+    "original_name": "Capa de veludo para mascote",
+    "category": "Acessórios para pet",
+    "price_cp": 2400,
+    "weight_lb": 0.4,
+    "active": true,
+    "image_path": "/shop/animal-equipment/pet-velvet-cape.webp",
+    "description": "Capa curta de veludo azul para mascotes. Ajustada à espécie para manter patas e asas livres. Cosmético sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "pet",
+      "equipment_slots": ["cloak"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  },
+  {
+    "id": "mount-ornate-chamfron",
+    "name": "Testeira cerimonial",
+    "original_name": "Testeira cerimonial",
+    "category": "Equipamentos de montaria",
+    "price_cp": 4500,
+    "weight_lb": 3,
+    "active": true,
+    "image_path": "/shop/animal-equipment/mount-ornate-chamfron.webp",
+    "description": "Testeira ornamental própria para animais do estábulo. Ajusta-se à cabeça da montaria. Cosmético sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "mount",
+      "equipment_slots": ["head"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  },
+  {
+    "id": "mount-embroidered-blanket",
+    "name": "Manta de sela bordada",
+    "original_name": "Manta de sela bordada",
+    "category": "Equipamentos de montaria",
+    "price_cp": 3500,
+    "weight_lb": 4,
+    "active": true,
+    "image_path": "/shop/animal-equipment/mount-embroidered-blanket.webp",
+    "description": "Manta bordô bordada para montarias, acomodada sobre o dorso. Cosmético sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "mount",
+      "equipment_slots": ["cloak"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  },
+  {
+    "id": "mount-mane-plume",
+    "name": "Penacho de crina",
+    "original_name": "Penacho de crina",
+    "category": "Equipamentos de montaria",
+    "price_cp": 2000,
+    "weight_lb": 0.3,
+    "active": true,
+    "image_path": "/shop/animal-equipment/mount-mane-plume.webp",
+    "description": "Penacho ornamental com presilha para animais do estábulo. Encaixa junto à crina e à testa. Cosmético sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "mount",
+      "equipment_slots": ["head"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  },
+  {
+    "id": "mount-ornate-bridle",
+    "name": "Cabeçada ornamentada",
+    "original_name": "Cabeçada ornamentada",
+    "category": "Equipamentos de montaria",
+    "price_cp": 3000,
+    "weight_lb": 2,
+    "active": true,
+    "image_path": "/shop/animal-equipment/mount-ornate-bridle.webp",
+    "description": "Cabeçada de couro com detalhes de bronze, própria para montarias. Cosmético sem efeito de combate.",
+    "merchant_comment": "Um detalhe para deixar seu companheiro com a sua cara.",
+    "source": "Conteúdo do projeto",
+    "source_url": "",
+    "weight_estimated": true,
+    "raw_data": {
+      "equipment_target": "mount",
+      "equipment_slots": ["neck"],
+      "animal_armor": false,
+      "cosmetic": true
+    }
+  }
+]

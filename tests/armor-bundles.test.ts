@@ -117,7 +117,7 @@ test('conjunto de placas: entrega atômica, replay, peças antigas, peso e categ
     assert.ok((await inventory()).every((r) => r.quantity === 3));
     await purchase(userId, character.id, 'leather-armor', 1, randomUUID());
     await purchase(userId, character.id, 'chain-mail', 1, randomUUID());
-    assert.equal((await inventory()).length, 8);
+    assert.equal((await inventory()).length, 18);
     assert.deepEqual(purchaseContents('half-plate'), ['half-plate']);
     assert.deepEqual(
       compatibleSlots({ id: 'ring-mail', name: 'Cota de anéis', category: 'Armaduras' }),

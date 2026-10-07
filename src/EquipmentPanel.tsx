@@ -11,11 +11,14 @@ import {
 import type { Character, StorageState } from './types';
 import './equipment.css';
 import { CharacterArtButton } from './CharacterArtButton';
+import { ArmorSetPicker } from './ArmorSetPicker';
+import { armorSetOptions, inventoryPieceName } from './armor-set-options';
 
 export function EquipmentPanel({
   storage,
   busy,
   onEquip,
+  onEquipSet,
   dragged,
   onDropItem,
   character,
@@ -26,6 +29,7 @@ export function EquipmentPanel({
   storage: StorageState;
   busy: boolean;
   onEquip: (slot: EquipmentSlot, id: string | null) => void;
+  onEquipSet: (id: string) => void;
   dragged: InventoryDrag | null;
   onDropItem: (slot: EquipmentSlot, id: string, from: InventoryDrag['from']) => void;
 }) {
@@ -51,12 +55,23 @@ export function EquipmentPanel({
     'ring_right',
     'off_hand',
   ];
+  const armorSets = armorSetOptions(
+    storage.inventory,
+    'human',
+    EQUIPMENT_SLOTS,
+    (item, slot) =>
+      (item.quantity || 0) -
+      storage.equipped.filter((equipped) => equipped.id === item.id && equipped.slot !== slot)
+        .length -
+      (storage.companion_allocated?.[item.id] || 0),
+  );
   return (
     <section className="equipment-panel loot-storage" aria-label="Itens equipados" aria-busy={busy}>
       <header>
         <h2>Itens equipados</h2>
         <p>Arraste da mochila ou clique em um espaço para equipar.</p>
       </header>
+      <ArmorSetPicker key={character.id} options={armorSets} busy={busy} onEquip={onEquipSet} />
       <div className="equipment-grid">
         <figure className="equipment-character">
           <img
@@ -130,7 +145,7 @@ export function EquipmentPanel({
                 disabled={busy}
                 popoverTarget={`equipment-picker-${slot}`}
                 aria-label={EQUIPMENT_LABELS[slot]}
-                title={`${EQUIPMENT_LABELS[slot]}${current ? ` · ${current.name}` : ''}`}
+                title={`${EQUIPMENT_LABELS[slot]}${current ? ` · ${inventoryPieceName(current)}` : ''}`}
               >
                 <div className="equipment-art">
                   {current?.image_path ? (
@@ -160,7 +175,7 @@ export function EquipmentPanel({
                 <h3>{EQUIPMENT_LABELS[slot]}</h3>
                 <p>
                   {blocked ||
-                    current?.name ||
+                    (current && inventoryPieceName(current)) ||
                     (candidates.length
                       ? 'Escolha um item da mochila.'
                       : 'Nenhum item compatível na mochila.')}
@@ -188,7 +203,7 @@ export function EquipmentPanel({
                   </option>
                   {candidates.map((item) => (
                     <option key={item.id} value={item.id}>
-                      {item.name}
+                      {inventoryPieceName(item)}
                     </option>
                   ))}
                 </select>

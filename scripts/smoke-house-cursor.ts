@@ -3,7 +3,8 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import sharp from 'sharp';
-if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
+import { houseCatalog } from '../shared/house.js';
+if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco isolado obrigatório.');
 const origin = 'http://localhost:3010';
 process.env.APP_ORIGIN = process.env.BETTER_AUTH_URL = origin;
@@ -69,6 +70,8 @@ try {
       rotation: 0,
       facing: 0,
       layer: 8,
+      perspective_pitch: 20,
+      perspective_yaw: -20,
     },
     {
       id: randomUUID(),
@@ -161,79 +164,40 @@ try {
   await page.mouse.up();
   await expect(page.getByLabel('Camada do personagem')).toBeEnabled();
   await page.getByRole('button', { name: 'Decorar', exact: true }).click();
-  await expect(page.getByLabel('Perspectiva dos itens', { exact: true })).toBeChecked();
-  await page.getByLabel('Afinamento padrão dos itens').fill('20');
-  const projection = page.locator('.house-item-projection').first();
-  await expect(projection).toHaveAttribute('data-projection-angle', '20');
-  const projectedCorners = await projection.locator('.house-item-art').evaluate((el) => {
-    const matrix = new DOMMatrix(getComputedStyle(el).transform),
-      width = (el as HTMLElement).offsetWidth,
-      height = (el as HTMLElement).offsetHeight;
-    const corners = [];
-    for (const [x, y] of [
-      [0, 0],
-      [width, 0],
-      [0, height],
-      [width, height],
-    ]) {
-      const p = new DOMPoint(x - width / 2, y - height).matrixTransform(matrix);
-      corners.push({ x: p.x / p.w + width / 2, y: p.y / p.w + height });
-    }
-    return {
-      width,
-      height,
-      topLeft: corners[0],
-      topRight: corners[1],
-      bottomLeft: corners[2],
-      bottomRight: corners[3],
-    };
-  });
-  expect(projectedCorners.topRight.x - projectedCorners.topLeft.x).toBeLessThan(
-    projectedCorners.width,
-  );
-  expect(projectedCorners.bottomLeft.x).toBeCloseTo(0);
-  expect(projectedCorners.bottomRight.x).toBeCloseTo(projectedCorners.width);
-  expect(projectedCorners.bottomRight.y).toBeCloseTo(projectedCorners.height);
-  await mkdir('test-results', { recursive: true });
+  await expect(page.getByLabel('Perspectiva dos itens', { exact: true })).toHaveCount(0);
+  await expect(page.getByLabel('Afinamento padrão dos itens')).toHaveCount(0);
+  const table = page.locator('.house-piece').first();
+  const tableArt = table.locator('.house-item-art');
+  await expect(page.locator('.house-item-projection')).toHaveCount(0);
+  expect(await tableArt.evaluate((el) => getComputedStyle(el).transform)).toBe('none');
   await page.getByRole('button', { name: 'Atrás da mobília', exact: true }).click();
   await expect(actor).toHaveAttribute('data-layer', '0');
-  await page.locator('.house-scene').screenshot({ path: 'test-results/house-projection-on.png' });
-  await page.getByLabel('Perspectiva dos itens', { exact: true }).uncheck();
-  await expect(projection).toHaveAttribute('data-projection-angle', '0');
-  await page.locator('.house-scene').screenshot({ path: 'test-results/house-projection-off.png' });
-  await page.reload();
-  await page.getByRole('button', { name: 'Decorar', exact: true }).click();
-  await expect(page.getByLabel('Perspectiva dos itens', { exact: true })).not.toBeChecked();
-  await expect(page.getByLabel('Afinamento padrão dos itens')).toBeDisabled();
-  await page.getByLabel('Perspectiva dos itens', { exact: true }).check();
-  await page.getByLabel('Afinamento padrão dos itens').fill('12');
-  await page.locator('.house-piece').first().click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
-  await page.getByLabel('Afinamento ao fundo').fill('8');
-  await page.getByLabel('Recuo lateral da peça').fill('-16');
-  await expect(projection).toHaveAttribute('data-projection-angle', '8');
-  await expect(projection).toHaveAttribute('data-projection-yaw', '-16');
-  const yawCorners = await projection.locator('.house-item-art').evaluate((el) => {
-    const matrix = new DOMMatrix(getComputedStyle(el).transform),
-      width = (el as HTMLElement).offsetWidth,
-      height = (el as HTMLElement).offsetHeight;
-    const left = new DOMPoint(-width / 2, 0).matrixTransform(matrix);
-    const right = new DOMPoint(width / 2, 0).matrixTransform(matrix);
-    return { left: left.w, right: right.w, height };
-  });
-  expect(yawCorners.left).toBeGreaterThan(1);
-  expect(yawCorners.right).toBeLessThan(1);
+  await table.click();
+  await expect(page.getByLabel('Afinamento ao fundo')).toHaveCount(0);
+  await expect(page.getByLabel('Recuo lateral da peça')).toHaveCount(0);
+  const viewPaths = new Set<string>();
+  for (let facing = 0; facing < 8; facing++) {
+    await page.getByLabel('Direção da peça', { exact: true }).selectOption(String(facing));
+    viewPaths.add((await tableArt.locator('img').getAttribute('src'))!);
+    expect(await tableArt.evaluate((el) => getComputedStyle(el).transform)).toBe('none');
+  }
+  expect(viewPaths.size).toBe(8);
   await page.getByRole('button', { name: 'Salvar mudanças', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Salvo', exact: true })).toBeDisabled();
   await page.reload();
-  await expect(projection).toHaveAttribute('data-projection-angle', '8');
-  await expect(projection).toHaveAttribute('data-projection-yaw', '-16');
-  await page.getByRole('button', { name: 'Decorar', exact: true }).click();
-  await page.locator('.house-piece').first().click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
-  await expect(page.getByLabel('Afinamento ao fundo')).toHaveValue('8');
-  await expect(page.getByLabel('Recuo lateral da peça')).toHaveValue('-16');
-  await page.getByRole('button', { name: 'Fechar painel', exact: true }).click();
+  expect(await tableArt.evaluate((el) => getComputedStyle(el).transform)).toBe('none');
+  const afterRollbackSave = await context.request
+    .get(origin + '/api/house/' + homeId)
+    .then((r) => r.json());
+  expect(afterRollbackSave.rooms[0].placements[0]).toMatchObject({
+    facing: 7,
+    perspective_pitch: 20,
+    perspective_yaw: -20,
+  });
+  await mkdir('test-results', { recursive: true });
+  await page
+    .locator('.house-scene')
+    .screenshot({ path: 'test-results/house-perspective-restored.png' });
   const variant = await request('/house/variants', {
     character_id: hero.id,
     name: 'Pose ampla',
@@ -255,9 +219,12 @@ try {
     await place(0.35, 0.8, variant.id || variant.variant?.id);
     await checkDrag(0.2, 0.2, width < 400 ? 10 : 35, -12);
     await expect(page.locator('.house-panel')).toHaveCount(0);
+    await page.getByRole('button', { name: 'Personagem', exact: true }).click();
     await page
       .getByLabel('Camada do personagem')
-      .selectOption({ label: 'Atrás de Mesa do Viajante' });
+      .selectOption({
+        label: `Atrás de ${houseCatalog.find((item) => item.id === 'table')!.name}`,
+      });
     await expect(actor).toHaveAttribute('data-layer', '17');
     expect(await actor.evaluate((el) => Number(getComputedStyle(el).zIndex))).toBeLessThan(
       await page
@@ -290,7 +257,7 @@ try {
   await reader.screenshot({ path: 'test-results/house-letter-reader.png' });
   expect(errors).toEqual([]);
   console.log(
-    'House cursor: pointerdown, held drag, release, tall/wide poses, visible persisted layers, reversible rear perspective in four widths passed.',
+    'House cursor: pointerdown, held drag, release, tall/wide poses, visible persisted layers, undeformed eight views with preserved legacy fields in four widths passed.',
   );
 } finally {
   await browser.close();

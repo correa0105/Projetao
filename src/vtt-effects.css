@@ -154,3 +154,109 @@
   padding: 0 5px;
   color: #d9c8a4;
 }
+.vtt-effects-library-toggle {
+  width: 100%;
+  justify-content: flex-start;
+  margin: 2px 0 10px;
+}
+.vtt-effects-library {
+  padding: 0 0 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #44454b;
+}
+.vtt-effects-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0;
+}
+.vtt-effects-groups button {
+  font-size: 10px;
+  padding: 4px 7px;
+}
+.vtt-effects-groups button[aria-pressed='true'] {
+  border-color: #b69866;
+  background: #695332;
+  color: #f8e3bf;
+}
+.vtt-effects-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+.vtt-effect-card {
+  display: flex !important;
+  flex-direction: column;
+  gap: 2px !important;
+  overflow: hidden;
+  min-width: 0;
+  padding: 4px 4px 8px !important;
+  border: 1px solid #3b4852 !important;
+  background: radial-gradient(ellipse at 50% 40%, #23343e, #0c141e 80%) !important;
+}
+.vtt-effect-card:hover,
+.vtt-effect-card:focus-visible {
+  border-color: #ad936a !important;
+}
+.vtt-effect-card span {
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.3;
+}
+.vtt-effect-card small {
+  color: #a7b5ba;
+  font-size: 9px;
+}
+.vtt-effects .vtt-effect-preview-art {
+  display: block;
+  width: 100%;
+  max-width: 152px;
+  height: auto;
+  aspect-ratio: 152/112;
+  pointer-events: none;
+}
+.vtt-effects-editor-preview {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 8px;
+  background: #0b162080;
+  border: 1px solid #34434d;
+  border-radius: 5px;
+}
+.vtt-effects .vtt-effects-editor-preview canvas {
+  width: 110px;
+  flex-shrink: 0;
+}
+.vtt-effects-editor-preview p {
+  min-width: 0;
+  flex: 1;
+  font-size: 10px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.vtt-effects-menu label.vtt-effects-infinite {
+  display: flex !important;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.vtt-effects-menu label.vtt-effects-infinite input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 16px;
+}
+@media (max-width: 400px) {
+  .vtt-effects-editor-preview {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .vtt-effects .vtt-effects-editor-preview canvas {
+    width: 78px;
+  }
+  .vtt-effects-groups button {
+    padding: 4px 5px;
+  }
+}

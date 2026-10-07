@@ -1,5 +1,8 @@
 import { AppError } from './services.js';
-export async function translateMonsterLines(lines: string[]) {
+export async function translateMonsterLines(
+  lines: string[],
+  additionalTerms: Record<string, string> = {},
+) {
   const url = process.env.VTT_TRANSLATOR_URL;
   if (!url) throw new AppError(503, 'O tradutor local ainda não está configurado.');
   // Translate sentences separately: the model can truncate a multi-sentence
@@ -53,11 +56,18 @@ export async function translateMonsterLines(lines: string[]) {
     medium: 'Médio',
     small: 'Pequeno',
     tiny: 'Minúsculo',
+    ...Object.fromEntries(
+      Object.entries(additionalTerms).map(([term, translation]) => [
+        term.toLowerCase(),
+        translation,
+      ]),
+    ),
   };
   const protectedPattern = new RegExp(
     '\\b\\d*d\\d+(?:[+-]\\d+)?\\b|[+-]?\\d+(?:\\.\\d+)?|(?<![a-z])(?:' +
       Object.keys(terms)
         .sort((a, b) => b.length - a.length)
+        .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
         .join('|') +
       ')(?![a-z])',
     'gi',

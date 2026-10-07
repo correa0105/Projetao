@@ -1,4 +1,5 @@
 import expandedEquipment from './emporium-equipment.json';
+import { equipmentTarget, type EquipmentMetadata } from './equipment-target.js';
 export const EQUIPMENT_SLOTS = [
   'head',
   'armor',
@@ -34,7 +35,12 @@ export const EQUIPMENT_LABELS: Record<EquipmentSlot, string> = {
   back: 'Mochila / costas',
   belt: 'Cinto / bolsa',
 };
-export type EquipmentItem = { id: string; name: string; category: string };
+export type EquipmentItem = {
+  id: string;
+  name: string;
+  category: string;
+  raw_data?: EquipmentMetadata | null;
+};
 export type HelmetMode = 'open' | 'closed';
 export function isHelmet(item: { id?: string; item_id?: string; name: string }) {
   return /helmet|capacete|elmo/i.test(`${item.id || item.item_id || ''} ${item.name}`);
@@ -47,6 +53,10 @@ export function twoHanded(item: EquipmentItem) {
   return ['greatsword', 'longbow', 'shortbow'].includes(item.id) || /duas mãos/i.test(item.name);
 }
 export function compatibleSlots(item: EquipmentItem): EquipmentSlot[] {
+  if (equipmentTarget(item) !== 'human') return [];
+  const pieceSlot = item.raw_data?.piece_slot;
+  if (pieceSlot && EQUIPMENT_SLOTS.includes(pieceSlot as EquipmentSlot))
+    return [pieceSlot as EquipmentSlot];
   const expanded = (
     expandedEquipment as Record<string, { slots: EquipmentSlot[]; two_handed: boolean }>
   )[item.id];

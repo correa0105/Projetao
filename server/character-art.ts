@@ -1,4 +1,9 @@
 import { Router } from 'express';
+import {
+  equipmentArtReference,
+  trustedEquipmentPath,
+  rasterizeEquipmentArt,
+} from './equipment-art-reference.js';
 import { z } from 'zod';
 import sharp from 'sharp';
 import { readFile } from 'node:fs/promises';
@@ -148,7 +153,7 @@ export async function enqueueArt(userId: string, input: unknown) {
     const equipment: { slot: string; item_id: string; name: string; image: Buffer }[] = [];
     if (data.character_id && data.equipment_slots.length) {
       const { rows } = await client.query(
-        `SELECT e.slot,c.id AS item_id,CASE WHEN c.id='plate-armor' THEN 'Peitoral de placas' ELSE c.name END AS name,c.image_path FROM character_equipment e
+        `SELECT e.slot,c.id AS item_id,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,c.image_path,c.raw_data FROM character_equipment e
         JOIN inventory i ON i.character_id=e.character_id AND i.item_id=e.item_id JOIN catalog_items c ON c.id=e.item_id
         WHERE e.character_id=$1 AND e.slot=ANY($2::text[])`,
         [data.character_id, data.equipment_slots],
@@ -157,9 +162,10 @@ export async function enqueueArt(userId: string, input: unknown) {
         throw new AppError(409, 'O equipamento mudou. Atualize as opções antes de gerar.');
       for (const item of rows) {
         // Catalog-owned local assets only. No remote URLs or client paths reach the worker.
-        if (!/^\/[a-zA-Z0-9/_-]+\.(png|webp|jpg|jpeg)$/.test(item.image_path || ''))
+        const reference = equipmentArtReference(item);
+        if (!trustedEquipmentPath(reference.path))
           throw new AppError(400, `O item ${item.name} ainda não possui imagem de referência.`);
-        const path = item.image_path.slice(1);
+        const path = reference.path.slice(1);
         let bytes: Buffer;
         try {
           bytes = await readFile(resolve('public', path));
@@ -170,7 +176,11 @@ export async function enqueueArt(userId: string, input: unknown) {
             throw new AppError(400, `A imagem de ${item.name} não está disponível.`);
           }
         }
-        equipment.push({ ...item, image: await normalizeArtImage(bytes) });
+        equipment.push({
+          ...item,
+          name: reference.name,
+          image: await normalizeArtImage(await rasterizeEquipmentArt(bytes, reference.path)),
+        });
       }
     }
     if (

@@ -10,7 +10,6 @@ import {
 } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
 import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
-import { stableGear, stableGearComments } from '../shared/stable-gear';
 import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
@@ -225,37 +224,8 @@ export function Stable({
   const [details, setDetails] = useState(false);
   const [coat, setCoat] = useState('original');
   const coats = mountCoats[mount.id];
-  const [equipment, setEquipment] = useState<string[]>([]);
-  const saddle = equipment.find((id) => id === 'saddle-riding' || id === 'saddle-military');
-  const armor = equipment.find((id) => id.startsWith('barding-'));
-  const saddleImage = saddle
-    ? `/stable/saddled/${mount.id}-${coat}-${saddle.replace('saddle-', '')}.png`
-    : '';
-  const image = armor
-    ? `/stable/barded/${mount.id}-${coat}-${armor.replace('barding-', '')}.png`
-    : saddleImage || `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
-  const chosenGear = stableGear.filter((g) => equipment.includes(g.id));
-  const total = mount.price_cp + chosenGear.reduce((sum, g) => sum + g.price_cp, 0);
-  function toggleGear(id: string) {
-    setTalk(null);
-    const item = stableGear.find((g) => g.id === id)!;
-    setEquipment((current) =>
-      current.includes(id)
-        ? current.filter((x) => x !== id)
-        : [
-            ...current.filter((x) => {
-              const slot = stableGear.find((g) => g.id === x)?.slot;
-              return item.slot === 'feed' ? slot !== 'feed' : slot === 'feed';
-            }),
-            id,
-          ].sort(),
-    );
-    setSpeech(
-      equipment.includes(id)
-        ? 'Sem esse, então. O cavalo agradece o peso a menos; eu vou guardar de volta.'
-        : stableGearComments[item.id],
-    );
-  }
+  const image = `/stable/${mount.id}${coat === 'alternate' ? '-alternate' : ''}.png`;
+  const total = mount.price_cp;
   const [confirm, setConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -273,7 +243,7 @@ export function Stable({
       setError('Dê um nome à sua montaria antes de comprar.');
       return;
     }
-    const fingerprint = `${character.id}:${mount.id}:${coat}:${finalName}:${equipment.join(',')}`;
+    const fingerprint = `${character.id}:${mount.id}:${coat}:${finalName}`;
     if (request.current?.fingerprint !== fingerprint)
       request.current = { fingerprint, key: crypto.randomUUID() };
     setBusy(true);
@@ -283,7 +253,7 @@ export function Stable({
         character_id: character.id,
         mount_id: mount.id,
         coat,
-        equipment,
+        equipment: [],
         name: finalName,
         idempotency_key: request.current.key,
       });
@@ -383,33 +353,6 @@ export function Stable({
               </fieldset>
             </div>
           </aside>
-          <section
-            className="stable-tack-shop stable-panel"
-            aria-label="Loja de equipamentos de montaria"
-          >
-            <h2>Selaria</h2>
-            <p>Experimente no animal · clique novamente para retirar</p>
-            <div className="stable-tack-items">
-              {stableGear.map((g) => (
-                <button
-                  key={g.id}
-                  type="button"
-                  aria-pressed={equipment.includes(g.id)}
-                  aria-label={`Experimentar ${g.name}`}
-                  onClick={() => toggleGear(g.id)}
-                  disabled={busy}
-                >
-                  <img src={`/stable/gear/${g.id}.png`} alt="" />
-                  <span>
-                    {g.name}
-                    <small>
-                      {money(g.price_cp)} PO · {g.weight} lb
-                    </small>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </section>
           <form
             id="stable-checkout"
             className="stable-order"
@@ -443,7 +386,7 @@ export function Stable({
                 Ver detalhes
               </button>
               <button
-                aria-label="Comprar conjunto"
+                aria-label="Comprar montaria"
                 className="button primary"
                 disabled={
                   !character ||
@@ -452,7 +395,7 @@ export function Stable({
                   (!character.gold_unlimited && character.gold_cp < total)
                 }
               >
-                <Footprints size={17} /> Comprar conjunto{' '}
+                <Footprints size={17} /> Comprar montaria{' '}
                 <span className="stable-mobile-total">· {money(total)} PO</span>
               </button>
             </div>
@@ -472,13 +415,6 @@ export function Stable({
           <div className="stable-animal" style={{ '--animal-scale': mount.scale } as CSSProperties}>
             <MountArt key={image} image={image} name={mount.name} />
           </div>
-          {equipment.includes('feed') && (
-            <img
-              className="stable-feed"
-              src="/stable/gear/feed.png"
-              alt="Ração ao lado da montaria"
-            />
-          )}
           <div className="stable-keeper">
             <button
               ref={keeperTrigger}
@@ -590,25 +526,6 @@ export function Stable({
             <span className="stable-kicker">BESTA · {mount.size.toUpperCase()}</span>
             <h3>{mount.name}</h3>
             <p>{mount.description}</p>
-            {chosenGear.map((g) => (
-              <section
-                key={g.id}
-                className="stable-saddle-description"
-                aria-label={
-                  g.slot === 'saddle'
-                    ? 'Sela selecionada'
-                    : g.slot === 'armor'
-                      ? 'Barda selecionada'
-                      : 'Ração selecionada'
-                }
-              >
-                <h3>{g.name}</h3>
-                <p>{g.description}</p>
-                <p>
-                  {money(g.price_cp)} PO · {g.weight} lb
-                </p>
-              </section>
-            ))}
             <dl>
               {[
                 ['Deslocamento', `${mount.speed} pés (${mount.speed * 0.3} m)`],
@@ -623,8 +540,8 @@ export function Stable({
               ))}
             </dl>
             <p className="stable-rule-note">
-              Equipamentos selecionados são cobrados à parte no conjunto. A montaria precisa ser
-              maior que o cavaleiro. Dados para consulta durante a sessão.
+              Configure o equipamento da montaria pelo inventário. A montaria precisa ser maior que
+              o cavaleiro. Dados para consulta durante a sessão.
             </p>
 
             {error && !confirm && <FlashMessage>{error}</FlashMessage>}
@@ -650,14 +567,7 @@ export function Stable({
             Comprar <strong>{name.trim()}</strong> ({mount.name}) por{' '}
             <strong>{money(total)} PO</strong> para {character?.name}?
           </p>
-          <ul>
-            {chosenGear.map((g) => (
-              <li key={g.id}>
-                {g.name} — {money(g.price_cp)} PO
-              </li>
-            ))}
-          </ul>
-          <p>A montaria, a pelagem e os equipamentos ficarão salvos no seu personagem.</p>
+          <p>A montaria e a pelagem ficarão salvas no seu personagem.</p>
           {error && <FlashMessage>{error}</FlashMessage>}
           <button className="button primary" disabled={busy || !name.trim()} onClick={buy}>
             {busy ? 'Registrando…' : 'Confirmar compra'}

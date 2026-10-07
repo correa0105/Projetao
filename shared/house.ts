@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import refitCatalog from '../data/house-refit-catalog.json';
 export const roomKinds = ['sala', 'cozinha', 'varanda', 'jardim'] as const;
 const roomNames = [
   ['hall-hearth', 'sala', 'Sala da Lareira'],
@@ -24,88 +25,22 @@ export const houseTemplates = roomNames.map(([id, kind, name]) => ({
   name,
   image: `/house/rooms/${id}.webp`,
 }));
+const furniture = new Map(refitCatalog.map((item) => [item.id, item]));
+/** Initial view only; placed pieces retain their explicit or historical front view. */
+export function houseDefaultFacing(catalogId: string) {
+  return furniture.get(catalogId)?.default_facing ?? (catalogId === 'letter' ? 1 : 0);
+}
+/** Base size for a newly placed piece; never rewrite saved placement sizes. */
+export function houseDefaultScale(catalogId: string) {
+  return furniture.get(catalogId)?.default_scale ?? 0.17;
+}
+/** Real rendered views; old letter/frame assets remain unchanged. */
+export function houseItemImage(catalogId: string, facing = houseDefaultFacing(catalogId)) {
+  const directory = furniture.has(catalogId) ? 'house-refit-20261007' : 'views';
+  return `/house/items/${directory}/${catalogId}/${facing}.webp`;
+}
 export const houseCatalog = [
-  {
-    id: 'rug',
-    name: 'Tapete da Vigília',
-    price_cp: 2500,
-    description: 'Lã bordô, trama antiga e franjas gastas.',
-    speech: 'Este tapete já viu mais botas do que muita estrada. Ainda aguenta as suas.',
-    art: 'a worn burgundy rectangular medieval wool rug with muted geometric pattern, lying flat on floor, viewed at a shallow elevated angle',
-  },
-  {
-    id: 'sofa',
-    name: 'Sofá de Carvalho',
-    price_cp: 6500,
-    description: 'Carvalho entalhado e almofadas de veludo escuro.',
-    speech:
-      'Sente-se depois da jornada. A armadura pode ficar; as botas enlameadas, por favor, não.',
-    art: 'a medieval carved oak two seat sofa with dark burgundy velvet upholstery, front three quarter view',
-  },
-  {
-    id: 'table',
-    name: 'Mesa do Viajante',
-    price_cp: 3000,
-    description: 'Mesa robusta para mapas, refeições e histórias.',
-    speech: 'A madeira tem marcas, mas não escuta segredos. É uma boa mesa.',
-    art: 'a sturdy medieval rectangular oak dining table, front three quarter view',
-  },
-  {
-    id: 'chair',
-    name: 'Cadeira do Escriba',
-    price_cp: 1500,
-    description: 'Cadeira alta em madeira escura.',
-    speech: 'Para escrever uma carta ou discutir um plano. Só não balance nas pernas de trás.',
-    art: 'a medieval high back walnut chair with simple carved back, front three quarter view',
-  },
-  {
-    id: 'chest',
-    name: 'Baú de Recordações',
-    price_cp: 3500,
-    description: 'Baú decorativo de carvalho com ferragens envelhecidas.',
-    speech: 'Cabe muita lembrança aqui. Não prometo que caiba aquele elmo de gigante.',
-    art: 'a closed medieval oak treasure chest with dark aged iron straps, front three quarter view',
-  },
-  {
-    id: 'books',
-    name: 'Livros do Caminho',
-    price_cp: 1200,
-    description: 'Três volumes de viagens para decorar a casa.',
-    speech: 'Histórias de quem voltou. As de quem não voltou ainda estão sendo escritas.',
-    art: 'three weathered medieval leather bound books stacked with a small rolled parchment, front three quarter view',
-  },
-  {
-    id: 'lantern',
-    name: 'Lanterna de Cobre',
-    price_cp: 1800,
-    description: 'Luz quente em cobre escurecido.',
-    speech: 'Uma luz pequena muda um quarto inteiro. Esta dispensa feitiço.',
-    art: 'a standing medieval aged copper lantern with warm candle glow contained inside the glass, front view',
-  },
-  {
-    id: 'plant',
-    name: 'Vaso de Alecrim',
-    price_cp: 600,
-    description: 'Alecrim num vaso de barro simples.',
-    speech: 'Cheira a cozinha e cresce sem reclamar das histórias repetidas.',
-    art: 'a terracotta pot of realistic rosemary, medieval herb plant, front view',
-  },
-  {
-    id: 'statue',
-    name: 'Sentinela de Pedra',
-    price_cp: 8000,
-    description: 'Pequena estátua de guardião sobre um pedestal.',
-    speech: 'Guarda o jardim sem pedir soldo. Só não espere que persiga ladrões.',
-    art: 'a small weathered stone statue of a medieval cloaked knight on a compact square pedestal, front three quarter view',
-  },
-  {
-    id: 'bench',
-    name: 'Banco do Jardim',
-    price_cp: 2200,
-    description: 'Banco de madeira escura para o pátio.',
-    speech: 'Para ver o dia passar com companhia. Também funciona sem companhia.',
-    art: 'a medieval weathered wooden garden bench, front three quarter view',
-  },
+  ...refitCatalog,
   {
     id: 'letter',
     name: 'Carta Selada',
@@ -122,7 +57,13 @@ export const houseCatalog = [
     speech: 'Uma parede merece alguma coisa que você queira lembrar.',
     art: 'one empty medieval portrait frame with subtle aged copper ornament, transparent opening, rectangular upright front view',
   },
-].map((item) => ({ ...item, image: `/house/items/${item.id}.webp` }));
+].map((item) => ({
+  ...item,
+  default_facing: houseDefaultFacing(item.id),
+  default_scale: houseDefaultScale(item.id),
+  image: houseItemImage(item.id),
+  audio_path: furniture.get(item.id)?.audio_path ?? `/audio/emporium/house-${item.id}.wav`,
+}));
 export const placementSchema = z
   .object({
     id: z.string().uuid(),

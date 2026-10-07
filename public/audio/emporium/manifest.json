@@ -10617,10 +10617,10 @@
   },
   {
     "id": "house-statue",
-    "path": "public/audio/emporium/house-statue.wav",
-    "kind": "glass",
-    "sha256": "316e2c8adb8aebfa18fd5611ba644103390aa7cd92570cd9c01b9c074f48eadd",
-    "source": "public/audio/shop-counter-glass.wav",
+    "path": "public/audio/emporium/house-statue-refit-20261007.wav",
+    "kind": "wood",
+    "sha256": "509ddad99b7868c53ba88091cbf06604823fda6c61e20ee42babd40c7bd210e0",
+    "source": "public/audio/shop-counter-wood.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   },
   {

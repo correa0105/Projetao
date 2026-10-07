@@ -1,4 +1,45 @@
-# House — 06/10/2026
+# House — 07/10/2026
+
+## Mobília refeita e organização da tela
+
+A pedido do usuário, os dez objetos de mobília foram refeitos com a sala
+mobiliada como referência de câmera, materiais e proporções. O catálogo conserva
+os IDs existentes, as compras e os preços efetivos. A mudança de identidade é
+intencional: `table` agora é Mesa de Centro, `chair` é Poltrona de Couro,
+`statue` é Estante de Livros e `lantern` é Candelabro de Três Velas. Sofá,
+banco, arca, livros, tapete e vaso também receberam modelos novos. Nomes,
+descrições, falas e sons acompanham os objetos correspondentes.
+
+São 80 vistas nativas independentes, oito por objeto, em
+`public/house/items/house-refit-20261007/`. O manifest dessa pasta registra os
+prompts, hashes, fontes PNG e calibração. Carta e quadro ficam fora da troca:
+as 16 vistas, três imagens de base/leitura e o arquivo de quinas do quadro
+totalizam 20 arquivos protegidos, verificados por hash; a calibração dos dois
+também permanece intacta. `scripts/prepare-house-refit.mjs --verify-published`
+valida a publicação completa e essa preservação.
+
+Direção e tamanho iniciais são aplicados somente a novas colocações. Os layouts
+salvos conservam posição, direção, giro, camada e tamanho. O tapete usa vista
+frontal rasa, o sofá frente-esquerda, mesa frontal e os demais móveis e acessórios
+frente-direita. Trocar a vista mantém a escala física calibrada de cada objeto.
+
+A House ocupa o espaço entre o cabeçalho do site e o Menu global, que permanece
+acessível para Empório, Estábulo e demais destinos. A altura do cabeçalho é
+medida ao abrir e redimensionar a janela, inclusive no celular. A casa tem
+navegação vertical à esquerda, cena proporcional ao centro e controles explícitos
+à direita. O cenário usa enquadramento contido,
+sem esticar ou cortar sua imagem. Selecionar uma peça apresenta Direção, Tamanho,
+Giro, Endireitar, camadas, Guardar e Ver lembrança no painel; não há engrenagem
+flutuante sobre a arte. Salvar mudanças e Descartar ficam no cabeçalho. A janela
+e a cena não rolam; listas longas rolam dentro do painel. Em telas até 800 px, o
+painel abre abaixo da cena, conservando a navegação à esquerda e a proporção da
+imagem. Fechar painel devolve o espaço à sala.
+
+A revisão integrada usa `test-house-default-views-isolated.mjs` e
+`test-house-viewport-isolated.mjs`: composição mobiliada, direções/tamanhos
+iniciais, layouts anteriores, controles e navegação real Menu → Loja →
+Empório/Estábulo → Explorar → House. A interface foi verificada em 1920, 1440,
+768, 390 e 320 px, sem rolagem da janela ou distorção da sala.
 
 ## Vistas, perspectiva, camadas e RP
 
@@ -9,21 +50,18 @@ atuais da cena e conserva presença local durante o arraste/salvamento, sem o
 polling restaurar a posição anterior. Camada do personagem também fica abaixo
 da cena, com nome dos objetos e atalhos atrás/à frente da mobília.
 
-Teste reversível de perspectiva: Decorar → Perspectiva dos itens ativa/desativa
-uma projeção adicional apenas na arte interna dos objetos. Afinamento padrão
-ao fundo (0–20°, inicial 12°) fica por conta/navegador. Cada peça pode salvar
-perspective_pitch 0–20 e perspective_yaw −20–20 no layout existente, por
-ownership/revisão. Recuo lateral negativo estreita/recua a esquerda; positivo
-recua a direita. Desligar o experimento conserva as posições, oito vistas e
-ajustes salvos. Personagens, montarias e mascotes não recebem essa projeção.
-As imagens personalizadas dos quadros acompanham a arte interna projetada.
+Em 07/10 o teste reversível de afinamento foi retirado a pedido do usuário.
+As artes voltam à perspectiva anterior, com oito vistas reais e tamanho por
+profundidade, sem projeção CSS3D adicional ou controles de recuo. Os campos
+perspective_pitch/perspective_yaw continuam aceitos no schema para não invalidar
+layouts antigos, mas são ignorados na apresentação. Posições e ajustes reais
+do layout permanecem salvos. Quadros continuam usando a abertura correta da
+moldura; essa composição da imagem personalizada não é o teste de afinamento.
 
-Controles da peça ficam na engrenagem junto ao objeto selecionado na cena,
-inclusive com Decorar fechado: direção, tamanho, giro, endireitar, camadas,
-guardar e ver lembrança. Setas laterais alternam as oito vistas existentes
-(esquerda −1, direita +1, com retorno circular), sem espelhar a arte ou arrastar.
-O menu fecha ao trocar seleção, clicar fora ou usar Esc; alterações usam Salvar
-mudanças no cabeçalho. Decorar conserva o catálogo e os ajustes gerais da casa.
+Controles da peça selecionada ficam no painel lateral, inclusive com Decorar
+fechado. Direção da peça escolhe uma das oito vistas reais, sem espelhamento.
+Decorar conserva a coleção e os ajustes gerais da casa; alterações usam Salvar
+mudanças no cabeçalho.
 
 Quadro → Manter fundo de madeira salva frame_backing boolean opcional no layout
 JSONB. Frente e diagonais frontais mostram madeira atrás da imagem personalizada
@@ -42,10 +80,11 @@ licença OFL e textos escapados pelo React; texto longo rola no papel.
 
 Os doze objetos possuem oito artes independentes, na ordem Frente, Frente e
 direita, Direita, Trás e direita, Trás, Trás e esquerda, Esquerda, Frente e
-esquerda. Decoração → Direção da peça troca a vista, enquanto Giro mantém o
-ajuste fino. São 96 WebPs transparentes, vistos/revisados individualmente;
-prompts, SHA-256 e dimensões em public/house/items/views/art-manifest.json.
-Não usar espelhamento ou rotação plana como substituto das oito vistas.
+esquerda. Direção da peça troca a vista, enquanto Giro mantém o ajuste fino.
+São 96 WebPs transparentes ativos: 80 da mobília refeita e as 16 vistas de
+carta/quadro conservadas em `public/house/items/views/`. O manifest antigo
+permanece como registro da geração anterior. Não usar espelhamento ou rotação
+plana como substituto das oito vistas.
 
 shared/house-perspective.ts calcula o fator pela posição do pé/base no cenário:
 0,15 + 0,85 × ((y − 0,08) / 0,76), com y limitado a 0,08–0,98.

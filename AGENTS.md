@@ -62,6 +62,28 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Direção explícita de 07/10: montarias e mascotes NÃO podem equipar itens humanos.
+Destino human/mount/pet é determinado pelo catálogo do servidor; nunca inferir
+compatibilidade animal por nome genérico de couro, capacete ou armadura. Preservar
+bens legados do estábulo. Toda armadura (exceto escudo) é um conjunto de peças reais,
+com ação atômica para equipar e reserva das cópias existentes. Guia vigente:
+docs/ANIMAL-ARMOR-MAGIC-SKINS.md. Migration 077 preserva estoque antigo em snapshot.
+Famílias de armas mágicas têm identidade visual compartilhada entre seus modelos;
+usar skins próprias por variante, preservando a forma real da arma, inclusive no
+inventário e nas referências do ilustrador. Cinturões de gigante têm artes distintas.
+
+Pedido posterior de 07/10: retirar o painel Selaria do Estábulo. Sela de montaria e
+sela militar ficam no Empório, IDs saddle-riding/saddle-military existentes, sem
+duplicar produtos ou alterar preços administrativos. Configuração no Inventário.
+Manter bens e imagens antigas de selas/bardas e compatibilidade da API legada.
+
+VTT: paredes/portas/janelas só ficam visíveis e editáveis na camada Iluminação e
+barreiras; manter seus cálculos de luz/FoV/movimento em todas as camadas. Os seis
+IDs de efeitos antigos são persistentes; biblioteca ampliada para 16. Guia:
+docs/VTT-EFFECTS-LAYERS.md. Explicações (?) do Empório consultam a variante real,
+usam somente SRD 5.2.1 licenciado do 5etools e identificam produtos próprios como
+Conteúdo do projeto. Fonte/glossário/revisões: docs/SHOP-ITEM-RULES.md.
+
 Leituras VTT premium/preview autenticadas usam orçamento de 1200/min por usuário,
 separado do limite de 240/min de API comum/mutações. Não voltar a debitar carregamento
 do acervo no mesmo orçamento: 330 artes causavam HTTP 429 e bloqueavam salvar tokens.
@@ -89,11 +111,23 @@ vigente, por PATCH /catalog/:id/price. 075_shop_price_overrides persiste ediçõ
 inclusive null de itens comuns através do seed; House exige preço positivo.
 Preservar total histórico/replay e resolver cobrança no servidor sob lock.
 House: transform explícito do ator evita button:active global; profundidade linear
-preserva cursor em retratos compridos. Camadas também abaixo da cena. Experimento
-reversível de perspectiva interna por peça (pitch 0–20°, yaw −20–20°) fica no layout
-JSONB, respeita revisão/ownership e não deforma atores/companheiros.
-Controles de peça ficam na engrenagem ancorada à seleção, com setas para as oito
-vistas reais. frame_backing opcional preserva abertura transparente por padrão;
+preserva cursor em retratos compridos. Camadas também abaixo da cena. Em 07/10 o
+usuário pediu retornar à aparência anterior: retirar o experimento de afinamento
+CSS3D e seus controles. Preservar oito vistas reais e escala por profundidade.
+pitch/yaw legados continuam aceitos no JSONB para não invalidar layouts salvos,
+mas não devem deformar a renderização. Detalhes em docs/CONTEXTO.md.
+
+Referência posterior de 07/10 para TODA mobília futura: casar a perspectiva real
+da arte com a câmera baixa e o piso do cenário fornecido pelo usuário, com pés,
+recuo, proporções e luz coerentes. Referências locais e fluxo obrigatório em
+docs/HOUSE-ART-DIRECTION.md. Vitrine e primeira colocação usam vistas adequadas
+já existentes; não modificar direções/posições de layouts salvos automaticamente.
+Pedido posterior substitui todos os dez móveis por novos modelos semelhantes
+à sala de referência; carta e quadro permanecem. Conservar os IDs comprados e
+layouts explícitos. Artes novas em house-refit-20261007, oito vistas reais cada.
+House ocupa o viewport sem rolagem da página, navegação à esquerda e painel de
+controles à direita. Direção, tamanho, giro, camadas e ações voltam a controles
+explícitos, substituindo a engrenagem e setas flutuantes. frame_backing opcional preserva abertura transparente por padrão;
 madeira frontal é composição CSS atrás da imagem e fica salva no layout.
 Duplo clique em carta/quadro abre leitura com arte aberta, título acima e quatro fontes locais
 OFL; texto real escapado pelo React. Guias HOUSE.md/EMPORIO-EXPANSAO.md vigentes.

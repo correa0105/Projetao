@@ -45,6 +45,7 @@ export type Item = {
   variant?: string | null;
   enhancement?: number | null;
   magic_kind?: 'weapon' | 'armor' | null;
+  raw_data?: import('../shared/equipment-target').EquipmentMetadata | null;
   weight_estimated?: boolean;
   weight_lb: string;
   source: string;

@@ -95,18 +95,15 @@ try {
   await expect(blankPiece.locator('.house-frame-surface')).toHaveCount(0);
   await expect(photoPiece.locator('.house-picture')).toHaveCount(1);
   await blankPiece.click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Ajustes da peça' })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Ajustes da peça' })).toBeVisible();
   await expect(page.getByLabel('Manter fundo de madeira')).not.toBeChecked();
   await page.getByLabel('Manter fundo de madeira').check();
   await expect(blankPiece.getByRole('img', { name: 'Fundo de madeira do quadro' })).toBeVisible();
-  await page.getByRole('button', { name: 'Fechar ajustes da peça' }).click();
   await blankPiece.screenshot({ path: 'test-results/house-backing-front.png' });
   await page.getByRole('button', { name: 'Salvar mudanças', exact: true }).click();
   await page.reload();
   await expect(blankPiece.locator('.house-frame-wood')).toHaveCount(1);
   await blankPiece.click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await expect(page.getByLabel('Manter fundo de madeira')).toBeChecked();
   for (const direction of [1, 7, 0, 4, 2, 6]) {
     await page.getByLabel('Direção da peça').selectOption(String(direction));
@@ -114,21 +111,17 @@ try {
       [0, 1, 7].includes(direction) ? 1 : 0,
     );
     if ([0, 1, 7].includes(direction)) {
-      const surface = await blankPiece
-        .locator('.house-frame-surface')
-        .evaluate((element) => ({
-          matrix: getComputedStyle(element).transform,
-          clip: getComputedStyle(element).clipPath,
-        }));
+      const surface = await blankPiece.locator('.house-frame-surface').evaluate((element) => ({
+        matrix: getComputedStyle(element).transform,
+        clip: getComputedStyle(element).clipPath,
+      }));
       expect(surface.matrix).toMatch(/^matrix3d\(/);
       expect(surface.clip).toBe('inset(0px)');
     }
   }
   await page.getByLabel('Direção da peça').selectOption('7');
-  await page.getByRole('button', { name: 'Fechar ajustes da peça' }).click();
   await blankPiece.screenshot({ path: 'test-results/house-backing-diagonal.png' });
   await photoPiece.click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByLabel('Manter fundo de madeira').check();
   await expect(photoPiece.locator('.house-picture')).toHaveCount(1);
   await expect(photoPiece.locator('.house-frame-wood')).toHaveCount(1);
@@ -150,7 +143,6 @@ try {
     rimZ: '2',
     photoFit: 'cover',
   });
-  await page.getByRole('button', { name: 'Fechar ajustes da peça' }).click();
   await photoPiece.screenshot({ path: 'test-results/house-backing-custom-image.png' });
   await page.getByRole('button', { name: 'Salvar mudanças', exact: true }).click();
   await visit.goto(origin + '/#house');
@@ -160,7 +152,6 @@ try {
   await expect(visit.getByRole('button', { name: 'Ajustar peça' })).toHaveCount(0);
   await expect(visit.getByRole('button', { name: 'Próxima vista da peça' })).toHaveCount(0);
   await blankPiece.click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByLabel('Manter fundo de madeira').uncheck();
   await page.getByRole('button', { name: 'Salvar mudanças', exact: true }).click();
   await page.reload();

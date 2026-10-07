@@ -2,7 +2,9 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
-if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
+import { houseCatalog } from '../shared/house.js';
+const houseName = (id: string) => houseCatalog.find((spec) => spec.id === id)!.name;
+if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco isolado obrigatório.');
 const origin = 'http://localhost:3008';
 process.env.APP_ORIGIN = process.env.BETTER_AUTH_URL = origin;
@@ -74,14 +76,14 @@ try {
   await expect(page.locator('.house-scene')).toBeVisible();
   const home = (await ctx.request.get(origin + '/api/house').then((r) => r.json())).homes[0];
   await page.getByRole('button', { name: 'Mobília', exact: true }).click();
-  await page.getByRole('button', { name: /Tapete da Vigília/ }).click();
-  const dialog = page.getByRole('dialog', { name: 'Tapete da Vigília' });
+  await page.getByRole('button', { name: new RegExp(houseName('rug')) }).click();
+  const dialog = page.getByRole('dialog', { name: houseName('rug') });
   await dialog.getByRole('button', { name: 'Comprar por 25 PO' }).click();
   await expect(dialog).toHaveCount(0);
   await page.getByRole('button', { name: 'Decorar', exact: true }).click();
   await page
     .locator('.house-inventory-item')
-    .filter({ hasText: 'Tapete da Vigília' })
+    .filter({ hasText: houseName('rug') })
     .getByRole('button', { name: /Colocar/ })
     .click();
   await expect(page.locator('.house-piece')).toHaveCount(1);
@@ -92,7 +94,6 @@ try {
   await page.mouse.down();
   await page.mouse.move(box!.x + box!.width / 2 + 100, box!.y + box!.height / 2 + 20, { steps: 8 });
   await page.mouse.up();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByLabel('Giro da peça').fill('12');
   await page.getByLabel('Tamanho da peça').fill('28');
   await page.getByLabel('Direção da peça').selectOption('7');
@@ -148,9 +149,9 @@ try {
   await page.reload();
   await page.getByRole('button', { name: 'Decorar', exact: true }).click();
   for (const name of [
-    'Sofá de Carvalho',
-    'Vaso de Alecrim',
-    'Livros do Caminho',
+    houseName('sofa'),
+    houseName('plant'),
+    houseName('books'),
     'Lembrança da sala',
   ])
     await page
@@ -247,7 +248,6 @@ try {
     .locator('.house-piece')
     .filter({ has: page.locator('img[alt="Quadro de Memórias"]') });
   await framePiece.click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByLabel('Tamanho da peça').fill('45');
   for (const direction of [0, 1, 7, 4]) {
     await page.getByLabel('Direção da peça').selectOption(String(direction));
@@ -272,7 +272,6 @@ try {
     .locator('.house-piece')
     .filter({ has: page.locator('img[alt="Sofá de Carvalho"]') });
   await sofaPiece.click();
-  await page.getByRole('button', { name: 'Ajustar peça', exact: true }).click();
   await page.getByRole('button', { name: 'Enviar para trás', exact: true }).click();
   await expect(sofaPiece).toHaveAttribute('data-layer', '1');
   await page.getByRole('button', { name: 'Trazer à frente', exact: true }).click();

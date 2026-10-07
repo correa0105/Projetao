@@ -569,27 +569,14 @@ try {
     'src',
     '/stable/pony-alternate.png',
   );
-  await page.getByRole('button', { name: 'Experimentar Barda de placas' }).click();
-  await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('fortaleza');
-  await expect(page.locator('.stable-field > .ginna-balloon')).not.toContainText('CA 18');
+  await expect(page.locator('.stable-tack-shop')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /^Experimentar / })).toHaveCount(0);
   await page.getByRole('button', { name: 'Ver detalhes', exact: true }).click();
-  await expect(page.getByRole('region', { name: 'Barda selecionada' })).toContainText(
-    'Barda de placas',
+  await expect(page.getByRole('complementary', { name: 'Ficha da montaria' })).toContainText(
+    'Configure o equipamento da montaria pelo inventário',
   );
-  await expect(page.getByRole('region', { name: 'Barda selecionada' })).toContainText('CA 18');
+  await expect(page.getByRole('region', { name: 'Sela selecionada' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Fechar', exact: true }).click();
-  await page.getByRole('button', { name: 'Experimentar Sela de montaria' }).click();
-  await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('primeira taverna');
-  await page.getByRole('button', { name: 'Ver detalhes', exact: true }).click();
-  await expect(page.getByRole('region', { name: 'Sela selecionada' })).toContainText(
-    'Sela de montaria',
-  );
-  await expect(page.getByRole('region', { name: 'Sela selecionada' })).toContainText(
-    'Inclui freio',
-  );
-  await expect(page.getByRole('region', { name: 'Barda selecionada' })).toHaveCount(0);
-  await page.getByRole('button', { name: 'Fechar', exact: true }).click();
-  await page.getByRole('button', { name: 'Experimentar Ração · 1 dia' }).click();
   await page.getByLabel('Como vai se chamar?').fill('Pé de Pano');
   await expect(page.locator('.stable-field > .ginna-balloon')).toContainText('Pé de Pano');
   await expect(page.locator('.stable-field > .ginna-balloon .npc-speaker')).toHaveText('Ginna');
@@ -598,7 +585,7 @@ try {
       .locator('.stable-field > .ginna-balloon p')
       .evaluate((el) => getComputedStyle(el).fontFamily),
   ).toContain('NPC Inter');
-  await page.getByRole('button', { name: 'Comprar conjunto', exact: true }).click();
+  await page.getByRole('button', { name: 'Comprar montaria', exact: true }).click();
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);
   expect(
@@ -614,7 +601,7 @@ try {
   ).toBe(true);
   expect(
     (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
-  ).toBe(95195);
+  ).toBe(96200);
   expect(
     (
       await pool.query(
@@ -622,7 +609,7 @@ try {
         [hero.id],
       )
     ).rows[0],
-  ).toEqual({ equipment: ['feed', 'saddle-riding'], equipment_price_cp: 1005 });
+  ).toEqual({ equipment: [], equipment_price_cp: 0 });
   expect(
     (await pool.query('SELECT * FROM character_mounts WHERE character_id=$1', [hero.id])).rowCount,
   ).toBe(2);
@@ -649,10 +636,10 @@ try {
     );
     const nameBox = (await page.locator('.stable-name').boundingBox())!;
     const choicesBox = (await page.locator('.stable-choices').boundingBox())!;
-    const shopBox = (await page.locator('.stable-tack-shop').boundingBox())!;
+    await expect(page.locator('.stable-tack-shop')).toHaveCount(0);
     const checkoutBox = (await page.locator('.stable-order').boundingBox())!;
     expect(nameBox.y + nameBox.height).toBeLessThanOrEqual(choicesBox.y + 1);
-    expect(checkoutBox.y).toBeGreaterThanOrEqual(shopBox.y + shopBox.height - 1);
+    expect(checkoutBox.y).toBeGreaterThanOrEqual(choicesBox.y + choicesBox.height - 1);
     if (viewport.width <= 600) {
       const speechBox = (await page.locator('.stable-field > .ginna-balloon').boundingBox())!;
       expect(speechBox.y).toBeGreaterThanOrEqual(checkoutBox.y + checkoutBox.height);
@@ -682,59 +669,6 @@ try {
     await page.screenshot({ path: `test-results/stable-${viewport.width}.png`, fullPage: true });
   }
   await page.setViewportSize({ width: 1440, height: 900 });
-  for (const animal of ['Cavalo de montaria', 'Cavalo de guerra', 'Pônei', 'Mula']) {
-    await page.getByRole('button', { name: `Ver ${animal}`, exact: true }).click();
-    for (const item of [
-      'Sela de montaria',
-      'Sela militar',
-      'Barda de couro',
-      'Barda de cota de malha',
-      'Barda de placas',
-      'Ração · 1 dia',
-    ]) {
-      await page.getByRole('button', { name: `Experimentar ${item}`, exact: true }).click();
-      const art = item.startsWith('Ração')
-        ? page.locator('.stable-feed')
-        : page.locator('.stable-animal-base');
-      await expect(art).toBeVisible();
-      if (item.startsWith('Barda')) {
-        await expect(art).toHaveAttribute('src', /\/stable\/barded\//);
-        await expect(page.locator('.stable-equipped-armor')).toHaveCount(0);
-      }
-      await expect
-        .poll(() => art.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0))
-        .toBe(true);
-      if (!item.startsWith('Ração'))
-        await expect.poll(() => page.locator('.stable-hoof-contact').count()).toBeGreaterThan(1);
-      await page.screenshot({
-        path: `test-results/tack-${animal}-${item.replaceAll(' · ', '-')}.png`,
-      });
-      await page.getByRole('button', { name: `Experimentar ${item}`, exact: true }).click();
-    }
-  }
-  for (const animal of ['Cavalo de montaria', 'Cavalo de guerra', 'Pônei', 'Mula']) {
-    await page.getByRole('button', { name: `Ver ${animal}`, exact: true }).click();
-    await page.locator('.stable-coats button').nth(1).click();
-    await page.getByRole('button', { name: 'Experimentar Barda de couro', exact: true }).click();
-    await page.getByRole('button', { name: 'Experimentar Sela militar', exact: true }).click();
-    await expect(page.locator('.stable-equipped')).toHaveCount(0);
-    await expect(page.locator('.stable-animal-base')).toHaveAttribute(
-      'src',
-      new RegExp('saddled/.+-alternate-military.png'),
-    );
-    await expect(
-      page.getByRole('button', { name: 'Experimentar Barda de couro', exact: true }),
-    ).toHaveAttribute('aria-pressed', 'false');
-    await page.getByRole('button', { name: 'Experimentar Barda de couro', exact: true }).click();
-    await expect(page.locator('.stable-animal-base')).toHaveAttribute(
-      'src',
-      new RegExp('barded/.+-alternate-leather.png'),
-    );
-    await expect(
-      page.getByRole('button', { name: 'Experimentar Sela militar', exact: true }),
-    ).toHaveAttribute('aria-pressed', 'false');
-    await page.getByRole('button', { name: 'Experimentar Barda de couro', exact: true }).click();
-  }
   for (const [animal, id] of [
     ['Cavalo de montaria', 'riding-horse'],
     ['Cavalo de guerra', 'warhorse'],
@@ -742,51 +676,25 @@ try {
     ['Mula', 'mule'],
   ]) {
     await page.getByRole('button', { name: `Ver ${animal}`, exact: true }).click();
-    for (const [coatIndex, coat] of [
+    for (const [index, coat] of [
       [0, 'original'],
       [1, 'alternate'],
     ] as const) {
-      await page.locator('.stable-coats button').nth(coatIndex).click();
-      for (const [label, key] of [
-        ['Barda de couro', 'leather'],
-        ['Barda de cota de malha', 'chain'],
-        ['Barda de placas', 'plate'],
-      ]) {
-        await page.getByRole('button', { name: `Experimentar ${label}`, exact: true }).click();
-        await expect(page.locator('.stable-animal-base')).toHaveAttribute(
-          'src',
-          `/stable/barded/${id}-${coat}-${key}.png`,
-        );
-        await expect
-          .poll(() =>
-            page
-              .locator('.stable-animal-base')
-              .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
-          )
-          .toBe(true);
-        await page.screenshot({ path: `test-results/barded-${id}-${coat}-${key}.png` });
-        await page.getByRole('button', { name: `Experimentar ${label}`, exact: true }).click();
-      }
-      for (const [label, key] of [
-        ['Sela de montaria', 'riding'],
-        ['Sela militar', 'military'],
-      ]) {
-        await page.getByRole('button', { name: `Experimentar ${label}`, exact: true }).click();
-        await expect(page.locator('.stable-animal-base')).toHaveAttribute(
-          'src',
-          `/stable/saddled/${id}-${coat}-${key}.png`,
-        );
-        await expect
-          .poll(() =>
-            page
-              .locator('.stable-animal-base')
-              .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
-          )
-          .toBe(true);
-        await expect(page.locator('.stable-equipped-saddle')).toHaveCount(0);
-        await page.screenshot({ path: `test-results/saddled-${id}-${coat}-${key}.png` });
-        await page.getByRole('button', { name: `Experimentar ${label}`, exact: true }).click();
-      }
+      await page.locator('.stable-coats button').nth(index).click();
+      await expect(page.locator('.stable-animal-base')).toHaveAttribute(
+        'src',
+        `/stable/${id}${coat === 'alternate' ? '-alternate' : ''}.png`,
+      );
+      await expect
+        .poll(() =>
+          page
+            .locator('.stable-animal-base')
+            .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
+        )
+        .toBe(true);
+      await expect.poll(() => page.locator('.stable-hoof-contact').count()).toBeGreaterThan(1);
+      await expect(page.getByRole('button', { name: /^Experimentar / })).toHaveCount(0);
+      await page.screenshot({ path: `test-results/stable-base-${id}-${coat}.png` });
     }
   }
   await page.getByRole('button', { name: 'Abrir navegação', exact: true }).click();

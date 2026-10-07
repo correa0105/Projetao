@@ -11,7 +11,7 @@ import {
 import { Coins, Search, ShoppingCart, X, Plus, Pencil } from 'lucide-react';
 import type { Character, Item } from './types';
 import { money } from '../shared/rules';
-import { shopWeight } from '../shared/armor-bundles';
+import { armorBundle, shopWeight } from '../shared/armor-bundles';
 import { api, post } from './api';
 import { Modal } from './components';
 import content from './shop-content.json';
@@ -26,6 +26,9 @@ import { shopItemScale } from './shop-item-scale';
 import { houseCatalog } from '../shared/house';
 import { HousePurchase } from './HousePurchase';
 import { ShopPriceEditor } from './ShopPriceEditor';
+import { ItemInfoButton } from './ItemInfoButton';
+import { thematicModelLabel } from './shop-thematic-skins';
+import { shopCategory, shopCategoryName, shopOfferCategories } from './shop-category';
 import {
   groupShopItems,
   getVariantLabel,
@@ -43,7 +46,7 @@ const asShopHouseItems = (specs: HouseSpec[]): Item[] =>
     description: item.description,
     price_cp: item.price_cp,
     image_path: item.image,
-    audio_path: `/audio/emporium/house-${item.id}.wav`,
+    audio_path: item.audio_path,
     merchant_comment: item.speech,
     weight_lb: '0',
     weight_estimated: true,
@@ -197,7 +200,7 @@ export function Shop({
   const [priceNotice, setPriceNotice] = useState('');
   const houseItems = useMemo(() => asShopHouseItems(houseSpecs), [houseSpecs]);
   const catalog = useMemo(() => [...ordinaryCatalog, ...houseItems], [ordinaryCatalog, houseItems]);
-  const offers = useMemo(() => groupShopItems(catalog), [catalog]);
+  const offers = useMemo(() => groupShopItems(catalog).map(shopOfferCategories), [catalog]);
   useEffect(() => {
     let active = true;
     api<{ catalog: HouseSpec[] }>('/house')
@@ -246,8 +249,10 @@ export function Shop({
     ...new Set([
       'Itens mundanos',
       'Itens de House',
-      ...content.categories,
-      ...catalog.map((item) => item.category),
+      'Equipamentos de montaria',
+      'Acessórios para pet',
+      ...content.categories.map(shopCategoryName),
+      ...catalog.map(shopCategory),
     ]),
   ];
   const [houseBuy, setHouseBuy] = useState<(typeof houseCatalog)[number] | null>(null);
@@ -649,6 +654,7 @@ export function Shop({
                   : item.name;
                 const modelHeading = offer.kind === 'armor' ? 'Tipo de armadura' : 'Tipo de arma';
                 const variantTitle = variantHeading(offer);
+                const armorSet = chosen && armorBundle(chosen.id);
                 return (
                   <article
                     key={offer.id}
@@ -683,7 +689,7 @@ export function Shop({
                       />
                     </button>
                     <div>
-                      <small>{chosen ? item.category : offer.categories.join(' · ')}</small>
+                      <small>{chosen ? shopCategory(item) : offer.categories.join(' · ')}</small>
                       <h3>{title}</h3>
                       {grouped && (
                         <div className="shop-variant-selectors">
@@ -702,7 +708,9 @@ export function Shop({
                               </option>
                               {offer.models.map((choice) => (
                                 <option key={choice.id} value={choice.id}>
-                                  {choice.label}
+                                  {offer.kind === 'weapon'
+                                    ? thematicModelLabel(choice)
+                                    : choice.label}
                                 </option>
                               ))}
                             </select>
@@ -739,10 +747,19 @@ export function Shop({
                           ? item.description
                           : `Escolha o tipo ${offer.kind === 'armor' ? 'da armadura' : 'da arma'} para consultar seus detalhes e preço.`}
                       </p>
+                      {armorSet && (
+                        <span className="shop-weight">
+                          Conjunto completo com {armorSet.pieces.length} peças
+                        </span>
+                      )}
                       {chosen && item.category !== 'Itens de House' && (
                         <span className="shop-weight">
-                          {item.weight_estimated ? 'Peso estimado' : 'Peso'}:{' '}
-                          {shopWeight(item).toLocaleString('pt-BR')} lb
+                          {armorSet
+                            ? 'Peso do conjunto'
+                            : item.weight_estimated
+                              ? 'Peso estimado'
+                              : 'Peso'}
+                          : {shopWeight(item).toLocaleString('pt-BR')} lb
                         </span>
                       )}
                       <footer>
@@ -770,10 +787,13 @@ export function Shop({
                             </button>
                           )}
                         </span>
-                        <button disabled={busy || !chosen} onClick={() => chosen && add(chosen)}>
-                          {item.price_cp === null ? 'Examinar na mesa' : 'Comprar'}{' '}
-                          <Plus size={13} />
-                        </button>
+                        <div className="item-purchase-actions">
+                          <button disabled={busy || !chosen} onClick={() => chosen && add(chosen)}>
+                            {item.price_cp === null ? 'Examinar na mesa' : 'Comprar'}{' '}
+                            <Plus size={13} />
+                          </button>
+                          <ItemInfoButton item={chosen} familyName={familyTitle} />
+                        </div>
                       </footer>
                     </div>
                   </article>
@@ -962,10 +982,12 @@ export function Shop({
                   <div>
                     <strong>{item.name}</strong>
                     <small>
+                      {shopCategory(item)} ·{' '}
                       {item.price_cp === null
                         ? 'Preço a definir'
                         : `${money(item.price_cp)} PO / unidade`}
                     </small>
+                    <ItemInfoButton item={item} />
                     <button
                       className="shop-checkout-locate"
                       disabled={busy}
