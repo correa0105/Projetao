@@ -3,6 +3,14 @@ import type { EffectPreset } from '../shared/vtt-effects';
 import type { VttToken } from '../shared/vtt';
 import { renderEffect } from './vtt-effects-canvas';
 import { drawDeath } from './vtt-death';
+let previewImage: HTMLImageElement | undefined;
+function overheadPreview() {
+  if (!previewImage) {
+    previewImage = new Image();
+    previewImage.src = '/api/vtt/premium-art/monster-knight';
+  }
+  return previewImage;
+}
 
 // Gallery thumbnails are still until hovered/focused. Only the active card runs
 // an animation, with cleanup on exit/unmount and reduced-motion support.
@@ -24,6 +32,9 @@ export function VttEffectPreview({
     surface.width = Math.round(152 * dpr);
     surface.height = Math.round(112 * dpr);
     const start = performance.now();
+    const image = overheadPreview(),
+      width = 68,
+      height = 72;
     let frame = 0,
       last = 0;
     const paint = (elapsed: number) => {
@@ -32,34 +43,44 @@ export function VttEffectPreview({
       c.save();
       c.translate(76, 54);
       const effect = { ...preset, scale: 1, duration: 0, at: 0 };
-      const options = { now: 1250 + elapsed, reducedMotion: media.matches, seed: 'gallery' };
+      const options = {
+        now: 1250 + elapsed,
+        reducedMotion: media.matches,
+        seed: 'gallery',
+        overhead: true,
+        image,
+      };
       if (preset.kind === 'death')
         drawDeath(
           c,
-          { id: preset.id, layer: 'tokens', deathAt: 1, width: 48, height: 48 } as VttToken,
+          { id: preset.id, layer: 'tokens', deathAt: 1, width, height } as VttToken,
           options,
         );
-      else renderEffect(c, effect, 48, 48, { ...options, pass: 'behind' });
-      const g = c.createRadialGradient(-8, -12, 0, 0, 0, 25);
-      g.addColorStop(0, preset.kind === 'death' ? '#9c352b' : '#62737b');
-      g.addColorStop(1, preset.kind === 'death' ? '#441618' : '#273440');
-      c.fillStyle = g;
-      c.beginPath();
-      c.ellipse(0, 0, 24, 24, 0, 0, Math.PI * 2);
-      c.fill();
-      c.strokeStyle = '#b6bdab50';
-      c.lineWidth = 1;
-      c.stroke();
-      c.fillStyle = preset.kind === 'death' ? '#d27159' : '#e1d5b3';
-      c.beginPath();
-      c.arc(0, -7, 6, 0, Math.PI * 2);
-      c.fill();
-      c.beginPath();
-      c.moveTo(-11, 12);
-      c.quadraticCurveTo(-11, 2, 0, 2);
-      c.quadraticCurveTo(11, 2, 11, 12);
-      c.fill();
-      if (preset.kind !== 'death') renderEffect(c, effect, 48, 48, { ...options, pass: 'front' });
+      else renderEffect(c, effect, width, height, { ...options, pass: 'behind' });
+      c.save();
+      if (preset.kind === 'death')
+        c.filter = 'sepia(1) saturate(4) hue-rotate(320deg) brightness(.5)';
+      if (image.complete && image.naturalWidth) {
+        const fit = Math.min(width / image.naturalWidth, height / image.naturalHeight);
+        c.drawImage(
+          image,
+          (-image.naturalWidth * fit) / 2,
+          (-image.naturalHeight * fit) / 2,
+          image.naturalWidth * fit,
+          image.naturalHeight * fit,
+        );
+      } else {
+        // Loading silhouette, without a circular token base.
+        c.fillStyle = '#62737b';
+        c.fillRect(-18, -12, 36, 24);
+        c.fillStyle = '#d8c8a4';
+        c.beginPath();
+        c.ellipse(0, -9, 9, 10, 0, 0, Math.PI * 2);
+        c.fill();
+      }
+      c.restore();
+      if (preset.kind !== 'death')
+        renderEffect(c, effect, width, height, { ...options, pass: 'front' });
       c.restore();
     };
     paint(0);
@@ -76,10 +97,12 @@ export function VttEffectPreview({
       if (animated && !media.matches) frame = requestAnimationFrame(animate);
     };
     update();
+    image.addEventListener('load', update);
     media.addEventListener('change', update);
     return () => {
       cancelAnimationFrame(frame);
       media.removeEventListener('change', update);
+      image.removeEventListener('load', update);
     };
   }, [preset.kind, preset.color, preset.id, animated]);
   return <canvas ref={canvas} aria-hidden="true" className="vtt-effect-preview-art" />;

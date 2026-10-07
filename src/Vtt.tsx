@@ -58,7 +58,7 @@ import {
   FlipVertical2,
 } from 'lucide-react';
 import { api, post } from './api';
-import { VttPrivateLibrary, VttPremiumAccess } from './VttPrivateLibrary';
+import { VttPrivateLibrary } from './VttPrivateLibrary';
 import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
 import { monsterCustomDetails } from '../shared/vtt-monster-presets';
 import type { Character, User } from './types';
@@ -2349,7 +2349,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
               if (id.startsWith('premium:')) {
                 const monster = catalog.monsters.find((m) => m.id === id.slice(8));
-                if (monster && state.premiumAccess)
+                if (monster)
                   addMonster(
                     { ...monster, image: '/api/vtt/premium-art/' + monster.id },
                     point(e),
@@ -2760,7 +2760,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 </button>
               ))}
             </nav>
-            <div className="vtt-panel-content">
+            <div className={'vtt-panel-content' + (tab === 'chat' ? ' vtt-chat-panel' : '')}>
               <div className="vtt-panel-heading">
                 <h2 hidden={tab === 'chat' && chatControlsCollapsed}>
                   {
@@ -3404,7 +3404,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             {
                               monsters: 'Monstros',
                               presets: 'Presets de monstros',
-                              premium: 'Premium',
+                              premium: 'Galeria de monstros',
                               spells: 'Magias',
                             }[k]
                           }
@@ -3450,17 +3450,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     <VttPrivateLibrary
                       kind={library}
                       gm={gm && !preview}
-                      enabled={!!state.premiumAccess}
-                      premiumTokens={!!state.premiumTokens}
-                      changeTokens={async (enabled) => {
-                        const settings = await api<
-                          Pick<VttState, 'premiumAccess' | 'premiumTokens'>
-                        >('/vtt/premium-tokens', {
-                          method: 'PUT',
-                          body: JSON.stringify({ enabled }),
-                        });
-                        setState((current) => (current ? { ...current, ...settings } : current));
-                      }}
                       viewMonsters={() => {
                         setLibrary('monsters');
                         setQuery('');
@@ -4029,56 +4018,24 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       ))}
                   </div>
                   {!spectator && (
-                    <>
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          void act(() => send('', chat));
-                        }}
-                      >
-                        <label>
-                          Mensagem
-                          <textarea
-                            value={chat}
-                            onChange={(e) => setChat(e.target.value)}
-                            maxLength={2000}
-                            rows={2}
-                          />
-                        </label>
-                        <button>Enviar à mesa</button>
-                      </form>
-                      <h3>Macros</h3>
-                      {doc.macros.map((m) => (
-                        <div className="vtt-list-row" key={m.id}>
-                          <button onClick={() => void act(() => send(m.formula, m.name))}>
-                            {m.name}
-                          </button>
-                          {gm && (
-                            <button
-                              aria-label={'Excluir macro ' + m.name}
-                              onClick={() =>
-                                edit((d) => (d.macros = d.macros.filter((v) => v.id !== m.id)))
-                              }
-                            >
-                              <Trash2 size={12} />
-                            </button>
-                          )}
-                        </div>
-                      ))}
-                      {gm && (
-                        <button
-                          onClick={() => {
-                            const name = prompt('Nome da macro');
-                            if (name)
-                              edit((d) =>
-                                d.macros.push({ id: crypto.randomUUID(), name, formula }),
-                              );
-                          }}
-                        >
-                          Salvar rolagem como macro
-                        </button>
-                      )}
-                    </>
+                    <form
+                      className="vtt-chat-compose"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        void act(() => send('', chat));
+                      }}
+                    >
+                      <label>
+                        Mensagem
+                        <textarea
+                          value={chat}
+                          onChange={(e) => setChat(e.target.value)}
+                          maxLength={2000}
+                          rows={2}
+                        />
+                      </label>
+                      <button>Enviar à mesa</button>
+                    </form>
                   )}
                 </>
               )}
@@ -4314,7 +4271,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     />
                     Recolher controles do chat
                   </label>
-                  {gm && <VttPremiumAccess changed={() => void refreshRoom()} />}
                   {gm && (
                     <>
                       <label>

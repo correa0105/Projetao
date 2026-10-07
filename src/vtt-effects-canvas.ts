@@ -2,12 +2,18 @@ import type { VttToken } from '../shared/vtt';
 import { effectEnds, type TokenEffect } from '../shared/vtt-effects';
 import { drawEffectLayer } from './vtt-effects-front';
 import { seededRandom } from './vtt-effects-primitives';
+import { effectFootprint } from './vtt-effect-footprint';
+import { drawOverheadEffect } from './vtt-effects-overhead';
 
 export type EffectRenderOptions = {
   pass?: 'behind' | 'front';
   now?: number;
   reducedMotion?: boolean;
   seed?: string;
+  overhead?: boolean;
+  image?: HTMLImageElement;
+  flipX?: boolean;
+  flipY?: boolean;
 };
 // The ellipse follows actual token geometry. Scale remains the saved user value;
 // this does not change the token or its hit box.
@@ -49,7 +55,20 @@ export function renderEffect(
     c.lineCap = 'round';
     c.lineJoin = 'round';
     const random = seededRandom((options.seed || '') + effect.id);
-    drawEffectLayer(c, effect, 100, frame.t, random, options.pass || 'behind', geometry.detail);
+    if (options.overhead) {
+      c.scale(options.flipX ? -1 : 1, options.flipY ? -1 : 1);
+      const footprint = effectFootprint(width, height, geometry.rx, geometry.ry, options.image);
+      drawOverheadEffect(
+        c,
+        effect,
+        footprint,
+        frame.t,
+        random,
+        options.pass || 'behind',
+        geometry.detail,
+      );
+    } else
+      drawEffectLayer(c, effect, 100, frame.t, random, options.pass || 'behind', geometry.detail);
   } finally {
     c.restore();
   }
@@ -59,6 +78,7 @@ export function drawTokenEffects(
   c: CanvasRenderingContext2D,
   token: VttToken,
   pass: 'behind' | 'front' = 'behind',
+  image?: HTMLImageElement,
 ) {
   if (token.layer === 'map') return;
   const now = Date.now(),
@@ -69,5 +89,10 @@ export function drawTokenEffects(
       reducedMotion,
       pass,
       seed: token.id,
+      overhead:
+        token.image.startsWith('/vtt/monsters/') || token.image.startsWith('/api/vtt/premium-art/'),
+      image,
+      flipX: token.flipX,
+      flipY: token.flipY,
     });
 }

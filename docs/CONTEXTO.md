@@ -1,5 +1,85 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Visita de perfil e perspectiva dos efeitos (07/10/2026)
+
+Visita de Personagens compartilha grade, enquadramento, chão e escala com a aba
+padrão. CampBackdrop foi extraído sem mudar o cálculo do acampamento privado;
+mount/pet usam o mesmo piso. Chave do perfil força nova medição quando detalhes
+chegam antes do perfil, evitando posições provisórias. A API pública inclui só
+species_size extraído da ficha, conservando os filtros e dados privados.
+
+Cinco placas de madeira substituem a caixa lateral, com contorno alpha em hover,
+foco e aba ativa; texto HTML preserva leitura/teclado. Seletor do personagem
+visitado no canto superior direito. Social/avaliações seguem abaixo do cenário.
+Artes originais imagegen: profile-signboard-v1.webp e profile-signpost-v1.webp.
+Guia PROFILE-VISIT-SIGNPOST.md. Comparação no navegador aprovada em cinco telas,
+incluindo 320 px e carregamento de detalhes antes do perfil; bens/saldos intactos.
+
+Efeitos agora emitem do centro do token em altura em direção à câmera superior.
+Círculo de chão fica atrás, central e circular no mapa mesmo em caixas retangulares;
+hélice circula o mesmo eixo, com raio aparente crescente na altura. Nada de
+emissor deslocado para baixo ou espiral lateral. Alpha continua para os detalhes
+de superfície. Projeção/footprint/render: 8/8; revisão dos 16 modelos e quatro
+efeitos ampliados em dois tempos aprovada; cerca de 3 ms/quadro para 15 efeitos,
+dois passes nesta máquina. IDs e preferências não são alterados.
+
+Deploy final verificado em localhost:3000: index-mGaKRery / Profiles-B8d3aYOS /
+Vtt-DkU2Bdi- / House-BmQLzjJ9. Docker build TSC/Vite/tsup e app saudável;
+JS/CSS e as duas artes das placas conferidos por hash com a build local.
+As sete artes privadas de monstros também conferidas no container; acesso
+anônimo permanece 401. Comparação pré/pós de 43 tabelas idêntica, incluindo
+bens, saldos, retratos, companheiros, House e VTT. API perfis/VTT 23/23 passou.
+
+## House: distorção e coleção; VTT básico, artes, efeitos e chat (07/10/2026)
+
+Direção posterior do usuário substitui os controles e acesso descritos abaixo.
+House agora oferece 12 vistas distintas no seletor/setas: IDs 9/11/12/15 saem da
+lista, mas artes/layouts antigos continuam legíveis. Giro foi substituído por
+quatro quinas de distorção validadas em ±12%, com Restaurar forma e Salvar mudanças.
+Sombras usam alpha da vista, dentro da mesma transformação. Escala por profundidade
+e seis camadas continuam. overflow:clip impede deslocamento da cena ao focar peças.
+
+Manter RP aberto fica só em Configurações lateral. Histórico mostra scrollbar
+quando interage com fala/chat. Falas novas aparecem por 12s acima da presença
+identificada por user_id/character_id, sem replay do histórico. Retirado formulário
+de guardar/enviar poses, conservando versões antigas. Coleção tem Excluir e modal
+de confirmação; DELETE é por dono, idempotente, tira a peça das salas e arquiva
+house_items.deleted_at (migration 080), sem devolver ouro ou apagar auditoria.
+
+As 330 artes de monstros são padrão da versão básica para toda conta autenticada,
+sem tag/ativação/concessão. Monstros e Galeria usam o acervo inteiro. Chaves e URLs
+premium antigas permanecem compatíveis; rotas de gestão retornam 410 ao admin.
+Não alterar ownership, tokens ocultos, regras do catálogo, presets privados ou
+imagens customizadas. A preferência antiga não controla a arte padrão.
+
+Sete artes refeitas pelo imagegen integrado: archmage, ancient-black-dragon,
+ancient-bronze-dragon, vampire, vampire-spawn, white-dragon-wyrmling e hippogriff.
+Humanoides foram revisados para coluna/rumo coerentes e vista dorsal superior;
+hipogrifo para cascos sob a garupa. Descartadas primeiras poses frontais/torcidas.
+Arquivos privados estáveis e cópias Downloads atualizados, originais preservados
+localmente; outros 323 registros idênticos. Prompts/hashes:
+data/vtt/monster-remake-20261007.json, docs/MONSTER-ART-REMAKE-20261007.md.
+
+Efeitos overhead amostram alpha 64×64 uma vez por imagem e seguem contain, giro e
+espelho. Gelo aplica geada/cristais/névoa na silhueta; cura luz/fios/estrelas sobre
+o corpo; relâmpagos ligam pontos do corpo. Os demais acompanham bordas/corpo,
+com vapor do veneno como referência. Prévia usa sprite real. Renderer circular
+legado, IDs, duração e preferências salvas continuam. Cache limitado, repouso
+reduzido e cleanup preservados; 15 efeitos/2 passes mediram cerca de 7 ms/quadro.
+
+VTT Chat: mensagem no rodapé e log até ela; retirado bloco Macros apenas deste
+painel. Hotbar/macros salvos permanecem. Controles rolam separadamente em telas
+baixas; chat fica sobre hotbar no celular e reserva espaço da navegação global.
+
+Validação em bancos UUID descartáveis: House API 17/17, geometria 10/10,
+perspectiva/viewport/RP/navegador aprovados. VTT API 10/10 e HTTP de 330 artes 1/1;
+efeitos/alpha/projeção 8/8, revisão visual e 16 modelos em três formatos, editor em quatro
+larguras. Chat/galeria/jogador comum/dano/combate/movimento/seleção no navegador.
+TypeScript e build aprovados. Backup anterior ao deploy:
+.local/backups/before-house-basic-vtt-effects-20261007.dump, 435790995 bytes,
+pg_restore decodificou integralmente sem restaurar o banco. Guias HOUSE.md,
+VTT-ACERVO-PREMIUM.md e VTT-EFFECTS-LAYERS.md prevalecem sobre o histórico.
+
 ## House: dezesseis vistas, profundidade e seis camadas; barda inteira (07/10/2026)
 
 Direção mais recente do usuário: camada 1 sobrepõe 2, até 6 no fundo, tanto para

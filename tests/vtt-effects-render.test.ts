@@ -127,34 +127,44 @@ test('três tamanhos e formatos seguem geometria do token e restauram o contexto
   ]) {
     const geometry = effectGeometry(width, height, scale)!;
     assert.equal(geometry.rx / geometry.ry, width / height);
-    for (const e of effectLibrary)
-      for (const pass of ['behind', 'front'] as const) {
-        const state = context(),
-          before = { ...state.props };
-        if (e.kind === 'death')
-          drawDeath(state.c, { id, layer: 'tokens', width, height, deathAt: 1000 } as VttToken, {
-            now: 2800,
-            reducedMotion: false,
-          });
-        else {
-          assert.equal(
-            renderEffect(state.c, { ...base, kind: e.kind, color: e.color, scale }, width, height, {
+    for (const overhead of [false, true])
+      for (const e of effectLibrary)
+        for (const pass of ['behind', 'front'] as const) {
+          const state = context(),
+            before = { ...state.props };
+          if (e.kind === 'death')
+            drawDeath(state.c, { id, layer: 'tokens', width, height, deathAt: 1000 } as VttToken, {
               now: 2800,
               reducedMotion: false,
-              pass,
-            }),
-            true,
+            });
+          else {
+            assert.equal(
+              renderEffect(
+                state.c,
+                { ...base, kind: e.kind, color: e.color, scale },
+                width,
+                height,
+                {
+                  now: 2800,
+                  reducedMotion: false,
+                  pass,
+                  overhead,
+                  flipX: true,
+                  flipY: true,
+                },
+              ),
+              true,
+            );
+            assert.deepEqual(state.transforms[0], [geometry.rx / 100, geometry.ry / 100]);
+          }
+          assert.ok(state.draws > 0, e.kind + ' must have visible layers');
+          assert.equal(state.depth, 0, e.kind + ' save/restore balance');
+          assert.deepEqual(
+            state.props,
+            before,
+            e.kind + ' must not leak blend/opacity/transform styles',
           );
-          assert.deepEqual(state.transforms[0], [geometry.rx / 100, geometry.ry / 100]);
         }
-        assert.ok(state.draws > 0, e.kind + ' must have visible layers');
-        assert.equal(state.depth, 0, e.kind + ' save/restore balance');
-        assert.deepEqual(
-          state.props,
-          before,
-          e.kind + ' must not leak blend/opacity/transform styles',
-        );
-      }
   }
 });
 test('expiração não desenha, duração infinita permanece, movimento reduzido congela a animação', () => {

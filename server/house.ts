@@ -12,7 +12,7 @@ import {
   initialHouseRooms,
   layoutSchema,
   roomKinds,
-  houseFacingOptions,
+  houseSupportsFacing,
 } from '../shared/house.js';
 import { achievementCatalog } from '../shared/achievements.js';
 import { currentHouseCatalog, currentHousePrice } from './shop-prices.js';
@@ -92,7 +92,7 @@ async function state(db: DB, h: any, user: string) {
   );
   // One transaction client executes queries sequentially while its access lock is held.
   const items = await db.query(
-    `SELECT ${itemFields},(SELECT name FROM "user" WHERE id=sender_id) AS sender_name FROM house_items WHERE character_id=$1 ${owner ? '' : 'AND id=ANY($2::uuid[])'} ORDER BY created_at,id`,
+    `SELECT ${itemFields},(SELECT name FROM "user" WHERE id=sender_id) AS sender_name FROM house_items WHERE character_id=$1 AND deleted_at IS NULL ${owner ? '' : 'AND id=ANY($2::uuid[])'} ORDER BY created_at,id`,
     owner ? [h.character_id] : [h.character_id, placed],
   );
   const companions = await db.query(
@@ -105,7 +105,7 @@ async function state(db: DB, h: any, user: string) {
     [h.id, h.user_id],
   );
   const messages = await db.query(
-    `SELECT m.id,c.name,m.body,m.created_at FROM house_messages m JOIN characters c ON c.id=m.character_id WHERE home_id=$1 ORDER BY m.created_at DESC,m.id DESC LIMIT 150`,
+    `SELECT m.id,m.user_id,m.character_id,c.name,m.body,m.created_at FROM house_messages m JOIN characters c ON c.id=m.character_id WHERE home_id=$1 ORDER BY m.created_at DESC,m.id DESC LIMIT 150`,
     [h.id],
   );
   const invites = owner
@@ -198,16 +198,14 @@ export function houseRouter() {
           throw new AppError(409, 'A casa mudou em outra aba. Atualize antes de salvar.');
         const all = input.rooms.flatMap((r) => r.placements);
         const items = (
-          await db.query('SELECT id,catalog_id FROM house_items WHERE character_id=$1', [
-            h.character_id,
-          ])
+          await db.query(
+            'SELECT id,catalog_id FROM house_items WHERE character_id=$1 AND deleted_at IS NULL',
+            [h.character_id],
+          )
         ).rows;
         for (const placement of all.filter((p) => p.kind === 'item')) {
           const item = items.find((i) => i.id === placement.ref);
-          if (
-            item &&
-            !houseFacingOptions(item.catalog_id).some((v) => v.value === (placement.facing ?? 0))
-          )
+          if (item && !houseSupportsFacing(item.catalog_id, placement.facing ?? 0))
             throw new AppError(400, 'Essa peça não possui a direção escolhida.');
         }
         for (const kind of ['item', 'pet', 'mount']) {
@@ -222,7 +220,7 @@ export function houseRouter() {
             refs.length &&
             (
               await db.query(
-                `SELECT id FROM ${table} WHERE character_id=$1 AND id=ANY($2::uuid[])`,
+                `SELECT id FROM ${table} WHERE character_id=$1 AND id=ANY($2::uuid[]) ${kind === 'item' ? 'AND deleted_at IS NULL' : ''}`,
                 [h.character_id, refs],
               )
             ).rowCount !== refs.length
@@ -359,7 +357,7 @@ export function houseRouter() {
         u = res.locals.user.id;
       const item = (
         await db.query(
-          `SELECT i.*,c.user_id FROM house_items i JOIN characters c ON c.id=i.character_id WHERE i.id=$1 AND c.deleted_at IS NULL FOR UPDATE OF i`,
+          `SELECT i.*,c.user_id FROM house_items i JOIN characters c ON c.id=i.character_id WHERE i.id=$1 AND i.deleted_at IS NULL AND c.deleted_at IS NULL FOR UPDATE OF i`,
           [id],
         )
       ).rows[0];
@@ -396,12 +394,46 @@ export function houseRouter() {
     });
     res.json({ ok: true });
   });
+  router.delete('/house/items/:id', async (req, res) => {
+    await transaction(async (db) => {
+      const id = uuid.parse(req.params.id),
+        user = res.locals.user.id;
+      // Use the same item -> home lock order as gift transfer.
+      const item = (
+        await db.query(
+          `SELECT i.id,i.character_id,i.deleted_at,c.user_id FROM house_items i JOIN characters c ON c.id=i.character_id WHERE i.id=$1 AND c.deleted_at IS NULL FOR UPDATE OF i`,
+          [id],
+        )
+      ).rows[0];
+      if (!item || item.user_id !== user) throw new AppError(404, 'Peça não encontrada.');
+      if (item.deleted_at) return;
+      const home = (
+        await db.query('SELECT id,rooms FROM house_homes WHERE character_id=$1 FOR UPDATE', [
+          item.character_id,
+        ])
+      ).rows[0];
+      if (home) {
+        const rooms = home.rooms.map((room: any) => ({
+          ...room,
+          placements: room.placements.filter(
+            (piece: any) => !(piece.kind === 'item' && piece.ref === id),
+          ),
+        }));
+        await db.query(
+          'UPDATE house_homes SET rooms=$2,revision=revision+1,updated_at=now() WHERE id=$1',
+          [home.id, JSON.stringify(rooms)],
+        );
+      }
+      await db.query('UPDATE house_items SET deleted_at=now() WHERE id=$1', [id]);
+    });
+    res.json({ ok: true });
+  });
   router.get('/house/items/:id/image', async (req, res) => {
     const id = uuid.parse(req.params.id),
       u = res.locals.user.id;
     const item = (
       await pool.query(
-        'SELECT i.image,i.character_id,c.user_id FROM house_items i JOIN characters c ON c.id=i.character_id WHERE i.id=$1 AND c.deleted_at IS NULL',
+        'SELECT i.image,i.character_id,c.user_id FROM house_items i JOIN characters c ON c.id=i.character_id WHERE i.id=$1 AND i.deleted_at IS NULL AND c.deleted_at IS NULL',
         [id],
       )
     ).rows[0];

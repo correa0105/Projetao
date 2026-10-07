@@ -31,12 +31,16 @@ import { pets } from '../shared/pets';
 import { mounts, ownedMountImage, type OwnedMount } from '../shared/mounts';
 import { petArtwork } from './pet-art';
 import { characterHeightScale } from '../shared/character-stature';
-import { useCampMountSize } from './useCampMountSize';
+import { useCampMountSize, useCampPetPosition } from './useCampMountSize';
+import { CampBackdrop } from './CampBackdrop';
+import { CharacterSilhouette } from './CharacterCamp';
+import { ProfileSignpost } from './ProfileSignpost';
 import { HallOfFame, visitProfile } from './HallOfFame';
 import type { deriveSheet } from '../shared/character-sheet';
 import type { ShelfConfig, AchievementDefinition } from '../shared/achievements';
 import type { Card } from '../shared/cards';
 import './hall-profiles.css';
+import './profile-visit.css';
 type PublicCharacter = {
   id: string;
   user_id: string;
@@ -49,6 +53,7 @@ type PublicCharacter = {
   hp: number;
   armor_class: number;
   stats: number[];
+  species_size?: string;
   portrait_revision: number;
   portrait: string;
   progression_missions: number;
@@ -128,7 +133,13 @@ export function Profiles({ user }: { user: User }) {
     [comment, setComment] = useState(''),
     [companion, setCompanion] = useState<OwnedMount | null>(null);
   const mountHost = useRef<HTMLButtonElement>(null);
-  useCampMountSize(mountHost, companion?.id, panel);
+  const petHost = useRef<HTMLDivElement>(null);
+  useCampPetPosition(
+    petHost,
+    details?.pets.find((pet) => pet.displayed)?.id,
+    `${profile?.id || ''}:${panel}`,
+  );
+  useCampMountSize(mountHost, companion?.id, `${profile?.id || ''}:${panel}`);
   const loadProfile = async (uid = target) => {
     const next = await api<Profile>('/profiles/' + encodeURIComponent(uid));
     setProfile(next);
@@ -406,73 +417,6 @@ export function Profiles({ user }: { user: User }) {
         <p className="social-empty">Abrindo o perfil…</p>
       ) : (
         <>
-          <header className="visited-profile-heading">
-            {avatar(profile.avatar, profile.name)}
-            <div>
-              <span className="social-eyebrow">Perfil do viajante</span>
-              <h1>{profile.name}</h1>
-              <p>{profile.document.tagline || 'Nas estradas da Alvorada.'}</p>
-              <small>ID: {profile.id}</small>
-            </div>
-            <div className="visited-profile-actions">
-              {profile.is_owner ? null : profile.blocked_by_me ? (
-                <button
-                  onClick={() =>
-                    void run(async () => {
-                      await api('/social/blocks/' + encodeURIComponent(target), {
-                        method: 'DELETE',
-                      });
-                      await loadProfile();
-                      await loadSocial();
-                    })
-                  }
-                >
-                  Desbloquear
-                </button>
-              ) : profile.blocked ? (
-                <span>Interações indisponíveis.</span>
-              ) : (
-                <>
-                  {profile.friend?.status === 'accepted' ? (
-                    <>
-                      <button onClick={() => openChat({ id: profile.id, name: profile.name })}>
-                        <MessageSquare size={15} />
-                        Conversar
-                      </button>
-                      <button onClick={() => void run(() => changeFriend('remove'))}>
-                        Remover amizade
-                      </button>
-                    </>
-                  ) : profile.friend ? (
-                    <button
-                      onClick={() =>
-                        void run(() => changeFriend(profile.friend!.incoming ? 'accept' : 'remove'))
-                      }
-                    >
-                      {profile.friend.incoming ? 'Aceitar amizade' : 'Cancelar pedido'}
-                    </button>
-                  ) : (
-                    <button onClick={() => void run(() => changeFriend('request'))}>
-                      <UserPlus size={15} />
-                      Adicionar amigo
-                    </button>
-                  )}
-                  <button
-                    title="Bloquear jogador"
-                    onClick={() =>
-                      void run(async () => {
-                        await post('/social/blocks/' + encodeURIComponent(target), {});
-                        await loadProfile();
-                        await loadSocial();
-                      })
-                    }
-                  >
-                    <Flag size={14} />
-                  </button>
-                </>
-              )}
-            </div>
-          </header>
           <div className="visited-profile-layout">
             <div className="profile-panels-viewport">
               <div
@@ -486,6 +430,7 @@ export function Profiles({ user }: { user: User }) {
                   aria-hidden={panel !== 'characters'}
                   inert={panel !== 'characters'}
                 >
+                  <CampBackdrop />
                   <div className="public-camp-heading">
                     <div className="public-camp-name" data-title-position={current?.title_position}>
                       <h2>{current?.name || 'O acampamento do viajante'}</h2>
@@ -496,16 +441,19 @@ export function Profiles({ user }: { user: User }) {
                         </div>
                       )}
                     </div>
+                  </div>
+                  <div className="page-header-spacer" aria-hidden="true" />
+                  <div className="camp-capacity-row public-camp-caption">
                     {current && (
                       <p>
                         {rankName(current.level)} · {current.race} · {current.class}
                       </p>
                     )}
                   </div>
-                  <div className="public-camp-stage">
+                  <div className="camp-stage public-camp-stage">
                     {companion && (
                       <button
-                        className="public-camp-mount"
+                        className="camp-mount public-camp-mount"
                         ref={mountHost}
                         style={
                           {
@@ -517,35 +465,80 @@ export function Profiles({ user }: { user: User }) {
                         title="Ocultar montaria nesta visita"
                       >
                         <img src={ownedMountImage(companion)} alt={companion.name} />
-                        <span>{companion.name}</span>
+                        <span className="camp-mount-name">{companion.name}</span>
                       </button>
                     )}
                     <div className="public-character-figures">
                       {profile.characters.map((c) => (
-                        <button
+                        <article
                           key={c.id}
-                          className={`public-character-figure ${selected === c.id ? 'selected' : ''}`}
-                          aria-label={`Selecionar ${c.name} no perfil`}
-                          aria-pressed={selected === c.id}
+                          className={`camp-character public-camp-character ${selected === c.id ? 'is-selected' : ''}`}
                           style={
-                            { '--stature-scale': characterHeightScale(c.race) } as CSSProperties
+                            {
+                              '--stature-scale': characterHeightScale(c.race, c.species_size),
+                            } as CSSProperties
                           }
-                          onClick={() => setSelected(c.id)}
                         >
-                          {c.portrait_revision > 0 ? (
-                            <img src={c.portrait} alt={c.name} />
-                          ) : (
-                            <div className="public-character-silhouette">
-                              <UserRound size={90} />
+                          <button
+                            className={`camp-figure public-character-figure ${selected === c.id ? 'selected' : ''}`}
+                            aria-label={`Selecionar ${c.name} no perfil`}
+                            aria-pressed={selected === c.id}
+                            onClick={() => setSelected(c.id)}
+                          >
+                            {c.portrait_revision > 0 ? (
+                              <img src={c.portrait} alt={c.name} />
+                            ) : (
+                              <CharacterSilhouette />
+                            )}
+                          </button>
+                          <div className="camp-character-info public-character-info">
+                            <span className="eyebrow">
+                              Nível {c.level} {selected === c.id ? '· Selecionado' : ''}
+                            </span>
+                            <div className="camp-name-line">
+                              <h2>{c.name}</h2>
+                              {c.displayed_title && (
+                                <span
+                                  className="character-title-label"
+                                  data-title-position={c.title_position}
+                                >
+                                  <Crown size={13} />
+                                  {c.displayed_title}
+                                </span>
+                              )}
                             </div>
-                          )}
-                          <span>{c.name}</span>
-                        </button>
+                            <p>
+                              {c.race} · {c.class}
+                            </p>
+                            <div className="camp-actions">
+                              {(
+                                [
+                                  ['achievements', 'Ver conquistas'],
+                                  ['sheet', 'Ver ficha'],
+                                  ['cards', 'Ver cartas'],
+                                ] as const
+                              ).map(([id, name]) => (
+                                <button
+                                  type="button"
+                                  className="button outline small-button"
+                                  key={id}
+                                  onClick={() => {
+                                    setSelected(c.id);
+                                    setPanel(id);
+                                  }}
+                                >
+                                  {name}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </article>
                       ))}
                     </div>
                     {displayPet && species && (
                       <div
-                        className="public-camp-pet"
+                        className="camp-pet public-camp-pet"
+                        ref={petHost}
                         style={
                           {
                             '--companion-width': `${petArtwork(species.id, displayPet.appearance).width}px`,
@@ -696,12 +689,13 @@ export function Profiles({ user }: { user: User }) {
                 </section>
               </div>
             </div>
-            <aside className="profile-visit-nav">
-              <span>Você está visitando</span>
-              <strong>{profile.name}</strong>
+            <div className="profile-visit-selector">
+              <small>
+                Visitando <strong>{profile.name}</strong>
+              </small>
               {current && (
                 <label>
-                  Personagem
+                  <span>Personagem do jogador</span>
                   <select
                     aria-label="Personagem do perfil visitado"
                     value={selected}
@@ -715,16 +709,76 @@ export function Profiles({ user }: { user: User }) {
                   </select>
                 </label>
               )}
-              {panels.map(({ id, name, icon: Icon }) => (
-                <button key={id} aria-pressed={panel === id} onClick={() => setPanel(id)}>
-                  <Icon size={17} />
-                  {name}
-                  <ArrowRight size={14} />
-                </button>
-              ))}
-              <p>Visita de consulta. Apenas o dono gerencia seus personagens e bens.</p>
-            </aside>
+            </div>
+            <ProfileSignpost panels={panels} selected={panel} onSelect={setPanel} />
           </div>
+          <header className="visited-profile-heading">
+            {avatar(profile.avatar, profile.name)}
+            <div>
+              <span className="social-eyebrow">Perfil do viajante</span>
+              <h1>{profile.name}</h1>
+              <p>{profile.document.tagline || 'Nas estradas da Alvorada.'}</p>
+              <small>ID: {profile.id}</small>
+            </div>
+            <div className="visited-profile-actions">
+              {profile.is_owner ? null : profile.blocked_by_me ? (
+                <button
+                  onClick={() =>
+                    void run(async () => {
+                      await api('/social/blocks/' + encodeURIComponent(target), {
+                        method: 'DELETE',
+                      });
+                      await loadProfile();
+                      await loadSocial();
+                    })
+                  }
+                >
+                  Desbloquear
+                </button>
+              ) : profile.blocked ? (
+                <span>Interações indisponíveis.</span>
+              ) : (
+                <>
+                  {profile.friend?.status === 'accepted' ? (
+                    <>
+                      <button onClick={() => openChat({ id: profile.id, name: profile.name })}>
+                        <MessageSquare size={15} />
+                        Conversar
+                      </button>
+                      <button onClick={() => void run(() => changeFriend('remove'))}>
+                        Remover amizade
+                      </button>
+                    </>
+                  ) : profile.friend ? (
+                    <button
+                      onClick={() =>
+                        void run(() => changeFriend(profile.friend!.incoming ? 'accept' : 'remove'))
+                      }
+                    >
+                      {profile.friend.incoming ? 'Aceitar amizade' : 'Cancelar pedido'}
+                    </button>
+                  ) : (
+                    <button onClick={() => void run(() => changeFriend('request'))}>
+                      <UserPlus size={15} />
+                      Adicionar amigo
+                    </button>
+                  )}
+                  <button
+                    title="Bloquear jogador"
+                    onClick={() =>
+                      void run(async () => {
+                        await post('/social/blocks/' + encodeURIComponent(target), {});
+                        await loadProfile();
+                        await loadSocial();
+                      })
+                    }
+                  >
+                    <Flag size={14} />
+                  </button>
+                </>
+              )}
+            </div>
+          </header>
           <section className="profile-reviews">
             <div>
               <span className="social-eyebrow">Pelas vozes da comunidade</span>

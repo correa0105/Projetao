@@ -38,8 +38,8 @@ test('six shared layers: layer one covers two through six for furniture and char
   assert.equal(placementSchema.shape.depth_layer.safeParse(0).success, false);
   assert.equal(placementSchema.shape.depth_layer.safeParse(7).success, false);
 });
-test('arrows visit all sixteen views in angular order, wrap and preserve legacy direction IDs', () => {
-  const order = [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15];
+test('arrows skip four repeated intermediate views, wrap and preserve saved direction IDs', () => {
+  const order = [0, 8, 1, 2, 10, 3, 4, 5, 13, 6, 14, 7];
   assert.deepEqual(
     houseFacingOptions('sofa').map((o) => o.value),
     order,
@@ -47,11 +47,20 @@ test('arrows visit all sixteen views in angular order, wrap and preserve legacy 
   assert.equal(houseFacingOptions('frame').length, 8);
   assert.equal(houseFacingOptions('letter').length, 8);
   let facing = 0;
-  for (let i = 1; i <= 16; i++) {
+  for (let i = 1; i <= order.length; i++) {
     facing = houseTurnFacing('sofa', facing, 1);
-    assert.equal(facing, order[i % 16]);
+    assert.equal(facing, order[i % order.length]);
   }
-  assert.equal(houseTurnFacing('sofa', 0, -1), 15);
+  assert.equal(houseTurnFacing('sofa', 0, -1), 7);
+  for (const [retired, left, right] of [
+    [9, 1, 2],
+    [11, 3, 4],
+    [12, 4, 5],
+    [15, 7, 0],
+  ]) {
+    assert.equal(houseTurnFacing('sofa', retired, -1), left);
+    assert.equal(houseTurnFacing('sofa', retired, 1), right);
+  }
   assert.equal(houseTurnFacing('frame', 0, -1), 7);
   assert.equal(placementSchema.shape.facing.safeParse(15).success, true);
   assert.equal(placementSchema.shape.facing.safeParse(16).success, false);

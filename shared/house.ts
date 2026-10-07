@@ -1,5 +1,19 @@
 import { z } from 'zod';
 import refitCatalog from '../data/house-refit-catalog.json';
+export const houseDistortionLimit = 0.12;
+const distortionPointSchema = z
+  .object({
+    x: z.number().finite().min(-houseDistortionLimit).max(houseDistortionLimit),
+    y: z.number().finite().min(-houseDistortionLimit).max(houseDistortionLimit),
+  })
+  .strict();
+export const houseDistortionSchema = z.tuple([
+  distortionPointSchema,
+  distortionPointSchema,
+  distortionPointSchema,
+  distortionPointSchema,
+]);
+export type HouseDistortion = z.infer<typeof houseDistortionSchema>;
 export const roomKinds = ['sala', 'cozinha', 'varanda', 'jardim'] as const;
 const roomNames = [
   ['hall-hearth', 'sala', 'Sala da Lareira'],
@@ -43,7 +57,14 @@ export function houseItemImage(catalogId: string, facing = houseDefaultFacing(ca
     : 'views';
   return `/house/items/${directory}/${catalogId}/${facing}.webp`;
 }
-/** Keep legacy IDs 0..7; IDs 8..15 are the interleaved 22.5-degree views. */
+// These four intermediate views were retired because they repeated nearby views.
+// Keep their assets/IDs readable for already saved layouts.
+const retiredFacings = new Set([9, 11, 12, 15]);
+/** Saved layouts retain all original assets, even views removed from the picker. */
+export function houseSupportsFacing(catalogId: string, facing: number) {
+  return Number.isInteger(facing) && facing >= 0 && facing < (furniture.has(catalogId) ? 16 : 8);
+}
+/** Keep legacy IDs 0..15; offer only the twelve distinct furniture views. */
 export function houseFacingOptions(catalogId: string) {
   const names = [
     'Frente',
@@ -59,17 +80,22 @@ export function houseFacingOptions(catalogId: string) {
   return furniture.has(catalogId)
     ? options.flatMap((option, i) => [
         option,
-        { value: i + 8, label: `${option.label} · intermediária ${i * 45 + 22.5}°` },
+        ...(!retiredFacings.has(i + 8)
+          ? [{ value: i + 8, label: `${option.label} · intermediária ${i * 45 + 22.5}°` }]
+          : []),
       ])
     : options;
 }
 export function houseTurnFacing(catalogId: string, facing: number, direction: -1 | 1) {
   const options = houseFacingOptions(catalogId);
-  const index = Math.max(
-    0,
-    options.findIndex((o) => o.value === facing),
-  );
-  return options[(index + direction + options.length) % options.length].value;
+  const order = furniture.has(catalogId)
+    ? [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15]
+    : [0, 1, 2, 3, 4, 5, 6, 7];
+  let index = Math.max(0, order.indexOf(facing));
+  do {
+    index = (index + direction + order.length) % order.length;
+  } while (!options.some((option) => option.value === order[index]));
+  return order[index];
 }
 export const houseCatalog = [
   ...refitCatalog,
@@ -109,6 +135,7 @@ export const placementSchema = z
     perspective_pitch: z.number().finite().min(0).max(20).optional(),
     perspective_yaw: z.number().finite().min(-20).max(20).optional(),
     frame_backing: z.boolean().optional(),
+    distortion: houseDistortionSchema.optional(),
     layer: z.number().int().min(0).max(300),
     depth_layer: z.number().int().min(1).max(6).optional(),
   })
@@ -193,5 +220,12 @@ export type HouseState = {
     depth_layer?: number | null;
   }[];
   invites: { user_id: string; name: string; status: string }[];
-  messages: { id: string; name: string; body: string; created_at: string }[];
+  messages: {
+    id: string;
+    user_id: string;
+    character_id: string;
+    name: string;
+    body: string;
+    created_at: string;
+  }[];
 };

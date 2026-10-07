@@ -25,10 +25,13 @@ import {
   ArrowLeft,
   ChevronLeft,
   ChevronRight,
+  Scan,
+  Settings,
 } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
 import { HouseItemReader } from './HouseItemReader';
+import { HouseWarp } from './HouseWarp';
 import { ItemInfoButton } from './ItemInfoButton';
 import {
   houseCatalog,
@@ -65,6 +68,11 @@ import {
 } from '../shared/house-perspective';
 import './house.css';
 import frameQuads from '../shared/house-frame-quads.json';
+import {
+  houseCornerLabels,
+  houseDistortionHandlePositions,
+  houseMoveDistortionCorner,
+} from '../shared/house-distortion';
 type Index = {
   homes: { id: string; character_id: string; name: string; character_name: string }[];
   invites: { home_id: string; status: string; name: string; owner_name: string }[];
@@ -204,17 +212,17 @@ export function House({
     [room, setRoom] = useState<(typeof roomKinds)[number]>('sala'),
     [tab, setTab] = useState(''),
     [selected, setSelected] = useState(''),
+    [distorting, setDistorting] = useState(''),
     [dirty, setDirty] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [notice, setNotice] = useState(''),
     [buy, setBuy] = useState(''),
     [read, setRead] = useState<HouseItem | null>(null),
+    [deleting, setDeleting] = useState<HouseItem | null>(null),
     [gift, setGift] = useState<HouseItem | null>(null),
     [variant, setVariant] = useState(''),
     [presenceScale, setPresenceScale] = useState(0.19),
-    [variantName, setVariantName] = useState(''),
-    [variantFile, setVariantFile] = useState<File | null>(null),
     [text, setText] = useState(''),
     [query, setQuery] = useState(''),
     [people, setPeople] = useState<{ id: string; name: string }[]>([]),
@@ -229,6 +237,14 @@ export function House({
     [rewardValue, setRewardValue] = useState('1'),
     [grantReason, setGrantReason] = useState('');
   const [rpPinned, setRpPinned] = useState(() => pinnedRpPreference(user.id));
+  const [chatActive, setChatActive] = useState(false);
+  const [speeches, setSpeeches] = useState<
+    Record<string, { id: string; body: string; characterId: string; expires: number }>
+  >({});
+  const seenMessages = useRef<{ home: string; ids: Set<string> }>({ home: '', ids: new Set() });
+  const [speechPositions, setSpeechPositions] = useState<
+    Record<string, { x: number; y: number; width: number; tail: number }>
+  >({});
   useEffect(() => {
     setRpPinned(pinnedRpPreference(user.id));
   }, [user.id]);
@@ -278,11 +294,18 @@ export function House({
     right: number;
     top: number;
   } | null>(null);
+  const [pieceGeometry, setPieceGeometry] = useState<{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  } | null>(null);
   useLayoutEffect(() => {
     const scene = stage.current;
     const piece = scene?.querySelector<HTMLElement>('.house-piece.selected');
     if (!scene || !piece) {
       setViewControls(null);
+      setPieceGeometry(null);
       return;
     }
     const update = () => {
@@ -293,6 +316,16 @@ export function House({
         right: Math.max(17, Math.min(bounds.width - 17, rect.right - bounds.left + 19)),
         top: Math.max(18, Math.min(bounds.height - 18, rect.top - bounds.top + rect.height / 2)),
       });
+      const placement = home?.rooms
+        .find((r) => r.kind === room)
+        ?.placements.find((p) => p.id === selected);
+      if (placement)
+        setPieceGeometry({
+          x: placement.x * scene.clientWidth,
+          y: placement.y * scene.clientHeight,
+          width: piece.clientWidth,
+          height: piece.clientHeight,
+        });
     };
     const observer = new ResizeObserver(update);
     observer.observe(piece);
@@ -302,12 +335,87 @@ export function House({
   const sound = useSoundEffects();
   const lastMessage = home?.messages.at(-1)?.id;
   useEffect(() => {
+    if (!home || seenMessages.current.home !== home.id) {
+      seenMessages.current = {
+        home: home?.id || '',
+        ids: new Set(home?.messages.map((m) => m.id)),
+      };
+      setSpeeches({});
+      return;
+    }
+    const incoming = home.messages.filter((message) => !seenMessages.current.ids.has(message.id));
+    seenMessages.current.ids = new Set(home.messages.map((m) => m.id));
+    if (incoming.length)
+      setSpeeches((previous) => {
+        const next = { ...previous };
+        for (const message of incoming)
+          next[message.user_id] = {
+            id: message.id,
+            body: message.body,
+            characterId: message.character_id,
+            expires: Date.now() + 12000,
+          };
+        return next;
+      });
+  }, [home?.id, home?.messages]);
+  useEffect(() => {
+    const expirations = Object.values(speeches).map((speech) => speech.expires);
+    if (!expirations.length) return;
+    const timer = setTimeout(
+      () =>
+        setSpeeches((previous) =>
+          Object.fromEntries(
+            Object.entries(previous).filter(([, speech]) => speech.expires > Date.now()),
+          ),
+        ),
+      Math.max(0, Math.min(...expirations) - Date.now()),
+    );
+    return () => clearTimeout(timer);
+  }, [speeches]);
+  useLayoutEffect(() => {
+    const scene = stage.current;
+    if (!scene) return;
+    const actors = Array.from(scene.querySelectorAll<HTMLElement>('.house-actor'));
+    const update = () => {
+      const bounds = scene.getBoundingClientRect(),
+        width = Math.min(260, scene.clientWidth - 24);
+      const next: typeof speechPositions = {};
+      for (const actor of actors) {
+        const rect = actor.querySelector('img')!.getBoundingClientRect();
+        const center = rect.left - bounds.left + rect.width / 2;
+        const x = Math.max(width / 2 + 12, Math.min(scene.clientWidth - width / 2 - 12, center));
+        next[actor.dataset.houseActor!] = {
+          x,
+          y: Math.min(
+            scene.clientHeight - 16,
+            Math.max(Math.min(128, scene.clientHeight - 16), rect.top - bounds.top - 12),
+          ),
+          width,
+          tail: Math.max(16, Math.min(width - 16, center - x + width / 2)),
+        };
+      }
+      setSpeechPositions(next);
+    };
+    const observer = new ResizeObserver(update);
+    for (const actor of actors) observer.observe(actor);
+    update();
+    return () => observer.disconnect();
+  }, [home?.presence, room, sceneSize]);
+  useEffect(() => {
     if ((tab === 'rp' || rpPinned) && followChat.current && chatLog.current)
       chatLog.current.scrollTop = chatLog.current.scrollHeight;
   }, [lastMessage, tab, homeId, rpPinned]);
   useEffect(() => {
     const leaveComposer = (event: Event) => {
       if (!chatForm.current?.contains(event.target as Node)) resumeChatInput.current = false;
+      if (
+        !chatForm.current?.contains(event.target as Node) &&
+        !chatLog.current?.contains(event.target as Node)
+      ) {
+        setChatActive(false);
+        followChat.current = true;
+        if (chatLog.current) chatLog.current.scrollTop = chatLog.current.scrollHeight;
+      }
     };
     document.addEventListener('pointerdown', leaveComposer, true);
     document.addEventListener('focusin', leaveComposer, true);
@@ -475,6 +583,14 @@ export function House({
     choice = current?.placements.find((p) => p.id === selected),
     spec = (index?.catalog || houseCatalog).find((c) => c.id === buy),
     ownActor = home?.presence.find((p) => p.user_id === user.id && p.room === room);
+  const choiceItem =
+    home?.inventory.find((i) => i.id === choice?.ref) ||
+    home?.items.find((i) => i.id === choice?.ref);
+  const choiceViews = houseFacingOptions(choiceItem?.catalog_id || '');
+  const distortionHandles =
+    choice && pieceGeometry && distorting === choice.id
+      ? houseDistortionHandlePositions(pieceGeometry, choice.rotation, choice.distortion)
+      : null;
   function edit(fn: (h: HouseState) => HouseState) {
     if (busy) return;
     setHome((h) => (h ? fn(h) : h));
@@ -569,6 +685,47 @@ export function House({
       el.removeEventListener('pointermove', move);
       el.removeEventListener('pointerup', end);
       el.removeEventListener('pointercancel', end);
+    };
+    el.addEventListener('pointermove', move);
+    el.addEventListener('pointerup', end);
+    el.addEventListener('pointercancel', end);
+  }
+  function dragDistortion(
+    event: PointerEvent<HTMLButtonElement>,
+    p: HousePlacement,
+    corner: number,
+  ) {
+    if (!home?.is_owner || busy || !pieceGeometry || event.button !== 0) return;
+    event.preventDefault();
+    event.stopPropagation();
+    activeDrag.current = true;
+    const el = event.currentTarget,
+      pointerId = event.pointerId;
+    el.setPointerCapture(pointerId);
+    const start = { x: event.clientX, y: event.clientY };
+    const geometry = pieceGeometry,
+      original = p.distortion?.[corner] ?? { x: 0, y: 0 };
+    const radians = (p.rotation * Math.PI) / 180,
+      cos = Math.cos(radians),
+      sin = Math.sin(radians);
+    const move = (e: globalThis.PointerEvent) => {
+      const x = e.clientX - start.x,
+        y = e.clientY - start.y;
+      patch(p.id, {
+        distortion: houseMoveDistortionCorner(
+          p.distortion,
+          corner,
+          original.x + (x * cos + y * sin) / geometry.width,
+          original.y + (-x * sin + y * cos) / geometry.height,
+        ),
+      });
+    };
+    const end = () => {
+      activeDrag.current = false;
+      el.removeEventListener('pointermove', move);
+      el.removeEventListener('pointerup', end);
+      el.removeEventListener('pointercancel', end);
+      if (el.hasPointerCapture(pointerId)) el.releasePointerCapture(pointerId);
     };
     el.addEventListener('pointermove', move);
     el.addEventListener('pointerup', end);
@@ -876,6 +1033,10 @@ export function House({
               <MessageCircle size={17} />
               RP
             </button>
+            <button aria-pressed={tab === 'settings'} onClick={() => toggle('settings')}>
+              <Settings size={17} />
+              Configurações
+            </button>
             <button aria-pressed={tab === 'versions'} onClick={() => toggle('versions')}>
               <ImagePlus size={17} />
               Personagem
@@ -935,19 +1096,6 @@ export function House({
                       : null;
                   return (
                     <Fragment key={p.id}>
-                      {(furniture || companion) && (
-                        <span
-                          className={`house-floor-shadow ${item?.catalog_id === 'rug' ? 'house-rug-shadow' : ''}`}
-                          aria-hidden="true"
-                          style={{
-                            left: `${p.x * 100}%`,
-                            top: `${p.y * 100}%`,
-                            width: `${width * 100}%`,
-                            height: `${width * sceneSize.width * 0.11}px`,
-                            zIndex: housePaintLayer(p.depth_layer, p.layer * 2 + 1),
-                          }}
-                        />
-                      )}
                       <button
                         type="button"
                         className={`house-piece ${selected === p.id ? 'selected' : ''}`}
@@ -988,22 +1136,45 @@ export function House({
                             setRead(item);
                         }}
                       >
-                        {item ? (
-                          <ItemArt
-                            item={item}
-                            facing={p.facing ?? 0}
-                            backing={p.frame_backing === true}
-                          />
-                        ) : p.kind === 'pet' && companion ? (
-                          <OwnedPetArt pet={companion} />
-                        ) : companion ? (
-                          <img src={ownedMountImage(companion as any)} alt={name} />
-                        ) : null}
+                        <HouseWarp distortion={p.distortion}>
+                          {companion && (
+                            <span
+                              className="house-companion-shadow"
+                              aria-hidden="true"
+                              style={{ height: `${width * sceneSize.width * 0.11}px` }}
+                            />
+                          )}
+                          {furniture && (
+                            <span
+                              className={`house-floor-shadow ${item.catalog_id === 'rug' ? 'house-rug-shadow' : ''}`}
+                              aria-hidden="true"
+                              data-shadow-facing={p.facing ?? 0}
+                              style={
+                                {
+                                  '--house-shadow-image': `url("${houseItemImage(item.catalog_id, p.facing ?? 0)}")`,
+                                  '--house-shadow-blur': `${width * sceneSize.width * 0.006}px`,
+                                  '--house-shadow-offset': `${width * sceneSize.width * 0.003}px`,
+                                } as CSSProperties
+                              }
+                            />
+                          )}
+                          {item ? (
+                            <ItemArt
+                              item={item}
+                              facing={p.facing ?? 0}
+                              backing={p.frame_backing === true}
+                            />
+                          ) : p.kind === 'pet' && companion ? (
+                            <OwnedPetArt pet={companion} />
+                          ) : companion ? (
+                            <img src={ownedMountImage(companion as any)} alt={name} />
+                          ) : null}
+                        </HouseWarp>
                       </button>
                     </Fragment>
                   );
                 })}
-                {home.is_owner && choice?.kind === 'item' && viewControls && (
+                {home.is_owner && choice?.kind === 'item' && viewControls && !distortionHandles && (
                   <div className="house-view-controls" aria-label="Vistas do item selecionado">
                     {([-1, 1] as const).map((direction) => (
                       <button
@@ -1038,6 +1209,32 @@ export function House({
                     ))}
                   </div>
                 )}
+                {home.is_owner && choice && distortionHandles && (
+                  <div
+                    className="house-distortion-controls"
+                    aria-label="Pontos de distorção da imagem"
+                  >
+                    <svg aria-hidden="true" width="100%" height="100%">
+                      <polygon
+                        points={distortionHandles.map((point) => `${point.x},${point.y}`).join(' ')}
+                      />
+                    </svg>
+                    {distortionHandles.map((point, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        disabled={busy}
+                        aria-label={`Distorcer canto ${houseCornerLabels[index]}`}
+                        title={`Arraste o canto ${houseCornerLabels[index]}`}
+                        style={{ left: point.x, top: point.y, transform: 'translate(-50%, -50%)' }}
+                        onClick={(event) => event.stopPropagation()}
+                        onPointerDown={(event) => dragDistortion(event, choice, index)}
+                      >
+                        <span aria-hidden="true" />
+                      </button>
+                    ))}
+                  </div>
+                )}
                 {home.presence
                   .filter((p) => p.room === room)
                   .map((p) => (
@@ -1052,6 +1249,7 @@ export function House({
                         if (p.user_id === user.id) setSelected(`actor:${p.user_id}`);
                       }}
                       data-base-scale={p.scale}
+                      data-house-actor={p.user_id}
                       data-depth-scale={housePerspectiveScale(p.y)}
                       style={{
                         left: `${p.x * 100}%`,
@@ -1073,25 +1271,38 @@ export function House({
                       <span>{p.name}</span>
                     </button>
                   ))}
-                {(tab === 'rp' || rpPinned) && (
-                  <div className="house-rp-overlay">
-                    <label className="house-rp-pin">
-                      <input
-                        type="checkbox"
-                        checked={rpPinned}
-                        onChange={(e) => {
-                          const pinned = e.target.checked;
-                          setRpPinned(pinned);
-                          followChat.current = true;
-                          try {
-                            localStorage.setItem(`house-rp-pinned:${user.id}`, String(pinned));
-                          } catch {
-                            /* Optional browser preference. */
+                <div className="house-speech-bubbles" aria-label="Falas dos personagens">
+                  {home.presence
+                    .filter(
+                      (p) => p.room === room && speeches[p.user_id]?.characterId === p.character_id,
+                    )
+                    .map((p) => {
+                      const speech = speeches[p.user_id],
+                        position = speechPositions[p.user_id];
+                      if (!position) return null;
+                      return (
+                        <div
+                          key={speech.id}
+                          className="house-speech-bubble"
+                          data-speaker={p.user_id}
+                          title={`${p.name}: ${speech.body}`}
+                          style={
+                            {
+                              left: position.x,
+                              top: position.y,
+                              width: position.width,
+                              '--speech-tail': `${position.tail}px`,
+                            } as CSSProperties
                           }
-                        }}
-                      />
-                      Manter RP aberto
-                    </label>
+                        >
+                          <strong>{p.name}</strong>
+                          <p>{speech.body}</p>
+                        </div>
+                      );
+                    })}
+                </div>
+                {(tab === 'rp' || rpPinned) && (
+                  <div className={`house-rp-overlay ${chatActive ? 'chat-active' : ''}`}>
                     <div
                       className="house-rp-log"
                       role="log"
@@ -1163,6 +1374,7 @@ export function House({
                         disabled={!character}
                         onFocus={() => {
                           resumeChatInput.current = true;
+                          setChatActive(true);
                         }}
                         value={text}
                         onChange={(e) => {
@@ -1196,6 +1408,7 @@ export function House({
                   guests: 'Convidados',
                   versions: 'Personagem',
                   rewards: 'Recompensas',
+                  settings: 'Configurações',
                 }[tab] || (choice ? 'Ajustes da peça' : 'Personagem')}
               </strong>
               {tab && tab !== 'rp' && (
@@ -1221,12 +1434,12 @@ export function House({
                           value={choice.facing ?? 0}
                           onChange={(e) => patch(choice.id, { facing: Number(e.target.value) })}
                         >
-                          {houseFacingOptions(
-                            (
-                              home.inventory.find((i) => i.id === choice.ref) ||
-                              home.items.find((i) => i.id === choice.ref)
-                            )?.catalog_id || '',
-                          ).map(({ label, value }) => (
+                          {!choiceViews.some((view) => view.value === (choice.facing ?? 0)) && (
+                            <option value={choice.facing} disabled>
+                              Vista salva · escolha outra direção
+                            </option>
+                          )}
+                          {choiceViews.map(({ label, value }) => (
                             <option value={value} key={value}>
                               {label}
                             </option>
@@ -1260,20 +1473,26 @@ export function House({
                       onChange={(e) => patch(choice.id, { scale: Number(e.target.value) / 100 })}
                     />
                   </label>
-                  <label>
-                    Giro
-                    <input
-                      aria-label="Giro da peça"
-                      type="range"
-                      min="-180"
-                      max="180"
-                      value={choice.rotation}
-                      onChange={(e) => patch(choice.id, { rotation: Number(e.target.value) })}
-                    />
-                  </label>
-                  <button onClick={() => patch(choice.id, { rotation: 0 })}>
+                  <button
+                    type="button"
+                    aria-pressed={distorting === choice.id}
+                    onClick={() => setDistorting((id) => (id === choice.id ? '' : choice.id))}
+                  >
+                    <Scan size={16} />
+                    {distorting === choice.id ? 'Concluir distorção' : 'Distorcer imagem'}
+                  </button>
+                  {distorting === choice.id && (
+                    <small className="house-distortion-hint">
+                      Arraste os quatro pontos. Cada canto pode variar até 12%. Use Salvar mudanças
+                      para guardar.
+                    </small>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => patch(choice.id, { distortion: undefined, rotation: 0 })}
+                  >
                     <RotateCw size={16} />
-                    Endireitar
+                    Restaurar forma
                   </button>
                   <button onClick={() => order(choice.id, 1)}>Trazer à frente</button>
                   <button onClick={() => order(choice.id, -1)}>Enviar para trás</button>
@@ -1353,6 +1572,32 @@ export function House({
             )}
             {tab && tab !== 'rp' && (
               <div className="house-panel" role="region" aria-label="Opções da casa">
+                {tab === 'settings' && (
+                  <section className="house-settings" aria-label="Configurações de RP">
+                    <h3>Conversa de RP</h3>
+                    <label className="house-rp-setting">
+                      <input
+                        type="checkbox"
+                        checked={rpPinned}
+                        onChange={(event) => {
+                          const pinned = event.target.checked;
+                          setRpPinned(pinned);
+                          followChat.current = true;
+                          try {
+                            localStorage.setItem(`house-rp-pinned:${user.id}`, String(pinned));
+                          } catch {
+                            /* Optional browser preference. */
+                          }
+                        }}
+                      />
+                      Manter RP aberto
+                    </label>
+                    <small>
+                      Deixe a conversa visível enquanto usa os outros controles. Clique no campo de
+                      fala para consultar o histórico.
+                    </small>
+                  </section>
+                )}
                 {tab === 'decor' && home.is_owner && (
                   <>
                     <div className="house-settings">
@@ -1395,7 +1640,11 @@ export function House({
                     </p>
                     <div className="house-inventory">
                       {home.inventory.map((item) => (
-                        <div key={item.id} className="house-inventory-item">
+                        <div
+                          key={item.id}
+                          className="house-inventory-item"
+                          data-house-inventory={item.id}
+                        >
                           <button
                             disabled={busy || placed(item.id)}
                             onClick={() => add('item', item.id)}
@@ -1407,22 +1656,32 @@ export function House({
                             </strong>
                             <small>{placed(item.id) ? 'Na casa' : 'Colocar'}</small>
                           </button>
-                          {['letter', 'frame'].includes(item.catalog_id) && (
-                            <div>
-                              <button onClick={() => setRead(item)}>Ler</button>
-                              <button
-                                disabled={placed(item.id) || busy}
-                                onClick={() => {
-                                  setGift(item);
-                                  setQuery('');
-                                  setRecipient(null);
-                                }}
-                              >
-                                <Gift size={13} />
-                                Oferecer
-                              </button>
-                            </div>
-                          )}
+                          <div>
+                            {['letter', 'frame'].includes(item.catalog_id) && (
+                              <>
+                                <button onClick={() => setRead(item)}>Ler</button>
+                                <button
+                                  disabled={placed(item.id) || busy}
+                                  onClick={() => {
+                                    setGift(item);
+                                    setQuery('');
+                                    setRecipient(null);
+                                  }}
+                                >
+                                  <Gift size={13} />
+                                  Oferecer
+                                </button>
+                              </>
+                            )}
+                            <button
+                              disabled={busy}
+                              aria-label={`Excluir ${item.content.title || houseCatalog.find((c) => c.id === item.catalog_id)?.name}`}
+                              onClick={() => setDeleting(item)}
+                            >
+                              <Trash2 size={13} />
+                              Excluir
+                            </button>
+                          </div>
                         </div>
                       ))}
                       {home.companions.map((c) => (
@@ -1639,47 +1898,8 @@ export function House({
                           </button>
                         </div>
                         <p className="house-help">
-                          Arraste seu personagem para posicioná-lo. Crie versões com poses
-                          diferentes enviando uma imagem transparente, ou guarde sua arte atual.
+                          Arraste seu personagem para posicioná-lo e escolha sua camada no painel.
                         </p>
-                        <form
-                          onSubmit={(e) => {
-                            e.preventDefault();
-                            void run(async () => {
-                              const v = await post<HouseVariant>('/house/variants', {
-                                character_id: character.id,
-                                name: variantName,
-                                ...(variantFile ? { image: await fileData(variantFile) } : {}),
-                              });
-                              await refreshIndex();
-                              setVariant(v.id);
-                              setVariantName('');
-                              setVariantFile(null);
-                              setNotice('Versão guardada.');
-                            });
-                          }}
-                          className="house-settings"
-                        >
-                          <label>
-                            Nome da versão
-                            <input
-                              required
-                              minLength={2}
-                              maxLength={60}
-                              value={variantName}
-                              onChange={(e) => setVariantName(e.target.value)}
-                            />
-                          </label>
-                          <label>
-                            Imagem da pose (opcional)
-                            <input
-                              type="file"
-                              accept="image/png,image/jpeg,image/webp"
-                              onChange={(e) => setVariantFile(e.target.files?.[0] || null)}
-                            />
-                          </label>
-                          <button disabled={busy}>Guardar versão</button>
-                        </form>
                       </>
                     ) : (
                       <p>Selecione um personagem no menu Personagem.</p>
@@ -1942,6 +2162,76 @@ export function House({
         </Modal>
       )}
       {read && <HouseItemReader item={read} close={() => setRead(null)} />}
+      {deleting && home?.is_owner && (
+        <Modal
+          title="Excluir item da House?"
+          close={() => {
+            if (!busy) setDeleting(null);
+          }}
+        >
+          <div className="stack">
+            <p>
+              Deseja realmente excluir{' '}
+              <strong>
+                {deleting.content.title ||
+                  houseCatalog.find((c) => c.id === deleting.catalog_id)?.name}
+              </strong>
+              ?
+            </p>
+            <p>
+              A peça será retirada do inventário da House e da decoração. Essa ação não devolve
+              ouro.
+            </p>
+            <div className="house-inline">
+              <button type="button" disabled={busy} onClick={() => setDeleting(null)}>
+                Cancelar
+              </button>
+              <button
+                type="button"
+                disabled={busy}
+                className="danger"
+                onClick={() =>
+                  void run(async () => {
+                    const item = deleting,
+                      id = homeId,
+                      currentGeneration = generation.current;
+                    await api(`/house/items/${item.id}`, { method: 'DELETE' });
+                    const fresh = await api<HouseState>(`/house/${id}`);
+                    if (currentGeneration !== generation.current) return;
+                    setHome((h) =>
+                      h?.id === id
+                        ? dirtyRef.current
+                          ? {
+                              ...h,
+                              revision: fresh.revision,
+                              inventory: fresh.inventory,
+                              items: fresh.items,
+                              rooms: h.rooms.map((room) => ({
+                                ...room,
+                                placements: room.placements.filter(
+                                  (piece) => !(piece.kind === 'item' && piece.ref === item.id),
+                                ),
+                              })),
+                            }
+                          : fresh
+                        : h,
+                    );
+                    if (choice?.ref === item.id) {
+                      setSelected('');
+                      setDistorting('');
+                    }
+                    setDeleting(null);
+                    setNotice('Item excluído da House.');
+                  })
+                }
+              >
+                Excluir item
+              </button>
+            </div>
+            {error && <p role="alert">{error}</p>}
+          </div>
+        </Modal>
+      )}
       {gift && (
         <Modal
           title="Oferecer uma lembrança"

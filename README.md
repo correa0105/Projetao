@@ -1,5 +1,27 @@
 # Alvorada Cinzenta
 
+Visitas de perfil (07/10): enquadramento e chão compartilhados com a aba padrão
+de personagens; montaria e mascote na mesma escala. Navegação em cinco placas
+de madeira com contorno no hover/foco; seletor do personagem visitado no canto
+superior direito. [Guia e artes](docs/PROFILE-VISIT-SIGNPOST.md).
+
+VTT (07/10): as 330 artes individuais de monstros fazem parte da versão básica,
+ativas por padrão para toda conta autenticada. Biblioteca → Monstros e Galeria
+de monstros; sem tag, ativação ou painel Premium. Tokens já colocados e fichas
+personalizadas conservam suas imagens. [Guia](docs/VTT-ACERVO-PREMIUM.md).
+
+Sete monstros tiveram artes refeitas com vista superior e anatomia revista.
+[Artes e prompts](docs/MONSTER-ART-REMAKE-20261007.md). Efeitos de monstros seguem
+a silhueta vista de cima, com emissão do centro em direção à câmera, círculo no
+chão e hélice vistos de cima; gelo, cura e raio revistos. O chat chega ao formulário
+de mensagem no rodapé, e seu bloco de macros foi retirado.
+
+House (07/10): sombras seguem a silhueta, 12 direções distintas de mobília,
+ferramenta **Distorcer imagem** com quatro pontos limitados a 12%, e exclusão
+de itens da coleção com confirmação. **Manter RP aberto** fica em Configurações;
+histórico rola ao clicar para falar e novas falas aparecem sobre o personagem.
+O formulário de guardar/enviar poses foi retirado. [Guia](docs/HOUSE.md).
+
 Atualização de 07/10: bardas de montaria são um único item e usam um só espaço
 de armadura. **Vestir** combina a barda completa com os acessórios equipados.
 Armaduras humanoides e de mascote mantêm peças independentes e podem ser equipadas
@@ -108,12 +130,11 @@ VTT: folha do monstro → **Editar** salva nome/imagem/atributos/ações em um p
 privado do mestre; **Traduzir para português** prepara uma cópia revisável. Biblioteca
 → Presets de monstros permite reutilizá-la em outras mesas. Chat acompanha rolagens
 quando já está no final e permite aplicar o dano rolado uma única vez por alvo.
-Biblioteca → Premium reúne 330 artes originais individuais vistas de cima, transparentes,
-uma para cada monstro do catálogo atual, com arquivos próprios e vínculos às fichas.
-Administradores já têm acesso; a tag Tokens premium libera outras contas.
-A aba mostra duas prévias de seis criaturas. **Mudar tokens para premium** troca
-as imagens em Monstros e nos novos tokens da mesa, com preferência salva na conta.
-Tag em Configurações e ajuda → Acesso premium. Migrations 069–070 e
+Biblioteca → Galeria de monstros reúne 330 artes individuais vistas de cima,
+transparentes, uma para cada monstro do catálogo, com arquivos próprios e
+vínculos às fichas. São padrão para toda conta autenticada. Monstros e novas
+importações usam esse acervo; imagens de tokens existentes são preservadas.
+Migrations 069–070 conservam compatibilidade de dados legados; consulte
 [funcionamento, permissões e arte](docs/VTT-ACERVO-PREMIUM.md).
 
 **Mural → Torre** abre a Torre do Véu, experimento com 100 andares, encontros e

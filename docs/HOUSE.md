@@ -10,7 +10,8 @@ intencional: `table` agora é Mesa de Centro, `chair` é Poltrona de Couro,
 banco, arca, livros, tapete e vaso também receberam modelos novos. Nomes,
 descrições, falas e sons acompanham os objetos correspondentes.
 
-São 160 vistas nativas independentes, 16 por móvel. A pasta
+São 160 vistas nativas independentes, 16 por móvel, das quais 12 distintas
+ficam no seletor e nas setas. A pasta
 `public/house/items/house-refit-20261007/` conserva as oito vistas anteriores;
 `public/house/items/house-perspective-20261007/` acrescenta 80 intermediárias e
 refina as frentes da mesa e do tapete. Os manifests registram prompts, referências,
@@ -33,7 +34,7 @@ medida ao abrir e redimensionar a janela, inclusive no celular. A casa tem
 navegação vertical à esquerda, cena proporcional ao centro e controles explícitos
 à direita. O cenário usa enquadramento contido,
 sem esticar ou cortar sua imagem. Selecionar uma peça apresenta Direção, Tamanho,
-Giro, Endireitar, camadas, Guardar e Ver lembrança no painel; não há engrenagem
+Distorcer imagem, Restaurar forma, camadas, Guardar e Ver lembrança no painel; não há engrenagem
 flutuante sobre a arte. Setas esquerda/direita junto à seleção alternam as imagens
 reais sem deformá-las. Salvar mudanças e Descartar ficam no cabeçalho. A janela
 e a cena não rolam; listas longas rolam dentro do painel. Em telas até 800 px, o
@@ -64,7 +65,7 @@ do layout permanecem salvos. Quadros continuam usando a abertura correta da
 moldura; essa composição da imagem personalizada não é o teste de afinamento.
 
 Controles da peça selecionada ficam no painel lateral, inclusive com Decorar
-fechado. Direção da peça e setas escolhem uma das 16 vistas da mobília, sem espelhamento.
+fechado. Direção da peça e setas escolhem uma das 12 vistas distintas da mobília, sem espelhamento.
 Decorar conserva a coleção e os ajustes gerais da casa; alterações usam Salvar
 mudanças no cabeçalho.
 
@@ -86,7 +87,14 @@ licença OFL e textos escapados pelo React; texto longo rola no papel.
 Os IDs 0–7 conservam Frente, Frente e direita, Direita, Trás e direita, Trás,
 Trás e esquerda, Esquerda, Frente e esquerda. Os novos IDs 8–15 são intercalados:
 0,8,1,9,2,10,3,11,4,12,5,13,6,14,7,15. Carta/quadro continuam com oito vistas.
-Direção troca a imagem, enquanto Giro mantém o ajuste fino. São 176 WebPs ativos:
+As intermediárias 9/11/12/15 (67,5/157,5/202,5/337,5°) foram retiradas do seletor
+e das setas por serem parecidas com outras direções. Layouts salvos continuam
+mostrando suas artes até o usuário escolher outra vista; IDs não foram renumerados.
+Direção troca a imagem. Distorcer imagem abre quatro pontos nas quinas da peça,
+com deslocamento limitado a ±12% de largura/altura e validado no servidor.
+A homografia de shared/house-distortion.ts adapta imagem e sombra juntas;
+Restaurar forma zera pontos e giro legado. Salvar mudanças persiste distortion
+opcional no JSONB. Giro antigo continua legível, sem slider. São 176 WebPs compatíveis:
 160 da mobília e 16 vistas de carta/quadro conservadas em `public/house/items/views/`.
 Não usar espelhamento ou rotação plana como substituto das vistas reais.
 
@@ -98,8 +106,12 @@ de fuga medido no fundo atual e escala 1 em y=.84. Perto da tela a peça cresce;
 ao fundo diminui. Retratos altos e outros cenários usam a curva anterior.
 O ajuste base continua salvo; mudar a profundidade altera apenas a renderização.
 Exposição mais discreta considera a posição em relação à lareira/janela somente
-nessa sala. Sombras elípticas de contato acompanham bases e camadas da mobília;
-cartas/quadros não recebem sombra de chão. A composição continua feita de sprites
+nessa sala. Sombras usam a máscara alpha da vista atual, concentrada na base,
+com blur/deslocamento curto dentro do mesmo HouseWarp da arte; sem elipse solta.
+Assim acompanham os pés em diagonais e a distorção. Companheiros mantêm elipse leve;
+cartas/quadros não recebem sombra de chão. overflow:clip na cena impede que foco
+em peças parcialmente fora do piso provoque auto-scroll e desalinhe o cursor.
+A composição continua feita de sprites
 2D: a calibração aproxima a referência sem substituir uma câmera/luz 3D completa.
 Cada vista de objeto em pé é calibrada pela altura visível no alpha, mantendo
 a altura física ao trocar frente/perfil. O tapete usa sua projeção no plano do
@@ -121,20 +133,25 @@ sem depth_layer conservam a escolha existente ao mover/entrar novamente.
 
 RP abre apenas dentro do cenário, com histórico translúcido e campo dourado
 junto à base; segue mensagens quando já no final. O painel externo foi retirado.
-Manter RP aberto salva preferência por conta/navegador e conserva o chat visível
+Manter RP aberto fica em Configurações do painel lateral, salva preferência por conta/navegador e conserva o chat visível
 ao abrir outros controles. Enter ou Enviar mantém o foco no campo enquanto não
 houver clique/foco fora da caixa. O campo permanece habilitado durante o envio,
 guardando o próximo rascunho, inclusive quando ele repete o texto anterior.
 Respostas atrasadas não roubam foco nem alteram o texto de outra casa/personagem.
+Scrollbar do histórico só aparece ao interagir com o campo de fala; clicar fora
+recolhe a barra. Mensagens enviadas, incluindo recebidas de convidados, aparecem
+por 12 segundos em balões acima da presença correspondente (user_id/character_id).
+Rascunhos não são publicados; histórico não dispara balões ao recarregar.
+Texto longo tem quatro linhas no balão e permanece completo no chat.
 Sons dos doze objetos usam arquivos próprios /audio/emporium/house-ID.wav e
 preservam volume/mute dos efeitos. Tamanhos iniciais de personagens, montarias
 e mascotes consideram suas proporções; layouts antigos conservam o ajuste manual.
 
-Dezesseis testes isolados de API, oito testes de geometria/cursor/camadas e navegador
+Dezessete testes isolados de API, dez testes de geometria/cursor/camadas/distorção e navegador
 em quatro larguras aprovados. O navegador verifica camada persistida, ponto de
 arraste a menos de 2 px do cursor, troca de vista, altura/base preservada e
 quadros frontais/diagonais/traseiros com imagem privada.
-`test-house-perspective-isolated.mjs` decodifica as 176 imagens, percorre as 16
+`test-house-perspective-isolated.mjs` decodifica as 176 imagens, percorre as 12
 vistas pelas setas e verifica sombras, escala/cursor, camadas de móvel/personagem
 e persistência após recarga; fontes nativas nunca são chamadas durante os testes.
 
@@ -144,10 +161,19 @@ Implementação iniciada depois do checkpoint GitHub `654c304`, com a tag enviad
 Explorar → House abre a casa do personagem selecionado. Cada personagem tem uma
 casa com sala, cozinha, varanda e jardim, cada ambiente com quatro cenários próprios.
 Decorar permite escolher o cenário/nome, colocar a mobília ou companheiro, arrastar,
-girar, redimensionar, ordenar camadas e guardar uma peça. Salvar é explícito e usa
+distorcer, redimensionar, ordenar camadas e guardar uma peça. Salvar é explícito e usa
 revisão: outra aba não pode sobrescrever uma edição mais recente. Descartar volta
 à versão persistida. A coleção da House é separada do equipamento de combate;
 nenhuma peça possui revenda, peso de combate ou bônus automático.
+
+Excluir no cartão da coleção abre confirmação com o nome do item. Cancelar
+preserva tudo; confirmar remove a peça da coleção e de todas as salas.
+DELETE /house/items/:id exige dono do personagem, sem bypass administrativo,
+arquiva house_items.deleted_at (080) e incrementa revisão sob lock. Compras,
+presentes, concessões, ouro e imagem original são preservados no banco; o item
+arquivado não pode ser colocado, oferecido ou ter sua imagem consultada.
+Replays de compras continuam idempotentes, sem recriar uma peça excluída.
+Outras alterações locais da decoração continuam disponíveis para salvar.
 
 Mobília vende doze peças por ouro do personagem dono da casa, com preço definido
 no servidor, lock, chave idempotente, auditoria e débito inteiro em cobre. O Empório
@@ -168,8 +194,8 @@ RP aceita texto simples de até 2.000 caracteres com nome do personagem próprio
 envio idempotente, histórico compartilhado somente entre membros autorizados.
 
 Personagem permite entrar na cena, mover sua presença, escolher tamanho e versão
-da aparência. Guardar versão copia o retrato atual ou recebe imagem própria da
-pose; até vinte por personagem. Versões permanecem privadas, exceto quando usadas
+da aparência já salva. O formulário Guardar versão e o upload de poses foram
+retirados a pedido do usuário. Versões existentes e API legada permanecem privadas, exceto quando usadas
 numa presença da casa à qual o visitante tenha acesso. Companheiros usam as artes,
 proporções e recortes aprovados de montarias/mascotes; seleção do acampamento intacta.
 

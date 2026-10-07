@@ -16,7 +16,7 @@ import { deriveSheet } from '../shared/character-sheet.js';
 import { cards } from '../shared/cards.js';
 const uuid = z.string().uuid(),
   userId = z.string().min(1).max(100);
-const publicCharacterSql = `SELECT c.id,c.user_id,c.name,c.race,c.class,c.background,c.biography,c.level,c.hp,c.armor_class,c.stats,c.portrait_revision,c.progression_missions,c.title_position,t.document->>'name' AS displayed_title FROM characters c LEFT JOIN title_catalog t ON t.id=c.displayed_title_id AND t.deleted_at IS NULL AND EXISTS(SELECT 1 FROM character_titles ct WHERE ct.character_id=c.id AND ct.title_id=t.id AND NOT ct.revoked) WHERE c.deleted_at IS NULL`;
+const publicCharacterSql = `SELECT c.id,c.user_id,c.name,c.race,c.class,c.background,c.biography,c.level,c.hp,c.armor_class,c.stats,(SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,c.portrait_revision,c.progression_missions,c.title_position,t.document->>'name' AS displayed_title FROM characters c LEFT JOIN title_catalog t ON t.id=c.displayed_title_id AND t.deleted_at IS NULL AND EXISTS(SELECT 1 FROM character_titles ct WHERE ct.character_id=c.id AND ct.title_id=t.id AND NOT ct.revoked) WHERE c.deleted_at IS NULL`;
 async function existing(id: string) {
   if (!(await pool.query('SELECT id FROM "user" WHERE id=$1', [id])).rowCount)
     throw new AppError(404, 'Perfil não encontrado.');

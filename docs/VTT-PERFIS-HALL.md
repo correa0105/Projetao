@@ -1,5 +1,10 @@
 # Mesa virtual, perfis, amigos e Hall da Fama — 05/10/2026
 
+Refino de 07/10: visita com mesma grade/enquadramento/chão da aba padrão,
+companheiros alinhados, seletor superior direito e navegação por cinco placas
+ilustradas. Hover/foco contorna a madeira e os nomes permanecem texto HTML.
+Guia vigente: [PROFILE-VISIT-SIGNPOST.md](PROFILE-VISIT-SIGNPOST.md).
+
 ## Navegação e personalização — 06/10/2026
 
 Combate ocupa a antiga posição de Diário nos sete ícones da barra lateral.

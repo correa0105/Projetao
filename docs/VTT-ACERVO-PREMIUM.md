@@ -1,4 +1,12 @@
-# Acervo premium e fichas privadas — 06/10/2026
+# Artes de monstros do VTT e fichas privadas — 07/10/2026
+
+Direção vigente: as 330 artes antes chamadas premium agora fazem parte da versão
+básica para toda conta autenticada. Não há tag, ativação ou controle de concessão.
+O nome deste arquivo e as URLs antigas ficam por compatibilidade.
+
+Sete artes refeitas posteriormente, com coluna/rumo dos humanoides e patas
+traseiras do hipogrifo corrigidos: [arte e prompts](MONSTER-ART-REMAKE-20261007.md).
+As outras 323 artes permanecem iguais.
 
 Revisões posteriores dos anexos: Ancient Black Dragon e Ancient Bronze Dragon
 com inserção dorsal de asas/anatomia coerente; Balor com chicote contínuo sem
@@ -9,7 +17,8 @@ atualizados, prompts/hashes no manifest. Outras artes não foram regeneradas.
 
 ## Uso
 
-Biblioteca → Monstros conserva o catálogo SRD e suas artes anteriores. Presets de
+Biblioteca → Monstros conserva as regras do catálogo SRD e usa as artes individuais
+por ID exato como padrão. Presets de
 monstros reúne cópias privadas de todos os monstros trazidos às mesas do mestre,
 incluindo mesas anteriores. Fichas → Abrir folha completa → Editar permite alterar
 nome, imagem enviada, tipo, tamanho, ND, PV/CA, atributos, deslocamentos, informações,
@@ -26,33 +35,35 @@ trechos de prosa separadamente, conservando todas as regras. Fórmulas dos ataqu
 nunca são traduzidas. O catálogo original permanece intacto.
 [Instalação oficial](https://docs.libretranslate.com/guides/installation/).
 
-Biblioteca → Premium reúne as 330 artes individuais concluídas, uma para cada
-monstro do catálogo atual. A apresentação mostra dois blocos com seis criaturas
-cada; Explorar acervo completo abre os 330 cartões. Clique na aba novamente para
+Biblioteca → Galeria de monstros reúne as 330 artes individuais concluídas, uma para cada
+monstro do catálogo atual, em cartões pesquisáveis. Clique na aba novamente para
 atualizar o acervo; clique no cartão para consultar a ficha ou arraste para a mesa. Silhuetas usam
 proporção integral e transparência, sem recorte circular. Nenhum atlas é usado.
 
-Acesso atual, por correção explícita do usuário em 06/10: **administrador=1 OU tag
-Tokens premium** (`vtt_premium=true`). Administradores têm acesso imediato, mesmo
-sem tag. Administradores concedem/revogam
-a tag em Configurações e ajuda → Acesso premium. Perfil/cadastro não podem concedê-la.
-Biblioteca, importação e novas colocações/duplicações são protegidas no servidor.
-Participantes de uma mesa podem visualizar uma arte já colocada em um token que
-possam ver; isso não concede acesso ao acervo nem capacidade de usá-lo em outra mesa.
+Acesso vigente, por pedido posterior de 07/10: **todas as contas autenticadas**.
+A preferência e as tags antigas não condicionam mais o acesso. Biblioteca →
+Monstros e novas colocações usam as artes automaticamente. Tokens já colocados,
+fichas personalizadas e presets mantêm suas imagens. Ownership, privacidade da
+mesa, visibilidade de tokens e permissões de edição continuam valendo: ter acesso
+à arte não libera dados de um token oculto nem edição do mapa de outro mestre.
 Arquivos ficam em data/vtt/premium-art, fora da publicação estática, e são servidos
-com autenticação, verificação de visibilidade e cache privado desabilitado.
+com autenticação e cache privado desabilitado.
 As doze amostras têm uma rota própria autenticada; essa rota recusa IDs fora dos
-dois blocos. Ela não libera catálogo completo nem colocação de arte sem acesso.
+dois blocos, mantendo a API antiga compatível; a galeria atual oferece o catálogo completo.
 
-Mudar tokens para premium salva a preferência na própria conta (migration 070).
-Monstros, fichas do catálogo e a galeria passam a usar a imagem premium pelo ID
-exato; novos tokens trazidos ou arrastados também a usam. Ver todos os monstros
-leva à lista. Desativar restaura as imagens originais da biblioteca. Tokens já
-colocados, fichas editadas e presets conservam suas imagens. O servidor só aplica
-a preferência com acesso vigente; remover a tag de uma conta não administradora
-retira o catálogo e a troca imediatamente. Outras contas e o SRD original não mudam.
+Campos legacy premiumAccess/premiumTokens respondem true para contas existentes.
+PUT /vtt/premium-tokens valida payload antigo e devolve o padrão ativo sem mudar
+preferências; GET/PUT de gestão /vtt/premium-access retorna 410 para administrador
+(403 para jogadores), sem expor contas ou conceder tags. Colunas 069/070 são
+preservadas como histórico e não concedem nem retiram acesso. Catálogo SRD original
+permanece intacto; a substituição das imagens é feita apenas na resposta da biblioteca.
 
 ## Chat e dano
+
+Mensagem e Enviar à mesa ficam no rodapé do painel. O histórico ocupa o espaço
+até esse formulário. O bloco Macros e seu botão de salvar foram retirados do
+chat; macros já salvas e atalhos da mesa permanecem. Controles expandidos rolam
+separadamente em telas baixas para manter a mensagem visível.
 
 O chat segue o rodapé somente quando o usuário está a até 2 px do final. Ao ler
 mensagens anteriores ou carregar histórico, conserva a posição de leitura.
@@ -159,14 +170,14 @@ com margem. Revisão 2, prompt, repairReferences, hash e originalSha256 no manif
 cortadas, outras 308 artes preservadas. Esses checks técnicos complementam a
 inspeção visual; não demonstram anatomia sozinhos.
 
-`node scripts/test-vtt-premium-isolated.mjs`: permissões premium, revogação,
-administrador sem tag, duas amostras de seis, preferência por conta, 330 vínculos
-exatos e reversão sem alterar mesas,
+`node scripts/test-vtt-premium-isolated.mjs`: acesso padrão para jogadores/admin,
+autenticação, tags/preferências antigas sem efeito, rotas antigas, 330 vínculos
+exatos sem alterar mesas,
 visibilidade, biblioteca intacta, presets separados por dono, IDs de ações, dano
 concorrente/idempotente, privacidade, descarte e hashes/alpha.
 `node scripts/test-vtt-premium-isolated.mjs --browser`: editor e presets, arte,
-administrador sem tag, dois blocos de seis, troca das 330 miniaturas, preferência
-após recarga, nova colocação premium, reversão preservando tokens anteriores,
+admin e jogador comum sem tag, 330 miniaturas padrão, recarga, nova colocação
+e preservação dos tokens anteriores, galeria sem controles premium,
 chat no final e leitura anterior, aplicação do dano e larguras 1440/768/390/320.
 Regressão: os 23 testes de VTT/perfis existentes passaram. Tradução real do ataque
 do Aboleth verificada com bônus +9, alcance 15, dano 12 (2d6+5) e escape 14 intactos.

@@ -183,7 +183,7 @@ try {
     await item.click();
     await expect(page.getByLabel('Direção da peça', { exact: true })).toBeVisible();
     await expect(page.getByLabel('Direção da peça', { exact: true }).locator('option')).toHaveCount(
-      16,
+      12,
     );
     await page.getByLabel('Direção da peça', { exact: true }).selectOption('0');
     await expect(
@@ -197,10 +197,10 @@ try {
     expect(after).toEqual(before);
     await page.getByLabel('Direção da peça', { exact: true }).selectOption('1');
     await expect(item).toHaveAttribute('data-facing', '1');
-    await page.getByLabel('Giro da peça', { exact: true }).focus();
-    await page.getByLabel('Giro da peça', { exact: true }).press('ArrowRight');
-    await page.getByRole('button', { name: 'Endireitar', exact: true }).click();
-    await expect(page.getByLabel('Giro da peça', { exact: true })).toHaveValue('0');
+    await page.getByRole('button', { name: 'Distorcer imagem', exact: true }).click();
+    await expect(page.locator('.house-distortion-controls button')).toHaveCount(4);
+    await page.getByRole('button', { name: 'Restaurar forma', exact: true }).click();
+    await page.getByRole('button', { name: 'Concluir distorção', exact: true }).click();
     await page.getByRole('button', { name: 'Enviar para trás', exact: true }).click();
     await page.getByRole('button', { name: 'Trazer à frente', exact: true }).click();
     await page.getByLabel('Camada do personagem', { exact: true }).selectOption('6');
@@ -268,13 +268,13 @@ try {
     );
     await expect(input).toBeFocused();
     await containment();
+    await page.getByRole('button', { name: 'Configurações', exact: true }).click();
     await page.getByLabel('Manter RP aberto', { exact: true }).check();
     await page.getByRole('button', { name: 'Decorar', exact: true }).click();
     await expect(input).toBeVisible();
     await containment();
-    await page.getByRole('button', { name: 'RP', exact: true }).click();
+    await page.getByRole('button', { name: 'Configurações', exact: true }).click();
     await page.getByLabel('Manter RP aberto', { exact: true }).uncheck();
-    await page.getByRole('button', { name: 'RP', exact: true }).click();
     await page.screenshot({ path: 'test-results/house-viewport-scene-' + viewport.width + '.png' });
     await pool.query(
       "UPDATE house_messages SET created_at=now()-interval '2 seconds' WHERE user_id=$1",
@@ -306,6 +306,37 @@ try {
   state = await request('/house/' + homeId, undefined, 'GET');
   expect(state.rooms[0].placements[0].facing).toBe(1);
   expect(state.inventory.some((i: any) => i.id === letter)).toBe(true);
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.getByRole('button', { name: 'Decorar', exact: true }).click();
+  const letterCard = page.locator('[data-house-inventory="' + letter + '"]');
+  await letterCard.getByRole('button', { name: 'Excluir Carta da janela', exact: true }).click();
+  const confirmation = page.getByRole('dialog', { name: 'Excluir item da House?', exact: true });
+  await expect(confirmation).toContainText('Carta da janela');
+  await confirmation.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await expect(letterCard).toBeVisible();
+  expect(
+    (await request('/house/' + homeId, undefined, 'GET')).inventory.some(
+      (i: any) => i.id === letter,
+    ),
+  ).toBe(true);
+  // Deletion must not discard other unsaved decoration edits.
+  await page.locator('[data-house-piece="' + tableId + '"]').click();
+  await page.getByLabel('Direção da peça', { exact: true }).selectOption('3');
+  await letterCard.getByRole('button', { name: 'Excluir Carta da janela', exact: true }).click();
+  await page.screenshot({ path: 'test-results/house-delete-confirmation.png' });
+  await confirmation.getByRole('button', { name: 'Excluir item', exact: true }).click();
+  await expect(confirmation).toHaveCount(0);
+  await expect(letterCard).toHaveCount(0);
+  await expect(page.locator('[data-house-piece="' + tableId + '"]')).toHaveAttribute(
+    'data-facing',
+    '3',
+  );
+  await page.getByRole('button', { name: 'Salvar mudanças', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Salvo', exact: true })).toBeDisabled();
+  await page.reload();
+  state = await request('/house/' + homeId, undefined, 'GET');
+  expect(state.inventory.some((i: any) => i.id === letter)).toBe(false);
+  expect(state.rooms[0].placements[0].facing).toBe(3);
   await page.getByRole('link', { name: 'Sair da House', exact: true }).click();
   await expect(page.locator('.house-workspace')).toHaveCount(0);
   expect(await page.evaluate(() => document.body.classList.contains('house-immersive'))).toBe(
@@ -314,7 +345,7 @@ try {
   await expect(page.locator('.journey-dock')).toBeVisible();
   expect(errors).toEqual([]);
   console.log(
-    'House viewport: five sizes, contained scene/no page scroll, site header/main navigation accessible; real Menu navigation to Empório, Estábulo and back, left House navigation/right inspector/mobile drawer, click/held cursor, sixteen-view controls/arrows/six layers/save, RP focus/pin passed.',
+    'House viewport: five sizes, navigation/containment, 12 views/arrows/six layers/save, RP focus/pin and delete confirmation/cancel/persistence/unsaved edit preservation passed.',
   );
 } finally {
   releaseSave?.();

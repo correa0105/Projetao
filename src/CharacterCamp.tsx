@@ -1,6 +1,6 @@
 import { FlashMessage } from './FlashMessage';
 import { CharacterTitleLabel } from './Titles';
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Sparkles, Trash2, X } from 'lucide-react';
 import { api, post } from './api';
 import { Modal } from './components';
@@ -12,65 +12,7 @@ import { CampMount } from './CharacterMount';
 import { CampPet } from './CharacterPet';
 import { characterHeightScale } from '../shared/character-stature';
 import './character-camp.css';
-
-function CampEmbers() {
-  const ref = useRef<HTMLDivElement>(null);
-  useLayoutEffect(() => {
-    const effect = ref.current!;
-    const camp = effect.closest('.character-camp') as HTMLElement;
-    const shell = effect.closest('.main-shell') as HTMLElement;
-    const stage = camp.querySelector('.camp-stage') as HTMLElement;
-    if (!shell || !stage) return;
-    function align() {
-      const bounds = shell.getBoundingClientRect();
-      const campBounds = camp.getBoundingClientRect();
-      const figures = [...stage.querySelectorAll('.camp-figure')];
-      const floor = figures.length
-        ? Math.max(...figures.map((figure) => figure.getBoundingClientRect().bottom)) - bounds.top
-        : stage.getBoundingClientRect().bottom - bounds.top - 130;
-      // The painted fire base is at 66% of the image. Cover the viewport while
-      // aligning that base to the characters' shared ground in every layout.
-      const scale = Math.max(
-        bounds.width / 1672,
-        floor / (941 * 0.66),
-        (bounds.height - floor) / (941 * 0.34),
-      );
-      const imageHeight = 941 * scale;
-      shell.style.setProperty('--camp-background-size', `${1672 * scale}px ${imageHeight}px`);
-      shell.style.setProperty('--camp-background-y', `${floor - imageHeight * 0.66}px`);
-      effect.style.left = `${bounds.left + bounds.width / 2 - campBounds.left}px`;
-      effect.style.top = `${bounds.top + floor - imageHeight * 0.035 - campBounds.top}px`;
-    }
-    const observer = new ResizeObserver(align);
-    observer.observe(shell);
-    observer.observe(stage);
-    for (const card of stage.children) observer.observe(card);
-    align();
-    return () => {
-      observer.disconnect();
-      shell.style.removeProperty('--camp-background-size');
-      shell.style.removeProperty('--camp-background-y');
-    };
-  });
-  return (
-    <div className="camp-embers" ref={ref} aria-hidden="true">
-      {Array.from({ length: 14 }, (_, i) => (
-        <i
-          key={i}
-          style={
-            {
-              '--drift': `${((i * 37) % 87) - 43}px`,
-              '--start': `${((i * 13) % 39) - 19}px`,
-              '--rise': `${65 + ((i * 19) % 100)}px`,
-              '--duration': `${2.8 + (i % 5) * 0.5}s`,
-              '--delay': `${-i * 0.63}s`,
-            } as CSSProperties
-          }
-        />
-      ))}
-    </div>
-  );
-}
+import { CampBackdrop } from './CampBackdrop';
 
 export async function readArtReference(file: File) {
   if (file.size > 8 * 1024 * 1024) throw new Error('Escolha uma imagem de até 8 MB.');
@@ -212,7 +154,7 @@ export function CharacterCamp({
   const pending = state.jobs.filter((j) => ['queued', 'running'].includes(j.status));
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
-      <CampEmbers />
+      <CampBackdrop />
       {selectedId && <CampMount key={`mount-${selectedId}`} characterId={selectedId} />}
       {selectedId && <CampPet key={`pet-${selectedId}`} characterId={selectedId} />}
       <div className="page-header-spacer" aria-hidden="true" />

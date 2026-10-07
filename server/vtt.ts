@@ -343,30 +343,7 @@ export function vttRouter() {
   router.use(vttCombatRouter(room, canSee));
   router.use(vttDamageRouter(room, canSee, state));
   router.use(vttMonsterPresetRouter());
-  router.use(
-    vttPremiumRouter(async (user, path) => {
-      const { rows } = await pool.query(
-        `SELECT r.id FROM vtt_rooms r WHERE r.owner_id=$1 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=r.id AND m.user_id=$1)`,
-        [user],
-      );
-      for (const entry of rows) {
-        const r = await room(pool, entry.id, user);
-        if (r.owner_id === user && (await isAdministrator(user))) {
-          if (paths(r.document).includes(path)) return true;
-        } else if (
-          paths(
-            playerDocument(
-              r.document,
-              r.role === 'spectator' ? r.viewing_user_id || '' : user,
-              r.role === 'spectator',
-            ),
-          ).includes(path)
-        )
-          return true;
-      }
-      return false;
-    }),
-  );
+  router.use(vttPremiumRouter());
   router.post('/vtt/rooms/:id/translate-monster', async (req, res) => {
     await gm(pool, uuid.parse(req.params.id), res.locals.user.id);
     const input = z

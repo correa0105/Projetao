@@ -15,12 +15,12 @@ import {effectLibrary} from '/shared/vtt-effects.ts';import {renderEffect} from 
 import {drawDeath} from '/src/vtt-death.ts';import {clearEffectTextureCache,effectTextureCacheSize,plume} from '/src/vtt-effects-primitives.ts';
 import {VttEffects} from '/src/VttEffects.tsx';import '/src/styles.css';import '/src/theme.css';import '/src/vtt.css';
 const image=new Image();image.src='data:image/webp;base64,${tokenArt}';await image.decode();
-const sizes=[[32,32],[74,115],[130,65]];
+const sizes=[[32,32],[74,115],[130,65],[160,160]];
 const id='55555555-5555-4555-8555-555555555555';
 const make=(kind)=>({...effectLibrary.find(e=>e.kind===kind),id,scale:1,duration:0,at:1000});
 const render=(canvas,kind,size,now,reduced,token=true)=>{
  const c=canvas.getContext('2d'),[width,height]=sizes[size];c.clearRect(0,0,canvas.width,canvas.height);c.save();c.translate(canvas.width/2,canvas.height/2);
- const effect=make(kind),options={now,reducedMotion:reduced,seed:'test'};
+ const effect=make(kind),options={now,reducedMotion:reduced,seed:'test',overhead:true,image};
  if(kind==='death')drawDeath(c,{id,layer:'tokens',width,height,deathAt:1000},options);else renderEffect(c,effect,width,height,{...options,pass:'behind'});
  if(token){c.save();if(kind==='death')c.filter='brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';const f=Math.min(width/image.naturalWidth,height/image.naturalHeight);c.drawImage(image,-image.naturalWidth*f/2,-image.naturalHeight*f/2,image.naturalWidth*f,image.naturalHeight*f);c.restore();}
  if(kind!=='death')renderEffect(c,effect,width,height,{...options,pass:'front'});c.restore();return c;
@@ -31,10 +31,11 @@ window.requestAnimationFrame=fn=>{let key=nativeRequest(t=>{pending.delete(key);
 window.cancelAnimationFrame=key=>{pending.delete(key);nativeCancel(key);};
 window.fxTest={kinds:effectLibrary.map(e=>e.kind),
  sheet(size){const grid=document.getElementById('grid');grid.innerHTML='';for(const effect of effectLibrary){const figure=document.createElement('figure'),caption=document.createElement('figcaption'),canvas=document.createElement('canvas');caption.textContent=effect.name;canvas.width=290;canvas.height=236;canvas.className='sample';figure.append(canvas,caption);grid.append(figure);render(canvas,effect.kind,size,2850,false);}return effectLibrary.length;},
+ focused(now){const grid=document.getElementById('grid');grid.innerHTML='';for(const kind of ['poison','heal','frost','lightning']){const effect=effectLibrary.find(e=>e.kind===kind),figure=document.createElement('figure'),caption=document.createElement('figcaption'),canvas=document.createElement('canvas');caption.textContent=effect.name;canvas.width=canvas.height=360;canvas.className='sample';figure.append(canvas,caption);grid.append(figure);render(canvas,kind,3,now,false);} },
  measure(kind,size,now,reduced){const canvas=document.createElement('canvas');canvas.width=canvas.height=420;const c=render(canvas,kind,size,now,reduced,false);return hash(c.getImageData(0,0,420,420).data);},
  finiteExpired(){const c=document.createElement('canvas').getContext('2d');return renderEffect(c,{...make('fire'),duration:1},90,90,{now:2000,reducedMotion:false});},
  cache(){clearEffectTextureCache();for(let i=0;i<30;i++)plume('#'+(i*7219).toString(16).padStart(6,'0'),'smoke');const size=effectTextureCacheSize();clearEffectTextureCache();return {size,after:effectTextureCacheSize()};},
- benchmark(){const canvas=document.createElement('canvas');canvas.width=canvas.height=256;const c=canvas.getContext('2d');c.translate(128,128);const kinds=effectLibrary.filter(e=>e.kind!=='death');for(const e of kinds){renderEffect(c,make(e.kind),90,90,{now:3000,reducedMotion:false});}const start=performance.now();for(let frame=0;frame<30;frame++){c.clearRect(-128,-128,256,256);for(const e of kinds)for(const pass of ['behind','front'])renderEffect(c,make(e.kind),90,90,{now:3000+frame*32,reducedMotion:false,pass});}return (performance.now()-start)/30;},
+ benchmark(){const canvas=document.createElement('canvas');canvas.width=canvas.height=256;const c=canvas.getContext('2d');c.translate(128,128);const kinds=effectLibrary.filter(e=>e.kind!=='death');for(const e of kinds){renderEffect(c,make(e.kind),90,90,{now:3000,reducedMotion:false,overhead:true,image});}const start=performance.now();for(let frame=0;frame<30;frame++){c.clearRect(-128,-128,256,256);for(const e of kinds)for(const pass of ['behind','front'])renderEffect(c,make(e.kind),90,90,{now:3000+frame*32,reducedMotion:false,pass,overhead:true,image});}return (performance.now()-start)/30;},
  pending:()=>pending.size};
 function Demo(){const [presets,setPresets]=React.useState([]);return React.createElement(VttEffects,{presets,tokens:[{id,name:'Cavaleiro',layer:'tokens',effects:[],deathAt:null,deathAutomatic:false}],busy:false,save:async p=>setPresets(v=>[...v,p]),remove:async id=>setPresets(v=>v.filter(p=>p.id!==id)),apply:async()=>{},clear:async()=>{},preview:()=>{},editDeath:async()=>{}});}
 createRoot(document.getElementById('ui')).render(React.createElement(Demo));window.fxTest.sheet(1);
@@ -46,6 +47,9 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   page = await browser.newPage({ viewport: { width: 1280, height: 1180 } }),
   errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
+await page.route('**/api/vtt/premium-art/monster-knight', (route) =>
+  route.fulfill({ contentType: 'image/webp', body: Buffer.from(tokenArt, 'base64') }),
+);
 try {
   await page.goto('http://127.0.0.1:3039/test-results/vtt-effects-quality.html');
   await page.waitForFunction(() => window.fxTest?.kinds.length === 16);
@@ -92,6 +96,12 @@ try {
     await page
       .locator('#grid')
       .screenshot({ path: 'test-results/vtt-effects-quality-size-' + size + '.png' });
+  }
+  for (const now of [2850, 3350]) {
+    await page.evaluate((now) => window.fxTest.focused(now), now);
+    await page
+      .locator('#grid')
+      .screenshot({ path: 'test-results/vtt-effects-overhead-focused-' + now + '.png' });
   }
   await page.locator('#grid').evaluate((e) => (e.style.display = 'none'));
   for (const width of [1440, 768, 390, 320]) {

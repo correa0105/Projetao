@@ -56,14 +56,14 @@ test('VTT: carregar o acervo não quebra miniaturas nem esgota o orçamento de e
   }
   try {
     const administrator = await signup('Mestre das artes');
-    const player = await signup('Visitante sem premium');
+    const player = await signup('Visitante da biblioteca básica');
     await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [administrator.id]);
     for (const id of ids) {
       assert.equal((await request('/vtt/premium-art/' + id)).status, 401);
-      assert.equal((await request('/vtt/premium-art/' + id, player)).status, 403);
+      assert.equal((await request('/vtt/premium-art/' + id, player)).status, 200);
     }
     const manifest = JSON.parse(await readFile('data/vtt/premium-art/manifest.json', 'utf8'));
-    const catalogResponse = await request('/vtt/premium', administrator);
+    const catalogResponse = await request('/vtt/premium', player);
     assert.equal(catalogResponse.status, 200);
     const catalog = await catalogResponse.json();
     assert.equal(catalog.available, manifest.assets.length);
@@ -96,7 +96,7 @@ test('VTT: carregar o acervo não quebra miniaturas nem esgota o orçamento de e
     assert.equal((await request('/vtt/premium-art/monster-adult-black-dragon')).status, 401);
     assert.equal(
       (await request('/vtt/premium-art/monster-adult-black-dragon', player)).status,
-      403,
+      200,
     );
     const invalid = await request('/vtt/premium-art/../../manifest.json', administrator);
     assert.notEqual(invalid.status, 200);

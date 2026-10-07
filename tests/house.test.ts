@@ -140,11 +140,41 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
         rotation: 15,
         layer: 1,
         facing: 7,
+        distortion: [
+          { x: 0.08, y: -0.05 },
+          { x: 0, y: 0 },
+          { x: 0, y: 0.12 },
+          { x: 0, y: 0 },
+        ],
       });
       assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 200);
       assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 409);
       home = await load();
       assert.equal(home.rooms[0].placements[0].facing, 7);
+      assert.deepEqual(
+        home.rooms[0].placements[0].distortion,
+        input.rooms[0].placements[0].distortion,
+      );
+      for (const invalid of [
+        [
+          { x: 0.13, y: 0 },
+          { x: 0, y: 0 },
+          { x: 0, y: 0 },
+          { x: 0, y: 0 },
+        ],
+        [
+          { x: 0, y: -0.13 },
+          { x: 0, y: 0 },
+          { x: 0, y: 0 },
+          { x: 0, y: 0 },
+        ],
+        [{ x: 0, y: 0 }],
+      ]) {
+        const invalidWarp = layout();
+        invalidWarp.rooms[0].placements[0].distortion = invalid;
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', invalidWarp)).status, 400);
+        assert.equal((await load()).revision, home.revision);
+      }
       for (const invalid of [-1, 16, 1.5]) {
         const invalidView = layout();
         invalidView.rooms[0].placements[0].facing = invalid;
@@ -676,6 +706,75 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
               .status,
             400,
           );
+      },
+    );
+    await t.test(
+      'excluir item exige dono e arquiva sem alterar ouro, compras ou replays',
+      async () => {
+        const input = { character_id: hero.id, catalog_id: 'frame', idempotency_key: randomUUID() };
+        const purchase = await request('/house/purchase', owner, 'POST', input);
+        assert.equal(purchase.status, 201);
+        const id = purchase.data.item_id;
+        home = await load();
+        const next = layout();
+        next.rooms[0].placements.push(
+          placementSchema.parse({
+            id: randomUUID(),
+            kind: 'item',
+            ref: id,
+            x: 0.4,
+            y: 0.6,
+            scale: 0.2,
+            rotation: 0,
+            layer: 3,
+            facing: 0,
+          }),
+        );
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', next)).status, 200);
+        home = await load();
+        const original = structuredClone(home);
+        const gold = (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id]))
+          .rows[0].gold_cp;
+        assert.equal((await request(`/house/items/${id}`, undefined, 'DELETE')).status, 401);
+        for (const account of [guest, admin]) {
+          assert.equal((await request(`/house/items/${id}`, account, 'DELETE')).status, 404);
+        }
+        assert.equal((await request(`/house/items/${id}`, owner, 'DELETE')).status, 200);
+        home = await load();
+        assert.equal(home.revision, original.revision + 1);
+        assert.ok(!home.inventory.some((i: any) => i.id === id));
+        assert.ok(home.rooms.every((r: any) => r.placements.every((p: any) => p.ref !== id)));
+        assert.equal((await request(`/house/items/${id}/image`, owner)).status, 404);
+        assert.equal(
+          (await request(`/house/items/${id}/gift`, owner, 'POST', { character_id: visitor.id }))
+            .status,
+          404,
+        );
+        const readd = { ...layout(), rooms: original.rooms };
+        assert.equal((await request(`/house/${home.id}`, owner, 'PUT', readd)).status, 400);
+        assert.equal((await request(`/house/items/${id}`, owner, 'DELETE')).status, 200);
+        assert.equal((await load()).revision, home.revision);
+        assert.equal(
+          (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0]
+            .gold_cp,
+          gold,
+        );
+        const replay = await request('/house/purchase', owner, 'POST', input);
+        assert.equal(replay.status, 200);
+        assert.equal(replay.data.item_id, id);
+        assert.ok(!(await load()).inventory.some((i: any) => i.id === id));
+        assert.ok(
+          (await pool.query('SELECT deleted_at FROM house_items WHERE id=$1', [id])).rows[0]
+            .deleted_at,
+        );
+        assert.equal(
+          (
+            await pool.query('SELECT count(*)::int AS total FROM house_orders WHERE item_id=$1', [
+              id,
+            ])
+          ).rows[0].total,
+          1,
+        );
       },
     );
     await t.test('bloqueio social impede convites e presentes', async () => {

@@ -94,7 +94,9 @@ try {
   await page.mouse.down();
   await page.mouse.move(box!.x + box!.width / 2 + 100, box!.y + box!.height / 2 + 20, { steps: 8 });
   await page.mouse.up();
-  await page.getByLabel('Giro da peça').fill('12');
+  await page.getByRole('button', { name: 'Distorcer imagem', exact: true }).click();
+  await expect(page.locator('.house-distortion-controls button')).toHaveCount(4);
+  await page.getByRole('button', { name: 'Concluir distorção', exact: true }).click();
   await page.getByLabel('Tamanho da peça').fill('28');
   await page.getByLabel('Direção da peça').selectOption('7');
   await page.getByRole('button', { name: 'Salvar mudanças' }).click();
@@ -273,9 +275,9 @@ try {
     .filter({ has: page.locator('img[alt="Sofá de Carvalho"]') });
   await sofaPiece.click();
   await page.getByRole('button', { name: 'Enviar para trás', exact: true }).click();
-  await expect(sofaPiece).toHaveAttribute('data-layer', '1');
+  await expect(sofaPiece).toHaveAttribute('data-depth-layer', '4');
   await page.getByRole('button', { name: 'Trazer à frente', exact: true }).click();
-  await expect(sofaPiece).toHaveAttribute('data-layer', '2');
+  await expect(sofaPiece).toHaveAttribute('data-depth-layer', '3');
   await page.getByLabel('Direção da peça').selectOption('4');
   await expect(sofaPiece).toHaveAttribute('data-facing', '4');
   await page.getByRole('button', { name: 'Salvar mudanças' }).click();
@@ -284,17 +286,17 @@ try {
   await page.getByRole('button', { name: 'Entrar na cena', exact: true }).click();
   await expect(page.locator('.house-actor')).toHaveCount(1);
   await expect(page.getByRole('button', { name: 'Entrar na cena', exact: true })).toBeEnabled();
-  await page.getByLabel('Camada do personagem').selectOption('0');
-  await expect(page.locator('.house-actor')).toHaveAttribute('data-layer', '0');
+  await page.getByLabel('Camada do personagem').selectOption('6');
+  await expect(page.locator('.house-actor')).toHaveAttribute('data-depth-layer', '6');
   const storedLayer = (
     await ctx.request.get(origin + '/api/house/' + home.id).then((r) => r.json())
-  ).presence.find((p: any) => p.user_id === owner).layer;
-  expect(storedLayer).toBe(0);
+  ).presence.find((p: any) => p.user_id === owner).depth_layer;
+  expect(storedLayer).toBe(6);
   expect(
     await page.locator('.house-actor').evaluate((el) => Number(getComputedStyle(el).zIndex)),
   ).toBeLessThan(await sofaPiece.evaluate((el) => Number(getComputedStyle(el).zIndex)));
-  await page.getByLabel('Camada do personagem').selectOption('602');
-  await expect(page.locator('.house-actor')).toHaveAttribute('data-layer', '602');
+  await page.getByLabel('Camada do personagem').selectOption('1');
+  await expect(page.locator('.house-actor')).toHaveAttribute('data-depth-layer', '1');
   await page.getByRole('button', { name: 'Fechar painel' }).click();
   const actor = page.locator('.house-actor').first();
   await expect

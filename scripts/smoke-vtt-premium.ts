@@ -103,18 +103,12 @@ try {
   await externalMessage('Voltou ao final');
   expect(await bottom()).toBeLessThan(3);
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
-  await panel.getByRole('button', { name: 'Premium', exact: true }).click();
+  await panel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
   const assets = JSON.parse(await readFile('data/vtt/premium-art/manifest.json', 'utf8')).assets;
   await expect(panel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
-  await expect(panel.locator('.vtt-premium-preview-block')).toHaveCount(2);
-  for (const group of await panel.locator('.vtt-premium-preview-block').all())
-    await expect(group.locator('img')).toHaveCount(6);
-  const tokenPreference = panel.getByLabel('Mudar tokens para premium', { exact: true });
-  await expect(tokenPreference).toBeEnabled();
-  await expect(tokenPreference).not.toBeChecked();
-  await tokenPreference.check();
-  await expect(tokenPreference).toBeChecked();
-  await expect(tokenPreference).toBeEnabled();
+  await expect(panel.getByLabel('Mudar tokens para premium', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('Acesso premium', { exact: true })).toHaveCount(0);
+  await expect(panel.getByRole('button', { name: 'Premium', exact: true })).toHaveCount(0);
   await panel.getByRole('button', { name: 'Ver todos os monstros', exact: true }).click();
   await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
   const aboleth = panel.locator('.vtt-compendium > button').filter({ hasText: /^AbolethND/ });
@@ -190,14 +184,10 @@ try {
     row.getByRole('button', { name: 'Dano aplicado em Alvo', exact: true }),
   ).toBeDisabled();
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
-  await panel.getByRole('button', { name: 'Premium', exact: true }).click();
+  await panel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
   await expect(panel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
-  await expect(tokenPreference).toBeChecked();
-  await tokenPreference.uncheck();
-  await expect(tokenPreference).not.toBeChecked();
-  await expect(tokenPreference).toBeEnabled();
   await panel.getByRole('button', { name: 'Ver todos os monstros', exact: true }).click();
-  await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(0);
+  await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
   await expect
     .poll(async () => {
       const {
@@ -207,22 +197,17 @@ try {
         ?.image;
     })
     .toBe('/api/vtt/premium-art/monster-aboleth');
-  await panel.getByRole('button', { name: 'Premium', exact: true }).click();
-  await tokenPreference.check();
-  await expect(tokenPreference).toBeChecked();
-  await expect(tokenPreference).toBeEnabled();
   await page.reload();
   await expect(page.getByRole('region', { name: 'Mesa virtual', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
   await panel.getByRole('button', { name: 'Monstros', exact: true }).click();
   await expect(panel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
   await page.screenshot({ path: 'test-results/vtt-premium-monsters.png' });
-  await panel.getByRole('button', { name: 'Premium', exact: true }).click();
-  await expect(tokenPreference).toBeChecked();
+  await panel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
   await expect
     .poll(() =>
       panel
-        .locator('.vtt-premium-preview-grid img')
+        .locator('.vtt-premium-grid img')
         .first()
         .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
     )
@@ -235,6 +220,42 @@ try {
     );
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.getByRole('button', { name: 'Chat', exact: true }).click();
+  for (const [width, height] of [
+    [1440, 900],
+    [768, 760],
+    [390, 650],
+    [320, 540],
+  ]) {
+    await page.setViewportSize({ width, height });
+    for (const collapsed of [true, false]) {
+      const control = panel.locator('.vtt-chat-collapse');
+      if ((await control.getAttribute('aria-expanded')) === String(collapsed))
+        await control.click();
+      await expect(control).toHaveAttribute('aria-expanded', String(!collapsed));
+      const bounds = await panel.boundingBox(),
+        compose = await panel.locator('.vtt-chat-compose').boundingBox(),
+        history = await log.boundingBox();
+      expect(bounds && compose && history).toBeTruthy();
+      expect(compose!.y + compose!.height).toBeLessThanOrEqual(bounds!.y + bounds!.height + 1);
+      expect(bounds!.y + bounds!.height - compose!.y - compose!.height).toBeLessThan(
+        width < 700 ? 85 : 25,
+      );
+      expect(compose!.y - history!.y - history!.height).toBeLessThan(30);
+      expect(history!.height).toBeGreaterThan(25);
+      await panel.getByLabel('Mensagem', { exact: true }).click();
+      await expect(panel.getByLabel('Mensagem', { exact: true })).toBeFocused();
+      await expect(panel.getByRole('heading', { name: 'Macros', exact: true })).toHaveCount(0);
+      await expect(
+        panel.getByRole('button', { name: 'Salvar rolagem como macro', exact: true }),
+      ).toHaveCount(0);
+      await page.screenshot({ path: `test-results/vtt-chat-bottom-${width}-${collapsed}.png` });
+    }
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  console.log(
+    'Chat no rodapé: histórico contíguo à mensagem, sem bloco de macros, controles expandidos/recolhidos em quatro tamanhos aprovados.',
+  );
   const {
     rows: [selectionRoom],
   } = await pool.query('SELECT document,revision FROM vtt_rooms WHERE id=$1', [r.id]);
@@ -442,8 +463,7 @@ try {
   console.log(
     'Movimento no navegador: parede impede arraste direto mesmo sem restrição legada; contornar pela área aberta permite chegar ao outro lado.',
   );
-  await page.getByRole('button', { name: 'Chat', exact: true }).click();
-  await panel.getByRole('button', { name: 'Combate', exact: true }).click();
+  await page.getByRole('button', { name: 'Combate', exact: true }).click();
   await panel.getByRole('button', { name: 'Adicionar todos à ordem', exact: true }).click();
   const combatEntries = movementDocument.scenes[0].tokens.filter(
     (t: any) => t.layer === 'tokens' && !t.hidden,
@@ -474,12 +494,60 @@ try {
   console.log(
     'Combate: rolagem coletiva do mestre, início, carrossel mais alto/transparente e minimizar/expandir aprovados.',
   );
+  const playerContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+  try {
+    const account = await playerContext.request.post(origin + '/api/auth/sign-up/email', {
+      headers: { Origin: origin },
+      data: {
+        name: 'Jogador da versão básica',
+        email: randomUUID() + '@example.test',
+        password: 'Test-' + randomUUID(),
+      },
+    });
+    expect(account.ok()).toBe(true);
+    const invite = (await pool.query('SELECT invite FROM vtt_rooms WHERE id=$1', [r.id])).rows[0]
+      .invite;
+    expect(
+      (
+        await playerContext.request.post(origin + '/api/vtt/join', {
+          headers: { Origin: origin },
+          data: { invite, role: 'player' },
+        })
+      ).ok(),
+    ).toBe(true);
+    const playerPage = await playerContext.newPage();
+    playerPage.on('pageerror', (e) => errors.push(e.message));
+    await playerPage.goto(origin + '/#vtt');
+    await expect(
+      playerPage.getByRole('region', { name: 'Mesa virtual', exact: true }),
+    ).toBeVisible();
+    await playerPage.getByRole('button', { name: 'Biblioteca', exact: true }).click();
+    const playerPanel = playerPage.locator('.vtt-panel-content');
+    await playerPanel.getByRole('button', { name: 'Monstros', exact: true }).click();
+    await expect(playerPanel.locator('.vtt-compendium img.premium')).toHaveCount(assets.length);
+    await playerPanel.getByRole('button', { name: 'Galeria de monstros', exact: true }).click();
+    await expect(playerPanel.locator('.vtt-premium-grid > button')).toHaveCount(assets.length);
+    await expect(playerPanel.locator('.vtt-premium-grid > button').first()).toHaveAttribute(
+      'draggable',
+      'false',
+    );
+    await expect(playerPanel.getByText('Mudar tokens para premium', { exact: true })).toHaveCount(
+      0,
+    );
+    await playerPanel.locator('.vtt-premium-grid > button').first().click();
+    await expect(
+      playerPanel.getByRole('button', { name: 'Trazer à mesa', exact: true }),
+    ).toHaveCount(0);
+    await playerPage.screenshot({ path: 'test-results/vtt-basic-player.png' });
+  } finally {
+    await playerContext.close();
+  }
   expect(errors).toEqual([]);
   console.log(
     'Seleção livre: contorno irregular, Shift, efeitos em dois tokens, exclusão mista, desfazer e Esc aprovados; seleção não grava nem move objetos.',
   );
   console.log(
-    `VTT premium: administrador sem tag, duas prévias de seis, ${assets.length} imagens corretas em Monstros, preferência após recarga, token adicionado premium, reversão preserva mesa, chat/editor/dano e quatro larguras aprovados.`,
+    `VTT básico: ${assets.length} artes padrão em Monstros e Galeria, sem ativação/tag, recarga e mesas preservadas, chat/editor/dano e quatro larguras aprovados.`,
   );
 } catch (e) {
   await page.screenshot({ path: 'test-results/vtt-premium-failure.png' });

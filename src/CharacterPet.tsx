@@ -1,9 +1,10 @@
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { api } from './api';
 import { OwnedPetArt } from './OwnedPetArt';
 import { petArtwork } from './pet-art';
 import { pets, type OwnedPet, type PetBreedCatalog } from '../shared/pets';
 import './character-pet.css';
+import { useCampPetPosition } from './useCampMountSize';
 
 export function CampPet({ characterId }: { characterId: string }) {
   const [pet, setPet] = useState<OwnedPet | null>(null),
@@ -44,24 +45,7 @@ export function CampPet({ characterId }: { characterId: string }) {
       active = false;
     };
   }, [characterId, artRefresh]);
-  useLayoutEffect(() => {
-    const element = host.current,
-      camp = element?.closest<HTMLElement>('.character-camp'),
-      stage = camp?.querySelector<HTMLElement>('.camp-stage');
-    if (!element || !camp || !stage) return;
-    const align = () => {
-      const bounds = camp.getBoundingClientRect(),
-        figures = [...stage.querySelectorAll<HTMLElement>('.camp-figure')];
-      const floor = Math.max(...figures.map((figure) => figure.getBoundingClientRect().bottom));
-      if (Number.isFinite(floor)) element.style.top = `${floor - bounds.top - 15}px`;
-    };
-    const observer = new ResizeObserver(align);
-    observer.observe(camp);
-    observer.observe(stage);
-    stage.querySelectorAll('.camp-figure').forEach((element) => observer.observe(element));
-    align();
-    return () => observer.disconnect();
-  }, [pet]);
+  useCampPetPosition(host, pet?.id);
   const species = pet && pets.find((animal) => animal.id === pet.pet_id);
   if (!pet || !species) return null;
   return (

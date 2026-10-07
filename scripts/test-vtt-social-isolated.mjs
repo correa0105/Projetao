@@ -13,9 +13,11 @@ try {
   process.exitCode = await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
-      process.argv.includes('--browser')
-        ? ['--import', 'tsx', 'scripts/smoke-vtt-social.ts']
-        : ['--import', 'tsx', '--test', 'tests/vtt-social.test.ts'],
+      process.argv.includes('--profile-browser')
+        ? ['--import', 'tsx', 'scripts/smoke-profile-visit.ts']
+        : process.argv.includes('--browser')
+          ? ['--import', 'tsx', 'scripts/smoke-vtt-social.ts']
+          : ['--import', 'tsx', '--test', 'tests/vtt-social.test.ts'],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
         stdio: 'inherit',

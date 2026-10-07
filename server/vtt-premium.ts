@@ -26,22 +26,16 @@ export async function premiumAssets(): Promise<Asset[]> {
 export async function premiumSettings(user: string, db: DB = pool) {
   const {
     rows: [u],
-  } = await db.query(
-    'SELECT administrador,vtt_premium,vtt_premium_tokens FROM "user" WHERE id=$1',
-    [user],
-  );
-  const access = u?.administrador === 1 || u?.vtt_premium === true;
-  return { premiumAccess: access, premiumTokens: access && u?.vtt_premium_tokens === true };
+  } = await db.query('SELECT id FROM "user" WHERE id=$1', [user]);
+  // Legacy response keys remain compatible; artwork is now included for every account.
+  const access = !!u;
+  return { premiumAccess: access, premiumTokens: access };
 }
 export async function premiumAccess(user: string, db: DB = pool) {
   return (await premiumSettings(user, db)).premiumAccess;
 }
 export async function requirePremium(user: string, db: DB = pool) {
-  if (!(await premiumAccess(user, db)))
-    throw new AppError(
-      403,
-      'Este recurso está disponível para administradores ou contas com a tag Tokens premium.',
-    );
+  if (!(await premiumAccess(user, db))) throw new AppError(403, 'Conta não encontrada.');
 }
 export async function validatePremiumImages(
   db: DB,
@@ -62,15 +56,15 @@ export async function validatePremiumImages(
       if (available.has('/api/vtt/premium-art/' + id))
         available.add('/api/vtt/premium-preview-art/' + id);
   if (newImages.some((p) => !available.has(p)))
-    throw new AppError(400, 'Este token premium ainda não está disponível.');
+    throw new AppError(400, 'Esta arte de monstro ainda não está disponível.');
 }
-export function vttPremiumRouter(canView: (user: string, path: string) => Promise<boolean>) {
+export function vttPremiumRouter() {
   const router = Router();
   const previewIds = new Set<string>(premiumPreviewGroups.flatMap((g) => [...g.ids]));
   async function sendArt(id: string, res: Response) {
     const asset = (await premiumAssets()).find((a) => a.id === id);
     if (!asset || !/^monster-[a-z0-9-]+-v1\.webp$/.test(asset.filename))
-      throw new AppError(404, 'Arte premium não encontrada.');
+      throw new AppError(404, 'Arte de monstro não encontrada.');
     const bytes = await readFile('data/vtt/premium-art/' + asset.filename);
     res
       .set({
@@ -113,11 +107,8 @@ export function vttPremiumRouter(canView: (user: string, path: string) => Promis
   });
   router.put('/vtt/premium-tokens', async (req, res) => {
     await requirePremium(res.locals.user.id);
-    const input = z.object({ enabled: z.boolean() }).strict().parse(req.body);
-    await pool.query('UPDATE "user" SET vtt_premium_tokens=$2 WHERE id=$1', [
-      res.locals.user.id,
-      input.enabled,
-    ]);
+    // Old clients may submit their former preference; it cannot disable the default art.
+    z.object({ enabled: z.boolean() }).strict().parse(req.body);
     res.json(await premiumSettings(res.locals.user.id));
   });
   router.get('/vtt/premium', async (_req, res) => {
@@ -137,20 +128,11 @@ export function vttPremiumRouter(canView: (user: string, path: string) => Promis
   });
   router.get('/vtt/premium-access', async (_req, res) => {
     await requireAdministrator(res.locals.user.id);
-    const { rows } = await pool.query(
-      'SELECT id,name,email,administrador,vtt_premium FROM "user" ORDER BY name',
-    );
-    res.json(rows);
+    throw new AppError(410, 'As artes de monstros fazem parte do VTT para todas as contas.');
   });
   router.put('/vtt/premium-access/:user', async (req, res) => {
     await requireAdministrator(res.locals.user.id);
-    const input = z.object({ enabled: z.boolean() }).strict().parse(req.body);
-    const { rowCount } = await pool.query('UPDATE "user" SET vtt_premium=$2 WHERE id=$1', [
-      z.string().max(100).parse(req.params.user),
-      input.enabled,
-    ]);
-    if (!rowCount) throw new AppError(404, 'Conta não encontrada.');
-    res.json({ ok: true });
+    throw new AppError(410, 'As artes de monstros fazem parte do VTT para todas as contas.');
   });
   router.get('/vtt/premium-art/:monster', async (req, res) => {
     const id = z
@@ -158,11 +140,6 @@ export function vttPremiumRouter(canView: (user: string, path: string) => Promis
       .regex(/^monster-[a-z0-9-]+$/)
       .max(150)
       .parse(req.params.monster);
-    if (
-      !(await premiumAccess(res.locals.user.id)) &&
-      !(await canView(res.locals.user.id, '/api/vtt/premium-art/' + id))
-    )
-      throw new AppError(403, 'Arte premium indisponível para esta conta.');
     await sendArt(id, res);
   });
   return router;

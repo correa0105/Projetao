@@ -62,6 +62,49 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Visitas de perfil, direção posterior de 07/10: usar a grade, chão, escala e
+enquadramento da aba padrão de personagens. CampBackdrop e hooks de companheiros
+são compartilhados; medir novamente se detalhes chegarem antes do perfil.
+Menu lateral em cinco placas de madeira, contorno alpha no hover/foco/aba ativa,
+nomes HTML e seletor do personagem visitado no canto superior direito. Visita
+continua somente consulta; social/avaliações abaixo do cenário. Não voltar à caixa
+lateral ou ao fundo dimensionado pela altura total do perfil. PROFILE-VISIT-SIGNPOST.md.
+
+Efeitos overhead emitem do centro em altura em direção à câmera. Círculo de chão
+central atrás da arte, circular no mapa; hélice projetada de cima em torno do
+mesmo eixo. Evitar emissor abaixo do corpo, elipse lateral e espiral de perfil.
+Alpha/contain/giro/espelho continuam para os detalhes de superfície.
+
+Direção mais recente de 07/10 substitui o acesso premium descrito no histórico:
+as 330 artes individuais de monstros são padrão do VTT para TODA conta autenticada.
+Não exigir administrador, tag vtt_premium ou preferência vtt_premium_tokens para
+biblioteca/artes. Retirar ativação e gestão de tags da interface. Preservar
+autenticação, privacidade de mesas/presets, ownership e permissões de edição.
+Não substituir imagens de tokens já colocados. URLs premium-art e campos legados
+permanecem compatíveis; antigas rotas de gestão de tags retornam 410 ao admin.
+Guia vigente: docs/VTT-ACERVO-PREMIUM.md.
+
+Refino posterior: sete artes refeitas em docs/MONSTER-ART-REMAKE-20261007.md.
+Humanoides exigem coluna ereta e cabeça/ombros/quadril no mesmo rumo dorsal;
+hipogrifo tem patas equinas sob a garupa, sem cascos levantados à cintura.
+Efeitos para monstros overhead seguem alpha/contain/giro/espelho da arte,
+preservando IDs salvos e o renderer de retratos circulares. Chat tem mensagem
+no rodapé e histórico até ela; retirar somente o bloco Macros desse painel,
+mantendo macros/atalhos salvos. Guias VTT-EFFECTS-LAYERS e VTT-ACERVO vigentes.
+
+House, direção posterior: retirar vistas intermediárias 9/11/12/15 (67,5/157,5/
+202,5/337,5°) de seletor/setas, mantendo artes e leitura de layouts antigos.
+Substituir Giro por Distorcer imagem com quatro quinas e limite validado de ±12%;
+salvar distortion opcional no JSONB, restaurar forma e conservar giro histórico.
+Sombras usam máscara da vista real junto da arte, sem elipse solta sob móveis.
+Cena usa overflow:clip para não auto-rolar ao focar peças parcialmente fora dela.
+Retirar formulário de guardar/enviar poses, preservando variantes existentes.
+Manter RP aberto só em Configurações lateral; scrollbar só enquanto interage
+com a fala/histórico. Mensagens enviadas aparecem por 12s acima da presença por
+user_id/character_id, sem replay do histórico ao recarregar. Excluir na coleção
+exige confirmação na interface; DELETE arquiva por dono e retira das salas,
+sem devolver ouro nem apagar auditorias. Migration 080 house_items.deleted_at.
+
 Direção explícita de 07/10: montarias e mascotes NÃO podem equipar itens humanos.
 Destino human/mount/pet é determinado pelo catálogo do servidor; nunca inferir
 compatibilidade animal por nome genérico de couro, capacete ou armadura. Preservar

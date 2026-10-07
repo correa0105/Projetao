@@ -68,7 +68,7 @@
   aspect-ratio: 16/9;
   background-position: center;
   background-size: 100% 100%;
-  overflow: hidden;
+  overflow: clip;
   border: 1px solid #77644455;
   border-radius: 5px;
   isolation: isolate;
@@ -108,32 +108,55 @@
   object-fit: contain;
   pointer-events: none;
 }
-.house-piece > .house-item-art {
+.house-warp {
+  display: block;
+  position: relative;
+  width: 100%;
+  transform-origin: 0 0;
+}
+.house-warp > .house-item-art {
+  z-index: 1;
   filter: var(--house-room-filter, none);
 }
+.house-warp > img,
+.house-warp > .pet-art {
+  position: relative;
+  z-index: 1;
+}
 .house-floor-shadow {
+  /* Reuse the current view's alpha at its original geometry. The subtle lower
+     silhouette follows every foot, including the higher feet of diagonal views.
+     It lives inside the piece so rotation, scale and paint layer remain aligned. */
   position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(transparent 60%, #0003 78%, #0008 100%);
+  mask-image: var(--house-shadow-image);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  filter: blur(var(--house-shadow-blur));
+  transform: translateY(var(--house-shadow-offset));
+}
+.house-rug-shadow {
+  background: #0003;
+}
+.house-companion-shadow {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 100%;
   pointer-events: none;
   transform: translate(-50%, -65%);
   border-radius: 50%;
   background: radial-gradient(
     ellipse at 50% 57%,
-    #05030199 0%,
-    #05030165 32%,
-    #08050228 58%,
+    #05030144 0%,
+    #05030122 32%,
+    #08050214 58%,
     transparent 76%
   );
   filter: blur(2px);
-}
-.house-floor-shadow::after {
-  content: '';
-  position: absolute;
-  inset: 34% 9% 31%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, #000a, #0004 43%, transparent 75%);
-}
-.house-rug-shadow {
-  opacity: 0.28;
 }
 .house-view-controls {
   position: absolute;
@@ -153,6 +176,52 @@
   background: #172126ec;
   border-color: #aa8a53;
   box-shadow: 0 2px 7px #0008;
+}
+.house-distortion-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 7500;
+  pointer-events: none;
+}
+.house-distortion-controls svg {
+  position: absolute;
+  overflow: visible;
+}
+.house-distortion-controls polygon {
+  fill: none;
+  stroke: #dfbd78;
+  stroke-width: 1;
+  stroke-dasharray: 5 4;
+  vector-effect: non-scaling-stroke;
+}
+.house-distortion-controls button {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: crosshair;
+}
+.house-distortion-controls button:hover {
+  background: #172126a0;
+}
+.house-distortion-controls button span {
+  display: block;
+  width: 13px;
+  height: 13px;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #ead39b;
+  background: #243036;
+  box-shadow: 0 1px 5px #000b;
+}
+.house-distortion-hint {
+  grid-column: 1 / -1;
+  line-height: 1.5;
 }
 .house-piece .pet-art svg {
   display: block;
@@ -487,16 +556,16 @@
     0 1px 3px #000,
     0 1px 6px #000;
 }
-.house-rp-pin {
+.house-rp-setting {
   display: flex;
-  justify-content: end;
+  justify-content: start;
   align-items: center;
   gap: 6px;
   margin-bottom: 6px;
   font-size: 11px;
   color: #c6af84;
 }
-.house-rp-pin input {
+.house-rp-setting input {
   width: auto;
   max-width: 16px;
   margin: 0;
@@ -504,13 +573,64 @@
 }
 .house-rp-log {
   max-height: clamp(48px, 11vw, 180px);
-  overflow-y: auto;
+  overflow-y: hidden;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: #9f8154 #0002;
   padding: 4px 10px;
   margin-bottom: 10px;
   background: linear-gradient(90deg, transparent, #0003, transparent);
+}
+.house-rp-overlay.chat-active .house-rp-log {
+  overflow-y: auto;
+}
+.house-speech-bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 7800;
+}
+.house-speech-bubble {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  padding: 10px 13px;
+  border-radius: 12px;
+  border: 1px solid #b59862;
+  background: #f2e4c8f5;
+  color: #30251a;
+  box-shadow: 0 4px 12px #0005;
+  font:
+    14px/1.4 Georgia,
+    serif;
+  text-align: left;
+}
+.house-speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: var(--speech-tail);
+  width: 11px;
+  height: 11px;
+  background: #f2e4c8;
+  border-right: 1px solid #b59862;
+  border-bottom: 1px solid #b59862;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.house-speech-bubble strong {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 3px;
+  color: #776039;
+}
+.house-speech-bubble p {
+  margin: 0;
+  color: #30251a;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
 .house-rp-log p {
   margin: 0 0 8px;
@@ -1086,7 +1206,7 @@ body.house-immersive .app-shell .main-content {
   .house-rp-overlay {
     bottom: 5%;
   }
-  .house-rp-pin {
+  .house-rp-setting {
     margin-bottom: 3px;
     font-size: 9px;
   }

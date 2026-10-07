@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco isolado obrigatório.');
 const origin = 'http://localhost:3012';
@@ -60,6 +60,11 @@ try {
     password: `Test-${randomUUID()}`,
   });
   const hero = await createLegacyTestCharacter(account.user.id, 'Aurora');
+  await pool.query('UPDATE characters SET portrait_revision=1 WHERE id=$1', [hero.id]);
+  await pool.query('INSERT INTO character_portraits(character_id,image) VALUES($1,$2)', [
+    hero.id,
+    await readFile('public/character-silhouette-v2.png'),
+  ]);
   async function readyForNextMessage() {
     // Keep the production cooldown; age only messages in this disposable fixture.
     await pool.query(
@@ -67,31 +72,55 @@ try {
       [account.user.id],
     );
   }
-  await request('/house', { character_id: hero.id });
+  const homeId = (await request('/house', { character_id: hero.id })).id;
+  const presence = await context.request.put(origin + '/api/house/' + homeId + '/presence', {
+    headers: { Origin: origin },
+    data: {
+      character_id: hero.id,
+      variant_id: null,
+      room: 'sala',
+      x: 0.28,
+      y: 0.78,
+      scale: 0.14,
+      depth_layer: 3,
+    },
+  });
+  expect(presence.ok()).toBe(true);
   await page.goto(origin + '/#house');
   await expect(page.locator('.house-scene')).toBeVisible();
   await page.getByRole('button', { name: 'RP', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações', exact: true }).click();
   const pin = page.getByLabel('Manter RP aberto', { exact: true });
   const input = page.getByLabel('Mensagem de Aurora', { exact: true });
   const send = page.getByRole('button', { name: 'Enviar', exact: true });
   const log = page.getByRole('log', { name: 'Conversa de RP' });
   await expect(pin).not.toBeChecked();
+  expect(await pin.evaluate((e) => !!e.closest('.house-sidebar'))).toBe(true);
   await pin.check();
   await page.getByRole('button', { name: 'Decorar', exact: true }).click();
   await expect(page.locator('.house-panel')).toBeVisible();
   await expect(page.locator('.house-rp-overlay')).toBeVisible();
   await page.reload();
+  await page.getByRole('button', { name: 'Configurações', exact: true }).click();
   await expect(pin).toBeChecked();
   await expect(page.locator('.house-rp-overlay')).toBeVisible();
+  await expect(page.locator('.house-rp-overlay').getByLabel('Manter RP aberto')).toHaveCount(0);
+  expect(await log.evaluate((e) => getComputedStyle(e).overflowY)).toBe('hidden');
   await input.fill('Aurora encontra o caminho de volta.');
+  expect(await log.evaluate((e) => getComputedStyle(e).overflowY)).toBe('auto');
   await input.press('Enter');
   await expect(log).toContainText('Aurora encontra o caminho de volta.');
   await expect(input).toBeFocused();
   await expect(input).toHaveValue('');
+  const balloon = page.locator(`.house-speech-bubble[data-speaker="${account.user.id}"]`);
+  await expect(balloon).toContainText('Aurora encontra o caminho de volta.');
   await input.fill('Aurora deixa a capa junto à porta.');
+  await expect(balloon).not.toContainText('Aurora deixa a capa junto à porta.');
   await readyForNextMessage();
   await send.click();
   await expect(log).toContainText('Aurora deixa a capa junto à porta.');
+  await expect(balloon).toContainText('Aurora deixa a capa junto à porta.');
+  await expect(balloon).not.toContainText('Aurora encontra o caminho de volta.');
   await expect(input).toBeFocused();
   await expect(input).toHaveValue('');
 
@@ -129,13 +158,14 @@ try {
   await expect(input).toBeFocused();
 
   await page.getByRole('button', { name: 'Decorar', exact: true }).click();
-  const outside = page.getByLabel('Nome da casa', { exact: true });
+  const outside = page.getByRole('button', { name: 'Sala', exact: true });
   const { blocked: pendingOutside } = await delayedSend();
   await readyForNextMessage();
   await input.fill('A conversa espera enquanto arrumo a casa.');
   await input.press('Enter');
   await pendingOutside;
   await outside.click();
+  expect(await log.evaluate((e) => getComputedStyle(e).overflowY)).toBe('hidden');
   await expect(outside).toBeFocused();
   releaseDelayed!();
   await expect(log).toContainText('A conversa espera enquanto arrumo a casa.');
@@ -157,17 +187,21 @@ try {
   await expect(input).not.toBeFocused();
   expect(await page.evaluate(() => document.activeElement?.outerHTML)).toBe(focusAfterTab);
 
-  await page.getByRole('button', { name: 'RP', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações', exact: true }).click();
   await pin.uncheck();
-  await page.getByRole('button', { name: 'RP', exact: true }).click();
   await expect(page.locator('.house-rp-overlay')).toHaveCount(0);
   await page.reload();
   await expect(page.locator('.house-rp-overlay')).toHaveCount(0);
-  await page.getByRole('button', { name: 'RP', exact: true }).click();
+  await page.getByRole('button', { name: 'Configurações', exact: true }).click();
   await pin.check();
+  await input.fill('Minha fala aparece acima de Aurora.');
+  await readyForNextMessage();
+  await input.press('Enter');
+  await expect(balloon).toContainText('Minha fala aparece acima de Aurora.');
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 1000 });
     await expect(page.locator('.house-rp-overlay')).toBeVisible();
+    await expect(balloon).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
@@ -175,8 +209,15 @@ try {
     await page.screenshot({ path: `test-results/house-rp-pinned-${width}.png`, fullPage: true });
   }
   expect(errors).toEqual([]);
+  // A historical conversation remains in the log without replaying old balloons.
+  await page.reload();
+  await expect(page.locator('.house-rp-overlay')).toBeVisible();
+  await expect(page.locator('.house-speech-bubble')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Personagem', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Guardar versão', exact: true })).toHaveCount(0);
+  await expect(page.getByLabel('Imagem da pose (opcional)')).toHaveCount(0);
   console.log(
-    'House RP: pin across panels/reload, Enter/button focus, draft while pending, outside pointer/Tab focus and four widths passed.',
+    'House RP: lateral settings, focus-only scrollbar, sent speech balloons, no old replay/upload form, pending drafts and four widths passed.',
   );
 } finally {
   releaseDelayed?.();

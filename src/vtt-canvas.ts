@@ -308,7 +308,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
       if (t.id === o.currentTurn || t.id === o.nextTurn)
         drawTurnEffect(c, Math.max(t.width, t.height) * 0.6, t.id === o.nextTurn);
-      drawTokenEffects(c, t);
+      drawTokenEffects(c, t, 'behind', images.get(t.image));
       drawDeath(c, t);
       c.save();
       if (t.deathAt && layer !== 'map')
@@ -381,7 +381,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.stroke();
       }
       c.restore();
-      drawTokenEffects(c, t, 'front');
+      drawTokenEffects(c, t, 'front', images.get(t.image));
       if (o.selected.includes(t.id) || o.target === t.id) {
         const targeted = o.target === t.id;
         c.strokeStyle = targeted ? '#ef544b' : '#efd293';

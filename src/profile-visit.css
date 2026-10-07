@@ -1,0 +1,366 @@
+/* Public visits share the camp's viewport, figure grid and ground alignment. */
+:root .app-shell[data-page='profiles']:has(.visiting) > .main-shell > .page-header {
+  display: none;
+}
+:root .visiting .visited-profile-layout {
+  padding-top: 0;
+  display: block;
+}
+:root .visiting .profiles-top {
+  top: calc(100dvh + 16px);
+  left: var(--page-header-edge);
+  right: var(--page-header-edge);
+}
+:root .visiting .visited-profile-heading {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  width: calc(100% - 2 * var(--page-header-edge));
+  max-width: 1200px;
+  margin: 100px auto 30px;
+}
+:root .visiting .public-camp {
+  position: relative;
+  isolation: isolate;
+  height: 100dvh;
+  min-height: 0;
+  padding: 20px 0 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #eee1c8;
+  background:
+    linear-gradient(180deg, #0e0d0c70, transparent 40%, #0e0d0cc9),
+    #191817 var(--profile-background, url('/character-camp-v2.png')) center
+      var(--camp-background-y, 50%) / var(--camp-background-size, cover) no-repeat;
+}
+:root .visiting .public-camp-heading {
+  position: absolute;
+  top: 20px;
+  left: var(--page-header-edge);
+  right: 280px;
+  text-shadow: 0 2px 5px #000b;
+}
+:root .visiting .public-camp-heading h2 {
+  font: 500 clamp(21px, 2vw, 26px)/1.2 var(--serif);
+  margin: 0;
+}
+:root .visiting .public-camp-heading .public-character-title {
+  margin-top: 6px;
+  font-size: 11px;
+  padding: 3px 10px;
+}
+:root .visiting .public-camp-caption {
+  height: 39px;
+  align-items: center;
+  color: #c9c5bd;
+  font-size: 12px;
+}
+:root .visiting .public-camp > .page-header-spacer {
+  margin-bottom: 0;
+}
+.public-camp-caption p {
+  margin: 0;
+}
+:root .visiting .public-camp-stage {
+  position: static;
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+:root .visiting .public-character-figures {
+  display: contents;
+}
+:root .visiting .public-camp-character {
+  display: grid;
+  grid-row: 1 / span 2;
+  grid-template-rows: subgrid;
+  width: 100%;
+  z-index: 1;
+}
+:root .visiting .public-camp-character:nth-child(1) {
+  grid-column: 1;
+}
+:root .visiting .public-camp-character:nth-child(2) {
+  grid-column: 3;
+}
+:root .visiting .public-character-figure {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  transform: none;
+  filter: none;
+}
+:root .visiting .public-character-figure:focus-visible {
+  outline: 2px solid #c7a16b !important;
+  outline-offset: 3px;
+}
+:root .visiting .public-character-figure > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: scale(calc(var(--stature-scale, 1) * 0.8));
+  transform-origin: center bottom;
+}
+:root .visiting .public-character-info h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 1.7vw, 23px);
+  line-height: normal;
+  margin: 4px 0;
+}
+:root .visiting .public-character-info .button {
+  cursor: pointer;
+}
+:root .visiting .public-camp-mount {
+  left: max(0px, calc(3% - var(--mount-reference-height, 320px) * 0.12));
+  bottom: auto;
+  width: max-content;
+  max-width: none;
+  transform: translateY(-100%);
+  filter: none;
+}
+:root .visiting .public-camp-mount > img {
+  height: calc(var(--mount-reference-height, 320px) * 1.04 * var(--mount-scale, 1));
+  filter: brightness(0.63) saturate(0.63) contrast(0.94) drop-shadow(0 4px 7px #0009);
+}
+:root .visiting .public-camp-pet {
+  right: 3%;
+  bottom: auto;
+  width: var(--companion-width);
+  max-width: 24vw;
+  height: auto;
+  transform: translateY(-100%);
+  filter: none;
+  z-index: 0;
+}
+:root .visiting .public-camp-pet::before {
+  content: none;
+}
+:root .visiting .public-camp-pet .pet-art {
+  position: static;
+  display: block;
+  filter: brightness(0.8) saturate(0.75) drop-shadow(0 5px 5px #0009);
+}
+:root .visiting .public-camp-pet > span:not(.pet-art),
+:root .visiting .public-camp-mount > span {
+  position: static;
+  display: block;
+  width: auto;
+  background: none;
+  padding: 0;
+  text-shadow: 0 2px 4px #000;
+}
+.profile-visit-selector {
+  position: absolute;
+  top: 20px;
+  right: var(--page-header-edge);
+  z-index: 9;
+  width: 210px;
+  color: #e6d4b5;
+  text-shadow: 0 2px 4px #000;
+}
+.profile-visit-selector > small {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 11px;
+}
+.profile-visit-selector strong {
+  color: #f1dfc3;
+}
+.profile-visit-selector label {
+  display: block;
+}
+.profile-visit-selector label > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.profile-visit-selector select {
+  width: 100%;
+  height: 36px;
+  min-height: 0;
+  padding: 5px 10px;
+  border: 1px solid #ae8a5680;
+  border-radius: 5px;
+  background: #171714d9;
+  color: #ead9b8;
+  font: 13px var(--sans);
+}
+:root .visiting .profile-visit-nav {
+  position: absolute;
+  top: 110px;
+  right: 14px;
+  left: auto;
+  width: clamp(140px, 9.5vw, 170px);
+  padding: 12px 0 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 9px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.profile-signpost-pole {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  inset: 0 auto auto 47%;
+  transform: translateX(-50%);
+  filter: brightness(0.75) drop-shadow(3px 3px 4px #0009);
+}
+:root .visiting .profile-signboard,
+:root .visiting .profile-signboard[aria-pressed='true'] {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4.2;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none;
+  outline: none;
+  transform: rotate(var(--plank-tilt));
+  color: #ecd7ae !important;
+  cursor: pointer;
+}
+.profile-signboard-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: brightness(0.8) drop-shadow(0 3px 3px #0009);
+  transition: filter 150ms ease;
+}
+.profile-signboard:nth-of-type(even) .profile-signboard-art {
+  transform: scaleX(-1);
+}
+.profile-signboard > span {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px 0 25px;
+  font:
+    600 clamp(10px, 0.85vw, 12px)/1.1 'Cinzel',
+    Georgia,
+    serif;
+  text-align: center;
+  text-shadow:
+    0 1px 2px #000,
+    0 -1px #170f09;
+  pointer-events: none;
+}
+.profile-signboard:nth-of-type(even) > span {
+  padding: 0 25px 0 12px;
+}
+.profile-signboard > span > svg {
+  flex: 0 0 13px;
+  width: 13px;
+}
+.profile-signboard:is(:hover, :focus-visible, [aria-pressed='true']) .profile-signboard-art {
+  filter: brightness(1.05) drop-shadow(1px 0 0 #d8b77c) drop-shadow(-1px 0 0 #d8b77c)
+    drop-shadow(0 1px 0 #d8b77c) drop-shadow(0 -1px 0 #d8b77c) drop-shadow(0 3px 3px #0009);
+}
+
+@media (max-width: 900px) {
+  :root .visiting .public-camp-heading {
+    top: 84px;
+    right: 18px;
+  }
+  .profile-visit-selector {
+    top: 14px;
+    right: 18px;
+    width: 180px;
+    max-width: calc(50vw - 24px);
+  }
+}
+@media (max-width: 700px) {
+  :root .visiting .public-camp {
+    padding-top: 16px;
+    gap: 8px;
+  }
+  :root .visiting .public-character-info .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  :root .visiting .public-camp-mount {
+    left: 0;
+  }
+  :root .visiting .public-camp-pet {
+    right: 8px;
+    width: calc(var(--companion-width) * 0.65);
+    max-width: 31vw;
+  }
+  :root .visiting .profile-visit-nav {
+    top: 125px;
+    right: 10px;
+    width: 125px;
+    gap: 7px;
+    padding-bottom: 12px;
+  }
+  :root .visiting .profile-signboard {
+    min-height: 36px;
+  }
+  .profile-signpost-pole {
+    width: 21px;
+  }
+  .profile-signboard > span {
+    font-size: 9px;
+    gap: 3px;
+    padding-left: 18px;
+  }
+  .profile-signboard > span > svg {
+    flex-basis: 10px;
+    width: 10px;
+    height: 10px;
+  }
+  .profile-signboard:nth-of-type(even) > span {
+    padding-right: 18px;
+    padding-left: 10px;
+  }
+  :root .visiting .profiles-top {
+    top: calc(100dvh + 12px);
+  }
+  :root .visiting .visited-profile-heading {
+    margin-top: 145px;
+  }
+}
+@media (max-height: 600px) {
+  :root .visiting .public-camp {
+    padding-bottom: 56px;
+    gap: 5px;
+  }
+  :root .visiting .public-camp-caption {
+    height: 31px;
+  }
+  :root .visiting .profile-visit-nav {
+    top: 95px;
+    width: 148px;
+    gap: 7px;
+    padding-bottom: 35px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-signboard-art {
+    transition: none;
+  }
+}

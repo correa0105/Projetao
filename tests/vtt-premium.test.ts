@@ -9,7 +9,7 @@ import { seed } from '../server/seed.js';
 import { newToken, newScene, documentSchema } from '../shared/vtt.js';
 import { monsterActions } from '../shared/vtt-monster-actions.js';
 
-test('VTT: acervo privado, premium e dano verificado', async (t) => {
+test('VTT: artes básicas, acervo privado e dano verificado', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
   await migrate();
   await seed();
@@ -102,11 +102,11 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
     room.document.scenes[0].tokens = [actor, target];
     await put();
     await t.test(
-      'administrador acessa sem tag; tag libera outras contas e revogação é imediata',
+      'toda conta acessa o acervo sem tag; controle antigo de acesso foi aposentado',
       async () => {
         assert.equal((await request('/vtt/premium')).status, 401);
         assert.equal((await request('/vtt/premium', gm)).status, 200);
-        assert.equal((await request('/vtt/premium', player)).status, 403);
+        assert.equal((await request('/vtt/premium', player)).status, 200);
         assert.equal(
           (await request('/vtt/premium-access/' + player.id, player, 'PUT', { enabled: true }))
             .status,
@@ -114,12 +114,12 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
         );
         assert.equal(
           (await request('/vtt/premium-access/' + gm.id, gm, 'PUT', { enabled: true })).status,
-          200,
+          410,
         );
         await pool.query('UPDATE "user" SET vtt_premium=true WHERE id=$1', [player.id]);
         assert.equal((await request('/vtt/premium', player)).status, 200);
         await request('/vtt/premium-access/' + player.id, gm, 'PUT', { enabled: false });
-        assert.equal((await request('/vtt/premium', player)).status, 403);
+        assert.equal((await request('/vtt/premium', player)).status, 200);
         const catalog = await request('/vtt/premium', gm);
         assert.equal(catalog.status, 200);
         assert.equal(catalog.data.total, 330);
@@ -127,13 +127,29 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
         const art = await request('/vtt/premium-art/monster-aboleth', gm);
         assert.equal(art.status, 200);
         assert.match(art.headers.get('Cache-Control') || '', /no-store/);
-        assert.equal((await request('/vtt/premium-art/monster-aboleth', player)).status, 403);
+        assert.equal((await request('/vtt/premium-art/monster-aboleth', player)).status, 200);
         actor.image = '/api/vtt/premium-art/monster-aboleth';
         await put();
         assert.equal((await request('/vtt/premium-art/monster-aboleth', player)).status, 200);
         actor.hidden = true;
         await put();
-        assert.equal((await request('/vtt/premium-art/monster-aboleth', player)).status, 403);
+        assert.equal((await request('/vtt/premium-art/monster-aboleth', player)).status, 200);
+        const hidden = (await request('/vtt/rooms/' + room.id, player)).data;
+        assert.equal(
+          hidden.document.scenes[0].tokens.some((t: any) => t.id === actor.id),
+          false,
+        );
+        assert.equal(
+          (
+            await request('/vtt/rooms/' + room.id, player, 'PUT', {
+              revision: room.revision,
+              document: room.document,
+            })
+          ).status,
+          403,
+        );
+        assert.equal((await request('/vtt/premium-access', gm)).status, 410);
+        assert.equal((await request('/vtt/premium-access', player)).status, 403);
         actor.hidden = false;
         await put();
         await request('/vtt/premium-access/' + gm.id, gm, 'PUT', { enabled: false });
@@ -146,7 +162,7 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
         await put();
       },
     );
-    await t.test('duas prévias de seis criaturas, sem expor o restante do acervo', async () => {
+    await t.test('rotas antigas de prévia permanecem autenticadas e compatíveis', async () => {
       assert.equal((await request('/vtt/premium-preview')).status, 401);
       assert.equal((await request('/vtt/premium-preview-art/monster-aboleth')).status, 401);
       const preview = await request('/vtt/premium-preview', player);
@@ -162,20 +178,20 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
         assert.equal((await sharp(Buffer.from(image.data)).metadata()).hasAlpha, true);
       }
       assert.equal((await request('/vtt/premium-preview-art/monster-zombie', player)).status, 403);
-      assert.equal((await request('/vtt/premium-art/monster-zombie', player)).status, 403);
-      assert.equal((await request('/vtt/premium', player)).status, 403);
+      assert.equal((await request('/vtt/premium-art/monster-zombie', player)).status, 200);
+      assert.equal((await request('/vtt/premium', player)).status, 200);
       assert.equal(
         (await request('/vtt/premium-tokens', player, 'PUT', { enabled: true })).status,
-        403,
+        200,
       );
     });
     await t.test(
-      'preferência por conta troca todas as imagens pelo ID sem mudar fichas nem mesas',
+      'artes são padrão para todos, mesmo com preferências antigas desativadas, sem mudar mesas',
       async () => {
         const original = await readFile('data/vtt/srd-2024.json', 'utf8');
         const baseline = JSON.parse(original);
         const before = structuredClone((await request('/vtt/rooms/' + room.id, gm)).data.document);
-        assert.equal((await request('/vtt/rooms/' + room.id, gm)).data.premiumTokens, false);
+        assert.equal((await request('/vtt/rooms/' + room.id, gm)).data.premiumTokens, true);
         const settings = await request('/vtt/premium-tokens', gm, 'PUT', { enabled: true });
         assert.equal(settings.status, 200);
         assert.equal(settings.data.premiumTokens, true);
@@ -191,9 +207,9 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
         }
         assert.equal((await request('/vtt/rooms/' + room.id, gm)).data.premiumTokens, true);
         assert.deepEqual((await request('/vtt/rooms/' + room.id, gm)).data.document, before);
-        assert.deepEqual((await request('/vtt/compendium', other)).data, baseline);
+        assert.deepEqual((await request('/vtt/compendium', other)).data, catalog);
         await request('/vtt/premium-tokens', gm, 'PUT', { enabled: false });
-        assert.deepEqual((await request('/vtt/compendium', gm)).data, baseline);
+        assert.deepEqual((await request('/vtt/compendium', gm)).data, catalog);
         await request('/vtt/premium-access/' + player.id, gm, 'PUT', { enabled: true });
         assert.equal(
           (await request('/vtt/premium-tokens', player, 'PUT', { enabled: true })).status,
@@ -205,8 +221,16 @@ test('VTT: acervo privado, premium e dano verificado', async (t) => {
           ),
         );
         await request('/vtt/premium-access/' + player.id, gm, 'PUT', { enabled: false });
-        assert.deepEqual((await request('/vtt/compendium', player)).data, baseline);
-        assert.equal((await request('/vtt/rooms/' + room.id, player)).data.premiumTokens, false);
+        assert.deepEqual((await request('/vtt/compendium', player)).data, catalog);
+        assert.equal((await request('/vtt/rooms/' + room.id, player)).data.premiumTokens, true);
+        await pool.query(
+          'UPDATE "user" SET vtt_premium=false,vtt_premium_tokens=false WHERE id=ANY($1::text[])',
+          [[gm.id, other.id, player.id]],
+        );
+        for (const account of [gm, other, player]) {
+          assert.deepEqual((await request('/vtt/compendium', account)).data, catalog);
+        }
+        assert.deepEqual((await request('/vtt/rooms/' + room.id, gm)).data.document, before);
         assert.equal(
           (await request('/vtt/premium-tokens', gm, 'PUT', { enabled: true, user: other.id }))
             .status,

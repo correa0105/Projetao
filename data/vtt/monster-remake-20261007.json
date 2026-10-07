@@ -1,0 +1,134 @@
+{
+  "mode": "imagegen built-in",
+  "date": "2026-10-07",
+  "assets": [
+    {
+      "id": "monster-archmage",
+      "filename": "monster-archmage-v1.webp",
+      "prompt": "Use case: stylized-concept. Asset type: one individual transparent overhead VTT creature token. Create a completely new Archmage design from scratch. ONE older human wizard in deep indigo layered robes with restrained antique gold embroidery, silver hair tied back, small arcane focus held naturally in one hand and a carved wooden staff gripped with the other. Very high quality hand painted semi-realistic fantasy game illustration, tactile fabric and weathered leather, elegant readable silhouette, modest controlled highlights. Camera: true orthographic top-down, exactly 90 degrees vertically above a person STANDING UPRIGHT on a horizontal floor, facing toward the TOP edge. Critical anatomy: healthy straight vertical spine, head centered over shoulder girdle and pelvis, level balanced shoulders, relaxed elbows, normal human hands, two planted boots pointing toward the top edge. The spine goes vertically OUT OF the image plane, therefore the back and abdomen are strongly foreshortened; show the crown of the head and tops of shoulders, small visible boot tips and robe folds around hips, NOT a long exposed stretched back. An upright dignified wizard, not crouching, bowing, hunching, leaning forward, crawling or lying down. Head proportion normal, no gigantic head, no curved neck, no diagonal twisted torso, no oversized shoulders. Staff held at a modest outward angle, coherent fingers wrapping its shaft, entire staff and body visible. Genuine transparent background with 8% clear margin, no floor, cast shadow, circular frame, grid, text, scenery, duplicates or atlas. A fresh composition rather than a repair of the previous asset.",
+      "references": [
+        "user-attachment:monster-archmage-v1.webp",
+        "docs/MONSTER-ART-REMAKE-20261007.md"
+      ],
+      "created_at": "2026-10-07",
+      "revision": "overhead-anatomy-remake-20261007",
+      "replaces_sha256": "a851b7ad1c43ff947e4419721c173f15ea78b7afd67e5e6b54269fbd17c87436",
+      "source_image": "exec-4215f45e-252c-449a-b28e-3d63cc93a27c.png",
+      "visual_review": "Individual dorsal sprite; consistent facing, connected limbs, transparent alpha and complete silhouette. Humanoids have neutral upright spines. Hippogriff hind legs and small hooves sit below the haunches.",
+      "sha256": "d9e134dea81a3bf0e1ebcf320d011287928bc76f38111d0c42a6b176ad42c4f1",
+      "width": 1205,
+      "height": 1306,
+      "boundaryOpaquePixels": 0
+    },
+    {
+      "id": "monster-ancient-black-dragon",
+      "filename": "monster-ancient-black-dragon-v1.webp",
+      "prompt": "Use case: stylized-concept. Asset type: ONE new individual overhead VTT dragon token, full creature isolated on genuine transparent alpha. Rebuild Ancient Black Dragon entirely from scratch with new anatomy/composition: massive ancient reptile with glossy coal-black crocodilian scales, narrow skull facing TOP, forward curving ivory cheek horns, aged dorsal spines, long strong tail in a loose natural curve. Camera strictly orthographic dorsal view exactly 90 degrees vertically overhead. Grounded stable quadruped stance with FOUR distinct legs: forelegs beneath shoulder girdle and hindlegs beneath pelvis; compact visible claws, smaller than shoulders, every toe connected. TWO separate leathery wings arise from the UPPER DORSAL thorax just behind the shoulders; clearly readable muscular roots high on shoulder blades on either side of central dorsal ridge, never rooted on hips, abdomen, neck or detached forelegs. Scapular wing roots connect to bent wing humerus/elbow/long supporting finger rays. Wings partly open with thoughtful asymmetric natural folds, not a flat repeated bat template. Strong broad chest, shorter coherent neck, muscular waist/pelvis, proportional tail, one head four legs two wings one tail. Reptile back consistently aligned, no mirrored disconnected parts, no giant hind feet. Beautifully painted semi-realistic fantasy game art, exceptional scales and leathery membrane material, dark black silhouette with subtle cool highlights readable on map. Every horn, wingtip, claw and tail fully inside 8% transparent margin. No background, ground, external shadow, circle frame, scenery, text, watermark, front portrait, side view, atlas or duplicate creature.",
+      "references": [
+        "user-attachment:monster-ancient-black-dragon-v1.webp",
+        "docs/MONSTER-ART-REMAKE-20261007.md"
+      ],
+      "created_at": "2026-10-07",
+      "revision": "overhead-anatomy-remake-20261007",
+      "replaces_sha256": "08ac00bb10fb0efe048e8e95c6c5f1f404bcf5ced9dc76ecb7bdb4b631993852",
+      "source_image": "exec-4de01126-3161-4977-9569-003f4252853f.png",
+      "visual_review": "Individual dorsal sprite; consistent facing, connected limbs, transparent alpha and complete silhouette. Humanoids have neutral upright spines. Hippogriff hind legs and small hooves sit below the haunches.",
+      "sha256": "ba627b64e2a1ce75a37295ccd685ed490ae22aa62d8f55504540931c5a445909",
+      "width": 1214,
+      "height": 1295,
+      "boundaryOpaquePixels": 0
+    },
+    {
+      "id": "monster-ancient-bronze-dragon",
+      "filename": "monster-ancient-bronze-dragon-v1.webp",
+      "prompt": "Use case: stylized-concept. Asset type: ONE fresh individual transparent top-down VTT monster token. Completely rebuild an Ancient Bronze Dragon from scratch: powerful intelligent ancient coastal dragon with warm burnished bronze scale plates and restrained teal oxidized edges, swept dark horns, robust neck, dorsal central ridge and long tapering tail with modest finned tip. Head facing TOP. Exactly orthographic dorsal overhead camera 90 degrees above grounded quadruped. FOUR compact articulated legs connected respectively beneath shoulder girdle and pelvic girdle, planted clawed feet all consistently facing forward/upward; do not rotate rear feet toward bottom. TWO large leathery wings distinct from four legs, arise high from UPPER DORSAL thorax just behind shoulder blades, roots muscular and visibly joined on either side of spine, not from belly/hips/neck/foreleg ends. Bent wing humerus, clear elbow and supporting membrane rays; broad wings partially spread in a fresh nonidentical natural pose. Large coherent chest, strong tapering waist, proportionate pelvic muscles and smaller hind feet, no stretched thin belly or disjointed scales. One head, four legs, two wings, one connected tail. Highly polished semi-realistic painted fantasy game sprite with exquisite metallic scale texture, soft controlled illumination preserving bronze hue. Entire creature with complete tail and wings within 8% genuine transparent margin; no background, water, base, cast shadow, text, watermark, circle, front/isometric camera, atlas or duplicate.",
+      "edit": "Reframe this ancient bronze dragon sprite onto a larger genuinely transparent canvas with generous 8 percent EMPTY transparent padding at all four edges. Preserve the exact dorsal overhead design, copper-bronze scales, verdigris membranes, four clawed limbs, two wings, spine and long tail. Restore only any tiny clipped tip at the very top of the snout; include the ENTIRE nose, all wing tips and tail tip inside the image. Do not change pose, lighting or colors. Same beautiful hand-painted original dragon. Fully transparent alpha outside the creature; no haze, background, floor, glow, external shadow, border or text.",
+      "references": [
+        "user-attachment:monster-ancient-bronze-dragon-v1.webp",
+        "docs/MONSTER-ART-REMAKE-20261007.md"
+      ],
+      "created_at": "2026-10-07",
+      "revision": "overhead-anatomy-remake-20261007",
+      "replaces_sha256": "371e92a87f68375a7ffcd0dd30a2b567cadbba43e17c44c752ef8ad67bd052b7",
+      "source_image": "exec-e15b0888-5d90-4347-901c-39c0990b94fa.png",
+      "visual_review": "Individual dorsal sprite; consistent facing, connected limbs, transparent alpha and complete silhouette. Humanoids have neutral upright spines. Hippogriff hind legs and small hooves sit below the haunches.",
+      "sha256": "d28906c9592d5d08879fe07f455d6d63e53a1c663a39e009441c2a2b014c457b",
+      "width": 1145,
+      "height": 1374,
+      "boundaryOpaquePixels": 0
+    },
+    {
+      "id": "monster-white-dragon-wyrmling",
+      "filename": "monster-white-dragon-wyrmling-v1.webp",
+      "prompt": "Use case: stylized-concept. Asset type: ONE completely new transparent overhead VTT creature token. Redesign White Dragon Wyrmling from scratch as a compact young white dragon: short muscular body, juvenile large-but-proportional head facing TOP, short neck, pearl ivory icy scales with subtle blue recesses, small pointed horns and dorsal ridge, thick tapering tail curving gently. True orthographic dorsal view exactly 90 degrees vertically overhead. Natural grounded quadruped pose, FOUR compact clawed legs distinctly connected under shoulders and pelvis, forward pointing toes, coherent joints. TWO separate short leathery wings arise high from dorsal shoulder blades, muscular roots behind front shoulders visible, not attached to hips, belly, neck or hands. Wing humerus and elbow connect to thin finger-supported ice pale membrane; partly open wings with coherent juvenile proportions. White hatchling physically small and stout, not stretched adult with an enormous serpentine neck, no flattened belly, no detached symmetrical feet. ONE head four legs two wings one tail, every wingtip, horn and claw visible. Beautiful semi-realistic painted fantasy game sprite, delicate distinct scale detail, restrained highlights avoiding blown-out whites and neon glows, crisp silhouette readable on maps. 8% clear transparent margin around entire creature. Genuine alpha, no ground, external shadow, grid, circle, labels, text, watermark, isometric/front view, atlas or duplicate.",
+      "references": [
+        "user-attachment:monster-white-dragon-wyrmling-v1.webp",
+        "docs/MONSTER-ART-REMAKE-20261007.md"
+      ],
+      "created_at": "2026-10-07",
+      "revision": "overhead-anatomy-remake-20261007",
+      "replaces_sha256": "6bb872ad4dd82398e6d5defce71e33dabe231f3abc4ad4943dd08ab81d2b3630",
+      "source_image": "exec-dbe51ffe-594c-4969-8967-858b23b51c19.png",
+      "visual_review": "Individual dorsal sprite; consistent facing, connected limbs, transparent alpha and complete silhouette. Humanoids have neutral upright spines. Hippogriff hind legs and small hooves sit below the haunches.",
+      "sha256": "1e64765baf908814153284955f3e36f9b9759a47ec41e8b986a26002624e7599",
+      "width": 1206,
+      "height": 1304,
+      "boundaryOpaquePixels": 0
+    },
+    {
+      "id": "monster-vampire",
+      "filename": "monster-vampire-v1.webp",
+      "prompt": "Create a new isolated VTT sprite: an elegant vampire STANDING UPRIGHT on a battle map, seen from DIRECTLY ABOVE at 90 degrees, orthographic dorsal plan view. He faces NORTH, toward the TOP edge of the image. Show the crown of black hair at the upper-center, a tiny nose tip pointing NORTH above the hair, then the TOP OF HIS UPPER BACK and shoulder blades BELOW the head. We see the back of his gothic black coat, its burgundy shoulder cape falling toward SOUTH, not the chest or belly. His pelvis, shoulder girdle, head, and two small boot tips all face the SAME NORTH direction. Feet planted underneath the body, boot toes point NORTH, mostly occluded by body from this camera. One cane in left hand, arms hanging naturally slightly outside torso so top of forearms and hands can be seen. Spine perfectly vertical, neck neutral, no bending forward. This is a compact, foreshortened overhead silhouette, upper back/cape occludes the lower body. Face, eyes, chest lapels, shirt front, belt buckle and full-length legs are NOT visible. Beautiful original semi-realistic hand-painted fantasy game sprite, polished dark cloth and silver detailing, clear connected anatomy. Single vampire, head on top and cape at bottom, image approx square with 12% empty transparent padding all sides. Genuine transparent alpha outside silhouette, no floor, shadow, haze, glow, border, label, side, front, or isometric perspective.",
+      "references": [
+        "user-attachment:monster-vampire-v1.webp",
+        "docs/MONSTER-ART-REMAKE-20261007.md"
+      ],
+      "created_at": "2026-10-07",
+      "revision": "overhead-anatomy-remake-20261007",
+      "replaces_sha256": "38ac5040431148a682731810c5cf21c733d17fe50e75755e045e5d8e14e5dd58",
+      "source_image": "exec-dc4964e7-003e-432f-a998-2abb107840c2.png",
+      "visual_review": "Individual dorsal sprite; consistent facing, connected limbs, transparent alpha and complete silhouette. Humanoids have neutral upright spines. Hippogriff hind legs and small hooves sit below the haunches.",
+      "sha256": "09877d6f04dd02fb043153ca9436d95d0951cbae11ef66336b2723b7a325ee4f",
+      "width": 1254,
+      "height": 1254,
+      "boundaryOpaquePixels": 0
+    },
+    {
+      "id": "monster-vampire-spawn",
+      "filename": "monster-vampire-spawn-v1.webp",
+      "prompt": "Create a new original Vampire Spawn battle-map sprite. EXACT DORSAL PLAN VIEW from 90 degrees vertically above, orthographic. He is standing upright with a straight spine, head level looking horizontally NORTH (TOP edge). Crown of tousled gray hair near upper-center, very small nose tip projecting toward TOP. Directly BELOW the head we see shoulder blades and the UPPER BACK of a worn charcoal-brown tunic, a short ragged burgundy scarf draped over the BACK. We see his BACK from overhead, NOT chest, shirt front or belly. Head, neck, shoulders, pelvis and boot toes all face NORTH in one consistent direction. Neutral neck, no bowing, twisting torso, crouching or hunched shoulders. Arms hang down slightly outside torso with naturally attached pale clawed hands. Two tiny boot tips pointing NORTH just outside tunic; most lower body hidden by torso from above. Short compact foreshortened footprint, no long legs or face visible. Crisp detailed semi-realistic dark fantasy hand-painted game art, controlled shadows, coherent anatomy. One complete figure inside 12% transparent margin all sides. Genuine transparent alpha cutout; no floor, external shadow, colored aura, ring, frame, text, front view, tilted or isometric camera.",
+      "references": [
+        "user-attachment:monster-vampire-spawn-v1.webp",
+        "docs/MONSTER-ART-REMAKE-20261007.md"
+      ],
+      "created_at": "2026-10-07",
+      "revision": "overhead-anatomy-remake-20261007",
+      "replaces_sha256": "5e8a0c201d087e96872f480c7f96bf6749e8dbd8b7a708995eaa7e8360793205",
+      "source_image": "exec-13d15f56-dcb1-4dc5-95e4-d159594a2531.png",
+      "visual_review": "Individual dorsal sprite; consistent facing, connected limbs, transparent alpha and complete silhouette. Humanoids have neutral upright spines. Hippogriff hind legs and small hooves sit below the haunches.",
+      "sha256": "48984decc0e7c67a6dedffc0ab42033b354e449bbe728cff0b1b372179923953",
+      "width": 1223,
+      "height": 1286,
+      "boundaryOpaquePixels": 0
+    },
+    {
+      "id": "monster-hippogriff",
+      "filename": "monster-hippogriff-v1.webp",
+      "prompt": "Use case: stylized-concept. ONE fresh original Hippogriff VTT game sprite. View exactly orthographic vertically overhead, showing BACK of creature with head facing TOP. The creature STANDS and walks on four limbs, never lies on its back or floats with legs bent upward. Eagle head, chest and TWO forelegs with talons transition anatomically into a chestnut HORSE body, pelvis and TWO HORSE hind legs. Horse hindquarters must follow real equine anatomy: hip into muscular upper thigh, stifle under belly, long lower shank to a backward-pointing hock, short vertical cannon bone into a single dark hoof planted on ground below the animal. From strict overhead, hind legs are mostly occluded by the haunches, with small outer shank/hoof hints beside and slightly behind the rump. NO hooves sticking upward near the waist, NO bent human legs, no frog thighs, no hoof at the end of a loop. Natural walking stance with one hind foot slightly behind the other, subtle asymmetry. Back hooves small and attached under hip, not elevated or twisted to show soles. TWO feathered wings mounted high on eagle shoulder blades, clear connection above foreleg roots, partly open in a relaxed pose, all feathers inside frame. Lean coherent horse spine/rump, flowing horse tail behind, white eagle head/beak, tawny brown feathers. Beautiful semi-realistic hand painted fantasy game art, true dorsal view and coherent connected joints, no saddle/rider. Entire creature inside 10% fully TRANSPARENT alpha margin. No backdrop, cast shadow, colored haze, floor, frame, text, collage, front, tilted or isometric view.",
+      "edit": "Edit the supplied hippogriff image. Remove ONLY the entire surrounding brown/black background and soft halo/haze. Return the hippogriff as a clean standalone transparent-alpha cutout: pixels beyond the exact feathers, body, legs and tail must be fully transparent. Preserve the creature's current dorsal overhead camera, feather details, colors, wing pose, coherent chestnut horse hind legs and small ground-facing dark hooves, head, forelegs and tail exactly. Keep all feather wisps with clean antialiased edges. Do not add a ground shadow, haze, glow, circle, backdrop or border. Transparent background, not a painted black background.",
+      "references": [
+        "user-attachment:monster-hippogriff-v1.webp",
+        "docs/MONSTER-ART-REMAKE-20261007.md"
+      ],
+      "created_at": "2026-10-07",
+      "revision": "overhead-anatomy-remake-20261007",
+      "replaces_sha256": "c2bb05aa762cb420fbdd3878d1b0e4d2cca0187433cf39f18c089d60bdfe2033",
+      "source_image": "exec-582b0c76-13fb-4076-8133-f0d6bf1844bd.png",
+      "visual_review": "Individual dorsal sprite; consistent facing, connected limbs, transparent alpha and complete silhouette. Humanoids have neutral upright spines. Hippogriff hind legs and small hooves sit below the haunches.",
+      "sha256": "bc96b7c80161d2de5b5c137a9e57f02bcdf86da41ecd63ec458f9f62cad0b938",
+      "width": 1024,
+      "height": 1536,
+      "boundaryOpaquePixels": 0
+    }
+  ]
+}
