@@ -25,7 +25,7 @@ export const COMPANION_SLOT_LABELS: Record<CompanionSlot, string> = {
   neck: 'Pescoço',
   cloak: 'Manto',
   back: 'Costas / alforje',
-  belt: 'Arreios / bolsa',
+  belt: 'Arreios / acessórios',
   saddle: 'Sela',
 };
 export type CompanionEquipmentItem = EquipmentItem & {
@@ -84,7 +84,7 @@ export type CompanionArtJob = {
   completed_at?: string | null;
 };
 export function companionSlots(kind: CompanionKind, speciesId: string): CompanionSlot[] {
-  if (kind === 'mount') return [...COMPANION_SLOTS];
+  if (kind === 'mount') return ['head', 'armor', 'neck', 'cloak', 'back', 'belt', 'saddle'];
   if (speciesId === 'snake') return ['head', 'armor', 'neck', 'cloak', 'back', 'belt'];
   if (speciesId === 'owl' || speciesId === 'raven')
     return ['head', 'armor', 'neck', 'cloak', 'back', 'belt', 'feet'];
@@ -96,7 +96,14 @@ export function compatibleCompanionSlots(
   speciesId: string,
 ): CompanionSlot[] {
   if (equipmentTarget(item) !== kind) return [];
+  if (
+    kind === 'mount' &&
+    item.raw_data?.piece_slot &&
+    item.raw_data?.armor_bundle_parent !== item.id
+  )
+    return [];
   const allowed = companionSlots(kind, speciesId);
+  if (/^horseshoes-/.test(item.id)) return kind === 'mount' ? ['belt'] : [];
   const configured = item.raw_data?.equipment_slots;
   if (Array.isArray(configured))
     return configured.filter((slot): slot is CompanionSlot =>
@@ -106,7 +113,6 @@ export function compatibleCompanionSlots(
   if (pieceSlot)
     return allowed.includes(pieceSlot as CompanionSlot) ? [pieceSlot as CompanionSlot] : [];
   if (item.id === 'saddlebags') return kind === 'mount' ? ['back'] : [];
-  if (/^horseshoes-/.test(item.id)) return kind === 'mount' ? ['feet'] : [];
   if (/^saddle-/.test(item.id) || /\bsela\b/i.test(item.name))
     return kind === 'mount' ? ['saddle'] : [];
   if (item.raw_data?.barding === true) return ['armor'];

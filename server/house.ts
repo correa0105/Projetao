@@ -12,6 +12,7 @@ import {
   initialHouseRooms,
   layoutSchema,
   roomKinds,
+  houseFacingOptions,
 } from '../shared/house.js';
 import { achievementCatalog } from '../shared/achievements.js';
 import { currentHouseCatalog, currentHousePrice } from './shop-prices.js';
@@ -100,7 +101,7 @@ async function state(db: DB, h: any, user: string) {
   );
   companions.rows = await withCompanionImages(db, h.character_id, companions.rows);
   const presence = await db.query(
-    `SELECT p.user_id,p.character_id,c.name,p.variant_id,p.room,p.x,p.y,p.scale,p.layer FROM house_presence p JOIN characters c ON c.id=p.character_id WHERE p.home_id=$1 AND c.deleted_at IS NULL AND (p.user_id=$2 OR EXISTS(SELECT 1 FROM house_invites i WHERE i.home_id=p.home_id AND i.user_id=p.user_id AND i.status='accepted')) AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=p.user_id AND b.blocked_id=$2)OR(b.blocker_id=$2 AND b.blocked_id=p.user_id))`,
+    `SELECT p.user_id,p.character_id,c.name,p.variant_id,p.room,p.x,p.y,p.scale,p.layer,p.depth_layer FROM house_presence p JOIN characters c ON c.id=p.character_id WHERE p.home_id=$1 AND c.deleted_at IS NULL AND (p.user_id=$2 OR EXISTS(SELECT 1 FROM house_invites i WHERE i.home_id=p.home_id AND i.user_id=p.user_id AND i.status='accepted')) AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=p.user_id AND b.blocked_id=$2)OR(b.blocker_id=$2 AND b.blocked_id=p.user_id))`,
     [h.id, h.user_id],
   );
   const messages = await db.query(
@@ -196,6 +197,19 @@ export function houseRouter() {
         if (h.revision !== input.revision)
           throw new AppError(409, 'A casa mudou em outra aba. Atualize antes de salvar.');
         const all = input.rooms.flatMap((r) => r.placements);
+        const items = (
+          await db.query('SELECT id,catalog_id FROM house_items WHERE character_id=$1', [
+            h.character_id,
+          ])
+        ).rows;
+        for (const placement of all.filter((p) => p.kind === 'item')) {
+          const item = items.find((i) => i.id === placement.ref);
+          if (
+            item &&
+            !houseFacingOptions(item.catalog_id).some((v) => v.value === (placement.facing ?? 0))
+          )
+            throw new AppError(400, 'Essa peça não possui a direção escolhida.');
+        }
         for (const kind of ['item', 'pet', 'mount']) {
           const refs = all.filter((p) => p.kind === kind).map((p) => p.ref);
           const table =
@@ -488,6 +502,7 @@ export function houseRouter() {
         y: z.number().min(0.1).max(0.98),
         scale: z.number().min(0.05).max(0.45),
         layer: z.number().int().min(0).max(602).optional(),
+        depth_layer: z.number().int().min(1).max(6).optional(),
       })
       .strict()
       .parse(req.body);
@@ -505,7 +520,7 @@ export function houseRouter() {
       )
         throw new AppError(400, 'Versão inválida.');
       await db.query(
-        `INSERT INTO house_presence(home_id,user_id,character_id,variant_id,room,x,y,scale,layer)VALUES($1,$2,$3,$4,$5,$6,$7,$8,COALESCE($9,602))ON CONFLICT(home_id,user_id)DO UPDATE SET character_id=excluded.character_id,variant_id=excluded.variant_id,room=excluded.room,x=excluded.x,y=excluded.y,scale=excluded.scale,layer=COALESCE($9,house_presence.layer),updated_at=now()`,
+        `INSERT INTO house_presence(home_id,user_id,character_id,variant_id,room,x,y,scale,layer,depth_layer)VALUES($1,$2,$3,$4,$5,$6,$7,$8,COALESCE($9,602),$10)ON CONFLICT(home_id,user_id)DO UPDATE SET character_id=excluded.character_id,variant_id=excluded.variant_id,room=excluded.room,x=excluded.x,y=excluded.y,scale=excluded.scale,layer=COALESCE($9,house_presence.layer),depth_layer=COALESCE($10,house_presence.depth_layer),updated_at=now()`,
         [
           h.id,
           res.locals.user.id,
@@ -516,6 +531,7 @@ export function houseRouter() {
           input.y,
           input.scale,
           input.layer ?? null,
+          input.depth_layer ?? null,
         ],
       );
     });

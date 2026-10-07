@@ -103,7 +103,7 @@ try {
   const allPieces = parents.flatMap((parent) =>
     armorBundle(parent)!.pieces.map((piece) => piece.id),
   );
-  expect(new Set(allPieces).size).toBe(30);
+  expect(new Set(allPieces).size).toBe(20);
   const beforeGold = (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id]))
     .rows[0].gold_cp;
   const purchaseBody = {
@@ -134,14 +134,15 @@ try {
         [hero.id, bundle.pieces.map((piece) => piece.id)],
       )
     ).rows;
-    expect(rows).toHaveLength(6);
+    expect(rows).toHaveLength(bundle.target === 'mount' ? 1 : 6);
     expect(rows.every((row) => row.quantity === 1)).toBe(true);
     expect(rows.reduce((sum, row) => sum + Number(row.weight_lb), 0)).toBeCloseTo(
       bundle.weight_lb,
       2,
     );
     for (const row of rows) {
-      expect(row.raw_data.armor_bundle_parent).toBe(parent);
+      if (bundle.target === 'mount') expect(row.raw_data.armor_complete).toBe(true);
+      else expect(row.raw_data.armor_bundle_parent).toBe(parent);
       if (row.item_id !== parent) expect(row.active).toBe(false);
     }
   }
@@ -152,7 +153,7 @@ try {
         [hero.id],
       )
     ).rows[0].n,
-  ).toBe(30);
+  ).toBe(20);
   const catalogue = await context.request.get(origin + '/api/catalog');
   expect(catalogue.status()).toBe(200);
   const catalogItems = await catalogue.json();
@@ -173,6 +174,38 @@ try {
     return selectedPanel;
   }
   async function equipSet(panel: Locator, itemId: string, method: 'POST' | 'PUT') {
+    if (selectedAnimal?.kind === 'mount') {
+      if (apiOnly) {
+        expect(
+          (
+            await put(companionPath, {
+              kind: 'mount',
+              companion_id: selectedAnimal.id,
+              slot: 'armor',
+              item_id: itemId,
+            })
+          ).status(),
+        ).toBe(200);
+      } else {
+        await expect(
+          panel.locator(
+            '[data-companion-slot="shoulders"], [data-companion-slot="bracers"], [data-companion-slot="legs"], [data-companion-slot="feet"]',
+          ),
+        ).toHaveCount(0);
+        await expect(
+          panel.getByRole('combobox', { name: 'Armadura completa', exact: true }),
+        ).toHaveCount(0);
+        await panel.locator('[data-companion-slot="armor"] .equipment-slot-trigger').click();
+        const [response] = await Promise.all([
+          page.waitForResponse(
+            (r) => r.url().endsWith(companionPath) && r.request().method() === 'PUT',
+          ),
+          panel.locator('[data-companion-slot="armor"] select').selectOption(itemId),
+        ]);
+        expect(response.status()).toBe(200);
+      }
+      return;
+    }
     if (apiOnly) {
       const response =
         method === 'POST'
@@ -288,8 +321,8 @@ try {
       await put(companionPath, {
         kind: 'mount',
         companion_id: mule.id,
-        slot: 'head',
-        item_id: 'barding-ring-mail--head',
+        slot: 'armor',
+        item_id: 'barding-ring-mail',
       })
     ).status(),
   ).toBe(200);
@@ -309,7 +342,7 @@ try {
       await put(companionPath, {
         kind: 'mount',
         companion_id: mule.id,
-        slot: 'head',
+        slot: 'armor',
         item_id: null,
       })
     ).status(),
@@ -415,9 +448,20 @@ try {
       const bounds = (await panel.boundingBox())!;
       expect(bounds.x).toBeGreaterThanOrEqual(0);
       expect(bounds.x + bounds.width).toBeLessThanOrEqual(width + 1);
-      await expect(
-        panel.getByRole('button', { name: 'Equipar armadura', exact: true }),
-      ).toBeVisible();
+      if (kind === 'mount') {
+        await expect(
+          panel.getByRole('button', { name: 'Equipar armadura', exact: true }),
+        ).toHaveCount(0);
+        await expect(panel.locator('[data-companion-slot="armor"] img')).toBeVisible();
+        await expect(
+          panel.locator(
+            '[data-companion-slot="shoulders"], [data-companion-slot="bracers"], [data-companion-slot="legs"], [data-companion-slot="feet"]',
+          ),
+        ).toHaveCount(0);
+      } else
+        await expect(
+          panel.getByRole('button', { name: 'Equipar armadura', exact: true }),
+        ).toBeVisible();
       await page.screenshot({ path: `test-results/armor-sets-${kind}-${width}.png` });
     }
   }
@@ -431,8 +475,8 @@ try {
   expect(errors).toEqual([]);
   console.log(
     apiOnly
-      ? 'API dos conjuntos: compra/replay entrega 30 peças com peso/preço único; conjunto atômico/replay, faltante/cofre/reserva com rollback, strict humano/animal/ownership/payload forjado aprovados. Browser aguardando build.'
-      : 'Conjuntos completos: compra/replay entrega 30 peças com peso/preço único; UI equipa seis peças em uma operação; faltante/cofre/reserva fazem rollback; humano/animal/ownership/payload forjado protegidos; persistência e 1440/768/390/320 aprovados.',
+      ? 'API: armaduras humanas/pet em peças, bardas inteiras; compra/replay/peso, equipamento/reservas/ownership aprovados.'
+      : 'UI: barda inteira no espaço único, quatro espaços de peças removidos; humano/pet preservados. Compra/replay/peso/reservas e 1440/768/390/320 aprovados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/armor-sets-failure.png', fullPage: true });

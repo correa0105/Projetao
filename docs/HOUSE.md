@@ -10,17 +10,21 @@ intencional: `table` agora é Mesa de Centro, `chair` é Poltrona de Couro,
 banco, arca, livros, tapete e vaso também receberam modelos novos. Nomes,
 descrições, falas e sons acompanham os objetos correspondentes.
 
-São 80 vistas nativas independentes, oito por objeto, em
-`public/house/items/house-refit-20261007/`. O manifest dessa pasta registra os
-prompts, hashes, fontes PNG e calibração. Carta e quadro ficam fora da troca:
+São 160 vistas nativas independentes, 16 por móvel. A pasta
+`public/house/items/house-refit-20261007/` conserva as oito vistas anteriores;
+`public/house/items/house-perspective-20261007/` acrescenta 80 intermediárias e
+refina as frentes da mesa e do tapete. Os manifests registram prompts, referências,
+hashes e calibração; `shared/house-intermediate-sizes.json` mede as novas vistas.
+Carta e quadro ficam fora da troca:
 as 16 vistas, três imagens de base/leitura e o arquivo de quinas do quadro
 totalizam 20 arquivos protegidos, verificados por hash; a calibração dos dois
 também permanece intacta. `scripts/prepare-house-refit.mjs --verify-published`
-valida a publicação completa e essa preservação.
+valida a publicação antiga e essa preservação; `prepare-house-perspective.mjs
+--verify-published` valida as 82 novas imagens sem depender das fontes locais.
 
 Direção e tamanho iniciais são aplicados somente a novas colocações. Os layouts
 salvos conservam posição, direção, giro, camada e tamanho. O tapete usa vista
-frontal rasa, o sofá frente-esquerda, mesa frontal e os demais móveis e acessórios
+frontal rasa, o sofá na intermediária esquerda/frente (14), mesa frontal e os demais móveis e acessórios
 frente-direita. Trocar a vista mantém a escala física calibrada de cada objeto.
 
 A House ocupa o espaço entre o cabeçalho do site e o Menu global, que permanece
@@ -30,7 +34,8 @@ navegação vertical à esquerda, cena proporcional ao centro e controles explí
 à direita. O cenário usa enquadramento contido,
 sem esticar ou cortar sua imagem. Selecionar uma peça apresenta Direção, Tamanho,
 Giro, Endireitar, camadas, Guardar e Ver lembrança no painel; não há engrenagem
-flutuante sobre a arte. Salvar mudanças e Descartar ficam no cabeçalho. A janela
+flutuante sobre a arte. Setas esquerda/direita junto à seleção alternam as imagens
+reais sem deformá-las. Salvar mudanças e Descartar ficam no cabeçalho. A janela
 e a cena não rolam; listas longas rolam dentro do painel. Em telas até 800 px, o
 painel abre abaixo da cena, conservando a navegação à esquerda e a proporção da
 imagem. Fechar painel devolve o espaço à sala.
@@ -48,18 +53,18 @@ global de botão pressionado não tire o ator do cursor. Sprites não animam a
 posição nem iniciam arraste nativo da imagem. O cálculo usa os limites internos
 atuais da cena e conserva presença local durante o arraste/salvamento, sem o
 polling restaurar a posição anterior. Camada do personagem também fica abaixo
-da cena, com nome dos objetos e atalhos atrás/à frente da mobília.
+da cena, com as mesmas seis camadas das peças e atalhos atrás/à frente da mobília.
 
 Em 07/10 o teste reversível de afinamento foi retirado a pedido do usuário.
-As artes voltam à perspectiva anterior, com oito vistas reais e tamanho por
-profundidade, sem projeção CSS3D adicional ou controles de recuo. Os campos
+As artes permanecem sem projeção CSS3D adicional ou controles de recuo. O pedido
+posterior acrescenta vistas intermediárias e calibração de piso/iluminação. Os campos
 perspective_pitch/perspective_yaw continuam aceitos no schema para não invalidar
 layouts antigos, mas são ignorados na apresentação. Posições e ajustes reais
 do layout permanecem salvos. Quadros continuam usando a abertura correta da
 moldura; essa composição da imagem personalizada não é o teste de afinamento.
 
 Controles da peça selecionada ficam no painel lateral, inclusive com Decorar
-fechado. Direção da peça escolhe uma das oito vistas reais, sem espelhamento.
+fechado. Direção da peça e setas escolhem uma das 16 vistas da mobília, sem espelhamento.
 Decorar conserva a coleção e os ajustes gerais da casa; alterações usam Salvar
 mudanças no cabeçalho.
 
@@ -78,18 +83,24 @@ HTML. Fonte de leitura oferece cursiva medieval, caligrafia, gótica e clássica
 preferência visual local, conteúdo/presente original intacto. Fontes locais com
 licença OFL e textos escapados pelo React; texto longo rola no papel.
 
-Os doze objetos possuem oito artes independentes, na ordem Frente, Frente e
-direita, Direita, Trás e direita, Trás, Trás e esquerda, Esquerda, Frente e
-esquerda. Direção da peça troca a vista, enquanto Giro mantém o ajuste fino.
-São 96 WebPs transparentes ativos: 80 da mobília refeita e as 16 vistas de
-carta/quadro conservadas em `public/house/items/views/`. O manifest antigo
-permanece como registro da geração anterior. Não usar espelhamento ou rotação
-plana como substituto das oito vistas.
+Os IDs 0–7 conservam Frente, Frente e direita, Direita, Trás e direita, Trás,
+Trás e esquerda, Esquerda, Frente e esquerda. Os novos IDs 8–15 são intercalados:
+0,8,1,9,2,10,3,11,4,12,5,13,6,14,7,15. Carta/quadro continuam com oito vistas.
+Direção troca a imagem, enquanto Giro mantém o ajuste fino. São 176 WebPs ativos:
+160 da mobília e 16 vistas de carta/quadro conservadas em `public/house/items/views/`.
+Não usar espelhamento ou rotação plana como substituto das vistas reais.
 
 shared/house-perspective.ts calcula o fator pela posição do pé/base no cenário:
 0,15 + 0,85 × ((y − 0,08) / 0,76), com y limitado a 0,08–0,98.
 Curva linear evita a inversão/salto ao agarrar o alto de um retrato comprido.
+Na Sala da Lareira, móveis/companheiros usam `max(.12,(y-.34)/.5)`, com o ponto
+de fuga medido no fundo atual e escala 1 em y=.84. Perto da tela a peça cresce;
+ao fundo diminui. Retratos altos e outros cenários usam a curva anterior.
 O ajuste base continua salvo; mudar a profundidade altera apenas a renderização.
+Exposição mais discreta considera a posição em relação à lareira/janela somente
+nessa sala. Sombras elípticas de contato acompanham bases e camadas da mobília;
+cartas/quadros não recebem sombra de chão. A composição continua feita de sprites
+2D: a calibração aproxima a referência sem substituir uma câmera/luz 3D completa.
 Cada vista de objeto em pé é calibrada pela altura visível no alpha, mantendo
 a altura física ao trocar frente/perfil. O tapete usa sua projeção no plano do
 chão. scripts/calibrate-house-views.mjs gera shared/house-view-sizes.json.
@@ -98,14 +109,15 @@ quinas de shared/house-frame-quads.json; atrás mostram madeira e fixação.
 
 O arraste resolve a posição da base levando em conta a mudança de escala. O
 ponto originalmente clicado permanece sob o cursor até os limites da cena,
-inclusive no personagem. Enviar para trás/Trazer à frente troca posições
-adjacentes reais, incluindo empates/lacunas de layouts anteriores.
+inclusive no personagem. Enviar para trás/Trazer à frente avançam uma das seis
+camadas. A ordem legada permanece dentro de cada camada.
 
-Personagem → Camada do personagem oferece À frente de tudo, Atrás de tudo e
-Atrás de cada objeto colocado. Migration 074 adiciona house_presence.layer,
-inteiro 0–602, padrão 602. Objetos usam z-index 2×layer+2; presença atrás de um
-objeto usa 2×layer+1. Convidados ajustam somente a própria presença. Payloads
-antigos sem layer conservam a camada existente ao mover/entrar novamente.
+Camada da peça e Personagem → Camada do personagem oferecem 1–6: 1 sobrepõe 2,
+até 6 no fundo. `depth_layer` opcional do layout e coluna nullable na presença
+(079) usam z-index `(7-(depth_layer??3))*1000+ordemLegada`. Migration 074 e seus
+valores layer 0–602 permanecem; layouts sem o campo conservam a ordem antiga na
+camada padrão 3. Convidados ajustam somente a própria presença. Payloads antigos
+sem depth_layer conservam a escolha existente ao mover/entrar novamente.
 
 RP abre apenas dentro do cenário, com histórico translúcido e campo dourado
 junto à base; segue mensagens quando já no final. O painel externo foi retirado.
@@ -118,10 +130,13 @@ Sons dos doze objetos usam arquivos próprios /audio/emporium/house-ID.wav e
 preservam volume/mute dos efeitos. Tamanhos iniciais de personagens, montarias
 e mascotes consideram suas proporções; layouts antigos conservam o ajuste manual.
 
-Treze testes isolados de API, três testes de geometria/cursor/camadas e navegador
+Dezesseis testes isolados de API, oito testes de geometria/cursor/camadas e navegador
 em quatro larguras aprovados. O navegador verifica camada persistida, ponto de
 arraste a menos de 2 px do cursor, troca de vista, altura/base preservada e
 quadros frontais/diagonais/traseiros com imagem privada.
+`test-house-perspective-isolated.mjs` decodifica as 176 imagens, percorre as 16
+vistas pelas setas e verifica sombras, escala/cursor, camadas de móvel/personagem
+e persistência após recarga; fontes nativas nunca são chamadas durante os testes.
 
 Implementação iniciada depois do checkpoint GitHub `654c304`, com a tag enviada
 `codex/checkpoint-antes-house-2026-10-06`. Não modificar o checkpoint.

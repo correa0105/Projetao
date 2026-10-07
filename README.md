@@ -1,6 +1,8 @@
 # Alvorada Cinzenta
 
-Atualização de 07/10: armaduras entregam peças independentes e podem ser equipadas
+Atualização de 07/10: bardas de montaria são um único item e usam um só espaço
+de armadura. **Vestir** combina a barda completa com os acessórios equipados.
+Armaduras humanoides e de mascote mantêm peças independentes e podem ser equipadas
 como conjunto em uma única ação. Montarias e mascotes aceitam somente equipamentos
 da própria categoria. A loja ganhou cosméticos de montaria e **Acessórios para pet**;
 variantes de armas recebem skins coerentes com sua família, e cinturões de gigante
@@ -30,15 +32,19 @@ reinício/seed e afetam somente compras futuras. Migration 075.
 House: **Camada do personagem** fica no painel lateral, com atalhos para trás/à frente
 da mobília. Arraste preserva o ponto clicado também enquanto o botão está
 pressionado. O teste de afinamento 3D foi retirado em 07/10, restaurando a
-aparência anterior dos itens. As oito vistas reais e o tamanho por profundidade
-continuam disponíveis. Ajustes por peça usam **Salvar mudanças**.
+aparência anterior dos itens. O refino posterior acrescenta 16 vistas reais por
+móvel e setas esquerda/direita junto à peça selecionada. Na Sala da Lareira,
+o tamanho acompanha a distância ao fundo com projeção do piso, exposição mais
+discreta e sombras de contato. Ajustes por peça usam **Salvar mudanças**.
 Mobília usa vistas iniciais que acompanham o cenário; referências e padrão para
 novas artes em [Direção de arte](docs/HOUSE-ART-DIRECTION.md).
 A House ocupa a tela sem rolagem da página, com navegação à esquerda e controles
 à direita. Ao selecionar uma peça, os controles explícitos de direção, tamanho,
-giro, camadas e ações aparecem no painel. O seletor Direção alterna oito vistas reais.
+giro, camadas e ações aparecem no painel. O seletor Direção alterna 16 vistas da
+mobília e oito de cartas/quadros. **Camada da peça** e **Camada do personagem**
+oferecem 1–6: 1 fica sobre 2, até 6 no fundo. As escolhas permanecem salvas.
 O cabeçalho e o **Menu** principal continuam acessíveis para navegar entre salas
-e lojas. A mobília foi refeita em dez modelos com 80 vistas na perspectiva do
+e lojas. A mobília foi refeita em dez modelos com 160 vistas na perspectiva do
 cenário; carta, quadro e a coleção comprada permanecem.
 Quadros oferecem **Manter fundo de madeira** nas vistas frontais.
 Duplo clique abre cartas e quadros; cartas mostram papel aberto com título
@@ -53,10 +59,10 @@ Estábulo e Casa dos mascotes exigem um nome pessoal antes de liberar a compra.
 Campo vazio ou só com espaços mantém o botão desabilitado; a espécie não é
 mais usada automaticamente como nome do animal.
 
-House: os doze objetos têm oito vistas reais em **Decorar → Direção da peça**.
+House: **Decorar → Direção da peça** e as setas alternam as vistas reais.
 O tamanho acompanha a profundidade preservando o ajuste base. **Personagem →
-Camada do personagem** permite ficar atrás de toda a mobília ou de um objeto
-específico; o arraste conserva o ponto clicado junto ao cursor. RP abre dentro
+Camada do personagem** usa as mesmas seis camadas dos objetos;
+o arraste conserva o ponto clicado junto ao cursor. RP abre dentro
 do cenário. Montarias usam o porte próprio no acampamento e nas visitas.
 
 Empório ampliado para **1.319 itens de aventura + 12 itens de House**, com

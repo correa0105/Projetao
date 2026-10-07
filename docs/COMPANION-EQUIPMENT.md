@@ -6,6 +6,13 @@ mochila, por clique no espaço ou arraste. Os espaços seguem a anatomia: cobras
 recebem proteções de patas, aves não recebem peças de quadrúpedes e selas ficam nas
 montarias. Armas, mãos humanas e anéis não são espaços de equipamento animal.
 
+Pedido posterior de 07/10: a armadura de cavalo/montaria é uma **barda inteira**,
+com um único espaço Armadura/barda. Não dividir a compra em seis peças; foram
+retirados os espaços de ombros, patas dianteiras/traseiras e ferraduras. Permanecem
+cabeça, armadura, pescoço, capa, alforjes, arreios/acessórios e sela. Ferraduras
+equipadas como acessórios continuam sendo desenhadas nas patas. Mascotes e
+humanoides mantêm conjuntos de seis peças e a ação Equipar armadura.
+
 Equipar reserva uma unidade real do inventário, sem duplicar nem consumir o bem.
 Personagem, outros animais, cofre e uso de consumíveis no VTT compartilham essas
 reservas sob bloqueio do personagem. Desequipar libera a unidade. A armadura e a
@@ -20,6 +27,15 @@ substitui a armadura e os acessórios anteriores; não acumula os equipamentos s
 a arte vestida. Não há upload de referência pelo jogador nesse fluxo. O animal
 mantém pose, anatomia, proporções, pelagem e fundo transparente; o formato pode ser
 horizontal. Acampamento, seleção do inventário e House usam a última arte concluída.
+Para montaria, a referência e a instrução são da barda **completa**, combinada com
+os demais acessórios dos espaços. Substituir toda a proteção anterior, sem manter
+somente um peitoral. A base continua sendo a imagem sem equipamentos.
+
+Migration 078 arquiva o estoque/reservas antigos das bardas, consolida componentes
+por dono entre mochilas/cofre sem multiplicar unidades, preserva cópias inteiras,
+desativa filhos e avança a revisão das montarias afetadas. As compras, preços,
+saldo e imagens anteriores não são apagados. As fontes de 72 imagens de partes
+foram aposentadas antes da publicação e não integram o catálogo.
 
 O worker existente processa pedidos humanos e de companheiros em ordem de criação,
 com a sessão ChatGPT do Codex e sem API key. A cota existente de duas imagens por

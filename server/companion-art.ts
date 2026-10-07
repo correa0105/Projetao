@@ -38,7 +38,12 @@ export function describeCompanionEquipment(item: CompanionArtEquipment, index: n
     item: item.name,
     position: COMPANION_SLOT_LABELS[item.slot],
     reference_image: index + 2,
-    wearing: wearing[item.slot],
+    wearing:
+      item.slot === 'armor' && item.item_id.startsWith('barding-')
+        ? 'Vestir a barda COMPLETA da referência, incluindo suas proteções de cabeça, tronco e membros. Adaptar ao animal BASE e substituir a armadura antiga. Somar os acessórios das outras posições com encaixe e oclusão naturais.'
+        : item.item_id.startsWith('horseshoes-')
+          ? 'Ajustar as ferraduras aos cascos existentes, mantendo anatomia e proporções.'
+          : wearing[item.slot],
   };
 }
 export function companionArtInstructions(subject: CompanionArtSubject) {

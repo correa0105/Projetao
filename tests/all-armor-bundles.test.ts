@@ -75,7 +75,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       const { rows } = await pool.query('SELECT * FROM catalog_items WHERE id=ANY($1::text[])', [
         purchaseContents(bundle.id),
       ]);
-      assert.equal(rows.length, 6, bundle.id);
+      assert.equal(rows.length, bundle.target === 'mount' ? 1 : 6, bundle.id);
       assert.equal(
         Math.round(rows.reduce((sum, row) => sum + Number(row.weight_lb), 0) * 100),
         Math.round(bundle.weight_lb * 100),
@@ -94,7 +94,10 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       for (const row of rows) {
         assert.ok(row.id.length <= 100);
         assert.equal(row.raw_data.equipment_target, bundle.target);
-        assert.equal(row.raw_data.armor_bundle_parent, bundle.id);
+        if (bundle.target === 'mount') {
+          assert.equal(row.raw_data.armor_complete, true);
+          assert.equal(row.raw_data.piece_slot, undefined);
+        } else assert.equal(row.raw_data.armor_bundle_parent, bundle.id);
         if (row.id !== bundle.id) {
           assert.equal(row.active, false);
           assert.equal(row.price_cp, null);
@@ -159,7 +162,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
           [hero.id],
         )
       ).rows[0].n,
-      offered.length * 6,
+      offered.reduce((sum, id) => sum + purchaseContents(id).length, 0),
     );
     const weight = (
       await pool.query(
@@ -334,7 +337,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       loser = winner === one ? two : one;
     let outfits = (await request(companionPath, owner)).data;
     let winning = outfits.companions.find((a: any) => a.id === winner.id);
-    assert.equal(winning.equipped.length, 6);
+    assert.equal(winning.equipped.length, 1);
     assert.equal(winning.equipment_revision, 1);
     assert.equal(outfits.companions.find((a: any) => a.id === loser.id).equipped.length, 0);
     const again = await Promise.all([
@@ -362,8 +365,8 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
         animalJob.data.id,
       ])
     ).rows;
-    assert.equal(animalRefs.length, 6);
-    assert.ok(animalRefs.every((row) => /somente a peça/.test(row.name)));
+    assert.equal(animalRefs.length, 1);
+    assert.match(animalRefs[0].name, /Armadura completa da montaria/);
     for (const row of animalRefs) assert.equal((await sharp(row.image).metadata()).format, 'png');
     await pool.query("UPDATE companion_art_jobs SET status='failed' WHERE id=$1", [
       animalJob.data.id,
@@ -372,7 +375,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       (
         await request('/inventory/transfers', owner, {
           character_id: hero.id,
-          item_id: 'barding-ring-mail--head',
+          item_id: 'barding-ring-mail',
           direction: 'to_vault',
           quantity: 1,
           idempotency_key: randomUUID(),
@@ -464,15 +467,14 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       ).rows[0].quantity,
       unitsBefore,
     );
-    const child = (
-      await pool.query("SELECT * FROM catalog_items WHERE id='barding-ring-mail--head'")
-    ).rows[0];
-    const ref = equipmentArtReference(child);
-    assert.equal(ref.path, child.raw_data.armor_bundle_model_image);
-    assert.match(ref.name, /somente a peça.*head/);
-    assert.deepEqual(compatibleSlots(child), []);
-    assert.deepEqual(compatibleCompanionSlots(child, 'mount', 'warhorse'), ['head']);
-    assert.deepEqual(compatibleCompanionSlots(child, 'pet', 'dog'), []);
+    const whole = (await pool.query("SELECT * FROM catalog_items WHERE id='barding-ring-mail'"))
+      .rows[0];
+    const ref = equipmentArtReference(whole);
+    assert.equal(ref.path, whole.image_path);
+    assert.match(ref.name, /Armadura completa da montaria/);
+    assert.deepEqual(compatibleSlots(whole), []);
+    assert.deepEqual(compatibleCompanionSlots(whole, 'mount', 'warhorse'), ['armor']);
+    assert.deepEqual(compatibleCompanionSlots(whole, 'pet', 'dog'), []);
     // Ownership checks remain strict even if an administrator loses that role.
     await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [outsider.id]);
     assert.equal((await equip('leather-armor', outsider)).status, 404);
@@ -534,7 +536,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
           [owner.id, purchaseContents('barding-chain-mail')],
         )
       ).rowCount,
-      6,
+      1,
     );
     assert.deepEqual(
       (

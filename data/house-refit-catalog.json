@@ -7,18 +7,18 @@
     "description": "Tapete de lã bordô com trama antiga e franjas, para o piso da sala.",
     "speech": "O bordô combina com a luz da lareira. A lã também agradece quando deixam as botas na porta.",
     "art": "a burgundy rectangular medieval wool floor rug with aged woven patterns and fringes, lying flat, low room-reference camera",
-    "default_scale": 0.55,
+    "default_scale": 0.64,
     "audio_path": "/audio/emporium/house-rug.wav"
   },
   {
     "id": "sofa",
     "name": "Sofá de Carvalho",
     "price_cp": 6500,
-    "default_facing": 7,
+    "default_facing": 14,
     "description": "Sofá de três lugares em carvalho, com almofadas terracota e uma manta sobre o braço.",
     "speech": "Três lugares, almofadas macias e uma manta para quem ficou de vigia a noite inteira.",
     "art": "a weathered carved oak three-seat medieval sofa, terracotta upholstery, patterned cushions, burgundy throw on one arm, low room-reference camera",
-    "default_scale": 0.34,
+    "default_scale": 0.39,
     "audio_path": "/audio/emporium/house-sofa.wav"
   },
   {

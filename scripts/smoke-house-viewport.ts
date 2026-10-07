@@ -182,6 +182,17 @@ try {
     const before = (await page.locator('.house-scene').boundingBox())!;
     await item.click();
     await expect(page.getByLabel('Direção da peça', { exact: true })).toBeVisible();
+    await expect(page.getByLabel('Direção da peça', { exact: true }).locator('option')).toHaveCount(
+      16,
+    );
+    await page.getByLabel('Direção da peça', { exact: true }).selectOption('0');
+    await expect(
+      page.getByRole('button', { name: 'Virar item à esquerda', exact: true }),
+    ).toBeVisible();
+    await page.getByRole('button', { name: 'Virar item à direita', exact: true }).click();
+    await expect(item).toHaveAttribute('data-facing', '8');
+    await page.getByRole('button', { name: 'Virar item à esquerda', exact: true }).click();
+    await expect(item).toHaveAttribute('data-facing', '0');
     const after = (await page.locator('.house-scene').boundingBox())!;
     expect(after).toEqual(before);
     await page.getByLabel('Direção da peça', { exact: true }).selectOption('1');
@@ -192,10 +203,10 @@ try {
     await expect(page.getByLabel('Giro da peça', { exact: true })).toHaveValue('0');
     await page.getByRole('button', { name: 'Enviar para trás', exact: true }).click();
     await page.getByRole('button', { name: 'Trazer à frente', exact: true }).click();
-    await page.getByLabel('Camada do personagem', { exact: true }).selectOption('0');
-    await expect(actor).toHaveAttribute('data-layer', '0');
+    await page.getByLabel('Camada do personagem', { exact: true }).selectOption('6');
+    await expect(actor).toHaveAttribute('data-depth-layer', '6');
     await page.getByRole('button', { name: 'À frente da mobília', exact: true }).click();
-    await expect(actor).toHaveAttribute('data-layer', '602');
+    await expect(actor).toHaveAttribute('data-depth-layer', '1');
     await page.locator('.house-sidebar').evaluate((el) => (el.scrollTop = 0));
     await page.screenshot({
       path: 'test-results/house-viewport-selected-' + viewport.width + '.png',
@@ -303,7 +314,7 @@ try {
   await expect(page.locator('.journey-dock')).toBeVisible();
   expect(errors).toEqual([]);
   console.log(
-    'House viewport: five sizes, contained scene/no page scroll, site header/main navigation accessible; real Menu navigation to Empório, Estábulo and back, left House navigation/right inspector/mobile drawer, click/held cursor, eight-view controls/layers/save, RP focus/pin passed.',
+    'House viewport: five sizes, contained scene/no page scroll, site header/main navigation accessible; real Menu navigation to Empório, Estábulo and back, left House navigation/right inspector/mobile drawer, click/held cursor, sixteen-view controls/arrows/six layers/save, RP focus/pin passed.',
   );
 } finally {
   releaseSave?.();

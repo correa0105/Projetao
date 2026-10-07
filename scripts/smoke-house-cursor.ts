@@ -106,6 +106,7 @@ try {
         y,
         scale,
         layer: 602,
+        depth_layer: 1,
       },
       'PUT',
     );
@@ -171,7 +172,7 @@ try {
   await expect(page.locator('.house-item-projection')).toHaveCount(0);
   expect(await tableArt.evaluate((el) => getComputedStyle(el).transform)).toBe('none');
   await page.getByRole('button', { name: 'Atrás da mobília', exact: true }).click();
-  await expect(actor).toHaveAttribute('data-layer', '0');
+  await expect(actor).toHaveAttribute('data-depth-layer', '6');
   await table.click();
   await expect(page.getByLabel('Afinamento ao fundo')).toHaveCount(0);
   await expect(page.getByLabel('Recuo lateral da peça')).toHaveCount(0);
@@ -220,12 +221,8 @@ try {
     await checkDrag(0.2, 0.2, width < 400 ? 10 : 35, -12);
     await expect(page.locator('.house-panel')).toHaveCount(0);
     await page.getByRole('button', { name: 'Personagem', exact: true }).click();
-    await page
-      .getByLabel('Camada do personagem')
-      .selectOption({
-        label: `Atrás de ${houseCatalog.find((item) => item.id === 'table')!.name}`,
-      });
-    await expect(actor).toHaveAttribute('data-layer', '17');
+    await page.getByLabel('Camada do personagem').selectOption('4');
+    await expect(actor).toHaveAttribute('data-depth-layer', '4');
     expect(await actor.evaluate((el) => Number(getComputedStyle(el).zIndex))).toBeLessThan(
       await page
         .locator('.house-piece')
@@ -235,11 +232,11 @@ try {
     const persisted = await context.request
       .get(origin + '/api/house/' + homeId)
       .then((r) => r.json());
-    expect(persisted.presence[0].layer).toBe(17);
+    expect(persisted.presence[0].depth_layer).toBe(4);
     await page.getByRole('button', { name: 'Atrás da mobília', exact: true }).click();
-    await expect(actor).toHaveAttribute('data-layer', '0');
+    await expect(actor).toHaveAttribute('data-depth-layer', '6');
     await page.getByRole('button', { name: 'À frente da mobília', exact: true }).click();
-    await expect(actor).toHaveAttribute('data-layer', '602');
+    await expect(actor).toHaveAttribute('data-depth-layer', '1');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

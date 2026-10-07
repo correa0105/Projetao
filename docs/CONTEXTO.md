@@ -1,5 +1,47 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## House: dezesseis vistas, profundidade e seis camadas; barda inteira (07/10/2026)
+
+Direção mais recente do usuário: camada 1 sobrepõe 2, até 6 no fundo, tanto para
+peças quanto para personagens. Seletores explícitos compartilham depth_layer 1–6;
+ordenação legada layer fica preservada dentro da camada padrão 3. Migration 079
+adiciona coluna nullable em house_presence; payloads antigos não resetam a escolha.
+Trazer à frente/Enviar para trás avançam uma camada; atalhos de personagem usam 1/6.
+Ownership, revisão do layout e acesso privado permanecem.
+
+House mantém controles laterais e retorna setas junto ao item selecionado.
+Os dez móveis têm 16 artes independentes: IDs 0–7 conservados, novas vistas 8–15
+intercaladas a cada 22,5°. public/house/items/house-perspective-20261007 contém
+82 imagens nativas (80 intermediárias, frente da mesa e tapete recalibradas),
+prompts, referências e hashes; shared/house-intermediate-sizes.json calibra escala.
+Sofá começa na vista 14, mais oblíqua como a referência. Carta/quadro conservam
+as oito vistas e seus 20 arquivos protegidos. Não regravar posições/direções/tamanhos
+de layouts existentes automaticamente. A Sala da Lareira usa ponto de fuga do piso
+em y=.34, escala base em y=.84, exposição espacial e sombras de contato. Outros
+cenários e retratos altos mantêm projeção linear anterior; nenhum CSS3D.
+
+O pedido de 72 imagens de peças de barda foi substituído pelo pedido posterior de
+armadura inteira. As 12 bardas usam um único slot armor com peso integral;
+montaria tem cabeça, armadura, pescoço, capa, alforjes, arreios/acessórios e sela.
+Ferraduras são acessórios aplicados nas patas pelo ilustrador. Migration 078
+arquiva partes de mochila/cofre/reservas, consolida cópias sem multiplicá-las,
+desativa peças antigas e invalida só a revisão de equipamento afetada. Imagem
+anterior permanece até nova geração. Vestir usa base confiável + barda COMPLETA
++ acessórios. Humanoides/mascotes mantêm 254 conjuntos de seis peças.
+
+Backup before-whole-mount-perspective-20261007.dump validado: 435.515.103 bytes.
+API House 16/16, geometria 8/8, conjuntos 3/3, companions 2/2 e migração da barda
+1/1 passaram em bancos isolados. Navegador verificou 176 imagens decodificadas,
+16 vistas/setas, cursor/profundidade e seis camadas persistidas. Viewport/menu/RP
+passou em 1920/1440/768/390/320; cursor/poses altos e largos em quatro larguras.
+Publicação final concluída em localhost:3000: index-CCr29IMP / House-3b8IpMYG.
+Docker build TSC/Vite/tsup e compose up passaram; app saudável. SHA dos bundles,
+80 vistas anteriores, 82 novas imagens e arquivos protegidos conferidos contra
+a compilação local. Comparação pré/pós de 39 tabelas preservou contas, saldos,
+compras, House e VTT; as dez linhas complementares das duas bardas possuídas
+foram arquivadas/removidas, mantendo uma unidade inteira de cada e as reservas
+válidas. Ilustrador do host atualizado e disponível, filas vazias.
+
 ## Refino de equipamentos, regras e VTT (07/10/2026)
 
 Publicação local final da House em 07/10: index-391FztOh / House-C0P4d_7-,
@@ -12,11 +54,11 @@ real House→Loja→Empório→Estábulo→Explorar→House, arraste, RP, salvar
 Produção conferida por SHA dos bundles, 80 imagens e arquivos protegidos; dados
 de contas, saldo, estoque antigo, compras e layouts preservados no pré/pós.
 Marcador SKIN TEMÁTICA e categoria única de montaria também publicados.
-Pedido ainda em execução: substituir ícones das seis partes das 12 bardas por
-72 artes próprias. Fontes estão sendo geradas; não declarar essa parte publicada.
+O pedido então pendente de artes das partes de barda foi substituído pelo pedido
+posterior de barda inteira, documentado acima; não publicar as partes aposentadas.
 
-Toda armadura humanoide, barda e armadura de mascote é um conjunto de seis peças
-(266 conjuntos), com compra de partes reais e ação atômica para equipar o conjunto.
+Etapa anterior: 266 conjuntos de seis peças. O pedido posterior mantém 254
+conjuntos humanoides/mascotes e transforma as 12 bardas em armadura inteira.
 Migration 077 guarda snapshot do estoque antigo e completa peças uma só vez,
 sem alterar compras, quantidades originais ou saldos. Montarias aceitam somente
 destino mount; mascotes somente pet. O servidor consulta o catálogo confiável,
@@ -74,8 +116,8 @@ calibração. Guia docs/HOUSE-ART-DIRECTION.md.
 
 A House voltou a controles explícitos de tamanho/giro/direção/camadas. A página
 ocupa o viewport sem rolagem, com navegação à esquerda, cenário contido e painel
-à direita; em telas estreitas o painel vira gaveta interna. Engrenagem e setas
-flutuantes anteriores foram removidas. Chat RP e arraste preservam foco/cursor.
+à direita; em telas estreitas o painel vira gaveta interna. A engrenagem permanece
+removida; o pedido posterior retorna setas de direção. Chat RP e arraste preservam foco/cursor.
 
 Backup prévio validado: .local/backups/before-armor-animal-skins-20261007.dump
 (432.507.775 bytes), sem restaurá-lo sobre dados reais. Testes usam bancos isolados.

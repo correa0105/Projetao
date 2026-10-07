@@ -1,8 +1,9 @@
 # Equipamentos, conjuntos e skins — 07/10/2026
 
 O Inventário oferece **Personagem**, **Montaria** e **Mascote**. Os espaços vazios
-dos animais usam desenhos próprios: testeira/capacete, barda, proteções das patas,
-ferraduras ou garras, coleira, capa, alforjes, arreios e sela. As posições seguem
+dos animais usam desenhos próprios: montarias têm testeira/capacete, barda inteira,
+pescoço, capa, alforjes, arreios/acessórios e sela. Mascotes mantêm proteções de
+patas/garras conforme o conjunto e a espécie. As posições seguem
 a anatomia da espécie; serpentes e aves não recebem posições de quadrúpedes.
 
 ## Categoria correta para cada animal
@@ -32,12 +33,18 @@ a ferramenta nativa image_gen e copiadas para o projeto preservando transparênc
 
 ## Comprar e equipar uma armadura
 
-Cada um dos 266 conjuntos humanoides, bardas ou armaduras de mascote entrega seis
+Cada um dos 254 conjuntos humanoides ou armaduras de mascote entrega seis
 peças independentes: tronco, cabeça, braços/patas dianteiras, pernas/patas traseiras,
 pés/patas e ombros. Escudos permanecem escudos. O peso total e o preço da vitrine
 são os do conjunto completo; no inventário cada peça tem seu peso e nome próprios.
 O ID original identifica o tronco, e os IDs históricos da armadura de placas
 continuam válidos. As demais peças não são ofertas vendidas separadamente.
+
+Pedido posterior: as 12 bardas são itens completos, com peso integral e um único
+encaixe Armadura/barda no Inventário. Não destrinchar uma compra em partes. O
+ilustrador considera a barda inteira e os acessórios equipados nos outros espaços;
+ferraduras são acessórios e aparecem nas patas. Não usar um seletor de conjunto
+de seis partes na montaria.
 
 No painel equipado, **Armadura completa → Escolher conjunto → Equipar armadura**
 equipa todas as partes compatíveis de uma vez. As peças precisam estar na mochila
@@ -51,9 +58,15 @@ As operações usam uma única transação: `POST /inventory/equipment-set` e
 itens nem avança novamente a revisão da arte. O ilustrador recebe o modelo real
 do conjunto e uma instrução explícita de reproduzir somente cada parte equipada.
 
-Migration 077 registra uma vez as armaduras antigas da mochila e do cofre. O seed
+Migration 077 registrou uma vez as armaduras antigas da mochila e do cofre. O seed
 concede suas partes restantes, mantendo a quantidade original, o peso total, os
 saldos e o histórico de compras. Repetir o seed não concede as partes novamente.
+Migration 078 substitui somente a divisão das bardas: arquiva linhas antigas,
+consolida filhos entre mochilas/cofre por dono, recupera parent ausente sem
+multiplicar estoque, preserva itens inteiros/reservas válidas e desativa filhos.
+A revisão da montaria muda para exigir nova arte; a imagem anterior permanece.
+Preços, compras e saldos não mudam. `test-whole-mount-armor-isolated.mjs` verifica
+upgrade de estoque antigo e referências de barda inteira mais acessórios.
 
 ## Aparência das variantes mágicas
 

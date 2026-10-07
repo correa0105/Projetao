@@ -108,6 +108,52 @@
   object-fit: contain;
   pointer-events: none;
 }
+.house-piece > .house-item-art {
+  filter: var(--house-room-filter, none);
+}
+.house-floor-shadow {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -65%);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 57%,
+    #05030199 0%,
+    #05030165 32%,
+    #08050228 58%,
+    transparent 76%
+  );
+  filter: blur(2px);
+}
+.house-floor-shadow::after {
+  content: '';
+  position: absolute;
+  inset: 34% 9% 31%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #000a, #0004 43%, transparent 75%);
+}
+.house-rug-shadow {
+  opacity: 0.28;
+}
+.house-view-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 7500;
+  pointer-events: none;
+}
+.house-view-controls button {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  touch-action: manipulation;
+  border-radius: 50%;
+  background: #172126ec;
+  border-color: #aa8a53;
+  box-shadow: 0 2px 7px #0008;
+}
 .house-piece .pet-art svg {
   display: block;
   width: 100%;
@@ -426,7 +472,7 @@
 }
 .house-rp-overlay {
   position: absolute;
-  z-index: 700;
+  z-index: 8000;
   left: 50%;
   bottom: 6%;
   transform: translateX(-50%);

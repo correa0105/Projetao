@@ -32,11 +32,13 @@ const bundles = new Map<string, ArmorBundle>(
       'plate-boots',
       'plate-pauldrons',
     ];
-    const pieces = ARMOR_PIECE_SLOTS.map((slot, index) => ({
-      id: slot === 'armor' ? id : id === 'plate-armor' ? oldIds[index] : `${id}--${slot}`,
-      slot,
-      weight_lb: parts[index],
-    }));
+    const pieces = (target === 'mount' ? ['armor' as const] : ARMOR_PIECE_SLOTS).map(
+      (slot, index) => ({
+        id: slot === 'armor' ? id : id === 'plate-armor' ? oldIds[index] : `${id}--${slot}`,
+        slot,
+        weight_lb: target === 'mount' ? total : parts[index],
+      }),
+    );
     if (pieces.some((piece) => piece.id.length > 100))
       throw Error('ID de peça de armadura longo demais: ' + id);
     return [id, { id, weight_lb: total, target: target as EquipmentTarget, pieces }];

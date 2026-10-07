@@ -36,8 +36,40 @@ export function houseDefaultScale(catalogId: string) {
 }
 /** Real rendered views; old letter/frame assets remain unchanged. */
 export function houseItemImage(catalogId: string, facing = houseDefaultFacing(catalogId)) {
-  const directory = furniture.has(catalogId) ? 'house-refit-20261007' : 'views';
+  const directory = furniture.has(catalogId)
+    ? facing >= 8 || (['table', 'rug'].includes(catalogId) && facing === 0)
+      ? 'house-perspective-20261007'
+      : 'house-refit-20261007'
+    : 'views';
   return `/house/items/${directory}/${catalogId}/${facing}.webp`;
+}
+/** Keep legacy IDs 0..7; IDs 8..15 are the interleaved 22.5-degree views. */
+export function houseFacingOptions(catalogId: string) {
+  const names = [
+    'Frente',
+    'Frente e direita',
+    'Direita',
+    'Trás e direita',
+    'Trás',
+    'Trás e esquerda',
+    'Esquerda',
+    'Frente e esquerda',
+  ];
+  const options = names.map((label, value) => ({ value, label }));
+  return furniture.has(catalogId)
+    ? options.flatMap((option, i) => [
+        option,
+        { value: i + 8, label: `${option.label} · intermediária ${i * 45 + 22.5}°` },
+      ])
+    : options;
+}
+export function houseTurnFacing(catalogId: string, facing: number, direction: -1 | 1) {
+  const options = houseFacingOptions(catalogId);
+  const index = Math.max(
+    0,
+    options.findIndex((o) => o.value === facing),
+  );
+  return options[(index + direction + options.length) % options.length].value;
 }
 export const houseCatalog = [
   ...refitCatalog,
@@ -71,13 +103,14 @@ export const placementSchema = z
     ref: z.string().uuid(),
     x: z.number().min(0.02).max(0.98),
     y: z.number().min(0.08).max(0.98),
-    scale: z.number().min(0.03).max(0.55),
+    scale: z.number().min(0.03).max(0.8),
     rotation: z.number().min(-180).max(180),
-    facing: z.number().int().min(0).max(7).optional(),
+    facing: z.number().int().min(0).max(15).optional(),
     perspective_pitch: z.number().finite().min(0).max(20).optional(),
     perspective_yaw: z.number().finite().min(-20).max(20).optional(),
     frame_backing: z.boolean().optional(),
     layer: z.number().int().min(0).max(300),
+    depth_layer: z.number().int().min(1).max(6).optional(),
   })
   .strict();
 export type HousePlacement = z.infer<typeof placementSchema>;
@@ -157,6 +190,7 @@ export type HouseState = {
     y: number;
     scale: number;
     layer: number;
+    depth_layer?: number | null;
   }[];
   invites: { user_id: string; name: string; status: string }[];
   messages: { id: string; name: string; body: string; created_at: string }[];

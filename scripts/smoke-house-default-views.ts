@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { chromium, expect } from '@playwright/test';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
-import { houseCatalog } from '../shared/house.js';
+import { houseCatalog, houseItemImage } from '../shared/house.js';
 import refitCatalog from '../data/house-refit-catalog.json';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
@@ -54,8 +54,7 @@ const expectedViews: Record<string, number> = {
 };
 const refitActive = houseCatalog.some((spec) => spec.image.includes('/house-refit-20261007/'));
 if (refitActive) for (const spec of refitCatalog) expectedViews[spec.id] = spec.default_facing;
-const expectedPath = (id: string, facing: number) =>
-  `/house/items/${refitActive && !['letter', 'frame'].includes(id) ? 'house-refit-20261007' : 'views'}/${id}/${facing}.webp`;
+const expectedPath = (id: string, facing: number) => houseItemImage(id, facing);
 try {
   const user = (
     await request('/auth/sign-up/email', {
@@ -102,7 +101,9 @@ try {
     for (const id of ['letter', 'frame'])
       expect(widths[id]).toEqual(manifest.protected_assets.widths[id]);
     for (const asset of manifest.assets) {
-      const response = await context.request.get(origin + expectedPath(asset.id, asset.facing));
+      const response = await context.request.get(
+        origin + '/' + asset.path.replace(/^public\//, ''),
+      );
       expect(response.status(), asset.path).toBe(200);
       expect(
         createHash('sha256')

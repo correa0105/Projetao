@@ -243,6 +243,12 @@ export function CompanionEquipmentPanel({
       <header>
         <h2>{title}</h2>
         <p>Arraste da mochila ou clique em um espaço para equipar.</p>
+        {kind === 'mount' && (
+          <p>
+            A barda ocupa um único espaço de armadura. Vestir combina a armadura completa e os
+            acessórios equipados.
+          </p>
+        )}
       </header>
       {error && <FlashMessage>{error}</FlashMessage>}
       {notice && <FlashMessage kind="info">{notice}</FlashMessage>}
@@ -270,12 +276,14 @@ export function CompanionEquipmentPanel({
               ))}
             </select>
           </label>
-          <ArmorSetPicker
-            key={selected.id}
-            options={armorSets}
-            busy={disabled}
-            onEquip={(id) => void equipSet(id)}
-          />
+          {kind === 'pet' && (
+            <ArmorSetPicker
+              key={selected.id}
+              options={armorSets}
+              busy={disabled}
+              onEquip={(id) => void equipSet(id)}
+            />
+          )}
           <div className="companion-outfit-grid">
             <figure className="companion-outfit-image">
               <img

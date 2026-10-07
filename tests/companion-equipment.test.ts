@@ -179,9 +179,9 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
       item_id: null,
     });
     const concurrent = await Promise.all([
-      equip('mount', mount.id, 'feet', 'horseshoes-of-speed'),
+      equip('mount', mount.id, 'belt', 'horseshoes-of-speed'),
       equip('pet', dog.id, 'feet', 'horseshoes-of-speed'),
-      equip('mount', otherMount.id, 'feet', 'horseshoes-of-speed'),
+      equip('mount', otherMount.id, 'belt', 'horseshoes-of-speed'),
     ]);
     assert.equal(concurrent.filter((entry) => entry.status === 200).length, 1);
     assert.equal(concurrent.filter((entry) => entry.status === 409).length, 1);
@@ -199,7 +199,7 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
         'mount',
         'warhorse',
       ),
-      ['feet'],
+      ['belt'],
     );
     assert.deepEqual(
       compatibleCompanionSlots(

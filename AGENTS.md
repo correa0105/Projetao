@@ -65,8 +65,11 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 Direção explícita de 07/10: montarias e mascotes NÃO podem equipar itens humanos.
 Destino human/mount/pet é determinado pelo catálogo do servidor; nunca inferir
 compatibilidade animal por nome genérico de couro, capacete ou armadura. Preservar
-bens legados do estábulo. Toda armadura (exceto escudo) é um conjunto de peças reais,
-com ação atômica para equipar e reserva das cópias existentes. Guia vigente:
+bens legados do estábulo. Pedido posterior: bardas de montaria são um item inteiro,
+com um único espaço de armadura; não dividir em peças. Migration 078 arquiva e
+consolida as partes antigas sem multiplicar unidades nem alterar compras/saldos.
+Humanoides e mascotes mantêm conjuntos de seis peças reais, com ação atômica
+para equipar e reserva das cópias existentes. Guia vigente:
 docs/ANIMAL-ARMOR-MAGIC-SKINS.md. Migration 077 preserva estoque antigo em snapshot.
 Famílias de armas mágicas têm identidade visual compartilhada entre seus modelos;
 usar skins próprias por variante, preservando a forma real da arma, inclusive no
@@ -115,7 +118,13 @@ preserva cursor em retratos compridos. Camadas também abaixo da cena. Em 07/10 
 usuário pediu retornar à aparência anterior: retirar o experimento de afinamento
 CSS3D e seus controles. Preservar oito vistas reais e escala por profundidade.
 pitch/yaw legados continuam aceitos no JSONB para não invalidar layouts salvos,
-mas não devem deformar a renderização. Detalhes em docs/CONTEXTO.md.
+mas não devem deformar a renderização. Refino posterior autorizado: os dez móveis
+têm 16 vistas reais (oito intermediárias adicionais), setas esquerda/direita na
+seleção e escala de piso calibrada para hall-hearth. Carta/quadro mantêm oito.
+Sombras de contato e exposição são específicas da sala; não aplicar luz de lareira
+a ambientes externos. Camadas 1–6 para peças e personagens: 1 sobrepõe 2, até 6.
+depth_layer opcional preserva a ordenação antiga; migration 079 adiciona a coluna
+nullable da presença. Detalhes em docs/CONTEXTO.md.
 
 Referência posterior de 07/10 para TODA mobília futura: casar a perspectiva real
 da arte com a câmera baixa e o piso do cenário fornecido pelo usuário, com pés,
@@ -124,10 +133,12 @@ docs/HOUSE-ART-DIRECTION.md. Vitrine e primeira colocação usam vistas adequada
 já existentes; não modificar direções/posições de layouts salvos automaticamente.
 Pedido posterior substitui todos os dez móveis por novos modelos semelhantes
 à sala de referência; carta e quadro permanecem. Conservar os IDs comprados e
-layouts explícitos. Artes novas em house-refit-20261007, oito vistas reais cada.
+layouts explícitos. Oito vistas base em house-refit-20261007 e oito intermediárias
+em house-perspective-20261007, com frentes da mesa/tapete recalibradas.
 House ocupa o viewport sem rolagem da página, navegação à esquerda e painel de
 controles à direita. Direção, tamanho, giro, camadas e ações voltam a controles
-explícitos, substituindo a engrenagem e setas flutuantes. frame_backing opcional preserva abertura transparente por padrão;
+explícitos, substituindo a engrenagem. Pedido posterior retorna somente as setas
+para alternar vistas reais; os ajustes continuam no painel. frame_backing opcional preserva abertura transparente por padrão;
 madeira frontal é composição CSS atrás da imagem e fica salva no layout.
 Duplo clique em carta/quadro abre leitura com arte aberta, título acima e quatro fontes locais
 OFL; texto real escapado pelo React. Guias HOUSE.md/EMPORIO-EXPANSAO.md vigentes.

@@ -27,8 +27,10 @@ export async function armorSetPieces(
     const item = items.find((item) => item.id === piece.id);
     if (
       equipmentTarget(item) !== target ||
-      item.raw_data?.armor_bundle_parent !== parentId ||
-      item.raw_data?.piece_slot !== piece.slot
+      (target === 'mount'
+        ? item.id !== parentId || item.raw_data?.armor_complete !== true
+        : item.raw_data?.armor_bundle_parent !== parentId ||
+          item.raw_data?.piece_slot !== piece.slot)
     )
       throw new AppError(
         400,

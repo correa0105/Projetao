@@ -24,6 +24,31 @@ export async function seedArmorPieces(db: PoolClient) {
       rows: [parent],
     } = await db.query('SELECT * FROM catalog_items WHERE id=$1', [bundle.id]);
     if (!parent) throw Error('Armadura do conjunto não encontrada: ' + bundle.id);
+    if (bundle.target === 'mount') {
+      const raw = {
+        ...parent.raw_data,
+        equipment_target: 'mount',
+        equipment_slots: ['armor'],
+        armor_complete: true,
+      };
+      for (const key of [
+        'armor_bundle_parent',
+        'armor_bundle_pieces',
+        'armor_bundle_weight_lb',
+        'armor_bundle_model_image',
+        'armor_bundle_name',
+        'armor_piece_name',
+        'armor_piece_image',
+        'piece_slot',
+      ])
+        delete raw[key];
+      await db.query('UPDATE catalog_items SET weight_lb=$2,raw_data=$3 WHERE id=$1', [
+        bundle.id,
+        bundle.weight_lb,
+        raw,
+      ]);
+      continue;
+    }
     const names = bundle.target === 'human' ? ARMOR_PIECE_NAMES : ANIMAL_PIECE_NAMES;
     const raw = {
       ...parent.raw_data,
@@ -72,11 +97,7 @@ export async function seedArmorPieces(db: PoolClient) {
         [
           piece.id,
           pieceRaw.armor_piece_name,
-          bundle.target === 'human'
-            ? 'Peças de armadura'
-            : bundle.target === 'mount'
-              ? 'Equipamento de montaria'
-              : 'Acessórios para pet',
+          bundle.target === 'human' ? 'Peças de armadura' : 'Acessórios para pet',
           `Parte visual do conjunto ${parent.name}. Incluída na compra do conjunto; não adiciona estatísticas ou efeitos independentes.`,
           piece.weight_lb,
           parent.source,

@@ -145,7 +145,7 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
       assert.equal((await request(`/house/${home.id}`, owner, 'PUT', input)).status, 409);
       home = await load();
       assert.equal(home.rooms[0].placements[0].facing, 7);
-      for (const invalid of [-1, 8, 1.5]) {
+      for (const invalid of [-1, 16, 1.5]) {
         const invalidView = layout();
         invalidView.rooms[0].placements[0].facing = invalid;
         assert.equal((await request(`/house/${home.id}`, owner, 'PUT', invalidView)).status, 400);
@@ -651,6 +651,31 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
             .status,
           200,
         );
+        for (const depth_layer of [1, 2, 3, 4, 5, 6]) {
+          assert.equal(
+            (await request(`/house/${home.id}/presence`, owner, 'PUT', { ...input, depth_layer }))
+              .status,
+            200,
+          );
+          assert.equal(
+            (await load()).presence.find((p: any) => p.user_id === owner.id).depth_layer,
+            depth_layer,
+          );
+        }
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, owner, 'PUT', legacy)).status,
+          200,
+        );
+        assert.equal(
+          (await load()).presence.find((p: any) => p.user_id === owner.id).depth_layer,
+          6,
+        );
+        for (const depth_layer of [0, 7, 1.5])
+          assert.equal(
+            (await request(`/house/${home.id}/presence`, owner, 'PUT', { ...input, depth_layer }))
+              .status,
+            400,
+          );
       },
     );
     await t.test('bloqueio social impede convites e presentes', async () => {
