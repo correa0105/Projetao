@@ -25,6 +25,8 @@ import type { MonsterAction } from '../shared/vtt-monster-actions';
 import type { AttackRequest } from '../shared/vtt-attack';
 import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttAttack } from './VttAttack';
+import { requestSpellCast } from './useVttSpells';
+import { breathProfile } from '../shared/vtt-spells';
 import './vtt-hotbar.css';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
 export function ActionShortcut({ action }: { action: HotbarAction }) {
@@ -308,18 +310,8 @@ export function VttHotbar({
       } else if (action.kind === 'spell' && data) {
         const spell = spells.find((s) => s.id === action.sourceId);
         if (!spell) throw Error('Magia indisponível.');
-        if (mode === 'cast' && spell.level > 0) {
-          await api(`/vtt/rooms/${roomId}/sheets/${data.token.id}/use`, {
-            method: 'POST',
-            body: JSON.stringify({
-              kind: 'slot',
-              slot: spell.level,
-              idempotency_key: crypto.randomUUID(),
-            }),
-          });
-          await refresh();
-        }
-        await shareSpell(spell.name);
+        if (mode === 'cast') requestSpellCast(data.token.id, spell.name);
+        else await shareSpell(spell.name);
       } else if (action.kind === 'consumable' && data) {
         const item = data.inventory.find(
           (i) => i.id === action.sourceId && i.consumable && i.quantity > 0,
@@ -420,6 +412,22 @@ export function VttHotbar({
             </button>
           ) : selected?.action.kind === 'monster' ? (
             <>
+              {selected.monster && breathProfile(selected.monster.action) && (
+                <button
+                  disabled={busy}
+                  onClick={() => {
+                    if (selected.action.kind === 'monster')
+                      requestSpellCast(
+                        selected.action.tokenId,
+                        undefined,
+                        selected.monster!.action,
+                      );
+                    setSelected(null);
+                  }}
+                >
+                  Preparar área da habilidade
+                </button>
+              )}
               {selected.monster?.action.attack && (
                 <button disabled={busy} onClick={() => void execute('attack')}>
                   Rolar ataque
@@ -451,17 +459,8 @@ export function VttHotbar({
               <button disabled={busy || !selected.data} onClick={() => void execute('description')}>
                 Descrição no chat
               </button>
-              <button
-                disabled={
-                  busy ||
-                  !selected.data ||
-                  (!!spell?.level &&
-                    (selected.data?.resources.slots_used[spell.level - 1] ?? 0) >=
-                      (selected.data?.resources.slots_total[spell.level - 1] ?? 0))
-                }
-                onClick={() => void execute('cast')}
-              >
-                {spell?.level ? `Conjurar · gastar espaço ${spell.level}` : 'Conjurar truque'}
+              <button disabled={busy || !selected.data} onClick={() => void execute('cast')}>
+                Preparar conjuração
               </button>
             </>
           ) : selected ? (

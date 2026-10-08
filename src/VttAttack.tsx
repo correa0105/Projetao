@@ -8,7 +8,12 @@ import {
   type AttackRequest,
 } from '../shared/vtt-attack';
 import type { VttMessage, VttToken } from '../shared/vtt';
-import { weaponVisual, type AttackVisualCommand } from '../shared/vtt-attack-visual';
+import {
+  weaponVisual,
+  weaponStyle,
+  weaponStyleNames,
+  type AttackVisualCommand,
+} from '../shared/vtt-attack-visual';
 import './vtt-attack.css';
 type Roll = NonNullable<VttMessage['roll']>;
 export function VttAttack({
@@ -34,7 +39,7 @@ export function VttAttack({
   discardDamage: (messageIds: string[]) => Promise<void>;
 }) {
   const [mode, setMode] = useState<AttackMode>('normal'),
-    [visual, setVisual] = useState<'auto' | 'sword' | 'arrow' | 'none'>('auto'),
+    [visual, setVisual] = useState<'auto' | 'none'>('auto'),
     [result, setResult] = useState<{
       roll: Roll;
       target: VttToken;
@@ -48,7 +53,7 @@ export function VttAttack({
   const [applied, setApplied] = useState(false);
   const inFlight = useRef(false),
     completed = useRef<Roll[]>([]),
-    context = `${request.actorId}:${target?.id || ''}:${active}`,
+    context = `${request.actorId}:${request.name}:${target?.id || ''}:${active}`,
     currentContext = useRef(context);
   currentContext.current = context;
   useEffect(() => {
@@ -97,7 +102,8 @@ export function VttAttack({
           : {
               actor_id: request.actorId,
               target_id: snapshot.id,
-              kind: visual === 'auto' ? weaponVisual(request.name) : visual,
+              kind: weaponVisual(request.name),
+              weapon: weaponStyle(request.name),
             },
       );
       if (!value) throw Error('A rolagem não retornou um resultado.');
@@ -163,9 +169,7 @@ export function VttAttack({
         disabled={busy || pending}
         onChange={(e) => setVisual(e.target.value as typeof visual)}
       >
-        <option value="auto">Animação automática</option>
-        <option value="sword">Corte de espada</option>
-        <option value="arrow">Flecha</option>
+        <option value="auto">Automática · {weaponStyleNames[weaponStyle(request.name)]}</option>
         <option value="none">Sem animação e som</option>
       </select>
       <button disabled={busy || !target || !active || pending} onClick={() => void attack()}>

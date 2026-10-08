@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-08",
+  "id": "monster-adult-black-dragon",
+  "scope": "Gentle spinal pose refinement requested by user",
+  "generatedSource": "exec-4154b1ab-1c59-4376-9f70-92ab4e33388f.png",
+  "oldSha256": "505083a22a5aab35492f713f0d493b0eb033ddccaf244cea6bc3be7ac184a94e",
+  "newSha256": "00f2ee0631703ea03dd4cd8c6780c6f8c598c353af35bbe4c8f691595c6702e0",
+  "width": 1106,
+  "height": 1660,
+  "transparentPixels": 1014678,
+  "solidPixels": 739157,
+  "padding": {
+    "horizontal": 41,
+    "vertical": 62
+  },
+  "prompt": "Make a SMALL PRECISE POSE REFINEMENT to this existing original Adult Black Dragon overhead VTT cutout. The user likes its curved natural stance but its spinal column is now TOO TORTUOUS. Keep the entire illustration's identity, charcoal-black scales, olive-dark wing membranes, horns, four legs, two asymmetrically spread wings, dorsal plate detail, colors, lighting and strict overhead view. Reduce the lateral bend and twisting of the MIDDLE TRUNK and WAIST by roughly 35 percent. Smooth out the tight zigzag where chest transitions to abdomen and pelvis. The spine should form one broad, relaxed, shallow S-curve from neck through trunk to hips, with anatomically coherent ribs and shoulder/pelvic connections. Do NOT make the creature ruler-straight or perfectly mirrored. Keep some gentle lateral body movement; retain the supple neck and long tail's graceful sweep. Aim for a calm naturally curving dragon with a stable torso, rather than a deeply contorted or kinked body. Wings stay coherent at the shoulders and all four limbs attach naturally after the small torso adjustment. This is a restrained adjustment, NOT a complete redesign, different species, different palette or dramatic new pose. Preserve detailed original realistic hand-painted fantasy token quality. Exact 90-degree orthographic camera looking down at the dorsal surface. Single full-body isolated creature, transparent RGBA background, full head, wing tips, feet and tail comfortably within canvas with at least 5% transparent margin. No floor, ring, atmosphere, text, shadow puddle, watermark or other creatures."
+}

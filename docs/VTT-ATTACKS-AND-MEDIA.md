@@ -3,7 +3,14 @@
 Atualização de 08/10/2026. Na ficha ou barra rápida, escolha o ataque, marque o alvo
 clicando no token inimigo e use **Rolar ataque**. A animação automática usa flecha
 para arco/besta e corte para as outras armas. O seletor **Animação do ataque**
-permite escolher corte, flecha ou nenhum som/animação para aquele ataque.
+oferece a animação adequada à arma ou nenhum som/animação. Uma arma corpo a corpo
+não oferece flecha; o servidor também rejeita combinações incompatíveis.
+
+Refino posterior: sete artes próprias transparentes para espada, machado, maça,
+lança, adaga, arco e besta, com aço, madeira, couro e encaixes detalhados.
+Animações distinguem balanço/estocada/disparo, rastros e impactos críticos.
+Sprites versionados e prompts em `public/vtt/attack-weapons-v2/manifest.json`,
+gerados com imagegen integrado. Renderização usa fallback durante o carregamento.
 
 A espada percorre a direção atacante–alvo com um corte metálico; o arco tensiona,
 dispara uma flecha com rastro curto e mostra impacto ao acertar. Erros passam ao

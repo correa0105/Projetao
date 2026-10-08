@@ -15,9 +15,13 @@ import { drawDeath } from './vtt-death';
 import { drawTokenEffects } from './vtt-effects-canvas';
 import { drawPing, type VttPing } from './vtt-ping';
 import { drawTurnEffect } from './vtt-turn-effect';
+import { drawSpellEffects, drawSpellPreview, type SpellPreview } from './vtt-spell-effects';
+import type { SpellEffect } from '../shared/vtt-spells';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
   visualEffects?: boolean;
+  spellEffects?: SpellEffect[];
+  spellPreview?: SpellPreview | null;
   camera: VttCamera;
   width: number;
   height: number;
@@ -293,6 +297,12 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.restore();
   };
   for (const layer of ['map', 'tokens', 'gm']) {
+    if (layer === 'tokens' && o.visualEffects !== false && o.spellEffects) {
+      drawSpellEffects(c, s, o.spellEffects, 'behind', {
+        left:cam.x-width/2/cam.zoom,top:cam.y-height/2/cam.zoom,
+        right:cam.x+width/2/cam.zoom,bottom:cam.y+height/2/cam.zoom,
+      }, Date.now(), matchMedia('(prefers-reduced-motion: reduce)').matches);
+    }
     if (layer === 'gm' && (!o.gm || o.preview)) continue;
     for (const d of s.drawings.filter((d) => d.layer === layer)) {
       c.save();
@@ -434,6 +444,9 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     }
     if (layer === 'map') drawGrid();
   }
+  const spellView={left:cam.x-width/2/cam.zoom,top:cam.y-height/2/cam.zoom,right:cam.x+width/2/cam.zoom,bottom:cam.y+height/2/cam.zoom};
+  if (o.visualEffects !== false && o.spellEffects) drawSpellEffects(c, s, o.spellEffects, 'front', spellView, Date.now(), matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (o.spellPreview) drawSpellPreview(c, s, o.spellPreview, spellView, cam.zoom);
   if (s.lighting || (s.fog && s.fogMode === 'vision')) {
     const master = o.gm && !o.preview;
     const darkness = master ? s.gmDarkness : 1;

@@ -106,6 +106,10 @@ import { VttEffects } from './VttEffects';
 import { VttAttackVisuals } from './VttAttackVisuals';
 import { VttEffectSounds } from './VttEffectSounds';
 import { useVttMediaPreferences } from './vtt-media-preferences';
+import { useVttSpells, requestSpellCast } from './useVttSpells';
+import { VttSpellControls } from './VttSpellControls';
+import { VttSpellSounds } from './VttSpellSounds';
+import { spellProfile, breathProfile } from '../shared/vtt-spells';
 import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttSoundboard } from './VttSoundboard';
 import { VttSoundCredits } from './VttSoundCredits';
@@ -705,6 +709,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     return promise;
   }, []);
   const combat = useVttCombat(state?.id, scene?.id, save, refreshRoom);
+  const spellcasting = useVttSpells(state?.id, scene, user.id, gm && !preview, save, refreshRoom);
   async function act(fn: () => Promise<unknown>) {
     try {
       setNotice('');
@@ -881,6 +886,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           height: bounds.height,
           dpr,
           visualEffects,
+          spellEffects: spellcasting.effects,
+          spellPreview: spellcasting.preview,
           images: images.current,
           selected: selection,
           target: attackTarget?.id,
@@ -911,7 +918,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       );
     let frame = 0;
     const ends = visualEffects
-      ? scene.tokens.flatMap((t) => t.effects.map(effectEnds)).filter((at) => at > Date.now())
+      ? [...scene.tokens.flatMap((t) => t.effects.map(effectEnds)), ...spellcasting.effects.filter((e) => !e.persistent && e.expires).map((e) => e.expires!)].filter((at) => at > Date.now())
       : [];
     const until = visualEffects
       ? Math.max(
@@ -926,6 +933,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       visualEffects &&
       (!!combat.state?.active ||
         !!effectPreview ||
+        spellcasting.effects.some((e) => e.persistent && (!e.expires || e.expires > Date.now())) ||
         scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death')));
     const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
     const restartAnimation = () => {
@@ -960,6 +968,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     previewViewerId,
     state?.viewingUser,
     effectPreview,
+    spellcasting.effects,
+    spellcasting.preview,
     visualEffects,
     imageVersion,
     layer,
@@ -1152,6 +1162,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (barrierTools.has(tool) && !barrierEditing) return;
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
+    if (!spectator && !preview && spellcasting.pending && e.button === 0) {
+      spellcasting.choose(snap, tokenAt(p, scene, '*', gm));
+      return;
+    }
     e.currentTarget.setPointerCapture(e.pointerId);
     if (spectator) {
       drag.current = {
@@ -1394,6 +1408,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     else setRuler([snap, snap]);
   }
   function pointerMove(e: ReactPointerEvent<HTMLCanvasElement>) {
+    if (spellcasting.pending && !preview) {
+      const p = point(e);
+      spellcasting.hover(e.altKey || !scene ? p : snapPoint(p, scene.grid));
+      return;
+    }
     const d = drag.current;
     if (fogPoints.length) {
       setFogPointer(point(e));
@@ -1708,6 +1727,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   function useMonsterAction(t: VttToken, action: MonsterAction) {
     if (!gm || preview) return;
     setSheetId(null);
+    if (breathProfile(action)) {
+      requestSpellCast(t.id, undefined, action);
+      return;
+    }
     if (action.attack)
       beginAttack({
         actorId: t.id,
@@ -2295,6 +2318,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           )}
         </nav>
         <div className="vtt-stage" ref={stage}>
+          <VttSpellControls spells={spellcasting} scene={scene} gm={gm && !preview} userId={user.id} />
+          <VttSpellSounds roomId={state.id} loaded={spellcasting.loaded} effects={spellcasting.effects} enabled={media.soundEnabled && !preview} volume={media.soundVolume} />
           <VttDice messages={state.messages} roomId={state.id} enabled={dice3d && visualEffects} />
           <VttAttackVisuals
             roomId={state.id}
@@ -3711,9 +3736,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                             </button>
                           )}
                           {library === 'spells' && (
+                            <>
+                            {spellProfile(entry.id) && <button className="vtt-gold" disabled={!canToken || !token || preview} onClick={() => requestSpellCast(token!.id, entry.id)}>
+                              Preparar conjuração
+                            </button>}
                             <button onClick={() => void act(() => send('', '', entry.id))}>
                               Compartilhar no chat
                             </button>
+                            </>
                           )}
                         </div>
                       ) : (

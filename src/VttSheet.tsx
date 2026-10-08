@@ -9,6 +9,7 @@ import { modifier, statNames } from '../shared/rules';
 import type { AttackRequest } from '../shared/vtt-attack';
 import './vtt-sheet.css';
 import { ActionShortcut } from './VttHotbar';
+import { requestSpellCast } from './useVttSpells';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
 export function VttSheet({
   roomId,
@@ -577,6 +578,17 @@ export function VttSheet({
                         >
                           Descrição no chat
                         </button>
+                        {data.can_use && (
+                          <button
+                            disabled={!spell}
+                            onClick={() => {
+                              requestSpellCast(token.id, spell!.name);
+                              close();
+                            }}
+                          >
+                            Preparar conjuração
+                          </button>
+                        )}
                       </article>
                     );
                   })}

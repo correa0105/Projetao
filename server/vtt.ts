@@ -9,6 +9,7 @@ import { requireAdministrator, isAdministrator } from './administrators.js';
 import { AppError } from './services.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
+import { vttSpellsRouter } from './vtt-spells.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
 import { vttSoundsRouter, validateSoundAssets } from './vtt-sounds.js';
 import { vttCombatRouter } from './vtt-combat.js';
@@ -354,6 +355,7 @@ export function vttRouter() {
     next();
   });
   router.use(vttSheetRouter(room));
+  router.use(vttSpellsRouter(room, canSee));
   router.use(vttHotbarRouter(room));
   router.use(vttSoundsRouter(room, gm, state));
   router.use(vttCombatRouter(room, canSee));
@@ -792,6 +794,7 @@ export function vttRouter() {
           ...input.attack_visual,
           sceneId: scene.id,
           hit: attackOutcome(roll, target.ac).hit,
+          critical: attackOutcome(roll, target.ac).critical,
         };
       }
       let damage = null;

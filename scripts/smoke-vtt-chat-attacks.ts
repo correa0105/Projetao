@@ -219,6 +219,13 @@ try {
   // Actual hotbar attack flow: attacker selection, target click, animation/audio.
   await page.getByRole('button', { name: 'Atalho 1 · Espada longa', exact: true }).click();
   await expect(page.getByLabel('Animação do ataque')).toBeVisible();
+  expect(
+    await page
+      .getByLabel('Animação do ataque')
+      .locator('option')
+      .evaluateAll((options) => options.map((o) => (o as HTMLOptionElement).value)),
+  ).toEqual(['auto', 'none']);
+  await expect(page.getByLabel('Animação do ataque')).not.toContainText('flecha');
   await clickToken(page, target);
   await expect(page.getByRole('button', { name: 'Rolar ataque', exact: true })).toBeEnabled();
   await page.getByRole('button', { name: 'Rolar ataque', exact: true }).click();
@@ -259,6 +266,14 @@ try {
     attack_visual: command,
   });
   expect(hit.status).toBe(201);
+  expect(
+    (
+      await api(player, root + '/messages', 'POST', {
+        formula: '1d20',
+        attack_visual: { ...command, weapon: 'axe' },
+      })
+    ).status,
+  ).toBe(400);
   const event = hit.data.messages.find((m: any) => m.id === hit.data.createdMessageId);
   expect(event.attackVisual.hit).toBe(attackOutcome(event.roll, target.ac).hit);
   expect(

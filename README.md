@@ -1,5 +1,10 @@
 # Alvorada Cinzenta
 
+VTT: **Preparar** magia mostra área em quadrados e alvos/disparos restantes antes
+do gasto. Espaços superiores recalculam as regras; 339 magias têm efeitos próprios,
+concentração persistente e controles em **Magias na cena**. Armas receberam novas
+artes e animação automática adequada à família. [Guia de magias](docs/VTT-MAGIAS-20261008.md).
+
 Revisão individual de 08/10: novas artes para Adult Black Dragon, Basilisk,
 Balor, Black Dragon Wyrmling, Elephant, Berserker e Shrieker Fungus. Créditos de
 áudio ficam recolhidos em Configurações e ajuda → Mesa, fora do painel Som.

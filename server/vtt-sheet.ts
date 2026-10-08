@@ -10,10 +10,10 @@ import { consumableItems } from '../shared/vtt-sheet.js';
 import { applyTokenDeath, type VttDocument } from '../shared/vtt.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = { id: string; owner_id: string; document: VttDocument; role?: string | null };
-type RoomAccess = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
+export type RoomAccess = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
 const uuid = z.string().uuid();
 const nine = z.array(z.number().int().min(0).max(30)).length(9);
-async function access(
+export async function access(
   getRoom: RoomAccess,
   db: DB,
   rid: string,
@@ -47,7 +47,7 @@ async function access(
   } = await db.query('SELECT * FROM character_sheets WHERE character_id=$1', [character.id]);
   return { room, token, character, sheet, isGm, canUse: isGm || token.controller === user };
 }
-async function resources(
+export async function resources(
   db: DB,
   character: { id: string; class: string },
   sheet: { slots_used?: number; hit_dice_used?: number } | null,

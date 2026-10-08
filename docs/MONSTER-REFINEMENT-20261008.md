@@ -37,6 +37,11 @@ e jogador. A mudança só reposiciona a apresentação dos créditos.
 
 ## Verificação
 
+Pedido posterior: a coluna do dragão negro foi suavizada para uma curva leve,
+conservando movimento, vista superior, asas, patas e cauda. O arquivo e ID
+existentes continuam iguais. Nova auditoria, prompt e hash em
+`data/vtt/black-dragon-gentle-20261008.json`; as outras 329 artes foram preservadas.
+
 - TSC e builds cliente/servidor aprovados na fonte de release.
 - Renderer real no navegador: sete WebP decodificados, tokens de 240 e 90 px,
   giro e espelho, sem erros de JavaScript; captura local

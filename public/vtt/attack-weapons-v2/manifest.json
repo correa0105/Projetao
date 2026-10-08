@@ -1,0 +1,97 @@
+{
+  "generator": "Built-in imagegen",
+  "created": "2026-10-08",
+  "assets": [
+    {
+      "style": "sword",
+      "path": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-39b7a8ef-bcc1-4053-a283-7599c0a61201.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium original medieval fantasy weapon sprite for a top-down virtual tabletop attack animation, isolated on genuinely transparent RGBA background. The camera looks straight down orthographically at the flat weapon (90-degree overhead), with NO perspective foreshortening. Rich realistic hand-painted game illustration, convincing sculpted metal surfaces, subtle worn bevels, minute forged marks, fine wood grain and tightly wrapped brown leather grip, understated antique bronze fittings. Clear high-quality silhouette readable at small scale. Neutral soft light from upper left; restrained highlights, no cast floor shadow, no mist or bloom. Full weapon comfortably inside wide canvas with 8 percent clear padding. Do not include a hand, character, floor, frame, text, watermark, extra weapon or background. This will move and rotate in code, so the weapon itself must be a clean opaque cutout with transparent empty spaces. One elegant battle-ready medieval longsword. Horizontal, pommel/grip on LEFT, point on RIGHT. Straight polished double-edged steel blade with long central fuller and tapering point. Substantial symmetric curved bronze crossguard, dark leather grip and rounded bronze pommel. Beautiful material detail, anatomically usable construction. The entire crossguard and tip visible.",
+      "file": "public/vtt/attack-weapons-v2/sword.webp",
+      "sourceWidth": 2048,
+      "sourceHeight": 768,
+      "width": 1024,
+      "height": 273,
+      "transparent": 1346474,
+      "solid": 207353,
+      "sha256": "2a57920de9fbebdfa7cd48e4ef8e6d6a3d7b4718419297be3f77d8bdd5c91a3a"
+    },
+    {
+      "style": "axe",
+      "path": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f0ca08f1-4fe1-46da-bf53-25dde2ba49cf.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium original medieval fantasy weapon sprite for a top-down virtual tabletop attack animation, isolated on genuinely transparent RGBA background. The camera looks straight down orthographically at the flat weapon (90-degree overhead), with NO perspective foreshortening. Rich realistic hand-painted game illustration, convincing sculpted metal surfaces, subtle worn bevels, minute forged marks, fine wood grain and tightly wrapped brown leather grip, understated antique bronze fittings. Clear high-quality silhouette readable at small scale. Neutral soft light from upper left; restrained highlights, no cast floor shadow, no mist or bloom. Full weapon comfortably inside wide canvas with 8 percent clear padding. Do not include a hand, character, floor, frame, text, watermark, extra weapon or background. This will move and rotate in code, so the weapon itself must be a clean opaque cutout with transparent empty spaces. One battle axe with a strong straight ash haft. Horizontal, lower grip on LEFT, axehead on RIGHT. One broad crescent-shaped forged steel cutting head facing RIGHT, with a curved cutting edge, beveled rim and subtle engraved knotwork on metal. Firm metal socket wraps the haft, leather grip near the left end. Show the entire haft and axe head. No fire or fantasy glow.",
+      "file": "public/vtt/attack-weapons-v2/axe.webp",
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "width": 1024,
+      "height": 433,
+      "transparent": 1282707,
+      "solid": 274562,
+      "sha256": "ca942565d3e0e9f1f365f66e8a552f8968698386dde2c98618fabcf5ce9e945b"
+    },
+    {
+      "style": "mace",
+      "path": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-81cdc96d-d753-4b8d-91bc-f048a264791e.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium original medieval fantasy weapon sprite for a top-down virtual tabletop attack animation, isolated on genuinely transparent RGBA background. The camera looks straight down orthographically at the flat weapon (90-degree overhead), with NO perspective foreshortening. Rich realistic hand-painted game illustration, convincing sculpted metal surfaces, subtle worn bevels, minute forged marks, fine wood grain and tightly wrapped brown leather grip, understated antique bronze fittings. Clear high-quality silhouette readable at small scale. Neutral soft light from upper left; restrained highlights, no cast floor shadow, no mist or bloom. Full weapon comfortably inside wide canvas with 8 percent clear padding. Do not include a hand, character, floor, frame, text, watermark, extra weapon or background. This will move and rotate in code, so the weapon itself must be a clean opaque cutout with transparent empty spaces. One formidable medieval flanged mace. Horizontal, handle/grip on LEFT, macehead on RIGHT. Six heavy forged steel flanges on a solid central core, visible sculpted ridges and bevels, iron collar, straight wood haft with reinforced metal bands, brown leather grip and bronze pommel. Convincing balanced weapon and beautiful material detail.",
+      "file": "public/vtt/attack-weapons-v2/mace.webp",
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "width": 1024,
+      "height": 292,
+      "transparent": 1253929,
+      "solid": 302460,
+      "sha256": "b4449ebc7ee34111d201ae3f5171b7e4cc63bed77d6d4658b7117c2cc720a68b"
+    },
+    {
+      "style": "spear",
+      "path": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-7d59697d-979e-4d5e-a157-964c711e3184.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium original medieval fantasy weapon sprite for a top-down virtual tabletop attack animation, isolated on genuinely transparent RGBA background. The camera looks straight down orthographically at the flat weapon (90-degree overhead), with NO perspective foreshortening. Rich realistic hand-painted game illustration, convincing sculpted metal surfaces, subtle worn bevels, minute forged marks, fine wood grain and tightly wrapped brown leather grip, understated antique bronze fittings. Clear high-quality silhouette readable at small scale. Neutral soft light from upper left; restrained highlights, no cast floor shadow, no mist or bloom. Full weapon comfortably inside wide canvas with 8 percent clear padding. Do not include a hand, character, floor, frame, text, watermark, extra weapon or background. This will move and rotate in code, so the weapon itself must be a clean opaque cutout with transparent empty spaces. One medieval spear. Horizontal, butt/haft on LEFT, sharp point on RIGHT. Long straight dark ash shaft with fine wood grain, leather handgrip near the left quarter, long symmetric leaf-shaped steel spearhead with a raised center ridge and clean sharpened bevel, iron socket with two small bronze rings. Full spear included, no banner.",
+      "file": "public/vtt/attack-weapons-v2/spear.webp",
+      "sourceWidth": 2172,
+      "sourceHeight": 724,
+      "width": 1024,
+      "height": 52,
+      "transparent": 1451416,
+      "solid": 104877,
+      "sha256": "3fa2c476b2e121ac1912ac7915d87180c690c6e21576e6264979773193ff4a87"
+    },
+    {
+      "style": "dagger",
+      "path": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f9750a58-2512-4891-b431-6b8249f43a6d.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium original medieval fantasy weapon sprite for a top-down virtual tabletop attack animation, isolated on genuinely transparent RGBA background. The camera looks straight down orthographically at the flat weapon (90-degree overhead), with NO perspective foreshortening. Rich realistic hand-painted game illustration, convincing sculpted metal surfaces, subtle worn bevels, minute forged marks, fine wood grain and tightly wrapped brown leather grip, understated antique bronze fittings. Clear high-quality silhouette readable at small scale. Neutral soft light from upper left; restrained highlights, no cast floor shadow, no mist or bloom. Full weapon comfortably inside wide canvas with 8 percent clear padding. Do not include a hand, character, floor, frame, text, watermark, extra weapon or background. This will move and rotate in code, so the weapon itself must be a clean opaque cutout with transparent empty spaces. One sturdy medieval fighting dagger. Horizontal, pommel/grip on LEFT, sharp blade point on RIGHT. Short wide double-edged steel blade with forged center ridge and slight fuller, compact bronze guard, brown leather grip and decorated round pommel. Subtle nicks and polished bevels, elegant restrained details.",
+      "file": "public/vtt/attack-weapons-v2/dagger.webp",
+      "sourceWidth": 2022,
+      "sourceHeight": 778,
+      "width": 1024,
+      "height": 288,
+      "transparent": 1157768,
+      "solid": 402557,
+      "sha256": "8ccec5f97d0a1a4f5814c1a4b80ed0043bcb3830a4c5d67ebd6310c93b994f87"
+    },
+    {
+      "style": "bow",
+      "path": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-fbc60df8-b115-4671-a44d-0f663d23aca9.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium original medieval fantasy weapon sprite for a top-down virtual tabletop attack animation, isolated on genuinely transparent RGBA background. The camera looks straight down orthographically at the flat weapon (90-degree overhead), with NO perspective foreshortening. Rich realistic hand-painted game illustration, convincing sculpted metal surfaces, subtle worn bevels, minute forged marks, fine wood grain and tightly wrapped brown leather grip, understated antique bronze fittings. Clear high-quality silhouette readable at small scale. Neutral soft light from upper left; restrained highlights, no cast floor shadow, no mist or bloom. Full weapon comfortably inside wide canvas with 8 percent clear padding. Do not include a hand, character, floor, frame, text, watermark, extra weapon or background. This will move and rotate in code, so the weapon itself must be a clean opaque cutout with transparent empty spaces. One unstrung? No: one properly STRUNG recurved longbow at rest. The bow lies vertically in the image, top limb upward and bottom limb downward, right side curved outward toward RIGHT; the taut straight pale bowstring joins the upper and lower tips toward LEFT, with grip at the middle. Both limbs have equal functional length and bend, ash-and-darkwood lamination, brown leather center grip, small bronze nocks. A beautiful realistic medieval bow. No arrow, hand or spare string. Full two limbs and attached taut string visible.",
+      "file": "public/vtt/attack-weapons-v2/bow.webp",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "width": 185,
+      "height": 1024,
+      "transparent": 1470492,
+      "solid": 81301,
+      "sha256": "899c2da3ccef5a9330446da63b3d717c54d9cd949401d133d17d6e4ee4e6a0bd"
+    },
+    {
+      "style": "crossbow",
+      "path": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-61a75f93-1502-44b9-ab5a-d4a48c61b565.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE premium original medieval fantasy weapon sprite for a top-down virtual tabletop attack animation, isolated on genuinely transparent RGBA background. The camera looks straight down orthographically at the flat weapon (90-degree overhead), with NO perspective foreshortening. Rich realistic hand-painted game illustration, convincing sculpted metal surfaces, subtle worn bevels, minute forged marks, fine wood grain and tightly wrapped brown leather grip, understated antique bronze fittings. Clear high-quality silhouette readable at small scale. Neutral soft light from upper left; restrained highlights, no cast floor shadow, no mist or bloom. Full weapon comfortably inside wide canvas with 8 percent clear padding. Do not include a hand, character, floor, frame, text, watermark, extra weapon or background. This will move and rotate in code, so the weapon itself must be a clean opaque cutout with transparent empty spaces. One medieval wooden crossbow viewed straight from above. Its stock and rail run HORIZONTALLY from butt/grip on LEFT to the firing end on RIGHT. The curved steel prod is mounted near the RIGHT end and spreads above and below the stock, with a bowstring that connects BOTH tips to the central catch farther LEFT. A dark carved walnut stock, leather handgrip, polished iron trigger and metal fittings. Correct crossbow anatomy, elegant sturdy silhouette. No bolt, hand or extra weapon. The entire crossbow and string comfortably visible.",
+      "file": "public/vtt/attack-weapons-v2/crossbow.webp",
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "width": 1024,
+      "height": 528,
+      "transparent": 1308830,
+      "solid": 242106,
+      "sha256": "e8981c285ec80a87631472f9df33cb92d76687497478ed0d7b60ed84d0f80f3d"
+    }
+  ]
+}

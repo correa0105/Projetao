@@ -1,5 +1,21 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Magias, armas e próximos pedidos (08/10/2026)
+
+Preparação de magias com áreas em quadrados, alvos/raios restantes, espaços superiores
+por regra individual, 339 receitas visuais próprias e persistência/concentração.
+Servidor valida ownership/visão/alcance/ficha e gasta o espaço atomicamente uma vez.
+Mestre remove efeitos; campos movíveis e baforada recebida têm controles próprios.
+Migration 083. Detalhes/testes em VTT-MAGIAS-20261008.md. Armas têm sete sprites
+imagegen e animações por família; corpo a corpo não oferece flecha.
+Dragão negro recebeu curva mais discreta, mantendo ID/URL; auditoria em
+data/vtt/black-dragon-gentle-20261008.json.
+
+Fila autorizada após o VTT: uniformizar Cartas, Hall da Fama, Perfis, Eventos,
+Torre e Salão de cartas; depois criar/integrar 40 novos assets da House com
+perspectiva das quatro salas anexadas (salão/cozinha/varanda/pátio). Estado em
+FILA-REFINO-20261008.md. A revisão geral 330×4 continua pausada e fora do release.
+
 ## Revisão individual de monstros e créditos (08/10/2026)
 
 Sete pedidos individuais aplicados: Adult Black Dragon com curva corporal,
