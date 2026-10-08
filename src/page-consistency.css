@@ -1,0 +1,316 @@
+/* Match the approved page header, charcoal surfaces and Cinzel/DM Sans typography. */
+:root
+  .app-shell:is(
+    [data-page='character-cards'],
+    [data-page='hall'],
+    [data-page='profiles'],
+    [data-page='events'],
+    [data-page='tower'],
+    [data-page='cards']
+  )
+  .main-shell {
+  background: radial-gradient(ellipse at 50% 15%, #55422a26, transparent 65%), var(--page);
+}
+:root
+  :is(
+    .hall-of-fame,
+    .profiles-page,
+    .character-cards-page,
+    .events-page,
+    .tower-page,
+    .cards-room
+  ) {
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+:root :is(.hall-of-fame, .profiles-page, .character-cards-page, .tower-page, .cards-room) {
+  background: transparent;
+}
+:root :is(.hall-of-fame, .profiles-page) {
+  --profile-accent: var(--accent);
+  min-height: 100dvh;
+  padding: calc(var(--page-header-height) + 54px) var(--page-header-edge) 120px;
+}
+:root .hall-of-fame.embedded {
+  min-height: 0;
+  padding: 22px 0 45px;
+}
+:root .profiles-page.visiting {
+  padding: 0;
+}
+:root .character-cards-page {
+  padding: 20px var(--page-header-edge) 100px;
+}
+:root .character-card-collection {
+  margin: 0 auto;
+}
+:root .character-cards-heading {
+  max-width: 1050px;
+  margin: 0 auto 32px;
+}
+:root .character-cards-heading h2 {
+  margin: 0;
+  font: 400 21px/1.4 var(--serif);
+}
+:root
+  :is(.hall-heading, .profiles-directory-heading, .events-heading, .cards-room-content > header)
+  h2 {
+  font: 400 clamp(22px, 2.5vw, 30px)/1.35 var(--serif);
+  letter-spacing: -0.3px;
+  color: var(--ink);
+  margin: 10px 0 16px;
+}
+:root
+  :is(.hall-of-fame, .profiles-page, .events-page, .tower-page, .cards-room, .character-cards-page)
+  :is(p, label, small) {
+  color: var(--secondary-ink);
+}
+:root
+  :is(
+    .social-eyebrow,
+    .tower-kicker,
+    .tower-eyebrow,
+    .events-heading .eyebrow,
+    .cards-room .eyebrow
+  ) {
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  font-size: 10px;
+}
+:root .profiles-directory-heading {
+  margin: 28px 0 38px;
+  text-align: left;
+  max-width: 720px;
+}
+:root .profiles-directory-heading > p {
+  margin: 0 0 22px;
+}
+:root .profiles-finder {
+  max-width: 620px;
+  margin: 0;
+}
+:root
+  :is(
+    .hall-champion,
+    .hall-search,
+    .hall-score-guide,
+    .hall-table,
+    .profile-directory > article,
+    .profiles-finder,
+    .character-card-inventory,
+    .character-card-empty,
+    .event-feature,
+    .events-empty,
+    .events-agenda > button,
+    .tower-floor,
+    .tower-hidden,
+    .tower-run-detail,
+    .tower-create,
+    .tower-claim,
+    .tower-guide
+  ) {
+  background: linear-gradient(145deg, var(--surface-raised), var(--surface));
+  border-color: var(--theme-border);
+  color: var(--ink);
+  box-shadow: 0 8px 24px #0002;
+}
+:root .hall-champion.place-1 {
+  border-color: #c49a5290;
+  box-shadow: 0 0 35px #c49a5212;
+}
+:root
+  :is(.hall-champion, .profile-directory > article, .cards-detail, .character-card-description)
+  :is(h2, h3, h4),
+:root .tower-page :is(h2, h3),
+:root .event-feature h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--ink);
+}
+:root .hall-table-row {
+  background: var(--surface-inset);
+  border-color: var(--theme-border);
+}
+:root .hall-table-head {
+  background: var(--surface);
+  color: var(--secondary-ink);
+}
+:root .hall-character strong,
+:root .social-modal :is(h2, h3),
+:root .events-agenda h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+:root :is(.hall-rankings, .profiles-top, .events-filters, .tower-tabs) {
+  border-color: var(--theme-border);
+}
+:root :is(.hall-rankings, .events-filters, .tower-tabs) button[aria-pressed='true'] {
+  background: #c49a521a;
+  border-color: #c49a5270;
+  color: #e2c28d;
+}
+:root
+  :is(
+    .hall-pagination button,
+    .profiles-top > div > button,
+    .profile-directory > article > button,
+    .social-modal,
+    .social-panel,
+    .tower-page select,
+    .tower-run-detail input,
+    .tower-create input
+  ) {
+  background: var(--surface-inset);
+  color: var(--ink);
+  border-color: var(--theme-border);
+}
+:root :is(.social-avatar, .hall-portrait) {
+  background: radial-gradient(var(--surface-raised), var(--surface-inset));
+}
+:root .events-page {
+  padding: calc(var(--page-header-height) + 54px) var(--page-header-edge) 110px;
+  background: var(--page);
+}
+:root .events-heading {
+  margin-bottom: 32px;
+  max-width: 760px;
+}
+:root .events-heading .event-seal {
+  display: none;
+}
+:root .events-shade {
+  background:
+    linear-gradient(90deg, rgba(21, 20, 19, var(--events-darkness)) 20%, #15141360 100%),
+    linear-gradient(0deg, var(--page), #15141320 70%);
+}
+:root .events-content {
+  max-width: 1320px;
+}
+:root .tower-page {
+  --tower-ink: var(--page);
+  --tower-line: var(--theme-border);
+  --tower-gold: var(--accent);
+}
+:root .tower-hero-shade {
+  background:
+    linear-gradient(90deg, #151413eb, #15141390 35%, #15141310 70%),
+    linear-gradient(0deg, var(--page), transparent 40%);
+}
+:root .tower-hero-copy {
+  padding: calc(var(--page-header-height) + 64px) var(--page-header-edge) 90px;
+}
+:root .tower-hero-copy h2 {
+  font: 400 clamp(30px, 3.5vw, 48px)/1.2 var(--serif);
+  margin: 24px 0;
+}
+:root .tower-hero-copy h2 i {
+  display: block;
+  font-style: normal;
+  color: #d0ad77;
+}
+:root .tower-body {
+  width: min(1320px, 100%);
+  max-width: 1320px;
+  padding-inline: var(--page-header-edge);
+}
+:root :is(.tower-table-wrap, .tower-loot-preview, .tower-floor, .tower-floor-picker) {
+  min-width: 0;
+  max-width: 100%;
+}
+:root .tower-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+:root .tower-wallet {
+  background: #22201ecf;
+  border-color: var(--theme-border);
+  color: var(--accent);
+}
+:root .cards-scene {
+  background: var(--page);
+}
+:root .cards-room-content > header {
+  left: var(--page-header-edge);
+  top: calc(var(--page-header-height) + 60px);
+}
+:root .cards-room-shade {
+  background:
+    linear-gradient(180deg, #15141380, transparent 35%, transparent 60%, var(--page)),
+    linear-gradient(90deg, #15141360, transparent 45%);
+}
+:root .cards-detail {
+  background: var(--surface);
+  border: 1px solid var(--theme-border);
+  border-radius: 6px;
+  margin: 24px auto 0;
+  max-width: 1050px;
+  padding: 26px clamp(18px, 3vw, 38px);
+}
+:root .cards-host-dialogue {
+  background: #22201ef5;
+  border-color: var(--theme-border);
+  color: var(--ink);
+}
+:root .cards-host-dialogue :is(h2, h3),
+:root .cards-gold strong {
+  font-family: var(--serif);
+}
+@media (max-width: 900px) {
+  :root :is(.hall-of-fame, .profiles-page, .events-page) {
+    padding: calc(2 * var(--page-header-height) + 58px) 18px 105px;
+  }
+  :root .hall-of-fame.embedded {
+    padding: 18px 0 40px;
+  }
+  :root .profiles-page.visiting {
+    padding: 0;
+  }
+  :root .character-cards-page {
+    padding: 16px 18px 100px;
+  }
+  :root .tower-hero-copy {
+    padding: calc(2 * var(--page-header-height) + 60px) 18px 80px;
+  }
+  :root .tower-body {
+    padding-inline: 18px;
+  }
+  :root .cards-room-content > header {
+    left: 18px;
+    top: calc(2 * var(--page-header-height) + 58px);
+  }
+}
+@media (max-width: 600px) {
+  :root .tower-floor-picker label {
+    display: grid;
+    gap: 8px;
+    width: min(260px, 100%);
+  }
+  :root .tower-floor-picker select {
+    width: 100%;
+  }
+  :root .cards-detail {
+    margin: 16px 12px 0;
+  }
+  :root .hall-podium {
+    gap: 10px;
+  }
+  :root .hall-champion {
+    padding-inline: 10px;
+  }
+  :root .profiles-top {
+    gap: 12px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  :root .profiles-top > div {
+    gap: 6px;
+  }
+  :root .cards-equipped {
+    top: 238px;
+  }
+  :root .tower-wallet {
+    right: 18px;
+    bottom: 22px;
+    max-width: calc(100% - 36px);
+  }
+}

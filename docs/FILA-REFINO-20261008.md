@@ -4,4 +4,4 @@ Ordem autorizada: armas/efeitos de ataque e leve ajuste da coluna do dragão neg
 
 A revisão geral de 330 monstros com quatro alternativas continua pausada. Preservar o protótipo local fora dos releases. Todas as etapas desta fila devem ser concluídas; esta nota registra a continuidade, não o encerramento dos pedidos.
 
-Estado: etapa VTT concluída, validada e aplicada no Docker local, incluindo casos especiais, baforada recebida e campos movíveis. Arquivos/banco e preservação de 43 tabelas conferidos. Layout das seis páginas em andamento; House ao final. Checkpoint no GitHub acompanha a conclusão de cada etapa.
+Estado: etapa VTT concluída, validada e aplicada no Docker local, incluindo casos especiais, baforada recebida e campos movíveis. Arquivos/banco e preservação de 43 tabelas conferidos. Layout das seis páginas concluído, revisto em quatro larguras e aplicado no Docker local. Próxima etapa: 40 novos objetos da House com artes próprias e vistas reais. Checkpoint no GitHub acompanha a conclusão de cada etapa.

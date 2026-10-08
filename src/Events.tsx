@@ -175,7 +175,7 @@ export function Events() {
             <CalendarDays size={27} />
           </div>
           <span className="eyebrow">OS ENCONTROS DA ALVORADA</span>
-          <h1>{sceneDoc.title}</h1>
+          <h2>{sceneDoc.title}</h2>
           <p>{sceneDoc.subtitle}</p>
           {canEdit && (
             <div className="events-admin-actions">

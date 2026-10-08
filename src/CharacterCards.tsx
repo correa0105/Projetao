@@ -169,7 +169,7 @@ export function CharacterCards({ character }: { character?: Character }) {
     <section className="character-cards-page">
       <div className="page-header-spacer" aria-hidden="true" />
       <header className="character-cards-heading">
-        <h1>Cartas de {character?.name || 'seu personagem'}</h1>
+        <h2>Coleção de {character?.name || 'seu personagem'}</h2>
       </header>
       {error && <p role="alert">{error}</p>}
       {character ? (

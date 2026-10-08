@@ -140,7 +140,7 @@ export function Cards({
         <div className="cards-room-content">
           <header>
             <span className="eyebrow">O SALÃO DA MEIA-NOITE</span>
-            <h1>O que a noite guarda.</h1>
+            <h2>O que a noite guarda.</h2>
             <p>Escolha as cartas que seguirão com {character?.name || 'seu personagem'}.</p>
           </header>
           <section className="cards-equipped" aria-label="Três cartas equipadas">

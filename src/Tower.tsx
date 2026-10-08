@@ -168,9 +168,9 @@ export function Tower({
             <span>EXPEDIÇÕES DA ALVORADA</span>
             <span className="tower-experimental">Experimental</span>
           </div>
-          <h1>
+          <h2>
             Torre <i>do Véu</i>
-          </h1>
+          </h2>
         </div>
         {character && (
           <div className="tower-wallet">

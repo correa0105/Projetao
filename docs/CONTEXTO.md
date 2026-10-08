@@ -1,5 +1,13 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Layout das seis páginas (08/10/2026)
+
+Cartas, Hall da Fama, Perfis, Eventos, Torre e Salão de cartas alinhados ao
+cabeçalho, Cinzel/DM Sans, cinza quente/carvão e ocre do site. Cenários e conteúdo
+preservados; visita de perfil mantém o acampamento aprovado. Revisão de seis
+rotas em 1440/768/390/320, sem overflow horizontal. Guia PAGE-CONSISTENCY-20261008.md.
+Próxima etapa autorizada: 40 novos objetos para House; acervo 330×4 ainda pausado.
+
 ## Magias, armas e próximos pedidos (08/10/2026)
 
 Preparação de magias com áreas em quadrados, alvos/raios restantes, espaços superiores

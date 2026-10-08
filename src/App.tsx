@@ -645,9 +645,7 @@ function Portal({ user }: { user: User }) {
       <div className="main-shell">
         {page !== 'vtt' && (
           <PageHeader
-            showTitle={
-              !['lore', 'events', 'tower', 'cards', 'vtt', 'hall', 'profiles'].includes(page)
-            }
+            showTitle={!['lore', 'vtt'].includes(page)}
             title={
               page === 'characters'
                 ? 'Seu acampamento'

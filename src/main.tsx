@@ -24,3 +24,4 @@ import './page-header.css';
 import './npc-speech.css';
 import './profile-menu.css';
 import './character-sheet-dark.css';
+import './page-consistency.css';

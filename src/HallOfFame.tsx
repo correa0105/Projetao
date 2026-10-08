@@ -97,7 +97,11 @@ export function HallOfFame({
     <section className={`hall-of-fame ${embedded ? 'embedded' : ''}`}>
       <div className="hall-heading">
         <span className="social-eyebrow">Nomes gravados na história</span>
-        <h1>{data?.document.title || 'Hall da Fama'}</h1>
+        <h2>
+          {data?.document.title && data.document.title !== 'Hall da Fama'
+            ? data.document.title
+            : 'Personagens em destaque'}
+        </h2>
         <p>{data?.document.intro || 'As histórias que deixam sua marca na Alvorada.'}</p>
         {data?.can_edit && !embedded && (
           <button

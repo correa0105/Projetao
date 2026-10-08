@@ -364,7 +364,7 @@ export function Profiles({ user }: { user: User }) {
         <>
           <header className="profiles-directory-heading">
             <span className="social-eyebrow">Cada viajante, um universo</span>
-            <h1>Perfis da Alvorada</h1>
+            <h2>Encontre um viajante</h2>
             <p>Encontre amigos e descubra as histórias por trás dos personagens.</p>
             <label className="profiles-finder">
               <Search size={19} />
