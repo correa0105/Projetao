@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { soundSourceSchema } from './vtt-sounds.js';
 export const actionMime = 'application/x-alvorada-action';
 const characterActionSchema = z
   .object({
@@ -9,6 +10,13 @@ const characterActionSchema = z
   })
   .strict();
 export const hotbarActionSchema = z.union([
+  z
+    .object({
+      kind: z.literal('sound'),
+      sourceId: soundSourceSchema,
+      label: z.string().trim().min(1).max(180),
+    })
+    .strict(),
   characterActionSchema,
   z
     .object({

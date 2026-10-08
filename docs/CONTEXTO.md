@@ -1,5 +1,32 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Biblioteca e mixer de som VTT (07/10/2026)
+
+Usuário esclareceu acesso pago ao site: Tabletop Audio/SoundPad são referência,
+sem copiar trilhas não comerciais ou efeitos restritos. Biblioteca CC0 local
+com 75 sons (sete músicas, dez ambientes e 58 efeitos), 23,9 MB OGG estéreo.
+Cinco composições próprias usam gravações/foley licenciados. Fontes, licenças,
+hashes e medições em public/audio/vtt; guia docs/VTT-SOUNDS.md.
+
+Aba Som agora tem busca, categorias, música exclusiva e mistura de ambientes/
+efeitos, volume/loop por arquivo, prévia local, upload e Parar todos. Atalhos de
+som usam o hotbar existente (Fixar/arraste, 1–0), com ajustes salvos; GM dono
+administrador controla, demais participantes ouvem com preferências locais.
+JSONB soundboard default vazio sem migration/reescrita; comandos atômicos sob
+lock, arquivos validados por mesa/tipo, upload/music legado e áudio do mapa
+preservados. Engine independente com polling 1s, timeline de loops, gain/fade,
+eventos sem replay e disparos rápidos individuais, cleanup ao sair/reconectar.
+
+TSC, engine/schema 6/6 e API descartável 7/7. Navegador: mestre/jogador com mídia
+real tocando, prévia privada sem mudar revisão, clique/tecla/arraste, volumes e
+atalhos persistentes, cleanup, quatro larguras 320–1440 px sem overflow; painel
+no celular conserva acesso ao hotbar. Capturas test-results/vtt-sound-library-*.png.
+Regressão VTT/perfis/comunidade 23/23 passou. Docker atualizado em localhost:3000;
+health e index/JS/CSS conferidos, incluindo Vtt-CFxApQcj / index-BNOnQTyj. Todos
+os 75 áudios servidos bateram com os hashes do manifest. Sete artes privadas de
+monstros preservadas no container; acesso anônimo segue 401. Comparação pré/pós
+de 43 tabelas idêntica, incluindo bens, ouro, mensagens, House e salas VTT.
+
 ## Efeitos: referências PeriSFX e JB2A (07/10/2026)
 
 Pedido posterior: elevar qualidade usando demonstrações públicas PeriSFX e

@@ -1,5 +1,11 @@
 # Alvorada Cinzenta
 
+Som do VTT: biblioteca local de **75 músicas, ambientes e efeitos**, com volume,
+repetição, prévia privada e mistura na mesa. **Fixar** por clique ou arraste
+coloca o som nos dez atalhos; clique ou teclas 1–0 usa o ajuste salvo. Bases CC0
+compatíveis com o acesso pago ao site, incluindo cinco composições de ambientes
+próprias. [Biblioteca, fontes e funcionamento](docs/VTT-SOUNDS.md).
+
 Efeitos do VTT refinados com as demonstrações públicas de PeriSFX/JB2A como
 referência: vapor com textura, gelo facetado radial, cura com fluxos de energia
 e relâmpagos com descargas e decaimento, mantendo a vista de cima.

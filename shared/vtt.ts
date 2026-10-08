@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { soundboardSchema, emptySoundboard } from './vtt-sounds.js';
 import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
 import { monsterCustomizationSchema } from './vtt-monster-presets.js';
 const id = z.string().uuid();
@@ -199,6 +200,7 @@ export type VttScene = z.infer<typeof sceneSchema>;
 export const documentSchema = z
   .object({
     version: z.literal(1),
+    soundboard: soundboardSchema.default(emptySoundboard),
     effects: z.array(effectPresetSchema).max(100).default([]),
     folders: z
       .array(
@@ -420,6 +422,7 @@ export function newDocument(id: string): VttDocument {
     round: 1,
     turn: 0,
     music: { assetId: null, playing: false, loop: true, volume: 0.45 },
+    soundboard: emptySoundboard(),
   };
 }
 /** Stable order within each layer; decimals and negative levels are intentional. */
@@ -443,7 +446,10 @@ export function activateScene(doc: VttDocument, id: string) {
   const scene = doc.scenes.find((s) => s.id === id);
   if (!scene || scene.archived) return;
   doc.activeScene = id;
-  if (scene.onLoadAudio) doc.music = { ...doc.music, assetId: scene.onLoadAudio, playing: true };
+  if (scene.onLoadAudio) {
+    doc.music = { ...doc.music, assetId: scene.onLoadAudio, playing: true };
+    doc.soundboard.voices = doc.soundboard.voices.filter((v) => v.channel !== 'music');
+  }
 }
 export function newToken(id: string, scene: VttScene): VttToken {
   return tokenSchema.parse({

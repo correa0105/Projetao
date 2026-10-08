@@ -10,6 +10,7 @@ import { AppError } from './services.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
+import {vttSoundsRouter,validateSoundAssets} from './vtt-sounds.js';
 import { vttCombatRouter } from './vtt-combat.js';
 import {
   vttPremiumRouter,
@@ -117,6 +118,7 @@ function paths(doc: VttDocument) {
     );
 }
 async function validateAssets(db: DB, rid: string, doc: VttDocument) {
+  await validateSoundAssets(db,rid,doc);
   const ids = [
     ...new Set(
       paths(doc)
@@ -340,6 +342,7 @@ export function vttRouter() {
   });
   router.use(vttSheetRouter(room));
   router.use(vttHotbarRouter(room));
+  router.use(vttSoundsRouter(room,gm,state));
   router.use(vttCombatRouter(room, canSee));
   router.use(vttDamageRouter(room, canSee, state));
   router.use(vttMonsterPresetRouter());

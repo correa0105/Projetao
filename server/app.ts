@@ -139,7 +139,7 @@ export function createApp() {
       : express.json({ limit: '128kb' })(req, res, next),
   );
   const isVttSync = (req: express.Request) =>
-    req.method === 'GET' && /^\/vtt\/rooms\/[0-9a-f-]{36}\/(signal|combat)$/.test(req.path);
+    req.method === 'GET' && /^\/vtt\/rooms\/[0-9a-f-]{36}\/(signal|combat|sounds)$/.test(req.path);
   const isVttArtwork = (req: express.Request) =>
     ['GET', 'HEAD'].includes(req.method) &&
     /^\/vtt\/premium-(?:preview-)?art\/monster-[a-z0-9-]+$/.test(req.path);
@@ -197,7 +197,7 @@ export function createApp() {
     '/api',
     rateLimit({
       windowMs: 60000,
-      limit: 180,
+      limit: 300,
       standardHeaders: 'draft-8',
       legacyHeaders: false,
       skip: (req) => !isVttSync(req),

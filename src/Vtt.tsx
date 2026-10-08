@@ -101,6 +101,9 @@ import { VttDice } from './VttDice';
 import { VttToolGroup } from './VttToolGroup';
 import { VttHotbar, ActionShortcut } from './VttHotbar';
 import { VttEffects } from './VttEffects';
+import { VttSoundboard } from './VttSoundboard';
+import { useVttSounds } from './useVttSounds';
+import { soundSettings, type SoundCommand } from '../shared/vtt-sounds';
 import { VttRollHelp } from './VttRollHelp';
 import { useVttCombat, VttTurnCarousel, VttCombatPanel } from './VttCombat';
 import { effectEnds, type EffectPreset } from '../shared/vtt-effects';
@@ -354,8 +357,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     }),
     [inviteInput, setInviteInput] = useState(''),
     [roomName, setRoomName] = useState('Mesa da Alvorada'),
-    [journalId, setJournalId] = useState(''),
-    [audioError, setAudioError] = useState('');
+    [journalId, setJournalId] = useState('');
   const canvas = useRef<HTMLCanvasElement>(null),
     chatLog = useRef<HTMLDivElement>(null),
     chatStick = useRef(true),
@@ -386,11 +388,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       baseSelection?: string[];
       path?: Point[];
     } | null>(null),
-    musicRef = useRef<HTMLAudioElement | null>(null),
     focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
     focusFrame = useRef(0),
     contextRef = useRef<HTMLDivElement>(null);
   const music = useMusicInterlude();
+  const sounds = useVttSounds(state?.id),
+    soundQueue = useRef(Promise.resolve());
   function customizeChatControls(collapsed: boolean) {
     setChatControlsCollapsed(collapsed);
     try {
@@ -475,6 +478,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setDirty(false);
   };
   function receive(next: VttState, reset = true) {
+    if (stateRef.current?.id === next.id && next.revision < stateRef.current.revision) return;
     if (stateRef.current?.id !== next.id) {
       focusSeen.current = {
         roomId: next.id,
@@ -953,31 +957,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     ping,
     gm,
   ]);
-  useEffect(() => {
-    if (!doc || !state) return;
-    const config = doc.music;
-    let audio = musicRef.current;
-    if (!audio) {
-      audio = new Audio();
-      musicRef.current = audio;
-    }
-    const path = config.assetId ? '/api/vtt/assets/' + config.assetId : '';
-    if (path && audio.src !== new URL(path, location.href).href) audio.src = path;
-    audio.loop = config.loop;
-    audio.volume = music.muted ? 0 : music.volume * config.volume;
-    if (config.playing && path && audio.volume > 0) {
-      void audio
-        .play()
-        .then(() => setAudioError(''))
-        .catch(() => setAudioError('Clique em Ativar áudio para ouvir a trilha.'));
-    } else audio.pause();
-  }, [doc?.music, music.muted, music.volume, state?.id]);
-  useEffect(
-    () => () => {
-      musicRef.current?.pause();
-    },
-    [],
-  );
   useEffect(() => {
     const unload = (event: BeforeUnloadEvent) => {
       if (dirtyRef.current) {
@@ -1811,6 +1790,49 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     await save();
     receive(await api<VttState>(`/vtt/rooms/${state!.id}`));
   }
+  function soundCommand(command: SoundCommand, roomId = stateRef.current?.id): Promise<void> {
+    if (!roomId) return Promise.reject(Error('Abra uma mesa.'));
+    const task = soundQueue.current
+      .catch(() => {})
+      .then(async () => {
+        await save();
+        const next = await post<VttState & { soundTime: number }>(
+          `/vtt/rooms/${roomId}/sounds`,
+          command,
+        );
+        if (stateRef.current?.id !== roomId) return;
+        sounds.accept({
+          revision: next.revision,
+          serverTime: next.soundTime,
+          soundboard: next.document.soundboard,
+          music: next.document.music,
+        });
+        if (dirtyRef.current && docRef.current) {
+          const merged = {
+            ...docRef.current,
+            soundboard: next.document.soundboard,
+            music: next.document.music,
+          };
+          stateRef.current = next;
+          setState(next);
+          docRef.current = merged;
+          setDoc(merged);
+        } else receive(next);
+      });
+    soundQueue.current = task;
+    return task;
+  }
+  async function playSound(sourceId: string) {
+    if (!gm) throw Error('Somente o mestre controla os sons da mesa.');
+    sounds.unlock();
+    const board = sounds.snapshot?.soundboard || docRef.current!.soundboard,
+      settings = soundSettings(sourceId, board);
+    await soundCommand(
+      sounds.active(sourceId) && settings.loop
+        ? { kind: 'stop', sourceId }
+        : { kind: 'play', sourceId },
+    );
+  }
   async function saveEffect(preset: EffectPreset) {
     edit((d) => {
       const i = d.effects.findIndex((e) => e.id === preset.id);
@@ -2267,6 +2289,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               refresh={refreshRoom}
               gm={gm}
               applyEffect={applyEffect}
+              playSound={playSound}
+              soundActive={sounds.active}
+              openSound={() => {
+                setTab('music');
+                setPanelOpen(true);
+              }}
               onAttack={beginAttack}
               attack={attack}
               target={attackTarget}
@@ -4174,91 +4202,20 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 </>
               )}
               {tab === 'music' && (
-                <>
-                  <p className="vtt-muted">
-                    Trilha compartilhada da mesa. Cada participante controla seu volume nas
-                    configurações de som do site.
-                  </p>
-                  {gm && (
-                    <label className="vtt-file-button">
-                      <Upload size={14} />
-                      Enviar MP3, WAV ou OGG
-                      <input
-                        type="file"
-                        accept="audio/mpeg,audio/wav,audio/ogg,audio/webm"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file)
-                            void act(async () => {
-                              await uploadAsset(file);
-                            });
-                          e.target.value = '';
-                        }}
-                      />
-                    </label>
-                  )}
-                  <label>
-                    Trilha
-                    <select
-                      disabled={!gm}
-                      value={doc.music.assetId || ''}
-                      onChange={(e) => edit((d) => (d.music.assetId = e.target.value || null))}
-                    >
-                      <option value="">Sem trilha</option>
-                      {state.assets
-                        .filter((a) => a.kind === 'audio')
-                        .map((a) => (
-                          <option key={a.id} value={a.id}>
-                            {a.name}
-                          </option>
-                        ))}
-                    </select>
-                  </label>
-                  {gm && (
-                    <>
-                      <button
-                        onClick={() => edit((d) => (d.music.playing = !d.music.playing))}
-                        disabled={!doc.music.assetId}
-                      >
-                        {doc.music.playing ? 'Pausar na mesa' : 'Tocar na mesa'}
-                      </button>
-                      <label className="vtt-check">
-                        <input
-                          type="checkbox"
-                          checked={doc.music.loop}
-                          onChange={(e) => edit((d) => (d.music.loop = e.target.checked))}
-                        />
-                        Repetir música
-                      </label>
-                      <label>
-                        Volume da mesa
-                        <input
-                          type="range"
-                          min="0"
-                          max="1"
-                          step=".01"
-                          value={doc.music.volume}
-                          onChange={(e) => edit((d) => (d.music.volume = Number(e.target.value)))}
-                        />
-                      </label>
-                    </>
-                  )}
-                  {audioError && <p>{audioError}</p>}
-                  <button
-                    onClick={() =>
-                      void musicRef.current
-                        ?.play()
-                        .then(() => setAudioError(''))
-                        .catch(() =>
-                          setAudioError(
-                            'Escolha uma trilha e habilite música nas configurações de som.',
-                          ),
-                        )
-                    }
-                  >
-                    Ativar áudio neste navegador
-                  </button>
-                </>
+                <VttSoundboard
+                  key={state.id}
+                  snapshot={sounds.snapshot}
+                  assets={state.assets}
+                  gm={gm}
+                  command={(c) => soundCommand(c, state.id)}
+                  upload={uploadAsset}
+                  error={sounds.error}
+                  unlock={sounds.unlock}
+                  active={sounds.active}
+                  preview={sounds.preview}
+                  stopPreview={sounds.stopPreview}
+                  previewing={sounds.previewing}
+                />
               )}
               {tab === 'table' && (
                 <>

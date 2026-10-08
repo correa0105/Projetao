@@ -1,5 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { Lock, Unlock, Plus, Trash2, Swords, Sparkles, FlaskConical, X } from 'lucide-react';
+import {
+  Lock,
+  Unlock,
+  Plus,
+  Trash2,
+  Swords,
+  Sparkles,
+  FlaskConical,
+  X,
+  Volume2,
+} from 'lucide-react';
 import { api } from './api';
 import {
   actionMime,
@@ -42,6 +52,9 @@ export function VttHotbar({
   refresh,
   gm,
   applyEffect,
+  playSound,
+  soundActive,
+  openSound,
   onAttack,
   attack,
   target,
@@ -73,6 +86,9 @@ export function VttHotbar({
   refresh: () => Promise<void>;
   gm: boolean;
   applyEffect: (id: string) => Promise<void>;
+  playSound: (id: string) => Promise<void>;
+  soundActive: (id: string) => boolean;
+  openSound: () => void;
 }) {
   const [state, setState] = useState<HotbarState | null>(null),
     [busy, setBusy] = useState(false),
@@ -150,6 +166,25 @@ export function VttHotbar({
     if (inFlight.current || attackBusy) return;
     closeAttack();
     setSelected(null);
+    if (action.kind === 'sound') {
+      if (!gm) {
+        setError('Esse atalho é exclusivo do mestre.');
+        return;
+      }
+      setSelected({ action, index });
+      setBusy(true);
+      inFlight.current = true;
+      setError('');
+      try {
+        await playSound(action.sourceId);
+      } catch (e) {
+        setError((e as Error).message);
+      } finally {
+        setBusy(false);
+        inFlight.current = false;
+      }
+      return;
+    }
     if (action.kind === 'effect' || action.kind === 'monster') {
       if (!gm) {
         setError('Esse atalho é exclusivo do mestre.');
@@ -375,6 +410,8 @@ export function VttHotbar({
               applyDamage={applyDamage}
               discardDamage={discardDamage}
             />
+          ) : selected?.action.kind === 'sound' ? (
+            <button onClick={openSound}>Abrir ajustes de som</button>
           ) : selected?.action.kind === 'effect' ? (
             <button disabled={busy} onClick={() => void execute('apply')}>
               Aplicar no token selecionado
@@ -542,11 +579,16 @@ export function VttHotbar({
               ? Swords
               : action?.kind === 'spell' || action?.kind === 'effect'
                 ? Sparkles
-                : FlaskConical;
+                : action?.kind === 'sound'
+                  ? Volume2
+                  : FlaskConical;
           return (
             <button
               key={i}
-              className="vtt-hotbar-slot"
+              className={
+                'vtt-hotbar-slot' +
+                (action?.kind === 'sound' && soundActive(action.sourceId) ? ' sound-active' : '')
+              }
               aria-label={`Atalho ${i === 9 ? 0 : i + 1}${action ? ' · ' + action.label : ' · vazio'}`}
               disabled={busy}
               title={action?.label || 'Arraste uma ação da ficha'}

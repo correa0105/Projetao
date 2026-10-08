@@ -62,6 +62,18 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Som VTT, direção de 07/10: o acesso ao site é pago. Tabletop Audio/SoundPad são
+referência de organização e qualidade; não incorporar suas trilhas NC nem os
+efeitos restritos ao site original. Acervo local de 75 arquivos com bases CC0,
+incluindo cinco composições próprias. Som reúne música, ambientes/efeitos em
+camadas, volume/loop/prévia por arquivo e Fixar/arraste para o hotbar existente.
+Somente dono administrador vigente controla áudio compartilhado; membros ouvem
+com volumes locais por canal. Preservar uploads, music legado, áudio do mapa e
+atalhos antigos. soundboard default no JSONB sem reescrita de salas antigas;
+comandos sob lock e fontes restritas ao catálogo/asset de áudio da própria mesa.
+Não repetir efeitos ao entrar ou após polls; permitir disparos rápidos separados.
+Guia docs/VTT-SOUNDS.md; testes sempre em banco UUID descartável.
+
 Visitas de perfil, direção posterior de 07/10: usar a grade, chão, escala e
 enquadramento da aba padrão de personagens. CampBackdrop e hooks de companheiros
 são compartilhados; medir novamente se detalhes chegarem antes do perfil.

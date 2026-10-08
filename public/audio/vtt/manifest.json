@@ -1,0 +1,1241 @@
+{
+  "date": "2026-10-07",
+  "assets": [
+    {
+      "id": "music-old-inn",
+      "file": "music-old-inn.ogg",
+      "sha256": "17e9a4b35344e6a19f52403bac21122462c5edde8613d43fee0fd48e430574d8",
+      "bytes": 1620326,
+      "duration": 105.48244897959184,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.79,
+      "peakDb": -0.9,
+      "sources": [
+        "medieval-the-old-tower-inn"
+      ]
+    },
+    {
+      "id": "music-bards-tale",
+      "file": "music-bards-tale.ogg",
+      "sha256": "4f6f12e30f19a06e1fc2ad692ba7bb89cd1e95e49ad73b0f9c029552e634fdec",
+      "bytes": 2363965,
+      "duration": 158.58938775510205,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.32,
+      "peakDb": -0.81,
+      "sources": [
+        "medieval-the-bards-tale"
+      ]
+    },
+    {
+      "id": "music-battle",
+      "file": "music-battle.ogg",
+      "sha256": "a526872beac3c533d2d1419b58f5ba4a5997b9279e811de542aa32e2436b4356",
+      "bytes": 1202129,
+      "duration": 78.91591836734693,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.45,
+      "peakDb": -2.57,
+      "sources": [
+        "medieval-battle"
+      ]
+    },
+    {
+      "id": "music-exploration",
+      "file": "music-exploration.ogg",
+      "sha256": "618e29bfb867124e2a825fde11ac1d89c4486bf75f26994ddf340313ece93e58",
+      "bytes": 3601357,
+      "duration": 236.35591836734693,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.08,
+      "peakDb": -0.82,
+      "sources": [
+        "medieval-exploration"
+      ]
+    },
+    {
+      "id": "music-kings-feast",
+      "file": "music-kings-feast.ogg",
+      "sha256": "a269bf4e2260332e533e6d5e0f63ed802aafe3cc84ccc16675be1d21314d6dce",
+      "bytes": 2062241,
+      "duration": 130.16816326530613,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.43,
+      "peakDb": -2.15,
+      "sources": [
+        "medieval-kings-feast"
+      ]
+    },
+    {
+      "id": "music-rising-moon",
+      "file": "music-rising-moon.ogg",
+      "sha256": "c420994232a7712a35f117b6cd33084eef57f7e88f0981e502bfcae206523763",
+      "bytes": 3070155,
+      "duration": 224.73142857142858,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.42,
+      "peakDb": -2.15,
+      "sources": [
+        "fantasy-rising-moon"
+      ]
+    },
+    {
+      "id": "music-warriors-lament",
+      "file": "music-warriors-lament.ogg",
+      "sha256": "fc4a57d88d95c5078396e9d3915ac13a0a43a3c52522f5b2c0c05b6808ff5ebf",
+      "bytes": 2242585,
+      "duration": 163.42204081632653,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.62,
+      "peakDb": -0.23,
+      "sources": [
+        "fantasy-lament-for-a-warriors-soul"
+      ]
+    },
+    {
+      "id": "sfx-belthandle1",
+      "file": "sfx-belthandle1.ogg",
+      "sha256": "81d322fe73af3f53e29024c3ae5d0b78b8b170fcebaebd025e48a96dbb48ead8",
+      "bytes": 9507,
+      "duration": 0.27671201814058954,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.14,
+      "peakDb": -1.06,
+      "sources": [
+        "kenney-rpg/beltHandle1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-belthandle2",
+      "file": "sfx-belthandle2.ogg",
+      "sha256": "37ef5c3fd9b07ed4834eebb07335f13f8aec4c876e6e05742f655c1b23a71757",
+      "bytes": 13619,
+      "duration": 0.4765532879818594,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -29.23,
+      "peakDb": -1.4,
+      "sources": [
+        "kenney-rpg/beltHandle2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookclose",
+      "file": "sfx-bookclose.ogg",
+      "sha256": "6720b82879b683092905d06c7b214f67075713f42c7f96211fed41ac51a1a91a",
+      "bytes": 8056,
+      "duration": 0.23061224489795917,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.49,
+      "peakDb": -0.9,
+      "sources": [
+        "kenney-rpg/bookClose.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookflip1",
+      "file": "sfx-bookflip1.ogg",
+      "sha256": "f9134371cf323a3dd018c0d7e9bed10afefdf66e7b3cf436c5931213bfd9155b",
+      "bytes": 15460,
+      "duration": 0.768639455782313,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -31.85,
+      "peakDb": -0.8,
+      "sources": [
+        "kenney-rpg/bookFlip1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookflip2",
+      "file": "sfx-bookflip2.ogg",
+      "sha256": "2068a86d2eaa854b16417d21ab51a18370aa5ed43b4a9dbaffaf66a07b394b0b",
+      "bytes": 11193,
+      "duration": 0.4304308390022676,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -30.37,
+      "peakDb": -1.66,
+      "sources": [
+        "kenney-rpg/bookFlip2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookflip3",
+      "file": "sfx-bookflip3.ogg",
+      "sha256": "1dbc6388d0b9a5a478cc3926a84101ef1d7828bdb79ff547feb2b30dbe9b110f",
+      "bytes": 8517,
+      "duration": 0.23061224489795917,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.83,
+      "peakDb": -1.25,
+      "sources": [
+        "kenney-rpg/bookFlip3.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookopen",
+      "file": "sfx-bookopen.ogg",
+      "sha256": "de8aae533502ec6853612ebb34e8902732e410aad6bdb74c535cdfdf1d6401b6",
+      "bytes": 7530,
+      "duration": 0.153718820861678,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -23.2,
+      "peakDb": -1.71,
+      "sources": [
+        "kenney-rpg/bookOpen.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookplace1",
+      "file": "sfx-bookplace1.ogg",
+      "sha256": "a89669d4cc1edd6a67698711b05273b1ab0cc79d91c6f31ef76861fc5749d370",
+      "bytes": 8894,
+      "duration": 0.27671201814058954,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.79,
+      "peakDb": -0.47,
+      "sources": [
+        "kenney-rpg/bookPlace1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookplace2",
+      "file": "sfx-bookplace2.ogg",
+      "sha256": "f331bb67a3c73ad2fb1b9fbb789a19d5b67abffe4b95de697a7565babfdc82b3",
+      "bytes": 9643,
+      "duration": 0.3535827664399093,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.97,
+      "peakDb": -0.88,
+      "sources": [
+        "kenney-rpg/bookPlace2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-bookplace3",
+      "file": "sfx-bookplace3.ogg",
+      "sha256": "d78a2f269f2be5bf3b43b4f3d840b5d9a0a9c21e84013b64acc1150beb92a7d5",
+      "bytes": 8436,
+      "duration": 0.2613378684807256,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.6,
+      "peakDb": -0.02,
+      "sources": [
+        "kenney-rpg/bookPlace3.ogg"
+      ]
+    },
+    {
+      "id": "sfx-chop",
+      "file": "sfx-chop.ogg",
+      "sha256": "9f45769be6e5762c19ea2aeec07ada9098a33d234cb3341235faf76a04945886",
+      "bytes": 8253,
+      "duration": 0.24024943310657595,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.1,
+      "peakDb": -0.3,
+      "sources": [
+        "kenney-rpg/chop.ogg"
+      ]
+    },
+    {
+      "id": "sfx-cloth1",
+      "file": "sfx-cloth1.ogg",
+      "sha256": "d731b0969a243996e89b7a53927d5a1d90bf40fe06130f67752ead46514b7835",
+      "bytes": 14290,
+      "duration": 0.6610430839002267,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.01,
+      "peakDb": -1.44,
+      "sources": [
+        "kenney-rpg/cloth1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-cloth2",
+      "file": "sfx-cloth2.ogg",
+      "sha256": "af10688f04f4e9338a7ad8f5a9cb308d594288cb160f2604f0a8fcf65dd7b47e",
+      "bytes": 10574,
+      "duration": 0.41505668934240364,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.86,
+      "peakDb": -1.27,
+      "sources": [
+        "kenney-rpg/cloth2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-cloth3",
+      "file": "sfx-cloth3.ogg",
+      "sha256": "8e4a45b20d9e0c8f06182043cff0993220180f59f1ba4b3d003f0b28684f21a5",
+      "bytes": 11187,
+      "duration": 0.4765532879818594,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.3,
+      "peakDb": -1.49,
+      "sources": [
+        "kenney-rpg/cloth3.ogg"
+      ]
+    },
+    {
+      "id": "sfx-cloth4",
+      "file": "sfx-cloth4.ogg",
+      "sha256": "fa0676fa9c7982b1d337a7baa452747855e0eaf576061737b24ba676fc1f4721",
+      "bytes": 10220,
+      "duration": 0.3843310657596372,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.9,
+      "peakDb": -1.45,
+      "sources": [
+        "kenney-rpg/cloth4.ogg"
+      ]
+    },
+    {
+      "id": "sfx-clothbelt",
+      "file": "sfx-clothbelt.ogg",
+      "sha256": "440729ccbc2f1863561f6fe7519b856ab67713ad712aad967fb6c62ed12bd1a6",
+      "bytes": 17984,
+      "duration": 0.7225170068027211,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.43,
+      "peakDb": -1.13,
+      "sources": [
+        "kenney-rpg/clothBelt.ogg"
+      ]
+    },
+    {
+      "id": "sfx-clothbelt2",
+      "file": "sfx-clothbelt2.ogg",
+      "sha256": "496bf1103901b1b79c5eaf21a754728d4b69d07912f164b5e38eca2b5c396219",
+      "bytes": 17526,
+      "duration": 0.7532879818594105,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -25.81,
+      "peakDb": -1.41,
+      "sources": [
+        "kenney-rpg/clothBelt2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creak1",
+      "file": "sfx-creak1.ogg",
+      "sha256": "6c415964959b31672e7a93d3a64864c2bdce6b1e431fb6ae2821e18c6fe0f34d",
+      "bytes": 14050,
+      "duration": 0.6610430839002267,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.14,
+      "peakDb": -1.32,
+      "sources": [
+        "kenney-rpg/creak1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creak2",
+      "file": "sfx-creak2.ogg",
+      "sha256": "567285e55720182dbfb92da817c67fd0a0c9c7f80ee2a7146032a1cf71c645f9",
+      "bytes": 16511,
+      "duration": 0.8301360544217687,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.97,
+      "peakDb": -1.1,
+      "sources": [
+        "kenney-rpg/creak2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creak3",
+      "file": "sfx-creak3.ogg",
+      "sha256": "c624a1725c3c67ebe5f5a1b2a83a359cf7f4ab000edc138c1601e8c9787ac6e0",
+      "bytes": 9118,
+      "duration": 0.3382086167800454,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.37,
+      "peakDb": -4.39,
+      "sources": [
+        "kenney-rpg/creak3.ogg"
+      ]
+    },
+    {
+      "id": "sfx-doorclose-1",
+      "file": "sfx-doorclose-1.ogg",
+      "sha256": "de1c396f2c3746828b1574d642f468ac8cd65644e7b5ed9c71a8139649d96ade",
+      "bytes": 14781,
+      "duration": 0.6750340136054421,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.54,
+      "peakDb": -0.32,
+      "sources": [
+        "kenney-rpg/doorClose_1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-doorclose-2",
+      "file": "sfx-doorclose-2.ogg",
+      "sha256": "5a569b1aceb0b03d2465396118948ce496711c8520d2285cae9de9c381675bb4",
+      "bytes": 14315,
+      "duration": 0.6124716553287982,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.49,
+      "peakDb": -0.97,
+      "sources": [
+        "kenney-rpg/doorClose_2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-doorclose-3",
+      "file": "sfx-doorclose-3.ogg",
+      "sha256": "359765fba31f83a58b87def0a7959a26a456a28f1b9203ca10e4f75618e24be3",
+      "bytes": 16337,
+      "duration": 0.7139455782312926,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.5,
+      "peakDb": -3.13,
+      "sources": [
+        "kenney-rpg/doorClose_3.ogg"
+      ]
+    },
+    {
+      "id": "sfx-doorclose-4",
+      "file": "sfx-doorclose-4.ogg",
+      "sha256": "ab5e101e99d2dd31453956d38103bbc90a95b33dfcca21f59834a12a10688af5",
+      "bytes": 13849,
+      "duration": 0.6033786848072562,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.58,
+      "peakDb": -1.16,
+      "sources": [
+        "kenney-rpg/doorClose_4.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dooropen-1",
+      "file": "sfx-dooropen-1.ogg",
+      "sha256": "8544c11e5cc5086154edf6b3fb4a2f413a8d783b50e84b269a40480489e5c117",
+      "bytes": 19067,
+      "duration": 0.9189569160997733,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.94,
+      "peakDb": -1.27,
+      "sources": [
+        "kenney-rpg/doorOpen_1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dooropen-2",
+      "file": "sfx-dooropen-2.ogg",
+      "sha256": "dd19569d2fbaecd996d75feb01d45a11e9759400e2c61f8b2999934df44c1598",
+      "bytes": 24880,
+      "duration": 1.4133106575963719,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.73,
+      "peakDb": -1.39,
+      "sources": [
+        "kenney-rpg/doorOpen_2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-drawknife1",
+      "file": "sfx-drawknife1.ogg",
+      "sha256": "e845348e2be4d8f36a974da8a5ed5847be9ccd6057724804bf2a3a924e85fe19",
+      "bytes": 10466,
+      "duration": 0.39970521541950116,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.34,
+      "peakDb": -1.28,
+      "sources": [
+        "kenney-rpg/drawKnife1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-drawknife2",
+      "file": "sfx-drawknife2.ogg",
+      "sha256": "74f5b0493647c1ba0fa0342b68fda9c7e6c9da85e5645f14efedcb5835c50529",
+      "bytes": 11300,
+      "duration": 0.445827664399093,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.98,
+      "peakDb": -0.89,
+      "sources": [
+        "kenney-rpg/drawKnife2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-drawknife3",
+      "file": "sfx-drawknife3.ogg",
+      "sha256": "27641656ca2c393bdf48cc6984081faf452f06766814284beff806aa5a8d5686",
+      "bytes": 11238,
+      "duration": 0.4765532879818594,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.52,
+      "peakDb": -1.16,
+      "sources": [
+        "kenney-rpg/drawKnife3.ogg"
+      ]
+    },
+    {
+      "id": "sfx-dropleather",
+      "file": "sfx-dropleather.ogg",
+      "sha256": "c9e16926923de5be2f36b142156f4199e3f24039f66005df878dd57ab303f2f7",
+      "bytes": 10130,
+      "duration": 0.4150793650793651,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.75,
+      "peakDb": -1.32,
+      "sources": [
+        "kenney-rpg/dropLeather.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep00",
+      "file": "sfx-footstep00.ogg",
+      "sha256": "fa54636071bcb29fedd82b70a5564454410a97f70020de2348c885f9cc6bf1de",
+      "bytes": 8290,
+      "duration": 0.24884353741496598,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.1,
+      "peakDb": -1.24,
+      "sources": [
+        "kenney-rpg/footstep00.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep01",
+      "file": "sfx-footstep01.ogg",
+      "sha256": "94868902f8cd0ed6ac016586f598f33f915496629edfaf99d93775ea81cfb370",
+      "bytes": 8662,
+      "duration": 0.2824716553287982,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.54,
+      "peakDb": -0.59,
+      "sources": [
+        "kenney-rpg/footstep01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep02",
+      "file": "sfx-footstep02.ogg",
+      "sha256": "86ef70735a2c00d6138fb7daaa0ce9b24e22099ad1b4ffa18f60468bda31b57c",
+      "bytes": 8182,
+      "duration": 0.24215419501133786,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.88,
+      "peakDb": -0.83,
+      "sources": [
+        "kenney-rpg/footstep02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep03",
+      "file": "sfx-footstep03.ogg",
+      "sha256": "635c75c1d0d2e22e1c81e8d0e6eb757264b262ec444185e414968c254c752cab",
+      "bytes": 9035,
+      "duration": 0.26902494331065757,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.46,
+      "peakDb": -0.58,
+      "sources": [
+        "kenney-rpg/footstep03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep04",
+      "file": "sfx-footstep04.ogg",
+      "sha256": "6063cb44ae167676f63d22cae671bea2a6296cfb27d09d6d38bbb0f81cafa74f",
+      "bytes": 9632,
+      "duration": 0.3228344671201814,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.63,
+      "peakDb": -1.01,
+      "sources": [
+        "kenney-rpg/footstep04.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep05",
+      "file": "sfx-footstep05.ogg",
+      "sha256": "da563d3cbf5437dee8018689e2a3860f9cecf954c725886d6dc81a875c1726ab",
+      "bytes": 9282,
+      "duration": 0.2757596371882086,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.17,
+      "peakDb": -1.0,
+      "sources": [
+        "kenney-rpg/footstep05.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep06",
+      "file": "sfx-footstep06.ogg",
+      "sha256": "39dabf22c9819669c4fc87e5d6760249702992f97ea89495f9046faeb0c5a47c",
+      "bytes": 9155,
+      "duration": 0.24213151927437643,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.69,
+      "peakDb": -0.8,
+      "sources": [
+        "kenney-rpg/footstep06.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep07",
+      "file": "sfx-footstep07.ogg",
+      "sha256": "d12423426cce3e3c7a5604b44b35738c5e42554ed739c689d34f93ac6b82da06",
+      "bytes": 8959,
+      "duration": 0.255578231292517,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.55,
+      "peakDb": -0.55,
+      "sources": [
+        "kenney-rpg/footstep07.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep08",
+      "file": "sfx-footstep08.ogg",
+      "sha256": "bbcf6921e14b7faea8d1be6daded70cee430f2568ec4dcb37ec7fbc99cafe908",
+      "bytes": 8177,
+      "duration": 0.255578231292517,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.7,
+      "peakDb": -0.87,
+      "sources": [
+        "kenney-rpg/footstep08.ogg"
+      ]
+    },
+    {
+      "id": "sfx-footstep09",
+      "file": "sfx-footstep09.ogg",
+      "sha256": "6c3ebc5fbbfc22d3bcf1a2589fec3a64026415ce2282908d2b96ced9dd5ac54c",
+      "bytes": 8398,
+      "duration": 0.21523809523809523,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.43,
+      "peakDb": -1.07,
+      "sources": [
+        "kenney-rpg/footstep09.ogg"
+      ]
+    },
+    {
+      "id": "sfx-handlecoins",
+      "file": "sfx-handlecoins.ogg",
+      "sha256": "caf53720ad7a6f68498e0bca09dab050fbd73fc5cbe2387e1edfe4c67b1c1430",
+      "bytes": 20458,
+      "duration": 0.8455102040816327,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -31.04,
+      "peakDb": -1.47,
+      "sources": [
+        "kenney-rpg/handleCoins.ogg"
+      ]
+    },
+    {
+      "id": "sfx-handlecoins2",
+      "file": "sfx-handlecoins2.ogg",
+      "sha256": "cac6700bc175d6c205973c55e817262f516dee02ee0f53226aaed78361a1bcc6",
+      "bytes": 11871,
+      "duration": 0.3382086167800454,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.71,
+      "peakDb": -1.73,
+      "sources": [
+        "kenney-rpg/handleCoins2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-handlesmallleather",
+      "file": "sfx-handlesmallleather.ogg",
+      "sha256": "6c601c5e10afd6f5847e407636c9b8069a23888e8933c85290e3a769370c38a9",
+      "bytes": 9851,
+      "duration": 0.3382086167800454,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.93,
+      "peakDb": -1.65,
+      "sources": [
+        "kenney-rpg/handleSmallLeather.ogg"
+      ]
+    },
+    {
+      "id": "sfx-handlesmallleather2",
+      "file": "sfx-handlesmallleather2.ogg",
+      "sha256": "11402fd400bdf2b5c221dd2777ba2c1d087b9a2dc3a1c44ed48a383dcb6823c6",
+      "bytes": 9423,
+      "duration": 0.3074829931972789,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.86,
+      "peakDb": -1.52,
+      "sources": [
+        "kenney-rpg/handleSmallLeather2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-knifeslice",
+      "file": "sfx-knifeslice.ogg",
+      "sha256": "11e7e8300cc356e7d1df877d6bf2fcc7b721b32cc5386b43a157e1fa3c32e074",
+      "bytes": 13324,
+      "duration": 0.5995464852607709,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.64,
+      "peakDb": -1.55,
+      "sources": [
+        "kenney-rpg/knifeSlice.ogg"
+      ]
+    },
+    {
+      "id": "sfx-knifeslice2",
+      "file": "sfx-knifeslice2.ogg",
+      "sha256": "e00657d9c10100e8c17ecbf49b99d4a3fd1aba5fe509abf79792234bbb169e5b",
+      "bytes": 13138,
+      "duration": 0.568798185941043,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.26,
+      "peakDb": -1.27,
+      "sources": [
+        "kenney-rpg/knifeSlice2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-metalclick",
+      "file": "sfx-metalclick.ogg",
+      "sha256": "5b246aa9eda3c37f5888b329a3f81c4049aa8f1c77d45597a28defc4b5424c9e",
+      "bytes": 11522,
+      "duration": 0.445827664399093,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.51,
+      "peakDb": -2.14,
+      "sources": [
+        "kenney-rpg/metalClick.ogg"
+      ]
+    },
+    {
+      "id": "sfx-metallatch",
+      "file": "sfx-metallatch.ogg",
+      "sha256": "ed33033352d074eb8b2d17106e1441befa833ba540a4989a5a24b21e714b8d0b",
+      "bytes": 8742,
+      "duration": 0.2613378684807256,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -23.52,
+      "peakDb": -0.94,
+      "sources": [
+        "kenney-rpg/metalLatch.ogg"
+      ]
+    },
+    {
+      "id": "sfx-metalpot1",
+      "file": "sfx-metalpot1.ogg",
+      "sha256": "c57a03ad0ef829581ba20b074085d5e0d8debca62c883cba34d425160ae20d0a",
+      "bytes": 25869,
+      "duration": 1.460453514739229,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.72,
+      "peakDb": -0.8,
+      "sources": [
+        "kenney-rpg/metalPot1.ogg"
+      ]
+    },
+    {
+      "id": "sfx-metalpot2",
+      "file": "sfx-metalpot2.ogg",
+      "sha256": "27dafca6b3cf76eac01f2fc78b744a149aee49a1646ebfc3bef7b3e9ce6eda0a",
+      "bytes": 18247,
+      "duration": 0.9377777777777778,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.59,
+      "peakDb": -2.04,
+      "sources": [
+        "kenney-rpg/metalPot2.ogg"
+      ]
+    },
+    {
+      "id": "sfx-metalpot3",
+      "file": "sfx-metalpot3.ogg",
+      "sha256": "72ca8dfbcf4f1a5b42b972d88d0b117f34344bd8bec6cd24d18bc30f3ab726f5",
+      "bytes": 18408,
+      "duration": 0.9070068027210885,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.59,
+      "peakDb": -3.29,
+      "sources": [
+        "kenney-rpg/metalPot3.ogg"
+      ]
+    },
+    {
+      "id": "sfx-magic-1",
+      "file": "sfx-magic-1.ogg",
+      "sha256": "ae01524dae33dcfb36805bacc03388f51ab99281b0a906668e703b811d17dd11",
+      "bytes": 24908,
+      "duration": 1.6090022675736961,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.39,
+      "peakDb": -2.62,
+      "sources": [
+        "magic-spell-sfx-0"
+      ]
+    },
+    {
+      "id": "sfx-magic-2",
+      "file": "sfx-magic-2.ogg",
+      "sha256": "2d156f64b947d9e9a5ea340ab9ea4f7bc2e104b66d5b796577dfaa2eb9de955c",
+      "bytes": 24276,
+      "duration": 1.3799546485260772,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.49,
+      "peakDb": -5.54,
+      "sources": [
+        "magic-spell-sfx-1"
+      ]
+    },
+    {
+      "id": "sfx-magic-3",
+      "file": "sfx-magic-3.ogg",
+      "sha256": "cc928668483138b4fbcda3d315a22da9a4e673f3d1473e3b8ad1bb56487cd6be",
+      "bytes": 23930,
+      "duration": 1.8205895691609977,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.44,
+      "peakDb": -3.84,
+      "sources": [
+        "magic-spell-sfx-2"
+      ]
+    },
+    {
+      "id": "sfx-magic-4",
+      "file": "sfx-magic-4.ogg",
+      "sha256": "61a4c59bb266f5d2487aa6a0e9de2ba871d98dc67f71686f36789797139b2c3d",
+      "bytes": 32828,
+      "duration": 2.414875283446712,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.39,
+      "peakDb": -3.79,
+      "sources": [
+        "magic-spell-sfx-3"
+      ]
+    },
+    {
+      "id": "sfx-magic-5",
+      "file": "sfx-magic-5.ogg",
+      "sha256": "9f3763f4f87e7792b3ad143fa0693afdb335afbe02a012eba77bc74528d7d348",
+      "bytes": 23247,
+      "duration": 1.4382539682539683,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.51,
+      "peakDb": -4.83,
+      "sources": [
+        "magic-spell-sfx-4"
+      ]
+    },
+    {
+      "id": "sfx-magic-6",
+      "file": "sfx-magic-6.ogg",
+      "sha256": "f6d57edcba46239effea24b5b5f2f91ef3306587bfdf7ebcbcacf9f78cdde449",
+      "bytes": 19751,
+      "duration": 1.1103854875283448,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.39,
+      "peakDb": -5.39,
+      "sources": [
+        "magic-spell-sfx-5"
+      ]
+    },
+    {
+      "id": "sfx-magic-7",
+      "file": "sfx-magic-7.ogg",
+      "sha256": "fd44cdc97b524ba80b6578dfed73bb1535f34d026c697a5fec59a184979c16f3",
+      "bytes": 30480,
+      "duration": 1.540498866213152,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -18.4,
+      "peakDb": -3.67,
+      "sources": [
+        "magic-spell-sfx-6"
+      ]
+    },
+    {
+      "id": "amb-forest",
+      "file": "amb-forest.ogg",
+      "sha256": "61fcaafcbdfb9315f21200e3ed9d5c4a234222a6da558a11fc264644c530d628",
+      "bytes": 735943,
+      "duration": 43.736009070294784,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -23.86,
+      "peakDb": -1.3,
+      "sources": [
+        "forest-ambience"
+      ]
+    },
+    {
+      "id": "amb-hearth",
+      "file": "amb-hearth.ogg",
+      "sha256": "7ba32cd26d3c4eb2b40477a8f16339a73a641ec944d3afd7502eee0ab0625319",
+      "bytes": 485484,
+      "duration": 28.263537414965988,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.75,
+      "peakDb": -0.29,
+      "sources": [
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "amb-river",
+      "file": "amb-river.ogg",
+      "sha256": "30349583edc63cd74692e08d91fe0355edcd3d6421d0f0abc872d42c8cf83116",
+      "bytes": 992856,
+      "duration": 74.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.09,
+      "peakDb": -3.69,
+      "sources": [
+        "sea-and-river-wave-sounds-0"
+      ]
+    },
+    {
+      "id": "amb-rain",
+      "file": "amb-rain.ogg",
+      "sha256": "ad8fb44930a3abbe16b6665f3d8834be0c8d3ef2bdeb5dbfc2796ebbe24411b8",
+      "bytes": 379456,
+      "duration": 26.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.83,
+      "peakDb": -3.86,
+      "sources": [
+        "rain-loopable-0"
+      ]
+    },
+    {
+      "id": "amb-wind",
+      "file": "amb-wind.ogg",
+      "sha256": "69a406d7534b44926a98ad26f63254ceedc32cb0d61bad31896377927accf188",
+      "bytes": 402441,
+      "duration": 35.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.94,
+      "peakDb": -1.4,
+      "sources": [
+        "short-wind-sound-0"
+      ]
+    },
+    {
+      "id": "amb-forest-camp",
+      "file": "amb-forest-camp.ogg",
+      "sha256": "f8a4726bb346da12168a84b3a7edc78c97f67edef05459fe8464c179cc4a16d0",
+      "bytes": 981841,
+      "duration": 58.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.93,
+      "peakDb": -1.06,
+      "sources": [
+        "forest-ambience",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "amb-rainy-shelter",
+      "file": "amb-rainy-shelter.ogg",
+      "sha256": "a61512ebf8423e214793055c3e2849e515ad9384c22b527b0aa77aebef56bcac",
+      "bytes": 932027,
+      "duration": 58.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.07,
+      "peakDb": -3.86,
+      "sources": [
+        "rain-loopable-0",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "amb-riverside-camp",
+      "file": "amb-riverside-camp.ogg",
+      "sha256": "fe6a987e2b2803eeb235e432e004476cdcbe4e4ca2541fd8924b87827ccc2f47",
+      "bytes": 910364,
+      "duration": 58.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.07,
+      "peakDb": -3.58,
+      "sources": [
+        "sea-and-river-wave-sounds-0",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "amb-ruins-rain",
+      "file": "amb-ruins-rain.ogg",
+      "sha256": "99a93beab971e4a806cae5e656a2b550052ae75f4ef151342e5c73f2644efb8d",
+      "bytes": 870703,
+      "duration": 58.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.0,
+      "peakDb": -3.72,
+      "sources": [
+        "rain-loopable-0",
+        "short-wind-sound-0"
+      ]
+    },
+    {
+      "id": "amb-steps",
+      "file": "amb-steps.ogg",
+      "sha256": "403a11d80510c52500b96870776e6970e2cb4b865dab2a7083e78ab4c45d72df",
+      "bytes": 214114,
+      "duration": 23.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.5,
+      "peakDb": -0.27,
+      "sources": [
+        "kenney-rpg/footstep00-09.ogg"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "slug": "medieval-the-old-tower-inn",
+      "page": "https://opengameart.org/content/medieval-the-old-tower-inn",
+      "url": "https://opengameart.org/sites/default/files/The_Old_Tower_Inn.mp3",
+      "file": ".local/vtt-sound-sources/medieval-the-old-tower-inn.mp3",
+      "license": "CC0-1.0",
+      "bytes": 2535801,
+      "sha256": "3fe4070015b880b591c79a7fca31156a0083a8768d88a39da39ab6c54f2f014d"
+    },
+    {
+      "slug": "forest-ambience",
+      "page": "https://opengameart.org/content/forest-ambience",
+      "url": "https://opengameart.org/sites/default/files/Forest_Ambience.mp3",
+      "file": ".local/vtt-sound-sources/forest-ambience.mp3",
+      "license": "CC0-1.0",
+      "bytes": 716670,
+      "sha256": "9850aa1d0d5d66bd9c5daf8bb77c6d852e01f2f4de22f283bd5621e8bed13b75"
+    },
+    {
+      "slug": "medieval-battle",
+      "page": "https://opengameart.org/content/medieval-battle",
+      "url": "https://opengameart.org/sites/default/files/battle_8.mp3",
+      "file": ".local/vtt-sound-sources/medieval-battle.mp3",
+      "license": "CC0-1.0",
+      "bytes": 3158907,
+      "sha256": "0e7b681b9c29657deb31b96a19b716e339e0d11535dbd4f12641597b4c95522f"
+    },
+    {
+      "slug": "medieval-the-bards-tale",
+      "page": "https://opengameart.org/content/medieval-the-bards-tale",
+      "url": "https://opengameart.org/sites/default/files/The_Bards_Tale.mp3",
+      "file": ".local/vtt-sound-sources/medieval-the-bards-tale.mp3",
+      "license": "CC0-1.0",
+      "bytes": 3810344,
+      "sha256": "6e93e8e8215bea17a209c321c182111058e024c53e3ad775ce1481ca1d1fcfc2"
+    },
+    {
+      "slug": "medieval-kings-feast",
+      "page": "https://opengameart.org/content/medieval-kings-feast",
+      "url": "https://opengameart.org/sites/default/files/Kings_Feast_0.mp3",
+      "file": ".local/vtt-sound-sources/medieval-kings-feast.mp3",
+      "license": "CC0-1.0",
+      "bytes": 5206482,
+      "sha256": "62be996d03d996fb72e2d395613ca3c83851b889fca1b13ecd6bba730ce72a34"
+    },
+    {
+      "slug": "fantasy-rising-moon",
+      "page": "https://opengameart.org/content/fantasy-rising-moon",
+      "url": "https://opengameart.org/sites/default/files/Rising_Moon_0.mp3",
+      "file": ".local/vtt-sound-sources/fantasy-rising-moon.mp3",
+      "license": "CC0-1.0",
+      "bytes": 5397782,
+      "sha256": "0e56e864d19ea50cf78851baa2edbeab319fc75527140c7be7ade6ecb4c8f4d2"
+    },
+    {
+      "slug": "fireplace-sound-loop",
+      "page": "https://opengameart.org/content/fireplace-sound-loop",
+      "url": "https://opengameart.org/sites/default/files/fire.wav",
+      "file": ".local/vtt-sound-sources/fireplace-sound-loop.wav",
+      "license": "CC0-1.0",
+      "bytes": 10324410,
+      "sha256": "85ca0cc60d0c037fff8b185e31ad1fcdbda6ce45eee17c3ee1318d1b8f59e330"
+    },
+    {
+      "slug": "fantasy-lament-for-a-warriors-soul",
+      "page": "https://opengameart.org/content/fantasy-lament-for-a-warriors-soul",
+      "url": "https://opengameart.org/sites/default/files/Lament_for_a_Warriors_Soul_REUPLOAD.mp3",
+      "file": ".local/vtt-sound-sources/fantasy-lament-for-a-warriors-soul.mp3",
+      "license": "CC0-1.0",
+      "bytes": 6541073,
+      "sha256": "a754242196b16c9fc21f9c2d108d7022b56867e5503fe1c99cf85cc752d4176e"
+    },
+    {
+      "slug": "medieval-exploration",
+      "page": "https://opengameart.org/content/medieval-exploration",
+      "url": "https://opengameart.org/sites/default/files/Exploration_0.mp3",
+      "file": ".local/vtt-sound-sources/medieval-exploration.mp3",
+      "license": "CC0-1.0",
+      "bytes": 9446112,
+      "sha256": "7e412350d4f4a777981285ca36b1c1a30feb7e5e255d7774ce61480e99daa8d9"
+    },
+    {
+      "slug": "kenney-rpg",
+      "page": "https://kenney.nl/assets/rpg-audio",
+      "url": "https://kenney.nl/media/pages/assets/rpg-audio/8e99002d76-1677590336/kenney_rpg-audio.zip",
+      "file": ".local/vtt-sound-sources/kenney-rpg.zip",
+      "license": "CC0-1.0",
+      "bytes": 964837,
+      "sha256": "6dbeaf8544da958d8f2adcb4a4a4b76c1ade34a05f8ab9edccd327da7375f38b"
+    },
+    {
+      "slug": "rain-loopable-0",
+      "page": "https://opengameart.org/content/rain-loopable",
+      "url": "https://opengameart.org/sites/default/files/Rain%20OGG.zip",
+      "file": ".local/vtt-sound-sources/rain-loopable-0.zip",
+      "license": "CC0-1.0",
+      "bytes": 2736596,
+      "sha256": "e68f3e1c77493cf43bec84cebff5043bff6be9ce16d59b24caa988cd460aa75b"
+    },
+    {
+      "slug": "short-wind-sound-0",
+      "page": "https://opengameart.org/content/short-wind-sound",
+      "url": "https://opengameart.org/sites/default/files/short%20wind%20sound.wav",
+      "file": ".local/vtt-sound-sources/short-wind-sound-0.wav",
+      "license": "CC0-1.0",
+      "bytes": 747196,
+      "sha256": "4435f5ad1baf171f21f876f778d0a8a7447becea0c4955bb2566e0c63ab20f41"
+    },
+    {
+      "slug": "sea-and-river-wave-sounds-0",
+      "page": "https://opengameart.org/content/sea-and-river-wave-sounds",
+      "url": "https://opengameart.org/sites/default/files/VistulaShort_0.mp3",
+      "file": ".local/vtt-sound-sources/sea-and-river-wave-sounds-0.mp3",
+      "license": "CC0-1.0",
+      "bytes": 12004407,
+      "sha256": "8c24607e41edd6f018ec3582a07e5a8dbc57347276339cb68440951a0fb4cfb1"
+    },
+    {
+      "slug": "magic-spell-sfx-0",
+      "page": "https://opengameart.org/content/magic-spell-sfx",
+      "url": "https://opengameart.org/sites/default/files/magical_1_0.ogg",
+      "file": ".local/vtt-sound-sources/magic-spell-sfx-0.ogg",
+      "license": "CC0-1.0",
+      "bytes": 59071,
+      "sha256": "119f9061a566c72c1c58444b03f8685b833079ef268dda02fe742eb34d3bc68f"
+    },
+    {
+      "slug": "magic-spell-sfx-1",
+      "page": "https://opengameart.org/content/magic-spell-sfx",
+      "url": "https://opengameart.org/sites/default/files/magical_2.ogg",
+      "file": ".local/vtt-sound-sources/magic-spell-sfx-1.ogg",
+      "license": "CC0-1.0",
+      "bytes": 39689,
+      "sha256": "84a70f63f3f21e5ba4a48285b760a663d422ad3feddba2f3cbadd94b76cdc52e"
+    },
+    {
+      "slug": "magic-spell-sfx-2",
+      "page": "https://opengameart.org/content/magic-spell-sfx",
+      "url": "https://opengameart.org/sites/default/files/magical_3.ogg",
+      "file": ".local/vtt-sound-sources/magic-spell-sfx-2.ogg",
+      "license": "CC0-1.0",
+      "bytes": 38266,
+      "sha256": "9fac648a1de869cf9ca2f4b3f1cd47f1766a3ee9d2fdec45831234401d7b2392"
+    },
+    {
+      "slug": "magic-spell-sfx-3",
+      "page": "https://opengameart.org/content/magic-spell-sfx",
+      "url": "https://opengameart.org/sites/default/files/magical_4.ogg",
+      "file": ".local/vtt-sound-sources/magic-spell-sfx-3.ogg",
+      "license": "CC0-1.0",
+      "bytes": 79091,
+      "sha256": "b7862d109b4013dfb2a389a10f8917203beb0efc458444bc5a1b8ada605cc118"
+    },
+    {
+      "slug": "magic-spell-sfx-4",
+      "page": "https://opengameart.org/content/magic-spell-sfx",
+      "url": "https://opengameart.org/sites/default/files/magical_5.ogg",
+      "file": ".local/vtt-sound-sources/magic-spell-sfx-4.ogg",
+      "license": "CC0-1.0",
+      "bytes": 37790,
+      "sha256": "69aaaaed729cacb518005a5d24074196db3c5fffc0ed2cd01ad864fbed4a62be"
+    },
+    {
+      "slug": "magic-spell-sfx-5",
+      "page": "https://opengameart.org/content/magic-spell-sfx",
+      "url": "https://opengameart.org/sites/default/files/magical_6_0.ogg",
+      "file": ".local/vtt-sound-sources/magic-spell-sfx-5.ogg",
+      "license": "CC0-1.0",
+      "bytes": 37434,
+      "sha256": "0a18ee3460cf3fd79c3771bbf94c20c26d34b65ab60d0b0e15694ffcad815955"
+    },
+    {
+      "slug": "magic-spell-sfx-6",
+      "page": "https://opengameart.org/content/magic-spell-sfx",
+      "url": "https://opengameart.org/sites/default/files/magical_7_0.ogg",
+      "file": ".local/vtt-sound-sources/magic-spell-sfx-6.ogg",
+      "license": "CC0-1.0",
+      "bytes": 76383,
+      "sha256": "2817da4f5df69ff993baffd6594a2f2a069f85ee2a02019f97db2246e350a76b"
+    }
+  ]
+}

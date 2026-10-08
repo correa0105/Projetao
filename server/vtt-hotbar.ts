@@ -79,6 +79,20 @@ export function vttHotbarRouter(getRoom: Access) {
       const actions = input.document.pages.flatMap((p) => p.slots).filter((a) => a !== null);
       const gm = room.owner_id === user && (await isAdministrator(user, db as PoolClient));
       const characterActions = actions.filter((a) => 'characterId' in a);
+      for (const a of actions.filter((a) => a.kind === 'sound')) {
+        if (!gm) throw new AppError(403, 'Sons compartilhados são exclusivos do mestre.');
+        if (a.sourceId.startsWith('asset:')) {
+          const valid = await db.query(
+            "SELECT id FROM vtt_assets WHERE id=$1 AND room_id=$2 AND kind='audio'",
+            [a.sourceId.slice(6), id],
+          );
+          const existing = hotbarSchema
+            .parse(old.document)
+            .pages.some((p) => p.slots.some((v) => v && JSON.stringify(v) === JSON.stringify(a)));
+          if (!valid.rowCount && !existing)
+            throw new AppError(400, 'Esse áudio não pertence a esta mesa.');
+        }
+      }
       for (const a of actions.filter((a) => a.kind === 'effect' || a.kind === 'monster')) {
         if (!gm) throw new AppError(403, 'Efeitos e ataques de monstros são exclusivos do mestre.');
         const valid =
