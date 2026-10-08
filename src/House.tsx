@@ -73,6 +73,13 @@ import {
   houseDistortionHandlePositions,
   houseMoveDistortionCorner,
 } from '../shared/house-distortion';
+function foldHouseSearch(value: string) {
+  return value
+    .trim()
+    .toLocaleLowerCase('pt-BR')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
 type Index = {
   homes: { id: string; character_id: string; name: string; character_name: string }[];
   invites: { home_id: string; status: string; name: string; owner_name: string }[];
@@ -225,6 +232,7 @@ export function House({
     [presenceScale, setPresenceScale] = useState(0.19),
     [text, setText] = useState(''),
     [query, setQuery] = useState(''),
+    [catalogQuery, setCatalogQuery] = useState(''),
     [people, setPeople] = useState<{ id: string; name: string }[]>([]),
     [recipient, setRecipient] = useState<Profile | null>(null),
     [title, setTitle] = useState(''),
@@ -1727,28 +1735,43 @@ export function House({
                         <a href="#shop">Ir ao Empório</a>
                       </span>
                     </div>
+                    <label>
+                      Procurar mobília e lembranças
+                      <input
+                        aria-label="Procurar mobília e lembranças"
+                        value={catalogQuery}
+                        onChange={(e) => setCatalogQuery(e.target.value)}
+                        placeholder="Mesa, estátua, pergaminho…"
+                      />
+                    </label>
                     <div className="house-catalog">
-                      {(index?.catalog || houseCatalog).map((c) => (
-                        <button
-                          key={c.id}
-                          onClick={() => {
-                            setBuy(c.id);
-                            if (!sound.muted && sound.volume > 0) {
-                              const audio = new Audio(c.audio_path);
-                              audio.volume = sound.volume;
-                              void audio.play().catch(() => {});
-                            }
-                            setTitle('');
-                            setDedication('');
-                            setPicture(null);
-                            purchaseKey.current = crypto.randomUUID();
-                          }}
-                        >
-                          <img src={c.image} alt="" />
-                          <strong>{c.name}</strong>
-                          <span>{money(c.price_cp)} PO</span>
-                        </button>
-                      ))}
+                      {(index?.catalog || houseCatalog)
+                        .filter((c) =>
+                          foldHouseSearch(`${c.name} ${c.description}`).includes(
+                            foldHouseSearch(catalogQuery),
+                          ),
+                        )
+                        .map((c) => (
+                          <button
+                            key={c.id}
+                            onClick={() => {
+                              setBuy(c.id);
+                              if (!sound.muted && sound.volume > 0) {
+                                const audio = new Audio(c.audio_path);
+                                audio.volume = sound.volume;
+                                void audio.play().catch(() => {});
+                              }
+                              setTitle('');
+                              setDedication('');
+                              setPicture(null);
+                              purchaseKey.current = crypto.randomUUID();
+                            }}
+                          >
+                            <img src={c.image} alt="" loading="lazy" />
+                            <strong>{c.name}</strong>
+                            <span>{money(c.price_cp)} PO</span>
+                          </button>
+                        ))}
                     </div>
                   </>
                 )}

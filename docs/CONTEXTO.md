@@ -1,12 +1,16 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## House e conclusão da fila de 08/10/2026
+
+40 novos objetos com oito vistas reais cada, 320 artes nativas revistas/calibradas e integradas a House/Empório. Catálogo total de 52 peças; Mobília tem busca sem acentos. Compras/permissões/persistência/direções e quatro salas em quatro larguras aprovados, regressão dos 12 antigos preservada. Docker local aplicado e conferido por hashes de 320 novos arquivos e 274 públicos anteriores, bundles e servidor; 44 tabelas completas preservadas. ZIP em Downloads: House-40-pecas-320-vistas-20261008.zip, com os 320 PNGs originais agrupados por peça e oito direções em sequência, galeria offline e manifest de prompts/hashes. Guia HOUSE-EXPANSION-20261008.md. Todos os pedidos ativos desta fila concluídos; revisão geral 330×4 continua pausada.
+
 ## Controles do VTT (08/10/2026)
 
 Compêndio sem os dois avisos SRD/arraste e com Monstros/Presets/Galeria/Magias compactos em uma linha. Botões Arma/Ataque de magia removidos do chat. Ctrl + roda gira seleção em 15° sem mudar câmera/aba, respeitando controle dos jogadores. Selecionar arrasta escrita/desenhos na camada atual; Alt move livre, grade/desfazer/salvamento funcionam. Inserir texto retorna à seleção. Aplicado no Docker, smoke/QA mobile e preservação de 43 tabelas aprovados; guia VTT-CONTROLS-20261008.md.
 
 Cada geração de personagem agora cria arte principal e token estritamente visto de cima, usando a arte aprovada como referência de identidade/equipamentos. Publicação atômica e uma cota; perfil lê apenas a arte principal. Importação do VTT usa a silhueta completa com alfa, e tokens automáticos existentes recebem a nova imagem preservando posição, giro e tamanho. Migration 084 aplicada, worker local online; nove testes isolados, navegador em quatro larguras, regressão do VTT, bundles/servidor e preservação de 43 tabelas aprovados. Guias CHARACTER-TOKENS-20261008.md e CHARACTER-TOKEN-PROMPT-v1.md.
 
-Última etapa em andamento: quarenta peças da House com oito vistas cada e exportação agrupada em Downloads. A revisão geral 330×4 permanece pausada.
+House e exportação agrupada em Downloads concluídas conforme o registro acima. A revisão geral 330×4 permanece pausada.
 
 ## Layout das seis páginas (08/10/2026)
 
@@ -14,7 +18,7 @@ Cartas, Hall da Fama, Perfis, Eventos, Torre e Salão de cartas alinhados ao
 cabeçalho, Cinzel/DM Sans, cinza quente/carvão e ocre do site. Cenários e conteúdo
 preservados; visita de perfil mantém o acampamento aprovado. Revisão de seis
 rotas em 1440/768/390/320, sem overflow horizontal. Guia PAGE-CONSISTENCY-20261008.md.
-Próxima etapa autorizada: 40 novos objetos para House; acervo 330×4 ainda pausado.
+Os 40 novos objetos para House foram concluídos; acervo 330×4 ainda pausado.
 
 ## Magias, armas e próximos pedidos (08/10/2026)
 

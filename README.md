@@ -1,5 +1,18 @@
 # Alvorada Cinzenta
 
+House: **40 novas peças e 320 vistas reais**, com tamanho calibrado ao mudar
+direção, disponíveis no Empório e na Mobília. As oito imagens de cada peça
+também estão agrupadas no ZIP de Downloads, com galeria offline.
+[Artes, prompts, exportação e validação](docs/HOUSE-EXPANSION-20261008.md).
+
+Cada nova arte de personagem gera também seu **token visto de cima** para o VTT,
+com a mesma identidade e equipamentos. O perfil mantém a arte principal;
+publicação conjunta usa uma geração. [Funcionamento](docs/CHARACTER-TOKENS-20261008.md).
+
+VTT: Ctrl + roda gira o token selecionado; textos podem ser arrastados com a
+ferramenta Selecionar. Compêndio compacto e botões Arma/Ataque de magia retirados
+do chat. [Controles e validação](docs/VTT-CONTROLS-20261008.md).
+
 VTT: **Preparar** magia mostra área em quadrados e alvos/disparos restantes antes
 do gasto. Espaços superiores recalculam as regras; 339 magias têm efeitos próprios,
 concentração persistente e controles em **Magias na cena**. Armas receberam novas

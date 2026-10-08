@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import refitCatalog from '../data/house-refit-catalog.json';
+import expansionCatalog from '../data/house-expansion-20261008.json';
 export const houseDistortionLimit = 0.12;
 const distortionPointSchema = z
   .object({
@@ -40,21 +41,28 @@ export const houseTemplates = roomNames.map(([id, kind, name]) => ({
   image: `/house/rooms/${id}.webp`,
 }));
 const furniture = new Map(refitCatalog.map((item) => [item.id, item]));
+const expansion = new Map(expansionCatalog.map((item) => [item.id, item]));
 /** Initial view only; placed pieces retain their explicit or historical front view. */
 export function houseDefaultFacing(catalogId: string) {
-  return furniture.get(catalogId)?.default_facing ?? (catalogId === 'letter' ? 1 : 0);
+  return (
+    expansion.get(catalogId)?.default_facing ??
+    furniture.get(catalogId)?.default_facing ??
+    (catalogId === 'letter' ? 1 : 0)
+  );
 }
 /** Base size for a newly placed piece; never rewrite saved placement sizes. */
 export function houseDefaultScale(catalogId: string) {
-  return furniture.get(catalogId)?.default_scale ?? 0.17;
+  return expansion.get(catalogId)?.default_scale ?? furniture.get(catalogId)?.default_scale ?? 0.17;
 }
 /** Real rendered views; old letter/frame assets remain unchanged. */
 export function houseItemImage(catalogId: string, facing = houseDefaultFacing(catalogId)) {
-  const directory = furniture.has(catalogId)
-    ? facing >= 8 || (['table', 'rug'].includes(catalogId) && facing === 0)
-      ? 'house-perspective-20261007'
-      : 'house-refit-20261007'
-    : 'views';
+  const directory = expansion.has(catalogId)
+    ? 'house-expansion-20261008'
+    : furniture.has(catalogId)
+      ? facing >= 8 || (['table', 'rug'].includes(catalogId) && facing === 0)
+        ? 'house-perspective-20261007'
+        : 'house-refit-20261007'
+      : 'views';
   return `/house/items/${directory}/${catalogId}/${facing}.webp`;
 }
 // These four intermediate views were retired because they repeated nearby views.
@@ -99,6 +107,7 @@ export function houseTurnFacing(catalogId: string, facing: number, direction: -1
 }
 export const houseCatalog = [
   ...refitCatalog,
+  ...expansionCatalog,
   {
     id: 'letter',
     name: 'Carta Selada',
@@ -120,7 +129,10 @@ export const houseCatalog = [
   default_facing: houseDefaultFacing(item.id),
   default_scale: houseDefaultScale(item.id),
   image: houseItemImage(item.id),
-  audio_path: furniture.get(item.id)?.audio_path ?? `/audio/emporium/house-${item.id}.wav`,
+  audio_path:
+    expansion.get(item.id)?.audio_path ??
+    furniture.get(item.id)?.audio_path ??
+    `/audio/emporium/house-${item.id}.wav`,
 }));
 export const placementSchema = z
   .object({

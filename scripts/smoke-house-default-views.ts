@@ -4,6 +4,10 @@ import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import { houseCatalog, houseItemImage } from '../shared/house.js';
 import refitCatalog from '../data/house-refit-catalog.json';
+import expansionCatalog from '../data/house-expansion-20261008.json';
+const originalCatalog = houseCatalog.filter(
+  (spec) => !expansionCatalog.some((item) => item.id === spec.id),
+);
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco descartável obrigatório.');
 const origin = 'http://localhost:3041';
@@ -54,6 +58,7 @@ const expectedViews: Record<string, number> = {
 };
 const refitActive = houseCatalog.some((spec) => spec.image.includes('/house-refit-20261007/'));
 if (refitActive) for (const spec of refitCatalog) expectedViews[spec.id] = spec.default_facing;
+for (const spec of expansionCatalog) expectedViews[spec.id] = spec.default_facing;
 const expectedPath = (id: string, facing: number) => houseItemImage(id, facing);
 try {
   const user = (
@@ -67,7 +72,7 @@ try {
   await pool.query('UPDATE characters SET gold_cp=1000000 WHERE id=$1', [hero.id]);
   const homeId = (await request('/house', { character_id: hero.id })).id;
   const index = await request('/house', undefined, 'GET');
-  expect(index.catalog).toHaveLength(12);
+  expect(index.catalog).toHaveLength(houseCatalog.length);
   for (const spec of index.catalog) {
     expect(spec.default_facing).toBe(expectedViews[spec.id]);
     expect(spec.image).toBe(expectedPath(spec.id, expectedViews[spec.id]));
@@ -113,7 +118,7 @@ try {
     }
   }
   const purchased = new Map<string, string>();
-  for (const spec of houseCatalog) {
+  for (const spec of originalCatalog) {
     const order = await request('/house/purchase', {
       character_id: hero.id,
       catalog_id: spec.id,
@@ -164,7 +169,7 @@ try {
   );
   await page.goto(origin + '/#shop');
   await page.getByRole('button', { name: /^Itens de House/ }).click();
-  for (const spec of houseCatalog)
+  for (const spec of originalCatalog)
     await expect(
       page.locator(`.shop-product[data-item-id="house-${spec.id}"] .shop-product-art img`),
     ).toHaveAttribute('src', spec.image);
@@ -179,7 +184,7 @@ try {
   );
   await page.getByRole('button', { name: 'Decorar', exact: true }).click();
   const placed = new Map<string, string>();
-  for (const spec of houseCatalog) {
+  for (const spec of originalCatalog) {
     const inventory = page
       .locator('.house-inventory-item > button:not(:disabled)')
       .filter({ hasText: spec.name });
@@ -250,7 +255,7 @@ try {
     frame: { x: 0.6, y: 0.35, scale: 0.07, layer: 1 },
     statue: { x: 0.07, y: 0.61, scale: 0.16, layer: 1 },
   };
-  persisted.rooms[0].placements = houseCatalog.map((spec) => ({
+  persisted.rooms[0].placements = originalCatalog.map((spec) => ({
     id: placed.get(spec.id),
     kind: 'item',
     ref: purchased.get(spec.id),

@@ -1,7 +1,9 @@
 import viewSizes from './house-view-sizes.json';
 import intermediateSizes from './house-intermediate-sizes.json';
+import expansionSizes from './house-expansion-sizes.json';
 export function houseViewWidth(id: string, facing = 0) {
   return (
+    (expansionSizes as Record<string, number[]>)[id]?.[facing] ||
     (intermediateSizes as Record<string, (number | null)[]>)[id]?.[facing] ||
     (viewSizes as Record<string, number[]>)[id]?.[facing] ||
     1
