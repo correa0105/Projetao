@@ -27,9 +27,21 @@ substitui a armadura e os acessórios anteriores; não acumula os equipamentos s
 a arte vestida. Não há upload de referência pelo jogador nesse fluxo. O animal
 mantém pose, anatomia, proporções, pelagem e fundo transparente; o formato pode ser
 horizontal. Acampamento, seleção do inventário e House usam a última arte concluída.
-Para montaria, a referência e a instrução são da barda **completa**, combinada com
-os demais acessórios dos espaços. Substituir toda a proteção anterior, sem manter
-somente um peitoral. A base continua sendo a imagem sem equipamentos.
+Para montaria, a referência é a barda **completa**, combinada com os demais
+acessórios dos espaços. Antes de Vestir, **Partes da barda na imagem** permite
+marcar capacete/testeira, pescoço, peito, tronco/flancos, patas dianteiras e patas
+traseiras. Todas começam marcadas. Desmarcar uma região exclui essa proteção
+da próxima imagem; os outros acessórios equipados seguem seus próprios espaços.
+A barda permanece um único item reservado, com o mesmo peso e atributos.
+Não é um conjunto dividido em estoque. A escolha da última solicitação fica
+salva por montaria e é recuperada após recarga.
+
+O ilustrador recebe instruções explícitas para incluir as regiões marcadas e
+excluir as demais, inclusive em bardas antigas `legacy:barding-*`. A composição
+é conferida pelo revisor antes de aplicar. Todas marcadas exigem a armadura
+inteira, adaptada à anatomia e ao material, sem limitar o desenho ao peitoral;
+oclusões naturais são aceitas. A base permanece a imagem sem equipamentos.
+Imagens anteriores só mudam após uma nova geração válida.
 
 Migration 078 arquiva o estoque/reservas antigos das bardas, consolida componentes
 por dono entre mochilas/cofre sem multiplicar unidades, preserva cópias inteiras,
@@ -53,7 +65,11 @@ referências e imagens privadas em PostgreSQL. As rotas são:
   disponíveis/reservadas da mochila, disponibilidade do ilustrador e cota.
 - `PUT` na mesma rota: `{kind, companion_id, slot, item_id}`; `null` desequipa.
   IDs `legacy:...` só são aceitos para bens já comprados daquele animal.
-- `POST /api/companions/:characterId/art`: `{kind, companion_id, idempotency_key}`.
+- `POST /api/companions/:characterId/art`: `{kind, companion_id, idempotency_key}`,
+  com `barding_parts?: ('head'|'neck'|'chest'|'body'|'front_legs'|'hind_legs')[]`
+  para montarias. Omissão equivale às seis regiões, array vazio não desenha barda;
+  valores desconhecidos/duplicados ou partes enviadas para mascote são recusados.
+  Reutilizar a chave com uma seleção diferente resulta em conflito.
 - `GET /api/companions/:characterId/art/jobs`: pedidos e disponibilidade.
 - `GET /api/companions/:characterId/:kind/:companionId/base-image`: base privada.
 - `GET /api/companions/:characterId/:kind/:companionId/image?v=revision`: resultado
@@ -65,3 +81,9 @@ reservas concorrentes, legado, anatomia, base confiável, referências, idempot�
 cota compartilhada, resultados desatualizados e privacidade. O smoke
 `scripts/test-companion-equipment-browser-isolated.mjs` cobre o fluxo completo em
 1440/768/390/320 px, concluindo arte por fixture interna sem gastar o provedor.
+
+Em 08/10: testes de seleção completa/parcial, legado, valores inválidos,
+idempotência, persistência e instruções de geração/revisão aprovados. Navegador
+validou as seis marcações, pedido parcial e recarga em quatro larguras, sem
+overflow. Migration 081 aplicada no Docker local e worker reiniciado enquanto
+a fila estava vazia. Testes não geraram nem substituíram imagens de jogadores.

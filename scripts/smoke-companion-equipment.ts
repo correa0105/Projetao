@@ -235,7 +235,11 @@ try {
     expect(response.status()).toBe(202);
     const job = await response.json();
     const body = artRequests.at(-1)!;
-    expect(Object.keys(body).sort()).toEqual(['companion_id', 'idempotency_key', 'kind']);
+    expect(Object.keys(body).sort()).toEqual(
+      kind === 'mount'
+        ? ['barding_parts', 'companion_id', 'idempotency_key', 'kind']
+        : ['companion_id', 'idempotency_key', 'kind'],
+    );
     expect(body.kind).toBe(kind);
     expect(body.companion_id).toBe(id);
     await expect(panel.getByRole('button', { name: 'Vestindo…', exact: true })).toBeDisabled();
@@ -243,12 +247,14 @@ try {
     await panel.scrollIntoViewIfNeeded();
     await page.screenshot({ path: `test-results/companion-equipment-${kind}-pending.png` });
     const record = (
-      await pool.query('SELECT reference,equipment_revision FROM companion_art_jobs WHERE id=$1', [
-        job.id,
-      ])
+      await pool.query(
+        'SELECT reference,equipment_revision,barding_parts FROM companion_art_jobs WHERE id=$1',
+        [job.id],
+      )
     ).rows[0];
     expect(record.reference.length).toBeGreaterThan(1000);
     expect(record.equipment_revision).toBe(before.equipment_revision);
+    if (kind === 'mount') expect(record.barding_parts).toEqual(body.barding_parts);
     const references = (
       await pool.query('SELECT item_id,name,image FROM companion_art_equipment WHERE job_id=$1', [
         job.id,
@@ -408,7 +414,19 @@ try {
     ).rows[0].count,
   ).toBe(0);
   await selectSubject('Montaria', horse.id);
+  const armorParts = panel.getByRole('group', { name: 'Partes da barda na imagem' });
+  await expect(armorParts.getByRole('checkbox')).toHaveCount(6);
+  for (const checkbox of await armorParts.getByRole('checkbox').all())
+    await expect(checkbox).toBeChecked();
+  await armorParts.getByLabel('Capacete / testeira', { exact: true }).uncheck();
+  await armorParts.getByLabel('Proteção das patas dianteiras', { exact: true }).uncheck();
+  await armorParts.getByLabel('Proteção das patas traseiras', { exact: true }).uncheck();
   const dressedHorse = await dress(horse.id, 'mount');
+  expect(artRequests.at(-1)?.barding_parts).toEqual(['neck', 'chest', 'body']);
+  await page.reload();
+  await selectSubject('Montaria', horse.id);
+  await expect(armorParts.getByLabel('Capacete / testeira', { exact: true })).not.toBeChecked();
+  await expect(armorParts.getByLabel('Tronco e flancos', { exact: true })).toBeChecked();
   expect(
     (
       await pool.query('SELECT equipment FROM character_mounts WHERE id=$1', [horse.id])

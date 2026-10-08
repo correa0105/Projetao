@@ -27,6 +27,12 @@ for (const c of [gmctx, pc])
     (window as any).__vttAudios = [];
     (window as any).Audio = function (src?: string) {
       const a = new NativeAudio(src);
+      const play = a.play.bind(a);
+      (a as any).__plays = [];
+      a.play = () => {
+        const started = Date.now();
+        return play().then(() => (a as any).__plays.push(started));
+      };
       (window as any).__vttAudios.push(a);
       return a;
     };
@@ -88,6 +94,7 @@ try {
             volume: a.volume,
             loop: a.loop,
             ready: a.readyState,
+            plays: (a as any).__plays as number[],
           })),
       id,
     );
@@ -194,6 +201,92 @@ try {
   ).toBeVisible();
   await page.getByRole('button', { name: 'Ambientes', exact: true }).click();
   await expect(card('amb-hearth').getByLabel('Volume de Lareira acesa')).toHaveValue('0.31');
+  await page.getByRole('button', { name: 'Efeitos', exact: true }).click();
+  await page.getByLabel('Buscar sons').fill('Passo 3');
+  const step = card('sfx-footstep02');
+  await step.getByRole('button', { name: 'Marcar favorito Passo 3', exact: true }).click();
+  await page.getByRole('button', { name: 'Favoritos', exact: true }).click();
+  await expect(step).toBeVisible();
+  await expect(step.getByRole('button', { name: 'Desmarcar favorito Passo 3' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  expect((await snapshot()).soundboard.favorites).toContain('sfx-footstep02');
+  await step.getByLabel('Repetir', { exact: true }).check();
+  await step.getByLabel('Modo de repetição de Passo 3').selectOption('interval');
+  await step.getByLabel('Intervalo em segundos de Passo 3').fill('3');
+  await expect
+    .poll(
+      async () =>
+        (await snapshot()).soundboard.settings.find((s: any) => s.sourceId === 'sfx-footstep02')
+          ?.repeatEvery,
+    )
+    .toBe(3);
+  await step.getByRole('button', { name: 'Fixar Passo 3', exact: true }).click();
+  const stepShortcut = page.getByRole('button', { name: 'Atalho 3 · Passo 3', exact: true });
+  await expect(stepShortcut).toBeVisible();
+  await stepShortcut.click();
+  for (const p of [page, peer]) {
+    await expect
+      .poll(async () => (await media(p, 'sfx-footstep02')).some((a: any) => a.plays.length >= 3), {
+        timeout: 13000,
+      })
+      .toBe(true);
+    const interval = (await media(p, 'sfx-footstep02')).find((a: any) => a.plays.length >= 3)!;
+    expect(interval.loop).toBe(false);
+    for (let i = 1; i < 3; i++) {
+      expect(interval.plays[i] - interval.plays[i - 1]).toBeGreaterThan(2600);
+      expect(interval.plays[i] - interval.plays[i - 1]).toBeLessThan(3400);
+    }
+  }
+  await expect
+    .poll(async () => (await media(peer, 'sfx-footstep02')).every((a: any) => a.paused))
+    .toBe(true);
+  await page.screenshot({ path: 'test-results/vtt-sounds-favorites-interval.png' });
+  await step.getByRole('button', { name: 'Remover Passo 3', exact: true }).click();
+  await expect(step).toHaveCount(0);
+  await expect
+    .poll(async () =>
+      (await snapshot()).soundboard.voices.some((v: any) => v.sourceId === 'sfx-footstep02'),
+    )
+    .toBe(false);
+  await expect
+    .poll(async () => (await media(peer, 'sfx-footstep02')).every((a: any) => a.paused && !a.src))
+    .toBe(true);
+  await page.getByRole('button', { name: 'Removidos', exact: true }).click();
+  await expect(step).toBeVisible();
+  await expect(step.getByRole('button', { name: 'Tocar Passo 3' })).toHaveCount(0);
+  await expect(stepShortcut).toBeVisible();
+  await step.getByRole('button', { name: 'Restaurar Passo 3', exact: true }).click();
+  await page.reload();
+  await page.getByRole('button', { name: 'Som', exact: true }).click();
+  await page.getByRole('button', { name: 'Favoritos', exact: true }).click();
+  await expect(step).toBeVisible();
+  await expect(step.getByLabel('Intervalo em segundos de Passo 3')).toHaveValue('3');
+  await expect(stepShortcut).toBeVisible();
+  await step.getByRole('button', { name: 'Desmarcar favorito Passo 3', exact: true }).click();
+  await expect(step).toHaveCount(0);
+  await page.getByRole('button', { name: 'Efeitos', exact: true }).click();
+  await page.getByLabel('Buscar sons').fill('porta de aço');
+  await expect(card('sfx-steel-door-open')).toBeVisible();
+  await expect(card('sfx-steel-door-close')).toBeVisible();
+  await page.getByLabel('Buscar sons').fill('');
+  await page.getByRole('button', { name: 'Ambientes', exact: true }).click();
+  await expect(card('amb-tense-dungeon')).toBeVisible();
+
+  await page.getByRole('button', { name: 'Chat', exact: true }).click();
+  await page
+    .getByLabel('Mensagem', { exact: true })
+    .fill('(Mapa de exemplo)[/profile-signboard-v1.webp]');
+  await page.getByRole('button', { name: 'Enviar à mesa', exact: true }).click();
+  const chatImage = page.getByRole('img', { name: 'Mapa de exemplo', exact: true });
+  await expect(chatImage).toBeVisible();
+  await expect
+    .poll(async () =>
+      chatImage.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+    )
+    .toBe(true);
+  await page.getByRole('button', { name: 'Som', exact: true }).click();
   const sizes = [];
   for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
@@ -235,6 +328,11 @@ try {
         previewPrivate: true,
         hotbarClickKeyboardDrag: true,
         persistedVolume: true,
+        favoritesPersisted: true,
+        removalAndRestore: true,
+        intervalSeconds: 3,
+        sharedIntervalPlayback: true,
+        chatImages: true,
         cleanup: true,
         sizes,
         errors,

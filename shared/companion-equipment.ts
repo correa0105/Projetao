@@ -15,6 +15,19 @@ export const COMPANION_SLOTS = [
 ] as const;
 export type CompanionSlot = (typeof COMPANION_SLOTS)[number];
 export type CompanionKind = 'mount' | 'pet';
+export const BARDING_PARTS = ['head', 'neck', 'chest', 'body', 'front_legs', 'hind_legs'] as const;
+export type BardingPart = (typeof BARDING_PARTS)[number];
+export const BARDING_PART_LABELS: Record<BardingPart, string> = {
+  head: 'Capacete / testeira',
+  neck: 'Proteção do pescoço',
+  chest: 'Proteção do peito',
+  body: 'Tronco e flancos',
+  front_legs: 'Proteção das patas dianteiras',
+  hind_legs: 'Proteção das patas traseiras',
+};
+export function isBarding(itemId: string) {
+  return /^(?:legacy:)?barding-/.test(itemId);
+}
 export const COMPANION_SLOT_LABELS: Record<CompanionSlot, string> = {
   head: 'Cabeça',
   armor: 'Armadura / barda',
@@ -60,6 +73,7 @@ export type CompanionOutfit = {
   legacy_options: CompanionLegacyOption[];
   equipped: CompanionEquipmentItem[];
   slots: CompanionSlot[];
+  barding_parts?: BardingPart[];
 };
 export type CompanionInventoryItem = EquipmentItem & {
   quantity: number;

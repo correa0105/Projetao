@@ -233,7 +233,7 @@ try {
       character_id: hero.id,
       variant_id: null,
       room: 'sala',
-      x: 0.218,
+      x: 0.62,
       y: 0.755,
       scale: 0.13,
       depth_layer: 4,
@@ -243,6 +243,35 @@ try {
   await page.reload();
   await expect(page.locator('.house-actor')).toHaveCount(1);
   const actor = page.locator('.house-actor');
+  await actor.locator('img').evaluate((img: HTMLImageElement) => img.decode());
+  expect(Number(await actor.getAttribute('data-depth-scale'))).toBeCloseTo(
+    Number(await sofa.getAttribute('data-depth-scale')),
+    8,
+  );
+  const actorBefore = (await actor.boundingBox())!,
+    actorGrab = {
+      x: actorBefore.x + actorBefore.width * 0.5,
+      y: actorBefore.y + actorBefore.height * 0.97,
+    };
+  await page.mouse.move(actorGrab.x, actorGrab.y);
+  await page.mouse.down();
+  await page.mouse.move(actorGrab.x, actorGrab.y - scene.height * 0.1, { steps: 6 });
+  const actorFar = (await actor.boundingBox())!;
+  expect(actorFar.width).toBeLessThan(actorBefore.width * 0.8);
+  expect(Math.abs(actorFar.x + actorFar.width * 0.5 - actorGrab.x)).toBeLessThan(2);
+  expect(
+    Math.abs(actorFar.y + actorFar.height * 0.97 - actorGrab.y + scene.height * 0.1),
+  ).toBeLessThan(2);
+  await page.mouse.move(actorGrab.x, scene.y - 100, { steps: 5 });
+  const atFloor = (await actor.boundingBox())!;
+  expect(atFloor.y + atFloor.height).toBeCloseTo(scene.y + 1 + (scene.height - 2) * 0.5, 0);
+  await page.mouse.move(actorGrab.x, scene.y + scene.height + 100, { steps: 6 });
+  const atFront = (await actor.boundingBox())!;
+  expect(atFront.width).toBeGreaterThan(atFloor.width * 4);
+  expect(atFront.y + atFront.height).toBeCloseTo(scene.y + 1 + (scene.height - 2) * 0.98, 0);
+  await page.mouse.move(actorGrab.x, actorGrab.y, { steps: 6 });
+  await page.mouse.up();
+  await expect(actor).toHaveAttribute('data-base-scale', '0.13');
   expect(await actor.evaluate((e) => +getComputedStyle(e).zIndex)).toBeLessThan(
     await sofa.evaluate((e) => +getComputedStyle(e).zIndex),
   );

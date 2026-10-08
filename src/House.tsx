@@ -671,7 +671,15 @@ export function House({
     const el = event.currentTarget;
     const move = (e: globalThis.PointerEvent) => {
       const bounds = sceneBounds();
-      const position = (floorPerspective(p) ? houseFloorDragPosition : houseDragPosition)(
+      const solve = floorPerspective(p)
+        ? (
+            cursor: { x: number; y: number },
+            grab: { x: number; y: number },
+            bounds: { width: number; height: number },
+            previousY: number,
+          ) => houseFloorDragPosition(cursor, grab, bounds, previousY, current?.template)
+        : houseDragPosition;
+      const position = solve(
         { x: e.clientX - bounds.left, y: e.clientY - bounds.top },
         grab,
         bounds,
@@ -737,7 +745,7 @@ export function House({
     activeDrag.current = true;
     setSelected(`actor:${p.user_id}`);
     const bounds = sceneBounds(),
-      factor = housePerspectiveScale(p.y),
+      factor = houseFloorScale(p.y, current?.template),
       grab = {
         x: (event.clientX - bounds.left - p.x * bounds.width) / factor,
         y: (event.clientY - bounds.top - p.y * bounds.height) / factor,
@@ -748,12 +756,12 @@ export function House({
     el.setPointerCapture(event.pointerId);
     const move = (e: globalThis.PointerEvent) => {
       const bounds = sceneBounds();
-      ({ x, y } = houseDragPosition(
+      ({ x, y } = houseFloorDragPosition(
         { x: e.clientX - bounds.left, y: e.clientY - bounds.top },
         grab,
         bounds,
         y,
-        0.1,
+        current?.template,
       ));
       setHome((h) =>
         h
@@ -843,10 +851,12 @@ export function House({
   function floorPerspective(p: HousePlacement) {
     const item =
       home?.inventory.find((i) => i.id === p.ref) || home?.items.find((i) => i.id === p.ref);
-    return current?.template === 'hall-hearth' && item?.catalog_id !== 'frame';
+    return item?.catalog_id !== 'frame';
   }
   function pieceDepthScale(p: HousePlacement) {
-    return floorPerspective(p) ? houseFloorScale(p.y) : housePerspectiveScale(p.y);
+    return floorPerspective(p)
+      ? houseFloorScale(p.y, current?.template)
+      : housePerspectiveScale(p.y);
   }
   async function openRecipient(id: string) {
     setRecipient(await api<Profile>(`/profiles/${encodeURIComponent(id)}`));
@@ -1250,11 +1260,11 @@ export function House({
                       }}
                       data-base-scale={p.scale}
                       data-house-actor={p.user_id}
-                      data-depth-scale={housePerspectiveScale(p.y)}
+                      data-depth-scale={houseFloorScale(p.y, current?.template)}
                       style={{
                         left: `${p.x * 100}%`,
                         top: `${p.y * 100}%`,
-                        width: `${p.scale * housePerspectiveScale(p.y) * 100}%`,
+                        width: `${p.scale * houseFloorScale(p.y, current?.template) * 100}%`,
                         zIndex: housePaintLayer(p.depth_layer, p.layer),
                         transform: 'translate(-50%, -100%)',
                       }}

@@ -1,5 +1,26 @@
 # House — 07/10/2026
 
+## Perspectiva pelo chão — 08/10/2026
+
+Mobília, montarias, mascotes e personagens usam o mesmo plano de profundidade
+do cenário. Arrastar para o fundo reduz a imagem até a borda traseira do chão,
+sem usar a parede como limite; trazer para perto aumenta a imagem até a borda
+frontal. As 16 imagens de cenário têm limites próprios medidos no enquadramento
+existente, em `shared/house-perspective.ts`. A projeção usa o ponto de contato
+dos pés/base. O tamanho manual é calibrado em y=0,84 e permanece independente
+do fator de profundidade; não há reescrita de posições/tamanhos salvos.
+
+O ponto agarrado acompanha o cursor enquanto a escala muda, até encontrar os
+limites do chão. Quadros mantêm seu comportamento de parede. Sombras, camadas,
+direções e distorção existentes continuam compostas sobre a projeção.
+
+Verificação: nove testes de geometria/arraste/camadas e navegador integrado
+com móvel e personagem, redução no fundo, aumento à frente, limites do chão,
+retorno ao tamanho inicial e cursor a menos de 2 px. O fluxo também conserva
+as 176 imagens, 12 vistas, distorção e persistência após recarga. TypeScript,
+Vite e bundle do servidor passaram na fonte de release sem o protótipo pausado
+de variantes de monstros.
+
 ## Mobília refeita e organização da tela
 
 A pedido do usuário, os dez objetos de mobília foram refeitos com a sala

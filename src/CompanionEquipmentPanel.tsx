@@ -2,6 +2,10 @@ import { useEffect, useRef, useState, type DragEvent } from 'react';
 import { Sparkles } from 'lucide-react';
 import { CompanionEquipmentIcon } from './CompanionEquipmentIcon';
 import {
+  BARDING_PARTS,
+  BARDING_PART_LABELS,
+  isBarding,
+  type BardingPart,
   COMPANION_SLOT_LABELS,
   compatibleCompanionSlots,
   type CompanionArtJob,
@@ -39,6 +43,7 @@ export function CompanionEquipmentPanel({
   const [notice, setNotice] = useState('');
   const [over, setOver] = useState<CompanionSlot | null>(null);
   const [imageFailed, setImageFailed] = useState(false);
+  const [bardingChoices, setBardingChoices] = useState<Record<string, BardingPart[]>>({});
   const alive = useRef(true),
     inFlight = useRef(false),
     refresh = useRef(onRefresh);
@@ -87,6 +92,12 @@ export function CompanionEquipmentPanel({
   }, [characterId]);
   const companions = state?.companions.filter((c) => c.kind === kind) || [];
   const selected = companions.find((c) => c.id === selectedId) || companions[0];
+  const hasBarding =
+    kind === 'mount' &&
+    selected?.equipped.some((item) => item.slot === 'armor' && isBarding(item.id));
+  const bardingParts = selected
+    ? (bardingChoices[selected.id] ?? selected.barding_parts ?? [...BARDING_PARTS])
+    : [...BARDING_PARTS];
   useEffect(() => {
     setImageFailed(false);
     artKey.current = crypto.randomUUID();
@@ -185,6 +196,7 @@ export function CompanionEquipmentPanel({
         kind,
         companion_id: selected.id,
         idempotency_key: artKey.current,
+        ...(kind === 'mount' ? { barding_parts: bardingParts } : {}),
       });
       if (!alive.current) return;
       setJobs((current) => [job, ...current.filter((j) => j.id !== job.id)]);
@@ -415,6 +427,30 @@ export function CompanionEquipmentPanel({
               );
             })}
           </div>
+          {hasBarding && (
+            <fieldset className="companion-barding-parts" disabled={disabled || pending}>
+              <legend>Partes da barda na imagem</legend>
+              <p>Marque as proteções que deseja na próxima imagem.</p>
+              <div>
+                {BARDING_PARTS.map((part) => (
+                  <label key={part}>
+                    <input
+                      type="checkbox"
+                      checked={bardingParts.includes(part)}
+                      onChange={(event) => {
+                        const next = BARDING_PARTS.filter((p) =>
+                          p === part ? event.target.checked : bardingParts.includes(p),
+                        );
+                        setBardingChoices((current) => ({ ...current, [selected.id]: next }));
+                        artKey.current = crypto.randomUUID();
+                      }}
+                    />
+                    {BARDING_PART_LABELS[part]}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          )}
           <div className="equipment-generate">
             <button
               className="button outline small-button"

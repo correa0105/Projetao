@@ -2,6 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   houseFloorScale,
+  houseFloorPlane,
+  houseFloorPlanes,
   houseFloorDragPosition,
   housePaintLayer,
 } from '../shared/house-perspective.js';
@@ -17,7 +19,7 @@ test('hearth floor projection makes near furniture larger and distant furniture 
   ]) {
     const bounds = { width: 1200, height: 675 };
     let previousY = 0.84;
-    for (const y of [0.84, 0.74, 0.52, 0.42, 0.35, 0.2, 0.8, 0.96]) {
+    for (const y of [0.84, 0.74, 0.52, 0.5, 0.8, 0.96]) {
       const cursor = {
         x: 0.57 * bounds.width + grab.x * houseFloorScale(y),
         y: y * bounds.height + grab.y * houseFloorScale(y),
@@ -26,6 +28,34 @@ test('hearth floor projection makes near furniture larger and distant furniture 
       assert.ok(Math.abs(p.x - 0.57) < 1e-9);
       assert.ok(Math.abs(p.y - y) < 1e-9);
       previousY = p.y;
+    }
+  }
+});
+test('ground stops at the back edge of each floor and the near edge of the image', () => {
+  for (const template of Object.keys(houseFloorPlanes)) {
+    const floor = houseFloorPlane(template),
+      bounds = { width: 1200, height: 675 };
+    assert.equal(houseFloorScale(-1, template), houseFloorScale(floor.back, template));
+    assert.equal(houseFloorScale(2, template), houseFloorScale(floor.front, template));
+    assert.ok(Math.abs(houseFloorScale(0.84, template) - 1) < 1e-12);
+    const back = houseFloorDragPosition(
+        { x: 600, y: -500 },
+        { x: 0, y: 0 },
+        bounds,
+        0.84,
+        template,
+      ),
+      near = houseFloorDragPosition({ x: 600, y: 1200 }, { x: 0, y: 0 }, bounds, 0.84, template);
+    assert.equal(back.y, floor.back);
+    assert.equal(near.y, floor.front);
+    assert.ok(houseFloorScale(near.y, template) > houseFloorScale(back.y, template) * 4);
+    for (const y of [floor.back, 0.7, 0.84, floor.front]) {
+      const grab = { x: 45, y: -100 },
+        scale = houseFloorScale(y, template),
+        cursor = { x: 0.57 * bounds.width + grab.x * scale, y: y * bounds.height + grab.y * scale },
+        position = houseFloorDragPosition(cursor, grab, bounds, 0.84, template);
+      assert.ok(Math.abs(position.y - y) < 1e-9);
+      assert.ok(Math.abs(position.x - 0.57) < 1e-9);
     }
   }
 });

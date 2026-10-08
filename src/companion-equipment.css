@@ -74,6 +74,49 @@
 .companion-equipment-panel .equipment-note {
   line-height: 1.5;
 }
+.companion-barding-parts {
+  min-inline-size: 0;
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid #776342;
+  border-radius: 5px;
+}
+.companion-barding-parts legend {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  color: #dfcfb3;
+  font-size: 13px;
+}
+.companion-barding-parts p {
+  margin: 0 0 10px;
+  font-size: 12px;
+}
+.companion-barding-parts > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.companion-barding-parts label {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.companion-barding-parts input[type='checkbox'] {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  padding: 0;
+  margin: 2px 0 0;
+  accent-color: #c6a366;
+}
+@media (max-width: 420px) {
+  .companion-barding-parts > div {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 600px) {
   .companion-outfit-grid {
     grid-template-columns: 40px minmax(0, 1fr) 40px;

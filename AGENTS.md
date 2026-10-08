@@ -4,6 +4,20 @@ Antes de editar, leia `docs/CONTEXTO.md` e `README.md`. Estes arquivos são a me
 portável do projeto. Atualize o contexto quando houver mudanças relevantes no escopo,
 nas regras, na arquitetura ou no estado de implementação.
 
+Retomada parcial explícita em 08/10/2026: o usuário pediu aplicar sons/efeitos,
+favoritos e intervalos no VTT. Esses recursos do checkpoint d76d62d foram
+validados no navegador e aplicados no Docker local. A revisão dos 330 monstros
+com quatro alternativas continua PAUSADA; o horário 00:30 não autoriza execução
+automática. Há protótipo local de variantes incompleto: preservar e excluir
+dos releases até a retomada explícita. Estado em docs/PENDENCIAS-VTT-20261008.md.
+
+Pedidos posteriores de 08/10: antes de Vestir, permitir marcar as regiões da
+barda que aparecem na imagem (seis, todas por padrão). É escolha visual, não
+divisão do item/estoque. Reconhecer também bardas legacy:. Mobília, montarias,
+mascotes e personagens da House usam o mesmo plano de chão por cenário: diminuir
+até a borda traseira do chão e aumentar em direção à câmera. Quadros mantêm
+posicionamento de parede. Detalhes em COMPANION-EQUIPMENT.md e HOUSE.md.
+
 Ao retomar perguntas sobre o estado das regras, lançamento, níveis altos ou suplementos,
 leia também `docs/ROADMAP-REGRAS.md`. Diferencie o que está implementado do que está
 planejado; não apresente a migração ao SRD como implementação completa de D&D.
@@ -76,7 +90,7 @@ sólidas; gelo usa prismas de paredes largas em 0,5–3. Raio e faíscas têm tr
 emissores distribuídos e várias ramificações simultâneas, substituindo núcleo
 único; projeção permanece superior. Nenhum arquivo JB2A incorporado.
 
-Pedido mais recente, ainda em execução: refazer todo o acervo de 330 monstros
+Pedido de monstros, agora pausado: refazer todo o acervo de 330 monstros
 usando a pasta FA_Tokens_Webp como referência de anatomia/qualidade, com QUATRO
 versões por monstro. Criaturas conservam corpo/pose e variam cores; humanoides
 podem ser personagens distintos. Seletor antes de clique/arraste para o mapa.

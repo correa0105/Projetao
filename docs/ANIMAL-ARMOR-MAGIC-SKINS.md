@@ -44,7 +44,10 @@ Pedido posterior: as 12 bardas são itens completos, com peso integral e um úni
 encaixe Armadura/barda no Inventário. Não destrinchar uma compra em partes. O
 ilustrador considera a barda inteira e os acessórios equipados nos outros espaços;
 ferraduras são acessórios e aparecem nas patas. Não usar um seletor de conjunto
-de seis partes na montaria.
+de seis itens na montaria. Pedido posterior de 08/10: o jogador pode marcar as
+seis regiões que quer desenhar em **Partes da barda na imagem**, antes de Vestir.
+É escolha visual, sem desmembrar estoque, peso, reservas ou atributos da barda.
+Todas são marcadas por padrão; instruções/revisão abrangem também bardas legadas.
 
 No painel equipado, **Armadura completa → Escolher conjunto → Equipar armadura**
 equipa todas as partes compatíveis de uma vez. As peças precisam estar na mochila

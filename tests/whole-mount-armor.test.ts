@@ -237,6 +237,34 @@ test('upgrade 078 consolidates horse armor without multiplying copies; art uses 
       idempotency_key: randomUUID(),
     });
     assert.equal(job.status, 202);
+    assert.deepEqual(job.data.barding_parts, [
+      'head',
+      'neck',
+      'chest',
+      'body',
+      'front_legs',
+      'hind_legs',
+    ]);
+    const partialInput = {
+      kind: 'mount',
+      companion_id: mount.id,
+      idempotency_key: randomUUID(),
+      barding_parts: ['body', 'chest'],
+    };
+    assert.equal(
+      (await request(`/companions/${hero.id}/art`, { ...partialInput, barding_parts: ['wing'] }))
+        .status,
+      400,
+    );
+    assert.equal(
+      (
+        await request(`/companions/${hero.id}/art`, {
+          ...partialInput,
+          barding_parts: ['head', 'head'],
+        })
+      ).status,
+      400,
+    );
     const refs = (
       await pool.query(
         'SELECT slot,item_id,name,image FROM companion_art_equipment WHERE job_id=$1 ORDER BY slot',
@@ -254,6 +282,35 @@ test('upgrade 078 consolidates horse armor without multiplying copies; art uses 
     await pool.query(
       "UPDATE companion_art_jobs SET status='failed',error='Isolated fixture; provider not invoked' WHERE id=$1",
       [job.data.id],
+    );
+    const partial = await request(`/companions/${hero.id}/art`, partialInput);
+    assert.equal(partial.status, 202);
+    assert.deepEqual(partial.data.barding_parts, ['chest', 'body']);
+    assert.equal(
+      (await request(`/companions/${hero.id}/art`, partialInput)).data.id,
+      partial.data.id,
+    );
+    assert.equal(
+      (await request(`/companions/${hero.id}/art`, { ...partialInput, barding_parts: ['head'] }))
+        .status,
+      409,
+    );
+    assert.deepEqual(
+      (await request(path)).data.companions.find((a: any) => a.id === mount.id).barding_parts,
+      ['chest', 'body'],
+    );
+    assert.deepEqual(
+      (
+        await pool.query(
+          'SELECT slot,item_id FROM companion_equipment WHERE wardrobe_id=$1 ORDER BY slot',
+          [mount.id],
+        )
+      ).rows,
+      equipped,
+    );
+    assert.equal(
+      (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
+      goldBefore,
     );
   } finally {
     await new Promise<void>((r) => server.close(() => r()));

@@ -17,6 +17,7 @@ import {
 import { ART_MONTHLY_LIMIT } from '../shared/character-art.js';
 import {
   COMPANION_SLOTS,
+  BARDING_PARTS,
   companionSlots,
   compatibleCompanionSlots,
   type CompanionKind,
@@ -38,8 +39,21 @@ const equipSchema = z
   })
   .strict();
 const artSchema = z
-  .object({ kind: kindSchema, companion_id: uuid, idempotency_key: uuid })
-  .strict();
+  .object({
+    kind: kindSchema,
+    companion_id: uuid,
+    idempotency_key: uuid,
+    barding_parts: z
+      .array(z.enum(BARDING_PARTS))
+      .max(BARDING_PARTS.length)
+      .refine((parts) => new Set(parts).size === parts.length, 'Partes repetidas.')
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (data) => data.kind === 'mount' || data.barding_parts === undefined,
+    'A seleção de partes da barda é exclusiva de montarias.',
+  );
 const equipSetSchema = z
   .object({ kind: kindSchema, companion_id: uuid, item_id: z.string().min(1).max(100) })
   .strict();
@@ -242,6 +256,16 @@ async function state(db: DB, userId: string, characterId: string) {
       legacy_options: legacyOptions(animal),
       equipped: await equipment(db, animal),
       slots: companionSlots(animal.kind, animal.species_id),
+      ...(animal.kind === 'mount'
+        ? {
+            barding_parts: (
+              await db.query(
+                'SELECT barding_parts FROM companion_art_jobs WHERE wardrobe_id=$1 ORDER BY created_at DESC,id DESC LIMIT 1',
+                [animal.id],
+              )
+            ).rows[0]?.barding_parts ?? [...BARDING_PARTS],
+          }
+        : {}),
     });
   }
   const used = await companionAllocated(db, characterId),
@@ -266,11 +290,15 @@ async function state(db: DB, userId: string, characterId: string) {
 }
 export async function enqueueCompanionArt(userId: string, characterId: string, input: unknown) {
   const data = artSchema.parse(input);
+  const bardingParts =
+    data.kind === 'mount'
+      ? BARDING_PARTS.filter((part) => (data.barding_parts ?? BARDING_PARTS).includes(part))
+      : null;
   return transaction(async (db) => {
     await lockOwner(db, userId, characterId);
     const previous = (
       await db.query(
-        'SELECT id,status,wardrobe_id AS companion_id,kind,equipment_revision,character_id FROM companion_art_jobs WHERE user_id=$1 AND idempotency_key=$2',
+        'SELECT id,status,wardrobe_id AS companion_id,kind,equipment_revision,character_id,barding_parts FROM companion_art_jobs WHERE user_id=$1 AND idempotency_key=$2',
         [userId, data.idempotency_key],
       )
     ).rows[0];
@@ -278,7 +306,9 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
       if (
         previous.character_id !== characterId ||
         previous.companion_id !== data.companion_id ||
-        previous.kind !== data.kind
+        previous.kind !== data.kind ||
+        (data.kind === 'mount' &&
+          JSON.stringify(previous.barding_parts ?? BARDING_PARTS) !== JSON.stringify(bardingParts))
       )
         throw new AppError(409, 'Este pedido já corresponde a outro companheiro.');
       return previous;
@@ -323,7 +353,7 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
     const {
       rows: [job],
     } = await db.query(
-      'INSERT INTO companion_art_jobs(user_id,character_id,wardrobe_id,kind,species_id,appearance,name,equipment_revision,reference,idempotency_key) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id,status,wardrobe_id AS companion_id,kind,equipment_revision',
+      'INSERT INTO companion_art_jobs(user_id,character_id,wardrobe_id,kind,species_id,appearance,name,equipment_revision,reference,idempotency_key,barding_parts) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id,status,wardrobe_id AS companion_id,kind,equipment_revision,barding_parts',
       [
         userId,
         characterId,
@@ -335,6 +365,7 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
         wardrobe.revision,
         reference,
         data.idempotency_key,
+        bardingParts,
       ],
     );
     for (const item of refs)

@@ -1,17 +1,23 @@
 # Alvorada Cinzenta
 
+Atualização do VTT aplicada em 08/10 por novo pedido do usuário: biblioteca de
+sons, favoritos, intervalos, efeitos e imagens no chat. A revisão completa dos
+330 monstros e suas quatro alternativas continua pausada, aguardando pedido
+específico. [Pendências e estado salvo](docs/PENDENCIAS-VTT-20261008.md).
+
 Checkpoint de 08/10 antes do novo acervo de monstros: **155 sons**, favoritos,
 remoção/restauração por mesa, repetição por intervalo e imagens no chat com
 `(Texto)[link]`. **36 efeitos visuais**, gelo com cristais largos e raios/faíscas
 com múltiplas fontes. [Estado e verificações](docs/VTT-CHECKPOINT-20261008.md).
-Refazer os 330 monstros e suas quatro versões é a próxima etapa em execução;
+Refazer os 330 monstros e suas quatro versões é a próxima etapa, agora pausada;
 o checkpoint não representa esse acervo novo como concluído.
 
-Som do VTT: biblioteca local de **75 músicas, ambientes e efeitos**, com volume,
+Som do VTT: biblioteca local de **155 músicas, ambientes e efeitos**, com volume,
 repetição, prévia privada e mistura na mesa. **Fixar** por clique ou arraste
 coloca o som nos dez atalhos; clique ou teclas 1–0 usa o ajuste salvo. Bases CC0
 compatíveis com o acesso pago ao site, incluindo cinco composições de ambientes
-próprias. [Biblioteca, fontes e funcionamento](docs/VTT-SOUNDS.md).
+próprias. Estrela envia o som a **Favoritos**; repetição aceita intervalo de
+1–3600 segundos. [Biblioteca, fontes e funcionamento](docs/VTT-SOUNDS.md).
 
 Efeitos do VTT refinados com as demonstrações públicas de PeriSFX/JB2A como
 referência: vapor com textura, gelo facetado radial, cura com fluxos de energia
@@ -39,6 +45,12 @@ ferramenta **Distorcer imagem** com quatro pontos limitados a 12%, e exclusão
 de itens da coleção com confirmação. **Manter RP aberto** fica em Configurações;
 histórico rola ao clicar para falar e novas falas aparecem sobre o personagem.
 O formulário de guardar/enviar poses foi retirado. [Guia](docs/HOUSE.md).
+
+House (08/10): móveis e personagens diminuem até a borda do chão ao fundo e
+crescem perto da câmera. Montaria → **Partes da barda na imagem** permite escolher
+capacete, pescoço, peito, tronco e proteções das patas antes de **Vestir**;
+todas marcadas solicitam a armadura completa, inclusive compras antigas.
+[Equipamentos e geração](docs/COMPANION-EQUIPMENT.md).
 
 Atualização de 07/10: bardas de montaria são um único item e usam um só espaço
 de armadura. **Vestir** combina a barda completa com os acessórios equipados.

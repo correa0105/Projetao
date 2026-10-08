@@ -24,9 +24,33 @@ export function housePerspectiveScale(y: number) {
   return 0.15 + 0.85 * depth;
 }
 
-/** Floor vanishing point measured from hall-hearth; base size remains at y=.84. */
-export function houseFloorScale(y: number) {
-  return Math.max(0.12, (Math.max(0.08, Math.min(0.98, y)) - 0.34) / 0.5);
+/** Back edge of the usable ground in each unchanged background, not the wall. */
+export const houseFloorPlanes: Record<string, { back: number; front: number }> = {
+  'hall-hearth': { back: 0.5, front: 0.98 },
+  'hall-library': { back: 0.5, front: 0.98 },
+  'hall-vault': { back: 0.52, front: 0.98 },
+  'hall-manor': { back: 0.53, front: 0.98 },
+  'kitchen-hearth': { back: 0.51, front: 0.98 },
+  'kitchen-manor': { back: 0.55, front: 0.98 },
+  'kitchen-herbal': { back: 0.5, front: 0.98 },
+  'kitchen-cellar': { back: 0.44, front: 0.98 },
+  'porch-pines': { back: 0.54, front: 0.98 },
+  'porch-coast': { back: 0.5, front: 0.98 },
+  'porch-castle': { back: 0.54, front: 0.98 },
+  'porch-vines': { back: 0.55, front: 0.98 },
+  'garden-courtyard': { back: 0.52, front: 0.98 },
+  'garden-herbs': { back: 0.42, front: 0.98 },
+  'garden-moon': { back: 0.47, front: 0.98 },
+  'garden-orchard': { back: 0.42, front: 0.98 },
+};
+export function houseFloorPlane(template = 'hall-hearth') {
+  return houseFloorPlanes[template] ?? houseFloorPlanes['hall-hearth'];
+}
+/** Size at the feet/contact point; furniture and characters share the same plane. */
+export function houseFloorScale(y: number, template = 'hall-hearth') {
+  const plane = houseFloorPlane(template),
+    footY = Math.max(plane.back, Math.min(plane.front, y));
+  return 0.3 + ((footY - plane.back) * 0.7) / (0.84 - plane.back);
 }
 
 export function houseFloorDragPosition(
@@ -34,21 +58,24 @@ export function houseFloorDragPosition(
   grab: { x: number; y: number },
   bounds: { width: number; height: number },
   previousY: number,
+  template = 'hall-hearth',
 ) {
-  const denominator = bounds.height + grab.y * 2;
+  const plane = houseFloorPlane(template),
+    slope = 0.7 / (0.84 - plane.back),
+    intercept = 0.3 - plane.back * slope,
+    denominator = bounds.height + grab.y * slope;
   const projected =
     denominator > 1e-8
-      ? (cursor.y + grab.y * 0.68) / denominator
+      ? (cursor.y - grab.y * intercept) / denominator
       : previousY +
-        (cursor.y - (previousY * bounds.height + grab.y * houseFloorScale(previousY))) /
+        (cursor.y - (previousY * bounds.height + grab.y * houseFloorScale(previousY, template))) /
           bounds.height;
-  // Below the projection's minimum, the object keeps a small visible size.
-  const y = Math.max(
-    0.08,
-    Math.min(0.98, projected < 0.4 ? (cursor.y - grab.y * 0.12) / bounds.height : projected),
-  );
+  const y = Math.max(plane.back, Math.min(plane.front, projected));
   return {
-    x: Math.max(0.02, Math.min(0.98, (cursor.x - grab.x * houseFloorScale(y)) / bounds.width)),
+    x: Math.max(
+      0.02,
+      Math.min(0.98, (cursor.x - grab.x * houseFloorScale(y, template)) / bounds.width),
+    ),
     y,
   };
 }

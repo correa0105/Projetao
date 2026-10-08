@@ -19,7 +19,7 @@ test('animal veste referências reais sobre BASE sem estilo humano ou mistura de
     `
     const fs=require('node:fs'),path=require('node:path');const args=process.argv.slice(2),images=args.flatMap((v,i)=>v==='--image'?[args[i+1]]:[]),result=args[args.indexOf('--output-last-message')+1];
     let prompt='';process.stdin.on('data',c=>prompt+=c);process.stdin.on('end',()=>{
-      if(JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1],'utf8')).properties.approved){fs.writeFileSync(result,JSON.stringify({approved:true,issues:[]}));return;}
+      if(JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1],'utf8')).properties.approved){const saved=JSON.parse(fs.readFileSync(${JSON.stringify(capture)},'utf8'));saved.review=prompt;fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify(saved));fs.writeFileSync(result,JSON.stringify({approved:true,issues:[]}));return;}
       if(images.length>5)process.exit(1);
       fs.writeFileSync(${JSON.stringify(capture)},JSON.stringify({prompt,images:images.map(p=>({path:p,bytes:fs.readFileSync(p).toString('base64')}))}));
       const out=path.join(args[args.indexOf('--cd')+1],'output.png');fs.copyFileSync(images[0],out);fs.writeFileSync(result,JSON.stringify({image_path:out,error:''}));
@@ -107,6 +107,31 @@ test('animal veste referências reais sobre BASE sem estilo humano ou mistura de
       rendered.prompt.includes(
         JSON.stringify(rendered.images.map((image: { path: string }) => image.path)),
       ),
+    );
+    await generateCompanionArt({
+      id: randomUUID(),
+      reference: base,
+      kind: 'mount',
+      species_id: 'warhorse',
+      appearance: 'original',
+      name: 'Brasa',
+      barding_parts: ['chest', 'body'],
+      equipment: [
+        { ...equipment.find((item) => item.slot === 'armor')!, item_id: 'legacy:barding-plate' },
+      ],
+    });
+    const partial = JSON.parse(await readFile(capture, 'utf8'));
+    for (const prompt of [partial.prompt, partial.review]) {
+      assert.match(prompt, /INCLUIR Proteção do peito; Tronco e flancos/);
+      assert.match(
+        prompt,
+        /NÃO desenhar as partes desmarcadas da barda: Capacete \/ testeira; Proteção do pescoço/,
+      );
+      assert.match(prompt, /Proteção das patas dianteiras; Proteção das patas traseiras/);
+    }
+    assert.match(
+      describeCompanionEquipment({ ...equipment[1], item_id: 'legacy:barding-plate' }, 0).wearing,
+      /ARMADURA COMPLETA/,
     );
   } finally {
     if (beforePath === undefined) delete process.env.PATH;

@@ -9,10 +9,12 @@ import { races, classes } from '../shared/rules.js';
 import { raceRules, validateChoices } from '../shared/character-sheet.js';
 import { characterHeightScale, characterStature } from '../shared/character-stature.js';
 import { type ArtEquipment, type HelmetMode } from '../shared/equipment.js';
+import { BARDING_PARTS } from '../shared/companion-equipment.js';
 import { describeArtEquipment } from './equipment-art.js';
 import { equipmentReferenceSheet } from './equipment-reference.js';
 import {
   companionArtInstructions,
+  bardingCoverage,
   describeCompanionEquipment,
   type CompanionArtEquipment,
   type CompanionArtSubject,
@@ -182,6 +184,7 @@ async function reviewComposition(
     deslocar, abrir ou tornar transparente outro item para revelá-las.
     ${hasCape && !companion ? 'A capa deve cair solta como manto sem mangas, por cima dos ombros; reprove tecido enrolado no braço ou metal atravessando o tecido.' : ''}
     ${companion ? `O sujeito é um ANIMAL ${JSON.stringify(companion)}. Imagem 1 é a composição final a julgar; imagem 2 é a BASE confiável sem equipamento. Compare identidade, pose, direção, anatomia e proporções com a BASE. Reprove mudança de espécie, pelagem, pose ou escala da silhueta que não seja adaptação natural do equipamento. Confira anatomia animal: sem membros humanos, sem braços/mãos extras, sem inversão das patas traseiras; asas ligadas ao dorso, cauda e crânio naturais. Equipamento adaptado às partes reais do animal, sem arma nem cavaleiro. Não exigir anatomia humana. Reprove penas, patas, cauda ou equipamentos cortados e qualquer torso antropomórfico.` : ''}
+    ${companion?.barding_parts ? `Conferir também a cobertura da BARDA: ${bardingCoverage(companion.barding_parts)} Reprove proteções marcadas que estejam ausentes em áreas visíveis (especialmente testeira e patas) ou partes desmarcadas adicionadas. Uma seleção completa não pode resultar apenas em proteção do tronco. Oclusão natural permanece válida; não exigir o lado oculto do animal.` : ''}
     Seja rigoroso sobre esses defeitos visíveis, sem inventar falhas ou exigir acessórios ocultos.
     Retorne approved=true e issues=[] somente se cumprir. Caso contrário, approved=false e
     descreva em português os defeitos VISÍVEIS e as correções necessárias, sem comandos ou código.`,
@@ -236,7 +239,11 @@ export async function generateCharacterArt(job: {
     equipmentPaths.push(path);
     equipmentDescriptions.push(
       job.companion
-        ? describeCompanionEquipment(item as CompanionArtEquipment, index)
+        ? describeCompanionEquipment(
+            item as CompanionArtEquipment,
+            index,
+            job.companion.barding_parts,
+          )
         : describeArtEquipment(item as ArtEquipment, index, job.helmet_mode),
     );
   }
@@ -473,6 +480,7 @@ export async function generateCompanionArt(job: {
   name: string;
   appearance: string;
   equipment?: CompanionArtEquipment[];
+  barding_parts?: import('../shared/companion-equipment.js').BardingPart[];
 }) {
   return generateCharacterArt({
     ...job,
@@ -483,6 +491,11 @@ export async function generateCompanionArt(job: {
       species_id: job.species_id,
       name: job.name,
       appearance: job.appearance,
+      ...(job.equipment?.some(
+        (item) => item.slot === 'armor' && /^(?:legacy:)?barding-/.test(item.item_id),
+      )
+        ? { barding_parts: job.barding_parts ?? [...BARDING_PARTS] }
+        : {}),
     },
   });
 }

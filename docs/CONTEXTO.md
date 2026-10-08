@@ -1,5 +1,43 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Retomada parcial e aplicação em 08/10/2026
+
+Após pedir guardar os trabalhos para 00:30, o usuário solicitou explicitamente
+aplicar sons/efeitos, favoritos e repetição por intervalo no VTT. Esses recursos
+foram aplicados no Docker local e verificados com os arquivos servidos. A revisão
+completa dos 330 monstros e quatro alternativas permanece pausada. Não iniciar
+execução pelo horário. Escopo/estado em
+[PENDENCIAS-VTT-20261008.md](PENDENCIAS-VTT-20261008.md).
+
+Checkpoint validado salvo e conferido no GitHub: branch Welson, commit
+`d76d62db4204ebb8dc9ccfc6ca6f233a3d60b3fd`, tag
+`codex/checkpoint-antes-variantes-monstros-2026-10-08`.
+O trabalho posterior de variantes continua local e incompleto: último TSC
+apontou src/Vtt.tsx:1682 (number | undefined versus MonsterVariant | undefined).
+Não apresentar essas variantes como concluídas. Release preparado a partir do
+checkpoint, com as correções de House/barda, excluindo os arquivos incompletos.
+
+Novos pedidos: Vestir montaria permite escolher seis regiões visuais da barda,
+todas por padrão. Migration 081 guarda a seleção no pedido; última solicitação
+preenche o painel após recarga. Valores inválidos/duplicados e uso em mascote
+são recusados; idempotência compara a seleção. Barda continua item único,
+sem alteração de estoque/peso/atributos. Prompts e revisão exigem regiões
+marcadas, inclusive legacy:barding, e excluem as desmarcadas. Testes API,
+ilustrador falso e navegador 320/390/768/1440 passaram sem usar o provedor.
+
+House agora usa bordas reais do chão em 16 cenários; móveis e atores compartilham
+escala/arraste por base/pés. Diminuição no fundo, aumento à câmera, sem reescrever
+layouts. Nove testes geométricos e navegador integrado aprovados. Quadros usam
+a parede. Detalhes em HOUSE.md e COMPANION-EQUIPMENT.md.
+
+House/barda aplicadas no Docker local: serviço healthy, migration 081 conferida,
+worker atualizado com fila vazia e heartbeat ativo. Backup anterior em
+`.local/backups/before-house-barding-floor-20261008.dump`; hashes de 43 tabelas
+continuam iguais. Bundles servidos e 155 áudios conferidos contra a fonte de
+release; artes privadas preservadas. Nenhuma imagem de jogador foi regenerada
+automaticamente. Git: alterações validadas seguem para origin/Welson;
+protótipo de variantes incompleto permanece local.
+
 ## Checkpoint antes do novo acervo (08/10/2026)
 
 Pedido explícito: salvar no GitHub antes de aplicar a revisão completa dos
@@ -19,14 +57,19 @@ dos 75 anteriores, novas fontes CC0 e nove foleys/doze ambientes próprios.
 Favoritos e Removidos por mesa; remover para vozes e conserva arquivo/ajustes/
 atalhos. Repetição opcional 1–3600 s entre inícios, timeline compartilhada,
 sem replay de polls ou entrada durante silêncio. Schema/engine/chat/VFX: 16/16,
-API de som descartável: 8/8. Browser de favoritos/intervalo/chat ainda pendente.
+API de som descartável: 8/8. Browser mestre/jogador com áudio real verificou
+Favoritos, três ciclos de Passo 3 a cada 3 s em ambos, silêncio entre disparos,
+remoção/restauração e persistência; imagem no chat decodificada. Quatro larguras
+320–1440 sem overflow. Regressão VTT/perfis/comunidade 23/23 aprovada.
 
 VFX: 36 modelos com busca; retirada de bolhas sólidas, prismas de gelo com
 largura em escala 0,5–3 e três emissores de eletricidade, com seis/nove ramos.
 Navegador Canvas validou 36 modelos/três proporções e editor em quatro larguras;
 cache 24 e limpeza. Chat agora interpreta (Texto)[HTTPS] e [Texto](HTTPS)
 ou caminhos locais, preserva texto literal inseguro e rolagem ao carregar imagem.
-Ainda não foi realizado deploy dessas mudanças nesta etapa.
+Deploy realizado: 155 áudios servidos conferidos por hash, bundles do checkpoint
+conferidos, 330 artes privadas intactas e anônimo 401. Comparação pré/pós de 43
+tabelas confirmou compras, saldo, equipamentos, mensagens e layouts preservados.
 
 ## Biblioteca e mixer de som VTT (07/10/2026)
 
