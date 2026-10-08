@@ -181,11 +181,8 @@ try {
     });
   };
   // Player-created cards, mixed text/images, malformed fallback, persistence.
-  await peer.getByLabel('Mensagem', { exact: true }).fill('Dano 1d8. Alcance 1,5 m.');
-  await peer.getByRole('button', { name: 'Arma', exact: true }).click();
-  await expect(peer.getByLabel('Mensagem', { exact: true })).toHaveValue(
-    '/arma Nome da arma | Dano 1d8. Alcance 1,5 m.',
-  );
+  await expect(peer.getByRole('button', { name: 'Arma', exact: true })).toHaveCount(0);
+  await expect(peer.getByRole('button', { name: 'Ataque de magia', exact: true })).toHaveCount(0);
   await peer
     .getByLabel('Mensagem', { exact: true })
     .fill(
@@ -216,6 +213,157 @@ try {
   await expect(editor.getByLabel('Nome do efeito')).toBeVisible();
   await page.getByRole('button', { name: 'Fechar efeitos', exact: true }).click();
   console.log('PASS cards/player/persistence/token selection/editor');
+  // Actual Ctrl+wheel rotates the selected token, preserves the camera and sidebar, and saves.
+  await page.getByRole('button', { name: 'Som', exact: true }).click();
+  await page.getByRole('button', { name: 'Selecionar (V)', exact: true }).click();
+  await clickToken(page, actor, true);
+  await expect(board).toHaveAttribute('data-selection-ids', actor.id);
+  const cameraBefore = await Promise.all(
+    ['x', 'y', 'zoom'].map((k) => board.getAttribute('data-camera-' + k)),
+  );
+  const viewportBefore = await page.evaluate(() => ({
+    width: innerWidth,
+    scale: visualViewport?.scale,
+  }));
+  await board.hover();
+  await page.keyboard.down('Control');
+  for (let i = 0; i < 3; i++) await page.mouse.wheel(0, 100);
+  await page.keyboard.up('Control');
+  await expect
+    .poll(
+      async () =>
+        (await api(gm, root)).data.document.scenes[0].tokens.find((t: any) => t.id === actor.id)
+          .rotation,
+    )
+    .toBe(45);
+  expect(
+    await Promise.all(['x', 'y', 'zoom'].map((k) => board.getAttribute('data-camera-' + k))),
+  ).toEqual(cameraBefore);
+  expect(await page.evaluate(() => ({ width: innerWidth, scale: visualViewport?.scale }))).toEqual(
+    viewportBefore,
+  );
+  await expect(page.locator('.vtt-soundboard')).toBeVisible();
+  await page.getByRole('button', { name: 'Chat', exact: true }).click();
+  await expect(page.getByLabel('Mensagem', { exact: true })).toHaveValue('Rascunho permanece');
+  await page.getByRole('button', { name: 'Som', exact: true }).click();
+  await board.hover();
+  await page.keyboard.down('Control');
+  for (let i = 0; i < 3; i++) await page.mouse.wheel(0, -100);
+  await page.keyboard.up('Control');
+  await expect
+    .poll(
+      async () =>
+        (await api(gm, root)).data.document.scenes[0].tokens.find((t: any) => t.id === actor.id)
+          .rotation,
+    )
+    .toBe(0);
+  await page.mouse.wheel(0, 100);
+  await expect.poll(() => board.getAttribute('data-camera-zoom')).not.toBe(cameraBefore[2]);
+  await page.reload();
+  await expect(board).toBeVisible();
+  expect(
+    (await api(gm, root)).data.document.scenes[0].tokens.find((t: any) => t.id === actor.id)
+      .rotation,
+  ).toBe(0);
+  await clickToken(peer, hero, true);
+  await expect(peer.getByLabel('Tabuleiro da mesa', { exact: true })).toHaveAttribute(
+    'data-selection-ids',
+    hero.id,
+  );
+  const peerBoard = peer.getByLabel('Tabuleiro da mesa', { exact: true });
+  await peerBoard.hover();
+  await peer.keyboard.down('Control');
+  await peer.mouse.wheel(0, -100);
+  await peer.keyboard.up('Control');
+  await expect
+    .poll(
+      async () =>
+        (await api(player, root)).data.document.scenes[0].tokens.find((t: any) => t.id === hero.id)
+          .rotation,
+    )
+    .toBe(345);
+  expect((await api(player, root + '/tokens/' + actor.id, 'PATCH', { rotation: 180 })).status).toBe(
+    403,
+  );
+  console.log('PASS Ctrl+wheel rotation/rapid scroll/inverse/zoom/sidebar/persistence/ownership');
+  // Compact categories stay in one row; text can be dragged, undone and restored after reload.
+  await page.getByRole('button', { name: 'Biblioteca', exact: true }).click();
+  await expect(
+    page.getByText('Arraste um monstro para colocá-lo na mesa.', { exact: true }),
+  ).toHaveCount(0);
+  await expect(page.getByText(/entradas SRD 2024/)).toHaveCount(0);
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 1000 });
+    const tabs = page.getByLabel('Categorias da biblioteca');
+    await expect(tabs).toBeVisible();
+    const boxes = await tabs.locator('button').evaluateAll((buttons) =>
+      buttons.map((b) => {
+        const r = b.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: r.height };
+      }),
+    );
+    expect(boxes.length).toBe(4);
+    expect(new Set(boxes.map((b) => Math.round(b.y))).size).toBe(1);
+    expect(boxes.every((b) => b.height <= 38 && b.width > 0)).toBe(true);
+    await page.screenshot({ path: `test-results/vtt-library-compact-${width}.png` });
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.reload();
+  await expect(board).toBeVisible();
+  await page.getByRole('button', { name: 'Som', exact: true }).click();
+  await page.getByRole('button', { name: 'Texto', exact: true }).click();
+  await clickToken(page, { x: 750, y: 240 });
+  await page.getByLabel('Inserir texto no mapa').locator('textarea').fill('Irineu');
+  await page.getByRole('button', { name: 'Inserir texto', exact: true }).click();
+  let drawing: any;
+  await expect
+    .poll(async () => {
+      drawing = (await api(gm, root)).data.document.scenes[0].drawings.find(
+        (d: any) => d.text === 'Irineu',
+      );
+      return !!drawing;
+    })
+    .toBe(true);
+  await expect(page.getByRole('button', { name: 'Selecionar (V)', exact: true })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  const initial = drawing.points[0];
+  const dragText = async (from: { x: number; y: number }, dx: number, dy: number, alt = false) => {
+    const box = (await board.boundingBox())!;
+    const [cx, cy, zoom] = await Promise.all(
+      ['x', 'y', 'zoom'].map((k) => board.getAttribute('data-camera-' + k)),
+    );
+    const z = Number(zoom),
+      x = box.x + box.width / 2 + (from.x - Number(cx)) * z,
+      y = box.y + box.height / 2 + (from.y - Number(cy)) * z;
+    if (alt) await page.keyboard.down('Alt');
+    await page.mouse.move(x, y);
+    await page.mouse.down();
+    await page.mouse.move(x + dx * z, y + dy * z, { steps: 8 });
+    await page.mouse.up();
+    if (alt) await page.keyboard.up('Alt');
+  };
+  await dragText({ x: initial.x + 8, y: initial.y - 8 }, 140, 70);
+  const savedPoint = async () =>
+    (await api(gm, root)).data.document.scenes[0].drawings.find((d: any) => d.id === drawing.id)
+      .points[0];
+  await expect.poll(savedPoint).toEqual({ x: initial.x + 140, y: initial.y + 70 });
+  await expect(page.locator('.vtt-soundboard')).toBeVisible();
+  await page.keyboard.press('Control+z');
+  await expect.poll(savedPoint).toEqual(initial);
+  await dragText({ x: initial.x + 8, y: initial.y - 8 }, 33, 19, true);
+  await expect
+    .poll(async () => {
+      const p = await savedPoint();
+      return { x: Math.round(p.x), y: Math.round(p.y) };
+    })
+    .toEqual({ x: initial.x + 33, y: initial.y + 19 });
+  const freePosition = await savedPoint();
+  await page.reload();
+  await expect(board).toBeVisible();
+  expect(await savedPoint()).toEqual(freePosition);
+  console.log('PASS compact library/text drag/grid/free movement/undo/save/reload/sidebar');
   // Actual hotbar attack flow: attacker selection, target click, animation/audio.
   await page.getByRole('button', { name: 'Atalho 1 · Espada longa', exact: true }).click();
   await expect(page.getByLabel('Animação do ataque')).toBeVisible();

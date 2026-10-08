@@ -1,5 +1,11 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Controles do VTT (08/10/2026)
+
+Compêndio sem os dois avisos SRD/arraste e com Monstros/Presets/Galeria/Magias compactos em uma linha. Botões Arma/Ataque de magia removidos do chat. Ctrl + roda gira seleção em 15° sem mudar câmera/aba, respeitando controle dos jogadores. Selecionar arrasta escrita/desenhos na camada atual; Alt move livre, grade/desfazer/salvamento funcionam. Inserir texto retorna à seleção. Aplicado no Docker, smoke/QA mobile e preservação de 43 tabelas aprovados; guia VTT-CONTROLS-20261008.md.
+
+Pedidos seguintes em andamento: arte principal + token do personagem visto de cima; quarenta peças da House com oito vistas cada e exportação agrupada em Downloads. A revisão geral 330×4 permanece pausada.
+
 ## Layout das seis páginas (08/10/2026)
 
 Cartas, Hall da Fama, Perfis, Eventos, Torre e Salão de cartas alinhados ao

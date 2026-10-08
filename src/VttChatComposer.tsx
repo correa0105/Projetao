@@ -1,6 +1,3 @@
-import { useRef } from 'react';
-import { Swords, WandSparkles } from 'lucide-react';
-import { chatCard, chatCardTemplate, type ChatCardKind } from '../shared/vtt-chat-cards';
 import './vtt-chat-cards.css';
 
 export function VttChatComposer({
@@ -14,17 +11,6 @@ export function VttChatComposer({
   onSend: (text: string) => void;
   busy: boolean;
 }) {
-  const input = useRef<HTMLTextAreaElement>(null);
-  function insert(kind: ChatCardKind) {
-    const next = chatCardTemplate(kind, text);
-    if (next.length > 2000) return;
-    onChange(next);
-    requestAnimationFrame(() => {
-      input.current?.focus();
-      const start = kind.length + 2;
-      input.current?.setSelectionRange(start, start + chatCard(next)!.name.length);
-    });
-  }
   return (
     <form
       className="vtt-chat-compose"
@@ -37,7 +23,6 @@ export function VttChatComposer({
         Mensagem
         <textarea
           aria-label="Mensagem"
-          ref={input}
           value={text}
           onChange={(event) => onChange(event.target.value)}
           maxLength={2000}
@@ -62,22 +47,6 @@ export function VttChatComposer({
         </div>
       </details>
       <div className="vtt-chat-compose-actions">
-        <button
-          type="button"
-          onClick={() => insert('arma')}
-          disabled={busy || chatCardTemplate('arma', text).length > 2000}
-          title="Inserir modelo de descrição de arma"
-        >
-          <Swords size={14} /> Arma
-        </button>
-        <button
-          type="button"
-          onClick={() => insert('magia')}
-          disabled={busy || chatCardTemplate('magia', text).length > 2000}
-          title="Inserir modelo de ataque de magia"
-        >
-          <WandSparkles size={14} /> Ataque de magia
-        </button>
         <button type="submit" disabled={busy || !text.trim()}>
           Enviar à mesa
         </button>

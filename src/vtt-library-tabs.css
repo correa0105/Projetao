@@ -1,0 +1,13 @@
+.vtt-subtabs.vtt-library-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+}
+.vtt-subtabs.vtt-library-tabs button {
+  min-width: 0;
+  min-height: 34px;
+  padding: 6px 3px;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+}

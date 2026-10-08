@@ -129,6 +129,7 @@ import { VttBossBars } from './VttBossBars';
 import { MapLibrary, MapSettings } from './VttMaps';
 import { useMusicInterlude } from './SiteMusic';
 import './vtt.css';
+import './vtt-library-tabs.css';
 type Tool =
   | 'select'
   | 'lasso'
@@ -392,10 +393,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       screen: Point;
       camera: VttCamera;
       original: VttDocument;
-      kind: 'pan' | 'tokens' | 'shape' | 'lasso';
+      kind: 'pan' | 'tokens' | 'drawing' | 'shape' | 'lasso';
       tool?: Tool;
       layer?: string;
       tokens: VttToken[];
+      drawing?: VttDrawing;
       lasso?: Point[];
       additive?: boolean;
       baseSelection?: string[];
@@ -456,6 +458,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       ) ||
       (gm ? scene?.tokens.find((t) => t.layer === 'tokens' && !t.hidden) : null) ||
       null;
+  useEffect(() => {
+    const element = canvas.current;
+    if (!element) return;
+    const preventScroll = (event: WheelEvent) => event.preventDefault();
+    element.addEventListener('wheel', preventScroll, { passive: false });
+    return () => element.removeEventListener('wheel', preventScroll);
+  }, [state?.id, scene?.id]);
   function changeLayer(next: string, nextSelection: string[] = []) {
     if (next === layer) return;
     if (drag.current?.kind === 'shape' || drag.current?.kind === 'lasso') {
@@ -918,7 +927,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       );
     let frame = 0;
     const ends = visualEffects
-      ? [...scene.tokens.flatMap((t) => t.effects.map(effectEnds)), ...spellcasting.effects.filter((e) => !e.persistent && e.expires).map((e) => e.expires!)].filter((at) => at > Date.now())
+      ? [
+          ...scene.tokens.flatMap((t) => t.effects.map(effectEnds)),
+          ...spellcasting.effects.filter((e) => !e.persistent && e.expires).map((e) => e.expires!),
+        ].filter((at) => at > Date.now())
       : [];
     const until = visualEffects
       ? Math.max(
@@ -1351,7 +1363,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       const drawing = gm ? drawingAt(p, scene, layer, 8 / camera.zoom) : null;
       if (drawing) {
         setSelection([drawing.id]);
-        setTab('scene');
+        if (!preview) {
+          drag.current = {
+            kind: 'drawing',
+            start: p,
+            last: p,
+            screen: { x: e.clientX, y: e.clientY },
+            camera,
+            original: structuredClone(doc),
+            tokens: [],
+            drawing: structuredClone(drawing),
+          };
+        }
         return;
       }
       setSelection([]);
@@ -1484,6 +1507,29 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setDoc(next);
       return;
     }
+    if (d.kind === 'drawing' && gm && !preview && d.drawing) {
+      const original = d.drawing;
+      const anchor = original.points[0];
+      const to = { x: anchor.x + p.x - d.start.x, y: anchor.y + p.y - d.start.y };
+      const dest = e.altKey ? to : snapPoint(to, scene.grid);
+      const dx = Math.max(
+        -Math.min(...original.points.map((q) => q.x)),
+        Math.min(scene.width - Math.max(...original.points.map((q) => q.x)), dest.x - anchor.x),
+      );
+      const dy = Math.max(
+        -Math.min(...original.points.map((q) => q.y)),
+        Math.min(scene.height - Math.max(...original.points.map((q) => q.y)), dest.y - anchor.y),
+      );
+      const next = structuredClone(docRef.current!);
+      const current = next.scenes
+        .find((s) => s.id === next.activeScene)
+        ?.drawings.find((q) => q.id === original.id);
+      if (!current) return;
+      current.points = original.points.map((q) => ({ x: q.x + dx, y: q.y + dy }));
+      docRef.current = next;
+      setDoc(next);
+      return;
+    }
     const snap = e.altKey ? p : snapPoint(p, scene.grid);
     if (['ruler', 'wall', 'door', 'window'].includes(tool)) setRuler([d.start, snap]);
     else
@@ -1524,6 +1570,27 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     }
     if (tool === 'ruler') {
       setRuler([]);
+      return;
+    }
+    if (d.kind === 'drawing') {
+      const current = docRef
+        .current!.scenes.find((s) => s.id === docRef.current!.activeScene)
+        ?.drawings.find((q) => q.id === d.drawing?.id);
+      if (
+        !gm ||
+        !d.drawing ||
+        !current ||
+        current.points.every(
+          (q, i) => q.x === d.drawing!.points[i].x && q.y === d.drawing!.points[i].y,
+        )
+      )
+        return;
+      undo.current.push(d.original);
+      redo.current = [];
+      serial.current++;
+      dirtyRef.current = true;
+      setDirty(true);
+      setDoc(structuredClone(docRef.current!));
       return;
     }
     if (d.kind === 'tokens') {
@@ -1610,9 +1677,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   function commitText() {
     if (!gm || !textEdit?.value.trim()) return;
     const value = textEdit.value.trim().slice(0, 500);
+    const id = crypto.randomUUID();
     editScene((s) =>
       s.drawings.push({
-        id: crypto.randomUUID(),
+        id,
         kind: 'text',
         points: [textEdit.point],
         text: value,
@@ -1624,6 +1692,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     );
     setTextEdit(null);
     setText('');
+    setTool('select');
+    setSelection([id]);
   }
   function newMarker() {
     if (!scene) return;
@@ -2318,8 +2388,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           )}
         </nav>
         <div className="vtt-stage" ref={stage}>
-          <VttSpellControls spells={spellcasting} scene={scene} gm={gm && !preview} userId={user.id} />
-          <VttSpellSounds roomId={state.id} loaded={spellcasting.loaded} effects={spellcasting.effects} enabled={media.soundEnabled && !preview} volume={media.soundVolume} />
+          <VttSpellControls
+            spells={spellcasting}
+            scene={scene}
+            gm={gm && !preview}
+            userId={user.id}
+          />
+          <VttSpellSounds
+            roomId={state.id}
+            loaded={spellcasting.loaded}
+            effects={spellcasting.effects}
+            enabled={media.soundEnabled && !preview}
+            volume={media.soundVolume}
+          />
           <VttDice messages={state.messages} roomId={state.id} enabled={dice3d && visualEffects} />
           <VttAttackVisuals
             roomId={state.id}
@@ -2515,8 +2596,19 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               });
             }}
             onWheel={(e) => {
-              e.preventDefault();
+              if (!e.defaultPrevented) e.preventDefault();
               cancelAnimationFrame(focusFrame.current);
+              if (e.ctrlKey && token && token.layer !== 'map') {
+                if (canToken && e.deltaY) {
+                  const step = Math.sign(e.deltaY) * 15;
+                  if (gm)
+                    editSelected((t) => {
+                      if (t.layer !== 'map') t.rotation = (((t.rotation + step) % 360) + 360) % 360;
+                    });
+                  else editToken({ rotation: (((token.rotation + step) % 360) + 360) % 360 });
+                }
+                return;
+              }
               const p = point(e),
                 zoom = Math.min(5, Math.max(0.03, camera.zoom * Math.exp(-e.deltaY * 0.0015)));
               const rect = e.currentTarget.getBoundingClientRect(),
@@ -3487,10 +3579,29 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               {(tab === 'library' || tab === 'art') && (
                 <>
                   {tab === 'library' && (
-                    <div className="vtt-subtabs">
+                    <div
+                      className="vtt-subtabs vtt-library-tabs"
+                      aria-label="Categorias da biblioteca"
+                    >
                       {(['monsters', 'presets', 'premium', 'spells'] as const).map((k) => (
                         <button
                           key={k}
+                          aria-label={
+                            {
+                              monsters: 'Monstros',
+                              presets: 'Presets de monstros',
+                              premium: 'Galeria de monstros',
+                              spells: 'Magias',
+                            }[k]
+                          }
+                          title={
+                            {
+                              monsters: 'Monstros',
+                              presets: 'Presets de monstros',
+                              premium: 'Galeria de monstros',
+                              spells: 'Magias',
+                            }[k]
+                          }
                           aria-pressed={library === k}
                           onClick={() => {
                             setLibrary(k);
@@ -3502,8 +3613,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           {
                             {
                               monsters: 'Monstros',
-                              presets: 'Presets de monstros',
-                              premium: 'Galeria de monstros',
+                              presets: 'Presets',
+                              premium: 'Galeria',
                               spells: 'Magias',
                             }[k]
                           }
@@ -3737,23 +3848,23 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           )}
                           {library === 'spells' && (
                             <>
-                            {spellProfile(entry.id) && <button className="vtt-gold" disabled={!canToken || !token || preview} onClick={() => requestSpellCast(token!.id, entry.id)}>
-                              Preparar conjuração
-                            </button>}
-                            <button onClick={() => void act(() => send('', '', entry.id))}>
-                              Compartilhar no chat
-                            </button>
+                              {spellProfile(entry.id) && (
+                                <button
+                                  className="vtt-gold"
+                                  disabled={!canToken || !token || preview}
+                                  onClick={() => requestSpellCast(token!.id, entry.id)}
+                                >
+                                  Preparar conjuração
+                                </button>
+                              )}
+                              <button onClick={() => void act(() => send('', '', entry.id))}>
+                                Compartilhar no chat
+                              </button>
                             </>
                           )}
                         </div>
                       ) : (
                         <>
-                          <p className="vtt-muted">
-                            {catalog[library].length} entradas SRD 2024 · textos em inglês
-                          </p>
-                          {gm && library === 'monsters' && (
-                            <p className="vtt-muted">Arraste um monstro para colocá-lo na mesa.</p>
-                          )}
                           <div className="vtt-compendium">
                             {[
                               ...catalog[library],
@@ -4476,9 +4587,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </ol>
                   <h3>Atalhos</h3>
                   <p>
-                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Shift+clique:
-                    seleção múltipla. Alt+arraste: movimento sem grade. Delete: excluir. Ctrl+D:
-                    duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc: encerrar ferramenta.
+                    V selecionar · R régua · P lápis. Roda do mouse: zoom no cursor. Ctrl+roda:
+                    girar seleção em 15°. Shift+clique: seleção múltipla. Alt+arraste: movimento sem
+                    grade. Delete: excluir. Ctrl+D: duplicar. Ctrl+Z: desfazer. Ctrl+S: salvar. Esc:
+                    encerrar ferramenta.
                   </p>
                   <h3>Portas e luz</h3>
                   <p>
