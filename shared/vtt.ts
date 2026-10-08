@@ -302,6 +302,7 @@ export type VttAsset = {
   height: number | null;
 };
 export type VttMessage = {
+  attackVisual?: import('./vtt-attack-visual').AttackVisual | null;
   id: string;
   author: string;
   text: string;

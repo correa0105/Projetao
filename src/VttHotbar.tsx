@@ -23,6 +23,7 @@ import type { VttSheetData } from '../shared/vtt-sheet';
 import type { VttMessage, VttToken } from '../shared/vtt';
 import type { MonsterAction } from '../shared/vtt-monster-actions';
 import type { AttackRequest } from '../shared/vtt-attack';
+import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttAttack } from './VttAttack';
 import './vtt-hotbar.css';
 const signed = (n: number) => (n >= 0 ? '+' : '') + n;
@@ -72,6 +73,7 @@ export function VttHotbar({
     formula: string,
     label: string,
     damage?: { actor_id: string; target_id: string },
+    visual?: AttackVisualCommand,
   ) => Promise<VttMessage['roll']>;
   applyDamage?: (messageIds: string[], tokenId: string) => Promise<void>;
   discardDamage: (messageIds: string[]) => Promise<void>;

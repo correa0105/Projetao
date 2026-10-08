@@ -8,6 +8,7 @@ import {
   type AttackRequest,
 } from '../shared/vtt-attack';
 import type { VttMessage, VttToken } from '../shared/vtt';
+import { weaponVisual, type AttackVisualCommand } from '../shared/vtt-attack-visual';
 import './vtt-attack.css';
 type Roll = NonNullable<VttMessage['roll']>;
 export function VttAttack({
@@ -26,12 +27,14 @@ export function VttAttack({
     formula: string,
     label: string,
     damage?: { actor_id: string; target_id: string },
+    visual?: AttackVisualCommand,
   ) => Promise<VttMessage['roll']>;
   onBusy: (busy: boolean) => void;
   applyDamage?: (messageIds: string[], tokenId: string) => Promise<void>;
   discardDamage: (messageIds: string[]) => Promise<void>;
 }) {
   const [mode, setMode] = useState<AttackMode>('normal'),
+    [visual, setVisual] = useState<'auto' | 'sword' | 'arrow' | 'none'>('auto'),
     [result, setResult] = useState<{
       roll: Roll;
       target: VttToken;
@@ -88,6 +91,14 @@ export function VttAttack({
       const value = await roll(
         attackFormula(request.attack, mode),
         request.name + ' → ' + snapshot.name + ' · ataque',
+        undefined,
+        visual === 'none'
+          ? undefined
+          : {
+              actor_id: request.actorId,
+              target_id: snapshot.id,
+              kind: visual === 'auto' ? weaponVisual(request.name) : visual,
+            },
       );
       if (!value) throw Error('A rolagem não retornou um resultado.');
       if (currentContext.current === at)
@@ -145,6 +156,17 @@ export function VttAttack({
         <option value="normal">Normal</option>
         <option value="advantage">Vantagem</option>
         <option value="disadvantage">Desvantagem</option>
+      </select>
+      <select
+        aria-label="Animação do ataque"
+        value={visual}
+        disabled={busy || pending}
+        onChange={(e) => setVisual(e.target.value as typeof visual)}
+      >
+        <option value="auto">Animação automática</option>
+        <option value="sword">Corte de espada</option>
+        <option value="arrow">Flecha</option>
+        <option value="none">Sem animação e som</option>
       </select>
       <button disabled={busy || !target || !active || pending} onClick={() => void attack()}>
         <Swords size={14} /> {result ? 'Rolar novo ataque' : 'Rolar ataque'}

@@ -2,6 +2,16 @@
 
 ## Retomada parcial e aplicação em 08/10/2026
 
+Pedidos seguintes implementados: cartões de chat /arma e /magia por jogadores;
+seleção de tokens mantém painel/menu/editor. Gelo nasce sob o centro corporal,
+sem emissões na arma, prismas sólidos base–ponta. Corte de espada e disparo de
+flecha via ataques da ficha/barra, impacto baseado no d20/CA, sons de disparo e
+acerto. Preferência local para ocultar efeitos visuais e parar os loops Canvas,
+ativar/silenciar sons de efeitos/ataques e ajustar volume. As 36 famílias visuais
+têm som por aplicação (18 pistas próprias + três de ataque), sem loop sonoro
+permanente. Migration 082, eventos cosméticos com ownership/visibilidade no
+servidor, sem alteração de HP/recursos. Guia: VTT-ATTACKS-AND-MEDIA.md.
+
 Após pedir guardar os trabalhos para 00:30, o usuário solicitou explicitamente
 aplicar sons/efeitos, favoritos e repetição por intervalo no VTT. Esses recursos
 foram aplicados no Docker local e verificados com os arquivos servidos. A revisão

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { visibleBossStyle, type BossBar } from '../shared/vtt';
 import './vtt-boss.css';
-function Bar({ boss }: { boss: BossBar }) {
+function Bar({ boss, visualEffects }: { boss: BossBar; visualEffects: boolean }) {
   const percent = Math.max(0, Math.min(100, (boss.hp / boss.maxHp) * 100));
   const previous = useRef(percent),
     [heal, setHeal] = useState<{ from: number; to: number } | null>(null);
@@ -10,7 +10,7 @@ function Bar({ boss }: { boss: BossBar }) {
     setHealed(false);
     const from = previous.current;
     previous.current = percent;
-    if (percent <= from) {
+    if (!visualEffects || percent <= from) {
       setHeal(null);
       return;
     }
@@ -20,7 +20,7 @@ function Bar({ boss }: { boss: BossBar }) {
       setHeal(null);
     }, 1400);
     return () => clearTimeout(timer);
-  }, [percent]);
+  }, [percent, visualEffects]);
   return (
     <div
       className={'vtt-boss-bar style-' + visibleBossStyle(boss.style)}
@@ -57,11 +57,17 @@ function Bar({ boss }: { boss: BossBar }) {
     </div>
   );
 }
-export function VttBossBars({ bars }: { bars: BossBar[] }) {
+export function VttBossBars({
+  bars,
+  visualEffects = true,
+}: {
+  bars: BossBar[];
+  visualEffects?: boolean;
+}) {
   return (
     <div className="vtt-boss-bars" aria-label="Barras dos bosses">
       {bars.map((boss) => (
-        <Bar key={boss.tokenId} boss={boss} />
+        <Bar key={boss.tokenId} boss={boss} visualEffects={visualEffects} />
       ))}
     </div>
   );

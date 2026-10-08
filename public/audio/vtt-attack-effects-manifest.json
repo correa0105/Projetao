@@ -1,0 +1,133 @@
+{
+  "author": "Alvorada Cinzenta",
+  "license": "CC0-1.0",
+  "source": "scripts/build-vtt-attack-sounds.mjs",
+  "files": [
+    {
+      "path": "/audio/vtt-attacks/bow-release.wav",
+      "duration": 0.65,
+      "bytes": 114704,
+      "sha256": "24866b01edff109f42d57d3e3b7bbb51eb18bd064e1edc72ce322f7c42ab88e1"
+    },
+    {
+      "path": "/audio/vtt-attacks/arrow-impact.wav",
+      "duration": 0.55,
+      "bytes": 97064,
+      "sha256": "04a8b35f7eac58bb629797c18103b71cfcfcbeddd2b40bb6d8d03b7b9524ed91"
+    },
+    {
+      "path": "/audio/vtt-attacks/blade-impact.wav",
+      "duration": 0.72,
+      "bytes": 127052,
+      "sha256": "0336eb5103f7a58cea3f8d54020789b6c5993469b56a7a4f76001032119e65a8"
+    },
+    {
+      "path": "/audio/vtt-effects/ice.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "ea928fe1669f0ac96864e3d2848b000d2cec6b0d42e093d2b12fc4624709aef6"
+    },
+    {
+      "path": "/audio/vtt-effects/fire.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "c1c2098504a9c2511f44b377bdb01c817d23319401007c91defc6972dc43a4b2"
+    },
+    {
+      "path": "/audio/vtt-effects/poison.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "38f07fc179669371cda8e771e00b92f9b2d7bd41cb167b47efe6ca01f1404ae1"
+    },
+    {
+      "path": "/audio/vtt-effects/healing.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "6616f0b77b65cdab6a1b0b552544ee19f6eaca14d5345072e3308bfe022396ec"
+    },
+    {
+      "path": "/audio/vtt-effects/electric.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "20baf1abb496471a0620ce029baf78cd496fdf7d0178838288ac48c0ca497e8a"
+    },
+    {
+      "path": "/audio/vtt-effects/thunder.wav",
+      "duration": 1.65,
+      "bytes": 291104,
+      "sha256": "8caa8ce385a80bcd0c22a1713b31915291390867924ea4580aad87b71900f541"
+    },
+    {
+      "path": "/audio/vtt-effects/arcane.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "ef7a88ad55f38e4eeeadb660d535d4e5689ededce63456bdff823f10ab424b4e"
+    },
+    {
+      "path": "/audio/vtt-effects/shield.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "af54a4e1efcfc373cf5338cda6ce8b0b08e61702c79923ccf5a314595bd48d70"
+    },
+    {
+      "path": "/audio/vtt-effects/necrotic.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "9025c8528e2c2ef99b306a4096526a543735673d10cbab5ec2b9ffabb1fa3889"
+    },
+    {
+      "path": "/audio/vtt-effects/wind.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "af67ed7137e87d62eda2518d3ca5945108d4cdd7182ec0f8d8021133c5a46979"
+    },
+    {
+      "path": "/audio/vtt-effects/water.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "2e14c3c70fdcc885222bfd3b988502bc0cce0d2934c881141fa911f1ef9939d1"
+    },
+    {
+      "path": "/audio/vtt-effects/earth.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "aaf7dd5533b80baa72791058356f47189561b846dfcc2462c9a778f01f66921b"
+    },
+    {
+      "path": "/audio/vtt-effects/leaves.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "c2567ad70d0bf78019b7e51489d7cd7ffa1ccbb675914c5d7313834def666df0"
+    },
+    {
+      "path": "/audio/vtt-effects/portal.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "4d26f636c161c791475f416001fbbe8e46f097007fe67dd4913fa0cdf2c15759"
+    },
+    {
+      "path": "/audio/vtt-effects/sonic.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "c26515cf50a93bf4583569eafa12781f77e06952cbc3b4192b799663a21fee10"
+    },
+    {
+      "path": "/audio/vtt-effects/explosion.wav",
+      "duration": 1.65,
+      "bytes": 291104,
+      "sha256": "8382337d0019a76c01a449f68bb21bf521928bea16916a9e35070f199f715774"
+    },
+    {
+      "path": "/audio/vtt-effects/swarm.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "ae4598ea0edc829cdfbc3d19977071b2b65b242ccecceb7c627fe09fc33d2b95"
+    },
+    {
+      "path": "/audio/vtt-effects/blades.wav",
+      "duration": 1.35,
+      "bytes": 238184,
+      "sha256": "933cfaef1f16ca6eaf081484cfd055b4e00925e5d874dccaa7855743687470fb"
+    }
+  ]
+}

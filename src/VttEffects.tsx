@@ -23,10 +23,12 @@ export function VttEffects({
   clear,
   preview,
   editDeath,
+  visualEffects = true,
 }: {
   presets: EffectPreset[];
   tokens: VttToken[];
   busy: boolean;
+  visualEffects?: boolean;
   save: (preset: EffectPreset) => Promise<void>;
   remove: (id: string) => Promise<void>;
   apply: (id: string) => Promise<void>;
@@ -64,6 +66,7 @@ export function VttEffects({
   useEffect(() => {
     if (!open) return;
     const outside = (e: PointerEvent) => {
+      if ((e.target as Element)?.closest?.('canvas[data-selection-count]')) return;
       if (!root.current?.contains(e.target as Node)) setOpen(false);
     };
     const escape = (e: KeyboardEvent) => {
@@ -237,10 +240,12 @@ export function VttEffects({
                           onBlur={() => setAnimatedKind(null)}
                           onClick={() => createEffect(effectKinds.indexOf(e.kind))}
                         >
-                          <VttEffectPreview
-                            preset={{ id: 'library-' + e.kind, ...e, scale: 1, duration: 0 }}
-                            animated={animatedKind === e.kind}
-                          />
+                          {visualEffects && (
+                            <VttEffectPreview
+                              preset={{ id: 'library-' + e.kind, ...e, scale: 1, duration: 0 }}
+                              animated={animatedKind === e.kind}
+                            />
+                          )}
                           <span>{e.name}</span>
                           <small>{e.group}</small>
                         </button>
@@ -374,7 +379,7 @@ export function VttEffects({
                 </select>
               </label>
               <div className="vtt-effects-editor-preview">
-                <VttEffectPreview preset={draft} animated />
+                {visualEffects && <VttEffectPreview preset={draft} animated />}
                 <p>{effectLibrary.find((e) => e.kind === draft.kind)?.description}</p>
               </div>
               {draft.kind !== 'death' ? (

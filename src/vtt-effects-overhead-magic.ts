@@ -8,7 +8,15 @@ type Point = { x: number; y: number };
 const envelope = (age: number) => Math.sin(Math.PI * age) ** 1.2;
 
 // Broad prism walls retain width until the short pointed cap.
-export function crystalOutline(size: number) {
+export function crystalOutline(size: number, length?: number) {
+  if (length !== undefined)
+    return [
+      [0, -0.38 * size],
+      [length - Math.min(length * 0.24, size * 0.43), -0.38 * size],
+      [length, 0],
+      [length - Math.min(length * 0.24, size * 0.43), 0.38 * size],
+      [0, 0.38 * size],
+    ];
   return [
     [-0.65 * size, -0.38 * size],
     [0.72 * size, -0.38 * size],
@@ -24,13 +32,21 @@ function crystal(
   angle: number,
   color: string,
   opacity: number,
+  length?: number,
 ) {
   c.save();
   c.translate(p.x, p.y);
   c.rotate(angle);
   c.globalAlpha *= opacity;
-  const vertices = crystalOutline(size),
-    tip = { x: vertices[2][0], y: vertices[2][1] };
+  const vertices = crystalOutline(size, length),
+    tip = { x: vertices[2][0], y: vertices[2][1] },
+    ridge = { x: length === undefined ? -size * 0.08 : length * 0.38, y: -size * 0.04 };
+  // A filled body under every facet keeps the base/cap visible at any size.
+  c.beginPath();
+  vertices.forEach(([x, y], i) => (i ? c.lineTo(x, y) : c.moveTo(x, y)));
+  c.closePath();
+  c.fillStyle = alpha(tint(color, 0.2, '#477c97'), 0.85);
+  c.fill();
   const colors = [
     tint(color, 0.3, '#334e71'),
     tint(color, 0.55),
@@ -42,7 +58,7 @@ function crystal(
     const a = vertices[i],
       b = vertices[(i + 1) % vertices.length];
     c.beginPath();
-    c.moveTo(-size * 0.08, -size * 0.04);
+    c.moveTo(ridge.x, ridge.y);
     c.lineTo(a[0], a[1]);
     c.lineTo(b[0], b[1]);
     c.closePath();
@@ -53,11 +69,18 @@ function crystal(
     c.stroke();
   }
   c.beginPath();
-  c.moveTo(-size * 0.6, -size * 0.4);
-  c.lineTo(-size * 0.08, -size * 0.04);
+  c.moveTo(vertices[0][0], vertices[0][1]);
+  c.lineTo(ridge.x, ridge.y);
   c.lineTo(tip.x, tip.y);
   luminousStroke(c, color, size * 0.055, 0.75);
   c.restore();
+}
+
+// Frost rises from the ground beneath the body's center. Weapon silhouettes
+// never determine its origin. Cancel scale at the base, grow only the prism.
+function frostBase(_f: EffectFootprint, angle: number, scale: number) {
+  const radius = 18 / scale;
+  return { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius };
 }
 
 function frost(
@@ -76,11 +99,12 @@ function frost(
     glow(c, 0, 0, 96, e.color, 0.13);
     for (let i = 0; i < count(19); i++) {
       const angle = (i / count(19)) * tau + random(i) * 0.16;
-      const radius = 51 + random(i + 31) * 27;
-      const p = { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius };
-      crystal(c, p, 10 + random(i + 47) * 14, angle, e.color, 0.55 + Math.sin(t * 0.65 + i) * 0.08);
+      const p = frostBase(f, angle, e.scale),
+        size = 10 + random(i + 47) * 14,
+        length = size * 1.8 + Math.max(0, 1 - 1 / e.scale) * 45;
+      crystal(c, p, size, angle, e.color, 0.78 + Math.sin(t * 0.65 + i) * 0.04, length);
       if (i % 3 === 0)
-        crystal(c, { x: p.x * 0.65, y: p.y * 0.65 }, 8 + random(i + 211) * 8, angle, e.color, 0.4);
+        crystal(c, p, 8 + random(i + 211) * 8, angle - 0.12, e.color, 0.7, length * 0.65);
     }
     c.restore();
   } else {
@@ -89,14 +113,15 @@ function frost(
     // Cancel token aspect stretching: aerial crystals use uniform map units.
     c.scale(f.plane.rx / 80, f.plane.ry / 80);
     for (let i = 0; i < count(12); i++) {
-      const p = footprintPoint(f, Math.floor(random(i + 17) * f.edge.length), true);
+      const angle = (i / count(12)) * tau;
+      const p = frostBase(f, angle, e.scale);
       crystal(
         c,
         { x: (p.x * 80) / f.plane.rx, y: (p.y * 80) / f.plane.ry },
         (3 + random(i + 21) * 7) / e.scale,
-        Math.atan2(p.ny, p.nx),
+        angle,
         e.color,
-        0.65,
+        0.45,
       );
     }
     for (let i = 0; i < count(22); i++) {

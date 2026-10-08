@@ -1,5 +1,12 @@
 # Alvorada Cinzenta
 
+VTT de 08/10: ataques com corte de espada ou flecha do atacante ao alvo, impacto
+conforme d20/CA e som; sons dos 36 efeitos com volume/mute locais. Configurações
+e ajuda → Mesa permite desligar todos os efeitos visuais neste navegador.
+Chat recebe cartões `/arma Nome | descrição` e `/magia Nome | descrição`.
+Selecionar tokens mantém abas/menus; gelo nasce da base central, sem origem na
+arma. [Funcionamento e validação](docs/VTT-ATTACKS-AND-MEDIA.md).
+
 Atualização do VTT aplicada em 08/10 por novo pedido do usuário: biblioteca de
 sons, favoritos, intervalos, efeitos e imagens no chat. A revisão completa dos
 330 monstros e suas quatro alternativas continua pausada, aguardando pedido

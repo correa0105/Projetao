@@ -22,6 +22,7 @@ export function VttToolGroup({
   useEffect(() => {
     if (!open) return;
     const close = (e: PointerEvent) => {
+      if ((e.target as Element)?.closest?.('canvas[data-selection-count]')) return;
       if (!anchor.current?.contains(e.target as Node) && !popup.current?.contains(e.target as Node))
         setOpen(false);
     };

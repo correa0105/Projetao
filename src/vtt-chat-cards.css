@@ -1,0 +1,64 @@
+.vtt-chat-card {
+  margin-top: 8px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  border: 1px solid #715d40;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #26313a, #151e25);
+  overflow: hidden;
+}
+.vtt-chat-card[data-kind='magia'] {
+  border-color: #677a90;
+  background: linear-gradient(135deg, #26313e, #151e28);
+}
+.vtt-chat-card-heading {
+  padding: 10px 12px;
+  background: #090e1340;
+  border-bottom: 1px solid #8e784733;
+}
+.vtt-chat-card-heading > small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #c6b99d;
+  font-size: 10px;
+}
+.vtt-chat-card-heading h3 {
+  margin: 5px 0 0;
+  padding: 0;
+  border: 0;
+  font: 18px var(--serif);
+  color: #e4ca97;
+  line-height: 1.3;
+}
+.vtt-chat-card .vtt-chat-text {
+  padding: 11px 12px;
+  font-size: 12px;
+}
+.vtt-chat-compose-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.vtt-chat-command-help {
+  color: #b9b7aa;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.vtt-chat-command-help > summary {
+  cursor: pointer;
+  color: #d3b784;
+}
+.vtt-chat-command-help > div {
+  max-height: 110px;
+  overflow-y: auto;
+}
+.vtt-chat-command-help p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+.vtt-chat-command-help code {
+  font-size: inherit;
+  white-space: normal;
+}

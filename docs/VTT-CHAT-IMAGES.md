@@ -13,3 +13,13 @@ externa segura e fallback clicável se falhar. Texto da mensagem original persis
 Carregar mídia só segue o fim do chat se o usuário já estiver no final.
 
 Testes cobrem ambas as sintaxes, texto misto, múltiplas imagens e URLs inseguras.
+
+## Descrições de arma e magia (08/10/2026)
+
+Jogadores podem usar `/arma Espada longa | Dano: 1d8 cortante. Alcance: 1,5 m.`
+ou `/magia Raio de fogo | Descrição do ataque e seus efeitos.`. Os botões **Arma**
+e **Ataque de magia** junto à mensagem inserem modelos e conservam o rascunho.
+Quebras de linha, texto livre e imagens são aceitos dentro da descrição. Os
+comandos geram cartões no chat compartilhado, sem executar HTML ou aplicar regras.
+Nome vazio, descrição vazia e comando inválido permanecem como texto literal.
+Mensagem original e privacidade persistem como antes.

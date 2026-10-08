@@ -1,0 +1,12 @@
+.vtt-stage > .vtt-attack-visuals {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+.vtt-workspace[data-visual-effects='off'] * {
+  animation: none !important;
+  transition: none !important;
+}

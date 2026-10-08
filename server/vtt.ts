@@ -10,7 +10,7 @@ import { AppError } from './services.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
 import { vttHotbarRouter } from './vtt-hotbar.js';
-import {vttSoundsRouter,validateSoundAssets} from './vtt-sounds.js';
+import { vttSoundsRouter, validateSoundAssets } from './vtt-sounds.js';
 import { vttCombatRouter } from './vtt-combat.js';
 import {
   vttPremiumRouter,
@@ -23,6 +23,8 @@ import { vttDamageRouter } from './vtt-damage.js';
 import { movementBlocked } from '../shared/vtt-movement.js';
 import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
+import { attackOutcome } from '../shared/vtt-attack.js';
+import { attackVisualSchema } from '../shared/vtt-attack-visual.js';
 import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol.js';
 import {
   documentSchema,
@@ -118,7 +120,7 @@ function paths(doc: VttDocument) {
     );
 }
 async function validateAssets(db: DB, rid: string, doc: VttDocument) {
-  await validateSoundAssets(db,rid,doc);
+  await validateSoundAssets(db, rid, doc);
   const ids = [
     ...new Set(
       paths(doc)
@@ -175,7 +177,7 @@ async function state(rid: string, user: string) {
       [r.owner_id, rid],
     ),
     pool.query(
-      `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,
+      `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,attack_visual AS "attackVisual",
         COALESCE((SELECT jsonb_agg(a.token_id) FROM vtt_damage_applications a WHERE a.message_id=vtt_messages.id),'[]'::jsonb) AS applied
         FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY vtt_messages.id DESC LIMIT 100`,
       [rid, user, isGm],
@@ -197,6 +199,17 @@ async function state(rid: string, user: string) {
     members: members.rows,
     messages: messages.rows.reverse().map((m) => ({
       ...m,
+      attackVisual:
+        m.attackVisual &&
+        document.scenes.some(
+          (s) =>
+            s.id === m.attackVisual.sceneId &&
+            [m.attackVisual.actor_id, m.attackVisual.target_id].every((id) =>
+              s.tokens.some((t) => t.id === id),
+            ),
+        )
+          ? m.attackVisual
+          : null,
       damage:
         !m.damage || isGm || document.scenes[0].tokens.some((t) => t.id === m.damage.target_id)
           ? m.damage
@@ -342,7 +355,7 @@ export function vttRouter() {
   });
   router.use(vttSheetRouter(room));
   router.use(vttHotbarRouter(room));
-  router.use(vttSoundsRouter(room,gm,state));
+  router.use(vttSoundsRouter(room, gm, state));
   router.use(vttCombatRouter(room, canSee));
   router.use(vttDamageRouter(room, canSee, state));
   router.use(vttMonsterPresetRouter());
@@ -721,6 +734,7 @@ export function vttRouter() {
         private: z.boolean().default(false),
         spell_id: z.string().min(1).max(150).optional(),
         damage: z.object({ actor_id: uuid, target_id: uuid }).strict().optional(),
+        attack_visual: attackVisualSchema.optional(),
       })
       .strict()
       .parse(req.body);
@@ -748,6 +762,38 @@ export function vttRouter() {
       const r = await room(db, rid, res.locals.user.id, true);
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
+      let attackVisual = null;
+      if (input.attack_visual) {
+        if (
+          !roll ||
+          !/^(?:1d20|2d20(?:kh1|kl1))(?:[+-]\d+)?$/i.test(roll.formula.replace(/\s/g, ''))
+        )
+          throw new AppError(400, 'A animação de ataque exige uma rolagem de d20.');
+        const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!,
+          actor = scene.tokens.find(
+            (t) => t.id === input.attack_visual!.actor_id && t.layer === 'tokens',
+          ),
+          target = scene.tokens.find(
+            (t) => t.id === input.attack_visual!.target_id && t.layer === 'tokens',
+          ),
+          isGm =
+            r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id, db));
+        if (
+          !actor ||
+          !target ||
+          actor.id === target.id ||
+          (!isGm &&
+            (actor.controller !== res.locals.user.id ||
+              !canSee(actor, scene, res.locals.user.id) ||
+              !canSee(target, scene, res.locals.user.id)))
+        )
+          throw new AppError(403, 'Atacante ou alvo indisponível para a animação.');
+        attackVisual = {
+          ...input.attack_visual,
+          sceneId: scene.id,
+          hit: attackOutcome(roll, target.ac).hit,
+        };
+      }
       let damage = null;
       if (input.damage) {
         if (!roll) throw new AppError(400, 'Role o dano antes de vinculá-lo ao alvo.');
@@ -770,7 +816,7 @@ export function vttRouter() {
         damage = { ...input.damage, target_name: target.name };
       }
       return await db.query(
-        'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private,spell,damage)VALUES($1,$2,$3,$4,$5,$6,$7,$8)RETURNING id::text',
+        'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,private,spell,damage,attack_visual)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)RETURNING id::text',
         [
           rid,
           res.locals.user.id,
@@ -780,6 +826,7 @@ export function vttRouter() {
           input.private,
           spell ? JSON.stringify(spell) : null,
           damage ? JSON.stringify(damage) : null,
+          attackVisual ? JSON.stringify(attackVisual) : null,
         ],
       );
     });
@@ -798,7 +845,7 @@ export function vttRouter() {
       .parse(req.query.before);
     const isGm = current.owner_id === user && (await isAdministrator(user));
     const { rows } = await pool.query(
-      `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,
+      `SELECT id::text,author,text,roll,spell,private,created_at,damage,discarded,attack_visual AS "attackVisual",
         COALESCE((SELECT jsonb_agg(a.token_id) FROM vtt_damage_applications a WHERE a.message_id=vtt_messages.id),'[]'::jsonb) AS applied
         FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) AND ($4::bigint IS NULL OR id<$4::bigint) ORDER BY vtt_messages.id DESC LIMIT 101`,
       [rid, user, isGm, before || null],
@@ -816,6 +863,17 @@ export function vttRouter() {
         .reverse()
         .map((m) => ({
           ...m,
+          attackVisual:
+            m.attackVisual &&
+            visible.scenes.some(
+              (s) =>
+                s.id === m.attackVisual.sceneId &&
+                [m.attackVisual.actor_id, m.attackVisual.target_id].every((id) =>
+                  s.tokens.some((t) => t.id === id),
+                ),
+            )
+              ? m.attackVisual
+              : null,
           damage:
             !m.damage || isGm || visible.scenes[0].tokens.some((t) => t.id === m.damage.target_id)
               ? m.damage

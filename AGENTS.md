@@ -24,6 +24,16 @@ planejado; não apresente a migração ao SRD como implementação completa de D
 
 ## Permissões vigentes (04/10/2026)
 
+Pedidos de VTT em 08/10: seleção comum de token não deve trocar aba lateral nem
+fechar menus/editor. Chat aceita cartões /arma Nome | descrição e /magia Nome |
+descrição. Gelo parte da base central sob o corpo, sem usar borda da arma como
+origem; prismas preenchidos até a ponta. Ataques d20 usam corte/flecha com som e
+impacto conforme resultado; sem dano automático. Controles por navegador em
+Configurações e ajuda → Mesa desligam efeitos visuais/sons e ajustam volume.
+Migration 082 guarda evento cosmético validado pelo servidor. Sons próprios,
+sem arquivos dos sites de referência. Detalhes em VTT-ATTACKS-AND-MEDIA.md.
+Preservar protótipo dos 330 monstros pausado e excluir do release.
+
 Por pedido explícito do usuário, a coluna `"user".administrador` (0/1, padrão 0)
 é a única fonte de autorização para editar conteúdo/configuração compartilhados:
 Lore (pastas, crônicas, imagens e linha do tempo), Regras, Início, editor do reino

@@ -17,6 +17,7 @@ import { drawPing, type VttPing } from './vtt-ping';
 import { drawTurnEffect } from './vtt-turn-effect';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
+  visualEffects?: boolean;
   camera: VttCamera;
   width: number;
   height: number;
@@ -306,10 +307,12 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
-      if (t.id === o.currentTurn || t.id === o.nextTurn)
+      if (o.visualEffects !== false && (t.id === o.currentTurn || t.id === o.nextTurn))
         drawTurnEffect(c, Math.max(t.width, t.height) * 0.6, t.id === o.nextTurn);
-      drawTokenEffects(c, t, 'behind', images.get(t.image));
-      drawDeath(c, t);
+      if (o.visualEffects !== false) {
+        drawTokenEffects(c, t, 'behind', images.get(t.image));
+        drawDeath(c, t);
+      }
       c.save();
       if (t.deathAt && layer !== 'map')
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
@@ -381,7 +384,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.stroke();
       }
       c.restore();
-      drawTokenEffects(c, t, 'front', images.get(t.image));
+      if (o.visualEffects !== false) drawTokenEffects(c, t, 'front', images.get(t.image));
       if (o.selected.includes(t.id) || o.target === t.id) {
         const targeted = o.target === t.id;
         c.strokeStyle = targeted ? '#ef544b' : '#efd293';
@@ -701,7 +704,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.fillText(label, (a.x + b.x) / 2, (a.y + b.y) / 2 - 3 / cam.zoom);
     c.restore();
   }
-  if (o.ping) drawPing(c, o.ping, cam.zoom);
+  if (o.ping && o.visualEffects !== false) drawPing(c, o.ping, cam.zoom);
   c.strokeStyle = '#5b5846';
   c.lineWidth = 2 / cam.zoom;
   c.strokeRect(0, 0, s.width, s.height);

@@ -60,6 +60,7 @@ import {
 import { api, post } from './api';
 import { VttPrivateLibrary } from './VttPrivateLibrary';
 import { VttChatText } from './VttChatText';
+import { VttChatComposer } from './VttChatComposer';
 import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
 import { monsterCustomDetails } from '../shared/vtt-monster-presets';
 import type { Character, User } from './types';
@@ -102,6 +103,10 @@ import { VttDice } from './VttDice';
 import { VttToolGroup } from './VttToolGroup';
 import { VttHotbar, ActionShortcut } from './VttHotbar';
 import { VttEffects } from './VttEffects';
+import { VttAttackVisuals } from './VttAttackVisuals';
+import { VttEffectSounds } from './VttEffectSounds';
+import { useVttMediaPreferences } from './vtt-media-preferences';
+import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttSoundboard } from './VttSoundboard';
 import { useVttSounds } from './useVttSounds';
 import { soundSettings, type SoundCommand } from '../shared/vtt-sounds';
@@ -288,6 +293,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [notice, setNotice] = useState(''),
     [busy, setBusy] = useState(false),
     [dirty, setDirty] = useState(false);
+  const media = useVttMediaPreferences(user.id);
+  const visualEffects = media.visualEffects;
   const [tool, setTool] = useState<Tool>('select'),
     [tab, setTab] = useState<Tab>('chat'),
     [layer, setLayer] = useState('tokens'),
@@ -653,6 +660,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   useEffect(() => {
     if (!contextMenu) return;
     const outside = (e: PointerEvent) => {
+      if ((e.target as Element)?.closest?.('canvas[data-selection-count]')) return;
       if (!contextRef.current?.contains(e.target as Node)) setContextMenu(null);
     };
     document.addEventListener('pointerdown', outside);
@@ -871,6 +879,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           width: bounds.width,
           height: bounds.height,
           dpr,
+          visualEffects,
           images: images.current,
           selected: selection,
           target: attackTarget?.id,
@@ -900,20 +909,23 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         },
       );
     let frame = 0;
-    const ends = scene.tokens
-      .flatMap((t) => t.effects.map(effectEnds))
-      .filter((at) => at > Date.now());
-    const until = Math.max(
-      0,
-      ...scene.tokens.map((t) => (t.deathAt ? t.deathAt + 1300 : 0)),
-      ...ends,
-      ping ? ping.at + pingDuration : 0,
-    );
+    const ends = visualEffects
+      ? scene.tokens.flatMap((t) => t.effects.map(effectEnds)).filter((at) => at > Date.now())
+      : [];
+    const until = visualEffects
+      ? Math.max(
+          0,
+          ...scene.tokens.map((t) => (t.deathAt ? t.deathAt + 1300 : 0)),
+          ...ends,
+          ping ? ping.at + pingDuration : 0,
+        )
+      : 0;
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
     const infinite =
-      !!combat.state?.active ||
-      !!effectPreview ||
-      scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death'));
+      visualEffects &&
+      (!!combat.state?.active ||
+        !!effectPreview ||
+        scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death')));
     const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
     const restartAnimation = () => {
       cancelAnimationFrame(frame);
@@ -947,6 +959,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     previewViewerId,
     state?.viewingUser,
     effectPreview,
+    visualEffects,
     imageVersion,
     layer,
     ruler,
@@ -1136,7 +1149,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     cancelAnimationFrame(focusFrame.current);
     if (!scene || !doc || e.button === 2) return;
     if (barrierTools.has(tool) && !barrierEditing) return;
-    setContextMenu(null);
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -1306,7 +1318,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             : [hit.id];
         setSelection(ids);
         if (ids[0] !== token?.id || ids.length !== 1) setAttackTargetId(null);
-        setTab('token');
         if (!preview && !hit.locked && (gm || hit.controller === user.id)) {
           drag.current = {
             kind: 'tokens',
@@ -1879,6 +1890,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     textValue = chat,
     spellId?: string,
     damage?: { actor_id: string; target_id: string },
+    attackVisual?: AttackVisualCommand,
   ) {
     if (spectator) throw Error('Espectadores podem somente assistir à mesa.');
     await save();
@@ -1887,6 +1899,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       {
         ...(spellId ? { spell_id: spellId } : {}),
         ...(damage ? { damage } : {}),
+        ...(attackVisual ? { attack_visual: attackVisual } : {}),
         text: textValue,
         formula: formulaValue,
         private: privateRoll,
@@ -2016,7 +2029,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       </section>
     );
   return (
-    <section className="vtt-workspace" aria-label="Mesa virtual">
+    <section
+      className="vtt-workspace"
+      data-visual-effects={visualEffects ? 'on' : 'off'}
+      aria-label="Mesa virtual"
+    >
       <header className="vtt-top">
         <div className="vtt-brand">
           <Swords size={22} />
@@ -2277,15 +2294,42 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           )}
         </nav>
         <div className="vtt-stage" ref={stage}>
-          <VttDice messages={state.messages} roomId={state.id} enabled={dice3d} />
-          <VttBossBars bars={gm ? sceneBossBars(scene) : state.bossBars} />
+          <VttDice messages={state.messages} roomId={state.id} enabled={dice3d && visualEffects} />
+          <VttAttackVisuals
+            roomId={state.id}
+            messages={state.messages}
+            scene={scene}
+            camera={camera}
+            bounds={bounds}
+            enabled={visualEffects}
+            gm={gm}
+            preview={preview}
+            viewer={viewer}
+            soundEnabled={media.soundEnabled}
+            soundVolume={media.soundVolume}
+          />
+          <VttEffectSounds
+            roomId={state.id}
+            scene={scene}
+            gm={gm}
+            preview={preview}
+            viewer={viewer}
+            enabled={media.soundEnabled}
+            volume={media.soundVolume}
+          />
+          <VttBossBars
+            bars={gm ? sceneBossBars(scene) : state.bossBars}
+            visualEffects={visualEffects}
+          />
           {!spectator && (
             <VttHotbar
               key={state.id}
               roomId={state.id}
               tokens={scene.tokens}
               sheetOpen={!!sheetId}
-              roll={(formula, label, damage) => send(formula, label, undefined, damage)}
+              roll={(formula, label, damage, visual) =>
+                send(formula, label, undefined, damage, visual)
+              }
               shareSpell={shareSpell}
               refresh={refreshRoom}
               gm={gm}
@@ -2312,6 +2356,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           {gm && !sheetId && (
             <VttEffects
               presets={doc.effects}
+              visualEffects={visualEffects}
               tokens={selectedEffectTokens}
               busy={busy}
               preview={(preset) =>
@@ -2422,7 +2467,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 changeLayer(hit.layer, selection.includes(hit.id) ? selection : [hit.id]);
                 if (!selection.includes(hit.id)) setSelection([hit.id]);
                 setAttackTargetId(null);
-                setTab('token');
               } else if (gm) {
                 const light = barrierEditing
                   ? scene.lights.find((l) => Math.hypot(p.x - l.x, p.y - l.y) < 18 / camera.zoom)
@@ -4053,27 +4097,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       ))}
                   </div>
                   {!spectator && (
-                    <form
-                      className="vtt-chat-compose"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        void act(() => send('', chat));
-                      }}
-                    >
-                      <label>
-                        Mensagem
-                        <textarea
-                          value={chat}
-                          onChange={(e) => setChat(e.target.value)}
-                          maxLength={2000}
-                          rows={2}
-                        />
-                      </label>
-                      <small className="vtt-chat-image-help">
-                        Imagem: (Texto)[https://endereço-da-imagem]
-                      </small>
-                      <button>Enviar à mesa</button>
-                    </form>
+                    <VttChatComposer
+                      text={chat}
+                      onChange={setChat}
+                      onSend={(text) => void act(() => send('', text))}
+                      busy={busy}
+                    />
                   )}
                 </>
               )}
@@ -4230,6 +4259,41 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               {tab === 'table' && (
                 <>
                   <h3>Personalização</h3>
+                  <label className="vtt-check">
+                    <input
+                      type="checkbox"
+                      checked={visualEffects}
+                      onChange={(e) => media.update({ visualEffects: e.target.checked })}
+                    />
+                    Mostrar efeitos visuais
+                  </label>
+                  <p className="vtt-muted">
+                    Desative para reduzir o uso do computador. Preferência deste navegador; os
+                    demais participantes continuam vendo os efeitos.
+                  </p>
+                  <label className="vtt-check">
+                    <input
+                      type="checkbox"
+                      checked={media.soundEnabled}
+                      onChange={(e) => media.update({ soundEnabled: e.target.checked })}
+                    />
+                    Som dos efeitos e ataques
+                  </label>
+                  <label>
+                    Volume dos efeitos e ataques · {Math.round(media.soundVolume * 100)}%
+                    <input
+                      aria-label="Volume dos efeitos e ataques"
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={Math.round(media.soundVolume * 100)}
+                      onChange={(e) => media.update({ soundVolume: Number(e.target.value) / 100 })}
+                    />
+                  </label>
+                  <p className="vtt-muted">
+                    O controle de efeitos sonoros do site também se aplica. Ative o áudio neste
+                    navegador na aba Som se ele estiver bloqueado.
+                  </p>
                   <label className="vtt-check">
                     <input
                       type="checkbox"
