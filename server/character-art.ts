@@ -365,6 +365,17 @@ export function characterArtRouter() {
     if (!rows.length) throw new AppError(404, 'Imagem não encontrada.');
     res.type('png').send(rows[0].image);
   });
+  router.get('/characters/:id/token', async (req, res) => {
+    const { rows } = await pool.query(
+      `SELECT COALESCE(t.image,p.image) AS image FROM characters c
+      LEFT JOIN character_tokens t ON t.character_id=c.id
+      LEFT JOIN character_portraits p ON p.character_id=c.id
+      WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL`,
+      [uuid.parse(req.params.id), res.locals.user.id],
+    );
+    if (!rows[0]?.image) throw new AppError(404, 'Imagem não encontrada.');
+    res.set('Cache-Control', 'private, max-age=300').type('png').send(rows[0].image);
+  });
   return router;
 }
 

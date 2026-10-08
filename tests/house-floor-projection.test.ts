@@ -59,6 +59,29 @@ test('ground stops at the back edge of each floor and the near edge of the image
     }
   }
 });
+test('objects cross the floor back edge onto a tabletop without cursor drift or shrinking into the wall', () => {
+  const bounds = { width: 1200, height: 675 },
+    grab = { x: 37, y: -115 };
+  for (const template of Object.keys(houseFloorPlanes)) {
+    const floor = houseFloorPlane(template);
+    let previousY = 0.84;
+    for (const y of [0.8, floor.back, floor.back - 0.001, 0.35, 0.19, floor.back + 0.001, 0.8]) {
+      const scale = houseFloorScale(y, template);
+      const p = houseFloorDragPosition(
+        { x: 0.22 * bounds.width + grab.x * scale, y: y * bounds.height + grab.y * scale },
+        grab,
+        bounds,
+        previousY,
+        template,
+        0.02,
+      );
+      assert.ok(Math.abs(p.x - 0.22) < 1e-9);
+      assert.ok(Math.abs(p.y - y) < 1e-9);
+      if (y < floor.back) assert.equal(houseFloorScale(p.y, template), 0.3);
+      previousY = p.y;
+    }
+  }
+});
 test('six shared layers: layer one covers two through six for furniture and characters', () => {
   for (let front = 1; front < 6; front++)
     for (let behind = front + 1; behind <= 6; behind++)

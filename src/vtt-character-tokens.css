@@ -1,0 +1,35 @@
+.vtt-character-row {
+  justify-content: flex-start;
+  min-height: 58px;
+  padding: 5px 8px;
+  text-align: left;
+  cursor: grab;
+}
+.vtt-character-row:active {
+  cursor: grabbing;
+}
+.vtt-character-row:disabled {
+  cursor: default;
+}
+.vtt-character-row > .vtt-character-preview {
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #22231f;
+}
+.vtt-character-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.vtt-character-row > .vtt-character-label {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-wrap: anywhere;
+}

@@ -61,6 +61,7 @@ export function houseFloorDragPosition(
   bounds: { width: number; height: number },
   previousY: number,
   template = 'hall-hearth',
+  minY = houseFloorPlane(template).back,
 ) {
   const plane = houseFloorPlane(template),
     slope = 0.7 / (0.84 - plane.back),
@@ -72,7 +73,13 @@ export function houseFloorDragPosition(
       : previousY +
         (cursor.y - (previousY * bounds.height + grab.y * houseFloorScale(previousY, template))) /
           bounds.height;
-  const y = Math.max(plane.back, Math.min(plane.front, projected));
+  // A tabletop can be above the floor's back edge. There the depth scale is
+  // constant; solve that region without turning the floor into a drag barrier.
+  const aboveFloor = (cursor.y - grab.y * houseFloorScale(plane.back, template)) / bounds.height;
+  const y = Math.max(
+    minY,
+    Math.min(plane.front, minY < plane.back && aboveFloor < plane.back ? aboveFloor : projected),
+  );
   return {
     x: Math.max(
       0.02,

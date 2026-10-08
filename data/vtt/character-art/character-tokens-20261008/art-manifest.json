@@ -1,0 +1,38 @@
+{
+  "assets": [
+    {
+      "id": "82397394-b692-448d-89d7-dccb38b7b763",
+      "name": "Irineu",
+      "slug": "irineu",
+      "source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-7dead5e2-e370-4193-a54b-a5365c7b3dea.png",
+      "generator": "built-in image_gen",
+      "prompt": "Camera correction edit ONLY: Image 1 is the new token whose identity, outfit, colour and equipment must be preserved; Image 2 is the original portrait identity; Image 3 is the correct camera reference. Correct Image 1 from its current slanted high FRONT view to a truly straight vertical 90-DEGREE OVERHEAD view like Image 3. Viewer is directly above the character looking at head crown, shoulder tops, BACK/CAPE and top surfaces of arms. This should look like a miniature viewed directly down on a battlemap. The ENTIRE front-facing breastplate or front face mask MUST NOT be displayed facing the viewer. No full frontal torso, no elongated frontal thighs/greaves, no vertical standing portrait. The head/shoulders/back and draped cape dominate, legs and feet are naturally occluded under hips/cape, only small glimpses possible; do not force four limbs into radial display. Forward direction is BOTTOM of square. Preserve exactly all costume colours/materials, same hair/hat/circlet and SINGLE existing weapon if there is one, with hands correctly gripping it. No new weapons, no added objects. Keep beautiful sharp fantasy painting quality. Full silhouette including cape/hair/weapon inside square and at least 8% clear transparent margin on EVERY edge; widen canvas composition if needed for musket. Transparent alpha, no circle/border/floor/base/text/shadow. Irineu is UNARMED: white-haired human in silver/gold plate and BURGUNDY cloak; both gauntleted hands relaxed at sides; cape viewed from above and back must conceal most torso armour, crown of white hair rather than front face.",
+      "native_source_copy": "data/vtt/character-art/character-tokens-20261008/irineu-source.png",
+      "path": "data/vtt/character-art/character-tokens-20261008/irineu-top-down-v1.png",
+      "references": [
+        "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/Projetao/.local/character-token-current-20261008/82397394-b692-448d-89d7-dccb38b7b763-portrait.png",
+        "C:/Users/limaw/OneDrive/Documentos/ChatGPT/alvorada porto alegre/Projetao/data/vtt/premium-art/monster-berserker-v1.webp"
+      ],
+      "normalization": "Proportional fit inside 880×880 and transparent padding to 1024×1024. No crop, rotation or redraw.",
+      "source_sha256": "723a8457ce347494474827c68c6f0fdd69a322eb72b162615bec128ed977b6dc",
+      "sha256": "3e7bbbb81a621a03a3c79ad966e40b8a265f5d028c0f46de4e963b9d79a2e9e2"
+    },
+    {
+      "id": "e06513c6-4780-47d4-9880-e848b0f12814",
+      "name": "nana",
+      "slug": "nana",
+      "source": "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-735fda04-fad9-488c-a0d9-2f74530af19f.png",
+      "generator": "User-selected attached PNG; original illustration generated with built-in image_gen in the earlier session.",
+      "prompt": null,
+      "selection": "Use this exact attached image for nana, per the latest user request. No further generation or anatomy edits.",
+      "native_source_copy": "data/vtt/character-art/character-tokens-20261008/nana-selected-source.png",
+      "path": "data/vtt/character-art/character-tokens-20261008/nana-top-down-v1.png",
+      "references": [
+        "C:/Users/limaw/AppData/Local/Temp/codex-clipboard-735fda04-fad9-488c-a0d9-2f74530af19f.png"
+      ],
+      "normalization": "Proportional resize from 1254×1254 to 1024×1024, preserving full image and alpha. No crop, rotation, recolouring or redraw.",
+      "source_sha256": "7f17e2bcc04d0113b188c5e4dd4c8b51763457f9c3a163fbbf6d8d6de8133083",
+      "sha256": "966ac96820e198af856996bfc50f3e0a0afbd925ef9b199ba1f704e377869f89"
+    }
+  ]
+}

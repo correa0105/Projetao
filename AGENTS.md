@@ -1,5 +1,13 @@
 # Alvorada Cinzenta — instruções para continuidade
 
+Refino posterior de tokens pessoais em 08/10: Fichas mostra a miniatura privada;
+clique/arraste coloca ou seleciona sem abrir ficha nem trocar aba. Irineu tem
+token superior separado do retrato. Nana deve usar a última imagem escolhida,
+codex-clipboard-735fda04-fad9-488c-a0d9-2f74530af19f.png, sem regenerar/alterar
+a anatomia dessa arte. House permite mover objetos sobre tampos de móveis acima
+da borda do piso, mantendo escala mínima do chão e limites de piso para atores.
+Guia VTT-CHARACTER-DROP-20261008.md; revisão geral 330×4 segue pausada.
+
 Antes de editar, leia `docs/CONTEXTO.md` e `README.md`. Estes arquivos são a memória
 portável do projeto. Atualize o contexto quando houver mudanças relevantes no escopo,
 nas regras, na arquitetura ou no estado de implementação.

@@ -685,7 +685,15 @@ export function House({
             grab: { x: number; y: number },
             bounds: { width: number; height: number },
             previousY: number,
-          ) => houseFloorDragPosition(cursor, grab, bounds, previousY, current?.template)
+          ) =>
+            houseFloorDragPosition(
+              cursor,
+              grab,
+              bounds,
+              previousY,
+              current?.template,
+              p.kind === 'item' ? 0.02 : undefined,
+            )
         : houseDragPosition;
       const position = solve(
         { x: e.clientX - bounds.left, y: e.clientY - bounds.top },

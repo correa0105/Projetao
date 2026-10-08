@@ -34,6 +34,7 @@ import {
   newToken,
   tokenSchema,
   pointSchema,
+  snapPoint,
   visiblePoint,
   viewerSees,
   manualFogSees,
@@ -228,6 +229,7 @@ async function importCharacter(
   r: Awaited<ReturnType<typeof room>>,
   user: string,
   cid: string,
+  position?: { x: number; y: number },
 ) {
   const {
     rows: [c],
@@ -253,7 +255,31 @@ async function importCharacter(
     [cid],
   );
   const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
-  if (scene.tokens.some((t) => t.characterId === cid && t.controller === user)) return false;
+  const existing = scene.tokens.find((t) => t.characterId === cid && t.controller === user);
+  const placement = (token: { width: number; height: number }) => {
+    const at = snapPoint(position!, scene.grid);
+    return {
+      x: Math.max(
+        Math.min(token.width / 2, scene.width / 2),
+        Math.min(scene.width - token.width / 2, at.x),
+      ),
+      y: Math.max(
+        Math.min(token.height / 2, scene.height / 2),
+        Math.min(scene.height - token.height / 2, at.y),
+      ),
+    };
+  };
+  if (existing) {
+    if (!position) return false;
+    if (existing.locked || (r.owner_id !== user && existing.hidden))
+      throw new AppError(403, 'Este token está bloqueado ou oculto.');
+    const destination = placement(existing);
+    if (r.owner_id !== user && movementBlocked(scene, existing, destination))
+      throw new AppError(400, 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
+    if (existing.x === destination.x && existing.y === destination.y) return false;
+    Object.assign(existing, destination);
+    return true;
+  }
   const previousToken = r.document.scenes
     .flatMap((s) => s.tokens)
     .find((t) => t.characterId === cid);
@@ -325,6 +351,7 @@ async function importCharacter(
       token.y + Math.floor(offset / 6) * token.height * 1.2,
     ),
   );
+  if (position) Object.assign(token, placement(token));
   scene.tokens.push(tokenSchema.parse(token));
   return true;
 }
@@ -900,12 +927,13 @@ export function vttRouter() {
   router.post('/vtt/rooms/:id/characters/:character', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       cid = uuid.parse(req.params.character);
+    const input = z.object({ position: pointSchema.optional() }).strict().parse(req.body ?? {});
     await room(pool, rid, res.locals.user.id);
     await transaction(async (db) => {
       const r = await room(db, rid, res.locals.user.id, true);
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
-      if (await importCharacter(db, r, res.locals.user.id, cid))
+      if (await importCharacter(db, r, res.locals.user.id, cid, input.position))
         await db.query(
           'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
           [rid, JSON.stringify(documentSchema.parse(r.document))],

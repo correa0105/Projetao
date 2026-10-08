@@ -59,6 +59,7 @@ import {
 } from 'lucide-react';
 import { api, post } from './api';
 import { VttPrivateLibrary } from './VttPrivateLibrary';
+import { VttCharacterToken } from './VttCharacterToken';
 import { VttChatText } from './VttChatText';
 import { VttChatComposer } from './VttChatComposer';
 import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
@@ -184,6 +185,7 @@ type Entry = {
   image?: string;
 };
 const monsterMime = 'application/x-alvorada-monster';
+const characterMime = 'application/x-alvorada-character';
 function monsterImage(entry: Entry) {
   return entry.image || monsterArt(entry.id, entry.name);
 }
@@ -372,6 +374,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [inviteInput, setInviteInput] = useState(''),
     [roomName, setRoomName] = useState('Mesa da Alvorada'),
     [journalId, setJournalId] = useState('');
+  const characterImportBusy = useRef(false);
   const canvas = useRef<HTMLCanvasElement>(null),
     chatLog = useRef<HTMLDivElement>(null),
     chatStick = useRef(true),
@@ -1746,6 +1749,40 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setAttackTargetId(null);
     if (!keepLibrary) setTab('sheet');
   }
+  async function bringCharacter(id: string, at?: Point) {
+    if (!state || spectator || preview || busy || characterImportBusy.current) return;
+    characterImportBusy.current = true;
+    setBusy(true);
+    try {
+      await save();
+      setBusy(true);
+      const next = await post<VttState>(
+        `/vtt/rooms/${state.id}/characters/${id}`,
+        at ? { position: at } : {},
+      );
+      receive(next);
+      const imported = next.document.scenes
+        .find((s) => s.id === next.document.activeScene)
+        ?.tokens.find((t) => t.characterId === id && t.controller === user.id);
+      if (imported) {
+        changeLayer('tokens', [imported.id]);
+        setSelection([imported.id]);
+        setAttackTargetId(null);
+        setTool('select');
+      }
+    } finally {
+      characterImportBusy.current = false;
+      setBusy(false);
+    }
+  }
+  function dragCharacter(event: ReactDragEvent<HTMLElement>, id: string) {
+    if (spectator || preview || busy || characterImportBusy.current) {
+      event.preventDefault();
+      return;
+    }
+    event.dataTransfer.setData(characterMime, id);
+    event.dataTransfer.effectAllowed = 'copy';
+  }
   function dragMonster(event: ReactDragEvent<HTMLElement>, id: string) {
     if (!gm || preview) {
       event.preventDefault();
@@ -2515,12 +2552,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             onPointerMove={pointerMove}
             onPointerUp={pointerUp}
             onDragOver={(e) => {
-              if (gm && !preview && e.dataTransfer.types.includes(monsterMime)) {
+              if (
+                !preview &&
+                !spectator &&
+                !busy &&
+                (e.dataTransfer.types.includes(characterMime) ||
+                  (gm && e.dataTransfer.types.includes(monsterMime)))
+              ) {
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'copy';
               }
             }}
             onDrop={(e) => {
+              if (!spectator && !preview && e.dataTransfer.types.includes(characterMime)) {
+                e.preventDefault();
+                const id = e.dataTransfer.getData(characterMime);
+                if (characters.some((c) => c.id === id))
+                  void act(() => bringCharacter(id, point(e)));
+                return;
+              }
               if (!gm || preview || !e.dataTransfer.types.includes(monsterMime)) return;
               e.preventDefault();
               const id = e.dataTransfer.getData(monsterMime);
@@ -3938,38 +3988,28 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 <>
                   <h3>Trazer personagem do site</h3>
                   <p className="vtt-muted">
-                    Cria uma cópia de sessão com ficha e retrato. PV e condições da mesa não alteram
-                    o personagem do site.
+                    Cria uma cópia de sessão com ficha e token. PV e condições da mesa não alteram o
+                    personagem do site.
                   </p>
                   {characters.map((c) => (
                     <button
-                      className="vtt-list-row"
+                      className="vtt-list-row vtt-character-row"
                       key={c.id}
                       disabled={busy}
-                      onClick={() =>
-                        void act(async () => {
-                          await save();
-                          const next = await post<VttState>(
-                            `/vtt/rooms/${state.id}/characters/${c.id}`,
-                            {},
-                          );
-                          receive(next);
-                          const s = next.document.scenes.find(
-                            (s) => s.id === next.document.activeScene,
-                          )!;
-                          const imported = s.tokens.find(
-                            (t) => t.characterId === c.id && t.controller === user.id,
-                          )!;
-                          setSelection([imported.id]);
-                          setSheetId(imported.id);
-                        })
-                      }
+                      data-character-id={c.id}
+                      aria-label={`Colocar ${c.name} no mapa`}
+                      title="Arraste para o mapa; clique para colocar ou selecionar."
+                      draggable={!busy && !preview}
+                      onDragStart={(event) => dragCharacter(event, c.id)}
+                      onClick={() => void act(() => bringCharacter(c.id))}
                     >
-                      <Users size={14} />
-                      {c.name}
-                      <small>
-                        {c.class} · {c.level}
-                      </small>
+                      <VttCharacterToken character={c} />
+                      <span className="vtt-character-label">
+                        {c.name}
+                        <small>
+                          {c.class} · {c.level}
+                        </small>
+                      </span>
                     </button>
                   ))}
                   {token && (

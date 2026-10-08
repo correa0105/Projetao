@@ -1,5 +1,10 @@
 # Alvorada Cinzenta
 
+VTT: personagens mostram miniatura do token em **Fichas** e podem ser arrastados
+para o mapa sem abrir a ficha. Nana usa a imagem escolhida pelo usuário; Irineu
+recebeu sua vista superior. Na House, objetos podem subir até tampos de móveis.
+[Artes e validação](docs/VTT-CHARACTER-DROP-20261008.md).
+
 House: **40 novas peças e 320 vistas reais**, com tamanho calibrado ao mudar
 direção, disponíveis no Empório e na Mobília. As oito imagens de cada peça
 também estão agrupadas no ZIP de Downloads, com galeria offline.

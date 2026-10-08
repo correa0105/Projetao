@@ -11,11 +11,21 @@ await admin.query(`CREATE DATABASE "${database}"`);
 try {
   url.pathname = '/' + database;
   process.exitCode = await new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, ['--import', 'tsx', 'scripts/smoke-house-cursor.ts'], {
-      env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
-      stdio: 'inherit',
-      windowsHide: true,
-    });
+    const child = spawn(
+      process.execPath,
+      [
+        '--import',
+        'tsx',
+        process.argv.includes('--surface')
+          ? 'scripts/smoke-house-surface.ts'
+          : 'scripts/smoke-house-cursor.ts',
+      ],
+      {
+        env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
+        stdio: 'inherit',
+        windowsHide: true,
+      },
+    );
     child.on('error', reject);
     child.on('exit', (code) => resolve(code ?? 1));
   });

@@ -89,6 +89,11 @@ test('duas artes atômicas, perfil separado, atualização do token sem alterar 
     const scene = room.document.scenes[0],
       imported = scene.tokens.find((t: any) => t.characterId === character.id);
     assert.ok(imported.image && !imported.image.endsWith('/top-down'));
+    const legacyPreview = await media(`/characters/${character.id}/token`, alice.cookie);
+    assert.equal(legacyPreview.status, 200);
+    assert.deepEqual(Buffer.from(await legacyPreview.arrayBuffer()), oldPortrait);
+    assert.equal((await media(`/characters/${character.id}/token`, outsider.cookie)).status, 404);
+    assert.equal((await media(`/characters/${character.id}/token`)).status, 401);
     Object.assign(imported, { x: 420, y: 350, rotation: 75, width: 140, height: 110 });
     const customized = {
       ...structuredClone(imported),
@@ -169,6 +174,13 @@ test('duas artes atômicas, perfil separado, atualização do token sem alterar 
     assert.equal(meta.height, 512);
     assert.ok(meta.hasAlpha);
     assert.equal((await sharp(png).stats()).isOpaque, false);
+    const preview = await media(`/characters/${character.id}/token`, alice.cookie);
+    assert.equal(preview.status, 200);
+    assert.match(preview.headers.get('Cache-Control') || '', /^private/);
+    const previewMeta = await sharp(Buffer.from(await preview.arrayBuffer())).metadata();
+    assert.equal(previewMeta.width, 512);
+    assert.equal(previewMeta.height, 512);
+    assert.ok(previewMeta.hasAlpha);
     assert.equal((await media(updated.image.slice(4))).status, 401);
     assert.equal((await media(updated.image.slice(4), outsider.cookie)).status, 404);
     assert.equal(

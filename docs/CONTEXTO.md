@@ -1,5 +1,30 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Tokens pessoais, arraste e tampo dos móveis — 08/10/2026
+
+Fichas mostra a miniatura privada de cada token. Arrastar coloca/move o próprio
+personagem no ponto do mapa; clicar coloca/seleciona sem abrir a ficha ou trocar
+a aba. Endpoint valida dono, espectador, grade, limites, bloqueio e paredes;
+não duplica o token existente. Nove testes de arte/equipamento e smoke com
+arraste real, persistência, permissões e quatro larguras aprovados.
+
+Irineu e nana receberam tokens separados de seus retratos existentes. A última
+escolha explícita para nana é codex-clipboard-735fda04-fad9-488c-a0d9-2f74530af19f.png:
+usar essa imagem, sem novos ajustes de anatomia/banana. Original copiado intacto,
+versão 1024 proporcional com alfa; Irineu usa geração nativa superior aprovada.
+Prompts, fontes e hashes em data/vtt/character-art/character-tokens-20261008/art-manifest.json.
+Publicação atômica preservou os bytes de ambos os retratos, outros personagens,
+40 tabelas protegidas e todas as propriedades dos tokens além da arte automática.
+Uma imagem automática existente de mesa foi atualizada.
+
+House: objetos têm arraste vertical liberado para cima da borda do chão, permitindo
+colocá-los no balcão. A escala mínima continua baseada no chão; atores mantêm
+seu limite de piso. Dez testes de geometria e arraste real de candelabro/pergaminhos
+em 1440/768/390/320 aprovados, incluindo salvar/recarregar e manter tamanho/camadas.
+Docker atualizado, hashes dos bundles/servidor conferidos; 44 tabelas preservadas
+antes da publicação intencional das duas artes. Backup before-vtt-character-drop-20261008.dump.
+Guia VTT-CHARACTER-DROP-20261008.md. Acervo geral 330×4 continua pausado.
+
 ## House e conclusão da fila de 08/10/2026
 
 40 novos objetos com oito vistas reais cada, 320 artes nativas revistas/calibradas e integradas a House/Empório. Catálogo total de 52 peças; Mobília tem busca sem acentos. Compras/permissões/persistência/direções e quatro salas em quatro larguras aprovados, regressão dos 12 antigos preservada. Docker local aplicado e conferido por hashes de 320 novos arquivos e 274 públicos anteriores, bundles e servidor; 44 tabelas completas preservadas. ZIP em Downloads: House-40-pecas-320-vistas-20261008.zip, com os 320 PNGs originais agrupados por peça e oito direções em sequência, galeria offline e manifest de prompts/hashes. Guia HOUSE-EXPANSION-20261008.md. Todos os pedidos ativos desta fila concluídos; revisão geral 330×4 continua pausada.
