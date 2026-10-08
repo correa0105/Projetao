@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-08",
+  "mode": "imagegen built-in",
+  "scope": "Seven explicitly requested original monster revisions; 330-variant project stays paused",
+  "delivery": "Lossy WebP quality 95, lossless alpha, transparent 4% safety padding; no painted pixels altered outside imagegen",
+  "assets": [
+    {
+      "id": "monster-adult-black-dragon",
+      "name": "Adult Black Dragon",
+      "filename": "monster-adult-black-dragon-v1.webp",
+      "generatedSource": "exec-b21c43c1-d055-4c6c-9b76-b8a8d5de20a3.png",
+      "oldSha256": "0ceb36fd4a97153f7e047a9dd7e41f8fbdeacae628ddecc77de142ebb086c464",
+      "newSha256": "505083a22a5aab35492f713f0d493b0eb033ddccaf244cea6bc3be7ac184a94e",
+      "width": 1106,
+      "height": 1660,
+      "transparentPixels": 1003662,
+      "solidPixels": 765419,
+      "padding": {
+        "horizontal": 41,
+        "vertical": 62
+      },
+      "prompts": [
+        "Use case: precise-object-edit. Asset type: ONE original transparent full-body Adult Black Dragon overhead VTT token. Input image 1 is the existing VTT token: retain its richly textured realistic fantasy painting, charcoal-black scales, restrained dull olive membranes, pale weathered horns and readable dorsal ridges. Input image 2 is a posture/anatomy inspiration ONLY, not an image to reproduce and not its camera angle. Primary change: redesign the WHOLE spinal pose with a fluid, weight-bearing, supple dragon motion: distinct gentle S-curvature running continuously through head, neck, ribcage, waist, hips and long tapering tail. The neck and chest must visibly bend and the pelvis must follow an organic countercurve. NOT a straight ruler-like torso with only the tail hooked sideways. Exact orthographic camera directly above (90-degree dorsal top-down), suitable as a battlemap miniature. Show mainly the top of the skull, nape, back, upper wings and limb tops, never a frontal chest or large belly. Four coherent reptile legs total, two forelegs plus two muscular hind legs naturally attached to pelvis, bent compactly with planted claws and clear joints. Two broad leathery wings attached to the shoulders, asymmetrically spread in a balanced living combat stance that follows the curving body, every wingtip visible. Head faces generally toward upper canvas with a slight turn that continues the neck bend; hips shifted off its axis; tail countercurves smoothly with readable thickness. Original lifelike detailed hand-painted illustration with sculpted muscle volumes under dark black scales and strong readable silhouette at small size, matching image 1's game art quality. Genuine transparent alpha background with no smoky wash, no floor, ground, shadow, aura, frame, grid, letters, watermark, extra creature, detachable limbs or cropped tips. Full dragon, head horns claws both wings and entire tail comfortably inside frame with transparent margin. Keep the dragon black, not green/gold/red; weathered highlights only. The dorsal spine itself is curving, not just an ornament placed over a straight symmetrical body.",
+        "Use case: background-extraction. Target is the attached newly generated Adult Black Dragon with S-curving back. Preserve this EXACT dragon artwork, its pose, proportions, colors, all scales and ridges, wings, four legs, horns, claws, entire tail and framing unchanged. ONLY remove the brown/gold hazy wash, blurry halo and all background pixels visible around the silhouette, between the legs, in the negative spaces beside the neck/torso, under the wings and around the tail. Those areas must be genuinely fully TRANSPARENT alpha (zero opacity), not black, white, beige, checkerboard or a glow. The dragon itself must be solid opaque, with fine clean antialiased silhouette edges. Retain all the thin wing membranes as dragon anatomy; do not remove membranes or horns. No new shadows, aura, haze, floor or decorations. Exact orthographic dorsal view and fluid entire S spine unchanged. Same composition with margin around every wingtip and tail tip. Produce a clean isolated opaque creature cutout on completely transparent background."
+      ],
+      "references": [
+        "User-provided black dragon anatomy reference (ff149376); existing overhead project token"
+      ]
+    },
+    {
+      "id": "monster-basilisk",
+      "name": "Basilisk",
+      "filename": "monster-basilisk-v1.webp",
+      "generatedSource": "exec-9347d4f5-533d-46e5-b9fc-63458d2c504b.png",
+      "oldSha256": "ba01b0a320612791dad24d2e9a45b0af7d24ce2cfe06887bcf1d173a8f46f93f",
+      "newSha256": "62f0e975dcc5014430f6a7f94f7ec6f2658a3b80d536ebf1c89569150c07e58f",
+      "width": 1418,
+      "height": 1295,
+      "transparentPixels": 1023208,
+      "solidPixels": 766441,
+      "padding": {
+        "horizontal": 53,
+        "vertical": 48
+      },
+      "prompts": [
+        "Use case: precise-object-edit. Asset type: ONE original Basilisk monster token for the existing VTT, full-body clean transparent cutout. Input image 1 is the site's current basilisk: match its detailed realistic hand-painted fantasy asset finish and its EXACT orthographic 90-degree dorsal overhead camera. Input image 2 is an anatomy/material/character reference only, not a pose or camera to copy. Redesign this basilisk into a much more convincing heavy dangerous reptilian monster: squat broad muscular ribcage with weight and volume, strongly articulated shoulders and haunches, stout thick neck, wide rugged predatory head with heavy brows and pronounced jaw, stone-like overlapping BLUE-GRAY/slate/teal scales, worn pale edges and irregular patches of skin between armored scales. A dense crest of natural pointed dark reddish-brown and charcoal spines along the crown/neck/back/tail, angled backward like the reference, varying organically in size. These are rugged spikes on a substantial animal, not one row of huge decorative golden leaf plates. Eight sturdy reptilian legs EXACTLY, organized in FOUR distinct bilateral pairs along the torso; all EIGHT clawed feet clearly visible and naturally connected with plausible elbows/knees and ankles following local body curvature. Separate paws without overlaps, legs close enough to plausibly bear weight. A thick tapering counter-curved tail; give the torso a subtle organic sway and asymmetry in stance, never a rigid straight centipede or mirrored stamped limbs. Head faces toward upper canvas with a slight natural turn, correct top-down foreshortening: see skull/upper back, no frontal whole face or chest, no raised upright monster portrait, no isometric angle. Small teal eye glints visible at sides of the brows, no magical aura. Original strong anatomy and high detail matching the existing VTT illustrations, beautiful readable creature silhouette, four paired limbs and no wings. Preserve the basilisk identity, not a crocodile/dinosaur/dragon. The FULL creature including all eight toes, every spine and tail tip inside frame with generous transparent padding. Truly transparent alpha background, no brown haze, halo, ground, rocks, puddle, drop shadow, vignette, text, frame, border, watermark, grid, additional creature or duplicate figure. The creature is opaque with fine antialiased edges; negative spaces between feet/body/tail fully transparent."
+      ],
+      "references": [
+        "User-provided blue-gray basilisk anatomy reference (414c5a9c); existing overhead project token"
+      ]
+    },
+    {
+      "id": "monster-balor",
+      "name": "Balor",
+      "filename": "monster-balor-v1.webp",
+      "generatedSource": "exec-f96d7688-cc08-4207-b50d-2916c946247c.png",
+      "oldSha256": "94c89030f257118824d9c959ac8d4c44692e6615c2c08e270d25b7607e62de72",
+      "newSha256": "bbf2560dee45e099faf688280ff1548eb8960ef0beae900be74a77449cef47e1",
+      "width": 1356,
+      "height": 1356,
+      "transparentPixels": 1072835,
+      "solidPixels": 633882,
+      "padding": {
+        "horizontal": 51,
+        "vertical": 51
+      },
+      "prompts": [
+        "Use case: precise-object-edit. ONE original transparent Balor VTT monster token. Image 1 is the existing Balor to REDESIGN, not a silhouette to preserve. Image 2 is a mood/anatomy/gesture reference only: the large winged red demon at its left shows the desired convincing combat energy and harmonious colors. Do not copy that exact design, composition, other creatures or sheet. Replace the stiff symmetric crab-like posture with a powerful living humanoid demon in a fluid asymmetrical fighting stance: shoulders rotated slightly relative to hips, one arm reaching into a sword swing, other arm pulling a fire whip outward in a sweeping open S curve, visible elbows and natural hands correctly gripping hilts. Massive muscular deep brick-red/blood-red skin with darker wine shadows and warm desaturated highlights, smooth sculpted flesh, NO lava cracks or glowing red seams all over skin/wings. Large broad leathery dark burgundy bat wings spread at differing angles, folded tension at joints, wide imposing wingspan. Restrained charcoal forearm bracers and leather straps only, remove bulky matching gilded shoulder armor so the demon's anatomy and muscles dominate. Dark swept horns, crown and mane detail, imposing compact head consistent with shoulders. CAMERA CRITICAL: exact 90-degree orthographic ceiling view of an upright standing creature, look straight down at horn tops, head crown, upper shoulders/back, arm tops, wing roots and planted feet; do not turn it into a front portrait, side view, crawling/prone creature or diagonal camera. Head/shoulders/hips/feet all face generally down-canvas, with one coherent natural turning action. Exactly TWO humanoid arms, TWO weight-bearing legs and TWO wings. Correct weapons: one actual sharp steel sword with guard and grip, BLUE-WHITE fine branched lightning along its blade; other hand holds a long thin supple FIRE WHIP with a hot golden core and orange flame edges sweeping freely, no massive neon loop or disconnected flame cloud. Harmonize colors: matte dark red skin, deeper red-brown membranes, near-black horns/bracers, strongest orange/blue highlights confined to weapons. Detailed semi-realistic hand-painted fantasy illustration of the same quality as this VTT, strong sculpted volume and clear confident dangerous silhouette, more presence and movement, not a shiny metallic insect or rigid mirrored arrangement. Entire wings, feet and both weapons comfortably inside frame with generous transparent padding. Genuine transparent alpha, no floor, cast shadow, hazy wash, smoke, glow behind body, grid, token rim, text, logos/watermarks or other creatures. Original pose/art, preserve Balor identity only."
+      ],
+      "references": [
+        "User-provided Forgotten Adventures demon gesture reference (a33e205c), inspiration only; existing project token"
+      ]
+    },
+    {
+      "id": "monster-black-dragon-wyrmling",
+      "name": "Black Dragon Wyrmling",
+      "filename": "monster-black-dragon-wyrmling-v1.webp",
+      "generatedSource": "exec-5b943a00-7b2e-4430-944a-a3495b062840.png",
+      "oldSha256": "9e85601b55e1a7440e580db614d5124c868a279914b7cbb12e76218d8ea393ed",
+      "newSha256": "1187677db7b9f7c8d32071d006b527f663b918ea64c94dcd76fdd40fd4ddc508",
+      "width": 1341,
+      "height": 1370,
+      "transparentPixels": 1308585,
+      "solidPixels": 479755,
+      "padding": {
+        "horizontal": 50,
+        "vertical": 51
+      },
+      "prompts": [
+        "Use the supplied existing VTT Black Dragon Wyrmling token as an identity and camera reference, then redraw it as a substantially better original fantasy creature illustration. This is a SMALL JUVENILE BLACK DRAGON, not an adult and not a gold dragon. Deliver ONE full-body isolated token, true orthographic bird's-eye view looking straight down onto the back, transparent RGBA background. All of the animal, head, horns, four legs, two wings and tapering tail must fit comfortably inside the image with at least 7% empty transparent margin. Rich finely modeled charcoal-black scales with a subtle oily green sheen, muted dark olive-green wing membranes, pale aged bone horns and small claws; avoid bright golden trim or jewelry. Juvenile proportions: expressive slightly oversized broad skull, shorter substantial neck, lean but well-built torso, appropriately smaller wings, clean young scale plates. Make the entire creature lively and supple: neck, spine, hips and tail follow a gentle flowing curve; one wing reaches farther forward than the other, the four grounded feet have sensible staggered placement, shoulders and hips have believable joints. No ruler-straight spine or identical mirrored wings. Membranes have credible tension between long finger bones and varied delicate folds; carefully connected shoulders, muscular thighs, articulated toes. Consistent restrained warm overhead illumination and hand-painted realistic game-art detail, coherent soft charcoal and green palette. Show the dorsal skull, back, shoulders and wing surfaces, not a frontal standing dragon or face-on portrait. Keep legibility when downscaled to a small token. No floor, shadow puddle, ring, scenery, text, watermark or other creatures. The existing art is an identity reference only; improve gesture, volume and anatomical clarity rather than preserving its stiff pose."
+      ],
+      "references": [
+        "Existing overhead project token; user requested improved anatomical detail"
+      ]
+    },
+    {
+      "id": "monster-elephant",
+      "name": "Elephant",
+      "filename": "monster-elephant-v1.webp",
+      "generatedSource": "exec-caf6087d-82bb-46f6-ba01-2b35faf4553a.png",
+      "oldSha256": "0669d06bfb7ed1cbecde295667e71e631ba40511baa6545397f7082e1cbddccb",
+      "newSha256": "e4ecc92c118317ba2eeca478190d9dc854813d473b2d6a4fe26e6e64b1aa26d9",
+      "width": 1313,
+      "height": 1399,
+      "transparentPixels": 1264345,
+      "solidPixels": 545042,
+      "padding": {
+        "horizontal": 49,
+        "vertical": 52
+      },
+      "prompts": [
+        "Redraw the supplied elephant game token as a far more sophisticated original realistic hand-painted wildlife illustration for a fantasy VTT. ONE adult elephant seen from exact orthographic overhead, the camera looking straight down at the top of its head, shoulders and back. Keep the head facing left so it remains compatible with the existing token, but introduce a credible quiet walking gesture and asymmetry. Transparent RGBA background with the entire animal and tusks comfortably in frame and a 7% transparent margin. Anatomically convincing African elephant: huge weight-bearing body with distinct shoulder and pelvic volumes, articulated natural columnar legs in a staggered walking placement, broad irregularly folded thin ears attached correctly at the skull, a long supple trunk with believable taper and transverse folds, two curved ivory tusks attached at the mouth, short thin tail with hair tuft. The legs must belong under the body rather than protruding like four rubber stumps or a turtle. Ears have soft natural contours, layered cartilage folds and darker inner creases, not flower petals. Build skin material from layered gray-brown values, deep regional folds at joints and shoulders, fine broken wrinkles across the back and trunk, modest dusty patches; detailed without uniformly embossed noise. Use soft consistent overhead lighting with readable volume and refined shading, pale warm ivory tusks and charcoal nails. Avoid the current rounded toy-like anatomy, perfectly mirrored ears and swollen cylindrical limb ends. Keep exact top-down game-token projection, not a side-view wildlife photo and not a face-on portrait. No ground, floor, grass, shadow puddle, pedestal, circular frame, text, watermark or extra animals. Preserve natural proportions and good readability at token scale.",
+        "Correct the ANATOMY AND LEG PLACEMENT of this existing overhead elephant cutout. Preserve its detailed gray-brown skin, adult elephant species, head pointing LEFT, tusks, trunk, overhead camera and illustration quality. The four limbs currently splay outward around the body like a turtle, and their foot bottoms face the viewer. This must be fixed. The elephant is STANDING AND WALKING ON THE GROUND. Gravity runs away from the top-down camera: all four sturdy columnar legs descend VERTICALLY UNDER its body, straight toward the unseen ground, below the shoulders and hips. In this exact 90-degree overhead view the broad back and flank volumes OCCLUDE most of the legs. Show only small partial slivers of limb sides and toe edges close to the flanks where a staggered walking step exposes them; it is physically correct for one or more legs to be completely hidden beneath the animal. Do NOT force all four feet to be fully visible. Never show the soles of the feet or cylindrical stump ends from above. Give it a believable weighted quiet walking gait: foreleg and hind leg placements clustered underneath shoulder and pelvis respectively, with only subtle asymmetry. Refine the shoulder-to-rump silhouette to a long heavy natural standing elephant, subtle spine and muscular shoulder volume, not a toy oval with feet attached at four corners. Preserve broad natural ears, slight asymmetry and believable skin folds, with a relaxed articulated trunk curling ahead of the head rather than against the cheek. Entire animal including trunk, ivory tusks and tail remains fully within the frame with generous transparent margin. One isolated original full-body token. Exact top-down dorsal camera, transparent RGBA background. No ground, shadow puddle, scenery, text, decorative frame or extra subjects. The key outcome is grounded limbs UNDER THE BODY, hidden according to the overhead perspective."
+      ],
+      "references": [
+        "Existing overhead project token; user correction: grounded feet under the body, occluded by dorsal view"
+      ]
+    },
+    {
+      "id": "monster-berserker",
+      "name": "Berserker",
+      "filename": "monster-berserker-v1.webp",
+      "generatedSource": "exec-c96b7166-00e5-4bb2-8fcb-96137763838b.png",
+      "oldSha256": "1a668903691a3a43d8c94b8b0c41f55622980642aa5c47e59a443f72bc2ee3f0",
+      "newSha256": "ee392a2858bf8c5cd48e9067cbcefde7abf9630bc7c257253a3b95e0c66d905f",
+      "width": 1356,
+      "height": 1356,
+      "transparentPixels": 1287554,
+      "solidPixels": 519212,
+      "padding": {
+        "horizontal": 51,
+        "vertical": 51
+      },
+      "prompts": [
+        "Redesign the supplied Berserker token as an original highly detailed hand-painted fantasy battle token, preserving the rugged red-haired warrior identity, dark brown leather, gray wolf-fur shoulder mantle, leather bracers and heavy practical steel two-handed battle axe. The essential correction is a BELIEVABLE TWO-HANDED COMBAT GRIP AND FIGHTING STANCE. EXACT ORTHOGRAPHIC OVERHEAD camera straight down onto the crown, shoulders and back of an upright standing fighter. Not a front portrait, not crouched into a round ball, not a side-view character. Head, torso and pelvis form an erect vertical column with controlled twisting shoulders for an imminent diagonal axe cut. Broad powerful shoulders, dark ginger hair braided down the upper back, rugged materials with restrained natural highlights. Staggered grounded boots, lead foot forward, knees slightly flexed, weight distributed like an experienced combatant. The axe is extended into the free space to ONE SIDE of the warrior, ready for a committed descending diagonal strike, never held horizontally flat across the stomach like a broom. Both hands visibly and firmly wrap the same continuous wooden haft, spaced apart in a credible two-handed grip; thumbs and knuckles meet the handle naturally, wrists straight enough to deliver force, elbows have normal human joints, no floating hands or bent/broken haft. One arm provides the forward lever and the other supports the haft closer to the body, with a connected muscular gesture through shoulders. Clearly readable sharpened steel axe blade, worn leather grip, subtle nicks rather than decorative spikes. Better anatomical solidity and combat intent than the current stiff token. Keep two arms, two legs and one axe, clean readable silhouette, full axe head and boots in frame, generous 8% empty margin. ONE full-body RGBA cutout on transparent background, no floor, ring, ground shadow, effects, text, watermark or other figures. Maintain top-down VTT projection and the project's realistic illustrated game-art quality.",
+        "Precisely correct the POSITION AND GRIP OF BOTH HANDS ON THE AXE in this existing overhead Berserker illustration. Keep the same red-haired warrior identity, fur mantle, overhead camera, battle-axe design, palette, detail and generally similar combat stance. The user specifically rejects how his hands sit on the axe. Reposition the hands for a mechanically correct two-handed great-axe grip. The rear hand must firmly wrap the LOWER END of the wooden haft, close to the butt/pommel, leaving only a short 5-8 cm of handle below it. The forward hand wraps the MIDDLE THIRD of the same continuous wooden haft, well away from the axe head and decorative metal head socket. Neither hand rests on the blade collar, head socket or a metal ornament. Give the hands a moderate practical separation of about a forearm's length, not an extreme stretched grip and not stacked against the blade. Both closed fists completely ENCIRCLE the cylindrical wood handle, with curved fingers passing around the far side of the shaft and opposed thumbs locking the grip; the haft is enclosed in their PALMS, not merely pasted across the backs of the hands, knuckles, fingertips or wrists. Normal five-finger hands, correctly jointed thumbs, believable proportions. Align each wrist with its forearm and adjust the elbows and forearms enough that the new positions are natural and strong: no sharply broken wrists, disconnected forearms, floating palms or hands gripping imaginary air. The handle must remain one continuous rigid straight shaft through both grip centers, with visible wood between them; natural finger occlusion around the handle. The axe head stays to the left in open space, ready for a diagonal strike; hands now control the lower and middle part of the handle like an experienced combatant. Preserve an erect grounded torso, natural staggered feet and exact 90-degree bird's-eye game-token camera. One original realistic illustrated full-body cutout on transparent RGBA background. Full axe, boots and fur remain in frame with a comfortable margin. No floor, text, ring, background or extra anatomy. The grip correction is the main priority."
+      ],
+      "references": [
+        "Existing project token; user requested believable two-handed weapon grip and combat pose"
+      ]
+    },
+    {
+      "id": "monster-shrieker-fungus",
+      "name": "Shrieker Fungus",
+      "filename": "monster-shrieker-fungus-v1.webp",
+      "generatedSource": "exec-16508ea4-38a9-4fb8-9e7f-a9732c889f69.png",
+      "oldSha256": "d0070d673ef021192aa69c54ec48fbda80cbed703dcc69db2adfcf169cfe84ba",
+      "newSha256": "27326bc42f1827deaafa23443888a289357c53ace63a71c69f7275df4db55a31",
+      "width": 1418,
+      "height": 1295,
+      "transparentPixels": 1090919,
+      "solidPixels": 699350,
+      "padding": {
+        "horizontal": 53,
+        "vertical": 48
+      },
+      "prompts": [
+        "Use the supplied fungus-creature reference for its OVERALL ANATOMICAL STRUCTURE, then create one distinctive original overhead VTT illustration of a purple Shrieker Fungus creature with that same general type of compact fungal body. Important: previous attempts became giant petal blossoms or large open trumpet funnels and are rejected. Study this reference: a mostly round DARK PURPLE mushroom cap seen from above, a comparatively SMALL recessed circular central aperture, closed dense leathery cap surface with subtle concentric growth wrinkles, a few clusters of fungal buds along the TOP/BACK EDGE, a LEFT and RIGHT sinewy fungal limb, and TWO short anchoring limbs at the LOWER/FRONT EDGE. Preserve these structural relationships without copying the exact outline, texture or pose. The main body is a heavy mushroom disk, slightly tilted/asymmetric but nearly round, low-domed and densely closed, not a wide-open funnel and not a flower. Central aperture occupies only about 8-10% of cap diameter, a modest dark circular depression. Smoothly continuous violet/eggplant cap tissue with small irregular scars, muted highlights, gentle concentric rings, thicker darker outer rim. The two lateral limbs attach naturally UNDER the cap and extend forward around the sides: woody-gray and pale olive fibrous fungal flesh, gnarly bent joints and a few hooked rootlike digits at their ends, clearly shaped like the creature's clawed fungal extremities seen in the reference. Two squat root feet emerge beneath the forward/lower cap edge. Do not replace the reference's four distinct appendages with many radial branching tree roots. The rim bulblets are a limited asymmetric cluster of small plum-purple and muted yellow fungi on the back/top margin, NOT a continuous necklace of spherical growths around every edge. Refined natural hand-painted fantasy game art, convincing shaded volumes, dark purple tissue, readable silhouette and detailed coarse woodlike fibers. Use a NEW original pose, asymmetric gestures and an original surface pattern, no literal duplication of the provided artwork. Exact 90-degree orthographic bird's-eye view, fully isolated single creature on TRANSPARENT RGBA background, generous 8% margin around all appendage tips. Entire subject fits. No masonry floor, background, adjacent creatures, labels, watermark, ring, shadow puddle, radial petals, bloom, enormous central mouth or extra limbs."
+      ],
+      "references": [
+        "User-provided Forgotten Adventures fungal anatomy reference (2d4cb337), inspiration only; existing flowerlike project token"
+      ]
+    }
+  ]
+}

@@ -111,6 +111,16 @@ Três correções anteriores (dragão negro adulto, behir e balor) já estão sa
 no acervo, com backup local e prompts em monster-structure-20261008.json.
 Estado do checkpoint e próximos passos: docs/VTT-CHECKPOINT-20261008.md.
 
+Pedidos individuais posteriores de 08/10 revisaram sete artes: Adult Black
+Dragon, Basilisk, Balor, Black Dragon Wyrmling, Elephant, Berserker e Shrieker
+Fungus. Elephant mantém patas sob o corpo, encobertas pela vista superior;
+Berserker tem mãos envolvendo o cabo do machado; Shrieker segue a estrutura
+compacta da referência, com disco fechado e membros laterais. Não retomar o
+acervo completo pausado por causa desses pedidos individuais. Prompts e estado
+em docs/MONSTER-REFINEMENT-20261008.md. Créditos da biblioteca de áudio ficam
+recolhidos em Configurações e ajuda → Mesa, fora da aba Som; conservar fontes
+e licenças acessíveis.
+
 Som VTT, direção de 07/10: o acesso ao site é pago. Tabletop Audio/SoundPad são
 referência de organização e qualidade; não incorporar suas trilhas NC nem os
 efeitos restritos ao site original. Acervo local de 75 arquivos com bases CC0,

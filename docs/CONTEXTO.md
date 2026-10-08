@@ -1,5 +1,19 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Revisão individual de monstros e créditos (08/10/2026)
+
+Sete pedidos individuais aplicados: Adult Black Dragon com curva corporal,
+Basilisk robusto com oito patas, Balor com musculatura/gesto assimétrico,
+Black Dragon Wyrmling detalhado, Elephant com patas sob o corpo e encobertas
+pela vista superior, Berserker com mãos no cabo e Shrieker com disco fúngico
+fechado, abertura pequena e quatro membros definidos. IDs/URLs preservados.
+Imagegen integrado; 323 outras artes intactas, backups locais e prompts/hashes
+em data/vtt/monster-refinement-20261008.json. Guia MONSTER-REFINEMENT-20261008.md.
+Créditos de áudio saíram do painel Som e ficam recolhidos no fim de
+Configurações e ajuda → Mesa. TSC/builds, renderer real e HTTP descartável
+aprovados; Docker local atualizado e dados preservados. O projeto completo
+de 330 criaturas com quatro alternativas permanece pausado e fora do release.
+
 ## Retomada parcial e aplicação em 08/10/2026
 
 Pedidos seguintes implementados: cartões de chat /arma e /magia por jogadores;

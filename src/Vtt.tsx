@@ -108,6 +108,7 @@ import { VttEffectSounds } from './VttEffectSounds';
 import { useVttMediaPreferences } from './vtt-media-preferences';
 import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttSoundboard } from './VttSoundboard';
+import { VttSoundCredits } from './VttSoundCredits';
 import { useVttSounds } from './useVttSounds';
 import { soundSettings, type SoundCommand } from '../shared/vtt-sounds';
 import { VttRollHelp } from './VttRollHelp';
@@ -4428,6 +4429,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   >
                     Recarregar versão salva
                   </button>
+                  <VttSoundCredits />
                 </>
               )}
               {tab === 'help' && (

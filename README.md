@@ -1,5 +1,10 @@
 # Alvorada Cinzenta
 
+Revisão individual de 08/10: novas artes para Adult Black Dragon, Basilisk,
+Balor, Black Dragon Wyrmling, Elephant, Berserker e Shrieker Fungus. Créditos de
+áudio ficam recolhidos em Configurações e ajuda → Mesa, fora do painel Som.
+[Artes, prompts e verificação](docs/MONSTER-REFINEMENT-20261008.md).
+
 VTT de 08/10: ataques com corte de espada ou flecha do atacante ao alvo, impacto
 conforme d20/CA e som; sons dos 36 efeitos com volume/mute locais. Configurações
 e ajuda → Mesa permite desligar todos os efeitos visuais neste navegador.
