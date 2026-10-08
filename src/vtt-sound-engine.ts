@@ -28,6 +28,8 @@ type Voice = {
   blocked: boolean;
   finished: boolean;
   target: number;
+  cycle: number;
+  ready: boolean;
 };
 export class VttSoundEngine {
   private voices = new Map<string, Voice>();
@@ -44,13 +46,18 @@ export class VttSoundEngine {
   };
   private timer: ReturnType<typeof setInterval>;
   private retiring: AudioLike[] = [];
+  private serverOffset = 0;
   constructor(
     private changed: () => void,
     private failed: (message: string) => void,
     private factory: () => AudioLike = () => new Audio(),
+    private clock: () => number = () => Date.now(),
   ) {
     this.timer = setInterval(() => {
-      for (const v of this.voices.values()) v.audio.volume += (v.target - v.audio.volume) * 0.3;
+      for (const v of this.voices.values()) {
+        v.audio.volume += (v.target - v.audio.volume) * 0.3;
+        this.repeat(v);
+      }
       this.retiring = this.retiring.filter((a) => {
         a.volume *= 0.4;
         if (a.volume < 0.002) {
@@ -94,10 +101,30 @@ export class VttSoundEngine {
     const c = v.channel === 'music' ? this.mix.music : this.mix.effects;
     return c.muted ? 0 : Math.max(0, Math.min(1, c.volume * v.volume * this.mix.volume));
   }
+  private repeat(v: Voice) {
+    if (!v.ready || v.finished || !v.data.loop || !v.data.repeatEvery) return;
+    const period = v.data.repeatEvery * 1000;
+    const elapsed = Math.max(0, this.clock() + this.serverOffset - v.data.startedAt);
+    const cycle = Math.floor(elapsed / period),
+      phase = (elapsed % period) / 1000;
+    if (cycle === v.cycle) return;
+    v.cycle = cycle;
+    // Joining midway resumes only the current audible portion. During the gap
+    // the voice waits silently for the next shared cycle, without replay.
+    if (Number.isFinite(v.audio.duration) && phase >= v.audio.duration) {
+      v.audio.pause();
+      return;
+    }
+    v.audio.currentTime = phase;
+    this.start(v);
+  }
   sync(snapshot: SoundSnapshot, music: Channel, effects: Channel) {
     if (this.disposed) return;
     this.mix = { volume: snapshot.soundboard.volume, music, effects };
-    const list = [...snapshot.soundboard.voices];
+    this.serverOffset = snapshot.serverTime - this.clock();
+    const list = snapshot.soundboard.voices.filter(
+      (v) => !snapshot.soundboard.hiddenSources.includes(v.sourceId),
+    );
     if (snapshot.music.playing && snapshot.music.assetId)
       list.push({
         id: 'legacy:' + snapshot.music.assetId,
@@ -124,9 +151,15 @@ export class VttSoundEngine {
     for (const data of list) {
       const previous = this.voices.get(data.id);
       if (previous) {
+        if (previous.data.repeatEvery !== data.repeatEvery || previous.data.loop !== data.loop)
+          previous.cycle = -1;
+        const wasInterval = previous.data.loop && previous.data.repeatEvery;
         previous.data = data;
-        previous.audio.loop = data.loop;
+        previous.audio.loop = data.loop && !data.repeatEvery;
         previous.target = this.gain(data);
+        if (wasInterval && (!data.repeatEvery || !data.loop) && previous.audio.paused)
+          this.start(previous);
+        this.repeat(previous);
         continue;
       }
       if (this.seen.has(data.id) && !data.loop) continue;
@@ -142,14 +175,27 @@ export class VttSoundEngine {
       const path = soundPath(data.sourceId);
       if (!path) continue;
       const audio = this.factory(),
-        v: Voice = { audio, data, blocked: false, finished: false, target: this.gain(data) };
+        v: Voice = {
+          audio,
+          data,
+          blocked: false,
+          finished: false,
+          target: this.gain(data),
+          cycle: -1,
+          ready: false,
+        };
       audio.preload = 'auto';
       audio.src = path;
-      audio.loop = data.loop;
+      audio.loop = data.loop && !data.repeatEvery;
       audio.volume = 0;
       this.voices.set(data.id, v);
       const receivedAt = Date.now();
       audio.onloadedmetadata = () => {
+        v.ready = true;
+        if (v.data.loop && v.data.repeatEvery) {
+          this.repeat(v);
+          return;
+        }
         if (data.loop && data.startedAt && Number.isFinite(audio.duration) && audio.duration > 0) {
           audio.currentTime =
             (Math.max(0, snapshot.serverTime - data.startedAt + Date.now() - receivedAt) / 1000) %
@@ -157,7 +203,7 @@ export class VttSoundEngine {
         }
       };
       audio.onended = () => {
-        v.finished = true;
+        v.finished = !(v.data.loop && v.data.repeatEvery);
         this.changed();
       };
       audio.onerror = () => {
@@ -165,7 +211,7 @@ export class VttSoundEngine {
         this.failed('O áudio não pôde ser carregado. Verifique o arquivo.');
         this.changed();
       };
-      this.start(v);
+      if (!(data.loop && data.repeatEvery)) this.start(v);
     }
     this.first = false;
   }
@@ -183,7 +229,13 @@ export class VttSoundEngine {
       .resume()
       .then(() => ctx.close())
       .catch(() => ctx.close());
-    for (const v of this.voices.values()) if (v.blocked && !v.finished) this.start(v);
+    for (const v of this.voices.values())
+      if (v.blocked && !v.finished) {
+        if (v.data.loop && v.data.repeatEvery) {
+          v.cycle = -1;
+          this.repeat(v);
+        } else this.start(v);
+      }
   }
   stopPreview() {
     if (this.previewTimer) clearTimeout(this.previewTimer);

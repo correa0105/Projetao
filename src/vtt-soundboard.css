@@ -44,7 +44,7 @@
 }
 .vtt-sound-tabs {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 3px;
 }
 .vtt-sound-tabs button {
@@ -57,6 +57,32 @@
   border-color: #c3a26b;
   color: #efcf92;
   background: #443c2a;
+}
+.vtt-sound-star[aria-pressed='true'] {
+  color: #efd08c;
+  border-color: #b79a68;
+}
+.vtt-sound-card header > button {
+  flex-shrink: 0;
+  padding: 5px;
+}
+.vtt-sound-card header > div {
+  flex: 1;
+  min-width: 0;
+}
+.vtt-workspace .vtt-sound-interval {
+  gap: 7px;
+  margin-top: 8px;
+  font-size: 11px;
+}
+.vtt-sound-interval span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.vtt-workspace .vtt-sound-interval input {
+  width: 76px;
+  min-width: 0;
 }
 .vtt-workspace .vtt-sound-tabs button {
   font-size: 10px;

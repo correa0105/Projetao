@@ -5,6 +5,7 @@ type Random = (index: number) => number;
 import { projectOverheadEffect } from './vtt-effect-projection';
 import { materialSprite } from './vtt-effects-materials';
 import { drawOverheadMagic, energySpiral } from './vtt-effects-overhead-magic';
+import { drawEffectCollection } from './vtt-effects-collection';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -63,8 +64,12 @@ function particles(
     c.globalAlpha *= Math.sin(age * Math.PI) * 0.85;
     if (stars) star(c, x, y, size * 1.8);
     else {
+      // Small, irregular embers/debris, without floating solid discs.
       c.beginPath();
-      c.arc(x, y, size, 0, tau);
+      c.moveTo(x - size, y);
+      c.lineTo(x + size * 0.3, y - size * 0.5);
+      c.lineTo(x + size, y + size * 0.4);
+      c.closePath();
       c.fill();
     }
     c.restore();
@@ -143,6 +148,7 @@ export function drawOverheadEffect(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawEffectCollection(c, e, f, t, random, pass, detail)) return;
   if (drawOverheadMagic(c, e, f, t, random, pass, detail)) return;
   if (e.kind === 'poison' || e.kind === 'shadow' || e.kind === 'fire' || e.kind === 'acid') {
     const poison = e.kind === 'poison',
@@ -161,25 +167,7 @@ export function drawOverheadEffect(
     );
     if (front) {
       if (fire || e.kind === 'shadow') particles(c, f, color, t * (fire ? 2 : 0.7), random, n(20));
-      else
-        for (let i = 0; i < n(poison ? 10 : 16); i++) {
-          const age = fract(t * 0.3 + random(i));
-          const p = projectOverheadEffect(f.plane, 0.06 + age * 0.75, random(i + 87) * tau, age);
-          const size = (1.7 + random(i + 18) * 2.5) * p.perspective;
-          const x = p.x,
-            y = p.y;
-          c.save();
-          c.globalAlpha *= Math.sin(age * Math.PI) * 0.8;
-          glow(c, x, y, size * 2, color, 0.25);
-          c.beginPath();
-          c.arc(x, y, size, 0, tau);
-          c.fillStyle = alpha(tint(color, 0.6), acid ? 0.4 : 0.08);
-          c.fill();
-          c.strokeStyle = alpha(tint(color, 0.5), 0.8);
-          c.lineWidth = 0.7;
-          c.stroke();
-          c.restore();
-        }
+      // Poison and acid keep their textured volume, without rising bubbles.
     }
   } else if (e.kind === 'shield') {
     if (!front) flowField(c, f, e.color, t * 0.3, 0.38);

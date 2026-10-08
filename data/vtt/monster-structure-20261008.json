@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-08",
+  "mode": "imagegen built-in",
+  "assets": [
+    {
+      "id": "monster-adult-black-dragon",
+      "filename": "monster-adult-black-dragon-v1.webp",
+      "oldSha256": "0cf19e191b3e7498e27402d22e6e04010877cf0a57c1fb3aff764b44696addbb",
+      "newSha256": "0ceb36fd4a97153f7e047a9dd7e41f8fbdeacae628ddecc77de142ebb086c464",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixels": 792530,
+      "prompts": [
+        "Use case: precise-object-edit. Asset type: transparent overhead VTT dragon token. Image 1 is the edit target: adult black dragon. Image 2 is an anatomy reference only: brass dragon. Correct ONLY the black dragon's two hind legs and feet to have the compact, plausible bent reptile haunches of the brass reference: thighs attached naturally at the pelvis, knees outwards close to the hips, lower legs tucked forward near the torso, toes/claws splayed laterally with coherent ankles, weight-bearing limbs viewed strictly from directly overhead. Existing hind feet are dangling too far backwards with unnatural flared ankles. Keep the rest of image 1 unchanged: charcoal-black scales, gold-gray dorsal spines, horns, neck, head, front limbs, two wings, tail, silhouette scale, lighting, richly detailed realistic fantasy painting. Do not transfer the brass color or wings. Exactly four legs total, two forelimbs and two anatomically correct hindlimbs, plus two wings. Genuine transparent background, no base, no shadows/background, no text. Full creature within canvas, no crop."
+      ]
+    },
+    {
+      "id": "monster-behir",
+      "filename": "monster-behir-v1.webp",
+      "oldSha256": "570cdd5ec8813c6f71fee46729a20cf32dc97e7273afec1da96e3168f7b890cc",
+      "newSha256": "ef52455cf5f8cb756348323fbea748141b6e56deb8418e9c7a51cc7173f0a87e",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixels": 918091,
+      "prompts": [
+        "Use case: precise-object-edit. Asset type: ONE original transparent overhead VTT Behir token. Input image 1 is the existing blue Behir edit target; input image 2 is a structural reference only, not an image to reproduce. Redesign image 1's anatomy from the ground up: a powerful, thick serpentine reptile with a flowing S-shaped body, rounded muscular segment transitions, shoulders and hips connected coherently to the curving spine, twelve sturdy clawed legs arranged in SIX clear pairs spaced along the body, each pair following its local body direction with believable joints, weight-bearing short legs and readable feet. Much more convincing volume and articulated anatomy than the existing straight thin centipede-like design. Crowned horned reptile head at the bottom facing down, tapering tail curls at top; top-down camera exactly 90 degrees dorsal view, not side/isometric/portrait. Keep blue/navy/teal scales, restrained pale dorsal ridges and horned Behir species identity from target. Deep dimensional shaded folds, high quality detailed hand-painted realistic fantasy illustration matching site assets, clean cohesive silhouette with asymmetrical organic S curve. Reference 2 guides only robust anatomy and curved-body logic, use an ORIGINAL pose and new scales/head/limb design; no copying of watermarks or lettering. Exactly 12 legs, no wings, no disconnected limbs, no straight ruler spine, no flat duplicate stamp paws. Genuine transparent background, no ground or drop shadow, no grid, no token rim, no other creatures or text. Entire figure and toes and tail inside canvas with margins.",
+        "Use case: precise-object-edit. Edit ONLY the limb arrangement of this overhead blue Behir. It must have twelve legs, exactly SIX anatomically connected pairs. Current image shows only nine visible feet. Retain this thick S-shaped torso, all blue scales, horns, head facing bottom, dorsal ridges and tapering tail. Rebuild the limbs as six bilateral pairs, spaced from behind the neck to the start of the tail, positioned on BOTH local flanks of the curving body; each short muscular reptilian leg has a readable shoulder/hip bend, wrist and three strong claws. Make all twelve feet distinguishable from one another, including on the inner curves, without tangling or detached floating feet. Three pairs before the middle body bend and three pairs after it. Head is not a limb. Keep body anatomy natural, lower density spines near joints. Strict orthographic dorsal overhead camera, preserve every other part, genuine transparent background, no ground, no aura, no text, no watermark. Entire silhouette comfortably within frame.",
+        "Use case: precise-object-edit. Minimal targeted edit of the attached blue overhead Behir: there are currently ELEVEN visible clawed feet. Add the missing TWELFTH foot/leg at the upper OUTER RIGHT flank, beside the upper S bend near the start of the tapering tail, directly above the currently highest right-side leg. Connect it naturally to the existing upper body with a short robust muscular limb and visible wrist/three claws. It pairs with the highest leg on the inside of that curve (upper-left inside hollow). There should now be six coherent pairs and twelve feet in total. Keep ALL eleven current feet unchanged. Keep the entire existing torso, head, horns, tail, blue scales and pale spine ridges unchanged. Do NOT add legs to the head or tail tip. No other changes. Genuine transparent background, no haze or ground. Same camera and canvas."
+      ]
+    },
+    {
+      "id": "monster-balor",
+      "filename": "monster-balor-v1.webp",
+      "oldSha256": "63c1f95a0ea26fdf13373f800d0783cdb604d3a0cb95861573bdaf08cd56861f",
+      "newSha256": "94c89030f257118824d9c959ac8d4c44692e6615c2c08e270d25b7607e62de72",
+      "width": 1254,
+      "height": 1254,
+      "transparentPixels": 877272,
+      "prompts": [
+        "Use case: precise-object-edit. Asset type: ONE transparent VTT Balor monster token. Input 1 is the site's existing Balor to redesign. Input 2 is the user's multi-creature sheet, a structural/art-quality reference ONLY; the winged red demon in its right half shows convincing top-down anatomy and readable whipping weapon motion. Create an ORIGINAL improved Balor illustration retaining the red/charcoal infernal identity but rethinking the body: anatomically coherent tall muscular humanoid demon STANDING UPRIGHT viewed by an exact orthographic camera directly above its head, natural upright spine (never crawling, hunched or lying prone), crown of swept horns, head shoulders hips knees feet all face toward bottom of canvas. Two natural humanoid arms connected to shoulders, two planted feet partly seen below body, two broad leathery wings growing from upper back, uneven wing extension for lifelike balanced combat pose. One hand holds an unmistakable straight sharp steel lightning sword with blue-white electrical arcs, distinct grip/guard/blade, not a molten club. Other hand holds a flexible long FIRE WHIP, thin sinewy bright filament with flames curling in a wide elegant open S sweep outside silhouette, not a stubby spiked tail or closed round loop. Readable red skin/muscle volumes, limited dark armor at forearms/shoulders, muted infernal embers with restrained highlights, warm dark leathery wing folds, intricate realistic hand-painted fantasy game asset matching site's detailed monster art. Strong anatomy and deliberate asymmetrical pose; not a symmetrical insect/blob with tucked paws. Both hands grip their weapons correctly; only two arms/two legs/two wings, optional tail behind body kept discrete and smaller than whip. Preserve full silhouette including every wingtip and entire weapons inside frame with margins. Genuine transparent alpha background, no colored aura or smoke outside subject, no scenery, ground, floor, grid, circular frame, text, watermark, copied logo or other creatures.",
+        "Use case: precise-object-edit. Correct the CAMERA and framing of this Balor token. This image still reveals the entire chest and face as a front three-quarter portrait. Change it to an EXACT 90-degree orthographic NADIR camera looking VERTICALLY DOWN from directly above the head of a standing upright demon: chiefly top of horned skull, top/back of head, shoulder tops and upper back, arm tops and wing roots; chest and abdomen largely hidden by head/shoulders in overhead foreshortening; no frontal portrait, no bending the spine to expose his back, no crawling/prone pose. Standing torso upright, shoulders/hips planted feet face same direction toward bottom. Keep red/charcoal identity, two asymmetrically opened broad bat wings, two muscular arms, two legs, blue lightning sword in one hand and long serpentine fiery whip in other. Sword and whip lean outward along ground plane so visible from overhead. Render originally detailed coherent anatomy, sculpted volumes and folded membranes. No broad flat full chest/visible abdominals, no human portrait, no dragon/insect posture, no molten club. Add transparent padding around ALL wingtips and weapon tips (nothing touching or cut by canvas edges). Genuine transparent background without haze, no floor, text or border."
+      ]
+    }
+  ]
+}

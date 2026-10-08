@@ -17,6 +17,9 @@ import {
 } from '../src/vtt-effects-primitives.js';
 import { drawDeath } from '../src/vtt-death.js';
 import type { VttToken } from '../shared/vtt.js';
+import { crystalOutline, electricBursts } from '../src/vtt-effects-overhead-magic.js';
+import { effectFootprint } from '../src/vtt-effect-footprint.js';
+import { seededRandom } from '../src/vtt-effects-primitives.js';
 
 function context() {
   let depth = 0,
@@ -102,14 +105,36 @@ Object.defineProperty(globalThis, 'document', {
 });
 const id = '55555555-5555-4555-8555-555555555555';
 const base = { id, color: '#ad7654', scale: 1, duration: 5, at: 1000 };
+test('prismas mantêm paredes largas e proporção em 0,5–3; eletricidade usa três fontes simultâneas', () => {
+  for (const size of [5, 10, 20, 30]) {
+    const v = crystalOutline(size);
+    assert.equal(v[0][1], v[1][1]);
+    assert.equal(v[3][1], v[4][1]);
+    assert.ok((v[3][1] - v[1][1]) / (v[2][0] - v[0][0]) > 0.4);
+    assert.ok((v[2][0] - v[1][0]) / (v[2][0] - v[0][0]) < 0.25, 'only cap tapers');
+  }
+  for (const sparks of [true, false])
+    for (const phase of [0, 0.2, 0.6, 1.01, 9.2]) {
+      const bursts = electricBursts(
+        effectFootprint(100, 180, 65, 117),
+        phase,
+        seededRandom('branches'),
+        sparks,
+      );
+      assert.equal(bursts.length, 9);
+      assert.equal(new Set(bursts.map((b) => b.p.x + ',' + b.p.y)).size, 3);
+      assert.ok(bursts.every((b) => Math.hypot(b.p.x, b.p.y) > 15 && b.strength >= 0.2));
+      assert.equal(new Set(bursts.map((b) => b.q.x + ',' + b.q.y)).size, 9);
+    }
+});
 
-test('biblioteca mantém IDs legados e dez modelos novos com metadata validada', () => {
+test('biblioteca mantém IDs legados e 36 modelos com metadata validada', () => {
   assert.deepEqual(effectKinds.slice(0, 6), ['death', 'fire', 'frost', 'poison', 'heal', 'sparks']);
-  assert.equal(effectKinds.length, 16);
-  assert.equal(new Set(effectKinds).size, 16);
-  assert.equal(effectLibrary.length, 16);
-  assert.equal(effectNames.length, 16);
-  assert.equal(effectColors.length, 16);
+  assert.equal(effectKinds.length, 36);
+  assert.equal(new Set(effectKinds).size, 36);
+  assert.equal(effectLibrary.length, 36);
+  assert.equal(effectNames.length, 36);
+  assert.equal(effectColors.length, 36);
   for (const [i, e] of effectLibrary.entries()) {
     assert.equal(e.kind, effectKinds[i]);
     assert.equal(e.name, effectNames[i]);

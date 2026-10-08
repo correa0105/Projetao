@@ -1,5 +1,24 @@
 # Som da mesa — 07/10/2026
 
+## Atualização de 08/10
+
+155 arquivos: 13 músicas, 22 ambientes, 120 efeitos. Novas fontes CC0 em CREDITS
+e manifest, com hash do download. Gerador append-only expand-vtt-sound-library.py
+conserva os 75 arquivos anteriores. Acrescenta portas, animais/criaturas, foleys
+de aço/lamparina/tocha, ecos e composições de tensão/ruínas/subterrâneos.
+
+Estrela marca o som para Favoritos. Remover oculta da biblioteca DESTA MESA,
+para reprodução e conserva arquivo, configuração e atalho. Removidos permite
+restaurar. Favoritos continuam salvos ao remover; som reaparece ao restaurar.
+Todas as ações compartilhadas exigem mestre dono administrador vigente.
+
+Repetir permite Contínua ou A cada intervalo; 1–3600 segundos entre os inícios
+do arquivo. Se intervalo for menor que duração, próximo início corta o anterior.
+Linha temporal do servidor sincroniza ciclos; entrar durante o silêncio aguarda
+o próximo início, sem duplicar players em polls. Ajuste segue o mesmo som ao fixar.
+Favoritos, ocultos e intervalo são campos JSONB com defaults retrocompatíveis;
+sem migration ou reescrita das salas existentes.
+
 Pedido: biblioteca para RPG medieval na aba **Som** à direita, com mistura e
 controle por arquivo, e sons clicáveis/arrastáveis para os dez espaços existentes
 do acesso rápido. Tabletop Audio, SoundPad e Sanctum são referências de qualidade

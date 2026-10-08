@@ -20,11 +20,14 @@ type Access = (
 ) => Promise<{ document: VttDocument; revision: number }>;
 export async function validateSoundAssets(db: DB, roomId: string, doc: VttDocument) {
   const ids = [
-    ...new Set(
-      [...doc.soundboard.settings, ...doc.soundboard.voices]
+    ...new Set([
+      ...[...doc.soundboard.settings, ...doc.soundboard.voices]
         .filter((v) => v.sourceId.startsWith('asset:'))
         .map((v) => v.sourceId.slice(6)),
-    ),
+      ...[...doc.soundboard.favorites, ...doc.soundboard.hiddenSources]
+        .filter((id) => id.startsWith('asset:'))
+        .map((id) => id.slice(6)),
+    ]),
   ];
   if (!ids.length) return;
   const assets = await db.query(
@@ -95,6 +98,11 @@ export function vttSoundsRouter(
         }
       }
       if (command.kind === 'play') {
+        if (b.hiddenSources.includes(command.sourceId))
+          throw new AppError(
+            400,
+            'Este som foi removido da biblioteca da mesa. Restaure-o em Removidos.',
+          );
         const settings = soundSettings(command.sourceId, b);
         b.voices = b.voices.filter(
           (v) =>
@@ -112,6 +120,16 @@ export function vttSoundsRouter(
       else if (command.kind === 'stopAll') {
         b.voices = [];
         d.music.playing = false;
+      } else if (command.kind === 'favorite') {
+        b.favorites = b.favorites.filter((id) => id !== command.sourceId);
+        if (command.favorite) b.favorites.push(command.sourceId);
+      } else if (command.kind === 'hide') {
+        b.hiddenSources = b.hiddenSources.filter((id) => id !== command.sourceId);
+        if (command.hidden) {
+          b.hiddenSources.push(command.sourceId);
+          b.voices = b.voices.filter((v) => v.sourceId !== command.sourceId);
+          if (command.sourceId === 'asset:' + d.music.assetId) d.music.playing = false;
+        }
       }
       // Parse the whole result, including channel uniqueness and bounded settings.
       documentSchema.parse(d);

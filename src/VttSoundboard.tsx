@@ -1,5 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
-import { Music, Wind, Volume2, Play, Square, Headphones, Upload, Plus } from 'lucide-react';
+import {
+  Music,
+  Wind,
+  Volume2,
+  Play,
+  Square,
+  Headphones,
+  Upload,
+  Plus,
+  Star,
+  Trash2,
+  RotateCcw,
+} from 'lucide-react';
 import {
   soundCatalog,
   soundSettings,
@@ -89,10 +101,18 @@ export function VttSoundboard({
       description: 'Você escolhe como usar este áudio.',
     }));
   const all = [...soundCatalog, ...sent],
-    entries = all.filter((e) =>
-      kind === 'uploads'
-        ? e.id.startsWith('asset:')
-        : !e.id.startsWith('asset:') && e.kind === kind,
+    entries = all.filter(
+      (e) =>
+        (kind === 'removed'
+          ? snapshot?.soundboard.hiddenSources.includes(e.id)
+          : !snapshot?.soundboard.hiddenSources.includes(e.id)) &&
+        (kind === 'favorites'
+          ? snapshot?.soundboard.favorites.includes(e.id)
+          : kind === 'removed'
+            ? true
+            : kind === 'uploads'
+              ? e.id.startsWith('asset:')
+              : !e.id.startsWith('asset:') && e.kind === kind),
     );
   const categories = [...new Set(entries.map((e) => e.category))];
   const normalize = (s: string) =>
@@ -244,6 +264,8 @@ export function VttSoundboard({
               ['ambience', 'Ambientes'],
               ['effect', 'Efeitos'],
               ['uploads', 'Enviados'],
+              ['favorites', 'Favoritos'],
+              ['removed', 'Removidos'],
             ].map(([id, label]) => (
               <button
                 key={id}
@@ -325,87 +347,177 @@ export function VttSoundboard({
                           : ''}
                       </small>
                     </div>
+                    <button
+                      aria-label={
+                        (board.favorites.includes(entry.id)
+                          ? 'Desmarcar favorito '
+                          : 'Marcar favorito ') + entry.name
+                      }
+                      aria-pressed={board.favorites.includes(entry.id)}
+                      disabled={busy || kind === 'removed'}
+                      className="vtt-sound-star"
+                      title="Favorito"
+                      onClick={() =>
+                        void run(() =>
+                          command({
+                            kind: 'favorite',
+                            sourceId: entry.id,
+                            favorite: !board.favorites.includes(entry.id),
+                          }),
+                        )
+                      }
+                    >
+                      <Star
+                        size={16}
+                        fill={board.favorites.includes(entry.id) ? 'currentColor' : 'none'}
+                      />
+                    </button>
+                    <button
+                      aria-label={(kind === 'removed' ? 'Restaurar ' : 'Remover ') + entry.name}
+                      disabled={busy}
+                      title={
+                        kind === 'removed'
+                          ? 'Restaurar na biblioteca da mesa'
+                          : 'Remover da biblioteca desta mesa'
+                      }
+                      onClick={() => {
+                        stopPreview();
+                        void run(() =>
+                          command({ kind: 'hide', sourceId: entry.id, hidden: kind !== 'removed' }),
+                        );
+                      }}
+                    >
+                      {kind === 'removed' ? <RotateCcw size={14} /> : <Trash2 size={14} />}
+                    </button>
                   </header>
                   <p>{entry.description}</p>
-                  <div className="vtt-sound-controls">
-                    <button
-                      className="vtt-sound-play"
-                      aria-label={(isActive && config.loop ? 'Parar ' : 'Tocar ') + entry.name}
-                      disabled={busy}
-                      onClick={() => {
-                        unlock();
-                        void run(() =>
-                          command(
-                            isActive && config.loop
-                              ? { kind: 'stop', sourceId: entry.id }
-                              : { kind: 'play', sourceId: entry.id, settings: config },
-                          ),
-                        );
-                      }}
-                    >
-                      {isActive && config.loop ? <Square size={15} /> : <Play size={15} />}
-                    </button>
-                    <input
-                      aria-label={'Volume de ' + entry.name}
-                      type="range"
-                      min="0"
-                      max="1"
-                      step=".01"
-                      value={config.volume}
-                      onChange={(e) => adjust({ ...config, volume: Number(e.target.value) })}
-                    />
-                    <output>{Math.round(config.volume * 100)}%</output>
-                    <button
-                      aria-label={'Ouvir prévia de ' + entry.name}
-                      title="Ouvir só para você (12 segundos)"
-                      onClick={() => preview(config)}
-                    >
-                      <Headphones size={14} />
-                    </button>
-                  </div>
-                  <footer>
-                    <label className="vtt-check">
-                      <input
-                        type="checkbox"
-                        checked={config.loop}
-                        onChange={(e) => adjust({ ...config, loop: e.target.checked })}
-                      />{' '}
-                      Repetir
-                    </label>
-                    <button
-                      className="vtt-pin-action"
-                      title="Arraste para o acesso rápido ou clique para fixar"
-                      aria-label={'Fixar ' + entry.name}
-                      draggable
-                      disabled={busy}
-                      onDragStart={(e) => {
-                        e.dataTransfer.setData(
-                          actionMime,
-                          JSON.stringify({ kind: 'sound', sourceId: entry.id, label: entry.name }),
-                        );
-                        e.dataTransfer.effectAllowed = 'copy';
-                        void run(() => persist(entry.id));
-                      }}
-                      onClick={() => pin(entry)}
-                    >
-                      <Plus size={12} /> Fixar
-                    </button>
-                  </footer>
-                  {entry.id.startsWith('asset:') && (
-                    <label>
-                      Usar como
-                      <select
-                        aria-label={'Usar ' + entry.name + ' como'}
-                        value={config.channel}
-                        onChange={(e) =>
-                          adjust({ ...config, channel: e.target.value as SoundSettings['channel'] })
-                        }
-                      >
-                        <option value="music">Música</option>
-                        <option value="ambience">Ambiente</option>
-                        <option value="effect">Efeito</option>
-                      </select>
-                    </label>
+                  {kind !== 'removed' && (
+                    <>
+                      <div className="vtt-sound-controls">
+                        <button
+                          className="vtt-sound-play"
+                          aria-label={(isActive && config.loop ? 'Parar ' : 'Tocar ') + entry.name}
+                          disabled={busy}
+                          onClick={() => {
+                            unlock();
+                            void run(() =>
+                              command(
+                                isActive && config.loop
+                                  ? { kind: 'stop', sourceId: entry.id }
+                                  : { kind: 'play', sourceId: entry.id, settings: config },
+                              ),
+                            );
+                          }}
+                        >
+                          {isActive && config.loop ? <Square size={15} /> : <Play size={15} />}
+                        </button>
+                        <input
+                          aria-label={'Volume de ' + entry.name}
+                          type="range"
+                          min="0"
+                          max="1"
+                          step=".01"
+                          value={config.volume}
+                          onChange={(e) => adjust({ ...config, volume: Number(e.target.value) })}
+                        />
+                        <output>{Math.round(config.volume * 100)}%</output>
+                        <button
+                          aria-label={'Ouvir prévia de ' + entry.name}
+                          title="Ouvir só para você (12 segundos)"
+                          onClick={() => preview(config)}
+                        >
+                          <Headphones size={14} />
+                        </button>
+                      </div>
+                      <footer>
+                        <label className="vtt-check">
+                          <input
+                            type="checkbox"
+                            checked={config.loop}
+                            onChange={(e) => adjust({ ...config, loop: e.target.checked })}
+                          />{' '}
+                          Repetir
+                        </label>
+                        <button
+                          className="vtt-pin-action"
+                          title="Arraste para o acesso rápido ou clique para fixar"
+                          aria-label={'Fixar ' + entry.name}
+                          draggable
+                          disabled={busy}
+                          onDragStart={(e) => {
+                            e.dataTransfer.setData(
+                              actionMime,
+                              JSON.stringify({
+                                kind: 'sound',
+                                sourceId: entry.id,
+                                label: entry.name,
+                              }),
+                            );
+                            e.dataTransfer.effectAllowed = 'copy';
+                            void run(() => persist(entry.id));
+                          }}
+                          onClick={() => pin(entry)}
+                        >
+                          <Plus size={12} /> Fixar
+                        </button>
+                      </footer>
+                      {config.loop && (
+                        <label className="vtt-sound-interval">
+                          Repetição
+                          <select
+                            aria-label={'Modo de repetição de ' + entry.name}
+                            value={config.repeatEvery ? 'interval' : 'continuous'}
+                            onChange={(event) =>
+                              adjust({
+                                ...config,
+                                repeatEvery: event.target.value === 'interval' ? 10 : undefined,
+                              })
+                            }
+                          >
+                            <option value="continuous">Contínua</option>
+                            <option value="interval">A cada intervalo</option>
+                          </select>
+                          {config.repeatEvery && (
+                            <span>
+                              A cada{' '}
+                              <input
+                                type="number"
+                                min="1"
+                                max="3600"
+                                step="1"
+                                value={config.repeatEvery}
+                                aria-label={'Intervalo em segundos de ' + entry.name}
+                                onChange={(event) => {
+                                  const value = Number(event.target.value);
+                                  if (Number.isFinite(value) && value >= 1 && value <= 3600)
+                                    adjust({ ...config, repeatEvery: value });
+                                }}
+                              />{' '}
+                              segundos
+                            </span>
+                          )}
+                        </label>
+                      )}
+                      {entry.id.startsWith('asset:') && (
+                        <label>
+                          Usar como
+                          <select
+                            aria-label={'Usar ' + entry.name + ' como'}
+                            value={config.channel}
+                            onChange={(e) =>
+                              adjust({
+                                ...config,
+                                channel: e.target.value as SoundSettings['channel'],
+                              })
+                            }
+                          >
+                            <option value="music">Música</option>
+                            <option value="ambience">Ambiente</option>
+                            <option value="effect">Efeito</option>
+                          </select>
+                        </label>
+                      )}
+                    </>
                   )}
                 </article>
               );

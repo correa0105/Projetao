@@ -7,6 +7,16 @@ type Random = (i: number) => number;
 type Point = { x: number; y: number };
 const envelope = (age: number) => Math.sin(Math.PI * age) ** 1.2;
 
+// Broad prism walls retain width until the short pointed cap.
+export function crystalOutline(size: number) {
+  return [
+    [-0.65 * size, -0.38 * size],
+    [0.72 * size, -0.38 * size],
+    [1.15 * size, 0],
+    [0.72 * size, 0.38 * size],
+    [-0.65 * size, 0.38 * size],
+  ];
+}
 function crystal(
   c: CanvasRenderingContext2D,
   p: Point,
@@ -19,14 +29,8 @@ function crystal(
   c.translate(p.x, p.y);
   c.rotate(angle);
   c.globalAlpha *= opacity;
-  const tip = { x: size * 1.25, y: -size * 0.12 };
-  const vertices = [
-    [-size * 0.6, -size * 0.4],
-    [size * 0.25, -size * 0.5],
-    [tip.x, tip.y],
-    [size * 0.35, size * 0.35],
-    [-size * 0.5, size * 0.45],
-  ];
+  const vertices = crystalOutline(size),
+    tip = { x: vertices[2][0], y: vertices[2][1] };
   const colors = [
     tint(color, 0.3, '#334e71'),
     tint(color, 0.55),
@@ -45,14 +49,14 @@ function crystal(
     c.fillStyle = alpha(colors[i], 0.85);
     c.fill();
     c.strokeStyle = alpha(tint(color, 0.5, '#304463'), 0.6);
-    c.lineWidth = 0.35;
+    c.lineWidth = size * 0.035;
     c.stroke();
   }
   c.beginPath();
   c.moveTo(-size * 0.6, -size * 0.4);
   c.lineTo(-size * 0.08, -size * 0.04);
   c.lineTo(tip.x, tip.y);
-  luminousStroke(c, color, 0.65, 0.75);
+  luminousStroke(c, color, size * 0.055, 0.75);
   c.restore();
 }
 
@@ -75,23 +79,30 @@ function frost(
       const radius = 51 + random(i + 31) * 27;
       const p = { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius };
       crystal(c, p, 10 + random(i + 47) * 14, angle, e.color, 0.55 + Math.sin(t * 0.65 + i) * 0.08);
-      c.beginPath();
-      c.moveTo(p.x * 0.35, p.y * 0.35);
-      c.lineTo(p.x * 0.7 - p.y * 0.04, p.y * 0.7 + p.x * 0.04);
-      c.lineTo(p.x, p.y);
-      luminousStroke(c, e.color, 0.6, 0.3);
+      if (i % 3 === 0)
+        crystal(c, { x: p.x * 0.65, y: p.y * 0.65 }, 8 + random(i + 211) * 8, angle, e.color, 0.4);
     }
     c.restore();
   } else {
     paintFootprint(c, f, tint(e.color, 0.6), 0.14);
+    c.save();
+    // Cancel token aspect stretching: aerial crystals use uniform map units.
+    c.scale(f.plane.rx / 80, f.plane.ry / 80);
     for (let i = 0; i < count(12); i++) {
       const p = footprintPoint(f, Math.floor(random(i + 17) * f.edge.length), true);
-      crystal(c, p, 3 + random(i + 21) * 7, Math.atan2(p.ny, p.nx), e.color, 0.65);
+      crystal(
+        c,
+        { x: (p.x * 80) / f.plane.rx, y: (p.y * 80) / f.plane.ry },
+        (3 + random(i + 21) * 7) / e.scale,
+        Math.atan2(p.ny, p.nx),
+        e.color,
+        0.65,
+      );
     }
     for (let i = 0; i < count(22); i++) {
       const age = fract(t * 0.24 + random(i + 70)),
         angle = random(i + 90) * tau + t * 0.08;
-      const p = projectOverheadEffect(f.plane, 0.06 + age * 0.9, angle, age);
+      const p = projectOverheadEffect({ rx: 80, ry: 80 }, 0.06 + age * 0.9, angle, age);
       c.save();
       c.globalAlpha *= envelope(age) * 0.75;
       if (i % 3 === 0)
@@ -103,6 +114,7 @@ function frost(
       c.restore();
     }
     materialSprite(c, tint(e.color, 0.35), 'vapor', 0, 0, 70, t * 0.07, t * 0.4, 0.16);
+    c.restore();
   }
 }
 
@@ -221,7 +233,7 @@ function healing(
 
 // One reproducible bolt per discharge, with a quick strike and decaying afterglow.
 // Its geometry stays stable during that discharge instead of jittering every frame.
-function discharge(
+export function discharge(
   c: CanvasRenderingContext2D,
   a: Point,
   b: Point,
@@ -281,51 +293,52 @@ function electricity(
     c.restore();
   } else {
     let flash = 0;
-    const total = count(sparks ? 7 : 6);
-    for (let i = 0; i < total; i++) {
-      const phase = t * speed + i / total,
-        cycle = Math.floor(phase),
-        age = fract(phase);
-      const strength = Math.min(1, age / 0.035) * Math.exp(-age * 10);
+    for (const { p, q, seed, strength } of electricBursts(
+      f,
+      t * speed,
+      random,
+      sparks,
+      count(9) / 9,
+    )) {
       flash = Math.max(flash, strength);
-      if (strength < 0.015) continue;
-      const seed = cycle * 197 + i * 61;
-      const angle = random(seed + 105) * tau;
-      const p = projectOverheadEffect(f.plane, 0.035, angle, 0);
-      const q = projectOverheadEffect(
-        f.plane,
-        (sparks ? 0.3 : 0.55) + random(seed + 18) * 0.4,
-        angle,
-        0.35 + random(seed + 88) * 0.6,
-      );
       c.save();
       c.globalAlpha *= strength;
       discharge(c, p, q, random, seed, e.color, sparks ? 0.85 : 1.4);
+      glow(c, p.x, p.y, sparks ? 8 : 13, e.color, 0.4);
       glow(c, q.x, q.y, 6, e.color, 0.45);
       c.restore();
     }
     paintFootprint(c, f, e.color, flash * 0.08);
-    glow(c, 0, 0, sparks ? 14 : 23, outer, 0.32 + flash * 0.2);
-    glow(c, 0, 0, 7, e.color, 0.28 + flash * 0.32);
-    for (let i = 0; i < count(15); i++) {
-      const age = fract(t * 1.1 + random(i + 47)),
-        angle = random(i + 51) * tau;
-      const p = projectOverheadEffect(f.plane, 0.08 + age * 0.85, angle, age);
-      const q = projectOverheadEffect(
+  }
+}
+// Three distributed sources, each with simultaneous stable branches.
+export function electricBursts(
+  f: EffectFootprint,
+  phase: number,
+  random: Random,
+  sparks: boolean,
+  detail = 1,
+) {
+  const result = [];
+  for (let emitter = 0; emitter < 3; emitter++) {
+    const cycle = Math.floor(phase + emitter / 3),
+      age = fract(phase + emitter / 3);
+    const seed = cycle * 197 + emitter * 911;
+    const angle = (emitter / 3) * tau + (random(seed + 105) - 0.5) * 0.8;
+    const p = projectOverheadEffect(f.plane, 0.3 + random(seed + 18) * 0.3, angle, 0.1);
+    const strength = 0.2 + Math.exp(-age * 5) * 0.8;
+    for (let branch = 0; branch < (detail < 0.8 ? 2 : 3); branch++) {
+      const a = angle + (branch - 1) * 0.75 + (random(seed + branch + 41) - 0.5) * 0.45;
+      const end = projectOverheadEffect(
         f.plane,
-        0.08 + Math.max(0, age - 0.07) * 0.85,
-        angle,
-        Math.max(0, age - 0.07),
+        sparks ? 0.28 : 0.52,
+        a,
+        0.5 + random(seed + branch + 88) * 0.4,
       );
-      c.save();
-      c.globalAlpha *= envelope(age) * 0.65;
-      c.beginPath();
-      c.moveTo(q.x, q.y);
-      c.lineTo(p.x, p.y);
-      luminousStroke(c, e.color, 0.7, 0.7);
-      c.restore();
+      result.push({ p, q: { x: p.x + end.x, y: p.y + end.y }, seed: seed + branch * 61, strength });
     }
   }
+  return result;
 }
 export function drawOverheadMagic(
   c: CanvasRenderingContext2D,

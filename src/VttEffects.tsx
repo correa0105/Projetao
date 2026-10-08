@@ -44,6 +44,7 @@ export function VttEffects({
     [previewId, setPreviewId] = useState<string | null>(null);
   const [libraryOpen, setLibraryOpen] = useState(presets.length === 0),
     [libraryGroup, setLibraryGroup] = useState('Todos'),
+    [libraryQuery, setLibraryQuery] = useState(''),
     [animatedKind, setAnimatedKind] = useState<string | null>(null);
   const root = useRef<HTMLDivElement>(null);
   const editorName = useRef<HTMLInputElement>(null);
@@ -197,9 +198,32 @@ export function VttEffects({
                       </button>
                     ))}
                   </div>
+                  <label className="vtt-effects-search">
+                    Buscar efeito
+                    <input
+                      type="search"
+                      value={libraryQuery}
+                      maxLength={80}
+                      placeholder="Nome ou descrição"
+                      onChange={(event) => setLibraryQuery(event.target.value)}
+                    />
+                  </label>
                   <div className="vtt-effects-gallery">
                     {effectLibrary
                       .filter((e) => libraryGroup === 'Todos' || e.group === libraryGroup)
+                      .filter((e) =>
+                        (e.name + ' ' + e.description)
+                          .normalize('NFD')
+                          .replace(/[\u0300-\u036f]/g, '')
+                          .toLowerCase()
+                          .includes(
+                            libraryQuery
+                              .normalize('NFD')
+                              .replace(/[\u0300-\u036f]/g, '')
+                              .trim()
+                              .toLowerCase(),
+                          ),
+                      )
                       .map((e) => (
                         <button
                           key={e.kind}

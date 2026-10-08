@@ -59,6 +59,7 @@ import {
 } from 'lucide-react';
 import { api, post } from './api';
 import { VttPrivateLibrary } from './VttPrivateLibrary';
+import { VttChatText } from './VttChatText';
 import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
 import { monsterCustomDetails } from '../shared/vtt-monster-presets';
 import type { Character, User } from './types';
@@ -3962,7 +3963,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                                   })}
                             </small>
                           </header>
-                          <p>{m.text}</p>
+                          <VttChatText
+                            text={m.text}
+                            onMediaLoad={() => {
+                              const log = chatLog.current;
+                              if (log && chatStick.current) log.scrollTop = log.scrollHeight;
+                            }}
+                          />
                           {m.spell && (
                             <section className="vtt-spell-message">
                               <h3>{m.spell.name}</h3>
@@ -4062,6 +4069,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           rows={2}
                         />
                       </label>
+                      <small className="vtt-chat-image-help">
+                        Imagem: (Texto)[https://endereço-da-imagem]
+                      </small>
                       <button>Enviar à mesa</button>
                     </form>
                   )}

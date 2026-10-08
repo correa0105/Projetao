@@ -1,5 +1,33 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Checkpoint antes do novo acervo (08/10/2026)
+
+Pedido explícito: salvar no GitHub antes de aplicar a revisão completa dos
+330 monstros, depois continuar. Nova direção: quatro alternativas por criatura,
+preservando anatomia/pose e variando cor; humanoides podem ser personagens
+distintos. Pasta FA_Tokens_Webp fornecida tem 12.283 arquivos; ainda precisa
+de mapeamento/revisão e produção própria, sem redistribuição de arquivos FA.
+Seletor antes de puxar/clique é pendente. Detalhes em VTT-CHECKPOINT-20261008.md.
+
+Três correções individuais anteriores já salvas: dragão negro adulto com
+patas traseiras compactas, behir em S com doze patas, balor superior com
+espada de raio e chicote de fogo. Imagegen embutido, transparência, prompts/
+hashes em data/vtt/monster-structure-20261008.json; backup .local conservado.
+
+Som expandido: 155 arquivos, 13 músicas/22 ambientes/120 efeitos. Mantidos hashes
+dos 75 anteriores, novas fontes CC0 e nove foleys/doze ambientes próprios.
+Favoritos e Removidos por mesa; remover para vozes e conserva arquivo/ajustes/
+atalhos. Repetição opcional 1–3600 s entre inícios, timeline compartilhada,
+sem replay de polls ou entrada durante silêncio. Schema/engine/chat/VFX: 16/16,
+API de som descartável: 8/8. Browser de favoritos/intervalo/chat ainda pendente.
+
+VFX: 36 modelos com busca; retirada de bolhas sólidas, prismas de gelo com
+largura em escala 0,5–3 e três emissores de eletricidade, com seis/nove ramos.
+Navegador Canvas validou 36 modelos/três proporções e editor em quatro larguras;
+cache 24 e limpeza. Chat agora interpreta (Texto)[HTTPS] e [Texto](HTTPS)
+ou caminhos locais, preserva texto literal inseguro e rolagem ao carregar imagem.
+Ainda não foi realizado deploy dessas mudanças nesta etapa.
+
 ## Biblioteca e mixer de som VTT (07/10/2026)
 
 Usuário esclareceu acesso pago ao site: Tabletop Audio/SoundPad são referência,

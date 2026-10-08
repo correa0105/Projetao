@@ -62,6 +62,31 @@ o percurso e um encaixe firme finaliza; sem bolinha móvel ou linha simples.
 
 ## Acordos de desenvolvimento
 
+Direção de 08/10: biblioteca de som ampliada para 155 arquivos (13 músicas,
+22 ambientes, 120 efeitos). Favoritos por estrela e Removidos por mesa,
+restauração sem apagar arquivos/ajustes/atalhos. Somente dono administrador
+vigente altera esses filtros. Repetição contínua ou intervalo de 1–3600 s,
+medido entre inícios pela timeline compartilhada; entrar no intervalo silencioso
+aguarda o próximo ciclo. Novas fontes CC0 e foley próprio em VTT-SOUNDS.md.
+Chat exibe imagens em (Texto)[HTTPS] e [Texto](HTTPS), ou caminho local,
+com texto escapado e fallback quando falha. VTT-CHAT-IMAGES.md.
+
+VFX de 08/10: 36 modelos com busca, conservando IDs antigos. Retirar bolhas
+sólidas; gelo usa prismas de paredes largas em 0,5–3. Raio e faíscas têm três
+emissores distribuídos e várias ramificações simultâneas, substituindo núcleo
+único; projeção permanece superior. Nenhum arquivo JB2A incorporado.
+
+Pedido mais recente, ainda em execução: refazer todo o acervo de 330 monstros
+usando a pasta FA_Tokens_Webp como referência de anatomia/qualidade, com QUATRO
+versões por monstro. Criaturas conservam corpo/pose e variam cores; humanoides
+podem ser personagens distintos. Seletor antes de clique/arraste para o mapa.
+Não redistribuir os arquivos FA nem tratar recoloração como liberação de licença;
+criar desenhos próprios. Não reescrever tokens existentes. Usuário pediu um
+checkpoint GitHub ANTES da aplicação desse novo acervo; salvar e só então continuar.
+Três correções anteriores (dragão negro adulto, behir e balor) já estão salvas
+no acervo, com backup local e prompts em monster-structure-20261008.json.
+Estado do checkpoint e próximos passos: docs/VTT-CHECKPOINT-20261008.md.
+
 Som VTT, direção de 07/10: o acesso ao site é pago. Tabletop Audio/SoundPad são
 referência de organização e qualidade; não incorporar suas trilhas NC nem os
 efeitos restritos ao site original. Acervo local de 75 arquivos com bases CC0,

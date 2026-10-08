@@ -35,10 +35,11 @@ window.fxTest={kinds:effectLibrary.map(e=>e.kind),
  measure(kind,size,now,reduced){const canvas=document.createElement('canvas');canvas.width=canvas.height=420;const c=render(canvas,kind,size,now,reduced,false);return hash(c.getImageData(0,0,420,420).data);},
  finiteExpired(){const c=document.createElement('canvas').getContext('2d');return renderEffect(c,{...make('fire'),duration:1},90,90,{now:2000,reducedMotion:false});},
  cache(){clearEffectTextureCache();for(let i=0;i<30;i++)plume('#'+(i*7219).toString(16).padStart(6,'0'),'smoke');const size=effectTextureCacheSize();clearEffectTextureCache();return {size,after:effectTextureCacheSize()};},
- benchmark(){const canvas=document.createElement('canvas');canvas.width=canvas.height=256;const c=canvas.getContext('2d');c.translate(128,128);const kinds=effectLibrary.filter(e=>e.kind!=='death');for(const e of kinds){renderEffect(c,make(e.kind),90,90,{now:3000,reducedMotion:false,overhead:true,image});}const start=performance.now();for(let frame=0;frame<30;frame++){c.clearRect(-128,-128,256,256);for(const e of kinds)for(const pass of ['behind','front'])renderEffect(c,make(e.kind),90,90,{now:3000+frame*32,reducedMotion:false,pass,overhead:true,image});}return (performance.now()-start)/30;},
+ benchmark(){const canvas=document.createElement('canvas');canvas.width=canvas.height=256;const c=canvas.getContext('2d');c.translate(128,128);const kinds=effectLibrary.filter(e=>e.kind!=='death').slice(0,15);for(const e of kinds){renderEffect(c,make(e.kind),90,90,{now:3000,reducedMotion:false,overhead:true,image});}const start=performance.now();for(let frame=0;frame<30;frame++){c.clearRect(-128,-128,256,256);for(const e of kinds)for(const pass of ['behind','front'])renderEffect(c,make(e.kind),90,90,{now:3000+frame*32,reducedMotion:false,pass,overhead:true,image});}return (performance.now()-start)/30;},
  materials(){clearMaterialCache();const canvas=document.createElement('canvas');canvas.width=canvas.height=200;const c=canvas.getContext('2d');c.translate(100,100);materialSprite(c,'#92b65f','vapor',0,0,160,0,.5,1);const pixels=c.getImageData(0,0,200,200).data;let edge=0,visible=0,partial=0;for(let y=0;y<200;y++)for(let x=0;x<200;x++){const a=pixels[(y*200+x)*4+3];if(x===0||y===0||x===199||y===199)edge+=a;if(a>0)visible++;if(a>0&&a<230)partial++;}for(let i=0;i<30;i++)materialSprite(c,'#'+(i*7219).toString(16).padStart(6,'0'),'vapor',0,0,100,0,.5,1);const size=materialCacheSize();clearMaterialCache();return {edge,visible,partial,size,after:materialCacheSize()};},
  geometry(width,height,scale){const canvas=document.createElement('canvas');canvas.width=canvas.height=600;const c=canvas.getContext('2d');c.translate(300,300);renderEffect(c,{...make('heal'),scale},width,height,{now:2850,reducedMotion:false,overhead:true,image,pass:'behind'});const pixels=c.getImageData(0,0,600,600).data;let minX=600,minY=600,maxX=0,maxY=0;for(let y=0;y<600;y++)for(let x=0;x<600;x++)if(pixels[(y*600+x)*4+3]>10){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}return {width:maxX-minX,height:maxY-minY,cx:(maxX+minX)/2,cy:(maxY+minY)/2};},
  warm(){clearMaterialCache();this.benchmark();const before=materialBakeCount();this.benchmark();return {before,after:materialBakeCount(),size:materialCacheSize()};},
+ corrections(){const grid=document.getElementById('grid');grid.innerHTML='';for(const kind of ['earth','frost','lightning','sparks'])for(const scale of [.5,1,2,3]){const figure=document.createElement('figure'),caption=document.createElement('figcaption'),canvas=document.createElement('canvas');caption.textContent=kind+' · '+scale;canvas.width=canvas.height=400;canvas.className='sample';figure.append(canvas,caption);grid.append(figure);const c=canvas.getContext('2d');c.translate(200,200);const options={now:2850,reducedMotion:false,seed:'test',overhead:true,image};renderEffect(c,{...make(kind),scale},100,100,{...options,pass:'behind'});const fit=100/Math.max(image.naturalWidth,image.naturalHeight);c.drawImage(image,-image.naturalWidth*fit/2,-image.naturalHeight*fit/2,image.naturalWidth*fit,image.naturalHeight*fit);renderEffect(c,{...make(kind),scale},100,100,{...options,pass:'front'});} },
  pending:()=>pending.size};
 function Demo(){const [presets,setPresets]=React.useState([]);return React.createElement(VttEffects,{presets,tokens:[{id,name:'Cavaleiro',layer:'tokens',effects:[],deathAt:null,deathAutomatic:false}],busy:false,save:async p=>setPresets(v=>[...v,p]),remove:async id=>setPresets(v=>v.filter(p=>p.id!==id)),apply:async()=>{},clear:async()=>{},preview:()=>{},editDeath:async()=>{}});}
 createRoot(document.getElementById('ui')).render(React.createElement(Demo));window.fxTest.sheet(1);
@@ -55,7 +56,7 @@ await page.route('**/api/vtt/premium-art/monster-knight', (route) =>
 );
 try {
   await page.goto('http://127.0.0.1:3039/test-results/vtt-effects-quality.html');
-  await page.waitForFunction(() => window.fxTest?.kinds.length === 16);
+  await page.waitForFunction(() => window.fxTest?.kinds.length === 36);
   const renderMetadata = await page.evaluate(() => {
     const result = [];
     for (const kind of window.fxTest.kinds)
@@ -134,18 +135,25 @@ try {
       .locator('#grid')
       .screenshot({ path: 'test-results/vtt-effects-overhead-focused-' + now + '.png' });
   }
+  await page.evaluate(() => window.fxTest.corrections());
+  await page
+    .locator('#grid')
+    .screenshot({ path: 'test-results/vtt-effects-scale-corrections.png' });
   await page.locator('#grid').evaluate((e) => (e.style.display = 'none'));
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.getByRole('button', { name: 'Efeitos do mestre', exact: true }).click();
     const menu = page.getByRole('region', { name: 'Efeitos salvos do mestre' });
     const library = menu.getByRole('region', { name: 'Biblioteca de efeitos', exact: true });
-    await expect(library.locator('.vtt-effect-card')).toHaveCount(16);
+    await expect(library.locator('.vtt-effect-card')).toHaveCount(36);
     const bounds = await menu.boundingBox();
     expect(bounds.x).toBeGreaterThanOrEqual(0);
     expect(bounds.x + bounds.width).toBeLessThanOrEqual(width);
+    await library.getByLabel('Buscar efeito').fill('laminas');
+    await expect(library.locator('.vtt-effect-card')).toHaveCount(1);
+    await library.getByLabel('Buscar efeito').fill('');
     await library.getByRole('button', { name: 'Natureza', exact: true }).click();
-    await expect(library.locator('.vtt-effect-card')).toHaveCount(2);
+    await expect(library.locator('.vtt-effect-card')).toHaveCount(6);
     await library.getByRole('button', { name: 'Todos', exact: true }).click();
     await library.getByRole('button', { name: 'Criar efeito · Relâmpagos', exact: true }).click();
     await expect(menu.getByLabel('Nome do efeito', { exact: true })).toBeFocused();
@@ -172,7 +180,7 @@ try {
   }
   expect(errors).toEqual([]);
   console.log(
-    '16 efeitos Canvas: pixels/animação/repouso em3 proporções, expiração/cache24/cleanup e biblioteca1440/768/390/320 aprovados.',
+    '36 efeitos Canvas: pixels/animação/repouso em3 proporções, expiração/cache24/cleanup e biblioteca1440/768/390/320 aprovados.',
   );
 } finally {
   await browser.close();

@@ -1,5 +1,12 @@
 # Alvorada Cinzenta
 
+Checkpoint de 08/10 antes do novo acervo de monstros: **155 sons**, favoritos,
+remoção/restauração por mesa, repetição por intervalo e imagens no chat com
+`(Texto)[link]`. **36 efeitos visuais**, gelo com cristais largos e raios/faíscas
+com múltiplas fontes. [Estado e verificações](docs/VTT-CHECKPOINT-20261008.md).
+Refazer os 330 monstros e suas quatro versões é a próxima etapa em execução;
+o checkpoint não representa esse acervo novo como concluído.
+
 Som do VTT: biblioteca local de **75 músicas, ambientes e efeitos**, com volume,
 repetição, prévia privada e mistura na mesa. **Fixar** por clique ou arraste
 coloca o som nos dez atalhos; clique ou teclas 1–0 usa o ajuste salvo. Bases CC0

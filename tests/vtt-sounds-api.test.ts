@@ -186,6 +186,73 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
         );
       },
     );
+    await t.test(
+      'favoritos e remoção persistem na mesa; restaurar conserva ajustes e atalhos',
+      async () => {
+        const sourceId = 'amb-hearth';
+        for (const who of [player, spectator])
+          for (const command of [
+            { kind: 'favorite', sourceId, favorite: true },
+            { kind: 'hide', sourceId, hidden: true },
+          ])
+            assert.equal((await req(sounds, who, 'POST', command)).status, 403);
+        await Promise.all(
+          ['amb-hearth', 'music-old-inn'].map((sourceId) =>
+            req(sounds, gm, 'POST', { kind: 'favorite', sourceId, favorite: true }),
+          ),
+        );
+        assert.deepEqual(
+          new Set((await req(sounds, gm)).data.soundboard.favorites),
+          new Set(['amb-hearth', 'music-old-inn']),
+        );
+        const settings = {
+          sourceId,
+          channel: 'ambience',
+          volume: 0.29,
+          loop: true,
+          repeatEvery: 12,
+        };
+        assert.equal((await req(sounds, gm, 'POST', { kind: 'settings', settings })).status, 200);
+        assert.equal((await req(sounds, gm, 'POST', { kind: 'play', sourceId })).status, 200);
+        assert.equal(
+          (await req(sounds, gm, 'POST', { kind: 'hide', sourceId, hidden: true })).status,
+          200,
+        );
+        let board = (await req(sounds, player)).data.soundboard;
+        assert.ok(board.hiddenSources.includes(sourceId));
+        assert.ok(!board.voices.some((v: any) => v.sourceId === sourceId));
+        assert.equal((await req(sounds, gm, 'POST', { kind: 'play', sourceId })).status, 400);
+        assert.deepEqual(
+          board.settings.find((s: any) => s.sourceId === sourceId),
+          settings,
+        );
+        assert.equal(
+          (await req(sounds, gm, 'POST', { kind: 'hide', sourceId, hidden: false })).status,
+          200,
+        );
+        assert.equal((await req(sounds, gm, 'POST', { kind: 'play', sourceId })).status, 200);
+        board = (await req(sounds, gm)).data.soundboard;
+        assert.equal(board.voices.find((v: any) => v.sourceId === sourceId).repeatEvery, 12);
+        assert.ok((await req(path + '/hotbar', gm)).data.document.pages[0].slots[0]);
+        await req(sounds, gm, 'POST', { kind: 'favorite', sourceId, favorite: false });
+        assert.ok(!(await req(sounds, gm)).data.soundboard.favorites.includes(sourceId));
+        const other = (await req('/vtt', gm, 'POST', { name: 'Outra biblioteca' })).data;
+        assert.deepEqual(
+          (await req('/vtt/rooms/' + other.id + '/sounds', gm)).data.soundboard.hiddenSources,
+          [],
+        );
+        for (const repeatEvery of [0, 3601])
+          assert.equal(
+            (
+              await req(sounds, gm, 'POST', {
+                kind: 'settings',
+                settings: { ...settings, repeatEvery },
+              })
+            ).status,
+            400,
+          );
+      },
+    );
     await t.test('limites, fontes e parâmetros maliciosos são recusados', async () => {
       for (const sourceId of ['https://attacker.test/file.ogg', 'asset:../../secret', 'not-found'])
         assert.equal((await req(sounds, gm, 'POST', { kind: 'play', sourceId })).status, 400);
@@ -235,6 +302,11 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
           403,
         );
         assert.equal((await req(sounds, gm)).status, 200);
+        for (const command of [
+          { kind: 'favorite', sourceId: 'amb-hearth', favorite: true },
+          { kind: 'hide', sourceId: 'amb-hearth', hidden: true },
+        ])
+          assert.equal((await req(sounds, gm, 'POST', command)).status, 403);
       },
     );
   } finally {

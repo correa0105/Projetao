@@ -1146,3 +1146,33 @@
   color: #a6aaa6;
   font-size: 10px;
 }
+.vtt-chat-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+.vtt-chat-image {
+  margin: 10px 0;
+  white-space: normal;
+}
+.vtt-chat-image img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.vtt-chat-image a {
+  color: var(--gold, #d8bd78);
+}
+.vtt-chat-image figcaption {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted, #b8b7aa);
+}
+.vtt-chat-image-help {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+}

@@ -29,6 +29,7 @@ export const soundSettingsSchema = z
     channel: z.enum(['music', 'ambience', 'effect']),
     volume: z.number().min(0).max(1),
     loop: z.boolean(),
+    repeatEvery: z.number().min(1).max(3600).optional(),
   })
   .strict();
 export type SoundSettings = z.infer<typeof soundSettingsSchema>;
@@ -41,11 +42,15 @@ export const soundboardSchema = z
     volume: z.number().min(0).max(1).default(0.8),
     settings: z.array(soundSettingsSchema).max(300).default([]),
     voices: z.array(soundVoiceSchema).max(16).default([]),
+    favorites: z.array(soundSourceSchema).max(300).default([]),
+    hiddenSources: z.array(soundSourceSchema).max(300).default([]),
   })
   .strict()
   .superRefine((s, ctx) => {
     if (
       new Set(s.settings.map((s) => s.sourceId)).size !== s.settings.length ||
+      new Set(s.favorites).size !== s.favorites.length ||
+      new Set(s.hiddenSources).size !== s.hiddenSources.length ||
       new Set(s.voices.map((s) => s.id)).size !== s.voices.length ||
       s.voices.some((v) => v.loop && s.voices.filter((w) => w.sourceId === v.sourceId).length > 1)
     )
@@ -57,7 +62,13 @@ export const soundboardSchema = z
         ctx.addIssue({ code: 'custom', message: 'Categoria de áudio inválida.' });
   });
 export type Soundboard = z.infer<typeof soundboardSchema>;
-export const emptySoundboard = (): Soundboard => ({ volume: 0.8, settings: [], voices: [] });
+export const emptySoundboard = (): Soundboard => ({
+  volume: 0.8,
+  settings: [],
+  voices: [],
+  favorites: [],
+  hiddenSources: [],
+});
 export function soundEntry(sourceId: string): SoundEntry | undefined {
   return byId.get(sourceId);
 }
@@ -95,6 +106,10 @@ export const soundCommandSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('settings'), settings: soundSettingsSchema }).strict(),
   z.object({ kind: z.literal('volume'), volume: z.number().min(0).max(1) }).strict(),
   z.object({ kind: z.literal('stopAll') }).strict(),
+  z
+    .object({ kind: z.literal('favorite'), sourceId: soundSourceSchema, favorite: z.boolean() })
+    .strict(),
+  z.object({ kind: z.literal('hide'), sourceId: soundSourceSchema, hidden: z.boolean() }).strict(),
 ]);
 export type SoundCommand = z.infer<typeof soundCommandSchema>;
 export type SoundSnapshot = {

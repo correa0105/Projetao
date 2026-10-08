@@ -216,3 +216,118 @@ test('trilha legada continua funcional ao parar e retomar', () => {
     engine.dispose();
   }
 });
+
+test('intervalos seguem o início compartilhado, esperam em silêncio e não acumulam players', () => {
+  let now = 100000;
+  const made: FakeAudio[] = [];
+  const engine = new VttSoundEngine(
+    () => {},
+    () => {},
+    () => {
+      const a = new FakeAudio();
+      a.duration = 0.4;
+      made.push(a);
+      return a;
+    },
+    () => now,
+  );
+  const v = {
+    ...voice('sfx-dooropen-1'),
+    channel: 'effect' as const,
+    startedAt: 100000,
+    repeatEvery: 2,
+  };
+  const snapshot = () => ({ ...snap([v]), serverTime: now });
+  try {
+    engine.sync(snapshot(), preferences, preferences);
+    assert.equal(made[0].plays, 0);
+    made[0].onloadedmetadata();
+    assert.equal(made[0].loop, false);
+    assert.equal(made[0].plays, 1);
+    engine.sync(snapshot(), preferences, preferences);
+    assert.equal(made[0].plays, 1);
+    made[0].onended();
+    now += 1000;
+    engine.sync(snapshot(), preferences, preferences);
+    assert.equal(made[0].plays, 1);
+    now += 1000;
+    engine.sync(snapshot(), preferences, preferences);
+    assert.equal(made[0].plays, 2);
+    assert.equal(made[0].currentTime, 0);
+    now += 2000;
+    engine.sync(snapshot(), preferences, preferences);
+    assert.equal(made[0].plays, 3);
+    assert.equal(made.length, 1);
+    const hidden = snapshot();
+    hidden.soundboard.hiddenSources = [v.sourceId];
+    engine.sync(hidden, preferences, preferences);
+    assert.equal(engine.active(v.sourceId), false);
+    engine.dispose();
+    assert.equal(made[0].src, '');
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('entrada no silêncio entre intervalos aguarda o próximo ciclo e retoma na fase audível', () => {
+  let now = 101200;
+  const made: FakeAudio[] = [];
+  const engine = new VttSoundEngine(
+    () => {},
+    () => {},
+    () => {
+      const a = new FakeAudio();
+      a.duration = 0.7;
+      made.push(a);
+      return a;
+    },
+    () => now,
+  );
+  const v = {
+    ...voice('sfx-dooropen-1'),
+    channel: 'effect' as const,
+    startedAt: 100000,
+    repeatEvery: 2,
+  };
+  try {
+    engine.sync({ ...snap([v]), serverTime: now }, preferences, preferences);
+    made[0].onloadedmetadata();
+    assert.equal(made[0].plays, 0);
+    assert.equal(made[0].paused, true);
+    now = 102200;
+    engine.sync({ ...snap([v]), serverTime: now }, preferences, preferences);
+    assert.equal(made[0].plays, 1);
+    assert.equal(made[0].currentTime, 0.2);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('favoritos, removidos e intervalos têm fontes únicas e limites validados', () => {
+  assert.ok(
+    soundboardSchema.safeParse({
+      ...emptySoundboard(),
+      favorites: ['amb-hearth'],
+      hiddenSources: ['music-bards-tale'],
+      settings: [
+        { sourceId: 'amb-hearth', channel: 'ambience', volume: 0.5, loop: true, repeatEvery: 10 },
+      ],
+    }).success,
+  );
+  for (const field of ['favorites', 'hiddenSources'])
+    assert.equal(
+      soundboardSchema.safeParse({ ...emptySoundboard(), [field]: ['amb-hearth', 'amb-hearth'] })
+        .success,
+      false,
+    );
+  for (const repeatEvery of [0, -1, 3601, Infinity])
+    assert.equal(
+      soundboardSchema.safeParse({
+        ...emptySoundboard(),
+        settings: [
+          { sourceId: 'amb-hearth', channel: 'ambience', volume: 0.5, loop: true, repeatEvery },
+        ],
+      }).success,
+      false,
+    );
+});

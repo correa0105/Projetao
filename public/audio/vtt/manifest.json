@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "assets": [
     {
       "id": "music-old-inn",
@@ -1054,6 +1054,1153 @@
       "sources": [
         "kenney-rpg/footstep00-09.ogg"
       ]
+    },
+    {
+      "id": "music-unexplored",
+      "file": "music-unexplored.ogg",
+      "sha256": "7be75717c7c7672db67a93c10ee65c5d90fcc6044ed4f7f31a2742261677a5fb",
+      "bytes": 1243822,
+      "duration": 88.05877551020409,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.23,
+      "peakDb": -6.39,
+      "sources": [
+        "unexplored-expansion"
+      ]
+    },
+    {
+      "id": "music-treasure-hunter",
+      "file": "music-treasure-hunter.ogg",
+      "sha256": "c86ddeb528a282082b4d3f5c7607e51cee8e4e02195380ddbf823eaf798fb537",
+      "bytes": 936448,
+      "duration": 65.07102040816326,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.18,
+      "peakDb": -5.16,
+      "sources": [
+        "treasure-hunter"
+      ]
+    },
+    {
+      "id": "music-pursuit",
+      "file": "music-pursuit.ogg",
+      "sha256": "635ba0a5889a94d73c53e920f0300b85913f5e56c9c7186eb3ffa24a7020338d",
+      "bytes": 1754493,
+      "duration": 108.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.24,
+      "peakDb": -5.22,
+      "sources": [
+        "determined-pursuit-epic-orchestra-loop"
+      ]
+    },
+    {
+      "id": "music-cave",
+      "file": "music-cave.ogg",
+      "sha256": "85e7c30167328f3df08c40fe1a2447b78dee79b4c2541068fc79e1ef502ebb56",
+      "bytes": 3087929,
+      "duration": 280.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.23,
+      "peakDb": -4.42,
+      "sources": [
+        "cave-theme"
+      ]
+    },
+    {
+      "id": "music-legend",
+      "file": "music-legend.ogg",
+      "sha256": "b34b8746b253ccf3bc86f9c05ad2b0a967def8446118c2d05d3f9cc50bcb76e1",
+      "bytes": 1076618,
+      "duration": 69.64244897959183,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.22,
+      "peakDb": -5.89,
+      "sources": [
+        "a-legend-will-rise-orchestral"
+      ]
+    },
+    {
+      "id": "music-sunrise",
+      "file": "music-sunrise.ogg",
+      "sha256": "956319890928ca418eab265c5730ad8b6091709ba065f8cca5548b73a1f0238b",
+      "bytes": 2131421,
+      "duration": 136.74278911564625,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.78,
+      "peakDb": -1.95,
+      "sources": [
+        "new-sunrise"
+      ]
+    },
+    {
+      "id": "sfx-creature-monster-1",
+      "file": "sfx-creature-monster-1.ogg",
+      "sha256": "ce802615dc2bc3537a8ee43396b31dc2c81bbf4c9cd2459cf558e6254ae82b82",
+      "bytes": 16456,
+      "duration": 0.9977777777777778,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -24.31,
+      "peakDb": -2.64,
+      "sources": [
+        "80-cc0-creature-sfx/monster_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-monster-2",
+      "file": "sfx-creature-monster-2.ogg",
+      "sha256": "818ac42a82d633083d8c9234d7d0ebdf53c86899fffc501d0c3e270b9794ecba",
+      "bytes": 12630,
+      "duration": 0.5767800453514739,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -23.2,
+      "peakDb": -2.11,
+      "sources": [
+        "80-cc0-creature-sfx/monster_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-monster-3",
+      "file": "sfx-creature-monster-3.ogg",
+      "sha256": "8da4292936a385a213f8daeb3890a8e6d6340232df90265f43102a237974b611",
+      "bytes": 9412,
+      "duration": 0.7788662131519274,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.77,
+      "peakDb": -2.05,
+      "sources": [
+        "80-cc0-creature-sfx/monster_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-monster-4",
+      "file": "sfx-creature-monster-4.ogg",
+      "sha256": "66228a67bceaa81488c156d4b28a688f50117f5389f9f56cbb814b63fa13a37e",
+      "bytes": 11752,
+      "duration": 1.2752834467120182,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.15,
+      "peakDb": -5.04,
+      "sources": [
+        "80-cc0-creature-sfx/monster_04.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-monster-5",
+      "file": "sfx-creature-monster-5.ogg",
+      "sha256": "a758467b589b79fdec1e28e981e8a27fb95b09d6b67bd12dbb51faff135ee93d",
+      "bytes": 9217,
+      "duration": 0.4279138321995465,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -23.2,
+      "peakDb": -1.96,
+      "sources": [
+        "80-cc0-creature-sfx/monster_05.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-monster-6",
+      "file": "sfx-creature-monster-6.ogg",
+      "sha256": "39f72136e1b3ebbc4070b3ae1e8c28f900e21060724933bbf48fe437f78cb8a6",
+      "bytes": 13960,
+      "duration": 0.8335600907029479,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.14,
+      "peakDb": -4.62,
+      "sources": [
+        "80-cc0-creature-sfx/monster_06.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-monster-7",
+      "file": "sfx-creature-monster-7.ogg",
+      "sha256": "b9409d352af10a8a324d7ee36ec1ae56f413444b1d8bae1b7aef0791a7009474",
+      "bytes": 10228,
+      "duration": 1.1312698412698412,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.14,
+      "peakDb": -3.22,
+      "sources": [
+        "80-cc0-creature-sfx/monster_07.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-roar-1",
+      "file": "sfx-creature-roar-1.ogg",
+      "sha256": "e977c7c5ee5473028820b955cee5c7f1e8fc450ac7941ceec46fdc7029a4fae9",
+      "bytes": 7545,
+      "duration": 0.37335600907029476,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.14,
+      "peakDb": -8.24,
+      "sources": [
+        "80-cc0-creature-sfx/roar_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-roar-2",
+      "file": "sfx-creature-roar-2.ogg",
+      "sha256": "5e2e61c0c8ebeb64fa62887024e7974decbe22aef8c5d6f248ffe2715f9ec80d",
+      "bytes": 11868,
+      "duration": 0.9026757369614512,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.16,
+      "peakDb": -3.2,
+      "sources": [
+        "80-cc0-creature-sfx/roar_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-roar-3",
+      "file": "sfx-creature-roar-3.ogg",
+      "sha256": "68a52526fbd328026bf5ec486c75a403ede4b9175452cc47d848ae9d206a8587",
+      "bytes": 9229,
+      "duration": 0.45841269841269844,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.68,
+      "peakDb": -1.68,
+      "sources": [
+        "80-cc0-creature-sfx/roar_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-troll-1",
+      "file": "sfx-creature-troll-1.ogg",
+      "sha256": "890337378a864784ae1726a2971aba1858df7267d11729e5106ed9080afc41dc",
+      "bytes": 11344,
+      "duration": 0.571156462585034,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.13,
+      "peakDb": -7.32,
+      "sources": [
+        "80-cc0-creature-sfx/troll_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-troll-2",
+      "file": "sfx-creature-troll-2.ogg",
+      "sha256": "9e19ca14a783671a6678ac9bdd99a259f3b48ae395148d12be815f8b7052dfd5",
+      "bytes": 12324,
+      "duration": 0.7938775510204081,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.16,
+      "peakDb": -4.6,
+      "sources": [
+        "80-cc0-creature-sfx/troll_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-troll-3",
+      "file": "sfx-creature-troll-3.ogg",
+      "sha256": "5beec2788d340c998747ec7dc74bcf446c7f3b0e90c4aceb843657cfe0974bf0",
+      "bytes": 9167,
+      "duration": 0.4204081632653061,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.16,
+      "peakDb": -6.1,
+      "sources": [
+        "80-cc0-creature-sfx/troll_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-grunt-1",
+      "file": "sfx-creature-grunt-1.ogg",
+      "sha256": "b3d758c007537293094b43d1f9f6497d19d0e322a0be2c818aa7380701f23f83",
+      "bytes": 12069,
+      "duration": 0.9327664399092971,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.23,
+      "peakDb": -3.41,
+      "sources": [
+        "80-cc0-creature-sfx/grunt_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-grunt-2",
+      "file": "sfx-creature-grunt-2.ogg",
+      "sha256": "3dc32173e23e4986afc897812ab7bad3a1a1f3e65d5bcc77b559e0141983703e",
+      "bytes": 9721,
+      "duration": 0.5349659863945578,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.12,
+      "peakDb": -10.66,
+      "sources": [
+        "80-cc0-creature-sfx/grunt_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-grunt-3",
+      "file": "sfx-creature-grunt-3.ogg",
+      "sha256": "71154be968a6263b549fc87e5d0a609e501d0231449f8c801437e14ff3904519",
+      "bytes": 11283,
+      "duration": 0.6657142857142857,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.26,
+      "peakDb": -3.01,
+      "sources": [
+        "80-cc0-creature-sfx/grunt_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-grunt-4",
+      "file": "sfx-creature-grunt-4.ogg",
+      "sha256": "7b7158caf56135d54dfa1aeabf25adf9796b26d989ded5f9a7fb5c59e8e08fc4",
+      "bytes": 10559,
+      "duration": 0.6109070294784581,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.09,
+      "peakDb": -1.73,
+      "sources": [
+        "80-cc0-creature-sfx/grunt_04.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-grunt-5",
+      "file": "sfx-creature-grunt-5.ogg",
+      "sha256": "a6dc49bb7c7b93c8a42af3bd313ab49f7ec717164978223ea1c88a70bfe26e1b",
+      "bytes": 10797,
+      "duration": 0.6499092970521542,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.53,
+      "peakDb": -2.15,
+      "sources": [
+        "80-cc0-creature-sfx/grunt_05.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-hurt-1",
+      "file": "sfx-creature-hurt-1.ogg",
+      "sha256": "52ae682440c981f71fbd770116a3951dbfc01e532824a3a5926d7ab681e41da0",
+      "bytes": 10754,
+      "duration": 0.4950113378684807,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.25,
+      "peakDb": -1.72,
+      "sources": [
+        "80-cc0-creature-sfx/hurt_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-hurt-2",
+      "file": "sfx-creature-hurt-2.ogg",
+      "sha256": "0f284d81b062f967db77064a890781305835fe5d74f0c2fe5feb38b658c02807",
+      "bytes": 10040,
+      "duration": 0.4802267573696145,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.25,
+      "peakDb": -4.74,
+      "sources": [
+        "80-cc0-creature-sfx/hurt_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-hurt-3",
+      "file": "sfx-creature-hurt-3.ogg",
+      "sha256": "c658fb0c184bc411328a6301aa1d8d3c7d83c7271c70433ac02078a5eb69ea7b",
+      "bytes": 10674,
+      "duration": 0.45807256235827665,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.15,
+      "peakDb": -3.46,
+      "sources": [
+        "80-cc0-creature-sfx/hurt_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-bug-1",
+      "file": "sfx-creature-bug-1.ogg",
+      "sha256": "730f9901037cbab88f1edbcdd516b64272056229a7c60c9f861fe196cf4a1a41",
+      "bytes": 10125,
+      "duration": 0.5788888888888889,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.8,
+      "peakDb": -2.54,
+      "sources": [
+        "80-cc0-creature-sfx/bug_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-bug-2",
+      "file": "sfx-creature-bug-2.ogg",
+      "sha256": "7d7084ea87a844fbfa9c9fd59ec04736565064e08098314cda76c1da0dbaae0e",
+      "bytes": 11923,
+      "duration": 0.5742403628117914,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.16,
+      "peakDb": -1.78,
+      "sources": [
+        "80-cc0-creature-sfx/bug_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-bug-3",
+      "file": "sfx-creature-bug-3.ogg",
+      "sha256": "1d7eb41862412288c5d5c1ae301f0357d395077d161cb1e544b6394b982d19b2",
+      "bytes": 9706,
+      "duration": 0.3537641723356009,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.95,
+      "peakDb": -1.58,
+      "sources": [
+        "80-cc0-creature-sfx/bug_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-cute-1",
+      "file": "sfx-creature-cute-1.ogg",
+      "sha256": "0a5ad7f362bc55d5cd7ab13dd4ab066e8893df5332090ff6169e1fe9e207bc8d",
+      "bytes": 8856,
+      "duration": 0.39024943310657595,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.16,
+      "peakDb": -5.94,
+      "sources": [
+        "80-cc0-creature-sfx/cute_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-cute-2",
+      "file": "sfx-creature-cute-2.ogg",
+      "sha256": "547745cc8b4f1b6862347d0771e6e61c356928b6f0440e655d20857f94b528cf",
+      "bytes": 9464,
+      "duration": 0.4618140589569161,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.2,
+      "peakDb": -7.52,
+      "sources": [
+        "80-cc0-creature-sfx/cute_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-cute-3",
+      "file": "sfx-creature-cute-3.ogg",
+      "sha256": "9695527d9d3d8ef3957d07e651ce0bcd05c56cd090996d3053bf2357877d28ab",
+      "bytes": 11284,
+      "duration": 0.61140589569161,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.17,
+      "peakDb": -2.1,
+      "sources": [
+        "80-cc0-creature-sfx/cute_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-cute-4",
+      "file": "sfx-creature-cute-4.ogg",
+      "sha256": "a2c27093e42c4c246ee0b413dbd310327ccd2d661cdfa7b9e5b60203f91b2c23",
+      "bytes": 10652,
+      "duration": 0.5138321995464853,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.16,
+      "peakDb": -4.8,
+      "sources": [
+        "80-cc0-creature-sfx/cute_04.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-weird-1",
+      "file": "sfx-creature-weird-1.ogg",
+      "sha256": "bc08c0e6c3718441c0505d46cfafa26609fe1d7bb0b541148da7cd213e18dc5a",
+      "bytes": 11106,
+      "duration": 0.6036054421768707,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.17,
+      "peakDb": -3.61,
+      "sources": [
+        "80-cc0-creature-sfx/weird_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-weird-2",
+      "file": "sfx-creature-weird-2.ogg",
+      "sha256": "dd385b383425ee932fd01455d7485544e1d1777e5ba218e0e70741f1ef2a0f69",
+      "bytes": 8509,
+      "duration": 0.4577777777777778,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.16,
+      "peakDb": -4.53,
+      "sources": [
+        "80-cc0-creature-sfx/weird_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-weird-3",
+      "file": "sfx-creature-weird-3.ogg",
+      "sha256": "9d6677c8d17ed4f4a70b54faa8f5d5ed8c5cab161df9c1b26f9282f8ccdefbc3",
+      "bytes": 8253,
+      "duration": 0.38752834467120184,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.87,
+      "peakDb": -2.04,
+      "sources": [
+        "80-cc0-creature-sfx/weird_03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-barking-1",
+      "file": "sfx-creature-barking-1.ogg",
+      "sha256": "fb9a1c047f39c7bf5d753769c3c5fdd217d9d30185cf6a18afd1f294038bfb58",
+      "bytes": 8129,
+      "duration": 0.39834467120181405,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.59,
+      "peakDb": -1.46,
+      "sources": [
+        "80-cc0-creature-sfx/barking_01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-barking-2",
+      "file": "sfx-creature-barking-2.ogg",
+      "sha256": "f9f9e4d2c01d08e3e8fdcf29495ddac51918aae9e2b862559ed3887450938395",
+      "bytes": 8168,
+      "duration": 0.45904761904761904,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -20.55,
+      "peakDb": -2.0,
+      "sources": [
+        "80-cc0-creature-sfx/barking_02.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-howl",
+      "file": "sfx-creature-howl.ogg",
+      "sha256": "ec53e322ed517696aa8314661acaadfb3f9d6e21b9db53aa182c6a24d5d28640",
+      "bytes": 11068,
+      "duration": 0.7169614512471655,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.13,
+      "peakDb": -5.57,
+      "sources": [
+        "80-cc0-creature-sfx/howl.ogg"
+      ]
+    },
+    {
+      "id": "sfx-creature-breath",
+      "file": "sfx-creature-breath.ogg",
+      "sha256": "d9315d30882352ed40d8c6c42419d20032a2275ca538f29ff9a952060fab0272",
+      "bytes": 11888,
+      "duration": 0.6704081632653062,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.62,
+      "peakDb": -1.56,
+      "sources": [
+        "80-cc0-creature-sfx/breath.ogg"
+      ]
+    },
+    {
+      "id": "sfx-beast-growl-1",
+      "file": "sfx-beast-growl-1.ogg",
+      "sha256": "f7aca801b581d93d554742ed48ef4b9df48d7c64242caa1b709764424963e947",
+      "bytes": 39521,
+      "duration": 2.951451247165533,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.17,
+      "peakDb": -8.67,
+      "sources": [
+        "animal-or-beast-sounds/Growl 1.wav"
+      ]
+    },
+    {
+      "id": "sfx-beast-growl-2",
+      "file": "sfx-beast-growl-2.ogg",
+      "sha256": "84e0b12d6c2c698b9d80f6897b9eb0c8cefbd6d2a569fb3832f4d6f6af1fcfa5",
+      "bytes": 36318,
+      "duration": 2.8878684807256234,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.15,
+      "peakDb": -7.29,
+      "sources": [
+        "animal-or-beast-sounds/Growl 2.wav"
+      ]
+    },
+    {
+      "id": "sfx-beast-growl",
+      "file": "sfx-beast-growl.ogg",
+      "sha256": "83d467ce977ad506d7a1e4c06a16fb24c5f4b17718dffe7a803a8b9cd2b82ca0",
+      "bytes": 28292,
+      "duration": 2.751655328798186,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.19,
+      "peakDb": -6.68,
+      "sources": [
+        "animal-or-beast-sounds/Growl.wav"
+      ]
+    },
+    {
+      "id": "sfx-beast-voice-1",
+      "file": "sfx-beast-voice-1.ogg",
+      "sha256": "91182ddf6973b6f1785abfc39792b2fe4071ae92c322c2ca80eed945734f6700",
+      "bytes": 11951,
+      "duration": 0.6286167800453515,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.22,
+      "peakDb": -6.91,
+      "sources": [
+        "animal-or-beast-sounds/Voice 1.wav"
+      ]
+    },
+    {
+      "id": "sfx-beast-voice-2",
+      "file": "sfx-beast-voice-2.ogg",
+      "sha256": "299918b531a7c4d76de9d5d75bc673d26043efda2a843d8de82a889916f64b7e",
+      "bytes": 11691,
+      "duration": 0.6896145124716553,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.22,
+      "peakDb": -6.7,
+      "sources": [
+        "animal-or-beast-sounds/Voice 2.wav"
+      ]
+    },
+    {
+      "id": "sfx-beast-voice-3",
+      "file": "sfx-beast-voice-3.ogg",
+      "sha256": "e56445ba2a1d2ef253d5d2b69e922d1e68e2b02bc551818bada44ea042d4ea80",
+      "bytes": 46153,
+      "duration": 3.9494784580498865,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.19,
+      "peakDb": -4.67,
+      "sources": [
+        "animal-or-beast-sounds/Voice 3.wav"
+      ]
+    },
+    {
+      "id": "sfx-beast-voice",
+      "file": "sfx-beast-voice.ogg",
+      "sha256": "98220d008aa62fd80c3eac0f264353971b7f60d0a3f57fa07100e655241f1a13",
+      "bytes": 19153,
+      "duration": 1.4166893424036282,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.21,
+      "peakDb": -4.79,
+      "sources": [
+        "animal-or-beast-sounds/Voice.wav"
+      ]
+    },
+    {
+      "id": "sfx-door-open-1",
+      "file": "sfx-door-open-1.ogg",
+      "sha256": "853d11c701d8f8039bca1b84d27d2e68e6b9277af63fd070d715e1f829d8c14a",
+      "bytes": 17026,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.39,
+      "peakDb": -2.69,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorOpen01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-door-open-3",
+      "file": "sfx-door-open-3.ogg",
+      "sha256": "fdb43fa9ad4e91a693418073c51cb6644227f83e3de3ecc08771a6ab5beb1809",
+      "bytes": 17815,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.06,
+      "peakDb": -0.35,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorOpen03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-door-open-5",
+      "file": "sfx-door-open-5.ogg",
+      "sha256": "fcb525bd8ec5c834537b747a427e1f54a33328167753a67ccaa68b3c004005db",
+      "bytes": 16359,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.68,
+      "peakDb": -1.2,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorOpen05.ogg"
+      ]
+    },
+    {
+      "id": "sfx-door-open-7",
+      "file": "sfx-door-open-7.ogg",
+      "sha256": "28d40c1f63d8dab35834cee00d44ddeca98c7968a4ce59d6f261e648004d31d0",
+      "bytes": 17597,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -23.06,
+      "peakDb": -1.69,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorOpen07.ogg"
+      ]
+    },
+    {
+      "id": "sfx-door-close-1",
+      "file": "sfx-door-close-1.ogg",
+      "sha256": "b23324281e411e43b2a9c590810c5ecfdb960cb3ffb7be9a30f4bd02e9bf73d4",
+      "bytes": 17227,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.55,
+      "peakDb": -1.58,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorClose01.ogg"
+      ]
+    },
+    {
+      "id": "sfx-door-close-3",
+      "file": "sfx-door-close-3.ogg",
+      "sha256": "171338395078d5e7dc87a3ad3b7a357170c14435a6c270cdd603bf151e57a1bd",
+      "bytes": 17243,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -28.12,
+      "peakDb": -3.11,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorClose03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-door-close-5",
+      "file": "sfx-door-close-5.ogg",
+      "sha256": "f16246d1ca9e95a3dc72e0efc043d8e3c668dbf43b2e8a86af71179dc24de878",
+      "bytes": 18861,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -25.39,
+      "peakDb": -1.74,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorClose05.ogg"
+      ]
+    },
+    {
+      "id": "sfx-door-close-7",
+      "file": "sfx-door-close-7.ogg",
+      "sha256": "d5f8a66ceec9fcb093cf61eb0594054e1b68f489743b8efdeb432f9a584ded2c",
+      "bytes": 16839,
+      "duration": 1.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -22.44,
+      "peakDb": -1.64,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorClose07.ogg"
+      ]
+    },
+    {
+      "id": "sfx-animal-raven",
+      "file": "sfx-animal-raven.ogg",
+      "sha256": "f139a03f693ee45d819ac34569faf157c4a93153489760ae375c058f487a8747",
+      "bytes": 18358,
+      "duration": 1.51,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.49,
+      "peakDb": -5.03,
+      "sources": [
+        "pets-cc0/raven-caw-v3.wav"
+      ]
+    },
+    {
+      "id": "sfx-animal-rat",
+      "file": "sfx-animal-rat.ogg",
+      "sha256": "77ccc87d14fc5f912a91c99b71ed96ced6b1296b635b5b0aca5bc979f251f6f2",
+      "bytes": 14309,
+      "duration": 0.9,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.36,
+      "peakDb": -3.44,
+      "sources": [
+        "pets-cc0/rat.wav"
+      ]
+    },
+    {
+      "id": "sfx-animal-guinea-pig",
+      "file": "sfx-animal-guinea-pig.ogg",
+      "sha256": "87d9507cb202faf0f2a6ba904d05d6dd06ab76976549b81d4ab2b4145c0b8a9e",
+      "bytes": 21079,
+      "duration": 1.6,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.22,
+      "peakDb": -3.03,
+      "sources": [
+        "pets-cc0/guinea-pig.wav"
+      ]
+    },
+    {
+      "id": "sfx-steel-door-open",
+      "file": "sfx-steel-door-open.ogg",
+      "sha256": "2c8efc8f4f876a65bc615bc44490d8119ea331b7a96a94dfabc0ceae9c7527bb",
+      "bytes": 37883,
+      "duration": 3.3,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -30.84,
+      "peakDb": -2.43,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorOpen05.ogg",
+        "kenney-rpg/metalLatch.ogg",
+        "kenney-rpg/metalClick.ogg"
+      ]
+    },
+    {
+      "id": "sfx-steel-door-close",
+      "file": "sfx-steel-door-close.ogg",
+      "sha256": "f489658588313da5e59abdc434f31ea146df94b8eb943117f8a6f661ad6e621a",
+      "bytes": 44081,
+      "duration": 3.7,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.06,
+      "peakDb": -0.42,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorClose07.ogg",
+        "kenney-rpg/metalLatch.ogg",
+        "kenney-rpg/metalClick.ogg"
+      ]
+    },
+    {
+      "id": "sfx-lantern-light",
+      "file": "sfx-lantern-light.ogg",
+      "sha256": "41247089c5f4a45b2ea6dd29481cbe0aa12da77052942ebfc5ef2a8d7d69a2f3",
+      "bytes": 26233,
+      "duration": 1.8,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -34.34,
+      "peakDb": -2.52,
+      "sources": [
+        "kenney-rpg",
+        "short-wind-sound-0",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "sfx-lantern-out",
+      "file": "sfx-lantern-out.ogg",
+      "sha256": "e52fe32c0044c0b44bcb9af47f6121884e1f4be7cb8e3b2c8c132fbc871bbb09",
+      "bytes": 12370,
+      "duration": 0.9,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -31.42,
+      "peakDb": -2.53,
+      "sources": [
+        "kenney-rpg",
+        "short-wind-sound-0",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "sfx-torch-light",
+      "file": "sfx-torch-light.ogg",
+      "sha256": "631372e12d5a006395b1bb802cb1165fd0975cda8e58cb0d4e9ecef3273071ee",
+      "bytes": 40800,
+      "duration": 2.5,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -29.63,
+      "peakDb": -0.82,
+      "sources": [
+        "kenney-rpg",
+        "short-wind-sound-0",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "sfx-torch-out",
+      "file": "sfx-torch-out.ogg",
+      "sha256": "fc3f4698c468e18958fd30c73bb6892eeb0c720f29c1ba2ec4e8fb1132dfc122",
+      "bytes": 20721,
+      "duration": 1.2,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.28,
+      "peakDb": -3.98,
+      "sources": [
+        "kenney-rpg",
+        "short-wind-sound-0",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "sfx-echo-step",
+      "file": "sfx-echo-step.ogg",
+      "sha256": "d82addad62b37ad9a681a6ce876cb0cffb8d0463f41322c59a771a2ad54533a9",
+      "bytes": 37053,
+      "duration": 3.2690249433106575,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -31.15,
+      "peakDb": -1.57,
+      "sources": [
+        "kenney-rpg/footstep03.ogg"
+      ]
+    },
+    {
+      "id": "sfx-echo-door",
+      "file": "sfx-echo-door.ogg",
+      "sha256": "384ee2de990f7b68f9ef9431b1341cbef95d84ff014352160b9b7a4d9d40642c",
+      "bytes": 42159,
+      "duration": 4.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.01,
+      "peakDb": -1.4,
+      "sources": [
+        "door-open-door-close-set/qubodup-DoorClose07.ogg"
+      ]
+    },
+    {
+      "id": "sfx-distant-beast",
+      "file": "sfx-distant-beast.ogg",
+      "sha256": "6ef768208da1569d28867e206e41c521173c001807cc571e15da5ba43bedd6bb",
+      "bytes": 62463,
+      "duration": 7.6893197278911565,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -19.17,
+      "peakDb": -4.44,
+      "sources": [
+        "animal-or-beast-sounds/Growl 1.wav"
+      ]
+    },
+    {
+      "id": "amb-torch",
+      "file": "amb-torch.ogg",
+      "sha256": "db4634e3a6ad35808ae7fc3c9e4bced0c612496b7cf70a0f786c20df49590e65",
+      "bytes": 529957,
+      "duration": 31.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -27.34,
+      "peakDb": -0.65,
+      "sources": [
+        "fireplace-sound-loop",
+        "short-wind-sound-0"
+      ]
+    },
+    {
+      "id": "amb-oil-lamp",
+      "file": "amb-oil-lamp.ogg",
+      "sha256": "8822ddc694ce3f507db4297ded8688354d01551ef5e104963b7137277e540968",
+      "bytes": 461663,
+      "duration": 27.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -25.22,
+      "peakDb": -1.15,
+      "sources": [
+        "fireplace-sound-loop",
+        "original-synthesis"
+      ]
+    },
+    {
+      "id": "amb-tense-dungeon",
+      "file": "amb-tense-dungeon.ogg",
+      "sha256": "c5854db647b04fa7677b7273499e691b3141404a7e470c7e635d853345437da5",
+      "bytes": 322594,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.39,
+      "peakDb": -11.0,
+      "sources": [
+        "short-wind-sound-0",
+        "original-synthesis"
+      ]
+    },
+    {
+      "id": "amb-haunted-crypt",
+      "file": "amb-haunted-crypt.ogg",
+      "sha256": "66505538f2f8b460d4d38b6447fcc0b609b316028d1f6a57a538aa112852b1dd",
+      "bytes": 318616,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.39,
+      "peakDb": -11.18,
+      "sources": [
+        "short-wind-sound-0",
+        "original-synthesis"
+      ]
+    },
+    {
+      "id": "amb-deep-cave",
+      "file": "amb-deep-cave.ogg",
+      "sha256": "bfec0b09a489c38f3720f344d83393382b21255cd6015358661ff4641321e3f2",
+      "bytes": 822142,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.59,
+      "peakDb": -4.74,
+      "sources": [
+        "short-wind-sound-0",
+        "sea-and-river-wave-sounds-0"
+      ]
+    },
+    {
+      "id": "amb-forest-night",
+      "file": "amb-forest-night.ogg",
+      "sha256": "e2ca56dcf747aba159da44949110c5044918a4bbaf2158dbc62e807839979206",
+      "bytes": 911642,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.39,
+      "peakDb": -8.86,
+      "sources": [
+        "forest-ambience",
+        "short-wind-sound-0",
+        "original-synthesis"
+      ]
+    },
+    {
+      "id": "amb-ruin-crows",
+      "file": "amb-ruin-crows.ogg",
+      "sha256": "9f6da1c9f9acd004024e351558acdfcbf23a15d7cafbcba388f75c6fb6e10be3",
+      "bytes": 524012,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -26.48,
+      "peakDb": -0.91,
+      "sources": [
+        "short-wind-sound-0",
+        "pets-cc0/raven-caw-v3.wav"
+      ]
+    },
+    {
+      "id": "amb-beast-lair",
+      "file": "amb-beast-lair.ogg",
+      "sha256": "7ac96a5e2f6cfc99d8e00aa9998924865dd0f3293a3ddb71cfc03f44d2a8dfbb",
+      "bytes": 419551,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.4,
+      "peakDb": -5.95,
+      "sources": [
+        "short-wind-sound-0",
+        "animal-or-beast-sounds/Growl 1.wav",
+        "original-synthesis"
+      ]
+    },
+    {
+      "id": "amb-wind-fortress",
+      "file": "amb-wind-fortress.ogg",
+      "sha256": "c175c03b86840cbd06ae8b60e5ca5f662196cd2cf64af7c7e0da3f33b96acd43",
+      "bytes": 953511,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.45,
+      "peakDb": -2.2,
+      "sources": [
+        "short-wind-sound-0",
+        "fireplace-sound-loop"
+      ]
+    },
+    {
+      "id": "amb-underground-river",
+      "file": "amb-underground-river.ogg",
+      "sha256": "dbb94926b2ac93a9a665cee8ef407e7494cec37fe30dfebafd0f9875ad34e8ce",
+      "bytes": 822787,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.59,
+      "peakDb": -4.6,
+      "sources": [
+        "sea-and-river-wave-sounds-0",
+        "short-wind-sound-0"
+      ]
+    },
+    {
+      "id": "amb-echo-hall",
+      "file": "amb-echo-hall.ogg",
+      "sha256": "1d77add74b621531b9b97129507610d7aad6e3872b38629d08eba3e0a25b1977",
+      "bytes": 485159,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -34.29,
+      "peakDb": -0.81,
+      "sources": [
+        "short-wind-sound-0",
+        "kenney-rpg/footstep03.ogg"
+      ]
+    },
+    {
+      "id": "amb-dark-ritual",
+      "file": "amb-dark-ritual.ogg",
+      "sha256": "7b0b7b45828ca35f7e0a0f977972ee34886ae939d30f4a41bd7c27d31f7230b1",
+      "bytes": 927644,
+      "duration": 61.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "rmsDb": -21.38,
+      "peakDb": -12.02,
+      "sources": [
+        "original-synthesis",
+        "fireplace-sound-loop",
+        "short-wind-sound-0"
+      ]
     }
   ],
   "sources": [
@@ -1236,6 +2383,87 @@
       "license": "CC0-1.0",
       "bytes": 76383,
       "sha256": "2817da4f5df69ff993baffd6594a2f2a069f85ee2a02019f97db2246e350a76b"
+    },
+    {
+      "slug": "80-cc0-creature-sfx",
+      "page": "https://opengameart.org/content/80-cc0-creature-sfx",
+      "url": "https://opengameart.org/sites/default/files/80-CC0-creature-SFX_0.zip",
+      "file": ".local/vtt-sound-expansion/80-cc0-creature-sfx.zip",
+      "license": "CC0-1.0",
+      "bytes": 1885648,
+      "sha256": "5d4002eea42f278e76543bb36e8ddd2cb978588a13271984191d8228f5d26768"
+    },
+    {
+      "slug": "door-open-door-close-set",
+      "page": "https://opengameart.org/content/door-open-door-close-set",
+      "url": "https://opengameart.org/sites/default/files/qubodup-DoorSet.7z",
+      "file": ".local/vtt-sound-expansion/door-open-door-close-set.7z",
+      "license": "CC0-1.0",
+      "bytes": 3340803,
+      "sha256": "88502c82451a646fa4bc1b9021a26bbd3441b2850a613784a05336067b11a25d"
+    },
+    {
+      "slug": "unexplored-expansion",
+      "page": "https://opengameart.org/content/unexplored-expansion",
+      "url": "https://opengameart.org/sites/default/files/tad_-_unexplored_-_expanded_1_by_bo_jingles_0.mp3",
+      "file": ".local/vtt-sound-expansion/unexplored-expansion.mp3",
+      "license": "CC0-1.0",
+      "bytes": 1765271,
+      "sha256": "a39323b0cbc83dea018fb693fb5b89f5cce6f06761b05407a489f9ace6cc094e"
+    },
+    {
+      "slug": "treasure-hunter",
+      "page": "https://opengameart.org/content/treasure-hunter",
+      "url": "https://opengameart.org/sites/default/files/treasure_hunter_0.mp3",
+      "file": ".local/vtt-sound-expansion/treasure-hunter.mp3",
+      "license": "CC0-1.0",
+      "bytes": 2086369,
+      "sha256": "379f3f2c6f967afaf4f2bd95027cf123cf6770b8d1f35acea0eb32fbeb6798c2"
+    },
+    {
+      "slug": "determined-pursuit-epic-orchestra-loop",
+      "page": "https://opengameart.org/content/determined-pursuit-epic-orchestra-loop",
+      "url": "https://opengameart.org/sites/default/files/determined_pursuit_loop.wav",
+      "file": ".local/vtt-sound-expansion/determined-pursuit-epic-orchestra-loop.wav",
+      "license": "CC0-1.0",
+      "bytes": 19052830,
+      "sha256": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b"
+    },
+    {
+      "slug": "cave-theme",
+      "page": "https://opengameart.org/content/cave-theme",
+      "url": "https://opengameart.org/sites/default/files/cave%20themeb4.ogg",
+      "file": ".local/vtt-sound-expansion/cave-theme.ogg",
+      "license": "CC0-1.0",
+      "bytes": 3203408,
+      "sha256": "1ddf7a0845c808136edfda7ea829e48fa2b7c57793e008d706dadbb5917dff9c"
+    },
+    {
+      "slug": "a-legend-will-rise-orchestral",
+      "page": "https://opengameart.org/content/a-legend-will-rise-orchestral",
+      "url": "https://opengameart.org/sites/default/files/A%20Legend%20Will%20Rise.mp3",
+      "file": ".local/vtt-sound-expansion/a-legend-will-rise-orchestral.mp3",
+      "license": "CC0-1.0",
+      "bytes": 2785768,
+      "sha256": "6c38472a541777c3ac2826e8623f1424a1d2ccc3757e16cafb270b004e64a65b"
+    },
+    {
+      "slug": "new-sunrise",
+      "page": "https://opengameart.org/content/new-sunrise",
+      "url": "https://opengameart.org/sites/default/files/New%20Sunrise.wav",
+      "file": ".local/vtt-sound-expansion/new-sunrise.wav",
+      "license": "CC0-1.0",
+      "bytes": 39382102,
+      "sha256": "2cdeaf5b65784117e09d10cde1c5a8fb26716751413a35e3b609b928701226d4"
+    },
+    {
+      "slug": "animal-or-beast-sounds",
+      "page": "https://opengameart.org/content/animal-or-beast-sounds",
+      "url": "https://opengameart.org/sites/default/files/beast_or_animal.7z",
+      "file": ".local/vtt-sound-expansion/animal-or-beast-sounds.7z",
+      "license": "CC0-1.0",
+      "bytes": 849709,
+      "sha256": "5b7a47df7c02e2ce67e8be35abe7bb6363531be03caeed73a108b8156bc6fc08"
     }
   ]
 }

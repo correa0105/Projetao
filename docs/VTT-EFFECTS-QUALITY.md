@@ -1,5 +1,25 @@
 # Refino dos efeitos — PeriSFX e JB2A (07/10/2026)
 
+## Atualização de 08/10
+
+36 modelos com busca por nome/descrição e IDs anteriores conservados. Vinte
+novos modelos em vtt-effects-collection.ts: portal, teleporte, onda de choque,
+explosão, vórtice, fumaça, nevasca, brasas, corrente elétrica, lava, runas,
+maldição, bênção, necrose, teia, enxame, folhas, pétalas, lâminas e onda sonora.
+Comportamentos próprios em Canvas, sem arquivos/dependência JB2A.
+
+Removidas partículas em bolas sólidas, inclusive bolhas de veneno/ácido.
+Cristais de gelo com paredes quase paralelas e facetas proporcionais, em
+plano isotrópico que conserva largura quando o tamanho aumenta de 0,5 a 3.
+Raio e faíscas originam de três pontos distribuídos, com dois/três ramos cada;
+geometria estável por descarga, ataque rápido e decaimento. A projeção superior
+e o círculo no chão central continuam. Cache compartilhado limitado a 24.
+
+Navegador: 36 modelos em três proporções, pixels/animação/repouso/expiração,
+editor em quatro larguras, escala 0,5–3 revisada em comparação. Novos modelos
+também são desenhados pelo renderer legado. Benchmark de atlas permanece
+limitado aos 15 modelos anteriores; não extrapolar essa medição a todos os 36.
+
 O usuário indicou [PeriSFX](https://www.patreon.com/cw/PeriSFX) e a
 [biblioteca JB2A](https://library.jb2a.com/) como referências de qualidade.
 A [publicação pública PSFX 0.4.0](https://www.patreon.com/PeriSFX/posts/august-early-0-4-134335759)

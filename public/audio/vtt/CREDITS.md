@@ -16,3 +16,22 @@ Licença: https://creativecommons.org/publicdomain/zero/1.0/
 Referência de organização e qualidade: https://tabletopaudio.com/ e SoundPad. Nenhum áudio do Tabletop Audio foi incorporado; suas restrições de uso são diferentes. Este projeto não é afiliado ao Tabletop Audio.
 
 manifest.json identifica fontes, hashes originais/finais, duração e medições dos arquivos. Tratamento aplicado: remoção de DC, ganho RMS com limite de pico, OGG estéreo 44,1 kHz e sobreposição dos ciclos de ambiente. As músicas preservam a composição original.
+
+
+## Expansão de 08/10/2026
+
+Todas as bases abaixo são CC0 1.0. Preservados os 75 arquivos originais.
+
+- Bo Jingles / TAD: [Unexplored expansion](https://opengameart.org/content/unexplored-expansion).
+- TAD: [Treasure Hunter](https://opengameart.org/content/treasure-hunter).
+- Emma_MA: [Determined Pursuit](https://opengameart.org/content/determined-pursuit-epic-orchestra-loop).
+- Brandon75689 / HaelDB: [Cave theme](https://opengameart.org/content/cave-theme), opção CC0.
+- CodeManu: [A Legend Will Rise](https://opengameart.org/content/a-legend-will-rise-orchestral).
+- nene: [New Sunrise](https://opengameart.org/content/new-sunrise).
+- rubberduck: [80 CC0 creature SFX](https://opengameart.org/content/80-cc0-creature-sfx); seleção de 35 vocalizações, não todos os arquivos do pacote.
+- pauliuw: [Animal or beast sounds](https://opengameart.org/content/animal-or-beast-sounds), sete vocalizações.
+- qubodup: [Door Open, Door Close Set](https://opengameart.org/content/door-open-door-close-set), oito portas e bases para foley metálico.
+- Bidone: [Corvo](https://freesound.org/people/Bidone/sounds/66763/); Breviceps: [Roedor](https://freesound.org/people/Breviceps/sounds/583077/); Zabuhailo: [Rato](https://freesound.org/people/Zabuhailo/sounds/143125/). Tratamentos já existentes em public/audio/pets, também CC0; licença e origem conservadas aqui.
+- Alvorada Cinzenta: nove efeitos compostos de foley e doze ambientes, com bases CC0 já identificadas e síntese original de bordões. Porta de aço, lamparina e tocha são composições de foley; os ecos são reflexões estéreo adicionadas. Novas composições também CC0.
+
+Build explícita em scripts/expand-vtt-sound-library.py: preservação dos hashes anteriores, validação das fontes baixadas, leitura segura de ZIP/7z, picos sem clipping, fades e ciclos sobrepostos. Não executada no deploy/startup.

@@ -12,6 +12,8 @@ import {
   tint,
 } from './vtt-effects-primitives';
 import { drawExpandedEffect } from './vtt-effects-expanded';
+import { drawEffectCollection } from './vtt-effects-collection';
+import { effectFootprint } from './vtt-effect-footprint';
 
 type Random = (i: number) => number;
 function smoke(
@@ -114,6 +116,8 @@ export function drawEffectLayer(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawEffectCollection(c, e, effectFootprint(160, 160, 100, 100), t, random, pass, detail))
+    return;
   if (e.kind === 'fire') {
     if (!front) {
       glow(c, 0, r * 0.42, r * 1.2, e.color, 0.24);
