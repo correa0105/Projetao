@@ -11,7 +11,7 @@ const media = z
   .refine(
     (p) =>
       p === '' ||
-      /^\/api\/vtt\/assets\/[0-9a-f-]{36}$/.test(p) ||
+      /^\/api\/vtt\/assets\/[0-9a-f-]{36}(?:\/top-down)?$/.test(p) ||
       /^\/api\/vtt\/premium-art\/monster-[a-z0-9-]+$/.test(p) ||
       (/^\/vtt\/[\w/.-]+$/.test(p) && !p.includes('..')),
   );

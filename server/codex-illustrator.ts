@@ -40,7 +40,7 @@ function codexCommand() {
   }
   throw new Error('Codex CLI não encontrado. Instale o Codex e execute codex login.');
 }
-async function runCodex(args: string[], prompt?: string, timeout = 15 * 60_000) {
+export async function runCodex(args: string[], prompt?: string, timeout = 15 * 60_000) {
   const { command, prefix } = codexCommand();
   const env = { ...process.env };
   delete env.OPENAI_API_KEY;

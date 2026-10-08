@@ -44,7 +44,26 @@ export async function finishTestArt(id: string, image?: Buffer) {
     "UPDATE character_art_jobs SET status='running' WHERE id=$1 AND status='queued'",
     [id],
   );
-  return completeArt(id, image || (await testArtImage()));
+  return completeArt(id, {
+    portrait: image || (await testArtImage()),
+    token: await testTokenImage(),
+  });
+}
+export async function testTokenImage() {
+  return sharp({ create: { width: 512, height: 512, channels: 4, background: '#00000000' } })
+    .composite([
+      {
+        input: await sharp({
+          create: { width: 160, height: 240, channels: 4, background: '#8c785a' },
+        })
+          .png()
+          .toBuffer(),
+        left: 176,
+        top: 136,
+      },
+    ])
+    .png()
+    .toBuffer();
 }
 export async function createLegacyTestCharacter(userId: string, name = 'Explorador de teste') {
   const {

@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import { pool, transaction } from '../server/db.js';
 import { completeArt } from '../server/character-art.js';
+import { generateCharacterArtPair } from '../server/character-token-illustrator.js';
 import { completeCompanionArt } from '../server/companion-equipment.js';
 import {
   checkCodexLogin,
-  generateCharacterArt,
   generateCompanionArt,
   IllustratorError,
 } from '../server/codex-illustrator.js';
@@ -102,7 +102,7 @@ try {
               : `Arte concluída: ${job.id}`,
           );
         } else {
-          await completeArt(job.id, await generateCharacterArt(job));
+          await completeArt(job.id, await generateCharacterArtPair(job));
           console.log(`Arte concluída: ${job.id}`);
         }
       } catch (error) {

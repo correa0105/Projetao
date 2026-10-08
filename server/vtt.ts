@@ -7,6 +7,7 @@ import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { requireAdministrator, isAdministrator } from './administrators.js';
 import { AppError } from './services.js';
+import { vttAssetId, vttAssetPath, isTopDownTokenImage } from '../shared/vtt-token-image.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { vttSheetRouter } from './vtt-sheet.js';
 import { vttSpellsRouter } from './vtt-spells.js';
@@ -126,12 +127,12 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
     ...new Set(
       paths(doc)
         .filter((p) => p.startsWith('/api/vtt/assets/'))
-        .map((p) => uuid.parse(p.split('/').at(-1))),
+        .map((p) => uuid.parse(vttAssetId(p))),
     ),
   ];
   if (!ids.length) return;
   const assets = await db.query(
-    'SELECT id,kind FROM vtt_assets WHERE room_id=$1 AND id=ANY($2::uuid[])',
+    'SELECT id,kind,character_art_source FROM vtt_assets WHERE room_id=$1 AND id=ANY($2::uuid[])',
     [rid, ids],
   );
   if (assets.rowCount !== ids.length)
@@ -141,7 +142,8 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
     .concat(doc.journal.map((j) => j.image));
   for (const asset of assets.rows) {
     if (
-      (images.includes('/api/vtt/assets/' + asset.id) && asset.kind !== 'image') ||
+      (images.some((p) => vttAssetId(p) === asset.id) && asset.kind !== 'image') ||
+      (images.includes(vttAssetPath(asset.id, true)) && !asset.character_art_source) ||
       ((asset.id === doc.music.assetId || doc.scenes.some((s) => s.onLoadAudio === asset.id)) &&
         asset.kind !== 'audio')
     )
@@ -244,7 +246,12 @@ async function importCharacter(
   const derived = sheet?.finalized_at ? deriveSheet(c, sheet.choices) : null;
   const {
     rows: [portrait],
-  } = await db.query('SELECT image FROM character_portraits WHERE character_id=$1', [cid]);
+  } = await db.query(
+    `SELECT image,true AS top_down FROM character_tokens WHERE character_id=$1
+    UNION ALL SELECT image,false AS top_down FROM character_portraits WHERE character_id=$1
+    AND NOT EXISTS(SELECT 1 FROM character_tokens WHERE character_id=$1)`,
+    [cid],
+  );
   const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
   if (scene.tokens.some((t) => t.characterId === cid && t.controller === user)) return false;
   const previousToken = r.document.scenes
@@ -292,14 +299,19 @@ async function importCharacter(
   });
   if (portrait) {
     const bytes = await sharp(portrait.image)
-      .resize({ width: 512, height: 512, fit: 'cover', position: 'attention' })
-      .webp({ quality: 90 })
+      .resize(
+        portrait.top_down
+          ? { width: 1024, height: 1024, fit: 'inside', withoutEnlargement: true }
+          : { width: 512, height: 512, fit: 'cover', position: 'attention' },
+      )
+      .webp({ quality: portrait.top_down ? 95 : 90, alphaQuality: 100 })
       .toBuffer();
+    const meta = await sharp(bytes).metadata();
     const a = await db.query(
-      "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height)VALUES($1,$2,'image','image/webp',$3,512,512)RETURNING id",
-      [r.id, c.name + ' · token', bytes],
+      "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source)VALUES($1,$2,'image','image/webp',$3,$4,$5,$6)RETURNING id",
+      [r.id, c.name + ' · token', bytes, meta.width, meta.height, cid],
     );
-    token.image = '/api/vtt/assets/' + a.rows[0].id;
+    token.image = vttAssetPath(a.rows[0].id, portrait.top_down);
   }
   const offset = scene.tokens.filter((t) => t.characterId).length;
   token.x = Math.max(
@@ -394,18 +406,18 @@ export function vttRouter() {
       const token = tokenSchema.parse(preset.token);
       await validatePremiumImages(db, user, [token.image]);
       if (token.image.startsWith('/api/vtt/assets/')) {
-        const aid = uuid.parse(token.image.split('/').at(-1));
+        const aid = uuid.parse(vttAssetId(token.image));
         const {
           rows: [asset],
         } = await db.query(
-          `INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height)
-          SELECT $1,a.name,a.kind,a.mime,a.bytes,a.width,a.height FROM vtt_assets a JOIN vtt_rooms source ON source.id=a.room_id
+          `INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source)
+          SELECT $1,a.name,a.kind,a.mime,a.bytes,a.width,a.height,a.character_art_source FROM vtt_assets a JOIN vtt_rooms source ON source.id=a.room_id
           WHERE a.id=$2 AND source.owner_id=$3 AND a.kind='image' RETURNING id`,
           [rid, aid, user],
         );
         if (!asset)
           throw new AppError(404, 'A imagem original do preset não está mais disponível.');
-        token.image = '/api/vtt/assets/' + asset.id;
+        token.image = vttAssetPath(asset.id, isTopDownTokenImage(token.image));
       }
       const scene = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
       token.id = randomUUID();
@@ -958,12 +970,14 @@ export function vttRouter() {
       res.status(201).json({ ...r.rows[0], path: '/api/vtt/assets/' + r.rows[0].id });
     },
   );
-  router.get('/vtt/assets/:id', async (req, res) => {
+  router.get(['/vtt/assets/:id', '/vtt/assets/:id/top-down'], async (req, res) => {
     const id = uuid.parse(req.params.id),
       {
         rows: [a],
       } = await pool.query('SELECT * FROM vtt_assets WHERE id=$1', [id]);
     if (!a) throw new AppError(404, 'Arquivo não encontrado.');
+    const topDown = req.path.endsWith('/top-down');
+    if (topDown && !a.character_art_source) throw new AppError(404, 'Token não encontrado.');
     const r = await room(pool, a.room_id, res.locals.user.id);
     const isGm = r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id));
     let viewAs = res.locals.user.id;
@@ -979,7 +993,7 @@ export function vttRouter() {
     if (
       !isGm &&
       !paths(playerDocument(r.document, viewAs, r.role === 'spectator')).includes(
-        '/api/vtt/assets/' + id,
+        vttAssetPath(id, topDown),
       )
     )
       throw new AppError(404, 'Arquivo não disponível.');
@@ -1003,7 +1017,7 @@ export function vttRouter() {
       aid = uuid.parse(req.params.asset);
     await transaction(async (db) => {
       const r = await gm(db, rid, res.locals.user.id, true);
-      if (paths(r.document).includes('/api/vtt/assets/' + aid))
+      if (paths(r.document).some((p) => vttAssetId(p) === aid))
         throw new AppError(
           409,
           'Retire o arquivo dos mapas, tokens, diário ou música antes de excluí-lo.',

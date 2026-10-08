@@ -4,7 +4,9 @@
 
 Compêndio sem os dois avisos SRD/arraste e com Monstros/Presets/Galeria/Magias compactos em uma linha. Botões Arma/Ataque de magia removidos do chat. Ctrl + roda gira seleção em 15° sem mudar câmera/aba, respeitando controle dos jogadores. Selecionar arrasta escrita/desenhos na camada atual; Alt move livre, grade/desfazer/salvamento funcionam. Inserir texto retorna à seleção. Aplicado no Docker, smoke/QA mobile e preservação de 43 tabelas aprovados; guia VTT-CONTROLS-20261008.md.
 
-Pedidos seguintes em andamento: arte principal + token do personagem visto de cima; quarenta peças da House com oito vistas cada e exportação agrupada em Downloads. A revisão geral 330×4 permanece pausada.
+Cada geração de personagem agora cria arte principal e token estritamente visto de cima, usando a arte aprovada como referência de identidade/equipamentos. Publicação atômica e uma cota; perfil lê apenas a arte principal. Importação do VTT usa a silhueta completa com alfa, e tokens automáticos existentes recebem a nova imagem preservando posição, giro e tamanho. Migration 084 aplicada, worker local online; nove testes isolados, navegador em quatro larguras, regressão do VTT, bundles/servidor e preservação de 43 tabelas aprovados. Guias CHARACTER-TOKENS-20261008.md e CHARACTER-TOKEN-PROMPT-v1.md.
+
+Última etapa em andamento: quarenta peças da House com oito vistas cada e exportação agrupada em Downloads. A revisão geral 330×4 permanece pausada.
 
 ## Layout das seis páginas (08/10/2026)
 

@@ -45,7 +45,13 @@ export function CharacterArtButton({
         const changed = previous && previous !== signature;
         previous = signature;
         setState(result);
-        if (changed && !result.jobs.some(job => job.character_id === character.id && ['queued', 'running'].includes(job.status)))
+        if (
+          changed &&
+          !result.jobs.some(
+            (job) =>
+              job.character_id === character.id && ['queued', 'running'].includes(job.status),
+          )
+        )
           await refresh.current();
       } catch {
         if (alive) setState((current) => ({ ...current, available: false }));
@@ -100,11 +106,7 @@ export function CharacterArtButton({
           {latestJob.error || 'A imagem não foi gerada. Tente novamente; sua cota foi preservada.'}
         </FlashMessage>
       )}
-      {error && !open && (
-        <FlashMessage>
-          {error}
-        </FlashMessage>
-      )}
+      {error && !open && <FlashMessage>{error}</FlashMessage>}
       {open && (
         <Modal
           title={`Imagem de ${character.name}`}
@@ -136,6 +138,7 @@ export function CharacterArtButton({
             }}
           >
             <p>A imagem atual permanece até a nova ficar pronta.</p>
+            <p>A geração inclui a arte do personagem e um token visto de cima para o VTT.</p>
             <span
               className={`illustrator-status ${state.available ? 'is-online' : 'is-offline'}`}
               role="status"
@@ -153,11 +156,7 @@ export function CharacterArtButton({
               helmetMode={helmetMode}
               onHelmetModeChange={setHelmetMode}
             />
-            {error && (
-              <FlashMessage>
-                {error}
-              </FlashMessage>
-            )}
+            {error && <FlashMessage>{error}</FlashMessage>}
             <button className="button primary" disabled={busy || !reference || !equipmentReady}>
               {busy ? 'Vestindo...' : 'Vestir'}
             </button>

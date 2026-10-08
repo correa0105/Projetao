@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import type { CharacterArtPair } from './character-token-illustrator.js';
+import { normalizeCharacterToken, syncCharacterTokenArt } from './character-token-art.js';
 import {
   equipmentArtReference,
   trustedEquipmentPath,
@@ -212,8 +214,11 @@ export async function enqueueArt(userId: string, input: unknown) {
 }
 
 // Only the trusted local worker calls this function. No HTTP route can publish artwork.
-export async function completeArt(jobId: string, output: Buffer) {
-  const image = await normalizeArtImage(output, true);
+export async function completeArt(jobId: string, output: CharacterArtPair) {
+  const [image, tokenImage] = await Promise.all([
+    normalizeArtImage(output.portrait, true),
+    normalizeCharacterToken(output.token),
+  ]);
   return transaction(async (client) => {
     const owner = await client.query('SELECT user_id FROM character_art_jobs WHERE id=$1', [jobId]);
     if (!owner.rowCount) throw new AppError(404, 'Pedido não encontrado.');
@@ -268,6 +273,11 @@ export async function completeArt(jobId: string, output: Buffer) {
       [characterId, image],
     );
     await client.query(
+      'INSERT INTO character_tokens(character_id,image) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET image=$2,updated_at=now()',
+      [characterId, tokenImage],
+    );
+    await syncCharacterTokenArt(client, characterId, job.user_id, tokenImage);
+    await client.query(
       'UPDATE characters SET portrait_revision=portrait_revision+1 WHERE id=$1 AND user_id=$2',
       [characterId, job.user_id],
     );
@@ -311,6 +321,7 @@ export function characterArtRouter() {
         userId,
       ]);
       await client.query('DELETE FROM character_portraits WHERE character_id=$1', [id]);
+      await client.query('DELETE FROM character_tokens WHERE character_id=$1', [id]);
       await client.query('UPDATE character_art_jobs SET reference=NULL WHERE character_id=$1', [
         id,
       ]);

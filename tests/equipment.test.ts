@@ -174,7 +174,8 @@ test('equipamento: proprietário, unidades, mãos, cofre, persistência e refer�
     await pool.query("UPDATE character_art_jobs SET status='running' WHERE id=$1", [
       accepted.data.id,
     ]);
-    await completeArt(accepted.data.id, cutout);
+    const { testTokenImage } = await import('./character-fixtures.js');
+    await completeArt(accepted.data.id, { portrait: cutout, token: await testTokenImage() });
     assert.equal(
       (await pool.query('SELECT portrait_revision FROM characters WHERE id=$1', [character.id]))
         .rows[0].portrait_revision,
