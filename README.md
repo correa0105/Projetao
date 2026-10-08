@@ -1,5 +1,10 @@
 # Alvorada Cinzenta
 
+Inventário: clique no item → **Excluir item**, escolha a quantidade e confirme.
+Disponível na mochila e no cofre; unidades equipadas precisam ser desequipadas.
+O cachorro tem **Partes da armadura na imagem** antes de **Vestir**, como a barda
+do cavalo. [Funcionamento e testes](docs/INVENTORY-DELETE-DOG-ARMOR-20261008.md).
+
 VTT: personagens mostram miniatura do token em **Fichas** e podem ser arrastados
 para o mapa sem abrir a ficha. Nana usa a imagem escolhida pelo usuário; Irineu
 recebeu sua vista superior. Na House, objetos podem subir até tampos de móveis.

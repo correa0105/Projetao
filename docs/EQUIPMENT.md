@@ -1,5 +1,10 @@
 # Equipamentos do personagem
 
+**Excluir item**, nos detalhes da mochila ou do cofre, permite escolher quantas
+unidades livres remover. A confirmação é permanente e não devolve ouro; compras
+e seu histórico permanecem registrados. Desequipe unidades em uso no personagem,
+montaria ou mascote antes de excluí-las. Guia INVENTORY-DELETE-DOG-ARMOR-20261008.md.
+
 Na Mochila, **Itens equipados** oferece cabeça/capacete, peitoral, ombreiras, braçadeiras, calça/pernas, mão principal,
 mão secundária/escudo, dois anéis, pescoço, capa, luvas, botas, mochila/costas e
 cinto/bolsa. Cada posição mostra a imagem original do item e permite equipar ou

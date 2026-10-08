@@ -1,5 +1,13 @@
 # Alvorada Cinzenta — instruções para continuidade
 
+Pedidos posteriores de 08/10: permitir excluir unidades livres da mochila/cofre
+por Excluir item nos detalhes, com quantidade e confirmação; sem devolver ouro,
+apagar compras ou excluir unidades reservadas por personagem/animais. Migration
+085 registra exclusão idempotente. Cachorro tem as seis opções de partes da
+armadura antes de Vestir, como a barda do cavalo; escolhas visuais por animal,
+sem mudar estoque/reservas ou a arte existente antes de nova geração válida.
+Guia INVENTORY-DELETE-DOG-ARMOR-20261008.md.
+
 Refino posterior de tokens pessoais em 08/10: Fichas mostra a miniatura privada;
 clique/arraste coloca ou seleciona sem abrir ficha nem trocar aba. Irineu tem
 token superior separado do retrato. Nana deve usar a última imagem escolhida,

@@ -79,10 +79,16 @@ try {
   const sourceBox = (await source.boundingBox())!;
   await page.keyboard.down('Shift');
   await page.mouse.down();
-  await page.mouse.move(sourceBox.x + sourceBox.width / 2 + 15, sourceBox.y + sourceBox.height / 2, { steps: 5 });
+  await page.mouse.move(
+    sourceBox.x + sourceBox.width / 2 + 15,
+    sourceBox.y + sourceBox.height / 2,
+    { steps: 5 },
+  );
   await target.scrollIntoViewIfNeeded();
   const targetBox = (await target.boundingBox())!;
-  await page.mouse.move(targetBox.x + targetBox.width / 2, targetBox.y + targetBox.height / 2, { steps: 8 });
+  await page.mouse.move(targetBox.x + targetBox.width / 2, targetBox.y + targetBox.height / 2, {
+    steps: 8,
+  });
   await page.mouse.up();
   await page.keyboard.up('Shift');
   await expect(bag.locator('.loot-quantity')).toHaveText('1');
@@ -97,7 +103,9 @@ try {
   await vault.locator('button.loot-slot').scrollIntoViewIfNeeded();
   await page.waitForTimeout(150);
   await vault.locator('button.loot-slot').click();
-  await page.getByRole('button', { name: 'Levar para a mochila', exact: true }).click({modifiers:['Shift']});
+  await page
+    .getByRole('button', { name: 'Levar para a mochila', exact: true })
+    .click({ modifiers: ['Shift'] });
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await expect(bag.locator('.loot-quantity')).toHaveText('1');
   await expect(vault.locator('.loot-quantity')).toHaveText('1');
@@ -117,9 +125,62 @@ try {
   await expect(vault.locator('.loot-quantity')).toHaveText('2');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/vault-mobile.png', fullPage: true });
+  for (const width of [1440, 768, 390, 320]) {
+    await pool.query(
+      'INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,3) ON CONFLICT(character_id,item_id) DO UPDATE SET quantity=3',
+      [second.id, item.id],
+    );
+    await pool.query(
+      'INSERT INTO account_vault(user_id,item_id,quantity) VALUES($1,$2,2) ON CONFLICT(user_id,item_id) DO UPDATE SET quantity=2',
+      [userId, item.id],
+    );
+    await page.setViewportSize({ width, height: 1000 });
+    await page.reload();
+    await page.getByRole('button', { name: /^Abrir menu de/ }).click();
+    await page.getByRole('option', { name: 'Mira', exact: true }).click();
+    await expect(bag.locator('.loot-quantity')).toHaveText('3');
+    async function openRemoval(region: typeof bag) {
+      const slot = region.locator('button.loot-slot');
+      await slot.scrollIntoViewIfNeeded();
+      await slot.click();
+      await page
+        .getByRole('dialog', { name: 'Detalhes de Espada longa', exact: true })
+        .getByRole('button', { name: 'Excluir item', exact: true })
+        .click();
+      return page.getByRole('dialog', { name: 'Excluir item', exact: true });
+    }
+    let dialog = await openRemoval(bag);
+    await expect(dialog.getByLabel('Quantidade a excluir')).toHaveValue('1');
+    await dialog.getByRole('button', { name: 'Cancelar', exact: true }).click();
+    await expect(bag.locator('.loot-quantity')).toHaveText('3');
+    dialog = await openRemoval(bag);
+    const quantity = dialog.getByLabel('Quantidade a excluir');
+    await quantity.fill('4');
+    expect(await quantity.evaluate((el) => (el as HTMLInputElement).checkValidity())).toBe(false);
+    await quantity.fill('2');
+    await dialog.screenshot({ path: 'test-results/inventory-delete-modal-' + width + '.png' });
+    await dialog.getByRole('button', { name: 'Excluir', exact: true }).click();
+    await expect(dialog).not.toBeVisible();
+    await expect(bag.locator('.loot-quantity')).toHaveText('1');
+    await expect(vault.locator('.loot-quantity')).toHaveText('2');
+    dialog = await openRemoval(bag);
+    await dialog.getByRole('button', { name: 'Excluir', exact: true }).click();
+    await expect(bag.locator('button.loot-slot')).toHaveCount(0);
+    dialog = await openRemoval(vault);
+    await dialog.getByRole('button', { name: 'Excluir', exact: true }).click();
+    await expect(vault.locator('.loot-quantity')).toHaveText('1');
+    await page.reload();
+    await page.getByRole('button', { name: /^Abrir menu de/ }).click();
+    await page.getByRole('option', { name: 'Mira', exact: true }).click();
+    await expect(bag.locator('button.loot-slot')).toHaveCount(0);
+    await expect(vault.locator('.loot-quantity')).toHaveText('1');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
+      true,
+    );
+  }
   expect(errors).toEqual([]);
   console.log(
-    'Cofre no navegador: arrastar, quantidade parcial, persistência, segundo personagem e transferência mobile OK.',
+    'Inventário no navegador: transferências, exclusão parcial/total de mochila e cofre, cancelar, quantidade máxima, persistência e 1440/768/390/320 OK.',
   );
 } catch (error) {
   await mkdir('test-results', { recursive: true });

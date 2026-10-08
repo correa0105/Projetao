@@ -236,7 +236,7 @@ try {
     const job = await response.json();
     const body = artRequests.at(-1)!;
     expect(Object.keys(body).sort()).toEqual(
-      kind === 'mount'
+      kind === 'mount' || kind === 'pet'
         ? ['barding_parts', 'companion_id', 'idempotency_key', 'kind']
         : ['companion_id', 'idempotency_key', 'kind'],
     );
@@ -254,7 +254,7 @@ try {
     ).rows[0];
     expect(record.reference.length).toBeGreaterThan(1000);
     expect(record.equipment_revision).toBe(before.equipment_revision);
-    if (kind === 'mount') expect(record.barding_parts).toEqual(body.barding_parts);
+    expect(record.barding_parts).toEqual(body.barding_parts);
     const references = (
       await pool.query('SELECT item_id,name,image FROM companion_art_equipment WHERE job_id=$1', [
         job.id,
@@ -464,7 +464,20 @@ try {
   await reserved('plate-bracers', 0);
   await equip('armor', 'pet-armor-leather');
   await reserved('pet-armor-leather', 1);
+  const dogParts = panel.getByRole('group', { name: 'Partes da armadura na imagem' });
+  await expect(dogParts.getByRole('checkbox')).toHaveCount(6);
+  for (const checkbox of await dogParts.getByRole('checkbox').all())
+    await expect(checkbox).toBeChecked();
+  await dogParts.getByLabel('Proteção da cabeça', { exact: true }).uncheck();
+  await dogParts.getByLabel('Proteção das patas dianteiras', { exact: true }).uncheck();
+  await dogParts.getByLabel('Proteção das patas traseiras', { exact: true }).uncheck();
   const dressedDog = await dress(dog.id, 'pet');
+  expect(artRequests.at(-1)?.barding_parts).toEqual(['neck', 'chest', 'body']);
+  await reserved('pet-armor-leather', 1);
+  await page.reload();
+  await selectSubject('Mascote', dog.id);
+  await expect(dogParts.getByLabel('Proteção da cabeça', { exact: true })).not.toBeChecked();
+  await expect(dogParts.getByLabel('Tronco e flancos', { exact: true })).toBeChecked();
 
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
@@ -474,6 +487,14 @@ try {
     ] as const) {
       await selectSubject(label, id);
       await validateImage(panel.locator('.companion-outfit-image img'), saved.image_url!);
+      if (label === 'Mascote') {
+        const parts = panel.getByRole('group', { name: 'Partes da armadura na imagem' });
+        const head = parts.getByLabel('Proteção da cabeça', { exact: true });
+        await head.check();
+        await expect(head).toBeChecked();
+        await head.uncheck();
+        await expect(head).not.toBeChecked();
+      }
       expect(
         await panel.locator('[data-companion-slot] .equipment-slot-trigger').evaluateAll((slots) =>
           slots.every((slot) => {

@@ -3,8 +3,9 @@ import { Sparkles } from 'lucide-react';
 import { CompanionEquipmentIcon } from './CompanionEquipmentIcon';
 import {
   BARDING_PARTS,
-  BARDING_PART_LABELS,
+  armorPartLabel,
   isBarding,
+  supportsArmorParts,
   type BardingPart,
   COMPANION_SLOT_LABELS,
   compatibleCompanionSlots,
@@ -93,8 +94,13 @@ export function CompanionEquipmentPanel({
   const companions = state?.companions.filter((c) => c.kind === kind) || [];
   const selected = companions.find((c) => c.id === selectedId) || companions[0];
   const hasBarding =
-    kind === 'mount' &&
-    selected?.equipped.some((item) => item.slot === 'armor' && isBarding(item.id));
+    selected &&
+    supportsArmorParts(kind, selected.species_id) &&
+    selected.equipped.some((item) =>
+      kind === 'mount'
+        ? item.slot === 'armor' && isBarding(item.id)
+        : item.slot === 'armor' && item.id.startsWith('pet-armor-'),
+    );
   const bardingParts = selected
     ? (bardingChoices[selected.id] ?? selected.barding_parts ?? [...BARDING_PARTS])
     : [...BARDING_PARTS];
@@ -196,7 +202,7 @@ export function CompanionEquipmentPanel({
         kind,
         companion_id: selected.id,
         idempotency_key: artKey.current,
-        ...(kind === 'mount' ? { barding_parts: bardingParts } : {}),
+        ...(supportsArmorParts(kind, selected.species_id) ? { barding_parts: bardingParts } : {}),
       });
       if (!alive.current) return;
       setJobs((current) => [job, ...current.filter((j) => j.id !== job.id)]);
@@ -228,6 +234,9 @@ export function CompanionEquipmentPanel({
     selected?.art_pending || latest?.status === 'queued' || latest?.status === 'running';
   const quotaFull =
     selected && selected.art_limit !== null && selected.art_used >= selected.art_limit;
+  const coverageChanged =
+    hasBarding &&
+    JSON.stringify(bardingParts) !== JSON.stringify(selected?.barding_parts ?? BARDING_PARTS);
   const armorSets =
     selected && state
       ? armorSetOptions(
@@ -429,7 +438,9 @@ export function CompanionEquipmentPanel({
           </div>
           {hasBarding && (
             <fieldset className="companion-barding-parts" disabled={disabled || pending}>
-              <legend>Partes da barda na imagem</legend>
+              <legend>
+                {kind === 'mount' ? 'Partes da barda na imagem' : 'Partes da armadura na imagem'}
+              </legend>
               <p>Marque as proteções que deseja na próxima imagem.</p>
               <div>
                 {BARDING_PARTS.map((part) => (
@@ -445,7 +456,7 @@ export function CompanionEquipmentPanel({
                         artKey.current = crypto.randomUUID();
                       }}
                     />
-                    {BARDING_PART_LABELS[part]}
+                    {armorPartLabel(part, kind)}
                   </label>
                 ))}
               </div>
@@ -465,7 +476,8 @@ export function CompanionEquipmentPanel({
                 ? 'O ilustrador está offline.'
                 : pending
                   ? 'A aparência atual fica visível até a nova arte ficar pronta.'
-                  : selected.art_equipment_revision !== selected.equipment_revision
+                  : coverageChanged ||
+                      selected.art_equipment_revision !== selected.equipment_revision
                     ? 'A aparência será refeita a partir da imagem base, substituindo os equipamentos anteriores.'
                     : 'A aparência está atualizada.'}
             </p>

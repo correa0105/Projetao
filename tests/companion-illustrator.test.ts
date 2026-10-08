@@ -133,6 +133,39 @@ test('animal veste referências reais sobre BASE sem estilo humano ou mistura de
       describeCompanionEquipment({ ...equipment[1], item_id: 'legacy:barding-plate' }, 0).wearing,
       /ARMADURA COMPLETA/,
     );
+    await generateCompanionArt({
+      id: randomUUID(),
+      reference: base,
+      kind: 'pet',
+      species_id: 'dog',
+      appearance: 'original',
+      name: 'Cão',
+      barding_parts: ['chest', 'body'],
+      equipment: [{ ...equipment[1], item_id: 'pet-armor-scales' }],
+    });
+    const dog = JSON.parse(await readFile(capture, 'utf8'));
+    for (const prompt of [dog.prompt, dog.review]) {
+      assert.match(prompt, /Armadura do cachorro/);
+      assert.match(prompt, /INCLUIR Proteção do peito; Tronco e flancos/);
+      assert.match(
+        prompt,
+        /NÃO desenhar as partes desmarcadas da armadura do cachorro: Proteção da cabeça/,
+      );
+      assert.match(prompt, /patas caninas/);
+    }
+    await generateCompanionArt({
+      id: randomUUID(),
+      reference: base,
+      kind: 'pet',
+      species_id: 'dog',
+      appearance: 'original',
+      name: 'Cão',
+      barding_parts: ['chest', 'body'],
+      equipment: [equipment.find((item) => item.slot === 'neck')!],
+    });
+    const accessory = JSON.parse(await readFile(capture, 'utf8'));
+    assert.doesNotMatch(accessory.prompt, /Armadura do cachorro da referência/);
+    assert.doesNotMatch(accessory.review, /Conferir também a cobertura/);
   } finally {
     if (beforePath === undefined) delete process.env.PATH;
     else process.env.PATH = beforePath;

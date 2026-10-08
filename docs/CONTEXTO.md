@@ -1,5 +1,27 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Exclusão no inventário e partes da armadura do cachorro — 08/10/2026
+
+Detalhes do item da mochila/cofre têm Excluir item. Modal mostra quantidade livre,
+inicia em uma unidade e pede confirmação. Exclusão parcial ou total, sem devolver
+ouro; histórico de compras preservado. API transacional com ownership, CSRF,
+reservas humanas/animais e idempotência; migration 085 guarda a auditoria.
+Dois testes de integração e fluxo real em 1440/768/390/320 aprovados.
+
+Antes de Vestir, o cachorro com armadura tem as seis regiões da barda do cavalo:
+cabeça, pescoço, peito, tronco/flancos e patas dianteiras/traseiras. Todas começam
+marcadas; escolha salva por animal no pedido, recuperada após recarga. Campo
+barding_parts existente aceita cães; outros mascotes preservam seu fluxo.
+Referências de componentes desmarcados são omitidas da geração, manto/coleira
+e outros acessórios equipados permanecem independentes. Geração/revisão usam
+anatomia canina e cobertura explícita, sem mudar estoque, reservas, atributos ou
+imagem existente automaticamente. Quatro testes de companheiros/ilustrador/
+regressão da montaria e navegador com controles reais nas quatro larguras aprovados.
+Guia INVENTORY-DELETE-DOG-ARMOR-20261008.md. Revisão geral 330×4 continua pausada.
+Release aplicado no Docker local com migration 085, servidor/bundles conferidos
+e ilustrador online reiniciado com fila vazia. Backup integral validado; hashes
+de 44 tabelas completas preservados. Artes/sons existentes também conferidos.
+
 ## Tokens pessoais, arraste e tampo dos móveis — 08/10/2026
 
 Fichas mostra a miniatura privada de cada token. Arrastar coloca/move o próprio

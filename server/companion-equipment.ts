@@ -18,6 +18,8 @@ import { ART_MONTHLY_LIMIT } from '../shared/character-art.js';
 import {
   COMPANION_SLOTS,
   BARDING_PARTS,
+  supportsArmorParts,
+  visibleDogArmor,
   companionSlots,
   compatibleCompanionSlots,
   type CompanionKind,
@@ -49,11 +51,7 @@ const artSchema = z
       .refine((parts) => new Set(parts).size === parts.length, 'Partes repetidas.')
       .optional(),
   })
-  .strict()
-  .refine(
-    (data) => data.kind === 'mount' || data.barding_parts === undefined,
-    'A seleção de partes da barda é exclusiva de montarias.',
-  );
+  .strict();
 const equipSetSchema = z
   .object({ kind: kindSchema, companion_id: uuid, item_id: z.string().min(1).max(100) })
   .strict();
@@ -256,7 +254,7 @@ async function state(db: DB, userId: string, characterId: string) {
       legacy_options: legacyOptions(animal),
       equipped: await equipment(db, animal),
       slots: companionSlots(animal.kind, animal.species_id),
-      ...(animal.kind === 'mount'
+      ...(supportsArmorParts(animal.kind, animal.species_id)
         ? {
             barding_parts: (
               await db.query(
@@ -290,12 +288,18 @@ async function state(db: DB, userId: string, characterId: string) {
 }
 export async function enqueueCompanionArt(userId: string, characterId: string, input: unknown) {
   const data = artSchema.parse(input);
-  const bardingParts =
-    data.kind === 'mount'
-      ? BARDING_PARTS.filter((part) => (data.barding_parts ?? BARDING_PARTS).includes(part))
-      : null;
   return transaction(async (db) => {
     await lockOwner(db, userId, characterId);
+    const animal = await companion(db, characterId, data.kind, data.companion_id);
+    const coverage = supportsArmorParts(animal.kind, animal.species_id);
+    if (!coverage && data.barding_parts !== undefined)
+      throw new AppError(
+        400,
+        'A seleção de partes da armadura está disponível para montarias e cães.',
+      );
+    const bardingParts = coverage
+      ? BARDING_PARTS.filter((part) => (data.barding_parts ?? BARDING_PARTS).includes(part))
+      : null;
     const previous = (
       await db.query(
         'SELECT id,status,wardrobe_id AS companion_id,kind,equipment_revision,character_id,barding_parts FROM companion_art_jobs WHERE user_id=$1 AND idempotency_key=$2',
@@ -307,14 +311,13 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
         previous.character_id !== characterId ||
         previous.companion_id !== data.companion_id ||
         previous.kind !== data.kind ||
-        (data.kind === 'mount' &&
+        (coverage &&
           JSON.stringify(previous.barding_parts ?? BARDING_PARTS) !== JSON.stringify(bardingParts))
       )
         throw new AppError(409, 'Este pedido já corresponde a outro companheiro.');
       return previous;
     }
-    const animal = await companion(db, characterId, data.kind, data.companion_id),
-      wardrobe = await ensureWardrobe(db, animal);
+    const wardrobe = await ensureWardrobe(db, animal);
     if (!(await workerAvailable(db)))
       throw new AppError(
         503,
@@ -339,6 +342,13 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
       equipped = await equipment(db, animal),
       refs = [];
     for (const item of equipped) {
+      if (
+        animal.kind === 'pet' &&
+        animal.species_id === 'dog' &&
+        bardingParts &&
+        !visibleDogArmor(item.item_id, item.slot, bardingParts)
+      )
+        continue;
       const ref = equipmentArtReference(item);
       if (!ref.path)
         throw new AppError(400, `O item ${item.name} ainda não possui imagem de referência.`);

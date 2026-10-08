@@ -1,6 +1,6 @@
 import { FlashMessage } from './FlashMessage';
 import { useEffect, useId, useRef, useState, type DragEvent } from 'react';
-import { Sword, Shield, Package, ArrowUpRight, ArrowDownUp, Archive } from 'lucide-react';
+import { Sword, Shield, Package, ArrowUpRight, ArrowDownUp, Archive, Trash2 } from 'lucide-react';
 import type { Character, Details, Item, StorageState } from './types';
 import {
   compatibleSlots,
@@ -45,12 +45,14 @@ function InventorySlot({
   busy,
   onDrag,
   onTransfer,
+  onDiscard,
 }: {
   item: Item;
   place: Place;
   busy: boolean;
   onDrag: (value: { id: string; from: Place } | null) => void;
   onTransfer: (id: string, from: Place, single: boolean) => void;
+  onDiscard: (id: string, from: Place) => void;
 }) {
   const id = useId();
   const trigger = useRef<HTMLButtonElement>(null);
@@ -185,6 +187,16 @@ function InventorySlot({
           <ArrowDownUp size={15} />
           {place === 'vault' ? 'Levar para a mochila' : 'Guardar no cofre'}
         </button>
+        <button
+          className="button outline loot-delete-button"
+          disabled={busy}
+          onClick={() => {
+            hide();
+            onDiscard(item.id, place);
+          }}
+        >
+          <Trash2 size={15} /> Excluir item
+        </button>
       </div>
     </div>
   );
@@ -197,6 +209,7 @@ function StoragePanel({
   dragged,
   onDrag,
   onTransfer,
+  onDiscard,
   onShop,
 }: {
   place: Place;
@@ -205,6 +218,7 @@ function StoragePanel({
   dragged: { id: string; from: Place } | null;
   onDrag: (value: { id: string; from: Place } | null) => void;
   onTransfer: (id: string, from: Place, single: boolean) => void;
+  onDiscard: (id: string, from: Place) => void;
   onShop?: () => void;
 }) {
   const [over, setOver] = useState(false);
@@ -245,7 +259,8 @@ function StoragePanel({
                 : 'Exclusiva deste personagem. Estes são os itens levados à missão. O peso considera todas as unidades em libras; equipamentos iniciais registrados na ficha permanecem em História e equipamento.'}{' '}
               Arraste um item para o outro inventário ou use o botão de transferência. Sem Shift,
               transfere a pilha inteira; com Shift, apenas uma unidade. Espaços vazios não limitam a
-              capacidade.
+              capacidade. Nos detalhes do item, Excluir item permite remover unidades livres.
+              Desequipe primeiro para excluir uma unidade em uso.
             </SheetHelp>
           </h2>
           <p className="loot-storage-caption">
@@ -273,6 +288,7 @@ function StoragePanel({
             busy={busy}
             onDrag={onDrag}
             onTransfer={onTransfer}
+            onDiscard={onDiscard}
           />
         ))}
         {Array.from(
@@ -314,6 +330,7 @@ export function Inventory({
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
   const [transfer, setTransfer] = useState<Transfer | null>(null);
+  const [discard, setDiscard] = useState<Transfer | null>(null);
   const [dragged, setDragged] = useState<{ id: string; from: Place } | null>(null);
   const mounted = useRef(true),
     inFlight = useRef(false);
@@ -362,6 +379,44 @@ export function Inventory({
       };
       setTransfer(order);
       void submitTransfer(order);
+    }
+  }
+  function requestDiscard(id: string, from: Place) {
+    if (!storage || inFlight.current) return;
+    const item = (from === 'backpack' ? availableInventory(storage) : storage.vault).find(
+      (item) => item.id === id,
+    );
+    if (!item) return;
+    setTransfer(null);
+    setError('');
+    setDiscard({ item, from, quantity: 1, key: crypto.randomUUID() });
+  }
+  async function submitDiscard() {
+    if (!discard || inFlight.current) return;
+    inFlight.current = true;
+    setBusy(true);
+    setError('');
+    try {
+      const value = await post<Storage>('/inventory/discards', {
+        character_id: character.id,
+        item_id: discard.item.id,
+        source: discard.from,
+        quantity: discard.quantity,
+        idempotency_key: discard.key,
+      });
+      if (mounted.current) {
+        setStorage(value);
+        onInventoryChange(value.inventory);
+        setDiscard(null);
+        setNotice(
+          `${discard.quantity} × ${inventoryPieceName(discard.item)} excluído${discard.quantity === 1 ? '' : 's'}.`,
+        );
+      }
+    } catch (e) {
+      if (mounted.current) setError((e as Error).message);
+    } finally {
+      inFlight.current = false;
+      if (mounted.current) setBusy(false);
     }
   }
   function dropEquipment(slot: EquipmentSlot, id: string, from: Place) {
@@ -481,7 +536,7 @@ export function Inventory({
   return (
     <div className="loot-inventory">
       {notice && <FlashMessage kind="info">{notice}</FlashMessage>}
-      {error && !transfer && <FlashMessage>{error}</FlashMessage>}
+      {error && !transfer && !discard && <FlashMessage>{error}</FlashMessage>}
       <section className="loot-companions" aria-label="Companheiros no acampamento">
         <MountSelection key={'mounts-' + character.id} characterId={character.id} />
         <PetCollection key={'pets-' + character.id} characterId={character.id} />
@@ -567,6 +622,7 @@ export function Inventory({
           dragged={dragged}
           onDrag={setDragged}
           onTransfer={requestTransfer}
+          onDiscard={requestDiscard}
           onShop={onShop}
         />
       </div>
@@ -577,6 +633,7 @@ export function Inventory({
         dragged={dragged}
         onDrag={setDragged}
         onTransfer={requestTransfer}
+        onDiscard={requestDiscard}
       />
       {details.history.length > 0 && (
         <details className="loot-history">
@@ -597,6 +654,69 @@ export function Inventory({
             ))}
           </ul>
         </details>
+      )}
+      {discard && (
+        <Modal
+          title="Excluir item"
+          close={() => {
+            if (!busy) {
+              setDiscard(null);
+              setError('');
+            }
+          }}
+        >
+          <form
+            className="stack"
+            onSubmit={(event) => {
+              event.preventDefault();
+              void submitDiscard();
+            }}
+          >
+            <p>
+              <strong>{inventoryPieceName(discard.item)}</strong> · {discard.item.quantity}{' '}
+              disponíveis
+              {discard.from === 'backpack' ? ' na mochila' : ' no cofre'}
+            </p>
+            <label>
+              Quantidade a excluir
+              <input
+                type="number"
+                min={1}
+                max={discard.item.quantity}
+                step={1}
+                required
+                disabled={busy}
+                value={discard.quantity}
+                onChange={(event) =>
+                  setDiscard({
+                    ...discard,
+                    quantity: Number(event.target.value),
+                    key: crypto.randomUUID(),
+                  })
+                }
+              />
+            </label>
+            <p>A exclusão é permanente e não devolve ouro.</p>
+            {error && <FlashMessage>{error}</FlashMessage>}
+            <div className="sheet-actions">
+              <button className="button outline loot-delete-button" disabled={busy} type="submit">
+                <Trash2 size={15} /> {busy ? 'Excluindo…' : 'Excluir'}
+              </button>
+              <button
+                className="button outline"
+                type="button"
+                disabled={busy}
+                onClick={() => {
+                  setDiscard(null);
+                  setError('');
+                  void reload();
+                }}
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </Modal>
       )}
       {transfer && error && (
         <Modal

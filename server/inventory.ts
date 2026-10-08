@@ -33,6 +33,15 @@ const transferSchema = z
     idempotency_key: uuid,
   })
   .strict();
+const discardSchema = z
+  .object({
+    character_id: uuid,
+    item_id: z.string().min(1).max(100),
+    source: z.enum(['backpack', 'vault']),
+    quantity: z.number().int().min(1).max(2147483647),
+    idempotency_key: uuid,
+  })
+  .strict();
 
 async function lockStorage(client: PoolClient, userId: string, characterId: string) {
   // Same lock order as character deletion: account, then character. Purchases lock character.
@@ -71,6 +80,68 @@ async function storageState(client: PoolClient, userId: string, characterId: str
 
 export function inventoryRouter() {
   const router = Router();
+  router.post('/inventory/discards', async (req, res) => {
+    const data = discardSchema.parse(req.body),
+      userId = res.locals.user.id;
+    const result = await transaction(async (client) => {
+      await lockStorage(client, userId, data.character_id);
+      const {
+        rows: [previous],
+      } = await client.query(
+        'SELECT * FROM inventory_discards WHERE user_id=$1 AND idempotency_key=$2',
+        [userId, data.idempotency_key],
+      );
+      if (previous) {
+        if (
+          previous.character_id !== data.character_id ||
+          previous.item_id !== data.item_id ||
+          previous.source !== data.source ||
+          previous.quantity !== data.quantity
+        )
+          throw new AppError(409, 'Esta exclusão já foi usada para outro pedido.');
+        return { ...(await storageState(client, userId, data.character_id)), replayed: true };
+      }
+      const source =
+        data.source === 'backpack'
+          ? { table: 'inventory', column: 'character_id', owner: data.character_id }
+          : { table: 'account_vault', column: 'user_id', owner: userId };
+      const {
+        rows: [stock],
+      } = await client.query(
+        `SELECT quantity FROM ${source.table} WHERE ${source.column}=$1 AND item_id=$2 FOR UPDATE`,
+        [source.owner, data.item_id],
+      );
+      if (!stock || stock.quantity < data.quantity)
+        throw new AppError(
+          409,
+          'Quantidade indisponível. Atualize o inventário e tente novamente.',
+        );
+      if (data.source === 'backpack') {
+        const used = await allocatedCopies(client, data.character_id, data.item_id);
+        if (stock.quantity - used < data.quantity)
+          throw new AppError(
+            409,
+            'Desequipe o item do personagem, montaria ou mascote antes de excluí-lo.',
+          );
+      }
+      if (stock.quantity === data.quantity)
+        await client.query(`DELETE FROM ${source.table} WHERE ${source.column}=$1 AND item_id=$2`, [
+          source.owner,
+          data.item_id,
+        ]);
+      else
+        await client.query(
+          `UPDATE ${source.table} SET quantity=quantity-$3 WHERE ${source.column}=$1 AND item_id=$2`,
+          [source.owner, data.item_id, data.quantity],
+        );
+      await client.query(
+        'INSERT INTO inventory_discards(user_id,character_id,item_id,source,quantity,idempotency_key) VALUES($1,$2,$3,$4,$5,$6)',
+        [userId, data.character_id, data.item_id, data.source, data.quantity, data.idempotency_key],
+      );
+      return { ...(await storageState(client, userId, data.character_id)), replayed: false };
+    });
+    res.status(result.replayed ? 200 : 201).json(result);
+  });
   router.post('/inventory/equipment-set', async (req, res) => {
     const data = equipSetSchema.parse(req.body),
       userId = res.locals.user.id;

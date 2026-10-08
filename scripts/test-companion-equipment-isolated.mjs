@@ -20,6 +20,8 @@ try {
         '--test-concurrency=1',
         'tests/companion-equipment.test.ts',
         'tests/companion-illustrator.test.ts',
+        'tests/dog-armor-parts.test.ts',
+        'tests/whole-mount-armor.test.ts',
       ],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },

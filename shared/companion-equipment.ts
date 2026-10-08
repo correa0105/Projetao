@@ -28,6 +28,28 @@ export const BARDING_PART_LABELS: Record<BardingPart, string> = {
 export function isBarding(itemId: string) {
   return /^(?:legacy:)?barding-/.test(itemId);
 }
+export function supportsArmorParts(kind: CompanionKind, speciesId: string) {
+  return kind === 'mount' || speciesId === 'dog';
+}
+export function armorPartLabel(part: BardingPart, kind: CompanionKind) {
+  return part === 'head' && kind === 'pet' ? 'Proteção da cabeça' : BARDING_PART_LABELS[part];
+}
+export function visibleDogArmor(
+  itemId: string,
+  slot: CompanionSlot,
+  parts: readonly BardingPart[],
+) {
+  if (!itemId.startsWith('pet-armor-')) return true;
+  if (slot === 'armor') return parts.length > 0;
+  const regions: Partial<Record<CompanionSlot, BardingPart[]>> = {
+    head: ['head'],
+    shoulders: ['neck', 'chest', 'body'],
+    bracers: ['front_legs'],
+    legs: ['hind_legs'],
+    feet: ['front_legs', 'hind_legs'],
+  };
+  return (regions[slot] || []).some((part) => parts.includes(part));
+}
 export const COMPANION_SLOT_LABELS: Record<CompanionSlot, string> = {
   head: 'Cabeça',
   armor: 'Armadura / barda',

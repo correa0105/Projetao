@@ -357,6 +357,13 @@
 .loot-transfer-button {
   margin-top: 18px;
 }
+.loot-delete-button {
+  color: #d9aaa2;
+  border-color: #966b62;
+}
+.loot-item-balloon .loot-delete-button {
+  margin-top: 8px;
+}
 :root .loot-storage .loot-storage-caption {
   font-size: 11px;
   color: #bdb19a;

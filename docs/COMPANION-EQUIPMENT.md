@@ -43,6 +43,16 @@ inteira, adaptada à anatomia e ao material, sem limitar o desenho ao peitoral;
 oclusões naturais são aceitas. A base permanece a imagem sem equipamentos.
 Imagens anteriores só mudam após uma nova geração válida.
 
+Pedido posterior de 08/10 estende a escolha de regiões ao **cachorro**:
+**Partes da armadura na imagem** oferece cabeça, pescoço, peito, tronco/flancos,
+patas dianteiras e traseiras antes de Vestir. Todas marcadas por padrão; a última
+escolha fica salva por cão. Componentes de proteção desmarcados não são anexados
+como peças a vestir; a referência principal fornece materiais para as regiões
+marcadas. Manto, bandana, coleira e outros acessórios equipados seguem separados.
+Com todas desmarcadas, a nova arte conserva apenas os acessórios escolhidos.
+Essa escolha visual não altera unidades, reservas, ouro ou atributos. Demais
+espécies mantêm seu fluxo e não recebem controles de patas de cachorro.
+
 Migration 078 arquiva o estoque/reservas antigos das bardas, consolida componentes
 por dono entre mochilas/cofre sem multiplicar unidades, preserva cópias inteiras,
 desativa filhos e avança a revisão das montarias afetadas. As compras, preços,
@@ -67,8 +77,9 @@ referências e imagens privadas em PostgreSQL. As rotas são:
   IDs `legacy:...` só são aceitos para bens já comprados daquele animal.
 - `POST /api/companions/:characterId/art`: `{kind, companion_id, idempotency_key}`,
   com `barding_parts?: ('head'|'neck'|'chest'|'body'|'front_legs'|'hind_legs')[]`
-  para montarias. Omissão equivale às seis regiões, array vazio não desenha barda;
-  valores desconhecidos/duplicados ou partes enviadas para mascote são recusados.
+  para montarias e cães. Omissão equivale às seis regiões; array vazio não desenha
+  essa armadura. Valores desconhecidos/duplicados ou partes enviadas para outras
+  espécies de mascote são recusados.
   Reutilizar a chave com uma seleção diferente resulta em conflito.
 - `GET /api/companions/:characterId/art/jobs`: pedidos e disponibilidade.
 - `GET /api/companions/:characterId/:kind/:companionId/base-image`: base privada.
