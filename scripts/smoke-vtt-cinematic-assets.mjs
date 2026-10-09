@@ -20,6 +20,8 @@ import {physicalPropsReady} from '/src/vtt-effects-physical.ts';
 import {animatedAssets} from '/shared/vtt-animated-assets.ts';
 import {drawAnimatedAsset} from '/src/vtt-animated-assets.ts';
 import {nativeFlowCount,nativeFlowCacheSize,nativeArcCacheSize} from '/src/vtt-effects-native-flow.ts';
+import {temporalPageCount,temporalTileCount} from '/src/vtt-effects-temporal.ts';
+import {rebuiltEffectKinds} from '/src/vtt-effects-rebuilt.ts';
 await Promise.all([effectMaterialsReady,physicalPropsReady]);
 const art=new Image();art.src='` +
     (process.env.VTT_EFFECT_REVIEW_TOKEN
@@ -44,9 +46,9 @@ function drawAsset(a,time=1100,reduced=false,enabled=true,can=canvas()){
  const c=can.getContext('2d');c.clearRect(0,0,420,420);c.save();c.translate(210,210);drawAnimatedAsset(c,{...token,id:a.id,animatedAsset:{id:a.id,speed:1,intensity:.8,playing:true}},images.get(a.id),time,reduced,enabled);c.restore();return metric(can);
 }
 function sheet(rows,kind){const grid=document.getElementById('grid');grid.innerHTML='';for(const row of rows){const can=canvas(),fig=document.createElement('figure'),cap=document.createElement('figcaption');cap.textContent=row.name;fig.append(can,cap);grid.append(fig);if(kind==='effect')drawEffect(row,1.1,true,can);else {const c=can.getContext('2d');c.fillStyle='#8c7a59';c.fillRect(0,0,420,420);const temp=canvas();drawAsset(row,1600,false,true,temp);c.drawImage(temp,0,0);}}}
-window.assetQA={measure(){return{native:nativeFlowCount(),effects:effectLibrary.filter(e=>e.kind!=='death').map(e=>({id:e.kind,first:drawEffect(e),next:drawEffect(e,1.7)})),assets:animatedAssets.map(a=>({id:a.id,first:drawAsset(a),next:drawAsset(a,2300),reduced:drawAsset(a,1100,true),reducedNext:drawAsset(a,2300,true),off:drawAsset(a,1100,false,false),offNext:drawAsset(a,2300,false,false)})),cache:nativeFlowCacheSize()};},
+window.assetQA={measure(){return{native:nativeFlowCount(),temporalPages:temporalPageCount(),effects:effectLibrary.filter(e=>e.kind!=='death').map(e=>({id:e.kind,first:drawEffect(e),next:drawEffect(e,1.7)})),assets:animatedAssets.map(a=>({id:a.id,first:drawAsset(a),next:drawAsset(a,2300),reduced:drawAsset(a,1100,true),reducedNext:drawAsset(a,2300,true),off:drawAsset(a,1100,false,false),offNext:drawAsset(a,2300,false,false)})),cache:nativeFlowCacheSize(),temporalTiles:temporalTileCount()};},
 sheet(start,count){sheet(effectLibrary.slice(start,start+count),'effect');},assets(){sheet(animatedAssets,'asset');},
-focused(){sheet(effectLibrary.filter(e=>['vines','leaves','thorn-cage','fear','spectral-chains','soul-flames','fire','ember-comet','fire-surge'].includes(e.kind)),'effect');},
+focused(start=0){sheet(effectLibrary.filter(e=>rebuiltEffectKinds.has(e.kind)||e.kind==='lava').slice(start,start+10),'effect');},
 petrify(){const model=effectLibrary.find(e=>e.kind==='petrify');return{low:drawEffect(model,4,false,undefined,.25),high:drawEffect(model,4,false,undefined,1)};}};
 </script></body></html>`,
 );
@@ -64,6 +66,8 @@ try {
   await page.waitForLoadState('networkidle');
   const data = await page.evaluate(() => window.assetQA.measure());
   expect(data.native).toBe(9);
+  expect(data.temporalPages).toBe(21);
+  expect(data.temporalTiles).toBeLessThanOrEqual(7);
   expect(data.cache).toBeLessThanOrEqual(32);
   expect(
     await page.evaluate(() =>
@@ -89,8 +93,12 @@ try {
       .locator('#grid')
       .screenshot({ path: 'test-results/vtt-cinematic-effects-' + start + '.png' });
   }
-  await page.evaluate(() => window.assetQA.focused());
-  await page.locator('#grid').screenshot({ path: 'test-results/vtt-cinematic-refinements.png' });
+  for (const start of [0, 10, 20]) {
+    await page.evaluate((start) => window.assetQA.focused(start), start);
+    await page
+      .locator('#grid')
+      .screenshot({ path: `test-results/vtt-rebuilt-effects-${start}.png` });
+  }
   await page.evaluate(() => window.assetQA.assets());
   await page.locator('#grid').screenshot({ path: 'test-results/vtt-cinematic-environments.png' });
   expect(errors).toEqual([]);

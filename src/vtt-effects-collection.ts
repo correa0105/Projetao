@@ -4,6 +4,7 @@ import { materialSprite } from './vtt-effects-materials';
 import { alpha, fract, glow, luminousStroke, star, tau, tint } from './vtt-effects-primitives';
 import { discharge } from './vtt-effects-overhead-magic';
 import { curseFlow, physicalProp } from './vtt-effects-physical';
+import { drawLavaFissures } from './vtt-lava-fissures';
 
 type Random = (index: number) => number;
 const models = new Set([
@@ -284,17 +285,7 @@ export function drawEffectCollection(
     } else if (e.kind === 'lava') {
       if (!front) {
         materialSprite(c, '#ed7836', 'flame', 0, 0, 215, -t * 0.03, t * 0.3, 0.5);
-        for (let i = 0; i < n(14); i++) {
-          const a = (i / 14) * tau;
-          c.beginPath();
-          const p = polar(18, a);
-          c.moveTo(p.x, p.y);
-          for (let k = 1; k < 5; k++) {
-            const q = polar(18 + k * 18, a + (random(i + k * 17) - 0.5) * 0.25);
-            c.lineTo(q.x, q.y);
-          }
-          luminousStroke(c, color, 1.2, 0.55 + Math.sin(t * 2 + i) * 0.15);
-        }
+        drawLavaFissures(c, color, t, random);
       } else
         for (let i = 0; i < n(5); i++) {
           const p = polar(50, random(i) * tau);

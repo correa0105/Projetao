@@ -1,6 +1,5 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import type { VttToken } from '../shared/vtt';
-import { startPortraitSmoke } from './vtt-portrait-smoke';
 import './vtt-selection-portrait.css';
 
 export function VttSelectionPortrait({
@@ -15,10 +14,8 @@ export function VttSelectionPortrait({
   const id = useId().replaceAll(':', ''),
     [portraitImage, setPortraitImage] = useState<HTMLImageElement | null>(null),
     [reduced, setReduced] = useState(false),
-    [flowing, setFlowing] = useState(false),
     [frame, setFrame] = useState<{ width: number; bottom: number }>(),
-    figure = useRef<HTMLElement>(null),
-    canvas = useRef<HTMLCanvasElement>(null);
+    figure = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
     const stage = figure.current?.parentElement;
     if (!stage) return;
@@ -70,28 +67,6 @@ export function VttSelectionPortrait({
     };
   }, [roomId, token.id, token.characterId, token.image]);
   const animated = visualEffects && !reduced;
-  useEffect(() => {
-    setFlowing(false);
-    if (!animated || !portraitImage || !canvas.current) return;
-    let live = true;
-    let stop: (() => void) | null = null;
-    const surface = canvas.current;
-    const lost = () => setFlowing(false);
-    surface.addEventListener('portraitflowlost', lost);
-    const smoke = new Image();
-    smoke.onload = () => {
-      if (!live || !canvas.current) return;
-      stop = startPortraitSmoke(canvas.current, portraitImage, smoke);
-      setFlowing(!!stop);
-    };
-    smoke.src = '/vtt/effects/portrait-wisp-v2.webp';
-    return () => {
-      live = false;
-      smoke.onload = null;
-      surface.removeEventListener('portraitflowlost', lost);
-      stop?.();
-    };
-  }, [animated, portraitImage]);
   if (!portraitImage) return null;
   return (
     <figure
@@ -102,7 +77,6 @@ export function VttSelectionPortrait({
       data-token-id={token.id}
       data-animated={animated}
       data-effects={visualEffects}
-      data-flowing={flowing}
     >
       <svg viewBox="0 0 224 224" aria-hidden="true">
         <defs>
@@ -149,45 +123,8 @@ export function VttSelectionPortrait({
             preserveAspectRatio="xMidYMin meet"
             mask={'url(#' + id + 'mask)'}
           />
-          {visualEffects && (
-            <g className="vtt-portrait-smoke" opacity=".24">
-              <image
-                href="/vtt/effects/portrait-wisp-v2.webp"
-                x="22"
-                y="75"
-                width="68"
-                height="112"
-                transform="rotate(-19 56 150)"
-              />
-              <image
-                href="/vtt/effects/portrait-wisp-v2.webp"
-                x="129"
-                y="84"
-                width="66"
-                height="114"
-                transform="rotate(23 164 151)"
-              />
-              <image
-                href="/vtt/effects/portrait-wisp-v2.webp"
-                x="51"
-                y="120"
-                width="67"
-                height="99"
-                transform="rotate(-35 84 183)"
-              />
-              <image
-                href="/vtt/effects/portrait-wisp-v2.webp"
-                x="105"
-                y="124"
-                width="67"
-                height="93"
-                transform="rotate(31 138 182)"
-              />
-            </g>
-          )}
         </g>
       </svg>
-      <canvas ref={canvas} className="vtt-portrait-flow" aria-hidden="true" />
       <figcaption>{token.name}</figcaption>
     </figure>
   );

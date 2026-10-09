@@ -32,7 +32,6 @@ const fixture = process.env.PORTRAIT_FRAME_FIXTURE
     )
       .png()
       .toBuffer();
-const vapor = await readFile('public/vtt/effects/portrait-wisp-v2.webp');
 await mkdir('test-results', { recursive: true });
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const errors = [];
@@ -59,8 +58,6 @@ try {
       const url = route.request().url();
       if (url.includes('/portrait?'))
         return route.fulfill({ contentType: 'image/png', body: fixture });
-      if (url.endsWith('/portrait-wisp-v2.webp'))
-        return route.fulfill({ contentType: 'image/webp', body: vapor });
       return route.fulfill({
         contentType: 'text/html',
         body: '<html><body><div id="root" class="vtt-stage" style="height:850px;width:calc(100vw - 32px)"></div></body></html>',
@@ -71,7 +68,9 @@ try {
     await page.addScriptTag({ content: outputFiles[0].text });
     const figure = page.locator('.vtt-selection-portrait');
     await expect(figure).toBeVisible();
-    await expect(figure).toHaveAttribute('data-flowing', String(!fallback));
+    await expect(figure.locator('canvas')).toHaveCount(0);
+    await expect(figure.locator('.vtt-portrait-smoke')).toHaveCount(0);
+    await expect(figure.locator('svg image')).toHaveCount(1);
     await figure.evaluate((el) =>
       Promise.all(el.getAnimations().map((a) => a.finished.catch(() => {}))),
     );
@@ -94,18 +93,8 @@ try {
           return portrait.y >= stage.y && portrait.y + portrait.height <= stage.y + stage.height;
         })
         .toBe(true);
-      const svg = page.locator('.vtt-selection-portrait svg'),
-        canvas = figure.locator('canvas');
+      const svg = page.locator('.vtt-selection-portrait svg');
       await expect(svg).toBeVisible();
-      if (!fallback) {
-        const difference = await figure.evaluate((el) => {
-          const a = el.querySelector('svg').getBoundingClientRect(),
-            b = el.querySelector('canvas').getBoundingClientRect();
-          return { y: Math.abs(a.y - b.y), height: Math.abs(a.height - b.height) };
-        });
-        expect(difference.y).toBeLessThan(1);
-        expect(difference.height).toBeLessThan(1);
-      } else await expect(canvas).toBeHidden();
       if (!process.env.PORTRAIT_FRAME_FIXTURE) {
         const { data, info } = await sharp(await svg.screenshot())
           .ensureAlpha()
@@ -122,20 +111,20 @@ try {
     }
     const before = await figure.locator('svg').boundingBox();
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await expect(figure).toHaveAttribute('data-flowing', 'false');
-    await expect(figure.locator('canvas')).toBeHidden();
+    await expect(figure).toHaveAttribute('data-animated', 'false');
+    await expect(figure.locator('canvas')).toHaveCount(0);
     expect(await figure.locator('svg').boundingBox()).toEqual(before);
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.evaluate(() => window.setPortraitEffects(false));
     await expect(figure).toHaveAttribute('data-effects', 'false');
-    await expect(figure.locator('canvas')).toBeHidden();
+    await expect(figure.locator('canvas')).toHaveCount(0);
     expect(await figure.locator('svg').boundingBox()).toEqual(before);
     if (scale === 1) await figure.screenshot({ path: 'test-results/portrait-frame-static.png' });
     await context.close();
   }
   expect(errors).toEqual([]);
   console.log(
-    'PASS face remains visible; portrait fits six window sizes; vapor overlays the same frame; reduced motion, disabled effects and missing WebGL keep one stable portrait.',
+    'PASS smoke removed from lateral portrait; original face and frame preserved at six window sizes and three display scales; reduced motion and effects toggle keep the same image.',
   );
 } finally {
   await browser.close();

@@ -1,0 +1,94 @@
+{
+  "generator": "scripts/build-vtt-temporal-fields.py",
+  "provenance": "Original deterministic procedural fields; no JB2A media incorporated.",
+  "size": 256,
+  "frames": 48,
+  "fps": 24,
+  "gutter": 2,
+  "pages": [
+    {
+      "path": "public/vtt/temporal-20261009/ring-0.webp",
+      "sha256": "5282994726d66fb3cbfd2abc6b71c95a84f15d0038d795d3632c3a6e6942a8a1"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/ring-1.webp",
+      "sha256": "69803a2ef7776f4146ee9758fa009eb2448e8998dcd36649e49e35311cfe27dc"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/ring-2.webp",
+      "sha256": "8b63f7292618ec0a504f4a2ca4478ed80bd8f4f194f3effa07a2696eb29bf9c1"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/wave-0.webp",
+      "sha256": "5648b800b7865209f8245cc7a77fd3aa424c427bf6fc38543925068fedba4d4a"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/wave-1.webp",
+      "sha256": "7114019fe1d6afdc62e8e3c82bd28b27d3cf16a9305d58522097e5126e2301fb"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/wave-2.webp",
+      "sha256": "378c749805698fd3f58a49ec0c3524b446c2f01e6a846549a87d95045e65aa62"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/geyser-0.webp",
+      "sha256": "c079767ff3c4faa63d5635c2615296ff62e73a072bbc753dca83b9a7670369d7"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/geyser-1.webp",
+      "sha256": "7244de28f7a2d95aa263e16088593fed092be6407d2c08b5119c1d60dd92b444"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/geyser-2.webp",
+      "sha256": "2aec5131beba8a0f04732ec657384f2c8f42b44aedc50acfb15cb4c473fb7731"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/spiral-0.webp",
+      "sha256": "6c453615200943ac93a1d07ab055a3b85c8964539208e63dcdcdd9589aa81a76"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/spiral-1.webp",
+      "sha256": "cb5255551e2cc5d325f582dcef05adedbc9a7e51f170631b4e0bb50b46aa9393"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/spiral-2.webp",
+      "sha256": "940489d1517872863ae36482db2de08ffb40fc95fa54ee7a3fbd8dc7509151c6"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/tongue-0.webp",
+      "sha256": "5637b15d31a4d51a0ed34909b0febcd08b5a88ef2b834e2a3efc83727cc01245"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/tongue-1.webp",
+      "sha256": "ca986119f0a2d1b39e600922482985e835d64c5e2292c49d51e5f5a33ed6ba4e"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/tongue-2.webp",
+      "sha256": "3cd1b95d5a8733b3b5783f7c7fb2795c13557dfac5910e8a9a74cb7c016b463f"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/vapour-0.webp",
+      "sha256": "e940e8f7d4f11d78197ad3010a1a0cc047a1a5b190e4b3d0f17b797b0fc23d55"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/vapour-1.webp",
+      "sha256": "423a4051686527b2a87a0bd60206745d6156ee498e0246fe6351c7292fc97309"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/vapour-2.webp",
+      "sha256": "4d2b97f9b8f49052af514abb5f8a5725d57b644318caa39219187c1e2b8819cd"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/vortex-0.webp",
+      "sha256": "881b1baad8ddd0272afaaedfd3123febc628fa4a0ebfd8e1b353334c7e6f0636"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/vortex-1.webp",
+      "sha256": "cbf54e66843d378bc09468978d0aaefb6273b64d3fb3f2d60f24276f31db3be3"
+    },
+    {
+      "path": "public/vtt/temporal-20261009/vortex-2.webp",
+      "sha256": "faf0a3a99e008a59cb7ce1b1bc039f4860fdae4c294ffe11238dfc52603c0c8d"
+    }
+  ]
+}

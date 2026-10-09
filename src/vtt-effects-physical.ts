@@ -3,6 +3,8 @@ import { footprintPoint, type EffectFootprint } from './vtt-effect-footprint';
 import { alpha, fract, glow, seededRandom, tau, tint } from './vtt-effects-primitives';
 import { materialSprite } from './vtt-effects-materials';
 import { nativeFlowReady } from './vtt-effects-native-flow';
+import { temporalFieldsReady } from './vtt-effects-temporal';
+import { spectralPilgrimReady } from './vtt-spectral-pilgrim';
 
 export type PhysicalProp =
   | 'rock'
@@ -55,7 +57,12 @@ const originalPhysicalPropsReady = Promise.all(
     }
   }),
 );
-export const physicalPropsReady = Promise.all([originalPhysicalPropsReady, nativeFlowReady]);
+export const physicalPropsReady = Promise.all([
+  originalPhysicalPropsReady,
+  nativeFlowReady,
+  temporalFieldsReady,
+  spectralPilgrimReady,
+]);
 export function physicalProp(
   c: CanvasRenderingContext2D,
   kind: PhysicalProp,
