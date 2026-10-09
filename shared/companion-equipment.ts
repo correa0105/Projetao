@@ -94,6 +94,7 @@ export type CompanionOutfit = {
   legacy_equipment: string[];
   legacy_options: CompanionLegacyOption[];
   equipped: CompanionEquipmentItem[];
+  inventory: CompanionInventoryItem[];
   slots: CompanionSlot[];
   barding_parts?: BardingPart[];
 };

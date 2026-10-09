@@ -687,6 +687,10 @@ export function MapSettings({
                 </select>
               </label>
             </div>
+            <p className="vtt-help">
+              A régua e o arraste com botão direito usam esta distância por quadrado e mostram o
+              percurso em pés (ft).
+            </p>
           </section>
           <section>
             <h3>Grade</h3>

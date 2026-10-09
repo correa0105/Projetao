@@ -26,6 +26,7 @@ import { characterSchema } from '../shared/character-art.js';
 import { characterSheetRouter } from './character-sheet.js';
 import { achievementsRouter } from './achievements.js';
 import { inventoryRouter } from './inventory.js';
+import { inventoryBagsRouter } from './inventory-bags.js';
 import { companionEquipmentRouter } from './companion-equipment.js';
 import { notificationsRouter } from './notifications.js';
 import { stableRouter } from './stable.js';
@@ -215,6 +216,7 @@ export function createApp() {
   app.use('/api', characterArtRouter());
   app.use('/api', characterSheetRouter());
   app.use('/api', inventoryRouter());
+  app.use('/api', inventoryBagsRouter());
   app.use('/api', companionEquipmentRouter());
   app.use('/api', notificationsRouter());
   app.use('/api', shopRouter());

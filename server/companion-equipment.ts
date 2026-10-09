@@ -7,7 +7,12 @@ import sharp from 'sharp';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { normalizeArtImage, artWorkerAvailable } from './character-art.js';
-import { allocatedCopies, companionAllocated } from './companion-inventory.js';
+import {
+  allocatedCopies,
+  companionAllocated,
+  companionBagItems,
+  claimCompanionCopy,
+} from './companion-inventory.js';
 import { armorSetPieces } from './equipment-sets.js';
 import {
   equipmentArtReference,
@@ -93,7 +98,7 @@ async function companion(db: DB, characterId: string, kind: CompanionKind, id: s
     appearance: kind === 'mount' ? animal.coat : animal.appearance,
   };
 }
-async function ensureWardrobe(db: DB, animal: any) {
+export async function ensureWardrobe(db: DB, animal: any) {
   const created = await db.query(
     'INSERT INTO companion_wardrobes(id,character_id,kind,mount_id,pet_id) VALUES($1,$2,$3,$4,$5) ON CONFLICT(id) DO NOTHING RETURNING id',
     [
@@ -256,6 +261,7 @@ async function state(db: DB, userId: string, characterId: string) {
       legacy_equipment: animal.equipment || [],
       legacy_options: legacyOptions(animal),
       equipped: await equipment(db, animal),
+      inventory: await companionBagItems(db, animal.id),
       slots: companionSlots(animal.kind, animal.species_id),
       ...(supportsArmorParts(animal.kind, animal.species_id)
         ? {
@@ -502,6 +508,7 @@ export function companionEquipmentRouter() {
           throw new AppError(400, 'Uma peça não é compatível com a anatomia deste animal.');
         let changed = false;
         for (const piece of pieces) {
+          await claimCompanionCopy(db, characterId, wardrobe.id, piece.id, piece.slot);
           const written = await db.query(
             `INSERT INTO companion_equipment(wardrobe_id,character_id,slot,item_id,legacy_id) VALUES($1,$2,$3,$4,NULL)
           ON CONFLICT(wardrobe_id,slot) DO UPDATE SET item_id=EXCLUDED.item_id,legacy_id=NULL,equipped_at=now()
@@ -575,6 +582,7 @@ export function companionEquipmentRouter() {
               'Todas as unidades deste item já estão equipadas no personagem ou em seus animais.',
             );
           itemId = data.item_id;
+          await claimCompanionCopy(db, characterId, wardrobe.id, itemId, data.slot);
         }
         if ((current?.item_id || null) !== itemId || (current?.legacy_id || null) !== legacyId) {
           if (itemId || legacyId)

@@ -15,9 +15,10 @@ body{margin:0;background:#0b141d;color:#eee4d5;font:14px Georgia}#grid{display:g
 <script type="module">
 import React from 'react';import {createRoot} from 'react-dom/client';
 import {effectLibrary} from '/shared/vtt-effects.ts';import {renderEffect,drawTokenEffects} from '/src/vtt-effects-canvas.ts';
-import {drawDeath} from '/src/vtt-death.ts';import {clearMaterialCache,materialCacheSize,materialBakeCount,materialSprite} from '/src/vtt-effects-materials.ts';import {clearEffectTextureCache,effectTextureCacheSize,plume} from '/src/vtt-effects-primitives.ts';
+import {drawDeath} from '/src/vtt-death.ts';import {effectMaterialsReady,nativeMaterialCount,clearMaterialCache,materialCacheSize,materialBakeCount,materialSprite} from '/src/vtt-effects-materials.ts';import {clearEffectTextureCache,effectTextureCacheSize,plume} from '/src/vtt-effects-primitives.ts';
 import {VttEffects} from '/src/VttEffects.tsx';import '/src/styles.css';import '/src/theme.css';import '/src/vtt.css';
 const image=new Image();image.src='data:image/webp;base64,${tokenArt}';await image.decode();
+await effectMaterialsReady;if(nativeMaterialCount()!==3)throw Error('Original material assets must load');
 const characterImage=new Image();characterImage.src='data:image/png;base64,${characterArt}';await characterImage.decode();
 const sizes=[[32,32],[74,115],[130,65],[160,160]];
 const id='55555555-5555-4555-8555-555555555555';
@@ -199,13 +200,15 @@ try {
     await expect(library.locator('.vtt-effect-card')).toHaveCount(11);
     await library.getByRole('button', { name: 'Todos', exact: true }).click();
     await library.getByRole('button', { name: 'Criar efeito · Relâmpagos', exact: true }).click();
-    await expect(menu.getByLabel('Nome do efeito', { exact: true })).toBeFocused();
-    await expect(menu.getByLabel('Modelo do efeito')).toHaveValue('lightning');
+    await expect(menu.getByLabel('Nome do efeito', { exact: true })).toHaveValue('Relâmpagos');
+    await expect(menu.getByRole('form', { name: 'Editor de efeito' })).toBeVisible();
+    await expect(menu.getByLabel('Cor do efeito')).toHaveValue('#96beff');
+    await library.getByRole('button', { name: 'Criar efeito · Relâmpagos', exact: true }).hover();
     await expect.poll(() => page.evaluate(() => window.fxTest.pending())).toBeGreaterThan(0);
     await page.screenshot({ path: 'test-results/vtt-effects-library-editor-' + width + '.png' });
     expect(
       await menu
-        .locator('.vtt-effects-editor-preview')
+        .getByRole('form', { name: 'Editor de efeito' })
         .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
     ).toBe(true);
     const checkbox = await menu.getByLabel('Efeito infinito').boundingBox();

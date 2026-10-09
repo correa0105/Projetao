@@ -1,3 +1,4 @@
+import { effectMaterialsReady } from './vtt-effects-materials';
 import {
   useCallback,
   useEffect,
@@ -74,6 +75,7 @@ import {
   newToken,
   snapPoint,
   distance,
+  rulerLabel,
   conditions,
   blockingWalls,
   activateScene,
@@ -128,6 +130,15 @@ import { monsterArt } from '../shared/vtt-monster-art';
 import { hpCommand } from '../shared/vtt-hp';
 import { lassoSelection } from '../shared/vtt-selection';
 import { movementBlocked } from '../shared/vtt-movement';
+import { attachmentMovementError } from '../shared/vtt-movement';
+import {
+  attachmentError,
+  attachmentRoot,
+  attachmentUnavailable,
+  syncAttachmentPositions,
+  translateAttachmentGroup,
+} from '../shared/vtt-attachments';
+import { Link2 } from 'lucide-react';
 import { VttHpControl } from './VttHpControl';
 import { VttBossBars } from './VttBossBars';
 import { MapLibrary, MapSettings } from './VttMaps';
@@ -139,6 +150,7 @@ type Tool =
   | 'lasso'
   | 'pan'
   | 'ruler'
+  | 'attach'
   | 'pen'
   | 'rect'
   | 'circle'
@@ -207,6 +219,7 @@ const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
   { id: 'select', name: 'Selecionar (V)', icon: MousePointer2 },
   { id: 'lasso', name: 'Seleção livre (L)', icon: LassoSelect, gm: true },
   { id: 'ruler', name: 'Régua (R)', icon: Ruler },
+  { id: 'attach', name: 'Vincular sobre outro token', icon: Link2 },
   { id: 'ping', name: 'Sinalizar ponto', icon: ArrowDown },
   { id: 'pen', name: 'Desenhar (P)', icon: Pencil, gm: true },
   { id: 'rect', name: 'Retângulo', icon: Square, gm: true },
@@ -410,11 +423,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       additive?: boolean;
       baseSelection?: string[];
       path?: Point[];
+      measured?: boolean;
+      moved?: boolean;
     } | null>(null),
     focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
     focusFrame = useRef(0),
     contextRef = useRef<HTMLDivElement>(null);
   const contextDrag = useRef<{ id: number; dx: number; dy: number } | null>(null);
+  const suppressContextUntil = useRef(0);
   const music = useMusicInterlude();
   const sounds = useVttSounds(state?.id),
     soundQueue = useRef(Promise.resolve());
@@ -609,7 +625,80 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     setDoc(next);
   }
   function editScene(fn: (s: VttScene) => void, remember = true) {
-    edit((d) => fn(d.scenes.find((s) => s.id === d.activeScene)!), remember);
+    edit((d) => {
+      const scene = d.scenes.find((s) => s.id === d.activeScene)!;
+      fn(scene);
+      for (const member of scene.tokens)
+        if (member.attachment) {
+          const parent = scene.tokens.find((t) => t.id === member.attachment!.tokenId);
+          if (!parent || member.layer !== 'tokens' || parent.layer !== 'tokens')
+            member.attachment = null;
+        }
+      syncAttachmentPositions(scene);
+    }, remember);
+  }
+  function movementTokens(ids: string[]) {
+    if (!scene) return [];
+    const roots = [
+      ...new Map(
+        scene.tokens
+          .filter((t) => ids.includes(t.id))
+          .map((t) => {
+            const root = attachmentRoot(scene.tokens, t);
+            return [root.id, root] as const;
+          }),
+      ).values(),
+    ].filter(
+      (t) =>
+        !t.locked && (gm || (t.controller === user.id && !attachmentUnavailable(scene.tokens, t))),
+    );
+    return gm ? roots : roots.slice(0, 1);
+  }
+  async function bindToken(parentId: string | null) {
+    if (!state || !token || !canToken || preview || busy) return;
+    const selected = token.id;
+    await save();
+    const next = await post<VttState>(`/vtt/rooms/${state.id}/tokens/${selected}/attachment`, {
+      tokenId: parentId,
+    });
+    receive(next);
+    setSelection([selected]);
+    setContextMenu(null);
+    setTool('select');
+    setAttackTargetId(null);
+  }
+  function moveSelectedToken(to: Point) {
+    if (!scene || !token) return;
+    const root = attachmentRoot(scene.tokens, token);
+    if (!movementTokens([token.id]).length) {
+      setNotice(
+        'O movimento pertence ao token de apoio, que está bloqueado ou sob outro controle.',
+      );
+      return;
+    }
+    const destination = { x: root.x + to.x - token.x, y: root.y + to.y - token.y };
+    const error = attachmentMovementError(scene, root, [destination]);
+    if (error) {
+      setNotice(error);
+      return;
+    }
+    if (gm)
+      editScene((s) =>
+        translateAttachmentGroup(
+          s,
+          s.tokens.find((t) => t.id === root.id)!,
+          destination,
+        ),
+      );
+    else
+      void act(async () =>
+        receive(
+          await api<VttState>(`/vtt/rooms/${state!.id}/tokens/${root.id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(destination),
+          }),
+        ),
+      );
   }
   function editToken(patch: Partial<VttToken>) {
     if (!token) return;
@@ -935,7 +1024,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           userId: spectator ? state?.viewingUser || '' : user.id,
         },
       );
-    let frame = 0;
+    let disposed = false,
+      frame = 0;
     const ends = visualEffects
       ? [
           ...scene.tokens.flatMap((t) => t.effects.map(effectEnds)),
@@ -973,10 +1063,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       frame = requestAnimationFrame(animate);
     };
     restartAnimation();
+    void effectMaterialsReady.then(() => {
+      if (!disposed) draw();
+    });
     motionPreference.addEventListener('change', restartAnimation);
     return () => {
       cancelAnimationFrame(frame);
       motionPreference.removeEventListener('change', restartAnimation);
+      disposed = true;
       timers.forEach(clearTimeout);
     };
   }, [
@@ -1049,6 +1143,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       y: t.y + scene.grid.size,
       bossStyle: null,
       deathAt: null,
+      attachment: null,
     }));
     editScene((s) => s.tokens.push(...copies));
     setSelection(copies.map((t) => t.id));
@@ -1126,7 +1221,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           setNotice('Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
           return;
         }
-        editToken(p);
+        moveSelectedToken(p);
       }
     }
     window.addEventListener('keydown', key);
@@ -1180,10 +1275,51 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
     cancelAnimationFrame(focusFrame.current);
-    if (!scene || !doc || e.button === 2) return;
+    if (!scene || !doc) return;
     if (barrierTools.has(tool) && !barrierEditing) return;
     const p = point(e),
       snap = e.altKey ? p : snapPoint(p, scene.grid);
+    if (e.button === 2) {
+      if (spectator || preview || attackBusy || busy) return;
+      const hit = tokenAt(p, scene, gm ? '*' : 'tokens', gm);
+      if (!hit || hit.layer !== 'tokens' || (!gm && hit.controller !== user.id)) return;
+      const roots = movementTokens([hit.id]);
+      if (!roots.length) return;
+      e.preventDefault();
+      e.currentTarget.setPointerCapture(e.pointerId);
+      suppressContextUntil.current = Date.now() + 600;
+      setContextMenu(null);
+      setTool('select');
+      setSelection([hit.id]);
+      changeLayer(hit.layer, [hit.id]);
+      setAttackTargetId(null);
+      drag.current = {
+        kind: 'tokens',
+        start: p,
+        last: p,
+        screen: { x: e.clientX, y: e.clientY },
+        camera,
+        original: structuredClone(doc),
+        tokens: roots,
+        measured: true,
+        moved: false,
+        path: [],
+      };
+      return;
+    }
+    if (tool === 'attach' && e.button === 0 && !spectator && !preview) {
+      const hit = tokenAt(p, scene, 'tokens', gm);
+      if (!hit) return;
+      if (!token || hit.id === token.id) {
+        if (gm || hit.controller === user.id) {
+          setSelection([hit.id]);
+          setNotice(
+            'Agora escolha o token de apoio. Você também pode escolhê-lo pelo menu do botão direito.',
+          );
+        }
+      } else void act(() => bindToken(hit.id));
+      return;
+    }
     if (!spectator && !preview && spellcasting.pending && e.button === 0) {
       spellcasting.choose(snap, tokenAt(p, scene, '*', gm));
       return;
@@ -1341,7 +1477,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           (gm || token.controller === user.id) &&
           hit.layer === 'tokens' &&
           !hit.hidden &&
-          hit.id !== token.id
+          hit.id !== token.id &&
+          attachmentRoot(scene.tokens, hit).id !== attachmentRoot(scene.tokens, token).id
         ) {
           setAttackTargetId((id) => (id === hit.id ? null : hit.id));
           return;
@@ -1363,9 +1500,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             screen: { x: e.clientX, y: e.clientY },
             camera,
             original: structuredClone(doc),
-            tokens: scene.tokens.filter(
-              (t) => ids.includes(t.id) && (gm || t.controller === user.id) && !t.locked,
-            ),
+            tokens: movementTokens(ids),
           };
         }
         return;
@@ -1489,6 +1624,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (d.kind === 'tokens') {
+      if (d.measured && !d.moved) {
+        if (Math.hypot(e.clientX - d.screen.x, e.clientY - d.screen.y) < 4) return;
+        d.moved = true;
+      }
       const next = structuredClone(docRef.current!);
       const s = next.scenes.find((s) => s.id === next.activeScene)!;
       for (const original of d.tokens) {
@@ -1507,12 +1646,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           x: Math.max(0, Math.min(s.width, dest.x)),
           y: Math.max(0, Math.min(s.height, dest.y)),
         };
-        if (t.layer === 'tokens' && movementBlocked(s, t, destination)) continue;
-        if (!gm && (d.path?.length || 0) >= 2000) continue;
-        if (!gm && (t.x !== destination.x || t.y !== destination.y))
+        if (attachmentMovementError(s, t, [destination])) continue;
+        if ((d.path?.length || 0) >= 2000) continue;
+        if (t.x !== destination.x || t.y !== destination.y)
           d.path = [...(d.path || []), destination];
-        Object.assign(t, destination);
+        translateAttachmentGroup(s, t, destination);
       }
+      if (d.measured) setRuler([{ x: d.tokens[0].x, y: d.tokens[0].y }, ...(d.path || [])]);
       docRef.current = next;
       setDoc(next);
       return;
@@ -1556,6 +1696,17 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const d = drag.current;
     if (!d || !scene) return;
     drag.current = null;
+    if (d.measured) {
+      suppressContextUntil.current = Date.now() + 600;
+      setRuler([]);
+      if (!d.moved) {
+        setContextMenu({
+          x: Math.max(8, Math.min(e.clientX, innerWidth - 270)),
+          y: Math.max(8, Math.min(e.clientY, innerHeight - 520)),
+        });
+        return;
+      }
+    }
     if (d.kind === 'lasso') {
       if (gm && !preview) {
         const ids = lassoSelection(showWalls ? scene : { ...scene, walls: [] }, layer, [
@@ -1578,7 +1729,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setDraft(null);
       return;
     }
-    if (tool === 'ruler') {
+    if (tool === 'ruler' && d.kind === 'shape') {
       setRuler([]);
       return;
     }
@@ -2497,6 +2648,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           )}
         </nav>
         <div className="vtt-stage" ref={stage}>
+          {ruler.length > 1 && (
+            <output className="vtt-movement-distance" aria-label="Distância medida">
+              {rulerLabel(ruler, scene.grid)}
+            </output>
+          )}
           {!preview && !sheetId && token && token.layer === 'tokens' && selection.length === 1 && (
             <VttSelectionPortrait
               key={token.id}
@@ -2660,6 +2816,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             }}
             onContextMenu={(e) => {
               e.preventDefault();
+              if (drag.current?.measured || Date.now() < suppressContextUntil.current) return;
               if (spectator || preview || attackBusy) return;
               setTool('select');
               const p = point(e),
@@ -5018,6 +5175,80 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {canToken && (
                 <>
+                  {token.layer === 'tokens' && (
+                    <fieldset className="vtt-token-attachment">
+                      <legend>Movimento vinculado</legend>
+                      <label>
+                        Token de apoio
+                        <select
+                          aria-label="Token de apoio"
+                          value={token.attachment?.tokenId || ''}
+                          disabled={busy || preview}
+                          onChange={(e) => void act(() => bindToken(e.target.value || null))}
+                        >
+                          <option value="">Independente</option>
+                          {token.attachment &&
+                            scene.tokens.some(
+                              (parent) =>
+                                parent.id === token.attachment?.tokenId &&
+                                !gm &&
+                                parent.controller !== user.id,
+                            ) && (
+                              <option value={token.attachment.tokenId} disabled>
+                                {
+                                  scene.tokens.find(
+                                    (parent) => parent.id === token.attachment?.tokenId,
+                                  )?.name
+                                }{' '}
+                                · apoio definido pelo mestre
+                              </option>
+                            )}
+                          {scene.tokens
+                            .filter(
+                              (parent) =>
+                                parent.id !== token.id &&
+                                parent.layer === 'tokens' &&
+                                (gm ||
+                                  (parent.controller === user.id &&
+                                    !parent.locked &&
+                                    !attachmentUnavailable(scene.tokens, parent))) &&
+                                !attachmentError(
+                                  scene.tokens.map((t) =>
+                                    t.id === token.id
+                                      ? {
+                                          ...t,
+                                          attachment: {
+                                            tokenId: parent.id,
+                                            offsetX: 0,
+                                            offsetY: 0,
+                                          },
+                                        }
+                                      : t,
+                                  ),
+                                ),
+                            )
+                            .map((parent) => (
+                              <option key={parent.id} value={parent.id}>
+                                {parent.name}
+                              </option>
+                            ))}
+                        </select>
+                      </label>
+                      {token.attachment && (
+                        <button
+                          disabled={busy || preview}
+                          onClick={() => void act(() => bindToken(null))}
+                        >
+                          Soltar do token
+                        </button>
+                      )}
+                      <small>
+                        {token.attachment
+                          ? 'Acompanha o apoio. Seleção, ficha e ataques continuam próprios.'
+                          : 'Escolha um apoio para prender este token por cima dele.'}
+                      </small>
+                    </fieldset>
+                  )}
                   <div className="vtt-two">
                     <button
                       onClick={() =>

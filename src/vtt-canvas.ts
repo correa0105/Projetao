@@ -1,6 +1,6 @@
 import {
   sightPolygon,
-  distance,
+  rulerLabel,
   visiblePoint,
   orderedTokens,
   sceneLights,
@@ -749,10 +749,9 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       },
     ]);
     c.fill();
-    const value = o.ruler.slice(1).reduce((sum, p, i) => sum + distance(o.ruler[i], p, g), 0);
     c.font = `bold ${14 / cam.zoom}px sans-serif`;
     c.textAlign = 'center';
-    const label = `${value.toFixed(1)} ${g.unit}`,
+    const label = rulerLabel(o.ruler, g),
       w = c.measureText(label).width + 20 / cam.zoom;
     c.fillStyle = '#171b20';
     c.fillRect((a.x + b.x) / 2 - w / 2, (a.y + b.y) / 2 - 20 / cam.zoom, w, 24 / cam.zoom);

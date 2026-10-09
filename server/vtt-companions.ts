@@ -14,7 +14,8 @@ import {
   documentSchema,
   type VttDocument,
 } from '../shared/vtt.js';
-import { movementBlocked } from '../shared/vtt-movement.js';
+import { movementBlocked, attachmentMovementError } from '../shared/vtt-movement.js';
+import { translateAttachmentGroup } from '../shared/vtt-attachments.js';
 import { vttAssetPath } from '../shared/vtt-token-image.js';
 import type { VttCompanion } from '../shared/vtt-companions.js';
 import { basicCompanionTokenBytes } from './companion-token-art.js';
@@ -119,7 +120,11 @@ async function importCompanion(
   if (!isGm && movementBlocked(scene, existing || to, to))
     throw new AppError(400, 'Uma barreira bloqueia esta posição.');
   if (existing) {
-    Object.assign(token, to);
+    if (token.attachment)
+      throw new AppError(400, 'Solte o vínculo antes de reposicionar este token.');
+    const groupError = attachmentMovementError(scene, token, [to]);
+    if (groupError) throw new AppError(400, groupError);
+    translateAttachmentGroup(scene, token, to);
     return { token, changed: true };
   }
   const {

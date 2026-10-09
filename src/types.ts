@@ -63,6 +63,12 @@ export type StorageState = {
   vault: Item[];
   equipped: EquippedItem[];
   companion_allocated?: Record<string, number>;
+  companions?: {
+    id: string;
+    name: string;
+    kind: 'mount' | 'pet';
+    inventory: (Item & { equipped_quantity: number })[];
+  }[];
 };
 export type Post = {
   paper_style: import('../shared/notice-board').PaperStyle;

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "vapor",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-70e247b9-4755-4734-a43b-98f767f97d5f.png",
+    "prompt": "A single isolated volumetric gray-white vapor puff, photographed from directly above, neutral white and dark gray sculpted vapor with realistic turbulent curls, wispy dissolving lobes, translucent gaps, detailed fine whorls lit from upper left, no solid circular core, no hole, no glow. Production VFX particle texture for a top-down tabletop game, professional physically rendered cinematic smoke. Centered square canvas, all outermost edges completely transparent with generous 14% empty margin, organically fading alpha, no smoke cut off at edges. No object, no scene, no checkerboard, no text, no watermark. Native transparent background. Preserve chiaroscuro detail, not a flat white blob.",
+    "tool": "built-in image_gen",
+    "source_sha256": "aa18011c87154750e6991415d50e8df9289b752922fa17c721cdcfa699b5da17",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "visible": 595772,
+    "partial": 198519,
+    "edgeMax": 1,
+    "file": "/vtt/materials-20261009/vapor-v1.webp",
+    "sha256": "1e35676c47a8f7b6a578405098e276b5b9974c138f82036d778b77972330ebc7",
+    "review": "approved: fine turbulent structure, no visible frame edge; alpha=1 quantization dust discarded only by runtime sampling; original generated asset"
+  },
+  {
+    "id": "flame",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-9d9f679c-f13d-4014-8024-562646176d6c.png",
+    "prompt": "A single isolated top-down turbulent explosion of fire, viewed orthographically from directly above, irregular natural rolling flame tongues spreading outward, bright tiny white-hot cores through rich yellow-orange fine lace of flames and dark russet translucent smoke, high detail fluid simulation cinematic VFX particle. No perfectly circular shape, no solid disk, no fireball sphere, no object, no scene. Square centered asset, entirety of plume fits with 14% fully transparent empty margin on all sides; outer wisps organically dissolve into transparent alpha; no clipping. Transparent background, no black backdrop, no text, no checkerboard, no watermark. Original asset for fantasy VTT particle rendering.",
+    "tool": "built-in image_gen",
+    "source_sha256": "3a2d4cc5601a2b0fa4fec7b920bdbc9bfdbb973a7f42836bc543edcf27b09b39",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "visible": 823525,
+    "partial": 287420,
+    "edgeMax": 1,
+    "file": "/vtt/materials-20261009/flame-v1.webp",
+    "sha256": "56f4158d605eeec98679841ded143db8787e520cf217a55a25125104bce18e5b",
+    "review": "approved: fine turbulent structure, no visible frame edge; alpha=1 quantization dust discarded only by runtime sampling; original generated asset"
+  },
+  {
+    "id": "energy",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a77ed39a-ac39-47b7-8832-1fc3255c69ff.png",
+    "prompt": "One isolated thin twisting stream of pale white-cyan magical energy wisps viewed from directly above, multiple graceful fine luminous filaments curling through a small irregular vortex and delicate translucent gossamer ionized vapor, very fine high resolution texture with restrained light scatter, dark open center showing transparency, physically rendered cinematic spell VFX particle. White highlights, dim gray secondary trails. No symbols, no runes, no geometric rings, no object, no scene. Centered square asset with 14% fully transparent margin all sides and organic wisps fading into transparent alpha. No clipping, no flat disc, no text, no watermark, no checkerboard. Native transparent background.",
+    "tool": "built-in image_gen",
+    "source_sha256": "6d0c34720d4c54c9b9f34d5d556ebd861c65b7050dc237dde746f00577c8db78",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "visible": 601245,
+    "partial": 375918,
+    "edgeMax": 1,
+    "file": "/vtt/materials-20261009/energy-v1.webp",
+    "sha256": "97076a4b21e38a464f0be50be0f52a16af3f18b51a348bc41f6577b07536074b",
+    "review": "approved: fine turbulent structure, no visible frame edge; alpha=1 quantization dust discarded only by runtime sampling; original generated asset"
+  }
+]

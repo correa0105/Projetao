@@ -108,6 +108,7 @@
 }
 .vtt-effects-editor-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 }
 .vtt-effects-note {
@@ -262,6 +263,8 @@
 }
 .vtt-effects-menu form {
   border-top: 1px solid #71583b;
+  min-width: 0;
+  max-width: 100%;
 }
 .vtt-effects-menu > header {
   position: sticky;
@@ -272,4 +275,5 @@
 }
 .vtt-effects-editor-actions > details {
   flex-basis: 100%;
+  min-width: 0;
 }

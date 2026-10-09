@@ -2,6 +2,13 @@ import type { TokenEffect } from '../shared/vtt-effects';
 import { extraEffectKinds } from '../shared/vtt-effects-extra';
 import { paintFootprint, type EffectFootprint } from './vtt-effect-footprint';
 import { materialSprite } from './vtt-effects-materials';
+import {
+  chainLink,
+  crystalVolume,
+  energyShell,
+  livingVine,
+  volumeMotes,
+} from './vtt-effects-volume';
 import { discharge } from './vtt-effects-overhead-magic';
 import { alpha, fract, glow, luminousStroke, star, tau, tint } from './vtt-effects-primitives';
 
@@ -22,33 +29,7 @@ function facet(
   color: string,
   a: number,
 ) {
-  c.save();
-  c.translate(x, y);
-  c.rotate(a);
-  const points = [
-    [-size * 0.6, 0],
-    [-size * 0.25, -size],
-    [size * 0.7, -size * 0.3],
-    [size * 0.8, size * 0.6],
-    [-size * 0.1, size * 0.8],
-  ];
-  for (let i = 0; i < points.length; i++) {
-    const p = points[i],
-      q = points[(i + 1) % points.length];
-    c.beginPath();
-    c.moveTo(0, 0);
-    c.lineTo(p[0], p[1]);
-    c.lineTo(q[0], q[1]);
-    c.closePath();
-    c.fillStyle = alpha(tint(color, i * 0.12, i % 2 ? '#ffffff' : '#394357'), 0.7);
-    c.fill();
-  }
-  c.beginPath();
-  c.moveTo(-size * 0.25, -size);
-  c.lineTo(0, 0);
-  c.lineTo(size * 0.8, size * 0.6);
-  luminousStroke(c, color, 0.6, 0.6);
-  c.restore();
+  crystalVolume(c, x, y, size, color, a);
 }
 function crescent(
   c: CanvasRenderingContext2D,
@@ -94,9 +75,17 @@ function gear(
     k ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y);
   }
   c.closePath();
-  c.fillStyle = alpha(tint(color, 0.55, '#292837'), 0.2);
+  const metal = c.createLinearGradient(-r, -r, r, r);
+  metal.addColorStop(0, alpha(tint(color, 0.58), 0.75));
+  metal.addColorStop(0.28, alpha(color, 0.82));
+  metal.addColorStop(0.5, alpha(tint(color, 0.68, '#27313a'), 0.82));
+  metal.addColorStop(0.76, alpha(tint(color, 0.37), 0.75));
+  metal.addColorStop(1, alpha(tint(color, 0.58, '#27313a'), 0.8));
+  c.fillStyle = metal;
   c.fill();
-  luminousStroke(c, color, 0.8, 0.75);
+  c.strokeStyle = alpha(tint(color, 0.68), 0.85);
+  c.lineWidth = 0.65;
+  c.stroke();
   ring(c, r * 0.55, color, 0.5, 0.5);
   for (let i = 0; i < 6; i++) {
     const p = polar(r * 0.18, (i / 6) * tau),
@@ -187,8 +176,40 @@ export function drawAdvancedEffects(
     if (e.kind === 'petrify' && front)
       paintFootprint(c, f, tint(color, 0.3, '#6b645e'), 0.3 + Math.sin(t * 0.65) * 0.035);
     c.scale(f.plane.rx / 80, f.plane.ry / 80);
-    // An understated contact glow keeps both passes visible without a solid disc.
-    if (!front) glow(c, 0, 0, 86, color, 0.11 + Math.sin(t * 0.9) * 0.025);
+    // Layered matter has irregular density and moves through its own lifetime.
+    // Bright fine particles stay outside the body rather than covering the art.
+    if (!front) {
+      glow(c, 0, 0, 86, color, 0.055 + Math.sin(t * 0.9) * 0.015);
+      const arcane = [
+        'solar-halo',
+        'lunar-halo',
+        'starfield',
+        'comets',
+        'mirror-shield',
+        'prismatic-barrier',
+        'clockwork',
+        'gravity-well',
+        'astral-threads',
+        'spectral-chains',
+        'sleep',
+      ].includes(e.kind);
+      if (arcane)
+        for (let i = 0; i < 3; i++) {
+          const a = (i * tau) / 3 + t * 0.15,
+            life = fract(t * 0.3 + i / 3);
+          materialSprite(
+            c,
+            color,
+            'energy',
+            Math.cos(a) * 52,
+            Math.sin(a) * 52,
+            68 + life * 35,
+            a,
+            t * 0.65 + i,
+            fade(life) * 0.16,
+          );
+        }
+    } else volumeMotes(c, color, 80, t, random, n(14), 0.46);
     switch (e.kind) {
       case 'inferno':
       case 'blue-fire':
@@ -213,10 +234,10 @@ export function drawAdvancedEffects(
             'flame',
             p.x,
             p.y,
-            (blue ? 42 : 55) + u * 28,
+            (blue ? 46 : 59) + u * 28,
             a + Math.PI / 2 + t * 0.06,
-            t * 0.5 + i,
-            0.58,
+            t * 1.15 + i * 0.37,
+            soul ? 0.36 : 0.72,
           );
           glow(c, p.x, p.y, 9, color, 0.28);
           if (soul && front) {
@@ -256,7 +277,11 @@ export function drawAdvancedEffects(
               c.moveTo(x - 2, y - 5);
               c.quadraticCurveTo(x + 3, y + 1, x, y + 3);
               c.quadraticCurveTo(x - 3, y, x - 2, y - 5);
-              c.fillStyle = alpha(tint(color, 0.3), 0.65);
+              const liquid = c.createLinearGradient(x - 2, y - 5, x + 3, y + 3);
+              liquid.addColorStop(0, alpha(tint(color, 0.7), 0.8));
+              liquid.addColorStop(0.4, alpha(color, 0.7));
+              liquid.addColorStop(1, alpha(tint(color, 0.55, '#123526'), 0.8));
+              c.fillStyle = liquid;
               c.fill();
             }
             c.restore();
@@ -273,6 +298,7 @@ export function drawAdvancedEffects(
         break;
       }
       case 'ice-lattice': {
+        if (!front) mist(c, t * 0.9, random, n(7), 0.21);
         c.save();
         c.rotate(t * 0.04);
         for (let arm = 0; arm < 6; arm++) {
@@ -290,7 +316,15 @@ export function drawAdvancedEffects(
           }
           luminousStroke(c, color, front ? 0.65 : 2.8, front ? 0.6 : 0.3);
           if (front) {
-            facet(c, 77, 0, 7, color, Math.PI / 2);
+            for (let j = 0; j < 3; j++)
+              crystalVolume(
+                c,
+                34 + j * 17,
+                Math.sin(arm + j) * 7,
+                12 + j * 3,
+                color,
+                Math.PI / 2 + Math.sin(j * 3) * 0.24,
+              );
             for (let k = 0; k < 3; k++) {
               c.fillStyle = alpha(tint(color, 0.7), 0.5 + Math.sin(t * 2 + k) * 0.2);
               star(c, 29 + k * 18, 0, 2);
@@ -354,7 +388,15 @@ export function drawAdvancedEffects(
           );
           if (front) {
             const p = polar(58 + random(i + 34) * 21, a + t * 0.01);
-            facet(c, p.x + Math.sin(t * 12 + i), p.y, 3 + random(i + 67) * 3, color, i);
+            crystalVolume(
+              c,
+              p.x + Math.sin(t * 12 + i),
+              p.y,
+              5 + random(i + 67) * 5,
+              color,
+              i,
+              true,
+            );
           }
         }
         break;
@@ -405,6 +447,7 @@ export function drawAdvancedEffects(
         break;
       }
       case 'solar-halo': {
+        if (!front) energyShell(c, color, 68, t, 0.4);
         ring(c, 67, color, front ? 0.4 : 0.55, front ? 0.6 : 2);
         for (let i = 0; i < n(24); i++) {
           const a = (i / 24) * tau + t * 0.07,
@@ -414,7 +457,19 @@ export function drawAdvancedEffects(
           c.beginPath();
           c.moveTo(p.x, p.y);
           c.quadraticCurveTo(mid.x, mid.y, q.x, q.y);
-          luminousStroke(c, color, front ? 0.7 : 3, front ? 0.8 : 0.22);
+          luminousStroke(c, color, front ? 0.5 : 2, front ? 0.42 : 0.16);
+          if (i % 2 === 0)
+            materialSprite(
+              c,
+              color,
+              'flame',
+              mid.x,
+              mid.y,
+              26 + Math.sin(t * 2 + i) * 5,
+              a + Math.PI / 2,
+              t * 0.6 + i * 0.17,
+              front ? 0.24 : 0.35,
+            );
           if (front && i % 3 === 0) {
             c.fillStyle = alpha(tint(color, 0.7), 0.6);
             star(c, q.x, q.y, 2.5);
@@ -492,6 +547,7 @@ export function drawAdvancedEffects(
       case 'prismatic-barrier': {
         const prism = e.kind === 'prismatic-barrier',
           palette = ['#f79f9a', '#efd783', '#9ddeaa', '#88d8ea', '#a3b7f5', '#d7a8e9'];
+        energyShell(c, color, 83, t, front ? 0.58 : 0.35, prism);
         for (let i = 0; i < 6; i++) {
           const a = (i / 6) * tau + t * 0.1,
             p = polar(70, a),
@@ -590,21 +646,13 @@ export function drawAdvancedEffects(
       }
       case 'spectral-chains': {
         for (let strand = 0; strand < 2; strand++)
-          for (let i = 0; i < n(28); i++) {
-            const a = (i / n(28)) * tau + t * (strand ? -0.07 : 0.07),
+          for (let i = 0; i < n(38); i++) {
+            const a = (i / n(38)) * tau + t * (strand ? -0.07 : 0.07),
               r = 64 + strand * 12 + Math.sin(a * 3 + t) * 3,
               p = polar(r, a);
             c.save();
-            c.translate(p.x, p.y);
-            c.rotate(a + Math.PI / 2);
-            c.beginPath();
-            c.ellipse(0, 0, 6, i % 2 === 0 ? 3 : 1.5, 0, 0, tau);
-            luminousStroke(c, color, front ? 1 : 2.7, front ? 0.58 : 0.13);
-            if (front) {
-              c.beginPath();
-              c.ellipse(0, -0.4, 5, 1.3, 0, Math.PI, Math.PI * 1.7);
-              luminousStroke(c, tint(color, 0.65), 0.45, 0.7);
-            }
+            c.globalAlpha *= front ? 0.86 : 0.24;
+            chainLink(c, color, p.x, p.y, 6, a + Math.PI / 2, i % 2 === 1);
             c.restore();
           }
         break;
@@ -613,21 +661,8 @@ export function drawAdvancedEffects(
         for (let i = 0; i < 6; i++) {
           c.save();
           c.rotate((i / 6) * tau + 0.03 * Math.sin(t * 0.8 + i));
-          c.beginPath();
-          c.moveTo(22, 0);
-          c.bezierCurveTo(38, -19, 67, 16, 88, -7);
-          luminousStroke(c, tint(color, 0.5, '#394d2b'), front ? 1.6 : 5, front ? 0.7 : 0.38);
-          for (let k = 0; k < 6; k++) {
-            const x = 31 + k * 9,
-              y = Math.sin(k) * 7;
-            c.beginPath();
-            c.moveTo(x - 2, y);
-            c.lineTo(x + 1, y + (k % 2 ? 9 : -9));
-            c.lineTo(x + 4, y + 1);
-            c.closePath();
-            c.fillStyle = alpha(color, front ? 0.75 : 0.2);
-            c.fill();
-          }
+          c.globalAlpha *= front ? 0.93 : 0.5;
+          livingVine(c, color, 88, t, i);
           c.restore();
         }
         break;
@@ -733,6 +768,22 @@ export function drawAdvancedEffects(
         break;
       }
       case 'rage': {
+        if (!front)
+          for (let i = 0; i < 5; i++) {
+            const a = (i * tau) / 5,
+              life = fract(t * 0.7 + i * 0.2);
+            materialSprite(
+              c,
+              color,
+              'flame',
+              Math.cos(a) * (36 + life * 35),
+              Math.sin(a) * (36 + life * 35),
+              47 + life * 22,
+              a,
+              t * 1.2 + i,
+              fade(life) * 0.45,
+            );
+          }
         for (let i = 0; i < n(front ? 10 : 8); i++) {
           const u = fract(t * 0.42 + random(i)),
             a = (i / 10) * tau + t * 0.06,
@@ -794,8 +845,23 @@ export function drawAdvancedEffects(
           c.bezierCurveTo(74, 12, 64, -17, 44, 2);
           c.bezierCurveTo(61, -4, 75, 23, 91, 9);
           c.closePath();
-          c.fillStyle = alpha(tint(color, 0.6, '#282333'), front ? 0.4 : 0.3);
+          const shadow = c.createLinearGradient(44, -10, 91, 12);
+          shadow.addColorStop(0, alpha(tint(color, 0.8, '#16111f'), 0));
+          shadow.addColorStop(0.4, alpha(tint(color, 0.6, '#282333'), front ? 0.27 : 0.18));
+          shadow.addColorStop(1, alpha(tint(color, 0.3), 0));
+          c.fillStyle = shadow;
           c.fill();
+          materialSprite(
+            c,
+            tint(color, 0.4, '#272130'),
+            'vapor',
+            69,
+            0,
+            43,
+            t + i,
+            t * 0.33 + i * 0.21,
+            front ? 0.25 : 0.35,
+          );
           if (front) {
             c.beginPath();
             c.moveTo(71, -2);

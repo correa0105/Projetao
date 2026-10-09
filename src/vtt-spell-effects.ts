@@ -7,8 +7,15 @@ import {
   type SpellProfile,
   type SpellPlacement,
 } from '../shared/vtt-spells';
-import { alpha, glow, seededRandom, tau } from './vtt-effects-primitives';
+import { alpha, fract, glow, seededRandom, tau, tint } from './vtt-effects-primitives';
 import { materialSprite } from './vtt-effects-materials';
+import {
+  chainLink,
+  crystalVolume,
+  energyShell,
+  livingVine,
+  volumeMotes,
+} from './vtt-effects-volume';
 import { drawWeaponArt } from './vtt-weapon-art';
 export type SpellPreview = {
   profile: SpellProfile;
@@ -97,10 +104,38 @@ function motif(
     count = p.visual.arms;
   c.save();
   c.strokeStyle = alpha(light, 0.82);
-  c.fillStyle = alpha(color, 0.3);
+  const relief = c.createRadialGradient(-r * 0.28, -r * 0.35, r * 0.03, 0, 0, r * 0.92);
+  relief.addColorStop(0, alpha(tint(color, 0.58), 0.62));
+  relief.addColorStop(0.35, alpha(color, 0.46));
+  relief.addColorStop(0.72, alpha(tint(color, 0.55, '#1d2a38'), 0.55));
+  relief.addColorStop(1, alpha(color, 0.08));
+  c.fillStyle = relief;
   c.lineWidth = Math.max(0.8, r * 0.018);
   c.lineCap = 'round';
   c.lineJoin = 'round';
+  if (p.visual.family === 'heal') {
+    // Healing reads as circulating light and ascending particles, rather than
+    // the old flower pictogram. Keep the spell's own signature and rhythm.
+    energyShell(c, color, r * 0.82, t, 0.55);
+    for (let i = 0; i < 5; i++) {
+      const life = fract(t * 0.48 + random(i + 17)),
+        a = random(i + 9) * tau + t * 0.35;
+      materialSprite(
+        c,
+        color,
+        'energy',
+        Math.cos(a) * r * (0.2 + life * 0.65),
+        Math.sin(a) * r * (0.2 + life * 0.65),
+        r * (0.9 - life * 0.3),
+        a,
+        t * 0.85 + i * 0.18,
+        Math.sin(life * Math.PI) * 0.48,
+      );
+    }
+    volumeMotes(c, light, r, t, random, 26, 0.8);
+    c.restore();
+    return;
+  }
   const arc = (x: number, y: number, s: number, start = 0, end = tau) => {
     c.beginPath();
     c.arc(x, y, s, start, end);
@@ -108,10 +143,11 @@ function motif(
   };
   if (['flame', 'ember', 'smoke', 'mist', 'storm'].includes(name)) {
     for (let i = 0; i < Math.min(10, count + 2); i++) {
-      const a = (i * tau) / count + t * (name === 'storm' ? -0.22 : 0.15),
-        s = r * (0.35 + random(i) * 0.35),
-        x = Math.cos(a) * r * 0.43,
-        y = Math.sin(a) * r * 0.43;
+      const life = fract(t * (name === 'flame' ? 0.74 : 0.28) + random(i + 40));
+      const a = random(i) * tau + t * (name === 'storm' ? -0.22 : 0.11),
+        s = r * (0.33 + life * 0.25 + random(i + 30) * 0.18),
+        x = Math.cos(a) * r * (0.18 + life * 0.48),
+        y = Math.sin(a) * r * (0.18 + life * 0.48);
       materialSprite(
         c,
         color,
@@ -120,10 +156,11 @@ function motif(
         y,
         s * 2,
         a + t * 0.12,
-        t * 0.3 + random(i + 10),
-        name === 'mist' ? 0.3 : 0.7,
+        t * (name === 'flame' ? 1.15 : 0.55) + random(i + 10),
+        Math.sin(life * Math.PI) * (name === 'mist' ? 0.36 : 0.8),
       );
     }
+    if (name === 'flame' || name === 'ember') volumeMotes(c, color, r, t, random, 22, 0.74);
     if (name === 'storm') motif(c, 'bolt', r * 0.9, t, p, seed + 3);
   } else if (['bolt', 'branch'].includes(name)) {
     const n = name === 'branch' ? 4 : 2;
@@ -165,30 +202,36 @@ function motif(
       c.save();
       c.translate(Math.cos(a) * at, Math.sin(a) * at);
       c.rotate(a + Math.PI / 2);
-      const g = c.createLinearGradient(-wide, 0, wide, 0);
-      g.addColorStop(0, alpha(color, 0.55));
-      g.addColorStop(0.5, alpha(light, 0.92));
-      g.addColorStop(1, alpha(color, 0.25));
-      c.fillStyle = g;
-      line(c, [0, -length / 2, wide, length * 0.2, 0, length / 2, -wide, length * 0.15], true);
-      c.fill();
-      c.strokeStyle = alpha(light, 0.6);
-      c.stroke();
-      line(c, [0, -length / 2, 0, length / 2, wide, length * 0.2]);
-      c.stroke();
+      if (name === 'thorn') {
+        c.rotate(-Math.PI / 2);
+        livingVine(c, color, length * 1.6, t, i);
+        c.restore();
+        continue;
+      }
+      crystalVolume(c, 0, 0, length * 0.66, color, 0, name === 'stone');
       c.restore();
+      continue;
     }
   } else if (['vine', 'leaf', 'feather', 'petal', 'phoenix'].includes(name)) {
     for (let i = 0; i < count + 2; i++) {
       c.save();
       c.rotate((i * tau) / (count + 2) + t * 0.06);
+      if (name === 'vine') {
+        livingVine(c, color, r * 0.95, t, i);
+        c.restore();
+        continue;
+      }
       const x = r * 0.32,
         y = Math.sin(t + i) * r * 0.04;
       c.beginPath();
       c.moveTo(x, y);
       c.bezierCurveTo(r * 0.5, -r * 0.32, r * 0.86, -r * 0.32, r * 0.88, 0);
       c.bezierCurveTo(r * 0.6, r * 0.24, r * 0.5, r * 0.12, x, y);
-      c.fillStyle = alpha(name === 'phoenix' ? light : color, 0.35);
+      const leaf = c.createLinearGradient(r * 0.4, -r * 0.25, r * 0.68, r * 0.24);
+      leaf.addColorStop(0, alpha(tint(color, 0.4), 0.75));
+      leaf.addColorStop(0.42, alpha(name === 'phoenix' ? light : color, 0.68));
+      leaf.addColorStop(1, alpha(tint(color, 0.54, '#223b29'), 0.6));
+      c.fillStyle = leaf;
       c.fill();
       c.stroke();
       c.beginPath();
@@ -210,6 +253,7 @@ function motif(
       c.restore();
     }
   } else if (['halo', 'ripple', 'wave', 'shockwave', 'orbit'].includes(name)) {
+    if (name === 'halo' || name === 'orbit') energyShell(c, color, r * 0.88, t, 0.58);
     const n = name === 'halo' ? 3 : 5;
     for (let i = 0; i < n; i++) {
       const phase = (((t * 0.24 + i / n) % 1) + 1) % 1,
@@ -350,28 +394,7 @@ function motif(
     )
   ) {
     if (name === 'shield' || name === 'armor') {
-      line(
-        c,
-        [
-          0,
-          -r * 0.8,
-          r * 0.6,
-          -r * 0.48,
-          r * 0.47,
-          r * 0.4,
-          0,
-          r * 0.82,
-          -r * 0.47,
-          r * 0.4,
-          -r * 0.6,
-          -r * 0.48,
-        ],
-        true,
-      );
-      c.fill();
-      c.stroke();
-      line(c, [0, -r * 0.55, 0, r * 0.52, -r * 0.28, -r * 0.17, r * 0.28, -r * 0.17]);
-      c.stroke();
+      energyShell(c, color, r * 0.92, t, 0.86);
     } else if (name === 'shell') {
       for (let i = 0; i < 4; i++) {
         c.beginPath();
@@ -381,13 +404,16 @@ function motif(
       }
     } else if (name === 'chain') {
       for (let i = 0; i < 15; i++) {
-        c.save();
-        c.rotate((i * tau) / 15 + t * 0.04);
-        c.translate(r * 0.7, 0);
-        c.beginPath();
-        c.ellipse(0, 0, r * 0.1, r * 0.05, 0.4, 0, tau);
-        c.stroke();
-        c.restore();
+        const a = (i * tau) / 15 + t * 0.08;
+        chainLink(
+          c,
+          color,
+          Math.cos(a) * r * 0.7,
+          Math.sin(a) * r * 0.7,
+          r * 0.1,
+          a + Math.PI / 2,
+          i % 2 === 1,
+        );
       }
     } else if (name === 'web') {
       for (let k = 0; k < 6; k++) {
@@ -403,7 +429,8 @@ function motif(
         }
         c.stroke();
       }
-    } else if (name === 'barrier' || name === 'maze') {
+    } else if (name === 'barrier') energyShell(c, color, r, t, 0.73);
+    else if (name === 'maze') {
       for (let i = -3; i <= 3; i++) {
         const x = i * r * 0.23;
         line(c, [x, -r * 0.75, x + (name === 'maze' ? r * 0.1 : 0), r * 0.75]);
@@ -641,7 +668,21 @@ function localEffect(
   c.save();
   c.translate(x, y);
   c.globalAlpha *= opacity;
-  glow(c, 0, 0, r * 1.15, p.visual.color, 0.2);
+  glow(c, 0, 0, r * 1.15, p.visual.color, 0.085);
+  // Even symbolic recipes sit in a faint, moving material field. Their distinct
+  // motif pair remains, without the previous flat opaque disc underneath.
+  if (!['fire', 'frost', 'poison', 'water', 'wind', 'lightning'].includes(p.visual.family))
+    materialSprite(
+      c,
+      p.visual.color,
+      'energy',
+      0,
+      0,
+      r * 2.05,
+      t * 0.14,
+      t * 0.65 + seed * 0.11,
+      0.14,
+    );
   // Each spell has a distinct motif pair, runic signature and rhythm. Different
   // families also use different density materials, rather than a recolored ring.
   p.visual.motifs.forEach((m, i) => {
@@ -651,6 +692,7 @@ function localEffect(
     c.restore();
   });
   const random = seededRandom(p.id + seed);
+  volumeMotes(c, p.visual.light, r, t, random, 15, 0.36);
   for (let i = 0; i < 12; i++) {
     const a = random(i) * tau + t * p.visual.twist,
       rad = r * (0.35 + random(i + 20) * 0.7),
@@ -691,33 +733,66 @@ function field(
   c.save();
   spellPath(c, p, at, f);
   c.clip();
-  const material = ['fire', 'frost', 'poison', 'water', 'wind', 'lightning'].includes(
-    p.visual.family,
-  );
-  if (material) {
-    const span = Math.min(Math.max(s.grid.size * 1.8, size * 0.5), 300),
-      left = Math.max(view.left, at.x - extent),
+  {
+    const left = Math.max(view.left, at.x - extent),
       top = Math.max(view.top, at.y - extent),
       right = Math.min(view.right, at.x + extent),
-      bottom = Math.min(view.bottom, at.y + extent);
+      bottom = Math.min(view.bottom, at.y + extent),
+      span = Math.max(
+        Math.min(Math.max(s.grid.size * 1.8, size * 0.5), 300),
+        Math.sqrt(Math.max(1, (right - left) * (bottom - top)) / 85) / 0.8,
+      );
     let n = 0;
     for (let y = top; y < bottom && n < 120; y += span * 0.8)
-      for (let x = left; x < right && n < 120; x += span * 0.8, n++)
+      for (let x = left; x < right && n < 120; x += span * 0.8, n++) {
+        const px = x + span * (0.4 + Math.sin(n * 13.7 + t * 0.32) * 0.14),
+          py = y + span * (0.4 + Math.cos(n * 19.3 + t * 0.27) * 0.14);
+        if (p.visual.family === 'nature') {
+          c.save();
+          c.globalAlpha *= opacity * 0.58;
+          c.translate(px, py);
+          c.rotate(n * 2.41);
+          livingVine(c, p.visual.color, Math.min(span * 0.65, 120), t, n);
+          c.restore();
+          continue;
+        }
+        if (p.visual.family === 'earth') {
+          c.save();
+          c.globalAlpha *= opacity * 0.65;
+          crystalVolume(
+            c,
+            px,
+            py,
+            Math.min(40, span * 0.19),
+            p.visual.color,
+            n * 2.41 + Math.sin(t + n) * 0.04,
+            true,
+          );
+          c.restore();
+          continue;
+        }
         materialSprite(
           c,
           p.visual.color,
           p.visual.family === 'fire'
             ? 'flame'
-            : ['frost', 'poison', 'water', 'wind'].includes(p.visual.family)
+            : ['frost', 'poison', 'water', 'wind', 'lightning', 'necrotic'].includes(
+                  p.visual.family,
+                )
               ? 'vapor'
               : 'energy',
-          x + span * 0.4,
-          y + span * 0.4,
+          px,
+          py,
           span * 1.4,
           t * 0.04 + n * 0.7,
           t * 0.3 + n * 0.2,
-          opacity * 0.5,
+          opacity *
+            (0.62 + 0.28 * Math.sin(t * 0.6 + n * 1.31)) *
+            (['fire', 'frost', 'poison', 'water', 'wind', 'lightning'].includes(p.visual.family)
+              ? 0.5
+              : 0.23),
         );
+      }
   }
   const radius = Math.max(18, Math.min(size * 0.6, s.grid.size * 2.4));
   if (['line', 'wall', 'cone'].includes(p.shape)) {
@@ -757,9 +832,56 @@ function field(
   c.restore();
   c.save();
   spellPath(c, p, at, f);
-  c.strokeStyle = alpha(p.visual.color, opacity * 0.38);
+  c.strokeStyle = alpha(p.visual.color, opacity * 0.16);
   c.lineWidth = Math.max(1, f * 0.05);
   c.stroke();
+  c.restore();
+}
+function fieldAtmosphere(
+  c: CanvasRenderingContext2D,
+  p: SpellProfile,
+  at: SpellPlacement,
+  s: VttScene,
+  t: number,
+  opacity: number,
+) {
+  const family = p.visual.family;
+  if (!['fire', 'frost', 'poison', 'water', 'wind', 'lightning'].includes(family)) return;
+  const f = pixelsPerFoot(s.grid),
+    size = p.size * f,
+    random = seededRandom(p.id + 'air');
+  c.save();
+  c.globalAlpha *= opacity;
+  for (let i = 0; i < 14; i++) {
+    const age = fract(t * (family === 'fire' ? 0.85 : 0.48) + random(i)),
+      angle = random(i + 21) * tau;
+    let x = 0,
+      y = 0;
+    if (p.shape === 'sphere' || p.shape === 'ring') {
+      x = Math.cos(angle) * size * (0.28 + age * 0.72);
+      y = Math.sin(angle) * size * (0.28 + age * 0.72);
+    } else if (p.shape === 'cube') {
+      x = (random(i + 44) - 0.5) * size;
+      y = (random(i + 69) - 0.5) * size;
+    } else {
+      x = p.shape === 'wall' ? (random(i + 43) - 0.5) * size : random(i + 43) * size;
+      y = (random(i + 68) - 0.5) * (p.shape === 'cone' ? Math.max(1, x) : p.width * f);
+    }
+    const px = at.x + x * Math.cos(at.angle) - y * Math.sin(at.angle),
+      py = at.y + x * Math.sin(at.angle) + y * Math.cos(at.angle);
+    const plume = Math.min(110, Math.max(s.grid.size * 0.6, size * 0.17)) * (0.55 + age * 0.85);
+    materialSprite(
+      c,
+      p.visual.color,
+      family === 'fire' ? 'flame' : family === 'lightning' ? 'energy' : 'vapor',
+      px,
+      py,
+      plume,
+      angle + Math.PI / 2,
+      t * 0.9 + i * 0.3,
+      Math.sin(age * Math.PI) * 0.58,
+    );
+  }
   c.restore();
 }
 function beam(
@@ -815,6 +937,22 @@ function beam(
       y,
     );
     c.stroke();
+    for (let i = 0; i < 4; i++) {
+      const u = i / 4,
+        tailX = x + (a.x - x) * u * 0.32,
+        tailY = y + (a.y - y) * u * 0.32;
+      materialSprite(
+        c,
+        p.visual.color,
+        p.visual.family === 'fire' ? 'flame' : 'energy',
+        tailX,
+        tailY,
+        r * (1.15 - u * 0.5),
+        angle,
+        t * 1.1 + i * 0.21,
+        fade * (1 - u) * 0.4,
+      );
+    }
     localEffect(c, p, x, y, r * 0.65, t, fade, index);
     c.restore();
   }
@@ -857,6 +995,8 @@ export function drawSpellEffects(
           );
         }
     } else {
+      if (p.shape && (p.mode !== 'targets' || p.areaFromTargets))
+        for (const at of points) fieldAtmosphere(c, p, at, scene, t, opacity * 0.75);
       if (t < 2 && !reduced) {
         const targetPoints =
           p.mode === 'targets'

@@ -28,6 +28,8 @@ export function CompanionEquipmentPanel({
   dragged,
   onInventoryRefresh,
   onRefresh,
+  selectedCompanionId,
+  onSelectCompanion,
 }: {
   characterId: string;
   kind: CompanionKind;
@@ -35,6 +37,8 @@ export function CompanionEquipmentPanel({
   dragged: InventoryDrag | null;
   onInventoryRefresh: () => Promise<void>;
   onRefresh: () => Promise<void>;
+  selectedCompanionId?: string;
+  onSelectCompanion?: (id: string) => void;
 }) {
   const [state, setState] = useState<CompanionEquipmentState | null>(null);
   const [selectedId, setSelectedId] = useState('');
@@ -92,7 +96,8 @@ export function CompanionEquipmentPanel({
     };
   }, [characterId]);
   const companions = state?.companions.filter((c) => c.kind === kind) || [];
-  const selected = companions.find((c) => c.id === selectedId) || companions[0];
+  const selected =
+    companions.find((c) => c.id === (selectedCompanionId ?? selectedId)) || companions[0];
   const hasBarding =
     selected &&
     supportsArmorParts(kind, selected.species_id) &&
@@ -175,7 +180,7 @@ export function CompanionEquipmentPanel({
       !event.dataTransfer.types.includes(INVENTORY_DRAG_TYPE)
     )
       return;
-    const item = state?.inventory.find((i) => i.id === dragged.id);
+    const item = selected?.inventory.find((i) => i.id === dragged.id);
     if (dragged.from !== 'backpack') {
       setError('Leve o item do cofre para a mochila antes de equipar.');
       return;
@@ -240,7 +245,7 @@ export function CompanionEquipmentPanel({
   const armorSets =
     selected && state
       ? armorSetOptions(
-          state.inventory,
+          selected.inventory,
           kind,
           selected.slots,
           (item, slot) =>
@@ -263,7 +268,10 @@ export function CompanionEquipmentPanel({
     >
       <header>
         <h2>{title}</h2>
-        <p>Arraste da mochila ou clique em um espaço para equipar.</p>
+        <p>
+          Equipe os itens da mochila deste animal. Use Transferir entre inventários para trazer
+          outros itens.
+        </p>
         {kind === 'mount' && (
           <p>
             A barda ocupa um único espaço de armadura. Vestir combina a armadura completa e os
@@ -286,6 +294,7 @@ export function CompanionEquipmentPanel({
               disabled={disabled}
               onChange={(event) => {
                 setSelectedId(event.target.value);
+                onSelectCompanion?.(event.target.value);
                 setNotice('');
                 setError('');
               }}
@@ -317,13 +326,13 @@ export function CompanionEquipmentPanel({
             </figure>
             {selected.slots.map((slot, index) => {
               const current = selected.equipped.find((i) => i.slot === slot);
-              const candidates = state.inventory.filter(
+              const candidates = selected.inventory.filter(
                 (i) =>
                   compatibleCompanionSlots(i, kind, selected.species_id).includes(slot) &&
                   (i.available > 0 || (current?.source === 'inventory' && current.id === i.id)),
               );
               const legacy = selected.legacy_options.filter((i) => i.slot === slot);
-              const draggedItem = dragged && state.inventory.find((i) => i.id === dragged.id);
+              const draggedItem = dragged && selected.inventory.find((i) => i.id === dragged.id);
               const compatible =
                 dragged?.from === 'backpack' &&
                 draggedItem &&

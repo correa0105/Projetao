@@ -211,8 +211,15 @@ function healing(
   if (!front) {
     c.save();
     c.scale(f.plane.rx / 80, f.plane.ry / 80);
+    // Keep the flowing light inside the centered ground ring. The wisps above
+    // it are free to drift, while the footprint stays round at every token size.
+    c.save();
+    c.beginPath();
+    c.arc(0, 0, 80, 0, tau);
+    c.clip();
     materialSprite(c, e.color, 'energy', 0, 0, 218, t * 0.16, t * 0.22, 0.65);
     materialSprite(c, golden, 'energy', 0, 0, 188, -t * 0.12, t * 0.22 + 0.6, 0.22);
+    c.restore();
     glow(c, 0, 0, 106, e.color, 0.18);
     c.beginPath();
     c.arc(0, 0, 80, 0, tau);

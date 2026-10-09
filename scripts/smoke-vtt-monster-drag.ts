@@ -17,7 +17,7 @@ await new Promise<void>((resolve) => server.once('listening', resolve));
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const ctx = await browser.newContext({
   viewport: { width: 1440, height: 1000 },
-  extraHTTPHeaders: { 'X-Vtt-Schema-Version': '6' },
+  extraHTTPHeaders: { 'X-Vtt-Schema-Version': '7' },
 });
 const page = await ctx.newPage();
 const errors: string[] = [],
@@ -185,7 +185,7 @@ try {
   expect(ownerState.document.scenes[0].tokens).toHaveLength(3);
   const playerCtx = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
-    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '6' },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '7' },
   });
   const signup = await playerCtx.request.post(origin + '/api/auth/sign-up/email', {
     headers: { Origin: origin },

@@ -1,4 +1,6 @@
 import { blockingWalls, intersection, type Point, type VttScene } from './vtt.js';
+import { attachedGroup, attachmentRoot } from './vtt-attachments.js';
+import type { VttToken } from './vtt.js';
 
 const epsilon = 1e-7;
 function onSegment(p: Point, a: Point, b: Point) {
@@ -22,4 +24,25 @@ export function movementBlocked(scene: VttScene, from: Point, to: Point) {
       onSegment(w.b, from, to)
     );
   });
+}
+export function attachmentMovementError(
+  scene: VttScene,
+  base: VttToken,
+  path: Point[],
+): string | null {
+  const root = attachmentRoot(scene.tokens, base);
+  for (const member of attachedGroup(scene.tokens, root)) {
+    const dx = member.x - root.x,
+      dy = member.y - root.y;
+    let from = { x: member.x, y: member.y };
+    for (const point of path) {
+      const to = { x: point.x + dx, y: point.y + dy };
+      if (to.x < 0 || to.y < 0 || to.x > scene.width || to.y > scene.height)
+        return 'Movimento fora do mapa.';
+      if (member.layer === 'tokens' && movementBlocked(scene, from, to))
+        return 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.';
+      from = to;
+    }
+  }
+  return null;
 }

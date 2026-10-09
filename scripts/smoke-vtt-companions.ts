@@ -28,7 +28,7 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
     [0, 1, 2, 3].map(() =>
       browser.newContext({
         viewport: { width: 1440, height: 1000 },
-        extraHTTPHeaders: { 'X-Vtt-Schema-Version': '6' },
+        extraHTTPHeaders: { 'X-Vtt-Schema-Version': '7' },
         reducedMotion: 'reduce',
       }),
     ),

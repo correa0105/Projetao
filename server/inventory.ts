@@ -43,7 +43,7 @@ const discardSchema = z
   })
   .strict();
 
-async function lockStorage(client: PoolClient, userId: string, characterId: string) {
+export async function lockStorage(client: PoolClient, userId: string, characterId: string) {
   // Same lock order as character deletion: account, then character. Purchases lock character.
   await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [userId]);
   const owned = await client.query(
@@ -53,7 +53,7 @@ async function lockStorage(client: PoolClient, userId: string, characterId: stri
   if (!owned.rowCount) throw new AppError(404, 'Personagem não encontrado.');
 }
 
-async function storageState(client: PoolClient, userId: string, characterId: string) {
+export async function storageState(client: PoolClient, userId: string, characterId: string) {
   const inventory = await client.query(
     `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
      JOIN characters p ON p.id=i.character_id
@@ -75,7 +75,26 @@ async function storageState(client: PoolClient, userId: string, characterId: str
     vault: vault.rows,
     equipped: equipped.rows,
     companion_allocated: await companionAllocated(client, characterId),
+    companions: await companionBags(client, characterId),
   };
+}
+
+async function companionBags(client: PoolClient, characterId: string) {
+  const { rows: animals } = await client.query(
+    `SELECT id,name,'mount' AS kind FROM character_mounts WHERE character_id=$1
+    UNION ALL SELECT id,name,'pet' AS kind FROM character_pets WHERE character_id=$1 ORDER BY kind,name,id`,
+    [characterId],
+  );
+  for (const animal of animals) {
+    const { rows: items } = await client.query(
+      `SELECT c.*,i.quantity,
+      (SELECT count(*)::int FROM companion_equipment e WHERE e.wardrobe_id=i.wardrobe_id AND e.item_id=i.item_id) AS equipped_quantity
+      FROM companion_inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.wardrobe_id=$1 ORDER BY c.name`,
+      [animal.id],
+    );
+    animal.inventory = items;
+  }
+  return animals;
 }
 
 export function inventoryRouter() {

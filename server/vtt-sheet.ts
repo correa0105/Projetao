@@ -10,6 +10,7 @@ import { consumableItems } from '../shared/vtt-sheet.js';
 import { readVttLoadout } from './vtt-weapon-loadout.js';
 import { applyTokenDeath, type VttDocument } from '../shared/vtt.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
+import { attachmentUnavailable } from '../shared/vtt-attachments.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = { id: string; owner_id: string; document: VttDocument; role?: string | null };
 export type RoomAccess = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
@@ -41,7 +42,7 @@ export async function access(
       (token.controller !== user ||
         character.user_id !== user ||
         token.layer !== 'tokens' ||
-        token.hidden))
+        attachmentUnavailable(scene.tokens, token)))
   )
     throw new AppError(403, 'Você não tem acesso à ficha deste personagem.');
   const {

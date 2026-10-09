@@ -3,6 +3,7 @@ import { soundboardSchema, emptySoundboard } from './vtt-sounds.js';
 import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
 import { monsterCustomizationSchema } from './vtt-monster-presets.js';
 import { bloodStateSchema, bloodDecalSchema, MAX_BLOOD_DECALS } from './vtt-blood.js';
+import { attachmentError, orderedAttachmentTokens } from './vtt-attachments.js';
 const id = z.string().uuid();
 const coordinate = z.number().finite().min(-50000).max(50000);
 const color = z.string().regex(/^#[0-9a-f]{6}$/i);
@@ -98,6 +99,15 @@ export const tokenSchema = z
     controller: z.string().max(100).nullable().default(null),
     characterId: id.nullable().default(null),
     companionId: id.nullable().default(null),
+    attachment: z
+      .object({
+        tokenId: id,
+        offsetX: z.number().finite().min(-16000).max(16000),
+        offsetY: z.number().finite().min(-16000).max(16000),
+      })
+      .strict()
+      .nullable()
+      .default(null),
     sheet: sheetSchema.nullable().default(null),
     monster: monsterCustomizationSchema.nullable().default(null),
   })
@@ -295,6 +305,15 @@ export const documentSchema = z
     for (const scene of doc.scenes)
       if (scene.folderId && !folders.has(scene.folderId))
         ctx.addIssue({ code: 'custom', message: 'Pasta do mapa inexistente.' });
+    for (const scene of doc.scenes) {
+      const error = attachmentError(scene.tokens);
+      if (error)
+        ctx.addIssue({
+          code: 'custom',
+          message: error,
+          path: ['scenes', doc.scenes.indexOf(scene), 'tokens'],
+        });
+    }
     if (doc.scenes.find((s) => s.id === doc.activeScene)?.archived)
       ctx.addIssue({ code: 'custom', message: 'O mapa ativo precisa estar fora do arquivo.' });
   });
@@ -441,8 +460,7 @@ export function newDocument(id: string): VttDocument {
 }
 /** Stable order within each layer; decimals and negative levels are intentional. */
 export function orderedTokens(tokens: VttToken[]) {
-  const layers = { map: 0, tokens: 1, gm: 2 };
-  return [...tokens].sort((a, b) => layers[a.layer] - layers[b.layer] || a.level - b.level);
+  return orderedAttachmentTokens(tokens);
 }
 export function folderTrail(doc: VttDocument, id: string | null) {
   const trail: VttDocument['folders'] = [];
@@ -521,6 +539,31 @@ export function distance(a: Point, b: Point, g: VttScene['grid']) {
           ? x + y
           : Math.hypot(x, y)) * g.scale
   );
+}
+/** Carries the 5/10 diagonal parity across every accepted leg of the path. */
+export function pathDistance(points: Point[], g: VttScene['grid']) {
+  let value = 0,
+    diagonals = 0;
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1],
+      b = points[i];
+    if (g.type === 'square' && g.diagonal === 'alternating') {
+      const x = Math.abs(a.x - b.x) / g.size,
+        y = Math.abs(a.y - b.y) / g.size,
+        diagonal = Math.min(x, y);
+      value +=
+        (Math.max(x, y) +
+          Math.floor((diagonals + diagonal + 1e-8) / 2) -
+          Math.floor((diagonals + 1e-8) / 2)) *
+        g.scale;
+      diagonals += diagonal;
+    } else value += distance(a, b, g);
+  }
+  return value;
+}
+export function rulerLabel(points: Point[], grid: VttScene['grid']) {
+  const feet = pathDistance(points, grid) / (grid.unit === 'm' ? 0.3048 : 1);
+  return feet.toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' ft';
 }
 export function intersection(
   a: Point,

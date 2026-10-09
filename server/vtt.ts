@@ -22,7 +22,14 @@ import {
 } from './vtt-premium.js';
 import { vttMonsterPresetRouter, saveMonsterPresets } from './vtt-monster-presets.js';
 import { vttDamageRouter } from './vtt-damage.js';
-import { movementBlocked } from '../shared/vtt-movement.js';
+import { movementBlocked, attachmentMovementError } from '../shared/vtt-movement.js';
+import {
+  attachmentError,
+  attachmentRoot,
+  attachmentUnavailable,
+  syncAttachmentPositions,
+  translateAttachmentGroup,
+} from '../shared/vtt-attachments.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
 import { vttCompanionsRouter } from './vtt-companions.js';
 import { translateMonsterLines } from './vtt-translate.js';
@@ -77,7 +84,7 @@ async function gm(db: DB, id: string, user: string, lock = false) {
   return r;
 }
 function canSee(t: VttToken, s: VttScene, user: string) {
-  if (t.hidden || t.layer === 'gm') return false;
+  if (attachmentUnavailable(s.tokens, t)) return false;
   if (t.controller === user) return true;
   if (s.fog && s.fogMode === 'manual' && !manualFogSees(t, s)) return false;
   if (!s.lighting && !(s.fog && s.fogMode === 'vision')) return true;
@@ -88,7 +95,9 @@ function playerDocument(doc: VttDocument, user: string, spectator = false): VttD
   const scene = doc.scenes.find((s) => s.id === doc.activeScene)!;
   const tokens = scene.tokens
     .filter((t) =>
-      spectator && !scene.fog && !user ? !t.hidden && t.layer !== 'gm' : canSee(t, scene, user),
+      spectator && !scene.fog && !user
+        ? !attachmentUnavailable(scene.tokens, t)
+        : canSee(t, scene, user),
     )
     .map((t) => ({
       ...t,
@@ -164,7 +173,9 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
   for (const asset of assets.rows) {
     if (
       (images.some((p) => vttAssetId(p) === asset.id) && asset.kind !== 'image') ||
-      (images.includes(vttAssetPath(asset.id, true)) && !asset.character_art_source && !asset.companion_art_source) ||
+      (images.includes(vttAssetPath(asset.id, true)) &&
+        !asset.character_art_source &&
+        !asset.companion_art_source) ||
       ((asset.id === doc.music.assetId || doc.scenes.some((s) => s.onLoadAudio === asset.id)) &&
         asset.kind !== 'audio')
     )
@@ -291,13 +302,17 @@ async function importCharacter(
   };
   if (existing) {
     if (!position) return false;
+    if (existing.attachment)
+      throw new AppError(400, 'Solte o vínculo antes de reposicionar este token.');
     if (existing.locked || (r.owner_id !== user && existing.hidden))
       throw new AppError(403, 'Este token está bloqueado ou oculto.');
     const destination = placement(existing);
     if (r.owner_id !== user && movementBlocked(scene, existing, destination))
       throw new AppError(400, 'Uma parede, porta fechada ou janela fechada bloqueia o movimento.');
     if (existing.x === destination.x && existing.y === destination.y) return false;
-    Object.assign(existing, destination);
+    const groupError = attachmentMovementError(scene, existing, [destination]);
+    if (groupError) throw new AppError(400, groupError);
+    translateAttachmentGroup(scene, existing, destination);
     return true;
   }
   const previousToken = r.document.scenes
@@ -404,7 +419,8 @@ export function vttRouter() {
   const router = express.Router();
   router.use((req, _res, next) => {
     const version = req.get('X-Vtt-Schema-Version');
-    if (version && version !== String(vttProtocolVersion)) throw new AppError(409, vttUpdateMessage);
+    if (version && version !== String(vttProtocolVersion))
+      throw new AppError(409, vttUpdateMessage);
     next();
   });
   router.use(vttCompanionsRouter(room, state));
@@ -476,6 +492,7 @@ export function vttRouter() {
       token.id = randomUUID();
       token.characterId = null;
       token.controller = null;
+      token.attachment = null;
       token.layer = 'tokens';
       token.x = Math.max(token.width / 2, Math.min(scene.width - token.width / 2, input.x));
       token.y = Math.max(token.height / 2, Math.min(scene.height - token.height / 2, input.y));
@@ -676,6 +693,13 @@ export function vttRouter() {
         if (typeof req.body.document[field] !== 'boolean')
           input.document[field] = r.document[field];
       for (const scene of input.document.scenes) {
+        syncAttachmentPositions(scene);
+        if (
+          scene.tokens.some(
+            (t) => t.attachment && (t.x < 0 || t.y < 0 || t.x > scene.width || t.y > scene.height),
+          )
+        )
+          throw new AppError(400, 'O token vinculado ficaria fora do mapa.');
         const previous = r.document.scenes.find((s) => s.id === scene.id);
         scene.blood = previous ? structuredClone(previous.blood) : [];
         for (const token of scene.tokens) {
@@ -804,6 +828,53 @@ export function vttRouter() {
     });
     res.json(await state(rid, res.locals.user.id));
   });
+  router.post('/vtt/rooms/:id/tokens/:token/attachment', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      tid = uuid.parse(req.params.token);
+    const { tokenId } = z.object({ tokenId: uuid.nullable() }).strict().parse(req.body);
+    await transaction(async (db) => {
+      const r = await room(db, rid, res.locals.user.id, true),
+        s = r.document.scenes.find((s) => s.id === r.document.activeScene)!;
+      const master =
+        r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id, db));
+      if (r.role === 'spectator' && !master)
+        throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
+      const child = s.tokens.find((t) => t.id === tid);
+      if (
+        !child ||
+        child.layer !== 'tokens' ||
+        (!master &&
+          (child.controller !== res.locals.user.id ||
+            child.locked ||
+            attachmentUnavailable(s.tokens, child)))
+      )
+        throw new AppError(403, 'Você não controla este token.');
+      if (tokenId) {
+        const parent = s.tokens.find((t) => t.id === tokenId);
+        if (
+          !parent ||
+          parent.layer !== 'tokens' ||
+          (!master &&
+            (parent.controller !== res.locals.user.id ||
+              parent.locked ||
+              !canSee(parent, s, res.locals.user.id)))
+        )
+          throw new AppError(403, 'Escolha um token de apoio que você possa mover.');
+        child.attachment = { tokenId, offsetX: 0, offsetY: 0 };
+        const error = attachmentError(s.tokens);
+        if (error) throw new AppError(400, error);
+        syncAttachmentPositions(s);
+        const base = attachmentRoot(s.tokens, parent);
+        const boundError = attachmentMovementError(s, base, [{ x: base.x, y: base.y }]);
+        if (boundError) throw new AppError(400, boundError);
+      } else child.attachment = null;
+      await db.query(
+        'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
+        [rid, JSON.stringify(r.document)],
+      );
+    });
+    res.json(await state(rid, res.locals.user.id));
+  });
   router.patch('/vtt/rooms/:id/tokens/:token', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       tid = uuid.parse(req.params.token);
@@ -826,13 +897,24 @@ export function vttRouter() {
         t = s.tokens.find((t) => t.id === tid);
       if (r.role === 'spectator')
         throw new AppError(403, 'Espectadores podem somente assistir à mesa.');
-      if (!t || t.hidden || t.layer !== 'tokens' || t.controller !== res.locals.user.id || t.locked)
+      if (
+        !t ||
+        attachmentUnavailable(s.tokens, t) ||
+        t.layer !== 'tokens' ||
+        t.controller !== res.locals.user.id ||
+        t.locked
+      )
         throw new AppError(403, 'Você não controla este token.');
       if (input.hp !== undefined && input.hp > t.hp)
         throw new AppError(403, 'Somente o mestre pode restaurar pontos de vida.');
       if (input.conditions && t.conditions.some((c) => !input.conditions!.includes(c)))
         throw new AppError(403, 'Somente o mestre pode remover condições.');
       const destination = { x: input.x ?? t.x, y: input.y ?? t.y };
+      if (t.attachment && (destination.x !== t.x || destination.y !== t.y))
+        throw new AppError(
+          400,
+          'Este token acompanha seu apoio. Mova o token de apoio ou solte o vínculo.',
+        );
       if (destination.x > s.width || destination.y > s.height)
         throw new AppError(400, 'Movimento fora do mapa.');
       const path = input.path || [destination];
@@ -840,6 +922,8 @@ export function vttRouter() {
       if (final.x !== destination.x || final.y !== destination.y)
         throw new AppError(400, 'O percurso deve terminar na posição informada.');
       let from = { x: t.x, y: t.y };
+      const groupError = attachmentMovementError(s, t, path);
+      if (groupError) throw new AppError(400, groupError);
       for (const to of path) {
         if (to.x < 0 || to.y < 0 || to.x > s.width || to.y > s.height)
           throw new AppError(400, 'Movimento fora do mapa.');
@@ -853,6 +937,7 @@ export function vttRouter() {
       const oldHp = t.hp;
       const old = structuredClone(t);
       const { path: _path, ...patch } = input;
+      if (!t.attachment) translateAttachmentGroup(s, t, destination);
       Object.assign(t, patch);
       applyTokenDeath(t, oldHp, Date.now(), r.document.automaticDeath);
       applyTokenBlood(s, t, old, path, Date.now(), r.document.bloodEnabled);
@@ -1108,7 +1193,8 @@ export function vttRouter() {
       } = await pool.query('SELECT * FROM vtt_assets WHERE id=$1', [id]);
     if (!a) throw new AppError(404, 'Arquivo não encontrado.');
     const topDown = req.path.endsWith('/top-down');
-    if (topDown && !a.character_art_source && !a.companion_art_source) throw new AppError(404, 'Token não encontrado.');
+    if (topDown && !a.character_art_source && !a.companion_art_source)
+      throw new AppError(404, 'Token não encontrado.');
     const r = await room(pool, a.room_id, res.locals.user.id);
     const isGm = r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id));
     let viewAs = res.locals.user.id;

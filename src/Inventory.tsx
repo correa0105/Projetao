@@ -19,6 +19,7 @@ import { Modal } from './components';
 import { api, post } from './api';
 import './inventory.css';
 import { inventoryPieceName } from './armor-set-options';
+import { InventoryBagTransfer } from './InventoryBagTransfer';
 
 const number = (value: number) =>
   new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(value);
@@ -26,7 +27,14 @@ const itemIcon = (item: Item) =>
   item.category === 'Armas' ? Sword : item.category === 'Armaduras' ? Shield : Package;
 type Place = 'backpack' | 'vault';
 type Storage = StorageState;
-type Transfer = { item: Item; from: Place; quantity: number; key: string };
+type Transfer = {
+  item: Item;
+  from: Place;
+  quantity: number;
+  key: string;
+  scope?: string;
+  target?: string;
+};
 function availableInventory(storage: Storage) {
   return storage.inventory
     .map((item) => ({
@@ -211,6 +219,7 @@ function StoragePanel({
   onTransfer,
   onDiscard,
   onShop,
+  ownerName,
 }: {
   place: Place;
   items: Item[];
@@ -220,10 +229,11 @@ function StoragePanel({
   onTransfer: (id: string, from: Place, single: boolean) => void;
   onDiscard: (id: string, from: Place) => void;
   onShop?: () => void;
+  ownerName?: string;
 }) {
   const [over, setOver] = useState(false);
   const isVault = place === 'vault';
-  const name = isVault ? 'Cofre' : 'Mochila';
+  const name = isVault ? 'Cofre' : 'Mochila' + (ownerName ? ' · ' + ownerName : '');
   const canDrop = !busy && dragged && dragged.from !== place;
   function drop(event: DragEvent) {
     event.preventDefault();
@@ -266,7 +276,7 @@ function StoragePanel({
           <p className="loot-storage-caption">
             {isVault
               ? 'Compartilhado entre seus personagens'
-              : 'Pertences do personagem selecionado'}
+              : 'Pertences de ' + (ownerName || 'personagem selecionado')}
           </p>
         </div>
         {onShop ? (
@@ -326,6 +336,7 @@ export function Inventory({
   const [equipmentSubject, setEquipmentSubject] = useState<'character' | 'mount' | 'pet'>(
     'character',
   );
+  const [selectedAnimalId, setSelectedAnimalId] = useState('');
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
@@ -364,11 +375,27 @@ export function Inventory({
       if (mounted.current) setError((e as Error).message);
     }
   }
+  function animalBag() {
+    return equipmentSubject === 'character'
+      ? undefined
+      : storage?.companions?.find(
+          (c) => c.kind === equipmentSubject && c.id === selectedAnimalId,
+        ) || storage?.companions?.find((c) => c.kind === equipmentSubject);
+  }
+  function bagItems() {
+    const animal = animalBag();
+    return equipmentSubject === 'character'
+      ? availableInventory(storage!)
+      : (animal?.inventory || [])
+          .map((i) => ({ ...i, quantity: (i.quantity || 0) - i.equipped_quantity }))
+          .filter((i) => i.quantity > 0);
+  }
+  function scope(from: Place) {
+    return from === 'vault' ? 'vault' : animalBag()?.id || 'character';
+  }
   function requestTransfer(id: string, from: Place, single: boolean) {
     if (!storage || inFlight.current) return;
-    const item = (from === 'backpack' ? availableInventory(storage) : storage.vault).find(
-      (item) => item.id === id,
-    );
+    const item = (from === 'backpack' ? bagItems() : storage.vault).find((item) => item.id === id);
     if (item) {
       setError('');
       const order = {
@@ -376,6 +403,8 @@ export function Inventory({
         from,
         quantity: single ? 1 : (item.quantity ?? 1),
         key: crypto.randomUUID(),
+        scope: scope(from),
+        target: from === 'backpack' ? 'vault' : scope('backpack'),
       };
       setTransfer(order);
       void submitTransfer(order);
@@ -383,13 +412,11 @@ export function Inventory({
   }
   function requestDiscard(id: string, from: Place) {
     if (!storage || inFlight.current) return;
-    const item = (from === 'backpack' ? availableInventory(storage) : storage.vault).find(
-      (item) => item.id === id,
-    );
+    const item = (from === 'backpack' ? bagItems() : storage.vault).find((item) => item.id === id);
     if (!item) return;
     setTransfer(null);
     setError('');
-    setDiscard({ item, from, quantity: 1, key: crypto.randomUUID() });
+    setDiscard({ item, from, quantity: 1, key: crypto.randomUUID(), scope: scope(from) });
   }
   async function submitDiscard() {
     if (!discard || inFlight.current) return;
@@ -397,13 +424,18 @@ export function Inventory({
     setBusy(true);
     setError('');
     try {
-      const value = await post<Storage>('/inventory/discards', {
-        character_id: character.id,
-        item_id: discard.item.id,
-        source: discard.from,
-        quantity: discard.quantity,
-        idempotency_key: discard.key,
-      });
+      const animalDiscard = discard.scope && !['character', 'vault'].includes(discard.scope);
+      const value = await post<Storage>(
+        animalDiscard ? '/inventory/bags/transfers' : '/inventory/discards',
+        {
+          character_id: character.id,
+          item_id: discard.item.id,
+          source: animalDiscard ? discard.scope : discard.from,
+          ...(animalDiscard ? { destination: 'discard' } : {}),
+          quantity: discard.quantity,
+          idempotency_key: discard.key,
+        },
+      );
       if (mounted.current) {
         setStorage(value);
         onInventoryChange(value.inventory);
@@ -493,13 +525,22 @@ export function Inventory({
     setBusy(true);
     setError('');
     try {
-      const value = await post<Storage>('/inventory/transfers', {
-        character_id: character.id,
-        item_id: order.item.id,
-        direction: order.from === 'backpack' ? 'to_vault' : 'to_backpack',
-        quantity: order.quantity,
-        idempotency_key: order.key,
-      });
+      const individual = !!(
+        (order.scope && !['character', 'vault'].includes(order.scope)) ||
+        (order.target && !['character', 'vault'].includes(order.target))
+      );
+      const value = await post<Storage>(
+        individual ? '/inventory/bags/transfers' : '/inventory/transfers',
+        {
+          character_id: character.id,
+          item_id: order.item.id,
+          ...(individual
+            ? { source: order.scope, destination: order.target }
+            : { direction: order.from === 'backpack' ? 'to_vault' : 'to_backpack' }),
+          quantity: order.quantity,
+          idempotency_key: order.key,
+        },
+      );
       if (mounted.current) {
         setStorage(value);
         onInventoryChange(value.inventory);
@@ -528,8 +569,16 @@ export function Inventory({
         )}
       </section>
     );
-  const count = storage.inventory.reduce((sum, item) => sum + (item.quantity ?? 0), 0);
-  const weight = storage.inventory.reduce(
+  const animal = animalBag();
+  const ownedItems =
+    equipmentSubject === 'character'
+      ? storage.inventory.map((i) => ({
+          ...i,
+          quantity: (i.quantity || 0) - (storage.companion_allocated?.[i.id] || 0),
+        }))
+      : animal?.inventory || [];
+  const count = ownedItems.reduce((sum, item) => sum + (item.quantity ?? 0), 0);
+  const weight = ownedItems.reduce(
     (sum, item) => sum + Number(item.weight_lb) * (item.quantity ?? 0),
     0,
   );
@@ -573,6 +622,17 @@ export function Inventory({
             </div>
           </section>
           <div className="equipment-workspace">
+            <InventoryBagTransfer
+              characterId={character.id}
+              storage={storage}
+              humanItems={availableInventory(storage)}
+              busy={busy}
+              onChange={(value) => {
+                setStorage(value);
+                onInventoryChange(value.inventory);
+                setNotice('Transferência concluída.');
+              }}
+            />
             <nav className="equipment-subjects" aria-label="Configurar equipamentos de">
               {(
                 [
@@ -585,7 +645,11 @@ export function Inventory({
                   type="button"
                   key={kind}
                   aria-pressed={equipmentSubject === kind}
-                  onClick={() => setEquipmentSubject(kind)}
+                  disabled={busy}
+                  onClick={() => {
+                    setEquipmentSubject(kind);
+                    setDragged(null);
+                  }}
                 >
                   {label}
                 </button>
@@ -611,13 +675,20 @@ export function Inventory({
                 dragged={dragged}
                 onInventoryRefresh={reload}
                 onRefresh={onRefresh}
+                selectedCompanionId={animal?.id}
+                onSelectCompanion={setSelectedAnimalId}
               />
             )}
           </div>
         </div>
         <StoragePanel
           place="backpack"
-          items={availableInventory(storage)}
+          items={bagItems()}
+          ownerName={
+            equipmentSubject === 'character'
+              ? character.name
+              : animal?.name || (equipmentSubject === 'mount' ? 'Montaria' : 'Mascote')
+          }
           busy={busy}
           dragged={dragged}
           onDrag={setDragged}
