@@ -17,9 +17,13 @@ void main(){
   float edge=length((uv-vec2(.5,.46))/vec2(.352,.405));
   float erosion=flow(uv*10.+vec2(time*.28,-time*.44));
   float silhouette=1.-smoothstep(.83+erosion*.10,1.10+erosion*.12,edge);
-  vec2 picture=(uv-vec2(32.,12.)/224.)/(vec2(160.,196.)/224.);
+  vec2 picture=(uv-vec2(22.,4.)/224.)/(vec2(180.,216.)/224.);
   vec4 face=texture2D(portrait,clamp(picture,0.,1.));
-  face.a*=silhouette*step(0.,picture.x)*step(picture.x,1.)*step(0.,picture.y)*step(picture.y,1.);
+  // Fade completely INSIDE the source bounds: cropping must never leave a straight edge.
+  vec2 inset=min(picture,1.-picture);
+  float dissolvingEdge=flow(uv*13.+vec2(time*.19,-time*.37));
+  float sourceFade=smoothstep(.008+dissolvingEdge*.022,.12+dissolvingEdge*.065,min(inset.x,inset.y));
+  face.a*=silhouette*sourceFade;
   float clearFace=smoothstep(.79,1.25,length((uv-vec2(.5,.40))/vec2(.25,.32)));
   float border=smoothstep(0.,.045,uv.x)*smoothstep(0.,.045,uv.y)*smoothstep(0.,.045,1.-uv.x)*smoothstep(0.,.045,1.-uv.y);
   vec4 mist=smoke(uv);

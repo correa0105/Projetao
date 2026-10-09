@@ -101,8 +101,8 @@ export function VttSelectionPortrait({
             <ellipse
               cx="112"
               cy="108"
-              rx="79"
-              ry="88"
+              rx="68"
+              ry="78"
               fill={'url(#' + id + 'fade)'}
               filter={'url(#' + id + 'vapor)'}
             />
@@ -110,10 +110,10 @@ export function VttSelectionPortrait({
         </defs>
         <image
           href={portraitImage.src}
-          x="32"
-          y="12"
-          width="160"
-          height="196"
+          x="22"
+          y="4"
+          width="180"
+          height="216"
           preserveAspectRatio="xMidYMin slice"
           mask={'url(#' + id + 'mask)'}
         />
