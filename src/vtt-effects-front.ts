@@ -13,6 +13,7 @@ import {
 } from './vtt-effects-primitives';
 import { drawExpandedEffect } from './vtt-effects-expanded';
 import { drawEffectCollection } from './vtt-effects-collection';
+import { drawAdvancedEffects } from './vtt-effects-advanced';
 import { effectFootprint } from './vtt-effect-footprint';
 
 type Random = (i: number) => number;
@@ -116,6 +117,8 @@ export function drawEffectLayer(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawAdvancedEffects(c, e, effectFootprint(160, 160, 100, 100), t, random, pass, detail))
+    return;
   if (drawEffectCollection(c, e, effectFootprint(160, 160, 100, 100), t, random, pass, detail))
     return;
   if (e.kind === 'fire') {

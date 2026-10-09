@@ -1,5 +1,9 @@
 # Alvorada Cinzenta
 
+VTT: personagens e monstros usam os mesmos efeitos atuais, com gelo completo
+da base à ponta. **30 novos modelos**, total de **66**, em Efeitos → Biblioteca.
+[Modelos, funcionamento e testes](docs/VTT-EFFECTS66-20261008.md).
+
 Inventário: clique no item → **Excluir item**, escolha a quantidade e confirme.
 Disponível na mochila e no cofre; unidades equipadas precisam ser desequipadas.
 O cachorro tem **Partes da armadura na imagem** antes de **Vestir**, como a barda

@@ -5,6 +5,8 @@ import { mkdir, readFile } from 'node:fs/promises';
 import { newToken } from '../shared/vtt';
 import { monsterActions } from '../shared/vtt-monster-actions';
 import { attackOutcome } from '../shared/vtt-attack';
+import { effectLibrary } from '../shared/vtt-effects';
+import { effectSound } from '../shared/vtt-effect-sounds';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
 const origin = 'http://localhost:3045';
@@ -57,11 +59,19 @@ for (const p of [page, peer]) {
 }
 await mkdir('test-results', { recursive: true });
 async function api(ctx: BrowserContext, path: string, method = 'GET', data?: unknown) {
-  const r = await ctx.request.fetch(origin + '/api' + path, {
-    method,
-    headers: { Origin: origin },
-    data,
-  });
+  const send = () =>
+    ctx.request.fetch(origin + '/api' + path, {
+      method,
+      headers: { Origin: origin },
+      data,
+    });
+  let r = await send();
+  if (r.status() === 429) {
+    const delay = Math.min(60, Math.max(1, Number(r.headers()['retry-after']) || 60));
+    console.log('Teste aguarda janela do limite de solicitações: ' + delay + ' s.');
+    await new Promise((resolve) => setTimeout(resolve, delay * 1000 + 100));
+    r = await send();
+  }
   return { status: r.status(), data: await r.json() };
 }
 async function signup(ctx: BrowserContext, name: string) {
@@ -121,9 +131,23 @@ try {
     ac: 0,
     image: '/vtt/monsters/monster-assassin.webp',
   };
+  const characterSource = (
+    await pool.query('SELECT id FROM characters WHERE user_id=$1 LIMIT 1', [user.id])
+  ).rows[0].id;
+  const characterImage = (
+    await pool.query(
+      "INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source) VALUES($1,'Token superior de teste','image','image/png',$2,1024,1024,$3) RETURNING id",
+      [
+        room.id,
+        await readFile('data/vtt/character-art/character-tokens-20261008/nana-top-down-v1.png'),
+        characterSource,
+      ],
+    )
+  ).rows[0].id;
   const hero = {
     ...newToken(randomUUID(), scene),
     name: 'Jogador',
+    image: '/api/vtt/assets/' + characterImage + '/top-down',
     x: 650,
     y: 710,
     width: 100,
@@ -473,6 +497,73 @@ try {
   await page.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
   await page.getByRole('button', { name: 'Mesa', exact: true }).click();
   await page.getByLabel('Volume dos efeitos e ataques', { exact: true }).fill('30');
+  // All 30 additions are saved and applied through the real server to a private
+  // character token and a monster, with player/spectator authorization preserved.
+  let expanded = (await api(gm, root)).data;
+  const additions = effectLibrary.slice(36).map((model) => ({
+    id: randomUUID(),
+    name: model.name,
+    kind: model.kind,
+    color: model.color,
+    scale: 2,
+    duration: 0,
+  }));
+  expanded.document.effects = additions;
+  expanded = (
+    await api(gm, root, 'PUT', { revision: expanded.revision, document: expanded.document })
+  ).data;
+  for (const preset of additions) {
+    await page.waitForTimeout(1400);
+    for (const scene of expanded.document.scenes)
+      for (const token of scene.tokens) token.effects = [];
+    expanded = (
+      await api(gm, root, 'PUT', { revision: expanded.revision, document: expanded.document })
+    ).data;
+    const applied = await api(gm, root + '/effects/' + preset.id + '/apply', 'POST', {
+      tokenIds: [actor.id, hero.id],
+    });
+    expect(applied.status, preset.kind).toBe(200);
+    expanded = applied.data;
+    for (const tokenId of [actor.id, hero.id]) {
+      const token = expanded.document.scenes[0].tokens.find((t: any) => t.id === tokenId);
+      expect(token.effects).toHaveLength(1);
+      expect(token.effects[0]).toMatchObject({
+        kind: preset.kind,
+        color: preset.color,
+        scale: 2,
+        duration: 0,
+      });
+    }
+    const playerState = (await api(player, root)).data;
+    expect(
+      playerState.document.scenes[0].tokens.find((t: any) => t.id === hero.id).effects[0].kind,
+    ).toBe(preset.kind);
+    const cue = await gm.request.get(origin + effectSound(preset.kind));
+    expect(cue.ok(), preset.kind + ' audio response').toBe(true);
+    expect((await cue.body()).subarray(0, 4).toString(), preset.kind + ' audio data').toBe('RIFF');
+  }
+  for (const ctx of [player, spectator])
+    expect(
+      (
+        await api(ctx, root + '/effects/' + additions[0].id + '/apply', 'POST', {
+          tokenId: hero.id,
+        })
+      ).status,
+    ).toBe(403);
+  expect((await api(gm, root)).data.document.effects).toEqual(additions);
+  await page.reload();
+  await expect(page.getByLabel('Tabuleiro da mesa', { exact: true })).toBeVisible();
+  expect((await api(gm, root)).data.document.effects).toHaveLength(30);
+  for (const scene of expanded.document.scenes)
+    for (const token of scene.tokens) token.effects = [];
+  expanded = (
+    await api(gm, root, 'PUT', { revision: expanded.revision, document: expanded.document })
+  ).data;
+  await page.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
+  await page.getByRole('button', { name: 'Mesa', exact: true }).click();
+  console.log(
+    'PASS 30 novos efeitos: salvar/recarregar, aplicar em personagem privado e monstro, cores/tamanho/infinito, sons e permissões',
+  );
   let saved = (await api(gm, root)).data;
   saved.document.effects = [
     {
@@ -488,7 +579,7 @@ try {
   expect(
     (
       await api(gm, root + '/effects/' + saved.document.effects[0].id + '/apply', 'POST', {
-        tokenId: actor.id,
+        tokenIds: [actor.id, hero.id],
       })
     ).status,
   ).toBe(200);

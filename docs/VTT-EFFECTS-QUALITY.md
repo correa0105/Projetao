@@ -1,5 +1,9 @@
 # Refino dos efeitos — PeriSFX e JB2A (07/10/2026)
 
+Ampliação posterior de 08/10: **66 modelos**, com 30 novas animações próprias e
+o mesmo renderer atual para personagens, monstros e imagens personalizadas.
+Gelo de personagens corrigido; [modelos e validação](VTT-EFFECTS66-20261008.md).
+
 ## Atualização de 08/10
 
 36 modelos com busca por nome/descrição e IDs anteriores conservados. Vinte

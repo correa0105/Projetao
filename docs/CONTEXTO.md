@@ -1,5 +1,23 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Efeitos de personagens e 30 novos modelos — 08/10/2026
+
+drawTokenEffects deixou de escolher geração do efeito pela URL da imagem. Todos
+os tokens usam o renderer atual visto de cima; personagens privados/customizados
+recebem o mesmo gelo preenchido da base à ponta e os outros efeitos dos monstros.
+Sem alterar as artes escolhidas, IDs de presets, seleção, menus ou dados da mesa.
+Biblioteca total de 66, com 30 novas geometrias e animações nos quatro grupos,
+pistas sonoras originais por família e controles existentes. Dez testes e QA
+pixel/animação/repouso em três proporções, quatro escalas e quatro larguras
+aprovados. Comparação de 65 modelos confirmou paridade entre imagens de monstro,
+personagem privado e personalizada. Guias VTT-EFFECTS66-20261008.md.
+Acervo 330×4 permanece pausado; oito arquivos do protótipo preservados.
+Mesa real em DB descartável verificou os 30 novos modelos em personagem privado
+e monstro, persistência, sons e permissões; regressões de controles/ataques
+aprovadas. Docker aplicado com hashes de bundles/servidor conferidos; 44 tabelas
+completas preservadas e backup integral validado. Ilustrador no release limpo,
+reiniciado com fila vazia para carregar a enumeração de efeitos nova.
+
 ## Exclusão no inventário e partes da armadura do cachorro — 08/10/2026
 
 Detalhes do item da mochila/cofre têm Excluir item. Modal mostra quantidade livre,

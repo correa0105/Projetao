@@ -6,6 +6,7 @@ import { projectOverheadEffect } from './vtt-effect-projection';
 import { materialSprite } from './vtt-effects-materials';
 import { drawOverheadMagic, energySpiral } from './vtt-effects-overhead-magic';
 import { drawEffectCollection } from './vtt-effects-collection';
+import { drawAdvancedEffects } from './vtt-effects-advanced';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -148,6 +149,7 @@ export function drawOverheadEffect(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawAdvancedEffects(c, e, f, t, random, pass, detail)) return;
   if (drawEffectCollection(c, e, f, t, random, pass, detail)) return;
   if (drawOverheadMagic(c, e, f, t, random, pass, detail)) return;
   if (e.kind === 'poison' || e.kind === 'shadow' || e.kind === 'fire' || e.kind === 'acid') {

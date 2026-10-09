@@ -1,5 +1,12 @@
 # Alvorada Cinzenta — instruções para continuidade
 
+Novo pedido de 08/10: todos os tokens de personagem devem usar os mesmos efeitos
+atuais dos monstros, inclusive gelo preenchido da base à ponta. Não escolher o
+renderer pela URL da imagem. Biblioteca ampliada de 36 para 66 com 30 modelos
+em vtt-effects-advanced.ts, metadata em shared/vtt-effects-extra.ts. Manter IDs
+anteriores, som/mute/volume, movimento reduzido e desligar efeitos. Guia
+VTT-EFFECTS66-20261008.md. Acervo 330×4 continua pausado e fora do release.
+
 Pedidos posteriores de 08/10: permitir excluir unidades livres da mochila/cofre
 por Excluir item nos detalhes, com quantidade e confirmação; sem devolver ouro,
 apagar compras ou excluir unidades reservadas por personagem/animais. Migration

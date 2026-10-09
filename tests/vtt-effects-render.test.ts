@@ -8,7 +8,12 @@ import {
   effectPresetSchema,
   tokenEffectSchema,
 } from '../shared/vtt-effects.js';
-import { effectFrame, effectGeometry, renderEffect } from '../src/vtt-effects-canvas.js';
+import {
+  effectFrame,
+  effectGeometry,
+  renderEffect,
+  drawTokenEffects,
+} from '../src/vtt-effects-canvas.js';
 import {
   clearEffectTextureCache,
   effectTextureCacheSize,
@@ -105,6 +110,65 @@ Object.defineProperty(globalThis, 'document', {
 });
 const id = '55555555-5555-4555-8555-555555555555';
 const base = { id, color: '#ad7654', scale: 1, duration: 5, at: 1000 };
+
+test('personagens, monstros e imagens customizadas usam a mesma versão de todos os efeitos', () => {
+  const oldNow = Date.now;
+  const oldMedia = Object.getOwnPropertyDescriptor(globalThis, 'matchMedia');
+  Date.now = () => 2800;
+  Object.defineProperty(globalThis, 'matchMedia', {
+    configurable: true,
+    value: () => ({ matches: false }),
+  });
+  try {
+    for (const e of effectLibrary.filter((e) => e.kind !== 'death'))
+      for (const pass of ['behind', 'front'] as const) {
+        const traces = [
+          '/api/vtt/premium-art/monster-knight',
+          '/api/vtt/assets/11111111-1111-4111-8111-111111111111/top-down',
+          '/api/characters/profile.png',
+          'https://custom.test/token.webp',
+        ].map((image) => {
+          const state = context();
+          drawTokenEffects(
+            state.c,
+            {
+              id,
+              image,
+              layer: 'tokens',
+              width: 90,
+              height: 150,
+              flipX: false,
+              flipY: false,
+              effects: [{ ...base, kind: e.kind, color: e.color }],
+            } as VttToken,
+            pass,
+          );
+          return { draws: state.draws, transforms: state.transforms, depth: state.depth };
+        });
+        for (const trace of traces)
+          assert.deepEqual(
+            trace,
+            traces[0],
+            e.kind + ' rendering must not depend on the image URL',
+          );
+      }
+    const state = context();
+    drawTokenEffects(state.c, {
+      id,
+      image: '/map.png',
+      layer: 'map',
+      width: 90,
+      height: 150,
+      effects: [{ ...base, kind: 'frost' }],
+    } as VttToken);
+    assert.equal(state.draws, 0);
+  } finally {
+    Date.now = oldNow;
+    if (oldMedia) Object.defineProperty(globalThis, 'matchMedia', oldMedia);
+    else Reflect.deleteProperty(globalThis, 'matchMedia');
+  }
+});
+
 test('prismas mantêm paredes largas e proporção em 0,5–3; eletricidade usa três fontes simultâneas', () => {
   for (const size of [5, 10, 20, 30]) {
     const v = crystalOutline(size);
@@ -128,13 +192,13 @@ test('prismas mantêm paredes largas e proporção em 0,5–3; eletricidade usa 
     }
 });
 
-test('biblioteca mantém IDs legados e 36 modelos com metadata validada', () => {
+test('biblioteca mantém IDs legados e 66 modelos com metadata validada', () => {
   assert.deepEqual(effectKinds.slice(0, 6), ['death', 'fire', 'frost', 'poison', 'heal', 'sparks']);
-  assert.equal(effectKinds.length, 36);
-  assert.equal(new Set(effectKinds).size, 36);
-  assert.equal(effectLibrary.length, 36);
-  assert.equal(effectNames.length, 36);
-  assert.equal(effectColors.length, 36);
+  assert.equal(effectKinds.length, 66);
+  assert.equal(new Set(effectKinds).size, 66);
+  assert.equal(effectLibrary.length, 66);
+  assert.equal(effectNames.length, 66);
+  assert.equal(effectColors.length, 66);
   for (const [i, e] of effectLibrary.entries()) {
     assert.equal(e.kind, effectKinds[i]);
     assert.equal(e.name, effectNames[i]);

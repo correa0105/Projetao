@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { extraEffectKinds, extraEffects } from './vtt-effects-extra.js';
 // The original six IDs and ordering are part of saved rooms and hotbar presets.
 export const effectKinds = [
   'death',
@@ -37,6 +38,7 @@ export const effectKinds = [
   'petals',
   'blades',
   'sonic',
+  ...extraEffectKinds,
 ] as const;
 export type EffectKind = (typeof effectKinds)[number];
 export const effectLibrary: {
@@ -302,6 +304,7 @@ effectLibrary.push(
     description: 'Frentes concêntricas de som ondulam com padrões de interferência.',
   },
 );
+effectLibrary.push(...extraEffects);
 export const effectNames = effectLibrary.map((e) => e.name);
 export const effectColors = effectLibrary.map((e) => e.color);
 const appearance = {

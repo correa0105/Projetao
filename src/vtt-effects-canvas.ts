@@ -55,7 +55,7 @@ export function renderEffect(
     c.lineCap = 'round';
     c.lineJoin = 'round';
     const random = seededRandom((options.seed || '') + effect.id);
-    if (options.overhead) {
+    if (options.overhead !== false) {
       c.scale(options.flipX ? -1 : 1, options.flipY ? -1 : 1);
       const footprint = effectFootprint(width, height, geometry.rx, geometry.ry, options.image);
       // Surface masks fit the real art; the saved effect size expands the
@@ -93,8 +93,10 @@ export function drawTokenEffects(
       reducedMotion,
       pass,
       seed: token.id,
-      overhead:
-        token.image.startsWith('/vtt/monsters/') || token.image.startsWith('/api/vtt/premium-art/'),
+      // Every table token uses the same floor-plane renderer, including private
+      // character art, imported portraits and custom images. URLs do not select
+      // a different generation of effects.
+      overhead: true,
       image,
       flipX: token.flipX,
       flipY: token.flipY,

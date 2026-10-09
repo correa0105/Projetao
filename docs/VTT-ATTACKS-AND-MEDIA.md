@@ -29,7 +29,7 @@ Em **Configurações e ajuda → Mesa → Personalização**:
 Preferências persistem por conta neste navegador, sem alterar a mesa nem outros
 participantes. Se necessário, ative o áudio neste navegador pela aba Som.
 
-Os 36 modelos têm pista sonora por família (18 pistas originais), tocada uma vez
+Os 66 modelos têm pista sonora por família (18 pistas originais), tocada uma vez
 quando aplicados; efeitos permanentes não repetem som em cada poll/render.
 Arco e impactos usam mais três pistas originais; corte usa o som CC0 já existente.
 Fonte reproduzível: `scripts/build-vtt-attack-sounds.mjs`. Arquivos e hashes em
