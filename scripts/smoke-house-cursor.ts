@@ -144,11 +144,31 @@ try {
     expect(Math.abs(dropped.y + dropped.height * fy - cursor.y - dy), 'drop y').toBeLessThan(2);
   }
   await place(0.19);
+  const flip = page.getByRole('button', { name: 'Espelhar imagem', exact: true });
+  const unflippedBounds = (await actor.boundingBox())!;
+  await flip.click();
+  await expect(flip).toHaveAttribute('aria-pressed', 'true');
+  await expect(actor.locator('img')).toHaveCSS('transform', 'matrix(-1, 0, 0, 1, 0, 0)');
+  const flippedBounds = (await actor.boundingBox())!;
+  for (const key of ['x', 'y', 'width', 'height'] as const)
+    expect(
+      Math.abs(unflippedBounds[key] - flippedBounds[key]),
+      'flip keeps actor anchor',
+    ).toBeLessThan(1);
+  expect(
+    await actor.locator('span').evaluate((el) => getComputedStyle(el).transform),
+  ).not.toContain('matrix(-1');
   await checkDrag(0.3, 0.5, 75, -40);
+  await page.reload();
+  await expect(flip).toHaveAttribute('aria-pressed', 'true');
+  await expect(actor.locator('img')).toHaveCSS('transform', 'matrix(-1, 0, 0, 1, 0, 0)');
+  await flip.click();
+  await expect(flip).toHaveAttribute('aria-pressed', 'false');
+  await expect(actor.locator('img')).toHaveCSS('transform', 'none');
   await place(0.19);
-  await checkDrag(0.65, 0.2, -30, 30);
+  await checkDrag(0.65, 0.8, -30, 30);
   await place(0.3, 0.76);
-  await checkDrag(0.7, 0.15, 20, 20);
+  await checkDrag(0.7, 0.85, 20, 20);
   await place(0.19);
   const scrollGrab = (await actor.boundingBox())!;
   const scrollCursor = {

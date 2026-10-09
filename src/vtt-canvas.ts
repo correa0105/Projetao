@@ -14,6 +14,7 @@ import {
 import { drawDeath } from './vtt-death';
 import { isTopDownTokenImage } from '../shared/vtt-token-image';
 import { drawTokenEffects } from './vtt-effects-canvas';
+import { drawBloodDecals, drawTokenBlood } from './vtt-blood-canvas';
 import { drawPing, type VttPing } from './vtt-ping';
 import { drawTurnEffect } from './vtt-turn-effect';
 import { drawSpellEffects, drawSpellPreview, type SpellPreview } from './vtt-spell-effects';
@@ -298,6 +299,10 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
     c.restore();
   };
   for (const layer of ['map', 'tokens', 'gm']) {
+    if (layer === 'tokens' && o.visualEffects !== false) drawBloodDecals(c, s, {
+      left: cam.x-width/2/cam.zoom, top: cam.y-height/2/cam.zoom,
+      right: cam.x+width/2/cam.zoom, bottom: cam.y+height/2/cam.zoom,
+    }, o.gm && !o.preview);
     if (layer === 'tokens' && o.visualEffects !== false && o.spellEffects) {
       drawSpellEffects(
         c,
@@ -408,6 +413,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       }
       c.restore();
       if (o.visualEffects !== false) drawTokenEffects(c, t, 'front', images.get(t.image));
+      if (o.visualEffects !== false) drawTokenBlood(c, t, images.get(t.image));
       if (o.selected.includes(t.id) || o.target === t.id) {
         const targeted = o.target === t.id;
         c.strokeStyle = targeted ? '#ef544b' : '#efd293';

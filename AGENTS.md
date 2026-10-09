@@ -1,5 +1,16 @@
 # Alvorada Cinzenta — instruções para continuidade
 
+Pedidos de 09/10: House tem Espelhar imagem para a presença própria, migration
+086 flip_x boolean preservado em movimentos antigos. Espelhar somente a arte,
+conservar âncora/chão/nome/falas. VTT calcula manchas e gotas/rastros no servidor
+por PV e movimentos aceitos; cura limpa o corpo, mestre pode limpar chão.
+Sangue respeita visão/ocultação, idempotência, efeitos desligados e dados antigos.
+Guia HOUSE-FLIP-BLOOD-20261009.md. Menu de visita agora é faixa compacta consistente
+nas cinco abas, com rolagem interna no celular e acampamento/ownership preservados.
+Refino JB2A dos 30 efeitos/339 magias, tokens de animais e 122 variantes temáticas
+do Empório EM ANDAMENTO;
+não confundir com reconstrução 330×4, que segue pausada.
+
 Novo pedido de 08/10: todos os tokens de personagem devem usar os mesmos efeitos
 atuais dos monstros, inclusive gelo preenchido da base à ponta. Não escolher o
 renderer pela URL da imagem. Biblioteca ampliada de 36 para 66 com 30 modelos

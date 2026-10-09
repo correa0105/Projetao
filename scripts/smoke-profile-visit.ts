@@ -193,7 +193,7 @@ try {
     expect(selector!.y).toBeLessThan(70);
     expect(selector!.x).toBeGreaterThan(width / 2);
     await expect(page.locator('.profile-signboard')).toHaveCount(5);
-    await expect(page.locator('.profile-visit-nav')).toHaveCSS(
+    await expect(page.locator('.profile-visit-nav')).not.toHaveCSS(
       'background-color',
       'rgba(0, 0, 0, 0)',
     );
@@ -204,28 +204,43 @@ try {
   const nav = page.locator('.profile-visit-nav');
   const sheet = nav.getByRole('button', { name: 'Ficha', exact: true });
   await page.mouse.move(20, 20);
-  const normal = await sheet
-    .locator('.profile-signboard-art')
-    .evaluate((el) => getComputedStyle(el).filter);
+  const normal = await sheet.evaluate((el) => getComputedStyle(el).filter);
   await sheet.hover();
-  const hover = await sheet
-    .locator('.profile-signboard-art')
-    .evaluate((el) => getComputedStyle(el).filter);
+  const hover = await sheet.evaluate((el) => getComputedStyle(el).filter);
   expect(hover).not.toBe(normal);
-  expect(hover).toContain('drop-shadow');
+  expect(hover).toContain('brightness');
   await page.screenshot({ path: 'test-results/profile-visit-signpost-hover.png' });
-  for (const [name, selector] of [
-    ['Conquistas', '.public-achievements'],
-    ['Ficha', '.public-sheet'],
-    ['Cartas', '.public-cards'],
-    ['Hall da Fama', '.public-profile-panel:has(.hall-of-fame)'],
-    ['Personagens', '.public-camp'],
-  ]) {
-    const button = nav.getByRole('button', { name, exact: true });
-    await button.click();
-    await expect(button).toHaveAttribute('aria-pressed', 'true');
-    await expect(page.locator(selector)).toHaveAttribute('aria-hidden', 'false');
+  for (const width of [1440, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    const railBounds = (await nav.boundingBox())!;
+    for (const [name, selector] of [
+      ['Conquistas', '.public-achievements'],
+      ['Ficha', '.public-sheet'],
+      ['Cartas', '.public-cards'],
+      ['Hall da Fama', '.public-profile-panel:has(.hall-of-fame)'],
+      ['Personagens', '.public-camp'],
+    ]) {
+      const button = nav.getByRole('button', { name, exact: true });
+      await button.click();
+      await expect(button).toHaveAttribute('aria-pressed', 'true');
+      await expect(page.locator(selector)).toHaveAttribute('aria-hidden', 'false');
+      const bounds = (await nav.boundingBox())!;
+      expect(bounds.x).toBeCloseTo(railBounds.x, 0);
+      expect(bounds.y).toBeCloseTo(railBounds.y, 0);
+      expect(bounds.height).toBeCloseTo(railBounds.height, 0);
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
+      ).toBe(true);
+      if (name !== 'Personagens') {
+        const heading = await page.locator(selector).locator('h2').first().boundingBox();
+        if (heading) expect(heading.y).toBeGreaterThan(bounds.y + bounds.height);
+      }
+      await page.screenshot({
+        path: 'test-results/profile-rail-' + width + '-' + name.replaceAll(' ', '-') + '.png',
+      });
+    }
   }
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.getByRole('combobox', { name: 'Personagem do perfil visitado' }).selectOption(b.id);
   await expect(page.locator('.public-camp-pet')).toContainText('Nuvem');
   await expect(page.locator('.public-camp-mount')).toContainText('Trovão');

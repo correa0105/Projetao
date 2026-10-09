@@ -4486,6 +4486,18 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </label>
                   {gm && (
                     <>
+                      <button
+                        disabled={busy || !scene.blood.length}
+                        onClick={() =>
+                          void act(async () => {
+                            await save();
+                            receive(await post<VttState>(`/vtt/rooms/${state.id}/blood/clear`, {}));
+                            setNotice('Sangue removido do chão deste mapa.');
+                          })
+                        }
+                      >
+                        Limpar sangue do mapa
+                      </button>
                       <label>
                         Nome da mesa
                         <input

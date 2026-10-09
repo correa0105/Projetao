@@ -101,7 +101,7 @@ async function state(db: DB, h: any, user: string) {
   );
   companions.rows = await withCompanionImages(db, h.character_id, companions.rows);
   const presence = await db.query(
-    `SELECT p.user_id,p.character_id,c.name,p.variant_id,p.room,p.x,p.y,p.scale,p.layer,p.depth_layer FROM house_presence p JOIN characters c ON c.id=p.character_id WHERE p.home_id=$1 AND c.deleted_at IS NULL AND (p.user_id=$2 OR EXISTS(SELECT 1 FROM house_invites i WHERE i.home_id=p.home_id AND i.user_id=p.user_id AND i.status='accepted')) AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=p.user_id AND b.blocked_id=$2)OR(b.blocker_id=$2 AND b.blocked_id=p.user_id))`,
+    `SELECT p.user_id,p.character_id,c.name,p.variant_id,p.room,p.x,p.y,p.scale,p.layer,p.depth_layer,p.flip_x FROM house_presence p JOIN characters c ON c.id=p.character_id WHERE p.home_id=$1 AND c.deleted_at IS NULL AND (p.user_id=$2 OR EXISTS(SELECT 1 FROM house_invites i WHERE i.home_id=p.home_id AND i.user_id=p.user_id AND i.status='accepted')) AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=p.user_id AND b.blocked_id=$2)OR(b.blocker_id=$2 AND b.blocked_id=p.user_id))`,
     [h.id, h.user_id],
   );
   const messages = await db.query(
@@ -535,6 +535,7 @@ export function houseRouter() {
         scale: z.number().min(0.05).max(0.45),
         layer: z.number().int().min(0).max(602).optional(),
         depth_layer: z.number().int().min(1).max(6).optional(),
+        flip_x: z.boolean().optional(),
       })
       .strict()
       .parse(req.body);
@@ -552,7 +553,7 @@ export function houseRouter() {
       )
         throw new AppError(400, 'Versão inválida.');
       await db.query(
-        `INSERT INTO house_presence(home_id,user_id,character_id,variant_id,room,x,y,scale,layer,depth_layer)VALUES($1,$2,$3,$4,$5,$6,$7,$8,COALESCE($9,602),$10)ON CONFLICT(home_id,user_id)DO UPDATE SET character_id=excluded.character_id,variant_id=excluded.variant_id,room=excluded.room,x=excluded.x,y=excluded.y,scale=excluded.scale,layer=COALESCE($9,house_presence.layer),depth_layer=COALESCE($10,house_presence.depth_layer),updated_at=now()`,
+        `INSERT INTO house_presence(home_id,user_id,character_id,variant_id,room,x,y,scale,layer,depth_layer,flip_x)VALUES($1,$2,$3,$4,$5,$6,$7,$8,COALESCE($9,602),$10,COALESCE($11,false))ON CONFLICT(home_id,user_id)DO UPDATE SET character_id=excluded.character_id,variant_id=excluded.variant_id,room=excluded.room,x=excluded.x,y=excluded.y,scale=excluded.scale,layer=COALESCE($9,house_presence.layer),depth_layer=COALESCE($10,house_presence.depth_layer),flip_x=COALESCE($11,house_presence.flip_x),updated_at=now()`,
         [
           h.id,
           res.locals.user.id,
@@ -564,6 +565,7 @@ export function houseRouter() {
           input.scale,
           input.layer ?? null,
           input.depth_layer ?? null,
+          input.flip_x ?? null,
         ],
       );
     });

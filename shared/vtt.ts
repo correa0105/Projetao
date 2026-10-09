@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { soundboardSchema, emptySoundboard } from './vtt-sounds.js';
 import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
 import { monsterCustomizationSchema } from './vtt-monster-presets.js';
+import { bloodStateSchema, bloodDecalSchema, MAX_BLOOD_DECALS } from './vtt-blood.js';
 const id = z.string().uuid();
 const coordinate = z.number().finite().min(-50000).max(50000);
 const color = z.string().regex(/^#[0-9a-f]{6}$/i);
@@ -81,6 +82,7 @@ export const tokenSchema = z
     hidden: z.boolean().default(false),
     hp: z.number().min(-10000).max(100000).default(10),
     maxHp: z.number().min(1).max(100000).default(10),
+    blood: bloodStateSchema.nullable().default(null),
     bossStyle: z.enum(storedBossStyles).nullable().default(null),
     deathAutomatic: z.boolean().default(false),
     deathAt: z.number().int().min(0).max(9999999999999).nullable().default(null),
@@ -186,6 +188,7 @@ export const sceneSchema = z
       .max(3000)
       .default([]),
     tokens: z.array(tokenSchema).max(1000),
+    blood: z.array(bloodDecalSchema).max(MAX_BLOOD_DECALS).default([]),
     walls: z.array(wallSchema).max(2000),
     lights: z.array(lightSchema).max(500).default([]),
     drawings: z.array(drawingSchema).max(2000),

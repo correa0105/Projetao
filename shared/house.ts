@@ -230,6 +230,7 @@ export type HouseState = {
     scale: number;
     layer: number;
     depth_layer?: number | null;
+    flip_x?: boolean;
   }[];
   invites: { user_id: string; name: string; status: string }[];
   messages: {

@@ -1,5 +1,13 @@
 # Alvorada Cinzenta
 
+House: **Personagem → Espelhar imagem** vira a figura e salva sua direção.
+VTT: dano/cura ajustam manchas de sangue; movimentos deixam gotas/rastros.
+O mestre pode limpar o chão em Configurações e ajuda → Mesa.
+[Funcionamento e verificação](docs/HOUSE-FLIP-BLOOD-20261009.md).
+
+Visitas de perfil: menu compacto com a mesma posição nas cinco abas, fundo
+discreto, foco visível e rolagem horizontal no celular.
+
 VTT: personagens e monstros usam os mesmos efeitos atuais, com gelo completo
 da base à ponta. **30 novos modelos**, total de **66**, em Efeitos → Biblioteca.
 [Modelos, funcionamento e testes](docs/VTT-EFFECTS66-20261008.md).

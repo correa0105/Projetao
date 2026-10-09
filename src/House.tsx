@@ -823,7 +823,7 @@ export function House({
       height: el.clientHeight,
     };
   }
-  function changeActorLayer(depth_layer: number) {
+  function changeActorAppearance(change: { depth_layer?: number; flip_x?: boolean }) {
     if (!ownActor) return;
     const actor = ownActor;
     void run(async () => {
@@ -837,14 +837,16 @@ export function House({
           y: actor.y,
           scale: actor.scale,
           layer: actor.layer,
-          depth_layer,
+          depth_layer: actor.depth_layer ?? undefined,
+          flip_x: actor.flip_x ?? false,
+          ...change,
         }),
       });
       setHome((h) =>
         h
           ? {
               ...h,
-              presence: h.presence.map((a) => (a.user_id === user.id ? { ...a, depth_layer } : a)),
+              presence: h.presence.map((a) => (a.user_id === user.id ? { ...a, ...change } : a)),
             }
           : h,
       );
@@ -1287,6 +1289,7 @@ export function House({
                     >
                       <img
                         draggable={false}
+                        style={{ transform: p.flip_x ? 'scaleX(-1)' : undefined }}
                         src={
                           p.variant_id
                             ? `/api/house/variants/${p.variant_id}/image`
@@ -1565,14 +1568,21 @@ export function House({
               </section>
             )}
             {ownActor && (
-              <div className="house-actor-controls" aria-label="Camadas do personagem">
+              <div className="house-actor-controls" aria-label="Aparência e camadas do personagem">
+                <button
+                  disabled={busy}
+                  aria-pressed={ownActor.flip_x ?? false}
+                  onClick={() => changeActorAppearance({ flip_x: !ownActor.flip_x })}
+                >
+                  Espelhar imagem
+                </button>
                 <label>
                   Camada do personagem
                   <select
                     aria-label="Camada do personagem"
                     value={ownActor.depth_layer ?? 3}
                     disabled={busy}
-                    onChange={(e) => changeActorLayer(Number(e.target.value))}
+                    onChange={(e) => changeActorAppearance({ depth_layer: Number(e.target.value) })}
                   >
                     {houseDepthLayers.map((layer) => (
                       <option value={layer} key={layer}>
@@ -1584,13 +1594,13 @@ export function House({
                 </label>
                 <button
                   disabled={busy || ownActor.depth_layer === 6}
-                  onClick={() => changeActorLayer(6)}
+                  onClick={() => changeActorAppearance({ depth_layer: 6 })}
                 >
                   Atrás da mobília
                 </button>
                 <button
                   disabled={busy || ownActor.depth_layer === 1}
-                  onClick={() => changeActorLayer(1)}
+                  onClick={() => changeActorAppearance({ depth_layer: 1 })}
                 >
                   À frente da mobília
                 </button>

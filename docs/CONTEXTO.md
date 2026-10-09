@@ -1,5 +1,36 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Espelhamento na House e sangue no VTT — 09/10/2026
+
+House → Personagem tem Espelhar imagem, persistido em house_presence.flip_x
+(migration 086). Vira só a imagem e conserva nomes, âncora, camadas, tamanho e
+perspectiva. Arraste legado conserva o valor; ownership permanece.
+
+VTT calcula sangue no servidor quando PV mudam e caminhos são aceitos: manchas
+crescem com dano, diminuem com cura, gotas espaçadas acima de metade dos PV,
+rastro denso na metade ou menos. Chão persiste até mestre limpar na Mesa.
+Limites de 12 manchas/800 marcas, alfa real, caches, ocultação/visão, replays e
+clientes antigos preservados. Sem dano extra/condição automática. Cinco testes
+unitários, API descartável, 17 testes da House e QA do navegador aprovados.
+Guia HOUSE-FLIP-BLOOD-20261009.md.
+
+Menu da visita virou faixa compacta com fundo discreto, mesma posição nas cinco
+abas e rolagem interna em telas estreitas. Comparação do acampamento em cinco
+telas e navegação nas cinco abas em quatro larguras aprovadas. Docker aplicado
+com backup integral validado, hash do servidor e preservação dos dados existentes
+em 44 tabelas; somente o novo default flip_x=false fora do hash. Ilustrador
+reiniciado no release limpo, online/fila vazia. Protótipo 330×4 preservado.
+
+Em andamento: usuário rejeitou qualidade dos 30 novos efeitos e de todas as
+339 magias; comparação direta com demos JB2A feita, refino ainda pendente.
+Não afirmar qualidade aprovada com base só em contagem de pixels. Ilustrador
+religado com sessão conectada. Pedidos posteriores: pares de arte/token para
+animais e tokens básicos por cor, puxar animais no VTT, e substituir todas
+as imagens repetidas do Empório por desenhos
+temáticos. Auditoria encontrou 13 grupos: 122 artes contando cura comum e
+excluindo quatro munições básicas. Quatro curas, quatro anéis e 15 poções gerados, demais
+em fila; ainda não publicados. Acervo 330×4 continua pausado.
+
 ## Efeitos de personagens e 30 novos modelos — 08/10/2026
 
 drawTokenEffects deixou de escolher geração do efeito pela URL da imagem. Todos

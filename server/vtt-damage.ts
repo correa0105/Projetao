@@ -5,6 +5,7 @@ import { isAdministrator } from './administrators.js';
 import { AppError } from './services.js';
 import { applyTokenDeath, type VttDocument, type VttScene, type VttToken } from '../shared/vtt.js';
 import type { PoolClient } from 'pg';
+import { applyTokenBlood } from '../shared/vtt-blood.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = { owner_id: string; document: VttDocument; role?: string | null };
 export function vttDamageRouter(
@@ -70,9 +71,11 @@ export function vttDamageRouter(
         );
       }
       if (!amount) return;
+      const old = structuredClone(target);
       const hp = target.hp;
       target.hp = Math.max(0, hp - amount);
       applyTokenDeath(target, hp);
+      applyTokenBlood(scene, target, old);
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
         [id, JSON.stringify(r.document)],

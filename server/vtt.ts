@@ -23,6 +23,7 @@ import {
 import { vttMonsterPresetRouter, saveMonsterPresets } from './vtt-monster-presets.js';
 import { vttDamageRouter } from './vtt-damage.js';
 import { movementBlocked } from '../shared/vtt-movement.js';
+import { applyTokenBlood } from '../shared/vtt-blood.js';
 import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
 import { attackOutcome } from '../shared/vtt-attack.js';
@@ -103,6 +104,24 @@ function playerDocument(doc: VttDocument, user: string, spectator = false): VttD
         ...scene,
         folderId: null,
         tokens,
+        blood: scene.blood.filter((mark) => {
+          if (mark.private) return false;
+          const source = scene.tokens.find((t) => t.id === mark.source);
+          if (source?.hidden || source?.layer === 'gm') return false;
+          if (spectator && !scene.fog && !user) return true;
+          // A decal never inherits its owner's always-visible privilege.
+          const point = {
+            ...(source || scene.tokens[0]),
+            x: mark.x,
+            y: mark.y,
+            width: mark.size,
+            height: mark.size,
+            hidden: false,
+            layer: 'tokens' as const,
+            controller: null,
+          };
+          return canSee(point as VttToken, scene, user);
+        }),
         drawings: scene.drawings.filter((d) => d.layer !== 'gm'),
       },
     ],
@@ -604,6 +623,14 @@ export function vttRouter() {
         );
       await validateAssets(db, rid, input.document);
       await validatePremiumImages(db, res.locals.user.id, paths(input.document), paths(r.document));
+      for (const scene of input.document.scenes) {
+        const previous = r.document.scenes.find((s) => s.id === scene.id);
+        scene.blood = previous ? structuredClone(previous.blood) : [];
+        for (const token of scene.tokens) {
+          const old = previous?.tokens.find((t) => t.id === token.id);
+          applyTokenBlood(scene, token, old || structuredClone(token));
+        }
+      }
       for (const s of input.document.scenes)
         for (const t of s.tokens) {
           const old = r.document.scenes
@@ -674,6 +701,18 @@ export function vttRouter() {
           });
         }
       }
+      await db.query(
+        'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
+        [rid, JSON.stringify(r.document)],
+      );
+    });
+    res.json(await state(rid, res.locals.user.id));
+  });
+  router.post('/vtt/rooms/:id/blood/clear', async (req, res) => {
+    const rid = uuid.parse(req.params.id);
+    await transaction(async (db) => {
+      const r = await gm(db, rid, res.locals.user.id, true);
+      r.document.scenes.find((s) => s.id === r.document.activeScene)!.blood = [];
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
         [rid, JSON.stringify(r.document)],
@@ -753,9 +792,11 @@ export function vttRouter() {
         from = to;
       }
       const oldHp = t.hp;
+      const old = structuredClone(t);
       const { path: _path, ...patch } = input;
       Object.assign(t, patch);
       applyTokenDeath(t, oldHp);
+      applyTokenBlood(s, t, old, path);
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
         [rid, JSON.stringify(r.document)],
@@ -927,7 +968,10 @@ export function vttRouter() {
   router.post('/vtt/rooms/:id/characters/:character', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       cid = uuid.parse(req.params.character);
-    const input = z.object({ position: pointSchema.optional() }).strict().parse(req.body ?? {});
+    const input = z
+      .object({ position: pointSchema.optional() })
+      .strict()
+      .parse(req.body ?? {});
     await room(pool, rid, res.locals.user.id);
     await transaction(async (db) => {
       const r = await room(db, rid, res.locals.user.id, true);

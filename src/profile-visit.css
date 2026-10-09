@@ -364,3 +364,86 @@
     transition: none;
   }
 }
+
+/* A single compact rail keeps the same silhouette on every visited tab. */
+:root .visiting .profile-visit-nav {
+  top: 106px;
+  left: var(--page-header-edge);
+  right: var(--page-header-edge);
+  width: auto;
+  max-width: 780px;
+  padding: 5px;
+  flex-direction: row;
+  gap: 5px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a38b56 transparent;
+  border: 1px solid #a38b5666;
+  border-radius: 7px;
+  background: #171814e8;
+  box-shadow: 0 3px 12px #0007;
+  backdrop-filter: blur(5px);
+}
+:root .visiting .profile-signboard,
+:root .visiting .profile-signboard[aria-pressed='true'] {
+  width: auto;
+  min-width: 114px;
+  min-height: 37px;
+  flex: 1 0 auto;
+  aspect-ratio: auto;
+  padding: 7px 10px !important;
+  border: 1px solid #b6975c33;
+  border-radius: 4px;
+  background:
+    linear-gradient(#30271f85, #171613bb),
+    url('/profile-signboard-v1.webp') center/cover !important;
+  transform: none;
+  transition:
+    border-color 150ms,
+    filter 150ms;
+}
+:root .visiting .profile-signboard > span {
+  width: auto;
+  padding: 0;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+:root .visiting .profile-signboard > span > svg {
+  width: 13px;
+  height: 13px;
+  flex-basis: 13px;
+}
+:root .visiting .profile-signboard:is(:hover, :focus-visible, [aria-pressed='true']) {
+  border-color: #d2b378;
+  filter: brightness(1.2);
+  box-shadow: inset 0 0 0 1px #d2b37833;
+}
+:root .visiting .profile-signboard:focus-visible {
+  outline: 2px solid #f1d097;
+  outline-offset: 1px;
+}
+:root .visiting .public-profile-panel:not(.public-camp) {
+  padding-top: 178px;
+}
+:root .visiting .public-profile-panel .hall-of-fame.embedded,
+:root .visiting .public-card-collection {
+  padding-right: 0;
+}
+@media (max-width: 900px) {
+  :root .visiting .profile-visit-nav {
+    top: 132px;
+    left: 18px;
+    right: 18px;
+    max-width: none;
+  }
+  :root .visiting .public-profile-panel:not(.public-camp) {
+    padding-top: 206px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root .visiting .profile-signboard {
+    transition: none;
+  }
+}

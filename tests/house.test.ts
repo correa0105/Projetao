@@ -656,12 +656,48 @@ test('House: propriedade, economia, decoração, presentes e RP em PostgreSQL is
           200,
         );
         assert.equal((await load()).presence.find((p: any) => p.user_id === owner.id).layer, 0);
+        assert.equal(
+          (await load()).presence.find((p: any) => p.user_id === owner.id).flip_x,
+          false,
+        );
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, owner, 'PUT', { ...input, flip_x: true }))
+            .status,
+          200,
+        );
+        assert.equal((await load()).presence.find((p: any) => p.user_id === owner.id).flip_x, true);
+        for (const invalid of ['true', 1, null])
+          assert.equal(
+            (
+              await request(`/house/${home.id}/presence`, owner, 'PUT', {
+                ...input,
+                flip_x: invalid,
+              })
+            ).status,
+            400,
+          );
         const { layer, ...legacy } = input;
         assert.equal(
           (await request(`/house/${home.id}/presence`, owner, 'PUT', { ...legacy, x: 0.6 })).status,
           200,
         );
         assert.equal((await load()).presence.find((p: any) => p.user_id === owner.id).layer, 0);
+        assert.equal((await load()).presence.find((p: any) => p.user_id === owner.id).flip_x, true);
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, guest, 'PUT', { ...input, flip_x: false }))
+            .status,
+          404,
+        );
+        assert.equal((await load()).presence.find((p: any) => p.user_id === owner.id).flip_x, true);
+        assert.equal(
+          (await request(`/house/${home.id}/presence`, owner, 'PUT', { ...input, flip_x: false }))
+            .status,
+          200,
+        );
+        assert.equal(
+          (await load()).presence.find((p: any) => p.user_id === owner.id).flip_x,
+          false,
+        );
         for (const invalid of [-1, 603, 0.5])
           assert.equal(
             (

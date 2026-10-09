@@ -8,6 +8,7 @@ import { isAdministrator, requireAdministrator } from './administrators.js';
 import { deriveSheet, classRules } from '../shared/character-sheet.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
 import { applyTokenDeath, type VttDocument } from '../shared/vtt.js';
+import { applyTokenBlood } from '../shared/vtt-blood.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = { id: string; owner_id: string; document: VttDocument; role?: string | null };
 export type RoomAccess = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
@@ -129,8 +130,14 @@ export function vttSheetRouter(getRoom: RoomAccess) {
     await transaction(async (db) => {
       const a = await access(getRoom, db, rid, tid, user, true);
       const oldHp = a.token.hp;
+      const old = structuredClone(a.token);
       a.token.hp = Math.max(0, a.token.hp - amount);
       applyTokenDeath(a.token, oldHp);
+      applyTokenBlood(
+        a.room.document.scenes.find((s) => s.id === a.room.document.activeScene)!,
+        a.token,
+        old,
+      );
       await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
         rid,
         JSON.stringify(a.room.document),
@@ -157,8 +164,14 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       const a = await access(getRoom, db, rid, tid, user, true);
       if (!a.isGm) throw new AppError(403, 'Somente o mestre desta mesa pode curar manualmente.');
       const oldHp = a.token.hp;
+      const old = structuredClone(a.token);
       a.token.hp = Math.min(a.token.maxHp, a.token.hp + amount);
       applyTokenDeath(a.token, oldHp);
+      applyTokenBlood(
+        a.room.document.scenes.find((s) => s.id === a.room.document.activeScene)!,
+        a.token,
+        old,
+      );
       await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
         rid,
         JSON.stringify(a.room.document),
@@ -293,6 +306,7 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       if (!a.isGm) throw new AppError(403, 'Somente o mestre desta mesa pode restaurar recursos.');
       const cid = a.character.id,
         r = await resources(db, a.character, a.sheet, true);
+      const old = structuredClone(a.token);
       if (input.kind === 'use') {
         const {
           rows: [use],
@@ -333,6 +347,11 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       } else if (input.kind === 'hp') a.token.hp = a.token.maxHp;
       else throw new AppError(400, 'Escolha o recurso a restaurar.');
       if (input.kind === 'hp' || input.kind === 'all') a.token.deathAt = null;
+      applyTokenBlood(
+        a.room.document.scenes.find((s) => s.id === a.room.document.activeScene)!,
+        a.token,
+        old,
+      );
       await db.query(
         'UPDATE vtt_character_resources SET slots_used=$2,hit_dice_used=$3,updated_at=now()WHERE character_id=$1',
         [cid, JSON.stringify(r.slots_used), r.hit_dice_used],
