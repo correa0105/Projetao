@@ -18,7 +18,7 @@ export async function readVttLoadout(
   const {
     rows: [saved],
   } = await db.query(
-    'SELECT main_hand,off_hand FROM vtt_weapon_loadouts WHERE room_id=$1 AND character_id=$2',
+    'SELECT main_hand,off_hand,main_hand_two_handed FROM vtt_weapon_loadouts WHERE room_id=$1 AND character_id=$2',
     [roomId, character.id],
   );
   const owned = new Set(available_weapons.map((w) => w.itemId));
@@ -30,12 +30,19 @@ export async function readVttLoadout(
       loadout.inventory.find((i) => owned.has(i.id) && i.equipped.includes('off_hand'))?.id || null,
   };
   const selected = saved || defaults;
+  const main = available_weapons.find((w) => w.itemId === selected.main_hand),
+    twoHands =
+      !!main && (main.twoHanded || (!!saved?.main_hand_two_handed && !!main.versatileDice));
   const weapon_slots = {
     main_hand: owned.has(selected.main_hand) ? selected.main_hand : null,
-    off_hand: owned.has(selected.off_hand) ? selected.off_hand : null,
+    off_hand: !twoHands && owned.has(selected.off_hand) ? selected.off_hand : null,
+    main_hand_two_handed: twoHands,
   };
-  const attacks = available_weapons.filter(
-    (w) => w.itemId === weapon_slots.main_hand || w.itemId === weapon_slots.off_hand,
-  );
+  const attacks = available_weapons
+    .filter((w) => w.itemId === weapon_slots.main_hand || w.itemId === weapon_slots.off_hand)
+    .map((w) => ({
+      ...w,
+      dice: w.itemId === weapon_slots.main_hand && twoHands ? w.versatileDice || w.dice : w.dice,
+    }));
   return { ...loadout, attacks, available_weapons, weapon_slots };
 }

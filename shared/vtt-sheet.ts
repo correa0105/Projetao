@@ -37,7 +37,11 @@ export type VttSheetData = {
   derived: ReturnType<typeof deriveSheet> | null;
   attacks: EquippedAttack[];
   available_weapons: EquippedAttack[];
-  weapon_slots: { main_hand: string | null; off_hand: string | null };
+  weapon_slots: {
+    main_hand: string | null;
+    off_hand: string | null;
+    main_hand_two_handed: boolean;
+  };
   inventory: {
     id: string;
     name: string;

@@ -118,6 +118,7 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       .object({
         main_hand: z.string().min(1).max(180).nullable(),
         off_hand: z.string().min(1).max(180).nullable(),
+        main_hand_two_handed: z.boolean().optional(),
       })
       .strict()
       .parse(req.body);
@@ -130,11 +131,18 @@ export function vttSheetRouter(getRoom: RoomAccess) {
         throw new AppError(400, 'Escolha uma arma que esteja na mochila deste personagem.');
       if (input.main_hand && input.main_hand === input.off_hand)
         throw new AppError(400, 'Escolha armas diferentes para as mãos.');
-      if (off?.twoHanded || (main?.twoHanded && off))
+      const requestedGrip =
+        input.main_hand_two_handed ??
+        (input.main_hand === loadout.weapon_slots.main_hand &&
+          loadout.weapon_slots.main_hand_two_handed);
+      if (requestedGrip && (!main || (!main.twoHanded && !main.versatileDice)))
+        throw new AppError(400, 'Esta arma não possui uma opção de dano com duas mãos.');
+      const twoHands = !!main && (main.twoHanded || requestedGrip);
+      if (off?.twoHanded || (twoHands && off))
         throw new AppError(400, 'Esta arma ocupa as duas mãos.');
       await db.query(
-        'INSERT INTO vtt_weapon_loadouts(room_id,character_id,main_hand,off_hand)VALUES($1,$2,$3,$4)ON CONFLICT(room_id,character_id)DO UPDATE SET main_hand=$3,off_hand=$4,updated_at=now()',
-        [rid, a.character.id, input.main_hand, input.off_hand],
+        'INSERT INTO vtt_weapon_loadouts(room_id,character_id,main_hand,off_hand,main_hand_two_handed)VALUES($1,$2,$3,$4,$5)ON CONFLICT(room_id,character_id)DO UPDATE SET main_hand=$3,off_hand=$4,main_hand_two_handed=$5,updated_at=now()',
+        [rid, a.character.id, input.main_hand, input.off_hand, twoHands],
       );
     });
     res.json(await sheetData(getRoom, rid, tid, user));

@@ -1004,10 +1004,13 @@ export function sheetAttacks(
       const monk = cls === 'Monge' && !w.ranged && (!w.martial || light.includes(name));
       const dex = w.ability === 'dex' || ((w.ability === 'finesse' || monk) && stats[1] > stats[0]);
       const ability = modifier(stats[dex ? 1 : 0]),
-        trained = trainedWeapon(cls, name, c);
+        trained = trainedWeapon(cls, name, c),
+        dice = w.dice.match(/^\d+d\d+/)?.[0] || w.dice,
+        versatileDice = w.dice.match(/\((\d+d\d+) com duas mãos\)/)?.[1] || null;
       return {
         name,
-        dice: monk && w.dice === '1d4' ? '1d6' : w.dice,
+        dice: monk && dice === '1d4' ? '1d6' : dice,
+        versatileDice,
         type: w.type,
         ability,
         trained,

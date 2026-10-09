@@ -88,8 +88,11 @@ try {
   ]);
   let room = (await api(gm, '/vtt', 'POST', { name: 'Armas e retrato' })).data,
     root = '/vtt/rooms/' + room.id;
-  const stale = await gm.request.get(origin+'/api'+root,{headers:{'X-Vtt-Schema-Version':'4'}});
-  expect(stale.status()).toBe(409);expect((await stale.json()).error).toContain('Recarregue');
+  const stale = await gm.request.get(origin + '/api' + root, {
+    headers: { 'X-Vtt-Schema-Version': '4' },
+  });
+  expect(stale.status()).toBe(409);
+  expect((await stale.json()).error).toContain('Recarregue');
   await api(player, '/vtt/join', 'POST', { invite: room.invite, role: 'player' });
   room = (await api(gm, root)).data;
   room.document.scenes[0].fog = room.document.scenes[0].lighting = false;
@@ -106,7 +109,7 @@ try {
     (await api(player, url + '/weapons', 'PUT', { main_hand: 'flail', off_hand: null })).status,
   ).toBe(400);
   await pool.query(
-    "INSERT INTO inventory(character_id,item_id,quantity)VALUES($1,'flail',1),($1,'greatsword',1),($1,'dagger',1),($1,'leather-armor',1)",
+    "INSERT INTO inventory(character_id,item_id,quantity)VALUES($1,'flail',1),($1,'greatsword',1),($1,'dagger',1),($1,'longsword',1),($1,'leather-armor',1)",
     [c.id],
   );
   sheet = (await api(player, url)).data;
@@ -115,6 +118,7 @@ try {
     'dagger',
     'flail',
     'greatsword',
+    'longsword',
   ]);
   let selected = await api(player, url + '/weapons', 'PUT', {
     main_hand: 'flail',
@@ -143,6 +147,50 @@ try {
   expect(
     (await api(gm, url + '/weapons', 'PUT', { main_hand: 'javelin', off_hand: null })).status,
   ).toBe(400);
+  const grip = await api(player, url + '/weapons', 'PUT', {
+    main_hand: 'longsword',
+    off_hand: null,
+    main_hand_two_handed: true,
+  });
+  expect(grip.status).toBe(200);
+  expect(grip.data.attacks[0].dice).toBe('1d10');
+  expect((await api(player, url)).data.weapon_slots.main_hand_two_handed).toBe(true);
+  expect(
+    (
+      await api(player, url + '/weapons', 'PUT', {
+        main_hand: 'longsword',
+        off_hand: 'dagger',
+        main_hand_two_handed: true,
+      })
+    ).status,
+  ).toBe(400);
+  expect(
+    (
+      await api(player, url + '/weapons', 'PUT', {
+        main_hand: 'flail',
+        off_hand: null,
+        main_hand_two_handed: true,
+      })
+    ).status,
+  ).toBe(400);
+  expect(
+    (await api(player, url + '/weapons', 'PUT', { main_hand: 'longsword', off_hand: null })).data
+      .attacks[0].dice,
+  ).toBe('1d10');
+  expect(
+    (
+      await api(player, url + '/weapons', 'PUT', {
+        main_hand: 'longsword',
+        off_hand: 'dagger',
+        main_hand_two_handed: false,
+      })
+    ).data.attacks.find((w: any) => w.itemId === 'longsword').dice,
+  ).toBe('1d8');
+  await api(player, url + '/weapons', 'PUT', {
+    main_hand: 'flail',
+    off_hand: 'dagger',
+    main_hand_two_handed: false,
+  });
   const portraitPath = root + '/tokens/' + token.id + '/portrait';
   const portrait = await api(player, portraitPath);
   expect(portrait.status).toBe(200);
@@ -194,11 +242,43 @@ try {
   const portraitHud = page.getByLabel('Retrato de ' + c.name, { exact: true });
   await expect(portraitHud).toBeVisible();
   expect(await portraitHud.locator('image').first().getAttribute('href')).toContain('/portrait?');
+  await expect(portraitHud).toHaveAttribute('data-flowing', 'true');
+  const flowCanvas = portraitHud.locator('canvas');
+  expect(await flowCanvas.getAttribute('data-renderer')).toBe('webgl');
+  await flowCanvas.screenshot({ path: 'test-results/vtt-smoke-flow-0.png' });
+  await page.waitForTimeout(700);
+  await flowCanvas.screenshot({ path: 'test-results/vtt-smoke-flow-700.png' });
+  const frame1 = await sharp('test-results/vtt-smoke-flow-0.png').ensureAlpha().raw().toBuffer(),
+    frame2 = await sharp('test-results/vtt-smoke-flow-700.png').ensureAlpha().raw().toBuffer();
+  const changes = frame1.reduce((n, v, i) => n + (Math.abs(v - frame2[i]) > 8 ? 1 : 0), 0);
+  expect(changes).toBeGreaterThan(frame1.length * 0.025);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(portraitHud).toHaveAttribute('data-animated', 'false');
+  await expect(portraitHud).toHaveAttribute('data-flowing', 'false');
   await page.getByRole('button', { name: 'Abrir folha completa', exact: true }).click();
   const weapons = page.getByLabel('Arma na mesa', { exact: true });
   await expect(weapons).toHaveValue('flail');
+  await weapons.selectOption('longsword');
+  const gripChoice = page.getByLabel('Empunhadura da arma', { exact: true });
+  await expect(gripChoice).toHaveValue('one');
+  await gripChoice.selectOption('two');
+  await expect(gripChoice).toHaveValue('two');
+  await expect(page.getByLabel('Arma secundária na mesa', { exact: true })).toBeDisabled();
+  await page.getByRole('button', { name: '1d10+2', exact: true }).click();
+  await expect
+    .poll(
+      async () =>
+        (
+          await pool.query(
+            "SELECT roll->>'formula' formula FROM vtt_messages WHERE room_id=$1 AND roll IS NOT NULL ORDER BY id DESC LIMIT 1",
+            [room.id],
+          )
+        ).rows[0]?.formula,
+    )
+    .toBe('1d10+2');
+  await page.screenshot({ path: 'test-results/vtt-versatile-two-hands.png' });
+  await gripChoice.selectOption('one');
+  await expect(page.getByLabel('Arma secundária na mesa', { exact: true })).toBeEnabled();
   await weapons.selectOption('greatsword');
   await expect(weapons).toHaveValue('greatsword');
   await expect(page.getByLabel('Arma secundária na mesa', { exact: true })).toBeDisabled();
@@ -223,6 +303,27 @@ try {
   ).toBeVisible();
   expect((await api(player, url)).data.attacks).toEqual([]);
   await page.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
+  await page.getByRole('button', { name: 'Abrir folha completa', exact: true }).click();
+  await weapons.selectOption('longsword');
+  await gripChoice.selectOption('two');
+  await expect(gripChoice).toHaveValue('two');
+  await page.getByRole('button', { name: 'Fixar Espada longa', exact: true }).click();
+  await page.getByRole('button', { name: 'Fechar Ficha · ' + c.name, exact: true }).click();
+  await page.getByRole('button', { name: 'Atalho 2 · Espada longa', exact: true }).click();
+  await page.getByRole('button', { name: 'Rolar dano separado', exact: true }).click();
+  await expect
+    .poll(
+      async () =>
+        (
+          await pool.query(
+            "SELECT roll->>'formula' formula FROM vtt_messages WHERE room_id=$1 AND roll IS NOT NULL ORDER BY id DESC LIMIT 1",
+            [room.id],
+          )
+        ).rows[0]?.formula,
+    )
+    .toBe('1d10+2');
+  await expect(page.getByRole('alert').filter({ hasText: 'Fórmula inválida' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
   await selectToken();
   await page.screenshot({ path: 'test-results/vtt-selection-smoke-1440.png' });
   await master.goto(origin + '/#vtt');
@@ -245,8 +346,9 @@ try {
     await master.screenshot({ path: `test-results/vtt-left-effects-smoke-${width}.png` });
     await master.getByRole('button', { name: 'Fechar efeitos', exact: true }).click();
     if (width <= 1100) {
-      const portraitBox=(await master.locator('.vtt-selection-portrait').boundingBox())!,hotbarBox=(await master.locator('.vtt-hotbar').boundingBox())!;
-      expect(portraitBox.y+portraitBox.height).toBeLessThanOrEqual(hotbarBox.y);
+      const portraitBox = (await master.locator('.vtt-selection-portrait').boundingBox())!,
+        hotbarBox = (await master.locator('.vtt-hotbar').boundingBox())!;
+      expect(portraitBox.y + portraitBox.height).toBeLessThanOrEqual(hotbarBox.y);
     }
   }
   expect(errors).toEqual([]);

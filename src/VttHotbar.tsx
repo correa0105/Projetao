@@ -253,18 +253,22 @@ export function VttHotbar({
             method: 'PUT',
             body: JSON.stringify({
               main_hand: weapon.itemId,
+              main_hand_two_handed: weapon.twoHanded,
               off_hand:
                 weapon.twoHanded || data.weapon_slots.off_hand === weapon.itemId
                   ? null
                   : data.weapon_slots.off_hand,
             }),
           });
+        const activeWeapon = data.attacks.find((w) => w.itemId === weapon.itemId);
+        if (!activeWeapon) throw Error('Selecione esta arma novamente em Armas na mesa.');
         onAttack({
           actorId: data.token.id,
           weaponItemId: weapon.itemId,
           name: data.token.name + ' · ' + weapon.name,
-          attack: '1d20' + signed(weapon.attack),
-          damage: weapon.dice === '—' ? [] : [weapon.dice + signed(weapon.ability)],
+          attack: '1d20' + signed(activeWeapon.attack),
+          damage:
+            activeWeapon.dice === '—' ? [] : [activeWeapon.dice + signed(activeWeapon.ability)],
         });
       }
       setSelected({ action, data, index });
@@ -424,10 +428,16 @@ export function VttHotbar({
                 const current = await api<VttSheetData>(
                   `/vtt/rooms/${roomId}/sheets/${attack.actorId}`,
                 );
-                if (!current.attacks.some((w) => w.itemId === attack.weaponItemId))
+                const weapon = current.attacks.find((w) => w.itemId === attack.weaponItemId);
+                if (!weapon)
                   throw Error(
                     'A arma foi trocada ou saiu da mochila. Selecione o ataque novamente.',
                   );
+                if (
+                  JSON.stringify(attack.damage) !==
+                  JSON.stringify(weapon.dice === '—' ? [] : [weapon.dice + signed(weapon.ability)])
+                )
+                  throw Error('A empunhadura da arma mudou. Selecione o ataque novamente.');
               }}
             />
           ) : selected?.action.kind === 'sound' ? (

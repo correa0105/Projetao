@@ -90,13 +90,15 @@ export function VttSheet({
     if (!data) return;
     const weapon = data.available_weapons.find((w) => w.itemId === value);
     const slots = { ...data.weapon_slots, [hand]: value || null };
+    if (hand === 'main_hand') slots.main_hand_two_handed = !!weapon?.twoHanded;
     if (hand === 'main_hand' && (weapon?.twoHanded || slots.off_hand === value))
       slots.off_hand = null;
     void action('/weapons', slots, 'PUT');
   };
   const d = data?.derived,
     c = data?.character,
-    choices = data?.sheet?.choices;
+    choices = data?.sheet?.choices,
+    primary = data?.available_weapons.find((w) => w.itemId === data.weapon_slots.main_hand);
   const t = data?.token || token;
   const check = (n: number, name: string) =>
     void roll(`1d20${signed(n)}`, t.name + ' · ' + name).catch((e) => setError(e.message));
@@ -341,16 +343,39 @@ export function VttSheet({
                               ))}
                             </select>
                           </label>
+                          {primary?.versatileDice && (
+                            <label>
+                              Empunhadura de {primary.name}
+                              <select
+                                aria-label="Empunhadura da arma"
+                                disabled={busy || !data.can_use}
+                                value={data.weapon_slots.main_hand_two_handed ? 'two' : 'one'}
+                                onChange={(e) =>
+                                  void action(
+                                    '/weapons',
+                                    {
+                                      ...data.weapon_slots,
+                                      main_hand_two_handed: e.target.value === 'two',
+                                      off_hand:
+                                        e.target.value === 'two'
+                                          ? null
+                                          : data.weapon_slots.off_hand,
+                                    },
+                                    'PUT',
+                                  )
+                                }
+                              >
+                                <option value="one">Uma mão · {primary.dice}</option>
+                                <option value="two">Duas mãos · {primary.versatileDice}</option>
+                              </select>
+                            </label>
+                          )}
                           <label>
                             Mão secundária
                             <select
                               aria-label="Arma secundária na mesa"
                               disabled={
-                                busy ||
-                                !data.can_use ||
-                                !!data.available_weapons.find(
-                                  (w) => w.itemId === data.weapon_slots.main_hand,
-                                )?.twoHanded
+                                busy || !data.can_use || data.weapon_slots.main_hand_two_handed
                               }
                               value={data.weapon_slots.off_hand || ''}
                               onChange={(e) => selectWeapon('off_hand', e.target.value)}
