@@ -9,6 +9,7 @@ import { physicalProp, type PhysicalProp } from './vtt-effects-physical';
 import { materialSprite } from './vtt-effects-materials';
 import { alpha, fract, glow, tau, tint } from './vtt-effects-primitives';
 import { discharge } from './vtt-effects-overhead-magic';
+import { drawFluidPhenomenon } from './vtt-effects-fluid';
 
 export function continuousPhenomenon(
   c: CanvasRenderingContext2D,
@@ -19,6 +20,7 @@ export function continuousPhenomenon(
   front: boolean,
   detail: number,
 ) {
+  if (drawFluidPhenomenon(c, model, color, t, random, front, detail)) return;
   const { family, layout, speed, spread } = model,
     total = Math.max(4, Math.round(model.count * detail));
   const material =

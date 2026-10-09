@@ -9,6 +9,7 @@ import { drawEffectCollection } from './vtt-effects-collection';
 import { drawAdvancedEffects } from './vtt-effects-advanced';
 import { naturalEarth } from './vtt-effects-physical';
 import { drawCinematicTokenEffect } from './vtt-effects-continuous';
+import { drawOrganicEffect } from './vtt-effects-organic';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -151,6 +152,7 @@ export function drawOverheadEffect(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawOrganicEffect(c, e, f, t, random, front, detail)) return;
   if (drawCinematicTokenEffect(c, e, f, t, random, front, detail)) return;
   if (drawAdvancedEffects(c, e, f, t, random, pass, detail)) return;
   if (drawEffectCollection(c, e, f, t, random, pass, detail)) return;

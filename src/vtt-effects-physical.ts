@@ -2,6 +2,7 @@ import type { TokenEffect } from '../shared/vtt-effects';
 import { footprintPoint, type EffectFootprint } from './vtt-effect-footprint';
 import { alpha, fract, glow, seededRandom, tau, tint } from './vtt-effects-primitives';
 import { materialSprite } from './vtt-effects-materials';
+import { nativeFlowReady } from './vtt-effects-native-flow';
 
 export type PhysicalProp =
   | 'rock'
@@ -22,7 +23,7 @@ export type PhysicalProp =
   | 'tendril';
 const props = new Map<PhysicalProp, HTMLImageElement>();
 const tinted = new Map<string, HTMLCanvasElement>();
-export const physicalPropsReady = Promise.all(
+const originalPhysicalPropsReady = Promise.all(
   (
     [
       'rock',
@@ -54,6 +55,7 @@ export const physicalPropsReady = Promise.all(
     }
   }),
 );
+export const physicalPropsReady = Promise.all([originalPhysicalPropsReady, nativeFlowReady]);
 export function physicalProp(
   c: CanvasRenderingContext2D,
   kind: PhysicalProp,

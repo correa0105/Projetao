@@ -1,0 +1,62 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "date": "2026-10-09",
+  "reason": "User screenshots and complete 56.53-second video; native props and connected fluid flows",
+  "assets": [
+    {
+      "id": "leafy-vine",
+      "prompt": "One individual production VFX sprite for a realistic painterly dark fantasy top-down RPG virtual tabletop: a curved S-shaped slender living climbing vine, isolated on truly transparent alpha. Long asymmetric horizontal branch extending left to right, all of it inside the central 82 percent of a square canvas. Woody green-brown twisting stem with textured bark, 9 small varied ivy leaves, leaf venation, natural fresh green and olive shading, thin grasping tendrils, believable overhead directional soft highlights, tiny contact shading restricted to object. Fine organic silhouette. It should resemble detailed hand painted RPG token art. This is a single branch used to grow and bend in animation. No background, ground, pot, circle, frame, thick outline, stylized vector leaves, flat cartoon shapes, text, fog or outside glow. Entire fine branch contained with transparent margin. Native transparency.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-40a0a18f-61af-456c-9617-aebbfb4f3f5b.png",
+      "file": "public/vtt/refined-2124-20261009/leafy-vine.webp"
+    },
+    {
+      "id": "thorn-vine",
+      "prompt": "One individual high quality production VFX sprite, realistic hand painted overhead dark fantasy RPG art, isolated transparent alpha: a long twisting thorny bramble branch curving as shallow S left to right. Mossy dark woody green bark, braided bark fibers, 15 sharply modeled natural ivory-brown thorns of different lengths jutting off the branch, three tiny dark green leaves. All inside central 82 percent of square. Shaded material with small directional highlights, readable from overhead, rich natural color, irregular tapering silhouette. No background, ground, circle, frame, vector shapes, thick strokes, flat triangles, fake diagram, text, smoke or glow. This is a single realistic animated vine component with genuinely transparent margins.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-3ab1f896-5b04-48e2-bf5b-94d205af3693.png",
+      "file": "public/vtt/refined-2124-20261009/thorn-vine.webp"
+    },
+    {
+      "id": "chain-strip",
+      "prompt": "One individual photorealistic painterly dark fantasy VFX sprite on native transparent alpha: a short length of heavy antiqued forged steel chain lying in shallow horizontal S curve, exactly 9 physically interlocked oval links, alternating face-on and edge-on links, convincing linked contact, dimensional thickness, dark oxidized crevices and pale silver edge highlights, subtle faint cold blue enchantment within metal. Entire single chain inside central 80 percent square, extremely detailed material like premium hand painted top-down RPG token, all viewed strictly vertically from above. No background, shadow plane, ground, haze, aura, text, frame, circle, separated floating links, clip art or thick vector strokes. Transparent negative spaces inside links and entire transparent margin.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-cf7b42fc-a8d4-463d-b2f1-417f51d1f277.png",
+      "file": "public/vtt/refined-2124-20261009/chain-strip.webp"
+    },
+    {
+      "id": "ghost-wisp",
+      "prompt": "One individual VFX sprite with native transparent background for premium dark fantasy RPG tabletop, viewed from above: a translucent ghostly skull apparition merging seamlessly into a flowing long curved tail of mist. Small recognizable human cranium and hollow eye sockets rendered in subtle pale icy-blue light, only head and fading vapor, no skeleton/body/clothes. Smoke has delicate layered filament texture, asymmetrical long curved fluid tail, spectral pale silver-blue highlights and deep indigo middle-tones, luminous fine wisps dissolving fully into transparent alpha, no opaque dark sheet. Diagonal composition with small head in top left and sweeping tail fading towards bottom right, entire silhouette within central 80 percent of square with fully transparent margin. Not cartoon, no flat icon, no brown stone, no ground, no backdrop, no frame, no text.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-94110754-5ba3-4063-b140-d4874f565877.png",
+      "file": "public/vtt/refined-2124-20261009/ghost-wisp.webp"
+    },
+    {
+      "id": "flame-tongue",
+      "prompt": "One individual top-down VFX sprite on truly transparent native alpha, premium detailed fire simulation rendered for dark fantasy hand painted RPG tabletop: an elongated vivid flame tongue flowing from a small brilliant white-gold hot base at lower center towards upper-right in a sinuous curl. Bright molten yellow core, clearly saturated luminous orange fluid body, red-orange translucent fringes, fine individual flame filaments dissolving into nothing, tiny few orange embers within silhouette. No black or brown smoke, no burnt brown flower shapes, no black backdrop, no orange background plate, no ring or circle. Strong internal light contrast and believable fire material with crisp fluid detail softened only at tips. The entire flame is contained inside central 82 percent of square canvas with fully transparent surrounding margin, meant to be bent and advected in a looping VFX.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-5db14e46-5c3f-441a-947a-52a127916c7e.png",
+      "file": "public/vtt/refined-2124-20261009/flame-tongue.webp"
+    },
+    {
+      "id": "water-curl",
+      "prompt": "One individual material VFX sprite for a premium top-down realistic painterly fantasy RPG, true transparent native alpha: a flowing S-shaped ribbon of clear aquamarine water seen vertically from above, long delicate shallow sweep across square diagonally, thin silver-white foam breaking at one edge, irregular transparent blue water body, refraction ripples, fine small droplets. Detailed convincing liquid with fluid highlight streaks and soft transparent taper at each tip. All entirely inside central 80 percent of image and fully transparent margin. No background plane, no ground, no ocean surface filling canvas, no circular ring, no geometric line loops, no text, no black sheet or rectangular glow, not a blue smoke puff or ice shard.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-ee24bfab-ed1f-49d2-aee5-3bc9a760e718.png",
+      "file": "public/vtt/refined-2124-20261009/water-curl.webp"
+    },
+    {
+      "id": "cloud-wisp",
+      "prompt": "One individual production VFX sprite, true native transparent alpha, a long curved feather-like strand of realistic airy white-gray smoke viewed strictly from above, suitable for premium dark fantasy RPG token effects. Delicate fluid curled filaments of varying density with fine turbulent billows, highlights in warm-white and cool mid-gray, darker translucent interior for depth, wispy trailing tip fades fully into transparency. Single elongated asymmetric winding strand with width varying naturally, not a round blob or cloud flower, no straight cuts. Full sprite inside central 80 percent square and full alpha margins. No background, plane, ground, ring, frame, aura, text, thick lines, solid shapes or fog covering the canvas.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-25917193-e8fb-491d-b829-4cd19bfb38ad.png",
+      "file": "public/vtt/refined-2124-20261009/cloud-wisp.webp"
+    },
+    {
+      "id": "light-stream",
+      "prompt": "One individual elegant magical energy VFX sprite isolated on native transparent alpha, viewed vertically above, premium realistic painterly dark fantasy aesthetic: a long flowing S curl of brilliant warm ivory-white light, pale gold filaments tightly flowing inside it, teal-blue fine rim and scattering tiny luminous motes close to its trailing tip. A slender fluid current with naturally varying thickness, excellent tonal depth, sharp internal highlights, hazy softer outer alpha fringe, and tapered transparent ends, no flat line stroke or ribbon of cloth. Entire object inside central 80 percent square and transparent surrounding margin. No rune, glyph, star icon, circle, magic seal, background glow sheet, ground, black background, frame or text.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-6fd8a368-329b-433e-8c0a-293b3994917f.png",
+      "file": "public/vtt/refined-2124-20261009/light-stream.webp"
+    },
+    {
+      "id": "boat-foam",
+      "prompt": "One single top-down realistic boat wake VFX sprite on native transparent alpha, premium dark fantasy RPG material. A small elongated tapering feather-shaped streak of white foam and pale aquamarine disturbed water, viewed exactly vertically from above, broader softly spreading foamy eddies at one end and narrow rippled origin at other end. Many tiny broken bubbles, frothy scattered irregular white patches with translucent edges and visible transparent holes, fluid fine ripples, foam dissolves naturally into nothing along outer contour. Entire material in central 80 percent of square with genuinely transparent margins; no ocean filling canvas, no boat, no opaque background, no black plate, no ground, no circle, no repeated line loops, no scribble, no text, no frame.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-47e1e430-cdfa-48ec-b9cd-56e315ee488b.png",
+      "file": "public/vtt/refined-2124-20261009/boat-foam.webp"
+    }
+  ]
+}

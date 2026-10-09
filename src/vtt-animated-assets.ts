@@ -3,6 +3,7 @@ import type { AnimatedAsset } from '../shared/vtt-animated-assets';
 import { materialSprite } from './vtt-effects-materials';
 import { physicalProp } from './vtt-effects-physical';
 import { alpha, fract, glow, seededRandom, tau } from './vtt-effects-primitives';
+import { boatWake } from './vtt-effects-native-flow';
 
 // Called in the token's local frame. Every asset has native transparent art;
 // animation adds material flow rather than rectangular video backgrounds.
@@ -133,17 +134,7 @@ export function drawAnimatedAsset(
     c.restore();
   } else if (['rowboat', 'fountain', 'magic-pool'].includes(id)) {
     if (id === 'rowboat') {
-      for (let side of [-1, 1])
-        for (let i = 0; i < 7; i++) {
-          const u = fract(t * 0.35 + i / 7),
-            x = side * (42 + u * 21),
-            y = (u - 0.5) * 160;
-          c.beginPath();
-          c.ellipse(x, y, 5 + u * 12, 18 + u * 15, side * 0.3, 0, tau);
-          c.strokeStyle = alpha('#d7f1f4', Math.sin(u * Math.PI) * 0.33);
-          c.lineWidth = 0.7;
-          c.stroke();
-        }
+      boatWake(c, t, 1);
     } else {
       const radius = id === 'fountain' ? 51 : 62;
       c.save();
