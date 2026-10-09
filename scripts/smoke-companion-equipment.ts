@@ -269,7 +269,7 @@ try {
       "UPDATE companion_art_jobs SET status='running',started_at=now() WHERE id=$1 AND status='queued'",
       [job.id],
     );
-    expect((await completeCompanionArt(job.id, record.reference)).status).toBe('completed');
+    expect((await completeCompanionArt(job.id, { portrait: record.reference, token: await sharp(record.reference).resize(1024,1024,{fit: "contain",background:{r:0,g:0,b:0,alpha:0}}).png().toBuffer() })).status).toBe('completed');
     const updated = await outfit(id);
     expect(updated.art_equipment_revision).toBe(before.equipment_revision);
     expect(updated.image_revision).toBeGreaterThan(0);

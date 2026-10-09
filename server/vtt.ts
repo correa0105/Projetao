@@ -24,6 +24,7 @@ import { vttMonsterPresetRouter, saveMonsterPresets } from './vtt-monster-preset
 import { vttDamageRouter } from './vtt-damage.js';
 import { movementBlocked } from '../shared/vtt-movement.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
+import { vttCompanionsRouter } from './vtt-companions.js';
 import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
 import { attackOutcome } from '../shared/vtt-attack.js';
@@ -152,7 +153,7 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
   ];
   if (!ids.length) return;
   const assets = await db.query(
-    'SELECT id,kind,character_art_source FROM vtt_assets WHERE room_id=$1 AND id=ANY($2::uuid[])',
+    'SELECT id,kind,character_art_source,companion_art_source FROM vtt_assets WHERE room_id=$1 AND id=ANY($2::uuid[])',
     [rid, ids],
   );
   if (assets.rowCount !== ids.length)
@@ -163,7 +164,7 @@ async function validateAssets(db: DB, rid: string, doc: VttDocument) {
   for (const asset of assets.rows) {
     if (
       (images.some((p) => vttAssetId(p) === asset.id) && asset.kind !== 'image') ||
-      (images.includes(vttAssetPath(asset.id, true)) && !asset.character_art_source) ||
+      (images.includes(vttAssetPath(asset.id, true)) && !asset.character_art_source && !asset.companion_art_source) ||
       ((asset.id === doc.music.assetId || doc.scenes.some((s) => s.onLoadAudio === asset.id)) &&
         asset.kind !== 'audio')
     )
@@ -403,10 +404,10 @@ export function vttRouter() {
   const router = express.Router();
   router.use((req, _res, next) => {
     const version = req.get('X-Vtt-Schema-Version');
-    if (version && version !== String(vttProtocolVersion))
-      throw new AppError(409, vttUpdateMessage);
+    if (version && version !== String(vttProtocolVersion)) throw new AppError(409, vttUpdateMessage);
     next();
   });
+  router.use(vttCompanionsRouter(room, state));
   router.use('/vtt', express.json({ limit: '12mb' }));
   router.use('/vtt/rooms/:id', async (req, res, next) => {
     const roleChange = req.path === '/participation' || req.path === '/viewpoint';
@@ -462,8 +463,8 @@ export function vttRouter() {
         const {
           rows: [asset],
         } = await db.query(
-          `INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source)
-          SELECT $1,a.name,a.kind,a.mime,a.bytes,a.width,a.height,a.character_art_source FROM vtt_assets a JOIN vtt_rooms source ON source.id=a.room_id
+          `INSERT INTO vtt_assets(room_id,name,kind,mime,bytes,width,height,character_art_source,companion_art_source)
+          SELECT $1,a.name,a.kind,a.mime,a.bytes,a.width,a.height,a.character_art_source,a.companion_art_source FROM vtt_assets a JOIN vtt_rooms source ON source.id=a.room_id
           WHERE a.id=$2 AND source.owner_id=$3 AND a.kind='image' RETURNING id`,
           [rid, aid, user],
         );
@@ -1107,7 +1108,7 @@ export function vttRouter() {
       } = await pool.query('SELECT * FROM vtt_assets WHERE id=$1', [id]);
     if (!a) throw new AppError(404, 'Arquivo não encontrado.');
     const topDown = req.path.endsWith('/top-down');
-    if (topDown && !a.character_art_source) throw new AppError(404, 'Token não encontrado.');
+    if (topDown && !a.character_art_source && !a.companion_art_source) throw new AppError(404, 'Token não encontrado.');
     const r = await room(pool, a.room_id, res.locals.user.id);
     const isGm = r.owner_id === res.locals.user.id && (await isAdministrator(res.locals.user.id));
     let viewAs = res.locals.user.id;

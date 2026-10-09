@@ -1947,7 +1947,8 @@
       "display": {
         "footprint_cm": 28,
         "note": "Referência visual usada na escala do balcão; não é uma medida oficial do objeto."
-      }
+      },
+      "image_path": "/shop/thematic-20261009/potion-of-healing.webp"
     },
     {
       "id": "potion-of-climbing",

@@ -1,0 +1,281 @@
+{
+  "created": "2026-10-09",
+  "items": [
+    {
+      "species": "riding-horse",
+      "appearance": "original",
+      "label": "Cavalo de montaria · Alazão",
+      "id": "companion-mount-riding-horse-original-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-riding-horse-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Cavalo de montaria · Alazão. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-77c26901-19f8-4fef-97c1-7fb71d9479d6.png"
+    },
+    {
+      "species": "riding-horse",
+      "appearance": "alternate",
+      "label": "Cavalo de montaria · Tordilho",
+      "id": "companion-mount-riding-horse-alternate-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-riding-horse-alternate-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Cavalo de montaria · Tordilho. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-88207410-39ef-407a-824e-dda273b847c1.png"
+    },
+    {
+      "species": "warhorse",
+      "appearance": "original",
+      "label": "Cavalo de guerra · Tordilho escuro",
+      "id": "companion-mount-warhorse-original-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-warhorse-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Cavalo de guerra · Tordilho escuro. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-34b2a3ed-268a-4fe1-9a78-918e26c71d72.png"
+    },
+    {
+      "species": "warhorse",
+      "appearance": "alternate",
+      "label": "Cavalo de guerra · Castanho",
+      "id": "companion-mount-warhorse-alternate-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-warhorse-alternate-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Cavalo de guerra · Castanho. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-88254de2-543d-4758-8222-3efa050135fc.png"
+    },
+    {
+      "species": "pony",
+      "appearance": "original",
+      "label": "Pônei · Palomino",
+      "id": "companion-mount-pony-original-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-pony-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Pônei · Palomino. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-10bed058-fbea-4df4-81f7-2a83af687643.png"
+    },
+    {
+      "species": "pony",
+      "appearance": "alternate",
+      "label": "Pônei · Pampa",
+      "id": "companion-mount-pony-alternate-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-pony-alternate-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Pônei · Pampa. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-b17a9c24-be86-4322-8154-716552754918.png"
+    },
+    {
+      "species": "mule",
+      "appearance": "original",
+      "label": "Mula · Castanha",
+      "id": "companion-mount-mule-original-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-mule-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Mula · Castanha. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-1a174659-75de-4f79-a3b3-bd97d296508c.png"
+    },
+    {
+      "species": "mule",
+      "appearance": "alternate",
+      "label": "Mula · Cinza",
+      "id": "companion-mount-mule-alternate-v1",
+      "kind": "mount",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-mount-mule-alternate-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-riding-horse-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Mula · Cinza. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-9fe2775a-e0f0-41f0-bc2f-bb21b362b5cc.png"
+    },
+    {
+      "species": "dog",
+      "appearance": "original",
+      "label": "Cão",
+      "id": "companion-pet-dog-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-dog-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Cão. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-b13dcfd9-8cdb-4bcd-9b48-a0f7ffbfc174.png"
+    },
+    {
+      "species": "cat",
+      "appearance": "original",
+      "label": "Gato",
+      "id": "companion-pet-cat-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-cat-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Gato. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-2da963be-6a00-48e8-b3ef-f699bfbd04ae.png"
+    },
+    {
+      "species": "rabbit",
+      "appearance": "original",
+      "label": "Coelho",
+      "id": "companion-pet-rabbit-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-rabbit-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Coelho. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-7c79e0d4-1ea3-47fe-98ae-fe4e5b2c697a.png"
+    },
+    {
+      "species": "owl",
+      "appearance": "original",
+      "label": "Coruja",
+      "id": "companion-pet-owl-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-owl-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Coruja. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-1f229d9a-19cd-4ef0-86e4-88b49cf3da81.png"
+    },
+    {
+      "species": "fox",
+      "appearance": "original",
+      "label": "Raposa",
+      "id": "companion-pet-fox-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-fox-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Raposa. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-0cadf0cc-776c-46dd-be5d-1d1dd8acb7e7.png"
+    },
+    {
+      "species": "raven",
+      "appearance": "original",
+      "label": "Corvo",
+      "id": "companion-pet-raven-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-raven-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Corvo. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-62c8b120-7a88-4389-82bc-35bf2e347745.png"
+    },
+    {
+      "species": "frog",
+      "appearance": "original",
+      "label": "Sapo",
+      "id": "companion-pet-frog-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-frog-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Sapo. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-08c20154-4723-4f9d-9682-0b3e6ab17e6c.png"
+    },
+    {
+      "species": "snake",
+      "appearance": "original",
+      "label": "Cobra",
+      "id": "companion-pet-snake-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-snake-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Cobra. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-76331730-f35d-4a51-85ba-b98dc2f3eaf8.png"
+    },
+    {
+      "species": "rat",
+      "appearance": "original",
+      "label": "Rato",
+      "id": "companion-pet-rat-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-rat-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Rato. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-34b9c63d-7d6e-4db0-8b77-a17a8b3f9b5a.png"
+    },
+    {
+      "species": "guinea-pig",
+      "appearance": "original",
+      "label": "Porquinho-da-índia",
+      "id": "companion-pet-guinea-pig-original-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-guinea-pig-original-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Porquinho-da-índia. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-12ba8293-63eb-43b3-a4bf-f85d86d22f25.png"
+    },
+    {
+      "species": "dog",
+      "appearance": "shepherd",
+      "label": "Pastor da estrada",
+      "id": "companion-pet-dog-shepherd-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-dog-shepherd-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Pastor da estrada. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-1565434f-1a43-4523-8286-1d935230d7a8.png"
+    },
+    {
+      "species": "cat",
+      "appearance": "longhair",
+      "label": "Gato de pelagem longa",
+      "id": "companion-pet-cat-longhair-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-cat-longhair-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Gato de pelagem longa. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-75a2455a-1e34-4fdd-8607-a5ec3d4b9989.png"
+    },
+    {
+      "species": "rabbit",
+      "appearance": "runic",
+      "label": "Coelho rúnico",
+      "id": "companion-pet-rabbit-runic-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-rabbit-runic-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Coelho rúnico. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-20a69a61-c83d-4b24-8bc1-57523ddc11b6.png"
+    },
+    {
+      "species": "owl",
+      "appearance": "horned",
+      "label": "Coruja de olhos âmbar",
+      "id": "companion-pet-owl-horned-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-owl-horned-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Coruja de olhos âmbar. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a17dd52d-85ca-4be8-b4d1-5f29d2329bcf.png"
+    },
+    {
+      "species": "raven",
+      "appearance": "shadow",
+      "label": "Corvo das sombras",
+      "id": "companion-pet-raven-shadow-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-raven-shadow-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Corvo das sombras. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-961d38ac-eaa0-4767-a65f-6bdd0bec479f.png"
+    },
+    {
+      "species": "snake",
+      "appearance": "emerald",
+      "label": "Serpente esmeralda",
+      "id": "companion-pet-snake-emerald-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-snake-emerald-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Serpente esmeralda. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-7a335ead-a772-45d4-92e2-fd3b64d494c8.png"
+    },
+    {
+      "species": "rat",
+      "appearance": "fluffy",
+      "label": "Rato de pelagem longa",
+      "id": "companion-pet-rat-fluffy-v1",
+      "kind": "pet",
+      "reference": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\companion-token-art-20261009\\references\\companion-pet-rat-fluffy-v1.png",
+      "style": "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\deploy-thematic-companions-vfx-20261009\\data\\vtt\\premium-art\\monster-mastiff-v1.webp",
+      "prompt": "Create one exceptional premium VTT token of the animal Rato de pelagem longa. The first image is its exact identity reference: preserve species, breed, coat color, markings, fur/feather/scale pattern and any simple gear. The second image is only a guide to overhead camera and richly painted fantasy realism. Render this reference animal from a STRICT directly overhead 90-degree camera, its natural upright anatomy below the camera. Face toward the top of the image. Clearly show the BACK and crown of head, not its face or sides. Four-legged animals: legs stay vertically underneath the torso and are naturally occluded, never four legs spread to four corners. Birds stand naturally with wings CLOSED against back. Snake is legless, gentle natural S curve. Frog has natural folded limbs. Small animals retain correct anatomy and distinctive ears/tails. Single coherent animal, exquisite textured materials, neutral directional lighting, same painted fantasy realism as Alvorada VTT. Full silhouette and tail, comfortable 10% transparent margin. 1024x1024 square native transparent RGBA background. No ground, circle, ring, base, terrain, rider, text, icon, glow halo or cast shadow outside the animal.",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-5090e9d8-efa4-4813-8183-3ce9d1f3c5f0.png"
+    }
+  ],
+  "failures": []
+}

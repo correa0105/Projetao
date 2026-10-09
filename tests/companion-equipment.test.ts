@@ -257,7 +257,7 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
     ).rows[0].count;
     await pool.query("UPDATE companion_art_jobs SET status='running' WHERE id=$1", [job.data.id]);
     await equip('mount', mount.id, 'armor', 'barding-leather-armor');
-    assert.equal((await completeCompanionArt(job.data.id, reference)).status, 'stale');
+    assert.equal((await completeCompanionArt(job.data.id, { portrait: reference, token: await sharp(reference).resize(1024,1024,{fit: "contain",background:{r:0,g:0,b:0,alpha:0}}).png().toBuffer() })).status, 'stale');
     assert.equal(
       (await state()).data.companions.find((animal: any) => animal.id === mount.id).art_used,
       0,
@@ -283,8 +283,8 @@ test('animais: propriedade, bens legados, cópias reservadas e arte privada por 
     );
     assert.ok(snapshot.some((item) => item.item_id === 'legacy:saddle-riding'));
     await pool.query("UPDATE companion_art_jobs SET status='running' WHERE id=$1", [fresh.data.id]);
-    assert.equal((await completeCompanionArt(fresh.data.id, reference)).status, 'completed');
-    await completeCompanionArt(fresh.data.id, reference);
+    assert.equal((await completeCompanionArt(fresh.data.id, { portrait: reference, token: await sharp(reference).resize(1024,1024,{fit: "contain",background:{r:0,g:0,b:0,alpha:0}}).png().toBuffer() })).status, 'completed');
+    await completeCompanionArt(fresh.data.id, { portrait: reference, token: await sharp(reference).resize(1024,1024,{fit: "contain",background:{r:0,g:0,b:0,alpha:0}}).png().toBuffer() });
     let animal = (await state()).data.companions.find((entry: any) => entry.id === mount.id);
     assert.equal(animal.image_revision, 1);
     assert.equal(animal.art_equipment_revision, animal.equipment_revision);

@@ -27,7 +27,7 @@ test('VTT: artes básicas, acervo privado e dano verificado', async (t) => {
         Origin: (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0],
         Cookie: account?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '5',
+        'X-Vtt-Schema-Version': '6',
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });

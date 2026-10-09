@@ -18,7 +18,7 @@ await new Promise<void>((r) => server.once('listening', r));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   ctx = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
-    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '5' },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '6' },
   }),
   page = await ctx.newPage();
 const errors: string[] = [];

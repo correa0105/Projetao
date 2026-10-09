@@ -1,13 +1,12 @@
 import 'dotenv/config';
 import { pool, transaction } from '../server/db.js';
 import { completeArt } from '../server/character-art.js';
-import { generateCharacterArtPair } from '../server/character-token-illustrator.js';
-import { completeCompanionArt } from '../server/companion-equipment.js';
 import {
-  checkCodexLogin,
-  generateCompanionArt,
-  IllustratorError,
-} from '../server/codex-illustrator.js';
+  generateCharacterArtPair,
+  generateCompanionArtPair,
+} from '../server/character-token-illustrator.js';
+import { completeCompanionArt } from '../server/companion-equipment.js';
+import { checkCodexLogin, IllustratorError } from '../server/codex-illustrator.js';
 import { AppError } from '../server/services.js';
 
 const lock = await pool.connect();
@@ -95,7 +94,7 @@ try {
         );
         job.equipment = equipment;
         if (companion) {
-          const result = await completeCompanionArt(job.id, await generateCompanionArt(job));
+          const result = await completeCompanionArt(job.id, await generateCompanionArtPair(job));
           console.log(
             result.status === 'stale'
               ? `Arte descartada por equipamento alterado: ${job.id}. Cota preservada.`

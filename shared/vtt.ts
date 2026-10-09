@@ -97,6 +97,7 @@ export const tokenSchema = z
     lightAngle: z.number().min(1).max(360).default(360),
     controller: z.string().max(100).nullable().default(null),
     characterId: id.nullable().default(null),
+    companionId: id.nullable().default(null),
     sheet: sheetSchema.nullable().default(null),
     monster: monsterCustomizationSchema.nullable().default(null),
   })

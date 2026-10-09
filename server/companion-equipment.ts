@@ -26,6 +26,9 @@ import {
 } from '../shared/companion-equipment.js';
 import { stableGear } from '../shared/stable-gear.js';
 import { petArtwork } from '../shared/pet-art.js';
+import { normalizeCharacterToken } from './character-token-art.js';
+import { syncCompanionTokenArt, basicCompanionTokenBytes } from './companion-token-art.js';
+import type { CharacterArtPair } from './character-token-illustrator.js';
 
 type DB = Pick<PoolClient, 'query'>;
 const uuid = z.string().uuid(),
@@ -409,8 +412,9 @@ export async function normalizeCompanionArt(output: Buffer) {
     throw new AppError(400, 'A arte precisa mostrar o animal inteiro e ter fundo transparente.');
   }
 }
-export async function completeCompanionArt(jobId: string, output: Buffer) {
-  const image = await normalizeCompanionArt(output);
+export async function completeCompanionArt(jobId: string, output: CharacterArtPair) {
+  const image = await normalizeCompanionArt(output.portrait);
+  const token = await normalizeCharacterToken(output.token);
   return transaction(async (db) => {
     const owner = (
       await db.query('SELECT user_id,character_id FROM companion_art_jobs WHERE id=$1', [jobId])
@@ -434,8 +438,8 @@ export async function completeCompanionArt(jobId: string, output: Buffer) {
       return { companion_id: job.wardrobe_id, status: 'stale' };
     }
     await db.query(
-      'INSERT INTO companion_artworks(wardrobe_id,equipment_revision,image) VALUES($1,$2,$3) ON CONFLICT(wardrobe_id) DO UPDATE SET equipment_revision=EXCLUDED.equipment_revision,image=EXCLUDED.image,updated_at=now()',
-      [wardrobe.id, wardrobe.revision, image],
+      'INSERT INTO companion_artworks(wardrobe_id,equipment_revision,image,token_image) VALUES($1,$2,$3,$4) ON CONFLICT(wardrobe_id) DO UPDATE SET equipment_revision=EXCLUDED.equipment_revision,image=EXCLUDED.image,token_image=EXCLUDED.token_image,updated_at=now()',
+      [wardrobe.id, wardrobe.revision, image, token],
     );
     await db.query('UPDATE companion_wardrobes SET image_revision=image_revision+1 WHERE id=$1', [
       wardrobe.id,
@@ -445,11 +449,33 @@ export async function completeCompanionArt(jobId: string, output: Buffer) {
       [jobId],
     );
     await db.query('DELETE FROM companion_art_equipment WHERE job_id=$1', [jobId]);
+    await syncCompanionTokenArt(db, wardrobe.id, job.user_id, token);
     return { companion_id: wardrobe.id, status: 'completed' };
   });
 }
 export function companionEquipmentRouter() {
   const router = Router();
+  router.get('/companions/:characterId/:kind/:companionId/token', async (req, res) => {
+    const characterId = uuid.parse(req.params.characterId),
+      kind = kindSchema.parse(req.params.kind),
+      companionId = uuid.parse(req.params.companionId);
+    const bytes = await transaction(async (db) => {
+      await lockOwner(db, res.locals.user.id, characterId);
+      const animal = await companion(db, characterId, kind, companionId);
+      const {
+        rows: [art],
+      } = await db.query('SELECT token_image FROM companion_artworks WHERE wardrobe_id=$1', [
+        companionId,
+      ]);
+      return (
+        art?.token_image || basicCompanionTokenBytes(kind, animal.species_id, animal.appearance)
+      );
+    });
+    res.setHeader('Cache-Control', 'private, no-store');
+    res
+      .type((await sharp(bytes).metadata()).format === 'webp' ? 'image/webp' : 'image/png')
+      .send(bytes);
+  });
   router.put('/companions/:characterId/equipment-set', async (req, res) => {
     const characterId = uuid.parse(req.params.characterId),
       userId = res.locals.user.id,

@@ -1,0 +1,1100 @@
+[
+  {
+    "id": "potion-of-healing",
+    "source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-ed48d1cf-fc5a-4ad2-8215-ef8084587c3b.png",
+    "source_sha256": "a990ae698d0540abade228a859db00f5b908c9091146c57ffa6d323f549c2019",
+    "width": 1024,
+    "height": 1536,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-healing-greater",
+    "source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-4e756157-204f-470f-9647-9cdeffdcc5c6.png",
+    "source_sha256": "bbaf0345ed758082df0a0d3aa157ac49f5a7743c0f83575f4518c47776ad6a2b",
+    "width": 1145,
+    "height": 1374,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-healing-superior",
+    "source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-39aa84fa-57dd-450e-aace-5fc026f4b0a1.png",
+    "source_sha256": "8f2a16dcda68d514bbb5d42154d8db32c6b2cf41639f6becb5b6e3eb99647e58",
+    "width": 1145,
+    "height": 1374,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-healing-supreme",
+    "source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-ec07f000-59eb-4922-aef0-2472b6cadaac.png",
+    "source_sha256": "86e4106d5b13579bb43a2e037d51bb982ca6ddeda7d058f6a82af6a539001fd4",
+    "width": 1024,
+    "height": 1536,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ring-of-elemental-command",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-3d387515-3525-4707-91f3-9daeb2f8d818.png",
+    "source_sha256": "7302c0d03650fadcf63744661de0dd03c3057a0388b687d63f9ea67666854707",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ring-of-elemental-command-earth",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-6a7a5265-e7ce-4b85-9af5-28e6f7eb0768.png",
+    "source_sha256": "d82ac8994c109b1ab274a5273cf850cb176bb3cfa6b8d7477764d381ed9be6ea",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ring-of-elemental-command-fire",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a6770ff2-f9a8-4442-bc83-6eb818bb3e0a.png",
+    "source_sha256": "a3b3ff6b107938994c0b2932e443725a6cd751fc3ef4ceef71d006ba2b3bcdb9",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ring-of-elemental-command-water",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bde3ca97-8f37-43cb-a8d2-d7de514e89ac.png",
+    "source_sha256": "433ff476acb3cc9eb9c68563014ca77a6027ec9df6ea2ae0ba7a0d07991904f4",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-giant-strength",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-dd2351f9-13c1-4a84-aa43-440d7995ef4f.png",
+    "source_sha256": "00ac49606b2ca26062b65f7c71277d3162be4dfcbef3858ee9a200a8f1ea16e4",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-giant-strength-frost-stone",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-c5f88fe0-2633-4fe2-8f39-5db242ae3b71.png",
+    "source_sha256": "6745cf057bcaf167b586409fa611e688be602bc334611bf69884b172c6857f66",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-giant-strength-fire",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-1d1eb85b-ac9b-4b0a-9186-406d8dc59090.png",
+    "source_sha256": "3ecec04764f1cea1c5fada42cc0db935bd3a124d03d7d659bf91a24e66a4a6a9",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-giant-strength-cloud",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a204cf28-2b38-443c-99a2-1f7d8f324bf2.png",
+    "source_sha256": "c3a056d429ef837bf7168ee2950c118df19320a3d829249855d770cf56565ecc",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-giant-strength-storm",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-5d04448b-a287-42f3-8335-7044898f77bb.png",
+    "source_sha256": "32cdac57399c09600156578d0a7a5436088d2dd47d5d5f5b441cd234b64f1bb5",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-80c4ccd2-0d24-4d65-996a-8c1eecf5dca3.png",
+    "source_sha256": "a0cdc258065149f944fec488db47231758d7e8e80e9d7340b72c01c76f01062e",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-cold",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-15240680-df0c-4ab0-9a5e-885c188a7b7a.png",
+    "source_sha256": "b449083eb76b3d84501a408683c0094214b383e7b120734cc07c461b2079abc1",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-fire",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-c9ad5074-8ddd-4f01-bf79-b379d1a2cf0a.png",
+    "source_sha256": "cdf11c9ee0c458fa01de7850a73f1b8ebd65f1c93968e7455b18c17979276d56",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-force",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bb9f0b86-5d45-4956-b95b-74854ec71ae6.png",
+    "source_sha256": "dcd2d03f651a7dad9f4716d0e67a963373b9d704aa25f594ae0518144e7e7220",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-lightning",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-96f489b2-5eb1-4b43-b69f-14864a593fda.png",
+    "source_sha256": "a0612d5b442130af8bf485f66f0adc649cb3302dd57211866061ef8cb8688416",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-necrotic",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-79e48229-d5c1-48a4-9d2a-ecbc0621ef60.png",
+    "source_sha256": "c8a256bfa32863d389801b32704e2d1f5badd998dd50387845f6e05ba8ea20d5",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-poison",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bf78d28c-c832-47cd-b126-fa7acfef390b.png",
+    "source_sha256": "2a565f3d0f9338d65b2bd5e3080da6d3ee56d73b639ed0244fd9f9e546c53161",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-psychic",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f10a1a85-96d9-4a11-96b5-264ce92d68cf.png",
+    "source_sha256": "b83e1eba41c7c5e973fa94c9e2e8b7083ea29c4ee206495c65eb2cd19634826d",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-radiant",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-22a73e97-a738-4dc6-aa98-5d630ec6a130.png",
+    "source_sha256": "7a4b15ba2d0dec719fb6768036f431a0a047a05788c2ec0d972e67760eb56b4a",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "potion-of-resistance-thunder",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-c9229fcb-ea4f-40ab-ae62-0547c7792a5f.png",
+    "source_sha256": "5c55676a9f99a049eb0b5396f67c3ae73afe10295d7316472cd2783083306b7f",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-bolts-plus-1",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-badc9505-30e0-423e-b145-94bab7c884ad.png",
+    "source_sha256": "e689c86d9418bb1b6c8ad5273cf841d0776e15e8a3631f963550801c5951d07e",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-bolts-plus-2",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-6e902241-414f-454c-9b76-e58b4594702d.png",
+    "source_sha256": "922e63b2054cc6ce332a542176ec6f44d8cd0db7e10087de9edb03448140630e",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-bolts-plus-3",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-9dd0f7c3-8895-44c5-8d12-3fde6f350e32.png",
+    "source_sha256": "5ccd2086edce955ca35ed3648f1c2d8470829947e949cd779916df630947b605",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-aberrations",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-583acf0a-cef9-4571-8144-f6eb8617a12c.png",
+    "source_sha256": "17a4c3f599ed8f5afdab901f1fbbc9f429b1c4c9c775b97caa9b8ab24560db4f",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-beasts",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-b76f1b43-8211-466e-bf10-a134af79c356.png",
+    "source_sha256": "d4c8702784962bf6368378372c37eff0a5ea0a941018a7f19b7d266614cff750",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-celestials",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-ae81f331-c80a-43ca-9806-d1980ba5a84d.png",
+    "source_sha256": "cf571b50cab57fb758425477ee492978ff9725858f3412c88be330d89f5a56e0",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-constructs",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-d7a7bd26-7913-47b6-b81d-c1f8c2594553.png",
+    "source_sha256": "d8f4c95d23954e644bbd08aa0cb69ef29c5141e4bddd12efc63e7fa60117f266",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-dragons",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-11d0f77e-43e3-4d87-aa2e-6e6dab15b886.png",
+    "source_sha256": "192cfaac0a5e54f8740b9a7ca994ae9c4df70f1c3ecbc375f1fb53bcd4aa82d2",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-elementals",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-4fbf1ba7-84df-4e35-bdae-e39d88e986ea.png",
+    "source_sha256": "d2325355604707762300f20a9e4c6d023b8b7b798cf3d464878f5ee8e2997b2f",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-fey",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-39cb9bd2-8864-46f9-913b-7a2eb35bb25e.png",
+    "source_sha256": "1b236d79434ea83184b98a91c029f3176a910ccfa3e997713052e8334e9b89d1",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-fiends",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-6944db73-519e-4f59-b971-a913d0506256.png",
+    "source_sha256": "a2847b3bc9d372342be5427204565c99d38871e3823553c07eab17f09d692105",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-giants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f1755e12-3b36-4788-bae3-d1f7bdf784d2.png",
+    "source_sha256": "22f461606c46453b77434c03217e225ec0dcb819c23f40df5cff1ca83e1d6d17",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-humanoids",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-813d01c5-ba21-4f87-9145-aeff592d54a9.png",
+    "source_sha256": "554bf25be07b9cb7824cbf100ed8930f04728e896eef18ac902f18a4772e7dc2",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-monstrosities",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-d8e05124-e391-40ee-a89a-4af85cbefe7b.png",
+    "source_sha256": "98ceb78ce6007a028b9dd71cd1221a1825015e6e775df483a2b74826f253c021",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-oozes",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-9beaaa5e-1bf6-4b26-9a47-91f88d08bd8e.png",
+    "source_sha256": "9fcd2ec8dbf8adba0aed9bdd81343c0c0190381be2d69844166f0d9b9de90153",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-plants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-ce46bb6a-7306-4382-96d8-a20b3dba6e1e.png",
+    "source_sha256": "e68f5ddd40809fa6e935d5ce29efcbc6c73e752ef900c068e97bd8582e1d324b",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-bolts-undead",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-5aeb57d5-a2ad-4ccb-ba83-604f35e770f2.png",
+    "source_sha256": "2c8b5673e636d6ca514cff96f83bc1f5808426155def5fa01ad33c0c14f80b2c",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-firearm-bullets-plus-1",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-8b41e479-67ab-47c3-9f16-218c146dbbb6.png",
+    "source_sha256": "ffdcfd31702c45235415cab5bd36e2062c6183b90bae6e08a6ddfb801dfa95dd",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-firearm-bullets-plus-2",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-86191c33-23f0-43f7-9eeb-eb186578ee71.png",
+    "source_sha256": "6f6bd409d5d6dc06a3a58118774284cb44cda9db01d1cdbe9aebb4f68934d541",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-firearm-bullets-plus-3",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-1389203b-3a86-4f57-b1c0-2c3a818fabb7.png",
+    "source_sha256": "80da09bab3ee987e4702310c0b827c22525a275bd1e5d38af4f1702662d506be",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-aberrations",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-4a0a53d3-c6ee-44ee-bed1-6f6ff4700d56.png",
+    "source_sha256": "5a07dac6989b1b22517962c4ddf78460e5ec2263c1091b6a2699d8a9cd76908d",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-beasts",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-5f257a19-bcb5-452b-a469-c4b92199ef88.png",
+    "source_sha256": "0eee7ae23cc473de30c36ebce17ea300d8d227f44bdf49471c13d436d17c3f2a",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-celestials",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-90d4c440-ba87-445c-b084-ca6a20e3bfd9.png",
+    "source_sha256": "2eb0f60ac7cb4ae01fb352adb07cd7d47018306390e52bbe59322ace369cb858",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-constructs",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-3c5809db-9e94-4a83-803c-914549a8cc51.png",
+    "source_sha256": "e5ede96f166e5803c05de688d11d39649785d607630de98fce71929d0ca33482",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-dragons",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-fa7ca872-c495-4aff-a43f-01f2d9e224f4.png",
+    "source_sha256": "6e11fbaaea0972d122c1631955c0ae7ee4f4a54c5c58cd8a3037e9838cf46542",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-elementals",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-aae6c604-33ca-425c-b431-a7d6d3e28013.png",
+    "source_sha256": "573fbb8253f0c9a39b39c8779d4fe57ad571c068d9357071f16b2716f2876635",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-fey",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a00eb8fe-3b46-4900-9a6b-692d32a2db12.png",
+    "source_sha256": "4c3f4f3c98870ee0137a2b2ec8b13fa093ae7e7f5394b78e7c86fc80eb502802",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-fiends",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-4e12f3d6-99c4-463f-950f-25c680302fbb.png",
+    "source_sha256": "4747fb8a3172a0b93d74efdefc3e37339cd34b73db19a36c780871fe26a2a447",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-giants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f95f1f2f-1c34-4d4f-8fc4-344c2ef058aa.png",
+    "source_sha256": "800a880883dfc256e2bfe47595961069c27e907ea065f6644b5917afb5d10f2b",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-humanoids",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bc93857a-aac2-4dc8-8529-16fbfb4aaa85.png",
+    "source_sha256": "4e51edd02938e6235e6313d301865031e708cd7822703b495b61fd05a6398e37",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-monstrosities",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-0775ea9d-8666-4b40-8637-6292922db2b9.png",
+    "source_sha256": "980767692bffac8d0b0aae878a0c94333e45a7abd568690fa9cc49ca8203cb65",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-oozes",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-07f49546-392d-4f57-8efb-f333c6763f47.png",
+    "source_sha256": "b9c432ec2ce5e0b7acd0855bd4b9fe263352892c1260ff87da673ac36b083259",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-plants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-202e4727-74c4-4acb-9326-b3605b32773d.png",
+    "source_sha256": "963f9db537b733de3de62f4f8d6341e6c71f20f8a64177ff5ec17042fe4b19c5",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-firearm-bullets-undead",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-78ca0f1a-5cff-474c-8380-48f75fe5b138.png",
+    "source_sha256": "21a10e354e026c78346b17dc70782d58124b7c0296f52aec5322d33515fc81a8",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-sling-bullets-plus-1",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-ed9c035d-e63d-4cc5-98d7-94fe0e405080.png",
+    "source_sha256": "53df4feb8e4769da669f8980f650d6f9aac0f4445de3003b5420a17c526cbb69",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-sling-bullets-plus-2",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-750a25b6-7f4d-4252-8b06-b9efd7e057b7.png",
+    "source_sha256": "f74bc97d7e7a4f3b72040a03af94a8dfccf195d68b132353027dda076ef5a66d",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-sling-bullets-plus-3",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-dfa116e4-5b28-4e24-85a1-d664d3f9e28f.png",
+    "source_sha256": "b4c5b55d060f9bcabfff1bb970d1596ba6d094e1e4fd3da9650ba0866f14d9ba",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-aberrations",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-c10a741c-49af-46f9-8bac-942f8af014c2.png",
+    "source_sha256": "b293a1acb6be3857345328dace63df723c2b9229733c67373f162df736af0401",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-beasts",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-72077e5a-11e2-4fc8-b7ed-dc27bc91f2ec.png",
+    "source_sha256": "39cb140f97750e86dd19dfabeee6e70078d9908bbc555988a549a0bb291bd247",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-celestials",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-7373f74b-7924-4aff-a4d4-4d11a85ed298.png",
+    "source_sha256": "4cb9917708857944f3a5c2735637944a077007dc1ba947195134d9aed841b2b7",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-constructs",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f2f493b2-f83f-40b9-acd4-b9c37daab287.png",
+    "source_sha256": "3b8e721a52c3b711b72ecf6adde97ef69a60d4f2387d8ac3e82472d8bb2d84a4",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-dragons",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-cdee244d-50a7-4aea-8ff6-5fbba2568c30.png",
+    "source_sha256": "aabcc29cb5312d695c727aacf77b905a7700f6297187139b6763f77b2eea6d1a",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-elementals",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-59e2c802-962f-4ab2-b4db-7352fa8cffbf.png",
+    "source_sha256": "27f59cc1297de54578583ae796d25d7bc7600c5e875a666d48be56ef975953fd",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-fey",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-33c11677-94d7-4c9b-837d-3436f9ebb8da.png",
+    "source_sha256": "aaa256147a6fb5027169b35634681510df621485c87e0985fcdff7761372abba",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-fiends",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-1f0b93e1-2be3-43d5-af4b-9f3f98479318.png",
+    "source_sha256": "2ea68f1a3e83d1e7ad15aa276fb3be8f33c62d48fe855b8fbfe56f5dda390ae5",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-giants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f718d171-de98-4c12-9b38-ee15505d8d62.png",
+    "source_sha256": "a2b8733ad49129a345428d9bcfb7ce9e19846dda6c7837eb0d012c73da26e0f8",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-humanoids",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-8afe971e-6f61-4377-9360-2184cdcde528.png",
+    "source_sha256": "d8521f1ee6b482fb1fad3b9924d20f9f8de47a453061903405a407390b894306",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-monstrosities",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-b6798b94-33ed-4d8a-839a-d94fa9ee52da.png",
+    "source_sha256": "71c8e50a16ac20dc8bea481eb74bbd873c317735a40ca39c3af2d67638407798",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-oozes",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-910e6884-9d84-42ef-a852-4d26838057e7.png",
+    "source_sha256": "c8ed412e606eb33632e6fd0e8fd2503a8a947d5ecb4faee01375d49a4bd7fced",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-plants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-71092ec1-bf34-41b4-a470-79cd722ee260.png",
+    "source_sha256": "f0f46664d5c640eefcebdcc849eaea965db42b9d0db60f4c31cf86bfdfc539ae",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-sling-bullets-undead",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-e6e9a5a3-97b6-4e8d-9f02-f7a9e5e4a650.png",
+    "source_sha256": "579d9d742cc700938b859c8d2f3abae7c15378cbf4ec14ef81812b962a163ee4",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-needles-plus-1",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-2eaa7e12-aeb6-4c58-b4d2-c8af107604c4.png",
+    "source_sha256": "d2b2ba0b7ff16413276243b6c327bd2437afd4a4a9dd492b6b41a6cd84918bba",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-needles-plus-2",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-e38f4c87-2cfb-44f9-84a7-ec7702069fcd.png",
+    "source_sha256": "a0932f96456bf279d4c64a18d5ba32115a8c397c84fd64de104d62e6970d983f",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-needles-plus-3",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-52a20525-98dc-49cf-8c88-1ebf346f7c64.png",
+    "source_sha256": "f48a3a26c872f3aa48ba6de94e770e9a227285c0ba7e2351360c17eaab366f5e",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-aberrations",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bb4e00bf-eb56-4c3e-aafa-aa321028b950.png",
+    "source_sha256": "25c8ac5b866278c3d17d4d9e79ec5e38f88bb95bd7a0d2d7e01171f33d53d893",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-beasts",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-0d5f4003-872b-4f2f-9abe-e66eac3f3a26.png",
+    "source_sha256": "f01dd5566e4bac4e90cb51b83ebee9986684e412da4aebd3ce108667abd734a7",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-celestials",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-e2614505-2623-4d83-9700-d99172263b44.png",
+    "source_sha256": "e3e282743d48d4b9fb0693f22c0fe80f23c64d7182be7cc9372955524e9bf794",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-constructs",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bec6dc2c-9541-41dc-a619-aabdb36536dd.png",
+    "source_sha256": "b6bae7b4129c7011e3f27f45db9e5f039aa98ec24494610a24d530bc8a27042a",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-dragons",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f8ddca62-8877-4ddc-9bba-92af6224c706.png",
+    "source_sha256": "dcdd4bb0745c8e76747e92ed19afa10ed972360d5b6e0d1128c971c338272207",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-elementals",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-2e18a866-6f8a-4f35-98b8-50cd9381dc4e.png",
+    "source_sha256": "11b8bcbdac7e7dc453551c4acc99f50940357f1ca0743adffc33be88a231080f",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-fey",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f85a7656-daab-488c-813e-a2158d2b4551.png",
+    "source_sha256": "1ddcb6659e441e104dcf0dd889893ee35ebe298289b8d0ea137db5be6594c3cc",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-fiends",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-5075da82-f4e3-482f-ab5b-f06cea6a7101.png",
+    "source_sha256": "5e72b30ac7aadbc8f3b78e952ffd6cde52b9290778eda17130ad197a0588d1a6",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-giants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-0990aef9-c851-4fc4-a735-7cd2f796c317.png",
+    "source_sha256": "fe044f1dd43a2f7a7d49de3b39499e4aac9c664836cbb43065d9e7538d6a539a",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-humanoids",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-07ffae8a-100d-4475-bda4-d7e59507eca0.png",
+    "source_sha256": "ea26c1342a502123af715a5c97c5a34c56627a04fb50f939ed9f7be6211d0e4e",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-monstrosities",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-7d003442-0125-43e1-ba09-204d32a5e6e5.png",
+    "source_sha256": "947cf47933d98011417240d8ed51e0963e1d7b3d0c40819b7b4de70088707d56",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-oozes",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-2b3101c2-0c00-455b-833a-802fe23f093e.png",
+    "source_sha256": "c0913767a66f71782f110950350d630281e9ae8dbdd3c73a2c38e467344967d4",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-plants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-92dbd2d8-ce6b-44c5-a473-71b133b18820.png",
+    "source_sha256": "3b1918a96d2136e16f1bb448b1ae38a6aca7e99ee6550ecbe1b43a8b073559e8",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-needles-undead",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-3bd09803-e78b-4020-b352-76f47f8a6ddf.png",
+    "source_sha256": "251dcebee65a40d46ed163ed647552104bb432a7ab2830e566c089a0d5a2fd23",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-1",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a5526a45-e319-4604-beb4-4bb040c6634e.png",
+    "source_sha256": "9ddd2721450ae7886e3581d54a39f5068787388a8d0a2f7f1fc012de330ac7fd",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-2",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-8363bb50-da95-4db9-a32f-b0ab89632c12.png",
+    "source_sha256": "b9d5ef192ca17084c77d355a485b9c4ae5c0ebf2d2b202edb13787be5a051234",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-3",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-cac9bb14-9c98-48cb-942c-67e95ad59d5d.png",
+    "source_sha256": "698ce425d8a28eac281938f96d7b8dc254dffd95f7d4391d051c4f6d17a58bd0",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-4",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bad164e3-21b0-43d9-b34c-0e8b8f69a858.png",
+    "source_sha256": "e197951dc286cb4fffd8d16dcae78a35302be7638662ddde6dc37337cefcefe3",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-5",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-765b2c04-9c14-48af-b573-7779d52b2bad.png",
+    "source_sha256": "a6cc49af593c190d4f947f4274f44d01f7ea03506c58f656f03e31298f5161eb",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-6",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f274cda9-f9e0-409e-916e-43b5e79263b2.png",
+    "source_sha256": "263abb1935efc287fc34b29ca4bbcd6d45d5b43bc64b938c8c5e71e3f355153f",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-7",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f77a7e20-d81b-4a1d-b160-7101e8d5a70c.png",
+    "source_sha256": "78439f7384aeb93aa7bb91e846e4018554162f30053ce7d2ec627cd1edfc48ca",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-8",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-2c7ae27c-d4b3-48ed-9534-633d7b7b5075.png",
+    "source_sha256": "ffa27301de91f7e8dcab2ce6ba0a8f94aa354f81b4769e2525318356c06c984b",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "spell-scroll-level-9",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-f4714146-8f73-4b9d-98ac-3cff0fcdb8b2.png",
+    "source_sha256": "7c3033918710d6114de2b64eee7cfd0198336afb9e8866f17ff09d0fb327fcb3",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a16cf722-a2a0-4b87-a4b5-7ff0916bdcbf.png",
+    "source_sha256": "b05546b1eb20d184c6c539be9de60eb0d77d7945c55ae97b14600d827f3f6a21",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-plus-2",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-d578bb9a-53d4-4427-ba0d-6ee25f4ff14b.png",
+    "source_sha256": "62324676fa61df1113938ff7ef53862c96be54c1b2fa796f6853823956bef695",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "magic-ammunition-plus-3",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-fbdb8f63-6294-46b5-aac1-321f1f25a28e.png",
+    "source_sha256": "2f4e0598a6545f98ff2d78f52742eb47340ec6769140d0b8eee45a308375f5a9",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-c6d5006b-6c0f-45ad-9561-42f8819648e6.png",
+    "source_sha256": "56ed8efdad4bcf656f3fca95c1c0edad7aa4984ae9df65053d5484637fe6112e",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-beasts",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-9d9366ff-66a0-4615-abd3-d881de897b90.png",
+    "source_sha256": "5c9bf77c9bc55bcc6a1278b75b279e4b671fb015a52ed47b16f5fcea075a04d9",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-celestials",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-ef2b7e79-3e10-483c-a223-116e10b76b2a.png",
+    "source_sha256": "7c5ffff68331dcad291e5ff5a27af61ed5ef0ad09f33798ed03b1005df046974",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-constructs",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-dd2b97cb-35d7-4126-a7c1-3af64b703c6b.png",
+    "source_sha256": "af1334068d2d14d6b62ef8a87137f4384a88d29f4feb033e7bc7260635c3cbf5",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-dragons",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-302bf89f-f6a7-4945-af7e-9436d6cdc544.png",
+    "source_sha256": "2fc0360c8b677765d632020e145035ea236282e4203eaf52774c5baf7ca414ac",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-elementals",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-124d5cde-092d-473d-a295-08cc112b53f3.png",
+    "source_sha256": "a915c54b3e76dca8c4a2e6d5f736f7d434972d2b3dd490fc819496bfe68ad06e",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-fey",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-23e1481b-5dec-4801-b7dc-48e934986435.png",
+    "source_sha256": "0440f9f15650ab1a0ac7f9eee05a1f3c883e4028a2056a42561368f4e8bd8e20",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-fiends",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-e5ff103e-bd71-4458-8720-8f8d8a56b698.png",
+    "source_sha256": "a53ca698e17cdc0d981f49d8d666e1a9802705d38ab49576a44c8c2c7125cb2d",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-giants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-26ef1994-c5a7-4b8f-8a42-2feb74c7c262.png",
+    "source_sha256": "bcc3e25dad03bd977a47c2645070efe50a1add816f0fe28029af768364d8ef58",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-humanoids",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-4d7dc6c4-adb4-4edc-8580-9169396646b1.png",
+    "source_sha256": "13ddf11c02833424856ee1a804635d0c8be782044d6b460171e06892cd279f85",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-monstrosities",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-2529d7ba-c804-4b99-b9bb-112f674d3dfa.png",
+    "source_sha256": "f594849b9a1dc30392caf7fb96dfb1873e454d7da65f5845894fe64a9f0fe86b",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-oozes",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-49dda2a3-ea5c-46fe-9e51-052d48a2dc02.png",
+    "source_sha256": "89619d20ce0f02ecf12a2cd654f00432ef9a304e330b799adfb0d5ac98924201",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-plants",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bd4f1858-311c-431a-9b1c-2c0ccb2b0c89.png",
+    "source_sha256": "dd8aa935c67e1a2cb3d3b79c9a98bf54ce70f2c16017664105cb6b8d6fc21f1d",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "ammunition-of-slaying-arrows-undead",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-d62a224a-fc19-46e7-9b0b-978e85afb143.png",
+    "source_sha256": "902e0a167bd278f33dd4b2db208a6ae84fd8b3501ab1b731d21ff6af15cbeeab",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "mysterious-deck",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-33889297-8281-4d64-91b7-047000caf8fa.png",
+    "source_sha256": "5410f21c288e9469688741b343cac8ed9186c68fafe1788d3dde045c5985c9b6",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "mysterious-deck-22-cards",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-2e52c97e-d807-41ed-a4dd-55b944fa2fb4.png",
+    "source_sha256": "393a3a9f1f493316f1a98f5ca92f63b6c54004d2a801340948d45b24c2522163",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "wand-of-the-war-mage",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bf7f844b-37ce-4ddf-897a-d5de66f82df6.png",
+    "source_sha256": "a075be02af157cac2ba2f07e44dd7f12e5a4cfac91417d5ba350b14c36979d00",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "wand-of-the-war-mage-plus-2",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-d27d702a-8e78-492e-8016-5ec4248a0696.png",
+    "source_sha256": "e6098ad8646ef62c1a8859a1df484c7991dd4c0f035686133c48c40266725bfb",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  },
+  {
+    "id": "wand-of-the-war-mage-plus-3",
+    "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-638879f3-ca30-4357-8789-fda163dd2cb9.png",
+    "source_sha256": "88adc746a4bed96b0184e010b468255fe8907ba423047a5a53084970a1736009",
+    "width": 1254,
+    "height": 1254,
+    "native_alpha": true,
+    "review": "pending"
+  }
+]

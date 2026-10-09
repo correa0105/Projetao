@@ -1,0 +1,177 @@
+[
+  {
+    "id": "companion-mount-riding-horse-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "8b350ed2f793b33489f1ad6e021a30b7e20e4df8f5f41d3289fbc2d6afb8f67d",
+    "transparent": true
+  },
+  {
+    "id": "companion-mount-riding-horse-alternate-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "17c9e4685739d8202417f646316f04d1ff705a6b472e64eb6501c2864ded1954",
+    "transparent": true
+  },
+  {
+    "id": "companion-mount-warhorse-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "ef12cd8d046fd49207440e6c9b194943c3967d18673102cb375b197574a51500",
+    "transparent": true
+  },
+  {
+    "id": "companion-mount-warhorse-alternate-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "3581934fb789cf27f68fc851cb0e64c70baf1ed5e6f35d7873ac75e4e043d3bc",
+    "transparent": true
+  },
+  {
+    "id": "companion-mount-pony-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "e7568946d14cbb340e69b768f6b6ae0797f423db685e6fc3e774fde4d1b5d9aa",
+    "transparent": true
+  },
+  {
+    "id": "companion-mount-pony-alternate-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "dfa745d2e6a8cda389ecfcf32bf492ceb223bda125fe20ce0a52674506222f65",
+    "transparent": true
+  },
+  {
+    "id": "companion-mount-mule-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "183cdc0d881a6e40d859ebc8b099e1daa1279055e5cca30157cf11d62f70b1a2",
+    "transparent": true
+  },
+  {
+    "id": "companion-mount-mule-alternate-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "62453047615d5981b446b267ad8e1939fad2f165a1d21c63c56e188bffbf5de4",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-dog-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "e2459bbd33046b8cc16e12fb714254b6d009a39b6389726fd48c949002eb7b52",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-cat-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "66f53d0728f14c43da83655dac439bda865b4f8a4287fcbd796a2fa7df564a94",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-rabbit-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "d7107c6acbab86e29a067e2fdcf3881b5741a5286beb3297910f18f6eb9c0fe8",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-owl-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "8ee8f094c500f227ceeaa63ad276fb1f86c0d3c4647217c4da18b64f548c642b",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-fox-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "c2d1ac76975f432f00f412108fe2e0dc8aa6a62780890fa9685202b01e591e9c",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-raven-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "1b1fc7d9067974ebb2b95926b361ec1745c720bbbb5f8dde2de5dfa807333b22",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-frog-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "e04ee1872946179e874c67e3509161df2dcb95337b0eb2825c57197aeaff74d0",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-snake-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "bc56e0542646511525f6f5e949eb312516d69cce14c9d5ca95d239692a9b3dae",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-rat-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "59a4c31ccb4a4f99c01e9a38988ed69b5802c13e80f746d8a59eff6bc87b9e25",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-guinea-pig-original-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "4f29afb0741b630c8b1d595447409f086d5c1c1f9a103ac6bbe42b5805c9e86e",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-dog-shepherd-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "00577fcf70567d88a5e4d547c5389c6ed3e5c2c1cb058653feb0fcc987e6d4f4",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-cat-longhair-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "b6f97f98de5d36f1d04567d59dd50124e2fb9222bf1e30894c8111b0ca44ec43",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-rabbit-runic-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "e781a5c6850a81804734d426f67ab497cdf084b4399aa8f4767ab9a9637c9d1e",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-owl-horned-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "8fccc0f9e84bc31a81e823a76db5a0d215cb3632dd96676cd534c02904216d76",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-raven-shadow-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "6e666464c2298b7a9aa341a2e076bb1cd4924c34b1a000c10c5b2d4fe663bb14",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-snake-emerald-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "8747c1947692e562525b41595ba7cde2d93968ae83a13e85d74ef9bbf2c4f91d",
+    "transparent": true
+  },
+  {
+    "id": "companion-pet-rat-fluffy-v1",
+    "width": 1254,
+    "height": 1254,
+    "source_sha256": "0d035dc664c97011b236756b6f8ccee8934248264ecf5cc1c7a5c733694259e0",
+    "transparent": true
+  }
+]

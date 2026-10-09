@@ -54,7 +54,7 @@ export async function seed() {
             weight_estimated: item.weight_estimated,
             display: item.display,
           },
-          `/shop/items/${item.id}.png`,
+          item.image_path || `/shop/items/${item.id}.png`,
           item.merchant_comment,
           item.weight_estimated,
         ],

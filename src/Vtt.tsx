@@ -60,6 +60,8 @@ import {
 import { api, post } from './api';
 import { VttPrivateLibrary } from './VttPrivateLibrary';
 import { VttCharacterToken } from './VttCharacterToken';
+import { VttCompanions } from './VttCompanions';
+import { companionMime } from '../shared/vtt-companions';
 import { VttSelectionPortrait } from './VttSelectionPortrait';
 import { VttChatText } from './VttChatText';
 import { VttChatComposer } from './VttChatComposer';
@@ -157,6 +159,8 @@ type Tab =
   | 'token'
   | 'library'
   | 'sheet'
+  | 'mounts'
+  | 'pets'
   | 'chat'
   | 'combat'
   | 'journal'
@@ -1778,6 +1782,32 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       setBusy(false);
     }
   }
+  async function bringCompanion(id: string, at?: Point) {
+    if (!state || spectator || preview || busy || characterImportBusy.current) return;
+    characterImportBusy.current = true;
+    setBusy(true);
+    try {
+      await save();
+      setBusy(true);
+      const next = await post<VttState>(
+        `/vtt/rooms/${state.id}/companions/${id}`,
+        at ? { position: at } : {},
+      );
+      receive(next);
+      const imported = next.document.scenes
+        .find((s) => s.id === next.document.activeScene)
+        ?.tokens.find((t) => t.companionId === id && t.controller === user.id);
+      if (imported) {
+        changeLayer('tokens', [imported.id]);
+        setSelection([imported.id]);
+        setAttackTargetId(null);
+        setTool('select');
+      }
+    } finally {
+      characterImportBusy.current = false;
+      setBusy(false);
+    }
+  }
   function dragCharacter(event: ReactDragEvent<HTMLElement>, id: string) {
     if (spectator || preview || busy || characterImportBusy.current) {
       event.preventDefault();
@@ -2564,6 +2594,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 !spectator &&
                 !busy &&
                 (e.dataTransfer.types.includes(characterMime) ||
+                  e.dataTransfer.types.includes(companionMime) ||
                   (gm && e.dataTransfer.types.includes(monsterMime)))
               ) {
                 e.preventDefault();
@@ -2571,6 +2602,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
             }}
             onDrop={(e) => {
+              if (!spectator && !preview && e.dataTransfer.types.includes(companionMime)) {
+                e.preventDefault();
+                const id = e.dataTransfer.getData(companionMime);
+                void act(() => bringCompanion(id, point(e)));
+                return;
+              }
               if (!spectator && !preview && e.dataTransfer.types.includes(characterMime)) {
                 e.preventDefault();
                 const id = e.dataTransfer.getData(characterMime);
@@ -2987,7 +3024,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   title={name}
                   aria-pressed={
                     tab === id ||
-                    (id === 'sheet' && (tab === 'token' || tab === 'journal')) ||
+                    (id === 'sheet' && ['token', 'journal', 'mounts', 'pets'].includes(tab)) ||
                     (id === 'table' && (tab === 'scene' || tab === 'help'))
                   }
                   onClick={() => {
@@ -3015,7 +3052,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     tabs.find(
                       (t) =>
                         t.id ===
-                        (tab === 'token' || tab === 'journal'
+                        (['token', 'journal', 'mounts', 'pets'].includes(tab)
                           ? 'sheet'
                           : tab === 'scene' || tab === 'help'
                             ? 'table'
@@ -3040,10 +3077,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </button>
                 )}
               </div>
-              {['sheet', 'token', 'journal'].includes(tab) && (
-                <div className="vtt-subtabs">
+              {['sheet', 'mounts', 'pets', 'token', 'journal'].includes(tab) && (
+                <div className="vtt-subtabs vtt-companion-tabs">
                   <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>
                     Personagens
+                  </button>
+                  <button aria-pressed={tab === 'mounts'} onClick={() => setTab('mounts')}>
+                    Montarias
+                  </button>
+                  <button aria-pressed={tab === 'pets'} onClick={() => setTab('pets')}>
+                    Mascotes
                   </button>
                   <button aria-pressed={tab === 'token'} onClick={() => setTab('token')}>
                     Token selecionado
@@ -3978,6 +4021,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     SRD 5.2.1 · Wizards of the Coast · CC BY 4.0
                   </a>
                 </>
+              )}
+              {(tab === 'mounts' || tab === 'pets') && (
+                <VttCompanions
+                  roomId={state.id}
+                  kind={tab === 'mounts' ? 'mount' : 'pet'}
+                  disabled={spectator || preview || busy}
+                  bring={(id) => void act(() => bringCompanion(id))}
+                />
               )}
               {spectator && tab === 'sheet' && (
                 <p className="vtt-muted">

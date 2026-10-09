@@ -51,7 +51,7 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         Origin: origin,
         Cookie: who?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '5',
+        'X-Vtt-Schema-Version': '6',
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
