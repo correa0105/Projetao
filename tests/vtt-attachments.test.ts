@@ -229,16 +229,23 @@ test('drop facing follows the last real leg, including flips, without rotating s
   const { base } = fixture();
   base.rotation = 37;
   assert.equal(movementFacing(base, base, [base]), 37);
-  assert.equal(movementFacing(base, base, [{ x: 500, y: 300 }]), 90);
+  assert.equal(movementFacing(base, base, [{ x: 500, y: 300 }]), 270);
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 500 }]), 0);
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 100 }]), 180);
+  assert.equal(movementFacing(base, base, [{ x: 100, y: 300 }]), 90);
+  base.flipX = true;
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 500 }]), 0);
   assert.equal(
     movementFacing(base, base, [
       { x: 500, y: 300 },
       { x: 500, y: 100 },
     ]),
-    0,
+    180,
   );
   base.flipY = true;
-  assert.equal(movementFacing(base, base, [{ x: 500, y: 300 }]), 270);
+  assert.equal(movementFacing(base, base, [{ x: 500, y: 300 }]), 90);
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 500 }]), 180);
+  assert.equal(movementFacing(base, base, [{ x: 300, y: 100 }]), 0);
 });
 test('carried rotational arcs cannot bypass walls or map limits', () => {
   const { scene, base, rider } = fixture();

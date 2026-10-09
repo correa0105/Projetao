@@ -80,7 +80,7 @@ export function syncAttachmentPositions(scene: VttScene, previous?: VttScene) {
     }
   }
 }
-/** Native top-down art faces north at zero degrees. Use the last traveled leg. */
+/** Native top-down art faces south at zero degrees. Use the last traveled leg. */
 export function movementFacing(token: VttToken, start: Point, path: Point[]) {
   let from = start,
     result = token.rotation;
@@ -88,7 +88,7 @@ export function movementFacing(token: VttToken, start: Point, path: Point[]) {
     if (Math.hypot(to.x - from.x, to.y - from.y) > 0.5)
       result =
         ((((Math.atan2(to.y - from.y, to.x - from.x) * 180) / Math.PI +
-          90 +
+          -90 +
           (token.flipY ? 180 : 0)) %
           360) +
           360) %
