@@ -13,47 +13,39 @@ function Preview({ id, image }: { id: AnimatedAsset['id']; image: string }) {
   useEffect(() => {
     const c = ref.current!.getContext('2d')!,
       art = new Image();
-    art.src = image;
+    if (image) art.src = image;
     const scene = newDocument(crypto.randomUUID()).scenes[0],
       token = newToken(crypto.randomUUID(), scene);
     token.width = token.height = 180;
-    token.animatedAsset = { id, speed: 1, intensity: 0.8, playing: true };
-    let frame = 0,
-      visible = false,
-      disposed = false,
-      ready = false,
-      last = 0;
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)'),
-      observer = new IntersectionObserver((entries) => {
-        visible = entries[0].isIntersecting;
-      });
-    observer.observe(ref.current!);
-    const paint = (time: number) => {
+    token.animatedAsset = { id, speed: 1, intensity: 0.8, playing: false };
+    let disposed = false;
+    const paint = () => {
       if (disposed) return;
-      frame = requestAnimationFrame(paint);
-      if (!visible || document.hidden || time - last < 66 || !ready) return;
-      last = time;
       c.clearRect(0, 0, 192, 192);
       c.save();
       c.translate(96, 96);
-      drawAnimatedAsset(c, token, art, time, reduced.matches, true);
+      if (id === 'windmill' && art.naturalWidth) {
+        const fit = 180 / Math.max(art.naturalWidth, art.naturalHeight);
+        c.drawImage(
+          art,
+          (-art.naturalWidth * fit) / 2,
+          (-art.naturalHeight * fit) / 2,
+          art.naturalWidth * fit,
+          art.naturalHeight * fit,
+        );
+      } else drawAnimatedAsset(c, token, image ? art : undefined, 1700, true, true);
       c.restore();
     };
     void Promise.all([
-      effectMaterialsReady,
-      physicalPropsReady,
+      id === 'windmill' ? Promise.resolve() : effectMaterialsReady,
+      id === 'windmill' ? Promise.resolve() : physicalPropsReady,
       image ? art.decode().catch(() => {}) : Promise.resolve(),
-    ]).then(() => {
-      ready = true;
-    });
-    frame = requestAnimationFrame(paint);
+    ]).then(paint);
     return () => {
       disposed = true;
-      cancelAnimationFrame(frame);
-      observer.disconnect();
     };
   }, [id, image]);
-  return <canvas ref={ref} width={192} height={192} aria-label="Prévia animada vista de cima" />;
+  return <canvas ref={ref} width={192} height={192} aria-label="Prévia estática vista de cima" />;
 }
 export function VttAnimatedAssets({
   query,

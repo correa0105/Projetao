@@ -1,5 +1,7 @@
 # VTT: efeitos, assets animados e ações compactas — 09/10/2026
 
+Atualização de 09/10: as miniaturas da biblioteca no painel direito são estáticas, com um único quadro após carregar a arte. Não mantêm loop de animação. Adicionar, arrastar, busca e animações dos objetos no mapa continuam funcionando. Validado em navegador com as 16 opções atuais: quadros parados, busca e Adicionar; TypeScript e build aprovados em release limpo.
+
 ## Uso
 
 - Biblioteca → **Assets animados**: 17 elementos originais vistos de cima. O mestre arrasta para o mapa ou usa Adicionar. São objetos na camada Mapa; tamanho, rotação, ordem, ocultação e exclusão continuam disponíveis. Token selecionado → Animação do ambiente permite pausar, mudar velocidade e intensidade.
