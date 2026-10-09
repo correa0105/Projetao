@@ -40,6 +40,7 @@ test('ficha: escolhas válidas, bônus raciais e regras de nível 1', () => {
 });
 
 test('ficha API: titularidade, rolagem única concorrente, distribuição definitiva e persistência', async () => {
+  assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/, 'Use the isolated sheet test runner.');
   await migrate();
   const { createApp } = await import('../server/app.js');
   const server = createApp().listen(0, '127.0.0.1');

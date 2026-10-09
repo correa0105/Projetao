@@ -4,6 +4,7 @@ import type { PoolClient } from 'pg';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
+import { readCharacterLoadout } from './character-attacks.js';
 import {
   validateChoices,
   deriveSheet,
@@ -40,7 +41,9 @@ async function result(id: string, user: string) {
   const {
     rows: [sheet],
   } = await pool.query('SELECT * FROM character_sheets WHERE character_id=$1', [id]);
+  const { attacks } = await readCharacterLoadout(pool, c, sheet?.choices);
   return {
+    attacks,
     sheet: sheet || null,
     derived: sheet?.finalized_at ? deriveSheet(c, sheet.choices) : null,
   };

@@ -4,7 +4,8 @@ import { api } from './api';
 import { VttModal } from './VttMaps';
 import type { VttToken } from '../shared/vtt';
 import type { VttSheetData } from '../shared/vtt-sheet';
-import { spells, sheetAttacks, skills, skillAbilities } from '../shared/character-sheet';
+import { spells, skills, skillAbilities } from '../shared/character-sheet';
+import { ItemThumbnail } from './ItemThumbnail';
 import { modifier, statNames } from '../shared/rules';
 import type { AttackRequest } from '../shared/vtt-attack';
 import './vtt-sheet.css';
@@ -69,6 +70,30 @@ export function VttSheet({
   const use = (body: object) =>
     void action('/use', { ...body, idempotency_key: crypto.randomUUID() });
   const restore = (body: object) => void action('/restore', body);
+  const weaponDamage = async (itemId: string) => {
+    setBusy(true);
+    setError('');
+    try {
+      const current = await api<VttSheetData>(url);
+      const weapon = current.attacks.find((w) => w.itemId === itemId);
+      if (!weapon)
+        throw Error('A arma foi trocada ou saiu da mochila. Selecione o ataque novamente.');
+      await roll(weapon.dice + signed(weapon.ability), t.name + ' · ' + weapon.name + ' · dano');
+      setData(current);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  const selectWeapon = (hand: 'main_hand' | 'off_hand', value: string) => {
+    if (!data) return;
+    const weapon = data.available_weapons.find((w) => w.itemId === value);
+    const slots = { ...data.weapon_slots, [hand]: value || null };
+    if (hand === 'main_hand' && (weapon?.twoHanded || slots.off_hand === value))
+      slots.off_hand = null;
+    void action('/weapons', slots, 'PUT');
+  };
   const d = data?.derived,
     c = data?.character,
     choices = data?.sheet?.choices;
@@ -295,25 +320,78 @@ export function VttSheet({
                   {box(
                     'Ataques',
                     <div className="vtt-sheet-attacks">
+                      {choices && (
+                        <fieldset className="vtt-sheet-weapons">
+                          <legend>Armas na mesa</legend>
+                          <p>Troque entre as armas da mochila. A escolha vale nesta sala.</p>
+                          <label>
+                            Mão principal
+                            <select
+                              aria-label="Arma na mesa"
+                              disabled={busy || !data.can_use}
+                              value={data.weapon_slots.main_hand || ''}
+                              onChange={(e) => selectWeapon('main_hand', e.target.value)}
+                            >
+                              <option value="">Sem arma</option>
+                              {data.available_weapons.map((w) => (
+                                <option key={w.itemId} value={w.itemId}>
+                                  {w.name}
+                                  {w.twoHanded ? ' · duas mãos' : ''}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <label>
+                            Mão secundária
+                            <select
+                              aria-label="Arma secundária na mesa"
+                              disabled={
+                                busy ||
+                                !data.can_use ||
+                                !!data.available_weapons.find(
+                                  (w) => w.itemId === data.weapon_slots.main_hand,
+                                )?.twoHanded
+                              }
+                              value={data.weapon_slots.off_hand || ''}
+                              onChange={(e) => selectWeapon('off_hand', e.target.value)}
+                            >
+                              <option value="">Sem arma</option>
+                              {data.available_weapons
+                                .filter(
+                                  (w) => !w.twoHanded && w.itemId !== data.weapon_slots.main_hand,
+                                )
+                                .map((w) => (
+                                  <option key={w.itemId} value={w.itemId}>
+                                    {w.name}
+                                  </option>
+                                ))}
+                            </select>
+                          </label>
+                        </fieldset>
+                      )}
                       {choices ? (
-                        sheetAttacks(c!.race, c!.class, c!.stats, choices).map((w) => (
-                          <article key={w.name}>
-                            <strong>{w.name}</strong>
-                            {data.can_use && (
-                              <ActionShortcut
-                                action={{
-                                  kind: 'attack',
-                                  characterId: c!.id,
-                                  sourceId: w.name,
-                                  label: w.name,
-                                }}
-                              />
-                            )}
+                        data.attacks.map((w) => (
+                          <article key={w.itemId}>
+                            <div className="vtt-sheet-attack-title">
+                              <ItemThumbnail image={w.image_path} name={w.name} />
+                              <strong>{w.name}</strong>
+                              {data.can_use && (
+                                <ActionShortcut
+                                  action={{
+                                    kind: 'attack',
+                                    characterId: c!.id,
+                                    sourceId: w.itemId,
+                                    label: w.name,
+                                  }}
+                                />
+                              )}
+                            </div>
                             <div>
                               <button
                                 onClick={() =>
                                   onAttack({
                                     actorId: t.id,
+                                    weaponItemId: w.itemId,
                                     name: t.name + ' · ' + w.name,
                                     attack: '1d20' + signed(w.attack),
                                     damage: w.dice === '—' ? [] : [w.dice + signed(w.ability)],
@@ -323,14 +401,7 @@ export function VttSheet({
                                 Acerto {signed(w.attack)}
                               </button>
                               {w.dice !== '—' && (
-                                <button
-                                  onClick={() =>
-                                    void roll(
-                                      w.dice + signed(w.ability),
-                                      t.name + ' · ' + w.name + ' · dano',
-                                    )
-                                  }
-                                >
+                                <button onClick={() => void weaponDamage(w.itemId)}>
                                   {w.dice}
                                   {signed(w.ability)}
                                 </button>
@@ -347,6 +418,9 @@ export function VttSheet({
                       )}
                     </div>,
                   )}
+                  {choices && !data.attacks.length && (
+                    <p>Nenhuma arma selecionada. Escolha uma arma da mochila em Armas na mesa.</p>
+                  )}
                   {box(
                     'Equipamento e consumíveis',
                     <>
@@ -361,7 +435,10 @@ export function VttSheet({
                       {data.inventory.map((i) => (
                         <article className="vtt-sheet-item" key={i.id}>
                           <div>
-                            <strong>{i.name}</strong>
+                            <div className="vtt-sheet-item-title">
+                              <ItemThumbnail image={i.image_path} name={i.name} />
+                              <strong>{i.name}</strong>
+                            </div>
                             <small>
                               {i.quantity} unidades{i.equipped.length ? ' · equipado' : ''}
                             </small>

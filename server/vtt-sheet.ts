@@ -7,6 +7,7 @@ import { companionAllocated } from './companion-inventory.js';
 import { isAdministrator, requireAdministrator } from './administrators.js';
 import { deriveSheet, classRules } from '../shared/character-sheet.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
+import { readVttLoadout } from './vtt-weapon-loadout.js';
 import { applyTokenDeath, type VttDocument } from '../shared/vtt.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
 type DB = Pick<PoolClient, 'query'>;
@@ -73,11 +74,8 @@ export async function resources(
 async function sheetData(getRoom: RoomAccess, rid: string, tid: string, user: string) {
   const a = await access(getRoom, pool, rid, tid, user);
   const c = a.character;
-  const [inventory, uses, r] = await Promise.all([
-    pool.query(
-      `SELECT i.item_id AS id,c.name,c.description,c.weight_lb,i.quantity,ARRAY(SELECT slot FROM character_equipment e WHERE e.character_id=i.character_id AND e.item_id=i.item_id) AS equipped FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 ORDER BY c.name`,
-      [c.id],
-    ),
+  const [loadout, uses, r] = await Promise.all([
+    readVttLoadout(pool, rid, c, a.sheet?.choices),
     pool.query(
       'SELECT u.id,u.kind,u.item_id,c.name AS item_name,u.slot,u.created_at,u.restored_at FROM vtt_resource_uses u LEFT JOIN catalog_items c ON c.id=u.item_id WHERE u.character_id=$1 AND u.room_id=$2 ORDER BY u.created_at DESC LIMIT 100',
       [c.id, rid],
@@ -100,7 +98,10 @@ async function sheetData(getRoom: RoomAccess, rid: string, tid: string, user: st
     token: a.token,
     sheet: a.sheet || null,
     derived: a.sheet?.finalized_at && a.sheet.choices ? deriveSheet(c, a.sheet.choices) : null,
-    inventory: inventory.rows.map((i) => ({ ...i, consumable: consumableItems.has(i.id) })),
+    inventory: loadout.inventory.map((i) => ({ ...i, consumable: consumableItems.has(i.id) })),
+    attacks: loadout.attacks,
+    available_weapons: loadout.available_weapons,
+    weapon_slots: loadout.weapon_slots,
     resources: r,
     uses: uses.rows,
     is_gm: a.isGm,
@@ -109,6 +110,35 @@ async function sheetData(getRoom: RoomAccess, rid: string, tid: string, user: st
 }
 export function vttSheetRouter(getRoom: RoomAccess) {
   const router = Router();
+  router.put('/vtt/rooms/:id/sheets/:token/weapons', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      tid = uuid.parse(req.params.token),
+      user = res.locals.user.id;
+    const input = z
+      .object({
+        main_hand: z.string().min(1).max(180).nullable(),
+        off_hand: z.string().min(1).max(180).nullable(),
+      })
+      .strict()
+      .parse(req.body);
+    await transaction(async (db) => {
+      const a = await access(getRoom, db, rid, tid, user, true);
+      const loadout = await readVttLoadout(db, rid, a.character, a.sheet?.choices);
+      const main = loadout.available_weapons.find((w) => w.itemId === input.main_hand),
+        off = loadout.available_weapons.find((w) => w.itemId === input.off_hand);
+      if ((input.main_hand && !main) || (input.off_hand && !off))
+        throw new AppError(400, 'Escolha uma arma que esteja na mochila deste personagem.');
+      if (input.main_hand && input.main_hand === input.off_hand)
+        throw new AppError(400, 'Escolha armas diferentes para as mãos.');
+      if (off?.twoHanded || (main?.twoHanded && off))
+        throw new AppError(400, 'Esta arma ocupa as duas mãos.');
+      await db.query(
+        'INSERT INTO vtt_weapon_loadouts(room_id,character_id,main_hand,off_hand)VALUES($1,$2,$3,$4)ON CONFLICT(room_id,character_id)DO UPDATE SET main_hand=$3,off_hand=$4,updated_at=now()',
+        [rid, a.character.id, input.main_hand, input.off_hand],
+      );
+    });
+    res.json(await sheetData(getRoom, rid, tid, user));
+  });
   router.get('/vtt/rooms/:id/sheets/:token', async (req, res) =>
     res.json(
       await sheetData(

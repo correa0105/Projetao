@@ -5,12 +5,37 @@ import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { isAdministrator } from './administrators.js';
-import { emptyHotbar, hotbarSchema } from '../shared/vtt-hotbar.js';
-import { spells, sheetAttacks, deriveSheet } from '../shared/character-sheet.js';
+import {
+  emptyHotbar,
+  hotbarSchema,
+  hotbarActionKey,
+  type HotbarState,
+} from '../shared/vtt-hotbar.js';
+import { spells, deriveSheet } from '../shared/character-sheet.js';
+import { readCharacterLoadout } from './character-attacks.js';
+import { equippedAttacks, type CombatItem } from '../shared/equipped-attacks.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
 import type { VttDocument } from '../shared/vtt.js';
 import { tokenMonsterActions } from '../shared/vtt-monster-presets.js';
 type DB = Pick<PoolClient, 'query'>;
+async function withArt(state: HotbarState): Promise<HotbarState> {
+  const actions = state.document.pages
+    .flatMap((p) => p.slots)
+    .filter((a) => a?.kind === 'attack' || a?.kind === 'consumable');
+  const sources = [...new Set(actions.map((a) => a!.sourceId))];
+  if (!sources.length) return { ...state, art: {} };
+  const { rows } = await pool.query(
+    'SELECT id,name,image_path FROM catalog_items WHERE (id=ANY($1::text[]) OR name=ANY($1::text[])) AND image_path IS NOT NULL',
+    [sources],
+  );
+  const art: Record<string, string> = {};
+  for (const action of actions) {
+    const item =
+      rows.find((i) => i.id === action!.sourceId) || rows.find((i) => i.name === action!.sourceId);
+    if (item) art[hotbarActionKey(action!)] = item.image_path;
+  }
+  return { ...state, art };
+}
 type Access = (
   db: DB,
   id: string,
@@ -47,7 +72,7 @@ export function vttHotbarRouter(getRoom: Access) {
       'SELECT revision,document FROM vtt_hotbars WHERE room_id=$1 AND user_id=$2',
       [id, user],
     );
-    res.json(r);
+    res.json(await withArt(r));
   });
   router.put(path, async (req, res) => {
     const id = z.string().uuid().parse(req.params.id),
@@ -138,20 +163,21 @@ export function vttHotbarRouter(getRoom: Access) {
           ...(derived?.alwaysPrepared || []),
           ...(derived?.spellGrants.flatMap((g) => [...g.cantrips, ...g.spells]) || []),
         ]);
-        const { rows: inventory } = await db.query(
-          'SELECT item_id FROM inventory WHERE character_id=$1 AND quantity>0',
-          [cid],
+        const loadout = await readCharacterLoadout(db, c, c.choices);
+        const weapons = equippedAttacks(
+          c,
+          c.choices,
+          loadout.inventory.map((i) => ({ ...i, equipped: ['main_hand'] })) as CombatItem[],
         );
         for (const a of characterActions.filter((a) => a.characterId === cid)) {
           const valid =
             a.kind === 'attack'
-              ? c.choices &&
-                sheetAttacks(c.race, c.class, c.stats, c.choices).some((w) => w.name === a.sourceId)
+              ? weapons.some((w) => w.itemId === a.sourceId || w.name === a.sourceId)
               : a.kind === 'spell'
                 ? spells.some((s) => s.id === a.sourceId && known.has(s.id))
                 : consumableItems.has(a.sourceId) &&
-                  inventory.some((i) => i.item_id === a.sourceId);
-          // Spent consumables can remain as disabled shortcuts; new entries must exist in inventory.
+                  loadout.inventory.some((i) => i.id === a.sourceId);
+          // Previously pinned, unavailable items can still be moved or removed. Execution rechecks the live loadout.
           const existing = hotbarSchema
             .parse(old.document)
             .pages.some((p) =>
@@ -164,7 +190,7 @@ export function vttHotbarRouter(getRoom: Access) {
                   s.sourceId === a.sourceId,
               ),
             );
-          if (!valid && !(a.kind === 'consumable' && existing))
+          if (!valid && !((a.kind === 'consumable' || a.kind === 'attack') && existing))
             throw new AppError(400, 'O atalho não está disponível na ficha desse personagem.');
         }
       }
@@ -176,7 +202,7 @@ export function vttHotbarRouter(getRoom: Access) {
       );
       return saved;
     });
-    res.json(result);
+    res.json(await withArt(result));
   });
   return router;
 }

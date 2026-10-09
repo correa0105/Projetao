@@ -985,8 +985,14 @@ export function validateChoices(race: string, cls: string, input: unknown): Shee
   list(c.expertise, cls === 'Ladino' ? 2 : 0, proficientSkills(race, c), 'especializações');
   return c;
 }
-export function sheetAttacks(race: string, cls: string, stats: number[], c: SheetChoices) {
-  const gear = startingEquipment(cls, c),
+export function sheetAttacks(
+  race: string,
+  cls: string,
+  stats: number[],
+  c: SheetChoices,
+  equipped?: readonly string[],
+) {
+  const gear = equipped ?? startingEquipment(cls, c),
     aliases: Record<string, string[]> = {
       Adaga: ['Duas adagas', 'Cinco adagas'],
       Machadinha: ['Quatro machadinhas'],
@@ -1266,6 +1272,7 @@ export type SheetRecord = {
 export type SheetResponse = {
   sheet: SheetRecord | null;
   derived: ReturnType<typeof deriveSheet> | null;
+  attacks?: import('./equipped-attacks').EquippedAttack[];
 };
 
 export function restChoiceFields(race: string, cls: string, c: SheetChoices) {

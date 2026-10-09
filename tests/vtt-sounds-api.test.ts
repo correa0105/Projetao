@@ -24,7 +24,7 @@ test('mixer e atalhos em PostgreSQL descartável: autorização, persistência e
         Origin: origin,
         Cookie: who?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '4',
+        'X-Vtt-Schema-Version': '5',
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });

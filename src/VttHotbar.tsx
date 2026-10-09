@@ -13,12 +13,16 @@ import {
 import { api } from './api';
 import {
   actionMime,
+  hotbarActionKey,
   hotbarActionSchema,
   type HotbarAction,
   type HotbarState,
   type HotbarDocument,
 } from '../shared/vtt-hotbar';
-import { sheetAttacks, spells } from '../shared/character-sheet';
+import { spells } from '../shared/character-sheet';
+import { ItemThumbnail } from './ItemThumbnail';
+import { VttEffectPreview } from './VttEffectPreview';
+import type { EffectPreset } from '../shared/vtt-effects';
 import type { VttSheetData } from '../shared/vtt-sheet';
 import type { VttMessage, VttToken } from '../shared/vtt';
 import type { MonsterAction } from '../shared/vtt-monster-actions';
@@ -49,6 +53,7 @@ export function ActionShortcut({ action }: { action: HotbarAction }) {
 export function VttHotbar({
   roomId,
   tokens,
+  effects = [],
   sheetOpen,
   roll,
   shareSpell,
@@ -70,6 +75,7 @@ export function VttHotbar({
 }: {
   roomId: string;
   tokens: VttToken[];
+  effects?: EffectPreset[];
   sheetOpen: boolean;
   roll: (
     formula: string,
@@ -236,22 +242,32 @@ export function VttHotbar({
     setError('');
     try {
       await refresh();
-      const data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}`);
-      setSelected({ action, data, index });
+      let data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}`);
       if (action.kind === 'attack') {
-        const c = data.character,
-          choices = data.sheet?.choices;
-        const weapon =
-          choices &&
-          sheetAttacks(c.race, c.class, c.stats, choices).find((w) => w.name === action.sourceId);
-        if (!weapon) throw Error('Este ataque não está mais na ficha.');
+        const weapon = data.available_weapons.find(
+          (w) => w.itemId === action.sourceId || w.name === action.sourceId,
+        );
+        if (!weapon) throw Error('Esta arma não está na mochila do personagem.');
+        if (!data.attacks.some((w) => w.itemId === weapon.itemId))
+          data = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${token.id}/weapons`, {
+            method: 'PUT',
+            body: JSON.stringify({
+              main_hand: weapon.itemId,
+              off_hand:
+                weapon.twoHanded || data.weapon_slots.off_hand === weapon.itemId
+                  ? null
+                  : data.weapon_slots.off_hand,
+            }),
+          });
         onAttack({
           actorId: data.token.id,
+          weaponItemId: weapon.itemId,
           name: data.token.name + ' · ' + weapon.name,
           attack: '1d20' + signed(weapon.attack),
           damage: weapon.dice === '—' ? [] : [weapon.dice + signed(weapon.ability)],
         });
       }
+      setSelected({ action, data, index });
     } catch (e) {
       setError((e as Error).message);
       setSelected({ action, index });
@@ -289,15 +305,15 @@ export function VttHotbar({
         } else if (mode === 'description')
           await roll('', (label + '\n' + monster.action.description).slice(0, 2000));
       } else if (action.kind === 'attack' && data) {
-        const c = data.character,
-          choices = data.sheet?.choices;
-        const attack =
-          choices &&
-          sheetAttacks(c.race, c.class, c.stats, choices).find((w) => w.name === action.sourceId);
-        if (!attack) throw Error('Este ataque não está mais na ficha.');
+        const current = await api<VttSheetData>(`/vtt/rooms/${roomId}/sheets/${data.token.id}`);
+        const attack = current.attacks.find(
+          (w) => w.itemId === action.sourceId || w.name === action.sourceId,
+        );
+        if (!attack) throw Error('Selecione esta arma novamente em Armas na mesa.');
         if (mode === 'attack')
           onAttack({
             actorId: data.token.id,
+            weaponItemId: attack.itemId,
             name: data.token.name + ' · ' + attack.name,
             attack: '1d20' + signed(attack.attack),
             damage: attack.dice === '—' ? [] : [attack.dice + signed(attack.ability)],
@@ -403,6 +419,16 @@ export function VttHotbar({
               onBusy={onAttackBusy}
               applyDamage={applyDamage}
               discardDamage={discardDamage}
+              validate={async () => {
+                if (!attack.weaponItemId) return;
+                const current = await api<VttSheetData>(
+                  `/vtt/rooms/${roomId}/sheets/${attack.actorId}`,
+                );
+                if (!current.attacks.some((w) => w.itemId === attack.weaponItemId))
+                  throw Error(
+                    'A arma foi trocada ou saiu da mochila. Selecione o ataque novamente.',
+                  );
+              }}
             />
           ) : selected?.action.kind === 'sound' ? (
             <button onClick={openSound}>Abrir ajustes de som</button>
@@ -583,6 +609,16 @@ export function VttHotbar({
                 : action?.kind === 'sound'
                   ? Volume2
                   : FlaskConical;
+          const image =
+            action?.kind === 'sound'
+              ? undefined
+              : action?.kind === 'monster'
+                ? tokens.find((t) => t.id === action.tokenId)?.image
+                : action
+                  ? state.art?.[hotbarActionKey(action)]
+                  : undefined;
+          const effect =
+            action?.kind === 'effect' ? effects.find((p) => p.id === action.sourceId) : undefined;
           return (
             <button
               key={i}
@@ -634,7 +670,17 @@ export function VttHotbar({
               <small>{i === 9 ? 0 : i + 1}</small>
               {action && (
                 <>
-                  <Icon size={20} />
+                  {effect ? (
+                    <div className="vtt-hotbar-effect">
+                      <VttEffectPreview preset={effect} />
+                    </div>
+                  ) : (
+                    <ItemThumbnail
+                      image={image}
+                      name={action.label}
+                      fallback={<Icon size={20} />}
+                    />
+                  )}
                   <span>{action.label}</span>
                 </>
               )}

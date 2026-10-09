@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Sparkles, Plus, Pencil, Trash2, X, Eye } from 'lucide-react';
 import { actionMime } from '../shared/vtt-hotbar';
 import {
@@ -47,6 +47,27 @@ export function VttEffects({
     [libraryQuery, setLibraryQuery] = useState(''),
     [animatedKind, setAnimatedKind] = useState<string | null>(null);
   const root = useRef<HTMLDivElement>(null);
+  const [menuPosition, setMenuPosition] = useState({ left: 60, top: 76, maxHeight: 650 });
+  useLayoutEffect(() => {
+    if (!open) return;
+    const position = () => {
+      const toolbar = root.current?.closest('.vtt-tools')?.getBoundingClientRect();
+      if (!toolbar) return;
+      const top = Math.max(8, Math.min(toolbar.top + 8, window.innerHeight - 180));
+      setMenuPosition({
+        left: toolbar.right + 8,
+        top,
+        maxHeight: Math.min(650, window.innerHeight - top - 12),
+      });
+    };
+    position();
+    window.addEventListener('resize', position);
+    window.addEventListener('scroll', position, true);
+    return () => {
+      window.removeEventListener('resize', position);
+      window.removeEventListener('scroll', position, true);
+    };
+  }, [open]);
   const previewRef = useRef(preview);
   previewRef.current = preview;
   useEffect(() => {
@@ -107,6 +128,7 @@ export function VttEffects({
         aria-label="Efeitos do mestre"
         title="Efeitos do mestre"
         aria-expanded={open}
+        aria-pressed={open}
         onClick={() => setOpen(!open)}
       >
         <Sparkles size={19} />
@@ -115,6 +137,7 @@ export function VttEffects({
       {open && (
         <section
           className="vtt-effects-menu"
+          style={menuPosition}
           data-editing={Boolean(draft)}
           aria-label="Efeitos salvos do mestre"
         >

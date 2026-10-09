@@ -1,0 +1,39 @@
+.item-thumbnail {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+.vtt-sheet-item-title,
+.vtt-sheet-attack-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.vtt-sheet-item-title strong {
+  flex: 1;
+  min-width: 0;
+}
+.vtt-hotbar-slot .item-thumbnail {
+  width: 30px;
+  height: 30px;
+  flex-basis: 30px;
+}
+.vtt-hotbar-slot .vtt-hotbar-effect {
+  width: 42px;
+  height: 30px;
+  object-fit: contain;
+}
+.vtt-hotbar-slot .vtt-hotbar-effect canvas {
+  width: 42px;
+  height: 30px;
+}
+@media (max-width: 700px) {
+  .vtt-hotbar-slot .item-thumbnail {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+}

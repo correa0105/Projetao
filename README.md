@@ -1,3 +1,5 @@
+VTT 09/10: Armas na mesa alterna somente armas possuídas, escolha persistida por sala separada do equipamento do site; ataques não vêm da origem. Miniaturas em ficha/barra rápida. Efeitos na barra esquerda; seleção mostra retrato do peito ao rosto com fumaça nativa. Migration 088 e protocolo 5. Guia docs/VTT-WEAPONS-PORTRAIT-20261009.md. Testes de banco exigem runner descartável. Demais frentes de animais/arte/VFX continuam em andamento.
+
 Correção de compatibilidade de 09/10: protocolo VTT 4 rejeita leituras/comandos de abas antigas antes de devolver novos campos. Erro local ao conjurar usa aviso claro e botão Recarregar VTT. Blur com bloodEnabled/automaticDeath foi validado em navegador e banco descartável. Guia docs/VTT-SCHEMA-COMPAT-20261009.md. Tokens de animais e refino de arte continuam em andamento.
 
 # Alvorada Cinzenta

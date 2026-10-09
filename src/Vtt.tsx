@@ -60,6 +60,7 @@ import {
 import { api, post } from './api';
 import { VttPrivateLibrary } from './VttPrivateLibrary';
 import { VttCharacterToken } from './VttCharacterToken';
+import { VttSelectionPortrait } from './VttSelectionPortrait';
 import { VttChatText } from './VttChatText';
 import { VttChatComposer } from './VttChatComposer';
 import { VttMonsterEditor, customMonster } from './VttMonsterEditor';
@@ -2429,8 +2430,51 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               </button>
             </>
           )}
+          {gm && !sheetId && (
+            <VttEffects
+              presets={doc.effects}
+              visualEffects={visualEffects}
+              tokens={selectedEffectTokens}
+              busy={busy}
+              preview={(preset) =>
+                setEffectPreview(
+                  preset && selectedEffectTokens.length
+                    ? { tokenIds: selectedEffectTokens.map((t) => t.id), preset, at: Date.now() }
+                    : null,
+                )
+              }
+              save={saveEffect}
+              remove={async (id) => {
+                edit((d) => {
+                  d.effects = d.effects.filter((e) => e.id !== id);
+                });
+                await save();
+              }}
+              apply={applyEffect}
+              clear={async () => {
+                if (selectedEffectTokens.length) {
+                  await save();
+                  editSelected((t) => {
+                    if (t.layer !== 'map') {
+                      t.deathAt = null;
+                      t.effects = [];
+                    }
+                  });
+                  await save();
+                }
+              }}
+            />
+          )}
         </nav>
         <div className="vtt-stage" ref={stage}>
+          {!preview && !sheetId && token && token.layer === 'tokens' && selection.length === 1 && (
+            <VttSelectionPortrait
+              key={token.id}
+              roomId={state.id}
+              token={token}
+              visualEffects={visualEffects}
+            />
+          )}
           <VttSpellControls
             spells={spellcasting}
             scene={scene}
@@ -2476,6 +2520,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               key={state.id}
               roomId={state.id}
               tokens={scene.tokens}
+              effects={doc.effects}
               sheetOpen={!!sheetId}
               roll={(formula, label, damage, visual) =>
                 send(formula, label, undefined, damage, visual)
@@ -2501,41 +2546,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               }
               discardDamage={discardRolledDamage}
               closeAttack={() => setAttack(null)}
-            />
-          )}
-          {gm && !sheetId && (
-            <VttEffects
-              presets={doc.effects}
-              visualEffects={visualEffects}
-              tokens={selectedEffectTokens}
-              busy={busy}
-              preview={(preset) =>
-                setEffectPreview(
-                  preset && selectedEffectTokens.length
-                    ? { tokenIds: selectedEffectTokens.map((t) => t.id), preset, at: Date.now() }
-                    : null,
-                )
-              }
-              save={saveEffect}
-              remove={async (id) => {
-                edit((d) => {
-                  d.effects = d.effects.filter((e) => e.id !== id);
-                });
-                await save();
-              }}
-              apply={applyEffect}
-              clear={async () => {
-                if (selectedEffectTokens.length) {
-                  await save();
-                  editSelected((t) => {
-                    if (t.layer !== 'map') {
-                      t.deathAt = null;
-                      t.effects = [];
-                    }
-                  });
-                  await save();
-                }
-              }}
             />
           )}
           <canvas

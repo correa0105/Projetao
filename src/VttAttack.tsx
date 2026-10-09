@@ -24,6 +24,7 @@ export function VttAttack({
   onBusy,
   applyDamage,
   discardDamage,
+  validate,
 }: {
   request: AttackRequest;
   target?: VttToken;
@@ -37,6 +38,7 @@ export function VttAttack({
   onBusy: (busy: boolean) => void;
   applyDamage?: (messageIds: string[], tokenId: string) => Promise<void>;
   discardDamage: (messageIds: string[]) => Promise<void>;
+  validate?: () => Promise<void>;
 }) {
   const [mode, setMode] = useState<AttackMode>('normal'),
     [visual, setVisual] = useState<'auto' | 'none'>('auto'),
@@ -88,6 +90,7 @@ export function VttAttack({
     const snapshot = { ...target },
       at = context;
     await run(async () => {
+      await validate?.();
       setResult(null);
       setDamage([]);
       completed.current = [];
@@ -115,6 +118,7 @@ export function VttAttack({
     if (!result?.hit || discarded || done || !active || result.target.id !== target?.id) return;
     const at = context;
     await run(async () => {
+      await validate?.();
       for (let i = completed.current.length; i < formulas.length; i++) {
         if (currentContext.current !== at) return;
         const value = await roll(

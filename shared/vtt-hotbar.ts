@@ -61,7 +61,17 @@ export const hotbarSchema = z
       ctx.addIssue({ code: 'custom', message: 'Abas inválidas.' });
   });
 export type HotbarDocument = z.infer<typeof hotbarSchema>;
-export type HotbarState = { revision: number; document: HotbarDocument };
+export type HotbarState = {
+  revision: number;
+  document: HotbarDocument;
+  art?: Record<string, string>;
+};
+export const hotbarActionKey = (action: HotbarAction) =>
+  JSON.stringify([
+    action.kind,
+    'characterId' in action ? action.characterId : 'tokenId' in action ? action.tokenId : '',
+    action.sourceId,
+  ]);
 export const emptyHotbar = (id: string): HotbarDocument => ({
   active: id,
   pages: [{ id, name: 'Ações', locked: false, slots: Array(10).fill(null) }],

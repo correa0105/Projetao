@@ -488,6 +488,48 @@ export function vttRouter() {
     });
     res.json(await state(rid, user));
   });
+  router.get('/vtt/rooms/:id/tokens/:token/portrait', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      tid = uuid.parse(req.params.token),
+      user = res.locals.user.id;
+    const current = await room(pool, rid, user);
+    const isGm = current.owner_id === user && (await isAdministrator(user));
+    let viewAs = user;
+    if (current.role === 'spectator') {
+      const member = await pool.query(
+        "SELECT user_id FROM vtt_members WHERE room_id=$1 AND user_id=$2 AND role='player'",
+        [rid, current.viewing_user_id],
+      );
+      viewAs = member.rows[0]?.user_id || '';
+    }
+    const visible = isGm
+      ? current.document
+      : playerDocument(current.document, viewAs, current.role === 'spectator');
+    const token = visible.scenes
+      .find((s) => s.id === visible.activeScene)
+      ?.tokens.find((t) => t.id === tid && t.layer !== 'map');
+    if (!token?.characterId) throw new AppError(404, 'Retrato não disponível.');
+    const {
+      rows: [portrait],
+    } = await pool.query(
+      'SELECT p.image FROM character_portraits p JOIN characters c ON c.id=p.character_id JOIN vtt_character_links l ON l.character_id=c.id AND l.room_id=$2 WHERE c.id=$1 AND c.user_id=l.imported_by AND c.deleted_at IS NULL',
+      [token.characterId, rid],
+    );
+    if (!portrait) throw new AppError(404, 'Retrato não disponível.');
+    const { data, info } = await sharp(portrait.image).trim().toBuffer({ resolveWithObject: true });
+    const bytes = await sharp(data)
+      .extract({
+        left: 0,
+        top: 0,
+        width: info.width,
+        height: Math.min(info.height, Math.max(1, Math.round(info.height * 0.34))),
+      })
+      .resize({ width: 320, height: 400, fit: 'cover', position: 'top' })
+      .webp({ quality: 92, alphaQuality: 100 })
+      .toBuffer();
+    res.setHeader('Cache-Control', 'private, no-store');
+    res.type('image/webp').send(bytes);
+  });
   router.get('/vtt', async (_req, res) =>
     res.json({
       can_create: await isAdministrator(res.locals.user.id),

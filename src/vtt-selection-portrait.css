@@ -1,0 +1,77 @@
+.vtt-selection-portrait {
+  position: absolute;
+  left: 12px;
+  bottom: 14px;
+  z-index: 8;
+  width: 200px;
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+  animation: vtt-portrait-appear 0.35s ease-out both;
+}
+.vtt-selection-portrait svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 4px 9px #0008);
+}
+.vtt-selection-portrait figcaption {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: -12px auto 0;
+  padding: 4px 12px;
+  border-bottom: 1px solid #c6a66d99;
+  background: linear-gradient(90deg, transparent, #101820d9 18%, #101820d9 82%, transparent);
+  color: #e9dcc3;
+  font:
+    14px Georgia,
+    serif;
+  text-align: center;
+  overflow-wrap: anywhere;
+  text-shadow: 0 2px 4px #000;
+}
+.vtt-portrait-smoke {
+  transform-origin: 50% 50%;
+  animation: vtt-portrait-vapor 9s ease-in-out infinite alternate;
+}
+.vtt-selection-portrait[data-animated='false'],
+.vtt-selection-portrait[data-animated='false'] .vtt-portrait-smoke {
+  animation: none;
+}
+@keyframes vtt-portrait-vapor {
+  from {
+    transform: translate(-2px, 2px) scale(0.97) rotate(-2deg);
+    opacity: 0.45;
+  }
+  to {
+    transform: translate(2px, -3px) scale(1.025) rotate(2deg);
+    opacity: 0.68;
+  }
+}
+@keyframes vtt-portrait-appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1100px) {
+  .vtt-selection-portrait {
+    width: 150px;
+    bottom: 172px;
+  }
+}
+@media (max-width: 700px) {
+  .vtt-selection-portrait {
+    width: 138px;
+    left: 8px;
+    bottom: 172px;
+  }
+  .vtt-selection-portrait figcaption {
+    font-size: 12px;
+  }
+}

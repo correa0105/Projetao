@@ -36,13 +36,13 @@ import {
   classRules,
   spells,
   spellOptions,
-  sheetAttacks,
   dragons,
   type SheetResponse,
   type SheetRecord,
 } from '../shared/character-sheet';
 import { SheetChoices, ChoiceList } from './SheetChoices';
 import { SheetHelp } from './SheetHelp';
+import { ItemThumbnail } from './ItemThumbnail';
 import { AttributeDice } from './AttributeDice';
 import './character-sheet.css';
 import './character-parchment.css';
@@ -79,7 +79,15 @@ function TrainingMark({ trained, expert = false }: { trained: boolean; expert?: 
     </span>
   );
 }
-function EquipmentCard({ name, quantity }: { name: string; quantity?: number }) {
+function EquipmentCard({
+  name,
+  quantity,
+  image,
+}: {
+  name: string;
+  quantity?: number;
+  image?: string | null;
+}) {
   const Icon = /espada|arco|flecha|adaga|machado|lança|martelo|besta/i.test(name)
     ? Sword
     : /armadura|cota|escudo|couro/i.test(name)
@@ -92,7 +100,7 @@ function EquipmentCard({ name, quantity }: { name: string; quantity?: number }) 
   return (
     <li className="sheet-equipment-card">
       <span className="sheet-equipment-icon">
-        <Icon size={23} aria-hidden="true" />
+        <ItemThumbnail image={image} name={name} fallback={<Icon size={23} aria-hidden="true" />} />
       </span>
       <span>{name}</span>
       {quantity !== undefined && <b className="sheet-equipment-quantity">×{quantity}</b>}
@@ -141,6 +149,26 @@ export function CharacterSheet({
       active = false;
     };
   }, [c.id]);
+  useEffect(() => {
+    let live = true;
+    const refreshAttacks = () => {
+      if (!document.hidden)
+        void api<SheetResponse>(`/characters/${c.id}/sheet`)
+          .then((r) => {
+            if (live)
+              setData((previous) => (previous ? { ...previous, attacks: r.attacks } : previous));
+          })
+          .catch(() => {});
+    };
+    refreshAttacks();
+    const timer = setInterval(refreshAttacks, 5000);
+    window.addEventListener('focus', refreshAttacks);
+    return () => {
+      live = false;
+      clearInterval(timer);
+      window.removeEventListener('focus', refreshAttacks);
+    };
+  }, [c.id, details?.inventory]);
   useEffect(() => {
     if (!saved) return;
     const timer = setTimeout(() => setSaved(false), 3000);
@@ -547,16 +575,21 @@ export function CharacterSheet({
                   Salvar recursos
                 </button>
                 <h3>
-                  Ataques com equipamento inicial
-                  <SheetHelp label="Ataques com equipamento inicial">
-                    {armorNote} Bônus situacionais são aplicados na mesa.
+                  Ataques com armas equipadas
+                  <SheetHelp label="Ataques com armas equipadas">
+                    Apenas armas da mochila equipadas nas mãos aparecem aqui. {armorNote} Bônus
+                    situacionais são aplicados na mesa.
                   </SheetHelp>
                 </h3>
                 <ul className="sheet-attacks sheet-attack-cards">
-                  {sheetAttacks(c.race, c.class, c.stats, choices).map((w) => (
-                    <li key={w.name}>
+                  {(data?.attacks || []).map((w) => (
+                    <li key={w.itemId}>
                       <header>
-                        <Sword size={22} aria-hidden="true" />
+                        <ItemThumbnail
+                          image={w.image_path}
+                          name={w.name}
+                          fallback={<Sword size={22} aria-hidden="true" />}
+                        />
                         <strong>{w.name}</strong>
                       </header>
                       <div className="sheet-attack-numbers">
@@ -775,7 +808,12 @@ export function CharacterSheet({
                     <h3>Inventário adquirido</h3>
                     <ul className="sheet-equipment-grid">
                       {details?.inventory.map((item) => (
-                        <EquipmentCard key={item.id} name={item.name} quantity={item.quantity} />
+                        <EquipmentCard
+                          key={item.id}
+                          name={item.name}
+                          quantity={item.quantity}
+                          image={item.image_path}
+                        />
                       ))}
                     </ul>
                     <p>

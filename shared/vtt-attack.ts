@@ -1,5 +1,11 @@
 import type { VttMessage } from './vtt.js';
-export type AttackRequest = { actorId: string; name: string; attack: string; damage: string[] };
+export type AttackRequest = {
+  actorId: string;
+  name: string;
+  attack: string;
+  damage: string[];
+  weaponItemId?: string;
+};
 export type AttackMode = 'normal' | 'advantage' | 'disadvantage';
 export function attackFormula(formula: string, mode: AttackMode) {
   const match = formula.replace(/\s/g, '').match(/^(?:1d20|2d20(?:kh1|kl1))([+-]\d+)?$/i);

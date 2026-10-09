@@ -1,5 +1,6 @@
 import type { SheetRecord, deriveSheet } from './character-sheet';
 import type { VttToken } from './vtt';
+import type { EquippedAttack } from './equipped-attacks';
 import expandedConsumables from './emporium-consumables.json';
 export const consumableItems = new Set([
   ...expandedConsumables,
@@ -34,10 +35,14 @@ export type VttSheetData = {
   token: VttToken;
   sheet: SheetRecord | null;
   derived: ReturnType<typeof deriveSheet> | null;
+  attacks: EquippedAttack[];
+  available_weapons: EquippedAttack[];
+  weapon_slots: { main_hand: string | null; off_hand: string | null };
   inventory: {
     id: string;
     name: string;
     description: string;
+    image_path?: string | null;
     quantity: number;
     weight_lb: string;
     consumable: boolean;
