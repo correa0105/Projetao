@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import type { VttToken } from '../shared/vtt';
 import { startPortraitSmoke } from './vtt-portrait-smoke';
 import './vtt-selection-portrait.css';
@@ -16,7 +16,32 @@ export function VttSelectionPortrait({
     [portraitImage, setPortraitImage] = useState<HTMLImageElement | null>(null),
     [reduced, setReduced] = useState(false),
     [flowing, setFlowing] = useState(false),
+    [frame, setFrame] = useState<{ width: number; bottom: number }>(),
+    figure = useRef<HTMLElement>(null),
     canvas = useRef<HTMLCanvasElement>(null);
+  useLayoutEffect(() => {
+    const stage = figure.current?.parentElement;
+    if (!stage) return;
+    const fit = () => {
+      const compact = window.innerWidth <= 1100;
+      const bottom = Math.min(compact ? 172 : 14, Math.max(14, stage.clientHeight - 128));
+      const width = Math.min(
+        window.innerWidth <= 700 ? 138 : compact ? 150 : 200,
+        Math.max(48, stage.clientHeight - bottom - 36),
+      );
+      setFrame((previous) =>
+        previous?.width === width && previous.bottom === bottom ? previous : { width, bottom },
+      );
+    };
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(stage);
+    window.addEventListener('resize', fit);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', fit);
+    };
+  }, [portraitImage]);
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)'),
       update = () => setReduced(media.matches);
@@ -53,7 +78,7 @@ export function VttSelectionPortrait({
     const smoke = new Image();
     smoke.onload = () => {
       if (!live || !canvas.current) return;
-      stop = startPortraitSmoke(canvas.current, portraitImage, smoke);
+      stop = startPortraitSmoke(canvas.current, smoke);
       setFlowing(!!stop);
     };
     smoke.src = '/vtt/effects/portrait-smoke-v1.webp';
@@ -67,13 +92,14 @@ export function VttSelectionPortrait({
   return (
     <figure
       className="vtt-selection-portrait"
+      ref={figure}
+      style={frame}
       aria-label={'Retrato de ' + token.name}
       data-token-id={token.id}
       data-animated={animated}
       data-effects={visualEffects}
       data-flowing={flowing}
     >
-      <canvas ref={canvas} className="vtt-portrait-flow" aria-hidden="true" />
       <svg viewBox="0 0 224 224" aria-hidden="true">
         <defs>
           <radialGradient id={id + 'fade'}>
@@ -92,7 +118,7 @@ export function VttSelectionPortrait({
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale="25"
+              scale="14"
               xChannelSelector="R"
               yChannelSelector="G"
             />
@@ -100,21 +126,22 @@ export function VttSelectionPortrait({
           <mask id={id + 'mask'} maskUnits="userSpaceOnUse" x="0" y="0" width="224" height="224">
             <ellipse
               cx="112"
-              cy="108"
-              rx="68"
-              ry="78"
+              cy="116"
+              rx="73"
+              ry="83"
               fill={'url(#' + id + 'fade)'}
               filter={'url(#' + id + 'vapor)'}
             />
+            <ellipse cx="112" cy="76" rx="49" ry="65" fill={'url(#' + id + 'fade)'} />
           </mask>
         </defs>
         <image
           href={portraitImage.src}
-          x="22"
-          y="4"
-          width="180"
-          height="216"
-          preserveAspectRatio="xMidYMin slice"
+          x="24"
+          y="14"
+          width="176"
+          height="200"
+          preserveAspectRatio="xMidYMin meet"
           mask={'url(#' + id + 'mask)'}
         />
         {visualEffects && (
@@ -129,6 +156,7 @@ export function VttSelectionPortrait({
           />
         )}
       </svg>
+      <canvas ref={canvas} className="vtt-portrait-flow" aria-hidden="true" />
       <figcaption>{token.name}</figcaption>
     </figure>
   );

@@ -1,10 +1,10 @@
-// The face remains still; only the silhouette dissolves and the surrounding vapor flows.
+// The portrait stays in its SVG frame. This transparent surface only draws vapor.
 const vertex = `attribute vec2 position;
 varying vec2 uv;
 void main(){uv=vec2(position.x*.5+.5,.5-position.y*.5);gl_Position=vec4(position,0.,1.);}`;
 const fragment = `precision mediump float;
 varying vec2 uv;
-uniform sampler2D portrait, vapor;
+uniform sampler2D vapor;
 uniform float time;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+1.),f.x),f.y);}
@@ -14,17 +14,7 @@ vec4 smoke(vec2 p){
   return texture2D(vapor,clamp(p+drift*.085,0.,1.));
 }
 void main(){
-  float edge=length((uv-vec2(.5,.46))/vec2(.352,.405));
-  float erosion=flow(uv*10.+vec2(time*.28,-time*.44));
-  float silhouette=1.-smoothstep(.83+erosion*.10,1.10+erosion*.12,edge);
-  vec2 picture=(uv-vec2(22.,4.)/224.)/(vec2(180.,216.)/224.);
-  vec4 face=texture2D(portrait,clamp(picture,0.,1.));
-  // Fade completely INSIDE the source bounds: cropping must never leave a straight edge.
-  vec2 inset=min(picture,1.-picture);
-  float dissolvingEdge=flow(uv*13.+vec2(time*.19,-time*.37));
-  float sourceFade=smoothstep(.008+dissolvingEdge*.022,.12+dissolvingEdge*.065,min(inset.x,inset.y));
-  face.a*=silhouette*sourceFade;
-  float clearFace=smoothstep(.79,1.25,length((uv-vec2(.5,.40))/vec2(.25,.32)));
+  float clearFace=smoothstep(.76,1.28,length((uv-vec2(.5,.35))/vec2(.25,.30)));
   float border=smoothstep(0.,.045,uv.x)*smoothstep(0.,.045,uv.y)*smoothstep(0.,.045,1.-uv.x)*smoothstep(0.,.045,1.-uv.y);
   vec4 mist=smoke(uv);
   float density=mist.a*.30;
@@ -37,19 +27,11 @@ void main(){
     color+=plume.rgb*a;density+=a;
   }
   color/=max(density,.001);density=min(density,.50)*clearFace*border;
-  vec3 rgb=face.rgb*face.a+color*density*(1.-face.a);
-  float alpha=face.a+density*(1.-face.a);
-  // A small amount of vapor crosses the fading shoulder edges, never the face.
-  float front=density*smoothstep(.70,1.08,edge)*.22;
-  rgb=rgb*(1.-front)+color*front;alpha=alpha+front*(1.-alpha);
-  gl_FragColor=vec4(rgb,alpha);
+  // Premultiplied alpha preserves fine wisps over the map and shoulder edges.
+  gl_FragColor=vec4(color*density,density);
 }`;
 
-export function startPortraitSmoke(
-  canvas: HTMLCanvasElement,
-  image: HTMLImageElement,
-  vapor: HTMLImageElement,
-) {
+export function startPortraitSmoke(canvas: HTMLCanvasElement, vapor: HTMLImageElement) {
   const gl = canvas.getContext('webgl', {
     alpha: true,
     premultipliedAlpha: true,
@@ -124,7 +106,7 @@ export function startPortraitSmoke(
     const position = gl.getAttribLocation(program, 'position');
     gl.enableVertexAttribArray(position);
     gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-    for (const [index, source] of [image, vapor].entries()) {
+    for (const [index, source] of [vapor].entries()) {
       const texture = gl.createTexture();
       if (!texture) throw Error('Smoke texture unavailable');
       textures.push(texture);
@@ -135,7 +117,7 @@ export function startPortraitSmoke(
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
-      gl.uniform1i(gl.getUniformLocation(program, index ? 'vapor' : 'portrait'), index);
+      gl.uniform1i(gl.getUniformLocation(program, 'vapor'), index);
     }
     clock = gl.getUniformLocation(program, 'time');
     resize();

@@ -1,4 +1,4 @@
-VTT 09/10: correção das fórmulas versáteis; Uma mão / Duas mãos em Armas na mesa, persistente por sala (migration 089). Fumaça de seleção com advecção e plumas rápidas, rosto estável. Guia docs/VTT-GRIP-SMOKE-20261009.md. Animais, arte temática e refino geral de VFX continuam em andamento.
+VTT 09/10: Uma mão / Duas mãos persistente por sala (migration 089). Retrato de seleção agora conserva rosto/cabelo em SVG estável, com fumaça WebGL transparente e quadro ajustado à altura da mesa; canvas isolado das regras do mapa. Guia docs/VTT-GRIP-SMOKE-20261009.md. Animais, arte temática e refino geral de VFX continuam em andamento.
 
 VTT 09/10: Armas na mesa alterna somente armas possuídas, escolha persistida por sala separada do equipamento do site; ataques não vêm da origem. Miniaturas em ficha/barra rápida. Efeitos na barra esquerda; seleção mostra retrato do peito ao rosto com fumaça nativa. Migration 088 e protocolo 5. Guia docs/VTT-WEAPONS-PORTRAIT-20261009.md. Testes de banco exigem runner descartável. Demais frentes de animais/arte/VFX continuam em andamento.
 

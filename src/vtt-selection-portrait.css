@@ -16,14 +16,18 @@
   overflow: visible;
   filter: drop-shadow(0 4px 9px #0008);
 }
-.vtt-portrait-flow {
+.vtt-selection-portrait .vtt-portrait-flow {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: auto;
   display: none;
   aspect-ratio: 1;
 }
 .vtt-selection-portrait[data-flowing='true'] .vtt-portrait-flow {
   display: block;
 }
-.vtt-selection-portrait[data-flowing='true'] svg {
+.vtt-selection-portrait[data-flowing='true'] .vtt-portrait-smoke {
   display: none;
 }
 .vtt-selection-portrait figcaption {
