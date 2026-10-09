@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { teleportArrivals, applyTeleportArrivals } from '../shared/vtt-spell-transport.js';
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { z } from 'zod';
@@ -204,6 +205,10 @@ export function vttSpellsRouter(
       if (e.sceneId !== scene.id || !actor || (!gm && !canSee(actor, scene, viewing))) continue;
       effects.push({
         ...e,
+        movement: e.movement?.filter((m) => {
+          const t = scene.tokens.find((t) => t.id === m.tokenId);
+          return t && (gm || canSee(t, scene, viewing));
+        }),
         targets: e.targets.filter((id) => {
           const t = scene.tokens.find((t) => t.id === id);
           return t && (gm || canSee(t, scene, viewing));
@@ -299,7 +304,8 @@ export function vttSpellsRouter(
             : null;
           if (derived?.spellAbility !== undefined)
             ability = Math.floor((sheetAccess.character.stats[derived.spellAbility] - 10) / 2);
-          const canonical = spells.find((s) => s.name === profile?.name)?.id;
+          const canonical =
+            spells.find((s) => s.name === profile?.name)?.id ?? profile?.id.replace(/^spell-/, '');
           if (
             !gm &&
             (!canonical || !knownSpells(derived, sheetAccess.sheet?.prepared || []).has(canonical))
@@ -328,12 +334,53 @@ export function vttSpellsRouter(
       const points = checkSelection(input, p, actor, scene, (t) => gm || canSee(t, scene, user));
       if (
         !gm &&
+        p.id !== 'spell-dimension-door' &&
         points.some(
           (at) =>
             !canSee({ ...actor, id: randomUUID(), controller: '', x: at.x, y: at.y }, scene, user),
         )
       )
         throw new AppError(403, 'A área não está visível para seu personagem.');
+      let movement: SpellEffect['movement'];
+      if (['spell-misty-step', 'spell-dimension-door', 'spell-teleport'].includes(p.id)) {
+        if (p.id === 'spell-teleport' && !gm)
+          throw new AppError(
+            403,
+            'O mestre precisa resolver a familiaridade e confirmar o destino de Teleport. Nenhum espaço foi gasto.',
+          );
+        const travellers =
+          p.id === 'spell-misty-step'
+            ? [actor]
+            : [...new Set(input.targets)].map((id) => scene.tokens.find((t) => t.id === id)!);
+        if (travellers.some((t) => !gm && t.controller !== user))
+          throw new AppError(
+            403,
+            'Para transportar outra pessoa, o mestre precisa confirmar que ela aceita acompanhar. Nenhum espaço foi gasto.',
+          );
+        try {
+          movement = teleportArrivals(scene, travellers, points[0]);
+        } catch (error) {
+          throw new AppError(400, (error as Error).message);
+        }
+        if (
+          p.id === 'spell-dimension-door' &&
+          movement.some((m) => {
+            const traveller = scene.tokens.find((t) => t.id === m.tokenId)!;
+            const edgeGap = Math.max(
+              0,
+              Math.hypot(m.to.x - points[0].x, m.to.y - points[0].y) -
+                (Math.max(traveller.width, traveller.height) +
+                  Math.max(actor.width, actor.height)) /
+                  2,
+            );
+            return edgeGap / (scene.grid.size / scene.grid.scale) > 5 + 0.01;
+          })
+        )
+          throw new AppError(
+            400,
+            'O acompanhante precisa chegar em um espaço livre até 5 pés do conjurador.',
+          );
+      }
       if (profile.level > 0 && !input.free) {
         if (!sheetAccess)
           throw new AppError(400, 'Este conjurador precisa de ficha ou do modo livre do mestre.');
@@ -378,6 +425,7 @@ export function vttSpellsRouter(
         concentration: p.concentration,
         persistent,
         ...(characterId ? { characterId } : {}),
+        ...(movement ? { movement } : {}),
       };
       const {
         rows: [active],
@@ -391,6 +439,13 @@ export function vttSpellsRouter(
         'INSERT INTO vtt_spell_casts(id,room_id,user_id,idempotency_key,command,effect)VALUES($1,$2,$3,$4,$5,$6)',
         [e.id, rid, user, input.idempotency_key, JSON.stringify(input), JSON.stringify(e)],
       );
+      if (movement) {
+        applyTeleportArrivals(scene, movement);
+        await db.query(
+          'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
+          [rid, JSON.stringify(r.document)],
+        );
+      }
       const count =
         p.mode === 'targets'
           ? input.targets.length + ' ' + (p.repeat ? 'raios/dardos' : 'alvos')

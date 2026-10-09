@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-09",
+  "tool": "image_gen.imagegen",
+  "prompt": "Eight SEPARATE realistic cutout inventory sprites, on a completely empty transparent background. Strict 4 columns × 2 rows, wide empty spaces between all eight objects; each object occupies no more than 55% of its equal cell, entire object visible. True overhead top-down. Row1: one short weathered steel chain link; one antique brass clock gear; one exquisite small lavender butterfly with finely painted scales; one fresh detailed green oak leaf. Row2: one clear pale-blue ice shard with tiny realistic cracks; one clear spherical water droplet with realistic highlights; one small realistic weathered skull seen from above; one curved slender purple crystalline tendril. Detailed hand-painted fantasy realism like premium top-down VTT tokens. Matte surfaces, soft studio light ONLY on the physical objects. NO glow, NO halos, NO smoke, NO haze, NO atmosphere, NO drop shadows, NO symbols, NO labels, NO frames, NO floor, NO background color, NO colored gradients around objects. Empty alpha-zero gutters; objects don't overlap and none reach a cell edge. These are physical cutout props, all animation and illumination will be added in code later.",
+  "source": "Generated images are saved to C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62 as C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-7f6cb245-5e7e-4ec1-956c-257534d025d3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "assets": [
+    "chain",
+    "gear",
+    "butterfly",
+    "leaf",
+    "ice",
+    "droplet",
+    "skull",
+    "tendril"
+  ],
+  "conversion": "Technical crop4×2 and WebP512 with transparent padding; original retained."
+}

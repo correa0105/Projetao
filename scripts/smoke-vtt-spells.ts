@@ -406,6 +406,91 @@ try {
     ),
   ).toBe(true);
   await gmPage.close();
+  // Transport is authoritative, atomic and replay-safe; occupied arrivals spend nothing.
+  await pool.query(
+    'UPDATE character_sheets SET prepared=prepared || $2::jsonb WHERE character_id=$1',
+    [user.character.id, JSON.stringify(['misty-step', 'teleport'])],
+  );
+  const beforeTeleport = (await api(player, root + '/sheets/' + caster.id)).data.resources
+    .slots_used[1];
+  const occupied = await api(
+    player,
+    root + '/spells',
+    'POST',
+    command('Misty Step', 2, [], [{ x: a.x, y: a.y, angle: 0 }]),
+  );
+  expect(occupied.status, JSON.stringify(occupied.data)).toBe(400);
+  expect((await api(player, root + '/sheets/' + caster.id)).data.resources.slots_used[1]).toBe(
+    beforeTeleport,
+  );
+  let transportRoom = (await api(gm, root)).data;
+  transportRoom.document.scenes[0].walls.push({
+    id: randomUUID(),
+    a: { x: 0, y: 600 },
+    b: { x: 1800, y: 600 },
+    kind: 'wall',
+    open: false,
+  });
+  expect(
+    (
+      await api(gm, root, 'PUT', {
+        revision: transportRoom.revision,
+        document: transportRoom.document,
+      })
+    ).status,
+  ).toBe(200);
+  const transit = command('Misty Step', 2, [], [{ x: 800, y: 700, angle: 0 }]),
+    transported = await api(player, root + '/spells', 'POST', transit);
+  expect(transported.status, JSON.stringify(transported.data)).toBe(201);
+  expect(transported.data.effect.movement).toEqual([
+    { tokenId: caster.id, from: { x: 400, y: 500 }, to: { x: 800, y: 700 } },
+  ]);
+  const replay = await api(player, root + '/spells', 'POST', transit);
+  expect(replay.data.effect.id).toBe(transported.data.effect.id);
+  expect((await api(player, root + '/sheets/' + caster.id)).data.resources.slots_used[1]).toBe(
+    beforeTeleport + 1,
+  );
+  const tokenAfter = (await api(player, root)).data.document.scenes[0].tokens.find(
+    (t: any) => t.id === caster.id,
+  );
+  expect([tokenAfter.x, tokenAfter.y]).toEqual([800, 700]);
+  const gmTeleport = await api(gm, root + '/spells', 'POST', {
+    ...command('Teleport', 7, [caster.id], [{ x: 1500, y: 900, angle: 0 }]),
+    free: true,
+  });
+  expect(gmTeleport.status, JSON.stringify(gmTeleport.data)).toBe(201);
+  expect(gmTeleport.data.effect.movement[0].to).toEqual({ x: 1500, y: 900 });
+  // Animated environment catalog is persisted through ordinary GM document edits.
+  const assetsPage = await gm.newPage();
+  assetsPage.on('pageerror', (e) => errors.push(e.message));
+  await assetsPage.goto(origin + '/#vtt');
+  await assetsPage.getByRole('button', { name: 'Biblioteca', exact: true }).click();
+  await assetsPage.getByRole('button', { name: 'Assets animados', exact: true }).click();
+  await expect(assetsPage.locator('.vtt-animated-grid article')).toHaveCount(17);
+  await assetsPage.getByRole('button', { name: 'Adicionar Fogueira', exact: true }).click();
+  await expect
+    .poll(
+      async () =>
+        (await api(gm, root)).data.document.scenes[0].tokens.filter(
+          (t: any) => t.animatedAsset?.id === 'firepit',
+        ).length,
+    )
+    .toBe(1);
+  await assetsPage.reload();
+  await assetsPage.getByRole('button', { name: 'Biblioteca', exact: true }).click();
+  await assetsPage.getByRole('button', { name: 'Assets animados', exact: true }).click();
+  await expect(assetsPage.locator('.vtt-animated-grid article')).toHaveCount(17);
+  await assetsPage.screenshot({
+    path: 'test-results/vtt-animated-assets-library.png',
+    fullPage: true,
+  });
+  for (const width of [768, 390, 320]) {
+    await assetsPage.setViewportSize({ width, height: 1000 });
+    expect(
+      await assetsPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
+    ).toBe(true);
+  }
+  await assetsPage.close();
   const current = (await api(gm, root)).data;
   current.document.scenes[0].tokens.find((t: any) => t.id === caster.id).hp = 0;
   expect(

@@ -46,3 +46,38 @@ export function attachmentMovementError(
   }
   return null;
 }
+
+/** Check a carried offset's rotational arc after translation, before saving. */
+export function attachmentRotationError(
+  scene: VttScene,
+  previous: VttScene,
+  base: VttToken,
+): string | null {
+  const group = attachedGroup(scene.tokens, base);
+  const root = attachmentRoot(scene.tokens, base),
+    oldRoot = previous.tokens.find((t) => t.id === root.id);
+  if (!oldRoot) return null;
+  const degrees = ((((root.rotation - oldRoot.rotation + 180) % 360) + 360) % 360) - 180;
+  const steps = Math.max(1, Math.ceil(Math.abs(degrees) / 10));
+  for (const token of group) {
+    if (token.id === root.id) continue;
+    const old = previous.tokens.find((t) => t.id === token.id);
+    if (!old) continue;
+    const x = old.x - oldRoot.x,
+      y = old.y - oldRoot.y;
+    let from = { x: root.x + x, y: root.y + y };
+    for (let step = 1; step <= steps; step++) {
+      const a = (((degrees * Math.PI) / 180) * step) / steps,
+        to = {
+          x: root.x + x * Math.cos(a) - y * Math.sin(a),
+          y: root.y + x * Math.sin(a) + y * Math.cos(a),
+        };
+      if (to.x < 0 || to.y < 0 || to.x > scene.width || to.y > scene.height)
+        return 'A rotação do token vinculado ultrapassa o mapa.';
+      if (token.layer === 'tokens' && movementBlocked(scene, from, to))
+        return 'Uma parede bloqueia a rotação do token vinculado.';
+      from = to;
+    }
+  }
+  return null;
+}

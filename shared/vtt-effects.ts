@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { extraEffectKinds, extraEffects } from './vtt-effects-extra.js';
+import { cinematicEffectKinds, cinematicEffects } from './vtt-effects-cinematic.js';
 // The original six IDs and ordering are part of saved rooms and hotbar presets.
 export const effectKinds = [
   'death',
@@ -39,6 +40,7 @@ export const effectKinds = [
   'blades',
   'sonic',
   ...extraEffectKinds,
+  ...cinematicEffectKinds,
 ] as const;
 export type EffectKind = (typeof effectKinds)[number];
 export const effectLibrary: {
@@ -305,6 +307,7 @@ effectLibrary.push(
   },
 );
 effectLibrary.push(...extraEffects);
+effectLibrary.push(...cinematicEffects);
 export const effectNames = effectLibrary.map((e) => e.name);
 export const effectColors = effectLibrary.map((e) => e.color);
 const appearance = {
@@ -312,6 +315,7 @@ const appearance = {
   color: z.string().regex(/^#[0-9a-f]{6}$/i),
   scale: z.number().min(0.5).max(3),
   duration: z.number().int().min(0).max(60),
+  intensity: z.number().min(0).max(1).optional(),
 };
 export const effectPresetSchema = z
   .object({

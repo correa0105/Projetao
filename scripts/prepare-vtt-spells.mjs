@@ -70,6 +70,7 @@ patch('Wind Walk', { mode: 'targets', count: 11, includeSelf: true });
 patch('Teleport|Plane Shift|Astral Projection', { mode: 'targets', count: 9, includeSelf: true });
 patch('Telepathic Bond', { mode: 'targets', count: 8 });
 patch('Word of Recall', { mode: 'targets', count: 6, includeSelf: true, range: 5 });
+patch('Teleport', { destinationRange: 50000 });
 patch('Dimension Door', {
   mode: 'targets',
   count: 2,

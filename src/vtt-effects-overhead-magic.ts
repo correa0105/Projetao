@@ -108,26 +108,30 @@ function frost(
     }
     c.restore();
   } else {
-    paintFootprint(c, f, tint(e.color, 0.6), 0.14);
+    paintFootprint(c, f, tint(e.color, 0.6), 0.06);
     c.save();
     // Cancel token aspect stretching: aerial crystals use uniform map units.
     c.scale(f.plane.rx / 80, f.plane.ry / 80);
     for (let i = 0; i < count(12); i++) {
-      const angle = (i / count(12)) * tau;
-      const p = frostBase(f, angle, e.scale);
+      const p = footprintPoint(f, Math.floor(random(i + 188) * f.edge.length), true);
+      const angle = Math.atan2(p.ny, p.nx);
       crystal(
         c,
-        { x: (p.x * 80) / f.plane.rx, y: (p.y * 80) / f.plane.ry },
-        (3 + random(i + 21) * 7) / e.scale,
+        {
+          x: (p.x * 80) / f.plane.rx + (p.nx * 7) / e.scale,
+          y: (p.y * 80) / f.plane.ry + (p.ny * 7) / e.scale,
+        },
+        (2 + random(i + 21) * 2.5) / e.scale,
         angle,
         e.color,
-        0.45,
+        0.68,
+        (6 + random(i + 12) * 4) / e.scale,
       );
     }
     for (let i = 0; i < count(22); i++) {
       const age = fract(t * 0.24 + random(i + 70)),
         angle = random(i + 90) * tau + t * 0.08;
-      const p = projectOverheadEffect({ rx: 80, ry: 80 }, 0.06 + age * 0.9, angle, age);
+      const p = projectOverheadEffect({ rx: 80, ry: 80 }, 1.08 + age * 0.32, angle, age * 0.15);
       c.save();
       c.globalAlpha *= envelope(age) * 0.75;
       if (i % 3 === 0)

@@ -18,6 +18,8 @@ import { drawBloodDecals, drawTokenBlood } from './vtt-blood-canvas';
 import { drawPing, type VttPing } from './vtt-ping';
 import { drawTurnEffect } from './vtt-turn-effect';
 import { drawSpellEffects, drawSpellPreview, type SpellPreview } from './vtt-spell-effects';
+import { drawAnimatedAsset } from './vtt-animated-assets';
+import { spellTokenOpacity } from './vtt-spell-cinematic';
 import type { SpellEffect } from '../shared/vtt-spells';
 export type VttCamera = { x: number; y: number; zoom: number };
 export type RenderOptions = {
@@ -326,6 +328,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         },
         Date.now(),
         matchMedia('(prefers-reduced-motion: reduce)').matches,
+        images,
       );
     }
     if (layer === 'gm' && (!o.gm || o.preview)) continue;
@@ -342,6 +345,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       c.translate(t.x, t.y);
       c.rotate((t.rotation * Math.PI) / 180);
       c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
+      if (o.visualEffects !== false) c.globalAlpha *= spellTokenOpacity(t, o.spellEffects || [], Date.now(), matchMedia('(prefers-reduced-motion: reduce)').matches);
       if (o.visualEffects !== false && (t.id === o.currentTurn || t.id === o.nextTurn))
         drawTurnEffect(c, Math.max(t.width, t.height) * 0.6, t.id === o.nextTurn);
       if (o.visualEffects !== false) {
@@ -353,7 +357,9 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.filter = 'brightness(.42) sepia(1) saturate(4) hue-rotate(320deg)';
       c.scale(t.flipX ? -1 : 1, t.flipY ? -1 : 1);
       const img = images.get(t.image);
-      if (layer === 'map') {
+      if (t.animatedAsset) {
+        drawAnimatedAsset(c, t, img, Date.now(), matchMedia('(prefers-reduced-motion: reduce)').matches, o.visualEffects !== false);
+      } else if (layer === 'map') {
         if (img?.complete && img.naturalWidth)
           c.drawImage(img, -t.width / 2, -t.height / 2, t.width, t.height);
         else {
@@ -450,14 +456,15 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
         c.shadowBlur = 5;
         c.fillText(t.name, t.x, t.y + t.height / 2 + 18 / cam.zoom);
         c.shadowBlur = 0;
+        const hpWidth = Math.min(t.width * 0.6, 84 / cam.zoom);
         c.fillStyle = '#07100c';
-        c.fillRect(t.x - t.width / 2, t.y - t.height / 2 - 9 / cam.zoom, t.width, 5 / cam.zoom);
+        c.fillRect(t.x - hpWidth / 2, t.y - t.height / 2 - 9 / cam.zoom, hpWidth, 4 / cam.zoom);
         c.fillStyle = t.hp / t.maxHp > 0.35 ? '#88aa8f' : '#bb665d';
         c.fillRect(
-          t.x - t.width / 2,
+          t.x - hpWidth / 2,
           t.y - t.height / 2 - 9 / cam.zoom,
-          t.width * Math.max(0, Math.min(1, t.hp / t.maxHp)),
-          5 / cam.zoom,
+          hpWidth * Math.max(0, Math.min(1, t.hp / Math.max(1, t.maxHp))),
+          4 / cam.zoom,
         );
         if (t.conditions.length) {
           c.font = `bold ${11 / cam.zoom}px sans-serif`;
@@ -488,6 +495,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       spellView,
       Date.now(),
       matchMedia('(prefers-reduced-motion: reduce)').matches,
+      images,
     );
   if (o.spellPreview) drawSpellPreview(c, s, o.spellPreview, spellView, cam.zoom);
   if (s.lighting || (s.fog && s.fogMode === 'vision')) {

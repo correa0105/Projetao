@@ -3,6 +3,7 @@ import type { EffectFootprint } from './vtt-effect-footprint';
 import { materialSprite } from './vtt-effects-materials';
 import { alpha, fract, glow, luminousStroke, star, tau, tint } from './vtt-effects-primitives';
 import { discharge } from './vtt-effects-overhead-magic';
+import { curseFlow, physicalProp } from './vtt-effects-physical';
 
 type Random = (index: number) => number;
 const models = new Set([
@@ -311,28 +312,7 @@ export function drawEffectCollection(
         glyph(c, p.x, p.y, a + Math.PI / 2, color, i);
       }
     } else if (e.kind === 'curse') {
-      if (!front) {
-        vapor(c, t * 0.6, random, n(8), 0.4);
-        ring(c, 83, color, 1, 0.25, t, 7);
-      } else
-        for (let i = 0; i < n(8); i++) {
-          const a = (i / 8) * tau + t * 0.12;
-          c.save();
-          c.rotate(a);
-          c.beginPath();
-          c.moveTo(98, -14);
-          c.bezierCurveTo(65, -21, 45, 14, 35, 1);
-          c.quadraticCurveTo(54, -12, 96, -22);
-          c.closePath();
-          c.fillStyle = alpha(tint(color, 0.5, '#201328'), 0.5);
-          c.fill();
-          c.beginPath();
-          c.moveTo(96, -14);
-          c.bezierCurveTo(68, -18, 48, 8, 35, 1);
-          luminousStroke(c, color, 0.7, 0.5);
-          glyph(c, 78, 8, 0, color, i);
-          c.restore();
-        }
+      curseFlow(c, color, t, random, front);
     } else if (e.kind === 'bless') {
       if (!front) {
         glow(c, 0, 0, 113, color, 0.22);
@@ -373,7 +353,7 @@ export function drawEffectCollection(
         }
     } else if (e.kind === 'web') {
       const spokes = 13;
-      c.globalAlpha *= front ? 0.28 : 0.65;
+      c.globalAlpha *= front ? 0.82 : 0.95;
       const radius = front ? 50 : 97;
       for (let i = 0; i < spokes; i++) {
         const a = (i / spokes) * tau,
@@ -381,7 +361,10 @@ export function drawEffectCollection(
         c.beginPath();
         c.moveTo(0, 0);
         c.lineTo(p.x, p.y);
-        luminousStroke(c, color, 0.4, 0.7);
+        c.strokeStyle = alpha('#343329', 0.42);
+        c.lineWidth = 1.7;
+        c.stroke();
+        luminousStroke(c, tint(color, 0.48), 0.85, 0.95);
       }
       for (let band = 1; band <= 5; band++) {
         c.beginPath();
@@ -393,9 +376,33 @@ export function drawEffectCollection(
           if (i === 0) c.moveTo(p.x, p.y);
           else c.quadraticCurveTo(q.x, q.y, p.x, p.y);
         }
-        luminousStroke(c, color, 0.4, 0.5);
+        c.strokeStyle = alpha('#343329', 0.38);
+        c.lineWidth = 1.5;
+        c.stroke();
+        luminousStroke(c, tint(color, 0.42), 0.75, 0.92);
       }
-    } else if (e.kind === 'swarm' || e.kind === 'leaves' || e.kind === 'petals') {
+    } else if (e.kind === 'petals') {
+      for (let i = 0; i < n(front ? 14 : 8); i++) {
+        const life = fract(t * (0.13 + random(i + 71) * 0.08) + random(i));
+        const a = random(i + 25) * tau + t * 0.16 + life * 0.8;
+        const p = polar(50 + life * 46, a);
+        c.save();
+        c.translate(p.x + Math.sin(t * 1.7 + i) * 4, p.y + Math.sin(life * Math.PI) * 5);
+        c.rotate(a + Math.sin(t * 1.1 + i) * 0.8);
+        c.scale(0.38 + Math.abs(Math.cos(t * 1.3 + i)) * 0.62, 1);
+        physicalProp(
+          c,
+          i % 3 ? 'petal-rose' : 'petal-ivory',
+          0,
+          0,
+          16 + random(i + 18) * 11,
+          0,
+          envelope(life) * (front ? 0.94 : 0.68),
+          color,
+        );
+        c.restore();
+      }
+    } else if (e.kind === 'swarm' || e.kind === 'leaves') {
       if (!front) vapor(c, t * 0.6, random, n(4), 0.12);
       const total = n(front ? 12 : 8);
       for (let i = 0; i < total; i++) {
@@ -431,13 +438,6 @@ export function drawEffectCollection(
           c.strokeStyle = alpha(tint(color, 0.6), 0.5);
           c.lineWidth = 0.5;
           c.stroke();
-          if (e.kind === 'petals') {
-            c.beginPath();
-            c.moveTo(0, size);
-            c.quadraticCurveTo(size * 0.8, -size * 0.1, 0, -size);
-            c.strokeStyle = alpha(tint(color, 0.8), 0.4);
-            c.stroke();
-          }
         }
         c.restore();
       }

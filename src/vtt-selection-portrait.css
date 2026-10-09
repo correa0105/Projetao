@@ -27,15 +27,15 @@
 .vtt-selection-portrait[data-flowing='true'] .vtt-portrait-flow {
   display: block;
 }
-.vtt-selection-portrait[data-flowing='true'] .vtt-portrait-smoke {
+.vtt-selection-portrait[data-flowing='true'] .vtt-portrait-fallback {
   display: none;
 }
 .vtt-selection-portrait figcaption {
   position: relative;
   width: fit-content;
   max-width: 100%;
-  margin: -12px auto 0;
-  padding: 4px 12px;
+  margin: -10px auto 0;
+  padding: 3px 12px;
   border-bottom: 1px solid #c6a66d99;
   background: linear-gradient(90deg, transparent, #101820d9 18%, #101820d9 82%, transparent);
   color: #e9dcc3;
@@ -46,23 +46,8 @@
   overflow-wrap: anywhere;
   text-shadow: 0 2px 4px #000;
 }
-.vtt-portrait-smoke {
-  transform-origin: 50% 50%;
-  animation: vtt-portrait-vapor 2.8s ease-in-out infinite alternate;
-}
-.vtt-selection-portrait[data-animated='false'],
-.vtt-selection-portrait[data-animated='false'] .vtt-portrait-smoke {
+.vtt-selection-portrait[data-animated='false'] {
   animation: none;
-}
-@keyframes vtt-portrait-vapor {
-  from {
-    transform: translate(-2px, 4px) scale(0.96);
-    opacity: 0.3;
-  }
-  to {
-    transform: translate(2px, -5px) scale(1.04);
-    opacity: 0.48;
-  }
 }
 @keyframes vtt-portrait-appear {
   from {

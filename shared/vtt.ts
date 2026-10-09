@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { animatedAssetSchema } from './vtt-animated-assets.js';
 import { soundboardSchema, emptySoundboard } from './vtt-sounds.js';
 import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
 import { monsterCustomizationSchema } from './vtt-monster-presets.js';
@@ -104,12 +105,14 @@ export const tokenSchema = z
         tokenId: id,
         offsetX: z.number().finite().min(-16000).max(16000),
         offsetY: z.number().finite().min(-16000).max(16000),
+        baseRotation: z.number().finite().min(-360).max(360).optional(),
       })
       .strict()
       .nullable()
       .default(null),
     sheet: sheetSchema.nullable().default(null),
     monster: monsterCustomizationSchema.nullable().default(null),
+    animatedAsset: animatedAssetSchema.optional(),
   })
   .strict();
 export type VttToken = z.infer<typeof tokenSchema>;

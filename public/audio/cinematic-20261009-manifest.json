@@ -1,0 +1,7126 @@
+{
+  "date": "2026-10-09",
+  "generator": "Original phased material compositions with credited CC0 Foley/ambience; see public/audio/vtt/manifest.json and data/vtt/sound-credits*.json for source provenance.",
+  "assets": [
+    {
+      "id": "death",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "death",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9797278911564624,
+      "rmsDb": -23.36,
+      "peakDb": -1.53,
+      "bytes": 23569,
+      "sha256": "3a91c8c1b33da29466d3fe9f9905b53d5af3a98943adaeb088d47393bfb2b253"
+    },
+    {
+      "id": "fire",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "fire",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.886780045351474,
+      "rmsDb": -23.5,
+      "peakDb": -1.31,
+      "bytes": 37277,
+      "sha256": "fd717fde9f31a28391c70aef523126b8996787e84ad7603fccc5b540e647a2fb"
+    },
+    {
+      "id": "frost",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "frost",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.9285714285714284,
+      "rmsDb": -33.61,
+      "peakDb": -1.54,
+      "bytes": 34749,
+      "sha256": "5928fbba3c68627663459a9c85f4b75e9acfa36bbb4b0363b9c60d0a64308655"
+    },
+    {
+      "id": "poison",
+      "kind": "effect",
+      "family": "poison",
+      "behavior": "poison",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.9112471655328798,
+      "rmsDb": -26.54,
+      "peakDb": -1.56,
+      "bytes": 31184,
+      "sha256": "f4193cf62fb4380fd5a346ad02cbb39c38965611878b7b30718a36db95abf67c"
+    },
+    {
+      "id": "heal",
+      "kind": "effect",
+      "family": "heal",
+      "behavior": "heal",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.6785034013605444,
+      "rmsDb": -25.85,
+      "peakDb": -1.67,
+      "bytes": 49680,
+      "sha256": "6920c0a18d733f295e8a2aaddd92777852260f1ae169ed556cc54e7fac6daf7b"
+    },
+    {
+      "id": "sparks",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "sparks",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.6972108843537415,
+      "rmsDb": -25.65,
+      "peakDb": -2.09,
+      "bytes": 31162,
+      "sha256": "b14a1a7ce18602ff9da695897fa67766eb4431c8c4c44e0f4b2eea11eabb9da7"
+    },
+    {
+      "id": "lightning",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.6898866213151926,
+      "rmsDb": -24.78,
+      "peakDb": -1.9,
+      "bytes": 31619,
+      "sha256": "3ca7d9f11dec33c8fe332703a4bb87585e612fa9ce32a572547945048f4bd509"
+    },
+    {
+      "id": "arcane",
+      "kind": "effect",
+      "family": "force",
+      "behavior": "arcane",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.689387755102041,
+      "rmsDb": -22.57,
+      "peakDb": -2.0,
+      "bytes": 34514,
+      "sha256": "d01e4db1bcffd5ab2bdea3c470a867dda896555d42db901f686d14326445f072"
+    },
+    {
+      "id": "shield",
+      "kind": "effect",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8231972789115645,
+      "rmsDb": -31.06,
+      "peakDb": -1.57,
+      "bytes": 30459,
+      "sha256": "604c5e0fa161d85a023f218c2a73e8c60dce663fb39bef6c7e601a34d1f5b9d8"
+    },
+    {
+      "id": "radiant",
+      "kind": "effect",
+      "family": "radiant",
+      "behavior": "radiant",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.9618367346938776,
+      "rmsDb": -32.34,
+      "peakDb": -1.82,
+      "bytes": 36967,
+      "sha256": "217e76da59d8b7e7eac754c746adf0d221541ac61c073564fa178b4c01e47037"
+    },
+    {
+      "id": "shadow",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "shadow",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.7383673469387757,
+      "rmsDb": -23.21,
+      "peakDb": -1.46,
+      "bytes": 23889,
+      "sha256": "7fcf349e4d02b274279c9221270fab3a95222751054661b83173d24118a946e3"
+    },
+    {
+      "id": "acid",
+      "kind": "effect",
+      "family": "acid",
+      "behavior": "acid",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.8672562358276643,
+      "rmsDb": -24.45,
+      "peakDb": -1.86,
+      "bytes": 30892,
+      "sha256": "9738ae547f5804d76fb86bd11a508a675018cfb686126b8ea49223b81b345180"
+    },
+    {
+      "id": "wind",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.780634920634921,
+      "rmsDb": -23.47,
+      "peakDb": -1.68,
+      "bytes": 36949,
+      "sha256": "eebc7a0203d5a2d8f8c690898de9140c337828e911d335a4593c647977d000dc"
+    },
+    {
+      "id": "water",
+      "kind": "effect",
+      "family": "water",
+      "behavior": "water",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.7317687074829933,
+      "rmsDb": -23.01,
+      "peakDb": -2.18,
+      "bytes": 45875,
+      "sha256": "4b9b4baaf2d25d52122cb050a4e88a03b73537db1876b25da4efe6faa7f8e082"
+    },
+    {
+      "id": "earth",
+      "kind": "effect",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.8903401360544216,
+      "rmsDb": -25.1,
+      "peakDb": -1.71,
+      "bytes": 33908,
+      "sha256": "275ac2fa5b507aedcdc43057b986641406aa9ebbb323fad49472344f0e70fe7f"
+    },
+    {
+      "id": "vines",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "vines",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9497732426303855,
+      "rmsDb": -25.2,
+      "peakDb": -1.27,
+      "bytes": 30767,
+      "sha256": "a1d691194d93373f4b69bcb881d254468b0ea64372105c5a0321eaa052fb7f48"
+    },
+    {
+      "id": "portal",
+      "kind": "effect",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.686326530612245,
+      "rmsDb": -22.35,
+      "peakDb": -1.45,
+      "bytes": 39418,
+      "sha256": "b26a081e87d828bf18d47a90447d591825a599a2a8b2e02039bee50cdcc12cea"
+    },
+    {
+      "id": "teleport",
+      "kind": "effect",
+      "family": "portal",
+      "behavior": "teleport",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.669342403628118,
+      "rmsDb": -20.72,
+      "peakDb": -1.38,
+      "bytes": 44462,
+      "sha256": "503476c3bee8f071603956d82f4eaaf7340a8bdb4a2b3d60e410ce647dd70d04"
+    },
+    {
+      "id": "shockwave",
+      "kind": "effect",
+      "family": "psychic",
+      "behavior": "shockwave",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.6592517006802723,
+      "rmsDb": -19.99,
+      "peakDb": -1.57,
+      "bytes": 41584,
+      "sha256": "b96995fe3f21534557b0a0ccc02ae2c798dfb71d939caab20c757efb5c4c8c22"
+    },
+    {
+      "id": "explosion",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "explosion",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.692766439909297,
+      "rmsDb": -23.09,
+      "peakDb": -1.24,
+      "bytes": 36946,
+      "sha256": "aeb15830dc849c15d4e60f91f3d9543285aad250229c52c1425d8f29e8f1532b"
+    },
+    {
+      "id": "vortex",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "vortex",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.9805442176870747,
+      "rmsDb": -25.65,
+      "peakDb": -1.57,
+      "bytes": 37370,
+      "sha256": "c8960b3220bc524fa80b330a80b1490adea29936bd360d6773a62f329809e8d9"
+    },
+    {
+      "id": "smoke",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "smoke",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.665986394557823,
+      "rmsDb": -24.77,
+      "peakDb": -1.64,
+      "bytes": 39660,
+      "sha256": "fafcc542a1ec905c8298f79027b651db8445502be8420323e016a3dbc20cddf4"
+    },
+    {
+      "id": "blizzard",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "blizzard",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.8921768707482993,
+      "rmsDb": -33.59,
+      "peakDb": -1.54,
+      "bytes": 34915,
+      "sha256": "2700f3e03e85a0be51c5b61bcb03d08f183dc80c876df82557b0eb52ef76ccd9"
+    },
+    {
+      "id": "embers",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "embers",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.9086394557823128,
+      "rmsDb": -23.8,
+      "peakDb": -1.61,
+      "bytes": 37238,
+      "sha256": "fbec14c64a2b43848acb07570d39985f33af4d035b062999482c511f1f5b90eb"
+    },
+    {
+      "id": "chain-lightning",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "chain-lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8953514739229025,
+      "rmsDb": -26.0,
+      "peakDb": -1.92,
+      "bytes": 31294,
+      "sha256": "3f65c614648e0c94cc4cefbae363ba2162b02e5e9032dec2bc0d1d28af0a4aad"
+    },
+    {
+      "id": "lava",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "lava",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.801859410430839,
+      "rmsDb": -28.48,
+      "peakDb": -3.15,
+      "bytes": 35218,
+      "sha256": "594fe94a70ef201b325b12339e8d50fe2474ed7334cda8642fcb464ae651a2ec"
+    },
+    {
+      "id": "runes",
+      "kind": "effect",
+      "family": "illusion",
+      "behavior": "runes",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.8023129251700682,
+      "rmsDb": -22.81,
+      "peakDb": -1.95,
+      "bytes": 36705,
+      "sha256": "e5ace38cee0763b32e2c299b46ba9c70eedccb7fcb243889532cff2fc2300d3b"
+    },
+    {
+      "id": "curse",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "curse",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.6631972789115648,
+      "rmsDb": -24.09,
+      "peakDb": -1.47,
+      "bytes": 22931,
+      "sha256": "f07fa39df16ab86ed9d3c71be90677a21cbf318cad7ef7c214d8f1142dfac9b7"
+    },
+    {
+      "id": "bless",
+      "kind": "effect",
+      "family": "heal",
+      "behavior": "bless",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.7072562358276646,
+      "rmsDb": -25.09,
+      "peakDb": -1.87,
+      "bytes": 49637,
+      "sha256": "0d29cc4c5cb4f937382db4e2139fa2c2850abc84b2237b422dc93c56d113a5b0"
+    },
+    {
+      "id": "necrotic",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "necrotic",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.6548979591836734,
+      "rmsDb": -24.51,
+      "peakDb": -1.59,
+      "bytes": 23699,
+      "sha256": "051575a914af7a332c802362284608bdcf9298a22f2532bf6289583e81685f5c"
+    },
+    {
+      "id": "web",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "web",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.8994557823129252,
+      "rmsDb": -24.04,
+      "peakDb": -1.91,
+      "bytes": 30652,
+      "sha256": "846c4c6592d0b73324218bcc3583c8853d231240b244498f34b0476ba112d95b"
+    },
+    {
+      "id": "swarm",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "swarm",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.7859637188208617,
+      "rmsDb": -25.79,
+      "peakDb": -1.8,
+      "bytes": 30039,
+      "sha256": "5a1e6fc3ea39cb4a902a78aa07dc36b09b20e46a87dcd7e6e4b0e771b4c35d0f"
+    },
+    {
+      "id": "leaves",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "leaves",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9059410430839003,
+      "rmsDb": -25.06,
+      "peakDb": -1.55,
+      "bytes": 30063,
+      "sha256": "81a5f2b8d67e23b8e609253628437b412b12786eaae4e7b77e5f730ef26f5bff"
+    },
+    {
+      "id": "petals",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "petals",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.91015873015873,
+      "rmsDb": -24.43,
+      "peakDb": -1.49,
+      "bytes": 30363,
+      "sha256": "16c0e7f265b621946e50ca0e6766ed5d5adc561e411c843f46d374e6878aec46"
+    },
+    {
+      "id": "blades",
+      "kind": "effect",
+      "family": "force",
+      "behavior": "blades",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.7276643990929705,
+      "rmsDb": -20.27,
+      "peakDb": -1.54,
+      "bytes": 32770,
+      "sha256": "4f2ff41699cb0ce3c55b03f760a3933522689d8cbc0acf7867201ae553fb3f92"
+    },
+    {
+      "id": "sonic",
+      "kind": "effect",
+      "family": "psychic",
+      "behavior": "sonic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.9299546485260772,
+      "rmsDb": -20.76,
+      "peakDb": -1.44,
+      "bytes": 41587,
+      "sha256": "5388c12b3732fb0b2b762099465e6d101e43eb0650f89a1da74f68a30a31a9d2"
+    },
+    {
+      "id": "inferno",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "inferno",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.9119501133786847,
+      "rmsDb": -25.46,
+      "peakDb": -3.25,
+      "bytes": 36935,
+      "sha256": "a9ce7502d0f0376cd5bc7f513d6666f5d719f8c67480b1d3c17416858b6cb569"
+    },
+    {
+      "id": "blue-fire",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "blue-fire",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.986145124716553,
+      "rmsDb": -23.49,
+      "peakDb": -1.39,
+      "bytes": 36895,
+      "sha256": "f22c22f605c0d3859dca573b74f5c663b29c1d054747761f0d9784fb1e3c262b"
+    },
+    {
+      "id": "acid-rain",
+      "kind": "effect",
+      "family": "acid",
+      "behavior": "acid-rain",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.9942630385487528,
+      "rmsDb": -24.16,
+      "peakDb": -1.43,
+      "bytes": 31333,
+      "sha256": "ffd49ab71506e2f54c7f2a7580b61793d358358937a7e3ca94fb1b082259f06b"
+    },
+    {
+      "id": "hail",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "hail",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.6849206349206347,
+      "rmsDb": -33.32,
+      "peakDb": -1.56,
+      "bytes": 34769,
+      "sha256": "62fb6f6aef67cbf54bdcba1d052a538edb4dc3c507f0583888b9f29c793e1dd9"
+    },
+    {
+      "id": "ice-lattice",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "ice-lattice",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.986235827664399,
+      "rmsDb": -33.67,
+      "peakDb": -1.54,
+      "bytes": 34561,
+      "sha256": "5c24382d11f5bf83588e7bbf0b42f4cd72a72417d4e1aa24d48f8b8788db4b9e"
+    },
+    {
+      "id": "steam",
+      "kind": "effect",
+      "family": "water",
+      "behavior": "steam",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.7934693877551022,
+      "rmsDb": -24.21,
+      "peakDb": -2.15,
+      "bytes": 45173,
+      "sha256": "f2dfc0cb02f51d563a0b9e5c035f6a90e9b2f1bd145588621aaa5bb9802da46c"
+    },
+    {
+      "id": "sandstorm",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "sandstorm",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.835238095238095,
+      "rmsDb": -25.74,
+      "peakDb": -1.68,
+      "bytes": 37672,
+      "sha256": "d3a49fa284ff3235003e11e4370dd208436963100cab72763f6577c8abcfe744"
+    },
+    {
+      "id": "earthquake",
+      "kind": "effect",
+      "family": "earth",
+      "behavior": "earthquake",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.796281179138322,
+      "rmsDb": -24.51,
+      "peakDb": -1.47,
+      "bytes": 33495,
+      "sha256": "19fb5953f57909d0926b82a5808daab1ea91eb5784890f2e7a7d34d9c68f60a1"
+    },
+    {
+      "id": "thunderstorm",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "thunderstorm",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.9254648526077096,
+      "rmsDb": -26.07,
+      "peakDb": -2.34,
+      "bytes": 31306,
+      "sha256": "41a3f43289c9f985c2ae8da3c26a985023675ef5b5185585340a25c76323434a"
+    },
+    {
+      "id": "bubbles",
+      "kind": "effect",
+      "family": "water",
+      "behavior": "bubbles",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.821814058956916,
+      "rmsDb": -23.67,
+      "peakDb": -1.53,
+      "bytes": 45675,
+      "sha256": "c19d6e6e83f5ebdef7fcafa0010fb3e3fa73eb503d1852f199c09980519470b8"
+    },
+    {
+      "id": "solar-halo",
+      "kind": "effect",
+      "family": "radiant",
+      "behavior": "solar-halo",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.705079365079365,
+      "rmsDb": -32.26,
+      "peakDb": -1.72,
+      "bytes": 34334,
+      "sha256": "1f24cc645a603fcdd143506f48de8909e866629acd1cde41702ce01fc4c569b3"
+    },
+    {
+      "id": "lunar-halo",
+      "kind": "effect",
+      "family": "illusion",
+      "behavior": "lunar-halo",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.6501360544217687,
+      "rmsDb": -23.57,
+      "peakDb": -1.95,
+      "bytes": 37212,
+      "sha256": "f19ce4ed0d584970be1bdf77ff6e8877199cfbaf9d52b3bfb1018c4a145545d6"
+    },
+    {
+      "id": "starfield",
+      "kind": "effect",
+      "family": "divination",
+      "behavior": "starfield",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8911337868480724,
+      "rmsDb": -22.98,
+      "peakDb": -1.82,
+      "bytes": 30654,
+      "sha256": "c86ed0bd77a41dd2fff9ebd57722d1c9ab818f25d4f813eb32c1a17e2320e8e2"
+    },
+    {
+      "id": "comets",
+      "kind": "effect",
+      "family": "force",
+      "behavior": "comets",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8438321995464855,
+      "rmsDb": -23.43,
+      "peakDb": -1.68,
+      "bytes": 32952,
+      "sha256": "0a435222c52d8547ba2ae9e12b81b9a528795b40f46b718137d3307326f3bb0e"
+    },
+    {
+      "id": "mirror-shield",
+      "kind": "effect",
+      "family": "ward",
+      "behavior": "mirror-shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.807596371882086,
+      "rmsDb": -31.04,
+      "peakDb": -1.57,
+      "bytes": 30459,
+      "sha256": "8e0ce8bff6c1909aad98ad09d82b85c76dfc3b7bb837476d4f917eece395c9aa"
+    },
+    {
+      "id": "prismatic-barrier",
+      "kind": "effect",
+      "family": "ward",
+      "behavior": "prismatic-barrier",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.931655328798186,
+      "rmsDb": -31.18,
+      "peakDb": -1.57,
+      "bytes": 30468,
+      "sha256": "d3223f9c4cb0054b44b7208c24cc30a820c038a165d68a0afa7a9189858ac38f"
+    },
+    {
+      "id": "clockwork",
+      "kind": "effect",
+      "family": "time",
+      "behavior": "clockwork",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-magic-2",
+        "sfx-metallatch"
+      ],
+      "duration": 3.7154195011337867,
+      "rmsDb": -34.59,
+      "peakDb": -2.64,
+      "bytes": 32407,
+      "sha256": "4076f15396719a29e0f5febd44ffa3ed1479e651c16bba9b846b385060bc01cc"
+    },
+    {
+      "id": "gravity-well",
+      "kind": "effect",
+      "family": "portal",
+      "behavior": "gravity-well",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.9222902494331064,
+      "rmsDb": -22.29,
+      "peakDb": -1.52,
+      "bytes": 39404,
+      "sha256": "924fcefca55bb44fdbe6f32ee283db6b7a524c40bab2c6a4e0b618d2e088664b"
+    },
+    {
+      "id": "astral-threads",
+      "kind": "effect",
+      "family": "illusion",
+      "behavior": "astral-threads",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.8160090702947844,
+      "rmsDb": -23.69,
+      "peakDb": -1.95,
+      "bytes": 36688,
+      "sha256": "3c039c2f33670c7220cf14c6bc1c4b3c96ff84770a9a1ed1d17d000fc2ebc1d6"
+    },
+    {
+      "id": "spectral-chains",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "spectral-chains",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9940136054421767,
+      "rmsDb": -23.48,
+      "peakDb": -1.73,
+      "bytes": 23013,
+      "sha256": "375cc21c9e22fc6035a5a1844a755c65a852e6ff474138e8f185bafde2eae396"
+    },
+    {
+      "id": "thorn-cage",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "thorn-cage",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.67015873015873,
+      "rmsDb": -25.89,
+      "peakDb": -1.95,
+      "bytes": 30178,
+      "sha256": "5fdcc222d78ac03c71c427f74693bc1c8e122bd35d9d3930a4bb56506562c28b"
+    },
+    {
+      "id": "spores",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "spores",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.998344671201814,
+      "rmsDb": -24.23,
+      "peakDb": -1.48,
+      "bytes": 30786,
+      "sha256": "1df6ebcde72ce1b8365c22eacb0ca90f29e55807c2782453de03b66d4b5be81b"
+    },
+    {
+      "id": "mushrooms",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "mushrooms",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.6761224489795916,
+      "rmsDb": -23.82,
+      "peakDb": -1.77,
+      "bytes": 30591,
+      "sha256": "b1990296469a44a762bbfc89c25ba9584a7a1bc13efdff68cf49ada824db1492"
+    },
+    {
+      "id": "butterflies",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "butterflies",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9321315192743764,
+      "rmsDb": -25.19,
+      "peakDb": -1.8,
+      "bytes": 29971,
+      "sha256": "498b38b018fcf4b78afa933e1ef9a9d6739d76aca68565bd8739e11cc2865d99"
+    },
+    {
+      "id": "feathers",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "feathers",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.817437641723356,
+      "rmsDb": -21.47,
+      "peakDb": -1.39,
+      "bytes": 36936,
+      "sha256": "55492f978ce508a7e2d0f6c7cac44eefb0180a05c3ebfa371fbd64cc964d23cf"
+    },
+    {
+      "id": "rage",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "rage",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.9080725623582766,
+      "rmsDb": -23.84,
+      "peakDb": -1.54,
+      "bytes": 37465,
+      "sha256": "34a65d23e9174d8134694ab2d4d69c3b7732b016373e4ee8c350b527864c3680"
+    },
+    {
+      "id": "sleep",
+      "kind": "effect",
+      "family": "psychic",
+      "behavior": "sleep",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.6644444444444444,
+      "rmsDb": -18.79,
+      "peakDb": -1.92,
+      "bytes": 41275,
+      "sha256": "284ba487b887411d596da051db4890b55b1cdc92983c2ca5247c80c9fbd762c2"
+    },
+    {
+      "id": "fear",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "fear",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.6984580498866215,
+      "rmsDb": -24.83,
+      "peakDb": -1.46,
+      "bytes": 23835,
+      "sha256": "b0745231f02cf0f46a0c706b01b117f12ef974116c444d3b5ca244665a00fe90"
+    },
+    {
+      "id": "petrify",
+      "kind": "effect",
+      "family": "earth",
+      "behavior": "petrify",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.840498866213152,
+      "rmsDb": -23.74,
+      "peakDb": -1.4,
+      "bytes": 33981,
+      "sha256": "b995bfd7dbc8dcb9008578d4199f30f2da22e9dff1fc4b75d35531b7f1ba34f9"
+    },
+    {
+      "id": "soul-flames",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "soul-flames",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.8144671201814058,
+      "rmsDb": -23.53,
+      "peakDb": -1.56,
+      "bytes": 23136,
+      "sha256": "cba6e6d2f737da9bdda4df7bfadcae2c18e9bcbe5290101dba7407fa79fbeedc"
+    },
+    {
+      "id": "ember-comet",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "comet",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.676190476190476,
+      "rmsDb": -22.53,
+      "peakDb": -1.72,
+      "bytes": 38321,
+      "sha256": "d3dedda1e359a457657222d033799922d9fac69accb49799e341063b6e881120"
+    },
+    {
+      "id": "fire-surge",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "surge",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.976077097505669,
+      "rmsDb": -30.62,
+      "peakDb": -1.41,
+      "bytes": 36832,
+      "sha256": "840e416c6bd7b8964bfc0fd615eb3c99a1ea20330c84f2e1592777856c74c413"
+    },
+    {
+      "id": "fire-geyser",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "jet",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.8500226757369616,
+      "rmsDb": -23.09,
+      "peakDb": -1.39,
+      "bytes": 37378,
+      "sha256": "091d09642fe3d3d057d76112ebc05773b6dc8094e107486478cad4565024e764"
+    },
+    {
+      "id": "fire-spiral",
+      "kind": "effect",
+      "family": "fire",
+      "behavior": "spiral",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.736780045351474,
+      "rmsDb": -23.48,
+      "peakDb": -1.93,
+      "bytes": 38496,
+      "sha256": "efedac99acdc1d1cf6e05b0123150ec41002cce93da4a6f9d7f5a98e7304ff88"
+    },
+    {
+      "id": "frost-ring",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "ring",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.7156009070294784,
+      "rmsDb": -33.39,
+      "peakDb": -1.54,
+      "bytes": 34505,
+      "sha256": "afb84d9f611f3ee4b8c7206c99919626976da96613ea14b976fcb9d43e6a8379"
+    },
+    {
+      "id": "ice-bloom",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "bloom",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.7869614512471657,
+      "rmsDb": -33.45,
+      "peakDb": -1.57,
+      "bytes": 34732,
+      "sha256": "5852491ab020770cb852bb3118af2b5d08db2638bb0b5ad3195742a5daa949ae"
+    },
+    {
+      "id": "snow-drift",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "rain",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.6724263038548752,
+      "rmsDb": -33.31,
+      "peakDb": -1.54,
+      "bytes": 34485,
+      "sha256": "ae85c30b9e79401c7d61ad9e1ac9a540e0af17af75f073078b2ec70a0fe35497"
+    },
+    {
+      "id": "ice-comet",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "comet",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.8624036281179137,
+      "rmsDb": -33.53,
+      "peakDb": -1.56,
+      "bytes": 34507,
+      "sha256": "e71ccfc20fc94058d376807fca3d6fd0571d14680a678a7e45284bd499e2f738"
+    },
+    {
+      "id": "electric-cage",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "cage",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.897596371882086,
+      "rmsDb": -25.84,
+      "peakDb": -2.22,
+      "bytes": 31904,
+      "sha256": "5011b06d6eafb85967825d442c800cf5a41aeedeae6dbbee73587342ff33ec1f"
+    },
+    {
+      "id": "ball-lightning",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "orbit",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.9014285714285712,
+      "rmsDb": -25.31,
+      "peakDb": -2.34,
+      "bytes": 28752,
+      "sha256": "816a88abf103fe7ed073792c8c29afc19b7f818a12b43f4e539f5084aeedf917"
+    },
+    {
+      "id": "storm-vortex",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "spiral",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.766780045351474,
+      "rmsDb": -25.28,
+      "peakDb": -1.65,
+      "bytes": 31207,
+      "sha256": "a308a6244ef1903a60b44d089f790b3c1bdc15bae798682e728a371251705e04"
+    },
+    {
+      "id": "static-corona",
+      "kind": "effect",
+      "family": "lightning",
+      "behavior": "ring",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.833061224489796,
+      "rmsDb": -25.76,
+      "peakDb": -1.79,
+      "bytes": 31583,
+      "sha256": "f99c5089730068250e5ef55f346e5f3253960b949ca96eb3b06a8353891d7090"
+    },
+    {
+      "id": "acid-splash",
+      "kind": "effect",
+      "family": "acid",
+      "behavior": "burst",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.7784807256235826,
+      "rmsDb": -24.79,
+      "peakDb": -2.47,
+      "bytes": 31028,
+      "sha256": "64461b9162021a9bfd95247149f0324f30817fa39fa1f134f9828cb792c760ea"
+    },
+    {
+      "id": "corrosive-puddle",
+      "kind": "effect",
+      "family": "acid",
+      "behavior": "bloom",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.9110884353741495,
+      "rmsDb": -24.42,
+      "peakDb": -1.58,
+      "bytes": 31376,
+      "sha256": "66d6d1bc78ec3a4a9d233f2c764fa0a85262063c01d96f38d3698675cf329b01"
+    },
+    {
+      "id": "toxic-spiral",
+      "kind": "effect",
+      "family": "acid",
+      "behavior": "spiral",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.743718820861678,
+      "rmsDb": -24.62,
+      "peakDb": -0.94,
+      "bytes": 31291,
+      "sha256": "7fc48bf29f51ac647441a0d7b67304300bf7211de4774138dde52b2e4e65e88c"
+    },
+    {
+      "id": "poison-breath",
+      "kind": "effect",
+      "family": "acid",
+      "behavior": "surge",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.956485260770975,
+      "rmsDb": -25.74,
+      "peakDb": -2.0,
+      "bytes": 30915,
+      "sha256": "9cde31381138fb42132e5546188d8350cfa73bd7fcc29d6d55b6d73383c75228"
+    },
+    {
+      "id": "rain-curtain",
+      "kind": "effect",
+      "family": "water",
+      "behavior": "rain",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.850657596371882,
+      "rmsDb": -23.79,
+      "peakDb": -0.9,
+      "bytes": 45466,
+      "sha256": "2c171017aef31309211c1a51eae9c03da89e3a95f95294f2cdcc7af6031ff4fe"
+    },
+    {
+      "id": "water-tornado",
+      "kind": "effect",
+      "family": "water",
+      "behavior": "spiral",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.787936507936508,
+      "rmsDb": -23.39,
+      "peakDb": -1.45,
+      "bytes": 45653,
+      "sha256": "4cb014c1711b7ec51fc1e2fc7ad3c104e456b9eda3fa9779f5cfed6f39734161"
+    },
+    {
+      "id": "water-geyser",
+      "kind": "effect",
+      "family": "water",
+      "behavior": "jet",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.9347845804988664,
+      "rmsDb": -24.64,
+      "peakDb": -2.27,
+      "bytes": 45452,
+      "sha256": "0c2eecf6a567b7a1ba0da134e7a153aa35aad8f6ac73af00908a026bc431cfb3"
+    },
+    {
+      "id": "tidal-wave",
+      "kind": "effect",
+      "family": "water",
+      "behavior": "wave",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.8607482993197277,
+      "rmsDb": -23.15,
+      "peakDb": -1.48,
+      "bytes": 45744,
+      "sha256": "af48346ae3ebf6b692e8713dec8db484d9e0926b64e9634c895fb5ed4b71a5de"
+    },
+    {
+      "id": "dust-devil",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "spiral",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.9621088435374148,
+      "rmsDb": -25.91,
+      "peakDb": -1.59,
+      "bytes": 36890,
+      "sha256": "34ffcdbdf0e95df296e4f78affcfb391b573bccddf61b959665b394bafa3546f"
+    },
+    {
+      "id": "wind-shear",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "surge",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.77827664399093,
+      "rmsDb": -25.64,
+      "peakDb": -1.59,
+      "bytes": 37415,
+      "sha256": "1201a6eef9db3ddc46bf1c23dcedc33ccd03f1acbae7d7383247c7d58edae266"
+    },
+    {
+      "id": "sand-veil",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "rain",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.963174603174603,
+      "rmsDb": -23.32,
+      "peakDb": -1.68,
+      "bytes": 37054,
+      "sha256": "8bc43173194acbd6108f116d79b1719562d5d95f335e556430fe03b99589f826"
+    },
+    {
+      "id": "air-burst",
+      "kind": "effect",
+      "family": "wind",
+      "behavior": "burst",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.756984126984127,
+      "rmsDb": -24.88,
+      "peakDb": -1.31,
+      "bytes": 37887,
+      "sha256": "4120f76cf1fec513f85951b20e28909c9968716e081b5651ea228def3f15c81f"
+    },
+    {
+      "id": "stone-orbit",
+      "kind": "effect",
+      "family": "earth",
+      "behavior": "orbit",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.910544217687075,
+      "rmsDb": -24.73,
+      "peakDb": -1.67,
+      "bytes": 33480,
+      "sha256": "ef67087cced4a5d099775684553a59fd6f6d8751e22ff9324eec53d88ff3509d"
+    },
+    {
+      "id": "shattering-rocks",
+      "kind": "effect",
+      "family": "earth",
+      "behavior": "burst",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.9804761904761903,
+      "rmsDb": -25.8,
+      "peakDb": -1.56,
+      "bytes": 33734,
+      "sha256": "9c6f763b5b4c71c9faf9986efba49d65e6e5909fe0ad8441702502ea16b32aa8"
+    },
+    {
+      "id": "ground-rupture",
+      "kind": "effect",
+      "family": "earth",
+      "behavior": "wave",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.949297052154195,
+      "rmsDb": -24.97,
+      "peakDb": -1.67,
+      "bytes": 33972,
+      "sha256": "a0b2deafb8a9eab292764702c8a252681ab85c3ae257fe6bb26893cbc2a7452a"
+    },
+    {
+      "id": "crystal-growth",
+      "kind": "effect",
+      "family": "frost",
+      "behavior": "bloom",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.721020408163265,
+      "rmsDb": -33.39,
+      "peakDb": -1.54,
+      "bytes": 34505,
+      "sha256": "3c29ce59b84828eadfa1521dd5fae9cadc4d45567865555887c6fed7e4e7b761"
+    },
+    {
+      "id": "rose-vortex",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "spiral",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.7393650793650792,
+      "rmsDb": -23.5,
+      "peakDb": -1.72,
+      "bytes": 30093,
+      "sha256": "7e153335abf6b86618f452d291ddae0c50b1492177c5a824d573fce3d9f50aa5"
+    },
+    {
+      "id": "falling-blossoms",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "rain",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.6692290249433106,
+      "rmsDb": -22.94,
+      "peakDb": -1.16,
+      "bytes": 30662,
+      "sha256": "a8d634a8ccb024a01f9d97f9787f3c40df23a55d449263af2d382fc2cc497fd9"
+    },
+    {
+      "id": "leaf-cyclone",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "orbit",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.8302947845804987,
+      "rmsDb": -25.01,
+      "peakDb": -1.5,
+      "bytes": 31073,
+      "sha256": "208dca8e57abf4d56f7752a41ba5689fd4c20ad85a2820fd19817b3401ff04e3"
+    },
+    {
+      "id": "seed-trails",
+      "kind": "effect",
+      "family": "nature",
+      "behavior": "comet",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.697437641723356,
+      "rmsDb": -23.6,
+      "peakDb": -1.76,
+      "bytes": 30701,
+      "sha256": "457dae5f6fbd0ef128f273bc123cc73579f38245830ebed301a243fd15436326"
+    },
+    {
+      "id": "soul-vortex",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "spiral",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.7712925170068026,
+      "rmsDb": -23.74,
+      "peakDb": -1.66,
+      "bytes": 22930,
+      "sha256": "2de833b2942baeba25734d33e9b8906eb71f3ea472dfd3960459f1d3c1161612"
+    },
+    {
+      "id": "spirit-procession",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "orbit",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.817845804988662,
+      "rmsDb": -22.98,
+      "peakDb": -1.57,
+      "bytes": 23868,
+      "sha256": "b95b8ed6f420d287a4f3cd745ade462c028dfd0ff683881b5e661abd788b3c50"
+    },
+    {
+      "id": "ghost-wake",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "surge",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.781768707482993,
+      "rmsDb": -23.91,
+      "peakDb": -1.64,
+      "bytes": 23055,
+      "sha256": "8d5eeefb075abfe76a231801db0ac1a49557c152eaba4a31bf34438d1e8bd3ce"
+    },
+    {
+      "id": "umbra-bloom",
+      "kind": "effect",
+      "family": "necrotic",
+      "behavior": "bloom",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.802154195011338,
+      "rmsDb": -23.26,
+      "peakDb": -1.53,
+      "bytes": 23471,
+      "sha256": "1d9f238493e5d3ce54045e83827366f193df29d7c46c88a160b607e2cd8f9379"
+    },
+    {
+      "id": "healing-stream",
+      "kind": "effect",
+      "family": "radiant",
+      "behavior": "spiral",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.9975736961451247,
+      "rmsDb": -32.59,
+      "peakDb": -1.79,
+      "bytes": 34367,
+      "sha256": "cb2bcfb3b0095a8d85ce41a9d005e1ce9cd43e7e18f05b64313f249655f01467"
+    },
+    {
+      "id": "celestial-rain",
+      "kind": "effect",
+      "family": "radiant",
+      "behavior": "rain",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.9374603174603173,
+      "rmsDb": -31.47,
+      "peakDb": -1.79,
+      "bytes": 34808,
+      "sha256": "2e5f48eb37c78562e5fefb9a96f748f2a4954028739a733eaab80b6fe0cd0ac0"
+    },
+    {
+      "id": "prism-pulse",
+      "kind": "effect",
+      "family": "radiant",
+      "behavior": "wave",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.70843537414966,
+      "rmsDb": -31.41,
+      "peakDb": -1.85,
+      "bytes": 34706,
+      "sha256": "4af98cc261529295b163f9be688e58a0787e554ab90eeae092368bf23a09364c"
+    },
+    {
+      "id": "dimensional-rift",
+      "kind": "effect",
+      "family": "radiant",
+      "behavior": "rift",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.732108843537415,
+      "rmsDb": -30.85,
+      "peakDb": -2.0,
+      "bytes": 35936,
+      "sha256": "c936f690377902ee34363e3cb2387e6a035a0e4b864ff01494d82b011214f162"
+    },
+    {
+      "id": "spell-acid-splash",
+      "kind": "spell",
+      "family": "acid",
+      "behavior": "acid",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.7750793650793653,
+      "rmsDb": -23.92,
+      "peakDb": -1.33,
+      "bytes": 30918,
+      "sha256": "25232f836b0f2519a8693adc0983840a02fcf4fa4faf228c1720838494bc2b55"
+    },
+    {
+      "id": "spell-chill-touch",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.7580498866213152,
+      "rmsDb": -24.36,
+      "peakDb": -1.5,
+      "bytes": 22963,
+      "sha256": "a957072bf84083a72a8572a57789a5c812d8e85932886fcc9633a7e011f2b7cb"
+    },
+    {
+      "id": "spell-dancing-lights",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.687641723356009,
+      "rmsDb": -31.51,
+      "peakDb": -1.79,
+      "bytes": 34709,
+      "sha256": "773bdadd95c9d6ad86cd039df0bf12bcc7bdf412e614c9fe9375646e1cba8980"
+    },
+    {
+      "id": "spell-druidcraft",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.82156462585034,
+      "rmsDb": -25.57,
+      "peakDb": -1.82,
+      "bytes": 30706,
+      "sha256": "0093a92cfc91d8ce09dc8ed9914617378ccfb78b97146830b0171c58b5fff292"
+    },
+    {
+      "id": "spell-eldritch-blast",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "missiles",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.7609977324263038,
+      "rmsDb": -20.99,
+      "peakDb": -1.99,
+      "bytes": 37177,
+      "sha256": "a4047fea0b22ce8fad3460671a8141cdb2b474ff8b1d51d03c1013f90ee664e6"
+    },
+    {
+      "id": "spell-elementalism",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9770521541950115,
+      "rmsDb": -23.74,
+      "peakDb": -1.9,
+      "bytes": 32561,
+      "sha256": "0c135fda4bcd354405fe5357ae21a3d6f2b585df54d5267b29be917a5ea9ff25"
+    },
+    {
+      "id": "spell-fire-bolt",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fire-ray",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.6834920634920634,
+      "rmsDb": -23.46,
+      "peakDb": -2.49,
+      "bytes": 39163,
+      "sha256": "720478f42d702d20cb39a9372d0689b102df4259e98bc8eae9d5d509339b7db1"
+    },
+    {
+      "id": "spell-guidance",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.715374149659864,
+      "rmsDb": -25.1,
+      "peakDb": -1.7,
+      "bytes": 31682,
+      "sha256": "67d35769b5fd2946eff0e0c4d5965d4980f0a20546603211c8c9d14c01dad191"
+    },
+    {
+      "id": "spell-light",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.892448979591837,
+      "rmsDb": -27.32,
+      "peakDb": -2.0,
+      "bytes": 34946,
+      "sha256": "1523707b12f59aa6a4aa9716838616f35060a16da8c9e3e867a17b0a1bead503"
+    },
+    {
+      "id": "spell-mage-hand",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.908390022675737,
+      "rmsDb": -24.27,
+      "peakDb": -2.07,
+      "bytes": 35193,
+      "sha256": "0f7ef3a67bb868aa4fb6cad7520e4566778bc0e44d93c6ab6d4f4a64619af8c2"
+    },
+    {
+      "id": "spell-mending",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.8643310657596373,
+      "rmsDb": -24.76,
+      "peakDb": -1.53,
+      "bytes": 34019,
+      "sha256": "17ebd7a1e21ce1cdeb6373579815045a7600094c624b89e86179bb40e6f21922"
+    },
+    {
+      "id": "spell-message",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8665532879818594,
+      "rmsDb": -24.68,
+      "peakDb": -1.57,
+      "bytes": 29997,
+      "sha256": "d0ebedd48e3d7defa8134fcd9370d3e23591d261fe8d28c9244ba42c12350d04"
+    },
+    {
+      "id": "spell-minor-illusion",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion-image",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.807641723356009,
+      "rmsDb": -22.53,
+      "peakDb": -1.95,
+      "bytes": 36709,
+      "sha256": "f59dcfd3bfd4f54bea226f1e94cfc7aa4b41c2ea0eb0e3128a5dcbd22c733f58"
+    },
+    {
+      "id": "spell-poison-spray",
+      "kind": "spell",
+      "family": "poison",
+      "behavior": "poison",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.8714739229024944,
+      "rmsDb": -23.62,
+      "peakDb": -1.79,
+      "bytes": 31434,
+      "sha256": "0de18de0fdb1f20a62da923c4dd096d81c386b392f7b7d87face8a0f9c85a67b"
+    },
+    {
+      "id": "spell-prestidigitation",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8877551020408165,
+      "rmsDb": -24.44,
+      "peakDb": -2.32,
+      "bytes": 35488,
+      "sha256": "c6b46245228879a2fc40ecafc31667971cae616fe659229adfdde947c1b04ee8"
+    },
+    {
+      "id": "spell-produce-flame",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fire-ray",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.6828344671201814,
+      "rmsDb": -29.38,
+      "peakDb": -1.88,
+      "bytes": 34835,
+      "sha256": "73e517f804b2cf742311669079bb82ff65bbc1611ee0c7dce3a9abd305d50b4a"
+    },
+    {
+      "id": "spell-ray-of-frost",
+      "kind": "spell",
+      "family": "frost",
+      "behavior": "missiles",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.8750113378684805,
+      "rmsDb": -33.21,
+      "peakDb": -2.5,
+      "bytes": 41382,
+      "sha256": "d52ac669e041f88e61511331edd4e4c1dfb209d3bffb1aee6e848f271349d55c"
+    },
+    {
+      "id": "spell-resistance",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.984784580498866,
+      "rmsDb": -31.24,
+      "peakDb": -1.57,
+      "bytes": 30473,
+      "sha256": "e5ee483e9d0a5ea038d0e34f137e47a9f36e7c34d0f872bf61dd9b0e531588e6"
+    },
+    {
+      "id": "spell-sacred-flame",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.683333333333333,
+      "rmsDb": -31.51,
+      "peakDb": -1.79,
+      "bytes": 34774,
+      "sha256": "2cdd342fa3a9afb230c3a622cfc237a8a75f346a083a98492fcd4ad976c33f09"
+    },
+    {
+      "id": "spell-shillelagh",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "weapon",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.718049886621315,
+      "rmsDb": -25.52,
+      "peakDb": -1.53,
+      "bytes": 30344,
+      "sha256": "658cc55b536a230988be2f865caeb09fff8ed854d7f763a1777c702fa72e8d80"
+    },
+    {
+      "id": "spell-shocking-grasp",
+      "kind": "spell",
+      "family": "lightning",
+      "behavior": "lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.7205668934240363,
+      "rmsDb": -24.47,
+      "peakDb": -2.11,
+      "bytes": 31520,
+      "sha256": "92853b83f3e27c81eb0aad23bb8716e2b2e12488486aed2d1ade83d0c2daa75e"
+    },
+    {
+      "id": "spell-sorcerous-burst",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.90578231292517,
+      "rmsDb": -23.75,
+      "peakDb": -2.24,
+      "bytes": 35512,
+      "sha256": "7d114396b90a6705c25b25b7ecd965d48adee81e5fd5ca923551629435cf86ef"
+    },
+    {
+      "id": "spell-spare-the-dying",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.9867120181405897,
+      "rmsDb": -25.97,
+      "peakDb": -1.58,
+      "bytes": 48697,
+      "sha256": "74c742625fe3b3a2b3bcc4584bf60537fec44da9a647d2b96dfda247d6b014ad"
+    },
+    {
+      "id": "spell-starry-wisp",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.972517006802721,
+      "rmsDb": -32.38,
+      "peakDb": -2.0,
+      "bytes": 34296,
+      "sha256": "e87972c217dde5c025790ef4983794fdc222bfed2a771f116c5b133adb73c0ce"
+    },
+    {
+      "id": "spell-thaumaturgy",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8895918367346938,
+      "rmsDb": -23.09,
+      "peakDb": -1.62,
+      "bytes": 33700,
+      "sha256": "fa6ff4c3306b10a3bb229a69f4ede6400aed65214f7074cf1efda710fa6efd43"
+    },
+    {
+      "id": "spell-true-strike",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.7582086167800455,
+      "rmsDb": -23.88,
+      "peakDb": -2.04,
+      "bytes": 32265,
+      "sha256": "8cdf21844b200becbe0874511947e5760e482a0ac9aac09aed64d3c966c9baef"
+    },
+    {
+      "id": "spell-vicious-mockery",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.8242857142857143,
+      "rmsDb": -19.98,
+      "peakDb": -1.67,
+      "bytes": 41195,
+      "sha256": "a122255e4d0497f3f04c848bd2acd48269509a803529676166fd902327b6bd0a"
+    },
+    {
+      "id": "spell-alarm",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.952108843537415,
+      "rmsDb": -31.21,
+      "peakDb": -1.57,
+      "bytes": 30472,
+      "sha256": "7fe9e103713bfa5d0f3e73b41c04231e01a2d9881beaecf9ea0efa9fd9d90f90"
+    },
+    {
+      "id": "spell-animal-friendship",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "charm",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.836077097505669,
+      "rmsDb": -24.33,
+      "peakDb": -1.81,
+      "bytes": 30514,
+      "sha256": "401c9bf71c4e5f0e52eef03ae636152a4abb4ab94c44171e41c420e51e968d0b"
+    },
+    {
+      "id": "spell-bane",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.8660997732426305,
+      "rmsDb": -19.89,
+      "peakDb": -1.43,
+      "bytes": 41560,
+      "sha256": "a0392a4e521eb50f866d9689f1282d12703a77fb79320eecf01d6b16e6fc59dd"
+    },
+    {
+      "id": "spell-bless",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.852562358276644,
+      "rmsDb": -31.09,
+      "peakDb": -1.57,
+      "bytes": 30462,
+      "sha256": "6f69ccf04ce96e70b2a5107a00dbdb68f04f23936ef67b4d2c7bdb4a4fe747e4"
+    },
+    {
+      "id": "spell-burning-hands",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fire-ray",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.696825396825397,
+      "rmsDb": -27.46,
+      "peakDb": -2.43,
+      "bytes": 40481,
+      "sha256": "239b9aca9076d4708459deee8daafc05e7172b0efe251c218c4864beed23f2a9"
+    },
+    {
+      "id": "spell-charm-person",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.698231292517007,
+      "rmsDb": -18.78,
+      "peakDb": -1.85,
+      "bytes": 41165,
+      "sha256": "01c093108a1d1913d5a7ba18343d8558ddc5b92136601a06f566342e581c4164"
+    },
+    {
+      "id": "spell-chromatic-orb",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "missiles",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.65124716553288,
+      "rmsDb": -21.86,
+      "peakDb": -1.5,
+      "bytes": 38247,
+      "sha256": "f469cf7398d58d6c38bd826be2be40c23ba706634f2c97219e4b5e312aaf6391"
+    },
+    {
+      "id": "spell-color-spray",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.6843083900226756,
+      "rmsDb": -23.27,
+      "peakDb": -1.95,
+      "bytes": 37792,
+      "sha256": "57f90893a88cb367296756d97bc4f4e75f5c30e6d2006a702d0cfcef736c647d"
+    },
+    {
+      "id": "spell-command",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.880657596371882,
+      "rmsDb": -19.69,
+      "peakDb": -1.53,
+      "bytes": 41548,
+      "sha256": "f22095638e3fadb23eff2c3b031b42b0c2df58fb3e3a7ae550d250ce78108183"
+    },
+    {
+      "id": "spell-comprehend-languages",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.6918820861678006,
+      "rmsDb": -21.68,
+      "peakDb": -1.74,
+      "bytes": 30194,
+      "sha256": "469b672a11ff6ff5e4e985de1207a02f1cf4e8447db223111c81d15fba6b3d00"
+    },
+    {
+      "id": "spell-create-or-destroy-water",
+      "kind": "spell",
+      "family": "water",
+      "behavior": "water",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.706031746031746,
+      "rmsDb": -22.92,
+      "peakDb": -1.6,
+      "bytes": 45001,
+      "sha256": "a6378669a9ccdf529515a6afe6b8a41b121ce6831f29a87739aabeb83d8e03b7"
+    },
+    {
+      "id": "spell-cure-wounds",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.786281179138322,
+      "rmsDb": -26.56,
+      "peakDb": -1.44,
+      "bytes": 49365,
+      "sha256": "df192baa77c0e44dc7896286293ed0dbbedcee4943fdb3ecb11f078f87e770b3"
+    },
+    {
+      "id": "spell-detect-evil-and-good",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.9279591836734693,
+      "rmsDb": -21.91,
+      "peakDb": -1.8,
+      "bytes": 30283,
+      "sha256": "a4cfc5ffb7b699688f6daaf9a2a78a38a1b663eb5df489360e5eb8f07878c0df"
+    },
+    {
+      "id": "spell-detect-magic",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.777755102040816,
+      "rmsDb": -24.53,
+      "peakDb": -1.34,
+      "bytes": 29712,
+      "sha256": "fef1eea70fc1886114517f6665e38c3c9599f6d64b656587b444e86d7576ea61"
+    },
+    {
+      "id": "spell-detect-poison-and-disease",
+      "kind": "spell",
+      "family": "poison",
+      "behavior": "divination",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.730521541950113,
+      "rmsDb": -24.03,
+      "peakDb": -1.89,
+      "bytes": 31631,
+      "sha256": "53dd208d3dd1cbc44b328a1af53a334035121a986ed38f793e668f62ae13ddc6"
+    },
+    {
+      "id": "spell-disguise-self",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "transmute",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.662448979591837,
+      "rmsDb": -22.77,
+      "peakDb": -1.95,
+      "bytes": 37046,
+      "sha256": "cb1ffc900deb7cea0b839f3b1cd07c1dbba69b2d88db1c0687cb1b98b35ac43d"
+    },
+    {
+      "id": "spell-dissonant-whispers",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.656031746031746,
+      "rmsDb": -20.27,
+      "peakDb": -1.5,
+      "bytes": 43776,
+      "sha256": "41c2df139b748a7752ef50f87e1550b214f0c8277d7b9b3edbeb90be62e59173"
+    },
+    {
+      "id": "spell-divine-favor",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.8637414965986396,
+      "rmsDb": -29.32,
+      "peakDb": -1.95,
+      "bytes": 34801,
+      "sha256": "dd492b57c57bba915693145f63023702a828c1e2bcfdc7aba67919c4e24c575a"
+    },
+    {
+      "id": "spell-divine-smite",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.876485260770975,
+      "rmsDb": -31.74,
+      "peakDb": -1.76,
+      "bytes": 34374,
+      "sha256": "70131ec17ef0c21f017cdc82c808b1ff5e8c6fd9e5d6e4e0823c98af837dc620"
+    },
+    {
+      "id": "spell-ensnaring-strike",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.833764172335601,
+      "rmsDb": -23.62,
+      "peakDb": -1.61,
+      "bytes": 30655,
+      "sha256": "ea8105b304146f18cb7948a14e2b60423657904cac48804ecc5a1f411e2fe0bd"
+    },
+    {
+      "id": "spell-entangle",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.8858503401360545,
+      "rmsDb": -25.63,
+      "peakDb": -1.76,
+      "bytes": 30050,
+      "sha256": "fb61a3aff8d77b8e1bea8ef1e0ca7bf7ddc0c45fb73c36cc182c702ffbf021e7"
+    },
+    {
+      "id": "spell-expeditious-retreat",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.9743537414965986,
+      "rmsDb": -26.4,
+      "peakDb": -1.61,
+      "bytes": 36626,
+      "sha256": "283f5119699846c34ea9715e92f437a2a309e3d74d53b686faf2394bbf6acf93"
+    },
+    {
+      "id": "spell-faerie-fire",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.680204081632653,
+      "rmsDb": -30.75,
+      "peakDb": -2.0,
+      "bytes": 35947,
+      "sha256": "82f7e04f1af64071240a42018c45d931a3a09940eb4ecd19d953be8f71d4dff8"
+    },
+    {
+      "id": "spell-false-life",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.8630158730158732,
+      "rmsDb": -23.74,
+      "peakDb": -1.59,
+      "bytes": 23947,
+      "sha256": "86e58723aaf2b7349ee882edb83a7053abe7fac410638fe9e419e85420d677b9"
+    },
+    {
+      "id": "spell-feather-fall",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.6717913832199547,
+      "rmsDb": -24.57,
+      "peakDb": -1.68,
+      "bytes": 37215,
+      "sha256": "2c30c43bb7b370128b73235e09d5bd88d877c62c02472ddf2c46478ba82734b6"
+    },
+    {
+      "id": "spell-find-familiar",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.6935827664399095,
+      "rmsDb": -20.07,
+      "peakDb": -1.28,
+      "bytes": 42355,
+      "sha256": "4a4ca7ffb430af90af3807aa47810431832e5ed833824941d1e34a36d2822ee1"
+    },
+    {
+      "id": "spell-floating-disk",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.842607709750567,
+      "rmsDb": -21.89,
+      "peakDb": -1.77,
+      "bytes": 32348,
+      "sha256": "7f13b0273486338ad50a67fbfcd5721089144793b831ea767a6d315b35e6949f"
+    },
+    {
+      "id": "spell-fog-cloud",
+      "kind": "spell",
+      "family": "water",
+      "behavior": "fog",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.99421768707483,
+      "rmsDb": -23.58,
+      "peakDb": -1.27,
+      "bytes": 45325,
+      "sha256": "a465ab6ebd0c84fea76f60d53566b75d757a488298257ef514802cdc5b01f4e9"
+    },
+    {
+      "id": "spell-goodberry",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.8918820861678003,
+      "rmsDb": -24.77,
+      "peakDb": -1.7,
+      "bytes": 49454,
+      "sha256": "087b5d7fbfaf307ff271ca2644db53460446188d03f5e27546559890eddb67e1"
+    },
+    {
+      "id": "spell-grease",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.9806802721088435,
+      "rmsDb": -23.91,
+      "peakDb": -1.46,
+      "bytes": 34561,
+      "sha256": "50d58b98e53fb8aafe423f7959afa457a9a9a3a469c9af03d8180c83ae129c74"
+    },
+    {
+      "id": "spell-guiding-bolt",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "missiles",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.683968253968254,
+      "rmsDb": -28.76,
+      "peakDb": -1.91,
+      "bytes": 39524,
+      "sha256": "abee05ee1b1c2682bce348ea0750692064c89e0c626c70fb9be30af3c0c45912"
+    },
+    {
+      "id": "spell-healing-word",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.9897732426303856,
+      "rmsDb": -25.67,
+      "peakDb": -1.68,
+      "bytes": 49772,
+      "sha256": "e8371bd87534dc9a408d74dc944ef399b2b6c3525e1f95aee4e369093e92eb65"
+    },
+    {
+      "id": "spell-hellish-rebuke",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.9442857142857144,
+      "rmsDb": -26.98,
+      "peakDb": -2.07,
+      "bytes": 38620,
+      "sha256": "a0830b7d4a4fbcfa1450f5042d38526a2c58a5bf10d434c1c4bc331a94a25d87"
+    },
+    {
+      "id": "spell-heroism",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.7790702947845807,
+      "rmsDb": -31.01,
+      "peakDb": -1.57,
+      "bytes": 30456,
+      "sha256": "88de049ebbe71c02fd50dc46bce7afc737a4cd10910cbeaa2203d03713bf82a0"
+    },
+    {
+      "id": "spell-hex",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.926734693877551,
+      "rmsDb": -23.59,
+      "peakDb": -1.4,
+      "bytes": 23458,
+      "sha256": "c078560cabae1c5e14bbdb2ed05cc9dbe82ebc2934e00de7c5aa3679c0218a61"
+    },
+    {
+      "id": "spell-hideous-laughter",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.908344671201814,
+      "rmsDb": -19.85,
+      "peakDb": -1.44,
+      "bytes": 41310,
+      "sha256": "138e4c3b097c74bfa662bf0114d49c6f3a0fe49ed9bc5e1c86ff4e4ec2d4cb61"
+    },
+    {
+      "id": "spell-hunter-s-mark",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.689909297052154,
+      "rmsDb": -23.49,
+      "peakDb": -1.58,
+      "bytes": 22926,
+      "sha256": "3abb48e5f6dadc4ccfc98589bae99b4de52985430a2a8406a8a32f35babc2311"
+    },
+    {
+      "id": "spell-ice-knife",
+      "kind": "spell",
+      "family": "frost",
+      "behavior": "frost",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.668684807256236,
+      "rmsDb": -33.29,
+      "peakDb": -1.56,
+      "bytes": 34506,
+      "sha256": "ea0fd0c309e91a58be220f46de1eda11e8401cc32233480a9010a556e0aac77d"
+    },
+    {
+      "id": "spell-identify",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8620181405895693,
+      "rmsDb": -24.87,
+      "peakDb": -1.9,
+      "bytes": 29653,
+      "sha256": "626fd408dc53a1bb06b79217135d2c070fb96a1302c93251faf316a0943d5246"
+    },
+    {
+      "id": "spell-illusory-script",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "glyph",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.6755102040816325,
+      "rmsDb": -21.73,
+      "peakDb": -1.95,
+      "bytes": 36364,
+      "sha256": "5fc0adcd5ea2acf7b2f762c3f9d8b26f7a49919f8953657813cbc1c16725b949"
+    },
+    {
+      "id": "spell-inflict-wounds",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9554421768707484,
+      "rmsDb": -23.65,
+      "peakDb": -1.68,
+      "bytes": 23397,
+      "sha256": "311b799da516a38bd91a7ce1222d7303399500de23088033896fa3de1eb387c2"
+    },
+    {
+      "id": "spell-jump",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.908095238095238,
+      "rmsDb": -26.81,
+      "peakDb": -1.87,
+      "bytes": 37021,
+      "sha256": "686731e5954604f1780d27c0fbf8583cdb954947c043fd811fec60d79dd68185"
+    },
+    {
+      "id": "spell-longstrider",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.8168707482993196,
+      "rmsDb": -21.7,
+      "peakDb": -1.65,
+      "bytes": 37278,
+      "sha256": "6bff882b881a2b92532a9359f792ea07a71617e365b13302786fa47a379eee06"
+    },
+    {
+      "id": "spell-mage-armor",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.728299319727891,
+      "rmsDb": -30.95,
+      "peakDb": -1.57,
+      "bytes": 30452,
+      "sha256": "bc7adaa5d946a2a7d6771ee7082d5b40300e383732ba44289973bbbcaa9a89c6"
+    },
+    {
+      "id": "spell-magic-missile",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "missiles",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.6599092970521543,
+      "rmsDb": -21.99,
+      "peakDb": -1.41,
+      "bytes": 37416,
+      "sha256": "33f408dcb628db13acac9a7d42e0dc811df0b106adc895398f767d12e2dd9923"
+    },
+    {
+      "id": "spell-protection-from-evil-and-good",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8736054421768706,
+      "rmsDb": -31.12,
+      "peakDb": -1.57,
+      "bytes": 30463,
+      "sha256": "deb9e15285c824c7c7975a52d0e1e055ddf4bcab0b0abee31bb14c9bd0fbcb31"
+    },
+    {
+      "id": "spell-purify-food-and-drink",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9004761904761907,
+      "rmsDb": -20.81,
+      "peakDb": -1.27,
+      "bytes": 32909,
+      "sha256": "e62b1dd501f6e0ba2e05fae56726ea18f00aedae52b6d58efc4b4ef66706c1df"
+    },
+    {
+      "id": "spell-ray-of-sickness",
+      "kind": "spell",
+      "family": "poison",
+      "behavior": "missiles",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.699591836734694,
+      "rmsDb": -25.54,
+      "peakDb": -1.76,
+      "bytes": 32403,
+      "sha256": "3f5a1f2465ce7fdee6052dfefd6bf01b037b9bae79aa9b638c1703e994391d8e"
+    },
+    {
+      "id": "spell-sanctuary",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.755238095238095,
+      "rmsDb": -30.98,
+      "peakDb": -1.57,
+      "bytes": 30454,
+      "sha256": "da523ce0a3a79e1cd4772053c73dda837f31475ad4d2c93387020636ce913684"
+    },
+    {
+      "id": "spell-searing-smite",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.662721088435374,
+      "rmsDb": -23.03,
+      "peakDb": -1.42,
+      "bytes": 34956,
+      "sha256": "1768c87ba0f33fdf21bd7206188fe4dd997b2f9a012ed2420fa272e668158305"
+    },
+    {
+      "id": "spell-shield",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.6916326530612245,
+      "rmsDb": -30.91,
+      "peakDb": -1.57,
+      "bytes": 30450,
+      "sha256": "426316e967307e4445fce2fc7545023ced32203061b3349b8726402ca2e3e974"
+    },
+    {
+      "id": "spell-shield-of-faith",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.866281179138322,
+      "rmsDb": -31.11,
+      "peakDb": -1.57,
+      "bytes": 30462,
+      "sha256": "5393904a169563abf3d3dad57cf2c782dcf3f488ae8b5765558362f818bc5c83"
+    },
+    {
+      "id": "spell-silent-image",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion-image",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.737755102040816,
+      "rmsDb": -22.43,
+      "peakDb": -1.95,
+      "bytes": 36669,
+      "sha256": "939acfff4e75a402c879c66dfd5d1f2889367fc7bf45168d49d7b9ebe1aea473"
+    },
+    {
+      "id": "spell-sleep",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.739092970521542,
+      "rmsDb": -20.25,
+      "peakDb": -1.71,
+      "bytes": 44940,
+      "sha256": "6462d5e43510663fa7d71506c968bbf33343b59d1753336b876c7fdaaeab9a38"
+    },
+    {
+      "id": "spell-speak-with-animals",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9712698412698413,
+      "rmsDb": -25.87,
+      "peakDb": -1.19,
+      "bytes": 30222,
+      "sha256": "2d9074b63a6d964f9bc9339bf9915c4968842d2ffbc0fd617c873255e814a644"
+    },
+    {
+      "id": "spell-thunderwave",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "thunder",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.6881859410430837,
+      "rmsDb": -24.32,
+      "peakDb": -1.89,
+      "bytes": 35039,
+      "sha256": "3edc75ca5addb5ac5fd74388f4fe39dc7587d7411fc533b4ca33f420796dbe1d"
+    },
+    {
+      "id": "spell-unseen-servant",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.6793197278911562,
+      "rmsDb": -20.49,
+      "peakDb": -1.5,
+      "bytes": 32779,
+      "sha256": "f9027b40faace5ecfa4673c306fe30cd57e05557a7d9e03c7476f55dd6d151a1"
+    },
+    {
+      "id": "spell-acid-arrow",
+      "kind": "spell",
+      "family": "acid",
+      "behavior": "missiles",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.677800453514739,
+      "rmsDb": -23.89,
+      "peakDb": -1.96,
+      "bytes": 33231,
+      "sha256": "2b2ce0f1e983375415a5ecb2b7a9c969671b05dceddc753e9b851bc67660049a"
+    },
+    {
+      "id": "spell-aid",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.9339455782312927,
+      "rmsDb": -25.24,
+      "peakDb": -2.15,
+      "bytes": 49682,
+      "sha256": "a66bebf0c5e65dccb076b5a3421bc7f9865ee0c7b4a0afa751a882cb3b42a71d"
+    },
+    {
+      "id": "spell-alter-self",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "transmute",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.701655328798186,
+      "rmsDb": -22.91,
+      "peakDb": -1.95,
+      "bytes": 37102,
+      "sha256": "48c80ade20401c2d87a6350451350fbc86353fb33fec4bb9f2fb525201349261"
+    },
+    {
+      "id": "spell-animal-messenger",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9208843537414966,
+      "rmsDb": -25.08,
+      "peakDb": -1.5,
+      "bytes": 30883,
+      "sha256": "7ffdd56b453349934185e9ceb132acc171cbc0b2fa8ab5ba69c27455d93c910e"
+    },
+    {
+      "id": "spell-arcane-lock",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.88718820861678,
+      "rmsDb": -31.13,
+      "peakDb": -1.57,
+      "bytes": 30464,
+      "sha256": "d4d9fdd46ff237437b6785348718b861373e50f6dafd120afcadd6a5b8967f21"
+    },
+    {
+      "id": "spell-arcanist-s-magic-aura",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.6559863945578233,
+      "rmsDb": -23.01,
+      "peakDb": -1.95,
+      "bytes": 36339,
+      "sha256": "b53a511c5e84bfe5a2f882db3f8c4b0e6f49e2a9ff985e038c5d3f5cdb674e78"
+    },
+    {
+      "id": "spell-augury",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.823605442176871,
+      "rmsDb": -24.97,
+      "peakDb": -1.82,
+      "bytes": 31677,
+      "sha256": "8ad9d292cbc91bd23e573f0c647ef3bee1734e7ee4947657e81e2ce828dc0476"
+    },
+    {
+      "id": "spell-barkskin",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.65,
+      "rmsDb": -24.4,
+      "peakDb": -1.46,
+      "bytes": 30437,
+      "sha256": "7b7046fd352a0555cfdd963608a32c6f925095f447ec850d0a2126572a06974d"
+    },
+    {
+      "id": "spell-blindness-deafness",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.796031746031746,
+      "rmsDb": -21.47,
+      "peakDb": -1.97,
+      "bytes": 39703,
+      "sha256": "05e5db550255be8d1000ff0889ebcd038c2aa6871540ca17c72f078a2348a4e0"
+    },
+    {
+      "id": "spell-blur",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.81031746031746,
+      "rmsDb": -23.25,
+      "peakDb": -1.95,
+      "bytes": 36054,
+      "sha256": "faf6622a467b0c47418b17184a5b3f6c655ada42885b668943c40efeec6c9600"
+    },
+    {
+      "id": "spell-calm-emotions",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.8259637188208617,
+      "rmsDb": -18.97,
+      "peakDb": -1.28,
+      "bytes": 42445,
+      "sha256": "67f718b9785f40e0907fc8404bb6b4d9c8c8b48c2e8879dd78884af32ba8626f"
+    },
+    {
+      "id": "spell-continual-flame",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.8804761904761906,
+      "rmsDb": -25.34,
+      "peakDb": -1.48,
+      "bytes": 38142,
+      "sha256": "ad2f91403a556c2018b95352f0996d1988a2aa008045047da66438f7fa178d34"
+    },
+    {
+      "id": "spell-darkness",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "darkness",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.7733786848072564,
+      "rmsDb": -23.71,
+      "peakDb": -1.53,
+      "bytes": 23527,
+      "sha256": "e39d9c19dec812c707ca962e248276410223e03939768085004b147998ba84da"
+    },
+    {
+      "id": "spell-darkvision",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.670861678004535,
+      "rmsDb": -24.51,
+      "peakDb": -1.62,
+      "bytes": 30612,
+      "sha256": "f31beb2233076386b603cd34e3d14ceacb13475d85fd32dda45cc593753ce138"
+    },
+    {
+      "id": "spell-detect-thoughts",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.923015873015873,
+      "rmsDb": -20.28,
+      "peakDb": -1.49,
+      "bytes": 44953,
+      "sha256": "5c907e59526e62c7fd9f29c8138c0914913632a2e8893d4a5dc1317a816163dd"
+    },
+    {
+      "id": "spell-dragon-s-breath",
+      "kind": "spell",
+      "family": "lightning",
+      "behavior": "lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.7598185941043085,
+      "rmsDb": -23.13,
+      "peakDb": -1.8,
+      "bytes": 31745,
+      "sha256": "567bfd613cf6528bb2a4b6e9b9baff98062400bc0b2b87c9c212d69296743986"
+    },
+    {
+      "id": "spell-enhance-ability",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9485260770975055,
+      "rmsDb": -21.46,
+      "peakDb": -1.43,
+      "bytes": 33086,
+      "sha256": "533e56baba1b9be3dd3222f7b9af1f2a91d567d7daa564099bca457561b5bcf2"
+    },
+    {
+      "id": "spell-enlarge-reduce",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "transmute",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9758956916099772,
+      "rmsDb": -24.27,
+      "peakDb": -1.43,
+      "bytes": 33503,
+      "sha256": "f4287fc57b982ede48c6aef2bf83b0bebe630d1ae4527d4b7c14c2594dcf1bfc"
+    },
+    {
+      "id": "spell-enthrall",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.6691383219954647,
+      "rmsDb": -20.18,
+      "peakDb": -1.27,
+      "bytes": 40572,
+      "sha256": "b20a8f98bc2e377fb513364de4d73ac10fccb33f57c4f6d15ba51ab745e86e6b"
+    },
+    {
+      "id": "spell-find-steed",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.8650113378684807,
+      "rmsDb": -20.34,
+      "peakDb": -1.45,
+      "bytes": 42624,
+      "sha256": "797a8ef6d8278304f540ea089872890520f0c3a6a7b606d16e75ba05a5a2f446"
+    },
+    {
+      "id": "spell-find-traps",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.7681632653061223,
+      "rmsDb": -24.97,
+      "peakDb": -1.91,
+      "bytes": 31546,
+      "sha256": "e938b8eb86cb49d57f16cfc26903751e9e5405bb030deb736a4f0e84d57544b4"
+    },
+    {
+      "id": "spell-flame-blade",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "weapon",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.658934240362812,
+      "rmsDb": -28.12,
+      "peakDb": -1.96,
+      "bytes": 36141,
+      "sha256": "5fce96cc4838decddd90921c0b2cd6346f2e98b58b7483f1e4cacc3e50c24eab"
+    },
+    {
+      "id": "spell-flaming-sphere",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.7770748299319727,
+      "rmsDb": -23.25,
+      "peakDb": -2.09,
+      "bytes": 34558,
+      "sha256": "b14064494206056669d13dbdb84d83adbee6d661a1f694ea27323aee85069f9f"
+    },
+    {
+      "id": "spell-gentle-repose",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.987278911564626,
+      "rmsDb": -23.68,
+      "peakDb": -1.52,
+      "bytes": 23617,
+      "sha256": "386c93ae2dc24e2d388d29d12c5095dc393cc6090cc64eb8d6d121a7e3284cc6"
+    },
+    {
+      "id": "spell-gust-of-wind",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.7770521541950113,
+      "rmsDb": -22.12,
+      "peakDb": -1.76,
+      "bytes": 37726,
+      "sha256": "1225c5fbf904b4ca4bc7806480110409e694dbe4f1be70e3ed542badcd9ec41c"
+    },
+    {
+      "id": "spell-heat-metal",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.665170068027211,
+      "rmsDb": -23.84,
+      "peakDb": -2.27,
+      "bytes": 36253,
+      "sha256": "367e161ac6859ac06e4c690518b266895f3e3c792e23c1a2485c89bda8a0b9df"
+    },
+    {
+      "id": "spell-hold-person",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.915532879818594,
+      "rmsDb": -20.66,
+      "peakDb": -1.48,
+      "bytes": 41373,
+      "sha256": "896ff4a3a3ba6bbeb9dc32430d65320892c2eb32c5c5d010c2083bce7c6eb4a2"
+    },
+    {
+      "id": "spell-invisibility",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "invisible",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.720294784580499,
+      "rmsDb": -23.61,
+      "peakDb": -1.95,
+      "bytes": 36721,
+      "sha256": "a64046be57594adb9d73e40f6137e59701ffab6c11a69d160d864de7540874a0"
+    },
+    {
+      "id": "spell-knock",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8561678004535147,
+      "rmsDb": -21.83,
+      "peakDb": -1.88,
+      "bytes": 32719,
+      "sha256": "b6f662e05b0a57a8563930953a803b73240f630f40252840c84ccc044f497bbc"
+    },
+    {
+      "id": "spell-lesser-restoration",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.968458049886621,
+      "rmsDb": -24.82,
+      "peakDb": -1.28,
+      "bytes": 49717,
+      "sha256": "167b969bd39adaa2b90d60007c0216cdd06b9626f8a7e54055ddb5d5db3c35de"
+    },
+    {
+      "id": "spell-levitate",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.650544217687075,
+      "rmsDb": -25.24,
+      "peakDb": -1.68,
+      "bytes": 37833,
+      "sha256": "3a4e564ecb069104de017a2615fb2d60be87f04cf56625b93f44142663cc5158"
+    },
+    {
+      "id": "spell-locate-animals-or-plants",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "roots",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.827097505668934,
+      "rmsDb": -22.43,
+      "peakDb": -1.71,
+      "bytes": 30565,
+      "sha256": "2b3a55ee365420a57128013c3ba2923bc43e25e7b8b3b94851966eb343e938c8"
+    },
+    {
+      "id": "spell-locate-object",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.812698412698413,
+      "rmsDb": -21.8,
+      "peakDb": -1.51,
+      "bytes": 30506,
+      "sha256": "a25f0269ff4dd77f629c8979712677df7c84b724c504991576cdeb2e5f9b1bcf"
+    },
+    {
+      "id": "spell-magic-mouth",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8765079365079367,
+      "rmsDb": -22.34,
+      "peakDb": -1.46,
+      "bytes": 32278,
+      "sha256": "e240310d42624eb4cf923f1008fb78b2da6bd49f08686da46809bf8ee6c54251"
+    },
+    {
+      "id": "spell-magic-weapon",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "weapon",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.85156462585034,
+      "rmsDb": -24.87,
+      "peakDb": -1.86,
+      "bytes": 32964,
+      "sha256": "c99910dae6a6719b41fedf4b5f12f358360b5fc0e48888593882247cdd9b41ec"
+    },
+    {
+      "id": "spell-mind-spike",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.7029251700680272,
+      "rmsDb": -20.41,
+      "peakDb": -1.55,
+      "bytes": 40729,
+      "sha256": "0c6e8b477333b4d3cc66223ebbc4b8902d9aa316054d41e74898fda0b137e7a2"
+    },
+    {
+      "id": "spell-mirror-image",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "mirror",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.855079365079365,
+      "rmsDb": -23.65,
+      "peakDb": -1.95,
+      "bytes": 38147,
+      "sha256": "21a9f0ea16cd902689431b6c326469f2f9e8f0d58b8f2074dfaa00e40003c464"
+    },
+    {
+      "id": "spell-misty-step",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "teleport",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.651700680272109,
+      "rmsDb": -21.44,
+      "peakDb": -1.39,
+      "bytes": 44344,
+      "sha256": "07c4767c4e57837417757e7f1a69b415ecc0bb4955eee488cdfb43c54185b8e7"
+    },
+    {
+      "id": "spell-moonbeam",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.9865986394557824,
+      "rmsDb": -32.65,
+      "peakDb": -1.76,
+      "bytes": 34533,
+      "sha256": "89260f08fe7c2c2edeab0596c49732c92734ef8dbba60f513f61c590e9f87150"
+    },
+    {
+      "id": "spell-pass-without-trace",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.65859410430839,
+      "rmsDb": -24.27,
+      "peakDb": -1.83,
+      "bytes": 30988,
+      "sha256": "e07914f3a7e6229aa5cc10489a09c98cde82c920f411cbef3083bf883070673b"
+    },
+    {
+      "id": "spell-phantasmal-force",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.747891156462585,
+      "rmsDb": -22.81,
+      "peakDb": -1.95,
+      "bytes": 36589,
+      "sha256": "9d0aa97cfcf15f2d38e60285fd863d7c1b493b63900cff1e3ceaf2b43f97cfe2"
+    },
+    {
+      "id": "spell-prayer-of-healing",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.907482993197279,
+      "rmsDb": -26.68,
+      "peakDb": -1.93,
+      "bytes": 48465,
+      "sha256": "31c0d0eca7e566327d68c918a129aa0be21237ab37a90b128dd2822077b409fc"
+    },
+    {
+      "id": "spell-protection-from-poison",
+      "kind": "spell",
+      "family": "poison",
+      "behavior": "shield",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.6785260770975055,
+      "rmsDb": -26.52,
+      "peakDb": -1.86,
+      "bytes": 30209,
+      "sha256": "bacaf4b40482f9053cf670d7f5fb627d188a55584c2877770d02f9f5f9817385"
+    },
+    {
+      "id": "spell-ray-of-enfeeblement",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "missiles",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.868004535147392,
+      "rmsDb": -22.81,
+      "peakDb": -1.73,
+      "bytes": 25080,
+      "sha256": "9f3a562fba8e6dd2d42fc96a069a9b70289fd03ae1866ab7250e0d4efd10bc80"
+    },
+    {
+      "id": "spell-rope-trick",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.98312925170068,
+      "rmsDb": -22.23,
+      "peakDb": -1.47,
+      "bytes": 44551,
+      "sha256": "f3f3cb14619d9bdc15544710038678a3918c94d9a2cd2ed28fa4d0e74965bf85"
+    },
+    {
+      "id": "spell-scorching-ray",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fire-ray",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.742517006802721,
+      "rmsDb": -24.12,
+      "peakDb": -1.71,
+      "bytes": 38782,
+      "sha256": "68670fb872a7d7c98bdecf6acc8f93c6d601287ba698f9bb6a1adf73fc360d7d"
+    },
+    {
+      "id": "spell-see-invisibility",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "invisible",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.995510204081633,
+      "rmsDb": -22.17,
+      "peakDb": -1.86,
+      "bytes": 30577,
+      "sha256": "405dbc275825c033ec925d3c36cdeaff3bb93891281c32add416ac7629b875db"
+    },
+    {
+      "id": "spell-shatter",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "thunder",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8299773242630386,
+      "rmsDb": -23.72,
+      "peakDb": -2.01,
+      "bytes": 34343,
+      "sha256": "3f25491510696668728e19e5a055735b8b9dd5cf1c835938c4c7b1e72bcc9a5f"
+    },
+    {
+      "id": "spell-shining-smite",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.9172562358276646,
+      "rmsDb": -31.41,
+      "peakDb": -2.13,
+      "bytes": 34829,
+      "sha256": "a04ac4491e975586946cf1c8c32cb4cc355f252cfc30aa1de339d13407b597d0"
+    },
+    {
+      "id": "spell-silence",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.983968253968254,
+      "rmsDb": -20.28,
+      "peakDb": -1.54,
+      "bytes": 33706,
+      "sha256": "337dc5f01060b7e0b6567e7921557c539fad1c0d5264cb1d299f46fde5595740"
+    },
+    {
+      "id": "spell-spider-climb",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.806530612244898,
+      "rmsDb": -24.77,
+      "peakDb": -1.75,
+      "bytes": 37329,
+      "sha256": "7d889cfad1aa738900143e435cac75d183b2019aee3c0bb440cde263f8bd45db"
+    },
+    {
+      "id": "spell-spike-growth",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.901043083900227,
+      "rmsDb": -24.44,
+      "peakDb": -1.85,
+      "bytes": 30165,
+      "sha256": "1e336515646b395529322e2268870fa8eb211ce4640a039dc1edf205b0743518"
+    },
+    {
+      "id": "spell-spiritual-weapon",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "weapon",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8379138321995465,
+      "rmsDb": -24.01,
+      "peakDb": -1.86,
+      "bytes": 33250,
+      "sha256": "b971a293de8609ecf730b2630631f31e80094f647d1dcd32c20c417f3f1b5ad6"
+    },
+    {
+      "id": "spell-suggestion",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.8932879818594106,
+      "rmsDb": -19.34,
+      "peakDb": -1.55,
+      "bytes": 42488,
+      "sha256": "138c4feddb9f5af8e56690c3228e1665332b0b76a12e79e305a19e16a3238bf7"
+    },
+    {
+      "id": "spell-warding-bond",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.9458049886621316,
+      "rmsDb": -31.2,
+      "peakDb": -1.57,
+      "bytes": 30471,
+      "sha256": "b7a11c6914e45f6e6aa16945da584387ef6c8b9296f9419525681a73dbfafd32"
+    },
+    {
+      "id": "spell-web",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "web",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.680045351473923,
+      "rmsDb": -21.35,
+      "peakDb": -1.59,
+      "bytes": 32517,
+      "sha256": "b43e9c2b0e1d2bc3fa7d2ec5ce22fc9d6d7adfc8740890b5210dda0ac2412aea"
+    },
+    {
+      "id": "spell-zone-of-truth",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.732176870748299,
+      "rmsDb": -21.23,
+      "peakDb": -2.01,
+      "bytes": 30293,
+      "sha256": "4b12eaac5a99cda77abe71339f4dd6f4482de704bf51f51da9946cc9be667972"
+    },
+    {
+      "id": "spell-animate-dead",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "summon",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.8347392290249434,
+      "rmsDb": -23.82,
+      "peakDb": -1.43,
+      "bytes": 23304,
+      "sha256": "1840a494f2d846ee07423566a1f1b8b451f9a0203c14f5040109d8f188885472"
+    },
+    {
+      "id": "spell-beacon-of-hope",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.7358049886621316,
+      "rmsDb": -24.94,
+      "peakDb": -1.94,
+      "bytes": 48367,
+      "sha256": "575753da7ba27aa3b29a4266e6b8308ded1c4e043456ec721a6c8c37dba4ca2d"
+    },
+    {
+      "id": "spell-bestow-curse",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9958049886621314,
+      "rmsDb": -24.11,
+      "peakDb": -1.49,
+      "bytes": 23382,
+      "sha256": "446522078c8effdd4d3e7920434a6a4e90d554737f15030741b8664661e9b19e"
+    },
+    {
+      "id": "spell-blink",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.95015873015873,
+      "rmsDb": -21.92,
+      "peakDb": -1.6,
+      "bytes": 43066,
+      "sha256": "271062704bd9be73fb65c037901e6bae850521cc04d89f357076ba1b1b4dbb7c"
+    },
+    {
+      "id": "spell-call-lightning",
+      "kind": "spell",
+      "family": "lightning",
+      "behavior": "lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.787936507936508,
+      "rmsDb": -25.09,
+      "peakDb": -1.98,
+      "bytes": 31104,
+      "sha256": "19b5bdec63bfd45698a97a0f3354811481958fc1d150bbf56cf42eed983f8b76"
+    },
+    {
+      "id": "spell-clairvoyance",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8194331065759637,
+      "rmsDb": -24.95,
+      "peakDb": -1.85,
+      "bytes": 29589,
+      "sha256": "fac6495eac11ec3785dd0a0e7a95a6b344e93d208248049e5d283ad243e2542f"
+    },
+    {
+      "id": "spell-conjure-animals",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "summon",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9073015873015873,
+      "rmsDb": -25.15,
+      "peakDb": -1.47,
+      "bytes": 30104,
+      "sha256": "7761aa28757d5adf2d73c35a9dae7eb4422bbaf4f90366ab28226abd1c326384"
+    },
+    {
+      "id": "spell-counterspell",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9728344671201814,
+      "rmsDb": -24.07,
+      "peakDb": -1.84,
+      "bytes": 35246,
+      "sha256": "674f069bc3b6d93d6a515d0ad03f5e8eda79218c70c294af6e0e728fdcf46d35"
+    },
+    {
+      "id": "spell-create-food-and-water",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "water",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.947437641723356,
+      "rmsDb": -21.3,
+      "peakDb": -1.98,
+      "bytes": 33093,
+      "sha256": "ff7fa669fd1577119569ebbe692f142bd90ba0ad7d69c07d0d9cdc69d6d42fa5"
+    },
+    {
+      "id": "spell-daylight",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.6674603174603173,
+      "rmsDb": -27.48,
+      "peakDb": -1.83,
+      "bytes": 34737,
+      "sha256": "a24a7f8688b04347a9e99c41388b402638e1896796411eab3df13557bd54a4ac"
+    },
+    {
+      "id": "spell-dispel-magic",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9626303854875284,
+      "rmsDb": -22.52,
+      "peakDb": -1.63,
+      "bytes": 34412,
+      "sha256": "29a506310aad46ff75e4233e408fc0f3f9f3a1c0a26460b31fed93fc1b1cbc13"
+    },
+    {
+      "id": "spell-fear",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.9614965986394557,
+      "rmsDb": -19.98,
+      "peakDb": -1.3,
+      "bytes": 42838,
+      "sha256": "f9cb636bf8edbdcaf4620854ee1743767ff5de3902aa358d8768248a250fab42"
+    },
+    {
+      "id": "spell-fireball",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fireball",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.9449886621315193,
+      "rmsDb": -28.03,
+      "peakDb": -1.68,
+      "bytes": 39152,
+      "sha256": "ba20558a58be3e49531dccfa43802c5c5d4cdce95d9836e9fe83034bd40d796a"
+    },
+    {
+      "id": "spell-fly",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.940249433106576,
+      "rmsDb": -24.79,
+      "peakDb": -1.87,
+      "bytes": 37596,
+      "sha256": "3bf1448fe7db6d8a12b9ae3d296a8236d71b558d3f71238c71c8ef3e692a8e84"
+    },
+    {
+      "id": "spell-gaseous-form",
+      "kind": "spell",
+      "family": "water",
+      "behavior": "transmute",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.807687074829932,
+      "rmsDb": -23.6,
+      "peakDb": -1.79,
+      "bytes": 45487,
+      "sha256": "c715cca9ba3bc8d018fd12963f5008df3721740b56454912a03582f12e2d84e7"
+    },
+    {
+      "id": "spell-glyph-of-warding",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "glyph",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9439909297052154,
+      "rmsDb": -24.77,
+      "peakDb": -1.74,
+      "bytes": 35385,
+      "sha256": "2b42b5288e5eef94e25901d612cab8340b2e05f68a05c0060984dd3b18879cff"
+    },
+    {
+      "id": "spell-haste",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.768185941043084,
+      "rmsDb": -24.71,
+      "peakDb": -1.68,
+      "bytes": 37274,
+      "sha256": "5df81ba9e726bb99fde31d46a4d3e5bd6997b94bec3353862d1ee282c1b045da"
+    },
+    {
+      "id": "spell-hypnotic-pattern",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.833582766439909,
+      "rmsDb": -23.76,
+      "peakDb": -1.95,
+      "bytes": 38601,
+      "sha256": "2e945fb82cdf1a4cabed64fbe8f62ccef993c409f9c11b64709119884e90a993"
+    },
+    {
+      "id": "spell-lightning-bolt",
+      "kind": "spell",
+      "family": "lightning",
+      "behavior": "lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.89968253968254,
+      "rmsDb": -24.37,
+      "peakDb": -3.37,
+      "bytes": 33326,
+      "sha256": "d68ea421c7fe8e4abc748706b184f23eef33d6e2f3e510e427a460d1525d830b"
+    },
+    {
+      "id": "spell-magic-circle",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "glyph",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.769251700680272,
+      "rmsDb": -31.0,
+      "peakDb": -1.57,
+      "bytes": 30456,
+      "sha256": "2b51d6e27933db22370efa1d2d1a69682069f8e8b5720c10452c5c1c9ab2cc78"
+    },
+    {
+      "id": "spell-major-image",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion-image",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.765986394557823,
+      "rmsDb": -22.79,
+      "peakDb": -1.95,
+      "bytes": 36444,
+      "sha256": "da22ab91ee7d6f605bb7949d3ed3cad8b30686d37cb49d2cf3e73bf2736045b8"
+    },
+    {
+      "id": "spell-mass-healing-word",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.982063492063492,
+      "rmsDb": -25.1,
+      "peakDb": -1.56,
+      "bytes": 50809,
+      "sha256": "2bd6e58c939a400d13c259b4ad32cbeca0d954a133b1617e79adccd0f8404bdf"
+    },
+    {
+      "id": "spell-meld-into-stone",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.6729478458049885,
+      "rmsDb": -24.48,
+      "peakDb": -1.48,
+      "bytes": 33183,
+      "sha256": "6b797abc94ac1bbe7d4158541d686e2edcff38d442da93ea108757ffe54fb16f"
+    },
+    {
+      "id": "spell-nondetection",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.930748299319728,
+      "rmsDb": -31.18,
+      "peakDb": -1.57,
+      "bytes": 30468,
+      "sha256": "0f05f82c9e2c4517058f7dc53dd84bbeed23348c197174c1a0102471893a0864"
+    },
+    {
+      "id": "spell-phantom-steed",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.673922902494331,
+      "rmsDb": -21.96,
+      "peakDb": -1.58,
+      "bytes": 40463,
+      "sha256": "89aa54347c9470869b7f9d4d5ad61440864d419e2b34201d94f1d873a3083c98"
+    },
+    {
+      "id": "spell-plant-growth",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.8361678004535147,
+      "rmsDb": -27.85,
+      "peakDb": -1.07,
+      "bytes": 29644,
+      "sha256": "cbb31d681974c1dddb1e4d98368678583da0863b35cf9f915e2047ba34e67c44"
+    },
+    {
+      "id": "spell-protection-from-energy",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.9793197278911565,
+      "rmsDb": -31.24,
+      "peakDb": -1.57,
+      "bytes": 30472,
+      "sha256": "c2c4298e5548b3a927e39b4903425412f4b8462ffec1583b253501159e973e12"
+    },
+    {
+      "id": "spell-remove-curse",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8062585034013607,
+      "rmsDb": -31.04,
+      "peakDb": -1.57,
+      "bytes": 30459,
+      "sha256": "bbeaf79e86c50b46618b8f82e783313176a1f42e285cb45dda41de25ac260394"
+    },
+    {
+      "id": "spell-revivify",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.939546485260771,
+      "rmsDb": -26.02,
+      "peakDb": -1.88,
+      "bytes": 49278,
+      "sha256": "54aa2095f8652a65bb0a1bd4b71fe1f0b40d78ef388ecba1a15f1ebe6a353684"
+    },
+    {
+      "id": "spell-sending",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.7999773242630384,
+      "rmsDb": -24.57,
+      "peakDb": -1.64,
+      "bytes": 29732,
+      "sha256": "00a998bd06ca96f9cd3c99ee5bbf6a80f613dc9cb0a1e5b507e4de464db4d497"
+    },
+    {
+      "id": "spell-sleet-storm",
+      "kind": "spell",
+      "family": "frost",
+      "behavior": "fog",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.7563038548752834,
+      "rmsDb": -33.4,
+      "peakDb": -1.54,
+      "bytes": 34762,
+      "sha256": "07ef61a55ae1cbeba521efa2d51bdf18981c2be43c778efc6a48906851c10c39"
+    },
+    {
+      "id": "spell-slow",
+      "kind": "spell",
+      "family": "time",
+      "behavior": "time",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-magic-2",
+        "sfx-metallatch"
+      ],
+      "duration": 3.677687074829932,
+      "rmsDb": -34.54,
+      "peakDb": -2.64,
+      "bytes": 32405,
+      "sha256": "3e69de8dc6e73b31f5d5283a613a9890049c3601716457d6116306cafede61e8"
+    },
+    {
+      "id": "spell-speak-with-dead",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "drain",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.72297052154195,
+      "rmsDb": -21.72,
+      "peakDb": -1.08,
+      "bytes": 30159,
+      "sha256": "1c84d866f7f5d65329f7d0074d76891ba125ae64bcb26e661611a6042ad0f75f"
+    },
+    {
+      "id": "spell-speak-with-plants",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9457596371882087,
+      "rmsDb": -24.98,
+      "peakDb": -1.61,
+      "bytes": 30595,
+      "sha256": "0b7f973147a32b9dcf2f7f21c267b5da93f020974f237fcbff33be8f89d8f272"
+    },
+    {
+      "id": "spell-spirit-guardians",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.8592743764172335,
+      "rmsDb": -32.59,
+      "peakDb": -1.77,
+      "bytes": 36572,
+      "sha256": "1f3500126fa19f5d7975a8d28e78b9f6e4be916142e73dc3e4348f699e321949"
+    },
+    {
+      "id": "spell-stinking-cloud",
+      "kind": "spell",
+      "family": "poison",
+      "behavior": "fog",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.934807256235828,
+      "rmsDb": -23.92,
+      "peakDb": -1.67,
+      "bytes": 30280,
+      "sha256": "2cb721e7f2cc368776a0f233959614d22559f5fa5fc1f334e95a789961f645a8"
+    },
+    {
+      "id": "spell-tiny-hut",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.727301587301587,
+      "rmsDb": -30.95,
+      "peakDb": -1.57,
+      "bytes": 30452,
+      "sha256": "0bd1bcc9fee92448314dd969c2c6edec73738f49acfb3bc1ee7ef1ec0572fdea"
+    },
+    {
+      "id": "spell-tongues",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8439455782312923,
+      "rmsDb": -25.47,
+      "peakDb": -2.09,
+      "bytes": 31227,
+      "sha256": "b689374402e7a95a5401700cd7982e348fef74bae1300d67e32151f3171f8079"
+    },
+    {
+      "id": "spell-vampiric-touch",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9670748299319727,
+      "rmsDb": -23.6,
+      "peakDb": -1.56,
+      "bytes": 23929,
+      "sha256": "60bdf84e9c70d2c03104a0f041b3429b9aa4d1b368478c6958b9bd26690a93d2"
+    },
+    {
+      "id": "spell-water-breathing",
+      "kind": "spell",
+      "family": "water",
+      "behavior": "water",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.804671201814059,
+      "rmsDb": -25.71,
+      "peakDb": -1.49,
+      "bytes": 45102,
+      "sha256": "3aab3f8165151712d614188782c3ed2b1958d32050ad66a3c1392d9ca2e2097b"
+    },
+    {
+      "id": "spell-water-walk",
+      "kind": "spell",
+      "family": "water",
+      "behavior": "water",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.803015873015873,
+      "rmsDb": -24.07,
+      "peakDb": -1.54,
+      "bytes": 45204,
+      "sha256": "454f510d93504bc418d6fc4ef21004d042d223ad8a7c08deb534437f6b5f55c9"
+    },
+    {
+      "id": "spell-wind-wall",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.7635374149659864,
+      "rmsDb": -26.16,
+      "peakDb": -1.64,
+      "bytes": 37098,
+      "sha256": "c1f55a5c10b32162ce25844982c3d8b6d2139de6dec8c1fd1d6ef8c2897b43c5"
+    },
+    {
+      "id": "spell-arcane-eye",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.697845804988662,
+      "rmsDb": -24.53,
+      "peakDb": -1.81,
+      "bytes": 30017,
+      "sha256": "6f452f638e3600faf815a774c3acd935aaec5ac243f6a4d1c982e158d4dfceca"
+    },
+    {
+      "id": "spell-aura-of-life",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.811496598639456,
+      "rmsDb": -25.53,
+      "peakDb": -1.73,
+      "bytes": 48893,
+      "sha256": "deec08a7dc8869083e2265963a95fa8709f07bbdfe54a29fe1e85dca8d5d3afe"
+    },
+    {
+      "id": "spell-banishment",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.786485260770975,
+      "rmsDb": -21.3,
+      "peakDb": -1.4,
+      "bytes": 39680,
+      "sha256": "13544db54d9a7a6fae8543aa9dd91b92620c5450f1dc6793c0f9bd3f55f2381f"
+    },
+    {
+      "id": "spell-black-tentacles",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.70562358276644,
+      "rmsDb": -24.06,
+      "peakDb": -1.79,
+      "bytes": 34840,
+      "sha256": "87a926e54038fb52c51301675ceae9c9c223fab7d406efce4a09f677ecf9a015"
+    },
+    {
+      "id": "spell-blight",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.8874603174603175,
+      "rmsDb": -24.77,
+      "peakDb": -1.64,
+      "bytes": 23203,
+      "sha256": "69389641e395005d917f16ffde24181afae8b7b8b27f747fea7e1dd8f1db06d5"
+    },
+    {
+      "id": "spell-charm-monster",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.6558503401360545,
+      "rmsDb": -18.78,
+      "peakDb": -1.85,
+      "bytes": 41919,
+      "sha256": "dc4433f12574b668d54cc5371ac549152bb48b324928e9f40b2952d5e334974d"
+    },
+    {
+      "id": "spell-compulsion",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.797936507936508,
+      "rmsDb": -20.77,
+      "peakDb": -1.52,
+      "bytes": 41968,
+      "sha256": "c8f4067a2870ed02c041fb1fe25efd038c5ae9a492b58aadee707b502d43adad"
+    },
+    {
+      "id": "spell-confusion",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.9846938775510203,
+      "rmsDb": -21.25,
+      "peakDb": -1.39,
+      "bytes": 41211,
+      "sha256": "a0c74375e0779651842699d8271a07babb5f1c59ac24fa8fa9fe901bb334afd9"
+    },
+    {
+      "id": "spell-conjure-minor-elementals",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.818095238095238,
+      "rmsDb": -20.31,
+      "peakDb": -1.29,
+      "bytes": 42178,
+      "sha256": "580e3f022c19ebb28e38a24f0e68222e14d1b0dadc274868a9409c96fb363c53"
+    },
+    {
+      "id": "spell-conjure-woodland-beings",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "summon",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.802380952380952,
+      "rmsDb": -22.75,
+      "peakDb": -1.6,
+      "bytes": 29904,
+      "sha256": "77c9051122a192ded6345f920f01d5e791616756a8a176e37b88bf38a6e13f81"
+    },
+    {
+      "id": "spell-control-water",
+      "kind": "spell",
+      "family": "water",
+      "behavior": "water",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.944421768707483,
+      "rmsDb": -23.16,
+      "peakDb": -0.95,
+      "bytes": 45489,
+      "sha256": "fb98d8458e5075be7fb8a02d576700007c9b6978539175f490ec348f62c031e2"
+    },
+    {
+      "id": "spell-death-ward",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9986621315192745,
+      "rmsDb": -24.73,
+      "peakDb": -1.55,
+      "bytes": 23388,
+      "sha256": "863a45827d7b69cc9dfc896f92a67089f4da188c709dc376f4c882d89ed114ea"
+    },
+    {
+      "id": "spell-dimension-door",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "teleport",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.705034013605442,
+      "rmsDb": -21.77,
+      "peakDb": -1.68,
+      "bytes": 41730,
+      "sha256": "bad567e2a940b0a88d5b3e6fcde707b757bc50986ffc4053c8a24b6d3a51befd"
+    },
+    {
+      "id": "spell-divination",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8913832199546485,
+      "rmsDb": -24.17,
+      "peakDb": -2.07,
+      "bytes": 31056,
+      "sha256": "501c4351343cf7044823a927fb42f192131bc6f1eb924acdc490d339ff9159dc"
+    },
+    {
+      "id": "spell-dominate-beast",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.7740589569161,
+      "rmsDb": -18.78,
+      "peakDb": -1.46,
+      "bytes": 42107,
+      "sha256": "a3414be396462fc6ff5b1678c796913eaba5de73f3da2754b38e15e2ba314a2a"
+    },
+    {
+      "id": "spell-fabricate",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.8087301587301585,
+      "rmsDb": -24.45,
+      "peakDb": -1.37,
+      "bytes": 33803,
+      "sha256": "21363f544f3e12fa9fcc22d3e9a01977599026dafc900e3af07f0a8007fcbb0a"
+    },
+    {
+      "id": "spell-faithful-hound",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.784081632653061,
+      "rmsDb": -31.02,
+      "peakDb": -1.57,
+      "bytes": 30458,
+      "sha256": "d3fdf1f67866c4622604afe17ecc645e2f3947f5627d2e6c76ca80e22d8fcac0"
+    },
+    {
+      "id": "spell-fire-shield",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "shield",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.8067120181405896,
+      "rmsDb": -32.9,
+      "peakDb": -1.92,
+      "bytes": 33126,
+      "sha256": "053c825949f0e2a7bb46312726093b2be821373ebfc897aa388898df614b82fb"
+    },
+    {
+      "id": "spell-freedom-of-movement",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.9587528344671203,
+      "rmsDb": -26.42,
+      "peakDb": -1.69,
+      "bytes": 37596,
+      "sha256": "05360e59f67698b13e4d4eac320b0aa0430c3cd5b3f80a879166be0cc907d1d7"
+    },
+    {
+      "id": "spell-giant-insect",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.7814285714285716,
+      "rmsDb": -25.33,
+      "peakDb": -1.55,
+      "bytes": 29934,
+      "sha256": "f9f01de604f7d346aa0712e6954b6a9fc977b12553522a055c92f07b2e794bdd"
+    },
+    {
+      "id": "spell-greater-invisibility",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "invisible",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.9302947845804987,
+      "rmsDb": -21.81,
+      "peakDb": -1.95,
+      "bytes": 36363,
+      "sha256": "da315fd2a628d5245c976994516d503b3189b25e59d760a96110c1607f1de899"
+    },
+    {
+      "id": "spell-guardian-of-faith",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.7436961451247166,
+      "rmsDb": -32.52,
+      "peakDb": -2.12,
+      "bytes": 36360,
+      "sha256": "4a1565ada05baa96f1315a20e7341f27f8946b080bf3c7d2841f76d062b19ad9"
+    },
+    {
+      "id": "spell-hallucinatory-terrain",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.952562358276644,
+      "rmsDb": -20.85,
+      "peakDb": -1.95,
+      "bytes": 35960,
+      "sha256": "30115ab5d7cb37dd844009a214702698c8a5ea860fe771753a740646aa558b81"
+    },
+    {
+      "id": "spell-ice-storm",
+      "kind": "spell",
+      "family": "frost",
+      "behavior": "water",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.9993650793650795,
+      "rmsDb": -33.71,
+      "peakDb": -1.53,
+      "bytes": 34531,
+      "sha256": "5a5a7b838a642ff452c106f0abb4b98292a575180892d90de295a033063de134"
+    },
+    {
+      "id": "spell-locate-creature",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.7748526077097506,
+      "rmsDb": -22.93,
+      "peakDb": -1.57,
+      "bytes": 30353,
+      "sha256": "f2ea96ad837231abc13a3adec5a9ed83e7aa3a470b065a121aefcda4cf16a205"
+    },
+    {
+      "id": "spell-phantasmal-killer",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.729863945578231,
+      "rmsDb": -18.82,
+      "peakDb": -2.08,
+      "bytes": 41443,
+      "sha256": "2eb251099b4ac0df72e706256a88bacaf4b90709f5b963168b6f5021ed717b73"
+    },
+    {
+      "id": "spell-polymorph",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "transmute",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.849092970521542,
+      "rmsDb": -21.82,
+      "peakDb": -2.46,
+      "bytes": 32850,
+      "sha256": "9a4e112a5dfd6b41643a3b787327222c43d73bb62725e71e3e492cd8705431bd"
+    },
+    {
+      "id": "spell-private-sanctum",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.7034467120181405,
+      "rmsDb": -30.92,
+      "peakDb": -1.57,
+      "bytes": 30449,
+      "sha256": "372b011cdf72e7428c0fe8f8f7206b584235e64186a1fa128812c8940619ab92"
+    },
+    {
+      "id": "spell-resilient-sphere",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.9201360544217687,
+      "rmsDb": -23.39,
+      "peakDb": -1.49,
+      "bytes": 33461,
+      "sha256": "7aa0ff105f0b1d25433d0b2e1ec8e3c6632fed12b7ce126c7ae4923e98bfe354"
+    },
+    {
+      "id": "spell-secret-chest",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.7436961451247166,
+      "rmsDb": -20.92,
+      "peakDb": -1.52,
+      "bytes": 44362,
+      "sha256": "dd78a12f8bc731bb11dcbcbde0ea37b911386caf78441ce7a0157b24dd2a8de0"
+    },
+    {
+      "id": "spell-stone-shape",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.729705215419501,
+      "rmsDb": -23.85,
+      "peakDb": -1.47,
+      "bytes": 31923,
+      "sha256": "6acddd488c6f1e1f9c3c996b809c4eafc9a2e4c71e0f6ebb6f47ac799db605c3"
+    },
+    {
+      "id": "spell-stoneskin",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "petrify",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.7701133786848073,
+      "rmsDb": -23.7,
+      "peakDb": -1.42,
+      "bytes": 32274,
+      "sha256": "02c1827096a708201a28574e56a8c8755abb8ca94d841d239d9058755417cbaf"
+    },
+    {
+      "id": "spell-vitriolic-sphere",
+      "kind": "spell",
+      "family": "acid",
+      "behavior": "acid",
+      "sources": [
+        "amb-river",
+        "sfx-magic-4",
+        "sfx-metalpot2"
+      ],
+      "duration": 3.6867573696145124,
+      "rmsDb": -23.45,
+      "peakDb": -1.51,
+      "bytes": 31799,
+      "sha256": "6fcb8a36d751e0865ab80667b756ba611b15c30b43a28380e0c89cc836b34f11"
+    },
+    {
+      "id": "spell-wall-of-fire",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.959092970521542,
+      "rmsDb": -29.08,
+      "peakDb": -1.85,
+      "bytes": 35696,
+      "sha256": "807e855a5a6db8cd2a4421e6d2aff3df9cf3b9684230ceefd2d17d402dac0f8e"
+    },
+    {
+      "id": "spell-animate-objects",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8329478458049886,
+      "rmsDb": -21.24,
+      "peakDb": -1.62,
+      "bytes": 33563,
+      "sha256": "1554db43031e7f721d6356d53cdbb3329d1e8b5c88d13d72d37be7086ae9a55c"
+    },
+    {
+      "id": "spell-antilife-shell",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8423809523809522,
+      "rmsDb": -31.08,
+      "peakDb": -1.57,
+      "bytes": 30460,
+      "sha256": "d8b41a05b1d764acbe865298413c97f3f3a64404bcae161fb88bf9960d3e8576"
+    },
+    {
+      "id": "spell-arcane-hand",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8548979591836736,
+      "rmsDb": -24.38,
+      "peakDb": -1.55,
+      "bytes": 34827,
+      "sha256": "790a36700ea3d2ea2f3c88781805209e9c341f72824028ad67b8145833b63644"
+    },
+    {
+      "id": "spell-awaken",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.9529931972789116,
+      "rmsDb": -24.8,
+      "peakDb": -1.96,
+      "bytes": 30316,
+      "sha256": "529a4a6459171a79201b831f4b968ffd84087d5a4b358f625a80c4097cd40856"
+    },
+    {
+      "id": "spell-cloudkill",
+      "kind": "spell",
+      "family": "poison",
+      "behavior": "fog",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.6566439909297053,
+      "rmsDb": -24.56,
+      "peakDb": -1.37,
+      "bytes": 31508,
+      "sha256": "2e3aa0138d32b4746593166cc2cf4c828c3bdf13fb38cce811913866f10c6f91"
+    },
+    {
+      "id": "spell-commune",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.923174603174603,
+      "rmsDb": -24.88,
+      "peakDb": -1.93,
+      "bytes": 30537,
+      "sha256": "504b55171ee31d6160bfd376e36f28c5ac07b1c32f19537643cc2d7adc33494b"
+    },
+    {
+      "id": "spell-commune-with-nature",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "divination",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.728730158730159,
+      "rmsDb": -24.38,
+      "peakDb": -1.57,
+      "bytes": 30745,
+      "sha256": "c200ad45f04a4ec32742dfe2a27d742e358fff799fc36dc46f4a7dafaa9d55f6"
+    },
+    {
+      "id": "spell-cone-of-cold",
+      "kind": "spell",
+      "family": "frost",
+      "behavior": "frost",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.9826303854875285,
+      "rmsDb": -33.66,
+      "peakDb": -1.97,
+      "bytes": 34513,
+      "sha256": "8c503bbaa2cb582e47ac497a3a3ece2555fb28eee5693b99abf166f85052e5fd"
+    },
+    {
+      "id": "spell-conjure-elemental",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.7789115646258504,
+      "rmsDb": -19.98,
+      "peakDb": -1.51,
+      "bytes": 43566,
+      "sha256": "d45ee95cfd49c4505a6503df351c8f6a984c820624316a283d37c7efd5ea51f7"
+    },
+    {
+      "id": "spell-contact-other-plane",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.936417233560091,
+      "rmsDb": -24.58,
+      "peakDb": -1.53,
+      "bytes": 31436,
+      "sha256": "6c8eeb26888a2d7be4b2f6444736db0aa5a34c291e1c72279c01d206802d7e47"
+    },
+    {
+      "id": "spell-contagion",
+      "kind": "spell",
+      "family": "poison",
+      "behavior": "poison",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth1",
+        "sfx-magic-4"
+      ],
+      "duration": 3.8308843537414967,
+      "rmsDb": -24.7,
+      "peakDb": -1.58,
+      "bytes": 30367,
+      "sha256": "a1ea141e756bfec4356855d5ade9b7a327f70ad953a36824e42b28e215986530"
+    },
+    {
+      "id": "spell-creation",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.7934920634920637,
+      "rmsDb": -25.44,
+      "peakDb": -1.51,
+      "bytes": 34199,
+      "sha256": "49ae84959bd17a0a486a3612b5f3270223ce53663d29bd25b5fe77a90603a5b4"
+    },
+    {
+      "id": "spell-dispel-evil-and-good",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.7685034013605443,
+      "rmsDb": -31.0,
+      "peakDb": -1.57,
+      "bytes": 30456,
+      "sha256": "7395b541388224d8bb65411cc08ff53413c284ffd7a352816842971cc0c26ceb"
+    },
+    {
+      "id": "spell-dominate-person",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.674467120181406,
+      "rmsDb": -18.79,
+      "peakDb": -1.74,
+      "bytes": 42055,
+      "sha256": "cd19b0c941290d3e07703bfdc0d6c3a82972c0c9d82279eaeb3b4e67ad7ffc3e"
+    },
+    {
+      "id": "spell-dream",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.7032199546485263,
+      "rmsDb": -24.7,
+      "peakDb": -2.03,
+      "bytes": 29688,
+      "sha256": "bedae9390dccca0cc48fbf34c709a2d1584d6802ee744669a4a9aae2310e3444"
+    },
+    {
+      "id": "spell-flame-strike",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.978956916099773,
+      "rmsDb": -23.92,
+      "peakDb": -1.7,
+      "bytes": 38020,
+      "sha256": "088aba37786d9e61803593c36145fe49b536d4e8cd5d7e3417a49a2888065d9e"
+    },
+    {
+      "id": "spell-geas",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.7791836734693875,
+      "rmsDb": -23.04,
+      "peakDb": -2.33,
+      "bytes": 34081,
+      "sha256": "8335636b09daf8ad04b8557782f67297c3b9ba721b62b18f444f42a272c7a4b7"
+    },
+    {
+      "id": "spell-greater-restoration",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.7751700680272107,
+      "rmsDb": -24.66,
+      "peakDb": -1.77,
+      "bytes": 49595,
+      "sha256": "d79ea7bdd89b5e3bdefccc880c024d106a512b73935113b1da115ec39839c4c4"
+    },
+    {
+      "id": "spell-hallow",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.6965986394557824,
+      "rmsDb": -30.92,
+      "peakDb": -1.57,
+      "bytes": 30450,
+      "sha256": "8e3b1b3fa31b4a4e375e4c6a2f4a582b8a51aba75b9f1d1faf635190d6c012b2"
+    },
+    {
+      "id": "spell-hold-monster",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.73265306122449,
+      "rmsDb": -19.01,
+      "peakDb": -1.42,
+      "bytes": 42701,
+      "sha256": "8af569508bfb38b5841e832c026715eb4f65dd54d66c1ae4aa4a27173d1f0812"
+    },
+    {
+      "id": "spell-insect-plague",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.792267573696145,
+      "rmsDb": -25.31,
+      "peakDb": -1.62,
+      "bytes": 30143,
+      "sha256": "fa66c490caf35b5b828404bd07a6066978245e841ad315992007d9895d220a9d"
+    },
+    {
+      "id": "spell-legend-lore",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.735215419501134,
+      "rmsDb": -25.04,
+      "peakDb": -1.84,
+      "bytes": 30732,
+      "sha256": "8dc166a125e5a347aef62c896f43a21c86ba5f8122d7abd6b529ddd3b09b39a7"
+    },
+    {
+      "id": "spell-mass-cure-wounds",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.758140589569161,
+      "rmsDb": -24.91,
+      "peakDb": -1.34,
+      "bytes": 50386,
+      "sha256": "d5e9627fd06c7657434e1a1e1084d6cf5088401a13d2d0228bdd0d75449d59e0"
+    },
+    {
+      "id": "spell-mislead",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "double",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.717528344671202,
+      "rmsDb": -23.65,
+      "peakDb": -1.95,
+      "bytes": 38442,
+      "sha256": "ea2f1f3c41319241f06565f0e15291560db438a4fb810a0012e7531ee13ce683"
+    },
+    {
+      "id": "spell-modify-memory",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.6536961451247167,
+      "rmsDb": -18.77,
+      "peakDb": -2.23,
+      "bytes": 41664,
+      "sha256": "eae61ea3f23ec8c040941366365c5184cd45ac4530e6f7d88ac87fcd20bbb637"
+    },
+    {
+      "id": "spell-passwall",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "portal",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.9180952380952383,
+      "rmsDb": -25.59,
+      "peakDb": -1.3,
+      "bytes": 32153,
+      "sha256": "102a94a63835e59b9e00e39100901f8bd6c8fc63855ad7f3e977fcb366321e06"
+    },
+    {
+      "id": "spell-planar-binding",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.762312925170068,
+      "rmsDb": -23.1,
+      "peakDb": -1.84,
+      "bytes": 33500,
+      "sha256": "8f1af4fd14dcd62369029df51147b2a57c03cc2221fc86e87fd639bec173ac81"
+    },
+    {
+      "id": "spell-raise-dead",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.762471655328798,
+      "rmsDb": -25.6,
+      "peakDb": -1.82,
+      "bytes": 48712,
+      "sha256": "ffa8cb4ac63b054cc62827883a7394c39befe0add50783e50459cecf42abb8aa"
+    },
+    {
+      "id": "spell-reincarnate",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.8233560090702947,
+      "rmsDb": -25.9,
+      "peakDb": -1.34,
+      "bytes": 48446,
+      "sha256": "ddc080e91b727353d93ed8356ade2d54ffe28442c4f98652c2751ea01d907dc9"
+    },
+    {
+      "id": "spell-scrying",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.656190476190476,
+      "rmsDb": -21.52,
+      "peakDb": -1.72,
+      "bytes": 30114,
+      "sha256": "0acae7ea11399768f69b4a269aadbeddd3fbd84d3877ced54f99fc0d26f36e2d"
+    },
+    {
+      "id": "spell-seeming",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.982312925170068,
+      "rmsDb": -23.95,
+      "peakDb": -1.95,
+      "bytes": 38454,
+      "sha256": "cff63849f6e699ca7ceee70866402d5555ec3200412084e988aca3295ff7535f"
+    },
+    {
+      "id": "spell-summon-dragon",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.954013605442177,
+      "rmsDb": -22.49,
+      "peakDb": -1.21,
+      "bytes": 42014,
+      "sha256": "a6d9a845779c56d5a75a6782e3844cd670f2143ad0b859d11a196e71cb276923"
+    },
+    {
+      "id": "spell-telekinesis",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.6936961451247163,
+      "rmsDb": -21.0,
+      "peakDb": -2.22,
+      "bytes": 32725,
+      "sha256": "87e4672e34f6bb3b695c13b252cd0fa3752d2cabf8a1bf7281fe4f696f6a813b"
+    },
+    {
+      "id": "spell-telepathic-bond",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.970793650793651,
+      "rmsDb": -25.32,
+      "peakDb": -2.13,
+      "bytes": 29958,
+      "sha256": "37b77e43254bbc43b8081ef0807e3327da10b8e027c29d26187cf2ad834b09be"
+    },
+    {
+      "id": "spell-teleportation-circle",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.6646031746031746,
+      "rmsDb": -21.25,
+      "peakDb": -1.54,
+      "bytes": 44037,
+      "sha256": "37dee4435f7864984aca86126c74e96a37d67d2f4881ce1e466b52ff4502fe29"
+    },
+    {
+      "id": "spell-tree-stride",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.7775736961451245,
+      "rmsDb": -24.59,
+      "peakDb": -1.86,
+      "bytes": 29991,
+      "sha256": "87384ff7b4b91fba7e306be1e228a5c2c394b27c446f5f2696cbfd26f6e80e73"
+    },
+    {
+      "id": "spell-wall-of-force",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.679138321995465,
+      "rmsDb": -23.23,
+      "peakDb": -2.17,
+      "bytes": 34036,
+      "sha256": "6b9c8479d59e3f38e6ca8fa2b46880a2ed8a69726e63c2eb7d0fd1b664470221"
+    },
+    {
+      "id": "spell-wall-of-stone",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.826031746031746,
+      "rmsDb": -24.85,
+      "peakDb": -1.72,
+      "bytes": 33587,
+      "sha256": "acf4b2cbd386dfc820fd3f51bcd30e6469f612f38cfb87dffc1feccf60fb790d"
+    },
+    {
+      "id": "spell-blade-barrier",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "weapon",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8957369614512474,
+      "rmsDb": -23.12,
+      "peakDb": -2.0,
+      "bytes": 33655,
+      "sha256": "43f018fc6b7ce5de1b1a14ecf5c230c45efbd9c8815f5e6750a6f5273ac43797"
+    },
+    {
+      "id": "spell-chain-lightning",
+      "kind": "spell",
+      "family": "lightning",
+      "behavior": "lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8076190476190477,
+      "rmsDb": -24.63,
+      "peakDb": -1.46,
+      "bytes": 31590,
+      "sha256": "8b36de09030d8054b86053527758d25ce856c144476cb1c1489b2aa011ad74d7"
+    },
+    {
+      "id": "spell-circle-of-death",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.8925850340136052,
+      "rmsDb": -24.41,
+      "peakDb": -1.58,
+      "bytes": 23866,
+      "sha256": "88d9307d4503fda323f92d4698cca8cbe377534334a535fb438f1c84b6b483a5"
+    },
+    {
+      "id": "spell-conjure-fey",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.817437641723356,
+      "rmsDb": -21.11,
+      "peakDb": -1.58,
+      "bytes": 43746,
+      "sha256": "38b6b4d542b9767fd9de58963eed5d04038936a906c4bf1b60353117975ebb14"
+    },
+    {
+      "id": "spell-contingency",
+      "kind": "spell",
+      "family": "time",
+      "behavior": "time",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-magic-2",
+        "sfx-metallatch"
+      ],
+      "duration": 3.8156462585034014,
+      "rmsDb": -34.7,
+      "peakDb": -2.64,
+      "bytes": 32421,
+      "sha256": "cf3b9438184df3d49287c491e56204378b7124560fb302458fce60b89ca6680d"
+    },
+    {
+      "id": "spell-create-undead",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "summon",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.988843537414966,
+      "rmsDb": -24.62,
+      "peakDb": -1.4,
+      "bytes": 23780,
+      "sha256": "f135bc649ca8270490d8d1d442e7f0a15e19af91b4ea9778b3e5a37b089581af"
+    },
+    {
+      "id": "spell-disintegrate",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "missiles",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.957233560090703,
+      "rmsDb": -22.83,
+      "peakDb": -1.9,
+      "bytes": 37001,
+      "sha256": "3d1657e6807e0d1c462b2d341b9fd14e04bc5d7932b67b67aee78219e3f6f882"
+    },
+    {
+      "id": "spell-eyebite",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.673469387755102,
+      "rmsDb": -19.84,
+      "peakDb": -1.3,
+      "bytes": 43231,
+      "sha256": "b01e3bddbcc87d2e2f834880a51ea65f2736a97ed415646bf8ce523c210e17fe"
+    },
+    {
+      "id": "spell-find-the-path",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8624489795918366,
+      "rmsDb": -21.53,
+      "peakDb": -1.56,
+      "bytes": 30139,
+      "sha256": "9767ccbb62b65cdf33697419c911dfe6b7a257902b2a1e59cb9c0524357bd017"
+    },
+    {
+      "id": "spell-flesh-to-stone",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "petrify",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.9947845804988664,
+      "rmsDb": -23.9,
+      "peakDb": -1.16,
+      "bytes": 34227,
+      "sha256": "cb348260ce8bff2c5335e154abdad28e7918ccc2d1b1a44c49324ca4492fb9f8"
+    },
+    {
+      "id": "spell-forbiddance",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.6640362811791385,
+      "rmsDb": -30.88,
+      "peakDb": -1.57,
+      "bytes": 30446,
+      "sha256": "69d09d183f2d1e2c7a5730698935dae5829035c9904a858d6553e291fd541ed1"
+    },
+    {
+      "id": "spell-freezing-sphere",
+      "kind": "spell",
+      "family": "frost",
+      "behavior": "frost",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.6519274376417235,
+      "rmsDb": -33.32,
+      "peakDb": -1.53,
+      "bytes": 34475,
+      "sha256": "cec1c152b55fe137b10294cd631f3dc2a28238311908bb726a9102300207ed09"
+    },
+    {
+      "id": "spell-globe-of-invulnerability",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8067573696145125,
+      "rmsDb": -31.04,
+      "peakDb": -1.57,
+      "bytes": 30459,
+      "sha256": "8a3eade5ba59f63927d90ca2c4907fa50e9bdcc3a9998d096014901a21e13036"
+    },
+    {
+      "id": "spell-guards-and-wards",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "threads",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.6851473922902493,
+      "rmsDb": -30.9,
+      "peakDb": -1.57,
+      "bytes": 30449,
+      "sha256": "ac9eb21ba2cb848ce8fec72c1942ba62ca3908fa26d1dc2b70fb724e8d670385"
+    },
+    {
+      "id": "spell-harm",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.655736961451247,
+      "rmsDb": -22.97,
+      "peakDb": -1.5,
+      "bytes": 23590,
+      "sha256": "f5b574e6617d53bb28b265a218c19722d3ec0e7589344714f549d178408b42d9"
+    },
+    {
+      "id": "spell-heal",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.671768707482993,
+      "rmsDb": -25.96,
+      "peakDb": -1.87,
+      "bytes": 49467,
+      "sha256": "88011f349fc26990a31f23969a690d89743b661aad30f9f6107221a5a0539e0e"
+    },
+    {
+      "id": "spell-heroes-feast",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.7323809523809524,
+      "rmsDb": -24.44,
+      "peakDb": -1.5,
+      "bytes": 49503,
+      "sha256": "616ffc23e13dfeb0807cdce9a2936d51e4aeb35d4e9f1117809c15eedffb0aa4"
+    },
+    {
+      "id": "spell-instant-summons",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8982312925170066,
+      "rmsDb": -20.03,
+      "peakDb": -1.61,
+      "bytes": 33319,
+      "sha256": "4896f8ca2ebc4ccbed885b08f9e560cf35f39daf61d0fd7e76d3bc15465eccef"
+    },
+    {
+      "id": "spell-irresistible-dance",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.715873015873016,
+      "rmsDb": -20.93,
+      "peakDb": -1.78,
+      "bytes": 41284,
+      "sha256": "17fcf267a5a6c8ba9c0777b4054b0653c9427732152a8e7de4b73fef209d92c9"
+    },
+    {
+      "id": "spell-magic-jar",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9596825396825395,
+      "rmsDb": -23.84,
+      "peakDb": -1.57,
+      "bytes": 23056,
+      "sha256": "57bd272549f6ac5c1eb03a718941a84db5c767ccdf8c4cf622b0abec0cc2fdfc"
+    },
+    {
+      "id": "spell-mass-suggestion",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.988548752834467,
+      "rmsDb": -20.44,
+      "peakDb": -1.38,
+      "bytes": 42822,
+      "sha256": "d183e4303657f51a7223a6ee1468ae41653ea731fee507386f41f724f84dfa72"
+    },
+    {
+      "id": "spell-move-earth",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.7828798185941044,
+      "rmsDb": -25.15,
+      "peakDb": -1.6,
+      "bytes": 33430,
+      "sha256": "989fa9c50833f7c853ff41e70be4573c1bb1915a022791e61ae82f3fb9a9b1be"
+    },
+    {
+      "id": "spell-planar-ally",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.9738321995464854,
+      "rmsDb": -22.34,
+      "peakDb": -1.46,
+      "bytes": 44724,
+      "sha256": "1f59f638143edcec9edb692ab053332bd184f7993d302124dfb5aca5d8cae16a"
+    },
+    {
+      "id": "spell-programmed-illusion",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion-image",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.9420181405895693,
+      "rmsDb": -23.05,
+      "peakDb": -1.95,
+      "bytes": 36791,
+      "sha256": "c040b28aec849925981c5f6ef9a7baaab7ea9cd5f7b7a7f125e9c71119bc0017"
+    },
+    {
+      "id": "spell-sunbeam",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.8136054421768706,
+      "rmsDb": -31.95,
+      "peakDb": -1.82,
+      "bytes": 36614,
+      "sha256": "c5332800862cafecf755fb572b46104ad9a28c8699f4635e49fbb99f2408ec8a"
+    },
+    {
+      "id": "spell-transport-via-plants",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.744036281179138,
+      "rmsDb": -27.5,
+      "peakDb": -1.8,
+      "bytes": 30264,
+      "sha256": "e4bad8dc4acac3a12eaac0d6d2c856a4ccfec5d4283a950c3e55c27519918dd6"
+    },
+    {
+      "id": "spell-true-seeing",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.863514739229025,
+      "rmsDb": -23.43,
+      "peakDb": -1.59,
+      "bytes": 30486,
+      "sha256": "1f459a0d1f235088ea4643c9658ccfeb3390e85a9beabd49bf002e985c5227c6"
+    },
+    {
+      "id": "spell-wall-of-ice",
+      "kind": "spell",
+      "family": "frost",
+      "behavior": "frost",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-metallatch",
+        "sfx-magic-2"
+      ],
+      "duration": 3.6667573696145124,
+      "rmsDb": -33.33,
+      "peakDb": -1.54,
+      "bytes": 34736,
+      "sha256": "eeb01cd2ea33693fccfe055b4e6def386d5938c6e8522375ea3a83df70923cae"
+    },
+    {
+      "id": "spell-wall-of-thorns",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "roots",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.703015873015873,
+      "rmsDb": -25.43,
+      "peakDb": -1.56,
+      "bytes": 30746,
+      "sha256": "969ee94acc2591302802a47bb4d5c8c9dcbbb0422863dd0092d7786db95338fe"
+    },
+    {
+      "id": "spell-wind-walk",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.7620408163265306,
+      "rmsDb": -24.28,
+      "peakDb": -2.05,
+      "bytes": 38805,
+      "sha256": "4f734b3a38ad968f33b7638312fa6cbd3e5fad03d80be1189e446aafd3fab246"
+    },
+    {
+      "id": "spell-word-of-recall",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "teleport",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.7416553287981857,
+      "rmsDb": -21.03,
+      "peakDb": -1.68,
+      "bytes": 39568,
+      "sha256": "5d71f78753d6579e5c81e7de72e6acc89d90670c9b6387ce1752318db9fc83bb"
+    },
+    {
+      "id": "spell-arcane-sword",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "weapon",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.739297052154195,
+      "rmsDb": -22.75,
+      "peakDb": -1.9,
+      "bytes": 34271,
+      "sha256": "611077182e14d270d905784e21a3b43f0b9b33fef72faee3caf232dc6173585a"
+    },
+    {
+      "id": "spell-conjure-celestial",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "summon",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.922108843537415,
+      "rmsDb": -32.65,
+      "peakDb": -1.76,
+      "bytes": 34753,
+      "sha256": "4a2292e500e8c05fd83edd0f5545479d1f61e762eec293fdaa4534fe7902271e"
+    },
+    {
+      "id": "spell-delayed-blast-fireball",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fireball",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.9279591836734693,
+      "rmsDb": -23.25,
+      "peakDb": -1.69,
+      "bytes": 39928,
+      "sha256": "30e94f2d00a7f325c2006073fdd3f436de79edbec5443526dc9b0ad3f8ad307a"
+    },
+    {
+      "id": "spell-divine-word",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.919047619047619,
+      "rmsDb": -32.42,
+      "peakDb": -2.0,
+      "bytes": 37124,
+      "sha256": "65673b1bb4924bd722a702894bbee1145a72b395716f708029fecc987be4c104"
+    },
+    {
+      "id": "spell-etherealness",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.868140589569161,
+      "rmsDb": -22.47,
+      "peakDb": -1.66,
+      "bytes": 40878,
+      "sha256": "8cac931d2fa12d3be97f9f1cc6e47104d7bf73282acf2384ae10b2c7f79f239a"
+    },
+    {
+      "id": "spell-finger-of-death",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "missiles",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.700589569160998,
+      "rmsDb": -22.63,
+      "peakDb": -1.52,
+      "bytes": 24884,
+      "sha256": "6eae68681b5b1a71e0396dc2db0a0ebc473612f6edd4aed93c3e0eaf43d9f86d"
+    },
+    {
+      "id": "spell-fire-storm",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "flames",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.8286167800453517,
+      "rmsDb": -28.28,
+      "peakDb": -1.38,
+      "bytes": 36357,
+      "sha256": "05aa139d990b68af614589550f418b2d162eeef2bce7a454eedc85346721955a"
+    },
+    {
+      "id": "spell-forcecage",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.843560090702948,
+      "rmsDb": -24.43,
+      "peakDb": -1.95,
+      "bytes": 33115,
+      "sha256": "21908664a126a0fed0ac038f85dd06098984b796391053f921c633ec89f72d2a"
+    },
+    {
+      "id": "spell-magnificent-mansion",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.654580498866213,
+      "rmsDb": -21.66,
+      "peakDb": -1.4,
+      "bytes": 39907,
+      "sha256": "81b0417f73af90bf478db88b24e41f5d4eabd24450aaef0aa14707e7f6dd1a0a"
+    },
+    {
+      "id": "spell-mirage-arcane",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.923922902494331,
+      "rmsDb": -23.86,
+      "peakDb": -1.95,
+      "bytes": 38629,
+      "sha256": "4ff52858323008125c0a07e745117076e849eafbd4adde609569809a099df15c"
+    },
+    {
+      "id": "spell-plane-shift",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.7458956916099773,
+      "rmsDb": -21.64,
+      "peakDb": -1.88,
+      "bytes": 41561,
+      "sha256": "b472d6bd9f5e324e6e53d9ea575bf42289fe1606492dea29aa68c83a1d4294a0"
+    },
+    {
+      "id": "spell-prismatic-spray",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.717437641723356,
+      "rmsDb": -21.09,
+      "peakDb": -1.89,
+      "bytes": 34048,
+      "sha256": "34e9b6c31f141ebd90dacb1b5a8580210fe9470f26793eda7158411539a5ec91"
+    },
+    {
+      "id": "spell-project-image",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "double",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.799297052154195,
+      "rmsDb": -23.48,
+      "peakDb": -1.95,
+      "bytes": 37969,
+      "sha256": "130afb5aedcd66e262291b32593a84a41968de957b89861ce7481b738e95d790"
+    },
+    {
+      "id": "spell-regenerate",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.8976190476190475,
+      "rmsDb": -25.46,
+      "peakDb": -1.62,
+      "bytes": 49374,
+      "sha256": "a6d6994f9503732e5d9c14a7dcb2e0f4a8653e7b3fb88813d30fa64f0a3d4105"
+    },
+    {
+      "id": "spell-resurrection",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.963877551020408,
+      "rmsDb": -25.32,
+      "peakDb": -1.55,
+      "bytes": 48701,
+      "sha256": "953f993c13c9c56c6ab5923373b82a09e490c9650226bf652532029008785d42"
+    },
+    {
+      "id": "spell-reverse-gravity",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8175283446712016,
+      "rmsDb": -24.46,
+      "peakDb": -1.72,
+      "bytes": 33397,
+      "sha256": "f80676d5d3072be143ac6dd48328081b6633be324e2942f69ead7286b9180c7d"
+    },
+    {
+      "id": "spell-sequester",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.8093650793650795,
+      "rmsDb": -31.05,
+      "peakDb": -1.57,
+      "bytes": 30459,
+      "sha256": "da1b62d81623da264c3de3d6cb22f32c51cbf4a70b6ab8e885e3222e87ed6894"
+    },
+    {
+      "id": "spell-simulacrum",
+      "kind": "spell",
+      "family": "illusion",
+      "behavior": "illusion",
+      "sources": [
+        "sfx-magic-2",
+        "sfx-cloth4",
+        "amb-wind"
+      ],
+      "duration": 3.8934467120181404,
+      "rmsDb": -20.74,
+      "peakDb": -1.67,
+      "bytes": 35540,
+      "sha256": "44d5ce6b31107ebb608362ea70aa160612811e6be1dac78a421ab36c3f38abf1"
+    },
+    {
+      "id": "spell-symbol",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "glyph",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.688072562358277,
+      "rmsDb": -22.8,
+      "peakDb": -1.47,
+      "bytes": 32607,
+      "sha256": "dfdc679ef79be751bf79362c49fe039243cd28a96730f054853925b755df53ef"
+    },
+    {
+      "id": "spell-teleport",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "teleport",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.861111111111111,
+      "rmsDb": -23.14,
+      "peakDb": -1.64,
+      "bytes": 40324,
+      "sha256": "fbcfcb1607452be91381024aad3276ad816fda3dc07b99a973b4ed5b4264748f"
+    },
+    {
+      "id": "spell-animal-shapes",
+      "kind": "spell",
+      "family": "nature",
+      "behavior": "transmute",
+      "sources": [
+        "amb-forest",
+        "sfx-cloth3",
+        "sfx-creak1"
+      ],
+      "duration": 3.882947845804989,
+      "rmsDb": -24.43,
+      "peakDb": -1.36,
+      "bytes": 30661,
+      "sha256": "60091ff1af092af126ec39d151562c1c5f48e293ed5d6cc5bdacca49c9684df7"
+    },
+    {
+      "id": "spell-antimagic-field",
+      "kind": "spell",
+      "family": "ward",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalpot2",
+        "sfx-metalclick"
+      ],
+      "duration": 3.971859410430839,
+      "rmsDb": -31.23,
+      "peakDb": -1.57,
+      "bytes": 30472,
+      "sha256": "4fc6e1d4d350869a65b570fdd1c9fb2f201916e30ad1bd144a922a7413f79892"
+    },
+    {
+      "id": "spell-antipathy-sympathy",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.880770975056689,
+      "rmsDb": -20.3,
+      "peakDb": -1.33,
+      "bytes": 44409,
+      "sha256": "2196271039300a798d2ead0e073f7a66530b9e681f4b0f1797eefb204a7e8541"
+    },
+    {
+      "id": "spell-befuddlement",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.689591836734694,
+      "rmsDb": -18.8,
+      "peakDb": -1.97,
+      "bytes": 41930,
+      "sha256": "bb481779f202d09e45cae0fbbadf427ea1e132b33e99133f0445f384e8383f50"
+    },
+    {
+      "id": "spell-clone",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.9719274376417233,
+      "rmsDb": -24.84,
+      "peakDb": -1.64,
+      "bytes": 23805,
+      "sha256": "6f89afedb50c5290dedb7d53d3a6b2bcd6ec96e8d69d9dbb67efedd14e28ae84"
+    },
+    {
+      "id": "spell-control-weather",
+      "kind": "spell",
+      "family": "wind",
+      "behavior": "wind",
+      "sources": [
+        "amb-wind",
+        "sfx-cloth2",
+        "amb-forest"
+      ],
+      "duration": 3.9477324263038547,
+      "rmsDb": -24.59,
+      "peakDb": -1.68,
+      "bytes": 38020,
+      "sha256": "8e6dd52003e214950a181a757f23eb1e657710c6eb5d1a9413a32014c1a1da0f"
+    },
+    {
+      "id": "spell-demiplane",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.6599319727891158,
+      "rmsDb": -20.88,
+      "peakDb": -1.47,
+      "bytes": 42616,
+      "sha256": "3c1d4c95d9ffab74fcc1d4851d6ca702b57f9e332c8811bd1d84e9017211872a"
+    },
+    {
+      "id": "spell-dominate-monster",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "charm",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.955668934240363,
+      "rmsDb": -21.45,
+      "peakDb": -1.42,
+      "bytes": 40762,
+      "sha256": "da4cb1758c6723b441e4534d05e095a12f663023666d53bc963592fee07c938b"
+    },
+    {
+      "id": "spell-earthquake",
+      "kind": "spell",
+      "family": "earth",
+      "behavior": "earth",
+      "sources": [
+        "sfx-chop",
+        "sfx-creak2",
+        "amb-deep-cave"
+      ],
+      "duration": 3.815238095238095,
+      "rmsDb": -25.46,
+      "peakDb": -1.62,
+      "bytes": 34099,
+      "sha256": "126aa1e0454dcdb0092df438673189bd4827ebddf7e25c23742edb98d158c71c"
+    },
+    {
+      "id": "spell-glibness",
+      "kind": "spell",
+      "family": "divination",
+      "behavior": "divination",
+      "sources": [
+        "sfx-magic-1",
+        "sfx-cloth1",
+        "amb-wind"
+      ],
+      "duration": 3.8305895691609977,
+      "rmsDb": -23.82,
+      "peakDb": -1.45,
+      "bytes": 30594,
+      "sha256": "6112305504aa4b750a1774aececd3d19b846421345dcb164e9e4c177bf5c359d"
+    },
+    {
+      "id": "spell-holy-aura",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.8388662131519276,
+      "rmsDb": -32.2,
+      "peakDb": -2.12,
+      "bytes": 33912,
+      "sha256": "10be0e830a9e71198b24a6c5dc93cc0c36bec19beba944287911756be1b16868"
+    },
+    {
+      "id": "spell-incendiary-cloud",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fog",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.8019954648526078,
+      "rmsDb": -29.68,
+      "peakDb": -1.96,
+      "bytes": 35463,
+      "sha256": "48f51567a9d4d70d1fd628244229b4861b7d6a18538526f7ee7c32d09e996efd"
+    },
+    {
+      "id": "spell-maze",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.8846485260770973,
+      "rmsDb": -21.01,
+      "peakDb": -1.48,
+      "bytes": 39840,
+      "sha256": "83b48d609a466141702e83b78b60d0e377137459ef8a32714f148d7fa5049762"
+    },
+    {
+      "id": "spell-mind-blank",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.86437641723356,
+      "rmsDb": -21.06,
+      "peakDb": -1.47,
+      "bytes": 40780,
+      "sha256": "8d916fe3ea5d8810551f129f4bf117a5e33df6e75a8884127bfebf55fe2f90e8"
+    },
+    {
+      "id": "spell-power-word-stun",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.680657596371882,
+      "rmsDb": -20.68,
+      "peakDb": -1.47,
+      "bytes": 44794,
+      "sha256": "3d883bcd133bd6bb46c9acf4c1d5c70983ae402048bfcce1f68cff449e8d35d7"
+    },
+    {
+      "id": "spell-sunburst",
+      "kind": "spell",
+      "family": "radiant",
+      "behavior": "radiance",
+      "sources": [
+        "sfx-magic-5",
+        "sfx-metalclick",
+        "amb-wind"
+      ],
+      "duration": 3.8391383219954647,
+      "rmsDb": -27.23,
+      "peakDb": -1.74,
+      "bytes": 34950,
+      "sha256": "6d6c32ba136c8154086b6f41c09ede8f8b5934e5228aaafeb81bd58bf560566c"
+    },
+    {
+      "id": "spell-tsunami",
+      "kind": "spell",
+      "family": "water",
+      "behavior": "water",
+      "sources": [
+        "amb-river",
+        "amb-rain",
+        "sfx-metalpot3"
+      ],
+      "duration": 3.884557823129252,
+      "rmsDb": -23.82,
+      "peakDb": -1.52,
+      "bytes": 45835,
+      "sha256": "418896446289166fae03db41d87e6043f03a566f7db636efb99e5d365a450e79"
+    },
+    {
+      "id": "spell-astral-projection",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "threads",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.771315192743764,
+      "rmsDb": -22.67,
+      "peakDb": -1.66,
+      "bytes": 44199,
+      "sha256": "768bcd86225c6af873dcaa69744a87fe28caa0f500afa819e26b3e25c9452abc"
+    },
+    {
+      "id": "spell-foresight",
+      "kind": "spell",
+      "family": "time",
+      "behavior": "time",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-magic-2",
+        "sfx-metallatch"
+      ],
+      "duration": 3.8015419501133785,
+      "rmsDb": -34.69,
+      "peakDb": -2.64,
+      "bytes": 32416,
+      "sha256": "e1f082ad0eb0c148f03cc7c3203d7a323ecbfdf2b6aa1410c8cdd678df225fc1"
+    },
+    {
+      "id": "spell-gate",
+      "kind": "spell",
+      "family": "portal",
+      "behavior": "portal",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-magic-3"
+      ],
+      "duration": 3.8744444444444444,
+      "rmsDb": -21.04,
+      "peakDb": -1.5,
+      "bytes": 43699,
+      "sha256": "03910079901c7c9b226c797ec7d848c61bd3d92a493e39a257b8d4e41a281e22"
+    },
+    {
+      "id": "spell-imprisonment",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.874580498866213,
+      "rmsDb": -20.99,
+      "peakDb": -1.81,
+      "bytes": 32792,
+      "sha256": "8de5ae9cee5b70897ac0974b897769930d539547a9628d9feabf7433b6299d87"
+    },
+    {
+      "id": "spell-mass-heal",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.996780045351474,
+      "rmsDb": -27.12,
+      "peakDb": -1.59,
+      "bytes": 48480,
+      "sha256": "2a9560c02d8ae7cd1367061c0ab791777f273ad789ce2cb37dac5ac2d245298e"
+    },
+    {
+      "id": "spell-meteor-swarm",
+      "kind": "spell",
+      "family": "fire",
+      "behavior": "fireball",
+      "sources": [
+        "amb-hearth",
+        "sfx-chop",
+        "sfx-magic-1"
+      ],
+      "duration": 3.9496371882086168,
+      "rmsDb": -25.27,
+      "peakDb": -1.08,
+      "bytes": 40187,
+      "sha256": "3784d8002d27f01117065dccb981e4879fb1d249c62fec36d280f87ab021f12f"
+    },
+    {
+      "id": "spell-power-word-heal",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.923560090702948,
+      "rmsDb": -25.11,
+      "peakDb": -1.63,
+      "bytes": 49825,
+      "sha256": "d263e1b34cf0d8cfe6db253b2dfea84b4320ad0f6a7388a0f273b6827c1c22ac"
+    },
+    {
+      "id": "spell-power-word-kill",
+      "kind": "spell",
+      "family": "necrotic",
+      "behavior": "drain",
+      "sources": [
+        "amb-haunted-crypt",
+        "sfx-creak2",
+        "sfx-magic-6"
+      ],
+      "duration": 3.8704308390022675,
+      "rmsDb": -23.85,
+      "peakDb": -1.67,
+      "bytes": 23377,
+      "sha256": "9b15163e9f95fa74551fc2378303f789754c2b8d7cc2a0ee2bc0d3808d2d19dd"
+    },
+    {
+      "id": "spell-prismatic-wall",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "shield",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.8955555555555557,
+      "rmsDb": -22.45,
+      "peakDb": -1.82,
+      "bytes": 33061,
+      "sha256": "b9001e190d13438a8fe27f1bb53274510bc4b41885702b9ff6fee4a4d8a53373"
+    },
+    {
+      "id": "spell-shapechange",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "transmute",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.702448979591837,
+      "rmsDb": -20.34,
+      "peakDb": -1.91,
+      "bytes": 33061,
+      "sha256": "e62376a6fe567dd41e7851add57bda76c2f3383b8a92a8937c7a6d4448cc5faa"
+    },
+    {
+      "id": "spell-storm-of-vengeance",
+      "kind": "spell",
+      "family": "lightning",
+      "behavior": "lightning",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-metalpot1",
+        "sfx-metalclick"
+      ],
+      "duration": 3.865918367346939,
+      "rmsDb": -24.38,
+      "peakDb": -1.08,
+      "bytes": 31901,
+      "sha256": "69a6aa66a223925df787880e566cf9d448f72c5f110702f9b05a311a91e68a30"
+    },
+    {
+      "id": "spell-time-stop",
+      "kind": "spell",
+      "family": "time",
+      "behavior": "time",
+      "sources": [
+        "sfx-metalclick",
+        "sfx-magic-2",
+        "sfx-metallatch"
+      ],
+      "duration": 3.7583673469387757,
+      "rmsDb": -34.64,
+      "peakDb": -2.64,
+      "bytes": 32411,
+      "sha256": "722c8da74c20e95b32eedf602ddd46101c557fcd25149878596f262eb68cac99"
+    },
+    {
+      "id": "spell-true-polymorph",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "transmute",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.917845804988662,
+      "rmsDb": -24.08,
+      "peakDb": -1.54,
+      "bytes": 32600,
+      "sha256": "052af208712d81b8c0d0c0366ff6a52dd72774d3a5855deda55d143f9d9af079"
+    },
+    {
+      "id": "spell-true-resurrection",
+      "kind": "spell",
+      "family": "heal",
+      "behavior": "healing",
+      "sources": [
+        "sfx-magic-5",
+        "amb-forest",
+        "sfx-cloth2"
+      ],
+      "duration": 3.8793650793650793,
+      "rmsDb": -26.54,
+      "peakDb": -1.62,
+      "bytes": 49512,
+      "sha256": "0f47c66f88e48138b87df66cedb46df11952e069b9456fbe4339551c59208ec5"
+    },
+    {
+      "id": "spell-weird",
+      "kind": "spell",
+      "family": "psychic",
+      "behavior": "psychic",
+      "sources": [
+        "sfx-magic-7",
+        "amb-wind",
+        "sfx-creak3"
+      ],
+      "duration": 3.8792743764172335,
+      "rmsDb": -22.02,
+      "peakDb": -1.2,
+      "bytes": 41133,
+      "sha256": "4e797e887bf44ff45751d60686acb0a625f646744513a3f2578e1bb35a443b22"
+    },
+    {
+      "id": "spell-wish",
+      "kind": "spell",
+      "family": "force",
+      "behavior": "force",
+      "sources": [
+        "sfx-magic-3",
+        "sfx-chop",
+        "amb-wind"
+      ],
+      "duration": 3.786439909297052,
+      "rmsDb": -20.55,
+      "peakDb": -1.61,
+      "bytes": 32997,
+      "sha256": "e437a2443431e6296d19144f9c3a55435e280499b73df3ff52d97bf6522f1713"
+    }
+  ]
+}

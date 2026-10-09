@@ -1,0 +1,11 @@
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import sharp from 'sharp';
+const source = process.argv[2];
+if (!source) throw Error('Provide the reviewed native-alpha source image.');
+const stats = await sharp(source).stats();
+if (stats.isOpaque) throw Error('Native transparency required.');
+await mkdir('public/vtt/effects', { recursive: true });
+const target = 'public/vtt/effects/portrait-wisp-v2.webp';
+await sharp(source).resize(640, 640).webp({ quality: 96, alphaQuality: 100 }).toFile(target);
+console.log('Published original native-alpha portrait wisp: ' + target);

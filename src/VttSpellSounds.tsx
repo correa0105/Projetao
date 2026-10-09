@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import type { SpellEffect } from '../shared/vtt-spells';
+import { spellProfile } from '../shared/vtt-spells';
 import { useVttEffectAudio } from './vtt-effect-audio';
 const sounds: Record<string, string> = {
   fire: 'fire',
@@ -51,8 +52,13 @@ export function VttSpellSounds({
       return;
     }
     for (const e of effects) {
-      if (!seen.current.has(e.id) && Date.now() - e.started >= 0 && Date.now() - e.started < 10000)
-        audio.play('/audio/vtt-effects/' + (sounds[e.profile.visual.family] || 'arcane') + '.wav');
+      if (!seen.current.has(e.id) && Date.now() - e.started >= 0 && Date.now() - e.started < 3500)
+        audio.play(
+          spellProfile(e.spellId)
+            ? '/audio/vtt-spells-20261009/' + spellProfile(e.spellId)!.id + '.ogg'
+            : '/audio/vtt-effects/' + (sounds[e.profile.visual.family] || 'arcane') + '.wav',
+          Math.max(0, (Date.now() - e.started) / 1000),
+        );
       seen.current.add(e.id);
     }
     if (seen.current.size > 1500) seen.current = new Set(effects.map((e) => e.id));

@@ -10579,7 +10579,8 @@
       "pulse": 1.3328125,
       "delivery": "weave"
     },
-    "includeSelf": true
+    "includeSelf": true,
+    "destinationRange": 50000
   },
   {
     "id": "spell-animal-shapes",

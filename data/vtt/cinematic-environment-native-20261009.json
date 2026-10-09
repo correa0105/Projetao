@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-09",
+  "tool": "image_gen.imagegen",
+  "assets": [
+    {
+      "id": "brazier",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-1ad91f8b-f843-4c1a-962b-9027f97e2060.png",
+      "prompt": "Extract ONLY the round ornate brass brazier with coal embers from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    },
+    {
+      "id": "candles",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-e06b78d7-2102-47a4-ba0c-74002ca81abe.png",
+      "prompt": "Extract ONLY the three candles in their ornate brass holder from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    },
+    {
+      "id": "crystals",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-e94826ed-6fd4-4728-b390-66b3b933667e.png",
+      "prompt": "Extract ONLY the amethyst crystal cluster on stone base from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    },
+    {
+      "id": "bush",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-927a6ebe-fdc0-4d70-96e4-f92dbf6dd588.png",
+      "prompt": "Extract ONLY the green leafy bush from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    },
+    {
+      "id": "steam-vent",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-bf7b9fed-5108-433a-b848-0a43d604f8a1.png",
+      "prompt": "Extract ONLY the round iron steam grate from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    },
+    {
+      "id": "magic-pool",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-a50f5b1f-1672-4b04-b7b3-47748c471943.png",
+      "prompt": "Extract ONLY the turquoise water pool inside its mossy stone rim from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    },
+    {
+      "id": "windmill",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-7666d046-3a1f-4f1f-baec-5e7251a3e422.png",
+      "prompt": "Extract ONLY the four-sail wooden windmill rotor from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    },
+    {
+      "id": "banner",
+      "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a10677-429a-7d71-8bb4-fdfa42c38a62\\exec-fc04885a-86e8-4d07-a6b2-16523a80ecd0.png",
+      "prompt": "Extract ONLY the crimson banner and gold pole from the attached original artwork. Return ONE SINGLE object, exactly overhead, fully visible, centered, with minimum20%empty transparent margin. Preserve the detailed original object texture and design. Remove ALL the background, including all brown/green/colored haze, all surrounding glow, any color outside the exact silhouette, and ALL other seven objects. This is a clean isolated physical game token cutout, not an atmospheric scene. True fully transparent alpha-zero background, no glow or fog. Keep holes transparent. Pool retains water only inside stone rim; candles have no flames; grate has no vapor. No cropping tips, no text."
+    }
+  ],
+  "conversion": "Native alpha preserved; technical resize to512WebP. Source art retained."
+}

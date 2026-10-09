@@ -7,6 +7,8 @@ import { materialSprite } from './vtt-effects-materials';
 import { drawOverheadMagic, energySpiral } from './vtt-effects-overhead-magic';
 import { drawEffectCollection } from './vtt-effects-collection';
 import { drawAdvancedEffects } from './vtt-effects-advanced';
+import { naturalEarth } from './vtt-effects-physical';
+import { drawCinematicTokenEffect } from './vtt-effects-continuous';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -149,6 +151,7 @@ export function drawOverheadEffect(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawCinematicTokenEffect(c, e, f, t, random, front, detail)) return;
   if (drawAdvancedEffects(c, e, f, t, random, pass, detail)) return;
   if (drawEffectCollection(c, e, f, t, random, pass, detail)) return;
   if (drawOverheadMagic(c, e, f, t, random, pass, detail)) return;
@@ -221,19 +224,7 @@ export function drawOverheadEffect(
       particles(c, f, e.color, t, random, n(20));
     }
   } else if (e.kind === 'earth') {
-    if (!front) mist(c, f, tint(e.color, 0.35, '#554937'), t * 0.6, random, n(10), 0.55);
-    for (let i = 0; i < n(front ? 6 : 12); i++) {
-      const p = footprintPoint(f, Math.floor(random(i + 52) * f.edge.length), true);
-      shard(
-        c,
-        p.x + p.nx * 8,
-        p.y + p.ny * 8,
-        i + Math.sin(t + i) * 0.07,
-        3 + random(i + 13) * 5,
-        e.color,
-      );
-    }
-    if (front) particles(c, f, e.color, t * 0.7, random, n(15));
+    naturalEarth(c, e, f, t, random, front);
   } else if (e.kind === 'vines') {
     if (!front) mist(c, f, e.color, t * 0.4, random, n(6), 0.24);
     for (let i = 0; i < n(front ? 5 : 9); i++) {

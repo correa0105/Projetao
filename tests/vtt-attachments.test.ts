@@ -16,8 +16,9 @@ import {
   attachmentUnavailable,
   syncAttachmentPositions,
   translateAttachmentGroup,
+  movementFacing,
 } from '../shared/vtt-attachments';
-import { attachmentMovementError } from '../shared/vtt-movement';
+import { attachmentMovementError, attachmentRotationError } from '../shared/vtt-movement';
 function fixture() {
   const document = newDocument(randomUUID()),
     scene = document.scenes[0];
@@ -198,4 +199,58 @@ test('ruler uses configured cell scale, metric conversion and continuous 5/10 di
       ) > 0,
     );
   }
+});
+
+test('mounted rotations preserve a rider heading offset and rotate nested local offsets once', () => {
+  const { scene, base, rider } = fixture();
+  base.rotation = 350;
+  rider.rotation = 30;
+  rider.attachment = { tokenId: base.id, offsetX: 30, offsetY: 0, baseRotation: 350 };
+  const third = {
+    ...newToken(randomUUID(), scene),
+    rotation: 70,
+    attachment: { tokenId: rider.id, offsetX: 10, offsetY: 0, baseRotation: 30 },
+  };
+  scene.tokens.push(third);
+  syncAttachmentPositions(scene);
+  const previous = structuredClone(scene);
+  base.rotation = 10;
+  syncAttachmentPositions(scene, previous);
+  assert.ok(Math.abs(rider.x - (base.x + 30 * Math.cos((20 * Math.PI) / 180))) < 1e-6);
+  assert.ok(Math.abs(rider.y - (base.y + 30 * Math.sin((20 * Math.PI) / 180))) < 1e-6);
+  assert.equal(rider.rotation, 50);
+  assert.equal(third.rotation, 90);
+  assert.ok(Math.abs(third.x - rider.x - 10 * Math.cos((20 * Math.PI) / 180)) < 1e-6);
+  const once = structuredClone(scene);
+  syncAttachmentPositions(scene, previous);
+  assert.deepEqual(scene, once);
+});
+test('drop facing follows the last real leg, including flips, without rotating stationary updates', () => {
+  const { base } = fixture();
+  base.rotation = 37;
+  assert.equal(movementFacing(base, base, [base]), 37);
+  assert.equal(movementFacing(base, base, [{ x: 500, y: 300 }]), 90);
+  assert.equal(
+    movementFacing(base, base, [
+      { x: 500, y: 300 },
+      { x: 500, y: 100 },
+    ]),
+    0,
+  );
+  base.flipY = true;
+  assert.equal(movementFacing(base, base, [{ x: 500, y: 300 }]), 270);
+});
+test('carried rotational arcs cannot bypass walls or map limits', () => {
+  const { scene, base, rider } = fixture();
+  rider.attachment = { tokenId: base.id, offsetX: 60, offsetY: 0, baseRotation: 0 };
+  syncAttachmentPositions(scene);
+  const previous = structuredClone(scene);
+  scene.walls = [
+    { id: randomUUID(), a: { x: 340, y: 330 }, b: { x: 400, y: 330 }, kind: 'wall', open: false },
+  ];
+  base.rotation = 90;
+  syncAttachmentPositions(scene, previous);
+  assert.ok(attachmentRotationError(scene, previous, base));
+  scene.walls = [];
+  assert.equal(attachmentRotationError(scene, previous, base), null);
 });

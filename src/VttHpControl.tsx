@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Heart, Minus, Plus } from 'lucide-react';
 import type { VttToken } from '../shared/vtt';
 export function VttHpControl({
   token,
@@ -26,9 +27,48 @@ export function VttHpControl({
           .finally(() => setWorking(false));
       }}
     >
-      <div className="vtt-hp-orb" title="Pontos de vida">
-        <strong>{token.hp}</strong>
-        <small> / {token.maxHp}</small>
+      <div className="vtt-hp-status" data-low={token.hp <= token.maxHp * 0.25}>
+        <div className="vtt-hp-heading">
+          <span>
+            <Heart size={14} /> Pontos de vida
+          </span>
+          <span>
+            <strong>{token.hp}</strong>
+            <small> / {token.maxHp}</small>
+          </span>
+        </div>
+        <div
+          className="vtt-hp-track"
+          role="progressbar"
+          aria-label="Pontos de vida"
+          aria-valuemin={0}
+          aria-valuemax={Math.max(1, token.maxHp)}
+          aria-valuenow={Math.max(0, Math.min(token.hp, token.maxHp))}
+        >
+          <span
+            style={{
+              width: `${Math.max(0, Math.min(100, (token.hp / Math.max(1, token.maxHp)) * 100))}%`,
+            }}
+          />
+        </div>
+      </div>
+      <div className="vtt-hp-modes" aria-label="Tipo de ajuste de vida">
+        <button
+          type="button"
+          aria-pressed={value.startsWith('-')}
+          disabled={busy || working}
+          onClick={() => setValue('-' + value.replace(/^[+-]/, ''))}
+        >
+          <Minus size={13} /> Dano
+        </button>
+        <button
+          type="button"
+          aria-pressed={value.startsWith('+')}
+          disabled={busy || working}
+          onClick={() => setValue('+' + value.replace(/^[+-]/, ''))}
+        >
+          <Plus size={13} /> Cura
+        </button>
       </div>
       <label>
         Editar PV
@@ -41,7 +81,7 @@ export function VttHpControl({
           onChange={(e) => setValue(e.target.value)}
         />
       </label>
-      <button type="submit" disabled={busy || working || !value.trim()}>
+      <button type="submit" disabled={busy || working || !/^[+-]?\d+$/.test(value.trim())}>
         Aplicar PV
       </button>
       <small>+ cura · − dano · número define PV</small>

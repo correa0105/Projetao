@@ -75,16 +75,20 @@ export function VttSelectionPortrait({
     if (!animated || !portraitImage || !canvas.current) return;
     let live = true;
     let stop: (() => void) | null = null;
+    const surface = canvas.current;
+    const lost = () => setFlowing(false);
+    surface.addEventListener('portraitflowlost', lost);
     const smoke = new Image();
     smoke.onload = () => {
       if (!live || !canvas.current) return;
-      stop = startPortraitSmoke(canvas.current, smoke);
+      stop = startPortraitSmoke(canvas.current, portraitImage, smoke);
       setFlowing(!!stop);
     };
-    smoke.src = '/vtt/effects/portrait-smoke-v1.webp';
+    smoke.src = '/vtt/effects/portrait-wisp-v2.webp';
     return () => {
       live = false;
       smoke.onload = null;
+      surface.removeEventListener('portraitflowlost', lost);
       stop?.();
     };
   }, [animated, portraitImage]);
@@ -103,8 +107,8 @@ export function VttSelectionPortrait({
       <svg viewBox="0 0 224 224" aria-hidden="true">
         <defs>
           <radialGradient id={id + 'fade'}>
-            <stop offset="58%" stopColor="white" />
-            <stop offset="88%" stopColor="white" stopOpacity=".86" />
+            <stop offset="62%" stopColor="white" />
+            <stop offset="82%" stopColor="white" stopOpacity=".65" />
             <stop offset="100%" stopColor="white" stopOpacity="0" />
           </radialGradient>
           <filter id={id + 'vapor'} x="-30%" y="-30%" width="160%" height="160%">
@@ -118,7 +122,7 @@ export function VttSelectionPortrait({
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale="14"
+              scale="10"
               xChannelSelector="R"
               yChannelSelector="G"
             />
@@ -126,35 +130,62 @@ export function VttSelectionPortrait({
           <mask id={id + 'mask'} maskUnits="userSpaceOnUse" x="0" y="0" width="224" height="224">
             <ellipse
               cx="112"
-              cy="116"
-              rx="73"
-              ry="83"
+              cy="126"
+              rx="81"
+              ry="79"
               fill={'url(#' + id + 'fade)'}
               filter={'url(#' + id + 'vapor)'}
             />
-            <ellipse cx="112" cy="76" rx="49" ry="65" fill={'url(#' + id + 'fade)'} />
+            <ellipse cx="112" cy="72" rx="55" ry="64" fill={'url(#' + id + 'fade)'} />
           </mask>
         </defs>
-        <image
-          href={portraitImage.src}
-          x="24"
-          y="14"
-          width="176"
-          height="200"
-          preserveAspectRatio="xMidYMin meet"
-          mask={'url(#' + id + 'mask)'}
-        />
-        {visualEffects && (
+        <g className="vtt-portrait-fallback">
           <image
-            className="vtt-portrait-smoke"
-            href="/vtt/effects/portrait-smoke-v1.webp"
-            x="0"
-            y="0"
-            width="224"
-            height="224"
-            opacity=".38"
+            href={portraitImage.src}
+            x="24"
+            y="14"
+            width="176"
+            height="200"
+            preserveAspectRatio="xMidYMin meet"
+            mask={'url(#' + id + 'mask)'}
           />
-        )}
+          {visualEffects && (
+            <g className="vtt-portrait-smoke" opacity=".24">
+              <image
+                href="/vtt/effects/portrait-wisp-v2.webp"
+                x="22"
+                y="75"
+                width="68"
+                height="112"
+                transform="rotate(-19 56 150)"
+              />
+              <image
+                href="/vtt/effects/portrait-wisp-v2.webp"
+                x="129"
+                y="84"
+                width="66"
+                height="114"
+                transform="rotate(23 164 151)"
+              />
+              <image
+                href="/vtt/effects/portrait-wisp-v2.webp"
+                x="51"
+                y="120"
+                width="67"
+                height="99"
+                transform="rotate(-35 84 183)"
+              />
+              <image
+                href="/vtt/effects/portrait-wisp-v2.webp"
+                x="105"
+                y="124"
+                width="67"
+                height="93"
+                transform="rotate(31 138 182)"
+              />
+            </g>
+          )}
+        </g>
       </svg>
       <canvas ref={canvas} className="vtt-portrait-flow" aria-hidden="true" />
       <figcaption>{token.name}</figcaption>

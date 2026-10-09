@@ -32,7 +32,7 @@ const fixture = process.env.PORTRAIT_FRAME_FIXTURE
     )
       .png()
       .toBuffer();
-const vapor = await readFile('public/vtt/effects/portrait-smoke-v1.webp');
+const vapor = await readFile('public/vtt/effects/portrait-wisp-v2.webp');
 await mkdir('test-results', { recursive: true });
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const errors = [];
@@ -59,7 +59,7 @@ try {
       const url = route.request().url();
       if (url.includes('/portrait?'))
         return route.fulfill({ contentType: 'image/png', body: fixture });
-      if (url.endsWith('/portrait-smoke-v1.webp'))
+      if (url.endsWith('/portrait-wisp-v2.webp'))
         return route.fulfill({ contentType: 'image/webp', body: vapor });
       return route.fulfill({
         contentType: 'text/html',

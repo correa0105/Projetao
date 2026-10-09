@@ -966,6 +966,22 @@
   padding: 10px 0;
   border-bottom: 1px solid #5c5544;
 }
+.vtt-hp-status { padding: 10px 12px; background: #0d151d; border: 1px solid #35414a; border-radius: 6px; }
+.vtt-hp-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:9px; }
+.vtt-hp-heading > span:first-child { display:flex; align-items:center; gap:6px; font-size:11px; color:#c4bfb2; }
+.vtt-hp-heading svg { color:#cf7970; }
+.vtt-hp-heading strong { font-size:23px; line-height:1; font-variant-numeric:tabular-nums; color:#f5ead5; }
+.vtt-hp-heading small { font-size:12px; color:#9cabb3; }
+.vtt-hp-track { height:5px; border-radius:4px; background:#222e37; overflow:hidden; }
+.vtt-hp-track > span { display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#487d71,#93bc96); transition:width .18s ease; }
+.vtt-hp-status[data-low="true"] .vtt-hp-track > span { background:#b8665c; }
+.vtt-hp-modes { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.vtt-hp-modes button[aria-pressed="true"] { border-color:#b39557; background:#30302b; color:#f1d395; }
+.vtt-context-options { border-top:1px solid #394047; padding-top:8px; }
+.vtt-context-options summary { cursor:pointer; padding:8px 6px; font-size:12px; font-weight:600; color:#d6c6a5; }
+.vtt-context-options > details { border-top:1px solid #303943; margin:3px 0; }
+.vtt-context-options details > :not(summary) { margin:6px 0; }
+.vtt-context-options fieldset { margin:0; }
 .vtt-hp-control > small {
   color: #b7b0a2;
   font-size: 11px;
@@ -1243,3 +1259,10 @@
 .vtt-token-attachment small {
   line-height: 1.5;
 }
+.vtt-animated-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.vtt-animated-grid article{border:1px solid #3b4a54;background:#101920;border-radius:6px;overflow:hidden;padding:8px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.vtt-animated-grid canvas{width:100%;height:auto;display:block;aspect-ratio:1}
+.vtt-animated-grid strong{font-size:13px;color:#e9d6b4}
+.vtt-animated-grid p,.vtt-animated-library>p{font-size:11px;line-height:1.5;color:#c5c2b7}
+.vtt-animated-grid p{flex:1}
+.vtt-animated-grid button{width:100%}

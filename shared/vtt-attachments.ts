@@ -56,15 +56,46 @@ export function orderedAttachmentTokens(tokens: VttToken[]): VttToken[] {
   for (const token of sorted) visit(token);
   return result;
 }
-export function syncAttachmentPositions(scene: VttScene) {
+export function syncAttachmentPositions(scene: VttScene, previous?: VttScene) {
   for (const token of orderedAttachmentTokens(scene.tokens)) {
     if (!token.attachment) continue;
     const parent = scene.tokens.find((t) => t.id === token.attachment!.tokenId);
     if (parent) {
+      const oldRotation =
+        token.attachment.baseRotation ??
+        previous?.tokens.find((t) => t.id === parent.id)?.rotation ??
+        parent.rotation;
+      const degrees = parent.rotation - oldRotation;
+      if (degrees) {
+        const radians = (degrees * Math.PI) / 180,
+          x = token.attachment.offsetX,
+          y = token.attachment.offsetY;
+        token.attachment.offsetX = x * Math.cos(radians) - y * Math.sin(radians);
+        token.attachment.offsetY = x * Math.sin(radians) + y * Math.cos(radians);
+        token.rotation = (((token.rotation + degrees) % 360) + 360) % 360;
+      }
+      token.attachment.baseRotation = parent.rotation;
       token.x = parent.x + token.attachment.offsetX;
       token.y = parent.y + token.attachment.offsetY;
     }
   }
+}
+/** Native top-down art faces north at zero degrees. Use the last traveled leg. */
+export function movementFacing(token: VttToken, start: Point, path: Point[]) {
+  let from = start,
+    result = token.rotation;
+  for (const to of path) {
+    if (Math.hypot(to.x - from.x, to.y - from.y) > 0.5)
+      result =
+        ((((Math.atan2(to.y - from.y, to.x - from.x) * 180) / Math.PI +
+          90 +
+          (token.flipY ? 180 : 0)) %
+          360) +
+          360) %
+        360;
+    from = to;
+  }
+  return result;
 }
 export function attachedGroup(tokens: VttToken[], base: VttToken) {
   const root = attachmentRoot(tokens, base);

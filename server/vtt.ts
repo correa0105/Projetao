@@ -22,13 +22,18 @@ import {
 } from './vtt-premium.js';
 import { vttMonsterPresetRouter, saveMonsterPresets } from './vtt-monster-presets.js';
 import { vttDamageRouter } from './vtt-damage.js';
-import { movementBlocked, attachmentMovementError } from '../shared/vtt-movement.js';
+import {
+  movementBlocked,
+  attachmentMovementError,
+  attachmentRotationError,
+} from '../shared/vtt-movement.js';
 import {
   attachmentError,
   attachmentRoot,
   attachmentUnavailable,
   syncAttachmentPositions,
   translateAttachmentGroup,
+  movementFacing,
 } from '../shared/vtt-attachments.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
 import { vttCompanionsRouter } from './vtt-companions.js';
@@ -693,7 +698,10 @@ export function vttRouter() {
         if (typeof req.body.document[field] !== 'boolean')
           input.document[field] = r.document[field];
       for (const scene of input.document.scenes) {
-        syncAttachmentPositions(scene);
+        syncAttachmentPositions(
+          scene,
+          r.document.scenes.find((s) => s.id === scene.id),
+        );
         if (
           scene.tokens.some(
             (t) => t.attachment && (t.x < 0 || t.y < 0 || t.x > scene.width || t.y > scene.height),
@@ -780,6 +788,7 @@ export function vttRouter() {
             color: preset.color,
             scale: preset.scale,
             duration: preset.duration,
+            ...(preset.intensity !== undefined ? { intensity: preset.intensity } : {}),
             at,
           });
         }
@@ -860,7 +869,7 @@ export function vttRouter() {
               !canSee(parent, s, res.locals.user.id)))
         )
           throw new AppError(403, 'Escolha um token de apoio que você possa mover.');
-        child.attachment = { tokenId, offsetX: 0, offsetY: 0 };
+        child.attachment = { tokenId, offsetX: 0, offsetY: 0, baseRotation: parent.rotation };
         const error = attachmentError(s.tokens);
         if (error) throw new AppError(400, error);
         syncAttachmentPositions(s);
@@ -936,9 +945,15 @@ export function vttRouter() {
       }
       const oldHp = t.hp;
       const old = structuredClone(t);
+      const previous = structuredClone(s);
       const { path: _path, ...patch } = input;
       if (!t.attachment) translateAttachmentGroup(s, t, destination);
       Object.assign(t, patch);
+      if (destination.x !== old.x || destination.y !== old.y)
+        t.rotation = movementFacing(t, old, path);
+      syncAttachmentPositions(s, previous);
+      const rotationError = attachmentRotationError(s, previous, t);
+      if (rotationError) throw new AppError(400, rotationError);
       applyTokenDeath(t, oldHp, Date.now(), r.document.automaticDeath);
       applyTokenBlood(s, t, old, path, Date.now(), r.document.bloodEnabled);
       await db.query(

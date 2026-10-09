@@ -115,6 +115,7 @@ export type SpellEffect = {
   concentration: boolean;
   persistent: boolean;
   characterId?: string;
+  movement?: { tokenId: string; from: { x: number; y: number }; to: { x: number; y: number } }[];
 };
 export function preparedSpell(
   base: SpellProfile,

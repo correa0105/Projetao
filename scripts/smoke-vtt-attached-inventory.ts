@@ -211,6 +211,12 @@ try {
   let p = await point(1000, 400);
   await page.mouse.click(p.x, p.y, { button: 'right' });
   await expect(page.locator('.vtt-context-menu')).toBeVisible();
+  await expect(page.getByLabel('Token de apoio')).not.toBeVisible();
+  await page.locator('.vtt-context-options > summary').click();
+  await page
+    .locator('.vtt-context-options summary')
+    .getByText('Movimento vinculado', { exact: true })
+    .click();
   await expect(page.getByLabel('Token de apoio')).toHaveValue(horse.id);
   await page.getByRole('button', { name: 'Abrir ficha', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Fechar ficha', exact: true })).toBeVisible();

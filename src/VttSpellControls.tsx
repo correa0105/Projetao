@@ -126,8 +126,8 @@ export function VttSpellControls({
           </p>
           {profile.destinationRange && (
             <small>
-              Clique também no chão para indicar o destino, até {profile.destinationRange} pés. O
-              deslocamento do token continua sob controle da mesa.
+              Clique também no chão para indicar o destino. Ao confirmar, os tokens selecionados são
+              transportados para espaços livres no destino.
             </small>
           )}
           {profile.shape && (

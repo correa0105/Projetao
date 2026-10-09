@@ -11,3 +11,6 @@
   line-height: 1.2;
   white-space: nowrap;
 }
+.vtt-subtabs.vtt-library-tabs button:last-child {
+  grid-column: 1 / -1;
+}

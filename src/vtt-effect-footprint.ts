@@ -4,6 +4,7 @@ type Sample = {
   edge: EffectPoint[];
   aspect: number;
   mask?: HTMLCanvasElement;
+  source?: HTMLImageElement;
 };
 export type EffectFootprint = Sample & {
   sx: number;
@@ -67,7 +68,7 @@ function sample(image?: HTMLImageElement): Sample {
     c.fillRect(0, 0, 64, 64);
     const result =
       body.length && edge.length
-        ? { body: compact(body, 120), edge: compact(edge, 100), aspect, mask }
+        ? { body: compact(body, 120), edge: compact(edge, 100), aspect, mask, source: image }
         : { ...fallback, aspect };
     samples.set(image, result);
     return result;

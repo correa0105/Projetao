@@ -303,6 +303,22 @@ export function VttEffects({
                         />{' '}
                         Infinito · até limpar
                       </label>
+                      {draft.kind === 'petrify' && (
+                        <label>
+                          Petrificação · {Math.round((draft.intensity ?? 0.8) * 100)}%
+                          <input
+                            aria-label="Intensidade da petrificação"
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.05"
+                            value={draft.intensity ?? 0.8}
+                            onChange={(event) =>
+                              setDraft({ ...draft, intensity: Number(event.target.value) })
+                            }
+                          />
+                        </label>
+                      )}
                     </div>
                   ) : (
                     <p>

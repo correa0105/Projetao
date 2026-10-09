@@ -1,4 +1,7 @@
 import { effectMaterialsReady } from './vtt-effects-materials';
+import { physicalPropsReady } from './vtt-effects-physical';
+import { animatedAssets, animatedAssetMime, type AnimatedAsset } from '../shared/vtt-animated-assets';
+import { VttAnimatedAssets } from './VttAnimatedAssets';
 import {
   useCallback,
   useEffect,
@@ -137,6 +140,7 @@ import {
   attachmentUnavailable,
   syncAttachmentPositions,
   translateAttachmentGroup,
+  movementFacing,
 } from '../shared/vtt-attachments';
 import { Link2 } from 'lucide-react';
 import { VttHpControl } from './VttHpControl';
@@ -369,7 +373,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     [historyEnd, setHistoryEnd] = useState(false),
     [settingsId, setSettingsId] = useState<string | null>(null),
     [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
-  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium'>(
+  const [library, setLibrary] = useState<'images' | 'monsters' | 'spells' | 'presets' | 'premium' | 'animated'>(
       'images',
     ),
     [presetVersion, setPresetVersion] = useState(0),
@@ -627,6 +631,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   function editScene(fn: (s: VttScene) => void, remember = true) {
     edit((d) => {
       const scene = d.scenes.find((s) => s.id === d.activeScene)!;
+      const previous = structuredClone(scene);
       fn(scene);
       for (const member of scene.tokens)
         if (member.attachment) {
@@ -634,7 +639,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           if (!parent || member.layer !== 'tokens' || parent.layer !== 'tokens')
             member.attachment = null;
         }
-      syncAttachmentPositions(scene);
+      syncAttachmentPositions(scene, previous);
     }, remember);
   }
   function movementTokens(ids: string[]) {
@@ -683,13 +688,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       return;
     }
     if (gm)
-      editScene((s) =>
-        translateAttachmentGroup(
-          s,
-          s.tokens.find((t) => t.id === root.id)!,
-          destination,
-        ),
-      );
+      editScene((s) => {
+        const base = s.tokens.find(t => t.id === root.id)!;
+        base.rotation = movementFacing(base, base, [destination]);
+        translateAttachmentGroup(s, base, destination);
+      });
     else
       void act(async () =>
         receive(
@@ -1046,7 +1049,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       (!!combat.state?.active ||
         !!effectPreview ||
         spellcasting.effects.some((e) => e.persistent && (!e.expires || e.expires > Date.now())) ||
-        scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death')));
+        scene.tokens.some((t) => t.animatedAsset?.playing) ||
+      scene.tokens.some((t) => t.effects.some((e) => e.duration === 0 && e.kind !== 'death')));
     const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
     const restartAnimation = () => {
       cancelAnimationFrame(frame);
@@ -1063,7 +1067,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       frame = requestAnimationFrame(animate);
     };
     restartAnimation();
-    void effectMaterialsReady.then(() => {
+    void Promise.all([effectMaterialsReady, physicalPropsReady]).then(() => {
       if (!disposed) draw();
     });
     motionPreference.addEventListener('change', restartAnimation);
@@ -1763,6 +1767,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
         })
       )
         return;
+      const previous = d.original.scenes.find(s => s.id === current.id)!;
+      for (const start of d.tokens) {
+        const moved = current.tokens.find(t => t.id === start.id);
+        if (moved && moved.layer !== 'map') moved.rotation = movementFacing(moved, start, d.path?.length ? d.path : [{x:moved.x,y:moved.y}]);
+      }
+      syncAttachmentPositions(current, previous);
       if (gm) {
         undo.current.push(d.original);
         redo.current = [];
@@ -1866,6 +1876,20 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     changeLayer(t.layer);
     setSelection([t.id]);
     setTab('token');
+  }
+  function addAnimatedAsset(id: AnimatedAsset['id'], at?: Point) {
+    if (!gm || !scene || preview) return;
+    const asset = animatedAssets.find(a => a.id === id);
+    if (!asset) return;
+    const t = newToken(crypto.randomUUID(), scene);
+    const size = Math.min(scene.width, scene.height, scene.grid.size * asset.squares);
+    Object.assign(t, { name: asset.name, image: asset.image, layer: 'map',
+      width: size, height: size, animatedAsset: { id, speed: 1, intensity: .8, playing: true } });
+    const p = at ? snapPoint(at, scene.grid) : camera;
+    t.x = Math.max(size / 2, Math.min(scene.width - size / 2, p.x));
+    t.y = Math.max(size / 2, Math.min(scene.height - size / 2, p.y));
+    editScene(s => s.tokens.push(t));
+    changeLayer('map'); setSelection([t.id]); setTool('select');
   }
   function addMonster(e: Entry, at?: Point, keepLibrary = false) {
     if (!scene || !gm || preview) return;
@@ -2751,13 +2775,16 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 !busy &&
                 (e.dataTransfer.types.includes(characterMime) ||
                   e.dataTransfer.types.includes(companionMime) ||
-                  (gm && e.dataTransfer.types.includes(monsterMime)))
+                  (gm && (e.dataTransfer.types.includes(monsterMime) || e.dataTransfer.types.includes(animatedAssetMime))))
               ) {
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'copy';
               }
             }}
             onDrop={(e) => {
+              if (gm && !preview && e.dataTransfer.types.includes(animatedAssetMime)) {
+                e.preventDefault(); addAnimatedAsset(e.dataTransfer.getData(animatedAssetMime) as AnimatedAsset['id'], point(e)); return;
+              }
               if (!spectator && !preview && e.dataTransfer.types.includes(companionMime)) {
                 e.preventDefault();
                 const id = e.dataTransfer.getData(companionMime);
@@ -3606,6 +3633,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       </div>
                       {gm && (
                         <>
+                          {token.animatedAsset && <fieldset><legend>Animação do ambiente</legend>
+                            <label className="vtt-check"><input type="checkbox" checked={token.animatedAsset.playing} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,playing:e.target.checked}})}/>Animar asset</label>
+                            <NumberField label="Velocidade da animação" value={token.animatedAsset.speed} min={.25} max={2} onChange={v=>editToken({animatedAsset:{...token.animatedAsset!,speed:v}})}/>
+                            <label>Intensidade<input aria-label="Intensidade do asset" type="range" min={.2} max={1} step={.05} value={token.animatedAsset.intensity} onChange={e=>editToken({animatedAsset:{...token.animatedAsset!,intensity:Number(e.target.value)}})}/></label>
+                          </fieldset>}
                           <h3>Barra de boss</h3>
                           <label>
                             Barra de boss
@@ -3834,7 +3866,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       className="vtt-subtabs vtt-library-tabs"
                       aria-label="Categorias da biblioteca"
                     >
-                      {(['monsters', 'presets', 'premium', 'spells'] as const).map((k) => (
+                      {(['monsters', 'presets', 'premium', 'spells', 'animated'] as const).map((k) => (
                         <button
                           key={k}
                           aria-label={
@@ -3843,6 +3875,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               presets: 'Presets de monstros',
                               premium: 'Galeria de monstros',
                               spells: 'Magias',
+                              animated: 'Assets animados',
                             }[k]
                           }
                           title={
@@ -3851,6 +3884,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               presets: 'Presets de monstros',
                               premium: 'Galeria de monstros',
                               spells: 'Magias',
+                              animated: 'Assets animados',
                             }[k]
                           }
                           aria-pressed={library === k}
@@ -3867,6 +3901,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               presets: 'Presets',
                               premium: 'Galeria',
                               spells: 'Magias',
+                              animated: 'Assets animados',
                             }[k]
                           }
                         </button>
@@ -3882,7 +3917,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       placeholder="Nome, tipo, nível…"
                     />
                   </label>
-                  {gm && library !== 'presets' && library !== 'premium' && (
+                  {gm && library !== 'presets' && library !== 'premium' && library !== 'animated' && (
                     <label className="vtt-file-button">
                       <Upload size={14} />
                       {library === 'images' ? 'Enviar imagem' : 'Importar JSON do 5etools'}
@@ -3907,7 +3942,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       />
                     </label>
                   )}
-                  {library === 'presets' || library === 'premium' ? (
+                  {library === 'animated' ? (
+                    <VttAnimatedAssets query={query} gm={gm && !preview} add={addAnimatedAsset} />
+                  ) : library === 'presets' || library === 'premium' ? (
                     <VttPrivateLibrary
                       kind={library}
                       gm={gm && !preview}
@@ -5114,6 +5151,13 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                       await save();
                     }}
                   />
+                </>
+              )}
+              <details className="vtt-context-options" key={token.id}>
+                <summary>Mais opções</summary>
+                {gm && (<>
+                  <details>
+                    <summary>Combate</summary>
                   <button
                     disabled={
                       combat.busy ||
@@ -5138,6 +5182,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   >
                     Adicionar selecionados à ordem
                   </button>
+                  </details>
+                  <details>
+                    <summary>Camada e profundidade</summary>
                   <label>
                     Camada do objeto
                     <select
@@ -5171,11 +5218,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   <p>
                     0,1 fica à frente de 0. −0,1 fica atrás. A ordem vale dentro da mesma camada.
                   </p>
+                  </details>
                 </>
               )}
               {canToken && (
                 <>
                   {token.layer === 'tokens' && (
+                    <details>
+                    <summary>Movimento vinculado</summary>
                     <fieldset className="vtt-token-attachment">
                       <legend>Movimento vinculado</legend>
                       <label>
@@ -5248,7 +5298,10 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                           : 'Escolha um apoio para prender este token por cima dele.'}
                       </small>
                     </fieldset>
+                    </details>
                   )}
+                  <details>
+                  <summary>Orientação</summary>
                   <div className="vtt-two">
                     <button
                       onClick={() =>
@@ -5312,11 +5365,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   >
                     Redefinir orientação
                   </button>
+                  </details>
                 </>
               )}
               {gm && (
-                <>
-                  <hr />
+                <details>
+                  <summary>Visibilidade e organização</summary>
                   <button
                     onClick={() =>
                       editSelected((t) => {
@@ -5341,11 +5395,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                     <Copy size={14} />
                     Duplicar seleção
                   </button>
-                </>
+                  <button className="vtt-delete" onClick={removeSelected}>
+                    <Trash2 size={14} /> Excluir seleção
+                  </button>
+                </details>
               )}
+              </details>
             </>
           )}
-          {gm && (
+          {gm && !token && (
             <button className="vtt-delete" onClick={removeSelected}>
               <Trash2 size={14} />
               Excluir seleção
