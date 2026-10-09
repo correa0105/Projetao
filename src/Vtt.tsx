@@ -2279,6 +2279,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       {notice && (
         <div className="vtt-notice" role="alert">
           {notice}
+          {notice === vttUpdateMessage && (
+            <button onClick={() => window.location.reload()}>Recarregar VTT</button>
+          )}
           <button aria-label="Fechar aviso" onClick={() => setNotice('')}>
             <X size={14} />
           </button>

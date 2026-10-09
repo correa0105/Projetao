@@ -1,3 +1,5 @@
+Correção de compatibilidade de 09/10: protocolo VTT 4 rejeita leituras/comandos de abas antigas antes de devolver novos campos. Erro local ao conjurar usa aviso claro e botão Recarregar VTT. Blur com bloodEnabled/automaticDeath foi validado em navegador e banco descartável. Guia docs/VTT-SCHEMA-COMPAT-20261009.md. Tokens de animais e refino de arte continuam em andamento.
+
 # Memória do projeto — Alvorada Cinzenta
 
 ## Correção posterior dos efeitos e ações da sala — 09/10/2026

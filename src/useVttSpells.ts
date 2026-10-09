@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { api } from './api';
+import { vttErrorMessage } from '../shared/vtt-protocol';
 import {
   spellProfile,
   preparedSpell,
@@ -184,7 +185,7 @@ export function useVttSpells(
         });
         confirmed.current = null;
       } catch (e) {
-        setError((e as Error).message);
+        setError(vttErrorMessage(e));
       } finally {
         setBusy(false);
         busyRef.current = false;
@@ -415,7 +416,7 @@ export function useVttSpells(
       confirmed.current = null;
       await Promise.all([load(), refresh()]);
     } catch (e) {
-      setError((e as Error).message);
+      setError(vttErrorMessage(e));
     } finally {
       busyRef.current = false;
       setBusy(false);
@@ -427,7 +428,7 @@ export function useVttSpells(
       await api(url + '/' + id, { method: 'DELETE' });
       await load();
     } catch (e) {
-      setError((e as Error).message);
+      setError(vttErrorMessage(e));
     }
   }
   const ready =

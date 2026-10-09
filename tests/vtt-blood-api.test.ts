@@ -26,7 +26,7 @@ test('blood follows authoritative damage, healing and movement; persists without
         Origin: origin,
         Cookie: who?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '3',
+        'X-Vtt-Schema-Version': '4',
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });

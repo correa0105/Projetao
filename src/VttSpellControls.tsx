@@ -1,5 +1,6 @@
 import { X, Sparkles, RotateCcw, Trash2, Move, Wind } from 'lucide-react';
 import { shapeNames } from '../shared/vtt-spells';
+import { vttUpdateMessage } from '../shared/vtt-protocol';
 import type { VttSpellsController } from './useVttSpells';
 import type { VttScene } from '../shared/vtt';
 import './vtt-spells.css';
@@ -23,6 +24,9 @@ export function VttSpellControls({
       {spells.error && (
         <div className="vtt-spell-error" role="alert">
           {spells.error}
+          {spells.error === vttUpdateMessage && (
+            <button onClick={() => window.location.reload()}>Recarregar VTT</button>
+          )}
           <button aria-label="Fechar aviso de magia" onClick={spells.clearError}>
             <X size={14} />
           </button>

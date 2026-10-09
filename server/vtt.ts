@@ -401,6 +401,12 @@ async function chooseParticipation(
 }
 export function vttRouter() {
   const router = express.Router();
+  router.use((req, _res, next) => {
+    const version = req.get('X-Vtt-Schema-Version');
+    if (version && version !== String(vttProtocolVersion))
+      throw new AppError(409, vttUpdateMessage);
+    next();
+  });
   router.use('/vtt', express.json({ limit: '12mb' }));
   router.use('/vtt/rooms/:id', async (req, res, next) => {
     const roleChange = req.path === '/participation' || req.path === '/viewpoint';

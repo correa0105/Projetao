@@ -22,12 +22,12 @@ const { createApp } = await import('../server/app.js'),
 await new Promise<void>((resolve) => server.once('listening', resolve));
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   ctx = await browser.newContext({
-    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '3' },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '4' },
     viewport: { width: 1440, height: 1000 },
     acceptDownloads: true,
   }),
   ctx2 = await browser.newContext({
-    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '3' },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '4' },
     viewport: { width: 1280, height: 900 },
   }),
   page = await ctx.newPage(),
@@ -943,7 +943,7 @@ try {
   await peerPage.screenshot({ path: 'test-results/vtt-darkvision-color-fog.png' });
   const observerContext = await browser.newContext({
     viewport: { width: 1280, height: 900 },
-    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '3' },
+    extraHTTPHeaders: { 'X-Vtt-Schema-Version': '4' },
   });
   const observer = await signup(observerContext, 'Espectador'),
     observerPage = await observerContext.newPage();

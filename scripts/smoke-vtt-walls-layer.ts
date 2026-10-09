@@ -20,7 +20,7 @@ await new Promise<void>((resolve) => server.once('listening', resolve));
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const context = await browser.newContext({
   viewport: { width: 1440, height: 1000 },
-  extraHTTPHeaders: { 'X-Vtt-Schema-Version': '3' },
+  extraHTTPHeaders: { 'X-Vtt-Schema-Version': '4' },
 });
 const page = await context.newPage();
 const errors: string[] = [];
@@ -308,7 +308,7 @@ try {
   expect(finalState.document.scenes[0].walls).toEqual(
     scene.walls.map((w: any, i: number) => ({ ...w, open: i === 1 })),
   );
-  const player = await browser.newContext({ extraHTTPHeaders: { 'X-Vtt-Schema-Version': '3' } });
+  const player = await browser.newContext({ extraHTTPHeaders: { 'X-Vtt-Schema-Version': '4' } });
   const playerSignup = await player.request.post(origin + '/api/auth/sign-up/email', {
     headers: { Origin: origin },
     data: {

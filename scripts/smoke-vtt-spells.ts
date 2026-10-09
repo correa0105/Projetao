@@ -3,6 +3,7 @@ import { chromium, expect, type BrowserContext } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 import { newToken } from '../shared/vtt';
+import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol';
 import { spellProfile, preparedSpell } from '../shared/vtt-spells';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
@@ -22,7 +23,7 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
     [0, 1, 2].map(() =>
       browser.newContext({
         viewport: { width: 1440, height: 1000 },
-        extraHTTPHeaders: { 'X-Vtt-Schema-Version': '3' },
+        extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
       }),
     ),
   );
@@ -56,6 +57,11 @@ try {
   await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [owner.id]);
   let room = (await api(gm, '/vtt', 'POST', { name: 'Magias e áreas' })).data;
   const root = '/vtt/rooms/' + room.id;
+  const stale = await gm.request.get(origin + '/api' + root, {
+    headers: { 'X-Vtt-Schema-Version': '3' },
+  });
+  expect(stale.status()).toBe(409);
+  expect((await stale.json()).error).toBe(vttUpdateMessage);
   expect((await api(player, '/vtt/join', 'POST', { invite: room.invite })).status).toBe(200);
   expect(
     (await api(spectator, '/vtt/join', 'POST', { invite: room.invite, role: 'spectator' })).status,
@@ -166,9 +172,20 @@ try {
   );
   expect(fog.status, JSON.stringify(fog.data)).toBe(201);
   expect(fog.data.effect.profile.size).toBe(40);
-  expect((await api(player, root + '/spells/' + fog.data.effect.id, 'PATCH', {scene_id:scene.id,points:[{x:1000,y:600,angle:0}]})).status).toBe(400);
-  const moon = await api(gm,root+'/spells','POST',{...command('Moonbeam',2,[],[{x:900,y:500,angle:0}]),actor_id:npc.id,free:true});
-  expect(moon.status,JSON.stringify(moon.data)).toBe(201);
+  expect(
+    (
+      await api(player, root + '/spells/' + fog.data.effect.id, 'PATCH', {
+        scene_id: scene.id,
+        points: [{ x: 1000, y: 600, angle: 0 }],
+      })
+    ).status,
+  ).toBe(400);
+  const moon = await api(gm, root + '/spells', 'POST', {
+    ...command('Moonbeam', 2, [], [{ x: 900, y: 500, angle: 0 }]),
+    actor_id: npc.id,
+    free: true,
+  });
+  expect(moon.status, JSON.stringify(moon.data)).toBe(201);
   const moved = await api(gm, root + '/spells/' + moon.data.effect.id, 'PATCH', {
     scene_id: scene.id,
     points: [{ x: 1000, y: 600, angle: 0 }],
@@ -362,6 +379,33 @@ try {
   await page.getByLabel('Nível do espaço de magia').selectOption('3');
   await expect(page.locator('.vtt-spell-footprint')).toContainText('60 pés');
   await page.getByLabel('Cancelar conjuração').click();
+  const gmPage = await gm.newPage();
+  gmPage.on('pageerror', (e) => errors.push(e.message));
+  await gmPage.goto(origin + '/#vtt');
+  await expect(gmPage.getByLabel('Tabuleiro da mesa', { exact: true })).toBeVisible();
+  await gmPage.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
+  await gmPage.getByLabel('Respingos de sangue', { exact: true }).uncheck();
+  await gmPage.getByLabel('Automático ao zerar PV', { exact: true }).uncheck();
+  await gmPage.evaluate(
+    (id) =>
+      window.dispatchEvent(
+        new CustomEvent('vtt-prepare-spell', { detail: { actorId: id, spellId: 'Blur' } }),
+      ),
+    npc.id,
+  );
+  await expect(gmPage.getByLabel('Preparação da magia')).toBeVisible();
+  await expect(gmPage.locator('.vtt-notice')).toHaveCount(0);
+  const savedSettings = (await api(gm, root)).data.document;
+  expect(savedSettings.bloodEnabled).toBe(false);
+  expect(savedSettings.automaticDeath).toBe(false);
+  await gmPage.getByRole('button', { name: 'Confirmar conjuração', exact: true }).click();
+  await expect(gmPage.getByLabel('Preparação da magia')).toHaveCount(0);
+  expect(
+    (await api(gm, root + '/spells')).data.effects.some(
+      (effect: any) => effect.actorId === npc.id && effect.profile.id === 'spell-blur',
+    ),
+  ).toBe(true);
+  await gmPage.close();
   const current = (await api(gm, root)).data;
   current.document.scenes[0].tokens.find((t: any) => t.id === caster.id).hp = 0;
   expect(
