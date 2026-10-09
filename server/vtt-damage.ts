@@ -74,8 +74,8 @@ export function vttDamageRouter(
       const old = structuredClone(target);
       const hp = target.hp;
       target.hp = Math.max(0, hp - amount);
-      applyTokenDeath(target, hp);
-      applyTokenBlood(scene, target, old);
+      applyTokenDeath(target, hp, Date.now(), r.document.automaticDeath);
+      applyTokenBlood(scene, target, old, [], Date.now(), r.document.bloodEnabled);
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1',
         [id, JSON.stringify(r.document)],

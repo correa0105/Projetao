@@ -1,8 +1,11 @@
 # Alvorada Cinzenta
 
 House: **Personagem → Espelhar imagem** vira a figura e salva sua direção.
-VTT: dano/cura ajustam manchas de sangue; movimentos deixam gotas/rastros.
-O mestre pode limpar o chão em Configurações e ajuda → Mesa.
+VTT: dano/cura ajustam manchas e pequenos respingos; movimentos não deixam rastro.
+Em Configurações e ajuda → Mesa, o mestre escolhe sangue e morte automática.
+Biblioteca de efeitos abre prévia no token e ajustes abaixo, mantendo a galeria.
+Janela do botão direito pode ser arrastada pelo cabeçalho.
+[Efeitos e ações da sala](docs/VTT-ROOM-EFFECTS-20261009.md).
 [Funcionamento e verificação](docs/HOUSE-FLIP-BLOOD-20261009.md).
 
 Visitas de perfil: menu compacto com a mesma posição nas cinco abas, fundo

@@ -1,5 +1,15 @@
 # Memória do projeto — Alvorada Cinzenta
 
+## Correção posterior dos efeitos e ações da sala — 09/10/2026
+
+Direção atual substitui rastro denso do sangue: só pequenos respingos por dano;
+movimento não cria marcas. Mestre pode desligar sangue para todos na Mesa.
+Efeito de morte agora na Mesa, automático ligado inicialmente, escolha manual
+persistente. Prévia privada no token ao clicar, biblioteca permanece com ajustes
+embaixo. Menu do botão direito arrastável pelo cabeçalho; + Token removido da
+aba de seleção. Protocolo 3 e HTML no-store evitam salvar com parser antigo.
+Guia VTT-ROOM-EFFECTS-20261009.md. Pedidos de animais/arte/VFX seguem em andamento.
+
 ## Espelhamento na House e sangue no VTT — 09/10/2026
 
 House → Personagem tem Espelhar imagem, persistido em house_presence.flip_x

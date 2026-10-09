@@ -26,7 +26,7 @@ test('blood follows authoritative damage, healing and movement; persists without
         Origin: origin,
         Cookie: who?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '2',
+        'X-Vtt-Schema-Version': '3',
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -99,7 +99,7 @@ test('blood follows authoritative damage, healing and movement; persists without
     r = await request(path, gm, 'PUT', { revision: room.revision, document: room.document });
     assert.equal(r.status, 200);
     room = r.data;
-    assert.ok(room.document.scenes[0].blood.some((d: any) => d.kind === 'trail'));
+    assert.ok(room.document.scenes[0].blood.every((d: any) => d.kind === 'splash'));
     // The imported character's sheet and player's accepted path use the same authority.
     r = await request(path + `/sheets/${hero.id}/damage`, player, 'POST', { amount: 50 });
     assert.equal(r.status, 200);
@@ -113,9 +113,10 @@ test('blood follows authoritative damage, healing and movement; persists without
     });
     assert.equal(r.status, 200);
     room = r.data;
-    assert.ok(
-      room.document.scenes[0].blood.filter((d: any) => d.source === hero.id && d.kind === 'trail')
-        .length > 10,
+    assert.equal(
+      room.document.scenes[0].blood.filter((d: any) => d.source === hero.id && d.kind === 'splash')
+        .length,
+      1,
     );
     const wounded = structuredClone(getToken(hero.id).blood.wounds);
     r = await request(path + `/sheets/${hero.id}/heal`, gm, 'POST', { amount: 25 });
@@ -166,6 +167,50 @@ test('blood follows authoritative damage, healing and movement; persists without
       ).status,
       400,
     );
+    room = (await request(path, gm)).data;
+    assert.equal(room.document.automaticDeath, true);
+    room.document.bloodEnabled = false;
+    room.document.automaticDeath = false;
+    assert.equal(
+      (await request(path, player, 'PUT', { revision: room.revision, document: room.document }))
+        .status,
+      403,
+    );
+    r = await request(path, gm, 'PUT', { revision: room.revision, document: room.document });
+    assert.equal(r.status, 200);
+    room = r.data;
+    const markCount = room.document.scenes[0].blood.length;
+    getToken(monster.id).hp = 0;
+    r = await request(path, gm, 'PUT', { revision: room.revision, document: room.document });
+    assert.equal(r.status, 200);
+    room = r.data;
+    assert.equal(room.document.scenes[0].blood.length, markCount);
+    assert.equal(getToken(monster.id).deathAt, null);
+    const rejoined = (await request(path, gm)).data.document;
+    assert.equal(rejoined.bloodEnabled, false);
+    assert.equal(rejoined.automaticDeath, false);
+    delete room.document.bloodEnabled;
+    delete room.document.automaticDeath;
+    r = await request(path, gm, 'PUT', { revision: room.revision, document: room.document });
+    assert.equal(r.status, 200);
+    assert.equal(
+      r.data.document.bloodEnabled,
+      false,
+      'omitted settings never reset a saved choice',
+    );
+    assert.equal(r.data.document.automaticDeath, false);
+    const stale = await fetch(base + path, {
+      method: 'PUT',
+      headers: {
+        Origin: origin,
+        Cookie: gm.cookie,
+        'Content-Type': 'application/json',
+        'X-Vtt-Schema-Version': '2',
+      },
+      body: JSON.stringify({ revision: r.data.revision, document: r.data.document }),
+    });
+    assert.equal(stale.status, 409);
+    assert.match((await stale.json()).error, /Recarregue/);
     r = await request(path + '/blood/clear', gm, 'POST', {});
     assert.equal(r.status, 200);
     assert.equal(r.data.document.scenes[0].blood.length, 0);

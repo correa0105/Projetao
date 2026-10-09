@@ -409,6 +409,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
     focusFrame = useRef(0),
     contextRef = useRef<HTMLDivElement>(null);
+  const contextDrag = useRef<{ id: number; dx: number; dy: number } | null>(null);
   const music = useMusicInterlude();
   const sounds = useVttSounds(state?.id),
     soundQueue = useRef(Promise.resolve());
@@ -615,7 +616,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           s.tokens.find((t) => t.id === token.id)!,
           patch,
         );
-        applyTokenDeath(target, oldHp);
+        applyTokenDeath(target, oldHp, Date.now(), docRef.current?.automaticDeath);
         if (['vision', 'light', 'dimLight'].some((key) => key in patch)) activateTokenVision(s);
       });
     else if (canToken) {
@@ -898,6 +899,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           height: bounds.height,
           dpr,
           visualEffects,
+          bloodEnabled: doc?.bloodEnabled,
           spellEffects: spellcasting.effects,
           spellPreview: spellcasting.preview,
           images: images.current,
@@ -1858,6 +1860,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       width: out.width,
       height: out.height,
       dpr: 1,
+      bloodEnabled: doc?.bloodEnabled,
       images: images.current,
       selected: [],
       gm,
@@ -2530,15 +2533,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   await save();
                 }
               }}
-              editDeath={async (patch) => {
-                if (selectedEffectTokens.length) {
-                  if (!('deathAutomatic' in patch)) await save();
-                  editSelected((t) => {
-                    if (t.layer !== 'map') Object.assign(t, patch);
-                  });
-                  await save();
-                }
-              }}
             />
           )}
           <canvas
@@ -3030,12 +3024,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   >
                     {chatControlsCollapsed ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
                     {chatControlsCollapsed ? 'Mostrar controles do chat' : 'Minimizar'}
-                  </button>
-                )}
-                {gm && tab === 'token' && (
-                  <button className="vtt-gold" onClick={newMarker}>
-                    <Plus size={14} />
-                    Token
                   </button>
                 )}
               </div>
@@ -4486,6 +4474,70 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </label>
                   {gm && (
                     <>
+                      <h3>Efeitos da sala</h3>
+                      <label className="vtt-check">
+                        <input
+                          type="checkbox"
+                          checked={doc.bloodEnabled}
+                          disabled={busy}
+                          onChange={(e) => {
+                            const enabled = e.target.checked;
+                            edit((d) => {
+                              d.bloodEnabled = enabled;
+                            });
+                            void act(save);
+                          }}
+                        />
+                        Respingos de sangue
+                      </label>
+                      <p className="vtt-muted">
+                        Vale para todos os participantes. Movimentos não deixam rastros.
+                      </p>
+                      <fieldset className="vtt-effects-death" disabled={busy}>
+                        <legend>Efeito de morte</legend>
+                        <label className="vtt-check">
+                          <input
+                            type="checkbox"
+                            checked={doc.automaticDeath}
+                            onChange={(e) => {
+                              const enabled = e.target.checked;
+                              edit((d) => {
+                                d.automaticDeath = enabled;
+                              });
+                              void act(save);
+                            }}
+                          />
+                          Automático ao zerar PV
+                        </label>
+                        <div className="vtt-row">
+                          <button
+                            disabled={!selectedEffectTokens.length}
+                            onClick={() =>
+                              void act(async () => {
+                                editSelected((t) => {
+                                  if (t.layer !== 'map') t.deathAt = Date.now();
+                                });
+                                await save();
+                              })
+                            }
+                          >
+                            Aplicar efeito de morte
+                          </button>
+                          <button
+                            disabled={!selectedEffectTokens.some((t) => t.deathAt)}
+                            onClick={() =>
+                              void act(async () => {
+                                editSelected((t) => {
+                                  if (t.layer !== 'map') t.deathAt = null;
+                                });
+                                await save();
+                              })
+                            }
+                          >
+                            Limpar efeito de morte
+                          </button>
+                        </div>
+                      </fieldset>
                       <button
                         disabled={busy || !scene.blood.length}
                         onClick={() =>
@@ -4752,10 +4804,66 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           style={{
             left: contextMenu.x,
             top: contextMenu.y,
-            maxHeight: `calc(100dvh - ${contextMenu.y + 8}px)`,
+            maxHeight: 'calc(100dvh - 24px)',
           }}
         >
-          <header>
+          <header
+            tabIndex={0}
+            aria-label="Mover janela de ações"
+            title="Arraste para mover"
+            onPointerDown={(e) => {
+              if (e.button !== 0 || (e.target as Element).closest('button')) return;
+              e.preventDefault();
+              contextDrag.current = {
+                id: e.pointerId,
+                dx: e.clientX - contextMenu.x,
+                dy: e.clientY - contextMenu.y,
+              };
+              e.currentTarget.setPointerCapture(e.pointerId);
+            }}
+            onPointerMove={(e) => {
+              const drag = contextDrag.current,
+                rect = contextRef.current?.getBoundingClientRect();
+              if (!drag || drag.id !== e.pointerId || !rect) return;
+              setContextMenu({
+                x: Math.max(8, Math.min(e.clientX - drag.dx, innerWidth - rect.width - 8)),
+                y: Math.max(8, Math.min(e.clientY - drag.dy, innerHeight - rect.height - 8)),
+              });
+            }}
+            onPointerUp={(e) => {
+              contextDrag.current = null;
+              if (e.currentTarget.hasPointerCapture(e.pointerId))
+                e.currentTarget.releasePointerCapture(e.pointerId);
+            }}
+            onPointerCancel={() => {
+              contextDrag.current = null;
+            }}
+            onKeyDown={(e) => {
+              if (e.target !== e.currentTarget || !e.key.startsWith('Arrow')) return;
+              e.preventDefault();
+              e.stopPropagation();
+              const rect = contextRef.current!.getBoundingClientRect(),
+                step = e.shiftKey ? 40 : 10;
+              setContextMenu({
+                x: Math.max(
+                  8,
+                  Math.min(
+                    contextMenu.x +
+                      (e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0),
+                    innerWidth - rect.width - 8,
+                  ),
+                ),
+                y: Math.max(
+                  8,
+                  Math.min(
+                    contextMenu.y +
+                      (e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0),
+                    innerHeight - rect.height - 8,
+                  ),
+                ),
+              });
+            }}
+          >
             <span>
               {token?.name || selectedLight?.name || (selectedWall ? 'Barreira' : 'Desenho')}
             </span>

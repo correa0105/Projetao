@@ -42,7 +42,7 @@ test('duas artes atômicas, perfil separado, atualização do token sem alterar 
         Origin: origin,
         Cookie: cookie,
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '2',
+        'X-Vtt-Schema-Version': '3',
       },
       ...(body ? { body: JSON.stringify(body) } : {}),
     });

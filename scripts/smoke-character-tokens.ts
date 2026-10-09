@@ -24,7 +24,7 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
 async function api(context: BrowserContext, path: string, method = 'GET', data?: unknown) {
   const r = await context.request.fetch(origin + '/api' + path, {
     method,
-    headers: { Origin: origin, 'X-Vtt-Schema-Version': '2' },
+    headers: { Origin: origin, 'X-Vtt-Schema-Version': '3' },
     data,
   });
   return { status: r.status(), data: await r.json() };

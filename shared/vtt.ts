@@ -203,6 +203,8 @@ export type VttScene = z.infer<typeof sceneSchema>;
 export const documentSchema = z
   .object({
     version: z.literal(1),
+    bloodEnabled: z.boolean().default(true),
+    automaticDeath: z.boolean().default(true),
     soundboard: soundboardSchema.default(emptySoundboard),
     effects: z.array(effectPresetSchema).max(100).default([]),
     folders: z
@@ -352,9 +354,14 @@ export type VttState = {
   focusSignal: VttFocusSignal | null;
 };
 export type VttFocusSignal = Point & { id: string; sceneId: string; at: number };
-export function applyTokenDeath(token: VttToken, previousHp: number, now = Date.now()) {
+export function applyTokenDeath(
+  token: VttToken,
+  previousHp: number,
+  now = Date.now(),
+  automatic = token.deathAutomatic,
+) {
   if (token.hp > 0 && previousHp <= 0) token.deathAt = null;
-  if (token.deathAutomatic && previousHp > 0 && token.hp <= 0) token.deathAt = now;
+  if (automatic && previousHp > 0 && token.hp <= 0) token.deathAt = now;
 }
 export function sceneBossBars(scene: VttScene): BossBar[] {
   return scene.tokens
@@ -414,6 +421,8 @@ export function newDocument(id: string): VttDocument {
   const scene = newScene(id, 'Primeiro mapa');
   return {
     version: 1,
+    bloodEnabled: true,
+    automaticDeath: true,
     effects: [],
     folders: [],
     custom: [],

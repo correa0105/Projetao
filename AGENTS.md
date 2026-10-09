@@ -1,5 +1,14 @@
 # Alvorada Cinzenta — instruções para continuidade
 
+Correção posterior 09/10: sangue só cria pequenos respingos em impactos; nunca
+novos rastros no movimento. Marcas legacy de movimento são conservadas mas
+ocultadas. Mesa guarda bloodEnabled/automaticDeath; morte automática inicia
+ligada e conserva escolha manual. Controles de morte saíram da biblioteca.
+Prévia de efeito é imediata no token com editor abaixo da galeria. Janela de
+ações arrastável pelo cabeçalho; + Token removido de Token selecionado.
+Protocolo 3 exige recarregar abas antigas para reconhecer blood. Defaults
+ausentes não podem resetar escolhas já salvas. Guia VTT-ROOM-EFFECTS-20261009.md.
+
 Pedidos de 09/10: House tem Espelhar imagem para a presença própria, migration
 086 flip_x boolean preservado em movimentos antigos. Espelhar somente a arte,
 conservar âncora/chão/nome/falas. VTT calcula manchas e gotas/rastros no servidor

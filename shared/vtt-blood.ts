@@ -82,8 +82,9 @@ export function applyTokenBlood(
   old: VttToken,
   path: Point[] = [{ x: token.x, y: token.y }],
   at = Date.now(),
+  enabled = true,
 ) {
-  if (token.layer === 'map') {
+  if (!enabled || token.layer === 'map') {
     token.blood = null;
     return;
   }
@@ -112,7 +113,8 @@ export function applyTokenBlood(
         at,
         token.x,
         token.y,
-        Math.min(token.width, token.height) * (0.08 + Math.min(0.3, after - before) * 0.7),
+        Math.min(scene.grid.size, token.width, token.height) *
+          (0.06 + Math.min(0.3, after - before) * 0.14),
       );
   }
   if (after <= 0) {
@@ -120,41 +122,6 @@ export function applyTokenBlood(
     blood.distance = 0;
     return;
   }
-  // Healthy-side injuries leave occasional drops; at <= 50% HP they form a trail.
-  // Sampling distance (not pointer events) prevents dense marks from slow dragging.
-  const points = [{ x: old.x, y: old.y }, ...path];
-  const total = points
-    .slice(1)
-    .reduce((n, p, i) => n + Math.hypot(p.x - points[i].x, p.y - points[i].y), 0);
-  if (total < 0.01) return;
-  const severe = isBloodied(token),
-    base = scene.grid.size * (severe ? 0.24 : 1.1);
-  const spacing = Math.max(3, base, total / 40);
-  let remaining = spacing - Math.min(blood.distance, spacing),
-    count = 0;
-  for (let i = 1; i < points.length; i++) {
-    const a = points[i - 1],
-      b = points[i],
-      dx = b.x - a.x,
-      dy = b.y - a.y,
-      len = Math.hypot(dx, dy);
-    if (!len) continue;
-    let offset = remaining;
-    while (offset <= len && count < 40) {
-      append(
-        scene,
-        token,
-        severe ? 'trail' : 'drop',
-        at,
-        a.x + (dx * offset) / len,
-        a.y + (dy * offset) / len,
-        scene.grid.size * (severe ? 0.11 : 0.043) * (0.7 + after * 0.6),
-        Math.atan2(dy, dx),
-      );
-      offset += spacing;
-      count++;
-    }
-    remaining = offset - len;
-  }
-  blood.distance = Math.max(0, Math.min(spacing, spacing - remaining));
+  // Only hits spill blood. Movement never paints a track.
+  blood.distance = 0;
 }

@@ -667,8 +667,16 @@ export function createApp() {
   });
   app.use('/api', (_req, _res, next) => next(new AppError(404, 'Rota não encontrada.')));
   if (existsSync(resolve('dist/client/index.html'))) {
-    app.use(express.static(resolve('dist/client')));
-    app.get('/{*splat}', (_req, res) => res.sendFile(resolve('dist/client/index.html')));
+    app.use(
+      express.static(resolve('dist/client'), {
+        setHeaders: (res, file) => {
+          if (file.endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
+        },
+      }),
+    );
+    app.get('/{*splat}', (_req, res) =>
+      res.set('Cache-Control', 'no-store').sendFile(resolve('dist/client/index.html')),
+    );
   }
   app.use(
     (error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

@@ -16,60 +16,31 @@ function blot(c: CanvasRenderingContext2D, x: number, y: number, r: number, seed
   c.save();
   c.translate(x, y);
   c.rotate(random(0) * Math.PI * 2);
-  // Uneven, connected pools, fine satellite droplets and a wet reflected edge.
-  const shape = () => {
+  // Disconnected round droplets, with subtle wet highlights, never a large pool.
+  for (let i = 0; i < 15; i++) {
+    const a = random(i + 10) * Math.PI * 2;
+    const d = Math.sqrt(random(i + 30)) * r * 1.35;
+    const radius = r * (i < 3 ? 0.14 + random(i + 50) * 0.08 : 0.025 + random(i + 50) * 0.055);
+    const px = Math.cos(a) * d,
+      py = Math.sin(a) * d;
     c.beginPath();
-    const n = 28;
-    for (let i = 0; i <= n; i++) {
-      const a = (i / n) * Math.PI * 2,
-        radius = r * (0.55 + random(i + 1) * 0.45);
-      const px = Math.cos(a) * radius,
-        py = Math.sin(a) * radius;
-      if (!i) c.moveTo(px, py);
-      else c.lineTo(px, py);
+    c.ellipse(px, py, radius, radius * (0.72 + random(i + 70) * 0.26), a, 0, Math.PI * 2);
+    c.fillStyle = i % 3 ? '#7e111b' : '#991823';
+    c.fill();
+    if (i < 3) {
+      c.beginPath();
+      c.ellipse(
+        px - radius * 0.23,
+        py - radius * 0.24,
+        radius * 0.22,
+        radius * 0.1,
+        -0.5,
+        0,
+        Math.PI * 2,
+      );
+      c.fillStyle = '#d5696240';
+      c.fill();
     }
-    c.closePath();
-  };
-  shape();
-  const wet = c.createRadialGradient(-r * 0.28, -r * 0.28, r * 0.03, 0, 0, r);
-  wet.addColorStop(0, '#aa1824');
-  wet.addColorStop(0.3, '#8b0f19');
-  wet.addColorStop(0.75, '#520811');
-  wet.addColorStop(1, '#280608');
-  c.fillStyle = wet;
-  c.fill();
-  c.save();
-  c.clip();
-  for (let i = 0; i < 12; i++) {
-    c.beginPath();
-    c.ellipse(
-      (random(i + 70) - 0.5) * r * 1.5,
-      (random(i + 90) - 0.5) * r * 1.5,
-      r * (0.08 + random(i + 110) * 0.22),
-      r * 0.025,
-      random(i + 130) * 6,
-      0,
-      Math.PI * 2,
-    );
-    c.fillStyle = i % 3 ? '#d13d3927' : '#ffd1a254';
-    c.fill();
-  }
-  c.restore();
-  for (let i = 0; i < 20; i++) {
-    const a = random(i + 150) * Math.PI * 2,
-      d = r * (0.8 + random(i + 180) * 1.05);
-    c.beginPath();
-    c.ellipse(
-      Math.cos(a) * d,
-      Math.sin(a) * d,
-      r * (0.018 + random(i + 200) * 0.065),
-      r * (0.012 + random(i + 230) * 0.04),
-      a,
-      0,
-      Math.PI * 2,
-    );
-    c.fillStyle = i % 3 ? '#620811' : '#96131b';
-    c.fill();
   }
   c.restore();
 }
@@ -92,6 +63,7 @@ export function drawBloodDecals(
   now = Date.now(),
 ) {
   for (const d of scene.blood) {
+    if (d.kind !== 'splash') continue;
     if (d.private && !gm) continue;
     if (!gm && scene.tokens.some((t) => t.id === d.source && (t.hidden || t.layer === 'gm')))
       continue;
@@ -103,7 +75,7 @@ export function drawBloodDecals(
     c.rotate(d.angle);
     c.globalAlpha *= now - d.at > 120000 ? 0.75 : 0.94;
     const texture = splatter(d.seed),
-      sx = d.kind === 'trail' ? 1.7 : d.kind === 'splash' ? 2.5 : 1;
+      sx = 1;
     c.drawImage(texture, -d.size * sx, -d.size, d.size * 2 * sx, d.size * 2);
     c.restore();
   }

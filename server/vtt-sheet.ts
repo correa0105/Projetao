@@ -132,11 +132,14 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       const oldHp = a.token.hp;
       const old = structuredClone(a.token);
       a.token.hp = Math.max(0, a.token.hp - amount);
-      applyTokenDeath(a.token, oldHp);
+      applyTokenDeath(a.token, oldHp, Date.now(), a.room.document.automaticDeath);
       applyTokenBlood(
         a.room.document.scenes.find((s) => s.id === a.room.document.activeScene)!,
         a.token,
         old,
+        [],
+        Date.now(),
+        a.room.document.bloodEnabled,
       );
       await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
         rid,
@@ -166,11 +169,14 @@ export function vttSheetRouter(getRoom: RoomAccess) {
       const oldHp = a.token.hp;
       const old = structuredClone(a.token);
       a.token.hp = Math.min(a.token.maxHp, a.token.hp + amount);
-      applyTokenDeath(a.token, oldHp);
+      applyTokenDeath(a.token, oldHp, Date.now(), a.room.document.automaticDeath);
       applyTokenBlood(
         a.room.document.scenes.find((s) => s.id === a.room.document.activeScene)!,
         a.token,
         old,
+        [],
+        Date.now(),
+        a.room.document.bloodEnabled,
       );
       await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1 WHERE id=$1', [
         rid,
@@ -351,6 +357,9 @@ export function vttSheetRouter(getRoom: RoomAccess) {
         a.room.document.scenes.find((s) => s.id === a.room.document.activeScene)!,
         a.token,
         old,
+        [],
+        Date.now(),
+        a.room.document.bloodEnabled,
       );
       await db.query(
         'UPDATE vtt_character_resources SET slots_used=$2,hit_dice_used=$3,updated_at=now()WHERE character_id=$1',

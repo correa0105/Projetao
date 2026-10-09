@@ -623,12 +623,22 @@ export function vttRouter() {
         );
       await validateAssets(db, rid, input.document);
       await validatePremiumImages(db, res.locals.user.id, paths(input.document), paths(r.document));
+      for (const field of ['bloodEnabled', 'automaticDeath'] as const)
+        if (typeof req.body.document[field] !== 'boolean')
+          input.document[field] = r.document[field];
       for (const scene of input.document.scenes) {
         const previous = r.document.scenes.find((s) => s.id === scene.id);
         scene.blood = previous ? structuredClone(previous.blood) : [];
         for (const token of scene.tokens) {
           const old = previous?.tokens.find((t) => t.id === token.id);
-          applyTokenBlood(scene, token, old || structuredClone(token));
+          applyTokenBlood(
+            scene,
+            token,
+            old || structuredClone(token),
+            [],
+            Date.now(),
+            input.document.bloodEnabled,
+          );
         }
       }
       for (const s of input.document.scenes)
@@ -636,7 +646,7 @@ export function vttRouter() {
           const old = r.document.scenes
             .find((previous) => previous.id === s.id)
             ?.tokens.find((previous) => previous.id === t.id);
-          if (old) applyTokenDeath(t, old.hp);
+          if (old) applyTokenDeath(t, old.hp, Date.now(), input.document.automaticDeath);
         }
       const ids = (
         await db.query(`SELECT user_id FROM vtt_members WHERE room_id=$1 AND role='player'`, [rid])
@@ -795,8 +805,8 @@ export function vttRouter() {
       const old = structuredClone(t);
       const { path: _path, ...patch } = input;
       Object.assign(t, patch);
-      applyTokenDeath(t, oldHp);
-      applyTokenBlood(s, t, old, path);
+      applyTokenDeath(t, oldHp, Date.now(), r.document.automaticDeath);
+      applyTokenBlood(s, t, old, path, Date.now(), r.document.bloodEnabled);
       await db.query(
         'UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now()WHERE id=$1',
         [rid, JSON.stringify(r.document)],

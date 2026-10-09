@@ -1,81 +1,76 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { newScene, newToken, documentSchema, newDocument } from '../shared/vtt';
+import { newScene, newToken, documentSchema, newDocument, applyTokenDeath } from '../shared/vtt';
 import { applyTokenBlood, injury, isBloodied, MAX_BLOOD_DECALS } from '../shared/vtt-blood';
-
 function fixture() {
-  const scene = newScene(randomUUID());
-  const token = newToken(randomUUID(), scene);
+  const scene = newScene(randomUUID()),
+    token = newToken(randomUUID(), scene);
   token.hp = token.maxHp = 100;
   token.x = token.y = 200;
   scene.tokens.push(token);
-  const change = (hp: number, x = token.x, path?: { x: number; y: number }[]) => {
+  const change = (hp: number, x = token.x, enabled = true) => {
     const old = structuredClone(token);
     token.hp = hp;
     token.x = x;
-    applyTokenBlood(scene, token, old, path, 10000);
+    applyTokenBlood(scene, token, old, [], 10000, enabled);
   };
   return { scene, token, change };
 }
-test('each applied hit adds a wound, partial healing fades existing wounds and full healing clears the token', () => {
+test('hits add small separated splashes, partial healing fades the same wounds and full healing clears the body', () => {
   const { scene, token, change } = fixture();
   change(99);
   change(90);
   change(50);
-  assert.equal(token.blood?.wounds.length, 3);
+  assert.equal(token.blood!.wounds.length, 3);
   assert.equal(scene.blood.length, 3);
+  assert.ok(scene.blood.every((d) => d.kind === 'splash' && d.size <= scene.grid.size * 0.103));
   const wounds = structuredClone(token.blood!.wounds);
   change(75);
   assert.deepEqual(
     token.blood!.wounds.map((w) => w.seed),
     wounds.map((w) => w.seed),
   );
-  for (let i = 0; i < wounds.length; i++)
-    assert.ok(Math.abs(token.blood!.wounds[i].strength - wounds[i].strength / 2) < 1e-10);
+  wounds.forEach((w, i) =>
+    assert.ok(Math.abs(token.blood!.wounds[i].strength - w.strength / 2) < 1e-10),
+  );
   change(100);
   assert.deepEqual(token.blood!.wounds, []);
-  assert.equal(scene.blood.length, 3, 'healing does not erase blood already spilled on the ground');
-  change(100, 300);
+  assert.equal(scene.blood.length, 3);
+  change(100);
   assert.equal(scene.blood.length, 3);
 });
-test('half health is inclusive, wounded creatures drip and bloodied creatures leave denser tracks', () => {
-  assert.equal(isBloodied({ hp: 50, maxHp: 100 }), true);
-  assert.equal(isBloodied({ hp: 51, maxHp: 100 }), false);
-  assert.equal(isBloodied({ hp: 6, maxHp: 13 }), true);
-  const mild = fixture(),
-    severe = fixture();
-  mild.change(75);
-  severe.change(50);
-  mild.change(75, 600);
-  severe.change(50, 600);
-  assert.ok(mild.scene.blood.some((d) => d.kind === 'drop'));
-  assert.ok(
-    severe.scene.blood.filter((d) => d.kind === 'trail').length >
-      mild.scene.blood.filter((d) => d.kind === 'drop').length * 3,
-  );
-  assert.equal(mild.token.hp, 75);
-  assert.equal(severe.token.hp, 50, 'the visual adds no ongoing damage');
+test('movement at any HP and around corners adds no trails or droplets', () => {
+  for (const hp of [75, 50, 1]) {
+    const { scene, token, change } = fixture();
+    change(hp);
+    const n = scene.blood.length;
+    for (let i = 0; i < 40; i++) change(hp, i % 2 ? 600 : 200);
+    const old = structuredClone(token);
+    token.y = 400;
+    applyTokenBlood(scene, token, old, [
+      { x: 200, y: 400 },
+      { x: 600, y: 400 },
+    ]);
+    assert.equal(scene.blood.length, n);
+    assert.ok(scene.blood.every((d) => d.kind === 'splash'));
+    assert.equal(token.hp, hp);
+  }
+  assert.ok(isBloodied({ hp: 50, maxHp: 100 }));
+  assert.ok(!isBloodied({ hp: 51, maxHp: 100 }));
 });
-test('accepted paths turn around corners and distance sampling is independent of pointer frequency', () => {
-  const once = fixture(),
-    split = fixture();
-  once.change(50);
-  split.change(50);
-  once.change(50, 400, [
-    { x: 200, y: 400 },
-    { x: 400, y: 400 },
-  ]);
-  const old = structuredClone(split.token);
-  split.token.y = 400;
-  applyTokenBlood(split.scene, split.token, old, [{ x: 200, y: 400 }], 10000);
-  split.change(50, 400);
-  const positions = (scene: typeof once.scene) =>
-    scene.blood.filter((d) => d.kind === 'trail').map((d) => [+d.x.toFixed(6), +d.y.toFixed(6)]);
-  assert.deepEqual(positions(once.scene), positions(split.scene));
-  assert.ok(positions(once.scene).every(([x, y]) => x === 200 || y === 400));
+test('room can disable blood entirely without changing HP', () => {
+  const { scene, token, change } = fixture();
+  change(75);
+  const before = scene.blood.length;
+  change(50, 500, false);
+  assert.equal(token.hp, 50);
+  assert.equal(token.blood, null);
+  assert.equal(scene.blood.length, before);
+  change(30, 500, true);
+  assert.equal(scene.blood.length, before + 1);
 });
-test('reloads, healing, rotation and forged scar metadata never create extra floor marks', () => {
+test('replays, rotation, healing and forged scars cannot add floor marks', () => {
   const { scene, token, change } = fixture();
   change(60);
   const old = structuredClone(token);
@@ -87,16 +82,30 @@ test('reloads, healing, rotation and forged scar metadata never create extra flo
   change(70);
   assert.equal(scene.blood.length, 1);
 });
-test('hidden layers stay private, decal storage is bounded and old rooms need no destructive migration', () => {
+test('private splashes remain private, storage bounded, older rooms default on and manual off survives parsing', () => {
   const { scene, token, change } = fixture();
   token.hidden = true;
-  change(50, 300);
-  assert.ok(scene.blood.every((d) => d.private));
-  for (let i = 0; i < 45; i++) change(50, i % 2 ? 1500 : 200);
+  for (let i = 0; i < 810; i++) {
+    change(100);
+    change(50);
+  }
   assert.equal(scene.blood.length, MAX_BLOOD_DECALS);
+  assert.ok(scene.blood.every((d) => d.private));
   assert.equal(injury({ hp: -2, maxHp: 100 }), 1);
   const doc = newDocument(randomUUID());
+  delete (doc as any).bloodEnabled;
+  delete (doc as any).automaticDeath;
   delete (doc.scenes[0] as any).blood;
   const parsed = documentSchema.parse(doc);
+  assert.ok(parsed.bloodEnabled);
+  assert.ok(parsed.automaticDeath);
   assert.deepEqual(parsed.scenes[0].blood, []);
+  parsed.bloodEnabled = parsed.automaticDeath = false;
+  assert.equal(documentSchema.parse(parsed).automaticDeath, false);
+  token.hp = 0;
+  token.deathAt = null;
+  applyTokenDeath(token, 50, 123, parsed.automaticDeath);
+  assert.equal(token.deathAt, null);
+  applyTokenDeath(token, 50, 123, true);
+  assert.equal(token.deathAt, 123);
 });

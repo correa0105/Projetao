@@ -260,3 +260,21 @@
     padding: 4px 5px;
   }
 }
+
+.vtt-effects-menu[data-editing='true'] .vtt-effects-gallery {
+  max-height: 190px;
+  overflow-y: auto;
+}
+.vtt-effects-menu form {
+  border-top: 1px solid #71583b;
+}
+.vtt-effects-menu > header {
+  position: sticky;
+  top: -14px;
+  z-index: 2;
+  padding: 8px 0;
+  background: #111923;
+}
+.vtt-effects-editor-actions > details {
+  flex-basis: 100%;
+}

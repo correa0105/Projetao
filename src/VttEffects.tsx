@@ -22,7 +22,6 @@ export function VttEffects({
   apply,
   clear,
   preview,
-  editDeath,
   visualEffects = true,
 }: {
   presets: EffectPreset[];
@@ -34,7 +33,6 @@ export function VttEffects({
   apply: (id: string) => Promise<void>;
   clear: () => Promise<void>;
   preview: (preset: EffectPreset | null) => void;
-  editDeath: (patch: Pick<Partial<VttToken>, 'deathAt' | 'deathAutomatic'>) => Promise<void>;
 }) {
   const token = tokens[0];
   const selectionKey = tokens.map((t) => t.id).join(',');
@@ -49,14 +47,11 @@ export function VttEffects({
     [libraryQuery, setLibraryQuery] = useState(''),
     [animatedKind, setAnimatedKind] = useState<string | null>(null);
   const root = useRef<HTMLDivElement>(null);
-  const editorName = useRef<HTMLInputElement>(null);
   const previewRef = useRef(preview);
   previewRef.current = preview;
   useEffect(() => {
     if (!draft) return;
-    const menu = root.current?.querySelector('.vtt-effects-menu');
-    if (menu) menu.scrollTop = 0;
-    editorName.current?.focus({ preventScroll: true });
+    root.current?.querySelector('form')?.scrollIntoView({ block: 'nearest' });
   }, [draft?.id, open]);
   useEffect(() => {
     const preset = draft || presets.find((e) => e.id === previewId);
@@ -102,7 +97,8 @@ export function VttEffects({
       scale: 1,
       duration: i ? 5 : 0,
     });
-    setPreviewing(false);
+    setPreviewing(true);
+    setLibraryOpen(true);
   }
   return (
     <div className="vtt-effects" ref={root}>
@@ -117,7 +113,11 @@ export function VttEffects({
         <span>Efeitos</span>
       </button>
       {open && (
-        <section className="vtt-effects-menu" aria-label="Efeitos salvos do mestre">
+        <section
+          className="vtt-effects-menu"
+          data-editing={Boolean(draft)}
+          aria-label="Efeitos salvos do mestre"
+        >
           <header>
             <strong>
               {draft
@@ -131,7 +131,7 @@ export function VttEffects({
             </button>
           </header>
           {error && <p role="alert">{error}</p>}
-          {!draft && (
+          {
             <>
               <p>
                 Selecione um ou mais tokens para aplicar. Arraste um efeito salvo para a barra
@@ -144,39 +144,6 @@ export function VttEffects({
                     : 'Alvo · ' + token.name
                   : 'Nenhum token selecionado'}
               </div>
-              <fieldset
-                className="vtt-effects-death"
-                disabled={blocked || !token || token.layer === 'map'}
-              >
-                <legend>Efeito de morte</legend>
-                <label className="vtt-check">
-                  <input
-                    type="checkbox"
-                    checked={tokens.length > 0 && tokens.every((t) => t.deathAutomatic)}
-                    ref={(input) => {
-                      if (input)
-                        input.indeterminate =
-                          tokens.some((t) => t.deathAutomatic) &&
-                          !tokens.every((t) => t.deathAutomatic);
-                    }}
-                    onChange={(e) =>
-                      void run(() => editDeath({ deathAutomatic: e.target.checked }))
-                    }
-                  />
-                  Automático ao zerar PV
-                </label>
-                <div className="vtt-row">
-                  <button onClick={() => void run(() => editDeath({ deathAt: Date.now() }))}>
-                    Aplicar efeito de morte
-                  </button>
-                  <button
-                    disabled={!tokens.some((t) => t.deathAt)}
-                    onClick={() => void run(() => editDeath({ deathAt: null }))}
-                  >
-                    Limpar efeito de morte
-                  </button>
-                </div>
-              </fieldset>
               <button
                 className="vtt-effects-library-toggle"
                 aria-expanded={libraryOpen}
@@ -186,10 +153,7 @@ export function VttEffects({
               </button>
               {libraryOpen && (
                 <section className="vtt-effects-library" aria-label="Biblioteca de efeitos">
-                  <p>
-                    Escolha um modelo para personalizar e salvar. Passe o cursor para ver o
-                    movimento.
-                  </p>
+                  <p>Clique para visualizar no token e ajustar tamanho e cor.</p>
                   <div className="vtt-effects-groups" aria-label="Categorias de efeitos">
                     {['Todos', 'Elementos', 'Magia', 'Natureza', 'Estado'].map((group) => (
                       <button
@@ -253,6 +217,111 @@ export function VttEffects({
                   </div>
                 </section>
               )}
+              {draft && (
+                <form
+                  aria-label="Editor de efeito"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    void run(async () => {
+                      await save(effectPresetSchema.parse(draft));
+                      setDraft(null);
+                    });
+                  }}
+                >
+                  <strong>{draft.name}</strong>
+                  <p className="vtt-effects-preview-note">
+                    Prévia no token selecionado. Ajuste antes de aplicar.
+                  </p>
+                  {draft.kind !== 'death' ? (
+                    <div className="vtt-effects-fields">
+                      <label>
+                        Cor
+                        <input
+                          aria-label="Cor do efeito"
+                          type="color"
+                          value={draft.color}
+                          onChange={(e) => setDraft({ ...draft, color: e.target.value })}
+                        />
+                      </label>
+                      <label>
+                        Tamanho
+                        <input
+                          aria-label="Tamanho do efeito"
+                          type="number"
+                          min="0.5"
+                          max="3"
+                          step="0.1"
+                          required
+                          value={draft.scale}
+                          onChange={(e) => setDraft({ ...draft, scale: Number(e.target.value) })}
+                        />
+                      </label>
+                      <label>
+                        Duração (s)
+                        <input
+                          aria-label="Duração do efeito"
+                          disabled={draft.duration === 0}
+                          type="number"
+                          min="0"
+                          max="60"
+                          required
+                          value={draft.duration}
+                          onChange={(e) => setDraft({ ...draft, duration: Number(e.target.value) })}
+                        />
+                      </label>
+                      <label className="vtt-effects-infinite">
+                        <input
+                          type="checkbox"
+                          aria-label="Efeito infinito"
+                          checked={draft.duration === 0}
+                          onChange={(e) =>
+                            setDraft({ ...draft, duration: e.target.checked ? 0 : 5 })
+                          }
+                        />{' '}
+                        Infinito · até limpar
+                      </label>
+                    </div>
+                  ) : (
+                    <p>
+                      Token inteiro vermelho e sangue ao redor. Permanece até limpar ou recuperar PV
+                      após chegar a zero.
+                    </p>
+                  )}
+                  <div className="vtt-effects-editor-actions">
+                    <details>
+                      <summary>Nome do efeito</summary>
+                      <input
+                        aria-label="Nome do efeito"
+                        required
+                        maxLength={60}
+                        value={draft.name}
+                        onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+                      />
+                    </details>
+                    <button
+                      type="button"
+                      className="vtt-gold"
+                      disabled={blocked || !token || token.layer === 'map'}
+                      onClick={() =>
+                        void run(async () => {
+                          const preset = effectPresetSchema.parse(draft);
+                          await save(preset);
+                          await apply(preset.id);
+                          setDraft(null);
+                        })
+                      }
+                    >
+                      Aplicar efeito
+                    </button>
+                    <button type="submit" className="vtt-gold" disabled={blocked}>
+                      Salvar efeito
+                    </button>
+                    <button type="button" disabled={blocked} onClick={() => setDraft(null)}>
+                      Cancelar
+                    </button>
+                  </div>
+                </form>
+              )}
               <div className="vtt-effects-list">
                 {!presets.length && <p>Nenhum efeito salvo. Crie o primeiro abaixo.</p>}
                 {presets.map((e) => (
@@ -297,7 +366,10 @@ export function VttEffects({
                     <button
                       aria-label={'Editar efeito ' + e.name}
                       disabled={blocked}
-                      onClick={() => setDraft({ ...e })}
+                      onClick={() => {
+                        setDraft({ ...e });
+                        setPreviewing(true);
+                      }}
                     >
                       <Pencil size={13} />
                     </button>
@@ -315,136 +387,7 @@ export function VttEffects({
                 <Plus size={14} /> Novo efeito
               </button>
             </>
-          )}
-          {draft && (
-            <form
-              aria-label="Editor de efeito"
-              onSubmit={(event) => {
-                event.preventDefault();
-                void run(async () => {
-                  await save(effectPresetSchema.parse(draft));
-                  setDraft(null);
-                });
-              }}
-            >
-              <label>
-                Nome do efeito
-                <input
-                  ref={editorName}
-                  aria-label="Nome do efeito"
-                  required
-                  maxLength={60}
-                  value={draft.name}
-                  onChange={(e) => setDraft({ ...draft, name: e.target.value })}
-                />
-              </label>
-              <button
-                type="button"
-                disabled={!token || token.layer === 'map'}
-                aria-pressed={previewing}
-                onClick={() => setPreviewing(!previewing)}
-              >
-                <Eye size={14} /> {previewing ? 'Encerrar prévia no token' : 'Visualizar no token'}
-              </button>
-              {previewing && (
-                <p className="vtt-effects-preview-note">
-                  Prévia no token · ainda não aplicada. Os outros participantes não veem esta
-                  prévia.
-                </p>
-              )}
-              <label>
-                Modelo
-                <select
-                  aria-label="Modelo do efeito"
-                  value={draft.kind}
-                  onChange={(e) => {
-                    const i = effectKinds.indexOf(e.target.value as EffectPreset['kind']);
-                    setDraft({
-                      ...draft,
-                      kind: effectKinds[i],
-                      name:
-                        draft.name === effectNames[effectKinds.indexOf(draft.kind)]
-                          ? effectNames[i]
-                          : draft.name,
-                      color: effectColors[i],
-                      duration: i ? 5 : 0,
-                    });
-                  }}
-                >
-                  {effectKinds.map((kind, i) => (
-                    <option key={kind} value={kind}>
-                      {effectNames[i]}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <div className="vtt-effects-editor-preview">
-                {visualEffects && <VttEffectPreview preset={draft} animated />}
-                <p>{effectLibrary.find((e) => e.kind === draft.kind)?.description}</p>
-              </div>
-              {draft.kind !== 'death' ? (
-                <div className="vtt-effects-fields">
-                  <label>
-                    Cor
-                    <input
-                      aria-label="Cor do efeito"
-                      type="color"
-                      value={draft.color}
-                      onChange={(e) => setDraft({ ...draft, color: e.target.value })}
-                    />
-                  </label>
-                  <label>
-                    Tamanho
-                    <input
-                      aria-label="Tamanho do efeito"
-                      type="number"
-                      min="0.5"
-                      max="3"
-                      step="0.1"
-                      required
-                      value={draft.scale}
-                      onChange={(e) => setDraft({ ...draft, scale: Number(e.target.value) })}
-                    />
-                  </label>
-                  <label>
-                    Duração (s)
-                    <input
-                      aria-label="Duração do efeito"
-                      disabled={draft.duration === 0}
-                      type="number"
-                      min="0"
-                      max="60"
-                      required
-                      value={draft.duration}
-                      onChange={(e) => setDraft({ ...draft, duration: Number(e.target.value) })}
-                    />
-                  </label>
-                  <label className="vtt-effects-infinite">
-                    <input
-                      type="checkbox"
-                      aria-label="Efeito infinito"
-                      checked={draft.duration === 0}
-                      onChange={(e) => setDraft({ ...draft, duration: e.target.checked ? 0 : 5 })}
-                    />{' '}
-                    Infinito · até limpar
-                  </label>
-                </div>
-              ) : (
-                <p>
-                  Token inteiro vermelho e sangue ao redor. Permanece até limpar ou recuperar PV
-                  após chegar a zero.
-                </p>
-              )}
-              <div className="vtt-effects-editor-actions">
-                <button type="submit" className="vtt-gold" disabled={blocked}>
-                  Salvar efeito
-                </button>
-                <button type="button" disabled={blocked} onClick={() => setDraft(null)}>
-                  Cancelar
-                </button>
-              </div>
-            </form>
-          )}
+          }
           {!draft && (
             <>
               <button
