@@ -1,0 +1,145 @@
+{
+  "generator": "scripts/build-vtt-elemental-materials.py",
+  "provenance": "Original procedural art; no third-party source media.",
+  "frames": 32,
+  "fps": 24,
+  "gutter": 2,
+  "materials": {
+    "lava": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "blessing": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "resonance": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "acid": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "electric": {
+      "width": 480,
+      "height": 128,
+      "pages": 2
+    },
+    "water": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "rift": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "prism": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "fire-volume": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    },
+    "water-jet": {
+      "width": 256,
+      "height": 256,
+      "pages": 2
+    }
+  },
+  "files": [
+    {
+      "path": "public/vtt/elemental-20261009/lava-0.webp",
+      "sha256": "93d3a2b52a9cb311804af9f81fc5cfb95803474ab77112d356035fd08bfc1800"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/lava-1.webp",
+      "sha256": "e38d790fb64032694a5a1a7bba5683b424eaf1f2652f1f402e62e6b7a2990733"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/blessing-0.webp",
+      "sha256": "7e1355d5e5f648e98b97f937def12c976d7b04b935820c5c53896a2614d49a57"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/blessing-1.webp",
+      "sha256": "59b7532b6721b7c721f8e9d180375ebbc5cb15bed8f7cec371f4e4ae14ad48de"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/resonance-0.webp",
+      "sha256": "5e8a784101c615336ed8ce7e713325786401f7cfe65f68b6b69fc974239a6d7c"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/resonance-1.webp",
+      "sha256": "d855c4806bb060ab715901fe4a743bdb4eed1740e16b9f2bb8a4ceafa2a09cf8"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/acid-0.webp",
+      "sha256": "947190a977c4dd1933093b32165a42d901a7e9990802e16962e2ae584287b675"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/acid-1.webp",
+      "sha256": "b2f5a98ad6dccfd5c98749e7341cf2ac861b185cdda106da18c169b68d95f67e"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/electric-0.webp",
+      "sha256": "6d2c251a04d73def7fa60aec7223b743913d6df41d069ea896dc3184b7a3e132"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/electric-1.webp",
+      "sha256": "6d577b72b2339ae6bba757d32b36b3b51f773606a47748ca3659006717e28640"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/water-0.webp",
+      "sha256": "66e29381ceffaf75b862e6ca416ce0e006fb8145b083ae2fef625327e4037725"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/water-1.webp",
+      "sha256": "d9578420d8d6835b6425702947a3952c2819c1268dded3fb85a932cc1bf56840"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/rift-0.webp",
+      "sha256": "4218f76ba74c486b94a7e5628248b78ef62772dd6726a0c153698568d0e7b318"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/rift-1.webp",
+      "sha256": "c377ade0697e68c277e3573812c631c8186a8d634d69367c0fc2a6dcc5848cba"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/prism-0.webp",
+      "sha256": "df04a47c4629823772efd824df3a645116ca0668ebb7ec76b5374ae762f972d0"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/prism-1.webp",
+      "sha256": "5ac2c4a24b8fec34f21583c3949794ecdaab2ee1925fca02ddb1e45057e35fca"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/fire-volume-0.webp",
+      "sha256": "43909b2c81ebdf08d451f40d385824616cdfe3051da64a8f0ea4b3bf40d2b9d2"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/fire-volume-1.webp",
+      "sha256": "1dd4f0527b54cd25dd98ad4a4167d8a80616e105f2617240caf82cd81e43a093"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/water-jet-0.webp",
+      "sha256": "14f5eedacfe025c39efe65224cc2c2d6d9343108c3acd4cd8cc6f7431f42034f"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/water-jet-1.webp",
+      "sha256": "5b54dce6939d0459e3fed1de3293193608e5bb80b915b74ea575edc1942815a3"
+    },
+    {
+      "path": "public/vtt/elemental-20261009/earth-fracture.webp",
+      "sha256": "fe53c28c3faddbccbbe690393cff08a4aabeb71477d47eb5a808521614c10176"
+    }
+  ]
+}

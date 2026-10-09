@@ -1,6 +1,7 @@
 import type { TokenEffect } from '../shared/vtt-effects';
 import { alpha, fract, glow, tau, tint } from './vtt-effects-primitives';
 import { temporalField } from './vtt-effects-temporal';
+import { elementalMaterial } from './vtt-elemental-materials';
 type Random = (i: number) => number;
 export const rebuiltFireKinds = new Set([
   'fire',
@@ -57,33 +58,23 @@ export function drawRebuiltFire(
       const x = Math.cos(a) * r,
         y = Math.sin(a) * r;
       if (y > 0 !== front) continue;
-      const vx = -Math.sin(a),
-        vy = Math.cos(a);
-      temporalField(
-        c,
-        'tongue',
-        t * 1.2 + i * 0.51,
-        x - vx * 32,
-        y - vy * 32,
-        42,
-        125,
-        a,
-        0.91 * strength,
-        color,
-      );
-      for (let k = 2; k > 0; k--) {
-        const q = a - k * 0.18,
-          p = { x: Math.cos(q) * r, y: Math.sin(q) * r };
-        temporalField(
+      // The material sheds along the past curved trajectory. Broader changing
+      // volumes taper into a fading tail, rather than a rigid flame stamp.
+      for (let k = 6; k >= 0; k--) {
+        const lag = k * 0.075,
+          q = a - lag,
+          p = { x: Math.cos(q) * r, y: Math.sin(q) * r },
+          fade = (1 - k / 7) ** 1.45;
+        elementalMaterial(
           c,
-          'vapour',
-          t * 0.9 + i * 0.37 + k * 0.2,
+          'fire-volume',
+          t * 1.27 - lag + i * 0.37,
           p.x,
           p.y,
-          36 - k * 5,
-          27,
+          38 - k * 3,
+          43 - k * 3,
           q,
-          0.14 * (1 - k / 3),
+          fade * 0.78 * strength,
           color,
         );
       }
@@ -91,50 +82,11 @@ export function drawRebuiltFire(
       glow(c, x, y, 4, '#fff3d2', 1);
     }
   } else if (kind === 'blue-fire') {
-    for (let i = 0; i < 7; i++) {
-      const a = (i * tau) / 7 + 0.17 * Math.sin(t * 0.8 + i),
-        r = 88 + 11 * Math.sin(t * 1.1 + i * 1.9);
-      const x = Math.cos(a) * r,
-        y = Math.sin(a) * r;
-      if (y > 0 !== front) continue;
-      temporalField(
-        c,
-        'tongue',
-        t * 1.1 + i * 0.41,
-        x,
-        y,
-        53,
-        87,
-        a + Math.PI / 2,
-        0.84 * strength,
-        color,
-      );
-      glow(c, x, y, 16, color, 0.18);
-    }
-  } else if (front) {
-    // Local convective tongues break off and dissipate around the edge; the
-    // material evolves inside each tongue, independently of its trajectory.
-    const count = kind === 'fire-geyser' ? 7 : kind === 'fire-surge' ? 4 : 6;
-    for (let i = 0; i < count; i++) {
-      const u = fract(t * (kind === 'rage' ? 0.72 : 0.46) + random(i + 21));
-      const a =
-        kind === 'fire-surge' ? 0.15 + i * 0.82 : (i * tau) / count + 0.23 * Math.sin(t + i);
-      const r = kind === 'inferno' ? 107 : 66 + u * 49;
-      const x = Math.cos(a) * r,
-        y = Math.sin(a) * r;
-      temporalField(
-        c,
-        'tongue',
-        t * 1.15 + i * 0.39,
-        x,
-        y,
-        34 + u * 19,
-        57 + u * 43,
-        a + Math.PI / 2,
-        Math.sin(u * Math.PI) * 0.75 * strength,
-        color,
-      );
-    }
+    if (!front)
+      elementalMaterial(c, 'fire-volume', t * 1.1, 0, 0, 340, 340, 0, 0.95 * strength, '#4cceff');
+    if (front) fireVolumes(c, kind, t, random, '#4cceff', strength);
+  } else if (front && kind !== 'inferno') {
+    fireVolumes(c, kind, t, random, color, strength);
   }
   if (front) {
     c.lineCap = 'round';
@@ -153,5 +105,38 @@ export function drawRebuiltFire(
       c.lineWidth = 0.55 + random(i + 89);
       c.stroke();
     }
+  }
+}
+
+function fireVolumes(
+  c: CanvasRenderingContext2D,
+  kind: string,
+  t: number,
+  random: Random,
+  color: string,
+  strength: number,
+) {
+  for (let i = 0; i < 4; i++) {
+    const birth = t * (kind === 'rage' ? 0.6 : 0.43) + random(i + 21),
+      u = fract(birth),
+      cycle = Math.floor(birth);
+    const a = random(i + cycle * 13 + 91) * tau,
+      radius = 72 + u * 34;
+    const x = Math.cos(a) * radius + Math.sin(u * 4 + i) * 8,
+      y = Math.sin(a) * radius - u * 9;
+    // A puff lives briefly, expands, internally deforms and dissolves. Its
+    // emission angle changes only after fading to zero, so no positional pop.
+    elementalMaterial(
+      c,
+      'fire-volume',
+      t * 1.37 + i * 0.41,
+      x,
+      y,
+      59 + u * 33,
+      62 + u * 29,
+      a,
+      Math.sin(u * Math.PI) ** 1.6 * 0.39 * strength,
+      color,
+    );
   }
 }

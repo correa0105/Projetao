@@ -129,10 +129,9 @@ export function drawRebuiltAtmosphere(
       temporalField(c, 'vapour', t * 0.3, 0, 0, 250, 250, -t * 0.23, 0.48, '#342650');
       glow(c, 0, 0, 35, color, 0.1);
     }
-    for (let i = 0; i < 7; i++) {
-      const u = fract(t * 0.13 + i / 7),
-        a = i * 1.9 + u * 4.8,
-        r = 120 - u * 76;
+    for (let i = 0; i < 2; i++) {
+      const a = t * 0.38 + i * Math.PI,
+        r = 111 + Math.sin(t * 0.53 + i) * 7;
       const x = Math.cos(a) * r,
         y = Math.sin(a) * r;
       if (y > 0 !== front) continue;
@@ -140,22 +139,22 @@ export function drawRebuiltAtmosphere(
         c,
         x,
         y,
-        43 - u * 17,
-        a + Math.PI / 2,
+        85 + Math.sin(t * 0.61 + i) * 3,
+        Math.sin(a) * 0.15,
         t + i * 0.29,
-        Math.sin(u * Math.PI) * 0.78,
+        0.91,
         color,
       );
     }
   } else if (kind === 'spirit-procession') {
-    // A slow single-file procession follows an oval, with individual body
-    // sizes and long robes. The open center keeps the character readable.
-    for (let i = 0; i < 6; i++) {
-      const a = t * 0.17 + (i * tau) / 6,
-        x = Math.cos(a) * 101,
-        y = Math.sin(a) * 87;
+    // Exactly two legible spirits follow opposite points of a wide oval.
+    // Upright heads stay readable while their robes and wake keep flowing.
+    for (let i = 0; i < 2; i++) {
+      const a = t * 0.29 + i * Math.PI + 0.45,
+        x = Math.cos(a) * 118,
+        y = Math.sin(a) * 95;
       if (y > 0 !== front) continue;
-      spirit(c, x, y, 37 + random(i + 19) * 10, a + Math.PI / 2, t * 0.8 + i * 0.57, 0.72, color);
+      spirit(c, x, y, 87, Math.sin(a) * 0.12, t * 0.8 + i * 0.57, 0.92, color);
     }
   } else if (kind === 'ghost-wake') {
     if (!front && f.source) {
@@ -166,29 +165,29 @@ export function drawRebuiltAtmosphere(
           offset = 23 + i * 18 + u * 9;
         c.save();
         c.globalAlpha *= Math.sin(u * Math.PI) * (0.21 - i * 0.031);
-        c.translate(-offset, 22 + i * 8);
+        c.translate(Math.sin(t * 0.4 + i) * 5, 40 + offset);
         c.filter = 'grayscale(1) sepia(.35) hue-rotate(185deg)';
         c.drawImage(f.source, -f.sx * 0.41, -f.sy * 0.41, f.sx * 0.82, f.sy * 0.82);
         c.restore();
       }
     }
-    for (let i = 0; i < 8; i++) {
-      if ((i % 3 === 0) !== front) continue;
-      const u = fract(t * 0.24 + i / 8),
-        x = -32 - u * 100,
-        y = 23 + u * 34 + Math.sin(u * 6 + i) * 12;
-      temporalField(
-        c,
-        'vapour',
-        t * 0.36 + i * 0.33,
-        x,
-        y,
-        38 + u * 49,
-        28 + u * 24,
-        -0.35,
-        Math.sin(u * Math.PI) * 0.38,
-        color,
-      );
-    }
+    if (!front)
+      for (let i = 0; i < 8; i++) {
+        const u = fract(t * 0.24 + i / 8),
+          x = Math.sin(u * 4 + i) * (8 + u * 12),
+          y = 53 + u * 83;
+        temporalField(
+          c,
+          'vapour',
+          t * 0.36 + i * 0.33,
+          x,
+          y,
+          38 + u * 49,
+          28 + u * 24,
+          -0.35,
+          Math.sin(u * Math.PI) * 0.38,
+          color,
+        );
+      }
   }
 }

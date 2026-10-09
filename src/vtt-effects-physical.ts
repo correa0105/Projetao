@@ -5,6 +5,7 @@ import { materialSprite } from './vtt-effects-materials';
 import { nativeFlowReady } from './vtt-effects-native-flow';
 import { temporalFieldsReady } from './vtt-effects-temporal';
 import { spectralPilgrimReady } from './vtt-spectral-pilgrim';
+import { elementalMaterialsReady, earthFracture } from './vtt-elemental-materials';
 
 export type PhysicalProp =
   | 'rock'
@@ -62,6 +63,7 @@ export const physicalPropsReady = Promise.all([
   nativeFlowReady,
   temporalFieldsReady,
   spectralPilgrimReady,
+  elementalMaterialsReady,
 ]);
 export function physicalProp(
   c: CanvasRenderingContext2D,
@@ -180,23 +182,7 @@ export function naturalEarth(
   if (!front) {
     // Grainy ground rubble, broken branching seams and low dust have different depth.
     physicalProp(c, 'rubble', 0, 0, 204, random(113) * tau, 0.72, e.color);
-    for (let i = 0; i < 9; i++) {
-      const a = random(i + 33) * tau;
-      c.beginPath();
-      for (let k = 0; k < 7; k++) {
-        const r = 22 + k * 10,
-          turn = a + Math.sin(k * 1.7 + i) * 0.09;
-        const x = Math.cos(turn) * r,
-          y = Math.sin(turn) * r;
-        k ? c.lineTo(x, y) : c.moveTo(x, y);
-      }
-      c.strokeStyle = alpha('#2d251b', 0.68);
-      c.lineWidth = 1.7;
-      c.stroke();
-      c.strokeStyle = alpha(tint(e.color, 0.28), 0.68);
-      c.lineWidth = 0.4;
-      c.stroke();
-    }
+    earthFracture(c, random(33) * tau);
   }
   for (let i = 0; i < (front ? 5 : 11); i++) {
     const a = random(i + 151) * tau + t * 0.09,
