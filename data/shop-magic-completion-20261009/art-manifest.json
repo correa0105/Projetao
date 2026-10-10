@@ -13886,6 +13886,138 @@
       "sha256": "d9e4439cc2f0fb63b4cb6e26bb8f2213223d676b43c8c4ff489b3382e806baf9",
       "review": "approved",
       "review_notes": "Five original generated family textures, thirty native SVG skins and five original dried-leech illustrations reviewed on actual night background at 198px. Full individual ammunition forms, native alpha, distinct shapes/materials and visible organic segments checked. No repeated hash or older artwork change. Physical classic/modern cartridges use separate references and preserve their weights."
+    },
+    {
+      "id": "staff-of-adornment",
+      "path": "/shop/magic-completion-20261009/staff-of-adornment.webp",
+      "native": ".local/shop-completion/native/staff-of-adornment.png",
+      "native_sha256": "0ba9bee31e25b78bdaaf7d81f840ac201229bd2855c4cdd3d7702283aca82604",
+      "sha256": "74e8e8810782d9649baf50d65a0aa34d427a5cfb093ec3b46a9f03a66bdeff85",
+      "width": 512,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE complete long slender slightly curved dark polished hazelwood staff. Above its modest tapered upper tip float EXACTLY THREE small separate ornaments: one raw ivory crystal shard, one tiny mottled egg and one smooth dark river pebble. Very small natural gap between each floating ornament and the tip, realistic perspective and restrained pale-gold magic at the contact points. Plain elegant wood with a subtle carved spiral, no gem-encrusted armor motifs. The full shaft and lower ferrule visible, diagonal composition. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n\nRefinement: Edit this original inventory illustration. Keep the SAME complete dark hazelwood staff and its full shaft, bronze spiral accents and lower ferrule. Correct ONLY the arrangement of the THREE floating objects: the crystal shard, tiny mottled egg and river pebble should form a SMALL CLOSE CLUSTER immediately above and around the very tip, each object approximately one inch away from the staff's tip, not a tall vertical stack. Keep them separate and identifiable, tiny relative to the full-length staff. Very restrained gold magic, no giant aura. Remove the entire opaque or colored background and any brown halo; preserve genuine native transparent alpha. The entire staff and three objects remain inside comfortable canvas margins. No new item, labels, people, scene or extra objects.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "staff-of-birdcalls",
+      "path": "/shop/magic-completion-20261009/staff-of-birdcalls.webp",
+      "native": ".local/shop-completion/native/staff-of-birdcalls.png",
+      "native_sha256": "a505fb4fc1db954405b46cc92e87725c8dc5c92654cf35adecc4b5e34795912a",
+      "sha256": "757579bccb663888bd03472a7dd7dd598743e33dd374edca14cae2884473a42f",
+      "width": 512,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE complete long wooden staff of warm russet cherrywood, with several beautifully detailed SMALL bird reliefs CARVED INTO THE WOOD near the upper third: a raven, a finch and an owl. Modest rounded owl-carved top, no actual flying birds, no feather cloud, no metal sword blade. Entire slender shaft visible, flowing organic knots and believable hand-carved depth, diagonal composition. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "staff-of-flowers",
+      "path": "/shop/magic-completion-20261009/staff-of-flowers.webp",
+      "native": ".local/shop-completion/native/staff-of-flowers.png",
+      "native_sha256": "f03dd426877351a8849b3c2d543ed5c657de7bff8c5a5f246237afb16306f784",
+      "sha256": "42d22797a0c4fa00c77c32eac2880fd433fcc7f4ae557c8f28a0cf0cf5b499a9",
+      "width": 512,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE complete long wooden staff, organically twisted pale ashwood with narrow living vines and a small cluster of delicate white daisies growing directly from its upper tip. Some tiny leaves and realistic petal variation, natural flowers, no enormous floral bouquet, no oversized crystal. Full staff including the simple rootlike lower end visible, diagonal composition. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "wand-of-smiles",
+      "path": "/shop/magic-completion-20261009/wand-of-smiles.webp",
+      "native": ".local/shop-completion/native/wand-of-smiles.png",
+      "native_sha256": "00c1d990b31f395aa00acf897fbeb9ffd870f7b4212d59f0e2290c5e6067721f",
+      "sha256": "dc57349ee9c7360e36e1beaaaa41ab0c542046444391925272f965028c79f6f4",
+      "width": 759,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE complete handheld wand of honey-colored carved wood with a small warm bronze smiling-mouth relief at the rounded tip. The subtle smile is engraved craft, not a cartoon face or emoji; no eyes, skull or human head. Distinct small spiral wood handle, modest copper ferrule, friendly whimsical fantasy instrument, no blade. Whole slender wand in diagonal composition. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "veteran-s-cane",
+      "path": "/shop/magic-completion-20261009/veteran-s-cane.webp",
+      "native": ".local/shop-completion/native/veteran-s-cane.png",
+      "native_sha256": "73beae9562052e62ba6adc6adb597174268dcb22eaf4526e0a02cb85f4403b96",
+      "sha256": "afcf8508f63172de2bd0b25f75971f7f9ef241efc2e984c21e7b74fa5dfed3b1",
+      "width": 713,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE complete practical veterans walking cane made of rich dark walnut, with a believable curved crook handle, modest worn steel grip accent and slim metal lower walking tip. An understated straight join along the shaft hints at its alternate ordinary longsword form, but show ONLY THE COMPLETE CLOSED CANE. Worn polished wood, no sword floating next to it, no light trail, no large jewel. Diagonal composition, distinct from a long magic staff. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "lock-of-trickery",
+      "path": "/shop/magic-completion-20261009/lock-of-trickery.webp",
+      "native": ".local/shop-completion/native/lock-of-trickery.png",
+      "native_sha256": "9112460d5f99ecc28063ca995925d209975853f8b0f1820aa8cfdb4a598ebdd9",
+      "sha256": "b4a490c7abfb40c1443d544289f52e7d516d095f773b6e83aefe1f42a55d091b",
+      "width": 768,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE ordinary-looking sturdy small medieval padlock of dull forged iron and aged brass, WITH EXACTLY ONE MATCHING SMALL KEY lying alongside the padlock. Rectangular slightly rounded compact body, functional curved shackle, intricate visible keyhole and subtle offset tumbler details. Realistic locksmith craft, no glowing rune, no ornate treasure chest, no collection of extra keys. Clear three-quarter perspective. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "mystery-key",
+      "path": "/shop/magic-completion-20261009/mystery-key.webp",
+      "native": ".local/shop-completion/native/mystery-key.png",
+      "native_sha256": "82cbd2bfff3908b15088e623f34b2bab378f4efce789e410f2333292e447febb",
+      "sha256": "acca1aeeb04767a6072538b09b25e5be5d4b8f5ecc595f4c3492008e1d9643cd",
+      "width": 512,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE small antique brass key, complete. Its rounded bow/head clearly incorporates ONE recognizable QUESTION MARK symbol (?) in the metalwork: elegantly raised curved hook with a tiny distinct round dot beneath it. Simple straight narrow shaft and asymmetrical old lock wards. Weathered brass with fine scratches, very faint magical ivory edge glint. The question mark is the only symbol, no letters or words. Diagonal composition, no lock or additional keys. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "rival-coin",
+      "path": "/shop/magic-completion-20261009/rival-coin.webp",
+      "native": ".local/shop-completion/native/rival-coin.png",
+      "native_sha256": "d23fb027632d5099a48240478a6d858868aeb897a1a2f373554622f411c7fae2",
+      "sha256": "20ee164d8b504793cdadfcafe1627aa51daf0be1937c04422f813230fa10d799",
+      "width": 768,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE single worn gold coin in clear three-quarter view, embossed with a finely sculpted side portrait of the wizard Mordenkainen: bald or closely shaven head, short neat beard, severe scholarly face, high simple robe collar. A narrow raised border and small angular decorative notches, NO TEXT. The rival Iggwilv is understood to be on the hidden reverse; show ONLY ONE COIN, one visible face, no split coin, no second coin, no two portraits on the visible face. Ancient solid gold craft with crisp tiny relief visible at icon size. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "thermal-cube",
+      "path": "/shop/magic-completion-20261009/thermal-cube.webp",
+      "native": ".local/shop-completion/native/thermal-cube.png",
+      "native_sha256": "f821adf486ff80f585764a9f53e1e492ffdf8177f4ee8ef06aa29c65961f94b9",
+      "sha256": "7e00b1016fa2be308e07975a1018196a8c2544b9ec18fd48269c27fc167f93ee",
+      "width": 768,
+      "height": 739,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE solid cube of natural BRIMSTONE/SULFUR, about three inches on each side, clear three-quarter perspective. Rich pale sulfur-yellow material with real chalky mineral grain, rough slightly chipped edges, fine crystalline seams and muted amber highlights. It gently generates dry warmth: a restrained warm edge glint only, NO FLAMES, lava, smoke, sparks, fireball or engraved magic runes. A tangible simple mineral cube, no metal casing, no crystal platform. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "potion-of-comprehension",
+      "path": "/shop/magic-completion-20261009/potion-of-comprehension.webp",
+      "native": ".local/shop-completion/native/potion-of-comprehension.png",
+      "native_sha256": "d346a1d9eab4000d0c7d194a511facbc46b02b7aeda6293df87cac278b67da47",
+      "sha256": "2803976090f0834f21cd860b78ac816fe03ba8d317f10f4ef885a934a31f82b1",
+      "width": 512,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE unique clear glass potion bottle of squat pear shape with an elongated slim neck, three subtle vertical glass ribs, plain dark cork and one muted silver-grey wax seal. The potion inside is CLEAR and contains visibly distinct tiny WHITE SALT crystals and BLACK SOOT flecks suspended in a gentle internal swirl. Honest transparent glass highlights and visible liquid meniscus, no colored opaque liquid, no book, no writing, no letters floating around it. Different bottle silhouette from other potion art. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
+    },
+    {
+      "id": "potion-of-watchful-rest",
+      "path": "/shop/magic-completion-20261009/potion-of-watchful-rest.webp",
+      "native": ".local/shop-completion/native/potion-of-watchful-rest.png",
+      "native_sha256": "c320425c27544589f9281f012b7add6883fb66fb1cf6510e93c6b63b8c0257f2",
+      "sha256": "7d29e85f23a1353252b6f696de6d969a2b42d1624adb8a3d81dfd30a7e892fcc",
+      "width": 739,
+      "height": 768,
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy inventory illustration for Alvorada Cinzenta, matching sophisticated D&D equipment artwork. ONE unique low broad oval glass potion flask with a short offset neck and a dark blue waxed cork. Inside is a SWEET AMBER-COLORED brew with warm honeylike depth and a clear meniscus, without opaque smoke. A very small crescent-and-open-eye copper charm hangs from a short blue thread at the neck to suggest wakeful rest. No text, no second bottle, no stars floating outside, no person. Robust practical travel flask with worn handmade glass and warm amber liquid, clear three-quarter perspective. Native TRANSPARENT background, entire object fully visible with comfortable margin, centered readable silhouette at 190px, realistic physical volume and materials, directional soft warm highlights against a dark game UI. No background scene, hands, character, frame, caption, watermark, floor or display stand. Preserve meaningful native alpha. Distinct composition and design, not a reused icon or generic flat recolor.\n",
+      "review": "approved",
+      "review_notes": "Eleven original complete objects reviewed at native resolution and at 190 pixels against the actual dark shop background. Genuine alpha without opaque halos, intact objects and distinct silhouettes/materials. Adornment staff refined to cluster all three tiny objects close to its tip; sulfur cube, clear salt-and-soot potion and amber potion match the source descriptions."
     }
   ]
 }

@@ -294,11 +294,17 @@ try {
         assert.equal((await request(usePath,'POST',{...use,idempotency_key:randomUUID()})).status,409,item.id);
       }
     }
-    for (const id of ['perfume-of-bewitching', 'pot-of-awakening', 'bead-of-refreshment'].filter(id => ids.includes(id))) {
+    for (const id of ['perfume-of-bewitching', 'pot-of-awakening', 'bead-of-refreshment', 'mystery-key', 'potion-of-comprehension', 'potion-of-watchful-rest'].filter(id => ids.includes(id))) {
       const item = completion.items.find((x: any) => x.id === id);
       assert(item.raw_data.consumable && consumableItems.has(id));
       assert.equal(item.price_cp, 5000);
-      assert.equal(item.weight_lb, id === 'pot-of-awakening' ? 10 : id === 'bead-of-refreshment' ? 0.01 : 0.1);
+      const doseWeights: Record<string,number> = {'perfume-of-bewitching':0.1,'pot-of-awakening':10,'bead-of-refreshment':0.01,'mystery-key':0.02,'potion-of-comprehension':0.5,'potion-of-watchful-rest':0.5};
+      assert.equal(item.weight_lb, doseWeights[id]);
+      if(id==='mystery-key') {
+        assert.match(item.raw_data.rules_summary,/5% de chance/);
+        assert.match(item.raw_data.rules_summary,/uma tentativa que falhe não a consome/);
+        assert.match(item.raw_data.rules_summary,/somente depois do sucesso resolvido na mesa/);
+      }
       const use = {kind:'consumable',item_id:id,idempotency_key:randomUUID()};
       assert.equal((await request(usePath,'POST',use)).status,200,id);
       assert.equal((await request(usePath,'POST',use)).status,200,id);
@@ -554,6 +560,56 @@ try {
       assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:id,slot})).status,200,id);
     for(const id of ['cleansing-stone','ersatz-eye'])
       assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:id,slot:'head'})).status,400,id);
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
+  }
+  if (ids.includes('staff-of-adornment')) {
+    const item=(id:string)=>completion.items.find((x:any)=>x.id===id);
+    const utilities=['staff-of-adornment','staff-of-birdcalls','staff-of-flowers','wand-of-smiles','veteran-s-cane','lock-of-trickery','mystery-key','rival-coin','thermal-cube','potion-of-comprehension','potion-of-watchful-rest'];
+    for(const id of utilities) {
+      const x=item(id),facts=x.raw_data.upstream_facts;
+      assert.equal(x.raw_data.attunement,false,id);
+      assert.equal(x.raw_data.source_edition,facts.source==='XDMG'?'D&D 5e (2024)':'D&D 5e (2014)',id);
+      assert.equal(x.weight_estimated,['veteran-s-cane','mystery-key','rival-coin','thermal-cube','potion-of-watchful-rest'].includes(id),id);
+      assert.equal(x.raw_data.consumable,['mystery-key','potion-of-comprehension','potion-of-watchful-rest'].includes(id),id);
+      assert.equal(x.raw_data.two_handed,false,id);
+      assert.deepEqual(x.raw_data.equipment_slots,id.startsWith('potion-')?[]:['main_hand','off_hand'],id);
+    }
+    for(const id of ['staff-of-adornment','staff-of-birdcalls','staff-of-flowers']) {
+      const x=item(id);assert.equal(x.price_cp,10020);assert.equal(x.weight_lb,4);
+      assert.equal(x.raw_data.upstream_facts.dmg1,'1d6');assert.equal(x.raw_data.upstream_facts.dmg2,'1d8');
+      assert.equal(x.raw_data.upstream_facts.dmgType,'B');assert.deepEqual(x.raw_data.upstream_facts.property,['V|XPHB']);
+    }
+    assert.match(item('staff-of-adornment').raw_data.rules_summary,/até três objetos simultaneamente/);
+    assert.match(item('staff-of-adornment').raw_data.rules_summary,/até o cajado deixar de estar em sua posse/);
+    for(const id of ['staff-of-birdcalls','staff-of-flowers']) {
+      assert.equal(item(id).raw_data.upstream_facts.charges,10);
+      assert.match(item(id).raw_data.rules_summary,/1d6 \+ 4 cargas/);
+      assert.match(item(id).raw_data.rules_summary,/última carga, role 1d20: com 1/);
+    }
+    assert.match(item('staff-of-birdcalls').raw_data.rules_summary,/audível a até 120 pés/);
+    assert.match(item('staff-of-flowers').raw_data.rules_summary,/inofensiva e não mágica/);
+    assert.equal(item('wand-of-smiles').weight_lb,1);assert.equal(item('wand-of-smiles').raw_data.upstream_source,'XGE');
+    assert.match(item('wand-of-smiles').raw_data.rules_summary,/humanoide.*30 pés/);
+    assert.match(item('wand-of-smiles').raw_data.rules_summary,/Carisma CD 10/);
+    assert.match(item('wand-of-smiles').raw_data.rules_summary,/se transforma numa Varinha de Carrancas/);
+    assert.match(item('veteran-s-cane').raw_data.rules_summary,/reversível e reutilizável/);
+    assert.equal(item('lock-of-trickery').weight_lb,1);assert.equal(item('lock-of-trickery').price_cp,11000);
+    assert.match(item('lock-of-trickery').raw_data.rules_summary,/Prestidigitação\) CD 15/);
+    assert.match(item('lock-of-trickery').raw_data.rules_summary,/arrombamento têm desvantagem/);
+    assert.equal(item('rival-coin').raw_data.upstream_facts.charges,1);
+    assert.match(item('rival-coin').raw_data.rules_summary,/resultado par é cara, ímpar é coroa/);
+    assert.match(item('rival-coin').raw_data.rules_summary,/Sabedoria CD 13/);
+    assert.match(item('rival-coin').raw_data.rules_summary,/2d4 de dano psíquico/);
+    assert.match(item('rival-coin').raw_data.rules_summary,/no sucesso, sofre apenas metade/);
+    assert.match(item('rival-coin').raw_data.rules_summary,/Coroa: você sofre 1d4/);
+    assert.equal(item('thermal-cube').weight_lb,2);assert.match(item('thermal-cube').raw_data.rules_summary,/35 graus Celsius/);
+    assert.equal(item('potion-of-comprehension').weight_lb,0.5);assert.match(item('potion-of-comprehension').raw_data.rules_summary,/Compreender Idiomas.*2024/);
+    assert.match(item('potion-of-watchful-rest').raw_data.rules_summary,/oito horas/);
+    assert.match(item('potion-of-watchful-rest').raw_data.rules_summary,/Não tem efeito em criaturas que não precisam dormir/);
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:null,slot:'off_hand'})).status,200);
+    for(const id of utilities.filter(id=>!item(id).raw_data.consumable)) {
+      if(!rulesReviewIds||rulesReviewIds.has(id))assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:id,slot:'main_hand'})).status,200,id);
+    }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
   }
   console.log(

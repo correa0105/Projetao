@@ -15191,5 +15191,164 @@
     "consumable": true,
     "source_edition": "D&D 5e (2014)",
     "review": "approved"
+  },
+  "staff-of-adornment": {
+    "name": "Cajado de adorno",
+    "description": "Mantém até três pequenos objetos flutuando junto à ponta e permite girá-los lentamente.",
+    "merchant_comment": "O cajado de adorno mantém até três pequenos objetos junto à ponta. Segure-o para girar os adornos; cada um pode pesar até uma libra.",
+    "rules_summary": "Enquanto segura o cajado, você pode colocar sobre sua ponta um objeto Minúsculo que pese no máximo 1 lb. Ele flutua a uma polegada (aproximadamente 2,54 cm) da ponta até ser retirado ou até o cajado deixar de estar em sua posse. Pode manter até três objetos simultaneamente; enquanto segura o cajado, pode fazê-los girar ou virar lentamente no lugar. Não exige sintonização. Funciona fisicamente como bordão versátil, com dano contundente de 1d6 ou 1d8 quando usado com duas mãos, sem bônus mágico de ataque ou dano. Seu valor-base físico corresponde ao bordão de 2024.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "wood",
+    "source_edition": "D&D 5e (2024)",
+    "base_price_cp": 20,
+    "review": "approved"
+  },
+  "staff-of-birdcalls": {
+    "name": "Cajado de cantos de aves",
+    "description": "Dez cargas produzem chamados de aves que podem ser ouvidos a até cento e vinte pés.",
+    "merchant_comment": "O cajado de cantos de aves reproduz dez chamados diferentes. Cada canto custa uma carga; cuidado com o risco de usar a última.",
+    "rules_summary": "Cajado de madeira entalhado com aves, com dez cargas. Enquanto o segura, uma ação de Magia e uma carga produzem um destes sons, audível a até 120 pés: tentilhão, corvo, pato, galinha, ganso, mobelha, peru, gaivota, coruja ou águia. Recupera 1d6 + 4 cargas gastas a cada amanhecer, até dez. Ao gastar a última carga, role 1d20: com 1, explode numa nuvem inofensiva de penas e é destruído para sempre. Não exige sintonização. É um bordão versátil de dano contundente 1d6 ou 1d8 com duas mãos, sem bônus mágico de ataque ou dano; o chamado não invoca nem controla aves. O valor-base físico é o do bordão de 2024.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "wood",
+    "source_edition": "D&D 5e (2024)",
+    "base_price_cp": 20,
+    "review": "approved"
+  },
+  "staff-of-flowers": {
+    "name": "Cajado das flores",
+    "description": "Usa cargas para fazer uma flor comum brotar do próprio cajado ou de terra próxima.",
+    "merchant_comment": "Uma carga do cajado das flores faz nascer uma flor comum. Pode escolher a espécie ou deixar que surja uma margarida; ela cresce como qualquer flor.",
+    "rules_summary": "Possui dez cargas. Enquanto o segura, uma ação de Magia e uma carga fazem uma flor brotar de terra ou solo a até cinco pés de você, ou do próprio cajado. Você pode escolher a espécie; sem escolha, surge uma margarida de perfume suave. A flor é inofensiva e não mágica, crescendo e murchando normalmente. Recupera 1d6 + 4 cargas gastas a cada amanhecer, até dez. Ao gastar a última carga, role 1d20: com 1, o cajado vira pétalas e é destruído para sempre. Não exige sintonização. É um bordão versátil de dano contundente 1d6 ou 1d8 com duas mãos, sem bônus mágico de ataque ou dano. O valor-base físico é o do bordão de 2024.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "wood",
+    "source_edition": "D&D 5e (2024)",
+    "base_price_cp": 20,
+    "review": "approved"
+  },
+  "wand-of-smiles": {
+    "name": "Varinha de sorrisos",
+    "description": "Três cargas podem obrigar um humanoide próximo a sorrir por um minuto.",
+    "merchant_comment": "A varinha de sorrisos tem três cargas para arrancar um sorriso. Se usar a última, há uma chance de ela virar uma varinha de carrancas.",
+    "rules_summary": "Possui três cargas. Enquanto a segura, uma ação e uma carga permitem escolher um humanoide que você veja a até 30 pés. Ele faz uma resistência de Carisma CD 10; na falha, é obrigado a sorrir por um minuto. Recupera todas as cargas gastas a cada amanhecer. Ao gastar a última carga, role 1d20: com 1, a varinha se transforma numa Varinha de Carrancas de Xanathar. Não exige sintonização. O sorriso não impõe a condição Enfeitiçado nem dá controle sobre o alvo. Mantém as regras de 2014 desta fonte.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "wood",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "veteran-s-cane": {
+    "name": "Bengala do veterano",
+    "description": "Alterna entre bengala e espada longa comum com uma ação bônus, nas duas direções.",
+    "merchant_comment": "A bengala do veterano pode virar espada longa e depois voltar a ser bengala. Basta segurá-la e gastar uma ação bônus para cada transformação.",
+    "rules_summary": "Enquanto segura o objeto, uma ação bônus permite transformar esta bengala numa espada longa comum ou transformar a espada longa de volta em bengala. A transformação é reversível e reutilizável segundo a edição de 2024; não consome o objeto e não concede bônus mágico de ataque ou dano. Não exige sintonização. O peso cadastrado de 2 lb é uma estimativa da bengala, pois a fonte não informa peso. A troca de forma e suas regras de combate são resolvidas na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "wood",
+    "source_edition": "D&D 5e (2024)",
+    "estimated_weight_lb": 2,
+    "review": "approved"
+  },
+  "lock-of-trickery": {
+    "name": "Fechadura ardilosa",
+    "description": "Uma fechadura com chave cujos mecanismos impõem desvantagem ao arrombamento por Destreza.",
+    "merchant_comment": "A fechadura ardilosa vem com uma chave. O encanto atrapalha quem tenta abri-la com ferramentas, mas não a torna impossível de arrombar.",
+    "rules_summary": "Parece uma fechadura comum e vem com uma única chave. Seus mecanismos internos se ajustam magicamente: testes de Destreza feitos para abri-la por arrombamento têm desvantagem. Como a fechadura física de 2024, sem a chave pode ser aberta com ferramentas de ladrão e Destreza (Prestidigitação) CD 15; aplica-se a desvantagem do encanto. Não exige sintonização. O peso oficial de 1 lb e o valor-base de 10 PO correspondem à fechadura do Player’s Handbook de 2024.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "metal",
+    "source_edition": "D&D 5e (2024)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "mystery-key": {
+    "name": "Chave do mistério",
+    "description": "Tem cinco por cento de chance de abrir a fechadura em que é inserida; desaparece só no sucesso.",
+    "merchant_comment": "A chave do mistério tem cinco por cento de chance de abrir a fechadura. Ela some quando funciona; uma tentativa frustrada não gasta a chave.",
+    "rules_summary": "Uma interrogação faz parte da cabeça desta chave. Ela tem 5% de chance de abrir qualquer fechadura em que seja inserida. Quando consegue abrir algo, desaparece; uma tentativa que falhe não a consome. Não exige sintonização. É um consumível condicional: use a ação de consumo do inventário somente depois do sucesso resolvido na mesa. A chance e a abertura não são resolvidas automaticamente pelo inventário. O peso de 0,02 lb é uma estimativa, pois a fonte não informa peso.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "metal",
+    "source_edition": "D&D 5e (2024)",
+    "consumable": true,
+    "estimated_weight_lb": 0.02,
+    "review": "approved"
+  },
+  "rival-coin": {
+    "name": "Moeda dos rivais",
+    "description": "Uma moeda diária de rivais célebres causa dano psíquico conforme sai cara ou coroa.",
+    "merchant_comment": "A moeda dos rivais tem uma carga por amanhecer. Cara afeta uma criatura à vista; coroa cobra o dano de você. Os dois lados têm risco.",
+    "rules_summary": "Moeda de ouro com um rival famoso em cada lado; esta arte representa Mordenkainen, com Iggwilv na face oposta. Possui uma carga, recuperada a cada amanhecer. Uma ação de Magia gasta a carga para lançá-la; role qualquer dado: resultado par é cara, ímpar é coroa. Cara: escolha uma criatura que veja a até 60 pés; ela faz resistência de Sabedoria CD 13. Na falha, sofre 2d4 de dano psíquico e tem desvantagem no próximo ataque que fizer antes do fim do próximo turno dela; no sucesso, sofre apenas metade do dano. Coroa: você sofre 1d4 de dano psíquico. Não exige sintonização. O peso de 0,02 lb é estimado, pois a fonte não informa peso.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "metal",
+    "source_edition": "D&D 5e (2024)",
+    "estimated_weight_lb": 0.02,
+    "review": "approved"
+  },
+  "thermal-cube": {
+    "name": "Cubo térmico",
+    "description": "Um cubo de enxofre mantém calor seco de trinta e cinco graus Celsius a até quinze pés.",
+    "merchant_comment": "Este cubo de enxofre mantém trinta e cinco graus a até quinze pés. É calor seco constante, útil para aquecer um abrigo frio.",
+    "rules_summary": "Cubo de enxofre sólido com três polegadas (aproximadamente 7,62 cm) de lado. Produz calor seco suficiente para manter a temperatura a até 15 pés dele em 95 graus Fahrenheit, equivalentes a 35 graus Celsius. Não exige sintonização nem tem cargas. A fonte não atribui dano de fogo ou imunidade ao fogo. O peso de 2 lb é uma estimativa para um cubo de enxofre desse tamanho; a fonte não informa peso.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "glass",
+    "source_edition": "D&D 5e (2014)",
+    "estimated_weight_lb": 2,
+    "review": "approved"
+  },
+  "potion-of-comprehension": {
+    "name": "Poção de compreensão",
+    "description": "Ao beber, recebe o efeito de Compreender Idiomas por uma hora.",
+    "merchant_comment": "A poção de compreensão dá o efeito de Compreender Idiomas por uma hora. O sal e a fuligem no líquido claro fazem parte da mistura.",
+    "rules_summary": "Ao beber esta poção, você recebe por uma hora o efeito da magia Compreender Idiomas, conforme as regras da magia de 2024. O líquido é transparente, com partículas de sal e fuligem girando dentro. Consumível de uma dose; não exige sintonização.",
+    "slots": [],
+    "target": "human",
+    "material": "liquid",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "potion-of-watchful-rest": {
+    "name": "Poção de repouso vigilante",
+    "description": "Permite ficar acordado durante um descanso longo e impede sono mágico por oito horas.",
+    "merchant_comment": "A poção de repouso vigilante permite descansar acordado por oito horas e impede sono mágico. Ela não beneficia quem já não precisa dormir.",
+    "rules_summary": "Ao beber esta mistura doce de cor âmbar, por oito horas a magia não pode fazê-lo dormir, e você pode permanecer acordado durante um descanso longo e ainda receber seus benefícios. Não tem efeito em criaturas que não precisam dormir, como elfos. Consumível de uma dose; não exige sintonização. Não elimina as demais exigências de um descanso longo nem cura exaustão. O peso de 0,5 lb é estimado para uma dose de poção, pois a fonte não informa peso.",
+    "slots": [],
+    "target": "human",
+    "material": "liquid",
+    "source_edition": "D&D 5e (2014)",
+    "estimated_weight_lb": 0.5,
+    "review": "approved"
   }
 }

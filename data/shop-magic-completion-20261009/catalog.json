@@ -4,7 +4,7 @@
   "source": "https://5e.tools/items.html",
   "asOf": "2026-10-09",
   "planned": 3076,
-  "pending": 2161,
+  "pending": 2150,
   "items": [
     {
       "id": "all-purpose-tool-plus-1",
@@ -2210,6 +2210,88 @@
       }
     },
     {
+      "id": "lock-of-trickery",
+      "name": "Fechadura ardilosa",
+      "original_name": "Lock of Trickery",
+      "category": "Mágicos comuns",
+      "description": "Uma fechadura com chave cujos mecanismos impõem desvantagem ao arrombamento por Destreza.",
+      "merchant_comment": "A fechadura ardilosa vem com uma chave. O encanto atrapalha quem tenta abri-la com ferramentas, mas não a torna impossível de arrombar.",
+      "price_cp": 11000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#lock%20of%20trickery_xdmg",
+      "image_path": "/shop/magic-completion-20261009/lock-of-trickery.webp",
+      "audio_path": "/audio/emporium/lock-of-trickery.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Lock of Trickery",
+        "upstream_source": "XDMG",
+        "upstream_page": 275,
+        "upstream_facts": {
+          "name": "Lock of Trickery",
+          "source": "XDMG",
+          "page": 275,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Parece uma fechadura comum e vem com uma única chave. Seus mecanismos internos se ajustam magicamente: testes de Destreza feitos para abri-la por arrombamento têm desvantagem. Como a fechadura física de 2024, sem a chave pode ser aberta com ferramentas de ladrão e Destreza (Prestidigitação) CD 15; aplica-se a desvantagem do encanto. Não exige sintonização. O peso oficial de 1 lb e o valor-base de 10 PO correspondem à fechadura do Player’s Handbook de 2024.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "mystery-key",
+      "name": "Chave do mistério",
+      "original_name": "Mystery Key",
+      "category": "Mágicos comuns",
+      "description": "Tem cinco por cento de chance de abrir a fechadura em que é inserida; desaparece só no sucesso.",
+      "merchant_comment": "A chave do mistério tem cinco por cento de chance de abrir a fechadura. Ela some quando funciona; uma tentativa frustrada não gasta a chave.",
+      "price_cp": 5000,
+      "weight_lb": 0.02,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#mystery%20key_xdmg",
+      "image_path": "/shop/magic-completion-20261009/mystery-key.webp",
+      "audio_path": "/audio/emporium/mystery-key.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Mystery Key",
+        "upstream_source": "XDMG",
+        "upstream_page": 280,
+        "upstream_facts": {
+          "name": "Mystery Key",
+          "source": "XDMG",
+          "page": 280,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Uma interrogação faz parte da cabeça desta chave. Ela tem 5% de chance de abrir qualquer fechadura em que seja inserida. Quando consegue abrir algo, desaparece; uma tentativa que falhe não a consome. Não exige sintonização. É um consumível condicional: use a ação de consumo do inventário somente depois do sucesso resolvido na mesa. A chance e a abertura não são resolvidas automaticamente pelo inventário. O peso de 0,02 lb é uma estimativa, pois a fonte não informa peso.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
       "id": "orb-of-direction",
       "name": "Orbe de direção",
       "original_name": "Orb of Direction",
@@ -2537,6 +2619,130 @@
       }
     },
     {
+      "id": "potion-of-comprehension",
+      "name": "Poção de compreensão",
+      "original_name": "Potion of Comprehension",
+      "category": "Poções",
+      "description": "Ao beber, recebe o efeito de Compreender Idiomas por uma hora.",
+      "merchant_comment": "A poção de compreensão dá o efeito de Compreender Idiomas por uma hora. O sal e a fuligem no líquido claro fazem parte da mistura.",
+      "price_cp": 5000,
+      "weight_lb": 0.5,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#potion%20of%20comprehension_xdmg",
+      "image_path": "/shop/magic-completion-20261009/potion-of-comprehension.webp",
+      "audio_path": "/audio/emporium/potion-of-comprehension.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Potion of Comprehension",
+        "upstream_source": "XDMG",
+        "upstream_page": 287,
+        "upstream_facts": {
+          "name": "Potion of Comprehension",
+          "source": "XDMG",
+          "page": 287,
+          "rarity": "common",
+          "type": "P|XPHB",
+          "weight": 0.5,
+          "attachedSpells": [
+            "comprehend languages|xphb"
+          ]
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Ao beber esta poção, você recebe por uma hora o efeito da magia Compreender Idiomas, conforme as regras da magia de 2024. O líquido é transparente, com partículas de sal e fuligem girando dentro. Consumível de uma dose; não exige sintonização.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "liquid",
+        "attunement": false
+      }
+    },
+    {
+      "id": "potion-of-watchful-rest",
+      "name": "Poção de repouso vigilante",
+      "original_name": "Potion of Watchful Rest",
+      "category": "Poções",
+      "description": "Permite ficar acordado durante um descanso longo e impede sono mágico por oito horas.",
+      "merchant_comment": "A poção de repouso vigilante permite descansar acordado por oito horas e impede sono mágico. Ela não beneficia quem já não precisa dormir.",
+      "price_cp": 5000,
+      "weight_lb": 0.5,
+      "weight_estimated": true,
+      "source": "D&D · Waterdeep: Dungeon of the Mad Mage",
+      "source_url": "https://5e.tools/items.html#potion%20of%20watchful%20rest_wdmm",
+      "image_path": "/shop/magic-completion-20261009/potion-of-watchful-rest.webp",
+      "audio_path": "/audio/emporium/potion-of-watchful-rest.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Potion of Watchful Rest",
+        "upstream_source": "WDMM",
+        "upstream_page": 62,
+        "upstream_facts": {
+          "name": "Potion of Watchful Rest",
+          "source": "WDMM",
+          "page": 62,
+          "rarity": "common",
+          "type": "P"
+        },
+        "source_book": "Waterdeep: Dungeon of the Mad Mage",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Ao beber esta mistura doce de cor âmbar, por oito horas a magia não pode fazê-lo dormir, e você pode permanecer acordado durante um descanso longo e ainda receber seus benefícios. Não tem efeito em criaturas que não precisam dormir, como elfos. Consumível de uma dose; não exige sintonização. Não elimina as demais exigências de um descanso longo nem cura exaustão. O peso de 0,5 lb é estimado para uma dose de poção, pois a fonte não informa peso.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "liquid",
+        "attunement": false
+      }
+    },
+    {
+      "id": "rival-coin",
+      "name": "Moeda dos rivais",
+      "original_name": "Rival Coin",
+      "category": "Mágicos comuns",
+      "description": "Uma moeda diária de rivais célebres causa dano psíquico conforme sai cara ou coroa.",
+      "merchant_comment": "A moeda dos rivais tem uma carga por amanhecer. Cara afeta uma criatura à vista; coroa cobra o dano de você. Os dois lados têm risco.",
+      "price_cp": 10000,
+      "weight_lb": 0.02,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#rival%20coin_xdmg",
+      "image_path": "/shop/magic-completion-20261009/rival-coin.webp",
+      "audio_path": "/audio/emporium/rival-coin.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Rival Coin",
+        "upstream_source": "XDMG",
+        "upstream_page": 296,
+        "upstream_facts": {
+          "name": "Rival Coin",
+          "source": "XDMG",
+          "page": 296,
+          "rarity": "common",
+          "wondrous": true,
+          "charges": 1,
+          "recharge": "dawn",
+          "rechargeAmount": 1
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Moeda de ouro com um rival famoso em cada lado; esta arte representa Mordenkainen, com Iggwilv na face oposta. Possui uma carga, recuperada a cada amanhecer. Uma ação de Magia gasta a carga para lançá-la; role qualquer dado: resultado par é cara, ímpar é coroa. Cara: escolha uma criatura que veja a até 60 pés; ela faz resistência de Sabedoria CD 13. Na falha, sofre 2d4 de dano psíquico e tem desvantagem no próximo ataque que fizer antes do fim do próximo turno dela; no sucesso, sofre apenas metade do dano. Coroa: você sofre 1d4 de dano psíquico. Não exige sintonização. O peso de 0,02 lb é estimado, pois a fonte não informa peso.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
       "id": "rope-of-mending",
       "name": "Corda de remendo",
       "original_name": "Rope of Mending",
@@ -2668,6 +2874,159 @@
       }
     },
     {
+      "id": "staff-of-adornment",
+      "name": "Cajado de adorno",
+      "original_name": "Staff of Adornment",
+      "category": "Mágicos comuns",
+      "description": "Mantém até três pequenos objetos flutuando junto à ponta e permite girá-los lentamente.",
+      "merchant_comment": "O cajado de adorno mantém até três pequenos objetos junto à ponta. Segure-o para girar os adornos; cada um pode pesar até uma libra.",
+      "price_cp": 10020,
+      "weight_lb": 4,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#staff%20of%20adornment_xdmg",
+      "image_path": "/shop/magic-completion-20261009/staff-of-adornment.webp",
+      "audio_path": "/audio/emporium/staff-of-adornment.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Staff of Adornment",
+        "upstream_source": "XDMG",
+        "upstream_page": 306,
+        "upstream_facts": {
+          "name": "Staff of Adornment",
+          "source": "XDMG",
+          "page": 306,
+          "rarity": "common",
+          "type": "M|XPHB",
+          "staff": true,
+          "weight": 4,
+          "dmg1": "1d6",
+          "dmg2": "1d8",
+          "dmgType": "B",
+          "property": [
+            "V|XPHB"
+          ]
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Enquanto segura o cajado, você pode colocar sobre sua ponta um objeto Minúsculo que pese no máximo 1 lb. Ele flutua a uma polegada (aproximadamente 2,54 cm) da ponta até ser retirado ou até o cajado deixar de estar em sua posse. Pode manter até três objetos simultaneamente; enquanto segura o cajado, pode fazê-los girar ou virar lentamente no lugar. Não exige sintonização. Funciona fisicamente como bordão versátil, com dano contundente de 1d6 ou 1d8 quando usado com duas mãos, sem bônus mágico de ataque ou dano. Seu valor-base físico corresponde ao bordão de 2024.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "staff-of-birdcalls",
+      "name": "Cajado de cantos de aves",
+      "original_name": "Staff of Birdcalls",
+      "category": "Mágicos comuns",
+      "description": "Dez cargas produzem chamados de aves que podem ser ouvidos a até cento e vinte pés.",
+      "merchant_comment": "O cajado de cantos de aves reproduz dez chamados diferentes. Cada canto custa uma carga; cuidado com o risco de usar a última.",
+      "price_cp": 10020,
+      "weight_lb": 4,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#staff%20of%20birdcalls_xdmg",
+      "image_path": "/shop/magic-completion-20261009/staff-of-birdcalls.webp",
+      "audio_path": "/audio/emporium/staff-of-birdcalls.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Staff of Birdcalls",
+        "upstream_source": "XDMG",
+        "upstream_page": 307,
+        "upstream_facts": {
+          "name": "Staff of Birdcalls",
+          "source": "XDMG",
+          "page": 307,
+          "rarity": "common",
+          "type": "M|XPHB",
+          "staff": true,
+          "weight": 4,
+          "charges": 10,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d6 + 4}",
+          "dmg1": "1d6",
+          "dmg2": "1d8",
+          "dmgType": "B",
+          "property": [
+            "V|XPHB"
+          ]
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Cajado de madeira entalhado com aves, com dez cargas. Enquanto o segura, uma ação de Magia e uma carga produzem um destes sons, audível a até 120 pés: tentilhão, corvo, pato, galinha, ganso, mobelha, peru, gaivota, coruja ou águia. Recupera 1d6 + 4 cargas gastas a cada amanhecer, até dez. Ao gastar a última carga, role 1d20: com 1, explode numa nuvem inofensiva de penas e é destruído para sempre. Não exige sintonização. É um bordão versátil de dano contundente 1d6 ou 1d8 com duas mãos, sem bônus mágico de ataque ou dano; o chamado não invoca nem controla aves. O valor-base físico é o do bordão de 2024.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "staff-of-flowers",
+      "name": "Cajado das flores",
+      "original_name": "Staff of Flowers",
+      "category": "Mágicos comuns",
+      "description": "Usa cargas para fazer uma flor comum brotar do próprio cajado ou de terra próxima.",
+      "merchant_comment": "Uma carga do cajado das flores faz nascer uma flor comum. Pode escolher a espécie ou deixar que surja uma margarida; ela cresce como qualquer flor.",
+      "price_cp": 10020,
+      "weight_lb": 4,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#staff%20of%20flowers_xdmg",
+      "image_path": "/shop/magic-completion-20261009/staff-of-flowers.webp",
+      "audio_path": "/audio/emporium/staff-of-flowers.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Staff of Flowers",
+        "upstream_source": "XDMG",
+        "upstream_page": 308,
+        "upstream_facts": {
+          "name": "Staff of Flowers",
+          "source": "XDMG",
+          "page": 308,
+          "rarity": "common",
+          "type": "M|XPHB",
+          "staff": true,
+          "weight": 4,
+          "charges": 10,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d6 + 4}",
+          "dmg1": "1d6",
+          "dmg2": "1d8",
+          "dmgType": "B",
+          "property": [
+            "V|XPHB"
+          ]
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Possui dez cargas. Enquanto o segura, uma ação de Magia e uma carga fazem uma flor brotar de terra ou solo a até cinco pés de você, ou do próprio cajado. Você pode escolher a espécie; sem escolha, surge uma margarida de perfume suave. A flor é inofensiva e não mágica, crescendo e murchando normalmente. Recupera 1d6 + 4 cargas gastas a cada amanhecer, até dez. Ao gastar a última carga, role 1d20: com 1, o cajado vira pétalas e é destruído para sempre. Não exige sintonização. É um bordão versátil de dano contundente 1d6 ou 1d8 com duas mãos, sem bônus mágico de ataque ou dano. O valor-base físico é o do bordão de 2024.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
       "id": "talking-doll",
       "name": "Boneca falante",
       "original_name": "Talking Doll",
@@ -2788,6 +3147,88 @@
         "consumable": false,
         "rarity": "Common",
         "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "thermal-cube",
+      "name": "Cubo térmico",
+      "original_name": "Thermal Cube",
+      "category": "Mágicos comuns",
+      "description": "Um cubo de enxofre mantém calor seco de trinta e cinco graus Celsius a até quinze pés.",
+      "merchant_comment": "Este cubo de enxofre mantém trinta e cinco graus a até quinze pés. É calor seco constante, útil para aquecer um abrigo frio.",
+      "price_cp": 10000,
+      "weight_lb": 2,
+      "weight_estimated": true,
+      "source": "D&D · Icewind Dale: Rime of the Frostmaiden",
+      "source_url": "https://5e.tools/items.html#thermal%20cube_idrotf",
+      "image_path": "/shop/magic-completion-20261009/thermal-cube.webp",
+      "audio_path": "/audio/emporium/thermal-cube.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Thermal Cube",
+        "upstream_source": "IDRotF",
+        "upstream_page": 316,
+        "upstream_facts": {
+          "name": "Thermal Cube",
+          "source": "IDRotF",
+          "page": 316,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Icewind Dale: Rime of the Frostmaiden",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Cubo de enxofre sólido com três polegadas (aproximadamente 7,62 cm) de lado. Produz calor seco suficiente para manter a temperatura a até 15 pés dele em 95 graus Fahrenheit, equivalentes a 35 graus Celsius. Não exige sintonização nem tem cargas. A fonte não atribui dano de fogo ou imunidade ao fogo. O peso de 2 lb é uma estimativa para um cubo de enxofre desse tamanho; a fonte não informa peso.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
+      "id": "veteran-s-cane",
+      "name": "Bengala do veterano",
+      "original_name": "Veteran's Cane",
+      "category": "Mágicos comuns",
+      "description": "Alterna entre bengala e espada longa comum com uma ação bônus, nas duas direções.",
+      "merchant_comment": "A bengala do veterano pode virar espada longa e depois voltar a ser bengala. Basta segurá-la e gastar uma ação bônus para cada transformação.",
+      "price_cp": 10000,
+      "weight_lb": 2,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#veteran's%20cane_xdmg",
+      "image_path": "/shop/magic-completion-20261009/veteran-s-cane.webp",
+      "audio_path": "/audio/emporium/veteran-s-cane.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Veteran's Cane",
+        "upstream_source": "XDMG",
+        "upstream_page": 318,
+        "upstream_facts": {
+          "name": "Veteran's Cane",
+          "source": "XDMG",
+          "page": 318,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Enquanto segura o objeto, uma ação bônus permite transformar esta bengala numa espada longa comum ou transformar a espada longa de volta em bengala. A transformação é reversível e reutilizável segundo a edição de 2024; não consome o objeto e não concede bônus mágico de ataque ou dano. Não exige sintonização. O peso cadastrado de 2 lb é uma estimativa da bengala, pois a fonte não informa peso. A troca de forma e suas regras de combate são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
         "attunement": false
       }
     },
@@ -2914,6 +3355,51 @@
         "source_book": "Xanathar's Guide to Everything",
         "source_edition": "D&D 5e (2014)",
         "rules_summary": "Tem três cargas. Enquanto a segura, use uma ação para gastar uma carga e escolher um Humanoide visível a até 30 pés. Ele faz resistência de Carisma CD 10; falhar obriga-o a franzir o cenho durante um minuto. Recupera todas as cargas gastas ao amanhecer. Ao gastar a última carga, role 1d20: num 1, a varinha se transforma em uma Varinha de Sorrisos. O efeito não aplica Amedrontado nem aumenta Intimidação.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "wand-of-smiles",
+      "name": "Varinha de sorrisos",
+      "original_name": "Wand of Smiles",
+      "category": "Mágicos comuns",
+      "description": "Três cargas podem obrigar um humanoide próximo a sorrir por um minuto.",
+      "merchant_comment": "A varinha de sorrisos tem três cargas para arrancar um sorriso. Se usar a última, há uma chance de ela virar uma varinha de carrancas.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Xanathar's Guide to Everything",
+      "source_url": "https://5e.tools/items.html#wand%20of%20smiles_xge",
+      "image_path": "/shop/magic-completion-20261009/wand-of-smiles.webp",
+      "audio_path": "/audio/emporium/wand-of-smiles.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Wand of Smiles",
+        "upstream_source": "XGE",
+        "upstream_page": 140,
+        "upstream_facts": {
+          "name": "Wand of Smiles",
+          "source": "XGE",
+          "page": 140,
+          "rarity": "common",
+          "type": "WD|DMG",
+          "weight": 1,
+          "charges": 3,
+          "recharge": "dawn",
+          "rechargeAmount": 3
+        },
+        "source_book": "Xanathar's Guide to Everything",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Possui três cargas. Enquanto a segura, uma ação e uma carga permitem escolher um humanoide que você veja a até 30 pés. Ele faz uma resistência de Carisma CD 10; na falha, é obrigado a sorrir por um minuto. Recupera todas as cargas gastas a cada amanhecer. Ao gastar a última carga, role 1d20: com 1, a varinha se transforma numa Varinha de Carrancas de Xanathar. Não exige sintonização. O sorriso não impõe a condição Enfeitiçado nem dá controle sobre o alvo. Mantém as regras de 2014 desta fonte.",
         "equipment_target": "human",
         "equipment_slots": [
           "main_hand",

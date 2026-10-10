@@ -17966,5 +17966,93 @@
     "sha256": "18ed96c881a806386066ee38a376c4afa65311fba8a13cad3f0c12e65c544569",
     "source": "public/audio/shop-counter-leather.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "staff-of-adornment",
+    "path": "public/audio/emporium/staff-of-adornment.wav",
+    "kind": "wood",
+    "sha256": "7461c89065ae7deae96aa92ff8702255e71f31fe4ed156bf0eb53f10575219fd",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "staff-of-birdcalls",
+    "path": "public/audio/emporium/staff-of-birdcalls.wav",
+    "kind": "wood",
+    "sha256": "dfc7f219245388f5570fe3375c850a03359b4ef30488e5f51eb645c6d061d8d0",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "staff-of-flowers",
+    "path": "public/audio/emporium/staff-of-flowers.wav",
+    "kind": "wood",
+    "sha256": "b920e6dee6685fb1e232127e7118afd43b53d260316f3e81120055cb775966eb",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "wand-of-smiles",
+    "path": "public/audio/emporium/wand-of-smiles.wav",
+    "kind": "wood",
+    "sha256": "674ac56d59ffcc93bb2e571cac84ac0d3c0a25f4e15dc7973dd816892230c6c5",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "veteran-s-cane",
+    "path": "public/audio/emporium/veteran-s-cane.wav",
+    "kind": "wood",
+    "sha256": "9c40e69920b136ebb5b4ce4665fb146613c53cd23599eac68fe8962dc22d89df",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lock-of-trickery",
+    "path": "public/audio/emporium/lock-of-trickery.wav",
+    "kind": "metal",
+    "sha256": "1ea54b5098c88e642152a909e79c18f92fafb95ba09d142f2cd6f042e7d617d4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "mystery-key",
+    "path": "public/audio/emporium/mystery-key.wav",
+    "kind": "metal",
+    "sha256": "50479f27be22340990e396a52f0284be4e71e69d278b44090115bea7b607eac0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "rival-coin",
+    "path": "public/audio/emporium/rival-coin.wav",
+    "kind": "metal",
+    "sha256": "35defec11ad0a951515d76aed7df35e344cc7a87727288698774eab256ec59ac",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "thermal-cube",
+    "path": "public/audio/emporium/thermal-cube.wav",
+    "kind": "glass",
+    "sha256": "a3c4a1327b75b18427663b5e9bb4e11be61c6af6f074c75cc08ba9fb9d1da2ec",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "potion-of-comprehension",
+    "path": "public/audio/emporium/potion-of-comprehension.wav",
+    "kind": "liquid",
+    "sha256": "2c9a959a42dc1d667d48d8f61666e2cad880cb5c96b812effaf2f9dc192c7925",
+    "source": "public/audio/shop-counter-liquid.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "potion-of-watchful-rest",
+    "path": "public/audio/emporium/potion-of-watchful-rest.wav",
+    "kind": "liquid",
+    "sha256": "3c20d20cf941b0ecb632a0d8d1ad36f67a541174f53ee3290285a3ff17110ab6",
+    "source": "public/audio/shop-counter-liquid.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

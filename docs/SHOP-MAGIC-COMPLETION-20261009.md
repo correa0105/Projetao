@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **915 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **926 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -475,3 +475,21 @@ Impacto exige acerto e resistência de Força CD 10 para evitar cair. Caça-feri
 Preço e peso por unidade, seguindo a política existente de munição mágica consumível, preço físico e arredondamento em cobre. Cartucho moderno clássico: 0,1 lb; cartucho físico 2024: 0,2 lb. Nenhuma munição alada ou sanguessuga usa célula de energia. Nenhuma requer sintonia ou recebe bônus numérico inventado.
 
 TypeScript e builds aprovados. Banco UUID descartável: todos os 915 itens, carrinhos, ouro, auditoria, preços administrativos e repetição; trinta e cinco consumos com replay idempotente, estoque zerado e novo pedido rejeitado com 409, sem alterar o registro de compra. Interface real dos 35 itens e loja inteira em 1500/760/390 px, sem erros. 459 conjuntos de armadura permanecem idênticos. Após publicação, 60 tabelas e todos os produtos anteriores integralmente preservados, apenas 35 novas linhas; 1.891 mídias e 43 bundles correspondem aos revisados. Docker saudável, VFX e ilustrador preservados. Completar todos continua em andamento: 2.161 candidatos e opções específicas ainda por expandir.
+
+## Lote 19 — onze utensílios comuns (10/10/2026)
+
+Onze imagens independentes originais e transparentes, onze falas próprias e onze sons distintos. Prompts em art-jobs-common-utility4-items.json. O cajado de adorno foi refinado via imagegen para manter cristal, ovo e pedra próximos da ponta. PNGs nativos e composições de todos os objetos a 190 px sobre o fundo noturno revisados, sem halos opacos; nenhum arquivo original apagado. O cubo é enxofre sólido amarelo e as poções mostram, respectivamente, líquido claro com sal/fuligem e mistura âmbar em frascos distintos.
+
+Fontes primárias do 5etools: XDMG pp. 306–308 (três cajados), 318 (bengala), 275 (fechadura), 280 (chave), 296 (moeda), 287 (poção de compreensão); XGE p. 140 (varinha de sorrisos, 2014); IDRotF p. 316 (cubo térmico, 2014); WDMM p. 62 (repouso vigilante, 2014). Não há sintonia para estes onze itens.
+
+Adorno suporta até três objetos Minúsculos de no máximo uma libra cada, a uma polegada da ponta, até removidos ou o cajado deixar de estar em sua posse; giro enquanto segurado. Cantos de aves tem dez cargas e dez chamados específicos, audíveis a 120 pés, sem invocar animais. Flores tem dez cargas e flores comuns no próprio cajado ou no solo a cinco pés. Ambos recuperam 1d6 + 4 ao amanhecer e podem ser destruídos no 1 de d20 ao gastar a última carga. São bordões versáteis de 4 lb, com preço-base físico de 2 PP incluído, sem bônus numérico inventado.
+
+Sorrisos conserva uma ação, humanoide visto a 30 pés, Carisma CD 10, um minuto e três cargas de Xanathar; último uso com 1 de d20 transforma em carrancas. Bengala conserva a transformação reversível de 2024 por ação bônus. Fechadura vem com uma única chave e impõe desvantagem aos testes de Destreza para abri-la; peso de 1 lb e valor-base de 10 PO do Lock XPHB foram conferidos. Chave tem chance de 5% e só desaparece no sucesso; consumo manual deve ser usado somente depois desse resultado na mesa. Moeda tem uma carga diária, resultado par/cara ou ímpar/coroa, Sabedoria CD 13, 2d4 psíquicos e desvantagem no próximo ataque dentro do prazo na falha, só metade do dano no sucesso, ou 1d4 no usuário em coroa.
+
+Cubo mantém 35 °C a quinze pés; peso de 2 lb explicitamente estimado. Compreensão aplica a magia de 2024 por uma hora, com peso oficial de 0,5 lb. Repouso vigilante dura oito horas, impede sono mágico e permite o descanso longo acordado, sem efeito em quem não precisa dormir; 0,5 lb é estimado. Chave e duas poções usam a política de preço/consumo único. Outros pesos sem fonte também estão marcados como estimativas. Poderes mágicos descritos continuam sendo resolvidos na mesa.
+
+TypeScript/build e API dos 926 itens aprovados em banco UUID descartável: compra em carrinhos, saldo, ledger, replay, preços administrativos, fontes novas, equipamento, consumo idempotente e 409 sem estoque. Loja real dos onze itens e catálogo completo em 1500/760/390 px sem erros. Após publicação, 60 tabelas e todas as ofertas anteriores mantêm linhas integrais idênticas; apenas onze novos produtos. 1.913 mídias/referências e 43 bundles correspondem aos revisados; Lava, Corrente elétrica ampliada e 21 VFX anteriores conservados, ilustrador ativo.
+
+A imagem Docker foi compactada com a mesma base Node imutável e uma cópia preservando atributos do aplicativo aprovado, seguida dos seis patches deste lote. Configuração de execução idêntica; 17.513 arquivos, diretórios e links anteriores conservaram bytes, permissões e proprietário. Camadas passaram de 118 para 12. Snapshots anteriores e volumes conservados; dados do aplicativo não foram exportados/importados para compactar a imagem. Técnica de montagem de estágio documentada na [referência Dockerfile oficial](https://docs.docker.com/reference/dockerfile/#run---mounttypebind). Helpers privados: prepare-common-utility4-publication.mjs e verify-magic-v19-compaction.mjs.
+
+Completar todos continua em andamento: 2.150 candidatos, além das opções específicas de magia/alvo que ainda precisam ser expandidas.
