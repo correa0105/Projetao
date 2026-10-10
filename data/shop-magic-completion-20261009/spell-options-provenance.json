@@ -1,0 +1,78 @@
+{
+  "asOf": "2026-10-09",
+  "source": "5etools fact-only spell index; no upstream descriptions published",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-aag.json",
+      "sha256": "30cd772fa48ae872b8794fdd5ff4e010fed5448cc3653e6742b5cca1ab866c84"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-ai.json",
+      "sha256": "9bfe1cc5da489e8f5a803aaf3c965b1a1f77dff5d911b7a5a407822502a59ddb"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-aitfr-avt.json",
+      "sha256": "d6df59a02812d07ffe6f1d5e5317805eea677586b75d693f1d9904fb0468dcb9"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-au.json",
+      "sha256": "805a3ccb583e8415ee494e582c6172d900ebd63f85d599b785f260591992ead7"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-bmt.json",
+      "sha256": "cdbcb5381e2296e3d1ffdf11b5442be3ddb4c32fff62a60694c6bf1b49af7741"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-efa.json",
+      "sha256": "e4c35eb6a906e59a5a93c4eb00af39e63a8c5714cc847e038444a9e92ebbdac2"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-egw.json",
+      "sha256": "149e235162c689823324f16414a07f3e2e10b8616d8b2d7412bd8d45acc55bf7"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-ftd.json",
+      "sha256": "1989e9eaaacc7f792c98fd63cdb364e3e1c4cb6a5b4b82f75694d85c6a9829fe"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-frhof.json",
+      "sha256": "fc9ab7d738eaa77af05f7436628546ff84bf103dd41a3aed0e0648ef26797676"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-ggr.json",
+      "sha256": "d85aefacdeccf8bc395f872b3c0ebb64a0bc2cf77da2fbbcd9554eddb58542a1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-idrotf.json",
+      "sha256": "b57aa142fc19fe209332a852a9aa31a99ba8d03d4a4a39348f8f0dbb9d6ea813"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-llk.json",
+      "sha256": "ec4eb3de178b7140067842f6b7ba72fe8c1c9d2ef253722bec102266df0e1f04"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-phb.json",
+      "sha256": "c9e54cce55e7ce0fc988feb1b604bf505faa5c042635542fa6b6ed36724e297a"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-sato.json",
+      "sha256": "4ebeaf6278bc90dbb948588fad5c39a32e0b1e40becc94929e5a17d50756f680"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-scc.json",
+      "sha256": "76cfd4b23cb6c21b74c2e24aaff55113f343b699aafaf8a11656e83978b52ed8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-tce.json",
+      "sha256": "2366f928759cf4b20807a91f716c1dde3c40727edbc5573eafb61c471a9633bc"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-xge.json",
+      "sha256": "17e7e9fe7ad20c7df094d2a4929558c5d2a331f7e1498c7575181864ec5dc1dc"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-src/main/data/spells/spells-xphb.json",
+      "sha256": "442544a91aad1181cbad78d49cfa48f9ced7d8b048dbc781e32fa6fefc6278b9"
+    }
+  ]
+}

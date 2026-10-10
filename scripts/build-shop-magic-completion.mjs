@@ -116,6 +116,7 @@ for (const c of candidates) {
     rarity: titles[f.rarity] || f.rarity,
     sound_material: e.material,
     attunement: f.reqAttune || false,
+    ...(e.spell_binding ? { spell_binding: e.spell_binding } : {}),
   };
   if (f.baseItem && ['M', 'R', 'LA', 'MA', 'HA', 'S'].includes(type)) {
     raw_data.base_item = basic?.id || baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-');

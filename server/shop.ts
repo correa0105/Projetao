@@ -8,9 +8,22 @@ import { requireAdministrator } from './administrators.js';
 import { lockCatalogPrices, lockHousePrice } from './shop-prices.js';
 import { houseCatalog } from '../shared/house.js';
 import { currentGoldUnlimited, spendGold } from './gold.js';
+import { configuredShopItem } from './shop-spell-configurations.js';
+import { boundSpellOptions, spellBindingSpec } from '../shared/shop-spell-bindings.js';
+import { pool } from './db.js';
 
 export function shopRouter() {
   const router = Router();
+  router.get('/catalog/:id/spell-options', async (req, res) => {
+    const id = z.string().min(1).max(100).parse(req.params.id);
+    const {
+      rows: [item],
+    } = await pool.query('SELECT raw_data FROM catalog_items WHERE id=$1 AND active=true', [id]);
+    if (!item) throw new AppError(404, 'Item não encontrado.');
+    const spec = spellBindingSpec(item);
+    if (!spec) throw new AppError(404, 'Este item não possui opções de magia vinculada.');
+    res.json({ spec, options: boundSpellOptions(spec) });
+  });
   router.patch('/catalog/:id/price', async (req, res) => {
     const { price_cp } = z
       .object({ price_cp: z.number().int().min(1).max(2147483647).nullable() })
@@ -54,6 +67,7 @@ export function shopRouter() {
             z.object({
               item_id: z.string().min(1).max(100),
               quantity: z.number().int().min(1).max(99),
+              spell_id: z.string().min(1).max(100).optional(),
             }),
           )
           .min(1)
@@ -86,8 +100,10 @@ export function shopRouter() {
           if (
             previous.lines.length !== lines.length ||
             previous.lines.some(
-              (v: { item_id: string; quantity: number }, i: number) =>
-                v.item_id !== lines[i].item_id || v.quantity !== lines[i].quantity,
+              (v: { item_id: string; quantity: number; spell_id?: string }, i: number) =>
+                v.item_id !== lines[i].item_id ||
+                v.quantity !== lines[i].quantity ||
+                v.spell_id !== lines[i].spell_id,
             )
           )
             throw new AppError(409, 'Esta chave já foi usada para outro carrinho.');
@@ -101,7 +117,7 @@ export function shopRouter() {
         };
       }
       const { rows: items } = await client.query(
-        'SELECT id,price_cp FROM catalog_items WHERE id=ANY($1::text[]) AND active=true ORDER BY id FOR SHARE',
+        'SELECT * FROM catalog_items WHERE id=ANY($1::text[]) AND active=true ORDER BY id FOR SHARE',
         [lines.map((i) => i.item_id)],
       );
       if (items.length !== lines.length)
@@ -112,6 +128,16 @@ export function shopRouter() {
       const total = lines.reduce((sum, i) => sum + prices.get(i.item_id)! * i.quantity, 0);
       if (total > 2147483647)
         throw new AppError(409, 'O valor do carrinho excede o limite de uma compra.');
+      const grantedIds = new Map<string, string>();
+      for (const line of lines)
+        grantedIds.set(
+          line.item_id,
+          await configuredShopItem(
+            client,
+            items.find((item) => item.id === line.item_id),
+            line.spell_id,
+          ),
+        );
       const gold_cp = await spendGold(
         client,
         character,
@@ -132,14 +158,20 @@ export function shopRouter() {
           'INSERT INTO purchases(character_id,item_id,quantity,total_cp,idempotency_key,checkout_id) VALUES($1,$2,$3,$4,$5,$6) RETURNING id',
           [
             character.id,
-            line.item_id,
+            grantedIds.get(line.item_id),
             line.quantity,
             prices.get(line.item_id)! * line.quantity,
             randomUUID(),
             order.id,
           ],
         );
-        await grantPurchaseItems(client, character.id, line.item_id, line.quantity, purchase.id);
+        await grantPurchaseItems(
+          client,
+          character.id,
+          grantedIds.get(line.item_id)!,
+          line.quantity,
+          purchase.id,
+        );
       }
       await client.query(
         "INSERT INTO achievements(character_id,code) VALUES($1,'first_purchase') ON CONFLICT DO NOTHING",

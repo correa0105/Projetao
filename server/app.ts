@@ -305,6 +305,7 @@ export function createApp() {
            jsonb_strip_nulls(jsonb_build_object(
              'equipment_target',raw_data->'equipment_target',
              'equipment_slots',raw_data->'equipment_slots',
+             'spell_binding',raw_data->'spell_binding',
              'two_handed',raw_data->'two_handed')) AS raw_data
            FROM catalog_items WHERE active=true ORDER BY category,name`,
         )
@@ -318,6 +319,7 @@ export function createApp() {
         item_id: z.string().min(1).max(100),
         quantity: z.number().int().min(1).max(99),
         idempotency_key: uuid,
+        spell_id: z.string().min(1).max(100).optional(),
       })
       .parse(req.body);
     const result = await purchase(
@@ -326,6 +328,7 @@ export function createApp() {
       data.item_id,
       data.quantity,
       data.idempotency_key,
+      data.spell_id,
     );
     res.status(result.replayed ? 200 : 201).json(result);
   });
@@ -682,7 +685,7 @@ export function createApp() {
       }),
     );
     app.get('/{*splat}', (_req, res) =>
-      res.set('Cache-Control', 'no-store').sendFile(resolve('dist/client/index.html')),
+      res.set('Cache-Control', 'no-store').sendFile('index.html', { root: resolve('dist/client') }),
     );
   }
   app.use(

@@ -18894,5 +18894,421 @@
     "sha256": "7c5830104f8e050a0aabd63bbce5cca5610412e94f0d2945bca6794e68807187",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-cantrip-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "3e7aa1acd20c994b4190d68ffcde4fea4a09bad69bf29424ad980bd45f0c3fc6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-cantrip-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "013b444f2f6df0e54b1b298743f53b2ea24150847570ae0f8ce1bbcac57e8c8e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-battleaxe",
+    "path": "public/audio/emporium/enspelled-cantrip-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "02f0dadc221b1c65973edf5fbf6f1dfd1bb1bdf3ee5164c87662c5128a3f8a78",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-blowgun",
+    "path": "public/audio/emporium/enspelled-cantrip-blowgun.wav",
+    "kind": "wood",
+    "sha256": "01688de414db28f306d1df2fd87361ae162e0fb61138873c84e792d0a6d4399c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-club",
+    "path": "public/audio/emporium/enspelled-cantrip-club.wav",
+    "kind": "wood",
+    "sha256": "323517437a74fcfa23c64e956ffcfd548cb1c2e6128ae7a95c6180aa00facb65",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-dagger",
+    "path": "public/audio/emporium/enspelled-cantrip-dagger.wav",
+    "kind": "metal",
+    "sha256": "66302ae486a7ab0b5feb6ee7468c63d3c0167c92bdad7989b1d78535364032d3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-dart",
+    "path": "public/audio/emporium/enspelled-cantrip-dart.wav",
+    "kind": "metal",
+    "sha256": "249ea465aa1fc1a13daebcdabe400610357f7eca881b2675af434c1ba8cb8735",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-cantrip-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "1ef4c950660eedf47e2521678a4c50656b302370819ea8604a17e2cc5eca00a2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-flail",
+    "path": "public/audio/emporium/enspelled-cantrip-flail.wav",
+    "kind": "chain",
+    "sha256": "887cd75364a7f26ac772f6df9e52a58feb23275d6a0cacd9a91b26d7cd440fc8",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-glaive",
+    "path": "public/audio/emporium/enspelled-cantrip-glaive.wav",
+    "kind": "metal",
+    "sha256": "1962a95f43f764378c0a64b42dd4b91d00646ca2309194d198a8799080970156",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-greataxe",
+    "path": "public/audio/emporium/enspelled-cantrip-greataxe.wav",
+    "kind": "metal",
+    "sha256": "a95ad4cb147998772428135b15c1dc3dcbd83ff1dcf2ad0c57e585b1eef7bf69",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-greatclub",
+    "path": "public/audio/emporium/enspelled-cantrip-greatclub.wav",
+    "kind": "wood",
+    "sha256": "9f5282d54a94b2f9ead8d07423fcdc546ccd79efc4d669023cb39cfdb581b6dd",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-greatsword",
+    "path": "public/audio/emporium/enspelled-cantrip-greatsword.wav",
+    "kind": "metal",
+    "sha256": "a10e73473d6d7ffbc64257b896b51425e8c3db6c3b2f159ac1640399b767a79d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-halberd",
+    "path": "public/audio/emporium/enspelled-cantrip-halberd.wav",
+    "kind": "metal",
+    "sha256": "9e0359855abb23bdc2d386a95c5651544e0754102c5fc144af34e3661d844440",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-cantrip-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "c414ec3f83fc6914f3ac4cf10f0201fc0c4dc92c43d918264de158f797beb34b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-handaxe",
+    "path": "public/audio/emporium/enspelled-cantrip-handaxe.wav",
+    "kind": "metal",
+    "sha256": "e700f166ecd76ca994cf2c596302f42c02ea3404d9b75c0943f8946c424bccb4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-cantrip-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "fb86525b1c01d86ca15e36dd7f98b042db6731ba56657ca2dfbeacdd5bb38d49",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-cantrip-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "e2ebbc3c69f99aae6c2722bc5681c2bb10a3268127ae92e67ef86cd33ebcf78e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-hoopak",
+    "path": "public/audio/emporium/enspelled-cantrip-hoopak.wav",
+    "kind": "metal",
+    "sha256": "79d5025b8147aaaa6e429c36af99487f13aa559222e221e9487b561371e1ed8f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-cantrip-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "8dbb513bbcc65709db5c2a95a97086a6b5e3a70c91dccd30d19491dcdc2be59b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-javelin",
+    "path": "public/audio/emporium/enspelled-cantrip-javelin.wav",
+    "kind": "wood",
+    "sha256": "5005bb128add24984c3bc6a4792db6e4b275ba31450be53572351427508dc236",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-lance",
+    "path": "public/audio/emporium/enspelled-cantrip-lance.wav",
+    "kind": "wood",
+    "sha256": "355f06d0cb16efeffb1d09c4a6a5128630bb96cc055c4f1e2bf8cb72a547697b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-laser-pistol",
+    "path": "public/audio/emporium/enspelled-cantrip-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "01c5260165b3fab76bc6e3f3cd8936e729602a5f60386c7bdb91594e34279a33",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-laser-rifle",
+    "path": "public/audio/emporium/enspelled-cantrip-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "3748a46005df36c31b9fb01215e04fa95828e0ebf6414a71e2bceffb4bb26397",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-light-crossbow",
+    "path": "public/audio/emporium/enspelled-cantrip-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "a7ccdfc3b77900117f7d04bd503352ee37cea8eb182ac319b0bbaec5b696bc7d",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-light-hammer",
+    "path": "public/audio/emporium/enspelled-cantrip-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "abe4166ae039b63a45052a60844afb1f94aee4c721a6f6147fc86bcae13e9f50",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-cantrip-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "8e36f29e864ae430aed4451750b6886a321c9814f93de88710a9c787a6a2068e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-longbow",
+    "path": "public/audio/emporium/enspelled-cantrip-longbow.wav",
+    "kind": "metal",
+    "sha256": "a5fb60242227623fb1078cc50e6ba64a9dfd0fbcceaa1107c69ad475da46529b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-longsword",
+    "path": "public/audio/emporium/enspelled-cantrip-longsword.wav",
+    "kind": "metal",
+    "sha256": "086098fe35e176b88e67357629816d6fec37aa3f9519920859269dfbd72ff095",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-mace",
+    "path": "public/audio/emporium/enspelled-cantrip-mace.wav",
+    "kind": "metal",
+    "sha256": "ec20a83f89ecc06abe7e01153fa982dff7ef222734b00762664665a1d7648bd4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-maul",
+    "path": "public/audio/emporium/enspelled-cantrip-maul.wav",
+    "kind": "metal",
+    "sha256": "e3a4147f9b3a22ab023f209dcdbe717803be1f4f321633939bfc4f587ad36cb1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-morningstar",
+    "path": "public/audio/emporium/enspelled-cantrip-morningstar.wav",
+    "kind": "metal",
+    "sha256": "0e0fbd52e5fa1e9933a4d26dfdddc53512da2e75b17840b7c50edd36fe43ea7d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-musket",
+    "path": "public/audio/emporium/enspelled-cantrip-musket.wav",
+    "kind": "metal",
+    "sha256": "20d2684cc7d3f3492f4e004c9288e6380a2c9ffedd21f6039272fd0864aba117",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-pike",
+    "path": "public/audio/emporium/enspelled-cantrip-pike.wav",
+    "kind": "metal",
+    "sha256": "7d3fc9b4b02b04d1a7673341e46082548f4b50a2566f51e0772f76cb0509e4f7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-pistol",
+    "path": "public/audio/emporium/enspelled-cantrip-pistol.wav",
+    "kind": "metal",
+    "sha256": "1f0971506136463b952f76d7ed29cb5188f5b8c786d69733c15a1b4d39844399",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-quarterstaff",
+    "path": "public/audio/emporium/enspelled-cantrip-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "47cae1ad2c48962d4c425e16939cb5a08751d78a55688092d82f97afd5526531",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-rapier",
+    "path": "public/audio/emporium/enspelled-cantrip-rapier.wav",
+    "kind": "metal",
+    "sha256": "eb2f2dfce7f634b75e3cf8230f286391747feff559bce81ae373d30c959975e4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-revolver",
+    "path": "public/audio/emporium/enspelled-cantrip-revolver.wav",
+    "kind": "metal",
+    "sha256": "46ea56c0adf6b361d31f82bcbf7b5f686bd112a3e94760f95f4b14d587d4914f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-scimitar",
+    "path": "public/audio/emporium/enspelled-cantrip-scimitar.wav",
+    "kind": "metal",
+    "sha256": "1981553ae1cd46841a002c7d6bedad8ee32226b72c3c1545716ee2eba05fbd9a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-cantrip-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "52d7b9af8706c14d7aafe82a885f983da1b5f3598a5d37f1dbfb545b48032847",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-shortbow",
+    "path": "public/audio/emporium/enspelled-cantrip-shortbow.wav",
+    "kind": "metal",
+    "sha256": "172c1baf35726d37a590688e198dbc7bb01adf225b6b39398d0ca78c0c63c0ab",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-shortsword",
+    "path": "public/audio/emporium/enspelled-cantrip-shortsword.wav",
+    "kind": "metal",
+    "sha256": "fecc858a40e7b77eec0d1d81d16d5d4a3dfb96a0d9f084d72e017d82d0ebede8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-shotgun",
+    "path": "public/audio/emporium/enspelled-cantrip-shotgun.wav",
+    "kind": "metal",
+    "sha256": "968286117c26d6f015ceb317a52402253bc0b456f93a70b27c469cbdf5fcdadc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-sickle",
+    "path": "public/audio/emporium/enspelled-cantrip-sickle.wav",
+    "kind": "metal",
+    "sha256": "92c81de13098998590b5731c673f3fc01afb119ca5277918b25c34493f30ad72",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-sling",
+    "path": "public/audio/emporium/enspelled-cantrip-sling.wav",
+    "kind": "leather",
+    "sha256": "631d21bdf8a52145dd8e9c273c36a6480fd01c6faa4a70f7ab9db0a09656593b",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-spear",
+    "path": "public/audio/emporium/enspelled-cantrip-spear.wav",
+    "kind": "wood",
+    "sha256": "e4d5d68494fab52a9b1f52cfd4659f0ab3e08db15e38de62ff94f0208248a8c8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-trident",
+    "path": "public/audio/emporium/enspelled-cantrip-trident.wav",
+    "kind": "metal",
+    "sha256": "2608164062a09a12b4c912443bd2f6a75f90162ac4dae55acdf7abe7bdd0202e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-war-pick",
+    "path": "public/audio/emporium/enspelled-cantrip-war-pick.wav",
+    "kind": "metal",
+    "sha256": "d12b22f41e1e5ccdcc4b709c92d75e48179ff55a4ce8c1647a968eb0b76ad969",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-warhammer",
+    "path": "public/audio/emporium/enspelled-cantrip-warhammer.wav",
+    "kind": "metal",
+    "sha256": "8bcc08dba9155ac087c398396514588eb77b1b452795de533ae4f7ef6acd8b91",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-whip",
+    "path": "public/audio/emporium/enspelled-cantrip-whip.wav",
+    "kind": "leather",
+    "sha256": "9d8971aec5f35bfb258d36443358f08c5d7517adf5ab8871e3f0fcf7daee3fae",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-wooden-staff",
+    "path": "public/audio/emporium/enspelled-cantrip-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "843bd3f52454e0e276672d3d7a1c7fcb1f877f68b2f915b32bbbc23e7089c442",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-cantrip-yklwa",
+    "path": "public/audio/emporium/enspelled-cantrip-yklwa.wav",
+    "kind": "metal",
+    "sha256": "8facb187c161a4c63c7b61cfe9e8ed74f4570b29c11f4aa86f5e7341b4af6869",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

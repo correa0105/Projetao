@@ -80,7 +80,7 @@ export async function getShopItemRules(id: string) {
   const {
     rows: [item],
   } = await pool.query(
-    'SELECT id,name,description,source,source_url,category,raw_data FROM catalog_items WHERE id=$1 AND active=true',
+    "SELECT id,name,description,source,source_url,category,raw_data FROM catalog_items WHERE id=$1 AND (active=true OR raw_data->>'configuration_origin' IS NOT NULL)",
     [id],
   );
   if (!item) throw new AppError(404, 'Item não encontrado.');

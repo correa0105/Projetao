@@ -84,7 +84,8 @@ try {
     await readFile('data/shop-magic-completion-20261009/art-manifest.json', 'utf8'),
   ).assets;
   const all = (await request('/catalog')).data;
-  const ids = completion.items.map((x: any) => x.id),
+  // Configured spell exemplars have separate inventory IDs and a dedicated fulfillment test.
+  const ids = completion.items.filter((x:any)=>!x.raw_data.spell_binding).map((x: any) => x.id),
     hashes = new Set(),
     voices = new Set();
   for (const expected of completion.items) {
@@ -166,7 +167,7 @@ try {
     assert.equal(pieces.length,6,x.id);assert(pieces.every(p=>p.quantity===1&&p.raw_data.armor_bundle_parent===x.id),x.id);
     assert.equal(Math.round(pieces.reduce((s,p)=>s+Number(p.weight_lb),0)*100),Math.round(x.weight_lb*100),x.id);
   }
-  const total = completion.items.reduce(
+  const total = completion.items.filter((x:any)=>!x.raw_data.spell_binding).reduce(
     (sum: number, x: any) => sum + (x.id === override ? 4321 : x.price_cp),
     0,
   );
@@ -1027,7 +1028,7 @@ try {
     );
   }
   console.log(
-    `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
+    `PASS ${completion.items.length} reviewed source/media records and ${ids.length} standard purchases: ${rulesReviewIds?.size ?? completion.items.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold. Bound-spell fulfillment has its own isolated test.`,
   );
 } finally {
   await new Promise<void>((r) => server.close(() => r()));

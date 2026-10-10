@@ -17174,5 +17174,1441 @@
     "material": "metal",
     "source_edition": "D&D 5e (2014)",
     "review": "approved"
+  },
+  "enspelled-cantrip-antimatter-rifle": {
+    "name": "Arma com truque vinculado (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Rifle de antimatéria: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Rifle de antimatéria. Dano básico 6d8 necrótico. Alcance normal/máximo: 120/360 pés. Propriedades: munição de arma de fogo, recarga, duas mãos. Após 2 disparos, recarregue com uma ação ou ação bônus. Usa células de energia; uma célula esgotada só pode ser recarregada com equipamento adequado a critério do mestre. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-automatic-rifle": {
+    "name": "Arma com truque vinculado (Rifle automático)",
+    "description": "Forma: Rifle automático. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Rifle automático: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Rifle automático. Dano básico 2d8 perfurante. Alcance normal/máximo: 80/240 pés. Propriedades: munição de arma de fogo, rajada, recarga, duas mãos. Após 30 disparos, recarregue com uma ação ou ação bônus. Com uma ação e dez munições, pode disparar em um cubo de dez pés no alcance normal. Cada criatura faz resistência de Destreza CD 15; as falhas recebem a mesma rolagem do dano da arma.As balas de arma de fogo são destruídas ao disparar. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-battleaxe": {
+    "name": "Arma com truque vinculado (Machado de batalha)",
+    "description": "Forma: Machado de batalha. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Machado de batalha: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Machado de batalha. Dano básico 1d8 cortante. Propriedades: versátil. Dano com duas mãos: 1d10 cortante. Maestria: Derrubar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "battleaxe",
+    "model_name": "Machado de batalha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-blowgun": {
+    "name": "Arma com truque vinculado (Zarabatana)",
+    "description": "Forma: Zarabatana. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Zarabatana: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Zarabatana. Dano básico 1 perfurante. Alcance normal/máximo: 25/100 pés. Propriedades: munição, carregamento. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "blowgun",
+    "model_name": "Zarabatana",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-club": {
+    "name": "Arma com truque vinculado (Clava)",
+    "description": "Forma: Clava. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Clava: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Clava. Dano básico 1d4 contundente. Propriedades: leve. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "club",
+    "model_name": "Clava",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-dagger": {
+    "name": "Arma com truque vinculado (Adaga)",
+    "description": "Forma: Adaga. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Adaga: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa as propriedades normais da arma.",
+    "rules_summary": "Forma: Adaga. Dano básico 1d4 perfurante. Alcance normal/máximo: 20/60 pés. Propriedades: acuidade, leve, arremesso. Maestria: Entalhar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "dagger",
+    "model_name": "Adaga",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-dart": {
+    "name": "Arma com truque vinculado (Dardo)",
+    "description": "Forma: Dardo. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Dardo: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Dardo. Dano básico 1d4 perfurante. Alcance normal/máximo: 20/60 pés. Propriedades: acuidade, arremesso. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "dart",
+    "model_name": "Dardo",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-double-bladed-scimitar": {
+    "name": "Arma com truque vinculado (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Cimitarra de duas lâminas: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Cimitarra de duas lâminas. Dano básico 2d4 cortante. Propriedades: duas mãos. Se a usar na ação Atacar em seu turno, pode usar uma ação bônus imediatamente depois para um ataque corpo a corpo com dano básico 1d4 cortante, em vez de 2d4. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-flail": {
+    "name": "Arma com truque vinculado (Mangual)",
+    "description": "Forma: Mangual. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Mangual: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Mangual. Dano básico 1d8 contundente. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "chain",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "flail",
+    "model_name": "Mangual",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-glaive": {
+    "name": "Arma com truque vinculado (Glaive)",
+    "description": "Forma: Glaive. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Glaive: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Glaive. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Arma pesada: ataques têm desvantagem sem Força de pelo menos 13. Maestria: Raspar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "glaive",
+    "model_name": "Glaive",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-greataxe": {
+    "name": "Arma com truque vinculado (Machado grande)",
+    "description": "Forma: Machado grande. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Machado grande: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Machado grande. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Arma pesada: ataques têm desvantagem sem Força de pelo menos 13. Maestria: Fender, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "greataxe",
+    "model_name": "Machado grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-greatclub": {
+    "name": "Arma com truque vinculado (Clava grande)",
+    "description": "Forma: Clava grande. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Clava grande: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa as propriedades normais da arma.",
+    "rules_summary": "Forma: Clava grande. Dano básico 1d8 contundente. Propriedades: duas mãos. Maestria: Empurrar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "greatclub",
+    "model_name": "Clava grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-greatsword": {
+    "name": "Arma com truque vinculado (Espada grande)",
+    "description": "Forma: Espada grande. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Espada grande: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Espada grande. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Arma pesada: ataques têm desvantagem sem Força de pelo menos 13. Maestria: Raspar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-halberd": {
+    "name": "Arma com truque vinculado (Alabarda)",
+    "description": "Forma: Alabarda. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Alabarda: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Alabarda. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Arma pesada: ataques têm desvantagem sem Força de pelo menos 13. Maestria: Fender, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "halberd",
+    "model_name": "Alabarda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-hand-crossbow": {
+    "name": "Arma com truque vinculado (Besta de mão)",
+    "description": "Forma: Besta de mão. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Besta de mão: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Besta de mão. Dano básico 1d6 perfurante. Alcance normal/máximo: 30/120 pés. Propriedades: munição, leve, carregamento. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "hand-crossbow",
+    "model_name": "Besta de mão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-handaxe": {
+    "name": "Arma com truque vinculado (Machadinha)",
+    "description": "Forma: Machadinha. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Machadinha: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Machadinha. Dano básico 1d6 cortante. Alcance normal/máximo: 20/60 pés. Propriedades: leve, arremesso. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-heavy-crossbow": {
+    "name": "Arma com truque vinculado (Besta pesada)",
+    "description": "Forma: Besta pesada. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Besta pesada: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Besta pesada. Dano básico 1d10 perfurante. Alcance normal/máximo: 100/400 pés. Propriedades: munição, pesada, carregamento, duas mãos. Arma pesada: ataques têm desvantagem sem Destreza de pelo menos 13. Maestria: Empurrar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "heavy-crossbow",
+    "model_name": "Besta pesada",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-hooked-shortspear": {
+    "name": "Arma com truque vinculado (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Lança curta com gancho: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa as propriedades normais da arma.",
+    "rules_summary": "Forma: Lança curta com gancho. Dano básico 1d4 perfurante. Propriedades: leve. Ao acertar, pode abrir mão do dano para tentar derrubar o alvo: ele faz resistência de Força, CD 8 + seu modificador de Força + sua proficiência; na falha, fica Caído. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-hoopak": {
+    "name": "Arma com truque vinculado (Hoopak)",
+    "description": "Forma: Hoopak. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Hoopak: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Hoopak. Dano básico 1d6 perfurante. Alcance normal/máximo: 40/160 pés. Propriedades: munição, acuidade, duas mãos. Corpo a corpo ignora a propriedade Munição. Também pode ser usada como arma marcial à distância, usando balas de funda e causando 1d4 contundente, em vez de 1d6 perfurante. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-hunting-rifle": {
+    "name": "Arma com truque vinculado (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Rifle de caça: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Rifle de caça. Dano básico 2d10 perfurante. Alcance normal/máximo: 80/240 pés. Propriedades: munição de arma de fogo, recarga, duas mãos. Após 5 disparos, recarregue com uma ação ou ação bônus.As balas de arma de fogo são destruídas ao disparar. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-javelin": {
+    "name": "Arma com truque vinculado (Azagaia)",
+    "description": "Forma: Azagaia. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Azagaia: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Azagaia. Dano básico 1d6 perfurante. Alcance normal/máximo: 30/120 pés. Propriedades: arremesso. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "javelin",
+    "model_name": "Azagaia",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-lance": {
+    "name": "Arma com truque vinculado (Lança de cavalaria)",
+    "description": "Forma: Lança de cavalaria. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Lança de cavalaria: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Lança de cavalaria. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Arma pesada: ataques têm desvantagem sem Força de pelo menos 13. Exige duas mãos quando você não está montado; a exceção montada é resolvida na mesa. Maestria: Derrubar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "lance",
+    "model_name": "Lança de cavalaria",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-laser-pistol": {
+    "name": "Arma com truque vinculado (Pistola laser)",
+    "description": "Forma: Pistola laser. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Pistola laser: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Pistola laser. Dano básico 3d6 radiante. Alcance normal/máximo: 40/120 pés. Propriedades: munição de arma de fogo, recarga. Após 50 disparos, recarregue com uma ação ou ação bônus. Usa células de energia; uma célula esgotada só pode ser recarregada com equipamento adequado a critério do mestre. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-laser-rifle": {
+    "name": "Arma com truque vinculado (Rifle laser)",
+    "description": "Forma: Rifle laser. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Rifle laser: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa munição nos disparos.",
+    "rules_summary": "Forma: Rifle laser. Dano básico 3d8 radiante. Alcance normal/máximo: 100/300 pés. Propriedades: munição de arma de fogo, recarga, duas mãos. Após 30 disparos, recarregue com uma ação ou ação bônus. Usa células de energia; uma célula esgotada só pode ser recarregada com equipamento adequado a critério do mestre. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-light-crossbow": {
+    "name": "Arma com truque vinculado (Besta leve)",
+    "description": "Forma: Besta leve. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Besta leve: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Besta leve. Dano básico 1d8 perfurante. Alcance normal/máximo: 80/320 pés. Propriedades: munição, carregamento, duas mãos. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "light-crossbow",
+    "model_name": "Besta leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-light-hammer": {
+    "name": "Arma com truque vinculado (Martelo leve)",
+    "description": "Forma: Martelo leve. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Martelo leve: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Martelo leve. Dano básico 1d4 contundente. Alcance normal/máximo: 20/60 pés. Propriedades: leve, arremesso. Maestria: Entalhar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "light-hammer",
+    "model_name": "Martelo leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-light-repeating-crossbow": {
+    "name": "Arma com truque vinculado (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Besta leve de repetição: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Besta leve de repetição. Dano básico 1d8 perfurante. Alcance normal/máximo: 40/160 pés. Propriedades: munição, duas mãos. O carregador contém até seis virotes e alimenta a arma após cada disparo; recarregar o carregador exige uma ação. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-longbow": {
+    "name": "Arma com truque vinculado (Arco longo)",
+    "description": "Forma: Arco longo. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Arco longo: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Arco longo. Dano básico 1d8 perfurante. Alcance normal/máximo: 150/600 pés. Propriedades: munição, pesada, duas mãos. Arma pesada: ataques têm desvantagem sem Destreza de pelo menos 13. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "longbow",
+    "model_name": "Arco longo",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-longsword": {
+    "name": "Arma com truque vinculado (Espada longa)",
+    "description": "Forma: Espada longa. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Espada longa: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Espada longa. Dano básico 1d8 cortante. Propriedades: versátil. Dano com duas mãos: 1d10 cortante. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-mace": {
+    "name": "Arma com truque vinculado (Maça)",
+    "description": "Forma: Maça. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Maça: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa as propriedades normais da arma.",
+    "rules_summary": "Forma: Maça. Dano básico 1d6 contundente. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "mace",
+    "model_name": "Maça",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-maul": {
+    "name": "Arma com truque vinculado (Malho)",
+    "description": "Forma: Malho. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Malho: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Malho. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Arma pesada: ataques têm desvantagem sem Força de pelo menos 13. Maestria: Derrubar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "maul",
+    "model_name": "Malho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-morningstar": {
+    "name": "Arma com truque vinculado (Estrela da manhã)",
+    "description": "Forma: Estrela da manhã. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Estrela da manhã: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Estrela da manhã. Dano básico 1d8 perfurante. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "morningstar",
+    "model_name": "Estrela da manhã",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-musket": {
+    "name": "Arma com truque vinculado (Mosquete)",
+    "description": "Forma: Mosquete. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Mosquete: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Mosquete. Dano básico 1d12 perfurante. Alcance normal/máximo: 40/120 pés. Propriedades: munição, carregamento, duas mãos. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "musket",
+    "model_name": "Mosquete",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-pike": {
+    "name": "Arma com truque vinculado (Pique)",
+    "description": "Forma: Pique. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Pique: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Pique. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Arma pesada: ataques têm desvantagem sem Força de pelo menos 13. Maestria: Empurrar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "pike",
+    "model_name": "Pique",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-pistol": {
+    "name": "Arma com truque vinculado (Pistola)",
+    "description": "Forma: Pistola. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Pistola: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Pistola. Dano básico 1d10 perfurante. Alcance normal/máximo: 30/90 pés. Propriedades: munição, carregamento. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "pistol",
+    "model_name": "Pistola",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-quarterstaff": {
+    "name": "Arma com truque vinculado (Bordão)",
+    "description": "Forma: Bordão. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Bordão: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa as propriedades normais da arma.",
+    "rules_summary": "Forma: Bordão. Dano básico 1d6 contundente. Propriedades: versátil. Dano com duas mãos: 1d8 contundente. Maestria: Derrubar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "quarterstaff",
+    "model_name": "Bordão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-rapier": {
+    "name": "Arma com truque vinculado (Rapieira)",
+    "description": "Forma: Rapieira. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Rapieira: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Rapieira. Dano básico 1d8 perfurante. Propriedades: acuidade. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-revolver": {
+    "name": "Arma com truque vinculado (Revólver)",
+    "description": "Forma: Revólver. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Revólver: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Revólver. Dano básico 2d8 perfurante. Alcance normal/máximo: 40/120 pés. Propriedades: munição de arma de fogo, recarga. Após 6 disparos, recarregue com uma ação ou ação bônus.As balas de arma de fogo são destruídas ao disparar. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-scimitar": {
+    "name": "Arma com truque vinculado (Cimitarra)",
+    "description": "Forma: Cimitarra. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Cimitarra: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Cimitarra. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Maestria: Entalhar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-semiautomatic-pistol": {
+    "name": "Arma com truque vinculado (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Pistola semiautomática: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Pistola semiautomática. Dano básico 2d6 perfurante. Alcance normal/máximo: 50/150 pés. Propriedades: munição de arma de fogo, recarga. Após 15 disparos, recarregue com uma ação ou ação bônus.As balas de arma de fogo são destruídas ao disparar. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-shortbow": {
+    "name": "Arma com truque vinculado (Arco curto)",
+    "description": "Forma: Arco curto. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Arco curto: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Arco curto. Dano básico 1d6 perfurante. Alcance normal/máximo: 80/320 pés. Propriedades: munição, duas mãos. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "shortbow",
+    "model_name": "Arco curto",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-shortsword": {
+    "name": "Arma com truque vinculado (Espada curta)",
+    "description": "Forma: Espada curta. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Espada curta: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa as propriedades normais da arma.",
+    "rules_summary": "Forma: Espada curta. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Maestria: Provocar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-shotgun": {
+    "name": "Arma com truque vinculado (Espingarda)",
+    "description": "Forma: Espingarda. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Espingarda: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Espingarda. Dano básico 2d8 perfurante. Alcance normal/máximo: 30/90 pés. Propriedades: munição de arma de fogo, recarga, duas mãos. Após 2 disparos, recarregue com uma ação ou ação bônus.As balas de arma de fogo são destruídas ao disparar. Maestria: Empurrar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-sickle": {
+    "name": "Arma com truque vinculado (Foice)",
+    "description": "Forma: Foice. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Foice: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Foice. Dano básico 1d4 cortante. Propriedades: leve. Maestria: Entalhar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "sickle",
+    "model_name": "Foice",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-sling": {
+    "name": "Arma com truque vinculado (Funda)",
+    "description": "Forma: Funda. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Funda: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Funda. Dano básico 1d4 contundente. Alcance normal/máximo: 30/120 pés. Propriedades: munição. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa. Peso estimado para a loja: 0,1 lb; a fonte não fornece peso para a funda.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "sling",
+    "model_name": "Funda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved",
+    "estimated_weight_lb": 0.1
+  },
+  "enspelled-cantrip-spear": {
+    "name": "Arma com truque vinculado (Lança)",
+    "description": "Forma: Lança. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Lança: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Lança. Dano básico 1d6 perfurante. Alcance normal/máximo: 20/60 pés. Propriedades: arremesso, versátil. Dano com duas mãos: 1d8 perfurante. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "spear",
+    "model_name": "Lança",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-trident": {
+    "name": "Arma com truque vinculado (Tridente)",
+    "description": "Forma: Tridente. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Tridente: conjuração, adivinhação, evocação, necromancia ou transmutação. Uma magia de outra escola não cabe neste encanto.",
+    "rules_summary": "Forma: Tridente. Dano básico 1d8 perfurante. Alcance normal/máximo: 20/60 pés. Propriedades: arremesso, versátil. Dano com duas mãos: 1d10 perfurante. Maestria: Derrubar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "trident",
+    "model_name": "Tridente",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-war-pick": {
+    "name": "Arma com truque vinculado (Picareta de guerra)",
+    "description": "Forma: Picareta de guerra. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Picareta de guerra: compre pelo modelo e pelo truque que precisa. Encantar a peça não dispensa as propriedades normais da arma.",
+    "rules_summary": "Forma: Picareta de guerra. Dano básico 1d8 perfurante. Propriedades: versátil. Dano com duas mãos: 1d10 perfurante. Maestria: Enfraquecer, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "war-pick",
+    "model_name": "Picareta de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-warhammer": {
+    "name": "Arma com truque vinculado (Martelo de guerra)",
+    "description": "Forma: Martelo de guerra. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Martelo de guerra: escolha o truque antes de levar. Ele fica vinculado a esta peça; não vira um repertório de magias.",
+    "rules_summary": "Forma: Martelo de guerra. Dano básico 1d8 contundente. Propriedades: versátil. Dano com duas mãos: 1d10 contundente. Maestria: Empurrar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "warhammer",
+    "model_name": "Martelo de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-whip": {
+    "name": "Arma com truque vinculado (Chicote)",
+    "description": "Forma: Chicote. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Chicote: são seis cargas, mas o amanhecer recupera um dado de seis, não garante a reserva completa.",
+    "rules_summary": "Forma: Chicote. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. Maestria: Lentidão, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "whip",
+    "model_name": "Chicote",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-wooden-staff": {
+    "name": "Arma com truque vinculado (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Bastão de foco druídico: a sintonia vem antes do truque. Segurar a arma permite usar uma carga para conjurá-lo.",
+    "rules_summary": "Forma: Bastão de foco druídico. Dano básico 1d6 contundente. Propriedades: versátil. Dano com duas mãos: 1d8 contundente. Maestria: Derrubar, somente quando uma habilidade permite aplicá-la. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
+  },
+  "enspelled-cantrip-yklwa": {
+    "name": "Arma com truque vinculado (Yklwa)",
+    "description": "Forma: Yklwa. Um truque fixo, seis cargas, CD 13 e ataque mágico +5; exige sintonia.",
+    "merchant_comment": "Yklwa: o truque usa CD treze e ataque mais cinco. Esses números não viram bônus nos golpes da arma.",
+    "rules_summary": "Forma: Yklwa. Dano básico 1d8 perfurante. Alcance normal/máximo: 10/30 pés. Propriedades: arremesso. Exige sintonia. Um truque fica vinculado quando a arma é criada, escolhido dentre Conjuração, Adivinhação, Evocação, Necromancia ou Transmutação. A magia é fixa deste exemplar e não pode ser trocada após a compra. Enquanto segura a arma, pode gastar uma das seis cargas para conjurar esse truque; ele usa CD 13 para resistências e bônus de ataque +5. Recupera 1d6 cargas gastas a cada amanhecer, sem superar seis. O encantamento não concede bônus numérico aos ataques ou ao dano da arma nem munição ilimitada. Dungeon Master’s Guide (2024), p. 258. Conjuração, cargas e demais efeitos são resolvidos pelo mestre na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Enspelled Weapon (Cantrip)",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "spell_binding": {
+      "level": 0,
+      "schools": [
+        "C",
+        "D",
+        "V",
+        "N",
+        "T"
+      ]
+    },
+    "review": "approved"
   }
 }

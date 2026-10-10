@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **1031 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **1083 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -533,3 +533,13 @@ Anel do aventureiro (FRHoF, 2024), Garrafa de café inesgotável (SCC), Estojo d
 As regras distinguem os graus 2/3 da franquia de níveis de personagem. A cápsula não concede respiração aquática nem duração inventada; é consumida uma vez com replay idempotente. O baú conserva alimentos sem desfazer deterioração prévia, a luneta revela terreno sem criaturas/construções, e o autômato continua sob controle do mestre. Pesos de 25 lb do baú e 5 lb do orbe são da fonte; os demais pesos são estimativas explícitas. Nenhum desses dez itens exige sintonia.
 
 1031 ofertas novas publicadas, 2045 candidatos ainda pendentes. API real em banco UUID descartável verificou compra, saldo, ledger, replay, equipamento e fontes; UI conferiu as dez artes/falas/regras, três larguras e as prévias dos baús existentes. TypeScript e build passaram. Release incremental `magic-completion-v23-20261010`: somente dez produtos novos; linhas integrais dos produtos anteriores e de 60 tabelas preservadas. Todas as 2131 mídias e 43 bundles públicos conferidos; vinte efeitos/trinta condições, texturas VTT e máscara/foice preservados, servidor saudável e ilustrador ativo. A importação completa e as opções específicas de magia/alvo seguem em andamento.
+
+## 24. Armas com truque vinculado e compra configurada
+
+52 modelos completos de Enspelled Weapon (Cantrip), Dungeon Master’s Guide (2024), p. 258. Cada modelo usa sua própria silhueta original com um novo material de aço, cobre, prata e inclusões de safira gerado pelo imagegen embutido; skins nativas, falas individuais e foley único. Prompts, PNG original, referências físicas, hashes e inspeção em fundo escuro constam do manifesto e de `art-jobs-enspell-cantrip-material.json`. A arma aparece inteira apoiada no baú.
+
+Escolha obrigatória entre 41 truques elegíveis, com fonte e escola. A edição 2024 prevalece antes do filtro das cinco escolas; Dancing Lights, agora Ilusão, não reaparece por sua edição anterior. Cada compra materializa um ID de inventário distinto e inativo na vitrine, com a magia fixa e fonte conservadas no equipamento, mochila/cofre e replay. Preço, saldo e autorização continuam no servidor; falhas desfazem também a configuração criada. Seleção configurável não concede repertório nem troca de magia após a compra. Cargas e conjuração continuam resolvidas pelo mestre.
+
+Regras: sintonia, seis cargas, uma carga por conjuração enquanto segura a arma, CD 13, ataque mágico +5 e recuperação 1d6 a cada amanhecer até seis. O encanto não dá bônus aos ataques/dano físicos nem munição ilimitada. Maestrias, duas mãos, alcances, munição, recarga/rajada e exceções dos modelos foram conferidos; peso ausente da funda é estimado explicitamente. Corrigido também o fallback HTML da aplicação quando a cópia local está em um diretório oculto.
+
+1083 ofertas novas publicadas, 1993 candidatos ainda pendentes. API em banco UUID verificou 1031 compras comuns, fontes/mídias dos 1083, 52 configurações/encaixes e replay, rollback, escolas/edições, preço canônico, transferências e seed sem alterar exemplares. Navegador real autenticado verificou escolha obrigatória, carrinho, compra e persistência em 1500/760/390 px, com baú e arma carregados. TypeScript/build e publicação incremental v24 passaram: 60 tabelas e todos os produtos anteriores integralmente iguais, apenas 52 adições; 2236 mídias e 43 bundles públicos conferidos. Efeitos, condições, 116 texturas VTT e máscara/foice conservados. Os níveis seguintes e os demais itens permanecem em andamento.

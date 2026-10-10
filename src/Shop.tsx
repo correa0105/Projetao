@@ -26,6 +26,7 @@ import { shopItemScale } from './shop-item-scale';
 import { houseCatalog } from '../shared/house';
 import { HousePurchase } from './HousePurchase';
 import { ShopPriceEditor } from './ShopPriceEditor';
+import { BoundSpellSelector } from './BoundSpellSelector';
 import { ItemInfoButton } from './ItemInfoButton';
 import { thematicModelLabel } from './shop-thematic-skins';
 import { shopCategory, shopCategoryName, shopOfferCategories } from './shop-category';
@@ -54,7 +55,15 @@ const asShopHouseItems = (specs: HouseSpec[]): Item[] =>
     source_url: '',
   }));
 
-type Line = { id: string; quantity: number; x: number; y: number; z: number };
+type Line = {
+  id: string;
+  quantity: number;
+  x: number;
+  y: number;
+  z: number;
+  spell_id?: string;
+  spell_label?: string;
+};
 type Point = { x: number; y: number };
 type OfferChoice = { model: string; variant: string; query: string };
 function chosenOffer(group: ShopItemGroup, choice: OfferChoice | undefined, query: string) {
@@ -82,6 +91,7 @@ function chosenOffer(group: ShopItemGroup, choice: OfferChoice | undefined, quer
   return { model, item };
 }
 function variantHeading(group: ShopItemGroup) {
+  if (group.family === 'Enspelled Weapon') return 'Nível da magia';
   if (group.family === 'Armor of Resistance') return 'Resistência';
   if (group.variants.some((item) => item.damage_type)) return 'Tipo de dano';
   if (group.variants.some((item) => item.enhancement != null)) return 'Bônus mágico';
@@ -270,6 +280,9 @@ export function Shop({
     [query, setQuery] = useState('');
   const [offerChoices, setOfferChoices] = useState<Record<string, OfferChoice>>({});
   const [carts, setCarts] = useState<Record<string, Line[]>>({});
+  const [boundChoices, setBoundChoices] = useState<
+    Record<string, { id: string; name: string } | undefined>
+  >({});
   const [selected, setSelected] = useState<string | null>(null),
     [examined, setExamined] = useState<Item | null>(null);
   const [speech, setSpeech] = useState(content.merchant.greeting),
@@ -421,6 +434,12 @@ export function Shop({
     select(id);
     setCheckout(false);
     const item = items.get(id);
+    const line = lines.find((line) => line.id === id);
+    if (line?.spell_id)
+      setBoundChoices((current) => ({
+        ...current,
+        [id]: { id: line.spell_id!, name: line.spell_label! },
+      }));
     if (item) {
       const offer = offers.find(
         (candidate) => candidate.family && candidate.variants.some((variant) => variant.id === id),
@@ -442,6 +461,11 @@ export function Shop({
   }
   function add(item: Item, preferred?: Point) {
     if (busy) return;
+    const spell = boundChoices[item.id];
+    if (item.raw_data?.spell_binding && !spell) {
+      setError('Escolha a magia vinculada antes de colocar este item no balcão.');
+      return;
+    }
     say(item);
     setExamined(item);
     if (item.category === 'Itens de House') {
@@ -454,6 +478,12 @@ export function Shop({
     }
     const existing = lines.find((line) => line.id === item.id);
     if (existing) {
+      if (existing.spell_id !== spell?.id) {
+        setError(
+          'Este modelo já está no balcão com outra magia. Remova-o para mudar a escolha ou finalize essa compra primeiro.',
+        );
+        return;
+      }
       if (existing.quantity >= 99) {
         setError('Limite de 99 unidades por item.');
         return;
@@ -470,7 +500,16 @@ export function Shop({
       return;
     }
     const p = preferred || { x: Math.random(), y: Math.random() };
-    update([...lines, { id: item.id, quantity: 1, ...p, z: ++layer.current }]);
+    update([
+      ...lines,
+      {
+        id: item.id,
+        quantity: 1,
+        ...p,
+        z: ++layer.current,
+        ...(spell ? { spell_id: spell.id, spell_label: spell.name } : {}),
+      },
+    ]);
     setSelected(item.id);
     placeSound(item, shopItemScale(item));
   }
@@ -501,7 +540,11 @@ export function Shop({
       await post('/shop/checkout', {
         character_id: id,
         idempotency_key: key,
-        items: lines.map((line) => ({ item_id: line.id, quantity: line.quantity })),
+        items: lines.map((line) => ({
+          item_id: line.id,
+          quantity: line.quantity,
+          ...(line.spell_id ? { spell_id: line.spell_id } : {}),
+        })),
       });
       setCarts((current) => ({ ...current, [id]: [] }));
       delete keys.current[id];
@@ -668,7 +711,11 @@ export function Shop({
                       className="shop-product-art"
                       aria-label={`Examinar ${chosen?.name || title}`}
                       disabled={grouped && !chosen}
-                      draggable={!busy && !!chosen}
+                      draggable={
+                        !busy &&
+                        !!chosen &&
+                        (!chosen.raw_data?.spell_binding || !!boundChoices[chosen.id])
+                      }
                       onDragStart={(event) => {
                         if (!chosen) return event.preventDefault();
                         event.dataTransfer.setData('application/x-alvorada-shop', chosen.id);
@@ -768,6 +815,17 @@ export function Shop({
                           ? item.description
                           : `Escolha o tipo ${offer.kind === 'armor' ? 'da armadura' : 'da arma'} para consultar seus detalhes e preço.`}
                       </p>
+                      {chosen?.raw_data?.spell_binding ? (
+                        <BoundSpellSelector
+                          itemId={chosen.id}
+                          itemName={chosen.name}
+                          value={boundChoices[chosen.id]?.id}
+                          disabled={busy}
+                          onChange={(choice) =>
+                            setBoundChoices((current) => ({ ...current, [chosen.id]: choice }))
+                          }
+                        />
+                      ) : null}
                       {armorSet && (
                         <span className="shop-weight">
                           Conjunto completo com {armorSet.pieces.length} peças
@@ -809,7 +867,14 @@ export function Shop({
                           )}
                         </span>
                         <div className="item-purchase-actions">
-                          <button disabled={busy || !chosen} onClick={() => chosen && add(chosen)}>
+                          <button
+                            disabled={
+                              busy ||
+                              !chosen ||
+                              (!!chosen.raw_data?.spell_binding && !boundChoices[chosen.id])
+                            }
+                            onClick={() => chosen && add(chosen)}
+                          >
                             {item.price_cp === null ? 'Examinar na mesa' : 'Comprar'}{' '}
                             <Plus size={13} />
                           </button>
@@ -1002,6 +1067,7 @@ export function Shop({
                   <img src={item.image_path || ''} alt="" />
                   <div>
                     <strong>{item.name}</strong>
+                    {line.spell_label && <small>Magia vinculada: {line.spell_label}</small>}
                     <small>
                       {shopCategory(item)} ·{' '}
                       {item.price_cp === null

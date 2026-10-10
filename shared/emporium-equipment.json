@@ -5042,5 +5042,348 @@
   "vox-seeker": {
     "slots": [],
     "two_handed": false
+  },
+  "enspelled-cantrip-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-cantrip-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-cantrip-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
   }
 }

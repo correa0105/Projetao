@@ -1,6 +1,7 @@
 import { transaction } from './db.js';
 import { grantPurchaseItems } from './purchase-grants.js';
 import { currentGoldUnlimited, spendGold } from './gold.js';
+import { configuredShopItem } from './shop-spell-configurations.js';
 
 export class AppError extends Error {
   constructor(
@@ -17,6 +18,7 @@ export async function purchase(
   itemId: string,
   quantity: number,
   key: string,
+  spellId?: string,
 ) {
   return transaction(async (client) => {
     const gold_unlimited = await currentGoldUnlimited(client, userId);
@@ -35,7 +37,18 @@ export async function purchase(
       key,
     ]);
     if (previous) {
-      if (previous.item_id !== itemId || previous.quantity !== quantity)
+      let previousBase = previous.item_id,
+        previousSpell: string | undefined;
+      if (previous.item_id.startsWith('configured-')) {
+        const {
+          rows: [configured],
+        } = await client.query('SELECT raw_data FROM catalog_items WHERE id=$1', [
+          previous.item_id,
+        ]);
+        previousBase = configured?.raw_data?.configuration_origin;
+        previousSpell = configured?.raw_data?.bound_spell?.id;
+      }
+      if (previousBase !== itemId || previous.quantity !== quantity || previousSpell !== spellId)
         throw new AppError(409, 'Esta chave de compra já foi usada para outro pedido.');
       return { purchase: previous, gold_cp: character.gold_cp, gold_unlimited, replayed: true };
     }
@@ -49,6 +62,7 @@ export async function purchase(
     const total = item.price_cp * quantity;
     if (total > 2147483647)
       throw new AppError(409, 'O valor do pedido excede o limite de uma compra.');
+    const grantedId = await configuredShopItem(client, item, spellId);
     const gold_cp = await spendGold(
       client,
       character,
@@ -60,9 +74,9 @@ export async function purchase(
       rows: [order],
     } = await client.query(
       'INSERT INTO purchases(character_id,item_id,quantity,total_cp,idempotency_key) VALUES($1,$2,$3,$4,$5) RETURNING *',
-      [characterId, itemId, quantity, total, key],
+      [characterId, grantedId, quantity, total, key],
     );
-    await grantPurchaseItems(client, characterId, itemId, quantity, order.id);
+    await grantPurchaseItems(client, characterId, grantedId, quantity, order.id);
     await client.query(
       "INSERT INTO achievements(character_id,code) VALUES($1,'first_purchase') ON CONFLICT DO NOTHING",
       [characterId],

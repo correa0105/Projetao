@@ -58,6 +58,7 @@ function variantName(item: Item) {
   return start >= 0 && item.name.endsWith(')') ? item.name.slice(start + 2, -1) : '';
 }
 function familyName(item: Item) {
+  if (item.magic_family?.startsWith('Enspelled Weapon')) return 'Armas com magia vinculada';
   const label = variantName(item);
   return label ? item.name.slice(0, item.name.length - label.length - 3) : item.name;
 }
@@ -81,7 +82,10 @@ export function groupShopItems(items: readonly Item[]): ShopItemGroup[] {
   for (const item of items) {
     const kind = equipmentKind(item, catalog);
     if (!item.magic_family || !item.base_item || !kind) continue;
-    const key = `${kind}:${item.magic_family}`;
+    const family = item.magic_family.startsWith('Enspelled Weapon')
+      ? 'Enspelled Weapon'
+      : item.magic_family;
+    const key = `${kind}:${family}`;
     const variants = families.get(key) || [];
     variants.push(item);
     families.set(key, variants);
@@ -116,7 +120,9 @@ export function groupShopItems(items: readonly Item[]): ShopItemGroup[] {
     result.push({
       id: `magic-family:${key}`,
       name: familyName(item),
-      family: item.magic_family!,
+      family: item.magic_family!.startsWith('Enspelled Weapon')
+        ? 'Enspelled Weapon'
+        : item.magic_family!,
       kind: equipmentKind(item, catalog),
       variants: [...family],
       models: [...models.values()].sort((a, b) => a.label.localeCompare(b.label, 'pt-BR')),
@@ -128,6 +134,8 @@ export function groupShopItems(items: readonly Item[]): ShopItemGroup[] {
 
 /** A concrete variant label: translated model/color/damage, bonus and rarity, never a new item. */
 export function getVariantLabel(item: Item, modelLabel?: string): string {
+  const binding = item.raw_data?.spell_binding as { level: number } | undefined;
+  if (binding) return binding.level === 0 ? 'Truque (nível 0)' : 'Magia de nível ' + binding.level;
   let label = variantName(item) || item.name;
   if (modelLabel && normalize(label).startsWith(normalize(modelLabel))) {
     const remainder = label.slice(modelLabel.length).replace(/^[\s·,:-]+/, '');

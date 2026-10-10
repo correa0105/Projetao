@@ -59,3 +59,9 @@
 .shop-product-family h3 {
   overflow-wrap: anywhere;
 }
+.shop-bound-spell{margin:.55rem 0;display:grid;gap:.3rem}
+.shop-bound-spell label{display:grid;gap:.3rem;color:#d9c49b;font-size:.78rem}
+.shop-bound-spell select{width:100%;min-width:0;max-width:100%;padding:.45rem .5rem;background:#211e16;color:#f2dfb8;border:1px solid #84714b;border-radius:3px;font:inherit}
+.shop-bound-spell select:focus-visible{outline:2px solid #e6ba67;outline-offset:2px}
+.shop-bound-spell small{font-size:.69rem;color:#c5b58f;line-height:1.4}
+.shop-bound-spell a{color:#eac981}

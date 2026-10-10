@@ -32,6 +32,22 @@ try {
   const page = await browser.newPage({ viewport: { width: 1500, height: 1000 } }),
     errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
+  const spellItems = JSON.parse(await fs.readFile('shared/shop-spell-options.json')).items;
+  await page.route('**/api/catalog/*/spell-options', (r) => {
+    const id = r.request().url().split('/').at(-2),
+      item = items.find((x) => x.id === id),
+      spec = item?.raw_data.spell_binding;
+    assert(spec, id);
+    return r.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({
+        spec,
+        options: spellItems.filter(
+          (x) => x.level === spec.level && spec.schools.includes(x.school),
+        ),
+      }),
+    });
+  });
   await page.route('**/api/house', (r) =>
     r.fulfill({ contentType: 'application/json', body: '{"catalog":[]}' }),
   );
@@ -61,11 +77,11 @@ try {
   for (const x of process.argv.includes('--chests-only') ? [] : reviewedItems) {
     await search.fill(x.name);
     const grouped = x.magic_family && ['weapon', 'armor'].includes(x.magic_kind);
-    const card = page.locator(grouped?`.shop-product[data-family="${x.magic_family}"]`:`.shop-product[data-item-id="${x.id}"]`);
+    const card = page.locator(grouped?`.shop-product[data-family="${x.magic_family.startsWith('Enspelled Weapon')?'Enspelled Weapon':x.magic_family}"]`:`.shop-product[data-item-id="${x.id}"]`);
     await expect(card).toBeVisible();
     if(grouped){
-      await card.locator('select').first().selectOption(x.base_item);
-      if(await card.locator('select').count()>1)await card.locator('select').nth(1).selectOption(x.id);
+      await card.locator('.shop-variant-selectors select').first().selectOption(x.base_item);
+      if(await card.locator('.shop-variant-selectors select').count()>1)await card.locator('.shop-variant-selectors select').nth(1).selectOption(x.id);
       await expect(card).toHaveAttribute('data-item-id',x.id);
       await expect(card.locator('.shop-product-art')).toBeEnabled();
       await expect(card.locator('.shop-family-box')).toHaveCount(1);
@@ -101,8 +117,8 @@ try {
     const x=items.find(x=>x.id===id);if(!x)continue;
     await search.fill(x.name);
     const card=page.locator(`.shop-product[data-family="${x.magic_family}"]`);
-    await card.locator('select').first().selectOption(x.base_item);
-    if(await card.locator('select').count()>1)await card.locator('select').nth(1).selectOption(x.id);
+    await card.locator('.shop-variant-selectors select').first().selectOption(x.base_item);
+    if(await card.locator('.shop-variant-selectors select').count()>1)await card.locator('.shop-variant-selectors select').nth(1).selectOption(x.id);
     await expect(card.locator('.shop-family-object')).toHaveAttribute('src',x.image_path);
     for(const width of [1500,390]){
       await page.setViewportSize({width,height:1100});
