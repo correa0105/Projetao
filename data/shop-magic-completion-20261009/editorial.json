@@ -6648,5 +6648,1058 @@
     "merchant_comment": "Escolha até seis frases curtas e os acontecimentos que as fazem sair. Uma boneca dizendo “a porta abriu” pode ser útil; ensiná-la a reclamar do cozinheiro costuma durar menos que o encanto.",
     "rules_summary": "Exige sintonização. Durante um Descanso Curto, permanecendo a até 5 pés da boneca, você programa até seis frases de no máximo seis palavras cada, associadas às circunstâncias em que serão ditas. Cada gatilho deve ocorrer a até 5 pés da boneca; por exemplo, alguém pegá-la. Você pode trocar as frases programadas. Ao encerrar a sintonização, ela perde todas essas frases. Não mantém conversa livre nem cria novas respostas por conta própria.",
     "review": "approved"
+  },
+  "breastplate-of-gleaming": {
+    "name": "Armadura reluzente (Peitoral)",
+    "description": "Forma: Peitoral. Mantém a superfície sempre limpa.",
+    "merchant_comment": "O peitoral reluzente não guarda sujeira da estrada. Ainda precisa de cuidado com amassados.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "chain-mail-of-gleaming": {
+    "name": "Armadura reluzente (Cota de malha)",
+    "description": "Forma: Cota de malha. Mantém a superfície sempre limpa.",
+    "merchant_comment": "Esta cota mantém os elos limpos. O encanto não apaga o barulho da malha pesada.",
+    "rules_summary": "Armadura pesada. CA 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "chain-shirt-of-gleaming": {
+    "name": "Armadura reluzente (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Mantém a superfície sempre limpa.",
+    "merchant_comment": "A camisa de malha fica limpa até depois da lama. Os elos conservam a proteção do modelo.",
+    "rules_summary": "Armadura média. CA 13 + modificador de Destreza, limitado a +2. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "half-plate-armor-of-gleaming": {
+    "name": "Armadura reluzente (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Mantém a superfície sempre limpa.",
+    "merchant_comment": "A meia armadura mantém as placas limpas. Furtividade continua sendo a questão do modelo.",
+    "rules_summary": "Armadura média. CA 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "hide-armor-of-gleaming": {
+    "name": "Armadura reluzente (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Mantém a superfície sempre limpa.",
+    "merchant_comment": "As peles desta armadura não seguram sujeira. O encanto mantém a limpeza sem mudar a defesa.",
+    "rules_summary": "Armadura média. CA 12 + modificador de Destreza, limitado a +2. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Gleaming",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "plate-armor-of-gleaming": {
+    "name": "Armadura reluzente (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Mantém a superfície sempre limpa.",
+    "merchant_comment": "A armadura de placas chega limpa e assim permanece. Arranhões ainda pedem um armeiro.",
+    "rules_summary": "Armadura pesada. CA 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "ring-mail-of-gleaming": {
+    "name": "Armadura reluzente (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Mantém a superfície sempre limpa.",
+    "merchant_comment": "Os anéis desta armadura ficam limpos. O encanto não reduz a exigência de prática com armaduras pesadas.",
+    "rules_summary": "Armadura pesada. CA 14. Impõe desvantagem em Furtividade. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "scale-mail-of-gleaming": {
+    "name": "Armadura reluzente (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Mantém a superfície sempre limpa.",
+    "merchant_comment": "As escamas reluzentes não guardam poeira. Elas continuam produzindo o ruído normal da peça.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "spiked-armor-of-gleaming": {
+    "name": "Armadura reluzente (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Mantém a superfície sempre limpa.",
+    "merchant_comment": "Os espinhos ficam limpos junto com o couro. Tome cuidado: limpeza não torna as pontas macias.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Gleaming",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "splint-armor-of-gleaming": {
+    "name": "Armadura reluzente (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Mantém a superfície sempre limpa.",
+    "merchant_comment": "As talas reluzentes não acumulam lama. O encanto conserva a limpeza, não conserta metal empenado.",
+    "rules_summary": "Armadura pesada. CA 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Gleaming",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "leather-armor-of-gleaming": {
+    "name": "Armadura reluzente (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Mantém a superfície sempre limpa.",
+    "merchant_comment": "O couro reluzente permanece limpo. A leveza do modelo vem da construção, não de um bônus inventado.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Gleaming",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "padded-armor-of-gleaming": {
+    "name": "Armadura reluzente (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Mantém a superfície sempre limpa.",
+    "merchant_comment": "O acolchoado fica livre de sujeira. Ele continua impondo a limitação de Furtividade do modelo.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Armor of Gleaming",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "studded-leather-armor-of-gleaming": {
+    "name": "Armadura reluzente (Couro batido)",
+    "description": "Forma: Couro batido. Mantém a superfície sempre limpa.",
+    "merchant_comment": "Os rebites e o couro ficam limpos neste conjunto. O encanto não acrescenta pontos de defesa.",
+    "rules_summary": "Armadura leve. CA 12 + modificador de Destreza. Esta armadura nunca fica suja. O encanto não repara danos nem acrescenta bônus de CA ou resistência.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Gleaming",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "breastplate-of-weightlessness": {
+    "name": "Armadura da leveza (Peitoral)",
+    "description": "Forma: Peitoral. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "O peitoral da leveza guarda cinco cargas. Duas bastam para Levitação sobre você.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "chain-mail-of-weightlessness": {
+    "name": "Armadura da leveza (Cota de malha)",
+    "description": "Forma: Cota de malha. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "Esta cota usa uma carga para Salto. O encanto exige sintonização antes de partir.",
+    "rules_summary": "Armadura pesada. CA 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "chain-shirt-of-weightlessness": {
+    "name": "Armadura da leveza (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "A camisa da leveza repõe cargas ao amanhecer. Anote o que gastou antes de tentar levitar.",
+    "rules_summary": "Armadura média. CA 13 + modificador de Destreza, limitado a +2. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "half-plate-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "A meia armadura da leveza conserva seu peso. O movimento vem de magias com cargas, não de placas sem massa.",
+    "rules_summary": "Armadura média. CA 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "hide-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "A armadura de peles guarda cinco cargas de leveza. Salto custa uma; Levitação, duas.",
+    "rules_summary": "Armadura média. CA 12 + modificador de Destreza, limitado a +2. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Weightlessness",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "leather-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "Este couro da leveza pede sintonização. Uma ação bônus ativa a magia escolhida e consome suas cargas.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Weightlessness",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "padded-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "O acolchoado da leveza recupera cargas ao amanhecer. Guarde pelo menos duas se precisar de Levitação.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Armor of Weightlessness",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "plate-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "Esta armadura de placas permite Levitação sobre você. Faça a sintonização e reserve duas cargas.",
+    "rules_summary": "Armadura pesada. CA 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "ring-mail-of-weightlessness": {
+    "name": "Armadura da leveza (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "A armadura de anéis da leveza recarrega ao amanhecer. O resultado de 1d4 mais um respeita o limite de cinco.",
+    "rules_summary": "Armadura pesada. CA 14. Impõe desvantagem em Furtividade. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "scale-mail-of-weightlessness": {
+    "name": "Armadura da leveza (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "Estas escamas guardam magias de movimento para o usuário. Escolha entre Salto e Levitação conforme as cargas.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "spiked-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "Os espinhos da leveza continuam tendo peso. A sintonia libera magias sobre quem veste o conjunto.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Weightlessness",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014)"
+  },
+  "splint-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "A armadura de talas da leveza tem cinco cargas. Salto e Levitação sempre miram o próprio usuário.",
+    "rules_summary": "Armadura pesada. CA 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of Weightlessness",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "studded-leather-armor-of-weightlessness": {
+    "name": "Armadura da leveza (Couro batido)",
+    "description": "Forma: Couro batido. Usa cargas para conjurar Salto ou Levitação sobre o próprio usuário.",
+    "merchant_comment": "O couro batido da leveza conserva suas tiras e rebites. As cinco cargas alimentam duas magias sobre você.",
+    "rules_summary": "Armadura leve. CA 12 + modificador de Destreza. Exige sintonização e possui cinco cargas. Enquanto a veste, uma ação bônus e uma carga permitem conjurar Salto sobre você; Levitação sobre você custa duas cargas. Recupera 1d4 + 1 cargas gastas a cada amanhecer, até o limite de cinco. O item conserva o peso físico do modelo; o nome não concede peso zero nem voo permanente.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of Weightlessness",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024"
+  },
+  "cast-off-breastplate": {
+    "name": "Armadura de retirada rápida (Peitoral)",
+    "description": "Forma: Peitoral. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "As presilhas deste peitoral respondem a uma ação de Magia. Vestir continua tomando o tempo normal.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-chain-mail": {
+    "name": "Armadura de retirada rápida (Cota de malha)",
+    "description": "Forma: Cota de malha. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "A cota de retirada rápida pode sair por uma ação de Magia. Confira os elos antes de vesti-la.",
+    "rules_summary": "Armadura pesada. CA 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-chain-shirt": {
+    "name": "Armadura de retirada rápida (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "Esta camisa pode ser retirada magicamente numa ação. O fecho não acelera a hora de vestir.",
+    "rules_summary": "Armadura média. CA 13 + modificador de Destreza, limitado a +2. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-half-plate-armor": {
+    "name": "Armadura de retirada rápida (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "As placas desta meia armadura podem se soltar com uma ação de Magia. Separe um lugar para recolhê-las.",
+    "rules_summary": "Armadura média. CA 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-hide-armor": {
+    "name": "Armadura de retirada rápida (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "Esta armadura de peles pode sair por uma ação de Magia. Não confunda retirada rápida com vestir rápido.",
+    "rules_summary": "Armadura média. CA 12 + modificador de Destreza, limitado a +2. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Cast-Off Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-leather-armor": {
+    "name": "Armadura de retirada rápida (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "As tiras deste couro se soltam por uma ação de Magia. Guardar a peça continua por sua conta.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Cast-Off Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-padded-armor": {
+    "name": "Armadura de retirada rápida (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "O acolchoado de retirada rápida sai com uma ação de Magia. O encanto não muda o trabalho de vestir.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Cast-Off Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-plate-armor": {
+    "name": "Armadura de retirada rápida (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "Um conjunto de placas pode demorar para sair. Este usa uma ação de Magia para a retirada.",
+    "rules_summary": "Armadura pesada. CA 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-ring-mail": {
+    "name": "Armadura de retirada rápida (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "A armadura de anéis tem retirada por Magia. Para vestir, continuam valendo os tempos do conjunto comum.",
+    "rules_summary": "Armadura pesada. CA 14. Impõe desvantagem em Furtividade. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-scale-mail": {
+    "name": "Armadura de retirada rápida (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "Esta armadura de escamas responde à retirada por Magia. O encanto solta o conjunto, sem vesti-lo por você.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-spiked-armor": {
+    "name": "Armadura de retirada rápida (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Pode ser retirada com uma ação.",
+    "merchant_comment": "Esta armadura de espinhos pode sair numa ação. Recolha o conjunto antes de alguém pisar nele.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Você pode retirar esta armadura usando uma ação, segundo a regra de Xanathar’s Guide to Everything. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Cast-Off Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-splint-armor": {
+    "name": "Armadura de retirada rápida (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "As talas desta armadura saem por uma ação de Magia. O tempo de vestir continua o de uma armadura pesada.",
+    "rules_summary": "Armadura pesada. CA 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Cast-Off Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "cast-off-studded-leather-armor": {
+    "name": "Armadura de retirada rápida (Couro batido)",
+    "description": "Forma: Couro batido. Pode ser retirada com uma ação de Magia.",
+    "merchant_comment": "Os fechos do couro batido respondem a uma ação de Magia. Retirada rápida pode poupar tempo numa emergência.",
+    "rules_summary": "Armadura leve. CA 12 + modificador de Destreza. Você pode retirar a armadura usando uma ação de Magia. O encanto não altera o tempo normal de vesti-la.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Cast-Off Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-breastplate": {
+    "name": "Armadura do marinheiro (Peitoral)",
+    "description": "Forma: Peitoral. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "Este peitoral leva peixes gravados e encanto de natação. A cura submersa só volta ao amanhecer.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-chain-mail": {
+    "name": "Armadura do marinheiro (Cota de malha)",
+    "description": "Forma: Cota de malha. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "A malha do marinheiro permite nadar com seu deslocamento. O peso da peça continua registrado.",
+    "rules_summary": "Armadura pesada. CA 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-chain-shirt": {
+    "name": "Armadura do marinheiro (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "A camisa do marinheiro ajuda a nadar. Começar o turno submerso a zero PV ativa a recuperação.",
+    "rules_summary": "Armadura média. CA 13 + modificador de Destreza, limitado a +2. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-half-plate-armor": {
+    "name": "Armadura do marinheiro (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "A meia armadura do marinheiro traz conchas no acabamento. A cura fica indisponível para todos até o amanhecer.",
+    "rules_summary": "Armadura média. CA 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-hide-armor": {
+    "name": "Armadura do marinheiro (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "Peles com motivos de peixe para o marinheiro. O encanto dá natação, sem prometer respirar na água.",
+    "rules_summary": "Armadura média. CA 12 + modificador de Destreza, limitado a +2. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Mariner's Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-leather-armor": {
+    "name": "Armadura do marinheiro (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "O couro do marinheiro tem pequenos motivos de concha. A cura submersa é uma reserva até o amanhecer.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Mariner's Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-padded-armor": {
+    "name": "Armadura do marinheiro (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "Este acolchoado do marinheiro ajuda a nadar. Leia o gatilho de zero PV antes de contar com a cura.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Mariner's Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-plate-armor": {
+    "name": "Armadura do marinheiro (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "A armadura de placas do marinheiro facilita nadar. A cura de emergência não se repete antes do amanhecer.",
+    "rules_summary": "Armadura pesada. CA 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-ring-mail": {
+    "name": "Armadura do marinheiro (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "Estes anéis recebem o encanto do marinheiro. A recuperação exige começar seu turno submerso a zero PV.",
+    "rules_summary": "Armadura pesada. CA 14. Impõe desvantagem em Furtividade. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-scale-mail": {
+    "name": "Armadura do marinheiro (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "As escamas do marinheiro têm acabamento de concha. Nadar melhor não substitui o ar dos pulmões.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-spiked-armor": {
+    "name": "Armadura do marinheiro (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Concede natação e faz o usuário submerso a zero PV subir em direção à superfície.",
+    "merchant_comment": "Espinhos com decoração de peixes e conchas. O encanto mantém a natação igual ao seu deslocamento.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Enquanto veste esta armadura, você tem deslocamento de natação igual ao seu deslocamento de caminhada. Se começar seu turno submerso com 0 PV, a armadura faz você subir 60 pés em direção à superfície. Esta versão do Dungeon Master’s Guide de 2014 não recupera PV. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Mariner's Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-splint-armor": {
+    "name": "Armadura do marinheiro (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "A armadura de talas do marinheiro permite nadar. Depois de curar alguém, o poder espera o próximo amanhecer.",
+    "rules_summary": "Armadura pesada. CA 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mariner's Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "mariner-s-studded-leather-armor": {
+    "name": "Armadura do marinheiro (Couro batido)",
+    "description": "Forma: Couro batido. Concede deslocamento de natação e uma recuperação limitada quando submerso.",
+    "merchant_comment": "Couro batido com peixes gravados. O deslocamento de natação acompanha seu deslocamento normal.",
+    "rules_summary": "Armadura leve. CA 12 + modificador de Destreza. Enquanto veste a armadura, você tem deslocamento de natação igual ao seu deslocamento. Se começar seu turno submerso com 0 PV, recupera imediatamente 1d4 PV. A armadura não pode curar ninguém novamente até o próximo amanhecer. Sua decoração inclui peixes e conchas.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Mariner's Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-breastplate": {
+    "name": "Armadura fumegante (Peitoral)",
+    "description": "Forma: Peitoral. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "O peitoral solta fumaça discreta quando vestido. É sem cheiro e não queima quem encosta.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-chain-mail": {
+    "name": "Armadura fumegante (Cota de malha)",
+    "description": "Forma: Cota de malha. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "A fumaça sobe entre os elos desta cota. O efeito é de aparência, sem cortina para se esconder.",
+    "rules_summary": "Armadura pesada. CA 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-chain-shirt": {
+    "name": "Armadura fumegante (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "Esta camisa de malha solta fios de fumaça sem odor. O encanto não põe fogo na roupa de baixo.",
+    "rules_summary": "Armadura média. CA 13 + modificador de Destreza, limitado a +2. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-half-plate-armor": {
+    "name": "Armadura fumegante (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "Esta meia armadura fumaça quando é vestida. A nuvem é inofensiva e não dá cobertura.",
+    "rules_summary": "Armadura média. CA 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-hide-armor": {
+    "name": "Armadura fumegante (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "Estas peles soltam fumaça sem cheiro ao vestir. Não há brasa queimando o couro.",
+    "rules_summary": "Armadura média. CA 12 + modificador de Destreza, limitado a +2. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Smoldering Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-leather-armor": {
+    "name": "Armadura fumegante (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "A fumaça sobe deste couro quando vestido. Não tem odor e não indica que ele esteja queimando.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Smoldering Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-padded-armor": {
+    "name": "Armadura fumegante (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "O acolchoado solta fumaça inofensiva quando vestido. Não há chamas escondidas no tecido.",
+    "rules_summary": "Armadura leve. CA 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Smoldering Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-plate-armor": {
+    "name": "Armadura fumegante (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "A fumaça desliza pelas placas sem aquecê-las. É aparência, sem dano adicional.",
+    "rules_summary": "Armadura pesada. CA 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-ring-mail": {
+    "name": "Armadura fumegante (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "A fumaça sai entre os anéis, mas não tem odor. A proteção continua a do modelo físico.",
+    "rules_summary": "Armadura pesada. CA 14. Impõe desvantagem em Furtividade. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-scale-mail": {
+    "name": "Armadura fumegante (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "A fumaça acompanha as escamas quando vestidas. É inofensiva, sem esconder a silhueta.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-spiked-armor": {
+    "name": "Armadura fumegante (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "Fios de fumaça sobem entre estes espinhos. Eles não ficam em brasa nem dão dano de fogo.",
+    "rules_summary": "Armadura média. CA 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Smoldering Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-splint-armor": {
+    "name": "Armadura fumegante (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "A fumaça passa pelas talas sem queimar. O efeito não acrescenta resistência a fogo.",
+    "rules_summary": "Armadura pesada. CA 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Smoldering Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "review": "approved"
+  },
+  "smoldering-studded-leather-armor": {
+    "name": "Armadura fumegante (Couro batido)",
+    "description": "Forma: Couro batido. Solta pequenos fios de fumaça inofensiva enquanto vestida.",
+    "merchant_comment": "A fumaça atravessa os rebites do couro batido. É só um efeito visual, sem dano ou obscurecimento.",
+    "rules_summary": "Armadura leve. CA 12 + modificador de Destreza. Pequenos fios de fumaça inofensiva e sem odor sobem da armadura enquanto ela é vestida. Não causa dano, fogo, obscurecimento nem proteção adicional por esse efeito.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Smoldering Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "review": "approved"
   }
 }

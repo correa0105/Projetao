@@ -7,11 +7,12 @@ import {
   rasterizeEquipmentArt,
 } from '../server/equipment-art-reference.js';
 test('referências: skins SVG locais viram PNG, partes usam seu modelo, conteúdo externo é recusado', async () => {
-  const path = '/shop/magic-skins/magic-armor.svg';
+  for(const path of ['/shop/magic-skins/magic-armor.svg','/shop/magic-completion-20261009/plate-armor-of-weightlessness.svg']) {
   assert.equal(trustedEquipmentPath(path), true);
   for (const forbidden of [
     '/shop/other/item.svg',
     '/shop/magic-skins/../../item.svg',
+    '/shop/magic-completion-20261009/../../item.svg',
     'https://example.test/item.svg',
   ])
     assert.equal(trustedEquipmentPath(forbidden), false);
@@ -50,4 +51,5 @@ test('referências: skins SVG locais viram PNG, partes usam seu modelo, conteúd
       ),
     );
   await assert.rejects(rasterizeEquipmentArt(svg, '/shop/other/item.svg'));
+  }
 });

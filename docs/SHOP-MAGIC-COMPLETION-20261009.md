@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **409 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **474 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -243,3 +243,58 @@ correspondem à cópia validada. 841 mídias/referências e 21 VFX idênticos; 6
 tabelas e todos os produtos anteriores com linhas completas iguais. Só 12
 registros novos. Ilustrador mantido, WIP independente e 330×4 pausado preservados.
 Restam 2.667 candidatos, além das opções de magia/alvo ainda a expandir.
+
+## Sétimo lote: cinco famílias de armadura
+
+Aplicadas 65 formas em treze modelos físicos: armaduras reluzentes, de retirada
+rápida, do marinheiro, fumegantes e da leveza. Cada família recebe um material
+original via `image_gen.imagegen`: prata/dourado limpo, couro vinho com fechos
+de bronze, esmalte oceânico com peixes e conchas, metal escuro com motivos de
+fumaça e prata com penas de madrepérola lilás. Cada modelo conserva sua forma
+física em SVG nativo, com acabamento, fala e foley únicos. As 409 ofertas
+anteriores mantêm todos os campos dos arquivos e as artes anteriores ficam
+intactas. Prompts completos e procedência em `art-jobs-armor-materials.json` e
+`art-manifest.json` dentro de `data/shop-magic-completion-20261009`; nativos PNG
+conservados em `.local/shop-completion/native/material-*-armor.png`. Texturas e
+65 skins portáveis em `public/shop/magic-completion-20261009`.
+
+As formas modernas usam o Dungeon Master’s Guide de 2024. Espinhos conserva
+fontes compatíveis de 2014 (XGE/DMG): retirada por ação e marinheiro subindo
+60 pés ao iniciar turno submerso a zero PV. A versão moderna do marinheiro
+recupera 1d4 PV e não pode curar ninguém novamente antes do amanhecer. Leveza
+usa The Book of Many Things: sintonia, cinco cargas, ação bônus, Salto por uma
+carga ou Levitação por duas sobre o próprio usuário; recupera 1d4 + 1 ao
+amanhecer. O rótulo diferencia a edição do encanto da base de armadura de 2024.
+Não muda peso para zero. CA, limites de Destreza, Força e Furtividade de cada
+base aparecem no resumo; nenhum novo poder implica automação de combate.
+
+O catálogo de conjuntos foi ampliado de 266 para 346: inclui as 15 formas de
+espinhos já publicadas e as 65 novas. Comprar dá seis peças reais para humano,
+com peso total preservado. Migration 091 captura só armaduras de espinhos
+anteriormente inteiras na mochila/cofre; o seed entrega cinco partes restantes
+uma vez, preservando unidades de peitoral, preço, saldo, histórico e seleção
+equipada. Não havia unidades desse tipo possuídas no momento da aplicação.
+O teste exercitou estoque antigo com duas/três unidades e uma peça extra,
+preço administrativo e aplicação repetida em banco UUID descartável.
+
+Foi corrigida a whitelist de referências do ilustrador para aceitar SVGs da
+pasta nova; recursos externos e conteúdo executável continuam recusados.
+A geração de seis partes equipadas passou com a skin do conjunto; montarias
+continuam com armadura inteira e pets conservam a separação por alvo.
+
+QA: 346 conjuntos, compras concorrentes/replay, peso, equipamento atômico e
+backfill passaram. API de 474 itens em banco descartável, preços administrativos,
+compra em carrinhos de até cem, consumo e ledger passaram respeitando o limite
+de 240 pedidos/minuto; o próprio QA se limita a 200. Loja real em 1500/760/390 px
+e prévias dos cinco baús com peça inteira e ID selecionado corretos. As cinco
+folhas de 13 skins foram revistas, sem recortes ou duplicações. TypeScript e
+builds cliente/servidor passaram.
+
+Release local `magic-completion-v7-20261010`, 52 camadas, anterior preservado.
+58 tabelas com linhas completas idênticas; só 65 ofertas e 400 peças novas.
+Quinze produtos de espinhos ganharam divisão de peso e metadata de conjunto,
+com os demais campos idênticos. Inventários/cofres exatamente conforme captura;
+migration e snapshots idempotentes conferidos. 976 mídias/referências, servidor,
+43 bundles e 21 VFX antigos iguais à cópia validada; Lava/Corrente elétrica da
+revisão posterior mantidas. Ilustrador ativo, WIP e 330×4 pausado preservados.
+Restam 2.602 candidatos, além das opções de magia/alvo por expandir.

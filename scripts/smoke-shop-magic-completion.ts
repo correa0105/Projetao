@@ -5,6 +5,7 @@ import { readFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { compatibleSlots, twoHanded } from '../shared/equipment.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
+import { armorBundle, purchaseContents } from '../shared/armor-bundles.js';
 if (!/^\/alvorada_test_[a-f0-9]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
 const { pool } = await import('../server/db.js');
@@ -21,8 +22,16 @@ assert(addr && typeof addr !== 'string');
 const base = `http://127.0.0.1:${addr.port}`,
   origin = (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0];
 let cookie = '';
+const recentRequests: number[] = [];
 async function request(path: string, method = 'GET', body?: unknown) {
   for (let attempt = 0; attempt < 3; attempt++) {
+  while (true) {
+    while (recentRequests.length && Date.now() - recentRequests[0] >= 60100) recentRequests.shift();
+    if (recentRequests.length < 200) break;
+    console.log('Bulk catalog QA is waiting for its API window before sending the next request.');
+    await new Promise((resolve) => setTimeout(resolve, Math.min(60000, Math.max(1, 60100 - (Date.now() - recentRequests[0])))));
+  }
+  recentRequests.push(Date.now());
   const r = await fetch(base + '/api' + path, {
     method,
     headers: { Cookie: cookie, Origin: origin, 'Content-Type': 'application/json' },
@@ -139,6 +148,14 @@ try {
     )
   ).rows;
   assert.equal(ledger.length, ids.length);
+  const armors=completion.items.filter((x:any)=>x.raw_data.magic_kind==='armor');
+  assert.equal(armors.length,80);
+  for(const x of armors){
+    const bundle=armorBundle(x.id);assert(bundle&&bundle.target==='human',x.id);
+    const pieces=(await pool.query('SELECT i.item_id,i.quantity,c.weight_lb,c.raw_data FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND i.item_id=ANY($2::text[])',[hero.id,purchaseContents(x.id)])).rows;
+    assert.equal(pieces.length,6,x.id);assert(pieces.every(p=>p.quantity===1&&p.raw_data.armor_bundle_parent===x.id),x.id);
+    assert.equal(Math.round(pieces.reduce((s,p)=>s+Number(p.weight_lb),0)*100),Math.round(x.weight_lb*100),x.id);
+  }
   const total = completion.items.reduce(
     (sum: number, x: any) => sum + (x.id === override ? 4321 : x.price_cp),
     0,

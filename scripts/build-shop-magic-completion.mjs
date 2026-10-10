@@ -104,8 +104,8 @@ for (const c of candidates) {
     upstream_page: f.page ?? null,
     upstream_facts: f,
     source_book: c.book.name,
-    source_edition:
-      f.edition === 'one' || ['XDMG', 'XPHB'].includes(f.source) ? 'D&D 5e (2024)' : 'D&D 5e',
+    source_edition: e.source_edition ||
+      (f.edition === 'one' || ['XDMG', 'XPHB'].includes(f.source) ? 'D&D 5e (2024)' : 'D&D 5e'),
     rules_summary: e.rules_summary || e.description,
     equipment_target: e.target || 'human',
     equipment_slots: e.slots,

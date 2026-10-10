@@ -1,6 +1,10 @@
 import { readFile, writeFile } from 'node:fs/promises';
 const basic = JSON.parse(await readFile('data/shop-export/loja.json', 'utf8')).items;
 const expansion = JSON.parse(await readFile('data/emporium-expansion.json', 'utf8')).items;
+const completion = JSON.parse(
+  await readFile('data/shop-magic-completion-20261009/catalog.json', 'utf8'),
+);
+if (!completion.ready) throw Error('Catálogo mágico revisado ainda não está pronto.');
 let animals = [];
 try {
   animals = JSON.parse(await readFile('data/animal-equipment-catalog.json', 'utf8'));
@@ -21,8 +25,9 @@ const bases = new Set([
   'chain-mail',
   'splint-armor',
   'plate-armor',
+  'spiked-armor',
 ]);
-const bundles = [...basic, ...expansion, ...animals].flatMap((item) => {
+const bundles = [...basic, ...expansion, ...animals, ...completion.items].flatMap((item) => {
   const raw = item.raw_data || {};
   const target = raw.equipment_target || (raw.barding === true ? 'mount' : 'human');
   if (

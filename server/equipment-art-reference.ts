@@ -5,7 +5,7 @@ export function trustedEquipmentPath(path: unknown): path is string {
   return (
     typeof path === 'string' &&
     (/^\/[a-zA-Z0-9/_-]+\.(png|webp|jpg|jpeg)$/.test(path) ||
-      /^\/shop\/magic-skins\/[a-z0-9-]+\.svg$/.test(path))
+      /^\/shop\/(?:magic-skins|magic-completion-20261009)\/[a-z0-9-]+\.svg$/.test(path))
   );
 }
 export async function rasterizeEquipmentArt(bytes: Buffer, path: string) {

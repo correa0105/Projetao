@@ -64,13 +64,16 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
     await pool.query('UPDATE characters SET gold_cp=20000000 WHERE id=$1', [hero.id]);
     const bundles = armorBundles();
     const source = new Map(
-      JSON.parse(await readFile('data/emporium-expansion.json', 'utf8')).items.map((item: any) => [
+      [...JSON.parse(await readFile('data/emporium-expansion.json', 'utf8')).items,
+       ...JSON.parse(await readFile('data/shop-magic-completion-20261009/catalog.json', 'utf8')).items].map((item: any) => [
         item.id,
         item,
       ]),
     );
     let magicalBundles = 0;
-    assert.equal(bundles.length, 266);
+    const completionArmor = [...source.values()].filter((item: any) => item.raw_data?.shop_magic_completion && item.raw_data?.magic_kind === 'armor');
+    assert.equal(completionArmor.length, 80);
+    assert.equal(bundles.length, 266 + completionArmor.length);
     for (const bundle of bundles) {
       const { rows } = await pool.query('SELECT * FROM catalog_items WHERE id=ANY($1::text[])', [
         purchaseContents(bundle.id),
@@ -107,7 +110,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
         }
       }
     }
-    assert.equal(magicalBundles, 238);
+    assert.equal(magicalBundles, 238 + completionArmor.length);
     assert.deepEqual(purchaseContents('shield'), ['shield']);
     assert.deepEqual(purchaseContents('animated-shield'), ['animated-shield']);
     const basic = [
@@ -133,6 +136,12 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       'pet-armor-leather',
       'pet-armor-chain',
       'pet-armor-scales',
+      'spiked-armor-plus-1',
+      'breastplate-of-gleaming',
+      'cast-off-chain-shirt',
+      'mariner-s-leather-armor',
+      'smoldering-scale-mail',
+      'plate-armor-of-weightlessness',
     ];
     const checkout = {
       character_id: hero.id,
@@ -263,6 +272,13 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
     });
     assert.equal((await equip('magic-armor')).status, 200);
     assert.equal((await equip('magic-armor-leather-armor-plus-1')).status, 200);
+    for (const id of offered.filter((id) => completionArmor.some((x: any) => x.id === id))) {
+      assert.equal((await equip(id)).status, 200, id);
+      const worn = (await pool.query('SELECT slot,item_id FROM character_equipment WHERE character_id=$1 ORDER BY slot', [hero.id])).rows;
+      assert.deepEqual(worn.map((x) => x.item_id).sort(), purchaseContents(id).sort());
+      assert.equal((await equip(id)).status, 200);
+      assert.deepEqual((await pool.query('SELECT slot,item_id FROM character_equipment WHERE character_id=$1 ORDER BY slot', [hero.id])).rows, worn);
+    }
     await pool.query(
       'INSERT INTO character_art_worker(id,heartbeat_at,available) VALUES(true,now(),true) ON CONFLICT(id) DO UPDATE SET heartbeat_at=now(),available=true',
     );
@@ -546,6 +562,39 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       ).rows,
       ledgerBefore,
     );
+    // Exercise migration 091 itself on pre-bundle completion armor in this disposable DB.
+    const spikedLegacy = await createLegacyTestCharacter(owner.id, 'Espinhos antigos');
+    const backpackId = 'spiked-armor-plus-2', vaultId = 'spiked-armor-of-fire-resistance';
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1',[owner.id]);
+    for (const id of [backpackId, vaultId]) {
+      const parent = (await pool.query('SELECT raw_data FROM catalog_items WHERE id=$1', [id])).rows[0];
+      const raw = { ...parent.raw_data };
+      for (const key of Object.keys(raw)) if (key.startsWith('armor_bundle_') || key.startsWith('armor_piece_') || key === 'piece_slot') delete raw[key];
+      await pool.query('UPDATE catalog_items SET raw_data=$2,weight_lb=45 WHERE id=$1', [id, raw]);
+      assert.equal((await request(`/catalog/${id}/price`,owner,{price_cp:43210},'PATCH')).status,200);
+    }
+    await pool.query('INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,2),($1,$3,1)', [spikedLegacy.id, backpackId, backpackId+'--head']);
+    await pool.query('INSERT INTO account_vault(user_id,item_id,quantity) VALUES($1,$2,3)', [owner.id, vaultId]);
+    await pool.query("INSERT INTO character_equipment(character_id,slot,item_id) VALUES($1,'armor',$2)", [spikedLegacy.id, backpackId]);
+    const goldBefore = (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [spikedLegacy.id])).rows;
+    const equippedBefore = (await pool.query('SELECT * FROM character_equipment WHERE character_id=$1', [spikedLegacy.id])).rows;
+    await pool.query("DELETE FROM schema_migrations WHERE name='091_magic_completion_armor_pieces.sql'");
+    await migrate();
+    const captured = (await pool.query('SELECT item_id,quantity FROM armor_bundle_backfills WHERE character_id=$1 OR (user_id=$2 AND item_id=$3) ORDER BY item_id', [spikedLegacy.id, owner.id, vaultId])).rows;
+    assert.deepEqual(captured, [{item_id:backpackId,quantity:2},{item_id:vaultId,quantity:3}].sort((a,b)=>a.item_id.localeCompare(b.item_id)));
+    await seed(); await migrate(); await seed();
+    const expanded = (await pool.query('SELECT i.item_id,i.quantity,c.weight_lb FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1', [spikedLegacy.id])).rows;
+    assert.equal(expanded.length, 6);
+    for (const x of expanded) assert.equal(x.quantity, x.item_id===backpackId+'--head'?3:2);
+    assert.equal(Math.round(expanded.reduce((s,x)=>s+x.quantity*Number(x.weight_lb),0)*100),Math.round((90+armorBundle(backpackId)!.pieces[1].weight_lb)*100));
+    const vaultExpanded = (await pool.query('SELECT v.quantity,c.weight_lb FROM account_vault v JOIN catalog_items c ON c.id=v.item_id WHERE v.user_id=$1 AND v.item_id=ANY($2::text[])', [owner.id, purchaseContents(vaultId)])).rows;
+    assert.equal(vaultExpanded.length,6); assert(vaultExpanded.every(x=>x.quantity===3));
+    assert.equal(Math.round(vaultExpanded.reduce((s,x)=>s+x.quantity*Number(x.weight_lb),0)*100),13500);
+    assert.deepEqual((await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [spikedLegacy.id])).rows,goldBefore);
+    assert.deepEqual((await pool.query('SELECT * FROM character_equipment WHERE character_id=$1', [spikedLegacy.id])).rows,equippedBefore);
+    assert.deepEqual((await pool.query('SELECT id,total_cp FROM purchases WHERE character_id=$1 ORDER BY id',[hero.id])).rows,ledgerBefore);
+    assert((await pool.query('SELECT price_cp FROM catalog_items WHERE id=ANY($1::text[])',[[backpackId,vaultId]])).rows.every(x=>x.price_cp===43210));
+    assert.equal((await pool.query('SELECT count(*)::int AS n FROM armor_bundle_backfills WHERE (character_id=$1 OR (user_id=$2 AND item_id=$3)) AND applied_at IS NOT NULL',[spikedLegacy.id,owner.id,vaultId])).rows[0].n,2);
   } finally {
     await new Promise<void>((resolve) => server.close(() => resolve()));
     await pool.end();

@@ -1,0 +1,29 @@
+{
+  "jobs": [
+    {
+      "id": "material-gleaming-armor",
+      "family": "Armor of Gleaming",
+      "prompt": "Use case: stylized-concept. One original premium fantasy game armor MATERIAL TEXTURE swatch, square full-bleed flat surface with no object silhouette or external background. polished warm ivory silver metal, fine restrained gold inlaid fern scrollwork, immaculate smooth finish with realistic specular highlights and very subtle fine grain, no dirt or dents. Detailed painterly realism, tactile believable handcrafted material, neutral directional light showing material depth. This will be masked inside thirteen distinct original armor models, so use subtle medium and small scale decorative details, enough readable motif separation at reduced size; uniform coverage, no central medallion or staged arrangement. No letters, text, numbers, watermarks, logo, character, complete armor, weapon, isolated objects, border, smoke clouds outside the surface, cast shadows, heavy dark vignette or repeated checkerboard. This material must have its own unmistakable visual identity and differ from previous runic blue or infernal glowing skins."
+    },
+    {
+      "id": "material-cast-off-armor",
+      "family": "Cast-Off Armor",
+      "prompt": "Use case: stylized-concept. One original premium fantasy game armor MATERIAL TEXTURE swatch, square full-bleed flat surface with no object silhouette or external background. muted warm copper and antique brass over dark oxblood leather, elegant physically engraved interlocking clasp and latch motifs, fine hinge rivet detailing, practical release fasteners, no runes. Detailed painterly realism, tactile believable handcrafted material, neutral directional light showing material depth. This will be masked inside thirteen distinct original armor models, so use subtle medium and small scale decorative details, enough readable motif separation at reduced size; uniform coverage, no central medallion or staged arrangement. No letters, text, numbers, watermarks, logo, character, complete armor, weapon, isolated objects, border, smoke clouds outside the surface, cast shadows, heavy dark vignette or repeated checkerboard. This material must have its own unmistakable visual identity and differ from previous runic blue or infernal glowing skins."
+    },
+    {
+      "id": "material-mariner-armor",
+      "family": "Mariner's Armor",
+      "prompt": "Use case: stylized-concept. One original premium fantasy game armor MATERIAL TEXTURE swatch, square full-bleed flat surface with no object silhouette or external background. deep ocean teal-blue enamel and aged bronze, pearlescent shell inlay with clearly recognizable delicately engraved small fish and seashell motifs, subtle wave relief, sophisticated nautical craftsmanship. Detailed painterly realism, tactile believable handcrafted material, neutral directional light showing material depth. This will be masked inside thirteen distinct original armor models, so use subtle medium and small scale decorative details, enough readable motif separation at reduced size; uniform coverage, no central medallion or staged arrangement. No letters, text, numbers, watermarks, logo, character, complete armor, weapon, isolated objects, border, smoke clouds outside the surface, cast shadows, heavy dark vignette or repeated checkerboard. This material must have its own unmistakable visual identity and differ from previous runic blue or infernal glowing skins."
+    },
+    {
+      "id": "material-smoldering-armor",
+      "family": "Smoldering Armor",
+      "prompt": "Use case: stylized-concept. One original premium fantasy game armor MATERIAL TEXTURE swatch, square full-bleed flat surface with no object silhouette or external background. dark charcoal gunmetal with soft ash gray wispy curling lines engraved on its surface, fine sootlike satin metal texture with sparse warm dull copper seams, decorative harmless smoke motifs without flames or glowing lava. Detailed painterly realism, tactile believable handcrafted material, neutral directional light showing material depth. This will be masked inside thirteen distinct original armor models, so use subtle medium and small scale decorative details, enough readable motif separation at reduced size; uniform coverage, no central medallion or staged arrangement. No letters, text, numbers, watermarks, logo, character, complete armor, weapon, isolated objects, border, smoke clouds outside the surface, cast shadows, heavy dark vignette or repeated checkerboard. This material must have its own unmistakable visual identity and differ from previous runic blue or infernal glowing skins."
+    },
+    {
+      "id": "material-weightless-armor",
+      "family": "Armor of Weightlessness",
+      "prompt": "Use case: stylized-concept. One original premium fantasy game armor MATERIAL TEXTURE swatch, square full-bleed flat surface with no object silhouette or external background. cool satin silver with pale lavender mother-of-pearl inlays, delicate engraved feather and drifting-air arc motifs, fine slim filigree and elegant airy crafted finish, no neon halo. Detailed painterly realism, tactile believable handcrafted material, neutral directional light showing material depth. This will be masked inside thirteen distinct original armor models, so use subtle medium and small scale decorative details, enough readable motif separation at reduced size; uniform coverage, no central medallion or staged arrangement. No letters, text, numbers, watermarks, logo, character, complete armor, weapon, isolated objects, border, smoke clouds outside the surface, cast shadows, heavy dark vignette or repeated checkerboard. This material must have its own unmistakable visual identity and differ from previous runic blue or infernal glowing skins."
+    }
+  ]
+}
