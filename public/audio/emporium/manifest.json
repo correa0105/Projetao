@@ -18758,5 +18758,61 @@
     "sha256": "22bf94215a4aa72e2cb3128551a2a580fe421e5d761a26f76c7128dd4080173d",
     "source": "public/audio/shop-counter-spheres.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "common-glamerweave",
+    "path": "public/audio/emporium/common-glamerweave.wav",
+    "kind": "cloth",
+    "sha256": "6b3c296ba4c6c4af22a5c056bd08e3c104f4d5889a46f389cb18d261430762d6",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "everbright-lantern",
+    "path": "public/audio/emporium/everbright-lantern.wav",
+    "kind": "metal",
+    "sha256": "74378d743ff502e9451f9ca9f693749be56d3b657d784cab2e185a0f1e492d3d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "keycharm",
+    "path": "public/audio/emporium/keycharm.wav",
+    "kind": "metal",
+    "sha256": "a4f327236864080cedea663bb9d891b2573d6389e139f0eb7d2b76235dd1151b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "scribe-s-pen",
+    "path": "public/audio/emporium/scribe-s-pen.wav",
+    "kind": "wood",
+    "sha256": "e40f8ee52b868813be8d235019bd40dd5c47ae105b4c8668c2b819b1cabde11f",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shiftweave",
+    "path": "public/audio/emporium/shiftweave.wav",
+    "kind": "cloth",
+    "sha256": "9e8e9aee9a029824c663f0d56ba08888bb707aa2ca71330b60ee9595c0b071d6",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "spellshard",
+    "path": "public/audio/emporium/spellshard.wav",
+    "kind": "glass",
+    "sha256": "b45579e7f863fc3b7b2d8be81590c9e116c58268a16d8aee90c25d48504a18c2",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "wand-sheath",
+    "path": "public/audio/emporium/wand-sheath.wav",
+    "kind": "metal",
+    "sha256": "62946e5fb2ffd5fcc59ebc0770d7ddc04ee53d041483dea625f3547117fae5d0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

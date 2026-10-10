@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **1014 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **1021 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -519,3 +519,9 @@ Completar todos continua em andamento: 2.102 candidatos, além das opções espe
 Pesos físicos: haste 2 lb, cajado 4 lb, varinha/cristal 1 lb, orbe 3 lb. Preços seguem raridade comum mais base: 110/105/110/110/120 PO, respectivamente. Cajados conservam uso físico como bordão e nenhuma forma recebe bônus de arma inventado. Dezesseis atlases nativos originais produziram quarenta silhuetas inteiras e distintas, transparentes, com recorte técnico pelas lacunas alpha e margem segura. Cinco contatos finais revisados; 40 falas individuais, 40 sons materiais próprios e regras disponíveis na seleção. Prompts/crops/hashes em art-jobs-eberron-foci.json; arte/editorial/manifests anteriores integrais iguais.
 
 API dos 1014 itens e ambas as mãos dos 40 novos, compra/replay/saldo/ledger/preço administrativo persistido; loja completa em três larguras, arte e falas individuais, TypeScript/build passaram. Publicação incremental copiou só as 40 novas artes/sons, preservando 60 tabelas e todas as ofertas anteriores; somente 40 produtos acrescentados. Todas as 2097 mídias e 43 bundles públicos corresponderam aos arquivos revisados. Docker saudável; ilustrador ativo. A mesma publicação contém os menus da Lore e os três VFX documentados em LORE-MENUS-AND-REAPER-20261010.md, incluindo máscara enviada e foice longa. Restam 2062 candidatos e opções específicas por expandir.
+
+## 22. Utilitários de Eberron e revisão dos perfis
+
+Sete ofertas comuns ERLW: Common Glamerweave, Everbright Lantern, Keycharm, Scribe’s Pen, Shiftweave, Spellshard e Wand Sheath. Cada uma possui ilustração original aprovada, fala individual e áudio material próprio. Regras resumidas em português, D&D 5e (2014), restrições de sintonia, ausência de cargas e os pesos estimados estão explicitados. Roupas continuam peças únicas sem bônus de armadura; a bainha é vendida vazia, sem varinha incluída.
+
+1021 ofertas novas prontas e publicadas; 2055 candidatos ainda pendentes. QA de todas as ofertas, descrição/equipamento das sete novas, compras e replay idempotente, ledger e arte/falas em três larguras aprovado. A publicação também atualiza as imagens públicas dos companheiros exibidos, remove as placas do perfil, alinha a sala das conquistas e melhora Perfis/Eventos/Hall/Cartas/Torre. Testes com banco UUID descartável, quatro/cinco larguras, navegação por teclado e permissões aprovados. Todos os dados e produtos anteriores e os efeitos já aprovados permanecem preservados.

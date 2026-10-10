@@ -693,6 +693,150 @@ try {
       [hero.id],
     )).rows, ledger);
   }
+  if (ids.includes('wand-sheath')) {
+    const item = (id: string) => completion.items.find((x: any) => x.id === id);
+    const utilities = [
+      'common-glamerweave',
+      'everbright-lantern',
+      'keycharm',
+      'scribe-s-pen',
+      'shiftweave',
+      'spellshard',
+      'wand-sheath',
+    ];
+    const expectedSlots: Record<string, string[]> = {
+      'common-glamerweave': ['armor'],
+      shiftweave: ['armor'],
+      'wand-sheath': ['bracers'],
+      'everbright-lantern': ['main_hand', 'off_hand'],
+      keycharm: ['main_hand', 'off_hand'],
+      'scribe-s-pen': ['main_hand', 'off_hand'],
+      spellshard: ['main_hand', 'off_hand'],
+    };
+    const attunement: Record<string, string | boolean> = {
+      keycharm: 'by a creature with the Mark of Warding',
+      'scribe-s-pen': 'by a creature with the Mark of Scribing',
+      'wand-sheath': 'by a warforged',
+    };
+    for (const id of utilities) {
+      const x = item(id),
+        f = x.raw_data.upstream_facts;
+      assert.equal(f.source, 'ERLW');
+      assert.equal(f.rarity, 'common');
+      assert.equal(f.wondrous, true);
+      assert.equal(x.raw_data.source_edition, 'D&D 5e (2014)');
+      assert.equal(x.raw_data.attunement, attunement[id] || false);
+      assert.equal(x.price_cp, 10000);
+      assert.equal(x.weight_estimated, true);
+      assert.equal(f.weight, undefined);
+      assert.equal(f.charges, undefined);
+      assert.equal(x.raw_data.magic_kind, undefined);
+      assert.equal(x.raw_data.enhancement, undefined);
+      assert.equal(x.raw_data.consumable, false);
+      assert.equal(consumableItems.has(id), false);
+      assert.deepEqual(x.raw_data.equipment_slots, expectedSlots[id]);
+      assert.deepEqual(purchaseContents(id), [id]);
+      assert.equal(armorBundle(id), undefined);
+      assert.equal(
+        (
+          await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2', [
+            hero.id,
+            id,
+          ])
+        ).rows[0].quantity,
+        1,
+        id,
+      );
+      if (!rulesReviewIds || rulesReviewIds.has(id))
+        for (const slot of expectedSlots[id]) {
+          for (const hand of ['main_hand', 'off_hand'])
+            assert.equal(
+              (
+                await request('/inventory/equipment', 'POST', {
+                  character_id: hero.id,
+                  item_id: null,
+                  slot: hand,
+                })
+              ).status,
+              200,
+            );
+          assert.equal(
+            (
+              await request('/inventory/equipment', 'POST', {
+                character_id: hero.id,
+                item_id: id,
+                slot,
+              })
+            ).status,
+            200,
+            id,
+          );
+        }
+    }
+    assert.match(
+      item('common-glamerweave').raw_data.rules_summary,
+      /ação bônus.*padrão ilusório.*dentro do tecido/,
+    );
+    assert.deepEqual(item('everbright-lantern').raw_data.upstream_facts.light, [
+      { bright: 60, dim: 120, shape: 'cone' },
+    ]);
+    assert.match(
+      item('everbright-lantern').raw_data.rules_summary,
+      /cone de 120 pés.*primeiros 60 pés.*60 pés seguintes/,
+    );
+    assert.match(
+      item('keycharm').raw_data.rules_summary,
+      /Alarme, Tranca Arcana ou Glifo de Proteção/,
+    );
+    assert.match(item('keycharm').raw_data.rules_summary, /até três magias vinculadas/);
+    assert.match(
+      item('keycharm').raw_data.rules_summary,
+      /mesmo sem sintonia.*ação.*encerrar uma.*palavra de comando/,
+    );
+    assert.match(item('scribe-s-pen').raw_data.rules_summary, /sempre é visível.*essa marca/);
+    assert.match(item('scribe-s-pen').raw_data.rules_summary, /não seja um constructo.*sete dias/);
+    assert.match(item('shiftweave').raw_data.rules_summary, /até cinco roupas diferentes/);
+    assert.match(item('shiftweave').raw_data.rules_summary, /ação bônus/);
+    assert.match(item('shiftweave').raw_data.rules_summary, /predefinidos na criação/);
+    assert.match(item('spellshard').raw_data.rules_summary, /320 páginas/);
+    assert.match(item('spellshard').raw_data.rules_summary, /frase-senha/);
+    assert.match(
+      item('spellshard').raw_data.rules_summary,
+      /concentração como numa magia.*tempo normal/,
+    );
+    assert.match(item('spellshard').raw_data.rules_summary, /custos normais de ouro e tempo/);
+    assert.match(item('wand-sheath').raw_data.rules_summary, /ação bônus.*estende ou recolhe/);
+    assert.match(
+      item('wand-sheath').raw_data.rules_summary,
+      /um único item para o limite de sintonia/,
+    );
+    assert.match(
+      item('wand-sheath').raw_data.rules_summary,
+      /Remover a varinha encerra a sintonia com ela/,
+    );
+    assert.match(item('wand-sheath').raw_data.rules_summary, /não inclui uma varinha/);
+    for (const id of ['common-glamerweave', 'shiftweave'])
+      assert.equal(
+        (
+          await request('/inventory/equipment', 'POST', {
+            character_id: hero.id,
+            item_id: id,
+            slot: 'head',
+          })
+        ).status,
+        400,
+        id,
+      );
+    assert.deepEqual(
+      (
+        await pool.query(
+          'SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',
+          [hero.id],
+        )
+      ).rows,
+      ledger,
+    );
+  }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
   );

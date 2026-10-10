@@ -1,0 +1,434 @@
+/* Editorial finish shared by the guild's public rooms. Existing artwork stays intact. */
+:root
+  .app-shell:is(
+    [data-page='hall'],
+    [data-page='profiles'],
+    [data-page='events'],
+    [data-page='cards'],
+    [data-page='tower']
+  ) {
+  --realm-gold: #c6a46c;
+  --realm-paper: #eee3ce;
+  --realm-muted: #b6afa0;
+}
+:root
+  .app-shell
+  :is(.hall-heading, .profiles-directory-heading, .events-heading, .cards-room header)
+  > h2 {
+  font:
+    400 clamp(32px, 4.4vw, 62px)/1.17 'Libre Baskerville',
+    Georgia,
+    serif;
+  letter-spacing: -0.045em;
+  color: var(--realm-paper);
+  margin: 16px 0 22px;
+}
+:root .app-shell :is(.hall-rankings, .events-filters, .cards-filters, .tower-tabs) {
+  gap: clamp(12px, 2.2vw, 30px);
+  border: 0;
+  border-bottom: 1px solid #b49a6038;
+  padding: 0 0 12px;
+}
+:root .app-shell :is(.hall-rankings, .events-filters, .cards-filters, .tower-tabs) > button {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 12px 2px;
+  color: var(--realm-muted);
+  box-shadow: none;
+  position: relative;
+}
+:root
+  .app-shell
+  :is(.hall-rankings, .events-filters, .cards-filters, .tower-tabs)
+  > button[aria-pressed='true'] {
+  color: #e9c98e;
+  border: 0;
+  background: transparent;
+  box-shadow: inset 0 -2px #c6a46c;
+  text-shadow: none;
+}
+:root
+  .app-shell
+  :is(.hall-rankings, .events-filters, .cards-filters, .tower-tabs)
+  > button:focus-visible {
+  outline: 2px solid #e4c78f;
+  outline-offset: 3px;
+}
+:root .app-shell[data-page='profiles'] .profiles-page:not(.visiting) {
+  background:
+    linear-gradient(90deg, #11150fe8, #11150fcc),
+    url('/character-camp-v2.png') center top/cover scroll;
+}
+:root .app-shell[data-page='profiles'] .profiles-directory-heading {
+  max-width: 860px;
+  margin: 38px 0 48px;
+}
+:root .app-shell[data-page='profiles'] .profiles-finder {
+  margin-top: 28px;
+  background: #131a16b8;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid #b297636e;
+  padding: 16px 0;
+  max-width: 580px;
+}
+:root .app-shell[data-page='profiles'] .profile-directory {
+  gap: 24px;
+}
+:root .app-shell[data-page='profiles'] .profile-directory > article {
+  background: linear-gradient(145deg, #21241ecc, #121815e8);
+  border: 1px solid #b49a6038;
+  border-radius: 2px;
+  padding: 30px 24px;
+  text-align: left;
+  align-items: flex-start;
+  box-shadow: 0 12px 24px #0002;
+}
+:root .app-shell[data-page='profiles'] .profile-directory > article h2 {
+  font:
+    22px/1.35 'Cinzel',
+    Georgia,
+    serif;
+  margin: 22px 0 10px;
+}
+:root .app-shell[data-page='profiles'] .profile-directory > article > button {
+  border: 0;
+  border-top: 1px solid #b49a6038;
+  border-radius: 0;
+  width: 100%;
+  background: none;
+  margin-top: 20px;
+  padding: 16px 0 0;
+  justify-content: space-between;
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-visit-nav {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  max-width: 720px;
+  gap: 14px;
+  padding: 0 12px;
+  border: 0;
+  border-bottom: 1px solid #bba06b50;
+  border-radius: 0;
+  background: #101712d9;
+  box-shadow: none;
+  overflow: visible;
+  backdrop-filter: blur(8px);
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 46px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  padding: 10px 0;
+  color: #bab6a8;
+  position: relative;
+  font: 12px/1.35 var(--sans);
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-tab > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-tab:is(:hover, [aria-selected='true']) {
+  color: #f2dfb8;
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-tab[aria-selected='true'] {
+  box-shadow: inset 0 -2px #c6a46c;
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-tab:focus-visible {
+  outline: 2px solid #e4c78f;
+  outline-offset: 2px;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-achievements {
+  background: #15140f;
+  --portrait-background-top: 0px;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-achievements > h2 {
+  max-width: none;
+  font-size: clamp(19px, 2vw, 27px);
+  margin: 8px 0 24px;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage {
+  background: url('/achievement-house-v2.png') center top/100% auto no-repeat;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 3/2;
+  margin: 0 auto 38px;
+  overflow: hidden;
+  isolation: isolate;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage .fantasy-cabinet {
+  width: 48%;
+  left: 50%;
+  top: var(--cabinet-floor-y);
+  bottom: auto;
+  transform: translate(-50%, -95%);
+}
+:root .app-shell[data-page='hall'] .hall-of-fame:not(.embedded) {
+  background:
+    radial-gradient(ellipse at 50% 0%, #9c793121, transparent 60%),
+    linear-gradient(#141711f0, #111713f6),
+    url('/home-guild-hall.webp') center top/cover scroll;
+}
+:root .app-shell .hall-heading {
+  max-width: 870px;
+}
+:root .app-shell .hall-podium {
+  gap: 26px;
+  margin-block: 38px 48px;
+}
+:root .app-shell .hall-champion {
+  border-radius: 2px;
+  background: linear-gradient(145deg, #25261fed, #131c17ee);
+  border-color: #b49a603e;
+}
+:root .app-shell .hall-champion.place-1 {
+  background:
+    radial-gradient(ellipse at top, #aa82382a, transparent 70%), linear-gradient(#24281eed, #121b16);
+  border-top-color: #d8b87b;
+  box-shadow: 0 16px 45px #0003;
+}
+:root .app-shell .hall-search {
+  background: #111915b8;
+  border-radius: 0;
+}
+:root .app-shell .hall-table-head {
+  color: #cfb584;
+}
+:root .app-shell .hall-table-row {
+  border-color: #b49a6028;
+}
+:root .app-shell[data-page='events'] .events-heading {
+  max-width: 800px;
+  margin-bottom: 44px;
+}
+:root .app-shell[data-page='events'] .event-seal {
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+}
+:root .app-shell[data-page='events'] .event-feature {
+  border-radius: 2px;
+  background: linear-gradient(120deg, #1d211ce8, #111b18c9);
+}
+:root .app-shell[data-page='events'] .event-feature-copy {
+  padding: clamp(24px, 3vw, 46px);
+}
+:root .app-shell[data-page='events'] .events-agenda {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 32px;
+  border-top: 1px solid #b49a6042;
+}
+:root .app-shell[data-page='events'] .events-agenda > button {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid #b49a6030;
+  border-radius: 0;
+  padding: 22px 8px;
+  background: transparent;
+}
+:root .app-shell[data-page='events'] .events-agenda > button[aria-pressed='true'] {
+  background: #b49a600e;
+}
+:root .app-shell[data-page='events'] .event-agenda-date {
+  font:
+    18px 'Cinzel',
+    serif;
+  color: #d7b985;
+}
+:root .app-shell[data-page='events'] .events-agenda strong {
+  font:
+    18px/1.4 'Libre Baskerville',
+    serif;
+}
+:root .app-shell[data-page='cards'] .cards-room header {
+  max-width: 520px;
+}
+:root .app-shell[data-page='cards'] .cards-room header > h2 {
+  font-size: clamp(30px, 3.6vw, 52px);
+}
+:root .app-shell[data-page='cards'] .arcana-card-art {
+  filter: saturate(0.95);
+}
+:root .app-shell[data-page='cards'] .cards-detail {
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 48px;
+  padding: 42px 24px;
+  margin: 0 auto;
+  scroll-margin-top: 36px;
+}
+:root .app-shell[data-page='cards'] .cards-detail-preview {
+  transform: rotate(-3deg);
+  padding-top: 12px;
+}
+:root .app-shell[data-page='cards'] .cards-detail-copy > h2 {
+  font:
+    32px/1.3 'Libre Baskerville',
+    serif;
+}
+:root .app-shell[data-page='cards'] .cards-detail-link {
+  display: block;
+  width: fit-content;
+  margin: 12px auto 0;
+  padding: 4px;
+  border: 0;
+  background: none;
+  color: #d7bc88;
+  font-size: 11px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+:root .app-shell[data-page='tower'] .tower-hero h2 {
+  font:
+    400 clamp(48px, 6.2vw, 88px)/1.08 'Libre Baskerville',
+    Georgia,
+    serif;
+  letter-spacing: -0.05em;
+  margin: 24px 0;
+}
+:root .app-shell[data-page='tower'] .tower-hero h2 i {
+  display: block;
+  font-style: normal;
+  color: #d3b27a;
+}
+:root .app-shell[data-page='tower'] .tower-hero-caption {
+  max-width: 370px;
+  line-height: 1.85;
+  color: #c1b9a9;
+}
+:root .app-shell[data-page='tower'] .tower-body {
+  max-width: 1280px;
+}
+:root .app-shell[data-page='tower'] .tower-floor {
+  border-radius: 2px;
+  background: linear-gradient(130deg, #23251ee6, #111a17f0);
+  border-color: #a28b6038;
+}
+:root .app-shell[data-page='tower'] .tower-floor-number {
+  border-left: 1px solid #b49a6040;
+  padding-left: 24px;
+  color: #d7b781;
+}
+:root .app-shell[data-page='tower'] .tower-floor-steps {
+  border-color: #b49a6035;
+}
+:root .app-shell[data-page='tower'] .tower-hidden {
+  border: 0;
+  border-left: 2px solid #8e794c;
+  background: #0e17147a;
+}
+@media (max-width: 700px) {
+  :root .app-shell[data-page='profiles'] .profile-directory {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :root .app-shell[data-page='profiles'] .profiles-directory-heading {
+    margin-block: 20px 32px;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .profile-visit-nav {
+    gap: 4px;
+    padding-inline: 4px;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .profile-tab {
+    min-height: 62px;
+    font-size: 10px;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .profile-tab > span {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .public-profile-panel:not(.public-camp) {
+    padding-top: 220px;
+  }
+  :root .app-shell .hall-podium {
+    gap: 9px;
+  }
+  :root .app-shell .hall-champion {
+    padding: 22px 8px;
+  }
+  :root .app-shell .hall-champion > h2 {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+  :root .app-shell .hall-champion > span {
+    font-size: 10px;
+  }
+  :root .app-shell .hall-champion .hall-portrait {
+    width: 58px;
+    height: 58px;
+  }
+  :root .app-shell .hall-champion-value {
+    font-size: 22px;
+  }
+  :root .app-shell[data-page='events'] .events-agenda > button {
+    grid-template-columns: 66px minmax(0, 1fr);
+    gap: 14px;
+    padding-block: 18px;
+  }
+  :root .app-shell[data-page='events'] .events-agenda small {
+    grid-column: 2;
+  }
+  :root .app-shell[data-page='events'] .events-agenda strong {
+    font-size: 15px;
+  }
+  :root .app-shell[data-page='events'] .event-agenda-date {
+    font-size: 14px;
+  }
+  :root .app-shell[data-page='cards'] .cards-detail {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 20px;
+    padding: 32px 18px;
+  }
+  :root .app-shell[data-page='cards'] .cards-detail-copy > h2 {
+    font-size: 23px;
+  }
+  :root .app-shell[data-page='cards'] .cards-gold {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  :root .app-shell[data-page='tower'] .tower-tabs > span {
+    display: none;
+  }
+  :root .app-shell[data-page='tower'] .tower-floor-picker > label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 0 100%;
+    min-width: 0;
+  }
+  :root .app-shell[data-page='tower'] .tower-floor-picker select {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root .app-shell .profile-tab {
+    transition: none;
+  }
+}
+@media (max-width: 650px) {
+  :root .app-shell[data-page='cards'] .cards-equipped {
+    top: 270px;
+  }
+}

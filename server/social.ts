@@ -14,6 +14,7 @@ import {
 import { emptyShelf, achievementCatalog } from '../shared/achievements.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { cards } from '../shared/cards.js';
+import { withCompanionImages } from './companion-images.js';
 const uuid = z.string().uuid(),
   userId = z.string().min(1).max(100);
 const publicCharacterSql = `SELECT c.id,c.user_id,c.name,c.race,c.class,c.background,c.biography,c.level,c.hp,c.armor_class,c.stats,(SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,c.portrait_revision,c.progression_missions,c.title_position,t.document->>'name' AS displayed_title FROM characters c LEFT JOIN title_catalog t ON t.id=c.displayed_title_id AND t.deleted_at IS NULL AND EXISTS(SELECT 1 FROM character_titles ct WHERE ct.character_id=c.id AND ct.title_id=t.id AND NOT ct.revoked) WHERE c.deleted_at IS NULL`;
@@ -213,6 +214,23 @@ export function socialRouter() {
         ),
         pool.query('SELECT code,title,description FROM achievement_definitions'),
       ]);
+    const publicImages = async (
+      animals: { id: string; displayed: boolean; image_url?: string | null }[],
+    ) =>
+      (await withCompanionImages(pool, cid, animals)).map((animal) => ({
+        ...animal,
+        image_url:
+          animal.displayed && animal.image_url
+            ? animal.image_url.replace(
+                `/api/companions/${cid}/`,
+                `/api/profiles/${encodeURIComponent(uid)}/characters/${cid}/companions/`,
+              )
+            : null,
+      }));
+    const [publicMounts, publicPets] = await Promise.all([
+      publicImages(mounts.rows),
+      publicImages(pets.rows),
+    ]);
     res.json({
       character: { ...c, portrait: portrait(uid, cid, c.portrait_revision) },
       shelf: shelf.rows[0] || emptyShelf(),
@@ -221,8 +239,8 @@ export function socialRouter() {
         ...a,
         ...definitions.rows.find((d) => d.code === a.code),
       })),
-      mounts: mounts.rows,
-      pets: pets.rows,
+      mounts: publicMounts,
+      pets: publicPets,
       cards: ownedCards.rows.map((c) => ({
         ...cards.find((d) => d.id === c.card_id),
         level: c.level,
@@ -232,6 +250,33 @@ export function socialRouter() {
       derived: sheet.rows[0]?.finalized_at ? deriveSheet(c, sheet.rows[0].choices) : null,
     });
   });
+  router.get(
+    '/profiles/:user/characters/:character/companions/:kind/:companion/image',
+    async (req, res) => {
+      const uid = userId.parse(req.params.user),
+        cid = uuid.parse(req.params.character),
+        kind = z.enum(['mount', 'pet']).parse(req.params.kind),
+        companionId = uuid.parse(req.params.companion),
+        table = kind === 'mount' ? 'character_mounts' : 'character_pets';
+      const {
+        rows: [art],
+      } = await pool.query(
+        `SELECT a.image FROM companion_artworks a
+       JOIN companion_wardrobes w ON w.id=a.wardrobe_id
+       JOIN characters c ON c.id=w.character_id
+       JOIN ${table} animal ON animal.id=w.id AND animal.character_id=c.id
+       WHERE c.user_id=$1 AND c.id=$2 AND w.id=$3 AND w.kind=$4
+         AND c.deleted_at IS NULL AND animal.displayed
+         AND NOT EXISTS(SELECT 1 FROM social_blocks b
+           WHERE (b.blocker_id=$5 AND b.blocked_id=c.user_id)
+              OR (b.blocker_id=c.user_id AND b.blocked_id=$5))`,
+        [uid, cid, companionId, kind, res.locals.user.id],
+      );
+      if (!art) throw new AppError(404, 'Imagem não encontrada neste perfil.');
+      res.setHeader('Cache-Control', 'private, no-store');
+      res.type('png').send(art.image);
+    },
+  );
   router.get('/profiles/:user/characters/:character/portrait', async (req, res) => {
     const uid = userId.parse(req.params.user),
       cid = uuid.parse(req.params.character);

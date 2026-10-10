@@ -232,6 +232,22 @@ export function Cards({
                   </button>
                 ))}
             </div>
+            <button
+              type="button"
+              className="cards-detail-link"
+              onClick={() =>
+                document
+                  .getElementById('selected-card-details')
+                  ?.scrollIntoView({
+                    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+                      ? 'instant'
+                      : 'smooth',
+                    block: 'start',
+                  })
+              }
+            >
+              Ver detalhes da carta selecionada
+            </button>
           </div>
         </div>
         <button
@@ -272,64 +288,74 @@ export function Cards({
           </aside>
         )}
       </div>
-      <section className="cards-detail" aria-label="Carta selecionada">
-        <span className="eyebrow">{selected.family}</span>
-        <h2>{selected.name}</h2>
-        <p>{selected.description}</p>
-        {item ? (
-          <>
-            <span className="cards-level">
-              <Sparkles size={12} />
-              Nível {item.level} · {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
-            </span>
-            <div className="cards-detail-actions">
+      <section className="cards-detail" id="selected-card-details" aria-label="Carta selecionada">
+        <div className="cards-detail-preview" aria-hidden="true">
+          <CardFace card={selected} />
+        </div>
+        <div className="cards-detail-copy">
+          <span className="eyebrow">{selected.family}</span>
+          <h2>{selected.name}</h2>
+          <p>{selected.description}</p>
+          {item ? (
+            <>
+              <span className="cards-level">
+                <Sparkles size={12} />
+                Nível {item.level} · {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
+              </span>
+              <div className="cards-detail-actions">
+                <button
+                  className="button primary"
+                  disabled={busy || item.slot === slot}
+                  onClick={() => void equip(item.id)}
+                >
+                  Equipar no espaço {slot}
+                </button>
+                {owned.some((c) => c.slot === slot) && (
+                  <button
+                    className="button outline"
+                    disabled={busy}
+                    onClick={() => void equip(null)}
+                  >
+                    Esvaziar espaço {slot}
+                  </button>
+                )}
+              </div>
+              <small className="cards-upgrade-note">
+                Os aprimoramentos serão definidos em uma próxima etapa.
+              </small>
+            </>
+          ) : selected.buyable ? (
+            <>
+              <div className="cards-gold">
+                <strong>{money(selected.price_cp)} PO</strong>
+                <span>
+                  <Coins size={12} />
+                  {character
+                    ? (character.gold_unlimited ? '∞' : money(character.gold_cp)) +
+                      ' PO disponíveis'
+                    : 'Selecione um personagem'}
+                </span>
+              </div>
               <button
                 className="button primary"
-                disabled={busy || item.slot === slot}
-                onClick={() => void equip(item.id)}
+                disabled={
+                  busy ||
+                  !character ||
+                  (!character.gold_unlimited && character.gold_cp < selected.price_cp)
+                }
+                onClick={() => void purchase()}
               >
-                Equipar no espaço {slot}
+                {busy ? 'Guardando a carta…' : 'Comprar carta'}
               </button>
-              {owned.some((c) => c.slot === slot) && (
-                <button className="button outline" disabled={busy} onClick={() => void equip(null)}>
-                  Esvaziar espaço {slot}
-                </button>
-              )}
-            </div>
-            <small className="cards-upgrade-note">
-              Os aprimoramentos serão definidos em uma próxima etapa.
-            </small>
-          </>
-        ) : selected.buyable ? (
-          <>
-            <div className="cards-gold">
-              <strong>{money(selected.price_cp)} PO</strong>
-              <span>
-                <Coins size={12} />
-                {character
-                  ? (character.gold_unlimited ? '∞' : money(character.gold_cp)) + ' PO disponíveis'
-                  : 'Selecione um personagem'}
-              </span>
-            </div>
-            <button
-              className="button primary"
-              disabled={
-                busy ||
-                !character ||
-                (!character.gold_unlimited && character.gold_cp < selected.price_cp)
-              }
-              onClick={() => void purchase()}
-            >
-              {busy ? 'Guardando a carta…' : 'Comprar carta'}
-            </button>
-          </>
-        ) : (
-          <p className="cards-unavailable">
-            Esta carta ainda não tem uma forma de obtenção disponível.
-          </p>
-        )}
-        {error && <p role="alert">{error}</p>}
-        {notice && <p role="status">{notice}</p>}
+            </>
+          ) : (
+            <p className="cards-unavailable">
+              Esta carta ainda não tem uma forma de obtenção disponível.
+            </p>
+          )}
+          {error && <p role="alert">{error}</p>}
+          {notice && <p role="status">{notice}</p>}
+        </div>
       </section>
     </section>
   );

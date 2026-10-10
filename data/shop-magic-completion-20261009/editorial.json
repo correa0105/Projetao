@@ -16958,5 +16958,100 @@
     "reviewed_weight_lb": 3,
     "base_price_cp": 2000,
     "review": "approved"
+  },
+  "common-glamerweave": {
+    "name": "Traje de tecido ilusório comum",
+    "description": "Roupa de tecido ilusório: uma ação bônus anima padrões inofensivos dentro do próprio pano.",
+    "merchant_comment": "As estrelas ficam no tecido, acompanhando as dobras. Você escolhe quando pôr o desenho em movimento; a roupa continua sendo roupa.",
+    "rules_summary": "Enquanto veste este traje, você pode usar uma ação bônus para criar um padrão ilusório em movimento dentro do tecido. A ilusão é inofensiva. Esta é a versão comum do Glamerweave; não recebe os poderes da versão incomum. É vestuário, sem bônus de armadura. Encanto de Eberron: Rising from the Last War (2014). O peso é uma estimativa do projeto; os efeitos mágicos são resolvidos na mesa.",
+    "estimated_weight_lb": 4,
+    "slots": [
+      "armor"
+    ],
+    "material": "cloth",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "everbright-lantern": {
+    "name": "Lanterna de brilho eterno",
+    "description": "Lanterna de lente com um fragmento dracônico de Eberron, que ilumina um cone de 120 pés.",
+    "merchant_comment": "O cristal trabalha atrás da lente. A luz é forte nos primeiros sessenta pés e suave nos sessenta seguintes; a direção da lanterna faz diferença.",
+    "rules_summary": "Esta lanterna de lente contém um fragmento dracônico de Eberron que emite luz comparável à magia Chama Contínua. Ilumina um cone de 120 pés (36,6 m): os primeiros 60 pés (18,3 m) têm luz plena, e os 60 pés seguintes têm penumbra. O cone acompanha a direção da lanterna. Não exige sintonia. Encanto de Eberron: Rising from the Last War (2014). O peso é uma estimativa do projeto; os efeitos mágicos são resolvidos na mesa.",
+    "estimated_weight_lb": 2,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "keycharm": {
+    "name": "Chave de vínculo",
+    "description": "Pequena chave da Casa Kundarak que vincula até três magias de proteção conjuradas por seu usuário.",
+    "merchant_comment": "Uma chave dessas carrega permissões, não força fechaduras. Defina a palavra de comando com cuidado: quem a souber pode encerrar uma proteção ligada à chave.",
+    "rules_summary": "Exige sintonia por uma criatura com a Marca da Proteção (Mark of Warding). Se você conjurar Alarme, Tranca Arcana ou Glifo de Proteção, pode vincular o efeito à chave. Quem a segura recebe os avisos desse Alarme, passa pela Tranca Arcana ou evita acionar esse Glifo de Proteção, conforme a magia vinculada. A chave admite até três magias vinculadas ao mesmo tempo. O portador, mesmo sem sintonia, pode usar uma ação para encerrar uma dessas magias, desde que conheça a palavra de comando definida pelo criador para encerrá-las. Os três vínculos não são cargas; a chave não conjura essas magias por conta própria. Encanto de Eberron: Rising from the Last War (2014). O peso é uma estimativa do projeto; os efeitos mágicos são resolvidos na mesa.",
+    "estimated_weight_lb": 0.15,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "scribe-s-pen": {
+    "name": "Caneta do escriba",
+    "description": "Caneta que escreve em qualquer superfície, com escrita visível ou invisível à escolha do escriba.",
+    "merchant_comment": "Pode deixar um recado à vista ou escondê-lo na superfície. Quem possui a Marca da Escrita sempre enxerga as letras, mesmo quando os outros não veem nada.",
+    "rules_summary": "Exige sintonia por uma criatura com a Marca da Escrita (Mark of Scribing). A caneta escreve em qualquer superfície; você escolhe se a escrita fica visível ou invisível. Ela sempre é visível para quem possui essa marca. Qualquer criatura com a Marca da Escrita pode usar uma ação para tocar a escrita invisível e torná-la visível para todos. Se escrever numa criatura que não seja um constructo, a escrita desaparece após sete dias. Essa duração não é aplicada à escrita em constructos. A caneta não concede idiomas ou alfabetos desconhecidos. Encanto de Eberron: Rising from the Last War (2014). O peso é uma estimativa do projeto; os efeitos mágicos são resolvidos na mesa.",
+    "estimated_weight_lb": 0.1,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "shiftweave": {
+    "name": "Traje mutável",
+    "description": "Um traje que alterna, mediante palavra de comando e ação bônus, entre até cinco roupas definidas em sua criação.",
+    "merchant_comment": "Cinco escolhas cabem no mesmo tecido, se forem definidas ao fazê-lo. A palavra de comando troca o traje em um instante; as opções vêm prontas com a peça.",
+    "rules_summary": "Quando este traje é criado, até cinco roupas diferentes podem ser incorporadas ao tecido. Enquanto o veste, você pode pronunciar sua palavra de comando como ação bônus para transformá-lo em um dos outros modelos contidos nele. Os modelos são predefinidos na criação, e não escolhas ilimitadas a cada uso. Seja qual for a aparência, o traje continua sendo roupa. Pode imitar a aparência de vestes mágicas, mas não adquire seus poderes nem passa a funcionar como armadura. Encanto de Eberron: Rising from the Last War (2014). O peso é uma estimativa do projeto; os efeitos mágicos são resolvidos na mesa.",
+    "estimated_weight_lb": 4,
+    "slots": [
+      "armor"
+    ],
+    "material": "cloth",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "spellshard": {
+    "name": "Fragmento de escrita arcana",
+    "description": "Cristal polido de Eberron que armazena o conteúdo de um livro de até 320 páginas e pode servir como grimório.",
+    "merchant_comment": "Cabe na palma e guarda um livro inteiro. Se houver senha, aprenda-a antes da viagem; ler o conteúdo pede a mesma atenção que ler páginas de verdade.",
+    "rules_summary": "Este fragmento dracônico polido cabe na mão e armazena um livro de até 320 páginas. É criado vazio ou com informações; seu criador pode definir uma frase-senha de acesso. Enquanto o segura, você pode usar uma ação para abrir a mente ao fragmento e enxergar seu conteúdo. Nos turnos seguintes, ler ou escrever em páginas ainda vazias exige concentração como numa magia e leva o tempo normal de leitura ou escrita. Pensar numa frase ou assunto conduz à primeira seção que trate disso. Um mago pode usá-lo como grimório, mantendo os custos normais de ouro e tempo para copiar magias. Não concede magias prontas ou conjurações gratuitas. Encanto de Eberron: Rising from the Last War (2014). O peso é uma estimativa do projeto; os efeitos mágicos são resolvidos na mesa.",
+    "estimated_weight_lb": 0.25,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "glass",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "wand-sheath": {
+    "name": "Bainha de varinha",
+    "description": "Mecanismo para o braço de um forjado bélico que guarda uma varinha e permite usá-la com a mão livre.",
+    "merchant_comment": "A braçadeira prende o mecanismo ao braço e recolhe a varinha. A cavidade está vazia: você escolhe qual varinha usar, e precisa acertar a sintonia dela também.",
+    "rules_summary": "Exige sintonia por um forjado bélico (warforged). Prende-se ao braço e não pode ser removida enquanto você estiver sintonizado. Uma ação insere uma varinha; comporta apenas uma por vez. Uma ação bônus a estende ou recolhe. Estendida, você pode usar a varinha como se a segurasse, mantendo a mão livre. Se a varinha exigir sintonia, você precisa se sintonizar com ela antes de usá-la. A bainha e a varinha acoplada contam juntas como um único item para o limite de sintonia. Remover a varinha encerra a sintonia com ela. Esta oferta é somente a bainha vazia; não inclui uma varinha. Encanto de Eberron: Rising from the Last War (2014). O peso é uma estimativa do projeto; os efeitos mágicos são resolvidos na mesa.",
+    "estimated_weight_lb": 1,
+    "slots": [
+      "bracers"
+    ],
+    "material": "metal",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
   }
 }

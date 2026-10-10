@@ -3,6 +3,9 @@ import { chromium, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
+import { createHash } from 'node:crypto';
+import { petArtwork } from '../shared/pet-art';
+import { reviewRealmPages } from './review-realm-pages';
 
 if (!new URL(process.env.DATABASE_URL!).pathname.startsWith('/alvorada_test_'))
   throw Error('Banco descartável obrigatório.');
@@ -23,7 +26,18 @@ const visitorContext = await browser.newContext({ reducedMotion: 'reduce' });
 const ownerPage = await ownerContext.newPage();
 const page = await visitorContext.newPage();
 const errors: string[] = [];
+const missingStatic = new Set<string>();
 for (const tab of [ownerPage, page]) tab.on('pageerror', (e) => errors.push(e.message));
+for (const tab of [ownerPage, page])
+  tab.on('response', (response) => {
+    const pathname = new URL(response.url()).pathname;
+    if (
+      !pathname.startsWith('/api/') &&
+      /\.(png|webp|jpg|svg|woff2?|ttf|wav)$/.test(pathname) &&
+      (response.status() >= 400 || response.headers()['content-type']?.includes('text/html'))
+    )
+      missingStatic.add(pathname);
+  });
 await mkdir('test-results', { recursive: true });
 try {
   async function signup(context: typeof ownerContext, name: string) {
@@ -70,6 +84,87 @@ try {
     });
     expect(r.status()).toBe(201);
   }
+  const mediaRoot = process.env.PROFILE_MEDIA_ROOT || 'public';
+  const animals = (
+    await pool.query(
+      "SELECT id,character_id,'pet' AS kind,pet_id AS species FROM character_pets WHERE character_id=ANY($1::uuid[]) UNION ALL SELECT id,character_id,'mount' AS kind,mount_id AS species FROM character_mounts WHERE character_id=ANY($1::uuid[])",
+      [[a.id, b.id]],
+    )
+  ).rows;
+  for (const animal of animals) {
+    const source = animal.kind === 'pet' ? petArtwork(animal.species) : null;
+    const artwork = source
+      ? await sharp(await readFile(mediaRoot + source.source))
+          .extract({
+            left: source.frame[0],
+            top: source.frame[1],
+            width: source.frame[2],
+            height: source.frame[3],
+          })
+          .png()
+          .toBuffer()
+      : await readFile(mediaRoot + '/stable/' + animal.species + '.png');
+    await pool.query(
+      'INSERT INTO companion_wardrobes(id,character_id,kind,mount_id,pet_id,image_revision) VALUES($1,$2,$3,$4,$5,1)',
+      [
+        animal.id,
+        animal.character_id,
+        animal.kind,
+        animal.kind === 'mount' ? animal.id : null,
+        animal.kind === 'pet' ? animal.id : null,
+      ],
+    );
+    await pool.query(
+      'INSERT INTO companion_artworks(wardrobe_id,equipment_revision,image) VALUES($1,0,$2)',
+      [animal.id, artwork],
+    );
+    const response = await visitorContext.request.get(
+      origin + `/api/profiles/${owner.id}/characters/${animal.character_id}`,
+    );
+    const details = await response.json(),
+      row = details[animal.kind === 'pet' ? 'pets' : 'mounts'].find((x: any) => x.id === animal.id);
+    expect(row.image_url).toContain(
+      '/profiles/' + owner.id + '/characters/' + animal.character_id + '/companions/',
+    );
+    expect(row.image_url).toContain('v=1');
+    const image = await visitorContext.request.get(origin + row.image_url);
+    expect(image.status()).toBe(200);
+    expect(image.headers()['cache-control']).toContain('no-store');
+    expect(
+      createHash('sha256')
+        .update(await image.body())
+        .digest('hex'),
+    ).toBe(createHash('sha256').update(artwork).digest('hex'));
+    expect(
+      (
+        await visitorContext.request.get(
+          origin + `/api/companions/${animal.character_id}/${animal.kind}/${animal.id}/image`,
+        )
+      ).status(),
+    ).toBe(404);
+  }
+  const petImage = animals.find((x: any) => x.kind === 'pet' && x.character_id === a.id);
+  const publicImagePath = `/api/profiles/${owner.id}/characters/${a.id}/companions/pet/${petImage.id}/image`;
+  const anonymous = await browser.newContext();
+  expect((await anonymous.request.get(origin + publicImagePath)).status()).toBe(401);
+  await anonymous.close();
+  expect(
+    (await visitorContext.request.get(origin + publicImagePath.replace(a.id, b.id))).status(),
+  ).toBe(404);
+  await pool.query('UPDATE character_pets SET displayed=false WHERE id=$1', [petImage.id]);
+  expect((await visitorContext.request.get(origin + publicImagePath)).status()).toBe(404);
+  await pool.query('UPDATE character_pets SET displayed=true WHERE id=$1', [petImage.id]);
+  const visitor = await visitorContext.request.get(origin + '/api/auth/get-session');
+  const viewerId = (await visitor.json()).user.id;
+  await pool.query('INSERT INTO social_blocks(blocker_id,blocked_id) VALUES($1,$2)', [
+    owner.id,
+    viewerId,
+  ]);
+  expect((await visitorContext.request.get(origin + publicImagePath)).status()).toBe(404);
+  await pool.query('DELETE FROM social_blocks WHERE blocker_id=$1 AND blocked_id=$2', [
+    owner.id,
+    viewerId,
+  ]);
   const snapshot = async () => {
     const rows: Record<string, unknown> = {};
     for (const table of [
@@ -192,7 +287,13 @@ try {
       .boundingBox();
     expect(selector!.y).toBeLessThan(70);
     expect(selector!.x).toBeGreaterThan(width / 2);
-    await expect(page.locator('.profile-signboard')).toHaveCount(5);
+    await expect(page.locator('.profile-tab')).toHaveCount(5);
+    expect(
+      await page
+        .locator('.profile-tab')
+        .first()
+        .evaluate((el) => getComputedStyle(el).backgroundImage),
+    ).toBe('none');
     await expect(page.locator('.profile-visit-nav')).not.toHaveCSS(
       'background-color',
       'rgba(0, 0, 0, 0)',
@@ -202,13 +303,12 @@ try {
   }
   await page.setViewportSize({ width: 1440, height: 900 });
   const nav = page.locator('.profile-visit-nav');
-  const sheet = nav.getByRole('button', { name: 'Ficha', exact: true });
+  const sheet = nav.getByRole('tab', { name: 'Ficha', exact: true });
   await page.mouse.move(20, 20);
-  const normal = await sheet.evaluate((el) => getComputedStyle(el).filter);
+  const normal = await sheet.evaluate((el) => getComputedStyle(el).color);
   await sheet.hover();
-  const hover = await sheet.evaluate((el) => getComputedStyle(el).filter);
+  const hover = await sheet.evaluate((el) => getComputedStyle(el).color);
   expect(hover).not.toBe(normal);
-  expect(hover).toContain('brightness');
   await page.screenshot({ path: 'test-results/profile-visit-signpost-hover.png' });
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
@@ -220,7 +320,7 @@ try {
       ['Hall da Fama', '.public-profile-panel:has(.hall-of-fame)'],
       ['Personagens', '.public-camp'],
     ]) {
-      const button = nav.getByRole('button', { name, exact: true });
+      const button = nav.getByRole('tab', { name, exact: true });
       await button.click();
       await expect(button).toHaveAttribute('aria-pressed', 'true');
       await expect(page.locator(selector)).toHaveAttribute('aria-hidden', 'false');
@@ -235,6 +335,20 @@ try {
         const heading = await page.locator(selector).locator('h2').first().boundingBox();
         if (heading) expect(heading.y).toBeGreaterThan(bounds.y + bounds.height);
       }
+      if (name === 'Conquistas') {
+        const room = (await page.locator('.public-cabinet-stage').boundingBox())!;
+        const cabinet = (await page
+          .locator('.public-cabinet-stage .fantasy-cabinet')
+          .boundingBox())!;
+        expect(
+          Math.abs(cabinet.y + cabinet.height * 0.95 - (room.y + room.width * 0.425)),
+        ).toBeLessThan(2);
+        expect(
+          await page
+            .locator('.public-cabinet-stage')
+            .evaluate((el) => getComputedStyle(el).backgroundPosition),
+        ).toBe('50% 0%');
+      }
       await page.screenshot({
         path: 'test-results/profile-rail-' + width + '-' + name.replaceAll(' ', '-') + '.png',
       });
@@ -248,10 +362,29 @@ try {
     'aria-pressed',
     'true',
   );
-  await nav.getByRole('button', { name: 'Ficha', exact: true }).focus();
+  await nav.getByRole('tab', { name: 'Ficha', exact: true }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('.public-sheet h2')).toHaveText('Ficha de Irineu');
   await page.getByRole('combobox', { name: 'Personagem do perfil visitado' }).selectOption(a.id);
+  await nav.getByRole('tab', { name: 'Personagens', exact: true }).click();
+  await expect(page.locator('.public-camp-pet img')).toHaveAttribute('src', /v=1/);
+  await pool.query('UPDATE companion_wardrobes SET image_revision=2 WHERE id=$1', [petImage.id]);
+  await page.evaluate(() => window.dispatchEvent(new Event('focus')));
+  await expect(page.locator('.public-camp-pet img')).toHaveAttribute('src', /v=2/);
+  await expect
+    .poll(() =>
+      page
+        .locator('.public-camp-pet img')
+        .evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0),
+    )
+    .toBe(true);
+  await nav.getByRole('tab', { name: 'Personagens', exact: true }).focus();
+  await page.keyboard.press('End');
+  await expect(nav.getByRole('tab', { name: 'Cartas', exact: true })).toBeFocused();
+  await page.keyboard.press('Home');
+  await expect(nav.getByRole('tab', { name: 'Personagens', exact: true })).toBeFocused();
+  await page.keyboard.press('ArrowRight');
+  await expect(nav.getByRole('tab', { name: 'Conquistas', exact: true })).toBeFocused();
   await expect(page.locator('.public-sheet h2')).toHaveText('Ficha de Nana');
   const details = await visitorContext.request.get(
     origin + `/api/profiles/${owner.id}/characters/${a.id}`,
@@ -261,13 +394,19 @@ try {
   expect(character).not.toHaveProperty('gold_cp');
   expect(character).not.toHaveProperty('email');
   expect(await snapshot()).toEqual(before);
+  await reviewRealmPages(ownerPage, pool, origin, owner.id);
   expect(errors).toEqual([]);
+  await writeFile(
+    'test-results/profile-missing-static.json',
+    JSON.stringify([...missingStatic], null, 2),
+  );
+  expect([...missingStatic]).toEqual([]);
   await writeFile(
     'test-results/profile-visit-comparison.json',
     JSON.stringify(comparisons, null, 2),
   );
   console.log(
-    'Visita e acampamento padrão comparados em cinco telas; placas, contorno, cinco abas, teclado, seletor e dados preservados.',
+    'PASS perfil em cinco telas: arte atual de companheiros, acesso público apenas à imagem exibida e não bloqueada, atualização por foco, cinco abas minimalistas/teclado, estante no chão/teto alinhado e dados preservados.',
   );
 } catch (error) {
   await page.screenshot({ path: 'test-results/profile-visit-failure.png', fullPage: true });

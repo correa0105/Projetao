@@ -12,34 +12,42 @@ export function PortraitCabinet({
   active,
   onSelect,
   children,
+  sceneAligned = false,
 }: {
   characters: FramedCharacter[];
   active: string;
   onSelect: (id: string) => void;
   children: ReactNode;
+  sceneAligned?: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const layout = root.current!,
       stage = layout.closest<HTMLElement>('.cabinet-room-stage')!;
-    const room =
-      layout.closest<HTMLElement>('.public-achievements') ||
-      layout.closest<HTMLElement>('.main-shell')!;
+    const room = sceneAligned
+      ? stage
+      : layout.closest<HTMLElement>('.public-achievements') ||
+        layout.closest<HTMLElement>('.main-shell')!;
     const measure = () => {
       const raw = getComputedStyle(room).getPropertyValue('--room-width').trim();
-      const width = raw.includes('clamp')
-        ? Math.max(900, Math.min(2000, innerWidth))
-        : raw.endsWith('vw')
-          ? (parseFloat(raw) * innerWidth) / 100
-          : parseFloat(raw) || room.clientWidth;
+      const width = sceneAligned
+        ? stage.clientWidth
+        : raw.includes('clamp')
+          ? Math.max(900, Math.min(2000, innerWidth))
+          : raw.endsWith('vw')
+            ? (parseFloat(raw) * innerWidth) / 100
+            : parseFloat(raw) || room.clientWidth;
       const mobile = innerWidth <= (room.classList.contains('public-achievements') ? 800 : 700);
-      const backgroundTop = room.classList.contains('public-achievements')
-        ? parseFloat(getComputedStyle(room).getPropertyValue('--portrait-background-top')) || 0
-        : mobile
-          ? 125
-          : 0;
+      const backgroundTop = sceneAligned
+        ? 0
+        : room.classList.contains('public-achievements')
+          ? parseFloat(getComputedStyle(room).getPropertyValue('--portrait-background-top')) || 0
+          : mobile
+            ? 125
+            : 0;
       const offset = stage.getBoundingClientRect().top - room.getBoundingClientRect().top;
       stage.style.setProperty('--cabinet-stage-offset', offset + 'px');
+      if (sceneAligned) stage.style.setProperty('--cabinet-floor-y', width * 0.425 + 'px');
       layout.style.setProperty('--portrait-wall-top', width * 0.14 + backgroundTop - offset + 'px');
       layout.style.setProperty('--portrait-room-width', width + 'px');
       const stoneBottom = room.getBoundingClientRect().top + backgroundTop + width * 0.318;
@@ -67,7 +75,7 @@ export function PortraitCabinet({
       observer.disconnect();
       window.removeEventListener('resize', measure);
     };
-  }, []);
+  }, [sceneAligned]);
   function frame(index: number) {
     const c = characters[index],
       path = c?.portrait
@@ -88,6 +96,7 @@ export function PortraitCabinet({
             <img
               src={path}
               alt={c.name}
+              onLoad={(e) => e.currentTarget.style.removeProperty('display')}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}

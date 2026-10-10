@@ -171,6 +171,9 @@ export function Tower({
           <h2>
             Torre <i>do Véu</i>
           </h2>
+          <p className="tower-hero-caption">
+            Prepare a expedição. Cada andar guarda uma história além do véu.
+          </p>
         </div>
         {character && (
           <div className="tower-wallet">
@@ -211,6 +214,23 @@ export function Tower({
           <>
             <div className="tower-atlas tower-atlas-compact">
               <nav className="tower-floor-picker" aria-label="Escolher andar da torre">
+                <label>
+                  Região
+                  <select
+                    aria-label="Escolher região"
+                    value={zoneIndex}
+                    onChange={(event) => {
+                      setFloor(Number(event.target.value) * 5 + 1);
+                      setDraft(null);
+                    }}
+                  >
+                    {towerZones.map((region, index) => (
+                      <option key={index} value={index}>
+                        {index * 5 + 1}–{(index + 1) * 5} · {region.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
                 <label>
                   Andar
                   <select

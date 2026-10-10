@@ -26,7 +26,7 @@ import { rankName, progressionLabel } from '../shared/progression';
 import { AchievementShelf } from './Achievements';
 import { PortraitCabinet } from './PortraitFrames';
 import { CardCollection } from './CharacterCards';
-import { PetArt } from './PetShop';
+import { OwnedPetArt } from './OwnedPetArt';
 import { pets } from '../shared/pets';
 import { mounts, ownedMountImage, type OwnedMount } from '../shared/mounts';
 import { petArtwork } from './pet-art';
@@ -41,6 +41,7 @@ import type { ShelfConfig, AchievementDefinition } from '../shared/achievements'
 import type { Card } from '../shared/cards';
 import './hall-profiles.css';
 import './profile-visit.css';
+import './realm-pages.css';
 type PublicCharacter = {
   id: string;
   user_id: string;
@@ -86,7 +87,15 @@ type PublicDetails = {
   achievements: { code: string }[];
   definitions: AchievementDefinition[];
   mounts: OwnedMount[];
-  pets: { id: string; pet_id: string; appearance: string; name: string; displayed: boolean }[];
+  pets: {
+    id: string;
+    pet_id: string;
+    appearance: string;
+    name: string;
+    displayed: boolean;
+    image_url?: string | null;
+    image_revision?: number;
+  }[];
   cards: (Card & { level: number; slot: number | null })[];
   titles: { id: string; document: { name: string; description: string } }[];
   derived: ReturnType<typeof deriveSheet> | null;
@@ -133,6 +142,7 @@ export function Profiles({ user }: { user: User }) {
     [comment, setComment] = useState(''),
     [companion, setCompanion] = useState<OwnedMount | null>(null);
   const mountHost = useRef<HTMLButtonElement>(null);
+  const mountHidden = useRef(false);
   const petHost = useRef<HTMLDivElement>(null);
   useCampPetPosition(
     petHost,
@@ -228,18 +238,36 @@ export function Profiles({ user }: { user: User }) {
   useEffect(() => {
     setDetails(null);
     setCompanion(null);
+    mountHidden.current = false;
     if (!target || !selected) return;
-    let active = true;
-    api<PublicDetails>(`/profiles/${encodeURIComponent(target)}/characters/${selected}`)
-      .then((d) => {
-        if (active) {
-          setDetails(d);
-          setCompanion(d.mounts.find((m) => m.displayed) || null);
-        }
-      })
-      .catch((e) => active && setError(e.message));
+    let active = true,
+      serial = 0;
+    const reload = () => {
+      if (document.hidden) return;
+      const request = ++serial;
+      void api<PublicDetails>(`/profiles/${encodeURIComponent(target)}/characters/${selected}`)
+        .then((d) => {
+          if (active && request === serial) {
+            setDetails(d);
+            setCompanion(mountHidden.current ? null : d.mounts.find((m) => m.displayed) || null);
+          }
+        })
+        .catch((e) => active && request === serial && setError(e.message));
+    };
+    const artworkChanged = (event: Event) => {
+      if ((event as CustomEvent).detail?.characterId === selected) reload();
+    };
+    reload();
+    const timer = setInterval(reload, 30000);
+    window.addEventListener('focus', reload);
+    window.addEventListener('companion-art-updated', artworkChanged);
+    document.addEventListener('visibilitychange', reload);
     return () => {
       active = false;
+      clearInterval(timer);
+      window.removeEventListener('focus', reload);
+      window.removeEventListener('companion-art-updated', artworkChanged);
+      document.removeEventListener('visibilitychange', reload);
     };
   }, [target, selected]);
   useEffect(() => {
@@ -285,7 +313,12 @@ export function Profiles({ user }: { user: User }) {
       <span className="social-avatar">
         <UserRound size={38} />
         {path && (
-          <img src={path} alt={name} onError={(e) => (e.currentTarget.style.display = 'none')} />
+          <img
+            src={path}
+            alt={name}
+            onLoad={(e) => e.currentTarget.style.removeProperty('display')}
+            onError={(e) => (e.currentTarget.style.display = 'none')}
+          />
         )}
       </span>
     );
@@ -427,6 +460,9 @@ export function Profiles({ user }: { user: User }) {
               >
                 <section
                   className="public-profile-panel public-camp"
+                  role="tabpanel"
+                  id="profile-panel-characters"
+                  aria-labelledby="profile-tab-characters"
                   aria-hidden={panel !== 'characters'}
                   inert={panel !== 'characters'}
                 >
@@ -461,7 +497,10 @@ export function Profiles({ user }: { user: User }) {
                               mounts.find((m) => m.id === companion.mount_id)?.scale || 1,
                           } as CSSProperties
                         }
-                        onClick={() => setCompanion(null)}
+                        onClick={() => {
+                          mountHidden.current = true;
+                          setCompanion(null);
+                        }}
                         title="Ocultar montaria nesta visita"
                       >
                         <img src={ownedMountImage(companion)} alt={companion.name} />
@@ -547,7 +586,7 @@ export function Profiles({ user }: { user: User }) {
                           } as CSSProperties
                         }
                       >
-                        <PetArt pet={species} appearance={displayPet.appearance} />
+                        <OwnedPetArt pet={displayPet} />
                         <span title={displayPet.name}>{displayPet.name}</span>
                       </div>
                     )}
@@ -555,6 +594,9 @@ export function Profiles({ user }: { user: User }) {
                 </section>
                 <section
                   className="public-profile-panel public-achievements"
+                  role="tabpanel"
+                  id="profile-panel-achievements"
+                  aria-labelledby="profile-tab-achievements"
                   aria-hidden={panel !== 'achievements'}
                   inert={panel !== 'achievements'}
                 >
@@ -567,6 +609,7 @@ export function Profiles({ user }: { user: User }) {
                           characters={profile.characters}
                           active={selected}
                           onSelect={setSelected}
+                          sceneAligned
                         >
                           <AchievementShelf
                             config={details.shelf}
@@ -598,6 +641,9 @@ export function Profiles({ user }: { user: User }) {
                 </section>
                 <section
                   className="public-profile-panel"
+                  role="tabpanel"
+                  id="profile-panel-hall"
+                  aria-labelledby="profile-tab-hall"
                   aria-hidden={panel !== 'hall'}
                   inert={panel !== 'hall'}
                 >
@@ -607,6 +653,9 @@ export function Profiles({ user }: { user: User }) {
                 </section>
                 <section
                   className="public-profile-panel public-sheet"
+                  role="tabpanel"
+                  id="profile-panel-sheet"
+                  aria-labelledby="profile-tab-sheet"
                   aria-hidden={panel !== 'sheet'}
                   inert={panel !== 'sheet'}
                 >
@@ -672,6 +721,9 @@ export function Profiles({ user }: { user: User }) {
                 </section>
                 <section
                   className="public-profile-panel public-cards"
+                  role="tabpanel"
+                  id="profile-panel-cards"
+                  aria-labelledby="profile-tab-cards"
                   aria-hidden={panel !== 'cards'}
                   inert={panel !== 'cards'}
                 >

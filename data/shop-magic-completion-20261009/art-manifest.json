@@ -15740,6 +15740,90 @@
       },
       "technical_processing": "Isolate independently illustrated object in transparent atlas; proportionally fit it to 672px and add transparent square padding. No recoloring or semantic image edit.",
       "review_notes": "Native generated atlases and five actual-size dark-background contact sheets reviewed. Forty independently illustrated complete silhouettes; safe transparent separators, source crop provenance, proportional padding only, distinct grains/veins and hashes. Eight wood families in rod/staff/wand forms; eight polished-stone families as crystal/orb spherical specimens."
+    },
+    {
+      "id": "common-glamerweave",
+      "path": "/shop/magic-completion-20261009/common-glamerweave.webp",
+      "native": ".local/shop-completion/native/common-glamerweave.png",
+      "native_sha256": "7db7f6d6534b387e781526e454666c59cfcba7151fe0e902d2d8da32e965f0ed",
+      "sha256": "c96b68d985a0773c8a6065f53eef52c54463bcd7944bce7e6629756146308544",
+      "width": 512,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: Common Glamerweave clothing, one complete indigo blue tailored long tunic and matching trousers arranged as a single wearable outfit on an invisible mannequin, empty sleeves, clear empty collar, no mannequin visible. Soft woven fabric, silver embroidered cuffs, asymmetric short shoulder fold and split hem. A delicate harmless moving illusion is suggested ONLY inside the textile as tiny drifting constellations and curved star trails woven through its folds; contained within the cloth, never floating outside. Complete sleeves and both trouser legs fully visible. No armor, weapon, magical bonus symbols, multiple outfits or ghostly human.",
+      "review": "approved",
+      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+    },
+    {
+      "id": "everbright-lantern",
+      "path": "/shop/magic-completion-20261009/everbright-lantern.webp",
+      "native": ".local/shop-completion/native/everbright-lantern.png",
+      "native_sha256": "54cd6cb415755cfa7cc1049529628338c4a2b4b7f6fdccf48387156746ee423f",
+      "sha256": "95421e51a61eea58a379f457e2b9479aeb82cc7dfc0f127767eb23929fddacae",
+      "width": 743,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: a single Everbright bullseye lantern, squat antique bronze cylinder with silver protective cage, large forward-facing round focusing lens, roof vent and arched carry handle. An irregular red-pink Eberron dragonshard softly glows behind the round lens; there is no burning wick, candle or fire. Functional hinge and subtle tool wear, unique original geometric metalwork. Entire handle and base visible. Suggest directional illumination in the lens reflection only, without a long light beam obscuring the silhouette. This is a lantern, not a crystal ball or hanging chandelier.",
+      "review": "approved",
+      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+    },
+    {
+      "id": "keycharm",
+      "path": "/shop/magic-completion-20261009/keycharm.webp",
+      "native": ".local/shop-completion/native/keycharm.png",
+      "native_sha256": "32b9be04423df291e11a71e0b25f3bd4159630e278c65e43489b53d0d040a0d2",
+      "sha256": "4ec840ace932960bd1aa50fd5018f6317b387a6d204556ff31af508c8ee21a50",
+      "width": 747,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: a single small stylized Kundarak key charm, short silver key shaft with three distinct teeth, intricate broad angular brass bow with a mountain-like original geometric relief, three tiny sealed recesses around its bow. The small object's detailed silhouette occupies most of the image without perspective exaggeration. Tarnished brass recesses and smooth worn silver edges, elegant dwarven craftsmanship, readable key profile. No keyring, chain, other keys, lettering, numerical charges, glowing magic beams or lock.",
+      "review": "approved",
+      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+    },
+    {
+      "id": "scribe-s-pen",
+      "path": "/shop/magic-completion-20261009/scribe-s-pen.webp",
+      "native": ".local/shop-completion/native/scribe-s-pen.png",
+      "native_sha256": "6575e56e5596b000531700af2f5caecbd79ee4db06b49d0afeabf7b2cbf0bc28",
+      "sha256": "742ae7dbd78ac174a56f2730f08eec147296dd1354aa3b21a20568c996dcefe9",
+      "width": 768,
+      "height": 640,
+      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: one elegant Scribe's Pen, long black polished ebony dip pen with slim warm-brass grip, a clean sculpted silver split nib and a small ivory inlay at its upper end. Diagonal full-length composition, left upper end to lower right nib, all parts complete and clear. Fine original geometric engravings on the brass, realistic subtly worn wood grain. Restrained violet glimmer directly within the nib metal. No feather, inkwell, writing, paper, wand, spark cloud or extra pen; unmistakably a writing instrument.",
+      "review": "approved",
+      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+    },
+    {
+      "id": "shiftweave",
+      "path": "/shop/magic-completion-20261009/shiftweave.webp",
+      "native": ".local/shop-completion/native/shiftweave.png",
+      "native_sha256": "f4dbe9f0e5c35a4876280807aa76f8179b39091737299426443673572a7374e9",
+      "sha256": "6841147e8d8b5c850f8d8eb19fd7f21e5ff8c76e0f2e6719266b65bc6800ac6a",
+      "width": 512,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: one complete emerald-green Shiftweave outfit, travel coat over matching charcoal trousers on an invisible mannequin with no mannequin visible. Raised folded collar, asymmetric diagonal front fastening, long shaped coat tails and five subtly different textile panels along the open inner lining, brass button accents and small jacquard wave pattern. Cloth is physically believable, matte with soft satin edging, full sleeves and both trouser legs shown. The five lining panels merely suggest five embedded clothing designs; render one single complete outfit, not multiple duplicates. No armor plates, human skin, floating magical projections or stars. This must have its own distinct silhouette and design.",
+      "review": "approved",
+      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+    },
+    {
+      "id": "spellshard",
+      "path": "/shop/magic-completion-20261009/spellshard.webp",
+      "native": ".local/shop-completion/native/spellshard.png",
+      "native_sha256": "128d93ce2bf0a25922f022aa1a7a617a960fb31d1e0014ed162296e940a51d75",
+      "sha256": "6bf58396af019dad4cec013ef192d719a236ee15cf45c14df5ac702facffc58c",
+      "width": 768,
+      "height": 702,
+      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: one palm-sized polished Eberron spellshard, a thick asymmetric oblong mineral with smooth beveled faces and an irregular natural termination, deep translucent garnet-red with fine violet mineral threads inside. A few faint layered book-page-like abstract arcs lie INSIDE the crystal, suggesting stored information without actual letters or legible text. Realistic glassy mineral depth and natural inclusions, restrained narrow highlights, not an opaque gemstone, sphere, tablet screen, glowing purple wand or pile of shards. Entire single stone visible, not mounted in jewelry; no explosion, magical trails, book or other object.",
+      "review": "approved",
+      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+    },
+    {
+      "id": "wand-sheath",
+      "path": "/shop/magic-completion-20261009/wand-sheath.webp",
+      "native": ".local/shop-completion/native/wand-sheath.png",
+      "native_sha256": "e019a2361a83ea2ec56bb5ae90810977092b36880f7ecaa08fba68e4364d10b6",
+      "sha256": "72b3053294d135a840c7c2b3ba79efe2ddb09d0c92634e6b0c115133f0b23241",
+      "width": 768,
+      "height": 702,
+      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: one EMPTY Wand Sheath designed to clamp onto a warforged forearm, a complete antique bronze and brushed iron forearm cuff with two hinged curved straps and a slim open-ended telescoping tubular housing attached along the upper side. Three-quarter view clearly reveals the empty housing mouth, inner sliding rail, locking hinge and buckles. Compact rugged Eberron craftsmanship, silver mechanical edge highlights and worn bronze surfaces, finely engraved nontext geometric marks. Complete unclasped curved straps, full housing length visible. No actual arm, hand, wand, blade, weapon, electricity or extra loose components. The purchaser receives one cuff mechanism, not a wand.",
+      "review": "approved",
+      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
     }
   ]
 }

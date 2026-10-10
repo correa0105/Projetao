@@ -88,6 +88,7 @@ export function HallOfFame({
         <img
           src={e.portrait + '&thumb=1'}
           alt=""
+          onLoad={(event) => event.currentTarget.style.removeProperty('display')}
           onError={(event) => (event.currentTarget.style.display = 'none')}
         />
       </span>
