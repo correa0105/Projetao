@@ -205,6 +205,19 @@ try {
   for (const model of withdrawnWeaponModels)
     assert(!(await modelSelect.locator('option[value="' + model + '"]').count()));
   assert.equal(await modelSelect.locator('option[value="hunting-rifle"]').count(), 1);
+  assert.equal(
+    (
+      await api(gm, '/stable/purchase', 'POST', {
+        character_id: a.id,
+        mount_id: 'warhorse',
+        coat: 'original',
+        name: 'Brasa',
+        equipment: [],
+        idempotency_key: randomUUID(),
+      })
+    ).status,
+    201,
+  );
   const dog = await api(gm, '/pets/purchase', 'POST', {
     character_id: a.id,
     pet_id: 'dog',
@@ -213,6 +226,19 @@ try {
     idempotency_key: randomUUID(),
   });
   assert(dog.status < 300, 'Dog fixture purchase failed');
+  await page.goto(origin + '/#profiles');
+  await expect(page.locator('.profiles-directory-heading .social-eyebrow')).toHaveText(
+    'Conheça os aventureiros de Alvorada',
+  );
+  await expect(page.locator('.profiles-top')).toHaveCount(0);
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 921 });
+    await settle(page);
+    await expect(page.getByLabel('Localizador de perfil')).toBeVisible();
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+    await page.screenshot({ path: 'test-results/profile-directory-clean-' + width + '.png' });
+  }
+  await page.setViewportSize({ width: 1898, height: 921 });
   await page.goto(origin + '/#profiles?user=' + owner.id + '&character=' + a.id);
   await expect(page.locator('.visiting')).toBeVisible();
   await expect(page.locator('.profile-rating-callout')).toHaveText('Avalie');
@@ -222,23 +248,46 @@ try {
   await expect(profileDog.locator('> span:not(.pet-art)')).not.toBeVisible();
   await profileDog.hover();
   await expect(profileDog.locator('> span:not(.pet-art)')).toBeVisible();
-  assert((await profileDog.evaluate((el) => parseFloat(getComputedStyle(el).right))) > 50);
+  assert((await profileDog.evaluate((el) => parseFloat(getComputedStyle(el).right))) > 140);
+  const profileMount = page.getByRole('button', { name: 'Brasa', exact: true });
+  await expect(profileMount).toBeVisible();
+  await expect(profileMount.locator('.camp-mount-name')).not.toBeVisible();
+  await profileMount.hover();
+  await expect(profileMount.locator('.camp-mount-name')).toBeVisible();
+  await page.screenshot({ path: 'test-results/profile-mount-hover-1898.png' });
+  await profileMount.click();
+  await page.mouse.move(950, 18);
+  await expect(profileMount.locator('.camp-mount-name')).toBeVisible();
+  await profileMount.click();
+  await page.mouse.move(950, 18);
+  await expect(profileMount.locator('.camp-mount-name')).not.toBeVisible();
   await expect(page.locator('.public-camp-heading h2')).toHaveText('Acampamento');
   await expect(page.locator('.profile-visit-selector strong')).toHaveText('Pai do Cris');
+  await expect(page.locator('.profile-selected-character')).toHaveText('Nana');
+  await expect(page.getByLabel('Personagem do perfil visitado')).toHaveCount(0);
   await expect(page.locator('.profile-character-avatar img')).toHaveAttribute(
     'src',
     new RegExp(a.id),
   );
-  await page.getByLabel('Personagem do perfil visitado').selectOption(b.id);
+  await page.getByRole('button', { name: 'Selecionar Irineu no perfil', exact: true }).click();
+  await expect(page.locator('.profile-selected-character')).toHaveText('Irineu');
   await expect(page.locator('.profile-character-avatar img')).toHaveAttribute(
     'src',
     new RegExp(b.id),
   );
-  await page.getByLabel('Personagem do perfil visitado').selectOption(a.id);
+  await page.getByRole('button', { name: 'Selecionar Nana no perfil', exact: true }).click();
+  await expect(page.locator('.profile-selected-character')).toHaveText('Nana');
+  await page.getByRole('button', { name: 'Selecionar Nana no perfil', exact: true }).click();
   const next = page.locator('.profile-next-arrow:not(.profile-previous-arrow)');
   for (const width of [1898, 1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 921 });
     await settle(page);
+    const identity = page.locator('.profile-visit-selector');
+    const identityBox = (await identity.boundingBox())!;
+    assert(identityBox.x >= 0 && identityBox.x + identityBox.width <= width + 1);
+    await expect(identity).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    await expect(identity).toHaveCSS('border-top-width', '0px');
+    await expect(page.locator('.profile-selected-character')).toHaveText('Nana');
     assert.equal(await page.locator('.public-profile-panel').count(), 4);
     for (const selector of [
       '.profile-visit-nav',
@@ -293,6 +342,7 @@ try {
   ).toHaveCSS('opacity', '1');
   await expect(page.locator('.public-character-info').nth(1)).not.toBeVisible();
   await page.getByRole('button', { name: 'Selecionar Irineu no perfil', exact: true }).click();
+  await expect(page.locator('.profile-selected-character')).toHaveText('Irineu');
   await expect(page.locator('.public-character-info').nth(1)).toBeVisible();
   await page.getByRole('button', { name: 'Ver ficha', exact: true }).click();
   const sheet = page.getByRole('dialog', { name: 'Ficha de Irineu' });
@@ -363,8 +413,44 @@ try {
   await ownerPage.goto(origin + '/#characters');
   const ownDog = ownerPage.locator('.camp-pet[data-pet-species="dog"]');
   await expect(ownDog).toBeVisible();
-  assert((await ownDog.evaluate((el) => parseFloat(getComputedStyle(el).right))) > 50);
+  assert((await ownDog.evaluate((el) => parseFloat(getComputedStyle(el).right))) > 140);
   await expect(ownDog.locator('> span:not(.pet-art)')).toBeVisible();
+  await ownerPage.goto(origin + '/#hall');
+  await expect(ownerPage.locator('.hall-champion')).toHaveCount(3);
+  await expect(ownerPage.locator('.hall-champion .hall-portrait')).toHaveCount(0);
+  for (const width of [1440, 768, 390, 320]) {
+    await ownerPage.setViewportSize({ width, height: 921 });
+    await settle(ownerPage);
+    const figures = ownerPage.locator('.hall-character-art img');
+    await expect(figures).toHaveCount(3);
+    await expect
+      .poll(() =>
+        figures.evaluateAll((images) =>
+          images.every(
+            (img) =>
+              (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0,
+          ),
+        ),
+      )
+      .toBe(true);
+    await expect(figures.first()).toHaveCSS('object-fit', 'contain');
+    await expect(ownerPage.locator('.hall-character-art').first()).toHaveCSS(
+      'border-radius',
+      '0px',
+    );
+    assert(
+      await figures.evaluateAll((images) =>
+        images.every((img) => !(img as HTMLImageElement).src.includes('thumb=1')),
+      ),
+    );
+    assert(await ownerPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+    await ownerPage.screenshot({ path: 'test-results/hall-full-characters-' + width + '.png' });
+  }
+  await ownerPage
+    .locator('.hall-champion')
+    .filter({ has: ownerPage.getByRole('heading', { name: 'Irineu', exact: true }) })
+    .click();
+  await expect(ownerPage.locator('.profile-selected-character')).toHaveText('Irineu');
   await ownerPage.goto(origin + '/#pets');
   const picker = ownerPage.getByLabel('Mascote à venda', { exact: true });
   await expect(picker).toBeVisible();
@@ -617,7 +703,7 @@ try {
   await expect(peer.locator('.vtt-token-hud')).toHaveCount(0);
   assert.deepEqual(errors, []);
   console.log(
-    'PASS real Edge: profile previous/next arrows, full room/chandelier/cabinet at five widths, hover names/click menus, hidden owner rating and visitor voting; pet left sidebar and dog position on both pages; draggable/minimizable sheets above quick-action menus, unframed portrait and hidden token HUD at four widths; token stats/settings/30 conditions and GM/player/spectator permissions.',
+    'PASS real Edge: clean profile directory and concrete heading; transparent traveler identity and character name/portrait switch; mount hover/click names and dog further left on both pages; profile navigation/room/rating, pet sidebar and movable sheets preserved across mobile/desktop widths and permissions.',
   );
 } catch (error) {
   for (const ctx of contexts)

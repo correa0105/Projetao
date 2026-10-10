@@ -14,6 +14,7 @@ import {
 import { api } from './api';
 import type { HallEntry, HallSettings } from '../shared/social';
 import './hall-profiles.css';
+import './hall-character-art.css';
 export function visitProfile(user: string, character?: string) {
   location.hash =
     'profiles?user=' +
@@ -169,7 +170,18 @@ export function HallOfFame({
                 {e.categoryRank === 1 ? <Crown size={26} /> : <Trophy size={22} />}
                 <b>#{e.categoryRank}</b>
               </span>
-              {portrait(e)}
+              <span className="hall-character-art">
+                <img
+                  key={e.portrait}
+                  src={e.portrait}
+                  alt={e.name}
+                  onError={(event) => {
+                    const image = event.currentTarget;
+                    if (!image.src.endsWith('/character-silhouette-v2.png'))
+                      image.src = '/character-silhouette-v2.png';
+                  }}
+                />
+              </span>
               <h2>{ranking === 'rating' ? e.owner_name : e.name}</h2>
               <span>
                 {e.class} · Nível {e.level}

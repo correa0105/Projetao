@@ -47,7 +47,7 @@ export function useCampPetPosition(
     const figures = [...stage.querySelectorAll<HTMLElement>('.camp-figure')];
     const align = () => {
       if (element.dataset.petSpecies === 'dog')
-        element.style.right = innerWidth <= 600 ? '20px' : 'calc(3% + clamp(16px, 2vw, 38px))';
+        element.style.right = innerWidth <= 600 ? '36px' : 'calc(3% + clamp(48px, 5vw, 96px))';
       else element.style.removeProperty('right');
       const floor = Math.max(...figures.map((figure) => figure.getBoundingClientRect().bottom));
       if (Number.isFinite(floor))

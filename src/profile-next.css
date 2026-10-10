@@ -31,6 +31,13 @@
 .visiting .public-camp-character[data-info-open='true'] .profile-figure-name {
   visibility: hidden;
 }
+.visiting .public-camp-character {
+  pointer-events: none;
+}
+.visiting .public-character-figure > img,
+.visiting .public-character-info {
+  pointer-events: auto;
+}
 .visiting .public-camp-mount > .camp-mount-name,
 .visiting .public-camp-pet > span:not(.pet-art) {
   visibility: hidden;
@@ -44,6 +51,17 @@
 :root .visiting .public-camp-pet {
   pointer-events: auto;
   cursor: pointer;
+}
+:root .visiting .public-camp-mount {
+  pointer-events: auto;
+  cursor: pointer;
+}
+.visiting .public-camp-mount > .camp-mount-name {
+  color: #f1dfc3;
+  opacity: 1;
+  text-shadow:
+    0 1px 3px #000,
+    0 2px 8px #000;
 }
 .visiting .public-cabinet-stage .antique-portrait-plaque {
   visibility: hidden;
@@ -214,13 +232,14 @@ dialog:has(.profile-sheet-modal) {
   gap: 13px;
   align-items: center;
   width: 275px;
-  padding: 8px 10px;
-  border: 1px solid #ad895343;
-  border-radius: 8px;
-  background: linear-gradient(115deg, #111713e0, #0c141cd4);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 5px 20px #0004;
-  text-shadow: none;
+  max-width: calc(100vw - 2 * var(--page-header-edge));
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  text-shadow: 0 2px 5px #000d;
 }
 .profile-character-avatar {
   position: relative;
@@ -253,14 +272,15 @@ dialog:has(.profile-sheet-modal) {
 .profile-visit-identity > strong {
   display: block;
   font: 600 20px/1.2 var(--serif);
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   overflow-wrap: anywhere;
 }
-:root .visiting .profile-visit-identity select {
-  border-color: #ae8a564f;
-  height: 29px;
+.profile-selected-character {
+  display: block;
   font-size: 12px;
-  background: #0e151dcc;
+  line-height: 1.35;
+  color: #d1c5ad;
+  overflow-wrap: anywhere;
 }
 @media (max-width: 800px) {
   :root .app-shell[data-page='profiles'] .visiting .profile-visit-selector {

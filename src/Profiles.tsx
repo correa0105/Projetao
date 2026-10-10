@@ -12,7 +12,6 @@ import {
   Crown,
   Shield,
   Layers,
-  Settings2,
   Check,
   X,
   Flag,
@@ -353,33 +352,6 @@ export function Profiles({ user }: { user: User }) {
     if (!r.ok) throw Error(data.error);
     return data.path as string;
   }
-  const profileActions = (
-    <div className="profiles-top">
-      <button className="social-back" onClick={() => (location.hash = 'profiles')}>
-        <ArrowLeft size={16} />
-        {target ? 'Todos os perfis' : 'Perfis da Alvorada'}
-      </button>
-      <div>
-        <button onClick={() => visitProfile(user.id)}>
-          <UserRound size={15} />
-          Meu perfil
-        </button>
-        <button onClick={() => setSocialOpen((v) => !v)} aria-expanded={socialOpen}>
-          <MessageSquare size={16} />
-          Amigos e chat
-          {inbox.some((i) => i.unread > 0) && (
-            <b className="social-unread">{inbox.reduce((n, i) => n + i.unread, 0)}</b>
-          )}
-        </button>
-        {profile?.is_owner && (
-          <button onClick={() => setEditing(structuredClone(profile.document))}>
-            <Settings2 size={15} />
-            Personalizar perfil
-          </button>
-        )}
-      </div>
-    </div>
-  );
   return (
     <section
       className={`profiles-page ${profile ? 'visiting' : ''}`}
@@ -392,7 +364,6 @@ export function Profiles({ user }: { user: User }) {
           : undefined
       }
     >
-      {!profile && profileActions}
       {error && (
         <div className="social-error" role="alert">
           {error}
@@ -404,7 +375,7 @@ export function Profiles({ user }: { user: User }) {
       {!target ? (
         <>
           <header className="profiles-directory-heading">
-            <span className="social-eyebrow">Cada viajante, um universo</span>
+            <span className="social-eyebrow">Conheça os aventureiros de Alvorada</span>
             <h2>Encontre um viajante</h2>
             <p>Encontre amigos e descubra as histórias por trás dos personagens.</p>
             <label className="profiles-finder">
@@ -727,23 +698,13 @@ export function Profiles({ user }: { user: User }) {
                 <span className="social-eyebrow">Perfil do viajante</span>
                 <strong>{profile.name}</strong>
                 {current && (
-                  <label>
-                    <span>Personagem do jogador</span>
-                    <select
-                      aria-label="Personagem do perfil visitado"
-                      value={selected}
-                      onChange={(e) => {
-                        setSelected(e.target.value);
-                        setCampInfoId(null);
-                      }}
-                    >
-                      {profile.characters.map((c) => (
-                        <option key={c.id} value={c.id}>
-                          {c.name}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
+                  <span
+                    className="profile-selected-character"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  >
+                    {current.name}
+                  </span>
                 )}
               </div>
             </div>
