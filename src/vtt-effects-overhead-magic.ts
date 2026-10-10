@@ -348,7 +348,8 @@ function electricity(
     paintFootprint(c, f, e.color, flash * 0.08);
   }
 }
-// Three distributed sources, each with simultaneous stable branches.
+// Independent, staggered discharges. Each event keeps its geometry through
+// the flash, then renews its origin, reach and branching after a quiet interval.
 export function electricBursts(
   f: EffectFootprint,
   phase: number,
@@ -357,22 +358,41 @@ export function electricBursts(
   detail = 1,
 ) {
   const result = [];
-  for (let emitter = 0; emitter < 3; emitter++) {
-    const cycle = Math.floor(phase + emitter / 3),
-      age = fract(phase + emitter / 3);
-    const seed = cycle * 197 + emitter * 911;
-    const angle = (emitter / 3) * tau + (random(seed + 105) - 0.5) * 0.8;
-    const p = projectOverheadEffect(f.plane, 0.3 + random(seed + 18) * 0.3, angle, 0.1);
-    const strength = 0.2 + Math.exp(-age * 5) * 0.8;
-    for (let branch = 0; branch < (detail < 0.8 ? 2 : 3); branch++) {
-      const a = angle + (branch - 1) * 0.75 + (random(seed + branch + 41) - 0.5) * 0.45;
+  for (let emitter = 0; emitter < (detail < 0.8 ? 4 : 6); emitter++) {
+    const lane = emitter * 911 + 1703;
+    const period = 0.9 + random(lane) * 1.4;
+    const local = phase + random(lane + 1) * period;
+    const cycle = Math.floor(local / period);
+    const seed = cycle * 197 + lane;
+    const start = random(seed + 2) * period * 0.38;
+    const age = local - cycle * period - start;
+    const lifetime = (sparks ? 0.2 : 0.3) + random(seed + 3) * 0.24;
+    if (age < 0 || age > lifetime) continue;
+    const u = age / lifetime;
+    const primary = Math.min(1, u / 0.045) * Math.exp(-u * 5.5);
+    const echo =
+      random(seed + 4) > 0.58
+        ? Math.exp(-Math.pow((u - (0.28 + random(seed + 5) * 0.25)) / 0.055, 2)) * 0.65
+        : 0;
+    const strength = Math.max(primary, echo) * (0.5 + random(seed + 6) * 0.5);
+    const angle = random(seed + 105) * tau;
+    const p = projectOverheadEffect(
+      f.plane,
+      0.16 + random(seed + 18) * 0.5,
+      angle,
+      random(seed + 19) * 0.65,
+    );
+    const branches = 1 + Math.floor(random(seed + 7) * (detail < 0.8 ? 2 : 4));
+    for (let branch = 0; branch < branches; branch++) {
+      const key = seed + branch * 61;
+      const a = angle + (random(key + 41) - 0.5) * 3.8;
       const end = projectOverheadEffect(
         f.plane,
-        sparks ? 0.28 : 0.52,
+        (sparks ? 0.13 : 0.3) + random(key + 87) * (sparks ? 0.25 : 0.46),
         a,
-        0.5 + random(seed + branch + 88) * 0.4,
+        (random(key + 88) - 0.3) * 1.1,
       );
-      result.push({ p, q: { x: p.x + end.x, y: p.y + end.y }, seed: seed + branch * 61, strength });
+      result.push({ p, q: { x: p.x + end.x, y: p.y + end.y }, seed: key, strength });
     }
   }
   return result;

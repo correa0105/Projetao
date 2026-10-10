@@ -107,7 +107,7 @@ try {
   for (const c of [a, b]) {
     await pool.query('INSERT INTO character_portraits(character_id,image) VALUES($1,$2)', [
       c.id,
-      png,
+      c.id === b.id ? await readFile('public/character-silhouette-v2.png') : png,
     ]);
     await pool.query('UPDATE characters SET portrait_revision=1,biography=$2 WHERE id=$1', [
       c.id,
@@ -231,6 +231,9 @@ try {
     'Conheça os aventureiros de Alvorada',
   );
   await expect(page.locator('.profiles-top')).toHaveCount(0);
+  await expect(
+    page.locator('.profile-directory > article > p, .profile-directory > article > span'),
+  ).toHaveCount(0);
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 921 });
     await settle(page);
@@ -241,7 +244,7 @@ try {
   await page.setViewportSize({ width: 1898, height: 921 });
   await page.goto(origin + '/#profiles?user=' + owner.id + '&character=' + a.id);
   await expect(page.locator('.visiting')).toBeVisible();
-  await expect(page.locator('.profile-rating-callout')).toHaveText('Avalie');
+  await expect(page.locator('.profile-rating-callout')).toHaveText('Avalie o Perfil');
   await expect(page.getByText('Sem votos', { exact: true })).toHaveCount(0);
   const profileDog = page.locator('.public-camp-pet');
   await expect(profileDog).toBeVisible();
@@ -297,7 +300,7 @@ try {
     ])
       assert.equal(await page.locator(selector).count(), 0, selector);
     const arrow = (await next.boundingBox())!;
-    assert(arrow.width === 44 && arrow.height === 64);
+    assert(arrow.width === 52 && arrow.height === 76);
     await expect(page.locator('.profile-previous-arrow')).toHaveCount(0);
     await expect(page.locator('.public-camp-heading')).toHaveText('Acampamento');
     await expect(page.locator('.public-character-info').first()).not.toBeVisible();
@@ -443,6 +446,20 @@ try {
         images.every((img) => !(img as HTMLImageElement).src.includes('thumb=1')),
       ),
     );
+    const cards = ownerPage.locator('.hall-champion');
+    for (let i = 0; i < 3; i++) {
+      const imageBox = (await cards.nth(i).locator('.hall-character-art').boundingBox())!;
+      const headingBox = (await cards.nth(i).locator('h2').boundingBox())!;
+      assert(imageBox.y + imageBox.height + 12 <= headingBox.y, 'Character art overlaps name');
+      await expect(cards.nth(i).locator('.hall-medal-name')).toHaveText(
+        ['Ouro', 'Prata', 'Bronze'][i],
+      );
+    }
+    assert(
+      new Set(
+        await cards.evaluateAll((els) => els.map((el) => getComputedStyle(el).borderTopColor)),
+      ).size === 3,
+    );
     assert(await ownerPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
     await ownerPage.screenshot({ path: 'test-results/hall-full-characters-' + width + '.png' });
   }
@@ -451,6 +468,20 @@ try {
     .filter({ has: ownerPage.getByRole('heading', { name: 'Irineu', exact: true }) })
     .click();
   await expect(ownerPage.locator('.profile-selected-character')).toHaveText('Irineu');
+  await ownerPage.goto(origin + '/#profiles?user=' + owner.id + '&character=' + b.id);
+  await ownerPage.locator('.profile-next-arrow:not(.profile-previous-arrow)').click();
+  await ownerPage.locator('.profile-next-arrow:not(.profile-previous-arrow)').click();
+  await expect(ownerPage.locator('.hall-of-fame.embedded .hall-champion')).toHaveCount(3);
+  for (const width of [1440, 768, 390, 320]) {
+    await ownerPage.setViewportSize({ width, height: 921 });
+    await settle(ownerPage);
+    for (const card of await ownerPage.locator('.hall-champion').all()) {
+      const artBox = (await card.locator('.hall-character-art').boundingBox())!;
+      const textBox = (await card.locator('h2').boundingBox())!;
+      assert(artBox.y + artBox.height + 12 <= textBox.y, 'Embedded Hall art overlaps name');
+    }
+    await ownerPage.screenshot({ path: 'test-results/profile-hall-podium-' + width + '.png' });
+  }
   await ownerPage.goto(origin + '/#pets');
   const picker = ownerPage.getByLabel('Mascote à venda', { exact: true });
   await expect(picker).toBeVisible();
@@ -646,6 +677,10 @@ try {
   const nameBox = (await characterSheet.locator('.vtt-sheet-identity h2').boundingBox())!;
   const portraitBox = (await portrait.boundingBox())!;
   assert(portraitBox.x + portraitBox.width < nameBox.x);
+  await expect(characterSheet.locator('.vtt-sheet-character-origins dt')).toHaveText([
+    'Antecedente',
+    'Alinhamento',
+  ]);
   await characterSheet.getByRole('button', { name: 'Biografia', exact: true }).click();
   await characterSheet.getByRole('button', { name: 'Minimizar ficha', exact: true }).click();
   await expect(characterSheet.locator('.vtt-sheet-window-body')).not.toBeVisible();
@@ -672,6 +707,11 @@ try {
     const bar = (await ownerPage.locator('.vtt-hotbar').boundingBox())!;
     assert(box.y < 24 && box.y + box.height <= bar.y - 8, 'Sheet overlaps quick actions');
     assert(box.x >= 0 && box.x + box.width <= width);
+    assert(
+      await characterSheet
+        .locator('.vtt-sheet-banner')
+        .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+    );
     await ownerPage.screenshot({ path: 'test-results/vtt-sheet-window-' + width + '.png' });
   }
   await ownerPage.setViewportSize({ width: 1440, height: 921 });

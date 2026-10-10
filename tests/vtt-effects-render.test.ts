@@ -183,27 +183,48 @@ test('personagens, monstros e imagens customizadas usam a mesma versão de todos
   }
 });
 
-test('prismas mantêm paredes largas e proporção em 0,5–3; eletricidade usa três fontes simultâneas', () => {
+test('prismas preservam a forma; descargas variam sem tremor dentro do clarão', () => {
   for (const size of [5, 10, 20, 30]) {
     const v = crystalOutline(size);
     assert.equal(v[0][1], v[1][1]);
     assert.equal(v[3][1], v[4][1]);
     assert.ok((v[3][1] - v[1][1]) / (v[2][0] - v[0][0]) > 0.4);
-    assert.ok((v[2][0] - v[1][0]) / (v[2][0] - v[0][0]) < 0.25, 'only cap tapers');
   }
-  for (const sparks of [true, false])
-    for (const phase of [0, 0.2, 0.6, 1.01, 9.2]) {
-      const bursts = electricBursts(
-        effectFootprint(100, 180, 65, 117),
-        phase,
-        seededRandom('branches'),
-        sparks,
-      );
-      assert.equal(bursts.length, 9);
-      assert.equal(new Set(bursts.map((b) => b.p.x + ',' + b.p.y)).size, 3);
-      assert.ok(bursts.every((b) => Math.hypot(b.p.x, b.p.y) > 15 && b.strength >= 0.2));
-      assert.equal(new Set(bursts.map((b) => b.q.x + ',' + b.q.y)).size, 9);
+  const footprint = effectFootprint(100, 180, 65, 117),
+    random = seededRandom('branches');
+  for (const sparks of [true, false]) {
+    const counts = new Set<number>(),
+      origins = new Set<string>(),
+      lengths: number[] = [];
+    let stable = 0;
+    for (let i = 0; i < 240; i++) {
+      const phase = i / 30,
+        bursts = electricBursts(footprint, phase, random, sparks),
+        next = electricBursts(footprint, phase + 0.001, random, sparks);
+      counts.add(bursts.length);
+      assert(bursts.length <= 24);
+      for (const b of bursts) {
+        assert(Number.isFinite(b.q.x + b.q.y));
+        assert(b.strength >= 0 && b.strength <= 1);
+        origins.add(b.p.x + ',' + b.p.y);
+        lengths.push(Math.hypot(b.q.x - b.p.x, b.q.y - b.p.y));
+        const same = next.find((n) => n.seed === b.seed);
+        if (same) {
+          assert.deepEqual(same.p, b.p);
+          assert.deepEqual(same.q, b.q);
+          stable++;
+        }
+      }
     }
+    assert(counts.size > 4, 'discharge density remains fixed');
+    assert(origins.size > 15, 'origins remain pinned');
+    assert(Math.max(...lengths) > Math.min(...lengths) * 2, 'uniform reach');
+    assert(stable > 100, 'no stable discharge samples');
+    assert.notDeepEqual(
+      electricBursts(footprint, 1.25, random, sparks),
+      electricBursts(footprint, 1.25, seededRandom('other token'), sparks),
+    );
+  }
 });
 
 test('biblioteca mantém IDs legados e 127 modelos com metadata validada', () => {

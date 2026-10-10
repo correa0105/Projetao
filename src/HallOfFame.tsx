@@ -166,42 +166,49 @@ export function HallOfFame({
               key={e.id}
               onClick={() => visitProfile(e.user_id, e.id)}
             >
-              <span className="hall-place">
-                {e.categoryRank === 1 ? <Crown size={26} /> : <Trophy size={22} />}
-                <b>#{e.categoryRank}</b>
-              </span>
-              <span className="hall-character-art">
-                <img
-                  key={e.portrait}
-                  src={e.portrait}
-                  alt={e.name}
-                  onError={(event) => {
-                    const image = event.currentTarget;
-                    if (!image.src.endsWith('/character-silhouette-v2.png'))
-                      image.src = '/character-silhouette-v2.png';
-                  }}
-                />
-              </span>
-              <h2>{ranking === 'rating' ? e.owner_name : e.name}</h2>
-              <span>
-                {e.class} · Nível {e.level}
-              </span>
-              <small>{e.owner_name}</small>
-              <strong className="hall-champion-value">
-                {ranking === 'rating'
-                  ? e.categoryValue.toFixed(2)
-                  : e.categoryValue.toLocaleString('pt-BR')}
-                <small>
+              <div className="hall-podium-stage">
+                <span className="hall-place">
+                  {e.categoryRank === 1 ? <Crown size={26} /> : <Trophy size={22} />}
+                  <b>#{e.categoryRank}</b>
+                  <small className="hall-medal-name">
+                    {['Ouro', 'Prata', 'Bronze'][e.categoryRank - 1]}
+                  </small>
+                </span>
+                <span className="hall-character-art">
+                  <img
+                    key={e.portrait}
+                    src={e.portrait}
+                    alt={e.name}
+                    onError={(event) => {
+                      const image = event.currentTarget;
+                      if (!image.src.endsWith('/character-silhouette-v2.png'))
+                        image.src = '/character-silhouette-v2.png';
+                    }}
+                  />
+                </span>
+              </div>
+              <div className="hall-champion-details">
+                <h2>{ranking === 'rating' ? e.owner_name : e.name}</h2>
+                <span className="hall-champion-class">
+                  {e.class} · Nível {e.level}
+                </span>
+                <small className="hall-champion-owner">{e.owner_name}</small>
+                <strong className="hall-champion-value">
                   {ranking === 'rating'
-                    ? 'avaliação ponderada'
-                    : ranking === 'general' || ranking === 'prestige'
-                      ? 'pontos'
-                      : 'registros'}
-                </small>
-              </strong>
-              <span className="hall-profile-link">
-                Visitar perfil <ArrowUpRight size={13} />
-              </span>
+                    ? e.categoryValue.toFixed(2)
+                    : e.categoryValue.toLocaleString('pt-BR')}
+                  <small>
+                    {ranking === 'rating'
+                      ? 'avaliação ponderada'
+                      : ranking === 'general' || ranking === 'prestige'
+                        ? 'pontos'
+                        : 'registros'}
+                  </small>
+                </strong>
+                <span className="hall-profile-link">
+                  Visitar perfil <ArrowUpRight size={13} />
+                </span>
+              </div>
             </button>
           ))}
         </div>

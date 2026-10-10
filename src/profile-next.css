@@ -110,8 +110,8 @@ dialog:has(.profile-sheet-modal) {
   pointer-events: auto;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 64px;
+  width: 52px;
+  height: 76px;
   min-height: 0;
   padding: 0;
   border: 0;
@@ -134,25 +134,25 @@ dialog:has(.profile-sheet-modal) {
   right: auto;
 }
 .profile-next-arrow > svg {
-  width: 34px;
-  height: 48px;
+  width: 42px;
+  height: 60px;
   overflow: visible;
   filter: drop-shadow(0 2px 3px #0009);
   transition: filter 180ms ease;
 }
 .profile-arrow-glow {
-  opacity: 0.08;
-  filter: blur(3px);
-  animation: profile-arrow-breathe 3.6s ease-in-out infinite;
+  opacity: 0.18;
+  filter: blur(4px);
+  animation: profile-arrow-breathe 2.8s ease-in-out infinite;
 }
 @keyframes profile-arrow-breathe {
   0%,
   70%,
   100% {
-    opacity: 0.06;
+    opacity: 0.16;
   }
   35% {
-    opacity: 0.32;
+    opacity: 0.72;
   }
 }
 :root .visiting .profile-next-arrow:hover {
@@ -163,7 +163,7 @@ dialog:has(.profile-sheet-modal) {
 }
 .profile-next-arrow:is(:hover, :focus-visible) .profile-arrow-glow {
   animation-play-state: paused;
-  opacity: 0.4;
+  opacity: 0.85;
 }
 @media (prefers-reduced-motion: reduce) {
   .profile-arrow-glow {
@@ -478,4 +478,15 @@ dialog:has(.profile-sheet-modal) {
   :root .profile-rating-stars > button {
     width: 25px;
   }
+}
+
+:root
+  .app-shell[data-page='profiles']
+  .profiles-page:not(.visiting)
+  .profile-directory
+  > article
+  > button {
+  border-top: 0;
+  margin-top: 12px;
+  padding-top: 10px;
 }

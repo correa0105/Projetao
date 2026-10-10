@@ -168,18 +168,22 @@ export function VttSheet({
                 </div>
                 <div>
                   <h2>{c!.name}</h2>
-                  <p>
-                    {c!.race} · {c!.class} · Nível {c!.level}
-                  </p>
+                  <div className="vtt-sheet-character-traits">
+                    <span>{c!.race}</span>
+                    <span>{c!.class}</span>
+                    <span className="vtt-sheet-level">Nível {c!.level}</span>
+                  </div>
+                  <dl className="vtt-sheet-character-origins">
+                    <div>
+                      <dt>Antecedente</dt>
+                      <dd>{c!.background || 'Não informado'}</dd>
+                    </div>
+                    <div>
+                      <dt>Alinhamento</dt>
+                      <dd>{choices?.alignment || 'Não informado'}</dd>
+                    </div>
+                  </dl>
                 </div>
-              </div>
-              <div>
-                <b>{c!.background}</b>
-                <span>{choices?.alignment || 'Alinhamento não informado'}</span>
-                <small>
-                  Personagem importado ·{' '}
-                  {data.is_gm ? 'Controles do mestre' : 'Recursos restaurados pelo mestre'}
-                </small>
               </div>
             </header>
             {tab === 'Essencial' && (

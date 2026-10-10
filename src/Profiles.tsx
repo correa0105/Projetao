@@ -394,11 +394,6 @@ export function Profiles({ user }: { user: User }) {
               <article key={p.id}>
                 {avatar(p.avatar, p.name)}
                 <h2>{p.name}</h2>
-                <p>{p.tagline || 'Uma história ainda sendo escrita.'}</p>
-                <span>
-                  {p.characters} personagens
-                  {p.rating_count > 0 ? ` · ★ ${p.rating.toFixed(1)} (${p.rating_count})` : ''}
-                </span>
                 <button onClick={() => visitProfile(p.id)}>
                   Visitar perfil <ArrowRight size={14} />
                 </button>

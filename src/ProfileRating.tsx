@@ -79,7 +79,7 @@ export function ProfileRating({
         }
       }}
     >
-      <span className="profile-rating-callout">Avalie</span>
+      <span className="profile-rating-callout">Avalie o Perfil</span>
       <div
         className="profile-rating-stars"
         role="radiogroup"

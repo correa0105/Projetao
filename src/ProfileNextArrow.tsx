@@ -50,7 +50,7 @@ export function ProfileNextArrow<T extends string>({
               d="m10 9 19 19-19 19"
               fill="none"
               stroke="#dfbc7c"
-              strokeWidth="7"
+              strokeWidth="9"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -58,7 +58,7 @@ export function ProfileNextArrow<T extends string>({
               d="m10 9 19 19-19 19"
               fill="none"
               stroke={'url(#' + paint + '-metal)'}
-              strokeWidth="2.6"
+              strokeWidth="4"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -97,7 +97,7 @@ export function ProfileNextArrow<T extends string>({
             d="m10 9 19 19-19 19"
             fill="none"
             stroke="#dfbc7c"
-            strokeWidth="7"
+            strokeWidth="9"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -105,7 +105,7 @@ export function ProfileNextArrow<T extends string>({
             d="m10 9 19 19-19 19"
             fill="none"
             stroke={'url(#' + paint + '-metal)'}
-            strokeWidth="2.6"
+            strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
           />

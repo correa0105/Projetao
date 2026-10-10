@@ -1,16 +1,90 @@
-.hall-champion > .hall-character-art {
-  display: grid;
-  place-items: end center;
-  flex-shrink: 0;
+:root .app-shell .hall-of-fame .hall-podium > .hall-champion {
+  --medal-rgb: 187, 128, 88;
+  --medal-ink: #dfb396;
+  --podium-step: 0px;
+  padding: 0;
+  gap: 0;
+  border: 1px solid rgba(var(--medal-rgb), 0.48);
+  border-radius: 10px;
+  background: linear-gradient(145deg, #202320, #111815);
+  box-shadow: 0 14px 30px #0003;
+  text-align: center;
+}
+:root .app-shell .hall-of-fame .hall-champion.place-1 {
+  --medal-rgb: 210, 175, 98;
+  --medal-ink: #ecd29b;
+  --podium-step: 40px;
+  box-shadow:
+    0 14px 36px #0004,
+    0 0 24px rgba(var(--medal-rgb), 0.09);
+}
+:root .app-shell .hall-of-fame .hall-champion.place-2 {
+  --medal-rgb: 171, 190, 205;
+  --medal-ink: #dce6ec;
+  --podium-step: 20px;
+}
+:root .app-shell .hall-of-fame .hall-champion:is(:hover, :focus-visible, .focused) {
+  border-color: rgba(var(--medal-rgb), 0.85);
+  box-shadow:
+    0 14px 30px #0004,
+    0 0 0 1px rgba(var(--medal-rgb), 0.25);
+}
+.hall-podium-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
   width: 100%;
-  max-width: 190px;
-  height: clamp(180px, 17vw, 250px);
+  height: calc(clamp(230px, 20vw, 300px) + var(--podium-step));
+  padding: 20px 18px 24px;
+  gap: 14px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 38%, rgba(var(--medal-rgb), 0.12), transparent 72%);
+}
+.hall-podium-stage::after {
+  content: '';
+  position: absolute;
+  left: 23%;
+  right: 23%;
+  bottom: 14px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0007;
+  filter: blur(4px);
+}
+.hall-podium-stage > .hall-place {
+  display: grid;
+  grid-template-columns: auto auto;
+  place-items: center;
+  gap: 4px 8px;
+  flex: none;
+  color: var(--medal-ink);
+  margin: 0;
+  font-size: 14px;
+}
+.hall-medal-name {
+  grid-column: 1/-1;
+  font: 600 9px/1.3 var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.hall-podium-stage > .hall-character-art {
+  position: relative;
+  display: block;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 210px;
   background: none;
   border: 0;
   border-radius: 0;
-  margin: 4px 0 0;
+  margin: 0;
+  z-index: 1;
 }
 .hall-character-art > img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -18,8 +92,91 @@
   object-position: center bottom;
   filter: drop-shadow(0 7px 9px #0005);
 }
+.hall-champion-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
+  width: 100%;
+  min-height: 222px;
+  padding: 22px 18px 18px;
+  gap: 7px;
+  border-top: 1px solid rgba(var(--medal-rgb), 0.5);
+  background: linear-gradient(115deg, rgba(var(--medal-rgb), 0.14), transparent 60%), #141915;
+}
+.hall-champion-details::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 8px;
+  right: 8px;
+  height: 5px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--medal-rgb), 0.24),
+    rgba(var(--medal-rgb), 0.65),
+    rgba(var(--medal-rgb), 0.24)
+  );
+}
+.hall-champion .hall-champion-details > h2 {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 2.6em;
+  margin: 0;
+  font: 500 21px/1.3 var(--serif);
+  color: #eee4d2;
+  overflow-wrap: anywhere;
+}
+.hall-champion-class {
+  font: 12px/1.4 var(--sans);
+  color: #c6c3b8;
+}
+.hall-champion-owner {
+  font: 11px/1.4 var(--sans);
+  color: #aaa99e;
+}
+.hall-champion-details > .hall-champion-value {
+  font: 500 31px/1.1 var(--serif);
+  color: var(--medal-ink);
+  margin: 11px 0 6px;
+}
+.hall-champion-details > .hall-profile-link {
+  justify-content: center;
+  gap: 6px;
+  margin-top: auto;
+  color: var(--medal-ink);
+}
 @media (max-width: 600px) {
-  .hall-champion > .hall-character-art {
-    height: clamp(115px, 42vw, 170px);
+  .hall-podium-stage {
+    height: calc(clamp(180px, 48vw, 220px) + var(--podium-step));
+    padding: 14px 7px 18px;
+    gap: 9px;
+  }
+  .hall-place > svg {
+    width: 20px;
+    height: 20px;
+  }
+  .hall-champion-details {
+    min-height: 195px;
+    padding: 17px 7px 14px;
+    gap: 6px;
+  }
+  .hall-champion .hall-champion-details > h2 {
+    font-size: clamp(12px, 3.6vw, 15px);
+  }
+  .hall-champion-class,
+  .hall-champion-owner {
+    font-size: 9px;
+  }
+  .hall-champion-details > .hall-champion-value {
+    font-size: 24px;
+  }
+  .hall-champion-details > .hall-profile-link {
+    flex-wrap: wrap;
+    font-size: 8px;
+    letter-spacing: 0.05em;
   }
 }

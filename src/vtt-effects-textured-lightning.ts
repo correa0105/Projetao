@@ -84,16 +84,20 @@ export function texturedDischarge(
   channel(points, width * 1.2, color, 0.42, 401);
   channel(points, width * 0.62, tint(color, 0.72), 0.85, 451);
   channel(points, width * 0.25, '#f4fbff', 0.92, 501);
-  for (let k = 9; k < 32; k += 7) {
+  const forks = 1 + Math.floor(random(seed + 701) * 4);
+  for (let fork = 0; fork < forks; fork++) {
+    const k = 5 + Math.floor(random(seed + fork * 71 + 702) * 29);
     const p = points[k],
       side = random(seed + k + 70) > 0.5 ? 1 : -1;
+    const reach = 0.08 + random(seed + k + 703) * 0.24;
+    const spread = 0.07 + random(seed + k + 704) * 0.25;
     const branch = Array.from({ length: 9 }, (_, j) => {
       const u = j / 8;
       const jitter =
         (random(seed + k * 19 + j + 601) - 0.5) * length * 0.045 * Math.sin(u * Math.PI);
       return {
-        x: p.x + dx * 0.19 * u + nx * (length * 0.23 * side * u + jitter),
-        y: p.y + dy * 0.19 * u + ny * (length * 0.23 * side * u + jitter),
+        x: p.x + dx * reach * u + nx * (length * spread * side * u + jitter),
+        y: p.y + dy * reach * u + ny * (length * spread * side * u + jitter),
       };
     });
     channel(branch, width * 0.45, color, 0.5, 651 + k);
