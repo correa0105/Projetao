@@ -2147,6 +2147,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   }
   function openSheet(t = token) {
     if (spectator) return;
+    tokenClick.current = null;
+    setContextMenu(null);
     if (t && (t.characterId || t.sheet)) setSheetId(t.id);
     else {
       setTab('sheet');
@@ -5074,7 +5076,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           upload={uploadAsset}
         />
       )}
-      {contextMenu && token && !preview && !spectator && (
+      {contextMenu && token && !sheetId && !preview && !spectator && (
         <VttTokenMenu key={token.id} ref={contextRef} token={token} board={canvas} camera={camera}
           layoutKey={bounds.width + ':' + bounds.height + ':' + panelOpen}
           gm={gm} busy={busy} speed={tokenProfile(token).speed || '30 ft'}

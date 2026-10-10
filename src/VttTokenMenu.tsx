@@ -6,17 +6,7 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react';
-import {
-  BookOpen,
-  ChevronUp,
-  Footprints,
-  Heart,
-  Minus,
-  Settings2,
-  Shield,
-  Tags,
-  X,
-} from 'lucide-react';
+import { BookOpen, Footprints, Heart, Settings2, Shield, Tags, X } from 'lucide-react';
 import type { VttToken } from '../shared/vtt';
 import type { VttCamera } from './vtt-canvas';
 import './vtt-token-menu.css';
@@ -59,8 +49,7 @@ export const VttTokenMenu = forwardRef<
   },
   ref,
 ) {
-  const [pane, setPane] = useState<Pane | null>(null),
-    [minimized, setMinimized] = useState(false);
+  const [pane, setPane] = useState<Pane | null>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
   const [position, setPosition] = useState({
     x: 80,
@@ -141,10 +130,6 @@ export const VttTokenMenu = forwardRef<
     trigger.current = button;
     setPane((p) => (p === next ? null : next));
   }
-  function collapse() {
-    setPane(null);
-    setMinimized(true);
-  }
   function dismissPane() {
     setPane(null);
     trigger.current?.focus();
@@ -163,7 +148,6 @@ export const VttTokenMenu = forwardRef<
       ref={ref}
       className="vtt-token-hud"
       data-token-id={token.id}
-      data-minimized={minimized}
       onKeyDownCapture={(e) => {
         if (e.key === 'Escape') {
           e.preventDefault();
@@ -173,98 +157,76 @@ export const VttTokenMenu = forwardRef<
         }
       }}
     >
-      {!minimized && (
-        <>
-          <div
-            className="vtt-token-bubbles"
-            role="group"
-            aria-label="Valores do token"
-            style={{ left: position.x, top: position.above }}
+      <div
+        className="vtt-token-bubbles"
+        role="group"
+        aria-label="Valores do token"
+        style={{ left: position.x, top: position.above }}
+      >
+        <button
+          className="vtt-token-bubble hp"
+          title={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
+          aria-label={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
+          aria-expanded={pane === 'hp'}
+          onClick={(e) => toggle('hp', e.currentTarget)}
+        >
+          <strong>{token.hp}</strong>
+          <span>PV</span>
+        </button>
+        <button
+          className="vtt-token-bubble ac"
+          title={'Classe de armadura: ' + token.ac}
+          aria-label={'Classe de armadura: ' + token.ac}
+          aria-expanded={pane === 'ac'}
+          onClick={(e) => toggle('ac', e.currentTarget)}
+        >
+          <strong>{token.ac}</strong>
+          <span>CA</span>
+        </button>
+        <button
+          className="vtt-token-bubble speed"
+          title={'Deslocamento: ' + speed}
+          aria-label={'Deslocamento: ' + speed}
+          aria-expanded={pane === 'speed'}
+          onClick={(e) => toggle('speed', e.currentTarget)}
+        >
+          <strong>{speedValue}</strong>
+          <span>ft</span>
+        </button>
+      </div>
+      <div
+        className="vtt-token-actions"
+        role="group"
+        aria-label="Ações do token"
+        style={{ left: position.x, top: position.below }}
+      >
+        <button
+          title="Configurações do token"
+          aria-label="Configurações do token"
+          aria-expanded={pane === 'settings'}
+          onClick={(e) => toggle('settings', e.currentTarget)}
+        >
+          <Settings2 size={21} />
+        </button>
+        {token.layer === 'tokens' && (
+          <button
+            title="Condições"
+            aria-label="Condições do token"
+            aria-expanded={pane === 'conditions'}
+            onClick={(e) => toggle('conditions', e.currentTarget)}
           >
-            <button
-              className="vtt-token-bubble hp"
-              title={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
-              aria-label={'Pontos de vida: ' + token.hp + '/' + token.maxHp}
-              aria-expanded={pane === 'hp'}
-              onClick={(e) => toggle('hp', e.currentTarget)}
-            >
-              <strong>{token.hp}</strong>
-              <span>PV</span>
-            </button>
-            <button
-              className="vtt-token-bubble ac"
-              title={'Classe de armadura: ' + token.ac}
-              aria-label={'Classe de armadura: ' + token.ac}
-              aria-expanded={pane === 'ac'}
-              onClick={(e) => toggle('ac', e.currentTarget)}
-            >
-              <strong>{token.ac}</strong>
-              <span>CA</span>
-            </button>
-            <button
-              className="vtt-token-bubble speed"
-              title={'Deslocamento: ' + speed}
-              aria-label={'Deslocamento: ' + speed}
-              aria-expanded={pane === 'speed'}
-              onClick={(e) => toggle('speed', e.currentTarget)}
-            >
-              <strong>{speedValue}</strong>
-              <span>ft</span>
-            </button>
-          </div>
-          <div
-            className="vtt-token-actions"
-            role="group"
-            aria-label="Ações do token"
-            style={{ left: position.x, top: position.below }}
-          >
-            <button
-              title="Configurações do token"
-              aria-label="Configurações do token"
-              aria-expanded={pane === 'settings'}
-              onClick={(e) => toggle('settings', e.currentTarget)}
-            >
-              <Settings2 size={21} />
-            </button>
-            {token.layer === 'tokens' && (
-              <button
-                title="Condições"
-                aria-label="Condições do token"
-                aria-expanded={pane === 'conditions'}
-                onClick={(e) => toggle('conditions', e.currentTarget)}
-              >
-                <Tags size={21} />
-                {token.conditions.length > 0 && <b>{token.conditions.length}</b>}
-              </button>
-            )}
-            <button title="Abrir ficha" aria-label="Abrir ficha" onClick={openSheet}>
-              <BookOpen size={20} />
-            </button>
-            <button
-              title="Minimizar menu do token"
-              aria-label="Minimizar menu do token"
-              onClick={collapse}
-            >
-              <Minus size={20} />
-            </button>
-            <button title="Fechar menu do token" aria-label="Fechar menu do token" onClick={close}>
-              <X size={18} />
-            </button>
-          </div>
-        </>
-      )}
-      {minimized && (
-        <div className="vtt-token-minimized" style={{ left: position.x, top: position.below }}>
-          <button aria-label={'Mostrar menu de ' + token.name} onClick={() => setMinimized(false)}>
-            <ChevronUp size={16} />
-            <span>{token.name}</span>
+            <Tags size={21} />
+            {token.conditions.length > 0 && <b>{token.conditions.length}</b>}
           </button>
-          <button aria-label="Fechar menu do token" onClick={close}>
-            <X size={15} />
-          </button>
-        </div>
-      )}
-      {pane && !minimized && (
+        )}
+        <button title="Abrir ficha" aria-label="Abrir ficha" onClick={openSheet}>
+          <BookOpen size={20} />
+        </button>
+        <button title="Fechar menu do token" aria-label="Fechar menu do token" onClick={close}>
+          <X size={18} />
+        </button>
+      </div>
+      {pane && (
         <div
           className="vtt-context-menu vtt-token-popover"
           role="dialog"

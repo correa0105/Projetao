@@ -314,6 +314,31 @@ export function PetShop({
             <h2>Amizades para a estrada.</h2>
             <p>Uma casa acolhedora. Um novo amigo à sua espera.</p>
           </header>
+          <label className="pet-shop-selector">
+            Escolha seu companheiro
+            <select
+              aria-label="Mascote à venda"
+              value={selected.id}
+              disabled={busy}
+              onChange={(event) => {
+                const pet = pets.find((pet) => pet.id === event.target.value)!;
+                setSelected(pet);
+                setSoundTrigger((value) => value + 1);
+                setAppearance('original');
+                setName('');
+                key.current = crypto.randomUUID();
+                setNotice('');
+                setError('');
+                write(pet.sign);
+              }}
+            >
+              {pets.map((pet) => (
+                <option key={pet.id} value={pet.id}>
+                  {pet.name} · {money(pet.price_cp)} PO
+                </option>
+              ))}
+            </select>
+          </label>
           <div className="pet-shop-details">
             <h3>{selected.name}</h3>
             <div className="pet-breed-heading">
@@ -503,47 +528,7 @@ export function PetShop({
           </aside>
         )}
       </div>
-      <section className="pet-shop-catalog" aria-label="Mascotes à venda">
-        <header>
-          <div>
-            <span className="eyebrow">PEQUENOS COMPANHEIROS</span>
-            <h2>Quem segue com você?</h2>
-          </div>
-          <p>Escolha um mascote para conhecê-lo no jardim.</p>
-        </header>
-        <div className="pet-shop-choices">
-          {pets.map((pet) => (
-            <button
-              key={pet.id}
-              aria-pressed={selected.id === pet.id}
-              disabled={busy}
-              onClick={() => {
-                setSelected(pet);
-                setSoundTrigger((value) => value + 1);
-                setAppearance('original');
-                setName('');
-                key.current = crypto.randomUUID();
-                setNotice('');
-                setError('');
-                write(pet.sign);
-                garden.current?.scrollIntoView({
-                  behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-                    ? 'instant'
-                    : 'smooth',
-                  block: 'start',
-                });
-              }}
-            >
-              <span className="pet-choice-art">
-                <PetArt pet={pet} />
-              </span>
-              <strong>{pet.name}</strong>
-              <small>{money(pet.price_cp)} PO</small>
-              {selected.id === pet.id && <Check className="pet-choice-check" size={15} />}
-            </button>
-          ))}
-        </div>
-      </section>
+
       <a
         className="pet-sound-credits"
         href="/audio/pets/CREDITS.md"

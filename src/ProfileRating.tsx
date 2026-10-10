@@ -79,6 +79,7 @@ export function ProfileRating({
         }
       }}
     >
+      <span className="profile-rating-callout">Avalie</span>
       <div
         className="profile-rating-stars"
         role="radiogroup"
@@ -123,9 +124,11 @@ export function ProfileRating({
           </button>
         ))}
       </div>
-      <span className="profile-rating-average" title="Avaliação geral do perfil">
-        {count ? average.toFixed(1) + ' · ' + count : 'Sem votos'}
-      </span>
+      {count > 0 && (
+        <span className="profile-rating-average" title="Avaliação geral do perfil">
+          {average.toFixed(1) + ' · ' + count}
+        </span>
+      )}
       <span className="profile-panel-announcement" role="status">
         {message}
       </span>

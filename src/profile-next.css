@@ -7,6 +7,50 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+:root .visiting .public-camp-character:not([data-info-open='true']) .public-character-info {
+  visibility: hidden;
+  pointer-events: none;
+}
+.visiting .profile-figure-name {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font:
+    13px 'Cinzel',
+    serif;
+  white-space: nowrap;
+  color: #e8d7b2;
+  text-shadow: 0 2px 5px #000;
+  opacity: 0;
+  pointer-events: none;
+}
+.visiting .public-character-figure:is(:hover, :focus-visible) .profile-figure-name {
+  opacity: 1;
+}
+.visiting .public-camp-character[data-info-open='true'] .profile-figure-name {
+  visibility: hidden;
+}
+.visiting .public-camp-mount > .camp-mount-name,
+.visiting .public-camp-pet > span:not(.pet-art) {
+  visibility: hidden;
+}
+.visiting .public-camp-mount:is(:hover, :focus-visible, [data-name-open='true']) > .camp-mount-name,
+.visiting
+  .public-camp-pet:is(:hover, :focus-visible, [data-name-open='true'])
+  > span:not(.pet-art) {
+  visibility: visible;
+}
+:root .visiting .public-camp-pet {
+  pointer-events: auto;
+  cursor: pointer;
+}
+.visiting .public-cabinet-stage .antique-portrait-plaque {
+  visibility: hidden;
+}
+.visiting .public-cabinet-stage .antique-portrait:is(:hover, :focus) .antique-portrait-plaque {
+  visibility: visible;
+}
 :root .visiting .profile-panels-strip {
   width: 400%;
 }
@@ -36,17 +80,20 @@ dialog:has(.profile-sheet-modal) {
 }
 :root .visiting .profile-next-nav {
   position: fixed;
-  top: 50dvh;
-  right: clamp(10px, 2.5vw, 48px);
-  transform: translateY(-50%);
+  inset: 0;
   z-index: 18;
+  pointer-events: none;
 }
 :root .visiting .profile-next-arrow {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: clamp(10px, 2.5vw, 48px);
+  transform: translateY(-50%);
+  pointer-events: auto;
   display: grid;
   place-items: center;
-  width: clamp(48px, 4vw, 72px);
-  height: clamp(82px, 7vw, 118px);
+  width: 44px;
+  height: 64px;
   min-height: 0;
   padding: 0;
   border: 0;
@@ -56,17 +103,54 @@ dialog:has(.profile-sheet-modal) {
   cursor: pointer;
   transition: transform 180ms ease;
 }
+:root .visiting .profile-previous-arrow {
+  left: clamp(10px, 2.5vw, 48px);
+  right: auto;
+  --arrow-nudge: -2px;
+}
+.profile-previous-arrow > svg {
+  transform: scaleX(-1);
+}
+.profile-previous-arrow .profile-arrow-caption {
+  left: calc(100% + 8px);
+  right: auto;
+}
 .profile-next-arrow > svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 2px 1px #000) drop-shadow(0 0 7px #000a);
+  width: 34px;
+  height: 48px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 3px #0009);
   transition: filter 180ms ease;
 }
+.profile-arrow-glow {
+  opacity: 0.08;
+  filter: blur(3px);
+  animation: profile-arrow-breathe 3.6s ease-in-out infinite;
+}
+@keyframes profile-arrow-breathe {
+  0%,
+  70%,
+  100% {
+    opacity: 0.06;
+  }
+  35% {
+    opacity: 0.32;
+  }
+}
 :root .visiting .profile-next-arrow:hover {
-  transform: translateX(4px);
+  transform: translateY(-50%) translateX(var(--arrow-nudge, 2px));
 }
 .profile-next-arrow:is(:hover, :focus-visible) > svg {
-  filter: drop-shadow(0 2px 1px #000) drop-shadow(0 0 7px #000a) brightness(1.23);
+  filter: drop-shadow(0 2px 3px #0009) brightness(1.18);
+}
+.profile-next-arrow:is(:hover, :focus-visible) .profile-arrow-glow {
+  animation-play-state: paused;
+  opacity: 0.4;
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-arrow-glow {
+    animation: none;
+  }
 }
 :root .visiting .profile-next-arrow:focus-visible {
   outline: 2px solid #e5c58d;
@@ -106,10 +190,12 @@ dialog:has(.profile-sheet-modal) {
   margin: 0;
   background:
     linear-gradient(#080b0e45, transparent 30%, #080b0e25),
-    url('/achievement-house-v3.png') center / cover no-repeat;
+    url('/achievement-house-v3.png') center top / cover no-repeat;
 }
 :root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage .fantasy-cabinet {
-  width: min(48%, 68dvh);
+  width: var(--cabinet-scene-width, 48%);
+  top: var(--cabinet-floor-y);
+  transform: translate(-50%, -95%);
 }
 :root .app-shell[data-page='profiles'] .visiting .public-earned-achievements {
   width: calc(100% - 2 * var(--page-header-edge));
@@ -196,11 +282,12 @@ dialog:has(.profile-sheet-modal) {
   }
 }
 @media (max-width: 600px) {
-  :root .visiting .profile-next-nav {
+  :root .visiting .profile-next-arrow {
     right: 10px;
   }
-  :root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage .fantasy-cabinet {
-    width: 56%;
+  :root .visiting .profile-previous-arrow {
+    left: 10px;
+    right: auto;
   }
   .visiting .public-cabinet-stage .portrait-frame-wall {
     width: clamp(38px, 7vw, 60px);
@@ -228,9 +315,37 @@ dialog:has(.profile-sheet-modal) {
   left: var(--page-header-edge, 24px);
   z-index: 18;
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   color: #e0c590;
+}
+.profile-rating-callout {
+  padding-left: 3px;
+  font: 500 11px var(--sans);
+  letter-spacing: 0.08em;
+  color: #ead3a6;
+  animation: profile-rating-breathe 3.6s ease-in-out infinite;
+}
+@keyframes profile-rating-breathe {
+  0%,
+  70%,
+  100% {
+    opacity: 0.7;
+    text-shadow: 0 0 0 transparent;
+  }
+  35% {
+    opacity: 1;
+    text-shadow: 0 0 8px #dfbc7c88;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-rating-callout {
+    animation: none;
+  }
+}
+:root .profile-rating-stars > button:not(:disabled):hover {
+  color: #f3dfab;
 }
 .profile-rating-stars {
   display: flex;

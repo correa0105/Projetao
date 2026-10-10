@@ -103,6 +103,32 @@
   outline: 1px solid #c1a574;
   outline-offset: 2px;
 }
+.pet-shop-selector {
+  margin-top: 16px;
+}
+.pet-shop-selector select {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  color: #e6dac1;
+  background: #10170f;
+  border: 1px solid #a68a4f60;
+  border-radius: 4px;
+}
+.pet-shop-selector select:focus-visible {
+  outline: 2px solid #c1a574;
+  outline-offset: 2px;
+}
+@media (min-width: 761px) {
+  .pet-shop-garden {
+    min-height: 100dvh;
+  }
+  .pet-shop-purchase {
+    max-height: calc(100dvh - 136px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
 .pet-shop-price {
   display: flex;
   align-items: center;

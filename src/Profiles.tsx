@@ -121,6 +121,8 @@ export function Profiles({ user }: { user: User }) {
     [details, setDetails] = useState<PublicDetails | null>(null),
     [panel, setPanel] = useState<Panel>('characters'),
     [sheetCharacterId, setSheetCharacterId] = useState<string | null>(null),
+    [campInfoId, setCampInfoId] = useState<string | null>(null),
+    [companionName, setCompanionName] = useState<'mount' | 'pet' | null>(null),
     [error, setError] = useState('');
   const [items, setItems] = useState<DirectoryEntry[]>([]),
     [query, setQuery] = useState(''),
@@ -474,24 +476,11 @@ export function Profiles({ user }: { user: User }) {
                 >
                   <CampBackdrop />
                   <div className="public-camp-heading">
-                    <div className="public-camp-name" data-title-position={current?.title_position}>
+                    <div className="public-camp-name">
                       <h2>Acampamento</h2>
-                      {current?.displayed_title && (
-                        <div className="public-character-title">
-                          <Crown size={14} />
-                          {current.displayed_title}
-                        </div>
-                      )}
                     </div>
                   </div>
                   <div className="page-header-spacer" aria-hidden="true" />
-                  <div className="camp-capacity-row public-camp-caption">
-                    {current && (
-                      <p>
-                        {rankName(current.level)} · {current.race} · {current.class}
-                      </p>
-                    )}
-                  </div>
                   <div className="camp-stage public-camp-stage">
                     {companion && (
                       <button
@@ -504,10 +493,10 @@ export function Profiles({ user }: { user: User }) {
                           } as CSSProperties
                         }
                         onClick={() => {
-                          mountHidden.current = true;
-                          setCompanion(null);
+                          setCompanionName((value) => (value === 'mount' ? null : 'mount'));
                         }}
-                        title="Ocultar montaria nesta visita"
+                        aria-label={companion.name}
+                        data-name-open={companionName === 'mount'}
                       >
                         <img src={ownedMountImage(companion)} alt={companion.name} />
                         <span className="camp-mount-name">{companion.name}</span>
@@ -518,6 +507,7 @@ export function Profiles({ user }: { user: User }) {
                         <article
                           key={c.id}
                           className={`camp-character public-camp-character ${selected === c.id ? 'is-selected' : ''}`}
+                          data-info-open={campInfoId === c.id}
                           style={
                             {
                               '--stature-scale': characterHeightScale(c.race, c.species_size),
@@ -528,15 +518,24 @@ export function Profiles({ user }: { user: User }) {
                             className={`camp-figure public-character-figure ${selected === c.id ? 'selected' : ''}`}
                             aria-label={`Selecionar ${c.name} no perfil`}
                             aria-pressed={selected === c.id}
-                            onClick={() => setSelected(c.id)}
+                            aria-expanded={campInfoId === c.id}
+                            onClick={() => {
+                              setSelected(c.id);
+                              setCampInfoId((value) => (value === c.id ? null : c.id));
+                            }}
                           >
                             {c.portrait_revision > 0 ? (
                               <img src={c.portrait} alt={c.name} />
                             ) : (
                               <CharacterSilhouette />
                             )}
+                            <span className="profile-figure-name">{c.name}</span>
                           </button>
-                          <div className="camp-character-info public-character-info">
+                          <div
+                            className="camp-character-info public-character-info"
+                            aria-hidden={campInfoId !== c.id}
+                            inert={campInfoId !== c.id}
+                          >
                             <span className="eyebrow">
                               Nível {c.level} {selected === c.id ? '· Selecionado' : ''}
                             </span>
@@ -585,6 +584,21 @@ export function Profiles({ user }: { user: User }) {
                       <div
                         className="camp-pet public-camp-pet"
                         ref={petHost}
+                        data-pet-species={displayPet.pet_id}
+                        data-name-open={companionName === 'pet'}
+                        tabIndex={0}
+                        role="button"
+                        aria-label={displayPet.name}
+                        aria-pressed={companionName === 'pet'}
+                        onClick={() =>
+                          setCompanionName((value) => (value === 'pet' ? null : 'pet'))
+                        }
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            setCompanionName((value) => (value === 'pet' ? null : 'pet'));
+                          }
+                        }}
                         style={
                           {
                             '--companion-width': `${petArtwork(species.id, displayPet.appearance).width}px`,
@@ -718,7 +732,10 @@ export function Profiles({ user }: { user: User }) {
                     <select
                       aria-label="Personagem do perfil visitado"
                       value={selected}
-                      onChange={(e) => setSelected(e.target.value)}
+                      onChange={(e) => {
+                        setSelected(e.target.value);
+                        setCampInfoId(null);
+                      }}
                     >
                       {profile.characters.map((c) => (
                         <option key={c.id} value={c.id}>
@@ -807,18 +824,23 @@ export function Profiles({ user }: { user: User }) {
               </div>
             </Modal>
           )}
-          <ProfileRating
-            key={profile.id}
-            average={profile.rating.average}
-            count={profile.rating.count}
-            own={profile.own_review}
-            enabled={!profile.is_owner && !profile.blocked}
-            save={async (score, comment) => {
-              await post('/profiles/' + encodeURIComponent(target) + '/review', { score, comment });
-              await loadProfile();
-              window.dispatchEvent(new Event('profile-rating-updated'));
-            }}
-          />
+          {!profile.is_owner && (
+            <ProfileRating
+              key={profile.id}
+              average={profile.rating.average}
+              count={profile.rating.count}
+              own={profile.own_review}
+              enabled={!profile.is_owner && !profile.blocked}
+              save={async (score, comment) => {
+                await post('/profiles/' + encodeURIComponent(target) + '/review', {
+                  score,
+                  comment,
+                });
+                await loadProfile();
+                window.dispatchEvent(new Event('profile-rating-updated'));
+              }}
+            />
+          )}
         </>
       )}
       {socialOpen && (

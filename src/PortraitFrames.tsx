@@ -49,10 +49,19 @@ export function PortraitCabinet({
       const cover =
         sceneAligned && getComputedStyle(stage).getPropertyValue('--room-cover').trim() === '1';
       const imageWidth = cover ? Math.max(width, stage.clientHeight * 1.5) : width;
-      const imageTop = cover ? (stage.clientHeight - imageWidth / 1.5) / 2 : backgroundTop;
+      const imageTop = cover ? 0 : backgroundTop;
       stage.style.setProperty('--cabinet-stage-offset', offset + 'px');
-      if (sceneAligned)
-        stage.style.setProperty('--cabinet-floor-y', imageTop + imageWidth * 0.425 + 'px');
+      if (sceneAligned) {
+        stage.style.setProperty(
+          '--cabinet-floor-y',
+          imageTop + imageWidth * (cover ? 0.395 : 0.425) + 'px',
+        );
+        if (cover)
+          stage.style.setProperty(
+            '--cabinet-scene-width',
+            Math.min(imageWidth * 0.48, width * 0.68) + 'px',
+          );
+      }
       layout.style.setProperty(
         '--portrait-wall-top',
         (cover ? Math.max(130, imageTop + imageWidth * 0.14) : width * 0.14 + backgroundTop) -

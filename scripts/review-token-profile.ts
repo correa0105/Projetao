@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import { chromium, expect, type BrowserContext, type Page } from '@playwright/test';
 import { newToken } from '../shared/vtt';
 import { vttProtocolVersion } from '../shared/vtt-protocol';
+import { soundCatalog } from '../shared/vtt-sounds';
 import { withdrawnWeaponModels } from '../shared/shop-availability';
 if (!/^\/alvorada_test_[a-f0-9]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Banco UUID descartável obrigatório.');
@@ -60,7 +61,12 @@ async function settle(p: Page) {
     await Promise.all([...document.images].map((image) => image.decode().catch(() => {})));
   });
 }
-async function selectToken(p: Page, id: string, button: 'left' | 'right' = 'left') {
+async function selectToken(
+  p: Page,
+  id: string,
+  button: 'left' | 'right' = 'left',
+  clickCount: 1 | 2 = 1,
+) {
   const board = p.getByLabel('Tabuleiro da mesa', { exact: true });
   await expect(board).toBeVisible();
   if ((p.viewportSize()?.width || 1440) < 800 && (await p.locator('.vtt-panel').count()))
@@ -74,12 +80,14 @@ async function selectToken(p: Page, id: string, button: 'left' | 'right' = 'left
   const saved = (await api(gm, root)).data.document.scenes[0].tokens.find((t: any) => t.id === id);
   await board.click({
     button,
+    clickCount,
     position: {
       x: box.width / 2 + (saved.x - camera.x) * camera.zoom,
       y: box.height / 2 + (saved.y - camera.y) * camera.zoom,
     },
   });
-  await expect(p.locator('.vtt-token-hud')).toHaveAttribute('data-token-id', id);
+  if (clickCount === 1)
+    await expect(p.locator('.vtt-token-hud')).toHaveAttribute('data-token-id', id);
   return p.locator('.vtt-token-hud');
 }
 let root = '';
@@ -197,8 +205,24 @@ try {
   for (const model of withdrawnWeaponModels)
     assert(!(await modelSelect.locator('option[value="' + model + '"]').count()));
   assert.equal(await modelSelect.locator('option[value="hunting-rifle"]').count(), 1);
+  const dog = await api(gm, '/pets/purchase', 'POST', {
+    character_id: a.id,
+    pet_id: 'dog',
+    appearance: 'original',
+    name: 'Cão do acampamento',
+    idempotency_key: randomUUID(),
+  });
+  assert(dog.status < 300, 'Dog fixture purchase failed');
   await page.goto(origin + '/#profiles?user=' + owner.id + '&character=' + a.id);
   await expect(page.locator('.visiting')).toBeVisible();
+  await expect(page.locator('.profile-rating-callout')).toHaveText('Avalie');
+  await expect(page.getByText('Sem votos', { exact: true })).toHaveCount(0);
+  const profileDog = page.locator('.public-camp-pet');
+  await expect(profileDog).toBeVisible();
+  await expect(profileDog.locator('> span:not(.pet-art)')).not.toBeVisible();
+  await profileDog.hover();
+  await expect(profileDog.locator('> span:not(.pet-art)')).toBeVisible();
+  assert((await profileDog.evaluate((el) => parseFloat(getComputedStyle(el).right))) > 50);
   await expect(page.locator('.public-camp-heading h2')).toHaveText('Acampamento');
   await expect(page.locator('.profile-visit-selector strong')).toHaveText('Pai do Cris');
   await expect(page.locator('.profile-character-avatar img')).toHaveAttribute(
@@ -211,7 +235,7 @@ try {
     new RegExp(b.id),
   );
   await page.getByLabel('Personagem do perfil visitado').selectOption(a.id);
-  const next = page.locator('.profile-next-arrow');
+  const next = page.locator('.profile-next-arrow:not(.profile-previous-arrow)');
   for (const width of [1898, 1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 921 });
     await settle(page);
@@ -224,6 +248,10 @@ try {
     ])
       assert.equal(await page.locator(selector).count(), 0, selector);
     const arrow = (await next.boundingBox())!;
+    assert(arrow.width === 44 && arrow.height === 64);
+    await expect(page.locator('.profile-previous-arrow')).toHaveCount(0);
+    await expect(page.locator('.public-camp-heading')).toHaveText('Acampamento');
+    await expect(page.locator('.public-character-info').first()).not.toBeVisible();
     assert(Math.abs(arrow.y + arrow.height / 2 - 460.5) < 1);
     assert(arrow.x + arrow.width <= width);
     await page.screenshot({ path: 'test-results/profile-arrow-camp-' + width + '.png' });
@@ -233,6 +261,9 @@ try {
       'false',
     );
     await settle(page);
+    await expect(page.getByRole('button', { name: 'Aba anterior: Acampamento' })).toBeVisible();
+    const cabinet = (await page.locator('.public-cabinet-stage .fantasy-cabinet').boundingBox())!;
+    assert(cabinet.width >= width * 0.47);
     const room = (await page.locator('.public-cabinet-stage').boundingBox())!;
     assert(Math.abs(room.width - width) < 2);
     assert(Math.abs(room.height - 921) < 2);
@@ -246,6 +277,9 @@ try {
       ).includes('cover'),
     );
     await page.screenshot({ path: 'test-results/profile-arrow-room-' + width + '.png' });
+    await page.getByRole('button', { name: 'Aba anterior: Acampamento' }).click();
+    await expect(page.locator('#profile-panel-characters')).toHaveAttribute('aria-hidden', 'false');
+    await next.click();
     await next.press('End');
     await expect(page.locator('#profile-panel-cards')).toHaveAttribute('aria-hidden', 'false');
     await next.press('Enter');
@@ -253,7 +287,14 @@ try {
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
   }
   await page.setViewportSize({ width: 1440, height: 921 });
-  await page.getByRole('button', { name: 'Ver ficha', exact: true }).nth(1).click();
+  await page.getByRole('button', { name: 'Selecionar Irineu no perfil', exact: true }).hover();
+  await expect(
+    page.locator('.public-camp-character').nth(1).locator('.profile-figure-name'),
+  ).toHaveCSS('opacity', '1');
+  await expect(page.locator('.public-character-info').nth(1)).not.toBeVisible();
+  await page.getByRole('button', { name: 'Selecionar Irineu no perfil', exact: true }).click();
+  await expect(page.locator('.public-character-info').nth(1)).toBeVisible();
+  await page.getByRole('button', { name: 'Ver ficha', exact: true }).click();
   const sheet = page.getByRole('dialog', { name: 'Ficha de Irineu' });
   await expect(sheet).toBeVisible();
   await expect(sheet.getByText('História de Irineu', { exact: true })).toBeVisible();
@@ -296,21 +337,21 @@ try {
     .poll(async () => (await api(visitor, '/profiles/' + owner.id)).data.own_review?.score)
     .toBe(5);
   assert.equal((await api(visitor, '/profiles/' + owner.id)).data.rating.count, 1);
-  await page.locator('.profile-next-arrow').click();
-  await page.locator('.profile-next-arrow').click();
+  await next.click();
+  await next.click();
   await expect(page.locator('#profile-panel-hall')).toHaveAttribute('aria-hidden', 'false');
   await page.getByRole('button', { name: 'Melhores perfis', exact: true }).click();
   await expect(page.locator('.hall-table-row')).toHaveCount(1);
   await expect(page.locator('.hall-champion h2')).toHaveText('Pai do Cris');
   await page.screenshot({ path: 'test-results/profile-best-profiles.png' });
-  await page.locator('.profile-next-arrow').press('Home');
+  await next.press('Home');
   await pool.query('UPDATE characters SET biography=$2,portrait_revision=2 WHERE id=$1', [
     b.id,
     'História atualizada sem editar a visita',
   ]);
   await page.evaluate(() => window.dispatchEvent(new Event('focus')));
   await expect(page.locator('.profile-character-avatar img')).toHaveAttribute('src', /v=2/);
-  await page.getByRole('button', { name: 'Ver ficha', exact: true }).nth(1).click();
+  await page.getByRole('button', { name: 'Ver ficha', exact: true }).click();
   await expect(
     page
       .getByRole('dialog', { name: 'Ficha de Irineu' })
@@ -318,9 +359,32 @@ try {
   ).toBeVisible();
   await page.getByRole('dialog').press('Escape');
   await ownerPage.goto(origin + '/#profiles?user=' + owner.id + '&character=' + a.id);
-  await expect(ownerPage.locator('.profile-rating-stars')).toBeVisible();
-  for (const button of await ownerPage.locator('.profile-rating-stars > button').all())
-    await expect(button).toBeDisabled();
+  await expect(ownerPage.locator('.profile-rating-corner')).toHaveCount(0);
+  await ownerPage.goto(origin + '/#characters');
+  const ownDog = ownerPage.locator('.camp-pet[data-pet-species="dog"]');
+  await expect(ownDog).toBeVisible();
+  assert((await ownDog.evaluate((el) => parseFloat(getComputedStyle(el).right))) > 50);
+  await expect(ownDog.locator('> span:not(.pet-art)')).toBeVisible();
+  await ownerPage.goto(origin + '/#pets');
+  const picker = ownerPage.getByLabel('Mascote à venda', { exact: true });
+  await expect(picker).toBeVisible();
+  await expect(picker.locator('option')).toHaveCount(10);
+  await expect(ownerPage.locator('.pet-shop-catalog')).toHaveCount(0);
+  for (const width of [1440, 768, 390, 320]) {
+    await ownerPage.setViewportSize({ width, height: 921 });
+    await picker.selectOption('rabbit');
+    await expect(ownerPage.locator('.pet-shop-details > h3')).toHaveText('Coelho');
+    await ownerPage.getByLabel('Como vai se chamar?', { exact: true }).fill('Companheiro');
+    await expect(
+      ownerPage.getByRole('button', { name: 'Levar este companheiro', exact: true }),
+    ).toBeEnabled();
+    await picker.selectOption('dog');
+    await expect(ownerPage.getByLabel('Como vai se chamar?', { exact: true })).toHaveValue('');
+    const menu = (await ownerPage.locator('.pet-shop-purchase').boundingBox())!;
+    assert(menu.x >= 0 && menu.x + menu.width <= width + 1);
+    assert(await ownerPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+    await ownerPage.screenshot({ path: 'test-results/pet-sidebar-' + width + '.png' });
+  }
   await ownerPage.goto(origin + '/#inventory');
   await expect(ownerPage.locator('.loot-inventory')).toBeVisible();
   await expect(
@@ -353,6 +417,16 @@ try {
     hp: 50,
     maxHp: 50,
     image: '/vtt/monsters/monster-allosaurus.webp',
+    sheet: {
+      source: 'Teste de ficha',
+      race: '',
+      class: '',
+      level: 1,
+      stats: [10, 10, 10, 10, 10, 10],
+      speed: 30,
+      biography: 'Anotações preservadas',
+      details: '',
+    },
   };
   const other = {
     ...newToken(randomUUID(), scene),
@@ -364,6 +438,29 @@ try {
   scene.tokens = [token, other];
   room = (await api(gm, root, 'PUT', { revision: room.revision, document: room.document })).data;
   assert(room.id);
+  const imported = await api(gm, root + '/characters/' + a.id, 'POST', {
+    position: { x: 850, y: 400 },
+  });
+  assert.equal(imported.status, 201);
+  const characterToken = imported.data.document.scenes[0].tokens.find(
+    (t: any) => t.characterId === a.id,
+  );
+  assert(characterToken);
+  const hotbarState = (await api(gm, root + '/hotbar')).data;
+  hotbarState.document.pages[0].slots[0] = {
+    kind: 'sound',
+    sourceId: soundCatalog.find((sound) => sound.kind === 'effect')!.id,
+    label: 'Som da mesa',
+  };
+  assert.equal(
+    (
+      await api(gm, root + '/hotbar', 'PUT', {
+        revision: hotbarState.revision,
+        document: hotbarState.document,
+      })
+    ).status,
+    200,
+  );
   await ownerPage.setViewportSize({ width: 1440, height: 921 });
   await ownerPage.goto(origin + '/#vtt');
   let hud = await selectToken(ownerPage, token.id);
@@ -405,13 +502,10 @@ try {
   await expect
     .poll(async () => (await api(gm, root)).data.document.scenes[0].tokens[0].conditions)
     .toContain('Cego');
-  await hud.getByRole('button', { name: 'Minimizar menu do token', exact: true }).click();
-  await expect(hud).toHaveAttribute('data-minimized', 'true');
-  await expect(hud.locator('.vtt-token-bubbles')).toHaveCount(0);
-  await hud
-    .getByRole('button', { name: 'Mostrar menu de Portador dos símbolos', exact: true })
-    .click();
-  await expect(hud).toHaveAttribute('data-minimized', 'false');
+  await expect(
+    hud.getByRole('button', { name: 'Minimizar menu do token', exact: true }),
+  ).toHaveCount(0);
+  await expect(hud.locator('.vtt-token-actions > button')).toHaveCount(4);
   for (const width of [1440, 768, 390, 320]) {
     await ownerPage.setViewportSize({ width, height: 921 });
     await selectToken(ownerPage, token.id, 'right');
@@ -432,6 +526,81 @@ try {
   await ownerPage.screenshot({ path: 'test-results/token-radial-settings.png' });
   await ownerPage.getByRole('dialog', { name: 'Configurações do token' }).press('Escape');
   await expect(hud.locator('.vtt-token-popover')).toHaveCount(0);
+  await selectToken(ownerPage, token.id, 'left', 2);
+  const monsterSheet = ownerPage.getByRole('dialog', {
+    name: 'Ficha · Portador dos símbolos',
+    exact: true,
+  });
+  await expect(monsterSheet).toBeVisible();
+  await expect(ownerPage.locator('.vtt-token-hud')).toHaveCount(0);
+  await monsterSheet.getByRole('button', { name: 'Minimizar ficha', exact: true }).click();
+  await expect(monsterSheet.locator('.vtt-sheet-window-body')).not.toBeVisible();
+  await monsterSheet.getByRole('button', { name: 'Restaurar ficha', exact: true }).click();
+  await expect(monsterSheet.locator('.vtt-sheet-window-body')).toBeVisible();
+  await monsterSheet.press('Escape');
+  await expect(ownerPage.locator('.vtt-token-hud')).toHaveCount(0);
+  await selectToken(ownerPage, token.id);
+  await hud.getByRole('button', { name: 'Abrir ficha', exact: true }).click();
+  await expect(monsterSheet).toBeVisible();
+  await expect(ownerPage.locator('.vtt-token-hud')).toHaveCount(0);
+  await monsterSheet.press('Escape');
+  await selectToken(ownerPage, characterToken.id, 'left', 2);
+  const characterSheet = ownerPage.getByRole('dialog', { name: 'Ficha · Nana', exact: true });
+  await expect(characterSheet.locator('.vtt-sheet-banner')).toBeVisible();
+  await expect(ownerPage.locator('.vtt-token-hud')).toHaveCount(0);
+  await expect(
+    characterSheet.getByText('ALVORADA CINZENTA · FICHA DE MESA', { exact: true }),
+  ).toHaveCount(0);
+  const portrait = characterSheet.getByRole('img', { name: 'Retrato de Nana', exact: true });
+  await expect(portrait).toBeVisible();
+  await expect
+    .poll(() => portrait.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0))
+    .toBe(true);
+  await expect(portrait).toHaveCSS('border-top-width', '0px');
+  const nameBox = (await characterSheet.locator('.vtt-sheet-identity h2').boundingBox())!;
+  const portraitBox = (await portrait.boundingBox())!;
+  assert(portraitBox.x + portraitBox.width < nameBox.x);
+  await characterSheet.getByRole('button', { name: 'Biografia', exact: true }).click();
+  await characterSheet.getByRole('button', { name: 'Minimizar ficha', exact: true }).click();
+  await expect(characterSheet.locator('.vtt-sheet-window-body')).not.toBeVisible();
+  await ownerPage.screenshot({ path: 'test-results/vtt-sheet-minimized.png' });
+  await characterSheet.getByRole('button', { name: 'Restaurar ficha', exact: true }).click();
+  await expect(
+    characterSheet.getByRole('button', { name: 'Biografia', exact: true }),
+  ).toHaveAttribute('aria-pressed', 'true');
+  await characterSheet.getByRole('button', { name: 'Essencial', exact: true }).click();
+  await ownerPage.locator('.vtt-hotbar-slot').first().click();
+  await expect(ownerPage.locator('.vtt-hotbar-action')).toBeVisible();
+  await expect
+    .poll(async () => {
+      const box = (await characterSheet.boundingBox())!;
+      const bar = (await ownerPage.locator('.vtt-hotbar').boundingBox())!;
+      return box.y + box.height <= bar.y - 8;
+    })
+    .toBe(true);
+  await ownerPage.screenshot({ path: 'test-results/vtt-sheet-quick-action.png' });
+  await ownerPage.getByRole('button', { name: 'Fechar atalho', exact: true }).click();
+  for (const width of [1440, 768, 390, 320]) {
+    await ownerPage.setViewportSize({ width, height: 921 });
+    const box = (await characterSheet.boundingBox())!;
+    const bar = (await ownerPage.locator('.vtt-hotbar').boundingBox())!;
+    assert(box.y < 24 && box.y + box.height <= bar.y - 8, 'Sheet overlaps quick actions');
+    assert(box.x >= 0 && box.x + box.width <= width);
+    await ownerPage.screenshot({ path: 'test-results/vtt-sheet-window-' + width + '.png' });
+  }
+  await ownerPage.setViewportSize({ width: 1440, height: 921 });
+  const handle = characterSheet.getByLabel('Mover janela da ficha', { exact: true });
+  const initial = (await characterSheet.boundingBox())!;
+  const handleBox = (await handle.boundingBox())!;
+  await ownerPage.mouse.move(handleBox.x + 200, handleBox.y + 20);
+  await ownerPage.mouse.down();
+  await ownerPage.mouse.move(handleBox.x + 230, handleBox.y + 20);
+  await ownerPage.mouse.up();
+  assert((await characterSheet.boundingBox())!.x >= initial.x + 20);
+  await handle.focus();
+  await handle.press('ArrowLeft');
+  await characterSheet.press('Escape');
+  await expect(ownerPage.locator('.vtt-token-hud')).toHaveCount(0);
   await page.goto(origin + '/#vtt');
   const playerHud = await selectToken(page, token.id);
   await playerHud.getByRole('button', { name: 'Pontos de vida: 45/50', exact: true }).click();
@@ -448,7 +617,7 @@ try {
   await expect(peer.locator('.vtt-token-hud')).toHaveCount(0);
   assert.deepEqual(errors, []);
   console.log(
-    'PASS real Edge: profile arrow/four panels/full room at five widths, portrait selection/auto refresh, read-only modal, anonymous stars/low-score reason/one vote/best profiles, inventory removal; token click/radial stats/settings/30 conditions/minimize/right-click/mobile and GM/player/spectator permissions.',
+    'PASS real Edge: profile previous/next arrows, full room/chandelier/cabinet at five widths, hover names/click menus, hidden owner rating and visitor voting; pet left sidebar and dog position on both pages; draggable/minimizable sheets above quick-action menus, unframed portrait and hidden token HUD at four widths; token stats/settings/30 conditions and GM/player/spectator permissions.',
   );
 } catch (error) {
   for (const ctx of contexts)

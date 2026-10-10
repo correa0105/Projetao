@@ -53,6 +53,7 @@ export function CampPet({ characterId }: { characterId: string }) {
       ref={host}
       className="camp-pet"
       data-pet-id={pet.id}
+      data-pet-species={pet.pet_id}
       data-character-id={characterId}
       aria-label={`${pet.name}, ${breed}`}
       style={

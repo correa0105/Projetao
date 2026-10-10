@@ -3,7 +3,7 @@ import { Dices, Shield, Heart, Swords } from 'lucide-react';
 import { modifier, statNames } from '../shared/rules';
 import { monsterActions, type MonsterAction } from '../shared/vtt-monster-actions';
 import { monsterSections } from '../shared/vtt-compendium';
-import { VttModal } from './VttMaps';
+import { VttSheetWindow } from './VttSheetWindow';
 import { ActionShortcut } from './VttHotbar';
 import './vtt-monster-sheet.css';
 
@@ -239,7 +239,7 @@ export function VttMonsterSheet({
 }) {
   const [tab, setTab] = useState('Ficha');
   return (
-    <VttModal title={'Ficha · ' + monster.name} wide close={close}>
+    <VttSheetWindow title={'Ficha · ' + monster.name} close={close}>
       <nav className="vtt-monster-tabs" aria-label="Páginas da ficha do monstro">
         {['Ficha', 'Anotações', ...(gm && editor ? ['Editar'] : [])].map((name) => (
           <button key={name} aria-pressed={tab === name} onClick={() => setTab(name)}>
@@ -265,6 +265,6 @@ export function VttMonsterSheet({
           </section>
         )}
       </div>
-    </VttModal>
+    </VttSheetWindow>
   );
 }

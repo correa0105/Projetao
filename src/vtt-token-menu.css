@@ -5,8 +5,7 @@
   pointer-events: none;
 }
 .vtt-token-bubbles,
-.vtt-token-actions,
-.vtt-token-minimized {
+.vtt-token-actions {
   position: absolute;
   transform: translateX(-50%);
   display: flex;
@@ -189,32 +188,6 @@
   color: #eea3a3;
   display: grid;
   place-items: center;
-}
-.vtt-token-minimized {
-  gap: 0;
-  border: 1px solid #ad905d;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px #0009;
-  background: #14212cef;
-  overflow: hidden;
-}
-:root .vtt-token-minimized > button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: none;
-  border: 0;
-  padding: 7px 8px;
-  min-height: 32px;
-  margin: 0;
-  font-size: 11px;
-  color: #e3d3b5;
-}
-.vtt-token-minimized span {
-  max-width: 130px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 @media (max-width: 600px) {
   .vtt-token-popover .vtt-condition-grid {

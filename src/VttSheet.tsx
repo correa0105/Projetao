@@ -1,7 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Dices, Shield, Heart, Footprints, Sparkles, RotateCcw, ScrollText } from 'lucide-react';
+import {
+  Dices,
+  Shield,
+  Heart,
+  Footprints,
+  Sparkles,
+  RotateCcw,
+  ScrollText,
+  UserRound,
+} from 'lucide-react';
 import { api } from './api';
-import { VttModal } from './VttMaps';
+import { VttSheetWindow } from './VttSheetWindow';
 import type { VttToken } from '../shared/vtt';
 import type { VttSheetData } from '../shared/vtt-sheet';
 import { spells, skills, skillAbilities } from '../shared/character-sheet';
@@ -126,7 +135,7 @@ export function VttSheet({
     ]),
   ];
   return (
-    <VttModal title={'Ficha · ' + token.name} wide close={close}>
+    <VttSheetWindow title={'Ficha · ' + token.name} close={close}>
       <nav className="vtt-sheet-tabs" aria-label="Páginas da ficha">
         {['Essencial', 'Biografia', 'Magias'].map((name) => (
           <button key={name} aria-pressed={tab === name} onClick={() => setTab(name)}>
@@ -145,12 +154,24 @@ export function VttSheet({
         ) : (
           <>
             <header className="vtt-sheet-banner">
-              <div>
-                <span>ALVORADA CINZENTA · FICHA DE MESA</span>
-                <h2>{c!.name}</h2>
-                <p>
-                  {c!.race} · {c!.class} · Nível {c!.level}
-                </p>
+              <div className="vtt-sheet-identity">
+                <div className="vtt-sheet-portrait">
+                  <UserRound aria-hidden="true" />
+                  <img
+                    key={token.id + token.image}
+                    src={`/api/vtt/rooms/${roomId}/tokens/${token.id}/portrait?v=${encodeURIComponent(token.image)}`}
+                    alt={'Retrato de ' + c!.name}
+                    onError={(e) => {
+                      e.currentTarget.hidden = true;
+                    }}
+                  />
+                </div>
+                <div>
+                  <h2>{c!.name}</h2>
+                  <p>
+                    {c!.race} · {c!.class} · Nível {c!.level}
+                  </p>
+                </div>
               </div>
               <div>
                 <b>{c!.background}</b>
@@ -784,6 +805,6 @@ export function VttSheet({
         <span>Consumo real no inventário · restauração exclusiva do mestre</span>
         <button onClick={close}>Fechar ficha</button>
       </footer>
-    </VttModal>
+    </VttSheetWindow>
   );
 }
