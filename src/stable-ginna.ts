@@ -25,7 +25,7 @@ export const ginnaExcuses = [
   'E se eu precisar discipliná-lo?',
   'Mas e se ele não me obedecer?',
   'Seria só para ensinar uma lição…',
-  'E se ninguém ficar sabendo?',
+  'Se eu comprar eu decido, não voce',
 ] as const;
 
 export const ginnaWarnings = [
