@@ -61,7 +61,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
     const owner = await signup(),
       outsider = await signup(),
       hero = await createLegacyTestCharacter(owner.id, 'Armadureiro');
-    await pool.query('UPDATE characters SET gold_cp=20000000 WHERE id=$1', [hero.id]);
+    await pool.query('UPDATE characters SET gold_cp=40000000 WHERE id=$1', [hero.id]);
     const bundles = armorBundles();
     const source = new Map(
       [...JSON.parse(await readFile('data/emporium-expansion.json', 'utf8')).items,
@@ -72,7 +72,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
     );
     let magicalBundles = 0;
     const completionArmor = [...source.values()].filter((item: any) => item.raw_data?.shop_magic_completion && item.raw_data?.magic_kind === 'armor');
-    assert.equal(completionArmor.length, 80);
+    assert.equal(completionArmor.length, 154);
     assert.equal(bundles.length, 266 + completionArmor.length);
     for (const bundle of bundles) {
       const { rows } = await pool.query('SELECT * FROM catalog_items WHERE id=ANY($1::text[])', [
@@ -142,6 +142,12 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       'mariner-s-leather-armor',
       'smoldering-scale-mail',
       'plate-armor-of-weightlessness',
+      'antimagic-breastplate',
+      'feywrought-chain-mail',
+      'gloomwrought-leather-armor',
+      'last-stand-plate-armor',
+      'living-scale-mail',
+      'ruidium-spiked-armor',
     ];
     const checkout = {
       character_id: hero.id,
@@ -162,7 +168,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
     assert.equal(bought[0].data.total_cp, expectedPrice);
     assert.equal(
       (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
-      20000000 - expectedPrice,
+      40000000 - expectedPrice,
     );
     assert.equal(
       (

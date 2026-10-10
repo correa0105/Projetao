@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **707 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **781 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -407,3 +407,17 @@ O construtor distingue peso físico explicitamente revisado de estimativa: haste
 API de 707 itens em banco descartável passou arte/sons, compras, replay, saldo, ledger, preço administrativo, 80 conjuntos e consumo. Os dois consumíveis novos foram usados uma vez, com repetição idempotente e recusa de segundo gasto; escudo único, mãos corretas, pedra sem slot e pesos reais versus estimados foram conferidos. As 12 fontes, imagens/falas novas e loja completa em 1500/760/390 px passaram. TypeScript e builds cliente/servidor passaram, com a nova lista de consumíveis compilada.
 
 Release `magic-completion-v12-20261010` saudável, com backup anterior. 60 tabelas e toda oferta anterior integralmente idênticas, somente 12 adições. 1.454 mídias/referências e 43 bundles conferidos; Lava/Corrente elétrica e 21 VFX anteriores preservados, ilustrador ativo e alterações independentes intactas. Restam 2.369 candidatos, além das opções de magia/alvo por expandir.
+
+## Lote 13 — armaduras planares, vivas e de ruidium
+
+74 novos modelos: 13 de antimagia, 13 forjados no Feérico, 13 forjados no Pendor das Sombras, 13 do último combate, 13 vivos e 9 de ruidium. Fontes primárias conferidas no espelho de dados do 5etools: BMT p. 65/67, EGW p. 267, ERLW p. 278 e CRCotN p. 215. Os encantamentos de 2014 são identificados separadamente dos modelos físicos de 2024.
+
+Cinco materiais originais gerados e aprovados, com prompts e cópias nativas registrados em `art-jobs-planar-living-armor-materials.json` e `art-manifest.json`. O material original de ruidium já aprovado equipa nove formas de armadura, cada uma com arte final distinta. As 74 falas são individuais, com sons próprios; os seis estilos e todas as silhuetas foram vistos em tamanho reduzido e nas prévias reais dos baús.
+
+Antimagia tem reação e conjuração com reservas diárias separadas; Feérico/Pendor usam três cargas e CD 15. Último combate só dispara na morte, destrói a peça e pode banir aliados dos tipos indicados. Armadura viva conserva a ligação, as três resistências e o custo de metade dos Dados de Vida restantes após descanso longo. Ruidium usa resultado 1 em resistência e Carisma CD 15, distinguindo-se da arma. Nenhuma dessas regras recebe bônus ou recursos além da fonte.
+
+Os 74 conjuntos novos somam 370 componentes internos, totalizando 420 conjuntos cadastrados. Todas as 346 definições anteriores permanecem idênticas; os 707 produtos anteriores também. A API pública mantém separadas as ações de equipar uma peça e equipar o conjunto inteiro.
+
+Validação: API dos 781 itens e das 74 descrições novas; compra/replay/ledger/saldo; peso e equipamento de seis peças; três testes de conjuntos/placas/referências de arte; loja responsiva em 1.500/760/390 px; TypeScript e builds limpos. Publicado na imagem `magic-completion-v13-20261010`, saudável. Após aplicação, 60 tabelas e todos os produtos antigos mantêm hashes de linhas idênticos; somente 74 pais e 370 componentes foram inseridos. Todas as 1.607 mídias e 43 bundles correspondem aos arquivos aprovados. Lava/Corrente elétrica, os demais efeitos e o ilustrador permanecem preservados.
+
+Total aplicado: 781 novos itens; 2.295 candidatos seguem pendentes, além da expansão das opções específicas de magia/alvo.

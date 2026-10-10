@@ -159,7 +159,7 @@ try {
   ).rows;
   assert.equal(ledger.length, ids.length);
   const armors=completion.items.filter((x:any)=>x.raw_data.magic_kind==='armor');
-  assert.equal(armors.length,80);
+  assert.equal(armors.length,154);
   for(const x of armors){
     const bundle=armorBundle(x.id);assert(bundle&&bundle.target==='human',x.id);
     const pieces=(await pool.query('SELECT i.item_id,i.quantity,c.weight_lb,c.raw_data FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND i.item_id=ANY($2::text[])',[hero.id,purchaseContents(x.id)])).rows;
@@ -377,6 +377,52 @@ try {
     assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'shield-of-expression',slot:'armor'})).status,400);
     assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'ruby-of-the-war-mage',slot:'main_hand'})).status,400);
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
+  }
+  const planarArmorFamilies = ['Antimagic Armor', 'Feywrought Armor', 'Gloomwrought Armor', 'Last Stand Armor', 'Living Armor', 'Ruidium Armor'];
+  if (ids.includes('antimagic-breastplate')) {
+    const planar = completion.items.filter((x: any) => planarArmorFamilies.includes(x.raw_data.magic_family));
+    assert.deepEqual(planarArmorFamilies.map(f => planar.filter((x: any) => x.raw_data.magic_family === f).length), [13, 13, 13, 13, 13, 9]);
+    for (const item of planar) {
+      const f = item.raw_data.magic_family, facts = item.raw_data.upstream_facts;
+      assert.equal(item.raw_data.attunement, f !== 'Last Stand Armor');
+      assert(item.raw_data.source_edition.includes('2014'));
+      assert.equal(facts.bonusAc ?? null, ['Last Stand Armor', 'Living Armor', 'Ruidium Armor'].includes(f) ? '+1' : null);
+      assert.equal(item.weight_estimated, false);
+      if (f === 'Antimagic Armor') {
+        assert.equal(item.raw_data.upstream_source, 'BMT');
+        assert.match(item.raw_data.rules_summary, /reação/);
+        assert.match(item.raw_data.rules_summary, /Separadamente/);
+        assert.match(item.raw_data.rules_summary, /sem componentes/);
+      } else if (f === 'Feywrought Armor' || f === 'Gloomwrought Armor') {
+        assert.equal(facts.charges, 3);assert.equal(facts.rechargeAmount, '{@dice 1d3}');
+        assert.match(item.raw_data.rules_summary, /CD 15/);
+        assert.match(item.raw_data.rules_summary, /concentração/);
+      } else if (f === 'Last Stand Armor') {
+        assert.equal(item.raw_data.upstream_source, 'EGW');
+        assert.match(item.raw_data.rules_summary, /cada celestial, fada ou ínfero a até 30 pés/);
+        assert.match(item.raw_data.rules_summary, /já estiver nesse plano/);
+        assert.match(item.raw_data.rules_summary, /0 PV, por si só, não/);
+      } else if (f === 'Living Armor') {
+        assert.equal(item.raw_data.upstream_source, 'ERLW');
+        assert.deepEqual(facts.resist, ['necrotic', 'poison', 'psychic']);
+        assert.match(item.raw_data.rules_summary, /metade dos seus Dados de Vida restantes, arredondada para cima/);
+        assert.match(item.raw_data.rules_summary, /não pode encerrar a sintonia voluntariamente/);
+      } else {
+        assert.equal(item.raw_data.upstream_source, 'CRCotN');
+        assert.deepEqual(facts.resist, ['psychic']);
+        assert.match(item.raw_data.rules_summary, /1 no dado de um teste de resistência/);
+        assert.match(item.raw_data.rules_summary, /Carisma CD 15/);
+      }
+      if (!rulesReviewIds || rulesReviewIds.has(item.id)) {
+        const equip = {character_id: hero.id, item_id: item.id};
+        assert.equal((await request('/inventory/equipment-set', 'POST', equip)).status, 200, item.id);
+        const worn = (await pool.query('SELECT slot,item_id FROM character_equipment WHERE character_id=$1 AND slot=ANY($2::text[]) ORDER BY slot', [hero.id, ['armor','head','bracers','legs','feet','shoulders']])).rows;
+        assert.deepEqual(worn.map(x=>x.item_id).sort(), purchaseContents(item.id).sort(), item.id);
+        assert.equal((await request('/inventory/equipment-set', 'POST', equip)).status, 200);
+        assert.deepEqual((await pool.query('SELECT slot,item_id FROM character_equipment WHERE character_id=$1 AND slot=ANY($2::text[]) ORDER BY slot', [hero.id, ['armor','head','bracers','legs','feet','shoulders']])).rows, worn);
+      }
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger);
   }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,

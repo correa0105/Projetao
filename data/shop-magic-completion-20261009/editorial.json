@@ -11684,5 +11684,1263 @@
     "rules_summary": "Tem três cargas. Enquanto a segura, use uma ação para gastar uma carga e escolher um Humanoide visível a até 30 pés. Ele faz resistência de Carisma CD 10; falhar obriga-o a franzir o cenho durante um minuto. Recupera todas as cargas gastas ao amanhecer. Ao gastar a última carga, role 1d20: num 1, a varinha se transforma em uma Varinha de Sorrisos. O efeito não aplica Amedrontado nem aumenta Intimidação.",
     "source_edition": "D&D 5e (2014)",
     "review": "approved"
+  },
+  "antimagic-breastplate": {
+    "name": "Armadura antimagia (Peitoral)",
+    "description": "Forma: Peitoral. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "Este peitoral guarda duas reservas para o dia: uma reação contra uma magia e uma conjuração de Campo Antimagia.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-chain-mail": {
+    "name": "Armadura antimagia (Cota de malha)",
+    "description": "Forma: Cota de malha. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "A malha antimagia pede sintonia. A reação dá vantagem em uma resistência; depois, precisa esperar o amanhecer.",
+    "rules_summary": "Armadura pesada. CA base 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-chain-shirt": {
+    "name": "Armadura antimagia (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "A camisa antimagia tem defesa para um momento decisivo. Guarde a reação para um teste contra uma magia.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-half-plate-armor": {
+    "name": "Armadura antimagia (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "A meia armadura conjura Campo Antimagia sem componentes. A concentração continua sendo sua responsabilidade.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-hide-armor": {
+    "name": "Armadura antimagia (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "Estas peles protegem de uma magia por reação. Não tornam o usuário imune a todo feitiço do caminho.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Antimagic Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-leather-armor": {
+    "name": "Armadura antimagia (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "O couro antimagia tem dois poderes com reservas separadas. Gastar a reação não gasta a conjuração diária.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Antimagic Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-padded-armor": {
+    "name": "Armadura antimagia (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "O acolchoado permite Campo Antimagia depois da sintonia. Uma conjuração por amanhecer: escolha bem o momento.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Antimagic Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-plate-armor": {
+    "name": "Armadura antimagia (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "As placas antimagia mantêm a proteção do modelo. O encanto ajuda contra uma magia e não acrescenta CA.",
+    "rules_summary": "Armadura pesada. CA base 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-ring-mail": {
+    "name": "Armadura antimagia (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "A trama de anéis guarda uma reação de resistência. Esse poder só volta no próximo amanhecer.",
+    "rules_summary": "Armadura pesada. CA base 14. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-scale-mail": {
+    "name": "Armadura antimagia (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "Nas escamas antimagia, a reserva do campo é diária. A magia segue seu tempo normal de conjuração.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-spiked-armor": {
+    "name": "Armadura antimagia (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "Os espinhos antimagia permitem uma reação contra uma magia. A sintonia vem antes de usar o poder.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Antimagic Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "antimagic-splint-armor": {
+    "name": "Armadura antimagia (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "Estas talas guardam um Campo Antimagia sem componentes. Lembre que manter o campo exige concentração.",
+    "rules_summary": "Armadura pesada. CA base 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Antimagic Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "antimagic-studded-leather-armor": {
+    "name": "Armadura antimagia (Couro batido)",
+    "description": "Forma: Couro batido. Oferece uma reação de proteção contra magia e uma conjuração diária de Campo Antimagia.",
+    "merchant_comment": "O couro batido oferece vantagem por uma reação contra uma magia. Anote o uso até o próximo amanhecer.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza. Exige sintonização. Enquanto a veste, você pode usar sua reação para obter vantagem em um teste de resistência que faça contra uma magia; esse poder fica indisponível até o próximo amanhecer. Separadamente, pode conjurar Campo Antimagia pela armadura, sem componentes, uma vez até o próximo amanhecer. Valem o tempo de conjuração, a concentração e as demais regras da magia. Não concede imunidade permanente a magia nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Antimagic Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-breastplate": {
+    "name": "Armadura forjada no Feérico (Peitoral)",
+    "description": "Forma: Peitoral. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "As flores deste peitoral vieram do Feérico. Elas ajudam a resistir a encantamento, sem dar imunidade.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-chain-mail": {
+    "name": "Armadura forjada no Feérico (Cota de malha)",
+    "description": "Forma: Cota de malha. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "Esta cota feérica guarda três cargas de Compulsão. Uma ação e uma carga iniciam a magia, com CD quinze.",
+    "rules_summary": "Armadura pesada. CA base 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-chain-shirt": {
+    "name": "Armadura forjada no Feérico (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "A camisa feérica ajuda a evitar ou encerrar o encanto sobre você. Ainda precisa de sintonia.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-half-plate-armor": {
+    "name": "Armadura forjada no Feérico (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "A meia armadura leva flores entre as placas. As cargas gastas voltam em quantidade de um dado de três ao amanhecer.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-hide-armor": {
+    "name": "Armadura forjada no Feérico (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "Estas peles foram trabalhadas no Feérico. A proteção contra ficar enfeitiçado acompanha quem as veste.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Feywrought Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-leather-armor": {
+    "name": "Armadura forjada no Feérico (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "O couro florido pode conjurar Compulsão. Reserve a concentração além da ação e da carga.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Feywrought Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-padded-armor": {
+    "name": "Armadura forjada no Feérico (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "O acolchoado feérico tem três cargas. A recuperação ao amanhecer nunca passa desse limite.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Feywrought Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-plate-armor": {
+    "name": "Armadura forjada no Feérico (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "As placas feéricas resistem ao encanto sem perder a forma pesada. A proteção normal continua sendo a do modelo.",
+    "rules_summary": "Armadura pesada. CA base 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-ring-mail": {
+    "name": "Armadura forjada no Feérico (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "Os anéis floridos favorecem a resistência para encerrar um encantamento. Não prometem afastar todo tipo de magia.",
+    "rules_summary": "Armadura pesada. CA base 14. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-scale-mail": {
+    "name": "Armadura forjada no Feérico (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "Estas escamas feéricas usam uma carga para Compulsão. A magia mantém suas próprias limitações.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-spiked-armor": {
+    "name": "Armadura forjada no Feérico (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "Flores junto aos espinhos, trabalho do Feérico. A sintonia libera Compulsão e a defesa contra encantamento.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Feywrought Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "feywrought-splint-armor": {
+    "name": "Armadura forjada no Feérico (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "As talas feéricas dão vantagem contra ficar enfeitiçado. O poder não acrescenta um ponto sequer à CA.",
+    "rules_summary": "Armadura pesada. CA base 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Feywrought Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "feywrought-studded-leather-armor": {
+    "name": "Armadura forjada no Feérico (Couro batido)",
+    "description": "Forma: Couro batido. Protege contra encantamento e usa cargas para conjurar Compulsão.",
+    "merchant_comment": "O couro batido feérico recupera um dado de três cargas ao amanhecer. Confira a reserva antes de conjurar.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição enfeitiçado em si. Possui três cargas: uma ação e uma carga conjuram Compulsão, CD 15, com as regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a encantamento nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Feywrought Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-breastplate": {
+    "name": "Armadura forjada no Pendor das Sombras (Peitoral)",
+    "description": "Forma: Peitoral. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "O peitoral cinzento veio do Pendor das Sombras. Ajuda a resistir ao medo de quem o veste.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-chain-mail": {
+    "name": "Armadura forjada no Pendor das Sombras (Cota de malha)",
+    "description": "Forma: Cota de malha. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "Esta cota sombria tem três cargas para Acalmar Emoções. A magia usa CD quinze e exige concentração.",
+    "rules_summary": "Armadura pesada. CA base 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-chain-shirt": {
+    "name": "Armadura forjada no Pendor das Sombras (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "A camisa do Pendor favorece resistências para encerrar o medo. A sintonia é necessária.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-half-plate-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "A meia armadura traz um trabalho inteiro em tons de cinza. Seu encanto combate o medo, sem dar imunidade.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-hide-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "Estas peles sombrias guardam Acalmar Emoções. Cada conjuração consome uma das três cargas.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Gloomwrought Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-leather-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "O couro do Pendor ajuda a evitar ficar amedrontado. O encanto acompanha o usuário enquanto veste a peça.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Gloomwrought Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-padded-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "O acolchoado sombrio recarrega ao amanhecer com um dado de três. Cargas guardadas não passam do limite.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Gloomwrought Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-plate-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "As placas sombrias podem acalmar emoções por uma carga. Conte também com o tempo normal da magia.",
+    "rules_summary": "Armadura pesada. CA base 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-ring-mail": {
+    "name": "Armadura forjada no Pendor das Sombras (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "Os anéis do Pendor dão vantagem em resistências contra medo. A armadura conserva sua defesa física habitual.",
+    "rules_summary": "Armadura pesada. CA base 14. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-scale-mail": {
+    "name": "Armadura forjada no Pendor das Sombras (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "As escamas cinzentas guardam três conjurações com cargas. Acalmar Emoções usa CD quinze.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-spiked-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "Os espinhos sombrios ajudam a encerrar o medo no usuário. Nada aqui exige que você finja estar imune.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Gloomwrought Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "gloomwrought-splint-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "As talas do Pendor pedem concentração ao conjurar Acalmar Emoções. A carga não substitui essa exigência.",
+    "rules_summary": "Armadura pesada. CA base 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Gloomwrought Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "gloomwrought-studded-leather-armor": {
+    "name": "Armadura forjada no Pendor das Sombras (Couro batido)",
+    "description": "Forma: Couro batido. Protege contra medo e usa cargas para conjurar Acalmar Emoções.",
+    "merchant_comment": "O couro batido sombrio pede sintonia e recupera cargas ao amanhecer. A proteção serve para evitar ou encerrar o medo.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza. Exige sintonização. Enquanto a veste, você tem vantagem nos testes de resistência para evitar ou encerrar a condição amedrontado em si. Possui três cargas: uma carga permite conjurar Acalmar Emoções, CD 15, com o tempo de conjuração e demais regras normais da magia, incluindo concentração. Recupera 1d3 cargas gastas a cada amanhecer, até o limite de três. Não concede imunidade a medo nem bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Gloomwrought Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-breastplate": {
+    "name": "Armadura do último combate (Peitoral)",
+    "description": "Forma: Peitoral. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "O peitoral do último combate oferece CA mais um. O outro poder só desperta com a morte de quem o veste.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-chain-mail": {
+    "name": "Armadura do último combate (Cota de malha)",
+    "description": "Forma: Cota de malha. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "Esta cota dá CA mais um sem sintonia. Se o usuário morrer, o conjunto é destruído.",
+    "rules_summary": "Armadura pesada. CA base 16, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-chain-shirt": {
+    "name": "Armadura do último combate (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "A camisa do último combate brilha suavemente. Celestiais, fadas e ínferos próximos podem ser banidos na morte do usuário.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-half-plate-armor": {
+    "name": "Armadura do último combate (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "A meia armadura dá CA mais um. O banimento alcança trinta pés e distingue tipo de criatura, não amizade.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-hide-armor": {
+    "name": "Armadura do último combate (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "Estas peles oferecem CA mais um. Cair a zero PV não basta para disparar o último poder.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Last Stand Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-leather-armor": {
+    "name": "Armadura do último combate (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "O couro do último combate não exige sintonia. Na morte, pode devolver criaturas ao próprio plano natal.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Last Stand Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-padded-armor": {
+    "name": "Armadura do último combate (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "O acolchoado concede CA mais um. Se a criatura já estiver em seu plano natal, o banimento não a desloca.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Last Stand Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-plate-armor": {
+    "name": "Armadura do último combate (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "As placas do último combate são destruídas com a morte do usuário. Avise os aliados extraplanares que ficam perto.",
+    "rules_summary": "Armadura pesada. CA base 18, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-ring-mail": {
+    "name": "Armadura do último combate (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "Os anéis do último combate dão CA mais um. A resistência ao banimento é de Carisma, CD quinze.",
+    "rules_summary": "Armadura pesada. CA base 14, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-scale-mail": {
+    "name": "Armadura do último combate (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "Estas escamas brilham de leve e melhoram a CA em um. O último poder não espera uma ação do usuário.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-spiked-armor": {
+    "name": "Armadura do último combate (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "Os espinhos do último combate conservam a forma física. A defesa recebe mais um, sem pedir sintonia.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Last Stand Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "last-stand-splint-armor": {
+    "name": "Armadura do último combate (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "As talas do último combate podem banir celestiais, fadas e ínferos. O gatilho é a morte, e o conjunto se perde.",
+    "rules_summary": "Armadura pesada. CA base 17, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Last Stand Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "last-stand-studded-leather-armor": {
+    "name": "Armadura do último combate (Couro batido)",
+    "description": "Forma: Couro batido. Concede CA +1; é destruída quando o usuário morre e pode banir criaturas extraplanares próximas.",
+    "merchant_comment": "O couro batido do último combate concede CA mais um. O banimento pode atingir aliados do mesmo jeito que inimigos.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza, acrescida do bônus mágico +1. Enquanto a veste, você recebe +1 na CA. Não exige sintonização. Se morrer enquanto a veste, a armadura é destruída; cada celestial, fada ou ínfero a até 30 pés faz um teste de resistência de Carisma CD 15. Em uma falha, é banido para seu plano natal, salvo se já estiver nesse plano. O efeito alcança aliados e inimigos desses tipos. Cair a 0 PV, por si só, não dispara o poder.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Last Stand Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-breastplate": {
+    "name": "Armadura viva (Peitoral)",
+    "description": "Forma: Peitoral. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "Este peitoral vivo dá CA mais um e três resistências. A ligação exige sangue depois de cada descanso longo.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-chain-mail": {
+    "name": "Armadura viva (Cota de malha)",
+    "description": "Forma: Cota de malha. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "A cota viva não se solta enquanto estiver sintonizada. Uma magia que encerra maldição pode romper a ligação.",
+    "rules_summary": "Armadura pesada. CA base 16, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-chain-shirt": {
+    "name": "Armadura viva (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "A camisa viva resiste a dano necrótico, venenoso e psíquico. A sintonia acontece vestindo a peça durante todo o período.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-half-plate-armor": {
+    "name": "Armadura viva (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "A meia armadura viva cobra metade dos Dados de Vida que restarem, arredondada para cima. Recusar traz exaustão.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-hide-armor": {
+    "name": "Armadura viva (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "Estas peles vivas têm quitina e tendões por dentro. A defesa melhora em um, mas a ligação não termina por vontade própria.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Living Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-leather-armor": {
+    "name": "Armadura viva (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "O couro vivo pede sangue fresco após o descanso longo. Leia o custo em Dados de Vida antes de fazer sintonia.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Living Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-padded-armor": {
+    "name": "Armadura viva (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "O acolchoado vivo protege de três tipos de dano. Não oferece resistência a todo dano que atingir o usuário.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Living Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-plate-armor": {
+    "name": "Armadura viva (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "As placas vivas se ligam por filamentos durante a sintonia. Depois, não podem ser removidas enquanto a ligação durar.",
+    "rules_summary": "Armadura pesada. CA base 18, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-ring-mail": {
+    "name": "Armadura viva (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "Os anéis vivos cobram alimento após cada descanso longo. Sem os Dados de Vida exigidos, vem um nível de exaustão.",
+    "rules_summary": "Armadura pesada. CA base 14, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-scale-mail": {
+    "name": "Armadura viva (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "As escamas vivas resistem a dano psíquico, necrótico e venenoso. A CA recebe mais um enquanto são vestidas.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-spiked-armor": {
+    "name": "Armadura viva (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "Os espinhos vivos não deixam encerrar a sintonia voluntariamente. Procure uma magia que encerre maldição para soltá-los.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Living Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "living-splint-armor": {
+    "name": "Armadura viva (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "As talas vivas dão CA mais um. Reserve os Dados de Vida que a armadura vai pedir após o descanso longo.",
+    "rules_summary": "Armadura pesada. CA base 17, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Living Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "living-studded-leather-armor": {
+    "name": "Armadura viva (Couro batido)",
+    "description": "Forma: Couro batido. Concede CA +1 e resistência a três tipos de dano, com uma ligação simbiótica que exige sangue.",
+    "merchant_comment": "O couro batido vivo prende seus filamentos ao usuário. Essa sintonia tem consequências além da proteção.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza, acrescida do bônus mágico +1. Exige sintonização, realizada vestindo a armadura durante todo o período enquanto seus filamentos penetram no usuário. Enquanto a veste, você recebe +1 na CA e resistência a dano necrótico, venenoso e psíquico. Enquanto estiver sintonizado, ela não pode ser removida e você não pode encerrar a sintonia voluntariamente. Uma magia que encerra uma maldição termina a sintonia e a solta. Imediatamente após cada descanso longo, alimente a armadura com sangue fresco, gastando metade dos seus Dados de Vida restantes, arredondada para cima, ou receba um nível de exaustão.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Living Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-breastplate": {
+    "name": "Armadura de ruidium (Peitoral)",
+    "description": "Forma: Peitoral. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "O peitoral de ruidium permite respirar na água e nadar. Um resultado um em uma resistência pode trazer corrupção.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-chain-mail": {
+    "name": "Armadura de ruidium (Cota de malha)",
+    "description": "Forma: Cota de malha. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "A cota de ruidium concede CA mais um e resistência psíquica. O risco usa Carisma, CD quinze.",
+    "rules_summary": "Armadura pesada. CA base 16, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-chain-shirt": {
+    "name": "Armadura de ruidium (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "A camisa de ruidium ajuda na água enquanto é vestida. A natação acompanha o deslocamento de caminhada.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-half-plate-armor": {
+    "name": "Armadura de ruidium (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "A meia armadura de ruidium pede sintonia. Falhar na resistência de corrupção também acrescenta um nível de exaustão.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-plate-armor": {
+    "name": "Armadura de ruidium (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "As placas de ruidium respiram água com o usuário. Se o Apotheon for morto ou redimido, sobra uma armadura mágica mais um.",
+    "rules_summary": "Armadura pesada. CA base 18, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-ring-mail": {
+    "name": "Armadura de ruidium (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "Os anéis de ruidium dão resistência psíquica. O gatilho de corrupção é um no dado de qualquer teste de resistência.",
+    "rules_summary": "Armadura pesada. CA base 14, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-scale-mail": {
+    "name": "Armadura de ruidium (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "As escamas de ruidium concedem CA mais um. A proteção não elimina o risco de corrupção ao tirar um numa resistência.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ruidium-spiked-armor": {
+    "name": "Armadura de ruidium (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "Os espinhos de ruidium permitem respirar na água. O teste de corrupção usa CD quinze, diferente da arma de ruidium.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Ruidium Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "ruidium-splint-armor": {
+    "name": "Armadura de ruidium (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Concede CA +1, resistência psíquica, respiração aquática e natação, com risco de corrupção.",
+    "merchant_comment": "As talas de ruidium dão natação e respiração aquática. A destruição do mineral retira esses poderes, preservando o mais um.",
+    "rules_summary": "Armadura pesada. CA base 17, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização e concede +1 na CA. Enquanto a veste, você tem resistência a dano psíquico, pode respirar na água e tem deslocamento de natação igual ao de caminhada. Ao tirar 1 no dado de um teste de resistência enquanto a veste, faça um teste de resistência de Carisma CD 15: em uma falha, receba um nível de exaustão e corrupção de ruidium, se ainda não estiver corrompido. Se o Apotheon for morto ou redimido, todo o ruidium de Exandria é destruído imediatamente: a peça se torna uma armadura mágica +1 comum, perdendo os demais poderes de ruidium.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Ruidium Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
   }
 }

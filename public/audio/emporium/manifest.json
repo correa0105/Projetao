@@ -16302,5 +16302,597 @@
     "sha256": "0259d7d87b00e0c5b3e0ea9c6075edc6cc407e78514130903f72d7b0478a6fc2",
     "source": "public/audio/shop-counter-wood.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-breastplate",
+    "path": "public/audio/emporium/antimagic-breastplate.wav",
+    "kind": "metal",
+    "sha256": "fb1dde88f5fa7e122494eecd14e68417ec48023e612df2fc25671deb86c0456c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-chain-mail",
+    "path": "public/audio/emporium/antimagic-chain-mail.wav",
+    "kind": "metal",
+    "sha256": "3e9e93842b9ea2ac79134f00494292d8f7ac7ed8e23b537f5120e17080cf6c23",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-chain-shirt",
+    "path": "public/audio/emporium/antimagic-chain-shirt.wav",
+    "kind": "metal",
+    "sha256": "c114cb8e9ae5915c2b00719b1c610fbe061335a58add95242d701e0549effff6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-half-plate-armor",
+    "path": "public/audio/emporium/antimagic-half-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "e69c37c97caf66941cbdc85f570ae20fcacf2cd8cf9d3d01ef2894e68b3678ea",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-hide-armor",
+    "path": "public/audio/emporium/antimagic-hide-armor.wav",
+    "kind": "leather",
+    "sha256": "64125bc0a5446e7b9a78b89b2bbc13c764146a69559842d0f132aabc18b11103",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-leather-armor",
+    "path": "public/audio/emporium/antimagic-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "a71a97bc5a7f547b876f503146b184cc13683d7292efdcac684c2a3af6484820",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-padded-armor",
+    "path": "public/audio/emporium/antimagic-padded-armor.wav",
+    "kind": "cloth",
+    "sha256": "15d89dfaa750f3d1f22b2cd3949417df14f0e1815910e307f016edb09d0ffbcd",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-plate-armor",
+    "path": "public/audio/emporium/antimagic-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "f31276a934a1a1c952dc378f9277a168cd9902a68376aec4e9ccf120b812f545",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-ring-mail",
+    "path": "public/audio/emporium/antimagic-ring-mail.wav",
+    "kind": "metal",
+    "sha256": "a4c27ea2655fcd35688b4712e397afffc3726e1ce76a5815b600c69af4bc2cad",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-scale-mail",
+    "path": "public/audio/emporium/antimagic-scale-mail.wav",
+    "kind": "metal",
+    "sha256": "bf521737adb21c6ce0f87ce6c7e9e34c6ab92f6285cd3641003b26e65c7415e4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-spiked-armor",
+    "path": "public/audio/emporium/antimagic-spiked-armor.wav",
+    "kind": "leather",
+    "sha256": "e0109234bc265c1f2c3e91313ba653852ea3bda722030ce124bf40e7a0020d65",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-splint-armor",
+    "path": "public/audio/emporium/antimagic-splint-armor.wav",
+    "kind": "metal",
+    "sha256": "202602422baee39e5e44c4a5014044e00811914e388bb597ac65e3d8ab891fda",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimagic-studded-leather-armor",
+    "path": "public/audio/emporium/antimagic-studded-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "b60e425f8792a34a931f1eafe9a7a62afb9b0935af2dd9632c46ed6345f6939b",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-breastplate",
+    "path": "public/audio/emporium/feywrought-breastplate.wav",
+    "kind": "metal",
+    "sha256": "6f01eee61114b57aadff7fdf58cef0510468070a202c3626540e02af8bebd53f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-chain-mail",
+    "path": "public/audio/emporium/feywrought-chain-mail.wav",
+    "kind": "metal",
+    "sha256": "623565c0d27e18c13082e584919fa0fba9ddf3791ea9109be43714f41f1053cc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-chain-shirt",
+    "path": "public/audio/emporium/feywrought-chain-shirt.wav",
+    "kind": "metal",
+    "sha256": "ecdff8adcffa0915a08a18c8fc74e9cecf4a30b485d9e41234aa973a7bdab422",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-half-plate-armor",
+    "path": "public/audio/emporium/feywrought-half-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "cc049ac34347b9733d9fdb780e9239da149647a931f3834223e1b2d841a365a3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-hide-armor",
+    "path": "public/audio/emporium/feywrought-hide-armor.wav",
+    "kind": "leather",
+    "sha256": "3fbf57cc78069fffaea2e7766e617a594eb3f284735a7144811df90df11df0c6",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-leather-armor",
+    "path": "public/audio/emporium/feywrought-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "0a9bfa58001722b80740861b2cb899aa648cf13d40bde37c374834d1fcd582a0",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-padded-armor",
+    "path": "public/audio/emporium/feywrought-padded-armor.wav",
+    "kind": "cloth",
+    "sha256": "dd05ad0add17147f60523edeb96ad9153c27a948eed3943fb3e4e768dc86d9f4",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-plate-armor",
+    "path": "public/audio/emporium/feywrought-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "8adfccf112d8a1134e61a68acce4a8b4aa4b2b196dc519fc5e04789d92650812",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-ring-mail",
+    "path": "public/audio/emporium/feywrought-ring-mail.wav",
+    "kind": "metal",
+    "sha256": "b47e5747fe1ae5cd9c9ee54c7f209588f01f2ad9b502d77e060b66d68f27ed54",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-scale-mail",
+    "path": "public/audio/emporium/feywrought-scale-mail.wav",
+    "kind": "metal",
+    "sha256": "d7acf4f407edd4962a10862b8be7a3eb2d82069808a16c7d44f0d386b1e96a0e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-spiked-armor",
+    "path": "public/audio/emporium/feywrought-spiked-armor.wav",
+    "kind": "leather",
+    "sha256": "e583380310d45caa5b3f2cb6abb06c550db6deb6d21427ea8e8d32371b154848",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-splint-armor",
+    "path": "public/audio/emporium/feywrought-splint-armor.wav",
+    "kind": "metal",
+    "sha256": "a2166f835ef75fc5df70381f82672c5a4219b7713f3e66b0a5977bfe4ff1b955",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "feywrought-studded-leather-armor",
+    "path": "public/audio/emporium/feywrought-studded-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "a90f0949a44a9c04e208f2a886b2a1af760113d43e9098e1b46a24dbc21f30e1",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-breastplate",
+    "path": "public/audio/emporium/gloomwrought-breastplate.wav",
+    "kind": "metal",
+    "sha256": "c9d92668637dcfbf3425c494bfbc81ed0b903b1abac11ac71c8685e3bcfdda79",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-chain-mail",
+    "path": "public/audio/emporium/gloomwrought-chain-mail.wav",
+    "kind": "metal",
+    "sha256": "666b8fae6d94551302cb9322bde6b674ae8a6197e0322f331a640a435a3957fe",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-chain-shirt",
+    "path": "public/audio/emporium/gloomwrought-chain-shirt.wav",
+    "kind": "metal",
+    "sha256": "e854066c94125667f97b58070621e3d4d49fcb24ec00fd12b17a304495a562e0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-half-plate-armor",
+    "path": "public/audio/emporium/gloomwrought-half-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "9a59de77ffe85971cf30de900ff6d90eb80332d26f92ef535ae108203111a6da",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-hide-armor",
+    "path": "public/audio/emporium/gloomwrought-hide-armor.wav",
+    "kind": "leather",
+    "sha256": "a63564619e08375f9d95655f56f867a4ef9108389672669b3d6ef373fd5d6a10",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-leather-armor",
+    "path": "public/audio/emporium/gloomwrought-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "2d667c204ac66447d2ee9086f6e77642cfc430d6c8ea0ea68c297af103b5872f",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-padded-armor",
+    "path": "public/audio/emporium/gloomwrought-padded-armor.wav",
+    "kind": "cloth",
+    "sha256": "c829df80206c37d2a29aeb7433e993abbd4d80f9645af98d8c870b4f0d5a9d07",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-plate-armor",
+    "path": "public/audio/emporium/gloomwrought-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "87fa73d497fc49db7ccbc575c0388fd42e747b231ec6c27a0df9be8eb9fb0974",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-ring-mail",
+    "path": "public/audio/emporium/gloomwrought-ring-mail.wav",
+    "kind": "metal",
+    "sha256": "930bd2d4858465f8c6301afd0b770aed5eadf89a86ef2b03abae6bc87546545d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-scale-mail",
+    "path": "public/audio/emporium/gloomwrought-scale-mail.wav",
+    "kind": "metal",
+    "sha256": "d7b08a01a408387375a3060afb2e3298cc1fa00cbb401c7d7d9896fe63e57005",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-spiked-armor",
+    "path": "public/audio/emporium/gloomwrought-spiked-armor.wav",
+    "kind": "leather",
+    "sha256": "54c007e099b9f71b9ae005d0d0aac30408a5fc82952a08cc7a9fd5a50b50f8af",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-splint-armor",
+    "path": "public/audio/emporium/gloomwrought-splint-armor.wav",
+    "kind": "metal",
+    "sha256": "540920eff5f2324efe49870607f5ead9e7191a1ec449eaf03df815c2fec6797d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "gloomwrought-studded-leather-armor",
+    "path": "public/audio/emporium/gloomwrought-studded-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "e2e430df506723c250664602c0c569b38e7e4fbeb692319971c54e247bf08160",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-breastplate",
+    "path": "public/audio/emporium/last-stand-breastplate.wav",
+    "kind": "metal",
+    "sha256": "8685b37389c6514cea5b94d807621cd3669477ddb6cc34c5baaccab93bdf60fb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-chain-mail",
+    "path": "public/audio/emporium/last-stand-chain-mail.wav",
+    "kind": "metal",
+    "sha256": "1e406415728717e8d42058b937b6e828fff58f211c24194a506ccfa4f6637aba",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-chain-shirt",
+    "path": "public/audio/emporium/last-stand-chain-shirt.wav",
+    "kind": "metal",
+    "sha256": "ccc783fb762642c6de16864ebd8cc76bd706febdcce7c2f818f03490aaa476fa",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-half-plate-armor",
+    "path": "public/audio/emporium/last-stand-half-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "1abdfdcd606bfc594323dfbdf951ad20e596b7aa1bd135dde08ff39c71569c6c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-hide-armor",
+    "path": "public/audio/emporium/last-stand-hide-armor.wav",
+    "kind": "leather",
+    "sha256": "d0c42e03dfdbdb819bc4755f5022d92dec853f8d358ffd5157ab6dfd4d5dcffd",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-leather-armor",
+    "path": "public/audio/emporium/last-stand-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "0794fcff1f2101a10cc71ea51e008764e1eb48bfac9b6e219005bf0e069fd9d2",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-padded-armor",
+    "path": "public/audio/emporium/last-stand-padded-armor.wav",
+    "kind": "cloth",
+    "sha256": "26f07e0a435d0853c4713870f1bca5cb2a94d1c595ba2e0b12c24750b227d7ee",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-plate-armor",
+    "path": "public/audio/emporium/last-stand-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "68ee8619bbb69ebb55e26548f5a1786af501ff7c281825d70365bf4644ea058a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-ring-mail",
+    "path": "public/audio/emporium/last-stand-ring-mail.wav",
+    "kind": "metal",
+    "sha256": "4cee025174d5c25189347ad3eabcf53e3750cb49f60309b1e281dbfd95c9cf0e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-scale-mail",
+    "path": "public/audio/emporium/last-stand-scale-mail.wav",
+    "kind": "metal",
+    "sha256": "df17184bfff44ac45dc8066f7160b9c689a8bc0550643fb6d07012792f05af0d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-spiked-armor",
+    "path": "public/audio/emporium/last-stand-spiked-armor.wav",
+    "kind": "leather",
+    "sha256": "8f0c603b37040a2af656f5ce1c1386f6ede1c32fde3283e7f71a5b11f355d80c",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-splint-armor",
+    "path": "public/audio/emporium/last-stand-splint-armor.wav",
+    "kind": "metal",
+    "sha256": "1f49c870ac26b034428d52a184ff9f5f1ed6493f84356a7e595a59ef79478e99",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "last-stand-studded-leather-armor",
+    "path": "public/audio/emporium/last-stand-studded-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "79e4cf50fd6b89cf13a8aa776b3097fba1030c620b2b51b53d28f50edd9085e1",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-breastplate",
+    "path": "public/audio/emporium/living-breastplate.wav",
+    "kind": "metal",
+    "sha256": "05d84672ccda522987b30c4294ec8ec2ec3255197b6bd4123b70cb18ccaa9b17",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-chain-mail",
+    "path": "public/audio/emporium/living-chain-mail.wav",
+    "kind": "metal",
+    "sha256": "b08447cc203b584dcc2f7caf3a150602836dadd155ff728c365f37f1d48d24da",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-chain-shirt",
+    "path": "public/audio/emporium/living-chain-shirt.wav",
+    "kind": "metal",
+    "sha256": "ed137341c9e7c79ba815bf7249a69c05d8790a90c852244f8d24c648ac2b877d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-half-plate-armor",
+    "path": "public/audio/emporium/living-half-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "8c56149fb3c7a4220b966c93fe94b11933a595840299943ce7bf18fbcdc708ba",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-hide-armor",
+    "path": "public/audio/emporium/living-hide-armor.wav",
+    "kind": "leather",
+    "sha256": "bce110113e0aded8e2d4f42a8868a74730299e4bde1595ae88b68921d5cdbcae",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-leather-armor",
+    "path": "public/audio/emporium/living-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "636ef152532fea05c2d2ce6dfaa3deaabb66ae42b9c88d66f4a0f1357076aa66",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-padded-armor",
+    "path": "public/audio/emporium/living-padded-armor.wav",
+    "kind": "cloth",
+    "sha256": "09af988528fb7aab9ec575f136e2f590310eb81c2eb669f7a8beda94a17af178",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-plate-armor",
+    "path": "public/audio/emporium/living-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "f9512a55aa50b595963385b5b26ea0f4477b5985e88c884a6b89b9e75da4a165",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-ring-mail",
+    "path": "public/audio/emporium/living-ring-mail.wav",
+    "kind": "metal",
+    "sha256": "f5f867bdff3875df2832919824313fd93c71c539c45b37fbf5cf98a0511ef293",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-scale-mail",
+    "path": "public/audio/emporium/living-scale-mail.wav",
+    "kind": "metal",
+    "sha256": "837f5feae4521c2aca3b5f19ca0093bd1410ef1dc2a00b3ba917be60482532ad",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-spiked-armor",
+    "path": "public/audio/emporium/living-spiked-armor.wav",
+    "kind": "leather",
+    "sha256": "26f2dd129361b9e88eadeba3f8801b1590e828e023038ede93771c893c74aca9",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-splint-armor",
+    "path": "public/audio/emporium/living-splint-armor.wav",
+    "kind": "metal",
+    "sha256": "bc37877b91ee43ad47b3066992da2d5684c4515dab39eb9f7f7d237e1c87a43e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "living-studded-leather-armor",
+    "path": "public/audio/emporium/living-studded-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "e264daab0e1dab1526c9f66f50c3c3aed0e6c76aed5d4713a23c663c16f5bc98",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-breastplate",
+    "path": "public/audio/emporium/ruidium-breastplate.wav",
+    "kind": "metal",
+    "sha256": "2cce729d64b2c31f35760a2f38583d2836a51fa82688c61853832d0cdeb2949b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-chain-mail",
+    "path": "public/audio/emporium/ruidium-chain-mail.wav",
+    "kind": "metal",
+    "sha256": "af98a53df4d491a06b82c25054c3aff6a327b086e561d0e4cc79f1587350a558",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-chain-shirt",
+    "path": "public/audio/emporium/ruidium-chain-shirt.wav",
+    "kind": "metal",
+    "sha256": "ab73c254002da8252a038757e277b85dc79f1c5fa526c9006f84824c7a1ec89e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-half-plate-armor",
+    "path": "public/audio/emporium/ruidium-half-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "e021d953daf04fadf024a68454e13ca616ac93d6dfabb2fc99d84e7f65e77ea2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-plate-armor",
+    "path": "public/audio/emporium/ruidium-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "bdbd2d74d23bb600c86034c5ce89ef29f436c1b1097e0d3405cf2dd91166372c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-ring-mail",
+    "path": "public/audio/emporium/ruidium-ring-mail.wav",
+    "kind": "metal",
+    "sha256": "83d0dbd84d74e071eac7200d23eedf8425d491f280ee061088c248d3786449de",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-scale-mail",
+    "path": "public/audio/emporium/ruidium-scale-mail.wav",
+    "kind": "metal",
+    "sha256": "7022a22887e3df462ea20e63b54a93bff8bede49b73a0b1137bedb636b54a526",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-spiked-armor",
+    "path": "public/audio/emporium/ruidium-spiked-armor.wav",
+    "kind": "leather",
+    "sha256": "a9b1dee92f326a3d25d091f84678e548ea4d321099f8966b5ded93bc2d4a2a6e",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-splint-armor",
+    "path": "public/audio/emporium/ruidium-splint-armor.wav",
+    "kind": "metal",
+    "sha256": "84689a3e0e8cf9801e7b42fb74dbb3654d4f080f7fb5e78677e3f46be49f2799",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

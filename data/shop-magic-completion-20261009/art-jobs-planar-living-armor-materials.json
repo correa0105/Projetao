@@ -1,0 +1,29 @@
+{
+  "jobs": [
+    {
+      "id": "material-antimagic-armor",
+      "family": "Antimagic Armor",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square, flat surface filling every edge, no external background, no object silhouette. matte pale blue-silver brushed metal with precise narrow black obsidian inlay tracks forming interrupted concentric arcs and tiny shield-shaped junctions, elegant restrained geometric wards engraved physically into the surface, calm sober craftsmanship, readable silvery highlights, no neon runes or rune letters. Detailed painterly realism, subtle tactile material depth and neutral directional light. This will be applied inside thirteen distinct existing armor models, so distribute small and medium scale motifs across a uniform complete swatch, with enough separation to remain readable on a small game shop card. No central medallion, staged objects, complete armor, weapon, character, cast shadows, heavy dark vignette, border, checkerboard, writing, lettering, numbers, watermark or logo. Give this surface its own unmistakable original visual identity."
+    },
+    {
+      "id": "material-feywrought-armor",
+      "family": "Feywrought Armor",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square, flat surface filling every edge, no external background, no object silhouette. lush fresh emerald and jade-green enamel intertwined with elegant gold botanical vine filigree, clearly recognizable small pink wildflowers, blue forget-me-not flowers and tiny ivory blossoms, richly colorful Feywild craftsmanship, delicate believable dimensional enamel inlays and textured leaf veins, no random abstract scratches. Detailed painterly realism, subtle tactile material depth and neutral directional light. This will be applied inside thirteen distinct existing armor models, so distribute small and medium scale motifs across a uniform complete swatch, with enough separation to remain readable on a small game shop card. No central medallion, staged objects, complete armor, weapon, character, cast shadows, heavy dark vignette, border, checkerboard, writing, lettering, numbers, watermark or logo. Give this surface its own unmistakable original visual identity."
+    },
+    {
+      "id": "material-gloomwrought-armor",
+      "family": "Gloomwrought Armor",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square, flat surface filling every edge, no external background, no object silhouette. strictly grayscale, warm-neutral silver and charcoal black damascened material with intricate gothic tracery, fine branching thornvine engraving and pale silver lancet arch inlays, elegant Shadowfell craftsmanship, varied midtone gray steel keeps its details readable, no saturated color, no luminous red fissures. Detailed painterly realism, subtle tactile material depth and neutral directional light. This will be applied inside thirteen distinct existing armor models, so distribute small and medium scale motifs across a uniform complete swatch, with enough separation to remain readable on a small game shop card. No central medallion, staged objects, complete armor, weapon, character, cast shadows, heavy dark vignette, border, checkerboard, writing, lettering, numbers, watermark or logo. Give this surface its own unmistakable original visual identity."
+    },
+    {
+      "id": "material-last-stand-armor",
+      "family": "Last Stand Armor",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square, flat surface filling every edge, no external background, no object silhouette. bright champagne-gold and ivory silver ceremonial metal, softly shimmering fine hammered highlights, engraved small sunbursts and heroic laurel leaf garlands, tiny pearlescent gold inlays, honorable resilient craftsmanship, clear warm highlights, no flowers, neon fire, text or black-red infernal motifs. Detailed painterly realism, subtle tactile material depth and neutral directional light. This will be applied inside thirteen distinct existing armor models, so distribute small and medium scale motifs across a uniform complete swatch, with enough separation to remain readable on a small game shop card. No central medallion, staged objects, complete armor, weapon, character, cast shadows, heavy dark vignette, border, checkerboard, writing, lettering, numbers, watermark or logo. Give this surface its own unmistakable original visual identity."
+    },
+    {
+      "id": "material-living-armor",
+      "family": "Living Armor",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square, flat surface filling every edge, no external background, no object silhouette. unsettling biological armor material, layered black and dark purple CHITIN plates with visible translucent thin crimson veins beneath the shell and small glossy red sinew threads between segmented plates, richly tactile organic satin surface, black-purple base is not featureless black, restrained wet sheen, clearly biological chitin rather than lava, stone, metallic runes or crimson crystal. Detailed painterly realism, subtle tactile material depth and neutral directional light. This will be applied inside thirteen distinct existing armor models, so distribute small and medium scale motifs across a uniform complete swatch, with enough separation to remain readable on a small game shop card. No central medallion, staged objects, complete armor, weapon, character, cast shadows, heavy dark vignette, border, checkerboard, writing, lettering, numbers, watermark or logo. Give this surface its own unmistakable original visual identity."
+    }
+  ]
+}
