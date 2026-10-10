@@ -22,12 +22,23 @@ const base = `http://127.0.0.1:${addr.port}`,
   origin = (process.env.APP_ORIGIN || 'http://localhost:3000').split(',')[0];
 let cookie = '';
 async function request(path: string, method = 'GET', body?: unknown) {
+  for (let attempt = 0; attempt < 3; attempt++) {
   const r = await fetch(base + '/api' + path, {
     method,
     headers: { Cookie: cookie, Origin: origin, 'Content-Type': 'application/json' },
     ...(body ? { body: JSON.stringify(body) } : {}),
   });
+  if (r.status === 429 && method === 'GET' && attempt < 2) {
+    const seconds = Number(r.headers.get('retry-after') || 60);
+    assert(Number.isFinite(seconds) && seconds >= 0 && seconds <= 60);
+    await r.arrayBuffer();
+    console.log('Read-only catalog audit is respecting the API rate-limit window.');
+    await new Promise((resolve) => setTimeout(resolve, Math.min(60000, Math.max(1, seconds * 1000 + 50))));
+    continue;
+  }
   return { status: r.status, data: await r.json(), headers: r.headers };
+  }
+  throw Error('Read-only catalog audit could not resume after the API rate-limit window');
 }
 try {
   const signup = await request('/auth/sign-up/email', 'POST', {

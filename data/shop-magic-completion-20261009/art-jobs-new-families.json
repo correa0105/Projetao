@@ -1,0 +1,25 @@
+{
+  "mode": "Original raster materials extending the existing native SVG skin library",
+  "jobs": [
+    {
+      "id": "material-dazzling-weapon",
+      "family": "Dazzling Weapon",
+      "prompt": "Original premium fantasy RPG weapon material texture, one opaque square continuous surface filling every pixel edge to edge. Macro craftsmanship, painted photorealistic game inventory quality, diffuse studio lighting that preserves small-scale detail. This will be mapped onto existing item silhouettes; show ONLY surface material, no weapon, no object, no framing, no parchment, no lettering, no recognizable logo, no background scene. Ivory polished enchanted steel with fine gold sunburst engravings surrounding tiny faceted opal inlays, tight restrained radial pattern and white-gold glints. Distinct cool pearl body and warm golden hairline etching; dazzling sacred-looking craftsmanship without crosses or real religious marks. Sharp engraved metal microstructure, no oversized central emblem."
+    },
+    {
+      "id": "material-corpse-slayer",
+      "family": "Corpse Slayer",
+      "prompt": "Original premium fantasy RPG weapon material texture, one opaque square continuous surface filling every pixel edge to edge. Macro craftsmanship, painted photorealistic game inventory quality, diffuse studio lighting that preserves small-scale detail. This will be mapped onto existing item silhouettes; show ONLY surface material, no weapon, no object, no framing, no parchment, no lettering, no recognizable logo, no background scene. Ash-silver tempered steel with soot-dark recesses, close repeating small sculpted skull-like fantasy death masks and stylized vertebra links, pale cold silver raised relief and tiny cyan enamel accents. Weathered but expertly maintained weapon metal, rich tactile engraving rather than a drawing on paper. Skull relief distributed evenly across the entire surface, no gore."
+    },
+    {
+      "id": "material-certain-death",
+      "family": "Weapon of Certain Death",
+      "prompt": "Original premium fantasy RPG weapon material texture, one opaque square continuous surface filling every pixel edge to edge. Macro craftsmanship, painted photorealistic game inventory quality, diffuse studio lighting that preserves small-scale detail. This will be mapped onto existing item silhouettes; show ONLY surface material, no weapon, no object, no framing, no parchment, no lettering, no recognizable logo, no background scene. Deep blue-black obsidian-finished steel with very fine branching violet and garnet capillary enamel seams, pale silver interrupted hooked sigils like severed healing channels. Irregular dense interlocking engraving, muted burgundy inset lines, cold satin metal under diffuse light. Abstract ominous restrained craftsmanship; no skulls, no flames, no central motif, no gore."
+    },
+    {
+      "id": "material-hellfire-weapon",
+      "family": "Hellfire Weapon",
+      "prompt": "Original premium fantasy RPG weapon material texture, one opaque square continuous surface filling every pixel edge to edge. Macro craftsmanship, painted photorealistic game inventory quality, diffuse studio lighting that preserves small-scale detail. This will be mapped onto existing item silhouettes; show ONLY surface material, no weapon, no object, no framing, no parchment, no lettering, no recognizable logo, no background scene. Heavy black infernal forged iron, hammer marks and orange-red hellfire veins running through jagged fine cracks. Dense brass-edged chain-link relief between the seams, dark oxidized metal, localized tiny amber molten glows in the recessed fissures. Tactile iron and warm copper with deep contrast, no free-standing flames, no smoke, no large fire blob."
+    }
+  ]
+}

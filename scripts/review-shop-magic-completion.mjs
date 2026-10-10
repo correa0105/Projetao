@@ -93,7 +93,7 @@ try {
     assert((await page.evaluate(() => document.documentElement.scrollWidth)) <= width + 1);
   }
   assert.deepEqual(errors, []);
-  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance','antimatter-rifle-plus-3','wooden-staff-of-warning']){
+  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance','antimatter-rifle-plus-3','wooden-staff-of-warning','corpse-slayer-greatsword','dazzling-halberd','hellfire-heavy-crossbow','longsword-of-certain-death']){
     const x=items.find(x=>x.id===id);if(!x)continue;
     await search.fill(x.name);
     const card=page.locator(`.shop-product[data-family="${x.magic_family}"]`);

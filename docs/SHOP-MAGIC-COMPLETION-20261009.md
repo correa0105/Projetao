@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **191 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **397 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -173,6 +173,42 @@ mantêm linhas integrais idênticas. Conferidos 382 arquivos de mídia dos itens
 17 arquivos de trabalho independente conservados. Restam **2.885 candidatos
 pendentes**. A célula de extermínio ainda exige curadoria de tipos de criatura;
 famílias com magias ou alvos específicos também precisam de expansão das opções.
+
+## Quinto lote: quatro famílias novas, 206 formas reais
+
+Aplicadas as armas deslumbrantes (53 modelos), caçadoras de mortos-vivos (51),
+de morte certa (51) e infernais (51). São quatro baús novos com seleção do modelo
+real. Cada família recebeu uma superfície original gerada individualmente:
+opala/raios dourados, caveiras em prata, metal escuro com veios violetas e ferro
+infernal com fissuras luminosas. As skins conservam o modelo físico; os arquivos
+são distintos e todas as 206 ofertas têm falas escritas individualmente e sons
+próprios. Prompts em `art-jobs-new-families.json` e no manifesto de proveniência.
+
+As explicações conservam sintonia, luz, reação/cargas do clarão, dano e expulsão
+contra mortos-vivos, intervalo sem recuperação de PV e o destino infernal da
+alma. Não se inventou dano extra de fogo ou morte automática. Propriedades dos
+modelos incluem versatilidade, recarga, carregamento, rajada e formas de ataque
+do hoopak; uma rajada por resistência é distinguida de uma jogada de ataque.
+A lança de cavalaria descreve a exceção de uma mão quando montado; o equipamento
+estático conserva o uso de duas mãos sem automatizar essa condição. O peso das
+quatro fundas é uma estimativa explícita de 0,1 lb, pois a fonte não lista peso.
+
+Auditoria real passou para as 397 ofertas: fontes, mídia, slots, compra, saldo,
+histórico, repetição, preços administrativos e consumo de munições. A leitura
+do catálogo respeita as janelas do limite de requisições; a política do servidor
+não foi alterada. Revisão de todas as imagens, falas e explicações na loja e
+prévia inclinada dos quatro baús em 1500/760/390 px passou. TypeScript e builds
+passaram na cópia limpa. Todos os campos dos 191 produtos anteriores permanecem
+exatamente iguais, assim como suas entradas de áudio; 206 sons novos têm hashes
+exclusivos.
+
+Release saudável `alvorada-cinzenta-app:magic-completion-v5-20261009`. Somente
+206 produtos foram adicionados; 60 tabelas e todo produto anterior conservaram
+suas linhas integrais. Conferidos 817 arquivos: 794 mídias das ofertas e 23
+referências/materiais de apoio. Os 43 bundles e 21 VFX coincidem com a cópia
+validada. Ilustrador PID 24260 mantido. Restam **2.679 candidatos pendentes**,
+além das opções de magia/alvo que ainda precisam de expansão. O pedido completo
+continua em andamento.
 
 Próximo trabalho: continuar a curadoria e as artes dos itens nomeados e famílias,
 ampliar a verificação de cobertura e adicionar apenas lotes completamente prontos.

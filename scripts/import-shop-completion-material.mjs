@@ -1,0 +1,25 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import sharp from 'sharp';
+const args=Object.fromEntries(process.argv.slice(2).map(x=>{const i=x.indexOf('=');return[x.slice(2,i),x.slice(i+1)];}));
+const {id,source,prompt,family}=args;
+assert(/^material-[a-z0-9-]+$/.test(id),'Safe material ID required');
+assert(source&&prompt&&family,'Source, prompt and family required');
+const text=await fs.readFile(prompt,'utf8');
+assert(text.trim().length>100,'Record the original prompt');
+const dir='data/shop-magic-completion-20261009',file=dir+'/art-manifest.json';
+const manifest=JSON.parse(await fs.readFile(file));
+assert(!manifest.assets.some(a=>a.id===id),'Material already imported');
+const dest='/shop/magic-completion-20261009/'+id+'.webp';
+try{await fs.access('public'+dest);throw Error('Destination already exists');}catch(e){if(e.code!=='ENOENT')throw e;}
+await fs.mkdir('.local/shop-completion/native',{recursive:true});
+await fs.copyFile(source,'.local/shop-completion/native/'+id+'.png');
+const bytes=await sharp(source).resize({width:512,height:512,fit:'cover'}).webp({quality:94}).toBuffer();
+const meta=await sharp(bytes).metadata();
+await fs.mkdir(path.dirname('public'+dest),{recursive:true});
+await fs.writeFile('public'+dest,bytes);
+manifest.assets.push({id,path:dest,mode:'original generated material texture',family,width:meta.width,height:meta.height,sha256:createHash('sha256').update(bytes).digest('hex'),prompt:text,native:'.local/shop-completion/native/'+id+'.png',review:'pending visual review'});
+await fs.writeFile(file,JSON.stringify(manifest,null,2)+'\n');
+console.log('Imported original material',id);
