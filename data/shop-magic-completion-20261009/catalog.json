@@ -1,0 +1,595 @@
+{
+  "status": "ready reviewed subset; full completion in progress",
+  "ready": true,
+  "source": "https://5e.tools/items.html",
+  "asOf": "2026-10-09",
+  "planned": 3103,
+  "pending": 3091,
+  "items": [
+    {
+      "id": "all-purpose-tool-plus-1",
+      "name": "Ferramenta multifuncional +1",
+      "original_name": "+1 All-Purpose Tool",
+      "category": "Mágicos incomuns",
+      "description": "Chave de fenda encantada de madeira e bronze que assume outras formas de ferramentas de artesão. Um foco para artífices, com bônus +1 às magias e acesso temporário a um truque.",
+      "merchant_comment": "A ferramenta multifuncional +1 poupa bastante espaço na mala. Transforme antes de começar o serviço; nenhum marceneiro gosta de descobrir que está apertando um parafuso com um pincel.",
+      "price_cp": 40000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Tasha's Cauldron of Everything",
+      "source_url": "https://5e.tools/items.html#%2B1%20all-purpose%20tool_tce",
+      "image_path": "/shop/magic-completion-20261009/all-purpose-tool-plus-1.webp",
+      "audio_path": "/audio/emporium/all-purpose-tool-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 All-Purpose Tool",
+        "upstream_source": "TCE",
+        "upstream_page": 119,
+        "upstream_facts": {
+          "name": "+1 All-Purpose Tool",
+          "source": "TCE",
+          "page": 119,
+          "rarity": "uncommon",
+          "type": "SCF",
+          "wondrous": true,
+          "reqAttune": "by an artificer",
+          "reqAttuneTags": [
+            {
+              "class": "artificer|tce"
+            }
+          ],
+          "bonusSpellAttack": "+1",
+          "bonusSpellSaveDc": "+1"
+        },
+        "source_book": "Tasha's Cauldron of Everything",
+        "source_edition": "D&D 5e",
+        "rules_summary": "Chave de fenda de madeira e bronze que exige sintonização por um artífice. Com uma ação, transforma-se em qualquer ferramenta de artesão escolhida, e você tem proficiência no formato assumido. Enquanto segurada, concede +1 às jogadas de ataque e CDs de resistência das magias de artífice. Uma ação permite escolher um truque que você não conhece de qualquer lista de classe: durante 8 horas, ele conta como truque de artífice e pode ser conjurado por você. Essa escolha só fica disponível outra vez no próximo amanhecer.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "wood",
+        "attunement": "by an artificer"
+      }
+    },
+    {
+      "id": "amulet-of-the-devout-plus-1",
+      "name": "Amuleto do devoto +1",
+      "original_name": "+1 Amulet of the Devout",
+      "category": "Mágicos incomuns",
+      "description": "Símbolo sagrado de prata com pedra âmbar. Vestido por um clérigo ou paladino sintonizado, fortalece suas magias e permite um uso adicional de Canalizar Divindade por amanhecer.",
+      "merchant_comment": "O amuleto do devoto +1 tem o fecho firme e a pedra bem assentada. A fé é sua; eu só garanto que o símbolo não se solte no meio da prece.",
+      "price_cp": 40000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Tasha's Cauldron of Everything",
+      "source_url": "https://5e.tools/items.html#%2B1%20amulet%20of%20the%20devout_tce",
+      "image_path": "/shop/magic-completion-20261009/amulet-of-the-devout-plus-1.webp",
+      "audio_path": "/audio/emporium/amulet-of-the-devout-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Amulet of the Devout",
+        "upstream_source": "TCE",
+        "upstream_page": 119,
+        "upstream_facts": {
+          "name": "+1 Amulet of the Devout",
+          "source": "TCE",
+          "page": 119,
+          "rarity": "uncommon",
+          "wondrous": true,
+          "reqAttune": "by a cleric or paladin",
+          "reqAttuneTags": [
+            {
+              "class": "cleric"
+            },
+            {
+              "class": "paladin"
+            }
+          ],
+          "weight": 1,
+          "bonusSpellAttack": "+1",
+          "bonusSpellSaveDc": "+1"
+        },
+        "source_book": "Tasha's Cauldron of Everything",
+        "source_edition": "D&D 5e",
+        "rules_summary": "Símbolo sagrado em prata, com um sol trabalhado ao redor de uma pedra âmbar. Exige sintonização por um clérigo ou paladino. Enquanto vestido, concede +1 às jogadas de ataque de suas magias e à CD dos testes de resistência contra elas. Também permite usar Canalizar Divindade uma vez sem gastar um uso do recurso; essa propriedade se renova no próximo amanhecer.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "neck"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": "by a cleric or paladin"
+      }
+    },
+    {
+      "id": "arcane-grimoire-plus-1",
+      "name": "Grimório arcano +1",
+      "original_name": "+1 Arcane Grimoire",
+      "category": "Mágicos incomuns",
+      "description": "Grimório de couro azul com fecho em crescente. Serve como livro de magias e foco para um mago sintonizado, aprimorando suas magias e a Recuperação Arcana.",
+      "merchant_comment": "O grimório arcano +1 deixa espaço para as suas anotações. Só não confunda o fecho de lua com um marcador de página: já vi um aprendiz tentar arrancá-lo.",
+      "price_cp": 40000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · Tasha's Cauldron of Everything",
+      "source_url": "https://5e.tools/items.html#%2B1%20arcane%20grimoire_tce",
+      "image_path": "/shop/magic-completion-20261009/arcane-grimoire-plus-1.webp",
+      "audio_path": "/audio/emporium/arcane-grimoire-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Arcane Grimoire",
+        "upstream_source": "TCE",
+        "upstream_page": 120,
+        "upstream_facts": {
+          "name": "+1 Arcane Grimoire",
+          "source": "TCE",
+          "page": 120,
+          "rarity": "uncommon",
+          "type": "SCF",
+          "wondrous": true,
+          "reqAttune": "by a wizard",
+          "reqAttuneTags": [
+            {
+              "class": "wizard"
+            }
+          ],
+          "weight": 3,
+          "bonusSpellAttack": "+1",
+          "bonusSpellSaveDc": "+1"
+        },
+        "source_book": "Tasha's Cauldron of Everything",
+        "source_edition": "D&D 5e",
+        "rules_summary": "Livro de couro azul com cantoneiras de bronze e fecho em crescente. Exige sintonização por um mago. Pode guardar suas magias como grimório e, quando segurado, funciona como foco para magias de mago, concedendo +1 às respectivas jogadas de ataque e CDs de resistência. Ao usar Recuperação Arcana, você recupera 1 nível adicional de espaços de magia.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "paper",
+        "attunement": "by a wizard"
+      }
+    },
+    {
+      "id": "bloodwell-vial-plus-1",
+      "name": "Frasco de sangue +1",
+      "original_name": "+1 Bloodwell Vial",
+      "category": "Mágicos incomuns",
+      "description": "Frasco rubro com armação de prata, vinculado ao sangue de um feiticeiro. Fortalece suas magias e permite recuperar pontos de feitiçaria ao usar Dados de Vida para curar-se.",
+      "merchant_comment": "O frasco de sangue +1 vem vazio para você fazer o vínculo. Antes que pergunte: sangue de outra pessoa não resolve, e eu não forneço amostra junto com a compra.",
+      "price_cp": 40000,
+      "weight_lb": 0.1,
+      "weight_estimated": true,
+      "source": "D&D · Tasha's Cauldron of Everything",
+      "source_url": "https://5e.tools/items.html#%2B1%20bloodwell%20vial_tce",
+      "image_path": "/shop/magic-completion-20261009/bloodwell-vial-plus-1.webp",
+      "audio_path": "/audio/emporium/bloodwell-vial-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Bloodwell Vial",
+        "upstream_source": "TCE",
+        "upstream_page": 122,
+        "upstream_facts": {
+          "name": "+1 Bloodwell Vial",
+          "source": "TCE",
+          "page": 122,
+          "rarity": "uncommon",
+          "type": "SCF",
+          "wondrous": true,
+          "reqAttune": "by a sorcerer",
+          "reqAttuneTags": [
+            {
+              "class": "sorcerer"
+            }
+          ],
+          "bonusSpellAttack": "+1",
+          "bonusSpellSaveDc": "+1"
+        },
+        "source_book": "Tasha's Cauldron of Everything",
+        "source_edition": "D&D 5e",
+        "rules_summary": "Frasco rubro suspenso em uma armação de prata. Exige sintonização por um feiticeiro, que coloca algumas gotas do próprio sangue no recipiente; ele permanece lacrado durante esse vínculo, e o sangue vira cinza quando a sintonização termina. Vestido ou segurado, serve como foco e concede +1 aos ataques e CDs de resistência das magias de feiticeiro. Ao gastar Dados de Vida para recuperar PV enquanto carrega o frasco, você pode recuperar 5 pontos de feitiçaria, uma vez por amanhecer.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "neck",
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "glass",
+        "attunement": "by a sorcerer"
+      }
+    },
+    {
+      "id": "dragonhide-belt-plus-1",
+      "name": "Cinto de couro de dragão +1",
+      "original_name": "+1 Dragonhide Belt",
+      "category": "Mágicos incomuns",
+      "description": "Cinto flexível de couro escamado com fivela de bronze. Um monge sintonizado ganha +1 nas CDs de seus recursos de ki e pode recuperar parte dessa energia uma vez por amanhecer.",
+      "merchant_comment": "O cinto de couro de dragão +1 cede quando você se move, sem afrouxar a fivela. O dragão tinha muitas virtudes; ficar parado não era uma delas.",
+      "price_cp": 40000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Fizban's Treasury of Dragons",
+      "source_url": "https://5e.tools/items.html#%2B1%20dragonhide%20belt_ftd",
+      "image_path": "/shop/magic-completion-20261009/dragonhide-belt-plus-1.webp",
+      "audio_path": "/audio/emporium/dragonhide-belt-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Dragonhide Belt",
+        "upstream_source": "FTD",
+        "upstream_page": 23,
+        "upstream_facts": {
+          "name": "+1 Dragonhide Belt",
+          "source": "FTD",
+          "page": 23,
+          "rarity": "uncommon",
+          "wondrous": true,
+          "reqAttune": "by a monk",
+          "reqAttuneTags": [
+            {
+              "class": "monk"
+            }
+          ]
+        },
+        "source_book": "Fizban's Treasury of Dragons",
+        "source_edition": "D&D 5e",
+        "rules_summary": "Cinto flexível de couro escamado, com costuras reforçadas e fivela de bronze. Exige sintonização por um monge. Enquanto vestido, aumenta em 1 a CD dos testes de resistência de seus recursos de ki. Com uma ação, você pode recuperar pontos de ki iguais a uma rolagem de seu dado de Artes Marciais; essa recuperação fica disponível novamente no próximo amanhecer.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "belt"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "leather",
+        "attunement": "by a monk"
+      }
+    },
+    {
+      "id": "moon-sickle-plus-1",
+      "name": "Foice lunar +1",
+      "original_name": "+1 Moon Sickle",
+      "category": "Mágicos incomuns",
+      "description": "Foice leve de lâmina prateada em crescente. Fortalece ataques, magias e cura nas mãos de um druida ou patrulheiro sintonizado.",
+      "merchant_comment": "A foice lunar +1 tem a lâmina bem assentada no cabo. Serve para mais do que colher ervas, mas ainda recomendo guardar a ponta longe dos dedos quando a lua distrair você.",
+      "price_cp": 40100,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Tasha's Cauldron of Everything",
+      "source_url": "https://5e.tools/items.html#%2B1%20moon%20sickle_tce",
+      "image_path": "/shop/magic-completion-20261009/moon-sickle-plus-1.webp",
+      "audio_path": "/audio/emporium/moon-sickle-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Moon Sickle",
+        "upstream_source": "TCE",
+        "upstream_page": 133,
+        "upstream_facts": {
+          "name": "+1 Moon Sickle",
+          "source": "TCE",
+          "page": 133,
+          "rarity": "uncommon",
+          "type": "M",
+          "baseItem": "sickle|PHB",
+          "reqAttune": "by a druid or ranger",
+          "reqAttuneTags": [
+            {
+              "class": "druid"
+            },
+            {
+              "class": "ranger"
+            }
+          ],
+          "weight": 2,
+          "bonusWeapon": "+1",
+          "bonusSpellAttack": "+1",
+          "bonusSpellSaveDc": "+1",
+          "dmg1": "1d4",
+          "dmgType": "S",
+          "property": [
+            "L"
+          ]
+        },
+        "source_book": "Tasha's Cauldron of Everything",
+        "source_edition": "D&D 5e",
+        "rules_summary": "Foice de uma mão com lâmina prateada em crescente e cabo curto de freixo. É uma arma leve de dano 1d4 cortante e exige sintonização por um druida ou patrulheiro. Enquanto segurada, concede +1 aos ataques e danos feitos com a arma e +1 aos ataques e CDs de resistência das magias dessas classes; também funciona como foco para elas. Ao conjurar uma magia que recupera PV enquanto segura a foice, acrescente 1d4 à cura realizada.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": "by a druid or ranger",
+        "base_item": "sickle",
+        "magic_kind": "weapon",
+        "enhancement": 1
+      }
+    },
+    {
+      "id": "rhythm-maker-s-drum-plus-1",
+      "name": "Tambor do ritmista +1",
+      "original_name": "+1 Rhythm-Maker's Drum",
+      "category": "Mágicos incomuns",
+      "description": "Tambor de madeira avermelhada e aros de bronze. Aprimora as magias de um bardo sintonizado e recupera um uso de Inspiração de Bardo uma vez por amanhecer.",
+      "merchant_comment": "O tambor do ritmista +1 segura bem a afinação. Se o grupo estiver desanimado, uma boa batida ajuda; se estiver dormindo, espere para descobrir quanto apreciam seu talento.",
+      "price_cp": 40000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · Tasha's Cauldron of Everything",
+      "source_url": "https://5e.tools/items.html#%2B1%20rhythm-maker's%20drum_tce",
+      "image_path": "/shop/magic-completion-20261009/rhythm-maker-s-drum-plus-1.webp",
+      "audio_path": "/audio/emporium/rhythm-maker-s-drum-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Rhythm-Maker's Drum",
+        "upstream_source": "TCE",
+        "upstream_page": 134,
+        "upstream_facts": {
+          "name": "+1 Rhythm-Maker's Drum",
+          "source": "TCE",
+          "page": 134,
+          "rarity": "uncommon",
+          "type": "INS",
+          "wondrous": true,
+          "baseItem": "drum|phb",
+          "reqAttune": "by a bard",
+          "reqAttuneTags": [
+            {
+              "class": "bard"
+            }
+          ],
+          "weight": 3,
+          "bonusSpellAttack": "+1",
+          "bonusSpellSaveDc": "+1"
+        },
+        "source_book": "Tasha's Cauldron of Everything",
+        "source_edition": "D&D 5e",
+        "rules_summary": "Tambor de madeira avermelhada, pele tensionada e aros de bronze trabalhados. Exige sintonização por um bardo. Enquanto segurado, concede +1 aos ataques e CDs de resistência das magias de bardo. Com uma ação, tocar o tambor recupera um uso de Inspiração de Bardo; essa propriedade se renova no próximo amanhecer.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "wood",
+        "attunement": "by a bard"
+      }
+    },
+    {
+      "id": "rod-of-the-pact-keeper-plus-1",
+      "name": "Bastão do guardião do pacto +1",
+      "original_name": "+1 Rod of the Pact Keeper",
+      "category": "Mágicos incomuns",
+      "description": "Bastão curto de ébano, prata escura e ametista. Fortalece as magias de um bruxo sintonizado e permite recuperar um espaço de magia uma vez por Descanso Longo.",
+      "merchant_comment": "O bastão do guardião do pacto +1 cabe na mão e não precisa bater no chão para funcionar. Quanto ao que seu patrono vai achar da compra, essa parte da conversa eu deixo com você.",
+      "price_cp": 40000,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#%2B1%20rod%20of%20the%20pact%20keeper_xdmg",
+      "image_path": "/shop/magic-completion-20261009/rod-of-the-pact-keeper-plus-1.webp",
+      "audio_path": "/audio/emporium/rod-of-the-pact-keeper-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Rod of the Pact Keeper",
+        "upstream_source": "XDMG",
+        "upstream_page": 301,
+        "upstream_facts": {
+          "name": "+1 Rod of the Pact Keeper",
+          "source": "XDMG",
+          "page": 301,
+          "rarity": "uncommon",
+          "type": "RD|XDMG",
+          "reqAttune": "by a warlock",
+          "reqAttuneTags": [
+            {
+              "class": "warlock"
+            }
+          ],
+          "weight": 2,
+          "bonusSpellAttack": "+1",
+          "bonusSpellSaveDc": "+1"
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Bastão curto de ébano e prata escura, com ametista protegida por uma armação metálica. Exige sintonização por um bruxo. Enquanto segurado, concede +1 às jogadas de ataque e CDs de resistência das magias de bruxo. Uma ação de Magia permite recuperar um espaço de magia; essa recuperação volta a ficar disponível depois de um Descanso Longo.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "wood",
+        "attunement": "by a warlock"
+      }
+    },
+    {
+      "id": "wraps-of-unarmed-power-plus-1",
+      "name": "Faixas do poder desarmado +1",
+      "original_name": "+1 Wraps of Unarmed Power",
+      "category": "Mágicos incomuns",
+      "description": "Faixas de linho com fios de bronze. Concedem +1 aos ataques e danos de Golpes Desarmados, que podem causar dano de Força em lugar do tipo habitual.",
+      "merchant_comment": "As faixas do poder desarmado +1 ficam firmes sem prender a circulação. Experimente fechar a mão antes de sair; o balcão não é um bom lugar para testar o primeiro soco.",
+      "price_cp": 40000,
+      "weight_lb": 0.25,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#%2B1%20wraps%20of%20unarmed%20power_xdmg",
+      "image_path": "/shop/magic-completion-20261009/wraps-of-unarmed-power-plus-1.webp",
+      "audio_path": "/audio/emporium/wraps-of-unarmed-power-plus-1.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "+1 Wraps of Unarmed Power",
+        "upstream_source": "XDMG",
+        "upstream_page": 325,
+        "upstream_facts": {
+          "name": "+1 Wraps of Unarmed Power",
+          "source": "XDMG",
+          "page": 325,
+          "rarity": "uncommon",
+          "wondrous": true,
+          "bonusWeapon": "+1"
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Par de faixas de linho reforçado por fios de bronze. Enquanto vestidas, concedem +1 aos ataques e danos de seus Golpes Desarmados. Esses golpes podem causar dano de Força ou o tipo de dano que normalmente causariam, à sua escolha.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "hands"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "cloth",
+        "attunement": false
+      }
+    },
+    {
+      "id": "cloak-of-billowing",
+      "name": "Capa esvoaçante",
+      "original_name": "Cloak of Billowing",
+      "category": "Mágicos comuns",
+      "description": "Capa vermelha de forro escuro e fecho de prata. Com uma Ação Bônus, ela se agita dramaticamente durante um minuto, mesmo sem vento.",
+      "merchant_comment": "A capa esvoaçante faz uma entrada e tanto, mesmo quando não há vento. Só ensaie o discurso antes: ela cuida da pose, não das palavras.",
+      "price_cp": 10000,
+      "weight_lb": 3,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#cloak%20of%20billowing_xdmg",
+      "image_path": "/shop/magic-completion-20261009/cloak-of-billowing.webp",
+      "audio_path": "/audio/emporium/cloak-of-billowing.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Cloak of Billowing",
+        "upstream_source": "XDMG",
+        "upstream_page": 244,
+        "upstream_facts": {
+          "name": "Cloak of Billowing",
+          "source": "XDMG",
+          "page": 244,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Capa de tecido vermelho pesado, forro escuro e fecho de prata. Ao vesti-la, uma Ação Bônus faz o tecido se agitar de maneira dramática durante 1 minuto.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "cloak"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "cloth",
+        "attunement": false
+      }
+    },
+    {
+      "id": "clockwork-amulet",
+      "name": "Amuleto mecânico",
+      "original_name": "Clockwork Amulet",
+      "category": "Mágicos comuns",
+      "description": "Medalhão de cobre com pequenas engrenagens de latão. Uma vez por amanhecer, permite trocar a rolagem do d20 de um ataque pelo resultado 10.",
+      "merchant_comment": "Escute o tique-taque do amuleto mecânico. Ele troca uma aposta por um dez no dado; o que você consegue fazer com esse dez ainda depende do seu braço.",
+      "price_cp": 10000,
+      "weight_lb": 0.1,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#clockwork%20amulet_xdmg",
+      "image_path": "/shop/magic-completion-20261009/clockwork-amulet.webp",
+      "audio_path": "/audio/emporium/clockwork-amulet.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Clockwork Amulet",
+        "upstream_source": "XDMG",
+        "upstream_page": 245,
+        "upstream_facts": {
+          "name": "Clockwork Amulet",
+          "source": "XDMG",
+          "page": 245,
+          "rarity": "common",
+          "wondrous": true,
+          "charges": 1,
+          "recharge": "dawn"
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Pequenas engrenagens de latão trabalham dentro de um medalhão de cobre. Uma vez por amanhecer, ao realizar uma jogada de ataque com o amuleto vestido, você pode usar 10 como resultado do d20 em vez de rolar o dado. Os demais modificadores do ataque continuam sendo aplicados.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "neck"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "hat-of-wizardry",
+      "name": "Chapéu da magia",
+      "original_name": "Hat of Wizardry",
+      "category": "Mágicos comuns",
+      "description": "Chapéu de lã azul bordado com luas e estrelas. Serve de foco para um mago sintonizado e permite tentar um truque ainda não aprendido, uma vez por Descanso Longo.",
+      "merchant_comment": "O chapéu da magia tem mais truques na ponta do que parece. Não arrisque o que você nunca estudou bem na hora em que todos estão contando com você.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#hat%20of%20wizardry_xdmg",
+      "image_path": "/shop/magic-completion-20261009/hat-of-wizardry.webp",
+      "audio_path": "/audio/emporium/hat-of-wizardry.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Hat of Wizardry",
+        "upstream_source": "XDMG",
+        "upstream_page": 267,
+        "upstream_facts": {
+          "name": "Hat of Wizardry",
+          "source": "XDMG",
+          "page": 267,
+          "rarity": "common",
+          "type": "SCF|XPHB",
+          "wondrous": true,
+          "reqAttune": "by a wizard",
+          "reqAttuneTags": [
+            {
+              "class": "wizard"
+            }
+          ]
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Chapéu de lã azul com luas e estrelas bordadas. Exige sintonização por um mago. Enquanto vestido, serve como foco para suas magias de mago. Com uma ação de Magia, você pode tentar lançar um truque de mago que não conhece e cujo tempo de conjuração seja uma ação: faça Inteligência (Arcanismo) CD 10. O sucesso conjura o truque; a falha gasta a ação sem conjurá-lo. A tentativa só volta a ficar disponível após um Descanso Longo, qualquer que tenha sido o resultado.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "head"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "cloth",
+        "attunement": "by a wizard"
+      }
+    }
+  ]
+}

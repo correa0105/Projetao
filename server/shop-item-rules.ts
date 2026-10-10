@@ -84,6 +84,20 @@ export async function getShopItemRules(id: string) {
     [id],
   );
   if (!item) throw new AppError(404, 'Item não encontrado.');
+  if (item.raw_data?.shop_magic_completion === true) {
+    const summary = item.raw_data.rules_summary;
+    if (typeof summary !== 'string' || !summary.trim())
+      throw new AppError(503, 'A explicação deste item está temporariamente indisponível.');
+    return response(
+      item.name,
+      summary,
+      `${item.raw_data.source_book} · resumo original do projeto`,
+      item.source_url,
+      item.source_url,
+      false,
+      item.raw_data.source_edition,
+    );
+  }
   if (item.source !== 'SRD 5.2.1') {
     const animal =
       item.raw_data?.equipment_target === 'mount' || item.raw_data?.equipment_target === 'pet';

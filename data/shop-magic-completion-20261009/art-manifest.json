@@ -1,0 +1,137 @@
+{
+  "tool": "image_gen.imagegen",
+  "assets": [
+    {
+      "id": "cloak-of-billowing",
+      "path": "/shop/magic-completion-20261009/cloak-of-billowing.webp",
+      "native": ".local/shop-completion/native/cloak-of-billowing.png",
+      "native_sha256": "824ebebacdd640b17c45047f0e483971a95a4b37717e10f32fb7c71457130d5f",
+      "sha256": "11a9c64c7818233daa89b08cbd4566bf956d0c2b4b325d5726100c4c4167c668",
+      "width": 768,
+      "height": 714,
+      "prompt": "Create ONE original transparent-background asset for a detailed medieval fantasy RPG shop, showing the magic item Cloak of Billowing. The object itself, no wearer or mannequin: a richly constructed deep oxblood red cloak with a dark charcoal lining, an aged silver two-part clasp and tiny distinct spiral engraving. The cloak is magically lifted into a dramatic convincing windblown shape, with heavy fabric folds, swept hem, fine stitching and cloth texture. Make the silhouette legible as a real cape at small icon size, physically coherent and fully inside the frame. Three-quarter product view with warm light from upper left, subtle ambient occlusion in folds, painterly realistic fantasy illustration matching a high-quality tabletop game's object art. Original design, not copied from any book artwork. Entire object isolated on real transparent alpha; no floor, background, chest, text, border, glow cloud, or floating generic particles. One standalone item, no grid or extra variants.\r\n",
+      "review": "approved"
+    },
+    {
+      "id": "clockwork-amulet",
+      "path": "/shop/magic-completion-20261009/clockwork-amulet.webp",
+      "native": ".local/shop-completion/native/clockwork-amulet.png",
+      "native_sha256": "ee422b6ae9c90037d03a00a965218cf9b30678f0f95514ae15faa4397181fb1a",
+      "sha256": "53cdab793765e04122c7ed0f38060b1b44d0e146fef404edf0c9afc48a3f1bd8",
+      "width": 702,
+      "height": 768,
+      "prompt": "Generate ONE original game asset on native transparent alpha for a realistic medieval fantasy shop: the Clockwork Amulet. A small round aged copper pendant with an open intricately layered face exposing seven tiny interlocking brass gears, a central polished steel escapement and an offset ivory indicator, on one continuous fine copper chain arranged in a natural loose oval above the pendant. Clearly readable mechanical construction, real gear teeth meshing convincingly, tiny pivot pins, restrained wear and dark patina in crevices. Three-quarter product view, warm studio light from upper left, meticulous painterly fantasy object illustration. Entire chain and pendant inside frame with 8% padding, centered, no wearer, no hand, no face, no text, no numbers, no clock dial, no box, no background, no border or glow cloud. Original design, not a copy of official book artwork. One single amulet, not a grid or collection.\n",
+      "review": "approved"
+    },
+    {
+      "id": "hat-of-wizardry",
+      "path": "/shop/magic-completion-20261009/hat-of-wizardry.webp",
+      "native": ".local/shop-completion/native/hat-of-wizardry.png",
+      "native_sha256": "3e16867f3a35824404dd8c128d063f462631b2cbb320e33522506339b7fdce32",
+      "sha256": "69408f300fb0bdc4298652d6156d955bc54a072e7eecbaa3e92635d54d87145b",
+      "width": 768,
+      "height": 702,
+      "prompt": "Generate ONE original transparent-alpha medieval fantasy RPG shop object: the Hat of Wizardry. A tall soft conical midnight navy wizard hat, slightly crooked tapered point, wide visibly pliable brim, rich textured wool cloth, sewn antique silver crescent moons and tiny golden star embroideries, braided dark leather hatband with one small hexagonal brass buckle. The cloth is convincing and naturally folded; old and useful rather than a costume prop. Clearly readable silhouette at small inventory size. Detailed realistic painterly fantasy illustration, three-quarter view tilted gently toward viewer, warm light from upper left and soft fold shading. Full hat isolated, 8% margin all around, actual transparent background. No wearer, head, hands, floating lights, text, numbers, chest, floor, border, generic magic aura, alternate variants, or grid. Original design.\n",
+      "review": "approved"
+    },
+    {
+      "id": "amulet-of-the-devout-plus-1",
+      "path": "/shop/magic-completion-20261009/amulet-of-the-devout-plus-1.webp",
+      "native": ".local/shop-completion/native/amulet-of-the-devout-plus-1.png",
+      "native_sha256": "266df2653aa532606fd233add2c4b97378e97ae9181c4eb416dbb6a8ad8371f4",
+      "sha256": "85f686ba67b346abcf1c599382e14e0a1c13beff5fb94ad7900c8e395e0fb40c",
+      "width": 718,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. Asset type: ONE original standalone inventory item for a premium painterly realistic medieval fantasy RPG shop. Subject: +1 Amulet of the Devout. A sacred amulet on a braided silver chain, oval polished silver medallion shaped around a central sunburst with tiny amber gem, delicate architectural engraving. Make the pendant and entire chain mechanically coherent. A distinct original design, not copied from official book artwork. Three-quarter product view, warm upper-left lighting, detailed physically convincing real materials, soft shading only on object surfaces. Entire object fully inside frame, around 8% margin, easily legible at 110 pixels. Native transparent alpha surrounding the object, no floor or background, no glowing haze, text, numbers, watermark, border, chest, wearer or hands. No alternate versions or grids.\n",
+      "review": "approved"
+    },
+    {
+      "id": "arcane-grimoire-plus-1",
+      "path": "/shop/magic-completion-20261009/arcane-grimoire-plus-1.webp",
+      "native": ".local/shop-completion/native/arcane-grimoire-plus-1.png",
+      "native_sha256": "16cce6f4e078bf99733a1f21baeca100a3360711424d9f22d763149520647efe",
+      "sha256": "f941c29eed499d8d4a5d7a202b9179185ccf6dd6e226104669521d3526d4ae47",
+      "width": 733,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. Asset type: ONE original standalone inventory item for a premium painterly realistic medieval fantasy RPG shop. Subject: +1 Arcane Grimoire. A wizard's thick worn indigo leather grimoire, visible cream page block, a sculpted bronze crescent clasp and engraved astronomical brass corner protectors, slightly open edge but no legible lettering. A distinct original design, not copied from official book artwork. Three-quarter product view, warm upper-left lighting, detailed physically convincing real materials, soft shading only on object surfaces. Entire object fully inside frame, around 8% margin, easily legible at 110 pixels. Native transparent alpha surrounding the object, no floor or background, no glowing haze, text, numbers, watermark, border, chest, wearer or hands. No alternate versions or grids.\n",
+      "review": "approved"
+    },
+    {
+      "id": "bloodwell-vial-plus-1",
+      "path": "/shop/magic-completion-20261009/bloodwell-vial-plus-1.webp",
+      "native": ".local/shop-completion/native/bloodwell-vial-plus-1.png",
+      "native_sha256": "c855a5d246e883a94533252967226b4def5063940ba2f8cedd3ec920d8f53501",
+      "sha256": "ebc552546e33a7f40b5f4390b7c0889b71cfc66c1de7f7cb48b52f6754a29537",
+      "width": 638,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. Asset type: ONE original standalone inventory item for a premium painterly realistic medieval fantasy RPG shop. Subject: +1 Bloodwell Vial. A small blood-magic spellcasting vial: translucent smoky ruby glass holding a small quantity of dark crimson blood, narrow tapered shape, filigree silver frame, stopper and delicate suspension chain. Sealed real glass object with physically convincing transparency. A distinct original design, not copied from official book artwork. Three-quarter product view, warm upper-left lighting, detailed physically convincing real materials, soft shading only on object surfaces. Entire object fully inside frame, around 8% margin, easily legible at 110 pixels. Native transparent alpha surrounding the object, no floor or background, no glowing haze, text, numbers, watermark, border, chest, wearer or hands. No alternate versions or grids.\n",
+      "review": "approved"
+    },
+    {
+      "id": "dragonhide-belt-plus-1",
+      "path": "/shop/magic-completion-20261009/dragonhide-belt-plus-1.webp",
+      "native": ".local/shop-completion/native/dragonhide-belt-plus-1.png",
+      "native_sha256": "280c788eac83145fb81c7480082873ad5ff8f86321867708d72ba3b20340ac03",
+      "sha256": "9d5763a31a267c27b9ded92dfd6beea2534c32cb475befb8708a1b59cb1660e0",
+      "width": 768,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. Asset type: ONE original standalone inventory item for a premium painterly realistic medieval fantasy RPG shop. Subject: +1 Dragonhide Belt. A monk's supple tawny bronze dragon-scale hide belt, a single continuous leather belt naturally coiled, small overlapping scales stitched into it, oval hammered dark bronze buckle and two leather keepers, no creature body. A distinct original design, not copied from official book artwork. Three-quarter product view, warm upper-left lighting, detailed physically convincing real materials, soft shading only on object surfaces. Entire object fully inside frame, around 8% margin, easily legible at 110 pixels. Native transparent alpha surrounding the object, no floor or background, no glowing haze, text, numbers, watermark, border, chest, wearer or hands. No alternate versions or grids.\n",
+      "review": "approved"
+    },
+    {
+      "id": "moon-sickle-plus-1",
+      "path": "/shop/magic-completion-20261009/moon-sickle-plus-1.webp",
+      "native": ".local/shop-completion/native/moon-sickle-plus-1.png",
+      "native_sha256": "abef763e20db9316204ad9bbcf9dd20ff91a8670076e4884127ae0c5941db102",
+      "sha256": "760fbb96acbde6558f8a3d8d43877e94f4887db50b3b0840a0a72370db17ef98",
+      "width": 739,
+      "height": 768,
+      "prompt": "Create ONE original detailed painterly realistic fantasy RPG shop asset on native transparent alpha. Subject: the +1 Moon Sickle: a real one-handed sickle with a single polished crescent-shaped silver steel blade, its curved tang firmly socketed into a short pale ashwood handle with dark blue leather grip. Fine moon-phase engravings along the metal blade, small oval moonstone set flush in the socket. Coherent functional sickle, not a scythe or a sword. Warm upper-left lighting, rich realistic materials, slight three-quarter view, entire object clearly legible at inventory icon size with 8% padding. Original design, not copied from any official book art. The physical object alone, no wearer, hands, chest, floor, background, floating particles, text, numbers, aura haze, watermark or border. No grids or other variants.\n",
+      "review": "approved"
+    },
+    {
+      "id": "rhythm-maker-s-drum-plus-1",
+      "path": "/shop/magic-completion-20261009/rhythm-maker-s-drum-plus-1.webp",
+      "native": ".local/shop-completion/native/rhythm-maker-s-drum-plus-1.png",
+      "native_sha256": "d9ff6693104e91e706f470e9188546a260a0f29be9bd208efbbeaaeedca124ed",
+      "sha256": "28ebfddf464280d68595d2e53d69a42c90d88adeff14c1e1c59c3a10622a4dad",
+      "width": 768,
+      "height": 768,
+      "prompt": "Create ONE original detailed painterly realistic fantasy RPG shop asset on native transparent alpha. Subject: the +1 Rhythm-Maker's Drum: a small sturdy medieval hand drum, one cylindrical cherrywood shell with taut pale goatskin head fixed by a real rim and individually tensioned dark leather cords, narrow bronze rim patterned with musical wave engravings, a worn woven burgundy carrying strap naturally loose beside the shell. Physically coherent musical instrument. Warm upper-left lighting, rich realistic materials, slight three-quarter view, entire object clearly legible at inventory icon size with 8% padding. Original design, not copied from any official book art. The physical object alone, no wearer, hands, chest, floor, background, floating particles, text, numbers, aura haze, watermark or border. No grids or other variants.\n",
+      "review": "approved"
+    },
+    {
+      "id": "rod-of-the-pact-keeper-plus-1",
+      "path": "/shop/magic-completion-20261009/rod-of-the-pact-keeper-plus-1.webp",
+      "native": ".local/shop-completion/native/rod-of-the-pact-keeper-plus-1.png",
+      "native_sha256": "791d4cfd5162b7f7db483d8f4d6af05923a634ac0e85de31c74220932db9b01f",
+      "sha256": "25516502922ce14f65fc9c61cae038fb8b53a102cb0c39224d21e0ffa12906e9",
+      "width": 730,
+      "height": 768,
+      "prompt": "Generate ONE original premium painterly realistic medieval fantasy RPG shop illustration on true transparent alpha. Subject: the +1 Rod of the Pact Keeper, a short spellcasting rod, NOT a long staff or mace. One octagonal ebony shaft, aged dark silver terminal cage holding a small smoky amethyst, seven delicate covenant-knot metal bands and a textured wine-red leather handgrip, a tiny wax-seal-like silver disk inset flush near the butt. Restrained mysterious pact theme, coherent construction. Three-quarter object view, soft warm light from upper left, convincing tactile materials, entire object inside frame with 8% margin, easily readable small inventory silhouette. Original design, do not reproduce official book art. No background, floor, chest, aura fog, border, text, words, numbers, watermark, character, hand or other item. No grids or variants.\n",
+      "review": "approved"
+    },
+    {
+      "id": "wraps-of-unarmed-power-plus-1",
+      "path": "/shop/magic-completion-20261009/wraps-of-unarmed-power-plus-1.webp",
+      "native": ".local/shop-completion/native/wraps-of-unarmed-power-plus-1.png",
+      "native_sha256": "b5b40c2ba8b0d37095324b0e5a6dec4518039b4d04371f9b2998c7553d47d6fe",
+      "sha256": "30ca615dbc7fe427e5a863b8cbd3b1b95b4e70b8bb9cb69d69226640f04e37ab",
+      "width": 768,
+      "height": 512,
+      "prompt": "Generate ONE original premium painterly realistic medieval fantasy RPG shop illustration on true transparent alpha. Subject: one pair of Wraps of Unarmed Power +1, two long strips of warm ivory woven linen for binding human hands, laid out as two loosely coiled continuous cloth bands, each showing its tail and real fabric edges; interwoven fine bronze-colored threads form a sparse flowing pattern. Natural cloth folds and visible stitching. No hands, mannequin or anatomical body parts; the wraps alone. Three-quarter object view, soft warm light from upper left, convincing tactile materials, entire object inside frame with 8% margin, easily readable small inventory silhouette. Original design, do not reproduce official book art. No background, floor, chest, aura fog, border, text, words, numbers, watermark, character, hand or other item. No grids or variants.\n",
+      "review": "approved"
+    },
+    {
+      "id": "all-purpose-tool-plus-1",
+      "path": "/shop/magic-completion-20261009/all-purpose-tool-plus-1.webp",
+      "native": ".local/shop-completion/native/all-purpose-tool-plus-1.png",
+      "native_sha256": "86a4d8b7fd157d820a3c3f4fd79a8b1ae0a42c834e642be7ddb3d9f9415b7d63",
+      "sha256": "878cc85d752fedea738e89c35aa84f0b11c1368f1e21c3db6b35b57971aaa9f6",
+      "width": 768,
+      "height": 512,
+      "prompt": "Generate ONE original game inventory asset on native transparent background: the +1 All-Purpose Tool, depicted in its canonical basic screwdriver form, for an artificer in a detailed realistic medieval fantasy shop. A single compact precisely built enchanted screwdriver: straight narrow polished steel shaft with one coherent slotted tip, fitted into a sturdy warm walnut handle with an aged bronze pivot collar, three tiny articulated brass adjustment rings and subtle blue crystal inset in the handle. Handcrafted medieval ingenious mechanism, fine material texture and modest runic etching without readable writing. Looks functional, beautiful and practical, clearly a screwdriver, not a weapon, gun, wrench collection or sci-fi appliance. Three-quarter product view placed diagonally, warm light from upper left, painterly realistic RPG item art. Entire item within frame with 12% padding, one object only, true transparent alpha. No hand, person, chest, table, text, '+1' label, borders, glow cloud or extra copies. Unique original design.\n",
+      "review": "approved"
+    }
+  ]
+}

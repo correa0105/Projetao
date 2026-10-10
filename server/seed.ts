@@ -15,6 +15,12 @@ export async function seed() {
   const expansion = JSON.parse(
     await readFile(resolve('data/emporium-expansion.json'), 'utf8'),
   ).items;
+  const magicCompletion = JSON.parse(
+    await readFile(resolve('data/shop-magic-completion-20261009/catalog.json'), 'utf8'),
+  );
+  if (!magicCompletion.ready || !Array.isArray(magicCompletion.items))
+    throw new Error('O novo catálogo mágico precisa de artes, textos e sons validados.');
+  expansion.push(...magicCompletion.items);
   let animals: any[] = [];
   try {
     const data = JSON.parse(await readFile(resolve('data/animal-equipment-catalog.json'), 'utf8'));

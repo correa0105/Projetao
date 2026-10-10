@@ -10646,5 +10646,101 @@
     "sha256": "ac2a1043013edca01f38c10ae13cdb5db38cd53b8ae9720fd57ef4ee3521b551",
     "source": "public/audio/shop-counter-wood.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "amulet-of-the-devout-plus-1",
+    "path": "public/audio/emporium/amulet-of-the-devout-plus-1.wav",
+    "kind": "metal",
+    "sha256": "48e83e10df951c868a3bacb824bab1631dc5f37571c0ca6617733fc947df06ed",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "arcane-grimoire-plus-1",
+    "path": "public/audio/emporium/arcane-grimoire-plus-1.wav",
+    "kind": "paper",
+    "sha256": "0d89f6e5793e3713961b1dddc43dbb99968e72410d89a016adb9d107427ab5ae",
+    "source": "public/audio/shop-counter-paper.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bloodwell-vial-plus-1",
+    "path": "public/audio/emporium/bloodwell-vial-plus-1.wav",
+    "kind": "glass",
+    "sha256": "56f5b96a5a35996317f7ab5f42231346ab2544e3f5dbd6e0c8b0cf7d3f1c208f",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragonhide-belt-plus-1",
+    "path": "public/audio/emporium/dragonhide-belt-plus-1.wav",
+    "kind": "leather",
+    "sha256": "80c47a4f57f4cd3c0a21e655254f281f1a08bfb0d140a19254b67322a9508acd",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cloak-of-billowing",
+    "path": "public/audio/emporium/cloak-of-billowing.wav",
+    "kind": "cloth",
+    "sha256": "793989681b3ebafaf2c81c20d9efb549f086d5eb672fd38c60b368a17eb2aa65",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "clockwork-amulet",
+    "path": "public/audio/emporium/clockwork-amulet.wav",
+    "kind": "metal",
+    "sha256": "628dfc6434845fd98c8804d2a7399223d1548ad4edb6cd83f431edd8d6197f16",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hat-of-wizardry",
+    "path": "public/audio/emporium/hat-of-wizardry.wav",
+    "kind": "cloth",
+    "sha256": "d1f868c85735b68d950a8fbfd36126af14cfd3f2343205831346b8f35c8eeabd",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "all-purpose-tool-plus-1",
+    "path": "public/audio/emporium/all-purpose-tool-plus-1.wav",
+    "kind": "wood",
+    "sha256": "48df29cca5dc0284d522576e366b19078f854d0d5935a845adbb9ea63fced3e4",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "moon-sickle-plus-1",
+    "path": "public/audio/emporium/moon-sickle-plus-1.wav",
+    "kind": "metal",
+    "sha256": "1cfb91056940d43e886d3fce75d07c0eccb71876ef5b9818b81b83869dd637a6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "rhythm-maker-s-drum-plus-1",
+    "path": "public/audio/emporium/rhythm-maker-s-drum-plus-1.wav",
+    "kind": "wood",
+    "sha256": "739c865d289c854088b62b297d5eb3c679085d33267a53cc8b7dae3fe2074be7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "rod-of-the-pact-keeper-plus-1",
+    "path": "public/audio/emporium/rod-of-the-pact-keeper-plus-1.wav",
+    "kind": "wood",
+    "sha256": "44e0188fdf7bd98f89e8dca2b1e8e1fdc3249c0e84ff25a9620c8233d6d9ce0c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "wraps-of-unarmed-power-plus-1",
+    "path": "public/audio/emporium/wraps-of-unarmed-power-plus-1.wav",
+    "kind": "cloth",
+    "sha256": "32e679c4def16cc9ea974264629d4dc345aff6fcdcfdce1af01e177180d2ffa1",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

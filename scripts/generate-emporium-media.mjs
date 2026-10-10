@@ -3,6 +3,10 @@ import { createHash } from 'node:crypto';
 const only = process.argv.find((arg) => arg.startsWith('--only='))?.slice(7);
 if (only && !/^[a-z0-9-]+$/.test(only)) throw Error('Invalid sound identity');
 const expansion = JSON.parse(fs.readFileSync('data/emporium-expansion.json', 'utf8')).items;
+const completion = JSON.parse(
+  fs.readFileSync('data/shop-magic-completion-20261009/catalog.json', 'utf8'),
+).items;
+expansion.push(...completion);
 const old = JSON.parse(fs.readFileSync('data/shop-export/loja.json', 'utf8')).items;
 const equipment = JSON.parse(fs.readFileSync('data/equipment-catalog.json', 'utf8')).filter(
   (x) => x.active,

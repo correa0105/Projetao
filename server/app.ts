@@ -299,8 +299,13 @@ export function createApp() {
            raw_data->>'magic_family' AS magic_family,raw_data->>'base_item' AS base_item,
            raw_data->>'damage_type' AS damage_type,raw_data->>'rarity' AS rarity,
            raw_data->>'variant' AS variant,raw_data->'enhancement' AS enhancement,
-           CASE WHEN raw_data->>'srd_type' LIKE 'Armor %' THEN 'armor'
-                WHEN raw_data->>'srd_type' LIKE 'Weapon %' THEN 'weapon' END AS magic_kind
+           COALESCE(raw_data->>'magic_kind',
+             CASE WHEN raw_data->>'srd_type' LIKE 'Armor %' THEN 'armor'
+                  WHEN raw_data->>'srd_type' LIKE 'Weapon %' THEN 'weapon' END) AS magic_kind,
+           jsonb_strip_nulls(jsonb_build_object(
+             'equipment_target',raw_data->'equipment_target',
+             'equipment_slots',raw_data->'equipment_slots',
+             'two_handed',raw_data->'two_handed')) AS raw_data
            FROM catalog_items WHERE active=true ORDER BY category,name`,
         )
       ).rows,

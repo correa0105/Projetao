@@ -46,6 +46,7 @@ export function isHelmet(item: { id?: string; item_id?: string; name: string }) 
   return /helmet|capacete|elmo/i.test(`${item.id || item.item_id || ''} ${item.name}`);
 }
 export function twoHanded(item: EquipmentItem) {
+  if (typeof item.raw_data?.two_handed === 'boolean') return item.raw_data.two_handed;
   const expanded = (expandedEquipment as Record<string, { slots: string[]; two_handed: boolean }>)[
     item.id
   ];
@@ -57,6 +58,14 @@ export function compatibleSlots(item: EquipmentItem): EquipmentSlot[] {
   const pieceSlot = item.raw_data?.piece_slot;
   if (pieceSlot && EQUIPMENT_SLOTS.includes(pieceSlot as EquipmentSlot))
     return [pieceSlot as EquipmentSlot];
+  if (Array.isArray(item.raw_data?.equipment_slots))
+    return [
+      ...new Set(
+        item.raw_data.equipment_slots.filter((slot): slot is EquipmentSlot =>
+          EQUIPMENT_SLOTS.includes(slot as EquipmentSlot),
+        ),
+      ),
+    ];
   const expanded = (
     expandedEquipment as Record<string, { slots: EquipmentSlot[]; two_handed: boolean }>
   )[item.id];
