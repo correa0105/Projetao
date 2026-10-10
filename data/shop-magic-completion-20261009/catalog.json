@@ -4,7 +4,7 @@
   "source": "https://5e.tools/items.html",
   "asOf": "2026-10-09",
   "planned": 3076,
-  "pending": 2055,
+  "pending": 2045,
   "items": [
     {
       "id": "all-purpose-tool-plus-1",
@@ -1375,6 +1375,53 @@
       }
     },
     {
+      "id": "adventurer-s-ring",
+      "name": "Anel do aventureiro",
+      "original_name": "Adventurer's Ring",
+      "category": "Mágicos comuns",
+      "description": "Anel com tampa articulada e uma chama mágica que não aquece nem consome combustível.",
+      "merchant_comment": "Abra a tampinha e você tem luz sem queimar a mão. Feche quando quiser passar despercebido; uma chama na ponta do dedo também chama atenção.",
+      "price_cp": 10000,
+      "weight_lb": 0.05,
+      "weight_estimated": true,
+      "source": "D&D · Forgotten Realms: Heroes of Faerûn",
+      "source_url": "https://5e.tools/items.html#adventurer's%20ring_frhof",
+      "image_path": "/shop/magic-completion-20261009/adventurer-s-ring.webp",
+      "audio_path": "/audio/emporium/adventurer-s-ring.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Adventurer's Ring",
+        "upstream_source": "FRHoF",
+        "upstream_page": 132,
+        "upstream_facts": {
+          "name": "Adventurer's Ring",
+          "source": "FRHoF",
+          "page": 132,
+          "rarity": "common",
+          "type": "RG|XDMG",
+          "light": [
+            {
+              "bright": 20,
+              "dim": 40
+            }
+          ]
+        },
+        "source_book": "Forgotten Realms: Heroes of Faerûn",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Enquanto a tampa está aberta, emite chama sem calor e sem combustível: luz plena até 20 pés (6,1 m) e penumbra por mais 20 pés. Abrir ou fechar a tampa exige uma ação bônus; fechá-la apaga a chama. Não exige sintonia. Forgotten Realms: Heroes of Faerûn, regras de 2024. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "ring_left",
+          "ring_right"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
       "id": "bead-of-refreshment",
       "name": "Conta de refresco",
       "original_name": "Bead of Refreshment",
@@ -1451,6 +1498,47 @@
         "rarity": "Common",
         "sound_material": "leather",
         "attunement": true
+      }
+    },
+    {
+      "id": "bottle-of-boundless-coffee",
+      "name": "Garrafa de café inesgotável",
+      "original_name": "Bottle of Boundless Coffee",
+      "category": "Mágicos comuns",
+      "description": "Garrafa metálica que produz café agradavelmente morno para beber diretamente.",
+      "merchant_comment": "Café na medida certa, direto da garrafa. Não tente servir uma rodada: o que você derrama desaparece, e às vezes ela resolve tirar uma hora de descanso.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Strixhaven: A Curriculum of Chaos",
+      "source_url": "https://5e.tools/items.html#bottle%20of%20boundless%20coffee_scc",
+      "image_path": "/shop/magic-completion-20261009/bottle-of-boundless-coffee.webp",
+      "audio_path": "/audio/emporium/bottle-of-boundless-coffee.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Bottle of Boundless Coffee",
+        "upstream_source": "SCC",
+        "upstream_page": 38,
+        "upstream_facts": {
+          "name": "Bottle of Boundless Coffee",
+          "source": "SCC",
+          "page": 38,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Strixhaven: A Curriculum of Chaos",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Garrafa metálica com rolha presa por uma corrente. O café permanece confortavelmente morno e o calor não atravessa o metal; a garrafa não aceita outros líquidos. A cada vez que alguém bebe, role d20: com 1, ela para de fornecer café por uma hora. Café despejado, em vez de bebido diretamente, desaparece ao sair da garrafa. Não exige sintonia. Strixhaven: A Curriculum of Chaos. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
       }
     },
     {
@@ -1535,6 +1623,44 @@
       }
     },
     {
+      "id": "cartographer-s-map-case",
+      "name": "Estojo de mapas do cartógrafo",
+      "original_name": "Cartographer's Map Case",
+      "category": "Mágicos comuns",
+      "description": "Estojo de cartógrafo de Acquisitions Incorporated que encontra mapas úteis e atalhos.",
+      "merchant_comment": "Confira o grau da sua franquia antes de abrir este estojo. Ele ajuda a encontrar uma boa rota; ter coragem de seguir o mapa continua por sua conta.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Acquisitions Incorporated",
+      "source_url": "https://5e.tools/items.html#cartographer's%20map%20case_ai",
+      "image_path": "/shop/magic-completion-20261009/cartographer-s-map-case.webp",
+      "audio_path": "/audio/emporium/cartographer-s-map-case.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Cartographer's Map Case",
+        "upstream_source": "AI",
+        "upstream_page": 20,
+        "upstream_facts": {
+          "name": "Cartographer's Map Case",
+          "source": "AI",
+          "page": 20,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Acquisitions Incorporated",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Equipamento do cargo de cartógrafo de Acquisitions Incorporated, mágico comum a partir do grau 3 da franquia, sem relação com o nível de personagem. Guarda mapas normais. Mapa de atalhos: use uma ação e teste Sabedoria (Percepção) CD 15; em sucesso, encontra um atalho relevante e o tempo de viagem cai à metade ao seguir a rota. Sucesso por 5 ou mais também concede vantagem no próximo teste para atravessar a área mapeada na próxima hora. Essa função volta após um descanso longo. Mapa do momento: a partir do mesmo grau, use uma ação e Sabedoria (Percepção) CD 15 para achar um mapa ligado à missão ou a uma nova missão, com um marco e o terreno natural em raio de 1 milha dele. Após usar, essa função volta ao amanhecer de sete dias depois; o mestre define o marco e a missão. Não exige sintonia. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "leather",
+        "attunement": false
+      }
+    },
+    {
       "id": "charlatan-s-die",
       "name": "Dado do charlatão",
       "original_name": "Charlatan's Die",
@@ -1574,6 +1700,45 @@
         "rarity": "Common",
         "sound_material": "wood",
         "attunement": true
+      }
+    },
+    {
+      "id": "chest-of-preserving",
+      "name": "Baú de preservação",
+      "original_name": "Chest of Preserving",
+      "category": "Mágicos comuns",
+      "description": "Baú de tampa arqueada que impede o envelhecimento e a deterioração de perecíveis guardados dentro.",
+      "merchant_comment": "Bom para manter as provisões como estavam quando entraram. Cuide da fechadura: arrombar com ferramentas é uma coisa, partir a madeira é outra.",
+      "price_cp": 10000,
+      "weight_lb": 25,
+      "weight_estimated": false,
+      "source": "D&D · Waterdeep: Dungeon of the Mad Mage",
+      "source_url": "https://5e.tools/items.html#chest%20of%20preserving_wdmm",
+      "image_path": "/shop/magic-completion-20261009/chest-of-preserving.webp",
+      "audio_path": "/audio/emporium/chest-of-preserving.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Chest of Preserving",
+        "upstream_source": "WDMM",
+        "upstream_page": 139,
+        "upstream_facts": {
+          "name": "Chest of Preserving",
+          "source": "WDMM",
+          "page": 139,
+          "rarity": "common",
+          "wondrous": true,
+          "weight": 25
+        },
+        "source_book": "Waterdeep: Dungeon of the Mad Mage",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Alimentos e outros objetos perecíveis não envelhecem nem se deterioram enquanto estão dentro. Mede 2,5 pés de comprimento, 1,5 pé de largura e 1 pé de altura; tampa em meio barril e fechadura. Ferramentas de ladrão e teste de Destreza CD 15 permitem abrir a fechadura. Quebrar a fechadura ou qualquer parte do baú elimina a magia. Não restaura comida já estragada nem ressuscita criaturas. Peso de 25 lb informado pela fonte, sem sintonia. Waterdeep: Dungeon of the Mad Mage; resolução pelo mestre.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
       }
     },
     {
@@ -1988,6 +2153,54 @@
         "consumable": false,
         "rarity": "Common",
         "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "earring-of-message",
+      "name": "Brinco de mensagem",
+      "original_name": "Earring of Message",
+      "category": "Mágicos comuns",
+      "description": "Um brinco de cristal azul preso em fios delicados de cobre, capaz de transmitir Mensagem.",
+      "merchant_comment": "É um brinco só, não um par. Vista-o para mandar sua mensagem; o cristal tem cinco cargas e recupera parte delas ao amanhecer.",
+      "price_cp": 10000,
+      "weight_lb": 0.02,
+      "weight_estimated": true,
+      "source": "D&D · Critical Role: Call of the Netherdeep",
+      "source_url": "https://5e.tools/items.html#earring%20of%20message_crcotn",
+      "image_path": "/shop/magic-completion-20261009/earring-of-message.webp",
+      "audio_path": "/audio/emporium/earring-of-message.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Earring of Message",
+        "upstream_source": "CRCotN",
+        "upstream_page": 212,
+        "upstream_facts": {
+          "name": "Earring of Message",
+          "source": "CRCotN",
+          "page": 212,
+          "rarity": "common",
+          "wondrous": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4 + 1}",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "message"
+              ]
+            }
+          }
+        },
+        "source_book": "Critical Role: Call of the Netherdeep",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Um brinco com cristal azul e fios de cobre, com 5 cargas. Enquanto o usa, uma ação e 1 carga permitem conjurar Mensagem. Recupera 1d4 + 1 cargas gastas diariamente ao amanhecer, até o máximo de 5. Mensagem segue as regras da magia e não concede alcance ilimitado. Não exige sintonia. Critical Role: Call of the Netherdeep. O item fica no inventário; o uso como brinco é resolvido na mesa, sem criar um encaixe de armadura adicional. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
         "attunement": false
       }
     },
@@ -2469,6 +2682,48 @@
       }
     },
     {
+      "id": "orb-of-gonging",
+      "name": "Orbe do gongo",
+      "original_name": "Orb of Gonging",
+      "category": "Mágicos comuns",
+      "description": "Esfera oca de bronze com anéis entalhados que ressoa quando suas marcas se alinham.",
+      "merchant_comment": "Alinhe as marcas e ele começa a tocar. Se pretende se esconder, desalinhe antes: esse bronze se faz ouvir a uma distância respeitável.",
+      "price_cp": 10000,
+      "weight_lb": 5,
+      "weight_estimated": false,
+      "source": "D&D · Waterdeep: Dungeon of the Mad Mage",
+      "source_url": "https://5e.tools/items.html#orb%20of%20gonging_wdmm",
+      "image_path": "/shop/magic-completion-20261009/orb-of-gonging.webp",
+      "audio_path": "/audio/emporium/orb-of-gonging.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Orb of Gonging",
+        "upstream_source": "WDMM",
+        "upstream_page": 174,
+        "upstream_facts": {
+          "name": "Orb of Gonging",
+          "source": "WDMM",
+          "page": 174,
+          "rarity": "common",
+          "wondrous": true,
+          "weight": 5
+        },
+        "source_book": "Waterdeep: Dungeon of the Mad Mage",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Orbe oco de 5 polegadas de diâmetro (12,7 cm), com 5 lb, formado por anéis de bronze com entalhes. Uma ação alinha os entalhes e inicia um som alto de gongo a cada 6 segundos, audível até 600 pés (182,9 m). O som continua até os entalhes deixarem de estar alinhados. Não exige sintonia e não funciona como arma de dano sônico. Waterdeep: Dungeon of the Mad Mage; efeitos resolvidos na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "spheres",
+        "attunement": false
+      }
+    },
+    {
       "id": "orb-of-time",
       "name": "Orbe do tempo",
       "original_name": "Orb of Time",
@@ -2834,6 +3089,44 @@
       }
     },
     {
+      "id": "pressure-capsule",
+      "name": "Cápsula de pressão",
+      "original_name": "Pressure Capsule",
+      "category": "Mágicos comuns",
+      "description": "Cápsula consumível de cera, areia e plantas aquáticas encantadas para mergulhos profundos.",
+      "merchant_comment": "Engula uma antes de descer para as profundezas. Ela ajuda com a pressão da água, mas não põe ar nos seus pulmões; leve uma forma de respirar.",
+      "price_cp": 5000,
+      "weight_lb": 0.05,
+      "weight_estimated": true,
+      "source": "D&D · Ghosts of Saltmarsh",
+      "source_url": "https://5e.tools/items.html#pressure%20capsule_gos",
+      "image_path": "/shop/magic-completion-20261009/pressure-capsule.webp",
+      "audio_path": "/audio/emporium/pressure-capsule.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pressure Capsule",
+        "upstream_source": "GoS",
+        "upstream_page": 229,
+        "upstream_facts": {
+          "name": "Pressure Capsule",
+          "source": "GoS",
+          "page": 229,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Ghosts of Saltmarsh",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Cápsula pequena de cera de abelha, areia e plantas aquáticas encantadas. Ao consumi-la, uma criatura ignora os efeitos de nadar a profundidades superiores a 100 pés (30,5 m), seguindo a regra de ambientes incomuns indicada em Ghosts of Saltmarsh. Não concede respiração aquática, deslocamento de natação ou proteção geral contra frio. A entrada não informa uma duração numérica; o mestre aplica a propriedade conforme a fonte, sem inventar uma duração. Uma unidade é consumida por uso, sem sintonia. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "cloth",
+        "attunement": false
+      }
+    },
+    {
       "id": "rival-coin",
       "name": "Moeda dos rivais",
       "original_name": "Rival Coin",
@@ -3011,6 +3304,44 @@
       }
     },
     {
+      "id": "sekolahian-worshiping-statuette",
+      "name": "Estatueta de culto a Sekolah",
+      "original_name": "Sekolahian Worshiping Statuette",
+      "category": "Mágicos comuns",
+      "description": "Tubarão de arenito esculpido em movimento, com boca aberta e uma pequena mordida mágica.",
+      "merchant_comment": "A boca não está aberta só para enfeitar. Mantenha os bichinhos do mar afastados dela e trate o arenito com cuidado.",
+      "price_cp": 10000,
+      "weight_lb": 4,
+      "weight_estimated": true,
+      "source": "D&D · Ghosts of Saltmarsh",
+      "source_url": "https://5e.tools/items.html#sekolahian%20worshiping%20statuette_gos",
+      "image_path": "/shop/magic-completion-20261009/sekolahian-worshiping-statuette.webp",
+      "audio_path": "/audio/emporium/sekolahian-worshiping-statuette.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Sekolahian Worshiping Statuette",
+        "upstream_source": "GoS",
+        "upstream_page": 229,
+        "upstream_facts": {
+          "name": "Sekolahian Worshiping Statuette",
+          "source": "GoS",
+          "page": 229,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Ghosts of Saltmarsh",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Estatueta de arenito com 1 pé (30,5 cm) de altura, representando um tubarão retorcido na água com a boca aberta. Se um animal marinho Minúsculo ficar a até 1 polegada (2,54 cm) da boca, ela anima brevemente e causa 1 ponto de dano perfurante ao animal. Só pode causar esse dano uma vez por hora. Não ataca criaturas maiores ou qualquer alvo arbitrário, nem vira um companheiro vivo. Não exige sintonia. Ghosts of Saltmarsh. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "spheres",
+        "attunement": false
+      }
+    },
+    {
       "id": "shield-of-expression",
       "name": "Escudo de expressão",
       "original_name": "Shield of Expression",
@@ -3133,6 +3464,47 @@
         "consumable": false,
         "rarity": "Common",
         "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
+      "id": "spyglass-of-clairvoyance",
+      "name": "Luneta da clarividência",
+      "original_name": "Spyglass of Clairvoyance",
+      "category": "Mágicos comuns",
+      "description": "Luneta de Acquisitions Incorporated que permite mapear terreno natural atrás de um obstáculo.",
+      "merchant_comment": "É equipamento de franquia, não uma janela para espiar pessoas. Ela revela o terreno que está escondido pela paisagem; moradores e construções continuam fora do mapa.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Acquisitions Incorporated",
+      "source_url": "https://5e.tools/items.html#spyglass%20of%20clairvoyance_ai",
+      "image_path": "/shop/magic-completion-20261009/spyglass-of-clairvoyance.webp",
+      "audio_path": "/audio/emporium/spyglass-of-clairvoyance.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Spyglass of Clairvoyance",
+        "upstream_source": "AI",
+        "upstream_page": 19,
+        "upstream_facts": {
+          "name": "Spyglass of Clairvoyance",
+          "source": "AI",
+          "page": 19,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Acquisitions Incorporated",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Luneta fornecida pela sede, item mágico comum a partir do grau 2 da franquia Acquisitions Incorporated; isso não é nível de personagem. Uma ação permite observar um ponto a até 1 milha (1,61 km) que bloqueie sua visão, como montanha, castelo ou floresta. Em seguida, faça teste de Sabedoria CD 15 usando ferramentas de cartógrafo; em sucesso, mapeia o terreno natural a até 3 milhas (4,83 km) desse ponto. Não revela criaturas, estruturas nem informações além do terreno natural. A função volta no próximo amanhecer, sem sintonia; não conjura automaticamente a magia Clarividência. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
         "attunement": false
       }
     },
@@ -3492,6 +3864,44 @@
         "consumable": false,
         "rarity": "Common",
         "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "vox-seeker",
+      "name": "Buscador de vozes",
+      "original_name": "Vox Seeker",
+      "category": "Mágicos comuns",
+      "description": "Autômato de bronze em forma de caranguejo, movido por corda e controlado pelo mestre.",
+      "merchant_comment": "Dê corda com cuidado e lembre quem manda no mecanismo: o mestre da mesa. Se ele for destruído, apertar os parafusos não vai trazê-lo de volta.",
+      "price_cp": 10000,
+      "weight_lb": 5,
+      "weight_estimated": true,
+      "source": "D&D · Explorer's Guide to Wildemount",
+      "source_url": "https://5e.tools/items.html#vox%20seeker_egw",
+      "image_path": "/shop/magic-completion-20261009/vox-seeker.webp",
+      "audio_path": "/audio/emporium/vox-seeker.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Vox Seeker",
+        "upstream_source": "EGW",
+        "upstream_page": 270,
+        "upstream_facts": {
+          "name": "Vox Seeker",
+          "source": "EGW",
+          "page": 270,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Explorer's Guide to Wildemount",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Dispositivo mecânico do tamanho de um prato, semelhante a um caranguejo metálico. Cada ação usada para dar corda permite 1 minuto de funcionamento, até o máximo de 10 minutos. Enquanto ativo, usa a ficha da criatura Vox Seeker de Explorer’s Guide to Wildemount e permanece sob controle do mestre, sem se tornar um mascote obediente do comprador. Se chegar a 0 PV, é destruído. Não exige sintonia; ativação e ficha são resolvidas pelo mestre na mesa. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
         "attunement": false
       }
     },

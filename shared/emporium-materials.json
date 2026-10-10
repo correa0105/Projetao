@@ -1246,5 +1246,15 @@
   "cosmetic-gloves-velvet": "cloth",
   "cosmetic-boots-riding": "leather",
   "cosmetic-boots-fur": "leather",
-  "cosmetic-boots-court": "leather"
+  "cosmetic-boots-court": "leather",
+  "adventurer-s-ring": "metal",
+  "bottle-of-boundless-coffee": "metal",
+  "cartographer-s-map-case": "leather",
+  "chest-of-preserving": "wood",
+  "earring-of-message": "glass",
+  "orb-of-gonging": "spheres",
+  "pressure-capsule": "cloth",
+  "sekolahian-worshiping-statuette": "spheres",
+  "spyglass-of-clairvoyance": "metal",
+  "vox-seeker": "metal"
 }

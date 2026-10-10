@@ -256,6 +256,34 @@ try {
       assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2', [hero.id, item.id])).rows.length, 0);
       assert.equal((await request(usePath, 'POST', { ...use, idempotency_key: randomUUID() })).status, 409);
     }
+    if (ids.includes('pressure-capsule')) {
+      const capsule = completion.items.find(
+        (x: any) => x.id === 'pressure-capsule',
+      );
+      assert(capsule.raw_data.consumable && consumableItems.has(capsule.id));
+      assert.equal(capsule.price_cp, 5000);
+      const use = {
+        kind: 'consumable',
+        item_id: capsule.id,
+        idempotency_key: randomUUID(),
+      };
+      assert.equal((await request(usePath, 'POST', use)).status, 200);
+      assert.equal((await request(usePath, 'POST', use)).status, 200);
+      assert.equal(
+        (
+          await pool.query(
+            'SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',
+            [hero.id, capsule.id],
+          )
+        ).rows.length,
+        0,
+      );
+      assert.equal(
+        (await request(usePath, 'POST', { ...use, idempotency_key: randomUUID() }))
+          .status,
+        409,
+      );
+    }
     const adamAmmo:Record<string,[number,number]>={'adamantine-arrow':[2005,.05],'adamantine-bolt':[2005,.075],'adamantine-energy-cell':[2000,.5],'adamantine-firearm-bullet':[2030,.2],'adamantine-needle':[2002,.02],'adamantine-sling-bullet':[2000,.075]};
     const adamantine=completion.items.filter((x:any)=>x.raw_data.magic_family==='Adamantine Weapon'&&x.raw_data.consumable);
     if(ids.includes('adamantine-arrow'))assert.equal(adamantine.length,6);
@@ -827,6 +855,167 @@ try {
         400,
         id,
       );
+    assert.deepEqual(
+      (
+        await pool.query(
+          'SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',
+          [hero.id],
+        )
+      ).rows,
+      ledger,
+    );
+  }
+  if (ids.includes('vox-seeker')) {
+    const item = (id: string) => completion.items.find((x: any) => x.id === id);
+    const expected: Record<string, [string, string[], number]> = {
+      'adventurer-s-ring': ['FRHoF', ['ring_left', 'ring_right'], 0.05],
+      'bottle-of-boundless-coffee': ['SCC', ['main_hand', 'off_hand'], 1],
+      'cartographer-s-map-case': ['AI', [], 1],
+      'chest-of-preserving': ['WDMM', [], 25],
+      'earring-of-message': ['CRCotN', [], 0.02],
+      'orb-of-gonging': ['WDMM', ['main_hand', 'off_hand'], 5],
+      'pressure-capsule': ['GoS', [], 0.05],
+      'sekolahian-worshiping-statuette': ['GoS', [], 4],
+      'spyglass-of-clairvoyance': ['AI', ['main_hand', 'off_hand'], 1],
+      'vox-seeker': ['EGW', [], 5],
+    };
+    for (const [id, [source, slots, weight]] of Object.entries(expected)) {
+      const x = item(id);
+      assert.equal(x.raw_data.upstream_source, source, id);
+      assert.equal(x.raw_data.attunement, false, id);
+      assert.deepEqual(x.raw_data.equipment_slots, slots, id);
+      assert.equal(x.weight_lb, weight, id);
+      assert.equal(
+        x.weight_estimated,
+        !['chest-of-preserving', 'orb-of-gonging'].includes(id),
+        id,
+      );
+      assert.deepEqual(purchaseContents(id), [id]);
+      assert.equal(armorBundle(id), undefined);
+      assert.equal(x.raw_data.consumable, id === 'pressure-capsule');
+      assert.equal(x.price_cp, id === 'pressure-capsule' ? 5000 : 10000);
+      if (!rulesReviewIds || rulesReviewIds.has(id))
+        for (const slot of slots) {
+          for (const s of slots)
+            assert.equal(
+              (
+                await request('/inventory/equipment', 'POST', {
+                  character_id: hero.id,
+                  item_id: null,
+                  slot: s,
+                })
+              ).status,
+              200,
+            );
+          assert.equal(
+            (
+              await request('/inventory/equipment', 'POST', {
+                character_id: hero.id,
+                item_id: id,
+                slot,
+              })
+            ).status,
+            200,
+            id,
+          );
+        }
+    }
+    assert.equal(
+      item('adventurer-s-ring').raw_data.source_edition,
+      'D&D 5e (2024)',
+    );
+    assert.match(
+      item('adventurer-s-ring').raw_data.rules_summary,
+      /20 pés.*mais 20 pés/,
+    );
+    assert.match(item('adventurer-s-ring').raw_data.rules_summary, /ação bônus/);
+    assert.match(
+      item('bottle-of-boundless-coffee').raw_data.rules_summary,
+      /d20: com 1.*uma hora/,
+    );
+    assert.match(
+      item('bottle-of-boundless-coffee').raw_data.rules_summary,
+      /despejado.*desaparece/,
+    );
+    assert.match(
+      item('cartographer-s-map-case').raw_data.rules_summary,
+      /grau 3 da franquia/,
+    );
+    assert.match(
+      item('cartographer-s-map-case').raw_data.rules_summary,
+      /Percepção\) CD 15/,
+    );
+    assert.match(
+      item('cartographer-s-map-case').raw_data.rules_summary,
+      /tempo de viagem cai à metade/,
+    );
+    assert.match(
+      item('cartographer-s-map-case').raw_data.rules_summary,
+      /descanso longo/,
+    );
+    assert.match(
+      item('cartographer-s-map-case').raw_data.rules_summary,
+      /sete dias depois/,
+    );
+    assert.match(
+      item('chest-of-preserving').raw_data.rules_summary,
+      /Destreza CD 15/,
+    );
+    assert.match(
+      item('chest-of-preserving').raw_data.rules_summary,
+      /qualquer parte.*elimina a magia/,
+    );
+    assert.equal(item('earring-of-message').raw_data.upstream_facts.charges, 5);
+    assert.match(
+      item('earring-of-message').raw_data.rules_summary,
+      /ação e 1 carga/,
+    );
+    assert.match(
+      item('earring-of-message').raw_data.rules_summary,
+      /1d4 \+ 1.*amanhecer/,
+    );
+    assert.match(
+      item('orb-of-gonging').raw_data.rules_summary,
+      /a cada 6 segundos.*600 pés/,
+    );
+    assert.match(
+      item('pressure-capsule').raw_data.rules_summary,
+      /superiores a 100 pés/,
+    );
+    assert.match(
+      item('pressure-capsule').raw_data.rules_summary,
+      /não informa uma duração numérica/,
+    );
+    assert.match(
+      item('sekolahian-worshiping-statuette').raw_data.rules_summary,
+      /animal marinho Minúsculo.*1 polegada/,
+    );
+    assert.match(
+      item('sekolahian-worshiping-statuette').raw_data.rules_summary,
+      /uma vez por hora/,
+    );
+    assert.match(
+      item('spyglass-of-clairvoyance').raw_data.rules_summary,
+      /grau 2 da franquia/,
+    );
+    assert.match(
+      item('spyglass-of-clairvoyance').raw_data.rules_summary,
+      /Sabedoria CD 15 usando ferramentas/,
+    );
+    assert.match(
+      item('spyglass-of-clairvoyance').raw_data.rules_summary,
+      /3 milhas/,
+    );
+    assert.match(
+      item('spyglass-of-clairvoyance').raw_data.rules_summary,
+      /Não revela criaturas, estruturas/,
+    );
+    assert.match(
+      item('vox-seeker').raw_data.rules_summary,
+      /Cada ação.*1 minuto.*10 minutos/,
+    );
+    assert.match(item('vox-seeker').raw_data.rules_summary, /controle do mestre/);
+    assert.match(item('vox-seeker').raw_data.rules_summary, /0 PV, é destruído/);
     assert.deepEqual(
       (
         await pool.query(

@@ -18814,5 +18814,85 @@
     "sha256": "62946e5fb2ffd5fcc59ebc0770d7ddc04ee53d041483dea625f3547117fae5d0",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "adventurer-s-ring",
+    "path": "public/audio/emporium/adventurer-s-ring.wav",
+    "kind": "metal",
+    "sha256": "7f8ae65c106da195748c98457994eb1b915778cc57c5441bd2e7a120b5da40b7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bottle-of-boundless-coffee",
+    "path": "public/audio/emporium/bottle-of-boundless-coffee.wav",
+    "kind": "metal",
+    "sha256": "199f0e6d513d465b7899bf279d1869a2d72e5135bc384f7b27de24d21fbd9fc0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cartographer-s-map-case",
+    "path": "public/audio/emporium/cartographer-s-map-case.wav",
+    "kind": "leather",
+    "sha256": "69955fb94ff4c122e040e1e5f6a7273f9c2caf0be4c42bd849b69cd6f746d9a9",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "chest-of-preserving",
+    "path": "public/audio/emporium/chest-of-preserving.wav",
+    "kind": "wood",
+    "sha256": "97043df53604a8461813a2b56c74197e48422301861a8412107e8650f45a70eb",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "earring-of-message",
+    "path": "public/audio/emporium/earring-of-message.wav",
+    "kind": "glass",
+    "sha256": "0e5b810e8a15a73319b01bb50394593175d46925dbd8cbce9e2f3b0d9751c8d9",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "orb-of-gonging",
+    "path": "public/audio/emporium/orb-of-gonging.wav",
+    "kind": "spheres",
+    "sha256": "d0e766578747cd9b9d0319e2a98f53eb65f8d6eee354d6b8b7e00b2c00ea7894",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pressure-capsule",
+    "path": "public/audio/emporium/pressure-capsule.wav",
+    "kind": "cloth",
+    "sha256": "ca6206304e982fe16fc3cc6502b2b2f4ca015571b1e5277890f1dae5b80e6156",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sekolahian-worshiping-statuette",
+    "path": "public/audio/emporium/sekolahian-worshiping-statuette.wav",
+    "kind": "spheres",
+    "sha256": "33007654bfcc15f31880969e95afaff4246de4a0661f5f86cdbea1c09c21fc32",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "spyglass-of-clairvoyance",
+    "path": "public/audio/emporium/spyglass-of-clairvoyance.wav",
+    "kind": "metal",
+    "sha256": "62fc49abf4c7b51ed56de0203a4d4ac096ec35c8208de89d3e33a05219fa7d3d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vox-seeker",
+    "path": "public/audio/emporium/vox-seeker.wav",
+    "kind": "metal",
+    "sha256": "7c5830104f8e050a0aabd63bbce5cca5610412e94f0d2945bca6794e68807187",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

@@ -17053,5 +17053,126 @@
     "material": "metal",
     "source_edition": "D&D 5e (2014)",
     "review": "approved"
+  },
+  "adventurer-s-ring": {
+    "name": "Anel do aventureiro",
+    "description": "Anel com tampa articulada e uma chama mágica que não aquece nem consome combustível.",
+    "merchant_comment": "Abra a tampinha e você tem luz sem queimar a mão. Feche quando quiser passar despercebido; uma chama na ponta do dedo também chama atenção.",
+    "rules_summary": "Enquanto a tampa está aberta, emite chama sem calor e sem combustível: luz plena até 20 pés (6,1 m) e penumbra por mais 20 pés. Abrir ou fechar a tampa exige uma ação bônus; fechá-la apaga a chama. Não exige sintonia. Forgotten Realms: Heroes of Faerûn, regras de 2024. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 0.05,
+    "slots": [
+      "ring_left",
+      "ring_right"
+    ],
+    "material": "metal",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "bottle-of-boundless-coffee": {
+    "name": "Garrafa de café inesgotável",
+    "description": "Garrafa metálica que produz café agradavelmente morno para beber diretamente.",
+    "merchant_comment": "Café na medida certa, direto da garrafa. Não tente servir uma rodada: o que você derrama desaparece, e às vezes ela resolve tirar uma hora de descanso.",
+    "rules_summary": "Garrafa metálica com rolha presa por uma corrente. O café permanece confortavelmente morno e o calor não atravessa o metal; a garrafa não aceita outros líquidos. A cada vez que alguém bebe, role d20: com 1, ela para de fornecer café por uma hora. Café despejado, em vez de bebido diretamente, desaparece ao sair da garrafa. Não exige sintonia. Strixhaven: A Curriculum of Chaos. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 1,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "cartographer-s-map-case": {
+    "name": "Estojo de mapas do cartógrafo",
+    "description": "Estojo de cartógrafo de Acquisitions Incorporated que encontra mapas úteis e atalhos.",
+    "merchant_comment": "Confira o grau da sua franquia antes de abrir este estojo. Ele ajuda a encontrar uma boa rota; ter coragem de seguir o mapa continua por sua conta.",
+    "rules_summary": "Equipamento do cargo de cartógrafo de Acquisitions Incorporated, mágico comum a partir do grau 3 da franquia, sem relação com o nível de personagem. Guarda mapas normais. Mapa de atalhos: use uma ação e teste Sabedoria (Percepção) CD 15; em sucesso, encontra um atalho relevante e o tempo de viagem cai à metade ao seguir a rota. Sucesso por 5 ou mais também concede vantagem no próximo teste para atravessar a área mapeada na próxima hora. Essa função volta após um descanso longo. Mapa do momento: a partir do mesmo grau, use uma ação e Sabedoria (Percepção) CD 15 para achar um mapa ligado à missão ou a uma nova missão, com um marco e o terreno natural em raio de 1 milha dele. Após usar, essa função volta ao amanhecer de sete dias depois; o mestre define o marco e a missão. Não exige sintonia. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 1,
+    "slots": [],
+    "material": "leather",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "chest-of-preserving": {
+    "name": "Baú de preservação",
+    "description": "Baú de tampa arqueada que impede o envelhecimento e a deterioração de perecíveis guardados dentro.",
+    "merchant_comment": "Bom para manter as provisões como estavam quando entraram. Cuide da fechadura: arrombar com ferramentas é uma coisa, partir a madeira é outra.",
+    "rules_summary": "Alimentos e outros objetos perecíveis não envelhecem nem se deterioram enquanto estão dentro. Mede 2,5 pés de comprimento, 1,5 pé de largura e 1 pé de altura; tampa em meio barril e fechadura. Ferramentas de ladrão e teste de Destreza CD 15 permitem abrir a fechadura. Quebrar a fechadura ou qualquer parte do baú elimina a magia. Não restaura comida já estragada nem ressuscita criaturas. Peso de 25 lb informado pela fonte, sem sintonia. Waterdeep: Dungeon of the Mad Mage; resolução pelo mestre.",
+    "slots": [],
+    "material": "wood",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "earring-of-message": {
+    "name": "Brinco de mensagem",
+    "description": "Um brinco de cristal azul preso em fios delicados de cobre, capaz de transmitir Mensagem.",
+    "merchant_comment": "É um brinco só, não um par. Vista-o para mandar sua mensagem; o cristal tem cinco cargas e recupera parte delas ao amanhecer.",
+    "rules_summary": "Um brinco com cristal azul e fios de cobre, com 5 cargas. Enquanto o usa, uma ação e 1 carga permitem conjurar Mensagem. Recupera 1d4 + 1 cargas gastas diariamente ao amanhecer, até o máximo de 5. Mensagem segue as regras da magia e não concede alcance ilimitado. Não exige sintonia. Critical Role: Call of the Netherdeep. O item fica no inventário; o uso como brinco é resolvido na mesa, sem criar um encaixe de armadura adicional. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 0.02,
+    "slots": [],
+    "material": "glass",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "orb-of-gonging": {
+    "name": "Orbe do gongo",
+    "description": "Esfera oca de bronze com anéis entalhados que ressoa quando suas marcas se alinham.",
+    "merchant_comment": "Alinhe as marcas e ele começa a tocar. Se pretende se esconder, desalinhe antes: esse bronze se faz ouvir a uma distância respeitável.",
+    "rules_summary": "Orbe oco de 5 polegadas de diâmetro (12,7 cm), com 5 lb, formado por anéis de bronze com entalhes. Uma ação alinha os entalhes e inicia um som alto de gongo a cada 6 segundos, audível até 600 pés (182,9 m). O som continua até os entalhes deixarem de estar alinhados. Não exige sintonia e não funciona como arma de dano sônico. Waterdeep: Dungeon of the Mad Mage; efeitos resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "spheres",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "pressure-capsule": {
+    "name": "Cápsula de pressão",
+    "description": "Cápsula consumível de cera, areia e plantas aquáticas encantadas para mergulhos profundos.",
+    "merchant_comment": "Engula uma antes de descer para as profundezas. Ela ajuda com a pressão da água, mas não põe ar nos seus pulmões; leve uma forma de respirar.",
+    "rules_summary": "Cápsula pequena de cera de abelha, areia e plantas aquáticas encantadas. Ao consumi-la, uma criatura ignora os efeitos de nadar a profundidades superiores a 100 pés (30,5 m), seguindo a regra de ambientes incomuns indicada em Ghosts of Saltmarsh. Não concede respiração aquática, deslocamento de natação ou proteção geral contra frio. A entrada não informa uma duração numérica; o mestre aplica a propriedade conforme a fonte, sem inventar uma duração. Uma unidade é consumida por uso, sem sintonia. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 0.05,
+    "slots": [],
+    "material": "cloth",
+    "source_edition": "D&D 5e (2014)",
+    "consumable": true,
+    "review": "approved"
+  },
+  "sekolahian-worshiping-statuette": {
+    "name": "Estatueta de culto a Sekolah",
+    "description": "Tubarão de arenito esculpido em movimento, com boca aberta e uma pequena mordida mágica.",
+    "merchant_comment": "A boca não está aberta só para enfeitar. Mantenha os bichinhos do mar afastados dela e trate o arenito com cuidado.",
+    "rules_summary": "Estatueta de arenito com 1 pé (30,5 cm) de altura, representando um tubarão retorcido na água com a boca aberta. Se um animal marinho Minúsculo ficar a até 1 polegada (2,54 cm) da boca, ela anima brevemente e causa 1 ponto de dano perfurante ao animal. Só pode causar esse dano uma vez por hora. Não ataca criaturas maiores ou qualquer alvo arbitrário, nem vira um companheiro vivo. Não exige sintonia. Ghosts of Saltmarsh. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 4,
+    "slots": [],
+    "material": "spheres",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "spyglass-of-clairvoyance": {
+    "name": "Luneta da clarividência",
+    "description": "Luneta de Acquisitions Incorporated que permite mapear terreno natural atrás de um obstáculo.",
+    "merchant_comment": "É equipamento de franquia, não uma janela para espiar pessoas. Ela revela o terreno que está escondido pela paisagem; moradores e construções continuam fora do mapa.",
+    "rules_summary": "Luneta fornecida pela sede, item mágico comum a partir do grau 2 da franquia Acquisitions Incorporated; isso não é nível de personagem. Uma ação permite observar um ponto a até 1 milha (1,61 km) que bloqueie sua visão, como montanha, castelo ou floresta. Em seguida, faça teste de Sabedoria CD 15 usando ferramentas de cartógrafo; em sucesso, mapeia o terreno natural a até 3 milhas (4,83 km) desse ponto. Não revela criaturas, estruturas nem informações além do terreno natural. A função volta no próximo amanhecer, sem sintonia; não conjura automaticamente a magia Clarividência. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 1,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "vox-seeker": {
+    "name": "Buscador de vozes",
+    "description": "Autômato de bronze em forma de caranguejo, movido por corda e controlado pelo mestre.",
+    "merchant_comment": "Dê corda com cuidado e lembre quem manda no mecanismo: o mestre da mesa. Se ele for destruído, apertar os parafusos não vai trazê-lo de volta.",
+    "rules_summary": "Dispositivo mecânico do tamanho de um prato, semelhante a um caranguejo metálico. Cada ação usada para dar corda permite 1 minuto de funcionamento, até o máximo de 10 minutos. Enquanto ativo, usa a ficha da criatura Vox Seeker de Explorer’s Guide to Wildemount e permanece sob controle do mestre, sem se tornar um mascote obediente do comprador. Se chegar a 0 PV, é destruído. Não exige sintonia; ativação e ficha são resolvidas pelo mestre na mesa. Peso estimado pelo projeto; as propriedades mágicas são resolvidas na mesa.",
+    "estimated_weight_lb": 5,
+    "slots": [],
+    "material": "metal",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
   }
 }

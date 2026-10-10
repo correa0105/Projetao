@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **1021 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **1031 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -525,3 +525,11 @@ API dos 1014 itens e ambas as mãos dos 40 novos, compra/replay/saldo/ledger/pre
 Sete ofertas comuns ERLW: Common Glamerweave, Everbright Lantern, Keycharm, Scribe’s Pen, Shiftweave, Spellshard e Wand Sheath. Cada uma possui ilustração original aprovada, fala individual e áudio material próprio. Regras resumidas em português, D&D 5e (2014), restrições de sintonia, ausência de cargas e os pesos estimados estão explicitados. Roupas continuam peças únicas sem bônus de armadura; a bainha é vendida vazia, sem varinha incluída.
 
 1021 ofertas novas prontas e publicadas; 2055 candidatos ainda pendentes. QA de todas as ofertas, descrição/equipamento das sete novas, compras e replay idempotente, ledger e arte/falas em três larguras aprovado. A publicação também atualiza as imagens públicas dos companheiros exibidos, remove as placas do perfil, alinha a sala das conquistas e melhora Perfis/Eventos/Hall/Cartas/Torre. Testes com banco UUID descartável, quatro/cinco larguras, navegação por teclado e permissões aprovados. Todos os dados e produtos anteriores e os efeitos já aprovados permanecem preservados.
+
+## 23. Dez utilitários com artes individuais
+
+Anel do aventureiro (FRHoF, 2024), Garrafa de café inesgotável (SCC), Estojo de mapas do cartógrafo e Luneta da clarividência (AI), Baú de preservação e Orbe do gongo (WDMM), Brinco de mensagem (CRCotN), Cápsula de pressão e Estatueta de culto a Sekolah (GoS), Buscador de vozes (EGW). Cada oferta tem ilustração original transparente, prompt e proveniência em `art-jobs-common-utility5-items.json`, fala própria e foley material distinto. Os objetos completos foram inspecionados também em fundo escuro a 168 px; nenhuma arte ou som anterior foi substituído.
+
+As regras distinguem os graus 2/3 da franquia de níveis de personagem. A cápsula não concede respiração aquática nem duração inventada; é consumida uma vez com replay idempotente. O baú conserva alimentos sem desfazer deterioração prévia, a luneta revela terreno sem criaturas/construções, e o autômato continua sob controle do mestre. Pesos de 25 lb do baú e 5 lb do orbe são da fonte; os demais pesos são estimativas explícitas. Nenhum desses dez itens exige sintonia.
+
+1031 ofertas novas publicadas, 2045 candidatos ainda pendentes. API real em banco UUID descartável verificou compra, saldo, ledger, replay, equipamento e fontes; UI conferiu as dez artes/falas/regras, três larguras e as prévias dos baús existentes. TypeScript e build passaram. Release incremental `magic-completion-v23-20261010`: somente dez produtos novos; linhas integrais dos produtos anteriores e de 60 tabelas preservadas. Todas as 2131 mídias e 43 bundles públicos conferidos; vinte efeitos/trinta condições, texturas VTT e máscara/foice preservados, servidor saudável e ilustrador ativo. A importação completa e as opções específicas de magia/alvo seguem em andamento.

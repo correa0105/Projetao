@@ -4990,5 +4990,57 @@
   "cosmetic-boots-court": {
     "slots": ["feet"],
     "two_handed": false
+  },
+  "adventurer-s-ring": {
+    "slots": [
+      "ring_left",
+      "ring_right"
+    ],
+    "two_handed": false
+  },
+  "bottle-of-boundless-coffee": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "cartographer-s-map-case": {
+    "slots": [],
+    "two_handed": false
+  },
+  "chest-of-preserving": {
+    "slots": [],
+    "two_handed": false
+  },
+  "earring-of-message": {
+    "slots": [],
+    "two_handed": false
+  },
+  "orb-of-gonging": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "pressure-capsule": {
+    "slots": [],
+    "two_handed": false
+  },
+  "sekolahian-worshiping-statuette": {
+    "slots": [],
+    "two_handed": false
+  },
+  "spyglass-of-clairvoyance": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "vox-seeker": {
+    "slots": [],
+    "two_handed": false
   }
 }

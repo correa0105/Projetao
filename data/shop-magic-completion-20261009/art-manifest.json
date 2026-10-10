@@ -15824,6 +15824,126 @@
       "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: one EMPTY Wand Sheath designed to clamp onto a warforged forearm, a complete antique bronze and brushed iron forearm cuff with two hinged curved straps and a slim open-ended telescoping tubular housing attached along the upper side. Three-quarter view clearly reveals the empty housing mouth, inner sliding rail, locking hinge and buckles. Compact rugged Eberron craftsmanship, silver mechanical edge highlights and worn bronze surfaces, finely engraved nontext geometric marks. Complete unclasped curved straps, full housing length visible. No actual arm, hand, wand, blade, weapon, electricity or extra loose components. The purchaser receives one cuff mechanism, not a wand.",
       "review": "approved",
       "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+    },
+    {
+      "id": "adventurer-s-ring",
+      "path": "/shop/magic-completion-20261009/adventurer-s-ring.webp",
+      "native": ".local/shop-completion/native/adventurer-s-ring.png",
+      "native_sha256": "2f208d94abb55c86a31a48fe7d419bce60e9167325d706367c4e0990308b0c73",
+      "sha256": "a325d7eea6bd61f36468e2fc482be3e77cb6c94aa21bd79efce170f7678f5797",
+      "width": 768,
+      "height": 726,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one sturdy gold adventurer ring with a broad hinged circular lid mounted over its bezel. The lid is half-open, revealing a tiny cool magical flame inside the protective bezel. Miniature hinge and cover clearly readable, worn gold edges and copper-red inset interior, practical adventurous craftsmanship, realistic full round finger band viewed diagonally. Flame limited to the small bezel, no giant halo or sparks. The ring is singular, not a bracelet.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "bottle-of-boundless-coffee",
+      "path": "/shop/magic-completion-20261009/bottle-of-boundless-coffee.webp",
+      "native": ".local/shop-completion/native/bottle-of-boundless-coffee.png",
+      "native_sha256": "2d72f4ed42371033e33abf9b4771de604bb4223c55518cf613e8ac023909a433",
+      "sha256": "a0b3a7c0622f943fb760298df674c97ec5a9fb63b3126a98bf3f0f21b4bc8863",
+      "width": 729,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one squat antique metal coffee flask, brushed warm copper with bronze rim, a short narrow neck and a snug stopper attached by a fine chain to the neck. Complete metal bottle with stopper sitting closed, embossed subtle coffee-leaf relief, polished wear and small rivets. No cup, spoon, coffee beans, liquid pouring, separate stopper or steam obscuring the object. This is a traveling metal bottle, not a potion vial.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "cartographer-s-map-case",
+      "path": "/shop/magic-completion-20261009/cartographer-s-map-case.webp",
+      "native": ".local/shop-completion/native/cartographer-s-map-case.png",
+      "native_sha256": "ea7559e25b2f25b050a7f2eec9d10fd191fc8c544734174e131d5e257c419894",
+      "sha256": "cba395f93c2f36a02dc3f74b5aa005ae0ee4762ccd6c53a64528f98d32ca3fe9",
+      "width": 768,
+      "height": 640,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one complete practical cylindrical dark green leather scroll/map case, diagonally oriented, with rounded wood end caps, integrated brass side clasps and a narrow attached shoulder strap folded close to the cylinder. The upper cap bears a delicate original compass-rose relief without letters. Fine leather grain, hand stitching, slightly scuffed field equipment, muted brass geometric ornament, refined realistic construction. No scroll exposed, map sheet, pen or separate object; the case is the product.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "chest-of-preserving",
+      "path": "/shop/magic-completion-20261009/chest-of-preserving.webp",
+      "native": ".local/shop-completion/native/chest-of-preserving.png",
+      "native_sha256": "64b3307c6276c5473c4fd5aeaffb46a7f7a625cd65732faaa8f8d3af7ae7385e",
+      "sha256": "bc2fcaf8ac8389aeaf27d19b313f31515324595b116cd38aa4e17c48f58ab04e",
+      "width": 768,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one complete broad oak preserving chest with a half-barrel arched lid, shown closed at three-quarter angle. Proportions roughly length 2.5 feet, width 1.5 feet, height 1 foot. Pale weathered oak grain, cool iron curved straps following the half-cylinder lid, functional central lock and two side handles. Frost-blue mineral inlays set INSIDE the iron bands hint at preservation magic, no outside ice or glowing particle effects. Robust chest, precise old-world craftsmanship, full base and both ends visible. No contents, food, weapon, armor or additional products.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "earring-of-message",
+      "path": "/shop/magic-completion-20261009/earring-of-message.webp",
+      "native": ".local/shop-completion/native/earring-of-message.png",
+      "native_sha256": "58e51bfc150e525ecb2466e8347362c56c1c673949e8edc2c0e58ff08f9d7313",
+      "sha256": "5baeedcc33805fbd8b747517c6a9e57800e88e4e990aa95cb67f42ad5e5b0fa8",
+      "width": 512,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: a SINGLE earring: irregular deep azure-blue crystal wrapped in intricate delicate copper wire with a small integrated ear hook at the top. Elegant readable jewelry silhouette, clear faceted mineral with restrained internal light, graceful asymmetric copper wrapping and handmade bends. Entire hook and bottom crystal point visible. No pair, necklace chain, separate crystals, person, ear or jewelry display.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "orb-of-gonging",
+      "path": "/shop/magic-completion-20261009/orb-of-gonging.webp",
+      "native": ".local/shop-completion/native/orb-of-gonging.png",
+      "native_sha256": "6fe7c4ff0554825662862058da4bc1796f31ff272fcb7cd58e683c7bac7e3ebf",
+      "sha256": "9efb20e4d4fbb687961aa5e9784b5e7575f81046a47f1d37dca0703ca203d3e5",
+      "width": 768,
+      "height": 743,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one hollow five-inch bronze mechanical orb made entirely of several interlocking notched bronze rings, with carefully readable seams and notch alignment. Three-quarter perspective, alternating aged brass and dark bronze, fine warm highlights on raised ring edges, interior darkness glimpsed through narrow seams, spherical structure complete. NOT a glass orb, gong disk, crystal ball or armillary sphere on a stand. No sound waves, text, base or loose components.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "pressure-capsule",
+      "path": "/shop/magic-completion-20261009/pressure-capsule.webp",
+      "native": ".local/shop-completion/native/pressure-capsule.png",
+      "native_sha256": "b951902c688a09646af7707f9bf775bcd5571deb80d76194b7f400fe6415aeb5",
+      "sha256": "2c46dcd86b9b03b352acec4bf90a3c33258bd8272c538de375662a223ba29bcb",
+      "width": 768,
+      "height": 640,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one small oval consumable capsule made from translucent amber beeswax visibly mixed with sand grains and delicate blue-green aquatic plant fibers. Entire capsule tilted diagonally, organic matte wax surface, subtle shallow molded seam, sandy inclusions and soft turquoise veins visible through wax. Distinct substantial capsule shape, not a glass bottle, pill packaging, pearl or cut gemstone. No wrapper, loose plants, water splash or bubbles.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "sekolahian-worshiping-statuette",
+      "path": "/shop/magic-completion-20261009/sekolahian-worshiping-statuette.webp",
+      "native": ".local/shop-completion/native/sekolahian-worshiping-statuette.png",
+      "native_sha256": "5bab59c703b59100d745a5a2b859236371bc514c26a3cb31560803e539e1dd2f",
+      "sha256": "37534e50dc2f8010c531cb993f75eab0cc7dc927291169ae6b069272e2205734",
+      "width": 512,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one finely carved warm sandstone statuette depicting a shark twisting upward through sculpted flowing water, with its mouth open and clearly carved teeth. Entire one-foot statue including its integrated modest sandstone foot is visible. All shark, curved water support and base carved from the same weathered sandstone, tactile porous mineral detail and elegant sculptural movement. No painted live fish, blood, animal victim, ocean scene, frame, pedestal separate from statue, magic aura or other object.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "spyglass-of-clairvoyance",
+      "path": "/shop/magic-completion-20261009/spyglass-of-clairvoyance.webp",
+      "native": ".local/shop-completion/native/spyglass-of-clairvoyance.png",
+      "native_sha256": "bb4394dc70681a6c2fbf21491e0ef41649e5c0024204db82ed5a789a65684da3",
+      "sha256": "e735556378ce6b5f034da28bcb03c2053fd85613d39f4900da0f39e9de307310",
+      "width": 768,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one complete small collapsible bronze-and-dark-walnut navigator spyglass, partly extended diagonally. Clearly show both ends, blue polished front lens and dark eyepiece, precise telescoping brass bands, a subtly engraved original compass-rose ring and wood-grain grip. Fine old-world surveying instrument with functional joints and restrained cool lens reflections. No eye, hand, stand, landscape projected from lens, map or floating magic.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
+    },
+    {
+      "id": "vox-seeker",
+      "path": "/shop/magic-completion-20261009/vox-seeker.webp",
+      "native": ".local/shop-completion/native/vox-seeker.png",
+      "native_sha256": "61ee2d07663198309a305874234008ff3a7d98d6c4b8942b91e9c94e494337d7",
+      "sha256": "a43237f1cffdbf852e8888c3183717ddfd0e7e4af1d4817d06512c88338b1ebc",
+      "width": 768,
+      "height": 640,
+      "prompt": "Use case: stylized-concept. One original high-quality realistic hand-painted fantasy RPG inventory illustration. A single purchasable object only, centered in three-quarter view, ENTIRE object visible with 8 percent clear margin around every edge. Rich painterly materials with fine craftsmanship, warm light from upper left, gentle cool edge highlights for legibility on a dark shop background. Native transparent background with true alpha. No person, hand, floor, backdrop, shadow plane, text, numbers, lettering, logo, watermark, frame, label, display stand, duplicate object or loose accessories. Do not crop anything. Subject: one entire clockwork automaton the size of a dinner plate, resembling a low bronze mechanical crab. Readable crab body with two small front pincers, six slender articulated metal walking legs, central raised wind-up housing with an integrated winding key, tiny practical rivets and gears. Rough aged bronze shell, polished brass moving joints, restrained red glass sensor dots, realistic delicate mechanism. All pincers and leg tips fully visible, spread naturally with clear silhouette. No live crab, pet clothing, humanoid body, weapon, loose key, electric effects, scenery or base.",
+      "review": "approved",
+      "review_notes": "Approved after inspecting the full native-alpha object and dark 168px shop contact: complete silhouette, distinct composition, readable materials, true transparency and proportional resize only."
     }
   ]
 }
