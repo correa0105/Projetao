@@ -681,12 +681,33 @@ export function Shop({
                         say(chosen);
                       }}
                     >
-                      <img
-                        src={grouped ? `/shop/magic-${offer.kind}-box.webp` : item.image_path || ''}
-                        alt={grouped ? `Caixa selada de ${offer.name}` : item.name}
-                        draggable={false}
-                        loading="lazy"
-                      />
+                      {grouped ? (
+                        <span className="shop-family-display">
+                          <img
+                            className="shop-family-box"
+                            src={`/shop/magic-${offer.kind}-box.webp`}
+                            alt=""
+                            draggable={false}
+                            loading="lazy"
+                          />
+                          <img
+                            className="shop-family-object"
+                            src={
+                              (chosen || model?.variants[0] || offer.variants[0]).image_path || ''
+                            }
+                            alt={`Prévia de ${(chosen || model?.variants[0] || offer.variants[0]).name}, apoiado na caixa`}
+                            draggable={false}
+                            loading="lazy"
+                          />
+                        </span>
+                      ) : (
+                        <img
+                          src={item.image_path || ''}
+                          alt={item.name}
+                          draggable={false}
+                          loading="lazy"
+                        />
+                      )}
                     </button>
                     <div>
                       <small>{chosen ? shopCategory(item) : offer.categories.join(' · ')}</small>

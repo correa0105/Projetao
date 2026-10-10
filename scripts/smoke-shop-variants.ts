@@ -153,7 +153,7 @@ try {
     await expect(saddleCard).toHaveCount(1);
     await expect(saddleCard.locator('h3')).toHaveText(saddle.name);
     await expect(saddleCard.locator('footer strong')).toHaveText(`${money(saddle.price_cp!)} PO`);
-    await expect(saddleCard.locator('.shop-product-art img')).toHaveAttribute(
+    await expect(saddleCard.locator('.shop-product-art .shop-family-box')).toHaveAttribute(
       'src',
       saddle.image_path!,
     );
@@ -221,7 +221,7 @@ try {
   await expect(card.getByRole('button', { name: 'Comprar', exact: true })).toBeDisabled();
   await expect(card.locator('.shop-product-art')).toBeDisabled();
   await expect(card.locator('.shop-price-edit')).toHaveCount(0);
-  await expect(card.locator('.shop-product-art img')).toHaveAttribute(
+  await expect(card.locator('.shop-product-art .shop-family-box')).toHaveAttribute(
     'src',
     '/shop/magic-armor-box.webp',
   );
@@ -316,7 +316,10 @@ try {
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 1000 });
     await card.scrollIntoViewIfNeeded();
-    await expect(card.locator('.shop-product-art img')).toHaveJSProperty('naturalWidth', 1536);
+    await expect(card.locator('.shop-product-art .shop-family-box')).toHaveJSProperty(
+      'naturalWidth',
+      1536,
+    );
     const box = (await card.boundingBox())!;
     expect(box.x).toBeGreaterThanOrEqual(0);
     expect(box.x + box.width).toBeLessThanOrEqual(width + 1);
@@ -362,7 +365,7 @@ try {
   const weapon = page.locator('.shop-product[data-family="Flame Tongue"]');
   await expect(weapon).toHaveCount(1);
   await expect(weapon.locator('h3')).toHaveText('LÍNGUA FLAMEJANTE (ESCOLHER TIPO DA ARMA)');
-  await expect(weapon.locator('.shop-product-art img')).toHaveAttribute(
+  await expect(weapon.locator('.shop-product-art .shop-family-box')).toHaveAttribute(
     'src',
     '/shop/magic-weapon-box.webp',
   );
