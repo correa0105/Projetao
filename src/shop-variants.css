@@ -21,10 +21,10 @@
 }
 .shop-product-art .shop-family-object {
   position: absolute;
-  left: 0;
-  bottom: 8%;
+  left: 25%;
+  bottom: 12%;
   width: 69%;
-  height: 91%;
+  height: 82%;
   object-fit: contain;
   object-position: center bottom;
   transform: rotate(-13deg);

@@ -1,6 +1,13 @@
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-import { resolveCopies, acceptsBase, isMagic, nameKey, magicFacts } from './shop-magic-source.mjs';
+import {
+  resolveCopies,
+  acceptsBase,
+  matchesVariantEdition,
+  isMagic,
+  nameKey,
+  magicFacts,
+} from './shop-magic-source.mjs';
 const plan = JSON.parse(
   await fs.readFile('data/shop-magic-completion-20261009/coverage-plan.json'),
 );
@@ -76,9 +83,13 @@ for (const family of plan.variantFamilies) {
   for (const template of choices) {
     if (!isMagic(template.inherits) || template.inherits.source.startsWith('UA')) continue;
     if (bookInfo.get(template.inherits.source)?.published > '2026-10-09') continue;
-    for (const base of bases) {
-      if (!acceptsBase(base, template)) continue;
-      if (base.edition && template.edition && base.edition !== template.edition) continue;
+    const permitted = bases.filter((base) => acceptsBase(base, template));
+    const currentModels = permitted.filter((base) => matchesVariantEdition(base, template));
+    // A few legacy-only families explicitly require PHB models but omit their
+    // edition tag. Preserve their valid old forms rather than invent a current
+    // combination or silently omit the family from the requested full catalog.
+    const compatible = currentModels.length ? currentModels : permitted;
+    for (const base of compatible) {
       const inherits = template.inherits;
       const name =
         (inherits.namePrefix || '') +
@@ -128,6 +139,7 @@ for (const family of plan.variantFamilies) {
         base: magicFacts(base),
         book: bookInfo.get(inherits.source) || { name: inherits.source },
         source_url: `https://5e.tools/items.html#${encodeURIComponent(name.toLowerCase())}_${inherits.source.toLowerCase()}`,
+        ...(currentModels.length ? {} : { edition_match: 'legacy-only explicit requirements' }),
         rank,
       });
     }

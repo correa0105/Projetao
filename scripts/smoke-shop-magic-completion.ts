@@ -138,6 +138,10 @@ try {
     ['hat-of-wizardry', 'head'],
     ['arcane-grimoire-plus-1', 'main_hand'],
     ['dragonhide-belt-plus-1', 'belt'],
+    ...(ids.includes('spiked-armor-plus-1')?[
+      ['spiked-armor-plus-1','armor'],
+      ['double-bladed-scimitar-plus-1','main_hand'],
+    ]:[]),
   ])
     assert.equal(
       (await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: id, slot }))
@@ -155,6 +159,10 @@ try {
     ).status,
     400,
   );
+  if(ids.includes('double-bladed-scimitar-plus-1')){
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'hooked-shortspear-plus-1',slot:'off_hand'})).status,409,'Two-handed scimitar blocks the second hand');
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'double-bladed-scimitar-plus-1',slot:'off_hand'})).status,400,'Two-handed weapon belongs in the main hand');
+  }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio/source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
   );

@@ -2,8 +2,8 @@
   "status": "planned candidates; require original art and reviewed Portuguese content before activation",
   "asOf": "2026-10-09",
   "named": 968,
-  "variants": 2135,
-  "total": 3103,
+  "variants": 2108,
+  "total": 3076,
   "items": [
     {
       "identity": "1 all purpose tool",
@@ -32234,7 +32234,8 @@
         "name": "Dungeon Master's Guide (2014)",
         "published": "2014-12-09"
       },
-      "source_url": "https://5e.tools/items.html#%2B1%20net_dmg"
+      "source_url": "https://5e.tools/items.html#%2B1%20net_dmg",
+      "edition_match": "legacy-only explicit requirements"
     },
     {
       "identity": "2 ammunition::cell energy",
@@ -33040,7 +33041,8 @@
         "name": "Dungeon Master's Guide (2014)",
         "published": "2014-12-09"
       },
-      "source_url": "https://5e.tools/items.html#%2B2%20net_dmg"
+      "source_url": "https://5e.tools/items.html#%2B2%20net_dmg",
+      "edition_match": "legacy-only explicit requirements"
     },
     {
       "identity": "3 ammunition::cell energy",
@@ -33846,7 +33848,8 @@
         "name": "Dungeon Master's Guide (2014)",
         "published": "2014-12-09"
       },
-      "source_url": "https://5e.tools/items.html#%2B3%20net_dmg"
+      "source_url": "https://5e.tools/items.html#%2B3%20net_dmg",
+      "edition_match": "legacy-only explicit requirements"
     },
     {
       "identity": "acheron blade::bladed double scimitar",
@@ -40552,56 +40555,6 @@
       "source_url": "https://5e.tools/items.html#ascendant%20dragon's%20wrath%20antimatter%20rifle_ftd"
     },
     {
-      "identity": "ascendant dragon s weapon wrath::pistol semiautomatic",
-      "id": "ascendant-dragon-s-wrath-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Ascendant Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Ascendant Dragon's Wrath Semiautomatic Pistol",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "legendary",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "bonusWeapon": "+3",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#ascendant%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
-    },
-    {
       "identity": "ascendant dragon s weapon wrath::automatic rifle",
       "id": "ascendant-dragon-s-wrath-automatic-rifle",
       "kind": "variant",
@@ -42236,53 +42189,6 @@
       "source_url": "https://5e.tools/items.html#ascendant%20dragon's%20wrath%20musket_ftd"
     },
     {
-      "identity": "ascendant dragon s weapon wrath::net",
-      "id": "ascendant-dragon-s-wrath-net",
-      "kind": "variant",
-      "family": "Ascendant Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Ascendant Dragon's Wrath Net",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "legendary",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "bonusWeapon": "+3",
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#ascendant%20dragon's%20wrath%20net_ftd"
-    },
-    {
       "identity": "ascendant dragon s weapon wrath::pike",
       "id": "ascendant-dragon-s-wrath-pike",
       "kind": "variant",
@@ -42588,6 +42494,56 @@
         "published": "2021-10-26"
       },
       "source_url": "https://5e.tools/items.html#ascendant%20dragon's%20wrath%20scimitar_ftd"
+    },
+    {
+      "identity": "ascendant dragon s weapon wrath::pistol semiautomatic",
+      "id": "ascendant-dragon-s-wrath-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Ascendant Dragon's Wrath Weapon",
+      "facts": {
+        "name": "Ascendant Dragon's Wrath Semiautomatic Pistol",
+        "source": "FTD",
+        "page": 25,
+        "rarity": "legendary",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "bonusWeapon": "+3",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Fizban's Treasury of Dragons",
+        "published": "2021-10-26"
+      },
+      "source_url": "https://5e.tools/items.html#ascendant%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
     },
     {
       "identity": "ascendant dragon s weapon wrath::shortbow",
@@ -44111,39 +44067,6 @@
       "source_url": "https://5e.tools/items.html#bloodseeker%20arrow_bmt"
     },
     {
-      "identity": "ammunition bloodseeker::needle",
-      "id": "bloodseeker-needle",
-      "kind": "variant",
-      "family": "Bloodseeker Ammunition",
-      "facts": {
-        "name": "Bloodseeker Needle",
-        "source": "BMT",
-        "page": 66,
-        "rarity": "very rare",
-        "type": "A|XPHB",
-        "weight": 0.02,
-        "srd52": true,
-        "edition": "one",
-        "baseItem": "needle|xphb"
-      },
-      "base": {
-        "name": "Needle",
-        "source": "XPHB",
-        "page": 222,
-        "rarity": "none",
-        "type": "A|XPHB",
-        "weight": 0.02,
-        "value": 2,
-        "srd52": true,
-        "edition": "one"
-      },
-      "book": {
-        "name": "The Book of Many Things",
-        "published": "2023-11-14"
-      },
-      "source_url": "https://5e.tools/items.html#bloodseeker%20needle_bmt"
-    },
-    {
       "identity": "ammunition bloodseeker::bolt",
       "id": "bloodseeker-bolt",
       "kind": "variant",
@@ -44242,36 +44165,37 @@
       "source_url": "https://5e.tools/items.html#bloodseeker%20firearm%20bullet_bmt"
     },
     {
-      "identity": "ammunition bloodseeker::bullet modern",
-      "id": "bloodseeker-modern-bullet",
+      "identity": "ammunition bloodseeker::needle",
+      "id": "bloodseeker-needle",
       "kind": "variant",
       "family": "Bloodseeker Ammunition",
       "facts": {
-        "name": "Bloodseeker Modern Bullet",
+        "name": "Bloodseeker Needle",
         "source": "BMT",
         "page": 66,
         "rarity": "very rare",
-        "type": "AF|DMG",
-        "weight": 0.1,
-        "age": "modern",
-        "edition": "classic",
-        "baseItem": "modern bullet|dmg"
+        "type": "A|XPHB",
+        "weight": 0.02,
+        "srd52": true,
+        "edition": "one",
+        "baseItem": "needle|xphb"
       },
       "base": {
-        "name": "Modern Bullet",
-        "source": "DMG",
-        "page": 268,
+        "name": "Needle",
+        "source": "XPHB",
+        "page": 222,
         "rarity": "none",
-        "type": "AF|DMG",
-        "weight": 0.1,
-        "age": "modern",
-        "edition": "classic"
+        "type": "A|XPHB",
+        "weight": 0.02,
+        "value": 2,
+        "srd52": true,
+        "edition": "one"
       },
       "book": {
         "name": "The Book of Many Things",
         "published": "2023-11-14"
       },
-      "source_url": "https://5e.tools/items.html#bloodseeker%20modern%20bullet_bmt"
+      "source_url": "https://5e.tools/items.html#bloodseeker%20needle_bmt"
     },
     {
       "identity": "ammunition bloodseeker::bullet sling",
@@ -45576,56 +45500,6 @@
         "published": "2020-03-17"
       },
       "source_url": "https://5e.tools/items.html#corpse%20slayer%20antimatter%20rifle_egw"
-    },
-    {
-      "identity": "corpse slayer::pistol semiautomatic",
-      "id": "corpse-slayer-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Corpse Slayer",
-      "facts": {
-        "name": "Corpse Slayer Semiautomatic Pistol",
-        "source": "EGW",
-        "page": 266,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "bonusWeapon": "+1",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Explorer's Guide to Wildemount",
-        "published": "2020-03-17"
-      },
-      "source_url": "https://5e.tools/items.html#corpse%20slayer%20semiautomatic%20pistol_egw"
     },
     {
       "identity": "corpse slayer::automatic rifle",
@@ -47262,53 +47136,6 @@
       "source_url": "https://5e.tools/items.html#corpse%20slayer%20musket_egw"
     },
     {
-      "identity": "corpse slayer::net",
-      "id": "corpse-slayer-net",
-      "kind": "variant",
-      "family": "Corpse Slayer",
-      "facts": {
-        "name": "Corpse Slayer Net",
-        "source": "EGW",
-        "page": 266,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "bonusWeapon": "+1",
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Explorer's Guide to Wildemount",
-        "published": "2020-03-17"
-      },
-      "source_url": "https://5e.tools/items.html#corpse%20slayer%20net_egw"
-    },
-    {
       "identity": "corpse slayer::pike",
       "id": "corpse-slayer-pike",
       "kind": "variant",
@@ -47614,6 +47441,56 @@
         "published": "2020-03-17"
       },
       "source_url": "https://5e.tools/items.html#corpse%20slayer%20scimitar_egw"
+    },
+    {
+      "identity": "corpse slayer::pistol semiautomatic",
+      "id": "corpse-slayer-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Corpse Slayer",
+      "facts": {
+        "name": "Corpse Slayer Semiautomatic Pistol",
+        "source": "EGW",
+        "page": 266,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "bonusWeapon": "+1",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Explorer's Guide to Wildemount",
+        "published": "2020-03-17"
+      },
+      "source_url": "https://5e.tools/items.html#corpse%20slayer%20semiautomatic%20pistol_egw"
     },
     {
       "identity": "corpse slayer::shortbow",
@@ -48647,65 +48524,6 @@
         "published": "2025-12-09"
       },
       "source_url": "https://5e.tools/items.html#dazzling%20antimatter%20rifle_efa"
-    },
-    {
-      "identity": "dazzling weapon::pistol semiautomatic",
-      "id": "dazzling-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Dazzling Weapon",
-      "facts": {
-        "name": "Dazzling Semiautomatic Pistol",
-        "source": "EFA",
-        "page": 112,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 4,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d4}",
-        "bonusWeapon": "+1",
-        "light": [
-          {
-            "bright": 30,
-            "dim": 60
-          }
-        ],
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Eberron: Forge of the Artificer",
-        "published": "2025-12-09"
-      },
-      "source_url": "https://5e.tools/items.html#dazzling%20semiautomatic%20pistol_efa"
     },
     {
       "identity": "dazzling weapon::automatic rifle",
@@ -50630,62 +50448,6 @@
       "source_url": "https://5e.tools/items.html#dazzling%20musket_efa"
     },
     {
-      "identity": "dazzling weapon::net",
-      "id": "dazzling-net",
-      "kind": "variant",
-      "family": "Dazzling Weapon",
-      "facts": {
-        "name": "Dazzling Net",
-        "source": "EFA",
-        "page": 112,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 4,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d4}",
-        "bonusWeapon": "+1",
-        "light": [
-          {
-            "bright": 30,
-            "dim": 60
-          }
-        ],
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Eberron: Forge of the Artificer",
-        "published": "2025-12-09"
-      },
-      "source_url": "https://5e.tools/items.html#dazzling%20net_efa"
-    },
-    {
       "identity": "dazzling weapon::pike",
       "id": "dazzling-pike",
       "kind": "variant",
@@ -51045,6 +50807,65 @@
         "published": "2025-12-09"
       },
       "source_url": "https://5e.tools/items.html#dazzling%20scimitar_efa"
+    },
+    {
+      "identity": "dazzling weapon::pistol semiautomatic",
+      "id": "dazzling-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Dazzling Weapon",
+      "facts": {
+        "name": "Dazzling Semiautomatic Pistol",
+        "source": "EFA",
+        "page": 112,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 4,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d4}",
+        "bonusWeapon": "+1",
+        "light": [
+          {
+            "bright": 30,
+            "dim": 60
+          }
+        ],
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Eberron: Forge of the Artificer",
+        "published": "2025-12-09"
+      },
+      "source_url": "https://5e.tools/items.html#dazzling%20semiautomatic%20pistol_efa"
     },
     {
       "identity": "dazzling weapon::shortbow",
@@ -52459,57 +52280,6 @@
       "source_url": "https://5e.tools/items.html#dragon%20slayer%20antimatter%20rifle_xdmg"
     },
     {
-      "identity": "dragon slayer::pistol semiautomatic",
-      "id": "dragon-slayer-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Dragon Slayer",
-      "facts": {
-        "name": "Dragon Slayer Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 254,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "bonusWeapon": "+1",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#dragon%20slayer%20semiautomatic%20pistol_xdmg"
-    },
-    {
       "identity": "dragon slayer::automatic rifle",
       "id": "dragon-slayer-automatic-rifle",
       "kind": "variant",
@@ -52864,54 +52634,6 @@
       "source_url": "https://5e.tools/items.html#dragon%20slayer%20light%20repeating%20crossbow_xdmg"
     },
     {
-      "identity": "dragon slayer::net",
-      "id": "dragon-slayer-net",
-      "kind": "variant",
-      "family": "Dragon Slayer",
-      "facts": {
-        "name": "Dragon Slayer Net",
-        "source": "XDMG",
-        "page": 254,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "bonusWeapon": "+1",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#dragon%20slayer%20net_xdmg"
-    },
-    {
       "identity": "dragon slayer::revolver",
       "id": "dragon-slayer-revolver",
       "kind": "variant",
@@ -52961,6 +52683,57 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#dragon%20slayer%20revolver_xdmg"
+    },
+    {
+      "identity": "dragon slayer::pistol semiautomatic",
+      "id": "dragon-slayer-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Dragon Slayer",
+      "facts": {
+        "name": "Dragon Slayer Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 254,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "bonusWeapon": "+1",
+        "srd52": true,
+        "basicRules2024": true,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#dragon%20slayer%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "dragon slayer::shotgun",
@@ -53409,39 +53182,6 @@
       "source_url": "https://5e.tools/items.html#dried%20leech%20arrow_bmt"
     },
     {
-      "identity": "dried leech::needle",
-      "id": "dried-leech-needle",
-      "kind": "variant",
-      "family": "Dried Leech",
-      "facts": {
-        "name": "Dried Leech Needle",
-        "source": "BMT",
-        "page": 67,
-        "rarity": "uncommon",
-        "type": "A|XPHB",
-        "weight": 0.02,
-        "srd52": true,
-        "edition": "one",
-        "baseItem": "needle|xphb"
-      },
-      "base": {
-        "name": "Needle",
-        "source": "XPHB",
-        "page": 222,
-        "rarity": "none",
-        "type": "A|XPHB",
-        "weight": 0.02,
-        "value": 2,
-        "srd52": true,
-        "edition": "one"
-      },
-      "book": {
-        "name": "The Book of Many Things",
-        "published": "2023-11-14"
-      },
-      "source_url": "https://5e.tools/items.html#dried%20leech%20needle_bmt"
-    },
-    {
       "identity": "dried leech::bolt",
       "id": "dried-leech-bolt",
       "kind": "variant",
@@ -53508,36 +53248,37 @@
       "source_url": "https://5e.tools/items.html#dried%20leech%20firearm%20bullet_bmt"
     },
     {
-      "identity": "dried leech::bullet modern",
-      "id": "dried-leech-modern-bullet",
+      "identity": "dried leech::needle",
+      "id": "dried-leech-needle",
       "kind": "variant",
       "family": "Dried Leech",
       "facts": {
-        "name": "Dried Leech Modern Bullet",
+        "name": "Dried Leech Needle",
         "source": "BMT",
         "page": 67,
         "rarity": "uncommon",
-        "type": "AF|DMG",
-        "weight": 0.1,
-        "age": "modern",
-        "edition": "classic",
-        "baseItem": "modern bullet|dmg"
+        "type": "A|XPHB",
+        "weight": 0.02,
+        "srd52": true,
+        "edition": "one",
+        "baseItem": "needle|xphb"
       },
       "base": {
-        "name": "Modern Bullet",
-        "source": "DMG",
-        "page": 268,
+        "name": "Needle",
+        "source": "XPHB",
+        "page": 222,
         "rarity": "none",
-        "type": "AF|DMG",
-        "weight": 0.1,
-        "age": "modern",
-        "edition": "classic"
+        "type": "A|XPHB",
+        "weight": 0.02,
+        "value": 2,
+        "srd52": true,
+        "edition": "one"
       },
       "book": {
         "name": "The Book of Many Things",
         "published": "2023-11-14"
       },
-      "source_url": "https://5e.tools/items.html#dried%20leech%20modern%20bullet_bmt"
+      "source_url": "https://5e.tools/items.html#dried%20leech%20needle_bmt"
     },
     {
       "identity": "dried leech::bullet sling",
@@ -54158,55 +53899,6 @@
         "published": "2014-09-30"
       },
       "source_url": "https://5e.tools/items.html#drow%20%2B1%20antimatter%20rifle_mm"
-    },
-    {
-      "identity": "1 drow weapon::pistol semiautomatic",
-      "id": "drow-1-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Drow +1 Weapon",
-      "facts": {
-        "name": "Drow +1 Semiautomatic Pistol",
-        "source": "MM",
-        "page": 126,
-        "rarity": "unknown (magic)",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "bonusWeapon": "+1",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Monster Manual (2014)",
-        "published": "2014-09-30"
-      },
-      "source_url": "https://5e.tools/items.html#drow%20%2B1%20semiautomatic%20pistol_mm"
     },
     {
       "identity": "1 drow weapon::automatic rifle",
@@ -56112,6 +55804,55 @@
       "source_url": "https://5e.tools/items.html#drow%20%2B1%20scimitar_mm"
     },
     {
+      "identity": "1 drow weapon::pistol semiautomatic",
+      "id": "drow-1-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Drow +1 Weapon",
+      "facts": {
+        "name": "Drow +1 Semiautomatic Pistol",
+        "source": "MM",
+        "page": 126,
+        "rarity": "unknown (magic)",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "bonusWeapon": "+1",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Monster Manual (2014)",
+        "published": "2014-09-30"
+      },
+      "source_url": "https://5e.tools/items.html#drow%20%2B1%20semiautomatic%20pistol_mm"
+    },
+    {
       "identity": "1 drow weapon::shortbow",
       "id": "drow-1-shortbow",
       "kind": "variant",
@@ -57248,55 +56989,6 @@
         "published": "2014-09-30"
       },
       "source_url": "https://5e.tools/items.html#drow%20%2B2%20antimatter%20rifle_mm"
-    },
-    {
-      "identity": "2 drow weapon::pistol semiautomatic",
-      "id": "drow-2-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Drow +2 Weapon",
-      "facts": {
-        "name": "Drow +2 Semiautomatic Pistol",
-        "source": "MM",
-        "page": 126,
-        "rarity": "unknown (magic)",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "bonusWeapon": "+2",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Monster Manual (2014)",
-        "published": "2014-09-30"
-      },
-      "source_url": "https://5e.tools/items.html#drow%20%2B2%20semiautomatic%20pistol_mm"
     },
     {
       "identity": "2 drow weapon::automatic rifle",
@@ -59202,6 +58894,55 @@
       "source_url": "https://5e.tools/items.html#drow%20%2B2%20scimitar_mm"
     },
     {
+      "identity": "2 drow weapon::pistol semiautomatic",
+      "id": "drow-2-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Drow +2 Weapon",
+      "facts": {
+        "name": "Drow +2 Semiautomatic Pistol",
+        "source": "MM",
+        "page": 126,
+        "rarity": "unknown (magic)",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "bonusWeapon": "+2",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Monster Manual (2014)",
+        "published": "2014-09-30"
+      },
+      "source_url": "https://5e.tools/items.html#drow%20%2B2%20semiautomatic%20pistol_mm"
+    },
+    {
       "identity": "2 drow weapon::shortbow",
       "id": "drow-2-shortbow",
       "kind": "variant",
@@ -60338,55 +60079,6 @@
         "published": "2014-09-30"
       },
       "source_url": "https://5e.tools/items.html#drow%20%2B3%20antimatter%20rifle_mm"
-    },
-    {
-      "identity": "3 drow weapon::pistol semiautomatic",
-      "id": "drow-3-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Drow +3 Weapon",
-      "facts": {
-        "name": "Drow +3 Semiautomatic Pistol",
-        "source": "MM",
-        "page": 126,
-        "rarity": "unknown (magic)",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "bonusWeapon": "+3",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Monster Manual (2014)",
-        "published": "2014-09-30"
-      },
-      "source_url": "https://5e.tools/items.html#drow%20%2B3%20semiautomatic%20pistol_mm"
     },
     {
       "identity": "3 drow weapon::automatic rifle",
@@ -62290,6 +61982,55 @@
         "published": "2014-09-30"
       },
       "source_url": "https://5e.tools/items.html#drow%20%2B3%20scimitar_mm"
+    },
+    {
+      "identity": "3 drow weapon::pistol semiautomatic",
+      "id": "drow-3-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Drow +3 Weapon",
+      "facts": {
+        "name": "Drow +3 Semiautomatic Pistol",
+        "source": "MM",
+        "page": 126,
+        "rarity": "unknown (magic)",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "bonusWeapon": "+3",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Monster Manual (2014)",
+        "published": "2014-09-30"
+      },
+      "source_url": "https://5e.tools/items.html#drow%20%2B3%20semiautomatic%20pistol_mm"
     },
     {
       "identity": "3 drow weapon::shortbow",
@@ -67924,59 +67665,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(cantrip)%20antimatter%20rifle_xdmg"
     },
     {
-      "identity": "cantrip enspelled weapon::pistol semiautomatic",
-      "id": "enspelled-cantrip-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Cantrip)",
-      "facts": {
-        "name": "Enspelled (Cantrip) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "uncommon",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 0,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(cantrip)%20semiautomatic%20pistol_xdmg"
-    },
-    {
       "identity": "cantrip enspelled weapon::automatic rifle",
       "id": "enspelled-cantrip-automatic-rifle",
       "kind": "variant",
@@ -69707,56 +69395,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(cantrip)%20musket_xdmg"
     },
     {
-      "identity": "cantrip enspelled weapon::net",
-      "id": "enspelled-cantrip-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Cantrip)",
-      "facts": {
-        "name": "Enspelled (Cantrip) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "uncommon",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 0,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(cantrip)%20net_xdmg"
-    },
-    {
       "identity": "cantrip enspelled weapon::pike",
       "id": "enspelled-cantrip-pike",
       "kind": "variant",
@@ -70080,6 +69718,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(cantrip)%20scimitar_xdmg"
+    },
+    {
+      "identity": "cantrip enspelled weapon::pistol semiautomatic",
+      "id": "enspelled-cantrip-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Cantrip)",
+      "facts": {
+        "name": "Enspelled (Cantrip) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "uncommon",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 0,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(cantrip)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "cantrip enspelled weapon::shortbow",
@@ -70780,59 +70471,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%201)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "1 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-1-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 1)",
-      "facts": {
-        "name": "Enspelled (Level 1) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "uncommon",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 1,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%201)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "1 enspelled level weapon::automatic rifle",
@@ -72565,56 +72203,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%201)%20musket_xdmg"
     },
     {
-      "identity": "1 enspelled level weapon::net",
-      "id": "enspelled-level-1-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 1)",
-      "facts": {
-        "name": "Enspelled (Level 1) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "uncommon",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 1,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%201)%20net_xdmg"
-    },
-    {
       "identity": "1 enspelled level weapon::pike",
       "id": "enspelled-level-1-pike",
       "kind": "variant",
@@ -72938,6 +72526,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%201)%20scimitar_xdmg"
+    },
+    {
+      "identity": "1 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-1-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 1)",
+      "facts": {
+        "name": "Enspelled (Level 1) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "uncommon",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 1,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%201)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "1 enspelled level weapon::shortbow",
@@ -73638,59 +73279,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%202)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "2 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-2-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 2)",
-      "facts": {
-        "name": "Enspelled (Level 2) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 2,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%202)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "2 enspelled level weapon::automatic rifle",
@@ -75423,56 +75011,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%202)%20musket_xdmg"
     },
     {
-      "identity": "2 enspelled level weapon::net",
-      "id": "enspelled-level-2-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 2)",
-      "facts": {
-        "name": "Enspelled (Level 2) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 2,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%202)%20net_xdmg"
-    },
-    {
       "identity": "2 enspelled level weapon::pike",
       "id": "enspelled-level-2-pike",
       "kind": "variant",
@@ -75796,6 +75334,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%202)%20scimitar_xdmg"
+    },
+    {
+      "identity": "2 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-2-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 2)",
+      "facts": {
+        "name": "Enspelled (Level 2) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 2,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%202)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "2 enspelled level weapon::shortbow",
@@ -76496,59 +76087,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%203)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "3 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-3-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 3)",
-      "facts": {
-        "name": "Enspelled (Level 3) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 3,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%203)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "3 enspelled level weapon::automatic rifle",
@@ -78281,56 +77819,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%203)%20musket_xdmg"
     },
     {
-      "identity": "3 enspelled level weapon::net",
-      "id": "enspelled-level-3-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 3)",
-      "facts": {
-        "name": "Enspelled (Level 3) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 3,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%203)%20net_xdmg"
-    },
-    {
       "identity": "3 enspelled level weapon::pike",
       "id": "enspelled-level-3-pike",
       "kind": "variant",
@@ -78654,6 +78142,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%203)%20scimitar_xdmg"
+    },
+    {
+      "identity": "3 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-3-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 3)",
+      "facts": {
+        "name": "Enspelled (Level 3) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 3,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%203)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "3 enspelled level weapon::shortbow",
@@ -79354,59 +78895,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%204)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "4 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-4-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 4)",
-      "facts": {
-        "name": "Enspelled (Level 4) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "very rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 4,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%204)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "4 enspelled level weapon::automatic rifle",
@@ -81139,56 +80627,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%204)%20musket_xdmg"
     },
     {
-      "identity": "4 enspelled level weapon::net",
-      "id": "enspelled-level-4-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 4)",
-      "facts": {
-        "name": "Enspelled (Level 4) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "very rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 4,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%204)%20net_xdmg"
-    },
-    {
       "identity": "4 enspelled level weapon::pike",
       "id": "enspelled-level-4-pike",
       "kind": "variant",
@@ -81512,6 +80950,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%204)%20scimitar_xdmg"
+    },
+    {
+      "identity": "4 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-4-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 4)",
+      "facts": {
+        "name": "Enspelled (Level 4) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "very rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 4,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%204)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "4 enspelled level weapon::shortbow",
@@ -82212,59 +81703,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%205)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "5 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-5-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 5)",
-      "facts": {
-        "name": "Enspelled (Level 5) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "very rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 5,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%205)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "5 enspelled level weapon::automatic rifle",
@@ -83997,56 +83435,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%205)%20musket_xdmg"
     },
     {
-      "identity": "5 enspelled level weapon::net",
-      "id": "enspelled-level-5-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 5)",
-      "facts": {
-        "name": "Enspelled (Level 5) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "very rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 5,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%205)%20net_xdmg"
-    },
-    {
       "identity": "5 enspelled level weapon::pike",
       "id": "enspelled-level-5-pike",
       "kind": "variant",
@@ -84370,6 +83758,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%205)%20scimitar_xdmg"
+    },
+    {
+      "identity": "5 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-5-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 5)",
+      "facts": {
+        "name": "Enspelled (Level 5) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "very rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 5,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%205)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "5 enspelled level weapon::shortbow",
@@ -85070,59 +84511,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%206)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "6 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-6-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 6)",
-      "facts": {
-        "name": "Enspelled (Level 6) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "legendary",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 6,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%206)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "6 enspelled level weapon::automatic rifle",
@@ -86855,56 +86243,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%206)%20musket_xdmg"
     },
     {
-      "identity": "6 enspelled level weapon::net",
-      "id": "enspelled-level-6-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 6)",
-      "facts": {
-        "name": "Enspelled (Level 6) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "legendary",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 6,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%206)%20net_xdmg"
-    },
-    {
       "identity": "6 enspelled level weapon::pike",
       "id": "enspelled-level-6-pike",
       "kind": "variant",
@@ -87228,6 +86566,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%206)%20scimitar_xdmg"
+    },
+    {
+      "identity": "6 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-6-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 6)",
+      "facts": {
+        "name": "Enspelled (Level 6) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "legendary",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 6,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%206)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "6 enspelled level weapon::shortbow",
@@ -87928,59 +87319,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%207)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "7 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-7-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 7)",
-      "facts": {
-        "name": "Enspelled (Level 7) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "legendary",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 7,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%207)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "7 enspelled level weapon::automatic rifle",
@@ -89713,56 +89051,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%207)%20musket_xdmg"
     },
     {
-      "identity": "7 enspelled level weapon::net",
-      "id": "enspelled-level-7-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 7)",
-      "facts": {
-        "name": "Enspelled (Level 7) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "legendary",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 7,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%207)%20net_xdmg"
-    },
-    {
       "identity": "7 enspelled level weapon::pike",
       "id": "enspelled-level-7-pike",
       "kind": "variant",
@@ -90086,6 +89374,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%207)%20scimitar_xdmg"
+    },
+    {
+      "identity": "7 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-7-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 7)",
+      "facts": {
+        "name": "Enspelled (Level 7) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "legendary",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 7,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%207)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "7 enspelled level weapon::shortbow",
@@ -90786,59 +90127,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%208)%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "8 enspelled level weapon::pistol semiautomatic",
-      "id": "enspelled-level-8-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 8)",
-      "facts": {
-        "name": "Enspelled (Level 8) Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "legendary",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 8,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%208)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "8 enspelled level weapon::automatic rifle",
@@ -92571,56 +91859,6 @@
       "source_url": "https://5e.tools/items.html#enspelled%20(level%208)%20musket_xdmg"
     },
     {
-      "identity": "8 enspelled level weapon::net",
-      "id": "enspelled-level-8-net",
-      "kind": "variant",
-      "family": "Enspelled Weapon (Level 8)",
-      "facts": {
-        "name": "Enspelled (Level 8) Net",
-        "source": "XDMG",
-        "page": 258,
-        "rarity": "legendary",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 6,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d6}",
-        "spellScrollLevel": 8,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#enspelled%20(level%208)%20net_xdmg"
-    },
-    {
       "identity": "8 enspelled level weapon::pike",
       "id": "enspelled-level-8-pike",
       "kind": "variant",
@@ -92944,6 +92182,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#enspelled%20(level%208)%20scimitar_xdmg"
+    },
+    {
+      "identity": "8 enspelled level weapon::pistol semiautomatic",
+      "id": "enspelled-level-8-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Enspelled Weapon (Level 8)",
+      "facts": {
+        "name": "Enspelled (Level 8) Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 258,
+        "rarity": "legendary",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 6,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d6}",
+        "spellScrollLevel": 8,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#enspelled%20(level%208)%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "8 enspelled level weapon::shortbow",
@@ -95785,57 +95076,6 @@
       "source_url": "https://5e.tools/items.html#giant%20slayer%20antimatter%20rifle_xdmg"
     },
     {
-      "identity": "giant slayer::pistol semiautomatic",
-      "id": "giant-slayer-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Giant Slayer",
-      "facts": {
-        "name": "Giant Slayer Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 264,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "bonusWeapon": "+1",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#giant%20slayer%20semiautomatic%20pistol_xdmg"
-    },
-    {
       "identity": "giant slayer::automatic rifle",
       "id": "giant-slayer-automatic-rifle",
       "kind": "variant",
@@ -96190,54 +95430,6 @@
       "source_url": "https://5e.tools/items.html#giant%20slayer%20light%20repeating%20crossbow_xdmg"
     },
     {
-      "identity": "giant slayer::net",
-      "id": "giant-slayer-net",
-      "kind": "variant",
-      "family": "Giant Slayer",
-      "facts": {
-        "name": "Giant Slayer Net",
-        "source": "XDMG",
-        "page": 264,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "bonusWeapon": "+1",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#giant%20slayer%20net_xdmg"
-    },
-    {
       "identity": "giant slayer::revolver",
       "id": "giant-slayer-revolver",
       "kind": "variant",
@@ -96287,6 +95479,57 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#giant%20slayer%20revolver_xdmg"
+    },
+    {
+      "identity": "giant slayer::pistol semiautomatic",
+      "id": "giant-slayer-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Giant Slayer",
+      "facts": {
+        "name": "Giant Slayer Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 264,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "bonusWeapon": "+1",
+        "srd52": true,
+        "basicRules2024": true,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#giant%20slayer%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "giant slayer::shotgun",
@@ -97518,59 +96761,6 @@
         "published": "2019-09-18"
       },
       "source_url": "https://5e.tools/items.html#hellfire%20antimatter%20rifle_bgdia"
-    },
-    {
-      "identity": "hellfire weapon::pistol semiautomatic",
-      "id": "hellfire-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Hellfire Weapon",
-      "facts": {
-        "name": "Hellfire Semiautomatic Pistol",
-        "source": "BGDIA",
-        "page": 223,
-        "rarity": "uncommon",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "light": [
-          {
-            "dim": 5
-          }
-        ],
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Baldur's Gate: Descent Into Avernus",
-        "published": "2019-09-18"
-      },
-      "source_url": "https://5e.tools/items.html#hellfire%20semiautomatic%20pistol_bgdia"
     },
     {
       "identity": "hellfire weapon::automatic rifle",
@@ -99303,56 +98493,6 @@
       "source_url": "https://5e.tools/items.html#hellfire%20musket_bgdia"
     },
     {
-      "identity": "hellfire weapon::net",
-      "id": "hellfire-net",
-      "kind": "variant",
-      "family": "Hellfire Weapon",
-      "facts": {
-        "name": "Hellfire Net",
-        "source": "BGDIA",
-        "page": 223,
-        "rarity": "uncommon",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "light": [
-          {
-            "dim": 5
-          }
-        ],
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Baldur's Gate: Descent Into Avernus",
-        "published": "2019-09-18"
-      },
-      "source_url": "https://5e.tools/items.html#hellfire%20net_bgdia"
-    },
-    {
       "identity": "hellfire weapon::pike",
       "id": "hellfire-pike",
       "kind": "variant",
@@ -99676,6 +98816,59 @@
         "published": "2019-09-18"
       },
       "source_url": "https://5e.tools/items.html#hellfire%20scimitar_bgdia"
+    },
+    {
+      "identity": "hellfire weapon::pistol semiautomatic",
+      "id": "hellfire-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Hellfire Weapon",
+      "facts": {
+        "name": "Hellfire Semiautomatic Pistol",
+        "source": "BGDIA",
+        "page": 223,
+        "rarity": "uncommon",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "light": [
+          {
+            "dim": 5
+          }
+        ],
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Baldur's Gate: Descent Into Avernus",
+        "published": "2019-09-18"
+      },
+      "source_url": "https://5e.tools/items.html#hellfire%20semiautomatic%20pistol_bgdia"
     },
     {
       "identity": "hellfire weapon::shortbow",
@@ -100384,63 +99577,6 @@
       "source_url": "https://5e.tools/items.html#holy%20avenger%20antimatter%20rifle_xdmg"
     },
     {
-      "identity": "avenger holy::pistol semiautomatic",
-      "id": "holy-avenger-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Holy Avenger",
-      "facts": {
-        "name": "Holy Avenger Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 269,
-        "rarity": "legendary",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": "by a paladin",
-        "reqAttuneTags": [
-          {
-            "class": "paladin"
-          }
-        ],
-        "bonusWeapon": "+3",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#holy%20avenger%20semiautomatic%20pistol_xdmg"
-    },
-    {
       "identity": "avenger holy::automatic rifle",
       "id": "holy-avenger-automatic-rifle",
       "kind": "variant",
@@ -100837,60 +99973,6 @@
       "source_url": "https://5e.tools/items.html#holy%20avenger%20light%20repeating%20crossbow_xdmg"
     },
     {
-      "identity": "avenger holy::net",
-      "id": "holy-avenger-net",
-      "kind": "variant",
-      "family": "Holy Avenger",
-      "facts": {
-        "name": "Holy Avenger Net",
-        "source": "XDMG",
-        "page": 269,
-        "rarity": "legendary",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": "by a paladin",
-        "reqAttuneTags": [
-          {
-            "class": "paladin"
-          }
-        ],
-        "bonusWeapon": "+3",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#holy%20avenger%20net_xdmg"
-    },
-    {
       "identity": "avenger holy::revolver",
       "id": "holy-avenger-revolver",
       "kind": "variant",
@@ -100946,6 +100028,63 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#holy%20avenger%20revolver_xdmg"
+    },
+    {
+      "identity": "avenger holy::pistol semiautomatic",
+      "id": "holy-avenger-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Holy Avenger",
+      "facts": {
+        "name": "Holy Avenger Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 269,
+        "rarity": "legendary",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": "by a paladin",
+        "reqAttuneTags": [
+          {
+            "class": "paladin"
+          }
+        ],
+        "bonusWeapon": "+3",
+        "srd52": true,
+        "basicRules2024": true,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#holy%20avenger%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "avenger holy::shotgun",
@@ -105367,7 +104506,8 @@
         "name": "Mythic Odysseys of Theros",
         "published": "2020-06-02"
       },
-      "source_url": "https://5e.tools/items.html#molten%20bronze%20skin%20breastplate_mot"
+      "source_url": "https://5e.tools/items.html#molten%20bronze%20skin%20breastplate_mot",
+      "edition_match": "legacy-only explicit requirements"
     },
     {
       "identity": "bronze molten skin::half plate",
@@ -105410,7 +104550,8 @@
         "name": "Mythic Odysseys of Theros",
         "published": "2020-06-02"
       },
-      "source_url": "https://5e.tools/items.html#molten%20bronze%20skin%20half%20plate%20armor_mot"
+      "source_url": "https://5e.tools/items.html#molten%20bronze%20skin%20half%20plate%20armor_mot",
+      "edition_match": "legacy-only explicit requirements"
     },
     {
       "identity": "bronze molten skin::plate",
@@ -105455,7 +104596,8 @@
         "name": "Mythic Odysseys of Theros",
         "published": "2020-06-02"
       },
-      "source_url": "https://5e.tools/items.html#molten%20bronze%20skin%20plate%20armor_mot"
+      "source_url": "https://5e.tools/items.html#molten%20bronze%20skin%20plate%20armor_mot",
+      "edition_match": "legacy-only explicit requirements"
     },
     {
       "identity": "moon sword touched::bladed double scimitar",
@@ -106141,59 +105283,6 @@
       "source_url": "https://5e.tools/items.html#nine%20lives%20stealer%20antimatter%20rifle_xdmg"
     },
     {
-      "identity": "lives nine stealer::pistol semiautomatic",
-      "id": "nine-lives-stealer-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Nine Lives Stealer",
-      "facts": {
-        "name": "Nine Lives Stealer Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 281,
-        "rarity": "very rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": "{@dice 1d8 + 1}",
-        "bonusWeapon": "+2",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#nine%20lives%20stealer%20semiautomatic%20pistol_xdmg"
-    },
-    {
       "identity": "lives nine stealer::automatic rifle",
       "id": "nine-lives-stealer-automatic-rifle",
       "kind": "variant",
@@ -106562,56 +105651,6 @@
       "source_url": "https://5e.tools/items.html#nine%20lives%20stealer%20light%20repeating%20crossbow_xdmg"
     },
     {
-      "identity": "lives nine stealer::net",
-      "id": "nine-lives-stealer-net",
-      "kind": "variant",
-      "family": "Nine Lives Stealer",
-      "facts": {
-        "name": "Nine Lives Stealer Net",
-        "source": "XDMG",
-        "page": 281,
-        "rarity": "very rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": "{@dice 1d8 + 1}",
-        "bonusWeapon": "+2",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#nine%20lives%20stealer%20net_xdmg"
-    },
-    {
       "identity": "lives nine stealer::revolver",
       "id": "nine-lives-stealer-revolver",
       "kind": "variant",
@@ -106663,6 +105702,59 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#nine%20lives%20stealer%20revolver_xdmg"
+    },
+    {
+      "identity": "lives nine stealer::pistol semiautomatic",
+      "id": "nine-lives-stealer-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Nine Lives Stealer",
+      "facts": {
+        "name": "Nine Lives Stealer Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 281,
+        "rarity": "very rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": "{@dice 1d8 + 1}",
+        "bonusWeapon": "+2",
+        "srd52": true,
+        "basicRules2024": true,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#nine%20lives%20stealer%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "lives nine stealer::shotgun",
@@ -109191,61 +108283,6 @@
       "source_url": "https://5e.tools/items.html#ruidium%20antimatter%20rifle_crcotn"
     },
     {
-      "identity": "ruidium weapon::pistol semiautomatic",
-      "id": "ruidium-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Ruidium Weapon",
-      "facts": {
-        "name": "Ruidium Semiautomatic Pistol",
-        "source": "CRCotN",
-        "page": 216,
-        "rarity": "very rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "bonusWeapon": "+2",
-        "modifySpeed": {
-          "equal": {
-            "swim": "walk"
-          }
-        },
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Critical Role: Call of the Netherdeep",
-        "published": "2022-03-15"
-      },
-      "source_url": "https://5e.tools/items.html#ruidium%20semiautomatic%20pistol_crcotn"
-    },
-    {
       "identity": "ruidium weapon::automatic rifle",
       "id": "ruidium-automatic-rifle",
       "kind": "variant",
@@ -111040,58 +110077,6 @@
       "source_url": "https://5e.tools/items.html#ruidium%20musket_crcotn"
     },
     {
-      "identity": "ruidium weapon::net",
-      "id": "ruidium-net",
-      "kind": "variant",
-      "family": "Ruidium Weapon",
-      "facts": {
-        "name": "Ruidium Net",
-        "source": "CRCotN",
-        "page": 216,
-        "rarity": "very rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "bonusWeapon": "+2",
-        "modifySpeed": {
-          "equal": {
-            "swim": "walk"
-          }
-        },
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Critical Role: Call of the Netherdeep",
-        "published": "2022-03-15"
-      },
-      "source_url": "https://5e.tools/items.html#ruidium%20net_crcotn"
-    },
-    {
       "identity": "ruidium weapon::pike",
       "id": "ruidium-pike",
       "kind": "variant",
@@ -111427,6 +110412,61 @@
         "published": "2022-03-15"
       },
       "source_url": "https://5e.tools/items.html#ruidium%20scimitar_crcotn"
+    },
+    {
+      "identity": "ruidium weapon::pistol semiautomatic",
+      "id": "ruidium-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Ruidium Weapon",
+      "facts": {
+        "name": "Ruidium Semiautomatic Pistol",
+        "source": "CRCotN",
+        "page": 216,
+        "rarity": "very rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "bonusWeapon": "+2",
+        "modifySpeed": {
+          "equal": {
+            "swim": "walk"
+          }
+        },
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Critical Role: Call of the Netherdeep",
+        "published": "2022-03-15"
+      },
+      "source_url": "https://5e.tools/items.html#ruidium%20semiautomatic%20pistol_crcotn"
     },
     {
       "identity": "ruidium weapon::shortbow",
@@ -112094,54 +111134,6 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#silvered%20antimatter%20rifle_xdmg"
-    },
-    {
-      "identity": "silvered weapon::pistol semiautomatic",
-      "id": "silvered-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Silvered Weapon",
-      "facts": {
-        "name": "Silvered Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 304,
-        "rarity": "common",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#silvered%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "silvered weapon::automatic rifle",
@@ -113714,51 +112706,6 @@
       "source_url": "https://5e.tools/items.html#silvered%20musket_xdmg"
     },
     {
-      "identity": "silvered weapon::net",
-      "id": "silvered-net",
-      "kind": "variant",
-      "family": "Silvered Weapon",
-      "facts": {
-        "name": "Silvered Net",
-        "source": "XDMG",
-        "page": 304,
-        "rarity": "common",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#silvered%20net_xdmg"
-    },
-    {
       "identity": "silvered weapon::pike",
       "id": "silvered-pike",
       "kind": "variant",
@@ -114052,6 +112999,54 @@
         "published": "2024-11-12"
       },
       "source_url": "https://5e.tools/items.html#silvered%20scimitar_xdmg"
+    },
+    {
+      "identity": "silvered weapon::pistol semiautomatic",
+      "id": "silvered-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Silvered Weapon",
+      "facts": {
+        "name": "Silvered Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 304,
+        "rarity": "common",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Dungeon Master's Guide (2024)",
+        "published": "2024-11-12"
+      },
+      "source_url": "https://5e.tools/items.html#silvered%20semiautomatic%20pistol_xdmg"
     },
     {
       "identity": "silvered weapon::shortbow",
@@ -114735,55 +113730,6 @@
         "published": "2021-10-26"
       },
       "source_url": "https://5e.tools/items.html#slumbering%20dragon's%20wrath%20antimatter%20rifle_ftd"
-    },
-    {
-      "identity": "dragon s slumbering weapon wrath::pistol semiautomatic",
-      "id": "slumbering-dragon-s-wrath-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Slumbering Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Slumbering Dragon's Wrath Semiautomatic Pistol",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "uncommon",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#slumbering%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
     },
     {
       "identity": "dragon s slumbering weapon wrath::automatic rifle",
@@ -116388,52 +115334,6 @@
       "source_url": "https://5e.tools/items.html#slumbering%20dragon's%20wrath%20musket_ftd"
     },
     {
-      "identity": "dragon s slumbering weapon wrath::net",
-      "id": "slumbering-dragon-s-wrath-net",
-      "kind": "variant",
-      "family": "Slumbering Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Slumbering Dragon's Wrath Net",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "uncommon",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#slumbering%20dragon's%20wrath%20net_ftd"
-    },
-    {
       "identity": "dragon s slumbering weapon wrath::pike",
       "id": "slumbering-dragon-s-wrath-pike",
       "kind": "variant",
@@ -116733,6 +115633,55 @@
         "published": "2021-10-26"
       },
       "source_url": "https://5e.tools/items.html#slumbering%20dragon's%20wrath%20scimitar_ftd"
+    },
+    {
+      "identity": "dragon s slumbering weapon wrath::pistol semiautomatic",
+      "id": "slumbering-dragon-s-wrath-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Slumbering Dragon's Wrath Weapon",
+      "facts": {
+        "name": "Slumbering Dragon's Wrath Semiautomatic Pistol",
+        "source": "FTD",
+        "page": 25,
+        "rarity": "uncommon",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Fizban's Treasury of Dragons",
+        "published": "2021-10-26"
+      },
+      "source_url": "https://5e.tools/items.html#slumbering%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
     },
     {
       "identity": "dragon s slumbering weapon wrath::shortbow",
@@ -118964,56 +117913,6 @@
       "source_url": "https://5e.tools/items.html#stirring%20dragon's%20wrath%20antimatter%20rifle_ftd"
     },
     {
-      "identity": "dragon s stirring weapon wrath::pistol semiautomatic",
-      "id": "stirring-dragon-s-wrath-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Stirring Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Stirring Dragon's Wrath Semiautomatic Pistol",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "bonusWeapon": "+1",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#stirring%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
-    },
-    {
       "identity": "dragon s stirring weapon wrath::automatic rifle",
       "id": "stirring-dragon-s-wrath-automatic-rifle",
       "kind": "variant",
@@ -120648,53 +119547,6 @@
       "source_url": "https://5e.tools/items.html#stirring%20dragon's%20wrath%20musket_ftd"
     },
     {
-      "identity": "dragon s stirring weapon wrath::net",
-      "id": "stirring-dragon-s-wrath-net",
-      "kind": "variant",
-      "family": "Stirring Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Stirring Dragon's Wrath Net",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "bonusWeapon": "+1",
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#stirring%20dragon's%20wrath%20net_ftd"
-    },
-    {
       "identity": "dragon s stirring weapon wrath::pike",
       "id": "stirring-dragon-s-wrath-pike",
       "kind": "variant",
@@ -121000,6 +119852,56 @@
         "published": "2021-10-26"
       },
       "source_url": "https://5e.tools/items.html#stirring%20dragon's%20wrath%20scimitar_ftd"
+    },
+    {
+      "identity": "dragon s stirring weapon wrath::pistol semiautomatic",
+      "id": "stirring-dragon-s-wrath-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Stirring Dragon's Wrath Weapon",
+      "facts": {
+        "name": "Stirring Dragon's Wrath Semiautomatic Pistol",
+        "source": "FTD",
+        "page": 25,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "bonusWeapon": "+1",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Fizban's Treasury of Dragons",
+        "published": "2021-10-26"
+      },
+      "source_url": "https://5e.tools/items.html#stirring%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
     },
     {
       "identity": "dragon s stirring weapon wrath::shortbow",
@@ -125160,55 +124062,6 @@
       "source_url": "https://5e.tools/items.html#vicious%20%2B1%20antimatter%20rifle_ai"
     },
     {
-      "identity": "1 vicious weapon::pistol semiautomatic",
-      "id": "vicious-1-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Vicious +1 Weapon",
-      "facts": {
-        "name": "Vicious +1 Semiautomatic Pistol",
-        "source": "AI",
-        "page": 149,
-        "rarity": "unknown (magic)",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "bonusWeapon": "+1",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Acquisitions Incorporated",
-        "published": "2019-06-18"
-      },
-      "source_url": "https://5e.tools/items.html#vicious%20%2B1%20semiautomatic%20pistol_ai"
-    },
-    {
       "identity": "1 vicious weapon::automatic rifle",
       "id": "vicious-1-automatic-rifle",
       "kind": "variant",
@@ -127112,6 +125965,55 @@
       "source_url": "https://5e.tools/items.html#vicious%20%2B1%20scimitar_ai"
     },
     {
+      "identity": "1 vicious weapon::pistol semiautomatic",
+      "id": "vicious-1-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Vicious +1 Weapon",
+      "facts": {
+        "name": "Vicious +1 Semiautomatic Pistol",
+        "source": "AI",
+        "page": 149,
+        "rarity": "unknown (magic)",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "bonusWeapon": "+1",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Acquisitions Incorporated",
+        "published": "2019-06-18"
+      },
+      "source_url": "https://5e.tools/items.html#vicious%20%2B1%20semiautomatic%20pistol_ai"
+    },
+    {
       "identity": "1 vicious weapon::shortbow",
       "id": "vicious-1-shortbow",
       "kind": "variant",
@@ -128304,53 +127206,6 @@
       "source_url": "https://5e.tools/items.html#vicious%20yklwa_xdmg"
     },
     {
-      "identity": "vicious weapon::net",
-      "id": "vicious-net",
-      "kind": "variant",
-      "family": "Vicious Weapon",
-      "facts": {
-        "name": "Vicious Net",
-        "source": "XDMG",
-        "page": 318,
-        "rarity": "rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "srd52": true,
-        "basicRules2024": true,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
-      },
-      "source_url": "https://5e.tools/items.html#vicious%20net_xdmg"
-    },
-    {
       "identity": "vicious weapon::staff",
       "id": "vicious-staff",
       "kind": "variant",
@@ -128541,56 +127396,6 @@
         "published": "2021-10-26"
       },
       "source_url": "https://5e.tools/items.html#wakened%20dragon's%20wrath%20antimatter%20rifle_ftd"
-    },
-    {
-      "identity": "dragon s wakened weapon wrath::pistol semiautomatic",
-      "id": "wakened-dragon-s-wrath-semiautomatic-pistol",
-      "kind": "variant",
-      "family": "Wakened Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Wakened Dragon's Wrath Semiautomatic Pistol",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "very rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "bonusWeapon": "+2",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#wakened%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
     },
     {
       "identity": "dragon s wakened weapon wrath::automatic rifle",
@@ -130227,53 +129032,6 @@
       "source_url": "https://5e.tools/items.html#wakened%20dragon's%20wrath%20musket_ftd"
     },
     {
-      "identity": "dragon s wakened weapon wrath::net",
-      "id": "wakened-dragon-s-wrath-net",
-      "kind": "variant",
-      "family": "Wakened Dragon's Wrath Weapon",
-      "facts": {
-        "name": "Wakened Dragon's Wrath Net",
-        "source": "FTD",
-        "page": 25,
-        "rarity": "very rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "bonusWeapon": "+2",
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "Fizban's Treasury of Dragons",
-        "published": "2021-10-26"
-      },
-      "source_url": "https://5e.tools/items.html#wakened%20dragon's%20wrath%20net_ftd"
-    },
-    {
       "identity": "dragon s wakened weapon wrath::pike",
       "id": "wakened-dragon-s-wrath-pike",
       "kind": "variant",
@@ -130579,6 +129337,56 @@
         "published": "2021-10-26"
       },
       "source_url": "https://5e.tools/items.html#wakened%20dragon's%20wrath%20scimitar_ftd"
+    },
+    {
+      "identity": "dragon s wakened weapon wrath::pistol semiautomatic",
+      "id": "wakened-dragon-s-wrath-semiautomatic-pistol",
+      "kind": "variant",
+      "family": "Wakened Dragon's Wrath Weapon",
+      "facts": {
+        "name": "Wakened Dragon's Wrath Semiautomatic Pistol",
+        "source": "FTD",
+        "page": 25,
+        "rarity": "very rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "bonusWeapon": "+2",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Fizban's Treasury of Dragons",
+        "published": "2021-10-26"
+      },
+      "source_url": "https://5e.tools/items.html#wakened%20dragon's%20wrath%20semiautomatic%20pistol_ftd"
     },
     {
       "identity": "dragon s wakened weapon wrath::shortbow",
@@ -133031,54 +131839,6 @@
       "source_url": "https://5e.tools/items.html#antimatter%20rifle%20of%20certain%20death_egw"
     },
     {
-      "identity": "certain death of weapon::pistol semiautomatic",
-      "id": "semiautomatic-pistol-of-certain-death",
-      "kind": "variant",
-      "family": "Weapon of Certain Death",
-      "facts": {
-        "name": "Semiautomatic Pistol of Certain Death",
-        "source": "EGW",
-        "page": 270,
-        "rarity": "rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "Explorer's Guide to Wildemount",
-        "published": "2020-03-17"
-      },
-      "source_url": "https://5e.tools/items.html#semiautomatic%20pistol%20of%20certain%20death_egw"
-    },
-    {
       "identity": "certain death of weapon::automatic rifle",
       "id": "automatic-rifle-of-certain-death",
       "kind": "variant",
@@ -134944,6 +133704,54 @@
       "source_url": "https://5e.tools/items.html#scimitar%20of%20certain%20death_egw"
     },
     {
+      "identity": "certain death of weapon::pistol semiautomatic",
+      "id": "semiautomatic-pistol-of-certain-death",
+      "kind": "variant",
+      "family": "Weapon of Certain Death",
+      "facts": {
+        "name": "Semiautomatic Pistol of Certain Death",
+        "source": "EGW",
+        "page": 270,
+        "rarity": "rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "Explorer's Guide to Wildemount",
+        "published": "2020-03-17"
+      },
+      "source_url": "https://5e.tools/items.html#semiautomatic%20pistol%20of%20certain%20death_egw"
+    },
+    {
       "identity": "certain death of weapon::shortbow",
       "id": "shortbow-of-certain-death",
       "kind": "variant",
@@ -135555,77 +134363,6 @@
         "published": "2023-11-14"
       },
       "source_url": "https://5e.tools/items.html#antimatter%20rifle%20of%20throne's%20command_bmt"
-    },
-    {
-      "identity": "command of s throne weapon::pistol semiautomatic",
-      "id": "semiautomatic-pistol-of-throne-s-command",
-      "kind": "variant",
-      "family": "Weapon of Throne's Command",
-      "facts": {
-        "name": "Semiautomatic Pistol of Throne's Command",
-        "source": "BMT",
-        "page": 39,
-        "rarity": "very rare",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one",
-        "reqAttune": true,
-        "charges": 5,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d4}",
-        "bonusWeapon": "+1",
-        "attachedSpells": {
-          "charges": {
-            "1": [
-              "command"
-            ],
-            "2": [
-              "zone of truth"
-            ],
-            "4": [
-              "banishment",
-              "compulsion"
-            ],
-            "5": [
-              "dominate person"
-            ]
-          }
-        },
-        "grantsProficiency": true,
-        "baseItem": "semiautomatic pistol|xdmg"
-      },
-      "base": {
-        "name": "Semiautomatic Pistol",
-        "source": "XDMG",
-        "page": 73,
-        "rarity": "none",
-        "type": "R|XPHB",
-        "weapon": true,
-        "weight": 3,
-        "dmg1": "2d6",
-        "dmgType": "P",
-        "property": [
-          "AF|XDMG",
-          "RLD|XDMG"
-        ],
-        "range": "50/150",
-        "age": "modern",
-        "edition": "one"
-      },
-      "book": {
-        "name": "The Book of Many Things",
-        "published": "2023-11-14"
-      },
-      "source_url": "https://5e.tools/items.html#semiautomatic%20pistol%20of%20throne's%20command_bmt"
     },
     {
       "identity": "command of s throne weapon::automatic rifle",
@@ -137217,74 +135954,6 @@
       "source_url": "https://5e.tools/items.html#musket%20of%20throne's%20command_bmt"
     },
     {
-      "identity": "command of s throne weapon::net",
-      "id": "net-of-throne-s-command",
-      "kind": "variant",
-      "family": "Weapon of Throne's Command",
-      "facts": {
-        "name": "Net of Throne's Command",
-        "source": "BMT",
-        "page": 39,
-        "rarity": "very rare",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic",
-        "reqAttune": true,
-        "charges": 5,
-        "recharge": "dawn",
-        "rechargeAmount": "{@dice 1d4}",
-        "bonusWeapon": "+1",
-        "attachedSpells": {
-          "charges": {
-            "1": [
-              "command"
-            ],
-            "2": [
-              "zone of truth"
-            ],
-            "4": [
-              "banishment",
-              "compulsion"
-            ],
-            "5": [
-              "dominate person"
-            ]
-          }
-        },
-        "grantsProficiency": true,
-        "baseItem": "net|phb"
-      },
-      "base": {
-        "name": "Net",
-        "source": "PHB",
-        "page": 149,
-        "rarity": "none",
-        "type": "R",
-        "weapon": true,
-        "weight": 3,
-        "value": 100,
-        "property": [
-          "S",
-          "T"
-        ],
-        "range": "5/15",
-        "srd": true,
-        "edition": "classic"
-      },
-      "book": {
-        "name": "The Book of Many Things",
-        "published": "2023-11-14"
-      },
-      "source_url": "https://5e.tools/items.html#net%20of%20throne's%20command_bmt"
-    },
-    {
       "identity": "command of s throne weapon::pike",
       "id": "pike-of-throne-s-command",
       "kind": "variant",
@@ -137644,6 +136313,77 @@
         "published": "2023-11-14"
       },
       "source_url": "https://5e.tools/items.html#scimitar%20of%20throne's%20command_bmt"
+    },
+    {
+      "identity": "command of s throne weapon::pistol semiautomatic",
+      "id": "semiautomatic-pistol-of-throne-s-command",
+      "kind": "variant",
+      "family": "Weapon of Throne's Command",
+      "facts": {
+        "name": "Semiautomatic Pistol of Throne's Command",
+        "source": "BMT",
+        "page": 39,
+        "rarity": "very rare",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one",
+        "reqAttune": true,
+        "charges": 5,
+        "recharge": "dawn",
+        "rechargeAmount": "{@dice 1d4}",
+        "bonusWeapon": "+1",
+        "attachedSpells": {
+          "charges": {
+            "1": [
+              "command"
+            ],
+            "2": [
+              "zone of truth"
+            ],
+            "4": [
+              "banishment",
+              "compulsion"
+            ],
+            "5": [
+              "dominate person"
+            ]
+          }
+        },
+        "grantsProficiency": true,
+        "baseItem": "semiautomatic pistol|xdmg"
+      },
+      "base": {
+        "name": "Semiautomatic Pistol",
+        "source": "XDMG",
+        "page": 73,
+        "rarity": "none",
+        "type": "R|XPHB",
+        "weapon": true,
+        "weight": 3,
+        "dmg1": "2d6",
+        "dmgType": "P",
+        "property": [
+          "AF|XDMG",
+          "RLD|XDMG"
+        ],
+        "range": "50/150",
+        "age": "modern",
+        "edition": "one"
+      },
+      "book": {
+        "name": "The Book of Many Things",
+        "published": "2023-11-14"
+      },
+      "source_url": "https://5e.tools/items.html#semiautomatic%20pistol%20of%20throne's%20command_bmt"
     },
     {
       "identity": "command of s throne weapon::shortsword",
@@ -138583,8 +137323,8 @@
       "family": "Weapon of Warning",
       "facts": {
         "name": "Net of Warning",
-        "source": "XDMG",
-        "page": 324,
+        "source": "DMG",
+        "page": 213,
         "rarity": "uncommon",
         "type": "R",
         "weapon": true,
@@ -138597,7 +137337,6 @@
         "srd": true,
         "edition": "classic",
         "reqAttune": true,
-        "srd52": true,
         "baseItem": "net|phb"
       },
       "base": {
@@ -138618,10 +137357,10 @@
         "edition": "classic"
       },
       "book": {
-        "name": "Dungeon Master's Guide (2024)",
-        "published": "2024-11-12"
+        "name": "Dungeon Master's Guide (2014)",
+        "published": "2014-12-09"
       },
-      "source_url": "https://5e.tools/items.html#net%20of%20warning_xdmg"
+      "source_url": "https://5e.tools/items.html#net%20of%20warning_dmg"
     },
     {
       "identity": "of warning weapon::revolver",
@@ -138898,39 +137637,6 @@
       "source_url": "https://5e.tools/items.html#winged%20arrow_bmt"
     },
     {
-      "identity": "ammunition winged::needle",
-      "id": "winged-needle",
-      "kind": "variant",
-      "family": "Winged Ammunition",
-      "facts": {
-        "name": "Winged Needle",
-        "source": "BMT",
-        "page": 69,
-        "rarity": "uncommon",
-        "type": "A|XPHB",
-        "weight": 0.02,
-        "srd52": true,
-        "edition": "one",
-        "baseItem": "needle|xphb"
-      },
-      "base": {
-        "name": "Needle",
-        "source": "XPHB",
-        "page": 222,
-        "rarity": "none",
-        "type": "A|XPHB",
-        "weight": 0.02,
-        "value": 2,
-        "srd52": true,
-        "edition": "one"
-      },
-      "book": {
-        "name": "The Book of Many Things",
-        "published": "2023-11-14"
-      },
-      "source_url": "https://5e.tools/items.html#winged%20needle_bmt"
-    },
-    {
       "identity": "ammunition winged::bolt",
       "id": "winged-bolt",
       "kind": "variant",
@@ -138997,36 +137703,37 @@
       "source_url": "https://5e.tools/items.html#winged%20firearm%20bullet_bmt"
     },
     {
-      "identity": "ammunition winged::bullet modern",
-      "id": "winged-modern-bullet",
+      "identity": "ammunition winged::needle",
+      "id": "winged-needle",
       "kind": "variant",
       "family": "Winged Ammunition",
       "facts": {
-        "name": "Winged Modern Bullet",
+        "name": "Winged Needle",
         "source": "BMT",
         "page": 69,
         "rarity": "uncommon",
-        "type": "AF|DMG",
-        "weight": 0.1,
-        "age": "modern",
-        "edition": "classic",
-        "baseItem": "modern bullet|dmg"
+        "type": "A|XPHB",
+        "weight": 0.02,
+        "srd52": true,
+        "edition": "one",
+        "baseItem": "needle|xphb"
       },
       "base": {
-        "name": "Modern Bullet",
-        "source": "DMG",
-        "page": 268,
+        "name": "Needle",
+        "source": "XPHB",
+        "page": 222,
         "rarity": "none",
-        "type": "AF|DMG",
-        "weight": 0.1,
-        "age": "modern",
-        "edition": "classic"
+        "type": "A|XPHB",
+        "weight": 0.02,
+        "value": 2,
+        "srd52": true,
+        "edition": "one"
       },
       "book": {
         "name": "The Book of Many Things",
         "published": "2023-11-14"
       },
-      "source_url": "https://5e.tools/items.html#winged%20modern%20bullet_bmt"
+      "source_url": "https://5e.tools/items.html#winged%20needle_bmt"
     },
     {
       "identity": "ammunition winged::bullet sling",

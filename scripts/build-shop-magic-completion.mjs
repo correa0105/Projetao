@@ -117,9 +117,13 @@ for (const c of candidates) {
   }
   if (c.kind === 'variant')
     Object.assign(raw_data, {
-      magic_family: c.family,
+      magic_family: e.family || c.family,
       base_item: e.base_id || c.base.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
       variant: e.model_name,
+      ...(f.bonusWeapon || f.bonusAc || f.bonusWeaponAttack
+        ? { enhancement: Number(f.bonusWeapon || f.bonusAc || f.bonusWeaponAttack) }
+        : {}),
+      ...(e.damage_type ? { damage_type: e.damage_type } : {}),
       magic_kind: c.base.weapon
         ? 'weapon'
         : c.base.armor || ['LA', 'MA', 'HA', 'S'].includes((c.base.type || '').split('|')[0])

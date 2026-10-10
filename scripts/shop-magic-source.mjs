@@ -161,3 +161,15 @@ export function acceptsBase(base, variant) {
     !matchFields(base, variant.excludes, false)
   );
 }
+
+// The default 5etools view prefers current models while retaining legacy-only
+// combinations. A classic model cannot take a current generic variant.
+export function matchesVariantEdition(base, variant) {
+  const b = base.edition ?? null,
+    v = variant.edition ?? null;
+  if (b === v) return true;
+  if (b === 'classic') return false;
+  if (b === null) return true;
+  if (b === 'one') return v !== 'classic';
+  throw Error('Unsupported base edition: ' + b);
+}

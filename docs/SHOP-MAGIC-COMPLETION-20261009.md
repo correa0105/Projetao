@@ -2,10 +2,10 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **30 itens novos estão aplicados**, de um levantamento que tem
-968 identidades nomeadas ausentes e 2.135 modelos concretos adicionais candidatos.
+está concluído: **92 itens novos estão aplicados**, de um levantamento que tem
+968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
-Não interpretar os 3.103 candidatos como itens publicados ou cobertura já completa.
+Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
 
 Primeiro lote: ferramenta multifuncional, amuleto do devoto, grimório arcano,
 frasco de sangue, cinto de couro de dragão, foice lunar, tambor do ritmista,
@@ -92,7 +92,50 @@ Release `alvorada-cinzenta-app:magic-completion-v2-20261009`: 60 tabelas e todos
 os produtos anteriores com linhas integrais idênticas ao snapshot imediatamente
 anterior. Somente 18 novos produtos adicionados. Todas as 60 mídias de itens,
 43 bundles e 21 materiais VFX conferidos no servidor. Ilustrador mantido.
-Ainda há **3.073 candidatos pendentes**; completar TODOS continua em andamento.
+Nesse checkpoint havia 3.073 candidatos pendentes, antes do refino de edições
+e da preparação do terceiro lote abaixo.
+
+## Terceiro lote: 62 formas ausentes nas famílias existentes
+
+Aplicadas as versões mágicas de armadura de espinhos, cimitarra de duas lâminas,
+lança curta com gancho, hoopak e yklwa, além da machadinha do berserker e da
+rede da vigilância. São 62 ofertas reais novas, com IDs próprios e seleção
+dentro dos baús das famílias existentes. Os cinco modelos físicos receberam
+artes originais transparentes por `image_gen.imagegen`. Suas skins estendem
+a biblioteca nativa de SVG com os materiais originais já aprovados; cada forma
+e encantamento tem seu arquivo, e os três níveis distinguem cor e gravações.
+Não se usaram ícones substitutos nem ilustrações dos livros. Prompts em
+`art-jobs-new-models.json`; receitas em `variant-recipes.json` e proveniência
+individual no manifesto de artes. Treze referências desse plano ainda faltam.
+
+Cada oferta tem fala individual, som próprio, modelo e equipamento explícitos,
+resumo curto e explicação original das regras. As famílias anteriores permanecem
+agrupadas; bônus e resistências entram nos seletores. As regras suplementares
+dos modelos ficam nos detalhes. Adicionar esses equipamentos à loja não cria
+automação de seus ataques especiais nem dos poderes mágicos. A prévia inclinada
+foi reposicionada para manter a peça inteira dentro da área do baú, incluindo
+as duas pontas da cimitarra; os 31 baús anteriores também foram revistos.
+
+A compatibilidade de edições segue a matriz de geração do projeto 5etools.
+Foram retiradas 27 combinações incompatíveis entre modelos clássicos e templates
+atuais. A rede da vigilância continua válida pela regra de 2014, e sua descrição
+conserva a diferença em relação às armas da vigilância de 2024. Templates antigos
+com requisitos explícitos de modelos PHB e sem etiqueta de edição preservam
+somente seus formatos antigos válidos, como as redes com bônus só no ataque
+e a Pele de Bronze Fundido. Essa exceção fica marcada no candidato.
+
+Compra, saldo, repetição, preços administrativos, fontes, imagens, sons e slots
+passaram para os 92 itens em banco UUID descartável; a cimitarra de duas mãos
+bloqueia a mão secundária. Loja real revisada em 1500/760/390 px, com seleção
+por ID e todas as 92 falas/explicações. TypeScript e builds passaram na cópia
+limpa, e todos os campos dos 30 itens anteriores foram conservados.
+
+Release local `alvorada-cinzenta-app:magic-completion-v3-20261009`, saudável.
+Auditoria das 60 tabelas não relacionadas e de todos os produtos anteriores
+confirmou linhas integrais idênticas ao snapshot imediatamente anterior;
+somente 62 registros novos. As 184 mídias, 43 bundles e 21 materiais VFX foram
+conferidos no servidor. Ilustrador PID 24260 mantido em execução.
+Ainda há **2.984 candidatos pendentes**; completar TODOS continua em andamento.
 
 Próximo trabalho: continuar a curadoria e as artes dos itens nomeados e famílias,
 ampliar a verificação de cobertura e adicionar apenas lotes completamente prontos.

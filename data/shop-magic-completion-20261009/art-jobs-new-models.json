@@ -1,0 +1,114 @@
+{
+  "mode": "Original built-in image_gen physical references for the established native SVG skin system",
+  "status": "Each reference requires individual generation and review; no products activated by this plan",
+  "jobs": [
+    {
+      "id": "model-spiked-armor",
+      "name": "Spiked Armor",
+      "label": "Armadura de espinhos",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. A heavy dwarven medium armor suit made of a stout dark brown leather coat and matching leggings covered with short conical iron spikes, reinforced stitched leather panels and iron studs. The coat and leggings are arranged as one complete empty outfit, as if worn by an invisible person, no visible mannequin. No helmet or boots. Convincing thick flexible leather, sturdy clasps, handmade aged iron. Plain physical armor, no magical particles."
+    },
+    {
+      "id": "model-double-bladed-scimitar",
+      "name": "Double-Bladed Scimitar",
+      "label": "Cimitarra de duas lâminas",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One double-bladed scimitar: a straight long central wooden haft with a leather handgrip at its midpoint and exactly two broad curved steel scimitar blades fixed at opposite ends, each curving in the opposite direction. Balanced single solid two-handed weapon, two blade ends with visible metal collars and rivets. Dark oak, plain bronze bindings, honed silver edges, full weapon shown diagonally, no separate pieces."
+    },
+    {
+      "id": "model-hooked-shortspear",
+      "name": "Hooked Shortspear",
+      "label": "Lança curta com gancho",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One short sturdy dark wooden spear with a broad leaf-shaped iron spearhead and a pronounced backward-facing iron hook forged beside the blade at its base, secured by bronze rivets and rawhide bindings. Short spear haft with a central leather grip and blunt wooden butt. Entire pole weapon shown diagonally. Plain handmade practical medieval construction, one main point and one hook."
+    },
+    {
+      "id": "model-hoopak",
+      "name": "Hoopak",
+      "label": "Hoopak",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One single kender hoopak weapon: a slender rustic wooden staff, ending at one end in a sharp straight metal point and at the opposite end in a forked Y-shaped wooden sling frame with a short braided cord and small leather sling pouch stretched between the two branches. One connected staff, physically coherent sling pouch attached to both fork prongs. Brown oiled ash, simple leather grip, entire tall weapon diagonal."
+    },
+    {
+      "id": "model-yklwa",
+      "name": "Yklwa",
+      "label": "Yklwa",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One compact short stabbing spear with a very broad long triangular polished steel blade, approximately one third of total weapon length, and a short stout dark brown wooden shaft wrapped with coarse tan leather below the blade. Forged steel socket tightly fitted to the shaft, simple practical rivets, blunt wooden butt. The complete single weapon fits diagonally in the frame. Distinct from a long throwing spear, no magic decorations."
+    },
+    {
+      "id": "model-light-repeating-crossbow",
+      "name": "Light Repeating Crossbow",
+      "label": "Besta leve de repetição",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One small light wooden repeating crossbow with a rectangular slotted wooden bolt magazine mounted lengthwise above its short stock, a compact steel bow at the front, taut bowstring, and a visible wooden cocking lever on the side. Warm ashwood, leather grip, plain dark iron fittings. A believable fantasy equipment illustration, no operator, no detached ammunition, no technical blueprint. Entire single crossbow shown three-quarter view."
+    },
+    {
+      "id": "model-energy-cell",
+      "name": "Energy Cell",
+      "label": "Célula de energia",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One compact futuristic handheld power cell used as ammunition, short thick beveled brass-and-dark-steel capsule with ceramic insulation rings, a protected blue glass indicator strip along one side and two flat connector contacts recessed at one end. A single sealed solid object, slightly worn metal, visible small engraved geometric panels without letters, no glow beyond glass, no weapon, no cables. Complete item three-quarter view."
+    },
+    {
+      "id": "model-modern-bullet",
+      "name": "Modern Bullet",
+      "label": "Cartucho moderno",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One single modern firearm cartridge shown diagonally: a cylindrical brass cartridge case with recessed rim and a seated pointed copper-jacketed projectile at one end. Carefully painted metallic volume and fine machining marks, darkened brass surface, distinctive case-and-point silhouette. Isolated item illustration, no weapon, no loose gunpowder, no disassembly, no size measurements or technical blueprint."
+    },
+    {
+      "id": "model-antimatter-rifle",
+      "name": "Antimatter Rifle",
+      "label": "Rifle de antimatéria",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One fictional futuristic antimatter rifle, a long heavy angular dark metal shoulder weapon with a thick sealed barrel housing, a recessed small violet glass energy chamber, a substantial stock and a curved protective forward grip. Clearly science-fiction sealed prop, robust mechanical silhouette, tiny worn brass fasteners and ceramic ridges. No operator, no lasers or firing, no explosive chamber cutaway, no diagrams. Entire single rifle three-quarter view."
+    },
+    {
+      "id": "model-semiautomatic-pistol",
+      "name": "Semiautomatic Pistol",
+      "label": "Pistola semiautomática",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One conventional semiautomatic pistol equipment icon, compact dark blued steel body with a rectangular slide, short barrel, plain brown wooden grip scales, closed magazine base and visible curved trigger guard. Entire single pistol front three-quarter view, worn edges and subdued metal reflections. No ammunition, no operator, no firing, no disassembly, no blueprint."
+    },
+    {
+      "id": "model-automatic-rifle",
+      "name": "Automatic Rifle",
+      "label": "Rifle automático",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One conventional automatic rifle equipment illustration, long dark steel barrel and receiver, brown wooden buttstock and forward handguard, one short curved magazine visibly seated below. Sturdy single shoulder weapon, broad silhouette, modest iron sights and surface wear. Complete rifle front three-quarter view, no ammunition outside weapon, no operator, no firing, no disassembly or technical diagrams."
+    },
+    {
+      "id": "model-hunting-rifle",
+      "name": "Hunting Rifle",
+      "label": "Rifle de caça",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One conventional hunting rifle equipment illustration, slender long dark steel barrel, rich walnut one-piece stock, simple rounded receiver, small iron sights, a visible closed bolt and broad curved trigger guard. Tactile oiled wooden grain, restrained steel reflections, practical single shoulder weapon entirely visible diagonally. No scope, ammunition, operator, firing, disassembly or diagrams."
+    },
+    {
+      "id": "model-laser-pistol",
+      "name": "Laser Pistol",
+      "label": "Pistola laser",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One fictional futuristic laser pistol, compact ivory ceramic and dark copper body with a broad rounded front emitter barrel, recessed green glass lens, sturdy black textured grip, a short protective trigger guard and sealed side panels. Original coherent science-fiction prop with wear and volume. Entire single object three-quarter view, no laser beam, no aura, no loose components, no operator or blueprint."
+    },
+    {
+      "id": "model-laser-rifle",
+      "name": "Laser Rifle",
+      "label": "Rifle laser",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One fictional futuristic laser rifle, elongated brushed silver emitter housing with three dark ribbed cooling rings, a small recessed blue glass lens at the muzzle, a compact ivory stock, broad black grip and an enclosed copper energy pack below the body. A single solid science-fiction prop, entire weapon shown three-quarter view, no laser beam, glow, firing, operator, cutaway or assembly diagram."
+    },
+    {
+      "id": "model-revolver",
+      "name": "Revolver",
+      "label": "Revólver",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One conventional six-shot revolver equipment illustration, aged blued steel body, clearly visible closed fluted cylinder, medium-length round barrel, curved brown wooden grip and oval trigger guard. Subtle restrained brass screw details and metal wear, coherent single handheld object entirely visible three-quarter view. No ammunition, operator, firing, disassembly or diagram."
+    },
+    {
+      "id": "model-shotgun",
+      "name": "Shotgun",
+      "label": "Espingarda",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One conventional shotgun equipment illustration, a short broad dark steel barrel, solid dark steel receiver, thick honey-coloured wooden stock and a ribbed wooden fore-end below the barrel. Practical heavy shoulder weapon entirely visible in three-quarter view with tactile wood grain and scuffed metal. No ammunition, operator, firing, disassembly or diagrams."
+    },
+    {
+      "id": "model-arcane-staff",
+      "name": "Staff",
+      "label": "Bastão de foco arcano",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One full-height wooden arcane focus staff: straight slender dark walnut shaft with simple leather handgrip, hammered bronze ring collars and an integrated small faceted clear quartz held in a modest open bronze cage at the top. Practical staff usable as a quarterstaff, solid full-length object entirely visible diagonally. No floating parts, no glow, no wizard or decorations resembling letters."
+    },
+    {
+      "id": "model-wooden-staff",
+      "name": "Wooden Staff",
+      "label": "Bastão de foco druídico",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One full-height druidic wooden focus staff carved from a naturally slightly curved pale ash branch, a rounded knotted wooden top, subtle spiral carved grooves around its upper third, a soft brown leather grip and a simple dark wooden butt. Organic continuous single piece, tactile grain and tiny bark recesses, full length visible diagonally. No green leaves, glow, aura, character or separate objects."
+    }
+  ]
+}

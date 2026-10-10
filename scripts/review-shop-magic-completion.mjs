@@ -5,14 +5,16 @@ import { chromium, expect } from '@playwright/test';
 const completion = JSON.parse(
   await fs.readFile('data/shop-magic-completion-20261009/catalog.json'),
 );
-const items = completion.items.map((x) => ({ ...x, rarity: x.raw_data.rarity }));
+const publicItem=(x)=>({...x,image_path:x.image_path||'/shop/items/'+x.id+'.png',...Object.fromEntries(['magic_family','base_item','damage_type','rarity','variant','enhancement','magic_kind'].map(k=>[k,x.raw_data?.[k]??x[k]]))});
+const items = completion.items.map(publicItem);
+const catalog=[...JSON.parse(await fs.readFile('data/shop-export/loja.json')).items,...JSON.parse(await fs.readFile('data/emporium-expansion.json')).items,...completion.items].map(publicItem);
 await fs.mkdir('test-results', { recursive: true });
 await fs.writeFile(
   'test-results/shop-magic-completion.html',
   `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><div id="preview"></div><script type="module">
 import React from'react';import{createRoot}from'react-dom/client';import{Shop}from'/src/Shop.tsx';import{SiteMusicProvider}from'/src/SiteMusic.tsx';import{FlashMessages}from'/src/FlashMessage.tsx';
 import'/src/styles.css';import'/src/alvorada.css';import'/src/journey.css';import'/src/theme.css';import'/src/page-header.css';import'/src/npc-speech.css';
-createRoot(document.getElementById('preview')).render(React.createElement(SiteMusicProvider,null,React.createElement('div',{className:'app-shell','data-page':'shop'},React.createElement('main',{className:'main-shell'},React.createElement('div',{className:'main-content'},React.createElement(Shop,{catalog:${JSON.stringify(items)},character:{id:'review',name:'Revisão',gold_cp:10000000},onPurchased:async()=>{}})))),React.createElement(FlashMessages)));
+createRoot(document.getElementById('preview')).render(React.createElement(SiteMusicProvider,null,React.createElement('div',{className:'app-shell','data-page':'shop'},React.createElement('main',{className:'main-shell'},React.createElement('div',{className:'main-content'},React.createElement(Shop,{catalog:${JSON.stringify(catalog)},character:{id:'review',name:'Revisão',gold_cp:1000000000},onPurchased:async()=>{}})))),React.createElement(FlashMessages)));
 </script></body></html>`,
 );
 const server = await createServer({
@@ -54,9 +56,16 @@ try {
   const search = page.getByRole('textbox', { name: 'Procurar item' });
   for (const x of items) {
     await search.fill(x.name);
-    const card = page.locator(`.shop-product[data-item-id="${x.id}"]`);
+    const card = page.locator(x.magic_family?`.shop-product[data-family="${x.magic_family}"]`:`.shop-product[data-item-id="${x.id}"]`);
     await expect(card).toBeVisible();
-    const img = card.locator('.shop-product-art img');
+    if(x.magic_family){
+      await card.locator('select').first().selectOption(x.base_item);
+      if(await card.locator('select').count()>1)await card.locator('select').nth(1).selectOption(x.id);
+      await expect(card).toHaveAttribute('data-item-id',x.id);
+      await expect(card.locator('.shop-product-art')).toBeEnabled();
+      await expect(card.locator('.shop-family-box')).toHaveCount(1);
+    }
+    const img = card.locator(x.magic_family?'.shop-family-object':'.shop-product-art img');
     await img.evaluate((i) => i.decode());
     assert.equal(await img.getAttribute('src'), x.image_path);
     assert(await img.evaluate((i) => i.naturalWidth > 0));
@@ -83,6 +92,20 @@ try {
     assert((await page.evaluate(() => document.documentElement.scrollWidth)) <= width + 1);
   }
   assert.deepEqual(errors, []);
+  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance']){
+    const x=items.find(x=>x.id===id);if(!x)continue;
+    await search.fill(x.name);
+    const card=page.locator(`.shop-product[data-family="${x.magic_family}"]`);
+    await card.locator('select').first().selectOption(x.base_item);
+    await card.locator('select').nth(1).selectOption(x.id);
+    for(const width of [1500,390]){
+      await page.setViewportSize({width,height:1100});
+      await card.locator('.shop-family-object').evaluate(x=>x.decode());
+      const bounds=await card.locator('.shop-family-object').evaluate(i=>{const r=i.getBoundingClientRect(),p=i.parentElement.getBoundingClientRect();return{left:r.left-p.left,right:r.right-p.right,top:r.top-p.top,bottom:r.bottom-p.bottom};});
+      assert(bounds.left>=-1&&bounds.right<=1&&bounds.top>=-1&&bounds.bottom<=1,'Rotated preview must remain entirely inside its chest viewport: '+JSON.stringify(bounds));
+      await card.locator('.shop-product-art').screenshot({path:`test-results/magic-chest-${id}-${width}.png`});
+    }
+  }
   console.log(
     `PASS ${items.length} new item images, individual merchant speeches and source descriptions; responsive shop in three widths.`,
   );

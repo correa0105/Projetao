@@ -364,5 +364,965 @@
     "estimated_weight_lb": 0.25,
     "review": "approved",
     "rules_summary": "Enquanto usa as faixas, recebe +3 às jogadas de ataque e de dano dos seus Ataques Desarmados. Cada um desses ataques pode causar dano de Força ou seu tipo normal, à sua escolha. Não exige sintonização."
+  },
+  "spiked-armor-plus-1": {
+    "name": "Armadura mágica (Armadura de espinhos +1)",
+    "description": "Forma: Armadura de espinhos. Concede +1 à CA enquanto vestida.",
+    "merchant_comment": "Os espinhos prendem bem, e o primeiro selo reforça a defesa. Vista com calma; já perdi um avental tentando dobrar essa peça.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Concede +1 à CA enquanto vestida.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor, +1, +2, or +3",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-plus-1": {
+    "name": "Arma mágica (Cimitarra de duas lâminas +1)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +1 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "O primeiro encanto acompanha as duas pontas. Treine o giro num pátio vazio; minha loja tem prateleiras demais para isso.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Concede +1 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "hooked-shortspear-plus-1": {
+    "name": "Arma mágica (Lança curta com gancho +1)",
+    "description": "Forma: Lança curta com gancho. Concede +1 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "O gancho é pequeno, mas merece respeito. Nesta lança, o primeiro selo reforça o golpe sem mudar o jeito de derrubar.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Concede +1 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "hoopak-plus-1": {
+    "name": "Arma mágica (Hoopak +1)",
+    "description": "Forma: Hoopak. Concede +1 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Um selo, duas maneiras de usar. Separe as balas da funda e lembre qual ponta está virada para você.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Concede +1 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "yklwa-plus-1": {
+    "name": "Arma mágica (Yklwa +1)",
+    "description": "Forma: Yklwa. Concede +1 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "A yklwa de primeiro selo tem uma lâmina larga e um cabo curto. Para arremessar, conte a distância antes de soltar.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Concede +1 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "spiked-armor-plus-2": {
+    "name": "Armadura mágica (Armadura de espinhos +2)",
+    "description": "Forma: Armadura de espinhos. Concede +2 à CA enquanto vestida.",
+    "merchant_comment": "Duas marcas de encantamento nessa armadura. Confira as tiras da cintura antes da viagem: uma boa defesa começa pelo ajuste.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Concede +2 à CA enquanto vestida.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor, +1, +2, or +3",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-plus-2": {
+    "name": "Arma mágica (Cimitarra de duas lâminas +2)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +2 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Essa cimitarra de dois gumes leva dois selos. O centro do cabo está livre para as mãos, como deve ser.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Concede +2 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "hooked-shortspear-plus-2": {
+    "name": "Arma mágica (Lança curta com gancho +2)",
+    "description": "Forma: Lança curta com gancho. Concede +2 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Essa lança curta tem o segundo selo sob a base da ponta. Veja a fixação do gancho antes de guardar na mochila.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Concede +2 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "hoopak-plus-2": {
+    "name": "Arma mágica (Hoopak +2)",
+    "description": "Forma: Hoopak. Concede +2 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "O segundo encanto deste hoopak acompanha a funda e a ponta. A tira de couro continua precisando de cuidado comum.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Concede +2 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "yklwa-plus-2": {
+    "name": "Arma mágica (Yklwa +2)",
+    "description": "Forma: Yklwa. Concede +2 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Dois selos nessa yklwa. A lâmina foi feita para o golpe próximo; não espere o alcance de uma azagaia.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Concede +2 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "spiked-armor-plus-3": {
+    "name": "Armadura mágica (Armadura de espinhos +3)",
+    "description": "Forma: Armadura de espinhos. Concede +3 à CA enquanto vestida.",
+    "merchant_comment": "A terceira marca é trabalho raro. Reserve espaço no cofre e peça ajuda para vestir; esses espinhos não respeitam o preço da peça.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Concede +3 à CA enquanto vestida.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor, +1, +2, or +3",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-plus-3": {
+    "name": "Arma mágica (Cimitarra de duas lâminas +3)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +3 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Três selos e duas lâminas bem alinhadas. O encanto é forte; o equilíbrio ainda depende de quem segura o cabo.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Concede +3 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "hooked-shortspear-plus-3": {
+    "name": "Arma mágica (Lança curta com gancho +3)",
+    "description": "Forma: Lança curta com gancho. Concede +3 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Três selos numa arma que cabe em pouco espaço. Ponha uma capa na ponta; o gancho adora encontrar tecido solto.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Concede +3 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "hoopak-plus-3": {
+    "name": "Arma mágica (Hoopak +3)",
+    "description": "Forma: Hoopak. Concede +3 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Esse hoopak de terceiro selo é uma raridade. Deixo a funda sem pedra na vitrine para evitar surpresas no balcão.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Concede +3 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "yklwa-plus-3": {
+    "name": "Arma mágica (Yklwa +3)",
+    "description": "Forma: Yklwa. Concede +3 aos ataques e danos feitos com a arma.",
+    "merchant_comment": "Terceiro selo, acabamento firme e ponta bem assentada. Guarde esta yklwa numa bainha larga o bastante.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Concede +3 aos ataques e danos feitos com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "adamantine-spiked-armor": {
+    "name": "Armadura de adamante (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. O reforço de adamante converte em acertos normais todos os acertos críticos que você recebe enquanto veste a armadura.",
+    "merchant_comment": "O reforço de adamante está por baixo dos espinhos. Ele cuida dos golpes críticos; eu cuido das fivelas antes da entrega.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. O reforço de adamante converte em acertos normais todos os acertos críticos que você recebe enquanto veste a armadura.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Adamantine Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "review": "approved"
+  },
+  "spiked-armor-of-acid-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Ácido)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano ácido; isso reduz esse dano à metade.",
+    "merchant_comment": "Essa versão é para quem espera encontrar ácido. O encanto protege quem veste; não deixe seus mapas expostos junto dela.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano ácido; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "acid",
+    "review": "approved"
+  },
+  "spiked-armor-of-cold-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Frio)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano frio; isso reduz esse dano à metade.",
+    "merchant_comment": "Para travessias geladas, essa é a armadura de espinhos que eu separaria. Ainda leve uma manta para os descansos.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano frio; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "cold",
+    "review": "approved"
+  },
+  "spiked-armor-of-fire-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Fogo)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano fogo; isso reduz esse dano à metade.",
+    "merchant_comment": "A resistência aqui é ao fogo. Verifique o resto da bagagem antes de entrar perto de uma fornalha.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano fogo; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "fire",
+    "review": "approved"
+  },
+  "spiked-armor-of-force-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Força)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano força; isso reduz esse dano à metade.",
+    "merchant_comment": "O selo desta armadura resiste ao dano de força. Parece uma distinção pequena, até aparecer o primeiro ataque arcano.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano força; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "force",
+    "review": "approved"
+  },
+  "spiked-armor-of-lightning-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Elétrico)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano elétrico; isso reduz esse dano à metade.",
+    "merchant_comment": "Esta peça enfrenta dano elétrico. Eu a manteria longe de uma tempestade desnecessária, mesmo com o encanto.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano elétrico; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "lightning",
+    "review": "approved"
+  },
+  "spiked-armor-of-necrotic-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Necrótico)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano necrótico; isso reduz esse dano à metade.",
+    "merchant_comment": "Trouxe a versão contra dano necrótico. Para uma expedição entre tumbas, vale conferir a sintonia antes de sair.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano necrótico; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "necrotic",
+    "review": "approved"
+  },
+  "spiked-armor-of-poison-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Veneno)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano veneno; isso reduz esse dano à metade.",
+    "merchant_comment": "O reforço mágico desta armadura é contra dano de veneno. Leve também água limpa e não prove qualquer líquido verde.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano veneno; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "poison",
+    "review": "approved"
+  },
+  "spiked-armor-of-psychic-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Psíquico)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano psíquico; isso reduz esse dano à metade.",
+    "merchant_comment": "Os selos desta peça cuidam do dano psíquico. Uma mente descansada ainda ajuda quando o caminho fica estranho.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano psíquico; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "psychic",
+    "review": "approved"
+  },
+  "spiked-armor-of-radiant-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Radiante)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano radiante; isso reduz esse dano à metade.",
+    "merchant_comment": "Essa é a armadura de espinhos contra dano radiante. Confirme o tipo de ameaça antes de escolher pelo brilho.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano radiante; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "radiant",
+    "review": "approved"
+  },
+  "spiked-armor-of-thunder-resistance": {
+    "name": "Armadura de resistência (Armadura de espinhos · Trovão)",
+    "description": "Forma: Armadura de espinhos. Enquanto vestida, concede resistência a dano trovão; isso reduz esse dano à metade.",
+    "merchant_comment": "A resistência é ao dano de trovão. Deixo as fivelas bem apertadas; barulho solto já basta no meu depósito.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. Exige sintonia. Enquanto vestida, concede resistência a dano trovão; isso reduz esse dano à metade.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Armor of Resistance",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "damage_type": "thunder",
+    "review": "approved"
+  },
+  "berserker-handaxe": {
+    "name": "Machado do berserker (Machadinha)",
+    "description": "Forma: Machadinha. Concede +1 a ataques e danos.",
+    "merchant_comment": "Essa machadinha tem maldição, e eu faço questão de avisar. Leia sobre a fúria antes de aceitar a sintonia.",
+    "rules_summary": "Machadinha simples, leve e de uma mão. Dano 1d6 cortante e arremesso de alcance 20/60 pés. Exige sintonia. Concede +1 a ataques e danos. Com sintonia, seus PV máximos aumentam em 1 por nível. É amaldiçoada: você não deseja se separar dela e tem desvantagem ao atacar com outra arma, exceto sem inimigo que veja ou ouça a até 60 pés. Quando uma criatura hostil o fere enquanto você possui a arma, faça resistência de Sabedoria CD 15. Falhar obriga a usar sua ação em cada rodada para atacar com ela a criatura mais próxima, incluindo ataques extras e movimento até o próximo alvo após derrubar o anterior; empates são aleatórios. A fúria termina ao iniciar um turno sem criatura visível ou audível a até 60 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Berserker Axe",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "review": "approved"
+  },
+  "dancing-double-bladed-scimitar": {
+    "name": "Espada dançarina (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Com uma ação bônus, lança a arma ao ar: ela flutua, voa até 30 pés e ataca um alvo escolhido a até 5 pés dela, usando sua jogada de ataque e seu modificador de atributo no dano.",
+    "merchant_comment": "Ela sabe lutar no ar, mas volta depois do quarto ataque. Deixe uma mão livre para receber o cabo.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Com uma ação bônus, lança a arma ao ar: ela flutua, voa até 30 pés e ataca um alvo escolhido a até 5 pés dela, usando sua jogada de ataque e seu modificador de atributo no dano. Novas ações bônus movem-na até 30 pés para um ponto a até 30 pés de você e permitem outro ataque a até 5 pés dela. Depois do quarto ataque, ela retorna à mão livre ou cai em seu espaço. Se o caminho estiver bloqueado, aproxima-se o máximo possível e cai. Também para de flutuar quando você a segura ou fica a mais de 30 pés dela.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dancing Sword",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "defender-double-bladed-scimitar": {
+    "name": "Defensora (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +3 a ataques e danos.",
+    "merchant_comment": "Aqui o encanto pode passar do ataque para a defesa. Decida a distribuição antes do primeiro golpe do turno.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Concede +3 a ataques e danos. No primeiro ataque com ela em seu turno, você pode transferir parte ou todo esse bônus para sua CA: a parcela transferida deixa de beneficiar seus ataques e danos naquele turno. A distribuição dura até o início do seu próximo turno; o bônus à CA exige manter a arma em mãos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Defender",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "dragon-slayer-double-bladed-scimitar": {
+    "name": "Matadora de dragões (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +1 a ataques e danos.",
+    "merchant_comment": "Duas lâminas para enfrentar dragões. A peça é boa; escolher onde ficar diante do sopro continua sendo sua parte.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Dragão, causa 3d6 adicionais do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "dragon-slayer-hooked-shortspear": {
+    "name": "Matadora de dragões (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Concede +1 a ataques e danos.",
+    "merchant_comment": "A lança curta matadora de dragões cabe bem numa bainha lateral. O gancho continua útil mesmo sem um dragão por perto.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Dragão, causa 3d6 adicionais do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "dragon-slayer-hoopak": {
+    "name": "Matadora de dragões (Hoopak)",
+    "description": "Forma: Hoopak. Concede +1 a ataques e danos.",
+    "merchant_comment": "Funda numa ponta, aço na outra e encanto contra dragões. Tenha munição guardada antes de contar com o tiro.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Dragão, causa 3d6 adicionais do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Dragon Slayer",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "dragon-slayer-yklwa": {
+    "name": "Matadora de dragões (Yklwa)",
+    "description": "Forma: Yklwa. Concede +1 a ataques e danos.",
+    "merchant_comment": "Essa yklwa foi encantada para acertar dragões. Se for lançá-la, pense também em como buscar a arma depois.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Dragão, causa 3d6 adicionais do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "flame-tongue-double-bladed-scimitar": {
+    "name": "Língua flamejante (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Uma ação bônus e a palavra de comando acendem a lâmina.",
+    "merchant_comment": "Antes de testar as chamas, tire a cimitarra da bainha. Minha oficina já aprendeu essa lição com um cliente apressado.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Uma ação bônus e a palavra de comando acendem a lâmina. Acesa, causa 2d6 adicionais de fogo por acerto, ilumina intensamente até 40 pés e em penumbra por mais 40 pés. Outra ação bônus com o comando, largar a arma ou embainhá-la apagam as chamas.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Flame Tongue",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "frost-brand-double-bladed-scimitar": {
+    "name": "Marca de gelo (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Acertos causam 1d6 adicional de frio.",
+    "merchant_comment": "A marca de gelo corre pelas duas lâminas. Avise antes de sacá-la perto das velas da hospedaria.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Acertos causam 1d6 adicional de frio. Segurá-la concede resistência a fogo. Em temperaturas congelantes, emite luz plena a 10 pés e penumbra por mais 10. Ao sacá-la, pode apagar todas as chamas não mágicas a até 30 pés; essa propriedade só pode ser usada uma vez por hora.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Frost Brand",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "giant-slayer-double-bladed-scimitar": {
+    "name": "Matadora de gigantes (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +1 a ataques e danos.",
+    "merchant_comment": "Essa cimitarra pode fazer um gigante perder o apoio. Dê espaço para ele cair, se o golpe funcionar.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Concede +1 a ataques e danos. Acertar uma criatura do tipo Gigante causa 2d6 adicionais do dano básico da arma; o gigante faz resistência de Força CD 15 e fica caído se falhar.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "giant-slayer-hooked-shortspear": {
+    "name": "Matadora de gigantes (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Concede +1 a ataques e danos.",
+    "merchant_comment": "Uma lança curta para adversários enormes. Separe o efeito do encanto da tentativa comum de derrubar com o gancho.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Concede +1 a ataques e danos. Acertar uma criatura do tipo Gigante causa 2d6 adicionais do dano básico da arma; o gigante faz resistência de Força CD 15 e fica caído se falhar.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "giant-slayer-hoopak": {
+    "name": "Matadora de gigantes (Hoopak)",
+    "description": "Forma: Hoopak. Concede +1 a ataques e danos.",
+    "merchant_comment": "O hoopak matador de gigantes oferece tiro e golpe próximo. Escolha a ponta certa antes de a distância fechar.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Concede +1 a ataques e danos. Acertar uma criatura do tipo Gigante causa 2d6 adicionais do dano básico da arma; o gigante faz resistência de Força CD 15 e fica caído se falhar.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Giant Slayer",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "giant-slayer-yklwa": {
+    "name": "Matadora de gigantes (Yklwa)",
+    "description": "Forma: Yklwa. Concede +1 a ataques e danos.",
+    "merchant_comment": "Essa yklwa tem um encanto que incomoda gigantes. O cabo é curto, então prepare bem a aproximação.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Concede +1 a ataques e danos. Acertar uma criatura do tipo Gigante causa 2d6 adicionais do dano básico da arma; o gigante faz resistência de Força CD 15 e fica caído se falhar.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "holy-avenger-double-bladed-scimitar": {
+    "name": "Vingadora sagrada (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Exige sintonia por um paladino.",
+    "merchant_comment": "A vingadora de duas lâminas espera um paladino para a sintonia. Confira também quem ficará dentro da sua proteção.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia por um paladino. Concede +3 a ataques e danos e 2d10 adicionais de dano radiante contra Ínferos e Mortos-vivos. Segurada e desembainhada, cria uma emanação de 10 pés: você e criaturas amigáveis nela têm vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "holy-avenger-hooked-shortspear": {
+    "name": "Vingadora sagrada (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Exige sintonia por um paladino.",
+    "merchant_comment": "Ponta com gancho e encanto sagrado. Essa vingadora exige um paladino, mesmo tendo uma forma pouco comum.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Exige sintonia por um paladino. Concede +3 a ataques e danos e 2d10 adicionais de dano radiante contra Ínferos e Mortos-vivos. Segurada e desembainhada, cria uma emanação de 10 pés: você e criaturas amigáveis nela têm vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "holy-avenger-hoopak": {
+    "name": "Vingadora sagrada (Hoopak)",
+    "description": "Forma: Hoopak. Exige sintonia por um paladino.",
+    "merchant_comment": "Um hoopak sagrado chama atenção na vitrine. A sintonia é de paladino; leia a proteção antes de escolher pela aparência.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Exige sintonia por um paladino. Concede +3 a ataques e danos e 2d10 adicionais de dano radiante contra Ínferos e Mortos-vivos. Segurada e desembainhada, cria uma emanação de 10 pés: você e criaturas amigáveis nela têm vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Holy Avenger",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "holy-avenger-yklwa": {
+    "name": "Vingadora sagrada (Yklwa)",
+    "description": "Forma: Yklwa. Exige sintonia por um paladino.",
+    "merchant_comment": "A vingadora nesta forma de yklwa é para um paladino. A emanação acompanha quem a segura desembainhada.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Exige sintonia por um paladino. Concede +3 a ataques e danos e 2d10 adicionais de dano radiante contra Ínferos e Mortos-vivos. Segurada e desembainhada, cria uma emanação de 10 pés: você e criaturas amigáveis nela têm vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "luck-blade-double-bladed-scimitar": {
+    "name": "Lâmina da sorte (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +1 a ataques e danos, e +1 a resistências enquanto estiver com você.",
+    "merchant_comment": "A sorte trabalha nas duas lâminas. Peça ao mestre para conferir as cargas de Desejo antes de fazer grandes planos.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Concede +1 a ataques e danos, e +1 a resistências enquanto estiver com você. Uma vez por amanhecer, sem ação, permite repetir um ataque, teste de atributo ou resistência; é obrigatório usar o segundo resultado. Possui 1d4−1 cargas de Desejo: uma ação e uma carga conjuram Desejo enquanto você a segura, no máximo uma vez por amanhecer. A propriedade de Desejo se perde quando as cargas terminam; a quantidade inicial deve ser definida pelo mestre.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Luck Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "mithral-spiked-armor": {
+    "name": "Armadura de mitral (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. O mitral elimina a desvantagem em Furtividade e qualquer requisito de Força normalmente impostos pela armadura.",
+    "merchant_comment": "O mitral tira a penalidade de Furtividade desta peça. Os espinhos continuam à mostra; escolha o manto com cuidado.",
+    "rules_summary": "Armadura média de couro com espinhos de metal. CA 14 + modificador de Destreza, limitado a +2; normalmente impõe desvantagem em Furtividade. O mitral elimina a desvantagem em Furtividade e qualquer requisito de Força normalmente impostos pela armadura. Esta forma de armadura de espinhos não recebe a capacidade especial de ocultação sob roupas reservada ao camisão de malha e à couraça.",
+    "slots": [
+      "armor"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Mithral Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "review": "approved"
+  },
+  "nine-lives-stealer-double-bladed-scimitar": {
+    "name": "Ladrão de nove vidas (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre.",
+    "merchant_comment": "As cargas dessa cimitarra precisam ser contadas. O roubo de vida depende de um golpe muito preciso.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Ao obter 20 natural no ataque contra criatura com menos de 100 PV, ela faz resistência de Constituição CD 15 ou morre imediatamente. Constructos e Mortos-vivos passam automaticamente. Só gasta uma carga se matar a criatura; ao esgotar as cargas, perde essa propriedade.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "nine-lives-stealer-hooked-shortspear": {
+    "name": "Ladrão de nove vidas (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre.",
+    "merchant_comment": "Essa lança guarda um encanto perigoso na ponta. Anote as cargas e confira quais criaturas escapam dele.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Ao obter 20 natural no ataque contra criatura com menos de 100 PV, ela faz resistência de Constituição CD 15 ou morre imediatamente. Constructos e Mortos-vivos passam automaticamente. Só gasta uma carga se matar a criatura; ao esgotar as cargas, perde essa propriedade.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "nine-lives-stealer-hoopak": {
+    "name": "Ladrão de nove vidas (Hoopak)",
+    "description": "Forma: Hoopak. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre.",
+    "merchant_comment": "O hoopak ladrão de vidas serve a dois tipos de ataque. As cargas do encanto são uma reserva só.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Ao obter 20 natural no ataque contra criatura com menos de 100 PV, ela faz resistência de Constituição CD 15 ou morre imediatamente. Constructos e Mortos-vivos passam automaticamente. Só gasta uma carga se matar a criatura; ao esgotar as cargas, perde essa propriedade.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Nine Lives Stealer",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "nine-lives-stealer-yklwa": {
+    "name": "Ladrão de nove vidas (Yklwa)",
+    "description": "Forma: Yklwa. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre.",
+    "merchant_comment": "O encanto desta yklwa pode consumir uma carga ao matar. Não confunda a quantidade de cargas com usos garantidos.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Ao obter 20 natural no ataque contra criatura com menos de 100 PV, ela faz resistência de Constituição CD 15 ou morre imediatamente. Constructos e Mortos-vivos passam automaticamente. Só gasta uma carga se matar a criatura; ao esgotar as cargas, perde essa propriedade.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-life-stealing": {
+    "name": "Espada de roubar vidas (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Ao obter 20 natural no ataque contra criatura que não seja Constructo nem Morto-vivo, acrescenta 10 de dano necrótico e concede 10 PV temporários.",
+    "merchant_comment": "Esta cimitarra rouba vida num golpe preciso. Constructos e mortos-vivos exigem outra estratégia.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Ao obter 20 natural no ataque contra criatura que não seja Constructo nem Morto-vivo, acrescenta 10 de dano necrótico e concede 10 PV temporários. Este resumo segue o valor fixo da edição de 2014 indicada na fonte.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Life Stealing",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-sharpness": {
+    "name": "Espada da afiação (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Acertos contra objetos maximizam os dados de dano da arma.",
+    "merchant_comment": "A afiação mágica dessa peça merece atenção na bainha. Para testar o corte, use algo que realmente possa perder.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Acertos contra objetos maximizam os dados de dano da arma. Um 20 natural contra criatura acrescenta 14 de dano cortante; role outro d20, e um novo 20 corta um membro ou uma parte do corpo, com consequências decididas pelo mestre. Uma palavra de comando produz luz plena a 10 pés e penumbra por mais 10; repetir o comando ou embainhar apaga a luz. Os valores fixos seguem a edição de 2014 indicada na fonte.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Sharpness",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-wounding": {
+    "name": "Espada do ferimento (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. PV perdidos pelo dano desta arma só voltam por descanso curto ou longo.",
+    "merchant_comment": "Os ferimentos feitos por essa cimitarra têm regras próprias. Leia com atenção e avise quem estiver conduzindo a mesa.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. PV perdidos pelo dano desta arma só voltam por descanso curto ou longo. Uma vez por turno, um acerto pode infligir uma ferida. No início do turno do alvo, cada ferida causa 1d4 necrótico; depois ele faz resistência de Constituição CD 15, encerrando todas as feridas se passar. O alvo ou alguém a até 5 pés dele também pode gastar uma ação em teste de Sabedoria (Medicina) CD 15 para encerrá-las.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Wounding",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "vicious-double-bladed-scimitar": {
+    "name": "Arma cruel (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "O encanto cruel acrescenta dano a cada acerto nesta versão. As duas lâminas não precisam esperar um crítico.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma. Esta oferta usa a regra de 2024 indicada na fonte, sem exigir acerto crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "vicious-hooked-shortspear": {
+    "name": "Arma cruel (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "Esta lança curta leva o encanto cruel de 2024. O gancho e a lâmina ainda têm funções diferentes.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma. Esta oferta usa a regra de 2024 indicada na fonte, sem exigir acerto crítico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "vicious-hoopak": {
+    "name": "Arma cruel (Hoopak)",
+    "description": "Forma: Hoopak. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "A crueldade mágica funciona também nesta forma de hoopak. O dano adicional segue o tipo do ataque que você usar.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma. Esta oferta usa a regra de 2024 indicada na fonte, sem exigir acerto crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Vicious Weapon",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "vicious-yklwa": {
+    "name": "Arma cruel (Yklwa)",
+    "description": "Forma: Yklwa. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "A yklwa cruel concentra um encanto forte numa peça simples. Proteja o fio durante a viagem.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Cada acerto causa 2d6 adicionais do mesmo tipo de dano básico da arma. Esta oferta usa a regra de 2024 indicada na fonte, sem exigir acerto crítico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
+  },
+  "vorpal-double-bladed-scimitar": {
+    "name": "Espada vorpal (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Concede +3 a ataques e danos e ignora resistência a dano cortante.",
+    "merchant_comment": "Uma vorpal de duas lâminas exige espaço e respeito. Há criaturas que resistem à decapitação; leia as exceções.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Concede +3 a ataques e danos e ignora resistência a dano cortante. Um 20 natural contra criatura com cabeça corta uma delas; ela morre se não sobreviver à perda. São exceções criaturas imunes a cortante, sem cabeça ou sem necessidade dela, com ações lendárias, ou grandes demais para a decapitação segundo o mestre: elas recebem 6d8 cortante adicional em vez disso.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vorpal Sword",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-warning": {
+    "name": "Arma da vigilância (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma mágica que alerta sobre perigo e melhora a prontidão para o combate.",
+    "merchant_comment": "Essa cimitarra da vigilância deve ficar ao alcance. Guardá-la no fundo do baú estraga a prontidão que você procura.",
+    "rules_summary": "Arma marcial de duas mãos, com duas lâminas opostas e dano 2d4 cortante. Depois de fazer um ataque com ela na ação Atacar de seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com ela, cujo dano básico é 1d4 cortante. Exige sintonia. Enquanto a arma estiver ao seu alcance e você estiver sintonizado, você e aliados a até 30 pés têm vantagem na iniciativa. Quando começa um combate, desperta quem estiver dormindo naturalmente nesse alcance; não interrompe sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "review": "approved"
+  },
+  "hooked-shortspear-of-warning": {
+    "name": "Arma da vigilância (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Arma mágica que alerta sobre perigo e melhora a prontidão para o combate.",
+    "merchant_comment": "A lança da vigilância é fácil de deixar junto ao leito. Faça a sintonia antes de confiar nela para despertar o grupo.",
+    "rules_summary": "Arma marcial leve de uma mão; dano 1d4 perfurante. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência, e fica caído se falhar. Exige sintonia. Enquanto a arma estiver ao seu alcance e você estiver sintonizado, você e aliados a até 30 pés têm vantagem na iniciativa. Quando começa um combate, desperta quem estiver dormindo naturalmente nesse alcance; não interrompe sono mágico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "review": "approved"
+  },
+  "hoopak-of-warning": {
+    "name": "Arma da vigilância (Hoopak)",
+    "description": "Forma: Hoopak. Arma mágica que alerta sobre perigo e melhora a prontidão para o combate.",
+    "merchant_comment": "O hoopak da vigilância acompanha bem uma guarda. Seu aviso não acorda alguém preso num sono mágico.",
+    "rules_summary": "Arma marcial de duas mãos e acuidade: a ponta causa 1d6 perfurante no corpo a corpo, sem usar munição. Também funciona como arma marcial à distância com balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Exige sintonia. Enquanto a arma estiver ao seu alcance e você estiver sintonizado, você e aliados a até 30 pés têm vantagem na iniciativa. Quando começa um combate, desperta quem estiver dormindo naturalmente nesse alcance; não interrompe sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon of Warning",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "review": "approved"
+  },
+  "net-of-warning": {
+    "name": "Arma da vigilância (Rede)",
+    "description": "Forma: Rede. Arma mágica que alerta sobre perigo e melhora a prontidão para o combate.",
+    "merchant_comment": "Essa rede usa o encanto de vigilância de 2014. Leia a proteção contra surpresa; ela difere da versão mais recente.",
+    "rules_summary": "Rede marcial de 2014, arremesso 5/15 pés, sem dano. Um acerto restringe criatura Grande ou menor; não afeta criaturas sem forma ou Enormes/maiores. Uma ação e teste de Força CD 10 libertam o alvo. Causar 5 de dano cortante à rede (CA 10) liberta sem ferir o preso e destrói a rede. Ao usar uma ação, ação bônus ou reação para atacar com a rede, só há um ataque, mesmo com Ataque Extra. Exige sintonia. Enquanto a arma estiver com você, concede vantagem à sua iniciativa. Você e companheiros a até 30 pés não podem ser surpreendidos, exceto quando incapacitados por algo diferente de sono não mágico. Ao começar um combate, ela desperta você e companheiros no alcance que estejam dormindo naturalmente.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "cloth",
+    "family": "Weapon of Warning",
+    "base_id": "net",
+    "model_name": "Rede",
+    "review": "approved"
+  },
+  "yklwa-of-warning": {
+    "name": "Arma da vigilância (Yklwa)",
+    "description": "Forma: Yklwa. Arma mágica que alerta sobre perigo e melhora a prontidão para o combate.",
+    "merchant_comment": "Mantenha esta yklwa sintonizada ao alcance. A prontidão do grupo vale mais quando todos conhecem o aviso.",
+    "rules_summary": "Arma simples de uma mão com lâmina larga, dano 1d8 perfurante e arremesso de alcance 10/30 pés. Exige sintonia. Enquanto a arma estiver ao seu alcance e você estiver sintonizado, você e aliados a até 30 pés têm vantagem na iniciativa. Quando começa um combate, desperta quem estiver dormindo naturalmente nesse alcance; não interrompe sono mágico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "review": "approved"
   }
 }
