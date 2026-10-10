@@ -1,0 +1,69 @@
+{
+  "jobs": [
+    {
+      "id": "material-walloping-ammunition",
+      "family": "Walloping Ammunition",
+      "kind": "material",
+      "prompt": "Create an ORIGINAL hand-painted realistic fantasy AMMUNITION MATERIAL TEXTURE for the existing Alvorada Cinzenta native SVG skin library. Square edge-to-edge closeup of brushed thick copper and warm iron with inset broad staggered impact-ring reliefs, dark brown forging grain and small amber metallic ridges. Fully filled square, physical detailed engraving and natural highlight variation, no uniform flat color, restrained premium craft. No weapon silhouette, no object, no lettering, no border, no frame, no background scene, no watermark. Details must read when mapped onto small projectiles and be distinct from previous weapon materials."
+    },
+    {
+      "id": "material-bloodseeker-ammunition",
+      "family": "Bloodseeker Ammunition",
+      "kind": "material",
+      "prompt": "Create an ORIGINAL hand-painted realistic fantasy AMMUNITION MATERIAL TEXTURE for the existing Alvorada Cinzenta native SVG skin library. Square edge-to-edge closeup of fine dark silver with narrow ruby-red enamel capillary grooves, delicate interlacing red-black filaments and subtle predatory pointed tracery; no blood or gore. Fully filled square, physical detailed engraving and natural highlight variation, no uniform flat color, restrained premium craft. No weapon silhouette, no object, no lettering, no border, no frame, no background scene, no watermark. Details must read when mapped onto small projectiles and be distinct from previous weapon materials."
+    },
+    {
+      "id": "material-dispelling-ammunition",
+      "family": "Dispelling Ammunition",
+      "kind": "material",
+      "prompt": "Create an ORIGINAL hand-painted realistic fantasy AMMUNITION MATERIAL TEXTURE for the existing Alvorada Cinzenta native SVG skin library. Square edge-to-edge closeup of cool muted lavender silver with carefully cut interrupted circular sigils and ivory inlay breaks; fine matte metal grain, precise anti-magic craftsmanship. Fully filled square, physical detailed engraving and natural highlight variation, no uniform flat color, restrained premium craft. No weapon silhouette, no object, no lettering, no border, no frame, no background scene, no watermark. Details must read when mapped onto small projectiles and be distinct from previous weapon materials."
+    },
+    {
+      "id": "material-goading-ammunition",
+      "family": "Goading Ammunition",
+      "kind": "material",
+      "prompt": "Create an ORIGINAL hand-painted realistic fantasy AMMUNITION MATERIAL TEXTURE for the existing Alvorada Cinzenta native SVG skin library. Square edge-to-edge closeup of burnished dusky orange-bronze with angular thornlike scrolling copper engravings, restrained rusty vermilion accents and deep dark enamel grooves. Fully filled square, physical detailed engraving and natural highlight variation, no uniform flat color, restrained premium craft. No weapon silhouette, no object, no lettering, no border, no frame, no background scene, no watermark. Details must read when mapped onto small projectiles and be distinct from previous weapon materials."
+    },
+    {
+      "id": "material-winged-ammunition",
+      "family": "Winged Ammunition",
+      "kind": "material",
+      "prompt": "Create an ORIGINAL hand-painted realistic fantasy AMMUNITION MATERIAL TEXTURE for the existing Alvorada Cinzenta native SVG skin library. Square edge-to-edge closeup of polished pearl silver with intricate overlapping feather engravings in narrow flowing bands, pale sky-blue oxidized channels, delicate fine feather barbs carved in metal. Fully filled square, physical detailed engraving and natural highlight variation, no uniform flat color, restrained premium craft. No weapon silhouette, no object, no lettering, no border, no frame, no background scene, no watermark. Details must read when mapped onto small projectiles and be distinct from previous weapon materials."
+    },
+    {
+      "id": "dried-leech-arrow",
+      "family": "Dried Leech",
+      "kind": "raster",
+      "reference": "/shop/magic-completion-20261009/model-single-arrow.webp",
+      "prompt": "Create an ORIGINAL magical Dried Leech ammunition illustration based on the referenced physical ammunition model. ONE complete wooden arrow with its dry dark-brown feather fletching. A clearly visible dried black-brown leech with delicate ringed leathery folds is curled tightly LENGTHWISE around the narrow arrowhead attachment. Preserve the long slim shaft and pointed ammunition silhouette. This is a magical dried leech used as ammunition from D&D, with a mote of animating magic: convey it with a very faint warm ivory glint inside one segment, no large halo. Realistic hand-painted fantasy inventory sprite for Alvorada Cinzenta, detailed worn material and physical volume, generous readable silhouette at 190px. Entire item visible with ample margin, centered diagonal composition on NATIVE TRANSPARENT background. No character, hands, blood, gore, droplets, slime, motion trail, frame, text, watermark or additional objects. Keep the physical ammunition recognizable and make this distinct from ordinary or simply colored ammunition. Preserve native alpha with zero background."
+    },
+    {
+      "id": "dried-leech-bolt",
+      "family": "Dried Leech",
+      "kind": "raster",
+      "reference": "/shop/magic-completion-20261009/model-single-bolt.webp",
+      "prompt": "Create an ORIGINAL magical Dried Leech ammunition illustration based on the referenced physical ammunition model. ONE short sturdy wooden crossbow bolt with deep dark-red fletching. A small leathery dried umber leech is coiled into a pointed ringed organic cap around the bolt tip; the dry leech itself visibly distinct from metal and wood. Preserve the compact thick bolt proportions. This is a magical dried leech used as ammunition from D&D, with a mote of animating magic: convey it with a very faint warm ivory glint inside one segment, no large halo. Realistic hand-painted fantasy inventory sprite for Alvorada Cinzenta, detailed worn material and physical volume, generous readable silhouette at 190px. Entire item visible with ample margin, centered diagonal composition on NATIVE TRANSPARENT background. No character, hands, blood, gore, droplets, slime, motion trail, frame, text, watermark or additional objects. Keep the physical ammunition recognizable and make this distinct from ordinary or simply colored ammunition. Preserve native alpha with zero background."
+    },
+    {
+      "id": "dried-leech-firearm-bullet",
+      "family": "Dried Leech",
+      "kind": "raster",
+      "reference": "/shop/magic-completion-20261009/model-firearm-bullet.webp",
+      "prompt": "Create an ORIGINAL magical Dried Leech ammunition illustration based on the referenced physical ammunition model. ONE brass firearm cartridge with silver-grey bullet tip, in three-quarter perspective. A single small dried charcoal-brown ringed leech is tightly molded around just the exposed projectile tip, forming a compact pointed organic projectile cap. The brass casing and primer remain clear and intact; no large animal stuck sideways to the casing. This is a magical dried leech used as ammunition from D&D, with a mote of animating magic: convey it with a very faint warm ivory glint inside one segment, no large halo. Realistic hand-painted fantasy inventory sprite for Alvorada Cinzenta, detailed worn material and physical volume, generous readable silhouette at 190px. Entire item visible with ample margin, centered diagonal composition on NATIVE TRANSPARENT background. No character, hands, blood, gore, droplets, slime, motion trail, frame, text, watermark or additional objects. Keep the physical ammunition recognizable and make this distinct from ordinary or simply colored ammunition. Preserve native alpha with zero background."
+    },
+    {
+      "id": "dried-leech-needle",
+      "family": "Dried Leech",
+      "kind": "raster",
+      "reference": "/shop/magic-completion-20261009/model-single-needle.webp",
+      "prompt": "Create an ORIGINAL magical Dried Leech ammunition illustration based on the referenced physical ammunition model. ONE long very slender blowgun needle with small desaturated pale feather fletching. A tiny dried black-violet ringed leech wraps narrowly along the pointed end, detailed leathery folds forming a slim tapered organic cap. Preserve the narrow needle proportions, not a broad arrow. This is a magical dried leech used as ammunition from D&D, with a mote of animating magic: convey it with a very faint warm ivory glint inside one segment, no large halo. Realistic hand-painted fantasy inventory sprite for Alvorada Cinzenta, detailed worn material and physical volume, generous readable silhouette at 190px. Entire item visible with ample margin, centered diagonal composition on NATIVE TRANSPARENT background. No character, hands, blood, gore, droplets, slime, motion trail, frame, text, watermark or additional objects. Keep the physical ammunition recognizable and make this distinct from ordinary or simply colored ammunition. Preserve native alpha with zero background."
+    },
+    {
+      "id": "dried-leech-sling-bullet",
+      "family": "Dried Leech",
+      "kind": "raster",
+      "reference": "/shop/magic-completion-20261009/model-single-sling-bullet.webp",
+      "prompt": "Create an ORIGINAL magical Dried Leech ammunition illustration based on the referenced physical ammunition model. ONE small oval sling projectile with a central worn silver-grey core. A single dried dark sienna leech curls tightly around the oval in a clearly legible C shape, with subtle segmented leatherlike dry body and rounded sucker at one end. Compact oval ammunition, not a live wriggling animal or a pile of worms. This is a magical dried leech used as ammunition from D&D, with a mote of animating magic: convey it with a very faint warm ivory glint inside one segment, no large halo. Realistic hand-painted fantasy inventory sprite for Alvorada Cinzenta, detailed worn material and physical volume, generous readable silhouette at 190px. Entire item visible with ample margin, centered diagonal composition on NATIVE TRANSPARENT background. No character, hands, blood, gore, droplets, slime, motion trail, frame, text, watermark or additional objects. Keep the physical ammunition recognizable and make this distinct from ordinary or simply colored ammunition. Preserve native alpha with zero background."
+    }
+  ]
+}

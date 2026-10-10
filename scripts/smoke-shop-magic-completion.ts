@@ -268,6 +268,32 @@ try {
       assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,item.id])).rows.length,0,item.id);
       assert.equal((await request(usePath,'POST',{...use,idempotency_key:randomUUID()})).status,409,item.id);
     }
+    const specialAmmoFamilies=['Walloping Ammunition','Bloodseeker Ammunition','Dispelling Ammunition','Goading Ammunition','Winged Ammunition','Dried Leech'];
+    if(ids.includes('walloping-arrow')) {
+      const special=completion.items.filter((x:any)=>specialAmmoFamilies.includes(x.raw_data.magic_family));
+      assert.deepEqual(specialAmmoFamilies.map(f=>special.filter((x:any)=>x.raw_data.magic_family===f).length),[7,6,6,6,5,5]);
+      const physical:Record<string,[number,number]>={Arrow:[5,.05],Bolt:[5,.075],Needle:[2,.02],'Firearm Bullet':[30,.2],'Modern Bullet':[0,.1],'Energy Cell':[0,.5],'Sling Bullet':[.2,.075]};
+      for(const item of special) {
+        const f=item.raw_data.upstream_facts,family=item.raw_data.magic_family,rules=item.raw_data.rules_summary,base=f.baseItem.split('|')[0],model=Object.keys(physical).find(x=>x.toLowerCase()===base)!;
+        assert(model);assert(item.raw_data.consumable&&consumableItems.has(item.id));assert.equal(item.raw_data.attunement,false);assert.equal(item.raw_data.pack_quantity,1);
+        assert.deepEqual(item.raw_data.equipment_slots,[]);assert.equal(item.weight_estimated,false);assert.equal(item.weight_lb,physical[model][1]);
+        assert.equal(item.price_cp,Math.round((family==='Walloping Ammunition'?500:family==='Bloodseeker Ammunition'?200000:2000)+physical[model][0]));
+        assert.equal(item.raw_data.source_edition,['AU','XDMG'].includes(f.source)?'D&D 5e (2024)':'D&D 5e (2014)');
+        if(family==='Walloping Ammunition'){assert.match(rules,/Força CD 10/);assert.match(rules,/fica caída/);}
+        if(family==='Bloodseeker Ammunition'){assert.equal(f.source,'BMT');assert.match(rules,/vantagem contra qualquer criatura que não esteja com todos os seus PV/);}
+        if(family==='Dispelling Ammunition'){assert.equal(f.source,'AU');assert.match(rules,/recebe dano/);assert.match(rules,/3º círculo ou menor/);assert.match(rules,/inclusive efeitos benéficos/);assert.match(rules,/Assim que causa dano a um alvo/);}
+        if(family==='Goading Ammunition'){assert.equal(f.source,'AU');assert.match(rules,/acerta uma criatura e causa dano/);assert.match(rules,/Carisma CD 13/);assert.match(rules,/início do próximo turno dela/);assert.match(rules,/deixa de ser mágica assim que acerta um alvo/);}
+        if(family==='Winged Ammunition'){assert.equal(f.source,'BMT');assert.notEqual(model,'Energy Cell');assert.match(rules,/meia cobertura e três quartos/);assert.match(rules,/não ignora cobertura total/);assert.match(rules,/não aumenta o alcance máximo/);}
+        if(family==='Dried Leech'){assert.equal(f.source,'BMT');assert.notEqual(model,'Energy Cell');assert.match(item.image_path,/\.webp$/);assert.match(rules,/1d4 de dano perfurante no início de cada turno/);assert.match(rules,/própria sanguessuga tiver causado pelo menos 10/);assert.match(rules,/Qualquer criatura, incluindo o alvo, pode usar sua ação/);}
+        if(special.find((x:any)=>x.raw_data.magic_family===family).id===item.id)
+          assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:item.id,slot:'main_hand'})).status,400,item.id);
+        assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,item.id])).rows[0].quantity,1);
+        const use={kind:'consumable',item_id:item.id,idempotency_key:randomUUID()};
+        assert.equal((await request(usePath,'POST',use)).status,200,item.id);assert.equal((await request(usePath,'POST',use)).status,200,item.id);
+        assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,item.id])).rows.length,0,item.id);
+        assert.equal((await request(usePath,'POST',{...use,idempotency_key:randomUUID()})).status,409,item.id);
+      }
+    }
     for (const id of ['perfume-of-bewitching', 'pot-of-awakening', 'bead-of-refreshment'].filter(id => ids.includes(id))) {
       const item = completion.items.find((x: any) => x.id === id);
       assert(item.raw_data.consumable && consumableItems.has(id));

@@ -17686,5 +17686,285 @@
     "sha256": "5411347360cefe2c0b37a994bd0099866e105b545fece46bd1d57e98b6957a27",
     "source": "public/audio/shop-counter-leather.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "walloping-arrow",
+    "path": "public/audio/emporium/walloping-arrow.wav",
+    "kind": "wood",
+    "sha256": "de7cf91a816672517f2dfe0b789e4f1b421f5ab1c3479bd1bfdbef29e2786355",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "walloping-needle",
+    "path": "public/audio/emporium/walloping-needle.wav",
+    "kind": "metal",
+    "sha256": "1f212bab173d26a2baa5110f29a0dfe5a1ff9a67d838904e0202cfefffd29028",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "walloping-bolt",
+    "path": "public/audio/emporium/walloping-bolt.wav",
+    "kind": "wood",
+    "sha256": "d69f30b4f969275c3cb3405b62560c54f20150ff55ff88b119d78876aee6d65b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "walloping-energy-cell",
+    "path": "public/audio/emporium/walloping-energy-cell.wav",
+    "kind": "metal",
+    "sha256": "c722d2785a805ad2e51e9fd325e45c4413af1a563310e4da9555749aef42529e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "walloping-modern-bullet",
+    "path": "public/audio/emporium/walloping-modern-bullet.wav",
+    "kind": "metal",
+    "sha256": "271d54b7605a9683bc78e5581d2a406c4448730dfbf3dbbe84bb2dc9ca6c383f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "walloping-firearm-bullet",
+    "path": "public/audio/emporium/walloping-firearm-bullet.wav",
+    "kind": "metal",
+    "sha256": "a5a2016f0992788c245ceadb683c35d3f4bc34704d09494dc0f0803f6217dd3b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "walloping-sling-bullet",
+    "path": "public/audio/emporium/walloping-sling-bullet.wav",
+    "kind": "metal",
+    "sha256": "d8f0502109c9d9b26216a01d475207c3f9bc2898cf4d9b0b4fc3babe4d31687d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bloodseeker-arrow",
+    "path": "public/audio/emporium/bloodseeker-arrow.wav",
+    "kind": "wood",
+    "sha256": "3ed7a2fc7d8568eeb1ec150b716ee767bb9469472244487dd5eed8a9b80e5b7c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bloodseeker-bolt",
+    "path": "public/audio/emporium/bloodseeker-bolt.wav",
+    "kind": "wood",
+    "sha256": "df4acba3fffebacfc7e709800276b1307241a85d57aef3a763079aaf562e0867",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bloodseeker-energy-cell",
+    "path": "public/audio/emporium/bloodseeker-energy-cell.wav",
+    "kind": "metal",
+    "sha256": "e9f73b775c8fd3d056159788cac01cb2440076e73923034f9fc7714581e42361",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bloodseeker-firearm-bullet",
+    "path": "public/audio/emporium/bloodseeker-firearm-bullet.wav",
+    "kind": "metal",
+    "sha256": "1286b1385fa4429c44ffb2e38311b69d937fc3b10cc51a8a0371e3248a7eac6d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bloodseeker-needle",
+    "path": "public/audio/emporium/bloodseeker-needle.wav",
+    "kind": "metal",
+    "sha256": "94f4cd1da6f5944a2a7080a85c8727c9d8158d8eefaf8754fcaae13173bb3f1e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bloodseeker-sling-bullet",
+    "path": "public/audio/emporium/bloodseeker-sling-bullet.wav",
+    "kind": "metal",
+    "sha256": "eb50b884e6973bd92da96d5e9e42babd3e120d95e515b797d178fc06dce87a1e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dispelling-arrow",
+    "path": "public/audio/emporium/dispelling-arrow.wav",
+    "kind": "wood",
+    "sha256": "d3b4024f86633896e82f0371f869adad8dad38aca4b0cd39d629907ea4c5cdfd",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dispelling-bolt",
+    "path": "public/audio/emporium/dispelling-bolt.wav",
+    "kind": "wood",
+    "sha256": "f6b1f13fee431fbd33802bc70de45798ed95fc7d314073738333b780c44fe767",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dispelling-energy-cell",
+    "path": "public/audio/emporium/dispelling-energy-cell.wav",
+    "kind": "metal",
+    "sha256": "f8104132cc8c4ab2c4d5a026379d568f05ee99a39542c34728f2a71d3bf451c6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dispelling-firearm-bullet",
+    "path": "public/audio/emporium/dispelling-firearm-bullet.wav",
+    "kind": "metal",
+    "sha256": "6d084f6413b787953d14dbfba0604205955e31fef2ac90363c9df0429dba6b2a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dispelling-needle",
+    "path": "public/audio/emporium/dispelling-needle.wav",
+    "kind": "metal",
+    "sha256": "930c75b46dd659ae6c4b13fead415c18f9e12cce514ce63420f923ff8e9e816a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dispelling-sling-bullet",
+    "path": "public/audio/emporium/dispelling-sling-bullet.wav",
+    "kind": "metal",
+    "sha256": "c7d975156485c4d7f8437ce5d7a0b4b5637ea7b1ccdea933f1b6792d794ee8d5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "goading-arrow",
+    "path": "public/audio/emporium/goading-arrow.wav",
+    "kind": "wood",
+    "sha256": "11b669c008cab93926bdab7826de1aefd6244f5d92f1cd868d974976469f431f",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "goading-bolt",
+    "path": "public/audio/emporium/goading-bolt.wav",
+    "kind": "wood",
+    "sha256": "25fc310651cf2df5184a25c3ca31dd0a7c744c3f0f3cf01ca405d05527cdffa0",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "goading-energy-cell",
+    "path": "public/audio/emporium/goading-energy-cell.wav",
+    "kind": "metal",
+    "sha256": "7f42eab74b81726de70f14167551cf487670eca07c75220b9ec8c00b1cb37ce7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "goading-firearm-bullet",
+    "path": "public/audio/emporium/goading-firearm-bullet.wav",
+    "kind": "metal",
+    "sha256": "45f1e810523976fc9f53ceac4bd742df085e0e99016f46f30524ddc84e529f13",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "goading-needle",
+    "path": "public/audio/emporium/goading-needle.wav",
+    "kind": "metal",
+    "sha256": "fef1e70d19dcc01a4caf265c10ce24bc0bab3cf8ac9976df5ba14b9ac78facc5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "goading-sling-bullet",
+    "path": "public/audio/emporium/goading-sling-bullet.wav",
+    "kind": "metal",
+    "sha256": "224293b7271d33f3655ebb3ba3c8536976da248fa99911d339869ba64c4bc486",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "winged-arrow",
+    "path": "public/audio/emporium/winged-arrow.wav",
+    "kind": "wood",
+    "sha256": "8ae4eb265c1a1fc8171314ad2ad020e90305f82b062e8fb32e5fc001a7385580",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "winged-bolt",
+    "path": "public/audio/emporium/winged-bolt.wav",
+    "kind": "wood",
+    "sha256": "a707a7f6e248d95a8d6369c3280fc90ab370f7bbb4c3c59271cde015bdd9d990",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "winged-firearm-bullet",
+    "path": "public/audio/emporium/winged-firearm-bullet.wav",
+    "kind": "metal",
+    "sha256": "4d9ec63747e75dbe19b885880928a16ec9a35143647f17189137400153193a80",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "winged-needle",
+    "path": "public/audio/emporium/winged-needle.wav",
+    "kind": "metal",
+    "sha256": "83b50f395a1358067044eb1faaa29aedc55e146f8c23c776fb558cb35bcf4ebc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "winged-sling-bullet",
+    "path": "public/audio/emporium/winged-sling-bullet.wav",
+    "kind": "metal",
+    "sha256": "bdd63b9c644104a994dd2b0f2e532124d8606bbda30034ec3045a62be1203f50",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dried-leech-arrow",
+    "path": "public/audio/emporium/dried-leech-arrow.wav",
+    "kind": "leather",
+    "sha256": "a3fa91034690c4d81a787828ae0ece75577356ee1c95599913f881579dff9ded",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dried-leech-bolt",
+    "path": "public/audio/emporium/dried-leech-bolt.wav",
+    "kind": "leather",
+    "sha256": "4ef1d9bd3e552079da509ad464ccd0515ea020f4f159689de56e3fbbf1f7962f",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dried-leech-firearm-bullet",
+    "path": "public/audio/emporium/dried-leech-firearm-bullet.wav",
+    "kind": "leather",
+    "sha256": "7a955b1b8a17d3908b4737e3bae97ef4341aea4dce836295330ef0f87c0eca7e",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dried-leech-needle",
+    "path": "public/audio/emporium/dried-leech-needle.wav",
+    "kind": "leather",
+    "sha256": "0aa2fa72894420169c678c661a523133923efa7767689855a93006a9ed74dcbd",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dried-leech-sling-bullet",
+    "path": "public/audio/emporium/dried-leech-sling-bullet.wav",
+    "kind": "leather",
+    "sha256": "18ed96c881a806386066ee38a376c4afa65311fba8a13cad3f0c12e65c544569",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]
