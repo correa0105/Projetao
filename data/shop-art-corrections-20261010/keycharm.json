@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-10",
+  "tool": "image_gen.imagegen",
+  "mode": "edit",
+  "prompt": "Use case: precise-object-edit. Asset type: transparent fantasy shop item illustration. Input image is the edit target: the ornate Keycharm key, triangular brass bow with three circular rivet medallions, a geometric engraved central plate, and a silver toothed shaft. Correct the visibly warped, crooked construction. Make the bow a balanced rigid triangle with matching straight edges, clean round medallions, and symmetric details. Center the neck precisely on the base of the triangle, and connect it to one straight cylindrical silver shaft with parallel sides and a uniform axis. Make the key bit and its three square teeth crisp, aligned and physically plausible, perpendicular to that straight shaft. Keep the same ornamented fantasy design, aged gold/brass bow, silver shaft, finely engraved collars, realistic metal texture, light and visual style. Keep the diagonal upper-left to lower-right presentation. Show exactly one complete key with generous clear margin on every side, centered. Genuine transparent background, no scene, no ground shadow, no lettering, no extra objects, no glow. Improve geometric alignment without redesigning the item.",
+  "input": "public/shop/magic-completion-20261009/keycharm-v1.webp",
+  "input_sha256": "4ec840ace932960bd1aa50fd5018f6317b387a6d204556ff31af508c8ee21a50",
+  "native": "data/shop-art-corrections-20261010/keycharm-native.png",
+  "native_sha256": "a23b75328809382d12614827c3f43596af875709f4d588c9e550bf5416ab9e2d",
+  "output": "public/shop/magic-completion-20261009/keycharm.webp",
+  "sha256": "2aff2cb5cf2b7798d4104ebfc16d462e8e6e9dd5980d810f58c21a6e77194086",
+  "width": 768,
+  "height": 768,
+  "transparent_background": true
+}

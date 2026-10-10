@@ -8,13 +8,11 @@ export function ProfileMenu({
   children,
   open,
   onOpenChange,
-  label,
 }: {
   character?: Character;
   children: ReactNode;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  label?: string;
 }) {
   const [failed, setFailed] = useState(false);
   const root = useRef<HTMLElement>(null);
@@ -48,7 +46,6 @@ export function ProfileMenu({
         aria-expanded={open}
         onClick={() => onOpenChange(!open)}
       >
-        {label && <span className="profile-menu-label">{label}</span>}
         <span className="profile-face">
           {character && character.portrait_revision > 0 && !failed ? (
             <img

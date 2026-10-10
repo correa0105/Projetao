@@ -3139,14 +3139,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </div>
           )}
           <div className="vtt-map-footer">
-            <span>
-              {spectator
-                ? 'Espectador · somente visualização'
-                : effectPreview
-                  ? 'Prévia do efeito · ainda não aplicado'
-                  : ''}
-            </span>
-            <div>
+            {(spectator || effectPreview) && (
+              <span>
+                {spectator
+                  ? 'Espectador · somente visualização'
+                  : 'Prévia do efeito · ainda não aplicado'}
+              </span>
+            )}
+            <div style={{ marginLeft: 'auto' }}>
               <button
                 aria-label="Diminuir zoom"
                 onClick={() => setCamera((c) => ({ ...c, zoom: Math.max(0.03, c.zoom * 0.8) }))}

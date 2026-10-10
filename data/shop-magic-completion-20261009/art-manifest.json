@@ -15768,14 +15768,14 @@
     {
       "id": "keycharm",
       "path": "/shop/magic-completion-20261009/keycharm.webp",
-      "native": ".local/shop-completion/native/keycharm.png",
-      "native_sha256": "32b9be04423df291e11a71e0b25f3bd4159630e278c65e43489b53d0d040a0d2",
-      "sha256": "4ec840ace932960bd1aa50fd5018f6317b387a6d204556ff31af508c8ee21a50",
-      "width": 747,
+      "native": "data/shop-art-corrections-20261010/keycharm-native.png",
+      "native_sha256": "a23b75328809382d12614827c3f43596af875709f4d588c9e550bf5416ab9e2d",
+      "sha256": "2aff2cb5cf2b7798d4104ebfc16d462e8e6e9dd5980d810f58c21a6e77194086",
+      "width": 768,
       "height": 768,
-      "prompt": "Use case: stylized-concept. Create one original high quality hand-painted realistic fantasy RPG shop inventory illustration, refined material detail, readable at 168-pixel thumbnail size. Show the entire single purchasable object, centered at three-quarter view, with 8 percent clear margin on every edge. Rich painterly finish, restrained warm light from upper left and faint cool edge highlights for readability on a dark shop background. Native transparent background with actual alpha; no floor, horizon, backdrop, cast shadow plane, person, hands, text, logo, watermark, frame, or display stand. No extra sale items or separate accessories. Do not cut off any part. Subject: a single small stylized Kundarak key charm, short silver key shaft with three distinct teeth, intricate broad angular brass bow with a mountain-like original geometric relief, three tiny sealed recesses around its bow. The small object's detailed silhouette occupies most of the image without perspective exaggeration. Tarnished brass recesses and smooth worn silver edges, elegant dwarven craftsmanship, readable key profile. No keyring, chain, other keys, lettering, numerical charges, glowing magic beams or lock.",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent fantasy shop item illustration. Input image is the edit target: the ornate Keycharm key, triangular brass bow with three circular rivet medallions, a geometric engraved central plate, and a silver toothed shaft. Correct the visibly warped, crooked construction. Make the bow a balanced rigid triangle with matching straight edges, clean round medallions, and symmetric details. Center the neck precisely on the base of the triangle, and connect it to one straight cylindrical silver shaft with parallel sides and a uniform axis. Make the key bit and its three square teeth crisp, aligned and physically plausible, perpendicular to that straight shaft. Keep the same ornamented fantasy design, aged gold/brass bow, silver shaft, finely engraved collars, realistic metal texture, light and visual style. Keep the diagonal upper-left to lower-right presentation. Show exactly one complete key with generous clear margin on every side, centered. Genuine transparent background, no scene, no ground shadow, no lettering, no extra objects, no glow. Improve geometric alignment without redesigning the item.",
       "review": "approved",
-      "review_notes": "Complete original native-alpha illustration inspected at native resolution and in a dark 168px contact sheet; full silhouette, proportional resize only, distinct design and readable detail. Empty wand sheath includes no wand."
+      "review_notes": "Original transparent key edited with built-in imagegen; brass triangle, round medallions, straight silver shaft and three square teeth inspected at native and 168px size. Only proportional resize for delivery; prior artwork preserved as keycharm-v1.webp."
     },
     {
       "id": "scribe-s-pen",

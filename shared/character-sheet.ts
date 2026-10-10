@@ -1103,23 +1103,41 @@ export function deriveSheet(
       note: 'Disponíveis enquanto carrega o tomo; pode escolher novamente ao conjurá-lo após descanso curto ou longo.',
     });
   const order = c.options.order?.[0];
-  const features = [...r.traits, ...k.features, ...feats(c).map((f) => 'Talento de origem: ' + f)];
+  const featureGroups = {
+    background: [
+      'Perícias: ' + c.backgroundSkills.join(', ') + '.',
+      'Ferramenta: ' + backgroundRules[c.backgroundType].tool + '.',
+      'Idiomas escolhidos: ' + c.backgroundExtras.join(', ') + '.',
+    ],
+    class: [...k.features],
+    race: [...r.traits],
+    feats: feats(c).map((f) => 'Talento de origem: ' + f),
+  };
+  const features = [...featureGroups.race, ...featureGroups.class, ...featureGroups.feats];
+  const addFeature = (group: 'class' | 'race' | 'feats', ...texts: string[]) => {
+    featureGroups[group].push(...texts);
+    features.push(...texts);
+  };
   if (feats(c).includes('Alerta'))
-    features.push(
+    addFeature(
+      'feats',
       'Alerta: soma proficiência à iniciativa; pode trocar iniciativa com aliado disposto, desde que nenhum esteja Incapacitado.',
     );
   if (feats(c).includes('Atacante Selvagem'))
-    features.push(
+    addFeature(
+      'feats',
       'Atacante Selvagem: uma vez por turno ao acertar com arma, role os dados de dano da arma duas vezes e escolha um resultado.',
     );
   if (race === 'Elfo')
-    features.push('Visão no escuro: ' + (c.subrace === 'Drow' ? 36 : 18) + ' m.');
+    addFeature('race', 'Visão no escuro: ' + (c.subrace === 'Drow' ? 36 : 18) + ' m.');
   if (race === 'Gnomo' && c.subrace === 'Gnomo das rochas')
-    features.push(
+    addFeature(
+      'race',
       'Engenhoqueiro: 10 minutos com Prestidigitação criam dispositivo minúsculo com um efeito do truque; ação bônus para ativar, até três dispositivos, duração de 8 horas.',
     );
   if (race === 'Tiefling')
-    features.push(
+    addFeature(
+      'race',
       'Legado ' +
         c.subrace +
         ': resistência a ' +
@@ -1127,7 +1145,8 @@ export function deriveSheet(
         '.',
     );
   if (race === 'Golias')
-    features.push(
+    addFeature(
+      'race',
       'Ancestralidade ' +
         c.subrace +
         ': ' +
@@ -1142,7 +1161,8 @@ export function deriveSheet(
     );
   const inv = c.options.invocation?.[0];
   if (inv)
-    features.push(
+    addFeature(
+      'class',
       inv +
         ': ' +
         {
@@ -1160,7 +1180,8 @@ export function deriveSheet(
         }[inv],
     );
   if (c.options.style?.[0])
-    features.push(
+    addFeature(
+      'feats',
       'Estilo de luta: ' +
         c.options.style[0] +
         (c.options.style[0] === 'Combate com armas grandes'
@@ -1170,7 +1191,8 @@ export function deriveSheet(
             : ''),
     );
   if (c.options.mastery)
-    features.push(
+    addFeature(
+      'class',
       ...c.options.mastery.map(
         (w) => 'Maestria de ' + w + ': ' + mastery[w] + ' — ' + masteryDescriptions[mastery[w]],
       ),
@@ -1217,6 +1239,7 @@ export function deriveSheet(
     ],
     equipment,
     features,
+    featureGroups,
     proficiencies: [
       ...k.proficiencies,
       backgroundRules[c.backgroundType].tool,

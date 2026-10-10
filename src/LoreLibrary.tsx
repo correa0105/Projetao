@@ -401,27 +401,29 @@ export function LoreLibrary() {
       aria-label="Biblioteca de lore"
     >
       {message && <FlashMessage kind="info">{message}</FlashMessage>}
-      <header className="lore-hero">
-        <div className="lore-hero-art" aria-hidden="true" />
-        <div className="lore-hero-fog" aria-hidden="true" />
-        <div className="lore-hero-copy">
-          <span className="lore-kicker">O ARQUIVO DOS REINOS</span>
-          <h1>
-            Crônicas &amp; lore<span>.</span>
-          </h1>
-        </div>
-      </header>
-      {!editing && (
-        <LoreTimeline
-          ref={timeline}
-          folders={index.folders}
-          regions={index.regions}
-          onFolder={(id) => {
-            const folder = index.folders.find((item) => item.id === id);
-            if (folder) navigateImmediately(folder.region_id, id);
-          }}
-        />
-      )}
+      <div className="lore-scene">
+        <div className="lore-scene-art" aria-hidden="true" />
+        <div className="lore-scene-fog" aria-hidden="true" />
+        <header className="lore-hero">
+          <div className="lore-hero-copy">
+            <span className="lore-kicker">O ARQUIVO DOS REINOS</span>
+            <h1>
+              Crônicas &amp; lore<span>.</span>
+            </h1>
+          </div>
+        </header>
+        {!editing && (
+          <LoreTimeline
+            ref={timeline}
+            folders={index.folders}
+            regions={index.regions}
+            onFolder={(id) => {
+              const folder = index.folders.find((item) => item.id === id);
+              if (folder) navigateImmediately(folder.region_id, id);
+            }}
+          />
+        )}
+      </div>
       {editing && page ? (
         <LoreEditor
           key={page.id}

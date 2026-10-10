@@ -89,13 +89,13 @@ export async function seed() {
     }
     for (const item of expansion) {
       await client.query(
-        `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,image_path,merchant_comment,weight_estimated,audio_path)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+        `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,image_path,merchant_comment,weight_estimated,audio_path,active)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)
          ON CONFLICT(id) DO UPDATE SET name=excluded.name,original_name=excluded.original_name,
          category=excluded.category,description=excluded.description,price_cp=excluded.price_cp,
          weight_lb=excluded.weight_lb,source=excluded.source,source_url=excluded.source_url,
          raw_data=excluded.raw_data,image_path=excluded.image_path,merchant_comment=excluded.merchant_comment,
-         weight_estimated=excluded.weight_estimated,audio_path=excluded.audio_path,active=true`,
+         weight_estimated=excluded.weight_estimated,audio_path=excluded.audio_path,active=excluded.active`,
         [
           item.id,
           item.name,
@@ -111,6 +111,8 @@ export async function seed() {
           item.merchant_comment,
           item.weight_estimated,
           item.audio_path,
+          // Withdraw this offer without removing existing equipment or purchase history.
+          item.raw_data?.magic_family !== 'Drow Weapon',
         ],
       );
     }

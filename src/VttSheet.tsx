@@ -7,6 +7,7 @@ import type { VttSheetData } from '../shared/vtt-sheet';
 import { spells, skills, skillAbilities } from '../shared/character-sheet';
 import { ItemThumbnail } from './ItemThumbnail';
 import { modifier, statNames } from '../shared/rules';
+import { armorBundle } from '../shared/armor-bundles';
 import type { AttackRequest } from '../shared/vtt-attack';
 import './vtt-sheet.css';
 import { ActionShortcut } from './VttHotbar';
@@ -100,6 +101,13 @@ export function VttSheet({
     choices = data?.sheet?.choices,
     primary = data?.available_weapons.find((w) => w.itemId === data.weapon_slots.main_hand);
   const t = data?.token || token;
+  const hiddenArmorParts = new Set(
+    data?.inventory.flatMap((item) =>
+      (armorBundle(item.id)?.pieces || [])
+        .filter((piece) => piece.slot !== 'armor')
+        .map((piece) => piece.id),
+    ),
+  );
   const check = (n: number, name: string) =>
     void roll(`1d20${signed(n)}`, t.name + ' · ' + name).catch((e) => setError(e.message));
   const box = (name: string, content: React.ReactNode) => (
@@ -323,8 +331,8 @@ export function VttSheet({
                     'Ataques',
                     <div className="vtt-sheet-attacks">
                       {choices && (
-                        <fieldset className="vtt-sheet-weapons">
-                          <legend>Armas na mesa</legend>
+                        <details className="vtt-sheet-weapons" open>
+                          <summary>Armas na mesa</summary>
                           <p>Troque entre as armas da mochila. A escolha vale nesta sala.</p>
                           <label>
                             Mão principal
@@ -392,7 +400,7 @@ export function VttSheet({
                                 ))}
                             </select>
                           </label>
-                        </fieldset>
+                        </details>
                       )}
                       {choices ? (
                         data.attacks.map((w) => (
@@ -457,53 +465,55 @@ export function VttSheet({
                           .toFixed(1)}{' '}
                         lb
                       </div>
-                      {data.inventory.map((i) => (
-                        <article className="vtt-sheet-item" key={i.id}>
-                          <div>
-                            <div className="vtt-sheet-item-title">
-                              <ItemThumbnail image={i.image_path} name={i.name} />
-                              <strong>{i.name}</strong>
-                            </div>
-                            <small>
-                              {i.quantity} unidades{i.equipped.length ? ' · equipado' : ''}
-                            </small>
-                            <details>
-                              <summary>Descrição</summary>
-                              <p>{i.description}</p>
-                            </details>
-                          </div>
-                          {i.consumable && (
+                      {data.inventory
+                        .filter((i) => !hiddenArmorParts.has(i.id))
+                        .map((i) => (
+                          <article className="vtt-sheet-item" key={i.id}>
                             <div>
-                              {data.can_use && (
-                                <ActionShortcut
-                                  action={{
-                                    kind: 'consumable',
-                                    characterId: c!.id,
-                                    sourceId: i.id,
-                                    label: i.name,
-                                  }}
-                                />
-                              )}
-                              <button
-                                aria-label={'Usar ' + i.name}
-                                disabled={busy}
-                                onClick={() => {
-                                  if (
-                                    confirm(
-                                      'Usar uma unidade de ' +
-                                        i.name +
-                                        '? Ela será removida do inventário do personagem.',
-                                    )
-                                  )
-                                    use({ kind: 'consumable', item_id: i.id });
-                                }}
-                              >
-                                Usar
-                              </button>
+                              <div className="vtt-sheet-item-title">
+                                <ItemThumbnail image={i.image_path} name={i.name} />
+                                <strong>{i.name}</strong>
+                              </div>
+                              <small>
+                                {i.quantity} unidades{i.equipped.length ? ' · equipado' : ''}
+                              </small>
+                              <details>
+                                <summary>Descrição</summary>
+                                <p>{i.description}</p>
+                              </details>
                             </div>
-                          )}
-                        </article>
-                      ))}
+                            {i.consumable && (
+                              <div>
+                                {data.can_use && (
+                                  <ActionShortcut
+                                    action={{
+                                      kind: 'consumable',
+                                      characterId: c!.id,
+                                      sourceId: i.id,
+                                      label: i.name,
+                                    }}
+                                  />
+                                )}
+                                <button
+                                  aria-label={'Usar ' + i.name}
+                                  disabled={busy}
+                                  onClick={() => {
+                                    if (
+                                      confirm(
+                                        'Usar uma unidade de ' +
+                                          i.name +
+                                          '? Ela será removida do inventário do personagem.',
+                                      )
+                                    )
+                                      use({ kind: 'consumable', item_id: i.id });
+                                  }}
+                                >
+                                  Usar
+                                </button>
+                              </div>
+                            )}
+                          </article>
+                        ))}
                       {d?.equipment.length && (
                         <details>
                           <summary>Equipamento inicial declarado</summary>
@@ -525,7 +535,36 @@ export function VttSheet({
                         Proficiência {signed(d?.proficiency ?? 2 + Math.floor((c!.level - 1) / 4))}{' '}
                         · Percepção passiva {d?.passivePerception ?? 10 + modifier(c!.stats[4])}
                       </p>
-                      {d?.features.map((f, i) => <p key={i}>{f}</p>) || <p>{t.sheet?.details}</p>}
+                      {d && choices ? (
+                        <div className="vtt-feature-groups">
+                          {(
+                            [
+                              ['background', 'Antecedente', choices.backgroundType],
+                              ['class', 'Classe', `${c!.class} · Nível ${c!.level}`],
+                              [
+                                'race',
+                                'Raça',
+                                choices.subrace === c!.race
+                                  ? c!.race
+                                  : `${c!.race} · ${choices.subrace}`,
+                              ],
+                              ['feats', 'Talentos', ''],
+                            ] as const
+                          ).map(([group, title, name]) => (
+                            <section key={group} aria-label={title}>
+                              <h4>{title}</h4>
+                              {name && <strong className="vtt-feature-group-name">{name}</strong>}
+                              <ul>
+                                {d.featureGroups[group].map((feature, i) => (
+                                  <li key={i}>{feature}</li>
+                                ))}
+                              </ul>
+                            </section>
+                          ))}
+                        </div>
+                      ) : (
+                        <p>{t.sheet?.details}</p>
+                      )}
                     </>,
                   )}
                   {(['personality', 'ideals', 'bonds', 'flaws'] as const).map((key, i) => (

@@ -128,9 +128,9 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
       const left = Math.max(16, Math.min(center - width / 2, window.innerWidth - width - 16));
       setPanelPosition({
         left: left - outer.x - 1,
-        bottom: page === 'lore' ? outer.height + 12 : outer.bottom - anchor.top + 15.2,
+        bottom: outer.bottom - anchor.top + 15.2,
         '--panel-tip': `${center - left}px`,
-        '--panel-space': `${Math.max(79.2, (page === 'lore' ? outer.top : anchor.top) - 77.4)}px`,
+        '--panel-space': `${Math.max(79.2, anchor.top - 77.4)}px`,
       } as CSSProperties);
     }
     positionPanel();
@@ -144,7 +144,7 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
       window.removeEventListener('resize', positionPanel);
       dock.removeEventListener('transitionend', positionPanel);
     };
-  }, [open, page]);
+  }, [open]);
   useEffect(() => {
     setOpen(null);
     setRevealed(false);
@@ -195,7 +195,6 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
           <span className="dock-orb">
             <Icon size={44} />
           </span>
-          {page === 'lore' && <span className="dock-item-label">{item.label}</span>}
         </button>
       </div>
     );
@@ -250,7 +249,7 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
           collapse();
       }}
     >
-      {revealed && caption && !open && page !== 'lore' && (
+      {revealed && caption && !open && (
         <div className="dock-caption" aria-hidden="true">
           <span key={caption}>{caption}</span>
         </div>
@@ -284,7 +283,6 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
           }
         }}
       >
-        {page === 'lore' && <Compass size={15} aria-hidden="true" />}
         <span>Menu</span>
       </button>
       <div id="navigation-tray" className="dock-tray" inert={!revealed}>
@@ -298,7 +296,6 @@ export function Navigation({ page, go }: { page: Page; go: (page: Page) => void 
             <span className="dock-orb">
               <CandleIcon size={44} />
             </span>
-            {page === 'lore' && <span className="dock-item-label">Início</span>}
           </button>
           {packages.slice(0, 2).map(packageButton)}
           {packages.slice(2).map(packageButton)}
