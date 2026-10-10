@@ -268,11 +268,11 @@ try {
       assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,item.id])).rows.length,0,item.id);
       assert.equal((await request(usePath,'POST',{...use,idempotency_key:randomUUID()})).status,409,item.id);
     }
-    for (const id of ['perfume-of-bewitching', 'pot-of-awakening'].filter(id => ids.includes(id))) {
+    for (const id of ['perfume-of-bewitching', 'pot-of-awakening', 'bead-of-refreshment'].filter(id => ids.includes(id))) {
       const item = completion.items.find((x: any) => x.id === id);
       assert(item.raw_data.consumable && consumableItems.has(id));
       assert.equal(item.price_cp, 5000);
-      assert.equal(item.weight_lb, id === 'pot-of-awakening' ? 10 : 0.1);
+      assert.equal(item.weight_lb, id === 'pot-of-awakening' ? 10 : id === 'bead-of-refreshment' ? 0.01 : 0.1);
       const use = {kind:'consumable',item_id:id,idempotency_key:randomUUID()};
       assert.equal((await request(usePath,'POST',use)).status,200,id);
       assert.equal((await request(usePath,'POST',use)).status,200,id);
@@ -481,6 +481,27 @@ try {
         assert.deepEqual(worn.map(x=>x.item_id).sort(),purchaseContents(item.id).sort());
       }
     }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
+  }
+  if (ids.includes('bead-of-refreshment')) {
+    const item=(id:string)=>completion.items.find((x:any)=>x.id===id);
+    assert.equal(item('charlatan-s-die').raw_data.attunement,true);
+    assert.equal(item('dark-shard-amulet').raw_data.attunement,'by a warlock');
+    assert.equal(item('dark-shard-amulet').weight_lb,1);assert.equal(item('dark-shard-amulet').weight_estimated,false);
+    assert.match(item('dark-shard-amulet').raw_data.rules_summary,/descanso longo/);
+    assert.match(item('dark-shard-amulet').raw_data.rules_summary,/Arcanismo\) CD 10/);
+    assert.equal(item('horn-of-silent-alarm').weight_lb,2);assert.equal(item('horn-of-silent-alarm').weight_estimated,false);assert.equal(item('horn-of-silent-alarm').price_cp,10300);
+    assert.equal(item('horn-of-silent-alarm').raw_data.upstream_facts.charges,4);
+    assert.equal(item('hat-of-vermin').raw_data.upstream_facts.charges,3);
+    assert.equal(item('heward-s-handy-spice-pouch').raw_data.upstream_facts.charges,10);
+    assert.match(item('hat-of-vermin').raw_data.rules_summary,/não está sob seu controle/);
+    assert.match(item('cleansing-stone').raw_data.rules_summary,/30,5 cm/);assert.equal(item('cleansing-stone').weight_lb,85);assert.equal(item('cleansing-stone').weight_estimated,true);
+    assert.deepEqual(item('ersatz-eye').raw_data.equipment_slots,[]);assert.equal(item('ersatz-eye').raw_data.attunement,false);
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:null,slot:'off_hand'})).status,200);
+    for(const[id,slot]of [['breathing-bubble','head'],['charlatan-s-die','main_hand'],['coin-of-delving','off_hand'],['dark-shard-amulet','neck'],['hat-of-vermin','head'],['heward-s-handy-spice-pouch','belt'],['horn-of-silent-alarm','main_hand']])
+      assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:id,slot})).status,200,id);
+    for(const id of ['cleansing-stone','ersatz-eye'])
+      assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:id,slot:'head'})).status,400,id);
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
   }
   console.log(

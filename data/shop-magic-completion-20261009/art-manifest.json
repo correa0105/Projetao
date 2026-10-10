@@ -12317,6 +12317,126 @@
       "physical_model": "Studded Leather Armor",
       "mode": "original generated full-robe appearance",
       "review_notes": "Reviewed eight independently generated full robe illustrations, genuine native alpha and actual compositions on a dark background. Whole empty garments, sleeve/hem ribbons, no human or mannequin, distinct tailoring/colors/embroidery and unique image hashes."
+    },
+    {
+      "id": "bead-of-refreshment",
+      "path": "/shop/magic-completion-20261009/bead-of-refreshment.webp",
+      "native": ".local/shop-completion/native/bead-of-refreshment.png",
+      "native_sha256": "1da532fcd1c3c3709b6cdc3780ae754f95cff1d0fe91368738bdcbd47e1f99e5",
+      "sha256": "2e3d4cb9833c0d3c3014dd1df265997ad8bbc6dfc3ca84296e9529ebbfd087cd",
+      "width": 768,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one small flavorless gelatinous translucent bead, softly rounded teardrop-pearl shape rather than a hard cut gemstone, clear icy pale blue hydrogel with delicate internal refraction and a tiny suspended waterlike highlight, genuinely soft moist material and crisp readable light edges, no bottle, cup, pool, other beads or decorative necklace. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "breathing-bubble",
+      "path": "/shop/magic-completion-20261009/breathing-bubble.webp",
+      "native": ".local/shop-completion/native/breathing-bubble.png",
+      "native_sha256": "0fd79b881a011b35e2d517bf9aadb745ecaf84e1b66ad970c9ceb42a61641391",
+      "sha256": "c057bda11098b57c74d423605772592d061f2ab9978baba1abb91e8506575396",
+      "width": 768,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one translucent bubble-like fantasy helmet sphere large enough to fit over a head, round clear slightly tacky soaplike membrane, softly visible pale blue-gray interior refraction and bright delicate curved rim highlights, thin transparent film with convincing volume, small unobtrusive entry aperture along its lower edge, clearly EMPTY without any person, face, head, mannequin or mechanical metal helmet, no glass pedestal or bubbles around it; enough visible membrane and reflections to read against a dark game-card background. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "charlatan-s-die",
+      "path": "/shop/magic-completion-20261009/charlatan-s-die.webp",
+      "native": ".local/shop-completion/native/charlatan-s-die.png",
+      "native_sha256": "013270e9b5ab1f9af55a709e32bdf140924437118dc5ab7d82cb03739da4e8b7",
+      "sha256": "a946805ae903790b7c5c58375d891c84558856af4a5c3df0b4e9ac88029a79a9",
+      "width": 768,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one six-sided cubic gaming die in warm polished aged ivory bone with dark inset ROUND PIPS, normal readable standard die faces showing distinct pip arrangements, tiny antique brass corner caps and a hairline concealed purple shimmer in its seams, three faces visible in elegant three-quarter view, finely crafted believable dice shape, no Arabic digits, d20 shape, dice pile, hand, table or shadow. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "cleansing-stone",
+      "path": "/shop/magic-completion-20261009/cleansing-stone.webp",
+      "native": ".local/shop-completion/native/cleansing-stone.png",
+      "native_sha256": "19b27501e750de4b31de9a8b7aeb9704dd95be8dcb9ea51843dffd03d0821d23",
+      "sha256": "1f0a1fa1f0d4513f80f0caf115ddc9ec44e03fda065410c4158152ddac50f8f4",
+      "width": 768,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one substantial spherical cleansing stone, a complete polished pale warm alabaster stone orb, twelve-inch-diameter object suggested by broad mineral veining and fine physically engraved mystical sigil grooves, ivory cream marble with a few subtle sage mineral lines and small delicate gold-filled invented geometric cleansing marks, tactile heavy stone surface, no pedestal, base, platform, chain, eye iris, people, other objects or floating magical aura. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "coin-of-delving",
+      "path": "/shop/magic-completion-20261009/coin-of-delving.webp",
+      "native": ".local/shop-completion/native/coin-of-delving.png",
+      "native_sha256": "818e27aa32a2613aed91fdc4a35083d19ed7481b002ce8611df3cfd16c4799da",
+      "sha256": "058e0d8cf150f5169379f6c0e86d5a779ea738e2f7d65b951eaeaad0bfddb94b",
+      "width": 768,
+      "height": 711,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one single scintillating COPPER coin with visible thin milled edge in three-quarter view, aged warm copper and bright polished embossed highlights, original stylized concentric depth-ring emblem with a tiny downward arrow and subtle rippling sound-wave motif, engraved rim details without letters or numerals, softly bright metal glint for its dim-light property, no other coins, jewelry, eye, text, hand, platform or large halo. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "dark-shard-amulet",
+      "path": "/shop/magic-completion-20261009/dark-shard-amulet.webp",
+      "native": ".local/shop-completion/native/dark-shard-amulet.png",
+      "native_sha256": "966510562d0299c345c903254f019ce1eb01d23bc94ec83b2e89e100e2440df5",
+      "sha256": "52368a58c5095148e5c36dc0b92d5c77b210db57e0a42a3aa7986b71b3363ed2",
+      "width": 640,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one original dark-shard warlock amulet necklace, a single jagged resilient obsidian-like otherworldly shard, deep smoky black-violet crystalline mineral with a few faint internal purple veins, irregular sharp fractured silhouette, wrapped by delicate tarnished silver talon setting and a complete carefully coiled short silver chain, restrained eerie elegance without an eye motif or large magic effects, no red ruby, clock, wearer, face, text or other jewelry. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "ersatz-eye",
+      "path": "/shop/magic-completion-20261009/ersatz-eye.webp",
+      "native": ".local/shop-completion/native/ersatz-eye.png",
+      "native_sha256": "1f5de1dca54ed32bd2d1dd11c87c704468828eb722e32cd9eac066be004d6779",
+      "sha256": "3a5c1c7a68262e351e417ded031205655428b94618ebc76f614754fdc05b985b",
+      "width": 768,
+      "height": 725,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one tiny complete magical artificial eye prosthesis, a smooth intact pearly ivory enamel sphere with a beautifully detailed amber-hazel iris and clear round black pupil, subtle gold and dark brown radial iris fibers beneath a polished glass surface, small restrained silver fantasy craftsmanship around the iris edge, realistic tiny glass orb rather than a human organ, no blood, tissue, eyelids, face, head, surrounding socket, body, floating effects or extra eyeballs. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "hat-of-vermin",
+      "path": "/shop/magic-completion-20261009/hat-of-vermin.webp",
+      "native": ".local/shop-completion/native/hat-of-vermin.png",
+      "native_sha256": "83a96b4e4db82b19ef787fc7cd3f62513db838b413a5161a2553b08f40e7c8b9",
+      "sha256": "e81e11b84efc3d83bc82e5ec7cc0b1ba0104acfbd921eacce1e985ce5fe83630",
+      "width": 768,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one battered dark brown felt traveling hat with low rounded soft crown and broad slightly floppy brim, plum woven hatband and a small antique brass clasp, subtle whimsical little BAT, FROG and RAT silhouettes embroidered into the hatband as decorative symbols only, tactile worn felt and fine neat stitching, three-quarter product view showing the empty interior beneath the brim, not a tall pointy wizard hat; no actual animals, wearer, head, face, creatures, table or other objects. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "heward-s-handy-spice-pouch",
+      "path": "/shop/magic-completion-20261009/heward-s-handy-spice-pouch.webp",
+      "native": ".local/shop-completion/native/heward-s-handy-spice-pouch.png",
+      "native_sha256": "9058fda1abac2639b2a4e4f10c897346974cd3f9511d17c5aaa411ccbe11018d",
+      "sha256": "20e3da20a17bf002bbe71b25f0980dfbac9351cd4ef935462a5807f3f064f7b1",
+      "width": 733,
+      "height": 768,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one small handcrafted russet-caramel leather belt spice pouch, oval rounded body with clearly visible narrow rear belt loop, open drawn mouth revealing an EMPTY dark interior, warm amber drawstring tassels and tiny brass eyelets, finely embroidered gold culinary leaf sprig and simple herb-stem motifs across the leather front, distinct practical premium fantasy leatherwork, no spices outside, jars, bottles, food, tools, coins, person or other bags. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
+    },
+    {
+      "id": "horn-of-silent-alarm",
+      "path": "/shop/magic-completion-20261009/horn-of-silent-alarm.webp",
+      "native": ".local/shop-completion/native/horn-of-silent-alarm.png",
+      "native_sha256": "3c856e67bb4647e2fd0aa6a31cf375a42847957fabd5a937117630aeb80e3ef4",
+      "sha256": "705f03f4171dfe7d25c0b3506392e7e31008ec7685132ec508ab990c4808cb8b",
+      "width": 768,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. ORIGINAL premium fantasy RPG shop-item illustration. one elegant curved fantasy signal horn, natural polished warm ivory horn tapering from a small brass mouthpiece to a dark hollow broad bell opening, three engraved antique brass reinforcing bands, a restrained original fine listening-ear emblem on the widest band and a short dark green leather carrying loop, convincing tactile horn grain and warm metal highlights, entire curved horn and carrying loop visible; no person, creature, face, sound-wave graphics, text, instruments pile or other items. Only one complete isolated item, intact and clearly identifiable in a small shop card. Refined painterly fantasy realism, convincing material texture, subtle craftsmanship and soft neutral studio illumination with readable highlights. TRUE transparent background, genuine alpha; no colored or opaque backdrop, room, floor, cast shadow, dark vignette or checkerboard pixels. The complete object and any chain or carrying loop stay inside the canvas with comfortable padding. No human, mannequin, readable letters or text, number labels except ordinary die pips if relevant, watermark, signature or logos. This is a newly made distinct original item asset, with its own silhouette and material identity.",
+      "review": "approved",
+      "review_notes": "Ten independently generated complete objects reviewed in native preview and 190-pixel shop-background compositions. Meaningful genuine alpha, no opaque outer background, intact chains/loops, distinct materials/silhouettes and unique image hashes. The breathing bubble is visibly translucent in the actual composition."
     }
   ]
 }

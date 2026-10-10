@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **820 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **830 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -443,3 +443,13 @@ CA +1 e passagem sem custo adicional somente pelos terrenos difíceis listados n
 Oito novas falas e sons individuais; oito conjuntos e 40 componentes internos adicionais, totalizando 459 conjuntos. Todos os 812 produtos e 451 conjuntos anteriores mantêm seus campos. API completa dos 820 itens e das oito descrições, compra/replay/ledger/saldo, peso/equipamento dos seis componentes, três testes de armaduras/placas/referências, loja em 1.500/760/390 px, TypeScript e builds aprovados.
 
 Publicado em `magic-completion-v15-20261010`, saudável. Após aplicação, hashes de 60 tabelas e de todos os produtos anteriores iguais; somente 48 novas linhas de produtos. As 1.688 mídias e 43 bundles ao vivo correspondem aos arquivos aprovados. Ilustrador e efeitos preservados. Total: 820 itens novos aplicados; 2.256 candidatos e opções específicas de magia/alvo ainda pendentes.
+
+## Lote 16 — dez utensílios comuns (10/10/2026)
+
+Artes raster originais independentes, alfa nativo e silhuetas próprias para cada objeto. A bolha mantém translucidez visível no fundo noturno. Prompts, caminhos nativos, hashes e revisão em art-jobs-common-utility3-items.json e art-manifest.json; falas brasileiras próprias e dez sons distintos.
+
+XDMG: Bead of Refreshment (p. 235), Charlatan’s Die (243), Dark Shard Amulet (248), Ersatz Eye (259), Hat of Vermin (267), Heward’s Handy Spice Pouch (269) e Horn of Silent Alarm (270). EGW: Breathing Bubble e Coin of Delving (266). ERLW: Cleansing Stone (276). Fontes mecânicas consultadas no conjunto primário do 5etools; descrições próprias em português.
+
+A conta é uso único, preço de consumível e consumo idempotente; não purifica líquidos mágicos ou venenos. Bolha com uma hora de ar, recuperação ao amanhecer. Dado controla apenas seu próprio d6 e requer sintonia. Pedra de 30,5 cm exige toque e ação, peso de 85 lb explicitamente estimado. Moeda informa a queda somente ao cair mais de 1,5 m. Amuleto requer bruxo e o teste de truque só volta após descanso longo, mesmo em falha. Olho usa regra 2024 sem sintonia e ocupa a órbita, sem atribuição artificial ao espaço de capacete. Chapéu, bolsa e chifre mantêm cargas e exigência de segurar/acionar. Chifre físico de 2 lb e 3 PO preserva peso oficial e preço físico; alcance do alarme de 180 m e apenas um ouvinte escolhido.
+
+TypeScript e builds limpos. API em banco UUID descartável validou todos os 830 itens, preços administrativos, carrinhos, ouro, auditoria, repetição de compra, consumo da conta e encaixes dos novos objetos. Interface real dos dez itens e loja inteira em 1500/760/390 px, sem erros. Após publicação, 60 tabelas e todos os produtos anteriores integralmente idênticos, somente dez linhas novas; 1.708 arquivos de mídia e 43 bundles correspondem aos revisados. Docker saudável, VFX e ilustrador preservados. Completar todos continua em andamento: 2.246 candidatos, além de opções específicas ainda por expandir.

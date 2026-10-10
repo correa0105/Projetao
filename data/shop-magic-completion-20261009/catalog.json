@@ -4,7 +4,7 @@
   "source": "https://5e.tools/items.html",
   "asOf": "2026-10-09",
   "planned": 3076,
-  "pending": 2256,
+  "pending": 2246,
   "items": [
     {
       "id": "all-purpose-tool-plus-1",
@@ -1375,6 +1375,44 @@
       }
     },
     {
+      "id": "bead-of-refreshment",
+      "name": "Conta de refresco",
+      "original_name": "Bead of Refreshment",
+      "category": "Mágicos comuns",
+      "description": "Transforma até uma pinta de líquido apropriado em água fresca e fria.",
+      "merchant_comment": "Esta conta vira água fresca ao dissolver no líquido. Guarde o limite de uma pinta; ela não purifica veneno.",
+      "price_cp": 5000,
+      "weight_lb": 0.01,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#bead%20of%20refreshment_xdmg",
+      "image_path": "/shop/magic-completion-20261009/bead-of-refreshment.webp",
+      "audio_path": "/audio/emporium/bead-of-refreshment.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Bead of Refreshment",
+        "upstream_source": "XDMG",
+        "upstream_page": 235,
+        "upstream_facts": {
+          "name": "Bead of Refreshment",
+          "source": "XDMG",
+          "page": 235,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Conta gelatinosa e sem sabor, de uso único. Ao dissolver em líquido, transforma até uma pinta (aproximadamente 473 ml) em água potável fresca e fria. Não afeta líquidos mágicos nem substâncias nocivas, como veneno. Não exige sintonização.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
       "id": "boots-of-false-tracks",
       "name": "Botas de rastros falsos",
       "original_name": "Boots of False Tracks",
@@ -1416,6 +1454,46 @@
       }
     },
     {
+      "id": "breathing-bubble",
+      "name": "Bolha respiratória",
+      "original_name": "Breathing Bubble",
+      "category": "Mágicos comuns",
+      "description": "Uma esfera vestida sobre a cabeça contém uma hora de ar respirável, recuperada ao amanhecer.",
+      "merchant_comment": "A bolha cobre a cabeça e guarda uma hora de ar. Toda a reserva volta ao amanhecer, mas o tempo disponível tem limite.",
+      "price_cp": 10000,
+      "weight_lb": 0.1,
+      "weight_estimated": true,
+      "source": "D&D · Explorer's Guide to Wildemount",
+      "source_url": "https://5e.tools/items.html#breathing%20bubble_egw",
+      "image_path": "/shop/magic-completion-20261009/breathing-bubble.webp",
+      "audio_path": "/audio/emporium/breathing-bubble.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Breathing Bubble",
+        "upstream_source": "EGW",
+        "upstream_page": 266,
+        "upstream_facts": {
+          "name": "Breathing Bubble",
+          "source": "EGW",
+          "page": 266,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Explorer's Guide to Wildemount",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Esfera translúcida com superfície externa levemente aderente. Seus benefícios só funcionam enquanto é vestida sobre a cabeça como um capacete. Contém uma hora de ar respirável e recupera todo o ar gasto a cada amanhecer, até esse limite. Não exige sintonização. Não fornece respiração aquática permanente.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "head"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
       "id": "candle-of-the-deep",
       "name": "Vela das profundezas",
       "original_name": "Candle of the Deep",
@@ -1453,6 +1531,86 @@
         "consumable": true,
         "rarity": "Common",
         "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "charlatan-s-die",
+      "name": "Dado do charlatão",
+      "original_name": "Charlatan's Die",
+      "category": "Mágicos comuns",
+      "description": "Um dado de seis faces cujo resultado pode ser escolhido pelo usuário sintonizado.",
+      "merchant_comment": "O dado do charlatão deixa você escolher a face depois da sintonia. O encanto só vale para este dado de seis lados.",
+      "price_cp": 10000,
+      "weight_lb": 0.02,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#charlatan's%20die_xdmg",
+      "image_path": "/shop/magic-completion-20261009/charlatan-s-die.webp",
+      "audio_path": "/audio/emporium/charlatan-s-die.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Charlatan's Die",
+        "upstream_source": "XDMG",
+        "upstream_page": 243,
+        "upstream_facts": {
+          "name": "Charlatan's Die",
+          "source": "XDMG",
+          "page": 243,
+          "rarity": "common",
+          "wondrous": true,
+          "reqAttune": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Exige sintonização. Sempre que rolar este dado de seis faces, você pode controlar qual número ele mostra. O poder pertence a este dado: não altera rolagens de outros dados, não concede vantagem e não transforma o objeto em um dado de vinte faces.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": true
+      }
+    },
+    {
+      "id": "cleansing-stone",
+      "name": "Pedra de limpeza",
+      "original_name": "Cleansing Stone",
+      "category": "Mágicos comuns",
+      "description": "Uma esfera de pedra de um pé de diâmetro limpa roupas e corpo por toque e uma ação.",
+      "merchant_comment": "Esta pedra limpa roupa e corpo com um toque e uma ação. É uma esfera de um pé de diâmetro, grande para carregar na estrada.",
+      "price_cp": 10000,
+      "weight_lb": 85,
+      "weight_estimated": true,
+      "source": "D&D · Eberron: Rising from the Last War",
+      "source_url": "https://5e.tools/items.html#cleansing%20stone_erlw",
+      "image_path": "/shop/magic-completion-20261009/cleansing-stone.webp",
+      "audio_path": "/audio/emporium/cleansing-stone.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Cleansing Stone",
+        "upstream_source": "ERLW",
+        "upstream_page": 276,
+        "upstream_facts": {
+          "name": "Cleansing Stone",
+          "source": "ERLW",
+          "page": 276,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Eberron: Rising from the Last War",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Esfera de pedra de um pé de diâmetro (aproximadamente 30,5 cm), gravada com sinais místicos. Enquanto a toca, você pode usar uma ação para remover sujeira e resíduos das suas roupas e do seu corpo. Não exige sintonização. O peso de 85 lb é uma estimativa para uma esfera de pedra desse tamanho; a fonte não informa peso. O efeito não cura doenças, não repara roupas e não remove maldições.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
         "attunement": false
       }
     },
@@ -1619,6 +1777,100 @@
       }
     },
     {
+      "id": "coin-of-delving",
+      "name": "Moeda de sondagem",
+      "original_name": "Coin of Delving",
+      "category": "Mágicos comuns",
+      "description": "Emite luz fraca e um toque cuja nota revela a distância de uma queda maior que cinco pés.",
+      "merchant_comment": "A moeda de sondagem toca ao cair mais de cinco pés. Quem ouvir a nota pode descobrir a distância que ela caiu.",
+      "price_cp": 10000,
+      "weight_lb": 0.02,
+      "weight_estimated": true,
+      "source": "D&D · Explorer's Guide to Wildemount",
+      "source_url": "https://5e.tools/items.html#coin%20of%20delving_egw",
+      "image_path": "/shop/magic-completion-20261009/coin-of-delving.webp",
+      "audio_path": "/audio/emporium/coin-of-delving.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Coin of Delving",
+        "upstream_source": "EGW",
+        "upstream_page": 266,
+        "upstream_facts": {
+          "name": "Coin of Delving",
+          "source": "EGW",
+          "page": 266,
+          "rarity": "common",
+          "wondrous": true,
+          "light": [
+            {
+              "dim": 5
+            }
+          ]
+        },
+        "source_book": "Explorer's Guide to Wildemount",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Moeda de cobre cintilante que emite luz fraca em um raio de cinco pés. Se for solta e cair uma distância maior que cinco pés, emite um toque melodioso ao atingir uma superfície. Qualquer criatura que ouça esse toque pode determinar a distância da queda pela nota produzida. Não exige sintonização.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "dark-shard-amulet",
+      "name": "Amuleto do fragmento sombrio",
+      "original_name": "Dark Shard Amulet",
+      "category": "Mágicos comuns",
+      "description": "Foco de bruxo que permite tentar um truque desconhecido com um teste de Arcanismo.",
+      "merchant_comment": "O fragmento sombrio serve de foco para um bruxo sintonizado. A tentativa de truque desconhecido só volta depois de um descanso longo.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#dark%20shard%20amulet_xdmg",
+      "image_path": "/shop/magic-completion-20261009/dark-shard-amulet.webp",
+      "audio_path": "/audio/emporium/dark-shard-amulet.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Dark Shard Amulet",
+        "upstream_source": "XDMG",
+        "upstream_page": 248,
+        "upstream_facts": {
+          "name": "Dark Shard Amulet",
+          "source": "XDMG",
+          "page": 248,
+          "rarity": "common",
+          "type": "SCF|XPHB",
+          "wondrous": true,
+          "reqAttune": "by a warlock",
+          "reqAttuneTags": [
+            {
+              "class": "warlock"
+            }
+          ],
+          "weight": 1
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Exige sintonização por um bruxo. Enquanto é usado, funciona como foco de conjuração para suas magias de bruxo. Uma ação de Magia permite tentar conjurar um truque desconhecido da lista de bruxo cujo tempo de conjuração seja uma ação. Faça Inteligência (Arcanismo) CD 10: no sucesso, conjura o truque; na falha, a magia falha e a ação é gasta. Em ambos os casos, esse poder fica indisponível até terminar um descanso longo. Não concede bônus em ataques de magia ou na CD de resistência.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "neck"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": "by a warlock"
+      }
+    },
+    {
       "id": "dread-helm",
       "name": "Elmo do pavor",
       "original_name": "Dread Helm",
@@ -1741,6 +1993,87 @@
       }
     },
     {
+      "id": "ersatz-eye",
+      "name": "Olho substituto",
+      "original_name": "Ersatz Eye",
+      "category": "Mágicos comuns",
+      "description": "Substitui um olho perdido e oferece visão como a de um olho natural.",
+      "merchant_comment": "O olho substituto devolve a visão natural quando está na órbita. Uma ação de Magia permite inserir ou tirar a prótese.",
+      "price_cp": 10000,
+      "weight_lb": 0.01,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#ersatz%20eye_xdmg",
+      "image_path": "/shop/magic-completion-20261009/ersatz-eye.webp",
+      "audio_path": "/audio/emporium/ersatz-eye.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Ersatz Eye",
+        "upstream_source": "XDMG",
+        "upstream_page": 259,
+        "upstream_facts": {
+          "name": "Ersatz Eye",
+          "source": "XDMG",
+          "page": 259,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Olho mágico que substitui um olho perdido ou removido. Enquanto está inserido na órbita ocular, você enxerga pela pequena esfera como se fosse seu olho natural. Uma ação de Magia permite inserir ou remover o olho; enquanto você está vivo, ele não pode ser removido contra sua vontade. Não exige sintonização nem concede visão no escuro ou outros sentidos adicionais. É uma prótese ocular, sem peça de capacete separada.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
+      "id": "hat-of-vermin",
+      "name": "Chapéu dos bichos",
+      "original_name": "Hat of Vermin",
+      "category": "Mágicos comuns",
+      "description": "Usa três cargas para invocar um morcego, sapo ou rato comum, sem controle sobre ele.",
+      "merchant_comment": "O chapéu dos bichos invoca um morcego, sapo ou rato por uma carga. Eles tentam fugir; o encanto não os põe sob seu comando.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#hat%20of%20vermin_xdmg",
+      "image_path": "/shop/magic-completion-20261009/hat-of-vermin.webp",
+      "audio_path": "/audio/emporium/hat-of-vermin.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Hat of Vermin",
+        "upstream_source": "XDMG",
+        "upstream_page": 267,
+        "upstream_facts": {
+          "name": "Hat of Vermin",
+          "source": "XDMG",
+          "page": 267,
+          "rarity": "common",
+          "wondrous": true,
+          "charges": 3,
+          "recharge": "dawn",
+          "rechargeAmount": 3
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Possui três cargas. Enquanto segura o chapéu, uma ação de Magia e uma carga invocam um morcego, sapo ou rato, à sua escolha, dentro do chapéu. A criatura tenta fugir o mais rápido possível, é indiferente a você e às demais criaturas, não está sob seu controle e se comporta como um animal comum. Desaparece após uma hora ou ao cair a 0 PV. O chapéu recupera todas as cargas gastas a cada amanhecer. Não exige sintonização e não entrega um animal permanente.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "head"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "cloth",
+        "attunement": false
+      }
+    },
+    {
       "id": "hat-of-wizardry",
       "name": "Chapéu da magia",
       "original_name": "Hat of Wizardry",
@@ -1785,6 +2118,95 @@
         "rarity": "Common",
         "sound_material": "cloth",
         "attunement": "by a wizard"
+      }
+    },
+    {
+      "id": "heward-s-handy-spice-pouch",
+      "name": "Bolsa prática de temperos de Heward",
+      "original_name": "Heward's Handy Spice Pouch",
+      "category": "Mágicos comuns",
+      "description": "Uma bolsa aparentemente vazia fornece pequenas porções de temperos usando cargas.",
+      "merchant_comment": "A bolsa de Heward fornece uma pitada do tempero que você nomear. Dez cargas, uma refeição por pitada e recuperação ao amanhecer.",
+      "price_cp": 10000,
+      "weight_lb": 0.5,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#heward's%20handy%20spice%20pouch_xdmg",
+      "image_path": "/shop/magic-completion-20261009/heward-s-handy-spice-pouch.webp",
+      "audio_path": "/audio/emporium/heward-s-handy-spice-pouch.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Heward's Handy Spice Pouch",
+        "upstream_source": "XDMG",
+        "upstream_page": 269,
+        "upstream_facts": {
+          "name": "Heward's Handy Spice Pouch",
+          "source": "XDMG",
+          "page": 269,
+          "rarity": "common",
+          "wondrous": true,
+          "charges": 10,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d6 + 4}"
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Bolsa de cinto que parece vazia e possui dez cargas. Enquanto a segura, uma ação de Magia e uma carga permitem nomear um tempero de comida não mágico e retirar uma pitada dele. A pitada basta para temperar uma refeição. Recupera 1d6 + 4 cargas gastas a cada amanhecer, até o limite de dez. Não exige sintonização.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "belt"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "leather",
+        "attunement": false
+      }
+    },
+    {
+      "id": "horn-of-silent-alarm",
+      "name": "Chifre de alarme silencioso",
+      "original_name": "Horn of Silent Alarm",
+      "category": "Mágicos comuns",
+      "description": "Envia um toque de alarme que apenas uma criatura escolhida a até seiscentos pés ouve.",
+      "merchant_comment": "O chifre de alarme silencioso chama uma criatura a até seiscentos pés. Só ela ouve o toque; cada chamado usa uma das quatro cargas.",
+      "price_cp": 10300,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#horn%20of%20silent%20alarm_xdmg",
+      "image_path": "/shop/magic-completion-20261009/horn-of-silent-alarm.webp",
+      "audio_path": "/audio/emporium/horn-of-silent-alarm.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Horn of Silent Alarm",
+        "upstream_source": "XDMG",
+        "upstream_page": 270,
+        "upstream_facts": {
+          "name": "Horn of Silent Alarm",
+          "source": "XDMG",
+          "page": 270,
+          "rarity": "common",
+          "type": "INS|XPHB",
+          "wondrous": true,
+          "baseItem": "horn|xphb",
+          "charges": 4,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}"
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Funciona como um chifre musical. Possui quatro cargas e recupera 1d4 cargas gastas a cada amanhecer, até o limite de quatro. Uma ação de Magia permite soprá-lo e gastar uma carga: uma criatura à sua escolha ouve o toque, desde que esteja a até 600 pés do chifre. Nenhuma outra criatura ouve esse toque. Não exige sintonização. O peso de 2 lb e o valor-base de 3 PO correspondem ao modelo de chifre do Player’s Handbook de 2024.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
       }
     },
     {

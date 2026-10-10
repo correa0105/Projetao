@@ -13605,5 +13605,143 @@
     "magic_kind": "armor",
     "source_edition": "D&D 5e (2024)",
     "review": "approved"
+  },
+  "bead-of-refreshment": {
+    "name": "Conta de refresco",
+    "description": "Transforma até uma pinta de líquido apropriado em água fresca e fria.",
+    "merchant_comment": "Esta conta vira água fresca ao dissolver no líquido. Guarde o limite de uma pinta; ela não purifica veneno.",
+    "rules_summary": "Conta gelatinosa e sem sabor, de uso único. Ao dissolver em líquido, transforma até uma pinta (aproximadamente 473 ml) em água potável fresca e fria. Não afeta líquidos mágicos nem substâncias nocivas, como veneno. Não exige sintonização.",
+    "slots": [],
+    "target": "human",
+    "material": "glass",
+    "source_edition": "D&D 5e (2024)",
+    "estimated_weight_lb": 0.01,
+    "review": "approved",
+    "consumable": true
+  },
+  "breathing-bubble": {
+    "name": "Bolha respiratória",
+    "description": "Uma esfera vestida sobre a cabeça contém uma hora de ar respirável, recuperada ao amanhecer.",
+    "merchant_comment": "A bolha cobre a cabeça e guarda uma hora de ar. Toda a reserva volta ao amanhecer, mas o tempo disponível tem limite.",
+    "rules_summary": "Esfera translúcida com superfície externa levemente aderente. Seus benefícios só funcionam enquanto é vestida sobre a cabeça como um capacete. Contém uma hora de ar respirável e recupera todo o ar gasto a cada amanhecer, até esse limite. Não exige sintonização. Não fornece respiração aquática permanente.",
+    "slots": [
+      "head"
+    ],
+    "target": "human",
+    "material": "glass",
+    "source_edition": "D&D 5e (2014)",
+    "estimated_weight_lb": 0.1,
+    "review": "approved"
+  },
+  "charlatan-s-die": {
+    "name": "Dado do charlatão",
+    "description": "Um dado de seis faces cujo resultado pode ser escolhido pelo usuário sintonizado.",
+    "merchant_comment": "O dado do charlatão deixa você escolher a face depois da sintonia. O encanto só vale para este dado de seis lados.",
+    "rules_summary": "Exige sintonização. Sempre que rolar este dado de seis faces, você pode controlar qual número ele mostra. O poder pertence a este dado: não altera rolagens de outros dados, não concede vantagem e não transforma o objeto em um dado de vinte faces.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "wood",
+    "source_edition": "D&D 5e (2024)",
+    "estimated_weight_lb": 0.02,
+    "review": "approved"
+  },
+  "cleansing-stone": {
+    "name": "Pedra de limpeza",
+    "description": "Uma esfera de pedra de um pé de diâmetro limpa roupas e corpo por toque e uma ação.",
+    "merchant_comment": "Esta pedra limpa roupa e corpo com um toque e uma ação. É uma esfera de um pé de diâmetro, grande para carregar na estrada.",
+    "rules_summary": "Esfera de pedra de um pé de diâmetro (aproximadamente 30,5 cm), gravada com sinais místicos. Enquanto a toca, você pode usar uma ação para remover sujeira e resíduos das suas roupas e do seu corpo. Não exige sintonização. O peso de 85 lb é uma estimativa para uma esfera de pedra desse tamanho; a fonte não informa peso. O efeito não cura doenças, não repara roupas e não remove maldições.",
+    "slots": [],
+    "target": "human",
+    "material": "glass",
+    "source_edition": "D&D 5e (2014)",
+    "estimated_weight_lb": 85,
+    "review": "approved"
+  },
+  "coin-of-delving": {
+    "name": "Moeda de sondagem",
+    "description": "Emite luz fraca e um toque cuja nota revela a distância de uma queda maior que cinco pés.",
+    "merchant_comment": "A moeda de sondagem toca ao cair mais de cinco pés. Quem ouvir a nota pode descobrir a distância que ela caiu.",
+    "rules_summary": "Moeda de cobre cintilante que emite luz fraca em um raio de cinco pés. Se for solta e cair uma distância maior que cinco pés, emite um toque melodioso ao atingir uma superfície. Qualquer criatura que ouça esse toque pode determinar a distância da queda pela nota produzida. Não exige sintonização.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "metal",
+    "source_edition": "D&D 5e (2014)",
+    "estimated_weight_lb": 0.02,
+    "review": "approved"
+  },
+  "dark-shard-amulet": {
+    "name": "Amuleto do fragmento sombrio",
+    "description": "Foco de bruxo que permite tentar um truque desconhecido com um teste de Arcanismo.",
+    "merchant_comment": "O fragmento sombrio serve de foco para um bruxo sintonizado. A tentativa de truque desconhecido só volta depois de um descanso longo.",
+    "rules_summary": "Exige sintonização por um bruxo. Enquanto é usado, funciona como foco de conjuração para suas magias de bruxo. Uma ação de Magia permite tentar conjurar um truque desconhecido da lista de bruxo cujo tempo de conjuração seja uma ação. Faça Inteligência (Arcanismo) CD 10: no sucesso, conjura o truque; na falha, a magia falha e a ação é gasta. Em ambos os casos, esse poder fica indisponível até terminar um descanso longo. Não concede bônus em ataques de magia ou na CD de resistência.",
+    "slots": [
+      "neck"
+    ],
+    "target": "human",
+    "material": "metal",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "ersatz-eye": {
+    "name": "Olho substituto",
+    "description": "Substitui um olho perdido e oferece visão como a de um olho natural.",
+    "merchant_comment": "O olho substituto devolve a visão natural quando está na órbita. Uma ação de Magia permite inserir ou tirar a prótese.",
+    "rules_summary": "Olho mágico que substitui um olho perdido ou removido. Enquanto está inserido na órbita ocular, você enxerga pela pequena esfera como se fosse seu olho natural. Uma ação de Magia permite inserir ou remover o olho; enquanto você está vivo, ele não pode ser removido contra sua vontade. Não exige sintonização nem concede visão no escuro ou outros sentidos adicionais. É uma prótese ocular, sem peça de capacete separada.",
+    "slots": [],
+    "target": "human",
+    "material": "glass",
+    "source_edition": "D&D 5e (2024)",
+    "estimated_weight_lb": 0.01,
+    "review": "approved"
+  },
+  "hat-of-vermin": {
+    "name": "Chapéu dos bichos",
+    "description": "Usa três cargas para invocar um morcego, sapo ou rato comum, sem controle sobre ele.",
+    "merchant_comment": "O chapéu dos bichos invoca um morcego, sapo ou rato por uma carga. Eles tentam fugir; o encanto não os põe sob seu comando.",
+    "rules_summary": "Possui três cargas. Enquanto segura o chapéu, uma ação de Magia e uma carga invocam um morcego, sapo ou rato, à sua escolha, dentro do chapéu. A criatura tenta fugir o mais rápido possível, é indiferente a você e às demais criaturas, não está sob seu controle e se comporta como um animal comum. Desaparece após uma hora ou ao cair a 0 PV. O chapéu recupera todas as cargas gastas a cada amanhecer. Não exige sintonização e não entrega um animal permanente.",
+    "slots": [
+      "head"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "source_edition": "D&D 5e (2024)",
+    "estimated_weight_lb": 1,
+    "review": "approved"
+  },
+  "heward-s-handy-spice-pouch": {
+    "name": "Bolsa prática de temperos de Heward",
+    "description": "Uma bolsa aparentemente vazia fornece pequenas porções de temperos usando cargas.",
+    "merchant_comment": "A bolsa de Heward fornece uma pitada do tempero que você nomear. Dez cargas, uma refeição por pitada e recuperação ao amanhecer.",
+    "rules_summary": "Bolsa de cinto que parece vazia e possui dez cargas. Enquanto a segura, uma ação de Magia e uma carga permitem nomear um tempero de comida não mágico e retirar uma pitada dele. A pitada basta para temperar uma refeição. Recupera 1d6 + 4 cargas gastas a cada amanhecer, até o limite de dez. Não exige sintonização.",
+    "slots": [
+      "belt"
+    ],
+    "target": "human",
+    "material": "leather",
+    "source_edition": "D&D 5e (2024)",
+    "estimated_weight_lb": 0.5,
+    "review": "approved"
+  },
+  "horn-of-silent-alarm": {
+    "name": "Chifre de alarme silencioso",
+    "description": "Envia um toque de alarme que apenas uma criatura escolhida a até seiscentos pés ouve.",
+    "merchant_comment": "O chifre de alarme silencioso chama uma criatura a até seiscentos pés. Só ela ouve o toque; cada chamado usa uma das quatro cargas.",
+    "rules_summary": "Funciona como um chifre musical. Possui quatro cargas e recupera 1d4 cargas gastas a cada amanhecer, até o limite de quatro. Uma ação de Magia permite soprá-lo e gastar uma carga: uma criatura à sua escolha ouve o toque, desde que esteja a até 600 pés do chifre. Nenhuma outra criatura ouve esse toque. Não exige sintonização. O peso de 2 lb e o valor-base de 3 PO correspondem ao modelo de chifre do Player’s Handbook de 2024.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "target": "human",
+    "material": "metal",
+    "source_edition": "D&D 5e (2024)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 300,
+    "review": "approved"
   }
 }

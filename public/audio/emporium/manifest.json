@@ -17206,5 +17206,85 @@
     "sha256": "5a88296f135aaa6e8cf031116d11e3a2f6501ed1cfaa9739212f3ebebe8d2b39",
     "source": "public/audio/shop-counter-leather.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "bead-of-refreshment",
+    "path": "public/audio/emporium/bead-of-refreshment.wav",
+    "kind": "glass",
+    "sha256": "526a6414a178f2573a4ce0bedf94ab08df5edd784f0ec2457895efb4a1c65f29",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "breathing-bubble",
+    "path": "public/audio/emporium/breathing-bubble.wav",
+    "kind": "glass",
+    "sha256": "ba447b354618008d504c1ece549d7065d26b64e607fdb251da00cf45ca776a21",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "charlatan-s-die",
+    "path": "public/audio/emporium/charlatan-s-die.wav",
+    "kind": "wood",
+    "sha256": "4076cbd84c10802e2044e76f8cc366ed84f4ca40e80b12fc718358b2e68f1861",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cleansing-stone",
+    "path": "public/audio/emporium/cleansing-stone.wav",
+    "kind": "glass",
+    "sha256": "7f4e2eceaaadc3ebf340bd9243cd1bd7d0055948e6e1527b6e2255c60918f535",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "coin-of-delving",
+    "path": "public/audio/emporium/coin-of-delving.wav",
+    "kind": "metal",
+    "sha256": "374ef99ed055f42ff181106f0ec288d3c03cbb933d06d703331f0c1b3547471a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dark-shard-amulet",
+    "path": "public/audio/emporium/dark-shard-amulet.wav",
+    "kind": "metal",
+    "sha256": "b0885bc1123c5d24f46db49f52791134d29d4958fa8909dc28e9f369714a299d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ersatz-eye",
+    "path": "public/audio/emporium/ersatz-eye.wav",
+    "kind": "glass",
+    "sha256": "18707b7817591e1649f87ddf1d027c557bf3237f12cc9a9ab1ee263f992bd673",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hat-of-vermin",
+    "path": "public/audio/emporium/hat-of-vermin.wav",
+    "kind": "cloth",
+    "sha256": "b6a0708e8259543619d171231299eee6d62988634ddb7bf07538a7b1b0913cf5",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "heward-s-handy-spice-pouch",
+    "path": "public/audio/emporium/heward-s-handy-spice-pouch.wav",
+    "kind": "leather",
+    "sha256": "800f3549079414dbdf9354dbf04bf1d4a20533c5b541f3603ee2a582a47e7c4b",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "horn-of-silent-alarm",
+    "path": "public/audio/emporium/horn-of-silent-alarm.wav",
+    "kind": "metal",
+    "sha256": "1b8184c9db4ef568f4faffde9e09f54bfea6a1e09fd27e86ef2a8ed8468edb68",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]
