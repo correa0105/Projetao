@@ -9,13 +9,13 @@ const manifest=JSON.parse(await fs.readFile(dir+'/art-manifest.json'));
 const candidates=new Map(JSON.parse(await fs.readFile(dir+'/candidates.json')).items.map(x=>[x.id,x]));
 const oldIds=new Set([...JSON.parse(await fs.readFile('data/shop-export/loja.json')).items,...JSON.parse(await fs.readFile('data/emporium-expansion.json')).items].map(x=>x.id));
 const cache=new Map();
-async function image(url,size){
+async function image(url,size,requireAlpha=false){
  assert(/^\/shop\/[a-zA-Z0-9/_-]+\.(png|webp)$/.test(url),'Unsafe reference: '+url);
  const key=url+size;
  if(!cache.has(key)){
   const bytes=await sharp('public'+url).resize({width:size,height:size,fit:'inside',withoutEnlargement:true}).png({compressionLevel:9}).toBuffer();
   const {width,height,hasAlpha}=await sharp(bytes).metadata();
-  if(!url.startsWith('/shop/magic-materials/'))assert(hasAlpha,'Physical reference needs alpha');
+  if(requireAlpha)assert(hasAlpha,'Physical reference needs alpha');
   cache.set(key,{href:'data:image/png;base64,'+bytes.toString('base64'),width,height});
  }
  return cache.get(key);
@@ -24,7 +24,7 @@ for(const r of recipes){
  assert(candidates.has(r.id)&&!oldIds.has(r.id),'Only new concrete candidates may receive skins');
  const existing=manifest.assets.find(x=>x.id===r.id);
  if(existing?.review==='approved')continue;
- const base=await image(r.reference,512),tex=await image(r.texture,256);
+ const base=await image(r.reference,512,true),tex=await image(r.texture,256);
  const color=r.color,bonus=r.enhancement||0,w=base.width+32,h=base.height+32;
  const seed=parseInt(createHash('sha256').update(r.family).digest('hex').slice(0,5),16)%47+1;
  const definition=`<image id="model" href="${base.href}" x="16" y="16" width="${base.width}" height="${base.height}"/>`;

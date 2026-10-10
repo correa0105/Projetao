@@ -56,16 +56,17 @@ try {
   const search = page.getByRole('textbox', { name: 'Procurar item' });
   for (const x of items) {
     await search.fill(x.name);
-    const card = page.locator(x.magic_family?`.shop-product[data-family="${x.magic_family}"]`:`.shop-product[data-item-id="${x.id}"]`);
+    const grouped = x.magic_family && ['weapon', 'armor'].includes(x.magic_kind);
+    const card = page.locator(grouped?`.shop-product[data-family="${x.magic_family}"]`:`.shop-product[data-item-id="${x.id}"]`);
     await expect(card).toBeVisible();
-    if(x.magic_family){
+    if(grouped){
       await card.locator('select').first().selectOption(x.base_item);
       if(await card.locator('select').count()>1)await card.locator('select').nth(1).selectOption(x.id);
       await expect(card).toHaveAttribute('data-item-id',x.id);
       await expect(card.locator('.shop-product-art')).toBeEnabled();
       await expect(card.locator('.shop-family-box')).toHaveCount(1);
     }
-    const img = card.locator(x.magic_family?'.shop-family-object':'.shop-product-art img');
+    const img = card.locator(grouped?'.shop-family-object':'.shop-product-art img');
     await img.evaluate((i) => i.decode());
     assert.equal(await img.getAttribute('src'), x.image_path);
     assert(await img.evaluate((i) => i.naturalWidth > 0));
@@ -92,12 +93,12 @@ try {
     assert((await page.evaluate(() => document.documentElement.scrollWidth)) <= width + 1);
   }
   assert.deepEqual(errors, []);
-  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance']){
+  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance','antimatter-rifle-plus-3','wooden-staff-of-warning']){
     const x=items.find(x=>x.id===id);if(!x)continue;
     await search.fill(x.name);
     const card=page.locator(`.shop-product[data-family="${x.magic_family}"]`);
     await card.locator('select').first().selectOption(x.base_item);
-    await card.locator('select').nth(1).selectOption(x.id);
+    if(await card.locator('select').count()>1)await card.locator('select').nth(1).selectOption(x.id);
     for(const width of [1500,390]){
       await page.setViewportSize({width,height:1100});
       await card.locator('.shop-family-object').evaluate(x=>x.decode());

@@ -82,12 +82,17 @@ for (const c of candidates) {
         )
       : undefined;
   const gp = prices[f.rarity];
+  if (e.base_price_cp != null)
+    assert(Number.isSafeInteger(e.base_price_cp) && e.base_price_cp >= 0, 'Reviewed base price required');
+  if (e.pack_quantity != null)
+    assert(Number.isInteger(e.pack_quantity) && e.pack_quantity > 0, 'Valid sold quantity required');
   const price_cp =
     gp == null
       ? null
       : Math.round(
-          gp * 100 * (consumable && type !== 'SC' ? 0.5 : 1) +
-            (c.base?.value ?? basic?.price_cp ?? 0),
+          gp * 100 * (consumable && type !== 'SC' ? 0.5 : 1) *
+            (e.ammunition ? (e.pack_quantity || 1) / 10 : 1) +
+            (e.base_price_cp ?? c.base?.value ?? basic?.price_cp ?? 0),
         );
   const weight = f.weight ?? e.estimated_weight_lb ?? null;
   assert(Number.isFinite(weight) && weight >= 0, c.id + ' needs reviewed weight estimate');
@@ -124,11 +129,13 @@ for (const c of candidates) {
         ? { enhancement: Number(f.bonusWeapon || f.bonusAc || f.bonusWeaponAttack) }
         : {}),
       ...(e.damage_type ? { damage_type: e.damage_type } : {}),
-      magic_kind: c.base.weapon
+      magic_kind: e.magic_kind || (c.base.weapon
         ? 'weapon'
         : c.base.armor || ['LA', 'MA', 'HA', 'S'].includes((c.base.type || '').split('|')[0])
           ? 'armor'
-          : undefined,
+          : undefined),
+      ...(e.ammunition ? {ammunition_type:e.base_id,pack_quantity:e.pack_quantity || 1} : {}),
+      ...(e.base_price_cp != null ? {base_price_cp:e.base_price_cp} : {}),
     });
   items.push({
     id: c.id,

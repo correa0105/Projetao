@@ -1324,5 +1324,1724 @@
     "base_id": "yklwa",
     "model_name": "Yklwa",
     "review": "approved"
+  },
+  "energy-cell-plus-1": {
+    "name": "Munição mágica (Célula de energia +1)",
+    "description": "Forma: Célula de energia. Uma unidade de munição mágica. Concede +1 a ataques e danos com esta munição.",
+    "merchant_comment": "O primeiro selo está nesta célula individual. Confira a arma compatível antes de contar com sua energia.",
+    "rules_summary": "Uma célula de energia, vendida por unidade, para uma arma futurística compatível. O limite de disparos depende do modelo da arma. Concede +1 a ataques e danos com esta munição. O encantamento termina depois que ela acerta um alvo. A oferta corresponde a uma peça; seu preço mágico é um décimo do pacote de dez usado na loja.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ammunition, +1, +2, or +3",
+    "base_id": "energy-cell",
+    "model_name": "Célula de energia",
+    "consumable": true,
+    "ammunition": true,
+    "pack_quantity": 1,
+    "base_price_cp": 0,
+    "review": "approved"
+  },
+  "modern-bullet-plus-1": {
+    "name": "Munição mágica (Cartucho moderno +1)",
+    "description": "Forma: Cartucho moderno. Uma unidade de munição mágica. Concede +1 a ataques e danos com esta munição.",
+    "merchant_comment": "Essa bala moderna tem o primeiro selo mágico. A oferta é de uma unidade, então conte quantas vai levar.",
+    "rules_summary": "Uma bala moderna, vendida por unidade, para uma arma de projéteis compatível. Concede +1 a ataques e danos com esta munição. O encantamento termina depois que ela acerta um alvo. A oferta corresponde a uma peça; seu preço mágico é um décimo do pacote de dez usado na loja.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ammunition, +1, +2, or +3",
+    "base_id": "modern-bullet",
+    "model_name": "Cartucho moderno",
+    "consumable": true,
+    "ammunition": true,
+    "pack_quantity": 1,
+    "base_price_cp": 0,
+    "review": "approved"
+  },
+  "antimatter-rifle-plus-1": {
+    "name": "Arma mágica (Rifle de antimatéria +1)",
+    "description": "Forma: Rifle de antimatéria. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "O primeiro selo reforça esse rifle de antimatéria. Confira a célula e conte os dois disparos antes da recarga.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "semiautomatic-pistol-plus-1": {
+    "name": "Arma mágica (Pistola semiautomática +1)",
+    "description": "Forma: Pistola semiautomática. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Essa pistola semiautomática tem o primeiro selo no metal. As quinze cargas da recarga devem estar anotadas.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "automatic-rifle-plus-1": {
+    "name": "Arma mágica (Rifle automático +1)",
+    "description": "Forma: Rifle automático. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Um selo neste rifle automático. Antes de escolher a rajada, conte as dez munições que ela usa.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "hunting-rifle-plus-1": {
+    "name": "Arma mágica (Rifle de caça +1)",
+    "description": "Forma: Rifle de caça. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "O rifle de caça de primeiro selo tem um cano longo e acabamento firme. Conte cinco tiros entre recargas.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "laser-pistol-plus-1": {
+    "name": "Arma mágica (Pistola laser +1)",
+    "description": "Forma: Pistola laser. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "O primeiro selo desta pistola laser fica perto do alojamento da célula. Munição de projétil não serve nela.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "laser-rifle-plus-1": {
+    "name": "Arma mágica (Rifle laser +1)",
+    "description": "Forma: Rifle laser. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "O rifle laser de primeiro selo recebe uma célula de energia. Anote o limite de trinta disparos da recarga.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "light-repeating-crossbow-plus-1": {
+    "name": "Arma mágica (Besta leve de repetição +1)",
+    "description": "Forma: Besta leve de repetição. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "O primeiro selo acompanha cada virote desta besta. Confira o cartucho de seis antes de sair.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "revolver-plus-1": {
+    "name": "Arma mágica (Revólver +1)",
+    "description": "Forma: Revólver. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Uma marca mágica neste revólver de seis disparos. Confira o tambor antes de colocá-lo no estojo.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "shotgun-plus-1": {
+    "name": "Arma mágica (Espingarda +1)",
+    "description": "Forma: Espingarda. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "A espingarda de primeiro selo ocupa as duas mãos. Conte os dois tiros antes de recarregar.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "energy-cell-plus-2": {
+    "name": "Munição mágica (Célula de energia +2)",
+    "description": "Forma: Célula de energia. Uma unidade de munição mágica. Concede +2 a ataques e danos com esta munição.",
+    "merchant_comment": "Essa célula individual leva dois selos. A magia acaba no primeiro acerto; tenha a próxima peça preparada.",
+    "rules_summary": "Uma célula de energia, vendida por unidade, para uma arma futurística compatível. O limite de disparos depende do modelo da arma. Concede +2 a ataques e danos com esta munição. O encantamento termina depois que ela acerta um alvo. A oferta corresponde a uma peça; seu preço mágico é um décimo do pacote de dez usado na loja.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ammunition, +1, +2, or +3",
+    "base_id": "energy-cell",
+    "model_name": "Célula de energia",
+    "consumable": true,
+    "ammunition": true,
+    "pack_quantity": 1,
+    "base_price_cp": 0,
+    "review": "approved"
+  },
+  "modern-bullet-plus-2": {
+    "name": "Munição mágica (Cartucho moderno +2)",
+    "description": "Forma: Cartucho moderno. Uma unidade de munição mágica. Concede +2 a ataques e danos com esta munição.",
+    "merchant_comment": "Dois selos nessa bala individual. Separe do restante para encontrar a munição encantada quando precisar.",
+    "rules_summary": "Uma bala moderna, vendida por unidade, para uma arma de projéteis compatível. Concede +2 a ataques e danos com esta munição. O encantamento termina depois que ela acerta um alvo. A oferta corresponde a uma peça; seu preço mágico é um décimo do pacote de dez usado na loja.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ammunition, +1, +2, or +3",
+    "base_id": "modern-bullet",
+    "model_name": "Cartucho moderno",
+    "consumable": true,
+    "ammunition": true,
+    "pack_quantity": 1,
+    "base_price_cp": 0,
+    "review": "approved"
+  },
+  "antimatter-rifle-plus-2": {
+    "name": "Arma mágica (Rifle de antimatéria +2)",
+    "description": "Forma: Rifle de antimatéria. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Esse rifle de antimatéria leva dois selos. A reserva continua curta; registre a recarga antes de um terceiro disparo.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "semiautomatic-pistol-plus-2": {
+    "name": "Arma mágica (Pistola semiautomática +2)",
+    "description": "Forma: Pistola semiautomática. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "O segundo selo dessa pistola foi gravado longe da empunhadura. O encaixe das mãos continua livre.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "automatic-rifle-plus-2": {
+    "name": "Arma mágica (Rifle automático +2)",
+    "description": "Forma: Rifle automático. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Esse rifle automático tem duas marcas mágicas. Guarde munição para a rajada e para os disparos seguintes.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "hunting-rifle-plus-2": {
+    "name": "Arma mágica (Rifle de caça +2)",
+    "description": "Forma: Rifle de caça. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Dois selos nesse rifle de caça. A coronha assenta bem, e o mecanismo continua precisando de cuidado.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "laser-pistol-plus-2": {
+    "name": "Arma mágica (Pistola laser +2)",
+    "description": "Forma: Pistola laser. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "A pistola laser de segundo selo mantém a lente protegida. Confira a célula antes de contar os disparos.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "laser-rifle-plus-2": {
+    "name": "Arma mágica (Rifle laser +2)",
+    "description": "Forma: Rifle laser. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Dois selos neste rifle laser. Apoie com as duas mãos e deixe a lente protegida durante o transporte.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "light-repeating-crossbow-plus-2": {
+    "name": "Arma mágica (Besta leve de repetição +2)",
+    "description": "Forma: Besta leve de repetição. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Dois selos nessa besta de repetição. Separe um cartucho carregado e aproveite a pausa para conferir a corda.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "revolver-plus-2": {
+    "name": "Arma mágica (Revólver +2)",
+    "description": "Forma: Revólver. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "O segundo selo do revólver está bem acabado. Ao esvaziar o tambor, reserve tempo para a recarga.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "shotgun-plus-2": {
+    "name": "Arma mágica (Espingarda +2)",
+    "description": "Forma: Espingarda. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Dois selos nesta espingarda. Ela trabalha a curta distância; confira o alcance na explicação da peça.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +2 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "energy-cell-plus-3": {
+    "name": "Munição mágica (Célula de energia +3)",
+    "description": "Forma: Célula de energia. Uma unidade de munição mágica. Concede +3 a ataques e danos com esta munição.",
+    "merchant_comment": "A terceira marca torna esta célula uma munição rara. Guarde numa bolsa própria e confira o encaixe da arma.",
+    "rules_summary": "Uma célula de energia, vendida por unidade, para uma arma futurística compatível. O limite de disparos depende do modelo da arma. Concede +3 a ataques e danos com esta munição. O encantamento termina depois que ela acerta um alvo. A oferta corresponde a uma peça; seu preço mágico é um décimo do pacote de dez usado na loja.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ammunition, +1, +2, or +3",
+    "base_id": "energy-cell",
+    "model_name": "Célula de energia",
+    "consumable": true,
+    "ammunition": true,
+    "pack_quantity": 1,
+    "base_price_cp": 0,
+    "review": "approved"
+  },
+  "modern-bullet-plus-3": {
+    "name": "Munição mágica (Cartucho moderno +3)",
+    "description": "Forma: Cartucho moderno. Uma unidade de munição mágica. Concede +3 a ataques e danos com esta munição.",
+    "merchant_comment": "Uma bala moderna de terceiro selo merece lugar próprio no estojo. O encantamento não fica nela depois do acerto.",
+    "rules_summary": "Uma bala moderna, vendida por unidade, para uma arma de projéteis compatível. Concede +3 a ataques e danos com esta munição. O encantamento termina depois que ela acerta um alvo. A oferta corresponde a uma peça; seu preço mágico é um décimo do pacote de dez usado na loja.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ammunition, +1, +2, or +3",
+    "base_id": "modern-bullet",
+    "model_name": "Cartucho moderno",
+    "consumable": true,
+    "ammunition": true,
+    "pack_quantity": 1,
+    "base_price_cp": 0,
+    "review": "approved"
+  },
+  "antimatter-rifle-plus-3": {
+    "name": "Arma mágica (Rifle de antimatéria +3)",
+    "description": "Forma: Rifle de antimatéria. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Três selos num rifle de antimatéria pedem um lugar próprio no cofre. Leve a célula correta junto dele.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "semiautomatic-pistol-plus-3": {
+    "name": "Arma mágica (Pistola semiautomática +3)",
+    "description": "Forma: Pistola semiautomática. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Uma semiautomática de terceiro selo é peça rara. Confira a munição compatível antes da entrega.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "automatic-rifle-plus-3": {
+    "name": "Arma mágica (Rifle automático +3)",
+    "description": "Forma: Rifle automático. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Terceiro selo no rifle automático. O encanto é forte, mas não enche o carregador quando ele termina.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "hunting-rifle-plus-3": {
+    "name": "Arma mágica (Rifle de caça +3)",
+    "description": "Forma: Rifle de caça. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "A terceira marca valoriza bastante esse rifle. Use uma capa comprida para proteger o cano na viagem.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "laser-pistol-plus-3": {
+    "name": "Arma mágica (Pistola laser +3)",
+    "description": "Forma: Pistola laser. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Três marcas numa pistola de energia tão compacta. Guarde a peça e a célula em compartimentos próprios.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "laser-rifle-plus-3": {
+    "name": "Arma mágica (Rifle laser +3)",
+    "description": "Forma: Rifle laser. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Essa é a versão de terceiro selo do rifle laser. O encanto acompanha o disparo, sem aumentar a recarga.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "light-repeating-crossbow-plus-3": {
+    "name": "Arma mágica (Besta leve de repetição +3)",
+    "description": "Forma: Besta leve de repetição. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "A terceira marca é rara numa besta como esta. O encanto fortalece o tiro; encher o cartucho ainda toma seu tempo.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "revolver-plus-3": {
+    "name": "Arma mágica (Revólver +3)",
+    "description": "Forma: Revólver. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Três selos e um tambor de seis. Recomendo um estojo firme para não bater essa peça no restante da bagagem.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "shotgun-plus-3": {
+    "name": "Arma mágica (Espingarda +3)",
+    "description": "Forma: Espingarda. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "merchant_comment": "Terceiro selo numa espingarda de coronha firme. Ainda é preciso preparar a próxima recarga depois de dois tiros.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +3 às jogadas de ataque e dano feitas com a arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon, +1, +2, or +3",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "dragon-slayer-antimatter-rifle": {
+    "name": "Matadora de dragões (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Concede +1 a ataques e danos.",
+    "merchant_comment": "Esse rifle matador de dragões causa dano necrótico básico. Confira o tipo antes de acrescentar o efeito do encanto.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "dragon-slayer-automatic-rifle": {
+    "name": "Matadora de dragões (Rifle automático)",
+    "description": "Forma: Rifle automático. Concede +1 a ataques e danos.",
+    "merchant_comment": "O rifle automático matador de dragões conserva a opção de rajada. As regras do encanto e da área precisam ser lidas com atenção.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "dragon-slayer-hunting-rifle": {
+    "name": "Matadora de dragões (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Concede +1 a ataques e danos.",
+    "merchant_comment": "O cano longo deste rifle leva um encanto contra dragões. Depois de cinco disparos, é hora de recarregar.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "dragon-slayer-laser-pistol": {
+    "name": "Matadora de dragões (Pistola laser)",
+    "description": "Forma: Pistola laser. Concede +1 a ataques e danos.",
+    "merchant_comment": "O encanto contra dragões desta pistola acompanha dano radiante. A lente e a célula fazem parte do modelo.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "dragon-slayer-laser-rifle": {
+    "name": "Matadora de dragões (Rifle laser)",
+    "description": "Forma: Rifle laser. Concede +1 a ataques e danos.",
+    "merchant_comment": "Este rifle laser matador de dragões usa uma célula própria. A munição comum do outro rifle não encaixa nele.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "dragon-slayer-light-repeating-crossbow": {
+    "name": "Matadora de dragões (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Concede +1 a ataques e danos.",
+    "merchant_comment": "A besta matadora de dragões aceita seis virotes no cartucho. Tenha outro carregamento pronto antes de um encontro longo.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "dragon-slayer-revolver": {
+    "name": "Matadora de dragões (Revólver)",
+    "description": "Forma: Revólver. Concede +1 a ataques e danos.",
+    "merchant_comment": "Esse revólver matador de dragões tem seis disparos por recarga. Conte as munições antes de guardar o estojo.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "dragon-slayer-semiautomatic-pistol": {
+    "name": "Matadora de dragões (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Concede +1 a ataques e danos.",
+    "merchant_comment": "A semiautomática matadora de dragões mantém quinze disparos por recarga. A munição deve ser a compatível com a arma.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "dragon-slayer-shotgun": {
+    "name": "Matadora de dragões (Espingarda)",
+    "description": "Forma: Espingarda. Concede +1 a ataques e danos.",
+    "merchant_comment": "A espingarda matadora de dragões trabalha a curta distância. Confira a posição antes de escolher essa forma.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Dragon Slayer",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "dragon-slayer-staff": {
+    "name": "Matadora de dragões (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Concede +1 a ataques e danos.",
+    "merchant_comment": "Este cajado arcano matador de dragões continua sendo foco e arma. Escolha o uso da peça antes do ataque.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco arcano e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Dragon Slayer",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "dragon-slayer-wooden-staff": {
+    "name": "Matadora de dragões (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Concede +1 a ataques e danos.",
+    "merchant_comment": "O cajado druídico matador de dragões mantém sua forma de madeira. O encanto contra dragões acompanha os golpes da arma.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco druídico e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Concede +1 a ataques e danos. Contra uma criatura do tipo Dragão, acrescenta 3d6 do mesmo tipo de dano básico da arma.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Dragon Slayer",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "giant-slayer-antimatter-rifle": {
+    "name": "Matadora de gigantes (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Concede +1 a ataques e danos.",
+    "merchant_comment": "A versão contra gigantes conserva a recarga de dois disparos. Escolha bem o momento de usá-los.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "giant-slayer-automatic-rifle": {
+    "name": "Matadora de gigantes (Rifle automático)",
+    "description": "Forma: Rifle automático. Concede +1 a ataques e danos.",
+    "merchant_comment": "Esse rifle pode enfrentar gigantes. A rajada continua exigindo dez munições, então prepare a reserva.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "giant-slayer-hunting-rifle": {
+    "name": "Matadora de gigantes (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Concede +1 a ataques e danos.",
+    "merchant_comment": "Esse rifle de caça pode derrubar um gigante com o efeito mágico. Tenha espaço livre entre você e a queda.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "giant-slayer-laser-pistol": {
+    "name": "Matadora de gigantes (Pistola laser)",
+    "description": "Forma: Pistola laser. Concede +1 a ataques e danos.",
+    "merchant_comment": "Essa pistola laser é a versão contra gigantes. Registre a recarga antes de contar com uma longa sequência de tiros.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "giant-slayer-laser-rifle": {
+    "name": "Matadora de gigantes (Rifle laser)",
+    "description": "Forma: Rifle laser. Concede +1 a ataques e danos.",
+    "merchant_comment": "O rifle laser contra gigantes tem alcance longo. O alvo ainda faz a resistência de Força contra a queda.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "giant-slayer-light-repeating-crossbow": {
+    "name": "Matadora de gigantes (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Concede +1 a ataques e danos.",
+    "merchant_comment": "Uma besta para fazer gigantes perderem o apoio. Observe onde seus companheiros estão antes do tiro.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "giant-slayer-revolver": {
+    "name": "Matadora de gigantes (Revólver)",
+    "description": "Forma: Revólver. Concede +1 a ataques e danos.",
+    "merchant_comment": "O revólver contra gigantes é pequeno perto de seus alvos. O encanto funciona no acerto, conforme as regras.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "giant-slayer-semiautomatic-pistol": {
+    "name": "Matadora de gigantes (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Concede +1 a ataques e danos.",
+    "merchant_comment": "Essa pistola recebe o encanto contra gigantes. O tamanho da empunhadura não diminui a força do efeito mágico.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "giant-slayer-shotgun": {
+    "name": "Matadora de gigantes (Espingarda)",
+    "description": "Forma: Espingarda. Concede +1 a ataques e danos.",
+    "merchant_comment": "A espingarda contra gigantes conserva dois tiros por recarga. Guarde tempo para preparar os próximos.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Giant Slayer",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "giant-slayer-staff": {
+    "name": "Matadora de gigantes (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Concede +1 a ataques e danos.",
+    "merchant_comment": "O cajado arcano contra gigantes conserva o golpe versátil. Seu encanto entra quando um golpe acerta o alvo certo.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco arcano e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Giant Slayer",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "giant-slayer-wooden-staff": {
+    "name": "Matadora de gigantes (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Concede +1 a ataques e danos.",
+    "merchant_comment": "Esse cajado druídico pode derrubar gigantes com o poder mágico. Confira a resistência do alvo depois do acerto.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco druídico e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Concede +1 a ataques e danos. Ao atingir uma criatura do tipo Gigante, acrescenta 2d6 do dano básico da arma. O gigante faz resistência de Força CD 15 ou fica caído.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Giant Slayer",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "holy-avenger-antimatter-rifle": {
+    "name": "Vingadora sagrada (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Exige sintonia por um paladino.",
+    "merchant_comment": "O rifle vingador é uma forma incomum, mas a sintonia ainda exige paladino. Leia também a emanação de proteção.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "holy-avenger-automatic-rifle": {
+    "name": "Vingadora sagrada (Rifle automático)",
+    "description": "Forma: Rifle automático. Exige sintonia por um paladino.",
+    "merchant_comment": "A vingadora nesta forma é para um paladino sintonizado. A proteção mágica não substitui a recarga do rifle.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "holy-avenger-hunting-rifle": {
+    "name": "Vingadora sagrada (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Exige sintonia por um paladino.",
+    "merchant_comment": "A vingadora em forma de rifle de caça exige paladino. Seus aliados precisam ficar no alcance da emanação.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "holy-avenger-laser-pistol": {
+    "name": "Vingadora sagrada (Pistola laser)",
+    "description": "Forma: Pistola laser. Exige sintonia por um paladino.",
+    "merchant_comment": "A pistola laser vingadora exige sintonia por paladino. Seu brilho não basta para ativar essa proteção.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "holy-avenger-laser-rifle": {
+    "name": "Vingadora sagrada (Rifle laser)",
+    "description": "Forma: Rifle laser. Exige sintonia por um paladino.",
+    "merchant_comment": "O rifle laser vingador espera um paladino sintonizado. Confira a proteção aos aliados além do disparo.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "holy-avenger-light-repeating-crossbow": {
+    "name": "Vingadora sagrada (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Exige sintonia por um paladino.",
+    "merchant_comment": "A besta vingadora exige um paladino sintonizado. A proteção acompanha quem a segura pronta.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "holy-avenger-revolver": {
+    "name": "Vingadora sagrada (Revólver)",
+    "description": "Forma: Revólver. Exige sintonia por um paladino.",
+    "merchant_comment": "O revólver vingador exige paladino para a sintonia. Não escolha essa peça só pela gravação dourada.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "holy-avenger-semiautomatic-pistol": {
+    "name": "Vingadora sagrada (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Exige sintonia por um paladino.",
+    "merchant_comment": "A vingadora semiautomática espera um paladino. Confira a sintonia antes de contar com o dano radiante.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "holy-avenger-shotgun": {
+    "name": "Vingadora sagrada (Espingarda)",
+    "description": "Forma: Espingarda. Exige sintonia por um paladino.",
+    "merchant_comment": "Essa espingarda vingadora exige paladino sintonizado. A emanação protege aliados próximos de quem a segura.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Holy Avenger",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "holy-avenger-staff": {
+    "name": "Vingadora sagrada (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Exige sintonia por um paladino.",
+    "merchant_comment": "O cajado arcano vingador exige um paladino para sintonia. A forma de foco não dispensa essa condição.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco arcano e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Holy Avenger",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "holy-avenger-wooden-staff": {
+    "name": "Vingadora sagrada (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Exige sintonia por um paladino.",
+    "merchant_comment": "O cajado druídico vingador ainda exige sintonia de paladino. Seu uso como foco não altera essa regra.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco druídico e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Exige sintonia por um paladino. Concede +3 a ataques e danos; acertos contra Ínferos e Mortos-vivos acrescentam 2d10 radiante. Segurada e desembainhada, cria uma emanação de 10 pés que concede a você e às criaturas amigáveis nela vantagem em resistências contra magias e outros efeitos mágicos. Com 17 ou mais níveis de paladino, a emanação aumenta para 30 pés.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Holy Avenger",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "nine-lives-stealer-antimatter-rifle": {
+    "name": "Ladrão de nove vidas (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Exige sintonia.",
+    "merchant_comment": "O ladrão de vidas em forma de rifle usa uma reserva própria de cargas mágicas. Não confunda com a energia da célula.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-automatic-rifle": {
+    "name": "Ladrão de nove vidas (Rifle automático)",
+    "description": "Forma: Rifle automático. Exige sintonia.",
+    "merchant_comment": "As cargas de roubo de vida deste rifle são limitadas. Uma rajada por resistência não é um ataque com 20 natural.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-hunting-rifle": {
+    "name": "Ladrão de nove vidas (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Exige sintonia.",
+    "merchant_comment": "O rifle ladrão de vidas exige um 20 natural para seu poder. Confira também os PV do alvo e as cargas.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-laser-pistol": {
+    "name": "Ladrão de nove vidas (Pistola laser)",
+    "description": "Forma: Pistola laser. Exige sintonia.",
+    "merchant_comment": "As cargas mágicas da pistola ladra de vidas são uma reserva separada. A célula de energia não as recupera.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-laser-rifle": {
+    "name": "Ladrão de nove vidas (Rifle laser)",
+    "description": "Forma: Rifle laser. Exige sintonia.",
+    "merchant_comment": "O rifle laser ladrão de vidas tem cargas limitadas do encanto. Elas não se renovam junto da recarga de energia.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-light-repeating-crossbow": {
+    "name": "Ladrão de nove vidas (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Exige sintonia.",
+    "merchant_comment": "Essa besta pode roubar vidas num disparo preciso. Confira as cargas do encanto além dos virotes.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "nine-lives-stealer-revolver": {
+    "name": "Ladrão de nove vidas (Revólver)",
+    "description": "Forma: Revólver. Exige sintonia.",
+    "merchant_comment": "As cargas do revólver ladrão de vidas são mágicas. Trocar as munições do tambor não repõe nenhuma delas.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-semiautomatic-pistol": {
+    "name": "Ladrão de nove vidas (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Exige sintonia.",
+    "merchant_comment": "Essa semiautomática rouba vidas em condições bem específicas. Anote as cargas mágicas separadas da recarga comum.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-shotgun": {
+    "name": "Ladrão de nove vidas (Espingarda)",
+    "description": "Forma: Espingarda. Exige sintonia.",
+    "merchant_comment": "A espingarda ladra de vidas tem condições precisas para gastar uma carga. Leia todas antes do primeiro combate.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Nine Lives Stealer",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "nine-lives-stealer-staff": {
+    "name": "Ladrão de nove vidas (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Exige sintonia.",
+    "merchant_comment": "O cajado arcano ladrão de vidas tem uma reserva de cargas. Seu poder depende do ataque preciso descrito nos detalhes.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco arcano e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Nine Lives Stealer",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "nine-lives-stealer-wooden-staff": {
+    "name": "Ladrão de nove vidas (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Exige sintonia.",
+    "merchant_comment": "O cajado druídico ladrão de vidas guarda cargas limitadas. Peça ao mestre para definir a reserva inicial.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco druídico e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Exige sintonia. Concede +2 a ataques e danos e possui 1d8+1 cargas, definidas pelo mestre. Um 20 natural em ataque contra criatura com menos de 100 PV exige resistência de Constituição CD 15; falhar causa morte imediata. Constructos e Mortos-vivos passam automaticamente. A arma só perde uma carga se matar a criatura; ao esgotar as cargas, perde esse poder.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Nine Lives Stealer",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "vicious-antimatter-rifle": {
+    "name": "Arma cruel (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "O rifle de antimatéria cruel acrescenta dano necrótico nos acertos. A célula precisa ser a do modelo correto.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "vicious-semiautomatic-pistol": {
+    "name": "Arma cruel (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "A pistola cruel usa o encanto de 2024. Cada acerto recebe o dano adicional indicado nos detalhes.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "vicious-automatic-rifle": {
+    "name": "Arma cruel (Rifle automático)",
+    "description": "Forma: Rifle automático. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "No rifle cruel, leia o dano adicional junto da regra de rajada. A área usa uma única rolagem de dano.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "vicious-hunting-rifle": {
+    "name": "Arma cruel (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "O rifle de caça cruel recebe dano extra por acerto. A coronha de madeira ainda gosta de um transporte cuidadoso.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "vicious-laser-pistol": {
+    "name": "Arma cruel (Pistola laser)",
+    "description": "Forma: Pistola laser. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "Essa pistola cruel acrescenta dano radiante a cada acerto. Proteja a lente no estojo quando terminar.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "vicious-laser-rifle": {
+    "name": "Arma cruel (Rifle laser)",
+    "description": "Forma: Rifle laser. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "O encanto cruel desta arma acompanha o dano radiante do rifle. Cada acerto usa a regra indicada na fonte.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "vicious-light-repeating-crossbow": {
+    "name": "Arma cruel (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "A besta cruel acrescenta dano a cada acerto. O cartucho continua sendo a parte que você precisa abastecer.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "vicious-revolver": {
+    "name": "Arma cruel (Revólver)",
+    "description": "Forma: Revólver. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "O revólver cruel acrescenta dano a cada acerto. Isso não aumenta a capacidade do tambor.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "vicious-shotgun": {
+    "name": "Arma cruel (Espingarda)",
+    "description": "Forma: Espingarda. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "A espingarda cruel acrescenta dano aos acertos. A coronha e a recarga continuam sendo as deste modelo.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Vicious Weapon",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "vicious-staff": {
+    "name": "Arma cruel (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "O cajado arcano cruel recebe dano extra nos golpes. Isso não é um bônus adicional às suas magias.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco arcano e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Vicious Weapon",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "vicious-wooden-staff": {
+    "name": "Arma cruel (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma.",
+    "merchant_comment": "O encanto cruel reforça os golpes deste cajado de madeira. A propriedade não acrescenta dano às magias conjuradas com ele.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco druídico e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Acertos acrescentam 2d6 do mesmo tipo de dano básico da arma. É a regra de 2024, que não exige crítico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Vicious Weapon",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "antimatter-rifle-of-warning": {
+    "name": "Arma da vigilância (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Exige sintonia.",
+    "merchant_comment": "Este rifle da vigilância merece ficar junto de você. Trancado longe do alcance, seu aviso não ajuda.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 6d8 necrótico. Alcance 120/360 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "semiautomatic-pistol-of-warning": {
+    "name": "Arma da vigilância (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Exige sintonia.",
+    "merchant_comment": "A semiautomática da vigilância cabe num estojo acessível. Mantenha-a ao alcance depois de fazer a sintonia.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d6 perfurante. Alcance 50/150 pés. Após 15 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "automatic-rifle-of-warning": {
+    "name": "Arma da vigilância (Rifle automático)",
+    "description": "Forma: Rifle automático. Exige sintonia.",
+    "merchant_comment": "Deixe o rifle da vigilância pronto para a guarda. O aviso ajuda o grupo a começar o combate alerta.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 80/240 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Cada criatura ali faz resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "hunting-rifle-of-warning": {
+    "name": "Arma da vigilância (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Exige sintonia.",
+    "merchant_comment": "Esse rifle de caça da vigilância deve ficar ao alcance do sentinela. O estojo fechado no fundo da carroça é longe demais.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d10 perfurante. Alcance 80/240 pés. Após 5 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "laser-pistol-of-warning": {
+    "name": "Arma da vigilância (Pistola laser)",
+    "description": "Forma: Pistola laser. Exige sintonia.",
+    "merchant_comment": "A pistola laser da vigilância é compacta para a guarda. Faça a sintonia e mantenha a peça perto da mão.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 3d6 radiante. Alcance 40/120 pés. Após 50 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "laser-rifle-of-warning": {
+    "name": "Arma da vigilância (Rifle laser)",
+    "description": "Forma: Rifle laser. Exige sintonia.",
+    "merchant_comment": "Mantenha este rifle laser da vigilância ao alcance. Seu aviso desperta sono natural quando o combate começa.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 3d8 radiante. Alcance 100/300 pés. Após 30 disparos, recarrega com uma ação ou ação bônus. Usa célula de energia compatível. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "light-repeating-crossbow-of-warning": {
+    "name": "Arma da vigilância (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Exige sintonia.",
+    "merchant_comment": "A besta da vigilância deve ficar ao alcance durante a guarda. Ela não desperta quem está em sono mágico.",
+    "rules_summary": "Arma simples de duas mãos, dano básico 1d8 perfurante. Alcance 40/160 pés. Usa virotes compatível. O cartucho comporta seis virotes e alimenta automaticamente a arma até esvaziar; reabastecê-lo toma uma ação. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "revolver-of-warning": {
+    "name": "Arma da vigilância (Revólver)",
+    "description": "Forma: Revólver. Exige sintonia.",
+    "merchant_comment": "O revólver da vigilância fica bem num estojo à mão. O alcance do aviso deve incluir seus companheiros.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 2d8 perfurante. Alcance 40/120 pés. Após 6 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "shotgun-of-warning": {
+    "name": "Arma da vigilância (Espingarda)",
+    "description": "Forma: Espingarda. Exige sintonia.",
+    "merchant_comment": "Deixe a espingarda da vigilância ao alcance durante a noite. O encanto acorda sono natural, sem desfazer sono mágico.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d8 perfurante. Alcance 30/90 pés. Após 2 disparos, recarrega com uma ação ou ação bônus. Usa balas de arma de fogo compatível. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Warning",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "staff-of-warning": {
+    "name": "Arma da vigilância (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Exige sintonia.",
+    "merchant_comment": "O cajado arcano da vigilância deve ficar ao alcance. É uma boa peça para apoiar perto do leito durante a guarda.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco arcano e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Weapon of Warning",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "wooden-staff-of-warning": {
+    "name": "Arma da vigilância (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Exige sintonia.",
+    "merchant_comment": "Mantenha o cajado druídico da vigilância ao alcance do grupo. Faça a sintonia antes de confiar no aviso noturno.",
+    "rules_summary": "Arma simples de uma mão, dano básico 1d6 contundente. É foco druídico e pode usar dano 1d8 contundente ao ser manejado com as duas mãos. Exige sintonia. Enquanto estiver ao seu alcance, concede a você e aos aliados a até 30 pés vantagem na iniciativa. Ao começar um combate, desperta quem estiver dormindo naturalmente nesse alcance; não encerra sono mágico.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Weapon of Warning",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "review": "approved"
   }
 }

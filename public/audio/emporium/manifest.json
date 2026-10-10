@@ -11382,5 +11382,797 @@
     "sha256": "1087ba291c55d16e83b89f6e5f2111b7bd18655b8bf9c8badace783ebcc89c22",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "energy-cell-plus-1",
+    "path": "public/audio/emporium/energy-cell-plus-1.wav",
+    "kind": "metal",
+    "sha256": "394a4e4f384eabd0a067404d34e246ee558d5f9ec8a2de66b967f427400de813",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "modern-bullet-plus-1",
+    "path": "public/audio/emporium/modern-bullet-plus-1.wav",
+    "kind": "metal",
+    "sha256": "abfc0fecf3811fe8e8f80b6acd00b4bdd0a5c0ca98e31cad5a8359122d7e09f2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimatter-rifle-plus-1",
+    "path": "public/audio/emporium/antimatter-rifle-plus-1.wav",
+    "kind": "metal",
+    "sha256": "f3e03f10c3fa5c889f1033886be5fa8869b5dd50387dccd8d8989153bf4a7c6b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "semiautomatic-pistol-plus-1",
+    "path": "public/audio/emporium/semiautomatic-pistol-plus-1.wav",
+    "kind": "metal",
+    "sha256": "4c88f0e59f270ad0ffb8a62c3ee4a41b517406095c51190103f04d8fb5204480",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "automatic-rifle-plus-1",
+    "path": "public/audio/emporium/automatic-rifle-plus-1.wav",
+    "kind": "metal",
+    "sha256": "850422eaf6e4e82b8f2b0367a6bc5ed15c0ffa89d7de54f8aa4da81b25a59474",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hunting-rifle-plus-1",
+    "path": "public/audio/emporium/hunting-rifle-plus-1.wav",
+    "kind": "metal",
+    "sha256": "d05ce2c91ff539ac16f02bd3904ed634d44a98cda3f540950bc3fa9fb4ff4848",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-pistol-plus-1",
+    "path": "public/audio/emporium/laser-pistol-plus-1.wav",
+    "kind": "metal",
+    "sha256": "c73905ac4cb21a369dfe51f4527d8152b055023a904abfffd2075ad591ed237d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-rifle-plus-1",
+    "path": "public/audio/emporium/laser-rifle-plus-1.wav",
+    "kind": "metal",
+    "sha256": "d5e02f9b812e619cd740a5ff84494e91c1d149a8a0cc4af9143a849c6603f51d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "light-repeating-crossbow-plus-1",
+    "path": "public/audio/emporium/light-repeating-crossbow-plus-1.wav",
+    "kind": "metal",
+    "sha256": "b83a35c700ba35a70975f56247abfe89561c5609892c5a20e1fa1f58e635eb87",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "revolver-plus-1",
+    "path": "public/audio/emporium/revolver-plus-1.wav",
+    "kind": "metal",
+    "sha256": "cf25b23ffd6a83033a0bb7f338d615bda29dd2f9dbde01a7a84abe351a2d0061",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shotgun-plus-1",
+    "path": "public/audio/emporium/shotgun-plus-1.wav",
+    "kind": "metal",
+    "sha256": "593e04d736254beae64fcc37754d7bd81404f3dc7efbd8659f6b7fba6b7d53c6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "energy-cell-plus-2",
+    "path": "public/audio/emporium/energy-cell-plus-2.wav",
+    "kind": "metal",
+    "sha256": "57da29b88ecd0509016975df82191bc841520242c66f34b7fc7fb22861b205f7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "modern-bullet-plus-2",
+    "path": "public/audio/emporium/modern-bullet-plus-2.wav",
+    "kind": "metal",
+    "sha256": "7f7e70ee0c7a85bb00bc9106e5125087fec482fa408b40dc187742acadfe508a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimatter-rifle-plus-2",
+    "path": "public/audio/emporium/antimatter-rifle-plus-2.wav",
+    "kind": "metal",
+    "sha256": "45b461b150a216f48283cf04a3d23e4ece5382eb91ec8f53ac805fe875e35e29",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "semiautomatic-pistol-plus-2",
+    "path": "public/audio/emporium/semiautomatic-pistol-plus-2.wav",
+    "kind": "metal",
+    "sha256": "e3f942638bfc8c6a4886cfbfa5c2d77d056b0b5b4cd992516be3f85acdd142d2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "automatic-rifle-plus-2",
+    "path": "public/audio/emporium/automatic-rifle-plus-2.wav",
+    "kind": "metal",
+    "sha256": "571ec6c9d5daa747b71eb9ef630dba6a7951ec9a54592b0b1e853c7efa1de1e1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hunting-rifle-plus-2",
+    "path": "public/audio/emporium/hunting-rifle-plus-2.wav",
+    "kind": "metal",
+    "sha256": "0645633922ad024108bb9529288de897df1ccaed65207a5b3c19ad2fcb9e52d1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-pistol-plus-2",
+    "path": "public/audio/emporium/laser-pistol-plus-2.wav",
+    "kind": "metal",
+    "sha256": "2c9698af714433461dffdde956786beef0b37ccd848ce8c868a54078ed29c978",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-rifle-plus-2",
+    "path": "public/audio/emporium/laser-rifle-plus-2.wav",
+    "kind": "metal",
+    "sha256": "a44d40bd7806d196ac25532643609782a7e9782cc27d4c3e62cc5e2094d6bca7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "light-repeating-crossbow-plus-2",
+    "path": "public/audio/emporium/light-repeating-crossbow-plus-2.wav",
+    "kind": "metal",
+    "sha256": "255ea9132d7b54cfe52a9e8e18b838d84590a0fc54b4ab2afc39811319a02dcd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "revolver-plus-2",
+    "path": "public/audio/emporium/revolver-plus-2.wav",
+    "kind": "metal",
+    "sha256": "12ac723318a7311f8b06c087f352b21b10b3503c928daeb9c1b8fef89a684cdf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shotgun-plus-2",
+    "path": "public/audio/emporium/shotgun-plus-2.wav",
+    "kind": "metal",
+    "sha256": "a1c06dc979ed4b7b7089bd10b4f2eeb74794ba09a8d6cf3e30ab11dd85f7bf5d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "energy-cell-plus-3",
+    "path": "public/audio/emporium/energy-cell-plus-3.wav",
+    "kind": "metal",
+    "sha256": "c8bff6edf2fdc990d5da2dab6990c9f827f963171038bd679913457c73b9e2e0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "modern-bullet-plus-3",
+    "path": "public/audio/emporium/modern-bullet-plus-3.wav",
+    "kind": "metal",
+    "sha256": "585170db0252c3a25b6f58440fc8dac20f04037e001421657da5acd7a6b33662",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimatter-rifle-plus-3",
+    "path": "public/audio/emporium/antimatter-rifle-plus-3.wav",
+    "kind": "metal",
+    "sha256": "cc9b2c3f18b5a2802e7b31f27d4255c66baa567562a505fc46f9e24d4cc084b8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "semiautomatic-pistol-plus-3",
+    "path": "public/audio/emporium/semiautomatic-pistol-plus-3.wav",
+    "kind": "metal",
+    "sha256": "1f85e84ac91aec1f0d0013a4f39ac6000aec82b0400def82ba6dbe1109835910",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "automatic-rifle-plus-3",
+    "path": "public/audio/emporium/automatic-rifle-plus-3.wav",
+    "kind": "metal",
+    "sha256": "afe81b61a0b02c13b564b5f008e5f2ef49b38e59240e5e9a72822c524f61bb88",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hunting-rifle-plus-3",
+    "path": "public/audio/emporium/hunting-rifle-plus-3.wav",
+    "kind": "metal",
+    "sha256": "e33be3fafbeb5d44d52e0c2930e1fe3c43141d5f7df4c98395a51a6de0a7d8be",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-pistol-plus-3",
+    "path": "public/audio/emporium/laser-pistol-plus-3.wav",
+    "kind": "metal",
+    "sha256": "e08e80152c9b6a978cf0f388c4d58f6f10e615c831eb2691c1e534dc1f1287dc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-rifle-plus-3",
+    "path": "public/audio/emporium/laser-rifle-plus-3.wav",
+    "kind": "metal",
+    "sha256": "b6f1890236781ecb3f5917db86359e053e4e90830e1721ac5a30f4309d9f2e19",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "light-repeating-crossbow-plus-3",
+    "path": "public/audio/emporium/light-repeating-crossbow-plus-3.wav",
+    "kind": "metal",
+    "sha256": "89fc2fb21926be273213fda40b8f3c05c2a9a700c502b0dfaff243a6a8506354",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "revolver-plus-3",
+    "path": "public/audio/emporium/revolver-plus-3.wav",
+    "kind": "metal",
+    "sha256": "72396a968fa69f315fb3be1b40a394bb34d40584fb4d504b2d58f7b90bb65577",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shotgun-plus-3",
+    "path": "public/audio/emporium/shotgun-plus-3.wav",
+    "kind": "metal",
+    "sha256": "111bd80ff788b5d5e3f54904a68fe9cc708baa5dd92f7aa3c9bc2308c2edae80",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-antimatter-rifle",
+    "path": "public/audio/emporium/dragon-slayer-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "5cdf202663986c713bb88d253f3543bb99eaf1db27a6a8f83303de8afbb3585c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-automatic-rifle",
+    "path": "public/audio/emporium/dragon-slayer-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "77f92d4294c64ec3d5b0d719f203d534fdf686e0d1321494bb14224d06e783dd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-hunting-rifle",
+    "path": "public/audio/emporium/dragon-slayer-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "1d2bd0b5d93e4ef653f0699b39ea1c3f505a0831fa4ad9bcb3621f0bb2cc4cca",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-laser-pistol",
+    "path": "public/audio/emporium/dragon-slayer-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "baaab23f01915466cce97d2793e43f5f6d60203fd92555662694fb9a1be9dd10",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-laser-rifle",
+    "path": "public/audio/emporium/dragon-slayer-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "8d5b4e5b74ec8bddff36441e9f3e78de72b633fe3e97f71c11ced1a6a95b93fe",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-light-repeating-crossbow",
+    "path": "public/audio/emporium/dragon-slayer-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "c4dd206ffa92771e1a4fb95333454a65edca191f53de9d4f9444fde0df105cd7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-revolver",
+    "path": "public/audio/emporium/dragon-slayer-revolver.wav",
+    "kind": "metal",
+    "sha256": "f8ce0f419f282bcb50e0b51f51983a7b40f2e7092b301a3e3053ccf08eb396f7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-semiautomatic-pistol",
+    "path": "public/audio/emporium/dragon-slayer-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "003abc41b6189425f4c02119d9f84a71ce3c27a1fc6d7ac251402369151152ad",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-shotgun",
+    "path": "public/audio/emporium/dragon-slayer-shotgun.wav",
+    "kind": "metal",
+    "sha256": "6652999120659c325df99cfab062f9a089fd2d37e5d9b5040fedd78d18b15620",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-staff",
+    "path": "public/audio/emporium/dragon-slayer-staff.wav",
+    "kind": "wood",
+    "sha256": "09d3cab61e21519ce5f3108522a0dba39d085607d1e25b2d6f8bc6dcd940245f",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dragon-slayer-wooden-staff",
+    "path": "public/audio/emporium/dragon-slayer-wooden-staff.wav",
+    "kind": "wood",
+    "sha256": "b4127ed434df6e57a437b2d3cb77f10178a76a561fd6837c086c1b5c9db9ceb4",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-antimatter-rifle",
+    "path": "public/audio/emporium/giant-slayer-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "3610881b26622026a1a06cbf69e10b8833ca238c5c02749b703f2b31bb7b1647",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-automatic-rifle",
+    "path": "public/audio/emporium/giant-slayer-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "cdc31ae51e96889872ebaa6751f3c224b145fe9c740e713e98907efa459855a4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-hunting-rifle",
+    "path": "public/audio/emporium/giant-slayer-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "33dad091364e5f756eba4604ddbfb829308797e4c7fe0e9c7f0dd97b685e8754",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-laser-pistol",
+    "path": "public/audio/emporium/giant-slayer-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "a37c8119e312d81456f580bb02ead6418b8b5b63e7bb59707a063dac678c06b9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-laser-rifle",
+    "path": "public/audio/emporium/giant-slayer-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "4f184c76822ee7d0f3d8e1bd98914074621e6bc6b64dfc95c2a434c08e2d6e48",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-light-repeating-crossbow",
+    "path": "public/audio/emporium/giant-slayer-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "b4b34907ad367e2fecfdc2242b35839dd47d303d662f2c12085ba1ae7a936f28",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-revolver",
+    "path": "public/audio/emporium/giant-slayer-revolver.wav",
+    "kind": "metal",
+    "sha256": "df01a1293a572fd4293f944a17e2da61a4bb13fbdd53f3ffd00b5f5afab3b167",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-semiautomatic-pistol",
+    "path": "public/audio/emporium/giant-slayer-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "4ee5d8b2e90fd35d4456d109a3a300aeff55af8e4a05fc44304c7701b13b0c63",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-shotgun",
+    "path": "public/audio/emporium/giant-slayer-shotgun.wav",
+    "kind": "metal",
+    "sha256": "e6bf70a1560396fdd4b0f8ccd343e6d2f914199b9c80a864b98d166c0670440a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-staff",
+    "path": "public/audio/emporium/giant-slayer-staff.wav",
+    "kind": "wood",
+    "sha256": "d61ffd251d32dde97750ea5e55e2b814c10829d7af262f457b13df511684cfa0",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "giant-slayer-wooden-staff",
+    "path": "public/audio/emporium/giant-slayer-wooden-staff.wav",
+    "kind": "wood",
+    "sha256": "cdf7a534c502fb55376ff5fbb4912abf7e9ea1d89b7a505379b741ea0c83520c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-antimatter-rifle",
+    "path": "public/audio/emporium/holy-avenger-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "631482659be2df184d0b2185cb255041ff538029bdbe930f59c5b1378b277541",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-automatic-rifle",
+    "path": "public/audio/emporium/holy-avenger-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "26ccfdd74c924815a91137f64f528d99e9e2abb64356dc99aca3721b2c2d81b4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-hunting-rifle",
+    "path": "public/audio/emporium/holy-avenger-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "41c6f42efa7ca42f62d84f621a695b65b004f8ef4f814988beb2f88ae5644f96",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-laser-pistol",
+    "path": "public/audio/emporium/holy-avenger-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "d39608d3543d95621125c7cd7e89e40f3d6b82c1a4edfb07822d47fe42ad7ff1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-laser-rifle",
+    "path": "public/audio/emporium/holy-avenger-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "3ada07a4976eb6f36388fa4b43b9e0acb7f7f264dd69e92cab3bbbb57064166d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-light-repeating-crossbow",
+    "path": "public/audio/emporium/holy-avenger-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "dace0fab46c65edb472dd7707a478c369944cdf0032b6de9de9132f055f5a075",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-revolver",
+    "path": "public/audio/emporium/holy-avenger-revolver.wav",
+    "kind": "metal",
+    "sha256": "347803c6a2d8ffca8d9b4c708fb9b89ae5d6c8c0094f78ed9147ea6d0b9e56fb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-semiautomatic-pistol",
+    "path": "public/audio/emporium/holy-avenger-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "ba32a53c81181f6b9a3b19caa90383c63403b37c82ad7df671921a885d7ed1e3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-shotgun",
+    "path": "public/audio/emporium/holy-avenger-shotgun.wav",
+    "kind": "metal",
+    "sha256": "f873509dbfe5e27b7cbdc06318528a999f9398838aae9f460320c9df7a637c83",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-staff",
+    "path": "public/audio/emporium/holy-avenger-staff.wav",
+    "kind": "wood",
+    "sha256": "58a9085e0cf15a9c6a40227efe5c0663468f26e94c4cca252c677a8e6733ebe8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "holy-avenger-wooden-staff",
+    "path": "public/audio/emporium/holy-avenger-wooden-staff.wav",
+    "kind": "wood",
+    "sha256": "7d14b5538e423ed4aca7d8fc3ba820aaa460f7c147d1df38e19f413bf967c96f",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-antimatter-rifle",
+    "path": "public/audio/emporium/nine-lives-stealer-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "14f8b02767b15c816eea30e494eb5c8c11945c23567aed3e901a17c291d680f8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-automatic-rifle",
+    "path": "public/audio/emporium/nine-lives-stealer-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "d3e339610614804f4d4eb01110ce0e569b6d49a9a1dd74a9c966c3eff554b853",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-hunting-rifle",
+    "path": "public/audio/emporium/nine-lives-stealer-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "b798d6c100033cacb30e02c7ce671b871b7bd098983632bff7087b5afe274f50",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-laser-pistol",
+    "path": "public/audio/emporium/nine-lives-stealer-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "7bdb7511e202a8fd1e19199993c5ff7819c8031d00e7ab416f8e82861af8fc2a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-laser-rifle",
+    "path": "public/audio/emporium/nine-lives-stealer-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "139425be407b94bbae30733c4ecc14305291153a882c04e48dd7cece95638fb4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-light-repeating-crossbow",
+    "path": "public/audio/emporium/nine-lives-stealer-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "4da79d3ac6f218fbdd278710d80e5695359df5f3e1e818b50a39d739a0fba9bc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-revolver",
+    "path": "public/audio/emporium/nine-lives-stealer-revolver.wav",
+    "kind": "metal",
+    "sha256": "6caad33e3ff85665a83a7fcc2acb0cca49db49967b4b6d283b6587bb5d09d8a1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-semiautomatic-pistol",
+    "path": "public/audio/emporium/nine-lives-stealer-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "63b1a618e1b4458b6947d1ae0be4fc36e1a80c711a966f436f977fd772e0a0dd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-shotgun",
+    "path": "public/audio/emporium/nine-lives-stealer-shotgun.wav",
+    "kind": "metal",
+    "sha256": "8f1eae7c294b10d007a04c66452beb00a2fc1a1d52f28e1dbf0767c97789f938",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-staff",
+    "path": "public/audio/emporium/nine-lives-stealer-staff.wav",
+    "kind": "wood",
+    "sha256": "72cd33012d57308a123d6847017d1e7a72518e4c13244c9d0050c48d2a6a2d48",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "nine-lives-stealer-wooden-staff",
+    "path": "public/audio/emporium/nine-lives-stealer-wooden-staff.wav",
+    "kind": "wood",
+    "sha256": "4cbc31176123c0a4960dccc5948504f5b20e6eb3960e07a871375d4263bf1f68",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-antimatter-rifle",
+    "path": "public/audio/emporium/vicious-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "b7f33ed363d6d0c8feef27c860858fe0707604a8bc1b2400873eb26b1b9370f3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-semiautomatic-pistol",
+    "path": "public/audio/emporium/vicious-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "544fb8875c9e30e39bce56de590f959b9434f8c4d4a87b1d350106a3113bfdea",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-automatic-rifle",
+    "path": "public/audio/emporium/vicious-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "3a0a7a8bd7366f025a56ccc5c7b33b208425bcc05d079fc6c365fd8d20c5dc47",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-hunting-rifle",
+    "path": "public/audio/emporium/vicious-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "8b12cadafd68f1778e062c7b6d604bcf5a426f0d2f8fbf526480d8009806c18e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-laser-pistol",
+    "path": "public/audio/emporium/vicious-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "b1ccd972e23b42f72756bcc3dae4f6ae61c04fe030f18c348cb91ec1817897f0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-laser-rifle",
+    "path": "public/audio/emporium/vicious-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "7415693f3b3f56e66c87fbd542657d2ae462e64422dc70821803c28648ab8db9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-light-repeating-crossbow",
+    "path": "public/audio/emporium/vicious-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "f0852f9c132207d5ab0aa6b96a120cf9eaabdd6053e89d8363af2786358b5002",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-revolver",
+    "path": "public/audio/emporium/vicious-revolver.wav",
+    "kind": "metal",
+    "sha256": "c863c4378e69ad8c07b0c6311bd329c624799f1f7ed0b9592e50f3918f7a4d9c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-shotgun",
+    "path": "public/audio/emporium/vicious-shotgun.wav",
+    "kind": "metal",
+    "sha256": "2815d7a05e693f769342c1e0e5b6094921c4361ff52345c91d367f2233ed92bc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-staff",
+    "path": "public/audio/emporium/vicious-staff.wav",
+    "kind": "wood",
+    "sha256": "399189613e7492a65087c039b7a647717c8201ffe7ce4108dc5df761df641dc2",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "vicious-wooden-staff",
+    "path": "public/audio/emporium/vicious-wooden-staff.wav",
+    "kind": "wood",
+    "sha256": "05693efc73498aedb4b8495c65fecaa551a167e5b02f167b771c1207bd2710ff",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimatter-rifle-of-warning",
+    "path": "public/audio/emporium/antimatter-rifle-of-warning.wav",
+    "kind": "metal",
+    "sha256": "49ddd69f668193c189b3fd8b88b0d8f47d23b7fcb91fe67ab744fc8e76fe7305",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "semiautomatic-pistol-of-warning",
+    "path": "public/audio/emporium/semiautomatic-pistol-of-warning.wav",
+    "kind": "metal",
+    "sha256": "b59da865ac3ba1f982433c1565492c218bf287b5bcc9c020a0205e356861d236",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "automatic-rifle-of-warning",
+    "path": "public/audio/emporium/automatic-rifle-of-warning.wav",
+    "kind": "metal",
+    "sha256": "1a50614388e113f5a7e78d31f95ebd0038a8063cbd564134f850de8618d20406",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hunting-rifle-of-warning",
+    "path": "public/audio/emporium/hunting-rifle-of-warning.wav",
+    "kind": "metal",
+    "sha256": "ea6d46da68a3b6aa39617f8498796bcb1b12fd0d24fc8e0d5187768210438835",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-pistol-of-warning",
+    "path": "public/audio/emporium/laser-pistol-of-warning.wav",
+    "kind": "metal",
+    "sha256": "51a912f2262b4179fa741f0921cdb888fb1acde0f02f6e81e7809f820623ed44",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-rifle-of-warning",
+    "path": "public/audio/emporium/laser-rifle-of-warning.wav",
+    "kind": "metal",
+    "sha256": "e005db9e7d853ce82e1578dae598845379ac561365e27d635dff02d98a793bf4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "light-repeating-crossbow-of-warning",
+    "path": "public/audio/emporium/light-repeating-crossbow-of-warning.wav",
+    "kind": "metal",
+    "sha256": "911aa2a9dfb3eb3ebd0cf90e03acb3bceadc12c96dbee65667b45e35f52f03c5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "revolver-of-warning",
+    "path": "public/audio/emporium/revolver-of-warning.wav",
+    "kind": "metal",
+    "sha256": "787ac30e6bab273470986f92f347e0da18d3b4bb00902f53f9ab80116f6aa20c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shotgun-of-warning",
+    "path": "public/audio/emporium/shotgun-of-warning.wav",
+    "kind": "metal",
+    "sha256": "e51d42d704b85e5b3a8282dd05b86140ba57a59f6e04220ba4df61f694774992",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "staff-of-warning",
+    "path": "public/audio/emporium/staff-of-warning.wav",
+    "kind": "wood",
+    "sha256": "fd6df168b4636aa6d52eb6696f0ef9c60d18b61a09ba68e498987272b0de914c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "wooden-staff-of-warning",
+    "path": "public/audio/emporium/wooden-staff-of-warning.wav",
+    "kind": "wood",
+    "sha256": "d9cb304051ade11ae508940a9d831bd88f86d6f65191d9183cc0885b460bc255",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

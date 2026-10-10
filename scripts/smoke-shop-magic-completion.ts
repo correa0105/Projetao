@@ -4,6 +4,7 @@ import { randomUUID, createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { compatibleSlots, twoHanded } from '../shared/equipment.js';
+import { consumableItems } from '../shared/vtt-sheet.js';
 if (!/^\/alvorada_test_[a-f0-9]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
 const { pool } = await import('../server/db.js');
@@ -110,13 +111,16 @@ try {
   );
   await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [user.id]);
   assert.equal((await request(`/catalog/${override}/price`, 'PATCH', { price_cp: 1 })).status, 403);
-  const buy = {
-    character_id: hero.id,
-    idempotency_key: randomUUID(),
-    items: ids.map((item_id: string) => ({ item_id, quantity: 1 })),
-  };
-  assert.equal((await request('/shop/checkout', 'POST', buy)).status, 201);
-  assert.equal((await request('/shop/checkout', 'POST', buy)).status, 200);
+  // The shop accepts at most 100 distinct rows in a cart.
+  for (let offset = 0; offset < ids.length; offset += 100) {
+    const buy = {
+      character_id: hero.id,
+      idempotency_key: randomUUID(),
+      items: ids.slice(offset, offset + 100).map((item_id: string) => ({ item_id, quantity: 1 })),
+    };
+    assert.equal((await request('/shop/checkout', 'POST', buy)).status, 201);
+    assert.equal((await request('/shop/checkout', 'POST', buy)).status, 200);
+  }
   const ledger = (
     await pool.query(
       'SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',
@@ -162,6 +166,38 @@ try {
   if(ids.includes('double-bladed-scimitar-plus-1')){
     assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'hooked-shortspear-plus-1',slot:'off_hand'})).status,409,'Two-handed scimitar blocks the second hand');
     assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'double-bladed-scimitar-plus-1',slot:'off_hand'})).status,400,'Two-handed weapon belongs in the main hand');
+  }
+  if (ids.includes('antimatter-rifle-plus-1')) {
+    const equip = (item_id: string, slot: string) => request('/inventory/equipment', 'POST', {
+      character_id: hero.id, item_id, slot,
+    });
+    assert.equal((await equip('antimatter-rifle-plus-1', 'main_hand')).status, 200);
+    assert.equal((await equip('semiautomatic-pistol-plus-1', 'off_hand')).status, 409);
+    assert.equal((await equip('antimatter-rifle-plus-1', 'off_hand')).status, 400);
+    assert.equal((await equip('semiautomatic-pistol-plus-1', 'main_hand')).status, 200);
+    assert.equal((await equip('wooden-staff-of-warning', 'off_hand')).status, 200);
+    await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [user.id]);
+    const created = await request('/vtt', 'POST', { name: 'Munição do Empório' });
+    assert.equal(created.status, 201);
+    const imported = await request(`/vtt/rooms/${created.data.id}/characters/${hero.id}`, 'POST', {});
+    assert.equal(imported.status, 201);
+    const token = imported.data.document.scenes.flatMap((s: any) => s.tokens).find((t: any) => t.characterId === hero.id);
+    assert(token);
+    const usePath = `/vtt/rooms/${created.data.id}/sheets/${token.id}/use`;
+    for (const model of ['energy-cell', 'modern-bullet']) for (const bonus of [1, 2, 3]) {
+      const id = `${model}-plus-${bonus}`, item = completion.items.find((x: any) => x.id === id);
+      assert(item && consumableItems.has(id), 'New ammunition must be usable by the existing consumption flow');
+      assert.equal(item.raw_data.pack_quantity, 1);
+      assert.equal(item.price_cp, [0, 2000, 20000, 200000][bonus]);
+      assert.equal(item.weight_lb, model === 'energy-cell' ? 0.5 : 0.1);
+      assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2', [hero.id, id])).rows[0].quantity, 1);
+      const use = { kind: 'consumable', item_id: id, idempotency_key: randomUUID() };
+      assert.equal((await request(usePath, 'POST', use)).status, 200);
+      assert.equal((await request(usePath, 'POST', use)).status, 200);
+      assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2', [hero.id, id])).rows.length, 0);
+      assert.equal((await request(usePath, 'POST', { ...use, idempotency_key: randomUUID() })).status, 409);
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger, 'Consumption cannot change the purchase ledger');
   }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio/source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,

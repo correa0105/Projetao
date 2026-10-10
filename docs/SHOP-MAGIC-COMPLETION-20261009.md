@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **92 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **191 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -106,7 +106,8 @@ a biblioteca nativa de SVG com os materiais originais já aprovados; cada forma
 e encantamento tem seu arquivo, e os três níveis distinguem cor e gravações.
 Não se usaram ícones substitutos nem ilustrações dos livros. Prompts em
 `art-jobs-new-models.json`; receitas em `variant-recipes.json` e proveniência
-individual no manifesto de artes. Treze referências desse plano ainda faltam.
+individual no manifesto de artes. Nesse checkpoint ainda faltavam treze referências;
+elas foram concluídas no quarto lote abaixo.
 
 Cada oferta tem fala individual, som próprio, modelo e equipamento explícitos,
 resumo curto e explicação original das regras. As famílias anteriores permanecem
@@ -136,6 +137,42 @@ confirmou linhas integrais idênticas ao snapshot imediatamente anterior;
 somente 62 registros novos. As 184 mídias, 43 bundles e 21 materiais VFX foram
 conferidos no servidor. Ilustrador PID 24260 mantido em execução.
 Ainda há **2.984 candidatos pendentes**; completar TODOS continua em andamento.
+
+## Quarto lote: 99 armas, focos e munições
+
+Aplicadas mais 99 ofertas: versões mágicas de oito armas de fogo/energia e da
+besta leve de repetição, seis encantamentos em cajados arcanos e druídicos e
+munições +1/+2/+3 de dois formatos. As treze referências restantes têm artes
+originais transparentes. Uma superfície original gravada foi criada para as
+munições; as skins estendem a biblioteca nativa e conservam a silhueta de cada
+modelo. As 99 falas foram escritas individualmente e os sons são exclusivos.
+As 18 referências físicas desse plano agora estão concluídas.
+
+Os detalhes distinguem foco arcano e druídico, uso versátil, munição compatível,
+limites de recarga e rajada. Encantamentos seguem a edição correspondente,
+sem automatizar poderes ou ataques especiais novos. Valores físicos de armas
+de fogo seguem a raridade de valor indicada no XDMG; o preço do encanto conserva
+o critério já usado pela loja. Cada oferta nova de munição vende uma unidade,
+com um décimo do preço mágico do pacote de dez existente e seu peso unitário.
+O encantamento da munição termina no primeiro acerto. A célula não recebe um
+limite de disparos genérico: esse limite pertence ao modelo da arma.
+
+A compra dos 191 itens foi verificada em carrinhos de até 100 linhas, com saldo,
+histórico e repetição sem cobrança dupla. O rifle de duas mãos bloqueia a mão
+secundária; pistola e foco de uma mão podem ocupá-las juntas. As seis munições
+novas foram consumidas pela rota real do VTT em banco descartável: uma unidade
+por uso, repetição idempotente e tentativa posterior sem estoque rejeitada,
+conservando o histórico de compra. Fontes, 191 falas/explicações e imagens foram
+revistos na loja em 1500/760/390 px. TypeScript e builds passaram. Todos os
+campos dos 92 itens já publicados permaneceram exatamente iguais.
+
+Release saudável `alvorada-cinzenta-app:magic-completion-v4-20261009`. Somente
+99 registros foram adicionados; as 60 tabelas e todos os produtos anteriores
+mantêm linhas integrais idênticas. Conferidos 382 arquivos de mídia dos itens,
+43 bundles e 21 materiais VFX no servidor. Ilustrador mantido em execução e
+17 arquivos de trabalho independente conservados. Restam **2.885 candidatos
+pendentes**. A célula de extermínio ainda exige curadoria de tipos de criatura;
+famílias com magias ou alvos específicos também precisam de expansão das opções.
 
 Próximo trabalho: continuar a curadoria e as artes dos itens nomeados e famílias,
 ampliar a verificação de cobertura e adicionar apenas lotes completamente prontos.
