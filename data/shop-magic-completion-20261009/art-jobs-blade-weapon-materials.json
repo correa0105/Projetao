@@ -1,0 +1,44 @@
+{
+  "jobs": [
+    {
+      "id": "material-forcebreaker-weapon",
+      "family": "Forcebreaker Weapon",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, hammered pale tungsten metal, deep turquoise geometric channels breaking into offset cubic fragments, precision inset silver seams; powerful anti-force craft, restrained unlit teal accents. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    },
+    {
+      "id": "material-vengeance-weapon",
+      "family": "Sword of Vengeance",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, ancient iron with dark oxblood-red oxidized channels, layered soot black steel, sinister intricate hairline engravings suggesting a bound spirit, restrained burgundy glints; no faces or skulls. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    },
+    {
+      "id": "material-acheron-weapon",
+      "family": "Acheron Blade",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, mysterious solid jet black arcane alloy, hard subtly mirrorlike black metal facets, irregular silver-grey forged seams and almost invisible deep blue microstriations; menacing premium black sword material. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    },
+    {
+      "id": "material-crystal-blade-weapon",
+      "family": "Crystal Blade",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, solid translucent crystal dragon horn, elongated interlocking crystalline facets, pearl white pale lilac glints and delicate prismatic internal fractures; polished organically grown crystal with depth, not metal. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    },
+    {
+      "id": "material-moon-touched-weapon",
+      "family": "Moon-Touched Sword",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, brushed weathered midnight-blue silver, soft pale lunar glow inside engraved crescent arcs and tiny starlike hammered flecks, elegant subdued blue-grey metal; gently luminous moonlight, no bright neon. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    },
+    {
+      "id": "material-sylvan-talon-weapon",
+      "family": "Sylvan Talon",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, aged silver-green forest metal inlaid with intricate curling leaf-vein tracery, slender bronze vine channels and tiny ivory bud details; fey craftsmanship, desaturated sage green and antique bronze. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    },
+    {
+      "id": "material-executioner-weapon",
+      "family": "Executioner's Axe",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, heavy charcoal iron with broad stark worn silver bevels, disciplined deep dark burgundy enamel inset angular grooves, hammered black metal texture and matte grey grain; executioner craft without blood or gore. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    },
+    {
+      "id": "material-life-sapping-weapon",
+      "family": "Life-Sapping Blade",
+      "prompt": "Create an ORIGINAL high-detail realistic hand-painted fantasy equipment MATERIAL TEXTURE for the established Alvorada Cinzenta item skin system. Square seamless-ish closeup texture, thin black forged iron, fine longitudinal graphite striations, hairline cold violet-black mineral veins, polished dark edge with faint desaturated purple glints; spare precise Thayan assassin craftsmanship, not glowing neon. Texture must fill the entire square edge to edge, no isolated object, no frame, no weapon silhouette, no character, no writing, no watermark, no background, no border. Material detail readable when mapped onto a small game weapon. Directional varied grain, physical depth, restrained highlights, no large uniform zones. It must look distinct from the other weapon families, sophisticated realistic craft rather than a generic color tint."
+    }
+  ]
+}

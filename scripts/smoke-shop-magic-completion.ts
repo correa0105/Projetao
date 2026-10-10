@@ -483,6 +483,32 @@ try {
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
   }
+  const bladeFamilies = ['Forcebreaker Weapon','Sword of Vengeance','Acheron Blade','Crystal Blade','Moon-Touched Sword','Sylvan Talon',"Executioner's Axe",'Life-Sapping Blade'];
+  if (ids.includes('forcebreaker-warhammer')) {
+    const blades=completion.items.filter((x:any)=>bladeFamilies.includes(x.raw_data.magic_family));
+    assert.deepEqual(bladeFamilies.map(f=>blades.filter((x:any)=>x.raw_data.magic_family===f).length),[11,7,6,6,6,6,4,4]);
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:null,slot:'off_hand'})).status,200);
+    for(const item of blades) {
+      const family=item.raw_data.magic_family,facts=item.raw_data.upstream_facts,rules=item.raw_data.rules_summary;
+      assert.equal(item.raw_data.magic_kind,'weapon');
+      assert.equal(item.raw_data.attunement,!['Forcebreaker Weapon','Moon-Touched Sword',"Executioner's Axe"].includes(family));
+      assert.equal(Number(item.raw_data.enhancement||0),family==='Forcebreaker Weapon'?2:['Crystal Blade','Moon-Touched Sword','Sylvan Talon'].includes(family)?0:1);
+      assert.equal(item.raw_data.source_edition,['XDMG','AUD'].includes(facts.source)?'D&D 5e (2024)':'D&D 5e (2014)');
+      if(family==='Forcebreaker Weapon') {assert.equal(facts.source,'BMT');assert.equal(facts.dmgType,'B');assert.match(rules,/estrutura de força mágica Grande ou menor/);assert.match(rules,/porção cúbica de 20 pés/);}
+      if(family==='Sword of Vengeance') {assert.equal(facts.curse,true);assert.match(rules,/Sabedoria CD 15/);assert.match(rules,/desvantagem nos ataques com outras armas/);assert.equal(rules.includes('dano em combate de outra criatura'),facts.source==='XDMG');assert.match(rules,/Banimento/);}
+      if(family==='Acheron Blade') {assert.equal(facts.source,'EGW');assert.match(rules,/1d4 \+ 4 PV temporários/);assert.equal((rules.match(/próximo anoitecer/g)||[]).length,2);assert.match(rules,/reserva independente/);assert.match(rules,/imune aos efeitos que expulsam mortos-vivos/);}
+      if(family==='Crystal Blade') {assert.equal(facts.source,'FTD');assert.equal(facts.charges,3);assert.match(rules,/1d8 de dano radiante/);assert.match(rules,/1d3 cargas/);assert.match(rules,/PV iguais ao dano radiante adicional/);assert.match(rules,/penumbra por mais 30 pés/);}
+      if(family==='Moon-Touched Sword') {assert.equal(facts.source,'XDMG');assert.match(rules,/lâmina fora da bainha/);assert.match(rules,/luz plena em 15 pés e penumbra por mais 15 pés/);}
+      if(family==='Sylvan Talon') {assert.equal(facts.source,'XDMG');assert.match(rules,/comunicação não escrita de todas as fadas/);assert.match(rules,/ação de Magia/);assert.match(rules,/próximo amanhecer/);}
+      if(family==="Executioner's Axe") {assert.equal(facts.source,'XDMG');assert.match(rules,/humanoide/);assert.match(rules,/2d6 de dano cortante adicional/);assert.match(rules,/PV temporários iguais ao dano adicional causado/);}
+      if(family==='Life-Sapping Blade') {assert.equal(facts.source,'AUD');assert.match(rules,/2d4 de dano necrótico/);assert.match(rules,/fim do próximo turno dele/);assert.match(rules,/morre imediatamente/);assert.match(rules,/Ressurreição ou Ressurreição Verdadeira/);}
+      if(!rulesReviewIds||rulesReviewIds.has(item.id)) {
+        assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:item.id,slot:'main_hand'})).status,200,item.id);
+        if(item.raw_data.two_handed)assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:item.id,slot:'off_hand'})).status,400,item.id);
+      }
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
+  }
   if (ids.includes('bead-of-refreshment')) {
     const item=(id:string)=>completion.items.find((x:any)=>x.id===id);
     assert.equal(item('charlatan-s-die').raw_data.attunement,true);

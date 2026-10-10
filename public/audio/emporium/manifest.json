@@ -17286,5 +17286,405 @@
     "sha256": "1b8184c9db4ef568f4faffde9e09f54bfea6a1e09fd27e86ef2a8ed8468edb68",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-club",
+    "path": "public/audio/emporium/forcebreaker-club.wav",
+    "kind": "wood",
+    "sha256": "5c9b54c8b2ae55cfd6370f351c9aef53fba3ccba7cb3c5e380ccbc135570d12e",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-flail",
+    "path": "public/audio/emporium/forcebreaker-flail.wav",
+    "kind": "metal",
+    "sha256": "635fd715aeecaa7ed99dd57ebf2efe0997ec18f95d255ce64dbd77acef1e7bc6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-greatclub",
+    "path": "public/audio/emporium/forcebreaker-greatclub.wav",
+    "kind": "wood",
+    "sha256": "ab9c72be326feeb58fce9960f4be7b6c99eed22a91872bc74826f4bafb1b1867",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-light-hammer",
+    "path": "public/audio/emporium/forcebreaker-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "2e6d5b02f7fd4d8f79787d126075253e9b577a420c2117b090b094f4bc90e712",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-mace",
+    "path": "public/audio/emporium/forcebreaker-mace.wav",
+    "kind": "metal",
+    "sha256": "5e7b704615364cd641e40de3c46d969bde16f5433432cef2c368bf799eae6cdf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-maul",
+    "path": "public/audio/emporium/forcebreaker-maul.wav",
+    "kind": "metal",
+    "sha256": "93f3761ea442d5038805d53ef5bc09b210fbd080fdde0c390322bbd20a9940f1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-quarterstaff",
+    "path": "public/audio/emporium/forcebreaker-quarterstaff.wav",
+    "kind": "wood",
+    "sha256": "4d6feb31441494bcfa14d95ba778a02b017e9072da0283f7a94d7c8f409d8472",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-sling",
+    "path": "public/audio/emporium/forcebreaker-sling.wav",
+    "kind": "leather",
+    "sha256": "35563295514d863dcc02c14672486ed157c82946721bfb47925a30e25f348f08",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-staff",
+    "path": "public/audio/emporium/forcebreaker-staff.wav",
+    "kind": "wood",
+    "sha256": "2c64a70373dd2607726842ec44b7f6a38c622b9e2e249f585cf0f40cbfe4c353",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-warhammer",
+    "path": "public/audio/emporium/forcebreaker-warhammer.wav",
+    "kind": "metal",
+    "sha256": "7562959b7d6949e9e593c2e4f241b4427efafc6c94643e62952e8b5f32fd8ef4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "forcebreaker-wooden-staff",
+    "path": "public/audio/emporium/forcebreaker-wooden-staff.wav",
+    "kind": "wood",
+    "sha256": "452f7c2e920d67ad7d7d0a72a51fdc6f90775b26e231e925ebf9ac75ae7c70e7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "double-bladed-scimitar-of-vengeance",
+    "path": "public/audio/emporium/double-bladed-scimitar-of-vengeance.wav",
+    "kind": "metal",
+    "sha256": "6c3c316a930673721663917a86e18d2b1cc734b167e311c6bd355a523b2614eb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "greatsword-of-vengeance",
+    "path": "public/audio/emporium/greatsword-of-vengeance.wav",
+    "kind": "metal",
+    "sha256": "615d95b0c0cbcdd61547b460e8fb06b4b2d2d730dee6d0958f92345761fda846",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "longsword-of-vengeance",
+    "path": "public/audio/emporium/longsword-of-vengeance.wav",
+    "kind": "metal",
+    "sha256": "936cacbdb0825d9c158c8342b8e9ae55bd0414534fb5678639591e4fcc7aec05",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "rapier-of-vengeance",
+    "path": "public/audio/emporium/rapier-of-vengeance.wav",
+    "kind": "metal",
+    "sha256": "648a778a8febfc65bb64c55f6062e901f5593a2ae985795e9e1d5a87e6e05b7c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "scimitar-of-vengeance",
+    "path": "public/audio/emporium/scimitar-of-vengeance.wav",
+    "kind": "metal",
+    "sha256": "b5dfc685d88abb27a3c5cfcc785520478c2505f73413d31debbe2b3ff8544390",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shortsword-of-vengeance",
+    "path": "public/audio/emporium/shortsword-of-vengeance.wav",
+    "kind": "metal",
+    "sha256": "325addb31836c46962f9031faee0f5ce8cec04c79c9dc6a5179fe17c57e152ff",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "glaive-of-vengeance",
+    "path": "public/audio/emporium/glaive-of-vengeance.wav",
+    "kind": "metal",
+    "sha256": "13bd794c3583f1172cb0928bfde39e4ae1677b83582e47540db157847bb28d0e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "acheron-blade-double-bladed-scimitar",
+    "path": "public/audio/emporium/acheron-blade-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "dd38e6fb7cf0c433fd372cdb33ba65acba13fdd0e9173b04f7cd6d9d15c4ef75",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "acheron-blade-greatsword",
+    "path": "public/audio/emporium/acheron-blade-greatsword.wav",
+    "kind": "metal",
+    "sha256": "fa7aa94251e7fee8427eec3674ac6221140acd21df868ee1dab4defa63559684",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "acheron-blade-longsword",
+    "path": "public/audio/emporium/acheron-blade-longsword.wav",
+    "kind": "metal",
+    "sha256": "5001c6311521057322e8d4fe7873d5ae3f3c7fc2df62341ea5ad2387a2744015",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "acheron-blade-rapier",
+    "path": "public/audio/emporium/acheron-blade-rapier.wav",
+    "kind": "metal",
+    "sha256": "24a2304f84af08e75d8765dd6fbeb7d10c27e8795f420d77f5671a5d3a94a5ec",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "acheron-blade-scimitar",
+    "path": "public/audio/emporium/acheron-blade-scimitar.wav",
+    "kind": "metal",
+    "sha256": "d2aa65efeeccf45ae978cc3bb2a5b4c44b41b04cb5c99b3ad37463851e6fac1f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "acheron-blade-shortsword",
+    "path": "public/audio/emporium/acheron-blade-shortsword.wav",
+    "kind": "metal",
+    "sha256": "ef54ceefb055736a6044d517fe18eb840278810f2cb7ff0ff0d4d46cdbd5e77d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "crystal-double-bladed-scimitar",
+    "path": "public/audio/emporium/crystal-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "ee91e99321a5fb0db9f07d0ef6168abbf09295ee2a157d6879599732dbd22f89",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "crystal-greatsword",
+    "path": "public/audio/emporium/crystal-greatsword.wav",
+    "kind": "metal",
+    "sha256": "f3faf09fd6d762466c522c40df789fcb48903163e12d431454d22154f0b98857",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "crystal-longsword",
+    "path": "public/audio/emporium/crystal-longsword.wav",
+    "kind": "metal",
+    "sha256": "39e6c7cb42398cffb0f4d361baec0a0a5c3a3acb9b3fc152f270fd56837d81dc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "crystal-rapier",
+    "path": "public/audio/emporium/crystal-rapier.wav",
+    "kind": "metal",
+    "sha256": "30ffa8245b904292fe1aa186233985483e570832e1df1a01471bfd0236a749c1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "crystal-scimitar",
+    "path": "public/audio/emporium/crystal-scimitar.wav",
+    "kind": "metal",
+    "sha256": "9187fe2edc7d2685df5f889b0289acb769a91b26e2bfb795e0b1152aa9c6d348",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "crystal-shortsword",
+    "path": "public/audio/emporium/crystal-shortsword.wav",
+    "kind": "metal",
+    "sha256": "3d43b1c4057049116864a76d6be3805f9fea38efaf4a41ce67415f297a8e129d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "moon-touched-double-bladed-scimitar",
+    "path": "public/audio/emporium/moon-touched-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "018dc6b20ab51edeba9099b38f995aecc43c071148288b6bf2f4eaf351805755",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "moon-touched-greatsword",
+    "path": "public/audio/emporium/moon-touched-greatsword.wav",
+    "kind": "metal",
+    "sha256": "11e265192ace1a5ccec85769c3e92a9ceae99d35acddba4872ea999da6634b21",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "moon-touched-longsword",
+    "path": "public/audio/emporium/moon-touched-longsword.wav",
+    "kind": "metal",
+    "sha256": "413ff76a27ae2dc07c111785dadd1a135c304433ae9bd6f814123e1410b13d25",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "moon-touched-rapier",
+    "path": "public/audio/emporium/moon-touched-rapier.wav",
+    "kind": "metal",
+    "sha256": "816a467df293b48de0e7960b0eaa423476e32eca0d087eeaced90f1c8df283fb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "moon-touched-scimitar",
+    "path": "public/audio/emporium/moon-touched-scimitar.wav",
+    "kind": "metal",
+    "sha256": "850ee743c152bd2bdfeed443299fae844a627805844be94d7f1396a8bb3213be",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "moon-touched-shortsword",
+    "path": "public/audio/emporium/moon-touched-shortsword.wav",
+    "kind": "metal",
+    "sha256": "e6235288f8c87685f90bc61ce7d9e1170d123963c5a37dd1e6b32fb0cbdc533d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sylvan-talon-dagger",
+    "path": "public/audio/emporium/sylvan-talon-dagger.wav",
+    "kind": "metal",
+    "sha256": "05c58bf8bc9548dfcf3b69aa90f6d6ebbf5636e138843baf1d15546a4b500546",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sylvan-talon-rapier",
+    "path": "public/audio/emporium/sylvan-talon-rapier.wav",
+    "kind": "metal",
+    "sha256": "04c3426c08cc1426af4e96c75a68ebb9e76fd3b59052d91a62390c6812061527",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sylvan-talon-scimitar",
+    "path": "public/audio/emporium/sylvan-talon-scimitar.wav",
+    "kind": "metal",
+    "sha256": "4f97d553f814c15c8f575362e853cdec182a5994b38aa9880d5265235cbb515f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sylvan-talon-shortsword",
+    "path": "public/audio/emporium/sylvan-talon-shortsword.wav",
+    "kind": "metal",
+    "sha256": "49dbf9c735555b6be993fc889d5ba77ea2c5059561b98cc31f0537b27ce610c2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sylvan-talon-sickle",
+    "path": "public/audio/emporium/sylvan-talon-sickle.wav",
+    "kind": "metal",
+    "sha256": "5d422a3ee78fdea271b83390a117140ce893bf263aff11380534472a158411b2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sylvan-talon-spear",
+    "path": "public/audio/emporium/sylvan-talon-spear.wav",
+    "kind": "metal",
+    "sha256": "ef77a523a00e4ebed6e0e96efe09db64dd48ccfacffff9e26bd97f5b1349fd08",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "executioner-s-battleaxe",
+    "path": "public/audio/emporium/executioner-s-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "910ef3fa6525c2ed73049ae4070d683793bbd68c9540aabd4b18321607c2456b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "executioner-s-greataxe",
+    "path": "public/audio/emporium/executioner-s-greataxe.wav",
+    "kind": "metal",
+    "sha256": "a18997fedade10b4c5c91b9e14a433905ab3f9887fc3a5799aeb90d2675439eb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "executioner-s-halberd",
+    "path": "public/audio/emporium/executioner-s-halberd.wav",
+    "kind": "metal",
+    "sha256": "f2f0730f79708d6373606ebc25fb330a4d9ae5126fcfad3dab8eb636493e7e08",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "executioner-s-handaxe",
+    "path": "public/audio/emporium/executioner-s-handaxe.wav",
+    "kind": "metal",
+    "sha256": "e4a23cf2c9f2e9a7406cb8786a4cad8392e6bb66b93ef2944e853aafa4473e6e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "life-sapping-rapier",
+    "path": "public/audio/emporium/life-sapping-rapier.wav",
+    "kind": "metal",
+    "sha256": "8fac1df316ca379f97c0aa8b47024764da27d37ea6e9920a9f7ac207e0537a02",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "life-sapping-scimitar",
+    "path": "public/audio/emporium/life-sapping-scimitar.wav",
+    "kind": "metal",
+    "sha256": "def0c4b6570be709a916bc717aaf435e025014b43d31af0876d84c87bb75580d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "life-sapping-shortsword",
+    "path": "public/audio/emporium/life-sapping-shortsword.wav",
+    "kind": "metal",
+    "sha256": "b44ff7d93968627759d707898f0be1b63c9fc2fdc57d5a72899a1c219ee54b89",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "life-sapping-whip",
+    "path": "public/audio/emporium/life-sapping-whip.wav",
+    "kind": "leather",
+    "sha256": "5411347360cefe2c0b37a994bd0099866e105b545fece46bd1d57e98b6957a27",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

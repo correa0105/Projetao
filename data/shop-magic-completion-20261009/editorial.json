@@ -13743,5 +13743,893 @@
     "reviewed_weight_lb": 2,
     "base_price_cp": 300,
     "review": "approved"
+  },
+  "forcebreaker-club": {
+    "name": "Arma quebra-força (Clava)",
+    "description": "Forma: Clava. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "A clava quebra-força guarda um encanto de segunda ordem. O poder de ruptura serve para estruturas de força mágica.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Forcebreaker Weapon",
+    "base_id": "club",
+    "model_name": "Clava",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-flail": {
+    "name": "Arma quebra-força (Mangual)",
+    "description": "Forma: Mangual. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "Os elos deste mangual acompanham o encanto +2. Uma muralha de força pode ser rompida; uma parede comum segue suas regras.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Forcebreaker Weapon",
+    "base_id": "flail",
+    "model_name": "Mangual",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-greatclub": {
+    "name": "Arma quebra-força (Clava grande)",
+    "description": "Forma: Clava grande. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "Esta clava grande precisa de duas mãos. Em uma estrutura de força Enorme, ela abre uma porção cúbica de vinte pés.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 contundente. Propriedades: duas mãos. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Forcebreaker Weapon",
+    "base_id": "greatclub",
+    "model_name": "Clava grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-light-hammer": {
+    "name": "Arma quebra-força (Martelo leve)",
+    "description": "Forma: Martelo leve. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "O martelo leve quebra-força conserva o arremesso. O encanto não dá destruição automática contra criaturas.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve, arremesso. Alcance 20/60 pés. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Forcebreaker Weapon",
+    "base_id": "light-hammer",
+    "model_name": "Martelo leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-mace": {
+    "name": "Arma quebra-força (Maça)",
+    "description": "Forma: Maça. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "A maça foi preparada para romper força mágica. Estruturas Grandes ou menores se desfazem quando golpeadas.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Forcebreaker Weapon",
+    "base_id": "mace",
+    "model_name": "Maça",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-maul": {
+    "name": "Arma quebra-força (Malho)",
+    "description": "Forma: Malho. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "O malho quebra-força pede espaço e ambas as mãos. O encantamento +2 acompanha ataque e dano.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Forcebreaker Weapon",
+    "base_id": "maul",
+    "model_name": "Malho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-quarterstaff": {
+    "name": "Arma quebra-força (Bordão)",
+    "description": "Forma: Bordão. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "O bordão quebra-força aceita o manejo versátil. Seu golpe especial só se aplica às estruturas feitas de força mágica.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, dano versátil 1d8 contundente. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Forcebreaker Weapon",
+    "base_id": "quarterstaff",
+    "model_name": "Bordão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-sling": {
+    "name": "Arma quebra-força (Funda)",
+    "description": "Forma: Funda. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "Esta funda continua usando balas compatíveis. O acabamento mágico não produz sua munição.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: munição. Alcance 30/120 pés. Usa balas de funda compatíveis. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Forcebreaker Weapon",
+    "base_id": "sling",
+    "model_name": "Funda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "estimated_weight_lb": 0.1,
+    "review": "approved"
+  },
+  "forcebreaker-staff": {
+    "name": "Arma quebra-força (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "O cajado arcano quebra-força também serve como bordão. O +2 da arma não aumenta sua CD de magia.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, dano versátil 1d8 contundente. Também é foco arcano; o bônus da arma não aumenta ataques ou CDs de magia. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Forcebreaker Weapon",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-warhammer": {
+    "name": "Arma quebra-força (Martelo de guerra)",
+    "description": "Forma: Martelo de guerra. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "O martelo de guerra quebra-força permite duas mãos para o dano versátil. O tamanho da estrutura define a ruptura.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Propriedades: versátil. Com duas mãos, dano versátil 1d10 contundente. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Forcebreaker Weapon",
+    "base_id": "warhammer",
+    "model_name": "Martelo de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "forcebreaker-wooden-staff": {
+    "name": "Arma quebra-força (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Bônus +2 e capacidade de romper estruturas de força mágica.",
+    "merchant_comment": "Este cajado druídico rompe estruturas de força e mantém o uso como foco. O bônus da arma não modifica suas magias.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, dano versátil 1d8 contundente. Também é foco druídico; o bônus da arma não aumenta ataques ou CDs de magia. Não exige sintonia. Concede +2 nas jogadas de ataque e dano da arma. Ao golpear uma estrutura de força mágica Grande ou menor, como as de Jaula de Força ou Muralha de Força, destrói automaticamente essa estrutura. Se ela for Enorme ou maior, destrói uma porção cúbica de 20 pés. O poder se refere a estruturas de força mágica; não dispensa acertar qualquer criatura nem destrói automaticamente construções comuns.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Forcebreaker Weapon",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-vengeance": {
+    "name": "Arma da vingança (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +1 possuída por um espírito vingativo, com maldição de sintonia.",
+    "merchant_comment": "A cimitarra dupla da vingança guarda um espírito nas duas lâminas. Leia a maldição antes de iniciar a sintonia.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo com a arma, com dano básico 1d4 cortante em vez de 2d4. Concede +1 nas jogadas de ataque e dano e exige sintonia. A sintonia estende ao usuário a maldição do espírito vingativo: enquanto amaldiçoado, não quer se separar da arma e a mantém consigo o tempo todo. Enquanto sintonizado, tem desvantagem nos ataques com outras armas. Enquanto carrega esta arma, ao receber dano em combate, precisa passar em uma resistência de Sabedoria CD 15; se falhar, deve atacar a criatura que o feriu até um dos dois cair a 0 PV ou até não conseguir alcançá-la para um ataque corpo a corpo. A maldição pode ser quebrada pelos meios habituais. Banimento conjurado sobre a arma expulsa o espírito: ela passa a ser uma arma +1 sem os outros poderes.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Vengeance",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "greatsword-of-vengeance": {
+    "name": "Arma da vingança (Espada grande)",
+    "description": "Forma: Espada grande. Arma +1 possuída por um espírito vingativo, com maldição de sintonia.",
+    "merchant_comment": "Esta espada grande tem +1 e uma exigência severa de vingança. O espírito não aceita facilmente que você a abandone.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Concede +1 nas jogadas de ataque e dano e exige sintonia. A sintonia estende ao usuário a maldição do espírito vingativo: enquanto amaldiçoado, não quer se separar da arma e a mantém consigo o tempo todo. Enquanto sintonizado, tem desvantagem nos ataques com outras armas. Enquanto carrega esta arma, ao receber dano em combate de outra criatura, precisa passar em uma resistência de Sabedoria CD 15; se falhar, deve atacar a criatura que o feriu até um dos dois cair a 0 PV ou até não conseguir alcançá-la para um ataque corpo a corpo. A maldição pode ser quebrada pelos meios habituais. Banimento conjurado sobre a arma expulsa o espírito: ela passa a ser uma arma +1 sem os outros poderes.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Vengeance",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "longsword-of-vengeance": {
+    "name": "Arma da vingança (Espada longa)",
+    "description": "Forma: Espada longa. Arma +1 possuída por um espírito vingativo, com maldição de sintonia.",
+    "merchant_comment": "A espada longa da vingança conserva o manejo versátil. Sua maldição prejudica ataques feitos com outras armas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Concede +1 nas jogadas de ataque e dano e exige sintonia. A sintonia estende ao usuário a maldição do espírito vingativo: enquanto amaldiçoado, não quer se separar da arma e a mantém consigo o tempo todo. Enquanto sintonizado, tem desvantagem nos ataques com outras armas. Enquanto carrega esta arma, ao receber dano em combate de outra criatura, precisa passar em uma resistência de Sabedoria CD 15; se falhar, deve atacar a criatura que o feriu até um dos dois cair a 0 PV ou até não conseguir alcançá-la para um ataque corpo a corpo. A maldição pode ser quebrada pelos meios habituais. Banimento conjurado sobre a arma expulsa o espírito: ela passa a ser uma arma +1 sem os outros poderes.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Vengeance",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "rapier-of-vengeance": {
+    "name": "Arma da vingança (Rapieira)",
+    "description": "Forma: Rapieira. Arma +1 possuída por um espírito vingativo, com maldição de sintonia.",
+    "merchant_comment": "O florete da vingança mantém a acuidade. Ao sofrer dano de uma criatura em combate, lembre da resistência de Sabedoria.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Concede +1 nas jogadas de ataque e dano e exige sintonia. A sintonia estende ao usuário a maldição do espírito vingativo: enquanto amaldiçoado, não quer se separar da arma e a mantém consigo o tempo todo. Enquanto sintonizado, tem desvantagem nos ataques com outras armas. Enquanto carrega esta arma, ao receber dano em combate de outra criatura, precisa passar em uma resistência de Sabedoria CD 15; se falhar, deve atacar a criatura que o feriu até um dos dois cair a 0 PV ou até não conseguir alcançá-la para um ataque corpo a corpo. A maldição pode ser quebrada pelos meios habituais. Banimento conjurado sobre a arma expulsa o espírito: ela passa a ser uma arma +1 sem os outros poderes.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Vengeance",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "scimitar-of-vengeance": {
+    "name": "Arma da vingança (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +1 possuída por um espírito vingativo, com maldição de sintonia.",
+    "merchant_comment": "A cimitarra da vingança tem o brilho de uma arma +1. A falha na resistência pode obrigar você a perseguir quem o feriu.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Concede +1 nas jogadas de ataque e dano e exige sintonia. A sintonia estende ao usuário a maldição do espírito vingativo: enquanto amaldiçoado, não quer se separar da arma e a mantém consigo o tempo todo. Enquanto sintonizado, tem desvantagem nos ataques com outras armas. Enquanto carrega esta arma, ao receber dano em combate de outra criatura, precisa passar em uma resistência de Sabedoria CD 15; se falhar, deve atacar a criatura que o feriu até um dos dois cair a 0 PV ou até não conseguir alcançá-la para um ataque corpo a corpo. A maldição pode ser quebrada pelos meios habituais. Banimento conjurado sobre a arma expulsa o espírito: ela passa a ser uma arma +1 sem os outros poderes.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Vengeance",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "shortsword-of-vengeance": {
+    "name": "Arma da vingança (Espada curta)",
+    "description": "Forma: Espada curta. Arma +1 possuída por um espírito vingativo, com maldição de sintonia.",
+    "merchant_comment": "A espada curta da vingança não perde a maldição pelo tamanho. Banimento sobre a peça pode expulsar o espírito.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Concede +1 nas jogadas de ataque e dano e exige sintonia. A sintonia estende ao usuário a maldição do espírito vingativo: enquanto amaldiçoado, não quer se separar da arma e a mantém consigo o tempo todo. Enquanto sintonizado, tem desvantagem nos ataques com outras armas. Enquanto carrega esta arma, ao receber dano em combate de outra criatura, precisa passar em uma resistência de Sabedoria CD 15; se falhar, deve atacar a criatura que o feriu até um dos dois cair a 0 PV ou até não conseguir alcançá-la para um ataque corpo a corpo. A maldição pode ser quebrada pelos meios habituais. Banimento conjurado sobre a arma expulsa o espírito: ela passa a ser uma arma +1 sem os outros poderes.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Vengeance",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "glaive-of-vengeance": {
+    "name": "Arma da vingança (Glaive)",
+    "description": "Forma: Glaive. Arma +1 possuída por um espírito vingativo, com maldição de sintonia.",
+    "merchant_comment": "Esta glaive da vingança tem alcance, peso e uma presença inquieta. O espírito pode ficar ligado a quem se sintoniza.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Concede +1 nas jogadas de ataque e dano e exige sintonia. A sintonia estende ao usuário a maldição do espírito vingativo: enquanto amaldiçoado, não quer se separar da arma e a mantém consigo o tempo todo. Enquanto sintonizado, tem desvantagem nos ataques com outras armas. Enquanto carrega esta arma, ao receber dano em combate de outra criatura, precisa passar em uma resistência de Sabedoria CD 15; se falhar, deve atacar a criatura que o feriu até um dos dois cair a 0 PV ou até não conseguir alcançá-la para um ataque corpo a corpo. A maldição pode ser quebrada pelos meios habituais. Banimento conjurado sobre a arma expulsa o espírito: ela passa a ser uma arma +1 sem os outros poderes.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Vengeance",
+    "base_id": "glaive",
+    "model_name": "Glaive",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "acheron-blade-double-bladed-scimitar": {
+    "name": "Lâmina de Acheron (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +1 de liga arcana negra, com bênção sombria e golpe desalentador.",
+    "merchant_comment": "A cimitarra dupla de Acheron foi feita em liga negra. Sua bênção só volta no anoitecer, não no amanhecer.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo com a arma, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia e concede +1 nas jogadas de ataque e dano. Enquanto carrega a arma consigo, você é imune aos efeitos que expulsam mortos-vivos. Bênção sombria: enquanto a segura, uma ação concede 1d4 + 4 PV temporários; só pode usar novamente no próximo anoitecer. Golpe desalentador: ao acertar uma criatura com esta arma, pode impor desvantagem na próxima resistência que ela fizer antes do fim do seu próximo turno. O alvo ignora esse efeito se for imune à condição amedrontado. Esse segundo poder também só volta no próximo anoitecer, com uma reserva independente da bênção. O golpe não impõe a condição amedrontado.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Acheron Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "acheron-blade-greatsword": {
+    "name": "Lâmina de Acheron (Espada grande)",
+    "description": "Forma: Espada grande. Arma +1 de liga arcana negra, com bênção sombria e golpe desalentador.",
+    "merchant_comment": "Esta espada grande de Acheron tem duas reservas independentes. Anote separadamente a bênção e o golpe desalentador.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia e concede +1 nas jogadas de ataque e dano. Enquanto carrega a arma consigo, você é imune aos efeitos que expulsam mortos-vivos. Bênção sombria: enquanto a segura, uma ação concede 1d4 + 4 PV temporários; só pode usar novamente no próximo anoitecer. Golpe desalentador: ao acertar uma criatura com esta arma, pode impor desvantagem na próxima resistência que ela fizer antes do fim do seu próximo turno. O alvo ignora esse efeito se for imune à condição amedrontado. Esse segundo poder também só volta no próximo anoitecer, com uma reserva independente da bênção. O golpe não impõe a condição amedrontado.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Acheron Blade",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "acheron-blade-longsword": {
+    "name": "Lâmina de Acheron (Espada longa)",
+    "description": "Forma: Espada longa. Arma +1 de liga arcana negra, com bênção sombria e golpe desalentador.",
+    "merchant_comment": "A espada longa de Acheron concede PV temporários enquanto a segura. O uso pede uma ação e espera o próximo anoitecer.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia e concede +1 nas jogadas de ataque e dano. Enquanto carrega a arma consigo, você é imune aos efeitos que expulsam mortos-vivos. Bênção sombria: enquanto a segura, uma ação concede 1d4 + 4 PV temporários; só pode usar novamente no próximo anoitecer. Golpe desalentador: ao acertar uma criatura com esta arma, pode impor desvantagem na próxima resistência que ela fizer antes do fim do seu próximo turno. O alvo ignora esse efeito se for imune à condição amedrontado. Esse segundo poder também só volta no próximo anoitecer, com uma reserva independente da bênção. O golpe não impõe a condição amedrontado.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Acheron Blade",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "acheron-blade-rapier": {
+    "name": "Lâmina de Acheron (Rapieira)",
+    "description": "Forma: Rapieira. Arma +1 de liga arcana negra, com bênção sombria e golpe desalentador.",
+    "merchant_comment": "O florete de Acheron pode prejudicar a próxima resistência de um alvo. Imunidade a medo faz o alvo ignorar esse efeito.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia e concede +1 nas jogadas de ataque e dano. Enquanto carrega a arma consigo, você é imune aos efeitos que expulsam mortos-vivos. Bênção sombria: enquanto a segura, uma ação concede 1d4 + 4 PV temporários; só pode usar novamente no próximo anoitecer. Golpe desalentador: ao acertar uma criatura com esta arma, pode impor desvantagem na próxima resistência que ela fizer antes do fim do seu próximo turno. O alvo ignora esse efeito se for imune à condição amedrontado. Esse segundo poder também só volta no próximo anoitecer, com uma reserva independente da bênção. O golpe não impõe a condição amedrontado.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Acheron Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "acheron-blade-scimitar": {
+    "name": "Lâmina de Acheron (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +1 de liga arcana negra, com bênção sombria e golpe desalentador.",
+    "merchant_comment": "A cimitarra de Acheron não precisa assustar o alvo para seu golpe funcionar. A desvantagem dura até o prazo descrito.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia e concede +1 nas jogadas de ataque e dano. Enquanto carrega a arma consigo, você é imune aos efeitos que expulsam mortos-vivos. Bênção sombria: enquanto a segura, uma ação concede 1d4 + 4 PV temporários; só pode usar novamente no próximo anoitecer. Golpe desalentador: ao acertar uma criatura com esta arma, pode impor desvantagem na próxima resistência que ela fizer antes do fim do seu próximo turno. O alvo ignora esse efeito se for imune à condição amedrontado. Esse segundo poder também só volta no próximo anoitecer, com uma reserva independente da bênção. O golpe não impõe a condição amedrontado.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Acheron Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "acheron-blade-shortsword": {
+    "name": "Lâmina de Acheron (Espada curta)",
+    "description": "Forma: Espada curta. Arma +1 de liga arcana negra, com bênção sombria e golpe desalentador.",
+    "merchant_comment": "A espada curta de Acheron resiste aos efeitos de expulsar mortos-vivos enquanto está consigo. Não promete imunidade a todo dano.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia e concede +1 nas jogadas de ataque e dano. Enquanto carrega a arma consigo, você é imune aos efeitos que expulsam mortos-vivos. Bênção sombria: enquanto a segura, uma ação concede 1d4 + 4 PV temporários; só pode usar novamente no próximo anoitecer. Golpe desalentador: ao acertar uma criatura com esta arma, pode impor desvantagem na próxima resistência que ela fizer antes do fim do seu próximo turno. O alvo ignora esse efeito se for imune à condição amedrontado. Esse segundo poder também só volta no próximo anoitecer, com uma reserva independente da bênção. O golpe não impõe a condição amedrontado.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Acheron Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "crystal-double-bladed-scimitar": {
+    "name": "Lâmina de cristal (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Cristal de dragão que acrescenta 1d8 radiante e usa cargas para recuperar PV.",
+    "merchant_comment": "Estas duas lâminas têm cristal de dragão. O dado radiante extra não é um bônus +1 de ataque.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo com a arma, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia. A lâmina é feita de chifre ou espinho de um dragão de cristal. Ao acertar com uma jogada de ataque desta arma, o alvo recebe 1d8 de dano radiante adicional. A arma tem três cargas e recupera 1d3 cargas gastas a cada amanhecer, até três. Ao acertar uma criatura com a arma, pode gastar uma carga para recuperar PV iguais ao dano radiante adicional que ela causou. Enquanto a segura, uma ação bônus permite escolher luz plena em 30 pés e penumbra por mais 30 pés, penumbra em 10 pés, ou apagar a luz. Não concede bônus numérico de ataque ou dano além do dado radiante descrito.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Crystal Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "crystal-greatsword": {
+    "name": "Lâmina de cristal (Espada grande)",
+    "description": "Forma: Espada grande. Cristal de dragão que acrescenta 1d8 radiante e usa cargas para recuperar PV.",
+    "merchant_comment": "A espada grande de cristal guarda três cargas de recuperação. Só o dano radiante adicional determina quantos PV voltam.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia. A lâmina é feita de chifre ou espinho de um dragão de cristal. Ao acertar com uma jogada de ataque desta arma, o alvo recebe 1d8 de dano radiante adicional. A arma tem três cargas e recupera 1d3 cargas gastas a cada amanhecer, até três. Ao acertar uma criatura com a arma, pode gastar uma carga para recuperar PV iguais ao dano radiante adicional que ela causou. Enquanto a segura, uma ação bônus permite escolher luz plena em 30 pés e penumbra por mais 30 pés, penumbra em 10 pés, ou apagar a luz. Não concede bônus numérico de ataque ou dano além do dado radiante descrito.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Crystal Blade",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "crystal-longsword": {
+    "name": "Lâmina de cristal (Espada longa)",
+    "description": "Forma: Espada longa. Cristal de dragão que acrescenta 1d8 radiante e usa cargas para recuperar PV.",
+    "merchant_comment": "A espada longa de cristal recupera um dado de três cargas ao amanhecer. A reserva nunca passa de três.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia. A lâmina é feita de chifre ou espinho de um dragão de cristal. Ao acertar com uma jogada de ataque desta arma, o alvo recebe 1d8 de dano radiante adicional. A arma tem três cargas e recupera 1d3 cargas gastas a cada amanhecer, até três. Ao acertar uma criatura com a arma, pode gastar uma carga para recuperar PV iguais ao dano radiante adicional que ela causou. Enquanto a segura, uma ação bônus permite escolher luz plena em 30 pés e penumbra por mais 30 pés, penumbra em 10 pés, ou apagar a luz. Não concede bônus numérico de ataque ou dano além do dado radiante descrito.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Crystal Blade",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "crystal-rapier": {
+    "name": "Lâmina de cristal (Rapieira)",
+    "description": "Forma: Rapieira. Cristal de dragão que acrescenta 1d8 radiante e usa cargas para recuperar PV.",
+    "merchant_comment": "Este florete de cristal ilumina o caminho por ação bônus. Você escolhe luz plena, penumbra curta ou apagá-lo.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia. A lâmina é feita de chifre ou espinho de um dragão de cristal. Ao acertar com uma jogada de ataque desta arma, o alvo recebe 1d8 de dano radiante adicional. A arma tem três cargas e recupera 1d3 cargas gastas a cada amanhecer, até três. Ao acertar uma criatura com a arma, pode gastar uma carga para recuperar PV iguais ao dano radiante adicional que ela causou. Enquanto a segura, uma ação bônus permite escolher luz plena em 30 pés e penumbra por mais 30 pés, penumbra em 10 pés, ou apagar a luz. Não concede bônus numérico de ataque ou dano além do dado radiante descrito.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Crystal Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "crystal-scimitar": {
+    "name": "Lâmina de cristal (Cimitarra)",
+    "description": "Forma: Cimitarra. Cristal de dragão que acrescenta 1d8 radiante e usa cargas para recuperar PV.",
+    "merchant_comment": "A cimitarra de cristal acrescenta um dado de oito radiante ao acerto. Curar-se exige acertar uma criatura e gastar carga.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia. A lâmina é feita de chifre ou espinho de um dragão de cristal. Ao acertar com uma jogada de ataque desta arma, o alvo recebe 1d8 de dano radiante adicional. A arma tem três cargas e recupera 1d3 cargas gastas a cada amanhecer, até três. Ao acertar uma criatura com a arma, pode gastar uma carga para recuperar PV iguais ao dano radiante adicional que ela causou. Enquanto a segura, uma ação bônus permite escolher luz plena em 30 pés e penumbra por mais 30 pés, penumbra em 10 pés, ou apagar a luz. Não concede bônus numérico de ataque ou dano além do dado radiante descrito.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Crystal Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "crystal-shortsword": {
+    "name": "Lâmina de cristal (Espada curta)",
+    "description": "Forma: Espada curta. Cristal de dragão que acrescenta 1d8 radiante e usa cargas para recuperar PV.",
+    "merchant_comment": "A espada curta de cristal veio de chifre ou espinho de dragão. O brilho pode ser apagado enquanto a segura.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia. A lâmina é feita de chifre ou espinho de um dragão de cristal. Ao acertar com uma jogada de ataque desta arma, o alvo recebe 1d8 de dano radiante adicional. A arma tem três cargas e recupera 1d3 cargas gastas a cada amanhecer, até três. Ao acertar uma criatura com a arma, pode gastar uma carga para recuperar PV iguais ao dano radiante adicional que ela causou. Enquanto a segura, uma ação bônus permite escolher luz plena em 30 pés e penumbra por mais 30 pés, penumbra em 10 pés, ou apagar a luz. Não concede bônus numérico de ataque ou dano além do dado radiante descrito.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Crystal Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "moon-touched-double-bladed-scimitar": {
+    "name": "Espada tocada pela lua (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Lâmina desembainhada ilumina a escuridão com luz lunar.",
+    "merchant_comment": "A cimitarra dupla tocada pela lua ilumina quando desembainhada na escuridão. Suas duas lâminas não duplicam o alcance da luz.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo com a arma, com dano básico 1d4 cortante em vez de 2d4. Não exige sintonia. Na escuridão, a lâmina fora da bainha emite luz lunar: luz plena em 15 pés e penumbra por mais 15 pés. Não concede bônus numérico de ataque ou dano e não possui cargas.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Moon-Touched Sword",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "moon-touched-greatsword": {
+    "name": "Espada tocada pela lua (Espada grande)",
+    "description": "Forma: Espada grande. Lâmina desembainhada ilumina a escuridão com luz lunar.",
+    "merchant_comment": "A espada grande tocada pela lua conserva o uso de duas mãos. Seu encanto fornece iluminação, sem bônus de ataque.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Não exige sintonia. Na escuridão, a lâmina fora da bainha emite luz lunar: luz plena em 15 pés e penumbra por mais 15 pés. Não concede bônus numérico de ataque ou dano e não possui cargas.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Moon-Touched Sword",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "moon-touched-longsword": {
+    "name": "Espada tocada pela lua (Espada longa)",
+    "description": "Forma: Espada longa. Lâmina desembainhada ilumina a escuridão com luz lunar.",
+    "merchant_comment": "Esta espada longa guarda luz lunar. Na escuridão, fora da bainha, ilumina quinze pés e mais quinze de penumbra.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Não exige sintonia. Na escuridão, a lâmina fora da bainha emite luz lunar: luz plena em 15 pés e penumbra por mais 15 pés. Não concede bônus numérico de ataque ou dano e não possui cargas.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Moon-Touched Sword",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "moon-touched-rapier": {
+    "name": "Espada tocada pela lua (Rapieira)",
+    "description": "Forma: Rapieira. Lâmina desembainhada ilumina a escuridão com luz lunar.",
+    "merchant_comment": "O florete lunar tem uma luz suave para o caminho escuro. Ele continua usando a acuidade do modelo.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Não exige sintonia. Na escuridão, a lâmina fora da bainha emite luz lunar: luz plena em 15 pés e penumbra por mais 15 pés. Não concede bônus numérico de ataque ou dano e não possui cargas.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Moon-Touched Sword",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "moon-touched-scimitar": {
+    "name": "Espada tocada pela lua (Cimitarra)",
+    "description": "Forma: Cimitarra. Lâmina desembainhada ilumina a escuridão com luz lunar.",
+    "merchant_comment": "A curva desta cimitarra recebe o luar. Embainhá-la encerra a exposição da lâmina que ilumina.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Não exige sintonia. Na escuridão, a lâmina fora da bainha emite luz lunar: luz plena em 15 pés e penumbra por mais 15 pés. Não concede bônus numérico de ataque ou dano e não possui cargas.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Moon-Touched Sword",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "moon-touched-shortsword": {
+    "name": "Espada tocada pela lua (Espada curta)",
+    "description": "Forma: Espada curta. Lâmina desembainhada ilumina a escuridão com luz lunar.",
+    "merchant_comment": "A espada curta lunar cabe bem no cinto. Não precisa de sintonia nem de cargas para sua iluminação.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Não exige sintonia. Na escuridão, a lâmina fora da bainha emite luz lunar: luz plena em 15 pés e penumbra por mais 15 pés. Não concede bônus numérico de ataque ou dano e não possui cargas.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Moon-Touched Sword",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "sylvan-talon-dagger": {
+    "name": "Garra silvestre (Adaga)",
+    "description": "Forma: Adaga. Permite comunicação não escrita com fadas e uma Mensagem diária.",
+    "merchant_comment": "Esta adaga silvestre conserva seu arremesso. Carregá-la após a sintonia ajuda a entender a comunicação não escrita das fadas.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, leve, arremesso. Alcance 20/60 pés. Exige sintonia. Enquanto carrega a arma consigo, você entende a comunicação não escrita de todas as fadas, e elas entendem a sua. Uma ação de Magia permite conjurar Mensagem pela arma, seguindo alcance, alvos e demais regras da magia; após o uso, esse poder só volta no próximo amanhecer. O entendimento não abrange escrita e não concede telepatia irrestrita nem bônus de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sylvan Talon",
+    "base_id": "dagger",
+    "model_name": "Adaga",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "sylvan-talon-rapier": {
+    "name": "Garra silvestre (Rapieira)",
+    "description": "Forma: Rapieira. Permite comunicação não escrita com fadas e uma Mensagem diária.",
+    "merchant_comment": "O florete silvestre guarda uma Mensagem diária. A ação de Magia usa o alcance normal desse truque.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia. Enquanto carrega a arma consigo, você entende a comunicação não escrita de todas as fadas, e elas entendem a sua. Uma ação de Magia permite conjurar Mensagem pela arma, seguindo alcance, alvos e demais regras da magia; após o uso, esse poder só volta no próximo amanhecer. O entendimento não abrange escrita e não concede telepatia irrestrita nem bônus de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sylvan Talon",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "sylvan-talon-scimitar": {
+    "name": "Garra silvestre (Cimitarra)",
+    "description": "Forma: Cimitarra. Permite comunicação não escrita com fadas e uma Mensagem diária.",
+    "merchant_comment": "A cimitarra silvestre facilita conversar com fadas. O encanto não traduz os documentos escritos delas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia. Enquanto carrega a arma consigo, você entende a comunicação não escrita de todas as fadas, e elas entendem a sua. Uma ação de Magia permite conjurar Mensagem pela arma, seguindo alcance, alvos e demais regras da magia; após o uso, esse poder só volta no próximo amanhecer. O entendimento não abrange escrita e não concede telepatia irrestrita nem bônus de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sylvan Talon",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "sylvan-talon-shortsword": {
+    "name": "Garra silvestre (Espada curta)",
+    "description": "Forma: Espada curta. Permite comunicação não escrita com fadas e uma Mensagem diária.",
+    "merchant_comment": "A espada curta silvestre faz as fadas entenderem sua comunicação não escrita. A sintonia vem antes desse entendimento.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia. Enquanto carrega a arma consigo, você entende a comunicação não escrita de todas as fadas, e elas entendem a sua. Uma ação de Magia permite conjurar Mensagem pela arma, seguindo alcance, alvos e demais regras da magia; após o uso, esse poder só volta no próximo amanhecer. O entendimento não abrange escrita e não concede telepatia irrestrita nem bônus de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sylvan Talon",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "sylvan-talon-sickle": {
+    "name": "Garra silvestre (Foice)",
+    "description": "Forma: Foice. Permite comunicação não escrita com fadas e uma Mensagem diária.",
+    "merchant_comment": "Esta foice silvestre pode transmitir Mensagem uma vez até o próximo amanhecer. Guarde o uso para a hora certa.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 cortante. Propriedades: leve. Exige sintonia. Enquanto carrega a arma consigo, você entende a comunicação não escrita de todas as fadas, e elas entendem a sua. Uma ação de Magia permite conjurar Mensagem pela arma, seguindo alcance, alvos e demais regras da magia; após o uso, esse poder só volta no próximo amanhecer. O entendimento não abrange escrita e não concede telepatia irrestrita nem bônus de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sylvan Talon",
+    "base_id": "sickle",
+    "model_name": "Foice",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "sylvan-talon-spear": {
+    "name": "Garra silvestre (Lança)",
+    "description": "Forma: Lança. Permite comunicação não escrita com fadas e uma Mensagem diária.",
+    "merchant_comment": "A lança silvestre tem ponta, manejo versátil e um encanto de comunicação. Não concede bônus numérico aos golpes.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso, versátil. Com duas mãos, dano versátil 1d8 perfurante. Alcance 20/60 pés. Exige sintonia. Enquanto carrega a arma consigo, você entende a comunicação não escrita de todas as fadas, e elas entendem a sua. Uma ação de Magia permite conjurar Mensagem pela arma, seguindo alcance, alvos e demais regras da magia; após o uso, esse poder só volta no próximo amanhecer. O entendimento não abrange escrita e não concede telepatia irrestrita nem bônus de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sylvan Talon",
+    "base_id": "spear",
+    "model_name": "Lança",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "executioner-s-battleaxe": {
+    "name": "Machado do carrasco (Machado de batalha)",
+    "description": "Forma: Machado de batalha. Arma +1 que fere humanoides com 2d6 cortante adicional e concede PV temporários.",
+    "merchant_comment": "O machado de batalha do carrasco mantém o manejo versátil. Seu dano adicional é contra humanoides.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Não exige sintonia. Concede +1 nas jogadas de ataque e dano. Qualquer humanoide que você acerte com esta arma recebe 2d6 de dano cortante adicional; você recebe PV temporários iguais ao dano adicional causado. O poder adicional depende do tipo humanoide, não de ser inimigo ou estar a 0 PV. Esses pontos são temporários, sem restaurar PV perdidos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Executioner's Axe",
+    "base_id": "battleaxe",
+    "model_name": "Machado de batalha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "executioner-s-greataxe": {
+    "name": "Machado do carrasco (Machado grande)",
+    "description": "Forma: Machado grande. Arma +1 que fere humanoides com 2d6 cortante adicional e concede PV temporários.",
+    "merchant_comment": "Este machado grande do carrasco exige duas mãos. O dano cortante adicional concede PV temporários, sem curar feridas.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Não exige sintonia. Concede +1 nas jogadas de ataque e dano. Qualquer humanoide que você acerte com esta arma recebe 2d6 de dano cortante adicional; você recebe PV temporários iguais ao dano adicional causado. O poder adicional depende do tipo humanoide, não de ser inimigo ou estar a 0 PV. Esses pontos são temporários, sem restaurar PV perdidos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Executioner's Axe",
+    "base_id": "greataxe",
+    "model_name": "Machado grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "executioner-s-halberd": {
+    "name": "Machado do carrasco (Alabarda)",
+    "description": "Forma: Alabarda. Arma +1 que fere humanoides com 2d6 cortante adicional e concede PV temporários.",
+    "merchant_comment": "A alabarda do carrasco tem alcance e +1. Os dois dados de seis extras exigem acertar um humanoide.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Não exige sintonia. Concede +1 nas jogadas de ataque e dano. Qualquer humanoide que você acerte com esta arma recebe 2d6 de dano cortante adicional; você recebe PV temporários iguais ao dano adicional causado. O poder adicional depende do tipo humanoide, não de ser inimigo ou estar a 0 PV. Esses pontos são temporários, sem restaurar PV perdidos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Executioner's Axe",
+    "base_id": "halberd",
+    "model_name": "Alabarda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "executioner-s-handaxe": {
+    "name": "Machado do carrasco (Machadinha)",
+    "description": "Forma: Machadinha. Arma +1 que fere humanoides com 2d6 cortante adicional e concede PV temporários.",
+    "merchant_comment": "A machadinha do carrasco conserva o arremesso. O tamanho pequeno não muda a condição humanoide do alvo.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 cortante. Propriedades: leve, arremesso. Alcance 20/60 pés. Não exige sintonia. Concede +1 nas jogadas de ataque e dano. Qualquer humanoide que você acerte com esta arma recebe 2d6 de dano cortante adicional; você recebe PV temporários iguais ao dano adicional causado. O poder adicional depende do tipo humanoide, não de ser inimigo ou estar a 0 PV. Esses pontos são temporários, sem restaurar PV perdidos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Executioner's Axe",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "life-sapping-rapier": {
+    "name": "Lâmina sorve-vida (Rapieira)",
+    "description": "Forma: Rapieira. Arma +1 que causa dano necrótico, bloqueia cura e mata ao reduzir a 0 PV.",
+    "merchant_comment": "O florete sorve-vida tem ferro negro e uma consequência fatal. Quem cair a zero por um ataque dele morre imediatamente.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia. Feita de ferro negro, é usada por assassinos e espiões de Thay. Concede +1 nas jogadas de ataque e dano. Ao acertar com esta arma, o alvo recebe 2d4 de dano necrótico adicional e não pode recuperar PV até o fim do próximo turno dele. Se um ataque com esta arma reduzir uma criatura a 0 PV, ela morre imediatamente e só pode retornar à vida por Ressurreição ou Ressurreição Verdadeira. O bloqueio de cura não exige que o alvo tenha chegado a 0 PV.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Life-Sapping Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "life-sapping-scimitar": {
+    "name": "Lâmina sorve-vida (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +1 que causa dano necrótico, bloqueia cura e mata ao reduzir a 0 PV.",
+    "merchant_comment": "Esta cimitarra sorve-vida impede a cura até o fim do próximo turno do alvo. O bloqueio também vale sem derrubá-lo.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia. Feita de ferro negro, é usada por assassinos e espiões de Thay. Concede +1 nas jogadas de ataque e dano. Ao acertar com esta arma, o alvo recebe 2d4 de dano necrótico adicional e não pode recuperar PV até o fim do próximo turno dele. Se um ataque com esta arma reduzir uma criatura a 0 PV, ela morre imediatamente e só pode retornar à vida por Ressurreição ou Ressurreição Verdadeira. O bloqueio de cura não exige que o alvo tenha chegado a 0 PV.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Life-Sapping Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "life-sapping-shortsword": {
+    "name": "Lâmina sorve-vida (Espada curta)",
+    "description": "Forma: Espada curta. Arma +1 que causa dano necrótico, bloqueia cura e mata ao reduzir a 0 PV.",
+    "merchant_comment": "A espada curta sorve-vida acrescenta dois dados de quatro necróticos. Ressuscitar quem ela mata exige as magias indicadas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia. Feita de ferro negro, é usada por assassinos e espiões de Thay. Concede +1 nas jogadas de ataque e dano. Ao acertar com esta arma, o alvo recebe 2d4 de dano necrótico adicional e não pode recuperar PV até o fim do próximo turno dele. Se um ataque com esta arma reduzir uma criatura a 0 PV, ela morre imediatamente e só pode retornar à vida por Ressurreição ou Ressurreição Verdadeira. O bloqueio de cura não exige que o alvo tenha chegado a 0 PV.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Life-Sapping Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "life-sapping-whip": {
+    "name": "Lâmina sorve-vida (Chicote)",
+    "description": "Forma: Chicote. Arma +1 que causa dano necrótico, bloqueia cura e mata ao reduzir a 0 PV.",
+    "merchant_comment": "O chicote sorve-vida conserva alcance e acuidade. A sintonia libera seu dano necrótico e o impedimento de recuperar PV.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. Exige sintonia. Feita de ferro negro, é usada por assassinos e espiões de Thay. Concede +1 nas jogadas de ataque e dano. Ao acertar com esta arma, o alvo recebe 2d4 de dano necrótico adicional e não pode recuperar PV até o fim do próximo turno dele. Se um ataque com esta arma reduzir uma criatura a 0 PV, ela morre imediatamente e só pode retornar à vida por Ressurreição ou Ressurreição Verdadeira. O bloqueio de cura não exige que o alvo tenha chegado a 0 PV.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Life-Sapping Blade",
+    "base_id": "whip",
+    "model_name": "Chicote",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
   }
 }
