@@ -144,5 +144,225 @@
     "estimated_weight_lb": 1,
     "review": "approved",
     "rules_summary": "Cinto flexível de couro escamado, com costuras reforçadas e fivela de bronze. Exige sintonização por um monge. Enquanto vestido, aumenta em 1 a CD dos testes de resistência de seus recursos de ki. Com uma ação, você pode recuperar pontos de ki iguais a uma rolagem de seu dado de Artes Marciais; essa recuperação fica disponível novamente no próximo amanhecer."
+  },
+  "all-purpose-tool-plus-2": {
+    "name": "Ferramenta multifuncional +2",
+    "description": "Chave de fenda de cabo claro e colares mecânicos de cobre. Transforma-se em ferramentas de artesão e fortalece as magias de um artífice sintonizado.",
+    "merchant_comment": "Essa ferramenta +2 tem um encaixe firme. Você escolhe a forma; eu escolho não emprestar a minha para alguém que esteja aprendendo a serrar.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "estimated_weight_lb": 1,
+    "review": "approved",
+    "rules_summary": "Chave de fenda que exige sintonização por um artífice. Com uma ação, assume o formato de qualquer ferramenta de artesão escolhida; você tem proficiência na forma assumida. Enquanto segurada, concede +2 às jogadas de ataque e às CDs de resistência das magias de artífice. Uma ação permite escolher um truque desconhecido de qualquer lista de classe: por 8 horas, pode conjurá-lo como truque de artífice. Essa escolha fica disponível novamente no próximo amanhecer."
+  },
+  "all-purpose-tool-plus-3": {
+    "name": "Ferramenta multifuncional +3",
+    "description": "Chave de fenda de ébano com armação prateada e engrenagens aparentes. Foco +3 para artífices, com transformação em ferramentas e um truque temporário.",
+    "merchant_comment": "O cabo de ébano da ferramenta +3 cabe bem na mão. A parte difícil continua sendo saber o que você pretende construir antes de apertar o primeiro parafuso.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "estimated_weight_lb": 1,
+    "review": "approved",
+    "rules_summary": "Chave de fenda que exige sintonização por um artífice. Com uma ação, assume o formato de qualquer ferramenta de artesão escolhida; você tem proficiência na forma assumida. Enquanto segurada, concede +3 às jogadas de ataque e às CDs de resistência das magias de artífice. Uma ação permite escolher um truque desconhecido de qualquer lista de classe: por 8 horas, pode conjurá-lo como truque de artífice. Essa escolha fica disponível novamente no próximo amanhecer."
+  },
+  "amulet-of-the-devout-plus-2": {
+    "name": "Amuleto do devoto +2",
+    "description": "Medalhão de prata em pétalas, lápis-lazúli e raios dourados. Amuleto +2 para clérigos e paladinos, com um uso adicional de Canalizar Divindade.",
+    "merchant_comment": "O amuleto +2 fica rente ao peito, sem pontas que prendam na roupa. Sobre a bênção, fale com sua divindade; a corrente eu garanto.",
+    "slots": [
+      "neck"
+    ],
+    "material": "metal",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por clérigo ou paladino. Usar o amuleto concede +2 às jogadas de ataque e às CDs de resistência das suas magias. Enquanto o usa, também pode ativar Canalizar Divindade sem gastar um uso da característica. Essa propriedade só se renova no próximo amanhecer."
+  },
+  "amulet-of-the-devout-plus-3": {
+    "name": "Amuleto do devoto +3",
+    "description": "Rosácea dourada de pérolas e granada, suspensa em corrente escura. Fortalece as magias do devoto sintonizado com bônus +3.",
+    "merchant_comment": "Esse amuleto +3 tem trabalho fino até no verso. Quem o fez levou a devoção a sério e, pelo visto, também levava os próprios óculos.",
+    "slots": [
+      "neck"
+    ],
+    "material": "metal",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por clérigo ou paladino. Usar o amuleto concede +3 às jogadas de ataque e às CDs de resistência das suas magias. Enquanto o usa, também pode ativar Canalizar Divindade sem gastar um uso da característica. Essa propriedade só se renova no próximo amanhecer."
+  },
+  "arcane-grimoire-plus-2": {
+    "name": "Grimório arcano +2",
+    "description": "Grimório de couro verde com fecho de astrolábio e lombada reforçada. Foco +2 para magos, que também melhora a Recuperação Arcana.",
+    "merchant_comment": "O fecho desse grimório +2 segura as páginas mesmo com a mala cheia. Só não feche o livro em cima de um círculo ainda molhado de tinta.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "paper",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por mago. Enquanto segurado, serve como foco para magias de mago e concede +2 às jogadas de ataque e às CDs de resistência dessas magias. Também pode guardar suas magias como grimório. Ao usar Recuperação Arcana, aumenta em 1 o total de níveis de espaços de magia recuperáveis."
+  },
+  "arcane-grimoire-plus-3": {
+    "name": "Grimório arcano +3",
+    "description": "Livro de couro vinho entre capas de madeira, com prata e opala. Grimório e foco +3 para magos sintonizados.",
+    "merchant_comment": "Esse grimório +3 merece uma bolsa seca. Já vi mago proteger livro de dragão e perder tudo para uma chaleira mal fechada.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "paper",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por mago. Enquanto segurado, serve como foco para magias de mago e concede +3 às jogadas de ataque e às CDs de resistência dessas magias. Também pode guardar suas magias como grimório. Ao usar Recuperação Arcana, aumenta em 1 o total de níveis de espaços de magia recuperáveis."
+  },
+  "bloodwell-vial-plus-2": {
+    "name": "Frasco de sangue +2",
+    "description": "Frasco facetado protegido por armação de bronze e prata. Foco +2 que guarda algumas gotas do sangue do feiticeiro sintonizado.",
+    "merchant_comment": "O frasco +2 tem a trava bem fechada. Faça a sintonização com calma e confira de quem é o sangue antes de me trazer uma reclamação.",
+    "slots": [
+      "neck",
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "glass",
+    "estimated_weight_lb": 0.1,
+    "review": "approved",
+    "rules_summary": "Exige sintonização por feiticeiro. Para sintonizar, deposite algumas gotas do próprio sangue; o frasco fica selado durante o vínculo, e o conteúdo vira cinzas quando ele acaba. Usado ou segurado, funciona como foco e concede +2 às jogadas de ataque e às CDs das magias de feiticeiro. Se rolar Dados de Vida para recuperar PV enquanto o carrega, pode recuperar 5 pontos de feitiçaria. Essa recuperação só se renova no próximo amanhecer."
+  },
+  "bloodwell-vial-plus-3": {
+    "name": "Frasco de sangue +3",
+    "description": "Pequeno frasco de cristal em filigrana dourada, com tampa de granada. Reforça as magias de feiticeiro com bônus +3 e ajuda a recuperar feitiçaria.",
+    "merchant_comment": "Esse frasco +3 é miúdo, mas não é enfeite para criança. Ponha num cordão seguro; ninguém quer procurar uma parte de si no fundo de uma mochila.",
+    "slots": [
+      "neck",
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "glass",
+    "estimated_weight_lb": 0.1,
+    "review": "approved",
+    "rules_summary": "Exige sintonização por feiticeiro. Para sintonizar, deposite algumas gotas do próprio sangue; o frasco fica selado durante o vínculo, e o conteúdo vira cinzas quando ele acaba. Usado ou segurado, funciona como foco e concede +3 às jogadas de ataque e às CDs das magias de feiticeiro. Se rolar Dados de Vida para recuperar PV enquanto o carrega, pode recuperar 5 pontos de feitiçaria. Essa recuperação só se renova no próximo amanhecer."
+  },
+  "dragonhide-belt-plus-2": {
+    "name": "Cinto de couro de dragão +2",
+    "description": "Cinto flexível de escamas verdes, costura clara e fivela de mandíbulas. Aumenta em 2 as CDs das características de ki do monge.",
+    "merchant_comment": "O cinto +2 cede com o movimento, apesar das escamas. Experimente a fivela antes de partir; meditação nenhuma conserta um cinto frouxo.",
+    "slots": [
+      "belt"
+    ],
+    "material": "leather",
+    "estimated_weight_lb": 1,
+    "review": "approved",
+    "rules_summary": "Exige sintonização por monge. Enquanto usado, concede +2 às CDs de resistência de suas características de ki. Com uma ação, role seu dado de Artes Marciais e recupere essa quantidade de pontos de ki. A recuperação só fica disponível novamente no próximo amanhecer."
+  },
+  "dragonhide-belt-plus-3": {
+    "name": "Cinto de couro de dragão +3",
+    "description": "Couro de dragão escuro com costura de cobre e fivela alada de âmbar. Cinto +3 para monges, com recuperação diária de ki.",
+    "merchant_comment": "A fivela desse cinto +3 é grande, mas o couro dobra sem brigar com você. Basta ajustar antes de começar os saltos.",
+    "slots": [
+      "belt"
+    ],
+    "material": "leather",
+    "estimated_weight_lb": 1,
+    "review": "approved",
+    "rules_summary": "Exige sintonização por monge. Enquanto usado, concede +3 às CDs de resistência de suas características de ki. Com uma ação, role seu dado de Artes Marciais e recupere essa quantidade de pontos de ki. A recuperação só fica disponível novamente no próximo amanhecer."
+  },
+  "moon-sickle-plus-2": {
+    "name": "Foice lunar +2",
+    "description": "Foice prateada de cabo de carvalho, hera entalhada e pedra lunar. Bônus +2 para ataques e magias, com auxílio à cura.",
+    "merchant_comment": "A foice lunar +2 tem uma curva boa para trabalhar de perto. A pedra é bonita, mas preste atenção primeiro em onde está a ponta.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "review": "approved",
+    "rules_summary": "Arma leve de uma mão, com dano cortante de 1d4. Exige sintonização por druida ou patrulheiro. Concede +2 aos ataques e danos feitos com ela. Enquanto segurada, também concede +2 às jogadas de ataque e às CDs de resistência das magias de druida e patrulheiro, e pode servir como foco dessas magias. Ao conjurar uma magia que restaura PV enquanto a segura, role 1d4 e some o resultado à cura."
+  },
+  "moon-sickle-plus-3": {
+    "name": "Foice lunar +3",
+    "description": "Foice de crescente profundo, cabo claro e opala junto à lâmina. Arma e foco +3 para druida ou patrulheiro sintonizado.",
+    "merchant_comment": "Essa foice +3 foi feita com paciência. Não use o fio para abrir caixotes; há maneiras menos caras de me deixar triste.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "review": "approved",
+    "rules_summary": "Arma leve de uma mão, com dano cortante de 1d4. Exige sintonização por druida ou patrulheiro. Concede +3 aos ataques e danos feitos com ela. Enquanto segurada, também concede +3 às jogadas de ataque e às CDs de resistência das magias de druida e patrulheiro, e pode servir como foco dessas magias. Ao conjurar uma magia que restaura PV enquanto a segura, role 1d4 e some o resultado à cura."
+  },
+  "rhythm-maker-s-drum-plus-2": {
+    "name": "Tambor do ritmista +2",
+    "description": "Tambor de madeira clara, aro de cobre e tiras vinho. Instrumento +2 para bardos, que recupera um uso de Inspiração.",
+    "merchant_comment": "O tambor +2 responde bem ao toque leve. Se você só sabe tocar forte, espere até eu guardar as louças antes de experimentar.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por bardo. Enquanto segurado, concede +2 às jogadas de ataque e às CDs de resistência das magias de bardo. Com uma ação, toque o tambor para recuperar um uso de Inspiração de Bardo. Essa recuperação fica disponível novamente no próximo amanhecer."
+  },
+  "rhythm-maker-s-drum-plus-3": {
+    "name": "Tambor do ritmista +3",
+    "description": "Tambor de nogueira entalhada, aro com pedras violetas e alça azul. Fortalece magias de bardo com bônus +3.",
+    "merchant_comment": "Esse tambor +3 tem um som cheio sem precisar de pancadaria. A plateia costuma gostar mais quando você lembra disso.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por bardo. Enquanto segurado, concede +3 às jogadas de ataque e às CDs de resistência das magias de bardo. Com uma ação, toque o tambor para recuperar um uso de Inspiração de Bardo. Essa recuperação fica disponível novamente no próximo amanhecer."
+  },
+  "rod-of-the-pact-keeper-plus-2": {
+    "name": "Bastão do guardião do pacto +2",
+    "description": "Bastão curto de nogueira, bronze trançado e coroa em crescente. Foco +2 que pode recuperar um espaço de magia.",
+    "merchant_comment": "O bastão +2 fica seguro pela parte trançada. Faça seus acordos olhando nos olhos; com o mercador, de preferência antes de levar a peça.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por bruxo. Enquanto segurado, concede +2 às jogadas de ataque e às CDs de resistência das magias de bruxo. Uma ação Mágica enquanto segura o bastão recupera um espaço de magia. Essa recuperação só se renova depois de um descanso longo."
+  },
+  "rod-of-the-pact-keeper-plus-3": {
+    "name": "Bastão do guardião do pacto +3",
+    "description": "Bastão de chifre escuro, prata e coroa de serpentes envolvendo cristal azul. Fortalece as magias de bruxo com bônus +3.",
+    "merchant_comment": "O acabamento do bastão +3 chama atenção. Leve-o bem guardado se pretende viajar sem explicar seu pacto a cada guarda da estrada.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "review": "approved",
+    "rules_summary": "Exige sintonização por bruxo. Enquanto segurado, concede +3 às jogadas de ataque e às CDs de resistência das magias de bruxo. Uma ação Mágica enquanto segura o bastão recupera um espaço de magia. Essa recuperação só se renova depois de um descanso longo."
+  },
+  "wraps-of-unarmed-power-plus-2": {
+    "name": "Faixas do poder desarmado +2",
+    "description": "Par de faixas de linho avermelhado com fios prateados e pontas reforçadas. Bônus +2 para ataques desarmados, com escolha de dano de Força.",
+    "merchant_comment": "As faixas +2 são firmes, mas ainda precisam de uma boa amarração. Faça o teste com a mão aberta antes de sair distribuindo socos.",
+    "slots": [
+      "hands"
+    ],
+    "material": "cloth",
+    "estimated_weight_lb": 0.25,
+    "review": "approved",
+    "rules_summary": "Enquanto usa as faixas, recebe +2 às jogadas de ataque e de dano dos seus Ataques Desarmados. Cada um desses ataques pode causar dano de Força ou seu tipo normal, à sua escolha. Não exige sintonização."
+  },
+  "wraps-of-unarmed-power-plus-3": {
+    "name": "Faixas do poder desarmado +3",
+    "description": "Faixas índigo com trama dourada e bordas bordadas, vendidas em par. Reforçam ataques desarmados com bônus +3.",
+    "merchant_comment": "As faixas +3 têm trama fina e costura forte. Lave depois da luta; tecido encantado também merece um pouco de respeito.",
+    "slots": [
+      "hands"
+    ],
+    "material": "cloth",
+    "estimated_weight_lb": 0.25,
+    "review": "approved",
+    "rules_summary": "Enquanto usa as faixas, recebe +3 às jogadas de ataque e de dano dos seus Ataques Desarmados. Cada um desses ataques pode causar dano de Força ou seu tipo normal, à sua escolha. Não exige sintonização."
   }
 }

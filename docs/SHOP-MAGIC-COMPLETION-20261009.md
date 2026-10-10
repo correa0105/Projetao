@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **12 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **30 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.135 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.103 candidatos como itens publicados ou cobertura já completa.
@@ -73,6 +73,26 @@ instalação anterior. A auditoria encontrou linhas integralmente idênticas nas
 novos registros foram adicionados. Os 43 bundles, os 21 materiais VFX revisados
 e as 24 novas mídias de itens coincidem com a cópia validada. Ilustrador PID
 24260 mantido em execução, baús com prévia conservados e protótipo 330×4 pausado.
+
+## Segundo lote: versões +2 e +3
+
+Aplicadas as 18 versões superiores dos nove focos/equipamentos de classe.
+Cada uma tem construção e ornamentos próprios, imagem transparente original,
+fala escrita individualmente e som exclusivo. Não são recolorações das versões
++1. Prompts também em `art-jobs-higher-foci.json`; nativos preservados localmente.
+Os detalhes mantêm os bônus corretos, sintonização e limites de recuperação.
+
+A verificação em banco descartável passou para todos os 30 itens, incluindo
+compra integral, saldo, histórico, repetição e preço administrativo persistente.
+O saldo do personagem de teste acompanha o valor real do lote. Revisão da loja
+em 1500/760/390 px e TypeScript/builds passaram na cópia limpa de release.
+Todos os campos dos 12 itens do primeiro lote foram comparados e conservados.
+
+Release `alvorada-cinzenta-app:magic-completion-v2-20261009`: 60 tabelas e todos
+os produtos anteriores com linhas integrais idênticas ao snapshot imediatamente
+anterior. Somente 18 novos produtos adicionados. Todas as 60 mídias de itens,
+43 bundles e 21 materiais VFX conferidos no servidor. Ilustrador mantido.
+Ainda há **3.073 candidatos pendentes**; completar TODOS continua em andamento.
 
 Próximo trabalho: continuar a curadoria e as artes dos itens nomeados e famílias,
 ampliar a verificação de cobertura e adicionar apenas lotes completamente prontos.

@@ -41,11 +41,16 @@ try {
     .join('; ');
   const user = signup.data.user,
     hero = await createLegacyTestCharacter(user.id, 'Conferência do Empório');
-  await pool.query('UPDATE characters SET gold_cp=10000000 WHERE id=$1', [hero.id]);
   const completion = JSON.parse(
     await readFile('data/shop-magic-completion-20261009/catalog.json', 'utf8'),
   );
   assert(completion.ready && completion.items.length > 0);
+  const initialGold = completion.items.reduce(
+    (sum: number, x: any) => sum + (x.price_cp || 0),
+    100000,
+  );
+  assert(Number.isSafeInteger(initialGold) && initialGold < 2147483647);
+  await pool.query('UPDATE characters SET gold_cp=$2 WHERE id=$1', [hero.id, initialGold]);
   const art = JSON.parse(
     await readFile('data/shop-magic-completion-20261009/art-manifest.json', 'utf8'),
   ).assets;
@@ -125,7 +130,7 @@ try {
   );
   assert.equal(
     (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
-    10000000 - total,
+    initialGold - total,
   );
   for (const [id, slot] of [
     ['cloak-of-billowing', 'cloak'],
