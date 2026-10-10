@@ -67,6 +67,13 @@ try {
     await readFile('data/shop-magic-completion-20261009/catalog.json', 'utf8'),
   );
   assert(completion.ready && completion.items.length > 0);
+  const rulesReviewIds = process.env.SHOP_MAGIC_RULES_IDS
+    ? new Set<string>(JSON.parse(await readFile(process.env.SHOP_MAGIC_RULES_IDS, 'utf8')))
+    : null;
+  if (rulesReviewIds) {
+    assert(rulesReviewIds.size > 0);
+    for (const id of rulesReviewIds) assert(completion.items.some((x: any) => x.id === id), id);
+  }
   const initialGold = completion.items.reduce(
     (sum: number, x: any) => sum + (x.price_cp || 0),
     100000,
@@ -87,12 +94,14 @@ try {
     assert.equal(actual.price_cp, expected.price_cp);
     assert.deepEqual(compatibleSlots(actual), expected.raw_data.equipment_slots);
     assert.equal(twoHanded(actual), expected.raw_data.two_handed);
-    const rules = await request(`/catalog/${expected.id}/rules`);
-    assert.equal(rules.status, 200);
-    assert.equal(rules.data.description, expected.raw_data.rules_summary);
-    assert(rules.data.source_name.includes(expected.raw_data.source_book));
-    assert(!rules.data.source_name.includes('CC BY'));
-    assert.equal(rules.data.project_content, false);
+    if (!rulesReviewIds || rulesReviewIds.has(expected.id)) {
+      const rules = await request(`/catalog/${expected.id}/rules`);
+      assert.equal(rules.status, 200);
+      assert.equal(rules.data.description, expected.raw_data.rules_summary);
+      assert(rules.data.source_name.includes(expected.raw_data.source_book));
+      assert(!rules.data.source_name.includes('CC BY'));
+      assert.equal(rules.data.project_content, false);
+    }
     const image = await fetch(base + expected.image_path);
     assert.equal(image.status, 200);
     const b = Buffer.from(await image.arrayBuffer());
@@ -261,8 +270,26 @@ try {
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger, 'Consumption cannot change the purchase ledger');
   }
+  const ruidium = completion.items.filter((x: any) => x.raw_data.magic_family === 'Ruidium Weapon');
+  if (ids.includes('ruidium-longsword')) {
+    assert.equal(ruidium.length, 51);
+    assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: null, slot: 'off_hand' })).status, 200);
+    for (const item of ruidium) {
+      assert.equal(item.raw_data.attunement, true);
+      assert.equal(item.raw_data.upstream_source, 'CRCotN');
+      assert.equal(item.raw_data.upstream_facts.bonusWeapon, '+2');
+      assert(item.raw_data.source_edition.includes('2014'));
+      assert.match(item.raw_data.rules_summary, /2d6 de dano psíquico/);
+      assert.match(item.raw_data.rules_summary, /Carisma CD 20/);
+      assert.match(item.raw_data.rules_summary, /um nível de exaustão/);
+      assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'main_hand' })).status, 200, item.id);
+      if (item.raw_data.two_handed)
+        assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'off_hand' })).status, 400, item.id);
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger, 'Equipment cannot change the purchase ledger');
+  }
   console.log(
-    `PASS ${ids.length} reviewed magic items: original art/audio/source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
+    `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
   );
 } finally {
   await new Promise<void>((r) => server.close(() => r()));

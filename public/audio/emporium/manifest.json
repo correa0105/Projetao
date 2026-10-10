@@ -15134,5 +15134,413 @@
     "sha256": "a340edc4caf71dab150e055b136082f766b17402ba9d5fd08cabcfd0b218716a",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-antimatter-rifle",
+    "path": "public/audio/emporium/ruidium-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "b6f506ca312bc6f5399bd95291b2c33396b80fea2693cd6de7582fe25c5f6944",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-automatic-rifle",
+    "path": "public/audio/emporium/ruidium-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "eab8e866afb761d9719289df170c006254825e1be605ea95e62293363a5b3130",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-battleaxe",
+    "path": "public/audio/emporium/ruidium-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "7d5e8c0942006176518a43f1690b8e74aea608cccc4995cd239f7969aae60ee4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-blowgun",
+    "path": "public/audio/emporium/ruidium-blowgun.wav",
+    "kind": "wood",
+    "sha256": "5e0b23aafafca7fdecdeec8b9eb379c1299f90d8c8f869155e71619d5a18cb7b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-club",
+    "path": "public/audio/emporium/ruidium-club.wav",
+    "kind": "wood",
+    "sha256": "1cbf80a8c265f562408023341bf2dc6b23f3e3e1f8d3bc94321fdf62dc3f6207",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-dagger",
+    "path": "public/audio/emporium/ruidium-dagger.wav",
+    "kind": "metal",
+    "sha256": "d463f74161a066a60f102a1ecae77600b691170e5165152f3fc9c995df8a20a9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-dart",
+    "path": "public/audio/emporium/ruidium-dart.wav",
+    "kind": "metal",
+    "sha256": "77381cfa24d83038d88def1b912041952703deaf3fc3e6f5200188f225c285d7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-double-bladed-scimitar",
+    "path": "public/audio/emporium/ruidium-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "5a9adf995857103afb4165a9828583b7ca564f3021b2cdcc99b70c3f26a2b2ec",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-flail",
+    "path": "public/audio/emporium/ruidium-flail.wav",
+    "kind": "metal",
+    "sha256": "6a810823cace38a258cefa54829264f9d093c3ea6b46f125631c8b0eac350b85",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-glaive",
+    "path": "public/audio/emporium/ruidium-glaive.wav",
+    "kind": "metal",
+    "sha256": "f19f513a8009baa75bd67df99e068b8b9a7646438c9f09b95f7423d2e2c48b40",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-greataxe",
+    "path": "public/audio/emporium/ruidium-greataxe.wav",
+    "kind": "metal",
+    "sha256": "eb76ccf24d984ec76fd53cde5ae0774f55b1757636a99448a3d1eabf85e6fcf4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-greatclub",
+    "path": "public/audio/emporium/ruidium-greatclub.wav",
+    "kind": "wood",
+    "sha256": "d24859d81caadecb5971934cdb7cfd736179253a9ee4618fd0b8014334a667eb",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-greatsword",
+    "path": "public/audio/emporium/ruidium-greatsword.wav",
+    "kind": "metal",
+    "sha256": "09fee199b565b0972861706ae91e2b5ed435a12d26cbb335b288aa59b5d58f55",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-halberd",
+    "path": "public/audio/emporium/ruidium-halberd.wav",
+    "kind": "metal",
+    "sha256": "87790149064977ad7519eab5fa7b55288383184831239f4fa30154b593438e4b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-hand-crossbow",
+    "path": "public/audio/emporium/ruidium-hand-crossbow.wav",
+    "kind": "metal",
+    "sha256": "9b783b4ea3011979b03ec905a519783506bd0a3432163bb620e5f859323ec5c9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-handaxe",
+    "path": "public/audio/emporium/ruidium-handaxe.wav",
+    "kind": "metal",
+    "sha256": "4fe3fe2b82da5b510e68e36441f4a52e61ba857d3b3894b41b6729c450f592ff",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-heavy-crossbow",
+    "path": "public/audio/emporium/ruidium-heavy-crossbow.wav",
+    "kind": "metal",
+    "sha256": "c89d8e3ec3a5c152e643ae6bb77a13b3372326ed14fbbe683972a20e34b52d8b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-hooked-shortspear",
+    "path": "public/audio/emporium/ruidium-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "fdada1ff0507c22c4ed505e30595eabe608fbd8e11dd5d04aea865cef01f3eb6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-hoopak",
+    "path": "public/audio/emporium/ruidium-hoopak.wav",
+    "kind": "wood",
+    "sha256": "10af08b20759356184b9b4fee8085a2ede390678e9a0a24cfe84bca85d5e6874",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-hunting-rifle",
+    "path": "public/audio/emporium/ruidium-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "d3a3737baea3f77a1a6c4a8c3243e74d55cf7d573e63e78494d8dba9437d8c61",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-javelin",
+    "path": "public/audio/emporium/ruidium-javelin.wav",
+    "kind": "metal",
+    "sha256": "b9fc72378fed64d39771f3305a03620f74b91d05255f1aec9c4c8f9872435225",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-lance",
+    "path": "public/audio/emporium/ruidium-lance.wav",
+    "kind": "metal",
+    "sha256": "650da867db8f07fe49980c2a29c824c93795439c400b3657cd371447bd275d50",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-laser-pistol",
+    "path": "public/audio/emporium/ruidium-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "c4ceff42150ef502e5f7dcabd3b960c542318ca56d129055f44617a4ed8f6ac6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-laser-rifle",
+    "path": "public/audio/emporium/ruidium-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "8b09a1d554d4d94d5efc19ceb30fc761b37d1179d45a0ed7e4aa4c764797605d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-light-crossbow",
+    "path": "public/audio/emporium/ruidium-light-crossbow.wav",
+    "kind": "metal",
+    "sha256": "dd254170283ffbffdfbed26e9f2b22a3e30645e9720deae7bda25d6f040b5a0c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-light-hammer",
+    "path": "public/audio/emporium/ruidium-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "562c6ac45400512c61f5ece44d8ec2dd428a176085b86f07287afadea211aa9a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-light-repeating-crossbow",
+    "path": "public/audio/emporium/ruidium-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "4d81eba70cbd0e2eb9179e10aeb9a0c4e4e27bbf112de42c160a1c2a86daf952",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-longbow",
+    "path": "public/audio/emporium/ruidium-longbow.wav",
+    "kind": "wood",
+    "sha256": "a90f64d50b75a74d54573e8527f8e0df43094482d02df2e1508bf3ce4444a376",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-longsword",
+    "path": "public/audio/emporium/ruidium-longsword.wav",
+    "kind": "metal",
+    "sha256": "913d8212ff381abb01ad336ce8bfa3fa28cd85bcc9db02db0217c3f698762f89",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-mace",
+    "path": "public/audio/emporium/ruidium-mace.wav",
+    "kind": "metal",
+    "sha256": "526d8bdf308e195204ff8bf9761b3c12635555f272341abe34ba81ce046d9b23",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-maul",
+    "path": "public/audio/emporium/ruidium-maul.wav",
+    "kind": "metal",
+    "sha256": "a0774f9fa32fe67016ad9c2bd30febcc874b02aecdb1a2e871af85b2e0c98bfd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-morningstar",
+    "path": "public/audio/emporium/ruidium-morningstar.wav",
+    "kind": "metal",
+    "sha256": "0d497a9b9493a05a7948e90c5291ff0c5a45fb8cc070f181252f1b63327f6920",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-musket",
+    "path": "public/audio/emporium/ruidium-musket.wav",
+    "kind": "metal",
+    "sha256": "aee723611de778275c55955eb6b55f7b5b6b1d0bc316f94dd80cc04495098f83",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-pike",
+    "path": "public/audio/emporium/ruidium-pike.wav",
+    "kind": "metal",
+    "sha256": "f7f5108c17b2f7ef6d6f7084aba0ab44d00fcbeb12ece0a4821af08f3cf8cf91",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-pistol",
+    "path": "public/audio/emporium/ruidium-pistol.wav",
+    "kind": "metal",
+    "sha256": "d2e03b47cf697c0e997a318a49ec1c0ed1da07d18dd7834e9884ad5895bd48ad",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-quarterstaff",
+    "path": "public/audio/emporium/ruidium-quarterstaff.wav",
+    "kind": "wood",
+    "sha256": "09c77dce1059ea0a17053012d8b412433006169ef15d00585862e15be043d551",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-rapier",
+    "path": "public/audio/emporium/ruidium-rapier.wav",
+    "kind": "metal",
+    "sha256": "fda61472728bd4c521d902008344e00c04f9b6aa49f84bace23196c090ad0482",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-revolver",
+    "path": "public/audio/emporium/ruidium-revolver.wav",
+    "kind": "metal",
+    "sha256": "84c4b17bf42f6b388d80828309c96a0427b435fc1e39517c97f4ff39b0e96b9f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-scimitar",
+    "path": "public/audio/emporium/ruidium-scimitar.wav",
+    "kind": "metal",
+    "sha256": "684b45ca02e82498708f5116e53fe4370e514d06452a739c395cfcfa53de0689",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-semiautomatic-pistol",
+    "path": "public/audio/emporium/ruidium-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "e131bae6d7a3392b05a7ec2e0bce33ce2936ec92c7e8fc46d94f6198e5e614a5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-shortbow",
+    "path": "public/audio/emporium/ruidium-shortbow.wav",
+    "kind": "wood",
+    "sha256": "c4bfbca29740d86542a4598113e3b0082cd148cdb528d142d9ceef8354f689d7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-shortsword",
+    "path": "public/audio/emporium/ruidium-shortsword.wav",
+    "kind": "metal",
+    "sha256": "13181bd555560e37928a79e452fc7851887b100d615856e107edc11a82f2030f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-shotgun",
+    "path": "public/audio/emporium/ruidium-shotgun.wav",
+    "kind": "metal",
+    "sha256": "71af8b557bdffe6b6dd4d524dac8d683acf05db2b78f31dafe1d4e0e76e381e9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-sickle",
+    "path": "public/audio/emporium/ruidium-sickle.wav",
+    "kind": "metal",
+    "sha256": "580245ca6d752cacacf1efc47e536c7d1adb009bb811c0a879647904cbf0d0c8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-sling",
+    "path": "public/audio/emporium/ruidium-sling.wav",
+    "kind": "leather",
+    "sha256": "567819cb72eb4fdd326c7f7e966f6d193d09353111cecb30f6ae091ea2df2f48",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-spear",
+    "path": "public/audio/emporium/ruidium-spear.wav",
+    "kind": "metal",
+    "sha256": "a2822c61b2799793fe0bf4394b92d315b3ce9e7a714c922f9e3bd0137202111b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-trident",
+    "path": "public/audio/emporium/ruidium-trident.wav",
+    "kind": "metal",
+    "sha256": "882f3a46d8bd836e87daf4d437edba9e42edcd54b5779c7b123cf16d0435c373",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-war-pick",
+    "path": "public/audio/emporium/ruidium-war-pick.wav",
+    "kind": "metal",
+    "sha256": "40b1147d580d6c437211809848834fc5a8898ea4624c90d05e2a5c5b2f6d2311",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-warhammer",
+    "path": "public/audio/emporium/ruidium-warhammer.wav",
+    "kind": "metal",
+    "sha256": "6019290da5f2503769336ad14108f4e384e4c6853ed525da28a3c8ca78783f56",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-whip",
+    "path": "public/audio/emporium/ruidium-whip.wav",
+    "kind": "metal",
+    "sha256": "4b047ddf6d99c4f436a5b78b5afa1f68e21b681fb8cd72606fc69cd343eb2dcf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruidium-yklwa",
+    "path": "public/audio/emporium/ruidium-yklwa.wav",
+    "kind": "metal",
+    "sha256": "66f87800bbff085a14d09cfcfecb2d1d13d452804509b60f3b8f2aad2d68522e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

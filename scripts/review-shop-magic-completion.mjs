@@ -7,6 +7,10 @@ const completion = JSON.parse(
 );
 const publicItem=(x)=>({...x,image_path:x.image_path||'/shop/items/'+x.id+'.png',...Object.fromEntries(['magic_family','base_item','damage_type','rarity','variant','enhancement','magic_kind'].map(k=>[k,x.raw_data?.[k]??x[k]]))});
 const items = completion.items.map(publicItem);
+const reviewIdsArg=process.argv.find(x=>x.startsWith('--ids-file='));
+const reviewIds=reviewIdsArg?new Set(JSON.parse(await fs.readFile(reviewIdsArg.slice('--ids-file='.length)))):null;
+if(reviewIds){assert(reviewIds.size>0);for(const id of reviewIds)assert(items.some(x=>x.id===id),id);}
+const reviewedItems=reviewIds?items.filter(x=>reviewIds.has(x.id)):items;
 const catalog=[...JSON.parse(await fs.readFile('data/shop-export/loja.json')).items,...JSON.parse(await fs.readFile('data/emporium-expansion.json')).items,...completion.items].map(publicItem);
 await fs.mkdir('test-results', { recursive: true });
 await fs.writeFile(
@@ -54,7 +58,7 @@ try {
   });
   await page.waitForSelector('.shop-product', { timeout: 60000 });
   const search = page.getByRole('textbox', { name: 'Procurar item' });
-  for (const x of process.argv.includes('--chests-only') ? [] : items) {
+  for (const x of process.argv.includes('--chests-only') ? [] : reviewedItems) {
     await search.fill(x.name);
     const grouped = x.magic_family && ['weapon', 'armor'].includes(x.magic_kind);
     const card = page.locator(grouped?`.shop-product[data-family="${x.magic_family}"]`:`.shop-product[data-item-id="${x.id}"]`);
@@ -93,7 +97,7 @@ try {
     assert((await page.evaluate(() => document.documentElement.scrollWidth)) <= width + 1);
   }
   assert.deepEqual(errors, []);
-  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance','antimatter-rifle-plus-3','wooden-staff-of-warning','corpse-slayer-greatsword','dazzling-halberd','hellfire-heavy-crossbow','longsword-of-certain-death','breastplate-of-gleaming','cast-off-chain-shirt','mariner-s-leather-armor','smoldering-scale-mail','plate-armor-of-weightlessness','silvered-antimatter-rifle','adamantine-greatsword']){
+  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance','antimatter-rifle-plus-3','wooden-staff-of-warning','corpse-slayer-greatsword','dazzling-halberd','hellfire-heavy-crossbow','longsword-of-certain-death','breastplate-of-gleaming','cast-off-chain-shirt','mariner-s-leather-armor','smoldering-scale-mail','plate-armor-of-weightlessness','silvered-antimatter-rifle','adamantine-greatsword','ruidium-longsword','ruidium-longbow','ruidium-antimatter-rifle']){
     const x=items.find(x=>x.id===id);if(!x)continue;
     await search.fill(x.name);
     const card=page.locator(`.shop-product[data-family="${x.magic_family}"]`);
@@ -109,7 +113,7 @@ try {
     }
   }
   console.log(
-    process.argv.includes('--chests-only') ? 'PASS old and newly added chest previews: selected skin, whole silhouette and responsive bounds.' : `PASS ${items.length} new item images, individual merchant speeches and source descriptions; responsive shop in three widths.`,
+    process.argv.includes('--chests-only') ? 'PASS old and newly added chest previews: selected skin, whole silhouette and responsive bounds.' : `PASS ${reviewedItems.length} reviewed item images, individual merchant speeches and source descriptions; complete ${items.length}-item shop responsive in three widths.`,
   );
 } finally {
   await browser.close();

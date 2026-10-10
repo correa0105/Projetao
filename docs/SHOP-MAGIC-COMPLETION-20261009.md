@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **561 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **612 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -334,3 +334,40 @@ exatamente 87 novas ofertas. As 1.157 mídias/referências publicadas, o servido
 43 bundles, 21 VFX anteriores e Lava/Corrente elétrica mais recentes conferem
 com os arquivos validados. Ilustrador ativo e alterações independentes intactas.
 Restam 2.515 candidatos, além das opções de magia/alvo por expandir.
+
+## Nono lote: armas de ruidium
+
+Aplicados 51 modelos de arma com cristal vermelho de ruidium em metal de
+cor ferrugem. Um material original foi produzido por `image_gen.imagegen`;
+cada forma usa SVG nativo com referência física própria, fala e foley únicos.
+Prompts em `art-jobs-ruidium-material.json`, procedência em `art-manifest.json`,
+fonte PNG em `.local/shop-completion/native/material-ruidium-weapon.png` e
+52 novos arquivos portáveis em `public/shop/magic-completion-20261009`.
+As quatro folhas de 51 formas e três novas prévias sobre o baú foram revistas
+com as peças completas. As 561 ofertas anteriores e suas artes ficam intactas.
+
+Critical Role: Call of the Netherdeep, página 216, consultado pelos dados
+primários do 5etools: sintonia, +2 para ataque/dano, mais 2d6 psíquicos ao
+acertar uma criatura. Enquanto a arma está em seu poder, respirar água e
+natação igual à caminhada. Um 1 natural em ataque com a arma exige Carisma
+CD 20; falhar concede um nível de exaustão e inicia corrupção de ruidium,
+caso ainda não haja corrupção. Quando o Apotheon é morto ou redimido, o
+ruidium de Exandria desaparece e resta uma arma +2. A regra de 2014 está
+rotulada separadamente dos modelos físicos de 2024. Regras narradas continuam
+exigindo aplicação na mesa; o resumo não afirma automação de combate.
+
+QA de todos os 612 itens em banco descartável: imagens/sons únicos, compra,
+ledger, saldo, replay, preços administrativos, conservação de catálogo antigo,
+equipamento e consumo existentes. Os 51 endpoints de regras novas passaram e
+todos os modelos de ruidium foram equipados; 80 conjuntos de seis peças foram
+reconferidos. O QA pode receber uma lista explícita de fontes novas para evitar
+repetir requisições de regras já conferidas, preservando compra e auditoria de
+todos os itens e o limite real da API. As 51 artes/falas/fontes novas passaram
+na loja completa de 612 itens em 1500/760/390 px, sem overflow; TypeScript passou.
+Os bundles e servidor validados no lote anterior permanecem idênticos.
+
+Release `magic-completion-v9-20261010` saudável, backup anterior conservado.
+60 tabelas e toda oferta anterior integralmente idênticas; só 51 adições.
+1.260 mídias/referências e 43 bundles iguais à cópia validada; Lava/Corrente
+elétrica e 21 VFX anteriores preservados, ilustrador ativo e WIP intacto.
+Restam 2.464 candidatos, além das opções de magia/alvo por expandir.

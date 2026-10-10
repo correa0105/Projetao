@@ -9148,5 +9148,911 @@
     "pack_quantity": 1,
     "consumable": true,
     "review": "approved"
+  },
+  "ruidium-antimatter-rifle": {
+    "name": "Arma de ruidium (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Guarde este rifle de ruidium como guardaria algo perigoso. O dano necrótico da arma e o dano psíquico do cristal são parcelas diferentes.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 6d8 necrótico. Propriedades: munição futurística, recarga, duas mãos. Alcance 120/360 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa célula de energia compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-automatic-rifle": {
+    "name": "Arma de ruidium (Rifle automático)",
+    "description": "Forma: Rifle automático. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O rifle automático usa munição de verdade. Confira a diferença entre acertar uma criatura e fazer uma rajada por resistência antes de aplicar o ruidium.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, rajada, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Criaturas na área fazem resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Essa rajada usa resistência, sem uma jogada de ataque. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-battleaxe": {
+    "name": "Arma de ruidium (Machado de batalha)",
+    "description": "Forma: Machado de batalha. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O fio deste machado de batalha ganhou cristais vermelhos. Ele corta bem, mas eu não esconderia de você o risco de corrupção.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "battleaxe",
+    "model_name": "Machado de batalha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-blowgun": {
+    "name": "Arma de ruidium (Zarabatana)",
+    "description": "Forma: Zarabatana. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A zarabatana de ruidium é discreta no tamanho, não no risco. O acerto pode ferir a mente, e o erro natural pode cobrar de quem a usa.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1 perfurante. Propriedades: munição, carregamento. Alcance 25/100 pés. Usa agulhas de zarabatana compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Ruidium Weapon",
+    "base_id": "blowgun",
+    "model_name": "Zarabatana",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-club": {
+    "name": "Arma de ruidium (Clava)",
+    "description": "Forma: Clava. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A clava de ruidium conserva a construção simples. Os veios vermelhos são a parte que pede uma leitura cuidadosa antes da sintonia.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Ruidium Weapon",
+    "base_id": "club",
+    "model_name": "Clava",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-dagger": {
+    "name": "Arma de ruidium (Adaga)",
+    "description": "Forma: Adaga. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Esta adaga cabe numa bainha curta, mas o ruidium não é um encanto pequeno. Tenha a resistência de Carisma em mente quando escolher usá-la.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, leve, arremesso. Alcance 20/60 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "dagger",
+    "model_name": "Adaga",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-dart": {
+    "name": "Arma de ruidium (Dardo)",
+    "description": "Forma: Dardo. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O dardo de ruidium merece ser recuperado depois do arremesso. A peça perdida leva consigo tanto a magia quanto o perigo.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, arremesso. Alcance 20/60 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "dart",
+    "model_name": "Dardo",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-double-bladed-scimitar": {
+    "name": "Arma de ruidium (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "As duas lâminas desta cimitarra guardam ruidium. O ataque de ação bônus continua o do modelo, com seus próprios dados básicos.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Depois de atacar com ela na ação Atacar do seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com a arma, cujo dano básico é 1d4 cortante. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "ruidium-flail": {
+    "name": "Arma de ruidium (Mangual)",
+    "description": "Forma: Mangual. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Escute os elos deste mangual antes de fechar negócio. O metal continua sólido; o cristal é que pode alcançar a mente de quem for acertado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "flail",
+    "model_name": "Mangual",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-glaive": {
+    "name": "Arma de ruidium (Glaive)",
+    "description": "Forma: Glaive. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A glaive de ruidium mantém o alcance da haste. Separe o espaço para duas mãos e o cuidado necessário para a sintonia.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "glaive",
+    "model_name": "Glaive",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-greataxe": {
+    "name": "Arma de ruidium (Machado grande)",
+    "description": "Forma: Machado grande. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Este machado grande exige força e espaço. O ruidium acrescenta poder, sem aliviar a exigência física da arma.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "greataxe",
+    "model_name": "Machado grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-greatclub": {
+    "name": "Arma de ruidium (Clava grande)",
+    "description": "Forma: Clava grande. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A clava grande ainda é uma arma de duas mãos. Os cristais não tornam leve o que já era pesado, nem tornam segura a corrupção.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 contundente. Propriedades: duas mãos. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Ruidium Weapon",
+    "base_id": "greatclub",
+    "model_name": "Clava grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-greatsword": {
+    "name": "Arma de ruidium (Espada grande)",
+    "description": "Forma: Espada grande. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A espada grande de ruidium tem bastante fio para cuidar. Leia o risco do cristal antes de se impressionar com o brilho vermelho.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-halberd": {
+    "name": "Arma de ruidium (Alabarda)",
+    "description": "Forma: Alabarda. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Lâmina, gancho e ponta continuam juntos nesta alabarda. O ruidium muda o encanto, sem apagar a construção que você precisa saber manejar.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "halberd",
+    "model_name": "Alabarda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-hand-crossbow": {
+    "name": "Arma de ruidium (Besta de mão)",
+    "description": "Forma: Besta de mão. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Esta besta de mão não dispensa virotes nem carregamento. Leve a munição certa e confira o que ocorre num 1 natural.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: munição, leve, carregamento. Alcance 30/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "hand-crossbow",
+    "model_name": "Besta de mão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-handaxe": {
+    "name": "Arma de ruidium (Machadinha)",
+    "description": "Forma: Machadinha. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A machadinha de ruidium pode ser arremessada pelo alcance do modelo. Eu aconselharia marcar onde ela cai para recuperar a peça.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 cortante. Propriedades: leve, arremesso. Alcance 20/60 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-heavy-crossbow": {
+    "name": "Arma de ruidium (Besta pesada)",
+    "description": "Forma: Besta pesada. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A besta pesada pede duas mãos e tempo de carregar. A sintonia com o ruidium não resolve esses dois detalhes.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: munição, pesada, carregamento, duas mãos. Alcance 100/400 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "heavy-crossbow",
+    "model_name": "Besta pesada",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-hooked-shortspear": {
+    "name": "Arma de ruidium (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O gancho desta lança curta mantém a opção de derrubar. Substituir o dano por essa tentativa merece conferir a regra antes de contar dados extras.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 perfurante. Propriedades: leve. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência; falhar deixa-o caído. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "ruidium-hoopak": {
+    "name": "Arma de ruidium (Hoopak)",
+    "description": "Forma: Hoopak. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O hoopak conserva ponta e funda. O ruidium acompanha a arma; cada modo mantém sua munição, alcance e dano básico.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, acuidade, duas mãos. Alcance 40/160 pés. Usa balas de funda compatível. A ponta funciona no corpo a corpo com 1d6 perfurante, sem munição. O uso à distância emprega balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Ruidium Weapon",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "ruidium-hunting-rifle": {
+    "name": "Arma de ruidium (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O rifle de caça comporta cinco disparos antes de recarregar. O vermelho nos veios não repõe uma única bala.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d10 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 5 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-javelin": {
+    "name": "Arma de ruidium (Azagaia)",
+    "description": "Forma: Azagaia. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A azagaia de ruidium tem cabo firme e ponta bem visível. Não confunda o bônus de ataque com uma promessa de que todo arremesso vai acertar.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso. Alcance 30/120 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "javelin",
+    "model_name": "Azagaia",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-lance": {
+    "name": "Arma de ruidium (Lança de cavalaria)",
+    "description": "Forma: Lança de cavalaria. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Confira como manejar esta lança de cavalaria montado e a pé. O ruidium conserva o encanto mesmo quando a posição exige duas mãos.",
+    "rules_summary": "Arma marcial de duas mãos quando não estiver montado. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Montado, pode manejá-la com uma mão. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "lance",
+    "model_name": "Lança de cavalaria",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-laser-pistol": {
+    "name": "Arma de ruidium (Pistola laser)",
+    "description": "Forma: Pistola laser. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A pistola laser conserva o dano radiante e a célula compatível. O dano psíquico do ruidium entra separadamente quando uma criatura é acertada.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 3d6 radiante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 50 disparos. Usa célula de energia compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-laser-rifle": {
+    "name": "Arma de ruidium (Rifle laser)",
+    "description": "Forma: Rifle laser. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O rifle laser de ruidium ocupa as duas mãos. Tenha células de reserva; o cristal não serve como bateria.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 3d8 radiante. Propriedades: munição futurística, recarga, duas mãos. Alcance 100/300 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa célula de energia compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-light-crossbow": {
+    "name": "Arma de ruidium (Besta leve)",
+    "description": "Forma: Besta leve. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A besta leve tem ruidium no acabamento, não no mecanismo de carregar. Um virote por vez ainda exige atenção.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, carregamento, duas mãos. Alcance 80/320 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "light-crossbow",
+    "model_name": "Besta leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-light-hammer": {
+    "name": "Arma de ruidium (Martelo leve)",
+    "description": "Forma: Martelo leve. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Este martelo leve cabe bem na mochila. O cristal pode ser pequeno na peça, mas a regra de corrupção continua inteira.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve, arremesso. Alcance 20/60 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "light-hammer",
+    "model_name": "Martelo leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-light-repeating-crossbow": {
+    "name": "Arma de ruidium (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A besta de repetição mantém o cartucho de seis virotes. Quando ele esvazia, a magia vermelha não faz o trabalho de reabastecer.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, duas mãos. Alcance 40/160 pés. Usa virotes compatível. O cartucho alimenta automaticamente seis virotes até esvaziar. Reabastecer o cartucho toma uma ação. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "ruidium-longbow": {
+    "name": "Arma de ruidium (Arco longo)",
+    "description": "Forma: Arco longo. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O arco longo de ruidium pede flechas e mãos livres. Seu encanto não substitui a Destreza exigida pelo modelo.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 150/600 pés. Usa flechas compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Ruidium Weapon",
+    "base_id": "longbow",
+    "model_name": "Arco longo",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-longsword": {
+    "name": "Arma de ruidium (Espada longa)",
+    "description": "Forma: Espada longa. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A espada longa conserva o manejo com uma ou duas mãos. Escolha o dado básico correto e depois conte o dano psíquico do acerto.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-mace": {
+    "name": "Arma de ruidium (Maça)",
+    "description": "Forma: Maça. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A maça de ruidium tem cabeça firme e veios de cristal. Antes de levá-la, confira a sintonia e a resistência exigida pelo erro natural.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "mace",
+    "model_name": "Maça",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-maul": {
+    "name": "Arma de ruidium (Malho)",
+    "description": "Forma: Malho. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Este malho usa ambas as mãos e ocupa espaço. A força para manejá-lo e o Carisma para enfrentar o ruidium são cuidados diferentes.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "maul",
+    "model_name": "Malho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-morningstar": {
+    "name": "Arma de ruidium (Estrela da manhã)",
+    "description": "Forma: Estrela da manhã. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Os espinhos desta estrela da manhã são fáceis de reconhecer. O perigo menos visível está na corrupção que pode atingir quem a empunha.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "morningstar",
+    "model_name": "Estrela da manhã",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-musket": {
+    "name": "Arma de ruidium (Mosquete)",
+    "description": "Forma: Mosquete. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O mosquete de ruidium mantém munição e carregamento comuns. O encanto ajuda a jogada, mas um 1 natural ainda tem sua cobrança própria.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 perfurante. Propriedades: munição, carregamento, duas mãos. Alcance 40/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "musket",
+    "model_name": "Mosquete",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-pike": {
+    "name": "Arma de ruidium (Pique)",
+    "description": "Forma: Pique. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O pique mantém a ponta distante e exige duas mãos. Não aumente o alcance só porque encontrou cristais vermelhos no metal.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "pike",
+    "model_name": "Pique",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-pistol": {
+    "name": "Arma de ruidium (Pistola)",
+    "description": "Forma: Pistola. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Esta pistola de ruidium usa balas compatíveis. O bônus mágico é da arma; não cria munição nem elimina a necessidade de carregar.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d10 perfurante. Propriedades: munição, carregamento. Alcance 30/90 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "pistol",
+    "model_name": "Pistola",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-quarterstaff": {
+    "name": "Arma de ruidium (Bordão)",
+    "description": "Forma: Bordão. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O bordão de ruidium conserva o dano versátil. O cristal permite respirar água enquanto a arma está em seu poder, após a sintonia.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d8 contundente. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Ruidium Weapon",
+    "base_id": "quarterstaff",
+    "model_name": "Bordão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-rapier": {
+    "name": "Arma de ruidium (Rapieira)",
+    "description": "Forma: Rapieira. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A rapieira conserva a acuidade e o fio estreito. A escolha do atributo do ataque não troca a resistência de Carisma da corrupção.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-revolver": {
+    "name": "Arma de ruidium (Revólver)",
+    "description": "Forma: Revólver. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O revólver comporta seis disparos antes da recarga. Conte o tambor, e não deixe de conferir o resultado natural de cada ataque.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 6 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-scimitar": {
+    "name": "Arma de ruidium (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A curva desta cimitarra continua leve no manejo. O ruidium acrescenta dano psíquico ao acerto em criatura, sem mudar o corte básico.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-semiautomatic-pistol": {
+    "name": "Arma de ruidium (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A semiautomática tem quinze disparos por recarga. A reserva de munição é sua, e a decisão de aceitar o ruidium também.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 2d6 perfurante. Propriedades: munição futurística, recarga. Alcance 50/150 pés. Recarrega com uma ação ou ação bônus após 15 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-shortbow": {
+    "name": "Arma de ruidium (Arco curto)",
+    "description": "Forma: Arco curto. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O arco curto de ruidium conserva seu alcance. O vermelho é uma marca do encanto, não uma licença para disparar sem flechas.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, duas mãos. Alcance 80/320 pés. Usa flechas compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Ruidium Weapon",
+    "base_id": "shortbow",
+    "model_name": "Arco curto",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-shortsword": {
+    "name": "Arma de ruidium (Espada curta)",
+    "description": "Forma: Espada curta. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A espada curta é simples de guardar no cinto. Só não trate a sintonia com o ruidium como algo igualmente simples de esquecer.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-shotgun": {
+    "name": "Arma de ruidium (Espingarda)",
+    "description": "Forma: Espingarda. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A espingarda mantém o alcance curto e dois disparos por recarga. O cristal não espalha seus poderes além das regras descritas.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 30/90 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-sickle": {
+    "name": "Arma de ruidium (Foice)",
+    "description": "Forma: Foice. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A foice curta de ruidium tem uma curva pequena e bem definida. A corrupção pode cobrar o mesmo preço de uma arma muito maior.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 cortante. Propriedades: leve. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "sickle",
+    "model_name": "Foice",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-sling": {
+    "name": "Arma de ruidium (Funda)",
+    "description": "Forma: Funda. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "Esta funda conserva tiras flexíveis e usa balas compatíveis. Leve munição; o encanto vermelho está na arma, não numa reserva infinita.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: munição. Alcance 30/120 pés. Usa balas de funda compatível. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Ruidium Weapon",
+    "base_id": "sling",
+    "model_name": "Funda",
+    "magic_kind": "weapon",
+    "estimated_weight_lb": 0.1,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-spear": {
+    "name": "Arma de ruidium (Lança)",
+    "description": "Forma: Lança. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A lança de ruidium conserva arremesso e manejo versátil. A ponta vermelha merece cuidado ao guardar e ao escolher a sintonia.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d8 perfurante. Alcance 20/60 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "spear",
+    "model_name": "Lança",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-trident": {
+    "name": "Arma de ruidium (Tridente)",
+    "description": "Forma: Tridente. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "As três pontas deste tridente formam uma só arma. O dano adicional do ruidium é aplicado pelo acerto, sem triplicar pela quantidade de pontas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "trident",
+    "model_name": "Tridente",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-war-pick": {
+    "name": "Arma de ruidium (Picareta de guerra)",
+    "description": "Forma: Picareta de guerra. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A picareta de guerra tem cristal junto à ponta estreita. O bônus não promete romper qualquer objeto, e o dano psíquico adicional é para criaturas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "war-pick",
+    "model_name": "Picareta de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-warhammer": {
+    "name": "Arma de ruidium (Martelo de guerra)",
+    "description": "Forma: Martelo de guerra. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O martelo de guerra conserva a opção de usar duas mãos. O ruidium não muda seu dano básico contundente para dano psíquico.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 contundente. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "warhammer",
+    "model_name": "Martelo de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-whip": {
+    "name": "Arma de ruidium (Chicote)",
+    "description": "Forma: Chicote. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "O chicote de ruidium mantém flexibilidade e alcance. Seu encanto não alonga a tira, e o risco acompanha cada ataque feito com a arma.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "whip",
+    "model_name": "Chicote",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "ruidium-yklwa": {
+    "name": "Arma de ruidium (Yklwa)",
+    "description": "Forma: Yklwa. Arma +2; acertos em criaturas causam mais 2d6 psíquicos. Requer sintonia e pode corromper.",
+    "merchant_comment": "A yklwa de ruidium conserva a lâmina larga e o arremesso curto. Uma peça arremessada deve ser recuperada para continuar em seu poder.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso. Alcance 10/30 pés. Requer sintonia. Concede +2 nas jogadas de ataque e dano feitas com a arma. Enquanto ela está em seu poder, você pode respirar água e ganha deslocamento de natação igual ao de caminhada. Uma criatura que você acerta com a arma sofre mais 2d6 de dano psíquico. Ao obter 1 natural numa jogada de ataque feita com ela, faça uma resistência de Carisma CD 20: falhar concede um nível de exaustão e, se ainda não sofrer corrupção de ruidium, você passa a estar corrompido. A corrupção segue as regras da aventura; a sintonia não elimina esse risco. Se o Apotheon for morto ou redimido, todo ruidium em Exandria é destruído instantaneamente e esta arma passa a ser uma arma +2 comum, perdendo os outros poderes de ruidium. Ataques e efeitos de corrupção exigem aplicação das regras na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Ruidium Weapon",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
   }
 }
