@@ -19310,5 +19310,3333 @@
     "sha256": "8facb187c161a4c63c7b61cfe9e8ed74f4570b29c11f4aa86f5e7341b4af6869",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-1-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "5cd95f8ab0a977ce659f9bf31a23e92471305f10d3045b499780199f38fd995d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-1-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "b905fc3012733a45a4f6cf47d0a9a5fe033f173e42ef442e2b9b14f2ccead658",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-1-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "be04ace1001e2887bc7c6f50c6b8fc234357a459c8525a78e6981caaf94d9d4e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-blowgun",
+    "path": "public/audio/emporium/enspelled-level-1-blowgun.wav",
+    "kind": "wood",
+    "sha256": "d1ee0ef4dbe78edd90f3bdac136cf0334d6410cc4385c97c79cda8d5cec7b01f",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-club",
+    "path": "public/audio/emporium/enspelled-level-1-club.wav",
+    "kind": "wood",
+    "sha256": "7b20ecc7ec059da40a8f17c51dad133dd7928a4373ebab42cd1dd43d5757c825",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-dagger",
+    "path": "public/audio/emporium/enspelled-level-1-dagger.wav",
+    "kind": "metal",
+    "sha256": "5a9b930d7f8fd74e850640a125e8b6cc1724810307d9999c4277634b81d11426",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-dart",
+    "path": "public/audio/emporium/enspelled-level-1-dart.wav",
+    "kind": "metal",
+    "sha256": "5e021df1b150313e46a4f2d9a7af0c75ac79964bc6178b56d0f71b92baa6714f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-1-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "3c1c57332600c5009ef3769da70b9831c347c9dab34c866ad0261c25bb47ad65",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-flail",
+    "path": "public/audio/emporium/enspelled-level-1-flail.wav",
+    "kind": "chain",
+    "sha256": "b89502f18705008a296ce2c7ab528e7e6679c1aaeed754e8e148b7e38cabb16f",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-glaive",
+    "path": "public/audio/emporium/enspelled-level-1-glaive.wav",
+    "kind": "metal",
+    "sha256": "fa664d9ab92e414eea5f3e2c7d212e9abc30b6baf482f82f3f9a62d85147728d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-greataxe",
+    "path": "public/audio/emporium/enspelled-level-1-greataxe.wav",
+    "kind": "metal",
+    "sha256": "1db1aa89ab846ab311703b3092f4d780a7bc280f6e2e62ecb0c35a41174e7f5d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-greatclub",
+    "path": "public/audio/emporium/enspelled-level-1-greatclub.wav",
+    "kind": "wood",
+    "sha256": "4fa4b985913aa264822c1f622631b778b860f98405fd9b11131b94cb5abfb8d9",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-greatsword",
+    "path": "public/audio/emporium/enspelled-level-1-greatsword.wav",
+    "kind": "metal",
+    "sha256": "c2cba8bb8b646539d30abce23f8eba7b1dbf733bebc45578074ad176b7282d85",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-halberd",
+    "path": "public/audio/emporium/enspelled-level-1-halberd.wav",
+    "kind": "metal",
+    "sha256": "af92ef124c1826524b25965a5f3f68facddab034fc35c8400d472ce29c17c761",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-1-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "a9567413627d6060663239e69143949678948fa75131322027cdf2faacfc9f8a",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-handaxe",
+    "path": "public/audio/emporium/enspelled-level-1-handaxe.wav",
+    "kind": "metal",
+    "sha256": "80251a68d054a1683150b070d5afc593ad78d3378199059500e583652b7ec377",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-1-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "69ccab82be32a04ea01461f0b76f6f1a5f1d46042dec2452ed73d41b695245f6",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-1-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "c64482d5bfa1e7d37b5dfd7132cede62d354938911cee0b988efdc7bff929525",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-hoopak",
+    "path": "public/audio/emporium/enspelled-level-1-hoopak.wav",
+    "kind": "metal",
+    "sha256": "b18adb742865fda066bc093d532328580117c916bb2982b4ed68f2b0f30bf6ce",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-1-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "64302bb8b2e5f19727ae45a6074e7722ee7c1f5f6f805c1d07e96ac05cdf6708",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-javelin",
+    "path": "public/audio/emporium/enspelled-level-1-javelin.wav",
+    "kind": "wood",
+    "sha256": "ead00e76f1b0ac7f9554ad3e27cc9314b77a967963c895886c59fb614af884fa",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-lance",
+    "path": "public/audio/emporium/enspelled-level-1-lance.wav",
+    "kind": "wood",
+    "sha256": "6c0da4f678105a59c005d1fe6569eac5993ab3810a390e23753f925dba14be16",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-1-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "998264482cb98cdbfb0b76ccfd3ea18dbf613168f633f0eb6fd3f0ff90ad6f32",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-1-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "396c40988e3862d084aaf25c7d82ffa20073a105d957519293b60d6bd4494ccb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-1-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "3870b2115c4d88ec0042976fe107ff84526ee6b8fce0fe5c25341bb4ca4149ef",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-1-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "f33290f0d3dc84583497b91efd5f5815cdab9fd86caa9821bd3a559bdd3b22f0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-1-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "008a2d85e46ee939d8fbb2cacc0586c642b9b7d44408ed38d63478016e745b19",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-longbow",
+    "path": "public/audio/emporium/enspelled-level-1-longbow.wav",
+    "kind": "metal",
+    "sha256": "168842af488e990042f3b68c82c38fd7ce54dd517a37b65a24812ace405d0302",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-longsword",
+    "path": "public/audio/emporium/enspelled-level-1-longsword.wav",
+    "kind": "metal",
+    "sha256": "15009a89bb9732113c3cd812e129765d55fbc0b4deb7895dd4f7dfd6525e2c4f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-mace",
+    "path": "public/audio/emporium/enspelled-level-1-mace.wav",
+    "kind": "metal",
+    "sha256": "936b77c0253c2338206398e4a5fcdc005ac16ba2a047610a8912a6dd6f94d614",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-maul",
+    "path": "public/audio/emporium/enspelled-level-1-maul.wav",
+    "kind": "metal",
+    "sha256": "c2795ec75ab1d47721998eb169a4a5d3c29b1ee36afadb06be79913ffa95aabf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-morningstar",
+    "path": "public/audio/emporium/enspelled-level-1-morningstar.wav",
+    "kind": "metal",
+    "sha256": "c87ce2067da75c3a680ec4ff60ab0321a89d3ed5f6d23eaca093fc2172613624",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-musket",
+    "path": "public/audio/emporium/enspelled-level-1-musket.wav",
+    "kind": "metal",
+    "sha256": "aae3a4bda5d5dd96cea7427906017bf80a603af9c3df255875b0ae300f956a1e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-pike",
+    "path": "public/audio/emporium/enspelled-level-1-pike.wav",
+    "kind": "metal",
+    "sha256": "c9383edee64649b4a338ba05c1feb3c1f793c72db676398747a2b21de891b2d7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-pistol",
+    "path": "public/audio/emporium/enspelled-level-1-pistol.wav",
+    "kind": "metal",
+    "sha256": "81349388655d0d8b536b3059fd4433aa7e8d902573c4de11a172153cfb4ba543",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-1-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "30f2ca0baea2f11ca7c073b73b9255095fe3a0e528781a6796d7636ee13a70bf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-rapier",
+    "path": "public/audio/emporium/enspelled-level-1-rapier.wav",
+    "kind": "metal",
+    "sha256": "5754a3a87ccc60bce80d6c286841ba34cc8e4ee9939261379306e602f65cda30",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-revolver",
+    "path": "public/audio/emporium/enspelled-level-1-revolver.wav",
+    "kind": "metal",
+    "sha256": "4b194249b0d07b3a5acdb5e1e997fb19429c30ea3d2aeefedc253b3825ab49cb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-scimitar",
+    "path": "public/audio/emporium/enspelled-level-1-scimitar.wav",
+    "kind": "metal",
+    "sha256": "6978dac9b0b907c4acb2f29b07daa3c5681eeff3e1cb7a4ba7493cee4b8dcaaf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-1-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "6588e25a9672a0dcfd6c1561af646df45eb4505aaa7daa0a5193e0ad9bbf8065",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-shortbow",
+    "path": "public/audio/emporium/enspelled-level-1-shortbow.wav",
+    "kind": "metal",
+    "sha256": "33b385831f5ba4de2035892a5a1bc73febdf8d06b33b3a17d2b76363d3ea0e4f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-shortsword",
+    "path": "public/audio/emporium/enspelled-level-1-shortsword.wav",
+    "kind": "metal",
+    "sha256": "98d754d03e83aa2d5d15584c249bf82d6bf80913188b275f48cdf3c30e7218db",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-shotgun",
+    "path": "public/audio/emporium/enspelled-level-1-shotgun.wav",
+    "kind": "metal",
+    "sha256": "e384c0214ef82c9f0d3452b9b0fbb6d4b2210473a0f4400f7e11ba33a2db96a6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-sickle",
+    "path": "public/audio/emporium/enspelled-level-1-sickle.wav",
+    "kind": "metal",
+    "sha256": "3855e4a56cbb021eb515dceeb9aa1e8c350f756d24f952aa40d26a2157bc087a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-sling",
+    "path": "public/audio/emporium/enspelled-level-1-sling.wav",
+    "kind": "leather",
+    "sha256": "aee77e0801e61e952c2c4f7e8dae1f387ac7d57d5f8c33961f250dccafdb9622",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-spear",
+    "path": "public/audio/emporium/enspelled-level-1-spear.wav",
+    "kind": "wood",
+    "sha256": "a6db11dd4a8789dab75c0ff1836db514d1c141310e9897d74e0cb1b582410cb3",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-trident",
+    "path": "public/audio/emporium/enspelled-level-1-trident.wav",
+    "kind": "metal",
+    "sha256": "534874d49fe0457b3ccce94804720cdf5ff76da438fec91607a8dfcd286b08ee",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-war-pick",
+    "path": "public/audio/emporium/enspelled-level-1-war-pick.wav",
+    "kind": "metal",
+    "sha256": "cdbdfad761835607ad17c7278cc8b85bd9e1fcc31b7a1229a2624b2271c1af2e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-warhammer",
+    "path": "public/audio/emporium/enspelled-level-1-warhammer.wav",
+    "kind": "metal",
+    "sha256": "24d008c67eefb4103d3e84593550920b756a4408413e8e5d9599bf8cf98d8d16",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-whip",
+    "path": "public/audio/emporium/enspelled-level-1-whip.wav",
+    "kind": "leather",
+    "sha256": "2a391a612dccda0c166296e078813dacdca560d7a8c291dbf138c5bd226f4b4f",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-1-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "549b81acb32a902b5f13a048c346dea984c81c100b3e7d38a1365b6318b846af",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-1-yklwa",
+    "path": "public/audio/emporium/enspelled-level-1-yklwa.wav",
+    "kind": "metal",
+    "sha256": "7330f6360485a65650db22883067710984483cc38a0c13a40b98d5af3490bf5a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-2-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "0e9bb4fe80946841ed68ec8fd7916a0a8b7e79c13a24d36447261a4eee268c81",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-2-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "8ee172c6a37be282514e327fb80ff3c578e8d3e7d5b8c11dc5a3f6e78d5f203a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-2-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "1731726353971820ab32ce50c83cd82a7cdb2a47f4a43156e2d40b24902ebffb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-blowgun",
+    "path": "public/audio/emporium/enspelled-level-2-blowgun.wav",
+    "kind": "wood",
+    "sha256": "f06e637a3a03da156988e5e81623bff67a96e51d6c82f448e40ea51288c3682b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-club",
+    "path": "public/audio/emporium/enspelled-level-2-club.wav",
+    "kind": "wood",
+    "sha256": "7e6b911ef178c0ffbc72013f53371c8a0d787807c9353765ded3deb9905675b8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-dagger",
+    "path": "public/audio/emporium/enspelled-level-2-dagger.wav",
+    "kind": "metal",
+    "sha256": "9a0a43c899571c4080d56781d942c7a89aa44fe18440a23d4fb4dbbab32c8cc8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-dart",
+    "path": "public/audio/emporium/enspelled-level-2-dart.wav",
+    "kind": "metal",
+    "sha256": "29d07d2660fc83d9b06a9d897901231a59e8c1f73c85afae364ecf351d09ba0c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-2-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "bb3deb6386c5a6d82284d2324f45ca0cc10f4dcdb11649fe7f58c867a348507a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-flail",
+    "path": "public/audio/emporium/enspelled-level-2-flail.wav",
+    "kind": "chain",
+    "sha256": "e8f3ebeb96d6ec807e1feacdff49160efbafbdaff8073b4b5e8d4bdf906ddb36",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-glaive",
+    "path": "public/audio/emporium/enspelled-level-2-glaive.wav",
+    "kind": "metal",
+    "sha256": "3d2405778ad73368734c3daf9757bebcfd29003377c63235c500b68b135fb95c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-greataxe",
+    "path": "public/audio/emporium/enspelled-level-2-greataxe.wav",
+    "kind": "metal",
+    "sha256": "0d928ce5bdfec8a0d3504af29d652f25a80b3720c601ad22ff9c14b5aaccc4ff",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-greatclub",
+    "path": "public/audio/emporium/enspelled-level-2-greatclub.wav",
+    "kind": "wood",
+    "sha256": "bd47c14f666fbb6c7d2200540309df5ca7c6a16bf4200df18200f5a1c9c0769b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-greatsword",
+    "path": "public/audio/emporium/enspelled-level-2-greatsword.wav",
+    "kind": "metal",
+    "sha256": "8b8567dc9c5726fcd4bca087b4fc28a44121162c88d540a5f46a83106faccef9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-halberd",
+    "path": "public/audio/emporium/enspelled-level-2-halberd.wav",
+    "kind": "metal",
+    "sha256": "30c4b4524efb813d21e6f2ab3bf3dbcef59bff4cbd9448d39b9dabe4b7533b5f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-2-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "9348f8fea4eb7f5bac566ebc32f1860ffadb38e9009b8d62decfa3cf8ac125b8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-handaxe",
+    "path": "public/audio/emporium/enspelled-level-2-handaxe.wav",
+    "kind": "metal",
+    "sha256": "5cab14fb6ae72f65fa8fb77d901b41efa5ec3622d6edc491827c01eb2b091faf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-2-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "9723b1f1f3fee40810e772ec0fbf7f7658917292b70fdcbd8c9fe7a5ca46d428",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-2-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "a66036d80a4bd8d950f5bd5b942644d885dd4e1c3d0ec5cac5775181809a8a92",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-hoopak",
+    "path": "public/audio/emporium/enspelled-level-2-hoopak.wav",
+    "kind": "metal",
+    "sha256": "ecf1b3265198453f7c6502663813e2aa5fe2579c977d569f6de784ef70d8a3ad",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-2-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "7ceeccd2bd2a3435aff23f7ca32340fe5f3889d9f1c993f546b077ae69943b07",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-javelin",
+    "path": "public/audio/emporium/enspelled-level-2-javelin.wav",
+    "kind": "wood",
+    "sha256": "df1dbcf70aadd28f00ecba3d8681ae2892a8e36f412f2b33f9839f4eb9a4f3eb",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-lance",
+    "path": "public/audio/emporium/enspelled-level-2-lance.wav",
+    "kind": "wood",
+    "sha256": "09f4f198e188507f6c6e32af9cccb76ef60dce66a2a318e5478f6222c308d731",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-2-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "b21da909675a0f71838ab302eb04e171891f9ca4ecd5d513e94c63dabb2f1eb4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-2-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "7b33ddf5ed3e9923659af186e18149df3e1b5b024a57b7e004c9d78aabb01a7f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-2-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "c11cbb504c01b29dc7f65f46835593233ae1a673ba19cd222069568a88a172e8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-2-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "54cc110c1f1ad438e21585fa23e1d354931987e49d6d413057ac880a7eb58756",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-2-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "a25a21201a2be6dca7ce7f37db8ed931c13e922c3ad48f7c286c6c86f4e8611c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-longbow",
+    "path": "public/audio/emporium/enspelled-level-2-longbow.wav",
+    "kind": "metal",
+    "sha256": "d7a27df312862504b1d0d4b1af1a380548a6c9740649ae886ad0b12f1849f736",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-longsword",
+    "path": "public/audio/emporium/enspelled-level-2-longsword.wav",
+    "kind": "metal",
+    "sha256": "93dabd74d101080155beb1656afef2bfaa3d4695ef1b2114ca502fc3a7b9b117",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-mace",
+    "path": "public/audio/emporium/enspelled-level-2-mace.wav",
+    "kind": "metal",
+    "sha256": "023a1e4b6c3a398e3e292ac2e3f0498b748c809026b358e3997e600aded01089",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-maul",
+    "path": "public/audio/emporium/enspelled-level-2-maul.wav",
+    "kind": "metal",
+    "sha256": "4ab4b45b1b332d0258e2cc5499b390dfcd00d1c6195eb82a17fb5f361de7fc88",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-morningstar",
+    "path": "public/audio/emporium/enspelled-level-2-morningstar.wav",
+    "kind": "metal",
+    "sha256": "f8d95eb72703f0d5a06d07647ac0468e68a50c6b6cc3ce09f4d8a98bb8d6afee",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-musket",
+    "path": "public/audio/emporium/enspelled-level-2-musket.wav",
+    "kind": "metal",
+    "sha256": "6d8f84135a31dbd442fcddba4951c1d5469e96fd06d2d06b804fb334cdbb5ca6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-pike",
+    "path": "public/audio/emporium/enspelled-level-2-pike.wav",
+    "kind": "metal",
+    "sha256": "9c8526837014083e6440423175ad87f8de1fd9fa8a949ad36d173d5b6f008b50",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-pistol",
+    "path": "public/audio/emporium/enspelled-level-2-pistol.wav",
+    "kind": "metal",
+    "sha256": "0c19bc99c44e769fcd79f6d6a6c3189391e3ad2e0bdbdcd6f149d4f1bc325f50",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-2-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "cbc5f73e6786bae9df51e1e985b085b5e428f893e47c894493a9a2e9acf06410",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-rapier",
+    "path": "public/audio/emporium/enspelled-level-2-rapier.wav",
+    "kind": "metal",
+    "sha256": "5605ccf0e256fe18248d1112b3803e44145dfab4f145dad6bf135f4c83b37467",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-revolver",
+    "path": "public/audio/emporium/enspelled-level-2-revolver.wav",
+    "kind": "metal",
+    "sha256": "c3b485fc7d5080627a93d04ee5f4f31575cd6fa26aa7a56ab0e73e7a0e0f3e29",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-scimitar",
+    "path": "public/audio/emporium/enspelled-level-2-scimitar.wav",
+    "kind": "metal",
+    "sha256": "8eaaad5a650369ec1a053905b5a26ed1e9888ea1c562c7fc632b8347ce7a87b0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-2-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "de2097b8c27ea1a7de899e50d2e2b05406a86ece3a0e720a3c430004682afb85",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-shortbow",
+    "path": "public/audio/emporium/enspelled-level-2-shortbow.wav",
+    "kind": "metal",
+    "sha256": "cbe205350ec62716d0bce8a0eed8d94378b18a9e5114af3632a040b88516289b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-shortsword",
+    "path": "public/audio/emporium/enspelled-level-2-shortsword.wav",
+    "kind": "metal",
+    "sha256": "dd0507289a491dfb83a041dc091c1089224c0533cb1cc4073ee65dea7f40f7f0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-shotgun",
+    "path": "public/audio/emporium/enspelled-level-2-shotgun.wav",
+    "kind": "metal",
+    "sha256": "717e2243b6f832bf0e890ada1f944fd3a9253e6ca0c7cd2c185c08f5fa14799a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-sickle",
+    "path": "public/audio/emporium/enspelled-level-2-sickle.wav",
+    "kind": "metal",
+    "sha256": "88b4af014e98e9df2512548c109d07f30de432d920a294ce12c88492b90a44bc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-sling",
+    "path": "public/audio/emporium/enspelled-level-2-sling.wav",
+    "kind": "leather",
+    "sha256": "7cc3238a42e38b7e358a26950c8d4f5c3c3599fd5287fc930becf4dbe39866c2",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-spear",
+    "path": "public/audio/emporium/enspelled-level-2-spear.wav",
+    "kind": "wood",
+    "sha256": "dd1b2b55e25ec04402f8895f94648836d842e8f67ca46fe2ea89ecec69b13a46",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-trident",
+    "path": "public/audio/emporium/enspelled-level-2-trident.wav",
+    "kind": "metal",
+    "sha256": "19e630e2edad01a731c136385b7112ab47f330dd49841861f9672a95440dec48",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-war-pick",
+    "path": "public/audio/emporium/enspelled-level-2-war-pick.wav",
+    "kind": "metal",
+    "sha256": "67d6728972d9e8e2d6e62b13dd931c8fa02d60911c24a3c990b90ea0099446a8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-warhammer",
+    "path": "public/audio/emporium/enspelled-level-2-warhammer.wav",
+    "kind": "metal",
+    "sha256": "77510e44a18eb0140fca6571c930d26efab4cb981fc52b88efe0106177b3fe5d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-whip",
+    "path": "public/audio/emporium/enspelled-level-2-whip.wav",
+    "kind": "leather",
+    "sha256": "20702d895240731c36a2f74958cba71300ead6b4da939d4e5d1c5ce2eac801a3",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-2-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "15d19b7d3a7c587a8473aa92126fd8689b3028a8116a880b2a42ba7771f3effe",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-2-yklwa",
+    "path": "public/audio/emporium/enspelled-level-2-yklwa.wav",
+    "kind": "metal",
+    "sha256": "904f555f358cc3c1196d1efa594ed4fa11f5addd21c4c01d4126038c658080ee",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-3-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "21990d9d58151c8456db794fbc082d5e4228a7fc7ccc06940bbebfe86a6b2a11",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-3-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "55fe3341d3f7a70c2048969c24b150959663e32c66a386ea67497b89a5938282",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-3-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "1a411a576cabdcd4e1ba80373b9fc31c80949aca9d48673f195f2388de43065a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-blowgun",
+    "path": "public/audio/emporium/enspelled-level-3-blowgun.wav",
+    "kind": "wood",
+    "sha256": "b46d50af7c44d04ecfc59c36a22f36db32b5bc31ed152e823d10001353ba1d20",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-club",
+    "path": "public/audio/emporium/enspelled-level-3-club.wav",
+    "kind": "wood",
+    "sha256": "17cb680007fe10394a3755f448674fff5dffeacd2378ad060d09afdfb63e9fd0",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-dagger",
+    "path": "public/audio/emporium/enspelled-level-3-dagger.wav",
+    "kind": "metal",
+    "sha256": "1a2da57670b4059c3d22df31c53cf07fca294846455e3f419df178c6b3d151de",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-dart",
+    "path": "public/audio/emporium/enspelled-level-3-dart.wav",
+    "kind": "metal",
+    "sha256": "414978aea8dea2bc3888d212fb95d8c9bc7c8b0c41762dde0eae365bb5c7e225",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-3-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "56a6197f642a7ef0ed8388afb826f45407df523c0373c329370398350a80cbe1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-flail",
+    "path": "public/audio/emporium/enspelled-level-3-flail.wav",
+    "kind": "chain",
+    "sha256": "af9ad5d502ca9a5a1a28722200d08253ea9274dd1d66b4d24471005cde53bf90",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-glaive",
+    "path": "public/audio/emporium/enspelled-level-3-glaive.wav",
+    "kind": "metal",
+    "sha256": "af72c65f757320c85d140b32636f3e22cb0419b044b4bfa9125e7f549d2d7191",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-greataxe",
+    "path": "public/audio/emporium/enspelled-level-3-greataxe.wav",
+    "kind": "metal",
+    "sha256": "bbf5e8b9f379e2a5b2bfd277ccd79628a9614d07ace9a8bacda0513aceab2d27",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-greatclub",
+    "path": "public/audio/emporium/enspelled-level-3-greatclub.wav",
+    "kind": "wood",
+    "sha256": "c7da61aa3a37d5bb91a4dccf11035d6e4c3b3a421338442fd48dd569711f06a2",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-greatsword",
+    "path": "public/audio/emporium/enspelled-level-3-greatsword.wav",
+    "kind": "metal",
+    "sha256": "898d520ef6bf4b046d916d3ddd2134c8f1f967b17d838aa5d2668cb8a82e6295",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-halberd",
+    "path": "public/audio/emporium/enspelled-level-3-halberd.wav",
+    "kind": "metal",
+    "sha256": "c1baa657bb6f44feb21aa8e0cf7511cd86112c4ec304e3800b0355ed85723d26",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-3-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "ca505e6736248bc20e54dbfa3b474cd556f87667db05305827d589bb187dc89a",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-handaxe",
+    "path": "public/audio/emporium/enspelled-level-3-handaxe.wav",
+    "kind": "metal",
+    "sha256": "fb098533b9483f6fdacbafa1c816a5452848a5cc2c761c323e1ac78f07863686",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-3-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "4bb3f6bdea5420ff4c8a6c058811f5f17ac8c7dcf07e0c42b848aae77f938c47",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-3-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "1a1b955883ad29bc84861e608c6ea2fe58945b8acedac3635d1dcd72911173f9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-hoopak",
+    "path": "public/audio/emporium/enspelled-level-3-hoopak.wav",
+    "kind": "metal",
+    "sha256": "6eacfc9db0f689b6ea2c38ec14ebb5a4b01fd1c7afa4328d4f53ffcebbbb9a0d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-3-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "58c6d884377e5568abecb86641739087db884c8388108f1fb1c8bea1a6b07012",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-javelin",
+    "path": "public/audio/emporium/enspelled-level-3-javelin.wav",
+    "kind": "wood",
+    "sha256": "d4f47c15bd95eacb73157c86d0ad1ba08ff01af5f0a37d80a8f65e55692a1948",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-lance",
+    "path": "public/audio/emporium/enspelled-level-3-lance.wav",
+    "kind": "wood",
+    "sha256": "996dabf9e2407d0d3d4822eed02891b67d6556a84dadb8af1cdffa29f40c4b20",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-3-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "1435f37db1d5768655579211202a408895ee7a966fbe3efddc7c1f57f71ee3a3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-3-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "c7405ca1ba596a97da231c676d11fcb959d4b934d48c5226dbf9bc14ee4391db",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-3-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "81e19d8bd93c8be5a466e490f2b0ffea7729eb016f101f574e49882e6f9901f2",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-3-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "6ba5984bbe821baf20770f6419a01683d0fbacdc5d67ab7dff05c0161f4bad6a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-3-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "02ecf6dc01e7f98be380b752d1e8c828ce8e0f0a7c605709f476b2e3740f5a38",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-longbow",
+    "path": "public/audio/emporium/enspelled-level-3-longbow.wav",
+    "kind": "metal",
+    "sha256": "0d0452ff53c5416cec52139141587e7fe8ab237488ba7a4073c38c73cef6f0ff",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-longsword",
+    "path": "public/audio/emporium/enspelled-level-3-longsword.wav",
+    "kind": "metal",
+    "sha256": "387dd49e4613467bbb2d5ea2580522b9acaa9d39f42a87f02d42c619c03e9f30",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-mace",
+    "path": "public/audio/emporium/enspelled-level-3-mace.wav",
+    "kind": "metal",
+    "sha256": "292396ea52e3c0ab11695eb83fd5f4f9712dfb91e914cc18be292bea8c1a4ed3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-maul",
+    "path": "public/audio/emporium/enspelled-level-3-maul.wav",
+    "kind": "metal",
+    "sha256": "a71d093f3b73cd1f655386051711852163487f538eba0898a83b7f886bf24ae8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-morningstar",
+    "path": "public/audio/emporium/enspelled-level-3-morningstar.wav",
+    "kind": "metal",
+    "sha256": "f04bb1a125b964278d568e69fcd7bd2ede13cefeeb2d547f1ee53b1834f868d2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-musket",
+    "path": "public/audio/emporium/enspelled-level-3-musket.wav",
+    "kind": "metal",
+    "sha256": "4f0012b08905da966520c6f6330e84b9df0cfa0593e1b41cb033b13e8f8d6529",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-pike",
+    "path": "public/audio/emporium/enspelled-level-3-pike.wav",
+    "kind": "metal",
+    "sha256": "5f7b137f7371851a01f5afa656d1d3854ea691161528e6380392006d7af58f07",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-pistol",
+    "path": "public/audio/emporium/enspelled-level-3-pistol.wav",
+    "kind": "metal",
+    "sha256": "21da8507f1eb5cb8b6ca6f5f9b2ee810173fef70927516b9ceaaa0cc71a7900a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-3-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "72e0412ccfb937faca097722487a09d1ba1b25bb7cbb579a7303e7ce438539eb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-rapier",
+    "path": "public/audio/emporium/enspelled-level-3-rapier.wav",
+    "kind": "metal",
+    "sha256": "17d118b843ebc62c230a5e06eb5450d384f88e697ef821608c0a396a9bb570ad",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-revolver",
+    "path": "public/audio/emporium/enspelled-level-3-revolver.wav",
+    "kind": "metal",
+    "sha256": "362784348bc0ec962f7a69521d29830c32530f853022c876f421ffeab815886f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-scimitar",
+    "path": "public/audio/emporium/enspelled-level-3-scimitar.wav",
+    "kind": "metal",
+    "sha256": "bb19e6a48c3089fe94c2090d6c76d0e9521a59ed0473ce3f815f1b219295ddc0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-3-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "32e5725bfbde73bacf775b2d0436df46ce91bdc4d78f701591e50c890d0a6c97",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-shortbow",
+    "path": "public/audio/emporium/enspelled-level-3-shortbow.wav",
+    "kind": "metal",
+    "sha256": "4acae067ca65a2cbd55cedb94f80c062c48e50b178568d059100b8f484ec33ea",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-shortsword",
+    "path": "public/audio/emporium/enspelled-level-3-shortsword.wav",
+    "kind": "metal",
+    "sha256": "85556583a7802727a3809deb5faaf012c43063a9d80ead9e9a5f5b16053052ab",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-shotgun",
+    "path": "public/audio/emporium/enspelled-level-3-shotgun.wav",
+    "kind": "metal",
+    "sha256": "99a149000b4e69ccb04e78bb709ec1efd5f95d1c5149f41c403a8ccb93ec6063",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-sickle",
+    "path": "public/audio/emporium/enspelled-level-3-sickle.wav",
+    "kind": "metal",
+    "sha256": "5ccfc874b55bc3549fc8fe47da03f6280419bebd22cf93ff53cdf1b1e1b38042",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-sling",
+    "path": "public/audio/emporium/enspelled-level-3-sling.wav",
+    "kind": "leather",
+    "sha256": "0d4ec8769a011b3c4b38fff7ac3e2097044802830a97f83b81c40158c737299c",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-spear",
+    "path": "public/audio/emporium/enspelled-level-3-spear.wav",
+    "kind": "wood",
+    "sha256": "ea437e4fa61b2d6efb7c47facc9e38df9f2918587fcd1efb742895a1ddcf4a00",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-trident",
+    "path": "public/audio/emporium/enspelled-level-3-trident.wav",
+    "kind": "metal",
+    "sha256": "0a98b6cbd5d17bea730fb730aef8ff699a7dc1f81a10c894d277f1c2bade8280",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-war-pick",
+    "path": "public/audio/emporium/enspelled-level-3-war-pick.wav",
+    "kind": "metal",
+    "sha256": "60de5618fafe7bb426a0b9f539b2c00965eb51072959ba2ee8157ed8f0bfb622",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-warhammer",
+    "path": "public/audio/emporium/enspelled-level-3-warhammer.wav",
+    "kind": "metal",
+    "sha256": "a720fc87d183451b0c23b045344387449c3cc623b5bd500753aac77758df8651",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-whip",
+    "path": "public/audio/emporium/enspelled-level-3-whip.wav",
+    "kind": "leather",
+    "sha256": "a05b738f36347e45e10ca87dc28df4df2714853a2139c94c2157f5e9e1331074",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-3-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "db70d7ced682755945338f43504b3902842f369c4423b120a8938e4bb8dc2cc7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-3-yklwa",
+    "path": "public/audio/emporium/enspelled-level-3-yklwa.wav",
+    "kind": "metal",
+    "sha256": "fb47ac9899f74183cef7fd2ae439c2a14aa9a20dda9842132b14ff93a5f6211f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-4-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "2f56b2200877edade89280523e15063575efd918cb91ec00fbeabce07488b1a9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-4-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "53a88c4fdbc9132b191277509ef818aaf2f3ccae05ee35acc5cdf52ec9a34095",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-4-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "52a4bda5bee741de4af54b42d7c81ec5bc0004578ea199212505a52e1c7cc267",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-blowgun",
+    "path": "public/audio/emporium/enspelled-level-4-blowgun.wav",
+    "kind": "wood",
+    "sha256": "f2b484bf57a0ae9f73dbb695d3b42bb6ecaab9c6c6245f58f00a45e0a553da1d",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-club",
+    "path": "public/audio/emporium/enspelled-level-4-club.wav",
+    "kind": "wood",
+    "sha256": "b25188d050a1be4072cf145c31dbd78cf541558bf38df78c710447bd66c7e225",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-dagger",
+    "path": "public/audio/emporium/enspelled-level-4-dagger.wav",
+    "kind": "metal",
+    "sha256": "526f917c0a479abcbf93630bb6764a3669fabc1b2834b3b15018816202bd57f7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-dart",
+    "path": "public/audio/emporium/enspelled-level-4-dart.wav",
+    "kind": "metal",
+    "sha256": "64480fe09214207493d1c10f951bc1911eebaa6fdd4d0cd2dd6193dc4ecb58a2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-4-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "be4eb7157911be1db40071ad62c8e52a24a41ec2d77caf76b30939fb0441cca1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-flail",
+    "path": "public/audio/emporium/enspelled-level-4-flail.wav",
+    "kind": "chain",
+    "sha256": "f63cdf8cfa09f489c729b2eda4b91a6045d8d2c6615a99abb446c24a491fabb3",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-glaive",
+    "path": "public/audio/emporium/enspelled-level-4-glaive.wav",
+    "kind": "metal",
+    "sha256": "07889fb170a7490ff41060d051a338d16ffdce6698166f144022a17d8c915ed4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-greataxe",
+    "path": "public/audio/emporium/enspelled-level-4-greataxe.wav",
+    "kind": "metal",
+    "sha256": "180acaa4aa1e7d3cd67c7af167257e0e8ea5f5025d6f694805d68fe877ab528e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-greatclub",
+    "path": "public/audio/emporium/enspelled-level-4-greatclub.wav",
+    "kind": "wood",
+    "sha256": "1d110be49d1e94bba2ab3e9519327d28dc79138e2b1629272e8444a3ebc4a652",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-greatsword",
+    "path": "public/audio/emporium/enspelled-level-4-greatsword.wav",
+    "kind": "metal",
+    "sha256": "b6701d7350e4c46bfd725c0be501e5ede9ca8be4f5d2aa94a0d421fa1a114994",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-halberd",
+    "path": "public/audio/emporium/enspelled-level-4-halberd.wav",
+    "kind": "metal",
+    "sha256": "953d96f27aba312154dca9e70805c3d5aba419b504e2ae1fb9092309f3780300",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-4-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "c10c1148afc48a090b28c3d00dd2cd10ab5b1a5ffb9f704561d2359e7f86a785",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-handaxe",
+    "path": "public/audio/emporium/enspelled-level-4-handaxe.wav",
+    "kind": "metal",
+    "sha256": "ca70711dfa98df97e67fc5229bf40779546b0fca05b75536d714998c1974fc7b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-4-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "c7a899320dafda92fbe5fedf0f4e9a6ec46ea19ad58fea8ba5a13c717024078e",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-4-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "5976cb8722e096637ac6d0d7e6d17db987c8216082927b8211db0e7e5b390d52",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-hoopak",
+    "path": "public/audio/emporium/enspelled-level-4-hoopak.wav",
+    "kind": "metal",
+    "sha256": "6fc1359c52a77af14b22e8a4b64379eb0655e2d43c4082e64ec9b45b845d3673",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-4-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "fcec738f373ea8b5a5d1824b695f89d3ceb67726525bc182a72e2e497fa41f47",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-javelin",
+    "path": "public/audio/emporium/enspelled-level-4-javelin.wav",
+    "kind": "wood",
+    "sha256": "81bd470c1b7c60f78ccf4dfe4c76ad6acccc0e99e4e5490c51459b7af782bae1",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-lance",
+    "path": "public/audio/emporium/enspelled-level-4-lance.wav",
+    "kind": "wood",
+    "sha256": "d7b1ebbc470d20bb276a4bb1b351867c0793900a4e1d4f2452284e833e2c39f9",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-4-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "e28aa478be17ca7b927156cb05a204f8c9c74502f2aa0f9a244c2e6b056ed051",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-4-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "d4596f8bdc41a1ce50d805ffcae87e09fbada79a8770fd3e35fe4a04ab7a117a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-4-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "3b24d09e227bab5c6e1c5d7c7e71b902bbde05506ecd03c77d20b88723a0441e",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-4-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "8c380905182137ca9f5e52611eec47b27f29855df9a02ec3972b8a63d642eadc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-4-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "0c6dc32a76c786de6b6d162e7c0a946434761dc1a7c247519451948ca530c8f7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-longbow",
+    "path": "public/audio/emporium/enspelled-level-4-longbow.wav",
+    "kind": "metal",
+    "sha256": "2e197e382c8225e840373c01f678046b89c764d7f16b68d2be2a969878303a3c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-longsword",
+    "path": "public/audio/emporium/enspelled-level-4-longsword.wav",
+    "kind": "metal",
+    "sha256": "7c2993e53778ff605e7a169e10f4cbc1a09e90c47d33b841ee5f7c72e2a49f43",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-mace",
+    "path": "public/audio/emporium/enspelled-level-4-mace.wav",
+    "kind": "metal",
+    "sha256": "dffffa10b0c2eaa68700e8b7d4afe410cc0aec5e801b41eece877ffcece96ee5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-maul",
+    "path": "public/audio/emporium/enspelled-level-4-maul.wav",
+    "kind": "metal",
+    "sha256": "2b89e4800d070b6daf13f894444d9cae1030c113fd5ed986cbe93557b89b52de",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-morningstar",
+    "path": "public/audio/emporium/enspelled-level-4-morningstar.wav",
+    "kind": "metal",
+    "sha256": "76f8e729824399841bbf949521be9d8750f735aedaf7bb444fd1d5a4fffa4fe9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-musket",
+    "path": "public/audio/emporium/enspelled-level-4-musket.wav",
+    "kind": "metal",
+    "sha256": "6ace013a4c39abb5a4a4c36d424bf1710bcbf204cf9a3fa16a6b9358c65a0afa",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-pike",
+    "path": "public/audio/emporium/enspelled-level-4-pike.wav",
+    "kind": "metal",
+    "sha256": "635af3eaff02b7e0512efb658f2735dea26ff418efbbfae4c8c150d6cfcba6d8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-pistol",
+    "path": "public/audio/emporium/enspelled-level-4-pistol.wav",
+    "kind": "metal",
+    "sha256": "7e2a5fe38793dfafc0e8354836fbf068f14f5dc07aff0aece15f0431b1c2bb14",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-4-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "ff11692812b1c9cc6babfb1f936d44df16d21b6d3c6da5124ce28fa601bf75b3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-rapier",
+    "path": "public/audio/emporium/enspelled-level-4-rapier.wav",
+    "kind": "metal",
+    "sha256": "2d751e7a688b5653a51ee16832af12b51571cfcf57266e77edb88ed4d4b6bd30",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-revolver",
+    "path": "public/audio/emporium/enspelled-level-4-revolver.wav",
+    "kind": "metal",
+    "sha256": "5a306a60eaf222e03485fc70a723334cbb25599870b54e6a830c6f834510307b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-scimitar",
+    "path": "public/audio/emporium/enspelled-level-4-scimitar.wav",
+    "kind": "metal",
+    "sha256": "47c3187c9fe4be3d5e5b90605e3cd33581c9b3e484d8b94ff270c4885aa3239b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-4-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "ed79ee4d4e7c5f82923acd56d9dfea1fda07ca9f4bb2a8f800c39a29db5cf991",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-shortbow",
+    "path": "public/audio/emporium/enspelled-level-4-shortbow.wav",
+    "kind": "metal",
+    "sha256": "0bd29f0ce03f30d6e3618d1a097f2bd2d6b633cfb81e23b7a62a87bd5fe0a8a3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-shortsword",
+    "path": "public/audio/emporium/enspelled-level-4-shortsword.wav",
+    "kind": "metal",
+    "sha256": "c709c9fdcded5c0f7b42647c1ed4e9ab557fc9d5031df87c64e37c0e2e446056",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-shotgun",
+    "path": "public/audio/emporium/enspelled-level-4-shotgun.wav",
+    "kind": "metal",
+    "sha256": "f5b961dc368d8f4374aebb349b847be826e64ab3a08e3c23889d2a1caac22592",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-sickle",
+    "path": "public/audio/emporium/enspelled-level-4-sickle.wav",
+    "kind": "metal",
+    "sha256": "cb7e40003a4e9f97b0bc65ddb7b5763074c14ddbd0a3f9f8678e2ae64b57d6bb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-sling",
+    "path": "public/audio/emporium/enspelled-level-4-sling.wav",
+    "kind": "leather",
+    "sha256": "56b38b4784bfdfe1f6b803813c0690702fc17b74e19810a820ba282a5bc9042e",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-spear",
+    "path": "public/audio/emporium/enspelled-level-4-spear.wav",
+    "kind": "wood",
+    "sha256": "e0facb27f66097d545fa6177c0975ab3de5c74b16ac71775473d1e7a0407a668",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-trident",
+    "path": "public/audio/emporium/enspelled-level-4-trident.wav",
+    "kind": "metal",
+    "sha256": "46d74c67dc0a78e473a964265398ddc955e0f9b9d00c624beb9eee3e752da9e7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-war-pick",
+    "path": "public/audio/emporium/enspelled-level-4-war-pick.wav",
+    "kind": "metal",
+    "sha256": "e44e446e16776176fb1039fc18bff582b6f83be5cdd56556bef5954726b0a7b7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-warhammer",
+    "path": "public/audio/emporium/enspelled-level-4-warhammer.wav",
+    "kind": "metal",
+    "sha256": "9874c401a5d1094eb620dadb52fa37a2153e6dfabd2a799ea8eaf92a5d8ddfb2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-whip",
+    "path": "public/audio/emporium/enspelled-level-4-whip.wav",
+    "kind": "leather",
+    "sha256": "db6cc0475baee5f083c3229402aa5bc2f9abea0b8f49e66a9c274ebb360682bb",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-4-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "ace554d521462b878b74ac9e73a90494b725f8f73ebeb6aa9d32fed6a44acee1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-4-yklwa",
+    "path": "public/audio/emporium/enspelled-level-4-yklwa.wav",
+    "kind": "metal",
+    "sha256": "8e3ee4c3979bbfcc74f1cec21c3a6bbd33347e23a420d5d1583c309f96f7cc49",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-5-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "bfa99f8503cb71fb36aa1d9b809fc40d44d666a24f63294d6669efe1c87d9141",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-5-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "fd909e9d9c3967dce8da7676b12e4b85abfb0dd96e54498828febd5282a525d9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-5-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "34cbfeb8b880652657206031c3f7119c7c9669bf25a421879e693a4b1e8a1c68",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-blowgun",
+    "path": "public/audio/emporium/enspelled-level-5-blowgun.wav",
+    "kind": "wood",
+    "sha256": "9cbab29fab2a98ee95945f841573e8a1956c4844b49d967a1ca860bf3fa24d0b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-club",
+    "path": "public/audio/emporium/enspelled-level-5-club.wav",
+    "kind": "wood",
+    "sha256": "ae1f0918e9b0d0b6c630ba606e5fe75beda734c141f1c73b2d4603d07ecd8148",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-dagger",
+    "path": "public/audio/emporium/enspelled-level-5-dagger.wav",
+    "kind": "metal",
+    "sha256": "7d653735d61d8488fc23e4e9a7050a710fedbb5533cfb1875f596d2512c6f47d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-dart",
+    "path": "public/audio/emporium/enspelled-level-5-dart.wav",
+    "kind": "metal",
+    "sha256": "1c92ee222b7d4e176e5988574e1d194661d74874d35840f7a389f13eacfe6464",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-5-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "ad39e6b7d26571b801b95ebfa60b18567aa6b9f1c2c6c3fd0d8ee994e318e10f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-flail",
+    "path": "public/audio/emporium/enspelled-level-5-flail.wav",
+    "kind": "chain",
+    "sha256": "0da965d9e0941178654da2ed44e4c999093bae7f57779bf840d0481fcd7eb446",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-glaive",
+    "path": "public/audio/emporium/enspelled-level-5-glaive.wav",
+    "kind": "metal",
+    "sha256": "521377062509c4827e62e1506b835aa13d42718e0922063a57dcbc9b57723605",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-greataxe",
+    "path": "public/audio/emporium/enspelled-level-5-greataxe.wav",
+    "kind": "metal",
+    "sha256": "9fef0b5a3c2a7f61289187dbe27afe6976edce892d77d522cd413c303561d0f6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-greatclub",
+    "path": "public/audio/emporium/enspelled-level-5-greatclub.wav",
+    "kind": "wood",
+    "sha256": "29063a2363d642bdf566c252181fbaad746e15d90d0ba69dc838ad65707302c5",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-greatsword",
+    "path": "public/audio/emporium/enspelled-level-5-greatsword.wav",
+    "kind": "metal",
+    "sha256": "4b2bff67c2cbc66169032ad86e9c199658d667d5481aa72a0eecd91768f8e39c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-halberd",
+    "path": "public/audio/emporium/enspelled-level-5-halberd.wav",
+    "kind": "metal",
+    "sha256": "832fb89a78c28faaf6ff14375cb51a7a093a2e25db04026b0874c829dd3b0bfe",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-5-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "4e708cf1764f00684fa783a71e78bc5d910d4992cbe53235455c7e5b0975f87d",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-handaxe",
+    "path": "public/audio/emporium/enspelled-level-5-handaxe.wav",
+    "kind": "metal",
+    "sha256": "e1df223f3ecea6206eccd5ab444b9e37329ec67450b466b57a7c999298932bbd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-5-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "e65850ad41f9a2e972dced6ea1a7f8c2760791eb2dae6ac9e026b08bdea500c9",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-5-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "a0d80839703bf898485eeef04ef6169cf06d8457aa154d190352bf1d27aa088f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-hoopak",
+    "path": "public/audio/emporium/enspelled-level-5-hoopak.wav",
+    "kind": "metal",
+    "sha256": "10c71fe3e0eea93be4310f8eeb4bc2a4e90e684417d6a5f228ec50b21386adb3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-5-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "68965ab3942348988277eb84b9859459797f6a120594f9c0c0e2fb189466ccff",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-javelin",
+    "path": "public/audio/emporium/enspelled-level-5-javelin.wav",
+    "kind": "wood",
+    "sha256": "9c586782567b68268c6c4b4ff489702974e39fee4146d26cdfe02ebb47cce8bd",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-lance",
+    "path": "public/audio/emporium/enspelled-level-5-lance.wav",
+    "kind": "wood",
+    "sha256": "5b9a80855882660f35a4b5974a46595ef29c55376f55d3e56767c2f721ab9df4",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-5-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "6b5a1fc9cda5f074bc6b51f909690786fa470cab54ab943edd06ef1bbf6d73da",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-5-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "0e8df36e5cf306770fd7573b64254e5f8a5a883f27f6998c545f438278cd8dee",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-5-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "394a72a765adf95eb553b15306869c31404a311493460b532649b3aae8d60047",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-5-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "6c57d47e66c1e662f0db2baab9b2424ec385789fb6b296021c9f74dde939c875",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-5-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "23fe28297027b65c8859d4e6301e16c6564f7c52aa24f77d57b18e4d522a502e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-longbow",
+    "path": "public/audio/emporium/enspelled-level-5-longbow.wav",
+    "kind": "metal",
+    "sha256": "e5681890e2cc6534c0d92c9c8db0c02c9d8589e408d4efb42a0b29ecfc4a716c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-longsword",
+    "path": "public/audio/emporium/enspelled-level-5-longsword.wav",
+    "kind": "metal",
+    "sha256": "a434668c7b2885c1f516b30f98582bebf7a5e4c97ebdfb8fe34a9575936ab41e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-mace",
+    "path": "public/audio/emporium/enspelled-level-5-mace.wav",
+    "kind": "metal",
+    "sha256": "1dcd57ec76aa1201128804b21a4ade42e18147880079e3dd20e9244b0091a83a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-maul",
+    "path": "public/audio/emporium/enspelled-level-5-maul.wav",
+    "kind": "metal",
+    "sha256": "e1c8ce979e461c1aec0411d7c703169b565a544da3f2ec46fbacde14d8528dc2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-morningstar",
+    "path": "public/audio/emporium/enspelled-level-5-morningstar.wav",
+    "kind": "metal",
+    "sha256": "c3647d0e5721ef95eaa932d80445ff3aa1290de521689a2937dd626c95203825",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-musket",
+    "path": "public/audio/emporium/enspelled-level-5-musket.wav",
+    "kind": "metal",
+    "sha256": "e00bcf3399ce1520167424e29469c8968cb92782385e540ee354a592790353d6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-pike",
+    "path": "public/audio/emporium/enspelled-level-5-pike.wav",
+    "kind": "metal",
+    "sha256": "00c2011999943f83f4dfd712b7c80ba6fd87a3e68d56ee088d877e342bb92275",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-pistol",
+    "path": "public/audio/emporium/enspelled-level-5-pistol.wav",
+    "kind": "metal",
+    "sha256": "658b5cab3a46e1495d6ce25c1e20b27073a82b3ef640d34d349926cdd84ebc2f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-5-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "6e9a7a3286effe45fe513189531d5ef676a871bae366c49ad8bf135da65e7116",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-rapier",
+    "path": "public/audio/emporium/enspelled-level-5-rapier.wav",
+    "kind": "metal",
+    "sha256": "6365b05f3c358145aed88db094afc3d28acc31ed69a2e551331d80be6680763b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-revolver",
+    "path": "public/audio/emporium/enspelled-level-5-revolver.wav",
+    "kind": "metal",
+    "sha256": "c39a87f4fbede2d56c7c707cbb2aceea383906e0fce6933f04599d6367594b55",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-scimitar",
+    "path": "public/audio/emporium/enspelled-level-5-scimitar.wav",
+    "kind": "metal",
+    "sha256": "46cac691fe0420b0a534d26d51691d72a376d98355b65d622002855050634268",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-5-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "c861c82d12cc925357df8a8eda79fad8e09ab7707536878a0e2f4636977f6b07",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-shortbow",
+    "path": "public/audio/emporium/enspelled-level-5-shortbow.wav",
+    "kind": "metal",
+    "sha256": "f3c507d6bbf87e5a1aff6854f637b40eef32741d6f3fdcb09fa18484c38af3b5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-shortsword",
+    "path": "public/audio/emporium/enspelled-level-5-shortsword.wav",
+    "kind": "metal",
+    "sha256": "900787ba7c83647c7a220a9e2a5ed20f199aa1ff25af0104129684c53847a9b0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-shotgun",
+    "path": "public/audio/emporium/enspelled-level-5-shotgun.wav",
+    "kind": "metal",
+    "sha256": "446a1bb322c02be5ea7b497319e3dfce841b411ca39441a42a056f6685123ccb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-sickle",
+    "path": "public/audio/emporium/enspelled-level-5-sickle.wav",
+    "kind": "metal",
+    "sha256": "69deb3bce69cde1f460fb60366ddc65565b2576b0283178a0658e26438c3669d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-sling",
+    "path": "public/audio/emporium/enspelled-level-5-sling.wav",
+    "kind": "leather",
+    "sha256": "3a687199edfc23e6ccf584fbc720f2c55264975e95dd23460b76d0da8bb5828d",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-spear",
+    "path": "public/audio/emporium/enspelled-level-5-spear.wav",
+    "kind": "wood",
+    "sha256": "bca27fe79cb5be73589af7a2276c0ae93b3cad64c10fa6644489a1eb0c025e4b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-trident",
+    "path": "public/audio/emporium/enspelled-level-5-trident.wav",
+    "kind": "metal",
+    "sha256": "2f3367a415bb3dae13335ed198c937502d3c81f1f65dcf0e6d2d1e9511364ec6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-war-pick",
+    "path": "public/audio/emporium/enspelled-level-5-war-pick.wav",
+    "kind": "metal",
+    "sha256": "a74d68c2d4181f4b902e7e733d3de08da084a8327f1103a4bc72154db0d968ea",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-warhammer",
+    "path": "public/audio/emporium/enspelled-level-5-warhammer.wav",
+    "kind": "metal",
+    "sha256": "b2804f3d217dfa0ed025fac01fb1594d79705696e31cd5cc6ac131a86282f4d5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-whip",
+    "path": "public/audio/emporium/enspelled-level-5-whip.wav",
+    "kind": "leather",
+    "sha256": "f36aece6acd4243eb8654781d6a561cb1ed51a630ecb2476785e41493674b215",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-5-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "f8183cdb2c1b07f6d7fc2f8ad0a4c2cecb6f4f01ebb7227a1cbdb2acca0e59c4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-5-yklwa",
+    "path": "public/audio/emporium/enspelled-level-5-yklwa.wav",
+    "kind": "metal",
+    "sha256": "bf0479256644f2dbfbd11ca92025134035e82d1a214a961d84ede9181553010d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-6-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "2d716ed16c8b7f267c62bdbf3c45f7d6cc61a4d4ce8cf08b0cc248c140587541",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-6-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "7356d0f731b899139da467265f30b5a9c54081d33b31a1414b00a6cfd5bd68ed",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-6-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "bda11be70b0136645330d22105a5c603c10d934b47dae9349a13e079c69aac3d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-blowgun",
+    "path": "public/audio/emporium/enspelled-level-6-blowgun.wav",
+    "kind": "wood",
+    "sha256": "e0c1eb9f9f2bcb109b55164c08bcd030b06ccc6afd69a7ff5ece434054bc18a4",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-club",
+    "path": "public/audio/emporium/enspelled-level-6-club.wav",
+    "kind": "wood",
+    "sha256": "80f159573dfaf74cbad0a59a1fbf464bfdf940c0dc6701df97d8f257943912f6",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-dagger",
+    "path": "public/audio/emporium/enspelled-level-6-dagger.wav",
+    "kind": "metal",
+    "sha256": "e07f1779e424f866cfd39d64aca53fb54f119a5800f8cfb559554e8efa1cde1b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-dart",
+    "path": "public/audio/emporium/enspelled-level-6-dart.wav",
+    "kind": "metal",
+    "sha256": "533bd0ab44b0bc2143af49d77cdfc150fd463ef4e7e755816a65e297a2e405bb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-6-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "20b1c2de21fe16d4fc35b604f64bb562eaad924203b3afe4e32e1a6d5c8c0b41",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-flail",
+    "path": "public/audio/emporium/enspelled-level-6-flail.wav",
+    "kind": "chain",
+    "sha256": "f3a15622f9de30597ed7693a4df614e4c91893cb9c00798ae6eb29c258e3b8ce",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-glaive",
+    "path": "public/audio/emporium/enspelled-level-6-glaive.wav",
+    "kind": "metal",
+    "sha256": "b70da2fce9ea61ba01502a2a4845323346cca7375aea5fcf4316d39b3b87e61c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-greataxe",
+    "path": "public/audio/emporium/enspelled-level-6-greataxe.wav",
+    "kind": "metal",
+    "sha256": "9b30049f2cc5f3e564f3b3a1794f2dd5c1b6f1b0e0a52e0e21b916f0893d7304",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-greatclub",
+    "path": "public/audio/emporium/enspelled-level-6-greatclub.wav",
+    "kind": "wood",
+    "sha256": "31ba1f92387cffe6b39f3c85e0a3729282be8dbad04d75bd6fb26e6b39f59343",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-greatsword",
+    "path": "public/audio/emporium/enspelled-level-6-greatsword.wav",
+    "kind": "metal",
+    "sha256": "52b6065d11201716c46823772b6654afad255cd1ef4eb783a59c0e0c894d971f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-halberd",
+    "path": "public/audio/emporium/enspelled-level-6-halberd.wav",
+    "kind": "metal",
+    "sha256": "cadf7fb6f2667f28af5dd6131a51cef9a92fc9e9952d434deeff0eb7a902ad6c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-6-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "bf3b484579f9c8c866731173d15afa04af32f04a79c7e08037d242a92d3361a2",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-handaxe",
+    "path": "public/audio/emporium/enspelled-level-6-handaxe.wav",
+    "kind": "metal",
+    "sha256": "8f12bdae7c5010019a93ce7fef727f4eb5353dfa3d5bfe1ae4ad111c4c504c16",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-6-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "71a278aed4ecef656938cb949e36054e64ac57882d0200761e27b9b9b636ee92",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-6-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "434080974435efecde824814a60ec9f13b3a71a54e30f0be04624d6323d8aa32",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-hoopak",
+    "path": "public/audio/emporium/enspelled-level-6-hoopak.wav",
+    "kind": "metal",
+    "sha256": "c153de7fd2a62a06fca7830afae0467053029bf54630f1b5f484607f05c6b163",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-6-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "9fd20c476eb8cdfc805760a06b2f465e671a5b97165df7eadfc581443fdb1474",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-javelin",
+    "path": "public/audio/emporium/enspelled-level-6-javelin.wav",
+    "kind": "wood",
+    "sha256": "8f37735160612d004191d05b9cdf474aabb5524f7775257050d3b363ab6944cf",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-lance",
+    "path": "public/audio/emporium/enspelled-level-6-lance.wav",
+    "kind": "wood",
+    "sha256": "7a13c6ad5db2aa82224c3516d912a935cc8778e261b3053cd76fcdfa535fd4b9",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-6-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "6f326cc943188b8a4cc96d1f6c852cd6f77bcd8f9b639af8457645935b9a0766",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-6-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "7cfe39b32074acb664ad22966c2c17d9761cd5d866d162ff393236f6c49b3b33",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-6-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "439c65a37584ec442b0138035a3caddf887811c9ffd7e270e48b1b485e506737",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-6-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "28a9be99eaf2e082407190265d2f89b92486d423b7b0cbdc6207228012317c7f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-6-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "9668f6c7f221a3777e2d3e5008a3696be0864045a563363d1b87eccd8e8e0f66",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-longbow",
+    "path": "public/audio/emporium/enspelled-level-6-longbow.wav",
+    "kind": "metal",
+    "sha256": "87c081c40e6b2a67a75a862f43ee68ef29ee977799a4fe507f8c69d596d9b04d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-longsword",
+    "path": "public/audio/emporium/enspelled-level-6-longsword.wav",
+    "kind": "metal",
+    "sha256": "093fe2cc97d18e28a464044d889292a8bee667118264c961e2f09ba2edbb849d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-mace",
+    "path": "public/audio/emporium/enspelled-level-6-mace.wav",
+    "kind": "metal",
+    "sha256": "22746cdb4b031cec361b92fb89718eb0af3646aa1d492144e6dbf55d27873568",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-maul",
+    "path": "public/audio/emporium/enspelled-level-6-maul.wav",
+    "kind": "metal",
+    "sha256": "0e4f02c14e6a2c34c9c173a570375a87e11067229c46ae81441ff6bdd227dfa9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-morningstar",
+    "path": "public/audio/emporium/enspelled-level-6-morningstar.wav",
+    "kind": "metal",
+    "sha256": "f8df8c53b5d15d543edf035f6e4ae3f8ef880cb90bf409251c5753923a7d7267",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-musket",
+    "path": "public/audio/emporium/enspelled-level-6-musket.wav",
+    "kind": "metal",
+    "sha256": "817d5e7d5f4c98cfb33f7ff05681ad11c1e3cf1bfde871b226b583022505ddef",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-pike",
+    "path": "public/audio/emporium/enspelled-level-6-pike.wav",
+    "kind": "metal",
+    "sha256": "185182201ca771e7b3c5d1b57ded3a0bfb6b37931a31a9cd11b883fa5dfb7f10",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-pistol",
+    "path": "public/audio/emporium/enspelled-level-6-pistol.wav",
+    "kind": "metal",
+    "sha256": "28b2b4798836ccf5e48a8995a4a81ad8cb744ca35db63478665a440cc4c43c67",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-6-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "0a414b51f6d7f9d4ca65fa33a6d63a74f8beb1d486578765e0307a9b06af54d1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-rapier",
+    "path": "public/audio/emporium/enspelled-level-6-rapier.wav",
+    "kind": "metal",
+    "sha256": "f58ef464ad3aaa61c9b71c087ff70be52ed9b0605432dd2ba984251c8f7ae7c5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-revolver",
+    "path": "public/audio/emporium/enspelled-level-6-revolver.wav",
+    "kind": "metal",
+    "sha256": "31f3d28d5621a5df01926df53d0405c25c95f9cd7ab394911733b915a79bdadb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-scimitar",
+    "path": "public/audio/emporium/enspelled-level-6-scimitar.wav",
+    "kind": "metal",
+    "sha256": "d995a05c50dddcb13bb9b2e5df5983f6499c0a2d574afc75a25a533226325218",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-6-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "46ac7368e7ff74b50e5218ac315709d7640cd216f8263e137cbbd5d5fa574160",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-shortbow",
+    "path": "public/audio/emporium/enspelled-level-6-shortbow.wav",
+    "kind": "metal",
+    "sha256": "494632f27f299fe5bb15552326fea56c0ba01b793141d7871613b552a4dce501",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-shortsword",
+    "path": "public/audio/emporium/enspelled-level-6-shortsword.wav",
+    "kind": "metal",
+    "sha256": "6cfe18de7a65b0a4e2e5734df39459f9ad7aa24f2bdd1c9bdb9c4d5ad9d67c1e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-shotgun",
+    "path": "public/audio/emporium/enspelled-level-6-shotgun.wav",
+    "kind": "metal",
+    "sha256": "68e25b2d2b53362e81bbd96813c2097afe50a9423bf89b51ae840cdd1386cf06",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-sickle",
+    "path": "public/audio/emporium/enspelled-level-6-sickle.wav",
+    "kind": "metal",
+    "sha256": "b7afa97aa75c94ac8d67963530557617b98b699cd850a471ba0bcba2f7dca84a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-sling",
+    "path": "public/audio/emporium/enspelled-level-6-sling.wav",
+    "kind": "leather",
+    "sha256": "fd8d4dd8200e044f170563e4c24a1488cc174806a0b86dca0d1d45fc1756927f",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-spear",
+    "path": "public/audio/emporium/enspelled-level-6-spear.wav",
+    "kind": "wood",
+    "sha256": "4f86de4e041f6421a1446c670f3c89a3230232d3d31f4d593581a8edfc35f357",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-trident",
+    "path": "public/audio/emporium/enspelled-level-6-trident.wav",
+    "kind": "metal",
+    "sha256": "7600d98f4ca4b7725a8bf57eb7cf10955147e9a60955cf8aca33fc2c87459d70",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-war-pick",
+    "path": "public/audio/emporium/enspelled-level-6-war-pick.wav",
+    "kind": "metal",
+    "sha256": "142bc9830b6e1baefa5ec35684c6614e6bcfb923bba943009754e9149d1351f3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-warhammer",
+    "path": "public/audio/emporium/enspelled-level-6-warhammer.wav",
+    "kind": "metal",
+    "sha256": "bbca3812bbb2f10d20325c57acdb533e8498e1bc4f9b701813a107a0673988ec",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-whip",
+    "path": "public/audio/emporium/enspelled-level-6-whip.wav",
+    "kind": "leather",
+    "sha256": "2a94926630b4484279545fda3014f4084d94173bef768bbd53d3b0e0f7889855",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-6-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "b30ecf365143bb8fb0b0baf3893a1c59a9d9d7657f41e4ba9482654d2b74dd57",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-6-yklwa",
+    "path": "public/audio/emporium/enspelled-level-6-yklwa.wav",
+    "kind": "metal",
+    "sha256": "0e5a9cf2daf4bc868df416226a03ada188b4256069b3f231cdc26d296bcf830f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-7-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "f90d5eb8f263890e6a3c989d6473b306d14d0dc7d956dc792f4ffdd2479952c6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-7-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "bfec7ad0b34196845841ae65bae32083fd01db33f6ee621c2b23110129e1a149",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-7-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "e2e174f442d185ce0952006b377d7b8728e1953f4624dfcebc70de278e515547",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-blowgun",
+    "path": "public/audio/emporium/enspelled-level-7-blowgun.wav",
+    "kind": "wood",
+    "sha256": "b697abc4414b115e0b4e25cde1c0e4aa5eb0a0103da8713c99ad07bfb9f49ddf",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-club",
+    "path": "public/audio/emporium/enspelled-level-7-club.wav",
+    "kind": "wood",
+    "sha256": "3fe6371dfc100371c412bf413a9a852b30e5fd574efd1ee2aeef364988ca6acb",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-dagger",
+    "path": "public/audio/emporium/enspelled-level-7-dagger.wav",
+    "kind": "metal",
+    "sha256": "21aa1176e462f7cf6e192a1fbaa6261702f9b7746176f5c2c378feb6f67d74e0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-dart",
+    "path": "public/audio/emporium/enspelled-level-7-dart.wav",
+    "kind": "metal",
+    "sha256": "bda18d8fe63289e20adfb066b2876ae00887850deacc33d98d43e4c09a15841b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-7-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "0f62d83117a2979c78b5012123794a5ae0dceeab095af4ad521cf060e0debb1d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-flail",
+    "path": "public/audio/emporium/enspelled-level-7-flail.wav",
+    "kind": "chain",
+    "sha256": "d49e38e923d88b41ebeb6ff55999c5f96003cf990a21523d05be8755d53bf0c3",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-glaive",
+    "path": "public/audio/emporium/enspelled-level-7-glaive.wav",
+    "kind": "metal",
+    "sha256": "b561d269c5323b724e53da0cb74c1045cfcfc68378cd303b061556bf9bbbc68d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-greataxe",
+    "path": "public/audio/emporium/enspelled-level-7-greataxe.wav",
+    "kind": "metal",
+    "sha256": "4ced21e20227a4c62ccf02c413a2265aa760ef85391eb09d60886ccb371d0f6b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-greatclub",
+    "path": "public/audio/emporium/enspelled-level-7-greatclub.wav",
+    "kind": "wood",
+    "sha256": "b99de4dfd306ec472ce78b108de83090b8bb205f7237c60aff8e687accc8ba3a",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-greatsword",
+    "path": "public/audio/emporium/enspelled-level-7-greatsword.wav",
+    "kind": "metal",
+    "sha256": "579dfe2ac2898b715ee9080712736e1e8c3c17290dda6a929381f028004e0b7f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-halberd",
+    "path": "public/audio/emporium/enspelled-level-7-halberd.wav",
+    "kind": "metal",
+    "sha256": "1a9dc40830334cc07c3bad96b7122b87eddd9fc31de30998eeecdfa8cdac2650",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-7-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "e1159cf91a8f3de3998309af715ad8f50743b250a6a73e1a9d2e99e765d21563",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-handaxe",
+    "path": "public/audio/emporium/enspelled-level-7-handaxe.wav",
+    "kind": "metal",
+    "sha256": "61484a782aaa452e772f91490c8155f00fa036f4f016f2e5ca32ba6dd12c1356",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-7-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "bb2e7b3ae52b8c20104a5d6c79e6d559b37a6d8fe6410adb6bcea3ffa54816e7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-7-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "6b403b8883a4ffcbc5cbc515f5bb617f88896237c746e00e59a91b1c47c03921",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-hoopak",
+    "path": "public/audio/emporium/enspelled-level-7-hoopak.wav",
+    "kind": "metal",
+    "sha256": "4898dbf2b35ee078c6d35fe7452327959cf511af2ab907459abebadbc20bbe50",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-7-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "ae396c01d1eac697680c618d065a0ac0227917468c7bfa63ca396b25238dbcf0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-javelin",
+    "path": "public/audio/emporium/enspelled-level-7-javelin.wav",
+    "kind": "wood",
+    "sha256": "2ee30e80be5bf52243f51e9174789b14fb22de9e822bcb162ce4ba33811ddd02",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-lance",
+    "path": "public/audio/emporium/enspelled-level-7-lance.wav",
+    "kind": "wood",
+    "sha256": "fe63f41df84b8a0b604b61761cc0775893131f50f9671595c526f0aee98c2387",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-7-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "e408405854730a8b33e53d26f66d10020391cbac67f27a8fef807736d3a4ba0b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-7-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "2dff65083f21032d0c458ace3c8b393752889ae6c8257b453cafc8f7203ce2a0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-7-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "ec4c140890c5e4f14513e613489e18f9781fbe8a74b030b9dbfcccfbd3b48e77",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-7-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "9f743c3689e9de99feb3f985fa0e190456f2f58d76e5331f4cbae7c9f2a84d07",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-7-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "6efd12e77f051519ff7aff5f115f27018aff5a64ff3e218c81bf3bb6bdac6a6e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-longbow",
+    "path": "public/audio/emporium/enspelled-level-7-longbow.wav",
+    "kind": "metal",
+    "sha256": "2f3b24d07ec8250360bc340fd8a9b6d3100c6e86b13f1e2866ddf20ac3c1bbdd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-longsword",
+    "path": "public/audio/emporium/enspelled-level-7-longsword.wav",
+    "kind": "metal",
+    "sha256": "a6557c2e5c97740cf3fe2ab6d867c3b7a016a5d89b55422c9e91e430b9a61609",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-mace",
+    "path": "public/audio/emporium/enspelled-level-7-mace.wav",
+    "kind": "metal",
+    "sha256": "08a3236c4d104713a362df34a4ee8b1242ce399f7eb34c900cb3dd8798f58e78",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-maul",
+    "path": "public/audio/emporium/enspelled-level-7-maul.wav",
+    "kind": "metal",
+    "sha256": "ad7d4abd8703e58d7011808164088fa0eec93a604cba0db1da3b0a50b896b6a4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-morningstar",
+    "path": "public/audio/emporium/enspelled-level-7-morningstar.wav",
+    "kind": "metal",
+    "sha256": "7b9146010056600d68385ab596bc7ab1169f8dbfee0c8d5c7de9e8f3fcd4823d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-musket",
+    "path": "public/audio/emporium/enspelled-level-7-musket.wav",
+    "kind": "metal",
+    "sha256": "1600a6e6e84beb76f6614accea1b46daad256b2fab363065588bcfd736ac9ad2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-pike",
+    "path": "public/audio/emporium/enspelled-level-7-pike.wav",
+    "kind": "metal",
+    "sha256": "72ca3c98a578cbcc7150d77001622489c5fea1078cc3e46748efdb0e14387b8a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-pistol",
+    "path": "public/audio/emporium/enspelled-level-7-pistol.wav",
+    "kind": "metal",
+    "sha256": "71470d8fe80904059176de5fc18ce8033e517e2559464201b1ad76daa241b193",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-7-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "b97b225b83ae035dc09ef40ab5820041c6fe6a90b0f6a539ad417122f6d77c23",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-rapier",
+    "path": "public/audio/emporium/enspelled-level-7-rapier.wav",
+    "kind": "metal",
+    "sha256": "be496a91e00a295cf63c05312c138568aa530c6902b8f8589dccb09cfea33e81",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-revolver",
+    "path": "public/audio/emporium/enspelled-level-7-revolver.wav",
+    "kind": "metal",
+    "sha256": "1fa07828fd274e0832c3acbc9e713cc949eef4ec76121572c3a70a3cd9df797c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-scimitar",
+    "path": "public/audio/emporium/enspelled-level-7-scimitar.wav",
+    "kind": "metal",
+    "sha256": "144ce6debcdb6cd96ac2fc28006a79c9f82b8f868e1529de628182b6e852288a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-7-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "ee59f494984bbb006337d981aa0b7d917368d0fd8cc85f4d38a3bf1568714b3e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-shortbow",
+    "path": "public/audio/emporium/enspelled-level-7-shortbow.wav",
+    "kind": "metal",
+    "sha256": "24da5df7cb1bc3e5e8020a68ee54721dea443fa9f8bbf2d187e17769d8e7f947",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-shortsword",
+    "path": "public/audio/emporium/enspelled-level-7-shortsword.wav",
+    "kind": "metal",
+    "sha256": "4242ebf24cf23606c23e3a227ecb7016b2889d44c7ed344fd3325eb367bed0fe",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-shotgun",
+    "path": "public/audio/emporium/enspelled-level-7-shotgun.wav",
+    "kind": "metal",
+    "sha256": "5febde1435979d476669ebaf788b53c0839a38530157733c7f1b16bf3a62e469",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-sickle",
+    "path": "public/audio/emporium/enspelled-level-7-sickle.wav",
+    "kind": "metal",
+    "sha256": "1d09bb605f49fcb6e56723752c0db2c045867d9d064fed630e671c5df261cfc5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-sling",
+    "path": "public/audio/emporium/enspelled-level-7-sling.wav",
+    "kind": "leather",
+    "sha256": "aca8c0c585f323ec25cf4da053e385b282df1340884e5d5f461335e22f1cb2d2",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-spear",
+    "path": "public/audio/emporium/enspelled-level-7-spear.wav",
+    "kind": "wood",
+    "sha256": "0cf9ba69df76fe82124795556cf360d141d6ea7c4288380293d61adedf9cc297",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-trident",
+    "path": "public/audio/emporium/enspelled-level-7-trident.wav",
+    "kind": "metal",
+    "sha256": "14f6b904955d28e4557687abdea015d736dea7cc4a4fdaa95ab4c03959907fea",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-war-pick",
+    "path": "public/audio/emporium/enspelled-level-7-war-pick.wav",
+    "kind": "metal",
+    "sha256": "362b81d7218e2048c8be2409e677e950f6fdbbbb6e38ff0d0ca5fbbeb1ca7f86",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-warhammer",
+    "path": "public/audio/emporium/enspelled-level-7-warhammer.wav",
+    "kind": "metal",
+    "sha256": "e9801413cff0cd0bb931a3c1b464d7e800e636e95cf3293248fdfdae5627fdf8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-whip",
+    "path": "public/audio/emporium/enspelled-level-7-whip.wav",
+    "kind": "leather",
+    "sha256": "d763493440191d41b5018f3034cdb8771973ffaf110ace639b379911f31c4142",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-7-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "e71bb8809d87dd5c515f01c089b2688564ffdd702c4d7bd55215ceb1a806d0a7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-7-yklwa",
+    "path": "public/audio/emporium/enspelled-level-7-yklwa.wav",
+    "kind": "metal",
+    "sha256": "b6226eb37b574acc6929cf954caf4a03de5b1c9893736c8a03245112f7cc7b0e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-antimatter-rifle",
+    "path": "public/audio/emporium/enspelled-level-8-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "c5ed8387d3f6274a1b346d1a814b2743243f13e9b7816bf4f15d95a22592b829",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-automatic-rifle",
+    "path": "public/audio/emporium/enspelled-level-8-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "10cc5aadb4a6b9d4ba970a713ebd3d958457a6a857845b037589511a7e2ba6e3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-battleaxe",
+    "path": "public/audio/emporium/enspelled-level-8-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "c9f30f3fa721b04b67eeb3e024ca46df43dfd7e031080e72fbe520eaf19b5d34",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-blowgun",
+    "path": "public/audio/emporium/enspelled-level-8-blowgun.wav",
+    "kind": "wood",
+    "sha256": "d58597081e9b8fdfdce76828645aef8d9227860e96290e3451b2ac2f095f64d9",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-club",
+    "path": "public/audio/emporium/enspelled-level-8-club.wav",
+    "kind": "wood",
+    "sha256": "8fdb5ed1fabfb9fd58ffeb0ee4d5a27e39a0f1b0ad95f5041e5eb9377cfb2de8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-dagger",
+    "path": "public/audio/emporium/enspelled-level-8-dagger.wav",
+    "kind": "metal",
+    "sha256": "d5fac7a5457d6848473bf67fd0a8d2054a2e85fd6b210060b9df181be69b8ff3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-dart",
+    "path": "public/audio/emporium/enspelled-level-8-dart.wav",
+    "kind": "metal",
+    "sha256": "5970f2b41fc351375650965dffc5c465e78cdfc5da055c56df2388b12e42deac",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-double-bladed-scimitar",
+    "path": "public/audio/emporium/enspelled-level-8-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "f870bf7b257a5ad1e030070fcb3495eada439f72b79b01f12320e011aae4fc2b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-flail",
+    "path": "public/audio/emporium/enspelled-level-8-flail.wav",
+    "kind": "chain",
+    "sha256": "f4a3a8dc9934c1026a972dc10872889b5598140b39f001b71997f448d155b346",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-glaive",
+    "path": "public/audio/emporium/enspelled-level-8-glaive.wav",
+    "kind": "metal",
+    "sha256": "52e9c4748c7ec25b194dbf0517f2c8fbb5d46cf9c6f764948f91e3614847e2b8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-greataxe",
+    "path": "public/audio/emporium/enspelled-level-8-greataxe.wav",
+    "kind": "metal",
+    "sha256": "2877374e266e7928746338bb5d8b40d730fbbc6746a4382d79a0a39b1815c19a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-greatclub",
+    "path": "public/audio/emporium/enspelled-level-8-greatclub.wav",
+    "kind": "wood",
+    "sha256": "fd37b26d5d9671cd4635689a6875a7669e2ad86fd313630bfaf84b2ad0b0bbcb",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-greatsword",
+    "path": "public/audio/emporium/enspelled-level-8-greatsword.wav",
+    "kind": "metal",
+    "sha256": "0ec2feb45efdad5f101496ba0a94de05abe0824ab6507bf1bba0eaaf03c09e7a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-halberd",
+    "path": "public/audio/emporium/enspelled-level-8-halberd.wav",
+    "kind": "metal",
+    "sha256": "5674459cfa419bd49f8b19bfda77a800e1bb5f95e575e8b06ce8b34333148013",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-hand-crossbow",
+    "path": "public/audio/emporium/enspelled-level-8-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "31da3285f40dd183ffeaa5e2edb440c1ee2a1654fa8c0c2a29fbd2caee264ef6",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-handaxe",
+    "path": "public/audio/emporium/enspelled-level-8-handaxe.wav",
+    "kind": "metal",
+    "sha256": "2fb12464210f1776e98caab92e7ec25ab3cead5582838b20fb72dfd6a0dc9d18",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-heavy-crossbow",
+    "path": "public/audio/emporium/enspelled-level-8-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "933799d6610fb807603555f23cd7981e83c4779c626932558e7ada93f9e71ebd",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-hooked-shortspear",
+    "path": "public/audio/emporium/enspelled-level-8-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "6bfd89de2ed139f38acd776e189d577d23c8e1ec83dcccea61ee81eedc10e9ab",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-hoopak",
+    "path": "public/audio/emporium/enspelled-level-8-hoopak.wav",
+    "kind": "metal",
+    "sha256": "7bd8a53906a500fa71faa1b66adb0078486df1132f804f0ab2c12dd8c259f889",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-hunting-rifle",
+    "path": "public/audio/emporium/enspelled-level-8-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "2d457ab4961202f9fe69c9154220d6d9664a6b3dca29598a76a63cdb08aa7913",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-javelin",
+    "path": "public/audio/emporium/enspelled-level-8-javelin.wav",
+    "kind": "wood",
+    "sha256": "88224a99b89201e291f578ced666acafd7b019d4f6c306d1210a18d5ec7c0d7a",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-lance",
+    "path": "public/audio/emporium/enspelled-level-8-lance.wav",
+    "kind": "wood",
+    "sha256": "a1c538b9b7513ce8446bc638b9690eb821e93c122a45e86e4a8c6080e4aa499d",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-laser-pistol",
+    "path": "public/audio/emporium/enspelled-level-8-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "9567b059ec588b11d0ed72bc6e84cfc79b3f18b71ea35abf80119b68a8680ba0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-laser-rifle",
+    "path": "public/audio/emporium/enspelled-level-8-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "1acaef55079bdf49118b313e4570edc929e40c0d3f2ff2a6c21ab22e1a8871b3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-light-crossbow",
+    "path": "public/audio/emporium/enspelled-level-8-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "c0b24a43f71b26ad0d654221cdb9f16f6e9dec13a784d8446974c9f5dfd28a58",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-light-hammer",
+    "path": "public/audio/emporium/enspelled-level-8-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "58c5abd0a63272d48a24f80a334681ee532ebe5e37a136057f5b054d5bd36866",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-light-repeating-crossbow",
+    "path": "public/audio/emporium/enspelled-level-8-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "a8b83e7b51d39de8e30591c0be65468d788480aacce9f658e064f725513638c0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-longbow",
+    "path": "public/audio/emporium/enspelled-level-8-longbow.wav",
+    "kind": "metal",
+    "sha256": "d4b30d475f6857582288d93f96039790517c3e5b2bcfd0a6806c3e1778373233",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-longsword",
+    "path": "public/audio/emporium/enspelled-level-8-longsword.wav",
+    "kind": "metal",
+    "sha256": "67ee5e466b993ba3e0ad7b7e8fe2357ffd4a0b1aff40ce60b63270ab420b3bf9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-mace",
+    "path": "public/audio/emporium/enspelled-level-8-mace.wav",
+    "kind": "metal",
+    "sha256": "f1d3261aef8670fa711771f8a4fabab8e0a3934752cbddbbac0d29c18953e6f3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-maul",
+    "path": "public/audio/emporium/enspelled-level-8-maul.wav",
+    "kind": "metal",
+    "sha256": "bf9128682f2aeed4b605d133e6befaf79ea38e6e7924cad59a62b5f1c98c1195",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-morningstar",
+    "path": "public/audio/emporium/enspelled-level-8-morningstar.wav",
+    "kind": "metal",
+    "sha256": "4ce1bd217f543acebc9755796727629e2684d8d48ae9ef35d5533d4b6112a012",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-musket",
+    "path": "public/audio/emporium/enspelled-level-8-musket.wav",
+    "kind": "metal",
+    "sha256": "bcdafc80375c8dc4a67e95ad7a565ca8183f5f545f37d7262d63e3eab9e84851",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-pike",
+    "path": "public/audio/emporium/enspelled-level-8-pike.wav",
+    "kind": "metal",
+    "sha256": "a2ab5d039941b5e5225de8142e788916ff22722fe84dcd9e312d4613983d3157",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-pistol",
+    "path": "public/audio/emporium/enspelled-level-8-pistol.wav",
+    "kind": "metal",
+    "sha256": "f472769ad92a3c4e0a6492910dc944ea52c25ced5388426bb655ab259f17944f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-quarterstaff",
+    "path": "public/audio/emporium/enspelled-level-8-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "8cae4980d2c395f3ebd1d71d149043499ee76969ae0ca2b9d71ae65cc72fae8c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-rapier",
+    "path": "public/audio/emporium/enspelled-level-8-rapier.wav",
+    "kind": "metal",
+    "sha256": "22aceba53924d929139e506951736df74e22e7b85770f0083e54cbb4e20573bc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-revolver",
+    "path": "public/audio/emporium/enspelled-level-8-revolver.wav",
+    "kind": "metal",
+    "sha256": "6f28c6d087887d835475bc567e8a2be38eda94219c7c5ab9b97987664ae45b1f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-scimitar",
+    "path": "public/audio/emporium/enspelled-level-8-scimitar.wav",
+    "kind": "metal",
+    "sha256": "5fb7d64387000d6a07360adc3ca4644876adc716af490f00edfdc99a9b55d16d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-semiautomatic-pistol",
+    "path": "public/audio/emporium/enspelled-level-8-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "4ffc0f568a7af58cdc9c358cc8a3a6df95ed3ae14c2edb742dd6a9f59382eaf5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-shortbow",
+    "path": "public/audio/emporium/enspelled-level-8-shortbow.wav",
+    "kind": "metal",
+    "sha256": "0e7527e26a76491fddfafe52d9471f74c441d464b79ff8dcbc53ecc7561960c2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-shortsword",
+    "path": "public/audio/emporium/enspelled-level-8-shortsword.wav",
+    "kind": "metal",
+    "sha256": "34f5046e4ea71ecfe9d291f06b27d14ffdc3d9dbf3162a79082ee70bd369aa9a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-shotgun",
+    "path": "public/audio/emporium/enspelled-level-8-shotgun.wav",
+    "kind": "metal",
+    "sha256": "671023c33f0c6300aa7e77d7c4f5f36aaa4268efe04e3dc4d54a66e3849fc2b2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-sickle",
+    "path": "public/audio/emporium/enspelled-level-8-sickle.wav",
+    "kind": "metal",
+    "sha256": "ae41e41cda612f6d5beec4b1080f7284997402d7eb411d0c0ca7bb374c49237f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-sling",
+    "path": "public/audio/emporium/enspelled-level-8-sling.wav",
+    "kind": "leather",
+    "sha256": "c2c7994c9f41fd594a9ce285f1b5844a347e0b70b3867d60d58b7935743d34f8",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-spear",
+    "path": "public/audio/emporium/enspelled-level-8-spear.wav",
+    "kind": "wood",
+    "sha256": "453b8db8d98fa061d6f42f91d4350db9c0bd26113a6a976028c520bd0c307fab",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-trident",
+    "path": "public/audio/emporium/enspelled-level-8-trident.wav",
+    "kind": "metal",
+    "sha256": "d7da69c044faa229da3b3cbe941d901af8ed1db4f739ca14f58d95b9cef2c7b1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-war-pick",
+    "path": "public/audio/emporium/enspelled-level-8-war-pick.wav",
+    "kind": "metal",
+    "sha256": "1175eb497c36ce3124aab3e39489a07522eeef8c88a09435b54b31e66e4001cd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-warhammer",
+    "path": "public/audio/emporium/enspelled-level-8-warhammer.wav",
+    "kind": "metal",
+    "sha256": "eec8c40b59c4be08084263bf64a3d1b0a682c09b3737abef81f3d73b1e1a1045",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-whip",
+    "path": "public/audio/emporium/enspelled-level-8-whip.wav",
+    "kind": "leather",
+    "sha256": "8d963cca426f7b55aa5b3c35e442bd4406201a0c7d2466a7b0aba8607a51c86b",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-wooden-staff",
+    "path": "public/audio/emporium/enspelled-level-8-wooden-staff.wav",
+    "kind": "metal",
+    "sha256": "407cb97dc39fed1dec1d783c5038a3779ec258808d0d147fb5f686835d7b15f0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enspelled-level-8-yklwa",
+    "path": "public/audio/emporium/enspelled-level-8-yklwa.wav",
+    "kind": "metal",
+    "sha256": "9f1506248b22d05b23f57de020daa88ee17ac07be78716f0a9aa816bf12ad1a8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

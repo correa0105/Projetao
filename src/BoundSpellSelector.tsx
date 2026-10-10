@@ -27,24 +27,28 @@ export function BoundSpellSelector({
   const [data, setData] = useState<{ spec: SpellBindingSpec; options: BoundSpellOption[] } | null>(
       null,
     ),
-    [error, setError] = useState('');
+    [error, setError] = useState(''),
+    [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let current = true;
+    const controller = new AbortController();
     setData(null);
     setError('');
     api<{ spec: SpellBindingSpec; options: BoundSpellOption[] }>(
       '/catalog/' + encodeURIComponent(itemId) + '/spell-options',
+      { signal: controller.signal },
     )
       .then((result) => {
         if (current) setData(result);
       })
       .catch((reason) => {
-        if (current) setError(reason.message);
+        if (current && reason.name !== 'AbortError') setError(reason.message);
       });
     return () => {
       current = false;
+      controller.abort();
     };
-  }, [itemId]);
+  }, [itemId, attempt]);
   const selected = data?.options.find((x) => x.id === value);
   return (
     <div className="shop-bound-spell">
@@ -81,7 +85,12 @@ export function BoundSpellSelector({
         </select>
       </label>
       {error ? (
-        <small role="alert">{error}</small>
+        <small role="alert">
+          {error}{' '}
+          <button type="button" disabled={disabled} onClick={() => setAttempt((x) => x + 1)}>
+            Tentar novamente
+          </button>
+        </small>
       ) : selected ? (
         <small>
           Vinculada permanentemente.{' '}

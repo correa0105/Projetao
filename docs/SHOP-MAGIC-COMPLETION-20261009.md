@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **1083 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **1499 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -543,3 +543,15 @@ Escolha obrigatória entre 41 truques elegíveis, com fonte e escola. A edição
 Regras: sintonia, seis cargas, uma carga por conjuração enquanto segura a arma, CD 13, ataque mágico +5 e recuperação 1d6 a cada amanhecer até seis. O encanto não dá bônus aos ataques/dano físicos nem munição ilimitada. Maestrias, duas mãos, alcances, munição, recarga/rajada e exceções dos modelos foram conferidos; peso ausente da funda é estimado explicitamente. Corrigido também o fallback HTML da aplicação quando a cópia local está em um diretório oculto.
 
 1083 ofertas novas publicadas, 1993 candidatos ainda pendentes. API em banco UUID verificou 1031 compras comuns, fontes/mídias dos 1083, 52 configurações/encaixes e replay, rollback, escolas/edições, preço canônico, transferências e seed sem alterar exemplares. Navegador real autenticado verificou escolha obrigatória, carrinho, compra e persistência em 1500/760/390 px, com baú e arma carregados. TypeScript/build e publicação incremental v24 passaram: 60 tabelas e todos os produtos anteriores integralmente iguais, apenas 52 adições; 2236 mídias e 43 bundles públicos conferidos. Efeitos, condições, 116 texturas VTT e máscara/foice conservados. Os níveis seguintes e os demais itens permanecem em andamento.
+
+## 25. Oito níveis de magia, 416 armas adicionais
+
+Enspelled Weapon (Level 1–8), Dungeon Master’s Guide (2024), p. 258: 52 modelos por nível, com propriedades físicas preservadas e oito materiais originais de construção distinta. Bronze/cerâmica, cobre/jade, ametista/aço, madrepérola/prata, obsidiana/rubi, meteorito azul, vidro prismático/platinum e mecanismos celestiais em ferro/ouro foram gerados pelo imagegen embutido. `art-jobs-enspell-level-materials.json` conserva prompts e fontes; o manifesto conserva cada silhueta, textura, SHA e revisão em fundo escuro de 160 px. Ornamentos de nível são decoração e não concedem bônus de arma. 416 falas originais e 416 foley únicos; artes/sons anteriores intactos.
+
+Modelo e nível ficam na mesma família da vitrine, com a peça apoiada no baú. Cada nível oferece somente magias compatíveis das cinco escolas; o índice contém 395 nomes/fatos/fontes de níveis 0–8, incluindo 41 truques. A escolha continua fixa do exemplar após a compra. Sintonia, seis cargas, uma carga por conjuração e recuperação 1d6 ao amanhecer permanecem em todos os níveis. CD/ataque por nível: 1–2 = 13/+5; 3–4 = 15/+7; 5–6 = 17/+9; 7–8 = 18/+10. Raridades: 1 incomum; 2–3 raro; 4–5 muito raro; 6–8 lendário. Propriedades normais, maestrias, munição, recargas e pesos mantidos. Cargas e conjuração ainda são resolvidas pelo mestre.
+
+O seletor cancela pedidos antigos ao mudar de modelo/nível e oferece Tentar novamente se o carregamento falhar. O teste força um 503 e confirma recuperação sem recarregar a página. A canonização das edições ocorre antes também do limite de nível, impedindo que uma versão antiga reentre quando a edição atual ultrapassa o limite permitido.
+
+1499 ofertas novas publicadas, 1577 candidatos pendentes. API UUID validou 1499 fontes/mídias, 1031 compras comuns e 468 configurações em níveis 0–8, preço canônico, saldo, replay, escolas/níveis, IDs distintos, encaixes e seed que conserva exemplares. UI completa com artes/falas/regras dos 1499 e baús anteriores em três larguras; aplicação real autenticada confere todos os oito níveis em desktop/tablet/celular e realiza compras de níveis 1/4/8. TypeScript/build aprovados. Release incremental v25: 60 tabelas e todo produto anterior integralmente iguais, apenas 416 adições; 3076 mídias e 43 bundles idênticos aos artefatos aprovados. VFX, condições, texturas e máscara/foice conservados.
+
+O C ficou sem espaço durante o build. Cache de compilação inativo foi liberado; cópias intermediárias já incorporadas à imagem foram removidas individualmente apenas após comprovar SHA idêntico ao arquivo original conservado. Fontes PNG, mídias originais, dados e imagens de rollback continuam preservados. Os 17 trabalhos independentes permanecem byte a byte intactos. A conclusão do catálogo inteiro e das demais opções de magia/alvo continua em andamento.

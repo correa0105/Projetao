@@ -74,7 +74,7 @@ try {
     assert(rulesReviewIds.size > 0);
     for (const id of rulesReviewIds) assert(completion.items.some((x: any) => x.id === id), id);
   }
-  const initialGold = completion.items.reduce(
+  const initialGold = completion.items.filter((x:any)=>!x.raw_data.spell_binding).reduce(
     (sum: number, x: any) => sum + (x.price_cp || 0),
     100000,
   );

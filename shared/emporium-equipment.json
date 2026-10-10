@@ -5385,5 +5385,2749 @@
       "off_hand"
     ],
     "two_handed": false
+  },
+  "enspelled-level-1-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-1-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-1-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-2-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-2-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-3-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-3-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-4-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-4-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-5-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-5-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-6-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-6-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-7-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-7-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "enspelled-level-8-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-wooden-staff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "enspelled-level-8-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
   }
 }

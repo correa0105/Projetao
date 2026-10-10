@@ -60,7 +60,7 @@ for (const row of resolved) {
   if (
     row.source.startsWith('UA') ||
     row.level < 0 ||
-    row.level > 8 ||
+    row.level > 9 ||
     (sourceInfo.get(row.source)?.published ?? '1900-01-01') > asOf
   )
     continue;
@@ -93,7 +93,7 @@ for (const [name, label] of Object.entries({
 }))
   translated.set(name.toLowerCase(), label);
 const items = [...byName.values()]
-  .filter(({ row }) => allowedSchools.has(row.school))
+  .filter(({ row }) => row.level <= 8 && allowedSchools.has(row.school))
   .map(({ row }) => ({
     id:
       row.name

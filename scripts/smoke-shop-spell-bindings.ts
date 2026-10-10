@@ -29,6 +29,7 @@ const { createApp } = await import('../server/app.js');
 server.on('request', createApp());
 let cookie = '',
   browser: Awaited<ReturnType<typeof chromium.launch>> | undefined;
+const requestTimes: number[] = [];
 async function request(
   path: string,
   body?: unknown,
@@ -36,6 +37,7 @@ async function request(
   credentials = cookie,
 ) {
   for (let attempt = 0; attempt < 3; attempt++) {
+    requestTimes.push(Date.now());
     const response = await fetch(base + '/api' + path, {
       method,
       headers: { Cookie: credentials, Origin: base, 'Content-Type': 'application/json' },
@@ -283,7 +285,10 @@ try {
   const published = await request('/catalog');
   assert.equal(published.status, 200);
   assert(!published.data.some((item: any) => item.id.startsWith('configured-')));
-  assert.equal(published.data.filter((item: any) => item.raw_data?.spell_binding).length, 52);
+  assert.equal(
+    published.data.filter((item: any) => item.raw_data?.spell_binding).length,
+    all.filter((item: any) => item.raw_data.spell_binding).length,
+  );
   await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [user.id]);
   assert.equal(
     (await request('/catalog/' + sample.id + '/price', { price_cp: 12345 }, 'PATCH')).status,
@@ -323,8 +328,129 @@ try {
   console.log(
     'PASS all 52 configured models: permitted schools/edition, ownership, rollback, canonical price, hidden distinct inventory IDs, purchases/replay, every main-hand slot, vault transfer, source details and seed preservation.',
   );
+  const higher = all.filter((item: any) => item.raw_data.spell_binding?.level > 0);
+  if (higher.length) {
+    assert.equal(higher.length, 416);
+    for (let level = 1; level <= 8; level++) {
+      const tier = higher.filter((item: any) => item.raw_data.spell_binding.level === level);
+      assert.equal(tier.length, 52);
+      const tierOptions = boundSpellOptions(spellBindingSpec(tier[0])!);
+      assert(tierOptions.length >= 10);
+      assert(
+        tierOptions.every((x) => x.level === level && ['C', 'D', 'V', 'N', 'T'].includes(x.school)),
+      );
+      const listed = await request('/catalog/' + tier[0].id + '/spell-options');
+      assert.equal(listed.status, 200);
+      assert.deepEqual(listed.data.options, tierOptions);
+      const total = tier.reduce((sum: number, item: any) => sum + item.price_cp, 0);
+      assert(total + 100000 < 2147483647);
+      await pool.query('UPDATE characters SET gold_cp=$2 WHERE id=$1', [hero.id, total + 100000]);
+      assert.equal((await request('/shop/checkout', cart(tier[0].id, fire.id))).status, 400);
+      assert.equal(
+        (
+          await request('/shop/checkout', {
+            ...cart(),
+            items: [{ item_id: tier[0].id, quantity: 1 }],
+          })
+        ).status,
+        409,
+      );
+      const payload = {
+        character_id: hero.id,
+        idempotency_key: randomUUID(),
+        items: tier.map((item: any, i: number) => ({
+          item_id: item.id,
+          quantity: 1,
+          spell_id: tierOptions[i % tierOptions.length].id,
+        })),
+      };
+      assert.equal((await request('/shop/checkout', payload)).status, 201);
+      assert.equal((await request('/shop/checkout', payload)).status, 200);
+      assert.equal(
+        (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
+        100000,
+      );
+      const owned = (
+        await pool.query(
+          "SELECT c.*,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND c.raw_data->'bound_spell'->>'level'=$2 ORDER BY c.id",
+          [hero.id, String(level)],
+        )
+      ).rows;
+      assert.equal(owned.length, 52);
+      const [dc, attack] = [
+        [13, 5],
+        [13, 5],
+        [15, 7],
+        [15, 7],
+        [17, 9],
+        [17, 9],
+        [18, 10],
+        [18, 10],
+      ][level - 1];
+      for (const item of owned) {
+        const parent = tier.find((x: any) => x.id === item.raw_data.configuration_origin),
+          line = payload.items.find((x: any) => x.item_id === parent.id);
+        assert(parent && line);
+        assert.equal(item.active, false);
+        assert.equal(item.quantity, 1);
+        assert.equal(item.image_path, parent.image_path);
+        assert.equal(item.audio_path, parent.audio_path);
+        assert.deepEqual(item.raw_data.bound_spell, selectedBoundSpell(parent, line.spell_id));
+        assert.deepEqual(compatibleSlots(item), parent.raw_data.equipment_slots);
+        assert.equal(twoHanded(item), parent.raw_data.two_handed);
+        assert.equal(Number(item.weight_lb), Number(parent.weight_lb));
+        assert(
+          item.raw_data.rules_summary.includes(`CD ${dc}`) &&
+            item.raw_data.rules_summary.includes(`+${attack}`),
+        );
+        assert.equal(item.raw_data.enhancement, undefined);
+      }
+      assert.equal(
+        (
+          await request('/inventory/equipment', {
+            character_id: hero.id,
+            item_id: owned[0].id,
+            slot: 'main_hand',
+          })
+        ).status,
+        200,
+      );
+      assert.equal((await request('/catalog/' + owned[0].id + '/rules')).status, 200);
+    }
+    const saved = (
+      await pool.query(
+        "SELECT id,md5(to_jsonb(c)::text) AS hash FROM catalog_items c WHERE raw_data ? 'configuration_origin' ORDER BY id",
+      )
+    ).rows;
+    await seed();
+    assert.deepEqual(
+      (
+        await pool.query(
+          "SELECT id,md5(to_jsonb(c)::text) AS hash FROM catalog_items c WHERE raw_data ? 'configuration_origin' ORDER BY id",
+        )
+      ).rows,
+      saved,
+    );
+    assert(!(await request('/catalog')).data.some((x: any) => x.id.startsWith('configured-')));
+    await pool.query('UPDATE characters SET gold_cp=100000000 WHERE id=$1', [hero.id]);
+    console.log(
+      'PASS all 416 level 1–8 purchases: correct eligible spells, source DC/attack, tier prices/gold, replay, distinct hidden IDs, anatomy/slots and seed preservation.',
+    );
+  }
   if (!process.argv.includes('--no-browser')) {
-    const fallback=await fetch(base+'/qa-index-fallback');assert.equal(fallback.status,200);assert.equal(fallback.headers.get('cache-control'),'no-store');assert((await fallback.text()).includes('<html'));
+    const recent = requestTimes.filter((t) => Date.now() - t < 60000);
+    if (recent.length > 100) {
+      console.log(
+        'Browser QA is allowing the API rate-limit window to reset after the bulk purchase audit.',
+      );
+      await new Promise((resolve) =>
+        setTimeout(resolve, Math.min(60000, Math.max(1, 60050 - (Date.now() - recent[0])))),
+      );
+    }
+    const fallback = await fetch(base + '/qa-index-fallback');
+    assert.equal(fallback.status, 200);
+    assert.equal(fallback.headers.get('cache-control'), 'no-store');
+    assert((await fallback.text()).includes('<html'));
     browser = await chromium.launch({ channel: 'msedge', headless: true });
     const context = await browser.newContext({ viewport: { width: 1500, height: 1100 } });
     await context.addCookies(
@@ -342,6 +468,10 @@ try {
     const page = await context.newPage(),
       errors: string[] = [];
     page.on('pageerror', (error) => errors.push(error.message));
+    page.on('response', (response) => {
+      if (response.status() >= 400 && response.url().startsWith(base + '/api/'))
+        console.log('Shop QA HTTP', new URL(response.url()).pathname, response.status());
+    });
     await mkdir('test-results', { recursive: true });
     const dagger = templates.find((item: any) => item.raw_data.base_item === 'dagger');
     assert(dagger);
@@ -354,10 +484,24 @@ try {
       await page.getByRole('textbox', { name: 'Procurar item' }).fill(dagger.name);
       const card = page.locator('.shop-product[data-family="Enspelled Weapon"]');
       await card.locator('select').first().selectOption('dagger');
+      if ((await card.locator('.shop-variant-selectors select').count()) > 1)
+        await card.locator('.shop-variant-selectors select').nth(1).selectOption(dagger.id);
       const select = card.getByRole('combobox', { name: 'Magia vinculada de ' + dagger.name });
       await expect(select).toBeEnabled();
-      await expect.poll(()=>card.locator('.shop-family-box').evaluate((image:HTMLImageElement)=>image.complete&&image.naturalWidth>0)).toBe(true);
-      await expect.poll(()=>card.locator('.shop-family-object').evaluate((image:HTMLImageElement)=>image.complete&&image.naturalWidth>0)).toBe(true);
+      await expect
+        .poll(() =>
+          card
+            .locator('.shop-family-box')
+            .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+        )
+        .toBe(true);
+      await expect
+        .poll(() =>
+          card
+            .locator('.shop-family-object')
+            .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+        )
+        .toBe(true);
       await select.selectOption('');
       await expect(card.getByRole('button', { name: /^Comprar/ })).toBeDisabled();
       await select.selectOption(fire.id);
@@ -395,6 +539,76 @@ try {
         ).rows[0].n,
         before.n + 1,
       );
+      if (higher.length) {
+        await page.getByRole('textbox', { name: 'Procurar item' }).fill('Arma com magia vinculada');
+        const tierCard = page.locator('.shop-product[data-family="Enspelled Weapon"]');
+        await tierCard.locator('.shop-variant-selectors select').first().selectOption('dagger');
+        const levelSelect = tierCard.getByRole('combobox', {
+          name: 'Nível da magia de ARMAS COM MAGIA VINCULADA',
+        });
+        await expect(levelSelect.locator('option')).toHaveCount(10);
+        for (let level = 1; level <= 8; level++) {
+          const item = higher.find(
+            (x: any) =>
+              x.raw_data.base_item === 'dagger' && x.raw_data.spell_binding.level === level,
+          );
+          let temporaryUnavailable = level === 1 && width === 1500;
+          if (temporaryUnavailable) {
+            await page.route('**/api/catalog/' + item.id + '/spell-options', async (route) => {
+              if (temporaryUnavailable)
+                await route.fulfill({
+                  status: 503,
+                  contentType: 'application/json',
+                  body: JSON.stringify({ error: 'Falha temporária de validação' }),
+                });
+              else await route.continue();
+            });
+          }
+          await levelSelect.selectOption(item.id);
+          await expect(tierCard).toHaveAttribute('data-item-id', item.id);
+          const choices = tierCard.getByRole('combobox', {
+            name: 'Magia vinculada de ' + item.name,
+          });
+          if (level === 1 && width === 1500) {
+            await expect(tierCard.getByRole('alert')).toContainText(
+              'Falha temporária de validação',
+            );
+            temporaryUnavailable = false;
+            await tierCard.getByRole('button', { name: 'Tentar novamente' }).click();
+          }
+          await expect(choices).toBeEnabled();
+          const expected = boundSpellOptions(spellBindingSpec(item)!);
+          await expect(choices.locator('option')).toHaveCount(expected.length + 1);
+          await choices.selectOption('');
+          await expect(tierCard.getByRole('button', { name: /^Comprar/ })).toBeDisabled();
+          const image = tierCard.locator('.shop-family-object');
+          await expect(image).toHaveAttribute('src', item.image_path);
+          await image.evaluate((i: HTMLImageElement) => i.decode());
+          await choices.selectOption(expected[0].id);
+          await expect(tierCard.getByRole('button', { name: /^Comprar/ })).toBeEnabled();
+          if ([1, 4, 8].includes(level)) {
+            await page.screenshot({
+              path: `test-results/shop-spell-level-${level}-${width}.png`,
+              fullPage: true,
+            });
+            await tierCard.getByRole('button', { name: /^Comprar/ }).click();
+            await page.locator('.shop-cart-toggle').click();
+            await expect(page.locator('.shop-checkout')).toContainText(
+              'Magia vinculada: ' + expected[0].label,
+            );
+            const reply = page.waitForResponse(
+              (r) => r.url() === base + '/api/shop/checkout' && r.request().method() === 'POST',
+            );
+            await page
+              .locator('.shop-checkout')
+              .getByRole('button', { name: /Finalizar|Confirmar|Pagar/ })
+              .click();
+            assert.equal((await reply).status(), 201);
+            await expect(page.locator('.shop-checkout')).toBeHidden();
+          }
+          assert((await page.evaluate(() => document.documentElement.scrollWidth)) <= width + 1);
+        }
+      }
     }
     await page.reload();
     await expect(page.getByRole('textbox', { name: 'Procurar item' })).toBeVisible();
