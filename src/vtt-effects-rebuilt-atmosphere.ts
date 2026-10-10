@@ -2,6 +2,8 @@ import type { TokenEffect } from '../shared/vtt-effects';
 import type { EffectFootprint } from './vtt-effect-footprint';
 import { alpha, fract, glow, tau, tint } from './vtt-effects-primitives';
 import { spectralPilgrim } from './vtt-spectral-pilgrim';
+import { spectralScreamer } from './vtt-spectral-screamer';
+import { crossedWind } from './vtt-crossed-wind';
 import { temporalField } from './vtt-effects-temporal';
 type Random = (i: number) => number;
 export const rebuiltAtmosphereKinds = new Set([
@@ -89,41 +91,7 @@ export function drawRebuiltAtmosphere(
         c.fillRect(x, y, 0.8 + random(i) * 1.2, 1.2);
       }
   } else if (kind === 'wind-shear') {
-    for (let stream = 0; stream < 2; stream++) {
-      if ((stream === 0) !== front) continue;
-      const direction = stream ? -0.67 : 0.72;
-      c.save();
-      c.rotate(direction);
-      for (let i = 0; i < 5; i++) {
-        const u = fract(t * 0.31 + i / 5),
-          x = -121 + u * 242,
-          y = Math.sin(u * 5 + stream) * 23 + (stream ? 24 : -24);
-        temporalField(
-          c,
-          'vapour',
-          t * 0.43 + i * 0.26,
-          x,
-          y,
-          79,
-          23 + u * 15,
-          Math.sin(u * 4) * 0.17,
-          Math.sin(u * Math.PI) * 0.36,
-          color,
-        );
-      }
-      for (let i = 0; i < 24; i++) {
-        const u = fract(t * 0.43 + random(i + stream * 77)),
-          x = -125 + u * 250,
-          y = (random(i + 41) - 0.5) * 65;
-        c.beginPath();
-        c.moveTo(x - 6, y);
-        c.quadraticCurveTo(x - 3, y - 2, x, y);
-        c.strokeStyle = alpha(tint(color, 0.42), Math.sin(u * Math.PI) * 0.26);
-        c.lineWidth = 0.45;
-        c.stroke();
-      }
-      c.restore();
-    }
+    crossedWind(c, t, random, front, color);
   } else if (kind === 'soul-vortex') {
     if (!front) {
       temporalField(c, 'vapour', t * 0.3, 0, 0, 250, 250, -t * 0.23, 0.48, '#342650');
@@ -147,14 +115,17 @@ export function drawRebuiltAtmosphere(
       );
     }
   } else if (kind === 'spirit-procession') {
-    // Exactly two legible spirits follow opposite points of a wide oval.
-    // Upright heads stay readable while their robes and wake keep flowing.
-    for (let i = 0; i < 2; i++) {
-      const a = t * 0.29 + i * Math.PI + 0.45,
-        x = Math.cos(a) * 118,
-        y = Math.sin(a) * 95;
-      if (y > 0 !== front) continue;
-      spirit(c, x, y, 87, Math.sin(a) * 0.12, t * 0.8 + i * 0.57, 0.92, color);
+    // One large hooded wraith circles laterally; the two souls above keep their
+    // own illustration and choreography.
+    const a = t * 0.42 + 0.55,
+      x = Math.cos(a) * 112,
+      y = Math.sin(a) * 49;
+    if ((y > 0) === front) {
+      c.save();
+      c.translate(x, y);
+      c.rotate(Math.sin(a) * 0.24 + Math.sin(t * 0.71) * 0.06);
+      spectralScreamer(c, 120, t, 0.94);
+      c.restore();
     }
   } else if (kind === 'ghost-wake') {
     if (!front && f.source) {
@@ -165,7 +136,9 @@ export function drawRebuiltAtmosphere(
           offset = 23 + i * 18 + u * 9;
         c.save();
         c.globalAlpha *= Math.sin(u * Math.PI) * (0.21 - i * 0.031);
-        c.translate(Math.sin(t * 0.4 + i) * 5, 40 + offset);
+        // The token's rear is negative local Y. Its existing transform supplies
+        // rotation and mirrors without turning the character echoes upside down.
+        c.translate(Math.sin(t * 0.4 + i) * 5, -(40 + offset));
         c.filter = 'grayscale(1) sepia(.35) hue-rotate(185deg)';
         c.drawImage(f.source, -f.sx * 0.41, -f.sy * 0.41, f.sx * 0.82, f.sy * 0.82);
         c.restore();
@@ -175,7 +148,7 @@ export function drawRebuiltAtmosphere(
       for (let i = 0; i < 8; i++) {
         const u = fract(t * 0.24 + i / 8),
           x = Math.sin(u * 4 + i) * (8 + u * 12),
-          y = 53 + u * 83;
+          y = -53 - u * 83;
         temporalField(
           c,
           'vapour',

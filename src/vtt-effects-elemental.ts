@@ -189,25 +189,8 @@ export function drawElementalEffect(
         0,
         0.92,
       );
-    if (kind === 'water-geyser')
-      for (let i = 0; i < 3; i++) {
-        const u = fract(t * 0.47 + i / 3),
-          a = random(i + 7) * tau,
-          radius = 53 + u * 47;
-        if (Math.sin(a) > 0 !== front) continue;
-        elementalMaterial(
-          c,
-          'water-jet',
-          t * 0.9 + i * 0.31,
-          Math.cos(a) * radius,
-          Math.sin(a) * radius - Math.sin(u * Math.PI) * 15,
-          66 + u * 39,
-          95 + u * 39,
-          a + Math.PI / 2,
-          envelope(u) * 0.78,
-        );
-      }
-    droplets(c, t, random, front, '#a9deec', false, kind === 'water-geyser');
+    // Keep the approved animated water surface without the rigid jet overlays.
+    if (kind === 'tidal-wave') droplets(c, t, random, front, '#a9deec', false);
   } else if (kind === 'sand-veil') {
     for (let i = 0; i < 6; i++) {
       const u = fract(t * 0.16 + i / 6),

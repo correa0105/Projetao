@@ -3,6 +3,7 @@ import type { EffectPreset } from '../shared/vtt-effects';
 import type { VttToken } from '../shared/vtt';
 import { renderEffect } from './vtt-effects-canvas';
 import { effectMaterialsReady } from './vtt-effects-materials';
+import { spectralScreamerReady } from './vtt-spectral-screamer';
 import { drawDeath } from './vtt-death';
 let previewImage: HTMLImageElement | undefined;
 function overheadPreview() {
@@ -99,7 +100,7 @@ export function VttEffectPreview({
       if (animated && !media.matches) frame = requestAnimationFrame(animate);
     };
     update();
-    void effectMaterialsReady.then(() => {
+    void Promise.all([effectMaterialsReady, spectralScreamerReady]).then(() => {
       if (alive) update();
     });
     image.addEventListener('load', update);

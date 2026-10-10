@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-10",
+  "id": "spectral-procession-screaming-wraith",
+  "status": "approved",
+  "source_tool": "imagegen",
+  "original_source": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-46064440-c18f-47b7-9bd4-b9522a1e9c6f.png",
+  "original_sha256": "2a0b67479e884e8b9e0021859cf7c28b7b304d5d87001d59bc1a8ee388e637bd",
+  "asset_path": "/vtt/spectral-procession-20261010/screaming-wraith.webp",
+  "asset_sha256": "4ee56cec745cb4866146d5dac7df4321977dd4e7c1939624a71fec7cac6e3573",
+  "width": 512,
+  "height": 768,
+  "native_alpha": true,
+  "edge_alpha_max": 1,
+  "prompt": "Create ONE original spectral wraith for a fantasy virtual tabletop effect. A terrifying tall hooded ghost, inspired by a Dementor-like floating apparition and an elongated screaming horror mask. Exactly one complete ghost, not a crowd. Its face is an empty smooth pale ivory elongated mask inside a deep charcoal hood: two deep black hollow eye sockets, no visible eyeballs, and a VERY LARGE vertically oval wide-open black mouth, as if making a silent scream. This face must be clear and readable when the full ghost is reduced to 70 pixels tall. The hood and shoulders are broad enough to frame the face. Its long ragged black and smoke-gray cloak is supple and flowing, with elegantly twisting torn fabric ribbons narrowing into a wispy semi-transparent trailing tail. A slight three-quarter sideways lean, face still visible and turned toward the viewer; flowing cloth pulled behind as it glides around someone. Refined painted fantasy realism, natural textile fibers and depth, organic curves, restrained cool silver-gray rim light on the cloak for dark-background readability. Face pale with sharp dark eye and mouth shapes, not a skull, no teeth, no blood, no gore. One unified ghost silhouette, no separate clones, hands, people, scenery, particles or ground shadow. Full hood, shoulder fabric and every tail ribbon completely inside canvas with 7 percent transparent padding on all sides. Native transparent alpha background. No rectangular backdrop, text, border, symbols, watermarks or logos. This single illustrated ghost will be animated in code with smooth orbit and cloth elongation; do not draw orbit rings or multiple animation frames.\n",
+  "technical_processing": "Proportional resize and transparent WebP encoding only; source pixels and full silhouette preserved.",
+  "animation": "Single illustrated wraith on a lateral oval; head remains legible, cloth flows and stretches continuously.",
+  "visual_review": "Full native asset, six actual-size gallery frames and real private character renderer reviewed. One clear screaming face, original supple cloak, no clipped silhouette, sideways orbit and continuous stretch.",
+  "validation": {
+    "approved_water_identical": true,
+    "unchanged_effects": 101,
+    "rear_rotation_mirror": true,
+    "single_wraith": true,
+    "reduced_motion": true,
+    "benchmark_ms": 1.8349999994039536
+  }
+}
