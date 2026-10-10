@@ -7701,5 +7701,1452 @@
     "model_name": "Couro batido",
     "magic_kind": "armor",
     "review": "approved"
+  },
+  "adamantine-battleaxe": {
+    "name": "Arma adamantina (Machado de batalha)",
+    "description": "Forma: Machado de batalha. Acertos contra objetos são críticos.",
+    "merchant_comment": "O machado de batalha adamantino é uma peça para objetos resistentes. Acerto não é promessa de destruição imediata.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "battleaxe",
+    "model_name": "Machado de batalha",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-club": {
+    "name": "Arma adamantina (Clava)",
+    "description": "Forma: Clava. Acertos contra objetos são críticos.",
+    "merchant_comment": "A clava adamantina foi preparada para objetos resistentes. O encanto ainda exige um acerto.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Adamantine Weapon",
+    "base_id": "club",
+    "model_name": "Clava",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-dagger": {
+    "name": "Arma adamantina (Adaga)",
+    "description": "Forma: Adaga. Acertos contra objetos são críticos.",
+    "merchant_comment": "A ponta adamantina desta adaga trata acertos em objetos como críticos. Criaturas seguem a regra normal.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, leve, arremesso. Alcance 20/60 pés. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "dagger",
+    "model_name": "Adaga",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-flail": {
+    "name": "Arma adamantina (Mangual)",
+    "description": "Forma: Mangual. Acertos contra objetos são críticos.",
+    "merchant_comment": "O mangual adamantino trata objetos acertados como críticos. Tome cuidado com os elos perto da própria mão.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "flail",
+    "model_name": "Mangual",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-glaive": {
+    "name": "Arma adamantina (Glaive)",
+    "description": "Forma: Glaive. Acertos contra objetos são críticos.",
+    "merchant_comment": "A lâmina adamantina desta glaive pode atingir objetos criticamente. O cabo continua pedindo duas mãos.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "glaive",
+    "model_name": "Glaive",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-greataxe": {
+    "name": "Arma adamantina (Machado grande)",
+    "description": "Forma: Machado grande. Acertos contra objetos são críticos.",
+    "merchant_comment": "O machado grande de adamantina é pesado. Seu poder sobre objetos não elimina a exigência de Força do modelo.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "greataxe",
+    "model_name": "Machado grande",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-greatclub": {
+    "name": "Arma adamantina (Clava grande)",
+    "description": "Forma: Clava grande. Acertos contra objetos são críticos.",
+    "merchant_comment": "Esta clava grande de adamantina serve para golpear objetos. Não confunda dureza com acerto garantido.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 contundente. Propriedades: duas mãos. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Adamantine Weapon",
+    "base_id": "greatclub",
+    "model_name": "Clava grande",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-greatsword": {
+    "name": "Arma adamantina (Espada grande)",
+    "description": "Forma: Espada grande. Acertos contra objetos são críticos.",
+    "merchant_comment": "A espada grande adamantina pode golpear objetos com críticos. Uma criatura não recebe esse benefício automaticamente.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-halberd": {
+    "name": "Arma adamantina (Alabarda)",
+    "description": "Forma: Alabarda. Acertos contra objetos são críticos.",
+    "merchant_comment": "A alabarda adamantina tem boa construção. Os críticos sobre objetos ainda dependem da jogada acertar.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "halberd",
+    "model_name": "Alabarda",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-handaxe": {
+    "name": "Arma adamantina (Machadinha)",
+    "description": "Forma: Machadinha. Acertos contra objetos são críticos.",
+    "merchant_comment": "A machadinha adamantina pode acertar objetos criticamente. Contra uma criatura, vale o crítico normal.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 cortante. Propriedades: leve, arremesso. Alcance 20/60 pés. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-javelin": {
+    "name": "Arma adamantina (Azagaia)",
+    "description": "Forma: Azagaia. Acertos contra objetos são críticos.",
+    "merchant_comment": "Esta azagaia de adamantina merece ser recuperada após o arremesso. Acertar um objeto ativa seu poder.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso. Alcance 30/120 pés. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "javelin",
+    "model_name": "Azagaia",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-lance": {
+    "name": "Arma adamantina (Lança de cavalaria)",
+    "description": "Forma: Lança de cavalaria. Acertos contra objetos são críticos.",
+    "merchant_comment": "Esta lança de cavalaria é adamantina. Confira a posição antes de tentar acertar um objeto.",
+    "rules_summary": "Arma marcial de duas mãos quando não estiver montado. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Montado, pode manejá-la com uma mão. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "lance",
+    "model_name": "Lança de cavalaria",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-light-hammer": {
+    "name": "Arma adamantina (Martelo leve)",
+    "description": "Forma: Martelo leve. Acertos contra objetos são críticos.",
+    "merchant_comment": "Martelo leve de adamantina: o acerto em objeto vira crítico, mesmo com uma cabeça pequena.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve, arremesso. Alcance 20/60 pés. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "light-hammer",
+    "model_name": "Martelo leve",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-longsword": {
+    "name": "Arma adamantina (Espada longa)",
+    "description": "Forma: Espada longa. Acertos contra objetos são críticos.",
+    "merchant_comment": "A espada longa adamantina corta objetos acertados criticamente. O encanto não muda o tipo do dano básico.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-mace": {
+    "name": "Arma adamantina (Maça)",
+    "description": "Forma: Maça. Acertos contra objetos são críticos.",
+    "merchant_comment": "A cabeça desta maça é adamantina. Um objeto acertado recebe um crítico; a mira continua por sua conta.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "mace",
+    "model_name": "Maça",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-maul": {
+    "name": "Arma adamantina (Malho)",
+    "description": "Forma: Malho. Acertos contra objetos são críticos.",
+    "merchant_comment": "Este malho de adamantina tem um uso claro contra objetos. O acerto continua sendo necessário.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "maul",
+    "model_name": "Malho",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-morningstar": {
+    "name": "Arma adamantina (Estrela da manhã)",
+    "description": "Forma: Estrela da manhã. Acertos contra objetos são críticos.",
+    "merchant_comment": "Os espinhos desta estrela da manhã são adamantinos. O poder descrito se aplica aos objetos que você acerta.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "morningstar",
+    "model_name": "Estrela da manhã",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-pike": {
+    "name": "Arma adamantina (Pique)",
+    "description": "Forma: Pique. Acertos contra objetos são críticos.",
+    "merchant_comment": "O pique adamantino pede duas mãos e espaço. Seu crítico em objeto não aumenta o alcance do cabo.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "pike",
+    "model_name": "Pique",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-quarterstaff": {
+    "name": "Arma adamantina (Bordão)",
+    "description": "Forma: Bordão. Acertos contra objetos são críticos.",
+    "merchant_comment": "Este bordão adamantino pode golpear objetos com críticos. Usar duas mãos segue a regra versátil do modelo.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d8 contundente. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Adamantine Weapon",
+    "base_id": "quarterstaff",
+    "model_name": "Bordão",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-rapier": {
+    "name": "Arma adamantina (Rapieira)",
+    "description": "Forma: Rapieira. Acertos contra objetos são críticos.",
+    "merchant_comment": "O florete adamantino conserva a acuidade. Um objeto acertado recebe o crítico do encanto.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-scimitar": {
+    "name": "Arma adamantina (Cimitarra)",
+    "description": "Forma: Cimitarra. Acertos contra objetos são críticos.",
+    "merchant_comment": "A cimitarra adamantina conserva sua lâmina curva. Ela não concede críticos automáticos contra criaturas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-shortsword": {
+    "name": "Arma adamantina (Espada curta)",
+    "description": "Forma: Espada curta. Acertos contra objetos são críticos.",
+    "merchant_comment": "A espada curta adamantina afeta objetos acertados. O tamanho da peça não muda a regra do encanto.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-sickle": {
+    "name": "Arma adamantina (Foice)",
+    "description": "Forma: Foice. Acertos contra objetos são críticos.",
+    "merchant_comment": "A foice adamantina é pequena, mas o poder sobre objetos continua inteiro. Ainda precisa acertá-los.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 cortante. Propriedades: leve. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "sickle",
+    "model_name": "Foice",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-spear": {
+    "name": "Arma adamantina (Lança)",
+    "description": "Forma: Lança. Acertos contra objetos são críticos.",
+    "merchant_comment": "A lança adamantina transforma acertos contra objetos em críticos. O arremesso continua tendo alcance normal.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d8 perfurante. Alcance 20/60 pés. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "spear",
+    "model_name": "Lança",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-trident": {
+    "name": "Arma adamantina (Tridente)",
+    "description": "Forma: Tridente. Acertos contra objetos são críticos.",
+    "merchant_comment": "As pontas deste tridente são adamantinas. O acerto contra um objeto é tratado como crítico.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "trident",
+    "model_name": "Tridente",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-war-pick": {
+    "name": "Arma adamantina (Picareta de guerra)",
+    "description": "Forma: Picareta de guerra. Acertos contra objetos são críticos.",
+    "merchant_comment": "A picareta de guerra adamantina parece feita para objetos duros. Ainda exige uma jogada de ataque que acerte.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 perfurante. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "war-pick",
+    "model_name": "Picareta de guerra",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-warhammer": {
+    "name": "Arma adamantina (Martelo de guerra)",
+    "description": "Forma: Martelo de guerra. Acertos contra objetos são críticos.",
+    "merchant_comment": "A cabeça deste martelo de guerra é adamantina. O poder não muda a regra contra criaturas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 contundente. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "warhammer",
+    "model_name": "Martelo de guerra",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-whip": {
+    "name": "Arma adamantina (Chicote)",
+    "description": "Forma: Chicote. Acertos contra objetos são críticos.",
+    "merchant_comment": "Este chicote usa acabamento adamantino. Acertos contra objetos são críticos, sem dar dano extra contra qualquer criatura.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. A arma é feita de adamantina. Sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade se refere a objetos; não transforma acertos contra criaturas em críticos e não garante acertar um alvo.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "whip",
+    "model_name": "Chicote",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-antimatter-rifle": {
+    "name": "Arma de prata (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O rifle de antimatéria recebeu prata alquímica. O acabamento não muda seu dano básico necrótico.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 6d8 necrótico. Propriedades: munição futurística, recarga, duas mãos. Alcance 120/360 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa célula de energia compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "silvered-automatic-rifle": {
+    "name": "Arma de prata (Rifle automático)",
+    "description": "Forma: Rifle automático. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O rifle automático de prata diferencia ataque e rajada. Uma rajada por resistência não faz uma jogada de crítico.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, rajada, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Criaturas na área fazem resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Essa rajada usa resistência, sem uma jogada de ataque. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "silvered-battleaxe": {
+    "name": "Arma de prata (Machado de batalha)",
+    "description": "Forma: Machado de batalha. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O machado de batalha de prata tem acabamento claro. O dado extra depende do crítico contra uma criatura transformada.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "battleaxe",
+    "model_name": "Machado de batalha",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-blowgun": {
+    "name": "Arma de prata (Zarabatana)",
+    "description": "Forma: Zarabatana. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A zarabatana de prata usa agulhas compatíveis. O encanto reforça um crítico contra a criatura transformada.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1 perfurante. Propriedades: munição, carregamento. Alcance 25/100 pés. Usa agulhas de zarabatana compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "blowgun",
+    "model_name": "Zarabatana",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-club": {
+    "name": "Arma de prata (Clava)",
+    "description": "Forma: Clava. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A prata desta clava recebe um processo alquímico. O dado adicional exige crítico contra alguém transformado.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "club",
+    "model_name": "Clava",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-dagger": {
+    "name": "Arma de prata (Adaga)",
+    "description": "Forma: Adaga. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A adaga de prata merece uma bainha seca. O efeito adicional depende de um crítico no alvo transformado.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, leve, arremesso. Alcance 20/60 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "dagger",
+    "model_name": "Adaga",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-dart": {
+    "name": "Arma de prata (Dardo)",
+    "description": "Forma: Dardo. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O dardo de prata é uma peça pequena para guardar bem. Não abandone o que acabou de arremessar.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, arremesso. Alcance 20/60 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "dart",
+    "model_name": "Dardo",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-double-bladed-scimitar": {
+    "name": "Arma de prata (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "As duas lâminas receberam prata alquímica. O ataque de ação bônus continua o da construção comum.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Depois de atacar com ela na ação Atacar do seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com a arma, cujo dano básico é 1d4 cortante. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-flail": {
+    "name": "Arma de prata (Mangual)",
+    "description": "Forma: Mangual. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O mangual de prata conserva seus elos. Leia o gatilho do crítico antes de contar o dano adicional.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "flail",
+    "model_name": "Mangual",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-glaive": {
+    "name": "Arma de prata (Glaive)",
+    "description": "Forma: Glaive. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A glaive de prata exige espaço e duas mãos. O brilho não acrescenta alcance além do modelo.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "glaive",
+    "model_name": "Glaive",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-greataxe": {
+    "name": "Arma de prata (Machado grande)",
+    "description": "Forma: Machado grande. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O machado grande de prata reforça um crítico no alvo transformado. O dado básico continua o do modelo.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "greataxe",
+    "model_name": "Machado grande",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-greatclub": {
+    "name": "Arma de prata (Clava grande)",
+    "description": "Forma: Clava grande. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A clava grande de prata conserva o manejo com duas mãos. Confira o gatilho do dado adicional.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 contundente. Propriedades: duas mãos. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "greatclub",
+    "model_name": "Clava grande",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-greatsword": {
+    "name": "Arma de prata (Espada grande)",
+    "description": "Forma: Espada grande. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A espada grande de prata usa ambas as mãos. A magia acrescenta só um dado no crítico do alvo transformado.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-halberd": {
+    "name": "Arma de prata (Alabarda)",
+    "description": "Forma: Alabarda. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A alabarda de prata conserva lâmina, ponta e alcance. O encanto não acrescenta um selo de ataque.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "halberd",
+    "model_name": "Alabarda",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-hand-crossbow": {
+    "name": "Arma de prata (Besta de mão)",
+    "description": "Forma: Besta de mão. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A besta de mão de prata continua exigindo carregamento. O encanto não coloca um virote sozinho.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: munição, leve, carregamento. Alcance 30/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "hand-crossbow",
+    "model_name": "Besta de mão",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-handaxe": {
+    "name": "Arma de prata (Machadinha)",
+    "description": "Forma: Machadinha. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O acabamento de prata acompanha a machadinha. O encanto não dá um bônus numérico ao arremesso.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 cortante. Propriedades: leve, arremesso. Alcance 20/60 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-heavy-crossbow": {
+    "name": "Arma de prata (Besta pesada)",
+    "description": "Forma: Besta pesada. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A besta pesada de prata ocupa duas mãos. O crítico no alvo transformado ativa o dado extra.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: munição, pesada, carregamento, duas mãos. Alcance 100/400 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Há desvantagem nos ataques sem Destreza de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "heavy-crossbow",
+    "model_name": "Besta pesada",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-hooked-shortspear": {
+    "name": "Arma de prata (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A lança curta de gancho de prata conserva a opção de derrubar. O encanto de prata tem um gatilho separado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 perfurante. Propriedades: leve. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência; falhar deixa-o caído. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-hoopak": {
+    "name": "Arma de prata (Hoopak)",
+    "description": "Forma: Hoopak. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O hoopak de prata mantém ponta e funda. Cada modo continua usando seu dano básico próprio.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, acuidade, duas mãos. Alcance 40/160 pés. Usa balas de funda compatível. A ponta funciona no corpo a corpo com 1d6 perfurante, sem munição. O uso à distância emprega balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-hunting-rifle": {
+    "name": "Arma de prata (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O rifle de caça de prata conserva cinco disparos por recarga. O encanto reforça apenas o crítico no alvo transformado.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d10 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 5 disparos. Usa balas de arma de fogo compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "silvered-javelin": {
+    "name": "Arma de prata (Azagaia)",
+    "description": "Forma: Azagaia. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A azagaia de prata conserva seu arremesso. O dado extra vem no crítico contra uma criatura transformada.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso. Alcance 30/120 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "javelin",
+    "model_name": "Azagaia",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-lance": {
+    "name": "Arma de prata (Lança de cavalaria)",
+    "description": "Forma: Lança de cavalaria. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A lança de cavalaria de prata merece conferir o manejo montado. O dado adicional tem um gatilho próprio.",
+    "rules_summary": "Arma marcial de duas mãos quando não estiver montado. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Montado, pode manejá-la com uma mão. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "lance",
+    "model_name": "Lança de cavalaria",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-laser-pistol": {
+    "name": "Arma de prata (Pistola laser)",
+    "description": "Forma: Pistola laser. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A pistola laser de prata conserva dano radiante. Sua célula e o encanto de crítico são coisas separadas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 3d6 radiante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 50 disparos. Usa célula de energia compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "silvered-laser-rifle": {
+    "name": "Arma de prata (Rifle laser)",
+    "description": "Forma: Rifle laser. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O rifle laser de prata exige duas mãos. O dado adicional ainda depende do crítico no alvo transformado.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 3d8 radiante. Propriedades: munição futurística, recarga, duas mãos. Alcance 100/300 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa célula de energia compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "review": "approved"
+  },
+  "silvered-light-crossbow": {
+    "name": "Arma de prata (Besta leve)",
+    "description": "Forma: Besta leve. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A besta leve de prata usa virotes comuns compatíveis. O crítico contra o alvo transformado ativa o encanto.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, carregamento, duas mãos. Alcance 80/320 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "light-crossbow",
+    "model_name": "Besta leve",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-light-hammer": {
+    "name": "Arma de prata (Martelo leve)",
+    "description": "Forma: Martelo leve. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O martelo leve tem prata ligada ao metal. Reserve o dado adicional para o gatilho correto.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve, arremesso. Alcance 20/60 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "light-hammer",
+    "model_name": "Martelo leve",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-light-repeating-crossbow": {
+    "name": "Arma de prata (Besta leve de repetição)",
+    "description": "Forma: Besta leve de repetição. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A besta de repetição de prata conserva o cartucho de seis virotes. A alquimia não repõe munição.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, duas mãos. Alcance 40/160 pés. Usa virotes compatível. O cartucho alimenta automaticamente seis virotes até esvaziar. Reabastecer o cartucho toma uma ação. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "light-repeating-crossbow",
+    "model_name": "Besta leve de repetição",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-longbow": {
+    "name": "Arma de prata (Arco longo)",
+    "description": "Forma: Arco longo. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O arco longo de prata conserva a exigência de Destreza. Leve flechas e confira o gatilho do crítico.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 150/600 pés. Usa flechas compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "longbow",
+    "model_name": "Arco longo",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-longsword": {
+    "name": "Arma de prata (Espada longa)",
+    "description": "Forma: Espada longa. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A espada longa de prata mantém o manejo versátil. O dado adicional não vale para qualquer crítico.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-mace": {
+    "name": "Arma de prata (Maça)",
+    "description": "Forma: Maça. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A maça de prata reforça o crítico contra um alvo transformado. O encanto não exige sintonia.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "mace",
+    "model_name": "Maça",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-maul": {
+    "name": "Arma de prata (Malho)",
+    "description": "Forma: Malho. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O malho de prata ocupa duas mãos. Seu dado extra exige crítico contra uma criatura transformada.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "maul",
+    "model_name": "Malho",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-morningstar": {
+    "name": "Arma de prata (Estrela da manhã)",
+    "description": "Forma: Estrela da manhã. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A estrela da manhã de prata tem espinhos firmes. A alquimia reforça o crítico no alvo transformado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "morningstar",
+    "model_name": "Estrela da manhã",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-musket": {
+    "name": "Arma de prata (Mosquete)",
+    "description": "Forma: Mosquete. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O mosquete de prata tem acabamento alquímico. O encanto não dispensa munição nem carregamento.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 perfurante. Propriedades: munição, carregamento, duas mãos. Alcance 40/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "musket",
+    "model_name": "Mosquete",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-pike": {
+    "name": "Arma de prata (Pique)",
+    "description": "Forma: Pique. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O pique de prata conserva seu alcance longo. Não conte com bônus de ataque fornecido pelo acabamento.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "pike",
+    "model_name": "Pique",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-pistol": {
+    "name": "Arma de prata (Pistola)",
+    "description": "Forma: Pistola. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A pistola de prata é mágica, mas continua usando balas. O dado adicional exige o crítico no alvo transformado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d10 perfurante. Propriedades: munição, carregamento. Alcance 30/90 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "pistol",
+    "model_name": "Pistola",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-quarterstaff": {
+    "name": "Arma de prata (Bordão)",
+    "description": "Forma: Bordão. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O bordão de prata conserva o manejo versátil. A magia não aumenta todos os seus golpes.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d8 contundente. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "quarterstaff",
+    "model_name": "Bordão",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-rapier": {
+    "name": "Arma de prata (Rapieira)",
+    "description": "Forma: Rapieira. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O florete de prata mantém a acuidade. A escolha do atributo continua a do modelo físico.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-revolver": {
+    "name": "Arma de prata (Revólver)",
+    "description": "Forma: Revólver. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O revólver de prata conserva seis disparos no tambor. O brilho alquímico não garante acertar.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 6 disparos. Usa balas de arma de fogo compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "silvered-scimitar": {
+    "name": "Arma de prata (Cimitarra)",
+    "description": "Forma: Cimitarra. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A cimitarra de prata mantém a curva e o manejo leve. O efeito adicional depende do alvo transformado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-semiautomatic-pistol": {
+    "name": "Arma de prata (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A semiautomática de prata mantém quinze disparos por recarga. A reserva de munição continua por sua conta.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 2d6 perfurante. Propriedades: munição futurística, recarga. Alcance 50/150 pés. Recarrega com uma ação ou ação bônus após 15 disparos. Usa balas de arma de fogo compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "silvered-shortbow": {
+    "name": "Arma de prata (Arco curto)",
+    "description": "Forma: Arco curto. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O arco curto de prata continua exigindo flechas. A magia reforça o crítico no alvo certo.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, duas mãos. Alcance 80/320 pés. Usa flechas compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "shortbow",
+    "model_name": "Arco curto",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-shortsword": {
+    "name": "Arma de prata (Espada curta)",
+    "description": "Forma: Espada curta. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A espada curta de prata cabe bem no cinto. O brilho não substitui o gatilho do dano extra.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-shotgun": {
+    "name": "Arma de prata (Espingarda)",
+    "description": "Forma: Espingarda. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A espingarda de prata mantém seu alcance curto. Confira a recarga depois dos dois disparos.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 30/90 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa balas de arma de fogo compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "review": "approved"
+  },
+  "silvered-sickle": {
+    "name": "Arma de prata (Foice)",
+    "description": "Forma: Foice. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A foice curta leva prata alquímica. Um crítico no alvo transformado acrescenta um dado.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 cortante. Propriedades: leve. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "sickle",
+    "model_name": "Foice",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-sling": {
+    "name": "Arma de prata (Funda)",
+    "description": "Forma: Funda. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "Esta funda recebeu prata alquímica. Seu encanto não cria as balas que você precisa carregar.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: munição. Alcance 30/120 pés. Usa balas de funda compatível. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Silvered Weapon",
+    "base_id": "sling",
+    "model_name": "Funda",
+    "magic_kind": "weapon",
+    "estimated_weight_lb": 0.1,
+    "review": "approved"
+  },
+  "silvered-spear": {
+    "name": "Arma de prata (Lança)",
+    "description": "Forma: Lança. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A lança de prata mantém sua ponta e seu alcance. Confira se o alvo está transformado antes do dado extra.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d8 perfurante. Alcance 20/60 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "spear",
+    "model_name": "Lança",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-staff": {
+    "name": "Arma de prata (Bastão de foco arcano)",
+    "description": "Forma: Bastão de foco arcano. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "Este foco arcano recebeu prata alquímica. O encanto descrito é para ataques da arma, não para CDs de magia.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d8 contundente. Também é foco arcano. O bônus mágico da arma não aumenta ataques ou CDs de magias. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "arcane-staff",
+    "model_name": "Bastão de foco arcano",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-trident": {
+    "name": "Arma de prata (Tridente)",
+    "description": "Forma: Tridente. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O tridente de prata tem três pontas e um só encanto. O crítico adicional não triplica os dados.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "trident",
+    "model_name": "Tridente",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-war-pick": {
+    "name": "Arma de prata (Picareta de guerra)",
+    "description": "Forma: Picareta de guerra. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A picareta de guerra de prata tem ponta estreita. O dado adicional exige o crítico e o alvo correto.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "war-pick",
+    "model_name": "Picareta de guerra",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-warhammer": {
+    "name": "Arma de prata (Martelo de guerra)",
+    "description": "Forma: Martelo de guerra. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O martelo de guerra de prata conserva o uso versátil. O encantamento não dá um bônus numérico de dano.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 contundente. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "warhammer",
+    "model_name": "Martelo de guerra",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-whip": {
+    "name": "Arma de prata (Chicote)",
+    "description": "Forma: Chicote. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O chicote de prata conserva a flexibilidade. Seu encanto não alonga o alcance além do modelo comum.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "whip",
+    "model_name": "Chicote",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-wooden-staff": {
+    "name": "Arma de prata (Bastão de foco druídico)",
+    "description": "Forma: Bastão de foco druídico. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "O foco druídico de prata conserva a função de bordão. Seu encanto não concede dados adicionais a todas as magias.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d8 contundente. Também é foco druídico. O bônus mágico da arma não aumenta ataques ou CDs de magias. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Silvered Weapon",
+    "base_id": "wooden-staff",
+    "model_name": "Bastão de foco druídico",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "silvered-yklwa": {
+    "name": "Arma de prata (Yklwa)",
+    "description": "Forma: Yklwa. Um crítico contra uma criatura transformada acrescenta um dado de dano.",
+    "merchant_comment": "A yklwa de prata tem cabo curto e lâmina larga. Seu arremesso continua com o alcance do modelo.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso. Alcance 10/30 pés. Prata foi ligada alquimicamente a esta arma mágica. Quando você consegue um Acerto Crítico com ela contra uma criatura que esteja transformada, a arma causa um dado de dano adicional. O encanto não concede bônus numérico de ataque ou dano, nem transforma todos os acertos em críticos.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Silvered Weapon",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "magic_kind": "weapon",
+    "review": "approved"
+  },
+  "adamantine-arrow": {
+    "name": "Munição adamantina (Flecha)",
+    "description": "Forma: Flecha. Vendida por unidade; acertos contra objetos são críticos.",
+    "merchant_comment": "A flecha adamantina é vendida por unidade. Um objeto acertado recebe um crítico; uma criatura usa a regra normal.",
+    "rules_summary": "Munição vendida por unidade para arma compatível. Feita de adamantina: sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade não garante acertar, não transforma acertos contra criaturas em críticos e não muda o tipo de dano da arma que a dispara.",
+    "slots": [],
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "arrows-20",
+    "model_name": "Flecha",
+    "ammunition": true,
+    "pack_quantity": 1,
+    "consumable": true,
+    "review": "approved"
+  },
+  "adamantine-bolt": {
+    "name": "Munição adamantina (Virote)",
+    "description": "Forma: Virote. Vendida por unidade; acertos contra objetos são críticos.",
+    "merchant_comment": "Este virote adamantino cabe numa besta compatível. O poder sobre objetos não garante acertar a peça escolhida.",
+    "rules_summary": "Munição vendida por unidade para arma compatível. Feita de adamantina: sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade não garante acertar, não transforma acertos contra criaturas em críticos e não muda o tipo de dano da arma que a dispara.",
+    "slots": [],
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "bolts-20",
+    "model_name": "Virote",
+    "ammunition": true,
+    "pack_quantity": 1,
+    "consumable": true,
+    "review": "approved"
+  },
+  "adamantine-energy-cell": {
+    "name": "Munição adamantina (Célula de energia)",
+    "description": "Forma: Célula de energia. Vendida por unidade; acertos contra objetos são críticos.",
+    "merchant_comment": "A célula adamantina segue a recarga da arma compatível. O poder especial exige um objeto acertado, sem mudar o tipo do dano.",
+    "rules_summary": "Munição vendida por unidade para arma compatível. Feita de adamantina: sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade não garante acertar, não transforma acertos contra criaturas em críticos e não muda o tipo de dano da arma que a dispara.",
+    "slots": [],
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "energy-cell",
+    "model_name": "Célula de energia",
+    "ammunition": true,
+    "pack_quantity": 1,
+    "consumable": true,
+    "review": "approved"
+  },
+  "adamantine-firearm-bullet": {
+    "name": "Munição adamantina (Cartucho de arma de fogo)",
+    "description": "Forma: Cartucho de arma de fogo. Vendida por unidade; acertos contra objetos são críticos.",
+    "merchant_comment": "A bala adamantina é vendida separadamente. O disparo acertado em objeto recebe o crítico do material.",
+    "rules_summary": "Munição vendida por unidade para arma compatível. Feita de adamantina: sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade não garante acertar, não transforma acertos contra criaturas em críticos e não muda o tipo de dano da arma que a dispara.",
+    "slots": [],
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "firearm-bullet",
+    "model_name": "Cartucho de arma de fogo",
+    "ammunition": true,
+    "pack_quantity": 1,
+    "consumable": true,
+    "review": "approved"
+  },
+  "adamantine-needle": {
+    "name": "Munição adamantina (Agulha)",
+    "description": "Forma: Agulha. Vendida por unidade; acertos contra objetos são críticos.",
+    "merchant_comment": "A agulha adamantina usa zarabatana compatível. Ela não ganha veneno pelo material da ponta.",
+    "rules_summary": "Munição vendida por unidade para arma compatível. Feita de adamantina: sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade não garante acertar, não transforma acertos contra criaturas em críticos e não muda o tipo de dano da arma que a dispara.",
+    "slots": [],
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "blowgun-needles-50",
+    "model_name": "Agulha",
+    "ammunition": true,
+    "pack_quantity": 1,
+    "consumable": true,
+    "review": "approved"
+  },
+  "adamantine-sling-bullet": {
+    "name": "Munição adamantina (Bala de funda)",
+    "description": "Forma: Bala de funda. Vendida por unidade; acertos contra objetos são críticos.",
+    "merchant_comment": "A bala de funda adamantina tem tamanho compacto. Guarde cada unidade; o crítico especial é contra objetos.",
+    "rules_summary": "Munição vendida por unidade para arma compatível. Feita de adamantina: sempre que acerta um objeto, o acerto é um Acerto Crítico. A propriedade não garante acertar, não transforma acertos contra criaturas em críticos e não muda o tipo de dano da arma que a dispara.",
+    "slots": [],
+    "material": "metal",
+    "family": "Adamantine Weapon",
+    "base_id": "sling-bullets-20",
+    "model_name": "Bala de funda",
+    "ammunition": true,
+    "pack_quantity": 1,
+    "consumable": true,
+    "review": "approved"
   }
 }

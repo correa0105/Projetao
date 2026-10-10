@@ -28,8 +28,9 @@ async function request(path: string, method = 'GET', body?: unknown) {
   while (true) {
     while (recentRequests.length && Date.now() - recentRequests[0] >= 60100) recentRequests.shift();
     if (recentRequests.length < 200) break;
-    console.log('Bulk catalog QA is waiting for its API window before sending the next request.');
-    await new Promise((resolve) => setTimeout(resolve, Math.min(60000, Math.max(1, 60100 - (Date.now() - recentRequests[0])))));
+    const waitMs=Math.min(60000,Math.max(1,60100-(Date.now()-recentRequests[0])));
+    if(waitMs>1000)console.log('Bulk catalog QA is waiting for its API window before sending the next request.');
+    await new Promise((resolve) => setTimeout(resolve, waitMs));
   }
   recentRequests.push(Date.now());
   const r = await fetch(base + '/api' + path, {
@@ -245,6 +246,18 @@ try {
       assert.equal((await request(usePath, 'POST', use)).status, 200);
       assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2', [hero.id, item.id])).rows.length, 0);
       assert.equal((await request(usePath, 'POST', { ...use, idempotency_key: randomUUID() })).status, 409);
+    }
+    const adamAmmo:Record<string,[number,number]>={'adamantine-arrow':[2005,.05],'adamantine-bolt':[2005,.075],'adamantine-energy-cell':[2000,.5],'adamantine-firearm-bullet':[2030,.2],'adamantine-needle':[2002,.02],'adamantine-sling-bullet':[2000,.075]};
+    const adamantine=completion.items.filter((x:any)=>x.raw_data.magic_family==='Adamantine Weapon'&&x.raw_data.consumable);
+    if(ids.includes('adamantine-arrow'))assert.equal(adamantine.length,6);
+    for(const item of adamantine){
+      assert(consumableItems.has(item.id));assert.equal(item.raw_data.pack_quantity,1);
+      assert.deepEqual([item.price_cp,item.weight_lb],adamAmmo[item.id],'Unit price policy and primary 2024 weight: '+item.id);
+      const use={kind:'consumable',item_id:item.id,idempotency_key:randomUUID()};
+      assert.equal((await request(usePath,'POST',use)).status,200,item.id);
+      assert.equal((await request(usePath,'POST',use)).status,200,item.id);
+      assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,item.id])).rows.length,0,item.id);
+      assert.equal((await request(usePath,'POST',{...use,idempotency_key:randomUUID()})).status,409,item.id);
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger, 'Consumption cannot change the purchase ledger');
   }

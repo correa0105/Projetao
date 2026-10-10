@@ -1,0 +1,14 @@
+{
+  "jobs": [
+    {
+      "id": "material-silvered-weapon",
+      "family": "Silvered Weapon",
+      "prompt": "Use case: stylized-concept. One original premium fantasy game weapon MATERIAL TEXTURE swatch. Square, full bleed, flat neutral material surface without object silhouette or backdrop. clean cool neutral silver, long fine brushed metal grain with elegant restrained alchemical etched scrollwork and soft white specular highlights, entirely different from blue runic steel, realistic bright fine silver without excessive neon or gold. Detailed painterly realism with tactile material depth and fine craftsmanship; uniform medium and small-scale decorative coverage suitable for being masked inside distinct complete weapon silhouettes. No center medallion, text, letters, numbers, watermark, logo, isolated objects, complete weapon, armor, character, border, heavy vignette, cast shadow, smoke, flames, glowing aura or checkerboard. Create one unmistakable original finish for this material family."
+    },
+    {
+      "id": "material-adamantine-weapon",
+      "family": "Adamantine Weapon",
+      "prompt": "Use case: stylized-concept. One original premium fantasy game weapon MATERIAL TEXTURE swatch. Square, full bleed, flat neutral material surface without object silhouette or backdrop. dense dark graphite metallic alloy with finely hammered and faceted surface, restrained muted emerald and black-green iridescent reflections in carefully engraved angular accent bands, exceptionally hard crafted metal with realistic satin reflections, no glowing cracks or lava. Detailed painterly realism with tactile material depth and fine craftsmanship; uniform medium and small-scale decorative coverage suitable for being masked inside distinct complete weapon silhouettes. No center medallion, text, letters, numbers, watermark, logo, isolated objects, complete weapon, armor, character, border, heavy vignette, cast shadow, smoke, flames, glowing aura or checkerboard. Create one unmistakable original finish for this material family."
+    }
+  ]
+}

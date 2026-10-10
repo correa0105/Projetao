@@ -93,7 +93,7 @@ try {
     assert((await page.evaluate(() => document.documentElement.scrollWidth)) <= width + 1);
   }
   assert.deepEqual(errors, []);
-  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance','antimatter-rifle-plus-3','wooden-staff-of-warning','corpse-slayer-greatsword','dazzling-halberd','hellfire-heavy-crossbow','longsword-of-certain-death','breastplate-of-gleaming','cast-off-chain-shirt','mariner-s-leather-armor','smoldering-scale-mail','plate-armor-of-weightlessness']){
+  for(const id of ['double-bladed-scimitar-plus-3','spiked-armor-of-fire-resistance','antimatter-rifle-plus-3','wooden-staff-of-warning','corpse-slayer-greatsword','dazzling-halberd','hellfire-heavy-crossbow','longsword-of-certain-death','breastplate-of-gleaming','cast-off-chain-shirt','mariner-s-leather-armor','smoldering-scale-mail','plate-armor-of-weightlessness','silvered-antimatter-rifle','adamantine-greatsword']){
     const x=items.find(x=>x.id===id);if(!x)continue;
     await search.fill(x.name);
     const card=page.locator(`.shop-product[data-family="${x.magic_family}"]`);
@@ -109,7 +109,7 @@ try {
     }
   }
   console.log(
-    process.argv.includes('--chests-only') ? 'PASS old and five new chest previews: selected skin, whole silhouette and responsive bounds.' : `PASS ${items.length} new item images, individual merchant speeches and source descriptions; responsive shop in three widths.`,
+    process.argv.includes('--chests-only') ? 'PASS old and newly added chest previews: selected skin, whole silhouette and responsive bounds.' : `PASS ${items.length} new item images, individual merchant speeches and source descriptions; responsive shop in three widths.`,
   );
 } finally {
   await browser.close();

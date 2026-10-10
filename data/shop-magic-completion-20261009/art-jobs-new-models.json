@@ -109,6 +109,36 @@
       "name": "Wooden Staff",
       "label": "Bastão de foco druídico",
       "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials, readable silhouette at small size. One complete equipment item or its sold set, no character. Entire object within the frame with generous 10 percent padding. TRANSPARENT BACKGROUND with native alpha, isolated sharp cutout edges. No glow or aura, no mist, no ground shadow, no background light patch, no scene, no ground, no tabletop, no frame, no labels, no lettering or watermark. Original design; do not copy any published book illustration. One full-height druidic wooden focus staff carved from a naturally slightly curved pale ash branch, a rounded knotted wooden top, subtle spiral carved grooves around its upper third, a soft brown leather grip and a simple dark wooden butt. Organic continuous single piece, tactile grain and tiny bark recesses, full length visible diagonally. No green leaves, glow, aura, character or separate objects."
+    },
+    {
+      "id": "model-single-arrow",
+      "name": "Arrow",
+      "label": "Flecha",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials and a readable silhouette at reduced size. One single long wooden arrow, shown diagonally from lower left to upper right, slender straight walnut shaft, narrow forged steel pointed leaf-shaped arrowhead, three natural russet feather fletchings at the opposite end and a clearly notched nock. Entire arrow intact, no quiver, no bundle. One complete physical item for a sale by UNIT. Entire object inside a square canvas with generous 10 percent padding, use about 80 percent of the span for this one item. Transparent background with native alpha and clean edges. No magic glow, aura, smoke, backdrop, light patch, ground shadow, scene, tabletop, border, lettering, logo or watermark. Original design, not a copy of published book illustrations."
+    },
+    {
+      "id": "model-single-bolt",
+      "name": "Bolt",
+      "label": "Virote",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials and a readable silhouette at reduced size. One single short stout crossbow bolt, diagonally arranged, thick dark straight wooden shaft, squared heavy steel pyramidal point, two compact dark red feather vanes at the rear, distinct much shorter and thicker proportions than a bow arrow. Entire bolt intact, no crossbow or bundle. One complete physical item for a sale by UNIT. Entire object inside a square canvas with generous 10 percent padding, use about 80 percent of the span for this one item. Transparent background with native alpha and clean edges. No magic glow, aura, smoke, backdrop, light patch, ground shadow, scene, tabletop, border, lettering, logo or watermark. Original design, not a copy of published book illustrations."
+    },
+    {
+      "id": "model-single-needle",
+      "name": "Needle",
+      "label": "Agulha",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials and a readable silhouette at reduced size. One single fine blowgun dart needle shown diagonally, long thin straight dark steel pin with a very fine tapered point at one end and a small compact pale green natural feather tuft forming its tail at the other end. Refined delicate silhouette, crisp readable pin and tail, no toxin, no tube, no bundle. One complete physical item for a sale by UNIT. Entire object inside a square canvas with generous 10 percent padding, use about 80 percent of the span for this one item. Transparent background with native alpha and clean edges. No magic glow, aura, smoke, backdrop, light patch, ground shadow, scene, tabletop, border, lettering, logo or watermark. Original design, not a copy of published book illustrations."
+    },
+    {
+      "id": "model-single-sling-bullet",
+      "name": "Sling Bullet",
+      "label": "Bala de funda",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials and a readable silhouette at reduced size. One single cast lead sling bullet, centered, oval almond-shaped solid projectile, warm gray dense metal with slightly flattened faces and handcast seam, small wear marks and plausible metallic highlights. It has no casing, primer, sharp arrow point or text. Distinct asymmetrical oval weight, no gun cartridge. One complete physical item for a sale by UNIT. Entire object inside a square canvas with generous 10 percent padding, use about 80 percent of the span for this one item. Transparent background with native alpha and clean edges. No magic glow, aura, smoke, backdrop, light patch, ground shadow, scene, tabletop, border, lettering, logo or watermark. Original design, not a copy of published book illustrations."
+    },
+    {
+      "id": "model-firearm-bullet",
+      "name": "Firearm Bullet",
+      "label": "Cartucho de arma de fogo",
+      "prompt": "Use case: stylized-concept. Original physical equipment illustration for the Alvorada Cinzenta fantasy RPG inventory. Front three-quarter painted realism, tactile materials and a readable silhouette at reduced size. One single chunky brass firearm cartridge diagonally arranged, stout darker brass cylindrical case with recessed rim, seated rounded gunmetal projectile, dark burgundy patina at the rim, credible machined texture and clean physical volume. Whole assembled cartridge with different short stout proportions and round gray nose from slender pointed copper cartridges. No weapon, powder, disassembly, measurements or blueprint. One complete physical item for a sale by UNIT. Entire object inside a square canvas with generous 10 percent padding, use about 80 percent of the span for this one item. Transparent background with native alpha and clean edges. No magic glow, aura, smoke, backdrop, light patch, ground shadow, scene, tabletop, border, lettering, logo or watermark. Original design, not a copy of published book illustrations."
     }
   ]
 }

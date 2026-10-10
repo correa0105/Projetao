@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **474 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **561 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -298,3 +298,39 @@ migration e snapshots idempotentes conferidos. 976 mídias/referências, servido
 43 bundles e 21 VFX antigos iguais à cópia validada; Lava/Corrente elétrica da
 revisão posterior mantidas. Ilustrador ativo, WIP e 330×4 pausado preservados.
 Restam 2.602 candidatos, além das opções de magia/alvo por expandir.
+
+## Oitavo lote: prata e adamantina
+
+Aplicadas 87 ofertas: 53 armas de prata e 28 armas/6 munições adamantinas.
+Materiais originais de prata clara escovada com ornamentos alquímicos e grafite
+angular com reflexos verdes discretos, produzidos por `image_gen.imagegen`.
+Cinco novas referências transparentes mostram uma única flecha, virote, agulha,
+bala de funda e cartucho de arma de fogo. A célula de energia usa a referência
+física já validada. Cada skin SVG nativa possui forma, hash, fala e foley próprios;
+nenhuma arte nem campo das 474 ofertas anteriores foi alterado. Prompts em
+`art-jobs-metal-materials.json`/`art-jobs-metal-models.json`, procedência no
+`art-manifest.json`, nativos preservados em `.local/shop-completion/native`
+e arquivos portáveis em `public/shop/magic-completion-20261009`.
+
+Fonte mecânica: Dungeon Master’s Guide (2024), páginas 304 e 227, consultado
+pelos dados do 5etools. A prata acrescenta um dado de dano quando o usuário
+consegue crítico contra criatura que esteja transformada. A adamantina trata
+acertos contra objetos como críticos; não garante acertar e não concede esse
+crítico contra criaturas. Nenhum dos dois exige sintonia ou concede bônus +1.
+As seis munições são vendidas por unidade, com peso físico da base de 2024,
+preço segundo a política existente e consumo idempotente pelo VTT.
+
+Os 87 modelos foram revistos em sete folhas. O acabamento adamantino teve a
+sobreposição reduzida de 66% para 46% para clarear lâminas no baú; os originais
+raster permanecem intactos. Loja real em 1500/760/390 px passou com todas as
+561 imagens/falas/fontes e prévias dos modelos selecionados ao lado do baú.
+API em banco descartável passou compra, replay, preço administrativo, ledger,
+saldo, equipamento e uso das seis munições novas; limite real da API mantido.
+TypeScript e builds cliente/servidor passaram.
+
+Release `magic-completion-v8-20261010` aplicado com backup da versão anterior.
+60 tabelas e todas as ofertas anteriores mantêm linhas integrais idênticas;
+exatamente 87 novas ofertas. As 1.157 mídias/referências publicadas, o servidor,
+43 bundles, 21 VFX anteriores e Lava/Corrente elétrica mais recentes conferem
+com os arquivos validados. Ilustrador ativo e alterações independentes intactas.
+Restam 2.515 candidatos, além das opções de magia/alvo por expandir.
