@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **812 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **820 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -433,3 +433,13 @@ Caídos: uma única reserva até o amanhecer para Falar com os Mortos ou Animar 
 31 pais e 155 componentes internos novos: 451 conjuntos totais, com peso conservado. Todos os 781 produtos e 420 conjuntos anteriores permanecem idênticos. API completa dos 812 itens, descrições das 31 novidades, compra/replay/ledger/saldo e equipamento dos seis componentes aprovados; três testes de armaduras/placas/referências, loja em 1.500/760/390 px, TypeScript e builds limpos.
 
 Publicado em `magic-completion-v14-20261010`. Aplicação saudável; hashes de 60 tabelas e de todos os produtos anteriores iguais após aplicação, somente 186 novas linhas de produtos inseridas. Todas as 1.672 mídias e 43 bundles ao vivo correspondem aos arquivos aprovados. Ilustrador, Lava/Corrente elétrica e demais efeitos preservados. Total: 812 itens novos aplicados; 2.264 candidatos e opções específicas de magia/alvo ainda pendentes.
+
+## Lote 15 — vestes tramontanas
+
+Oito modelos de Armadura Tramontana, AU p. 124, com as regras de 2024 e sintonia obrigatória. Cada modelo recebeu uma arte original de veste completa, gerada separadamente com corte, cores e bordado próprios; nenhuma placa fica exposta na aparência, conforme a fonte. Os prompts, cópias nativas, hashes e revisão estão em `art-jobs-tramontane-robes.json` e `art-manifest.json`. Todas as imagens têm alpha real, com silhuetas vazias e sem pessoas ou manequins; foram vistas sobre fundo escuro e nos baús em desktop/celular.
+
+CA +1 e passagem sem custo adicional somente pelos terrenos difíceis listados na fonte. Ação de Magia ativa os filamentos por um minuto, ou até outra ação de Magia desativá-los. Enquanto ativos, uma ação bônus afeta criaturas escolhidas na emanação de 20 pés; resistência de Força CD 15, condição agarrado/escape CD 15 e puxão de até 20 pés em linha reta. Uma ativação até o próximo amanhecer. Propriedades, peso e defesa do modelo físico permanecem explícitos.
+
+Oito novas falas e sons individuais; oito conjuntos e 40 componentes internos adicionais, totalizando 459 conjuntos. Todos os 812 produtos e 451 conjuntos anteriores mantêm seus campos. API completa dos 820 itens e das oito descrições, compra/replay/ledger/saldo, peso/equipamento dos seis componentes, três testes de armaduras/placas/referências, loja em 1.500/760/390 px, TypeScript e builds aprovados.
+
+Publicado em `magic-completion-v15-20261010`, saudável. Após aplicação, hashes de 60 tabelas e de todos os produtos anteriores iguais; somente 48 novas linhas de produtos. As 1.688 mídias e 43 bundles ao vivo correspondem aos arquivos aprovados. Ilustrador e efeitos preservados. Total: 820 itens novos aplicados; 2.256 candidatos e opções específicas de magia/alvo ainda pendentes.

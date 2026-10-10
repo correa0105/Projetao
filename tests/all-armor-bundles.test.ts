@@ -72,7 +72,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
     );
     let magicalBundles = 0;
     const completionArmor = [...source.values()].filter((item: any) => item.raw_data?.shop_magic_completion && item.raw_data?.magic_kind === 'armor');
-    assert.equal(completionArmor.length, 185);
+    assert.equal(completionArmor.length, 193);
     assert.equal(bundles.length, 266 + completionArmor.length);
     for (const bundle of bundles) {
       const { rows } = await pool.query('SELECT * FROM catalog_items WHERE id=ANY($1::text[])', [
@@ -151,6 +151,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       'breastplate-of-the-fallen',
       'mizzium-chain-mail',
       'spell-fueling-leather-armor',
+      'tramontane-half-plate-armor',
     ];
     const checkout = {
       character_id: hero.id,

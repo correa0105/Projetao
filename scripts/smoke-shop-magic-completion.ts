@@ -159,7 +159,7 @@ try {
   ).rows;
   assert.equal(ledger.length, ids.length);
   const armors=completion.items.filter((x:any)=>x.raw_data.magic_kind==='armor');
-  assert.equal(armors.length,185);
+  assert.equal(armors.length,193);
   for(const x of armors){
     const bundle=armorBundle(x.id);assert(bundle&&bundle.target==='human',x.id);
     const pieces=(await pool.query('SELECT i.item_id,i.quantity,c.weight_lb,c.raw_data FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND i.item_id=ANY($2::text[])',[hero.id,purchaseContents(x.id)])).rows;
@@ -456,6 +456,29 @@ try {
         const worn=(await pool.query(query,params)).rows;assert.deepEqual(worn.map(x=>x.item_id).sort(),purchaseContents(item.id).sort());
         assert.equal((await request('/inventory/equipment-set','POST',equip)).status,200);
         assert.deepEqual((await pool.query(query,params)).rows,worn);
+      }
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
+  }
+  const tramontane = completion.items.filter((x:any)=>x.raw_data.magic_family==='Tramontane Armor');
+  if (ids.includes('tramontane-breastplate')) {
+    assert.equal(tramontane.length,8);
+    for (const item of tramontane) {
+      assert.equal(item.raw_data.upstream_source,'AU');assert.equal(item.raw_data.upstream_page,124);
+      assert.equal(item.raw_data.upstream_facts.bonusAc,'+1');assert.equal(item.raw_data.attunement,true);
+      assert.equal(item.raw_data.source_edition,'D&D 5e (2024)');assert.equal(item.weight_estimated,false);
+      assert.match(item.image_path,/\.webp$/);
+      assert.match(item.raw_data.rules_summary,/parecer uma veste de estudioso ou sacerdote/);
+      assert.match(item.raw_data.rules_summary,/neve pesada, gelo, escombros ou vegetação rasteira/);
+      assert.match(item.raw_data.rules_summary,/ação bônus/);
+      assert.match(item.raw_data.rules_summary,/Força CD 15/);
+      assert.match(item.raw_data.rules_summary,/CD 15 para escapar/);
+      assert.match(item.raw_data.rules_summary,/puxada até 20 pés em linha reta/);
+      assert.match(item.raw_data.rules_summary,/dura um minuto/);
+      if (!rulesReviewIds || rulesReviewIds.has(item.id)) {
+        assert.equal((await request('/inventory/equipment-set','POST',{character_id:hero.id,item_id:item.id})).status,200,item.id);
+        const worn=(await pool.query('SELECT item_id FROM character_equipment WHERE character_id=$1 AND slot=ANY($2::text[])',[hero.id,['armor','head','bracers','legs','feet','shoulders']])).rows;
+        assert.deepEqual(worn.map(x=>x.item_id).sort(),purchaseContents(item.id).sort());
       }
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);

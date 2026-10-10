@@ -2253,5 +2253,45 @@
     "spell-fueling-studded-leather-armor",
     13,
     "human"
+  ],
+  [
+    "tramontane-breastplate",
+    20,
+    "human"
+  ],
+  [
+    "tramontane-chain-shirt",
+    20,
+    "human"
+  ],
+  [
+    "tramontane-half-plate-armor",
+    40,
+    "human"
+  ],
+  [
+    "tramontane-hide-armor",
+    12,
+    "human"
+  ],
+  [
+    "tramontane-leather-armor",
+    10,
+    "human"
+  ],
+  [
+    "tramontane-padded-armor",
+    8,
+    "human"
+  ],
+  [
+    "tramontane-scale-mail",
+    45,
+    "human"
+  ],
+  [
+    "tramontane-studded-leather-armor",
+    13,
+    "human"
   ]
 ]

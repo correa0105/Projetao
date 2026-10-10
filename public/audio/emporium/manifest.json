@@ -17142,5 +17142,69 @@
     "sha256": "a3711564d8e1f7af8358e674068e4247604defdf9adb76f9254c273f57ebd98a",
     "source": "public/audio/shop-counter-leather.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-breastplate",
+    "path": "public/audio/emporium/tramontane-breastplate.wav",
+    "kind": "metal",
+    "sha256": "ac64478b04dc82269b68092ae19a6e9db7c0e620d85a1525f274bbac07ce4a96",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-chain-shirt",
+    "path": "public/audio/emporium/tramontane-chain-shirt.wav",
+    "kind": "metal",
+    "sha256": "e1f86d201730d2e8bc16e85f068ec165bbede513592419f64162fe4ae1f03d79",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-half-plate-armor",
+    "path": "public/audio/emporium/tramontane-half-plate-armor.wav",
+    "kind": "metal",
+    "sha256": "e307671fd0948969090e9eefe2129bf42fbbf82cc5c85f8d93bbd1edb87aead5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-hide-armor",
+    "path": "public/audio/emporium/tramontane-hide-armor.wav",
+    "kind": "leather",
+    "sha256": "2c0c6593d536460096131333e78b0631d608e460d37097f641838051ed35a51a",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-leather-armor",
+    "path": "public/audio/emporium/tramontane-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "3f95a5840f35b1fc5c9f1cbbd3376d44cc515e6818bb05a1623fdf4f4fc2503a",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-padded-armor",
+    "path": "public/audio/emporium/tramontane-padded-armor.wav",
+    "kind": "cloth",
+    "sha256": "ca8fd46ecc79adb39d7c197b9d38128e286a08e4b962ca8a4e4d2b7032eee555",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-scale-mail",
+    "path": "public/audio/emporium/tramontane-scale-mail.wav",
+    "kind": "metal",
+    "sha256": "278823c84cae66fe3924eb5150a687f8ee41aa19423d79fa4fe0e6985e73e6db",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tramontane-studded-leather-armor",
+    "path": "public/audio/emporium/tramontane-studded-leather-armor.wav",
+    "kind": "leather",
+    "sha256": "5a88296f135aaa6e8cf031116d11e3a2f6501ed1cfaa9739212f3ebebe8d2b39",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

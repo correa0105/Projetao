@@ -13469,5 +13469,141 @@
     "magic_kind": "armor",
     "source_edition": "D&D 5e (2024)",
     "review": "approved"
+  },
+  "tramontane-breastplate": {
+    "name": "Armadura tramontana (Peitoral)",
+    "description": "Forma: Peitoral, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "Este peitoral tramontano parece uma veste de estudioso. A aparência esconde a armadura, e a CA recebe mais um.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Tramontane Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tramontane-chain-shirt": {
+    "name": "Armadura tramontana (Camisão de malha)",
+    "description": "Forma: Camisão de malha, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "A camisa tramontana deixa você atravessar neve pesada, gelo, escombros e vegetação rasteira sem o custo extra do terreno difícil.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Tramontane Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tramontane-half-plate-armor": {
+    "name": "Armadura tramontana (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "A meia armadura tramontana ativa os filamentos com uma ação de Magia. Depois da ativação, a reserva espera o amanhecer.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Tramontane Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tramontane-hide-armor": {
+    "name": "Armadura tramontana (Armadura de peles)",
+    "description": "Forma: Armadura de peles, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "Estas peles tramontanas parecem uma veste sacerdotal. Os filamentos podem agarrar criaturas escolhidas a até vinte pés.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Tramontane Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tramontane-leather-armor": {
+    "name": "Armadura tramontana (Armadura de couro)",
+    "description": "Forma: Armadura de couro, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "O couro tramontano estende suas mangas e barras por um minuto. Uma ação de Magia também pode encerrar a ativação.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Tramontane Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tramontane-padded-armor": {
+    "name": "Armadura tramontana (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "O acolchoado tramontano usa uma ação bônus para os filamentos ativos. A resistência e a fuga têm CD quinze.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Tramontane Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tramontane-scale-mail": {
+    "name": "Armadura tramontana (Cota de escamas)",
+    "description": "Forma: Cota de escamas, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "As escamas tramontanas podem puxar uma criatura agarrada até vinte pés em linha reta. Você escolhe quem enfrentar os filamentos.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2, acrescida do bônus mágico +1. Impõe desvantagem em Furtividade. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Tramontane Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tramontane-studded-leather-armor": {
+    "name": "Armadura tramontana (Couro batido)",
+    "description": "Forma: Couro batido, com aparência de veste. CA +1, passagem por terrenos difíceis específicos e filamentos que agarram e puxam criaturas.",
+    "merchant_comment": "O couro batido tramontano pede sintonia. A veste conserva as propriedades da armadura por baixo da aparência mágica.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza, acrescida do bônus mágico +1. Exige sintonização e concede +1 na CA enquanto é vestida. O encantamento a faz parecer uma veste de estudioso ou sacerdote, sem alterar as propriedades físicas do modelo de armadura. Enquanto a veste, terreno difícil formado por neve pesada, gelo, escombros ou vegetação rasteira não custa deslocamento adicional. Uma ação de Magia ativa a armadura: mangas e barras se estendem em filamentos semelhantes a fitas. Enquanto ativa, uma ação bônus faz cada criatura à sua escolha em uma emanação de 20 pés originada em você realizar um teste de resistência de Força CD 15. Na falha, a criatura fica agarrada (CD 15 para escapar) e é puxada até 20 pés em linha reta na sua direção. A ativação dura um minuto ou até uma outra ação de Magia desativá-la. Depois de ativada, a armadura não pode ser ativada novamente até o próximo amanhecer.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Tramontane Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
   }
 }
