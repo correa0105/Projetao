@@ -19,7 +19,6 @@ import { Modal } from './components';
 import { api, post } from './api';
 import './inventory.css';
 import { inventoryPieceName } from './armor-set-options';
-import { InventoryBagTransfer } from './InventoryBagTransfer';
 
 const number = (value: number) =>
   new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(value);
@@ -622,17 +621,6 @@ export function Inventory({
             </div>
           </section>
           <div className="equipment-workspace">
-            <InventoryBagTransfer
-              characterId={character.id}
-              storage={storage}
-              humanItems={availableInventory(storage)}
-              busy={busy}
-              onChange={(value) => {
-                setStorage(value);
-                onInventoryChange(value.inventory);
-                setNotice('Transferência concluída.');
-              }}
-            />
             <nav className="equipment-subjects" aria-label="Configurar equipamentos de">
               {(
                 [

@@ -46,11 +46,21 @@ export function PortraitCabinet({
             ? 125
             : 0;
       const offset = stage.getBoundingClientRect().top - room.getBoundingClientRect().top;
+      const cover =
+        sceneAligned && getComputedStyle(stage).getPropertyValue('--room-cover').trim() === '1';
+      const imageWidth = cover ? Math.max(width, stage.clientHeight * 1.5) : width;
+      const imageTop = cover ? (stage.clientHeight - imageWidth / 1.5) / 2 : backgroundTop;
       stage.style.setProperty('--cabinet-stage-offset', offset + 'px');
-      if (sceneAligned) stage.style.setProperty('--cabinet-floor-y', width * 0.425 + 'px');
-      layout.style.setProperty('--portrait-wall-top', width * 0.14 + backgroundTop - offset + 'px');
+      if (sceneAligned)
+        stage.style.setProperty('--cabinet-floor-y', imageTop + imageWidth * 0.425 + 'px');
+      layout.style.setProperty(
+        '--portrait-wall-top',
+        (cover ? Math.max(130, imageTop + imageWidth * 0.14) : width * 0.14 + backgroundTop) -
+          offset +
+          'px',
+      );
       layout.style.setProperty('--portrait-room-width', width + 'px');
-      const stoneBottom = room.getBoundingClientRect().top + backgroundTop + width * 0.318;
+      const stoneBottom = room.getBoundingClientRect().top + imageTop + imageWidth * 0.318;
       for (const wall of layout.querySelectorAll<HTMLElement>('.portrait-frame-wall')) {
         // Fit the whole pair, including its plaques, within the stone above the wainscot.
         // Scaling the pair preserves the frame proportions and the space between them.

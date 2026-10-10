@@ -81,21 +81,17 @@ export function socialRouter() {
         [uid],
       );
     if (!u) throw new AppError(404, 'Perfil não encontrado.');
-    const [characters, reviews, friend, ratingSummary, ownReview] = await Promise.all([
+    const [characters, friend, ratingSummary, ownReview] = await Promise.all([
       pool.query(publicCharacterSql + ' AND c.user_id=$1 ORDER BY c.created_at,c.id', [uid]),
-      pool.query(
-        'SELECT r.author_id,u.name AS author,r.score,r.comment,r.created_at FROM profile_reviews r JOIN "user" u ON u.id=r.author_id WHERE r.target_id=$1 ORDER BY r.created_at DESC LIMIT 100',
-        [uid],
-      ),
       friendship(res.locals.user.id, uid),
       pool.query(
         'SELECT count(*)::int AS count,COALESCE(avg(score),0)::float AS average FROM profile_reviews WHERE target_id=$1',
         [uid],
       ),
-      pool.query(
-        'SELECT r.author_id,u.name AS author,r.score,r.comment,r.created_at FROM profile_reviews r JOIN "user" u ON u.id=r.author_id WHERE r.target_id=$1 AND r.author_id=$2',
-        [uid, res.locals.user.id],
-      ),
+      pool.query('SELECT score,comment FROM profile_reviews WHERE target_id=$1 AND author_id=$2', [
+        uid,
+        res.locals.user.id,
+      ]),
     ]);
     res.json({
       ...u,
@@ -105,10 +101,7 @@ export function socialRouter() {
         ...c,
         portrait: portrait(uid, c.id, c.portrait_revision),
       })),
-      reviews:
-        ownReview.rows[0] && !reviews.rows.some((r) => r.author_id === res.locals.user.id)
-          ? [ownReview.rows[0], ...reviews.rows]
-          : reviews.rows,
+      own_review: ownReview.rows[0] || null,
       rating: ratingSummary.rows[0],
       friend: friend
         ? {
@@ -346,6 +339,8 @@ export function socialRouter() {
       })
       .strict()
       .parse(req.body);
+    if (input.score < 3 && !input.comment)
+      throw new AppError(400, 'Justifique a nota de uma ou duas estrelas.');
     await pool.query(
       'INSERT INTO profile_reviews(target_id,author_id,score,comment)VALUES($1,$2,$3,$4)ON CONFLICT(target_id,author_id)DO UPDATE SET score=$3,comment=$4,created_at=now()',
       [uid, res.locals.user.id, input.score, input.comment],

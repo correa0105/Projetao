@@ -34,7 +34,9 @@ import { characterHeightScale } from '../shared/character-stature';
 import { useCampMountSize, useCampPetPosition } from './useCampMountSize';
 import { CampBackdrop } from './CampBackdrop';
 import { CharacterSilhouette } from './CharacterCamp';
-import { ProfileSignpost } from './ProfileSignpost';
+import { ProfileNextArrow } from './ProfileNextArrow';
+import { ProfileRating } from './ProfileRating';
+import { Modal } from './components';
 import { HallOfFame, visitProfile } from './HallOfFame';
 import type { deriveSheet } from '../shared/character-sheet';
 import type { ShelfConfig, AchievementDefinition } from '../shared/achievements';
@@ -42,6 +44,7 @@ import type { Card } from '../shared/cards';
 import './hall-profiles.css';
 import './profile-visit.css';
 import './realm-pages.css';
+import './profile-next.css';
 type PublicCharacter = {
   id: string;
   user_id: string;
@@ -69,13 +72,7 @@ type Profile = {
   avatar: string;
   is_owner: boolean;
   characters: PublicCharacter[];
-  reviews: {
-    author_id: string;
-    author: string;
-    score: number;
-    comment: string;
-    created_at: string;
-  }[];
+  own_review: { score: number; comment: string } | null;
   rating: { count: number; average: number };
   friend: { id: string; status: 'pending' | 'accepted'; incoming: boolean } | null;
   blocked: boolean;
@@ -108,12 +105,11 @@ type Friend = {
   incoming: boolean;
   friendship_id: string;
 };
-type Panel = 'characters' | 'achievements' | 'hall' | 'sheet' | 'cards';
+type Panel = 'characters' | 'achievements' | 'hall' | 'cards';
 const panels: { id: Panel; name: string; icon: typeof Users }[] = [
-  { id: 'characters', name: 'Personagens', icon: Users },
+  { id: 'characters', name: 'Acampamento', icon: Users },
   { id: 'achievements', name: 'Conquistas', icon: Trophy },
   { id: 'hall', name: 'Hall da Fama', icon: Crown },
-  { id: 'sheet', name: 'Ficha', icon: Shield },
   { id: 'cards', name: 'Cartas', icon: Layers },
 ];
 export function Profiles({ user }: { user: User }) {
@@ -124,6 +120,7 @@ export function Profiles({ user }: { user: User }) {
     [profile, setProfile] = useState<Profile | null>(null),
     [details, setDetails] = useState<PublicDetails | null>(null),
     [panel, setPanel] = useState<Panel>('characters'),
+    [sheetCharacterId, setSheetCharacterId] = useState<string | null>(null),
     [error, setError] = useState('');
   const [items, setItems] = useState<DirectoryEntry[]>([]),
     [query, setQuery] = useState(''),
@@ -138,8 +135,6 @@ export function Profiles({ user }: { user: User }) {
     [canSend, setCanSend] = useState(false),
     [hasOlder, setHasOlder] = useState(false),
     [editing, setEditing] = useState<ProfileSettings | null>(null),
-    [rating, setRating] = useState(5),
-    [comment, setComment] = useState(''),
     [companion, setCompanion] = useState<OwnedMount | null>(null);
   const mountHost = useRef<HTMLButtonElement>(null);
   const mountHidden = useRef(false);
@@ -160,9 +155,6 @@ export function Profiles({ user }: { user: User }) {
           next.characters[0]?.id ||
           '',
     );
-    const review = next.reviews.find((r) => r.author_id === user.id);
-    setRating(review?.score || 5);
-    setComment(review?.comment || '');
   };
   async function loadSocial() {
     const [f, i] = await Promise.all([
@@ -186,6 +178,7 @@ export function Profiles({ user }: { user: User }) {
       setTarget(params().get('user') || '');
       setSelected(params().get('character') || '');
       setPanel('characters');
+      setSheetCharacterId(null);
       setProfile(null);
       setDetails(null);
     }
@@ -213,26 +206,34 @@ export function Profiles({ user }: { user: User }) {
   }, [query]);
   useEffect(() => {
     if (!target) return;
-    let active = true;
-    api<Profile>('/profiles/' + encodeURIComponent(target))
-      .then((next) => {
-        if (active) {
+    let active = true,
+      serial = 0;
+    const reload = () => {
+      if (document.hidden) return;
+      const request = ++serial;
+      void api<Profile>('/profiles/' + encodeURIComponent(target))
+        .then((next) => {
+          if (!active || request !== serial) return;
           setProfile(next);
-          setSelected((prev) =>
-            next.characters.some((c) => c.id === prev)
-              ? prev
+          setSelected((previous) =>
+            next.characters.some((c) => c.id === previous)
+              ? previous
               : next.document.featured.find((id) => next.characters.some((c) => c.id === id)) ||
                 next.characters[0]?.id ||
                 '',
           );
-          const review = next.reviews.find((r) => r.author_id === user.id);
-          setRating(review?.score || 5);
-          setComment(review?.comment || '');
-        }
-      })
-      .catch((e) => active && setError(e.message));
+        })
+        .catch((e) => active && request === serial && setError(e.message));
+    };
+    reload();
+    const timer = setInterval(reload, 30000);
+    window.addEventListener('focus', reload);
+    document.addEventListener('visibilitychange', reload);
     return () => {
       active = false;
+      clearInterval(timer);
+      window.removeEventListener('focus', reload);
+      document.removeEventListener('visibilitychange', reload);
     };
   }, [target]);
   useEffect(() => {
@@ -335,7 +336,9 @@ export function Profiles({ user }: { user: User }) {
     await loadProfile();
     await loadSocial();
   }
-  const current = details?.character || profile?.characters.find((c) => c.id === selected),
+  const current =
+      (details?.character.id === selected ? details.character : null) ||
+      profile?.characters.find((c) => c.id === selected),
     displayPet = details?.pets.find((p) => p.displayed),
     species = pets.find((p) => p.id === displayPet?.pet_id);
   async function upload(file: File) {
@@ -458,7 +461,7 @@ export function Profiles({ user }: { user: User }) {
               <div
                 className="profile-panels-strip"
                 style={{
-                  transform: `translateX(-${panels.findIndex((p) => p.id === panel) * 20}%)`,
+                  transform: `translateX(-${panels.findIndex((p) => p.id === panel) * (100 / panels.length)}%)`,
                 }}
               >
                 <section
@@ -472,7 +475,7 @@ export function Profiles({ user }: { user: User }) {
                   <CampBackdrop />
                   <div className="public-camp-heading">
                     <div className="public-camp-name" data-title-position={current?.title_position}>
-                      <h2>{current?.name || 'O acampamento do viajante'}</h2>
+                      <h2>Acampamento</h2>
                       {current?.displayed_title && (
                         <div className="public-character-title">
                           <Crown size={14} />
@@ -566,7 +569,8 @@ export function Profiles({ user }: { user: User }) {
                                   key={id}
                                   onClick={() => {
                                     setSelected(c.id);
-                                    setPanel(id);
+                                    if (id === 'sheet') setSheetCharacterId(c.id);
+                                    else setPanel(id);
                                   }}
                                 >
                                   {name}
@@ -656,76 +660,7 @@ export function Profiles({ user }: { user: User }) {
                     <HallOfFame key={selected} embedded focusCharacterId={selected} />
                   )}
                 </section>
-                <section
-                  className="public-profile-panel public-sheet"
-                  role="tabpanel"
-                  id="profile-panel-sheet"
-                  aria-labelledby="profile-tab-sheet"
-                  aria-hidden={panel !== 'sheet'}
-                  inert={panel !== 'sheet'}
-                >
-                  <header className="public-panel-heading">
-                    <span className="social-eyebrow">O registro do aventureiro</span>
-                    <h2>Ficha de {current?.name || profile.name}</h2>
-                  </header>
-                  {current && (
-                    <>
-                      <p>
-                        {current.race} · {current.class} · Nível {current.level} ·{' '}
-                        {rankName(current.level)}
-                      </p>
-                      <div className="public-stat-cards">
-                        <span>
-                          PV<b>{current.hp}</b>
-                        </span>
-                        <span>
-                          CA<b>{current.armor_class}</b>
-                        </span>
-                        <span>
-                          Missões<b>{current.progression_missions}</b>
-                        </span>
-                      </div>
-                      <div className="public-abilities">
-                        {current.stats.map((stat, i) => (
-                          <span key={i}>
-                            {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
-                            <b>{stat}</b>
-                            <small>
-                              {Math.floor((stat - 10) / 2) >= 0 ? '+' : ''}
-                              {Math.floor((stat - 10) / 2)}
-                            </small>
-                          </span>
-                        ))}
-                      </div>
-                      <h3>História</h3>
-                      <p className="public-biography">
-                        {current.biography || 'História ainda não registrada.'}
-                      </p>
-                      {details?.derived && (
-                        <>
-                          <h3>Perícias</h3>
-                          <div className="public-skill-list">
-                            {details.derived.skills.map((s) => (
-                              <span key={s.name}>
-                                {s.name}
-                                <b>
-                                  {s.value >= 0 ? '+' : ''}
-                                  {s.value}
-                                </b>
-                              </span>
-                            ))}
-                          </div>
-                          <h3>Características</h3>
-                          {details.derived.features.map((f, i) => (
-                            <p key={i}>{f}</p>
-                          ))}
-                          <h3>Equipamento da ficha</h3>
-                          <p>{details.derived.equipment.join(' · ')}</p>
-                        </>
-                      )}
-                    </>
-                  )}
-                </section>
+
                 <section
                   className="public-profile-panel public-cards"
                   role="tabpanel"
@@ -751,176 +686,139 @@ export function Profiles({ user }: { user: User }) {
               </div>
             </div>
             <div className="profile-visit-selector">
-              <small>
-                Visitando <strong>{profile.name}</strong>
-              </small>
-              {current && (
-                <label>
-                  <span>Personagem do jogador</span>
-                  <select
-                    aria-label="Personagem do perfil visitado"
-                    value={selected}
-                    onChange={(e) => setSelected(e.target.value)}
-                  >
-                    {profile.characters.map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              )}
-            </div>
-            <ProfileSignpost panels={panels} selected={panel} onSelect={setPanel} />
-          </div>
-          {profileActions}
-          <header className="visited-profile-heading">
-            {avatar(profile.avatar, profile.name)}
-            <div>
-              <span className="social-eyebrow">Perfil do viajante</span>
-              <h1>{profile.name}</h1>
-              <p>{profile.document.tagline || 'Nas estradas da Alvorada.'}</p>
-              <small>ID: {profile.id}</small>
-            </div>
-            <div className="visited-profile-actions">
-              {profile.is_owner ? null : profile.blocked_by_me ? (
-                <button
-                  onClick={() =>
-                    void run(async () => {
-                      await api('/social/blocks/' + encodeURIComponent(target), {
-                        method: 'DELETE',
-                      });
-                      await loadProfile();
-                      await loadSocial();
-                    })
-                  }
-                >
-                  Desbloquear
-                </button>
-              ) : profile.blocked ? (
-                <span>Interações indisponíveis.</span>
-              ) : (
-                <>
-                  {profile.friend?.status === 'accepted' ? (
-                    <>
-                      <button onClick={() => openChat({ id: profile.id, name: profile.name })}>
-                        <MessageSquare size={15} />
-                        Conversar
-                      </button>
-                      <button onClick={() => void run(() => changeFriend('remove'))}>
-                        Remover amizade
-                      </button>
-                    </>
-                  ) : profile.friend ? (
-                    <button
-                      onClick={() =>
-                        void run(() => changeFriend(profile.friend!.incoming ? 'accept' : 'remove'))
-                      }
-                    >
-                      {profile.friend.incoming ? 'Aceitar amizade' : 'Cancelar pedido'}
-                    </button>
-                  ) : (
-                    <button onClick={() => void run(() => changeFriend('request'))}>
-                      <UserPlus size={15} />
-                      Adicionar amigo
-                    </button>
-                  )}
-                  <button
-                    title="Bloquear jogador"
-                    onClick={() =>
-                      void run(async () => {
-                        await post('/social/blocks/' + encodeURIComponent(target), {});
-                        await loadProfile();
-                        await loadSocial();
-                      })
-                    }
-                  >
-                    <Flag size={14} />
-                  </button>
-                </>
-              )}
-            </div>
-          </header>
-          <section className="profile-reviews">
-            <div>
-              <span className="social-eyebrow">Pelas vozes da comunidade</span>
-              <h2>Avaliações do perfil</h2>
-              <p>
-                {profile.rating.count
-                  ? `★ ${profile.rating.average.toFixed(1)} · ${profile.rating.count} avaliações`
-                  : 'Este perfil ainda não foi avaliado.'}
-              </p>
-            </div>
-            {!profile.is_owner && !profile.blocked && (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  void run(async () => {
-                    await post('/profiles/' + encodeURIComponent(target) + '/review', {
-                      score: rating,
-                      comment,
-                    });
-                    await loadProfile();
-                  });
-                }}
+              <div
+                className="profile-character-avatar"
+                aria-label={current ? 'Retrato de ' + current.name : 'Retrato do viajante'}
               >
-                <fieldset>
-                  <legend>Sua avaliação</legend>
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      aria-label={`Avaliar com ${n} estrelas`}
-                      aria-pressed={rating === n}
-                      className={n <= rating ? 'filled' : ''}
-                      onClick={() => setRating(n)}
-                    >
-                      <Star size={21} />
-                    </button>
-                  ))}
-                </fieldset>
-                <label>
-                  Comentário
-                  <textarea
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    maxLength={500}
-                    placeholder="Conte como foi jogar com este viajante…"
+                <UserRound size={30} aria-hidden="true" />
+                {current && current.portrait_revision > 0 ? (
+                  <img
+                    key={current.id}
+                    src={
+                      current.portrait +
+                      (current.portrait.includes('?') ? '&' : '?') +
+                      'face=1&crop=2'
+                    }
+                    alt={current.name}
+                    onError={(event) => {
+                      event.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={(event) => {
+                      event.currentTarget.style.removeProperty('display');
+                    }}
                   />
-                </label>
-                <div>
-                  <button className="button primary">Salvar avaliação</button>
-                  {profile.reviews.some((r) => r.author_id === user.id) && (
-                    <button
-                      type="button"
-                      onClick={() =>
-                        void run(async () => {
-                          await api('/profiles/' + encodeURIComponent(target) + '/review', {
-                            method: 'DELETE',
-                          });
-                          await loadProfile();
-                        })
-                      }
+                ) : null}
+              </div>
+              <div className="profile-visit-identity">
+                <span className="social-eyebrow">Perfil do viajante</span>
+                <strong>{profile.name}</strong>
+                {current && (
+                  <label>
+                    <span>Personagem do jogador</span>
+                    <select
+                      aria-label="Personagem do perfil visitado"
+                      value={selected}
+                      onChange={(e) => setSelected(e.target.value)}
                     >
-                      Remover minha avaliação
-                    </button>
-                  )}
-                </div>
-              </form>
-            )}
-            <div className="profile-review-list">
-              {profile.reviews.map((r) => (
-                <article key={r.author_id}>
-                  <button onClick={() => visitProfile(r.author_id)}>{r.author}</button>
-                  <span>
-                    {'★'.repeat(r.score)}
-                    {'☆'.repeat(6 - r.score - 1)}
-                  </span>
-                  <p>{r.comment}</p>
-                </article>
-              ))}
+                      {profile.characters.map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                )}
+              </div>
             </div>
-          </section>
+            <ProfileNextArrow panels={panels} selected={panel} onSelect={setPanel} />
+          </div>
+          {sheetCharacterId && (
+            <Modal
+              title={
+                'Ficha de ' +
+                (profile.characters.find((c) => c.id === sheetCharacterId)?.name || 'personagem')
+              }
+              close={() => setSheetCharacterId(null)}
+            >
+              <div className="public-sheet profile-sheet-modal">
+                {details?.character.id !== sheetCharacterId ? (
+                  <p role="status">Carregando ficha…</p>
+                ) : (
+                  <>
+                    {current && (
+                      <>
+                        <p>
+                          {current.race} · {current.class} · Nível {current.level} ·{' '}
+                          {rankName(current.level)}
+                        </p>
+                        <div className="public-stat-cards">
+                          <span>
+                            PV<b>{current.hp}</b>
+                          </span>
+                          <span>
+                            CA<b>{current.armor_class}</b>
+                          </span>
+                          <span>
+                            Missões<b>{current.progression_missions}</b>
+                          </span>
+                        </div>
+                        <div className="public-abilities">
+                          {current.stats.map((stat, i) => (
+                            <span key={i}>
+                              {['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'][i]}
+                              <b>{stat}</b>
+                              <small>
+                                {Math.floor((stat - 10) / 2) >= 0 ? '+' : ''}
+                                {Math.floor((stat - 10) / 2)}
+                              </small>
+                            </span>
+                          ))}
+                        </div>
+                        <h3>História</h3>
+                        <p className="public-biography">
+                          {current.biography || 'História ainda não registrada.'}
+                        </p>
+                        {details?.derived && (
+                          <>
+                            <h3>Perícias</h3>
+                            <div className="public-skill-list">
+                              {details.derived.skills.map((s) => (
+                                <span key={s.name}>
+                                  {s.name}
+                                  <b>
+                                    {s.value >= 0 ? '+' : ''}
+                                    {s.value}
+                                  </b>
+                                </span>
+                              ))}
+                            </div>
+                            <h3>Características</h3>
+                            {details.derived.features.map((f, i) => (
+                              <p key={i}>{f}</p>
+                            ))}
+                            <h3>Equipamento da ficha</h3>
+                            <p>{details.derived.equipment.join(' · ')}</p>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </>
+                )}
+              </div>
+            </Modal>
+          )}
+          <ProfileRating
+            key={profile.id}
+            average={profile.rating.average}
+            count={profile.rating.count}
+            own={profile.own_review}
+            enabled={!profile.is_owner && !profile.blocked}
+            save={async (score, comment) => {
+              await post('/profiles/' + encodeURIComponent(target) + '/review', { score, comment });
+              await loadProfile();
+              window.dispatchEvent(new Event('profile-rating-updated'));
+            }}
+          />
         </>
       )}
       {socialOpen && (

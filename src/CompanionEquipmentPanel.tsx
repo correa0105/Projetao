@@ -268,10 +268,7 @@ export function CompanionEquipmentPanel({
     >
       <header>
         <h2>{title}</h2>
-        <p>
-          Equipe os itens da mochila deste animal. Use Transferir entre inventários para trazer
-          outros itens.
-        </p>
+        <p>Equipe os itens da mochila deste animal.</p>
         {kind === 'mount' && (
           <p>
             A barda ocupa um único espaço de armadura. Vestir combina a armadura completa e os

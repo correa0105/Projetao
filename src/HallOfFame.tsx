@@ -25,7 +25,7 @@ const rankings = [
   { id: 'achievements', name: 'Conquistas', icon: Trophy },
   { id: 'prestige', name: 'Prestígio', icon: Shield },
   { id: 'missions', name: 'Aventureiros', icon: Flag },
-  { id: 'rating', name: 'Perfis avaliados', icon: Star },
+  { id: 'rating', name: 'Melhores perfis', icon: Star },
   { id: 'titles', name: 'Honrarias', icon: Crown },
 ] as const;
 type Ranking = (typeof rankings)[number]['id'];
@@ -54,6 +54,19 @@ export function HallOfFame({
       .catch((e) => setError(e.message));
   useEffect(() => {
     void load();
+    const refresh = () => {
+      if (!document.hidden) void load();
+    };
+    const timer = setInterval(refresh, 30000);
+    window.addEventListener('focus', refresh);
+    window.addEventListener('profile-rating-updated', refresh);
+    document.addEventListener('visibilitychange', refresh);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('focus', refresh);
+      window.removeEventListener('profile-rating-updated', refresh);
+      document.removeEventListener('visibilitychange', refresh);
+    };
   }, []);
   const ordered = useMemo(() => {
     if (!data) return [];
@@ -65,7 +78,15 @@ export function HallOfFame({
           : ranking === 'rating'
             ? e.rating
             : e[ranking];
-    return [...data.entries]
+    const entries =
+      ranking === 'rating'
+        ? [
+            ...new Map(
+              data.entries.filter((e) => e.rating_count > 0).map((e) => [e.user_id, e]),
+            ).values(),
+          ]
+        : data.entries;
+    return [...entries]
       .sort((a, b) => value(b) - value(a) || b.score - a.score || a.rank - b.rank)
       .map((e, i) => ({ ...e, categoryRank: i + 1, categoryValue: value(e) }));
   }, [data, ranking]);
@@ -149,7 +170,7 @@ export function HallOfFame({
                 <b>#{e.categoryRank}</b>
               </span>
               {portrait(e)}
-              <h2>{e.name}</h2>
+              <h2>{ranking === 'rating' ? e.owner_name : e.name}</h2>
               <span>
                 {e.class} · Nível {e.level}
               </span>
@@ -184,21 +205,30 @@ export function HallOfFame({
           }}
           placeholder="Procure um personagem, jogador ou classe…"
         />
-        <span>{filtered.length} personagens</span>
+        <span>
+          {filtered.length} {ranking === 'rating' ? 'perfis' : 'personagens'}
+        </span>
       </div>
       {data && data.entries.length === 0 && (
         <p className="social-empty">
           Os primeiros nomes serão gravados aqui quando os jogadores criarem personagens.
         </p>
       )}
-      <div className="hall-table" role="table" aria-label="Ranking de personagens">
+      {ranking === 'rating' && filtered.length === 0 && (
+        <p className="social-empty">Nenhum perfil recebeu avaliações ainda.</p>
+      )}
+      <div
+        className="hall-table"
+        role="table"
+        aria-label={ranking === 'rating' ? 'Ranking de perfis' : 'Ranking de personagens'}
+      >
         <div className="hall-table-head" role="row">
           <span>Posição</span>
-          <span>Personagem</span>
+          <span>{ranking === 'rating' ? 'Perfil' : 'Personagem'}</span>
           <span>Prestígio</span>
           <span>Conquistas</span>
           <span>Missões</span>
-          <span>Pontuação</span>
+          <span>{ranking === 'rating' ? 'Avaliação' : 'Pontuação'}</span>
         </div>
         {filtered.slice((page - 1) * 20, page * 20).map((e) => (
           <div
@@ -210,9 +240,9 @@ export function HallOfFame({
             <button className="hall-character" onClick={() => visitProfile(e.user_id, e.id)}>
               {portrait(e)}
               <span>
-                <strong>{e.name}</strong>
+                <strong>{ranking === 'rating' ? e.owner_name : e.name}</strong>
                 <small>
-                  {e.owner_name} · {e.class} · Nível {e.level}
+                  {ranking === 'rating' ? e.name : e.owner_name} · {e.class} · Nível {e.level}
                 </small>
               </span>
             </button>
@@ -220,8 +250,10 @@ export function HallOfFame({
             <span>{e.achievements}</span>
             <span>{e.missions}</span>
             <strong>
-              {e.score.toLocaleString('pt-BR')}
-              <small>pontos gerais</small>
+              {ranking === 'rating' ? e.rating.toFixed(2) : e.score.toLocaleString('pt-BR')}
+              <small>
+                {ranking === 'rating' ? e.rating_count + ' avaliações' : 'pontos gerais'}
+              </small>
             </strong>
           </div>
         ))}

@@ -7,15 +7,30 @@ export function VttConditionMenu({
   enabled,
   busy,
   onChange,
+  expanded = false,
 }: {
   conditions: string[];
   gm: boolean;
   enabled: boolean;
   busy: boolean;
   onChange: (next: string[]) => void;
+  expanded?: boolean;
 }) {
   return (
-    <details className="vtt-condition-menu" onToggle={e=>{const section=e.currentTarget;if(!section.open)return;requestAnimationFrame(()=>{const popup=section.closest<HTMLElement>('.vtt-context-menu');if(popup)popup.scrollTop+=section.getBoundingClientRect().top-popup.getBoundingClientRect().top-42;});}}>
+    <details
+      className="vtt-condition-menu"
+      open={expanded || undefined}
+      onToggle={(e) => {
+        const section = e.currentTarget;
+        if (!section.open || expanded) return;
+        requestAnimationFrame(() => {
+          const popup = section.closest<HTMLElement>('.vtt-context-menu');
+          if (popup)
+            popup.scrollTop +=
+              section.getBoundingClientRect().top - popup.getBoundingClientRect().top - 42;
+        });
+      }}
+    >
       <summary>
         Condições <span>{conditions.length || ''}</span>
       </summary>

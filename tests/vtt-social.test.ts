@@ -26,6 +26,7 @@ import {
 import { emptyHotbar } from '../shared/vtt-hotbar.js';
 import { monsterActions } from '../shared/vtt-monster-actions.js';
 import { defaultHallSettings, profileSettingsSchema, fameScore } from '../shared/social.js';
+import { vttProtocolVersion } from '../shared/vtt-protocol.js';
 
 test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descartável', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
@@ -51,7 +52,7 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         Origin: origin,
         Cookie: who?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '7',
+        'X-Vtt-Schema-Version': String(vttProtocolVersion),
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -651,12 +652,35 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
         const path = '/profiles/' + player.id + '/review';
         assert.equal((await request(path, player, 'POST', { score: 5 })).status, 403);
         assert.equal((await request(path, other, 'POST', { score: 6 })).status, 400);
+        for (const score of [1, 2]) {
+          assert.equal((await request(path, other, 'POST', { score })).status, 400);
+          assert.equal((await request(path, other, 'POST', { score, comment: '   ' })).status, 400);
+        }
+        assert.equal(
+          (
+            await request(path, other, 'POST', {
+              score: 2,
+              comment: 'A apresentação poderia melhorar.',
+            })
+          ).status,
+          200,
+        );
         assert.equal(
           (await request(path, other, 'POST', { score: 5, comment: 'Ótima companheira.' })).status,
           200,
         );
         await request(path, other, 'POST', { score: 4, comment: 'Editado.' });
         assert.equal((await request('/profiles/' + player.id, other)).data.rating.count, 1);
+        const authorView = (await request('/profiles/' + player.id, other)).data;
+        assert.deepEqual(authorView.own_review, { score: 4, comment: 'Editado.' });
+        assert.equal(authorView.reviews, undefined);
+        const publicView = (await request('/profiles/' + player.id, adm)).data;
+        assert.equal(publicView.own_review, null);
+        assert.equal(publicView.reviews, undefined);
+        assert(
+          !JSON.stringify(publicView).includes('Editado.'),
+          'Outro visitante não deve ler o voto privado.',
+        );
         const hall = (await request('/hall', player)).data,
           entry = hall.entries.find((e: any) => e.id === p.id);
         const expected = fameScore(entry, hall.document.weights);
@@ -1436,11 +1460,18 @@ test('VTT, perfis e comunidade: persistência e permissões em PostgreSQL descar
     await t.test('cliente antigo não pode substituir o documento com efeitos atuais', async () => {
       const root = '/vtt/rooms/' + room.id,
         current = (await request(root, adm)).data;
-      const r = await fetch(base + root, {
+      const options = {
         method: 'PUT',
         headers: { Origin: origin, Cookie: adm.cookie, 'Content-Type': 'application/json' },
         body: JSON.stringify({ revision: current.revision, document: current.document }),
-      });
+      };
+      let r = await fetch(base + root, options);
+      if (r.status === 429) {
+        await new Promise((resolve) =>
+          setTimeout(resolve, (Number(r.headers.get('Retry-After')) || 60) * 1000 + 100),
+        );
+        r = await fetch(base + root, options);
+      }
       assert.equal(r.status, 409);
       assert.match((await r.json()).error, /Recarregue/);
       assert.equal((await request(root, adm)).data.revision, current.revision);

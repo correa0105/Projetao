@@ -1,3 +1,4 @@
+import { VttTokenMenu } from './VttTokenMenu';
 import { VttTokenScaleControl } from './VttTokenScaleControl';
 import { isAttackCheck } from '../shared/vtt-roll-purpose';
 import { VttAttackRollAction } from './VttAttackRollAction';
@@ -437,6 +438,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     focusSeen = useRef<{ roomId: string; at: number; id: string } | null>(null),
     focusFrame = useRef(0),
     contextRef = useRef<HTMLDivElement>(null);
+  const tokenClick = useRef<{id: string; x: number; y: number} | null>(null);
   const contextDrag = useRef<{ id: number; dx: number; dy: number } | null>(null);
   const suppressContextUntil = useRef(0);
   const music = useMusicInterlude();
@@ -1282,6 +1284,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     };
   }
   function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
+    tokenClick.current = null;
     cancelAnimationFrame(focusFrame.current);
     if (!scene || !doc) return;
     if (barrierTools.has(tool) && !barrierEditing) return;
@@ -1499,6 +1502,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             ? selection
             : [hit.id];
         setSelection(ids);
+        if (!preview && !e.shiftKey && !e.ctrlKey && !e.metaKey && ids.length === 1) {
+          tokenClick.current = {id: hit.id, x: e.clientX, y: e.clientY};
+        }
         if (ids[0] !== token?.id || ids.length !== 1) setAttackTargetId(null);
         if (!preview && !hit.locked && (gm || hit.controller === user.id)) {
           drag.current = {
@@ -1701,6 +1707,11 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       );
   }
   function pointerUp(e: ReactPointerEvent<HTMLCanvasElement>) {
+    const click = tokenClick.current;
+    tokenClick.current = null;
+    if (click && !preview && !spectator && Math.hypot(e.clientX - click.x, e.clientY - click.y) < 4) {
+      setContextMenu({x: e.clientX, y: e.clientY});
+    }
     const d = drag.current;
     if (!d || !scene) return;
     drag.current = null;
@@ -2833,6 +2844,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             data-selection-count={selection.length}
             data-selection-ids={selection.join(',')}
             onPointerCancel={() => {
+              tokenClick.current = null;
               setLasso([]);
               setFogPoints([]);
               setFogPointer(null);
@@ -5062,84 +5074,26 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           upload={uploadAsset}
         />
       )}
-      {contextMenu && (token || selectedLight || selectedWall || selectedDrawing) && (
-        <div
-          className="vtt-context-menu"
-          ref={contextRef}
-          role="dialog"
-          aria-label="Ações do objeto"
-          style={{
-            left: contextMenu.x,
-            top: contextMenu.y,
-            maxHeight: `calc(100dvh - ${Math.max(12, contextMenu.y + 12)}px)`,
-          }}
+      {contextMenu && token && !preview && !spectator && (
+        <VttTokenMenu key={token.id} ref={contextRef} token={token} board={canvas} camera={camera}
+          layoutKey={bounds.width + ':' + bounds.height + ':' + panelOpen}
+          gm={gm} busy={busy} speed={tokenProfile(token).speed || '30 ft'}
+          close={() => setContextMenu(null)}
+          openSheet={() => {openSheet(); setContextMenu(null);}}
+          completeSettings={() => {setTab('token'); setPanelOpen(true); setContextMenu(null);}}
+          edit={patch => {editToken(patch); if(gm) void act(save);}}
+          hp={gm ? (                  <VttHpControl
+                    key={token.id}
+                    token={token}
+                    busy={busy}
+                    apply={async (value) => {
+                      editToken({ hp: hpCommand(value, token.hp, token.maxHp) });
+                      await save();
+                    }}
+                  />) : null}
+          conditions={<VttConditionMenu expanded conditions={token.conditions} gm={gm} enabled={canToken}
+            busy={busy} onChange={conditions => {editToken({conditions}); if(gm)void act(save);}} />}
         >
-          <header
-            tabIndex={0}
-            aria-label="Mover janela de ações"
-            title="Arraste para mover"
-            onPointerDown={(e) => {
-              if (e.button !== 0 || (e.target as Element).closest('button')) return;
-              e.preventDefault();
-              contextDrag.current = {
-                id: e.pointerId,
-                dx: e.clientX - contextMenu.x,
-                dy: e.clientY - contextMenu.y,
-              };
-              e.currentTarget.setPointerCapture(e.pointerId);
-            }}
-            onPointerMove={(e) => {
-              const drag = contextDrag.current,
-                rect = contextRef.current?.getBoundingClientRect();
-              if (!drag || drag.id !== e.pointerId || !rect) return;
-              setContextMenu({
-                x: Math.max(8, Math.min(e.clientX - drag.dx, innerWidth - rect.width - 8)),
-                y: Math.max(8, Math.min(e.clientY - drag.dy, innerHeight - rect.height - 8)),
-              });
-            }}
-            onPointerUp={(e) => {
-              contextDrag.current = null;
-              if (e.currentTarget.hasPointerCapture(e.pointerId))
-                e.currentTarget.releasePointerCapture(e.pointerId);
-            }}
-            onPointerCancel={() => {
-              contextDrag.current = null;
-            }}
-            onKeyDown={(e) => {
-              if (e.target !== e.currentTarget || !e.key.startsWith('Arrow')) return;
-              e.preventDefault();
-              e.stopPropagation();
-              const rect = contextRef.current!.getBoundingClientRect(),
-                step = e.shiftKey ? 40 : 10;
-              setContextMenu({
-                x: Math.max(
-                  8,
-                  Math.min(
-                    contextMenu.x +
-                      (e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0),
-                    innerWidth - rect.width - 8,
-                  ),
-                ),
-                y: Math.max(
-                  8,
-                  Math.min(
-                    contextMenu.y +
-                      (e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0),
-                    innerHeight - rect.height - 8,
-                  ),
-                ),
-              });
-            }}
-          >
-            <span>
-              {token?.name || selectedLight?.name || (selectedWall ? 'Barreira' : 'Desenho')}
-            </span>
-            <button aria-label="Fechar ações" onClick={() => setContextMenu(null)}>
-              <X size={13} />
-            </button>
-          </header>
-          {token && (
-            <>
               <button
                 onClick={() => {
                   openSheet();
@@ -5164,7 +5118,6 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
               )}
               {canToken && <VttTokenScaleControl key={token.id} token={token} gridSize={scene.grid.size} busy={busy} change={size=>{editToken(size);if(gm)void act(save);}} />}
               {gm && token.layer === 'tokens' && <label className="vtt-check"><input type="checkbox" checked={token.bleeds} disabled={busy} onChange={e=>{editToken({bleeds:e.target.checked});void act(save);}} />Esta criatura sangra</label>}
-              {token.layer === 'tokens' && <VttConditionMenu conditions={token.conditions} gm={gm} enabled={canToken} busy={busy} onChange={(conditions) => { editToken({conditions}); if(gm) void save(); }} />}
               <details className="vtt-context-options" key={token.id}>
                 <summary>Mais opções</summary>
                 {gm && (<>
@@ -5413,8 +5366,85 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 </details>
               )}
               </details>
-            </>
-          )}
+
+        </VttTokenMenu>
+      )}
+      {contextMenu && !token && (selectedLight || selectedWall || selectedDrawing) && (
+        <div
+          className="vtt-context-menu"
+          ref={contextRef}
+          role="dialog"
+          aria-label="Ações do objeto"
+          style={{
+            left: contextMenu.x,
+            top: contextMenu.y,
+            maxHeight: `calc(100dvh - ${Math.max(12, contextMenu.y + 12)}px)`,
+          }}
+        >
+          <header
+            tabIndex={0}
+            aria-label="Mover janela de ações"
+            title="Arraste para mover"
+            onPointerDown={(e) => {
+              if (e.button !== 0 || (e.target as Element).closest('button')) return;
+              e.preventDefault();
+              contextDrag.current = {
+                id: e.pointerId,
+                dx: e.clientX - contextMenu.x,
+                dy: e.clientY - contextMenu.y,
+              };
+              e.currentTarget.setPointerCapture(e.pointerId);
+            }}
+            onPointerMove={(e) => {
+              const drag = contextDrag.current,
+                rect = contextRef.current?.getBoundingClientRect();
+              if (!drag || drag.id !== e.pointerId || !rect) return;
+              setContextMenu({
+                x: Math.max(8, Math.min(e.clientX - drag.dx, innerWidth - rect.width - 8)),
+                y: Math.max(8, Math.min(e.clientY - drag.dy, innerHeight - rect.height - 8)),
+              });
+            }}
+            onPointerUp={(e) => {
+              contextDrag.current = null;
+              if (e.currentTarget.hasPointerCapture(e.pointerId))
+                e.currentTarget.releasePointerCapture(e.pointerId);
+            }}
+            onPointerCancel={() => {
+              contextDrag.current = null;
+            }}
+            onKeyDown={(e) => {
+              if (e.target !== e.currentTarget || !e.key.startsWith('Arrow')) return;
+              e.preventDefault();
+              e.stopPropagation();
+              const rect = contextRef.current!.getBoundingClientRect(),
+                step = e.shiftKey ? 40 : 10;
+              setContextMenu({
+                x: Math.max(
+                  8,
+                  Math.min(
+                    contextMenu.x +
+                      (e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0),
+                    innerWidth - rect.width - 8,
+                  ),
+                ),
+                y: Math.max(
+                  8,
+                  Math.min(
+                    contextMenu.y +
+                      (e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0),
+                    innerHeight - rect.height - 8,
+                  ),
+                ),
+              });
+            }}
+          >
+            <span>
+              {selectedLight?.name || (selectedWall ? 'Barreira' : 'Desenho')}
+            </span>
+            <button aria-label="Fechar ações" onClick={() => setContextMenu(null)}>
+              <X size={13} />
+            </button>
+          </header>
           {gm && !token && (
             <button className="vtt-delete" onClick={removeSelected}>
               <Trash2 size={14} />

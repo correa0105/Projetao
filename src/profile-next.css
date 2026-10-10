@@ -1,0 +1,346 @@
+.profile-panel-label,
+.profile-panel-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+:root .visiting .profile-panels-strip {
+  width: 400%;
+}
+:root .visiting .public-profile-panel {
+  flex-basis: 25%;
+  width: 25%;
+}
+dialog:has(.profile-sheet-modal) {
+  width: min(900px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+}
+.profile-sheet-modal {
+  max-width: 100%;
+  padding-top: 8px;
+}
+.profile-sheet-modal .public-abilities {
+  margin-bottom: 24px;
+}
+@media (max-width: 600px) {
+  .profile-sheet-modal .public-abilities {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .profile-sheet-modal .public-skill-list {
+    grid-template-columns: 1fr;
+  }
+}
+:root .visiting .profile-next-nav {
+  position: fixed;
+  top: 50dvh;
+  right: clamp(10px, 2.5vw, 48px);
+  transform: translateY(-50%);
+  z-index: 18;
+}
+:root .visiting .profile-next-arrow {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(48px, 4vw, 72px);
+  height: clamp(82px, 7vw, 118px);
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+.profile-next-arrow > svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 1px #000) drop-shadow(0 0 7px #000a);
+  transition: filter 180ms ease;
+}
+:root .visiting .profile-next-arrow:hover {
+  transform: translateX(4px);
+}
+.profile-next-arrow:is(:hover, :focus-visible) > svg {
+  filter: drop-shadow(0 2px 1px #000) drop-shadow(0 0 7px #000a) brightness(1.23);
+}
+:root .visiting .profile-next-arrow:focus-visible {
+  outline: 2px solid #e5c58d;
+  outline-offset: 5px;
+}
+.profile-arrow-caption {
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0;
+  white-space: nowrap;
+  padding: 7px 10px;
+  border: 1px solid #b491585c;
+  border-radius: 3px;
+  color: #eddfc1;
+  background: #0d151ee8;
+  font: 500 12px var(--sans);
+  transition: opacity 180ms ease;
+}
+.profile-next-arrow:is(:hover, :focus-visible) .profile-arrow-caption {
+  opacity: 1;
+}
+/* The first room fills the viewport; the collection continues beneath it. */
+:root .app-shell[data-page='profiles'] .visiting .public-profile-panel.public-achievements {
+  padding: 0 0 60px;
+  background: #15140f;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage {
+  --room-cover: 1;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  min-height: 600px;
+  aspect-ratio: auto;
+  margin: 0;
+  background:
+    linear-gradient(#080b0e45, transparent 30%, #080b0e25),
+    url('/achievement-house-v3.png') center / cover no-repeat;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage .fantasy-cabinet {
+  width: min(48%, 68dvh);
+}
+:root .app-shell[data-page='profiles'] .visiting .public-earned-achievements {
+  width: calc(100% - 2 * var(--page-header-edge));
+}
+:root .app-shell[data-page='profiles'] .visiting .public-panel-heading,
+:root .app-shell[data-page='profiles'] .visiting .public-camp-heading {
+  top: 22px;
+  width: calc(100% - 360px - var(--page-header-edge));
+  right: auto;
+  z-index: 4;
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-visit-selector {
+  top: 18px;
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  width: 275px;
+  padding: 8px 10px;
+  border: 1px solid #ad895343;
+  border-radius: 8px;
+  background: linear-gradient(115deg, #111713e0, #0c141cd4);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 20px #0004;
+  text-shadow: none;
+}
+.profile-character-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #a7844d;
+  box-shadow:
+    0 0 0 4px #c6a66a14,
+    inset 0 0 0 2px #111b22;
+  background: radial-gradient(#4c4430, #18212a);
+  color: #bfa77b;
+}
+.profile-character-avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-visit-identity .social-eyebrow {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 1px;
+  margin: 0 0 4px;
+}
+.profile-visit-identity > strong {
+  display: block;
+  font: 600 20px/1.2 var(--serif);
+  margin-bottom: 7px;
+  overflow-wrap: anywhere;
+}
+:root .visiting .profile-visit-identity select {
+  border-color: #ae8a564f;
+  height: 29px;
+  font-size: 12px;
+  background: #0e151dcc;
+}
+@media (max-width: 800px) {
+  :root .app-shell[data-page='profiles'] .visiting .profile-visit-selector {
+    width: 215px;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .profile-character-avatar {
+    width: 48px;
+    height: 48px;
+  }
+  .profile-visit-identity > strong {
+    font-size: 17px;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .public-panel-heading,
+  :root .app-shell[data-page='profiles'] .visiting .public-camp-heading {
+    top: 120px;
+    width: calc(100% - 2 * var(--page-header-edge));
+  }
+}
+@media (max-width: 600px) {
+  :root .visiting .profile-next-nav {
+    right: 10px;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage .fantasy-cabinet {
+    width: 56%;
+  }
+  .visiting .public-cabinet-stage .portrait-frame-wall {
+    width: clamp(38px, 7vw, 60px);
+  }
+  .visiting .public-cabinet-stage .antique-portrait {
+    width: clamp(28px, 4.6vw, 50px);
+  }
+  .visiting .public-cabinet-stage .portrait-frame-wall.left {
+    left: calc(50% - 37vw);
+  }
+  .visiting .public-cabinet-stage .portrait-frame-wall.right {
+    right: calc(50% - 37vw);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root .visiting .profile-next-arrow,
+  .profile-next-arrow > svg,
+  .profile-arrow-caption {
+    transition: none;
+  }
+}
+.profile-rating-corner {
+  position: fixed;
+  bottom: 24px;
+  left: var(--page-header-edge, 24px);
+  z-index: 18;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e0c590;
+}
+.profile-rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+:root .profile-rating-stars > button {
+  min-height: 32px;
+  width: 29px;
+  padding: 2px;
+  margin: 0;
+  border: 0;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  box-shadow: none;
+  color: #d1bb90;
+  filter: drop-shadow(0 2px 2px #000);
+  cursor: pointer;
+}
+.profile-rating-stars > button svg {
+  fill: #111b22b3;
+  stroke-width: 1.5;
+}
+.profile-rating-stars > button.filled svg {
+  fill: #c29a53;
+  stroke: #f3dfab;
+}
+:root .profile-rating-stars > button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+:root .profile-rating-stars > button:focus-visible {
+  outline: 2px solid #e5c58d;
+}
+.profile-rating-average {
+  font: 11px var(--sans);
+  color: #e1d6be;
+  text-shadow:
+    0 2px 4px #000,
+    0 0 6px #000;
+}
+.profile-rating-reason {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 0;
+  width: min(310px, calc(100vw - 32px));
+  padding: 16px;
+  border: 1px solid #a38756;
+  border-radius: 8px;
+  background: #111d28f5;
+  box-shadow: 0 8px 30px #0009;
+  color: #e4d8c1;
+}
+.profile-rating-reason header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+:root .profile-rating-reason header button {
+  min-height: 25px;
+  padding: 4px;
+  border: 0;
+  background: none;
+}
+.profile-rating-reason strong {
+  font: 600 14px var(--sans);
+}
+.profile-rating-reason p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.profile-rating-reason label {
+  display: grid;
+  gap: 7px;
+  font-size: 12px;
+}
+.profile-rating-reason textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+}
+.profile-rating-reason > button {
+  width: 100%;
+  margin-top: 12px;
+}
+.profile-rating-error {
+  color: #edaf9f;
+  font-size: 12px;
+}
+.profile-rating-corner > .profile-rating-error {
+  position: absolute;
+  bottom: 100%;
+  width: 260px;
+  background: #131e28;
+  padding: 9px;
+  border-radius: 4px;
+}
+@media (max-width: 600px) {
+  .profile-rating-corner {
+    bottom: 66px;
+    left: 12px;
+    gap: 4px;
+  }
+  .profile-rating-average {
+    display: none;
+  }
+  :root .profile-rating-stars > button {
+    width: 25px;
+  }
+}
