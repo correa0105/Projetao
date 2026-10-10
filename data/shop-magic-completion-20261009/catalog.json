@@ -4,7 +4,7 @@
   "source": "https://5e.tools/items.html",
   "asOf": "2026-10-09",
   "planned": 3076,
-  "pending": 2464,
+  "pending": 2413,
   "items": [
     {
       "id": "all-purpose-tool-plus-1",
@@ -24191,6 +24191,976 @@
       }
     },
     {
+      "id": "repeating-blowgun",
+      "name": "Arma de disparo repetido (Zarabatana)",
+      "original_name": "Repeating Blowgun",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Zarabatana. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "A zarabatana de disparo repetido cria uma agulha quando está sem munição. A peça mágica some depois da jogada e não serve como estoque.",
+      "price_cp": 41000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20blowgun_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-blowgun.svg",
+      "audio_path": "/audio/emporium/repeating-blowgun.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Blowgun",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Blowgun",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 1,
+          "dmg1": "1",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "LD|XPHB"
+          ],
+          "range": "25/100",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "blowgun|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1 perfurante. Propriedades: munição. Alcance 25/100 pés. Usa agulhas de zarabatana compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "wood",
+        "attunement": true,
+        "base_item": "blowgun",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Zarabatana"
+      }
+    },
+    {
+      "id": "repeating-hand-crossbow",
+      "name": "Arma de disparo repetido (Besta de mão)",
+      "original_name": "Repeating Hand Crossbow",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Besta de mão. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "Esta besta de mão ignora carregamento e cria virote quando falta. A sintonia não concede uma ação Atacar adicional.",
+      "price_cp": 47500,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20hand%20crossbow_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-hand-crossbow.svg",
+      "audio_path": "/audio/emporium/repeating-hand-crossbow.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Hand Crossbow",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Hand Crossbow",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d6",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "L|XPHB",
+            "LD|XPHB"
+          ],
+          "range": "30/120",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "hand crossbow|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: munição, leve. Alcance 30/120 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "hand-crossbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Besta de mão"
+      }
+    },
+    {
+      "id": "repeating-heavy-crossbow",
+      "name": "Arma de disparo repetido (Besta pesada)",
+      "original_name": "Repeating Heavy Crossbow",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Besta pesada. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "A besta pesada de disparo repetido deixa de limitar o tiro pelo carregamento. Ainda exige duas mãos e os ataques que você realmente possui.",
+      "price_cp": 45000,
+      "weight_lb": 18,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20heavy%20crossbow_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-heavy-crossbow.svg",
+      "audio_path": "/audio/emporium/repeating-heavy-crossbow.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Heavy Crossbow",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Heavy Crossbow",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 18,
+          "dmg1": "1d10",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "H|XPHB",
+            "LD|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "100/400",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "heavy crossbow|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 100/400 pés. Usa balas de arma de fogo compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "heavy-crossbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Besta pesada"
+      }
+    },
+    {
+      "id": "repeating-light-crossbow",
+      "name": "Arma de disparo repetido (Besta leve)",
+      "original_name": "Repeating Light Crossbow",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Besta leve. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "A besta leve de disparo repetido pode criar o virote da jogada. Ele desaparece depois de acertar ou errar, sem ficar no chão para recolher.",
+      "price_cp": 42500,
+      "weight_lb": 5,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20light%20crossbow_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-light-crossbow.svg",
+      "audio_path": "/audio/emporium/repeating-light-crossbow.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Light Crossbow",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Light Crossbow",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 5,
+          "dmg1": "1d8",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "LD|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "80/320",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "light crossbow|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, duas mãos. Alcance 80/320 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "light-crossbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Besta leve"
+      }
+    },
+    {
+      "id": "repeating-longbow",
+      "name": "Arma de disparo repetido (Arco longo)",
+      "original_name": "Repeating Longbow",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Arco longo. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "O arco longo de disparo repetido cria flecha quando está sem munição. Seu alcance e a exigência de Destreza continuam os do modelo.",
+      "price_cp": 45000,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20longbow_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-longbow.svg",
+      "audio_path": "/audio/emporium/repeating-longbow.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Longbow",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Longbow",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d8",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "H|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "150/600",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "longbow|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 150/600 pés. Usa flechas compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "wood",
+        "attunement": true,
+        "base_item": "longbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Arco longo"
+      }
+    },
+    {
+      "id": "repeating-musket",
+      "name": "Arma de disparo repetido (Mosquete)",
+      "original_name": "Repeating Musket",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Mosquete. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "Este mosquete ignora Carregamento após a sintonia. A munição criada serve só para aquela jogada à distância.",
+      "price_cp": 90000,
+      "weight_lb": 10,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20musket_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-musket.svg",
+      "audio_path": "/audio/emporium/repeating-musket.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Musket",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Musket",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 10,
+          "dmg1": "1d12",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "LD|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "40/120",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "musket|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 perfurante. Propriedades: munição, duas mãos. Alcance 40/120 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "musket",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Mosquete"
+      }
+    },
+    {
+      "id": "repeating-pistol",
+      "name": "Arma de disparo repetido (Pistola)",
+      "original_name": "Repeating Pistol",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Pistola. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "A pistola de disparo repetido mantém a forma compacta. Seu bônus +1 vale para ataques à distância, não para qualquer uso improvisado.",
+      "price_cp": 65000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20pistol_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-pistol.svg",
+      "audio_path": "/audio/emporium/repeating-pistol.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Pistol",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Pistol",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d10",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "LD|XPHB"
+          ],
+          "range": "30/90",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "pistol|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d10 perfurante. Propriedades: munição. Alcance 30/90 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "pistol",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Pistola"
+      }
+    },
+    {
+      "id": "repeating-shortbow",
+      "name": "Arma de disparo repetido (Arco curto)",
+      "original_name": "Repeating Shortbow",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Arco curto. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "O arco curto de disparo repetido ajuda quando faltam flechas. Não guarde a munição criada: ela desaparece depois da jogada.",
+      "price_cp": 42500,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20shortbow_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-shortbow.svg",
+      "audio_path": "/audio/emporium/repeating-shortbow.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Shortbow",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Shortbow",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d6",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "80/320",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "shortbow|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, duas mãos. Alcance 80/320 pés. Usa flechas compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "wood",
+        "attunement": true,
+        "base_item": "shortbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Arco curto"
+      }
+    },
+    {
+      "id": "repeating-sling",
+      "name": "Arma de disparo repetido (Funda)",
+      "original_name": "Repeating Sling",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Funda. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+      "merchant_comment": "A funda de disparo repetido pode criar a bala que falta. O encanto exige sintonia e não aumenta o alcance das tiras.",
+      "price_cp": 40010,
+      "weight_lb": 0.1,
+      "weight_estimated": true,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#repeating%20sling_efa",
+      "image_path": "/shop/magic-completion-20261009/repeating-sling.svg",
+      "audio_path": "/audio/emporium/repeating-sling.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Repeating Sling",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Repeating Sling",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "dmg1": "1d4",
+          "dmgType": "B",
+          "property": [
+            "A|XPHB"
+          ],
+          "range": "30/120",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "bonusWeapon": "+1",
+          "baseItem": "sling|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: munição. Alcance 30/120 pés. Usa balas de funda compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "leather",
+        "attunement": true,
+        "base_item": "sling",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Repeating Shot",
+        "variant": "Funda"
+      }
+    },
+    {
+      "id": "returning-dagger",
+      "name": "Arma de retorno (Adaga)",
+      "original_name": "Returning Dagger",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Adaga. Arma +1 que volta à mão após a jogada de ataque à distância.",
+      "merchant_comment": "Esta adaga de retorno volta depois da jogada à distância, acerte ou erre. No corpo a corpo, conserva seu bônus +1.",
+      "price_cp": 40200,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#returning%20dagger_efa",
+      "image_path": "/shop/magic-completion-20261009/returning-dagger.svg",
+      "audio_path": "/audio/emporium/returning-dagger.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Returning Dagger",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Returning Dagger",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 1,
+          "dmg1": "1d4",
+          "dmgType": "P",
+          "property": [
+            "F|XPHB",
+            "L|XPHB",
+            "T|XPHB"
+          ],
+          "range": "20/60",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "bonusWeapon": "+1",
+          "baseItem": "dagger|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, leve, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "dagger",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Returning Weapon",
+        "variant": "Adaga"
+      }
+    },
+    {
+      "id": "returning-dart",
+      "name": "Arma de retorno (Dardo)",
+      "original_name": "Returning Dart",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Dardo. Arma +1 que volta à mão após a jogada de ataque à distância.",
+      "merchant_comment": "O dardo de retorno é pequeno demais para deixar perdido no mapa. O encanto traz a própria arma à mão após o ataque à distância.",
+      "price_cp": 40005,
+      "weight_lb": 0.25,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#returning%20dart_efa",
+      "image_path": "/shop/magic-completion-20261009/returning-dart.svg",
+      "audio_path": "/audio/emporium/returning-dart.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Returning Dart",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Returning Dart",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 0.25,
+          "dmg1": "1d4",
+          "dmgType": "P",
+          "property": [
+            "F|XPHB",
+            "T|XPHB"
+          ],
+          "range": "20/60",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "bonusWeapon": "+1",
+          "baseItem": "dart|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "dart",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Returning Weapon",
+        "variant": "Dardo"
+      }
+    },
+    {
+      "id": "returning-handaxe",
+      "name": "Arma de retorno (Machadinha)",
+      "original_name": "Returning Handaxe",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Machadinha. Arma +1 que volta à mão após a jogada de ataque à distância.",
+      "merchant_comment": "A machadinha de retorno conserva o alcance do arremesso. A volta imediata não autoriza lançar mais longe.",
+      "price_cp": 40500,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#returning%20handaxe_efa",
+      "image_path": "/shop/magic-completion-20261009/returning-handaxe.svg",
+      "audio_path": "/audio/emporium/returning-handaxe.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Returning Handaxe",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Returning Handaxe",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d6",
+          "dmgType": "S",
+          "property": [
+            "L|XPHB",
+            "T|XPHB"
+          ],
+          "range": "20/60",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "bonusWeapon": "+1",
+          "baseItem": "handaxe|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de uma mão. Dano básico 1d6 cortante. Propriedades: leve, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "handaxe",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Returning Weapon",
+        "variant": "Machadinha"
+      }
+    },
+    {
+      "id": "returning-javelin",
+      "name": "Arma de retorno (Azagaia)",
+      "original_name": "Returning Javelin",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Azagaia. Arma +1 que volta à mão após a jogada de ataque à distância.",
+      "merchant_comment": "A azagaia de retorno tem cabo longo e uma volta rápida. Faça a jogada à distância; o resultado não condiciona o retorno.",
+      "price_cp": 40050,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#returning%20javelin_efa",
+      "image_path": "/shop/magic-completion-20261009/returning-javelin.svg",
+      "audio_path": "/audio/emporium/returning-javelin.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Returning Javelin",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Returning Javelin",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d6",
+          "dmgType": "P",
+          "property": [
+            "T|XPHB"
+          ],
+          "range": "30/120",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "bonusWeapon": "+1",
+          "baseItem": "javelin|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso. Alcance 30/120 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "javelin",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Returning Weapon",
+        "variant": "Azagaia"
+      }
+    },
+    {
+      "id": "returning-light-hammer",
+      "name": "Arma de retorno (Martelo leve)",
+      "original_name": "Returning Light Hammer",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Martelo leve. Arma +1 que volta à mão após a jogada de ataque à distância.",
+      "merchant_comment": "O martelo leve de retorno cabe bem na mão. Seu encanto não precisa de sintonia para trazer a peça após o arremesso.",
+      "price_cp": 40200,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#returning%20light%20hammer_efa",
+      "image_path": "/shop/magic-completion-20261009/returning-light-hammer.svg",
+      "audio_path": "/audio/emporium/returning-light-hammer.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Returning Light Hammer",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Returning Light Hammer",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d4",
+          "dmgType": "B",
+          "property": [
+            "L|XPHB",
+            "T|XPHB"
+          ],
+          "range": "20/60",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "bonusWeapon": "+1",
+          "baseItem": "light hammer|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "light-hammer",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Returning Weapon",
+        "variant": "Martelo leve"
+      }
+    },
+    {
+      "id": "returning-spear",
+      "name": "Arma de retorno (Lança)",
+      "original_name": "Returning Spear",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Lança. Arma +1 que volta à mão após a jogada de ataque à distância.",
+      "merchant_comment": "A lança de retorno mantém o dano versátil no corpo a corpo. É a jogada de ataque à distância que ativa a volta à mão.",
+      "price_cp": 40100,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#returning%20spear_efa",
+      "image_path": "/shop/magic-completion-20261009/returning-spear.svg",
+      "audio_path": "/audio/emporium/returning-spear.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Returning Spear",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Returning Spear",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d6",
+          "dmg2": "1d8",
+          "dmgType": "P",
+          "property": [
+            "T|XPHB",
+            "V|XPHB"
+          ],
+          "range": "20/60",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "bonusWeapon": "+1",
+          "baseItem": "spear|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d8 perfurante. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "spear",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Returning Weapon",
+        "variant": "Lança"
+      }
+    },
+    {
+      "id": "returning-trident",
+      "name": "Arma de retorno (Tridente)",
+      "original_name": "Returning Trident",
+      "category": "Mágicos incomuns",
+      "description": "Forma: Tridente. Arma +1 que volta à mão após a jogada de ataque à distância.",
+      "merchant_comment": "O tridente de retorno traz as três pontas numa peça só. O encanto devolve a arma, sem alterar seu alcance de arremesso.",
+      "price_cp": 40500,
+      "weight_lb": 4,
+      "weight_estimated": false,
+      "source": "D&D · Eberron: Forge of the Artificer",
+      "source_url": "https://5e.tools/items.html#returning%20trident_efa",
+      "image_path": "/shop/magic-completion-20261009/returning-trident.svg",
+      "audio_path": "/audio/emporium/returning-trident.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Returning Trident",
+        "upstream_source": "EFA",
+        "upstream_page": 112,
+        "upstream_facts": {
+          "name": "Returning Trident",
+          "source": "EFA",
+          "page": 112,
+          "rarity": "uncommon",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 4,
+          "dmg1": "1d8",
+          "dmg2": "1d10",
+          "dmgType": "P",
+          "property": [
+            "T|XPHB",
+            "V|XPHB"
+          ],
+          "range": "20/60",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "bonusWeapon": "+1",
+          "baseItem": "trident|xphb"
+        },
+        "source_book": "Eberron: Forge of the Artificer",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Uncommon",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "trident",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Returning Weapon",
+        "variant": "Tridente"
+      }
+    },
+    {
       "id": "ruidium-antimatter-rifle",
       "name": "Arma de ruidium (Rifle de antimatéria)",
       "original_name": "Ruidium Antimatter Rifle",
@@ -35183,6 +36153,2842 @@
         "magic_kind": "weapon",
         "magic_family": "Weapon of Certain Death",
         "variant": "Yklwa"
+      }
+    },
+    {
+      "id": "antimatter-rifle-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Rifle de antimatéria)",
+      "original_name": "Antimatter Rifle of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Rifle de antimatéria. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "Este rifle recebeu filigrana e joias do Comando do Trono. O dano necrótico permanece o do modelo; as magias usam cargas separadas.",
+      "price_cp": 8000000,
+      "weight_lb": 10,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#antimatter%20rifle%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/antimatter-rifle-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/antimatter-rifle-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Antimatter Rifle of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Antimatter Rifle of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 10,
+          "dmg1": "6d8",
+          "dmgType": "N",
+          "property": [
+            "AF|XDMG",
+            "RLD|XDMG",
+            "2H|XPHB"
+          ],
+          "range": "120/360",
+          "age": "futuristic",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "antimatter rifle|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 6d8 necrótico. Propriedades: munição futurística, recarga, duas mãos. Alcance 120/360 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa célula de energia compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "antimatter-rifle",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Rifle de antimatéria",
+        "base_price_cp": 4000000
+      }
+    },
+    {
+      "id": "automatic-rifle-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Rifle automático)",
+      "original_name": "Automatic Rifle of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Rifle automático. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O rifle automático do trono mantém munição e recarga. O comando mágico é uma ação bônus, não um disparo nem uma rajada.",
+      "price_cp": 4400000,
+      "weight_lb": 8,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#automatic%20rifle%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/automatic-rifle-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/automatic-rifle-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Automatic Rifle of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Automatic Rifle of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 8,
+          "dmg1": "2d8",
+          "dmgType": "P",
+          "property": [
+            "AF|XDMG",
+            "BF|XDMG",
+            "RLD|XDMG",
+            "2H|XPHB"
+          ],
+          "range": "80/240",
+          "age": "modern",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "automatic rifle|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, rajada, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Criaturas na área fazem resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Essa rajada usa resistência, sem uma jogada de ataque. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "automatic-rifle",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Rifle automático",
+        "base_price_cp": 400000
+      }
+    },
+    {
+      "id": "battleaxe-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Machado de batalha)",
+      "original_name": "Battleaxe of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Machado de batalha. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O machado de batalha do trono cabe numa corte ou numa campanha. As joias ajudam a reconhecer o encanto; a proficiência não é especialização.",
+      "price_cp": 4001000,
+      "weight_lb": 4,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#battleaxe%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/battleaxe-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/battleaxe-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Battleaxe of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Battleaxe of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 4,
+          "dmg1": "1d8",
+          "dmg2": "1d10",
+          "dmgType": "S",
+          "property": [
+            "V|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "battleaxe|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "battleaxe",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Machado de batalha"
+      }
+    },
+    {
+      "id": "blowgun-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Zarabatana)",
+      "original_name": "Blowgun of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Zarabatana. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A zarabatana do trono é estreita, mas suas cinco cargas são as mesmas. O formato pequeno não barateia uma magia.",
+      "price_cp": 4001000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#blowgun%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/blowgun-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/blowgun-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Blowgun of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Blowgun of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 1,
+          "dmg1": "1",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "LD|XPHB"
+          ],
+          "range": "25/100",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "blowgun|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1 perfurante. Propriedades: munição, carregamento. Alcance 25/100 pés. Usa agulhas de zarabatana compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "wood",
+        "attunement": true,
+        "base_item": "blowgun",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Zarabatana"
+      }
+    },
+    {
+      "id": "double-bladed-scimitar-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Cimitarra de duas lâminas)",
+      "original_name": "Double-Bladed Scimitar of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Cimitarra de duas lâminas. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "Esta cimitarra dupla tem ornamentos entre as duas lâminas. Lembre que o ataque adicional e conjurar pela arma disputam a ação bônus.",
+      "price_cp": 4010000,
+      "weight_lb": 6,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#double-bladed%20scimitar%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/double-bladed-scimitar-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/double-bladed-scimitar-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Double-Bladed Scimitar of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Double-Bladed Scimitar of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M",
+          "weapon": true,
+          "weight": 6,
+          "dmg1": "2d4",
+          "dmgType": "S",
+          "property": [
+            "S",
+            "2H"
+          ],
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "double-bladed scimitar|erlw"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Depois de atacar com ela na ação Atacar do seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com a arma, cujo dano básico é 1d4 cortante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "double-bladed-scimitar",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Cimitarra de duas lâminas"
+      }
+    },
+    {
+      "id": "flail-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Mangual)",
+      "original_name": "Flail of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Mangual. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O mangual do trono guarda joias nos elos firmes. Intimidação vem com a sintonia, sem tornar toda conversa uma ordem irresistível.",
+      "price_cp": 4001000,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#flail%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/flail-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/flail-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Flail of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Flail of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d8",
+          "dmgType": "B",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "flail|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "flail",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Mangual"
+      }
+    },
+    {
+      "id": "glaive-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Glaive)",
+      "original_name": "Glaive of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Glaive. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A glaive do trono conserva uma haste longa e duas mãos. O alcance da arma não aumenta o alcance de suas magias.",
+      "price_cp": 4002000,
+      "weight_lb": 6,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#glaive%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/glaive-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/glaive-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Glaive of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Glaive of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 6,
+          "dmg1": "1d10",
+          "dmgType": "S",
+          "property": [
+            "H|XPHB",
+            "R|XPHB",
+            "2H|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "glaive|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "glaive",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Glaive"
+      }
+    },
+    {
+      "id": "greataxe-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Machado grande)",
+      "original_name": "Greataxe of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Machado grande. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O machado grande do trono é uma peça imponente. Sua força para manejá-lo e a CD 16 das magias são coisas distintas.",
+      "price_cp": 4003000,
+      "weight_lb": 7,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#greataxe%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/greataxe-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/greataxe-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Greataxe of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Greataxe of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 7,
+          "dmg1": "1d12",
+          "dmgType": "S",
+          "property": [
+            "H|XPHB",
+            "2H|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "greataxe|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "greataxe",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Machado grande"
+      }
+    },
+    {
+      "id": "greatsword-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Espada grande)",
+      "original_name": "Greatsword of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Espada grande. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A espada grande do trono merece uma bainha reforçada. Conte as cargas antes de escolher uma das magias mais caras.",
+      "price_cp": 4005000,
+      "weight_lb": 6,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#greatsword%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/greatsword-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/greatsword-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Greatsword of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Greatsword of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 6,
+          "dmg1": "2d6",
+          "dmgType": "S",
+          "property": [
+            "H|XPHB",
+            "2H|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "greatsword|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "greatsword",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Espada grande"
+      }
+    },
+    {
+      "id": "halberd-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Alabarda)",
+      "original_name": "Halberd of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Alabarda. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A alabarda do trono mantém ponta, lâmina e alcance. Sua ornamentação não concede ataques extras.",
+      "price_cp": 4002000,
+      "weight_lb": 6,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#halberd%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/halberd-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/halberd-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Halberd of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Halberd of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 6,
+          "dmg1": "1d10",
+          "dmgType": "S",
+          "property": [
+            "H|XPHB",
+            "R|XPHB",
+            "2H|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "halberd|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "halberd",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Alabarda"
+      }
+    },
+    {
+      "id": "hand-crossbow-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Besta de mão)",
+      "original_name": "Hand Crossbow of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Besta de mão. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A besta de mão do trono continua pedindo virotes e carregamento. São as magias sociais que usam a reserva de cinco cargas.",
+      "price_cp": 4007500,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#hand%20crossbow%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/hand-crossbow-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/hand-crossbow-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Hand Crossbow of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Hand Crossbow of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d6",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "L|XPHB",
+            "LD|XPHB"
+          ],
+          "range": "30/120",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "hand crossbow|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: munição, leve, carregamento. Alcance 30/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "hand-crossbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Besta de mão"
+      }
+    },
+    {
+      "id": "heavy-crossbow-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Besta pesada)",
+      "original_name": "Heavy Crossbow of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Besta pesada. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A besta pesada do trono ocupa as duas mãos. As joias não reabastecem munição nem recuperam cargas antes do amanhecer.",
+      "price_cp": 4005000,
+      "weight_lb": 18,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#heavy%20crossbow%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/heavy-crossbow-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/heavy-crossbow-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Heavy Crossbow of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Heavy Crossbow of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 18,
+          "dmg1": "1d10",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "H|XPHB",
+            "LD|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "100/400",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "heavy crossbow|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: munição, pesada, carregamento, duas mãos. Alcance 100/400 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "heavy-crossbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Besta pesada"
+      }
+    },
+    {
+      "id": "hooked-shortspear-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Lança curta com gancho)",
+      "original_name": "Hooked Shortspear of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Lança curta com gancho. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O gancho desta lança curta é do modelo físico. O Comando do Trono acrescenta outro conjunto de poderes, com ação bônus e cargas.",
+      "price_cp": 4000000,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#hooked%20shortspear%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/hooked-shortspear-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/hooked-shortspear-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Hooked Shortspear of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Hooked Shortspear of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d4",
+          "dmgType": "P",
+          "property": [
+            "L"
+          ],
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "hooked shortspear|oota"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 perfurante. Propriedades: leve. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência; falhar deixa-o caído. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "hooked-shortspear",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Lança curta com gancho"
+      }
+    },
+    {
+      "id": "hoopak-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Hoopak)",
+      "original_name": "Hoopak of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Hoopak. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O hoopak do trono conserva ponta e funda. Seu dano depende do modo usado, enquanto as magias seguem a mesma CD.",
+      "price_cp": 4000010,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#hoopak%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/hoopak-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/hoopak-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Hoopak of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Hoopak of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d6",
+          "dmgType": "P",
+          "property": [
+            "A",
+            "F",
+            "S",
+            "2H"
+          ],
+          "range": "40/160",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "hoopak|dsotdq"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, acuidade, duas mãos. Alcance 40/160 pés. Usa balas de funda compatível. A ponta funciona no corpo a corpo com 1d6 perfurante, sem munição. O uso à distância emprega balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "wood",
+        "attunement": true,
+        "base_item": "hoopak",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Hoopak"
+      }
+    },
+    {
+      "id": "hunting-rifle-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Rifle de caça)",
+      "original_name": "Hunting Rifle of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Rifle de caça. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O rifle de caça do trono conserva cinco disparos por recarga. Não confunda esse número com as cinco cargas do encanto.",
+      "price_cp": 4400000,
+      "weight_lb": 8,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#hunting%20rifle%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/hunting-rifle-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/hunting-rifle-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Hunting Rifle of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Hunting Rifle of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 8,
+          "dmg1": "2d10",
+          "dmgType": "P",
+          "property": [
+            "AF|XDMG",
+            "RLD|XDMG",
+            "2H|XPHB"
+          ],
+          "range": "80/240",
+          "age": "modern",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "hunting rifle|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 2d10 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 5 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "hunting-rifle",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Rifle de caça",
+        "base_price_cp": 400000
+      }
+    },
+    {
+      "id": "lance-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Lança de cavalaria)",
+      "original_name": "Lance of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Lança de cavalaria. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A lança de cavalaria do trono mantém o manejo montado. As magias continuam exigindo suas cargas mesmo quando você usa uma mão.",
+      "price_cp": 4001000,
+      "weight_lb": 6,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#lance%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/lance-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/lance-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Lance of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Lance of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 6,
+          "dmg1": "1d10",
+          "dmgType": "P",
+          "property": [
+            "H|XPHB",
+            "R|XPHB",
+            {
+              "uid": "2H|XPHB",
+              "note": "unless mounted"
+            }
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "lance|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos quando não estiver montado. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Montado, pode manejá-la com uma mão. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "lance",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Lança de cavalaria"
+      }
+    },
+    {
+      "id": "laser-pistol-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Pistola laser)",
+      "original_name": "Laser Pistol of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Pistola laser. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A pistola laser do trono conserva sua célula de energia. O amanhecer recupera cargas de magia, não a bateria do disparo.",
+      "price_cp": 8000000,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#laser%20pistol%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/laser-pistol-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/laser-pistol-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Laser Pistol of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Laser Pistol of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "3d6",
+          "dmgType": "R",
+          "property": [
+            "AF|XDMG",
+            "RLD|XDMG"
+          ],
+          "range": "40/120",
+          "age": "futuristic",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "laser pistol|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 3d6 radiante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 50 disparos. Usa célula de energia compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "laser-pistol",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Pistola laser",
+        "base_price_cp": 4000000
+      }
+    },
+    {
+      "id": "laser-rifle-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Rifle laser)",
+      "original_name": "Laser Rifle of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Rifle laser. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O rifle laser tem ouro e pedras do Comando do Trono. Ele ainda ocupa duas mãos e usa uma célula compatível.",
+      "price_cp": 8000000,
+      "weight_lb": 7,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#laser%20rifle%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/laser-rifle-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/laser-rifle-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Laser Rifle of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Laser Rifle of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 7,
+          "dmg1": "3d8",
+          "dmgType": "R",
+          "property": [
+            "AF|XDMG",
+            "RLD|XDMG",
+            "2H|XPHB"
+          ],
+          "range": "100/300",
+          "age": "futuristic",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "laser rifle|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 3d8 radiante. Propriedades: munição futurística, recarga, duas mãos. Alcance 100/300 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa célula de energia compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "laser-rifle",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Rifle laser",
+        "base_price_cp": 4000000
+      }
+    },
+    {
+      "id": "longbow-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Arco longo)",
+      "original_name": "Longbow of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Arco longo. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O arco longo do trono tem ornamentação de corte. Suas magias não substituem flechas nem removem a exigência de Destreza.",
+      "price_cp": 4005000,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#longbow%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/longbow-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/longbow-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Longbow of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Longbow of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d8",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "H|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "150/600",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "longbow|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 150/600 pés. Usa flechas compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "wood",
+        "attunement": true,
+        "base_item": "longbow",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Arco longo"
+      }
+    },
+    {
+      "id": "longsword-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Espada longa)",
+      "original_name": "Longsword of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Espada longa. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A espada longa do trono serve com uma ou duas mãos. Para conversar, a sintonia concede Persuasão a quem ainda não a tem.",
+      "price_cp": 4001500,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#longsword%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/longsword-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/longsword-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Longsword of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Longsword of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d8",
+          "dmg2": "1d10",
+          "dmgType": "S",
+          "property": [
+            "V|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "longsword|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "longsword",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Espada longa"
+      }
+    },
+    {
+      "id": "maul-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Malho)",
+      "original_name": "Maul of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Malho. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O malho do trono é pesado apesar das joias delicadas. Não deixe a imponência esconder a necessidade de acompanhar as cargas.",
+      "price_cp": 4001000,
+      "weight_lb": 10,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#maul%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/maul-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/maul-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Maul of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Maul of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 10,
+          "dmg1": "2d6",
+          "dmgType": "B",
+          "property": [
+            "H|XPHB",
+            "2H|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "maul|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "maul",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Malho"
+      }
+    },
+    {
+      "id": "morningstar-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Estrela da manhã)",
+      "original_name": "Morningstar of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Estrela da manhã. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A estrela da manhã do trono mistura espinhos e pedras de corte. O encanto concede proficiência, sem dobrar um bônus já existente.",
+      "price_cp": 4001500,
+      "weight_lb": 4,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#morningstar%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/morningstar-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/morningstar-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Morningstar of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Morningstar of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 4,
+          "dmg1": "1d8",
+          "dmgType": "P",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "morningstar|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "morningstar",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Estrela da manhã"
+      }
+    },
+    {
+      "id": "musket-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Mosquete)",
+      "original_name": "Musket of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Mosquete. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O mosquete do trono mantém o carregamento original. Conjurar pela arma usa ação bônus e uma reserva própria de magia.",
+      "price_cp": 4050000,
+      "weight_lb": 10,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#musket%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/musket-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/musket-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Musket of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Musket of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 10,
+          "dmg1": "1d12",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "LD|XPHB",
+            "2H|XPHB"
+          ],
+          "range": "40/120",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "musket|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 perfurante. Propriedades: munição, carregamento, duas mãos. Alcance 40/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "musket",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Mosquete"
+      }
+    },
+    {
+      "id": "pike-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Pique)",
+      "original_name": "Pike of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Pique. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O pique do trono conserva o alcance longo da haste. Banimento e Compulsão custam quatro cargas cada, sem dividir um uso.",
+      "price_cp": 4000500,
+      "weight_lb": 18,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#pike%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/pike-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/pike-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pike of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Pike of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 18,
+          "dmg1": "1d10",
+          "dmgType": "P",
+          "property": [
+            "H|XPHB",
+            "R|XPHB",
+            "2H|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "pike|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "pike",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Pique"
+      }
+    },
+    {
+      "id": "pistol-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Pistola)",
+      "original_name": "Pistol of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Pistola. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A pistola do trono guarda a mesma reserva mágica de uma espada maior. Leve balas e acompanhe as cargas separadamente.",
+      "price_cp": 4025000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#pistol%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/pistol-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/pistol-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pistol of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Pistol of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d10",
+          "dmgType": "P",
+          "property": [
+            "A|XPHB",
+            "LD|XPHB"
+          ],
+          "range": "30/90",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "pistol|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d10 perfurante. Propriedades: munição, carregamento. Alcance 30/90 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "pistol",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Pistola"
+      }
+    },
+    {
+      "id": "rapier-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Rapieira)",
+      "original_name": "Rapier of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Rapieira. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A rapieira do trono tem fio estreito e joias discretas. Sua acuidade não muda a CD 16 das magias do encanto.",
+      "price_cp": 4002500,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#rapier%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/rapier-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/rapier-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Rapier of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Rapier of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d8",
+          "dmgType": "P",
+          "property": [
+            "F|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "rapier|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "rapier",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Rapieira"
+      }
+    },
+    {
+      "id": "revolver-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Revólver)",
+      "original_name": "Revolver of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Revólver. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O revólver do trono tem seis disparos no tambor e cinco cargas mágicas. Vale manter essas duas contagens separadas.",
+      "price_cp": 4400000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#revolver%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/revolver-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/revolver-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Revolver of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Revolver of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "2d8",
+          "dmgType": "P",
+          "property": [
+            "AF|XDMG",
+            "RLD|XDMG"
+          ],
+          "range": "40/120",
+          "age": "modern",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "revolver|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 6 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "revolver",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Revólver",
+        "base_price_cp": 400000
+      }
+    },
+    {
+      "id": "scimitar-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Cimitarra)",
+      "original_name": "Scimitar of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Cimitarra. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A cimitarra do trono conserva sua curva leve. Uma única magia Dominar Pessoa gasta as cinco cargas disponíveis.",
+      "price_cp": 4002500,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#scimitar%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/scimitar-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/scimitar-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Scimitar of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Scimitar of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d6",
+          "dmgType": "S",
+          "property": [
+            "F|XPHB",
+            "L|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "scimitar|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "scimitar",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Cimitarra"
+      }
+    },
+    {
+      "id": "semiautomatic-pistol-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Pistola semiautomática)",
+      "original_name": "Semiautomatic Pistol of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Pistola semiautomática. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A semiautomática do trono comporta quinze disparos. Sua reserva de magia é menor e recupera só 1d4 cargas ao amanhecer.",
+      "price_cp": 4400000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#semiautomatic%20pistol%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/semiautomatic-pistol-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/semiautomatic-pistol-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Semiautomatic Pistol of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Semiautomatic Pistol of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "2d6",
+          "dmgType": "P",
+          "property": [
+            "AF|XDMG",
+            "RLD|XDMG"
+          ],
+          "range": "50/150",
+          "age": "modern",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "semiautomatic pistol|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 2d6 perfurante. Propriedades: munição futurística, recarga. Alcance 50/150 pés. Recarrega com uma ação ou ação bônus após 15 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "semiautomatic-pistol",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Pistola semiautomática",
+        "base_price_cp": 400000
+      }
+    },
+    {
+      "id": "shortsword-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Espada curta)",
+      "original_name": "Shortsword of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Espada curta. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A espada curta do trono cabe no cinto sem esconder a ornamentação. Comando custa uma carga, mas continua seguindo as regras da magia.",
+      "price_cp": 4001000,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#shortsword%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/shortsword-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/shortsword-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Shortsword of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Shortsword of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d6",
+          "dmgType": "P",
+          "property": [
+            "F|XPHB",
+            "L|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "shortsword|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "shortsword",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Espada curta"
+      }
+    },
+    {
+      "id": "shotgun-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Espingarda)",
+      "original_name": "Shotgun of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Espingarda. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A espingarda do trono mantém dois disparos por recarga. Zona da Verdade custa duas cargas; o número igual não liga as duas reservas.",
+      "price_cp": 4400000,
+      "weight_lb": 7,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#shotgun%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/shotgun-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/shotgun-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Shotgun of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Shotgun of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "R|XPHB",
+          "weapon": true,
+          "weight": 7,
+          "dmg1": "2d8",
+          "dmgType": "P",
+          "property": [
+            "AF|XDMG",
+            "RLD|XDMG",
+            "2H|XPHB"
+          ],
+          "range": "30/90",
+          "age": "modern",
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "shotgun|xdmg"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 30/90 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand"
+        ],
+        "two_handed": true,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "shotgun",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Espingarda",
+        "base_price_cp": 400000
+      }
+    },
+    {
+      "id": "trident-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Tridente)",
+      "original_name": "Trident of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Tridente. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "As três pontas deste tridente são uma só arma do trono. O bônus +1 não é contado três vezes.",
+      "price_cp": 4000500,
+      "weight_lb": 4,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#trident%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/trident-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/trident-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Trident of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Trident of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 4,
+          "dmg1": "1d8",
+          "dmg2": "1d10",
+          "dmgType": "P",
+          "property": [
+            "T|XPHB",
+            "V|XPHB"
+          ],
+          "range": "20/60",
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "trident|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "trident",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Tridente"
+      }
+    },
+    {
+      "id": "war-pick-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Picareta de guerra)",
+      "original_name": "War Pick of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Picareta de guerra. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "A picareta de guerra do trono tem joias perto da cabeça. Use a peça para atacar e a regra própria para conjurar, sem misturar as ações.",
+      "price_cp": 4000500,
+      "weight_lb": 2,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#war%20pick%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/war-pick-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/war-pick-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "War Pick of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "War Pick of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 2,
+          "dmg1": "1d8",
+          "dmg2": "1d10",
+          "dmgType": "P",
+          "property": [
+            "V|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "war pick|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "war-pick",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Picareta de guerra"
+      }
+    },
+    {
+      "id": "warhammer-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Martelo de guerra)",
+      "original_name": "Warhammer of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Martelo de guerra. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O martelo de guerra do trono conserva o manejo versátil. A proficiência social e as magias chegam depois da sintonia.",
+      "price_cp": 4001500,
+      "weight_lb": 5,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#warhammer%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/warhammer-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/warhammer-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Warhammer of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Warhammer of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 5,
+          "dmg1": "1d8",
+          "dmg2": "1d10",
+          "dmgType": "B",
+          "property": [
+            "V|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "warhammer|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 contundente. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "warhammer",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Martelo de guerra"
+      }
+    },
+    {
+      "id": "whip-of-throne-s-command",
+      "name": "Arma do Comando do Trono (Chicote)",
+      "original_name": "Whip of Throne's Command",
+      "category": "Mágicos muito raros",
+      "description": "Forma: Chicote. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+      "merchant_comment": "O chicote do trono permanece flexível. Dominar Pessoa ainda exige as regras da magia, além das cinco cargas da arma.",
+      "price_cp": 4000200,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · The Book of Many Things",
+      "source_url": "https://5e.tools/items.html#whip%20of%20throne's%20command_bmt",
+      "image_path": "/shop/magic-completion-20261009/whip-of-throne-s-command.svg",
+      "audio_path": "/audio/emporium/whip-of-throne-s-command.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Whip of Throne's Command",
+        "upstream_source": "BMT",
+        "upstream_page": 39,
+        "upstream_facts": {
+          "name": "Whip of Throne's Command",
+          "source": "BMT",
+          "page": 39,
+          "rarity": "very rare",
+          "type": "M|XPHB",
+          "weapon": true,
+          "weight": 3,
+          "dmg1": "1d4",
+          "dmgType": "S",
+          "property": [
+            "F|XPHB",
+            "R|XPHB"
+          ],
+          "srd52": true,
+          "basicRules2024": true,
+          "edition": "one",
+          "reqAttune": true,
+          "charges": 5,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d4}",
+          "bonusWeapon": "+1",
+          "attachedSpells": {
+            "charges": {
+              "1": [
+                "command"
+              ],
+              "2": [
+                "zone of truth"
+              ],
+              "4": [
+                "banishment",
+                "compulsion"
+              ],
+              "5": [
+                "dominate person"
+              ]
+            }
+          },
+          "grantsProficiency": true,
+          "baseItem": "whip|xphb"
+        },
+        "source_book": "The Book of Many Things",
+        "source_edition": "D&D 5e (2014); modelo físico de 2024",
+        "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Very Rare",
+        "sound_material": "metal",
+        "attunement": true,
+        "base_item": "whip",
+        "magic_kind": "weapon",
+        "enhancement": 1,
+        "magic_family": "Weapon of Throne's Command",
+        "variant": "Chicote"
       }
     },
     {

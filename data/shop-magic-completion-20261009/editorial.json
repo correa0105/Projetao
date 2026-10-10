@@ -10054,5 +10054,910 @@
     "magic_kind": "weapon",
     "source_edition": "D&D 5e (2014)",
     "review": "approved"
+  },
+  "repeating-blowgun": {
+    "name": "Arma de disparo repetido (Zarabatana)",
+    "description": "Forma: Zarabatana. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "A zarabatana de disparo repetido cria uma agulha quando está sem munição. A peça mágica some depois da jogada e não serve como estoque.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1 perfurante. Propriedades: munição. Alcance 25/100 pés. Usa agulhas de zarabatana compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Repeating Shot",
+    "base_id": "blowgun",
+    "model_name": "Zarabatana",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-hand-crossbow": {
+    "name": "Arma de disparo repetido (Besta de mão)",
+    "description": "Forma: Besta de mão. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "Esta besta de mão ignora carregamento e cria virote quando falta. A sintonia não concede uma ação Atacar adicional.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: munição, leve. Alcance 30/120 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Repeating Shot",
+    "base_id": "hand-crossbow",
+    "model_name": "Besta de mão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-heavy-crossbow": {
+    "name": "Arma de disparo repetido (Besta pesada)",
+    "description": "Forma: Besta pesada. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "A besta pesada de disparo repetido deixa de limitar o tiro pelo carregamento. Ainda exige duas mãos e os ataques que você realmente possui.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 100/400 pés. Usa balas de arma de fogo compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Repeating Shot",
+    "base_id": "heavy-crossbow",
+    "model_name": "Besta pesada",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-light-crossbow": {
+    "name": "Arma de disparo repetido (Besta leve)",
+    "description": "Forma: Besta leve. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "A besta leve de disparo repetido pode criar o virote da jogada. Ele desaparece depois de acertar ou errar, sem ficar no chão para recolher.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, duas mãos. Alcance 80/320 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Repeating Shot",
+    "base_id": "light-crossbow",
+    "model_name": "Besta leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-longbow": {
+    "name": "Arma de disparo repetido (Arco longo)",
+    "description": "Forma: Arco longo. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "O arco longo de disparo repetido cria flecha quando está sem munição. Seu alcance e a exigência de Destreza continuam os do modelo.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 150/600 pés. Usa flechas compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Repeating Shot",
+    "base_id": "longbow",
+    "model_name": "Arco longo",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-musket": {
+    "name": "Arma de disparo repetido (Mosquete)",
+    "description": "Forma: Mosquete. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "Este mosquete ignora Carregamento após a sintonia. A munição criada serve só para aquela jogada à distância.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 perfurante. Propriedades: munição, duas mãos. Alcance 40/120 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Repeating Shot",
+    "base_id": "musket",
+    "model_name": "Mosquete",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-pistol": {
+    "name": "Arma de disparo repetido (Pistola)",
+    "description": "Forma: Pistola. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "A pistola de disparo repetido mantém a forma compacta. Seu bônus +1 vale para ataques à distância, não para qualquer uso improvisado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d10 perfurante. Propriedades: munição. Alcance 30/90 pés. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Repeating Shot",
+    "base_id": "pistol",
+    "model_name": "Pistola",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-shortbow": {
+    "name": "Arma de disparo repetido (Arco curto)",
+    "description": "Forma: Arco curto. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "O arco curto de disparo repetido ajuda quando faltam flechas. Não guarde a munição criada: ela desaparece depois da jogada.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, duas mãos. Alcance 80/320 pés. Usa flechas compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Repeating Shot",
+    "base_id": "shortbow",
+    "model_name": "Arco curto",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "repeating-sling": {
+    "name": "Arma de disparo repetido (Funda)",
+    "description": "Forma: Funda. Ataques à distância +1; ignora carregamento e produz munição quando falta. Requer sintonia.",
+    "merchant_comment": "A funda de disparo repetido pode criar a bala que falta. O encanto exige sintonia e não aumenta o alcance das tiras.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: munição. Alcance 30/120 pés. Usa balas de funda compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma quando é usada para um ataque à distância. Ignora a propriedade Carregamento, se o modelo a tiver. Quando está sem munição, cria automaticamente uma peça de munição mágica ao fazer uma jogada de ataque à distância com ela; essa munição desaparece imediatamente depois de acertar ou errar o alvo. A munição criada não pode ser armazenada ou vendida. O encanto não concede ataques adicionais além dos permitidos pela ação nem ignora a exigência de duas mãos do modelo. A criação de munição descrita precisa ser aplicada na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "leather",
+    "family": "Repeating Shot",
+    "base_id": "sling",
+    "model_name": "Funda",
+    "magic_kind": "weapon",
+    "estimated_weight_lb": 0.1,
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "returning-dagger": {
+    "name": "Arma de retorno (Adaga)",
+    "description": "Forma: Adaga. Arma +1 que volta à mão após a jogada de ataque à distância.",
+    "merchant_comment": "Esta adaga de retorno volta depois da jogada à distância, acerte ou erre. No corpo a corpo, conserva seu bônus +1.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, leve, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Returning Weapon",
+    "base_id": "dagger",
+    "model_name": "Adaga",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "returning-dart": {
+    "name": "Arma de retorno (Dardo)",
+    "description": "Forma: Dardo. Arma +1 que volta à mão após a jogada de ataque à distância.",
+    "merchant_comment": "O dardo de retorno é pequeno demais para deixar perdido no mapa. O encanto traz a própria arma à mão após o ataque à distância.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Returning Weapon",
+    "base_id": "dart",
+    "model_name": "Dardo",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "returning-handaxe": {
+    "name": "Arma de retorno (Machadinha)",
+    "description": "Forma: Machadinha. Arma +1 que volta à mão após a jogada de ataque à distância.",
+    "merchant_comment": "A machadinha de retorno conserva o alcance do arremesso. A volta imediata não autoriza lançar mais longe.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 cortante. Propriedades: leve, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Returning Weapon",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "returning-javelin": {
+    "name": "Arma de retorno (Azagaia)",
+    "description": "Forma: Azagaia. Arma +1 que volta à mão após a jogada de ataque à distância.",
+    "merchant_comment": "A azagaia de retorno tem cabo longo e uma volta rápida. Faça a jogada à distância; o resultado não condiciona o retorno.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso. Alcance 30/120 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Returning Weapon",
+    "base_id": "javelin",
+    "model_name": "Azagaia",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "returning-light-hammer": {
+    "name": "Arma de retorno (Martelo leve)",
+    "description": "Forma: Martelo leve. Arma +1 que volta à mão após a jogada de ataque à distância.",
+    "merchant_comment": "O martelo leve de retorno cabe bem na mão. Seu encanto não precisa de sintonia para trazer a peça após o arremesso.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve, arremesso. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Returning Weapon",
+    "base_id": "light-hammer",
+    "model_name": "Martelo leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "returning-spear": {
+    "name": "Arma de retorno (Lança)",
+    "description": "Forma: Lança. Arma +1 que volta à mão após a jogada de ataque à distância.",
+    "merchant_comment": "A lança de retorno mantém o dano versátil no corpo a corpo. É a jogada de ataque à distância que ativa a volta à mão.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d8 perfurante. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Returning Weapon",
+    "base_id": "spear",
+    "model_name": "Lança",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "returning-trident": {
+    "name": "Arma de retorno (Tridente)",
+    "description": "Forma: Tridente. Arma +1 que volta à mão após a jogada de ataque à distância.",
+    "merchant_comment": "O tridente de retorno traz as três pontas numa peça só. O encanto devolve a arma, sem alterar seu alcance de arremesso.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Ela retorna à sua mão imediatamente depois de você usá-la para fazer uma jogada de ataque à distância, independentemente de acertar ou errar. O retorno não aumenta o alcance do modelo nem se aplica simplesmente a largar a arma. Não exige sintonia. O retorno descrito é uma regra para aplicação na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Returning Weapon",
+    "base_id": "trident",
+    "model_name": "Tridente",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "antimatter-rifle-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Rifle de antimatéria)",
+    "description": "Forma: Rifle de antimatéria. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "Este rifle recebeu filigrana e joias do Comando do Trono. O dano necrótico permanece o do modelo; as magias usam cargas separadas.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 6d8 necrótico. Propriedades: munição futurística, recarga, duas mãos. Alcance 120/360 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa célula de energia compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "antimatter-rifle",
+    "model_name": "Rifle de antimatéria",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "automatic-rifle-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Rifle automático)",
+    "description": "Forma: Rifle automático. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O rifle automático do trono mantém munição e recarga. O comando mágico é uma ação bônus, não um disparo nem uma rajada.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, rajada, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa balas de arma de fogo compatível. Uma ação e dez munições permitem uma rajada num cubo de 10 pés dentro do alcance normal. Criaturas na área fazem resistência de Destreza CD 15; quem falhar recebe o dano da arma, rolado uma só vez para toda a área. Essa rajada usa resistência, sem uma jogada de ataque. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "automatic-rifle",
+    "model_name": "Rifle automático",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "battleaxe-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Machado de batalha)",
+    "description": "Forma: Machado de batalha. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O machado de batalha do trono cabe numa corte ou numa campanha. As joias ajudam a reconhecer o encanto; a proficiência não é especialização.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "battleaxe",
+    "model_name": "Machado de batalha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "blowgun-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Zarabatana)",
+    "description": "Forma: Zarabatana. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A zarabatana do trono é estreita, mas suas cinco cargas são as mesmas. O formato pequeno não barateia uma magia.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1 perfurante. Propriedades: munição, carregamento. Alcance 25/100 pés. Usa agulhas de zarabatana compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Weapon of Throne's Command",
+    "base_id": "blowgun",
+    "model_name": "Zarabatana",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "Esta cimitarra dupla tem ornamentos entre as duas lâminas. Lembre que o ataque adicional e conjurar pela arma disputam a ação bônus.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Depois de atacar com ela na ação Atacar do seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com a arma, cujo dano básico é 1d4 cortante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "flail-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Mangual)",
+    "description": "Forma: Mangual. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O mangual do trono guarda joias nos elos firmes. Intimidação vem com a sintonia, sem tornar toda conversa uma ordem irresistível.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "flail",
+    "model_name": "Mangual",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "glaive-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Glaive)",
+    "description": "Forma: Glaive. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A glaive do trono conserva uma haste longa e duas mãos. O alcance da arma não aumenta o alcance de suas magias.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "glaive",
+    "model_name": "Glaive",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "greataxe-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Machado grande)",
+    "description": "Forma: Machado grande. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O machado grande do trono é uma peça imponente. Sua força para manejá-lo e a CD 16 das magias são coisas distintas.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "greataxe",
+    "model_name": "Machado grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "greatsword-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Espada grande)",
+    "description": "Forma: Espada grande. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A espada grande do trono merece uma bainha reforçada. Conte as cargas antes de escolher uma das magias mais caras.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "halberd-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Alabarda)",
+    "description": "Forma: Alabarda. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A alabarda do trono mantém ponta, lâmina e alcance. Sua ornamentação não concede ataques extras.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "halberd",
+    "model_name": "Alabarda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "hand-crossbow-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Besta de mão)",
+    "description": "Forma: Besta de mão. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A besta de mão do trono continua pedindo virotes e carregamento. São as magias sociais que usam a reserva de cinco cargas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: munição, leve, carregamento. Alcance 30/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "hand-crossbow",
+    "model_name": "Besta de mão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "heavy-crossbow-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Besta pesada)",
+    "description": "Forma: Besta pesada. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A besta pesada do trono ocupa as duas mãos. As joias não reabastecem munição nem recuperam cargas antes do amanhecer.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: munição, pesada, carregamento, duas mãos. Alcance 100/400 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "heavy-crossbow",
+    "model_name": "Besta pesada",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "hooked-shortspear-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O gancho desta lança curta é do modelo físico. O Comando do Trono acrescenta outro conjunto de poderes, com ação bônus e cargas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 perfurante. Propriedades: leve. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência; falhar deixa-o caído. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "hoopak-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Hoopak)",
+    "description": "Forma: Hoopak. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O hoopak do trono conserva ponta e funda. Seu dano depende do modo usado, enquanto as magias seguem a mesma CD.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, acuidade, duas mãos. Alcance 40/160 pés. Usa balas de funda compatível. A ponta funciona no corpo a corpo com 1d6 perfurante, sem munição. O uso à distância emprega balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon of Throne's Command",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "hunting-rifle-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Rifle de caça)",
+    "description": "Forma: Rifle de caça. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O rifle de caça do trono conserva cinco disparos por recarga. Não confunda esse número com as cinco cargas do encanto.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d10 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 80/240 pés. Recarrega com uma ação ou ação bônus após 5 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "hunting-rifle",
+    "model_name": "Rifle de caça",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "lance-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Lança de cavalaria)",
+    "description": "Forma: Lança de cavalaria. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A lança de cavalaria do trono mantém o manejo montado. As magias continuam exigindo suas cargas mesmo quando você usa uma mão.",
+    "rules_summary": "Arma marcial de duas mãos quando não estiver montado. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Montado, pode manejá-la com uma mão. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "lance",
+    "model_name": "Lança de cavalaria",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "laser-pistol-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Pistola laser)",
+    "description": "Forma: Pistola laser. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A pistola laser do trono conserva sua célula de energia. O amanhecer recupera cargas de magia, não a bateria do disparo.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 3d6 radiante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 50 disparos. Usa célula de energia compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "laser-pistol",
+    "model_name": "Pistola laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "laser-rifle-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Rifle laser)",
+    "description": "Forma: Rifle laser. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O rifle laser tem ouro e pedras do Comando do Trono. Ele ainda ocupa duas mãos e usa uma célula compatível.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 3d8 radiante. Propriedades: munição futurística, recarga, duas mãos. Alcance 100/300 pés. Recarrega com uma ação ou ação bônus após 30 disparos. Usa célula de energia compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "laser-rifle",
+    "model_name": "Rifle laser",
+    "magic_kind": "weapon",
+    "base_price_cp": 4000000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "longbow-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Arco longo)",
+    "description": "Forma: Arco longo. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O arco longo do trono tem ornamentação de corte. Suas magias não substituem flechas nem removem a exigência de Destreza.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d8 perfurante. Propriedades: munição, pesada, duas mãos. Alcance 150/600 pés. Usa flechas compatível. Há desvantagem nos ataques sem Destreza de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon of Throne's Command",
+    "base_id": "longbow",
+    "model_name": "Arco longo",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "longsword-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Espada longa)",
+    "description": "Forma: Espada longa. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A espada longa do trono serve com uma ou duas mãos. Para conversar, a sintonia concede Persuasão a quem ainda não a tem.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "maul-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Malho)",
+    "description": "Forma: Malho. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O malho do trono é pesado apesar das joias delicadas. Não deixe a imponência esconder a necessidade de acompanhar as cargas.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "maul",
+    "model_name": "Malho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "morningstar-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Estrela da manhã)",
+    "description": "Forma: Estrela da manhã. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A estrela da manhã do trono mistura espinhos e pedras de corte. O encanto concede proficiência, sem dobrar um bônus já existente.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "morningstar",
+    "model_name": "Estrela da manhã",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "musket-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Mosquete)",
+    "description": "Forma: Mosquete. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O mosquete do trono mantém o carregamento original. Conjurar pela arma usa ação bônus e uma reserva própria de magia.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 perfurante. Propriedades: munição, carregamento, duas mãos. Alcance 40/120 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "musket",
+    "model_name": "Mosquete",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "pike-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Pique)",
+    "description": "Forma: Pique. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O pique do trono conserva o alcance longo da haste. Banimento e Compulsão custam quatro cargas cada, sem dividir um uso.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "pike",
+    "model_name": "Pique",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "pistol-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Pistola)",
+    "description": "Forma: Pistola. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A pistola do trono guarda a mesma reserva mágica de uma espada maior. Leve balas e acompanhe as cargas separadamente.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d10 perfurante. Propriedades: munição, carregamento. Alcance 30/90 pés. Usa balas de arma de fogo compatível. O carregamento permite apenas um disparo ao usar uma ação, ação bônus ou reação, mesmo havendo mais ataques disponíveis. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "pistol",
+    "model_name": "Pistola",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "rapier-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Rapieira)",
+    "description": "Forma: Rapieira. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A rapieira do trono tem fio estreito e joias discretas. Sua acuidade não muda a CD 16 das magias do encanto.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "revolver-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Revólver)",
+    "description": "Forma: Revólver. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O revólver do trono tem seis disparos no tambor e cinco cargas mágicas. Vale manter essas duas contagens separadas.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga. Alcance 40/120 pés. Recarrega com uma ação ou ação bônus após 6 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "revolver",
+    "model_name": "Revólver",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "scimitar-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A cimitarra do trono conserva sua curva leve. Uma única magia Dominar Pessoa gasta as cinco cargas disponíveis.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "semiautomatic-pistol-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Pistola semiautomática)",
+    "description": "Forma: Pistola semiautomática. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A semiautomática do trono comporta quinze disparos. Sua reserva de magia é menor e recupera só 1d4 cargas ao amanhecer.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 2d6 perfurante. Propriedades: munição futurística, recarga. Alcance 50/150 pés. Recarrega com uma ação ou ação bônus após 15 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "semiautomatic-pistol",
+    "model_name": "Pistola semiautomática",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "shortsword-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Espada curta)",
+    "description": "Forma: Espada curta. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A espada curta do trono cabe no cinto sem esconder a ornamentação. Comando custa uma carga, mas continua seguindo as regras da magia.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "shotgun-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Espingarda)",
+    "description": "Forma: Espingarda. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A espingarda do trono mantém dois disparos por recarga. Zona da Verdade custa duas cargas; o número igual não liga as duas reservas.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d8 perfurante. Propriedades: munição futurística, recarga, duas mãos. Alcance 30/90 pés. Recarrega com uma ação ou ação bônus após 2 disparos. Usa balas de arma de fogo compatível. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "shotgun",
+    "model_name": "Espingarda",
+    "magic_kind": "weapon",
+    "base_price_cp": 400000,
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "trident-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Tridente)",
+    "description": "Forma: Tridente. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "As três pontas deste tridente são uma só arma do trono. O bônus +1 não é contado três vezes.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "trident",
+    "model_name": "Tridente",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "war-pick-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Picareta de guerra)",
+    "description": "Forma: Picareta de guerra. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "A picareta de guerra do trono tem joias perto da cabeça. Use a peça para atacar e a regra própria para conjurar, sem misturar as ações.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "war-pick",
+    "model_name": "Picareta de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "warhammer-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Martelo de guerra)",
+    "description": "Forma: Martelo de guerra. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O martelo de guerra do trono conserva o manejo versátil. A proficiência social e as magias chegam depois da sintonia.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 contundente. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "warhammer",
+    "model_name": "Martelo de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "whip-of-throne-s-command": {
+    "name": "Arma do Comando do Trono (Chicote)",
+    "description": "Forma: Chicote. Arma +1; proficiência social e cinco cargas de magia. Requer sintonia.",
+    "merchant_comment": "O chicote do trono permanece flexível. Dominar Pessoa ainda exige as regras da magia, além das cinco cargas da arma.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. Requer sintonia. Concede +1 nas jogadas de ataque e dano feitas com esta arma. Concede proficiência em Intimidação e Persuasão caso você ainda não seja proficiente; não concede especialização. Tem cinco cargas. Com uma ação bônus, gaste cargas para conjurar uma destas magias pela arma, com CD de resistência 16: Comando (uma), Zona da Verdade (duas), Compulsão (quatro), Banimento (quatro) ou Dominar Pessoa (cinco). Recupera 1d4 cargas gastas diariamente ao amanhecer, até o máximo de cinco. Aplicam-se as demais regras de cada magia, incluindo concentração quando exigida. Esses poderes e cargas precisam ser acompanhados na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Throne's Command",
+    "base_id": "whip",
+    "model_name": "Chicote",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
   }
 }

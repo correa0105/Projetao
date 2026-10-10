@@ -282,11 +282,45 @@ try {
       assert.match(item.raw_data.rules_summary, /2d6 de dano psíquico/);
       assert.match(item.raw_data.rules_summary, /Carisma CD 20/);
       assert.match(item.raw_data.rules_summary, /um nível de exaustão/);
-      assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'main_hand' })).status, 200, item.id);
-      if (item.raw_data.two_handed)
-        assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'off_hand' })).status, 400, item.id);
+      if (!rulesReviewIds || rulesReviewIds.has(item.id)) {
+        assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'main_hand' })).status, 200, item.id);
+        if (item.raw_data.two_handed)
+          assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'off_hand' })).status, 400, item.id);
+      }
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger, 'Equipment cannot change the purchase ledger');
+  }
+  const commandFamilies = ["Weapon of Throne's Command", 'Returning Weapon', 'Repeating Shot'];
+  const commandItems = completion.items.filter((x: any) => commandFamilies.includes(x.raw_data.magic_family));
+  if (ids.includes('returning-dagger')) {
+    assert.deepEqual(commandFamilies.map(f => commandItems.filter((x: any) => x.raw_data.magic_family === f).length), [35, 7, 9]);
+    assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: null, slot: 'off_hand' })).status, 200);
+    for (const item of commandItems) {
+      assert.equal(item.raw_data.upstream_facts.bonusWeapon, '+1');
+      const family = item.raw_data.magic_family;
+      assert.equal(item.raw_data.attunement, family !== 'Returning Weapon');
+      if (family === "Weapon of Throne's Command") {
+        assert.equal(item.raw_data.upstream_source, 'BMT');
+        assert.equal(item.raw_data.upstream_facts.charges, 5);
+        assert(item.raw_data.source_edition.includes('2014'));
+        assert.match(item.raw_data.rules_summary, /CD de resistência 16/);
+        assert.match(item.raw_data.rules_summary, /Recupera 1d4 cargas gastas/);
+      } else {
+        assert.equal(item.raw_data.upstream_source, 'EFA');
+        assert.equal(item.raw_data.source_edition, 'D&D 5e (2024)');
+        if (family === 'Repeating Shot') {
+          assert.match(item.raw_data.rules_summary, /Ignora a propriedade Carregamento/);
+          assert.match(item.raw_data.rules_summary, /desaparece imediatamente depois/);
+          assert(!item.raw_data.rules_summary.includes('O carregamento permite apenas um disparo'));
+        } else assert.match(item.raw_data.rules_summary, /imediatamente depois/);
+      }
+      if (!rulesReviewIds || rulesReviewIds.has(item.id)) {
+        assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'main_hand' })).status, 200, item.id);
+        if (item.raw_data.two_handed)
+          assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'off_hand' })).status, 400, item.id);
+      }
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger);
   }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,

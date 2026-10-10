@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **612 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **663 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -371,3 +371,15 @@ Release `magic-completion-v9-20261010` saudável, backup anterior conservado.
 1.260 mídias/referências e 43 bundles iguais à cópia validada; Lava/Corrente
 elétrica e 21 VFX anteriores preservados, ilustrador ativo e WIP intacto.
 Restam 2.464 candidatos, além das opções de magia/alvo por expandir.
+
+## Décimo lote: comando, retorno e disparo repetido
+
+Publicados 35 modelos do Comando do Trono, sete de retorno e nove de disparo repetido. Três materiais originais produzidos por `image_gen.imagegen`: joias azul/vinho e ouro, prata/cobre com motivos de volta, e engrenagens de cobre em metal/teal. Cada uma das 51 skins possui forma física, fala e foley próprios, com alpha preservado. Prompts em `art-jobs-command-replicated-materials.json`, procedência em `art-manifest.json`, fontes PNG em `.local/shop-completion/native` e 54 novos arquivos portáveis em `public/shop/magic-completion-20261009`. Quatro folhas de modelos e cinco novas prévias sobre baús foram revistas. As 612 ofertas e artes anteriores permanecem iguais.
+
+The Book of Many Things, página 39, conserva a edição de 2014 do encanto separada da base física moderna. Comando do Trono requer sintonia, concede +1 ataque/dano e proficiência em Intimidação/Persuasão a quem não as possui, sem especialização. Cinco cargas: ação bônus para Comando (1), Zona da Verdade (2), Compulsão ou Banimento (4) e Dominar Pessoa (5), CD 16. Recupera 1d4 cargas gastas ao amanhecer até o máximo de cinco; demais regras de magia/concentração mantidas.
+
+Eberron: Forge of the Artificer (2025), página 112, foi conferido pelos dados primários do 5etools. Arma de retorno +1 volta à mão imediatamente após a jogada de ataque à distância, acerte ou erre, sem sintonia. Disparo repetido requer sintonia, concede +1 apenas para ataques à distância, ignora Carregamento e, quando sem munição, cria uma peça mágica para a jogada que desaparece ao acertar ou errar. Não concede ações adicionais nem estoque para vender. O resumo de repetição omite a limitação de disparo de Carregamento que a magia ignora. Os poderes narrados precisam ser aplicados na mesa.
+
+API de todos os 663 itens passou imagens/sons, compra, saldo, ledger, replay, preços administrativos, conservação do catálogo e consumo. Os 80 conjuntos anteriores foram reconferidos, os 51 endpoints de regras novas passaram e todos os modelos novos puderam ser equipados. Os testes em três larguras revisaram 51 artes/falas/fontes novas na loja completa de 663 itens, com ID/skin selecionada corretos sobre os baús. TypeScript passou; runtime, servidor e bundles anteriores validados permanecem iguais.
+
+Release `magic-completion-v10-20261010` saudável, backup anterior mantido. 60 tabelas e toda oferta anterior integralmente idênticas, somente 51 adições. 1.365 mídias/referências e 43 bundles conferidos; Lava/Corrente elétrica e 21 VFX anteriores preservados, ilustrador ativo e trabalho independente intacto. Restam 2.413 candidatos, além das opções de magia/alvo por expandir.

@@ -15542,5 +15542,413 @@
     "sha256": "66f87800bbff085a14d09cfcfecb2d1d13d452804509b60f3b8f2aad2d68522e",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-blowgun",
+    "path": "public/audio/emporium/repeating-blowgun.wav",
+    "kind": "wood",
+    "sha256": "0bdb0e5a25fbed03196b6aeb0485094a27b9c8ad2c1582cf7c122d3309ff592c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-hand-crossbow",
+    "path": "public/audio/emporium/repeating-hand-crossbow.wav",
+    "kind": "metal",
+    "sha256": "adc1f26d6279bb0e185d6de4c2e58982a64725f2351f47c7990d1ae161421a1a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-heavy-crossbow",
+    "path": "public/audio/emporium/repeating-heavy-crossbow.wav",
+    "kind": "metal",
+    "sha256": "43d22a32367eb640c52ce892dc8dcdf36ed606602d4d9663f8b82964f1250b9b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-light-crossbow",
+    "path": "public/audio/emporium/repeating-light-crossbow.wav",
+    "kind": "metal",
+    "sha256": "4ff4c6898cf76dda88fff77f01aab77cffeb8037ee1369ef555e302a31dd9c5f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-longbow",
+    "path": "public/audio/emporium/repeating-longbow.wav",
+    "kind": "wood",
+    "sha256": "f1fcce518aa31ea1ea549c53417685d045bcb074fb05fccd30c3fac8bd862f71",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-musket",
+    "path": "public/audio/emporium/repeating-musket.wav",
+    "kind": "metal",
+    "sha256": "4bc3aa4a6c9951f74175cb79c1dc0f9ca4a51c734899e1322a8ad1963b5dcd51",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-pistol",
+    "path": "public/audio/emporium/repeating-pistol.wav",
+    "kind": "metal",
+    "sha256": "d11638cc684aba8c9634c57828f4695046cadf7cac972e1a2ea6c2659f9145a1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-shortbow",
+    "path": "public/audio/emporium/repeating-shortbow.wav",
+    "kind": "wood",
+    "sha256": "97696a585dd65eda01e3199f8725f54f3829f26d45989d424c8a85cf6ce0abc8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "repeating-sling",
+    "path": "public/audio/emporium/repeating-sling.wav",
+    "kind": "leather",
+    "sha256": "20c3d71f9b52d2a32ffe09221856dcaaad3fadf46f8180a4f7cc946d3d3266ff",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "returning-dagger",
+    "path": "public/audio/emporium/returning-dagger.wav",
+    "kind": "metal",
+    "sha256": "f615cadb01cd290d73e9123a9361d21843b815addcc33f8b1216dd79cd44723e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "returning-dart",
+    "path": "public/audio/emporium/returning-dart.wav",
+    "kind": "metal",
+    "sha256": "9873db1dde23758cadf41d4d3caa87118c40d410e9343e0317dc6fd22fabc0bf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "returning-handaxe",
+    "path": "public/audio/emporium/returning-handaxe.wav",
+    "kind": "metal",
+    "sha256": "16bf7f18a331c73f56bd0e4a73b0d21630b13984a36a0d9ff6d38e447f7b2cd8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "returning-javelin",
+    "path": "public/audio/emporium/returning-javelin.wav",
+    "kind": "metal",
+    "sha256": "dc77ace899dec13054b51c85475ff7947de2a96f9b4bb1240b293c6c4e7c154c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "returning-light-hammer",
+    "path": "public/audio/emporium/returning-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "64369370dee3668d4c8b53f2533ea16254b70e2f0cda97ccb7a45ff5739f666e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "returning-spear",
+    "path": "public/audio/emporium/returning-spear.wav",
+    "kind": "metal",
+    "sha256": "3b1f1de78e853f33e0c10473ccf3b15f9d3a0c79c0996484bf3632dd905981b7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "returning-trident",
+    "path": "public/audio/emporium/returning-trident.wav",
+    "kind": "metal",
+    "sha256": "7167197d84b538026161647552aa03780afe5f62077d4881cbccddafb52e48b8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "antimatter-rifle-of-throne-s-command",
+    "path": "public/audio/emporium/antimatter-rifle-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "51457588217e072823d82f503e5456d5c6f1c86f8b9b6a5ec12d87c62a00bba3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "automatic-rifle-of-throne-s-command",
+    "path": "public/audio/emporium/automatic-rifle-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "cf5596bd0bdd77af4c4c5c1e31c1c51ac64b5afd3f96b0cf0cfb8abc43161adf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "battleaxe-of-throne-s-command",
+    "path": "public/audio/emporium/battleaxe-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "514cf189100165873b3063c575f2cb2af341de0b11e34d74209fd332052bb549",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "blowgun-of-throne-s-command",
+    "path": "public/audio/emporium/blowgun-of-throne-s-command.wav",
+    "kind": "wood",
+    "sha256": "c452e576c4fc49d40f1a15c600cd3aa8298f8699595f345c446519a2af3c84be",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "double-bladed-scimitar-of-throne-s-command",
+    "path": "public/audio/emporium/double-bladed-scimitar-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "d77d939d963723afdb00cfeaca25e69351d2e3b423c575c917f44b8bc1da7243",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "flail-of-throne-s-command",
+    "path": "public/audio/emporium/flail-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "de6d703302e71fb65c9929e5263301d76151b9161ca6d940317c1fe6436faa3a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "glaive-of-throne-s-command",
+    "path": "public/audio/emporium/glaive-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "d51eae91822d268500f606cedcda0dcf7c18803104a3e065cd6f6f639daaba98",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "greataxe-of-throne-s-command",
+    "path": "public/audio/emporium/greataxe-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "f5b3dae5b03a5fe06b9cf6e980eeea0b945e2ff291bf55d591f64be8b0362f4f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "greatsword-of-throne-s-command",
+    "path": "public/audio/emporium/greatsword-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "2980dc394e38e9d1f9773b110212b9e06d15f870c63430f438f7165c4685ae21",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "halberd-of-throne-s-command",
+    "path": "public/audio/emporium/halberd-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "b0e3be2969af4f12870a2a58ab3694e3ab5e200851138b71e9f9d32c11fc049f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hand-crossbow-of-throne-s-command",
+    "path": "public/audio/emporium/hand-crossbow-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "cf4bc268a535c8f0bef5457ac9b5dc534e84b18f344893481066f913fcc23520",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "heavy-crossbow-of-throne-s-command",
+    "path": "public/audio/emporium/heavy-crossbow-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "c9a92629d6e2256d3bde89f7cedeb8a3948b4a8945774f61fd6443dd4ddf1ecf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hooked-shortspear-of-throne-s-command",
+    "path": "public/audio/emporium/hooked-shortspear-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "e3a3eabd12d0c8e1ab677eec3aeb55177e61a76ab786c60b4e93980d965aa3a2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hoopak-of-throne-s-command",
+    "path": "public/audio/emporium/hoopak-of-throne-s-command.wav",
+    "kind": "wood",
+    "sha256": "21b8fd957d721dc26ffa216c6d0bc9cd92f88d33c2896cc5c68860992bf79b23",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hunting-rifle-of-throne-s-command",
+    "path": "public/audio/emporium/hunting-rifle-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "1562f43a8878b23314279706936b702839be1d9cea52d6cd29b6af4f3c777746",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lance-of-throne-s-command",
+    "path": "public/audio/emporium/lance-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "524d77c9cbb1c857c2bc22cb8ab7f8f3b14cb2c2869e24c46268f2ba6e7dc964",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-pistol-of-throne-s-command",
+    "path": "public/audio/emporium/laser-pistol-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "d5673c5bb87be828000593571162877719d44c21d1ce148a2a9e4dbfb9dec7a8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "laser-rifle-of-throne-s-command",
+    "path": "public/audio/emporium/laser-rifle-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "c84f90fc316f51c1abf05c7433bf8d2ecbb014e9beb84474767b88d91d3a0e99",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "longbow-of-throne-s-command",
+    "path": "public/audio/emporium/longbow-of-throne-s-command.wav",
+    "kind": "wood",
+    "sha256": "eb8fc55a784f7a393e512f1f6a4b11439ae3b6bab67e56d3210dae91b4c42677",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "longsword-of-throne-s-command",
+    "path": "public/audio/emporium/longsword-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "38bcac8363b3403f71ceb2f2a0500f9bdd0db226694e915da7157f0513f1fd3b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "maul-of-throne-s-command",
+    "path": "public/audio/emporium/maul-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "b27160ce2adb12e520d8b69bb1412415f8a608cdc599b8016b93894e6a767ed8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "morningstar-of-throne-s-command",
+    "path": "public/audio/emporium/morningstar-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "78bbc2c9d235c6d49b526f0f1c97d882c51792e770b368ce9e0e0b8a5bbc2b22",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "musket-of-throne-s-command",
+    "path": "public/audio/emporium/musket-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "e1573aa110428e7c366386629f0655bda6a4f25fb14605486e4aa17b481cca46",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pike-of-throne-s-command",
+    "path": "public/audio/emporium/pike-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "ad60eae48b5fb33403ee11979ed0d07d4d0912053ef463058d31c5642cf88e5f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pistol-of-throne-s-command",
+    "path": "public/audio/emporium/pistol-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "b9b177f54983d1f992f4bb97c2519c05a4fc8d31c8c6b7a0beb1e6ff4ec58950",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "rapier-of-throne-s-command",
+    "path": "public/audio/emporium/rapier-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "a8ae21bbaea98ea8e1b221e24036cc9f525153b6cec92b930b02f189e2c1165e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "revolver-of-throne-s-command",
+    "path": "public/audio/emporium/revolver-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "55002cf95abfbd1b2db46d5b92db5592709e76d1e5bdb913234d7be9b1c0689a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "scimitar-of-throne-s-command",
+    "path": "public/audio/emporium/scimitar-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "3741e3d8ac171fd92ad2bb7680d63a1ce2fc365facb3e3c50a6fce515d10f78a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "semiautomatic-pistol-of-throne-s-command",
+    "path": "public/audio/emporium/semiautomatic-pistol-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "f5cca2770608499416cd12aad4e58f829e122918d96f09183e5b939e3f7f9995",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shortsword-of-throne-s-command",
+    "path": "public/audio/emporium/shortsword-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "f0aaa638662b3e448cc86f5ea33220c2f4a86515c40470c635f273065b7a3df3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shotgun-of-throne-s-command",
+    "path": "public/audio/emporium/shotgun-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "aff079fc8f25d49e3557197d0469b82a60822ca5df1ecf159b3c2288996f9e3c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "trident-of-throne-s-command",
+    "path": "public/audio/emporium/trident-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "998ce68b72d02697639b9dd33791cb8f9b8964521b87c9b6dacca675cc301a3f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "war-pick-of-throne-s-command",
+    "path": "public/audio/emporium/war-pick-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "59619e74684d97490534a5d5bacf49660d219216cfdde8e7654228bf05b35f46",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "warhammer-of-throne-s-command",
+    "path": "public/audio/emporium/warhammer-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "35f7efd8b5283226232a375df5673adaf6b5e81256f55c2d9dd5a949446ea052",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "whip-of-throne-s-command",
+    "path": "public/audio/emporium/whip-of-throne-s-command.wav",
+    "kind": "metal",
+    "sha256": "db381966b7046a2cebf7a5ac605415213042bb334a448ccc2c91c6d16c4c3324",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]
