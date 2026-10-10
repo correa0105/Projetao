@@ -159,7 +159,7 @@ try {
   ).rows;
   assert.equal(ledger.length, ids.length);
   const armors=completion.items.filter((x:any)=>x.raw_data.magic_kind==='armor');
-  assert.equal(armors.length,154);
+  assert.equal(armors.length,185);
   for(const x of armors){
     const bundle=armorBundle(x.id);assert(bundle&&bundle.target==='human',x.id);
     const pieces=(await pool.query('SELECT i.item_id,i.quantity,c.weight_lb,c.raw_data FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND i.item_id=ANY($2::text[])',[hero.id,purchaseContents(x.id)])).rows;
@@ -423,6 +423,42 @@ try {
       }
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger);
+  }
+  const spellArmorFamilies = ['Armor of the Fallen', 'Mizzium Armor', 'Spell-Fueling Armor'];
+  if (ids.includes('mizzium-breastplate')) {
+    const specialized = completion.items.filter((x: any) => spellArmorFamilies.includes(x.raw_data.magic_family));
+    assert.deepEqual(spellArmorFamilies.map(f=>specialized.filter((x: any)=>x.raw_data.magic_family===f).length), [10, 9, 12]);
+    for (const item of specialized) {
+      const family=item.raw_data.magic_family, facts=item.raw_data.upstream_facts;
+      assert.equal(facts.bonusAc, undefined);
+      assert.equal(item.weight_estimated,false);
+      if (family==='Armor of the Fallen') {
+        assert.equal(item.raw_data.upstream_source,'BMT');assert.equal(item.raw_data.attunement,true);
+        assert(item.raw_data.source_edition.includes('2014'));
+        assert.match(item.raw_data.rules_summary,/ambas compartilham uma única reserva/);
+        assert.match(item.raw_data.rules_summary,/morrer enquanto estiver sintonizado/);
+      } else if (family==='Mizzium Armor') {
+        assert.equal(item.raw_data.upstream_source,'GGR');assert.equal(item.raw_data.attunement,false);
+        assert(item.raw_data.source_edition.includes('2014'));
+        assert.match(item.raw_data.rules_summary,/acerto crítico contra você se torna um acerto normal/);
+        assert.match(item.raw_data.rules_summary,/efeito mágico e uma resistência de Força ou Constituição/);
+      } else {
+        assert.equal(item.raw_data.upstream_source,'AUD');assert.equal(item.raw_data.attunement,'by a Spellcaster');
+        assert.equal(item.raw_data.source_edition,'D&D 5e (2024)');
+        assert.match(item.raw_data.rules_summary,/qualquer resultado 1 em um dado de dano como 2/);
+        assert.match(item.raw_data.rules_summary,/descanso curto vestindo-a/);
+        assert.match(item.raw_data.rules_summary,/soma dos círculos de no máximo três/);
+      }
+      if (!rulesReviewIds || rulesReviewIds.has(item.id)) {
+        const equip={character_id:hero.id,item_id:item.id};
+        assert.equal((await request('/inventory/equipment-set','POST',equip)).status,200,item.id);
+        const query='SELECT slot,item_id FROM character_equipment WHERE character_id=$1 AND slot=ANY($2::text[]) ORDER BY slot',params=[hero.id,['armor','head','bracers','legs','feet','shoulders']];
+        const worn=(await pool.query(query,params)).rows;assert.deepEqual(worn.map(x=>x.item_id).sort(),purchaseContents(item.id).sort());
+        assert.equal((await request('/inventory/equipment-set','POST',equip)).status,200);
+        assert.deepEqual((await pool.query(query,params)).rows,worn);
+      }
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
   }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,

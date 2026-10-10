@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **781 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **812 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -421,3 +421,15 @@ Os 74 conjuntos novos somam 370 componentes internos, totalizando 420 conjuntos 
 Validação: API dos 781 itens e das 74 descrições novas; compra/replay/ledger/saldo; peso e equipamento de seis peças; três testes de conjuntos/placas/referências de arte; loja responsiva em 1.500/760/390 px; TypeScript e builds limpos. Publicado na imagem `magic-completion-v13-20261010`, saudável. Após aplicação, 60 tabelas e todos os produtos antigos mantêm hashes de linhas idênticos; somente 74 pais e 370 componentes foram inseridos. Todas as 1.607 mídias e 43 bundles correspondem aos arquivos aprovados. Lava/Corrente elétrica, os demais efeitos e o ilustrador permanecem preservados.
 
 Total aplicado: 781 novos itens; 2.295 candidatos seguem pendentes, além da expansão das opções específicas de magia/alvo.
+
+## Lote 14 — caídos, mizzium e recuperação arcana
+
+31 novos modelos: 10 Armaduras dos Caídos (BMT p. 65), 9 Armaduras de Mizzium (GGR p. 179) e 12 Armaduras de Recuperação Arcana (Spell-Fueling Armor, AUD p. 119). Fontes primárias lidas no espelho de dados do 5etools; AUD/Arcana Unleashed: Deadfall, publicado em 2026-09-15, permanece dentro do corte de 2026-10-09. BMT/GGR mantêm seu encantamento de 2014 separado do modelo físico de 2024; AUD usa as regras de 2024.
+
+Três materiais originais, 31 artes finais distintas e 31 falas/sons individuais. Prompts, cópias nativas e hashes registrados em `art-jobs-fallen-mizzium-fueling-materials.json` e `art-manifest.json`. Todas as formas foram vistas em tamanho reduzido, e as três famílias foram vistas nos baús reais em desktop e celular.
+
+Caídos: uma única reserva até o amanhecer para Falar com os Mortos ou Animar Mortos; sintonia e destruição do conjunto se o usuário sintonizado morrer. Mizzium: críticos recebidos se tornam acertos normais; só anula dano no sucesso de uma resistência de Força/Constituição de efeito mágico que normalmente reduziria o dano à metade. Dispensa sintonia. Recuperação arcana: exige um conjurador, permite tratar 1 como 2 em dados de dano de magia, e recupera espaços gastos somando até três círculos após descanso curto, uma vez até o próximo amanhecer. Não há bônus de CA em nenhuma das três famílias.
+
+31 pais e 155 componentes internos novos: 451 conjuntos totais, com peso conservado. Todos os 781 produtos e 420 conjuntos anteriores permanecem idênticos. API completa dos 812 itens, descrições das 31 novidades, compra/replay/ledger/saldo e equipamento dos seis componentes aprovados; três testes de armaduras/placas/referências, loja em 1.500/760/390 px, TypeScript e builds limpos.
+
+Publicado em `magic-completion-v14-20261010`. Aplicação saudável; hashes de 60 tabelas e de todos os produtos anteriores iguais após aplicação, somente 186 novas linhas de produtos inseridas. Todas as 1.672 mídias e 43 bundles ao vivo correspondem aos arquivos aprovados. Ilustrador, Lava/Corrente elétrica e demais efeitos preservados. Total: 812 itens novos aplicados; 2.264 candidatos e opções específicas de magia/alvo ainda pendentes.

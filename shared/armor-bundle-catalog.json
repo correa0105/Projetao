@@ -1525,6 +1525,56 @@
     "human"
   ],
   [
+    "breastplate-of-the-fallen",
+    20,
+    "human"
+  ],
+  [
+    "chain-mail-of-the-fallen",
+    55,
+    "human"
+  ],
+  [
+    "chain-shirt-of-the-fallen",
+    20,
+    "human"
+  ],
+  [
+    "half-plate-armor-of-the-fallen",
+    40,
+    "human"
+  ],
+  [
+    "hide-armor-of-the-fallen",
+    12,
+    "human"
+  ],
+  [
+    "plate-armor-of-the-fallen",
+    65,
+    "human"
+  ],
+  [
+    "ring-mail-of-the-fallen",
+    40,
+    "human"
+  ],
+  [
+    "scale-mail-of-the-fallen",
+    45,
+    "human"
+  ],
+  [
+    "spiked-armor-of-the-fallen",
+    45,
+    "human"
+  ],
+  [
+    "splint-armor-of-the-fallen",
+    60,
+    "human"
+  ],
+  [
     "spiked-armor-of-thunder-resistance",
     45,
     "human"
@@ -1990,6 +2040,51 @@
     "human"
   ],
   [
+    "mizzium-breastplate",
+    20,
+    "human"
+  ],
+  [
+    "mizzium-chain-mail",
+    55,
+    "human"
+  ],
+  [
+    "mizzium-chain-shirt",
+    20,
+    "human"
+  ],
+  [
+    "mizzium-half-plate-armor",
+    40,
+    "human"
+  ],
+  [
+    "mizzium-plate-armor",
+    65,
+    "human"
+  ],
+  [
+    "mizzium-ring-mail",
+    40,
+    "human"
+  ],
+  [
+    "mizzium-scale-mail",
+    45,
+    "human"
+  ],
+  [
+    "mizzium-spiked-armor",
+    45,
+    "human"
+  ],
+  [
+    "mizzium-splint-armor",
+    60,
+    "human"
+  ],
+  [
     "ruidium-breastplate",
     20,
     "human"
@@ -2096,6 +2191,66 @@
   ],
   [
     "smoldering-studded-leather-armor",
+    13,
+    "human"
+  ],
+  [
+    "spell-fueling-breastplate",
+    20,
+    "human"
+  ],
+  [
+    "spell-fueling-chain-mail",
+    55,
+    "human"
+  ],
+  [
+    "spell-fueling-chain-shirt",
+    20,
+    "human"
+  ],
+  [
+    "spell-fueling-half-plate-armor",
+    40,
+    "human"
+  ],
+  [
+    "spell-fueling-hide-armor",
+    12,
+    "human"
+  ],
+  [
+    "spell-fueling-leather-armor",
+    10,
+    "human"
+  ],
+  [
+    "spell-fueling-padded-armor",
+    8,
+    "human"
+  ],
+  [
+    "spell-fueling-plate-armor",
+    65,
+    "human"
+  ],
+  [
+    "spell-fueling-ring-mail",
+    40,
+    "human"
+  ],
+  [
+    "spell-fueling-scale-mail",
+    45,
+    "human"
+  ],
+  [
+    "spell-fueling-splint-armor",
+    60,
+    "human"
+  ],
+  [
+    "spell-fueling-studded-leather-armor",
     13,
     "human"
   ]

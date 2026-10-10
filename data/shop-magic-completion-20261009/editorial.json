@@ -12942,5 +12942,532 @@
     "magic_kind": "armor",
     "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
     "review": "approved"
+  },
+  "breastplate-of-the-fallen": {
+    "name": "Armadura dos caídos (Peitoral)",
+    "description": "Forma: Peitoral. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "O peitoral dos caídos guarda duas magias numa única reserva. Escolha Falar com os Mortos ou Animar Mortos até o amanhecer.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "chain-mail-of-the-fallen": {
+    "name": "Armadura dos caídos (Cota de malha)",
+    "description": "Forma: Cota de malha. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "Esta cota dos caídos precisa de sintonia. A morte do usuário sintonizado destrói a armadura.",
+    "rules_summary": "Armadura pesada. CA base 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "chain-shirt-of-the-fallen": {
+    "name": "Armadura dos caídos (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "A camisa dos caídos permite conversar com os mortos pela magia. Depois desse uso, Animar Mortos também espera o amanhecer.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "half-plate-armor-of-the-fallen": {
+    "name": "Armadura dos caídos (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "A meia armadura dos caídos depende da alma que se liga a ela. A sintonia acompanha tanto o poder quanto o risco.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "hide-armor-of-the-fallen": {
+    "name": "Armadura dos caídos (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "Estas peles dos caídos podem conjurar Animar Mortos. A magia mantém suas regras de duração e controle.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of the Fallen",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "plate-armor-of-the-fallen": {
+    "name": "Armadura dos caídos (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "As placas dos caídos não melhoram a CA por encanto. A reserva serve para uma das duas magias, uma vez ao dia.",
+    "rules_summary": "Armadura pesada. CA base 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "ring-mail-of-the-fallen": {
+    "name": "Armadura dos caídos (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "Os anéis dos caídos dão acesso às magias depois da sintonia. A morte de quem está ligado ao conjunto o destrói.",
+    "rules_summary": "Armadura pesada. CA base 14. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "scale-mail-of-the-fallen": {
+    "name": "Armadura dos caídos (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "Estas escamas dos caídos guardam Falar com os Mortos e Animar Mortos. Usar uma fecha a reserva das duas até o amanhecer.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "spiked-armor-of-the-fallen": {
+    "name": "Armadura dos caídos (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "Os espinhos dos caídos pedem uma escolha de magia. O poder não oferece domínio permanente sobre mortos-vivos.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Armor of the Fallen",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "splint-armor-of-the-fallen": {
+    "name": "Armadura dos caídos (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Conjura Falar com os Mortos ou Animar Mortos uma vez até o amanhecer; depende da alma do usuário.",
+    "merchant_comment": "As talas dos caídos são mantidas pela alma do usuário. Confira o que acontece na morte antes de aceitar a sintonia.",
+    "rules_summary": "Armadura pesada. CA base 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização. Enquanto a veste, você pode conjurar Falar com os Mortos ou Animar Mortos pela armadura. Depois de conjurar qualquer uma delas dessa forma, nenhuma das duas pode ser conjurada novamente por ela até o próximo amanhecer: ambas compartilham uma única reserva. Valem as regras normais da magia escolhida. Sua alma mantém a armadura unida; se você morrer enquanto estiver sintonizado com ela, a armadura é destruída. Não concede bônus de CA, cargas adicionais nem controle permanente de mortos-vivos.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Armor of the Fallen",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-breastplate": {
+    "name": "Armadura de mizzium (Peitoral)",
+    "description": "Forma: Peitoral. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "Este peitoral de mizzium transforma críticos recebidos em acertos normais. Não precisa de sintonia.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-chain-mail": {
+    "name": "Armadura de mizzium (Cota de malha)",
+    "description": "Forma: Cota de malha. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "A cota de mizzium pode anular dano mágico numa resistência bem-sucedida de Força ou Constituição. Leia o requisito de metade do dano.",
+    "rules_summary": "Armadura pesada. CA base 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-chain-shirt": {
+    "name": "Armadura de mizzium (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "A camisa de mizzium protege de críticos. O ataque ainda acerta, mas deixa de ser crítico.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-half-plate-armor": {
+    "name": "Armadura de mizzium (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "A meia armadura de mizzium vem das fundições Izzet. Sua proteção adicional não cobre testes de Destreza.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-plate-armor": {
+    "name": "Armadura de mizzium (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "As placas de mizzium não acrescentam CA. O metal tira o crítico do acerto e tem uma defesa específica contra magia.",
+    "rules_summary": "Armadura pesada. CA base 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-ring-mail": {
+    "name": "Armadura de mizzium (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "Os anéis de mizzium dispensam sintonia. Efeitos não mágicos não recebem a proteção de dano das resistências.",
+    "rules_summary": "Armadura pesada. CA base 14. Impõe desvantagem em Furtividade. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-scale-mail": {
+    "name": "Armadura de mizzium (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "Estas escamas de mizzium podem reduzir a zero o dano de certos efeitos mágicos. É preciso passar na resistência de Força ou Constituição.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "mizzium-spiked-armor": {
+    "name": "Armadura de mizzium (Armadura de espinhos)",
+    "description": "Forma: Armadura de espinhos. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "Os espinhos de mizzium convertem qualquer crítico recebido em acerto normal. A proteção acompanha quem veste o conjunto.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Mizzium Armor",
+    "base_id": "spiked-armor",
+    "model_name": "Armadura de espinhos",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "mizzium-splint-armor": {
+    "name": "Armadura de mizzium (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Transforma críticos recebidos em acertos normais e oferece proteção específica contra efeitos mágicos.",
+    "merchant_comment": "As talas de mizzium ajudam em duas situações bem definidas. Não anulam todo dano mágico que atinja o usuário.",
+    "rules_summary": "Armadura pesada. CA base 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Não exige sintonização. Enquanto a veste, qualquer acerto crítico contra você se torna um acerto normal. Além disso, se um efeito mágico permitir um teste de resistência de Força ou Constituição para sofrer metade do dano, um sucesso faz você sofrer nenhum dano. Esse segundo poder exige simultaneamente um efeito mágico e uma resistência de Força ou Constituição com dano reduzido à metade no sucesso; não se aplica a testes de Destreza, efeitos não mágicos ou falhas. Não concede bônus de CA.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Mizzium Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2014); modelo de armadura de 2024",
+    "review": "approved"
+  },
+  "spell-fueling-breastplate": {
+    "name": "Armadura de recuperação arcana (Peitoral)",
+    "description": "Forma: Peitoral. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "Este peitoral arcano trata resultados um no dano de magia como dois. O encanto exige sintonia por um conjurador.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "breastplate",
+    "model_name": "Peitoral",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-chain-mail": {
+    "name": "Armadura de recuperação arcana (Cota de malha)",
+    "description": "Forma: Cota de malha. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "A cota de recuperação arcana devolve espaços após um descanso curto. A soma dos círculos recuperados não passa de três.",
+    "rules_summary": "Armadura pesada. CA base 16. Impõe desvantagem em Furtividade. Sem Força de pelo menos 13, seu deslocamento diminui 10 pés. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "chain-mail",
+    "model_name": "Cota de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-chain-shirt": {
+    "name": "Armadura de recuperação arcana (Camisão de malha)",
+    "description": "Forma: Camisão de malha. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "A camisa arcana recupera espaços gastos uma vez até o amanhecer. Você precisa terminar o descanso curto vestindo-a.",
+    "rules_summary": "Armadura média. CA base 13 + modificador de Destreza, limitado a +2. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "chain-shirt",
+    "model_name": "Camisão de malha",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-half-plate-armor": {
+    "name": "Armadura de recuperação arcana (Meia armadura de placas)",
+    "description": "Forma: Meia armadura de placas. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "A meia armadura arcana melhora os resultados um dos dados de dano de magia. Não é uma nova rolagem.",
+    "rules_summary": "Armadura média. CA base 15 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "half-plate-armor",
+    "model_name": "Meia armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-hide-armor": {
+    "name": "Armadura de recuperação arcana (Armadura de peles)",
+    "description": "Forma: Armadura de peles. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "Estas peles arcanas podem recuperar um espaço de terceiro círculo. Ou escolha espaços menores somando até três.",
+    "rules_summary": "Armadura média. CA base 12 + modificador de Destreza, limitado a +2. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Spell-Fueling Armor",
+    "base_id": "hide-armor",
+    "model_name": "Armadura de peles",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-leather-armor": {
+    "name": "Armadura de recuperação arcana (Armadura de couro)",
+    "description": "Forma: Armadura de couro. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "O couro de recuperação arcana pede sintonia de conjurador. A reserva de recuperação só volta no próximo amanhecer.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Spell-Fueling Armor",
+    "base_id": "leather-armor",
+    "model_name": "Armadura de couro",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-padded-armor": {
+    "name": "Armadura de recuperação arcana (Armadura acolchoada)",
+    "description": "Forma: Armadura acolchoada. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "O acolchoado arcano favorece dados de dano de magia. O poder não altera o dano de uma arma comum.",
+    "rules_summary": "Armadura leve. CA base 11 + modificador de Destreza. Impõe desvantagem em Furtividade. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "cloth",
+    "family": "Spell-Fueling Armor",
+    "base_id": "padded-armor",
+    "model_name": "Armadura acolchoada",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-plate-armor": {
+    "name": "Armadura de recuperação arcana (Armadura de placas)",
+    "description": "Forma: Armadura de placas. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "As placas de recuperação arcana não acrescentam CA. O benefício está no dano de magia e nos espaços gastos.",
+    "rules_summary": "Armadura pesada. CA base 18. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "plate-armor",
+    "model_name": "Armadura de placas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-ring-mail": {
+    "name": "Armadura de recuperação arcana (Cota de anéis)",
+    "description": "Forma: Cota de anéis. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "Os anéis arcanos podem devolver três espaços de primeiro círculo. O total recuperado respeita a soma de três círculos.",
+    "rules_summary": "Armadura pesada. CA base 14. Impõe desvantagem em Furtividade. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "ring-mail",
+    "model_name": "Cota de anéis",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-scale-mail": {
+    "name": "Armadura de recuperação arcana (Cota de escamas)",
+    "description": "Forma: Cota de escamas. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "Estas escamas arcanas permitem recuperar um espaço de segundo e um de primeiro círculo. Use a reserva após o descanso curto.",
+    "rules_summary": "Armadura média. CA base 14 + modificador de Destreza, limitado a +2. Impõe desvantagem em Furtividade. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "scale-mail",
+    "model_name": "Cota de escamas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-splint-armor": {
+    "name": "Armadura de recuperação arcana (Armadura de talas)",
+    "description": "Forma: Armadura de talas. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "As talas arcanas tratam cada resultado um de dano de magia como dois. O usuário pode escolher aplicar o benefício.",
+    "rules_summary": "Armadura pesada. CA base 17. Impõe desvantagem em Furtividade. Sem Força de pelo menos 15, seu deslocamento diminui 10 pés. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "metal",
+    "family": "Spell-Fueling Armor",
+    "base_id": "splint-armor",
+    "model_name": "Armadura de talas",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "spell-fueling-studded-leather-armor": {
+    "name": "Armadura de recuperação arcana (Couro batido)",
+    "description": "Forma: Couro batido. Eleva resultados 1 nos dados de dano de magia a 2 e recupera espaços após um descanso curto.",
+    "merchant_comment": "O couro batido arcano recupera espaços gastos. O poder não cria espaços permanentes além dos que você já tem.",
+    "rules_summary": "Armadura leve. CA base 12 + modificador de Destreza. Exige sintonização por um conjurador. Enquanto a veste, ao rolar dano de uma magia, você pode tratar qualquer resultado 1 em um dado de dano como 2; não é uma nova rolagem e não afeta ataques de arma. Ao terminar um descanso curto vestindo-a, pode escolher espaços de magia gastos para recuperar, com soma dos círculos de no máximo três: por exemplo, um espaço de 3º círculo, um de 2º e um de 1º, ou três de 1º. Depois de usada, essa recuperação fica indisponível até o próximo amanhecer. Não concede bônus de CA nem espaços de magia permanentes adicionais.",
+    "slots": [
+      "armor"
+    ],
+    "target": "human",
+    "material": "leather",
+    "family": "Spell-Fueling Armor",
+    "base_id": "studded-leather",
+    "model_name": "Couro batido",
+    "magic_kind": "armor",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
   }
 }

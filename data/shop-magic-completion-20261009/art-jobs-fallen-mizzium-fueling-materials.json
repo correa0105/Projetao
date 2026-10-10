@@ -1,0 +1,19 @@
+{
+  "jobs": [
+    {
+      "id": "material-fallen-armor",
+      "family": "Armor of the Fallen",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square flat surface filling every edge, no external background, object silhouette or complete armor. weathered muted olive-bronze and dark moss patinated metal, small ivory bone inlays, carefully engraved little skull emblems and solemn interlocking funerary knotwork, restrained pale bone highlights, believable age and fine scratches, dignified eerie necromantic craftsmanship, no red sinew, bright lava, purple neon, flowers or gothic lancet arches. Detailed painterly realism, tactile handcrafted surface, soft neutral directional lighting that preserves readable details at small size. Distribute small and medium scale material motifs uniformly across the whole surface: the material will be applied inside distinct existing armor models. No central medallion, staged arrangement, weapon, character, cast shadow, dark vignette, border, checkerboard, text, numbers, watermark or logo. This new family must have its own unmistakable original identity."
+    },
+    {
+      "id": "material-mizzium-armor",
+      "family": "Mizzium Armor",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square flat surface filling every edge, no external background, object silhouette or complete armor. original advanced fantasy mizzium alloy, shimmering cool silver steel with iridescent cobalt and icy cyan heat-tempered sheen, finely fitted narrow copper capillary channels and small copper rivet clusters, precise industrial foundry craftsmanship, fine brushed-grain material and readable bright metallic highlights, no heraldic badge, recognizable logos, lettering, skulls, botanical filigree, neon halos or rune script. Detailed painterly realism, tactile handcrafted surface, soft neutral directional lighting that preserves readable details at small size. Distribute small and medium scale material motifs uniformly across the whole surface: the material will be applied inside distinct existing armor models. No central medallion, staged arrangement, weapon, character, cast shadow, dark vignette, border, checkerboard, text, numbers, watermark or logo. This new family must have its own unmistakable original identity."
+    },
+    {
+      "id": "material-spell-fueling-armor",
+      "family": "Spell-Fueling Armor",
+      "prompt": "Use case: stylized-concept. One ORIGINAL premium fantasy game armor MATERIAL TEXTURE swatch, square flat surface filling every edge, no external background, object silhouette or complete armor. deep burgundy-red enamel on rich antique gold and copper armor material, angular physically engraved intersecting channels bearing small invented abstract arcane glyphs, channels with restrained violet-pink luminous inlay at a few intersections, powerful scholarly Thayan-knight-inspired original craftsmanship, clear warm polished highlights, tactile engraved groove depth, no real writing, letters, readable script, oversized diamond medallion, flowers, skulls or biological sinew. Detailed painterly realism, tactile handcrafted surface, soft neutral directional lighting that preserves readable details at small size. Distribute small and medium scale material motifs uniformly across the whole surface: the material will be applied inside distinct existing armor models. No central medallion, staged arrangement, weapon, character, cast shadow, dark vignette, border, checkerboard, text, numbers, watermark or logo. This new family must have its own unmistakable original identity."
+    }
+  ]
+}
