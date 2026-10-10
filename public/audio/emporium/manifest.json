@@ -15950,5 +15950,261 @@
     "sha256": "db381966b7046a2cebf7a5ac605415213042bb334a448ccc2c91c6d16c4c3324",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "battleaxe-of-agonizing-paralysis",
+    "path": "public/audio/emporium/battleaxe-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "ff6ae3ac6fac703feedcd260d5fdcc07f4a048426f77e24c9f57f545d73461d8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "club-of-agonizing-paralysis",
+    "path": "public/audio/emporium/club-of-agonizing-paralysis.wav",
+    "kind": "wood",
+    "sha256": "254db8b41565c7c04824c4b2bfb6e3fbd8c8ca7e4f48645d60c2f63290a46e09",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dagger-of-agonizing-paralysis",
+    "path": "public/audio/emporium/dagger-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "03f942b56b4f58474f3719e16c062d44dc01918fd882dd19fb68fe9dcf3a370f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "double-bladed-scimitar-of-agonizing-paralysis",
+    "path": "public/audio/emporium/double-bladed-scimitar-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "2a1dc0917891739b9ad108a94b7a9fd6ab4a287d3a5104d73b0dd09b6733c868",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "flail-of-agonizing-paralysis",
+    "path": "public/audio/emporium/flail-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "6fb95450fd2e8345237fff1a082f2e9d52aeebfab4af0300c8831443d3bdc8bc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "glaive-of-agonizing-paralysis",
+    "path": "public/audio/emporium/glaive-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "4e89460e6091ba98a1fe0b38406ed7cbcc8c460ed6ea1ce81d7383043e8a05d1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "greataxe-of-agonizing-paralysis",
+    "path": "public/audio/emporium/greataxe-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "e4a6b44a62eb377735e9b63549d97a747d89d613e97d5cf70030b0ee61f8ef81",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "greatclub-of-agonizing-paralysis",
+    "path": "public/audio/emporium/greatclub-of-agonizing-paralysis.wav",
+    "kind": "wood",
+    "sha256": "7a0019d0cd2f4043f5c853ac57c417a624d9278e8d51682687887645ae43aa4c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "greatsword-of-agonizing-paralysis",
+    "path": "public/audio/emporium/greatsword-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "14ea467c826035ededc5b147fc123952dcc627f6c7c1112517b452a490b7d177",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "halberd-of-agonizing-paralysis",
+    "path": "public/audio/emporium/halberd-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "6360f89e85fbef6575ec1ddeba151702d7d11785274b7666430da3de8d396253",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "handaxe-of-agonizing-paralysis",
+    "path": "public/audio/emporium/handaxe-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "18102a2aca7623eaaca2739ef67c3dc75b96118a4e1183db2ddd55b535752e95",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hooked-shortspear-of-agonizing-paralysis",
+    "path": "public/audio/emporium/hooked-shortspear-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "8c2a5856efe3df27d603985d2167506c9327cd52b7fa61e25644b3f37c47fe0a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "hoopak-of-agonizing-paralysis",
+    "path": "public/audio/emporium/hoopak-of-agonizing-paralysis.wav",
+    "kind": "wood",
+    "sha256": "fe51822a7b0302f7222db6528e9cb40036260816b96eaeb0321d577955230c52",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "javelin-of-agonizing-paralysis",
+    "path": "public/audio/emporium/javelin-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "7cf2c6bda792cc63c3257491831c1cb2fa5e501ff58bbe8e23840dd4292e0fec",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lance-of-agonizing-paralysis",
+    "path": "public/audio/emporium/lance-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "b2f9530217dd525e6fd5a109f19a99f05fc73339bff3f020ead31e3a009b0674",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "light-hammer-of-agonizing-paralysis",
+    "path": "public/audio/emporium/light-hammer-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "e6a84b227563be0f298bd7ed98a8cef3c1b9e80a9c04e0a37ede68f4d6f8fadb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "longsword-of-agonizing-paralysis",
+    "path": "public/audio/emporium/longsword-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "131b1845d4dae553f87ab72d83da1a55b86e6d660b5f58b1ea960ee3ea72ac3c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "mace-of-agonizing-paralysis",
+    "path": "public/audio/emporium/mace-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "4d7fa77d8537b5f7f95523602b553b2cb6386ad662c1646440f1ba261ca07612",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "maul-of-agonizing-paralysis",
+    "path": "public/audio/emporium/maul-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "a79bbd083a70da3c165d7ebb5d2be6e5ef8bf0ad1dbfdd13d14665353c801ce1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "morningstar-of-agonizing-paralysis",
+    "path": "public/audio/emporium/morningstar-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "7e5b36d28548139b146cbfccfac806427236fba4e78c41a5cad4125c6c1231bf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pike-of-agonizing-paralysis",
+    "path": "public/audio/emporium/pike-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "65140fc6b4b4562b66d9eb2c6cca1ac3df3de981ee89dc48c40c060d3b6db7b8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "quarterstaff-of-agonizing-paralysis",
+    "path": "public/audio/emporium/quarterstaff-of-agonizing-paralysis.wav",
+    "kind": "wood",
+    "sha256": "d865406dd03347c397fca34b765e672521c8c944ce81fd78fe58871168385744",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "rapier-of-agonizing-paralysis",
+    "path": "public/audio/emporium/rapier-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "6dded1bcccf04a3322c9833499b0adc681336123877d74465417b2e312e89f0e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "scimitar-of-agonizing-paralysis",
+    "path": "public/audio/emporium/scimitar-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "4c3f1e90d9f07ffc73b8455f21fc8b233366f441f862142b354d9376b6f3313f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shortsword-of-agonizing-paralysis",
+    "path": "public/audio/emporium/shortsword-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "762ea2e77237d8fab60577e6a2e99547b6a566955ee4a7cd2812f992da57ddc7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "sickle-of-agonizing-paralysis",
+    "path": "public/audio/emporium/sickle-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "806b3cfb6009028cfe17ca3cf3ae55085d93ca6f708a6a5c333a157f1d67f866",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "spear-of-agonizing-paralysis",
+    "path": "public/audio/emporium/spear-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "1157e1a2b41ec8ab376bd4067990049f0106b8f34771ebf5637ef70d527b5be5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "trident-of-agonizing-paralysis",
+    "path": "public/audio/emporium/trident-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "01606e971daf2827522b3f2844cc3e94f59bb1daca88a1b292db5afcecebc3c9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "war-pick-of-agonizing-paralysis",
+    "path": "public/audio/emporium/war-pick-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "871df7f2326643940ed7acdf3206c0b936efa3eeecc3d1101a8e8de81b212058",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "warhammer-of-agonizing-paralysis",
+    "path": "public/audio/emporium/warhammer-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "37629b1c65e42d7d3ffd1c462143a56349d7e9a720d56d76ca29a7af58047998",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "whip-of-agonizing-paralysis",
+    "path": "public/audio/emporium/whip-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "a6a5df54fbfe65783d9013b6a5f8dbe2fcf064d241786cac2acc1ce80f92bb01",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "yklwa-of-agonizing-paralysis",
+    "path": "public/audio/emporium/yklwa-of-agonizing-paralysis.wav",
+    "kind": "metal",
+    "sha256": "51115c6f6658dd439b285fa02ef6eed0c5a78e5e048c0f16f6a1d347fcd7293c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

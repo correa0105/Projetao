@@ -10959,5 +10959,571 @@
     "magic_kind": "weapon",
     "source_edition": "D&D 5e (2014); modelo físico de 2024",
     "review": "approved"
+  },
+  "battleaxe-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Machado de batalha)",
+    "description": "Forma: Machado de batalha. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O machado de batalha da paralisia agonizante tem runas finas no metal. Um golpe que reduz a zero PV ativa o efeito descrito sobre a criatura.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "battleaxe",
+    "model_name": "Machado de batalha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "club-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Clava)",
+    "description": "Forma: Clava. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "Esta clava tem construção simples e um encanto +3. As runas aparecem na criatura atingida pelo gatilho de zero PV.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "club",
+    "model_name": "Clava",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "dagger-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Adaga)",
+    "description": "Forma: Adaga. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A adaga da paralisia agonizante cabe numa bainha curta. Leia o que acontece ao alvo reduzido a zero PV antes de escolher a sintonia.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 perfurante. Propriedades: acuidade, leve, arremesso. Alcance 20/60 pés. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "dagger",
+    "model_name": "Adaga",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "As duas lâminas desta cimitarra compartilham o mesmo encanto. O ataque de ação bônus mantém seu dano básico próprio.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d4 cortante. Propriedades: duas mãos. Depois de atacar com ela na ação Atacar do seu turno, uma ação bônus imediata permite outro ataque corpo a corpo com a arma, cujo dano básico é 1d4 cortante. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "flail-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Mangual)",
+    "description": "Forma: Mangual. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O mangual tem elos firmes e runas no acabamento. A exaustão do efeito surge no começo de cada turno do alvo paralisado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "flail",
+    "model_name": "Mangual",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "glaive-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Glaive)",
+    "description": "Forma: Glaive. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A glaive conserva alcance e manejo com duas mãos. O encanto +3 acompanha a arma inteira, com um gatilho preciso para a paralisia.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "glaive",
+    "model_name": "Glaive",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "greataxe-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Machado grande)",
+    "description": "Forma: Machado grande. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O machado grande conserva seu peso e a exigência de Força. A sintonia traz o bônus +3 e o efeito das runas infernais.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d12 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "greataxe",
+    "model_name": "Machado grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "greatclub-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Clava grande)",
+    "description": "Forma: Clava grande. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A clava grande continua pedindo ambas as mãos. O alvo reduzido a zero PV pelo encanto é curado para um PV e fica paralisado.",
+    "rules_summary": "Arma simples de duas mãos. Dano básico 1d8 contundente. Propriedades: duas mãos. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "greatclub",
+    "model_name": "Clava grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "greatsword-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Espada grande)",
+    "description": "Forma: Espada grande. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A espada grande da paralisia agonizante tem fio longo. Mantenha junto à ficha a regra de exaustão que acompanha o alvo paralisado.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "halberd-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Alabarda)",
+    "description": "Forma: Alabarda. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A alabarda mantém lâmina, ponta e alcance. Seu gatilho de zero PV usa o ataque feito com esta arma.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 cortante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "halberd",
+    "model_name": "Alabarda",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "handaxe-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Machadinha)",
+    "description": "Forma: Machadinha. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A machadinha conserva o arremesso do modelo. O bônus +3 acompanha suas jogadas de ataque e dano.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 cortante. Propriedades: leve, arremesso. Alcance 20/60 pés. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "handaxe",
+    "model_name": "Machadinha",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "hooked-shortspear-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Lança curta com gancho)",
+    "description": "Forma: Lança curta com gancho. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A lança curta de gancho conserva a opção de derrubar. Confira o gatilho de reduzir a zero PV quando substituir o dano por uma tentativa.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 perfurante. Propriedades: leve. Ao acertar, pode substituir o dano por uma tentativa de derrubar: o alvo faz resistência de Força, CD 8 + seu modificador de Força + seu bônus de proficiência; falhar deixa-o caído. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "hooked-shortspear",
+    "model_name": "Lança curta com gancho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "hoopak-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Hoopak)",
+    "description": "Forma: Hoopak. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O hoopak mantém ponta e funda em modos distintos. O dano básico de cada uso continua separado do encanto +3.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d6 perfurante. Propriedades: munição, acuidade, duas mãos. Alcance 40/160 pés. Usa balas de funda compatível. A ponta funciona no corpo a corpo com 1d6 perfurante, sem munição. O uso à distância emprega balas de funda, alcance 40/160 pés e dano básico 1d4 contundente. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "wood",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "hoopak",
+    "model_name": "Hoopak",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "javelin-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Azagaia)",
+    "description": "Forma: Azagaia. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A azagaia da paralisia agonizante tem ponta estreita e cabo longo. Recupere a peça após o arremesso para continuar usando seu encanto.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso. Alcance 30/120 pés. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "javelin",
+    "model_name": "Azagaia",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "lance-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Lança de cavalaria)",
+    "description": "Forma: Lança de cavalaria. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A lança de cavalaria mantém o manejo conforme você está montado ou a pé. As runas e o bônus +3 continuam na mesma arma.",
+    "rules_summary": "Arma marcial de duas mãos quando não estiver montado. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Montado, pode manejá-la com uma mão. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "lance",
+    "model_name": "Lança de cavalaria",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "light-hammer-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Martelo leve)",
+    "description": "Forma: Martelo leve. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "Este martelo leve guarda o mesmo poder de armas maiores. A sintonia permite usar o bônus e o efeito de paralisia descritos.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 contundente. Propriedades: leve, arremesso. Alcance 20/60 pés. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "light-hammer",
+    "model_name": "Martelo leve",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "longsword-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Espada longa)",
+    "description": "Forma: Espada longa. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A espada longa conserva seu uso versátil. A condição causada pelas runas pode ser removida por Restauração Menor ou magia semelhante.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 cortante. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "mace-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Maça)",
+    "description": "Forma: Maça. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A maça tem runas gravadas junto à cabeça. A criatura afetada ganha exaustão no início de cada turno em que permanecer paralisada.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "mace",
+    "model_name": "Maça",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "maul-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Malho)",
+    "description": "Forma: Malho. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O malho da paralisia agonizante exige espaço e duas mãos. O encanto trata o alvo que chega a zero PV de uma forma própria.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 2d6 contundente. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "maul",
+    "model_name": "Malho",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "morningstar-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Estrela da manhã)",
+    "description": "Forma: Estrela da manhã. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A estrela da manhã conserva espinhos e dano perfurante. Quando a paralisia do encanto é removida, as runas do alvo desaparecem.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "morningstar",
+    "model_name": "Estrela da manhã",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "pike-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Pique)",
+    "description": "Forma: Pique. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O pique mantém a ponta distante e o alcance longo. Suas runas concedem +3 ao ataque e dano feitos com a arma.",
+    "rules_summary": "Arma marcial de duas mãos. Dano básico 1d10 perfurante. Propriedades: pesada, alcance, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "pike",
+    "model_name": "Pique",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "quarterstaff-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Bordão)",
+    "description": "Forma: Bordão. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O bordão conserva o dano versátil com duas mãos. A regra de paralisia é ativada quando a arma reduz uma criatura a zero PV.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d8 contundente. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "quarterstaff",
+    "model_name": "Bordão",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "rapier-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Rapieira)",
+    "description": "Forma: Rapieira. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A rapieira conserva a acuidade e o fio estreito. Escolha o atributo do ataque pelo modelo e aplique o bônus +3 do encanto.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: acuidade. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "scimitar-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A cimitarra mantém a curva e o manejo leve. A sintonia também inclui o efeito de runas que precisa ser acompanhado na mesa.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 cortante. Propriedades: acuidade, leve. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "shortsword-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Espada curta)",
+    "description": "Forma: Espada curta. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A espada curta da paralisia agonizante cabe bem no cinto. Sua regra devolve o alvo afetado a um PV quando o gatilho ocorre.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d6 perfurante. Propriedades: acuidade, leve. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "sickle-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Foice)",
+    "description": "Forma: Foice. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A foice curta conserva sua lâmina pequena. O tamanho da peça mantém inteiro o efeito descrito do encanto +3.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d4 cortante. Propriedades: leve. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "sickle",
+    "model_name": "Foice",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "spear-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Lança)",
+    "description": "Forma: Lança. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A lança da paralisia agonizante pode ser arremessada pelo alcance do modelo. No corpo a corpo, conserva a opção de dano versátil.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d6 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d8 perfurante. Alcance 20/60 pés. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "spear",
+    "model_name": "Lança",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "trident-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Tridente)",
+    "description": "Forma: Tridente. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "As três pontas formam uma só arma encantada. Conte o bônus +3 uma vez em cada jogada aplicável.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso, versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Alcance 20/60 pés. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "trident",
+    "model_name": "Tridente",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "war-pick-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Picareta de guerra)",
+    "description": "Forma: Picareta de guerra. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A picareta de guerra conserva a ponta estreita. A paralisia acompanha a criatura levada a zero PV pela arma.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 perfurante. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 perfurante. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "war-pick",
+    "model_name": "Picareta de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "warhammer-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Martelo de guerra)",
+    "description": "Forma: Martelo de guerra. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O martelo de guerra conserva o dano contundente. A exaustão posterior pertence ao efeito das runas no alvo paralisado.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d8 contundente. Propriedades: versátil. Com duas mãos, o dano versátil é 1d10 contundente. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "warhammer",
+    "model_name": "Martelo de guerra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "whip-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Chicote)",
+    "description": "Forma: Chicote. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "O chicote mantém flexibilidade e alcance. O encanto +3 também carrega o gatilho de zero PV que deve ser conferido em cada uso.",
+    "rules_summary": "Arma marcial de uma mão. Dano básico 1d4 cortante. Propriedades: acuidade, alcance. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "whip",
+    "model_name": "Chicote",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014); modelo físico de 2024",
+    "review": "approved"
+  },
+  "yklwa-of-agonizing-paralysis": {
+    "name": "Arma da paralisia agonizante (Yklwa)",
+    "description": "Forma: Yklwa. Arma +3; ao reduzir uma criatura a zero PV, restaura-a a um PV e aplica paralisia agonizante. Requer sintonia.",
+    "merchant_comment": "A yklwa conserva o cabo curto, a lâmina larga e o arremesso do modelo. Sua sintonia ativa as runas da paralisia agonizante.",
+    "rules_summary": "Arma simples de uma mão. Dano básico 1d8 perfurante. Propriedades: arremesso. Alcance 10/30 pés. Requer sintonia. Concede +3 nas jogadas de ataque e dano feitas com esta arma mágica. Quando a arma reduz uma criatura a zero pontos de vida, ela não morre: surgem runas infernais como se gravadas na carne e ela é curada para um ponto de vida. Passa a estar paralisada até a condição ser removida por Restauração Menor ou magia semelhante. Quando a condição é removida, as runas desaparecem. No início de cada turno da criatura, enquanto estiver paralisada por este efeito, sofre dor intensa e ganha um nível de exaustão. O poder não descreve dano adicional rolado a cada turno nem um número de cargas. A paralisia, a exaustão e sua remoção precisam ser aplicadas pelas regras da mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Weapon of Agonizing Paralysis",
+    "base_id": "yklwa",
+    "model_name": "Yklwa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
   }
 }

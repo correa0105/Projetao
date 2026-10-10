@@ -322,6 +322,26 @@ try {
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger);
   }
+  const paralyzing = completion.items.filter((x: any) => x.raw_data.magic_family === 'Weapon of Agonizing Paralysis');
+  if (ids.includes('greatsword-of-agonizing-paralysis')) {
+    assert.equal(paralyzing.length, 32);
+    assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: null, slot: 'off_hand' })).status, 200);
+    for (const item of paralyzing) {
+      assert.equal(item.raw_data.upstream_source, 'CoA');
+      assert.equal(item.raw_data.upstream_facts.bonusWeapon, '+3');
+      assert.equal(item.raw_data.attunement, true);
+      assert(item.raw_data.source_edition.includes('2014'));
+      assert.match(item.raw_data.rules_summary, /curada para um ponto de vida/);
+      assert.match(item.raw_data.rules_summary, /Restauração Menor/);
+      assert.match(item.raw_data.rules_summary, /um nível de exaustão/);
+      if (!rulesReviewIds || rulesReviewIds.has(item.id)) {
+        assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'main_hand' })).status, 200, item.id);
+        if (item.raw_data.two_handed)
+          assert.equal((await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: item.id, slot: 'off_hand' })).status, 400, item.id);
+      }
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger);
+  }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
   );

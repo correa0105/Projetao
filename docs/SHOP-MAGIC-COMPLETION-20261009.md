@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **663 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **695 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -383,3 +383,13 @@ Eberron: Forge of the Artificer (2025), página 112, foi conferido pelos dados p
 API de todos os 663 itens passou imagens/sons, compra, saldo, ledger, replay, preços administrativos, conservação do catálogo e consumo. Os 80 conjuntos anteriores foram reconferidos, os 51 endpoints de regras novas passaram e todos os modelos novos puderam ser equipados. Os testes em três larguras revisaram 51 artes/falas/fontes novas na loja completa de 663 itens, com ID/skin selecionada corretos sobre os baús. TypeScript passou; runtime, servidor e bundles anteriores validados permanecem iguais.
 
 Release `magic-completion-v10-20261010` saudável, backup anterior mantido. 60 tabelas e toda oferta anterior integralmente idênticas, somente 51 adições. 1.365 mídias/referências e 43 bundles conferidos; Lava/Corrente elétrica e 21 VFX anteriores preservados, ilustrador ativo e trabalho independente intacto. Restam 2.413 candidatos, além das opções de magia/alvo por expandir.
+
+## Décimo primeiro lote: paralisia agonizante
+
+Publicados 32 modelos de arma da paralisia agonizante. Um material original produzido por `image_gen.imagegen` combina aço negro, prata gravada e pequenos motivos de esmalte vermelho. Cada SVG nativo conserva sua forma física e tem fala e foley próprios. Prompts em `art-jobs-agonizing-material.json`, procedência em `art-manifest.json`, PNG em `.local/shop-completion/native/material-agonizing-paralysis.png` e 33 novos arquivos portáveis em `public/shop/magic-completion-20261009`. Três folhas de modelos e três prévias novas sobre o baú foram revistas; as 663 ofertas e artes anteriores ficam iguais.
+
+Chains of Asmodeus, página 271, foi conferido nos dados primários do 5etools. Requer sintonia e concede +3 ao ataque/dano. Ao reduzir uma criatura a zero PV, ela não morre: runas infernais aparecem, ela é curada para um PV e fica paralisada até Restauração Menor ou magia semelhante remover a condição. As runas somem quando a condição é removida. No início de cada turno enquanto afetada, a criatura ganha um nível de exaustão e sofre a dor descrita; não foi inventado dano periódico rolado nem cargas. A edição de 2014 do encanto está separada da base física moderna. Condições e poderes continuam para aplicação pela mesa.
+
+API em banco descartável passou os 695 itens para imagens/sons únicos, compras, replay, saldo, ledger, preços administrativos, catálogo anterior e consumo. Os 80 conjuntos de seis peças continuam corretos. As 32 fontes novas e o equipamento de todos os modelos novos passaram, incluindo bloqueio de segunda mão para armas de duas mãos. Loja completa em 1500/760/390 px: 32 novas imagens, falas, regras e referências, baús com ID/skin corretos e sem recorte. TypeScript passou; servidor e 43 bundles anteriores validados ficam idênticos.
+
+Release `magic-completion-v11-20261010` saudável, com backup anterior preservado. 60 tabelas e todas as ofertas anteriores têm linhas integrais iguais; somente 32 adições. 1.430 mídias/referências publicadas conferem com os arquivos validados. Lava/Corrente elétrica e 21 VFX anteriores preservados, ilustrador ativo, alterações independentes intactas. Restam 2.381 candidatos, além das opções de magia/alvo por expandir.
