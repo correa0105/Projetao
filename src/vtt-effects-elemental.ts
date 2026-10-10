@@ -3,6 +3,7 @@ import type { EffectFootprint } from './vtt-effect-footprint';
 import { elementalMaterial } from './vtt-elemental-materials';
 import { physicalProp } from './vtt-effects-physical';
 import { temporalField } from './vtt-effects-temporal';
+import { lavaMaterial } from './vtt-lava-material';
 import { alpha, fract, glow, star, tau, tint } from './vtt-effects-primitives';
 type Random = (i: number) => number;
 export const elementalEffectKinds = new Set([
@@ -71,6 +72,8 @@ function electric(
 ) {
   // Three staggered links in an open chain: energy passes from emitter to
   // emitter, with fresh forks on each discharge rather than a closed outline.
+  c.save();
+  c.scale(1.32, 1.32);
   const nodes = Array.from({ length: 5 }, (_, i) => {
     const a = (i * tau) / 5 + 0.4,
       r = 92 + random(i + 17) * 19;
@@ -90,7 +93,7 @@ function electric(
       (a.x + b.x) / 2,
       (a.y + b.y) / 2,
       length * 1.08,
-      40 + power * 8,
+      60 + power * 12,
       Math.atan2(b.y - a.y, b.x - a.x),
       Math.min(1, 0.42 + power * 0.58),
       color,
@@ -98,6 +101,7 @@ function electric(
     glow(c, b.x, b.y, 7 + power * 10, color, power * 0.4);
     glow(c, b.x, b.y, 2 + power * 2, '#effaff', power * 0.95);
   }
+  c.restore();
 }
 export function drawElementalEffect(
   c: CanvasRenderingContext2D,
@@ -115,26 +119,12 @@ export function drawElementalEffect(
     color = e.color;
   if (kind === 'chain-lightning') electric(c, t, random, front, color);
   else if (kind === 'lava') {
-    if (!front) elementalMaterial(c, 'lava', t * 0.55, 0, 0, 268, 268, random(27) * tau, 0.96);
-    for (let i = 0; i < 9; i++) {
-      const u = fract(t * 0.33 + random(i + 12)),
-        a = random(i + 45) * tau,
-        r = 74 + random(i + 62) * 39;
-      if (Math.sin(a) > 0 !== front) continue;
-      const x = Math.cos(a) * r,
-        y = Math.sin(a) * r,
-        fade = envelope(u);
-      glow(c, x, y, 8 + u * 9, '#f59024', fade * 0.13);
-      physicalProp(
-        c,
-        'droplet',
-        x + u * 5,
-        y - Math.sin(u * Math.PI) * 17,
-        3 + random(i) * 3,
-        a,
-        fade * 0.72,
-        '#ff9f29',
-      );
+    if (!front) {
+      c.save();
+      c.rotate(random(27) * tau);
+      c.globalAlpha *= 0.94;
+      lavaMaterial(c, t, 274);
+      c.restore();
     }
   } else if (kind === 'bless') {
     if (!front) {

@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "Use case: stylized-concept. ONE original premium fantasy VTT lava surface sprite. Camera EXACT orthographic 90-degree top-down view of a flat molten lava puddle on the ground, no perspective/isometric, no raised volcano or crater rim. Entire irregular organically lobed puddle centered inside square canvas with generous fully transparent margins. About 65 percent of its area is flowing viscous molten lava: broad deep orange-red pools with warm orange/yellow swirls, bright narrow highlights describing convection, subtle fine bubbling and darker red cooling patches. Only 5 to 7 isolated asymmetrical dark charcoal basalt crust islands of very different sizes float within the melt, with realistic pitted matte texture, subtle cooled folding and naturally eroded incandescent edges. Coarse irregular rocky perimeter breaks into little dark chips, alpha fades cleanly outside it. The melt is a continuous volumetric liquid surface, not thin glowing crack outlines. Absolutely NO Voronoi honeycomb, polygon-cell network, straight geometric cracks, starburst, radial spokes, regular ring, flames, smoke, airborne spray, floating spheres, magical runes, token, character, floor beyond the puddle, background glow, text, border, watermark. Detailed painted realism matching premium fantasy game inventory/token art; believable hot viscous material and rough cool rock, enough dark contrast for a character placed above the center; no oversaturated white disc. Deliver single complete original surface with genuine native transparent alpha.",
+  "native": ".local/lava-flow-20261010/native.png",
+  "native_sha256": "2bec918d7b56c388258b8f7e4c40dc3c83e750158b36112330b7eb32c57c3577",
+  "path": "public/vtt/lava-flow-20261010/magma-surface.webp",
+  "sha256": "c84e81d4d66b8fe5f48d56d8c0886d89bd4ecab079ad7da19c7c41c7da65aaef",
+  "width": 768,
+  "height": 768,
+  "review": "approved",
+  "animation": "Native WebGL convection over the original texture; no edited or baked source frames.",
+  "review_notes": "Revisão do renderer real com personagem no mapa e miniatura, em desktop e 390px; fluxo GPU evolui 10.9% entre estados, ciclo de 6.4s sem emenda, repouso estável, alfa limpo e seis efeitos em 0.4ms no QA local. Sem malha poligonal ou jatos estáticos."
+}

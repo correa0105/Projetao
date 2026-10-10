@@ -233,7 +233,7 @@ effectLibrary.push(
     name: 'Lava',
     color: '#fa6d32',
     group: 'Elementos',
-    description: 'Crosta escura, rachaduras ramificadas quentes e pequenos jatos de fogo.',
+    description: 'Magma em fluxo contínuo entre ilhas irregulares de crosta vulcânica.',
   },
   {
     kind: 'runes',

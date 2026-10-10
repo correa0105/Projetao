@@ -17,12 +17,14 @@ import {effectFootprint} from '/src/vtt-effect-footprint.ts';
 import {seededRandom} from '/src/vtt-effects-primitives.ts';
 import {effectMaterialsReady} from '/src/vtt-effects-materials.ts';
 import {physicalPropsReady} from '/src/vtt-effects-physical.ts';
+import {elementalMaterialsReady} from '/src/vtt-elemental-materials.ts';
+import {lavaSurfaceReady} from '/src/vtt-lava-material.ts';
 import {animatedAssets} from '/shared/vtt-animated-assets.ts';
 import {drawAnimatedAsset} from '/src/vtt-animated-assets.ts';
 import {nativeFlowCount,nativeFlowCacheSize,nativeArcCacheSize} from '/src/vtt-effects-native-flow.ts';
 import {temporalPageCount,temporalTileCount} from '/src/vtt-effects-temporal.ts';
 import {rebuiltEffectKinds} from '/src/vtt-effects-rebuilt.ts';
-await Promise.all([effectMaterialsReady,physicalPropsReady]);
+await Promise.all([effectMaterialsReady,physicalPropsReady,elementalMaterialsReady,lavaSurfaceReady]);
 const art=new Image();art.src='` +
     (process.env.VTT_EFFECT_REVIEW_TOKEN
       ? '/test-results/private-effect-review.png'
@@ -52,7 +54,11 @@ focused(start=0){sheet(effectLibrary.filter(e=>rebuiltEffectKinds.has(e.kind)||e
 petrify(){const model=effectLibrary.find(e=>e.kind==='petrify');return{low:drawEffect(model,4,false,undefined,.25),high:drawEffect(model,4,false,undefined,1)};}};
 </script></body></html>`,
 );
-const server = await createServer({ server: { host: '127.0.0.1', port: 0 } });
+const server = await createServer({
+  cacheDir: 'node_modules/.vite-cinematic-assets-review',
+  optimizeDeps: { entries: ['test-results/vtt-cinematic-assets.html'] },
+  server: { host: '127.0.0.1', port: 0 },
+});
 await server.listen();
 const browser = await chromium.launch({ channel: 'msedge', headless: true }),
   page = await browser.newPage({ viewport: { width: 1900, height: 1100 } }),

@@ -30,7 +30,9 @@ export const elementalMaterialsReady = Promise.all(
     async (key) => {
       if (typeof Image === 'undefined') return;
       const img = new Image();
-      img.src = `/vtt/elemental-20261009/${key}.webp`;
+      img.src = key.startsWith('electric-')
+        ? `/vtt/chain-lightning-20261010/${key}.webp`
+        : `/vtt/elemental-20261009/${key}.webp`;
       try {
         await img.decode();
         pages.set(key, img);

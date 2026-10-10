@@ -1,0 +1,22 @@
+{
+  "generator": "scripts/build-vtt-chain-lightning-size.py",
+  "provenance": "Existing original editable native channel generator; only primary/fork widths increased. Paths, seeds, envelope, timing and colors unchanged.",
+  "width": 480,
+  "height": 128,
+  "frames": 32,
+  "fps": 24,
+  "gutter": 2,
+  "primary_width": 3.4,
+  "branch_width": 1.25,
+  "minor_width": 0.42,
+  "files": [
+    {
+      "path": "public/vtt/chain-lightning-20261010/electric-0.webp",
+      "sha256": "195d4e7f39d793d49d0118f4320dc45f98cefc59f1452201b6d0754785cc8907"
+    },
+    {
+      "path": "public/vtt/chain-lightning-20261010/electric-1.webp",
+      "sha256": "fcc41d66f9890affeb4586caefc5561f6d5a267a6b0726fe49f312fd2095d9cc"
+    }
+  ]
+}
