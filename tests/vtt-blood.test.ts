@@ -40,24 +40,40 @@ test('hits add small separated splashes, partial healing fades the same wounds a
   change(100);
   assert.equal(scene.blood.length, 3);
 });
-test('movement at any HP and around corners adds no trails or droplets', () => {
-  for (const hp of [75, 50, 1]) {
-    const { scene, token, change } = fixture();
-    change(hp);
-    const n = scene.blood.length;
-    for (let i = 0; i < 40; i++) change(hp, i % 2 ? 600 : 200);
-    const old = structuredClone(token);
-    token.y = 400;
-    applyTokenBlood(scene, token, old, [
-      { x: 200, y: 400 },
-      { x: 600, y: 400 },
-    ]);
-    assert.equal(scene.blood.length, n);
-    assert.ok(scene.blood.every((d) => d.kind === 'splash'));
-    assert.equal(token.hp, hp);
-  }
+test('small pools accumulate per 15 ft only at half HP or below, with no idle/replay spam', () => {
+  const { scene, token, change } = fixture();
+  scene.grid.size = 70; scene.grid.scale = 5; scene.grid.unit = 'ft';
+  change(75, 200); change(75, 410);
+  assert.equal(scene.blood.filter(d=>d.kind==='trail').length, 0);
+  change(50);
+  change(50, 480); change(50, 550);
+  assert.equal(scene.blood.filter(d=>d.kind==='trail').length, 0);
+  change(50, 620);
+  assert.equal(scene.blood.filter(d=>d.kind==='trail').length, 1);
+  assert.equal(scene.blood.at(-1)!.x, 620);
+  for(let i=0;i<50;i++) change(50);
+  assert.equal(scene.blood.filter(d=>d.kind==='trail').length, 1);
+  change(50, 1040);
+  assert.equal(scene.blood.filter(d=>d.kind==='trail').length, 3);
+  assert.equal(token.hp, 50);
+  change(80, 1110); change(50); change(50, 1250);
+  assert.equal(scene.blood.filter(d=>d.kind==='trail').length, 3);
+  token.bleeds=false; change(20, 1400);
+  assert.equal(token.blood,null);
+  assert.equal(scene.blood.filter(d=>d.kind==='trail').length,3);
   assert.ok(isBloodied({ hp: 50, maxHp: 100 }));
   assert.ok(!isBloodied({ hp: 51, maxHp: 100 }));
+});
+
+test('metric grids and corner paths put pools at the accepted 15 ft position', () => {
+  const {scene,token,change}=fixture();
+  scene.grid.size=70;scene.grid.scale=1.524;scene.grid.unit='m';scene.grid.diagonal='euclidean';
+  change(50);
+  const old=structuredClone(token);token.x=340;token.y=270;
+  applyTokenBlood(scene,token,old,[{x:270,y:200},{x:270,y:270},{x:340,y:270}]);
+  const pool=scene.blood.find(d=>d.kind==='trail')!;
+  assert.equal(pool.x,340);assert.equal(pool.y,270);
+  assert.ok(pool.size<scene.grid.size*.2);
 });
 test('room can disable blood entirely without changing HP', () => {
   const { scene, token, change } = fixture();

@@ -70,8 +70,8 @@ function electric(
   front: boolean,
   color: string,
 ) {
-  // Three staggered links in an open chain: energy passes from emitter to
-  // emitter, with fresh forks on each discharge rather than a closed outline.
+  // Five staggered links close the circuit. Each keeps its textured discharge,
+  // including the final connection from the fifth emitter back to the first.
   c.save();
   c.scale(1.32, 1.32);
   const nodes = Array.from({ length: 5 }, (_, i) => {
@@ -79,9 +79,9 @@ function electric(
       r = 92 + random(i + 17) * 19;
     return { x: Math.cos(a) * r, y: Math.sin(a) * r };
   });
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < nodes.length; i++) {
     const a = nodes[i],
-      b = nodes[i + 1],
+      b = nodes[(i + 1) % nodes.length],
       u = fract(t * 1.35 - i * 0.16),
       power = Math.exp(-u * 7);
     if (a.y + b.y > 0 !== front) continue;

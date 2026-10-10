@@ -348,6 +348,33 @@ export function Profiles({ user }: { user: User }) {
     if (!r.ok) throw Error(data.error);
     return data.path as string;
   }
+  const profileActions = (
+    <div className="profiles-top">
+      <button className="social-back" onClick={() => (location.hash = 'profiles')}>
+        <ArrowLeft size={16} />
+        {target ? 'Todos os perfis' : 'Perfis da Alvorada'}
+      </button>
+      <div>
+        <button onClick={() => visitProfile(user.id)}>
+          <UserRound size={15} />
+          Meu perfil
+        </button>
+        <button onClick={() => setSocialOpen((v) => !v)} aria-expanded={socialOpen}>
+          <MessageSquare size={16} />
+          Amigos e chat
+          {inbox.some((i) => i.unread > 0) && (
+            <b className="social-unread">{inbox.reduce((n, i) => n + i.unread, 0)}</b>
+          )}
+        </button>
+        {profile?.is_owner && (
+          <button onClick={() => setEditing(structuredClone(profile.document))}>
+            <Settings2 size={15} />
+            Personalizar perfil
+          </button>
+        )}
+      </div>
+    </div>
+  );
   return (
     <section
       className={`profiles-page ${profile ? 'visiting' : ''}`}
@@ -360,31 +387,7 @@ export function Profiles({ user }: { user: User }) {
           : undefined
       }
     >
-      <div className="profiles-top">
-        <button className="social-back" onClick={() => (location.hash = 'profiles')}>
-          <ArrowLeft size={16} />
-          {target ? 'Todos os perfis' : 'Perfis da Alvorada'}
-        </button>
-        <div>
-          <button onClick={() => visitProfile(user.id)}>
-            <UserRound size={15} />
-            Meu perfil
-          </button>
-          <button onClick={() => setSocialOpen((v) => !v)} aria-expanded={socialOpen}>
-            <MessageSquare size={16} />
-            Amigos e chat
-            {inbox.some((i) => i.unread > 0) && (
-              <b className="social-unread">{inbox.reduce((n, i) => n + i.unread, 0)}</b>
-            )}
-          </button>
-          {profile?.is_owner && (
-            <button onClick={() => setEditing(structuredClone(profile.document))}>
-              <Settings2 size={15} />
-              Personalizar perfil
-            </button>
-          )}
-        </div>
-      </div>
+      {!profile && profileActions}
       {error && (
         <div className="social-error" role="alert">
           {error}
@@ -600,8 +603,10 @@ export function Profiles({ user }: { user: User }) {
                   aria-hidden={panel !== 'achievements'}
                   inert={panel !== 'achievements'}
                 >
-                  <span className="social-eyebrow">Memórias de uma jornada</span>
-                  <h2>Conquistas de {current?.name || profile.name}</h2>
+                  <header className="public-panel-heading">
+                    <span className="social-eyebrow">Memórias de uma jornada</span>
+                    <h2>Conquistas de {current?.name || profile.name}</h2>
+                  </header>
                   {details && (
                     <>
                       <div className="cabinet-room-stage public-cabinet-stage">
@@ -659,8 +664,10 @@ export function Profiles({ user }: { user: User }) {
                   aria-hidden={panel !== 'sheet'}
                   inert={panel !== 'sheet'}
                 >
-                  <span className="social-eyebrow">O registro do aventureiro</span>
-                  <h2>Ficha de {current?.name || profile.name}</h2>
+                  <header className="public-panel-heading">
+                    <span className="social-eyebrow">O registro do aventureiro</span>
+                    <h2>Ficha de {current?.name || profile.name}</h2>
+                  </header>
                   {current && (
                     <>
                       <p>
@@ -727,8 +734,10 @@ export function Profiles({ user }: { user: User }) {
                   aria-hidden={panel !== 'cards'}
                   inert={panel !== 'cards'}
                 >
-                  <span className="social-eyebrow">As histórias que o acompanham</span>
-                  <h2>Cartas de {current?.name || profile.name}</h2>
+                  <header className="public-panel-heading">
+                    <span className="social-eyebrow">As histórias que o acompanham</span>
+                    <h2>Cartas de {current?.name || profile.name}</h2>
+                  </header>
                   <CardCollection
                     key={current?.id || profile.id}
                     items={(details?.cards || []).map((card) => ({
@@ -764,6 +773,7 @@ export function Profiles({ user }: { user: User }) {
             </div>
             <ProfileSignpost panels={panels} selected={panel} onSelect={setPanel} />
           </div>
+          {profileActions}
           <header className="visited-profile-heading">
             {avatar(profile.avatar, profile.name)}
             <div>

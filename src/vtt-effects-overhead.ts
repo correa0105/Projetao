@@ -13,6 +13,10 @@ import { drawOrganicEffect } from './vtt-effects-organic';
 import { drawRebuiltEffect } from './vtt-effects-rebuilt';
 import { drawElementalEffect } from './vtt-effects-elemental';
 import { drawArcanaEffect } from './vtt-effects-arcana';
+import { drawArcaneBarrier } from './vtt-arcane-barrier';
+import { drawFireHeat } from './vtt-fire-heat';
+import { drawFlySwarm } from './vtt-fly-swarm';
+import { drawRefinedArcana } from './vtt-arcana-refined';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -142,7 +146,7 @@ function ribbons(
 // Transparent top-down sprites have an irregular body, not a coin-shaped base.
 // Surface materials follow alpha. Airborne effects rise from the token center
 // along the vertical world axis, projected toward a camera directly above it.
-export function drawOverheadEffect(
+function drawOverheadBase(
   c: CanvasRenderingContext2D,
   e: TokenEffect,
   f: EffectFootprint,
@@ -155,6 +159,12 @@ export function drawOverheadEffect(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawArcaneBarrier(c, e, f, t, pass)) return;
+  if (e.kind === 'swarm') {
+    drawFlySwarm(c, f, t, random, front, detail, e.color);
+    return;
+  }
+  if (drawRefinedArcana(c, e, f, t, random, front)) return;
   if (drawArcanaEffect(c, e, f, t, random, front, detail)) return;
   if (drawElementalEffect(c, e, f, t, random, front, detail)) return;
   if (drawRebuiltEffect(c, e, f, t, random, front, detail)) return;
@@ -264,4 +274,17 @@ export function drawOverheadEffect(
       c.restore();
     }
   }
+}
+
+export function drawOverheadEffect(
+  c: CanvasRenderingContext2D,
+  e: TokenEffect,
+  f: EffectFootprint,
+  t: number,
+  random: Random,
+  pass: 'behind' | 'front',
+  detail: number,
+) {
+  drawOverheadBase(c, e, f, t, random, pass, detail);
+  drawFireHeat(c, e, f, t, random, pass, detail);
 }

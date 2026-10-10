@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { extraEffectKinds, extraEffects } from './vtt-effects-extra.js';
 import { cinematicEffectKinds, cinematicEffects } from './vtt-effects-cinematic.js';
 import { arcanaEffectKinds, arcanaEffects } from './vtt-effects-arcana.js';
+import { barrierEffectKinds, barrierEffects } from './vtt-effects-barrier.js';
 import { effectRenderColor } from './vtt-effect-palette.js';
 // The original six IDs and ordering are part of saved rooms and hotbar presets.
 export const effectKinds = [
@@ -44,6 +45,7 @@ export const effectKinds = [
   ...extraEffectKinds,
   ...cinematicEffectKinds,
   ...arcanaEffectKinds,
+  ...barrierEffectKinds,
 ] as const;
 export type EffectKind = (typeof effectKinds)[number];
 export const effectLibrary: {
@@ -275,10 +277,11 @@ effectLibrary.push(
   },
   {
     kind: 'swarm',
-    name: 'Enxame de morcegos',
+    name: 'Enxame de moscas',
     color: '#a691c5',
     group: 'Natureza',
-    description: 'Silhuetas articuladas de morcegos circulam em alturas e ritmos diferentes.',
+    description:
+      'Dezenas de moscas zumbem ao redor do personagem, com asas rápidas e trajetórias irregulares em várias alturas.',
   },
   {
     kind: 'leaves',
@@ -312,6 +315,7 @@ effectLibrary.push(
 effectLibrary.push(...extraEffects);
 effectLibrary.push(...cinematicEffects);
 effectLibrary.push(...arcanaEffects);
+effectLibrary.push(...barrierEffects);
 for (const model of effectLibrary) model.color = effectRenderColor(model.kind, model.color);
 export const effectNames = effectLibrary.map((e) => e.name);
 export const effectColors = effectLibrary.map((e) => e.color);

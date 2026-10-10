@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { Point, VttScene, VttToken } from './vtt.js';
+import { pathDistance, type Point, type VttScene, type VttToken } from './vtt.js';
 
 export const MAX_BLOOD_DECALS = 800;
 export const bloodStateSchema = z
@@ -84,7 +84,7 @@ export function applyTokenBlood(
   at = Date.now(),
   enabled = true,
 ) {
-  if (!enabled || token.layer === 'map') {
+  if (!enabled || token.bleeds === false || token.layer === 'map') {
     token.blood = null;
     return;
   }
@@ -122,6 +122,30 @@ export function applyTokenBlood(
     blood.distance = 0;
     return;
   }
-  // Only hits spill blood. Movement never paints a track.
-  blood.distance = 0;
+  if (!isBloodied(token) || !isBloodied(old)) {
+    blood.distance = 0;
+    return;
+  }
+  // Accumulate actual accepted travel, never elapsed time. A stationary/replayed
+  // update cannot make a pool; healing above half health resets the remainder.
+  const points = [{ x: old.x, y: old.y }, ...(path.length ? path : [{ x: token.x, y: token.y }])];
+  let previousDistance = 0;
+  for (let i = 1; i < points.length; i++) {
+    const distance = pathDistance(points.slice(0, i + 1), scene.grid) / (scene.grid.unit === 'm' ? 0.3048 : 1);
+    const leg = distance - previousDistance;
+    previousDistance = distance;
+    if (leg <= 0) continue;
+    let traveled = 0;
+    while (blood.distance + leg - traveled >= 15 - 1e-8) {
+      traveled += 15 - blood.distance;
+      const fraction = Math.min(1, traveled / leg);
+      const a = points[i - 1], b = points[i];
+      append(scene, token, 'trail', at, a.x + (b.x - a.x) * fraction,
+        a.y + (b.y - a.y) * fraction,
+        Math.min(scene.grid.size, token.width, token.height) * (0.13 + after * 0.06),
+        Math.atan2(b.y - a.y, b.x - a.x));
+      blood.distance = 0;
+    }
+    blood.distance += leg - traveled;
+  }
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heart, Minus, Plus } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import type { VttToken } from '../shared/vtt';
 export function VttHpControl({
   token,
@@ -51,24 +51,6 @@ export function VttHpControl({
             }}
           />
         </div>
-      </div>
-      <div className="vtt-hp-modes" aria-label="Tipo de ajuste de vida">
-        <button
-          type="button"
-          aria-pressed={value.startsWith('-')}
-          disabled={busy || working}
-          onClick={() => setValue('-' + value.replace(/^[+-]/, ''))}
-        >
-          <Minus size={13} /> Dano
-        </button>
-        <button
-          type="button"
-          aria-pressed={value.startsWith('+')}
-          disabled={busy || working}
-          onClick={() => setValue('+' + value.replace(/^[+-]/, ''))}
-        >
-          <Plus size={13} /> Cura
-        </button>
       </div>
       <label>
         Editar PV

@@ -1,8 +1,9 @@
+import { conditionGlyphs } from './vtt-condition-glyphs.js';
 export type ConditionGlyph = { d: string; fill?: boolean };
 export type ConditionIcon = { name: string; color: string; hint: string; paths: ConditionGlyph[] };
 const p = (d: string, fill = false): ConditionGlyph => ({ d, fill });
 // Thirty original vector pictograms. Existing condition names stay compatible with saved rooms.
-export const conditionIcons: ConditionIcon[] = [
+const definitions: ConditionIcon[] = [
   {
     name: 'Cego',
     color: '#f1dbb3',
@@ -275,6 +276,7 @@ export const conditionIcons: ConditionIcon[] = [
     ],
   },
 ];
+export const conditionIcons: ConditionIcon[] = definitions.map(icon => ({...icon, paths: conditionGlyphs[icon.name] || icon.paths}));
 export function conditionIcon(name: string) {
   return conditionIcons.find((icon) => icon.name === name);
 }

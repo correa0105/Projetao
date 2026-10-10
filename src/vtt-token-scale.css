@@ -1,0 +1,3 @@
+.vtt-token-scale {display:flex;flex-direction:column;gap:7px;padding:8px 2px;font-size:12px;}
+.vtt-token-scale > span {color:#c9b996;font-size:11px;}
+.vtt-token-scale > input[type='range'] {width:100%;height:18px;margin:0;padding:0;accent-color:#d8b36a;cursor:ew-resize;background:transparent;border:0;}

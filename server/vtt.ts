@@ -694,7 +694,7 @@ export function vttRouter() {
         );
       await validateAssets(db, rid, input.document);
       await validatePremiumImages(db, res.locals.user.id, paths(input.document), paths(r.document));
-      for (const field of ['bloodEnabled', 'automaticDeath'] as const)
+      for (const field of ['bloodEnabled', 'automaticDeath', 'autoRotateTokens'] as const)
         if (typeof req.body.document[field] !== 'boolean')
           input.document[field] = r.document[field];
       for (const scene of input.document.scenes) {
@@ -712,6 +712,7 @@ export function vttRouter() {
         scene.blood = previous ? structuredClone(previous.blood) : [];
         for (const token of scene.tokens) {
           const old = previous?.tokens.find((t) => t.id === token.id);
+          if (old && typeof req.body.document.scenes.find((s: VttScene) => s.id === scene.id)?.tokens.find((t: VttToken) => t.id === token.id)?.bleeds !== 'boolean') token.bleeds = old.bleeds;
           applyTokenBlood(
             scene,
             token,
@@ -895,6 +896,8 @@ export function vttRouter() {
         rotation: z.number().finite().min(-360).max(360).optional(),
         flipX: z.boolean().optional(),
         flipY: z.boolean().optional(),
+        width: z.number().finite().min(8).max(8000).optional(),
+        height: z.number().finite().min(8).max(8000).optional(),
         conditions: z.array(z.string().max(40)).max(30).optional(),
         path: z.array(pointSchema).min(1).max(2000).optional(),
       })
@@ -949,7 +952,7 @@ export function vttRouter() {
       const { path: _path, ...patch } = input;
       if (!t.attachment) translateAttachmentGroup(s, t, destination);
       Object.assign(t, patch);
-      if (destination.x !== old.x || destination.y !== old.y)
+      if (r.document.autoRotateTokens !== false && (destination.x !== old.x || destination.y !== old.y))
         t.rotation = movementFacing(t, old, path);
       syncAttachmentPositions(s, previous);
       const rotationError = attachmentRotationError(s, previous, t);

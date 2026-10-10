@@ -285,7 +285,7 @@ try {
     const selector = await page
       .getByRole('combobox', { name: 'Personagem do perfil visitado' })
       .boundingBox();
-    expect(selector!.y).toBeLessThan(70);
+    expect(selector!.y).toBeLessThan(width > 1320 ? 70 : 190);
     expect(selector!.x).toBeGreaterThan(width / 2);
     await expect(page.locator('.profile-tab')).toHaveCount(5);
     expect(
@@ -293,11 +293,20 @@ try {
         .locator('.profile-tab')
         .first()
         .evaluate((el) => getComputedStyle(el).backgroundImage),
-    ).toBe('none');
-    await expect(page.locator('.profile-visit-nav')).not.toHaveCSS(
+    ).toContain('linear-gradient');
+    await expect(page.locator('.profile-visit-nav')).toHaveCSS(
       'background-color',
       'rgba(0, 0, 0, 0)',
     );
+    const rail = (await page.locator('.profile-visit-nav').boundingBox())!;
+    expect(Math.abs(rail.x + rail.width / 2 - width / 2)).toBeLessThan(1);
+    expect(rail.y).toBeLessThan(25);
+    for (const tab of await page.locator('.profile-tab').all()) {
+      const button = (await tab.boundingBox())!;
+      expect(button.x).toBeGreaterThanOrEqual(0);
+      expect(button.x + button.width).toBeLessThanOrEqual(width);
+      expect(button.height).toBeGreaterThanOrEqual(42);
+    }
     await page.screenshot({ path: `test-results/profile-visit-${width}.png` });
     await ownerPage.screenshot({ path: `test-results/profile-standard-${width}.png` });
   }
@@ -333,8 +342,25 @@ try {
       ).toBe(true);
       if (name !== 'Personagens') {
         const heading = await page.locator(selector).locator('h2').first().boundingBox();
-        if (heading) expect(heading.y).toBeGreaterThan(bounds.y + bounds.height);
+        if (heading) {
+          expect(heading.x).toBeLessThan(width / 2);
+          expect(heading.y).toBeLessThan(width > 1320 ? 80 : 190);
+          expect(
+            heading.x + heading.width <= bounds.x || heading.y >= bounds.y + bounds.height,
+            JSON.stringify({ width, name, heading, bounds }),
+          ).toBe(true);
+          expect(
+            await page
+              .locator(selector)
+              .locator('h2')
+              .first()
+              .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+          ).toBeLessThanOrEqual(26);
+        }
       }
+      const panelBounds = (await page.locator(selector).boundingBox())!;
+      const actionsBounds = (await page.locator('.profiles-top').boundingBox())!;
+      expect(actionsBounds.y).toBeGreaterThanOrEqual(panelBounds.y + panelBounds.height);
       if (name === 'Conquistas') {
         const room = (await page.locator('.public-cabinet-stage').boundingBox())!;
         const cabinet = (await page

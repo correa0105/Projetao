@@ -543,9 +543,9 @@
   min-height: 47px;
 }
 .profile-visit-nav > button[aria-pressed='true'] {
-  border-color: var(--profile-accent) !important;
-  color: #f0dba9 !important;
-  background: #ae8b3428 !important;
+  border-color: var(--profile-accent);
+  color: #f0dba9;
+  background: #ae8b3428;
 }
 .public-camp {
   position: relative;
@@ -1495,7 +1495,7 @@
   --portrait-background-top: 0px;
   background:
     linear-gradient(#100e0b30, transparent 55%, #15120f),
-    url('/achievement-house-v2.png') center top / var(--room-width) auto no-repeat #15120f;
+    url('/achievement-house-v3.png') center top / var(--room-width) auto no-repeat #15120f;
 }
 .visiting .public-achievements > h2 {
   font-size: 18px;

@@ -3,6 +3,7 @@ import { chromium, expect, type BrowserContext, type Page } from '@playwright/te
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import { newToken } from '../shared/vtt';
+import { vttProtocolVersion } from '../shared/vtt-protocol';
 import { monsterActions } from '../shared/vtt-monster-actions';
 import { attackOutcome } from '../shared/vtt-attack';
 import { effectLibrary } from '../shared/vtt-effects';
@@ -25,7 +26,7 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true }),
     [0, 1, 2].map(() =>
       browser.newContext({
         viewport: { width: 1440, height: 1000 },
-        extraHTTPHeaders: { 'X-Vtt-Schema-Version': '7' },
+        extraHTTPHeaders: { 'X-Vtt-Schema-Version': String(vttProtocolVersion) },
       }),
     ),
   ),
@@ -42,6 +43,7 @@ for (const p of [page, peer]) {
       if (
         path.includes('/vtt-attacks/') ||
         path.includes('/vtt-effects/') ||
+        path.includes('/vtt-effects-20261009/') ||
         path.includes('sfx-knifeslice')
       ) {
         (window as any).__cues.push({ path, volume: this.volume });
@@ -232,6 +234,7 @@ try {
   await page.getByRole('button', { name: 'Efeitos do mestre', exact: true }).click();
   await page.getByRole('button', { name: 'Criar efeito · Gelo', exact: true }).click();
   const editor = page.getByRole('region', { name: 'Efeitos salvos do mestre' });
+  await editor.locator('summary').filter({hasText:'Nome do efeito'}).click();
   await clickToken(page, hero, true);
   await expect(editor).toBeVisible();
   await expect(editor.getByLabel('Nome do efeito')).toBeVisible();
@@ -326,8 +329,9 @@ try {
         return { x: r.x, y: r.y, width: r.width, height: r.height };
       }),
     );
-    expect(boxes.length).toBe(4);
-    expect(new Set(boxes.map((b) => Math.round(b.y))).size).toBe(1);
+    expect(boxes.length).toBe(5);
+    expect(new Set(boxes.map((b) => Math.round(b.y))).size).toBe(2);
+    expect(boxes[4].width).toBeGreaterThan(boxes[0].width*3);
     expect(boxes.every((b) => b.height <= 38 && b.width > 0)).toBe(true);
     await page.screenshot({ path: `test-results/vtt-library-compact-${width}.png` });
   }
@@ -405,6 +409,25 @@ try {
   await page.waitForTimeout(250);
   await page.screenshot({ path: 'test-results/vtt-sword-attack.png' });
   await page.waitForTimeout(1100);
+  const attackArticle=page.locator('.vtt-chat-log article').filter({hasText:'Espada longa → Alvo · ataque'}).last();
+  await expect(attackArticle.getByRole('button',{name:/Aplicar dano/})).toHaveCount(0);
+  let beforeDamage=(await api(gm,root)).data;
+  const hpBefore=beforeDamage.document.scenes[0].tokens.find((t:any)=>t.id===target.id).hp;
+  // A natural one is a legitimate miss. Start a fresh attack before checking damage.
+  for(let retry=0;retry<5 && await page.locator('.vtt-attack-result.miss').count();retry++) {
+    await page.getByRole('button',{name:'Rolar novo ataque',exact:true}).click();
+    await expect(page.getByRole('button',{name:'Rolar novo ataque',exact:true})).toBeEnabled();
+  }
+  const hitArticle=page.locator('.vtt-chat-log article').filter({hasText:'Espada longa → Alvo · ataque'}).last();
+  await expect(hitArticle.getByRole('button',{name:'Rolar dano',exact:true})).toBeVisible();
+  await hitArticle.getByRole('button',{name:'Rolar dano',exact:true}).click();
+  await expect(page.locator('.vtt-attack-inline').getByRole('button',{name:'Aplicar dano em Alvo',exact:true})).toBeVisible();
+  beforeDamage=(await api(gm,root)).data;
+  expect(beforeDamage.document.scenes[0].tokens.find((t:any)=>t.id===target.id).hp).toBe(hpBefore);
+  await page.locator('.vtt-attack-inline').getByRole('button',{name:'Aplicar dano em Alvo',exact:true}).click();
+  await expect.poll(async()=> (await api(gm,root)).data.document.scenes[0].tokens.find((t:any)=>t.id===target.id).hp).toBeLessThan(hpBefore);
+  const hpAfterDamage=(await api(gm,root)).data.document.scenes[0].tokens.find((t:any)=>t.id===target.id).hp;
+  await page.screenshot({path:'test-results/vtt-hit-then-damage.png'});
   await expect
     .poll(() =>
       page.evaluate(() => (window as any).__cues.some((s: any) => s.path?.includes('knifeslice'))),
@@ -491,16 +514,16 @@ try {
   ).toBe(false);
   expect(
     (await api(gm, root)).data.document.scenes[0].tokens.find((t: any) => t.id === target.id).hp,
-  ).toBe(target.hp);
+  ).toBe(hpAfterDamage);
   console.log('PASS server ownership/visibility/private/d20/hit/no HP mutation');
   // Effect cue, deduplication, local volume/mute, visuals-off persistence.
   await page.getByRole('button', { name: 'Configurações e ajuda', exact: true }).click();
   await page.getByRole('button', { name: 'Mesa', exact: true }).click();
   await page.getByLabel('Volume dos efeitos e ataques', { exact: true }).fill('30');
-  // All 30 additions are saved and applied through the real server to a private
+  // The original thirty-model expansion is saved and applied through the real server to a private
   // character token and a monster, with player/spectator authorization preserved.
   let expanded = (await api(gm, root)).data;
-  const additions = effectLibrary.slice(36).map((model) => ({
+  const additions = effectLibrary.slice(36,66).map((model) => ({
     id: randomUUID(),
     name: model.name,
     kind: model.kind,
@@ -540,7 +563,8 @@ try {
     ).toBe(preset.kind);
     const cue = await gm.request.get(origin + effectSound(preset.kind));
     expect(cue.ok(), preset.kind + ' audio response').toBe(true);
-    expect((await cue.body()).subarray(0, 4).toString(), preset.kind + ' audio data').toBe('RIFF');
+    expect(cue.headers()['content-type'],preset.kind+' audio type').toMatch(/^audio\//);
+    expect(['OggS','RIFF']).toContain((await cue.body()).subarray(0, 4).toString());
   }
   for (const ctx of [player, spectator])
     expect(
@@ -585,16 +609,16 @@ try {
   ).toBe(200);
   await expect
     .poll(() =>
-      page.evaluate(() => (window as any).__cues.some((s: any) => s.path?.endsWith('/ice.wav'))),
+      page.evaluate(() => (window as any).__cues.some((s: any) => s.path?.endsWith('/frost.ogg'))),
     )
     .toBe(true);
   const count = await page.evaluate(
-    () => (window as any).__cues.filter((s: any) => s.path?.endsWith('/ice.wav')).length,
+    () => (window as any).__cues.filter((s: any) => s.path?.endsWith('/frost.ogg')).length,
   );
   await page.waitForTimeout(3500);
   expect(
     await page.evaluate(
-      () => (window as any).__cues.filter((s: any) => s.path?.endsWith('/ice.wav')).length,
+      () => (window as any).__cues.filter((s: any) => s.path?.endsWith('/frost.ogg')).length,
     ),
   ).toBe(count);
   const revision = (await api(gm, root)).data.revision;

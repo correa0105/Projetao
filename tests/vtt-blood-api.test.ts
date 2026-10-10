@@ -6,6 +6,7 @@ import { migrate } from '../server/migrate';
 import { seed } from '../server/seed';
 import { createLegacyTestCharacter } from './character-fixtures';
 import { newToken } from '../shared/vtt';
+import { vttProtocolVersion } from '../shared/vtt-protocol';
 
 test('blood follows authoritative damage, healing and movement; persists without hidden-position leaks', async () => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[0-9a-f]{32}$/);
@@ -26,7 +27,7 @@ test('blood follows authoritative damage, healing and movement; persists without
         Origin: origin,
         Cookie: who?.cookie || '',
         'Content-Type': 'application/json',
-        'X-Vtt-Schema-Version': '7',
+        'X-Vtt-Schema-Version': String(vttProtocolVersion),
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -70,6 +71,17 @@ test('blood follows authoritative damage, healing and movement; persists without
     assert.equal(r.status, 200);
     room = r.data;
     const getToken = (id: string) => room.document.scenes[0].tokens.find((t: any) => t.id === id);
+    const attackRoll=await request(path+'/messages',gm,'POST',{formula:'1d20+99',text:'Espada longa · ataque'});
+    assert.equal(attackRoll.status,201);
+    const forbidden=await request(path+'/damage',gm,'POST',{token_id:monster.id,message_ids:[attackRoll.data.createdMessageId]});
+    assert.equal(forbidden.status,400);
+    room=(await request(path,gm)).data;
+    assert.equal(getToken(monster.id).hp,100);
+    assert.equal(room.document.scenes[0].blood.length,0);
+    r=await request(path+`/tokens/${hero.id}`,player,'PATCH',{width:120,height:60});
+    assert.equal(r.status,200);room=r.data;
+    assert.equal(getToken(hero.id).width,120);assert.equal(getToken(hero.id).height,60);
+    assert.equal((await request(path+`/tokens/${monster.id}`,player,'PATCH',{width:120})).status,403);
     // Rolled damage applied twice is idempotent, including its blood decal.
     const rolled = await request(path + '/messages', gm, 'POST', {
       formula: '1d1+24',
@@ -119,6 +131,7 @@ test('blood follows authoritative damage, healing and movement; persists without
       1,
     );
     const wounded = structuredClone(getToken(hero.id).blood.wounds);
+    assert.ok(room.document.scenes[0].blood.some((d:any)=>d.source===hero.id && d.kind==='trail'));
     r = await request(path + `/sheets/${hero.id}/heal`, gm, 'POST', { amount: 25 });
     assert.equal(r.status, 200);
     room = (await request(path, gm)).data;
@@ -168,6 +181,16 @@ test('blood follows authoritative damage, healing and movement; persists without
       400,
     );
     room = (await request(path, gm)).data;
+    room.document.autoRotateTokens=false;
+    getToken(hero.id).bleeds=false;getToken(hero.id).hp=50;getToken(hero.id).rotation=37;
+    r=await request(path,gm,'PUT',{revision:room.revision,document:room.document});
+    assert.equal(r.status,200);room=r.data;
+    const noBlood=room.document.scenes[0].blood.length;
+    r=await request(path+`/tokens/${hero.id}`,player,'PATCH',{x:900,y:400});
+    assert.equal(r.status,200);room=(await request(path,gm)).data;
+    assert.equal(getToken(hero.id).rotation,37);assert.equal(getToken(hero.id).blood,null);
+    assert.equal(room.document.scenes[0].blood.length,noBlood);
+    assert.equal((await request(path,gm)).data.document.autoRotateTokens,false);
     assert.equal(room.document.automaticDeath, true);
     room.document.bloodEnabled = false;
     room.document.automaticDeath = false;

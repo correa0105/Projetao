@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-10",
+  "generator": "built-in image_gen",
+  "source": "public/achievement-house-v2.png",
+  "output": "public/achievement-house-v3.png",
+  "native_output": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-c049c98b-3585-4991-a477-e64a6bbcca63.png",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "chandelier_center": [
+    768,
+    null
+  ],
+  "prompt": "Use case: precise-object-edit. Edit the supplied 1536 x 1024 fantasy achievement-room background. Only reposition the existing iron candle chandelier and its suspension chains horizontally so the vertical centerline of its central candle, central stem and circular iron ring is EXACTLY at x=768 (50% of image width). It is currently a little left of center, approximately x=724; move that entire single chandelier about 44 pixels right. Keep its original vertical height, scale, number of candles, iron silhouette, chain attachment, warm flames and lighting. Restore the tiny uncovered ceiling area with matching existing wood. Preserve absolutely all other room details and original framing: the entire empty central wall, beams, chairs, banners, window, desk, vase, wood floor, rug, lighting and painterly realism. No cabinet, furniture, people, text, extra chandelier, halo, marks, new objects, new composition or color grading. Match original resolution and aspect ratio; this background will receive a separately positioned cabinet at x=50%, so the chandelier axis must align with that exact midpoint.",
+  "review": "approved",
+  "sha256": "e9d8ade210b9f021a844ebdd848dcf2ee207fb3477b73a393e233b52cb177303"
+}

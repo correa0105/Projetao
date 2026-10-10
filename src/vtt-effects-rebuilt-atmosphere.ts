@@ -120,7 +120,7 @@ export function drawRebuiltAtmosphere(
     const a = t * 0.32 + 0.55,
       x = Math.cos(a) * 132,
       y = Math.sin(a) * 58;
-    if ((y > 0) === front) {
+    if (y > 0 === front) {
       c.save();
       c.translate(x, y);
       c.rotate(Math.sin(a) * 0.24 + Math.sin(t * 0.71) * 0.06);
@@ -128,39 +128,30 @@ export function drawRebuiltAtmosphere(
       c.restore();
     }
   } else if (kind === 'ghost-wake') {
-    if (!front && f.source) {
-      // Actual fading body echoes identify this as a wake, distinct from souls
-      // or skulls. One reusable clip pass, no image-data reads or cached tokens.
-      for (let i = 4; i >= 1; i--) {
-        const u = fract(t * 0.18 + i * 0.16),
-          offset = 23 + i * 18 + u * 9;
-        c.save();
-        c.globalAlpha *= Math.sin(u * Math.PI) * (0.21 - i * 0.031);
-        // The token's rear is negative local Y. Its existing transform supplies
-        // rotation and mirrors without turning the character echoes upside down.
-        c.translate(Math.sin(t * 0.4 + i) * 5, -(40 + offset));
-        c.filter = 'grayscale(1) sepia(.35) hue-rotate(185deg)';
-        c.drawImage(f.source, -f.sx * 0.41, -f.sy * 0.41, f.sx * 0.82, f.sy * 0.82);
-        c.restore();
-      }
-    }
+    // A paired ground field stays centered beneath the feet in every frame.
+    // The token is drawn above it; no plume floats in front or behind its head.
     if (!front)
       for (let i = 0; i < 8; i++) {
-        const u = fract(t * 0.24 + i / 8),
-          x = Math.sin(u * 4 + i) * (8 + u * 12),
-          y = -53 - u * 83;
+        const pair = Math.floor(i / 2),
+          u = fract(t * 0.24 + pair / 4),
+          angle = pair * 1.73 + t * 0.13 + (i % 2) * Math.PI,
+          distance = 5 + u * 21;
+        c.save();
+        c.translate(Math.cos(angle) * distance, Math.sin(angle) * distance);
+        c.rotate(angle);
         temporalField(
           c,
           'vapour',
-          t * 0.36 + i * 0.33,
-          x,
-          y,
-          38 + u * 49,
-          28 + u * 24,
-          -0.35,
-          Math.sin(u * Math.PI) * 0.38,
+          t * 0.36 + pair * 0.33,
+          0,
+          0,
+          48 + u * 43,
+          35 + u * 23,
+          0,
+          Math.sin(u * Math.PI) * 0.44,
           color,
         );
+        c.restore();
       }
   }
 }

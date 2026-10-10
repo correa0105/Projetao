@@ -10,6 +10,7 @@ const masks = new Map<
   { image?: HTMLImageElement; key: string; canvas: HTMLCanvasElement }
 >();
 const splashes = new Map<number, HTMLCanvasElement>();
+const pools = new Map<number, HTMLCanvasElement>();
 const RESOLUTION = 384;
 function blot(c: CanvasRenderingContext2D, x: number, y: number, r: number, seed: number) {
   const random = seededRandom(String(seed));
@@ -44,15 +45,33 @@ function blot(c: CanvasRenderingContext2D, x: number, y: number, r: number, seed
   }
   c.restore();
 }
-function splatter(seed: number) {
+function splatter(seed: number, pool = false) {
   const variant = seed % 16;
-  const old = splashes.get(variant);
+  const cache = pool ? pools : splashes;
+  const old = cache.get(variant);
   if (old) return old;
   const canvas = document.createElement('canvas');
   canvas.width = canvas.height = 192;
   const c = canvas.getContext('2d')!;
+  if (pool) {
+    const random = seededRandom(String(variant));
+    c.translate(96, 96);
+    c.beginPath();
+    for (let i = 0; i <= 48; i++) {
+      const a = i / 48 * Math.PI * 2;
+      const radius = 46 * (1 + .14 * Math.sin(a * 3 + random(1) * 6) + .09 * Math.sin(a * 7 + random(2) * 6));
+      const x = Math.cos(a) * radius, y = Math.sin(a) * radius * .8;
+      if (!i) c.moveTo(x, y); else c.lineTo(x, y);
+    }
+    c.closePath();
+    const wet = c.createRadialGradient(-12, -12, 2, 0, 0, 54);
+    wet.addColorStop(0, '#b72232'); wet.addColorStop(.55, '#8d1023'); wet.addColorStop(1, '#400810');
+    c.fillStyle = wet; c.fill();
+    c.fillStyle = '#f3948240'; c.beginPath(); c.ellipse(-11, -16, 13, 2.6, -.2, 0, Math.PI * 2); c.fill();
+    c.resetTransform();
+  }
   blot(c, 96, 96, 44, variant);
-  splashes.set(variant, canvas);
+  cache.set(variant, canvas);
   return canvas;
 }
 export function drawBloodDecals(
@@ -63,7 +82,7 @@ export function drawBloodDecals(
   now = Date.now(),
 ) {
   for (const d of scene.blood) {
-    if (d.kind !== 'splash') continue;
+    if (d.kind !== 'splash' && d.kind !== 'trail') continue;
     if (d.private && !gm) continue;
     if (!gm && scene.tokens.some((t) => t.id === d.source && (t.hidden || t.layer === 'gm')))
       continue;
@@ -74,7 +93,7 @@ export function drawBloodDecals(
     c.translate(d.x, d.y);
     c.rotate(d.angle);
     c.globalAlpha *= now - d.at > 120000 ? 0.75 : 0.94;
-    const texture = splatter(d.seed),
+    const texture = splatter(d.seed, d.kind === 'trail'),
       sx = 1;
     c.drawImage(texture, -d.size * sx, -d.size, d.size * 2 * sx, d.size * 2);
     c.restore();
@@ -86,7 +105,7 @@ export function drawTokenBlood(
   image?: HTMLImageElement,
 ) {
   const severity = injury(token);
-  if (token.layer === 'map' || severity <= 0) return;
+  if (token.bleeds === false || token.layer === 'map' || severity <= 0) return;
   const wounds = token.blood?.wounds.length
     ? token.blood.wounds
     : [{ seed: 0, strength: severity }];
@@ -112,8 +131,14 @@ export function drawTokenBlood(
         point = footprint.body[Math.floor(random(1) * footprint.body.length)];
       const x = w / 2 + point.x * footprint.sx,
         y = h / 2 + point.y * footprint.sy;
-      const radius = Math.min(w, h) * (0.022 + Math.sqrt(wound.strength) * 0.15);
-      ctx.globalAlpha = Math.min(0.85, 0.2 + Math.sqrt(wound.strength) * 0.85);
+      const radius = Math.min(w, h) * (0.045 + Math.sqrt(wound.strength) * 0.24);
+      ctx.globalAlpha = Math.min(0.91, 0.32 + Math.sqrt(wound.strength) * 0.7);
+      // Connected, irregular red stains read at normal board scale; highlights
+      // and translucent edges retain the creature's skin/armour underneath.
+      const wet = ctx.createRadialGradient(x, y, radius * .1, x, y, radius);
+      wet.addColorStop(0, '#bc243c'); wet.addColorStop(.55, '#921126df'); wet.addColorStop(1, '#8a132500');
+      ctx.fillStyle = wet;
+      ctx.beginPath(); ctx.ellipse(x, y, radius, radius * .67, random(3) * 6, 0, Math.PI * 2); ctx.fill();
       blot(ctx, x, y, radius, wound.seed);
     }
     ctx.globalAlpha = 1;
@@ -140,7 +165,7 @@ export function drawTokenBlood(
   c.save();
   c.shadowBlur = 0;
   // Stains retain the underlying skin, fabric and metal texture.
-  c.globalCompositeOperation = 'multiply';
+  c.globalCompositeOperation = 'source-over';
   c.scale(token.flipX ? -1 : 1, token.flipY ? -1 : 1);
   c.drawImage(cached.canvas, -token.width / 2, -token.height / 2, token.width, token.height);
   c.restore();
@@ -148,4 +173,5 @@ export function drawTokenBlood(
 export function clearBloodRenderCache() {
   masks.clear();
   splashes.clear();
+  pools.clear();
 }

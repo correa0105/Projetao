@@ -247,6 +247,16 @@ test('drop facing follows the last real leg, including flips, without rotating s
   assert.equal(movementFacing(base, base, [{ x: 300, y: 500 }]), 180);
   assert.equal(movementFacing(base, base, [{ x: 300, y: 100 }]), 0);
 });
+test('horse art points its head toward travel, including vertical flips', () => {
+  const {base}=fixture();base.companionId=randomUUID();
+  assert.equal(movementFacing(base,base,[{x:300,y:100}]),0);
+  assert.equal(movementFacing(base,base,[{x:300,y:500}]),180);
+  assert.equal(movementFacing(base,base,[{x:100,y:300}]),270);
+  assert.equal(movementFacing(base,base,[{x:500,y:300}]),90);
+  base.flipY=true;
+  assert.equal(movementFacing(base,base,[{x:300,y:100}]),180);
+});
+
 test('carried rotational arcs cannot bypass walls or map limits', () => {
   const { scene, base, rider } = fixture();
   rider.attachment = { tokenId: base.id, offsetX: 60, offsetY: 0, baseRotation: 0 };

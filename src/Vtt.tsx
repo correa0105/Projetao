@@ -1,3 +1,6 @@
+import { VttTokenScaleControl } from './VttTokenScaleControl';
+import { isAttackCheck } from '../shared/vtt-roll-purpose';
+import { VttAttackRollAction } from './VttAttackRollAction';
 import { effectMaterialsReady } from './vtt-effects-materials';
 import { physicalPropsReady } from './vtt-effects-physical';
 import { animatedAssets, animatedAssetMime, type AnimatedAsset } from '../shared/vtt-animated-assets';
@@ -691,7 +694,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     if (gm)
       editScene((s) => {
         const base = s.tokens.find(t => t.id === root.id)!;
-        base.rotation = movementFacing(base, base, [destination]);
+        if (docRef.current?.autoRotateTokens !== false) base.rotation = movementFacing(base, base, [destination]);
         translateAttachmentGroup(s, base, destination);
       });
     else
@@ -1771,7 +1774,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       const previous = d.original.scenes.find(s => s.id === current.id)!;
       for (const start of d.tokens) {
         const moved = current.tokens.find(t => t.id === start.id);
-        if (moved && moved.layer !== 'map') moved.rotation = movementFacing(moved, start, d.path?.length ? d.path : [{x:moved.x,y:moved.y}]);
+        if (moved && moved.layer !== 'map' && docRef.current?.autoRotateTokens !== false) moved.rotation = movementFacing(moved, start, d.path?.length ? d.path : [{x:moved.x,y:moved.y}]);
       }
       syncAttachmentPositions(current, previous);
       if (gm) {
@@ -4493,7 +4496,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                               <b>{m.roll.total}</b>
                             </div>
                           )}
+                          {m.roll && isAttackCheck(m) && !spectator && <VttAttackRollAction messageId={m.id} />}
                           {m.roll &&
+                            !isAttackCheck(m) &&
                             m.roll.total > 0 &&
                             !m.discarded &&
                             !spectator &&
@@ -4733,6 +4738,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   </label>
                   {gm && (
                     <>
+                      <h3>Movimento dos tokens</h3>
+                      <label className="vtt-check"><input type="checkbox" checked={doc.autoRotateTokens} disabled={busy} onChange={e=>{const value=e.target.checked; edit(d=>{d.autoRotateTokens=value;}); void act(save);}} />Girar tokens automaticamente ao mover</label>
+                      <p className="vtt-muted">Vale para a mesa inteira. Desligado, cada token mantém a direção escolhida manualmente.</p>
                       <h3>Efeitos da sala</h3>
                       <label className="vtt-check">
                         <input
@@ -4750,7 +4758,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                         Respingos de sangue
                       </label>
                       <p className="vtt-muted">
-                        Vale para todos os participantes. Movimentos não deixam rastros.
+                        Vale para todos. Com metade dos PV ou menos, a criatura deixa uma pequena poça a cada 15 ft percorridos. Parada, não cria poças.
                       </p>
                       <fieldset className="vtt-effects-death" disabled={busy}>
                         <legend>Efeito de morte</legend>
@@ -5154,6 +5162,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   />
                 </>
               )}
+              {canToken && <VttTokenScaleControl key={token.id} token={token} gridSize={scene.grid.size} busy={busy} change={size=>{editToken(size);if(gm)void act(save);}} />}
+              {gm && token.layer === 'tokens' && <label className="vtt-check"><input type="checkbox" checked={token.bleeds} disabled={busy} onChange={e=>{editToken({bleeds:e.target.checked});void act(save);}} />Esta criatura sangra</label>}
               {token.layer === 'tokens' && <VttConditionMenu conditions={token.conditions} gm={gm} enabled={canToken} busy={busy} onChange={(conditions) => { editToken({conditions}); if(gm) void save(); }} />}
               <details className="vtt-context-options" key={token.id}>
                 <summary>Mais opções</summary>

@@ -798,11 +798,6 @@ export function MapSettings({
                 <option value="manual">Manual · pincel do mestre</option>
               </select>
             </label>
-            {percent('Escuridão para o mestre', draft.gmDarkness, (n) =>
-              change((s) => {
-                s.gmDarkness = n;
-              }),
-            )}
             {percent(
               'Opacidade da camada do mestre',
               draft.gmOpacity,

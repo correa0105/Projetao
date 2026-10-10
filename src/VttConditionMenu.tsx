@@ -15,7 +15,7 @@ export function VttConditionMenu({
   onChange: (next: string[]) => void;
 }) {
   return (
-    <details className="vtt-condition-menu">
+    <details className="vtt-condition-menu" onToggle={e=>{const section=e.currentTarget;if(!section.open)return;requestAnimationFrame(()=>{const popup=section.closest<HTMLElement>('.vtt-context-menu');if(popup)popup.scrollTop+=section.getBoundingClientRect().top-popup.getBoundingClientRect().top-42;});}}>
       <summary>
         Condições <span>{conditions.length || ''}</span>
       </summary>
@@ -46,6 +46,7 @@ export function VttConditionMenu({
                   <path
                     key={index}
                     d={path.d}
+                    fillRule="evenodd"
                     fill={path.fill ? 'currentColor' : 'none'}
                     stroke={path.fill ? 'none' : 'currentColor'}
                     strokeWidth="1.8"

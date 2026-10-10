@@ -15,6 +15,7 @@ import {
   type AttackVisualCommand,
 } from '../shared/vtt-attack-visual';
 import './vtt-attack.css';
+import { registerAttackDamage } from './VttAttackRollAction';
 type Roll = NonNullable<VttMessage['roll']>;
 export function VttAttack({
   request,
@@ -69,6 +70,10 @@ export function VttAttack({
   const formulas = result?.critical ? request.damage.flatMap(criticalDamage) : request.damage;
   const done = damage.length > 0 && damage.length === formulas.length;
   const pending = !!result?.hit && !discarded && !done && formulas.length > 0;
+  useEffect(() => {
+    if (!pending || busy || !active || result?.target.id !== target?.id || !result?.roll.messageId) return;
+    return registerAttackDamage(result.roll.messageId, hurt);
+  }, [result, pending, busy, active, target?.id, damage]);
   async function run(fn: () => Promise<void>) {
     if (inFlight.current) return;
     inFlight.current = true;

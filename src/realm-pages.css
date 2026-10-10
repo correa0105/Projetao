@@ -103,18 +103,24 @@
   justify-content: space-between;
 }
 :root .app-shell[data-page='profiles'] .visiting .profile-visit-nav {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: min(720px, calc(100% - 36px));
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   max-width: 720px;
-  gap: 14px;
-  padding: 0 12px;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
   border: 0;
-  border-bottom: 1px solid #bba06b50;
   border-radius: 0;
-  background: #101712d9;
+  background: none;
   box-shadow: none;
   overflow: visible;
-  backdrop-filter: blur(8px);
+  backdrop-filter: none;
 }
 :root .app-shell[data-page='profiles'] .visiting .profile-tab {
   display: flex;
@@ -122,30 +128,147 @@
   justify-content: center;
   min-width: 0;
   min-height: 46px;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-  padding: 10px 0;
-  color: #bab6a8;
+  border: 1px solid #e8edf66b;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #edf3fc22 0%, #c0c9d414 49%, #141b2429 50%, #c5ceda16 100%);
+  box-shadow:
+    inset 0 1px 0 #ffffff45,
+    inset 0 -2px 0 #080d1773,
+    0 0 0 2px #dae2ef12,
+    0 4px 9px #0003;
+  padding: 10px 12px;
+  color: #d6dce3;
   position: relative;
-  font: 12px/1.35 var(--sans);
+  font:
+    12px/1.35 'DM Sans',
+    sans-serif;
+  backdrop-filter: blur(5px);
+  text-shadow: 0 1px 3px #000b;
+  transition:
+    color 160ms,
+    border-color 160ms,
+    background-color 160ms,
+    box-shadow 160ms;
+}
+:root .app-shell[data-page='profiles'] .visiting .profile-tab::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid #eef4ff26;
+  border-radius: inherit;
+  pointer-events: none;
 }
 :root .app-shell[data-page='profiles'] .visiting .profile-tab > span {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
+  white-space: nowrap;
 }
 :root .app-shell[data-page='profiles'] .visiting .profile-tab:is(:hover, [aria-selected='true']) {
-  color: #f2dfb8;
+  color: #fff6e2;
+  border-color: #f4e1bba3;
+  background-color: #dbe4f017;
 }
 :root .app-shell[data-page='profiles'] .visiting .profile-tab[aria-selected='true'] {
-  box-shadow: inset 0 -2px #c6a46c;
+  box-shadow:
+    inset 0 1px 0 #ffffff70,
+    inset 0 -2px 0 #9b845c99,
+    0 0 0 2px #e7d3aa1f,
+    0 4px 12px #0003;
 }
 :root .app-shell[data-page='profiles'] .visiting .profile-tab:focus-visible {
   outline: 2px solid #e4c78f;
   outline-offset: 2px;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-profile-panel {
+  position: relative;
+}
+:root .app-shell[data-page='profiles'] .visiting .public-profile-panel:not(.public-camp) {
+  padding-top: 130px;
+}
+:root
+  .app-shell[data-page='profiles']
+  .visiting
+  :is(.public-panel-heading, .hall-of-fame.embedded > .hall-heading) {
+  position: absolute;
+  top: 20px;
+  left: var(--page-header-edge);
+  width: calc(50% - 395px - var(--page-header-edge));
+  max-width: none;
+  margin: 0;
+  text-shadow: 0 2px 5px #0009;
+}
+:root
+  .app-shell[data-page='profiles']
+  .visiting
+  :is(.public-panel-heading, .hall-of-fame.embedded > .hall-heading)
+  > h2 {
+  margin: 4px 0 0;
+  font: 500 24px/1.2 var(--serif);
+  letter-spacing: 0;
+  color: #eee3ce;
+}
+:root
+  .app-shell[data-page='profiles']
+  .visiting
+  :is(.public-panel-heading, .hall-of-fame.embedded > .hall-heading)
+  > .social-eyebrow {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+:root .app-shell[data-page='profiles'] .visiting .hall-of-fame.embedded > .hall-heading > p {
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+:root .app-shell[data-page='profiles'] .visiting .profiles-top {
+  position: static;
+  width: calc(100% - 2 * var(--page-header-edge));
+  margin: 26px auto 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+:root .app-shell[data-page='profiles'] .visiting .profiles-top > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+:root .app-shell[data-page='profiles'] .visiting .visited-profile-heading {
+  margin-top: 40px;
+}
+:root .app-shell .hall-of-fame.embedded :is(.hall-table-head, .hall-table-row) {
+  grid-template-columns: 60px minmax(180px, 1fr) 90px 90px 80px 105px;
+  gap: 16px;
+  padding: 14px 16px;
+  min-width: 725px;
+}
+:root .app-shell .hall-of-fame.embedded .hall-table {
+  overflow-x: auto;
+}
+:root .app-shell .hall-of-fame.embedded .hall-table-head > span {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+@media (max-width: 1320px) {
+  :root .app-shell[data-page='profiles'] .visiting .profile-visit-nav {
+    top: 14px;
+  }
+  :root
+    .app-shell[data-page='profiles']
+    .visiting
+    :is(.public-camp-heading, .public-panel-heading, .hall-of-fame.embedded > .hall-heading) {
+    top: 84px;
+    left: var(--page-header-edge);
+    width: calc(100% - 280px - var(--page-header-edge));
+    right: auto;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .profile-visit-selector {
+    top: 84px;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .public-profile-panel:not(.public-camp) {
+    padding-top: 200px;
+  }
 }
 :root .app-shell[data-page='profiles'] .visiting .public-achievements {
   background: #15140f;
@@ -157,7 +280,7 @@
   margin: 8px 0 24px;
 }
 :root .app-shell[data-page='profiles'] .visiting .public-cabinet-stage {
-  background: url('/achievement-house-v2.png') center top/100% auto no-repeat;
+  background: url('/achievement-house-v3.png') center top/100% auto no-repeat;
   width: 100%;
   height: auto;
   min-height: 0;
@@ -344,20 +467,48 @@
     margin-block: 20px 32px;
   }
   :root .app-shell[data-page='profiles'] .visiting .profile-visit-nav {
-    gap: 4px;
-    padding-inline: 4px;
+    top: 12px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
   }
   :root .app-shell[data-page='profiles'] .visiting .profile-tab {
-    min-height: 62px;
-    font-size: 10px;
+    grid-column: span 2;
+    min-height: 42px;
+    font-size: 10px !important;
+    padding: 8px 5px !important;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .profile-tab:nth-child(n + 4) {
+    grid-column: span 3;
   }
   :root .app-shell[data-page='profiles'] .visiting .profile-tab > span {
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
+    gap: 4px;
     text-align: center;
   }
+  :root .app-shell[data-page='profiles'] .visiting .profile-tab svg {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+  }
+  :root
+    .app-shell[data-page='profiles']
+    .visiting
+    :is(.public-camp-heading, .public-panel-heading, .hall-of-fame.embedded > .hall-heading) {
+    top: 124px;
+    width: calc(50% - 24px);
+  }
+  :root
+    .app-shell[data-page='profiles']
+    .visiting
+    :is(.public-panel-heading, .hall-of-fame.embedded > .hall-heading)
+    > h2 {
+    font-size: 19px;
+  }
+  :root .app-shell[data-page='profiles'] .visiting .profile-visit-selector {
+    top: 124px;
+  }
   :root .app-shell[data-page='profiles'] .visiting .public-profile-panel:not(.public-camp) {
-    padding-top: 220px;
+    padding-top: 252px;
   }
   :root .app-shell .hall-podium {
     gap: 9px;

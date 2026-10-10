@@ -53,7 +53,7 @@ export function drawConditionBadges(
           path = new Path2D(glyph.d);
           paths.set(glyph.d, path);
         }
-        if (glyph.fill) c.fill(path);
+        if (glyph.fill) c.fill(path, 'evenodd');
         else c.stroke(path);
       }
     else {

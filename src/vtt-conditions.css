@@ -15,9 +15,12 @@
 }
 .vtt-condition-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 5px;
   padding: 6px 0;
+  max-height: min(390px, 50dvh);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .vtt-condition-grid > button {
   display: flex;
@@ -34,16 +37,16 @@
 }
 .vtt-condition-grid > button > svg {
   color: var(--condition-color);
-  width: 25px;
-  height: 25px;
+  width: 32px;
+  height: 32px;
   filter: drop-shadow(0 1px 1px #000);
 }
 .vtt-condition-grid > button > span {
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1.15;
   color: #dfd6c1;
   max-width: 100%;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 .vtt-condition-grid > button:hover,
 .vtt-condition-grid > button:focus-visible {

@@ -380,7 +380,7 @@
   height: calc(var(--room-width) * 0.666667);
   background-image:
     linear-gradient(to bottom, #100e0b30 0%, transparent 55%, #15120f 100%),
-    url('/achievement-house-v2.png');
+    url('/achievement-house-v3.png');
   background-position: center top;
   background-size:
     100% 100%,

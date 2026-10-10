@@ -12,6 +12,7 @@ export const vividEffectPalette: Record<string, readonly [string, string]> = {
   petals: ['#e9a5c4', '#ef84bd'],
   starfield: ['#b9abff', '#a087ff'],
   spores: ['#b7d782', '#acd955'],
+  necrotic: ['#bc6594', '#f343a3'],
 };
 export function effectRenderColor(kind: string, color: string) {
   const palette = vividEffectPalette[kind];

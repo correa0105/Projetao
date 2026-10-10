@@ -101,7 +101,9 @@ export function HallOfFame({
         <h2>
           {data?.document.title && data.document.title !== 'Hall da Fama'
             ? data.document.title
-            : 'Personagens em destaque'}
+            : embedded
+              ? 'Hall da Fama'
+              : 'Personagens em destaque'}
         </h2>
         <p>{data?.document.intro || 'As histórias que deixam sua marca na Alvorada.'}</p>
         {data?.can_edit && !embedded && (

@@ -2,6 +2,7 @@ import type { TokenEffect } from '../shared/vtt-effects';
 import { footprintPoint, paintFootprint, type EffectFootprint } from './vtt-effect-footprint';
 import { projectOverheadEffect } from './vtt-effect-projection';
 import { materialSprite } from './vtt-effects-materials';
+import { texturedDischarge } from './vtt-effects-textured-lightning';
 import { alpha, fract, glow, luminousStroke, star, tau, tint } from './vtt-effects-primitives';
 type Random = (i: number) => number;
 type Point = { x: number; y: number };
@@ -339,7 +340,7 @@ function electricity(
       flash = Math.max(flash, strength);
       c.save();
       c.globalAlpha *= strength;
-      discharge(c, p, q, random, seed, e.color, sparks ? 0.85 : 1.4);
+      texturedDischarge(c, p, q, random, seed, e.color, sparks ? 0.85 : 1.4);
       glow(c, p.x, p.y, sparks ? 8 : 13, e.color, 0.4);
       glow(c, q.x, q.y, 6, e.color, 0.45);
       c.restore();

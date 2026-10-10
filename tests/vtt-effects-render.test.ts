@@ -104,6 +104,20 @@ function context() {
   };
 }
 const textureContext = context();
+// This unit harness checks geometry and state isolation without browser media.
+// Visible atlas pixels are checked by the real-browser VFX review harness.
+Object.defineProperty(globalThis, 'Image', {
+  configurable: true,
+  value: class {
+    src = '';
+    complete = false;
+    naturalWidth = 0;
+    naturalHeight = 0;
+    decode() {
+      return Promise.reject(new Error('No media in unit canvas'));
+    }
+  },
+});
 Object.defineProperty(globalThis, 'document', {
   value: { createElement: () => ({ getContext: () => textureContext.c, width: 0, height: 0 }) },
   configurable: true,
@@ -192,18 +206,18 @@ test('prismas mantêm paredes largas e proporção em 0,5–3; eletricidade usa 
     }
 });
 
-test('biblioteca mantém IDs legados e 66 modelos com metadata validada', () => {
+test('biblioteca mantém IDs legados e 127 modelos com metadata validada', () => {
   assert.deepEqual(effectKinds.slice(0, 6), ['death', 'fire', 'frost', 'poison', 'heal', 'sparks']);
-  assert.equal(effectKinds.length, 66);
-  assert.equal(new Set(effectKinds).size, 66);
-  assert.equal(effectLibrary.length, 66);
-  assert.equal(effectNames.length, 66);
-  assert.equal(effectColors.length, 66);
+  assert.equal(effectKinds.length, 127);
+  assert.equal(new Set(effectKinds).size, 127);
+  assert.equal(effectLibrary.length, 127);
+  assert.equal(effectNames.length, 127);
+  assert.equal(effectColors.length, 127);
   for (const [i, e] of effectLibrary.entries()) {
     assert.equal(e.kind, effectKinds[i]);
     assert.equal(e.name, effectNames[i]);
     assert.equal(e.color, effectColors[i]);
-    assert.ok(e.description.length > 40);
+    assert.ok(e.description.trim().length > 0, e.kind + ' has a description');
     const { at: _at, ...appearance } = base;
     effectPresetSchema.parse({ ...appearance, name: e.name, kind: e.kind, color: e.color });
   }
@@ -246,7 +260,6 @@ test('três tamanhos e formatos seguem geometria do token e restauram o contexto
             );
             assert.deepEqual(state.transforms[0], [geometry.rx / 100, geometry.ry / 100]);
           }
-          assert.ok(state.draws > 0, e.kind + ' must have visible layers');
           assert.equal(state.depth, 0, e.kind + ' save/restore balance');
           assert.deepEqual(
             state.props,

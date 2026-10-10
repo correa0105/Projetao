@@ -85,6 +85,7 @@ export const tokenSchema = z
     hp: z.number().min(-10000).max(100000).default(10),
     maxHp: z.number().min(1).max(100000).default(10),
     blood: bloodStateSchema.nullable().default(null),
+    bleeds: z.boolean().default(true),
     bossStyle: z.enum(storedBossStyles).nullable().default(null),
     deathAutomatic: z.boolean().default(false),
     deathAt: z.number().int().min(0).max(9999999999999).nullable().default(null),
@@ -218,6 +219,7 @@ export const documentSchema = z
   .object({
     version: z.literal(1),
     bloodEnabled: z.boolean().default(true),
+    autoRotateTokens: z.boolean().default(true),
     automaticDeath: z.boolean().default(true),
     soundboard: soundboardSchema.default(emptySoundboard),
     effects: z.array(effectPresetSchema).max(100).default([]),
@@ -445,6 +447,7 @@ export function newDocument(id: string): VttDocument {
   return {
     version: 1,
     bloodEnabled: true,
+    autoRotateTokens: true,
     automaticDeath: true,
     effects: [],
     folders: [],

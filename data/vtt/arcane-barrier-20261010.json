@@ -1,0 +1,24 @@
+{
+  "name": "Barreira arcana",
+  "kind": "arcane-barrier",
+  "method": "Original spherical periodic density field; nadir perspective, clear token center, cyan membrane edges; reference only, no copied video frames",
+  "source": "scripts/bake-arcane-barrier.mjs",
+  "source_sha256": "84f74e0ae0413662853c28858474789dc53ebcf9103f5bb58f9e2db3fa91b67e",
+  "reference": "20261010-1624-27.6664745.mp4",
+  "size": 192,
+  "tile": 196,
+  "frames": 32,
+  "period": 4,
+  "assets": [
+    {
+      "path": "/vtt/arcane-barrier-20261010/membrane-0.webp",
+      "sha256": "14eb2b5639abce4c58fd9019295af066aeca5a3fcd8c0d24281f9bd63bda59be"
+    },
+    {
+      "path": "/vtt/arcane-barrier-20261010/membrane-1.webp",
+      "sha256": "52c70288bad50bb2912de1e84ef02190e99ec78e1b3cf24753f04c5621216238"
+    }
+  ],
+  "review": "approved",
+  "validation": "127 schemas; original top-down sphere with token inside; atlas phase interpolation, reduced motion, three sizes and rectangular geometry, no clipped edges; browser/server apply and save/reload approved."
+}

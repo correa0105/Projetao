@@ -6,6 +6,7 @@ import { AppError } from './services.js';
 import { applyTokenDeath, type VttDocument, type VttScene, type VttToken } from '../shared/vtt.js';
 import type { PoolClient } from 'pg';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
+import { isAttackCheck } from '../shared/vtt-roll-purpose.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = { owner_id: string; document: VttDocument; role?: string | null };
 export function vttDamageRouter(
@@ -41,7 +42,7 @@ export function vttDamageRouter(
       if (!gm && target.controller !== user)
         throw new AppError(403, 'Somente o mestre ou o dono do personagem aplica dano nele.');
       const { rows } = await db.query(
-        `SELECT id::text,roll,damage,private,author_id,discarded FROM vtt_messages
+        `SELECT id::text,roll,damage,text,attack_visual,private,author_id,discarded FROM vtt_messages
         WHERE room_id=$1 AND id=ANY($2::bigint[]) ORDER BY id FOR UPDATE`,
         [id, input.message_ids],
       );
@@ -54,6 +55,7 @@ export function vttDamageRouter(
       const applied = new Set(previous.rows.map((a) => a.message_id));
       let amount = 0;
       for (const message of rows) {
+        if (isAttackCheck(message)) throw new AppError(400, 'Esta rolagem verifica o acerto. Role o dano antes de aplicá-lo.');
         if (message.discarded) throw new AppError(400, 'Este dano foi descartado.');
         if (message.private && !gm && message.author_id !== user)
           throw new AppError(403, 'Esta rolagem é privada.');

@@ -56,10 +56,21 @@ export function VttAnimatedAssets({
   gm: boolean;
   add: (id: AnimatedAsset['id']) => void;
 }) {
-  const rows = animatedAssets.filter((a) =>
-    (a.name + ' ' + a.description)
-      .toLocaleLowerCase('pt-BR')
-      .includes(query.toLocaleLowerCase('pt-BR')),
+  const removed = new Set<AnimatedAsset['id']>([
+    'candles',
+    'windmill',
+    'fountain',
+    'magic-pool',
+    'crystals',
+    'chest',
+    'spellbook',
+  ]);
+  const rows = animatedAssets.filter(
+    (a) =>
+      !removed.has(a.id) &&
+      (a.name + ' ' + a.description)
+        .toLocaleLowerCase('pt-BR')
+        .includes(query.toLocaleLowerCase('pt-BR')),
   );
   return (
     <div className="vtt-animated-library">
