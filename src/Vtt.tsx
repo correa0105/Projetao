@@ -144,6 +144,7 @@ import {
 } from '../shared/vtt-attachments';
 import { Link2 } from 'lucide-react';
 import { VttHpControl } from './VttHpControl';
+import { VttConditionMenu } from './VttConditionMenu';
 import { VttBossBars } from './VttBossBars';
 import { MapLibrary, MapSettings } from './VttMaps';
 import { useMusicInterlude } from './SiteMusic';
@@ -5062,7 +5063,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
           style={{
             left: contextMenu.x,
             top: contextMenu.y,
-            maxHeight: 'calc(100dvh - 24px)',
+            maxHeight: `calc(100dvh - ${Math.max(12, contextMenu.y + 12)}px)`,
           }}
         >
           <header
@@ -5153,6 +5154,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                   />
                 </>
               )}
+              {token.layer === 'tokens' && <VttConditionMenu conditions={token.conditions} gm={gm} enabled={canToken} busy={busy} onChange={(conditions) => { editToken({conditions}); if(gm) void save(); }} />}
               <details className="vtt-context-options" key={token.id}>
                 <summary>Mais opções</summary>
                 {gm && (<>

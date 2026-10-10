@@ -14,6 +14,7 @@ import {
 import { drawDeath } from './vtt-death';
 import { isTopDownTokenImage } from '../shared/vtt-token-image';
 import { drawTokenEffects } from './vtt-effects-canvas';
+import { drawConditionBadges } from './vtt-condition-badges';
 import { drawBloodDecals, drawTokenBlood } from './vtt-blood-canvas';
 import { drawPing, type VttPing } from './vtt-ping';
 import { drawTurnEffect } from './vtt-turn-effect';
@@ -466,15 +467,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
           hpWidth * Math.max(0, Math.min(1, t.hp / Math.max(1, t.maxHp))),
           4 / cam.zoom,
         );
-        if (t.conditions.length) {
-          c.font = `bold ${11 / cam.zoom}px sans-serif`;
-          c.fillStyle = '#eac586';
-          c.fillText(
-            t.conditions.map((v) => v.slice(0, 2)).join(' · '),
-            t.x,
-            t.y - t.height / 2 - 16 / cam.zoom,
-          );
-        }
+        if (t.conditions.length) drawConditionBadges(c, t, cam.zoom);
         c.restore();
       }
     }

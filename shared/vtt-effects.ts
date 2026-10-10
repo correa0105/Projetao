@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { extraEffectKinds, extraEffects } from './vtt-effects-extra.js';
 import { cinematicEffectKinds, cinematicEffects } from './vtt-effects-cinematic.js';
+import { arcanaEffectKinds, arcanaEffects } from './vtt-effects-arcana.js';
+import { effectRenderColor } from './vtt-effect-palette.js';
 // The original six IDs and ordering are part of saved rooms and hotbar presets.
 export const effectKinds = [
   'death',
@@ -41,6 +43,7 @@ export const effectKinds = [
   'sonic',
   ...extraEffectKinds,
   ...cinematicEffectKinds,
+  ...arcanaEffectKinds,
 ] as const;
 export type EffectKind = (typeof effectKinds)[number];
 export const effectLibrary: {
@@ -308,6 +311,8 @@ effectLibrary.push(
 );
 effectLibrary.push(...extraEffects);
 effectLibrary.push(...cinematicEffects);
+effectLibrary.push(...arcanaEffects);
+for (const model of effectLibrary) model.color = effectRenderColor(model.kind, model.color);
 export const effectNames = effectLibrary.map((e) => e.name);
 export const effectColors = effectLibrary.map((e) => e.color);
 const appearance = {

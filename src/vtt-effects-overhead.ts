@@ -12,6 +12,7 @@ import { drawCinematicTokenEffect } from './vtt-effects-continuous';
 import { drawOrganicEffect } from './vtt-effects-organic';
 import { drawRebuiltEffect } from './vtt-effects-rebuilt';
 import { drawElementalEffect } from './vtt-effects-elemental';
+import { drawArcanaEffect } from './vtt-effects-arcana';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -154,6 +155,7 @@ export function drawOverheadEffect(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawArcanaEffect(c, e, f, t, random, front, detail)) return;
   if (drawElementalEffect(c, e, f, t, random, front, detail)) return;
   if (drawRebuiltEffect(c, e, f, t, random, front, detail)) return;
   if (drawOrganicEffect(c, e, f, t, random, front, detail)) return;

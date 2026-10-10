@@ -1,0 +1,69 @@
+.vtt-condition-menu {
+  border-top: 1px solid #c4a35b36;
+  margin-top: 6px;
+  padding-top: 5px;
+}
+.vtt-condition-menu > summary {
+  cursor: pointer;
+  color: #ead3a1;
+  padding: 7px 2px;
+  font-size: 13px;
+}
+.vtt-condition-menu > summary > span {
+  color: #bbae90;
+  margin-left: 5px;
+}
+.vtt-condition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+  padding: 6px 0;
+}
+.vtt-condition-grid > button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px 1px;
+  min-width: 0;
+  min-height: 59px;
+  border: 1px solid #b7a17c38;
+  border-radius: 7px;
+  background: #141b20;
+  color: var(--condition-color);
+}
+.vtt-condition-grid > button > svg {
+  color: var(--condition-color);
+  width: 25px;
+  height: 25px;
+  filter: drop-shadow(0 1px 1px #000);
+}
+.vtt-condition-grid > button > span {
+  font-size: 9px;
+  line-height: 1.15;
+  color: #dfd6c1;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.vtt-condition-grid > button:hover,
+.vtt-condition-grid > button:focus-visible {
+  border-color: var(--condition-color);
+  background: #222a2f;
+  outline: 1px solid var(--condition-color);
+}
+.vtt-condition-grid > button[aria-pressed='true'] {
+  background: #333126;
+  border-color: #e0b45e;
+  box-shadow: inset 0 0 0 1px #e0b45e55;
+}
+.vtt-condition-grid > button[aria-pressed='true']:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.vtt-condition-grid > button:disabled:not([aria-pressed='true']) {
+  opacity: 0.4;
+}
+.vtt-condition-custom {
+  font-size: 11px;
+  margin: 3px;
+}

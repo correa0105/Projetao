@@ -4,6 +4,7 @@ import { drawEffectLayer } from './vtt-effects-front';
 import { seededRandom } from './vtt-effects-primitives';
 import { effectFootprint } from './vtt-effect-footprint';
 import { drawOverheadEffect } from './vtt-effects-overhead';
+import { effectRenderColor } from '../shared/vtt-effect-palette';
 
 export type EffectRenderOptions = {
   pass?: 'behind' | 'front';
@@ -48,6 +49,8 @@ export function renderEffect(
     geometry = effectGeometry(width, height, effect.scale),
     frame = effectFrame(effect, now, reduced);
   if (!geometry || !frame || frame.alpha <= 0) return false;
+  const color = effectRenderColor(effect.kind, effect.color),
+    appearance = color === effect.color ? effect : { ...effect, color };
   c.save();
   try {
     c.scale(geometry.rx / 100, geometry.ry / 100);
@@ -64,7 +67,7 @@ export function renderEffect(
       footprint.plane.ry *= effect.scale;
       drawOverheadEffect(
         c,
-        effect,
+        appearance,
         footprint,
         frame.t,
         random,
@@ -72,7 +75,15 @@ export function renderEffect(
         geometry.detail,
       );
     } else
-      drawEffectLayer(c, effect, 100, frame.t, random, options.pass || 'behind', geometry.detail);
+      drawEffectLayer(
+        c,
+        appearance,
+        100,
+        frame.t,
+        random,
+        options.pass || 'behind',
+        geometry.detail,
+      );
   } finally {
     c.restore();
   }

@@ -15,6 +15,7 @@ import { drawExpandedEffect } from './vtt-effects-expanded';
 import { drawEffectCollection } from './vtt-effects-collection';
 import { drawAdvancedEffects } from './vtt-effects-advanced';
 import { effectFootprint } from './vtt-effect-footprint';
+import { drawArcanaEffect } from './vtt-effects-arcana';
 
 type Random = (i: number) => number;
 function smoke(
@@ -117,6 +118,7 @@ export function drawEffectLayer(
     n = (count: number) => Math.max(3, Math.round(count * detail));
   c.imageSmoothingEnabled = true;
   c.imageSmoothingQuality = 'high';
+  if (drawArcanaEffect(c, e, effectFootprint(160, 160, r, r), t, random, front, detail)) return;
   if (drawAdvancedEffects(c, e, effectFootprint(160, 160, 100, 100), t, random, pass, detail))
     return;
   if (drawEffectCollection(c, e, effectFootprint(160, 160, 100, 100), t, random, pass, detail))

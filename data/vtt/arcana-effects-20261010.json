@@ -1,0 +1,274 @@
+{
+  "method": "Original periodic mathematical density fields, code-native Canvas animation, no copied reference assets",
+  "references": [
+    "https://br.pinterest.com/pin/786089310021947590/",
+    "https://library.jb2a.com/#Shield"
+  ],
+  "source": "scripts/arcana-density-fields.mjs",
+  "source_sha256": "16c338bf9d0ad335496715cbf186bb897a5075aaad5ee8865212f04fd083420a",
+  "size": 192,
+  "pad": 2,
+  "tile": 196,
+  "frames": 32,
+  "period": 4,
+  "assets": [
+    {
+      "kind": "liquid-aegis",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/liquid-aegis-0.webp",
+      "sha256": "358c82356b3fe0f782c5f7f6ba8eb15a0d389efcd3633b5c11f69fe75ab82b2e"
+    },
+    {
+      "kind": "liquid-aegis",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/liquid-aegis-1.webp",
+      "sha256": "41de392cf14ce970842316b75a28a6c5cbfa1bc3e7b75674b1902575350056a6"
+    },
+    {
+      "kind": "aurora-veil",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/aurora-veil-0.webp",
+      "sha256": "7f82bd2f15cff6d4083f275db203e3565bf0ce65682f91a0ca7b41c34382b849"
+    },
+    {
+      "kind": "aurora-veil",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/aurora-veil-1.webp",
+      "sha256": "24f746a213de222439f784c87c86f68b0bd76f76030b0e444b0489ff67cd1d52"
+    },
+    {
+      "kind": "light-cathedral",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/light-cathedral-0.webp",
+      "sha256": "9ae7e604f84f12af5a87cdb3fcb6637933b3441c61b14cbf2b677e1eb89a34c8"
+    },
+    {
+      "kind": "light-cathedral",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/light-cathedral-1.webp",
+      "sha256": "51cec3740c50ef46f2b5fcb5464ccbd725ba0006266a0709f7eee0592f7d1822"
+    },
+    {
+      "kind": "mirror-helix",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/mirror-helix-0.webp",
+      "sha256": "462b490a1afbbf68f31860cfaa810908dc7ac877b498e91f3aaed0caa045645f"
+    },
+    {
+      "kind": "mirror-helix",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/mirror-helix-1.webp",
+      "sha256": "b8f26d89ad6fcbef913583b0cd64cda5e4c346a87fd7bde74c75f11bcd843e6f"
+    },
+    {
+      "kind": "plasma-flower",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/plasma-flower-0.webp",
+      "sha256": "294912d1631bb66d6d5074f90bfb65027fdc9ca6616e5bbbf5187e860350e5e5"
+    },
+    {
+      "kind": "plasma-flower",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/plasma-flower-1.webp",
+      "sha256": "1ab507a90bd503a83ee6aad4f16cb10cc17846f27f9a58b865436b2894d4ebb5"
+    },
+    {
+      "kind": "nebula-mantle",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/nebula-mantle-0.webp",
+      "sha256": "8ab56bf2d7773bddc36c2a2f352ae9137862d18eb88a5dfffe16794748780860"
+    },
+    {
+      "kind": "nebula-mantle",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/nebula-mantle-1.webp",
+      "sha256": "1e25bb504e6aadc38571c067a07f9315128710b20a8823de830e4b84374158fb"
+    },
+    {
+      "kind": "living-eclipse",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/living-eclipse-0.webp",
+      "sha256": "f0b2c7cf2a39b93e84a0c4eb631d7e8487555d019265885a2d3baf96e0933cbe"
+    },
+    {
+      "kind": "living-eclipse",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/living-eclipse-1.webp",
+      "sha256": "b274f3a9a76470f12546ff2d36361c6c96f7968afd3606659e0f3234dedc380a"
+    },
+    {
+      "kind": "tidal-lens",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/tidal-lens-0.webp",
+      "sha256": "f4c0de90ab422ea7538a811fce7c3b1683a4c4007133e13711035c9281c20a08"
+    },
+    {
+      "kind": "tidal-lens",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/tidal-lens-1.webp",
+      "sha256": "ffce1d042e62568eb40c51630929805a3843f52a36096ff2ee8c48faf1530fde"
+    },
+    {
+      "kind": "storm-lances",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/storm-lances-0.webp",
+      "sha256": "82be672cb33bc69f953c4349c53f345d0aa0b583184d3800974670e162bcf028"
+    },
+    {
+      "kind": "storm-lances",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/storm-lances-1.webp",
+      "sha256": "945a4245ea91f266c49bb4ed98ad6020f1cdaf17b6e87d816003d6e1cd1f6c52"
+    },
+    {
+      "kind": "floating-prisms",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/floating-prisms-0.webp",
+      "sha256": "1aa5fa62cb3615461e44f531e008753b8e9e1068a9d683f22170f80817bed3a4"
+    },
+    {
+      "kind": "floating-prisms",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/floating-prisms-1.webp",
+      "sha256": "f5ceef7d5e81efc35e9f356638c1a6a55a3bc81fa3074d37fb1a43602f01abd8"
+    },
+    {
+      "kind": "arcane-harmony",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/arcane-harmony-0.webp",
+      "sha256": "ac3d08e2ea2cb47dfbe11eacba088dbe7f80de0b2dc95f61165d07efeeb89108"
+    },
+    {
+      "kind": "arcane-harmony",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/arcane-harmony-1.webp",
+      "sha256": "46cfb1a88349d503022183601d2ad5a56935a2bfb1d735b3c41d8136869ff8b0"
+    },
+    {
+      "kind": "ruby-heart",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/ruby-heart-0.webp",
+      "sha256": "d3c91f1e4e42d46e6ec006da413df6f0d09de70cc225a06368f3ad1af0831747"
+    },
+    {
+      "kind": "ruby-heart",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/ruby-heart-1.webp",
+      "sha256": "33a82b1916e7667ca750195734e0aa38fecb724f0f63713c3766aa733c226315"
+    },
+    {
+      "kind": "constellation-breath",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/constellation-breath-0.webp",
+      "sha256": "d0fe3840ce6e857ef282b671e62e9a5e5649d49a39ae0f82600a29e1e2356179"
+    },
+    {
+      "kind": "constellation-breath",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/constellation-breath-1.webp",
+      "sha256": "eeaac395c1dfe00970a18c3bcb319f8a8d241915b3245c8977966cfc5314fd83"
+    },
+    {
+      "kind": "aether-drops",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/aether-drops-0.webp",
+      "sha256": "9fa3f45a92e35f613a597d78eee31f8b280a59250d5bd70adaa09df6aa9781c9"
+    },
+    {
+      "kind": "aether-drops",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/aether-drops-1.webp",
+      "sha256": "4c0eb1d47fa78aaa3b2b19b45bf77efd074c2c58ad56e40e363b1ec343ece763"
+    },
+    {
+      "kind": "celestial-rosette",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/celestial-rosette-0.webp",
+      "sha256": "10e5e484a4e0b3e13986d0ee2e786dbfef26e92661aac670ec4daf2910b46cdd"
+    },
+    {
+      "kind": "celestial-rosette",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/celestial-rosette-1.webp",
+      "sha256": "3ead085d6953e85aaf7af8ecccdefd192014d0b1ea0c09020a1c871eb857cadf"
+    },
+    {
+      "kind": "gravity-fold",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/gravity-fold-0.webp",
+      "sha256": "9d346f02db76146ce8252d4cefeadd0075aee3240964f7f442d87617ad8f6656"
+    },
+    {
+      "kind": "gravity-fold",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/gravity-fold-1.webp",
+      "sha256": "1a2f059af0ae1c2c9974c6ceff6d47f1fe2d8520d6c296858c799bc9f2681005"
+    },
+    {
+      "kind": "discharge-matrix",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/discharge-matrix-0.webp",
+      "sha256": "2561721b13d9e8f2afae6325239712472d6e4ccf41b3b17a7776123a33cc7f10"
+    },
+    {
+      "kind": "discharge-matrix",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/discharge-matrix-1.webp",
+      "sha256": "eb6700797e083d47d0770165a04972ff301329010cbc9205c3bf2a3813ceeb6d"
+    },
+    {
+      "kind": "threshold-wings",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/threshold-wings-0.webp",
+      "sha256": "0e52adf566e6c7bf9c8855dbd51398f57cf87ae88ed0b06f18152f7cf6f2bba0"
+    },
+    {
+      "kind": "threshold-wings",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/threshold-wings-1.webp",
+      "sha256": "77ef3d6bff0de34b1ab2dc85d97884d126ff9608e51498ae0b6d23dabb9df511"
+    },
+    {
+      "kind": "abyssal-veil",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/abyssal-veil-0.webp",
+      "sha256": "adfd7c8bb8c7c60ecd0fa30b79f85a7d86a840eb122390f305f56733865b21f2"
+    },
+    {
+      "kind": "abyssal-veil",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/abyssal-veil-1.webp",
+      "sha256": "51ef23415e97e61c1f89220574181d331b1c80fec01f1ac5e4fd28c842e42a3b"
+    },
+    {
+      "kind": "sapphire-iris",
+      "page": 0,
+      "path": "/vtt/arcana-20261010/sapphire-iris-0.webp",
+      "sha256": "47b35c02b48f05c56ac45ae6c90132805421b409c374526d52240bf3957e5e3b"
+    },
+    {
+      "kind": "sapphire-iris",
+      "page": 1,
+      "path": "/vtt/arcana-20261010/sapphire-iris-1.webp",
+      "sha256": "43f10ad196f2a3adfb1f7c664cc03b5b5b829794df1b3e602234540e49bc3674"
+    }
+  ],
+  "review": {
+    "status": "approved",
+    "checks": [
+      "twenty evolving fields",
+      "seamless interpolation",
+      "reduced motion",
+      "white recoloring",
+      "93 unchanged old effects and twelve new palettes",
+      "thirty original icons",
+      "eighty actual map renders",
+      "real API and responsive menus",
+      "permissions and protocol 9"
+    ],
+    "reports": [
+      "scripts/review-vtt-arcana-effects.mjs",
+      "scripts/smoke-vtt-arcana-conditions.ts"
+    ]
+  }
+}
