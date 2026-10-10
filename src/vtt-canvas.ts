@@ -1,3 +1,4 @@
+import { drawMapAtmosphere } from './vtt-atmosphere';
 import {
   sightPolygon,
   rulerLabel,
@@ -491,6 +492,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       images,
     );
   if (o.spellPreview) drawSpellPreview(c, s, o.spellPreview, spellView, cam.zoom);
+  if (o.visualEffects !== false) drawMapAtmosphere(c, s, spellView, cam.zoom, width, height);
   if (s.lighting || (s.fog && s.fogMode === 'vision')) {
     const master = o.gm && !o.preview;
     const darkness = master ? s.gmDarkness : 1;

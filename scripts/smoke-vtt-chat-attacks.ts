@@ -192,6 +192,46 @@ try {
   const board = page.getByLabel('Tabuleiro da mesa', { exact: true });
   await expect(board).toBeVisible();
   await expect(peer.getByLabel('Mensagem', { exact: true })).toBeVisible();
+  // Map atmosphere belongs to the scene and only its GM can edit it.
+  await expect(peer.getByRole('button',{name:'Efeitos do mapa',exact:true})).toHaveCount(0);
+  for(const width of[1440,768,390,320]){
+    await page.setViewportSize({width,height:1000});
+    await page.getByRole('button',{name:'Efeitos do mapa',exact:true}).click();
+    const menu=page.getByRole('dialog',{name:'Efeitos do mapa',exact:true});
+    await expect(menu).toBeVisible();
+    await menu.getByRole('button',{name:'Noite',exact:true}).click();
+    await menu.getByRole('button',{name:'Neblina',exact:true}).click();
+    const box=(await menu.boundingBox())!;
+    expect(box.x>=0&&box.x+box.width<=width+1).toBe(true);
+    await menu.getByRole('button',{name:'Aplicar na cena',exact:true}).click();
+    await expect.poll(async()=> (await api(gm,root)).data.document.scenes[0].atmosphere.weather).toBe('fog');
+    await page.screenshot({path:'test-results/vtt-map-weather-menu-'+width+'.png'});
+    await menu.getByRole('button',{name:'Fechar efeitos do mapa',exact:true}).click();
+  }
+  const atmosphereState=(await api(gm,root)).data;
+  expect((await api(player,root,'PUT',{revision:atmosphereState.revision,document:atmosphereState.document})).status).toBe(403);
+  const weatherInput={sceneId:atmosphereState.document.activeScene,atmosphere:atmosphereState.document.scenes[0].atmosphere};
+  const oldClient=await gm.request.put(origin+'/api'+root+'/atmosphere',{headers:{Origin:origin,'X-Vtt-Schema-Version':String(vttProtocolVersion-1)},data:weatherInput});
+  expect(oldClient.status()).toBe(409);
+  const preserved=structuredClone(atmosphereState.document);
+  const atomic=await api(gm,root+'/atmosphere','PUT',{...weatherInput,atmosphere:{...weatherInput.atmosphere,intensity:.8}});
+  expect(atomic.status).toBe(200);
+  preserved.scenes[0].atmosphere.intensity=.8;
+  expect(atomic.data.document).toEqual(preserved);
+
+  expect((await api(player,root+'/atmosphere','PUT',weatherInput)).status).toBe(403);
+  expect((await api(spectator,root+'/atmosphere','PUT',weatherInput)).status).toBe(403);
+  expect((await api(spectator,root,'PUT',{revision:atmosphereState.revision,document:atmosphereState.document})).status).toBe(403);
+  expect((await api(player,root)).data.document.scenes[0].atmosphere.weather).toBe('fog');
+  await page.reload();await expect(board).toBeVisible();
+  await page.getByRole('button',{name:'Efeitos do mapa',exact:true}).click();
+  const weatherMenu=page.getByRole('dialog',{name:'Efeitos do mapa',exact:true});
+  await expect(weatherMenu.getByRole('button',{name:'Neblina',exact:true})).toHaveAttribute('aria-pressed','true');
+  await weatherMenu.getByRole('button',{name:'Limpar',exact:true}).click();
+  await expect.poll(async()=> (await api(gm,root)).data.document.scenes[0].atmosphere.enabled).toBe(false);
+  await weatherMenu.getByRole('button',{name:'Fechar efeitos do mapa',exact:true}).click();
+  await page.setViewportSize({width:1440,height:1000});
+
   const clickToken = async (p: Page, t: { x: number; y: number }, ctrl = false) => {
     const c = p.getByLabel('Tabuleiro da mesa', { exact: true }),
       b = await c.boundingBox();
@@ -395,6 +435,19 @@ try {
   // Actual hotbar attack flow: attacker selection, target click, animation/audio.
   await page.getByRole('button', { name: 'Atalho 1 · Espada longa', exact: true }).click();
   await expect(page.getByLabel('Animação do ataque')).toBeVisible();
+  for(const width of[1440,768,390,320]){
+    await page.setViewportSize({width,height:1000});
+    const panel=page.locator('.vtt-hotbar-action');
+    const box=(await panel.boundingBox())!;
+    expect(box.width<=421&&box.x>=0&&box.x+box.width<=width+1).toBe(true);
+    await expect(panel.getByLabel('Vantagem do ataque')).toBeVisible();
+    await expect(panel.getByLabel('Animação do ataque')).toBeVisible();
+    await expect(panel.getByRole('button',{name:'Rolar ataque',exact:true})).toBeDisabled();
+    expect(await panel.evaluate(el=>el.scrollWidth<=el.clientWidth+1)).toBe(true);
+    await page.screenshot({path:'test-results/vtt-compact-attack-'+width+'.png'});
+  }
+  await page.setViewportSize({width:1440,height:1000});
+
   expect(
     await page
       .getByLabel('Animação do ataque')

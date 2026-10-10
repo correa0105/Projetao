@@ -519,6 +519,7 @@ export function VttHotbar({
           )}
           {selected && !page.locked && (
             <button
+              className="vtt-hotbar-remove"
               disabled={busy || attackBusy}
               onClick={() => {
                 void mutate((d) => {

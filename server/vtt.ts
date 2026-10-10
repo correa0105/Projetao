@@ -3,6 +3,7 @@ import { randomInt, randomUUID, randomBytes } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { z } from 'zod';
+import { atmosphereSchema } from '../shared/vtt-atmosphere.js';
 import type { PoolClient } from 'pg';
 import { pool, transaction } from './db.js';
 import { requireAdministrator, isAdministrator } from './administrators.js';
@@ -676,6 +677,21 @@ export function vttRouter() {
       return signal;
     });
     res.json(signal);
+  });
+  router.put('/vtt/rooms/:id/atmosphere', async (req, res) => {
+    if (req.get('X-Vtt-Schema-Version') !== String(vttProtocolVersion))
+      throw new AppError(409, vttUpdateMessage);
+    const rid = uuid.parse(req.params.id);
+    const input = z.object({ sceneId: uuid, atmosphere: atmosphereSchema }).strict().parse(req.body);
+    await transaction(async (db) => {
+      const r = await gm(db, rid, res.locals.user.id, true);
+      const scene = r.document.scenes.find((s) => s.id === input.sceneId);
+      if (!scene || scene.id !== r.document.activeScene)
+        throw new AppError(409, 'O mapa ativo mudou. Abra os efeitos novamente.');
+      scene.atmosphere = input.atmosphere;
+      await db.query('UPDATE vtt_rooms SET document=$2,revision=revision+1,updated_at=now() WHERE id=$1', [rid, JSON.stringify(r.document)]);
+    });
+    res.json(await state(rid, res.locals.user.id));
   });
   router.put('/vtt/rooms/:id', async (req, res) => {
     if (req.get('X-Vtt-Schema-Version') !== String(vttProtocolVersion))

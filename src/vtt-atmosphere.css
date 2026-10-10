@@ -1,0 +1,157 @@
+.vtt-atmosphere-tool {
+  position: relative;
+}
+.vtt-atmosphere-menu {
+  position: fixed;
+  left: 64px;
+  top: 110px;
+  z-index: 80;
+  width: min(390px, calc(100vw - 84px));
+  max-height: calc(100dvh - 150px);
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid #ae8d5955;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #1f2c37f9, #0c151efc);
+  box-shadow: 0 18px 44px #0008;
+  color: #e6decc;
+  font: 12px/1.4 var(--sans, Arial, sans-serif);
+}
+.vtt-atmosphere-menu header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.vtt-atmosphere-menu header strong {
+  display: block;
+  font: 500 19px/1.4 var(--serif, Georgia, serif);
+}
+.vtt-atmosphere-menu header span {
+  font: 600 8px/1.4 var(--sans, Arial, sans-serif);
+  letter-spacing: 1.5px;
+  color: #baa074;
+}
+:root .vtt-atmosphere-menu button {
+  appearance: none;
+  background: #18232ce8;
+  color: #d9d5c7;
+  border: 1px solid #7b805a33;
+  border-radius: 5px;
+  cursor: pointer;
+  font: 500 11px/1.35 var(--sans, Arial, sans-serif);
+  box-shadow: none;
+  min-height: 0;
+  padding: 8px 10px;
+  border-color: #8b8c7830;
+  white-space: normal;
+}
+:root .vtt-atmosphere-menu button[aria-pressed='true'] {
+  color: #ffe4ac;
+  border-color: #c5a66699;
+  background: #b2925026;
+}
+.vtt-atmosphere-days {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  margin-bottom: 16px;
+}
+.vtt-atmosphere-days > button:first-child {
+  grid-column: 1/-1;
+}
+.vtt-atmosphere-menu nav {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+.vtt-atmosphere-presets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+:root .vtt-atmosphere-presets > button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  padding: 9px 7px;
+}
+.atmosphere-swatch {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: radial-gradient(#d0d8d555, #64757a44, transparent);
+}
+.atmosphere-swatch.rain,
+.atmosphere-swatch.storm {
+  background: repeating-linear-gradient(115deg, transparent 0 4px, #a1cbd07a 5px 6px);
+}
+.atmosphere-swatch.fog,
+.atmosphere-swatch.cloud {
+  background: radial-gradient(#dce6e7aa, transparent);
+}
+.atmosphere-swatch.snow,
+.atmosphere-swatch.hail {
+  background: radial-gradient(#f1f8f6 1px, transparent 2px) 0 0/6px 6px;
+}
+.atmosphere-swatch.aurora,
+.atmosphere-swatch.vortex,
+.atmosphere-swatch.eclipse {
+  background: conic-gradient(#507a86, #9585c0, #527354, #507a86);
+}
+.atmosphere-swatch.sand,
+.atmosphere-swatch.ash,
+.atmosphere-swatch.meteor {
+  background: radial-gradient(#d6a3669c, transparent);
+}
+.vtt-atmosphere-range {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #c4c7bd;
+}
+.vtt-atmosphere-range input {
+  grid-column: 1/-1;
+  width: 100%;
+  accent-color: #c4a26d;
+  cursor: pointer;
+}
+.vtt-atmosphere-range output {
+  color: #dfcba6;
+}
+.vtt-atmosphere-menu details {
+  margin-top: 12px;
+  color: #a8aca8;
+  font-size: 10px;
+}
+.vtt-atmosphere-menu summary {
+  cursor: pointer;
+}
+.vtt-atmosphere-menu footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid #8b8c782b;
+  padding-top: 12px;
+  margin-top: 15px;
+}
+:root .vtt-atmosphere-menu .vtt-atmosphere-apply {
+  background: #9f7f43;
+  color: #fff0cc;
+  border-color: #c8a76f77;
+}
+.vtt-atmosphere-menu > small {
+  display: block;
+  margin-top: 10px;
+  color: #8f9b9e;
+  font-size: 9px;
+}
+@media (max-height: 700px) {
+  .vtt-atmosphere-menu {
+    top: 80px;
+  }
+}

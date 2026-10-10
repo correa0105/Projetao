@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { atmosphereSchema } from './vtt-atmosphere.js';
 import { animatedAssetSchema } from './vtt-animated-assets.js';
 import { soundboardSchema, emptySoundboard } from './vtt-sounds.js';
 import { effectPresetSchema, tokenEffectSchema } from './vtt-effects.js';
@@ -163,6 +164,7 @@ export const sceneSchema = z
     height: z.number().int().min(280).max(16000),
     background: media,
     backgroundColor: color,
+    atmosphere: atmosphereSchema.default(() => atmosphereSchema.parse({})),
     backdropColor: color.default('#0e151d'),
     dominantBackdrop: z.boolean().default(false),
     folderId: id.nullable().default(null),

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Dices, Swords } from 'lucide-react';
+import { Crosshair, Dices, Swords } from 'lucide-react';
 import {
   attackFormula,
   attackOutcome,
@@ -71,7 +71,8 @@ export function VttAttack({
   const done = damage.length > 0 && damage.length === formulas.length;
   const pending = !!result?.hit && !discarded && !done && formulas.length > 0;
   useEffect(() => {
-    if (!pending || busy || !active || result?.target.id !== target?.id || !result?.roll.messageId) return;
+    if (!pending || busy || !active || result?.target.id !== target?.id || !result?.roll.messageId)
+      return;
     return registerAttackDamage(result.roll.messageId, hurt);
   }, [result, pending, busy, active, target?.id, damage]);
   async function run(fn: () => Promise<void>) {
@@ -154,38 +155,50 @@ export function VttAttack({
   return (
     <div className="vtt-attack-inline" aria-label="Controles do ataque">
       <span className="vtt-attack-target" aria-live="polite">
+        <Crosshair size={16} aria-hidden="true" />
         {target ? (
           <>
             Alvo: <b>{target.name}</b>
           </>
         ) : (
-          'Clique em outro token para marcar o alvo vermelho.'
+          'Escolha um alvo no mapa'
         )}
       </span>
-      <select
-        aria-label="Vantagem do ataque"
-        value={mode}
-        disabled={busy || pending}
-        onChange={(e) => setMode(e.target.value as AttackMode)}
+      <label className="vtt-attack-option">
+        Rolagem
+        <select
+          aria-label="Vantagem do ataque"
+          value={mode}
+          disabled={busy || pending}
+          onChange={(e) => setMode(e.target.value as AttackMode)}
+        >
+          <option value="normal">Normal</option>
+          <option value="advantage">Vantagem</option>
+          <option value="disadvantage">Desvantagem</option>
+        </select>
+      </label>
+      <label className="vtt-attack-option">
+        Animação
+        <select
+          aria-label="Animação do ataque"
+          value={visual}
+          disabled={busy || pending}
+          onChange={(e) => setVisual(e.target.value as typeof visual)}
+        >
+          <option value="auto">Automática · {weaponStyleNames[weaponStyle(request.name)]}</option>
+          <option value="none">Sem animação e som</option>
+        </select>
+      </label>
+      <button
+        className="vtt-attack-primary"
+        disabled={busy || !target || !active || pending}
+        onClick={() => void attack()}
       >
-        <option value="normal">Normal</option>
-        <option value="advantage">Vantagem</option>
-        <option value="disadvantage">Desvantagem</option>
-      </select>
-      <select
-        aria-label="Animação do ataque"
-        value={visual}
-        disabled={busy || pending}
-        onChange={(e) => setVisual(e.target.value as typeof visual)}
-      >
-        <option value="auto">Automática · {weaponStyleNames[weaponStyle(request.name)]}</option>
-        <option value="none">Sem animação e som</option>
-      </select>
-      <button disabled={busy || !target || !active || pending} onClick={() => void attack()}>
         <Swords size={14} /> {result ? 'Rolar novo ataque' : 'Rolar ataque'}
       </button>
       {!result && request.damage.length > 0 && (
         <button
+          className="vtt-attack-separate"
           disabled={busy || !active}
           onClick={() =>
             void run(async () => {

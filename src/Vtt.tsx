@@ -1,4 +1,6 @@
 import { VttTokenMenu } from './VttTokenMenu';
+import { VttAtmosphereMenu } from './VttAtmosphereMenu';
+import { atmosphereAnimated } from './vtt-atmosphere';
 import { VttTokenScaleControl } from './VttTokenScaleControl';
 import { isAttackCheck } from '../shared/vtt-roll-purpose';
 import { VttAttackRollAction } from './VttAttackRollAction';
@@ -1052,7 +1054,8 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
     const infinite =
       visualEffects &&
-      (!!combat.state?.active ||
+      (atmosphereAnimated(scene.atmosphere) ||
+        !!combat.state?.active ||
         !!effectPreview ||
         spellcasting.effects.some((e) => e.persistent && (!e.expires || e.expires > Date.now())) ||
         scene.tokens.some((t) => t.animatedAsset?.playing) ||
@@ -2651,6 +2654,9 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                 <Redo2 size={18} />
               </button>
             </>
+          )}
+          {gm && !preview && !sheetId && (
+            <VttAtmosphereMenu effectsEnabled={visualEffects} enableEffects={() => media.update({visualEffects:true})} value={scene.atmosphere} busy={busy} change={async (value) => { await save(); receive(await api<VttState>('/vtt/rooms/' + state.id + '/atmosphere', { method: 'PUT', body: JSON.stringify({ sceneId: scene.id, atmosphere: value }) })); }} />
           )}
           {gm && !sheetId && (
             <VttEffects
