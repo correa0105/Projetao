@@ -1,0 +1,58 @@
+{
+  "jobs": [
+    {
+      "id": "bloodshed-double-bladed-scimitar",
+      "family": "Bloodshed Blade",
+      "model": "Double-Bladed Scimitar",
+      "label": "Cimitarra de duas lâminas",
+      "reference": "/shop/magic-completion-20261009/model-double-bladed-scimitar.webp",
+      "material": "/shop/magic-completion-20261009/material-bloodshed-weapon.webp",
+      "prompt": "Edit the first reference into an ORIGINAL complete Bloodshed Blade variant, matching the second reference's warm burnished bronze, steel and ORANGE-RED CARNELIAN craftsmanship. Preserve the first reference's exact physical Double-Bladed Scimitar weapon form, blade count, proportions, handle position and full intact outline. Place ONE prominent small ORANGE-RED CARNELIAN GEM ENGRAVED WITH AN ORIGINAL BLOOD RUNE at the HILT/GUARD, not at the blade point or as a giant gem over the cutting edge. Distinct refined bronze fittings and subtle engraved blood-rune detail, believable material volume. Entire weapon inside comfortable margins, native transparent background without opaque halo, no person, hand, scene, ground, blood splashes, text, labels, extra objects or watermark. This is the full real weapon, readable in a shop icon and beside a chest."
+    },
+    {
+      "id": "bloodshed-greatsword",
+      "family": "Bloodshed Blade",
+      "model": "Greatsword",
+      "label": "Espada grande",
+      "reference": "/shop/items/greatsword.png",
+      "material": "/shop/magic-completion-20261009/material-bloodshed-weapon.webp",
+      "prompt": "Edit the first reference into an ORIGINAL complete Bloodshed Blade variant, matching the second reference's warm burnished bronze, steel and ORANGE-RED CARNELIAN craftsmanship. Preserve the first reference's exact physical Greatsword weapon form, blade count, proportions, handle position and full intact outline. Place ONE prominent small ORANGE-RED CARNELIAN GEM ENGRAVED WITH AN ORIGINAL BLOOD RUNE at the HILT/GUARD, not at the blade point or as a giant gem over the cutting edge. Distinct refined bronze fittings and subtle engraved blood-rune detail, believable material volume. Entire weapon inside comfortable margins, native transparent background without opaque halo, no person, hand, scene, ground, blood splashes, text, labels, extra objects or watermark. This is the full real weapon, readable in a shop icon and beside a chest."
+    },
+    {
+      "id": "bloodshed-longsword",
+      "family": "Bloodshed Blade",
+      "model": "Longsword",
+      "label": "Espada longa",
+      "reference": "/shop/items/longsword.png",
+      "material": "/shop/magic-completion-20261009/material-bloodshed-weapon.webp",
+      "prompt": "Edit the first reference into an ORIGINAL complete Bloodshed Blade variant, matching the second reference's warm burnished bronze, steel and ORANGE-RED CARNELIAN craftsmanship. Preserve the first reference's exact physical Longsword weapon form, blade count, proportions, handle position and full intact outline. Place ONE prominent small ORANGE-RED CARNELIAN GEM ENGRAVED WITH AN ORIGINAL BLOOD RUNE at the HILT/GUARD, not at the blade point or as a giant gem over the cutting edge. Distinct refined bronze fittings and subtle engraved blood-rune detail, believable material volume. Entire weapon inside comfortable margins, native transparent background without opaque halo, no person, hand, scene, ground, blood splashes, text, labels, extra objects or watermark. This is the full real weapon, readable in a shop icon and beside a chest."
+    },
+    {
+      "id": "bloodshed-rapier",
+      "family": "Bloodshed Blade",
+      "model": "Rapier",
+      "label": "Rapieira",
+      "reference": "/shop/items/rapier.png",
+      "material": "/shop/magic-completion-20261009/material-bloodshed-weapon.webp",
+      "prompt": "Edit the first reference into an ORIGINAL complete Bloodshed Blade variant, matching the second reference's warm burnished bronze, steel and ORANGE-RED CARNELIAN craftsmanship. Preserve the first reference's exact physical Rapier weapon form, blade count, proportions, handle position and full intact outline. Place ONE prominent small ORANGE-RED CARNELIAN GEM ENGRAVED WITH AN ORIGINAL BLOOD RUNE at the HILT/GUARD, not at the blade point or as a giant gem over the cutting edge. Distinct refined bronze fittings and subtle engraved blood-rune detail, believable material volume. Entire weapon inside comfortable margins, native transparent background without opaque halo, no person, hand, scene, ground, blood splashes, text, labels, extra objects or watermark. This is the full real weapon, readable in a shop icon and beside a chest."
+    },
+    {
+      "id": "bloodshed-scimitar",
+      "family": "Bloodshed Blade",
+      "model": "Scimitar",
+      "label": "Cimitarra",
+      "reference": "/shop/expanded/scimitar.webp",
+      "material": "/shop/magic-completion-20261009/material-bloodshed-weapon.webp",
+      "prompt": "Edit the first reference into an ORIGINAL complete Bloodshed Blade variant, matching the second reference's warm burnished bronze, steel and ORANGE-RED CARNELIAN craftsmanship. Preserve the first reference's exact physical Scimitar weapon form, blade count, proportions, handle position and full intact outline. Place ONE prominent small ORANGE-RED CARNELIAN GEM ENGRAVED WITH AN ORIGINAL BLOOD RUNE at the HILT/GUARD, not at the blade point or as a giant gem over the cutting edge. Distinct refined bronze fittings and subtle engraved blood-rune detail, believable material volume. Entire weapon inside comfortable margins, native transparent background without opaque halo, no person, hand, scene, ground, blood splashes, text, labels, extra objects or watermark. This is the full real weapon, readable in a shop icon and beside a chest."
+    },
+    {
+      "id": "bloodshed-shortsword",
+      "family": "Bloodshed Blade",
+      "model": "Shortsword",
+      "label": "Espada curta",
+      "reference": "/shop/expanded/shortsword.webp",
+      "material": "/shop/magic-completion-20261009/material-bloodshed-weapon.webp",
+      "prompt": "Edit the first reference into an ORIGINAL complete Bloodshed Blade variant, matching the second reference's warm burnished bronze, steel and ORANGE-RED CARNELIAN craftsmanship. Preserve the first reference's exact physical Shortsword weapon form, blade count, proportions, handle position and full intact outline. Place ONE prominent small ORANGE-RED CARNELIAN GEM ENGRAVED WITH AN ORIGINAL BLOOD RUNE at the HILT/GUARD, not at the blade point or as a giant gem over the cutting edge. Distinct refined bronze fittings and subtle engraved blood-rune detail, believable material volume. Entire weapon inside comfortable margins, native transparent background without opaque halo, no person, hand, scene, ground, blood splashes, text, labels, extra objects or watermark. This is the full real weapon, readable in a shop icon and beside a chest."
+    }
+  ]
+}

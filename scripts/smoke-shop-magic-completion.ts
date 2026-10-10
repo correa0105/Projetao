@@ -612,6 +612,34 @@ try {
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
   }
+  const swordUtilityFamilies=['Blade of the Medusa','Bloodshed Blade',"Fool's Blade","Gambler's Blade",'Mind Blade','Polymorph Blade','Sword of Retribution','Sword of the Planes'];
+  if(ids.includes('greatsword-of-the-medusa')) {
+    const swords=completion.items.filter((x:any)=>swordUtilityFamilies.includes(x.raw_data.magic_family));
+    assert.equal(swords.length,48);for(const family of swordUtilityFamilies)assert.equal(swords.filter((x:any)=>x.raw_data.magic_family===family).length,6);
+    const bonuses:Record<string,number>={"Fool's Blade":2,'Sword of Retribution':3,'Sword of the Planes':3};
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:null,slot:'off_hand'})).status,200);
+    for(const x of swords) {
+      const family=x.raw_data.magic_family,f=x.raw_data.upstream_facts,r=x.raw_data.rules_summary;
+      assert.equal(x.raw_data.magic_kind,'weapon');assert.equal(x.raw_data.source_edition,'D&D 5e (2014)');
+      assert.equal(x.raw_data.attunement,family==='Mind Blade'?'by a specific individual':true);
+      assert.equal(Number(x.raw_data.enhancement||0),bonuses[family]||0);
+      assert.equal(x.weight_lb,f.weight);assert.equal(x.weight_estimated,false);
+      assert.equal(f.curse===true,['Blade of the Medusa',"Gambler's Blade",'Polymorph Blade','Sword of Retribution'].includes(family));
+      if(family==='Blade of the Medusa') {assert.equal(f.source,'LLK');assert.match(r,/20 natural/);assert.match(r,/Constituição CD 15/);assert.match(r,/Três sucessos encerram/);assert.match(r,/três falhas/);assert.match(r,/ações lendárias/);assert.match(r,/1 natural/);}
+      if(family==='Bloodshed Blade') {assert.equal(f.source,'BGG');assert.equal(f.bonusWeaponDamage,'+1');assert.match(x.image_path,/\.webp$/);assert.match(r,/cornalina.*punho/);assert.match(r,/modificador de Constituição, com mínimo de \+1/);assert.match(r,/depois de rolar o d20/);assert.match(r,/se esse ataque acertar/i);assert.match(r,/qualquer quantidade dos seus dados de vida ainda não gastos/);assert.match(r,/próximo amanhecer/);}
+      if(family==="Fool's Blade") {assert.equal(f.source,'BMT');assert.match(r,/aparência comum/);assert.match(r,/Inteligência CD 15/);assert.match(r,/alcance \(reach\) do atacante/);assert.match(r,/reserva é independente da finta/);}
+      if(family==="Gambler's Blade") {assert.equal(f.source,'LLK');assert.match(r,/bônus mágico de \+1, \+2 ou \+3/);assert.match(r,/-1, -2 ou -3/);assert.match(r,/mudar o bônus a cada amanhecer/);assert.match(r,/cadastro não fixa/);}
+      if(family==='Mind Blade') {assert.equal(f.source,'VGM');assert.match(r,/Somente uma criatura específica/);assert.match(r,/qualquer outra criatura.*espada comum/);assert.match(r,/2d6 de dano psíquico adicional a qualquer alvo/);}
+      if(family==='Polymorph Blade') {assert.equal(f.source,'LLK');assert.match(r,/Sabedoria CD 15/);assert.match(r,/metamorfo \(shapechanger\)/);assert.match(r,/1 tiranossauro.*20 coelho/);assert.match(r,/1 natural.*por uma hora/);}
+      if(family==='Sword of Retribution') {assert.equal(f.source,'CoA');assert.match(r,/só podem ser recuperados por descanso curto ou longo/);assert.match(r,/Constituição CD 11/);assert.match(r,/Só Remover Maldição permite encerrar esta sintonia/);assert.match(r,/corrupção infernal/);assert.match(r,/vantagem para tieflings/);assert.match(r,/a partir do segundo estágio/);}
+      if(family==='Sword of the Planes') {assert.equal(f.source,'BMT');assert.match(r,/plano diferente/);assert.match(r,/espaço desocupado a até cinco pés/);assert.match(r,/dez pés de altura e dez pés de largura/);assert.match(r,/critério do mestre/);assert.match(r,/espaço desocupado mais próximo da fenda/);}
+      if(!rulesReviewIds||rulesReviewIds.has(x.id)) {
+        assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:x.id,slot:'main_hand'})).status,200,x.id);
+        if(x.raw_data.two_handed)assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:x.id,slot:'off_hand'})).status,400,x.id);
+      }
+    }
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
+  }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
   );

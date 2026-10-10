@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **926 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **974 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -493,3 +493,21 @@ TypeScript/build e API dos 926 itens aprovados em banco UUID descartável: compr
 A imagem Docker foi compactada com a mesma base Node imutável e uma cópia preservando atributos do aplicativo aprovado, seguida dos seis patches deste lote. Configuração de execução idêntica; 17.513 arquivos, diretórios e links anteriores conservaram bytes, permissões e proprietário. Camadas passaram de 118 para 12. Snapshots anteriores e volumes conservados; dados do aplicativo não foram exportados/importados para compactar a imagem. Técnica de montagem de estágio documentada na [referência Dockerfile oficial](https://docs.docker.com/reference/dockerfile/#run---mounttypebind). Helpers privados: prepare-common-utility4-publication.mjs e verify-magic-v19-compaction.mjs.
 
 Completar todos continua em andamento: 2.150 candidatos, além das opções específicas de magia/alvo que ainda precisam ser expandidas.
+
+## Lote 20 — oito famílias de espadas (10/10/2026)
+
+Publicadas 48 espadas, seis modelos por família: cimitarra de duas lâminas, espada grande, espada longa, rapieira, cimitarra e espada curta. Cada modelo tem silhueta completa, fala e som próprios. Oito materiais originais produzidos por imagegen, 42 skins portáveis em SVG e seis ilustrações integrais independentes do derramamento de sangue, com cornalina gravada no punho conforme a fonte. Prompts em art-jobs-sword-utility-materials.json e art-jobs-bloodshed-weapon-items.json. PNGs nativos e oito folhas finais a 198 px no fundo noturno foram revisados. As oito prévias novas de baú mostram o objeto inteiro em 1500/390 px; os 46 representantes anteriores também passaram. Nenhuma oferta ou arte anterior foi substituída.
+
+Fontes do 5etools: LLK pp. 53, 55 e 56 (medusa, apostador e metamorfose); BGG p. 111 (derramamento de sangue); BMT pp. 36 e 68 (tolo e planos); VGM p. 81 (lâmina mental); CoA pp. 270–272 (retribuição e corrupção infernal). As regras desses encantos são de 2014; os modelos físicos mantêm sua edição, incluindo a cimitarra dupla clássica. Preços seguem a raridade e incluem o valor-base físico, sem consumir essas armas.
+
+Medusa aplica Constituição CD 15 no 20 natural contra criatura, Impedido e três sucessos/falhas, com imunidades corretas e risco ao portador no 1 natural. Metamorfose preserva Sabedoria CD 15, imunidades, toda a tabela de vinte formas e transformação do usuário por uma hora no 1 natural. Ambas exigem sintonia e têm maldição de apego, sem bônus numérico inventado.
+
+Derramamento acrescenta Constituição ao dano com mínimo de +1, sem +1 fixo de ataque. A runa pode ser invocada depois do d20 e gasta um dado de vida no ataque; somente se acertar permite gastar outros no dano, sem cura. Uso volta no amanhecer. Tolo é +2, com aparência comum, finta por ação bônus a cinco pés e reação de redirecionamento a sessenta pés; os dois usos por amanhecer são independentes. Apostador conserva um único bônus ajustável de +1/+2/+3 e penalidade igual contra a morte, sem três itens vendidos nem bônus fixo cadastrado. Lâmina mental só pode ser sintonizada pelo indivíduo específico destinado, acrescentando 2d6 psíquicos nas mãos dele; outra pessoa recebe apenas uma espada comum.
+
+Retribuição é +3, com recuperação dos PV tirados somente por descanso, desvantagem com outras armas, pesadelos com Constituição CD 11 e encerramento da sintonia somente via Remover Maldição. A corrupção infernal, seu primeiro estágio, progressão e referência às curas dos quatro estágios estão indicados; encerrar sintonia a partir do segundo estágio não interrompe o processo. Planos é +3 e abre por uma ação uma fenda diária de até dez pés de altura/largura por um minuto para outro plano; destino em/ao redor do lugar indicado fica a critério do mestre. Poderes permanecem para resolução na mesa.
+
+TypeScript/build aprovados. API em banco UUID descartável validou os 974 itens, mídia única, compra, replay, saldo, ledger, preços administrativos, conjuntos anteriores, descrições das 48 fontes e equipamento de todos os novos modelos. Loja real validou as 48 artes/falas/regras e o catálogo completo em 1500/760/390 px sem erros; 54 prévias de baú com skin correta e limites inteiros. Após publicação, 60 tabelas e todas as ofertas anteriores mantêm linhas integrais idênticas; apenas 48 novos produtos. As 2.017 mídias/referências e os 43 bundles correspondem aos arquivos testados. Lava, Corrente elétrica ampliada e 21 VFX anteriores preservados; ilustrador ativo, PID 32176.
+
+Durante a montagem inicial, o Docker parou com o disco C quase cheio. Foram removidas somente 42.624 cópias de WAV de antigos estágios temporários, previamente comparadas por tamanho e SHA-256 com os originais do projeto, liberando 3.081.866.240 bytes. Originais, manifests, estágio atual, imagens de publicação e volumes foram preservados. Lista privada de recuperação em .local/redundant-stage-audio-recovery.json. Após reiniciar o Docker, a auditoria confirmou as 60 tabelas e as ofertas da publicação anterior; o ilustrador foi reativado com fila vazia. A publicação passou a copiar só as 56 artes novas sobre a imagem anterior, evitando repetir todo o acervo em cada camada. Helpers privados: prepare-incremental-magic-art.mjs e verify-docker-recovery.mjs.
+
+Completar todos continua em andamento: 2.102 candidatos, além das opções específicas de magia/alvo que precisam ser expandidas.

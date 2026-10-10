@@ -15350,5 +15350,853 @@
     "source_edition": "D&D 5e (2014)",
     "estimated_weight_lb": 0.5,
     "review": "approved"
+  },
+  "double-bladed-scimitar-of-the-medusa": {
+    "name": "Lâmina de medusa (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Uma lâmina amaldiçoada pode iniciar petrificação no 20 natural e afetar o usuário no 1 natural.",
+    "merchant_comment": "A cimitarra dupla de medusa tem duas lâminas e a mesma maldição. O poder começa no vinte natural; ele não acrescenta um bônus de ataque.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural no ataque, além dos efeitos normais ela faz resistência de Constituição CD 15. Na falha, fica Impedida (Restrained) e repete a resistência de Constituição no fim de cada turno. Três sucessos encerram o efeito; três falhas a transformam em pedra, com a condição Petrificado por uma hora. O alvo é imune a esse poder se for imune ao tipo de dano da arma, não tiver corpo de carne ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com esta arma e obter 1 natural, você faz Constituição CD 15; na falha, fica Impedido e faz as resistências adicionais contra petrificação como acima. Não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Blade of the Medusa",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "greatsword-of-the-medusa": {
+    "name": "Lâmina de medusa (Espada grande)",
+    "description": "Forma: Espada grande. Uma lâmina amaldiçoada pode iniciar petrificação no 20 natural e afetar o usuário no 1 natural.",
+    "merchant_comment": "A espada grande de medusa precisa de duas mãos. Uma criatura sem corpo de carne é imune ao seu poder de petrificação.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural no ataque, além dos efeitos normais ela faz resistência de Constituição CD 15. Na falha, fica Impedida (Restrained) e repete a resistência de Constituição no fim de cada turno. Três sucessos encerram o efeito; três falhas a transformam em pedra, com a condição Petrificado por uma hora. O alvo é imune a esse poder se for imune ao tipo de dano da arma, não tiver corpo de carne ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com esta arma e obter 1 natural, você faz Constituição CD 15; na falha, fica Impedido e faz as resistências adicionais contra petrificação como acima. Não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Blade of the Medusa",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "longsword-of-the-medusa": {
+    "name": "Lâmina de medusa (Espada longa)",
+    "description": "Forma: Espada longa. Uma lâmina amaldiçoada pode iniciar petrificação no 20 natural e afetar o usuário no 1 natural.",
+    "merchant_comment": "A espada longa de medusa pode iniciar as resistências de petrificação. Três sucessos encerram o efeito; não presuma que uma única falha já vira pedra.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural no ataque, além dos efeitos normais ela faz resistência de Constituição CD 15. Na falha, fica Impedida (Restrained) e repete a resistência de Constituição no fim de cada turno. Três sucessos encerram o efeito; três falhas a transformam em pedra, com a condição Petrificado por uma hora. O alvo é imune a esse poder se for imune ao tipo de dano da arma, não tiver corpo de carne ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com esta arma e obter 1 natural, você faz Constituição CD 15; na falha, fica Impedido e faz as resistências adicionais contra petrificação como acima. Não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Blade of the Medusa",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "rapier-of-the-medusa": {
+    "name": "Lâmina de medusa (Rapieira)",
+    "description": "Forma: Rapieira. Uma lâmina amaldiçoada pode iniciar petrificação no 20 natural e afetar o usuário no 1 natural.",
+    "merchant_comment": "Este florete de medusa mantém a acuidade. Quem possui ações lendárias é imune ao poder de petrificação da arma.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural no ataque, além dos efeitos normais ela faz resistência de Constituição CD 15. Na falha, fica Impedida (Restrained) e repete a resistência de Constituição no fim de cada turno. Três sucessos encerram o efeito; três falhas a transformam em pedra, com a condição Petrificado por uma hora. O alvo é imune a esse poder se for imune ao tipo de dano da arma, não tiver corpo de carne ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com esta arma e obter 1 natural, você faz Constituição CD 15; na falha, fica Impedido e faz as resistências adicionais contra petrificação como acima. Não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Blade of the Medusa",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "scimitar-of-the-medusa": {
+    "name": "Lâmina de medusa (Cimitarra)",
+    "description": "Forma: Cimitarra. Uma lâmina amaldiçoada pode iniciar petrificação no 20 natural e afetar o usuário no 1 natural.",
+    "merchant_comment": "A cimitarra de medusa traz risco para os dois lados. No um natural, a maldição pode voltar o efeito contra quem a empunha.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural no ataque, além dos efeitos normais ela faz resistência de Constituição CD 15. Na falha, fica Impedida (Restrained) e repete a resistência de Constituição no fim de cada turno. Três sucessos encerram o efeito; três falhas a transformam em pedra, com a condição Petrificado por uma hora. O alvo é imune a esse poder se for imune ao tipo de dano da arma, não tiver corpo de carne ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com esta arma e obter 1 natural, você faz Constituição CD 15; na falha, fica Impedido e faz as resistências adicionais contra petrificação como acima. Não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Blade of the Medusa",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "shortsword-of-the-medusa": {
+    "name": "Lâmina de medusa (Espada curta)",
+    "description": "Forma: Espada curta. Uma lâmina amaldiçoada pode iniciar petrificação no 20 natural e afetar o usuário no 1 natural.",
+    "merchant_comment": "A espada curta de medusa conserva seu tamanho leve. Remover a maldição é o caminho para querer se separar dela novamente.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural no ataque, além dos efeitos normais ela faz resistência de Constituição CD 15. Na falha, fica Impedida (Restrained) e repete a resistência de Constituição no fim de cada turno. Três sucessos encerram o efeito; três falhas a transformam em pedra, com a condição Petrificado por uma hora. O alvo é imune a esse poder se for imune ao tipo de dano da arma, não tiver corpo de carne ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com esta arma e obter 1 natural, você faz Constituição CD 15; na falha, fica Impedido e faz as resistências adicionais contra petrificação como acima. Não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Blade of the Medusa",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "bloodshed-double-bladed-scimitar": {
+    "name": "Lâmina do derramamento de sangue (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Acrescenta Constituição ao dano e usa dados de vida próprios para precisão e dano de uma runa diária.",
+    "merchant_comment": "A cornalina no punho desta cimitarra dupla carrega a runa do sangue. Invocá-la gasta seus próprios dados de vida.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia. Uma cornalina gravada com a runa do sangue adorna o punho. Você pode acrescentar seu modificador de Constituição, com mínimo de +1, às rolagens de dano dos ataques com esta arma. Não há bônus fixo +1 nas jogadas de ataque. Ao escolher uma criatura como alvo de um ataque com a arma, pode invocar a runa, inclusive depois de rolar o d20: gaste e role um dado de vida ainda não gasto e acrescente o resultado ao ataque. Se esse ataque acertar, também pode gastar e rolar qualquer quantidade dos seus dados de vida ainda não gastos e acrescentar a soma ao dano da arma. Após invocar a runa, só pode invocá-la novamente no próximo amanhecer. Gastar esses dados de vida não cura você.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Bloodshed Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "bloodshed-greatsword": {
+    "name": "Lâmina do derramamento de sangue (Espada grande)",
+    "description": "Forma: Espada grande. Acrescenta Constituição ao dano e usa dados de vida próprios para precisão e dano de uma runa diária.",
+    "merchant_comment": "Esta espada grande sanguinária acrescenta sua Constituição ao dano, com mínimo de um. Isso não é um bônus fixo de ataque.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia. Uma cornalina gravada com a runa do sangue adorna o punho. Você pode acrescentar seu modificador de Constituição, com mínimo de +1, às rolagens de dano dos ataques com esta arma. Não há bônus fixo +1 nas jogadas de ataque. Ao escolher uma criatura como alvo de um ataque com a arma, pode invocar a runa, inclusive depois de rolar o d20: gaste e role um dado de vida ainda não gasto e acrescente o resultado ao ataque. Se esse ataque acertar, também pode gastar e rolar qualquer quantidade dos seus dados de vida ainda não gastos e acrescentar a soma ao dano da arma. Após invocar a runa, só pode invocá-la novamente no próximo amanhecer. Gastar esses dados de vida não cura você.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Bloodshed Blade",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "bloodshed-longsword": {
+    "name": "Lâmina do derramamento de sangue (Espada longa)",
+    "description": "Forma: Espada longa. Acrescenta Constituição ao dano e usa dados de vida próprios para precisão e dano de uma runa diária.",
+    "merchant_comment": "A espada longa do derramamento permite invocar a runa depois de rolar o d20. Acrescentar o dado de vida ainda gasta sua reserva.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia. Uma cornalina gravada com a runa do sangue adorna o punho. Você pode acrescentar seu modificador de Constituição, com mínimo de +1, às rolagens de dano dos ataques com esta arma. Não há bônus fixo +1 nas jogadas de ataque. Ao escolher uma criatura como alvo de um ataque com a arma, pode invocar a runa, inclusive depois de rolar o d20: gaste e role um dado de vida ainda não gasto e acrescente o resultado ao ataque. Se esse ataque acertar, também pode gastar e rolar qualquer quantidade dos seus dados de vida ainda não gastos e acrescentar a soma ao dano da arma. Após invocar a runa, só pode invocá-la novamente no próximo amanhecer. Gastar esses dados de vida não cura você.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Bloodshed Blade",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "bloodshed-rapier": {
+    "name": "Lâmina do derramamento de sangue (Rapieira)",
+    "description": "Forma: Rapieira. Acrescenta Constituição ao dano e usa dados de vida próprios para precisão e dano de uma runa diária.",
+    "merchant_comment": "O florete sanguinário pode ganhar precisão com um dado de vida. Se esse ataque acertar, outros dados ainda disponíveis podem aumentar o dano.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia. Uma cornalina gravada com a runa do sangue adorna o punho. Você pode acrescentar seu modificador de Constituição, com mínimo de +1, às rolagens de dano dos ataques com esta arma. Não há bônus fixo +1 nas jogadas de ataque. Ao escolher uma criatura como alvo de um ataque com a arma, pode invocar a runa, inclusive depois de rolar o d20: gaste e role um dado de vida ainda não gasto e acrescente o resultado ao ataque. Se esse ataque acertar, também pode gastar e rolar qualquer quantidade dos seus dados de vida ainda não gastos e acrescentar a soma ao dano da arma. Após invocar a runa, só pode invocá-la novamente no próximo amanhecer. Gastar esses dados de vida não cura você.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Bloodshed Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "bloodshed-scimitar": {
+    "name": "Lâmina do derramamento de sangue (Cimitarra)",
+    "description": "Forma: Cimitarra. Acrescenta Constituição ao dano e usa dados de vida próprios para precisão e dano de uma runa diária.",
+    "merchant_comment": "A cimitarra do derramamento tem uma cornalina gravada no punho. A invocação da runa só volta no próximo amanhecer.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia. Uma cornalina gravada com a runa do sangue adorna o punho. Você pode acrescentar seu modificador de Constituição, com mínimo de +1, às rolagens de dano dos ataques com esta arma. Não há bônus fixo +1 nas jogadas de ataque. Ao escolher uma criatura como alvo de um ataque com a arma, pode invocar a runa, inclusive depois de rolar o d20: gaste e role um dado de vida ainda não gasto e acrescente o resultado ao ataque. Se esse ataque acertar, também pode gastar e rolar qualquer quantidade dos seus dados de vida ainda não gastos e acrescentar a soma ao dano da arma. Após invocar a runa, só pode invocá-la novamente no próximo amanhecer. Gastar esses dados de vida não cura você.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Bloodshed Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "bloodshed-shortsword": {
+    "name": "Lâmina do derramamento de sangue (Espada curta)",
+    "description": "Forma: Espada curta. Acrescenta Constituição ao dano e usa dados de vida próprios para precisão e dano de uma runa diária.",
+    "merchant_comment": "A espada curta sanguinária usa dados de vida para golpear melhor. Esses dados não curam você quando gastos no ataque.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia. Uma cornalina gravada com a runa do sangue adorna o punho. Você pode acrescentar seu modificador de Constituição, com mínimo de +1, às rolagens de dano dos ataques com esta arma. Não há bônus fixo +1 nas jogadas de ataque. Ao escolher uma criatura como alvo de um ataque com a arma, pode invocar a runa, inclusive depois de rolar o d20: gaste e role um dado de vida ainda não gasto e acrescente o resultado ao ataque. Se esse ataque acertar, também pode gastar e rolar qualquer quantidade dos seus dados de vida ainda não gastos e acrescentar a soma ao dano da arma. Após invocar a runa, só pode invocá-la novamente no próximo amanhecer. Gastar esses dados de vida não cura você.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Bloodshed Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "fool-s-double-bladed-scimitar": {
+    "name": "Lâmina do tolo (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +2 aparentemente comum, com finta e redirecionamento de ataque por ilusão.",
+    "merchant_comment": "A cimitarra dupla do tolo parece comum, mas tem ilusão forte e bônus dois. A aparência discreta esconde dois poderes diários.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia e concede +2 nas jogadas de ataque e dano. Tem aparência comum, mas contém magia de ilusão forte. Enquanto a empunha, uma ação bônus permite fazer uma finta contra uma criatura a até cinco pés: você tem vantagem nos ataques contra ela até o início do seu próximo turno. Essa finta só pode ser usada novamente no próximo amanhecer. Separadamente, quando uma criatura a até 60 pés escolhe você como alvo de uma jogada de ataque, pode usar sua reação para exigir resistência de Inteligência CD 15. Na falha, o ataque passa a visar outra criatura à sua escolha que esteja dentro do alcance (reach) do atacante. Esse redirecionamento também só pode ser usado novamente no próximo amanhecer; sua reserva é independente da finta.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Fool's Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "fool-s-greatsword": {
+    "name": "Lâmina do tolo (Espada grande)",
+    "description": "Forma: Espada grande. Arma +2 aparentemente comum, com finta e redirecionamento de ataque por ilusão.",
+    "merchant_comment": "A espada grande do tolo faz uma finta contra um alvo a cinco pés. A vantagem dura até o início do seu próximo turno.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia e concede +2 nas jogadas de ataque e dano. Tem aparência comum, mas contém magia de ilusão forte. Enquanto a empunha, uma ação bônus permite fazer uma finta contra uma criatura a até cinco pés: você tem vantagem nos ataques contra ela até o início do seu próximo turno. Essa finta só pode ser usada novamente no próximo amanhecer. Separadamente, quando uma criatura a até 60 pés escolhe você como alvo de uma jogada de ataque, pode usar sua reação para exigir resistência de Inteligência CD 15. Na falha, o ataque passa a visar outra criatura à sua escolha que esteja dentro do alcance (reach) do atacante. Esse redirecionamento também só pode ser usado novamente no próximo amanhecer; sua reserva é independente da finta.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Fool's Blade",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "fool-s-longsword": {
+    "name": "Lâmina do tolo (Espada longa)",
+    "description": "Forma: Espada longa. Arma +2 aparentemente comum, com finta e redirecionamento de ataque por ilusão.",
+    "merchant_comment": "A espada longa do tolo separa os usos da finta e do redirecionamento. Gastar um deles não gasta a reserva do outro.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia e concede +2 nas jogadas de ataque e dano. Tem aparência comum, mas contém magia de ilusão forte. Enquanto a empunha, uma ação bônus permite fazer uma finta contra uma criatura a até cinco pés: você tem vantagem nos ataques contra ela até o início do seu próximo turno. Essa finta só pode ser usada novamente no próximo amanhecer. Separadamente, quando uma criatura a até 60 pés escolhe você como alvo de uma jogada de ataque, pode usar sua reação para exigir resistência de Inteligência CD 15. Na falha, o ataque passa a visar outra criatura à sua escolha que esteja dentro do alcance (reach) do atacante. Esse redirecionamento também só pode ser usado novamente no próximo amanhecer; sua reserva é independente da finta.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Fool's Blade",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "fool-s-rapier": {
+    "name": "Lâmina do tolo (Rapieira)",
+    "description": "Forma: Rapieira. Arma +2 aparentemente comum, com finta e redirecionamento de ataque por ilusão.",
+    "merchant_comment": "O florete do tolo pode redirecionar um ataque por reação. O atacante faz uma resistência de Inteligência antes de trocar de alvo.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia e concede +2 nas jogadas de ataque e dano. Tem aparência comum, mas contém magia de ilusão forte. Enquanto a empunha, uma ação bônus permite fazer uma finta contra uma criatura a até cinco pés: você tem vantagem nos ataques contra ela até o início do seu próximo turno. Essa finta só pode ser usada novamente no próximo amanhecer. Separadamente, quando uma criatura a até 60 pés escolhe você como alvo de uma jogada de ataque, pode usar sua reação para exigir resistência de Inteligência CD 15. Na falha, o ataque passa a visar outra criatura à sua escolha que esteja dentro do alcance (reach) do atacante. Esse redirecionamento também só pode ser usado novamente no próximo amanhecer; sua reserva é independente da finta.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Fool's Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "fool-s-scimitar": {
+    "name": "Lâmina do tolo (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +2 aparentemente comum, com finta e redirecionamento de ataque por ilusão.",
+    "merchant_comment": "A cimitarra do tolo redireciona para outra criatura dentro do alcance do atacante. O poder não cria alcance onde não existe.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia e concede +2 nas jogadas de ataque e dano. Tem aparência comum, mas contém magia de ilusão forte. Enquanto a empunha, uma ação bônus permite fazer uma finta contra uma criatura a até cinco pés: você tem vantagem nos ataques contra ela até o início do seu próximo turno. Essa finta só pode ser usada novamente no próximo amanhecer. Separadamente, quando uma criatura a até 60 pés escolhe você como alvo de uma jogada de ataque, pode usar sua reação para exigir resistência de Inteligência CD 15. Na falha, o ataque passa a visar outra criatura à sua escolha que esteja dentro do alcance (reach) do atacante. Esse redirecionamento também só pode ser usado novamente no próximo amanhecer; sua reserva é independente da finta.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Fool's Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "fool-s-shortsword": {
+    "name": "Lâmina do tolo (Espada curta)",
+    "description": "Forma: Espada curta. Arma +2 aparentemente comum, com finta e redirecionamento de ataque por ilusão.",
+    "merchant_comment": "A espada curta do tolo conserva acuidade e leveza. A finta e a reação voltam no amanhecer, cada uma com seu uso próprio.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia e concede +2 nas jogadas de ataque e dano. Tem aparência comum, mas contém magia de ilusão forte. Enquanto a empunha, uma ação bônus permite fazer uma finta contra uma criatura a até cinco pés: você tem vantagem nos ataques contra ela até o início do seu próximo turno. Essa finta só pode ser usada novamente no próximo amanhecer. Separadamente, quando uma criatura a até 60 pés escolhe você como alvo de uma jogada de ataque, pode usar sua reação para exigir resistência de Inteligência CD 15. Na falha, o ataque passa a visar outra criatura à sua escolha que esteja dentro do alcance (reach) do atacante. Esse redirecionamento também só pode ser usado novamente no próximo amanhecer; sua reserva é independente da finta.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Fool's Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "gambler-s-blade-double-bladed-scimitar": {
+    "name": "Lâmina do apostador (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Escolhe bônus de +1 a +3 para ataque e dano, pagando penalidade igual nas resistências contra a morte.",
+    "merchant_comment": "A cimitarra dupla do apostador deixa escolher bônus de um a três. A penalidade contra a morte acompanha cada ponto escolhido.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia e é amaldiçoada. Escolha um bônus mágico de +1, +2 ou +3 para as jogadas de ataque e dano desta arma. Para cada ponto de bônus escolhido, você recebe uma penalidade igual nas resistências contra a morte: -1, -2 ou -3, respectivamente. Pode mudar o bônus a cada amanhecer. Este é um único item de bônus ajustável; o cadastro não fixa um dos três valores nem automatiza essa escolha. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Gambler's Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "gambler-s-blade-greatsword": {
+    "name": "Lâmina do apostador (Espada grande)",
+    "description": "Forma: Espada grande. Escolhe bônus de +1 a +3 para ataque e dano, pagando penalidade igual nas resistências contra a morte.",
+    "merchant_comment": "Esta espada grande do apostador tem bônus ajustável. O risco maior não desaparece só porque a lâmina usa duas mãos.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia e é amaldiçoada. Escolha um bônus mágico de +1, +2 ou +3 para as jogadas de ataque e dano desta arma. Para cada ponto de bônus escolhido, você recebe uma penalidade igual nas resistências contra a morte: -1, -2 ou -3, respectivamente. Pode mudar o bônus a cada amanhecer. Este é um único item de bônus ajustável; o cadastro não fixa um dos três valores nem automatiza essa escolha. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Gambler's Blade",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "gambler-s-blade-longsword": {
+    "name": "Lâmina do apostador (Espada longa)",
+    "description": "Forma: Espada longa. Escolhe bônus de +1 a +3 para ataque e dano, pagando penalidade igual nas resistências contra a morte.",
+    "merchant_comment": "A espada longa do apostador permite mudar a aposta no amanhecer. Cada ponto de ataque e dano custa um ponto nas resistências contra a morte.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia e é amaldiçoada. Escolha um bônus mágico de +1, +2 ou +3 para as jogadas de ataque e dano desta arma. Para cada ponto de bônus escolhido, você recebe uma penalidade igual nas resistências contra a morte: -1, -2 ou -3, respectivamente. Pode mudar o bônus a cada amanhecer. Este é um único item de bônus ajustável; o cadastro não fixa um dos três valores nem automatiza essa escolha. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Gambler's Blade",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "gambler-s-blade-rapier": {
+    "name": "Lâmina do apostador (Rapieira)",
+    "description": "Forma: Rapieira. Escolhe bônus de +1 a +3 para ataque e dano, pagando penalidade igual nas resistências contra a morte.",
+    "merchant_comment": "O florete do apostador conserva sua acuidade. A escolha do bônus é sua; as consequências nas resistências contra a morte também.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia e é amaldiçoada. Escolha um bônus mágico de +1, +2 ou +3 para as jogadas de ataque e dano desta arma. Para cada ponto de bônus escolhido, você recebe uma penalidade igual nas resistências contra a morte: -1, -2 ou -3, respectivamente. Pode mudar o bônus a cada amanhecer. Este é um único item de bônus ajustável; o cadastro não fixa um dos três valores nem automatiza essa escolha. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Gambler's Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "gambler-s-blade-scimitar": {
+    "name": "Lâmina do apostador (Cimitarra)",
+    "description": "Forma: Cimitarra. Escolhe bônus de +1 a +3 para ataque e dano, pagando penalidade igual nas resistências contra a morte.",
+    "merchant_comment": "A cimitarra do apostador é uma peça só, com três escolhas de bônus. A maldição pode fazer você não querer largá-la.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia e é amaldiçoada. Escolha um bônus mágico de +1, +2 ou +3 para as jogadas de ataque e dano desta arma. Para cada ponto de bônus escolhido, você recebe uma penalidade igual nas resistências contra a morte: -1, -2 ou -3, respectivamente. Pode mudar o bônus a cada amanhecer. Este é um único item de bônus ajustável; o cadastro não fixa um dos três valores nem automatiza essa escolha. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Gambler's Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "gambler-s-blade-shortsword": {
+    "name": "Lâmina do apostador (Espada curta)",
+    "description": "Forma: Espada curta. Escolhe bônus de +1 a +3 para ataque e dano, pagando penalidade igual nas resistências contra a morte.",
+    "merchant_comment": "A espada curta do apostador oferece o mesmo jogo perigoso. Remover Maldição ou magia semelhante quebra o vínculo amaldiçoado.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia e é amaldiçoada. Escolha um bônus mágico de +1, +2 ou +3 para as jogadas de ataque e dano desta arma. Para cada ponto de bônus escolhido, você recebe uma penalidade igual nas resistências contra a morte: -1, -2 ou -3, respectivamente. Pode mudar o bônus a cada amanhecer. Este é um único item de bônus ajustável; o cadastro não fixa um dos três valores nem automatiza essa escolha. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Gambler's Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "mind-blade-double-bladed-scimitar": {
+    "name": "Lâmina mental (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Espada vinculada a um portador específico causa 2d6 psíquicos adicionais nas mãos dele.",
+    "merchant_comment": "A cimitarra dupla mental foi preparada para um único portador. Outra pessoa recebe apenas uma espada comum do mesmo tipo.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Devoradores de mentes podem transformar uma espada não mágica em lâmina mental. Somente uma criatura específica pode se sintonizar: um devorador de mentes determinado ou um de seus servos determinados. Nas mãos de qualquer outra criatura, funciona como espada comum do seu tipo. Nas mãos do portador a quem foi destinada, é mágica e causa 2d6 de dano psíquico adicional a qualquer alvo que acerte. Não concede bônus numérico de ataque ou dano além desse dado extra. A identidade desse único portador é definida na mesa; comprar a arma não concede sintonia a qualquer personagem.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Mind Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "mind-blade-greatsword": {
+    "name": "Lâmina mental (Espada grande)",
+    "description": "Forma: Espada grande. Espada vinculada a um portador específico causa 2d6 psíquicos adicionais nas mãos dele.",
+    "merchant_comment": "Esta espada grande mental só libera o encanto para o indivíduo destinado. O peso e o uso de duas mãos continuam valendo para todos.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Devoradores de mentes podem transformar uma espada não mágica em lâmina mental. Somente uma criatura específica pode se sintonizar: um devorador de mentes determinado ou um de seus servos determinados. Nas mãos de qualquer outra criatura, funciona como espada comum do seu tipo. Nas mãos do portador a quem foi destinada, é mágica e causa 2d6 de dano psíquico adicional a qualquer alvo que acerte. Não concede bônus numérico de ataque ou dano além desse dado extra. A identidade desse único portador é definida na mesa; comprar a arma não concede sintonia a qualquer personagem.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Mind Blade",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "mind-blade-longsword": {
+    "name": "Lâmina mental (Espada longa)",
+    "description": "Forma: Espada longa. Espada vinculada a um portador específico causa 2d6 psíquicos adicionais nas mãos dele.",
+    "merchant_comment": "A espada longa mental acrescenta dois dados de seis psíquicos nas mãos certas. Comprar a peça não muda quem pode se sintonizar.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Devoradores de mentes podem transformar uma espada não mágica em lâmina mental. Somente uma criatura específica pode se sintonizar: um devorador de mentes determinado ou um de seus servos determinados. Nas mãos de qualquer outra criatura, funciona como espada comum do seu tipo. Nas mãos do portador a quem foi destinada, é mágica e causa 2d6 de dano psíquico adicional a qualquer alvo que acerte. Não concede bônus numérico de ataque ou dano além desse dado extra. A identidade desse único portador é definida na mesa; comprar a arma não concede sintonia a qualquer personagem.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Mind Blade",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "mind-blade-rapier": {
+    "name": "Lâmina mental (Rapieira)",
+    "description": "Forma: Rapieira. Espada vinculada a um portador específico causa 2d6 psíquicos adicionais nas mãos dele.",
+    "merchant_comment": "Este florete mental não concede um bônus de ataque. Seu poder é o dano psíquico extra do portador específico.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Devoradores de mentes podem transformar uma espada não mágica em lâmina mental. Somente uma criatura específica pode se sintonizar: um devorador de mentes determinado ou um de seus servos determinados. Nas mãos de qualquer outra criatura, funciona como espada comum do seu tipo. Nas mãos do portador a quem foi destinada, é mágica e causa 2d6 de dano psíquico adicional a qualquer alvo que acerte. Não concede bônus numérico de ataque ou dano além desse dado extra. A identidade desse único portador é definida na mesa; comprar a arma não concede sintonia a qualquer personagem.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Mind Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "mind-blade-scimitar": {
+    "name": "Lâmina mental (Cimitarra)",
+    "description": "Forma: Cimitarra. Espada vinculada a um portador específico causa 2d6 psíquicos adicionais nas mãos dele.",
+    "merchant_comment": "A cimitarra mental pode ter sido destinada a um devorador de mentes ou a um servo dele. O vínculo pertence a um indivíduo, não a toda a espécie.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Devoradores de mentes podem transformar uma espada não mágica em lâmina mental. Somente uma criatura específica pode se sintonizar: um devorador de mentes determinado ou um de seus servos determinados. Nas mãos de qualquer outra criatura, funciona como espada comum do seu tipo. Nas mãos do portador a quem foi destinada, é mágica e causa 2d6 de dano psíquico adicional a qualquer alvo que acerte. Não concede bônus numérico de ataque ou dano além desse dado extra. A identidade desse único portador é definida na mesa; comprar a arma não concede sintonia a qualquer personagem.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Mind Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "mind-blade-shortsword": {
+    "name": "Lâmina mental (Espada curta)",
+    "description": "Forma: Espada curta. Espada vinculada a um portador específico causa 2d6 psíquicos adicionais nas mãos dele.",
+    "merchant_comment": "A espada curta mental mantém acuidade e leveza. Nas mãos do portador destinado, o dano psíquico adicional vale contra qualquer alvo acertado.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Devoradores de mentes podem transformar uma espada não mágica em lâmina mental. Somente uma criatura específica pode se sintonizar: um devorador de mentes determinado ou um de seus servos determinados. Nas mãos de qualquer outra criatura, funciona como espada comum do seu tipo. Nas mãos do portador a quem foi destinada, é mágica e causa 2d6 de dano psíquico adicional a qualquer alvo que acerte. Não concede bônus numérico de ataque ou dano além desse dado extra. A identidade desse único portador é definida na mesa; comprar a arma não concede sintonia a qualquer personagem.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Mind Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "polymorph-blade-double-bladed-scimitar": {
+    "name": "Lâmina de metamorfose (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. No 20 natural pode transformar o alvo; a maldição transforma o usuário no 1 natural.",
+    "merchant_comment": "A cimitarra dupla de metamorfose usa a mesma tabela de vinte formas. Um vinte natural pode transformar o alvo; um natural pode transformar você.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural, além dos efeitos normais ela faz resistência de Sabedoria CD 15. Na falha, sofre o efeito de Metamorfose (Polymorph); role 1d20 na tabela de formas abaixo. O alvo é imune a esse poder se for imune ao tipo de dano da arma, for metamorfo (shapechanger) ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com a arma e obter 1 natural, você sofre o efeito de Metamorfose por uma hora, rolando na mesma tabela. Formas por resultado do d20: 1 tiranossauro; 2 macaco gigante; 3 elefante; 4 escorpião gigante; 5 rinoceronte; 6 urso polar; 7 sapo gigante; 8 águia gigante; 9 urso negro; 10 crocodilo; 11 lobo; 12 cavalo de montaria; 13 boi; 14 rã gigante; 15 cobra venenosa; 16 falcão; 17 polvo; 18 gato; 19 rato; 20 coelho. Conserva os demais efeitos da magia de 2014; não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Polymorph Blade",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "polymorph-blade-greatsword": {
+    "name": "Lâmina de metamorfose (Espada grande)",
+    "description": "Forma: Espada grande. No 20 natural pode transformar o alvo; a maldição transforma o usuário no 1 natural.",
+    "merchant_comment": "Esta espada grande de metamorfose não afeta metamorfos com seu poder especial. A lâmina ainda aplica os efeitos normais do ataque.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural, além dos efeitos normais ela faz resistência de Sabedoria CD 15. Na falha, sofre o efeito de Metamorfose (Polymorph); role 1d20 na tabela de formas abaixo. O alvo é imune a esse poder se for imune ao tipo de dano da arma, for metamorfo (shapechanger) ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com a arma e obter 1 natural, você sofre o efeito de Metamorfose por uma hora, rolando na mesma tabela. Formas por resultado do d20: 1 tiranossauro; 2 macaco gigante; 3 elefante; 4 escorpião gigante; 5 rinoceronte; 6 urso polar; 7 sapo gigante; 8 águia gigante; 9 urso negro; 10 crocodilo; 11 lobo; 12 cavalo de montaria; 13 boi; 14 rã gigante; 15 cobra venenosa; 16 falcão; 17 polvo; 18 gato; 19 rato; 20 coelho. Conserva os demais efeitos da magia de 2014; não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Polymorph Blade",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "polymorph-blade-longsword": {
+    "name": "Lâmina de metamorfose (Espada longa)",
+    "description": "Forma: Espada longa. No 20 natural pode transformar o alvo; a maldição transforma o usuário no 1 natural.",
+    "merchant_comment": "A espada longa de metamorfose pede Sabedoria quinze ao alvo no vinte natural. A forma nova é determinada por outro dado de vinte.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural, além dos efeitos normais ela faz resistência de Sabedoria CD 15. Na falha, sofre o efeito de Metamorfose (Polymorph); role 1d20 na tabela de formas abaixo. O alvo é imune a esse poder se for imune ao tipo de dano da arma, for metamorfo (shapechanger) ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com a arma e obter 1 natural, você sofre o efeito de Metamorfose por uma hora, rolando na mesma tabela. Formas por resultado do d20: 1 tiranossauro; 2 macaco gigante; 3 elefante; 4 escorpião gigante; 5 rinoceronte; 6 urso polar; 7 sapo gigante; 8 águia gigante; 9 urso negro; 10 crocodilo; 11 lobo; 12 cavalo de montaria; 13 boi; 14 rã gigante; 15 cobra venenosa; 16 falcão; 17 polvo; 18 gato; 19 rato; 20 coelho. Conserva os demais efeitos da magia de 2014; não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Polymorph Blade",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "polymorph-blade-rapier": {
+    "name": "Lâmina de metamorfose (Rapieira)",
+    "description": "Forma: Rapieira. No 20 natural pode transformar o alvo; a maldição transforma o usuário no 1 natural.",
+    "merchant_comment": "O florete de metamorfose mantém a acuidade. O efeito não funciona contra criaturas com ações lendárias.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural, além dos efeitos normais ela faz resistência de Sabedoria CD 15. Na falha, sofre o efeito de Metamorfose (Polymorph); role 1d20 na tabela de formas abaixo. O alvo é imune a esse poder se for imune ao tipo de dano da arma, for metamorfo (shapechanger) ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com a arma e obter 1 natural, você sofre o efeito de Metamorfose por uma hora, rolando na mesma tabela. Formas por resultado do d20: 1 tiranossauro; 2 macaco gigante; 3 elefante; 4 escorpião gigante; 5 rinoceronte; 6 urso polar; 7 sapo gigante; 8 águia gigante; 9 urso negro; 10 crocodilo; 11 lobo; 12 cavalo de montaria; 13 boi; 14 rã gigante; 15 cobra venenosa; 16 falcão; 17 polvo; 18 gato; 19 rato; 20 coelho. Conserva os demais efeitos da magia de 2014; não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Polymorph Blade",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "polymorph-blade-scimitar": {
+    "name": "Lâmina de metamorfose (Cimitarra)",
+    "description": "Forma: Cimitarra. No 20 natural pode transformar o alvo; a maldição transforma o usuário no 1 natural.",
+    "merchant_comment": "A cimitarra de metamorfose carrega uma maldição de apego. Remover Maldição ou magia semelhante permite romper esse apego.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural, além dos efeitos normais ela faz resistência de Sabedoria CD 15. Na falha, sofre o efeito de Metamorfose (Polymorph); role 1d20 na tabela de formas abaixo. O alvo é imune a esse poder se for imune ao tipo de dano da arma, for metamorfo (shapechanger) ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com a arma e obter 1 natural, você sofre o efeito de Metamorfose por uma hora, rolando na mesma tabela. Formas por resultado do d20: 1 tiranossauro; 2 macaco gigante; 3 elefante; 4 escorpião gigante; 5 rinoceronte; 6 urso polar; 7 sapo gigante; 8 águia gigante; 9 urso negro; 10 crocodilo; 11 lobo; 12 cavalo de montaria; 13 boi; 14 rã gigante; 15 cobra venenosa; 16 falcão; 17 polvo; 18 gato; 19 rato; 20 coelho. Conserva os demais efeitos da magia de 2014; não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Polymorph Blade",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "polymorph-blade-shortsword": {
+    "name": "Lâmina de metamorfose (Espada curta)",
+    "description": "Forma: Espada curta. No 20 natural pode transformar o alvo; a maldição transforma o usuário no 1 natural.",
+    "merchant_comment": "A espada curta de metamorfose tem um risco direto no um natural. A transformação do usuário dura uma hora e usa a mesma tabela de formas.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia e é amaldiçoada. Ao atacar uma criatura com esta arma e obter 20 natural, além dos efeitos normais ela faz resistência de Sabedoria CD 15. Na falha, sofre o efeito de Metamorfose (Polymorph); role 1d20 na tabela de formas abaixo. O alvo é imune a esse poder se for imune ao tipo de dano da arma, for metamorfo (shapechanger) ou possuir ações lendárias. A sintonia estende a maldição: você não quer se separar da arma até Remover Maldição ou magia semelhante quebrá-la. Ao atacar uma criatura com a arma e obter 1 natural, você sofre o efeito de Metamorfose por uma hora, rolando na mesma tabela. Formas por resultado do d20: 1 tiranossauro; 2 macaco gigante; 3 elefante; 4 escorpião gigante; 5 rinoceronte; 6 urso polar; 7 sapo gigante; 8 águia gigante; 9 urso negro; 10 crocodilo; 11 lobo; 12 cavalo de montaria; 13 boi; 14 rã gigante; 15 cobra venenosa; 16 falcão; 17 polvo; 18 gato; 19 rato; 20 coelho. Conserva os demais efeitos da magia de 2014; não concede bônus numérico de ataque ou dano.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Polymorph Blade",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-retribution": {
+    "name": "Espada da retribuição (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +3 amaldiçoada dificulta a recuperação dos feridos, perturba descansos e causa corrupção infernal.",
+    "merchant_comment": "A cimitarra dupla da retribuição tem bônus três. Quem perde PV por ela só recupera esses pontos por descanso curto ou longo.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia e concede +3 nas jogadas de ataque e dano. PV perdidos por dano desta arma só podem ser recuperados por descanso curto ou longo, sem regeneração, magia ou outro meio. Enquanto sintonizado, você não quer se separar dela e tem desvantagem nos ataques com outras armas. Após cada descanso longo bem-sucedido, os pesadelos do espírito exigem Constituição CD 11 ao acordar; na falha, recebe somente os benefícios de um descanso curto. Só Remover Maldição permite encerrar esta sintonia. O item também aplica a corrupção infernal de Chains of Asmodeus, pp. 271–272: para mortais sem permissão expressa de Asmodeus ou contrato de aquisição, a sintonia inicia o processo de quatro estágios. No primeiro, cada descanso longo exige Sabedoria CD 10, com vantagem para tieflings; um sucesso eleva a CD seguinte em 1, e uma falha avança ao segundo estágio salvo intervenção de Dissipar o Mal e o Bem antes do próximo descanso longo. A fonte descreve as etapas seguintes e suas curas específicas; encerrar a sintonia já não interrompe o processo a partir do segundo estágio. Corrupção e efeitos de combate são resolvidos na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Retribution",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "greatsword-of-retribution": {
+    "name": "Espada da retribuição (Espada grande)",
+    "description": "Forma: Espada grande. Arma +3 amaldiçoada dificulta a recuperação dos feridos, perturba descansos e causa corrupção infernal.",
+    "merchant_comment": "A espada grande da retribuição traz pesadelos depois do descanso longo. Falhar em Constituição onze deixa só os benefícios de um descanso curto.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia e concede +3 nas jogadas de ataque e dano. PV perdidos por dano desta arma só podem ser recuperados por descanso curto ou longo, sem regeneração, magia ou outro meio. Enquanto sintonizado, você não quer se separar dela e tem desvantagem nos ataques com outras armas. Após cada descanso longo bem-sucedido, os pesadelos do espírito exigem Constituição CD 11 ao acordar; na falha, recebe somente os benefícios de um descanso curto. Só Remover Maldição permite encerrar esta sintonia. O item também aplica a corrupção infernal de Chains of Asmodeus, pp. 271–272: para mortais sem permissão expressa de Asmodeus ou contrato de aquisição, a sintonia inicia o processo de quatro estágios. No primeiro, cada descanso longo exige Sabedoria CD 10, com vantagem para tieflings; um sucesso eleva a CD seguinte em 1, e uma falha avança ao segundo estágio salvo intervenção de Dissipar o Mal e o Bem antes do próximo descanso longo. A fonte descreve as etapas seguintes e suas curas específicas; encerrar a sintonia já não interrompe o processo a partir do segundo estágio. Corrupção e efeitos de combate são resolvidos na mesa.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of Retribution",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "longsword-of-retribution": {
+    "name": "Espada da retribuição (Espada longa)",
+    "description": "Forma: Espada longa. Arma +3 amaldiçoada dificulta a recuperação dos feridos, perturba descansos e causa corrupção infernal.",
+    "merchant_comment": "A espada longa da retribuição tem um espírito vingativo. Enquanto sintonizado, você sofre desvantagem nos ataques com outras armas.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia e concede +3 nas jogadas de ataque e dano. PV perdidos por dano desta arma só podem ser recuperados por descanso curto ou longo, sem regeneração, magia ou outro meio. Enquanto sintonizado, você não quer se separar dela e tem desvantagem nos ataques com outras armas. Após cada descanso longo bem-sucedido, os pesadelos do espírito exigem Constituição CD 11 ao acordar; na falha, recebe somente os benefícios de um descanso curto. Só Remover Maldição permite encerrar esta sintonia. O item também aplica a corrupção infernal de Chains of Asmodeus, pp. 271–272: para mortais sem permissão expressa de Asmodeus ou contrato de aquisição, a sintonia inicia o processo de quatro estágios. No primeiro, cada descanso longo exige Sabedoria CD 10, com vantagem para tieflings; um sucesso eleva a CD seguinte em 1, e uma falha avança ao segundo estágio salvo intervenção de Dissipar o Mal e o Bem antes do próximo descanso longo. A fonte descreve as etapas seguintes e suas curas específicas; encerrar a sintonia já não interrompe o processo a partir do segundo estágio. Corrupção e efeitos de combate são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Retribution",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "rapier-of-retribution": {
+    "name": "Espada da retribuição (Rapieira)",
+    "description": "Forma: Rapieira. Arma +3 amaldiçoada dificulta a recuperação dos feridos, perturba descansos e causa corrupção infernal.",
+    "merchant_comment": "O florete da retribuição não promete uma maldição simples. A corrupção infernal pode continuar mesmo depois de encerrar a sintonia.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia e concede +3 nas jogadas de ataque e dano. PV perdidos por dano desta arma só podem ser recuperados por descanso curto ou longo, sem regeneração, magia ou outro meio. Enquanto sintonizado, você não quer se separar dela e tem desvantagem nos ataques com outras armas. Após cada descanso longo bem-sucedido, os pesadelos do espírito exigem Constituição CD 11 ao acordar; na falha, recebe somente os benefícios de um descanso curto. Só Remover Maldição permite encerrar esta sintonia. O item também aplica a corrupção infernal de Chains of Asmodeus, pp. 271–272: para mortais sem permissão expressa de Asmodeus ou contrato de aquisição, a sintonia inicia o processo de quatro estágios. No primeiro, cada descanso longo exige Sabedoria CD 10, com vantagem para tieflings; um sucesso eleva a CD seguinte em 1, e uma falha avança ao segundo estágio salvo intervenção de Dissipar o Mal e o Bem antes do próximo descanso longo. A fonte descreve as etapas seguintes e suas curas específicas; encerrar a sintonia já não interrompe o processo a partir do segundo estágio. Corrupção e efeitos de combate são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Retribution",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "scimitar-of-retribution": {
+    "name": "Espada da retribuição (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +3 amaldiçoada dificulta a recuperação dos feridos, perturba descansos e causa corrupção infernal.",
+    "merchant_comment": "A cimitarra da retribuição impede curar por magia os PV que ela tira. O descanso permanece como caminho para recuperar esses ferimentos.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia e concede +3 nas jogadas de ataque e dano. PV perdidos por dano desta arma só podem ser recuperados por descanso curto ou longo, sem regeneração, magia ou outro meio. Enquanto sintonizado, você não quer se separar dela e tem desvantagem nos ataques com outras armas. Após cada descanso longo bem-sucedido, os pesadelos do espírito exigem Constituição CD 11 ao acordar; na falha, recebe somente os benefícios de um descanso curto. Só Remover Maldição permite encerrar esta sintonia. O item também aplica a corrupção infernal de Chains of Asmodeus, pp. 271–272: para mortais sem permissão expressa de Asmodeus ou contrato de aquisição, a sintonia inicia o processo de quatro estágios. No primeiro, cada descanso longo exige Sabedoria CD 10, com vantagem para tieflings; um sucesso eleva a CD seguinte em 1, e uma falha avança ao segundo estágio salvo intervenção de Dissipar o Mal e o Bem antes do próximo descanso longo. A fonte descreve as etapas seguintes e suas curas específicas; encerrar a sintonia já não interrompe o processo a partir do segundo estágio. Corrupção e efeitos de combate são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Retribution",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "shortsword-of-retribution": {
+    "name": "Espada da retribuição (Espada curta)",
+    "description": "Forma: Espada curta. Arma +3 amaldiçoada dificulta a recuperação dos feridos, perturba descansos e causa corrupção infernal.",
+    "merchant_comment": "A espada curta da retribuição mantém o bônus três e a maldição completa. Só Remover Maldição permite encerrar a sintonia com esta peça.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia e concede +3 nas jogadas de ataque e dano. PV perdidos por dano desta arma só podem ser recuperados por descanso curto ou longo, sem regeneração, magia ou outro meio. Enquanto sintonizado, você não quer se separar dela e tem desvantagem nos ataques com outras armas. Após cada descanso longo bem-sucedido, os pesadelos do espírito exigem Constituição CD 11 ao acordar; na falha, recebe somente os benefícios de um descanso curto. Só Remover Maldição permite encerrar esta sintonia. O item também aplica a corrupção infernal de Chains of Asmodeus, pp. 271–272: para mortais sem permissão expressa de Asmodeus ou contrato de aquisição, a sintonia inicia o processo de quatro estágios. No primeiro, cada descanso longo exige Sabedoria CD 10, com vantagem para tieflings; um sucesso eleva a CD seguinte em 1, e uma falha avança ao segundo estágio salvo intervenção de Dissipar o Mal e o Bem antes do próximo descanso longo. A fonte descreve as etapas seguintes e suas curas específicas; encerrar a sintonia já não interrompe o processo a partir do segundo estágio. Corrupção e efeitos de combate são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of Retribution",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "double-bladed-scimitar-of-the-planes": {
+    "name": "Espada dos planos (Cimitarra de duas lâminas)",
+    "description": "Forma: Cimitarra de duas lâminas. Arma +3 abre uma fenda diária para outro plano, com destino exato decidido pelo mestre.",
+    "merchant_comment": "A cimitarra dupla dos planos abre uma fenda com uma ação. As duas lâminas não dão dois usos do poder diário.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d4 cortante. Propriedades: duas mãos. Após atacar com ela na ação Atacar do seu turno, pode usar uma ação bônus imediata para outro ataque corpo a corpo, com dano básico 1d4 cortante em vez de 2d4. Exige sintonia e concede +3 nas jogadas de ataque e dano. Uma ação permite escolher um plano diferente daquele em que você está e cortar um espaço desocupado a até cinco pés, abrindo uma fenda para esse plano. A fenda pode ter até dez pés de altura e dez pés de largura e dura um minuto. Após usar o poder, só pode usá-lo novamente no próximo amanhecer. Você pode indicar um destino desejado, mas a abertura fica nesse destino ou perto dele a critério do mestre. Tudo que entra na fenda é transportado instantaneamente ao outro plano, surgindo no espaço desocupado mais próximo da fenda. Não promete chegar a uma posição exata sem a decisão do mestre.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of the Planes",
+    "base_id": "double-bladed-scimitar",
+    "model_name": "Cimitarra de duas lâminas",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "greatsword-of-the-planes": {
+    "name": "Espada dos planos (Espada grande)",
+    "description": "Forma: Espada grande. Arma +3 abre uma fenda diária para outro plano, com destino exato decidido pelo mestre.",
+    "merchant_comment": "A espada grande dos planos conserva suas duas mãos e bônus três. A fenda dura um minuto e pode ter dez pés em cada dimensão.",
+    "rules_summary": "Arma marcial de duas mãos, dano básico 2d6 cortante. Propriedades: pesada, duas mãos. Há desvantagem nos ataques sem Força de pelo menos 13. Exige sintonia e concede +3 nas jogadas de ataque e dano. Uma ação permite escolher um plano diferente daquele em que você está e cortar um espaço desocupado a até cinco pés, abrindo uma fenda para esse plano. A fenda pode ter até dez pés de altura e dez pés de largura e dura um minuto. Após usar o poder, só pode usá-lo novamente no próximo amanhecer. Você pode indicar um destino desejado, mas a abertura fica nesse destino ou perto dele a critério do mestre. Tudo que entra na fenda é transportado instantaneamente ao outro plano, surgindo no espaço desocupado mais próximo da fenda. Não promete chegar a uma posição exata sem a decisão do mestre.",
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true,
+    "material": "metal",
+    "family": "Sword of the Planes",
+    "base_id": "greatsword",
+    "model_name": "Espada grande",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "longsword-of-the-planes": {
+    "name": "Espada dos planos (Espada longa)",
+    "description": "Forma: Espada longa. Arma +3 abre uma fenda diária para outro plano, com destino exato decidido pelo mestre.",
+    "merchant_comment": "A espada longa dos planos permite sugerir um destino. O mestre decide onde a abertura aparece nesse lugar ou nas proximidades.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 cortante. Propriedades: versátil. Com duas mãos, dano versátil 1d10 cortante. Exige sintonia e concede +3 nas jogadas de ataque e dano. Uma ação permite escolher um plano diferente daquele em que você está e cortar um espaço desocupado a até cinco pés, abrindo uma fenda para esse plano. A fenda pode ter até dez pés de altura e dez pés de largura e dura um minuto. Após usar o poder, só pode usá-lo novamente no próximo amanhecer. Você pode indicar um destino desejado, mas a abertura fica nesse destino ou perto dele a critério do mestre. Tudo que entra na fenda é transportado instantaneamente ao outro plano, surgindo no espaço desocupado mais próximo da fenda. Não promete chegar a uma posição exata sem a decisão do mestre.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of the Planes",
+    "base_id": "longsword",
+    "model_name": "Espada longa",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "rapier-of-the-planes": {
+    "name": "Espada dos planos (Rapieira)",
+    "description": "Forma: Rapieira. Arma +3 abre uma fenda diária para outro plano, com destino exato decidido pelo mestre.",
+    "merchant_comment": "O florete dos planos não abre uma passagem para o plano onde você já está. Escolha um plano diferente para usar o encanto.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d8 perfurante. Propriedades: acuidade. Exige sintonia e concede +3 nas jogadas de ataque e dano. Uma ação permite escolher um plano diferente daquele em que você está e cortar um espaço desocupado a até cinco pés, abrindo uma fenda para esse plano. A fenda pode ter até dez pés de altura e dez pés de largura e dura um minuto. Após usar o poder, só pode usá-lo novamente no próximo amanhecer. Você pode indicar um destino desejado, mas a abertura fica nesse destino ou perto dele a critério do mestre. Tudo que entra na fenda é transportado instantaneamente ao outro plano, surgindo no espaço desocupado mais próximo da fenda. Não promete chegar a uma posição exata sem a decisão do mestre.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of the Planes",
+    "base_id": "rapier",
+    "model_name": "Rapieira",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "scimitar-of-the-planes": {
+    "name": "Espada dos planos (Cimitarra)",
+    "description": "Forma: Cimitarra. Arma +3 abre uma fenda diária para outro plano, com destino exato decidido pelo mestre.",
+    "merchant_comment": "A cimitarra dos planos transporta o que entrar na fenda. A chegada usa o espaço desocupado mais próximo da abertura no outro plano.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 cortante. Propriedades: acuidade, leve. Exige sintonia e concede +3 nas jogadas de ataque e dano. Uma ação permite escolher um plano diferente daquele em que você está e cortar um espaço desocupado a até cinco pés, abrindo uma fenda para esse plano. A fenda pode ter até dez pés de altura e dez pés de largura e dura um minuto. Após usar o poder, só pode usá-lo novamente no próximo amanhecer. Você pode indicar um destino desejado, mas a abertura fica nesse destino ou perto dele a critério do mestre. Tudo que entra na fenda é transportado instantaneamente ao outro plano, surgindo no espaço desocupado mais próximo da fenda. Não promete chegar a uma posição exata sem a decisão do mestre.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of the Planes",
+    "base_id": "scimitar",
+    "model_name": "Cimitarra",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "shortsword-of-the-planes": {
+    "name": "Espada dos planos (Espada curta)",
+    "description": "Forma: Espada curta. Arma +3 abre uma fenda diária para outro plano, com destino exato decidido pelo mestre.",
+    "merchant_comment": "A espada curta dos planos tem uma passagem por amanhecer. O tamanho da arma não reduz a fenda nem muda seu minuto de duração.",
+    "rules_summary": "Arma marcial de uma mão, dano básico 1d6 perfurante. Propriedades: acuidade, leve. Exige sintonia e concede +3 nas jogadas de ataque e dano. Uma ação permite escolher um plano diferente daquele em que você está e cortar um espaço desocupado a até cinco pés, abrindo uma fenda para esse plano. A fenda pode ter até dez pés de altura e dez pés de largura e dura um minuto. Após usar o poder, só pode usá-lo novamente no próximo amanhecer. Você pode indicar um destino desejado, mas a abertura fica nesse destino ou perto dele a critério do mestre. Tudo que entra na fenda é transportado instantaneamente ao outro plano, surgindo no espaço desocupado mais próximo da fenda. Não promete chegar a uma posição exata sem a decisão do mestre.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "metal",
+    "family": "Sword of the Planes",
+    "base_id": "shortsword",
+    "model_name": "Espada curta",
+    "magic_kind": "weapon",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
   }
 }
