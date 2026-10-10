@@ -4,7 +4,7 @@
   "source": "https://5e.tools/items.html",
   "asOf": "2026-10-09",
   "planned": 3076,
-  "pending": 2381,
+  "pending": 2369,
   "items": [
     {
       "id": "all-purpose-tool-plus-1",
@@ -1872,6 +1872,88 @@
       }
     },
     {
+      "id": "perfume-of-bewitching",
+      "name": "Perfume do encantamento",
+      "original_name": "Perfume of Bewitching",
+      "category": "Mágicos comuns",
+      "description": "Frasco de vidro ametista com perfume mágico para uma única aplicação. Aproximações persuasivas e enganos ganham vantagem por uma hora.",
+      "merchant_comment": "Uma aplicação basta para uma hora de conversa próxima. Chegue a até cinco pés de quem pretende influenciar; o perfume ajuda a lábia, mas a decisão continua sendo da criatura.",
+      "price_cp": 5000,
+      "weight_lb": 0.1,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#perfume%20of%20bewitching_xdmg",
+      "image_path": "/shop/magic-completion-20261009/perfume-of-bewitching.webp",
+      "audio_path": "/audio/emporium/perfume-of-bewitching.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Perfume of Bewitching",
+        "upstream_source": "XDMG",
+        "upstream_page": 284,
+        "upstream_facts": {
+          "name": "Perfume of Bewitching",
+          "source": "XDMG",
+          "page": 284,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Um frasco contém perfume suficiente para um uso. Uma ação de Magia permite aplicá-lo em você. Durante uma hora, você tem vantagem nos testes de Carisma de Enganação e Persuasão feitos para influenciar uma criatura a até 5 pés de você. A versão de 2024 não limita o benefício a humanoides nem a um valor de desafio específico. Não aplica por si a condição Enfeitiçado. Consumível vendido por unidade.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
+      "id": "pipe-of-remembrance",
+      "name": "Cachimbo das lembranças",
+      "original_name": "Pipe of Remembrance",
+      "category": "Mágicos comuns",
+      "description": "Cachimbo comprido de madeira com fornilho de pedra de rio. Sua fumaça encena as realizações heroicas mais marcantes do portador.",
+      "merchant_comment": "Acenda o cachimbo e dê tempo à fumaça. Depois de dez minutos ela conta suas façanhas por cinco; talvez seja melhor combinar isso antes de tentar uma entrada discreta.",
+      "price_cp": 10000,
+      "weight_lb": 0.5,
+      "weight_estimated": true,
+      "source": "D&D · Ghosts of Saltmarsh",
+      "source_url": "https://5e.tools/items.html#pipe%20of%20remembrance_gos",
+      "image_path": "/shop/magic-completion-20261009/pipe-of-remembrance.webp",
+      "audio_path": "/audio/emporium/pipe-of-remembrance.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pipe of Remembrance",
+        "upstream_source": "GoS",
+        "upstream_page": 229,
+        "upstream_facts": {
+          "name": "Pipe of Remembrance",
+          "source": "GoS",
+          "page": 229,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Ghosts of Saltmarsh",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Cachimbo longo e delicado de madeira, com fornilho de pedra de rio lisa. Ao acendê-lo, a fumaça exalada permanece ao redor do portador. Após dez minutos, forma imagens móveis e realistas que reencenam suas realizações mais impressionantes e heroicas durante cinco minutos. Terminado o espetáculo, a fumaça se dissipa. Só pode produzir esse efeito novamente no próximo amanhecer.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
       "id": "pipe-of-smoke-monsters",
       "name": "Cachimbo de monstros de fumaça",
       "original_name": "Pipe of Smoke Monsters",
@@ -1910,6 +1992,257 @@
         "rarity": "Common",
         "sound_material": "wood",
         "attunement": false
+      }
+    },
+    {
+      "id": "pole-of-angling",
+      "name": "Haste de pesca",
+      "original_name": "Pole of Angling",
+      "category": "Mágicos comuns",
+      "description": "Haste de madeira que se transforma numa vara de pesca com anzol, linha e carretilha.",
+      "merchant_comment": "Esta haste leva a vara, a linha e o anzol num só encanto. Uma ação de Magia muda a forma; escolher onde os peixes estão continua sendo o trabalho do pescador.",
+      "price_cp": 10000,
+      "weight_lb": 7,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#pole%20of%20angling_xdmg",
+      "image_path": "/shop/magic-completion-20261009/pole-of-angling.webp",
+      "audio_path": "/audio/emporium/pole-of-angling.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pole of Angling",
+        "upstream_source": "XDMG",
+        "upstream_page": 286,
+        "upstream_facts": {
+          "name": "Pole of Angling",
+          "source": "XDMG",
+          "page": 286,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Funciona como a Haste de 2024: 10 pés de comprimento, peso de 7 libras; permite tocar algo a até 10 pés e oferece vantagem em um teste de Força (Atletismo) exigido como parte de um salto alto ou em distância ao utilizá-la como vara de impulso. Enquanto a segura, uma ação de Magia a transforma numa vara de pesca com anzol, linha e carretilha, ou devolve a vara de pesca à forma de Haste. O encanto não garante capturar um peixe.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "pole-of-collapsing",
+      "name": "Haste recolhível",
+      "original_name": "Pole of Collapsing",
+      "category": "Mágicos comuns",
+      "description": "Haste telescópica que se recolhe numa barra de um pé, sem mudar de peso.",
+      "merchant_comment": "A haste recolhida cabe muito melhor na bagagem. O peso continua em sete libras; ao estendê-la, confira quanto espaço há acima da sua cabeça.",
+      "price_cp": 10000,
+      "weight_lb": 7,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#pole%20of%20collapsing_xdmg",
+      "image_path": "/shop/magic-completion-20261009/pole-of-collapsing.webp",
+      "audio_path": "/audio/emporium/pole-of-collapsing.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pole of Collapsing",
+        "upstream_source": "XDMG",
+        "upstream_page": 286,
+        "upstream_facts": {
+          "name": "Pole of Collapsing",
+          "source": "XDMG",
+          "page": 286,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Funciona como a Haste de 2024: 10 pés de comprimento, peso de 7 libras, permite tocar algo a até 10 pés e usar impulso para obter vantagem em um teste de Força (Atletismo) exigido num salto alto ou em distância. Enquanto a segura, uma ação de Magia a recolhe numa barra de 1 pé ou a estende novamente. O peso não muda. Ao estender, só cresce até onde o espaço ao redor permitir. Os benefícios da haste comprida dependem de estar estendida.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "pot-of-awakening",
+      "name": "Vaso do despertar",
+      "original_name": "Pot of Awakening",
+      "category": "Mágicos comuns",
+      "description": "Vaso de argila de dez libras que desperta um arbusto comum após trinta dias de crescimento.",
+      "merchant_comment": "Plante um arbusto comum e cuide dele por trinta dias. As raízes quebram o vaso quando ele desperta; escolha o lugar antes de contar com essa nova companhia.",
+      "price_cp": 5000,
+      "weight_lb": 10,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#pot%20of%20awakening_xdmg",
+      "image_path": "/shop/magic-completion-20261009/pot-of-awakening.webp",
+      "audio_path": "/audio/emporium/pot-of-awakening.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pot of Awakening",
+        "upstream_source": "XDMG",
+        "upstream_page": 289,
+        "upstream_facts": {
+          "name": "Pot of Awakening",
+          "source": "XDMG",
+          "page": 289,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Plante um arbusto comum neste vaso de argila de dez libras e deixe-o crescer por trinta dias. Ao final, ele se transforma magicamente em um Arbusto Desperto. As raízes rompem e destroem o vaso. A criatura é Amistosa em relação a você e obedece às suas ordens; sem ordens, não faz nada. É um uso por vaso, com transformação para aplicação na mesa; não cria automaticamente um mascote comprado na Casa dos Mascotes.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
+      "id": "rope-of-mending",
+      "name": "Corda de remendo",
+      "original_name": "Rope of Mending",
+      "category": "Mágicos comuns",
+      "description": "Rolo de corda de cinquenta pés capaz de reunir seus próprios pedaços cortados.",
+      "merchant_comment": "Junte as pontas cortadas e libere os trechos que estiverem em uso. A corda remenda o que ficou; um pedaço perdido deixa o rolo menor de verdade.",
+      "price_cp": 10000,
+      "weight_lb": 5,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#rope%20of%20mending_xdmg",
+      "image_path": "/shop/magic-completion-20261009/rope-of-mending.webp",
+      "audio_path": "/audio/emporium/rope-of-mending.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Rope of Mending",
+        "upstream_source": "XDMG",
+        "upstream_page": 302,
+        "upstream_facts": {
+          "name": "Rope of Mending",
+          "source": "XDMG",
+          "page": 302,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Corda de 50 pés que pode reparar-se depois de ser cortada em qualquer quantidade de pedaços menores. Com uma ação de Magia, os pedaços que estejam em contato uns com os outros e não estejam sendo usados se unem novamente. Uma seção perdida ou destruída reduz para sempre o comprimento total. O peso de cinco libras é uma estimativa baseada na corda comum de 2024, não um peso declarado para este item mágico.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "cloth",
+        "attunement": false
+      }
+    },
+    {
+      "id": "ruby-of-the-war-mage",
+      "name": "Rubi do mago de guerra",
+      "original_name": "Ruby of the War Mage",
+      "category": "Mágicos comuns",
+      "description": "Rubi gravado com runas que torna uma arma simples ou marcial um foco para as magias do usuário sintonizado.",
+      "merchant_comment": "Pressione o rubi contra a arma por pelo menos dez minutos. A sintonia é para um conjurador, e a pedra transforma a arma em foco sem dar um bônus de ataque.",
+      "price_cp": 10000,
+      "weight_lb": 0.05,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#ruby%20of%20the%20war%20mage_xdmg",
+      "image_path": "/shop/magic-completion-20261009/ruby-of-the-war-mage.webp",
+      "audio_path": "/audio/emporium/ruby-of-the-war-mage.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Ruby of the War Mage",
+        "upstream_source": "XDMG",
+        "upstream_page": 302,
+        "upstream_facts": {
+          "name": "Ruby of the War Mage",
+          "source": "XDMG",
+          "page": 302,
+          "rarity": "common",
+          "type": "SCF|XPHB",
+          "wondrous": true,
+          "reqAttune": "by a spellcaster",
+          "reqAttuneTags": [
+            {
+              "spellcasting": true
+            }
+          ]
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Requer sintonia por um conjurador. Rubi de uma polegada de diâmetro gravado com runas que permite usar uma arma Simples ou Marcial como Foco de Conjuração para suas magias. Prenda-o pressionando a pedra contra a arma por pelo menos dez minutos. Depois, só se solta quando você o destaca com uma ação de Magia, a arma é destruída ou sua sintonia com o rubi termina. Continua sujeito às regras de componentes e foco de cada magia. É uma pedra para prender a uma arma, não uma arma ou um colar equipável independente.",
+        "equipment_target": "human",
+        "equipment_slots": [],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": "by a spellcaster"
+      }
+    },
+    {
+      "id": "shield-of-expression",
+      "name": "Escudo de expressão",
+      "original_name": "Shield of Expression",
+      "category": "Mágicos comuns",
+      "description": "Escudo de aço e bronze com um rosto em relevo que muda de expressão por vontade de quem o porta.",
+      "merchant_comment": "O rosto do escudo acompanha o humor que você escolher com uma ação bônus. A defesa continua sendo a de um escudo comum; um sorriso de bronze não acrescenta outro bônus.",
+      "price_cp": 11000,
+      "weight_lb": 6,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#shield%20of%20expression_xdmg",
+      "image_path": "/shop/magic-completion-20261009/shield-of-expression.webp",
+      "audio_path": "/audio/emporium/shield-of-expression.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Shield of Expression",
+        "upstream_source": "XDMG",
+        "upstream_page": 303,
+        "upstream_facts": {
+          "name": "Shield of Expression",
+          "source": "XDMG",
+          "page": 303,
+          "rarity": "common",
+          "type": "S|XPHB",
+          "baseItem": "shield|xphb",
+          "weight": 6,
+          "ac": 2
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "A frente deste escudo tem o formato de um rosto. Enquanto o porta, uma ação bônus altera a expressão do rosto. Como escudo, aumenta a Classe de Armadura em dois quando empunhado conforme as regras; só é possível receber o benefício de um escudo por vez. O encanto da expressão não concede bônus adicional de CA, Persuasão ou Intimidação. É um único escudo de seis libras, sem divisão em seis peças de armadura.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false,
+        "base_item": "shield",
+        "magic_kind": "shield"
       }
     },
     {
@@ -1955,6 +2288,47 @@
       }
     },
     {
+      "id": "tankard-of-plenty",
+      "name": "Caneca da fartura",
+      "original_name": "Tankard of Plenty",
+      "category": "Mágicos comuns",
+      "description": "Caneca dourada com anões dançando e motivos de grãos que se enche com cerveja anã rica.",
+      "merchant_comment": "Segure a alça e diga Illefarn. São três pints de cerveja por uso, até três vezes por dia; a caneca é generosa, mas ainda vale dividir a rodada.",
+      "price_cp": 10000,
+      "weight_lb": 2,
+      "weight_estimated": true,
+      "source": "D&D · Hoard of the Dragon Queen",
+      "source_url": "https://5e.tools/items.html#tankard%20of%20plenty_hotdq",
+      "image_path": "/shop/magic-completion-20261009/tankard-of-plenty.webp",
+      "audio_path": "/audio/emporium/tankard-of-plenty.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Tankard of Plenty",
+        "upstream_source": "HotDQ",
+        "upstream_page": 74,
+        "upstream_facts": {
+          "name": "Tankard of Plenty",
+          "source": "HotDQ",
+          "page": 74,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Hoard of the Dragon Queen",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Caneca dourada decorada com anões dançando e padrões de grãos. Segurando a alça, pronunciar a palavra de comando Illefarn a enche com três pints de cerveja anã rica, cerca de 1,42 litro. Esse poder pode ser usado até três vezes por dia. O peso de duas libras é estimado para a caneca vazia; a bebida não está incluída no peso do objeto nem implica imunidade à embriaguez.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
       "id": "tankard-of-sobriety",
       "name": "Caneca da sobriedade",
       "original_name": "Tankard of Sobriety",
@@ -1992,6 +2366,141 @@
         "consumable": false,
         "rarity": "Common",
         "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "wand-of-conducting",
+      "name": "Varinha de regência",
+      "original_name": "Wand of Conducting",
+      "category": "Mágicos comuns",
+      "description": "Varinha de marfim e madeira que produz música orquestral enquanto é regida.",
+      "merchant_comment": "Uma carga abre a apresentação; continue regendo para manter a música. Quem estiver a até cento e vinte pés pode ouvir, inclusive quem ainda não foi convidado.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#wand%20of%20conducting_xdmg",
+      "image_path": "/shop/magic-completion-20261009/wand-of-conducting.webp",
+      "audio_path": "/audio/emporium/wand-of-conducting.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Wand of Conducting",
+        "upstream_source": "XDMG",
+        "upstream_page": 319,
+        "upstream_facts": {
+          "name": "Wand of Conducting",
+          "source": "XDMG",
+          "page": 319,
+          "rarity": "common",
+          "type": "WD|XDMG",
+          "weight": 1,
+          "charges": 3,
+          "recharge": "dawn",
+          "rechargeAmount": 3
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Tem três cargas. Enquanto a segura, uma ação de Magia gasta uma carga e cria música orquestral ao agitar a varinha. A música é audível a até 120 pés e termina quando você para de agitá-la. Recupera todas as cargas gastas diariamente ao amanhecer. Ao gastar a última carga, role 1d20: com um resultado 1, toca um som triste de tuba, vira pó e é destruída. O poder produz música, sem convocar músicos.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "wand-of-pyrotechnics",
+      "name": "Varinha de pirotecnia",
+      "original_name": "Wand of Pyrotechnics",
+      "category": "Mágicos comuns",
+      "description": "Varinha de bronze e gemas coloridas que produz clarões inofensivos com estalos.",
+      "merchant_comment": "Escolha um ponto visível a até cento e vinte pés e gaste uma carga. O clarão dura um segundo, mas o estalo chega a trezentos pés; pense nisso antes da festa surpresa.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#wand%20of%20pyrotechnics_xdmg",
+      "image_path": "/shop/magic-completion-20261009/wand-of-pyrotechnics.webp",
+      "audio_path": "/audio/emporium/wand-of-pyrotechnics.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Wand of Pyrotechnics",
+        "upstream_source": "XDMG",
+        "upstream_page": 321,
+        "upstream_facts": {
+          "name": "Wand of Pyrotechnics",
+          "source": "XDMG",
+          "page": 321,
+          "rarity": "common",
+          "type": "WD|XDMG",
+          "weight": 1,
+          "charges": 7,
+          "recharge": "dawn",
+          "rechargeAmount": "{@dice 1d6 + 1}"
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Tem sete cargas. Enquanto a segura, uma ação de Magia gasta uma carga para criar um clarão inofensivo de luz multicolorida num ponto visível a até 120 pés. A luz é tão intensa quanto uma chama de tocha e dura um segundo; o estalo é audível a até 300 pés. Recupera 1d6 + 1 cargas gastas ao amanhecer, até o máximo de sete. Ao gastar a última carga, role 1d20: num 1, produz uma exibição pirotécnica inofensiva e é destruída. O clarão não causa dano.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "wand-of-scowls",
+      "name": "Varinha dos cenhos franzidos",
+      "original_name": "Wand of Scowls",
+      "category": "Mágicos comuns",
+      "description": "Varinha de madeira escura com uma máscara zangada que força brevemente um humanoide a franzir o cenho.",
+      "merchant_comment": "A máscara da varinha já veio zangada. Uma carga faz um humanoide resistir com Carisma; se usar a última, há uma chance de ela trocar as caras fechadas por sorrisos.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": false,
+      "source": "D&D · Xanathar's Guide to Everything",
+      "source_url": "https://5e.tools/items.html#wand%20of%20scowls_xge",
+      "image_path": "/shop/magic-completion-20261009/wand-of-scowls.webp",
+      "audio_path": "/audio/emporium/wand-of-scowls.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Wand of Scowls",
+        "upstream_source": "XGE",
+        "upstream_page": 140,
+        "upstream_facts": {
+          "name": "Wand of Scowls",
+          "source": "XGE",
+          "page": 140,
+          "rarity": "common",
+          "type": "WD|DMG",
+          "weight": 1,
+          "charges": 3,
+          "recharge": "dawn",
+          "rechargeAmount": 3
+        },
+        "source_book": "Xanathar's Guide to Everything",
+        "source_edition": "D&D 5e (2014)",
+        "rules_summary": "Tem três cargas. Enquanto a segura, use uma ação para gastar uma carga e escolher um Humanoide visível a até 30 pés. Ele faz resistência de Carisma CD 10; falhar obriga-o a franzir o cenho durante um minuto. Recupera todas as cargas gastas ao amanhecer. Ao gastar a última carga, role 1d20: num 1, a varinha se transforma em uma Varinha de Sorrisos. O efeito não aplica Amedrontado nem aumenta Intimidação.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
         "attunement": false
       }
     },

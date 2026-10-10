@@ -94,7 +94,9 @@ for (const c of candidates) {
             (e.ammunition ? (e.pack_quantity || 1) / 10 : 1) +
             (e.base_price_cp ?? c.base?.value ?? basic?.price_cp ?? 0),
         );
-  const weight = f.weight ?? e.estimated_weight_lb ?? null;
+  if (e.reviewed_weight_lb != null)
+    assert(Number.isFinite(e.reviewed_weight_lb) && e.reviewed_weight_lb >= 0, c.id + ' invalid reviewed physical weight');
+  const weight = f.weight ?? e.reviewed_weight_lb ?? e.estimated_weight_lb ?? null;
   assert(Number.isFinite(weight) && weight >= 0, c.id + ' needs reviewed weight estimate');
   const source = `D&D · ${c.book.name}`;
   const raw_data = {
@@ -117,7 +119,7 @@ for (const c of candidates) {
   };
   if (f.baseItem && ['M', 'R', 'LA', 'MA', 'HA', 'S'].includes(type)) {
     raw_data.base_item = basic?.id || baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    raw_data.magic_kind = ['M', 'R'].includes(type) ? 'weapon' : 'armor';
+    raw_data.magic_kind = ['M', 'R'].includes(type) ? 'weapon' : type === 'S' ? 'shield' : 'armor';
     if (f.bonusWeapon) raw_data.enhancement = Number(f.bonusWeapon);
   }
   if (c.kind === 'variant')
@@ -146,7 +148,7 @@ for (const c of candidates) {
     merchant_comment: e.merchant_comment,
     price_cp,
     weight_lb: weight,
-    weight_estimated: f.weight == null,
+    weight_estimated: f.weight == null && e.reviewed_weight_lb == null,
     source,
     source_url: c.source_url,
     image_path: a.path,

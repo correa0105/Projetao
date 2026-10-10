@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **695 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **707 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -393,3 +393,17 @@ Chains of Asmodeus, página 271, foi conferido nos dados primários do 5etools. 
 API em banco descartável passou os 695 itens para imagens/sons únicos, compras, replay, saldo, ledger, preços administrativos, catálogo anterior e consumo. Os 80 conjuntos de seis peças continuam corretos. As 32 fontes novas e o equipamento de todos os modelos novos passaram, incluindo bloqueio de segunda mão para armas de duas mãos. Loja completa em 1500/760/390 px: 32 novas imagens, falas, regras e referências, baús com ID/skin corretos e sem recorte. TypeScript passou; servidor e 43 bundles anteriores validados ficam idênticos.
 
 Release `magic-completion-v11-20261010` saudável, com backup anterior preservado. 60 tabelas e todas as ofertas anteriores têm linhas integrais iguais; somente 32 adições. 1.430 mídias/referências publicadas conferem com os arquivos validados. Lava/Corrente elétrica e 21 VFX anteriores preservados, ilustrador ativo, alterações independentes intactas. Restam 2.381 candidatos, além das opções de magia/alvo por expandir.
+
+## Décimo segundo lote: doze utensílios individuais
+
+Publicados perfume do encantamento, cachimbo das lembranças, haste de pesca, haste recolhível, vaso do despertar, corda de remendo, rubi do mago de guerra, escudo de expressão, caneca da fartura e varinhas de regência, pirotecnia e cenhos franzidos. Cada item tem uma arte original individual por `image_gen.imagegen`, alpha nativo, fala própria e foley distinto. Prompts em `art-jobs-utility2-items.json`, procedência em `art-manifest.json`, PNGs em `.local/shop-completion/native` e WebP portáveis em `public/shop/magic-completion-20261009`. Painel de 190px sobre o fundo real confirma formas completas e transparência limpa; o sombreado de RGB visto fora dos objetos na prévia do gerador tem alpha zero. Nenhuma das 695 ofertas/artes anteriores mudou.
+
+Regras do Dungeon Master’s Guide de 2024 foram conferidas no 5etools para nove objetos, com fontes clássicas de Ghosts of Saltmarsh, Hoard of the Dragon Queen e Xanathar’s Guide to Everything para cachimbo, caneca e varinha de cenhos. Perfume: uma aplicação, ação de Magia, uma hora de vantagem em Enganação/Persuasão para influenciar criatura a até cinco pés. Vaso: dez libras, trinta dias de cultivo de arbusto comum, Arbusto Desperto amistoso obediente e destruição do vaso. Rubi: sintonia por conjurador, fixação por dez minutos, arma como foco e remoção pelos gatilhos corretos. Cachimbo encena façanhas após dez minutos durante cinco, com uso até amanhecer; caneca enche três pints com Illefarn até três vezes por dia.
+
+As varinhas têm cargas, alcance, ação, recuperação e efeito ao gastar a última carga completos. Regência: três cargas, música até 120 pés enquanto regida e destruição num 1 da última carga. Pirotecnia: sete cargas, clarão inofensivo a 120 pés durante um segundo, estalo a 300, recuperação 1d6 + 1 e destruição num 1. Cenhos: três cargas, ação, humanoide visível a 30 pés, Carisma CD 10, um minuto e transformação em Varinha de Sorrisos num 1 da última carga.
+
+O construtor distingue peso físico explicitamente revisado de estimativa: hastes de sete libras, conforme Pole (XPHB), e vaso de dez libras, conforme descrição primária. Hastes incluem comprimento/uso e redução limitada pelo espaço; corda conserva os limites de reparo e perda permanente. Escudo de expressão é um escudo de seis libras e CA +2 normal, com mudança de expressão por ação bônus, classificado separadamente de armadura corporal. Comprar entrega só o escudo, equipável na mão secundária. Perfume/vaso são consumíveis de uso único segundo a política de metade do preço, sem criação automática de criatura ou mascote.
+
+API de 707 itens em banco descartável passou arte/sons, compras, replay, saldo, ledger, preço administrativo, 80 conjuntos e consumo. Os dois consumíveis novos foram usados uma vez, com repetição idempotente e recusa de segundo gasto; escudo único, mãos corretas, pedra sem slot e pesos reais versus estimados foram conferidos. As 12 fontes, imagens/falas novas e loja completa em 1500/760/390 px passaram. TypeScript e builds cliente/servidor passaram, com a nova lista de consumíveis compilada.
+
+Release `magic-completion-v12-20261010` saudável, com backup anterior. 60 tabelas e toda oferta anterior integralmente idênticas, somente 12 adições. 1.454 mídias/referências e 43 bundles conferidos; Lava/Corrente elétrica e 21 VFX anteriores preservados, ilustrador ativo e alterações independentes intactas. Restam 2.369 candidatos, além das opções de magia/alvo por expandir.

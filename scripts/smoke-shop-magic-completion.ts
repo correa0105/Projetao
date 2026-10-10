@@ -268,6 +268,17 @@ try {
       assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,item.id])).rows.length,0,item.id);
       assert.equal((await request(usePath,'POST',{...use,idempotency_key:randomUUID()})).status,409,item.id);
     }
+    for (const id of ['perfume-of-bewitching', 'pot-of-awakening'].filter(id => ids.includes(id))) {
+      const item = completion.items.find((x: any) => x.id === id);
+      assert(item.raw_data.consumable && consumableItems.has(id));
+      assert.equal(item.price_cp, 5000);
+      assert.equal(item.weight_lb, id === 'pot-of-awakening' ? 10 : 0.1);
+      const use = {kind:'consumable',item_id:id,idempotency_key:randomUUID()};
+      assert.equal((await request(usePath,'POST',use)).status,200,id);
+      assert.equal((await request(usePath,'POST',use)).status,200,id);
+      assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,id])).rows.length,0,id);
+      assert.equal((await request(usePath,'POST',{...use,idempotency_key:randomUUID()})).status,409,id);
+    }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger, 'Consumption cannot change the purchase ledger');
   }
   const ruidium = completion.items.filter((x: any) => x.raw_data.magic_family === 'Ruidium Weapon');
@@ -341,6 +352,31 @@ try {
       }
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger);
+  }
+  if(ids.includes('shield-of-expression')) {
+    const item=(id: string)=>completion.items.find((x:any)=>x.id===id);
+    assert.equal(item('shield-of-expression').raw_data.magic_kind,'shield');
+    assert.equal(item('shield-of-expression').raw_data.upstream_facts.ac,2);
+    assert.equal(item('shield-of-expression').price_cp,11000);
+    assert.equal(armorBundle('shield-of-expression'),undefined);
+    assert.deepEqual(purchaseContents('shield-of-expression'),['shield-of-expression']);
+    assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2',[hero.id,'shield-of-expression'])).rows[0].quantity,1);
+    for(const [id,weight]of [['pole-of-angling',7],['pole-of-collapsing',7],['pot-of-awakening',10],['shield-of-expression',6]] as const) {
+      assert.equal(item(id).weight_lb,weight);assert.equal(item(id).weight_estimated,false);
+    }
+    assert.equal(item('ruby-of-the-war-mage').raw_data.attunement,'by a spellcaster');
+    assert.deepEqual(item('ruby-of-the-war-mage').raw_data.equipment_slots,[]);
+    assert.equal(item('wand-of-conducting').raw_data.upstream_facts.charges,3);
+    assert.equal(item('wand-of-pyrotechnics').raw_data.upstream_facts.charges,7);
+    assert.equal(item('wand-of-scowls').raw_data.upstream_source,'XGE');
+    assert.match(item('wand-of-scowls').raw_data.rules_summary,/Varinha de Sorrisos/);
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:null,slot:'off_hand'})).status,200);
+    for(const id of ['pipe-of-remembrance','pole-of-angling','pole-of-collapsing','rope-of-mending','tankard-of-plenty','wand-of-conducting','wand-of-pyrotechnics','wand-of-scowls'])
+      assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:id,slot:'main_hand'})).status,200,id);
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'shield-of-expression',slot:'off_hand'})).status,200);
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'shield-of-expression',slot:'armor'})).status,400);
+    assert.equal((await request('/inventory/equipment','POST',{character_id:hero.id,item_id:'ruby-of-the-war-mage',slot:'main_hand'})).status,400);
+    assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
   }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,

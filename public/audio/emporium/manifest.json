@@ -16206,5 +16206,101 @@
     "sha256": "51115c6f6658dd439b285fa02ef6eed0c5a78e5e048c0f16f6a1d347fcd7293c",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "perfume-of-bewitching",
+    "path": "public/audio/emporium/perfume-of-bewitching.wav",
+    "kind": "glass",
+    "sha256": "8435648842faa106df278a438750565cb3362a720fe960e2b8a8622432b94c8f",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pipe-of-remembrance",
+    "path": "public/audio/emporium/pipe-of-remembrance.wav",
+    "kind": "wood",
+    "sha256": "952a4558e04fc002d4a6efd72acbace2e908795365bb81a31315b4ff2cc74b4c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pole-of-angling",
+    "path": "public/audio/emporium/pole-of-angling.wav",
+    "kind": "wood",
+    "sha256": "ec91c5c274e96c818753fedb53df39f574d3dda319b840b4df0d2d7fe8a24c49",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pole-of-collapsing",
+    "path": "public/audio/emporium/pole-of-collapsing.wav",
+    "kind": "wood",
+    "sha256": "2f7826df62acbe087764cdbf52c29694bd867595174b3fc4d7d1106beb116112",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pot-of-awakening",
+    "path": "public/audio/emporium/pot-of-awakening.wav",
+    "kind": "glass",
+    "sha256": "89a960b03f76620dd42352ae0030320dc0b504c9322eb041788a0f951b1c200b",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "rope-of-mending",
+    "path": "public/audio/emporium/rope-of-mending.wav",
+    "kind": "cloth",
+    "sha256": "31f3c01c2fea3b699b0aabcaac527cbf303c8420ed657a4e9d12b3db104c2bbf",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ruby-of-the-war-mage",
+    "path": "public/audio/emporium/ruby-of-the-war-mage.wav",
+    "kind": "glass",
+    "sha256": "744beca06f5e8dd31ffb586e06a72def661f2463400d97d85ccf8ce75170ddde",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shield-of-expression",
+    "path": "public/audio/emporium/shield-of-expression.wav",
+    "kind": "metal",
+    "sha256": "9f2d7b425f58051f23723f4e7a68466e7e2e67a8724e354253ac473f974b15f6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tankard-of-plenty",
+    "path": "public/audio/emporium/tankard-of-plenty.wav",
+    "kind": "metal",
+    "sha256": "d3018030c6246dafcce60925a946e6d608b7bd457d7d4067d7430db693869255",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "wand-of-conducting",
+    "path": "public/audio/emporium/wand-of-conducting.wav",
+    "kind": "wood",
+    "sha256": "b9be6d0880f37a11b3fbf4c09fda1ef9c414f365ceffff0ecfea864ec8bdb917",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "wand-of-pyrotechnics",
+    "path": "public/audio/emporium/wand-of-pyrotechnics.wav",
+    "kind": "metal",
+    "sha256": "4c9e38363431df90f514bb62e7b4696507a9f56c699c813d61a8a226d802b063",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "wand-of-scowls",
+    "path": "public/audio/emporium/wand-of-scowls.wav",
+    "kind": "wood",
+    "sha256": "0259d7d87b00e0c5b3e0ea9c6075edc6cc407e78514130903f72d7b0478a6fc2",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

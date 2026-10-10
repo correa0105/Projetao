@@ -11525,5 +11525,164 @@
     "magic_kind": "weapon",
     "source_edition": "D&D 5e (2014)",
     "review": "approved"
+  },
+  "perfume-of-bewitching": {
+    "name": "Perfume do encantamento",
+    "estimated_weight_lb": 0.1,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "glass",
+    "consumable": true,
+    "description": "Frasco de vidro ametista com perfume mágico para uma única aplicação. Aproximações persuasivas e enganos ganham vantagem por uma hora.",
+    "merchant_comment": "Uma aplicação basta para uma hora de conversa próxima. Chegue a até cinco pés de quem pretende influenciar; o perfume ajuda a lábia, mas a decisão continua sendo da criatura.",
+    "rules_summary": "Um frasco contém perfume suficiente para um uso. Uma ação de Magia permite aplicá-lo em você. Durante uma hora, você tem vantagem nos testes de Carisma de Enganação e Persuasão feitos para influenciar uma criatura a até 5 pés de você. A versão de 2024 não limita o benefício a humanoides nem a um valor de desafio específico. Não aplica por si a condição Enfeitiçado. Consumível vendido por unidade.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "pipe-of-remembrance": {
+    "name": "Cachimbo das lembranças",
+    "estimated_weight_lb": 0.5,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "description": "Cachimbo comprido de madeira com fornilho de pedra de rio. Sua fumaça encena as realizações heroicas mais marcantes do portador.",
+    "merchant_comment": "Acenda o cachimbo e dê tempo à fumaça. Depois de dez minutos ela conta suas façanhas por cinco; talvez seja melhor combinar isso antes de tentar uma entrada discreta.",
+    "rules_summary": "Cachimbo longo e delicado de madeira, com fornilho de pedra de rio lisa. Ao acendê-lo, a fumaça exalada permanece ao redor do portador. Após dez minutos, forma imagens móveis e realistas que reencenam suas realizações mais impressionantes e heroicas durante cinco minutos. Terminado o espetáculo, a fumaça se dissipa. Só pode produzir esse efeito novamente no próximo amanhecer.",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "pole-of-angling": {
+    "name": "Haste de pesca",
+    "reviewed_weight_lb": 7,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "description": "Haste de madeira que se transforma numa vara de pesca com anzol, linha e carretilha.",
+    "merchant_comment": "Esta haste leva a vara, a linha e o anzol num só encanto. Uma ação de Magia muda a forma; escolher onde os peixes estão continua sendo o trabalho do pescador.",
+    "rules_summary": "Funciona como a Haste de 2024: 10 pés de comprimento, peso de 7 libras; permite tocar algo a até 10 pés e oferece vantagem em um teste de Força (Atletismo) exigido como parte de um salto alto ou em distância ao utilizá-la como vara de impulso. Enquanto a segura, uma ação de Magia a transforma numa vara de pesca com anzol, linha e carretilha, ou devolve a vara de pesca à forma de Haste. O encanto não garante capturar um peixe.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "pole-of-collapsing": {
+    "name": "Haste recolhível",
+    "reviewed_weight_lb": 7,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "description": "Haste telescópica que se recolhe numa barra de um pé, sem mudar de peso.",
+    "merchant_comment": "A haste recolhida cabe muito melhor na bagagem. O peso continua em sete libras; ao estendê-la, confira quanto espaço há acima da sua cabeça.",
+    "rules_summary": "Funciona como a Haste de 2024: 10 pés de comprimento, peso de 7 libras, permite tocar algo a até 10 pés e usar impulso para obter vantagem em um teste de Força (Atletismo) exigido num salto alto ou em distância. Enquanto a segura, uma ação de Magia a recolhe numa barra de 1 pé ou a estende novamente. O peso não muda. Ao estender, só cresce até onde o espaço ao redor permitir. Os benefícios da haste comprida dependem de estar estendida.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "pot-of-awakening": {
+    "name": "Vaso do despertar",
+    "reviewed_weight_lb": 10,
+    "slots": [],
+    "material": "glass",
+    "consumable": true,
+    "description": "Vaso de argila de dez libras que desperta um arbusto comum após trinta dias de crescimento.",
+    "merchant_comment": "Plante um arbusto comum e cuide dele por trinta dias. As raízes quebram o vaso quando ele desperta; escolha o lugar antes de contar com essa nova companhia.",
+    "rules_summary": "Plante um arbusto comum neste vaso de argila de dez libras e deixe-o crescer por trinta dias. Ao final, ele se transforma magicamente em um Arbusto Desperto. As raízes rompem e destroem o vaso. A criatura é Amistosa em relação a você e obedece às suas ordens; sem ordens, não faz nada. É um uso por vaso, com transformação para aplicação na mesa; não cria automaticamente um mascote comprado na Casa dos Mascotes.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "rope-of-mending": {
+    "name": "Corda de remendo",
+    "estimated_weight_lb": 5,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "cloth",
+    "description": "Rolo de corda de cinquenta pés capaz de reunir seus próprios pedaços cortados.",
+    "merchant_comment": "Junte as pontas cortadas e libere os trechos que estiverem em uso. A corda remenda o que ficou; um pedaço perdido deixa o rolo menor de verdade.",
+    "rules_summary": "Corda de 50 pés que pode reparar-se depois de ser cortada em qualquer quantidade de pedaços menores. Com uma ação de Magia, os pedaços que estejam em contato uns com os outros e não estejam sendo usados se unem novamente. Uma seção perdida ou destruída reduz para sempre o comprimento total. O peso de cinco libras é uma estimativa baseada na corda comum de 2024, não um peso declarado para este item mágico.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "ruby-of-the-war-mage": {
+    "name": "Rubi do mago de guerra",
+    "estimated_weight_lb": 0.05,
+    "slots": [],
+    "material": "glass",
+    "description": "Rubi gravado com runas que torna uma arma simples ou marcial um foco para as magias do usuário sintonizado.",
+    "merchant_comment": "Pressione o rubi contra a arma por pelo menos dez minutos. A sintonia é para um conjurador, e a pedra transforma a arma em foco sem dar um bônus de ataque.",
+    "rules_summary": "Requer sintonia por um conjurador. Rubi de uma polegada de diâmetro gravado com runas que permite usar uma arma Simples ou Marcial como Foco de Conjuração para suas magias. Prenda-o pressionando a pedra contra a arma por pelo menos dez minutos. Depois, só se solta quando você o destaca com uma ação de Magia, a arma é destruída ou sua sintonia com o rubi termina. Continua sujeito às regras de componentes e foco de cada magia. É uma pedra para prender a uma arma, não uma arma ou um colar equipável independente.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "shield-of-expression": {
+    "name": "Escudo de expressão",
+    "slots": [
+      "off_hand"
+    ],
+    "material": "metal",
+    "description": "Escudo de aço e bronze com um rosto em relevo que muda de expressão por vontade de quem o porta.",
+    "merchant_comment": "O rosto do escudo acompanha o humor que você escolher com uma ação bônus. A defesa continua sendo a de um escudo comum; um sorriso de bronze não acrescenta outro bônus.",
+    "rules_summary": "A frente deste escudo tem o formato de um rosto. Enquanto o porta, uma ação bônus altera a expressão do rosto. Como escudo, aumenta a Classe de Armadura em dois quando empunhado conforme as regras; só é possível receber o benefício de um escudo por vez. O encanto da expressão não concede bônus adicional de CA, Persuasão ou Intimidação. É um único escudo de seis libras, sem divisão em seis peças de armadura.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "tankard-of-plenty": {
+    "name": "Caneca da fartura",
+    "estimated_weight_lb": 2,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "description": "Caneca dourada com anões dançando e motivos de grãos que se enche com cerveja anã rica.",
+    "merchant_comment": "Segure a alça e diga Illefarn. São três pints de cerveja por uso, até três vezes por dia; a caneca é generosa, mas ainda vale dividir a rodada.",
+    "rules_summary": "Caneca dourada decorada com anões dançando e padrões de grãos. Segurando a alça, pronunciar a palavra de comando Illefarn a enche com três pints de cerveja anã rica, cerca de 1,42 litro. Esse poder pode ser usado até três vezes por dia. O peso de duas libras é estimado para a caneca vazia; a bebida não está incluída no peso do objeto nem implica imunidade à embriaguez.",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
+  },
+  "wand-of-conducting": {
+    "name": "Varinha de regência",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "description": "Varinha de marfim e madeira que produz música orquestral enquanto é regida.",
+    "merchant_comment": "Uma carga abre a apresentação; continue regendo para manter a música. Quem estiver a até cento e vinte pés pode ouvir, inclusive quem ainda não foi convidado.",
+    "rules_summary": "Tem três cargas. Enquanto a segura, uma ação de Magia gasta uma carga e cria música orquestral ao agitar a varinha. A música é audível a até 120 pés e termina quando você para de agitá-la. Recupera todas as cargas gastas diariamente ao amanhecer. Ao gastar a última carga, role 1d20: com um resultado 1, toca um som triste de tuba, vira pó e é destruída. O poder produz música, sem convocar músicos.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "wand-of-pyrotechnics": {
+    "name": "Varinha de pirotecnia",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "description": "Varinha de bronze e gemas coloridas que produz clarões inofensivos com estalos.",
+    "merchant_comment": "Escolha um ponto visível a até cento e vinte pés e gaste uma carga. O clarão dura um segundo, mas o estalo chega a trezentos pés; pense nisso antes da festa surpresa.",
+    "rules_summary": "Tem sete cargas. Enquanto a segura, uma ação de Magia gasta uma carga para criar um clarão inofensivo de luz multicolorida num ponto visível a até 120 pés. A luz é tão intensa quanto uma chama de tocha e dura um segundo; o estalo é audível a até 300 pés. Recupera 1d6 + 1 cargas gastas ao amanhecer, até o máximo de sete. Ao gastar a última carga, role 1d20: num 1, produz uma exibição pirotécnica inofensiva e é destruída. O clarão não causa dano.",
+    "source_edition": "D&D 5e (2024)",
+    "review": "approved"
+  },
+  "wand-of-scowls": {
+    "name": "Varinha dos cenhos franzidos",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "description": "Varinha de madeira escura com uma máscara zangada que força brevemente um humanoide a franzir o cenho.",
+    "merchant_comment": "A máscara da varinha já veio zangada. Uma carga faz um humanoide resistir com Carisma; se usar a última, há uma chance de ela trocar as caras fechadas por sorrisos.",
+    "rules_summary": "Tem três cargas. Enquanto a segura, use uma ação para gastar uma carga e escolher um Humanoide visível a até 30 pés. Ele faz resistência de Carisma CD 10; falhar obriga-o a franzir o cenho durante um minuto. Recupera todas as cargas gastas ao amanhecer. Ao gastar a última carga, role 1d20: num 1, a varinha se transforma em uma Varinha de Sorrisos. O efeito não aplica Amedrontado nem aumenta Intimidação.",
+    "source_edition": "D&D 5e (2014)",
+    "review": "approved"
   }
 }
