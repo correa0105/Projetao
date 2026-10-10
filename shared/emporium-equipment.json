@@ -8129,5 +8129,1013 @@
       "off_hand"
     ],
     "two_handed": false
+  },
+  "drow-1-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-1-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-1-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-2-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-2-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-antimatter-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-automatic-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-battleaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-blowgun": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-club": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-dagger": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-dart": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-double-bladed-scimitar": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-flail": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-glaive": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-greataxe": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-greatclub": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-greatsword": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-halberd": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-hand-crossbow": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-handaxe": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-heavy-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-hooked-shortspear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-hoopak": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-hunting-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-javelin": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-lance": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-laser-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-laser-rifle": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-light-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-light-hammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-light-repeating-crossbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-longbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-longsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-mace": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-maul": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-morningstar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-musket": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-pike": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-quarterstaff": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-rapier": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-revolver": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-scimitar": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-semiautomatic-pistol": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-shortbow": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-shortsword": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-shotgun": {
+    "slots": [
+      "main_hand"
+    ],
+    "two_handed": true
+  },
+  "drow-3-sickle": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-sling": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-spear": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-trident": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-war-pick": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-warhammer": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-whip": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
+  },
+  "drow-3-yklwa": {
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false
   }
 }

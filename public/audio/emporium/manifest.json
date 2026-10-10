@@ -22638,5 +22638,1229 @@
     "sha256": "9f1506248b22d05b23f57de020daa88ee17ac07be78716f0a9aa816bf12ad1a8",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-antimatter-rifle",
+    "path": "public/audio/emporium/drow-1-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "ac2fbfcc6302fb2547612f72955281e614f9ce0a64de872adf143a34bcb27a6b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-automatic-rifle",
+    "path": "public/audio/emporium/drow-1-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "4e53d7c7e41a9193813f2b5f7104916b0c2f01d8e6974bf086c4a223c758e3f6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-battleaxe",
+    "path": "public/audio/emporium/drow-1-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "0b1edd9256e4c0b17845f3496b6dd6e8f91df7089446ddb053b834a1106ebb69",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-blowgun",
+    "path": "public/audio/emporium/drow-1-blowgun.wav",
+    "kind": "wood",
+    "sha256": "62b8bafa9f27f2852576f6a84325bdc64d01fb5b421eaa3b06c125d3d35359bd",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-club",
+    "path": "public/audio/emporium/drow-1-club.wav",
+    "kind": "wood",
+    "sha256": "8f5ab232e882a647ec627034a3ebffbd93b68d678a1cd5322082e071636c6ac1",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-dagger",
+    "path": "public/audio/emporium/drow-1-dagger.wav",
+    "kind": "metal",
+    "sha256": "4b32139bd18c2fe4b55a47c437cd514bb5f0ce6dae999ee9c04f968e5f91aa9b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-dart",
+    "path": "public/audio/emporium/drow-1-dart.wav",
+    "kind": "metal",
+    "sha256": "72797461434e522180fe99d65bccdcfbc9c029074a2529b43485ee8670fd883b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-double-bladed-scimitar",
+    "path": "public/audio/emporium/drow-1-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "a5a5107e63099de74156e4dbb7aaea11222e742776b6224a8fa1c0d7b80697c0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-flail",
+    "path": "public/audio/emporium/drow-1-flail.wav",
+    "kind": "chain",
+    "sha256": "0ddc319e4877ec65ab315c489667c5bef8caf4db7b179e13b99511ff87529ea4",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-glaive",
+    "path": "public/audio/emporium/drow-1-glaive.wav",
+    "kind": "metal",
+    "sha256": "2772548118f461d0cad3bfbad1c81b481ba3ad684b9836cdd16f0c0e7d2e0022",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-greataxe",
+    "path": "public/audio/emporium/drow-1-greataxe.wav",
+    "kind": "metal",
+    "sha256": "54397f0dc28fdfb41aaaa9fe84ee7fbe7824d3d514b936d09204efea46f333ba",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-greatclub",
+    "path": "public/audio/emporium/drow-1-greatclub.wav",
+    "kind": "wood",
+    "sha256": "50e8f732308b1daaa905cb70614ba47dd2701fe46f58296796a547179b688e1c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-greatsword",
+    "path": "public/audio/emporium/drow-1-greatsword.wav",
+    "kind": "metal",
+    "sha256": "a593c8fba125a3a025a6a3ac841662c27aba471a5ef631645edf42cbb6737e98",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-halberd",
+    "path": "public/audio/emporium/drow-1-halberd.wav",
+    "kind": "metal",
+    "sha256": "d3983b234e6da8c1cbf6d1fe9d95e5afa59ea73a3a09df96e62a91fed2ad0556",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-hand-crossbow",
+    "path": "public/audio/emporium/drow-1-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "f6bc080354abfa40555d067d78302e5e8c4f979f00abb2bc40e306a633670d3a",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-handaxe",
+    "path": "public/audio/emporium/drow-1-handaxe.wav",
+    "kind": "metal",
+    "sha256": "12ae887075dddb8e7d15bb5c8b3b310dc7fc8161d92407c5bf0a3e3a61aa50cc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-heavy-crossbow",
+    "path": "public/audio/emporium/drow-1-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "3a74b28360cf43d8fec5a7ef9e2a4bb0bb8eb68b0a7ced54296f9e2d9840c37b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-hooked-shortspear",
+    "path": "public/audio/emporium/drow-1-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "f03e68a2313b651a5c3daa9036f0dfa0693be9144edbcc95239fb441e2250173",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-hoopak",
+    "path": "public/audio/emporium/drow-1-hoopak.wav",
+    "kind": "metal",
+    "sha256": "0ca2645141eb7fffce28438e10c2248ac9a8142fe6f26634a002b6ccbcd8ff7e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-hunting-rifle",
+    "path": "public/audio/emporium/drow-1-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "09b479757d2e3e10938ab17081ca67ca8670341090714a07b2ceed8b0d4aa0d8",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-javelin",
+    "path": "public/audio/emporium/drow-1-javelin.wav",
+    "kind": "wood",
+    "sha256": "145a0b24ab50148158fb2e08d9c1e82ae83dceddac584f4a1c3461a031e969e6",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-lance",
+    "path": "public/audio/emporium/drow-1-lance.wav",
+    "kind": "wood",
+    "sha256": "8bad4260c248c0fe1fb8eb86a3851f6730c1512ceaca4ec6e8c3d7639da89574",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-laser-pistol",
+    "path": "public/audio/emporium/drow-1-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "31440e5bcb3b54990e7577b7db8e1593f7aff759a4eca1b1e0496f30f91851a9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-laser-rifle",
+    "path": "public/audio/emporium/drow-1-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "52c4b6d1c07d80e92d571919e5a265a60d590a41fe99d6598b52f42291a2154d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-light-crossbow",
+    "path": "public/audio/emporium/drow-1-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "4fbeb5300f59779bb81d69503dd3c73b836812730ffbf86e237efc47d148b1c0",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-light-hammer",
+    "path": "public/audio/emporium/drow-1-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "a6f12ee165011a257ac8d7ebcc09862cf3a76a8bc02b96b866b8178e5d829d4e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-light-repeating-crossbow",
+    "path": "public/audio/emporium/drow-1-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "1cb8171ea3a18880a53d399bf3a7ead18bd71ce9343bd1cb793de7ce97673eb9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-longbow",
+    "path": "public/audio/emporium/drow-1-longbow.wav",
+    "kind": "metal",
+    "sha256": "22632f4deb7e3421e79c94874ec103570d9b298170cfb16428da98275103798d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-longsword",
+    "path": "public/audio/emporium/drow-1-longsword.wav",
+    "kind": "metal",
+    "sha256": "252d8b51bee20a3bf9473bcafbb6efc3cbb5e26d206d4e5975192038e76263f2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-mace",
+    "path": "public/audio/emporium/drow-1-mace.wav",
+    "kind": "metal",
+    "sha256": "4b39d672364584437c35d0fb02c3acdb50a7d34b9293a2424fa8aff3dd4d0372",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-maul",
+    "path": "public/audio/emporium/drow-1-maul.wav",
+    "kind": "metal",
+    "sha256": "dd625e32312ffd35958739c3c2864600a3c1e263c01d59f80f04eacea2dab8aa",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-morningstar",
+    "path": "public/audio/emporium/drow-1-morningstar.wav",
+    "kind": "metal",
+    "sha256": "39475412bb93f935c449a954feaba0ea248d6be828f970ea7a422ade2c543225",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-musket",
+    "path": "public/audio/emporium/drow-1-musket.wav",
+    "kind": "metal",
+    "sha256": "0b01f1eebd2acbb842a5bd0268af47d2f9ce5d41637d442b4c59dc8f16a32ede",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-pike",
+    "path": "public/audio/emporium/drow-1-pike.wav",
+    "kind": "metal",
+    "sha256": "7244039f6f97d195f5092ebac707287d9a6a9198e7146cca24913f601cdd01e5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-pistol",
+    "path": "public/audio/emporium/drow-1-pistol.wav",
+    "kind": "metal",
+    "sha256": "2c5057842ba52b9ba7ae275a3f8727ea2f2f8baec07f8c9117acb1d08b087557",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-quarterstaff",
+    "path": "public/audio/emporium/drow-1-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "e4aff33bf6595df60c8cdca509f8202b4ab76e8a77538e18adb447d883009967",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-rapier",
+    "path": "public/audio/emporium/drow-1-rapier.wav",
+    "kind": "metal",
+    "sha256": "99854a1ff7ef032554ea6afb860d72a3dcc9a424c551c712274a0da9835b3563",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-revolver",
+    "path": "public/audio/emporium/drow-1-revolver.wav",
+    "kind": "metal",
+    "sha256": "b28dee6eb99c77a241ca7b6ff3d3ada4ae66c54953a5e1e1cfe2d7a65a85e8dd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-scimitar",
+    "path": "public/audio/emporium/drow-1-scimitar.wav",
+    "kind": "metal",
+    "sha256": "d71be952f8d7862e042351e56ef0c3541d36ff5949306ca039771c311d78780b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-semiautomatic-pistol",
+    "path": "public/audio/emporium/drow-1-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "3370b743de518f6b5e1aa8b0d438e46a91af8a66a26fa559a3ea6a85a424b54e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-shortbow",
+    "path": "public/audio/emporium/drow-1-shortbow.wav",
+    "kind": "metal",
+    "sha256": "0e1f03a5a7761e355aefd58cdb48dfa4e8cfede7dc00fb93dfdbb04703e32edf",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-shortsword",
+    "path": "public/audio/emporium/drow-1-shortsword.wav",
+    "kind": "metal",
+    "sha256": "66cb12630312d0315e53a5006f35a08719c90c3bf3fb05803ed15c4556b8fbd1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-shotgun",
+    "path": "public/audio/emporium/drow-1-shotgun.wav",
+    "kind": "metal",
+    "sha256": "bacdb28bdb6f3ae1158a35c7446c5bc7c4650e3f6fe6d9cdc61273d7194e30ea",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-sickle",
+    "path": "public/audio/emporium/drow-1-sickle.wav",
+    "kind": "metal",
+    "sha256": "cd77446c5b6c2ab0a28633ab8b326e89d29ee9b224cddeed0f830057816ebe67",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-sling",
+    "path": "public/audio/emporium/drow-1-sling.wav",
+    "kind": "leather",
+    "sha256": "67fd7552b40fd5d543bdba3c24ff4138d31737add50be6b0f572b053db1d893d",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-spear",
+    "path": "public/audio/emporium/drow-1-spear.wav",
+    "kind": "wood",
+    "sha256": "7ae3c2ca5e15447e5bfdc3d0a229cfefcce1b8405fe158843c42bc7cb4e60baa",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-trident",
+    "path": "public/audio/emporium/drow-1-trident.wav",
+    "kind": "metal",
+    "sha256": "23669bb3959a9680a18a09ceee5cd7224deec29fceef21f8e6ec9b41852ef91b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-war-pick",
+    "path": "public/audio/emporium/drow-1-war-pick.wav",
+    "kind": "metal",
+    "sha256": "e7b502ea90cee8c76eaba9a4eb634a49e6ec9784d92110fb4cc988051dd99019",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-warhammer",
+    "path": "public/audio/emporium/drow-1-warhammer.wav",
+    "kind": "metal",
+    "sha256": "0b4347568779ee0ddc184852fdb56aca4b5d34c78e9df28e3fc39db969f6b2c0",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-whip",
+    "path": "public/audio/emporium/drow-1-whip.wav",
+    "kind": "leather",
+    "sha256": "d27232d45873e13357cdab29362abe2c9408b7c4a565a0ac97d7b503e10ff37b",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-1-yklwa",
+    "path": "public/audio/emporium/drow-1-yklwa.wav",
+    "kind": "metal",
+    "sha256": "a8155432da18b00959552b18b6c126331545c9483de4ad0efc644b6cb4fe17b3",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-antimatter-rifle",
+    "path": "public/audio/emporium/drow-2-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "6c70c5838ace737c2ee3e55d42bc221e5ae542c799c665c23cd43a43abfe626c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-automatic-rifle",
+    "path": "public/audio/emporium/drow-2-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "22aff74e8aba1b15a9760b93462ca2438f19eb2c9c057c6fcec7dfd267cca0bd",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-battleaxe",
+    "path": "public/audio/emporium/drow-2-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "77c90d99e71ee3329e971f76037247fc173c1256d8d4edb5d5cbc8aed81d1fe5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-blowgun",
+    "path": "public/audio/emporium/drow-2-blowgun.wav",
+    "kind": "wood",
+    "sha256": "00880753acba6d2a3b7b837a802e876918c2f98920d0c20efa0edf7310db5869",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-club",
+    "path": "public/audio/emporium/drow-2-club.wav",
+    "kind": "wood",
+    "sha256": "a694a93a77cd6a35231d1baf6ebc008f52706af645439147c83fc2f6c8fd224e",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-dagger",
+    "path": "public/audio/emporium/drow-2-dagger.wav",
+    "kind": "metal",
+    "sha256": "bab76b77bdd2679b400993813af1f2a9b8c4842dfb8794d9b070cff3e8fdb73e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-dart",
+    "path": "public/audio/emporium/drow-2-dart.wav",
+    "kind": "metal",
+    "sha256": "fc082a91f29617a4ad643444dbca10d9f6be53f4dbfdaf5577382aeac61e253e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-double-bladed-scimitar",
+    "path": "public/audio/emporium/drow-2-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "e2a7ea8488fd46a40cd6e8df661294beba106ef6358636c5f3627db89ff5390e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-flail",
+    "path": "public/audio/emporium/drow-2-flail.wav",
+    "kind": "chain",
+    "sha256": "8d896249b1905c517fddb00f9845f0ff6effd069db84219a78ca0e9645d91bc0",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-glaive",
+    "path": "public/audio/emporium/drow-2-glaive.wav",
+    "kind": "metal",
+    "sha256": "13d85b8393b65765ec9c5919c99aedfcfd14c5aa257aceaa2a6d13236f039cfc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-greataxe",
+    "path": "public/audio/emporium/drow-2-greataxe.wav",
+    "kind": "metal",
+    "sha256": "469b3a15e7263d392787e73ef0da6fb5f1fe01fd417dec52a4e65f2764ed3aaa",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-greatclub",
+    "path": "public/audio/emporium/drow-2-greatclub.wav",
+    "kind": "wood",
+    "sha256": "446bbbe977f7e568e1a7521e1465833edbb7910ab1dcce4d2e99829c81b0dc84",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-greatsword",
+    "path": "public/audio/emporium/drow-2-greatsword.wav",
+    "kind": "metal",
+    "sha256": "096df88b46ea8d5a26625351261d8bf97e7c285c9f32d17633d095046824cdeb",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-halberd",
+    "path": "public/audio/emporium/drow-2-halberd.wav",
+    "kind": "metal",
+    "sha256": "f4bd1704481b7e138c4536be06743a30ccc3bf6a87546c1e318bc202dbeb0cc5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-hand-crossbow",
+    "path": "public/audio/emporium/drow-2-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "bb79b69b1ee6b4ff947a123502d35c61ec3d1ef897b776ef5e2b7a715348fbc8",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-handaxe",
+    "path": "public/audio/emporium/drow-2-handaxe.wav",
+    "kind": "metal",
+    "sha256": "0527d8add85b716685a0acde9922c7ddef8a89f5a504f8dfe8661005684fd3be",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-heavy-crossbow",
+    "path": "public/audio/emporium/drow-2-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "1dd146d0b2ba084616d91dcbe305f5569e73d84c912ec82c06ab7d197b269654",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-hooked-shortspear",
+    "path": "public/audio/emporium/drow-2-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "45c92ffce20b0610a5832a03202cb28e1d681ee14c432c2a39afb14dcd750202",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-hoopak",
+    "path": "public/audio/emporium/drow-2-hoopak.wav",
+    "kind": "metal",
+    "sha256": "da78a20654d84fa201fa3823967434cef63f33a6ecb49542df37e9151807bac6",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-hunting-rifle",
+    "path": "public/audio/emporium/drow-2-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "9616fd1323302525117936e27d71c65c253c77aed24a240bb8c075c21876743f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-javelin",
+    "path": "public/audio/emporium/drow-2-javelin.wav",
+    "kind": "wood",
+    "sha256": "404ed0c1e4a977d0db461bff29d36c2d46d3cf7f6d0a995c930ce647069f31ff",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-lance",
+    "path": "public/audio/emporium/drow-2-lance.wav",
+    "kind": "wood",
+    "sha256": "a119945b0b63bd7a8ace0710197e6ebff175079592a07ca4ce4e26d202e80a54",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-laser-pistol",
+    "path": "public/audio/emporium/drow-2-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "be41806e8030ff873183bf6bc6379e5d6cef932f2ff180a789220424da880581",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-laser-rifle",
+    "path": "public/audio/emporium/drow-2-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "4001b98714d72a97897abf1eebe8a689fed155e264a94a307a9743328e49417a",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-light-crossbow",
+    "path": "public/audio/emporium/drow-2-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "37b62af117f2e1da1a628b3d7e35d7587f30437358c61549d06bbcf125b238d3",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-light-hammer",
+    "path": "public/audio/emporium/drow-2-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "2b2359affedec57ca8b800b616670a76cfa7ebef22fdff60c3fa8f7d673e3ad2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-light-repeating-crossbow",
+    "path": "public/audio/emporium/drow-2-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "120b477a7aa495276b38259aaf871789dbafff70b522723808b772f0580e298b",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-longbow",
+    "path": "public/audio/emporium/drow-2-longbow.wav",
+    "kind": "metal",
+    "sha256": "61e96f82ffc3f4238c2cd77f8ba5ff3bf913deb6f727d4cb929c472b8e66c86c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-longsword",
+    "path": "public/audio/emporium/drow-2-longsword.wav",
+    "kind": "metal",
+    "sha256": "3a195d4f8174b1942a31e213a6cd12ca58ebdd183a9ad4d496091700d5f17b16",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-mace",
+    "path": "public/audio/emporium/drow-2-mace.wav",
+    "kind": "metal",
+    "sha256": "c4e082e5ccddf8d843fb965318457eb59e7942cc8728ff2d49099aecb79664be",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-maul",
+    "path": "public/audio/emporium/drow-2-maul.wav",
+    "kind": "metal",
+    "sha256": "c58fff51de9a914c917027cb7809757d746ca9898ff60e61e02307a68e75422f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-morningstar",
+    "path": "public/audio/emporium/drow-2-morningstar.wav",
+    "kind": "metal",
+    "sha256": "378da09b3cbceb600f5c5e7b842aecf1afa5bba37680cabcb954cc1d8d9aa4ed",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-musket",
+    "path": "public/audio/emporium/drow-2-musket.wav",
+    "kind": "metal",
+    "sha256": "932259ef7ed98714f536e10150ff5997e1c017e65979700de74beeaf79c83930",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-pike",
+    "path": "public/audio/emporium/drow-2-pike.wav",
+    "kind": "metal",
+    "sha256": "12307679d17175e087736ce8c98261f588d5a6ce848e01c5b8622861f5b5756c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-pistol",
+    "path": "public/audio/emporium/drow-2-pistol.wav",
+    "kind": "metal",
+    "sha256": "bdc96b5f78dd7e1fe9eddef8213ae1395b3fbdaeaa20fd818570ce69a5e7ec13",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-quarterstaff",
+    "path": "public/audio/emporium/drow-2-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "4d9c948d69ca00bbd227ff51a35f137b6c57ab5029b29cfe101e19ecead8c686",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-rapier",
+    "path": "public/audio/emporium/drow-2-rapier.wav",
+    "kind": "metal",
+    "sha256": "2ec291e8f4416c11fcf3d2295eed80815c7899208cd8dee7681febb1deba802e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-revolver",
+    "path": "public/audio/emporium/drow-2-revolver.wav",
+    "kind": "metal",
+    "sha256": "f99ee9fdb4860d699cca897ff4d2271d7271038178155e6505bf647bd6969d14",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-scimitar",
+    "path": "public/audio/emporium/drow-2-scimitar.wav",
+    "kind": "metal",
+    "sha256": "0d63bfb98673967b7ea65e20373ca092684cd92a119e2d93119c42f5e3135fef",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-semiautomatic-pistol",
+    "path": "public/audio/emporium/drow-2-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "db4a028fbddd034128a11525b94d82956f9119c28958caa6be89960775848689",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-shortbow",
+    "path": "public/audio/emporium/drow-2-shortbow.wav",
+    "kind": "metal",
+    "sha256": "0e80c3ca1e01e3b7d097ab9ded052b326f439b71a084f6294488763111b46b4e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-shortsword",
+    "path": "public/audio/emporium/drow-2-shortsword.wav",
+    "kind": "metal",
+    "sha256": "aa26923ecffd74e3837355122efcd2971f36f874c0c5a3521412c4b950f233f4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-shotgun",
+    "path": "public/audio/emporium/drow-2-shotgun.wav",
+    "kind": "metal",
+    "sha256": "a4e14ee162b91b879178051d502e0d729d7cfc7bde26d9a2eb1f9cdaa3ac5504",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-sickle",
+    "path": "public/audio/emporium/drow-2-sickle.wav",
+    "kind": "metal",
+    "sha256": "c117d9b57d90a9c45414cf0d56cc1ecfbcbfd1977589c2d8f80ef5bc6efc6aa4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-sling",
+    "path": "public/audio/emporium/drow-2-sling.wav",
+    "kind": "leather",
+    "sha256": "2c5ffdc9906e4b5dd628991bf148ff5713157e37f44869b125b1997240a66b5a",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-spear",
+    "path": "public/audio/emporium/drow-2-spear.wav",
+    "kind": "wood",
+    "sha256": "95d55511dff6bd7e0335be592221e3fe1e129dadea700dc0cbf7ce5eb9f254d2",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-trident",
+    "path": "public/audio/emporium/drow-2-trident.wav",
+    "kind": "metal",
+    "sha256": "cf4269dcf83a3104e6f10d653bc19e4675c17ee7a964eb417f9cb0035cf00b93",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-war-pick",
+    "path": "public/audio/emporium/drow-2-war-pick.wav",
+    "kind": "metal",
+    "sha256": "62c1068e32085f9c8c21feff657a9526c29ceabf5846781b3931454e52df2eb2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-warhammer",
+    "path": "public/audio/emporium/drow-2-warhammer.wav",
+    "kind": "metal",
+    "sha256": "688619c3da467b271588c2d0afc1c9bceb1933bc287beb5cc30809254e18bc92",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-whip",
+    "path": "public/audio/emporium/drow-2-whip.wav",
+    "kind": "leather",
+    "sha256": "26883d879a69ee5f9550ce8b0df16d9f14f9704d09b48b21c09468e0ca90b2e1",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-2-yklwa",
+    "path": "public/audio/emporium/drow-2-yklwa.wav",
+    "kind": "metal",
+    "sha256": "89a8efd085072dee626585ef155360b6d9cda554276aebfc6197da969f996a2f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-antimatter-rifle",
+    "path": "public/audio/emporium/drow-3-antimatter-rifle.wav",
+    "kind": "metal",
+    "sha256": "74476bd9b19f21e78901d32a6b3fb9e7f0112899e8b318556519950e4a50ae8c",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-automatic-rifle",
+    "path": "public/audio/emporium/drow-3-automatic-rifle.wav",
+    "kind": "metal",
+    "sha256": "146d1c2b83b6d55bb008a91311bf037f4da8f64481d2a03e7acf508019b39912",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-battleaxe",
+    "path": "public/audio/emporium/drow-3-battleaxe.wav",
+    "kind": "metal",
+    "sha256": "d5f3ec137c9429d830a228fbba548f6a10ed7e0d6e9d141aa0cbd10af99733c4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-blowgun",
+    "path": "public/audio/emporium/drow-3-blowgun.wav",
+    "kind": "wood",
+    "sha256": "53fcb0937df2b5013cfc05a2112dafe5c24bffd6c9aa6c3c5b426bf62a14ed2a",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-club",
+    "path": "public/audio/emporium/drow-3-club.wav",
+    "kind": "wood",
+    "sha256": "8d95f48f985e92177ac582fad0aa27227fa3b0eb0763d272ab02c0c9e282e995",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-dagger",
+    "path": "public/audio/emporium/drow-3-dagger.wav",
+    "kind": "metal",
+    "sha256": "ca190ef41df5db9505e804d6e1e20297354db9560aedd401cd403a5acb4cbb88",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-dart",
+    "path": "public/audio/emporium/drow-3-dart.wav",
+    "kind": "metal",
+    "sha256": "a4c657d93f15c8d04a98f6c11650b79795e535a222740f427aced1d138dd1496",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-double-bladed-scimitar",
+    "path": "public/audio/emporium/drow-3-double-bladed-scimitar.wav",
+    "kind": "metal",
+    "sha256": "f760af23950af0d7fee879268c94dc17721b0fad02bf84e333d794c1fe3ddae2",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-flail",
+    "path": "public/audio/emporium/drow-3-flail.wav",
+    "kind": "chain",
+    "sha256": "ec45a054c5381731b83297863d4fdf39517566562a4cbe30358b8ff50c7907ba",
+    "source": "public/audio/shop-counter-chain.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-glaive",
+    "path": "public/audio/emporium/drow-3-glaive.wav",
+    "kind": "metal",
+    "sha256": "19f9d601d04d918cfedc02ef868f2ec4ce6a9460f339aa0ccb306c77de7b2502",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-greataxe",
+    "path": "public/audio/emporium/drow-3-greataxe.wav",
+    "kind": "metal",
+    "sha256": "878497d4238f092357f303ab4c400efa6fb917ad510d54e6e6ea998aad33a5a7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-greatclub",
+    "path": "public/audio/emporium/drow-3-greatclub.wav",
+    "kind": "wood",
+    "sha256": "0da1675705d35114c5af62ff81b34d09a590545c0d1cb70f8e7a9b60bb568a6e",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-greatsword",
+    "path": "public/audio/emporium/drow-3-greatsword.wav",
+    "kind": "metal",
+    "sha256": "d7cb05655d49ead9e8b03fa44e074f4174b5e5a447828aa60039d8d249782aca",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-halberd",
+    "path": "public/audio/emporium/drow-3-halberd.wav",
+    "kind": "metal",
+    "sha256": "3a57b3d7cca5826a256497d30cbd3947967c2c5c8ccca428b38e557fbac339ac",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-hand-crossbow",
+    "path": "public/audio/emporium/drow-3-hand-crossbow.wav",
+    "kind": "wood",
+    "sha256": "b881bc13e2e763af30a7ba7ddbecd45813c4ba2037d25d948d721c87940fe21b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-handaxe",
+    "path": "public/audio/emporium/drow-3-handaxe.wav",
+    "kind": "metal",
+    "sha256": "5a8fe14a5279ee8822c93bbeca59d0cf927d6642f41efbfc0ea3623e3ac10efc",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-heavy-crossbow",
+    "path": "public/audio/emporium/drow-3-heavy-crossbow.wav",
+    "kind": "wood",
+    "sha256": "e7fde5fd4c45ceee13a6724d48f54a49bd4a8e88f1a3e53d917625a1f9d939f5",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-hooked-shortspear",
+    "path": "public/audio/emporium/drow-3-hooked-shortspear.wav",
+    "kind": "metal",
+    "sha256": "7d18bf44d354c2084b36d0ba052da8b4070eab6257bece4faac04d750635cb74",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-hoopak",
+    "path": "public/audio/emporium/drow-3-hoopak.wav",
+    "kind": "metal",
+    "sha256": "a6427509d66da273623a574a9e84646f51b6d39ad783ab8e1a3a9e388d686a97",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-hunting-rifle",
+    "path": "public/audio/emporium/drow-3-hunting-rifle.wav",
+    "kind": "metal",
+    "sha256": "3ab7fca548858ff14b277f9454ff7a4b9530511626212babaa0bf7b3f8a709b4",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-javelin",
+    "path": "public/audio/emporium/drow-3-javelin.wav",
+    "kind": "wood",
+    "sha256": "6c2aa5c09c24345569bd4993674ff73beec036e1e0517e7686753a31c4699e8b",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-lance",
+    "path": "public/audio/emporium/drow-3-lance.wav",
+    "kind": "wood",
+    "sha256": "4c24cbca44c0afd5685b782ead0d5bdf927114d9617d588077b1c6e8ebdfbd14",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-laser-pistol",
+    "path": "public/audio/emporium/drow-3-laser-pistol.wav",
+    "kind": "metal",
+    "sha256": "469c10f7fc1b92aacbd1f4a0f90975173b983b08faff55050f60c5f441d44b23",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-laser-rifle",
+    "path": "public/audio/emporium/drow-3-laser-rifle.wav",
+    "kind": "metal",
+    "sha256": "01bc2b305b04a85ca50ae43841f570310b21252d2c8e88ac842776467ca185f9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-light-crossbow",
+    "path": "public/audio/emporium/drow-3-light-crossbow.wav",
+    "kind": "wood",
+    "sha256": "e034fb21a74097b232162ab1e04e84a151b277bdcdd4726f1b1597054e9761b5",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-light-hammer",
+    "path": "public/audio/emporium/drow-3-light-hammer.wav",
+    "kind": "metal",
+    "sha256": "89ec9f91c0fde54242f8bff25c1d9c1abca3e5cf12c34e72d53e2e5a42f3f863",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-light-repeating-crossbow",
+    "path": "public/audio/emporium/drow-3-light-repeating-crossbow.wav",
+    "kind": "metal",
+    "sha256": "4d5fb701fa8572a93af6138e5acf844ac22f81fecc4365487c9219641f367004",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-longbow",
+    "path": "public/audio/emporium/drow-3-longbow.wav",
+    "kind": "metal",
+    "sha256": "8aa0b55af436ecdd91e9ab5b50e47f2b77409e80d9a01682b872c0f27eb03c03",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-longsword",
+    "path": "public/audio/emporium/drow-3-longsword.wav",
+    "kind": "metal",
+    "sha256": "aa6a929b6a2f16323f0b69dadde90f46e4505fa956ef32f9d4b070fe7701d720",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-mace",
+    "path": "public/audio/emporium/drow-3-mace.wav",
+    "kind": "metal",
+    "sha256": "97855906ac32090948d231615ea777cadfc107990d73a3dac2b4f8417cc6edf5",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-maul",
+    "path": "public/audio/emporium/drow-3-maul.wav",
+    "kind": "metal",
+    "sha256": "df1e76dcd8fb6d888ce8f07ae2224abaa9a3699983a9d0d392a64b92973348f7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-morningstar",
+    "path": "public/audio/emporium/drow-3-morningstar.wav",
+    "kind": "metal",
+    "sha256": "31e32053cfd8571b3a460b81cc5686503449f4d9bcf31e224e259b51528e51ba",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-musket",
+    "path": "public/audio/emporium/drow-3-musket.wav",
+    "kind": "metal",
+    "sha256": "3285362af1ca81dcaf34e1aa8e87b4a56d2e92b75fc8ff4b412b345d6f7eb67e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-pike",
+    "path": "public/audio/emporium/drow-3-pike.wav",
+    "kind": "metal",
+    "sha256": "9c390da84865d125fdcd6ad98ca06eb4a18f4cbbabcc1b3dc6e1d26ca45fbb11",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-pistol",
+    "path": "public/audio/emporium/drow-3-pistol.wav",
+    "kind": "metal",
+    "sha256": "1dee71073d15efa97aebe70867994305a24f1ecd0a4d94a3b8b3abf52f765e42",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-quarterstaff",
+    "path": "public/audio/emporium/drow-3-quarterstaff.wav",
+    "kind": "metal",
+    "sha256": "c7b070c7be7c99d73286a16624deea19ce39dd954b906327d5deb347dd51dd44",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-rapier",
+    "path": "public/audio/emporium/drow-3-rapier.wav",
+    "kind": "metal",
+    "sha256": "ab324c23bfdc58dbd86637335e2c5b894a3d80df1e3cc8bcca153ba6693286e9",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-revolver",
+    "path": "public/audio/emporium/drow-3-revolver.wav",
+    "kind": "metal",
+    "sha256": "0c71fa4e40ca3aa3e61eeb7e0e5bf7a725282b38ac454263cf67678eef7e8cda",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-scimitar",
+    "path": "public/audio/emporium/drow-3-scimitar.wav",
+    "kind": "metal",
+    "sha256": "7d339cf172d7aebd6525f96cffc6c3714dbb0c3063b409ec3cc66faa458777ee",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-semiautomatic-pistol",
+    "path": "public/audio/emporium/drow-3-semiautomatic-pistol.wav",
+    "kind": "metal",
+    "sha256": "2a2e993e06c4c52762e81d1aebdfca5a1f112c06da7df0f6405b8169b439ee6d",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-shortbow",
+    "path": "public/audio/emporium/drow-3-shortbow.wav",
+    "kind": "metal",
+    "sha256": "f57fc4b1d8483ee74541878bbfb9c2c42a82d0db80ab03dea9dd9a0897c98799",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-shortsword",
+    "path": "public/audio/emporium/drow-3-shortsword.wav",
+    "kind": "metal",
+    "sha256": "cedbc76afd4b76cd1ac058ef2870a95167a9a6f5b7602a2f3580d433a02f6b24",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-shotgun",
+    "path": "public/audio/emporium/drow-3-shotgun.wav",
+    "kind": "metal",
+    "sha256": "e32896534a5cd3e4012e204ae05cd9f8c0305e8f4582bd7e001917ca0e99e379",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-sickle",
+    "path": "public/audio/emporium/drow-3-sickle.wav",
+    "kind": "metal",
+    "sha256": "081d6342322c917d28cab6f8ae4e0c049205b7c8e84eff1702cc9e931ec4eb43",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-sling",
+    "path": "public/audio/emporium/drow-3-sling.wav",
+    "kind": "leather",
+    "sha256": "195bc4c8c60d7c667d91e98d7388a4be2b84cdf948f81280bb892c79490c412a",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-spear",
+    "path": "public/audio/emporium/drow-3-spear.wav",
+    "kind": "wood",
+    "sha256": "2bb4e081788128eeca5772534efe6d919ba81b461c1616fc1e0022f767ea66e7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-trident",
+    "path": "public/audio/emporium/drow-3-trident.wav",
+    "kind": "metal",
+    "sha256": "ec31c4ea02361e502d49a472b1c84988f73f20da7e701697816e40ad663f21a7",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-war-pick",
+    "path": "public/audio/emporium/drow-3-war-pick.wav",
+    "kind": "metal",
+    "sha256": "0ed22aadd7930399d112610be11ae3e03106734c5bac906f0fdeb29174f10485",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-warhammer",
+    "path": "public/audio/emporium/drow-3-warhammer.wav",
+    "kind": "metal",
+    "sha256": "5fd51502b266b3196484ed05f031f00cce75582b577c6f753b48bec370a99947",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-whip",
+    "path": "public/audio/emporium/drow-3-whip.wav",
+    "kind": "leather",
+    "sha256": "78e94b4307a0845ba589f91e478bc0f759c261e8716871b8ea2f055cf8620c55",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "drow-3-yklwa",
+    "path": "public/audio/emporium/drow-3-yklwa.wav",
+    "kind": "metal",
+    "sha256": "d8bea12d4deb3f2819660af2febaaf32a9613f2e4a15b7da119143e5e4c02d0e",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "id": "material-drow-bonus-1",
+      "family": "Drow Weapon",
+      "bonus": 1,
+      "prompt": "Create an ORIGINAL physically tactile hand-painted fantasy equipment MATERIAL TEXTURE for Alvorada Cinzenta's established native item-skin system. Square extreme macro closeup, edge-to-edge dense surface detail, light from upper left, refined medieval craft and legible relief on a dark shop background. No isolated weapon, people, written glyphs, letters, numbers, logo, watermark, frame, transparency, smoke or scene. Original structure and construction, never just a color substitution. Blackened steel plated with very fine antique silver spiderweb radial filigree, small irregular hexagonal mesh cells, sparse natural deep-purple garnet drops at intersections, worn physically raised silver threads and pitted tempered metal. Subtle noble Underdark craftsmanship, precise narrow wire and strong dark-metal depth.",
+      "native": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-4f184bea-e63b-4ed2-a788-ed45b27fa98f.png"
+    },
+    {
+      "id": "material-drow-bonus-2",
+      "family": "Drow Weapon",
+      "bonus": 2,
+      "prompt": "Create an ORIGINAL physically tactile hand-painted fantasy equipment MATERIAL TEXTURE for Alvorada Cinzenta's established native item-skin system. Square extreme macro closeup, edge-to-edge dense surface detail, light from upper left, refined medieval craft and legible relief on a dark shop background. No isolated weapon, people, written glyphs, letters, numbers, logo, watermark, frame, transparency, smoke or scene. Original structure and construction, never just a color substitution. Alternating overlapping dark polished iron chitin-like narrow armored plates, raised obsidian zigzag ribs, recessed amethyst mosaic fragments between segmented plates, exquisite twisted double silver cables binding plates together. A tactile layered exoskeleton construction, deep violet tiny crystal facets, distinct sharp metal reflections.",
+      "native": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-575c4830-c512-4e38-b77b-4fa7b5910354.png"
+    },
+    {
+      "id": "material-drow-bonus-3",
+      "family": "Drow Weapon",
+      "bonus": 3,
+      "prompt": "Create an ORIGINAL physically tactile hand-painted fantasy equipment MATERIAL TEXTURE for Alvorada Cinzenta's established native item-skin system. Square extreme macro closeup, edge-to-edge dense surface detail, light from upper left, refined medieval craft and legible relief on a dark shop background. No isolated weapon, people, written glyphs, letters, numbers, logo, watermark, frame, transparency, smoke or scene. Original structure and construction, never just a color substitution. Dense ornamental black mithral lattice with carved crescent-shaped arches at different depths, small glossy black pearls and naturally faceted violet diamonds set in silver bezels; complex three-dimensional curved filigree, recessed dark stone niches, worn silver and cold metal edge sheen. Regal sinister but physically realistic craft, intricate angular-and-curved geometry.",
+      "native": "C:/Users/limaw/.codex/generated_images/01a10677-429a-7d71-8bb4-fdfa42c38a62/exec-04a9fc8e-40d5-4896-9b9d-ea8a32b3cdc0.png"
+    }
+  ]
+}

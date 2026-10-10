@@ -37,6 +37,7 @@ export const shopRarityLabels: Readonly<Record<string, string>> = {
   Rare: 'Raro',
   'Very Rare': 'Muito raro',
   Legendary: 'Lendário',
+  'unknown (magic)': 'Raridade não informada',
 };
 const dimensions: ShopVariantDimension[] = [
   'base_item',

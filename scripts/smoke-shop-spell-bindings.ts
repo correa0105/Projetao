@@ -10,6 +10,7 @@ import {
   selectedBoundSpell,
 } from '../shared/shop-spell-bindings.js';
 import { compatibleSlots, twoHanded } from '../shared/equipment.js';
+import { shopQaApp } from './shop-qa-app.js';
 
 if (!/^\/alvorada_test_[a-f0-9]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
@@ -26,7 +27,7 @@ const { pool } = await import('../server/db.js'),
 await migrate();
 await seed();
 const { createApp } = await import('../server/app.js');
-server.on('request', createApp());
+server.on('request', shopQaApp(createApp));
 let cookie = '',
   browser: Awaited<ReturnType<typeof chromium.launch>> | undefined;
 const requestTimes: number[] = [];

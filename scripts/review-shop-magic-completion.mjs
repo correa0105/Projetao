@@ -22,6 +22,7 @@ createRoot(document.getElementById('preview')).render(React.createElement(SiteMu
 </script></body></html>`,
 );
 const server = await createServer({
+  publicDir: process.env.SHOP_QA_PUBLIC_DIR || 'public',
   cacheDir: 'test-results/.vite-magic-review',
   optimizeDeps: { entries: ['test-results/shop-magic-completion.html'] },
   server: { host: '127.0.0.1', port: 0 },

@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **1499 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **1652 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -555,3 +555,15 @@ O seletor cancela pedidos antigos ao mudar de modelo/nível e oferece Tentar nov
 1499 ofertas novas publicadas, 1577 candidatos pendentes. API UUID validou 1499 fontes/mídias, 1031 compras comuns e 468 configurações em níveis 0–8, preço canônico, saldo, replay, escolas/níveis, IDs distintos, encaixes e seed que conserva exemplares. UI completa com artes/falas/regras dos 1499 e baús anteriores em três larguras; aplicação real autenticada confere todos os oito níveis em desktop/tablet/celular e realiza compras de níveis 1/4/8. TypeScript/build aprovados. Release incremental v25: 60 tabelas e todo produto anterior integralmente iguais, apenas 416 adições; 3076 mídias e 43 bundles idênticos aos artefatos aprovados. VFX, condições, texturas e máscara/foice conservados.
 
 O C ficou sem espaço durante o build. Cache de compilação inativo foi liberado; cópias intermediárias já incorporadas à imagem foram removidas individualmente apenas após comprovar SHA idêntico ao arquivo original conservado. Fontes PNG, mídias originais, dados e imagens de rollback continuam preservados. Os 17 trabalhos independentes permanecem byte a byte intactos. A conclusão do catálogo inteiro e das demais opções de magia/alvo continua em andamento.
+
+## 26. Armas drow: bônus, sol e avaliação explícita
+
+153 armas: 51 modelos físicos em cada bônus +1, +2 e +3. Monster Manual (2014), p. 126: bônus nas jogadas de ataque e dano; uma hora ou mais de exposição à luz solar remove permanentemente o bônus. Não exigem sintonia. A fonte deixa a raridade como desconhecida: esse fato permanece nos dados e aparece como Raridade não informada, sem atribuir uma raridade oficial. As propriedades físicas do modelo moderno são separadas do encanto de 2014. A perda do bônus pelo sol é resolvida pelo mestre.
+
+O valor da loja é uma estimativa por equivalência com uma arma de mesmo bônus, acrescida do preço do modelo; a descrição curta e os detalhes avisam isso. `pricing_estimated` e `price_basis` preservam a justificativa nos dados. O administrador pode ajustar o valor sem que o seed apague sua avaliação. O compilador só aceita a estimativa explícita para raridade desconhecida e exige valor inteiro positivo e justificativa.
+
+Três materiais originais gerados pelo imagegen embutido: aço negro com teia de prata e granadas; placas de quitina metálica com ametista e cabos torcidos; mithral negro com arcos entalhados, pérolas negras e diamantes violetas. Prompts e fontes em `data/shop-magic-completion-20261009/art-jobs-drow-weapon-materials.json`; arquivos finais em `public/shop/magic-completion-20261009/material-drow-bonus-1.webp`, `material-drow-bonus-2.webp` e `material-drow-bonus-3.webp`. As 153 silhuetas completas foram revisadas sobre fundo escuro em 160 px, com hashes únicos, falas e foley próprios.
+
+QA UUID: 1652 artes/sons, 153 fontes novas, 1184 compras comuns, saldo/histórico/replay, encaixes e preço administrativo persistente. O orçamento agregado do ensaio agora supera o inteiro do banco: o personagem descartável recebe crédito por carrinho quando necessário, e a soma dos créditos e débitos permanece conferida exatamente. O limite monetário de produção continua intacto. Um adaptador exclusivo de QA serve mídias originais do projeto, reduzindo cópias intermediárias e exigindo um banco UUID; os bundles, servidor, permissões e APIs continuam reais. A interface completa passou em 1500/760/390 px, com 153 artes/falas/regras e os baús anteriores. As 468 compras com magia e a aplicação autenticada também passaram após esse ajuste, incluindo recuperação de falha 503 simulada. TypeScript/build aprovados.
+
+Release v26 saudável: 60 tabelas e todos os produtos anteriores conservam linhas integrais idênticas; somente 153 ofertas adicionadas. As 3385 mídias da loja e 43 bundles publicados correspondem aos arquivos revisados. Quarenta atlases, 116 texturas VTT, máscara/foice e 17 trabalhos independentes preservados; ilustrador ativo, 330 monstros pausado. Total de novos itens publicado: 1652; candidatos ainda pendentes: 1424. Completar todo o catálogo e as demais opções específicas permanece em andamento.

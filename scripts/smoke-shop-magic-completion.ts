@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import { compatibleSlots, twoHanded } from '../shared/equipment.js';
 import { consumableItems } from '../shared/vtt-sheet.js';
 import { armorBundle, purchaseContents } from '../shared/armor-bundles.js';
+import { shopQaApp } from './shop-qa-app.js';
 if (!/^\/alvorada_test_[a-f0-9]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
 const { pool } = await import('../server/db.js');
@@ -15,7 +16,7 @@ const { createLegacyTestCharacter } = await import('../tests/character-fixtures.
 await migrate();
 await seed();
 const { createApp } = await import('../server/app.js');
-const server = createApp().listen(0, '127.0.0.1');
+const server = shopQaApp(createApp).listen(0, '127.0.0.1');
 await new Promise<void>((r) => server.once('listening', r));
 const addr = server.address();
 assert(addr && typeof addr !== 'string');
@@ -74,11 +75,13 @@ try {
     assert(rulesReviewIds.size > 0);
     for (const id of rulesReviewIds) assert(completion.items.some((x: any) => x.id === id), id);
   }
-  const initialGold = completion.items.filter((x:any)=>!x.raw_data.spell_binding).reduce(
+  const purchaseBudget = completion.items.filter((x:any)=>!x.raw_data.spell_binding).reduce(
     (sum: number, x: any) => sum + (x.price_cp || 0),
     100000,
   );
-  assert(Number.isSafeInteger(initialGold) && initialGold < 2147483647);
+  assert(Number.isSafeInteger(purchaseBudget) && purchaseBudget > 0);
+  const initialGold = Math.min(purchaseBudget, 2_000_000_000);
+  let additionalGold = 0;
   await pool.query('UPDATE characters SET gold_cp=$2 WHERE id=$1', [hero.id, initialGold]);
   const art = JSON.parse(
     await readFile('data/shop-magic-completion-20261009/art-manifest.json', 'utf8'),
@@ -144,10 +147,19 @@ try {
   assert.equal((await request(`/catalog/${override}/price`, 'PATCH', { price_cp: 1 })).status, 403);
   // The shop accepts at most 100 distinct rows in a cart.
   for (let offset = 0; offset < ids.length; offset += 100) {
+    const batchIds = ids.slice(offset, offset + 100);
+    const quote = batchIds.reduce((sum: number, id: string) => sum + (id === override ? 4321 : completion.items.find((x: any) => x.id === id).price_cp), 0);
+    assert(Number.isSafeInteger(quote) && quote > 0 && quote + 100000 < 2147483647);
+    const balance = (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp;
+    if (balance < quote) {
+      const topUp = quote + 100000 - balance;
+      await pool.query('UPDATE characters SET gold_cp=gold_cp+$2 WHERE id=$1', [hero.id, topUp]);
+      additionalGold += topUp;
+    }
     const buy = {
       character_id: hero.id,
       idempotency_key: randomUUID(),
-      items: ids.slice(offset, offset + 100).map((item_id: string) => ({ item_id, quantity: 1 })),
+      items: batchIds.map((item_id: string) => ({ item_id, quantity: 1 })),
     };
     assert.equal((await request('/shop/checkout', 'POST', buy)).status, 201);
     assert.equal((await request('/shop/checkout', 'POST', buy)).status, 200);
@@ -173,7 +185,7 @@ try {
   );
   assert.equal(
     (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [hero.id])).rows[0].gold_cp,
-    initialGold - total,
+    initialGold + additionalGold - total,
   );
   for (const [id, slot] of [
     ['cloak-of-billowing', 'cloak'],

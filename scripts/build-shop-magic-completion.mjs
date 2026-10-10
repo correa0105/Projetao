@@ -86,7 +86,7 @@ for (const c of candidates) {
     assert(Number.isSafeInteger(e.base_price_cp) && e.base_price_cp >= 0, 'Reviewed base price required');
   if (e.pack_quantity != null)
     assert(Number.isInteger(e.pack_quantity) && e.pack_quantity > 0, 'Valid sold quantity required');
-  const price_cp =
+  let price_cp =
     gp == null
       ? null
       : Math.round(
@@ -94,6 +94,11 @@ for (const c of candidates) {
             (e.ammunition ? (e.pack_quantity || 1) / 10 : 1) +
             (e.base_price_cp ?? c.base?.value ?? basic?.price_cp ?? 0),
         );
+  if (e.project_price_cp != null) {
+    assert(f.rarity === 'unknown (magic)', 'Explicit valuation is only for unspecified magic rarity');
+    assert(Number.isSafeInteger(e.project_price_cp) && e.project_price_cp > 0 && e.project_price_cp < 2147483647 && typeof e.price_basis === 'string' && e.price_basis.length > 30, 'Reviewed project valuation and basis required');
+    price_cp = e.project_price_cp;
+  }
   if (e.reviewed_weight_lb != null)
     assert(Number.isFinite(e.reviewed_weight_lb) && e.reviewed_weight_lb >= 0, c.id + ' invalid reviewed physical weight');
   const weight = f.weight ?? e.reviewed_weight_lb ?? e.estimated_weight_lb ?? null;
@@ -117,6 +122,7 @@ for (const c of candidates) {
     sound_material: e.material,
     attunement: f.reqAttune || false,
     ...(e.spell_binding ? { spell_binding: e.spell_binding } : {}),
+    ...(e.project_price_cp != null ? { pricing_estimated: true, price_basis: e.price_basis } : {}),
   };
   if (f.baseItem && ['M', 'R', 'LA', 'MA', 'HA', 'S'].includes(type)) {
     raw_data.base_item = basic?.id || baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
