@@ -13822,5 +13822,101 @@
     "sha256": "442a5a9f5f763fe0fdbb522517b9d160df66e7cd6bbf4fe0845f7876552d3192",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "boots-of-false-tracks",
+    "path": "public/audio/emporium/boots-of-false-tracks.wav",
+    "kind": "leather",
+    "sha256": "5d5edf2f32ca4abc8fa7c53dd02673f997d710e776a05287bbc576ac45d4e0bd",
+    "source": "public/audio/shop-counter-leather.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "cloak-of-many-fashions",
+    "path": "public/audio/emporium/cloak-of-many-fashions.wav",
+    "kind": "cloth",
+    "sha256": "07cab8f2a7c5278ae66172fa6f20f2153be5ccbbb1c2808e11ced76c7c8ef754",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "clothes-of-mending",
+    "path": "public/audio/emporium/clothes-of-mending.wav",
+    "kind": "cloth",
+    "sha256": "7d0643846b381127bf53439e86bf4bbcdc7321dd66959363384129cb113a3413",
+    "source": "public/audio/shop-counter-cloth.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "orb-of-direction",
+    "path": "public/audio/emporium/orb-of-direction.wav",
+    "kind": "glass",
+    "sha256": "07cac042d3da0b62ae2c90cf235b452596aa28a676bf37b2f7b97325b874d482",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "orb-of-time",
+    "path": "public/audio/emporium/orb-of-time.wav",
+    "kind": "glass",
+    "sha256": "38b0f18ba3de1092d1293fe3c05f97d69cbbb3a5b37d6359da81d052250fe2ec",
+    "source": "public/audio/shop-counter-glass.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "pipe-of-smoke-monsters",
+    "path": "public/audio/emporium/pipe-of-smoke-monsters.wav",
+    "kind": "wood",
+    "sha256": "9f58aaf19a6d75269dc652f519e13c5767cd6c78b9ca9c04c417a716f424f453",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "tankard-of-sobriety",
+    "path": "public/audio/emporium/tankard-of-sobriety.wav",
+    "kind": "metal",
+    "sha256": "8d900bb75356fe5452495694b7aee5a83dad3bd6e3d0beb8a6e49bebc27bdc29",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "ear-horn-of-hearing",
+    "path": "public/audio/emporium/ear-horn-of-hearing.wav",
+    "kind": "metal",
+    "sha256": "e20c857994edebea463bf73ae9cffe8c1b8d5dda05fe58daa566cd98801c41b1",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "candle-of-the-deep",
+    "path": "public/audio/emporium/candle-of-the-deep.wav",
+    "kind": "metal",
+    "sha256": "d816022e8d2081c319a6848ce28b494b845cdb03a94fa86bbccfcc565ba40e9f",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "enduring-spellbook",
+    "path": "public/audio/emporium/enduring-spellbook.wav",
+    "kind": "paper",
+    "sha256": "9b2016044487b74b249d5bd8b78ab029b5398f21a1d26edc2afd8f3edd2c338a",
+    "source": "public/audio/shop-counter-paper.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "dread-helm",
+    "path": "public/audio/emporium/dread-helm.wav",
+    "kind": "metal",
+    "sha256": "1951733356eff4024dd98888cbf662f0361b891a3491568fe8b1d4b9049b0e18",
+    "source": "public/audio/shop-counter-metal.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "talking-doll",
+    "path": "public/audio/emporium/talking-doll.wav",
+    "kind": "wood",
+    "sha256": "1826d98c72597a8d24cc5cb2e687e0784c6ad1d601db5c599d35602ae47d6bf2",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

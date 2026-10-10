@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **397 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **409 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -212,3 +212,34 @@ continua em andamento.
 
 Próximo trabalho: continuar a curadoria e as artes dos itens nomeados e famílias,
 ampliar a verificação de cobertura e adicionar apenas lotes completamente prontos.
+
+## Sexto lote: utensílios mágicos de 2024
+
+Aplicados doze itens comuns do Dungeon Master’s Guide de 2024: Botas de rastros
+falsos, Capa de muitas modas, Roupas de conserto, Orbe de direção, Orbe do tempo,
+Cachimbo de monstros de fumaça, Caneca da sobriedade, Corneta auditiva, Vela das
+profundezas, Grimório duradouro, Elmo do pavor e Boneca falante. Cada um tem
+ilustração original completa com alpha nativo, fala própria e som de manuseio
+individual. A roupa foi revisada para retirar a névoa de fundo. Os dois orbes
+têm construções visuais distintas; revisão em fundos escuro e claro a 200/100 px.
+
+As explicações distinguem as regras de 2024: pegadas de humanoide do mesmo
+tamanho, ações de Magia dos orbes, períodos do dia apenas no Plano Material,
+seis frases de até seis palavras e gatilhos a até 5 pés para a boneca. Efeitos
+visuais do elmo não aplicam medo. Pesos não informados na fonte são estimativas
+explícitas; os orbes mantêm as 3 lb informadas. A vela permanece consumível
+por unidade, por 50 PO segundo a política existente, sem duração infinita.
+
+Banco UUID descartável: compra em carrinhos, preço administrativo, saldo,
+histórico, repetição, botas/capa/roupa/elmo/orbes e consumo único da vela passaram.
+Os 397 produtos anteriores mantêm todos os campos do arquivo de catálogo.
+Loja real com 409 imagens/falas/fontes em 1500/760/390 px, TypeScript e builds
+passaram. Nenhum poder descrito implica nova automação de combate.
+
+Release local `magic-completion-v6-20261010`, com o anterior preservado. A imagem
+foi reconstruída sobre o runtime anterior à ampliação mágica, fornecendo todas
+as 409 mídias de som em uma camada; total de 39 camadas. Servidor e 43 bundles
+correspondem à cópia validada. 841 mídias/referências e 21 VFX idênticos; 60
+tabelas e todos os produtos anteriores com linhas completas iguais. Só 12
+registros novos. Ilustrador mantido, WIP independente e 330×4 pausado preservados.
+Restam 2.667 candidatos, além das opções de magia/alvo ainda a expandir.

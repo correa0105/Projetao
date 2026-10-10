@@ -6497,5 +6497,156 @@
     "model_name": "Yklwa",
     "magic_kind": "weapon",
     "review": "approved"
+  },
+  "boots-of-false-tracks": {
+    "name": "Botas de rastros falsos",
+    "estimated_weight_lb": 4,
+    "slots": [
+      "feet"
+    ],
+    "material": "leather",
+    "description": "Botas de couro com solas encantadas que disfarçam a identidade de quem passou, deixando pegadas de outro humanoide do mesmo tamanho.",
+    "merchant_comment": "Estas botas deixam pegadas de outro humanoide do seu tamanho. Só combine o disfarce antes de atravessar a lama: três pessoas com o mesmo rastro também chamam atenção.",
+    "rules_summary": "Exigem sintonização. Enquanto usa as botas, você pode escolher que suas pegadas pareçam as de qualquer Humanoide do mesmo tamanho que você. A alteração atinge os rastros, não a aparência ou o tamanho do usuário.",
+    "review": "approved"
+  },
+  "cloak-of-many-fashions": {
+    "name": "Capa de muitas modas",
+    "estimated_weight_lb": 3,
+    "slots": [
+      "cloak"
+    ],
+    "material": "cloth",
+    "description": "Capa de tecido azul-pavão, forro vinho e bordados iridescentes. Muda de estilo, cor e qualidade aparente sem deixar de ser uma capa.",
+    "merchant_comment": "Uma capa para a audiência no castelo e para a viagem de volta. Mude a aparência com uma ação bônus; os bolsos, infelizmente, não ganham ouro junto com o novo visual.",
+    "rules_summary": "Enquanto veste a capa, uma Ação Bônus muda seu estilo, cor e qualidade aparente. Seu peso continua igual e ela permanece uma capa. Pode imitar a aparência de outras capas mágicas, mas não recebe as propriedades mágicas delas.",
+    "review": "approved"
+  },
+  "clothes-of-mending": {
+    "name": "Roupas de conserto",
+    "estimated_weight_lb": 4,
+    "slots": [
+      "armor"
+    ],
+    "material": "cloth",
+    "description": "Conjunto de túnica verde e calças escuras, com remendos bordados. Seu encanto repara o desgaste cotidiano das peças.",
+    "merchant_comment": "O tecido cuida dos pequenos rasgos do caminho. Não jogue a roupa inteira na fogueira para conferir: costura encantada ainda precisa de alguma roupa para costurar.",
+    "rules_summary": "Este conjunto elegante repara magicamente danos do uso e desgaste diários. Partes que tenham sido destruídas não podem ser reparadas por esse encanto. É vestuário, sem bônus de Classe de Armadura concedido pelo item.",
+    "review": "approved"
+  },
+  "orb-of-direction": {
+    "name": "Orbe de direção",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "glass",
+    "description": "Orbe de cristal com agulha azul e armação de bronze. Serve como foco arcano e identifica o norte magnético quando segurado.",
+    "merchant_comment": "Segure o orbe e use uma ação de Magia para encontrar o norte magnético. O mapa continua por sua conta; apontar para o norte não garante que a estalagem esteja naquela direção.",
+    "rules_summary": "Este orbe pode ser usado como Foco Arcano. Enquanto o segura, uma ação de Magia determina onde fica o norte magnético. Não revela nada se for usado em um lugar sem norte magnético.",
+    "review": "approved"
+  },
+  "orb-of-time": {
+    "name": "Orbe do tempo",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "glass",
+    "description": "Esfera azul-escura com crescente claro e anéis dourados. Foco arcano que distingue os períodos do dia no Plano Material.",
+    "merchant_comment": "Debaixo da terra, este orbe ajuda a separar manhã de noite. Não é relógio de compromisso marcado: ele informa o período do dia, e somente no Plano Material.",
+    "rules_summary": "Este orbe pode ser usado como Foco Arcano. Enquanto o segura, uma ação de Magia informa se é manhã, tarde, início da noite ou noite. Essa propriedade só funciona no Plano Material; não fornece uma hora exata.",
+    "review": "approved"
+  },
+  "pipe-of-smoke-monsters": {
+    "name": "Cachimbo de monstros de fumaça",
+    "estimated_weight_lb": 0.5,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "description": "Cachimbo de cerejeira escura esculpido como um dragão. Sua fumaça assume brevemente formas de criaturas antes de se dispersar.",
+    "merchant_comment": "Dá para mostrar um pequeno dragão na fumaça sem pôr fogo na hospedaria. A figura dura poucos segundos; avise o companheiro mais nervoso antes de soprar um slaad perto dele.",
+    "rules_summary": "Enquanto fuma este cachimbo, uma ação de Magia permite expelir uma nuvem com a forma de uma criatura escolhida, como dragão, flumph ou slaad. A figura deve caber em um cubo de 1 pé. Após poucos segundos, perde o formato e vira fumaça comum. Não invoca uma criatura nem lhe concede ações.",
+    "review": "approved"
+  },
+  "tankard-of-sobriety": {
+    "name": "Caneca da sobriedade",
+    "estimated_weight_lb": 1,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "description": "Caneca de estanho com tampa articulada e semblante severo em relevo. Evita a embriaguez causada pelo álcool não mágico bebido por ela.",
+    "merchant_comment": "A cara séria da caneca não muda depois da terceira rodada. Ela evita a embriaguez por álcool comum, mas não negocia o preço da bebida nem protege de uma dose envenenada.",
+    "rules_summary": "A caneca tem um rosto severo esculpido em sua lateral. Bebidas alcoólicas não mágicas tomadas por ela não causam embriaguez. Não altera líquidos mágicos nem neutraliza venenos ou outras substâncias prejudiciais.",
+    "review": "approved"
+  },
+  "ear-horn-of-hearing": {
+    "name": "Corneta auditiva",
+    "estimated_weight_lb": 1,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "description": "Corneta de latão com empunhadura de couro. Levada ao ouvido, suprime temporariamente os efeitos da condição Surdo.",
+    "merchant_comment": "A abertura larga recebe o som, a ponta estreita vai junto ao ouvido. Enquanto a usa, os efeitos de Surdo ficam suspensos; ao guardar a corneta, a condição continua lá.",
+    "rules_summary": "Enquanto você mantém esta corneta junto ao ouvido, os efeitos da condição Surdo ficam suprimidos em você. O benefício dura apenas enquanto ela é usada dessa maneira e não remove a condição permanentemente.",
+    "review": "approved"
+  },
+  "candle-of-the-deep": {
+    "name": "Vela das profundezas",
+    "estimated_weight_lb": 0.5,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "metal",
+    "consumable": true,
+    "description": "Vela de cera turquesa protegida por um pequeno colar de bronze. Sua chama continua acesa mesmo quando a vela é submersa.",
+    "merchant_comment": "Esta chama aguenta a água, inclusive debaixo da superfície. Ainda é uma vela que queima: leve uma reserva se pretende passar muito tempo procurando a saída inundada.",
+    "rules_summary": "A chama desta vela não se apaga ao ser imersa em água. Ela produz a luz e o calor normais de uma vela e continua consumindo sua cera; o item não concede uma chama eterna. Vendida por unidade como consumível.",
+    "review": "approved"
+  },
+  "enduring-spellbook": {
+    "name": "Grimório duradouro",
+    "estimated_weight_lb": 3,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "paper",
+    "description": "Grimório de couro claro, cantos de esmalte verde e dois fechos. Protege suas páginas e sua escrita de fogo, água e envelhecimento.",
+    "merchant_comment": "Seus apontamentos sobrevivem à água, ao fogo e aos anos neste grimório. As magias que vai escrever nele são sua responsabilidade; o fecho não vem com um curso de conjuração.",
+    "rules_summary": "O livro e tudo o que estiver escrito em suas páginas são imunes a danos de fogo e água. Ele também não se deteriora com a idade. O item não fornece uma coleção de magias pronta nem dispensa as regras de aprendizado e cópia.",
+    "review": "approved"
+  },
+  "dread-helm": {
+    "name": "Elmo do pavor",
+    "estimated_weight_lb": 3,
+    "slots": [
+      "head"
+    ],
+    "material": "metal",
+    "description": "Elmo fechado de aço escuro com crista marcada. Faz os olhos do usuário brilharem vermelhos e mantém o restante do rosto na sombra.",
+    "merchant_comment": "Os olhos vermelhos e o rosto na sombra dão uma entrada marcante. O elmo não obriga ninguém a fugir, então continue escolhendo bem as palavras quando abrir a porta.",
+    "rules_summary": "Enquanto usa este elmo, seus olhos brilham em vermelho e o restante do seu rosto fica coberto por sombras. A propriedade é visual: não aplica a condição Amedrontado nem concede bônus de Intimidação.",
+    "review": "approved"
+  },
+  "talking-doll": {
+    "name": "Boneca falante",
+    "estimated_weight_lb": 1,
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "material": "wood",
+    "description": "Boneca articulada de madeira com casaco azul e boca móvel. Repete frases curtas programadas diante de situações específicas próximas a ela.",
+    "merchant_comment": "Escolha até seis frases curtas e os acontecimentos que as fazem sair. Uma boneca dizendo “a porta abriu” pode ser útil; ensiná-la a reclamar do cozinheiro costuma durar menos que o encanto.",
+    "rules_summary": "Exige sintonização. Durante um Descanso Curto, permanecendo a até 5 pés da boneca, você programa até seis frases de no máximo seis palavras cada, associadas às circunstâncias em que serão ditas. Cada gatilho deve ocorrer a até 5 pés da boneca; por exemplo, alguém pegá-la. Você pode trocar as frases programadas. Ao encerrar a sintonização, ela perde todas essas frases. Não mantém conversa livre nem cria novas respostas por conta própria.",
+    "review": "approved"
   }
 }

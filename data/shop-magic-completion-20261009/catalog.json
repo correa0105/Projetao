@@ -4,7 +4,7 @@
   "source": "https://5e.tools/items.html",
   "asOf": "2026-10-09",
   "planned": 3076,
-  "pending": 2679,
+  "pending": 2667,
   "items": [
     {
       "id": "all-purpose-tool-plus-1",
@@ -1375,6 +1375,88 @@
       }
     },
     {
+      "id": "boots-of-false-tracks",
+      "name": "Botas de rastros falsos",
+      "original_name": "Boots of False Tracks",
+      "category": "Mágicos comuns",
+      "description": "Botas de couro com solas encantadas que disfarçam a identidade de quem passou, deixando pegadas de outro humanoide do mesmo tamanho.",
+      "merchant_comment": "Estas botas deixam pegadas de outro humanoide do seu tamanho. Só combine o disfarce antes de atravessar a lama: três pessoas com o mesmo rastro também chamam atenção.",
+      "price_cp": 10000,
+      "weight_lb": 4,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#boots%20of%20false%20tracks_xdmg",
+      "image_path": "/shop/magic-completion-20261009/boots-of-false-tracks.webp",
+      "audio_path": "/audio/emporium/boots-of-false-tracks.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Boots of False Tracks",
+        "upstream_source": "XDMG",
+        "upstream_page": 239,
+        "upstream_facts": {
+          "name": "Boots of False Tracks",
+          "source": "XDMG",
+          "page": 239,
+          "rarity": "common",
+          "wondrous": true,
+          "reqAttune": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Exigem sintonização. Enquanto usa as botas, você pode escolher que suas pegadas pareçam as de qualquer Humanoide do mesmo tamanho que você. A alteração atinge os rastros, não a aparência ou o tamanho do usuário.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "feet"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "leather",
+        "attunement": true
+      }
+    },
+    {
+      "id": "candle-of-the-deep",
+      "name": "Vela das profundezas",
+      "original_name": "Candle of the Deep",
+      "category": "Mágicos comuns",
+      "description": "Vela de cera turquesa protegida por um pequeno colar de bronze. Sua chama continua acesa mesmo quando a vela é submersa.",
+      "merchant_comment": "Esta chama aguenta a água, inclusive debaixo da superfície. Ainda é uma vela que queima: leve uma reserva se pretende passar muito tempo procurando a saída inundada.",
+      "price_cp": 5000,
+      "weight_lb": 0.5,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#candle%20of%20the%20deep_xdmg",
+      "image_path": "/shop/magic-completion-20261009/candle-of-the-deep.webp",
+      "audio_path": "/audio/emporium/candle-of-the-deep.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Candle of the Deep",
+        "upstream_source": "XDMG",
+        "upstream_page": 242,
+        "upstream_facts": {
+          "name": "Candle of the Deep",
+          "source": "XDMG",
+          "page": 242,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "A chama desta vela não se apaga ao ser imersa em água. Ela produz a luz e o calor normais de uma vela e continua consumindo sua cera; o item não concede uma chama eterna. Vendida por unidade como consumível.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": true,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
       "id": "cloak-of-billowing",
       "name": "Capa esvoaçante",
       "original_name": "Cloak of Billowing",
@@ -1403,6 +1485,46 @@
         "source_book": "Dungeon Master's Guide (2024)",
         "source_edition": "D&D 5e (2024)",
         "rules_summary": "Capa de tecido vermelho pesado, forro escuro e fecho de prata. Ao vesti-la, uma Ação Bônus faz o tecido se agitar de maneira dramática durante 1 minuto.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "cloak"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "cloth",
+        "attunement": false
+      }
+    },
+    {
+      "id": "cloak-of-many-fashions",
+      "name": "Capa de muitas modas",
+      "original_name": "Cloak of Many Fashions",
+      "category": "Mágicos comuns",
+      "description": "Capa de tecido azul-pavão, forro vinho e bordados iridescentes. Muda de estilo, cor e qualidade aparente sem deixar de ser uma capa.",
+      "merchant_comment": "Uma capa para a audiência no castelo e para a viagem de volta. Mude a aparência com uma ação bônus; os bolsos, infelizmente, não ganham ouro junto com o novo visual.",
+      "price_cp": 10000,
+      "weight_lb": 3,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#cloak%20of%20many%20fashions_xdmg",
+      "image_path": "/shop/magic-completion-20261009/cloak-of-many-fashions.webp",
+      "audio_path": "/audio/emporium/cloak-of-many-fashions.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Cloak of Many Fashions",
+        "upstream_source": "XDMG",
+        "upstream_page": 245,
+        "upstream_facts": {
+          "name": "Cloak of Many Fashions",
+          "source": "XDMG",
+          "page": 245,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Enquanto veste a capa, uma Ação Bônus muda seu estilo, cor e qualidade aparente. Seu peso continua igual e ela permanece uma capa. Pode imitar a aparência de outras capas mágicas, mas não recebe as propriedades mágicas delas.",
         "equipment_target": "human",
         "equipment_slots": [
           "cloak"
@@ -1457,6 +1579,168 @@
       }
     },
     {
+      "id": "clothes-of-mending",
+      "name": "Roupas de conserto",
+      "original_name": "Clothes of Mending",
+      "category": "Mágicos comuns",
+      "description": "Conjunto de túnica verde e calças escuras, com remendos bordados. Seu encanto repara o desgaste cotidiano das peças.",
+      "merchant_comment": "O tecido cuida dos pequenos rasgos do caminho. Não jogue a roupa inteira na fogueira para conferir: costura encantada ainda precisa de alguma roupa para costurar.",
+      "price_cp": 10000,
+      "weight_lb": 4,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#clothes%20of%20mending_xdmg",
+      "image_path": "/shop/magic-completion-20261009/clothes-of-mending.webp",
+      "audio_path": "/audio/emporium/clothes-of-mending.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Clothes of Mending",
+        "upstream_source": "XDMG",
+        "upstream_page": 245,
+        "upstream_facts": {
+          "name": "Clothes of Mending",
+          "source": "XDMG",
+          "page": 245,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Este conjunto elegante repara magicamente danos do uso e desgaste diários. Partes que tenham sido destruídas não podem ser reparadas por esse encanto. É vestuário, sem bônus de Classe de Armadura concedido pelo item.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "armor"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "cloth",
+        "attunement": false
+      }
+    },
+    {
+      "id": "dread-helm",
+      "name": "Elmo do pavor",
+      "original_name": "Dread Helm",
+      "category": "Mágicos comuns",
+      "description": "Elmo fechado de aço escuro com crista marcada. Faz os olhos do usuário brilharem vermelhos e mantém o restante do rosto na sombra.",
+      "merchant_comment": "Os olhos vermelhos e o rosto na sombra dão uma entrada marcante. O elmo não obriga ninguém a fugir, então continue escolhendo bem as palavras quando abrir a porta.",
+      "price_cp": 10000,
+      "weight_lb": 3,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#dread%20helm_xdmg",
+      "image_path": "/shop/magic-completion-20261009/dread-helm.webp",
+      "audio_path": "/audio/emporium/dread-helm.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Dread Helm",
+        "upstream_source": "XDMG",
+        "upstream_page": 254,
+        "upstream_facts": {
+          "name": "Dread Helm",
+          "source": "XDMG",
+          "page": 254,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Enquanto usa este elmo, seus olhos brilham em vermelho e o restante do seu rosto fica coberto por sombras. A propriedade é visual: não aplica a condição Amedrontado nem concede bônus de Intimidação.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "head"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "ear-horn-of-hearing",
+      "name": "Corneta auditiva",
+      "original_name": "Ear Horn of Hearing",
+      "category": "Mágicos comuns",
+      "description": "Corneta de latão com empunhadura de couro. Levada ao ouvido, suprime temporariamente os efeitos da condição Surdo.",
+      "merchant_comment": "A abertura larga recebe o som, a ponta estreita vai junto ao ouvido. Enquanto a usa, os efeitos de Surdo ficam suspensos; ao guardar a corneta, a condição continua lá.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#ear%20horn%20of%20hearing_xdmg",
+      "image_path": "/shop/magic-completion-20261009/ear-horn-of-hearing.webp",
+      "audio_path": "/audio/emporium/ear-horn-of-hearing.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Ear Horn of Hearing",
+        "upstream_source": "XDMG",
+        "upstream_page": 256,
+        "upstream_facts": {
+          "name": "Ear Horn of Hearing",
+          "source": "XDMG",
+          "page": 256,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Enquanto você mantém esta corneta junto ao ouvido, os efeitos da condição Surdo ficam suprimidos em você. O benefício dura apenas enquanto ela é usada dessa maneira e não remove a condição permanentemente.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
+      }
+    },
+    {
+      "id": "enduring-spellbook",
+      "name": "Grimório duradouro",
+      "original_name": "Enduring Spellbook",
+      "category": "Mágicos comuns",
+      "description": "Grimório de couro claro, cantos de esmalte verde e dois fechos. Protege suas páginas e sua escrita de fogo, água e envelhecimento.",
+      "merchant_comment": "Seus apontamentos sobrevivem à água, ao fogo e aos anos neste grimório. As magias que vai escrever nele são sua responsabilidade; o fecho não vem com um curso de conjuração.",
+      "price_cp": 10000,
+      "weight_lb": 3,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#enduring%20spellbook_xdmg",
+      "image_path": "/shop/magic-completion-20261009/enduring-spellbook.webp",
+      "audio_path": "/audio/emporium/enduring-spellbook.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Enduring Spellbook",
+        "upstream_source": "XDMG",
+        "upstream_page": 257,
+        "upstream_facts": {
+          "name": "Enduring Spellbook",
+          "source": "XDMG",
+          "page": 257,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "O livro e tudo o que estiver escrito em suas páginas são imunes a danos de fogo e água. Ele também não se deteriora com a idade. O item não fornece uma coleção de magias pronta nem dispensa as regras de aprendizado e cópia.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "paper",
+        "attunement": false
+      }
+    },
+    {
       "id": "hat-of-wizardry",
       "name": "Chapéu da magia",
       "original_name": "Hat of Wizardry",
@@ -1501,6 +1785,214 @@
         "rarity": "Common",
         "sound_material": "cloth",
         "attunement": "by a wizard"
+      }
+    },
+    {
+      "id": "orb-of-direction",
+      "name": "Orbe de direção",
+      "original_name": "Orb of Direction",
+      "category": "Mágicos comuns",
+      "description": "Orbe de cristal com agulha azul e armação de bronze. Serve como foco arcano e identifica o norte magnético quando segurado.",
+      "merchant_comment": "Segure o orbe e use uma ação de Magia para encontrar o norte magnético. O mapa continua por sua conta; apontar para o norte não garante que a estalagem esteja naquela direção.",
+      "price_cp": 10000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#orb%20of%20direction_xdmg",
+      "image_path": "/shop/magic-completion-20261009/orb-of-direction.webp",
+      "audio_path": "/audio/emporium/orb-of-direction.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Orb of Direction",
+        "upstream_source": "XDMG",
+        "upstream_page": 283,
+        "upstream_facts": {
+          "name": "Orb of Direction",
+          "source": "XDMG",
+          "page": 283,
+          "rarity": "common",
+          "wondrous": true,
+          "weight": 3
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Este orbe pode ser usado como Foco Arcano. Enquanto o segura, uma ação de Magia determina onde fica o norte magnético. Não revela nada se for usado em um lugar sem norte magnético.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
+      "id": "orb-of-time",
+      "name": "Orbe do tempo",
+      "original_name": "Orb of Time",
+      "category": "Mágicos comuns",
+      "description": "Esfera azul-escura com crescente claro e anéis dourados. Foco arcano que distingue os períodos do dia no Plano Material.",
+      "merchant_comment": "Debaixo da terra, este orbe ajuda a separar manhã de noite. Não é relógio de compromisso marcado: ele informa o período do dia, e somente no Plano Material.",
+      "price_cp": 10000,
+      "weight_lb": 3,
+      "weight_estimated": false,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#orb%20of%20time_xdmg",
+      "image_path": "/shop/magic-completion-20261009/orb-of-time.webp",
+      "audio_path": "/audio/emporium/orb-of-time.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Orb of Time",
+        "upstream_source": "XDMG",
+        "upstream_page": 284,
+        "upstream_facts": {
+          "name": "Orb of Time",
+          "source": "XDMG",
+          "page": 284,
+          "rarity": "common",
+          "wondrous": true,
+          "weight": 3
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Este orbe pode ser usado como Foco Arcano. Enquanto o segura, uma ação de Magia informa se é manhã, tarde, início da noite ou noite. Essa propriedade só funciona no Plano Material; não fornece uma hora exata.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "glass",
+        "attunement": false
+      }
+    },
+    {
+      "id": "pipe-of-smoke-monsters",
+      "name": "Cachimbo de monstros de fumaça",
+      "original_name": "Pipe of Smoke Monsters",
+      "category": "Mágicos comuns",
+      "description": "Cachimbo de cerejeira escura esculpido como um dragão. Sua fumaça assume brevemente formas de criaturas antes de se dispersar.",
+      "merchant_comment": "Dá para mostrar um pequeno dragão na fumaça sem pôr fogo na hospedaria. A figura dura poucos segundos; avise o companheiro mais nervoso antes de soprar um slaad perto dele.",
+      "price_cp": 10000,
+      "weight_lb": 0.5,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#pipe%20of%20smoke%20monsters_xdmg",
+      "image_path": "/shop/magic-completion-20261009/pipe-of-smoke-monsters.webp",
+      "audio_path": "/audio/emporium/pipe-of-smoke-monsters.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Pipe of Smoke Monsters",
+        "upstream_source": "XDMG",
+        "upstream_page": 285,
+        "upstream_facts": {
+          "name": "Pipe of Smoke Monsters",
+          "source": "XDMG",
+          "page": 285,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Enquanto fuma este cachimbo, uma ação de Magia permite expelir uma nuvem com a forma de uma criatura escolhida, como dragão, flumph ou slaad. A figura deve caber em um cubo de 1 pé. Após poucos segundos, perde o formato e vira fumaça comum. Não invoca uma criatura nem lhe concede ações.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": false
+      }
+    },
+    {
+      "id": "talking-doll",
+      "name": "Boneca falante",
+      "original_name": "Talking Doll",
+      "category": "Mágicos comuns",
+      "description": "Boneca articulada de madeira com casaco azul e boca móvel. Repete frases curtas programadas diante de situações específicas próximas a ela.",
+      "merchant_comment": "Escolha até seis frases curtas e os acontecimentos que as fazem sair. Uma boneca dizendo “a porta abriu” pode ser útil; ensiná-la a reclamar do cozinheiro costuma durar menos que o encanto.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#talking%20doll_xdmg",
+      "image_path": "/shop/magic-completion-20261009/talking-doll.webp",
+      "audio_path": "/audio/emporium/talking-doll.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Talking Doll",
+        "upstream_source": "XDMG",
+        "upstream_page": 315,
+        "upstream_facts": {
+          "name": "Talking Doll",
+          "source": "XDMG",
+          "page": 315,
+          "rarity": "common",
+          "wondrous": true,
+          "reqAttune": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "Exige sintonização. Durante um Descanso Curto, permanecendo a até 5 pés da boneca, você programa até seis frases de no máximo seis palavras cada, associadas às circunstâncias em que serão ditas. Cada gatilho deve ocorrer a até 5 pés da boneca; por exemplo, alguém pegá-la. Você pode trocar as frases programadas. Ao encerrar a sintonização, ela perde todas essas frases. Não mantém conversa livre nem cria novas respostas por conta própria.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "wood",
+        "attunement": true
+      }
+    },
+    {
+      "id": "tankard-of-sobriety",
+      "name": "Caneca da sobriedade",
+      "original_name": "Tankard of Sobriety",
+      "category": "Mágicos comuns",
+      "description": "Caneca de estanho com tampa articulada e semblante severo em relevo. Evita a embriaguez causada pelo álcool não mágico bebido por ela.",
+      "merchant_comment": "A cara séria da caneca não muda depois da terceira rodada. Ela evita a embriaguez por álcool comum, mas não negocia o preço da bebida nem protege de uma dose envenenada.",
+      "price_cp": 10000,
+      "weight_lb": 1,
+      "weight_estimated": true,
+      "source": "D&D · Dungeon Master's Guide (2024)",
+      "source_url": "https://5e.tools/items.html#tankard%20of%20sobriety_xdmg",
+      "image_path": "/shop/magic-completion-20261009/tankard-of-sobriety.webp",
+      "audio_path": "/audio/emporium/tankard-of-sobriety.wav",
+      "raw_data": {
+        "shop_magic_completion": true,
+        "upstream_name": "Tankard of Sobriety",
+        "upstream_source": "XDMG",
+        "upstream_page": 315,
+        "upstream_facts": {
+          "name": "Tankard of Sobriety",
+          "source": "XDMG",
+          "page": 315,
+          "rarity": "common",
+          "wondrous": true
+        },
+        "source_book": "Dungeon Master's Guide (2024)",
+        "source_edition": "D&D 5e (2024)",
+        "rules_summary": "A caneca tem um rosto severo esculpido em sua lateral. Bebidas alcoólicas não mágicas tomadas por ela não causam embriaguez. Não altera líquidos mágicos nem neutraliza venenos ou outras substâncias prejudiciais.",
+        "equipment_target": "human",
+        "equipment_slots": [
+          "main_hand",
+          "off_hand"
+        ],
+        "two_handed": false,
+        "consumable": false,
+        "rarity": "Common",
+        "sound_material": "metal",
+        "attunement": false
       }
     },
     {

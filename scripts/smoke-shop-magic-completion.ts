@@ -157,6 +157,12 @@ try {
       ['spiked-armor-plus-1','armor'],
       ['double-bladed-scimitar-plus-1','main_hand'],
     ]:[]),
+    ...(ids.includes('boots-of-false-tracks') ? [
+      ['boots-of-false-tracks', 'feet'],
+      ['cloak-of-many-fashions', 'cloak'],
+      ['clothes-of-mending', 'armor'],
+      ['dread-helm', 'head'],
+    ] : []),
   ])
     assert.equal(
       (await request('/inventory/equipment', 'POST', { character_id: hero.id, item_id: id, slot }))
@@ -187,6 +193,11 @@ try {
     assert.equal((await equip('antimatter-rifle-plus-1', 'off_hand')).status, 400);
     assert.equal((await equip('semiautomatic-pistol-plus-1', 'main_hand')).status, 200);
     assert.equal((await equip('wooden-staff-of-warning', 'off_hand')).status, 200);
+    if (ids.includes('orb-of-direction')) {
+      assert.equal((await equip('orb-of-direction', 'main_hand')).status, 200);
+      assert.equal((await equip('orb-of-time', 'off_hand')).status, 200);
+      assert.equal((await equip('boots-of-false-tracks', 'main_hand')).status, 400);
+    }
     await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [user.id]);
     const created = await request('/vtt', 'POST', { name: 'Munição do Empório' });
     assert.equal(created.status, 201);
@@ -206,6 +217,16 @@ try {
       assert.equal((await request(usePath, 'POST', use)).status, 200);
       assert.equal((await request(usePath, 'POST', use)).status, 200);
       assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2', [hero.id, id])).rows.length, 0);
+      assert.equal((await request(usePath, 'POST', { ...use, idempotency_key: randomUUID() })).status, 409);
+    }
+    if (ids.includes('candle-of-the-deep')) {
+      const item = completion.items.find((x: any) => x.id === 'candle-of-the-deep');
+      assert(item.raw_data.consumable && consumableItems.has(item.id));
+      assert.equal(item.price_cp, 5000, 'Single consumable uses the existing half-price policy');
+      const use = { kind: 'consumable', item_id: item.id, idempotency_key: randomUUID() };
+      assert.equal((await request(usePath, 'POST', use)).status, 200);
+      assert.equal((await request(usePath, 'POST', use)).status, 200);
+      assert.equal((await pool.query('SELECT quantity FROM inventory WHERE character_id=$1 AND item_id=$2', [hero.id, item.id])).rows.length, 0);
       assert.equal((await request(usePath, 'POST', { ...use, idempotency_key: randomUUID() })).status, 409);
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id', [hero.id])).rows, ledger, 'Consumption cannot change the purchase ledger');
