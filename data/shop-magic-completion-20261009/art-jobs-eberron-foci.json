@@ -1,0 +1,1128 @@
+{
+  "tool": "image_gen.imagegen",
+  "jobs": [
+    {
+      "id": "eberron-fernian-ash-wood-atlas",
+      "family": "Imbued Wood (Fernian Ash)",
+      "label": "Freixo de Fernia",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "fernian-ash-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "fernian-ash-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "fernian-ash-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: warm ash wood, crisp pale amber grain, slender dark charred grain lines and a small carved flame motif, restrained ember inlay. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "d78284b4ed3665a5b7d5d5807820bfa543a8bd402a68975c24399ead5c81b4dc",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-irian-rosewood-wood-atlas",
+      "family": "Imbued Wood (Irian Rosewood)",
+      "label": "Jacarandá de Irian",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "irian-rosewood-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "irian-rosewood-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "irian-rosewood-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: deep reddish rosewood with fine gold grain, elegant ivory sunburst carving, soft warm luminous pinpoints. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "edb144138e30c05be114d44023643f4e3e369c8981518ecc439ac8fe0b9b9ac2",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-kythrian-manchineel-wood-atlas",
+      "family": "Imbued Wood (Kythrian Manchineel)",
+      "label": "Manchineel de Kythri",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "kythrian-manchineel-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "kythrian-manchineel-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "kythrian-manchineel-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: olive brown poisonous manchineel hardwood, irregular mottled grain, natural asymmetrical root knots, tiny malachite inlay. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "47cb01791b4e70059e8cf567d83a9daef286fc9bbac1c97943be62ed89b037d1",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-lamannian-oak-wood-atlas",
+      "family": "Imbued Wood (Lamannian Oak)",
+      "label": "Carvalho de Lamannia",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "lamannian-oak-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "lamannian-oak-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "lamannian-oak-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: heavy honey brown oak with broad strong grain, braided leaf relief and dark blue stone accents, natural wood texture. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "bd90142a1058c6eca4eb5113d7a72d7ea5643e9dbcc74e9baec17c9832f0eccd",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-mabaran-ebony-wood-atlas",
+      "family": "Imbued Wood (Mabaran Ebony)",
+      "label": "Ébano de Mabar",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "mabaran-ebony-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "mabaran-ebony-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "mabaran-ebony-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: nearly black polished ebony with fine silver gray grain, a restrained antique silver collar and crescent relief, readable edge lighting. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "690b12c7ea88eda7fcd87c58c16b13f7ac9f02c576562c0d9a7bf3c5891bdccd",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-risian-pine-wood-atlas",
+      "family": "Imbued Wood (Risian Pine)",
+      "label": "Pinheiro de Risia",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "risian-pine-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "risian-pine-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "risian-pine-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: pale cool pine with blue gray grain and visible tight growth rings, icy translucent resin inlay inside a carved snowflake. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "3bc04108b29acb8577c0506dd597dd6f5ed2854d058833061a42eb76d9fb0dbf",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-shavarran-birch-wood-atlas",
+      "family": "Imbued Wood (Shavarran Birch)",
+      "label": "Bétula de Shavarath",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "shavarran-birch-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "shavarran-birch-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "shavarran-birch-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: cream colored birch with dark fine grain and tiny natural black knots, weathered bronze military chevron fittings. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "488afcfb2cb25930d9b2367e80e44644ec5237cab531b17e38470e16066baec2",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-xorian-wenge-wood-atlas",
+      "family": "Imbued Wood (Xorian Wenge)",
+      "label": "Wengué de Xoriat",
+      "kind": "wood",
+      "items": [
+        {
+          "id": "xorian-wenge-rod",
+          "model": "Rod"
+        },
+        {
+          "id": "xorian-wenge-staff",
+          "model": "Staff"
+        },
+        {
+          "id": "xorian-wenge-wand",
+          "model": "Wand"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY THREE separate fantasy wooden focus objects, each completely isolated in its own vertical third of one square transparent canvas. LEFT THIRD: a short thick one-handed rod with a cylindrical grip and distinct carved cap. CENTER THIRD: a long full-length walking-height staff with a natural tapered shaft, a carved upper knot, and one grip wrap. RIGHT THIRD: a thin short handheld wand with a tapered point, small pommel and fine carved handle. Each must be a newly illustrated distinct object with its own grain pattern and unique ornament layout; never copy and rescale one object into another. Render all three full silhouettes almost upright. Keep every pixel at least 24 pixels from the borders of its own third, nothing crossing between thirds. No separate panels, dividers, labels or ground shadows. Maximize detail and readability in each object, with generous transparent breathing room. Material and family design: deep brown wenge with contrasting cream striped grain, unusual interlocking carved spiral relief and small amethyst accents. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "bce78df53e64ef842e241e3f82a9a21b7b5f463a9ae8f3e54a7e80b60ccf8173",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-fernian-basalt-stone-atlas",
+      "family": "Orb of Shielding (Fernian Basalt)",
+      "label": "Basalto de Fernia",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "fernian-basalt-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "fernian-basalt-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: dark charcoal basalt with fine volcanic mineral grains and sparse rust red inclusions, realistically polished stone, subtle amber reflections. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "4748077d72e8f1a47d90d80491ca1b22e1636e294adb195cfcd0b938a3ba1cc3",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-irian-quartz-stone-atlas",
+      "family": "Orb of Shielding (Irian Quartz)",
+      "label": "Quartzo de Irian",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "irian-quartz-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "irian-quartz-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: translucent warm milky quartz with delicate gold mineral threads and realistic internal clouds, soft ivory reflections. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "8f91b9165ab352f26a56137b6d5262b84d5418c534104f89767c7c6507315551",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-kythrian-skarn-stone-atlas",
+      "family": "Orb of Shielding (Kythrian Skarn)",
+      "label": "Skarn de Kythri",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "kythrian-skarn-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "kythrian-skarn-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: olive green skarn with rich brown and white mineral patches, intricately mottled natural stone, realistic polish. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "583ad161ce808fc3fd6e40711d9a9a6c01139d355c061436eb5e1954383f6713",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-lamannian-flint-stone-atlas",
+      "family": "Orb of Shielding (Lamannian Flint)",
+      "label": "Sílex de Lamannia",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "lamannian-flint-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "lamannian-flint-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: blue gray flint with cream fossil seams, smoothly polished layered stone with occasional deep navy inclusions. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "e9008658af89b4733aa2fd8fbffede13a7d3e9bc3764d268e57b5882113fdd22",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-mabaran-obsidian-stone-atlas",
+      "family": "Orb of Shielding (Mabaran Obsidian)",
+      "label": "Obsidiana de Mabar",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "mabaran-obsidian-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "mabaran-obsidian-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: black volcanic glass obsidian with very faint smoke gray flow bands, deep polished reflections and crisp edge lighting. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "6e5ff9ed1695e4c3e0c5edf79b82d8387d3cac24526539325a03848a3032ea79",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-risian-shale-stone-atlas",
+      "family": "Orb of Shielding (Risian Shale)",
+      "label": "Xisto de Risia",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "risian-shale-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "risian-shale-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: cold pale blue gray shale with many subtle parallel sedimentary lines, realistic stone polish and fine white calcite veins. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "01026a5ae616eda585b200efdba001ae2b2565c23965e3d2e9b8c00d2b8033ff",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-shavarran-chert-stone-atlas",
+      "family": "Orb of Shielding (Shavarran Chert)",
+      "label": "Chert de Shavarath",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "shavarran-chert-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "shavarran-chert-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: warm ochre and iron brown chert with irregular cream mineral veins, dense realistically polished stone. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "12a808de73d95901d4f2e8028f32ce661751204889713dad6f6c7becea864ee9",
+      "review": "approved"
+    },
+    {
+      "id": "eberron-xorian-marble-stone-atlas",
+      "family": "Orb of Shielding (Xorian Marble)",
+      "label": "Mármore de Xoriat",
+      "kind": "stone",
+      "items": [
+        {
+          "id": "xorian-marble-crystal",
+          "model": "Crystal"
+        },
+        {
+          "id": "xorian-marble-orb",
+          "model": "Orb"
+        }
+      ],
+      "prompt": "A clean production sprite atlas with EXACTLY TWO separate polished spherical fantasy focus stones, each fully isolated in its own vertical HALF of a square transparent canvas. LEFT HALF: one small hand-held spherical crystal focus, a full smooth sphere, a distinctive curved natural inclusion across the upper left. RIGHT HALF: one larger heavier spherical orb focus, a full smooth sphere, a different broad mineral vein or cloud pattern across the lower right. Both objects must be perfectly rounded polished spheres of this material; neither is a faceted prism or pointed crystal. Illustrate two genuinely distinct specimens with different vein and inclusion layouts, never clone or rescale one sphere. No stand, holder, metal cage, rings, pedestal or background magic effect. Keep every pixel at least 32 pixels inside the borders of its own half; nothing crossing the center. No panel borders, dividers, text or cast ground shadows. Material and family design: unusual lavender and charcoal gray marble with cream irregular flowing mineral veins and a few subtle plum colored seams. Premium realistic painted medieval fantasy inventory art, crisp fine physical material texture, realistic volume, top-left soft studio light, fully readable over a dark navy shop background. No people, hands, chests, scenery, floating particles, text or watermark. Native transparent alpha outside the objects. Each complete isolated object will be technically cropped from this atlas and shown as a unique item.",
+      "original_native_sha256": "cb6571acbde8f4a4a64c01a89c656715713cfe268ba52701aaaf2a832c1d26b9",
+      "review": "approved"
+    }
+  ],
+  "objects": [
+    {
+      "id": "fernian-ash-rod",
+      "family": "Imbued Wood (Fernian Ash)",
+      "model": "Rod",
+      "parent_atlas": "eberron-fernian-ash-wood-atlas",
+      "parent_native_sha256": "d78284b4ed3665a5b7d5d5807820bfa543a8bd402a68975c24399ead5c81b4dc",
+      "original_crop": {
+        "left": 158,
+        "top": 152,
+        "width": 182,
+        "height": 969
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        849,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "fernian-ash-staff",
+      "family": "Imbued Wood (Fernian Ash)",
+      "model": "Staff",
+      "parent_atlas": "eberron-fernian-ash-wood-atlas",
+      "parent_native_sha256": "d78284b4ed3665a5b7d5d5807820bfa543a8bd402a68975c24399ead5c81b4dc",
+      "original_crop": {
+        "left": 567,
+        "top": 13,
+        "width": 132,
+        "height": 1229
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        849,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "fernian-ash-wand",
+      "family": "Imbued Wood (Fernian Ash)",
+      "model": "Wand",
+      "parent_atlas": "eberron-fernian-ash-wood-atlas",
+      "parent_native_sha256": "d78284b4ed3665a5b7d5d5807820bfa543a8bd402a68975c24399ead5c81b4dc",
+      "original_crop": {
+        "left": 1000,
+        "top": 226,
+        "width": 80,
+        "height": 902
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        849,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "irian-rosewood-rod",
+      "family": "Imbued Wood (Irian Rosewood)",
+      "model": "Rod",
+      "parent_atlas": "eberron-irian-rosewood-wood-atlas",
+      "parent_native_sha256": "edb144138e30c05be114d44023643f4e3e369c8981518ecc439ac8fe0b9b9ac2",
+      "original_crop": {
+        "left": 129,
+        "top": 243,
+        "width": 165,
+        "height": 906
+      },
+      "separator_boundaries": [
+        0,
+        431,
+        858,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "irian-rosewood-staff",
+      "family": "Imbued Wood (Irian Rosewood)",
+      "model": "Staff",
+      "parent_atlas": "eberron-irian-rosewood-wood-atlas",
+      "parent_native_sha256": "edb144138e30c05be114d44023643f4e3e369c8981518ecc439ac8fe0b9b9ac2",
+      "original_crop": {
+        "left": 569,
+        "top": 13,
+        "width": 124,
+        "height": 1228
+      },
+      "separator_boundaries": [
+        0,
+        431,
+        858,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "irian-rosewood-wand",
+      "family": "Imbued Wood (Irian Rosewood)",
+      "model": "Wand",
+      "parent_atlas": "eberron-irian-rosewood-wood-atlas",
+      "parent_native_sha256": "edb144138e30c05be114d44023643f4e3e369c8981518ecc439ac8fe0b9b9ac2",
+      "original_crop": {
+        "left": 1024,
+        "top": 219,
+        "width": 84,
+        "height": 925
+      },
+      "separator_boundaries": [
+        0,
+        431,
+        858,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "kythrian-manchineel-rod",
+      "family": "Imbued Wood (Kythrian Manchineel)",
+      "model": "Rod",
+      "parent_atlas": "eberron-kythrian-manchineel-wood-atlas",
+      "parent_native_sha256": "47cb01791b4e70059e8cf567d83a9daef286fc9bbac1c97943be62ed89b037d1",
+      "original_crop": {
+        "left": 110,
+        "top": 290,
+        "width": 211,
+        "height": 879
+      },
+      "separator_boundaries": [
+        0,
+        449,
+        857,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "kythrian-manchineel-staff",
+      "family": "Imbued Wood (Kythrian Manchineel)",
+      "model": "Staff",
+      "parent_atlas": "eberron-kythrian-manchineel-wood-atlas",
+      "parent_native_sha256": "47cb01791b4e70059e8cf567d83a9daef286fc9bbac1c97943be62ed89b037d1",
+      "original_crop": {
+        "left": 577,
+        "top": 16,
+        "width": 133,
+        "height": 1223
+      },
+      "separator_boundaries": [
+        0,
+        449,
+        857,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "kythrian-manchineel-wand",
+      "family": "Imbued Wood (Kythrian Manchineel)",
+      "model": "Wand",
+      "parent_atlas": "eberron-kythrian-manchineel-wood-atlas",
+      "parent_native_sha256": "47cb01791b4e70059e8cf567d83a9daef286fc9bbac1c97943be62ed89b037d1",
+      "original_crop": {
+        "left": 1005,
+        "top": 266,
+        "width": 85,
+        "height": 918
+      },
+      "separator_boundaries": [
+        0,
+        449,
+        857,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "lamannian-oak-rod",
+      "family": "Imbued Wood (Lamannian Oak)",
+      "model": "Rod",
+      "parent_atlas": "eberron-lamannian-oak-wood-atlas",
+      "parent_native_sha256": "bd90142a1058c6eca4eb5113d7a72d7ea5643e9dbcc74e9baec17c9832f0eccd",
+      "original_crop": {
+        "left": 110,
+        "top": 314,
+        "width": 207,
+        "height": 825
+      },
+      "separator_boundaries": [
+        0,
+        437,
+        849,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "lamannian-oak-staff",
+      "family": "Imbued Wood (Lamannian Oak)",
+      "model": "Staff",
+      "parent_atlas": "eberron-lamannian-oak-wood-atlas",
+      "parent_native_sha256": "bd90142a1058c6eca4eb5113d7a72d7ea5643e9dbcc74e9baec17c9832f0eccd",
+      "original_crop": {
+        "left": 558,
+        "top": 14,
+        "width": 141,
+        "height": 1226
+      },
+      "separator_boundaries": [
+        0,
+        437,
+        849,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "lamannian-oak-wand",
+      "family": "Imbued Wood (Lamannian Oak)",
+      "model": "Wand",
+      "parent_atlas": "eberron-lamannian-oak-wood-atlas",
+      "parent_native_sha256": "bd90142a1058c6eca4eb5113d7a72d7ea5643e9dbcc74e9baec17c9832f0eccd",
+      "original_crop": {
+        "left": 999,
+        "top": 297,
+        "width": 90,
+        "height": 848
+      },
+      "separator_boundaries": [
+        0,
+        437,
+        849,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "mabaran-ebony-rod",
+      "family": "Imbued Wood (Mabaran Ebony)",
+      "model": "Rod",
+      "parent_atlas": "eberron-mabaran-ebony-wood-atlas",
+      "parent_native_sha256": "690b12c7ea88eda7fcd87c58c16b13f7ac9f02c576562c0d9a7bf3c5891bdccd",
+      "original_crop": {
+        "left": 128,
+        "top": 255,
+        "width": 212,
+        "height": 889
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        841,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "mabaran-ebony-staff",
+      "family": "Imbued Wood (Mabaran Ebony)",
+      "model": "Staff",
+      "parent_atlas": "eberron-mabaran-ebony-wood-atlas",
+      "parent_native_sha256": "690b12c7ea88eda7fcd87c58c16b13f7ac9f02c576562c0d9a7bf3c5891bdccd",
+      "original_crop": {
+        "left": 567,
+        "top": 6,
+        "width": 131,
+        "height": 1236
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        841,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "mabaran-ebony-wand",
+      "family": "Imbued Wood (Mabaran Ebony)",
+      "model": "Wand",
+      "parent_atlas": "eberron-mabaran-ebony-wood-atlas",
+      "parent_native_sha256": "690b12c7ea88eda7fcd87c58c16b13f7ac9f02c576562c0d9a7bf3c5891bdccd",
+      "original_crop": {
+        "left": 985,
+        "top": 243,
+        "width": 85,
+        "height": 910
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        841,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "risian-pine-rod",
+      "family": "Imbued Wood (Risian Pine)",
+      "model": "Rod",
+      "parent_atlas": "eberron-risian-pine-wood-atlas",
+      "parent_native_sha256": "3bc04108b29acb8577c0506dd597dd6f5ed2854d058833061a42eb76d9fb0dbf",
+      "original_crop": {
+        "left": 138,
+        "top": 288,
+        "width": 186,
+        "height": 868
+      },
+      "separator_boundaries": [
+        0,
+        452,
+        866,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "risian-pine-staff",
+      "family": "Imbued Wood (Risian Pine)",
+      "model": "Staff",
+      "parent_atlas": "eberron-risian-pine-wood-atlas",
+      "parent_native_sha256": "3bc04108b29acb8577c0506dd597dd6f5ed2854d058833061a42eb76d9fb0dbf",
+      "original_crop": {
+        "left": 580,
+        "top": 0,
+        "width": 142,
+        "height": 1242
+      },
+      "separator_boundaries": [
+        0,
+        452,
+        866,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "risian-pine-wand",
+      "family": "Imbued Wood (Risian Pine)",
+      "model": "Wand",
+      "parent_atlas": "eberron-risian-pine-wood-atlas",
+      "parent_native_sha256": "3bc04108b29acb8577c0506dd597dd6f5ed2854d058833061a42eb76d9fb0dbf",
+      "original_crop": {
+        "left": 1011,
+        "top": 229,
+        "width": 81,
+        "height": 926
+      },
+      "separator_boundaries": [
+        0,
+        452,
+        866,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "shavarran-birch-rod",
+      "family": "Imbued Wood (Shavarran Birch)",
+      "model": "Rod",
+      "parent_atlas": "eberron-shavarran-birch-wood-atlas",
+      "parent_native_sha256": "488afcfb2cb25930d9b2367e80e44644ec5237cab531b17e38470e16066baec2",
+      "original_crop": {
+        "left": 162,
+        "top": 248,
+        "width": 164,
+        "height": 923
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        856,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "shavarran-birch-staff",
+      "family": "Imbued Wood (Shavarran Birch)",
+      "model": "Staff",
+      "parent_atlas": "eberron-shavarran-birch-wood-atlas",
+      "parent_native_sha256": "488afcfb2cb25930d9b2367e80e44644ec5237cab531b17e38470e16066baec2",
+      "original_crop": {
+        "left": 580,
+        "top": 0,
+        "width": 136,
+        "height": 1251
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        856,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "shavarran-birch-wand",
+      "family": "Imbued Wood (Shavarran Birch)",
+      "model": "Wand",
+      "parent_atlas": "eberron-shavarran-birch-wood-atlas",
+      "parent_native_sha256": "488afcfb2cb25930d9b2367e80e44644ec5237cab531b17e38470e16066baec2",
+      "original_crop": {
+        "left": 996,
+        "top": 203,
+        "width": 98,
+        "height": 959
+      },
+      "separator_boundaries": [
+        0,
+        453,
+        856,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "xorian-wenge-rod",
+      "family": "Imbued Wood (Xorian Wenge)",
+      "model": "Rod",
+      "parent_atlas": "eberron-xorian-wenge-wood-atlas",
+      "parent_native_sha256": "bce78df53e64ef842e241e3f82a9a21b7b5f463a9ae8f3e54a7e80b60ccf8173",
+      "original_crop": {
+        "left": 122,
+        "top": 218,
+        "width": 181,
+        "height": 954
+      },
+      "separator_boundaries": [
+        0,
+        443,
+        863,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "xorian-wenge-staff",
+      "family": "Imbued Wood (Xorian Wenge)",
+      "model": "Staff",
+      "parent_atlas": "eberron-xorian-wenge-wood-atlas",
+      "parent_native_sha256": "bce78df53e64ef842e241e3f82a9a21b7b5f463a9ae8f3e54a7e80b60ccf8173",
+      "original_crop": {
+        "left": 583,
+        "top": 10,
+        "width": 119,
+        "height": 1230
+      },
+      "separator_boundaries": [
+        0,
+        443,
+        863,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "xorian-wenge-wand",
+      "family": "Imbued Wood (Xorian Wenge)",
+      "model": "Wand",
+      "parent_atlas": "eberron-xorian-wenge-wood-atlas",
+      "parent_native_sha256": "bce78df53e64ef842e241e3f82a9a21b7b5f463a9ae8f3e54a7e80b60ccf8173",
+      "original_crop": {
+        "left": 1024,
+        "top": 278,
+        "width": 86,
+        "height": 909
+      },
+      "separator_boundaries": [
+        0,
+        443,
+        863,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "fernian-basalt-crystal",
+      "family": "Orb of Shielding (Fernian Basalt)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-fernian-basalt-stone-atlas",
+      "parent_native_sha256": "4748077d72e8f1a47d90d80491ca1b22e1636e294adb195cfcd0b938a3ba1cc3",
+      "original_crop": {
+        "left": 87,
+        "top": 431,
+        "width": 430,
+        "height": 421
+      },
+      "separator_boundaries": [
+        0,
+        574,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "fernian-basalt-orb",
+      "family": "Orb of Shielding (Fernian Basalt)",
+      "model": "Orb",
+      "parent_atlas": "eberron-fernian-basalt-stone-atlas",
+      "parent_native_sha256": "4748077d72e8f1a47d90d80491ca1b22e1636e294adb195cfcd0b938a3ba1cc3",
+      "original_crop": {
+        "left": 631,
+        "top": 343,
+        "width": 577,
+        "height": 572
+      },
+      "separator_boundaries": [
+        0,
+        574,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "irian-quartz-crystal",
+      "family": "Orb of Shielding (Irian Quartz)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-irian-quartz-stone-atlas",
+      "parent_native_sha256": "8f91b9165ab352f26a56137b6d5262b84d5418c534104f89767c7c6507315551",
+      "original_crop": {
+        "left": 66,
+        "top": 412,
+        "width": 463,
+        "height": 455
+      },
+      "separator_boundaries": [
+        0,
+        573,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "irian-quartz-orb",
+      "family": "Orb of Shielding (Irian Quartz)",
+      "model": "Orb",
+      "parent_atlas": "eberron-irian-quartz-stone-atlas",
+      "parent_native_sha256": "8f91b9165ab352f26a56137b6d5262b84d5418c534104f89767c7c6507315551",
+      "original_crop": {
+        "left": 617,
+        "top": 309,
+        "width": 610,
+        "height": 605
+      },
+      "separator_boundaries": [
+        0,
+        573,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "kythrian-skarn-crystal",
+      "family": "Orb of Shielding (Kythrian Skarn)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-kythrian-skarn-stone-atlas",
+      "parent_native_sha256": "583ad161ce808fc3fd6e40711d9a9a6c01139d355c061436eb5e1954383f6713",
+      "original_crop": {
+        "left": 86,
+        "top": 418,
+        "width": 452,
+        "height": 451
+      },
+      "separator_boundaries": [
+        0,
+        588,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "kythrian-skarn-orb",
+      "family": "Orb of Shielding (Kythrian Skarn)",
+      "model": "Orb",
+      "parent_atlas": "eberron-kythrian-skarn-stone-atlas",
+      "parent_native_sha256": "583ad161ce808fc3fd6e40711d9a9a6c01139d355c061436eb5e1954383f6713",
+      "original_crop": {
+        "left": 639,
+        "top": 338,
+        "width": 567,
+        "height": 566
+      },
+      "separator_boundaries": [
+        0,
+        588,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "lamannian-flint-crystal",
+      "family": "Orb of Shielding (Lamannian Flint)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-lamannian-flint-stone-atlas",
+      "parent_native_sha256": "e9008658af89b4733aa2fd8fbffede13a7d3e9bc3764d268e57b5882113fdd22",
+      "original_crop": {
+        "left": 73,
+        "top": 402,
+        "width": 443,
+        "height": 439
+      },
+      "separator_boundaries": [
+        0,
+        572,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "lamannian-flint-orb",
+      "family": "Orb of Shielding (Lamannian Flint)",
+      "model": "Orb",
+      "parent_atlas": "eberron-lamannian-flint-stone-atlas",
+      "parent_native_sha256": "e9008658af89b4733aa2fd8fbffede13a7d3e9bc3764d268e57b5882113fdd22",
+      "original_crop": {
+        "left": 629,
+        "top": 315,
+        "width": 589,
+        "height": 586
+      },
+      "separator_boundaries": [
+        0,
+        572,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "mabaran-obsidian-crystal",
+      "family": "Orb of Shielding (Mabaran Obsidian)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-mabaran-obsidian-stone-atlas",
+      "parent_native_sha256": "6e5ff9ed1695e4c3e0c5edf79b82d8387d3cac24526539325a03848a3032ea79",
+      "original_crop": {
+        "left": 82,
+        "top": 436,
+        "width": 431,
+        "height": 428
+      },
+      "separator_boundaries": [
+        0,
+        578,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "mabaran-obsidian-orb",
+      "family": "Orb of Shielding (Mabaran Obsidian)",
+      "model": "Orb",
+      "parent_atlas": "eberron-mabaran-obsidian-stone-atlas",
+      "parent_native_sha256": "6e5ff9ed1695e4c3e0c5edf79b82d8387d3cac24526539325a03848a3032ea79",
+      "original_crop": {
+        "left": 643,
+        "top": 339,
+        "width": 563,
+        "height": 558
+      },
+      "separator_boundaries": [
+        0,
+        578,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "risian-shale-crystal",
+      "family": "Orb of Shielding (Risian Shale)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-risian-shale-stone-atlas",
+      "parent_native_sha256": "01026a5ae616eda585b200efdba001ae2b2565c23965e3d2e9b8c00d2b8033ff",
+      "original_crop": {
+        "left": 64,
+        "top": 406,
+        "width": 464,
+        "height": 458
+      },
+      "separator_boundaries": [
+        0,
+        576,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "risian-shale-orb",
+      "family": "Orb of Shielding (Risian Shale)",
+      "model": "Orb",
+      "parent_atlas": "eberron-risian-shale-stone-atlas",
+      "parent_native_sha256": "01026a5ae616eda585b200efdba001ae2b2565c23965e3d2e9b8c00d2b8033ff",
+      "original_crop": {
+        "left": 625,
+        "top": 314,
+        "width": 601,
+        "height": 602
+      },
+      "separator_boundaries": [
+        0,
+        576,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "shavarran-chert-crystal",
+      "family": "Orb of Shielding (Shavarran Chert)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-shavarran-chert-stone-atlas",
+      "parent_native_sha256": "12a808de73d95901d4f2e8028f32ce661751204889713dad6f6c7becea864ee9",
+      "original_crop": {
+        "left": 82,
+        "top": 438,
+        "width": 429,
+        "height": 421
+      },
+      "separator_boundaries": [
+        0,
+        581,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "shavarran-chert-orb",
+      "family": "Orb of Shielding (Shavarran Chert)",
+      "model": "Orb",
+      "parent_atlas": "eberron-shavarran-chert-stone-atlas",
+      "parent_native_sha256": "12a808de73d95901d4f2e8028f32ce661751204889713dad6f6c7becea864ee9",
+      "original_crop": {
+        "left": 652,
+        "top": 357,
+        "width": 560,
+        "height": 550
+      },
+      "separator_boundaries": [
+        0,
+        581,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "xorian-marble-crystal",
+      "family": "Orb of Shielding (Xorian Marble)",
+      "model": "Crystal",
+      "parent_atlas": "eberron-xorian-marble-stone-atlas",
+      "parent_native_sha256": "cb6571acbde8f4a4a64c01a89c656715713cfe268ba52701aaaf2a832c1d26b9",
+      "original_crop": {
+        "left": 83,
+        "top": 446,
+        "width": 427,
+        "height": 424
+      },
+      "separator_boundaries": [
+        0,
+        565,
+        1254
+      ],
+      "padded_size": 768
+    },
+    {
+      "id": "xorian-marble-orb",
+      "family": "Orb of Shielding (Xorian Marble)",
+      "model": "Orb",
+      "parent_atlas": "eberron-xorian-marble-stone-atlas",
+      "parent_native_sha256": "cb6571acbde8f4a4a64c01a89c656715713cfe268ba52701aaaf2a832c1d26b9",
+      "original_crop": {
+        "left": 621,
+        "top": 329,
+        "width": 602,
+        "height": 596
+      },
+      "separator_boundaries": [
+        0,
+        565,
+        1254
+      ],
+      "padded_size": 768
+    }
+  ],
+  "visual_review": "All sixteen native atlases and all five dark-background item contact sheets inspected; forty distinct complete objects, safe cropping and padding, no duplicated silhouettes or vein layouts."
+}

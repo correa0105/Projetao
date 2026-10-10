@@ -16198,5 +16198,765 @@
     "magic_kind": "weapon",
     "source_edition": "D&D 5e (2014)",
     "review": "approved"
+  },
+  "fernian-ash-rod": {
+    "name": "Bastão de freixo de Fernia imbuído",
+    "description": "Foco de Freixo de Fernia na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de fogo.",
+    "merchant_comment": "O bastão de freixo tem a pegada firme. Use-o como foco quando o dano for de fogo; ele acrescenta um ponto a uma única rolagem.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de fogo, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Fernian Ash)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "fernian-ash-staff": {
+    "name": "Cajado de freixo de Fernia imbuído",
+    "description": "Foco de Freixo de Fernia na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de fogo.",
+    "merchant_comment": "O veio escuro acompanha o cajado inteiro. A madeira de Fernia ajuda na magia de fogo, sem gastar cargas e sem trocar a sua precisão.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de fogo, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Fernian Ash)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "fernian-ash-wand": {
+    "name": "Varinha de freixo de Fernia imbuída",
+    "description": "Foco de Freixo de Fernia na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de fogo.",
+    "merchant_comment": "Esta varinha de freixo deixa a ponta leve. Um ponto a mais no dano de fogo cabe na rolagem; o resto continua dependendo da magia.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de fogo, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Fernian Ash)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "irian-rosewood-rod": {
+    "name": "Bastão de jacarandá de Irian imbuído",
+    "description": "Foco de Jacarandá de Irian na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de radiante.",
+    "merchant_comment": "O pequeno sol fica na tampa do bastão de jacarandá. O brilho de Irian acompanha dano radiante; a mão ainda precisa segurá-lo como foco.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de radiante, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Irian Rosewood)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "irian-rosewood-staff": {
+    "name": "Cajado de jacarandá de Irian imbuído",
+    "description": "Foco de Jacarandá de Irian na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de radiante.",
+    "merchant_comment": "As linhas douradas são do jacarandá. O cajado ajuda uma rolagem de dano radiante por magia, e não cada alvo atingido.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de radiante, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Irian Rosewood)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "irian-rosewood-wand": {
+    "name": "Varinha de jacarandá de Irian imbuída",
+    "description": "Foco de Jacarandá de Irian na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de radiante.",
+    "merchant_comment": "A varinha de Irian é curta e bem equilibrada. A luz da madeira fortalece dano radiante, sem prometer facilitar o ataque.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de radiante, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Irian Rosewood)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "kythrian-manchineel-rod": {
+    "name": "Bastão de manchineel de Kythri imbuído",
+    "description": "Foco de Manchineel de Kythri na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de ácido ou veneno.",
+    "merchant_comment": "Os nós deste bastão não repetem o mesmo desenho. A madeira de Kythri serve para dano de ácido ou veneno; não concede proteção contra nenhum deles.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de ácido ou veneno, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Kythrian Manchineel)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "kythrian-manchineel-staff": {
+    "name": "Cajado de manchineel de Kythri imbuído",
+    "description": "Foco de Manchineel de Kythri na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de ácido ou veneno.",
+    "merchant_comment": "A volta irregular do cajado cabe bem na mão. Para magia de ácido ou veneno, escolha uma rolagem; a madeira acrescenta um ponto.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de ácido ou veneno, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Kythrian Manchineel)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "kythrian-manchineel-wand": {
+    "name": "Varinha de manchineel de Kythri imbuída",
+    "description": "Foco de Manchineel de Kythri na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de ácido ou veneno.",
+    "merchant_comment": "A varinha de manchineel tem grão manchado e ponta fina. A ajuda vale para ácido ou veneno quando ela for o foco da conjuração.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de ácido ou veneno, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Kythrian Manchineel)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "lamannian-oak-rod": {
+    "name": "Bastão de carvalho de Lamannia imbuído",
+    "description": "Foco de Carvalho de Lamannia na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de elétrico ou trovejante.",
+    "merchant_comment": "O bastão de carvalho tem veios largos. Lamannia acompanha dano elétrico ou trovejante, mas não divide o ponto extra entre várias rolagens.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de elétrico ou trovejante, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Lamannian Oak)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "lamannian-oak-staff": {
+    "name": "Cajado de carvalho de Lamannia imbuído",
+    "description": "Foco de Carvalho de Lamannia na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de elétrico ou trovejante.",
+    "merchant_comment": "O relevo de folhas continua pelo cajado de carvalho. Ele funciona como foco para magias e reforça uma rolagem elétrica ou trovejante.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de elétrico ou trovejante, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Lamannian Oak)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "lamannian-oak-wand": {
+    "name": "Varinha de carvalho de Lamannia imbuída",
+    "description": "Foco de Carvalho de Lamannia na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de elétrico ou trovejante.",
+    "merchant_comment": "O encaixe azul é discreto nesta varinha. A madeira de Lamannia ajuda no dano elétrico ou trovejante; não precisa sacudi-la para carregar.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de elétrico ou trovejante, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Lamannian Oak)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "mabaran-ebony-rod": {
+    "name": "Bastão de ébano de Mabar imbuído",
+    "description": "Foco de Ébano de Mabar na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de necrótico.",
+    "merchant_comment": "O ébano deste bastão quase esconde o veio. Mabar acrescenta um ponto ao dano necrótico da magia em que ele servir de foco.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de necrótico, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Mabaran Ebony)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "mabaran-ebony-staff": {
+    "name": "Cajado de ébano de Mabar imbuído",
+    "description": "Foco de Ébano de Mabar na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de necrótico.",
+    "merchant_comment": "A prata marca a empunhadura do cajado de ébano. A madeira reforça uma rolagem necrótica, sem cobrar cargas a cada conjuração.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de necrótico, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Mabaran Ebony)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "mabaran-ebony-wand": {
+    "name": "Varinha de ébano de Mabar imbuída",
+    "description": "Foco de Ébano de Mabar na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de necrótico.",
+    "merchant_comment": "A varinha de ébano tem uma ponta delicada. Seu encanto favorece dano necrótico; a precisão da magia continua sendo a sua.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de necrótico, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Mabaran Ebony)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "risian-pine-rod": {
+    "name": "Bastão de pinheiro de Risia imbuído",
+    "description": "Foco de Pinheiro de Risia na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de frio.",
+    "merchant_comment": "Os anéis do pinheiro aparecem sob o acabamento do bastão. A madeira de Risia reforça uma rolagem de dano de frio quando usada como foco.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de frio, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Risian Pine)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "risian-pine-staff": {
+    "name": "Cajado de pinheiro de Risia imbuído",
+    "description": "Foco de Pinheiro de Risia na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de frio.",
+    "merchant_comment": "O cajado de pinheiro é claro até na sombra. O frio da magia recebe um ponto; empunhá-lo sozinho não concede resistência ao gelo.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de frio, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Risian Pine)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "risian-pine-wand": {
+    "name": "Varinha de pinheiro de Risia imbuída",
+    "description": "Foco de Pinheiro de Risia na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de frio.",
+    "merchant_comment": "O floco foi entalhado na varinha, sem esconder o veio. Use-a como foco para acrescentar um ponto a uma rolagem de dano de frio.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de frio, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Risian Pine)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "shavarran-birch-rod": {
+    "name": "Bastão de bétula de Shavarath imbuído",
+    "description": "Foco de Bétula de Shavarath na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de energético.",
+    "merchant_comment": "As marcas de bétula atravessam o bastão claro. Shavarath reforça dano energético da magia; o ornamento de bronze não altera sua jogada de ataque.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de energético, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Shavarran Birch)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "shavarran-birch-staff": {
+    "name": "Cajado de bétula de Shavarath imbuído",
+    "description": "Foco de Bétula de Shavarath na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de energético.",
+    "merchant_comment": "Os encaixes do cajado de bétula ficam firmes na mão. Como foco, ele acrescenta um ponto a uma rolagem de dano energético.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de energético, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Shavarran Birch)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "shavarran-birch-wand": {
+    "name": "Varinha de bétula de Shavarath imbuída",
+    "description": "Foco de Bétula de Shavarath na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de energético.",
+    "merchant_comment": "Os pequenos nós fazem esta varinha de bétula ser só dela. O encanto de Shavarath ajuda no dano energético, sem converter outros danos.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de energético, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Shavarran Birch)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "xorian-wenge-rod": {
+    "name": "Bastão de wengué de Xoriat imbuído",
+    "description": "Foco de Wengué de Xoriat na forma de bastão. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de psíquico.",
+    "merchant_comment": "As faixas do wengué mudam ao virar o bastão. Xoriat reforça uma rolagem de dano psíquico quando ele participa como foco.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de psíquico, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Xorian Wenge)",
+    "base_id": "rod",
+    "model_name": "Bastão",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 2,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "xorian-wenge-staff": {
+    "name": "Cajado de wengué de Xoriat imbuído",
+    "description": "Foco de Wengué de Xoriat na forma de cajado. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de psíquico.",
+    "merchant_comment": "A espiral do cajado de wengué acompanha a fibra. Não tenta decidir por você: só acrescenta um ponto ao dano psíquico de uma rolagem.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de psíquico, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. O cajado físico também pode ser usado como bordão: dano básico 1d6 contundente, versátil 1d8 com duas mãos. O encanto não concede bônus aos ataques ou danos da arma. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Xorian Wenge)",
+    "base_id": "staff",
+    "model_name": "Cajado",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 4,
+    "base_price_cp": 500,
+    "review": "approved"
+  },
+  "xorian-wenge-wand": {
+    "name": "Varinha de wengué de Xoriat imbuída",
+    "description": "Foco de Wengué de Xoriat na forma de varinha. Como foco de uma magia, acrescenta +1 a uma única rolagem de dano de psíquico.",
+    "merchant_comment": "A ametista marca a base da varinha de wengué. O encanto favorece dano psíquico e deixa os testes da magia com seus valores normais.",
+    "rules_summary": "Exige sintonia. É um foco de madeira imbuída de energia planar; um conjurador pode usá-lo como foco de conjuração. Quando você o usa como foco ao conjurar uma magia que causa dano de psíquico, recebe bônus de +1 em uma única rolagem de dano dessa magia. Se a magia tiver várias rolagens de dano, somente uma recebe o bônus. O poder não aumenta jogadas de ataque nem CDs de resistência, não transforma o tipo de dano e não utiliza cargas. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "wood",
+    "family": "Imbued Wood (Xorian Wenge)",
+    "base_id": "wand",
+    "model_name": "Varinha",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "fernian-basalt-crystal": {
+    "name": "Cristal de proteção — Basalto de Fernia",
+    "description": "Esfera polida de Basalto de Fernia na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de fogo em 1d4.",
+    "merchant_comment": "O cristal de basalto tem pequenas manchas ferruginosas. Segure-o para reagir ao dano de fogo; a redução é de um dado de quatro faces.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de fogo, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Fernian Basalt)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "fernian-basalt-orb": {
+    "name": "Orbe de proteção — Basalto de Fernia",
+    "description": "Esfera polida de Basalto de Fernia na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de fogo em 1d4.",
+    "merchant_comment": "Este orbe de basalto pesa três libras e cabe numa mão firme. A reação amortece dano de fogo, sem transformar você em alguém imune.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de fogo, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Fernian Basalt)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
+  },
+  "irian-quartz-crystal": {
+    "name": "Cristal de proteção — Quartzo de Irian",
+    "description": "Esfera polida de Quartzo de Irian na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de radiante em 1d4.",
+    "merchant_comment": "A nuvem dourada está dentro da esfera menor de quartzo. Ela ajuda numa reação ao dano radiante; o reflexo por si só não protege.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de radiante, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Irian Quartz)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "irian-quartz-orb": {
+    "name": "Orbe de proteção — Quartzo de Irian",
+    "description": "Esfera polida de Quartzo de Irian na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de radiante em 1d4.",
+    "merchant_comment": "O quartzo do orbe tem uma faixa diferente. Segurando-o, pode reduzir um dano radiante em um dado de quatro faces, até o mínimo de zero.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de radiante, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Irian Quartz)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
+  },
+  "kythrian-skarn-crystal": {
+    "name": "Cristal de proteção — Skarn de Kythri",
+    "description": "Esfera polida de Skarn de Kythri na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de ácido ou veneno em 1d4.",
+    "merchant_comment": "As manchas deste cristal arredondado pertencem ao skarn. Sua reação reduz um dano de ácido ou veneno; não torna veneno seguro de beber.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de ácido ou veneno, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Kythrian Skarn)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "kythrian-skarn-orb": {
+    "name": "Orbe de proteção — Skarn de Kythri",
+    "description": "Esfera polida de Skarn de Kythri na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de ácido ou veneno em 1d4.",
+    "merchant_comment": "O orbe de skarn tem veios brancos bem largos. Mantenha-o na mão para reagir ao ácido ou veneno; guardar na mochila não oferece essa defesa.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de ácido ou veneno, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Kythrian Skarn)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
+  },
+  "lamannian-flint-crystal": {
+    "name": "Cristal de proteção — Sílex de Lamannia",
+    "description": "Esfera polida de Sílex de Lamannia na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de elétrico ou trovejante em 1d4.",
+    "merchant_comment": "O cristal de sílex conserva linhas claras no azul da pedra. Ele amortece um dano elétrico ou trovejante mediante sua reação.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de elétrico ou trovejante, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Lamannian Flint)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "lamannian-flint-orb": {
+    "name": "Orbe de proteção — Sílex de Lamannia",
+    "description": "Esfera polida de Sílex de Lamannia na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de elétrico ou trovejante em 1d4.",
+    "merchant_comment": "A camada clara atravessa o orbe de sílex de um lado ao outro. A redução de um dado exige a reação, além de segurá-lo quando vier o dano.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de elétrico ou trovejante, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Lamannian Flint)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
+  },
+  "mabaran-obsidian-crystal": {
+    "name": "Cristal de proteção — Obsidiana de Mabar",
+    "description": "Esfera polida de Obsidiana de Mabar na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de necrótico em 1d4.",
+    "merchant_comment": "Este cristal esférico tem brilho de vidro vulcânico. A obsidiana de Mabar ajuda a reagir ao dano necrótico, sem conferir resistência permanente.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de necrótico, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Mabaran Obsidian)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "mabaran-obsidian-orb": {
+    "name": "Orbe de proteção — Obsidiana de Mabar",
+    "description": "Esfera polida de Obsidiana de Mabar na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de necrótico em 1d4.",
+    "merchant_comment": "O veio esfumaçado distingue este orbe de obsidiana. Ele reduz dano necrótico em um dado de quatro faces; a mesma reação não cobre dois golpes.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de necrótico, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Mabaran Obsidian)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
+  },
+  "risian-shale-crystal": {
+    "name": "Cristal de proteção — Xisto de Risia",
+    "description": "Esfera polida de Xisto de Risia na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de frio em 1d4.",
+    "merchant_comment": "As linhas finas percorrem o cristal de xisto inteiro. Segurando-o, uma reação pode reduzir o dano de frio, sempre sem passar abaixo de zero.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de frio, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Risian Shale)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "risian-shale-orb": {
+    "name": "Orbe de proteção — Xisto de Risia",
+    "description": "Esfera polida de Xisto de Risia na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de frio em 1d4.",
+    "merchant_comment": "As camadas deste orbe de xisto são largas e claras. A reação amortece um dano de frio; o encanto não gasta nem recupera cargas.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de frio, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Risian Shale)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
+  },
+  "shavarran-chert-crystal": {
+    "name": "Cristal de proteção — Chert de Shavarath",
+    "description": "Esfera polida de Chert de Shavarath na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de energético em 1d4.",
+    "merchant_comment": "O cristal de chert tem inclusões de cor quente. A pedra de Shavarath amortece dano energético quando você usa a reação enquanto a segura.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de energético, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Shavarran Chert)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "shavarran-chert-orb": {
+    "name": "Orbe de proteção — Chert de Shavarath",
+    "description": "Esfera polida de Chert de Shavarath na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de energético em 1d4.",
+    "merchant_comment": "O desenho creme deste orbe não se repete no cristal menor. Para dano energético, a reação reduz um dado de quatro faces, sem bônus à defesa.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de energético, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Shavarran Chert)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
+  },
+  "xorian-marble-crystal": {
+    "name": "Cristal de proteção — Mármore de Xoriat",
+    "description": "Esfera polida de Mármore de Xoriat na forma de cristal. Segurada na mão, permite usar uma reação para reduzir dano de psíquico em 1d4.",
+    "merchant_comment": "As veias violeta atravessam a esfera menor de mármore. A pedra de Xoriat ajuda a reagir ao dano psíquico, mas não lê pensamento de ninguém.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de psíquico, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Xorian Marble)",
+    "base_id": "crystal",
+    "model_name": "Cristal",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 1,
+    "base_price_cp": 1000,
+    "review": "approved"
+  },
+  "xorian-marble-orb": {
+    "name": "Orbe de proteção — Mármore de Xoriat",
+    "description": "Esfera polida de Mármore de Xoriat na forma de orbe. Segurada na mão, permite usar uma reação para reduzir dano de psíquico em 1d4.",
+    "merchant_comment": "O mármore deste orbe tem sua própria espiral escura. Ele reduz um dano psíquico mediante reação; continua precisando estar na sua mão.",
+    "rules_summary": "Exige sintonia. Uma esfera polida de pedra ou cristal com energia planar é usada para proteção; um conjurador também pode usá-la como foco de conjuração. Enquanto a segura, quando você sofre dano de psíquico, pode usar sua reação para reduzir esse dano em 1d4, até o mínimo de zero. A redução usa a reação para esse dano e exige que o objeto esteja na mão; não concede resistência permanente ou imunidade e não utiliza cargas. O formato é uma esfera polida, inclusive na versão chamada Cristal; não é um prisma facetado. Encanto de Eberron: Rising from the Last War (2014); forma, peso e preço básico do foco físico de 2024. Os efeitos mágicos são resolvidos na mesa.",
+    "slots": [
+      "main_hand",
+      "off_hand"
+    ],
+    "two_handed": false,
+    "material": "spheres",
+    "family": "Orb of Shielding (Xorian Marble)",
+    "base_id": "orb",
+    "model_name": "Orbe",
+    "source_edition": "D&D 5e (2014)",
+    "reviewed_weight_lb": 3,
+    "base_price_cp": 2000,
+    "review": "approved"
   }
 }

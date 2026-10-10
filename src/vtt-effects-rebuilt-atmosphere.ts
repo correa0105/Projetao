@@ -117,14 +117,14 @@ export function drawRebuiltAtmosphere(
   } else if (kind === 'spirit-procession') {
     // One large hooded wraith circles laterally; the two souls above keep their
     // own illustration and choreography.
-    const a = t * 0.42 + 0.55,
-      x = Math.cos(a) * 112,
-      y = Math.sin(a) * 49;
+    const a = t * 0.32 + 0.55,
+      x = Math.cos(a) * 132,
+      y = Math.sin(a) * 58;
     if ((y > 0) === front) {
       c.save();
       c.translate(x, y);
       c.rotate(Math.sin(a) * 0.24 + Math.sin(t * 0.71) * 0.06);
-      spectralScreamer(c, 120, t, 0.94);
+      spectralScreamer(c, 132, t, 0.94);
       c.restore();
     }
   } else if (kind === 'ghost-wake') {

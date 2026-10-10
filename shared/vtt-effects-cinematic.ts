@@ -104,7 +104,7 @@ const rows: [
   ['leaf-cyclone', 'Ciclone de folhas', 'nature', 'orbit', 0.6, 25, 1.13],
   ['seed-trails', 'Trilhas de sementes', 'nature', 'comet', 0.3, 18, 1.05],
   ['soul-vortex', 'Vórtice de almas', 'soul', 'spiral', 0.32, 14, 1.12],
-  ['spirit-procession', 'Procissão espectral', 'soul', 'orbit', 0.16, 8, 1.15],
+  ['spirit-procession', 'Morte na Espreita', 'soul', 'orbit', 0.16, 8, 1.15],
   ['ghost-wake', 'Rastro espectral', 'soul', 'surge', 0.45, 16, 1.14],
   ['umbra-bloom', 'Flor de sombras', 'soul', 'bloom', 0.24, 14, 1.2],
   ['healing-stream', 'Fluxo restaurador', 'light', 'spiral', 0.36, 28, 1],
@@ -143,7 +143,7 @@ export const cinematicEffects = rows.map(([kind, name, family, layout]) => ({
           ? 'Magia'
           : 'Elementos',
   description:
-    name +
+    kind === 'spirit-procession' ? 'Morte na Espreita' : name +
     ' · matéria detalhada com fluxo, volume e movimento ' +
     {
       comet: 'com rastros',

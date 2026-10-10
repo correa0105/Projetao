@@ -5,6 +5,7 @@ import { alpha, fract, glow, luminousStroke, star, tau, tint } from './vtt-effec
 import { discharge } from './vtt-effects-overhead-magic';
 import { curseFlow, physicalProp } from './vtt-effects-physical';
 import { drawLavaFissures } from './vtt-lava-fissures';
+import { vitalDrain } from './vtt-vital-drain';
 
 type Random = (index: number) => number;
 const models = new Set([
@@ -329,19 +330,7 @@ export function drawEffectCollection(
       if (!front) {
         vapor(c, t * 0.65, random, n(9), 0.4);
         glow(c, 0, 0, 82, color, 0.16);
-      } else
-        for (let i = 0; i < n(13); i++) {
-          const age = fract(t * 0.3 + random(i)),
-            a = random(i + 32) * tau;
-          c.beginPath();
-          for (let k = 0; k <= 26; k++) {
-            const u = k / 26,
-              p = polar(9 + (1 - u) * 85, a + Math.sin(u * 7 + t + i) * 0.08);
-            k ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y);
-          }
-          luminousStroke(c, color, 1, 0.16 + envelope(age) * 0.3);
-          streak(c, a, 10 + (1 - age) * 82, age, color, 1.5);
-        }
+      } else vitalDrain(c, color, t, random, detail);
     } else if (e.kind === 'web') {
       const spokes = 13;
       c.globalAlpha *= front ? 0.82 : 0.95;

@@ -6,6 +6,185 @@
 .app-shell[data-page='lore'] .page-header-spacer {
   display: none;
 }
+/* The account tab and navigation share the archive's quiet brass and ink. */
+:root .app-shell[data-page='lore'] .page-header > .profile-menu.profile-menu {
+  width: 112px;
+  height: 44px;
+  min-height: 44px;
+  border-radius: 3px;
+}
+:root .app-shell[data-page='lore'] .profile-menu .profile-avatar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 112px;
+  height: 44px;
+  padding: 6px 8px 6px 16px;
+  border: 1px solid #bb995c59;
+  border-radius: 3px;
+  background: #161913df;
+  color: #ddd3be;
+  box-shadow: 0 4px 18px #0003;
+}
+.app-shell[data-page='lore'] .profile-menu-label {
+  font: 10px 'Cinzel', Georgia, serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.app-shell[data-page='lore'] .profile-face {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 1px solid #bb995c40;
+}
+.app-shell[data-page='lore'] .profile-menu-controls {
+  top: calc(100% + 8px);
+  right: 0;
+  transform: none;
+  max-width: calc(100vw - 2 * var(--page-header-edge));
+  padding: 10px 12px;
+  border-color: #bb995c59;
+  border-radius: 3px;
+  background: #181b15f5;
+  box-shadow: 0 10px 28px #0005;
+}
+.app-shell[data-page='lore'] .profile-menu-controls::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9px;
+  height: 9px;
+}
+.app-shell[data-page='lore'] .profile-menu:is(:hover, :focus-within, [data-pinned='true']) .profile-menu-controls,
+.app-shell[data-page='lore'] .profile-menu:has(.character-selector-trigger[aria-expanded='true'], .notifications-trigger[aria-expanded='true'], .music-settings-trigger[aria-expanded='true']) .profile-menu-controls {
+  transform: none;
+  animation: none;
+}
+:root .app-shell[data-page='lore'] .profile-menu .profile-avatar:is(:hover, [aria-expanded='true']) {
+  border-color: #bb995c;
+  background: #23271e;
+}
+.app-shell[data-page='lore'] .profile-menu :is(.player-notifications, .music-controls, .character-selector) {
+  position: static;
+}
+:root .app-shell[data-page='lore'] .profile-menu :is(.music-volume-panel, .notifications-panel, .character-options) {
+  right: 0;
+  max-width: calc(100vw - 2 * var(--page-header-edge));
+  border-color: #bb995c59;
+  border-radius: 3px;
+  background: #181b15fa;
+}
+:root .app-shell[data-page='lore'] .profile-menu .character-options {
+  top: calc(100% + 70px);
+}
+.app-shell[data-page='lore'] .profile-menu:has(.music-settings-trigger[aria-expanded='true'], .notifications-trigger[aria-expanded='true']) .character-options {
+  visibility: hidden;
+  pointer-events: none;
+}
+.app-shell[data-page='lore'] .profile-menu .topbar-right {
+  width: auto;
+}
+.app-shell[data-page='lore'] .journey-dock {
+  --orb-size: 60px;
+  --dock-gap: 8px;
+  --dock-padding: 14px;
+  --dock-width: calc(6 * var(--orb-size) + 5 * var(--dock-gap) + 2 * var(--dock-padding) + 2px);
+  --dock-height: 94px;
+  left: auto;
+  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  transform: none;
+  width: 112px;
+  height: 44px;
+  border-color: #bb995c59;
+  border-radius: 3px;
+  background: #161913ed;
+  box-shadow: 0 4px 18px #0003;
+}
+.app-shell[data-page='lore'] .journey-dock.is-revealed {
+  width: var(--dock-width);
+  height: var(--dock-height);
+}
+.app-shell[data-page='lore'] .journey-dock::before {
+  background: linear-gradient(90deg, transparent, #bb995c80, transparent) top / 100% 1px no-repeat;
+  opacity: 1;
+}
+.app-shell[data-page='lore'] .dock-handle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #ddd3be;
+  font: 10px 'Cinzel', Georgia, serif;
+  letter-spacing: 0.12em;
+}
+.app-shell[data-page='lore'] .dock-handle svg {
+  color: #bb995c;
+}
+.app-shell[data-page='lore'] .dock-item {
+  gap: 8px;
+  color: #bdb29e;
+}
+.app-shell[data-page='lore'] .dock-orb {
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.app-shell[data-page='lore'] .dock-orb > svg {
+  width: 30px;
+  height: 30px;
+}
+.app-shell[data-page='lore'] .dock-orb::before,
+.app-shell[data-page='lore'] .dock-orb::after {
+  display: none;
+}
+.app-shell[data-page='lore'] .dock-item-label {
+  font: 9px 'Cinzel', Georgia, serif;
+  letter-spacing: 0.03em;
+}
+.app-shell[data-page='lore'] .dock-item:is(:hover, :focus-visible, .is-active, [aria-expanded='true']) .dock-orb {
+  border-color: #bb995c66;
+  background: #bb995c12;
+  box-shadow: none;
+  transform: none;
+}
+.app-shell[data-page='lore'] .dock-item:is(:hover, .is-active, [aria-expanded='true']) .dock-item-label {
+  color: #e4cfaa;
+}
+.app-shell[data-page='lore'] .dock-panel {
+  border-color: #bb995c59;
+  border-radius: 3px;
+  background: #181b15fa;
+}
+.app-shell[data-page='lore'] .dock-panel::before {
+  border-color: #bb995c59;
+  background: #181b15;
+}
+.app-shell[data-page='lore'] .dock-panel-heading {
+  border-bottom: 1px solid #bb995c26;
+  color: #bb995c;
+  font: 11px 'Cinzel', Georgia, serif;
+}
+.app-shell[data-page='lore'] .dock-destination {
+  border-radius: 2px;
+  color: #ddd3be;
+}
+.app-shell[data-page='lore'] .dock-destination:is(:hover, [aria-current='page']) {
+  background: #bb995c18;
+  color: #e4cfaa;
+}
+@media (max-width: 600px) {
+  .app-shell[data-page='lore'] .journey-dock {
+    --dock-width: calc(3 * var(--orb-size) + 2 * var(--dock-gap) + 2 * var(--dock-padding) + 2px);
+    --dock-height: 176px;
+    right: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom));
+  }
+}
 .lore-library {
   --lore-ink: #ddd3be;
   --lore-muted: #a79c86;

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-10",
+  "id": "spectral-reaper-three-faced-mask",
+  "status": "approved",
+  "source_tool": "imagegen",
+  "original_sha256": "bba9bfa7e750d3393a672560312b5e6a9abee40ec484dd01f1d9f5ff499534ac",
+  "asset_path": "/vtt/spectral-reaper-20261010/reaper.webp",
+  "asset_sha256": "07df41092291ccc1f9170176a348139e8ebe2ad19e8f9350fe646d0b312a4cd0",
+  "width": 512,
+  "height": 768,
+  "native_alpha": true,
+  "previous_wraith_sha256": "4ee56cec745cb4866146d5dac7df4321977dd4e7c1939624a71fec7cac6e3573",
+  "mask_reference_sha256": "1c04ee126a0ca6de3e161d48fd8d909e3fcd9e0f905c385f7a8f909dcd5dec36",
+  "prompt": "Edit image 1 (the complete hooded grim reaper) using image 2 ONLY as the face/mask reference. Replace the entire pale screaming face with ONE unified dark weathered three-faced ritual mask matching reference 2: a broad central human face, side faces integrated into the same sculpted black mask, and the small carved face on the forehead, coarse obsidian/charcoal textured surface, deep empty black eye holes, pronounced noses and lips. Preserve the recognizable shape and features of the user's reference; it is one mask worn by ONE ghost, not multiple ghosts or floating heads. Use restrained silver-gray edge lighting to reveal that black mask inside the dark hood at small thumbnail size. Remove the former pale oval scream mask completely. Lengthen the scythe's wooden handle substantially so it extends nearly the full height of the reaper, from the top blade down beside the lower cloak; a long believable grim reaper pole, anatomically held by the same bony hand with fingers wrapping it. For animation, put the long STRAIGHT pole along the far RIGHT edge of the silhouette, entirely within the rightmost 25 percent of the image, slightly inclined if needed. The curved silver crescent blade remains complete above and to the left of the hood, and the hand grips the shaft clearly. Keep supple trailing dark cloak flowing left, the fantasy painted realism and a single whole figure, no additional bodies. Preserve all tips of the scythe blade, long handle, hood and cloth with 7 percent transparent padding at every canvas edge. GENUINE transparent background with zero opacity empty space: no gray painted background, gradient rectangle, outer smoke halo, scene, floor, border, text, watermark or other objects. The mask and rigid scythe remain distinct from the flowing lower-left cloth.\n",
+  "technical_processing": "Proportional resize, transparent padding and WebP encoding only; complete native mask/hand/long scythe/cloth preserved.",
+  "animation": "Single lateral orbit with face/hood/hand/scythe rigid and smooth affine deformation confined to trailing lower-left cloth.",
+  "edit_target_sha256": "ca45beeb91f96422120619b9e32b2173a6c6b147f8dc82f861f36fd34c693c4d",
+  "visual_review": "Native referenced mask/hand/complete long scythe, real thumbnail sequences, private character renderer and mobile reviewed; transparent padding, one entity, head/blade/shaft rigid and cloth continuous.",
+  "validation": {
+    "unchanged_effects": 102,
+    "drain_base_identical": true,
+    "single_reaper": true,
+    "rigid_mask_scythe": true,
+    "reduced_motion": true,
+    "no_thumbnail_clipping": true,
+    "benchmark_ms": 3.15
+  }
+}

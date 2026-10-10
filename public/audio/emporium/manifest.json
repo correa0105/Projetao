@@ -18438,5 +18438,325 @@
     "sha256": "bd72b8883ceacf05fd4940e6a22d6e6c8f37cc2190edea774a7d0925cca7d8b2",
     "source": "public/audio/shop-counter-metal.wav",
     "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "fernian-ash-rod",
+    "path": "public/audio/emporium/fernian-ash-rod.wav",
+    "kind": "wood",
+    "sha256": "45229ba9aa62a390d288ca8fd17c7aedc88242f7e9b9d59325407c111618de25",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "fernian-ash-staff",
+    "path": "public/audio/emporium/fernian-ash-staff.wav",
+    "kind": "wood",
+    "sha256": "6a63cfc4ba9641bfb8fe836b6a0b7f5a73715f8a9af05796cd8654efe7d726a7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "fernian-ash-wand",
+    "path": "public/audio/emporium/fernian-ash-wand.wav",
+    "kind": "wood",
+    "sha256": "228116ad72e217059b67616514dd0c05f94c3e4096e48439f54e07727e7d5973",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "irian-rosewood-rod",
+    "path": "public/audio/emporium/irian-rosewood-rod.wav",
+    "kind": "wood",
+    "sha256": "d8e26b66fd57582f02ee4389b374b7314d20c0e8fbe48b00325a4eccd9d880f3",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "irian-rosewood-staff",
+    "path": "public/audio/emporium/irian-rosewood-staff.wav",
+    "kind": "wood",
+    "sha256": "8bea26195a1e9ec2e515b066be01ff347c617e44ab6da4215e0b00fdda8d6849",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "irian-rosewood-wand",
+    "path": "public/audio/emporium/irian-rosewood-wand.wav",
+    "kind": "wood",
+    "sha256": "e40fa8402e815f40726108cf1aecca4da5168b452488d47b9c287fd15ea8e719",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "kythrian-manchineel-rod",
+    "path": "public/audio/emporium/kythrian-manchineel-rod.wav",
+    "kind": "wood",
+    "sha256": "22610a1219655d623554c908900dc0785ca20e079d3a7b3665444f3b134dfc9e",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "kythrian-manchineel-staff",
+    "path": "public/audio/emporium/kythrian-manchineel-staff.wav",
+    "kind": "wood",
+    "sha256": "a4093f8f279f8ee3888d56cea2cbc7ca153cab982ca295b4b9b7f80559693337",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "kythrian-manchineel-wand",
+    "path": "public/audio/emporium/kythrian-manchineel-wand.wav",
+    "kind": "wood",
+    "sha256": "14899c6f2a78c0385038f1f9ed20439b041ba76b6cefeb66a5b9cbfd0043b5df",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lamannian-oak-rod",
+    "path": "public/audio/emporium/lamannian-oak-rod.wav",
+    "kind": "wood",
+    "sha256": "28ca68b651aba66ac0a8f475445dfe532c37ff7c18db5ec531b134780129e33d",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lamannian-oak-staff",
+    "path": "public/audio/emporium/lamannian-oak-staff.wav",
+    "kind": "wood",
+    "sha256": "85a3526660ffd961c5f910455946f0803f2d1925665661ee2061861db294c5c7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lamannian-oak-wand",
+    "path": "public/audio/emporium/lamannian-oak-wand.wav",
+    "kind": "wood",
+    "sha256": "6d94705b42344bb9b72e2d03b14c5dd8f17a3abdfc48c3fd1d007331b040f0be",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "mabaran-ebony-rod",
+    "path": "public/audio/emporium/mabaran-ebony-rod.wav",
+    "kind": "wood",
+    "sha256": "f5d7619f28d88df90c54342d27816a8c7fbf6b1e44166581c9c42b10205a204d",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "mabaran-ebony-staff",
+    "path": "public/audio/emporium/mabaran-ebony-staff.wav",
+    "kind": "wood",
+    "sha256": "60b3999d8cc50765f46dc004b15fcdcac7c6b9641d6cb2dbb827e75dcb435f0a",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "mabaran-ebony-wand",
+    "path": "public/audio/emporium/mabaran-ebony-wand.wav",
+    "kind": "wood",
+    "sha256": "dda6641700a90f234b3768695ae1e4338480d44519f8899fbca33f4010969afe",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "risian-pine-rod",
+    "path": "public/audio/emporium/risian-pine-rod.wav",
+    "kind": "wood",
+    "sha256": "1ba02132c10d762c98d83a89a13688d66b2730377421734532717569f36c822f",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "risian-pine-staff",
+    "path": "public/audio/emporium/risian-pine-staff.wav",
+    "kind": "wood",
+    "sha256": "8df06ff554ab2024f3118667d36da04b27abc1e920ca11171ce14b812f669089",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "risian-pine-wand",
+    "path": "public/audio/emporium/risian-pine-wand.wav",
+    "kind": "wood",
+    "sha256": "9265ea0e618342ee3f5794b529b3ffbeef8ab7ed96b3023ff96e5377738abac7",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shavarran-birch-rod",
+    "path": "public/audio/emporium/shavarran-birch-rod.wav",
+    "kind": "wood",
+    "sha256": "8f7dee449fab4830aa7ea07f7c970d539d0d1ca58b7c08ed2ac31a13a6d46243",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shavarran-birch-staff",
+    "path": "public/audio/emporium/shavarran-birch-staff.wav",
+    "kind": "wood",
+    "sha256": "18324aa7d7ccd9c7ea89da1a49e7a00d87bda43a6b57cfc50b3a55460686be08",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shavarran-birch-wand",
+    "path": "public/audio/emporium/shavarran-birch-wand.wav",
+    "kind": "wood",
+    "sha256": "7bb7ae221213cc7dae6cc5f5b6a22f2a4a1cc581aa280ba3926959a0c9fe881f",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "xorian-wenge-rod",
+    "path": "public/audio/emporium/xorian-wenge-rod.wav",
+    "kind": "wood",
+    "sha256": "a7fdd5104ee6d906d97d4611b0f505ee26fdedec39d009fa5f22a31458c4cacc",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "xorian-wenge-staff",
+    "path": "public/audio/emporium/xorian-wenge-staff.wav",
+    "kind": "wood",
+    "sha256": "387da8d806ea21a5aa9f2ce962447a3b69f166e18577c82e2f08b41add08866c",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "xorian-wenge-wand",
+    "path": "public/audio/emporium/xorian-wenge-wand.wav",
+    "kind": "wood",
+    "sha256": "e1251bd7b042cbdeea0739915bf8efbcdd8cdb07177d997f99c1bcb574f982f6",
+    "source": "public/audio/shop-counter-wood.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "fernian-basalt-crystal",
+    "path": "public/audio/emporium/fernian-basalt-crystal.wav",
+    "kind": "spheres",
+    "sha256": "503b7ef242951aad9c31cc55044f4b460e30542fdcd00fdc40bad5d70bd91105",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "fernian-basalt-orb",
+    "path": "public/audio/emporium/fernian-basalt-orb.wav",
+    "kind": "spheres",
+    "sha256": "a196391156651934e253ffe1d5ad513ba112a1813cd210ca304b14964fa51691",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "irian-quartz-crystal",
+    "path": "public/audio/emporium/irian-quartz-crystal.wav",
+    "kind": "spheres",
+    "sha256": "57e585618b1cb2530a2559abecbd4bb232a1550db0bb53cbf51a01da64097bea",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "irian-quartz-orb",
+    "path": "public/audio/emporium/irian-quartz-orb.wav",
+    "kind": "spheres",
+    "sha256": "e7ae362c4e2f6d33d32d53c10fd745fdefedec8a8798bbe9d96780aef0d0e562",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "kythrian-skarn-crystal",
+    "path": "public/audio/emporium/kythrian-skarn-crystal.wav",
+    "kind": "spheres",
+    "sha256": "e7c7807f5cb440dbbfa9fa0d159503fe5aa03c98f628a26e175846331cef1298",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "kythrian-skarn-orb",
+    "path": "public/audio/emporium/kythrian-skarn-orb.wav",
+    "kind": "spheres",
+    "sha256": "216e9170d8d1663db0eaddd24f9a4c1b5784569b5882c9143b9bbeff86490b16",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lamannian-flint-crystal",
+    "path": "public/audio/emporium/lamannian-flint-crystal.wav",
+    "kind": "spheres",
+    "sha256": "1857faf84b4a2af8b7d2561f15392daaf244da58ef6377ccc07f3e1fd47a0022",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "lamannian-flint-orb",
+    "path": "public/audio/emporium/lamannian-flint-orb.wav",
+    "kind": "spheres",
+    "sha256": "fe8783df9d37a66b4ca9314bfa603eb4c596916261676fc96493b9bdb3509f00",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "mabaran-obsidian-crystal",
+    "path": "public/audio/emporium/mabaran-obsidian-crystal.wav",
+    "kind": "spheres",
+    "sha256": "8a5fdcf754d956e58f36e15d21ad222e0d8ab00f5f32ac2b97d13adbce208977",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "mabaran-obsidian-orb",
+    "path": "public/audio/emporium/mabaran-obsidian-orb.wav",
+    "kind": "spheres",
+    "sha256": "0f60ab954e0e1e8cdf0cbfd2b8d1dcfc0238d73fdcc4b4d237dc871cccc5a7db",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "risian-shale-crystal",
+    "path": "public/audio/emporium/risian-shale-crystal.wav",
+    "kind": "spheres",
+    "sha256": "8839b9ce2a134ed9effdaae24f87fe7ae4d3d64dd1bec5bb66de32fc4f7a60c2",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "risian-shale-orb",
+    "path": "public/audio/emporium/risian-shale-orb.wav",
+    "kind": "spheres",
+    "sha256": "5a555981516b58b83f0685c06835e1fc645ed034d47e09bb51f21128307a658e",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shavarran-chert-crystal",
+    "path": "public/audio/emporium/shavarran-chert-crystal.wav",
+    "kind": "spheres",
+    "sha256": "d0c8eba77b415186e321cb60ab15743920f9ce3f73d5b44ed230a5c9cd98427b",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "shavarran-chert-orb",
+    "path": "public/audio/emporium/shavarran-chert-orb.wav",
+    "kind": "spheres",
+    "sha256": "8bcc23c82136ce89264bb400f6144157b061c23a07e09862402896ecdfe66148",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "xorian-marble-crystal",
+    "path": "public/audio/emporium/xorian-marble-crystal.wav",
+    "kind": "spheres",
+    "sha256": "38237009e66fa515e0c31f8e7581b9755c936ee43eeff42aadfa91c6db3a6fdb",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
+  },
+  {
+    "id": "xorian-marble-orb",
+    "path": "public/audio/emporium/xorian-marble-orb.wav",
+    "kind": "spheres",
+    "sha256": "22bf94215a4aa72e2cb3128551a2a580fe421e5d761a26f76c7128dd4080173d",
+    "source": "public/audio/shop-counter-spheres.wav",
+    "algorithm": "Own material sample, deterministic item-specific pitch, damping and short reflection; PCM16 mono"
   }
 ]

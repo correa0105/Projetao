@@ -2,7 +2,7 @@
 
 O pedido atual autoriza completar os itens mágicos ausentes do 5etools, incluindo
 suplementos e aventuras. Substitui a antiga limitação da loja ao SRD. Ainda não
-está concluído: **974 itens novos estão aplicados**, de um levantamento que tem
+está concluído: **1014 itens novos estão aplicados**, de um levantamento que tem
 968 identidades nomeadas ausentes e 2.108 modelos concretos adicionais candidatos.
 Os candidatos precisam de curadoria, arte, fala, som e validação antes da venda.
 Não interpretar os 3.076 candidatos como itens publicados ou cobertura já completa.
@@ -511,3 +511,11 @@ TypeScript/build aprovados. API em banco UUID descartável validou os 974 itens,
 Durante a montagem inicial, o Docker parou com o disco C quase cheio. Foram removidas somente 42.624 cópias de WAV de antigos estágios temporários, previamente comparadas por tamanho e SHA-256 com os originais do projeto, liberando 3.081.866.240 bytes. Originais, manifests, estágio atual, imagens de publicação e volumes foram preservados. Lista privada de recuperação em .local/redundant-stage-audio-recovery.json. Após reiniciar o Docker, a auditoria confirmou as 60 tabelas e as ofertas da publicação anterior; o ilustrador foi reativado com fila vazia. A publicação passou a copiar só as 56 artes novas sobre a imagem anterior, evitando repetir todo o acervo em cada camada. Helpers privados: prepare-incremental-magic-art.mjs e verify-docker-recovery.mjs.
 
 Completar todos continua em andamento: 2.102 candidatos, além das opções específicas de magia/alvo que precisam ser expandidas.
+
+## Lote 21 — focos de Eberron (40)
+
+1014 itens novos publicados. Oito madeiras imbuídas em três modelos (haste, cajado, varinha) e oito pedras protetoras em duas formas esféricas polidas (cristal e orbe). ERLW pp.277–278, encantamentos de 2014 separados das bases físicas modernas. Madeira acrescenta +1 a uma única rolagem de dano da magia do tipo próprio enquanto usada como foco; não concede ataque ou CD. Pedra exige segurar o foco e usar reação ao sofrer dano do tipo próprio para reduzi-lo em 1d4, mínimo zero; não é resistência/imunidade. Todos exigem sintonia.
+
+Pesos físicos: haste 2 lb, cajado 4 lb, varinha/cristal 1 lb, orbe 3 lb. Preços seguem raridade comum mais base: 110/105/110/110/120 PO, respectivamente. Cajados conservam uso físico como bordão e nenhuma forma recebe bônus de arma inventado. Dezesseis atlases nativos originais produziram quarenta silhuetas inteiras e distintas, transparentes, com recorte técnico pelas lacunas alpha e margem segura. Cinco contatos finais revisados; 40 falas individuais, 40 sons materiais próprios e regras disponíveis na seleção. Prompts/crops/hashes em art-jobs-eberron-foci.json; arte/editorial/manifests anteriores integrais iguais.
+
+API dos 1014 itens e ambas as mãos dos 40 novos, compra/replay/saldo/ledger/preço administrativo persistido; loja completa em três larguras, arte e falas individuais, TypeScript/build passaram. Publicação incremental copiou só as 40 novas artes/sons, preservando 60 tabelas e todas as ofertas anteriores; somente 40 produtos acrescentados. Todas as 2097 mídias e 43 bundles públicos corresponderam aos arquivos revisados. Docker saudável; ilustrador ativo. A mesma publicação contém os menus da Lore e os três VFX documentados em LORE-MENUS-AND-REAPER-20261010.md, incluindo máscara enviada e foice longa. Restam 2062 candidatos e opções específicas por expandir.

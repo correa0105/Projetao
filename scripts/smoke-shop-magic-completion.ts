@@ -640,6 +640,59 @@ try {
     }
     assert.deepEqual((await pool.query('SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',[hero.id])).rows,ledger);
   }
+  const planarFoci = completion.items.filter((x: any) =>
+    /^(Imbued Wood|Orb of Shielding) \(/.test(x.raw_data.magic_family || ''),
+  );
+  if (ids.includes('fernian-ash-rod')) {
+    assert.equal(planarFoci.length, 40);
+    const families = new Set(planarFoci.map((x: any) => x.raw_data.magic_family));
+    assert.equal(families.size, 16);
+    const shapes: Record<string, [number, number]> = {
+      rod: [2, 11000], staff: [4, 10500], wand: [1, 11000],
+      crystal: [1, 11000], orb: [3, 12000],
+    };
+    for (const family of families)
+      assert.equal(planarFoci.filter((x: any) => x.raw_data.magic_family === family).length,
+        String(family).startsWith('Imbued Wood') ? 3 : 2);
+    for (const item of planarFoci) {
+      const raw = item.raw_data, facts = raw.upstream_facts, rules = raw.rules_summary;
+      const wood = raw.magic_family.startsWith('Imbued Wood');
+      assert.equal(facts.source, 'ERLW'); assert.equal(facts.page, wood ? 277 : 278);
+      assert.equal(raw.source_edition, 'D&D 5e (2014)'); assert.equal(raw.attunement, true);
+      assert.equal(raw.enhancement, undefined); assert.equal(raw.magic_kind, undefined);
+      assert.equal(raw.consumable, false); assert.equal(raw.two_handed, false);
+      assert.deepEqual(raw.equipment_slots, ['main_hand', 'off_hand']);
+      assert.equal(item.weight_lb, shapes[raw.base_item][0]);
+      assert.equal(item.weight_estimated, false);
+      assert.equal(item.price_cp, shapes[raw.base_item][1]);
+      assert.match(rules, /foco de conjuração/);
+      if (wood) {
+        assert.equal(facts.bonusSpellDamage, '+1');
+        assert.match(rules, /bônus de \+1 em uma única rolagem de dano dessa magia/);
+        assert.match(rules, /não aumenta jogadas de ataque nem CDs de resistência/);
+      } else {
+        assert.match(rules, /Enquanto a segura, quando você sofre dano/);
+        assert.match(rules, /sua reação para reduzir esse dano em 1d4, até o mínimo de zero/);
+        assert.match(rules, /não concede resistência permanente ou imunidade/);
+        assert.match(rules, /esfera polida, inclusive na versão chamada Cristal/);
+      }
+      if (!rulesReviewIds || rulesReviewIds.has(item.id))
+        for (const slot of ['main_hand', 'off_hand']) {
+          // One owned focus cannot occupy both hands at once. Release the
+          // previous hand before checking its other compatible position.
+          assert.equal((await request('/inventory/equipment', 'POST',
+            { character_id: hero.id, item_id: null, slot: 'main_hand' })).status, 200);
+          assert.equal((await request('/inventory/equipment', 'POST',
+            { character_id: hero.id, item_id: null, slot: 'off_hand' })).status, 200);
+          assert.equal((await request('/inventory/equipment', 'POST',
+            { character_id: hero.id, item_id: item.id, slot })).status, 200, item.id);
+        }
+    }
+    assert.deepEqual((await pool.query(
+      'SELECT item_id,quantity,total_cp FROM purchases WHERE character_id=$1 ORDER BY item_id',
+      [hero.id],
+    )).rows, ledger);
+  }
   console.log(
     `PASS ${ids.length} reviewed magic items: original art/audio, ${rulesReviewIds?.size ?? ids.length} source descriptions, exact equipment, all old catalog rows unchanged, persistent admin price, purchase replay/ledger/gold and equipment.`,
   );

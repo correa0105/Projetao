@@ -10,6 +10,7 @@ export function CharacterSelector({
   open: controlledOpen,
   onOpenChange,
   hideTrigger = false,
+  keepAccountOpen = false,
 }: {
   characters: Character[];
   selectedId: string;
@@ -17,6 +18,7 @@ export function CharacterSelector({
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   hideTrigger?: boolean;
+  keepAccountOpen?: boolean;
 }) {
   const [internalOpen, setInternalOpen] = useState(false);
   const open = controlledOpen ?? internalOpen;
@@ -39,6 +41,7 @@ export function CharacterSelector({
     if (!open) return;
     function outside(event: PointerEvent) {
       const target = event.target as Element;
+      if (keepAccountOpen && root.current?.closest('.profile-menu')?.contains(target)) return;
       if (
         !root.current?.contains(target) &&
         !document.getElementById(`${id}-list`)?.contains(target) &&
@@ -48,7 +51,7 @@ export function CharacterSelector({
     }
     document.addEventListener('pointerdown', outside);
     return () => document.removeEventListener('pointerdown', outside);
-  }, [open]);
+  }, [open, keepAccountOpen]);
   useEffect(() => {
     if (open)
       document.getElementById(`${id}-option-${activeIndex}`)?.scrollIntoView({ block: 'nearest' });

@@ -655,6 +655,7 @@ function Portal({ user }: { user: User }) {
             }
           >
             <ProfileMenu
+              label={page === 'lore' ? 'Conta' : undefined}
               character={character}
               open={characterMenuOpen}
               onOpenChange={setCharacterMenuOpen}
@@ -678,6 +679,7 @@ function Portal({ user }: { user: User }) {
                       open={characterMenuOpen}
                       onOpenChange={setCharacterMenuOpen}
                       hideTrigger
+                      keepAccountOpen={page === 'lore'}
                     />
                   )}
                 </div>

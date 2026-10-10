@@ -10,6 +10,7 @@ import { materialSprite } from './vtt-effects-materials';
 import { alpha, fract, glow, tau, tint } from './vtt-effects-primitives';
 import { discharge } from './vtt-effects-overhead-magic';
 import { drawFluidPhenomenon } from './vtt-effects-fluid';
+import { groundRupture } from './vtt-ground-rupture';
 
 export function continuousPhenomenon(
   c: CanvasRenderingContext2D,
@@ -193,7 +194,8 @@ export function drawCinematicTokenEffect(
   if (!model) return false;
   c.save();
   c.scale(f.plane.rx / 80, f.plane.ry / 80);
-  continuousPhenomenon(c, model, e.color, t, random, front, detail);
+  if (e.kind === 'ground-rupture') groundRupture(c, e.color, t, random, front, detail);
+  else continuousPhenomenon(c, model, e.color, t, random, front, detail);
   c.restore();
   return true;
 }
