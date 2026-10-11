@@ -55,6 +55,27 @@ try {
   await page.getByRole('button', { name: 'Administrar tags', exact: true }).click();
   const manager = page.getByRole('dialog', { name: 'Administrar tags e conquistas' });
   await expect(manager).toBeVisible();
+  const initialTags = await page.request
+    .get(origin + '/api/mission-tags/catalog')
+    .then((r) => r.json());
+  for (const name of [
+    'Goblin',
+    'Kobold',
+    'Esqueleto',
+    'Zumbi',
+    'Orc',
+    'Hobgoblin',
+    'Gnoll',
+    'Bugurso',
+    'Ogro',
+    'Cubo gelatinoso',
+  ]) {
+    expect(
+      initialTags.tags.filter(
+        (t: { name: string; active: boolean }) => t.name === name && t.active,
+      ),
+    ).toHaveLength(1);
+  }
   await manager.getByLabel('Nome da tag', { exact: true }).fill('Exploração');
   await manager.getByLabel('Descrição da tag', { exact: true }).fill('Explore lugares novos.');
   await manager.getByRole('button', { name: 'Salvar tag', exact: true }).click();
@@ -252,6 +273,23 @@ try {
         ),
     );
     await expect(page.locator('.lore-scene-art')).toBeVisible();
+    await page.evaluate(() => scrollTo(0, 0));
+    const heading = page.locator('.page-header h1');
+    await expect(heading).toHaveText(/Crônicas & lore/i);
+    expect(await page.locator('.lore-hero h1').count()).toBe(0);
+    const header = await heading.evaluate((e) => {
+      const r = e.getBoundingClientRect();
+      return {
+        left: r.left,
+        top: r.top,
+        right: r.right,
+        fontSize: parseFloat(getComputedStyle(e).fontSize),
+      };
+    });
+    expect(header.top).toBeLessThan(width > 900 ? 40 : 100);
+    expect(header.left).toBeGreaterThanOrEqual(0);
+    expect(header.right).toBeLessThanOrEqual(width);
+    expect(header.fontSize).toBeLessThanOrEqual(26);
     expect(
       await page.locator('.lore-scene-art').evaluate((e) => getComputedStyle(e).backgroundImage),
     ).toContain('lore-world-v2.webp');
@@ -269,7 +307,7 @@ try {
       true,
     );
     expect(
-      await page.locator('.lore-hero h1').evaluate((e) => e.getBoundingClientRect().left),
+      await page.locator('.page-header h1').evaluate((e) => e.getBoundingClientRect().left),
     ).toBeGreaterThanOrEqual(0);
   }
   expect(errors).toEqual([]);

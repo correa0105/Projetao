@@ -212,7 +212,7 @@ try {
     }
     await account.press('Escape');
     await expect(page.locator('.profile-menu')).toHaveAttribute('data-pinned', 'false');
-    await page.locator('.lore-hero h1').tap();
+    await page.locator('.page-header h1').tap();
     await page.mouse.move(12, 150);
     await page.screenshot({ path: `test-results/lore-menus-${width}-closed.png` });
     const menu = page.getByRole('button', { name: 'Abrir navegação', exact: true });

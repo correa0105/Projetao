@@ -5,7 +5,7 @@ import { chromium } from '@playwright/test';
 await fs.mkdir('test-results', { recursive: true });
 const html =
   '<div id="root"></div><script type="module" src="/test-results/lore-podium-polish.tsx"></script>';
-const jsx = `import React from 'react';import{createRoot}from'react-dom/client';import{LoreLibrary}from'/src/LoreLibrary.tsx';import{HallOfFame}from'/src/HallOfFame.tsx';import'/src/styles.css';import'/src/alvorada.css';import'/src/theme.css';import'/src/page-consistency.css';const view=new URLSearchParams(location.search).get('view');createRoot(document.getElementById('root')).render(<div className="app-shell" data-page={view==='lore'?'lore':'hall'}><main className="main-content">{view==='lore'?<LoreLibrary/>:<HallOfFame embedded={view==='embedded'}/>}</main></div>);`;
+const jsx = `import React from 'react';import{createRoot}from'react-dom/client';import{LoreLibrary}from'/src/LoreLibrary.tsx';import{HallOfFame}from'/src/HallOfFame.tsx';import{PageHeader}from'/src/PageHeader.tsx';import'/src/styles.css';import'/src/alvorada.css';import'/src/theme.css';import'/src/page-consistency.css';import'/src/page-header.css';const view=new URLSearchParams(location.search).get('view');createRoot(document.getElementById('root')).render(<div className="app-shell" data-page={view==='lore'?'lore':'hall'}><div className="main-shell">{view==='lore'&&<PageHeader title="Crônicas & lore" children={null}/>}<main className="main-content">{view==='lore'?<LoreLibrary/>:<HallOfFame embedded={view==='embedded'}/>}</main></div></div>);`;
 const currentJsx = process.argv.includes('--baseline')
   ? jsx.replace("from'/src/LoreLibrary.tsx'", "from'/.local/living-original/src/LoreLibrary.tsx'")
   : jsx;
@@ -111,13 +111,13 @@ try {
         .locator('.lore-timeline')
         .evaluate((e) => window.scrollTo(0, e.getBoundingClientRect().top + scrollY - 120));
       const scrollBefore = await page.evaluate(() => scrollY);
-      const heading = await page.locator('.lore-hero h1').boundingBox();
+      const heading = await page.locator('.page-header h1').boundingBox();
       for (const i of [0, 4, 5]) {
         await page.locator('.lore-era').nth(i).click();
         await page.waitForFunction(
           () => document.querySelector('.lore-timeline')?.dataset.phase === 'idle',
         );
-        const bounds = await page.locator('.lore-hero h1').boundingBox();
+        const bounds = await page.locator('.page-header h1').boundingBox();
         const positions = await page.evaluate(() => ({
           x: scrollX,
           width: document.documentElement.scrollWidth,

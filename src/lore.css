@@ -109,24 +109,6 @@
 .lore-scene .lore-timeline::before {
   display: none;
 }
-.lore-hero-copy {
-  width: min(850px, 80%);
-  margin: 65px 7.5% 0;
-}
-.lore-hero-copy .lore-kicker {
-  margin-bottom: 25px;
-}
-.lore-hero h1 {
-  font-size: clamp(40px, 5.3vw, 78px);
-  line-height: 1.18;
-  letter-spacing: -0.04em;
-  color: #e9e0cc;
-  margin: 0 0 24px;
-  text-shadow: 0 4px 40px #0005;
-}
-.lore-hero h1 span {
-  color: var(--lore-gold);
-}
 .lore-archive {
   display: grid;
   grid-template-columns: 266px minmax(0, 1fr);
@@ -1457,13 +1439,6 @@
   }
   .lore-hero {
     min-height: 440px;
-  }
-  .lore-hero-copy {
-    margin: 55px 7% 0;
-    width: 86%;
-  }
-  .lore-hero h1 {
-    font-size: 38px;
   }
   .lore-archive {
     grid-template-columns: 1fr;

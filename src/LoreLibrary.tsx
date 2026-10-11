@@ -404,14 +404,7 @@ export function LoreLibrary() {
       <div className="lore-scene">
         <div className="lore-scene-art" aria-hidden="true" />
         <div className="lore-scene-fog" aria-hidden="true" />
-        <header className="lore-hero">
-          <div className="lore-hero-copy">
-            <span className="lore-kicker">O ARQUIVO DOS REINOS</span>
-            <h1>
-              Crônicas &amp; lore<span>.</span>
-            </h1>
-          </div>
-        </header>
+        <div className="lore-hero" aria-hidden="true" />
         {!editing && (
           <LoreTimeline
             ref={timeline}

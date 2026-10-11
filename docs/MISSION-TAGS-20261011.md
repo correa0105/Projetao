@@ -11,7 +11,7 @@
 - Roupas e equipamentos aparecem no inventário; conjuntos de armadura entregam suas peças. Objetos de house aparecem no inventário da casa. Títulos aparecem entre os títulos recebidos e podem ser escolhidos para exibição.
 - A conquista pode ser colocada na estante e aparecer no perfil público, como as demais conquistas.
 
-O cadastro inicial contém a tag **Goblin**. As metas e recompensas são definidas pelo administrador; não são criadas recompensas exóticas novas automaticamente. É possível premiar equipamentos exclusivos já existentes no catálogo, inclusive itens indisponíveis para compra normal.
+O cadastro inicial contém dez tags de monstros clássicos de baixo desafio: **Goblin, Kobold, Esqueleto, Zumbi, Orc, Hobgoblin, Gnoll, Bugurso, Ogro e Cubo gelatinoso**. A migration `093_low_level_monster_tags.sql` acrescenta nove ao Goblin original, sem substituir nomes, descrições, revisões ou arquivamentos feitos pelo administrador. São criaturas de ND 1/8 a 2 no [SRD 5.1 oficial](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf); a escolha de serem icônicas é editorial. As metas e recompensas são definidas pelo administrador; não são criadas recompensas exóticas novas automaticamente. É possível premiar equipamentos exclusivos já existentes no catálogo, inclusive itens indisponíveis para compra normal.
 
 ## Persistência e segurança
 
@@ -26,6 +26,7 @@ O servidor valida referências e nomes de recompensas no catálogo. Cadastros ad
 - O fundo da sala de conquistas usa `center top`. O deslocamento horizontal legado de 2,6% colocava o lustre à direita da estante na arte atual.
 - A Lore usa a nova arte `public/lore-world-v2.webp`, gerada pelo modo integrado de ImageGen. O prompt, as dimensões nativas e o hash estão em `data/lore/world-v2-20261011.json`. A composição coloca o castelo à direita e o lago à esquerda, com iluminação de amanhecer, profundidade atmosférica e menos escurecimento da interface.
 - A arte anterior foi preservada. A troca do fundo não altera a interação ou o posicionamento da linha temporal.
+- O título **Crônicas & lore** agora usa o mesmo `PageHeader` das outras abas, no alto da página e com o mesmo tamanho e alinhamento. O título grande centralizado e sua legenda foram removidos da paisagem; a arte e a altura da linha temporal são preservadas.
 
 ## Validação
 
@@ -37,8 +38,10 @@ node scripts/test-mission-tags-isolated.mjs --all
 node scripts/test-mission-tags-isolated.mjs --browser
 ```
 
-O teste de navegador exige o cliente compilado e Microsoft Edge. Confere cadastro administrativo, recompensas de três tipos, publicação de missão, entrega automática, estante, isolamento entre personagens, telas de 320 a 1868 pixels e interação com três eras da Lore. Todos esses fluxos passaram, com alinhamento horizontal exato e sem excesso de largura ou erros JavaScript.
+O teste de navegador exige o cliente compilado e Microsoft Edge. Confere as dez tags iniciais, cadastro administrativo, recompensas de três tipos, publicação de missão, entrega automática, estante, isolamento entre personagens, telas de 320 a 1868 pixels e interação com três eras da Lore. O cabeçalho da Lore foi conferido em cinco larguras, com uma única escrita no alto, fonte de até 26 px e sem excesso de largura ou erros JavaScript. Todos esses fluxos passaram. A migration 093 também foi reaplicada duas vezes em banco descartável com tags renomeadas, arquivadas e com nomes canônicos existentes sob outros IDs: todas as personalizações e revisões permaneceram idênticas.
 
 TypeScript e build passaram. Os quatro testes de tags passaram, incluindo entrega concorrente, precisão acima do limite seguro do JavaScript, metas retroativas e reversão transacional por capacidade do inventário. A regressão de comunidade (mascotes, cartas, títulos, eventos e estante) passou em execução isolada: 7/7.
 
 A execução geral terminou com 275/286 testes aprovados e 11 falhas. A comparação com o commit anterior `07548db` também reproduziu falhas de imagens ausentes no ambiente isolado, expectativas desatualizadas de quantidade de itens, fixtures antigos do VTT e expectativas antigas de animação do mundo. O teste global de busca por nome de título retornou outro personagem chamado Arden; a execução isolada desse fluxo passou. A suíte geral não é declarada integralmente aprovada.
+
+A ampliação para dez tags e o cabeçalho da Lore foram aplicados ao Docker local em `lore-header-monster-tags-v1-20261011`. TypeScript/build, os quatro testes de tags, o fluxo de navegador e a preservação de tags personalizadas passaram novamente. A migration 093 ocorreu uma vez; os registros anteriores de 119 tabelas permaneceram idênticos, com a atualização normal do heartbeat do ilustrador na tabela restante. Os 35 bundles publicados e 3496 mídias anteriores foram conferidos por hash; servidor, nova arte da Lore e áudio Fahh preservados. Backup completo validado e imagem anterior mantidos em `.local`/Docker.
