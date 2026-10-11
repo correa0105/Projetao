@@ -203,7 +203,8 @@ try {
     await menu.getByRole('button',{name:'Neblina',exact:true}).click();
     const box=(await menu.boundingBox())!;
     expect(box.x>=0&&box.x+box.width<=width+1).toBe(true);
-    await menu.getByRole('button',{name:'Aplicar na cena',exact:true}).click();
+    await expect(menu.getByRole('button',{name:'Aplicar na cena',exact:true})).toHaveCount(0);
+    await expect(menu.locator('.vtt-atmosphere-status')).toHaveText('Seleção automática');
     await expect.poll(async()=> (await api(gm,root)).data.document.scenes[0].atmosphere.weather).toBe('fog');
     await page.screenshot({path:'test-results/vtt-map-weather-menu-'+width+'.png'});
     await menu.getByRole('button',{name:'Fechar efeitos do mapa',exact:true}).click();
@@ -228,6 +229,7 @@ try {
   const weatherMenu=page.getByRole('dialog',{name:'Efeitos do mapa',exact:true});
   await expect(weatherMenu.getByRole('button',{name:'Neblina',exact:true})).toHaveAttribute('aria-pressed','true');
   await weatherMenu.getByRole('button',{name:'Limpar',exact:true}).click();
+  await expect(weatherMenu.locator('.vtt-atmosphere-status')).toHaveText('Seleção automática');
   await expect.poll(async()=> (await api(gm,root)).data.document.scenes[0].atmosphere.enabled).toBe(false);
   await weatherMenu.getByRole('button',{name:'Fechar efeitos do mapa',exact:true}).click();
   await page.setViewportSize({width:1440,height:1000});
@@ -469,7 +471,9 @@ try {
   // A natural one is a legitimate miss. Start a fresh attack before checking damage.
   for(let retry=0;retry<5 && await page.locator('.vtt-attack-result.miss').count();retry++) {
     await page.getByRole('button',{name:'Rolar novo ataque',exact:true}).click();
-    await expect(page.getByRole('button',{name:'Rolar novo ataque',exact:true})).toBeEnabled();
+    await expect.poll(async()=> await page.locator('.vtt-attack-result.hit').count()
+      ? page.getByRole('button',{name:'Rolar dano',exact:true}).isEnabled()
+      : page.getByRole('button',{name:'Rolar novo ataque',exact:true}).isEnabled()).toBe(true);
   }
   const hitArticle=page.locator('.vtt-chat-log article').filter({hasText:'Espada longa → Alvo · ataque'}).last();
   await expect(hitArticle.getByRole('button',{name:'Rolar dano',exact:true})).toBeVisible();

@@ -139,10 +139,10 @@
   padding-top: 12px;
   margin-top: 15px;
 }
-:root .vtt-atmosphere-menu .vtt-atmosphere-apply {
-  background: #9f7f43;
-  color: #fff0cc;
-  border-color: #c8a76f77;
+.vtt-atmosphere-status {
+  align-self: center;
+  color: #bba983;
+  font-size: 10px;
 }
 .vtt-atmosphere-menu > small {
   display: block;

@@ -8,18 +8,21 @@ import {
   type MapAtmosphere,
 } from '../shared/vtt-atmosphere';
 import './vtt-atmosphere.css';
+import { createAtmosphereQueue } from './vtt-atmosphere-queue';
 export function VttAtmosphereMenu({
   value,
   busy,
   change,
   effectsEnabled,
   enableEffects,
+  preview,
 }: {
   value: MapAtmosphere;
   busy: boolean;
   change: (value: MapAtmosphere) => Promise<void>;
   effectsEnabled: boolean;
   enableEffects: () => void;
+  preview: (value: MapAtmosphere | null) => void;
 }) {
   const [open, setOpen] = useState(false),
     [tab, setTab] = useState<'natural' | 'magic'>('natural'),
@@ -27,11 +30,26 @@ export function VttAtmosphereMenu({
     [saving, setSaving] = useState(false),
     [error, setError] = useState('');
   const panel = useRef<HTMLElement>(null);
+  const callbacks = useRef({ change, preview });
+  callbacks.current = { change, preview };
+  const queue = useRef<ReturnType<typeof createAtmosphereQueue> | null>(null);
+  useEffect(() => {
+    const writer = createAtmosphereQueue({
+      send: (next) => callbacks.current.change(next),
+      preview: (next) => callbacks.current.preview(next),
+      status: (pending, message = '') => {
+        setSaving(pending);
+        setError(message);
+      },
+    });
+    queue.current = writer;
+    return () => writer.dispose();
+  }, []);
   const ref = useRef<HTMLDivElement>(null),
     trigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    if (!open) setDraft(value);
-  }, [value, open]);
+    if (!saving) setDraft(value);
+  }, [value, saving]);
   useEffect(() => {
     if (!open) return;
     const close = (e: PointerEvent) => {
@@ -42,19 +60,12 @@ export function VttAtmosphereMenu({
     panel.current?.querySelector<HTMLButtonElement>('.vtt-atmosphere-close')?.focus();
     return () => document.removeEventListener('pointerdown', close);
   }, [open]);
-  async function apply(next: MapAtmosphere) {
-    setSaving(true);
-    setError('');
-    try {
-      await change(next);
-      setDraft(next);
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setSaving(false);
-    }
+  function select(next: MapAtmosphere) {
+    if (next.enabled && !effectsEnabled) enableEffects();
+    setDraft(next);
+    queue.current!.select(next);
   }
-  const patch = (p: Partial<MapAtmosphere>) => setDraft((d) => ({ ...d, ...p, enabled: true }));
+  const patch = (p: Partial<MapAtmosphere>) => select({ ...draft, ...p, enabled: true });
   return (
     <div
       className="vtt-atmosphere-tool"
@@ -182,20 +193,13 @@ export function VttAtmosphereMenu({
             </details>
             {error && <p role="alert">{error}</p>}
             <footer>
-              <button
-                disabled={busy || saving}
-                onClick={() => void apply(atmosphereSchema.parse({}))}
-              >
+              <button disabled={busy} onClick={() => select(atmosphereSchema.parse({}))}>
                 <RotateCcw size={12} />
                 Limpar
               </button>
-              <button
-                className="vtt-atmosphere-apply"
-                disabled={busy || saving}
-                onClick={() => void apply({ ...draft, enabled: true })}
-              >
-                {saving ? 'Aplicando…' : 'Aplicar na cena'}
-              </button>
+              <span className="vtt-atmosphere-status" role="status">
+                {saving ? 'Salvando…' : 'Seleção automática'}
+              </span>
             </footer>
             <small>Visível para a mesa. Só o mestre altera.</small>
           </section>,

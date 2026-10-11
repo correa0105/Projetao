@@ -1,6 +1,7 @@
 import { VttTokenMenu } from './VttTokenMenu';
 import { VttAtmosphereMenu } from './VttAtmosphereMenu';
-import { atmosphereAnimated } from './vtt-atmosphere';
+import { atmosphereAnimated, atmosphereTransitioning } from './vtt-atmosphere';
+import type { MapAtmosphere } from '../shared/vtt-atmosphere';
 import { VttTokenScaleControl } from './VttTokenScaleControl';
 import { isAttackCheck } from '../shared/vtt-roll-purpose';
 import { VttAttackRollAction } from './VttAttackRollAction';
@@ -457,6 +458,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
   useEffect(() => music.beginInterlude(), [music.beginInterlude]);
   stateRef.current = state;
   docRef.current = doc;
+  const [atmospherePreview, setAtmospherePreview] = useState<{sceneId: string; value: MapAtmosphere} | null>(null);
   const scene = doc?.scenes.find((s) => s.id === doc.activeScene),
     token = scene?.tokens.find((t) => t.id === selection[0]),
     selectedEffectTokens =
@@ -975,14 +977,15 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const dpr = Math.min(2, devicePixelRatio || 1);
     c.width = Math.round(bounds.width * dpr);
     c.height = Math.round(bounds.height * dpr);
+    const atmosphereScene = atmospherePreview?.sceneId === scene.id ? { ...scene, atmosphere: atmospherePreview.value } : scene;
     const draw = () =>
       renderVtt(
         c.getContext('2d')!,
         spectator && !scene.fog && !state?.viewingUser
-          ? { ...scene, lighting: false }
+          ? { ...atmosphereScene, lighting: false }
           : effectPreview && gm
             ? {
-                ...scene,
+                ...atmosphereScene,
                 tokens: scene.tokens.map((t) =>
                   !effectPreview.tokenIds.includes(t.id)
                     ? t
@@ -997,7 +1000,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
                         },
                 ),
               }
-            : scene,
+            : atmosphereScene,
         {
           camera,
           width: bounds.width,
@@ -1054,7 +1057,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const timers = ends.map((at) => window.setTimeout(draw, Math.max(0, at - Date.now() + 10)));
     const infinite =
       visualEffects &&
-      (atmosphereAnimated(scene.atmosphere) ||
+      (atmosphereAnimated(atmosphereScene.atmosphere) ||
         !!combat.state?.active ||
         !!effectPreview ||
         spellcasting.effects.some((e) => e.persistent && (!e.expires || e.expires > Date.now())) ||
@@ -1064,14 +1067,14 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     const restartAnimation = () => {
       cancelAnimationFrame(frame);
       draw();
-      if (!(infinite || until > Date.now()) || motionPreference.matches) return;
+      if (!(infinite || until > Date.now() || (visualEffects && atmosphereTransitioning(c, scene.id))) || motionPreference.matches) return;
       let lastDraw = 0;
       const animate = (now: number) => {
         if (now - lastDraw >= 32 && !document.hidden) {
           draw();
           lastDraw = now;
         }
-        if (infinite || Date.now() < until) frame = requestAnimationFrame(animate);
+        if (infinite || Date.now() < until || (visualEffects && atmosphereTransitioning(c, scene.id))) frame = requestAnimationFrame(animate);
       };
       frame = requestAnimationFrame(animate);
     };
@@ -1101,6 +1104,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
     spellcasting.preview,
     visualEffects,
     imageVersion,
+    atmospherePreview,
     layer,
     ruler,
     lasso,
@@ -2656,7 +2660,25 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             </>
           )}
           {gm && !preview && !sheetId && (
-            <VttAtmosphereMenu effectsEnabled={visualEffects} enableEffects={() => media.update({visualEffects:true})} value={scene.atmosphere} busy={busy} change={async (value) => { await save(); receive(await api<VttState>('/vtt/rooms/' + state.id + '/atmosphere', { method: 'PUT', body: JSON.stringify({ sceneId: scene.id, atmosphere: value }) })); }} />
+            <VttAtmosphereMenu
+              key={state.id + scene.id}
+              effectsEnabled={visualEffects} enableEffects={() => media.update({visualEffects:true})}
+              value={scene.atmosphere} busy={busy}
+              preview={(value) => setAtmospherePreview(value ? {sceneId:scene.id,value} : null)}
+              change={async (value) => {
+                await save();
+                const next = await api<VttState>('/vtt/rooms/' + state.id + '/atmosphere', {method:'PUT',body:JSON.stringify({sceneId:scene.id,atmosphere:value})});
+                if (stateRef.current && next.revision < stateRef.current.revision) return;
+                if (dirtyRef.current && docRef.current) {
+                  stateRef.current = next; setState(next);
+                  const merged = structuredClone(docRef.current);
+                  const target = merged.scenes.find(s => s.id === scene.id);
+                  const saved = next.document.scenes.find(s => s.id === scene.id);
+                  if (target && saved) target.atmosphere = saved.atmosphere;
+                  docRef.current = merged; setDoc(merged);
+                } else receive(next);
+              }}
+            />
           )}
           {gm && !sheetId && (
             <VttEffects
