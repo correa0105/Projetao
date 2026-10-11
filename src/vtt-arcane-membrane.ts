@@ -12,7 +12,7 @@ export function arcaneBarrierShape(t: number) {
   const phase = phaseAt(t);
   return {
     phase,
-    radius: 0.78 + 0.065 * Math.sin(phase) + 0.015 * Math.sin(phase * 2 + 0.7),
+    radius: 0.755 + 0.07 * Math.sin(phase) + 0.02 * Math.sin(phase * 2 + 0.7),
     apertures: Array.from({ length: 3 }, (_, i) => {
       const opening = Math.max(
         0,
@@ -20,6 +20,7 @@ export function arcaneBarrierShape(t: number) {
       );
       return {
         angle: (i * tau) / 3 + 0.28 * Math.sin(phase + i),
+        center: 0.76 - 0.05 * Math.sin(phase + i),
         opening: opening * opening * (3 - 2 * opening),
       };
     }),
@@ -37,49 +38,56 @@ float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=mat2(.8,-
 void main(){
  vec2 q=(uv*2.-1.)*vec2(1.,-1.);
  float angle=atan(q.y,q.x),r=length(q);
- float radius=.78+.065*sin(phase)+.015*sin(phase*2.+.7);
- float deformation=.025*sin(angle*3.+phase*2.)+.017*sin(angle*5.-phase);
+ float radius=.755+.07*sin(phase)+.02*sin(phase*2.+.7);
+ float deformation=.045*sin(angle*3.+phase)+.022*sin(angle*7.-phase*2.);
  float boundary=radius+deformation;
  float inside=1.-smoothstep(boundary-pixel,boundary+pixel,r);
  float sphere=min(.999,r/boundary),z=sqrt(max(0.,1.-sphere*sphere));
  vec2 drift=vec2(sin(phase),cos(phase))*.4;
  float flow=fbm(q*3.4+drift+vec2(z*1.7,-z*.8));
  float folded=fbm(q*7.8-drift*.7+flow*1.8);
- float cut=0.,lip=0.,roll=0.,lipLight=0.;
+ float cut=0.,lip=0.,roll=0.,lipLight=0.,tension=0.;
  for(int i=0;i<3;i++){
   float id=float(i),a=id*6.2831853/3.+.28*sin(phase+id);
   float opening=smoothstep(.18,.88,.5+.5*sin(phase+id*2.1));
-  vec2 center=vec2(cos(a),sin(a))*radius*.88;
+  vec2 center=vec2(cos(a),sin(a))*radius*(.76-.05*sin(phase+id));
   vec2 hole=q-center;
   hole=mat2(cos(a),-sin(a),sin(a),cos(a))*hole;
-  hole*=vec2(1.,1.1+.2*sin(phase*2.+id));
-  float bend=1.+.13*sin(atan(hole.y,hole.x)*3.+phase*2.+id);
-  float distance=length(hole)*bend;
-  float aperture=.19*opening;
-  float gate=smoothstep(.005,.028,aperture);
-  cut=max(cut,(1.-smoothstep(aperture-pixel,aperture+pixel,distance))*gate);
-  float crease=exp(-pow((distance-aperture)/.013,2.))*gate;
+  // Tangential tears: pointed ends and curling lips stretch independently.
+  // Their center line bows as the membrane pulls back; no circular bites.
+  float reach=(.12+.115*opening)*(1.+.1*sin(phase*2.+id));
+  float y=hole.y/reach;
+  float arch=.044*(cos(hole.y*10.+phase+id)-cos(phase+id));
+  float width=.115*opening*pow(max(0.,1.-y*y),.7);
+  width*=1.+.18*sin(hole.y*27.+phase*2.+id);
+  float distance=max(abs(hole.x-arch)-width,abs(hole.y)-reach);
+  float gate=smoothstep(.035,.16,opening);
+  cut=max(cut,(1.-smoothstep(-pixel,pixel,distance))*gate);
+  float crease=exp(-pow(distance/.012,2.))*gate;
   lip=max(lip,crease);
-  roll=max(roll,exp(-pow((distance-aperture-.019)/.027,2.))*gate);
-  lipLight=max(lipLight,crease*(.35+.65*max(0.,dot(normalize(hole+vec2(.0001)),vec2(-.6,-.8)))));
+  roll=max(roll,exp(-pow((distance-.027)/.034,2.))*gate);
+  float running=.55+.45*sin(hole.y*23.-phase*3.+id*2.);
+  lipLight=max(lipLight,crease*(.45+.55*running));
+  tension=max(tension,exp(-pow((distance-.065)/.07,2.))*gate);
  }
  float fresnel=pow(1.-z,1.65);
- float rim=exp(-pow((r-boundary)/.007,2.));
+ float rim=exp(-pow((r-boundary)/.009,2.));
  float rimHalo=exp(-pow((r-boundary)/.027,2.));
  float folds=pow(clamp(1.-abs(folded-.52)*5.,0.,1.),6.);
- vec3 normal=normalize(vec3(q/boundary,z));
+ vec3 normal=normalize(vec3(q/boundary+vec2(sin(flow*9.+phase),cos(folded*8.-phase))*.14,z));
  vec3 light=normalize(vec3(-.45,-.65,.72));
  float diffuse=clamp(dot(normal,light),0.,1.);
- float specular=pow(max(0.,dot(reflect(-light,normal),vec3(0.,0.,1.))),28.);
+ float specular=pow(max(0.,dot(reflect(-light,normal),vec3(0.,0.,1.))),20.);
  float saturation=max(pigment.r,max(pigment.g,pigment.b))-min(pigment.r,min(pigment.g,pigment.b));
  vec3 accent=mix(pigment,vec3(.28,.83,1.),clamp(saturation*1.4,0.,.8));
- vec3 dark=pigment*.28;
- vec3 color=mix(dark,pigment,clamp(diffuse*.72+flow*.24,0.,1.));
- color=mix(color,accent,clamp(fresnel*.6+rim*.74+lip*.8,0.,1.));
- color=mix(color,pigment*.42,roll*.2);
- color+=mix(vec3(1.),vec3(.45,.58,.7),clamp(saturation,0.,1.))*specular*.9+mix(pigment,vec3(1.),.7)*(rim*.24+lipLight*.55);
- float opacity=(.042+fresnel*.24+folds*.08+specular*.13)*inside;
- opacity+=rim*.53+rimHalo*.065+(lip*.48+roll*.15)*inside;
+ float sheen=.5+.5*sin(flow*12.+q.y*3.-phase*2.);
+ vec3 color=mix(pigment*.25,pigment,clamp(diffuse*.64+flow*.3,0.,1.));
+ color=mix(color,accent,clamp(fresnel*.6+sheen*.32+rim*.6+lip*.75,0.,1.));
+ color=mix(color,pigment*.32,roll*.4);
+ vec3 highlight=mix(pigment,vec3(1.),.75);
+ color+=highlight*(specular*.9+rim*.32+lipLight*.7+folds*.23);
+ float opacity=(.05+fresnel*.24+folds*.09+specular*.16+tension*.05)*inside;
+ opacity+=rim*.56+rimHalo*.07+(lip*.52+roll*.2)*inside;
  opacity*=1.-cut;
  if(frontPass>.5)opacity*=.1+.9*smoothstep(.28,.86,sphere);
  opacity=clamp(opacity,0.,.82);
@@ -170,8 +178,8 @@ function fallback(c: CanvasRenderingContext2D, t: number, color: string, isFront
     const a = (i * tau) / 160,
       r =
         (shape.radius +
-          0.025 * Math.sin(a * 3 + shape.phase * 2) +
-          0.017 * Math.sin(a * 5 - shape.phase)) *
+          0.045 * Math.sin(a * 3 + shape.phase) +
+          0.022 * Math.sin(a * 7 - shape.phase * 2)) *
         half;
     const x = Math.cos(a) * r,
       y = Math.sin(a) * r;
@@ -189,18 +197,27 @@ function fallback(c: CanvasRenderingContext2D, t: number, color: string, isFront
   c.lineWidth = 2;
   c.stroke();
   for (const hole of shape.apertures) {
-    const x = Math.cos(hole.angle) * shape.radius * 0.88 * half,
-      y = Math.sin(hole.angle) * shape.radius * 0.88 * half,
-      r = 0.19 * hole.opening * half;
-    if (r < 1) continue;
+    if (hole.opening < 0.04) continue;
+    const x = Math.cos(hole.angle) * shape.radius * hole.center * half,
+      y = Math.sin(hole.angle) * shape.radius * hole.center * half;
+    c.save();
+    c.translate(x, y);
+    c.rotate(hole.angle);
     c.globalCompositeOperation = 'destination-out';
     c.beginPath();
-    c.ellipse(x, y, r, r / 1.15, hole.angle, 0, tau);
+    const reach =
+      (0.12 + 0.115 * hole.opening) * (1 + 0.1 * Math.sin(shape.phase * 2 + hole.angle)) * half;
+    const width = 0.115 * hole.opening * half;
+    c.moveTo(0, -reach);
+    c.bezierCurveTo(width * 1.8, -reach * 0.4, width, reach * 0.65, 0, reach);
+    c.bezierCurveTo(-width * 1.7, reach * 0.25, -width, -reach * 0.55, 0, -reach);
+    c.closePath();
     c.fill();
     c.globalCompositeOperation = 'source-over';
     c.strokeStyle = color;
     c.lineWidth = 1.3;
     c.stroke();
+    c.restore();
   }
   if (isFront) {
     c.globalCompositeOperation = 'destination-in';

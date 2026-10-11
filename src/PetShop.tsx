@@ -344,20 +344,24 @@ export function PetShop({
             ))}
           </div>
           <div className="pet-shop-details">
-            <div className="pet-breed-heading">
-              <span>Aparência</span>
-              {catalog.can_edit && (
-                <button
-                  className="text-button"
-                  disabled={busy}
-                  onClick={() => setEditingBreed(breed)}
-                  aria-label={`Editar raça · ${breed.name}`}
-                  title={`Editar raça · ${breed.name}`}
-                >
-                  <Pencil size={13} />
-                </button>
-              )}
-            </div>
+            {(petVariants.some((v) => v.pet_id === selected.id) || catalog.can_edit) && (
+              <div className="pet-breed-heading">
+                <span>
+                  {petVariants.some((v) => v.pet_id === selected.id) ? 'Aparência' : 'Raça'}
+                </span>
+                {catalog.can_edit && (
+                  <button
+                    className="text-button"
+                    disabled={busy}
+                    onClick={() => setEditingBreed(breed)}
+                    aria-label={`Editar raça · ${breed.name}`}
+                    title={`Editar raça · ${breed.name}`}
+                  >
+                    <Pencil size={13} />
+                  </button>
+                )}
+              </div>
+            )}
             {petVariants.some((v) => v.pet_id === selected.id) && (
               <fieldset className="pet-appearances" disabled={busy}>
                 <legend className="pet-shop-visually-hidden">Aparência de {selected.name}</legend>
@@ -367,6 +371,7 @@ export function PetShop({
                 ].map((id) => (
                   <button
                     key={id}
+                    type="button"
                     aria-label={`Aparência · ${catalog.breeds.find((breed) => breed.pet_id === selected.id && breed.appearance === id)?.name || 'Clássico'}`}
                     aria-pressed={appearance === id}
                     onClick={() => {
@@ -381,6 +386,7 @@ export function PetShop({
                         (breed) => breed.pet_id === selected.id && breed.appearance === id,
                       )?.name || 'Clássico'}
                     </span>
+                    {appearance === id && <Check size={12} aria-hidden="true" />}
                   </button>
                 ))}
               </fieldset>

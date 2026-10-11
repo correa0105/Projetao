@@ -430,7 +430,7 @@ function components(c: CanvasRenderingContext2D, index: number, p: number) {
     if (index === 37 || index === 13) {
       const age = fract((p / tau) * (index === 37 ? 2 : 1) + i / count);
       x = Math.sin(i * 9) * 70 + Math.sin(p * 2 + i) * 8;
-      y = 83 - age * 166;
+      y = -83 + age * 166;
       c.globalAlpha *= Math.sin(age * Math.PI);
     }
     if (index === 29) {
@@ -463,11 +463,11 @@ function components(c: CanvasRenderingContext2D, index: number, p: number) {
     for (let i = 0; i < 9; i++) {
       const age = fract(p / tau + i / 9),
         x = Math.sin(i * 14) * 75 + age * 35,
-        y = 85 - age * 170,
+        y = -85 + age * 170,
         fade = Math.sin(age * Math.PI);
       c.save();
       c.globalAlpha *= fade;
-      const g = c.createLinearGradient(x, y, x - 18, y + 45);
+      const g = c.createLinearGradient(x, y, x - 18, y - 45);
       g.addColorStop(0, '#effaff');
       g.addColorStop(0.25, '#458dff');
       g.addColorStop(1, '#2389ff00');
@@ -475,7 +475,7 @@ function components(c: CanvasRenderingContext2D, index: number, p: number) {
       c.lineWidth = 1.6;
       c.beginPath();
       c.moveTo(x, y);
-      c.lineTo(x - 18, y + 45);
+      c.lineTo(x - 18, y - 45);
       c.stroke();
       glow(c, x, y, 5, '#78cfff', 0.7);
       c.restore();

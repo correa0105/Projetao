@@ -5,6 +5,7 @@ import { seededRandom } from './vtt-effects-primitives';
 import { effectFootprint } from './vtt-effect-footprint';
 import { drawOverheadEffect } from './vtt-effects-overhead';
 import { effectRenderColor } from '../shared/vtt-effect-palette';
+import { sceneOrientedEffect } from './vtt-effect-orientation';
 
 export type EffectRenderOptions = {
   pass?: 'behind' | 'front';
@@ -15,6 +16,7 @@ export type EffectRenderOptions = {
   image?: HTMLImageElement;
   flipX?: boolean;
   flipY?: boolean;
+  tokenRotation?: number;
 };
 // The ellipse follows actual token geometry. Scale remains the saved user value;
 // this does not change the token or its hit box.
@@ -53,13 +55,17 @@ export function renderEffect(
     appearance = color === effect.color ? effect : { ...effect, color };
   c.save();
   try {
+    const sceneOriented = sceneOrientedEffect(effect.kind);
+    // The caller has already applied the token rotation. Undo it before the
+    // nonuniform ellipse scale, so rectangular actors cannot skew gravity.
+    if (sceneOriented) c.rotate(-((options.tokenRotation ?? 0) * Math.PI) / 180);
     c.scale(geometry.rx / 100, geometry.ry / 100);
     c.globalAlpha *= frame.alpha;
     c.lineCap = 'round';
     c.lineJoin = 'round';
     const random = seededRandom((options.seed || '') + effect.id);
     if (options.overhead !== false) {
-      c.scale(options.flipX ? -1 : 1, options.flipY ? -1 : 1);
+      c.scale(!sceneOriented && options.flipX ? -1 : 1, !sceneOriented && options.flipY ? -1 : 1);
       const footprint = effectFootprint(width, height, geometry.rx, geometry.ry, options.image);
       // Surface masks fit the real art; the saved effect size expands the
       // airborne volume/floor plane instead of cancelling through normalization.
@@ -111,5 +117,6 @@ export function drawTokenEffects(
       image,
       flipX: token.flipX,
       flipY: token.flipY,
+      tokenRotation: token.rotation,
     });
 }

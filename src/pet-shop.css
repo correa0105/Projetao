@@ -38,16 +38,18 @@
 }
 .pet-shop-purchase {
   position: relative;
-  width: 340px;
-  padding: 16px;
+  width: 356px;
+  padding: 17px;
   border: 1px solid #a68a4f60;
-  border-radius: 8px;
+  border-radius: 6px;
   background:
-    repeating-linear-gradient(1deg, #d6b67a05 0 1px, transparent 1px 5px),
-    linear-gradient(115deg, #2d251de8, #171b14f5 72%);
+    repeating-linear-gradient(2deg, #d6b67a06 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(-1deg, transparent 0 11px, #0a090708 12px 13px),
+    linear-gradient(115deg, #30261bed, #171b14f8 72%);
   box-shadow:
-    0 20px 45px #0004,
-    inset 0 1px #ecd7a70b;
+    0 20px 45px #0006,
+    inset 0 1px #ecd7a718,
+    inset 0 0 0 3px #080c0730;
   backdrop-filter: blur(10px);
 }
 .pet-shop .eyebrow {
@@ -109,7 +111,7 @@
 .pet-shop-animal-list {
   display: grid;
   gap: 5px;
-  max-height: 310px;
+  max-height: 320px;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -119,15 +121,19 @@
 .pet-shop-animal-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 57px;
-  padding: 4px 10px 4px 5px;
+  position: relative;
+  gap: 11px;
+  min-height: 61px;
+  padding: 3px 11px 3px 5px;
   border: 1px solid #a68a4f45;
   border-radius: 4px;
   color: #e6dac1;
-  background: linear-gradient(110deg, #29281c90, #10170f99);
+  background: linear-gradient(110deg, #28281bab, #10170fb3);
   text-align: left;
   cursor: pointer;
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease;
 }
 .pet-shop-animal-row:hover {
   background: #67573a45;
@@ -135,17 +141,24 @@
 }
 .pet-shop-animal-row[aria-pressed='true'] {
   border-color: #dbb974;
-  background: linear-gradient(110deg, #8c6b3748, #51412845);
-  box-shadow: inset 0 0 18px #d1a05a0c;
+  background: linear-gradient(110deg, #956b365b, #51412855);
+  box-shadow:
+    inset 3px 0 #dbb974,
+    inset 0 1px #e7c68412;
+}
+.pet-shop-animal-row:focus-visible,
+.pet-appearances button:focus-visible {
+  outline: 2px solid #e0c18c;
+  outline-offset: 2px;
 }
 .pet-shop-animal-row:disabled {
   opacity: 0.65;
   cursor: wait;
 }
 .pet-shop-animal-row .pet-art {
-  width: 53px;
-  height: 48px;
-  flex: 0 0 53px;
+  width: 62px;
+  height: 53px;
+  flex: 0 0 62px;
   filter: drop-shadow(0 3px 2px #0007);
 }
 .pet-shop-animal-row > span:nth-child(2) {
@@ -154,7 +167,7 @@
 }
 .pet-shop-animal-row strong {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
 }
 .pet-shop-animal-row small {
@@ -186,13 +199,16 @@
     overflow-y: auto;
     scrollbar-width: thin;
   }
+  .pet-shop-animal-list {
+    max-height: clamp(190px, calc(100dvh - 535px), 320px);
+  }
 }
 .pet-shop-price {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin: 16px 0;
+  margin: 13px 0;
 }
 .pet-shop-price strong {
   font:
@@ -226,7 +242,7 @@
 .pet-appearances {
   padding: 0;
   border: 0;
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   display: flex;
   gap: 8px;
 }
@@ -236,30 +252,38 @@
   color: #c9b58c;
 }
 .pet-appearances button {
+  position: relative;
   flex: 1;
   min-width: 0;
   cursor: pointer;
   border: 1px solid #a68a4f40;
-  background: #11170f99;
-  padding: 7px 5px;
+  background: radial-gradient(ellipse at 50% 38%, #83926315, #11170faa 75%);
+  padding: 8px 7px;
   border-radius: 4px;
 }
 .pet-appearances button[aria-pressed='true'] {
   border-color: #c6a267;
-  background: #76623d25;
+  background: radial-gradient(ellipse at 50% 38%, #c99e4725, #76623d22 75%);
+  box-shadow: inset 0 1px #e7c68412;
 }
 .pet-appearances .pet-art {
   width: 100%;
-  height: 72px;
+  height: 84px;
   margin: 0 auto;
 }
-.pet-appearances button > span:last-child {
-  font-size: 9px;
+.pet-appearances button > span:last-of-type {
+  font-size: 10px;
   line-height: 1.4;
   display: block;
   text-align: center;
   color: #dac9a7;
   margin-top: 5px;
+}
+.pet-appearances button > svg {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #dfc087;
 }
 /* Each SVG viewport follows the painted silhouette, including transparent padding. */
 .pet-art {
@@ -747,7 +771,7 @@
     padding-inline: 28px;
   }
   .pet-shop-purchase {
-    width: 300px;
+    width: 320px;
     padding: 14px;
   }
   .garalho-scene {

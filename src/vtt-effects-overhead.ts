@@ -18,6 +18,7 @@ import { drawArcaneBarrier } from './vtt-arcane-barrier';
 import { drawFireHeat } from './vtt-fire-heat';
 import { drawFlySwarm } from './vtt-fly-swarm';
 import { drawRefinedArcana } from './vtt-arcana-refined';
+import { drawWithColorDepth } from './vtt-effect-color-depth';
 
 function groundCircle(c: CanvasRenderingContext2D, f: EffectFootprint, color: string, t: number) {
   c.save();
@@ -287,6 +288,14 @@ export function drawOverheadEffect(
   pass: 'behind' | 'front',
   detail: number,
 ) {
-  drawOverheadBase(c, e, f, t, random, pass, detail);
-  drawFireHeat(c, e, f, t, random, pass, detail);
+  drawWithColorDepth(
+    c,
+    e.kind,
+    e.color,
+    Math.max(190, f.plane.rx * 3.4, f.plane.ry * 3.4),
+    (layer) => {
+      drawOverheadBase(layer, e, f, t, random, pass, detail);
+      drawFireHeat(layer, e, f, t, random, pass, detail);
+    },
+  );
 }

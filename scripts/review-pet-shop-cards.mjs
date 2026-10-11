@@ -97,6 +97,28 @@ try {
         pets[i][0],
       );
       assert((await rows.nth(i).locator('.pet-art').boundingBox()).width >= 48);
+      const variant = variants.find((v) => v[0] === pets[i][0]);
+      if (variant) {
+        const form = page.getByRole('button', { name: 'Aparência · ' + variant[2], exact: true });
+        await form.click();
+        await expect(rows.nth(i).locator('.pet-art')).toHaveAttribute(
+          'data-appearance',
+          variant[1],
+        );
+        await expect(page.locator('.pet-shop-preview .pet-art')).toHaveAttribute(
+          'data-appearance',
+          variant[1],
+        );
+        assert(
+          await form
+            .locator('span')
+            .last()
+            .evaluate((e) => parseFloat(getComputedStyle(e).fontSize) <= 12),
+        );
+      } else {
+        await expect(page.locator('.pet-appearances')).toHaveCount(0);
+        await expect(page.locator('.pet-breed-heading')).toHaveCount(0);
+      }
     }
     await rows.first().click();
     await page.getByRole('button', { name: 'Aparência · Pastor da estrada', exact: true }).click();
