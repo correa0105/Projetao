@@ -85,6 +85,11 @@ export function MissionCompletion({
         </label>
         <fieldset disabled={busy || participants === null}>
           <legend>Recompensas dos participantes</legend>
+          {Boolean(mission.tags?.length) && (
+            <p className="small">
+              Tags: {mission.tags!.map((t) => t.name + ' +1').join(' · ')} para cada participante.
+            </p>
+          )}
           <p className="small muted">
             Cada inscrito receberá {money(mission.reward_cp)} PO.{' '}
             {mission.rank_test_level
@@ -129,11 +134,7 @@ export function MissionCompletion({
             </label>
           </>
         )}
-        {error && (
-          <FlashMessage>
-            {error}
-          </FlashMessage>
-        )}
+        {error && <FlashMessage>{error}</FlashMessage>}
         <button className="button primary" disabled={busy || participants === null}>
           {busy ? 'Concluindo…' : 'Confirmar conclusão'}
         </button>

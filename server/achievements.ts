@@ -1,4 +1,6 @@
 import { refreshAchievementProgress } from './achievement-progress.js';
+import { tagDefinitions } from './mission-tags.js';
+import { tagCodePattern } from '../shared/mission-tags.js';
 import { Router } from 'express';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
@@ -17,7 +19,7 @@ const schema = z
     slots: z.array(
       z
         .string()
-        .refine((v) => achievementCatalog.some((a) => a.code === v))
+        .refine((v) => achievementCatalog.some((a) => a.code === v) || tagCodePattern.test(v))
         .nullable(),
     ),
     positions: z.array(z.number().finite().min(0).max(90)).optional(),
@@ -42,11 +44,14 @@ export function achievementsRouter() {
     );
     res.json({
       can_edit: await isAdministrator(res.locals.user.id),
-      items: achievementCatalog.map((a) => ({
-        ...a,
-        revision: 0,
-        ...rows.find((r) => r.code === a.code),
-      })),
+      items: [
+        ...achievementCatalog.map((a) => ({
+          ...a,
+          revision: 0,
+          ...rows.find((r) => r.code === a.code),
+        })),
+        ...(await tagDefinitions()),
+      ],
     });
   });
   router.put('/achievements/catalog/:code', async (req, res) => {

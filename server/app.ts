@@ -25,6 +25,8 @@ import { characterArtRouter, characterListSql } from './character-art.js';
 import { characterSchema } from '../shared/character-art.js';
 import { characterSheetRouter } from './character-sheet.js';
 import { achievementsRouter } from './achievements.js';
+import { missionTagsRouter, setMissionTags } from './mission-tags.js';
+import { missionTagIds } from '../shared/mission-tags.js';
 import { inventoryRouter } from './inventory.js';
 import { inventoryBagsRouter } from './inventory-bags.js';
 import { companionEquipmentRouter } from './companion-equipment.js';
@@ -64,6 +66,7 @@ const postSchema = z.object({
   location_id: atlasId.optional(),
   difficulty: z.enum(['Tranquila', 'Moderada', 'Perigosa']),
   reward_cp: z.number().int().min(0).max(10000000).default(0),
+  tag_ids: missionTagIds.default([]),
 });
 const kingdomEditorKinds = KINGDOM_EDITOR_CATALOG.map((entry) => entry.kind) as [
   (typeof KINGDOM_EDITOR_CATALOG)[number]['kind'],
@@ -227,6 +230,7 @@ export function createApp() {
   app.use('/api', titlesRouter());
   app.use('/api', cardsRouter());
   app.use('/api', achievementsRouter());
+  app.use('/api', missionTagsRouter());
   app.use('/api', homeUpdatesRouter());
   app.use('/api', calendarRouter());
   app.use('/api', vttRouter());
@@ -344,6 +348,7 @@ export function createApp() {
       (SELECT count(*)::int FROM mission_participants p WHERE p.post_id=b.id) AS participants,
       COALESCE((SELECT json_agg(p.character_id) FROM mission_participants p JOIN characters c ON c.id=p.character_id WHERE p.post_id=b.id AND c.user_id=$1),'[]') AS my_characters,
       (SELECT title FROM board_posts source WHERE source.id=b.source_mission_id) AS source_mission_title,
+      COALESCE((SELECT json_agg(json_build_object('id',t.id,'name',t.name) ORDER BY t.name) FROM mission_post_tags mt JOIN mission_tags t ON t.id=mt.tag_id WHERE mt.post_id=b.id),'[]') AS tags,
       COALESCE((SELECT json_agg(json_build_object('name',c.name,'experience',r.experience,'gold_cp',r.gold_cp,'progression_credit',r.progression_credit,'level_after',r.level_after,'rank_promoted',r.rank_promoted)) FROM mission_rewards r JOIN characters c ON c.id=r.character_id WHERE r.post_id=b.id AND (c.user_id=$1 OR b.author_id=$1)),'[]') AS rewards
       FROM board_posts b LEFT JOIN "user" u ON u.id=b.author_id
       WHERE ($2::text IS NULL OR b.region_id=$2) AND ($3::text IS NULL OR b.location_id=$3)
@@ -354,6 +359,8 @@ export function createApp() {
   });
   app.post('/api/board', async (req, res) => {
     const data = postSchema.parse(req.body);
+    if (data.kind !== 'mission' && data.tag_ids.length)
+      throw new AppError(400, 'Somente missões concedem tags.');
     if (data.rank_test_level !== null && rankName(data.rank_test_level) !== data.mission_rank)
       throw new AppError(400, 'O teste deve pertencer à patente de origem da promoção.');
     if (data.rank_test_level !== null && data.kind !== 'mission')
@@ -388,6 +395,7 @@ export function createApp() {
           data.mission_rank,
         ],
       );
+      if (data.kind === 'mission') await setMissionTags(client, created.id, data.tag_ids);
       return created;
     });
     res.status(201).json(post);

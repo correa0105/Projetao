@@ -1,6 +1,8 @@
 import { FlashMessage } from './FlashMessage';
 import { useEffect, useState, useRef } from 'react';
-import { Lock, Plus, Check, Search, Pencil, Crown } from 'lucide-react';
+import { Lock, Plus, Check, Search, Pencil, Crown, Award } from 'lucide-react';
+import { TagProgress, TagRewards } from './TagProgress';
+import { tagCodePattern, formatTagCount } from '../shared/mission-tags';
 import { api, post } from './api';
 import {
   achievementCatalog,
@@ -19,6 +21,12 @@ import { TitleHall, TitleManager } from './Titles';
 import { AchievementEditor } from './AchievementEditor';
 import { PortraitCabinet, type FramedCharacter } from './PortraitFrames';
 function Medal({ code }: { code: string }) {
+  if (tagCodePattern.test(code))
+    return (
+      <span className="fantasy-medal tag-medal" aria-hidden="true">
+        <Award />
+      </span>
+    );
   return (
     <img
       className={'fantasy-medal achievement-art art-' + code}
@@ -209,6 +217,7 @@ export function Achievements({
       .trim();
   const visible = definitions.filter(
     (a) =>
+      (a.active !== false || data?.unlocked.some((v) => v.code === a.code)) &&
       normalize(a.title).includes(normalize(query)) &&
       (filter === 'Todas' ||
         (filter === 'Desbloqueadas') === Boolean(data?.unlocked.some((v) => v.code === a.code))),
@@ -245,11 +254,13 @@ export function Achievements({
     };
   }, [characterId, retry]);
   async function refreshHonors() {
-    const [catalog, titleState] = await Promise.all([
+    const [catalog, titleState, achievementState] = await Promise.all([
       api<AchievementCatalogResponse>('/achievements/catalog'),
       api<TitlesResponse>('/titles/' + characterId),
+      api<AchievementState>(`/characters/${characterId}/achievements`),
     ]);
     setDefinitions(catalog.items);
+    setData(achievementState);
     setTitles(titleState.items);
     setCanEdit(catalog.can_edit && titleState.can_edit);
     setHonorRevision((v) => v + 1);
@@ -449,6 +460,7 @@ export function Achievements({
           </div>
         </div>
       </details>
+      <TagProgress key={characterId} characterId={characterId} changed={refreshHonors} />
       <section className="fantasy-catalog" aria-labelledby="catalog-title">
         <header>
           <h2 id="catalog-title">Catálogo de conquistas</h2>
@@ -498,6 +510,7 @@ export function Achievements({
                 </span>
                 <h3>{a.title}</h3>
                 <p>{a.description}</p>
+                {a.rewards && <TagRewards rewards={a.rewards} />}
                 {titles
                   .filter((t) => t.goal.kind === 'achievement' && t.goal.achievement === a.code)
                   .map((t) => (
@@ -511,8 +524,14 @@ export function Achievements({
                   (progress.available ? (
                     <div className="achievement-progress">
                       <span>
-                        {progress.current.toLocaleString('pt-BR')} /{' '}
-                        {progress.target.toLocaleString('pt-BR')} {progress.unit}
+                        {progress.exact_current
+                          ? formatTagCount(progress.exact_current)
+                          : progress.current.toLocaleString('pt-BR')}{' '}
+                        /{' '}
+                        {progress.exact_target
+                          ? formatTagCount(progress.exact_target)
+                          : progress.target.toLocaleString('pt-BR')}{' '}
+                        {progress.unit}
                       </span>
                       <progress
                         aria-label={'Progresso de ' + a.title}
@@ -545,7 +564,7 @@ export function Achievements({
                   {position >= 0 ? 'Mover para esta prateleira' : 'Exibir na estante'}
                 </button>
               )}
-              {canEdit && (
+              {canEdit && !a.tag_id && (
                 <div className="achievement-admin-actions">
                   <button className="text-button" onClick={() => setEditing(a)}>
                     <Pencil size={13} />

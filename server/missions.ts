@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { transaction } from './db.js';
 import { AppError } from './services.js';
+import { creditMissionTags } from './mission-tag-progress.js';
 import {
   progressMission,
   testEligible,
@@ -97,6 +98,7 @@ export async function completeMission(
           progress.promoted,
         ],
       );
+      await creditMissionTags(client, id, participant.character_id);
     }
     const {
       rows: [completed],

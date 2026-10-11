@@ -45,6 +45,10 @@ export type AchievementDefinition = {
   title: string;
   description: string;
   revision: number;
+  tag_id?: string;
+  target?: string;
+  rewards?: import('./mission-tags').TagReward[];
+  active?: boolean;
 };
 export type AchievementCatalogResponse = { can_edit: boolean; items: AchievementDefinition[] };
 export const medalFrames = {
@@ -64,6 +68,8 @@ export type AchievementProgress = {
   target: number;
   unit: string;
   available: boolean;
+  exact_current?: string;
+  exact_target?: string;
 };
 export type AchievementState = {
   progress: Record<string, AchievementProgress>;

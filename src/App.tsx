@@ -45,6 +45,7 @@ import { rankName, progressionLabel, testEligible } from '../shared/progression'
 import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
 import { MissionCompletion } from './MissionCompletion';
+import { MissionTags } from './MissionTags';
 import { CharacterSheet } from './CharacterSheet';
 import { Notifications } from './Notifications';
 import { Stable } from './Stable';
@@ -289,6 +290,13 @@ function Portal({ user }: { user: User }) {
         </p>
       )}
       <p>{item.description}</p>
+      {!compact && (
+        <MissionTags
+          mission={item}
+          canEdit={item.author_id === user.id || user.administrador === 1}
+          refresh={refresh}
+        />
+      )}
       {item.starts_at && (
         <p className="mission-schedule">
           <time dateTime={item.starts_at}>{formatSchedule(item.starts_at)}</time>

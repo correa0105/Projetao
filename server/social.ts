@@ -1,4 +1,5 @@
 import express from 'express';
+import { tagDefinitions } from './mission-tags.js';
 import { z } from 'zod';
 import sharp from 'sharp';
 import type { PoolClient } from 'pg';
@@ -228,10 +229,13 @@ export function socialRouter() {
       character: { ...c, portrait: portrait(uid, cid, c.portrait_revision) },
       shelf: shelf.rows[0] || emptyShelf(),
       achievements: achievements.rows,
-      definitions: achievementCatalog.map((a) => ({
-        ...a,
-        ...definitions.rows.find((d) => d.code === a.code),
-      })),
+      definitions: [
+        ...achievementCatalog.map((a) => ({
+          ...a,
+          ...definitions.rows.find((d) => d.code === a.code),
+        })),
+        ...(await tagDefinitions()),
+      ],
       mounts: publicMounts,
       pets: publicPets,
       cards: ownedCards.rows.map((c) => ({

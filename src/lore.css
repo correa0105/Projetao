@@ -67,8 +67,8 @@
   bottom: auto;
   height: var(--lore-backdrop-height);
   z-index: -3;
-  background: url('/lore-world-v1.webp') center 48% / cover;
-  filter: saturate(0.6) brightness(0.63);
+  background: url('/lore-world-v2.webp') center 46% / cover;
+  filter: saturate(0.94) brightness(0.94);
   transform: scale(1.04);
   animation: lore-hero-drift 35s ease-in-out infinite alternate;
   mask-image: linear-gradient(#000 60%, transparent);
@@ -81,8 +81,8 @@
   height: var(--lore-backdrop-height);
   z-index: -1;
   background:
-    linear-gradient(180deg, #14151245, #16171335 35%, #161713bd 68%, #161713 100%),
-    linear-gradient(90deg, #131612b3, #1117122e 65%);
+    linear-gradient(180deg, #10141c18, #11151c0d 35%, #161713a3 72%, #161713 100%),
+    linear-gradient(90deg, #10151b96, #10151b26 48%, transparent 78%);
 }
 .lore-scene::after {
   content: '';

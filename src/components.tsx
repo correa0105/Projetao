@@ -28,6 +28,7 @@ import type { AtlasData, AtlasLocation, Character, Post } from './types';
 import { SheetChoices } from './SheetChoices';
 import { defaultChoices, validateChoices } from '../shared/character-sheet';
 import { ReferenceInput } from './CharacterCamp';
+import { MissionTagPicker } from './MissionTagPicker';
 import type { ArtState } from '../shared/character-art';
 const LoginWorldMap = lazy(() =>
   import('./WorldMap').then((module) => ({ default: module.WorldMap })),
@@ -439,6 +440,7 @@ export function PostForm({
 }) {
   const [kind, setKind] = useState<string>(canCreateEvent ? initialKind : 'mission');
   const [missionRank, setMissionRank] = useState<Rank>('Ferro');
+  const [tagIds, setTagIds] = useState<string[]>([]);
   const [rankTest, setRankTest] = useState('');
   const [paperStyle, setPaperStyle] = useState<PaperStyle>('parchment');
   const [locations, setLocations] = useState<AtlasLocation[]>(
@@ -476,6 +478,7 @@ export function PostForm({
       await post<Post>('/board', {
         ...form,
         kind,
+        tag_ids: kind === 'mission' ? tagIds : [],
         mission_rank: missionRank,
         rank_test_level:
           kind === 'mission' && form.rank_test_level ? Number(form.rank_test_level) : null,
@@ -572,6 +575,9 @@ export function PostForm({
           Horário local: {Intl.DateTimeFormat().resolvedOptions().timeZone}
         </small>
       </label>
+      {kind === 'mission' && (
+        <MissionTagPicker value={tagIds} onChange={setTagIds} disabled={busy} />
+      )}
       <label>
         Local no mapa
         <select

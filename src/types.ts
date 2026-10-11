@@ -71,6 +71,7 @@ export type StorageState = {
   }[];
 };
 export type Post = {
+  tags?: { id: string; name: string }[];
   paper_style: import('../shared/notice-board').PaperStyle;
   paper_summary: string;
   paper_x: number;

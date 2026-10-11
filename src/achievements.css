@@ -834,7 +834,7 @@
 .app-shell[data-page='achievements'] .main-shell::before {
   background-position:
     center top,
-    calc(50% + var(--room-width) * 0.026) top;
+    center top;
 }
 :root .cabinet-row-target {
   position: absolute;
