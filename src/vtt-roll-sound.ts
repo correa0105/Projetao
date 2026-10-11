@@ -1,6 +1,6 @@
 import type { VttMessage } from '../shared/vtt';
 
-export const NATURAL_ONE_SOUND = '/audio/vtt-rolls-20261011/fahh-natural-one.mp3';
+export const NATURAL_ONE_SOUND = '/audio/vtt-rolls-20261011/fahh-natural-one-no-music-v2.wav';
 
 export function naturalOneOnD20(roll: VttMessage['roll']) {
   if (!roll) return false;

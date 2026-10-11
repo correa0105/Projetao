@@ -5,12 +5,12 @@ import { createServer } from 'vite';
 import { chromium } from '@playwright/test';
 
 await fs.mkdir('test-results', { recursive: true });
-const path = '/audio/vtt-rolls-20261011/fahh-natural-one.mp3';
+const path = '/audio/vtt-rolls-20261011/fahh-natural-one-no-music-v2.wav';
 const html = `<div id="root"></div><script type="module">
 import React from 'react';import{createRoot}from'react-dom/client';import{VttRollSounds}from'/src/VttRollSounds.tsx';import{SiteMusicProvider,useSoundEffects}from'/src/SiteMusic.tsx';import{rollFormula}from'/shared/vtt-roll.ts';
 window.plays=[];window.instances=[];window.decoded=[];window.failures=[];
 const play=HTMLMediaElement.prototype.play;
-HTMLMediaElement.prototype.play=function(){if(this.src.endsWith('fahh-natural-one.mp3')){window.plays.push({src:this.src,volume:this.volume});window.instances.push(this);this.addEventListener('loadedmetadata',()=>window.decoded.push(this.duration),{once:true});return play.call(this).catch(e=>{window.failures.push(e.message);throw e;});}return play.call(this);};
+HTMLMediaElement.prototype.play=function(){if(this.src.endsWith('fahh-natural-one-no-music-v2.wav')){window.plays.push({src:this.src,volume:this.volume});window.instances.push(this);this.addEventListener('loadedmetadata',()=>window.decoded.push(this.duration),{once:true});return play.call(this).catch(e=>{window.failures.push(e.message);throw e;});}return play.call(this);};
 const initial={roomId:'room-a',messages:[{id:'history',author:'Jogador',text:'Teste',roll:rollFormula('1d20',()=>1),created_at:new Date().toISOString(),private:false}],enabled:true,volume:.5};
 let setState;
 function Controls(){const channel=useSoundEffects();return React.createElement('button',{id:'mute',onClick:channel.toggle},'Mudo: '+channel.muted);}
@@ -48,7 +48,7 @@ try {
     await page.route('**/audio/**', (route) =>
       new URL(route.request().url()).pathname === path
         ? route.continue()
-        : route.fulfill({ path: 'public' + path, contentType: 'audio/mpeg' }),
+        : route.fulfill({ path: 'public' + path, contentType: 'audio/wav' }),
     );
     await page.goto(origin + 'test-results/natural-one-sound.html');
     await page.waitForFunction(() => window.ready);
@@ -84,7 +84,7 @@ try {
       failures,
     }));
     assert.equal(report.volume, 0.2);
-    assert(report.duration > 0 && report.duration < 60, 'source audio does not decode');
+    assert(Math.abs(report.duration - 1.38) < 0.005, 'trimmed audio has the wrong duration');
     assert.deepEqual(report.failures, []);
     await p.evaluate(() => {
       poll();
@@ -172,7 +172,7 @@ try {
     JSON.stringify(report, null, 2),
   );
   console.log(
-    'PASS exact MP3 decoded/played in Edge desktop/mobile; two participants, natural/mixed/bonus/advantage/disadvantage, single cue, history/poll/room guards, local/global mute, volume, hidden document and cleanup.',
+    'PASS trimmed WAV decoded/played in Edge desktop/mobile; two participants, natural/mixed/bonus/advantage/disadvantage, single cue, history/poll/room guards, local/global mute, volume, hidden document and cleanup.',
   );
 } finally {
   await browser.close();

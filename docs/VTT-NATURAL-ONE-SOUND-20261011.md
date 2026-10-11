@@ -8,13 +8,17 @@ Pedido de 11/10/2026: tocar o MP3 fornecido pelo usuário sempre que um d20 most
 
 O histórico inicial de cada sala fica marcado como já visto. IDs impedem repetição por polling/atualização; mensagens antigas carregadas depois são ignoradas pelo limite de 15 segundos. Eventos recebidos enquanto o áudio está desligado não são reproduzidos ao religá-lo. A memória do histórico fica limitada a mil IDs. Nenhum novo endpoint, mudança de rolagem, banco ou inventário.
 
-Arquivo original copiado sem edição/transcodificação:
+Arquivo original preservado para recuperação:
 
 - Origem fornecida: `“Fahh” - meme sound effect.mp3`.
 - Destino público: `/audio/vtt-rolls-20261011/fahh-natural-one.mp3`.
 - 127.962 bytes; duração decodificada no Edge: 4,527891 segundos.
 - SHA-256: `f12ebd2a9e186d67a00dbdd866ff35f3aa397ad3195ef69c2194d4aa715d02a6`.
 
-Nove testes de parser/detector, TypeScript/build no estágio limpo e `scripts/review-vtt-natural-one-sound.mjs` no Edge nativo. O navegador confirma reprodução/decodificação do MP3 exato em dois participantes (desktop/celular), bônus, outros dados, pools mistos, vantagem/desvantagem, ocorrência única, histórico, polling, troca de sala, mudo/volume local e global, aba oculta e cleanup. Não são criadas rolagens nem dados no banco de produção.
+Ajuste solicitado em 11/10: o VTT agora usa `/audio/vtt-rolls-20261011/fahh-natural-one-no-music-v2.wav`, contendo somente o trecho entre 0,90 e 2,28 segundos do original. O início silencioso e o final musical foram retirados. Os últimos 40 ms têm saída suave para evitar um estalo; o restante do grito mantém as amostras decodificadas, sem filtros, alteração de volume ou compressão adicional. WAV PCM de 16 bits, estéreo, 44.100 Hz, duração de 1,38 segundo. A nova URL impede reutilização do MP3 antigo pelo cache.
+
+Nove testes de parser/detector, TypeScript/build no estágio limpo e `scripts/review-vtt-natural-one-sound.mjs` no Edge nativo. O navegador confirma reprodução/decodificação do WAV recortado e sua duração em dois participantes (desktop/celular), bônus, outros dados, pools mistos, vantagem/desvantagem, ocorrência única, histórico, polling, troca de sala, mudo/volume local e global, aba oculta e cleanup. Não são criadas rolagens nem dados no banco de produção.
 
 Publicação incremental somente cliente e novo MP3 sobre `argent-crossroads-v1-20261011`. Servidor, arquivos de efeitos anteriores, sons, dados, volumes, ilustrador e 61 alterações independentes preservados. Snapshot das tabelas antes/depois; hashes dos bundles, HTML e mídia ao vivo. Commit limitado à integração, componente, detector, testes, QA, MP3 e documentação, em `origin/Welson`.
+
+O recorte é publicado somente no cliente e como novo WAV sobre `fahh-natural-one-v1-20261011`; a lógica de rolagem permanece igual. Original, servidor, dados e alterações independentes preservados.
