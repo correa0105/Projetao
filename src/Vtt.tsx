@@ -1,5 +1,6 @@
 import { VttTokenMenu } from './VttTokenMenu';
 import { VttAtmosphereMenu } from './VttAtmosphereMenu';
+import { livingEffectReady } from './vtt-effects-living';
 import { atmosphereAnimated, atmosphereTransitioning } from './vtt-atmosphere';
 import type { MapAtmosphere } from '../shared/vtt-atmosphere';
 import { VttTokenScaleControl } from './VttTokenScaleControl';
@@ -1079,7 +1080,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       frame = requestAnimationFrame(animate);
     };
     restartAnimation();
-    void Promise.all([effectMaterialsReady, physicalPropsReady]).then(() => {
+    void Promise.all([effectMaterialsReady, physicalPropsReady, ...scene.tokens.flatMap(t => t.effects.map(e => livingEffectReady(e.kind))), livingEffectReady(effectPreview?.preset.kind || '')]).then(() => {
       if (!disposed) draw();
     });
     motionPreference.addEventListener('change', restartAnimation);

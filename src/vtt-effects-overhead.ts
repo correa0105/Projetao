@@ -13,6 +13,7 @@ import { drawOrganicEffect } from './vtt-effects-organic';
 import { drawRebuiltEffect } from './vtt-effects-rebuilt';
 import { drawElementalEffect } from './vtt-effects-elemental';
 import { drawArcanaEffect } from './vtt-effects-arcana';
+import { drawLivingEffect } from './vtt-effects-living';
 import { drawArcaneBarrier } from './vtt-arcane-barrier';
 import { drawFireHeat } from './vtt-fire-heat';
 import { drawFlySwarm } from './vtt-fly-swarm';
@@ -166,6 +167,7 @@ function drawOverheadBase(
   }
   if (drawRefinedArcana(c, e, f, t, random, front)) return;
   if (drawArcanaEffect(c, e, f, t, random, front, detail)) return;
+  if (drawLivingEffect(c, e, f, t, random, front, detail)) return;
   if (drawElementalEffect(c, e, f, t, random, front, detail)) return;
   if (drawRebuiltEffect(c, e, f, t, random, front, detail)) return;
   if (drawOrganicEffect(c, e, f, t, random, front, detail)) return;

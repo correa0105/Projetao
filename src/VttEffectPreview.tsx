@@ -5,6 +5,7 @@ import { renderEffect } from './vtt-effects-canvas';
 import { effectMaterialsReady } from './vtt-effects-materials';
 import { spectralScreamerReady } from './vtt-spectral-screamer';
 import { arcanaEffectReady } from './vtt-effects-arcana';
+import { livingEffectReady } from './vtt-effects-living';
 import { drawDeath } from './vtt-death';
 let previewImage: HTMLImageElement | undefined;
 function overheadPreview() {
@@ -105,6 +106,7 @@ export function VttEffectPreview({
       effectMaterialsReady,
       spectralScreamerReady,
       arcanaEffectReady(preset.kind),
+      livingEffectReady(preset.kind),
     ]).then(() => {
       if (alive) update();
     });

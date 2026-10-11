@@ -1,0 +1,484 @@
+{
+  "method": "Original seamless mathematical materials and synthesized sounds, references inspected without copied media",
+  "references": [
+    "https://br.pinterest.com/pin/786089310021947590/",
+    "https://library.jb2a.com/#Water%20Splash",
+    "https://library.jb2a.com/#Flames",
+    "https://library.jb2a.com/#Energy%20Field",
+    "https://library.jb2a.com/#Ice%20Spikes"
+  ],
+  "referenceNote": "Pinterest public preview partially visible behind login panel; JB2A public animation previews inspected.",
+  "source": "scripts/living-density-fields.mjs",
+  "source_sha256": "01e6fc3ceb81b42e0555aeb0584ff8fc6f5ebeaa6b0e891795291bb08bc383b8",
+  "size": 224,
+  "pad": 2,
+  "tile": 228,
+  "frames": 32,
+  "period": 5,
+  "assets": [
+    {
+      "kind": "phoenix-plumage",
+      "page": 0,
+      "path": "/vtt/living-20261010/phoenix-plumage-0.webp",
+      "bytes": 379552,
+      "sha256": "76f50cfb6b87ad941c5bf438c9e831a02e4f6d1ba93daf3beb5d585a9a453561"
+    },
+    {
+      "kind": "phoenix-plumage",
+      "page": 1,
+      "path": "/vtt/living-20261010/phoenix-plumage-1.webp",
+      "bytes": 378516,
+      "sha256": "9a2aa7064ffbb8b5ea6c2425b28c2fd667c9decfe4a20e7b5cdfbf85b990104b"
+    },
+    {
+      "kind": "argent-crossroads",
+      "page": 0,
+      "path": "/vtt/living-20261010/argent-crossroads-0.webp",
+      "bytes": 166352,
+      "sha256": "d541e28fe99a0659b78b1d84001a75883fa6ffff95ca42526ae6ad052a4b5a82"
+    },
+    {
+      "kind": "argent-crossroads",
+      "page": 1,
+      "path": "/vtt/living-20261010/argent-crossroads-1.webp",
+      "bytes": 166890,
+      "sha256": "76f68a3088cd7816c29c85a5ce0e161cb96dd545ab042cdb4aeb792010ee0d4b"
+    },
+    {
+      "kind": "coral-bloom",
+      "page": 0,
+      "path": "/vtt/living-20261010/coral-bloom-0.webp",
+      "bytes": 117114,
+      "sha256": "92ff64d8a46c03741b1dca4aaaaf0b4c23e98d2b61fbf6d147ed4642e53757fa"
+    },
+    {
+      "kind": "coral-bloom",
+      "page": 1,
+      "path": "/vtt/living-20261010/coral-bloom-1.webp",
+      "bytes": 118154,
+      "sha256": "f7a826bb2306b30e7e081c605df1a62c3018e4ec534cc38bd7ab4472003c34be"
+    },
+    {
+      "kind": "mercury-ribbon",
+      "page": 0,
+      "path": "/vtt/living-20261010/mercury-ribbon-0.webp",
+      "bytes": 162536,
+      "sha256": "5f9c450d3869a4a3bd2a62f43a4c9ea3901e059c5909ac83e13876d140524c37"
+    },
+    {
+      "kind": "mercury-ribbon",
+      "page": 1,
+      "path": "/vtt/living-20261010/mercury-ribbon-1.webp",
+      "bytes": 166914,
+      "sha256": "313b8943ce961fc99eb161c40195e7b62506df5f54e9da7757f35db41a34acd6"
+    },
+    {
+      "kind": "ink-bloom",
+      "page": 0,
+      "path": "/vtt/living-20261010/ink-bloom-0.webp",
+      "bytes": 367472,
+      "sha256": "809512c08525d213e7e6b2e4a583fad76f0d8b23e129da68542357eb5867458c"
+    },
+    {
+      "kind": "ink-bloom",
+      "page": 1,
+      "path": "/vtt/living-20261010/ink-bloom-1.webp",
+      "bytes": 362826,
+      "sha256": "2aaa106777fd4e1416a3a57b02970f19c083d815b861f011832c3c045bcb3487"
+    },
+    {
+      "kind": "lotus-wake",
+      "page": 0,
+      "path": "/vtt/living-20261010/lotus-wake-0.webp",
+      "bytes": 259058,
+      "sha256": "b374b073fd3722fce59728fa202a57940387380458fe49939e941c76a39100e9"
+    },
+    {
+      "kind": "lotus-wake",
+      "page": 1,
+      "path": "/vtt/living-20261010/lotus-wake-1.webp",
+      "bytes": 261428,
+      "sha256": "f0de089baf3274c9c7788f59c22c03364c05956119070645538bd0ca24ec0cc8"
+    },
+    {
+      "kind": "thorn-covenant",
+      "page": 0,
+      "path": "/vtt/living-20261010/thorn-covenant-0.webp",
+      "bytes": 201710,
+      "sha256": "a4a674e7df6983e81b94d5f5f409c172e9241af4dfa9967bd310b2a61a5f3f7c"
+    },
+    {
+      "kind": "thorn-covenant",
+      "page": 1,
+      "path": "/vtt/living-20261010/thorn-covenant-1.webp",
+      "bytes": 201668,
+      "sha256": "3ae3f0851ac30024bf244c374129ef9164553dbb5966c0403e7b151c85e05372"
+    },
+    {
+      "kind": "starlit-fall",
+      "page": 0,
+      "path": "/vtt/living-20261010/starlit-fall-0.webp",
+      "bytes": 98708,
+      "sha256": "b079de37c05111853c859a6802498de1617eeb0479d189970312ffa1466b91e4"
+    },
+    {
+      "kind": "starlit-fall",
+      "page": 1,
+      "path": "/vtt/living-20261010/starlit-fall-1.webp",
+      "bytes": 101860,
+      "sha256": "56b08fd43f4435c8cebd7c8bb7345a47797736da853a5c1c238a73fb13307717"
+    },
+    {
+      "kind": "moon-shards",
+      "page": 0,
+      "path": "/vtt/living-20261010/moon-shards-0.webp",
+      "bytes": 43300,
+      "sha256": "c466e34530310ac81bba9247d86e9ee6118b28e7eafe283bd7504d81f7a94b05"
+    },
+    {
+      "kind": "moon-shards",
+      "page": 1,
+      "path": "/vtt/living-20261010/moon-shards-1.webp",
+      "bytes": 43798,
+      "sha256": "963b39a0786772cf416c7d739876e0d533a4361daff90536e0f850dfa1b7637e"
+    },
+    {
+      "kind": "golden-moths",
+      "page": 0,
+      "path": "/vtt/living-20261010/golden-moths-0.webp",
+      "bytes": 88050,
+      "sha256": "e4046c4204a8ed303e0e1adfce2857de917d2bba6a2d854e30c5f162e180c805"
+    },
+    {
+      "kind": "golden-moths",
+      "page": 1,
+      "path": "/vtt/living-20261010/golden-moths-1.webp",
+      "bytes": 88568,
+      "sha256": "c3a0c75a2e7edbebc220ffa6801f2684eadabb9209ae12edcfae336812453984"
+    },
+    {
+      "kind": "crimson-lattice",
+      "page": 0,
+      "path": "/vtt/living-20261010/crimson-lattice-0.webp",
+      "bytes": 234606,
+      "sha256": "b7a9144ddda48c15690beff9f4c0ab672ece6827f80aa39348455df0cf4ffcf4"
+    },
+    {
+      "kind": "crimson-lattice",
+      "page": 1,
+      "path": "/vtt/living-20261010/crimson-lattice-1.webp",
+      "bytes": 239508,
+      "sha256": "3bb182b77921d58cd48a8dfea23c19bdff75d05842531ce6135879e7c91467da"
+    },
+    {
+      "kind": "frost-lotus",
+      "page": 0,
+      "path": "/vtt/living-20261010/frost-lotus-0.webp",
+      "bytes": 193414,
+      "sha256": "8ae34d3b7a576654e42fb54734232f6ad5bd0cffd2bef56d9a21f2ad6be6815e"
+    },
+    {
+      "kind": "frost-lotus",
+      "page": 1,
+      "path": "/vtt/living-20261010/frost-lotus-1.webp",
+      "bytes": 194310,
+      "sha256": "49ac15094677fb52076194851739d4108775adc72f224774899546804905d0a0"
+    },
+    {
+      "kind": "ether-sail",
+      "page": 0,
+      "path": "/vtt/living-20261010/ether-sail-0.webp",
+      "bytes": 262838,
+      "sha256": "6972f5c87a6c9985fa254af31a04fbd23c74a88aa319cf272078442c825c3a5a"
+    },
+    {
+      "kind": "ether-sail",
+      "page": 1,
+      "path": "/vtt/living-20261010/ether-sail-1.webp",
+      "bytes": 239058,
+      "sha256": "7a1dfb78e6c4358136b4a43feb5dfc1ca971a50e866e0ada5fd0860a47106369"
+    },
+    {
+      "kind": "obsidian-sun",
+      "page": 0,
+      "path": "/vtt/living-20261010/obsidian-sun-0.webp",
+      "bytes": 195112,
+      "sha256": "d393b1b699bd7b124b0c724e79f7d6f229a7b1a5443fe51d161f581b0feb7330"
+    },
+    {
+      "kind": "obsidian-sun",
+      "page": 1,
+      "path": "/vtt/living-20261010/obsidian-sun-1.webp",
+      "bytes": 193056,
+      "sha256": "b162b42f615c5ea25c5c3d1c038493c14add75cf024e073b9e7b4c9ec4124263"
+    },
+    {
+      "kind": "thunder-roots",
+      "page": 0,
+      "path": "/vtt/living-20261010/thunder-roots-0.webp",
+      "bytes": 142944,
+      "sha256": "7243769cc0de1600598d0ca4802a5e12dbc297fb791db5627cd14c25887f7e2e"
+    },
+    {
+      "kind": "thunder-roots",
+      "page": 1,
+      "path": "/vtt/living-20261010/thunder-roots-1.webp",
+      "bytes": 142682,
+      "sha256": "68df9893df2d9c67cf416981627dd3c9ccdf1dba5a107a3bb6da90f65ed498b7"
+    },
+    {
+      "kind": "jade-cocoons",
+      "page": 0,
+      "path": "/vtt/living-20261010/jade-cocoons-0.webp",
+      "bytes": 146068,
+      "sha256": "3cd0b16738c1c014dc74ac4d3bd3bfa547af320eae5adeda221d978eb02e37fb"
+    },
+    {
+      "kind": "jade-cocoons",
+      "page": 1,
+      "path": "/vtt/living-20261010/jade-cocoons-1.webp",
+      "bytes": 145796,
+      "sha256": "9dbd80df9c9da922f9af00d83143933a26972e830584e07d590f26744a2c4e9c"
+    },
+    {
+      "kind": "sand-chronicle",
+      "page": 0,
+      "path": "/vtt/living-20261010/sand-chronicle-0.webp",
+      "bytes": 305282,
+      "sha256": "0b750d4c4bf81edee0ae401eeb92f226cf07afbf1dac0fe5ca249a07b604d861"
+    },
+    {
+      "kind": "sand-chronicle",
+      "page": 1,
+      "path": "/vtt/living-20261010/sand-chronicle-1.webp",
+      "bytes": 304140,
+      "sha256": "d5f184dd815f1561f6727a5dc3503ff0180d9132ced145169cdccd24f234a975"
+    },
+    {
+      "kind": "opal-cascade",
+      "page": 0,
+      "path": "/vtt/living-20261010/opal-cascade-0.webp",
+      "bytes": 99900,
+      "sha256": "1414886d6d1d6bafba0d286811789d04a0c67a7dacddd20563ee745b334692b0"
+    },
+    {
+      "kind": "opal-cascade",
+      "page": 1,
+      "path": "/vtt/living-20261010/opal-cascade-1.webp",
+      "bytes": 97058,
+      "sha256": "5ce138a3c0bc0fbf65017728050dba4974270f78b2dfea781679397d4907c569"
+    },
+    {
+      "kind": "soul-tethers",
+      "page": 0,
+      "path": "/vtt/living-20261010/soul-tethers-0.webp",
+      "bytes": 91962,
+      "sha256": "076cb15d03e0567bcc57fad15ffd55192aac0da7dfbdbe85410163c678d3f962"
+    },
+    {
+      "kind": "soul-tethers",
+      "page": 1,
+      "path": "/vtt/living-20261010/soul-tethers-1.webp",
+      "bytes": 90730,
+      "sha256": "2b6413bdd0eec1d724323d5f006926fc00a7a2dd235aff74a91a88bca0e25aa3"
+    },
+    {
+      "kind": "nova-breath",
+      "page": 0,
+      "path": "/vtt/living-20261010/nova-breath-0.webp",
+      "bytes": 286166,
+      "sha256": "c0ddf4f4829cd8ffe28bee2ec7bc150bfc62a50b13d9a737291e9f87f4dbb6fc"
+    },
+    {
+      "kind": "nova-breath",
+      "page": 1,
+      "path": "/vtt/living-20261010/nova-breath-1.webp",
+      "bytes": 289128,
+      "sha256": "be5dfbfa895d43b79aba0145f9109414ec5e4a38ffbb319a2d5e8597778e4727"
+    }
+  ],
+  "sounds": [
+    {
+      "kind": "phoenix-plumage",
+      "path": "/audio/vtt-living-20261010/phoenix-plumage.wav",
+      "duration": 1.4,
+      "peak": 0.65,
+      "sha256": "9aeaac30c748e26d65c966dcf1a9aeb8c9faa37f10a190ad3e701039da248dc0",
+      "bytes": 123524
+    },
+    {
+      "kind": "argent-crossroads",
+      "path": "/audio/vtt-living-20261010/argent-crossroads.wav",
+      "duration": 1.5499999999999998,
+      "peak": 0.65,
+      "sha256": "b5c87ab67c7907612f43d4b1d061cd5d2e1a4d87902a2aca279d94bdf71dd3b4",
+      "bytes": 136752
+    },
+    {
+      "kind": "coral-bloom",
+      "path": "/audio/vtt-living-20261010/coral-bloom.wav",
+      "duration": 1.7,
+      "peak": 0.65,
+      "sha256": "524fbe13135f9b4c14683f2db502e96b99d1f35b724283f512a407bc88b514ec",
+      "bytes": 149984
+    },
+    {
+      "kind": "mercury-ribbon",
+      "path": "/audio/vtt-living-20261010/mercury-ribbon.wav",
+      "duration": 1.8499999999999999,
+      "peak": 0.65,
+      "sha256": "9a6451a13754546b1a18984f2af0a49a30bddbba3dd83f36992d5e7d50b41c1f",
+      "bytes": 163216
+    },
+    {
+      "kind": "ink-bloom",
+      "path": "/audio/vtt-living-20261010/ink-bloom.wav",
+      "duration": 1.4,
+      "peak": 0.65,
+      "sha256": "8e56a6a72ec2cd8a8e5fb55b5069f4a0e4aae3180778d6026f0119771c961e37",
+      "bytes": 123524
+    },
+    {
+      "kind": "lotus-wake",
+      "path": "/audio/vtt-living-20261010/lotus-wake.wav",
+      "duration": 1.5499999999999998,
+      "peak": 0.65,
+      "sha256": "f254e838765451ca2672ef5f237f13dcdb65d12379f3fd2bf0a4c6df97807086",
+      "bytes": 136752
+    },
+    {
+      "kind": "thorn-covenant",
+      "path": "/audio/vtt-living-20261010/thorn-covenant.wav",
+      "duration": 1.7,
+      "peak": 0.65,
+      "sha256": "2813195ceb8caa85af55eac297bafb37ad8ae31d30d56db88da0697f5c607e00",
+      "bytes": 149984
+    },
+    {
+      "kind": "starlit-fall",
+      "path": "/audio/vtt-living-20261010/starlit-fall.wav",
+      "duration": 1.8499999999999999,
+      "peak": 0.65,
+      "sha256": "e2490b1dc52d56a63455467d5fe6567e3ba36a81249c9f5f4f802335ee1986c6",
+      "bytes": 163216
+    },
+    {
+      "kind": "moon-shards",
+      "path": "/audio/vtt-living-20261010/moon-shards.wav",
+      "duration": 1.4,
+      "peak": 0.65,
+      "sha256": "b1ef25412978311fddc370c89ed91d559dd5f2ae325ad48502e1b000a4570880",
+      "bytes": 123524
+    },
+    {
+      "kind": "golden-moths",
+      "path": "/audio/vtt-living-20261010/golden-moths.wav",
+      "duration": 1.5499999999999998,
+      "peak": 0.65,
+      "sha256": "2e6438cd471ec9ffe40673f72a0bfa1eeaae4b3cbdf030e330403ecfbd8bb50d",
+      "bytes": 136752
+    },
+    {
+      "kind": "crimson-lattice",
+      "path": "/audio/vtt-living-20261010/crimson-lattice.wav",
+      "duration": 1.7,
+      "peak": 0.65,
+      "sha256": "43d7580407cf61b29a1cf4502aed439792e9898c161f0a76e1f78894e5a35195",
+      "bytes": 149984
+    },
+    {
+      "kind": "frost-lotus",
+      "path": "/audio/vtt-living-20261010/frost-lotus.wav",
+      "duration": 1.8499999999999999,
+      "peak": 0.65,
+      "sha256": "3181d8a990c1e883bc5cb54bcfd487b5d11becf01e65d81c650ae151fbbc43cf",
+      "bytes": 163216
+    },
+    {
+      "kind": "ether-sail",
+      "path": "/audio/vtt-living-20261010/ether-sail.wav",
+      "duration": 1.4,
+      "peak": 0.65,
+      "sha256": "5b306eb5b3e143dd6c50e8c34b7cc0a7422952577a5f60bc04ab0c2e36d94795",
+      "bytes": 123524
+    },
+    {
+      "kind": "obsidian-sun",
+      "path": "/audio/vtt-living-20261010/obsidian-sun.wav",
+      "duration": 1.5499999999999998,
+      "peak": 0.65,
+      "sha256": "148569763599d93c6a1e6dc055dcf743887714f2d13b0595e63068f80a233fc4",
+      "bytes": 136752
+    },
+    {
+      "kind": "thunder-roots",
+      "path": "/audio/vtt-living-20261010/thunder-roots.wav",
+      "duration": 1.7,
+      "peak": 0.65,
+      "sha256": "183c243c84c1dfb84012886599285ac76bd13f9056506c0538b98b8e9901c79b",
+      "bytes": 149984
+    },
+    {
+      "kind": "jade-cocoons",
+      "path": "/audio/vtt-living-20261010/jade-cocoons.wav",
+      "duration": 1.8499999999999999,
+      "peak": 0.65,
+      "sha256": "10f8cd6cab1734dc1c1fd6eb6dc40febe12b2bf39e2c2465971e7724ea3ebb26",
+      "bytes": 163216
+    },
+    {
+      "kind": "sand-chronicle",
+      "path": "/audio/vtt-living-20261010/sand-chronicle.wav",
+      "duration": 1.4,
+      "peak": 0.65,
+      "sha256": "a5f283665d42bb9ba522c9d827c7e3f419d3561ad4312ec96231b1e0eef0be1f",
+      "bytes": 123524
+    },
+    {
+      "kind": "opal-cascade",
+      "path": "/audio/vtt-living-20261010/opal-cascade.wav",
+      "duration": 1.5499999999999998,
+      "peak": 0.65,
+      "sha256": "21f7a8142092686a3011f01829e94f6b1346f927f9bd869ed8d51165976a2758",
+      "bytes": 136752
+    },
+    {
+      "kind": "soul-tethers",
+      "path": "/audio/vtt-living-20261010/soul-tethers.wav",
+      "duration": 1.7,
+      "peak": 0.65,
+      "sha256": "c7316903463df058f2c40d1c14a37bb57d67ab057c76aba1f8885127e4a03ac0",
+      "bytes": 149984
+    },
+    {
+      "kind": "nova-breath",
+      "path": "/audio/vtt-living-20261010/nova-breath.wav",
+      "duration": 1.8499999999999999,
+      "peak": 0.65,
+      "sha256": "80e61450babd38a8f6104d993148914a9555fab607de3aa7561006c6ab19e2fc",
+      "bytes": 163216
+    }
+  ],
+  "review": "approved",
+  "generator": "scripts/bake-living-effects.ts",
+  "generator_sha256": "dd50256a2f88d154f0466c55e0b0a6cbfd64af4264674ec516c378f58d3f67ac",
+  "verification": {
+    "sourceHash": "01e6fc3ceb81b42e0555aeb0584ff8fc6f5ebeaa6b0e891795291bb08bc383b8",
+    "visibility": true,
+    "uniqueGeometryPairs": 190,
+    "minimumGeometryDifference": 0.6778208881736225,
+    "minimumMovement": 0.40075888769773055,
+    "maximumLoopSeam": 0.015564437984496124,
+    "reducedMotion": true,
+    "customColor": true,
+    "intensity": true,
+    "transparentBackground": true,
+    "previousRenderersCompared": 126,
+    "previousMaximumRgbaDifference": 0,
+    "cacheKinds": 20,
+    "allTwentySyntheticFrameMs": 90.37999999523163,
+    "mediaHashesChecked": 60,
+    "uniqueStereoCues": 20,
+    "realVtt": "41 models; save, reload, private preview, new presets, protocol 11 blocked; 403 permissions; galleries and HUD at 1440, 768, 390 and 320 px"
+  }
+}

@@ -6,7 +6,9 @@ import { newToken } from '../shared/vtt';
 import { vttProtocolVersion } from '../shared/vtt-protocol';
 import { arcanaEffects as originalArcanaEffects } from '../shared/vtt-effects-arcana';
 import { barrierEffects } from '../shared/vtt-effects-barrier';
-const arcanaEffects = [...originalArcanaEffects, ...barrierEffects];
+import { livingEffects } from '../shared/vtt-effects-living';
+import { effectSound } from '../shared/vtt-effect-sounds';
+const arcanaEffects = [...originalArcanaEffects, ...barrierEffects, ...livingEffects];
 import { conditionIcons, toggledCondition } from '../shared/vtt-condition-icons';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable database required');
@@ -88,11 +90,22 @@ try {
   room = (await api(gm, root, 'PUT', { revision: room.revision, document: room.document })).data;
   expect(room.id).toBeTruthy();
   const outdated = await gm.request.get(origin + '/api' + root, {
-    headers: { Origin: origin, 'X-Vtt-Schema-Version': '8' },
+    headers: { Origin: origin, 'X-Vtt-Schema-Version': String(vttProtocolVersion - 1) },
   });
   expect(outdated.status()).toBe(409);
   expect((await outdated.json()).error).toContain('Recarregue');
-  const open = async (p: Page) => {
+  for (const model of livingEffects) {
+    for (const url of [0, 1].map((n) => `/vtt/living-20261010/${model.kind}-${n}.webp`)) {
+      const response = await gm.request.get(origin + url);
+      expect(response.status()).toBe(200);
+      expect(response.headers()['content-type']).toContain('image/webp');
+    }
+    const response = await gm.request.get(origin + effectSound(model.kind));
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toContain('audio/');
+    expect((await response.body()).subarray(0, 4).toString()).toBe('RIFF');
+  }
+  const open = async (p: Page, pane: 'conditions' | 'settings' = 'conditions') => {
     const board = p.getByLabel('Tabuleiro da mesa', { exact: true });
     await expect(board).toBeVisible();
     if ((p.viewportSize()?.width || 1440) < 800 && (await p.locator('.vtt-panel').count())) {
@@ -107,9 +120,17 @@ try {
       button: 'right',
       position: { x: b.width / 2 + (token.x - x) * z, y: b.height / 2 + (token.y - y) * z },
     });
-    const popup = p.getByRole('dialog', { name: 'Ações do objeto' });
+    await p
+      .getByRole('button', {
+        name: pane === 'conditions' ? 'Condições do token' : 'Configurações do token',
+        exact: true,
+      })
+      .click();
+    const popup = p.getByRole('dialog', {
+      name: pane === 'conditions' ? 'Condições' : 'Configurações do token',
+      exact: true,
+    });
     await expect(popup).toBeVisible();
-    await popup.locator('.vtt-condition-menu>summary').click();
     return popup;
   };
   await page.goto(origin + '/#vtt');
@@ -142,7 +163,7 @@ try {
       (await api(gm, root)).data.document.scenes[0].tokens[0].conditions.includes('Cego'),
     )
     .toBe(false);
-  await popup.getByRole('button', { name: 'Fechar ações' }).click();
+  await popup.getByRole('button', { name: 'Fechar painel do token' }).click();
   await page.getByRole('button', { name: 'Efeitos do mestre', exact: true }).click();
   for (const model of arcanaEffects) {
     const create = page.getByRole('button', { name: 'Criar efeito · ' + model.name, exact: true });
@@ -205,7 +226,7 @@ try {
       .getByRole('group', { name: 'Ícones de condições' })
       .getByRole('button', { name: 'Cego', exact: true }),
   ).toBeDisabled();
-  await pp.getByRole('button', { name: 'Fechar ações' }).click();
+  await pp.getByRole('button', { name: 'Fechar painel do token' }).click();
   const endpoint = root + '/tokens/' + token.id;
   expect((await api(player, endpoint, 'PATCH', { conditions: [] })).status).toBe(403);
   expect(
@@ -229,37 +250,71 @@ try {
       .getByRole('group', { name: 'Ícones de condições' })
       .getByRole('button', { name: 'Asas', exact: true }),
   ).toBeDisabled();
-  await pp.getByRole('button', { name: 'Fechar ações' }).click();
-  await popup.getByRole('button', { name: 'Fechar ações' }).click();
+  await pp.getByRole('button', { name: 'Fechar painel do token' }).click();
+  await popup.getByRole('button', { name: 'Fechar painel do token' }).click();
   await page.reload();
-  const beforeScale=(await api(gm,root)).data.document.scenes[0].tokens[0];
-  const scalePopup=await open(page),slider=scalePopup.getByRole('slider',{name:'Tamanho do token',exact:true});
+  const beforeScale = (await api(gm, root)).data.document.scenes[0].tokens[0];
+  const scalePopup = await open(page, 'settings'),
+    slider = scalePopup.getByRole('slider', { name: 'Tamanho do token', exact: true });
   await slider.scrollIntoViewIfNeeded();
   await slider.focus();
   await slider.press('ArrowRight');
-  let scaled:any;
-  await expect.poll(async()=>{scaled=(await api(gm,root)).data.document.scenes[0].tokens[0];return scaled.width;}).toBeGreaterThan(beforeScale.width);
-  expect(scaled.height/scaled.width).toBeCloseTo(beforeScale.height/beforeScale.width,8);
-  expect({x:scaled.x,y:scaled.y,hp:scaled.hp,conditions:scaled.conditions}).toEqual({x:beforeScale.x,y:beforeScale.y,hp:beforeScale.hp,conditions:beforeScale.conditions});
-  const enlarged=scaled.width;
+  let scaled: any;
+  await expect
+    .poll(async () => {
+      scaled = (await api(gm, root)).data.document.scenes[0].tokens[0];
+      return scaled.width;
+    })
+    .toBeGreaterThan(beforeScale.width);
+  expect(scaled.height / scaled.width).toBeCloseTo(beforeScale.height / beforeScale.width, 8);
+  expect({ x: scaled.x, y: scaled.y, hp: scaled.hp, conditions: scaled.conditions }).toEqual({
+    x: beforeScale.x,
+    y: beforeScale.y,
+    hp: beforeScale.hp,
+    conditions: beforeScale.conditions,
+  });
+  const enlarged = scaled.width;
   await expect(slider).toBeEnabled();
   await slider.press('ArrowLeft');
-  await expect.poll(async()=>{scaled=(await api(gm,root)).data.document.scenes[0].tokens[0];return scaled.width;}).toBeLessThan(enlarged);
+  await expect
+    .poll(async () => {
+      scaled = (await api(gm, root)).data.document.scenes[0].tokens[0];
+      return scaled.width;
+    })
+    .toBeLessThan(enlarged);
   await expect(slider).toBeEnabled();
-  const beforeDrag=scaled.width,sliderBox=(await slider.boundingBox())!;
-  const [minimum,maximum]=await Promise.all(['min','max'].map(name=>slider.getAttribute(name)));
-  const thumb=sliderBox.x+8+(Number(await slider.inputValue())-Number(minimum))/(Number(maximum)-Number(minimum))*(sliderBox.width-16);
-  await page.mouse.move(thumb,sliderBox.y+sliderBox.height/2);
+  const beforeDrag = scaled.width,
+    sliderBox = (await slider.boundingBox())!;
+  const [minimum, maximum] = await Promise.all(
+    ['min', 'max'].map((name) => slider.getAttribute(name)),
+  );
+  const thumb =
+    sliderBox.x +
+    8 +
+    ((Number(await slider.inputValue()) - Number(minimum)) / (Number(maximum) - Number(minimum))) *
+      (sliderBox.width - 16);
+  await page.mouse.move(thumb, sliderBox.y + sliderBox.height / 2);
   await page.mouse.down();
-  await page.mouse.move(Math.min(sliderBox.x+sliderBox.width-10,thumb+35),sliderBox.y+sliderBox.height/2,{steps:6});
+  await page.mouse.move(
+    Math.min(sliderBox.x + sliderBox.width - 10, thumb + 35),
+    sliderBox.y + sliderBox.height / 2,
+    { steps: 6 },
+  );
   await page.mouse.up();
-  await expect.poll(async()=>{scaled=(await api(gm,root)).data.document.scenes[0].tokens[0];return scaled.width;}).toBeGreaterThan(beforeDrag);
-  expect(scaled.height/scaled.width).toBeCloseTo(.5,8);
+  await expect
+    .poll(async () => {
+      scaled = (await api(gm, root)).data.document.scenes[0].tokens[0];
+      return scaled.width;
+    })
+    .toBeGreaterThan(beforeDrag);
+  expect(scaled.height / scaled.width).toBeCloseTo(0.5, 8);
   await page.reload();
-  const savedScale=(await api(gm,root)).data.document.scenes[0].tokens[0];
+  const savedScale = (await api(gm, root)).data.document.scenes[0].tokens[0];
   expect(savedScale.width).toBe(scaled.width);
-  expect(savedScale.height/scaled.width).toBeCloseTo(beforeScale.height/beforeScale.width,8);
-  console.log('PASS actual range control: mouse drag and keyboard growth/shrinkage, keep rectangular proportions/position/HP/conditions, save and reload.');
+  expect(savedScale.height / scaled.width).toBeCloseTo(beforeScale.height / beforeScale.width, 8);
+  console.log(
+    'PASS actual range control: mouse drag and keyboard growth/shrinkage, keep rectangular proportions/position/HP/conditions, save and reload.',
+  );
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.reload();
@@ -270,15 +325,45 @@ try {
     await expect(
       pop.getByRole('group', { name: 'Ícones de condições' }).getByRole('button'),
     ).toHaveCount(30);
-    await expect(pop.getByRole('slider',{name:'Tamanho do token',exact:true})).toBeVisible();
-    await expect(pop.getByRole('button',{name:'Diminuir token',exact:true})).toHaveCount(0);
-    await expect(pop.getByRole('button',{name:'Aumentar token',exact:true})).toHaveCount(0);
     await pop.screenshot({ path: 'test-results/vtt-conditions-' + width + '.png' });
-    await pop.getByRole('button', { name: 'Fechar ações' }).click();
+    await pop.getByRole('button', { name: 'Fechar painel do token' }).click();
+    await page.getByRole('button', { name: 'Configurações do token', exact: true }).click();
+    const settings = page.getByRole('dialog', { name: 'Configurações do token', exact: true });
+    await expect(
+      settings.getByRole('slider', { name: 'Tamanho do token', exact: true }),
+    ).toBeVisible();
+    await expect(settings.getByRole('button', { name: 'Diminuir token', exact: true })).toHaveCount(
+      0,
+    );
+    await expect(settings.getByRole('button', { name: 'Aumentar token', exact: true })).toHaveCount(
+      0,
+    );
+    await settings.getByRole('button', { name: 'Fechar painel do token', exact: true }).click();
+    await page.getByRole('button', { name: 'Fechar menu do token', exact: true }).click();
+    await page.getByRole('button', { name: 'Efeitos do mestre', exact: true }).click();
+    const model = livingEffects[width % livingEffects.length];
+    const library = page.getByRole('button', { name: 'Biblioteca de efeitos · 147', exact: true });
+    if ((await library.getAttribute('aria-expanded')) !== 'true') await library.click();
+    await page.getByRole('searchbox', { name: 'Buscar efeito', exact: true }).fill(model.name);
+    const create = page.getByRole('button', { name: 'Criar efeito · ' + model.name, exact: true });
+    await create.scrollIntoViewIfNeeded();
+    await expect(create.locator('canvas')).toBeVisible();
+    const cb = (await create.boundingBox())!;
+    expect(cb.x).toBeGreaterThanOrEqual(0);
+    expect(cb.x + cb.width).toBeLessThanOrEqual(width);
+    await create.click();
+    await expect(page.getByRole('form', { name: 'Editor de efeito' })).toBeVisible();
+    await expect(
+      page.getByRole('form', { name: 'Editor de efeito' }).locator('strong').first(),
+    ).toHaveText(model.name);
+    await page
+      .locator('.vtt-effects-menu')
+      .screenshot({ path: 'test-results/vtt-living-menu-' + width + '.png' });
+    await page.getByRole('button', { name: 'Fechar efeitos', exact: true }).click();
   }
   expect(errors).toEqual([]);
   console.log(
-    'PASS real VTT: twenty-one models/editor/private preview/apply/presets, including arcane barrier; thirty distinct conditions, custom legacy labels, GM toggle/save/reload, player adds only, spectator denied, four responsive widths.',
+    'PASS real VTT: forty-one models/editor/private preview/apply/presets, including twenty new living effects and sixty assets/sounds; thirty conditions, GM toggle/save/reload, player adds only, spectator denied, previous protocol blocked, gallery and actions in four responsive widths.',
   );
 } finally {
   await Promise.all(contexts.map((c) => c.close()));

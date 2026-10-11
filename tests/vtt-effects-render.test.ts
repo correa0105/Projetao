@@ -227,13 +227,13 @@ test('prismas preservam a forma; descargas variam sem tremor dentro do clarão',
   }
 });
 
-test('biblioteca mantém IDs legados e 127 modelos com metadata validada', () => {
+test('biblioteca mantém IDs legados e 147 modelos com metadata validada', () => {
   assert.deepEqual(effectKinds.slice(0, 6), ['death', 'fire', 'frost', 'poison', 'heal', 'sparks']);
-  assert.equal(effectKinds.length, 127);
-  assert.equal(new Set(effectKinds).size, 127);
-  assert.equal(effectLibrary.length, 127);
-  assert.equal(effectNames.length, 127);
-  assert.equal(effectColors.length, 127);
+  assert.equal(effectKinds.length, 147);
+  assert.equal(new Set(effectKinds).size, 147);
+  assert.equal(effectLibrary.length, 147);
+  assert.equal(effectNames.length, 147);
+  assert.equal(effectColors.length, 147);
   for (const [i, e] of effectLibrary.entries()) {
     assert.equal(e.kind, effectKinds[i]);
     assert.equal(e.name, effectNames[i]);
