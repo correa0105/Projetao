@@ -139,7 +139,7 @@ export function VttAtmosphereMenu({
             </nav>
             <div className="vtt-atmosphere-presets">
               {weatherPresets
-                .filter((p) => p[2] === tab)
+                .filter((p) => p[2] === tab && p[0] !== 'meteors')
                 .map((p) => (
                   <button
                     key={p[0]}

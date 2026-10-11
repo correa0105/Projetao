@@ -40,6 +40,8 @@
 }
 .lore-era-window {
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+  max-width: calc(100% + 20px);
   scrollbar-width: thin;
   scrollbar-color: #92744355 transparent;
   margin: 25px -10px 0;

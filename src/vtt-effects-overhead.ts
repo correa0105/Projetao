@@ -165,9 +165,9 @@ function drawOverheadBase(
     drawFlySwarm(c, f, t, random, front, detail, e.color);
     return;
   }
-  if (drawRefinedArcana(c, e, f, t, random, front)) return;
   if (drawArcanaEffect(c, e, f, t, random, front, detail)) return;
   if (drawLivingEffect(c, e, f, t, random, front, detail)) return;
+  if (drawRefinedArcana(c, e, f, t, random, front)) return;
   if (drawElementalEffect(c, e, f, t, random, front, detail)) return;
   if (drawRebuiltEffect(c, e, f, t, random, front, detail)) return;
   if (drawOrganicEffect(c, e, f, t, random, front, detail)) return;

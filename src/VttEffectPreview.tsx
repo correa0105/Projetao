@@ -90,7 +90,7 @@ export function VttEffectPreview({
     };
     paint(0);
     const animate = (now: number) => {
-      if (now - last >= 40 && !document.hidden) {
+      if (now - last >= 1000 / 60 - 1 && !document.hidden) {
         paint(now - start);
         last = now;
       }

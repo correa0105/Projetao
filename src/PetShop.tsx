@@ -310,59 +310,64 @@ export function PetShop({
         <div className="pet-shop-atmosphere" aria-hidden="true" />
         <aside className="pet-shop-purchase" aria-label="Conheça seu companheiro">
           <header>
-            <span className="eyebrow">O EMPÓRIO DE GARALHO</span>
-            <h2>Amizades para a estrada.</h2>
-            <p>Uma casa acolhedora. Um novo amigo à sua espera.</p>
+            <h2>Companheiros de estrada</h2>
+            <p>Escolha quem seguirá ao seu lado.</p>
           </header>
-          <label className="pet-shop-selector">
-            Escolha seu companheiro
-            <select
-              aria-label="Mascote à venda"
-              value={selected.id}
-              disabled={busy}
-              onChange={(event) => {
-                const pet = pets.find((pet) => pet.id === event.target.value)!;
-                setSelected(pet);
-                setSoundTrigger((value) => value + 1);
-                setAppearance('original');
-                setName('');
-                key.current = crypto.randomUUID();
-                setNotice('');
-                setError('');
-                write(pet.sign);
-              }}
-            >
-              {pets.map((pet) => (
-                <option key={pet.id} value={pet.id}>
-                  {pet.name} · {money(pet.price_cp)} PO
-                </option>
-              ))}
-            </select>
-          </label>
+          <div className="pet-shop-animal-list" aria-label="Mascotes à venda">
+            {pets.map((pet) => (
+              <button
+                type="button"
+                key={pet.id}
+                className="pet-shop-animal-row"
+                aria-label={`${pet.name} · ${money(pet.price_cp)} PO`}
+                aria-pressed={selected.id === pet.id}
+                disabled={busy}
+                onClick={() => {
+                  if (selected.id === pet.id) return;
+                  setSelected(pet);
+                  setSoundTrigger((value) => value + 1);
+                  setAppearance('original');
+                  setName('');
+                  key.current = crypto.randomUUID();
+                  setNotice('');
+                  setError('');
+                  write(pet.sign);
+                }}
+              >
+                <PetArt pet={pet} appearance={selected.id === pet.id ? appearance : 'original'} />
+                <span>
+                  <strong>{pet.name}</strong>
+                  <small>{money(pet.price_cp)} PO</small>
+                </span>
+                {selected.id === pet.id && <Check size={14} aria-hidden="true" />}
+              </button>
+            ))}
+          </div>
           <div className="pet-shop-details">
-            <h3>{selected.name}</h3>
             <div className="pet-breed-heading">
-              <span>{breed.name}</span>
+              <span>Aparência</span>
               {catalog.can_edit && (
                 <button
                   className="text-button"
                   disabled={busy}
                   onClick={() => setEditingBreed(breed)}
+                  aria-label={`Editar raça · ${breed.name}`}
+                  title={`Editar raça · ${breed.name}`}
                 >
-                  <Pencil size={13} /> Editar raça
+                  <Pencil size={13} />
                 </button>
               )}
             </div>
-            <p>{selected.description}</p>
             {petVariants.some((v) => v.pet_id === selected.id) && (
               <fieldset className="pet-appearances" disabled={busy}>
-                <legend>Aparência</legend>
+                <legend className="pet-shop-visually-hidden">Aparência de {selected.name}</legend>
                 {[
                   'original',
                   ...petVariants.filter((v) => v.pet_id === selected.id).map((v) => v.id),
                 ].map((id) => (
                   <button
                     key={id}
+                    aria-label={`Aparência · ${catalog.breeds.find((breed) => breed.pet_id === selected.id && breed.appearance === id)?.name || 'Clássico'}`}
                     aria-pressed={appearance === id}
                     onClick={() => {
                       setAppearance(id);
@@ -381,7 +386,7 @@ export function PetShop({
               </fieldset>
             )}
             <label>
-              Como vai se chamar?
+              Nome do mascote
               <input
                 maxLength={40}
                 value={name}
@@ -425,7 +430,6 @@ export function PetShop({
             >
               <ShoppingBag size={16} /> {busy ? 'Preparando a viagem…' : 'Levar este companheiro'}
             </button>
-            {character && !name.trim() && <p>Dê um nome ao seu mascote para comprar.</p>}
             <a className="pet-shop-inventory-link" href="#inventory">
               Ver meus mascotes no inventário →
             </a>

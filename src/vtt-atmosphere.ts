@@ -1,6 +1,8 @@
 import { weatherPreset, type MapAtmosphere } from '../shared/vtt-atmosphere';
 import type { VttScene } from '../shared/vtt';
 import { seededRandom, fract } from './vtt-effects-primitives';
+import { drawWeatherFlows, drawCelestialWeather } from './vtt-atmosphere-flows';
+import { approvedSkyFragment } from './vtt-atmosphere-approved-sky';
 
 type View = { left: number; top: number; right: number; bottom: number };
 type WeatherLayer = {
@@ -10,6 +12,7 @@ type WeatherLayer = {
   uniforms: Map<string, WebGLUniformLocation | null>;
 };
 let layer: WeatherLayer | null = null,
+  skyLayer: WeatherLayer | null = null,
   unavailable = false;
 
 // Continuous density fields, lit edges and independently drifting depths.
@@ -27,7 +30,6 @@ void main(){
  vec2 world=mix(view.xy,view.zw,vec2(uv.x,1.-uv.y));
  vec2 p=world/460.;
  vec2 drift=wind*time*.055;
- if(mode>1.5&&mode<2.5){vec2 d=(uv-vec2(.52,.5))*vec2(1.35,1.);float r=length(d),a=atan(d.y,d.x)+time*.38-r*10.;p=vec2(cos(a),sin(a))*r*4.+vec2(time*.02);}
  vec2 warp=vec2(fbm(p+drift+time*.024),fbm(p-drift*.3+vec2(5.,9.)-time*.018));
  float far=fbm(p*.85+drift*.45+warp*2.4),near=fbm(p*2.4+drift+warp*1.8);
  float field=smoothstep(.18,.74,far*.6+near*.4);
@@ -36,14 +38,19 @@ void main(){
  float rim=clamp((fbm(p*.85+vec2(.12,-.07)+drift*.45+warp*2.4)-far)*4.,0.,.18);
  color+=vec3(rim*.75,rim*.85,rim);
  if(mode>.5&&mode<1.5){opacity=smoothstep(.32,.70,far*.8+near*.2)*density;color=pigment*(.5+near*.3);}
- if(mode>1.5&&mode<2.5){vec2 d=(uv-vec2(.52,.5))*vec2(1.35,1.);float r=length(d),a=atan(d.y,d.x);float spiral=sin(a*3.+r*22.-time*.7+near*5.)*.5+.5;opacity*=smoothstep(.02,.10,r)*(1.-smoothstep(vortexSize*.55,vortexSize,r))*(.55+spiral*.7);}
- if(mode>2.5){float wave=uv.y-.42-sin(uv.x*4.+time*.11)*.12-fbm(vec2(uv.x*3.,time*.035))*.13;float curtain=exp(-abs(wave)*11.)*(.3+.7*pow(sin(uv.x*65.+time*.5+near*8.)*.5+.5,2.));opacity=curtain*density;color=mix(vec3(.16,.94,.65),vec3(.65,.28,.95),sin(uv.x*7.+time*.13)*.5+.5);}
+ if(mode>1.5&&mode<2.5){vec2 d=(uv-vec2(.52,.5))*vec2(1.35,1.);float r=length(d),a=atan(d.y,d.x);float swirl=a-r*13.+time*1.7;float cloud=fbm(vec2(cos(swirl),sin(swirl))*r*6.+vec2(time*.15));float arms=pow(sin(swirl*3.+cloud*3.)*.5+.5,1.3);float eye=smoothstep(.065,.13,r);opacity=density*eye*(1.-smoothstep(.48,.78,r))*(.25+cloud*.65+arms*.3);color=mix(vec3(.18,.24,.28),vec3(.81,.86,.84),cloud*.7+arms*.25);}
+ if(mode>2.5&&mode<3.5){float wave=uv.y-.42-sin(uv.x*4.+time*.11)*.12-fbm(vec2(uv.x*3.,time*.035))*.13;float curtain=exp(-abs(wave)*11.)*(.3+.7*pow(sin(uv.x*65.+time*.5+near*8.)*.5+.5,2.));opacity=curtain*density;color=mix(vec3(.16,.94,.65),vec3(.65,.28,.95),sin(uv.x*7.+time*.13)*.5+.5);}
+
+ if(mode>3.5&&mode<4.5){vec2 q=vec2(uv.x,1.-uv.y);float y=q.y;float axis=.52+sin(y*5.+time*.55)*.04;float width=.018+pow(1.-y,2.)*.22;float x=(q.x-axis)/width;float inside=1.-smoothstep(.65,1.15,abs(x));float striae=fbm(vec2(x*2.+time*3.,y*19.-time*1.6));float light=clamp(.6-x*.35+striae*.28,0.,1.);opacity=density*inside*smoothstep(.05,.18,y)*(1.-smoothstep(.85,.93,y))*(.62+striae*.4);color=mix(vec3(.13,.18,.19),vec3(.78,.81,.77),light);float base=exp(-pow((q.y-.87)*13.,2.))*exp(-pow((q.x-.53)*7.,2.));opacity+=base*density*.45;color=mix(color,vec3(.5,.4,.27),base*.4);}
+ if(mode>4.5&&mode<6.5){vec2 streak=vec2(p.x*.65-time*2.8,p.y*12.);float flow=fbm(streak+vec2(fbm(streak*.4)*2.));float edge=pow(flow,3.);opacity=density*(.04+(mode<5.5?pow(flow,2.)*.8:edge*.26));color=mode<5.5?mix(vec3(.45,.29,.13),vec3(.85,.67,.4),flow):mix(vec3(.4,.58,.59),vec3(.82,.93,.86),flow);}
+ if(mode>6.5){float ribbons=fbm(p*3.+vec2(time*.24,-time*.32));float core=pow(ribbons,4.);opacity=density*(.06+core*1.8);color=mix(vec3(.12,.08,.28),vec3(.72,.35,1.),ribbons)+vec3(.3,.6,.9)*core;}
  opacity=clamp(opacity,0.,.82);
  gl_FragColor=vec4(color*opacity,opacity);
 }`;
 
-function weatherLayer() {
-  if (layer || unavailable) return layer;
+function weatherLayer(approvedSky = false) {
+  const cached = approvedSky ? skyLayer : layer;
+  if (cached || unavailable) return cached;
   try {
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl', {
@@ -68,7 +75,7 @@ function weatherLayer() {
       gl.VERTEX_SHADER,
       'attribute vec2 position;varying vec2 uv;void main(){uv=position*.5+.5;gl_Position=vec4(position,0.,1.);}',
     );
-    const pixel = compile(gl.FRAGMENT_SHADER, fragment);
+    const pixel = compile(gl.FRAGMENT_SHADER, approvedSky ? approvedSkyFragment : fragment);
     gl.attachShader(program, vertex);
     gl.attachShader(program, pixel);
     gl.linkProgram(program);
@@ -89,11 +96,14 @@ function weatherLayer() {
     gl.vertexAttribPointer(attribute, 2, gl.FLOAT, false, 0, 0);
     canvas.addEventListener('webglcontextlost', (e) => {
       e.preventDefault();
-      layer = null;
+      if (approvedSky) skyLayer = null;
+      else layer = null;
       unavailable = true;
     });
-    layer = { canvas, gl, program, uniforms: new Map() };
-    return layer;
+    const result = { canvas, gl, program, uniforms: new Map() };
+    if (approvedSky) skyLayer = result;
+    else layer = result;
+    return result;
   } catch {
     unavailable = true;
     return null;
@@ -229,13 +239,13 @@ function haze(
         : family === 'vortex'
           ? 0.95
           : family === 'sand'
-            ? 0.91
+            ? 0.95
             : family === 'storm'
-              ? 0.48
+              ? 0.14
               : family === 'snow' && a.weather !== 'snow'
-                ? 0.46
+                ? 0.19
                 : family === 'ash'
-                  ? 0.37
+                  ? 0.08
                   : family === 'aurora'
                     ? 0.92
                     : family === 'eclipse'
@@ -262,7 +272,7 @@ function haze(
                   : a.day === 'night'
                     ? [0.47, 0.55, 0.7]
                     : [0.82, 0.86, 0.88];
-  const surface = weatherLayer();
+  const surface = weatherLayer(a.weather === 'luminous-sky');
   if (surface) {
     const { canvas, gl, program, uniforms } = surface;
     // Atmosphere is a soft volume; bounded resolution leaves time for tokens and VFX.
@@ -289,10 +299,18 @@ function haze(
       family === 'aurora'
         ? 3
         : family === 'vortex'
-          ? 2
+          ? a.weather === 'tornado'
+            ? 4
+            : 2
           : family === 'cloud' || family === 'eclipse'
             ? 1
-            : 0,
+            : family === 'sand'
+              ? 5
+              : family === 'wind'
+                ? 6
+                : a.weather === 'arcane-fog'
+                  ? 7
+                  : 0,
     );
     gl.uniform1f(u('vortexSize'), a.weather === 'hurricane' ? 0.8 : 0.53);
     gl.uniform3f(u('pigment'), pigment[0], pigment[1], pigment[2]);
@@ -317,153 +335,6 @@ function haze(
       c.fillRect(0, 0, w, h);
     }
   }
-}
-
-function precipitation(
-  c: CanvasRenderingContext2D,
-  s: VttScene,
-  a: MapAtmosphere,
-  t: number,
-  w: number,
-  h: number,
-) {
-  const family = weatherPreset(a.weather)[3],
-    rain = ['rain', 'storm', 'vortex'].includes(family),
-    snow = family === 'snow',
-    dust = ['wind', 'ash', 'sand'].includes(family),
-    hail = family === 'hail',
-    meteor = family === 'meteor';
-  if ((!rain && !snow && !dust && !hail && !meteor) || a.intensity <= 0) return;
-  const random = seededRandom(s.id + ' screen weather ' + a.weather),
-    wind = Math.sin(((a.wind - 90) * Math.PI) / 180);
-  const cellX = meteor
-      ? 175
-      : rain
-        ? a.weather === 'drizzle'
-          ? 26
-          : 24
-        : snow
-          ? a.weather === 'snow'
-            ? 47
-            : 35
-          : dust
-            ? 42
-            : 36,
-    cellY = meteor
-      ? 230
-      : rain
-        ? a.weather === 'drizzle'
-          ? 85
-          : 120
-        : snow
-          ? 140
-          : hail
-            ? 105
-            : 130;
-  const nx = Math.ceil(w / cellX) + 2,
-    ny = Math.ceil(h / cellY) + 2;
-  let count = 0;
-  for (let row = -1; row < ny; row++)
-    for (let col = -1; col < nx; col++) {
-      if (count++ > 1200) return;
-      const key = ((row + 2) * nx + col + 2) * 31;
-      if (random(key) > a.intensity) continue;
-      const depth = 0.4 + random(key + 1) * 0.9,
-        age = fract(
-          t * a.speed * (rain ? 1.6 : snow ? 0.19 : meteor ? 0.36 : 0.35) * (depth + 0.5) +
-            random(key + 2),
-        );
-      const x =
-          (col + random(key + 3)) * cellX +
-          wind * (age - 0.5) * (rain ? 72 : dust ? 130 : 60) +
-          Math.sin(age * 6.28 + key) * (snow ? 21 : 0),
-        y = (row + age) * cellY;
-      c.save();
-      c.globalAlpha = Math.pow(Math.sin(age * Math.PI), 0.45) * (0.48 + depth * 0.35) * a.intensity;
-      if (rain || meteor) {
-        const length =
-            (meteor
-              ? 90 + random(key + 4) * 110
-              : a.weather === 'drizzle'
-                ? 14 + random(key + 4) * 16
-                : 20 + random(key + 4) * 31) * depth,
-          dx = (meteor ? 0.85 : wind * 0.5) * length;
-        const color =
-          a.weather === 'blood-rain'
-            ? '#e27673'
-            : a.weather === 'ethereal-drizzle'
-              ? '#d2baff'
-              : a.weather === 'sunshower'
-                ? '#ffe29f'
-                : a.weather === 'mana-storm'
-                  ? '#d7b6ff'
-                  : a.weather === 'spectral-storm'
-                    ? '#a6ffe1'
-                    : a.weather === 'void-storm'
-                      ? '#b786ed'
-                      : meteor
-                        ? '#ffdf9c'
-                        : '#d9ecf4';
-        const g = c.createLinearGradient(x - dx, y - length, x, y);
-        g.addColorStop(0, 'transparent');
-        g.addColorStop(0.8, color);
-        g.addColorStop(1, meteor ? '#fff6de' : color);
-        c.strokeStyle = g;
-        c.lineWidth =
-          (meteor ? 2.5 : a.weather === 'drizzle' ? 0.9 : 0.8 + random(key + 5) * 0.7) * depth;
-        c.beginPath();
-        c.moveTo(x - dx, y - length);
-        c.lineTo(x, y);
-        c.stroke();
-        if (meteor) {
-          const glow = c.createRadialGradient(x, y, 0, x, y, 9 * depth);
-          glow.addColorStop(0, '#fff9d5');
-          glow.addColorStop(0.2, '#ffbd5977');
-          glow.addColorStop(1, 'transparent');
-          c.fillStyle = glow;
-          c.fillRect(x - 12, y - 12, 24, 24);
-        }
-        if (rain && age > 0.8 && random(key + 6) > 0.55) {
-          c.globalAlpha *= 0.45;
-          c.strokeStyle = color;
-          c.lineWidth = 0.7;
-          c.beginPath();
-          c.ellipse(x, y, 2 + (age - 0.8) * 32, 1 + (age - 0.8) * 11, 0, 0, Math.PI * 2);
-          c.stroke();
-        }
-      } else {
-        const r = (hail ? 3 : snow ? 3.4 : dust ? 1.8 : 1) * depth;
-        c.translate(x, y);
-        c.rotate(t * 0.23 + key);
-        if (hail) {
-          c.fillStyle = '#e4f1fc';
-          c.beginPath();
-          c.moveTo(-r, 0);
-          c.lineTo(0, -r * 1.25);
-          c.lineTo(r, 0);
-          c.lineTo(0, r);
-          c.closePath();
-          c.fill();
-        } else {
-          const g = c.createRadialGradient(0, 0, 0, 0, 0, r * 1.8);
-          g.addColorStop(
-            0,
-            snow
-              ? '#f9faf5'
-              : family === 'sand'
-                ? '#e2bd83'
-                : a.weather === 'wild-winds'
-                  ? '#d9baff'
-                  : '#c3b5a5',
-          );
-          g.addColorStop(0.35, snow ? '#ffffffaa' : '#c3a37577');
-          g.addColorStop(1, 'transparent');
-          c.fillStyle = g;
-          c.fillRect(-r * 2, -r * 2, r * 4, r * 4);
-        }
-      }
-      c.restore();
-    }
 }
 
 function lightning(
@@ -523,7 +394,7 @@ function lightning(
 }
 
 export function atmosphereAnimated(a: MapAtmosphere | undefined) {
-  return !!a?.enabled && a.intensity > 0 && a.weather !== 'clear';
+  return !!a?.enabled && a.intensity > 0 && a.weather !== 'clear' && a.weather !== 'meteors';
 }
 
 export function drawMapAtmosphere(
@@ -546,10 +417,11 @@ export function drawMapAtmosphere(
   c.translate(view.left, view.top);
   c.scale(1 / zoom, 1 / zoom);
   grade(c, a, s, now, reduced, width, height);
-  if (a.enabled && a.intensity > 0) {
+  if (a.enabled && a.intensity > 0 && a.weather !== 'meteors') {
     const t = reduced ? 12.5 : (now % 86400000) / 1000;
     haze(c, a, view, t, width, height);
-    precipitation(c, s, a, t, width, height);
+    drawWeatherFlows(c, s.id, a, t, width, height);
+    drawCelestialWeather(c, a, t, width, height);
     lightning(c, s, a, t, width, height, reduced);
   }
   c.restore();

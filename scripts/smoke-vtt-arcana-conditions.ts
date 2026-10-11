@@ -134,6 +134,31 @@ try {
     return popup;
   };
   await page.goto(origin + '/#vtt');
+  await expect(page.getByLabel('Tabuleiro da mesa', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Efeitos do mapa', exact: true }).click();
+  const weatherMenu = page.getByRole('dialog', { name: 'Efeitos do mapa', exact: true });
+  await expect(weatherMenu.locator('[data-weather]')).toHaveCount(17);
+  for (const weather of ['rain', 'blizzard', 'thunderstorm', 'wind', 'sandstorm']) {
+    await weatherMenu.locator(`[data-weather="${weather}"]`).click();
+    await expect
+      .poll(async () => (await api(gm, root)).data.document.scenes[0].atmosphere.weather)
+      .toBe(weather);
+  }
+  await weatherMenu.getByRole('button', { name: 'Fantasia', exact: true }).click();
+  await expect(weatherMenu.locator('[data-weather]')).toHaveCount(11);
+  await expect(
+    weatherMenu.getByRole('button', { name: 'Chuva de meteoros', exact: true }),
+  ).toHaveCount(0);
+  await weatherMenu.locator('[data-weather="luminous-sky"]').click();
+  await expect
+    .poll(async () => (await api(gm, root)).data.document.scenes[0].atmosphere.weather)
+    .toBe('luminous-sky');
+  await weatherMenu.getByRole('button', { name: 'Clima', exact: true }).click();
+  await weatherMenu.locator('[data-weather="clear"]').click();
+  await expect
+    .poll(async () => (await api(gm, root)).data.document.scenes[0].atmosphere.weather)
+    .toBe('clear');
+  await weatherMenu.getByRole('button', { name: 'Fechar efeitos do mapa', exact: true }).click();
   let popup = await open(page);
   const group = popup.getByRole('group', { name: 'Ícones de condições' });
   await expect(group.getByRole('button')).toHaveCount(30);

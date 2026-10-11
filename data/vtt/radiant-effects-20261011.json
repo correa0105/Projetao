@@ -1,0 +1,90 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "transparentBackground": true,
+  "referenceUrls": [
+    "https://library.jb2a.com/",
+    "https://br.pinterest.com/pin/786089310021947590/"
+  ],
+  "assets": [
+    {
+      "id": "solar-moth",
+      "path": "/vtt/radiant-20261011/solar-moth.webp",
+      "width": 512,
+      "height": 396,
+      "bytes": 238282,
+      "sha256": "8ac22c0810cd52476d6f0711f1c182f40ec0f1499aff1b01811c49e73333b5e5",
+      "sourceSha256": "85219e234f63b75c7a982d140e496ae54c66d58c338ed4620065ad165a0f90eb",
+      "prompt": "Use case: stylized-concept. Asset type: a single original high-end VTT particle sprite, solar moth. One elegant realistic magical moth viewed directly from above with four spread wings, substantial sculpted pale-gold wings, fine branching wing veins, subtle dark amber eye-spots, glowing golden thorax, delicate antennae, translucent thin trailing wing edges. Rich cinematic physically based materials and convincing volume, precise detailed anatomy readable at small scale. Fully isolated on a genuinely transparent alpha background, no scene, no frame, no circle, no labels, no text, no other objects. Center the whole moth with all wings and antennae inside a generous transparent margin; silhouette occupies about 65 percent of the square. Fine warm luminous edge accents, no large blurred aura. This is one moth element, not an effect ring or an infographic."
+    },
+    {
+      "id": "coral-branch",
+      "path": "/vtt/radiant-20261011/coral-branch.webp",
+      "width": 503,
+      "height": 512,
+      "bytes": 238922,
+      "sha256": "78583512099761ed8b296bef8e18e18e25143c669958d155252722630fe32a36",
+      "sourceSha256": "9c5c0a6195b5682d9ff971b674c91aacd2a6d6f1fd45b45bf12244784fcbd16d",
+      "prompt": "Use case: stylized-concept. One original high-end VTT particle sprite: a three-dimensional irregular branch of magical pink-red coral, seen from above, thick curving trunk branching into several tapered finger-like limbs, small pearly growths and pitted coral surface, vivid salmon, deep crimson shadows, translucent rose highlights, intricate physically believable texture. Entire isolated object on genuinely transparent alpha. Asymmetric natural silhouette, no flower shape, no circle, no frame, no text, no backdrop. Center with generous transparent margin; complete branch fully inside square. Crisp cinematic realism, excellent readability at small scale, subtle localized pink glints rather than a blurred aura."
+    },
+    {
+      "id": "thorn-vine",
+      "path": "/vtt/radiant-20261011/thorn-vine.webp",
+      "width": 357,
+      "height": 512,
+      "bytes": 125464,
+      "sha256": "a43c872eee18eb5ff57dced8c250b2f3b3235c55e4422c08cf86eb60db52ac25",
+      "sourceSha256": "73e9a0c214d1a383112868f073a7d89f5018cee201a6b2dc440bef4422700071",
+      "prompt": "Use case: stylized-concept. One original high-end VTT particle sprite: an elegant curved green thorn vine sprig, physically realistic dark woody stem with six pointed thorns, four lush jade leaves with clear veins, fresh luminous mint edges and saturated dark emerald shadows. Natural asymmetric S curve viewed directly from above, entire cutout isolated on genuinely transparent alpha background. Refined fantasy realism, crisp detailed materials and volume, readable silhouette, not a flat icon. Center with generous transparent margin, all leaves and thorns fully inside square. No ring, no circle, no border, no text, no other objects, no diffuse blurry aura."
+    },
+    {
+      "id": "opal-droplet",
+      "path": "/vtt/radiant-20261011/opal-droplet.webp",
+      "width": 279,
+      "height": 512,
+      "bytes": 198912,
+      "sha256": "7a399b740c4418962ee5a4c4f302b2a5aa65aeef1b7d4a01728ec4b8aace3b87",
+      "sourceSha256": "347c6b8a592a31257f76a2edac608afa653b751bae892485ca326c3aad4ed66a",
+      "prompt": "A single luminous opal teardrop crystal as a high end fantasy VFX component, no jewelry setting. One elongated droplet, rounded belly and pointed tip, physically believable glass refraction, transparent edge, internal rich aqua violet magenta and warm gold opalescent fire, small white specular glints, darker refracted facets create strong 3D volume. Detailed polished material, not a flat glowing ellipse. Entire small object isolated on genuine alpha transparent background, generous empty margin, no text no ground no frame. Useful as a particle sprite."
+    },
+    {
+      "id": "moon-crystal",
+      "path": "/vtt/radiant-20261011/moon-crystal.webp",
+      "width": 297,
+      "height": 512,
+      "bytes": 138280,
+      "sha256": "84b0ae62b52ed2b7226667c1125ea4515b3dd3076b1b840e3e191dc03aea46f0",
+      "sourceSha256": "e51e2aa675bac40d888e6c080c892c496f7037212a4e218d216b23588e0180ab",
+      "prompt": "One dramatic fractured moon ice crystal shard, high end physically based 3D fantasy VFX component. Elongated angular irregular crystal with sharp asymmetrical points and layered facets, translucent saturated cobalt blue interior, brilliant cyan refracted edges, icy white specular ridge highlights, deep indigo shaded faces and tiny internal fractures. Clearly three dimensional, no flat icon, no painted outline. Whole crystal isolated on genuine alpha transparent background with generous margin, no background halo no frame no text."
+    },
+    {
+      "id": "phoenix-feather",
+      "path": "/vtt/radiant-20261011/phoenix-feather.webp",
+      "width": 292,
+      "height": 512,
+      "bytes": 142282,
+      "sha256": "77f5f93068ddecfbdedc4556118542a275a3155e2ce40c377bc6ab04290f9176",
+      "sourceSha256": "4e885fcf6891584d7fca25371c51f127cb238d1768d49643568944eda66d15e8",
+      "prompt": "One curling phoenix feather made of vivid sculpted fire, high end 3D fantasy visual effects component. Long elegant asymmetric flame feather with a curved bright gold white spine, flowing detailed orange red flame barbs, violet red hot base, crisp hot highlights, darker crimson transparent flame pockets creating volume. Lively curving silhouette. Entire feather isolated on genuine alpha transparent background with generous margin. No other feathers no bird no background no text no frame. Designed for animated particle sprites."
+    },
+    {
+      "id": "jade-cocoon",
+      "path": "/vtt/radiant-20261011/jade-cocoon.webp",
+      "width": 248,
+      "height": 512,
+      "bytes": 140686,
+      "sha256": "fa5f179b90d7a797768dcdc708f606cbf9a6202283283c6a6bbf76530bde4d5c",
+      "sourceSha256": "5f5b1d157ab5be1c8511a4718ca23d074cf5acc0facc19055efa7a49390b60d0",
+      "prompt": "One elongated organic jade cocoon seed pod, high end 3D fantasy VFX cutout. Beautiful translucent saturated emerald green glossy ribbed shell, sculpted spiral veins and ridges, deep dark jade shadow on one side, mint luminous inner slit and warm pale green refracted highlight, believable thick material and clear rounded volume. Asymmetrical natural pointed oval silhouette, not a flat gem icon or glowing outline. Entire single pod on genuine alpha transparent background, generous margin, no ground no text no frame."
+    },
+    {
+      "id": "obsidian-shard",
+      "path": "/vtt/radiant-20261011/obsidian-shard.webp",
+      "width": 282,
+      "height": 512,
+      "bytes": 150944,
+      "sha256": "cb8c6e42534d43f42186c975b02667be9ab4b537dea9b6196979ac4ab87f3cee",
+      "sourceSha256": "51a5a79fafd278e500ddd3eb62e80d1ca486bd8e9b3d44c91f2fbcc57565eedf",
+      "prompt": "One sharp irregular volcanic obsidian rock shard for a high end fantasy 3D VFX particle. Black glass crystalline fractured facets, deep charcoal blue shadowed planes, physically reflective razor edges, a few vivid amber orange molten cracks from within, tiny white gold reflected specular flashes. Clearly solid three dimensional asymmetrical jagged chunky shard. Entire single object isolated on genuine alpha transparent background, generous margin, no ground no text no frame no large background glow."
+    }
+  ]
+}

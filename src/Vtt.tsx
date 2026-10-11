@@ -1071,7 +1071,7 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
       if (!(infinite || until > Date.now() || (visualEffects && atmosphereTransitioning(c, scene.id))) || motionPreference.matches) return;
       let lastDraw = 0;
       const animate = (now: number) => {
-        if (now - lastDraw >= 32 && !document.hidden) {
+        if (now - lastDraw >= 1000 / 60 - 1 && !document.hidden) {
           draw();
           lastDraw = now;
         }

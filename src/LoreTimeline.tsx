@@ -87,14 +87,24 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       mechanism.current?.();
     };
   }, []);
-  async function travel(eraId: string) {
+  async function travel(eraId: string, revealSection = false) {
     if (!timeline) return false;
     const token = ++flight.current;
     const eras = timeline.document.eras;
     const destination = eras.findIndex((era) => era.id === eraId);
     if (destination < 0) return false;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    host.current?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'center' });
+    // scrollIntoView also moves overflow:hidden ancestors. The scene must stay fixed;
+    // only the document's vertical position and the timeline's own viewport may move.
+    const section = host.current;
+    if (section && revealSection) {
+      const bounds = section.getBoundingClientRect();
+      window.scrollTo({
+        left: 0,
+        top: Math.max(0, window.scrollY + bounds.top - (window.innerHeight - bounds.height) / 2),
+        behavior: reduced ? 'instant' : 'smooth',
+      });
+    }
     mechanism.current?.();
     const finish = sound(false);
     mechanism.current = finish;
@@ -115,9 +125,25 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       for (let index = from + step; index !== destination + step; index += step) {
         if (flight.current !== token) return false;
         setBeam({ origin: from, tip: index, duration, token });
-        host.current
-          ?.querySelector<HTMLElement>(`[data-era-id="${eras[index].id}"]`)
-          ?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const viewport = host.current?.querySelector<HTMLElement>('.lore-era-window');
+        const marker = viewport?.querySelector<HTMLElement>(`[data-era-id="${eras[index].id}"]`);
+        if (viewport && marker) {
+          const viewportBounds = viewport.getBoundingClientRect();
+          const markerBounds = marker.getBoundingClientRect();
+          viewport.scrollTo({
+            left: Math.max(
+              0,
+              Math.min(
+                viewport.scrollWidth - viewport.clientWidth,
+                viewport.scrollLeft +
+                  markerBounds.left -
+                  viewportBounds.left +
+                  (markerBounds.width - viewportBounds.width) / 2,
+              ),
+            ),
+            behavior: 'smooth',
+          });
+        }
         const start = performance.now();
         await new Promise<void>((resolve) => {
           const tick = (now: number) => {
@@ -171,7 +197,7 @@ export const LoreTimeline = forwardRef<LoreTimelineHandle, Props>(function LoreT
       while (folder && !visited.has(folder.id)) {
         visited.add(folder.id);
         const era = timeline?.document.eras.find((era) => era.folder_ids.includes(folder!.id));
-        if (era) return travel(era.id);
+        if (era) return travel(era.id, true);
         folder = folders.find((item) => item.id === folder!.parent_id);
       }
       return true;

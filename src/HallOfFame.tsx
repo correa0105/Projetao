@@ -170,9 +170,6 @@ export function HallOfFame({
                 <span className="hall-place">
                   {e.categoryRank === 1 ? <Crown size={26} /> : <Trophy size={22} />}
                   <b>#{e.categoryRank}</b>
-                  <small className="hall-medal-name">
-                    {['Ouro', 'Prata', 'Bronze'][e.categoryRank - 1]}
-                  </small>
                 </span>
                 <span className="hall-character-art">
                   <img

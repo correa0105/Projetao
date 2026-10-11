@@ -49,7 +49,7 @@
   --lore-backdrop-height: calc(var(--lore-hero-height) + 480px);
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow: clip;
   background: #161713;
 }
 .lore-hero {
