@@ -6,6 +6,6 @@ export const barrierEffects = [
     color: '#8870ff',
     group: 'Magia',
     description:
-      'Um escudo esférico visto de cima envolve o token; membranas violetas se renovam com bordas de luz azul.',
+      'Uma bolha arcana cresce, se contrai e se molda ao redor do token; brechas se abrem e cicatrizam com bordas luminosas.',
   },
 ];
