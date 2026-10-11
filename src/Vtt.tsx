@@ -126,6 +126,7 @@ import { useVttMediaPreferences } from './vtt-media-preferences';
 import { useVttSpells, requestSpellCast } from './useVttSpells';
 import { VttSpellControls } from './VttSpellControls';
 import { VttSpellSounds } from './VttSpellSounds';
+import { VttRollSounds } from './VttRollSounds';
 import { spellProfile, breathProfile } from '../shared/vtt-spells';
 import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttSoundboard } from './VttSoundboard';
@@ -2741,6 +2742,12 @@ export function Vtt({ characters, user }: { characters: Character[]; user: User 
             roomId={state.id}
             loaded={spellcasting.loaded}
             effects={spellcasting.effects}
+            enabled={media.soundEnabled && !preview}
+            volume={media.soundVolume}
+          />
+          <VttRollSounds
+            roomId={state.id}
+            messages={state.messages}
             enabled={media.soundEnabled && !preview}
             volume={media.soundVolume}
           />
