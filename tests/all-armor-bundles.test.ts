@@ -14,6 +14,7 @@ import {
   shopWeight,
 } from '../shared/armor-bundles.js';
 import { equipmentArtReference } from '../server/equipment-art-reference.js';
+import { armorPieceImage } from '../shared/armor-piece-art.js';
 import { compatibleSlots } from '../shared/equipment.js';
 import { compatibleCompanionSlots } from '../shared/companion-equipment.js';
 import sharp from 'sharp';
@@ -91,7 +92,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
         assert.equal(parent.image_path, (source.get(bundle.id) as any).image_path);
         for (const row of rows) {
           assert.equal(row.raw_data.armor_bundle_model_image, parent.image_path);
-          assert.equal(equipmentArtReference(row).path, parent.image_path);
+          assert.equal(equipmentArtReference(row).path, row.image_path);
         }
       }
       for (const row of rows) {
@@ -104,9 +105,10 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
         if (row.id !== bundle.id) {
           assert.equal(row.active, false);
           assert.equal(row.price_cp, null);
-          if (bundle.id !== 'plate-armor') assert.match(row.image_path, /armor-piece-.*\.svg$/);
-          if (bundle.target !== 'human')
-            assert.ok(row.image_path.includes(`armor-piece-${bundle.target}-`));
+          const slot = bundle.pieces.find(piece => piece.id === row.id)!.slot;
+          assert.equal(row.image_path, armorPieceImage(bundle.id, slot));
+          assert.match(row.image_path, /\.(png|webp)$/);
+          assert.equal(equipmentArtReference(row).path, row.image_path);
         }
       }
     }
@@ -310,7 +312,7 @@ test('todas as armaduras: peças reais, compras/replay, peso e equipar conjunto 
       ])
     ).rows;
     assert.equal(humanRefs.length, 6);
-    assert.ok(humanRefs.every((row) => /somente a peça/.test(row.name)));
+    assert.ok(humanRefs.filter(row => row.slot !== 'armor').every(row => !/modelo completo/.test(row.name)));
     for (const row of humanRefs) assert.equal((await sharp(row.image).metadata()).format, 'png');
     await pool.query("UPDATE character_art_jobs SET status='failed' WHERE id=$1", [
       humanJob.data.id,

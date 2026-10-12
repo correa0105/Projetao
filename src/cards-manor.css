@@ -47,31 +47,40 @@
   color: #c6b99e;
 }
 :root .cards-room .cards-host-hit {
-  left: auto;
-  top: 42%;
-  right: 9%;
-  width: 23%;
-  height: 28%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
+  pointer-events: none;
+  overflow: hidden;
 }
-:root .cards-room .cards-host-hit span {
+:root .cards-room .cards-host-silhouette {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  opacity: 1;
-  padding: 9px 13px;
-  background: #171610cf;
-  border: 1px solid #ab8b5055;
-  font: 11px var(--sans);
-  color: #e1c28c;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+}
+:root .cards-room .cards-host-silhouette path {
+  fill: transparent;
+  stroke: #c3a56c70;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  pointer-events: all;
+  cursor: pointer;
+  transition: stroke 180ms ease, stroke-width 180ms ease, filter 180ms ease;
 }
 :root .cards-room .cards-host-hit:focus-visible {
-  outline: 2px solid #cbb075;
-  outline-offset: 5px;
+  outline: none;
+}
+:root .cards-room .cards-host-silhouette path:hover,
+:root .cards-room .cards-host-hit:focus-visible path,
+:root .cards-room .cards-host-hit[aria-expanded='true'] path {
+  stroke: #ddc18a;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 4px #c69a5c90);
 }
 :root .cards-room .cards-host-dialogue {
   top: 140px;
@@ -306,10 +315,6 @@
   :root .cards-room .cards-detail {
     padding: 12px;
   }
-  :root .cards-room .cards-host-hit {
-    right: 4%;
-    width: 22%;
-  }
 }
 @media (max-width: 900px) {
   :root .cards-room .cards-room-backdrop {
@@ -377,16 +382,6 @@
   :root .cards-room header p {
     max-width: 185px;
     font-size: 10px;
-  }
-  :root .cards-room .cards-host-hit {
-    right: 8px;
-    top: 170px;
-    width: 38%;
-    height: 90px;
-  }
-  :root .cards-room .cards-host-hit span {
-    font-size: 9px;
-    padding: 8px;
   }
   :root .cards-room .cards-host-dialogue {
     top: 135px;

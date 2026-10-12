@@ -6,6 +6,7 @@ import {
   ANIMAL_PIECE_NAMES,
 } from '../shared/armor-bundles.js';
 import { equipmentTarget } from '../shared/equipment-target.js';
+import { armorPieceImage } from '../shared/armor-piece-art.js';
 
 export async function seedArmorPieces(db: PoolClient) {
   // Explicit taxonomy for known saddles/ferraduras/alforjes and animal catalog
@@ -86,10 +87,10 @@ export async function seedArmorPieces(db: PoolClient) {
         );
         continue;
       }
-      const icon =
+      const icon = armorPieceImage(bundle.id, piece.slot) || (
         bundle.target === 'human'
           ? `/shop/equipment/armor-piece-${piece.slot}.svg`
-          : `/shop/animal-equipment/armor-piece-${bundle.target}-${piece.slot}.svg`;
+          : `/shop/animal-equipment/armor-piece-${bundle.target}-${piece.slot}.svg`);
       await db.query(
         `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,active,image_path,weight_estimated)
          VALUES($1,$2,$2,$3,$4,NULL,$5,$6,$7,$8,false,$9,true)

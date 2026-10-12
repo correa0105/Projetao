@@ -1521,8 +1521,8 @@
 }
 .visiting .public-cards {
   background:
-    linear-gradient(90deg, #050a12c9, #050a1240),
-    url('/cards/moonlit-room-v2.png') center/cover;
+    linear-gradient(90deg, #141410b8, #14141035),
+    url('/cards/private-archive-20261012.webp') center/cover;
 }
 .visiting .public-card-collection {
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));

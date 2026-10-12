@@ -7,6 +7,7 @@ import type { Character } from './types';
 import { cardStories } from '../shared/card-stories';
 import './cards.css';
 import './cards-manor.css';
+import { CardsHost } from './CardsHost';
 export function CardFace({ card, small = false }: { card: Card; small?: boolean }) {
   return (
     <span className={'arcana-card-face' + (small ? ' small' : '')}>
@@ -142,19 +143,15 @@ export function Cards({
             <p>Escolha as cartas que seguirão com {character?.name || 'seu personagem'}.</p>
           </header>
         </div>
-        <button
-          className="cards-host-hit"
-          aria-label="Conversar com o Anfitrião"
-          aria-expanded={conversation && questions}
-          onClick={() =>
+        <CardsHost
+          expanded={conversation && questions}
+          onTalk={() =>
             say(
               'Entre. A cadeira está livre, e ninguém aqui vai lhe pedir pressa. Estava examinando estas cartas; alguma chamou sua atenção?',
               true,
             )
           }
-        >
-          <span>Conversar com o Anfitrião</span>
-        </button>
+        />
         {conversation && (
           <aside className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
             <button

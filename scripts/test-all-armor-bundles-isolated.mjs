@@ -21,6 +21,7 @@ try {
         'tests/all-armor-bundles.test.ts',
         'tests/armor-bundles.test.ts',
         'tests/equipment-art-reference.test.ts',
+        'tests/armor-piece-art.test.ts',
       ],
       {
         env: { ...process.env, DATABASE_URL: url.toString(), NODE_ENV: 'test' },
