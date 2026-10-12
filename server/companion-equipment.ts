@@ -240,6 +240,7 @@ async function state(db: DB, userId: string, characterId: string) {
       id: animal.id,
       kind: animal.kind,
       name: animal.name,
+      displayed: animal.displayed,
       species_id: animal.species_id,
       appearance: animal.appearance,
       base_image: `/api/companions/${characterId}/${animal.kind}/${animal.id}/base-image`,

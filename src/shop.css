@@ -423,6 +423,14 @@
   gap: 12px;
   font-size: 11px;
 }
+.shop-checkout-line .shop-checkout-recipient {
+  display: grid;
+  gap: 0.4rem;
+}
+.shop-checkout-recipient select {
+  width: 100%;
+  min-width: 0;
+}
 :root .shop-checkout-line input {
   width: 65px;
   padding: 5px 7px;

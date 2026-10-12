@@ -1,3 +1,7 @@
+# 12/10/2026 — Compras nas mochilas dos animais
+
+Empório entrega acessórios diretamente ao mascote ou à montaria, com destino selecionável por item no carrinho e padrão do animal exibido. Sem animal, guarda na mochila do personagem conforme decisão do usuário. Conjuntos completos, propriedade, saldo e idempotência conferidos no servidor; sem migração de bens antigos. Build, 18 testes e compra real no Edge em três larguras aprovados em banco descartável. Ilustrador reativado pela sessão ChatGPT do Codex. Detalhes: [COMPANION-PURCHASE-DELIVERY-20261012.md](COMPANION-PURCHASE-DELIVERY-20261012.md). Assets e monstros pausados permanecem preservados.
+
 # 12/10/2026 — Peças de armadura e perfil de cartas
 
 Perfil de cartas usa o arquivo gótico da coleção privada. Anfitrião mantém sua arte e ganha contorno clicável com teclado, sem botão de texto. O catálogo passa a vincular as peças secundárias às ilustrações individuais, inclusive nos inventários existentes. São 80 recortes originais feitos no image_gen integrado e 2.155 variantes nativas de materiais; as cinco peças antigas de placas permanecem. IDs, economia e posse preservados. Detalhes: [ARMOR-PIECE-ART-AND-CARDS-20261012.md](ARMOR-PIECE-ART-AND-CARDS-20261012.md). Assets do VTT e monstros continuam pausados.

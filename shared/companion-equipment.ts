@@ -80,6 +80,7 @@ export type CompanionOutfit = {
   id: string;
   kind: CompanionKind;
   name: string;
+  displayed: boolean;
   species_id: string;
   appearance: string;
   base_image: string;

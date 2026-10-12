@@ -12,6 +12,8 @@ import { Coins, Search, ShoppingCart, X, Plus, Pencil } from 'lucide-react';
 import type { Character, Item } from './types';
 import { money } from '../shared/rules';
 import { armorBundle, shopWeight } from '../shared/armor-bundles';
+import { equipmentTarget } from '../shared/equipment-target';
+import type { CompanionEquipmentState, CompanionOutfit } from '../shared/companion-equipment';
 import { api, post } from './api';
 import { Modal } from './components';
 import content from './shop-content.json';
@@ -63,6 +65,7 @@ type Line = {
   z: number;
   spell_id?: string;
   spell_label?: string;
+  companion_id?: string;
 };
 type Point = { x: number; y: number };
 type OfferChoice = { model: string; variant: string; query: string };
@@ -280,6 +283,8 @@ export function Shop({
     [query, setQuery] = useState('');
   const [offerChoices, setOfferChoices] = useState<Record<string, OfferChoice>>({});
   const [carts, setCarts] = useState<Record<string, Line[]>>({});
+  const [delivery, setDelivery] = useState<{ owner: string; companions: CompanionOutfit[]; ready: boolean; error: string }>({ owner: '', companions: [], ready: false, error: '' });
+  const [deliveryRefresh, setDeliveryRefresh] = useState(0);
   const [boundChoices, setBoundChoices] = useState<
     Record<string, { id: string; name: string } | undefined>
   >({});
@@ -291,6 +296,18 @@ export function Shop({
     [checkout, setCheckout] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState('');
+  useEffect(() => {
+    if (!checkout || !character) return;
+    let active = true;
+    const owner = character.id;
+    setDelivery({ owner, companions: [], ready: false, error: '' });
+    void api<CompanionEquipmentState>(`/companions/${owner}/equipment`).then(state => {
+      if (active) setDelivery({ owner, companions: state.companions, ready: true, error: '' });
+    }).catch(error => {
+      if (active) setDelivery({ owner, companions: [], ready: false, error: (error as Error).message });
+    });
+    return () => { active = false; };
+  }, [checkout, character?.id, deliveryRefresh]);
   const [speechVisible, setSpeechVisible] = useState(true);
   useEffect(() => {
     setSpeechVisible(true);
@@ -374,6 +391,8 @@ export function Shop({
     0,
   );
   const unpriced = lines.some((line) => items.get(line.id)?.price_cp == null);
+  const animalDelivery = lines.some(line => equipmentTarget(items.get(line.id)!) !== 'human');
+  const deliveryPending = animalDelivery && (delivery.owner !== owner || !delivery.ready);
   const filtered = offers.filter(
     (offer) =>
       (category === 'Todos' || offer.categories.includes(category)) &&
@@ -531,7 +550,7 @@ export function Shop({
     );
   }
   async function pay() {
-    if (!character || busy || !lines.length || unpriced) return;
+    if (!character || busy || !lines.length || unpriced || deliveryPending) return;
     setBusy(true);
     setError('');
     const id = character.id;
@@ -544,6 +563,7 @@ export function Shop({
           item_id: line.id,
           quantity: line.quantity,
           ...(line.spell_id ? { spell_id: line.spell_id } : {}),
+          ...(line.companion_id ? { companion_id: line.companion_id } : {}),
         })),
       });
       setCarts((current) => ({ ...current, [id]: [] }));
@@ -1056,12 +1076,18 @@ export function Shop({
         >
           <div className="shop-checkout">
             <p>
-              Entrega na mochila de{' '}
+              Itens do personagem vão para a mochila de{' '}
               <strong>{character?.name || 'nenhum personagem selecionado'}</strong>.
+              {' '}Acessórios dos animais são entregues nas mochilas deles.
             </p>
+            {animalDelivery && deliveryPending && !delivery.error && <p role="status">Conferindo os animais do personagem…</p>}
+            {animalDelivery && delivery.error && <FlashMessage>{delivery.error} <button onClick={() => setDeliveryRefresh(value => value + 1)}>Tentar novamente</button></FlashMessage>}
             {lines.length === 0 && <p>Seu balcão está vazio.</p>}
             {lines.map((line) => {
               const item = items.get(line.id)!;
+              const target = equipmentTarget(item);
+              const recipients = delivery.owner === owner ? delivery.companions.filter(animal => animal.kind === target) : [];
+              const recipient = recipients.find(animal => animal.id === line.companion_id) || recipients.find(animal => animal.displayed) || recipients[0];
               return (
                 <div className="shop-checkout-line" key={line.id}>
                   <img src={item.image_path || ''} alt="" />
@@ -1075,6 +1101,15 @@ export function Shop({
                         : `${money(item.price_cp)} PO / unidade`}
                     </small>
                     <ItemInfoButton item={item} />
+                    {target !== 'human' && delivery.ready && delivery.owner === owner && (
+                      recipients.length ? <label className="shop-checkout-recipient">
+                        Entregar para {target === 'pet' ? 'o mascote' : 'a montaria'}
+                        <select aria-label={`Destino de ${item.name}`} value={recipient?.id || ''} disabled={busy}
+                          onChange={event => update(lines.map(value => value.id === line.id ? { ...value, companion_id: event.target.value } : value))}>
+                          {recipients.map(animal => <option key={animal.id} value={animal.id}>{animal.name}{animal.displayed ? ' · no acampamento' : ''}</option>)}
+                        </select>
+                      </label> : <small>Sem {target === 'pet' ? 'mascote' : 'montaria'}: ficará na mochila de {character?.name}.</small>
+                    )}
                     <button
                       className="shop-checkout-locate"
                       disabled={busy}
@@ -1135,6 +1170,7 @@ export function Shop({
                 !character ||
                 !lines.length ||
                 unpriced ||
+                deliveryPending ||
                 (!character.gold_unlimited && total > character.gold_cp)
               }
               onClick={() => void pay()}

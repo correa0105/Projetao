@@ -68,6 +68,7 @@ export function shopRouter() {
               item_id: z.string().min(1).max(100),
               quantity: z.number().int().min(1).max(99),
               spell_id: z.string().min(1).max(100).optional(),
+              companion_id: z.string().uuid().optional(),
             }),
           )
           .min(1)
@@ -100,10 +101,11 @@ export function shopRouter() {
           if (
             previous.lines.length !== lines.length ||
             previous.lines.some(
-              (v: { item_id: string; quantity: number; spell_id?: string }, i: number) =>
+              (v: { item_id: string; quantity: number; spell_id?: string; companion_id?: string }, i: number) =>
                 v.item_id !== lines[i].item_id ||
                 v.quantity !== lines[i].quantity ||
-                v.spell_id !== lines[i].spell_id,
+                v.spell_id !== lines[i].spell_id ||
+                v.companion_id !== lines[i].companion_id,
             )
           )
             throw new AppError(409, 'Esta chave já foi usada para outro carrinho.');
@@ -171,6 +173,7 @@ export function shopRouter() {
           grantedIds.get(line.item_id)!,
           line.quantity,
           purchase.id,
+          line.companion_id,
         );
       }
       await client.query(
