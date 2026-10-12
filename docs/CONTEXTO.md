@@ -1,3 +1,7 @@
+# 12/10/2026 — PNGs inteiros na mesa e nomes menores
+
+Biblioteca de arte → Token agora desenha a imagem inteira com transparência e proporção, inclusive peças já no mapa; removidos disco preto e moldura desse fluxo. Máscara de sangue acompanha a silhueta. Nomes usam 11 px de tela, sem crescer com zoom. Build do cliente, seis testes de efeitos e fluxo real de upload, Token, salvar/reabrir e três zooms no Edge aprovados em banco descartável. Detalhes: [VTT-RAW-LIBRARY-TOKENS-20261012.md](VTT-RAW-LIBRARY-TOKENS-20261012.md).
+
 # 12/10/2026 — Magia nas armaduras vestidas e contorno do Anfitrião
 
 Vestir agora herda o encantamento do conjunto para cada peça, exige acabamento mágico visível na geração e revisão e o conserva no token. Materiais, oclusão e peças mundanas preservados. 431 conjuntos, 27 famílias e 13 modelos conferidos; 14 testes em banco descartável e build aprovados. Contorno do Anfitrião redesenhado com curvas suaves, destaque ao interagir e alvo de clique independente. Detalhes: [MAGIC-ARMOR-HOST-OUTLINE-20261012.md](MAGIC-ARMOR-HOST-OUTLINE-20261012.md).

@@ -13,7 +13,7 @@ import {
   type VttDrawing,
 } from '../shared/vtt';
 import { drawDeath } from './vtt-death';
-import { isTopDownTokenImage } from '../shared/vtt-token-image';
+import { vttAssetId } from '../shared/vtt-token-image';
 import { drawTokenEffects } from './vtt-effects-canvas';
 import { drawConditionBadges } from './vtt-condition-badges';
 import { drawBloodDecals, drawTokenBlood } from './vtt-blood-canvas';
@@ -371,7 +371,7 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       } else if (
         (t.image.startsWith('/vtt/monsters/') ||
           t.image.startsWith('/api/vtt/premium-art/') ||
-          isTopDownTokenImage(t.image)) &&
+          !!vttAssetId(t.image)) &&
         img?.complete &&
         img.naturalWidth
       ) {
@@ -451,12 +451,12 @@ export function renderVtt(c: CanvasRenderingContext2D, s: VttScene, o: RenderOpt
       if (layer !== 'map') {
         c.save();
         c.globalAlpha = t.hidden || layer === 'gm' ? s.gmOpacity : 1;
-        c.font = `${Math.max(11 / cam.zoom, 13)}px Inter,sans-serif`;
+        c.font = `${11 / cam.zoom}px Inter,sans-serif`;
         c.textAlign = 'center';
         c.fillStyle = '#f1e8d4';
         c.shadowColor = '#000';
         c.shadowBlur = 5;
-        c.fillText(t.name, t.x, t.y + t.height / 2 + 18 / cam.zoom);
+        c.fillText(t.name, t.x, t.y + t.height / 2 + 14 / cam.zoom);
         c.shadowBlur = 0;
         const hpWidth = Math.min(t.width * 0.6, 84 / cam.zoom);
         c.fillStyle = '#07100c';

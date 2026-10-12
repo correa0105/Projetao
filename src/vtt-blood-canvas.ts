@@ -2,7 +2,7 @@ import { injury } from '../shared/vtt-blood';
 import type { VttScene, VttToken } from '../shared/vtt';
 import { seededRandom } from './vtt-effects-primitives';
 import { effectFootprint } from './vtt-effect-footprint';
-import { isTopDownTokenImage } from '../shared/vtt-token-image';
+import { vttAssetId } from '../shared/vtt-token-image';
 
 type View = { left: number; right: number; top: number; bottom: number };
 const masks = new Map<
@@ -112,7 +112,7 @@ export function drawTokenBlood(
   const topDown =
     token.image.startsWith('/vtt/monsters/') ||
     token.image.startsWith('/api/vtt/premium-art/') ||
-    isTopDownTokenImage(token.image);
+    !!vttAssetId(token.image);
   const key = JSON.stringify([wounds, token.width / token.height, topDown, image?.naturalWidth]);
   let cached = masks.get(token.id);
   if (!cached || cached.image !== image || cached.key !== key) {
