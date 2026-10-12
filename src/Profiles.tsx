@@ -44,6 +44,8 @@ import './hall-profiles.css';
 import './profile-visit.css';
 import './realm-pages.css';
 import './profile-next.css';
+import { PlayerProfileOverview, type PlayerOverview } from './PlayerProfileOverview';
+import './community-prestige.css';
 type PublicCharacter = {
   id: string;
   user_id: string;
@@ -63,7 +65,7 @@ type PublicCharacter = {
   displayed_title: string | null;
   title_position: 'below' | 'beside';
 };
-type Profile = {
+type Profile = Omit<PlayerOverview, 'characters' | 'friend'> & {
   id: string;
   name: string;
   document: ProfileSettings;
@@ -112,6 +114,11 @@ const panels: { id: Panel; name: string; icon: typeof Users }[] = [
   { id: 'cards', name: 'Cartas', icon: Layers },
 ];
 export function Profiles({ user }: { user: User }) {
+  const [uploads, setUploads] = useState(0);
+  const uploading = uploads > 0;
+  const [overview, setOverview] = useState(
+    !new URLSearchParams(location.hash.split('?')[1] || '').get('character'),
+  );
   const olderLoaded = useRef(false);
   const params = () => new URLSearchParams(location.hash.split('?')[1] || ''),
     [target, setTarget] = useState(params().get('user') || ''),
@@ -179,6 +186,7 @@ export function Profiles({ user }: { user: User }) {
       setTarget(params().get('user') || '');
       setSelected(params().get('character') || '');
       setPanel('characters');
+      setOverview(!params().get('character'));
       setSheetCharacterId(null);
       setProfile(null);
       setDetails(null);
@@ -343,18 +351,23 @@ export function Profiles({ user }: { user: User }) {
     displayPet = details?.pets.find((p) => p.displayed),
     species = pets.find((p) => p.id === displayPet?.pet_id);
   async function upload(file: File) {
-    const r = await fetch('/api/social/assets', {
-      method: 'POST',
-      headers: { 'Content-Type': file.type },
-      body: file,
-    });
-    const data = await r.json();
-    if (!r.ok) throw Error(data.error);
-    return data.path as string;
+    setUploads((n) => n + 1);
+    try {
+      const r = await fetch('/api/social/assets', {
+        method: 'POST',
+        headers: { 'Content-Type': file.type },
+        body: file,
+      });
+      const data = await r.json();
+      if (!r.ok) throw Error(data.error);
+      return data.path as string;
+    } finally {
+      setUploads((n) => n - 1);
+    }
   }
   return (
     <section
-      className={`profiles-page ${profile ? 'visiting' : ''}`}
+      className={`profiles-page ${profile ? 'visiting' : ''} ${overview && profile ? 'user-overview' : ''}`}
       style={
         profile
           ? ({
@@ -375,6 +388,9 @@ export function Profiles({ user }: { user: User }) {
       {!target ? (
         <>
           <header className="profiles-directory-heading">
+            <button onClick={() => visitProfile(user.id)}>
+              Meu perfil <UserRound size={16} />
+            </button>
             <span className="social-eyebrow">Conheça os aventureiros de Alvorada</span>
             <h2>Encontre um viajante</h2>
             <p>Encontre amigos e descubra as histórias por trás dos personagens.</p>
@@ -424,7 +440,40 @@ export function Profiles({ user }: { user: User }) {
         <p className="social-empty">Abrindo o perfil…</p>
       ) : (
         <>
-          <div className="visited-profile-layout">
+          <nav className="player-profile-tabs" aria-label="Perfil do usuário">
+            <button aria-pressed={overview} onClick={() => setOverview(true)}>
+              Perfil de {profile.name}
+            </button>
+            <button aria-pressed={!overview} onClick={() => setOverview(false)}>
+              Personagens e coleções
+            </button>
+          </nav>
+          {overview && (
+            <PlayerProfileOverview
+              profile={profile}
+              details={details}
+              edit={() => setEditing(structuredClone(profile.document))}
+              social={() => setSocialOpen(true)}
+              chat={() => openChat(profile)}
+              friend={() =>
+                void run(() =>
+                  changeFriend(
+                    profile.friend?.status === 'accepted'
+                      ? 'remove'
+                      : profile.friend?.incoming
+                        ? 'accept'
+                        : 'request',
+                  ),
+                )
+              }
+              character={(id) => {
+                setSelected(id);
+                setPanel('characters');
+                setOverview(false);
+              }}
+            />
+          )}
+          <div className="visited-profile-layout" hidden={overview}>
             <div className="profile-panels-viewport">
               <div
                 className="profile-panels-strip"
@@ -1006,6 +1055,7 @@ export function Profiles({ user }: { user: User }) {
             onSubmit={(e) => {
               e.preventDefault();
               void run(async () => {
+                if (uploading) return;
                 await api('/profiles/' + encodeURIComponent(user.id), {
                   method: 'PUT',
                   body: JSON.stringify({
@@ -1060,11 +1110,209 @@ export function Profiles({ user }: { user: User }) {
               >
                 <option value="/character-camp-v2.png">Acampamento</option>
                 <option value="/notice-village-empty-v4.png">Vila</option>
+                <option value="/community/hall-of-honor.webp">Galeria de honra</option>
+                <option value="/guild/rooms/main.webp">Abrigo da guilda</option>
+                <option value="/guild/rooms/lounge.webp">Sala de estar</option>
                 {editing.background.startsWith('/api/social/assets/') && (
                   <option value={editing.background}>Imagem personalizada</option>
                 )}
               </select>
             </label>
+            <label className="social-upload">
+              Enviar background personalizado
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f)
+                    void run(async () => {
+                      const path = await upload(f);
+                      setEditing((v) => (v ? { ...v, background: path } : v));
+                    });
+                  e.target.value = '';
+                }}
+              />
+            </label>
+            <div className="profile-editor-grid">
+              <label>
+                Borda do avatar
+                <select
+                  aria-label="Borda do avatar"
+                  value={editing.border}
+                  onChange={(e) =>
+                    setEditing((v) =>
+                      v ? { ...v, border: e.target.value as ProfileSettings['border'] } : v,
+                    )
+                  }
+                >
+                  {[
+                    ['bronze', 'Bronze'],
+                    ['silver', 'Prata'],
+                    ['laurel', 'Louros'],
+                    ['runic', 'Rúnica'],
+                    ['thorn', 'Espinhos'],
+                    ['none', 'Sem borda'],
+                  ].map(([id, name]) => (
+                    <option key={id} value={id}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Efeito da borda
+                <select
+                  aria-label="Efeito da borda"
+                  value={editing.border_effect}
+                  onChange={(e) =>
+                    setEditing((v) =>
+                      v
+                        ? {
+                            ...v,
+                            border_effect: e.target.value as ProfileSettings['border_effect'],
+                          }
+                        : v,
+                    )
+                  }
+                >
+                  {[
+                    ['none', 'Sem efeito'],
+                    ['glow', 'Luz pulsante'],
+                    ['embers', 'Brasas'],
+                    ['aurora', 'Aurora'],
+                  ].map(([id, name]) => (
+                    <option key={id} value={id}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <fieldset className="profile-showcase-editor">
+              <legend>
+                Vitrines · {profile.progress.modules} liberadas no nível {profile.progress.level}
+              </legend>
+              {editing.showcases.map((m, i) => (
+                <div key={i}>
+                  <label>
+                    Tipo
+                    <select
+                      value={m.kind}
+                      onChange={(e) =>
+                        setEditing((v) =>
+                          v
+                            ? {
+                                ...v,
+                                showcases: v.showcases.map((s, n) =>
+                                  n === i ? { ...s, kind: e.target.value as typeof s.kind } : s,
+                                ),
+                              }
+                            : v,
+                        )
+                      }
+                    >
+                      {[
+                        ['characters', 'Personagens'],
+                        ['chronicle', 'Crônica pessoal'],
+                        ['achievements', 'Conquistas'],
+                        ['cards', 'Cartas'],
+                        ['companions', 'Companheiros'],
+                        ['guild', 'Guilda'],
+                      ].map(([id, label]) => (
+                        <option key={id} value={id}>
+                          {label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    Título
+                    <input
+                      maxLength={80}
+                      value={m.title}
+                      onChange={(e) =>
+                        setEditing((v) =>
+                          v
+                            ? {
+                                ...v,
+                                showcases: v.showcases.map((s, n) =>
+                                  n === i ? { ...s, title: e.target.value } : s,
+                                ),
+                              }
+                            : v,
+                        )
+                      }
+                    />
+                  </label>
+                  {m.kind === 'chronicle' && (
+                    <label>
+                      Texto
+                      <textarea
+                        maxLength={1000}
+                        value={m.body}
+                        onChange={(e) =>
+                          setEditing((v) =>
+                            v
+                              ? {
+                                  ...v,
+                                  showcases: v.showcases.map((s, n) =>
+                                    n === i ? { ...s, body: e.target.value } : s,
+                                  ),
+                                }
+                              : v,
+                          )
+                        }
+                      />
+                    </label>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setEditing((v) =>
+                        v ? { ...v, showcases: v.showcases.filter((_, n) => n !== i) } : v,
+                      )
+                    }
+                  >
+                    Remover vitrine
+                  </button>
+                  <button
+                    type="button"
+                    disabled={i === 0}
+                    onClick={() =>
+                      setEditing((v) => {
+                        if (!v) return v;
+                        const showcases = [...v.showcases];
+                        [showcases[i - 1], showcases[i]] = [showcases[i], showcases[i - 1]];
+                        return { ...v, showcases };
+                      })
+                    }
+                  >
+                    Mover acima
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                disabled={editing.showcases.length >= profile.progress.modules}
+                onClick={() =>
+                  setEditing((v) =>
+                    v
+                      ? {
+                          ...v,
+                          showcases: [...v.showcases, { kind: 'chronicle', title: '', body: '' }],
+                        }
+                      : v,
+                  )
+                }
+              >
+                Adicionar vitrine
+              </button>
+              <small>
+                Novas vitrines nos níveis {profile.progress.unlocks.join(', ')}. A experiência vem
+                das missões e conquistas de seus personagens.
+              </small>
+            </fieldset>
             <label className="social-upload">
               <UserRound size={15} />
               Enviar imagem do perfil
@@ -1103,7 +1351,8 @@ export function Profiles({ user }: { user: User }) {
                 ))}
               </select>
             </label>
-            <button className="button primary" type="submit">
+            {uploading && <p role="status">Enviando imagem…</p>}
+            <button className="button primary" type="submit" disabled={uploading}>
               Salvar meu perfil
             </button>
           </form>

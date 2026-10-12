@@ -5,6 +5,7 @@ import { loreTimelineRouter } from './lore-timeline.js';
 import { rulebookRouter } from './rulebook.js';
 import { vttRouter } from './vtt.js';
 import { socialRouter } from './social.js';
+import { guildsRouter } from './guilds.js';
 import { towerRouter } from './tower.js';
 import express from 'express';
 import helmet from 'helmet';
@@ -236,6 +237,7 @@ export function createApp() {
   app.use('/api', calendarRouter());
   app.use('/api', vttRouter());
   app.use('/api', socialRouter());
+  app.use('/api', guildsRouter());
   app.use('/api', towerRouter());
   app.use('/api', houseRouter());
   app.get('/api/me', async (_req, res) => {

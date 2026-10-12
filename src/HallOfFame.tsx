@@ -15,6 +15,7 @@ import { api } from './api';
 import type { HallEntry, HallSettings } from '../shared/social';
 import './hall-profiles.css';
 import './hall-character-art.css';
+import './community-prestige.css';
 export function visitProfile(user: string, character?: string) {
   location.hash =
     'profiles?user=' +
@@ -125,7 +126,7 @@ export function HallOfFame({
             ? data.document.title
             : embedded
               ? 'Hall da Fama'
-              : 'Personagens em destaque'}
+              : 'Os nomes que se tornam lenda'}
         </h2>
         <p>{data?.document.intro || 'As histórias que deixam sua marca na Alvorada.'}</p>
         {data?.can_edit && !embedded && (

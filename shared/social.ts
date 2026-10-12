@@ -10,6 +10,27 @@ export const profileSettingsSchema = z
       .regex(/^#[0-9a-f]{6}$/i)
       .default('#c8a56c'),
     featured: z.array(z.string().uuid()).max(4).default([]),
+    border: z.enum(['bronze', 'laurel', 'runic', 'silver', 'thorn', 'none']).default('bronze'),
+    border_effect: z.enum(['none', 'glow', 'embers', 'aurora']).default('none'),
+    showcases: z
+      .array(
+        z
+          .object({
+            kind: z.enum([
+              'characters',
+              'chronicle',
+              'achievements',
+              'cards',
+              'companions',
+              'guild',
+            ]),
+            title: z.string().trim().max(80).default(''),
+            body: z.string().trim().max(1000).default(''),
+          })
+          .strict(),
+      )
+      .max(8)
+      .default([{ kind: 'characters', title: 'Meus aventureiros', body: '' }]),
   })
   .strict();
 export type ProfileSettings = z.infer<typeof profileSettingsSchema>;

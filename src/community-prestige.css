@@ -1,0 +1,598 @@
+/* Real player art stays separate from the painted gallery. */
+:root .app-shell[data-page='hall'] .hall-of-fame:not(.embedded) {
+  background:
+    linear-gradient(#120e0b70, #120f0a94 60%, #14120ffc 100%),
+    url('/community/hall-of-honor.webp') center top/100% auto no-repeat,
+    #14120f;
+  max-width: none;
+  padding: 95px max(6vw, 24px) 120px;
+  min-height: 100dvh;
+  color: #eee0c9;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-heading {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-heading h2 {
+  font: 500 clamp(30px, 3.2vw, 52px)/1.15 var(--serif);
+  margin: 18px 0;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-heading p {
+  margin: 0 auto;
+  max-width: 650px;
+  color: #d2bfa1;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-heading .button {
+  font-size: 11px;
+  margin-top: 20px;
+  background: #17120b9c;
+  display: inline-flex;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-rankings {
+  justify-content: center;
+  max-width: 1200px;
+  margin: 26px auto 12px;
+  border-color: #c69e5530;
+  scrollbar-width: thin;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium {
+  max-width: 1120px;
+  margin: 24px auto 56px;
+  gap: 32px;
+  align-items: end;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium > .hall-champion {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
+  transition: transform 0.2s;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion:is(:hover, :focus-visible) {
+  transform: translateY(-6px);
+  outline: 1px solid var(--medal-ink);
+  outline-offset: 9px;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage {
+  height: clamp(280px, 27vw, 410px);
+  overflow: visible;
+  padding: 0 16px 30px;
+  background: radial-gradient(ellipse at 50% 95%, #ad80413b, transparent 55%);
+}
+:root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage {
+  height: clamp(320px, 31vw, 470px);
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::before {
+  inset: 24px 8% 0;
+  border: 1px solid #c29a5550;
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(#0f0c084a, #17100766);
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage::after {
+  left: 8%;
+  right: 8%;
+  bottom: 4px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(#c9ad75, #514430 35%, #201b12 75%, #917446);
+  box-shadow: 0 12px 22px #000b;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage > .hall-place {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: linear-gradient(135deg, #584328, #17120c);
+  padding: 8px;
+  font-size: 12px;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage > .hall-character-art {
+  max-width: 95%;
+  height: 100%;
+  flex: none;
+  margin-top: 22px;
+  filter: drop-shadow(0 0 18px #c1983820);
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-character-art > img {
+  object-position: center bottom;
+  filter: drop-shadow(0 12px 9px #0009);
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details {
+  min-height: 184px;
+  padding: 25px 12px 20px;
+  background: linear-gradient(145deg, #392b1ccc, #18130de8);
+  border: 1px solid #b991514f;
+  border-top: 2px solid var(--medal-ink);
+  clip-path: polygon(4% 0, 96% 0, 100% 12%, 100% 88%, 96% 100%, 4% 100%, 0 88%, 0 12%);
+  gap: 6px;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details::before {
+  display: none;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details h2 {
+  font-size: clamp(20px, 2vw, 29px);
+  color: var(--medal-ink);
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value {
+  font: 500 28px var(--serif);
+  margin-top: 9px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-champion-value small {
+  font: 10px var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+:root .app-shell .hall-of-fame:not(.embedded) :is(.hall-search, .hall-table, .hall-pagination) {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+:root .app-shell .hall-of-fame:not(.embedded) .hall-table-row {
+  background: #19140fcc;
+  border-color: #a987442b;
+}
+.player-profile-tabs {
+  position: relative;
+  z-index: 12;
+  display: flex;
+  gap: 24px;
+  width: fit-content;
+  margin: 22px auto;
+  background: #171410e8;
+  border: 1px solid #ac89444a;
+  padding: 8px 20px;
+}
+.player-profile-tabs button {
+  background: none;
+  color: #c8b99e;
+  border: 0;
+  padding: 9px 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-size: 12px;
+}
+.player-profile-tabs button[aria-pressed='true'] {
+  color: #ead4a8;
+  border-color: #c8a56c;
+}
+:root .user-overview .visited-profile-layout[hidden] {
+  display: none;
+}
+.player-profile-home {
+  min-height: 100dvh;
+  padding: 50px max(5vw, 20px) 100px;
+  color: #e7d8bd;
+  background:
+    linear-gradient(#14110ee6, #14110ec4 35%, #14110ff5 75%),
+    var(--player-bg) center top/cover fixed;
+}
+.player-profile-hero {
+  max-width: 1240px;
+  margin: 0 auto 44px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  min-height: 200px;
+  padding: 20px 0 38px;
+  border-bottom: 1px solid #ac884647;
+}
+.player-avatar {
+  position: relative;
+  flex: none;
+  width: 170px;
+  height: 170px;
+  border: 4px double var(--player-accent);
+  border-radius: 50%;
+  background: #29231a;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 0 0 7px #15110d,
+    0 0 0 8px #ac894456;
+  color: var(--player-accent);
+  isolation: isolate;
+}
+.player-avatar img {
+  position: absolute;
+  inset: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+.player-avatar.border-laurel::after {
+  content: '❧';
+  font: 60px Georgia;
+  position: absolute;
+  bottom: -28px;
+  color: var(--player-accent);
+  z-index: 2;
+}
+.player-avatar.border-runic {
+  border-style: dashed;
+  outline: 1px solid var(--player-accent);
+  outline-offset: 7px;
+}
+.player-avatar.border-silver {
+  border-color: #c8d0d5;
+  box-shadow:
+    0 0 0 7px #20262d,
+    0 0 0 8px #8e99aa;
+}
+.player-avatar.border-thorn {
+  outline: 4px dotted var(--player-accent);
+  outline-offset: 6px;
+}
+.player-avatar.border-none {
+  border: 0;
+  box-shadow: none;
+}
+.player-avatar.effect-glow {
+  animation: profile-glow 4s ease-in-out infinite;
+}
+.player-avatar.effect-embers::before,
+.player-avatar.effect-aurora::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: conic-gradient(
+    transparent 5%,
+    var(--player-accent) 12%,
+    transparent 25%,
+    #dc80354d 35%,
+    transparent 50%,
+    var(--player-accent) 62%,
+    transparent 78%
+  );
+  mask: radial-gradient(transparent 65%, #000 67%, #000 73%, transparent 75%);
+  animation: profile-aura 12s linear infinite;
+  z-index: -1;
+}
+.player-avatar.effect-aurora::before {
+  background: conic-gradient(#d8a957, #75b3af, #947aba, #d8a957);
+}
+.player-identity {
+  flex: 1;
+  min-width: 0;
+}
+.player-identity h1 {
+  font: 500 clamp(30px, 3.2vw, 48px)/1.2 var(--serif);
+  margin: 10px 0;
+}
+.player-identity p {
+  color: #c4b79e;
+}
+.player-identity small {
+  display: block;
+  color: #a89c87;
+  font-size: 10px;
+  margin-top: 6px;
+}
+.player-level {
+  display: block;
+  color: var(--player-accent);
+  font-size: 12px;
+  margin-top: 20px;
+}
+.player-identity progress {
+  display: block;
+  margin-top: 8px;
+  width: 190px;
+  height: 4px;
+  accent-color: var(--player-accent);
+}
+.player-profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.player-profile-home :is(button, a) {
+  color: #d8bd86;
+  cursor: pointer;
+}
+.player-profile-home button {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  border: 1px solid #a98a494d;
+  background: #1b1813c9;
+  border-radius: 2px;
+  padding: 12px 16px;
+}
+.player-profile-home button:hover {
+  border-color: var(--player-accent);
+  background: #30271a;
+}
+.player-profile-home a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.player-profile-columns {
+  max-width: 1240px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 28px;
+}
+.player-profile-columns :is(main, aside) {
+  min-width: 0;
+}
+.player-module {
+  padding: 25px 30px;
+  background: linear-gradient(140deg, #282219e6, #171511ed);
+  border: 1px solid #ac894430;
+  border-top: 2px solid #ac894460;
+  margin-bottom: 24px;
+}
+.player-module h2 {
+  font: 500 23px var(--serif);
+  margin: 9px 0 23px;
+}
+.player-module p {
+  color: #bcb09b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.player-bio {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.player-character-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.player-character-showcase button {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 70%, #ab884820, transparent), #15130fe8;
+  border: 1px solid #a98a4938;
+  padding: 16px 12px;
+}
+.player-character-showcase img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 10px #0007);
+}
+.player-character-showcase strong {
+  font: 18px var(--serif);
+  color: #e6c997;
+}
+.player-character-showcase small {
+  color: #ab9e89;
+  font-size: 10px;
+}
+.player-friend-list button {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid #ac894422;
+  background: none;
+  text-align: left;
+}
+.player-friend-list img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #a98a4970;
+}
+.player-friend-list span {
+  flex: 1;
+  color: #d4c4a8;
+  font-size: 12px;
+}
+.player-guild-badge {
+  text-align: center;
+}
+.player-guild-badge a {
+  justify-content: center;
+}
+.player-unlock-hint {
+  font-size: 11px;
+  color: #a5957a;
+}
+.player-honors,
+.player-mini-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.player-honors span,
+.player-mini-gallery span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #3a2d162b;
+  font-size: 12px;
+}
+.player-mini-gallery img {
+  width: 85px;
+  height: 110px;
+  object-fit: contain;
+}
+.profile-showcase-editor {
+  padding: 15px;
+  border: 1px solid #b994493d;
+}
+.profile-showcase-editor > div {
+  padding: 15px 0;
+  border-bottom: 1px solid #b994493d;
+}
+.profile-showcase-editor small {
+  display: block;
+  margin-top: 12px;
+  font-size: 11px;
+  color: #b9a780;
+}
+.profile-editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@keyframes profile-glow {
+  50% {
+    box-shadow:
+      0 0 0 7px #15110d,
+      0 0 20px 6px var(--player-accent);
+  }
+}
+@keyframes profile-aura {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 850px) {
+  .player-profile-columns {
+    grid-template-columns: 1fr;
+  }
+  .player-profile-hero {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .player-avatar {
+    width: 130px;
+    height: 130px;
+  }
+  .player-profile-actions {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .player-profile-columns aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .hall-rankings {
+    justify-content: flex-start;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .hall-podium {
+    gap: 14px;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details {
+    min-height: 200px;
+    padding: 20px 8px;
+  }
+}
+@media (max-width: 560px) {
+  :root .app-shell[data-page='hall'] .hall-of-fame:not(.embedded) {
+    padding: 82px 18px 110px;
+    background-size: auto 950px;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .hall-podium {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    align-items: stretch;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .hall-champion.place-1 {
+    order: -1;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .hall-podium-stage {
+    height: 280px;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .place-1 .hall-podium-stage {
+    height: 340px;
+  }
+  :root .app-shell .hall-of-fame:not(.embedded) .hall-champion-details {
+    min-height: 0;
+  }
+  .player-profile-home {
+    padding: 22px 18px 90px;
+  }
+  .player-profile-hero {
+    justify-content: center;
+    text-align: center;
+  }
+  .player-identity {
+    flex-basis: 100%;
+  }
+  .player-identity progress {
+    margin-inline: auto;
+  }
+  .player-profile-actions {
+    justify-content: center;
+  }
+  .player-character-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .player-character-showcase img {
+    height: 160px;
+  }
+  .player-profile-columns aside {
+    display: block;
+  }
+  .player-module {
+    padding: 22px 18px;
+  }
+  .profile-editor-grid {
+    grid-template-columns: 1fr;
+  }
+  .player-profile-tabs {
+    gap: 14px;
+    max-width: calc(100% - 24px);
+    padding: 6px 12px;
+  }
+  .player-profile-tabs button {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .player-avatar,
+  .player-avatar::before {
+    animation: none !important;
+  }
+  :root .hall-champion {
+    transition: none !important;
+  }
+}
+
+:root .app-shell .player-profile-home button,
+:root .app-shell .player-profile-tabs button {
+  background: #211b12e8;
+  border-color: #aa87484d;
+  color: #dec28a;
+}
+:root .app-shell .player-profile-home button:hover {
+  background: #37291a;
+  border-color: var(--player-accent);
+}
+:root .app-shell .player-character-showcase button {
+  background: radial-gradient(ellipse at 50% 70%, #ab884820, transparent), #15130fe8;
+  border-color: #a98a4938;
+}
+:root .player-profile-tabs button {
+  border-radius: 0;
+  padding: 9px 4px;
+}
+.player-identity h1 {
+  overflow-wrap: anywhere;
+}
+.player-mini-gallery .arcana-card-face {
+  width: 110px;
+  height: 165px;
+  display: block;
+}

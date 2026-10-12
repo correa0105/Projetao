@@ -144,6 +144,7 @@ export type Page =
   | 'hall'
   | 'profiles'
   | 'house'
+  | 'guild'
   | 'world'
   | 'lore'
   | 'rules';

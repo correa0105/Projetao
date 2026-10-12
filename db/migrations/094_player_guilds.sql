@@ -1,0 +1,10 @@
+CREATE TABLE community_settings(singleton boolean PRIMARY KEY DEFAULT true CHECK(singleton),document jsonb NOT NULL DEFAULT '{}',revision integer NOT NULL DEFAULT 0);
+INSERT INTO community_settings(singleton) VALUES(true);
+CREATE TABLE player_guilds(id uuid PRIMARY KEY,owner_id text NOT NULL REFERENCES "user"(id),document jsonb NOT NULL,revision integer NOT NULL DEFAULT 0,treasury_cp bigint NOT NULL DEFAULT 0 CHECK(treasury_cp>=0),prestige integer NOT NULL DEFAULT 0 CHECK(prestige>=0),founding_cp integer NOT NULL CHECK(founding_cp>=0),request_id uuid UNIQUE NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
+CREATE UNIQUE INDEX player_guild_name ON player_guilds(lower(document->>'name'));
+CREATE TABLE player_guild_members(user_id text PRIMARY KEY REFERENCES "user"(id),guild_id uuid NOT NULL REFERENCES player_guilds(id),character_id uuid NOT NULL REFERENCES characters(id),joined_at timestamptz NOT NULL DEFAULT now());
+CREATE INDEX player_guild_roster ON player_guild_members(guild_id);
+CREATE TABLE player_guild_invites(guild_id uuid NOT NULL REFERENCES player_guilds(id),user_id text NOT NULL REFERENCES "user"(id),created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(guild_id,user_id));
+CREATE TABLE player_guild_weeks(guild_id uuid NOT NULL REFERENCES player_guilds(id),week date NOT NULL,mission_id text NOT NULL,template jsonb NOT NULL,claimed_at timestamptz,PRIMARY KEY(guild_id,week,mission_id));
+CREATE TABLE player_guild_upgrades(guild_id uuid NOT NULL REFERENCES player_guilds(id),object_id uuid NOT NULL,level integer NOT NULL DEFAULT 1 CHECK(level BETWEEN 1 AND 10),PRIMARY KEY(guild_id,object_id));
+CREATE TABLE player_guild_ledger(id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,guild_id uuid NOT NULL REFERENCES player_guilds(id),user_id text NOT NULL REFERENCES "user"(id),kind text NOT NULL,amount_cp bigint NOT NULL,reference text NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),UNIQUE(guild_id,kind,reference));

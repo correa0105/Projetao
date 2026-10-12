@@ -67,6 +67,7 @@ const WorldAtlas = lazy(() =>
 const Rulebook = lazy(() => import('./Rulebook').then((module) => ({ default: module.Rulebook })));
 const Vtt = lazy(() => import('./Vtt').then((module) => ({ default: module.Vtt })));
 const Tower = lazy(() => import('./Tower').then((module) => ({ default: module.Tower })));
+const GuildPage = lazy(() => import('./Guilds').then((module) => ({ default: module.Guilds })));
 const HousePage = lazy(() => import('./House').then((module) => ({ default: module.House })));
 const HallOfFame = lazy(() =>
   import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
@@ -95,6 +96,7 @@ const titles: Record<Page, string> = {
   hall: 'Hall da Fama',
   profiles: 'Perfis da Alvorada',
   house: 'House',
+  guild: 'Guilda',
   world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',
   rules: 'Regras da mesa',
@@ -649,6 +651,9 @@ function Portal({ user }: { user: User }) {
         )}
         {page === 'lore' && <LoreLibrary />}
         {page === 'house' && <HousePage character={character} user={user} onPurchased={refresh} />}
+        {page === 'guild' && (
+          <GuildPage user={user} characters={characters} onPurchased={refresh} />
+        )}
       </>
     );
   }
@@ -672,6 +677,14 @@ function Portal({ user }: { user: User }) {
               onOpenChange={setCharacterMenuOpen}
             >
               <div className="topbar-right">
+                <button
+                  onClick={() => {
+                    setCharacterMenuOpen(false);
+                    location.hash = 'profiles?user=' + encodeURIComponent(user.id);
+                  }}
+                >
+                  Meu perfil
+                </button>
                 {administrator && (
                   <button
                     type="button"

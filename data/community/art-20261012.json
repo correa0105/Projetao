@@ -1,0 +1,127 @@
+{
+  "tool": "imagegen built-in",
+  "use_case": "stylized-concept",
+  "created": "2026-10-12",
+  "assets": [
+    {
+      "id": "hall",
+      "path": "public/community/hall-of-honor.webp",
+      "prompt": "Use case: stylized-concept. Asset type: original wide background illustration for Hall da Fama of a sophisticated dark fantasy RPG website. Primary request: a prestigious, intimate Hall of Heroes, cohesive with a medieval shop and stables painted in warm natural materials. Scene: well proportioned stone gallery with three shallow arched alcoves, elegant aged bronze laurel details and a few carefully placed wall candles. Empty stone floor and empty foreground; actual player portraits and podiums will be overlaid by the website. Style: excellent hand-painted fantasy game environment with deliberate brushwork, believable masonry, controlled detail and architectural perspective. Warm amber candlelight, rich charcoal, desaturated burgundy, weathered bronze. Wide landscape, eye-level camera, balanced composition and subdued negative space in the center and lower half. The room should convey earned honor and history, not ostentatious royal luxury. No characters, no statues, no throne, no lettering, no cards, no UI, no symbols that look like text, no excessive fog, no chaotic props, no watermarks. Subtle shadows, exquisite material detail. Output wide high-resolution opaque image.",
+      "sha256": "53c0405dab447c1319f137ea0ffc9431f63e4ce05ffc67f975822a434fa6c48f",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 489466,
+        "width": 1672,
+        "height": 941,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1672,
+          "height": 941
+        }
+      }
+    },
+    {
+      "id": "forge",
+      "path": "public/guild/rooms/forge.webp",
+      "prompt": "Use case: stylized-concept. Asset type: wide website background for the starter blacksmith room of a modest medieval player guild house. Beautiful hand-painted dark fantasy game environment, believable old plaster and rough stone, low timber beams, brick forge with small warm embers at left, simple anvil and a few properly made blacksmith tools against side walls. A humble comfortable workshop built by working adventurers, no palace luxury. Clear central floor for movable furniture overlays. Eye level wide 16:9 composition, controlled material detail, warm amber hearth and muted daylight, coherent perspective. No characters, writing, interface, watermark, or excessive ornaments.",
+      "sha256": "a6ea841a8ee6deeb80d8c1d01b7963bb1fcd8d3635a906e988cc7b3200d7d5a5",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 499678,
+        "width": 1672,
+        "height": 941,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1672,
+          "height": 941
+        }
+      }
+    },
+    {
+      "id": "main",
+      "path": "public/guild/rooms/main.webp",
+      "prompt": "Use case: stylized-concept. Asset type: wide website background for main hall of a humble starter medieval adventurers guild house. Beautiful hand-painted dark fantasy game environment, same warm amber light, rough limestone, old plaster and solid oak beams as a small rustic blacksmith workshop. One single-storey modest common hall, a stone hearth at the side, a few candles, simple unadorned wood wall paneling. Empty center and foreground floor for movable guild furniture. Eye-level wide 16:9, believable architecture, controlled deliberate painted detail and welcoming worn materials. Modest and beautiful, no luxurious banners or golden arches. No characters, letters, UI, watermarks, tables in center or dramatic fog.",
+      "sha256": "6672736eec1b5d4bab8128b40e358f31f4e420810e2adacbaf3123b9d4886f3d",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 509758,
+        "width": 1672,
+        "height": 941,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1672,
+          "height": 941
+        }
+      }
+    },
+    {
+      "id": "lounge",
+      "path": "public/guild/rooms/lounge.webp",
+      "prompt": "Use case: stylized-concept. Asset type: wide background illustration for cozy lounge in a humble starter medieval player guild house, warm rustic fantasy game environment matching a modest rough stone and oak beam hall. Hand painted high quality deliberate material detail. Small stone hearth at left, plain oak wall boards and worn plaster, a simple padded bench at the edge and folded blankets. Low ceiling, leaded small windows, warm amber lighting, welcoming but modest. Empty central floor and foreground for movable furniture overlays, eye-level 16:9. Correct believable architectural perspective. No characters, ornate gold, text, interface, watermark, no huge palace luxury.",
+      "sha256": "4d37c821c9b19b928ebe57b6e053f7c442c360af21b62171f350fab893f139e3",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 509732,
+        "width": 1672,
+        "height": 941,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1672,
+          "height": 941
+        }
+      }
+    },
+    {
+      "id": "meeting",
+      "path": "public/guild/rooms/meeting.webp",
+      "prompt": "Use case: stylized-concept. Asset type: wide background for meeting room of a modest starter medieval adventurers guild house. Polished hand-painted dark fantasy game environment, natural rough plaster and oak timber beams matching a cozy rustic common hall. A modest room with simple wall alcoves, a plain cupboard along the left wall, rolled maps and parchment on side shelves, candle sconces, a small leaded window. Empty center and foreground floor for a movable meeting table and chairs to be overlaid by the website. Warm amber candlelight with muted daylight, believable single-storey proportions, worn wooden floor, no high luxury or gold decoration. Eye-level wide 16:9, controlled deliberate brushwork and architectural perspective. No characters, readable letters, UI, text, watermark, table in center.",
+      "sha256": "51355019dc77677091f7b5d7c006f4510f44defd3b103e74763eaa911e17cc59",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 460114,
+        "width": 1672,
+        "height": 941,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1672,
+          "height": 941
+        }
+      }
+    }
+  ]
+}

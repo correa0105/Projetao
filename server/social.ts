@@ -16,6 +16,8 @@ import { emptyShelf, achievementCatalog } from '../shared/achievements.js';
 import { deriveSheet } from '../shared/character-sheet.js';
 import { cards } from '../shared/cards.js';
 import { withCompanionImages } from './companion-images.js';
+import { communitySettings } from './guilds.js';
+import { accountProgress } from '../shared/guilds.js';
 const uuid = z.string().uuid(),
   userId = z.string().min(1).max(100);
 const publicCharacterSql = `SELECT c.id,c.user_id,c.name,c.race,c.class,c.background,c.biography,c.level,c.hp,c.armor_class,c.stats,(SELECT s.choices->'options'->'size'->>0 FROM character_sheets s WHERE s.character_id=c.id) AS species_size,c.portrait_revision,c.progression_missions,c.title_position,t.document->>'name' AS displayed_title FROM characters c LEFT JOIN title_catalog t ON t.id=c.displayed_title_id AND t.deleted_at IS NULL AND EXISTS(SELECT 1 FROM character_titles ct WHERE ct.character_id=c.id AND ct.title_id=t.id AND NOT ct.revoked) WHERE c.deleted_at IS NULL`;
@@ -53,6 +55,20 @@ async function friendship(a: string, b: string, db: DB = pool) {
 const portrait = (uid: string, cid: string, revision = 0) =>
   `/api/profiles/${encodeURIComponent(uid)}/characters/${cid}/portrait?v=${revision}`;
 const avatarSql = `COALESCE(NULLIF(p.document->>'avatar',''),(SELECT '/api/profiles/'||c.user_id||'/characters/'||c.id||'/portrait?thumb=1&v='||c.portrait_revision FROM characters c WHERE c.user_id=u.id AND c.deleted_at IS NULL ORDER BY c.created_at LIMIT 1),'')`;
+async function profileProgress(uid: string, db: DB = pool) {
+  const [stats, settings] = await Promise.all([
+    db.query(
+      `SELECT (SELECT count(*)::int FROM mission_rewards r JOIN characters c ON c.id=r.character_id WHERE c.user_id=$1) missions,(SELECT count(*)::int FROM achievements a JOIN characters c ON c.id=a.character_id WHERE c.user_id=$1) achievements`,
+      [uid],
+    ),
+    communitySettings(db),
+  ]);
+  return accountProgress(
+    stats.rows[0].missions,
+    stats.rows[0].achievements,
+    settings.document.profile_unlocks,
+  );
+}
 export function socialRouter() {
   const router = express.Router();
   router.get('/profiles', async (req, res) => {
@@ -96,6 +112,20 @@ export function socialRouter() {
     ]);
     res.json({
       ...u,
+      progress: await profileProgress(uid),
+      friends: (
+        await pool.query(
+          `SELECT u.id,u.name,${avatarSql} avatar FROM social_friendships f JOIN "user" u ON u.id=CASE WHEN f.user_a=$1 THEN f.user_b ELSE f.user_a END LEFT JOIN player_profiles p ON p.user_id=u.id WHERE (f.user_a=$1 OR f.user_b=$1) AND f.status='accepted' AND NOT EXISTS(SELECT 1 FROM social_blocks b WHERE (b.blocker_id=$2 AND b.blocked_id=u.id) OR (b.blocked_id=$2 AND b.blocker_id=u.id)) ORDER BY u.name,u.id LIMIT 100`,
+          [uid, res.locals.user.id],
+        )
+      ).rows,
+      guild:
+        (
+          await pool.query(
+            `SELECT g.id,g.document->>'name' name,g.document->'crest' crest,g.prestige FROM player_guild_members m JOIN player_guilds g ON g.id=m.guild_id WHERE m.user_id=$1`,
+            [uid],
+          )
+        ).rows[0] || null,
       document: profileSettingsSchema.parse(u.document),
       is_owner: uid === res.locals.user.id,
       characters: characters.rows.map((c) => ({
@@ -130,7 +160,16 @@ export function socialRouter() {
       .parse(req.body);
     const doc = input.document;
     for (const path of [doc.avatar, doc.background])
-      if (path && !['/character-camp-v2.png', '/notice-village-empty-v4.png'].includes(path)) {
+      if (
+        path &&
+        ![
+          '/character-camp-v2.png',
+          '/notice-village-empty-v4.png',
+          '/community/hall-of-honor.webp',
+          '/guild/rooms/main.webp',
+          '/guild/rooms/lounge.webp',
+        ].includes(path)
+      ) {
         if (
           !/^\/api\/social\/assets\/[0-9a-f-]{36}$/.test(path) ||
           (
@@ -159,11 +198,12 @@ export function socialRouter() {
       } = await db.query('SELECT revision,document FROM player_profiles WHERE user_id=$1', [uid]);
       if ((current?.revision || 0) !== input.revision)
         throw new AppError(409, 'Seu perfil mudou. Reabra antes de salvar.');
+      const progress = await profileProgress(uid, db);
+      // Existing showcases remain readable if an administrator raises unlock thresholds.
       if (
-        doc.background.startsWith('/api/social/assets/') &&
-        doc.background !== current?.document?.background
+        doc.showcases.length > Math.max(progress.modules, current?.document?.showcases?.length || 1)
       )
-        throw new AppError(403, 'Cenários próprios não estão disponíveis para personalização.');
+        throw new AppError(403, 'Seu nível de conta ainda não libera esta quantidade de vitrines.');
       return (
         await db.query(
           'INSERT INTO player_profiles(user_id,document)VALUES($1,$2)ON CONFLICT(user_id)DO UPDATE SET document=$2,revision=player_profiles.revision+1,updated_at=now()RETURNING document,revision',
