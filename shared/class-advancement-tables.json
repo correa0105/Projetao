@@ -1,0 +1,1506 @@
+{
+  "source": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+  "rules": "SRD 5.2.1",
+  "classes": {
+    "Bárbaro": {
+      "sourcePage": 28,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Rage, Unarmored Defense, Weapon Mastery",
+          "numbers": [2, 2, 2]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Danger Sense, Reckless Attack",
+          "numbers": [2, 2, 2]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Barbarian Subclass, Primal Knowledge",
+          "numbers": [3, 2, 2]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 2, 3]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Extra Attack, Fast Movement",
+          "numbers": [3, 2, 3]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [4, 2, 3]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Feral Instinct, Instinctive Pounce",
+          "numbers": [4, 2, 3]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 2, 3]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Brutal Strike",
+          "numbers": [4, 3, 3]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [4, 3, 4]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "Relentless Rage",
+          "numbers": [4, 3, 4]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [5, 3, 4]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "Improved Brutal Strike",
+          "numbers": [5, 3, 4]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [5, 3, 4]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Persistent Rage",
+          "numbers": [5, 3, 4]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [5, 4, 4]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Improved Brutal Strike",
+          "numbers": [6, 4, 4]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Indomitable Might",
+          "numbers": [6, 4, 4]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [6, 4, 4]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Primal Champion",
+          "numbers": [6, 4, 4]
+        }
+      ]
+    },
+    "Bardo": {
+      "sourcePage": 31,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Bardic Inspiration, Spellcasting",
+          "numbers": [6, 2, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Expertise, Jack of All Trades",
+          "numbers": [6, 2, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Bard Subclass",
+          "numbers": [6, 2, 6, 4, 2, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [6, 3, 7, 4, 3, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Font of Inspiration",
+          "numbers": [8, 3, 9, 4, 3, 2, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [8, 3, 10, 4, 3, 3, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Countercharm",
+          "numbers": [8, 3, 11, 4, 3, 3, 1, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [8, 3, 12, 4, 3, 3, 2, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Expertise",
+          "numbers": [8, 3, 14, 4, 3, 3, 3, 1, 0, 0, 0, 0]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Magical Secrets",
+          "numbers": [10, 4, 15, 4, 3, 3, 3, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [10, 4, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [10, 4, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [10, 4, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [10, 4, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [12, 4, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [12, 4, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "—",
+          "numbers": [12, 4, 19, 4, 3, 3, 3, 2, 1, 1, 1, 1]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Superior Inspiration",
+          "numbers": [12, 4, 20, 4, 3, 3, 3, 3, 1, 1, 1, 1]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [12, 4, 21, 4, 3, 3, 3, 3, 2, 1, 1, 1]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Words of Creation",
+          "numbers": [12, 4, 22, 4, 3, 3, 3, 3, 2, 2, 1, 1]
+        }
+      ]
+    },
+    "Clérigo": {
+      "sourcePage": 36,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Spellcasting, Divine Order",
+          "numbers": [0, 3, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Channel Divinity",
+          "numbers": [2, 3, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Cleric Subclass",
+          "numbers": [2, 3, 6, 4, 2, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [2, 4, 7, 4, 3, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Sear Undead",
+          "numbers": [2, 4, 9, 4, 3, 2, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [3, 4, 10, 4, 3, 3, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Blessed Strikes",
+          "numbers": [3, 4, 11, 4, 3, 3, 1, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 4, 12, 4, 3, 3, 2, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [3, 4, 14, 4, 3, 3, 3, 1, 0, 0, 0, 0]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Divine Intervention",
+          "numbers": [3, 5, 15, 4, 3, 3, 3, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [3, 5, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 5, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [3, 5, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Improved Blessed Strikes",
+          "numbers": [3, 5, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [3, 5, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 5, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Subclass feature",
+          "numbers": [3, 5, 19, 4, 3, 3, 3, 2, 1, 1, 1, 1]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "—",
+          "numbers": [4, 5, 20, 4, 3, 3, 3, 3, 1, 1, 1, 1]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [4, 5, 21, 4, 3, 3, 3, 3, 2, 1, 1, 1]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Greater Divine Intervention",
+          "numbers": [4, 5, 22, 4, 3, 3, 3, 3, 2, 2, 1, 1]
+        }
+      ]
+    },
+    "Druida": {
+      "sourcePage": 41,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Spellcasting, Druidic, Primal Order",
+          "numbers": [0, 2, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Wild Shape, Wild Companion",
+          "numbers": [2, 2, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Druid Subclass",
+          "numbers": [2, 2, 6, 4, 2, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [2, 3, 7, 4, 3, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Wild Resurgence",
+          "numbers": [2, 3, 9, 4, 3, 2, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [3, 3, 10, 4, 3, 3, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Elemental Fury",
+          "numbers": [3, 3, 11, 4, 3, 3, 1, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 3, 12, 4, 3, 3, 2, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [3, 3, 14, 4, 3, 3, 3, 1, 0, 0, 0, 0]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [3, 4, 15, 4, 3, 3, 3, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [3, 4, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 4, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [3, 4, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [3, 4, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Improved Elemental Fury",
+          "numbers": [3, 4, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 4, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "—",
+          "numbers": [4, 4, 19, 4, 3, 3, 3, 2, 1, 1, 1, 1]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Beast Spells",
+          "numbers": [4, 4, 20, 4, 3, 3, 3, 3, 1, 1, 1, 1]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [4, 4, 21, 4, 3, 3, 3, 3, 2, 1, 1, 1]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Archdruid",
+          "numbers": [4, 4, 22, 4, 3, 3, 3, 3, 2, 2, 1, 1]
+        }
+      ]
+    },
+    "Guerreiro": {
+      "sourcePage": 47,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Fighting Style, Second Wind, Weapon Mastery",
+          "numbers": [2, 3]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Action Surge (one use), Tactical Mind",
+          "numbers": [2, 3]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Fighter Subclass",
+          "numbers": [2, 3]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 4]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Extra Attack, Tactical Shift",
+          "numbers": [3, 4]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 4]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [3, 4]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 4]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Indomitable (one use), Tactical Master",
+          "numbers": [3, 4]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [4, 5]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "Two Extra Attacks",
+          "numbers": [4, 5]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 5]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "Indomitable (two uses), Studied Attacks",
+          "numbers": [4, 5]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 5]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [4, 5]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 6]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Action Surge (two uses), Indomitable (three uses)",
+          "numbers": [4, 6]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Subclass feature",
+          "numbers": [4, 6]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [4, 6]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Three Extra Attacks",
+          "numbers": [4, 6]
+        }
+      ]
+    },
+    "Monge": {
+      "sourcePage": 50,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Martial Arts, Unarmored Defense",
+          "numbers": [6, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Monk’s Focus, Unarmored Movement, Uncanny Metabolism",
+          "numbers": [6, 2, 10]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Deflect Attacks, Monk Subclass",
+          "numbers": [6, 3, 10]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement, Slow Fall",
+          "numbers": [6, 4, 10]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Extra Attack, Stunning Strike",
+          "numbers": [8, 5, 10]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Empowered Strikes, Subclass feature",
+          "numbers": [8, 6, 15]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Evasion",
+          "numbers": [8, 7, 15]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [8, 8, 15]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Acrobatic Movement",
+          "numbers": [8, 9, 15]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Heightened Focus, Self-Restoration",
+          "numbers": [8, 10, 20]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [10, 11, 20]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [10, 12, 20]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "Deflect Energy",
+          "numbers": [10, 13, 20]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Disciplined Survivor",
+          "numbers": [10, 14, 25]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Perfect Focus",
+          "numbers": [10, 15, 25]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [10, 16, 25]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Subclass feature",
+          "numbers": [12, 17, 25]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Superior Defense",
+          "numbers": [12, 18, 30]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [12, 19, 30]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Body and Mind",
+          "numbers": [12, 20, 30]
+        }
+      ]
+    },
+    "Paladino": {
+      "sourcePage": 53,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Lay On Hands, Spellcasting, Weapon Mastery",
+          "numbers": [0, 2, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Fighting Style, Paladin’s Smite",
+          "numbers": [0, 3, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Channel Divinity, Paladin Subclass",
+          "numbers": [2, 4, 3, 0, 0, 0, 0]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [2, 5, 3, 0, 0, 0, 0]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Extra Attack, Faithful Steed",
+          "numbers": [2, 6, 4, 2, 0, 0, 0]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Aura of Protection",
+          "numbers": [2, 6, 4, 2, 0, 0, 0]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [2, 7, 4, 3, 0, 0, 0]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [2, 7, 4, 3, 0, 0, 0]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Abjure Foes",
+          "numbers": [2, 9, 4, 3, 2, 0, 0]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Aura of Courage",
+          "numbers": [2, 9, 4, 3, 2, 0, 0]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "Radiant Strikes",
+          "numbers": [3, 10, 4, 3, 3, 0, 0]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 10, 4, 3, 3, 0, 0]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [3, 11, 4, 3, 3, 1, 0]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Restoring Touch",
+          "numbers": [3, 11, 4, 3, 3, 1, 0]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [3, 12, 4, 3, 3, 2, 0]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 12, 4, 3, 3, 2, 0]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "—",
+          "numbers": [3, 14, 4, 3, 3, 3, 1]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Aura Expansion",
+          "numbers": [3, 14, 4, 3, 3, 3, 1]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [3, 15, 4, 3, 3, 3, 2]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Subclass feature",
+          "numbers": [3, 15, 4, 3, 3, 3, 2]
+        }
+      ]
+    },
+    "Patrulheiro": {
+      "sourcePage": 58,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Spellcasting, Favored Enemy, Weapon Mastery",
+          "numbers": [2, 2, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Deft Explorer, Fighting Style",
+          "numbers": [2, 3, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Ranger Subclass",
+          "numbers": [2, 4, 3, 0, 0, 0, 0]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [2, 5, 3, 0, 0, 0, 0]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Extra Attack",
+          "numbers": [3, 6, 4, 2, 0, 0, 0]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Roving",
+          "numbers": [3, 6, 4, 2, 0, 0, 0]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [3, 7, 4, 3, 0, 0, 0]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 7, 4, 3, 0, 0, 0]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Expertise",
+          "numbers": [4, 9, 4, 3, 2, 0, 0]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Tireless",
+          "numbers": [4, 9, 4, 3, 2, 0, 0]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [4, 10, 4, 3, 3, 0, 0]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 10, 4, 3, 3, 0, 0]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "Relentless Hunter",
+          "numbers": [5, 11, 4, 3, 3, 1, 0]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Nature’s Veil",
+          "numbers": [5, 11, 4, 3, 3, 1, 0]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [5, 12, 4, 3, 3, 2, 0]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [5, 12, 4, 3, 3, 2, 0]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Precise Hunter",
+          "numbers": [6, 14, 4, 3, 3, 3, 1]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Feral Senses",
+          "numbers": [6, 14, 4, 3, 3, 3, 1]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [6, 15, 4, 3, 3, 3, 2]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Foe Slayer",
+          "numbers": [6, 15, 4, 3, 3, 3, 2]
+        }
+      ]
+    },
+    "Ladino": {
+      "sourcePage": 62,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Expertise, Sneak Attack, Thieves’ Cant, Weapon Mastery",
+          "numbers": [1]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Cunning Action",
+          "numbers": [1]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Rogue Subclass, Steady Aim",
+          "numbers": [2]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [2]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Cunning Strike, Uncanny Dodge",
+          "numbers": [3]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Expertise",
+          "numbers": [3]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Evasion, Reliable Talent",
+          "numbers": [4]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [4]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [5]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [5]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "Improved Cunning Strike",
+          "numbers": [6]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [6]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [7]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Devious Strikes",
+          "numbers": [7]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Slippery Mind",
+          "numbers": [8]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [8]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Subclass feature",
+          "numbers": [9]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Elusive",
+          "numbers": [9]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [10]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Stroke of Luck",
+          "numbers": [10]
+        }
+      ]
+    },
+    "Feiticeiro": {
+      "sourcePage": 65,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Spellcasting, Innate Sorcery",
+          "numbers": [0, 4, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Font of Magic, Metamagic",
+          "numbers": [2, 4, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Sorcerer Subclass",
+          "numbers": [3, 4, 6, 4, 2, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 5, 7, 4, 3, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Sorcerous Restoration",
+          "numbers": [5, 5, 9, 4, 3, 2, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [6, 5, 10, 4, 3, 3, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "Sorcery Incarnate",
+          "numbers": [7, 5, 11, 4, 3, 3, 1, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [8, 5, 12, 4, 3, 3, 2, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [9, 5, 14, 4, 3, 3, 3, 1, 0, 0, 0, 0]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Metamagic",
+          "numbers": [10, 6, 15, 4, 3, 3, 3, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [11, 6, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [12, 6, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [13, 6, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [14, 6, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [15, 6, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [16, 6, 18, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Metamagic",
+          "numbers": [17, 6, 19, 4, 3, 3, 3, 2, 1, 1, 1, 1]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Subclass feature",
+          "numbers": [18, 6, 20, 4, 3, 3, 3, 3, 1, 1, 1, 1]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [19, 6, 21, 4, 3, 3, 3, 3, 2, 1, 1, 1]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Arcane Apotheosis",
+          "numbers": [20, 6, 22, 4, 3, 3, 3, 3, 2, 2, 1, 1]
+        }
+      ]
+    },
+    "Bruxo": {
+      "sourcePage": 71,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Eldritch Invocations, Pact Magic",
+          "numbers": [1, 2, 2, 1, 1]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Magical Cunning",
+          "numbers": [3, 2, 3, 2, 1]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Warlock Subclass",
+          "numbers": [3, 2, 4, 2, 2]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [3, 3, 5, 2, 2]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "—",
+          "numbers": [5, 3, 6, 2, 3]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [5, 3, 7, 2, 3]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "—",
+          "numbers": [6, 3, 8, 2, 4]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [6, 3, 9, 2, 4]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "Contact Patron",
+          "numbers": [7, 3, 10, 2, 5]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [7, 4, 10, 2, 5]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "Mystic Arcanum (level 6 spell)",
+          "numbers": [7, 4, 11, 3, 5]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [8, 4, 11, 3, 5]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "Mystic Arcanum (level 7 spell)",
+          "numbers": [8, 4, 12, 3, 5]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [8, 4, 12, 3, 5]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "Mystic Arcanum (level 8 spell)",
+          "numbers": [9, 4, 13, 3, 5]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [9, 4, 13, 3, 5]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "Mystic Arcanum (level 9 spell)",
+          "numbers": [9, 4, 14, 4, 5]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "—",
+          "numbers": [10, 4, 14, 4, 5]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [10, 4, 15, 4, 5]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Eldritch Master",
+          "numbers": [10, 4, 15, 4, 5]
+        }
+      ]
+    },
+    "Mago": {
+      "sourcePage": 77,
+      "rows": [
+        {
+          "level": 1,
+          "proficiency": 2,
+          "features": "Spellcasting, Ritual Adept, Arcane Recovery",
+          "numbers": [3, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 2,
+          "proficiency": 2,
+          "features": "Scholar",
+          "numbers": [3, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 3,
+          "proficiency": 2,
+          "features": "Wizard Subclass",
+          "numbers": [3, 6, 4, 2, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 4,
+          "proficiency": 2,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 7, 4, 3, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 5,
+          "proficiency": 3,
+          "features": "Memorize Spell",
+          "numbers": [4, 9, 4, 3, 2, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 6,
+          "proficiency": 3,
+          "features": "Subclass feature",
+          "numbers": [4, 10, 4, 3, 3, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 7,
+          "proficiency": 3,
+          "features": "—",
+          "numbers": [4, 11, 4, 3, 3, 1, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 8,
+          "proficiency": 3,
+          "features": "Ability Score Improvement",
+          "numbers": [4, 12, 4, 3, 3, 2, 0, 0, 0, 0, 0]
+        },
+        {
+          "level": 9,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [4, 14, 4, 3, 3, 3, 1, 0, 0, 0, 0]
+        },
+        {
+          "level": 10,
+          "proficiency": 4,
+          "features": "Subclass feature",
+          "numbers": [5, 15, 4, 3, 3, 3, 2, 0, 0, 0, 0]
+        },
+        {
+          "level": 11,
+          "proficiency": 4,
+          "features": "—",
+          "numbers": [5, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 12,
+          "proficiency": 4,
+          "features": "Ability Score Improvement",
+          "numbers": [5, 16, 4, 3, 3, 3, 2, 1, 0, 0, 0]
+        },
+        {
+          "level": 13,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [5, 17, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 14,
+          "proficiency": 5,
+          "features": "Subclass feature",
+          "numbers": [5, 18, 4, 3, 3, 3, 2, 1, 1, 0, 0]
+        },
+        {
+          "level": 15,
+          "proficiency": 5,
+          "features": "—",
+          "numbers": [5, 19, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 16,
+          "proficiency": 5,
+          "features": "Ability Score Improvement",
+          "numbers": [5, 21, 4, 3, 3, 3, 2, 1, 1, 1, 0]
+        },
+        {
+          "level": 17,
+          "proficiency": 6,
+          "features": "—",
+          "numbers": [5, 22, 4, 3, 3, 3, 2, 1, 1, 1, 1]
+        },
+        {
+          "level": 18,
+          "proficiency": 6,
+          "features": "Spell Mastery",
+          "numbers": [5, 23, 4, 3, 3, 3, 3, 1, 1, 1, 1]
+        },
+        {
+          "level": 19,
+          "proficiency": 6,
+          "features": "Epic Boon",
+          "numbers": [5, 24, 4, 3, 3, 3, 3, 2, 1, 1, 1]
+        },
+        {
+          "level": 20,
+          "proficiency": 6,
+          "features": "Signature Spells",
+          "numbers": [5, 25, 4, 3, 3, 3, 3, 2, 2, 1, 1]
+        }
+      ]
+    }
+  }
+}

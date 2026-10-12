@@ -112,6 +112,7 @@ export function createApp() {
               directives: {
                 'upgrade-insecure-requests': null,
                 imgSrc: ["'self'", 'data:', 'https:'],
+                mediaSrc: ["'self'", 'blob:'],
               },
             }
           : false,

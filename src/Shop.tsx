@@ -276,7 +276,7 @@ export function Shop({
     setHouseBuy(null);
     setHouseNotice('');
   }, [character?.id]);
-  const [category, setCategory] = useState('Todos'),
+  const [category, setCategory] = useState('Itens mundanos'),
     [query, setQuery] = useState('');
   const [offerChoices, setOfferChoices] = useState<Record<string, OfferChoice>>({});
   const [carts, setCarts] = useState<Record<string, Line[]>>({});

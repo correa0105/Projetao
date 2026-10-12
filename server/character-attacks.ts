@@ -3,7 +3,7 @@ import { equippedAttacks, type CombatItem } from '../shared/equipped-attacks.js'
 import type { SheetChoices } from '../shared/character-sheet.js';
 export async function readCharacterLoadout(
   db: Pick<PoolClient, 'query'>,
-  character: { id: string; race: string; class: string; stats: number[] },
+  character: { id: string; race: string; class: string; stats: number[]; level?: number },
   choices?: SheetChoices | null,
 ) {
   const { rows } = await db.query(

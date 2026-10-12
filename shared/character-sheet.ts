@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { hitDice, modifier, statNames, races } from './rules.js';
 import base from './sheet-common.json';
 import spellData from './srd-2024-spells.json';
+import { applyAdvancement, type AdvancementState } from './character-advancement.js';
 export const RULESET = 'SRD 5.2.1 · D&D 5.5e';
 export const { skills, skillAbilities, alignments } = base;
 export const languages = [
@@ -526,7 +527,7 @@ export const choicesSchema = z.object({
   height: z.string().trim().max(40).default(''),
   weight: z.string().trim().max(40).default(''),
 });
-export type SheetChoices = z.infer<typeof choicesSchema>;
+export type SheetChoices = z.infer<typeof choicesSchema> & { advancement?: AdvancementState };
 export function feats(c: SheetChoices) {
   return [backgroundRules[c.backgroundType].feat, ...(c.options.humanFeat || [])];
 }
@@ -991,7 +992,17 @@ export function sheetAttacks(
   stats: number[],
   c: SheetChoices,
   equipped?: readonly string[],
+  level = 1,
 ) {
+  const advances = c.advancement?.levels || [];
+  const classLevels = [cls, ...advances.map((s) => s.class)];
+  const monkLevel = (cls === 'Monge' ? 1 : 0) + advances.filter((s) => s.class === 'Monge').length;
+  const monkDie = monkLevel >= 17 ? 12 : monkLevel >= 11 ? 10 : monkLevel >= 5 ? 8 : 6;
+  const styles = [...(c.options.style || []), ...advances.flatMap((s) => s.choices.style || [])];
+  const masteries = [
+    ...(c.options.mastery || []),
+    ...advances.flatMap((s) => s.choices.mastery || []),
+  ];
   const gear = equipped ?? startingEquipment(cls, c),
     aliases: Record<string, string[]> = {
       Adaga: ['Duas adagas', 'Cinco adagas'],
@@ -1001,26 +1012,38 @@ export function sheetAttacks(
   return Object.entries(weaponData)
     .filter(([name]) => gear.includes(name) || aliases[name]?.some((n) => gear.includes(n)))
     .map(([name, w]) => {
-      const monk = cls === 'Monge' && !w.ranged && (!w.martial || light.includes(name));
+      const monk = monkLevel > 0 && !w.ranged && (!w.martial || light.includes(name));
       const dex = w.ability === 'dex' || ((w.ability === 'finesse' || monk) && stats[1] > stats[0]);
       const ability = modifier(stats[dex ? 1 : 0]),
-        trained = trainedWeapon(cls, name, c),
+        trained = classLevels.some((cl) =>
+          trainedWeapon(cl, name, {
+            ...c,
+            options:
+              cl === cls
+                ? c.options
+                : advances
+                    .filter((s) => s.class === cl)
+                    .reduce((o, s) => ({ ...o, ...s.choices }), {}),
+          }),
+        ),
         dice = w.dice.match(/^\d+d\d+/)?.[0] || w.dice,
         versatileDice = w.dice.match(/\((\d+d\d+) com duas mãos\)/)?.[1] || null;
       return {
         name,
-        dice: monk && dice === '1d4' ? '1d6' : dice,
+        dice: monk && Number(dice.match(/^1d(\d+)$/)?.[1] || 99) < monkDie ? `1d${monkDie}` : dice,
         versatileDice,
         type: w.type,
         ability,
         trained,
         attack:
-          ability + (trained ? 2 : 0) + (w.ranged && c.options.style?.[0] === 'Arquearia' ? 2 : 0),
-        mastery: c.options.mastery?.includes(name) ? mastery[name] : null,
+          ability +
+          (trained ? 2 + Math.floor((level - 1) / 4) : 0) +
+          (w.ranged && styles.includes('Arquearia') ? 2 : 0),
+        mastery: masteries.includes(name) ? mastery[name] : null,
       };
     });
 }
-export function deriveSheet(
+function deriveOriginSheet(
   character: { race: string; class: string; stats: number[]; level: number },
   c: SheetChoices,
 ) {
@@ -1279,6 +1302,12 @@ export function deriveSheet(
             : [],
   };
 }
+export function deriveSheet(
+  character: { race: string; class: string; stats: number[]; level: number },
+  c: SheetChoices,
+) {
+  return applyAdvancement(character, c, deriveOriginSheet(character, c));
+}
 export type SheetRecord = {
   choices: SheetChoices | null;
   rolls: number[][] | null;
@@ -1299,6 +1328,7 @@ export type SheetResponse = {
   sheet: SheetRecord | null;
   derived: ReturnType<typeof deriveSheet> | null;
   attacks?: import('./equipped-attacks').EquippedAttack[];
+  capabilities?: { can_grant_level: boolean };
 };
 
 export function restChoiceFields(race: string, cls: string, c: SheetChoices) {

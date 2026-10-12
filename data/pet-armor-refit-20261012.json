@@ -1,0 +1,46 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "items": [
+    {
+      "id": "pet-armor-padded",
+      "prompt": "Use case: stylized-concept. Asset type: a premium isolated inventory illustration for the dark medieval fantasy RPG shop Alvorada Cinzenta. Generate one original complete small companion animal armor set, made by a skilled medieval saddler for a four-legged animal, empty and unworn, with believable low horizontal quadruped anatomy: a fitted dorsal protection extending toward the haunches, modest breast protection and narrow adjustable straps. Three-quarter product view, full object centered with generous transparent margins. High quality hand-painted realist fantasy, precise practical construction, irregular artisan details, restrained weathering, warm soft light from upper left, readable at 140 pixels. A few matching detachable small leg guards and a simple protective brow piece neatly resting closely around the main garment convey a complete set. No animal, mannequin, human torso, human armholes, enormous circular holes, exaggerated gold ornament, glossy plastic, text, border, ground plane, cloth display or background. Real transparent alpha. Subject fills roughly 80% of the canvas. Preserve natural dark material colors; crisp shape, soft tactile surfaces. Subject/materials: Quilted protective barding of muted dusty olive linen with charcoal wool edging, thick believable diamond quilting, worn narrow brown leather straps, simple dull bronze buckles. Soft, supple textile silhouette; textile is the dominant material, no chainmail or scales.",
+      "source": "exec-13e9687e-f37c-4a16-ad67-7a7841e8696d.png",
+      "output": "public/shop/animal-equipment/pet-armor-padded.webp",
+      "width": 1536,
+      "height": 1024,
+      "previous_sha256": "50d36b49fd9ed7b949c85891a71772b21efdec9ea129fbbc889ec81dbec6182a",
+      "sha256": "3096339fe1809e2cfaf9cb5ef8602cee403bb867964ad38c5a1ebb6a2bdea8b7"
+    },
+    {
+      "id": "pet-armor-leather",
+      "prompt": "Use case: stylized-concept. Asset type: a premium isolated inventory illustration for the dark medieval fantasy RPG shop Alvorada Cinzenta. Generate one original complete small companion animal armor set, made by a skilled medieval saddler for a four-legged animal, empty and unworn, with believable low horizontal quadruped anatomy: a fitted dorsal protection extending toward the haunches, modest breast protection and narrow adjustable straps. Three-quarter product view, full object centered with generous transparent margins. High quality hand-painted realist fantasy, precise practical construction, irregular artisan details, restrained weathering, warm soft light from upper left, readable at 140 pixels. A few matching detachable small leg guards and a simple protective brow piece neatly resting closely around the main garment convey a complete set. No animal, mannequin, human torso, human armholes, enormous circular holes, exaggerated gold ornament, glossy plastic, text, border, ground plane, cloth display or background. Real transparent alpha. Subject fills roughly 80% of the canvas. Preserve natural dark material colors; crisp shape, soft tactile surfaces. Subject/materials: Protective barding of supple dark chestnut leather: overlapping shaped leather panels across the back and flanks, rubbed saddle leather edges, subtle visible hand stitching, narrow straps and small blackened iron buckles. No metal armor panels, no quilted textile, no chainmail, no scales.",
+      "source": "exec-80f688a5-4602-41d0-bc79-c94cf0976646.png",
+      "output": "public/shop/animal-equipment/pet-armor-leather.webp",
+      "width": 1536,
+      "height": 1024,
+      "previous_sha256": "5975e4e9ed863cbc47c0345845b7fb86d625ec9c56d365e065c71c9b29840fc9",
+      "sha256": "5d005679ff901cd673aef47a1de903a7e306b5dcfa5c16f8b979f1beba2496ce"
+    },
+    {
+      "id": "pet-armor-chain",
+      "prompt": "Use case: stylized-concept. Asset type: a premium isolated inventory illustration for the dark medieval fantasy RPG shop Alvorada Cinzenta. Generate one original complete small companion animal armor set, made by a skilled medieval saddler for a four-legged animal, empty and unworn, with believable low horizontal quadruped anatomy: a fitted dorsal protection extending toward the haunches, modest breast protection and narrow adjustable straps. Three-quarter product view, full object centered with generous transparent margins. High quality hand-painted realist fantasy, precise practical construction, irregular artisan details, restrained weathering, warm soft light from upper left, readable at 140 pixels. A few matching detachable small leg guards and a simple protective brow piece neatly resting closely around the main garment convey a complete set. No animal, mannequin, human torso, human armholes, enormous circular holes, exaggerated gold ornament, glossy plastic, text, border, ground plane, cloth display or background. Real transparent alpha. Subject fills roughly 80% of the canvas. Preserve natural dark material colors; crisp shape, soft tactile surfaces. Subject/materials: Protective barding of fine dark steel chainmail draping naturally over a fitted smoky brown leather underlayer, individually intelligible interlocking rings with slight soft highlights, flexible compact silhouette and simple leather fastening straps. No scales or large plates.",
+      "source": "exec-5ee67b96-62c2-4a3f-b2c9-0dafc7f6aff5.png",
+      "output": "public/shop/animal-equipment/pet-armor-chain.webp",
+      "width": 1536,
+      "height": 1024,
+      "previous_sha256": "bed73df894d933ad79aad01e590f32f2ff39c18b6cd5da1e703d86eb1d79aaa1",
+      "sha256": "d1bfda6f13f523273b782fb3f370af26846c90d1b0d758ad1936de0a5f138a50"
+    },
+    {
+      "id": "pet-armor-scales",
+      "prompt": "Use case: stylized-concept. Asset type: a premium isolated inventory illustration for the dark medieval fantasy RPG shop Alvorada Cinzenta. Generate one original complete small companion animal armor set, made by a skilled medieval saddler for a four-legged animal, empty and unworn, with believable low horizontal quadruped anatomy: a fitted dorsal protection extending toward the haunches, modest breast protection and narrow adjustable straps. Three-quarter product view, full object centered with generous transparent margins. High quality hand-painted realist fantasy, precise practical construction, irregular artisan details, restrained weathering, warm soft light from upper left, readable at 140 pixels. A few matching detachable small leg guards and a simple protective brow piece neatly resting closely around the main garment convey a complete set. No animal, mannequin, human torso, human armholes, enormous circular holes, exaggerated gold ornament, glossy plastic, text, border, ground plane, cloth display or background. Real transparent alpha. Subject fills roughly 80% of the canvas. Preserve natural dark material colors; crisp shape, soft tactile surfaces. Subject/materials: Protective barding of small overlapping patinated bronze and dark iron scales over oxblood leather backing, scales follow the low curved back and side panels in clean directional rows; articulated edges and small practical buckles. Restrained antique metal, no bright gold luxury ornament, no chainmail.",
+      "source": "exec-51c8b0cb-6cac-45c1-a21b-7adf1aece757.png",
+      "output": "public/shop/animal-equipment/pet-armor-scales.webp",
+      "width": 1536,
+      "height": 1024,
+      "previous_sha256": "b9f68b2af29e55f5f6cc474ef853ae3c1a1b32cf472985d33f0046b86afd9d41",
+      "sha256": "16f154399faa5e33015a3f6cfa3345cd3f5788005bb584ae8d8b254a1adfc199"
+    }
+  ]
+}

@@ -44,6 +44,8 @@ import { SheetChoices, ChoiceList } from './SheetChoices';
 import { SheetHelp } from './SheetHelp';
 import { ItemThumbnail } from './ItemThumbnail';
 import { AttributeDice } from './AttributeDice';
+import { CharacterAdvancement } from './CharacterAdvancement';
+import { SheetMagic } from './SheetMagic';
 import './character-sheet.css';
 import './character-parchment.css';
 const signed = (v: number) => `${v >= 0 ? '+' : ''}${v}`;
@@ -148,7 +150,7 @@ export function CharacterSheet({
     return () => {
       active = false;
     };
-  }, [c.id]);
+  }, [c.id, c.level]);
   useEffect(() => {
     let live = true;
     const refreshAttacks = () => {
@@ -273,6 +275,17 @@ export function CharacterSheet({
           <p>{progressionLabel(c.level, c.progression_missions)}</p>
         </div>
       </section>
+      {s?.finalized_at && d && data && (
+        <CharacterAdvancement
+          character={c}
+          data={data}
+          onSaved={async (r) => {
+            receive(r);
+            await onRefresh();
+            setSaved(true);
+          }}
+        />
+      )}
       {error && <FlashMessage>{error}</FlashMessage>}
       {saved && <FlashMessage kind="info">Salvo.</FlashMessage>}
       {!data && !error && <p role="status">Abrindo o tomo…</p>}
@@ -544,7 +557,9 @@ export function CharacterSheet({
                       { key: 'temp_hp', label: 'PV temporários', max: 999 },
                       {
                         key: 'hit_dice_used',
-                        label: `Dados de vida gastos (${c.level}d${d.hitDie})`,
+                        label: `Dados de vida gastos (${Object.entries(d.hitDiceByType)
+                          .map(([die, n]) => `${n}${die}`)
+                          .join(' + ')})`,
                         max: c.level,
                       },
                       { key: 'death_success', label: 'Sucessos contra a morte', max: 3 },
@@ -624,17 +639,17 @@ export function CharacterSheet({
                         <span>Acerto</span>
                         <b>
                           {signed(
-                            modifier(
-                              c.stats[c.class === 'Monge' && c.stats[1] > c.stats[0] ? 1 : 0],
-                            ) + d.proficiency,
+                            modifier(c.stats[d.martialDie && c.stats[1] > c.stats[0] ? 1 : 0]) +
+                              d.proficiency,
                           )}
                         </b>
                       </div>
                       <div>
                         <span>Dano</span>
                         <b>
-                          {c.class === 'Monge'
-                            ? '1d6 ' + signed(Math.max(modifier(c.stats[0]), modifier(c.stats[1])))
+                          {d.martialDie
+                            ? `1d${d.martialDie} ` +
+                              signed(Math.max(modifier(c.stats[0]), modifier(c.stats[1])))
                             : Math.max(0, 1 + modifier(c.stats[0]))}
                         </b>
                       </div>
@@ -688,64 +703,73 @@ export function CharacterSheet({
                     das magias são resolvidos na mesa.
                   </SheetHelp>
                 </h3>
-                {d.spellDC !== null ? (
-                  <p>
-                    Habilidade: {statNames[d.spellAbility!]} · CD <b>{d.spellDC}</b> · Ataque{' '}
-                    <b>{signed(d.spellAttack!)}</b>
-                  </p>
+                {choices.advancement?.levels.length ? (
+                  <SheetMagic id={c.id} data={data!} onSaved={receive} />
                 ) : (
-                  <p>A classe ainda não conjura no nível 1.</p>
-                )}
-                <h3>Truques</h3>
-                <p>{d.cantrips.map(spellName).join(' · ') || 'Nenhum.'}</p>
-
-                {d.known.length > 0 && (
                   <>
-                    <h3>{c.class === 'Mago' ? 'Grimório' : 'Magias preparadas da classe'}</h3>
-                    <p>{d.known.map(spellName).join(' · ')}</p>
+                    {d.spellDC !== null ? (
+                      <p>
+                        Habilidade: {statNames[d.spellAbility!]} · CD <b>{d.spellDC}</b> · Ataque{' '}
+                        <b>{signed(d.spellAttack!)}</b>
+                      </p>
+                    ) : (
+                      <p>A classe ainda não conjura no nível 1.</p>
+                    )}
+                    <h3>Truques</h3>
+                    <p>{d.cantrips.map(spellName).join(' · ') || 'Nenhum.'}</p>
+
+                    {d.known.length > 0 && (
+                      <>
+                        <h3>{c.class === 'Mago' ? 'Grimório' : 'Magias preparadas da classe'}</h3>
+                        <p>{d.known.map(spellName).join(' · ')}</p>
+                      </>
+                    )}
+                    {(d.slots > 0 || k.prepared) && (
+                      <div className="sheet-form-reset sheet-spell-controls">
+                        {!!d.slots && (
+                          <>
+                            <label>
+                              Espaços de nível 1 gastos (total {d.slots})
+                              <SheetHelp label="Espaços de magia">
+                                Recupera em descanso{' '}
+                                {c.class === 'Bruxo' ? 'curto ou longo' : 'longo'}.
+                              </SheetHelp>
+                              <input
+                                type="number"
+                                min={0}
+                                max={d.slots}
+                                value={draft.slots_used}
+                                onChange={(e) => change({ slots_used: Number(e.target.value) })}
+                              />
+                            </label>
+                          </>
+                        )}
+                        {k.prepared && (
+                          <>
+                            <ChoiceList
+                              label="Magias preparadas (até o limite)"
+                              help={
+                                ['Paladino', 'Patrulheiro'].includes(c.class)
+                                  ? 'Após descanso longo pode substituir uma magia preparada. Registre aqui a escolha acordada na mesa.'
+                                  : 'Pode trocar após um descanso longo.'
+                              }
+                              count={d.prepareCount}
+                              options={
+                                c.class === 'Mago'
+                                  ? d.known
+                                  : spellOptions(c.class, 1).map((v) => v.id)
+                              }
+                              value={draft.prepared}
+                              onChange={(v) => change({ prepared: v })}
+                            />
+                          </>
+                        )}
+                      </div>
+                    )}
+                    {!!d.alwaysPrepared.length && (
+                      <p>Sempre preparadas: {d.alwaysPrepared.map(spellName).join(' · ')}.</p>
+                    )}
                   </>
-                )}
-                {(d.slots > 0 || k.prepared) && (
-                  <div className="sheet-form-reset sheet-spell-controls">
-                    {!!d.slots && (
-                      <>
-                        <label>
-                          Espaços de nível 1 gastos (total {d.slots})
-                          <SheetHelp label="Espaços de magia">
-                            Recupera em descanso {c.class === 'Bruxo' ? 'curto ou longo' : 'longo'}.
-                          </SheetHelp>
-                          <input
-                            type="number"
-                            min={0}
-                            max={d.slots}
-                            value={draft.slots_used}
-                            onChange={(e) => change({ slots_used: Number(e.target.value) })}
-                          />
-                        </label>
-                      </>
-                    )}
-                    {k.prepared && (
-                      <>
-                        <ChoiceList
-                          label="Magias preparadas (até o limite)"
-                          help={
-                            ['Paladino', 'Patrulheiro'].includes(c.class)
-                              ? 'Após descanso longo pode substituir uma magia preparada. Registre aqui a escolha acordada na mesa.'
-                              : 'Pode trocar após um descanso longo.'
-                          }
-                          count={d.prepareCount}
-                          options={
-                            c.class === 'Mago' ? d.known : spellOptions(c.class, 1).map((v) => v.id)
-                          }
-                          value={draft.prepared}
-                          onChange={(v) => change({ prepared: v })}
-                        />
-                      </>
-                    )}
-                  </div>
-                )}
-                {!!d.alwaysPrepared.length && (
-                  <p>Sempre preparadas: {d.alwaysPrepared.map(spellName).join(' · ')}.</p>
                 )}
                 {d.spellGrants.map((g, i) => (
                   <div className="sheet-training-cards" key={i}>
@@ -885,13 +909,15 @@ export function CharacterSheet({
                 </button>
               </details>
             )}
-            {tab === 'Magias' && (d.slots > 0 || k.prepared) && (
-              <div className="sheet-actions">
-                <button className="button primary" disabled={busy} onClick={saveState}>
-                  Salvar magias e espaços
-                </button>
-              </div>
-            )}
+            {tab === 'Magias' &&
+              !choices.advancement?.levels.length &&
+              (d.slots > 0 || k.prepared) && (
+                <div className="sheet-actions">
+                  <button className="button primary" disabled={busy} onClick={saveState}>
+                    Salvar magias e espaços
+                  </button>
+                </div>
+              )}
           </section>
         </>
       )}

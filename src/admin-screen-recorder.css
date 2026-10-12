@@ -1,0 +1,206 @@
+.admin-recorder {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1700;
+  width: min(365px, calc(100vw - 28px));
+  max-height: calc(100dvh - 150px);
+  overflow: auto;
+  padding: 20px;
+  background:
+    linear-gradient(#22211ff5, #191917fa),
+    url('/achievement-wood-v1.png') center / 650px auto;
+  border: 1px solid #a68a535e;
+  border-radius: 5px;
+  box-shadow: 0 12px 45px #0009;
+  color: #e2d7c0;
+  font: 12px/1.7 var(--sans);
+}
+.admin-recorder header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+.admin-recorder h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 4px 0 0;
+  font: 20px var(--serif);
+  color: #dcc596;
+}
+.admin-recorder .eyebrow {
+  font-size: 8px;
+  letter-spacing: 0.13em;
+}
+.admin-recorder-close {
+  padding: 6px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #d0bd98;
+  border: 0;
+  cursor: pointer;
+}
+.admin-recorder-preview {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0e100f;
+  border: 1px solid #8c76443d;
+  border-radius: 3px;
+}
+.admin-recorder-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.admin-recorder-preview > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #a99b80;
+  font-size: 11px;
+}
+.admin-recorder-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 0;
+  border-bottom: 1px solid #b0945140;
+}
+.admin-recorder-status > span {
+  flex: 1;
+}
+.admin-recorder-status > strong {
+  color: #dfc68f;
+  font-variant-numeric: tabular-nums;
+}
+.admin-recorder-status > small {
+  color: #a99b80;
+  font-size: 10px;
+}
+.admin-recorder-audio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 15px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.admin-recorder-audio input {
+  accent-color: #bd9956;
+}
+.admin-recorder-help {
+  font-size: 10px;
+  color: #a79c86;
+  margin: 12px 0 0;
+}
+.admin-recorder-source {
+  overflow-wrap: anywhere;
+  margin: 12px 0;
+  color: #cbb992;
+}
+.admin-recorder-source small {
+  display: block;
+  color: #a79c86;
+}
+.admin-recorder-error {
+  color: #e5ad90;
+  font-size: 11px;
+  margin: 12px 0 0;
+}
+.admin-recorder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 17px;
+}
+.admin-recorder-actions .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 11px;
+  flex: 1;
+  padding: 10px 12px;
+}
+.admin-recorder-actions a {
+  text-decoration: none;
+}
+.admin-recorder-dock {
+  position: fixed;
+  z-index: 1690;
+  left: 24px;
+  bottom: 20px;
+  display: flex;
+  background: #201f1bf5;
+  border: 1px solid #a68a535e;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px #0007;
+}
+.admin-recorder-dock button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  color: #d7c196;
+  font: 11px var(--sans);
+  cursor: pointer;
+}
+.admin-recorder-dock button + button {
+  border-left: 1px solid #a68a5340;
+}
+.app-shell[data-page='vtt'] .admin-recorder-dock {
+  left: 84px;
+}
+.admin-recording-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d17b55;
+}
+.admin-recording-dot[data-paused='true'] {
+  background: #b9a06a;
+}
+.admin-recorder :is(button, a):focus-visible,
+.admin-recorder-dock button:focus-visible {
+  outline: 2px solid #d3b67a;
+  outline-offset: 3px;
+}
+.admin-recorder-menu {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px;
+  color: #d8bd86;
+  background: #24221c;
+  border: 1px solid #9b824c55;
+  border-radius: 3px;
+  cursor: pointer;
+  font: 11px var(--sans);
+  white-space: nowrap;
+}
+@media (max-width: 650px) {
+  .admin-recorder {
+    top: 76px;
+    right: 14px;
+    padding: 16px;
+    max-height: calc(100dvh - 155px);
+  }
+  .admin-recorder-dock {
+    left: 14px;
+    bottom: 70px;
+  }
+  .app-shell[data-page='vtt'] .admin-recorder-dock {
+    left: 75px;
+    bottom: 74px;
+  }
+}

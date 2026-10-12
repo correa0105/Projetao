@@ -1,6 +1,8 @@
 :root .app-shell .character-cards-page {
   min-height: 100dvh;
-  background: linear-gradient(120deg, #181815e8, #1b1816f7), url('/parchment-grain.svg');
+  background:
+    linear-gradient(90deg, #16161355, #16161317 25%, #14151230 75%, #16161355),
+    url('/cards/private-archive-20261012.webp') center / cover fixed;
 }
 :root .character-cards-page .character-cards-heading {
   max-width: 1400px;
@@ -27,7 +29,9 @@
   position: sticky;
   top: 24px;
   padding: 24px 20px;
-  background: #22201c80;
+  background:
+    linear-gradient(#1b1c19e8, #1b1c19e8),
+    url('/achievement-wood-v1.png') center / 620px auto;
   border: 1px solid #a68c5428;
   border-radius: 4px;
 }
@@ -112,6 +116,11 @@
 }
 .card-folio-main {
   min-width: 0;
+  background: #191b18a6;
+  border: 1px solid #a68c5435;
+  border-radius: 4px;
+  padding: clamp(18px, 3vw, 34px);
+  box-shadow: 0 12px 40px #0004;
 }
 .card-folio-playset {
   border-bottom: 1px solid #a68c5430;
@@ -222,6 +231,9 @@
   }
 }
 @media (max-width: 720px) {
+  :root .app-shell .character-cards-page {
+    background-position: 63% center;
+  }
   .card-folio {
     grid-template-columns: 1fr;
     gap: 25px;

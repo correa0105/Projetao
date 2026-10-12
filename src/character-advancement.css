@@ -1,0 +1,321 @@
+.sheet-advancement {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 22px;
+  margin: 18px 0;
+  border: 1px solid #78634177;
+  border-radius: 6px;
+  background: linear-gradient(110deg, #242827ef, #1e211fed);
+  color: #e8ddc4;
+}
+.sheet-advancement h3 {
+  margin: 5px 0;
+  font-size: 21px;
+}
+.sheet-advancement p {
+  margin: 3px 0;
+  color: #bcb49f;
+  font-size: 13px;
+}
+.advancement-eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  color: #c5a568;
+}
+.sheet-advancement .button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sheet-advancement .advancement-pending {
+  color: #e4bb76;
+}
+.advancement-dialog {
+  color: #ddd5c3;
+  max-width: 100%;
+  min-width: 0;
+}
+.advancement-intro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  color: #bcb49f;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.advancement-class-label,
+.advancement-fields > label {
+  display: grid;
+  gap: 8px;
+}
+.advancement-dialog select,
+.advancement-dialog input,
+.sheet-magic-progress input,
+.sheet-magic-progress select {
+  color: #e8dec9;
+  background: #191c1b;
+  border: 1px solid #645743;
+  border-radius: 4px;
+  padding: 10px 12px;
+  max-width: 100%;
+  min-width: 0;
+}
+.advancement-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0 12px;
+  padding: 16px;
+  background: #212521;
+  border: 1px solid #514b3c;
+  border-radius: 4px;
+}
+.advancement-preview span {
+  display: grid;
+  gap: 6px;
+}
+.advancement-preview small {
+  color: #a9a391;
+  font-size: 11px;
+}
+.advancement-features {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  color: #c5ae82;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.advancement-features svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.advancement-fields {
+  display: grid;
+  gap: 22px;
+  margin: 20px 0;
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.advancement-fields small {
+  color: #b4ac98;
+}
+.advancement-fields p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+.advancement-dialog .sheet-choice,
+.sheet-magic-progress .sheet-choice {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  color: inherit;
+}
+.advancement-dialog .sheet-choice legend,
+.sheet-magic-progress .sheet-choice legend {
+  color: #e2ceb0;
+  font-weight: 600;
+  padding: 6px 0 12px;
+}
+.advancement-dialog .sheet-choice legend small,
+.sheet-magic-progress .sheet-choice legend small {
+  color: #a9a391;
+  display: block;
+  font-size: 11px;
+  margin-top: 5px;
+}
+.advancement-dialog .sheet-checks,
+.sheet-magic-progress .sheet-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 12px;
+}
+.advancement-dialog .sheet-checks label,
+.sheet-magic-progress .sheet-checks label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #262924;
+  border: 1px solid #62543d55;
+  padding: 9px;
+  border-radius: 3px;
+  font-size: 13px;
+  min-width: 0;
+}
+.advancement-dialog .sheet-checks input,
+.sheet-magic-progress .sheet-checks input {
+  width: 15px;
+  height: 15px;
+  accent-color: #bc9c61;
+  flex-shrink: 0;
+}
+.advancement-spells {
+  padding: 14px;
+  border: 1px solid #75604466;
+  border-radius: 4px;
+  background: #202421;
+  min-width: 0;
+}
+.advancement-search {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.advancement-search label {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+}
+.advancement-search input {
+  width: 100%;
+}
+.advancement-search select {
+  max-width: 180px;
+}
+.advancement-spell-list {
+  max-height: 280px;
+  overflow: auto;
+  scrollbar-gutter: stable;
+  padding-right: 6px;
+}
+.advancement-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.advancement-selected button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #ac87576b;
+  border-radius: 20px;
+  padding: 5px 9px;
+  background: #373329;
+  color: #e6d5b4;
+  font-size: 11px;
+}
+.advancement-attributes {
+  border: 1px solid #74603e;
+  padding: 16px;
+  border-radius: 4px;
+  min-width: 0;
+}
+.advancement-attributes > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.advancement-attributes label {
+  display: grid;
+  gap: 6px;
+}
+.advancement-automatic {
+  color: #bea77d;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.advancement-error {
+  color: #ffc1a4;
+  background: #5c30252e;
+  padding: 12px;
+  border: 1px solid #b67655;
+  border-radius: 4px;
+}
+.advancement-confirm {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  position: sticky;
+  bottom: -24px;
+  background: #191b17;
+  padding: 16px 0;
+  border-top: 1px solid #75603d66;
+  margin-top: 20px;
+}
+.sheet-magic-class {
+  padding: 18px 0;
+  border-bottom: 1px solid #79664555;
+}
+.sheet-magic-class h4 {
+  margin: 18px 0 6px;
+  color: #d9c89d;
+}
+.sheet-magic-progress .advancement-spells {
+  margin: 16px 0;
+}
+.sheet-magic-slots {
+  margin: 22px 0;
+  padding: 18px;
+  background: #202421;
+  border: 1px solid #73604166;
+  border-radius: 4px;
+}
+.sheet-magic-slots > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.sheet-magic-slots label {
+  display: grid;
+  gap: 6px;
+}
+.sheet-magic-slots span {
+  color: #b0a894;
+  font-size: 12px;
+}
+.sheet-magic-slots input {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .sheet-advancement {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+  }
+  .sheet-advancement .button {
+    align-self: flex-start;
+  }
+  .advancement-preview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .advancement-preview span {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .advancement-search {
+    flex-direction: column;
+  }
+  .advancement-search select {
+    max-width: 100%;
+    width: 100%;
+  }
+  .advancement-dialog .sheet-checks,
+  .sheet-magic-progress .sheet-checks {
+    grid-template-columns: 1fr;
+  }
+  .advancement-attributes > div,
+  .sheet-magic-slots > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .advancement-confirm {
+    bottom: -16px;
+  }
+  .advancement-confirm .button {
+    flex: 1;
+    padding: 10px;
+  }
+  .advancement-spells {
+    padding: 10px;
+  }
+}

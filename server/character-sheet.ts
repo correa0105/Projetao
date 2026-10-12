@@ -5,6 +5,17 @@ import { z } from 'zod';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { readCharacterLoadout } from './character-attacks.js';
+import { isDeepStrictEqual } from 'node:util';
+import { isAdministrator, requireAdministrator } from './administrators.js';
+import {
+  allocatedLevel,
+  advanceChoiceSchema,
+  validateAdvance,
+  advancementStats,
+  magicClasses,
+  combinedSlots,
+  type AdvancementState,
+} from '../shared/character-advancement.js';
 import {
   validateChoices,
   deriveSheet,
@@ -42,10 +53,36 @@ async function result(id: string, user: string) {
     rows: [sheet],
   } = await pool.query('SELECT * FROM character_sheets WHERE character_id=$1', [id]);
   const { attacks } = await readCharacterLoadout(pool, c, sheet?.choices);
+  const normalized = sheet?.choices
+    ? {
+        ...sheet,
+        choices: seedAdvancement(c.class, sheet.choices, sheet.prepared, sheet.slots_used),
+      }
+    : sheet;
   return {
     attacks,
-    sheet: sheet || null,
-    derived: sheet?.finalized_at ? deriveSheet(c, sheet.choices) : null,
+    sheet: normalized || null,
+    derived: normalized?.finalized_at ? deriveSheet(c, normalized.choices) : null,
+    capabilities: { can_grant_level: await isAdministrator(user) },
+  };
+}
+function seedAdvancement(
+  cls: string,
+  choices: import('../shared/character-sheet.js').SheetChoices,
+  prepared: string[],
+  used = 0,
+) {
+  if (choices.advancement) return choices;
+  return {
+    ...choices,
+    advancement: {
+      version: 1 as const,
+      levels: [],
+      initialSpells: cls === 'Patrulheiro' ? [...prepared] : [],
+      prepared: { [cls]: [...prepared] },
+      slotsUsed: [cls === 'Bruxo' ? 0 : used, 0, 0, 0, 0, 0, 0, 0, 0],
+      pactUsed: cls === 'Bruxo' ? used : 0,
+    },
   };
 }
 export function characterSheetRouter() {
@@ -53,6 +90,150 @@ export function characterSheetRouter() {
   router.get('/characters/:id/sheet', async (req, res) =>
     res.json(await result(z.string().uuid().parse(req.params.id), res.locals.user.id)),
   );
+  router.post('/characters/:id/sheet/advance', async (req, res) => {
+    const id = z.string().uuid().parse(req.params.id),
+      user = res.locals.user.id;
+    const body = z
+      .object({
+        expectedLevel: z.number().int().min(1).max(20),
+        requestId: z.string().uuid(),
+        grant: z.boolean(),
+        choice: advanceChoiceSchema,
+      })
+      .strict()
+      .parse(req.body);
+    await transaction(async (client) => {
+      const c = await owned(client, id, user, true);
+      if (body.grant) await requireAdministrator(user, client);
+      const {
+        rows: [s],
+      } = await client.query('SELECT * FROM character_sheets WHERE character_id=$1 FOR UPDATE', [
+        id,
+      ]);
+      if (!s?.finalized_at || s.choices?.version !== 2)
+        throw new AppError(
+          409,
+          'Conclua a origem e confirme os atributos da ficha antes de evoluir.',
+        );
+      const choices = seedAdvancement(c.class, s.choices, s.prepared, s.slots_used);
+      const previous = choices.advancement!.levels.find((r: any) => r.requestId === body.requestId);
+      if (previous) {
+        const { characterLevel, classLevel, requestId, actor, createdAt, granted, ...choice } =
+          previous;
+        if (!isDeepStrictEqual(choice, body.choice) || granted !== body.grant)
+          throw new AppError(409, 'Esta confirmação já foi usada para outra evolução.');
+        return;
+      }
+      if (c.level !== body.expectedLevel)
+        throw new AppError(409, 'O nível mudou. Atualize a ficha antes de confirmar.');
+      const allocated = allocatedLevel(choices);
+      if (allocated > c.level)
+        throw new AppError(409, 'A progressão registrada excede o nível do personagem.');
+      if (body.grant && allocated < c.level)
+        throw new AppError(
+          409,
+          'Conclua as escolhas dos níveis pendentes antes de conceder outro nível.',
+        );
+      if (body.grant && c.level === 20)
+        throw new AppError(409, 'O personagem já está no nível máximo.');
+      if (!body.grant && allocated === c.level)
+        throw new AppError(409, 'Não há um nível pendente para configurar.');
+      let validated;
+      try {
+        validated = validateAdvance(c, choices, body.choice);
+      } catch (e) {
+        throw new AppError(
+          400,
+          e instanceof z.ZodError ? 'Confira as escolhas da evolução.' : (e as Error).message,
+        );
+      }
+      const newLevel = body.grant ? c.level + 1 : c.level;
+      const row = {
+        ...validated.choice,
+        characterLevel: allocated + 1,
+        classLevel: validated.plan.level,
+        requestId: body.requestId,
+        actor: user,
+        createdAt: new Date().toISOString(),
+        granted: body.grant,
+      };
+      const next = {
+        ...choices,
+        advancement: { ...choices.advancement!, levels: [...choices.advancement!.levels, row] },
+      };
+      const stats = advancementStats(c, validated.choice, validated.plan.level),
+        derived = deriveSheet({ ...c, level: newLevel, stats }, next);
+      const current = Math.min(
+        derived.hp,
+        Math.max(0, (s.current_hp ?? c.hp) + (derived.hp - c.hp)),
+      );
+      await client.query(
+        'UPDATE character_sheets SET choices=$2,current_hp=$3,updated_at=now() WHERE character_id=$1',
+        [id, JSON.stringify(next), current],
+      );
+      await client.query(
+        'UPDATE characters SET level=$2,stats=$3,hp=$4,armor_class=$5 WHERE id=$1',
+        [id, newLevel, JSON.stringify(stats), derived.hp, derived.armorClass],
+      );
+    });
+    res.json(await result(id, user));
+  });
+  router.post('/characters/:id/sheet/magic-state', async (req, res) => {
+    const id = z.string().uuid().parse(req.params.id),
+      user = res.locals.user.id;
+    const body = z
+      .object({
+        prepared: z.record(z.string().max(30), z.array(z.string().max(80)).max(30)),
+        slotsUsed: z.array(z.number().int().min(0).max(10)).length(9),
+        pactUsed: z.number().int().min(0).max(4),
+      })
+      .strict()
+      .parse(req.body);
+    await transaction(async (client) => {
+      const c = await owned(client, id, user, true);
+      const {
+        rows: [s],
+      } = await client.query('SELECT * FROM character_sheets WHERE character_id=$1 FOR UPDATE', [
+        id,
+      ]);
+      if (!s?.finalized_at) throw new AppError(409, 'Conclua a ficha primeiro.');
+      const choices = seedAdvancement(c.class, s.choices, s.prepared, s.slots_used),
+        magic = magicClasses(c, choices),
+        slots = combinedSlots(c, choices);
+      if (
+        Object.keys(body.prepared).some((cls) => !magic.some((m) => m.class === cls && m.flexible))
+      )
+        throw new AppError(400, 'Classe de preparação não disponível.');
+      for (const m of magic.filter((m) => m.flexible)) {
+        const v = body.prepared[m.class] || [];
+        if (
+          v.length > m.prepareCount ||
+          new Set(v).size !== v.length ||
+          v.some((id) => !m.allowed.includes(id))
+        )
+          throw new AppError(400, 'Confira a lista e o limite de preparação de ' + m.class + '.');
+      }
+      const pact = magic.find((m) => m.class === 'Bruxo');
+      if (body.slotsUsed.some((v, i) => v > slots[i]) || body.pactUsed > (pact?.pactSlots || 0))
+        throw new AppError(400, 'Espaços gastos excedem os espaços disponíveis.');
+      const advancement: AdvancementState = {
+        ...choices.advancement!,
+        prepared: body.prepared,
+        slotsUsed: body.slotsUsed,
+        pactUsed: body.pactUsed,
+      };
+      await client.query(
+        'UPDATE character_sheets SET choices=$2,prepared=$3,slots_used=$4,updated_at=now() WHERE character_id=$1',
+        [
+          id,
+          JSON.stringify({ ...choices, advancement }),
+          JSON.stringify(body.prepared[c.class] || s.prepared),
+          c.class === 'Bruxo' ? body.pactUsed : body.slotsUsed[0],
+        ],
+      );
+    });
+    res.json(await result(id, user));
+  });
   router.post('/characters/:id/sheet/choices', async (req, res) => {
     const id = z.string().uuid().parse(req.params.id),
       user = res.locals.user.id;
@@ -154,7 +335,7 @@ export function characterSheetRouter() {
       user = res.locals.user.id;
     const body = z
       .object({
-        prepared: z.array(z.string()).max(10),
+        prepared: z.array(z.string()).max(30),
         notes: z.string().max(8000),
         current_hp: z.number().int().min(0),
         temp_hp: z.number().int().min(0).max(999),
@@ -173,11 +354,17 @@ export function characterSheetRouter() {
       if (!s?.finalized_at) throw new AppError(409, 'Conclua a ficha primeiro.');
       const d = deriveSheet(c, s.choices),
         k = classRules[c.class];
-      const allowed = k.prepared
-        ? c.class === 'Mago'
-          ? s.choices.spells
-          : spellOptions(c.class, 1).map((x) => x.id)
-        : [];
+      const primary = magicClasses(c, seedAdvancement(c.class, s.choices, s.prepared)).find(
+        (m) => m.class === c.class,
+      );
+      const allowed =
+        s.choices.advancement?.levels.length && primary?.flexible
+          ? primary.allowed
+          : k.prepared
+            ? c.class === 'Mago'
+              ? s.choices.spells
+              : spellOptions(c.class, 1).map((x) => x.id)
+            : [];
       if (
         body.prepared.length > d.prepareCount ||
         new Set(body.prepared).size !== body.prepared.length ||
@@ -205,6 +392,27 @@ export function characterSheetRouter() {
           body.hit_dice_used,
         ],
       );
+      if (s.choices.advancement?.levels.length) {
+        const a = s.choices.advancement;
+        const slotsUsed = [...(a.slotsUsed || Array(9).fill(0))];
+        if (c.class !== 'Bruxo') slotsUsed[0] = body.slots_used;
+        const prepared = {
+          ...a.prepared,
+          ...(primary?.flexible ? { [c.class]: body.prepared } : {}),
+        };
+        await client.query('UPDATE character_sheets SET choices=$2 WHERE character_id=$1', [
+          id,
+          JSON.stringify({
+            ...s.choices,
+            advancement: {
+              ...a,
+              prepared,
+              slotsUsed,
+              ...(c.class === 'Bruxo' ? { pactUsed: body.slots_used } : {}),
+            },
+          }),
+        ]);
+      }
     });
     res.json(await result(id, user));
   });
@@ -220,7 +428,10 @@ export function characterSheetRouter() {
         throw new AppError(409, 'Conclua a ficha primeiro.');
       let choices;
       try {
-        choices = validateRestChoices(c.race, c.class, sheet.choices, req.body);
+        choices = {
+          ...validateRestChoices(c.race, c.class, sheet.choices, req.body),
+          ...(sheet.choices.advancement ? { advancement: sheet.choices.advancement } : {}),
+        };
       } catch (e) {
         throw new AppError(400, (e as Error).message);
       }

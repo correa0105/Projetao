@@ -21,7 +21,7 @@ const normalize = (s: string) =>
     .toLowerCase()
     .trim();
 export function equippedAttacks(
-  character: { race: string; class: string; stats: number[] },
+  character: { race: string; class: string; stats: number[]; level?: number },
   choices: SheetChoices | null | undefined,
   items: readonly CombatItem[],
 ): EquippedAttack[] {
@@ -41,15 +41,20 @@ export function equippedAttacks(
       Object.keys(weaponData).find((n) => normalize(n) === normalize(item.name));
     if (!name) return [];
     seen.add(item.id);
-    return sheetAttacks(character.race, character.class, character.stats, choices, [name]).map(
-      (attack) => ({
-        ...attack,
-        name: item.name,
-        itemId: item.id,
-        image_path: item.image_path || null,
-        baseName: name,
-        twoHanded: !!weaponData[name].two,
-      }),
-    );
+    return sheetAttacks(
+      character.race,
+      character.class,
+      character.stats,
+      choices,
+      [name],
+      character.level || 1,
+    ).map((attack) => ({
+      ...attack,
+      name: item.name,
+      itemId: item.id,
+      image_path: item.image_path || null,
+      baseName: name,
+      twoHanded: !!weaponData[name].two,
+    }));
   });
 }
