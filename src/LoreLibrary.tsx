@@ -403,7 +403,6 @@ export function LoreLibrary() {
       {message && <FlashMessage kind="info">{message}</FlashMessage>}
       <div className="lore-scene">
         <div className="lore-scene-art" aria-hidden="true" />
-        <div className="lore-scene-fog" aria-hidden="true" />
         <div className="lore-hero" aria-hidden="true" />
         {!editing && (
           <LoreTimeline

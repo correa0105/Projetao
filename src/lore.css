@@ -45,8 +45,8 @@
   text-transform: uppercase;
 }
 .lore-scene {
-  --lore-hero-height: max(490px, min(660px, 75vh));
-  --lore-backdrop-height: calc(var(--lore-hero-height) + 480px);
+  --lore-hero-height: clamp(160px, 15vw, 235px);
+  --lore-backdrop-height: calc(var(--lore-hero-height) + 300px);
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -54,7 +54,7 @@
 }
 .lore-hero {
   height: var(--lore-hero-height);
-  min-height: 490px;
+  min-height: 160px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -67,11 +67,9 @@
   bottom: auto;
   height: var(--lore-backdrop-height);
   z-index: -3;
-  background: url('/lore-world-v2.webp') center 46% / cover;
-  filter: saturate(0.94) brightness(0.94);
-  transform: scale(1.04);
-  animation: lore-hero-drift 35s ease-in-out infinite alternate;
-  mask-image: linear-gradient(#000 60%, transparent);
+  background: url('/lore-archive-20261012.webp') right top / cover no-repeat;
+  opacity: 0.65;
+  mask-image: linear-gradient(#000 12%, #0009 55%, transparent 100%);
 }
 .lore-scene::before {
   content: '';
@@ -81,8 +79,8 @@
   height: var(--lore-backdrop-height);
   z-index: -1;
   background:
-    linear-gradient(180deg, #10141c18, #11151c0d 35%, #161713a3 72%, #161713 100%),
-    linear-gradient(90deg, #10151b96, #10151b26 48%, transparent 78%);
+    linear-gradient(180deg, #16171315, #16171340 32%, #161713 100%),
+    linear-gradient(90deg, #161713aa, transparent 75%);
 }
 .lore-scene::after {
   content: '';
@@ -104,7 +102,8 @@
   animation: lore-mist 32s ease-in-out infinite alternate;
 }
 .lore-scene .lore-timeline {
-  background: transparent;
+  padding-top: 24px;
+  background: linear-gradient(180deg, #16171310, #161713);
 }
 .lore-scene .lore-timeline::before {
   display: none;
@@ -1435,10 +1434,14 @@
     flex-basis: 58px;
   }
   .lore-scene {
-    --lore-hero-height: max(440px, 64vh);
+    --lore-hero-height: 165px;
   }
   .lore-hero {
-    min-height: 440px;
+    min-height: 165px;
+  }
+  .lore-scene-art {
+    background-position: 65% top;
+    opacity: 0.45;
   }
   .lore-archive {
     grid-template-columns: 1fr;

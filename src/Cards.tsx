@@ -4,7 +4,9 @@ import { api, post } from './api';
 import { cards, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
 import { money } from '../shared/rules';
 import type { Character } from './types';
+import { cardStories } from '../shared/card-stories';
 import './cards.css';
+import './cards-manor.css';
 export function CardFace({ card, small = false }: { card: Card; small?: boolean }) {
   return (
     <span className={'arcana-card-face' + (small ? ' small' : '')}>
@@ -132,17 +134,59 @@ export function Cards({
       <div className="cards-scene">
         <div className="cards-room-backdrop" aria-hidden="true" />
         <div className="cards-room-shade" aria-hidden="true" />
-        <div className="cards-moon-dust" aria-hidden="true">
-          {Array.from({ length: 12 }, (_, i) => (
-            <i key={i} style={{ '--dust-i': i } as CSSProperties} />
-          ))}
-        </div>
+
         <div className="cards-room-content">
           <header>
             <span className="eyebrow">O SALÃO DA MEIA-NOITE</span>
-            <h2>O que a noite guarda.</h2>
+            <h2>Histórias que escolhem companhia.</h2>
             <p>Escolha as cartas que seguirão com {character?.name || 'seu personagem'}.</p>
           </header>
+        </div>
+        <button
+          className="cards-host-hit"
+          aria-label="Conversar com o Anfitrião"
+          aria-expanded={conversation && questions}
+          onClick={() =>
+            say(
+              'Entre. A cadeira está livre, e ninguém aqui vai lhe pedir pressa. Estava examinando estas cartas; alguma chamou sua atenção?',
+              true,
+            )
+          }
+        >
+          <span>Conversar com o Anfitrião</span>
+        </button>
+        {conversation && (
+          <aside className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
+            <button
+              className="cards-conversation-close"
+              aria-label="Encerrar conversa"
+              onClick={() => setConversation(false)}
+            >
+              <X size={16} />
+            </button>
+            <span className="eyebrow">O ANFITRIÃO</span>
+            <p key={speech} aria-live="polite">
+              {speech}
+            </p>
+            {questions && (
+              <div className="cards-host-questions">
+                {cardQuestions.map((q) => (
+                  <button key={q.question} onClick={() => say(q.answer, true)}>
+                    {q.question}
+                  </button>
+                ))}
+              </div>
+            )}
+          </aside>
+        )}
+      </div>
+      <div className="cards-workbench">
+        <div className="cards-playset">
+          <div>
+            <span className="eyebrow">COM {character?.name || 'SEU PERSONAGEM'}</span>
+            <h2>Três cartas para a jornada</h2>
+            <p>Escolha um espaço para equipar a carta selecionada.</p>
+          </div>
           <section className="cards-equipped" aria-label="Três cartas equipadas">
             {[1, 2, 3].map((position) => {
               const equipped = owned.find((c) => c.slot === position),
@@ -174,7 +218,14 @@ export function Cards({
               );
             })}
           </section>
+        </div>
+        <div className="cards-browse">
           <div className="cards-table">
+            <div className="cards-catalog-heading">
+              <span className="eyebrow">O ACERVO DO ANFITRIÃO</span>
+              <h2>Escolha uma história</h2>
+              <p>Selecione uma carta para conhecer seu registro.</p>
+            </div>
             <nav className="cards-filters" aria-label="Filtrar cartas">
               {['Todas', 'Minha coleção', 'À venda'].map((label) => (
                 <button
@@ -193,16 +244,9 @@ export function Cards({
                     filter === 'Todas' ||
                     (filter === 'À venda' ? c.buyable : owned.some((o) => o.card_id === c.id)),
                 )
-                .map((card, index, collection) => (
+                .map((card) => (
                   <button
                     key={card.id}
-                    style={
-                      {
-                        '--fan-angle': `${(index - (collection.length - 1) / 2) * 6}deg`,
-                        '--fan-drop': `${Math.abs(index - (collection.length - 1) / 2) ** 2 * 2.5}px`,
-                        '--fan-layer': index + 1,
-                      } as CSSProperties
-                    }
                     disabled={busy}
                     aria-pressed={selected.id === card.id}
                     onClick={() => {
@@ -210,7 +254,14 @@ export function Cards({
                       key.current = crypto.randomUUID();
                       setError('');
                       setNotice('');
-                      say(card.comment);
+                      setSpeech(card.comment);
+                      if (matchMedia('(max-width: 650px)').matches)
+                        document.getElementById('selected-card-details')?.scrollIntoView({
+                          behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+                            ? 'instant'
+                            : 'smooth',
+                          block: 'start',
+                        });
                     }}
                   >
                     <CardFace card={card} />
@@ -232,131 +283,94 @@ export function Cards({
                   </button>
                 ))}
             </div>
-            <button
-              type="button"
-              className="cards-detail-link"
-              onClick={() =>
-                document
-                  .getElementById('selected-card-details')
-                  ?.scrollIntoView({
-                    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
-                      ? 'instant'
-                      : 'smooth',
-                    block: 'start',
-                  })
-              }
-            >
-              Ver detalhes da carta selecionada
-            </button>
           </div>
-        </div>
-        <button
-          className="cards-host-hit"
-          aria-label="Conversar com o Anfitrião"
-          aria-expanded={conversation && questions}
-          onClick={() =>
-            say(
-              'Entre. A cadeira está livre, e ninguém aqui vai lhe pedir pressa. Estava examinando estas cartas; alguma chamou sua atenção?',
-              true,
-            )
-          }
-        >
-          <span>Conversar</span>
-        </button>
-        {conversation && (
-          <aside className="cards-host-dialogue" aria-label="Conversa com o Anfitrião">
-            <button
-              className="cards-conversation-close"
-              aria-label="Encerrar conversa"
-              onClick={() => setConversation(false)}
-            >
-              <X size={16} />
-            </button>
-            <span className="eyebrow">O ANFITRIÃO</span>
-            <p key={speech} aria-live="polite">
-              {speech}
-            </p>
-            {questions && (
-              <div className="cards-host-questions">
-                {cardQuestions.map((q) => (
-                  <button key={q.question} onClick={() => say(q.answer, true)}>
-                    {q.question}
-                  </button>
-                ))}
-              </div>
+          <section
+            className="cards-detail"
+            id="selected-card-details"
+            aria-label="Carta selecionada"
+          >
+            <div className="cards-detail-preview" aria-hidden="true">
+              <CardFace card={selected} />
+            </div>
+            <div className="cards-detail-copy">
+              <span className="eyebrow">{selected.family}</span>
+              <h2>{selected.name}</h2>
+              <p>{selected.description}</p>
+            {cardStories[selected.id] && (
+              <details className="cards-history">
+                <summary>História da carta</summary>
+                <span className="eyebrow">{cardStories[selected.id].provenance}</span>
+                <p>{cardStories[selected.id].story}</p>
+              </details>
             )}
-          </aside>
-        )}
-      </div>
-      <section className="cards-detail" id="selected-card-details" aria-label="Carta selecionada">
-        <div className="cards-detail-preview" aria-hidden="true">
-          <CardFace card={selected} />
-        </div>
-        <div className="cards-detail-copy">
-          <span className="eyebrow">{selected.family}</span>
-          <h2>{selected.name}</h2>
-          <p>{selected.description}</p>
-          {item ? (
-            <>
-              <span className="cards-level">
-                <Sparkles size={12} />
-                Nível {item.level} · {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
-              </span>
-              <div className="cards-detail-actions">
-                <button
-                  className="button primary"
-                  disabled={busy || item.slot === slot}
-                  onClick={() => void equip(item.id)}
-                >
-                  Equipar no espaço {slot}
-                </button>
-                {owned.some((c) => c.slot === slot) && (
+              <blockquote className="cards-record">
+                <span>Do registro do Anfitrião</span>
+                <p>{selected.comment}</p>
+              </blockquote>
+              {item ? (
+                <>
+                  <span className="cards-level">
+                    <Sparkles size={12} />
+                    Nível {item.level} ·{' '}
+                    {item.slot ? 'Equipada no espaço ' + item.slot : 'Na coleção'}
+                  </span>
+                  <div className="cards-detail-actions">
+                    <button
+                      className="button primary"
+                      disabled={busy || item.slot === slot}
+                      onClick={() => void equip(item.id)}
+                    >
+                      Equipar no espaço {slot}
+                    </button>
+                    {owned.some((c) => c.slot === slot) && (
+                      <button
+                        className="button outline"
+                        disabled={busy}
+                        onClick={() => void equip(null)}
+                      >
+                        Esvaziar espaço {slot}
+                      </button>
+                    )}
+                  </div>
+                  <small className="cards-upgrade-note">
+                    Os aprimoramentos serão definidos em uma próxima etapa.
+                  </small>
+                </>
+              ) : selected.buyable ? (
+                <>
+                  <div className="cards-gold">
+                    <strong>{money(selected.price_cp)} PO</strong>
+                    <span>
+                      <Coins size={12} />
+                      {character
+                        ? (character.gold_unlimited ? '∞' : money(character.gold_cp)) +
+                          ' PO disponíveis'
+                        : 'Selecione um personagem'}
+                    </span>
+                  </div>
                   <button
-                    className="button outline"
-                    disabled={busy}
-                    onClick={() => void equip(null)}
+                    className="button primary"
+                    disabled={
+                      busy ||
+                      !character ||
+                      (!character.gold_unlimited && character.gold_cp < selected.price_cp)
+                    }
+                    onClick={() => void purchase()}
                   >
-                    Esvaziar espaço {slot}
+                    {busy ? 'Guardando a carta…' : 'Comprar carta'}
                   </button>
-                )}
-              </div>
-              <small className="cards-upgrade-note">
-                Os aprimoramentos serão definidos em uma próxima etapa.
-              </small>
-            </>
-          ) : selected.buyable ? (
-            <>
-              <div className="cards-gold">
-                <strong>{money(selected.price_cp)} PO</strong>
-                <span>
-                  <Coins size={12} />
-                  {character
-                    ? (character.gold_unlimited ? '∞' : money(character.gold_cp)) +
-                      ' PO disponíveis'
-                    : 'Selecione um personagem'}
-                </span>
-              </div>
-              <button
-                className="button primary"
-                disabled={
-                  busy ||
-                  !character ||
-                  (!character.gold_unlimited && character.gold_cp < selected.price_cp)
-                }
-                onClick={() => void purchase()}
-              >
-                {busy ? 'Guardando a carta…' : 'Comprar carta'}
-              </button>
-            </>
-          ) : (
-            <p className="cards-unavailable">
-              Esta carta ainda não tem uma forma de obtenção disponível.
-            </p>
-          )}
-          {error && <p role="alert">{error}</p>}
-          {notice && <p role="status">{notice}</p>}
+                </>
+              ) : (
+                <p className="cards-unavailable">
+                  Esta carta ainda não tem uma forma de obtenção disponível.
+                </p>
+              )}
+              {error && <p role="alert">{error}</p>}
+              {notice && <p role="status">{notice}</p>}
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </section>
   );
 }

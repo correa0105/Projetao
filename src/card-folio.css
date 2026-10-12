@@ -1,0 +1,259 @@
+:root .app-shell .character-cards-page {
+  min-height: 100dvh;
+  background: linear-gradient(120deg, #181815e8, #1b1816f7), url('/parchment-grain.svg');
+}
+:root .character-cards-page .character-cards-heading {
+  max-width: 1400px;
+  margin-bottom: 26px;
+}
+.card-folio {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 60px);
+  max-width: 1400px;
+}
+.card-folio h3,
+.card-folio h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+.card-folio .eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--accent, #bb995c);
+}
+.card-folio-sidebar {
+  align-self: start;
+  position: sticky;
+  top: 24px;
+  padding: 24px 20px;
+  background: #22201c80;
+  border: 1px solid #a68c5428;
+  border-radius: 4px;
+}
+.card-folio-sidebar h3 {
+  margin: 8px 0 22px;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+}
+.card-folio-sidebar h3 small {
+  font: 12px var(--sans);
+  color: #b4a88e;
+  align-self: center;
+}
+.card-folio-search {
+  font-size: 10px;
+  color: #b4aa98;
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.card-folio-search input {
+  width: 100%;
+  min-width: 0;
+  color: #e1d5c0;
+  background: #161714;
+  border: 1px solid #89774c45;
+  border-radius: 3px;
+  padding: 10px;
+  font: 12px inherit;
+}
+.card-folio-sidebar nav {
+  display: grid;
+  gap: 8px;
+}
+.card-folio .card-folio-choice {
+  display: grid !important;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: none;
+  padding: 10px 8px !important;
+  border-radius: 3px;
+  text-align: left;
+  border-left: 2px solid transparent !important;
+}
+.card-folio .card-folio-choice[aria-pressed='true'] {
+  background: #bb995c13 !important;
+  border-left-color: #bb995c !important;
+}
+.card-folio .card-folio-choice > span:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin: 0;
+}
+.card-folio-choice strong {
+  font: 14px var(--serif);
+  color: #e2d4bc;
+}
+.card-folio-choice small {
+  font-size: 9px;
+}
+.card-folio-choice em {
+  font-size: 9px;
+  font-style: normal;
+  color: #b79b67;
+}
+.card-folio .card-folio-choice .arcana-card-name {
+  display: none;
+}
+.card-folio-salon-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 0;
+  margin-top: 22px;
+  border-top: 1px solid #a68c5428;
+  color: #cbb17e;
+  font-size: 11px;
+  text-decoration: none;
+}
+.card-folio-main {
+  min-width: 0;
+}
+.card-folio-playset {
+  border-bottom: 1px solid #a68c5430;
+  padding-bottom: 28px;
+}
+.card-folio-playset > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.card-folio-playset h3 {
+  margin: 7px 0 0;
+  font-size: 23px;
+}
+.card-folio-playset > header > span {
+  color: #aa9c81;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.card-folio .character-card-slots {
+  max-width: 495px;
+  gap: 24px;
+  margin: 0 auto;
+}
+.card-folio .character-card-empty {
+  background: linear-gradient(145deg, #36312580, #1a1c1980);
+  border: 1px dashed #987f4955;
+  color: #bead8a;
+}
+.card-folio .character-card-empty small {
+  font-size: 9px;
+  text-align: center;
+  padding: 0 8px;
+  opacity: 0.7;
+}
+.card-folio-slot-face {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.card-folio-record {
+  display: grid;
+  grid-template-columns: minmax(120px, 205px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(22px, 3vw, 42px);
+  padding-top: 34px;
+}
+.card-folio .character-card-description {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.card-folio .character-card-description h4 {
+  font-size: clamp(23px, 2.5vw, 31px);
+  color: #dac49a;
+  margin: 8px 0 12px;
+}
+.card-folio-story {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #a68c5428;
+}
+.card-folio-record blockquote {
+  margin: 22px 0;
+  padding-left: 16px;
+  border-left: 1px solid #b0914d70;
+  font: italic 12px/1.8 var(--serif);
+  color: #ad9d83;
+}
+.card-folio-record cite {
+  display: block;
+  font-style: normal;
+  font-size: 10px;
+  margin-top: 9px;
+}
+.card-folio .character-card-equip-actions .button {
+  padding: 10px 12px;
+  font-size: 10px;
+}
+.card-folio-welcome {
+  padding: 34px 0;
+  max-width: 530px;
+}
+.card-folio-welcome h3 {
+  font-size: 28px;
+}
+.card-folio-welcome p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #b5ad9c;
+}
+.card-folio-sidebar p {
+  font-size: 12px;
+  line-height: 1.8;
+}
+@media (max-width: 1000px) {
+  .card-folio {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 24px;
+  }
+  .card-folio-record {
+    grid-template-columns: 135px minmax(0, 1fr);
+    gap: 22px;
+  }
+}
+@media (max-width: 720px) {
+  .card-folio {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .card-folio-sidebar {
+    position: static;
+    padding: 18px;
+  }
+  .card-folio-sidebar nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .card-folio .card-folio-choice {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 8px;
+  }
+  .card-folio-choice strong {
+    font-size: 12px;
+  }
+  .card-folio-search {
+    margin-bottom: 12px;
+  }
+  .card-folio-playset h3 {
+    font-size: 20px;
+  }
+  .card-folio .character-card-slots {
+    gap: 12px;
+  }
+  .card-folio-record {
+    grid-template-columns: 1fr;
+  }
+  .card-folio-art {
+    width: 170px;
+    margin-inline: auto;
+  }
+}

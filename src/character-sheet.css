@@ -1,7 +1,7 @@
 .app-shell[data-page='profile'] .main-shell {
   background:
     linear-gradient(90deg, rgba(14, 14, 13, 0.6), rgba(14, 14, 13, 0.25)),
-    url('/character-library-v1.png') center/cover fixed;
+    url('/character-library-v2-20261012.webp') center/cover fixed;
   min-height: 100dvh;
   padding-bottom: calc(80px + env(safe-area-inset-bottom));
 }

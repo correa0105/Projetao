@@ -5,7 +5,7 @@ import { chromium } from '@playwright/test';
 await fs.mkdir('test-results', { recursive: true });
 const html =
   '<div id="root"></div><script type="module" src="/test-results/lore-podium-polish.tsx"></script>';
-const jsx = `import React from 'react';import{createRoot}from'react-dom/client';import{LoreLibrary}from'/src/LoreLibrary.tsx';import{HallOfFame}from'/src/HallOfFame.tsx';import{PageHeader}from'/src/PageHeader.tsx';import'/src/styles.css';import'/src/alvorada.css';import'/src/theme.css';import'/src/page-consistency.css';import'/src/page-header.css';const view=new URLSearchParams(location.search).get('view');createRoot(document.getElementById('root')).render(<div className="app-shell" data-page={view==='lore'?'lore':'hall'}><div className="main-shell">{view==='lore'&&<PageHeader title="Crônicas & lore" children={null}/>}<main className="main-content">{view==='lore'?<LoreLibrary/>:<HallOfFame embedded={view==='embedded'}/>}</main></div></div>);`;
+const jsx = `import React from 'react';import{createRoot}from'react-dom/client';import{LoreLibrary}from'/src/LoreLibrary.tsx';import{HallOfFame}from'/src/HallOfFame.tsx';import{PageHeader}from'/src/PageHeader.tsx';import'/src/styles.css';import'/src/alvorada.css';import'/src/journey.css';import'/src/theme.css';import'/src/page-consistency.css';import'/src/page-header.css';const view=new URLSearchParams(location.search).get('view');createRoot(document.getElementById('root')).render(<div className="app-shell" data-page={view==='lore'?'lore':'hall'}><div className="main-shell">{view==='lore'&&<PageHeader title="Crônicas & lore" children={null}/>}<main className="main-content">{view==='lore'?<LoreLibrary/>:<HallOfFame embedded={view==='embedded'}/>}</main></div></div>);`;
 const currentJsx = process.argv.includes('--baseline')
   ? jsx.replace("from'/src/LoreLibrary.tsx'", "from'/.local/living-original/src/LoreLibrary.tsx'")
   : jsx;
@@ -107,6 +107,7 @@ try {
         server.resolvedUrls.local[0] + 'test-results/lore-podium-polish.html?view=lore',
       );
       await page.locator('.lore-era').last().waitFor();
+      await page.evaluate(async () => { await document.fonts.ready; await new Promise(requestAnimationFrame); });
       await page
         .locator('.lore-timeline')
         .evaluate((e) => window.scrollTo(0, e.getBoundingClientRect().top + scrollY - 120));

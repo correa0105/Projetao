@@ -1,0 +1,19 @@
+{
+  "key": "ale-barrel-7",
+  "kind": "house",
+  "id": "ale-barrel",
+  "facing": 7,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\ale-barrel\\1.webp"
+  ],
+  "transparent": true,
+  "output": "public/house/items/house-facing-repair-20261012/ale-barrel/7.webp",
+  "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing ale-barrel room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: FRONT LEFT, yaw 315. The brass tap on the front projects on the RIGHT half of the image. Reference front-right has tap on the left half, so this view must be its opposite three-quarter perspective. Barrel vertical. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-391bc73e-8f29-4894-9864-7521a1f7e5ec.png",
+  "source_sha256": "09f1b2fdde9db093337ca3f27f526a75620e7b2df381ea8858f7146c41257bdf",
+  "sha256": "8673e0a37a84d5ba06bc308c9c7cd421a180590c6263d50c20bebbcd1182f02e",
+  "width": 1054,
+  "height": 1398,
+  "generator": "built-in image_gen",
+  "normalization": "Alpha crop, proportional resize, clear 8px margin, WebP95; no mirroring or bitmap rotation"
+}

@@ -1,0 +1,296 @@
+:root .cards-room {
+  background: #171715;
+  color: #e4dbc8;
+  padding-bottom: 100px;
+}
+:root .cards-room .cards-scene {
+  height: clamp(350px, 31vw, 480px);
+  overflow: visible;
+  background: #171715;
+}
+:root .cards-room .cards-room-backdrop {
+  background: url('/cards/raven-manor-20261012.webp') right 47% / cover no-repeat;
+}
+:root .cards-room .cards-room-shade {
+  background:
+    linear-gradient(90deg, #151512e8, #15151275 43%, transparent 70%),
+    linear-gradient(180deg, #15151250, transparent 55%, #171715);
+}
+:root .cards-room .cards-room-content > header {
+  top: 110px;
+  left: var(--page-header-edge);
+  max-width: min(450px, 45%);
+}
+:root .cards-room header h2 {
+  font-size: clamp(27px, 3vw, 42px);
+  line-height: 1.2;
+  color: #e3d7bd;
+}
+:root .cards-room header p {
+  max-width: 360px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+:root .cards-room .cards-host-hit {
+  left: auto;
+  top: auto;
+  bottom: 35px;
+  right: 14%;
+  width: auto;
+  height: auto;
+  border-radius: 3px;
+  padding: 10px 17px;
+  color: #dbc18e;
+  border: 1px solid #a58b5055;
+  background: #181714b8;
+}
+:root .cards-room .cards-host-hit span {
+  position: static;
+  opacity: 1;
+  transform: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: 11px var(--sans);
+}
+:root .cards-room .cards-host-dialogue {
+  top: 88px;
+  right: 4%;
+  width: min(360px, 35%);
+  z-index: 35;
+}
+:root .cards-room .cards-workbench {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px var(--page-header-edge) 50px;
+}
+:root .cards-room .cards-playset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 0 28px;
+  border-bottom: 1px solid #a68c5430;
+}
+:root .cards-room .cards-playset h2 {
+  margin: 8px 0 10px;
+  font: 24px var(--serif);
+  color: #d6c3a0;
+}
+:root .cards-room .cards-playset p {
+  color: #aba18d;
+  font-size: 11px;
+  margin: 0;
+}
+:root .cards-room .cards-equipped {
+  position: static;
+  width: 240px;
+  gap: 14px;
+  flex-shrink: 0;
+}
+:root .cards-room .cards-browse {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 36px;
+  padding-top: 30px;
+  align-items: start;
+}
+:root .cards-room .cards-table {
+  position: static;
+  overflow: visible;
+}
+:root .cards-room .cards-catalog-heading h2 {
+  font: 25px var(--serif);
+  color: #d6c3a0;
+  margin: 8px 0;
+}
+:root .cards-room .cards-catalog-heading p {
+  font-size: 11px;
+  color: #b3a790;
+  margin: 0;
+}
+:root .cards-room .cards-filters {
+  justify-content: flex-start;
+  padding: 20px 0;
+  gap: 24px;
+  position: static;
+  width: auto;
+}
+:root .cards-room .cards-filters button {
+  font-size: 11px;
+  padding: 8px 0;
+}
+:root .cards-room .cards-catalog {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 18px;
+  padding: 4px 0;
+  width: auto;
+  min-width: 0;
+}
+:root .cards-room .cards-catalog > button {
+  margin: 0;
+  transform: none;
+  transition:
+    translate 0.2s,
+    filter 0.2s;
+}
+:root .cards-room .cards-catalog > button:hover {
+  transform: none;
+  translate: 0 -4px;
+}
+:root .cards-room .cards-catalog > button:focus-visible {
+  outline: 2px solid #d0ae72;
+  outline-offset: 6px;
+  transform: none;
+}
+:root .cards-room .cards-catalog > button[aria-pressed='true'] {
+  transform: none;
+}
+:root .cards-room .cards-catalog .arcana-card-name {
+  font-size: clamp(12px, 1.2vw, 16px);
+}
+:root .cards-room .cards-catalog-price {
+  font-size: 10px;
+  min-height: 22px;
+  margin-top: 12px;
+}
+:root .cards-room .cards-detail {
+  margin: 0;
+  max-width: none;
+  padding: 25px;
+  position: sticky;
+  top: 24px;
+  background: #24221da8;
+  border: 1px solid #a68c5430;
+  border-radius: 4px;
+}
+:root .cards-room .cards-detail-preview {
+  display: block;
+  width: 120px;
+  margin: 0 auto 24px;
+}
+:root .cards-room .cards-detail h2 {
+  color: #e0c799;
+  font-size: 25px;
+}
+:root .cards-room .cards-detail p {
+  font-size: 12px;
+  line-height: 1.9;
+}
+:root .cards-room .cards-record {
+  margin: 22px 0;
+  border-left: 1px solid #a58a5060;
+  padding-left: 14px;
+}
+:root .cards-room .cards-record > span {
+  font: 9px var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #bda77e;
+}
+:root .cards-room .cards-record p {
+  font: italic 11px/1.9 var(--serif);
+  color: #b3a58b;
+}
+:root .cards-room .cards-gold {
+  flex-wrap: wrap;
+}
+:root .cards-room .cards-history { border-top: 1px solid #a68c5430; border-bottom: 1px solid #a68c5430; margin-top: 18px; padding: 12px 0; }
+:root .cards-room .cards-history summary { cursor: pointer; color: #cdb487; font-size: 11px; }
+:root .cards-room .cards-history[open] summary { margin-bottom: 14px; }
+:root .cards-room .cards-detail-actions {
+  gap: 8px;
+}
+:root .cards-room .cards-detail-actions .button {
+  font-size: 11px;
+}
+@media (max-width: 1100px) {
+  :root .cards-room .cards-browse {
+    grid-template-columns: minmax(0, 1fr) 285px;
+    gap: 25px;
+  }
+  :root .cards-room .cards-catalog {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  :root .cards-room .cards-room-content > header {
+    top: 150px;
+    left: 18px;
+    max-width: 48%;
+  }
+  :root .cards-room .cards-workbench {
+    padding-inline: 22px;
+  }
+  :root .cards-room .cards-room-content > header h2 {
+    font-size: 27px;
+  }
+  :root .cards-room .cards-host-hit {
+    right: 10%;
+  }
+}
+@media (max-width: 650px) {
+  :root .cards-room .cards-scene {
+    height: 400px;
+  }
+  :root .cards-room .cards-room-backdrop {
+    background-size: auto 400px;
+    background-position: 65% bottom;
+  }
+  :root .cards-room .cards-room-content > header {
+    max-width: 62%;
+    top: 140px;
+  }
+  :root .cards-room .cards-room-content > header h2 {
+    font-size: 25px;
+  }
+  :root .cards-room .cards-room-content > header p {
+    max-width: 180px;
+  }
+  :root .cards-room .cards-host-hit {
+    right: 18px;
+    bottom: 28px;
+    padding: 9px;
+  }
+  :root .cards-room .cards-host-dialogue {
+    top: 140px;
+    right: 18px;
+    left: 18px;
+    width: auto;
+  }
+  :root .cards-room .cards-playset {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  :root .cards-room .cards-playset h2 {
+    font-size: 22px;
+  }
+  :root .cards-room .cards-equipped {
+    width: 218px;
+  }
+  :root .cards-room .cards-browse {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  :root .cards-room .cards-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+  :root .cards-room .cards-catalog .arcana-card-name {
+    font-size: 17px;
+  }
+  :root .cards-room .cards-filters {
+    gap: 24px;
+  }
+  :root .cards-room .cards-detail {
+    position: static;
+    scroll-margin-top: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root .cards-room .cards-catalog > button {
+    transition: none;
+  }
+}

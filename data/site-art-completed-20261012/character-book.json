@@ -1,0 +1,17 @@
+{
+  "key": "character-book",
+  "kind": "book-patch",
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\character-book-target-20261012.png"
+  ],
+  "transparent": false,
+  "output": "public/character-library-v2-20261012.webp",
+  "prompt": "Use case: precise-object-edit. Correct ONLY the anatomy of the open leather-bound book in the foreground of this exact image crop. Preserve the table, candle, quill, inkwell, closed books and all other pixels, exact framing, lighting and color. The open book must have a physically coherent SINGLE spine and hinge, TWO distinct smooth cream parchment pages opened as one spread, both connected at the center gutter; neat parallel layered page edges following the cover, natural slight page curl. Remove distorted stacked landscape folds and impossible uneven leaf slabs. Add delicate small sepia line drawings and fine indistinct handwritten notes on the two paper surfaces, not raised terrain. Preserve the book position, width, perspective and brown leather binding with small brass corners. No readable text, extra books, new objects, lighting changes, crop changes or watermark. Output same composition and aspect as reference.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-e7fe24c4-4c64-448f-aefe-0b319ec1d5be.png",
+  "source_sha256": "ffb6bf42c4c72db4a300069452074e4f3de8f788b5977e76cc2e3e6156547c00",
+  "sha256": "e096a43e8264503e2302e849448f3589bffdc592bea491d44a71c14d9a6e9f4f",
+  "width": 1672,
+  "height": 941,
+  "generator": "built-in image_gen",
+  "normalization": "Edited crop resized to source footprint, feathered 14px edges and placed back at original coordinates; original full scene otherwise preserved"
+}

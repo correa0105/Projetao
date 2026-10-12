@@ -1,0 +1,86 @@
+{
+  "statue": {
+    "8": {
+      "image": "/house/items/house-facing-repair-20261012/statue/8.webp",
+      "width": 0.99403
+    },
+    "10": {
+      "image": "/house/items/house-facing-repair-20261012/statue/10.webp",
+      "width": 0.76582
+    },
+    "13": {
+      "image": "/house/items/house-facing-repair-20261012/statue/13.webp",
+      "width": 0.70842
+    },
+    "14": {
+      "image": "/house/items/house-facing-repair-20261012/statue/14.webp",
+      "width": 0.54322
+    }
+  },
+  "round-stool": {
+    "0": {
+      "image": "/house/items/house-facing-repair-20261012/round-stool/0.webp",
+      "width": 1.0162
+    },
+    "2": {
+      "image": "/house/items/house-facing-repair-20261012/round-stool/2.webp",
+      "width": 1.00387
+    },
+    "3": {
+      "image": "/house/items/house-facing-repair-20261012/round-stool/3.webp",
+      "width": 1.00572
+    },
+    "4": {
+      "image": "/house/items/house-facing-repair-20261012/round-stool/4.webp",
+      "width": 0.92436
+    },
+    "5": {
+      "image": "/house/items/house-facing-repair-20261012/round-stool/5.webp",
+      "width": 1.01035
+    },
+    "6": {
+      "image": "/house/items/house-facing-repair-20261012/round-stool/6.webp",
+      "width": 1.01411
+    },
+    "7": {
+      "image": "/house/items/house-facing-repair-20261012/round-stool/7.webp",
+      "width": 1.01428
+    }
+  },
+  "ale-barrel": {
+    "5": {
+      "image": "/house/items/house-facing-repair-20261012/ale-barrel/5.webp",
+      "width": 0.96386
+    },
+    "6": {
+      "image": "/house/items/house-facing-repair-20261012/ale-barrel/6.webp",
+      "width": 1.0283
+    },
+    "7": {
+      "image": "/house/items/house-facing-repair-20261012/ale-barrel/7.webp",
+      "width": 0.98961
+    }
+  },
+  "open-codex": {
+    "2": {
+      "image": "/house/items/house-facing-repair-20261012/open-codex/2.webp",
+      "width": 0.58897
+    },
+    "3": {
+      "image": "/house/items/house-facing-repair-20261012/open-codex/3.webp",
+      "width": 0.99929
+    },
+    "4": {
+      "image": "/house/items/house-facing-repair-20261012/open-codex/4.webp",
+      "width": 0.82435
+    },
+    "5": {
+      "image": "/house/items/house-facing-repair-20261012/open-codex/5.webp",
+      "width": 0.99931
+    },
+    "6": {
+      "image": "/house/items/house-facing-repair-20261012/open-codex/6.webp",
+      "width": 0.58878
+    }
+  }
+}

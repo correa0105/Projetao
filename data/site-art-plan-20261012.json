@@ -1,0 +1,260 @@
+[
+  {
+    "key": "character-book",
+    "kind": "book-patch",
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\.local\\character-book-target-20261012.png"
+    ],
+    "transparent": false,
+    "output": "public/character-library-v2-20261012.webp",
+    "prompt": "Use case: precise-object-edit. Correct ONLY the anatomy of the open leather-bound book in the foreground of this exact image crop. Preserve the table, candle, quill, inkwell, closed books and all other pixels, exact framing, lighting and color. The open book must have a physically coherent SINGLE spine and hinge, TWO distinct smooth cream parchment pages opened as one spread, both connected at the center gutter; neat parallel layered page edges following the cover, natural slight page curl. Remove distorted stacked landscape folds and impossible uneven leaf slabs. Add delicate small sepia line drawings and fine indistinct handwritten notes on the two paper surfaces, not raised terrain. Preserve the book position, width, perspective and brown leather binding with small brass corners. No readable text, extra books, new objects, lighting changes, crop changes or watermark. Output same composition and aspect as reference."
+  },
+  {
+    "key": "cards-manor",
+    "kind": "background",
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\cards\\moonlit-room-v2.png"
+    ],
+    "transparent": false,
+    "output": "public/cards/raven-manor-20261012.webp",
+    "prompt": "Use case: precise-object-edit. Reimagine the room in the input image as an intimate late-medieval Gothic country manor study owned by a wealthy, reserved gentleman in the atmosphere of Barovia and Strahd. Preserve the SAME seated NPC: same face, pale skin, glowing gold eyes, black feathered shoulder cloak, blue-black formal clothing, top hat with feather, crossed-leg seated pose, hands, jewelry and carved wooden armchair. Do not replace or redesign this character. Keep him on the RIGHT side and make him more visible in the closer room framing. Replace ALL the environment: a normal-height dark oak paneled room, uneven old stone wall, ONE modest narrow pointed leaded-glass window showing mist and bare trees at night, worn burgundy velvet curtains, a restrained wooden side table with two brass candles, low bookcase with old volumes, a faded woven rug and simple dark oak floor. A wealthy inhabited house, handsome but aging and austere, not a royal palace. Muted wine-red, charcoal, brown oak and tarnished brass, warm small candle highlights and quiet moonlight. Coherent realistic hand-painted game environment with tactile materials and thoughtful brush strokes. LEFT half calm and dark with few objects so interface copy is readable. Landscape 16:9. Remove blue flowers, vast cathedral window, marble floor, opulent chandeliers, gold overload, fantasy city view, decorative clutter. No lettering, no cards, no UI or watermark."
+  },
+  {
+    "key": "lore-archive",
+    "kind": "background",
+    "refs": [],
+    "transparent": false,
+    "output": "public/lore-archive-20261012.webp",
+    "prompt": "Use case: illustration-story. Asset type: subtle wide background engraving for a dark fantasy chronicle archive. Create an ORIGINAL restrained antiquarian copperplate etching printed in faded warm ivory and tarnished brass ink on matte deep charcoal-green paper. Extremely wide horizontal composition. A modest old fortified town on ONE hill, wooded slopes, a winding river and a few ruins, drawn with crisp fine cross-hatching and imperfect human ink strokes, like a historic book frontispiece. Architectural forms coherent and plausible, humble chapel and stone keep, no huge impossible palace. Illustration concentrated in the RIGHT half, softly fading into quiet almost blank dark paper on LEFT half and lower edge. Elegant calm craftsmanship, slight fibrous paper grain, limited two-tone colors: near-black olive, dark brown, muted sepia, warm faded cream. Flat printed illustration, NO photoreal landscape, digital painting, glossy 3D, bloom, rays, magical fog, huge castle, text, symbols, border, UI, watermark. Panoramic landscape about 3:1."
+  },
+  {
+    "key": "statue-8",
+    "kind": "house",
+    "id": "statue",
+    "facing": 8,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/statue/8.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing statue room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: Almost straight FRONT, with only a narrow strip of the RIGHT side visible, 22.5 degrees. Books dominate the image. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "statue-10",
+    "kind": "house",
+    "id": "statue",
+    "facing": 10,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\2.webp",
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\3.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/statue/10.webp",
+    "prompt": "Use case: precise-object-edit. Input 1 is pure RIGHT side yaw90, input2 is BACK RIGHT yaw135. Create the SAME shelf at yaw112.5, exactly halfway between these two inputs. Broad plain RIGHT panel in the foreground at image LEFT, a narrow strip of the wooden BACK panel receding to image RIGHT. The bookshelf opening is around the far side and completely hidden. Absolutely ZERO books, shelves, pottery or carved front frieze visible. Keep the same top plant, feet, side panel and back planks. Vertical shelf, camera same as inputs. Actual transparent background. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels."
+  },
+  {
+    "key": "statue-13",
+    "kind": "house",
+    "id": "statue",
+    "facing": 13,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\5.webp",
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\6.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/statue/13.webp",
+    "prompt": "Use case: precise-object-edit. Input1 is BACK LEFT yaw225, input2 is pure LEFT side yaw270. Create the SAME shelf at yaw247.5 exactly halfway between those views. Broad plain LEFT side panel in foreground at image RIGHT, narrow strip of plain wooden BACK panel receding to image LEFT. Entire FRONT and its books are hidden around far side. Absolutely ZERO shelf openings, books, front frieze or vases visible. Same top plant, feet, panel construction, vertical cabinet and camera. Actual transparency. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels."
+  },
+  {
+    "key": "statue-14",
+    "kind": "house",
+    "id": "statue",
+    "facing": 14,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/statue/14.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing statue room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: Almost pure LEFT SIDE with only a narrow strip of the FRONT visible, 292.5 degrees. The front books are in a very narrow sliver. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "round-stool-0",
+    "kind": "house",
+    "id": "round-stool",
+    "facing": 0,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/round-stool/0.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing round-stool room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: STRAIGHT FRONT, yaw 0. The seat plank seams are horizontal. The two front legs frame the third rear leg centered behind them. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "round-stool-2",
+    "kind": "house",
+    "id": "round-stool",
+    "facing": 2,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/round-stool/2.webp",
+    "prompt": "Use case: precise-object-edit. Create exact same round three-leg wooden stool as reference seen from PURE RIGHT SIDE. It is rotated45 degrees further away from its reference front-right pose. Crucial detail: ALL THREE long plank seams on the round SEAT run VERTICALLY in the image, from FAR top edge toward NEAR bottom edge, not horizontal or diagonal. Nails and wood-grain rotate with seams. Three identical legs and triangular stretchers form one unchanged rigid frame, a different arrangement from frontal. The front of the stool is to image LEFT. Same height and camera pitch, no extra legs, no room. Transparent. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels."
+  },
+  {
+    "key": "round-stool-3",
+    "kind": "house",
+    "id": "round-stool",
+    "facing": 3,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/round-stool/3.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing round-stool room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: BACK RIGHT, yaw 135. View the rear and right of the same three-leg stool. Rotate the seat grain, wooden pegs and triangular leg frame together. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "round-stool-4",
+    "kind": "house",
+    "id": "round-stool",
+    "facing": 4,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/round-stool/4.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing round-stool room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: STRAIGHT BACK, yaw 180. One rear leg is centered closest to camera, with the two front legs behind it. Seat seams horizontal. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "round-stool-5",
+    "kind": "house",
+    "id": "round-stool",
+    "facing": 5,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/round-stool/5.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing round-stool room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: BACK LEFT, yaw 225. View rear and left of the SAME three-legged stool; opposite diagonals compared with front-right. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "round-stool-6",
+    "kind": "house",
+    "id": "round-stool",
+    "facing": 6,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/round-stool/6.webp",
+    "prompt": "Use case: precise-object-edit. Create exact same round three-leg wooden stool as reference seen from PURE LEFT SIDE. Crucial detail: THREE long plank seams on the round SEAT run VERTICALLY in image, from FAR top edge toward NEAR bottom edge, not horizontally or diagonally. Pegs and grain rotate with seams. Front of stool is to image RIGHT, opposite the pure right-side view. Exactly same three leg frame with triangular stretchers in physical projection, no extra or missing legs. Same height and pitch, no floor or room. Transparent. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels."
+  },
+  {
+    "key": "round-stool-7",
+    "kind": "house",
+    "id": "round-stool",
+    "facing": 7,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/round-stool/7.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing round-stool room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: FRONT LEFT, yaw 315. The opposite side of the reference front-right view. Plank seams slant in the opposite direction, whole leg triangle rotates rigidly. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "ale-barrel-5",
+    "kind": "house",
+    "id": "ale-barrel",
+    "facing": 5,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\ale-barrel\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/ale-barrel/5.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing ale-barrel room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: BACK LEFT, yaw 225. The brass tap on the front is fully hidden behind the barrel. Upright vertical barrel; no tilted body. Rotate the lid plank seams as part of the object. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "ale-barrel-6",
+    "kind": "house",
+    "id": "ale-barrel",
+    "facing": 6,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\ale-barrel\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/ale-barrel/6.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing ale-barrel room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: PURE LEFT SIDE, yaw 270. The brass tap at the front is partially visible at the RIGHT silhouette edge of the barrel, never left or center. Barrel vertical. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "ale-barrel-7",
+    "kind": "house",
+    "id": "ale-barrel",
+    "facing": 7,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\ale-barrel\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/ale-barrel/7.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing ale-barrel room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: FRONT LEFT, yaw 315. The brass tap on the front projects on the RIGHT half of the image. Reference front-right has tap on the left half, so this view must be its opposite three-quarter perspective. Barrel vertical. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "open-codex-2",
+    "kind": "house",
+    "id": "open-codex",
+    "facing": 2,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/open-codex/2.webp",
+    "prompt": "Use case: precise-object-edit. Physical yaw90 RIGHT SIDE of the exact open book reference. Keep book OPEN to two pages. Crucial projected geometry: the center hinge is a HORIZONTAL line across the CENTER of the image, not a vertical or diagonal gutter. The RIGHT page with landscape is in the LOWER FRONT half of image, LEFT page with decorated illuminated initial is in UPPER REAR half. Reading direction is sideways relative to image. The rectangular spread is a long narrow depth-receding parallelogram, not the wide frontal spread of the input. Red bookmark at foot of spine projects to image LEFT edge. Show both smooth page surfaces with camera looking down at35 degrees. Do not close the book. No vertical gutter, no front view, no diagonal yaw45. Genuine transparent background. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels."
+  },
+  {
+    "key": "open-codex-3",
+    "kind": "house",
+    "id": "open-codex",
+    "facing": 3,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/open-codex/3.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing open-codex room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: BACK RIGHT yaw 135. The open spread is seen from behind and right. Page tops now toward camera, the decorated red bookmark at the foot of the spine recedes toward the FAR upper edge. Both pages spread open, text and illustrations rotate physically with paper. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference, enough to see both pages clearly. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "open-codex-4",
+    "kind": "house",
+    "id": "open-codex",
+    "facing": 4,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/open-codex/4.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing open-codex room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: STRAIGHT BACK yaw 180. The SAME open two-page spread seen from the opposite end. The reference left decorated page is on image RIGHT, landscape page on image LEFT, their tops and text inverted toward camera. Red bookmark at foot now extends AWAY at the FAR upper center. Not a front view with illustrations merely swapped. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference, enough to see both pages clearly. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "open-codex-5",
+    "kind": "house",
+    "id": "open-codex",
+    "facing": 5,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/open-codex/5.webp",
+    "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing open-codex room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: BACK LEFT yaw 225. Open codex seen from behind and left, matching the same 180-degree reversed pages as back view and then a 45-degree side offset. The bookmark at the foot recedes away to far side. Two separate cream page surfaces remain fully spread. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference, enough to see both pages clearly. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet."
+  },
+  {
+    "key": "open-codex-6",
+    "kind": "house",
+    "id": "open-codex",
+    "facing": 6,
+    "refs": [
+      "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+    ],
+    "transparent": true,
+    "output": "public/house/items/house-facing-repair-20261012/open-codex/6.webp",
+    "prompt": "Use case: precise-object-edit. Physical yaw270 LEFT SIDE of the exact open book reference. Keep book OPEN to two pages. Crucial projected geometry: center hinge is a HORIZONTAL line across CENTER of image, not a vertical or diagonal gutter. LEFT page with decorated illuminated initial in LOWER FRONT half of image, RIGHT landscape page in UPPER REAR half. The text and drawing are viewed sideways. Rectangular spread is long narrow depth-receding parallelogram, not wide frontal spread. Red bookmark at foot of spine projects to image RIGHT edge. Show both smooth page surfaces in camera looking down35 degrees. Do not close book. No vertical gutter, no front view, no diagonal yaw315. Genuine transparent background. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels."
+  }
+]

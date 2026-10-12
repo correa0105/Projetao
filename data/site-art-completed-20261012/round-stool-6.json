@@ -1,0 +1,19 @@
+{
+  "key": "round-stool-6",
+  "kind": "house",
+  "id": "round-stool",
+  "facing": 6,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\round-stool\\1.webp"
+  ],
+  "transparent": true,
+  "output": "public/house/items/house-facing-repair-20261012/round-stool/6.webp",
+  "prompt": "Use case: precise-object-edit. Create exact same round three-leg wooden stool as reference seen from PURE LEFT SIDE. Crucial detail: THREE long plank seams on the round SEAT run VERTICALLY in image, from FAR top edge toward NEAR bottom edge, not horizontally or diagonally. Pegs and grain rotate with seams. Front of stool is to image RIGHT, opposite the pure right-side view. Exactly same three leg frame with triangular stretchers in physical projection, no extra or missing legs. Same height and pitch, no floor or room. Transparent. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-41d0860a-0816-4e4a-8c77-89d53cdd8e2e.png",
+  "source_sha256": "2ea41518622cb2fd4f955ab9521b92f61bfa5bb2dd10bc03a6dbb86fef8eeb33",
+  "sha256": "837c1e1a53d39e7941484b1d86568c093a649bf16bf8b46472cb03c2c63e5691",
+  "width": 1109,
+  "height": 1320,
+  "generator": "built-in image_gen",
+  "normalization": "Alpha crop, proportional resize, clear 8px margin, WebP95; no mirroring or bitmap rotation"
+}

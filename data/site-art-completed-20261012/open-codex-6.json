@@ -1,0 +1,19 @@
+{
+  "key": "open-codex-6",
+  "kind": "house",
+  "id": "open-codex",
+  "facing": 6,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+  ],
+  "transparent": true,
+  "output": "public/house/items/house-facing-repair-20261012/open-codex/6.webp",
+  "prompt": "Use case: precise-object-edit. Physical yaw270 LEFT SIDE of the exact open book reference. Keep book OPEN to two pages. Crucial projected geometry: center hinge is a HORIZONTAL line across CENTER of image, not a vertical or diagonal gutter. LEFT page with decorated illuminated initial in LOWER FRONT half of image, RIGHT landscape page in UPPER REAR half. The text and drawing are viewed sideways. Rectangular spread is long narrow depth-receding parallelogram, not wide frontal spread. Red bookmark at foot of spine projects to image RIGHT edge. Show both smooth page surfaces in camera looking down35 degrees. Do not close book. No vertical gutter, no front view, no diagonal yaw315. Genuine transparent background. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-560b334c-b10b-4303-b58c-772c2ef64e04.png",
+  "source_sha256": "6020d2f8c6ed546223f5710777125c8a466e0314cac9596b42161ceb44df44d3",
+  "sha256": "22ca218af92fa3d6589657ec13eaec3f49b0633d67cbd39bc36de1834f121356",
+  "width": 1570,
+  "height": 1011,
+  "generator": "built-in image_gen",
+  "normalization": "Alpha crop, proportional resize, clear 8px margin, WebP95; no mirroring or bitmap rotation"
+}

@@ -1,0 +1,20 @@
+{
+  "key": "statue-10",
+  "kind": "house",
+  "id": "statue",
+  "facing": 10,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\2.webp",
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\3.webp"
+  ],
+  "transparent": true,
+  "output": "public/house/items/house-facing-repair-20261012/statue/10.webp",
+  "prompt": "Use case: precise-object-edit. Input 1 is pure RIGHT side yaw90, input2 is BACK RIGHT yaw135. Create the SAME shelf at yaw112.5, exactly halfway between these two inputs. Broad plain RIGHT panel in the foreground at image LEFT, a narrow strip of the wooden BACK panel receding to image RIGHT. The bookshelf opening is around the far side and completely hidden. Absolutely ZERO books, shelves, pottery or carved front frieze visible. Keep the same top plant, feet, side panel and back planks. Vertical shelf, camera same as inputs. Actual transparent background. Preserve material, shape and identity of input. Rich realistic warm oak, leather, paper detail, complete isolated object and generous clear margin. ONE corrected render, never a sheet, no labels.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-ca57f9ac-1ef4-4227-a9e0-08057a1e96a6.png",
+  "source_sha256": "ca5347aaa45d648a37fafbbdc5a2dea16927fdd1bd61723de427ba5dcb33aa7e",
+  "sha256": "aca2669fb9912d9101e0c4fbf4d58724d6c9bbad71408263962f3ebbd6f4bdd3",
+  "width": 547,
+  "height": 1616,
+  "generator": "built-in image_gen",
+  "normalization": "Alpha crop, proportional resize, clear 8px margin, WebP95; no mirroring or bitmap rotation"
+}

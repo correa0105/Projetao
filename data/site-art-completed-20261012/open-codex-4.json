@@ -1,0 +1,19 @@
+{
+  "key": "open-codex-4",
+  "kind": "house",
+  "id": "open-codex",
+  "facing": 4,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+  ],
+  "transparent": true,
+  "output": "public/house/items/house-facing-repair-20261012/open-codex/4.webp",
+  "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing open-codex room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: STRAIGHT BACK yaw 180. The SAME open two-page spread seen from the opposite end. The reference left decorated page is on image RIGHT, landscape page on image LEFT, their tops and text inverted toward camera. Red bookmark at foot now extends AWAY at the FAR upper center. Not a front view with illustrations merely swapped. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference, enough to see both pages clearly. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-b43d60e6-a213-4c14-a1db-ed6f629bf999.png",
+  "source_sha256": "0e8e4c57c7260f13c46023750a36bcb731c186b4adeb9fdada9ce90371d05710",
+  "sha256": "026c67eec6e0064bd04078f314dce64e39f57eda09dbb09178b6fed0070557f8",
+  "width": 1560,
+  "height": 880,
+  "generator": "built-in image_gen",
+  "normalization": "Alpha crop, proportional resize, clear 8px margin, WebP95; no mirroring or bitmap rotation"
+}

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import refitCatalog from '../data/house-refit-catalog.json';
 import expansionCatalog from '../data/house-expansion-20261008.json';
+import { houseViewRepair } from './house-view-repairs';
 export const houseDistortionLimit = 0.12;
 const distortionPointSchema = z
   .object({
@@ -56,6 +57,8 @@ export function houseDefaultScale(catalogId: string) {
 }
 /** Real rendered views; old letter/frame assets remain unchanged. */
 export function houseItemImage(catalogId: string, facing = houseDefaultFacing(catalogId)) {
+  const repaired = houseViewRepair(catalogId, facing);
+  if (repaired) return repaired.image;
   const directory = expansion.has(catalogId)
     ? 'house-expansion-20261008'
     : furniture.has(catalogId)

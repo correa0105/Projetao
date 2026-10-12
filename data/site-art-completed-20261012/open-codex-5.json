@@ -1,0 +1,19 @@
+{
+  "key": "open-codex-5",
+  "kind": "house",
+  "id": "open-codex",
+  "facing": 5,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-expansion-20261008\\open-codex\\1.webp"
+  ],
+  "transparent": true,
+  "output": "public/house/items/house-facing-repair-20261012/open-codex/5.webp",
+  "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing open-codex room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: BACK LEFT yaw 225. Open codex seen from behind and left, matching the same 180-degree reversed pages as back view and then a 45-degree side offset. The bookmark at the foot recedes away to far side. Two separate cream page surfaces remain fully spread. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference, enough to see both pages clearly. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-d15fb878-1f4c-4432-83db-89743164d698.png",
+  "source_sha256": "43face54bb1c4c8ce707892e3acc0936bdd85e82cc60d9b54ff4807c5ff29a1a",
+  "sha256": "1532fd773c75e622e00f975d2b6a8c7ef1295b1ed90bc739938b5a4ba4224eb6",
+  "width": 1552,
+  "height": 964,
+  "generator": "built-in image_gen",
+  "normalization": "Alpha crop, proportional resize, clear 8px margin, WebP95; no mirroring or bitmap rotation"
+}

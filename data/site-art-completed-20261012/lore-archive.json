@@ -1,0 +1,15 @@
+{
+  "key": "lore-archive",
+  "kind": "background",
+  "refs": [],
+  "transparent": false,
+  "output": "public/lore-archive-20261012.webp",
+  "prompt": "Use case: illustration-story. Asset type: subtle wide background engraving for a dark fantasy chronicle archive. Create an ORIGINAL restrained antiquarian copperplate etching printed in faded warm ivory and tarnished brass ink on matte deep charcoal-green paper. Extremely wide horizontal composition. A modest old fortified town on ONE hill, wooded slopes, a winding river and a few ruins, drawn with crisp fine cross-hatching and imperfect human ink strokes, like a historic book frontispiece. Architectural forms coherent and plausible, humble chapel and stone keep, no huge impossible palace. Illustration concentrated in the RIGHT half, softly fading into quiet almost blank dark paper on LEFT half and lower edge. Elegant calm craftsmanship, slight fibrous paper grain, limited two-tone colors: near-black olive, dark brown, muted sepia, warm faded cream. Flat printed illustration, NO photoreal landscape, digital painting, glossy 3D, bloom, rays, magical fog, huge castle, text, symbols, border, UI, watermark. Panoramic landscape about 3:1.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-f9793842-a779-494f-848c-c5e132812b3a.png",
+  "source_sha256": "92d5ebe4c4cd734a1336cbe9a983c1cdf346efeffe18fefc5e7d2ee5709dbe36",
+  "sha256": "9f5bd228cd6c57fe4c1e21c09ab0436b5ad26bb60d60048f03f7acafe389e766",
+  "width": 2172,
+  "height": 724,
+  "generator": "built-in image_gen",
+  "normalization": "WebP95 export"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "statue-8",
+  "kind": "house",
+  "id": "statue",
+  "facing": 8,
+  "refs": [
+    "C:\\Users\\limaw\\OneDrive\\Documentos\\ChatGPT\\alvorada porto alegre\\Projetao\\public\\house\\items\\house-refit-20261007\\statue\\1.webp"
+  ],
+  "transparent": true,
+  "output": "public/house/items/house-facing-repair-20261012/statue/8.webp",
+  "prompt": "Use case: precise-object-edit. Input image is the exact identity and material reference of the existing statue room prop, currently seen from FRONT RIGHT yaw 45 degrees. Create ONE corrected independent view of this SAME object, not another model. Required camera: Almost straight FRONT, with only a narrow strip of the RIGHT side visible, 22.5 degrees. Books dominate the image. Keep carved details, colors, number of parts, all proportions and contents rigidly unchanged. A yaw is physical rotation on the horizontal floor about a vertical axis. Do not rotate the flat bitmap, mirror it, move a feature to a different place, change camera height or change pitch. Keep camera slightly elevated as in reference. Warm soft upper-left light with cool fill; rich realistic aged wood/leather/iron/paper detail. Full object and complete feet, straight upright verticals, actual transparent background, 8% clear border, no room, floor, cast shadow, text label, other objects or watermark. Single isolated object, no sprite sheet.",
+  "source": "C:\\Users\\limaw\\.codex\\generated_images\\01a12f1e-7c7e-7721-9698-7d36e4fd0f3d\\exec-e222af45-7a9a-4b97-9d18-be47af5f3733.png",
+  "source_sha256": "8bcb6eefd341cead13da03b6019a7054b52e8fb88184378be2678659d7d5b830",
+  "sha256": "483ade763399ad651844a62430af3961c09364bb524c06cf6ec2936d9ee0a748",
+  "width": 710,
+  "height": 1616,
+  "generator": "built-in image_gen",
+  "normalization": "Alpha crop, proportional resize, clear 8px margin, WebP95; no mirroring or bitmap rotation"
+}
