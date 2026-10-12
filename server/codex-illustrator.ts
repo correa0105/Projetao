@@ -12,6 +12,7 @@ import { type ArtEquipment, type HelmetMode } from '../shared/equipment.js';
 import { BARDING_PARTS } from '../shared/companion-equipment.js';
 import { describeArtEquipment } from './equipment-art.js';
 import { equipmentReferenceSheet } from './equipment-reference.js';
+import { magicalArtEquipment } from './armor-magic-appearance.js';
 import {
   companionArtInstructions,
   bardingCoverage,
@@ -137,6 +138,7 @@ async function reviewComposition(
   hasCape: boolean,
   companion?: CompanionArtSubject,
   baseReference?: string,
+  magicalEquipment: { slot: string; item: string; appearance: string }[] = [],
 ) {
   const schema = join(directory, 'review-schema.json'),
     result = join(directory, 'review.json');
@@ -185,6 +187,7 @@ async function reviewComposition(
     ${hasCape && !companion ? 'A capa deve cair solta como manto sem mangas, por cima dos ombros; reprove tecido enrolado no braço ou metal atravessando o tecido.' : ''}
     ${companion ? `O sujeito é um ANIMAL ${JSON.stringify(companion)}. Imagem 1 é a composição final a julgar; imagem 2 é a BASE confiável sem equipamento. Compare identidade, pose, direção, anatomia e proporções com a BASE. Reprove mudança de espécie, pelagem, pose ou escala da silhueta que não seja adaptação natural do equipamento. Confira anatomia animal: sem membros humanos, sem braços/mãos extras, sem inversão das patas traseiras; asas ligadas ao dorso, cauda e crânio naturais. Equipamento adaptado às partes reais do animal, sem arma nem cavaleiro. Não exigir anatomia humana. Reprove penas, patas, cauda ou equipamentos cortados e qualquer torso antropomórfico.` : ''}
     ${companion?.barding_parts ? `Conferir também a cobertura da BARDA: ${bardingCoverage(companion.barding_parts, companion.kind)} Reprove proteções marcadas que estejam ausentes em áreas visíveis (especialmente testeira e patas) ou partes desmarcadas adicionadas. Uma seleção completa não pode resultar apenas em proteção do tronco. Oclusão natural permanece válida; não exigir o lado oculto do animal.` : ''}
+    ${magicalEquipment.length ? `VERIFICAÇÃO OBRIGATÓRIA DE ENCANTAMENTO: ${JSON.stringify(magicalEquipment)}. Reprove armadura mágica que pareça sua versão mundana: simples reflexo metálico não basta. As partes expostas precisam mostrar as runas, filamentos, material sobrenatural e luminosidade descritos, visíveis na escala do personagem inteiro. Confira cada peça mágica selecionada e a coerência entre peças do mesmo conjunto. Não reprovar peças naturalmente ocultas nem exigir que outra peça seja removida para revelá-las. Reprove magia vazando sobre rosto, capa ou peças mundanas e a troca de couro/tecido/malha por placas. A aura deve preservar silhueta e transparência, sem cenário nem chão.` : ''}
     Seja rigoroso sobre esses defeitos visíveis, sem inventar falhas ou exigir acessórios ocultos.
     Retorne approved=true e issues=[] somente se cumprir. Caso contrário, approved=false e
     descreva em português os defeitos VISÍVEIS e as correções necessárias, sem comandos ou código.`,
@@ -265,6 +268,10 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
     : job.companion
       ? 'Nenhum equipamento selecionado: manter apenas o animal BASE sem acessórios.'
       : 'Nenhum equipamento selecionado: usar apenas trapos velhos, camisa branca e calça cinza, como um pijama rudimentar.';
+  const magicalEquipment = magicalArtEquipment(job.equipment || []);
+  const magicInstructions = magicalEquipment.length
+    ? `APARÊNCIA MÁGICA OBRIGATÓRIA: ${JSON.stringify(magicalEquipment)}. Aplicar em cada peça exposta, com o mesmo acabamento nas peças do conjunto. A armadura precisa distinguir-se visualmente do modelo mundano na figura inteira. Brilho comum de metal não substitui encantamento. Essas indicações também se aplicam durante correções da imagem.`
+    : '';
   await writeFile(
     schema,
     JSON.stringify({
@@ -289,9 +296,11 @@ Transcreva as posições e opções ao prompt da ferramenta de imagem.`
       const prompt = previousImage
         ? `EDITE a única imagem anexada com a ferramenta nativa de imagem. Ela é a composição a corrigir. Preserve rosto, identidade, pose, enquadramento, estilo, cores e modelos dos equipamentos. Altere somente as regiões com os defeitos descritos abaixo, incluindo o tecido necessário para corrigir seu caimento.
 ${repair}
+${magicInstructions}
 ${job.companion ? 'Preserve anatomia e pose animal: não criar braços, mãos humanas, armas ou cavaleiro; patas, asas, focinho e cauda mantêm suas formas e proporções. Equipamento adaptado ao animal e sobreposto com oclusão natural.' : 'Respeite camadas naturais: capa sem mangas por cima das ombreiras e da armadura; luvas por cima dos anéis, inclusive luvas integradas às braçadeiras.'} Acessórios encobertos permanecem ocultos; nunca exponha uma peça através de outra nem desloque a peça que a encobre. Não cortar nem duplicar objetos. Se houver corte na borda, afaste a câmera e amplie o enquadramento até caber a silhueta inteira, com margem transparente de 8% em todos os lados.
 Use referenced_image_paths com ${JSON.stringify(activeReferences)}, transparent_background=true. Não use num_last_images_to_include. Devolva o caminho da imagem editada no JSON solicitado.`
         : `${instructions}\n\n${job.companion ? '' : `Raça validada: ${race}. Classe validada: ${characterClass}. ${origin} Estatura de referência: ${Math.round(characterHeightScale(race, size) * 200)} cm (aproximação visual). Anatomia obrigatória: ${characterStature[race].anatomy}`} ${gearInstructions}
+${magicInstructions}
 Referências locais completas, na mesma ordem das imagens anexadas: ${JSON.stringify(activeReferences)}.
 Use referenced_image_paths com TODOS esses caminhos e transparent_background=true. Não use num_last_images_to_include. Enquadre a silhueta inteira, ${job.companion ? 'incluindo cauda, patas, asas e equipamento' : 'incluindo capa, armas e pés'}, com margem transparente de 8% em todos os lados; afaste a câmera se necessário. Gere agora com a ferramenta nativa.`;
       const execution = await runCodex(
@@ -450,6 +459,7 @@ Use referenced_image_paths com TODOS esses caminhos e transparent_background=tru
         (job.equipment || []).some((item) => item.slot === 'cloak'),
         job.companion,
         job.companion ? reference : undefined,
+        magicalEquipment,
       );
       const meta = await sharp(bytes).metadata();
       if (!meta.hasAlpha || (await sharp(bytes).stats()).isOpaque)

@@ -5,6 +5,7 @@ import {
   type EquipmentSlot,
   type HelmetMode,
 } from '../shared/equipment.js';
+import { artEquipmentName } from './armor-magic-appearance.js';
 
 const wearing: Record<EquipmentSlot, string> = {
   head: 'Vestir o acessório na cabeça.',
@@ -34,7 +35,7 @@ export function describeArtEquipment(
     slot: item.slot,
     item_id: item.item_id,
     position: EQUIPMENT_LABELS[item.slot],
-    item: item.name,
+    item: artEquipmentName(item),
     reference_image: index + 3,
     wearing:
       helmet && helmetMode === 'open'

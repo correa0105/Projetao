@@ -35,7 +35,7 @@ try {
   await page.setViewportSize({ width, height: 1000 }); await page.goto(origin + '/#cards');
   const host = page.getByRole('button', { name: 'Conversar com o Anfitrião', exact: true });
   await expect(host).toBeVisible(); expect(await host.innerText()).toBe('');
-  await expect(page.locator('.cards-host-silhouette path')).toBeVisible();
+  await expect(page.locator('.cards-host-target')).toBeVisible();
   const box = await page.locator('.cards-host-silhouette').boundingBox(); expect(box).not.toBeNull();
   await page.mouse.click(box!.x + 1295 * box!.width / 1672, box!.y + 315 * box!.height / 941);
   await expect(page.getByRole('complementary', { name: 'Conversa com o Anfitrião' })).toBeVisible();

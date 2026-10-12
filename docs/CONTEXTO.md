@@ -1,3 +1,7 @@
+# 12/10/2026 — Magia nas armaduras vestidas e contorno do Anfitrião
+
+Vestir agora herda o encantamento do conjunto para cada peça, exige acabamento mágico visível na geração e revisão e o conserva no token. Materiais, oclusão e peças mundanas preservados. 431 conjuntos, 27 famílias e 13 modelos conferidos; 14 testes em banco descartável e build aprovados. Contorno do Anfitrião redesenhado com curvas suaves, destaque ao interagir e alvo de clique independente. Detalhes: [MAGIC-ARMOR-HOST-OUTLINE-20261012.md](MAGIC-ARMOR-HOST-OUTLINE-20261012.md).
+
 # 12/10/2026 — Compras nas mochilas dos animais
 
 Empório entrega acessórios diretamente ao mascote ou à montaria, com destino selecionável por item no carrinho e padrão do animal exibido. Sem animal, guarda na mochila do personagem conforme decisão do usuário. Conjuntos completos, propriedade, saldo e idempotência conferidos no servidor; sem migração de bens antigos. Build, 18 testes e compra real no Edge em três larguras aprovados em banco descartável. Ilustrador reativado pela sessão ChatGPT do Codex. Detalhes: [COMPANION-PURCHASE-DELIVERY-20261012.md](COMPANION-PURCHASE-DELIVERY-20261012.md). Assets e monstros pausados permanecem preservados.

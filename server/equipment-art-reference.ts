@@ -1,6 +1,7 @@
 import type { EquipmentMetadata } from '../shared/equipment-target.js';
 import sharp from 'sharp';
 import { AppError } from './services.js';
+import { withArmorMagicAppearance } from './armor-magic-appearance.js';
 export function trustedEquipmentPath(path: unknown): path is string {
   return (
     typeof path === 'string' &&
@@ -47,5 +48,5 @@ export function equipmentArtReference(item: {
       ' [Armadura completa da montaria: reproduza toda a barda desta referência, incluindo todas as suas proteções. Combine com os acessórios equipados nas outras posições.]';
   if (raw?.piece_slot && path === raw.armor_bundle_model_image)
     name += ` [A imagem mostra o modelo completo do conjunto. Reproduza somente a peça desta posição: ${raw.piece_slot}; mantenha o material e acabamento. Não vestir as outras partes do conjunto por causa desta referência.]`;
-  return { path, name };
+  return { path, name: withArmorMagicAppearance(name, raw) };
 }

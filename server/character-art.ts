@@ -155,8 +155,10 @@ export async function enqueueArt(userId: string, input: unknown) {
     const equipment: { slot: string; item_id: string; name: string; image: Buffer }[] = [];
     if (data.character_id && data.equipment_slots.length) {
       const { rows } = await client.query(
-        `SELECT e.slot,c.id AS item_id,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,c.image_path,c.raw_data FROM character_equipment e
+        `SELECT e.slot,c.id AS item_id,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,c.image_path,
+        COALESCE(p.raw_data,'{}'::jsonb)||COALESCE(c.raw_data,'{}'::jsonb) AS raw_data FROM character_equipment e
         JOIN inventory i ON i.character_id=e.character_id AND i.item_id=e.item_id JOIN catalog_items c ON c.id=e.item_id
+        LEFT JOIN catalog_items p ON p.id=c.raw_data->>'armor_bundle_parent'
         WHERE e.character_id=$1 AND e.slot=ANY($2::text[])`,
         [data.character_id, data.equipment_slots],
       );

@@ -155,9 +155,12 @@ function legacyOptions(animal: any) {
       : [];
   });
 }
-async function equipment(db: DB, animal: any) {
+async function equipment(db: DB, animal: any, forArt = false) {
   const { rows } = await db.query(
-    'SELECT e.slot,e.item_id,e.legacy_id,c.* FROM companion_equipment e LEFT JOIN catalog_items c ON c.id=e.item_id WHERE e.wardrobe_id=$1 ORDER BY e.slot',
+    `SELECT e.slot,e.item_id,e.legacy_id,c.*${forArt ? ",COALESCE(p.raw_data,'{}'::jsonb)||COALESCE(c.raw_data,'{}'::jsonb) AS raw_data" : ''}
+     FROM companion_equipment e LEFT JOIN catalog_items c ON c.id=e.item_id
+     ${forArt ? "LEFT JOIN catalog_items p ON p.id=c.raw_data->>'armor_bundle_parent'" : ''}
+     WHERE e.wardrobe_id=$1 ORDER BY e.slot`,
     [animal.id],
   );
   return rows.map((item) =>
@@ -349,7 +352,7 @@ export async function enqueueCompanionArt(userId: string, characterId: string, i
         'Este personagem já usou as duas imagens deste mês, incluindo seus companheiros.',
       );
     const reference = await trustedCompanionBase(animal),
-      equipped = await equipment(db, animal),
+      equipped = await equipment(db, animal, true),
       refs = [];
     for (const item of equipped) {
       if (
