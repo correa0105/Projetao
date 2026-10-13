@@ -13,6 +13,9 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Search,
+  Trash2,
+  Palette,
 } from 'lucide-react';
 import { api, post } from './api';
 import type { User, Character } from './types';
@@ -48,6 +51,8 @@ import {
 import { guildRoomPerspective } from '../shared/guild-perspective';
 import './guild-perspective.css';
 import './guilds.css';
+import './guild-decor-editor.css';
+import { guildFloorScale, guildFurnitureWidth, guildFloorDragPosition } from '../shared/guild-floor';
 type Settings = { document: CommunitySettings; revision: number; can_edit: boolean };
 type Entry = {
   id: string;
@@ -61,6 +66,7 @@ type Directory = {
   items: Entry[];
   mine: string | null;
   membership: { guild_id: string; character_id: string; character_name: string } | null;
+  linked_character_ids: string[];
   invites: { guild_id: string; name: string; crest: Crest }[];
 };
 type Guild = {
@@ -125,6 +131,9 @@ export function Guilds({
   const refreshTurnControls = useRef<(() => void) | null>(null);
   const [perspectiveEditing, setPerspectiveEditing] = useState('');
   const [pieceGeometry, setPieceGeometry] = useState<GuildPieceGeometry | null>(null);
+  const [crestDraft, setCrestDraft] = useState<{crest: Crest; revision: number} | null>(null);
+  const [guildSearch, setGuildSearch] = useState('');
+  const loadTurn = useRef(0);
   const grab = useRef<{
     id: string;
     pointer: number;
@@ -140,13 +149,16 @@ export function Guilds({
   } | null>(null);
   const memberUrl = (url: string) => activeCharacterId ? url + '?character_id=' + encodeURIComponent(activeCharacterId) : url;
   async function load() {
+    const turn = ++loadTurn.current;
     const [d, s] = await Promise.all([
       api<Directory>(memberUrl('/guilds')),
       api<Settings>('/community/settings'),
     ]);
+    const guild = target ? await api<Guild>(memberUrl('/guilds/' + target)) : null;
+    if (turn !== loadTurn.current) return;
     setDirectory(d);
     setSettings(s);
-    if (target) setG(await api<Guild>(memberUrl('/guilds/' + target)));
+    setG(guild);
   }
   useEffect(() => {
     void load().catch((e) => setError(e.message));
@@ -154,11 +166,16 @@ export function Guilds({
       if (!document.hidden && !doc) void load().catch((e) => setError(e.message));
     }, 30000);
     return () => clearInterval(timer);
-  }, [target, Boolean(doc)]);
+  }, [target, Boolean(doc), activeCharacterId]);
+  useEffect(() => {
+    setDirectory(null); setG(null); setDoc(null); setFounding(false); setCrestDraft(null);
+    setSelected(''); setPerspectiveEditing(''); setCharacter(activeCharacterId || characters[0]?.id || '');
+  }, [activeCharacterId]);
   useEffect(() => {
     const fn = () => {
       setTarget(new URLSearchParams(location.hash.split('?')[1] || '').get('id') || '');
       setDoc(null);
+      setCrestDraft(null);
       setG(null);
       setRoom('main');
     };
@@ -205,6 +222,9 @@ export function Guilds({
     upgrade = settings?.document.upgrades.find((u) => u.catalog === obj?.catalog),
     roomInfo = guildRooms.find((r) => r.id === room)!,
     editable = Boolean(doc && g?.is_owner);
+  const freeCharacters = characters.filter(c => !directory?.linked_character_ids.includes(c.id));
+  const roomPlacements = current?.placements.filter(p => p.room === room) || [];
+  const paintOrder = new Map([...roomPlacements].sort((a,b)=>a.y-b.y).map((p,index)=>[p.id,index+1]));
   useLayoutEffect(() => {
     const stage = scene.current;
     if (!stage || !editable || !obj || obj.room !== room) {
@@ -325,11 +345,17 @@ export function Guilds({
                   ? 'Custo aguardando configuração do administrador'
                   : settings?.document.founding_po.toLocaleString('pt-BR') + ' PO para fundar'}
               </strong>
-              {!directory.membership && (
+              {!directory.mine && (
+                <p className="guild-new-character">{characters.find(c => c.id === activeCharacterId)?.name || 'Seu personagem'} ainda não pertence a uma guilda.</p>
+              )}
+              {!directory.mine && (
+                <div className="guild-actions">
+                <button onClick={() => document.getElementById('guild-directory')?.scrollIntoView({block:'start',behavior:'smooth'})}><Search size={16}/>Procurar guildas</button>
                 <button
-                  disabled={busy || !characters.length || settings?.document.founding_po === null}
+                  disabled={busy || !freeCharacters.length || settings?.document.founding_po === null}
                   onClick={() => {
                     request.current = crypto.randomUUID();
+                    setCharacter(freeCharacters.find(c => c.id === activeCharacterId)?.id || freeCharacters[0]?.id || '');
                     setDoc(guildDocumentSchema.parse({ name: 'Nova guilda' }));
                     setFounding(true);
                   }}
@@ -337,29 +363,20 @@ export function Guilds({
                   <Plus size={17} />
                   Fundar uma guilda
                 </button>
+                </div>
               )}
               {!characters.length && (
                 <small>Crie um personagem para fundar ou entrar em uma guilda.</small>
               )}
             </div>
           </div>
-          {!directory.mine && directory.membership && (
-            <p className="guild-paper" role="status">
-              {directory.membership.character_name} é o personagem da sua conta que pertence a uma guilda.
-              O personagem selecionado não é membro.
-              <button onClick={() => {
-                onSelectCharacter(directory.membership!.character_id);
-                location.hash = 'guild?id=' + directory.membership!.guild_id;
-              }}>Usar {directory.membership.character_name}</button>
-            </p>
-          )}
-          {directory.invites.length > 0 && (
+          {!directory.mine && freeCharacters.length > 0 && directory.invites.length > 0 && (
             <section className="guild-paper">
               <h2>Convites recebidos</h2>
               <label>
                 Representar com
                 <select value={character} onChange={(e) => setCharacter(e.target.value)}>
-                  {characters.map((c) => (
+                  {freeCharacters.map((c) => (
                     <option key={c.id} value={c.id}>
                       {c.name}
                     </option>
@@ -397,12 +414,13 @@ export function Guilds({
               ))}
             </section>
           )}
-          <h2 className="guild-section-title">
+          <h2 className="guild-section-title" id="guild-directory">
             <Trophy size={22} />
             Ranking das guildas
           </h2>
+          <label className="guild-directory-search">Procurar guildas<input type="search" aria-label="Procurar guildas" value={guildSearch} onChange={e => setGuildSearch(e.target.value)} placeholder="Nome da guilda"/></label>
           <div className="guild-directory">
-            {directory.items.map((e, i) => (
+            {directory.items.map((e,i) => ({e,i})).filter(({e}) => e.name.toLocaleLowerCase('pt-BR').includes(guildSearch.toLocaleLowerCase('pt-BR'))).map(({e, i}) => (
               <button key={e.id} onClick={() => (location.hash = 'guild?id=' + e.id)}>
                 <span className="guild-ranking-number">{String(i + 1).padStart(2, '0')}</span>
                 <GuildCrest crest={e.crest} size={85} />
@@ -436,6 +454,9 @@ export function Guilds({
               </strong>
             )}
             {g.is_owner && (
+              <button disabled={busy} onClick={() => setCrestDraft({crest: structuredClone(current!.crest), revision:g.revision})}><Palette size={16}/>Editar brasão</button>
+            )}
+            {g.is_owner && !editable && (
               <button disabled={busy} onClick={() => setDoc(structuredClone(g.document))}>
                 <Settings2 size={16} />
                 Personalizar sede
@@ -502,9 +523,7 @@ export function Guilds({
                   aria-label={roomInfo.name}
                 >
                   <span className="guild-room-caption">{roomInfo.name}</span>
-                  {current!.placements
-                    .filter((p) => p.room === room)
-                    .sort((a, b) => a.y - b.y)
+                  {roomPlacements
                     .map((p) => (
                       <button
                         className={`guild-furniture ${selected === p.id ? 'selected' : ''}`}
@@ -512,12 +531,15 @@ export function Guilds({
                         type="button"
                         data-guild-piece={p.id}
                         data-facing={p.facing}
+                        data-base-scale={p.scale}
+                        data-depth-scale={guildFloorScale(p.y,p.room)}
                         aria-label={guildDecor.find((i) => i.id === p.catalog)?.name || p.catalog}
                         style={
                           {
                             left: p.x * 100 + '%',
                             top: p.y * 100 + '%',
-                            width: p.scale * 100 + '%',
+                            width: guildFurnitureWidth(p) * 100 + '%',
+                            zIndex: paintOrder.get(p.id),
                           } as CSSProperties
                         }
                         onClick={() => setSelected(p.id)}
@@ -529,8 +551,8 @@ export function Guilds({
                           grab.current = {
                             id: p.id,
                             pointer: e.pointerId,
-                            x: (e.clientX - r.left) / r.width - p.x,
-                            y: (e.clientY - r.top) / r.height - p.y,
+                            x: (e.clientX - r.left - p.x*r.width) / guildFloorScale(p.y,p.room),
+                            y: (e.clientY - r.top - p.y*r.height) / guildFloorScale(p.y,p.room),
                             startX: e.clientX,
                             startY: e.clientY,
                           };
@@ -547,6 +569,7 @@ export function Guilds({
                           )
                             return;
                           const r = scene.current!.getBoundingClientRect();
+                          const position = guildFloorDragPosition({x:e.clientX-r.left,y:e.clientY-r.top},point,r,p.y,p.room);
                           setDoc((d) =>
                             d
                               ? {
@@ -555,20 +578,7 @@ export function Guilds({
                                     o.id === p.id
                                       ? {
                                           ...o,
-                                          x: Math.max(
-                                            0.03,
-                                            Math.min(
-                                              0.97,
-                                              (e.clientX - r.left) / r.width - point.x,
-                                            ),
-                                          ),
-                                          y: Math.max(
-                                            0.1,
-                                            Math.min(
-                                              0.97,
-                                              (e.clientY - r.top) / r.height - point.y,
-                                            ),
-                                          ),
+                                          ...position,
                                         }
                                       : o,
                                   ),
@@ -589,7 +599,7 @@ export function Guilds({
                         }}
                         onKeyDown={(e) => {
                           if (
-                            !editable ||
+                            !editable || busy ||
                             !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)
                           )
                             return;
@@ -674,11 +684,8 @@ export function Guilds({
                 </div>
                 {editable && (
                   <aside className="guild-paper guild-house-editor" aria-label="Decoração da sala">
-                    <h2>Decorar {roomInfo.name}</h2>
-                    <p>
-                      Arraste as peças ou use as setas do teclado. Salve para compartilhar a sede
-                      com sua guilda.
-                    </p>
+                    <header className="guild-decor-heading"><h2>Decorar</h2><small>{roomInfo.name}</small></header>
+                    <p>Arraste a peça. O tamanho acompanha a distância.</p>
                     <div className="guild-field-grid">
                       <label>
                         Objeto
@@ -695,7 +702,7 @@ export function Guilds({
                         </select>
                       </label>
                       <button
-                        disabled={current!.placements.length >= 24}
+                        disabled={busy || current!.placements.length >= 24}
                         onClick={() => {
                           const id = crypto.randomUUID();
                           setDoc((d) =>
@@ -709,7 +716,7 @@ export function Guilds({
                                       catalog: decor,
                                       room: room as GuildDocument['placements'][number]['room'],
                                       x: 0.5,
-                                      y: 0.72,
+                                      y: 0.84,
                                       scale: Math.max(
                                         0.04,
                                         Math.min(0.6, houseDefaultScale(decor)),
@@ -745,8 +752,8 @@ export function Guilds({
                         </select>
                       </label>
                       {obj?.room === room && (
-                        <>
-
+                        <section className="guild-selected-settings" aria-label="Ajustes da peça">
+                          <h3>{guildDecor.find(i => i.id === obj.catalog)?.name}</h3>
                           <label>
                             Tamanho
                             <input
@@ -799,7 +806,7 @@ export function Guilds({
                               )
                             }
                           />
-                          <button
+                          <button className="guild-remove-piece" disabled={busy}
                             onClick={() =>
                               setDoc((d) =>
                                 d
@@ -811,9 +818,9 @@ export function Guilds({
                               )
                             }
                           >
-                            Remover peça
+                            <Trash2 size={13}/>Remover peça
                           </button>
-                        </>
+                        </section>
                       )}
                     </div>
                     <div className="guild-actions">
@@ -1049,8 +1056,8 @@ export function Guilds({
             </label>
             <label>
               Personagem fundador
-              <select required value={character} onChange={(e) => setCharacter(e.target.value)}>
-                {characters.map((c) => (
+              <select aria-label="Personagem fundador" required value={character} onChange={(e) => setCharacter(e.target.value)}>
+                  {freeCharacters.map((c) => (
                   <option key={c.id} value={c.id}>
                     {c.name} · {c.gold_cp / 100} PO
                   </option>
@@ -1077,6 +1084,22 @@ export function Guilds({
             <button disabled={busy} type="submit">
               Fundar guilda
             </button>
+          </form>
+        </Modal>
+      )}
+      {crestDraft && g?.is_owner && (
+        <Modal title="Editar brasão" close={() => !busy && setCrestDraft(null)}>
+          <form className="guild-form" onSubmit={e => {
+            e.preventDefault(); void run(async () => {
+              const saved = await api<{revision:number}>(memberUrl('/guilds/'+g.id+'/crest'),{method:'PATCH',body:JSON.stringify(crestDraft)});
+              setG(old => old ? {...old,revision:saved.revision,document:{...old.document,crest:crestDraft.crest}} : old);
+              setDoc(old => old ? {...old,crest:crestDraft.crest} : old);
+              setCrestDraft(null); setNotice('Brasão salvo.');
+            });
+          }}>
+            <CrestEditor value={crestDraft.crest} name={g.document.name} onChange={crest => setCrestDraft({...crestDraft,crest})}/>
+            {error && <p role="alert">{error}</p>}
+            <div className="guild-actions"><button type="submit" disabled={busy}><Save size={15}/>Salvar brasão</button><button type="button" disabled={busy} onClick={() => setCrestDraft(null)}>Cancelar</button></div>
           </form>
         </Modal>
       )}

@@ -62,11 +62,11 @@ export function GuildPerspectiveControls({
   };
   return (
     <section className="guild-perspective-panel" aria-label="Perspectiva do objeto">
-      <ol className="guild-perspective-help">
+      <details className="guild-perspective-quick-help"><summary>Como posicionar</summary><ol className="guild-perspective-help">
         <li><strong>Escolha a vista.</strong> Use as setas do móvel para mostrar as faces voltadas para a sala.</li>
-        <li><strong>Apoie no piso.</strong> Arraste pelos pés; perto da parede, diminua o tamanho.</li>
+        <li><strong>Apoie no piso.</strong> Arraste a peça. Ela diminui automaticamente ao ir para o fundo.</li>
         <li><strong>Confira as linhas.</strong> As laterais do móvel devem acompanhar as linhas do piso.</li>
-      </ol>
+      </ol></details>
       <button type="button" aria-pressed={active} onClick={toggle}>
         {active ? 'Concluir perspectiva' : 'Ajustar perspectiva'}
       </button>

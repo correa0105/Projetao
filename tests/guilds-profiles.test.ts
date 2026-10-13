@@ -238,7 +238,8 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
       assert.equal(directory.membership.character_id, ch.id);
       const alternateDirectory = (await request('/guilds' + visitorContext, owner)).data;
       assert.equal(alternateDirectory.mine, null);
-      assert.equal(alternateDirectory.membership.character_name, ch.name);
+      assert.equal(alternateDirectory.membership, null);
+      assert.deepEqual(alternateDirectory.linked_character_ids,[ch.id]);
       const member = (await request('/guilds/' + id + memberContext, owner)).data;
       assert.equal(member.is_member, true); assert.equal(member.is_owner, true);
       assert.equal(member.members.length, 1); assert.equal(member.members[0].character_id, ch.id);
@@ -597,6 +598,23 @@ test('Guildas, economia, missões e perfis em banco descartável', async (t) => 
         assert.equal(p.email, undefined);
       },
     );
+    await t.test('personagem livre funda outra guilda; duplicação é bloqueada sem cobrar duas vezes',async()=>{
+      await pool.query('UPDATE characters SET gold_cp=200000 WHERE id=$1',[alternate.id]);
+      const results=await Promise.all(['Companhia do Outro Personagem','Outra Companhia Concorrente'].map(name=>request('/guilds',owner,'POST',{document:{...doc,name,placements:[]},character_id:alternate.id,request_id:randomUUID()})));
+      assert.deepEqual(results.map(r=>r.status).sort(),[201,409]);
+      const second=results.find(r=>r.status===201)!.data.id;
+      assert.equal((await request('/guilds?character_id='+alternate.id,owner)).data.mine,second);
+      assert.equal((await request('/guilds?character_id='+ch.id,owner)).data.mine,id);
+      assert.equal((await request('/guilds/'+id+'?character_id='+alternate.id,owner)).data.is_owner,false);
+      assert.equal((await pool.query('SELECT gold_cp FROM characters WHERE id=$1',[alternate.id])).rows[0].gold_cp,150000);
+      const before=(await request('/guilds/'+id+'?character_id='+ch.id,owner)).data;
+      const crest={...before.document.crest,icon:'wolf',fieldColor:'#214e30'};
+      assert.equal((await request('/guilds/'+id+'/crest?character_id='+alternate.id,owner,'PATCH',{crest,revision:before.revision})).status,403);
+      assert.equal((await request('/guilds/'+id+'/crest?character_id='+ch.id,owner,'PATCH',{crest,revision:before.revision})).status,200);
+      assert.equal((await request('/guilds/'+id+'/crest?character_id='+ch.id,owner,'PATCH',{crest,revision:before.revision})).status,409);
+      const after=(await request('/guilds/'+id+'?character_id='+ch.id,owner)).data;
+      assert.deepEqual(after.document,{...before.document,crest});assert.equal(after.treasury_cp,before.treasury_cp);assert.equal(after.revision,before.revision+1);
+    });
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await pool.end();

@@ -5,6 +5,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { communitySettingsSchema } from '../shared/guilds';
 import { houseTurnFacing } from '../shared/house';
+import {guildFloorDragPosition,guildFloorScale,guildFurnitureWidth} from '../shared/guild-floor';
 if (!/^\/alvorada_test_[0-9a-f]{32}$/.test(new URL(process.env.DATABASE_URL!).pathname))
   throw Error('Disposable DB only');
 const origin = 'http://localhost:3059';
@@ -183,7 +184,8 @@ try {
   await expect(page.getByLabel('Decoração da sala')).toBeVisible();
   await expect(page.getByLabel('História da guilda')).toHaveCount(0);
   await expect(workshop).toHaveCount(0);
-  const object = page.locator('.guild-furniture').first();
+  const objectKey = await page.locator('.guild-furniture.selected').getAttribute('data-guild-piece');
+  const object = page.locator('[data-guild-piece="'+objectKey+'"]');
   await expect(object).toBeVisible();
   const position = () => object.evaluate((el) => ({ x: el.style.left, y: el.style.top }));
   const assertTurnAlignment = async (piece: Locator) => {
@@ -233,6 +235,7 @@ try {
       .toBeLessThan(3);
   };
   const assertHoldKeepsPosition = async (piece: Locator) => {
+    await piece.scrollIntoViewIfNeeded();
     const before = (await piece.boundingBox())!;
     await page.mouse.move(before.x + before.width * 0.5, before.y + before.height * 0.6);
     await page.mouse.down();
@@ -245,6 +248,7 @@ try {
     expect(released.x).toBeCloseTo(before.x, 1);
     expect(released.y).toBeCloseTo(before.y, 1);
   };
+  await object.scrollIntoViewIfNeeded();
   const beforeClick = await position();
   const box = (await object.boundingBox())!;
   await page.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.3);
@@ -261,16 +265,18 @@ try {
     steps: 8,
   });
   await page.mouse.up();
+  await page.waitForTimeout(120);
   const stage = (await page.locator('.guild-room').boundingBox())!;
   const moved = await position();
-  expect(parseFloat(moved.x) - parseFloat(beforeClick.x)).toBeCloseTo(
-    (49 / stage.width) * 100,
-    1,
-  );
-  expect(parseFloat(moved.y) - parseFloat(beforeClick.y)).toBeCloseTo(
-    (14 / stage.height) * 100,
-    1,
-  );
+  const oldY=parseFloat(beforeClick.y)/100,oldX=parseFloat(beforeClick.x)/100,factor=guildFloorScale(oldY,'meeting');
+  const expectedMove=guildFloorDragPosition({x:box.x+box.width*.25+50-stage.x,y:box.y+box.height*.3+15-stage.y},{x:(box.x+box.width*.25+1-stage.x-oldX*stage.width)/factor,y:(box.y+box.height*.3+1-stage.y-oldY*stage.height)/factor},stage,oldY,'meeting');
+  expect(parseFloat(moved.x)).toBeCloseTo(expectedMove.x*100,1);
+  expect(parseFloat(moved.y)).toBeCloseTo(expectedMove.y*100,1);
+  const nearWidth=(await object.boundingBox())!.width,baseScale=await object.getAttribute('data-base-scale');
+  await object.focus();for(let i=0;i<12;i++) await page.keyboard.press('ArrowUp');
+  expect((await object.boundingBox())!.width).toBeLessThan(nearWidth);
+  expect(await object.getAttribute('data-base-scale')).toBe(baseScale);
+  for(let i=0;i<12;i++) await page.keyboard.press('ArrowDown');
   const sidebar = (await page.getByLabel('Decoração da sala').boundingBox())!;
   expect(sidebar.x).toBeGreaterThanOrEqual(stage.x + stage.width);
   const oldFacing = Number(await object.getAttribute('data-facing'));
@@ -379,6 +385,13 @@ try {
     g.document.placements,
   );
   for (const width of [1440, 768, 390, 320]) await screenshot('guild', width);
+  await page.getByRole('button',{name:'Editar brasão',exact:true}).click();
+  await workshop.getByRole('button',{name:'Símbolo',exact:false}).first().click();
+  await workshop.getByRole('button',{name:'Símbolo: Lobo',exact:true}).click();
+  await page.getByRole('button',{name:'Salvar brasão',exact:true}).click();
+  await expect(page.getByRole('dialog',{name:'Editar brasão',exact:true})).toHaveCount(0);
+  expect((await api(ownerContext,'/guilds/'+id)).document.crest.icon).toBe('wolf');
+  expect((await api(ownerContext,'/guilds/'+id)).document.placements).toEqual(g.document.placements);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Companhia', exact: true }).click();
   await page.getByLabel('Buscar usuário', { exact: true }).fill('Companheiro');
@@ -445,6 +458,35 @@ try {
     .getByRole('button', { name: 'Abrir perfil de Viajante do Amanhecer', exact: true })
     .click();
   await expect(page.locator('.player-profile-home')).toBeVisible();
+  const alternate=await createLegacyTestCharacter(owner.id,'Viajante sem vínculo');
+  await pool.query('UPDATE characters SET gold_cp=200000 WHERE id=$1',[alternate.id]);
+  await page.reload();await page.goto(origin+'/#characters');
+  await page.getByRole('button',{name:'Selecionar Viajante sem vínculo',exact:true}).click();
+  await page.goto(origin+'/#guild');
+  await expect(page.getByRole('button',{name:'Minha guilda',exact:true})).toHaveCount(0);
+  await expect(page.getByText('O personagem selecionado não é membro.',{exact:false})).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'Fundar uma guilda',exact:true})).toBeEnabled();
+  await expect(page.getByRole('button',{name:'Procurar guildas',exact:true})).toBeVisible();
+  await page.getByLabel('Procurar guildas',{exact:true}).fill('Amanhecer');
+  await expect(page.locator('.guild-directory>button')).toHaveCount(1);
+  await page.getByRole('button',{name:'Fundar uma guilda',exact:true}).click();
+  await expect(page.getByLabel('Personagem fundador',{exact:true})).toHaveValue(alternate.id);
+  await expect(page.getByLabel('Personagem fundador').locator('option')).toHaveCount(1);
+  await page.getByRole('dialog',{name:'Fundar uma guilda',exact:true}).getByRole('button',{name:'Fechar',exact:true}).click();
+  await page.goto(origin+'/#cards');
+  await expect(page.locator('.cards-detail-preview .arcana-card-name')).toHaveText('A Vigília');
+  await expect(page.locator('.cards-detail-preview .arcana-card-name')).toBeVisible();
+  expect(await page.locator('.cards-detail .cards-rarity').evaluate(el=>parseFloat(getComputedStyle(el).fontSize))).toBeLessThanOrEqual(10);
+  for(const width of [1440,768,390,320]){
+    await page.setViewportSize({width,height:1000});
+    await page.getByRole('button',{name:'Inspecionar',exact:true}).click();
+    const inspection=page.getByRole('dialog',{name:'Inspecionar A Vigília',exact:true});await expect(inspection).toBeVisible();
+    await expect(inspection.locator('.arcana-card-name')).toBeVisible();
+    const dim=await inspection.boundingBox();expect(dim!.width).toBeLessThanOrEqual(width);
+    expect(await inspection.evaluate(el=>getComputedStyle(el,'::backdrop').backdropFilter)).toContain('blur');
+    await page.screenshot({path:'test-results/community/card-inspection-'+width+'.png'});
+    await page.keyboard.press('Escape');await expect(inspection).toHaveCount(0);
+  }
   expect(errors).toEqual([]);
   expect([...new Set(missing)]).toEqual([]);
   await writeFile(
@@ -457,6 +499,10 @@ try {
       crestLayers: true,
       foundationGold: true,
       ownerFurniture: true,
+      floorScaling: true,
+      independentCharacter: true,
+      editableCrest: true,
+      cardInspection: true,
       visibleTurnAlignment: true,
       heldFurnitureStable: true,
       perspectiveGuides: true,

@@ -14,6 +14,7 @@ import {
   guildWeek,
   guildLevel,
   guildRooms,
+  crestSchema,
   type CommunitySettings,
 } from '../shared/guilds.js';
 const uuid = z.string().uuid();
@@ -150,16 +151,18 @@ export function guildsRouter() {
       pool.query(
         `SELECT g.id,g.document->>'name' AS name,g.document->'crest' AS crest,g.prestige,(SELECT count(*)::int FROM player_guild_members m WHERE m.guild_id=g.id) AS members FROM player_guilds g ORDER BY g.prestige DESC,g.created_at,g.id`,
       ),
-      pool.query(`SELECT m.guild_id,m.character_id,c.name AS character_name FROM player_guild_members m JOIN characters c ON c.id=m.character_id WHERE m.user_id=$1`, [uid]),
+      pool.query(`SELECT m.guild_id,m.character_id,c.name AS character_name FROM player_guild_members m JOIN characters c ON c.id=m.character_id WHERE m.user_id=$1 ORDER BY m.joined_at,m.guild_id`, [uid]),
       pool.query(
         `SELECT i.guild_id,g.document->>'name' AS name,g.document->'crest' AS crest FROM player_guild_invites i JOIN player_guilds g ON g.id=i.guild_id WHERE i.user_id=$1`,
         [uid],
       ),
     ]);
+    const membership = res.locals.guildCharacterId ? mine.rows.find(m => m.character_id === res.locals.guildCharacterId) : mine.rows[0];
     res.json({
       items: directory.rows.map((g) => ({ ...g, rank: guildRank(g.prestige) })),
-      mine: mine.rows[0] && (!res.locals.guildCharacterId || mine.rows[0].character_id === res.locals.guildCharacterId) ? mine.rows[0].guild_id : null,
-      membership: mine.rows[0] || null,
+      mine: membership?.guild_id || null,
+      membership: membership || null,
+      linked_character_ids: mine.rows.map(m => m.character_id),
       invites: invites.rows,
     });
   });
@@ -181,8 +184,8 @@ export function guildsRouter() {
         if (old.owner_id !== uid) throw new AppError(403, 'Pedido de outra conta.');
         return { id: old.id, replayed: true };
       }
-      if ((await db.query('SELECT 1 FROM player_guild_members WHERE user_id=$1', [uid])).rowCount)
-        throw new AppError(409, 'Você já pertence a uma guilda.');
+      if ((await db.query('SELECT 1 FROM player_guild_members WHERE character_id=$1 AND user_id=$2', [input.character_id, uid])).rowCount)
+        throw new AppError(409, 'Este personagem já pertence a uma guilda.');
       const { document: c } = await communitySettings(db);
       if (c.founding_po === null)
         throw new AppError(409, 'O administrador precisa definir o custo de fundação.');
@@ -287,6 +290,15 @@ export function guildsRouter() {
       }),
     );
   });
+  router.patch('/guilds/:id/crest', async (req, res) => {
+    const id = uuid.parse(req.params.id), input = z.object({crest: crestSchema, revision: z.number().int().min(0)}).strict().parse(req.body);
+    res.json(await transaction(async db => {
+      const g = await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId);
+      if (g.revision !== input.revision) throw new AppError(409, 'A guilda mudou. Reabra o brasão antes de salvar.');
+      const {rows: [saved]} = await db.query("UPDATE player_guilds SET document=jsonb_set(document,'{crest}',$2::jsonb),revision=revision+1 WHERE id=$1 RETURNING revision", [id, JSON.stringify(input.crest)]);
+      return saved;
+    }));
+  });
   router.post('/guilds/:id/invites', async (req, res) => {
     const id = uuid.parse(req.params.id),
       { user_id: uid } = z
@@ -297,8 +309,8 @@ export function guildsRouter() {
       await guild(db, id, res.locals.user.id, true, res.locals.guildCharacterId);
       if (!(await db.query('SELECT 1 FROM "user" WHERE id=$1', [uid])).rowCount)
         throw new AppError(404, 'Jogador não encontrado.');
-      if ((await db.query('SELECT 1 FROM player_guild_members WHERE user_id=$1', [uid])).rowCount)
-        throw new AppError(409, 'Este jogador já pertence a uma guilda.');
+      if ((await db.query('SELECT 1 FROM player_guild_members WHERE user_id=$1 AND guild_id=$2', [uid,id])).rowCount)
+        throw new AppError(409, 'Este jogador já está representado nesta guilda.');
       if (
         (await db.query('SELECT count(*)::int n FROM player_guild_members WHERE guild_id=$1', [id]))
           .rows[0].n >= 8
@@ -328,8 +340,6 @@ export function guildsRouter() {
         ).rowCount
       )
         throw new AppError(403, 'É necessário um convite do fundador.');
-      if ((await db.query('SELECT 1 FROM player_guild_members WHERE user_id=$1', [uid])).rowCount)
-        throw new AppError(409, 'Você já pertence a uma guilda.');
       if (
         !(
           await db.query(
@@ -339,6 +349,10 @@ export function guildsRouter() {
         ).rowCount
       )
         throw new AppError(400, 'Escolha um personagem seu.');
+      if ((await db.query('SELECT 1 FROM player_guild_members WHERE character_id=$1', [cid])).rowCount)
+        throw new AppError(409, 'Este personagem já pertence a uma guilda.');
+      if ((await db.query('SELECT 1 FROM player_guild_members WHERE user_id=$1 AND guild_id=$2', [uid,id])).rowCount)
+        throw new AppError(409, 'Sua conta já está representada nesta guilda.');
       if (
         (await db.query('SELECT count(*)::int n FROM player_guild_members WHERE guild_id=$1', [id]))
           .rows[0].n >= 8
@@ -348,7 +362,7 @@ export function guildsRouter() {
         'INSERT INTO player_guild_members(user_id,guild_id,character_id) VALUES($1,$2,$3)',
         [uid, id, cid],
       );
-      await db.query('DELETE FROM player_guild_invites WHERE user_id=$1', [uid]);
+      await db.query('DELETE FROM player_guild_invites WHERE user_id=$1 AND guild_id=$2', [uid,id]);
     });
     res.json({ ok: true });
   });

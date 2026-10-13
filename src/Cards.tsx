@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Check, ChevronLeft, ChevronRight, Coins, Lock, Sparkles, X } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Coins, Lock, Sparkles, X, ZoomIn } from 'lucide-react';
+import { createPortal } from 'react-dom';
 import { api, post } from './api';
 import { cards, cardRarities, cardQuestions, type Card, type OwnedCard } from '../shared/cards';
 import { money } from '../shared/rules';
@@ -15,7 +16,7 @@ export function CardFace({ card, small = false }: { card: Card; small?: boolean 
         className="arcana-card-art"
         style={
           {
-            backgroundImage: `url('/cards/tarot-rarity-20261013/${card.id}.webp')`,
+            backgroundImage: `url('/cards/tarot-nouveau-20261013/${card.id}.webp')`,
           } as CSSProperties
         }
       />
@@ -48,6 +49,7 @@ export function Cards({
     [speech, setSpeech] = useState(''),
     [conversation, setConversation] = useState(false),
     [questions, setQuestions] = useState(false);
+  const [inspecting, setInspecting] = useState<Card | null>(null);
   const key = useRef(crypto.randomUUID()),
     inFlight = useRef(false),
     live = useRef(true),
@@ -311,14 +313,15 @@ export function Cards({
             id="selected-card-details"
             aria-label="Carta selecionada"
           >
-            <div className="cards-detail-preview" aria-hidden="true">
-              <CardFace card={selected} />
+            <div className="cards-detail-preview">
+              <button type="button" className="cards-inspect-art" aria-label={'Inspecionar '+selected.name} onClick={() => setInspecting(selected)}><CardFace card={selected}/></button>
             </div>
             <div className="cards-detail-copy">
               <span className="eyebrow">{selected.family}</span>
               <h2>{selected.name}</h2>
               <span className="cards-rarity" data-rarity={selected.rarity} style={{color:cardRarities[selected.rarity].colour}}>{cardRarities[selected.rarity].name}</span>
               <p>{selected.description}</p>
+              <button type="button" className="cards-inspect-button" onClick={() => setInspecting(selected)}><ZoomIn size={13}/>Inspecionar</button>
               {item ? (
                 <>
                   <span className="cards-level">
@@ -380,6 +383,22 @@ export function Cards({
           </section>
         </div>
       </div>
+      {inspecting && <CardInspection card={inspecting} close={() => setInspecting(null)}/>}
     </section>
   );
+}
+export function CardInspection({card, close}: {card: Card; close: () => void}) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement | null;
+    dialog.current?.showModal();
+    return () => { if (previous?.isConnected) previous.focus(); };
+  }, []);
+  return createPortal(<dialog ref={dialog} className="card-inspection" aria-label={'Inspecionar '+card.name} onCancel={e => {e.preventDefault();close();}} onClick={e => {if(e.target === e.currentTarget) close();}}>
+    <div className="card-inspection-content">
+      <button type="button" className="card-inspection-close" aria-label="Fechar inspeção" onClick={close}><X size={20}/></button>
+      <CardFace card={card}/>
+      <span className="cards-rarity" style={{color:cardRarities[card.rarity].colour}}>{cardRarities[card.rarity].name}</span>
+    </div>
+  </dialog>, document.body);
 }
